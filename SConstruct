@@ -20,13 +20,21 @@ env = SConscript("godot-cpp/SConstruct")
 # tweak this if you want to use different folders, or more folders, to store your source code in.
 # include dir
 env.Append(CPPPATH=['src/core'])
-env.Append(CXXFLAGS=["-std=c++17", "-fexceptions"])
-# env.Append(CC='gcc')
-# env.Append(CXX='g++')
+
+# 编译器和编译选项
+env.Append(CXXFLAGS=['-std=c++17', '-fexceptions'])
+
+# 添加必要的编译选项
+env.Append(CPPDEFINES=['_GNU_SOURCE'])
+env.Append(CFLAGS=['-D_GNU_SOURCE'])
+env.Append(CPPDEFINES=['CONFIG_BIGNUM'])
+env.Append(CFLAGS=['-D_CONFIG_BIGNUM'])
+
+env.Append(CPPDEFINES={'CONFIG_VERSION': '\\"2024-05-20\\"'})
 
 # cpp file
 sources = recursive_glob('./src/core', 'cpp')
-sources.extend(recursive_glob('./src/core', 'hpp'))
+# sources.extend(recursive_glob('./src/core', 'hpp'))
 sources.extend(recursive_glob('./src/core', 'c'))
 
 if env["platform"] == "macos":
