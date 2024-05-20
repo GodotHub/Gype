@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 import os
 import sys
 
@@ -9,16 +8,6 @@ def recursive_glob(rootdir='.', suffix=''):
 
 env = SConscript("godot-cpp/SConstruct")
 
-# For the reference:
-# - CCFLAGS are compilation flags shared between C and C++
-# - CFLAGS are for C-specific compilation flags
-# - CXXFLAGS are for C++-specific compilation flags
-# - CPPFLAGS are for pre-processor flags
-# - CPPDEFINES are for pre-processor defines
-# - LINKFLAGS are for linking flags
-
-# tweak this if you want to use different folders, or more folders, to store your source code in.
-# include dir
 env.Append(CPPPATH=['src/core'])
 
 # 编译器和编译选项
@@ -32,10 +21,8 @@ env.Append(CFLAGS=['-D_CONFIG_BIGNUM'])
 
 env.Append(CPPDEFINES={'CONFIG_VERSION': '\\"2024-05-20\\"'})
 
-# cpp file
-sources = recursive_glob('./src/core', 'cpp')
-# sources.extend(recursive_glob('./src/core', 'hpp'))
-sources.extend(recursive_glob('./src/core', 'c'))
+sources = recursive_glob('src/core', 'cpp')
+sources.extend(recursive_glob('src/core', 'c'))
 
 if env["platform"] == "macos":
     library = env.SharedLibrary(

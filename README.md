@@ -1,12 +1,7 @@
-### 拉取godot-cpp
-执行git submodule update --init --recursive
+### 拉取代码  
+执行`git submodule update --init --recursive`  
 
-### 项目配置
-下载mingw64,配置环境变量
-修改.vscode/c_cpp_properties.json的compilerPath.
-
-### 编译
-ctrl+shift+p进入命令面板,选择运行任务,选择initial-build-extension
-
-### 运行
-修改.vscode/launch.json的"program"为你的godot路径,然后F5启动
+### 编译项目  
+Windows平台下载mingw64，配置环境变量  
+下载Python3，安装Scons：`pip install scons`  
+根目录执行`scons target=template_debug use_mingw=true`  
