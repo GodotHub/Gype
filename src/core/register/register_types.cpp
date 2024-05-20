@@ -1,5 +1,5 @@
 #include "register/register_types.h"
-#include "quickjspp/quickjspp.hpp"
+#include "quickjs/quickjspp.hpp"
 #include <gdextension_interface.h>
 #include <functional>
 #include <godot_cpp/core/class_db.hpp>
