@@ -51,7 +51,7 @@ def clean(env):
         # '*.dylib',  # 动态库
     ]
     for target in clean_targets:
-        env.Clean(target)
+        env.Clean(target, target)
 
 # 添加清理步骤
 # clean(env)
