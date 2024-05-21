@@ -54,4 +54,4 @@ def clean(env):
         env.Clean(target, target)
 
 # 添加清理步骤
-clean(env)
+# clean(env)
