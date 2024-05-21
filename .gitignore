@@ -6,3 +6,4 @@
 .sconsign.dblite
 .clang-format
 .vscode
+godot-cpp
