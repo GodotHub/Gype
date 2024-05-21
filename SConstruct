@@ -11,7 +11,7 @@ env = SConscript("godot-cpp/SConstruct")
 env.Append(CPPPATH=['src'])
 
 # 编译器和编译选项
-env.Append(CC='gcc', CXX='g++', CXXFLAGS=['-std=c++17', '-fexceptions'])
+env.Append(CXXFLAGS=['-std=c++17', '-fexceptions'])
 
 # 添加必要的编译选项
 env.Append(CPPDEFINES=['_GNU_SOURCE'])
@@ -54,4 +54,4 @@ def clean(env):
         env.Clean(target)
 
 # 添加清理步骤
-clean(env)
+# clean(env)
