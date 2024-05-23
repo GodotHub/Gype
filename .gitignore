@@ -7,3 +7,5 @@
 .clang-format
 .vscode
 godot-cpp
+*.js
+!gypescript/gsc/*
