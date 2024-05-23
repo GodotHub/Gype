@@ -1,0 +1,23 @@
+#include "register/utils.h"
+#include <godot_cpp/variant/utility_functions.hpp>
+
+void register_utility_functions() {
+	{% for func in utility_functions %}
+	ADD_GLOBAL_FUNCTION({{func.name}}, &UtilityFunctions::{{func.name}});
+	{% endfor %}
+}
+
+JSValue js_print(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	std::vector<Variant> args;
+	for (int i = 0; i < argc; i++) {
+		if (JS_IsString(argv[i])) {
+			args.push_back(JS_ToCString(ctx, argv[i]));
+		} else if (JS_IsNumber(argv[i])) {
+			args.push_back(JS_ToNumber(ctx, argv[i]));
+		} else {
+			args.push_back(nullptr);
+		}
+	}
+	UtilityFunctions::print<std::vector<Variant>>(Variant(), args);
+	return JS_UNDEFINED;
+}

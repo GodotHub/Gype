@@ -8,6 +8,8 @@
 #include <filesystem>
 #include <fstream>
 #include <functional>
+#include <godot_cpp/core/error_macros.hpp>
+#include <godot_cpp/variant/variant.hpp>
 #include <ios>
 #include <memory>
 #include <optional>
@@ -171,6 +173,62 @@ struct js_traits<void *> {
 		return reinterpret_cast<void *>(ptr);
 	}
 };
+
+template <>
+struct js_traits<const void *> {
+	static JSValue wrap(JSContext *ctx, const void *value) {
+		return JS_NewBigUint64(ctx, reinterpret_cast<uint64_t>(value));
+	}
+
+	static const void *unwrap(JSContext *ctx, JSValueConst value) {
+		uint64_t ptr;
+		if (JS_ToIndex(ctx, &ptr, value))
+			throw exception{ ctx };
+		return reinterpret_cast<const void *>(ptr);
+	}
+};
+
+template <>
+struct js_traits<godot::Variant> {
+	static JSValue wrap(JSContext *ctx, godot::Variant value) {
+		switch (value.get_type()) {
+			case godot::Variant::Type::INT: {
+				return JS_NewInt32(ctx, *static_cast<int32_t *>(value._native_ptr()));
+			} break;
+			case godot::Variant::Type::STRING: {
+				return JS_NewString(ctx, static_cast<const char *>(value._native_ptr()));
+			} break;
+			default: {
+				return JS_UNDEFINED;
+			}
+		}
+	}
+
+	static godot::Variant unwrap(JSContext *ctx, JSValueConst value) {
+		if (JS_IsNumber(value)) {
+			int32_t i;
+			ERR_FAIL_COND_V(JS_ToInt32(ctx, &i, value) != 0, nullptr);
+		} else if (JS_IsString(value)) {
+			return JS_ToCString(ctx, value);
+		} else {
+			return nullptr;
+		}
+	}
+};
+
+// template <>
+// struct js_traits<unsigned char *> {
+// 	static JSValue wrap(JSContext *ctx, unsigned char *value) {
+// 		return JS_NewBigUint64(ctx, reinterpret_cast<uint64_t>(value));
+// 	}
+
+// 	static unsigned char *unwrap(JSContext *ctx, JSValueConst value) {
+// 		uint64_t ptr;
+// 		if (JS_ToIndex(ctx, &ptr, value))
+// 			throw exception{ ctx };
+// 		return reinterpret_cast<unsigned char *>(ptr);
+// 	}
+// };
 
 template <>
 struct js_traits<long long unsigned int> {

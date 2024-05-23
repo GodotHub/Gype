@@ -1,4 +1,5 @@
 #include "register/register_types.h"
+#include "gen/utility_functions/gen.h"
 #include "register/utils.h"
 #include <gdextension_interface.h>
 #include <godot_cpp/core/class_db.hpp>
@@ -18,9 +19,9 @@ void register_gdextension_api() {
 	ADD_GDEXTENSION_FUNCTION(print_script_error);
 	ADD_GDEXTENSION_FUNCTION(print_script_error_with_message);
 	ADD_GDEXTENSION_FUNCTION(get_native_struct_size);
-	// ADD_GDEXTENSION_FUNCTION(variant_new_copy);
-	// ADD_GDEXTENSION_FUNCTION(variant_new_nil);
-	// ADD_GDEXTENSION_FUNCTION(variant_destroy);
+	ADD_GDEXTENSION_FUNCTION(variant_new_copy);
+	ADD_GDEXTENSION_FUNCTION(variant_new_nil);
+	ADD_GDEXTENSION_FUNCTION(variant_destroy);
 	// ADD_GDEXTENSION_FUNCTION(variant_call);
 	// ADD_GDEXTENSION_FUNCTION(variant_call_static);
 	// ADD_GDEXTENSION_FUNCTION(variant_evaluate);
@@ -157,6 +158,7 @@ void initialize_tgds_types(ModuleInitializationLevel p_level) {
 		return;
 	}
 	register_gdextension_api();
+	register_utility_functions();
 }
 
 void uninitialize_tgds_types(ModuleInitializationLevel p_level) {
