@@ -68,11 +68,26 @@ include CMakeFiles/gype.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/gype.dir/flags.make
 
+CMakeFiles/gype.dir/src/main.cpp.obj: CMakeFiles/gype.dir/flags.make
+CMakeFiles/gype.dir/src/main.cpp.obj: CMakeFiles/gype.dir/includes_CXX.rsp
+CMakeFiles/gype.dir/src/main.cpp.obj: C:/Users/MoLuo/Desktop/Test/GypeScript/src/main.cpp
+CMakeFiles/gype.dir/src/main.cpp.obj: CMakeFiles/gype.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\MoLuo\Desktop\Test\GypeScript\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/gype.dir/src/main.cpp.obj"
+	D:\Software\MinGW64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gype.dir/src/main.cpp.obj -MF CMakeFiles\gype.dir\src\main.cpp.obj.d -o CMakeFiles\gype.dir\src\main.cpp.obj -c C:\Users\MoLuo\Desktop\Test\GypeScript\src\main.cpp
+
+CMakeFiles/gype.dir/src/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gype.dir/src/main.cpp.i"
+	D:\Software\MinGW64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\MoLuo\Desktop\Test\GypeScript\src\main.cpp > CMakeFiles\gype.dir\src\main.cpp.i
+
+CMakeFiles/gype.dir/src/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gype.dir/src/main.cpp.s"
+	D:\Software\MinGW64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\MoLuo\Desktop\Test\GypeScript\src\main.cpp -o CMakeFiles\gype.dir\src\main.cpp.s
+
 CMakeFiles/gype.dir/src/qjs/cutils.c.obj: CMakeFiles/gype.dir/flags.make
 CMakeFiles/gype.dir/src/qjs/cutils.c.obj: CMakeFiles/gype.dir/includes_C.rsp
 CMakeFiles/gype.dir/src/qjs/cutils.c.obj: C:/Users/MoLuo/Desktop/Test/GypeScript/src/qjs/cutils.c
 CMakeFiles/gype.dir/src/qjs/cutils.c.obj: CMakeFiles/gype.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\MoLuo\Desktop\Test\GypeScript\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/gype.dir/src/qjs/cutils.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\MoLuo\Desktop\Test\GypeScript\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/gype.dir/src/qjs/cutils.c.obj"
 	D:\Software\MinGW64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/gype.dir/src/qjs/cutils.c.obj -MF CMakeFiles\gype.dir\src\qjs\cutils.c.obj.d -o CMakeFiles\gype.dir\src\qjs\cutils.c.obj -c C:\Users\MoLuo\Desktop\Test\GypeScript\src\qjs\cutils.c
 
 CMakeFiles/gype.dir/src/qjs/cutils.c.i: cmake_force
@@ -87,7 +102,7 @@ CMakeFiles/gype.dir/src/qjs/libbf.c.obj: CMakeFiles/gype.dir/flags.make
 CMakeFiles/gype.dir/src/qjs/libbf.c.obj: CMakeFiles/gype.dir/includes_C.rsp
 CMakeFiles/gype.dir/src/qjs/libbf.c.obj: C:/Users/MoLuo/Desktop/Test/GypeScript/src/qjs/libbf.c
 CMakeFiles/gype.dir/src/qjs/libbf.c.obj: CMakeFiles/gype.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\MoLuo\Desktop\Test\GypeScript\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/gype.dir/src/qjs/libbf.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\MoLuo\Desktop\Test\GypeScript\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/gype.dir/src/qjs/libbf.c.obj"
 	D:\Software\MinGW64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/gype.dir/src/qjs/libbf.c.obj -MF CMakeFiles\gype.dir\src\qjs\libbf.c.obj.d -o CMakeFiles\gype.dir\src\qjs\libbf.c.obj -c C:\Users\MoLuo\Desktop\Test\GypeScript\src\qjs\libbf.c
 
 CMakeFiles/gype.dir/src/qjs/libbf.c.i: cmake_force
@@ -102,7 +117,7 @@ CMakeFiles/gype.dir/src/qjs/libregexp.c.obj: CMakeFiles/gype.dir/flags.make
 CMakeFiles/gype.dir/src/qjs/libregexp.c.obj: CMakeFiles/gype.dir/includes_C.rsp
 CMakeFiles/gype.dir/src/qjs/libregexp.c.obj: C:/Users/MoLuo/Desktop/Test/GypeScript/src/qjs/libregexp.c
 CMakeFiles/gype.dir/src/qjs/libregexp.c.obj: CMakeFiles/gype.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\MoLuo\Desktop\Test\GypeScript\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/gype.dir/src/qjs/libregexp.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\MoLuo\Desktop\Test\GypeScript\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/gype.dir/src/qjs/libregexp.c.obj"
 	D:\Software\MinGW64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/gype.dir/src/qjs/libregexp.c.obj -MF CMakeFiles\gype.dir\src\qjs\libregexp.c.obj.d -o CMakeFiles\gype.dir\src\qjs\libregexp.c.obj -c C:\Users\MoLuo\Desktop\Test\GypeScript\src\qjs\libregexp.c
 
 CMakeFiles/gype.dir/src/qjs/libregexp.c.i: cmake_force
@@ -117,7 +132,7 @@ CMakeFiles/gype.dir/src/qjs/libunicode.c.obj: CMakeFiles/gype.dir/flags.make
 CMakeFiles/gype.dir/src/qjs/libunicode.c.obj: CMakeFiles/gype.dir/includes_C.rsp
 CMakeFiles/gype.dir/src/qjs/libunicode.c.obj: C:/Users/MoLuo/Desktop/Test/GypeScript/src/qjs/libunicode.c
 CMakeFiles/gype.dir/src/qjs/libunicode.c.obj: CMakeFiles/gype.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\MoLuo\Desktop\Test\GypeScript\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/gype.dir/src/qjs/libunicode.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\MoLuo\Desktop\Test\GypeScript\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/gype.dir/src/qjs/libunicode.c.obj"
 	D:\Software\MinGW64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/gype.dir/src/qjs/libunicode.c.obj -MF CMakeFiles\gype.dir\src\qjs\libunicode.c.obj.d -o CMakeFiles\gype.dir\src\qjs\libunicode.c.obj -c C:\Users\MoLuo\Desktop\Test\GypeScript\src\qjs\libunicode.c
 
 CMakeFiles/gype.dir/src/qjs/libunicode.c.i: cmake_force
@@ -132,7 +147,7 @@ CMakeFiles/gype.dir/src/qjs/quickjs-libc.c.obj: CMakeFiles/gype.dir/flags.make
 CMakeFiles/gype.dir/src/qjs/quickjs-libc.c.obj: CMakeFiles/gype.dir/includes_C.rsp
 CMakeFiles/gype.dir/src/qjs/quickjs-libc.c.obj: C:/Users/MoLuo/Desktop/Test/GypeScript/src/qjs/quickjs-libc.c
 CMakeFiles/gype.dir/src/qjs/quickjs-libc.c.obj: CMakeFiles/gype.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\MoLuo\Desktop\Test\GypeScript\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/gype.dir/src/qjs/quickjs-libc.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\MoLuo\Desktop\Test\GypeScript\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/gype.dir/src/qjs/quickjs-libc.c.obj"
 	D:\Software\MinGW64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/gype.dir/src/qjs/quickjs-libc.c.obj -MF CMakeFiles\gype.dir\src\qjs\quickjs-libc.c.obj.d -o CMakeFiles\gype.dir\src\qjs\quickjs-libc.c.obj -c C:\Users\MoLuo\Desktop\Test\GypeScript\src\qjs\quickjs-libc.c
 
 CMakeFiles/gype.dir/src/qjs/quickjs-libc.c.i: cmake_force
@@ -147,7 +162,7 @@ CMakeFiles/gype.dir/src/qjs/quickjs.c.obj: CMakeFiles/gype.dir/flags.make
 CMakeFiles/gype.dir/src/qjs/quickjs.c.obj: CMakeFiles/gype.dir/includes_C.rsp
 CMakeFiles/gype.dir/src/qjs/quickjs.c.obj: C:/Users/MoLuo/Desktop/Test/GypeScript/src/qjs/quickjs.c
 CMakeFiles/gype.dir/src/qjs/quickjs.c.obj: CMakeFiles/gype.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\MoLuo\Desktop\Test\GypeScript\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/gype.dir/src/qjs/quickjs.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\MoLuo\Desktop\Test\GypeScript\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/gype.dir/src/qjs/quickjs.c.obj"
 	D:\Software\MinGW64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/gype.dir/src/qjs/quickjs.c.obj -MF CMakeFiles\gype.dir\src\qjs\quickjs.c.obj.d -o CMakeFiles\gype.dir\src\qjs\quickjs.c.obj -c C:\Users\MoLuo\Desktop\Test\GypeScript\src\qjs\quickjs.c
 
 CMakeFiles/gype.dir/src/qjs/quickjs.c.i: cmake_force
@@ -160,6 +175,7 @@ CMakeFiles/gype.dir/src/qjs/quickjs.c.s: cmake_force
 
 # Object files for target gype
 gype_OBJECTS = \
+"CMakeFiles/gype.dir/src/main.cpp.obj" \
 "CMakeFiles/gype.dir/src/qjs/cutils.c.obj" \
 "CMakeFiles/gype.dir/src/qjs/libbf.c.obj" \
 "CMakeFiles/gype.dir/src/qjs/libregexp.c.obj" \
@@ -170,6 +186,7 @@ gype_OBJECTS = \
 # External object files for target gype
 gype_EXTERNAL_OBJECTS =
 
+libgype.dll: CMakeFiles/gype.dir/src/main.cpp.obj
 libgype.dll: CMakeFiles/gype.dir/src/qjs/cutils.c.obj
 libgype.dll: CMakeFiles/gype.dir/src/qjs/libbf.c.obj
 libgype.dll: CMakeFiles/gype.dir/src/qjs/libregexp.c.obj
@@ -180,7 +197,7 @@ libgype.dll: CMakeFiles/gype.dir/build.make
 libgype.dll: CMakeFiles/gype.dir/linklibs.rsp
 libgype.dll: CMakeFiles/gype.dir/objects1.rsp
 libgype.dll: CMakeFiles/gype.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\MoLuo\Desktop\Test\GypeScript\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C shared library libgype.dll"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\MoLuo\Desktop\Test\GypeScript\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX shared library libgype.dll"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\gype.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -80,12 +80,12 @@ clean: CMakeFiles/gype.dir/clean
 CMakeFiles/gype.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\gype.dir\build.make CMakeFiles/gype.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\gype.dir\build.make CMakeFiles/gype.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\MoLuo\Desktop\Test\GypeScript\build\CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target gype"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\MoLuo\Desktop\Test\GypeScript\build\CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target gype"
 .PHONY : CMakeFiles/gype.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/gype.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\MoLuo\Desktop\Test\GypeScript\build\CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\MoLuo\Desktop\Test\GypeScript\build\CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/gype.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\MoLuo\Desktop\Test\GypeScript\build\CMakeFiles 0
 .PHONY : CMakeFiles/gype.dir/rule

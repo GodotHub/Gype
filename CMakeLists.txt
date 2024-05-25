@@ -16,6 +16,8 @@ add_definitions(-DGNU_SOURCE)
 add_definitions(-DCONFIG_BIGNUM)
 add_definitions(-DCONFIG_VERSION="2024-05-20")
 
+
+
 # 查找src目录和所有子目录中的.c和.cpp文件
 file(GLOB_RECURSE SOURCE_FILES ${PROJECT_SOURCE_DIR}/src/*.c ${PROJECT_SOURCE_DIR}/src/*.cpp)
 

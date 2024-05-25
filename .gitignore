@@ -1,11 +1,9 @@
 /.dist
 /node_modules
-/game/bin
 /js-dist
 *.o
-.sconsign.dblite
 .clang-format
 .vscode
-godot-cpp
 *.js
-!gypescript/gsc/*
+!script/gype/*
+build

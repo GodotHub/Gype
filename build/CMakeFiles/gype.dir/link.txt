@@ -1,3 +1,3 @@
 D:\Software\cmake\bin\cmake.exe -E rm -f CMakeFiles\gype.dir/objects.a
 D:\Software\MinGW64\bin\ar.exe qc CMakeFiles\gype.dir/objects.a @CMakeFiles\gype.dir\objects1.rsp
-D:\Software\MinGW64\bin\gcc.exe -shared -o libgype.dll -Wl,--out-implib,libgype.dll.a -Wl,--major-image-version,1,--minor-image-version,0 -Wl,--whole-archive CMakeFiles\gype.dir/objects.a -Wl,--no-whole-archive @CMakeFiles\gype.dir\linklibs.rsp
+D:\Software\MinGW64\bin\g++.exe -shared -o libgype.dll -Wl,--out-implib,libgype.dll.a -Wl,--major-image-version,1,--minor-image-version,0 -Wl,--whole-archive CMakeFiles\gype.dir/objects.a -Wl,--no-whole-archive @CMakeFiles\gype.dir\linklibs.rsp
