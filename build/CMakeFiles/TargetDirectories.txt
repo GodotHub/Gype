@@ -1,3 +1,0 @@
-C:/Users/MoLuo/Desktop/Test/GypeScript/build/CMakeFiles/gype.dir
-C:/Users/MoLuo/Desktop/Test/GypeScript/build/CMakeFiles/edit_cache.dir
-C:/Users/MoLuo/Desktop/Test/GypeScript/build/CMakeFiles/rebuild_cache.dir
