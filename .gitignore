@@ -6,4 +6,4 @@
 .vscode
 *.js
 !script/gype/*
-build
+/build
