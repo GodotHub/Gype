@@ -1,3 +1,19 @@
 @echo off
-set SCRIPT_DIR=gypescript\gsc
-%SCRIPT_DIR%\qjs.exe %SCRIPT_DIR%\tsc.js %1
+REM Check if any arguments are passed
+if "%*" == "" (
+    echo No arguments provided.
+    exit /b 1
+)
+
+REM Construct the command with all passed arguments
+set CMD=script\gype\qjs script\gype\tsc.js
+
+:loop
+if "%1"=="" goto endloop
+    set CMD=%CMD% %1
+    shift
+goto loop
+:endloop
+
+REM Execute the constructed command
+%CMD%
