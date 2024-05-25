@@ -128,6 +128,30 @@ gype/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\gype.dir\build.make CMakeFiles/gype.dir/build
 .PHONY : gype/fast
 
+src/main.obj: src/main.cpp.obj
+.PHONY : src/main.obj
+
+# target to build an object file
+src/main.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\gype.dir\build.make CMakeFiles/gype.dir/src/main.cpp.obj
+.PHONY : src/main.cpp.obj
+
+src/main.i: src/main.cpp.i
+.PHONY : src/main.i
+
+# target to preprocess a source file
+src/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\gype.dir\build.make CMakeFiles/gype.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
+
+src/main.s: src/main.cpp.s
+.PHONY : src/main.s
+
+# target to generate assembly for a file
+src/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\gype.dir\build.make CMakeFiles/gype.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
+
 src/qjs/cutils.obj: src/qjs/cutils.c.obj
 .PHONY : src/qjs/cutils.obj
 
@@ -281,6 +305,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... gype
+	@echo ... src/main.obj
+	@echo ... src/main.i
+	@echo ... src/main.s
 	@echo ... src/qjs/cutils.obj
 	@echo ... src/qjs/cutils.i
 	@echo ... src/qjs/cutils.s

@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/gype.dir/src/main.cpp.obj"
+  "CMakeFiles/gype.dir/src/main.cpp.obj.d"
   "CMakeFiles/gype.dir/src/qjs/cutils.c.obj"
   "CMakeFiles/gype.dir/src/qjs/cutils.c.obj.d"
   "CMakeFiles/gype.dir/src/qjs/libbf.c.obj"
@@ -18,6 +20,6 @@ file(REMOVE_RECURSE
 )
 
 # Per-language clean rules from dependency scanning.
-foreach(lang C)
+foreach(lang C CXX)
   include(CMakeFiles/gype.dir/cmake_clean_${lang}.cmake OPTIONAL)
 endforeach()

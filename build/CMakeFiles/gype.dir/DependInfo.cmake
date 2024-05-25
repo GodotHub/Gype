@@ -14,6 +14,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/MoLuo/Desktop/Test/GypeScript/src/qjs/libunicode.c" "CMakeFiles/gype.dir/src/qjs/libunicode.c.obj" "gcc" "CMakeFiles/gype.dir/src/qjs/libunicode.c.obj.d"
   "C:/Users/MoLuo/Desktop/Test/GypeScript/src/qjs/quickjs-libc.c" "CMakeFiles/gype.dir/src/qjs/quickjs-libc.c.obj" "gcc" "CMakeFiles/gype.dir/src/qjs/quickjs-libc.c.obj.d"
   "C:/Users/MoLuo/Desktop/Test/GypeScript/src/qjs/quickjs.c" "CMakeFiles/gype.dir/src/qjs/quickjs.c.obj" "gcc" "CMakeFiles/gype.dir/src/qjs/quickjs.c.obj.d"
+  "C:/Users/MoLuo/Desktop/Test/GypeScript/src/main.cpp" "CMakeFiles/gype.dir/src/main.cpp.obj" "gcc" "CMakeFiles/gype.dir/src/main.cpp.obj.d"
   )
 
 # Targets to which this target links.
