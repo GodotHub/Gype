@@ -6,4 +6,7 @@
 .vscode
 *.js
 !script/gype/*
-/build
+build
+*.dll
+*.so
+*.a

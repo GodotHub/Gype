@@ -6,19 +6,27 @@
 qjs::Runtime runtime;
 qjs::Context context(runtime);
 
-const char *underscoreToCamelCase(const std::string &input) {
+const char *underscoreToCamelCase(const std::string &input)
+{
 	std::string output;
 	bool capitalizeNext = false;
 
-	for (char ch : input) {
-		if (ch == '_') {
+	for (char ch : input)
+	{
+		if (ch == '_')
+		{
 			// 下一个字符应该大写
 			capitalizeNext = true;
-		} else {
-			if (capitalizeNext) {
+		}
+		else
+		{
+			if (capitalizeNext)
+			{
 				output += std::toupper(ch); // 将字符转换为大写
 				capitalizeNext = false;
-			} else {
+			}
+			else
+			{
 				output += ch;
 			}
 		}
