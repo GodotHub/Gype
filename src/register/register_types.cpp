@@ -1,10 +1,11 @@
 #include "register/register_types.h"
-#include "gde/gdextension_api.hpp"
+#include "gde/gdextension_api.h"
 #include "register/utils.h"
 
 using namespace godot;
 
-void load_proc_address() {
+void load_proc_address()
+{
 	LOAD_PROC_ADDRESS(get_godot_version, GDExtensionInterfaceGetGodotVersion);
 	LOAD_PROC_ADDRESS(mem_alloc, GDExtensionInterfaceMemAlloc);
 	LOAD_PROC_ADDRESS(mem_realloc, GDExtensionInterfaceMemRealloc);
@@ -149,7 +150,8 @@ void load_proc_address() {
 	LOAD_PROC_ADDRESS(editor_remove_plugin, GDExtensionInterfaceEditorRemovePlugin);
 }
 
-void register_gdextension_api() {
+void register_gdextension_api()
+{
 	ADD_GDEXTENSION_FUNCTION(get_godot_version);
 	ADD_GDEXTENSION_FUNCTION(mem_alloc);
 	ADD_GDEXTENSION_FUNCTION(mem_realloc);
@@ -294,31 +296,37 @@ void register_gdextension_api() {
 	// ADD_GDEXTENSION_FUNCTION(editor_remove_plugin);
 }
 
-void initialize_tgds_types(void *user_data, GDExtensionInitializationLevel p_level) {
-	if (p_level != GDEXTENSION_INITIALIZATION_SCENE) {
+void initialize_tgds_types(void *user_data, GDExtensionInitializationLevel p_level)
+{
+	if (p_level != GDEXTENSION_INITIALIZATION_SCENE)
+	{
 		return;
 	}
 	load_proc_address();
 	register_gdextension_api();
 }
 
-void uninitialize_tgds_types(void *user_data, GDExtensionInitializationLevel p_level) {
-	if (p_level != GDEXTENSION_INITIALIZATION_SCENE) {
+void uninitialize_tgds_types(void *user_data, GDExtensionInitializationLevel p_level)
+{
+	if (p_level != GDEXTENSION_INITIALIZATION_SCENE)
+	{
 		return;
 	}
 }
 
-extern "C" {
+extern "C"
+{
 
-// Initialization.
+	// Initialization.
 
-GDExtensionBool __declspec(dllexport) tgds_library_init(GDExtensionInterfaceGetProcAddress p_get_proc_address, GDExtensionClassLibraryPtr p_library, GDExtensionInitialization *r_initialization) {
-	internal::gdextension_interface_get_proc_address = p_get_proc_address;
-	internal::library = p_library;
-	internal::token = p_library;
-	r_initialization->initialize = initialize_tgds_types;
-	r_initialization->deinitialize = uninitialize_tgds_types;
-	r_initialization->minimum_initialization_level = GDEXTENSION_INITIALIZATION_SCENE;
-	return true;
-}
+	GDExtensionBool __declspec(dllexport) tgds_library_init(GDExtensionInterfaceGetProcAddress p_get_proc_address, GDExtensionClassLibraryPtr p_library, GDExtensionInitialization *r_initialization)
+	{
+		internal::gdextension_interface_get_proc_address = p_get_proc_address;
+		internal::library = p_library;
+		internal::token = p_library;
+		r_initialization->initialize = initialize_tgds_types;
+		r_initialization->deinitialize = uninitialize_tgds_types;
+		r_initialization->minimum_initialization_level = GDEXTENSION_INITIALIZATION_SCENE;
+		return true;
+	}
 }
