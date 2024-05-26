@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.10)
 # 设置C和C++编译器
 set(CMAKE_C_COMPILER gcc)
 set(CMAKE_CXX_COMPILER g++)
-set(GODOT_COMPILE_FLAGS "${GODOT_COMPILE_FLAGS} -fno-omit-frame-pointer -O0 -g")
+set(GODOT_COMPILE_FLAGS "-fno-omit-frame-pointer -O0 -g")
 
 set_property(TARGET ${PROJECT_NAME} APPEND_STRING PROPERTY COMPILE_FLAGS ${GODOT_COMPILE_FLAGS})
 
