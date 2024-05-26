@@ -1,4 +1,0 @@
-#include "gde/gdextension_interface.h"
-
-GDExtensionInterfacePrintWarning printWarning;
-GDExtensionInterfaceGetGodotVersion getGodotVersion;
