@@ -35,6 +35,7 @@
 #include <godot_cpp/core/binder_common.hpp>
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/defs.hpp>
+#include <godot_cpp/variant/builtin_vararg_methods.hpp>
 
 #include <utility>
 
