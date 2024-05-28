@@ -2,13 +2,13 @@
 
 #include "quickjs.h"
 
-#include "gde/gdextension_interface.h"
 #include <algorithm>
 #include <cassert>
 #include <cstddef>
 #include <filesystem>
 #include <fstream>
 #include <functional>
+// #include <godot_cpp/variant/variant.hpp>
 #include <ios>
 #include <memory>
 #include <optional>
@@ -27,6 +27,7 @@
 #else
 #define QJSPP_TYPENAME(...) #__VA_ARGS__
 #endif
+
 
 namespace qjs {
 
@@ -333,6 +334,49 @@ struct js_traits<double> {
 		return JS_NewFloat64(ctx, i);
 	}
 };
+
+/** Conversion traits for Variant.
+ */
+// template <>
+// struct js_traits<godot::Variant> {
+// 	/// @throws exception
+// 	static godot::Variant unwrap(JSContext *ctx, JSValueConst v) {
+// 		if (JS_IsNumber(v)) {
+// 			if (JS_IsInt(v)) {
+// 				int32_t num;
+// 				if (JS_ToInt32(ctx, &num, v)) {
+// 					return num;
+// 				}
+// 			} else if (JS_IsFloat(v)) {
+// 				double num;
+// 				if (JS_ToFloat64(ctx, &num, v)) {
+// 					return num;
+// 				}
+// 			}
+// 		} else if (JS_IsBool(v)) {
+// 			return JS_ToBool(ctx, v);
+// 		} else if (JS_IsString(v)) {
+// 			return JS_ToCString(ctx, v);
+// 		}
+// 		return nullptr;
+// 	}
+
+// 	static JSValue wrap(JSContext *ctx, godot::Variant variant) noexcept {
+// 		switch (variant.get_type()) {
+// 			case godot::Variant::Type::INT:
+// 				return JS_NewInt32(ctx, variant);
+// 			case godot::Variant::Type::FLOAT:
+// 				return JS_NewFloat64(ctx, variant);
+// 			case godot::Variant::Type::BOOL:
+// 				return JS_NewBool(ctx, variant);
+// 			case godot::Variant::Type::STRING:
+// 			case godot::Variant::Type::STRING_NAME:
+// 				return JS_NewString(ctx, (const char *)variant._native_ptr());
+// 			default:
+// 				return JS_UNDEFINED;
+// 		}
+// 	}
+// };
 
 namespace detail {
 /** Fake std::string_view which frees the string on destruction.
