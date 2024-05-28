@@ -490,10 +490,18 @@ def generate_builtin_class_vararg_method_implements_header(builtin_classes):
     header_guard = "GODOT_CPP_BUILTIN_VARARG_METHODS_HPP"
     result.append(f"#ifndef {header_guard}")
     result.append(f"#define {header_guard}")
+    result.append("#include <godot_cpp/variant/variant.hpp>")
+    result.append("#include <godot_cpp/variant/callable.hpp>")
+    result.append("#include <godot_cpp/variant/signal.hpp>")
+    result.append("#include <vector>")
+    # ADD
+    result.append("#include \"qjspp.h\"")
+    result.append("namespace qjs {")
+    result.append("template <typename T>")
+    result.append("struct rest;")
+    result.append("}")
+    result.append("using namespace godot;")
     result.append("")
-    # result.append("#include <qjspp.h>")
-    # result.append("#include <godot_cpp/variant/variant.hpp>")
-    # result.append("#include <godot_cpp/variant/callable.hpp>")
     for builtin_api in builtin_classes:
         if not "methods" in builtin_api:
             continue
@@ -530,8 +538,6 @@ def generate_builtin_class_header(builtin_api, size, used_classes, fully_used_cl
     result.append("#include <godot_cpp/core/defs.hpp>")
     result.append("")
 
-    result.append("#include <qjspp.h>")
-
     # Special cases.
     if class_name == "String":
         result.append("#include <godot_cpp/variant/char_string.hpp>")
@@ -567,6 +573,12 @@ def generate_builtin_class_header(builtin_api, size, used_classes, fully_used_cl
 
     result.append("#include <gdextension_interface.h>")
     result.append("")
+    # ADD
+    result.append("#include \"qjspp.h\"")
+    result.append("namespace qjs {")
+    result.append("template <typename T>")
+    result.append("struct rest;")
+    result.append("}")
     result.append("namespace godot {")
     result.append("")
 
@@ -575,6 +587,8 @@ def generate_builtin_class_header(builtin_api, size, used_classes, fully_used_cl
             result.append(f"struct {type_name};")
         else:
             result.append(f"class {type_name};")
+    # ADD
+    # result.append("class String;")
 
     if len(used_classes) > 0:
         result.append("")
@@ -951,7 +965,8 @@ def generate_builtin_class_source(builtin_api, size, used_classes, fully_used_cl
     result.append("")
     result.append("#include <godot_cpp/godot.hpp>")
     result.append("")
-    result.append("#include <qjspp.h>")
+    # ADD
+    # result.append("#include \"qjspp.h\"")
 
     # Only used since the "fully used" is included in header already.
     for include in used_classes:
@@ -1480,6 +1495,11 @@ def generate_engine_class_header(class_api, used_classes, fully_used_classes, us
         result.append("#include <type_traits>")
         result.append("")
 
+    result.append("#include \"qjspp.h\"")
+    result.append("namespace qjs {")
+    result.append("template <typename T>")
+    result.append("struct rest;")
+    result.append("}")
     result.append("namespace godot {")
     result.append("")
 
@@ -1488,6 +1508,8 @@ def generate_engine_class_header(class_api, used_classes, fully_used_classes, us
             result.append(f"struct {type_name};")
         else:
             result.append(f"class {type_name};")
+    #ADD
+    # result.append("class String;")
 
     if len(used_classes) > 0:
         result.append("")
@@ -1698,9 +1720,10 @@ def generate_engine_class_source(class_api, used_classes, fully_used_classes, us
 
     result.append(f"#include <godot_cpp/classes/{snake_class_name}.hpp>")
     result.append("")
-    result.append("#include <qjspp.h>")
     result.append("#include <godot_cpp/core/engine_ptrcall.hpp>")
     result.append("#include <godot_cpp/core/error_macros.hpp>")
+    # ADD
+    # result.append("#include \"qjspp.h\"")
     result.append("")
 
     for included in used_classes:
@@ -1989,12 +2012,17 @@ def generate_utility_functions(api, output_dir):
     header.append(f"#ifndef {header_guard}")
     header.append(f"#define {header_guard}")
     header.append("")
-    header.append("#include <qjspp.h>")
     header.append("#include <godot_cpp/variant/builtin_types.hpp>")
     header.append("#include <godot_cpp/variant/variant.hpp>")
     header.append("")
-    header.append("#include <array>")
+    header.append("#include <vector>")
+    # ADD
+    header.append("#include \"qjspp.h\"")
     header.append("")
+    header.append("namespace qjs {")
+    header.append("template <typename T>")
+    header.append("struct rest;")
+    header.append("}")
     header.append("namespace godot {")
     header.append("")
     header.append("class UtilityFunctions {")
@@ -2128,6 +2156,7 @@ def make_function_parameters(parameters, include_default=False, for_builtin=Fals
         signature.append(parameter)
 
     if is_vararg:
+        # MODIFY
         # signature.append("const Args&... args")
         if len(parameters) > 0:
             signature.append(f"qjs::rest<{parameters[-1]["type"]}> args")
@@ -2298,6 +2327,17 @@ def make_varargs_template(
 
     function_signature += " {"
     result.append(function_signature)
+
+    # Modify
+    # args_array = f"\tstd::array<Variant, {len(method_arguments)} + sizeof...(Args)> variant_args {{ "
+    # for argument in method_arguments:
+    #     if argument["type"] == "Variant":
+    #         args_array += argument["name"]
+    #     else:
+    #         args_array += f'Variant({argument["name"]})'
+    #     args_array += ", "
+
+    # args_array += "Variant(args)... };"
 
     args_array = f"\tstd::vector<Variant> variant_args;"
     result.append(args_array)

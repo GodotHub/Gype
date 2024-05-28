@@ -38,10 +38,18 @@
 
 #include <gdextension_interface.h>
 
-#include <array>
+#include <vector>
+
+#include "qjspp.h"
+
+namespace qjs{
+template<typename T>
+struct rest;
+}
 
 namespace godot {
 
+class String;
 class ObjectID;
 
 class Variant {
@@ -269,31 +277,27 @@ public:
 
 	void callp(const StringName &method, const Variant **args, int argcount, Variant &r_ret, GDExtensionCallError &r_error);
 
-	template <typename... Args>
-	Variant call(const StringName &method, Args... args) {
-		std::array<Variant, sizeof...(args)> vargs = { args... };
-		std::array<const Variant *, sizeof...(args)> argptrs;
-		for (size_t i = 0; i < vargs.size(); i++) {
-			argptrs[i] = &vargs[i];
+	Variant call(const StringName &method, std::vector<Variant> args) {
+		std::vector<const Variant *> vargs;
+		for (Variant arg : args){
+			vargs.push_back(&arg);
 		}
 		Variant result;
 		GDExtensionCallError error;
-		callp(method, argptrs.data(), argptrs.size(), result, error);
+		callp(method, vargs.data(), vargs.size(), result, error);
 		return result;
 	}
 
 	static void callp_static(Variant::Type type, const StringName &method, const Variant **args, int argcount, Variant &r_ret, GDExtensionCallError &r_error);
 
-	template <typename... Args>
-	static Variant call_static(Variant::Type type, const StringName &method, Args... args) {
-		std::array<Variant, sizeof...(args)> vargs = { args... };
-		std::array<const Variant *, sizeof...(args)> argptrs;
-		for (size_t i = 0; i < vargs.size(); i++) {
-			argptrs[i] = &vargs[i];
+	static Variant call_static(Variant::Type type, const StringName &method, std::vector<Variant> args) {
+		std::vector<const Variant *> vargs;
+		for (Variant arg : args){
+			vargs.push_back(&arg);
 		}
 		Variant result;
 		GDExtensionCallError error;
-		callp_static(type, method, argptrs.data(), argptrs.size(), sizeof...(args), result, error);
+		callp_static(type, method, vargs.data(), vargs.size(), result, error);
 		return result;
 	}
 
@@ -353,8 +357,6 @@ String vformat(const String &p_text, const VarArgs... p_args) {
 
 	return p_text % args_array;
 }
-
-#include <godot_cpp/variant/builtin_vararg_methods.hpp>
 
 #ifdef REAL_T_IS_DOUBLE
 using PackedRealArray = PackedFloat64Array;

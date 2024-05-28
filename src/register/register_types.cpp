@@ -1,4 +1,5 @@
 #include "register/register_types.h"
+#include "register/utils.h"
 #include "godot_cpp/variant/utility_functions.hpp"
 
 using namespace godot;
@@ -17,7 +18,7 @@ void uninitialize_tgds_types(ModuleInitializationLevel p_level)
 	{
 		return;
 	}
-	// context.global().add<UtilityFunctions::print>("print");
+	context.global().add<UtilityFunctions::print>("print");
 }
 
 extern "C"
