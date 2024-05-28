@@ -10,9 +10,13 @@ set_property(TARGET ${PROJECT_NAME} APPEND_STRING PROPERTY COMPILE_FLAGS ${GODOT
 # 项目名称和语言
 project(gype C CXX)
 
+# add_subdirectory(godot-cpp)
+
 # 包含include目录和所有子目录
 include_directories(${PROJECT_SOURCE_DIR}/include)
 include_directories(${PROJECT_SOURCE_DIR}/include/qjs)
+
+add_subdirectory(godot-cpp)
 
 # 添加必要的编译选项
 add_definitions(-DGNU_SOURCE)
@@ -24,6 +28,7 @@ file(GLOB_RECURSE SOURCE_FILES ${PROJECT_SOURCE_DIR}/src/*.c ${PROJECT_SOURCE_DI
 
 # 添加动态库
 add_library(gype SHARED ${SOURCE_FILES} ${HEADER_FILES})
+target_link_libraries(gype godot-cpp)
 
 target_compile_features(${PROJECT_NAME}
 	PRIVATE
