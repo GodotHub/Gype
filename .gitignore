@@ -10,7 +10,5 @@ build
 *.so
 *.a
 !script/gype/*.js
-godot-cpp/gen
-godot-cpp/bin
 godot-cpp/.sconsign.dblite
 godot-cpp/__pycache__

@@ -1,7 +1,8 @@
 #pragma once
 
 #include "quickjs.h"
-#include "godot_cpp/variant/variant.hpp"
+#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/variant/variant.hpp>
 
 #include <algorithm>
 #include <cassert>
@@ -27,10 +28,6 @@
 #else
 #define QJSPP_TYPENAME(...) #__VA_ARGS__
 #endif
-
-namespace godot {
-class Variant;
-}
 
 namespace qjs {
 
@@ -338,8 +335,37 @@ struct js_traits<double> {
 	}
 };
 
-/** Conversion traits for Variant.
+/** Conversion traits for String.
  */
+template <>
+struct js_traits<godot::String> {
+	/// @throws exception
+	static godot::String unwrap(JSContext *ctx, JSValueConst v) {
+		if (JS_IsString(v)) {
+			return JS_ToCString(ctx, v);
+		}
+		throw exception{ ctx };
+	}
+
+	static JSValue wrap(JSContext *ctx, godot::String variant) noexcept {
+		return JS_NewString(ctx, (const char *)variant._native_ptr());
+	}
+};
+
+template <>
+struct js_traits<godot::PackedByteArray> {
+	/// @throws exception
+	static godot::PackedByteArray unwrap(JSContext *ctx, JSValueConst v) {
+		if (JS_IsArray(ctx, v)) {
+		}
+		throw exception{ ctx };
+	}
+
+	static JSValue wrap(JSContext *ctx, godot::PackedByteArray variant) noexcept {
+		return JS_NewString(ctx, (const char *)variant._native_ptr());
+	}
+};
+
 template <>
 struct js_traits<godot::Variant> {
 	/// @throws exception
@@ -361,7 +387,7 @@ struct js_traits<godot::Variant> {
 		} else if (JS_IsString(v)) {
 			return JS_ToCString(ctx, v);
 		}
-		return nullptr;
+		throw exception{ ctx };
 	}
 
 	static JSValue wrap(JSContext *ctx, godot::Variant variant) noexcept {
@@ -679,12 +705,6 @@ struct js_traits<std::variant<Ts...>> {
 
 		throw exception{ ctx };
 	}
-};
-
-template <typename T>
-struct rest : std::vector<T> {
-	using std::vector<T>::vector;
-	using std::vector<T>::operator=;
 };
 
 namespace detail {
