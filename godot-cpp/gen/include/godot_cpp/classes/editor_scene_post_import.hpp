@@ -41,7 +41,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Node;
@@ -51,20 +51,19 @@ class EditorScenePostImport : public RefCounted {
 	GDEXTENSION_CLASS(EditorScenePostImport, RefCounted)
 
 public:
-
 	String get_source_file() const;
 	virtual Object *_post_import(Node *scene);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		RefCounted::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_post_import),decltype(&T::_post_import)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_post_import), decltype(&T::_post_import)>) {
 			BIND_VIRTUAL_METHOD(T, _post_import);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

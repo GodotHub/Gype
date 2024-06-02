@@ -40,14 +40,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class TorusMesh : public PrimitiveMesh {
 	GDEXTENSION_CLASS(TorusMesh, PrimitiveMesh)
 
 public:
-
 	void set_inner_radius(double radius);
 	double get_inner_radius() const;
 	void set_outer_radius(double radius);
@@ -56,6 +55,7 @@ public:
 	int32_t get_rings() const;
 	void set_ring_segments(int32_t rings);
 	int32_t get_ring_segments() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -63,7 +63,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

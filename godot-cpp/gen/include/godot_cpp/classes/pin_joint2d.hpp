@@ -39,14 +39,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class PinJoint2D : public Joint2D {
 	GDEXTENSION_CLASS(PinJoint2D, Joint2D)
 
 public:
-
 	void set_softness(double softness);
 	double get_softness() const;
 	void set_angular_limit_lower(double angular_limit_lower);
@@ -59,6 +58,7 @@ public:
 	bool is_motor_enabled() const;
 	void set_angular_limit_enabled(bool enabled);
 	bool is_angular_limit_enabled() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -66,7 +66,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -40,14 +40,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class BackBufferCopy : public Node2D {
 	GDEXTENSION_CLASS(BackBufferCopy, Node2D)
 
 public:
-
 	enum CopyMode {
 		COPY_MODE_DISABLED = 0,
 		COPY_MODE_RECT = 1,
@@ -58,6 +57,7 @@ public:
 	Rect2 get_rect() const;
 	void set_copy_mode(BackBufferCopy::CopyMode copy_mode);
 	BackBufferCopy::CopyMode get_copy_mode() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -65,7 +65,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

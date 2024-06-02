@@ -40,7 +40,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class RenderSceneBuffersConfiguration;
@@ -49,8 +49,8 @@ class RenderSceneBuffers : public RefCounted {
 	GDEXTENSION_CLASS(RenderSceneBuffers, RefCounted)
 
 public:
-
 	void configure(const Ref<RenderSceneBuffersConfiguration> &config);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -58,7 +58,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -40,14 +40,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class AudioEffectDistortion : public AudioEffect {
 	GDEXTENSION_CLASS(AudioEffectDistortion, AudioEffect)
 
 public:
-
 	enum Mode {
 		MODE_CLIP = 0,
 		MODE_ATAN = 1,
@@ -66,6 +65,7 @@ public:
 	double get_drive() const;
 	void set_post_gain(double post_gain);
 	double get_post_gain() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -73,7 +73,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

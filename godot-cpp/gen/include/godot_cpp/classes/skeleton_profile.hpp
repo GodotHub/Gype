@@ -43,7 +43,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Texture2D;
@@ -52,7 +52,6 @@ class SkeletonProfile : public Resource {
 	GDEXTENSION_CLASS(SkeletonProfile, Resource)
 
 public:
-
 	enum TailDirection {
 		TAIL_DIRECTION_AVERAGE_CHILDREN = 0,
 		TAIL_DIRECTION_SPECIFIC_CHILD = 1,
@@ -86,6 +85,7 @@ public:
 	void set_handle_offset(int32_t bone_idx, const Vector2 &handle_offset);
 	StringName get_group(int32_t bone_idx) const;
 	void set_group(int32_t bone_idx, const StringName &group);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -93,7 +93,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

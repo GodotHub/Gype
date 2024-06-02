@@ -37,7 +37,7 @@
 
 #include <gdextension_interface.h>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Array;
@@ -83,7 +83,7 @@ class NodePath {
 	NodePath(const Variant *p_variant);
 
 public:
-	_FORCE_INLINE_ GDExtensionTypePtr _native_ptr() const { return const_cast<uint8_t (*)[NODE_PATH_SIZE]>(&opaque); }
+	_FORCE_INLINE_ GDExtensionTypePtr _native_ptr() const { return const_cast<uint8_t(*)[NODE_PATH_SIZE]>(&opaque); }
 	NodePath();
 	NodePath(const NodePath &from);
 	NodePath(const String &from);

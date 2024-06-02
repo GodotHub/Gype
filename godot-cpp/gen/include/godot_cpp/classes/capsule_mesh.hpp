@@ -40,14 +40,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class CapsuleMesh : public PrimitiveMesh {
 	GDEXTENSION_CLASS(CapsuleMesh, PrimitiveMesh)
 
 public:
-
 	void set_radius(double radius);
 	double get_radius() const;
 	void set_height(double height);
@@ -56,6 +55,7 @@ public:
 	int32_t get_radial_segments() const;
 	void set_rings(int32_t rings);
 	int32_t get_rings() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -63,7 +63,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

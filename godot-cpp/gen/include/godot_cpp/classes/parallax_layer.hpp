@@ -40,20 +40,20 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class ParallaxLayer : public Node2D {
 	GDEXTENSION_CLASS(ParallaxLayer, Node2D)
 
 public:
-
 	void set_motion_scale(const Vector2 &scale);
 	Vector2 get_motion_scale() const;
 	void set_motion_offset(const Vector2 &offset);
 	Vector2 get_motion_offset() const;
 	void set_mirroring(const Vector2 &mirror);
 	Vector2 get_mirroring() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -61,7 +61,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

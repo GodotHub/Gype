@@ -43,7 +43,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class RDShaderSPIRV;
@@ -52,12 +52,12 @@ class RDShaderFile : public Resource {
 	GDEXTENSION_CLASS(RDShaderFile, Resource)
 
 public:
-
 	void set_bytecode(const Ref<RDShaderSPIRV> &bytecode, const StringName &version = StringName());
 	Ref<RDShaderSPIRV> get_spirv(const StringName &version = StringName()) const;
 	TypedArray<StringName> get_version_list() const;
 	void set_base_error(const String &error);
 	String get_base_error() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -65,7 +65,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -40,14 +40,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class SphereMesh : public PrimitiveMesh {
 	GDEXTENSION_CLASS(SphereMesh, PrimitiveMesh)
 
 public:
-
 	void set_radius(double radius);
 	double get_radius() const;
 	void set_height(double height);
@@ -58,6 +57,7 @@ public:
 	int32_t get_rings() const;
 	void set_is_hemisphere(bool is_hemisphere);
 	bool get_is_hemisphere() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -65,7 +65,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

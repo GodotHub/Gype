@@ -42,7 +42,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Object;
@@ -52,7 +52,6 @@ class PhysicsDirectBodyState2DExtension : public PhysicsDirectBodyState2D {
 	GDEXTENSION_CLASS(PhysicsDirectBodyState2DExtension, PhysicsDirectBodyState2D)
 
 public:
-
 	virtual Vector2 _get_total_gravity() const;
 	virtual double _get_total_linear_damp() const;
 	virtual double _get_total_angular_damp() const;
@@ -97,146 +96,146 @@ public:
 	virtual double _get_step() const;
 	virtual void _integrate_forces();
 	virtual PhysicsDirectSpaceState2D *_get_space_state();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		PhysicsDirectBodyState2D::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_get_total_gravity),decltype(&T::_get_total_gravity)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_total_gravity), decltype(&T::_get_total_gravity)>) {
 			BIND_VIRTUAL_METHOD(T, _get_total_gravity);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_total_linear_damp),decltype(&T::_get_total_linear_damp)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_total_linear_damp), decltype(&T::_get_total_linear_damp)>) {
 			BIND_VIRTUAL_METHOD(T, _get_total_linear_damp);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_total_angular_damp),decltype(&T::_get_total_angular_damp)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_total_angular_damp), decltype(&T::_get_total_angular_damp)>) {
 			BIND_VIRTUAL_METHOD(T, _get_total_angular_damp);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_center_of_mass),decltype(&T::_get_center_of_mass)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_center_of_mass), decltype(&T::_get_center_of_mass)>) {
 			BIND_VIRTUAL_METHOD(T, _get_center_of_mass);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_center_of_mass_local),decltype(&T::_get_center_of_mass_local)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_center_of_mass_local), decltype(&T::_get_center_of_mass_local)>) {
 			BIND_VIRTUAL_METHOD(T, _get_center_of_mass_local);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_inverse_mass),decltype(&T::_get_inverse_mass)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_inverse_mass), decltype(&T::_get_inverse_mass)>) {
 			BIND_VIRTUAL_METHOD(T, _get_inverse_mass);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_inverse_inertia),decltype(&T::_get_inverse_inertia)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_inverse_inertia), decltype(&T::_get_inverse_inertia)>) {
 			BIND_VIRTUAL_METHOD(T, _get_inverse_inertia);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_set_linear_velocity),decltype(&T::_set_linear_velocity)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_set_linear_velocity), decltype(&T::_set_linear_velocity)>) {
 			BIND_VIRTUAL_METHOD(T, _set_linear_velocity);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_linear_velocity),decltype(&T::_get_linear_velocity)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_linear_velocity), decltype(&T::_get_linear_velocity)>) {
 			BIND_VIRTUAL_METHOD(T, _get_linear_velocity);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_set_angular_velocity),decltype(&T::_set_angular_velocity)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_set_angular_velocity), decltype(&T::_set_angular_velocity)>) {
 			BIND_VIRTUAL_METHOD(T, _set_angular_velocity);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_angular_velocity),decltype(&T::_get_angular_velocity)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_angular_velocity), decltype(&T::_get_angular_velocity)>) {
 			BIND_VIRTUAL_METHOD(T, _get_angular_velocity);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_set_transform),decltype(&T::_set_transform)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_set_transform), decltype(&T::_set_transform)>) {
 			BIND_VIRTUAL_METHOD(T, _set_transform);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_transform),decltype(&T::_get_transform)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_transform), decltype(&T::_get_transform)>) {
 			BIND_VIRTUAL_METHOD(T, _get_transform);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_velocity_at_local_position),decltype(&T::_get_velocity_at_local_position)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_velocity_at_local_position), decltype(&T::_get_velocity_at_local_position)>) {
 			BIND_VIRTUAL_METHOD(T, _get_velocity_at_local_position);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_apply_central_impulse),decltype(&T::_apply_central_impulse)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_apply_central_impulse), decltype(&T::_apply_central_impulse)>) {
 			BIND_VIRTUAL_METHOD(T, _apply_central_impulse);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_apply_impulse),decltype(&T::_apply_impulse)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_apply_impulse), decltype(&T::_apply_impulse)>) {
 			BIND_VIRTUAL_METHOD(T, _apply_impulse);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_apply_torque_impulse),decltype(&T::_apply_torque_impulse)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_apply_torque_impulse), decltype(&T::_apply_torque_impulse)>) {
 			BIND_VIRTUAL_METHOD(T, _apply_torque_impulse);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_apply_central_force),decltype(&T::_apply_central_force)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_apply_central_force), decltype(&T::_apply_central_force)>) {
 			BIND_VIRTUAL_METHOD(T, _apply_central_force);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_apply_force),decltype(&T::_apply_force)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_apply_force), decltype(&T::_apply_force)>) {
 			BIND_VIRTUAL_METHOD(T, _apply_force);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_apply_torque),decltype(&T::_apply_torque)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_apply_torque), decltype(&T::_apply_torque)>) {
 			BIND_VIRTUAL_METHOD(T, _apply_torque);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_add_constant_central_force),decltype(&T::_add_constant_central_force)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_add_constant_central_force), decltype(&T::_add_constant_central_force)>) {
 			BIND_VIRTUAL_METHOD(T, _add_constant_central_force);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_add_constant_force),decltype(&T::_add_constant_force)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_add_constant_force), decltype(&T::_add_constant_force)>) {
 			BIND_VIRTUAL_METHOD(T, _add_constant_force);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_add_constant_torque),decltype(&T::_add_constant_torque)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_add_constant_torque), decltype(&T::_add_constant_torque)>) {
 			BIND_VIRTUAL_METHOD(T, _add_constant_torque);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_set_constant_force),decltype(&T::_set_constant_force)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_set_constant_force), decltype(&T::_set_constant_force)>) {
 			BIND_VIRTUAL_METHOD(T, _set_constant_force);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_constant_force),decltype(&T::_get_constant_force)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_constant_force), decltype(&T::_get_constant_force)>) {
 			BIND_VIRTUAL_METHOD(T, _get_constant_force);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_set_constant_torque),decltype(&T::_set_constant_torque)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_set_constant_torque), decltype(&T::_set_constant_torque)>) {
 			BIND_VIRTUAL_METHOD(T, _set_constant_torque);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_constant_torque),decltype(&T::_get_constant_torque)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_constant_torque), decltype(&T::_get_constant_torque)>) {
 			BIND_VIRTUAL_METHOD(T, _get_constant_torque);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_set_sleep_state),decltype(&T::_set_sleep_state)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_set_sleep_state), decltype(&T::_set_sleep_state)>) {
 			BIND_VIRTUAL_METHOD(T, _set_sleep_state);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_is_sleeping),decltype(&T::_is_sleeping)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_is_sleeping), decltype(&T::_is_sleeping)>) {
 			BIND_VIRTUAL_METHOD(T, _is_sleeping);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_contact_count),decltype(&T::_get_contact_count)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_contact_count), decltype(&T::_get_contact_count)>) {
 			BIND_VIRTUAL_METHOD(T, _get_contact_count);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_contact_local_position),decltype(&T::_get_contact_local_position)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_contact_local_position), decltype(&T::_get_contact_local_position)>) {
 			BIND_VIRTUAL_METHOD(T, _get_contact_local_position);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_contact_local_normal),decltype(&T::_get_contact_local_normal)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_contact_local_normal), decltype(&T::_get_contact_local_normal)>) {
 			BIND_VIRTUAL_METHOD(T, _get_contact_local_normal);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_contact_local_shape),decltype(&T::_get_contact_local_shape)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_contact_local_shape), decltype(&T::_get_contact_local_shape)>) {
 			BIND_VIRTUAL_METHOD(T, _get_contact_local_shape);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_contact_local_velocity_at_position),decltype(&T::_get_contact_local_velocity_at_position)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_contact_local_velocity_at_position), decltype(&T::_get_contact_local_velocity_at_position)>) {
 			BIND_VIRTUAL_METHOD(T, _get_contact_local_velocity_at_position);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_contact_collider),decltype(&T::_get_contact_collider)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_contact_collider), decltype(&T::_get_contact_collider)>) {
 			BIND_VIRTUAL_METHOD(T, _get_contact_collider);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_contact_collider_position),decltype(&T::_get_contact_collider_position)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_contact_collider_position), decltype(&T::_get_contact_collider_position)>) {
 			BIND_VIRTUAL_METHOD(T, _get_contact_collider_position);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_contact_collider_id),decltype(&T::_get_contact_collider_id)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_contact_collider_id), decltype(&T::_get_contact_collider_id)>) {
 			BIND_VIRTUAL_METHOD(T, _get_contact_collider_id);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_contact_collider_object),decltype(&T::_get_contact_collider_object)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_contact_collider_object), decltype(&T::_get_contact_collider_object)>) {
 			BIND_VIRTUAL_METHOD(T, _get_contact_collider_object);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_contact_collider_shape),decltype(&T::_get_contact_collider_shape)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_contact_collider_shape), decltype(&T::_get_contact_collider_shape)>) {
 			BIND_VIRTUAL_METHOD(T, _get_contact_collider_shape);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_contact_collider_velocity_at_position),decltype(&T::_get_contact_collider_velocity_at_position)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_contact_collider_velocity_at_position), decltype(&T::_get_contact_collider_velocity_at_position)>) {
 			BIND_VIRTUAL_METHOD(T, _get_contact_collider_velocity_at_position);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_contact_impulse),decltype(&T::_get_contact_impulse)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_contact_impulse), decltype(&T::_get_contact_impulse)>) {
 			BIND_VIRTUAL_METHOD(T, _get_contact_impulse);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_step),decltype(&T::_get_step)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_step), decltype(&T::_get_step)>) {
 			BIND_VIRTUAL_METHOD(T, _get_step);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_integrate_forces),decltype(&T::_integrate_forces)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_integrate_forces), decltype(&T::_integrate_forces)>) {
 			BIND_VIRTUAL_METHOD(T, _integrate_forces);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_space_state),decltype(&T::_get_space_state)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_space_state), decltype(&T::_get_space_state)>) {
 			BIND_VIRTUAL_METHOD(T, _get_space_state);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

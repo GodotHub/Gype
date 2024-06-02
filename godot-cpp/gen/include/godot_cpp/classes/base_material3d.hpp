@@ -33,16 +33,17 @@
 #ifndef GODOT_CPP_BASE_MATERIAL3D_HPP
 #define GODOT_CPP_BASE_MATERIAL3D_HPP
 
-#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/variant/vector3.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Texture2D;
@@ -51,7 +52,6 @@ class BaseMaterial3D : public Material {
 	GDEXTENSION_CLASS(BaseMaterial3D, Material)
 
 public:
-
 	enum TextureParam {
 		TEXTURE_ALBEDO = 0,
 		TEXTURE_METALLIC = 1,
@@ -348,6 +348,7 @@ public:
 	double get_distance_fade_max_distance() const;
 	void set_distance_fade_min_distance(double distance);
 	double get_distance_fade_min_distance() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -355,7 +356,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

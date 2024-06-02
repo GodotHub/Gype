@@ -41,14 +41,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class NavigationLink3D : public Node3D {
 	GDEXTENSION_CLASS(NavigationLink3D, Node3D)
 
 public:
-
 	RID get_rid() const;
 	void set_enabled(bool enabled);
 	bool is_enabled() const;
@@ -70,6 +69,7 @@ public:
 	double get_enter_cost() const;
 	void set_travel_cost(double travel_cost);
 	double get_travel_cost() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -77,7 +77,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

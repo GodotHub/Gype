@@ -39,7 +39,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class PopupMenu;
@@ -48,7 +48,6 @@ class MenuButton : public Button {
 	GDEXTENSION_CLASS(MenuButton, Button)
 
 public:
-
 	PopupMenu *get_popup() const;
 	void show_popup();
 	void set_switch_on_hover(bool enable);
@@ -56,6 +55,7 @@ public:
 	void set_disable_shortcuts(bool disabled);
 	void set_item_count(int32_t count);
 	int32_t get_item_count() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -63,7 +63,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

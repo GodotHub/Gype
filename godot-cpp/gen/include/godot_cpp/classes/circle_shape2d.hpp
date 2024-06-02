@@ -40,16 +40,16 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class CircleShape2D : public Shape2D {
 	GDEXTENSION_CLASS(CircleShape2D, Shape2D)
 
 public:
-
 	void set_radius(double radius);
 	double get_radius() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -57,7 +57,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

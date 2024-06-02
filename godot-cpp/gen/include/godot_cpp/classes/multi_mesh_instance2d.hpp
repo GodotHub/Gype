@@ -40,7 +40,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class MultiMesh;
@@ -50,11 +50,11 @@ class MultiMeshInstance2D : public Node2D {
 	GDEXTENSION_CLASS(MultiMeshInstance2D, Node2D)
 
 public:
-
 	void set_multimesh(const Ref<MultiMesh> &multimesh);
 	Ref<MultiMesh> get_multimesh() const;
 	void set_texture(const Ref<Texture2D> &texture);
 	Ref<Texture2D> get_texture() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -62,7 +62,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

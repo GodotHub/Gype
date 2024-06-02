@@ -40,18 +40,18 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class AudioStreamGenerator : public AudioStream {
 	GDEXTENSION_CLASS(AudioStreamGenerator, AudioStream)
 
 public:
-
 	void set_mix_rate(double hz);
 	double get_mix_rate() const;
 	void set_buffer_length(double seconds);
 	double get_buffer_length() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -59,7 +59,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

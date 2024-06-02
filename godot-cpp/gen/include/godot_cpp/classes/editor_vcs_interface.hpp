@@ -33,23 +33,23 @@
 #ifndef GODOT_CPP_EDITOR_VCS_INTERFACE_HPP
 #define GODOT_CPP_EDITOR_VCS_INTERFACE_HPP
 
-#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/core/object.hpp>
+#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class EditorVCSInterface : public Object {
 	GDEXTENSION_CLASS(EditorVCSInterface, Object)
 
 public:
-
 	enum ChangeType {
 		CHANGE_TYPE_NEW = 0,
 		CHANGE_TYPE_MODIFIED = 1,
@@ -96,83 +96,83 @@ public:
 	virtual void _push(const String &remote, bool force);
 	virtual void _fetch(const String &remote);
 	virtual TypedArray<Dictionary> _get_line_diff(const String &file_path, const String &text);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_initialize),decltype(&T::_initialize)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_initialize), decltype(&T::_initialize)>) {
 			BIND_VIRTUAL_METHOD(T, _initialize);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_set_credentials),decltype(&T::_set_credentials)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_set_credentials), decltype(&T::_set_credentials)>) {
 			BIND_VIRTUAL_METHOD(T, _set_credentials);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_modified_files_data),decltype(&T::_get_modified_files_data)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_modified_files_data), decltype(&T::_get_modified_files_data)>) {
 			BIND_VIRTUAL_METHOD(T, _get_modified_files_data);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_stage_file),decltype(&T::_stage_file)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_stage_file), decltype(&T::_stage_file)>) {
 			BIND_VIRTUAL_METHOD(T, _stage_file);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_unstage_file),decltype(&T::_unstage_file)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_unstage_file), decltype(&T::_unstage_file)>) {
 			BIND_VIRTUAL_METHOD(T, _unstage_file);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_discard_file),decltype(&T::_discard_file)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_discard_file), decltype(&T::_discard_file)>) {
 			BIND_VIRTUAL_METHOD(T, _discard_file);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_commit),decltype(&T::_commit)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_commit), decltype(&T::_commit)>) {
 			BIND_VIRTUAL_METHOD(T, _commit);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_diff),decltype(&T::_get_diff)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_diff), decltype(&T::_get_diff)>) {
 			BIND_VIRTUAL_METHOD(T, _get_diff);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_shut_down),decltype(&T::_shut_down)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_shut_down), decltype(&T::_shut_down)>) {
 			BIND_VIRTUAL_METHOD(T, _shut_down);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_vcs_name),decltype(&T::_get_vcs_name)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_vcs_name), decltype(&T::_get_vcs_name)>) {
 			BIND_VIRTUAL_METHOD(T, _get_vcs_name);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_previous_commits),decltype(&T::_get_previous_commits)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_previous_commits), decltype(&T::_get_previous_commits)>) {
 			BIND_VIRTUAL_METHOD(T, _get_previous_commits);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_branch_list),decltype(&T::_get_branch_list)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_branch_list), decltype(&T::_get_branch_list)>) {
 			BIND_VIRTUAL_METHOD(T, _get_branch_list);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_remotes),decltype(&T::_get_remotes)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_remotes), decltype(&T::_get_remotes)>) {
 			BIND_VIRTUAL_METHOD(T, _get_remotes);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_create_branch),decltype(&T::_create_branch)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_create_branch), decltype(&T::_create_branch)>) {
 			BIND_VIRTUAL_METHOD(T, _create_branch);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_remove_branch),decltype(&T::_remove_branch)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_remove_branch), decltype(&T::_remove_branch)>) {
 			BIND_VIRTUAL_METHOD(T, _remove_branch);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_create_remote),decltype(&T::_create_remote)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_create_remote), decltype(&T::_create_remote)>) {
 			BIND_VIRTUAL_METHOD(T, _create_remote);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_remove_remote),decltype(&T::_remove_remote)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_remove_remote), decltype(&T::_remove_remote)>) {
 			BIND_VIRTUAL_METHOD(T, _remove_remote);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_current_branch_name),decltype(&T::_get_current_branch_name)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_current_branch_name), decltype(&T::_get_current_branch_name)>) {
 			BIND_VIRTUAL_METHOD(T, _get_current_branch_name);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_checkout_branch),decltype(&T::_checkout_branch)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_checkout_branch), decltype(&T::_checkout_branch)>) {
 			BIND_VIRTUAL_METHOD(T, _checkout_branch);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_pull),decltype(&T::_pull)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_pull), decltype(&T::_pull)>) {
 			BIND_VIRTUAL_METHOD(T, _pull);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_push),decltype(&T::_push)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_push), decltype(&T::_push)>) {
 			BIND_VIRTUAL_METHOD(T, _push);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_fetch),decltype(&T::_fetch)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_fetch), decltype(&T::_fetch)>) {
 			BIND_VIRTUAL_METHOD(T, _fetch);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_line_diff),decltype(&T::_get_line_diff)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_line_diff), decltype(&T::_get_line_diff)>) {
 			BIND_VIRTUAL_METHOD(T, _get_line_diff);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

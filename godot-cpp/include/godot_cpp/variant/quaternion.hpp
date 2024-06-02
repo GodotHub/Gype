@@ -55,6 +55,7 @@ struct _NO_DISCARD_ Quaternion {
 	}
 	_FORCE_INLINE_ real_t length_squared() const;
 	bool is_equal_approx(const Quaternion &p_quaternion) const;
+	bool is_finite() const;
 	real_t length() const;
 	void normalize();
 	Quaternion normalized() const;
@@ -68,6 +69,7 @@ struct _NO_DISCARD_ Quaternion {
 	Vector3 get_euler_xyz() const;
 	Vector3 get_euler_yxz() const;
 	Vector3 get_euler() const { return get_euler_yxz(); }
+	static Quaternion from_euler(const Vector3 &p_euler);
 
 	Quaternion slerp(const Quaternion &p_to, const real_t &p_weight) const;
 	Quaternion slerpni(const Quaternion &p_to, const real_t &p_weight) const;

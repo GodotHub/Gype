@@ -33,19 +33,20 @@
 #ifndef GODOT_CPP_TEXT_MESH_HPP
 #define GODOT_CPP_TEXT_MESH_HPP
 
-#include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/classes/primitive_mesh.hpp>
 #include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/classes/text_server.hpp>
+#include <godot_cpp/variant/array.hpp>
+#include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/vector2.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Font;
@@ -54,7 +55,6 @@ class TextMesh : public PrimitiveMesh {
 	GDEXTENSION_CLASS(TextMesh, PrimitiveMesh)
 
 public:
-
 	void set_horizontal_alignment(HorizontalAlignment alignment);
 	HorizontalAlignment get_horizontal_alignment() const;
 	void set_vertical_alignment(VerticalAlignment alignment);
@@ -91,6 +91,7 @@ public:
 	Array get_structured_text_bidi_override_options() const;
 	void set_uppercase(bool enable);
 	bool is_uppercase() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -98,7 +99,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

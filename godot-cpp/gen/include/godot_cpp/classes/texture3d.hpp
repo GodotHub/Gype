@@ -42,7 +42,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Resource;
@@ -51,7 +51,6 @@ class Texture3D : public Texture {
 	GDEXTENSION_CLASS(Texture3D, Texture)
 
 public:
-
 	Image::Format get_format() const;
 	int32_t get_width() const;
 	int32_t get_height() const;
@@ -65,32 +64,32 @@ public:
 	virtual int32_t _get_depth() const;
 	virtual bool _has_mipmaps() const;
 	virtual TypedArray<Image> _get_data() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Texture::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_get_format),decltype(&T::_get_format)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_format), decltype(&T::_get_format)>) {
 			BIND_VIRTUAL_METHOD(T, _get_format);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_width),decltype(&T::_get_width)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_width), decltype(&T::_get_width)>) {
 			BIND_VIRTUAL_METHOD(T, _get_width);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_height),decltype(&T::_get_height)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_height), decltype(&T::_get_height)>) {
 			BIND_VIRTUAL_METHOD(T, _get_height);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_depth),decltype(&T::_get_depth)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_depth), decltype(&T::_get_depth)>) {
 			BIND_VIRTUAL_METHOD(T, _get_depth);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_has_mipmaps),decltype(&T::_has_mipmaps)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_has_mipmaps), decltype(&T::_has_mipmaps)>) {
 			BIND_VIRTUAL_METHOD(T, _has_mipmaps);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_data),decltype(&T::_get_data)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_data), decltype(&T::_get_data)>) {
 			BIND_VIRTUAL_METHOD(T, _get_data);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -34,26 +34,27 @@
 #define GODOT_CPP_VISUAL_SHADER_NODE_VARYING_HPP
 
 #include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/classes/visual_shader.hpp>
 #include <godot_cpp/classes/visual_shader_node.hpp>
+#include <godot_cpp/variant/string.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class VisualShaderNodeVarying : public VisualShaderNode {
 	GDEXTENSION_CLASS(VisualShaderNodeVarying, VisualShaderNode)
 
 public:
-
 	void set_varying_name(const String &name);
 	String get_varying_name() const;
 	void set_varying_type(VisualShader::VaryingType type);
 	VisualShader::VaryingType get_varying_type() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -61,7 +62,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

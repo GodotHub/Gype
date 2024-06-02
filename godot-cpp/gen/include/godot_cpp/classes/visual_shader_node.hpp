@@ -33,23 +33,23 @@
 #ifndef GODOT_CPP_VISUAL_SHADER_NODE_HPP
 #define GODOT_CPP_VISUAL_SHADER_NODE_HPP
 
-#include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/variant.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class VisualShaderNode : public Resource {
 	GDEXTENSION_CLASS(VisualShaderNode, Resource)
 
 public:
-
 	enum PortType {
 		PORT_TYPE_SCALAR = 0,
 		PORT_TYPE_SCALAR_INT = 1,
@@ -72,6 +72,7 @@ public:
 	void clear_default_input_values();
 	void set_default_input_values(const Array &values);
 	Array get_default_input_values() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -79,7 +80,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

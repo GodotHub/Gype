@@ -33,16 +33,16 @@
 #ifndef GODOT_CPP_DISPLAY_SERVER_HPP
 #define GODOT_CPP_DISPLAY_SERVER_HPP
 
+#include <godot_cpp/classes/global_constants.hpp>
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/core/object.hpp>
 #include <godot_cpp/variant/callable.hpp>
 #include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/variant/dictionary.hpp>
-#include <godot_cpp/classes/global_constants.hpp>
-#include <godot_cpp/core/object.hpp>
 #include <godot_cpp/variant/packed_int32_array.hpp>
 #include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/rect2.hpp>
 #include <godot_cpp/variant/rect2i.hpp>
-#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/variant.hpp>
@@ -50,11 +50,12 @@
 #include <godot_cpp/variant/vector2i.hpp>
 #include <godot_cpp/variant/vector3i.hpp>
 
+
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Image;
@@ -66,7 +67,6 @@ class DisplayServer : public Object {
 	GDEXTENSION_CLASS(DisplayServer, Object)
 
 public:
-
 	enum Feature {
 		FEATURE_GLOBAL_MENU = 0,
 		FEATURE_SUBWINDOWS = 1,
@@ -378,6 +378,7 @@ public:
 	String tablet_get_driver_name(int32_t idx) const;
 	String tablet_get_current_driver() const;
 	void tablet_set_current_driver(const String &name);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -385,7 +386,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -41,20 +41,20 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class AudioEffectSpectrumAnalyzerInstance : public AudioEffectInstance {
 	GDEXTENSION_CLASS(AudioEffectSpectrumAnalyzerInstance, AudioEffectInstance)
 
 public:
-
 	enum MagnitudeMode {
 		MAGNITUDE_AVERAGE = 0,
 		MAGNITUDE_MAX = 1,
 	};
 
 	Vector2 get_magnitude_for_frequency_range(double from_hz, double to_hz, AudioEffectSpectrumAnalyzerInstance::MagnitudeMode mode = (AudioEffectSpectrumAnalyzerInstance::MagnitudeMode)1) const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -62,7 +62,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

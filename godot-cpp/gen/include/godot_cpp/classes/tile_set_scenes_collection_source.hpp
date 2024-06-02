@@ -40,7 +40,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class PackedScene;
@@ -49,7 +49,6 @@ class TileSetScenesCollectionSource : public TileSetSource {
 	GDEXTENSION_CLASS(TileSetScenesCollectionSource, TileSetSource)
 
 public:
-
 	int32_t get_scene_tiles_count();
 	int32_t get_scene_tile_id(int32_t index);
 	bool has_scene_tile_id(int32_t id);
@@ -61,6 +60,7 @@ public:
 	bool get_scene_tile_display_placeholder(int32_t id) const;
 	void remove_scene_tile(int32_t id);
 	int32_t get_next_scene_tile_id() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -68,7 +68,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

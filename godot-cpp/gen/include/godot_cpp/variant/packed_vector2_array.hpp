@@ -35,12 +35,13 @@
 
 #include <godot_cpp/core/defs.hpp>
 
-#include <godot_cpp/variant/vector2.hpp>
-#include <godot_cpp/core/error_macros.hpp>
-#include <initializer_list>
 #include <gdextension_interface.h>
+#include <godot_cpp/core/error_macros.hpp>
+#include <godot_cpp/variant/vector2.hpp>
+#include <initializer_list>
 
-#include <godot_cpp/templates/vararg.h>
+
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Array;
@@ -102,7 +103,7 @@ class PackedVector2Array {
 	PackedVector2Array(const Variant *p_variant);
 
 public:
-	_FORCE_INLINE_ GDExtensionTypePtr _native_ptr() const { return const_cast<uint8_t (*)[PACKED_VECTOR2_ARRAY_SIZE]>(&opaque); }
+	_FORCE_INLINE_ GDExtensionTypePtr _native_ptr() const { return const_cast<uint8_t(*)[PACKED_VECTOR2_ARRAY_SIZE]>(&opaque); }
 	PackedVector2Array();
 	PackedVector2Array(const PackedVector2Array &from);
 	PackedVector2Array(const Array &from);
@@ -143,7 +144,7 @@ public:
 	const Vector2 *ptr() const;
 	Vector2 *ptrw();
 
-    struct Iterator {
+	struct Iterator {
 		_FORCE_INLINE_ Vector2 &operator*() const {
 			return *elem_ptr;
 		}
@@ -207,8 +208,7 @@ public:
 		return ConstIterator(ptr() + size());
 	}
 
-
-    _FORCE_INLINE_ PackedVector2Array(std::initializer_list<Vector2> p_init) {
+	_FORCE_INLINE_ PackedVector2Array(std::initializer_list<Vector2> p_init) {
 		ERR_FAIL_COND(resize(p_init.size()) != 0);
 
 		size_t i = 0;
@@ -216,7 +216,6 @@ public:
 			set(i++, element);
 		}
 	}
-
 };
 
 } // namespace godot

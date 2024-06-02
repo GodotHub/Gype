@@ -34,22 +34,22 @@
 #define GODOT_CPP_CANVAS_TEXTURE_HPP
 
 #include <godot_cpp/classes/canvas_item.hpp>
-#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/variant/color.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class CanvasTexture : public Texture2D {
 	GDEXTENSION_CLASS(CanvasTexture, Texture2D)
 
 public:
-
 	void set_diffuse_texture(const Ref<Texture2D> &texture);
 	Ref<Texture2D> get_diffuse_texture() const;
 	void set_normal_texture(const Ref<Texture2D> &texture);
@@ -64,6 +64,7 @@ public:
 	CanvasItem::TextureFilter get_texture_filter() const;
 	void set_texture_repeat(CanvasItem::TextureRepeat repeat);
 	CanvasItem::TextureRepeat get_texture_repeat() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -71,7 +72,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

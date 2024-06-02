@@ -33,16 +33,17 @@
 #ifndef GODOT_CPP_GEOMETRY_INSTANCE3D_HPP
 #define GODOT_CPP_GEOMETRY_INSTANCE3D_HPP
 
-#include <godot_cpp/variant/aabb.hpp>
 #include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/variant/variant.hpp>
 #include <godot_cpp/classes/visual_instance3d.hpp>
+#include <godot_cpp/variant/aabb.hpp>
+#include <godot_cpp/variant/variant.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Material;
@@ -52,7 +53,6 @@ class GeometryInstance3D : public VisualInstance3D {
 	GDEXTENSION_CLASS(GeometryInstance3D, VisualInstance3D)
 
 public:
-
 	enum ShadowCastingSetting {
 		SHADOW_CASTING_SETTING_OFF = 0,
 		SHADOW_CASTING_SETTING_ON = 1,
@@ -112,6 +112,7 @@ public:
 	bool is_ignoring_occlusion_culling();
 	void set_custom_aabb(const AABB &aabb);
 	AABB get_custom_aabb() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -119,7 +120,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

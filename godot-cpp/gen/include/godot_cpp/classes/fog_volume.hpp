@@ -35,14 +35,15 @@
 
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/rendering_server.hpp>
-#include <godot_cpp/variant/vector3.hpp>
 #include <godot_cpp/classes/visual_instance3d.hpp>
+#include <godot_cpp/variant/vector3.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Material;
@@ -51,13 +52,13 @@ class FogVolume : public VisualInstance3D {
 	GDEXTENSION_CLASS(FogVolume, VisualInstance3D)
 
 public:
-
 	void set_size(const Vector3 &size);
 	Vector3 get_size() const;
 	void set_shape(RenderingServer::FogVolumeShape shape);
 	RenderingServer::FogVolumeShape get_shape() const;
 	void set_material(const Ref<Material> &material);
 	Ref<Material> get_material() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -65,7 +66,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

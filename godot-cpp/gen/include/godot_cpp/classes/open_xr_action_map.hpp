@@ -33,15 +33,16 @@
 #ifndef GODOT_CPP_OPEN_XR_ACTION_MAP_HPP
 #define GODOT_CPP_OPEN_XR_ACTION_MAP_HPP
 
-#include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/variant/array.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class OpenXRActionSet;
@@ -52,7 +53,6 @@ class OpenXRActionMap : public Resource {
 	GDEXTENSION_CLASS(OpenXRActionMap, Resource)
 
 public:
-
 	void set_action_sets(const Array &action_sets);
 	Array get_action_sets() const;
 	int32_t get_action_set_count() const;
@@ -68,6 +68,7 @@ public:
 	void add_interaction_profile(const Ref<OpenXRInteractionProfile> &interaction_profile);
 	void remove_interaction_profile(const Ref<OpenXRInteractionProfile> &interaction_profile);
 	void create_default_action_sets();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -75,7 +76,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

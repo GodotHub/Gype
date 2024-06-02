@@ -33,19 +33,20 @@
 #ifndef GODOT_CPP_TILE_SET_HPP
 #define GODOT_CPP_TILE_SET_HPP
 
-#include <godot_cpp/variant/array.hpp>
-#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/variant/array.hpp>
+#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/variant.hpp>
 #include <godot_cpp/variant/vector2i.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class PhysicsMaterial;
@@ -56,7 +57,6 @@ class TileSet : public Resource {
 	GDEXTENSION_CLASS(TileSet, Resource)
 
 public:
-
 	enum TileShape {
 		TILE_SHAPE_SQUARE = 0,
 		TILE_SHAPE_ISOMETRIC = 1,
@@ -189,6 +189,7 @@ public:
 	Ref<TileMapPattern> get_pattern(int32_t index = -1);
 	void remove_pattern(int32_t index);
 	int32_t get_patterns_count();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -196,7 +197,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

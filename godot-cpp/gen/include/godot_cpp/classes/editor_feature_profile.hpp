@@ -42,7 +42,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class StringName;
@@ -51,7 +51,6 @@ class EditorFeatureProfile : public RefCounted {
 	GDEXTENSION_CLASS(EditorFeatureProfile, RefCounted)
 
 public:
-
 	enum Feature {
 		FEATURE_3D = 0,
 		FEATURE_SCRIPT = 1,
@@ -75,6 +74,7 @@ public:
 	String get_feature_name(EditorFeatureProfile::Feature feature);
 	Error save_to_file(const String &path);
 	Error load_from_file(const String &path);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -82,7 +82,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

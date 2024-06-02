@@ -40,7 +40,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Resource;
@@ -50,13 +50,13 @@ class CollisionShape3D : public Node3D {
 	GDEXTENSION_CLASS(CollisionShape3D, Node3D)
 
 public:
-
 	void resource_changed(const Ref<Resource> &resource);
 	void set_shape(const Ref<Shape3D> &shape);
 	Ref<Shape3D> get_shape() const;
 	void set_disabled(bool enable);
 	bool is_disabled() const;
 	void make_convex_from_siblings();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -64,7 +64,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

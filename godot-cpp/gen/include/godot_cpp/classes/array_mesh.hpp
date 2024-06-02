@@ -33,21 +33,22 @@
 #ifndef GODOT_CPP_ARRAY_MESH_HPP
 #define GODOT_CPP_ARRAY_MESH_HPP
 
-#include <godot_cpp/variant/aabb.hpp>
-#include <godot_cpp/variant/array.hpp>
-#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/variant/aabb.hpp>
+#include <godot_cpp/variant/array.hpp>
+#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class PackedByteArray;
@@ -57,7 +58,6 @@ class ArrayMesh : public Mesh {
 	GDEXTENSION_CLASS(ArrayMesh, Mesh)
 
 public:
-
 	void add_blend_shape(const StringName &name);
 	int32_t get_blend_shape_count() const;
 	StringName get_blend_shape_name(int32_t index) const;
@@ -83,6 +83,7 @@ public:
 	AABB get_custom_aabb() const;
 	void set_shadow_mesh(const Ref<ArrayMesh> &mesh);
 	Ref<ArrayMesh> get_shadow_mesh() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -90,7 +91,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

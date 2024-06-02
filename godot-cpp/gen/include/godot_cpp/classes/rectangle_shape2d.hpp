@@ -41,16 +41,16 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class RectangleShape2D : public Shape2D {
 	GDEXTENSION_CLASS(RectangleShape2D, Shape2D)
 
 public:
-
 	void set_size(const Vector2 &size);
 	Vector2 get_size() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -58,7 +58,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

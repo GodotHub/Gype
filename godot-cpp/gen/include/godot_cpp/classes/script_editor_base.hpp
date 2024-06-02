@@ -40,7 +40,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Control;
@@ -50,9 +50,9 @@ class ScriptEditorBase : public VBoxContainer {
 	GDEXTENSION_CLASS(ScriptEditorBase, VBoxContainer)
 
 public:
-
 	Control *get_base_editor() const;
 	void add_syntax_highlighter(const Ref<EditorSyntaxHighlighter> &highlighter);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -60,7 +60,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

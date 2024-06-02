@@ -42,7 +42,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Node2D;
@@ -53,7 +53,6 @@ class RigidBody2D : public PhysicsBody2D {
 	GDEXTENSION_CLASS(RigidBody2D, PhysicsBody2D)
 
 public:
-
 	enum FreezeMode {
 		FREEZE_MODE_STATIC = 0,
 		FREEZE_MODE_KINEMATIC = 1,
@@ -134,17 +133,17 @@ public:
 	RigidBody2D::FreezeMode get_freeze_mode() const;
 	TypedArray<Node2D> get_colliding_bodies() const;
 	virtual void _integrate_forces(PhysicsDirectBodyState2D *state);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		PhysicsBody2D::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_integrate_forces),decltype(&T::_integrate_forces)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_integrate_forces), decltype(&T::_integrate_forces)>) {
 			BIND_VIRTUAL_METHOD(T, _integrate_forces);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

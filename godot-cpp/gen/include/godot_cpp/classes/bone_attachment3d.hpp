@@ -41,14 +41,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class BoneAttachment3D : public Node3D {
 	GDEXTENSION_CLASS(BoneAttachment3D, Node3D)
 
 public:
-
 	void set_bone_name(const String &bone_name);
 	String get_bone_name() const;
 	void set_bone_idx(int32_t bone_idx);
@@ -60,6 +59,7 @@ public:
 	bool get_use_external_skeleton() const;
 	void set_external_skeleton(const NodePath &external_skeleton);
 	NodePath get_external_skeleton() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -67,7 +67,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

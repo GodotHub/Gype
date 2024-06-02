@@ -40,7 +40,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Curve;
@@ -49,7 +49,6 @@ class AnimationNodeOneShot : public AnimationNodeSync {
 	GDEXTENSION_CLASS(AnimationNodeOneShot, AnimationNodeSync)
 
 public:
-
 	enum OneShotRequest {
 		ONE_SHOT_REQUEST_NONE = 0,
 		ONE_SHOT_REQUEST_FIRE = 1,
@@ -78,6 +77,7 @@ public:
 	double get_autorestart_random_delay() const;
 	void set_mix_mode(AnimationNodeOneShot::MixMode mode);
 	AnimationNodeOneShot::MixMode get_mix_mode() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -85,7 +85,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

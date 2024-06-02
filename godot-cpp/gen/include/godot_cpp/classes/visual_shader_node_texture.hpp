@@ -40,7 +40,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Texture2D;
@@ -49,7 +49,6 @@ class VisualShaderNodeTexture : public VisualShaderNode {
 	GDEXTENSION_CLASS(VisualShaderNodeTexture, VisualShaderNode)
 
 public:
-
 	enum Source {
 		SOURCE_TEXTURE = 0,
 		SOURCE_SCREEN = 1,
@@ -75,6 +74,7 @@ public:
 	Ref<Texture2D> get_texture() const;
 	void set_texture_type(VisualShaderNodeTexture::TextureType value);
 	VisualShaderNodeTexture::TextureType get_texture_type() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -82,7 +82,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

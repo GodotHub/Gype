@@ -33,16 +33,17 @@
 #ifndef GODOT_CPP_PHYSICS_TEST_MOTION_RESULT2D_HPP
 #define GODOT_CPP_PHYSICS_TEST_MOTION_RESULT2D_HPP
 
-#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/variant/vector2.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Object;
@@ -51,7 +52,6 @@ class PhysicsTestMotionResult2D : public RefCounted {
 	GDEXTENSION_CLASS(PhysicsTestMotionResult2D, RefCounted)
 
 public:
-
 	Vector2 get_travel() const;
 	Vector2 get_remainder() const;
 	Vector2 get_collision_point() const;
@@ -65,6 +65,7 @@ public:
 	double get_collision_depth() const;
 	double get_collision_safe_fraction() const;
 	double get_collision_unsafe_fraction() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -72,7 +73,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -34,17 +34,18 @@
 #define GODOT_CPP_TAB_BAR_HPP
 
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/variant/rect2.hpp>
 #include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/variant/rect2.hpp>
+#include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/variant.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 struct Vector2;
@@ -53,7 +54,6 @@ class TabBar : public Control {
 	GDEXTENSION_CLASS(TabBar, Control)
 
 public:
-
 	enum AlignmentMode {
 		ALIGNMENT_LEFT = 0,
 		ALIGNMENT_CENTER = 1,
@@ -120,6 +120,7 @@ public:
 	void set_select_with_rmb(bool enabled);
 	bool get_select_with_rmb() const;
 	void clear_tabs();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -127,7 +128,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -33,22 +33,22 @@
 #ifndef GODOT_CPP_SKELETON_MODIFICATION2D_TWO_BONE_IK_HPP
 #define GODOT_CPP_SKELETON_MODIFICATION2D_TWO_BONE_IK_HPP
 
-#include <godot_cpp/variant/node_path.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/skeleton_modification2d.hpp>
+#include <godot_cpp/variant/node_path.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class SkeletonModification2DTwoBoneIK : public SkeletonModification2D {
 	GDEXTENSION_CLASS(SkeletonModification2DTwoBoneIK, SkeletonModification2D)
 
 public:
-
 	void set_target_node(const NodePath &target_nodepath);
 	NodePath get_target_node() const;
 	void set_target_minimum_distance(double minimum_distance);
@@ -65,6 +65,7 @@ public:
 	NodePath get_joint_two_bone2d_node() const;
 	void set_joint_two_bone_idx(int32_t bone_idx);
 	int32_t get_joint_two_bone_idx() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -72,7 +73,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

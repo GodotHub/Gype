@@ -34,11 +34,11 @@
 #define GODOT_CPP_CONTROL_HPP
 
 #include <godot_cpp/classes/canvas_item.hpp>
-#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/variant/node_path.hpp>
 #include <godot_cpp/variant/rect2.hpp>
-#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
@@ -46,11 +46,12 @@
 #include <godot_cpp/variant/vector2.hpp>
 #include <godot_cpp/variant/vector3i.hpp>
 
+
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Array;
@@ -67,7 +68,6 @@ class Control : public CanvasItem {
 	GDEXTENSION_CLASS(Control, CanvasItem)
 
 public:
-
 	enum FocusMode {
 		FOCUS_NONE = 0,
 		FOCUS_CLICK = 1,
@@ -309,41 +309,41 @@ public:
 	virtual void _drop_data(const Vector2 &at_position, const Variant &data);
 	virtual Object *_make_custom_tooltip(const String &for_text) const;
 	virtual void _gui_input(const Ref<InputEvent> &event);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		CanvasItem::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_has_point),decltype(&T::_has_point)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_has_point), decltype(&T::_has_point)>) {
 			BIND_VIRTUAL_METHOD(T, _has_point);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_structured_text_parser),decltype(&T::_structured_text_parser)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_structured_text_parser), decltype(&T::_structured_text_parser)>) {
 			BIND_VIRTUAL_METHOD(T, _structured_text_parser);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_minimum_size),decltype(&T::_get_minimum_size)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_minimum_size), decltype(&T::_get_minimum_size)>) {
 			BIND_VIRTUAL_METHOD(T, _get_minimum_size);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_tooltip),decltype(&T::_get_tooltip)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_tooltip), decltype(&T::_get_tooltip)>) {
 			BIND_VIRTUAL_METHOD(T, _get_tooltip);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_drag_data),decltype(&T::_get_drag_data)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_drag_data), decltype(&T::_get_drag_data)>) {
 			BIND_VIRTUAL_METHOD(T, _get_drag_data);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_can_drop_data),decltype(&T::_can_drop_data)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_can_drop_data), decltype(&T::_can_drop_data)>) {
 			BIND_VIRTUAL_METHOD(T, _can_drop_data);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_drop_data),decltype(&T::_drop_data)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_drop_data), decltype(&T::_drop_data)>) {
 			BIND_VIRTUAL_METHOD(T, _drop_data);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_make_custom_tooltip),decltype(&T::_make_custom_tooltip)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_make_custom_tooltip), decltype(&T::_make_custom_tooltip)>) {
 			BIND_VIRTUAL_METHOD(T, _make_custom_tooltip);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_gui_input),decltype(&T::_gui_input)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_gui_input), decltype(&T::_gui_input)>) {
 			BIND_VIRTUAL_METHOD(T, _gui_input);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

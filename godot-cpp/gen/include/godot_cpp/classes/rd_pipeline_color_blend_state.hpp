@@ -33,17 +33,18 @@
 #ifndef GODOT_CPP_RD_PIPELINE_COLOR_BLEND_STATE_HPP
 #define GODOT_CPP_RD_PIPELINE_COLOR_BLEND_STATE_HPP
 
-#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/rendering_device.hpp>
+#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class RDPipelineColorBlendStateAttachment;
@@ -52,7 +53,6 @@ class RDPipelineColorBlendState : public RefCounted {
 	GDEXTENSION_CLASS(RDPipelineColorBlendState, RefCounted)
 
 public:
-
 	void set_enable_logic_op(bool p_member);
 	bool get_enable_logic_op() const;
 	void set_logic_op(RenderingDevice::LogicOperation p_member);
@@ -61,6 +61,7 @@ public:
 	Color get_blend_constant() const;
 	void set_attachments(const TypedArray<RDPipelineColorBlendStateAttachment> &attachments);
 	TypedArray<RDPipelineColorBlendStateAttachment> get_attachments() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -68,7 +69,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

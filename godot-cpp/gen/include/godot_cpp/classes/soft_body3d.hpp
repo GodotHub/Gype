@@ -43,7 +43,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Node;
@@ -53,7 +53,6 @@ class SoftBody3D : public MeshInstance3D {
 	GDEXTENSION_CLASS(SoftBody3D, MeshInstance3D)
 
 public:
-
 	enum DisableMode {
 		DISABLE_MODE_REMOVE = 0,
 		DISABLE_MODE_KEEP_ACTIVE = 1,
@@ -92,6 +91,7 @@ public:
 	bool is_point_pinned(int32_t point_index) const;
 	void set_ray_pickable(bool ray_pickable);
 	bool is_ray_pickable() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -99,7 +99,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

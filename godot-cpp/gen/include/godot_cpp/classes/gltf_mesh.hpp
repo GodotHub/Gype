@@ -33,16 +33,17 @@
 #ifndef GODOT_CPP_GLTF_MESH_HPP
 #define GODOT_CPP_GLTF_MESH_HPP
 
-#include <godot_cpp/variant/packed_float32_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/variant/packed_float32_array.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class ImporterMesh;
@@ -52,13 +53,13 @@ class GLTFMesh : public Resource {
 	GDEXTENSION_CLASS(GLTFMesh, Resource)
 
 public:
-
 	Ref<ImporterMesh> get_mesh();
 	void set_mesh(const Ref<ImporterMesh> &mesh);
 	PackedFloat32Array get_blend_weights();
 	void set_blend_weights(const PackedFloat32Array &blend_weights);
 	TypedArray<Material> get_instance_materials();
 	void set_instance_materials(const TypedArray<Material> &instance_materials);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -66,7 +67,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

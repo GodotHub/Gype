@@ -450,7 +450,7 @@ Vector2 Projection::get_viewport_half_extents() const {
 	top_plane.normalize();
 
 	Vector3 res;
-	near_plane.intersect_3(right_plane, top_plane, &res);
+	near_plane._intersect_3(right_plane, top_plane, &res);
 
 	return Vector2(res.x, res.y);
 }
@@ -478,7 +478,7 @@ Vector2 Projection::get_far_plane_half_extents() const {
 	top_plane.normalize();
 
 	Vector3 res;
-	far_plane.intersect_3(right_plane, top_plane, &res);
+	far_plane._intersect_3(right_plane, top_plane, &res);
 
 	return Vector2(res.x, res.y);
 }
@@ -501,7 +501,7 @@ bool Projection::get_endpoints(const Transform3D &p_transform, Vector3 *p_8point
 		Plane a = planes[intersections[i][0]];
 		Plane b = planes[intersections[i][1]];
 		Plane c = planes[intersections[i][2]];
-		bool res = a.intersect_3(b, c, &point);
+		bool res = a._intersect_3(b, c, &point);
 		ERR_FAIL_COND_V(!res, false);
 		p_8points[i] = p_transform.xform(point);
 	}

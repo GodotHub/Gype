@@ -33,14 +33,15 @@
 #ifndef GODOT_CPP_THEME_DB_HPP
 #define GODOT_CPP_THEME_DB_HPP
 
-#include <godot_cpp/core/object.hpp>
 #include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/core/object.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Font;
@@ -52,7 +53,6 @@ class ThemeDB : public Object {
 	GDEXTENSION_CLASS(ThemeDB, Object)
 
 public:
-
 	static ThemeDB *get_singleton();
 
 	Ref<Theme> get_default_theme();
@@ -67,6 +67,7 @@ public:
 	Ref<Texture2D> get_fallback_icon();
 	void set_fallback_stylebox(const Ref<StyleBox> &stylebox);
 	Ref<StyleBox> get_fallback_stylebox();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -74,7 +75,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

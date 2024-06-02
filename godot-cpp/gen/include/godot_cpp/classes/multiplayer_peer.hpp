@@ -40,14 +40,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class MultiplayerPeer : public PacketPeer {
 	GDEXTENSION_CLASS(MultiplayerPeer, PacketPeer)
 
 public:
-
 	enum ConnectionStatus {
 		CONNECTION_DISCONNECTED = 0,
 		CONNECTION_CONNECTING = 1,
@@ -80,6 +79,7 @@ public:
 	void set_refuse_new_connections(bool enable);
 	bool is_refusing_new_connections() const;
 	bool is_server_relay_supported() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -87,7 +87,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

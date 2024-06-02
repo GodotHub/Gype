@@ -33,16 +33,17 @@
 #ifndef GODOT_CPP_KINEMATIC_COLLISION2D_HPP
 #define GODOT_CPP_KINEMATIC_COLLISION2D_HPP
 
-#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/variant/vector2.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Object;
@@ -51,7 +52,6 @@ class KinematicCollision2D : public RefCounted {
 	GDEXTENSION_CLASS(KinematicCollision2D, RefCounted)
 
 public:
-
 	Vector2 get_position() const;
 	Vector2 get_normal() const;
 	Vector2 get_travel() const;
@@ -65,6 +65,7 @@ public:
 	Object *get_collider_shape() const;
 	int32_t get_collider_shape_index() const;
 	Vector2 get_collider_velocity() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -72,7 +73,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

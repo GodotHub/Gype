@@ -33,16 +33,17 @@
 #ifndef GODOT_CPP_OPEN_XR_ACTION_SET_HPP
 #define GODOT_CPP_OPEN_XR_ACTION_SET_HPP
 
-#include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/string.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class OpenXRAction;
@@ -51,7 +52,6 @@ class OpenXRActionSet : public Resource {
 	GDEXTENSION_CLASS(OpenXRActionSet, Resource)
 
 public:
-
 	void set_localized_name(const String &localized_name);
 	String get_localized_name() const;
 	void set_priority(int32_t priority);
@@ -61,6 +61,7 @@ public:
 	Array get_actions() const;
 	void add_action(const Ref<OpenXRAction> &action);
 	void remove_action(const Ref<OpenXRAction> &action);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -68,7 +69,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

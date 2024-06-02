@@ -33,17 +33,18 @@
 #ifndef GODOT_CPP_XR_SERVER_HPP
 #define GODOT_CPP_XR_SERVER_HPP
 
-#include <godot_cpp/variant/dictionary.hpp>
-#include <godot_cpp/core/object.hpp>
 #include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/core/object.hpp>
+#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/variant/transform3d.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class String;
@@ -55,7 +56,6 @@ class XRServer : public Object {
 	GDEXTENSION_CLASS(XRServer, Object)
 
 public:
-
 	enum TrackerType {
 		TRACKER_HEAD = 1,
 		TRACKER_CONTROLLER = 2,
@@ -93,6 +93,7 @@ public:
 	Ref<XRPositionalTracker> get_tracker(const StringName &tracker_name) const;
 	Ref<XRInterface> get_primary_interface() const;
 	void set_primary_interface(const Ref<XRInterface> &interface);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -100,7 +101,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

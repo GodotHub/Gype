@@ -41,14 +41,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class InputEventScreenDrag : public InputEventFromWindow {
 	GDEXTENSION_CLASS(InputEventScreenDrag, InputEventFromWindow)
 
 public:
-
 	void set_index(int32_t index);
 	int32_t get_index() const;
 	void set_tilt(const Vector2 &tilt);
@@ -63,6 +62,7 @@ public:
 	Vector2 get_relative() const;
 	void set_velocity(const Vector2 &velocity);
 	Vector2 get_velocity() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -70,7 +70,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

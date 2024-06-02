@@ -33,15 +33,16 @@
 #ifndef GODOT_CPP_OPEN_XRIP_BINDING_HPP
 #define GODOT_CPP_OPEN_XRIP_BINDING_HPP
 
-#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/variant/packed_string_array.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class OpenXRAction;
@@ -51,7 +52,6 @@ class OpenXRIPBinding : public Resource {
 	GDEXTENSION_CLASS(OpenXRIPBinding, Resource)
 
 public:
-
 	void set_action(const Ref<OpenXRAction> &action);
 	Ref<OpenXRAction> get_action() const;
 	int32_t get_path_count() const;
@@ -60,6 +60,7 @@ public:
 	bool has_path(const String &path) const;
 	void add_path(const String &path);
 	void remove_path(const String &path);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -67,7 +68,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -41,7 +41,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Node;
@@ -50,7 +50,6 @@ class Camera2D : public Node2D {
 	GDEXTENSION_CLASS(Camera2D, Node2D)
 
 public:
-
 	enum AnchorMode {
 		ANCHOR_MODE_FIXED_TOP_LEFT = 0,
 		ANCHOR_MODE_DRAG_CENTER = 1,
@@ -110,6 +109,7 @@ public:
 	bool is_limit_drawing_enabled() const;
 	void set_margin_drawing_enabled(bool margin_drawing_enabled);
 	bool is_margin_drawing_enabled() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -117,7 +117,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

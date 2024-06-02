@@ -33,24 +33,25 @@
 #ifndef GODOT_CPP_RENDERING_DEVICE_HPP
 #define GODOT_CPP_RENDERING_DEVICE_HPP
 
-#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
+#include <godot_cpp/classes/rd_pipeline_specialization_constant.hpp>
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/core/object.hpp>
+#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/variant/packed_byte_array.hpp>
 #include <godot_cpp/variant/packed_color_array.hpp>
 #include <godot_cpp/variant/packed_int64_array.hpp>
-#include <godot_cpp/classes/rd_pipeline_specialization_constant.hpp>
-#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/variant/rect2.hpp>
-#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class RDAttachmentFormat;
@@ -73,7 +74,6 @@ class RenderingDevice : public Object {
 	GDEXTENSION_CLASS(RenderingDevice, Object)
 
 public:
-
 	enum DeviceType {
 		DEVICE_TYPE_OTHER = 0,
 		DEVICE_TYPE_INTEGRATED_GPU = 1,
@@ -734,6 +734,7 @@ public:
 	String get_device_pipeline_cache_uuid() const;
 	uint64_t get_memory_usage(RenderingDevice::MemoryType type) const;
 	uint64_t get_driver_resource(RenderingDevice::DriverResource resource, const RID &rid, uint64_t index);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -741,7 +742,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

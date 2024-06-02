@@ -34,22 +34,22 @@
 #define GODOT_CPP_AES_CONTEXT_HPP
 
 #include <godot_cpp/classes/global_constants.hpp>
-#include <godot_cpp/variant/packed_byte_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/variant/packed_byte_array.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class AESContext : public RefCounted {
 	GDEXTENSION_CLASS(AESContext, RefCounted)
 
 public:
-
 	enum Mode {
 		MODE_ECB_ENCRYPT = 0,
 		MODE_ECB_DECRYPT = 1,
@@ -62,6 +62,7 @@ public:
 	PackedByteArray update(const PackedByteArray &src);
 	PackedByteArray get_iv_state();
 	void finish();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -69,7 +70,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

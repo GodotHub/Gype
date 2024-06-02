@@ -42,7 +42,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class AnimationNode;
@@ -52,7 +52,6 @@ class AnimationNodeStateMachine : public AnimationRootNode {
 	GDEXTENSION_CLASS(AnimationNodeStateMachine, AnimationRootNode)
 
 public:
-
 	enum StateMachineType {
 		STATE_MACHINE_TYPE_ROOT = 0,
 		STATE_MACHINE_TYPE_NESTED = 1,
@@ -84,6 +83,7 @@ public:
 	bool is_allow_transition_to_self() const;
 	void set_reset_ends(bool enable);
 	bool are_ends_reset() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -91,7 +91,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

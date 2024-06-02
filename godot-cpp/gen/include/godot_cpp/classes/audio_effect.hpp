@@ -40,7 +40,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class AudioEffectInstance;
@@ -49,19 +49,18 @@ class AudioEffect : public Resource {
 	GDEXTENSION_CLASS(AudioEffect, Resource)
 
 public:
-
 	virtual Ref<AudioEffectInstance> _instantiate();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Resource::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_instantiate),decltype(&T::_instantiate)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_instantiate), decltype(&T::_instantiate)>) {
 			BIND_VIRTUAL_METHOD(T, _instantiate);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

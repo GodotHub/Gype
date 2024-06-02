@@ -39,14 +39,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class ShaderGlobalsOverride : public Node {
 	GDEXTENSION_CLASS(ShaderGlobalsOverride, Node)
 
 public:
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -54,7 +53,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

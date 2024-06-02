@@ -35,14 +35,15 @@
 
 #include <godot_cpp/classes/geometry_instance3d.hpp>
 #include <godot_cpp/classes/mesh_convex_decomposition_settings.hpp>
-#include <godot_cpp/variant/node_path.hpp>
 #include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/variant/node_path.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Material;
@@ -54,7 +55,6 @@ class MeshInstance3D : public GeometryInstance3D {
 	GDEXTENSION_CLASS(MeshInstance3D, GeometryInstance3D)
 
 public:
-
 	void set_mesh(const Ref<Mesh> &mesh);
 	Ref<Mesh> get_mesh() const;
 	void set_skeleton_path(const NodePath &skeleton_path);
@@ -73,6 +73,7 @@ public:
 	double get_blend_shape_value(int32_t blend_shape_idx) const;
 	void set_blend_shape_value(int32_t blend_shape_idx, double value);
 	void create_debug_tangents();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -80,7 +81,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

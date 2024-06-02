@@ -40,14 +40,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class CollisionPolygon2D : public Node2D {
 	GDEXTENSION_CLASS(CollisionPolygon2D, Node2D)
 
 public:
-
 	enum BuildMode {
 		BUILD_SOLIDS = 0,
 		BUILD_SEGMENTS = 1,
@@ -63,6 +62,7 @@ public:
 	bool is_one_way_collision_enabled() const;
 	void set_one_way_collision_margin(double margin);
 	double get_one_way_collision_margin() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -70,7 +70,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

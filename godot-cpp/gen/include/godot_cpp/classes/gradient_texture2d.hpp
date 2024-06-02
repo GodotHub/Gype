@@ -41,7 +41,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Gradient;
@@ -50,7 +50,6 @@ class GradientTexture2D : public Texture2D {
 	GDEXTENSION_CLASS(GradientTexture2D, Texture2D)
 
 public:
-
 	enum Fill {
 		FILL_LINEAR = 0,
 		FILL_RADIAL = 1,
@@ -77,6 +76,7 @@ public:
 	Vector2 get_fill_to() const;
 	void set_repeat(GradientTexture2D::Repeat repeat);
 	GradientTexture2D::Repeat get_repeat() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -84,7 +84,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

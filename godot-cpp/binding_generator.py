@@ -5,7 +5,7 @@ import re
 import shutil
 from pathlib import Path
 import os
-
+import inspect
 
 def generate_mod_version(argcount, const=False, returns=False):
     s = """
@@ -493,11 +493,11 @@ def generate_builtin_class_vararg_method_implements_header(builtin_classes):
     # header_guard = "GODOT_CPP_BUILTIN_VARARG_METHODS_HPP"
     # result.append(f"#ifndef {header_guard}")
     # result.append(f"#define {header_guard}")
+    # ADD
     result.append("#include <godot_cpp/variant/variant.hpp>")
     result.append("#include <godot_cpp/variant/callable.hpp>")
     result.append("#include <godot_cpp/variant/signal.hpp>")
-    # ADD
-    result.append("#include <godot_cpp/templates/vararg.h>")
+    result.append("#include <godot_cpp/templates/vararg.hpp>")
     result.append("using namespace godot;")
     result.append("")
     for builtin_api in builtin_classes:
@@ -572,7 +572,7 @@ def generate_builtin_class_header(builtin_api, size, used_classes, fully_used_cl
     result.append("#include <gdextension_interface.h>")
     result.append("")
     # ADD
-    result.append("#include <godot_cpp/templates/vararg.h>")
+    result.append("#include <godot_cpp/templates/vararg.hpp>")
     result.append("namespace godot {")
     result.append("")
 
@@ -1489,7 +1489,7 @@ def generate_engine_class_header(class_api, used_classes, fully_used_classes, us
         result.append("#include <type_traits>")
         result.append("")
     
-    result.append("#include <godot_cpp/templates/vararg.h>")
+    result.append("#include <godot_cpp/templates/vararg.hpp>")
     result.append("namespace godot {")
     result.append("")
 
@@ -2006,7 +2006,7 @@ def generate_utility_functions(api, output_dir):
     header.append("#include <godot_cpp/variant/variant.hpp>")
     header.append("")
     # ADD
-    header.append("#include <godot_cpp/templates/vararg.h>")
+    header.append("#include <godot_cpp/templates/vararg.hpp>")
     header.append("")
     header.append("namespace godot {")
     header.append("")
@@ -2143,13 +2143,9 @@ def make_function_parameters(parameters, include_default=False, for_builtin=Fals
     if is_vararg:
         # MODIFY
         # signature.append("const Args&... args")
-        # if len(parameters) > 0:
-        #     signature.append(f"rest<{parameters[-1]["type"]}> args")
-        # else:
         signature.append("rest<Variant> args")
 
     return ", ".join(signature)
-
 
 def type_for_parameter(type_name, meta=None):
     if type_name == "void":
@@ -2328,13 +2324,8 @@ def make_varargs_template(
     result.append(args_array)
 
     if (len(method_arguments) > 0):
-        result.append(f"\tfor (int i = 0; i < {len(method_arguments)}; i++) {{")
         for argument in method_arguments:
-            if argument["type"] == "Variant":
-                result.append(f"\t\tvariant_args.push_back({argument["name"]});")
-            else:
-                result.append(f"\t\tvariant_args.push_back(Variant({argument["name"]}));")
-        result.append("\t}")
+            result.append(f"\tvariant_args.push_back(Variant({argument["name"]}));")
     result.append("\tvariant_args.insert(variant_args.end(), args.begin(), args.end());")
     result.append("\tstd::vector<const Variant *> call_args;")
     result.append("\tfor(size_t i = 0; i < variant_args.size(); i++) {")
@@ -2725,24 +2716,26 @@ def add_header(filename, lines):
     lines.append("// THIS FILE IS GENERATED. EDITS WILL BE LOST.")
     lines.append("")
 
-# 设置路径和参数
-GODOT_GDEXTENSION_API_FILE = "gdextension/extension_api.json" # 替换为实际路径
-GENERATE_BINDING_PARAMETERS = False # 或 "False" 根据需要设置
-BITS = "64" # "64" 或 "32"
-FLOAT_PRECISION = "float" # "single" 或 "double"
-OUTPUT_DIRECTORY = "." # 替换为实际输出路径
 
-# 确保输出目录存在
-if not os.path.exists(OUTPUT_DIRECTORY):
-    os.makedirs(OUTPUT_DIRECTORY)
+if __name__ == "__main__":
+    # 设置路径和参数
+    GODOT_GDEXTENSION_API_FILE = "gdextension/extension_api.json" # 替换为实际路径
+    GENERATE_BINDING_PARAMETERS = False # 或 "False" 根据需要设置
+    BITS = "64" # "64" 或 "32"
+    FLOAT_PRECISION = "float" # "single" 或 "double"
+    OUTPUT_DIRECTORY = "." # 替换为实际输出路径
 
-# 调用 binding_generator 生成绑定文件
-generate_bindings(
-    GODOT_GDEXTENSION_API_FILE,
-    GENERATE_BINDING_PARAMETERS,
-    BITS,
-    FLOAT_PRECISION,
-    OUTPUT_DIRECTORY
-)
+    # 确保输出目录存在
+    if not os.path.exists(OUTPUT_DIRECTORY):
+        os.makedirs(OUTPUT_DIRECTORY)
 
-print(f"Bindings generated in {OUTPUT_DIRECTORY}/gen")
+    # 调用 binding_generator 生成绑定文件
+    generate_bindings(
+        GODOT_GDEXTENSION_API_FILE,
+        GENERATE_BINDING_PARAMETERS,
+        BITS,
+        FLOAT_PRECISION,
+        OUTPUT_DIRECTORY
+    )
+
+    print(f"Bindings generated in {OUTPUT_DIRECTORY}/gen")

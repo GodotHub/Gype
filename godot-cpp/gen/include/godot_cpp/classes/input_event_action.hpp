@@ -41,19 +41,19 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class InputEventAction : public InputEvent {
 	GDEXTENSION_CLASS(InputEventAction, InputEvent)
 
 public:
-
 	void set_action(const StringName &action);
 	StringName get_action() const;
 	void set_pressed(bool pressed);
 	void set_strength(double strength);
 	double get_strength() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -61,7 +61,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

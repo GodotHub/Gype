@@ -41,30 +41,29 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class AudioEffectInstance : public RefCounted {
 	GDEXTENSION_CLASS(AudioEffectInstance, RefCounted)
 
 public:
-
 	virtual void _process(const void *src_buffer, AudioFrame *dst_buffer, int32_t frame_count);
 	virtual bool _process_silence() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		RefCounted::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_process),decltype(&T::_process)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_process), decltype(&T::_process)>) {
 			BIND_VIRTUAL_METHOD(T, _process);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_process_silence),decltype(&T::_process_silence)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_process_silence), decltype(&T::_process_silence)>) {
 			BIND_VIRTUAL_METHOD(T, _process_silence);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

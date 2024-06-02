@@ -40,7 +40,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Gradient;
@@ -49,12 +49,12 @@ class GradientTexture1D : public Texture2D {
 	GDEXTENSION_CLASS(GradientTexture1D, Texture2D)
 
 public:
-
 	void set_gradient(const Ref<Gradient> &gradient);
 	Ref<Gradient> get_gradient() const;
 	void set_width(int32_t width);
 	void set_use_hdr(bool enabled);
 	bool is_using_hdr() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -62,7 +62,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

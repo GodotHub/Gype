@@ -41,7 +41,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Variant;
@@ -50,9 +50,9 @@ class PackedDataContainer : public Resource {
 	GDEXTENSION_CLASS(PackedDataContainer, Resource)
 
 public:
-
 	Error pack(const Variant &value);
 	int32_t size() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -60,7 +60,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

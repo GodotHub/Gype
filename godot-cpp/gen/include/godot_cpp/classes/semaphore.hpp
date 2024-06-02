@@ -40,17 +40,17 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Semaphore : public RefCounted {
 	GDEXTENSION_CLASS(Semaphore, RefCounted)
 
 public:
-
 	void wait();
 	bool try_wait();
 	void post();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -58,7 +58,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

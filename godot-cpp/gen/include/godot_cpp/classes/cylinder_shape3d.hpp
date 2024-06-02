@@ -40,18 +40,18 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class CylinderShape3D : public Shape3D {
 	GDEXTENSION_CLASS(CylinderShape3D, Shape3D)
 
 public:
-
 	void set_radius(double radius);
 	double get_radius() const;
 	void set_height(double height);
 	double get_height() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -59,7 +59,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -40,16 +40,16 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class VisualShaderNodeParticleMultiplyByAxisAngle : public VisualShaderNode {
 	GDEXTENSION_CLASS(VisualShaderNodeParticleMultiplyByAxisAngle, VisualShaderNode)
 
 public:
-
 	void set_degrees_mode(bool enabled);
 	bool is_degrees_mode() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -57,7 +57,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

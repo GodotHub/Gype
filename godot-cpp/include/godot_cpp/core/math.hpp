@@ -221,6 +221,9 @@ namespace Math {
 // Functions reproduced as in Godot's source code `math_funcs.h`.
 // Some are overloads to automatically support changing real_t into either double or float in the way Godot does.
 
+inline bool is_finite(double p_val) { return std::isfinite(p_val); }
+inline bool is_finite(float p_val) { return std::isfinite(p_val); }
+
 inline double fmod(double p_x, double p_y) {
 	return ::fmod(p_x, p_y);
 }
@@ -536,6 +539,16 @@ inline float bezier_interpolate(float p_start, float p_control_1, float p_contro
 	float t3 = t2 * p_t;
 
 	return p_start * omt3 + p_control_1 * omt2 * p_t * 3.0f + p_control_2 * omt * t2 * 3.0f + p_end * t3;
+}
+
+inline float bezier_derivative(float p_start, float p_control_1, float p_control_2, float p_end, float p_t) {
+	/* Formula from Wikipedia article on Bezier curves. */
+	float omt = (1.0f - p_t);
+	float omt2 = omt * omt;
+	float t2 = p_t * p_t;
+
+	float d = (p_control_1 - p_start) * 3.0f * omt2 + (p_control_2 - p_control_1) * 6.0f * omt * p_t + (p_end - p_control_2) * 3.0f * t2;
+	return d;
 }
 
 template <typename T>

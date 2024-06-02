@@ -41,7 +41,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Texture3D;
@@ -50,11 +50,11 @@ class GPUParticlesAttractorVectorField3D : public GPUParticlesAttractor3D {
 	GDEXTENSION_CLASS(GPUParticlesAttractorVectorField3D, GPUParticlesAttractor3D)
 
 public:
-
 	void set_size(const Vector3 &size);
 	Vector3 get_size() const;
 	void set_texture(const Ref<Texture3D> &texture);
 	Ref<Texture3D> get_texture() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -62,7 +62,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

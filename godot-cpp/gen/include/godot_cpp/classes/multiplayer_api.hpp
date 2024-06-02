@@ -33,18 +33,19 @@
 #ifndef GODOT_CPP_MULTIPLAYER_API_HPP
 #define GODOT_CPP_MULTIPLAYER_API_HPP
 
-#include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
-#include <godot_cpp/variant/packed_int32_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/variant/array.hpp>
+#include <godot_cpp/variant/packed_int32_array.hpp>
 #include <godot_cpp/variant/string_name.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class MultiplayerPeer;
@@ -55,7 +56,6 @@ class MultiplayerAPI : public RefCounted {
 	GDEXTENSION_CLASS(MultiplayerAPI, RefCounted)
 
 public:
-
 	enum RPCMode {
 		RPC_MODE_DISABLED = 0,
 		RPC_MODE_ANY_PEER = 1,
@@ -76,6 +76,7 @@ public:
 	static void set_default_interface(const StringName &interface_name);
 	static StringName get_default_interface();
 	static Ref<MultiplayerAPI> create_default_interface();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -83,7 +84,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

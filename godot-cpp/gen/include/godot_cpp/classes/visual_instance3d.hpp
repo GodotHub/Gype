@@ -33,22 +33,22 @@
 #ifndef GODOT_CPP_VISUAL_INSTANCE3D_HPP
 #define GODOT_CPP_VISUAL_INSTANCE3D_HPP
 
-#include <godot_cpp/variant/aabb.hpp>
 #include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/variant/aabb.hpp>
 #include <godot_cpp/variant/rid.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class VisualInstance3D : public Node3D {
 	GDEXTENSION_CLASS(VisualInstance3D, Node3D)
 
 public:
-
 	void set_base(const RID &base);
 	RID get_base() const;
 	RID get_instance() const;
@@ -62,17 +62,17 @@ public:
 	bool is_sorting_use_aabb_center() const;
 	AABB get_aabb() const;
 	virtual AABB _get_aabb() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Node3D::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_get_aabb),decltype(&T::_get_aabb)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_aabb), decltype(&T::_get_aabb)>) {
 			BIND_VIRTUAL_METHOD(T, _get_aabb);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -40,7 +40,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Resource;
@@ -49,8 +49,8 @@ class Texture2DArray : public ImageTextureLayered {
 	GDEXTENSION_CLASS(Texture2DArray, ImageTextureLayered)
 
 public:
-
 	Ref<Resource> create_placeholder() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -58,7 +58,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -40,15 +40,15 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class CallbackTweener : public Tweener {
 	GDEXTENSION_CLASS(CallbackTweener, Tweener)
 
 public:
-
 	Ref<CallbackTweener> set_delay(double delay);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -56,7 +56,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

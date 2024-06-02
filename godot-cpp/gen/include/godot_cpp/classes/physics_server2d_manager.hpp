@@ -39,7 +39,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Callable;
@@ -49,11 +49,11 @@ class PhysicsServer2DManager : public Object {
 	GDEXTENSION_CLASS(PhysicsServer2DManager, Object)
 
 public:
-
 	static PhysicsServer2DManager *get_singleton();
 
 	void register_server(const String &name, const Callable &create_callback);
 	void set_default_server(const String &name, int32_t priority);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -61,7 +61,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -33,15 +33,16 @@
 #ifndef GODOT_CPP_SKIN_REFERENCE_HPP
 #define GODOT_CPP_SKIN_REFERENCE_HPP
 
-#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/variant/rid.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Skin;
@@ -50,9 +51,9 @@ class SkinReference : public RefCounted {
 	GDEXTENSION_CLASS(SkinReference, RefCounted)
 
 public:
-
 	RID get_skeleton() const;
 	Ref<Skin> get_skin() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -60,7 +61,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

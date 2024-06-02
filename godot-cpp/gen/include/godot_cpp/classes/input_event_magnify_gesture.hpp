@@ -40,16 +40,16 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class InputEventMagnifyGesture : public InputEventGesture {
 	GDEXTENSION_CLASS(InputEventMagnifyGesture, InputEventGesture)
 
 public:
-
 	void set_factor(double factor);
 	double get_factor() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -57,7 +57,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

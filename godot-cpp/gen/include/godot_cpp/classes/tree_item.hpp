@@ -33,24 +33,25 @@
 #ifndef GODOT_CPP_TREE_ITEM_HPP
 #define GODOT_CPP_TREE_ITEM_HPP
 
+#include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/global_constants.hpp>
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/classes/text_server.hpp>
+#include <godot_cpp/core/object.hpp>
 #include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/color.hpp>
-#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/variant/dictionary.hpp>
-#include <godot_cpp/classes/global_constants.hpp>
-#include <godot_cpp/core/object.hpp>
 #include <godot_cpp/variant/rect2.hpp>
-#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/string.hpp>
-#include <godot_cpp/classes/text_server.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/variant.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Font;
@@ -62,7 +63,6 @@ class TreeItem : public Object {
 	GDEXTENSION_CLASS(TreeItem, Object)
 
 public:
-
 	enum TreeCellMode {
 		CELL_MODE_STRING = 0,
 		CELL_MODE_CHECK = 1,
@@ -177,19 +177,23 @@ public:
 	int32_t get_index();
 	void move_before(TreeItem *item);
 	void move_after(TreeItem *item);
-	private: private: void call_recursive_internal(const Variant **args, GDExtensionInt arg_count);
-	public: void call_recursive(const StringName &method, rest<Variant> args) {
+
+private:
+private:
+	void call_recursive_internal(const Variant **args, GDExtensionInt arg_count);
+
+public:
+	void call_recursive(const StringName &method, rest<Variant> args) {
 		std::vector<Variant> variant_args;
-		for (int i = 0; i < 1; i++) {
-			variant_args.push_back(Variant(method));
-		}
+		variant_args.push_back(Variant(method));
 		variant_args.insert(variant_args.end(), args.begin(), args.end());
 		std::vector<const Variant *> call_args;
-		for(size_t i = 0; i < variant_args.size(); i++) {
+		for (size_t i = 0; i < variant_args.size(); i++) {
 			call_args.push_back(&variant_args[i]);
 		}
 		call_recursive_internal(call_args.data(), variant_args.size());
 	}
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -197,7 +201,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

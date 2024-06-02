@@ -42,18 +42,18 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class RDShaderSource : public RefCounted {
 	GDEXTENSION_CLASS(RDShaderSource, RefCounted)
 
 public:
-
 	void set_stage_source(RenderingDevice::ShaderStage stage, const String &source);
 	String get_stage_source(RenderingDevice::ShaderStage stage) const;
 	void set_language(RenderingDevice::ShaderLanguage language);
 	RenderingDevice::ShaderLanguage get_language() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -61,7 +61,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

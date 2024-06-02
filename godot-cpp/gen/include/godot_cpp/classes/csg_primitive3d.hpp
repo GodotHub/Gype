@@ -39,16 +39,16 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class CSGPrimitive3D : public CSGShape3D {
 	GDEXTENSION_CLASS(CSGPrimitive3D, CSGShape3D)
 
 public:
-
 	void set_flip_faces(bool flip_faces);
 	bool get_flip_faces();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -56,7 +56,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

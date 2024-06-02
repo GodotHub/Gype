@@ -74,7 +74,7 @@ Vector3 Plane::get_any_perpendicular_normal() const {
 
 /* intersections */
 
-bool Plane::intersect_3(const Plane &p_plane1, const Plane &p_plane2, Vector3 *r_result) const {
+bool Plane::_intersect_3(const Plane &p_plane1, const Plane &p_plane2, Vector3 *r_result) const {
 	const Plane &p_plane0 = *this;
 	Vector3 normal0 = p_plane0.normal;
 	Vector3 normal1 = p_plane1.normal;
@@ -96,7 +96,7 @@ bool Plane::intersect_3(const Plane &p_plane1, const Plane &p_plane2, Vector3 *r
 	return true;
 }
 
-bool Plane::intersects_ray(const Vector3 &p_from, const Vector3 &p_dir, Vector3 *p_intersection) const {
+bool Plane::_intersects_ray(const Vector3 &p_from, const Vector3 &p_dir, Vector3 *p_intersection) const {
 	Vector3 segment = p_dir;
 	real_t den = normal.dot(segment);
 
@@ -119,7 +119,7 @@ bool Plane::intersects_ray(const Vector3 &p_from, const Vector3 &p_dir, Vector3 
 	return true;
 }
 
-bool Plane::intersects_segment(const Vector3 &p_begin, const Vector3 &p_end, Vector3 *p_intersection) const {
+bool Plane::_intersects_segment(const Vector3 &p_begin, const Vector3 &p_end, Vector3 *p_intersection) const {
 	Vector3 segment = p_begin - p_end;
 	real_t den = normal.dot(segment);
 
@@ -141,9 +141,21 @@ bool Plane::intersects_segment(const Vector3 &p_begin, const Vector3 &p_end, Vec
 	return true;
 }
 
+bool Plane::intersect_3(const Plane &p_plane1, const Plane &p_plane2) const {
+	return _intersect_3(p_plane1, p_plane2, nullptr);
+}
+
+bool Plane::intersects_ray(const Vector3 &p_from, const Vector3 &p_dir) const {
+	return _intersects_ray(p_from, p_dir, nullptr);
+}
+
+bool Plane::intersects_segment(const Vector3 &p_begin, const Vector3 &p_end) const {
+	return _intersects_segment(p_begin, p_end, nullptr);
+}
+
 Variant Plane::intersect_3_bind(const Plane &p_plane1, const Plane &p_plane2) const {
 	Vector3 inters;
-	if (intersect_3(p_plane1, p_plane2, &inters)) {
+	if (_intersect_3(p_plane1, p_plane2, &inters)) {
 		return inters;
 	} else {
 		return Variant();
@@ -152,7 +164,7 @@ Variant Plane::intersect_3_bind(const Plane &p_plane1, const Plane &p_plane2) co
 
 Variant Plane::intersects_ray_bind(const Vector3 &p_from, const Vector3 &p_dir) const {
 	Vector3 inters;
-	if (intersects_ray(p_from, p_dir, &inters)) {
+	if (_intersects_ray(p_from, p_dir, &inters)) {
 		return inters;
 	} else {
 		return Variant();
@@ -161,7 +173,7 @@ Variant Plane::intersects_ray_bind(const Vector3 &p_from, const Vector3 &p_dir) 
 
 Variant Plane::intersects_segment_bind(const Vector3 &p_begin, const Vector3 &p_end) const {
 	Vector3 inters;
-	if (intersects_segment(p_begin, p_end, &inters)) {
+	if (_intersects_segment(p_begin, p_end, &inters)) {
 		return inters;
 	} else {
 		return Variant();
@@ -172,6 +184,10 @@ Variant Plane::intersects_segment_bind(const Vector3 &p_begin, const Vector3 &p_
 
 bool Plane::is_equal_approx_any_side(const Plane &p_plane) const {
 	return (normal.is_equal_approx(p_plane.normal) && Math::is_equal_approx(d, p_plane.d)) || (normal.is_equal_approx(-p_plane.normal) && Math::is_equal_approx(d, -p_plane.d));
+}
+
+bool Plane::is_finite() const {
+	return normal.is_finite() && Math::is_finite(d);
 }
 
 bool Plane::is_equal_approx(const Plane &p_plane) const {

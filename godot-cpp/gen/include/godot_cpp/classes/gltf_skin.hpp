@@ -33,18 +33,19 @@
 #ifndef GODOT_CPP_GLTF_SKIN_HPP
 #define GODOT_CPP_GLTF_SKIN_HPP
 
-#include <godot_cpp/variant/dictionary.hpp>
-#include <godot_cpp/variant/packed_int32_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/variant/dictionary.hpp>
+#include <godot_cpp/variant/packed_int32_array.hpp>
 #include <godot_cpp/variant/transform3d.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Skin;
@@ -53,7 +54,6 @@ class GLTFSkin : public Resource {
 	GDEXTENSION_CLASS(GLTFSkin, Resource)
 
 public:
-
 	int32_t get_skin_root();
 	void set_skin_root(int32_t skin_root);
 	PackedInt32Array get_joints_original();
@@ -74,6 +74,7 @@ public:
 	void set_joint_i_to_name(const Dictionary &joint_i_to_name);
 	Ref<Skin> get_godot_skin();
 	void set_godot_skin(const Ref<Skin> &godot_skin);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -81,7 +82,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

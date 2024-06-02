@@ -40,14 +40,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class GLTFBufferView : public Resource {
 	GDEXTENSION_CLASS(GLTFBufferView, Resource)
 
 public:
-
 	int32_t get_buffer();
 	void set_buffer(int32_t buffer);
 	int32_t get_byte_offset();
@@ -58,6 +57,7 @@ public:
 	void set_byte_stride(int32_t byte_stride);
 	bool get_indices();
 	void set_indices(bool indices);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -65,7 +65,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

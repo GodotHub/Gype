@@ -34,22 +34,22 @@
 #define GODOT_CPP_HASHING_CONTEXT_HPP
 
 #include <godot_cpp/classes/global_constants.hpp>
-#include <godot_cpp/variant/packed_byte_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/variant/packed_byte_array.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class HashingContext : public RefCounted {
 	GDEXTENSION_CLASS(HashingContext, RefCounted)
 
 public:
-
 	enum HashType {
 		HASH_MD5 = 0,
 		HASH_SHA1 = 1,
@@ -59,6 +59,7 @@ public:
 	Error start(HashingContext::HashType type);
 	Error update(const PackedByteArray &chunk);
 	PackedByteArray finish();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -66,7 +67,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

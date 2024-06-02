@@ -33,21 +33,21 @@
 #ifndef GODOT_CPP_SUB_VIEWPORT_HPP
 #define GODOT_CPP_SUB_VIEWPORT_HPP
 
-#include <godot_cpp/variant/vector2i.hpp>
 #include <godot_cpp/classes/viewport.hpp>
+#include <godot_cpp/variant/vector2i.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class SubViewport : public Viewport {
 	GDEXTENSION_CLASS(SubViewport, Viewport)
 
 public:
-
 	enum ClearMode {
 		CLEAR_MODE_ALWAYS = 0,
 		CLEAR_MODE_NEVER = 1,
@@ -72,6 +72,7 @@ public:
 	SubViewport::UpdateMode get_update_mode() const;
 	void set_clear_mode(SubViewport::ClearMode mode);
 	SubViewport::ClearMode get_clear_mode() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -79,7 +80,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -33,16 +33,17 @@
 #ifndef GODOT_CPP_ENVIRONMENT_HPP
 #define GODOT_CPP_ENVIRONMENT_HPP
 
-#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/variant/vector3.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Sky;
@@ -52,7 +53,6 @@ class Environment : public Resource {
 	GDEXTENSION_CLASS(Environment, Resource)
 
 public:
-
 	enum BGMode {
 		BG_CLEAR_COLOR = 0,
 		BG_COLOR = 1,
@@ -273,6 +273,7 @@ public:
 	double get_adjustment_saturation() const;
 	void set_adjustment_color_correction(const Ref<Texture> &color_correction);
 	Ref<Texture> get_adjustment_color_correction() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -280,7 +281,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

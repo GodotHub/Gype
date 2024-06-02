@@ -33,24 +33,25 @@
 #ifndef GODOT_CPP_VISUAL_SHADER_NODE_COLOR_CONSTANT_HPP
 #define GODOT_CPP_VISUAL_SHADER_NODE_COLOR_CONSTANT_HPP
 
-#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/visual_shader_node_constant.hpp>
+#include <godot_cpp/variant/color.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class VisualShaderNodeColorConstant : public VisualShaderNodeConstant {
 	GDEXTENSION_CLASS(VisualShaderNodeColorConstant, VisualShaderNodeConstant)
 
 public:
-
 	void set_constant(const Color &constant);
 	Color get_constant() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -58,7 +59,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

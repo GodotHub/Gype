@@ -34,16 +34,17 @@
 #define GODOT_CPP_GLTF_DOCUMENT_HPP
 
 #include <godot_cpp/classes/global_constants.hpp>
-#include <godot_cpp/variant/packed_byte_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/variant/packed_byte_array.hpp>
 #include <godot_cpp/variant/string.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class GLTFDocumentExtension;
@@ -54,7 +55,6 @@ class GLTFDocument : public Resource {
 	GDEXTENSION_CLASS(GLTFDocument, Resource)
 
 public:
-
 	enum RootNodeMode {
 		ROOT_NODE_MODE_SINGLE_ROOT = 0,
 		ROOT_NODE_MODE_KEEP_ROOT = 1,
@@ -75,6 +75,7 @@ public:
 	GLTFDocument::RootNodeMode get_root_node_mode() const;
 	static void register_gltf_document_extension(const Ref<GLTFDocumentExtension> &extension, bool first_priority = false);
 	static void unregister_gltf_document_extension(const Ref<GLTFDocumentExtension> &extension);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -82,7 +83,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

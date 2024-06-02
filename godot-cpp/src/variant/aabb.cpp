@@ -78,6 +78,10 @@ bool AABB::is_equal_approx(const AABB &p_aabb) const {
 	return position.is_equal_approx(p_aabb.position) && size.is_equal_approx(p_aabb.size);
 }
 
+bool AABB::is_finite() const {
+	return position.is_finite() && size.is_finite();
+}
+
 AABB AABB::intersection(const AABB &p_aabb) const {
 #ifdef MATH_CHECKS
 	if (unlikely(size.x < 0 || size.y < 0 || size.z < 0 || p_aabb.size.x < 0 || p_aabb.size.y < 0 || p_aabb.size.z < 0)) {
@@ -115,7 +119,7 @@ AABB AABB::intersection(const AABB &p_aabb) const {
 	return AABB(min, max - min);
 }
 
-bool AABB::intersects_ray(const Vector3 &p_from, const Vector3 &p_dir, Vector3 *r_clip, Vector3 *r_normal) const {
+bool AABB::_intersects_ray(const Vector3 &p_from, const Vector3 &p_dir, Vector3 *r_clip, Vector3 *r_normal) const {
 #ifdef MATH_CHECKS
 	if (unlikely(size.x < 0 || size.y < 0 || size.z < 0)) {
 		ERR_PRINT("AABB size is negative, this is not supported. Use AABB.abs() to get an AABB with a positive size.");
@@ -163,7 +167,15 @@ bool AABB::intersects_ray(const Vector3 &p_from, const Vector3 &p_dir, Vector3 *
 	return true;
 }
 
-bool AABB::intersects_segment(const Vector3 &p_from, const Vector3 &p_to, Vector3 *r_clip, Vector3 *r_normal) const {
+bool AABB::intersects_segment(const Vector3 &p_from, const Vector3 &p_to) const {
+	return _intersects_segment(p_from, p_to, nullptr, nullptr);
+}
+
+bool AABB::intersects_ray(const Vector3 &p_from, const Vector3 &p_dir) const {
+	return _intersects_ray(p_from, p_dir, nullptr, nullptr);
+}
+
+bool AABB::_intersects_segment(const Vector3 &p_from, const Vector3 &p_to, Vector3 *r_clip, Vector3 *r_normal) const {
 #ifdef MATH_CHECKS
 	if (unlikely(size.x < 0 || size.y < 0 || size.z < 0)) {
 		ERR_PRINT("AABB size is negative, this is not supported. Use AABB.abs() to get an AABB with a positive size.");
@@ -400,7 +412,7 @@ void AABB::get_edge(int p_edge, Vector3 &r_from, Vector3 &r_to) const {
 
 Variant AABB::intersects_segment_bind(const Vector3 &p_from, const Vector3 &p_to) const {
 	Vector3 inters;
-	if (intersects_segment(p_from, p_to, &inters)) {
+	if (_intersects_segment(p_from, p_to, &inters)) {
 		return inters;
 	}
 	return Variant();
@@ -408,7 +420,7 @@ Variant AABB::intersects_segment_bind(const Vector3 &p_from, const Vector3 &p_to
 
 Variant AABB::intersects_ray_bind(const Vector3 &p_from, const Vector3 &p_dir) const {
 	Vector3 inters;
-	if (intersects_ray(p_from, p_dir, &inters)) {
+	if (_intersects_ray(p_from, p_dir, &inters)) {
 		return inters;
 	}
 	return Variant();

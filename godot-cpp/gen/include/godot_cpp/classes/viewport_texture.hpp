@@ -33,24 +33,25 @@
 #ifndef GODOT_CPP_VIEWPORT_TEXTURE_HPP
 #define GODOT_CPP_VIEWPORT_TEXTURE_HPP
 
-#include <godot_cpp/variant/node_path.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/variant/node_path.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class ViewportTexture : public Texture2D {
 	GDEXTENSION_CLASS(ViewportTexture, Texture2D)
 
 public:
-
 	void set_viewport_path_in_scene(const NodePath &path);
 	NodePath get_viewport_path_in_scene() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -58,7 +59,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

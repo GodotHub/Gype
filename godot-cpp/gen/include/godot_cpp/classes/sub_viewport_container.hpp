@@ -40,7 +40,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class InputEvent;
@@ -49,23 +49,22 @@ class SubViewportContainer : public Container {
 	GDEXTENSION_CLASS(SubViewportContainer, Container)
 
 public:
-
 	void set_stretch(bool enable);
 	bool is_stretch_enabled() const;
 	void set_stretch_shrink(int32_t amount);
 	int32_t get_stretch_shrink() const;
 	virtual bool _propagate_input_event(const Ref<InputEvent> &event) const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Container::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_propagate_input_event),decltype(&T::_propagate_input_event)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_propagate_input_event), decltype(&T::_propagate_input_event)>) {
 			BIND_VIRTUAL_METHOD(T, _propagate_input_event);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

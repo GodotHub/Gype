@@ -33,27 +33,28 @@
 #ifndef GODOT_CPP_INSTANCE_PLACEHOLDER_HPP
 #define GODOT_CPP_INSTANCE_PLACEHOLDER_HPP
 
-#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/packed_scene.hpp>
 #include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/variant/string.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class InstancePlaceholder : public Node {
 	GDEXTENSION_CLASS(InstancePlaceholder, Node)
 
 public:
-
 	Dictionary get_stored_values(bool with_order = false);
 	Node *create_instance(bool replace = false, const Ref<PackedScene> &custom_scene = nullptr);
 	String get_instance_path() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -61,7 +62,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -128,6 +128,7 @@ struct _NO_DISCARD_ Basis {
 	}
 
 	bool is_equal_approx(const Basis &p_basis) const;
+	bool is_finite() const;
 
 	bool operator==(const Basis &p_matrix) const;
 	bool operator!=(const Basis &p_matrix) const;
@@ -145,6 +146,7 @@ struct _NO_DISCARD_ Basis {
 
 	bool is_orthogonal() const;
 	bool is_diagonal() const;
+	bool is_conformal() const;
 	bool is_rotation() const;
 
 	Basis lerp(const Basis &p_to, const real_t &p_weight) const;
@@ -223,7 +225,7 @@ struct _NO_DISCARD_ Basis {
 
 	operator Quaternion() const { return get_quaternion(); }
 
-	static Basis looking_at(const Vector3 &p_target, const Vector3 &p_up = Vector3(0, 1, 0));
+	static Basis looking_at(const Vector3 &p_target, const Vector3 &p_up = Vector3(0, 1, 0), bool p_use_model_front = false);
 
 	Basis(const Quaternion &p_quaternion) { set_quaternion(p_quaternion); }
 	Basis(const Quaternion &p_quaternion, const Vector3 &p_scale) { set_quaternion_scale(p_quaternion, p_scale); }

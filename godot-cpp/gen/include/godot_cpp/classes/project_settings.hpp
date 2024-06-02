@@ -33,18 +33,19 @@
 #ifndef GODOT_CPP_PROJECT_SETTINGS_HPP
 #define GODOT_CPP_PROJECT_SETTINGS_HPP
 
-#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/core/object.hpp>
+#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/variant.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class StringName;
@@ -53,7 +54,6 @@ class ProjectSettings : public Object {
 	GDEXTENSION_CLASS(ProjectSettings, Object)
 
 public:
-
 	static ProjectSettings *get_singleton();
 
 	bool has_setting(const String &name) const;
@@ -74,6 +74,7 @@ public:
 	Error save();
 	bool load_resource_pack(const String &pack, bool replace_files = true, int32_t offset = 0);
 	Error save_custom(const String &file);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -81,7 +82,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

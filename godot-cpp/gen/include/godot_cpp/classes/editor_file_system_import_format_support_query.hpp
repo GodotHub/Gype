@@ -33,42 +33,42 @@
 #ifndef GODOT_CPP_EDITOR_FILE_SYSTEM_IMPORT_FORMAT_SUPPORT_QUERY_HPP
 #define GODOT_CPP_EDITOR_FILE_SYSTEM_IMPORT_FORMAT_SUPPORT_QUERY_HPP
 
-#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/variant/packed_string_array.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class EditorFileSystemImportFormatSupportQuery : public RefCounted {
 	GDEXTENSION_CLASS(EditorFileSystemImportFormatSupportQuery, RefCounted)
 
 public:
-
 	virtual bool _is_active() const;
 	virtual PackedStringArray _get_file_extensions() const;
 	virtual bool _query() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		RefCounted::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_is_active),decltype(&T::_is_active)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_is_active), decltype(&T::_is_active)>) {
 			BIND_VIRTUAL_METHOD(T, _is_active);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_file_extensions),decltype(&T::_get_file_extensions)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_file_extensions), decltype(&T::_get_file_extensions)>) {
 			BIND_VIRTUAL_METHOD(T, _get_file_extensions);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_query),decltype(&T::_query)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_query), decltype(&T::_query)>) {
 			BIND_VIRTUAL_METHOD(T, _query);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

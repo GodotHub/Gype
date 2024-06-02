@@ -35,12 +35,13 @@
 
 #include <godot_cpp/core/defs.hpp>
 
+#include <gdextension_interface.h>
+#include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/variant/char_string.hpp>
 #include <godot_cpp/variant/char_utils.hpp>
-#include <godot_cpp/classes/global_constants.hpp>
-#include <gdextension_interface.h>
 
-#include <godot_cpp/templates/vararg.h>
+
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 struct AABB;
@@ -261,7 +262,7 @@ class String {
 	String(const Variant *p_variant);
 
 public:
-	_FORCE_INLINE_ GDExtensionTypePtr _native_ptr() const { return const_cast<uint8_t (*)[STRING_SIZE]>(&opaque); }
+	_FORCE_INLINE_ GDExtensionTypePtr _native_ptr() const { return const_cast<uint8_t(*)[STRING_SIZE]>(&opaque); }
 	String();
 	String(const String &from);
 	String(const StringName &from);

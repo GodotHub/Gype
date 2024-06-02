@@ -33,22 +33,22 @@
 #ifndef GODOT_CPP_ROOT_MOTION_VIEW_HPP
 #define GODOT_CPP_ROOT_MOTION_VIEW_HPP
 
+#include <godot_cpp/classes/visual_instance3d.hpp>
 #include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/variant/node_path.hpp>
-#include <godot_cpp/classes/visual_instance3d.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class RootMotionView : public VisualInstance3D {
 	GDEXTENSION_CLASS(RootMotionView, VisualInstance3D)
 
 public:
-
 	void set_animation_path(const NodePath &path);
 	NodePath get_animation_path() const;
 	void set_color(const Color &color);
@@ -59,6 +59,7 @@ public:
 	double get_radius() const;
 	void set_zero_y(bool enable);
 	bool get_zero_y() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -66,7 +67,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

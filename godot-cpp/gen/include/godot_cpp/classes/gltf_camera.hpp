@@ -33,15 +33,16 @@
 #ifndef GODOT_CPP_GLTF_CAMERA_HPP
 #define GODOT_CPP_GLTF_CAMERA_HPP
 
-#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/variant/dictionary.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Camera3D;
@@ -50,7 +51,6 @@ class GLTFCamera : public Resource {
 	GDEXTENSION_CLASS(GLTFCamera, Resource)
 
 public:
-
 	static Ref<GLTFCamera> from_node(Camera3D *camera_node);
 	Camera3D *to_node() const;
 	static Ref<GLTFCamera> from_dictionary(const Dictionary &dictionary);
@@ -65,6 +65,7 @@ public:
 	void set_depth_far(double zdepth_far);
 	double get_depth_near() const;
 	void set_depth_near(double zdepth_near);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -72,7 +73,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

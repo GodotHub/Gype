@@ -41,7 +41,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class AudioStream;
@@ -51,7 +51,6 @@ class AudioStreamPlayer : public Node {
 	GDEXTENSION_CLASS(AudioStreamPlayer, Node)
 
 public:
-
 	enum MixTarget {
 		MIX_TARGET_STEREO = 0,
 		MIX_TARGET_SURROUND = 1,
@@ -81,6 +80,7 @@ public:
 	int32_t get_max_polyphony() const;
 	bool has_stream_playback();
 	Ref<AudioStreamPlayback> get_stream_playback();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -88,7 +88,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

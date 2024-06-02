@@ -33,28 +33,29 @@
 #ifndef GODOT_CPP_HEIGHT_MAP_SHAPE3D_HPP
 #define GODOT_CPP_HEIGHT_MAP_SHAPE3D_HPP
 
-#include <godot_cpp/variant/packed_float32_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/shape3d.hpp>
+#include <godot_cpp/variant/packed_float32_array.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class HeightMapShape3D : public Shape3D {
 	GDEXTENSION_CLASS(HeightMapShape3D, Shape3D)
 
 public:
-
 	void set_map_width(int32_t width);
 	int32_t get_map_width() const;
 	void set_map_depth(int32_t height);
 	int32_t get_map_depth() const;
 	void set_map_data(const PackedFloat32Array &data);
 	PackedFloat32Array get_map_data() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -62,7 +63,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

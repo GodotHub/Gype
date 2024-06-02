@@ -33,16 +33,17 @@
 #ifndef GODOT_CPP_SHADER_HPP
 #define GODOT_CPP_SHADER_HPP
 
-#include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/string.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class StringName;
@@ -52,7 +53,6 @@ class Shader : public Resource {
 	GDEXTENSION_CLASS(Shader, Resource)
 
 public:
-
 	enum Mode {
 		MODE_SPATIAL = 0,
 		MODE_CANVAS_ITEM = 1,
@@ -67,6 +67,7 @@ public:
 	void set_default_texture_parameter(const StringName &name, const Ref<Texture2D> &texture, int32_t index = 0);
 	Ref<Texture2D> get_default_texture_parameter(const StringName &name, int32_t index = 0) const;
 	Array get_shader_uniform_list(bool get_groups = false);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -74,7 +75,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

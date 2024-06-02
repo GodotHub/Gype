@@ -33,26 +33,27 @@
 #ifndef GODOT_CPP_VISUAL_SHADER_NODE_COLOR_PARAMETER_HPP
 #define GODOT_CPP_VISUAL_SHADER_NODE_COLOR_PARAMETER_HPP
 
-#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/visual_shader_node_parameter.hpp>
+#include <godot_cpp/variant/color.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class VisualShaderNodeColorParameter : public VisualShaderNodeParameter {
 	GDEXTENSION_CLASS(VisualShaderNodeColorParameter, VisualShaderNodeParameter)
 
 public:
-
 	void set_default_value_enabled(bool enabled);
 	bool is_default_value_enabled() const;
 	void set_default_value(const Color &value);
 	Color get_default_value() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -60,7 +61,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

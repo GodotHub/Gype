@@ -40,14 +40,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class CanvasItemMaterial : public Material {
 	GDEXTENSION_CLASS(CanvasItemMaterial, Material)
 
 public:
-
 	enum BlendMode {
 		BLEND_MODE_MIX = 0,
 		BLEND_MODE_ADD = 1,
@@ -74,6 +73,7 @@ public:
 	int32_t get_particles_anim_v_frames() const;
 	void set_particles_anim_loop(bool loop);
 	bool get_particles_anim_loop() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -81,7 +81,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

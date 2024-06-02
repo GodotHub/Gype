@@ -41,14 +41,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class InputEventMIDI : public InputEvent {
 	GDEXTENSION_CLASS(InputEventMIDI, InputEvent)
 
 public:
-
 	void set_channel(int32_t channel);
 	int32_t get_channel() const;
 	void set_message(MIDIMessage message);
@@ -65,6 +64,7 @@ public:
 	int32_t get_controller_number() const;
 	void set_controller_value(int32_t controller_value);
 	int32_t get_controller_value() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -72,7 +72,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

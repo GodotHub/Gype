@@ -39,16 +39,16 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Marker3D : public Node3D {
 	GDEXTENSION_CLASS(Marker3D, Node3D)
 
 public:
-
 	void set_gizmo_extents(double extents);
 	double get_gizmo_extents() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -56,7 +56,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

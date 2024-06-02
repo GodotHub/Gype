@@ -39,7 +39,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Node;
@@ -48,7 +48,6 @@ class Range : public Control {
 	GDEXTENSION_CLASS(Range, Control)
 
 public:
-
 	double get_value() const;
 	double get_min() const;
 	double get_max() const;
@@ -73,17 +72,17 @@ public:
 	void share(Node *with);
 	void unshare();
 	virtual void _value_changed(double new_value);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Control::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_value_changed),decltype(&T::_value_changed)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_value_changed), decltype(&T::_value_changed)>) {
 			BIND_VIRTUAL_METHOD(T, _value_changed);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

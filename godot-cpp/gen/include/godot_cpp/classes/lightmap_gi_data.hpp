@@ -33,16 +33,17 @@
 #ifndef GODOT_CPP_LIGHTMAP_GI_DATA_HPP
 #define GODOT_CPP_LIGHTMAP_GI_DATA_HPP
 
-#include <godot_cpp/variant/node_path.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/variant/node_path.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 struct Rect2;
@@ -52,7 +53,6 @@ class LightmapGIData : public Resource {
 	GDEXTENSION_CLASS(LightmapGIData, Resource)
 
 public:
-
 	void set_lightmap_textures(const TypedArray<TextureLayered> &light_textures);
 	TypedArray<TextureLayered> get_lightmap_textures() const;
 	void set_uses_spherical_harmonics(bool uses_spherical_harmonics);
@@ -63,6 +63,7 @@ public:
 	void clear_users();
 	void set_light_texture(const Ref<TextureLayered> &light_texture);
 	Ref<TextureLayered> get_light_texture() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -70,7 +71,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

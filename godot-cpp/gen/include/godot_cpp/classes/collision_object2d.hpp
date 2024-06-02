@@ -34,16 +34,17 @@
 #define GODOT_CPP_COLLISION_OBJECT2D_HPP
 
 #include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/packed_int32_array.hpp>
 #include <godot_cpp/variant/rid.hpp>
-#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/transform2d.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class InputEvent;
@@ -55,7 +56,6 @@ class CollisionObject2D : public Node2D {
 	GDEXTENSION_CLASS(CollisionObject2D, Node2D)
 
 public:
-
 	enum DisableMode {
 		DISABLE_MODE_REMOVE = 0,
 		DISABLE_MODE_MAKE_STATIC = 1,
@@ -101,29 +101,29 @@ public:
 	virtual void _mouse_exit();
 	virtual void _mouse_shape_enter(int32_t shape_idx);
 	virtual void _mouse_shape_exit(int32_t shape_idx);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Node2D::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_input_event),decltype(&T::_input_event)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_input_event), decltype(&T::_input_event)>) {
 			BIND_VIRTUAL_METHOD(T, _input_event);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_mouse_enter),decltype(&T::_mouse_enter)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_mouse_enter), decltype(&T::_mouse_enter)>) {
 			BIND_VIRTUAL_METHOD(T, _mouse_enter);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_mouse_exit),decltype(&T::_mouse_exit)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_mouse_exit), decltype(&T::_mouse_exit)>) {
 			BIND_VIRTUAL_METHOD(T, _mouse_exit);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_mouse_shape_enter),decltype(&T::_mouse_shape_enter)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_mouse_shape_enter), decltype(&T::_mouse_shape_enter)>) {
 			BIND_VIRTUAL_METHOD(T, _mouse_shape_enter);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_mouse_shape_exit),decltype(&T::_mouse_shape_exit)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_mouse_shape_exit), decltype(&T::_mouse_shape_exit)>) {
 			BIND_VIRTUAL_METHOD(T, _mouse_shape_exit);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

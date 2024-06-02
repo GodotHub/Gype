@@ -34,21 +34,21 @@
 #define GODOT_CPP_AUDIO_STREAM_MP3_HPP
 
 #include <godot_cpp/classes/audio_stream.hpp>
-#include <godot_cpp/variant/packed_byte_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/variant/packed_byte_array.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class AudioStreamMP3 : public AudioStream {
 	GDEXTENSION_CLASS(AudioStreamMP3, AudioStream)
 
 public:
-
 	void set_data(const PackedByteArray &data);
 	PackedByteArray get_data() const;
 	void set_loop(bool enable);
@@ -61,6 +61,7 @@ public:
 	int32_t get_beat_count() const;
 	void set_bar_beats(int32_t count);
 	int32_t get_bar_beats() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -68,7 +69,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

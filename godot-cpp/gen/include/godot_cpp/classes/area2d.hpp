@@ -42,7 +42,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Node;
@@ -52,7 +52,6 @@ class Area2D : public CollisionObject2D {
 	GDEXTENSION_CLASS(Area2D, CollisionObject2D)
 
 public:
-
 	enum SpaceOverride {
 		SPACE_OVERRIDE_DISABLED = 0,
 		SPACE_OVERRIDE_COMBINE = 1,
@@ -97,6 +96,7 @@ public:
 	StringName get_audio_bus_name() const;
 	void set_audio_bus_override(bool enable);
 	bool is_overriding_audio_bus() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -104,7 +104,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

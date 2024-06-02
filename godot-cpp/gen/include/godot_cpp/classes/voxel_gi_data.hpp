@@ -33,26 +33,26 @@
 #ifndef GODOT_CPP_VOXEL_GI_DATA_HPP
 #define GODOT_CPP_VOXEL_GI_DATA_HPP
 
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/aabb.hpp>
 #include <godot_cpp/variant/packed_byte_array.hpp>
 #include <godot_cpp/variant/packed_int32_array.hpp>
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/transform3d.hpp>
 #include <godot_cpp/variant/vector3.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class VoxelGIData : public Resource {
 	GDEXTENSION_CLASS(VoxelGIData, Resource)
 
 public:
-
 	void allocate(const Transform3D &to_cell_xform, const AABB &aabb, const Vector3 &octree_size, const PackedByteArray &octree_cells, const PackedByteArray &data_cells, const PackedByteArray &distance_field, const PackedInt32Array &level_counts);
 	AABB get_bounds() const;
 	Vector3 get_octree_size() const;
@@ -74,6 +74,7 @@ public:
 	bool is_interior() const;
 	void set_use_two_bounces(bool enable);
 	bool is_using_two_bounces() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -81,7 +82,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

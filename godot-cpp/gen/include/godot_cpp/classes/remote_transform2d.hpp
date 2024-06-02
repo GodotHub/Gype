@@ -40,14 +40,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class RemoteTransform2D : public Node2D {
 	GDEXTENSION_CLASS(RemoteTransform2D, Node2D)
 
 public:
-
 	void set_remote_node(const NodePath &path);
 	NodePath get_remote_node() const;
 	void force_update_cache();
@@ -59,6 +58,7 @@ public:
 	bool get_update_rotation() const;
 	void set_update_scale(bool update_remote_scale);
 	bool get_update_scale() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -66,7 +66,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

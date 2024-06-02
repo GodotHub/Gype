@@ -34,16 +34,17 @@
 #define GODOT_CPP_STYLE_BOX_HPP
 
 #include <godot_cpp/classes/global_constants.hpp>
-#include <godot_cpp/variant/rect2.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/variant/rect2.hpp>
 #include <godot_cpp/variant/vector2.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class CanvasItem;
@@ -53,7 +54,6 @@ class StyleBox : public Resource {
 	GDEXTENSION_CLASS(StyleBox, Resource)
 
 public:
-
 	Vector2 get_minimum_size() const;
 	void set_content_margin(Side margin, double offset);
 	void set_content_margin_all(double offset);
@@ -67,26 +67,26 @@ public:
 	virtual Rect2 _get_draw_rect(const Rect2 &rect) const;
 	virtual Vector2 _get_minimum_size() const;
 	virtual bool _test_mask(const Vector2 &point, const Rect2 &rect) const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Resource::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_draw),decltype(&T::_draw)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_draw), decltype(&T::_draw)>) {
 			BIND_VIRTUAL_METHOD(T, _draw);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_draw_rect),decltype(&T::_get_draw_rect)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_draw_rect), decltype(&T::_get_draw_rect)>) {
 			BIND_VIRTUAL_METHOD(T, _get_draw_rect);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_minimum_size),decltype(&T::_get_minimum_size)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_minimum_size), decltype(&T::_get_minimum_size)>) {
 			BIND_VIRTUAL_METHOD(T, _get_minimum_size);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_test_mask),decltype(&T::_test_mask)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_test_mask), decltype(&T::_test_mask)>) {
 			BIND_VIRTUAL_METHOD(T, _test_mask);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

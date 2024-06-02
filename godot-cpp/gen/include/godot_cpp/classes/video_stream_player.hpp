@@ -42,7 +42,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Texture2D;
@@ -52,7 +52,6 @@ class VideoStreamPlayer : public Control {
 	GDEXTENSION_CLASS(VideoStreamPlayer, Control)
 
 public:
-
 	void set_stream(const Ref<VideoStream> &stream);
 	Ref<VideoStream> get_stream() const;
 	void play();
@@ -81,6 +80,7 @@ public:
 	void set_bus(const StringName &bus);
 	StringName get_bus() const;
 	Ref<Texture2D> get_video_texture() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -88,7 +88,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

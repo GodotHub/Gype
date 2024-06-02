@@ -40,7 +40,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Material;
@@ -49,7 +49,6 @@ class CSGSphere3D : public CSGPrimitive3D {
 	GDEXTENSION_CLASS(CSGSphere3D, CSGPrimitive3D)
 
 public:
-
 	void set_radius(double radius);
 	double get_radius() const;
 	void set_radial_segments(int32_t radial_segments);
@@ -60,6 +59,7 @@ public:
 	bool get_smooth_faces() const;
 	void set_material(const Ref<Material> &material);
 	Ref<Material> get_material() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -67,7 +67,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

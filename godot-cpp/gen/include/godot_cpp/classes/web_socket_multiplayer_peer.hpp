@@ -35,16 +35,17 @@
 
 #include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/classes/multiplayer_peer.hpp>
-#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/classes/tls_options.hpp>
+#include <godot_cpp/variant/packed_string_array.hpp>
+#include <godot_cpp/variant/string.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class WebSocketPeer;
@@ -53,7 +54,6 @@ class WebSocketMultiplayerPeer : public MultiplayerPeer {
 	GDEXTENSION_CLASS(WebSocketMultiplayerPeer, MultiplayerPeer)
 
 public:
-
 	Error create_client(const String &url, const Ref<TLSOptions> &tls_client_options = nullptr);
 	Error create_server(int32_t port, const String &bind_address = "*", const Ref<TLSOptions> &tls_server_options = nullptr);
 	Ref<WebSocketPeer> get_peer(int32_t peer_id) const;
@@ -71,6 +71,7 @@ public:
 	void set_handshake_timeout(double timeout);
 	void set_max_queued_packets(int32_t max_queued_packets);
 	int32_t get_max_queued_packets() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -78,7 +79,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

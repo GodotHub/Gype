@@ -41,18 +41,18 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class StreamPeerGZIP : public StreamPeer {
 	GDEXTENSION_CLASS(StreamPeerGZIP, StreamPeer)
 
 public:
-
 	Error start_compression(bool use_deflate = false, int32_t buffer_size = 65535);
 	Error start_decompression(bool use_deflate = false, int32_t buffer_size = 65535);
 	Error finish();
 	void clear();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -60,7 +60,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

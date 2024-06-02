@@ -33,18 +33,19 @@
 #ifndef GODOT_CPP_CPU_PARTICLES3D_HPP
 #define GODOT_CPP_CPU_PARTICLES3D_HPP
 
-#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/geometry_instance3d.hpp>
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/variant/packed_color_array.hpp>
 #include <godot_cpp/variant/packed_vector3_array.hpp>
-#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/vector3.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Curve;
@@ -56,7 +57,6 @@ class CPUParticles3D : public GeometryInstance3D {
 	GDEXTENSION_CLASS(CPUParticles3D, GeometryInstance3D)
 
 public:
-
 	enum DrawOrder {
 		DRAW_ORDER_INDEX = 0,
 		DRAW_ORDER_LIFETIME = 1,
@@ -177,6 +177,7 @@ public:
 	Ref<Curve> get_scale_curve_z() const;
 	void set_scale_curve_z(const Ref<Curve> &scale_curve);
 	void convert_from_particles(Node *particles);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -184,7 +185,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

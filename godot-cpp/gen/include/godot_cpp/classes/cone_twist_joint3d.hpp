@@ -39,14 +39,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class ConeTwistJoint3D : public Joint3D {
 	GDEXTENSION_CLASS(ConeTwistJoint3D, Joint3D)
 
 public:
-
 	enum Param {
 		PARAM_SWING_SPAN = 0,
 		PARAM_TWIST_SPAN = 1,
@@ -58,6 +57,7 @@ public:
 
 	void set_param(ConeTwistJoint3D::Param param, double value);
 	double get_param(ConeTwistJoint3D::Param param) const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -65,7 +65,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

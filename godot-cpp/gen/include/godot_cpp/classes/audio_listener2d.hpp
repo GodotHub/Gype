@@ -39,17 +39,17 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class AudioListener2D : public Node2D {
 	GDEXTENSION_CLASS(AudioListener2D, Node2D)
 
 public:
-
 	void make_current();
 	void clear_current();
 	bool is_current() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -57,7 +57,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -33,16 +33,17 @@
 #ifndef GODOT_CPP_RESOURCE_HPP
 #define GODOT_CPP_RESOURCE_HPP
 
-#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/variant/string.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Node;
@@ -51,7 +52,6 @@ class Resource : public RefCounted {
 	GDEXTENSION_CLASS(Resource, RefCounted)
 
 public:
-
 	void set_path(const String &path);
 	void take_over_path(const String &path);
 	String get_path() const;
@@ -65,17 +65,17 @@ public:
 	void emit_changed();
 	Ref<Resource> duplicate(bool subresources = false) const;
 	virtual void _setup_local_to_scene();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		RefCounted::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_setup_local_to_scene),decltype(&T::_setup_local_to_scene)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_setup_local_to_scene), decltype(&T::_setup_local_to_scene)>) {
 			BIND_VIRTUAL_METHOD(T, _setup_local_to_scene);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

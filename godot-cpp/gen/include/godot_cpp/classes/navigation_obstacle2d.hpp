@@ -42,14 +42,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class NavigationObstacle2D : public Node2D {
 	GDEXTENSION_CLASS(NavigationObstacle2D, Node2D)
 
 public:
-
 	RID get_rid() const;
 	void set_avoidance_enabled(bool enabled);
 	bool get_avoidance_enabled() const;
@@ -65,6 +64,7 @@ public:
 	uint32_t get_avoidance_layers() const;
 	void set_avoidance_layer_value(int32_t layer_number, bool value);
 	bool get_avoidance_layer_value(int32_t layer_number) const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -72,7 +72,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -34,25 +34,25 @@
 #define GODOT_CPP_FILE_ACCESS_HPP
 
 #include <godot_cpp/classes/global_constants.hpp>
-#include <godot_cpp/variant/packed_byte_array.hpp>
-#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/variant/packed_byte_array.hpp>
+#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/variant.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class FileAccess : public RefCounted {
 	GDEXTENSION_CLASS(FileAccess, RefCounted)
 
 public:
-
 	enum ModeFlags {
 		READ = 1,
 		WRITE = 2,
@@ -139,6 +139,7 @@ public:
 	static Error set_hidden_attribute(const String &file, bool hidden);
 	static Error set_read_only_attribute(const String &file, bool ro);
 	static bool get_read_only_attribute(const String &file);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -148,7 +149,6 @@ protected:
 public:
 	uint64_t get_buffer(uint8_t *p_dst, uint64_t p_length) const;
 	void store_buffer(const uint8_t *p_src, uint64_t p_length);
-
 };
 
 } // namespace godot

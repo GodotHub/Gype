@@ -43,7 +43,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Node;
@@ -53,7 +53,6 @@ class Area3D : public CollisionObject3D {
 	GDEXTENSION_CLASS(Area3D, CollisionObject3D)
 
 public:
-
 	enum SpaceOverride {
 		SPACE_OVERRIDE_DISABLED = 0,
 		SPACE_OVERRIDE_COMBINE = 1,
@@ -112,6 +111,7 @@ public:
 	double get_reverb_amount() const;
 	void set_reverb_uniformity(double amount);
 	double get_reverb_uniformity() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -119,7 +119,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

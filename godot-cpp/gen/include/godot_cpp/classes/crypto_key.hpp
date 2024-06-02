@@ -42,19 +42,19 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class CryptoKey : public Resource {
 	GDEXTENSION_CLASS(CryptoKey, Resource)
 
 public:
-
 	Error save(const String &path, bool public_only = false);
 	Error load(const String &path, bool public_only = false);
 	bool is_public_only() const;
 	String save_to_string(bool public_only = false);
 	Error load_from_string(const String &string_key, bool public_only = false);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -62,7 +62,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -34,17 +34,18 @@
 #define GODOT_CPP_GLTF_DOCUMENT_EXTENSION_HPP
 
 #include <godot_cpp/classes/global_constants.hpp>
-#include <godot_cpp/variant/packed_byte_array.hpp>
-#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/variant/packed_byte_array.hpp>
+#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/string.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Dictionary;
@@ -59,7 +60,6 @@ class GLTFDocumentExtension : public Resource {
 	GDEXTENSION_CLASS(GLTFDocumentExtension, Resource)
 
 public:
-
 	virtual Error _import_preflight(const Ref<GLTFState> &state, const PackedStringArray &extensions);
 	virtual PackedStringArray _get_supported_extensions();
 	virtual Error _parse_node_extensions(const Ref<GLTFState> &state, const Ref<GLTFNode> &gltf_node, const Dictionary &extensions);
@@ -79,71 +79,71 @@ public:
 	virtual Error _serialize_texture_json(const Ref<GLTFState> &state, const Dictionary &texture_json, const Ref<GLTFTexture> &gltf_texture, const String &image_format);
 	virtual Error _export_node(const Ref<GLTFState> &state, const Ref<GLTFNode> &gltf_node, const Dictionary &json, Node *node);
 	virtual Error _export_post(const Ref<GLTFState> &state);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Resource::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_import_preflight),decltype(&T::_import_preflight)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_import_preflight), decltype(&T::_import_preflight)>) {
 			BIND_VIRTUAL_METHOD(T, _import_preflight);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_supported_extensions),decltype(&T::_get_supported_extensions)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_supported_extensions), decltype(&T::_get_supported_extensions)>) {
 			BIND_VIRTUAL_METHOD(T, _get_supported_extensions);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_parse_node_extensions),decltype(&T::_parse_node_extensions)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_parse_node_extensions), decltype(&T::_parse_node_extensions)>) {
 			BIND_VIRTUAL_METHOD(T, _parse_node_extensions);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_parse_image_data),decltype(&T::_parse_image_data)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_parse_image_data), decltype(&T::_parse_image_data)>) {
 			BIND_VIRTUAL_METHOD(T, _parse_image_data);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_image_file_extension),decltype(&T::_get_image_file_extension)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_image_file_extension), decltype(&T::_get_image_file_extension)>) {
 			BIND_VIRTUAL_METHOD(T, _get_image_file_extension);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_parse_texture_json),decltype(&T::_parse_texture_json)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_parse_texture_json), decltype(&T::_parse_texture_json)>) {
 			BIND_VIRTUAL_METHOD(T, _parse_texture_json);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_generate_scene_node),decltype(&T::_generate_scene_node)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_generate_scene_node), decltype(&T::_generate_scene_node)>) {
 			BIND_VIRTUAL_METHOD(T, _generate_scene_node);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_import_post_parse),decltype(&T::_import_post_parse)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_import_post_parse), decltype(&T::_import_post_parse)>) {
 			BIND_VIRTUAL_METHOD(T, _import_post_parse);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_import_node),decltype(&T::_import_node)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_import_node), decltype(&T::_import_node)>) {
 			BIND_VIRTUAL_METHOD(T, _import_node);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_import_post),decltype(&T::_import_post)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_import_post), decltype(&T::_import_post)>) {
 			BIND_VIRTUAL_METHOD(T, _import_post);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_export_preflight),decltype(&T::_export_preflight)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_export_preflight), decltype(&T::_export_preflight)>) {
 			BIND_VIRTUAL_METHOD(T, _export_preflight);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_convert_scene_node),decltype(&T::_convert_scene_node)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_convert_scene_node), decltype(&T::_convert_scene_node)>) {
 			BIND_VIRTUAL_METHOD(T, _convert_scene_node);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_export_preserialize),decltype(&T::_export_preserialize)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_export_preserialize), decltype(&T::_export_preserialize)>) {
 			BIND_VIRTUAL_METHOD(T, _export_preserialize);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_saveable_image_formats),decltype(&T::_get_saveable_image_formats)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_saveable_image_formats), decltype(&T::_get_saveable_image_formats)>) {
 			BIND_VIRTUAL_METHOD(T, _get_saveable_image_formats);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_serialize_image_to_bytes),decltype(&T::_serialize_image_to_bytes)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_serialize_image_to_bytes), decltype(&T::_serialize_image_to_bytes)>) {
 			BIND_VIRTUAL_METHOD(T, _serialize_image_to_bytes);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_save_image_at_path),decltype(&T::_save_image_at_path)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_save_image_at_path), decltype(&T::_save_image_at_path)>) {
 			BIND_VIRTUAL_METHOD(T, _save_image_at_path);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_serialize_texture_json),decltype(&T::_serialize_texture_json)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_serialize_texture_json), decltype(&T::_serialize_texture_json)>) {
 			BIND_VIRTUAL_METHOD(T, _serialize_texture_json);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_export_node),decltype(&T::_export_node)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_export_node), decltype(&T::_export_node)>) {
 			BIND_VIRTUAL_METHOD(T, _export_node);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_export_post),decltype(&T::_export_post)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_export_post), decltype(&T::_export_post)>) {
 			BIND_VIRTUAL_METHOD(T, _export_post);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

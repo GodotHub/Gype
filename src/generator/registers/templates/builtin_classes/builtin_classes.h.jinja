@@ -1,0 +1,14 @@
+#ifndef REGISTER_BUILTIN_CLASSES
+#define REGISTER_BUILTIN_CLASSES
+
+#include "qjspp.hpp"
+
+extern qjs::Context::Module &_Variant;
+
+{% for clazz in builtin_classes %}
+    {% if not is_pod_type(clazz.name) %}
+void register_builtin_classes_{{clazz.name}}();
+    {% endif %}
+{% endfor %}
+void register_builtin_classes_Variant();
+#endif

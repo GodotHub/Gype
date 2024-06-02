@@ -40,7 +40,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class OggPacketSequence;
@@ -51,7 +51,6 @@ class AudioStreamOggVorbis : public AudioStream {
 	GDEXTENSION_CLASS(AudioStreamOggVorbis, AudioStream)
 
 public:
-
 	static Ref<AudioStreamOggVorbis> load_from_buffer(const PackedByteArray &buffer);
 	static Ref<AudioStreamOggVorbis> load_from_file(const String &path);
 	void set_packet_sequence(const Ref<OggPacketSequence> &packet_sequence);
@@ -66,6 +65,7 @@ public:
 	int32_t get_beat_count() const;
 	void set_bar_beats(int32_t count);
 	int32_t get_bar_beats() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -73,7 +73,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

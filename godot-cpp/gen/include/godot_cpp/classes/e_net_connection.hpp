@@ -33,18 +33,19 @@
 #ifndef GODOT_CPP_E_NET_CONNECTION_HPP
 #define GODOT_CPP_E_NET_CONNECTION_HPP
 
-#include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/tls_options.hpp>
+#include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class ENetPacketPeer;
@@ -55,7 +56,6 @@ class ENetConnection : public RefCounted {
 	GDEXTENSION_CLASS(ENetConnection, RefCounted)
 
 public:
-
 	enum CompressionMode {
 		COMPRESS_NONE = 0,
 		COMPRESS_RANGE_CODER = 1,
@@ -97,6 +97,7 @@ public:
 	int32_t get_local_port() const;
 	TypedArray<ENetPacketPeer> get_peers();
 	void socket_send(const String &destination_address, int32_t destination_port, const PackedByteArray &packet);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -104,7 +105,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

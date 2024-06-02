@@ -41,7 +41,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Resource;
@@ -50,27 +50,26 @@ class EditorResourceConversionPlugin : public RefCounted {
 	GDEXTENSION_CLASS(EditorResourceConversionPlugin, RefCounted)
 
 public:
-
 	virtual String _converts_to() const;
 	virtual bool _handles(const Ref<Resource> &resource) const;
 	virtual Ref<Resource> _convert(const Ref<Resource> &resource) const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		RefCounted::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_converts_to),decltype(&T::_converts_to)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_converts_to), decltype(&T::_converts_to)>) {
 			BIND_VIRTUAL_METHOD(T, _converts_to);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_handles),decltype(&T::_handles)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_handles), decltype(&T::_handles)>) {
 			BIND_VIRTUAL_METHOD(T, _handles);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_convert),decltype(&T::_convert)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_convert), decltype(&T::_convert)>) {
 			BIND_VIRTUAL_METHOD(T, _convert);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

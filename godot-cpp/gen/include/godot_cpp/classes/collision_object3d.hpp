@@ -34,16 +34,17 @@
 #define GODOT_CPP_COLLISION_OBJECT3D_HPP
 
 #include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/packed_int32_array.hpp>
 #include <godot_cpp/variant/rid.hpp>
-#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/transform3d.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Camera3D;
@@ -56,7 +57,6 @@ class CollisionObject3D : public Node3D {
 	GDEXTENSION_CLASS(CollisionObject3D, Node3D)
 
 public:
-
 	enum DisableMode {
 		DISABLE_MODE_REMOVE = 0,
 		DISABLE_MODE_MAKE_STATIC = 1,
@@ -98,23 +98,23 @@ public:
 	virtual void _input_event(Camera3D *camera, const Ref<InputEvent> &event, const Vector3 &position, const Vector3 &normal, int32_t shape_idx);
 	virtual void _mouse_enter();
 	virtual void _mouse_exit();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Node3D::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_input_event),decltype(&T::_input_event)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_input_event), decltype(&T::_input_event)>) {
 			BIND_VIRTUAL_METHOD(T, _input_event);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_mouse_enter),decltype(&T::_mouse_enter)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_mouse_enter), decltype(&T::_mouse_enter)>) {
 			BIND_VIRTUAL_METHOD(T, _mouse_enter);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_mouse_exit),decltype(&T::_mouse_exit)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_mouse_exit), decltype(&T::_mouse_exit)>) {
 			BIND_VIRTUAL_METHOD(T, _mouse_exit);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

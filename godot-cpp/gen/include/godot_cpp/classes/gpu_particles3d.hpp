@@ -33,16 +33,17 @@
 #ifndef GODOT_CPP_GPU_PARTICLES3D_HPP
 #define GODOT_CPP_GPU_PARTICLES3D_HPP
 
-#include <godot_cpp/variant/aabb.hpp>
 #include <godot_cpp/classes/geometry_instance3d.hpp>
-#include <godot_cpp/variant/node_path.hpp>
 #include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/variant/aabb.hpp>
+#include <godot_cpp/variant/node_path.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 struct Color;
@@ -57,7 +58,6 @@ class GPUParticles3D : public GeometryInstance3D {
 	GDEXTENSION_CLASS(GPUParticles3D, GeometryInstance3D)
 
 public:
-
 	enum DrawOrder {
 		DRAW_ORDER_INDEX = 0,
 		DRAW_ORDER_LIFETIME = 1,
@@ -136,6 +136,7 @@ public:
 	void convert_from_particles(Node *particles);
 	void set_amount_ratio(double ratio);
 	double get_amount_ratio() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -143,7 +144,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

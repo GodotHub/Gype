@@ -42,14 +42,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class InputEventKey : public InputEventWithModifiers {
 	GDEXTENSION_CLASS(InputEventKey, InputEventWithModifiers)
 
 public:
-
 	void set_pressed(bool pressed);
 	void set_keycode(Key keycode);
 	Key get_keycode() const;
@@ -66,6 +65,7 @@ public:
 	String as_text_keycode() const;
 	String as_text_physical_keycode() const;
 	String as_text_key_label() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -73,7 +73,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

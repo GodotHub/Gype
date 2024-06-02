@@ -33,15 +33,16 @@
 #ifndef GODOT_CPP_FOG_MATERIAL_HPP
 #define GODOT_CPP_FOG_MATERIAL_HPP
 
-#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/variant/color.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Texture3D;
@@ -50,7 +51,6 @@ class FogMaterial : public Material {
 	GDEXTENSION_CLASS(FogMaterial, Material)
 
 public:
-
 	void set_density(double density);
 	double get_density() const;
 	void set_albedo(const Color &albedo);
@@ -63,6 +63,7 @@ public:
 	double get_edge_fade() const;
 	void set_density_texture(const Ref<Texture3D> &density_texture);
 	Ref<Texture3D> get_density_texture() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -70,7 +71,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

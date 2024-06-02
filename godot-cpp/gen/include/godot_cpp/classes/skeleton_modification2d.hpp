@@ -40,7 +40,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class SkeletonModificationStack2D;
@@ -49,7 +49,6 @@ class SkeletonModification2D : public Resource {
 	GDEXTENSION_CLASS(SkeletonModification2D, Resource)
 
 public:
-
 	void set_enabled(bool enabled);
 	bool get_enabled();
 	Ref<SkeletonModificationStack2D> get_modification_stack();
@@ -63,23 +62,23 @@ public:
 	virtual void _execute(double delta);
 	virtual void _setup_modification(const Ref<SkeletonModificationStack2D> &modification_stack);
 	virtual void _draw_editor_gizmo();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Resource::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_execute),decltype(&T::_execute)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_execute), decltype(&T::_execute)>) {
 			BIND_VIRTUAL_METHOD(T, _execute);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_setup_modification),decltype(&T::_setup_modification)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_setup_modification), decltype(&T::_setup_modification)>) {
 			BIND_VIRTUAL_METHOD(T, _setup_modification);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_draw_editor_gizmo),decltype(&T::_draw_editor_gizmo)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_draw_editor_gizmo), decltype(&T::_draw_editor_gizmo)>) {
 			BIND_VIRTUAL_METHOD(T, _draw_editor_gizmo);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -42,7 +42,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Image;
@@ -51,9 +51,9 @@ class ImageTextureLayered : public TextureLayered {
 	GDEXTENSION_CLASS(ImageTextureLayered, TextureLayered)
 
 public:
-
 	Error create_from_images(const TypedArray<Image> &images);
 	void update_layer(const Ref<Image> &image, int32_t layer);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -61,7 +61,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

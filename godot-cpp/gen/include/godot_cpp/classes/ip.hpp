@@ -33,25 +33,25 @@
 #ifndef GODOT_CPP_IP_HPP
 #define GODOT_CPP_IP_HPP
 
+#include <godot_cpp/core/object.hpp>
 #include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/dictionary.hpp>
-#include <godot_cpp/core/object.hpp>
 #include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class IP : public Object {
 	GDEXTENSION_CLASS(IP, Object)
 
 public:
-
 	enum ResolverStatus {
 		RESOLVER_STATUS_NONE = 0,
 		RESOLVER_STATUS_WAITING = 1,
@@ -81,6 +81,7 @@ public:
 	PackedStringArray get_local_addresses() const;
 	TypedArray<Dictionary> get_local_interfaces() const;
 	void clear_cache(const String &hostname = String());
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -88,7 +89,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

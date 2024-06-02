@@ -41,18 +41,18 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class RDPipelineSpecializationConstant : public RefCounted {
 	GDEXTENSION_CLASS(RDPipelineSpecializationConstant, RefCounted)
 
 public:
-
 	void set_value(const Variant &value);
 	Variant get_value() const;
 	void set_constant_id(uint32_t constant_id);
 	uint32_t get_constant_id() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -60,7 +60,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -41,14 +41,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class PrismMesh : public PrimitiveMesh {
 	GDEXTENSION_CLASS(PrismMesh, PrimitiveMesh)
 
 public:
-
 	void set_left_to_right(double left_to_right);
 	double get_left_to_right() const;
 	void set_size(const Vector3 &size);
@@ -59,6 +58,7 @@ public:
 	int32_t get_subdivide_height() const;
 	void set_subdivide_depth(int32_t segments);
 	int32_t get_subdivide_depth() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -66,7 +66,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

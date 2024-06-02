@@ -39,18 +39,18 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class GrooveJoint2D : public Joint2D {
 	GDEXTENSION_CLASS(GrooveJoint2D, Joint2D)
 
 public:
-
 	void set_length(double length);
 	double get_length() const;
 	void set_initial_offset(double offset);
 	double get_initial_offset() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -58,7 +58,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

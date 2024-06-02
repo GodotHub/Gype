@@ -40,7 +40,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Texture2D;
@@ -49,7 +49,6 @@ class TextureRect : public Control {
 	GDEXTENSION_CLASS(TextureRect, Control)
 
 public:
-
 	enum ExpandMode {
 		EXPAND_KEEP_SIZE = 0,
 		EXPAND_IGNORE_SIZE = 1,
@@ -79,6 +78,7 @@ public:
 	bool is_flipped_v() const;
 	void set_stretch_mode(TextureRect::StretchMode stretch_mode);
 	TextureRect::StretchMode get_stretch_mode() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -86,7 +86,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

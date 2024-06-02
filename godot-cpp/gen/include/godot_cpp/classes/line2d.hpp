@@ -33,17 +33,18 @@
 #ifndef GODOT_CPP_LINE2D_HPP
 #define GODOT_CPP_LINE2D_HPP
 
-#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/node2d.hpp>
-#include <godot_cpp/variant/packed_vector2_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/variant/color.hpp>
+#include <godot_cpp/variant/packed_vector2_array.hpp>
 #include <godot_cpp/variant/vector2.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Curve;
@@ -54,7 +55,6 @@ class Line2D : public Node2D {
 	GDEXTENSION_CLASS(Line2D, Node2D)
 
 public:
-
 	enum LineJointMode {
 		LINE_JOINT_SHARP = 0,
 		LINE_JOINT_BEVEL = 1,
@@ -107,6 +107,7 @@ public:
 	int32_t get_round_precision() const;
 	void set_antialiased(bool antialiased);
 	bool get_antialiased() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -114,7 +115,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -41,7 +41,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class AnimationNode;
@@ -51,7 +51,6 @@ class AnimationNodeBlendTree : public AnimationRootNode {
 	GDEXTENSION_CLASS(AnimationNodeBlendTree, AnimationRootNode)
 
 public:
-
 	static const int CONNECTION_OK = 0;
 	static const int CONNECTION_ERROR_NO_INPUT = 1;
 	static const int CONNECTION_ERROR_NO_INPUT_INDEX = 2;
@@ -70,6 +69,7 @@ public:
 	Vector2 get_node_position(const StringName &name) const;
 	void set_graph_offset(const Vector2 &offset);
 	Vector2 get_graph_offset() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -77,7 +77,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

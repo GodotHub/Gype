@@ -33,19 +33,20 @@
 #ifndef GODOT_CPP_NAVIGATION_MESH_HPP
 #define GODOT_CPP_NAVIGATION_MESH_HPP
 
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/aabb.hpp>
 #include <godot_cpp/variant/packed_int32_array.hpp>
 #include <godot_cpp/variant/packed_vector3_array.hpp>
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/variant/vector3.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Mesh;
@@ -54,7 +55,6 @@ class NavigationMesh : public Resource {
 	GDEXTENSION_CLASS(NavigationMesh, Resource)
 
 public:
-
 	enum SamplePartitionType {
 		SAMPLE_PARTITION_WATERSHED = 0,
 		SAMPLE_PARTITION_MONOTONE = 1,
@@ -132,6 +132,7 @@ public:
 	void clear_polygons();
 	void create_from_mesh(const Ref<Mesh> &mesh);
 	void clear();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -139,7 +140,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

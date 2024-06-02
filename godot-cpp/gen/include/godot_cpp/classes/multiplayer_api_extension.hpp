@@ -35,14 +35,15 @@
 
 #include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/classes/multiplayer_api.hpp>
-#include <godot_cpp/variant/packed_int32_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/variant/packed_int32_array.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Array;
@@ -55,7 +56,6 @@ class MultiplayerAPIExtension : public MultiplayerAPI {
 	GDEXTENSION_CLASS(MultiplayerAPIExtension, MultiplayerAPI)
 
 public:
-
 	virtual Error _poll();
 	virtual void _set_multiplayer_peer(const Ref<MultiplayerPeer> &multiplayer_peer);
 	virtual Ref<MultiplayerPeer> _get_multiplayer_peer();
@@ -65,41 +65,41 @@ public:
 	virtual int32_t _get_remote_sender_id() const;
 	virtual Error _object_configuration_add(Object *object, const Variant &configuration);
 	virtual Error _object_configuration_remove(Object *object, const Variant &configuration);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		MultiplayerAPI::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_poll),decltype(&T::_poll)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_poll), decltype(&T::_poll)>) {
 			BIND_VIRTUAL_METHOD(T, _poll);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_set_multiplayer_peer),decltype(&T::_set_multiplayer_peer)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_set_multiplayer_peer), decltype(&T::_set_multiplayer_peer)>) {
 			BIND_VIRTUAL_METHOD(T, _set_multiplayer_peer);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_multiplayer_peer),decltype(&T::_get_multiplayer_peer)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_multiplayer_peer), decltype(&T::_get_multiplayer_peer)>) {
 			BIND_VIRTUAL_METHOD(T, _get_multiplayer_peer);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_unique_id),decltype(&T::_get_unique_id)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_unique_id), decltype(&T::_get_unique_id)>) {
 			BIND_VIRTUAL_METHOD(T, _get_unique_id);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_peer_ids),decltype(&T::_get_peer_ids)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_peer_ids), decltype(&T::_get_peer_ids)>) {
 			BIND_VIRTUAL_METHOD(T, _get_peer_ids);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_rpc),decltype(&T::_rpc)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_rpc), decltype(&T::_rpc)>) {
 			BIND_VIRTUAL_METHOD(T, _rpc);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_remote_sender_id),decltype(&T::_get_remote_sender_id)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_remote_sender_id), decltype(&T::_get_remote_sender_id)>) {
 			BIND_VIRTUAL_METHOD(T, _get_remote_sender_id);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_object_configuration_add),decltype(&T::_object_configuration_add)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_object_configuration_add), decltype(&T::_object_configuration_add)>) {
 			BIND_VIRTUAL_METHOD(T, _object_configuration_add);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_object_configuration_remove),decltype(&T::_object_configuration_remove)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_object_configuration_remove), decltype(&T::_object_configuration_remove)>) {
 			BIND_VIRTUAL_METHOD(T, _object_configuration_remove);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

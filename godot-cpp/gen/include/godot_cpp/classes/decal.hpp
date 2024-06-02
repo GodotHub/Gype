@@ -33,16 +33,17 @@
 #ifndef GODOT_CPP_DECAL_HPP
 #define GODOT_CPP_DECAL_HPP
 
-#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/variant/vector3.hpp>
 #include <godot_cpp/classes/visual_instance3d.hpp>
+#include <godot_cpp/variant/color.hpp>
+#include <godot_cpp/variant/vector3.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Texture2D;
@@ -51,7 +52,6 @@ class Decal : public VisualInstance3D {
 	GDEXTENSION_CLASS(Decal, VisualInstance3D)
 
 public:
-
 	enum DecalTexture {
 		TEXTURE_ALBEDO = 0,
 		TEXTURE_NORMAL = 1,
@@ -84,6 +84,7 @@ public:
 	double get_distance_fade_length() const;
 	void set_cull_mask(uint32_t mask);
 	uint32_t get_cull_mask() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -91,7 +92,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -33,24 +33,25 @@
 #ifndef GODOT_CPP_WORLD_BOUNDARY_SHAPE3D_HPP
 #define GODOT_CPP_WORLD_BOUNDARY_SHAPE3D_HPP
 
-#include <godot_cpp/variant/plane.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/shape3d.hpp>
+#include <godot_cpp/variant/plane.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class WorldBoundaryShape3D : public Shape3D {
 	GDEXTENSION_CLASS(WorldBoundaryShape3D, Shape3D)
 
 public:
-
 	void set_plane(const Plane &plane);
 	Plane get_plane() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -58,7 +59,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

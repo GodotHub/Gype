@@ -43,14 +43,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class JSON : public Resource {
 	GDEXTENSION_CLASS(JSON, Resource)
 
 public:
-
 	static String stringify(const Variant &data, const String &indent = String(), bool sort_keys = true, bool full_precision = false);
 	static Variant parse_string(const String &json_string);
 	Error parse(const String &json_text, bool keep_text = false);
@@ -59,6 +58,7 @@ public:
 	String get_parsed_text() const;
 	int32_t get_error_line() const;
 	String get_error_message() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -66,7 +66,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

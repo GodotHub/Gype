@@ -41,14 +41,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class AudioEffectCompressor : public AudioEffect {
 	GDEXTENSION_CLASS(AudioEffectCompressor, AudioEffect)
 
 public:
-
 	void set_threshold(double threshold);
 	double get_threshold() const;
 	void set_ratio(double ratio);
@@ -63,6 +62,7 @@ public:
 	double get_mix() const;
 	void set_sidechain(const StringName &sidechain);
 	StringName get_sidechain() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -70,7 +70,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

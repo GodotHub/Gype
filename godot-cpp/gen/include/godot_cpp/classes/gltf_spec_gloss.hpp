@@ -33,15 +33,16 @@
 #ifndef GODOT_CPP_GLTF_SPEC_GLOSS_HPP
 #define GODOT_CPP_GLTF_SPEC_GLOSS_HPP
 
-#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/variant/color.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Image;
@@ -50,7 +51,6 @@ class GLTFSpecGloss : public Resource {
 	GDEXTENSION_CLASS(GLTFSpecGloss, Resource)
 
 public:
-
 	Ref<Image> get_diffuse_img();
 	void set_diffuse_img(const Ref<Image> &diffuse_img);
 	Color get_diffuse_factor();
@@ -61,6 +61,7 @@ public:
 	void set_specular_factor(const Color &specular_factor);
 	Ref<Image> get_spec_gloss_img();
 	void set_spec_gloss_img(const Ref<Image> &spec_gloss_img);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -68,7 +69,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

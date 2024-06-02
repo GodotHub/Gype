@@ -34,17 +34,18 @@
 #define GODOT_CPP_RESOURCE_FORMAT_LOADER_HPP
 
 #include <godot_cpp/classes/global_constants.hpp>
-#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/variant.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Dictionary;
@@ -54,7 +55,6 @@ class ResourceFormatLoader : public RefCounted {
 	GDEXTENSION_CLASS(ResourceFormatLoader, RefCounted)
 
 public:
-
 	enum CacheMode {
 		CACHE_MODE_IGNORE = 0,
 		CACHE_MODE_REUSE = 1,
@@ -72,47 +72,47 @@ public:
 	virtual bool _exists(const String &path) const;
 	virtual PackedStringArray _get_classes_used(const String &path) const;
 	virtual Variant _load(const String &path, const String &original_path, bool use_sub_threads, int32_t cache_mode) const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		RefCounted::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_get_recognized_extensions),decltype(&T::_get_recognized_extensions)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_recognized_extensions), decltype(&T::_get_recognized_extensions)>) {
 			BIND_VIRTUAL_METHOD(T, _get_recognized_extensions);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_recognize_path),decltype(&T::_recognize_path)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_recognize_path), decltype(&T::_recognize_path)>) {
 			BIND_VIRTUAL_METHOD(T, _recognize_path);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_handles_type),decltype(&T::_handles_type)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_handles_type), decltype(&T::_handles_type)>) {
 			BIND_VIRTUAL_METHOD(T, _handles_type);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_resource_type),decltype(&T::_get_resource_type)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_resource_type), decltype(&T::_get_resource_type)>) {
 			BIND_VIRTUAL_METHOD(T, _get_resource_type);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_resource_script_class),decltype(&T::_get_resource_script_class)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_resource_script_class), decltype(&T::_get_resource_script_class)>) {
 			BIND_VIRTUAL_METHOD(T, _get_resource_script_class);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_resource_uid),decltype(&T::_get_resource_uid)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_resource_uid), decltype(&T::_get_resource_uid)>) {
 			BIND_VIRTUAL_METHOD(T, _get_resource_uid);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_dependencies),decltype(&T::_get_dependencies)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_dependencies), decltype(&T::_get_dependencies)>) {
 			BIND_VIRTUAL_METHOD(T, _get_dependencies);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_rename_dependencies),decltype(&T::_rename_dependencies)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_rename_dependencies), decltype(&T::_rename_dependencies)>) {
 			BIND_VIRTUAL_METHOD(T, _rename_dependencies);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_exists),decltype(&T::_exists)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_exists), decltype(&T::_exists)>) {
 			BIND_VIRTUAL_METHOD(T, _exists);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_classes_used),decltype(&T::_get_classes_used)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_classes_used), decltype(&T::_get_classes_used)>) {
 			BIND_VIRTUAL_METHOD(T, _get_classes_used);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_load),decltype(&T::_load)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_load), decltype(&T::_load)>) {
 			BIND_VIRTUAL_METHOD(T, _load);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

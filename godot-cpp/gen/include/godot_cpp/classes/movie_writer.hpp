@@ -35,14 +35,15 @@
 
 #include <godot_cpp/classes/audio_server.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
-#include <godot_cpp/core/object.hpp>
 #include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/core/object.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Image;
@@ -53,7 +54,6 @@ class MovieWriter : public Object {
 	GDEXTENSION_CLASS(MovieWriter, Object)
 
 public:
-
 	static void add_writer(MovieWriter *writer);
 	virtual uint32_t _get_audio_mix_rate() const;
 	virtual AudioServer::SpeakerMode _get_audio_speaker_mode() const;
@@ -61,32 +61,32 @@ public:
 	virtual Error _write_begin(const Vector2i &movie_size, uint32_t fps, const String &base_path);
 	virtual Error _write_frame(const Ref<Image> &frame_image, const void *audio_frame_block);
 	virtual void _write_end();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_get_audio_mix_rate),decltype(&T::_get_audio_mix_rate)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_audio_mix_rate), decltype(&T::_get_audio_mix_rate)>) {
 			BIND_VIRTUAL_METHOD(T, _get_audio_mix_rate);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_audio_speaker_mode),decltype(&T::_get_audio_speaker_mode)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_audio_speaker_mode), decltype(&T::_get_audio_speaker_mode)>) {
 			BIND_VIRTUAL_METHOD(T, _get_audio_speaker_mode);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_handles_file),decltype(&T::_handles_file)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_handles_file), decltype(&T::_handles_file)>) {
 			BIND_VIRTUAL_METHOD(T, _handles_file);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_write_begin),decltype(&T::_write_begin)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_write_begin), decltype(&T::_write_begin)>) {
 			BIND_VIRTUAL_METHOD(T, _write_begin);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_write_frame),decltype(&T::_write_frame)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_write_frame), decltype(&T::_write_frame)>) {
 			BIND_VIRTUAL_METHOD(T, _write_frame);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_write_end),decltype(&T::_write_end)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_write_end), decltype(&T::_write_end)>) {
 			BIND_VIRTUAL_METHOD(T, _write_end);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

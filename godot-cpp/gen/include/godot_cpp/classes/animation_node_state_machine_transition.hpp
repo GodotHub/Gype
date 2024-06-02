@@ -42,7 +42,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Curve;
@@ -51,7 +51,6 @@ class AnimationNodeStateMachineTransition : public Resource {
 	GDEXTENSION_CLASS(AnimationNodeStateMachineTransition, Resource)
 
 public:
-
 	enum SwitchMode {
 		SWITCH_MODE_IMMEDIATE = 0,
 		SWITCH_MODE_SYNC = 1,
@@ -80,6 +79,7 @@ public:
 	int32_t get_priority() const;
 	void set_advance_expression(const String &text);
 	String get_advance_expression() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -87,7 +87,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

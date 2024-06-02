@@ -33,16 +33,17 @@
 #ifndef GODOT_CPP_TEXT_SERVER_MANAGER_HPP
 #define GODOT_CPP_TEXT_SERVER_MANAGER_HPP
 
-#include <godot_cpp/variant/dictionary.hpp>
-#include <godot_cpp/core/object.hpp>
 #include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/core/object.hpp>
+#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class String;
@@ -52,7 +53,6 @@ class TextServerManager : public Object {
 	GDEXTENSION_CLASS(TextServerManager, Object)
 
 public:
-
 	static TextServerManager *get_singleton();
 
 	void add_interface(const Ref<TextServer> &interface);
@@ -63,6 +63,7 @@ public:
 	Ref<TextServer> find_interface(const String &name) const;
 	void set_primary_interface(const Ref<TextServer> &index);
 	Ref<TextServer> get_primary_interface() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -70,7 +71,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -33,18 +33,19 @@
 #ifndef GODOT_CPP_LINE_EDIT_HPP
 #define GODOT_CPP_LINE_EDIT_HPP
 
-#include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/classes/text_server.hpp>
+#include <godot_cpp/variant/array.hpp>
+#include <godot_cpp/variant/string.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class PopupMenu;
@@ -54,7 +55,6 @@ class LineEdit : public Control {
 	GDEXTENSION_CLASS(LineEdit, Control)
 
 public:
-
 	enum MenuItems {
 		MENU_CUT = 0,
 		MENU_COPY = 1,
@@ -175,6 +175,7 @@ public:
 	bool is_flat() const;
 	void set_select_all_on_focus(bool enabled);
 	bool is_select_all_on_focus() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -182,7 +183,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

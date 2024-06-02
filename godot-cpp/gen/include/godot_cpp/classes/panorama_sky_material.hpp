@@ -40,7 +40,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Texture2D;
@@ -49,11 +49,11 @@ class PanoramaSkyMaterial : public Material {
 	GDEXTENSION_CLASS(PanoramaSkyMaterial, Material)
 
 public:
-
 	void set_panorama(const Ref<Texture2D> &texture);
 	Ref<Texture2D> get_panorama() const;
 	void set_filtering_enabled(bool enabled);
 	bool is_filtering_enabled() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -61,7 +61,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

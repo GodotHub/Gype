@@ -33,24 +33,24 @@
 #ifndef GODOT_CPP_RENDER_SCENE_BUFFERS_CONFIGURATION_HPP
 #define GODOT_CPP_RENDER_SCENE_BUFFERS_CONFIGURATION_HPP
 
-#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/rendering_server.hpp>
+#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/variant/vector2i.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class RenderSceneBuffersConfiguration : public RefCounted {
 	GDEXTENSION_CLASS(RenderSceneBuffersConfiguration, RefCounted)
 
 public:
-
 	RID get_render_target() const;
 	void set_render_target(const RID &render_target);
 	Vector2i get_internal_size() const;
@@ -69,6 +69,7 @@ public:
 	void set_fsr_sharpness(double fsr_sharpness);
 	double get_texture_mipmap_bias() const;
 	void set_texture_mipmap_bias(double texture_mipmap_bias);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -76,7 +77,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

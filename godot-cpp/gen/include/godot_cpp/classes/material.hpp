@@ -33,23 +33,23 @@
 #ifndef GODOT_CPP_MATERIAL_HPP
 #define GODOT_CPP_MATERIAL_HPP
 
-#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/shader.hpp>
+#include <godot_cpp/variant/rid.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Material : public Resource {
 	GDEXTENSION_CLASS(Material, Resource)
 
 public:
-
 	static const int RENDER_PRIORITY_MAX = 127;
 	static const int RENDER_PRIORITY_MIN = -128;
 
@@ -63,26 +63,26 @@ public:
 	virtual Shader::Mode _get_shader_mode() const;
 	virtual bool _can_do_next_pass() const;
 	virtual bool _can_use_render_priority() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Resource::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_get_shader_rid),decltype(&T::_get_shader_rid)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_shader_rid), decltype(&T::_get_shader_rid)>) {
 			BIND_VIRTUAL_METHOD(T, _get_shader_rid);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_shader_mode),decltype(&T::_get_shader_mode)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_shader_mode), decltype(&T::_get_shader_mode)>) {
 			BIND_VIRTUAL_METHOD(T, _get_shader_mode);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_can_do_next_pass),decltype(&T::_can_do_next_pass)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_can_do_next_pass), decltype(&T::_can_do_next_pass)>) {
 			BIND_VIRTUAL_METHOD(T, _can_do_next_pass);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_can_use_render_priority),decltype(&T::_can_use_render_priority)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_can_use_render_priority), decltype(&T::_can_use_render_priority)>) {
 			BIND_VIRTUAL_METHOD(T, _can_use_render_priority);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

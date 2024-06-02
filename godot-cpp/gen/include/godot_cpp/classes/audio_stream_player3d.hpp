@@ -41,7 +41,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class AudioStream;
@@ -51,7 +51,6 @@ class AudioStreamPlayer3D : public Node3D {
 	GDEXTENSION_CLASS(AudioStreamPlayer3D, Node3D)
 
 public:
-
 	enum AttenuationModel {
 		ATTENUATION_INVERSE_DISTANCE = 0,
 		ATTENUATION_INVERSE_SQUARE_DISTANCE = 1,
@@ -110,6 +109,7 @@ public:
 	double get_panning_strength() const;
 	bool has_stream_playback();
 	Ref<AudioStreamPlayback> get_stream_playback();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -117,7 +117,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

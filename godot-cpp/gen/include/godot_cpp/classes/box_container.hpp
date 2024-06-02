@@ -39,7 +39,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Control;
@@ -48,7 +48,6 @@ class BoxContainer : public Container {
 	GDEXTENSION_CLASS(BoxContainer, Container)
 
 public:
-
 	enum AlignmentMode {
 		ALIGNMENT_BEGIN = 0,
 		ALIGNMENT_CENTER = 1,
@@ -60,6 +59,7 @@ public:
 	BoxContainer::AlignmentMode get_alignment() const;
 	void set_vertical(bool vertical);
 	bool is_vertical() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -67,7 +67,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

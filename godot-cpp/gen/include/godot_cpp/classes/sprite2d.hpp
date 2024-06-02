@@ -34,16 +34,17 @@
 #define GODOT_CPP_SPRITE2D_HPP
 
 #include <godot_cpp/classes/node2d.hpp>
-#include <godot_cpp/variant/rect2.hpp>
 #include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/variant/rect2.hpp>
 #include <godot_cpp/variant/vector2.hpp>
 #include <godot_cpp/variant/vector2i.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Texture2D;
@@ -52,7 +53,6 @@ class Sprite2D : public Node2D {
 	GDEXTENSION_CLASS(Sprite2D, Node2D)
 
 public:
-
 	void set_texture(const Ref<Texture2D> &texture);
 	Ref<Texture2D> get_texture() const;
 	void set_centered(bool centered);
@@ -79,6 +79,7 @@ public:
 	void set_hframes(int32_t hframes);
 	int32_t get_hframes() const;
 	Rect2 get_rect() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -86,7 +87,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

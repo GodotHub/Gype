@@ -33,16 +33,17 @@
 #ifndef GODOT_CPP_PRIMITIVE_MESH_HPP
 #define GODOT_CPP_PRIMITIVE_MESH_HPP
 
-#include <godot_cpp/variant/aabb.hpp>
-#include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/variant/aabb.hpp>
+#include <godot_cpp/variant/array.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Material;
@@ -51,7 +52,6 @@ class PrimitiveMesh : public Mesh {
 	GDEXTENSION_CLASS(PrimitiveMesh, Mesh)
 
 public:
-
 	void set_material(const Ref<Material> &material);
 	Ref<Material> get_material() const;
 	Array get_mesh_arrays() const;
@@ -64,17 +64,17 @@ public:
 	void set_uv2_padding(double uv2_padding);
 	double get_uv2_padding() const;
 	virtual Array _create_mesh_array() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Mesh::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_create_mesh_array),decltype(&T::_create_mesh_array)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_create_mesh_array), decltype(&T::_create_mesh_array)>) {
 			BIND_VIRTUAL_METHOD(T, _create_mesh_array);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

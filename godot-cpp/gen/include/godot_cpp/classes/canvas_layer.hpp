@@ -42,14 +42,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class CanvasLayer : public Node {
 	GDEXTENSION_CLASS(CanvasLayer, Node)
 
 public:
-
 	void set_layer(int32_t layer);
 	int32_t get_layer() const;
 	void set_visible(bool visible);
@@ -72,6 +71,7 @@ public:
 	void set_custom_viewport(Node *viewport);
 	Node *get_custom_viewport() const;
 	RID get_canvas() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -79,7 +79,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

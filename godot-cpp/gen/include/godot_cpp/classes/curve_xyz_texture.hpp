@@ -40,7 +40,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Curve;
@@ -49,7 +49,6 @@ class CurveXYZTexture : public Texture2D {
 	GDEXTENSION_CLASS(CurveXYZTexture, Texture2D)
 
 public:
-
 	void set_width(int32_t width);
 	void set_curve_x(const Ref<Curve> &curve);
 	Ref<Curve> get_curve_x() const;
@@ -57,6 +56,7 @@ public:
 	Ref<Curve> get_curve_y() const;
 	void set_curve_z(const Ref<Curve> &curve);
 	Ref<Curve> get_curve_z() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -64,7 +64,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

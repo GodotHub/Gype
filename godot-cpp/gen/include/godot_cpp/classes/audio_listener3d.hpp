@@ -40,18 +40,18 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class AudioListener3D : public Node3D {
 	GDEXTENSION_CLASS(AudioListener3D, Node3D)
 
 public:
-
 	void make_current();
 	void clear_current();
 	bool is_current() const;
 	Transform3D get_listener_transform() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -59,7 +59,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

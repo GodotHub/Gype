@@ -33,14 +33,15 @@
 #ifndef GODOT_CPP_ACCEPT_DIALOG_HPP
 #define GODOT_CPP_ACCEPT_DIALOG_HPP
 
-#include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/classes/window.hpp>
+#include <godot_cpp/variant/string.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Button;
@@ -51,7 +52,6 @@ class AcceptDialog : public Window {
 	GDEXTENSION_CLASS(AcceptDialog, Window)
 
 public:
-
 	Button *get_ok_button();
 	Label *get_label();
 	void set_hide_on_ok(bool enabled);
@@ -68,6 +68,7 @@ public:
 	bool has_autowrap();
 	void set_ok_button_text(const String &text);
 	String get_ok_button_text() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -75,7 +76,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

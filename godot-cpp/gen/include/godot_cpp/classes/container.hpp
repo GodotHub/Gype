@@ -40,7 +40,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 struct Rect2;
@@ -49,7 +49,6 @@ class Container : public Control {
 	GDEXTENSION_CLASS(Container, Control)
 
 public:
-
 	static const int NOTIFICATION_PRE_SORT_CHILDREN = 50;
 	static const int NOTIFICATION_SORT_CHILDREN = 51;
 
@@ -57,20 +56,20 @@ public:
 	void fit_child_in_rect(Control *child, const Rect2 &rect);
 	virtual PackedInt32Array _get_allowed_size_flags_horizontal() const;
 	virtual PackedInt32Array _get_allowed_size_flags_vertical() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Control::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_get_allowed_size_flags_horizontal),decltype(&T::_get_allowed_size_flags_horizontal)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_allowed_size_flags_horizontal), decltype(&T::_get_allowed_size_flags_horizontal)>) {
 			BIND_VIRTUAL_METHOD(T, _get_allowed_size_flags_horizontal);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_allowed_size_flags_vertical),decltype(&T::_get_allowed_size_flags_vertical)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_allowed_size_flags_vertical), decltype(&T::_get_allowed_size_flags_vertical)>) {
 			BIND_VIRTUAL_METHOD(T, _get_allowed_size_flags_vertical);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

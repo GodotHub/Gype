@@ -33,16 +33,17 @@
 #ifndef GODOT_CPP_XR_CONTROLLER3D_HPP
 #define GODOT_CPP_XR_CONTROLLER3D_HPP
 
-#include <godot_cpp/variant/variant.hpp>
-#include <godot_cpp/variant/vector2.hpp>
 #include <godot_cpp/classes/xr_node3d.hpp>
 #include <godot_cpp/classes/xr_positional_tracker.hpp>
+#include <godot_cpp/variant/variant.hpp>
+#include <godot_cpp/variant/vector2.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class StringName;
@@ -51,12 +52,12 @@ class XRController3D : public XRNode3D {
 	GDEXTENSION_CLASS(XRController3D, XRNode3D)
 
 public:
-
 	bool is_button_pressed(const StringName &name) const;
 	Variant get_input(const StringName &name) const;
 	double get_float(const StringName &name) const;
 	Vector2 get_vector2(const StringName &name) const;
 	XRPositionalTracker::TrackerHand get_tracker_hand() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -64,7 +65,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

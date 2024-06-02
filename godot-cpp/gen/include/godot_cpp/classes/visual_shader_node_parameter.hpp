@@ -34,21 +34,21 @@
 #define GODOT_CPP_VISUAL_SHADER_NODE_PARAMETER_HPP
 
 #include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/classes/visual_shader_node.hpp>
+#include <godot_cpp/variant/string.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class VisualShaderNodeParameter : public VisualShaderNode {
 	GDEXTENSION_CLASS(VisualShaderNodeParameter, VisualShaderNode)
 
 public:
-
 	enum Qualifier {
 		QUAL_NONE = 0,
 		QUAL_GLOBAL = 1,
@@ -60,6 +60,7 @@ public:
 	String get_parameter_name() const;
 	void set_qualifier(VisualShaderNodeParameter::Qualifier qualifier);
 	VisualShaderNodeParameter::Qualifier get_qualifier() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -67,7 +68,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -33,16 +33,17 @@
 #ifndef GODOT_CPP_WEB_XR_INTERFACE_HPP
 #define GODOT_CPP_WEB_XR_INTERFACE_HPP
 
-#include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/classes/xr_interface.hpp>
+#include <godot_cpp/variant/array.hpp>
+#include <godot_cpp/variant/string.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class XRPositionalTracker;
@@ -51,7 +52,6 @@ class WebXRInterface : public XRInterface {
 	GDEXTENSION_CLASS(WebXRInterface, XRInterface)
 
 public:
-
 	enum TargetRayMode {
 		TARGET_RAY_MODE_UNKNOWN = 0,
 		TARGET_RAY_MODE_GAZE = 1,
@@ -76,6 +76,7 @@ public:
 	double get_display_refresh_rate() const;
 	void set_display_refresh_rate(double refresh_rate);
 	Array get_available_display_refresh_rates() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -83,7 +84,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

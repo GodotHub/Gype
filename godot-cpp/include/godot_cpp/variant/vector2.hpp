@@ -114,6 +114,7 @@ struct _NO_DISCARD_ Vector2 {
 	_FORCE_INLINE_ Vector2 cubic_interpolate(const Vector2 &p_b, const Vector2 &p_pre_a, const Vector2 &p_post_b, const real_t p_weight) const;
 	_FORCE_INLINE_ Vector2 cubic_interpolate_in_time(const Vector2 &p_b, const Vector2 &p_pre_a, const Vector2 &p_post_b, const real_t p_weight, const real_t &p_b_t, const real_t &p_pre_a_t, const real_t &p_post_b_t) const;
 	_FORCE_INLINE_ Vector2 bezier_interpolate(const Vector2 &p_control_1, const Vector2 &p_control_2, const Vector2 &p_end, const real_t p_t) const;
+	_FORCE_INLINE_ Vector2 bezier_derivative(const Vector2 &p_control_1, const Vector2 &p_control_2, const Vector2 &p_end, real_t p_t) const;
 
 	Vector2 move_toward(const Vector2 &p_to, const real_t p_delta) const;
 
@@ -123,6 +124,7 @@ struct _NO_DISCARD_ Vector2 {
 
 	bool is_equal_approx(const Vector2 &p_v) const;
 	bool is_zero_approx() const;
+	bool is_finite() const;
 
 	Vector2 operator+(const Vector2 &p_v) const;
 	void operator+=(const Vector2 &p_v);
@@ -288,6 +290,13 @@ Vector2 Vector2::bezier_interpolate(const Vector2 &p_control_1, const Vector2 &p
 	real_t t3 = t2 * p_t;
 
 	return res * omt3 + p_control_1 * omt2 * p_t * 3.0 + p_control_2 * omt * t2 * 3.0 + p_end * t3;
+}
+
+Vector2 Vector2::bezier_derivative(const Vector2 &p_control_1, const Vector2 &p_control_2, const Vector2 &p_end, real_t p_t) const {
+	Vector2 res = *this;
+	res.x = Math::bezier_derivative(res.x, p_control_1.x, p_control_2.x, p_end.x, p_t);
+	res.y = Math::bezier_derivative(res.y, p_control_1.y, p_control_2.y, p_end.y, p_t);
+	return res;
 }
 
 Vector2 Vector2::direction_to(const Vector2 &p_to) const {

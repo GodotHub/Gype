@@ -35,14 +35,15 @@
 
 #include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/classes/image_format_loader.hpp>
-#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/variant/packed_string_array.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class FileAccess;
@@ -52,25 +53,24 @@ class ImageFormatLoaderExtension : public ImageFormatLoader {
 	GDEXTENSION_CLASS(ImageFormatLoaderExtension, ImageFormatLoader)
 
 public:
-
 	void add_format_loader();
 	void remove_format_loader();
 	virtual PackedStringArray _get_recognized_extensions() const;
 	virtual Error _load_image(const Ref<Image> &image, const Ref<FileAccess> &fileaccess, BitField<ImageFormatLoader::LoaderFlags> flags, double scale);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		ImageFormatLoader::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_get_recognized_extensions),decltype(&T::_get_recognized_extensions)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_recognized_extensions), decltype(&T::_get_recognized_extensions)>) {
 			BIND_VIRTUAL_METHOD(T, _get_recognized_extensions);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_load_image),decltype(&T::_load_image)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_load_image), decltype(&T::_load_image)>) {
 			BIND_VIRTUAL_METHOD(T, _load_image);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot
