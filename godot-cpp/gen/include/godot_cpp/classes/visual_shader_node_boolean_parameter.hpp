@@ -40,18 +40,18 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class VisualShaderNodeBooleanParameter : public VisualShaderNodeParameter {
 	GDEXTENSION_CLASS(VisualShaderNodeBooleanParameter, VisualShaderNodeParameter)
 
 public:
-
 	void set_default_value_enabled(bool enabled);
 	bool is_default_value_enabled() const;
 	void set_default_value(bool value);
 	bool get_default_value() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -59,7 +59,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -40,14 +40,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class GraphElement : public Container {
 	GDEXTENSION_CLASS(GraphElement, Container)
 
 public:
-
 	void set_resizable(bool resizable);
 	bool is_resizable() const;
 	void set_draggable(bool draggable);
@@ -58,6 +57,7 @@ public:
 	bool is_selected();
 	void set_position_offset(const Vector2 &offset);
 	Vector2 get_position_offset() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -65,7 +65,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

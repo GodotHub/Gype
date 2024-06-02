@@ -34,16 +34,17 @@
 #define GODOT_CPP_CRYPTO_HPP
 
 #include <godot_cpp/classes/hashing_context.hpp>
-#include <godot_cpp/variant/packed_byte_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/variant/packed_byte_array.hpp>
 #include <godot_cpp/variant/string.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class CryptoKey;
@@ -53,7 +54,6 @@ class Crypto : public RefCounted {
 	GDEXTENSION_CLASS(Crypto, RefCounted)
 
 public:
-
 	PackedByteArray generate_random_bytes(int32_t size);
 	Ref<CryptoKey> generate_rsa(int32_t size);
 	Ref<X509Certificate> generate_self_signed_certificate(const Ref<CryptoKey> &key, const String &issuer_name = "CN=myserver,O=myorganisation,C=IT", const String &not_before = "20140101000000", const String &not_after = "20340101000000");
@@ -63,6 +63,7 @@ public:
 	PackedByteArray decrypt(const Ref<CryptoKey> &key, const PackedByteArray &ciphertext);
 	PackedByteArray hmac_digest(HashingContext::HashType hash_type, const PackedByteArray &key, const PackedByteArray &msg);
 	bool constant_time_compare(const PackedByteArray &trusted, const PackedByteArray &received);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -70,7 +71,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

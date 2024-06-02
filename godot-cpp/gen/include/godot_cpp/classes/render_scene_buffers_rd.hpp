@@ -33,17 +33,18 @@
 #ifndef GODOT_CPP_RENDER_SCENE_BUFFERS_RD_HPP
 #define GODOT_CPP_RENDER_SCENE_BUFFERS_RD_HPP
 
-#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/render_scene_buffers.hpp>
 #include <godot_cpp/classes/rendering_device.hpp>
+#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/variant/vector2i.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class RDTextureFormat;
@@ -54,7 +55,6 @@ class RenderSceneBuffersRD : public RenderSceneBuffers {
 	GDEXTENSION_CLASS(RenderSceneBuffersRD, RenderSceneBuffers)
 
 public:
-
 	bool has_texture(const StringName &context, const StringName &name) const;
 	RID create_texture(const StringName &context, const StringName &name, RenderingDevice::DataFormat data_format, uint32_t usage_bits, RenderingDevice::TextureSamples texture_samples, const Vector2i &size, uint32_t layers, uint32_t mipmaps, bool unique);
 	RID create_texture_from_format(const StringName &context, const StringName &name, const Ref<RDTextureFormat> &format, const Ref<RDTextureView> &view, bool unique);
@@ -75,6 +75,7 @@ public:
 	uint32_t get_view_count() const;
 	Vector2i get_internal_size() const;
 	bool get_use_taa() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -82,7 +83,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

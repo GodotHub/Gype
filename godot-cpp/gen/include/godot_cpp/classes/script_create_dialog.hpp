@@ -39,7 +39,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class String;
@@ -48,8 +48,8 @@ class ScriptCreateDialog : public ConfirmationDialog {
 	GDEXTENSION_CLASS(ScriptCreateDialog, ConfirmationDialog)
 
 public:
-
 	void config(const String &inherits, const String &path, bool built_in_enabled = true, bool load_enabled = true);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -57,7 +57,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

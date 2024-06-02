@@ -33,19 +33,20 @@
 #ifndef GODOT_CPP_LABEL_HPP
 #define GODOT_CPP_LABEL_HPP
 
-#include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
-#include <godot_cpp/variant/packed_float32_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/classes/text_server.hpp>
+#include <godot_cpp/variant/array.hpp>
+#include <godot_cpp/variant/packed_float32_array.hpp>
+#include <godot_cpp/variant/string.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class LabelSettings;
@@ -54,7 +55,6 @@ class Label : public Control {
 	GDEXTENSION_CLASS(Label, Control)
 
 public:
-
 	void set_horizontal_alignment(HorizontalAlignment alignment);
 	HorizontalAlignment get_horizontal_alignment() const;
 	void set_vertical_alignment(VerticalAlignment alignment);
@@ -97,6 +97,7 @@ public:
 	TextServer::StructuredTextParser get_structured_text_bidi_override() const;
 	void set_structured_text_bidi_override_options(const Array &args);
 	Array get_structured_text_bidi_override_options() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -104,7 +105,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

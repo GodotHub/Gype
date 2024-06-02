@@ -40,14 +40,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class AudioEffectDelay : public AudioEffect {
 	GDEXTENSION_CLASS(AudioEffectDelay, AudioEffect)
 
 public:
-
 	void set_dry(double amount);
 	double get_dry();
 	void set_tap1_active(bool amount);
@@ -74,6 +73,7 @@ public:
 	double get_feedback_level_db() const;
 	void set_feedback_lowpass(double amount);
 	double get_feedback_lowpass() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -81,7 +81,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

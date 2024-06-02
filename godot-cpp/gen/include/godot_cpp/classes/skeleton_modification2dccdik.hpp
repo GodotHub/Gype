@@ -33,22 +33,22 @@
 #ifndef GODOT_CPP_SKELETON_MODIFICATION2DCCDIK_HPP
 #define GODOT_CPP_SKELETON_MODIFICATION2DCCDIK_HPP
 
-#include <godot_cpp/variant/node_path.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/skeleton_modification2d.hpp>
+#include <godot_cpp/variant/node_path.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class SkeletonModification2DCCDIK : public SkeletonModification2D {
 	GDEXTENSION_CLASS(SkeletonModification2DCCDIK, SkeletonModification2D)
 
 public:
-
 	void set_target_node(const NodePath &target_nodepath);
 	NodePath get_target_node() const;
 	void set_tip_node(const NodePath &tip_nodepath);
@@ -69,6 +69,7 @@ public:
 	double get_ccdik_joint_constraint_angle_max(int32_t joint_idx) const;
 	void set_ccdik_joint_constraint_angle_invert(int32_t joint_idx, bool invert);
 	bool get_ccdik_joint_constraint_angle_invert(int32_t joint_idx) const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -76,7 +77,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

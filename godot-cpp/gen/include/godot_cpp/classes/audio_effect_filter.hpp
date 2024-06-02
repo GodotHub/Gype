@@ -40,14 +40,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class AudioEffectFilter : public AudioEffect {
 	GDEXTENSION_CLASS(AudioEffectFilter, AudioEffect)
 
 public:
-
 	enum FilterDB {
 		FILTER_6DB = 0,
 		FILTER_12DB = 1,
@@ -63,6 +62,7 @@ public:
 	double get_gain() const;
 	void set_db(AudioEffectFilter::FilterDB amount);
 	AudioEffectFilter::FilterDB get_db() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -70,7 +70,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

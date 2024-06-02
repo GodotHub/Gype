@@ -41,14 +41,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class InputEventMouseMotion : public InputEventMouse {
 	GDEXTENSION_CLASS(InputEventMouseMotion, InputEventMouse)
 
 public:
-
 	void set_tilt(const Vector2 &tilt);
 	Vector2 get_tilt() const;
 	void set_pressure(double pressure);
@@ -59,6 +58,7 @@ public:
 	Vector2 get_relative() const;
 	void set_velocity(const Vector2 &velocity);
 	Vector2 get_velocity() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -66,7 +66,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

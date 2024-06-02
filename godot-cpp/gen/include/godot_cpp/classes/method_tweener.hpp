@@ -41,17 +41,17 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class MethodTweener : public Tweener {
 	GDEXTENSION_CLASS(MethodTweener, Tweener)
 
 public:
-
 	Ref<MethodTweener> set_delay(double delay);
 	Ref<MethodTweener> set_trans(Tween::TransitionType trans);
 	Ref<MethodTweener> set_ease(Tween::EaseType ease);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -59,7 +59,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

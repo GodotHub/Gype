@@ -33,31 +33,32 @@
 #ifndef GODOT_CPP_EXPRESSION_HPP
 #define GODOT_CPP_EXPRESSION_HPP
 
-#include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
-#include <godot_cpp/core/object.hpp>
-#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/core/object.hpp>
+#include <godot_cpp/variant/array.hpp>
+#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/variant.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Expression : public RefCounted {
 	GDEXTENSION_CLASS(Expression, RefCounted)
 
 public:
-
 	Error parse(const String &expression, const PackedStringArray &input_names = PackedStringArray());
 	Variant execute(const Array &inputs = Array(), Object *base_instance = nullptr, bool show_error = true, bool const_calls_only = false);
 	bool has_execute_failed() const;
 	String get_error_text() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -65,7 +66,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

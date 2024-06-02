@@ -39,18 +39,18 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class XROrigin3D : public Node3D {
 	GDEXTENSION_CLASS(XROrigin3D, Node3D)
 
 public:
-
 	void set_world_scale(double world_scale);
 	double get_world_scale() const;
 	void set_current(bool enabled);
 	bool is_current() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -58,7 +58,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

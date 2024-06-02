@@ -34,22 +34,22 @@
 #define GODOT_CPP_SYSTEM_FONT_HPP
 
 #include <godot_cpp/classes/font.hpp>
-#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/text_server.hpp>
+#include <godot_cpp/variant/packed_string_array.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class SystemFont : public Font {
 	GDEXTENSION_CLASS(SystemFont, Font)
 
 public:
-
 	void set_antialiasing(TextServer::FontAntialiasing antialiasing);
 	TextServer::FontAntialiasing get_antialiasing() const;
 	void set_generate_mipmaps(bool generate_mipmaps);
@@ -76,6 +76,7 @@ public:
 	void set_font_italic(bool italic);
 	void set_font_weight(int32_t weight);
 	void set_font_stretch(int32_t stretch);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -83,7 +84,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

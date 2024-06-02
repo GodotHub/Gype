@@ -35,14 +35,15 @@
 
 #include <godot_cpp/classes/audio_stream.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
-#include <godot_cpp/variant/packed_byte_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/variant/packed_byte_array.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class String;
@@ -51,7 +52,6 @@ class AudioStreamWAV : public AudioStream {
 	GDEXTENSION_CLASS(AudioStreamWAV, AudioStream)
 
 public:
-
 	enum Format {
 		FORMAT_8_BITS = 0,
 		FORMAT_16_BITS = 1,
@@ -80,6 +80,7 @@ public:
 	void set_stereo(bool stereo);
 	bool is_stereo() const;
 	Error save_to_wav(const String &path);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -87,7 +88,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

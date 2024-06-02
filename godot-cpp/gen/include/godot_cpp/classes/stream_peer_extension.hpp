@@ -41,42 +41,41 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class StreamPeerExtension : public StreamPeer {
 	GDEXTENSION_CLASS(StreamPeerExtension, StreamPeer)
 
 public:
-
 	virtual Error _get_data(uint8_t *r_buffer, int32_t r_bytes, int32_t *r_received);
 	virtual Error _get_partial_data(uint8_t *r_buffer, int32_t r_bytes, int32_t *r_received);
 	virtual Error _put_data(const uint8_t *p_data, int32_t p_bytes, int32_t *r_sent);
 	virtual Error _put_partial_data(const uint8_t *p_data, int32_t p_bytes, int32_t *r_sent);
 	virtual int32_t _get_available_bytes() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		StreamPeer::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_get_data),decltype(&T::_get_data)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_data), decltype(&T::_get_data)>) {
 			BIND_VIRTUAL_METHOD(T, _get_data);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_partial_data),decltype(&T::_get_partial_data)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_partial_data), decltype(&T::_get_partial_data)>) {
 			BIND_VIRTUAL_METHOD(T, _get_partial_data);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_put_data),decltype(&T::_put_data)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_put_data), decltype(&T::_put_data)>) {
 			BIND_VIRTUAL_METHOD(T, _put_data);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_put_partial_data),decltype(&T::_put_partial_data)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_put_partial_data), decltype(&T::_put_partial_data)>) {
 			BIND_VIRTUAL_METHOD(T, _put_partial_data);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_available_bytes),decltype(&T::_get_available_bytes)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_available_bytes), decltype(&T::_get_available_bytes)>) {
 			BIND_VIRTUAL_METHOD(T, _get_available_bytes);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

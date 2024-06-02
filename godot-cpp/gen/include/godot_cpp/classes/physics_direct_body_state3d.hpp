@@ -33,17 +33,18 @@
 #ifndef GODOT_CPP_PHYSICS_DIRECT_BODY_STATE3D_HPP
 #define GODOT_CPP_PHYSICS_DIRECT_BODY_STATE3D_HPP
 
-#include <godot_cpp/variant/basis.hpp>
 #include <godot_cpp/core/object.hpp>
+#include <godot_cpp/variant/basis.hpp>
 #include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/variant/transform3d.hpp>
 #include <godot_cpp/variant/vector3.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class PhysicsDirectSpaceState3D;
@@ -52,7 +53,6 @@ class PhysicsDirectBodyState3D : public Object {
 	GDEXTENSION_CLASS(PhysicsDirectBodyState3D, Object)
 
 public:
-
 	Vector3 get_total_gravity() const;
 	double get_total_linear_damp() const;
 	double get_total_angular_damp() const;
@@ -99,6 +99,7 @@ public:
 	double get_step() const;
 	void integrate_forces();
 	PhysicsDirectSpaceState3D *get_space_state();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -106,7 +107,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

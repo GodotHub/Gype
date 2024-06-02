@@ -33,17 +33,18 @@
 #ifndef GODOT_CPP_BIT_MAP_HPP
 #define GODOT_CPP_BIT_MAP_HPP
 
-#include <godot_cpp/variant/packed_vector2_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/variant/packed_vector2_array.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/vector2i.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Image;
@@ -53,7 +54,6 @@ class BitMap : public Resource {
 	GDEXTENSION_CLASS(BitMap, Resource)
 
 public:
-
 	void create(const Vector2i &size);
 	void create_from_image_alpha(const Ref<Image> &image, double threshold = 0.1);
 	void set_bitv(const Vector2i &position, bool bit);
@@ -67,6 +67,7 @@ public:
 	void grow_mask(int32_t pixels, const Rect2i &rect);
 	Ref<Image> convert_to_image() const;
 	TypedArray<PackedVector2Array> opaque_to_polygons(const Rect2i &rect, double epsilon = 2.0) const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -74,7 +75,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

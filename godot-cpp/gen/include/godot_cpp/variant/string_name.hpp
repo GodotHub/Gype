@@ -39,7 +39,7 @@
 
 #include <gdextension_interface.h>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 struct AABB;
@@ -249,7 +249,7 @@ class StringName {
 	StringName(const Variant *p_variant);
 
 public:
-	_FORCE_INLINE_ GDExtensionTypePtr _native_ptr() const { return const_cast<uint8_t (*)[STRING_NAME_SIZE]>(&opaque); }
+	_FORCE_INLINE_ GDExtensionTypePtr _native_ptr() const { return const_cast<uint8_t(*)[STRING_NAME_SIZE]>(&opaque); }
 	StringName();
 	StringName(const StringName &from);
 	StringName(const String &from);

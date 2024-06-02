@@ -40,14 +40,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class CameraAttributes : public Resource {
 	GDEXTENSION_CLASS(CameraAttributes, Resource)
 
 public:
-
 	void set_exposure_multiplier(double multiplier);
 	double get_exposure_multiplier() const;
 	void set_exposure_sensitivity(double sensitivity);
@@ -58,6 +57,7 @@ public:
 	double get_auto_exposure_speed() const;
 	void set_auto_exposure_scale(double exposure_grey);
 	double get_auto_exposure_scale() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -65,7 +65,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

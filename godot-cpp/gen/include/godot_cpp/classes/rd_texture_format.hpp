@@ -41,14 +41,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class RDTextureFormat : public RefCounted {
 	GDEXTENSION_CLASS(RDTextureFormat, RefCounted)
 
 public:
-
 	void set_format(RenderingDevice::DataFormat p_member);
 	RenderingDevice::DataFormat get_format() const;
 	void set_width(uint32_t p_member);
@@ -69,6 +68,7 @@ public:
 	BitField<RenderingDevice::TextureUsageBits> get_usage_bits() const;
 	void add_shareable_format(RenderingDevice::DataFormat format);
 	void remove_shareable_format(RenderingDevice::DataFormat format);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -76,7 +76,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

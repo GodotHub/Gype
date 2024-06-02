@@ -42,7 +42,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class PackedByteArray;
@@ -51,7 +51,6 @@ class XMLParser : public RefCounted {
 	GDEXTENSION_CLASS(XMLParser, RefCounted)
 
 public:
-
 	enum NodeType {
 		NODE_NONE = 0,
 		NODE_ELEMENT = 1,
@@ -79,6 +78,7 @@ public:
 	Error seek(uint64_t position);
 	Error open(const String &file);
 	Error open_buffer(const PackedByteArray &buffer);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -87,7 +87,6 @@ protected:
 
 public:
 	Error _open_buffer(const uint8_t *p_buffer, size_t p_size);
-
 };
 
 } // namespace godot

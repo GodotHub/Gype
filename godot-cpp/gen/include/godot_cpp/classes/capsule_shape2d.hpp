@@ -40,18 +40,18 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class CapsuleShape2D : public Shape2D {
 	GDEXTENSION_CLASS(CapsuleShape2D, Shape2D)
 
 public:
-
 	void set_radius(double radius);
 	double get_radius() const;
 	void set_height(double height);
 	double get_height() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -59,7 +59,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

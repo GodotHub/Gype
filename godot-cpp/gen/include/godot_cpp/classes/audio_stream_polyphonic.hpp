@@ -40,16 +40,16 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class AudioStreamPolyphonic : public AudioStream {
 	GDEXTENSION_CLASS(AudioStreamPolyphonic, AudioStream)
 
 public:
-
 	void set_polyphony(int32_t voices);
 	int32_t get_polyphony() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -57,7 +57,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

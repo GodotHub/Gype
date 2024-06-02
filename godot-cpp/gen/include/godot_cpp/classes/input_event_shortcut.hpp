@@ -40,7 +40,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Shortcut;
@@ -49,9 +49,9 @@ class InputEventShortcut : public InputEvent {
 	GDEXTENSION_CLASS(InputEventShortcut, InputEvent)
 
 public:
-
 	void set_shortcut(const Ref<Shortcut> &shortcut);
 	Ref<Shortcut> get_shortcut();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -59,7 +59,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

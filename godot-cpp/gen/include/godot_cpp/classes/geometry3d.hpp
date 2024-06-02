@@ -44,14 +44,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Geometry3D : public Object {
 	GDEXTENSION_CLASS(Geometry3D, Object)
 
 public:
-
 	static Geometry3D *get_singleton();
 
 	PackedVector3Array compute_convex_mesh_points(const TypedArray<Plane> &planes);
@@ -68,6 +67,7 @@ public:
 	PackedVector3Array segment_intersects_cylinder(const Vector3 &from, const Vector3 &to, double height, double radius);
 	PackedVector3Array segment_intersects_convex(const Vector3 &from, const Vector3 &to, const TypedArray<Plane> &planes);
 	PackedVector3Array clip_polygon(const PackedVector3Array &points, const Plane &plane);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -75,7 +75,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

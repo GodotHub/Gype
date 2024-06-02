@@ -40,15 +40,15 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class OptimizedTranslation : public Translation {
 	GDEXTENSION_CLASS(OptimizedTranslation, Translation)
 
 public:
-
 	void generate(const Ref<Translation> &from);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -56,7 +56,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

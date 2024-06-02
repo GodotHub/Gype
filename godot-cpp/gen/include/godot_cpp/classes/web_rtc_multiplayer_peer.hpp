@@ -33,17 +33,18 @@
 #ifndef GODOT_CPP_WEB_RTC_MULTIPLAYER_PEER_HPP
 #define GODOT_CPP_WEB_RTC_MULTIPLAYER_PEER_HPP
 
-#include <godot_cpp/variant/array.hpp>
-#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/classes/multiplayer_peer.hpp>
 #include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/variant/array.hpp>
+#include <godot_cpp/variant/dictionary.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class WebRTCPeerConnection;
@@ -52,7 +53,6 @@ class WebRTCMultiplayerPeer : public MultiplayerPeer {
 	GDEXTENSION_CLASS(WebRTCMultiplayerPeer, MultiplayerPeer)
 
 public:
-
 	Error create_server(const Array &channels_config = Array());
 	Error create_client(int32_t peer_id, const Array &channels_config = Array());
 	Error create_mesh(int32_t peer_id, const Array &channels_config = Array());
@@ -61,6 +61,7 @@ public:
 	bool has_peer(int32_t peer_id);
 	Dictionary get_peer(int32_t peer_id);
 	Dictionary get_peers();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -68,7 +69,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

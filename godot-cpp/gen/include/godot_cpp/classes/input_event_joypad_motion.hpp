@@ -41,18 +41,18 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class InputEventJoypadMotion : public InputEvent {
 	GDEXTENSION_CLASS(InputEventJoypadMotion, InputEvent)
 
 public:
-
 	void set_axis(JoyAxis axis);
 	JoyAxis get_axis() const;
 	void set_axis_value(double axis_value);
 	double get_axis_value() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -60,7 +60,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

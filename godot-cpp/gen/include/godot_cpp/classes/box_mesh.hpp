@@ -41,14 +41,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class BoxMesh : public PrimitiveMesh {
 	GDEXTENSION_CLASS(BoxMesh, PrimitiveMesh)
 
 public:
-
 	void set_size(const Vector3 &size);
 	Vector3 get_size() const;
 	void set_subdivide_width(int32_t subdivide);
@@ -57,6 +56,7 @@ public:
 	int32_t get_subdivide_height() const;
 	void set_subdivide_depth(int32_t divisions);
 	int32_t get_subdivide_depth() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -64,7 +64,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

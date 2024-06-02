@@ -33,15 +33,16 @@
 #ifndef GODOT_CPP_LIGHT3D_HPP
 #define GODOT_CPP_LIGHT3D_HPP
 
-#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/visual_instance3d.hpp>
+#include <godot_cpp/variant/color.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Texture2D;
@@ -50,7 +51,6 @@ class Light3D : public VisualInstance3D {
 	GDEXTENSION_CLASS(Light3D, VisualInstance3D)
 
 public:
-
 	enum Param {
 		PARAM_ENERGY = 0,
 		PARAM_INDIRECT_ENERGY = 1,
@@ -111,6 +111,7 @@ public:
 	void set_temperature(double temperature);
 	double get_temperature() const;
 	Color get_correlated_color() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -118,7 +119,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

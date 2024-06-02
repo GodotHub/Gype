@@ -33,12 +33,14 @@
 #ifndef GODOT_CPP_RENDERING_SERVER_HPP
 #define GODOT_CPP_RENDERING_SERVER_HPP
 
+#include <godot_cpp/classes/image.hpp>
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/classes/rendering_device.hpp>
+#include <godot_cpp/core/object.hpp>
 #include <godot_cpp/variant/aabb.hpp>
 #include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/variant/dictionary.hpp>
-#include <godot_cpp/classes/image.hpp>
-#include <godot_cpp/core/object.hpp>
 #include <godot_cpp/variant/packed_byte_array.hpp>
 #include <godot_cpp/variant/packed_color_array.hpp>
 #include <godot_cpp/variant/packed_float32_array.hpp>
@@ -46,10 +48,8 @@
 #include <godot_cpp/variant/packed_int64_array.hpp>
 #include <godot_cpp/variant/packed_vector2_array.hpp>
 #include <godot_cpp/variant/packed_vector3_array.hpp>
-#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/variant/rect2.hpp>
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/rendering_device.hpp>
+#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/variant/transform2d.hpp>
@@ -58,11 +58,12 @@
 #include <godot_cpp/variant/variant.hpp>
 #include <godot_cpp/variant/vector3i.hpp>
 
+
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 struct Basis;
@@ -76,7 +77,6 @@ class RenderingServer : public Object {
 	GDEXTENSION_CLASS(RenderingServer, Object)
 
 public:
-
 	enum TextureLayeredType {
 		TEXTURE_LAYERED_2D_ARRAY = 0,
 		TEXTURE_LAYERED_CUBEMAP = 1,
@@ -1218,6 +1218,7 @@ public:
 	RenderingDevice *get_rendering_device() const;
 	RenderingDevice *create_local_rendering_device() const;
 	void call_on_render_thread(const Callable &callable);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -1225,7 +1226,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

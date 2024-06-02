@@ -37,14 +37,15 @@
 #include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/classes/text_server.hpp>
+#include <godot_cpp/variant/string.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Texture2D;
@@ -53,7 +54,6 @@ class Button : public BaseButton {
 	GDEXTENSION_CLASS(Button, BaseButton)
 
 public:
-
 	void set_text(const String &text);
 	String get_text() const;
 	void set_text_overrun_behavior(TextServer::OverrunBehavior overrun_behavior);
@@ -76,6 +76,7 @@ public:
 	VerticalAlignment get_vertical_icon_alignment() const;
 	void set_expand_icon(bool enabled);
 	bool is_expand_icon() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -83,7 +84,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

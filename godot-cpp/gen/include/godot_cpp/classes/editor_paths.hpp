@@ -40,20 +40,20 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class EditorPaths : public Object {
 	GDEXTENSION_CLASS(EditorPaths, Object)
 
 public:
-
 	String get_data_dir() const;
 	String get_config_dir() const;
 	String get_cache_dir() const;
 	bool is_self_contained() const;
 	String get_self_contained_file() const;
 	String get_project_settings_dir() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -61,7 +61,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

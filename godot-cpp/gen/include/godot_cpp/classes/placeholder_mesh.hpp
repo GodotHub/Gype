@@ -40,7 +40,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 struct AABB;
@@ -49,8 +49,8 @@ class PlaceholderMesh : public Mesh {
 	GDEXTENSION_CLASS(PlaceholderMesh, Mesh)
 
 public:
-
 	void set_aabb(const AABB &aabb);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -58,7 +58,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

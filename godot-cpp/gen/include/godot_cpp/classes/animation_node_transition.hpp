@@ -40,7 +40,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Curve;
@@ -49,7 +49,6 @@ class AnimationNodeTransition : public AnimationNodeSync {
 	GDEXTENSION_CLASS(AnimationNodeTransition, AnimationNodeSync)
 
 public:
-
 	void set_input_count(int32_t input_count);
 	void set_input_as_auto_advance(int32_t input, bool enable);
 	bool is_input_set_as_auto_advance(int32_t input) const;
@@ -61,6 +60,7 @@ public:
 	Ref<Curve> get_xfade_curve() const;
 	void set_allow_transition_to_self(bool enable);
 	bool is_allow_transition_to_self() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -68,7 +68,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

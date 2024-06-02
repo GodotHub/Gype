@@ -42,7 +42,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class StringName;
@@ -52,7 +52,6 @@ class InputEvent : public Resource {
 	GDEXTENSION_CLASS(InputEvent, Resource)
 
 public:
-
 	void set_device(int32_t device);
 	int32_t get_device() const;
 	bool is_action(const StringName &action, bool exact_match = false) const;
@@ -68,6 +67,7 @@ public:
 	bool is_action_type() const;
 	bool accumulate(const Ref<InputEvent> &with_event);
 	Ref<InputEvent> xformed_by(const Transform2D &xform, const Vector2 &local_ofs = Vector2(0, 0)) const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -75,7 +75,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

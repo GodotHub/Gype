@@ -35,23 +35,24 @@
 
 #include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/classes/texture_layered.hpp>
+#include <godot_cpp/variant/string.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class CompressedTextureLayered : public TextureLayered {
 	GDEXTENSION_CLASS(CompressedTextureLayered, TextureLayered)
 
 public:
-
 	Error load(const String &path);
 	String get_load_path() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -59,7 +60,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

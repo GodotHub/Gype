@@ -40,14 +40,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class VisualShaderNodeParticleAccelerator : public VisualShaderNode {
 	GDEXTENSION_CLASS(VisualShaderNodeParticleAccelerator, VisualShaderNode)
 
 public:
-
 	enum Mode {
 		MODE_LINEAR = 0,
 		MODE_RADIAL = 1,
@@ -57,6 +56,7 @@ public:
 
 	void set_mode(VisualShaderNodeParticleAccelerator::Mode mode);
 	VisualShaderNodeParticleAccelerator::Mode get_mode() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -64,7 +64,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

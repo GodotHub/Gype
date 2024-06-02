@@ -33,23 +33,23 @@
 #ifndef GODOT_CPP_NAVIGATION_PATH_QUERY_PARAMETERS2D_HPP
 #define GODOT_CPP_NAVIGATION_PATH_QUERY_PARAMETERS2D_HPP
 
-#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/variant/vector2.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class NavigationPathQueryParameters2D : public RefCounted {
 	GDEXTENSION_CLASS(NavigationPathQueryParameters2D, RefCounted)
 
 public:
-
 	enum PathfindingAlgorithm {
 		PATHFINDING_ALGORITHM_ASTAR = 0,
 	};
@@ -81,6 +81,7 @@ public:
 	uint32_t get_navigation_layers() const;
 	void set_metadata_flags(BitField<NavigationPathQueryParameters2D::PathMetadataFlags> flags);
 	BitField<NavigationPathQueryParameters2D::PathMetadataFlags> get_metadata_flags() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -88,7 +89,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

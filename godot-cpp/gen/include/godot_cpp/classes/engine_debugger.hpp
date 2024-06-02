@@ -33,15 +33,16 @@
 #ifndef GODOT_CPP_ENGINE_DEBUGGER_HPP
 #define GODOT_CPP_ENGINE_DEBUGGER_HPP
 
-#include <godot_cpp/variant/array.hpp>
-#include <godot_cpp/core/object.hpp>
 #include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/core/object.hpp>
+#include <godot_cpp/variant/array.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Callable;
@@ -53,7 +54,6 @@ class EngineDebugger : public Object {
 	GDEXTENSION_CLASS(EngineDebugger, Object)
 
 public:
-
 	static EngineDebugger *get_singleton();
 
 	bool is_active();
@@ -67,6 +67,7 @@ public:
 	void unregister_message_capture(const StringName &name);
 	bool has_capture(const StringName &name);
 	void send_message(const String &message, const Array &data);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -74,7 +75,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

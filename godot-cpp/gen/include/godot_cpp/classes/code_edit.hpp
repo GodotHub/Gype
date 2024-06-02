@@ -33,29 +33,29 @@
 #ifndef GODOT_CPP_CODE_EDIT_HPP
 #define GODOT_CPP_CODE_EDIT_HPP
 
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/text_edit.hpp>
 #include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/variant/packed_int32_array.hpp>
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/string.hpp>
-#include <godot_cpp/classes/text_edit.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/variant.hpp>
 #include <godot_cpp/variant/vector2.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class CodeEdit : public TextEdit {
 	GDEXTENSION_CLASS(CodeEdit, TextEdit)
 
 public:
-
 	enum CodeCompletionKind {
 		KIND_CLASS = 0,
 		KIND_FUNCTION = 1,
@@ -183,23 +183,23 @@ public:
 	virtual void _confirm_code_completion(bool replace);
 	virtual void _request_code_completion(bool force);
 	virtual TypedArray<Dictionary> _filter_code_completion_candidates(const TypedArray<Dictionary> &candidates) const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		TextEdit::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_confirm_code_completion),decltype(&T::_confirm_code_completion)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_confirm_code_completion), decltype(&T::_confirm_code_completion)>) {
 			BIND_VIRTUAL_METHOD(T, _confirm_code_completion);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_request_code_completion),decltype(&T::_request_code_completion)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_request_code_completion), decltype(&T::_request_code_completion)>) {
 			BIND_VIRTUAL_METHOD(T, _request_code_completion);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_filter_code_completion_candidates),decltype(&T::_filter_code_completion_candidates)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_filter_code_completion_candidates), decltype(&T::_filter_code_completion_candidates)>) {
 			BIND_VIRTUAL_METHOD(T, _filter_code_completion_candidates);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -40,7 +40,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Button;
@@ -49,10 +49,10 @@ class ConfirmationDialog : public AcceptDialog {
 	GDEXTENSION_CLASS(ConfirmationDialog, AcceptDialog)
 
 public:
-
 	Button *get_cancel_button();
 	void set_cancel_button_text(const String &text);
 	String get_cancel_button_text() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -60,7 +60,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

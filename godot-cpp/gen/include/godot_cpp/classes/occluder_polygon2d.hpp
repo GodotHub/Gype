@@ -33,22 +33,22 @@
 #ifndef GODOT_CPP_OCCLUDER_POLYGON2D_HPP
 #define GODOT_CPP_OCCLUDER_POLYGON2D_HPP
 
-#include <godot_cpp/variant/packed_vector2_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/variant/packed_vector2_array.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class OccluderPolygon2D : public Resource {
 	GDEXTENSION_CLASS(OccluderPolygon2D, Resource)
 
 public:
-
 	enum CullMode {
 		CULL_DISABLED = 0,
 		CULL_CLOCKWISE = 1,
@@ -61,6 +61,7 @@ public:
 	OccluderPolygon2D::CullMode get_cull_mode() const;
 	void set_polygon(const PackedVector2Array &polygon);
 	PackedVector2Array get_polygon() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -68,7 +69,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -33,19 +33,20 @@
 #ifndef GODOT_CPP_VISUAL_SHADER_HPP
 #define GODOT_CPP_VISUAL_SHADER_HPP
 
-#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
-#include <godot_cpp/variant/packed_int32_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/shader.hpp>
+#include <godot_cpp/variant/dictionary.hpp>
+#include <godot_cpp/variant/packed_int32_array.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/vector2.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class String;
@@ -56,7 +57,6 @@ class VisualShader : public Shader {
 	GDEXTENSION_CLASS(VisualShader, Shader)
 
 public:
-
 	enum Type {
 		TYPE_VERTEX = 0,
 		TYPE_FRAGMENT = 1,
@@ -112,6 +112,7 @@ public:
 	void add_varying(const String &name, VisualShader::VaryingMode mode, VisualShader::VaryingType type);
 	void remove_varying(const String &name);
 	bool has_varying(const String &name) const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -119,7 +120,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

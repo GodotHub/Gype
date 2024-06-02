@@ -42,7 +42,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class PackedByteArray;
@@ -51,7 +51,6 @@ class ENetPacketPeer : public PacketPeer {
 	GDEXTENSION_CLASS(ENetPacketPeer, PacketPeer)
 
 public:
-
 	enum PeerState {
 		STATE_DISCONNECTED = 0,
 		STATE_CONNECTING = 1,
@@ -103,6 +102,7 @@ public:
 	ENetPacketPeer::PeerState get_state() const;
 	int32_t get_channels() const;
 	bool is_active() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -110,7 +110,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

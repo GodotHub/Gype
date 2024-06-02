@@ -34,14 +34,15 @@
 #define GODOT_CPP_ANIMATION_TREE_HPP
 
 #include <godot_cpp/classes/animation_mixer.hpp>
-#include <godot_cpp/variant/node_path.hpp>
 #include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/variant/node_path.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class AnimationRootNode;
@@ -50,7 +51,6 @@ class AnimationTree : public AnimationMixer {
 	GDEXTENSION_CLASS(AnimationTree, AnimationMixer)
 
 public:
-
 	enum AnimationProcessCallback {
 		ANIMATION_PROCESS_PHYSICS = 0,
 		ANIMATION_PROCESS_IDLE = 1,
@@ -65,6 +65,7 @@ public:
 	NodePath get_animation_player() const;
 	void set_process_callback(AnimationTree::AnimationProcessCallback mode);
 	AnimationTree::AnimationProcessCallback get_process_callback() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -72,7 +73,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

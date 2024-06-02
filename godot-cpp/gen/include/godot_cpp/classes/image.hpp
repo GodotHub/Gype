@@ -33,20 +33,21 @@
 #ifndef GODOT_CPP_IMAGE_HPP
 #define GODOT_CPP_IMAGE_HPP
 
-#include <godot_cpp/variant/color.hpp>
-#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
-#include <godot_cpp/variant/packed_byte_array.hpp>
-#include <godot_cpp/variant/rect2i.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/variant/color.hpp>
+#include <godot_cpp/variant/dictionary.hpp>
+#include <godot_cpp/variant/packed_byte_array.hpp>
+#include <godot_cpp/variant/rect2i.hpp>
 #include <godot_cpp/variant/vector2i.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class String;
@@ -55,7 +56,6 @@ class Image : public Resource {
 	GDEXTENSION_CLASS(Image, Resource)
 
 public:
-
 	enum Format {
 		FORMAT_L8 = 0,
 		FORMAT_LA8 = 1,
@@ -214,6 +214,7 @@ public:
 	Error load_ktx_from_buffer(const PackedByteArray &buffer);
 	Error load_svg_from_buffer(const PackedByteArray &buffer, double scale = 1.0);
 	Error load_svg_from_string(const String &svg_str, double scale = 1.0);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -221,7 +222,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

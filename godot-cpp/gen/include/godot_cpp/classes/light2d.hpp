@@ -33,21 +33,21 @@
 #ifndef GODOT_CPP_LIGHT2D_HPP
 #define GODOT_CPP_LIGHT2D_HPP
 
-#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/variant/color.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Light2D : public Node2D {
 	GDEXTENSION_CLASS(Light2D, Node2D)
 
 public:
-
 	enum ShadowFilter {
 		SHADOW_FILTER_NONE = 0,
 		SHADOW_FILTER_PCF5 = 1,
@@ -92,6 +92,7 @@ public:
 	Light2D::BlendMode get_blend_mode() const;
 	void set_height(double height);
 	double get_height() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -99,7 +100,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

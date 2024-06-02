@@ -33,26 +33,26 @@
 #ifndef GODOT_CPP_GEOMETRY2D_HPP
 #define GODOT_CPP_GEOMETRY2D_HPP
 
-#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/core/object.hpp>
+#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/variant/packed_int32_array.hpp>
 #include <godot_cpp/variant/packed_vector2_array.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/variant.hpp>
 #include <godot_cpp/variant/vector2.hpp>
 
+
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Geometry2D : public Object {
 	GDEXTENSION_CLASS(Geometry2D, Object)
 
 public:
-
 	enum PolyBooleanOperation {
 		OPERATION_UNION = 0,
 		OPERATION_DIFFERENCE = 1,
@@ -99,6 +99,7 @@ public:
 	TypedArray<PackedVector2Array> offset_polygon(const PackedVector2Array &polygon, double delta, Geometry2D::PolyJoinType join_type = (Geometry2D::PolyJoinType)0);
 	TypedArray<PackedVector2Array> offset_polyline(const PackedVector2Array &polyline, double delta, Geometry2D::PolyJoinType join_type = (Geometry2D::PolyJoinType)0, Geometry2D::PolyEndType end_type = (Geometry2D::PolyEndType)3);
 	Dictionary make_atlas(const PackedVector2Array &sizes);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -106,7 +107,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

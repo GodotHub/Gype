@@ -40,14 +40,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class AudioEffectEQ21 : public AudioEffectEQ {
 	GDEXTENSION_CLASS(AudioEffectEQ21, AudioEffectEQ)
 
 public:
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -55,7 +54,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -40,7 +40,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Mesh;
@@ -49,13 +49,13 @@ class VisualShaderNodeParticleMeshEmitter : public VisualShaderNodeParticleEmitt
 	GDEXTENSION_CLASS(VisualShaderNodeParticleMeshEmitter, VisualShaderNodeParticleEmitter)
 
 public:
-
 	void set_mesh(const Ref<Mesh> &mesh);
 	Ref<Mesh> get_mesh() const;
 	void set_use_all_surfaces(bool enabled);
 	bool is_use_all_surfaces() const;
 	void set_surface_index(int32_t surface_index);
 	int32_t get_surface_index() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -63,7 +63,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

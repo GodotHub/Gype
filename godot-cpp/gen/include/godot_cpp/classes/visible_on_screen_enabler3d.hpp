@@ -33,21 +33,21 @@
 #ifndef GODOT_CPP_VISIBLE_ON_SCREEN_ENABLER3D_HPP
 #define GODOT_CPP_VISIBLE_ON_SCREEN_ENABLER3D_HPP
 
-#include <godot_cpp/variant/node_path.hpp>
 #include <godot_cpp/classes/visible_on_screen_notifier3d.hpp>
+#include <godot_cpp/variant/node_path.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class VisibleOnScreenEnabler3D : public VisibleOnScreenNotifier3D {
 	GDEXTENSION_CLASS(VisibleOnScreenEnabler3D, VisibleOnScreenNotifier3D)
 
 public:
-
 	enum EnableMode {
 		ENABLE_MODE_INHERIT = 0,
 		ENABLE_MODE_ALWAYS = 1,
@@ -58,6 +58,7 @@ public:
 	VisibleOnScreenEnabler3D::EnableMode get_enable_mode();
 	void set_enable_node_path(const NodePath &path);
 	NodePath get_enable_node_path();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -65,7 +66,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

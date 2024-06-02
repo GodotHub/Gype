@@ -42,14 +42,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class PacketPeerUDP : public PacketPeer {
 	GDEXTENSION_CLASS(PacketPeerUDP, PacketPeer)
 
 public:
-
 	Error bind(int32_t port, const String &bind_address = "*", int32_t recv_buf_size = 65536);
 	void close();
 	Error wait();
@@ -63,6 +62,7 @@ public:
 	void set_broadcast_enabled(bool enabled);
 	Error join_multicast_group(const String &multicast_address, const String &interface_name);
 	Error leave_multicast_group(const String &multicast_address, const String &interface_name);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -70,7 +70,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

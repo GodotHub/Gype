@@ -33,26 +33,26 @@
 #ifndef GODOT_CPP_A_STAR_GRID2D_HPP
 #define GODOT_CPP_A_STAR_GRID2D_HPP
 
-#include <godot_cpp/variant/packed_vector2_array.hpp>
-#include <godot_cpp/variant/rect2i.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/variant/packed_vector2_array.hpp>
+#include <godot_cpp/variant/rect2i.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/vector2.hpp>
 #include <godot_cpp/variant/vector2i.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class AStarGrid2D : public RefCounted {
 	GDEXTENSION_CLASS(AStarGrid2D, RefCounted)
 
 public:
-
 	enum Heuristic {
 		HEURISTIC_EUCLIDEAN = 0,
 		HEURISTIC_MANHATTAN = 1,
@@ -101,20 +101,20 @@ public:
 	TypedArray<Vector2i> get_id_path(const Vector2i &from_id, const Vector2i &to_id);
 	virtual double _estimate_cost(const Vector2i &from_id, const Vector2i &to_id) const;
 	virtual double _compute_cost(const Vector2i &from_id, const Vector2i &to_id) const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		RefCounted::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_estimate_cost),decltype(&T::_estimate_cost)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_estimate_cost), decltype(&T::_estimate_cost)>) {
 			BIND_VIRTUAL_METHOD(T, _estimate_cost);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_compute_cost),decltype(&T::_compute_cost)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_compute_cost), decltype(&T::_compute_cost)>) {
 			BIND_VIRTUAL_METHOD(T, _compute_cost);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

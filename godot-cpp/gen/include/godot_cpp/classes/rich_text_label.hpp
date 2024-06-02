@@ -33,23 +33,24 @@
 #ifndef GODOT_CPP_RICH_TEXT_LABEL_HPP
 #define GODOT_CPP_RICH_TEXT_LABEL_HPP
 
+#include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/global_constants.hpp>
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/classes/text_server.hpp>
 #include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/color.hpp>
-#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/variant/dictionary.hpp>
-#include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/variant/packed_float32_array.hpp>
 #include <godot_cpp/variant/rect2.hpp>
-#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/string.hpp>
-#include <godot_cpp/classes/text_server.hpp>
 #include <godot_cpp/variant/variant.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Font;
@@ -64,7 +65,6 @@ class RichTextLabel : public Control {
 	GDEXTENSION_CLASS(RichTextLabel, Control)
 
 public:
-
 	enum ListType {
 		LIST_NUMBERS = 0,
 		LIST_LETTERS = 1,
@@ -205,6 +205,7 @@ public:
 	PopupMenu *get_menu() const;
 	bool is_menu_visible() const;
 	void menu_option(int32_t option);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -212,7 +213,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

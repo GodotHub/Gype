@@ -33,6 +33,7 @@
 
 #include <godot_cpp/core/defs.hpp>
 
+#include <godot_cpp/templates/vararg.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 #include <godot_cpp/variant/variant_size.hpp>
 
@@ -269,31 +270,31 @@ public:
 
 	void callp(const StringName &method, const Variant **args, int argcount, Variant &r_ret, GDExtensionCallError &r_error);
 
-	template <typename... Args>
-	Variant call(const StringName &method, Args... args) {
-		std::array<Variant, sizeof...(args)> vargs = { args... };
-		std::array<const Variant *, sizeof...(args)> argptrs;
-		for (size_t i = 0; i < vargs.size(); i++) {
-			argptrs[i] = &vargs[i];
+	Variant call(const StringName &method, rest<Variant> args) {
+		std::vector<Variant> variant_args;
+		variant_args.insert(variant_args.end(), args.begin(), args.end());
+		std::vector<const Variant *> call_args;
+		for (size_t i = 0; i < variant_args.size(); i++) {
+			call_args.push_back(&variant_args[i]);
 		}
 		Variant result;
 		GDExtensionCallError error;
-		callp(method, argptrs.data(), argptrs.size(), result, error);
+		callp(method, call_args.data(), call_args.size(), result, error);
 		return result;
 	}
 
 	static void callp_static(Variant::Type type, const StringName &method, const Variant **args, int argcount, Variant &r_ret, GDExtensionCallError &r_error);
 
-	template <typename... Args>
-	static Variant call_static(Variant::Type type, const StringName &method, Args... args) {
-		std::array<Variant, sizeof...(args)> vargs = { args... };
-		std::array<const Variant *, sizeof...(args)> argptrs;
-		for (size_t i = 0; i < vargs.size(); i++) {
-			argptrs[i] = &vargs[i];
+	static Variant call_static(Variant::Type type, const StringName &method, rest<Variant> args) {
+		std::vector<Variant> variant_args;
+		variant_args.insert(variant_args.end(), args.begin(), args.end());
+		std::vector<const Variant *> call_args;
+		for (size_t i = 0; i < variant_args.size(); i++) {
+			call_args.push_back(&variant_args[i]);
 		}
 		Variant result;
 		GDExtensionCallError error;
-		callp_static(type, method, argptrs.data(), argptrs.size(), sizeof...(args), result, error);
+		callp_static(type, method, call_args.data(), call_args.size(), result, error);
 		return result;
 	}
 

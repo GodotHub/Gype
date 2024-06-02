@@ -33,17 +33,18 @@
 #ifndef GODOT_CPP_PERFORMANCE_HPP
 #define GODOT_CPP_PERFORMANCE_HPP
 
-#include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/core/object.hpp>
+#include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/variant.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Callable;
@@ -52,7 +53,6 @@ class Performance : public Object {
 	GDEXTENSION_CLASS(Performance, Object)
 
 public:
-
 	enum Monitor {
 		TIME_FPS = 0,
 		TIME_PROCESS = 1,
@@ -99,6 +99,7 @@ public:
 	Variant get_custom_monitor(const StringName &id);
 	uint64_t get_monitor_modification_time();
 	TypedArray<StringName> get_custom_monitor_names();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -106,7 +107,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

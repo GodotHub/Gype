@@ -41,7 +41,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class VideoStreamPlayback;
@@ -50,21 +50,20 @@ class VideoStream : public Resource {
 	GDEXTENSION_CLASS(VideoStream, Resource)
 
 public:
-
 	void set_file(const String &file);
 	String get_file();
 	virtual Ref<VideoStreamPlayback> _instantiate_playback();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Resource::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_instantiate_playback),decltype(&T::_instantiate_playback)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_instantiate_playback), decltype(&T::_instantiate_playback)>) {
 			BIND_VIRTUAL_METHOD(T, _instantiate_playback);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

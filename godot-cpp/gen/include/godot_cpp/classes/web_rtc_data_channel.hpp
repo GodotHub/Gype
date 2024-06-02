@@ -42,14 +42,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class WebRTCDataChannel : public PacketPeer {
 	GDEXTENSION_CLASS(WebRTCDataChannel, PacketPeer)
 
 public:
-
 	enum WriteMode {
 		WRITE_MODE_TEXT = 0,
 		WRITE_MODE_BINARY = 1,
@@ -76,6 +75,7 @@ public:
 	String get_protocol() const;
 	bool is_negotiated() const;
 	int32_t get_buffered_amount() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -83,7 +83,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

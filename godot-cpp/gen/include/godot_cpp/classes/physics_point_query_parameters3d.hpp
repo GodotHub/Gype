@@ -33,24 +33,24 @@
 #ifndef GODOT_CPP_PHYSICS_POINT_QUERY_PARAMETERS3D_HPP
 #define GODOT_CPP_PHYSICS_POINT_QUERY_PARAMETERS3D_HPP
 
-#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/vector3.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class PhysicsPointQueryParameters3D : public RefCounted {
 	GDEXTENSION_CLASS(PhysicsPointQueryParameters3D, RefCounted)
 
 public:
-
 	void set_position(const Vector3 &position);
 	Vector3 get_position() const;
 	void set_collision_mask(uint32_t collision_mask);
@@ -61,6 +61,7 @@ public:
 	bool is_collide_with_bodies_enabled() const;
 	void set_collide_with_areas(bool enable);
 	bool is_collide_with_areas_enabled() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -68,7 +69,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

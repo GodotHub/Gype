@@ -41,14 +41,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class FastNoiseLite : public Noise {
 	GDEXTENSION_CLASS(FastNoiseLite, Noise)
 
 public:
-
 	enum NoiseType {
 		TYPE_VALUE = 5,
 		TYPE_VALUE_CUBIC = 4,
@@ -136,6 +135,7 @@ public:
 	double get_domain_warp_fractal_lacunarity() const;
 	void set_domain_warp_fractal_gain(double domain_warp_gain);
 	double get_domain_warp_fractal_gain() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -143,7 +143,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

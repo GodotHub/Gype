@@ -35,14 +35,15 @@
 
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/classes/x509_certificate.hpp>
+#include <godot_cpp/variant/string.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class CryptoKey;
@@ -51,10 +52,10 @@ class TLSOptions : public RefCounted {
 	GDEXTENSION_CLASS(TLSOptions, RefCounted)
 
 public:
-
 	static Ref<TLSOptions> client(const Ref<X509Certificate> &trusted_chain = nullptr, const String &common_name_override = String());
 	static Ref<TLSOptions> client_unsafe(const Ref<X509Certificate> &trusted_chain = nullptr);
 	static Ref<TLSOptions> server(const Ref<CryptoKey> &key, const Ref<X509Certificate> &certificate);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -62,7 +63,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

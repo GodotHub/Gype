@@ -35,25 +35,26 @@
 
 #include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/classes/hashing_context.hpp>
-#include <godot_cpp/variant/packed_byte_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/variant/packed_byte_array.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class HMACContext : public RefCounted {
 	GDEXTENSION_CLASS(HMACContext, RefCounted)
 
 public:
-
 	Error start(HashingContext::HashType hash_type, const PackedByteArray &key);
 	Error update(const PackedByteArray &data);
 	PackedByteArray finish();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -61,7 +62,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

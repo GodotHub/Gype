@@ -43,7 +43,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Node;
@@ -54,7 +54,6 @@ class EditorScenePostImportPlugin : public RefCounted {
 	GDEXTENSION_CLASS(EditorScenePostImportPlugin, RefCounted)
 
 public:
-
 	enum InternalImportCategory {
 		INTERNAL_IMPORT_CATEGORY_NODE = 0,
 		INTERNAL_IMPORT_CATEGORY_MESH_3D_NODE = 1,
@@ -77,38 +76,38 @@ public:
 	virtual Variant _get_option_visibility(const String &path, bool for_animation, const String &option) const;
 	virtual void _pre_process(Node *scene);
 	virtual void _post_process(Node *scene);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		RefCounted::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_get_internal_import_options),decltype(&T::_get_internal_import_options)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_internal_import_options), decltype(&T::_get_internal_import_options)>) {
 			BIND_VIRTUAL_METHOD(T, _get_internal_import_options);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_internal_option_visibility),decltype(&T::_get_internal_option_visibility)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_internal_option_visibility), decltype(&T::_get_internal_option_visibility)>) {
 			BIND_VIRTUAL_METHOD(T, _get_internal_option_visibility);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_internal_option_update_view_required),decltype(&T::_get_internal_option_update_view_required)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_internal_option_update_view_required), decltype(&T::_get_internal_option_update_view_required)>) {
 			BIND_VIRTUAL_METHOD(T, _get_internal_option_update_view_required);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_internal_process),decltype(&T::_internal_process)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_internal_process), decltype(&T::_internal_process)>) {
 			BIND_VIRTUAL_METHOD(T, _internal_process);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_import_options),decltype(&T::_get_import_options)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_import_options), decltype(&T::_get_import_options)>) {
 			BIND_VIRTUAL_METHOD(T, _get_import_options);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_option_visibility),decltype(&T::_get_option_visibility)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_option_visibility), decltype(&T::_get_option_visibility)>) {
 			BIND_VIRTUAL_METHOD(T, _get_option_visibility);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_pre_process),decltype(&T::_pre_process)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_pre_process), decltype(&T::_pre_process)>) {
 			BIND_VIRTUAL_METHOD(T, _pre_process);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_post_process),decltype(&T::_post_process)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_post_process), decltype(&T::_post_process)>) {
 			BIND_VIRTUAL_METHOD(T, _post_process);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

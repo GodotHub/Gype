@@ -40,7 +40,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class ArrayMesh;
@@ -49,12 +49,12 @@ class Shape3D : public Resource {
 	GDEXTENSION_CLASS(Shape3D, Resource)
 
 public:
-
 	void set_custom_solver_bias(double bias);
 	double get_custom_solver_bias() const;
 	void set_margin(double margin);
 	double get_margin() const;
 	Ref<ArrayMesh> get_debug_mesh();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -62,7 +62,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

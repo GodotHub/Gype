@@ -40,14 +40,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class CameraAttributesPhysical : public CameraAttributes {
 	GDEXTENSION_CLASS(CameraAttributesPhysical, CameraAttributes)
 
 public:
-
 	void set_aperture(double aperture);
 	double get_aperture() const;
 	void set_shutter_speed(double shutter_speed);
@@ -65,6 +64,7 @@ public:
 	double get_auto_exposure_max_exposure_value() const;
 	void set_auto_exposure_min_exposure_value(double exposure_value_min);
 	double get_auto_exposure_min_exposure_value() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -72,7 +72,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

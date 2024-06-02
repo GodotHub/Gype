@@ -33,16 +33,17 @@
 #ifndef GODOT_CPP_SPRITE3D_HPP
 #define GODOT_CPP_SPRITE3D_HPP
 
-#include <godot_cpp/variant/rect2.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/sprite_base3d.hpp>
+#include <godot_cpp/variant/rect2.hpp>
 #include <godot_cpp/variant/vector2i.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Texture2D;
@@ -51,7 +52,6 @@ class Sprite3D : public SpriteBase3D {
 	GDEXTENSION_CLASS(Sprite3D, SpriteBase3D)
 
 public:
-
 	void set_texture(const Ref<Texture2D> &texture);
 	Ref<Texture2D> get_texture() const;
 	void set_region_enabled(bool enabled);
@@ -66,6 +66,7 @@ public:
 	int32_t get_vframes() const;
 	void set_hframes(int32_t hframes);
 	int32_t get_hframes() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -73,7 +74,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

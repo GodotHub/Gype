@@ -40,7 +40,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class EditorResourceTooltipPlugin;
@@ -50,10 +50,10 @@ class FileSystemDock : public VBoxContainer {
 	GDEXTENSION_CLASS(FileSystemDock, VBoxContainer)
 
 public:
-
 	void navigate_to_path(const String &path);
 	void add_resource_tooltip_plugin(const Ref<EditorResourceTooltipPlugin> &plugin);
 	void remove_resource_tooltip_plugin(const Ref<EditorResourceTooltipPlugin> &plugin);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -61,7 +61,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

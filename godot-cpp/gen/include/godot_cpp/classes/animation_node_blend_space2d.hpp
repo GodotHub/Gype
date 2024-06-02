@@ -42,14 +42,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class AnimationNodeBlendSpace2D : public AnimationRootNode {
 	GDEXTENSION_CLASS(AnimationNodeBlendSpace2D, AnimationRootNode)
 
 public:
-
 	enum BlendMode {
 		BLEND_MODE_INTERPOLATED = 0,
 		BLEND_MODE_DISCRETE = 1,
@@ -83,6 +82,7 @@ public:
 	AnimationNodeBlendSpace2D::BlendMode get_blend_mode() const;
 	void set_use_sync(bool enable);
 	bool is_using_sync() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -90,7 +90,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

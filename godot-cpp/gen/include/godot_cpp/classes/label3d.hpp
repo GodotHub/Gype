@@ -33,21 +33,22 @@
 #ifndef GODOT_CPP_LABEL3D_HPP
 #define GODOT_CPP_LABEL3D_HPP
 
-#include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/classes/base_material3d.hpp>
-#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/geometry_instance3d.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/classes/text_server.hpp>
+#include <godot_cpp/variant/array.hpp>
+#include <godot_cpp/variant/color.hpp>
+#include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/vector2.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Font;
@@ -57,7 +58,6 @@ class Label3D : public GeometryInstance3D {
 	GDEXTENSION_CLASS(Label3D, GeometryInstance3D)
 
 public:
-
 	enum DrawFlags {
 		FLAG_SHADED = 0,
 		FLAG_DOUBLE_SIDED = 1,
@@ -132,6 +132,7 @@ public:
 	void set_texture_filter(BaseMaterial3D::TextureFilter mode);
 	BaseMaterial3D::TextureFilter get_texture_filter() const;
 	Ref<TriangleMesh> generate_triangle_mesh() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -139,7 +140,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

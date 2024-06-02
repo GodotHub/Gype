@@ -1,0 +1,40 @@
+#include "register/register_builtin_classes.h"
+#include "register/utils.h"
+
+using namespace godot;
+
+void register_builtin_classes_{{clazz.name}}() {
+	_Variant.class_<{{clazz.name}}>("{{clazz.name}}")
+{% for ctr in clazz.constructors %}
+	{% set types = ctr.arguments | map(attribute='type') %}
+	{% if ctr.arguments | length > 0 %}
+            .constructor<{{types | convert_gen_paramter_type() | join(',')}}>("{{clazz.name | increment_num }}")
+	{% else %}
+            .constructor<>()
+	{% endif %}
+{% endfor %}{{ flush_letter() }}
+{% for method in clazz.methods %}
+	{% if not method.is_static %}
+			.fun<static_cast<
+		{%- if method.return_type -%}
+				{{-method.return_type | convert_return_type_t-}}
+		{%- else -%}
+				{{-'void'-}}
+		{%- endif -%} 
+			({{-clazz.name-}}::*)({{- method.arguments | map(attribute='type') | convert_paramter_type(method.is_vararg) | join(',') -}}) 
+		{%- if method.is_const -%}const{%- endif -%}>(&{{clazz.name}}::{{method.name}})>
+		{%- if loop.last %}
+				{{-'("'+method.name+'");'}}
+		{% else %}
+				{{-'("'+method.name+'")'}}
+		{% endif %}
+	{% else %}
+            .static_fun<{{clazz.name}}::{{method.name}}>
+		{%- if loop.last %}
+				{{-'("'+method.name+'");'}}
+		{% else %}
+				{{-'("'+method.name+'")'}}
+		{% endif %}
+	{% endif %}
+{% endfor %}
+}

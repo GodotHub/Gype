@@ -40,7 +40,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Callable;
@@ -51,7 +51,6 @@ class UndoRedo : public Object {
 	GDEXTENSION_CLASS(UndoRedo, Object)
 
 public:
-
 	enum MergeMode {
 		MERGE_DISABLE = 0,
 		MERGE_ENDS = 1,
@@ -79,6 +78,7 @@ public:
 	uint64_t get_version() const;
 	bool redo();
 	bool undo();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -86,7 +86,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

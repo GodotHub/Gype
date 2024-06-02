@@ -33,22 +33,22 @@
 #ifndef GODOT_CPP_ATLAS_TEXTURE_HPP
 #define GODOT_CPP_ATLAS_TEXTURE_HPP
 
-#include <godot_cpp/variant/rect2.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/variant/rect2.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class AtlasTexture : public Texture2D {
 	GDEXTENSION_CLASS(AtlasTexture, Texture2D)
 
 public:
-
 	void set_atlas(const Ref<Texture2D> &atlas);
 	Ref<Texture2D> get_atlas() const;
 	void set_region(const Rect2 &region);
@@ -57,6 +57,7 @@ public:
 	Rect2 get_margin() const;
 	void set_filter_clip(bool enable);
 	bool has_filter_clip() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -64,7 +65,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

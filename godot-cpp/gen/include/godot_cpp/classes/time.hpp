@@ -33,22 +33,22 @@
 #ifndef GODOT_CPP_TIME_HPP
 #define GODOT_CPP_TIME_HPP
 
-#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/core/object.hpp>
+#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/variant/string.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Time : public Object {
 	GDEXTENSION_CLASS(Time, Object)
 
 public:
-
 	enum Month {
 		MONTH_JANUARY = 1,
 		MONTH_FEBRUARY = 2,
@@ -97,6 +97,7 @@ public:
 	double get_unix_time_from_system() const;
 	uint64_t get_ticks_msec() const;
 	uint64_t get_ticks_usec() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -104,7 +105,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

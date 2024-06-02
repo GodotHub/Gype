@@ -40,14 +40,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class VisualShaderNodeBillboard : public VisualShaderNode {
 	GDEXTENSION_CLASS(VisualShaderNodeBillboard, VisualShaderNode)
 
 public:
-
 	enum BillboardType {
 		BILLBOARD_TYPE_DISABLED = 0,
 		BILLBOARD_TYPE_ENABLED = 1,
@@ -60,6 +59,7 @@ public:
 	VisualShaderNodeBillboard::BillboardType get_billboard_type() const;
 	void set_keep_scale_enabled(bool enabled);
 	bool is_keep_scale_enabled() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -67,7 +67,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

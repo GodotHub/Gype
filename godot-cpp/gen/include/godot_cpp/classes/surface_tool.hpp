@@ -33,24 +33,25 @@
 #ifndef GODOT_CPP_SURFACE_TOOL_HPP
 #define GODOT_CPP_SURFACE_TOOL_HPP
 
-#include <godot_cpp/variant/aabb.hpp>
-#include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/classes/array_mesh.hpp>
 #include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/variant/aabb.hpp>
+#include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/packed_color_array.hpp>
 #include <godot_cpp/variant/packed_int32_array.hpp>
 #include <godot_cpp/variant/packed_vector2_array.hpp>
 #include <godot_cpp/variant/packed_vector3_array.hpp>
 #include <godot_cpp/variant/plane.hpp>
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 struct Color;
@@ -65,7 +66,6 @@ class SurfaceTool : public RefCounted {
 	GDEXTENSION_CLASS(SurfaceTool, RefCounted)
 
 public:
-
 	enum CustomFormat {
 		CUSTOM_RGBA8_UNORM = 0,
 		CUSTOM_RGBA8_SNORM = 1,
@@ -115,6 +115,7 @@ public:
 	void append_from(const Ref<Mesh> &existing, int32_t surface, const Transform3D &transform);
 	Ref<ArrayMesh> commit(const Ref<ArrayMesh> &existing = nullptr, uint64_t flags = 0);
 	Array commit_to_arrays();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -122,7 +123,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -43,14 +43,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class AnimationPlayer : public AnimationMixer {
 	GDEXTENSION_CLASS(AnimationPlayer, AnimationMixer)
 
 public:
-
 	enum AnimationProcessCallback {
 		ANIMATION_PROCESS_PHYSICS = 0,
 		ANIMATION_PROCESS_IDLE = 1,
@@ -96,6 +95,7 @@ public:
 	AnimationPlayer::AnimationMethodCallMode get_method_call_mode() const;
 	void set_root(const NodePath &path);
 	NodePath get_root() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -103,7 +103,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

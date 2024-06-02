@@ -40,14 +40,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class PathFollow3D : public Node3D {
 	GDEXTENSION_CLASS(PathFollow3D, Node3D)
 
 public:
-
 	enum RotationMode {
 		ROTATION_NONE = 0,
 		ROTATION_Y = 1,
@@ -75,6 +74,7 @@ public:
 	void set_tilt_enabled(bool enabled);
 	bool is_tilt_enabled() const;
 	static Transform3D correct_posture(const Transform3D &transform, PathFollow3D::RotationMode rotation_mode);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -82,7 +82,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

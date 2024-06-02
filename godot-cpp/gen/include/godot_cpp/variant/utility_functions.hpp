@@ -36,7 +36,7 @@
 #include <godot_cpp/variant/builtin_types.hpp>
 #include <godot_cpp/variant/variant.hpp>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 
 namespace godot {
 
@@ -109,32 +109,36 @@ public:
 	static Variant wrap(const Variant &value, const Variant &min, const Variant &max);
 	static int64_t wrapi(int64_t value, int64_t min, int64_t max);
 	static double wrapf(double value, double min, double max);
-	private: static Variant max_internal(const Variant **args, GDExtensionInt arg_count);
-	public: static Variant max(const Variant &arg1, const Variant &arg2, rest<Variant> args) {
+
+private:
+	static Variant max_internal(const Variant **args, GDExtensionInt arg_count);
+
+public:
+	static Variant max(const Variant &arg1, const Variant &arg2, rest<Variant> args) {
 		std::vector<Variant> variant_args;
-		for (int i = 0; i < 2; i++) {
-			variant_args.push_back(arg1);
-			variant_args.push_back(arg2);
-		}
+		variant_args.push_back(Variant(arg1));
+		variant_args.push_back(Variant(arg2));
 		variant_args.insert(variant_args.end(), args.begin(), args.end());
 		std::vector<const Variant *> call_args;
-		for(size_t i = 0; i < variant_args.size(); i++) {
+		for (size_t i = 0; i < variant_args.size(); i++) {
 			call_args.push_back(&variant_args[i]);
 		}
 		return max_internal(call_args.data(), variant_args.size());
 	}
 	static int64_t maxi(int64_t a, int64_t b);
 	static double maxf(double a, double b);
-	private: static Variant min_internal(const Variant **args, GDExtensionInt arg_count);
-	public: static Variant min(const Variant &arg1, const Variant &arg2, rest<Variant> args) {
+
+private:
+	static Variant min_internal(const Variant **args, GDExtensionInt arg_count);
+
+public:
+	static Variant min(const Variant &arg1, const Variant &arg2, rest<Variant> args) {
 		std::vector<Variant> variant_args;
-		for (int i = 0; i < 2; i++) {
-			variant_args.push_back(arg1);
-			variant_args.push_back(arg2);
-		}
+		variant_args.push_back(Variant(arg1));
+		variant_args.push_back(Variant(arg2));
 		variant_args.insert(variant_args.end(), args.begin(), args.end());
 		std::vector<const Variant *> call_args;
-		for(size_t i = 0; i < variant_args.size(); i++) {
+		for (size_t i = 0; i < variant_args.size(); i++) {
 			call_args.push_back(&variant_args[i]);
 		}
 		return min_internal(call_args.data(), variant_args.size());
@@ -157,134 +161,154 @@ public:
 	static Variant weakref(const Variant &obj);
 	static int64_t type_of(const Variant &variable);
 	static Variant type_convert(const Variant &variant, int64_t type);
-	private: static String str_internal(const Variant **args, GDExtensionInt arg_count);
-	public: static String str(const Variant &arg1, rest<Variant> args) {
+
+private:
+	static String str_internal(const Variant **args, GDExtensionInt arg_count);
+
+public:
+	static String str(const Variant &arg1, rest<Variant> args) {
 		std::vector<Variant> variant_args;
-		for (int i = 0; i < 1; i++) {
-			variant_args.push_back(arg1);
-		}
+		variant_args.push_back(Variant(arg1));
 		variant_args.insert(variant_args.end(), args.begin(), args.end());
 		std::vector<const Variant *> call_args;
-		for(size_t i = 0; i < variant_args.size(); i++) {
+		for (size_t i = 0; i < variant_args.size(); i++) {
 			call_args.push_back(&variant_args[i]);
 		}
 		return str_internal(call_args.data(), variant_args.size());
 	}
 	static String error_string(int64_t error);
 	static String type_string(int64_t type);
-	private: static void print_internal(const Variant **args, GDExtensionInt arg_count);
-	public: static void print(const Variant &arg1, rest<Variant> args) {
+
+private:
+	static void print_internal(const Variant **args, GDExtensionInt arg_count);
+
+public:
+	static void print(const Variant &arg1, rest<Variant> args) {
 		std::vector<Variant> variant_args;
-		for (int i = 0; i < 1; i++) {
-			variant_args.push_back(arg1);
-		}
+		variant_args.push_back(Variant(arg1));
 		variant_args.insert(variant_args.end(), args.begin(), args.end());
 		std::vector<const Variant *> call_args;
-		for(size_t i = 0; i < variant_args.size(); i++) {
+		for (size_t i = 0; i < variant_args.size(); i++) {
 			call_args.push_back(&variant_args[i]);
 		}
 		print_internal(call_args.data(), variant_args.size());
 	}
-	private: static void print_rich_internal(const Variant **args, GDExtensionInt arg_count);
-	public: static void print_rich(const Variant &arg1, rest<Variant> args) {
+
+private:
+	static void print_rich_internal(const Variant **args, GDExtensionInt arg_count);
+
+public:
+	static void print_rich(const Variant &arg1, rest<Variant> args) {
 		std::vector<Variant> variant_args;
-		for (int i = 0; i < 1; i++) {
-			variant_args.push_back(arg1);
-		}
+		variant_args.push_back(Variant(arg1));
 		variant_args.insert(variant_args.end(), args.begin(), args.end());
 		std::vector<const Variant *> call_args;
-		for(size_t i = 0; i < variant_args.size(); i++) {
+		for (size_t i = 0; i < variant_args.size(); i++) {
 			call_args.push_back(&variant_args[i]);
 		}
 		print_rich_internal(call_args.data(), variant_args.size());
 	}
-	private: static void printerr_internal(const Variant **args, GDExtensionInt arg_count);
-	public: static void printerr(const Variant &arg1, rest<Variant> args) {
+
+private:
+	static void printerr_internal(const Variant **args, GDExtensionInt arg_count);
+
+public:
+	static void printerr(const Variant &arg1, rest<Variant> args) {
 		std::vector<Variant> variant_args;
-		for (int i = 0; i < 1; i++) {
-			variant_args.push_back(arg1);
-		}
+		variant_args.push_back(Variant(arg1));
 		variant_args.insert(variant_args.end(), args.begin(), args.end());
 		std::vector<const Variant *> call_args;
-		for(size_t i = 0; i < variant_args.size(); i++) {
+		for (size_t i = 0; i < variant_args.size(); i++) {
 			call_args.push_back(&variant_args[i]);
 		}
 		printerr_internal(call_args.data(), variant_args.size());
 	}
-	private: static void printt_internal(const Variant **args, GDExtensionInt arg_count);
-	public: static void printt(const Variant &arg1, rest<Variant> args) {
+
+private:
+	static void printt_internal(const Variant **args, GDExtensionInt arg_count);
+
+public:
+	static void printt(const Variant &arg1, rest<Variant> args) {
 		std::vector<Variant> variant_args;
-		for (int i = 0; i < 1; i++) {
-			variant_args.push_back(arg1);
-		}
+		variant_args.push_back(Variant(arg1));
 		variant_args.insert(variant_args.end(), args.begin(), args.end());
 		std::vector<const Variant *> call_args;
-		for(size_t i = 0; i < variant_args.size(); i++) {
+		for (size_t i = 0; i < variant_args.size(); i++) {
 			call_args.push_back(&variant_args[i]);
 		}
 		printt_internal(call_args.data(), variant_args.size());
 	}
-	private: static void prints_internal(const Variant **args, GDExtensionInt arg_count);
-	public: static void prints(const Variant &arg1, rest<Variant> args) {
+
+private:
+	static void prints_internal(const Variant **args, GDExtensionInt arg_count);
+
+public:
+	static void prints(const Variant &arg1, rest<Variant> args) {
 		std::vector<Variant> variant_args;
-		for (int i = 0; i < 1; i++) {
-			variant_args.push_back(arg1);
-		}
+		variant_args.push_back(Variant(arg1));
 		variant_args.insert(variant_args.end(), args.begin(), args.end());
 		std::vector<const Variant *> call_args;
-		for(size_t i = 0; i < variant_args.size(); i++) {
+		for (size_t i = 0; i < variant_args.size(); i++) {
 			call_args.push_back(&variant_args[i]);
 		}
 		prints_internal(call_args.data(), variant_args.size());
 	}
-	private: static void printraw_internal(const Variant **args, GDExtensionInt arg_count);
-	public: static void printraw(const Variant &arg1, rest<Variant> args) {
+
+private:
+	static void printraw_internal(const Variant **args, GDExtensionInt arg_count);
+
+public:
+	static void printraw(const Variant &arg1, rest<Variant> args) {
 		std::vector<Variant> variant_args;
-		for (int i = 0; i < 1; i++) {
-			variant_args.push_back(arg1);
-		}
+		variant_args.push_back(Variant(arg1));
 		variant_args.insert(variant_args.end(), args.begin(), args.end());
 		std::vector<const Variant *> call_args;
-		for(size_t i = 0; i < variant_args.size(); i++) {
+		for (size_t i = 0; i < variant_args.size(); i++) {
 			call_args.push_back(&variant_args[i]);
 		}
 		printraw_internal(call_args.data(), variant_args.size());
 	}
-	private: static void print_verbose_internal(const Variant **args, GDExtensionInt arg_count);
-	public: static void print_verbose(const Variant &arg1, rest<Variant> args) {
+
+private:
+	static void print_verbose_internal(const Variant **args, GDExtensionInt arg_count);
+
+public:
+	static void print_verbose(const Variant &arg1, rest<Variant> args) {
 		std::vector<Variant> variant_args;
-		for (int i = 0; i < 1; i++) {
-			variant_args.push_back(arg1);
-		}
+		variant_args.push_back(Variant(arg1));
 		variant_args.insert(variant_args.end(), args.begin(), args.end());
 		std::vector<const Variant *> call_args;
-		for(size_t i = 0; i < variant_args.size(); i++) {
+		for (size_t i = 0; i < variant_args.size(); i++) {
 			call_args.push_back(&variant_args[i]);
 		}
 		print_verbose_internal(call_args.data(), variant_args.size());
 	}
-	private: static void push_error_internal(const Variant **args, GDExtensionInt arg_count);
-	public: static void push_error(const Variant &arg1, rest<Variant> args) {
+
+private:
+	static void push_error_internal(const Variant **args, GDExtensionInt arg_count);
+
+public:
+	static void push_error(const Variant &arg1, rest<Variant> args) {
 		std::vector<Variant> variant_args;
-		for (int i = 0; i < 1; i++) {
-			variant_args.push_back(arg1);
-		}
+		variant_args.push_back(Variant(arg1));
 		variant_args.insert(variant_args.end(), args.begin(), args.end());
 		std::vector<const Variant *> call_args;
-		for(size_t i = 0; i < variant_args.size(); i++) {
+		for (size_t i = 0; i < variant_args.size(); i++) {
 			call_args.push_back(&variant_args[i]);
 		}
 		push_error_internal(call_args.data(), variant_args.size());
 	}
-	private: static void push_warning_internal(const Variant **args, GDExtensionInt arg_count);
-	public: static void push_warning(const Variant &arg1, rest<Variant> args) {
+
+private:
+	static void push_warning_internal(const Variant **args, GDExtensionInt arg_count);
+
+public:
+	static void push_warning(const Variant &arg1, rest<Variant> args) {
 		std::vector<Variant> variant_args;
-		for (int i = 0; i < 1; i++) {
-			variant_args.push_back(arg1);
-		}
+		variant_args.push_back(Variant(arg1));
 		variant_args.insert(variant_args.end(), args.begin(), args.end());
 		std::vector<const Variant *> call_args;
-		for(size_t i = 0; i < variant_args.size(); i++) {
+		for (size_t i = 0; i < variant_args.size(); i++) {
 			call_args.push_back(&variant_args[i]);
 		}
 		push_warning_internal(call_args.data(), variant_args.size());
@@ -296,7 +320,7 @@ public:
 	static PackedByteArray var_to_bytes_with_objects(const Variant &variable);
 	static Variant bytes_to_var_with_objects(const PackedByteArray &bytes);
 	static int64_t hash(const Variant &variable);
-	static Object  *instance_from_id(int64_t instance_id);
+	static Object *instance_from_id(int64_t instance_id);
 	static bool is_instance_id_valid(int64_t id);
 	static bool is_instance_valid(const Variant &instance);
 	static int64_t rid_allocate_id();

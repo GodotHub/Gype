@@ -33,16 +33,17 @@
 #ifndef GODOT_CPP_OBJECT_HPP
 #define GODOT_CPP_OBJECT_HPP
 
+#include <godot_cpp/classes/global_constants.hpp>
+#include <godot_cpp/classes/wrapped.hpp>
 #include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/dictionary.hpp>
-#include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/variant.hpp>
-#include <godot_cpp/classes/wrapped.hpp>
 
-#include <godot_cpp/templates/vararg.h>
+
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Callable;
@@ -52,7 +53,6 @@ class Object : public Wrapped {
 	GDEXTENSION_CLASS(Object, Wrapped)
 
 public:
-
 	enum ConnectFlags {
 		CONNECT_DEFERRED = 1,
 		CONNECT_PERSIST = 2,
@@ -86,41 +86,50 @@ public:
 	TypedArray<StringName> get_meta_list() const;
 	void add_user_signal(const String &signal, const Array &arguments = Array());
 	bool has_user_signal(const StringName &signal) const;
-	private: private: Error emit_signal_internal(const Variant **args, GDExtensionInt arg_count);
-	public: Error emit_signal(const StringName &signal, rest<Variant> args) {
+
+private:
+private:
+	Error emit_signal_internal(const Variant **args, GDExtensionInt arg_count);
+
+public:
+	Error emit_signal(const StringName &signal, rest<Variant> args) {
 		std::vector<Variant> variant_args;
-		for (int i = 0; i < 1; i++) {
-			variant_args.push_back(Variant(signal));
-		}
+		variant_args.push_back(Variant(signal));
 		variant_args.insert(variant_args.end(), args.begin(), args.end());
 		std::vector<const Variant *> call_args;
-		for(size_t i = 0; i < variant_args.size(); i++) {
+		for (size_t i = 0; i < variant_args.size(); i++) {
 			call_args.push_back(&variant_args[i]);
 		}
 		return emit_signal_internal(call_args.data(), variant_args.size());
 	}
-	private: private: Variant call_internal(const Variant **args, GDExtensionInt arg_count);
-	public: Variant call(const StringName &method, rest<Variant> args) {
+
+private:
+private:
+	Variant call_internal(const Variant **args, GDExtensionInt arg_count);
+
+public:
+	Variant call(const StringName &method, rest<Variant> args) {
 		std::vector<Variant> variant_args;
-		for (int i = 0; i < 1; i++) {
-			variant_args.push_back(Variant(method));
-		}
+		variant_args.push_back(Variant(method));
 		variant_args.insert(variant_args.end(), args.begin(), args.end());
 		std::vector<const Variant *> call_args;
-		for(size_t i = 0; i < variant_args.size(); i++) {
+		for (size_t i = 0; i < variant_args.size(); i++) {
 			call_args.push_back(&variant_args[i]);
 		}
 		return call_internal(call_args.data(), variant_args.size());
 	}
-	private: private: Variant call_deferred_internal(const Variant **args, GDExtensionInt arg_count);
-	public: Variant call_deferred(const StringName &method, rest<Variant> args) {
+
+private:
+private:
+	Variant call_deferred_internal(const Variant **args, GDExtensionInt arg_count);
+
+public:
+	Variant call_deferred(const StringName &method, rest<Variant> args) {
 		std::vector<Variant> variant_args;
-		for (int i = 0; i < 1; i++) {
-			variant_args.push_back(Variant(method));
-		}
+		variant_args.push_back(Variant(method));
 		variant_args.insert(variant_args.end(), args.begin(), args.end());
 		std::vector<const Variant *> call_args;
-		for(size_t i = 0; i < variant_args.size(); i++) {
+		for (size_t i = 0; i < variant_args.size(); i++) {
 			call_args.push_back(&variant_args[i]);
 		}
 		return call_deferred_internal(call_args.data(), variant_args.size());
@@ -144,19 +153,18 @@ public:
 	String tr_n(const StringName &message, const StringName &plural_message, int32_t n, const StringName &context = String()) const;
 	bool is_queued_for_deletion() const;
 	void cancel_free();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 	}
 
 public:
-
-	template<typename T>
+	template <typename T>
 	static T *cast_to(Object *p_object);
-	template<typename T>
+	template <typename T>
 	static const T *cast_to(const Object *p_object);
 	virtual ~Object() = default;
-
 };
 
 } // namespace godot

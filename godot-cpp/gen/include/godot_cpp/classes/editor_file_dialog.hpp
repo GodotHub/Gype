@@ -41,7 +41,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Control;
@@ -52,7 +52,6 @@ class EditorFileDialog : public ConfirmationDialog {
 	GDEXTENSION_CLASS(EditorFileDialog, ConfirmationDialog)
 
 public:
-
 	enum FileMode {
 		FILE_MODE_OPEN_FILE = 0,
 		FILE_MODE_OPEN_FILES = 1,
@@ -96,6 +95,7 @@ public:
 	bool is_overwrite_warning_disabled() const;
 	void add_side_menu(Control *menu, const String &title = String());
 	void invalidate();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -103,7 +103,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

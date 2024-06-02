@@ -35,20 +35,21 @@
 
 #include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/node_path.hpp>
 #include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/quaternion.hpp>
-#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/variant.hpp>
 #include <godot_cpp/variant/vector3.hpp>
 
+
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Animation;
@@ -59,7 +60,6 @@ class AnimationMixer : public Node {
 	GDEXTENSION_CLASS(AnimationMixer, Node)
 
 public:
-
 	enum AnimationCallbackModeProcess {
 		ANIMATION_CALLBACK_MODE_PROCESS_PHYSICS = 0,
 		ANIMATION_CALLBACK_MODE_PROCESS_IDLE = 1,
@@ -107,17 +107,17 @@ public:
 	StringName find_animation(const Ref<Animation> &animation) const;
 	StringName find_animation_library(const Ref<Animation> &animation) const;
 	virtual Variant _post_process_key_value(const Ref<Animation> &animation, int32_t track, const Variant &value, Object *object, int32_t object_idx) const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Node::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_post_process_key_value),decltype(&T::_post_process_key_value)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_post_process_key_value), decltype(&T::_post_process_key_value)>) {
 			BIND_VIRTUAL_METHOD(T, _post_process_key_value);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

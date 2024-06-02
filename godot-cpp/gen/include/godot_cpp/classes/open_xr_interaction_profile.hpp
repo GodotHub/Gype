@@ -33,16 +33,17 @@
 #ifndef GODOT_CPP_OPEN_XR_INTERACTION_PROFILE_HPP
 #define GODOT_CPP_OPEN_XR_INTERACTION_PROFILE_HPP
 
-#include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/string.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class OpenXRIPBinding;
@@ -51,13 +52,13 @@ class OpenXRInteractionProfile : public Resource {
 	GDEXTENSION_CLASS(OpenXRInteractionProfile, Resource)
 
 public:
-
 	void set_interaction_profile_path(const String &interaction_profile_path);
 	String get_interaction_profile_path() const;
 	int32_t get_binding_count() const;
 	Ref<OpenXRIPBinding> get_binding(int32_t index) const;
 	void set_bindings(const Array &bindings);
 	Array get_bindings() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -65,7 +66,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

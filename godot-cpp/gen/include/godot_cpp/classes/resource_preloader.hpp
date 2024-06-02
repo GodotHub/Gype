@@ -34,14 +34,15 @@
 #define GODOT_CPP_RESOURCE_PRELOADER_HPP
 
 #include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/variant/packed_string_array.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Resource;
@@ -51,13 +52,13 @@ class ResourcePreloader : public Node {
 	GDEXTENSION_CLASS(ResourcePreloader, Node)
 
 public:
-
 	void add_resource(const StringName &name, const Ref<Resource> &resource);
 	void remove_resource(const StringName &name);
 	void rename_resource(const StringName &name, const StringName &newname);
 	bool has_resource(const StringName &name) const;
 	Ref<Resource> get_resource(const StringName &name) const;
 	PackedStringArray get_resource_list() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -65,7 +66,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

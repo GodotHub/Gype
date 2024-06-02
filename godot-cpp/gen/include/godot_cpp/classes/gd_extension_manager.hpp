@@ -33,15 +33,16 @@
 #ifndef GODOT_CPP_GD_EXTENSION_MANAGER_HPP
 #define GODOT_CPP_GD_EXTENSION_MANAGER_HPP
 
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/core/object.hpp>
 #include <godot_cpp/variant/packed_string_array.hpp>
-#include <godot_cpp/classes/ref.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class GDExtension;
@@ -51,7 +52,6 @@ class GDExtensionManager : public Object {
 	GDEXTENSION_CLASS(GDExtensionManager, Object)
 
 public:
-
 	enum LoadStatus {
 		LOAD_STATUS_OK = 0,
 		LOAD_STATUS_FAILED = 1,
@@ -68,6 +68,7 @@ public:
 	bool is_extension_loaded(const String &path) const;
 	PackedStringArray get_loaded_extensions() const;
 	Ref<GDExtension> get_extension(const String &path);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -75,7 +76,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

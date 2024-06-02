@@ -33,22 +33,23 @@
 #ifndef GODOT_CPP_ITEM_LIST_HPP
 #define GODOT_CPP_ITEM_LIST_HPP
 
-#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/variant/packed_int32_array.hpp>
-#include <godot_cpp/variant/rect2.hpp>
 #include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/classes/text_server.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/variant/color.hpp>
+#include <godot_cpp/variant/packed_int32_array.hpp>
+#include <godot_cpp/variant/rect2.hpp>
+#include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/variant.hpp>
 #include <godot_cpp/variant/vector2i.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class VScrollBar;
@@ -58,7 +59,6 @@ class ItemList : public Control {
 	GDEXTENSION_CLASS(ItemList, Control)
 
 public:
-
 	enum IconMode {
 		ICON_MODE_TOP = 0,
 		ICON_MODE_LEFT = 1,
@@ -142,6 +142,7 @@ public:
 	void set_text_overrun_behavior(TextServer::OverrunBehavior overrun_behavior);
 	TextServer::OverrunBehavior get_text_overrun_behavior() const;
 	void force_update_list_size();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -149,7 +150,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

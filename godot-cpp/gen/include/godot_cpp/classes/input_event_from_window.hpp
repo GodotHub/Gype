@@ -40,16 +40,16 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class InputEventFromWindow : public InputEvent {
 	GDEXTENSION_CLASS(InputEventFromWindow, InputEvent)
 
 public:
-
 	void set_window_id(int64_t id);
 	int64_t get_window_id() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -57,7 +57,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

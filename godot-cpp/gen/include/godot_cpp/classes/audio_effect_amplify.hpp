@@ -40,16 +40,16 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class AudioEffectAmplify : public AudioEffect {
 	GDEXTENSION_CLASS(AudioEffectAmplify, AudioEffect)
 
 public:
-
 	void set_volume_db(double volume);
 	double get_volume_db() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -57,7 +57,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

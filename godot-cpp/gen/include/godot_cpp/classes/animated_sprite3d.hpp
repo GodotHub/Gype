@@ -42,7 +42,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class SpriteFrames;
@@ -51,7 +51,6 @@ class AnimatedSprite3D : public SpriteBase3D {
 	GDEXTENSION_CLASS(AnimatedSprite3D, SpriteBase3D)
 
 public:
-
 	void set_sprite_frames(const Ref<SpriteFrames> &sprite_frames);
 	Ref<SpriteFrames> get_sprite_frames() const;
 	void set_animation(const StringName &name);
@@ -71,6 +70,7 @@ public:
 	void set_speed_scale(double speed_scale);
 	double get_speed_scale() const;
 	double get_playing_speed() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -78,7 +78,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -11,7 +11,7 @@ mkdir build
 
 cmake -B build . -G "MinGW Makefiles"
 
-make -C build -j
+make -C build -j18
 
 if not exist %TARGET_DIR% (
     mkdir %TARGET_DIR%

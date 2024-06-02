@@ -40,14 +40,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class VisualShaderNodeUIntFunc : public VisualShaderNode {
 	GDEXTENSION_CLASS(VisualShaderNodeUIntFunc, VisualShaderNode)
 
 public:
-
 	enum Function {
 		FUNC_NEGATE = 0,
 		FUNC_BITWISE_NOT = 1,
@@ -56,6 +55,7 @@ public:
 
 	void set_function(VisualShaderNodeUIntFunc::Function func);
 	VisualShaderNodeUIntFunc::Function get_function() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -63,7 +63,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

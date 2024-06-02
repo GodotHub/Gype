@@ -33,25 +33,25 @@
 #ifndef GODOT_CPP_CURVE3D_HPP
 #define GODOT_CPP_CURVE3D_HPP
 
-#include <godot_cpp/variant/packed_float32_array.hpp>
-#include <godot_cpp/variant/packed_vector3_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/variant/packed_float32_array.hpp>
+#include <godot_cpp/variant/packed_vector3_array.hpp>
 #include <godot_cpp/variant/transform3d.hpp>
 #include <godot_cpp/variant/vector3.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Curve3D : public Resource {
 	GDEXTENSION_CLASS(Curve3D, Resource)
 
 public:
-
 	int32_t get_point_count() const;
 	void set_point_count(int32_t count);
 	void add_point(const Vector3 &position, const Vector3 &in = Vector3(0, 0, 0), const Vector3 &out = Vector3(0, 0, 0), int32_t index = -1);
@@ -82,6 +82,7 @@ public:
 	double get_closest_offset(const Vector3 &to_point) const;
 	PackedVector3Array tessellate(int32_t max_stages = 5, double tolerance_degrees = 4) const;
 	PackedVector3Array tessellate_even_length(int32_t max_stages = 5, double tolerance_length = 0.2) const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -89,7 +90,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

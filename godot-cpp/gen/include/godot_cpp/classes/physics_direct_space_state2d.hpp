@@ -33,18 +33,19 @@
 #ifndef GODOT_CPP_PHYSICS_DIRECT_SPACE_STATE2D_HPP
 #define GODOT_CPP_PHYSICS_DIRECT_SPACE_STATE2D_HPP
 
-#include <godot_cpp/variant/dictionary.hpp>
-#include <godot_cpp/core/object.hpp>
-#include <godot_cpp/variant/packed_float32_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/core/object.hpp>
+#include <godot_cpp/variant/dictionary.hpp>
+#include <godot_cpp/variant/packed_float32_array.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/vector2.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class PhysicsPointQueryParameters2D;
@@ -55,13 +56,13 @@ class PhysicsDirectSpaceState2D : public Object {
 	GDEXTENSION_CLASS(PhysicsDirectSpaceState2D, Object)
 
 public:
-
 	TypedArray<Dictionary> intersect_point(const Ref<PhysicsPointQueryParameters2D> &parameters, int32_t max_results = 32);
 	Dictionary intersect_ray(const Ref<PhysicsRayQueryParameters2D> &parameters);
 	TypedArray<Dictionary> intersect_shape(const Ref<PhysicsShapeQueryParameters2D> &parameters, int32_t max_results = 32);
 	PackedFloat32Array cast_motion(const Ref<PhysicsShapeQueryParameters2D> &parameters);
 	TypedArray<Vector2> collide_shape(const Ref<PhysicsShapeQueryParameters2D> &parameters, int32_t max_results = 32);
 	Dictionary get_rest_info(const Ref<PhysicsShapeQueryParameters2D> &parameters);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -69,7 +70,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -33,15 +33,16 @@
 #ifndef GODOT_CPP_CAMERA_SERVER_HPP
 #define GODOT_CPP_CAMERA_SERVER_HPP
 
-#include <godot_cpp/core/object.hpp>
 #include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/core/object.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class CameraFeed;
@@ -50,7 +51,6 @@ class CameraServer : public Object {
 	GDEXTENSION_CLASS(CameraServer, Object)
 
 public:
-
 	enum FeedImage {
 		FEED_RGBA_IMAGE = 0,
 		FEED_YCBCR_IMAGE = 0,
@@ -65,6 +65,7 @@ public:
 	TypedArray<CameraFeed> feeds();
 	void add_feed(const Ref<CameraFeed> &feed);
 	void remove_feed(const Ref<CameraFeed> &feed);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -72,7 +73,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

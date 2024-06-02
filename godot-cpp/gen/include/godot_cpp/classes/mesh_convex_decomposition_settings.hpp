@@ -40,14 +40,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class MeshConvexDecompositionSettings : public RefCounted {
 	GDEXTENSION_CLASS(MeshConvexDecompositionSettings, RefCounted)
 
 public:
-
 	enum Mode {
 		CONVEX_DECOMPOSITION_MODE_VOXEL = 0,
 		CONVEX_DECOMPOSITION_MODE_TETRAHEDRON = 1,
@@ -79,6 +78,7 @@ public:
 	uint32_t get_max_convex_hulls() const;
 	void set_project_hull_vertices(bool project_hull_vertices);
 	bool get_project_hull_vertices() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -86,7 +86,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -33,17 +33,18 @@
 #ifndef GODOT_CPP_SHAPE_CAST3D_HPP
 #define GODOT_CPP_SHAPE_CAST3D_HPP
 
-#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/node3d.hpp>
-#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/variant/color.hpp>
+#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/variant/vector3.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class CollisionObject3D;
@@ -55,7 +56,6 @@ class ShapeCast3D : public Node3D {
 	GDEXTENSION_CLASS(ShapeCast3D, Node3D)
 
 public:
-
 	void resource_changed(const Ref<Resource> &resource);
 	void set_enabled(bool enabled);
 	bool is_enabled() const;
@@ -94,6 +94,7 @@ public:
 	bool is_collide_with_bodies_enabled() const;
 	void set_debug_shape_custom_color(const Color &debug_shape_custom_color);
 	Color get_debug_shape_custom_color() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -101,7 +102,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

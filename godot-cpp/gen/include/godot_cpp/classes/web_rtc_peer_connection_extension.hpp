@@ -41,7 +41,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Dictionary;
@@ -52,7 +52,6 @@ class WebRTCPeerConnectionExtension : public WebRTCPeerConnection {
 	GDEXTENSION_CLASS(WebRTCPeerConnectionExtension, WebRTCPeerConnection)
 
 public:
-
 	virtual WebRTCPeerConnection::ConnectionState _get_connection_state() const;
 	virtual WebRTCPeerConnection::GatheringState _get_gathering_state() const;
 	virtual WebRTCPeerConnection::SignalingState _get_signaling_state() const;
@@ -64,47 +63,47 @@ public:
 	virtual Error _add_ice_candidate(const String &p_sdp_mid_name, int32_t p_sdp_mline_index, const String &p_sdp_name);
 	virtual Error _poll();
 	virtual void _close();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		WebRTCPeerConnection::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_get_connection_state),decltype(&T::_get_connection_state)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_connection_state), decltype(&T::_get_connection_state)>) {
 			BIND_VIRTUAL_METHOD(T, _get_connection_state);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_gathering_state),decltype(&T::_get_gathering_state)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_gathering_state), decltype(&T::_get_gathering_state)>) {
 			BIND_VIRTUAL_METHOD(T, _get_gathering_state);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_signaling_state),decltype(&T::_get_signaling_state)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_signaling_state), decltype(&T::_get_signaling_state)>) {
 			BIND_VIRTUAL_METHOD(T, _get_signaling_state);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_initialize),decltype(&T::_initialize)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_initialize), decltype(&T::_initialize)>) {
 			BIND_VIRTUAL_METHOD(T, _initialize);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_create_data_channel),decltype(&T::_create_data_channel)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_create_data_channel), decltype(&T::_create_data_channel)>) {
 			BIND_VIRTUAL_METHOD(T, _create_data_channel);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_create_offer),decltype(&T::_create_offer)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_create_offer), decltype(&T::_create_offer)>) {
 			BIND_VIRTUAL_METHOD(T, _create_offer);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_set_remote_description),decltype(&T::_set_remote_description)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_set_remote_description), decltype(&T::_set_remote_description)>) {
 			BIND_VIRTUAL_METHOD(T, _set_remote_description);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_set_local_description),decltype(&T::_set_local_description)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_set_local_description), decltype(&T::_set_local_description)>) {
 			BIND_VIRTUAL_METHOD(T, _set_local_description);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_add_ice_candidate),decltype(&T::_add_ice_candidate)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_add_ice_candidate), decltype(&T::_add_ice_candidate)>) {
 			BIND_VIRTUAL_METHOD(T, _add_ice_candidate);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_poll),decltype(&T::_poll)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_poll), decltype(&T::_poll)>) {
 			BIND_VIRTUAL_METHOD(T, _poll);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_close),decltype(&T::_close)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_close), decltype(&T::_close)>) {
 			BIND_VIRTUAL_METHOD(T, _close);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

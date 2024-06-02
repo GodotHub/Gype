@@ -33,20 +33,21 @@
 #ifndef GODOT_CPP_HTTP_CLIENT_HPP
 #define GODOT_CPP_HTTP_CLIENT_HPP
 
-#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
-#include <godot_cpp/variant/packed_byte_array.hpp>
-#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/classes/tls_options.hpp>
+#include <godot_cpp/variant/dictionary.hpp>
+#include <godot_cpp/variant/packed_byte_array.hpp>
+#include <godot_cpp/variant/packed_string_array.hpp>
+#include <godot_cpp/variant/string.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class StreamPeer;
@@ -55,7 +56,6 @@ class HTTPClient : public RefCounted {
 	GDEXTENSION_CLASS(HTTPClient, RefCounted)
 
 public:
-
 	enum Method {
 		METHOD_GET = 0,
 		METHOD_HEAD = 1,
@@ -168,6 +168,7 @@ public:
 	void set_http_proxy(const String &host, int32_t port);
 	void set_https_proxy(const String &host, int32_t port);
 	String query_string_from_dict(const Dictionary &fields);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -175,7 +176,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

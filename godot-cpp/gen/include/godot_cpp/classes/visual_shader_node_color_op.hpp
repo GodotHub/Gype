@@ -40,14 +40,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class VisualShaderNodeColorOp : public VisualShaderNode {
 	GDEXTENSION_CLASS(VisualShaderNodeColorOp, VisualShaderNode)
 
 public:
-
 	enum Operator {
 		OP_SCREEN = 0,
 		OP_DIFFERENCE = 1,
@@ -63,6 +62,7 @@ public:
 
 	void set_operator(VisualShaderNodeColorOp::Operator op);
 	VisualShaderNodeColorOp::Operator get_operator() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -70,7 +70,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

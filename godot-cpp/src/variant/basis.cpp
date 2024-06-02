@@ -121,6 +121,16 @@ bool Basis::is_diagonal() const {
 			Math::is_zero_approx(rows[2][0]) && Math::is_zero_approx(rows[2][1]));
 }
 
+// Returns true if the basis is conformal (orthogonal, uniform scale, preserves angles and distance ratios).
+// See https://en.wikipedia.org/wiki/Conformal_linear_transformation
+bool Basis::is_conformal() const {
+	const Vector3 x = get_column(0);
+	const Vector3 y = get_column(1);
+	const Vector3 z = get_column(2);
+	const real_t x_len_sq = x.length_squared();
+	return Math::is_equal_approx(x_len_sq, y.length_squared()) && Math::is_equal_approx(x_len_sq, z.length_squared()) && Math::is_zero_approx(x.dot(y)) && Math::is_zero_approx(x.dot(z)) && Math::is_zero_approx(y.dot(z));
+}
+
 bool Basis::is_rotation() const {
 	return Math::is_equal_approx(determinant(), 1, (real_t)UNIT_EPSILON) && is_orthogonal();
 }
@@ -200,6 +210,27 @@ Basis Basis::diagonalize() {
 	}
 
 	return acc_rot;
+}
+
+Basis Basis::looking_at(const Vector3 &p_target, const Vector3 &p_up, bool p_use_model_front) {
+#ifdef MATH_CHECKS
+	ERR_FAIL_COND_V_MSG(p_target.is_zero_approx(), Basis(), "The target vector can't be zero.");
+	ERR_FAIL_COND_V_MSG(p_up.is_zero_approx(), Basis(), "The up vector can't be zero.");
+#endif
+	Vector3 v_z = p_target.normalized();
+	if (!p_use_model_front) {
+		v_z = -v_z;
+	}
+	Vector3 v_x = p_up.cross(v_z);
+#ifdef MATH_CHECKS
+	ERR_FAIL_COND_V_MSG(v_x.is_zero_approx(), Basis(), "The target vector and up vector can't be parallel to each other.");
+#endif
+	v_x.normalize();
+	Vector3 v_y = v_z.cross(v_x);
+
+	Basis basis;
+	basis.set_columns(v_x, v_y, v_z);
+	return basis;
 }
 
 Basis Basis::inverse() const {
@@ -692,6 +723,10 @@ bool Basis::is_equal_approx(const Basis &p_basis) const {
 	return rows[0].is_equal_approx(p_basis.rows[0]) && rows[1].is_equal_approx(p_basis.rows[1]) && rows[2].is_equal_approx(p_basis.rows[2]);
 }
 
+bool Basis::is_finite() const {
+	return rows[0].is_finite() && rows[1].is_finite() && rows[2].is_finite();
+}
+
 bool Basis::operator==(const Basis &p_matrix) const {
 	for (int i = 0; i < 3; i++) {
 		for (int j = 0; j < 3; j++) {
@@ -1031,24 +1066,6 @@ void Basis::rotate_sh(real_t *p_values) {
 	p_values[6] = d2 * s_scale_dst2;
 	p_values[7] = -d3;
 	p_values[8] = d4 * s_scale_dst4;
-}
-
-Basis Basis::looking_at(const Vector3 &p_target, const Vector3 &p_up) {
-#ifdef MATH_CHECKS
-	ERR_FAIL_COND_V_MSG(p_target.is_zero_approx(), Basis(), "The target vector can't be zero.");
-	ERR_FAIL_COND_V_MSG(p_up.is_zero_approx(), Basis(), "The up vector can't be zero.");
-#endif
-	Vector3 v_z = -p_target.normalized();
-	Vector3 v_x = p_up.cross(v_z);
-#ifdef MATH_CHECKS
-	ERR_FAIL_COND_V_MSG(v_x.is_zero_approx(), Basis(), "The target vector and up vector can't be parallel to each other.");
-#endif
-	v_x.normalize();
-	Vector3 v_y = v_z.cross(v_x);
-
-	Basis basis;
-	basis.set_columns(v_x, v_y, v_z);
-	return basis;
 }
 
 } // namespace godot

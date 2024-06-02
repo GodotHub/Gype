@@ -33,24 +33,24 @@
 #ifndef GODOT_CPP_MULTIPLAYER_SPAWNER_HPP
 #define GODOT_CPP_MULTIPLAYER_SPAWNER_HPP
 
-#include <godot_cpp/variant/callable.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/variant/callable.hpp>
 #include <godot_cpp/variant/node_path.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/variant.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class MultiplayerSpawner : public Node {
 	GDEXTENSION_CLASS(MultiplayerSpawner, Node)
 
 public:
-
 	void add_spawnable_scene(const String &path);
 	int32_t get_spawnable_scene_count() const;
 	String get_spawnable_scene(int32_t index) const;
@@ -62,6 +62,7 @@ public:
 	void set_spawn_limit(uint32_t limit);
 	Callable get_spawn_function() const;
 	void set_spawn_function(const Callable &spawn_function);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -69,7 +70,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

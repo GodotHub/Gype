@@ -33,15 +33,16 @@
 #ifndef GODOT_CPP_EDITOR_DEBUGGER_PLUGIN_HPP
 #define GODOT_CPP_EDITOR_DEBUGGER_PLUGIN_HPP
 
-#include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/variant/array.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class EditorDebuggerSession;
@@ -51,29 +52,28 @@ class EditorDebuggerPlugin : public RefCounted {
 	GDEXTENSION_CLASS(EditorDebuggerPlugin, RefCounted)
 
 public:
-
 	Ref<EditorDebuggerSession> get_session(int32_t id);
 	Array get_sessions();
 	virtual void _setup_session(int32_t session_id);
 	virtual bool _has_capture(const String &capture) const;
 	virtual bool _capture(const String &message, const Array &data, int32_t session_id);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		RefCounted::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_setup_session),decltype(&T::_setup_session)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_setup_session), decltype(&T::_setup_session)>) {
 			BIND_VIRTUAL_METHOD(T, _setup_session);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_has_capture),decltype(&T::_has_capture)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_has_capture), decltype(&T::_has_capture)>) {
 			BIND_VIRTUAL_METHOD(T, _has_capture);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_capture),decltype(&T::_capture)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_capture), decltype(&T::_capture)>) {
 			BIND_VIRTUAL_METHOD(T, _capture);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

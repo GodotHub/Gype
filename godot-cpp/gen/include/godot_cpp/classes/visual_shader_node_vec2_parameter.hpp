@@ -34,25 +34,26 @@
 #define GODOT_CPP_VISUAL_SHADER_NODE_VEC2_PARAMETER_HPP
 
 #include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/variant/vector2.hpp>
 #include <godot_cpp/classes/visual_shader_node_parameter.hpp>
+#include <godot_cpp/variant/vector2.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class VisualShaderNodeVec2Parameter : public VisualShaderNodeParameter {
 	GDEXTENSION_CLASS(VisualShaderNodeVec2Parameter, VisualShaderNodeParameter)
 
 public:
-
 	void set_default_value_enabled(bool enabled);
 	bool is_default_value_enabled() const;
 	void set_default_value(const Vector2 &value);
 	Vector2 get_default_value() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -60,7 +61,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

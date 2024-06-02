@@ -39,16 +39,16 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class GridContainer : public Container {
 	GDEXTENSION_CLASS(GridContainer, Container)
 
 public:
-
 	void set_columns(int32_t columns);
 	int32_t get_columns() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -56,7 +56,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -33,23 +33,24 @@
 #ifndef GODOT_CPP_COLOR_RECT_HPP
 #define GODOT_CPP_COLOR_RECT_HPP
 
-#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/variant/color.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class ColorRect : public Control {
 	GDEXTENSION_CLASS(ColorRect, Control)
 
 public:
-
 	void set_color(const Color &color);
 	Color get_color() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -57,7 +58,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

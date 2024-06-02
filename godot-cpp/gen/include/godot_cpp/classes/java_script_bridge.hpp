@@ -34,16 +34,17 @@
 #define GODOT_CPP_JAVA_SCRIPT_BRIDGE_HPP
 
 #include <godot_cpp/classes/global_constants.hpp>
-#include <godot_cpp/core/object.hpp>
 #include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/core/object.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/variant.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Callable;
@@ -54,21 +55,23 @@ class JavaScriptBridge : public Object {
 	GDEXTENSION_CLASS(JavaScriptBridge, Object)
 
 public:
-
 	static JavaScriptBridge *get_singleton();
 
 	Variant eval(const String &code, bool use_global_execution_context = false);
 	Ref<JavaScriptObject> get_interface(const String &interface);
 	Ref<JavaScriptObject> create_callback(const Callable &callable);
-	private: private: Variant create_object_internal(const Variant **args, GDExtensionInt arg_count);
-	public: Variant create_object(const String &object, rest<Variant> args) {
+
+private:
+private:
+	Variant create_object_internal(const Variant **args, GDExtensionInt arg_count);
+
+public:
+	Variant create_object(const String &object, rest<Variant> args) {
 		std::vector<Variant> variant_args;
-		for (int i = 0; i < 1; i++) {
-			variant_args.push_back(Variant(object));
-		}
+		variant_args.push_back(Variant(object));
 		variant_args.insert(variant_args.end(), args.begin(), args.end());
 		std::vector<const Variant *> call_args;
-		for(size_t i = 0; i < variant_args.size(); i++) {
+		for (size_t i = 0; i < variant_args.size(); i++) {
 			call_args.push_back(&variant_args[i]);
 		}
 		return create_object_internal(call_args.data(), variant_args.size());
@@ -77,6 +80,7 @@ public:
 	bool pwa_needs_update() const;
 	Error pwa_update();
 	void force_fs_sync();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -84,7 +88,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

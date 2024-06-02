@@ -34,17 +34,18 @@
 #define GODOT_CPP_GRAPH_EDIT_HPP
 
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
+#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/variant/packed_vector2_array.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/vector2.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class HBoxContainer;
@@ -56,7 +57,6 @@ class GraphEdit : public Control {
 	GDEXTENSION_CLASS(GraphEdit, Control)
 
 public:
-
 	enum PanningScheme {
 		SCROLL_ZOOMS = 0,
 		SCROLL_PANS = 1,
@@ -128,26 +128,26 @@ public:
 	virtual bool _is_in_output_hotzone(Object *in_node, int32_t in_port, const Vector2 &mouse_position);
 	virtual PackedVector2Array _get_connection_line(const Vector2 &from_position, const Vector2 &to_position) const;
 	virtual bool _is_node_hover_valid(const StringName &from_node, int32_t from_port, const StringName &to_node, int32_t to_port);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Control::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_is_in_input_hotzone),decltype(&T::_is_in_input_hotzone)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_is_in_input_hotzone), decltype(&T::_is_in_input_hotzone)>) {
 			BIND_VIRTUAL_METHOD(T, _is_in_input_hotzone);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_is_in_output_hotzone),decltype(&T::_is_in_output_hotzone)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_is_in_output_hotzone), decltype(&T::_is_in_output_hotzone)>) {
 			BIND_VIRTUAL_METHOD(T, _is_in_output_hotzone);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_connection_line),decltype(&T::_get_connection_line)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_connection_line), decltype(&T::_get_connection_line)>) {
 			BIND_VIRTUAL_METHOD(T, _get_connection_line);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_is_node_hover_valid),decltype(&T::_is_node_hover_valid)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_is_node_hover_valid), decltype(&T::_is_node_hover_valid)>) {
 			BIND_VIRTUAL_METHOD(T, _is_node_hover_valid);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

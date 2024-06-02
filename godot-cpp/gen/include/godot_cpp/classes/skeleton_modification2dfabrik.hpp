@@ -33,23 +33,23 @@
 #ifndef GODOT_CPP_SKELETON_MODIFICATION2DFABRIK_HPP
 #define GODOT_CPP_SKELETON_MODIFICATION2DFABRIK_HPP
 
-#include <godot_cpp/variant/node_path.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/skeleton_modification2d.hpp>
+#include <godot_cpp/variant/node_path.hpp>
 #include <godot_cpp/variant/vector2.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class SkeletonModification2DFABRIK : public SkeletonModification2D {
 	GDEXTENSION_CLASS(SkeletonModification2DFABRIK, SkeletonModification2D)
 
 public:
-
 	void set_target_node(const NodePath &target_nodepath);
 	NodePath get_target_node() const;
 	void set_fabrik_data_chain_length(int32_t length);
@@ -62,6 +62,7 @@ public:
 	Vector2 get_fabrik_joint_magnet_position(int32_t joint_idx) const;
 	void set_fabrik_joint_use_target_rotation(int32_t joint_idx, bool use_target_rotation);
 	bool get_fabrik_joint_use_target_rotation(int32_t joint_idx) const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -69,7 +70,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -34,21 +34,21 @@
 #define GODOT_CPP_VISUAL_SHADER_NODE_GROUP_BASE_HPP
 
 #include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/classes/visual_shader_node_resizable_base.hpp>
+#include <godot_cpp/variant/string.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class VisualShaderNodeGroupBase : public VisualShaderNodeResizableBase {
 	GDEXTENSION_CLASS(VisualShaderNodeGroupBase, VisualShaderNodeResizableBase)
 
 public:
-
 	void set_inputs(const String &inputs);
 	String get_inputs() const;
 	void set_outputs(const String &outputs);
@@ -70,6 +70,7 @@ public:
 	void set_output_port_type(int32_t id, int32_t type);
 	int32_t get_free_input_port_id() const;
 	int32_t get_free_output_port_id() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -77,7 +78,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

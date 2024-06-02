@@ -41,16 +41,16 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class InputEventPanGesture : public InputEventGesture {
 	GDEXTENSION_CLASS(InputEventPanGesture, InputEventGesture)
 
 public:
-
 	void set_delta(const Vector2 &delta);
 	Vector2 get_delta() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -58,7 +58,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

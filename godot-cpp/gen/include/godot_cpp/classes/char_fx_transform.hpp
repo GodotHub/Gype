@@ -33,27 +33,27 @@
 #ifndef GODOT_CPP_CHAR_FX_TRANSFORM_HPP
 #define GODOT_CPP_CHAR_FX_TRANSFORM_HPP
 
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/variant/rid.hpp>
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/transform2d.hpp>
 #include <godot_cpp/variant/vector2.hpp>
 #include <godot_cpp/variant/vector2i.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class CharFXTransform : public RefCounted {
 	GDEXTENSION_CLASS(CharFXTransform, RefCounted)
 
 public:
-
 	Transform2D get_transform();
 	void set_transform(const Transform2D &transform);
 	Vector2i get_range();
@@ -80,6 +80,7 @@ public:
 	void set_glyph_flags(uint16_t glyph_flags);
 	RID get_font() const;
 	void set_font(const RID &font);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -87,7 +88,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

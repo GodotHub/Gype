@@ -33,20 +33,21 @@
 #ifndef GODOT_CPP_TILE_DATA_HPP
 #define GODOT_CPP_TILE_DATA_HPP
 
-#include <godot_cpp/variant/color.hpp>
-#include <godot_cpp/core/object.hpp>
-#include <godot_cpp/variant/packed_vector2_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/tile_set.hpp>
+#include <godot_cpp/core/object.hpp>
+#include <godot_cpp/variant/color.hpp>
+#include <godot_cpp/variant/packed_vector2_array.hpp>
 #include <godot_cpp/variant/variant.hpp>
 #include <godot_cpp/variant/vector2.hpp>
 #include <godot_cpp/variant/vector2i.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Material;
@@ -58,7 +59,6 @@ class TileData : public Object {
 	GDEXTENSION_CLASS(TileData, Object)
 
 public:
-
 	void set_flip_h(bool flip_h);
 	bool get_flip_h() const;
 	void set_flip_v(bool flip_v);
@@ -105,6 +105,7 @@ public:
 	Variant get_custom_data(const String &layer_name) const;
 	void set_custom_data_by_layer_id(int32_t layer_id, const Variant &value);
 	Variant get_custom_data_by_layer_id(int32_t layer_id) const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -112,7 +113,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

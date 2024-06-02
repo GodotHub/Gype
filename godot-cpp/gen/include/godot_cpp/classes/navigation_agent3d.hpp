@@ -33,19 +33,20 @@
 #ifndef GODOT_CPP_NAVIGATION_AGENT3D_HPP
 #define GODOT_CPP_NAVIGATION_AGENT3D_HPP
 
-#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/navigation_path_query_parameters3d.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/variant/packed_vector3_array.hpp>
 #include <godot_cpp/variant/rid.hpp>
-#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/vector3.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class NavigationPathQueryResult3D;
@@ -54,7 +55,6 @@ class NavigationAgent3D : public Node {
 	GDEXTENSION_CLASS(NavigationAgent3D, Node)
 
 public:
-
 	RID get_rid() const;
 	void set_avoidance_enabled(bool enabled);
 	bool get_avoidance_enabled() const;
@@ -128,6 +128,7 @@ public:
 	Color get_debug_path_custom_color() const;
 	void set_debug_path_custom_point_size(double point_size);
 	double get_debug_path_custom_point_size() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -135,7 +136,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

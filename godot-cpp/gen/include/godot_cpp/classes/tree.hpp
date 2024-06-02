@@ -35,23 +35,23 @@
 
 #include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
+#include <godot_cpp/classes/tree_item.hpp>
 #include <godot_cpp/variant/rect2.hpp>
 #include <godot_cpp/variant/string.hpp>
-#include <godot_cpp/classes/tree_item.hpp>
 #include <godot_cpp/variant/vector2.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Tree : public Control {
 	GDEXTENSION_CLASS(Tree, Control)
 
 public:
-
 	enum SelectMode {
 		SELECT_SINGLE = 0,
 		SELECT_ROW = 1,
@@ -125,6 +125,7 @@ public:
 	bool get_allow_reselect() const;
 	void set_allow_search(bool allow);
 	bool get_allow_search() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -132,7 +133,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

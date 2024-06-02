@@ -33,26 +33,26 @@
 #ifndef GODOT_CPP_NAVIGATION_PATH_QUERY_RESULT2D_HPP
 #define GODOT_CPP_NAVIGATION_PATH_QUERY_RESULT2D_HPP
 
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/packed_int32_array.hpp>
 #include <godot_cpp/variant/packed_int64_array.hpp>
 #include <godot_cpp/variant/packed_vector2_array.hpp>
 #include <godot_cpp/variant/rid.hpp>
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class NavigationPathQueryResult2D : public RefCounted {
 	GDEXTENSION_CLASS(NavigationPathQueryResult2D, RefCounted)
 
 public:
-
 	enum PathSegmentType {
 		PATH_SEGMENT_TYPE_REGION = 0,
 		PATH_SEGMENT_TYPE_LINK = 1,
@@ -67,6 +67,7 @@ public:
 	void set_path_owner_ids(const PackedInt64Array &path_owner_ids);
 	PackedInt64Array get_path_owner_ids() const;
 	void reset();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -74,7 +75,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -41,7 +41,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class String;
@@ -51,7 +51,6 @@ class XRNode3D : public Node3D {
 	GDEXTENSION_CLASS(XRNode3D, Node3D)
 
 public:
-
 	void set_tracker(const StringName &tracker_name);
 	StringName get_tracker() const;
 	void set_pose_name(const StringName &pose);
@@ -60,6 +59,7 @@ public:
 	bool get_has_tracking_data() const;
 	Ref<XRPose> get_pose();
 	void trigger_haptic_pulse(const String &action_name, double frequency, double amplitude, double duration_sec, double delay_sec);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -67,7 +67,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -33,17 +33,17 @@
 #ifndef GODOT_CPP_TEXT_SERVER_HPP
 #define GODOT_CPP_TEXT_SERVER_HPP
 
+#include <godot_cpp/classes/global_constants.hpp>
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/variant/dictionary.hpp>
-#include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/variant/packed_int32_array.hpp>
 #include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/packed_vector2_array.hpp>
-#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/variant/rect2.hpp>
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/transform2d.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
@@ -52,11 +52,12 @@
 #include <godot_cpp/variant/vector2i.hpp>
 #include <godot_cpp/variant/vector3i.hpp>
 
+
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Image;
@@ -67,7 +68,6 @@ class TextServer : public RefCounted {
 	GDEXTENSION_CLASS(TextServer, RefCounted)
 
 public:
-
 	enum FontAntialiasing {
 		FONT_ANTIALIASING_NONE = 0,
 		FONT_ANTIALIASING_GRAY = 1,
@@ -436,6 +436,7 @@ public:
 	String string_to_upper(const String &string, const String &language = String()) const;
 	String string_to_lower(const String &string, const String &language = String()) const;
 	TypedArray<Vector3i> parse_structured_text(TextServer::StructuredTextParser parser_type, const Array &args, const String &text) const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -443,7 +444,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

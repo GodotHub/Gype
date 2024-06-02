@@ -41,18 +41,18 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class MissingResource : public Resource {
 	GDEXTENSION_CLASS(MissingResource, Resource)
 
 public:
-
 	void set_original_class(const String &name);
 	String get_original_class() const;
 	void set_recording_properties(bool enable);
 	bool is_recording_properties() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -60,7 +60,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

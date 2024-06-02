@@ -40,7 +40,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Cubemap;
@@ -49,7 +49,6 @@ class VisualShaderNodeCubemap : public VisualShaderNode {
 	GDEXTENSION_CLASS(VisualShaderNodeCubemap, VisualShaderNode)
 
 public:
-
 	enum Source {
 		SOURCE_TEXTURE = 0,
 		SOURCE_PORT = 1,
@@ -69,6 +68,7 @@ public:
 	Ref<Cubemap> get_cube_map() const;
 	void set_texture_type(VisualShaderNodeCubemap::TextureType value);
 	VisualShaderNodeCubemap::TextureType get_texture_type() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -76,7 +76,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

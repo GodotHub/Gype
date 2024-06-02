@@ -41,7 +41,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class PhysicsMaterial;
@@ -50,13 +50,13 @@ class StaticBody3D : public PhysicsBody3D {
 	GDEXTENSION_CLASS(StaticBody3D, PhysicsBody3D)
 
 public:
-
 	void set_constant_linear_velocity(const Vector3 &vel);
 	void set_constant_angular_velocity(const Vector3 &vel);
 	Vector3 get_constant_linear_velocity() const;
 	Vector3 get_constant_angular_velocity() const;
 	void set_physics_material_override(const Ref<PhysicsMaterial> &physics_material_override);
 	Ref<PhysicsMaterial> get_physics_material_override() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -64,7 +64,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

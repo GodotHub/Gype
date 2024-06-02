@@ -54,13 +54,13 @@ Vector3 Vector3::clamp(const Vector3 &p_min, const Vector3 &p_max) const {
 			CLAMP(z, p_min.z, p_max.z));
 }
 
-void Vector3::snap(const Vector3 p_step) {
+void Vector3::snap(const Vector3 &p_step) {
 	x = Math::snapped(x, p_step.x);
 	y = Math::snapped(y, p_step.y);
 	z = Math::snapped(z, p_step.z);
 }
 
-Vector3 Vector3::snapped(const Vector3 p_step) const {
+Vector3 Vector3::snapped(const Vector3 &p_step) const {
 	Vector3 v = *this;
 	v.snap(p_step);
 	return v;
@@ -139,6 +139,10 @@ bool Vector3::is_equal_approx(const Vector3 &p_v) const {
 
 bool Vector3::is_zero_approx() const {
 	return Math::is_zero_approx(x) && Math::is_zero_approx(y) && Math::is_zero_approx(z);
+}
+
+bool Vector3::is_finite() const {
+	return Math::is_finite(x) && Math::is_finite(y) && Math::is_finite(z);
 }
 
 Vector3::operator String() const {

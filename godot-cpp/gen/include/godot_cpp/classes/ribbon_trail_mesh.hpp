@@ -40,7 +40,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Curve;
@@ -49,7 +49,6 @@ class RibbonTrailMesh : public PrimitiveMesh {
 	GDEXTENSION_CLASS(RibbonTrailMesh, PrimitiveMesh)
 
 public:
-
 	enum Shape {
 		SHAPE_FLAT = 0,
 		SHAPE_CROSS = 1,
@@ -67,6 +66,7 @@ public:
 	Ref<Curve> get_curve() const;
 	void set_shape(RibbonTrailMesh::Shape shape);
 	RibbonTrailMesh::Shape get_shape() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -74,7 +74,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

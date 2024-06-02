@@ -33,39 +33,39 @@
 #ifndef GODOT_CPP_EDITOR_SYNTAX_HIGHLIGHTER_HPP
 #define GODOT_CPP_EDITOR_SYNTAX_HIGHLIGHTER_HPP
 
-#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/classes/syntax_highlighter.hpp>
+#include <godot_cpp/variant/packed_string_array.hpp>
+#include <godot_cpp/variant/string.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class EditorSyntaxHighlighter : public SyntaxHighlighter {
 	GDEXTENSION_CLASS(EditorSyntaxHighlighter, SyntaxHighlighter)
 
 public:
-
 	virtual String _get_name() const;
 	virtual PackedStringArray _get_supported_languages() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		SyntaxHighlighter::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_get_name),decltype(&T::_get_name)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_name), decltype(&T::_get_name)>) {
 			BIND_VIRTUAL_METHOD(T, _get_name);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_supported_languages),decltype(&T::_get_supported_languages)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_supported_languages), decltype(&T::_get_supported_languages)>) {
 			BIND_VIRTUAL_METHOD(T, _get_supported_languages);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

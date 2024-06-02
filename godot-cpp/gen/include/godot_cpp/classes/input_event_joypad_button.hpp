@@ -41,19 +41,19 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class InputEventJoypadButton : public InputEvent {
 	GDEXTENSION_CLASS(InputEventJoypadButton, InputEvent)
 
 public:
-
 	void set_button_index(JoyButton button_index);
 	JoyButton get_button_index() const;
 	void set_pressure(double pressure);
 	double get_pressure() const;
 	void set_pressed(bool pressed);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -61,7 +61,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -33,19 +33,20 @@
 #ifndef GODOT_CPP_SCENE_MULTIPLAYER_HPP
 #define GODOT_CPP_SCENE_MULTIPLAYER_HPP
 
-#include <godot_cpp/variant/callable.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/classes/multiplayer_api.hpp>
 #include <godot_cpp/classes/multiplayer_peer.hpp>
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/variant/callable.hpp>
 #include <godot_cpp/variant/node_path.hpp>
 #include <godot_cpp/variant/packed_int32_array.hpp>
-#include <godot_cpp/classes/ref.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class PackedByteArray;
@@ -54,7 +55,6 @@ class SceneMultiplayer : public MultiplayerAPI {
 	GDEXTENSION_CLASS(SceneMultiplayer, MultiplayerAPI)
 
 public:
-
 	void set_root_path(const NodePath &path);
 	NodePath get_root_path() const;
 	void clear();
@@ -77,6 +77,7 @@ public:
 	void set_max_sync_packet_size(int32_t size);
 	int32_t get_max_delta_packet_size() const;
 	void set_max_delta_packet_size(int32_t size);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -84,7 +85,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

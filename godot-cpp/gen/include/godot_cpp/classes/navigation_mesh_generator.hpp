@@ -33,15 +33,16 @@
 #ifndef GODOT_CPP_NAVIGATION_MESH_GENERATOR_HPP
 #define GODOT_CPP_NAVIGATION_MESH_GENERATOR_HPP
 
-#include <godot_cpp/variant/callable.hpp>
-#include <godot_cpp/core/object.hpp>
 #include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/core/object.hpp>
+#include <godot_cpp/variant/callable.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class NavigationMesh;
@@ -52,13 +53,13 @@ class NavigationMeshGenerator : public Object {
 	GDEXTENSION_CLASS(NavigationMeshGenerator, Object)
 
 public:
-
 	static NavigationMeshGenerator *get_singleton();
 
 	void bake(const Ref<NavigationMesh> &navigation_mesh, Node *root_node);
 	void clear(const Ref<NavigationMesh> &navigation_mesh);
 	void parse_source_geometry_data(const Ref<NavigationMesh> &navigation_mesh, const Ref<NavigationMeshSourceGeometryData3D> &source_geometry_data, Node *root_node, const Callable &callback = Callable());
 	void bake_from_source_geometry_data(const Ref<NavigationMesh> &navigation_mesh, const Ref<NavigationMeshSourceGeometryData3D> &source_geometry_data, const Callable &callback = Callable());
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -66,7 +67,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

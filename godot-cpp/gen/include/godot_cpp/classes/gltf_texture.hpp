@@ -40,18 +40,18 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class GLTFTexture : public Resource {
 	GDEXTENSION_CLASS(GLTFTexture, Resource)
 
 public:
-
 	int32_t get_src_image() const;
 	void set_src_image(int32_t src_image);
 	int32_t get_sampler() const;
 	void set_sampler(int32_t sampler);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -59,7 +59,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

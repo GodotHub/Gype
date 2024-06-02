@@ -34,15 +34,16 @@
 #define GODOT_CPP_CSG_POLYGON3D_HPP
 
 #include <godot_cpp/classes/csg_primitive3d.hpp>
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/node_path.hpp>
 #include <godot_cpp/variant/packed_vector2_array.hpp>
-#include <godot_cpp/classes/ref.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Material;
@@ -51,7 +52,6 @@ class CSGPolygon3D : public CSGPrimitive3D {
 	GDEXTENSION_CLASS(CSGPolygon3D, CSGPrimitive3D)
 
 public:
-
 	enum Mode {
 		MODE_DEPTH = 0,
 		MODE_SPIN = 1,
@@ -101,6 +101,7 @@ public:
 	Ref<Material> get_material() const;
 	void set_smooth_faces(bool smooth_faces);
 	bool get_smooth_faces() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -108,7 +109,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

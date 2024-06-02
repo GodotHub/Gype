@@ -33,22 +33,23 @@
 #ifndef GODOT_CPP_TILE_MAP_HPP
 #define GODOT_CPP_TILE_MAP_HPP
 
-#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/node2d.hpp>
-#include <godot_cpp/variant/rid.hpp>
-#include <godot_cpp/variant/rect2i.hpp>
 #include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/classes/tile_set.hpp>
+#include <godot_cpp/variant/color.hpp>
+#include <godot_cpp/variant/rect2i.hpp>
+#include <godot_cpp/variant/rid.hpp>
+#include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/vector2.hpp>
 #include <godot_cpp/variant/vector2i.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class TileData;
@@ -58,7 +59,6 @@ class TileMap : public Node2D {
 	GDEXTENSION_CLASS(TileMap, Node2D)
 
 public:
-
 	enum VisibilityMode {
 		VISIBILITY_MODE_DEFAULT = 0,
 		VISIBILITY_MODE_FORCE_HIDE = 2,
@@ -125,20 +125,20 @@ public:
 	Vector2i get_neighbor_cell(const Vector2i &coords, TileSet::CellNeighbor neighbor) const;
 	virtual bool _use_tile_data_runtime_update(int32_t layer, const Vector2i &coords);
 	virtual void _tile_data_runtime_update(int32_t layer, const Vector2i &coords, TileData *tile_data);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Node2D::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_use_tile_data_runtime_update),decltype(&T::_use_tile_data_runtime_update)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_use_tile_data_runtime_update), decltype(&T::_use_tile_data_runtime_update)>) {
 			BIND_VIRTUAL_METHOD(T, _use_tile_data_runtime_update);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_tile_data_runtime_update),decltype(&T::_tile_data_runtime_update)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_tile_data_runtime_update), decltype(&T::_tile_data_runtime_update)>) {
 			BIND_VIRTUAL_METHOD(T, _tile_data_runtime_update);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

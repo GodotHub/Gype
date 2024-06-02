@@ -33,18 +33,19 @@
 #ifndef GODOT_CPP_EDITOR_PLUGIN_HPP
 #define GODOT_CPP_EDITOR_PLUGIN_HPP
 
-#include <godot_cpp/variant/dictionary.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/variant/packed_string_array.hpp>
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/classes/editor_plugin_registration.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/variant/dictionary.hpp>
+#include <godot_cpp/variant/packed_string_array.hpp>
+#include <godot_cpp/variant/string.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Button;
@@ -74,7 +75,6 @@ class EditorPlugin : public Node {
 	GDEXTENSION_CLASS(EditorPlugin, Node)
 
 public:
-
 	enum CustomControlContainer {
 		CONTAINER_TOOLBAR = 0,
 		CONTAINER_SPATIAL_EDITOR_MENU = 1,
@@ -176,86 +176,86 @@ public:
 	virtual bool _build();
 	virtual void _enable_plugin();
 	virtual void _disable_plugin();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Node::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_forward_canvas_gui_input),decltype(&T::_forward_canvas_gui_input)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_forward_canvas_gui_input), decltype(&T::_forward_canvas_gui_input)>) {
 			BIND_VIRTUAL_METHOD(T, _forward_canvas_gui_input);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_forward_canvas_draw_over_viewport),decltype(&T::_forward_canvas_draw_over_viewport)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_forward_canvas_draw_over_viewport), decltype(&T::_forward_canvas_draw_over_viewport)>) {
 			BIND_VIRTUAL_METHOD(T, _forward_canvas_draw_over_viewport);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_forward_canvas_force_draw_over_viewport),decltype(&T::_forward_canvas_force_draw_over_viewport)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_forward_canvas_force_draw_over_viewport), decltype(&T::_forward_canvas_force_draw_over_viewport)>) {
 			BIND_VIRTUAL_METHOD(T, _forward_canvas_force_draw_over_viewport);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_forward_3d_gui_input),decltype(&T::_forward_3d_gui_input)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_forward_3d_gui_input), decltype(&T::_forward_3d_gui_input)>) {
 			BIND_VIRTUAL_METHOD(T, _forward_3d_gui_input);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_forward_3d_draw_over_viewport),decltype(&T::_forward_3d_draw_over_viewport)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_forward_3d_draw_over_viewport), decltype(&T::_forward_3d_draw_over_viewport)>) {
 			BIND_VIRTUAL_METHOD(T, _forward_3d_draw_over_viewport);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_forward_3d_force_draw_over_viewport),decltype(&T::_forward_3d_force_draw_over_viewport)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_forward_3d_force_draw_over_viewport), decltype(&T::_forward_3d_force_draw_over_viewport)>) {
 			BIND_VIRTUAL_METHOD(T, _forward_3d_force_draw_over_viewport);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_plugin_name),decltype(&T::_get_plugin_name)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_plugin_name), decltype(&T::_get_plugin_name)>) {
 			BIND_VIRTUAL_METHOD(T, _get_plugin_name);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_plugin_icon),decltype(&T::_get_plugin_icon)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_plugin_icon), decltype(&T::_get_plugin_icon)>) {
 			BIND_VIRTUAL_METHOD(T, _get_plugin_icon);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_has_main_screen),decltype(&T::_has_main_screen)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_has_main_screen), decltype(&T::_has_main_screen)>) {
 			BIND_VIRTUAL_METHOD(T, _has_main_screen);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_make_visible),decltype(&T::_make_visible)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_make_visible), decltype(&T::_make_visible)>) {
 			BIND_VIRTUAL_METHOD(T, _make_visible);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_edit),decltype(&T::_edit)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_edit), decltype(&T::_edit)>) {
 			BIND_VIRTUAL_METHOD(T, _edit);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_handles),decltype(&T::_handles)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_handles), decltype(&T::_handles)>) {
 			BIND_VIRTUAL_METHOD(T, _handles);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_state),decltype(&T::_get_state)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_state), decltype(&T::_get_state)>) {
 			BIND_VIRTUAL_METHOD(T, _get_state);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_set_state),decltype(&T::_set_state)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_set_state), decltype(&T::_set_state)>) {
 			BIND_VIRTUAL_METHOD(T, _set_state);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_clear),decltype(&T::_clear)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_clear), decltype(&T::_clear)>) {
 			BIND_VIRTUAL_METHOD(T, _clear);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_unsaved_status),decltype(&T::_get_unsaved_status)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_unsaved_status), decltype(&T::_get_unsaved_status)>) {
 			BIND_VIRTUAL_METHOD(T, _get_unsaved_status);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_save_external_data),decltype(&T::_save_external_data)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_save_external_data), decltype(&T::_save_external_data)>) {
 			BIND_VIRTUAL_METHOD(T, _save_external_data);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_apply_changes),decltype(&T::_apply_changes)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_apply_changes), decltype(&T::_apply_changes)>) {
 			BIND_VIRTUAL_METHOD(T, _apply_changes);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_breakpoints),decltype(&T::_get_breakpoints)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_breakpoints), decltype(&T::_get_breakpoints)>) {
 			BIND_VIRTUAL_METHOD(T, _get_breakpoints);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_set_window_layout),decltype(&T::_set_window_layout)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_set_window_layout), decltype(&T::_set_window_layout)>) {
 			BIND_VIRTUAL_METHOD(T, _set_window_layout);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_window_layout),decltype(&T::_get_window_layout)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_window_layout), decltype(&T::_get_window_layout)>) {
 			BIND_VIRTUAL_METHOD(T, _get_window_layout);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_build),decltype(&T::_build)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_build), decltype(&T::_build)>) {
 			BIND_VIRTUAL_METHOD(T, _build);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_enable_plugin),decltype(&T::_enable_plugin)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_enable_plugin), decltype(&T::_enable_plugin)>) {
 			BIND_VIRTUAL_METHOD(T, _enable_plugin);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_disable_plugin),decltype(&T::_disable_plugin)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_disable_plugin), decltype(&T::_disable_plugin)>) {
 			BIND_VIRTUAL_METHOD(T, _disable_plugin);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -43,7 +43,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Animation;
@@ -52,13 +52,13 @@ class AnimationLibrary : public Resource {
 	GDEXTENSION_CLASS(AnimationLibrary, Resource)
 
 public:
-
 	Error add_animation(const StringName &name, const Ref<Animation> &animation);
 	void remove_animation(const StringName &name);
 	void rename_animation(const StringName &name, const StringName &newname);
 	bool has_animation(const StringName &name) const;
 	Ref<Animation> get_animation(const StringName &name) const;
 	TypedArray<StringName> get_animation_list() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -66,7 +66,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

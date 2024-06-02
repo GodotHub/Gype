@@ -40,7 +40,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class PackedInt32Array;
@@ -50,10 +50,10 @@ class ArrayOccluder3D : public Occluder3D {
 	GDEXTENSION_CLASS(ArrayOccluder3D, Occluder3D)
 
 public:
-
 	void set_arrays(const PackedVector3Array &vertices, const PackedInt32Array &indices);
 	void set_vertices(const PackedVector3Array &vertices);
 	void set_indices(const PackedInt32Array &indices);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -61,7 +61,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

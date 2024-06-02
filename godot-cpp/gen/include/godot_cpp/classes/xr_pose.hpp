@@ -43,14 +43,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class XRPose : public RefCounted {
 	GDEXTENSION_CLASS(XRPose, RefCounted)
 
 public:
-
 	enum TrackingConfidence {
 		XR_TRACKING_CONFIDENCE_NONE = 0,
 		XR_TRACKING_CONFIDENCE_LOW = 1,
@@ -70,6 +69,7 @@ public:
 	Vector3 get_angular_velocity() const;
 	void set_tracking_confidence(XRPose::TrackingConfidence tracking_confidence);
 	XRPose::TrackingConfidence get_tracking_confidence() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -77,7 +77,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

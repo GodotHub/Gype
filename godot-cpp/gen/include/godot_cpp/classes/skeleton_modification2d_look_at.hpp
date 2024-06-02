@@ -33,22 +33,22 @@
 #ifndef GODOT_CPP_SKELETON_MODIFICATION2D_LOOK_AT_HPP
 #define GODOT_CPP_SKELETON_MODIFICATION2D_LOOK_AT_HPP
 
-#include <godot_cpp/variant/node_path.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/skeleton_modification2d.hpp>
+#include <godot_cpp/variant/node_path.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class SkeletonModification2DLookAt : public SkeletonModification2D {
 	GDEXTENSION_CLASS(SkeletonModification2DLookAt, SkeletonModification2D)
 
 public:
-
 	void set_bone2d_node(const NodePath &bone2d_nodepath);
 	NodePath get_bone2d_node() const;
 	void set_bone_index(int32_t bone_idx);
@@ -65,6 +65,7 @@ public:
 	double get_constraint_angle_max() const;
 	void set_constraint_angle_invert(bool invert);
 	bool get_constraint_angle_invert() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -72,7 +73,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -33,22 +33,22 @@
 #ifndef GODOT_CPP_STREAM_PEER_BUFFER_HPP
 #define GODOT_CPP_STREAM_PEER_BUFFER_HPP
 
-#include <godot_cpp/variant/packed_byte_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/stream_peer.hpp>
+#include <godot_cpp/variant/packed_byte_array.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class StreamPeerBuffer : public StreamPeer {
 	GDEXTENSION_CLASS(StreamPeerBuffer, StreamPeer)
 
 public:
-
 	void seek(int32_t position);
 	int32_t get_size() const;
 	int32_t get_position() const;
@@ -57,6 +57,7 @@ public:
 	PackedByteArray get_data_array() const;
 	void clear();
 	Ref<StreamPeerBuffer> duplicate() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -64,7 +65,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

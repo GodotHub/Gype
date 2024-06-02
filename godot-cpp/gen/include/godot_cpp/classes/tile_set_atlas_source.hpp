@@ -33,17 +33,18 @@
 #ifndef GODOT_CPP_TILE_SET_ATLAS_SOURCE_HPP
 #define GODOT_CPP_TILE_SET_ATLAS_SOURCE_HPP
 
-#include <godot_cpp/variant/packed_vector2_array.hpp>
-#include <godot_cpp/variant/rect2i.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/tile_set_source.hpp>
+#include <godot_cpp/variant/packed_vector2_array.hpp>
+#include <godot_cpp/variant/rect2i.hpp>
 #include <godot_cpp/variant/vector2i.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Texture2D;
@@ -53,7 +54,6 @@ class TileSetAtlasSource : public TileSetSource {
 	GDEXTENSION_CLASS(TileSetAtlasSource, TileSetSource)
 
 public:
-
 	enum TileAnimationMode {
 		TILE_ANIMATION_MODE_DEFAULT = 0,
 		TILE_ANIMATION_MODE_RANDOM_START_TIMES = 1,
@@ -105,6 +105,7 @@ public:
 	Rect2i get_tile_texture_region(const Vector2i &atlas_coords, int32_t frame = 0) const;
 	Ref<Texture2D> get_runtime_texture() const;
 	Rect2i get_runtime_tile_texture_region(const Vector2i &atlas_coords, int32_t frame) const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -112,7 +113,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

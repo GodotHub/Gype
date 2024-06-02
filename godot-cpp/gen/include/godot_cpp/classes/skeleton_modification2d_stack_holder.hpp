@@ -40,7 +40,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class SkeletonModificationStack2D;
@@ -49,9 +49,9 @@ class SkeletonModification2DStackHolder : public SkeletonModification2D {
 	GDEXTENSION_CLASS(SkeletonModification2DStackHolder, SkeletonModification2D)
 
 public:
-
 	void set_held_modification_stack(const Ref<SkeletonModificationStack2D> &held_modification_stack);
 	Ref<SkeletonModificationStack2D> get_held_modification_stack() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -59,7 +59,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -40,14 +40,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class AnimatedTexture : public Texture2D {
 	GDEXTENSION_CLASS(AnimatedTexture, Texture2D)
 
 public:
-
 	static const int MAX_FRAMES = 256;
 
 	void set_frames(int32_t frames);
@@ -64,6 +63,7 @@ public:
 	Ref<Texture2D> get_frame_texture(int32_t frame) const;
 	void set_frame_duration(int32_t frame, double duration);
 	double get_frame_duration(int32_t frame) const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -71,7 +71,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

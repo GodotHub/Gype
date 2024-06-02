@@ -33,15 +33,16 @@
 #ifndef GODOT_CPP_LIGHTMAP_GI_HPP
 #define GODOT_CPP_LIGHTMAP_GI_HPP
 
-#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/visual_instance3d.hpp>
+#include <godot_cpp/variant/color.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class CameraAttributes;
@@ -52,7 +53,6 @@ class LightmapGI : public VisualInstance3D {
 	GDEXTENSION_CLASS(LightmapGI, VisualInstance3D)
 
 public:
-
 	enum BakeQuality {
 		BAKE_QUALITY_LOW = 0,
 		BAKE_QUALITY_MEDIUM = 1,
@@ -122,6 +122,7 @@ public:
 	bool is_using_texture_for_bounces() const;
 	void set_camera_attributes(const Ref<CameraAttributes> &camera_attributes);
 	Ref<CameraAttributes> get_camera_attributes() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -129,7 +130,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

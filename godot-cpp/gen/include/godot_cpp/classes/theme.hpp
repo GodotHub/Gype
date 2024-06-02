@@ -33,18 +33,19 @@
 #ifndef GODOT_CPP_THEME_HPP
 #define GODOT_CPP_THEME_HPP
 
-#include <godot_cpp/variant/color.hpp>
-#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/variant/color.hpp>
+#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/variant/variant.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Font;
@@ -56,7 +57,6 @@ class Theme : public Resource {
 	GDEXTENSION_CLASS(Theme, Resource)
 
 public:
-
 	enum DataType {
 		DATA_TYPE_COLOR = 0,
 		DATA_TYPE_CONSTANT = 1,
@@ -135,6 +135,7 @@ public:
 	PackedStringArray get_type_list() const;
 	void merge_with(const Ref<Theme> &other);
 	void clear();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -142,7 +143,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

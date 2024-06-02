@@ -33,22 +33,23 @@
 #ifndef GODOT_CPP_MESH_DATA_TOOL_HPP
 #define GODOT_CPP_MESH_DATA_TOOL_HPP
 
-#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/variant/packed_float32_array.hpp>
 #include <godot_cpp/variant/packed_int32_array.hpp>
 #include <godot_cpp/variant/plane.hpp>
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/variant.hpp>
 #include <godot_cpp/variant/vector2.hpp>
 #include <godot_cpp/variant/vector3.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class ArrayMesh;
@@ -58,7 +59,6 @@ class MeshDataTool : public RefCounted {
 	GDEXTENSION_CLASS(MeshDataTool, RefCounted)
 
 public:
-
 	void clear();
 	Error create_from_surface(const Ref<ArrayMesh> &mesh, int32_t surface);
 	Error commit_to_surface(const Ref<ArrayMesh> &mesh, uint64_t compression_flags = 0);
@@ -97,6 +97,7 @@ public:
 	Vector3 get_face_normal(int32_t idx) const;
 	void set_material(const Ref<Material> &material);
 	Ref<Material> get_material() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -104,7 +105,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

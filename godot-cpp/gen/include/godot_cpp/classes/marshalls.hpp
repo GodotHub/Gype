@@ -42,14 +42,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Marshalls : public Object {
 	GDEXTENSION_CLASS(Marshalls, Object)
 
 public:
-
 	static Marshalls *get_singleton();
 
 	String variant_to_base64(const Variant &variant, bool full_objects = false);
@@ -58,6 +57,7 @@ public:
 	PackedByteArray base64_to_raw(const String &base64_str);
 	String utf8_to_base64(const String &utf8_str);
 	String base64_to_utf8(const String &base64_str);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -65,7 +65,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

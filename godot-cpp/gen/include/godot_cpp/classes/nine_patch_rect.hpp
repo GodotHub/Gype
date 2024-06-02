@@ -35,14 +35,15 @@
 
 #include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
-#include <godot_cpp/variant/rect2.hpp>
 #include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/variant/rect2.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Texture2D;
@@ -51,7 +52,6 @@ class NinePatchRect : public Control {
 	GDEXTENSION_CLASS(NinePatchRect, Control)
 
 public:
-
 	enum AxisStretchMode {
 		AXIS_STRETCH_MODE_STRETCH = 0,
 		AXIS_STRETCH_MODE_TILE = 1,
@@ -70,6 +70,7 @@ public:
 	NinePatchRect::AxisStretchMode get_h_axis_stretch_mode() const;
 	void set_v_axis_stretch_mode(NinePatchRect::AxisStretchMode mode);
 	NinePatchRect::AxisStretchMode get_v_axis_stretch_mode() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -77,7 +78,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

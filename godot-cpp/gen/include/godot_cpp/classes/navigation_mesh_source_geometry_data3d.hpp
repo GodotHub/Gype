@@ -33,16 +33,17 @@
 #ifndef GODOT_CPP_NAVIGATION_MESH_SOURCE_GEOMETRY_DATA3D_HPP
 #define GODOT_CPP_NAVIGATION_MESH_SOURCE_GEOMETRY_DATA3D_HPP
 
-#include <godot_cpp/variant/packed_float32_array.hpp>
-#include <godot_cpp/variant/packed_int32_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/variant/packed_float32_array.hpp>
+#include <godot_cpp/variant/packed_int32_array.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Array;
@@ -54,7 +55,6 @@ class NavigationMeshSourceGeometryData3D : public Resource {
 	GDEXTENSION_CLASS(NavigationMeshSourceGeometryData3D, Resource)
 
 public:
-
 	void set_vertices(const PackedFloat32Array &vertices);
 	PackedFloat32Array get_vertices() const;
 	void set_indices(const PackedInt32Array &indices);
@@ -64,6 +64,7 @@ public:
 	void add_mesh(const Ref<Mesh> &mesh, const Transform3D &xform);
 	void add_mesh_array(const Array &mesh_array, const Transform3D &xform);
 	void add_faces(const PackedVector3Array &faces, const Transform3D &xform);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -71,7 +72,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

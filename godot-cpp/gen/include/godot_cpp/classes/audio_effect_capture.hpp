@@ -34,21 +34,21 @@
 #define GODOT_CPP_AUDIO_EFFECT_CAPTURE_HPP
 
 #include <godot_cpp/classes/audio_effect.hpp>
-#include <godot_cpp/variant/packed_vector2_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/variant/packed_vector2_array.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class AudioEffectCapture : public AudioEffect {
 	GDEXTENSION_CLASS(AudioEffectCapture, AudioEffect)
 
 public:
-
 	bool can_get_buffer(int32_t frames) const;
 	PackedVector2Array get_buffer(int32_t frames);
 	void clear_buffer();
@@ -58,6 +58,7 @@ public:
 	int64_t get_discarded_frames() const;
 	int32_t get_buffer_length_frames() const;
 	int64_t get_pushed_frames() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -65,7 +66,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

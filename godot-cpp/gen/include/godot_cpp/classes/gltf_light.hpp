@@ -33,17 +33,18 @@
 #ifndef GODOT_CPP_GLTF_LIGHT_HPP
 #define GODOT_CPP_GLTF_LIGHT_HPP
 
-#include <godot_cpp/variant/color.hpp>
-#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/variant/color.hpp>
+#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/variant/string.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Light3D;
@@ -52,7 +53,6 @@ class GLTFLight : public Resource {
 	GDEXTENSION_CLASS(GLTFLight, Resource)
 
 public:
-
 	static Ref<GLTFLight> from_node(Light3D *light_node);
 	Light3D *to_node() const;
 	static Ref<GLTFLight> from_dictionary(const Dictionary &dictionary);
@@ -69,6 +69,7 @@ public:
 	void set_inner_cone_angle(double inner_cone_angle);
 	double get_outer_cone_angle();
 	void set_outer_cone_angle(double outer_cone_angle);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -76,7 +77,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

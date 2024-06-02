@@ -33,16 +33,17 @@
 #ifndef GODOT_CPP_WEB_RTC_PEER_CONNECTION_HPP
 #define GODOT_CPP_WEB_RTC_PEER_CONNECTION_HPP
 
-#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/variant/dictionary.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class String;
@@ -53,7 +54,6 @@ class WebRTCPeerConnection : public RefCounted {
 	GDEXTENSION_CLASS(WebRTCPeerConnection, RefCounted)
 
 public:
-
 	enum ConnectionState {
 		STATE_NEW = 0,
 		STATE_CONNECTING = 1,
@@ -90,6 +90,7 @@ public:
 	WebRTCPeerConnection::ConnectionState get_connection_state() const;
 	WebRTCPeerConnection::GatheringState get_gathering_state() const;
 	WebRTCPeerConnection::SignalingState get_signaling_state() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -97,7 +98,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -33,24 +33,25 @@
 #ifndef GODOT_CPP_TEXTURE3DRD_HPP
 #define GODOT_CPP_TEXTURE3DRD_HPP
 
-#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/texture3d.hpp>
+#include <godot_cpp/variant/rid.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Texture3DRD : public Texture3D {
 	GDEXTENSION_CLASS(Texture3DRD, Texture3D)
 
 public:
-
 	void set_texture_rd_rid(const RID &texture_rd_rid);
 	RID get_texture_rd_rid() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -58,7 +59,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

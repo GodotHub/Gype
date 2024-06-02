@@ -33,17 +33,18 @@
 #ifndef GODOT_CPP_TRANSLATION_SERVER_HPP
 #define GODOT_CPP_TRANSLATION_SERVER_HPP
 
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/core/object.hpp>
 #include <godot_cpp/variant/packed_string_array.hpp>
-#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/string_name.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Translation;
@@ -52,7 +53,6 @@ class TranslationServer : public Object {
 	GDEXTENSION_CLASS(TranslationServer, Object)
 
 public:
-
 	static TranslationServer *get_singleton();
 
 	void set_locale(const String &locale);
@@ -78,6 +78,7 @@ public:
 	void set_pseudolocalization_enabled(bool enabled);
 	void reload_pseudolocalization();
 	StringName pseudolocalize(const StringName &message) const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -85,7 +86,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

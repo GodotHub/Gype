@@ -42,7 +42,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class PacketPeerUDP;
@@ -51,7 +51,6 @@ class UDPServer : public RefCounted {
 	GDEXTENSION_CLASS(UDPServer, RefCounted)
 
 public:
-
 	Error listen(uint16_t port, const String &bind_address = "*");
 	Error poll();
 	bool is_connection_available() const;
@@ -61,6 +60,7 @@ public:
 	void stop();
 	void set_max_pending_connections(int32_t max_pending_connections);
 	int32_t get_max_pending_connections() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -68,7 +68,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

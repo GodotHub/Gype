@@ -40,7 +40,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class EditorResourcePreviewGenerator;
@@ -54,12 +54,12 @@ class EditorResourcePreview : public Node {
 	GDEXTENSION_CLASS(EditorResourcePreview, Node)
 
 public:
-
 	void queue_resource_preview(const String &path, Object *receiver, const StringName &receiver_func, const Variant &userdata);
 	void queue_edited_resource_preview(const Ref<Resource> &resource, Object *receiver, const StringName &receiver_func, const Variant &userdata);
 	void add_preview_generator(const Ref<EditorResourcePreviewGenerator> &generator);
 	void remove_preview_generator(const Ref<EditorResourcePreviewGenerator> &generator);
 	void check_for_invalidation(const String &path);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -67,7 +67,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

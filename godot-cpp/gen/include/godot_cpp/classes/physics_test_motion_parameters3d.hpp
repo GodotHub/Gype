@@ -33,25 +33,25 @@
 #ifndef GODOT_CPP_PHYSICS_TEST_MOTION_PARAMETERS3D_HPP
 #define GODOT_CPP_PHYSICS_TEST_MOTION_PARAMETERS3D_HPP
 
-#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/variant/transform3d.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/vector3.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class PhysicsTestMotionParameters3D : public RefCounted {
 	GDEXTENSION_CLASS(PhysicsTestMotionParameters3D, RefCounted)
 
 public:
-
 	Transform3D get_from() const;
 	void set_from(const Transform3D &from);
 	Vector3 get_motion() const;
@@ -68,6 +68,7 @@ public:
 	void set_exclude_objects(const TypedArray<int> &exclude_list);
 	bool is_recovery_as_collision_enabled() const;
 	void set_recovery_as_collision_enabled(bool enabled);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -75,7 +76,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

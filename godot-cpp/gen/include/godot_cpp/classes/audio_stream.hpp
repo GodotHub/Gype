@@ -41,7 +41,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class AudioStreamPlayback;
@@ -50,7 +50,6 @@ class AudioStream : public Resource {
 	GDEXTENSION_CLASS(AudioStream, Resource)
 
 public:
-
 	double get_length() const;
 	bool is_monophonic() const;
 	Ref<AudioStreamPlayback> instantiate_playback();
@@ -60,32 +59,32 @@ public:
 	virtual bool _is_monophonic() const;
 	virtual double _get_bpm() const;
 	virtual int32_t _get_beat_count() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Resource::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_instantiate_playback),decltype(&T::_instantiate_playback)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_instantiate_playback), decltype(&T::_instantiate_playback)>) {
 			BIND_VIRTUAL_METHOD(T, _instantiate_playback);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_stream_name),decltype(&T::_get_stream_name)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_stream_name), decltype(&T::_get_stream_name)>) {
 			BIND_VIRTUAL_METHOD(T, _get_stream_name);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_length),decltype(&T::_get_length)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_length), decltype(&T::_get_length)>) {
 			BIND_VIRTUAL_METHOD(T, _get_length);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_is_monophonic),decltype(&T::_is_monophonic)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_is_monophonic), decltype(&T::_is_monophonic)>) {
 			BIND_VIRTUAL_METHOD(T, _is_monophonic);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_bpm),decltype(&T::_get_bpm)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_bpm), decltype(&T::_get_bpm)>) {
 			BIND_VIRTUAL_METHOD(T, _get_bpm);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_beat_count),decltype(&T::_get_beat_count)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_beat_count), decltype(&T::_get_beat_count)>) {
 			BIND_VIRTUAL_METHOD(T, _get_beat_count);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

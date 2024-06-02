@@ -41,14 +41,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class InputEventScreenTouch : public InputEventFromWindow {
 	GDEXTENSION_CLASS(InputEventScreenTouch, InputEventFromWindow)
 
 public:
-
 	void set_index(int32_t index);
 	int32_t get_index() const;
 	void set_position(const Vector2 &position);
@@ -57,6 +56,7 @@ public:
 	void set_canceled(bool canceled);
 	void set_double_tap(bool double_tap);
 	bool is_double_tap() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -64,7 +64,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

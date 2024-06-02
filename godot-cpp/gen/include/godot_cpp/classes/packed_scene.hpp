@@ -41,7 +41,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Node;
@@ -51,7 +51,6 @@ class PackedScene : public Resource {
 	GDEXTENSION_CLASS(PackedScene, Resource)
 
 public:
-
 	enum GenEditState {
 		GEN_EDIT_STATE_DISABLED = 0,
 		GEN_EDIT_STATE_INSTANCE = 1,
@@ -63,6 +62,7 @@ public:
 	Node *instantiate(PackedScene::GenEditState edit_state = (PackedScene::GenEditState)0) const;
 	bool can_instantiate() const;
 	Ref<SceneState> get_state() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -70,7 +70,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

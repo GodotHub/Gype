@@ -97,8 +97,8 @@ struct _NO_DISCARD_ Vector3 {
 
 	_FORCE_INLINE_ void zero();
 
-	void snap(const Vector3 p_val);
-	Vector3 snapped(const Vector3 p_val) const;
+	void snap(const Vector3 &p_val);
+	Vector3 snapped(const Vector3 &p_val) const;
 
 	void rotate(const Vector3 &p_axis, const real_t p_angle);
 	Vector3 rotated(const Vector3 &p_axis, const real_t p_angle) const;
@@ -110,6 +110,7 @@ struct _NO_DISCARD_ Vector3 {
 	_FORCE_INLINE_ Vector3 cubic_interpolate(const Vector3 &p_b, const Vector3 &p_pre_a, const Vector3 &p_post_b, const real_t p_weight) const;
 	_FORCE_INLINE_ Vector3 cubic_interpolate_in_time(const Vector3 &p_b, const Vector3 &p_pre_a, const Vector3 &p_post_b, const real_t p_weight, const real_t &p_b_t, const real_t &p_pre_a_t, const real_t &p_post_b_t) const;
 	_FORCE_INLINE_ Vector3 bezier_interpolate(const Vector3 &p_control_1, const Vector3 &p_control_2, const Vector3 &p_end, const real_t p_t) const;
+	_FORCE_INLINE_ Vector3 bezier_derivative(const Vector3 &p_control_1, const Vector3 &p_control_2, const Vector3 &p_end, real_t p_t) const;
 
 	Vector3 move_toward(const Vector3 &p_to, const real_t p_delta) const;
 
@@ -146,6 +147,7 @@ struct _NO_DISCARD_ Vector3 {
 
 	bool is_equal_approx(const Vector3 &p_v) const;
 	bool is_zero_approx() const;
+	bool is_finite() const;
 
 	/* Operators */
 
@@ -272,6 +274,14 @@ Vector3 Vector3::bezier_interpolate(const Vector3 &p_control_1, const Vector3 &p
 	real_t t3 = t2 * p_t;
 
 	return res * omt3 + p_control_1 * omt2 * p_t * 3.0 + p_control_2 * omt * t2 * 3.0 + p_end * t3;
+}
+
+Vector3 Vector3::bezier_derivative(const Vector3 &p_control_1, const Vector3 &p_control_2, const Vector3 &p_end, real_t p_t) const {
+	Vector3 res = *this;
+	res.x = Math::bezier_derivative(res.x, p_control_1.x, p_control_2.x, p_end.x, p_t);
+	res.y = Math::bezier_derivative(res.y, p_control_1.y, p_control_2.y, p_end.y, p_t);
+	res.z = Math::bezier_derivative(res.z, p_control_1.z, p_control_2.z, p_end.z, p_t);
+	return res;
 }
 
 real_t Vector3::distance_to(const Vector3 &p_to) const {

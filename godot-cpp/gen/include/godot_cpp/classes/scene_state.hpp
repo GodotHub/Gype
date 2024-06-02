@@ -33,20 +33,21 @@
 #ifndef GODOT_CPP_SCENE_STATE_HPP
 #define GODOT_CPP_SCENE_STATE_HPP
 
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/node_path.hpp>
 #include <godot_cpp/variant/packed_string_array.hpp>
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/variant/variant.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class PackedScene;
@@ -55,7 +56,6 @@ class SceneState : public RefCounted {
 	GDEXTENSION_CLASS(SceneState, RefCounted)
 
 public:
-
 	enum GenEditState {
 		GEN_EDIT_STATE_DISABLED = 0,
 		GEN_EDIT_STATE_INSTANCE = 1,
@@ -84,6 +84,7 @@ public:
 	int32_t get_connection_flags(int32_t idx) const;
 	Array get_connection_binds(int32_t idx) const;
 	int32_t get_connection_unbinds(int32_t idx) const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -91,7 +92,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

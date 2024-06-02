@@ -33,19 +33,20 @@
 #ifndef GODOT_CPP_EDITOR_EXPORT_PLUGIN_HPP
 #define GODOT_CPP_EDITOR_EXPORT_PLUGIN_HPP
 
-#include <godot_cpp/variant/dictionary.hpp>
-#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/variant/dictionary.hpp>
+#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/variant.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class EditorExportPlatform;
@@ -58,7 +59,6 @@ class EditorExportPlugin : public RefCounted {
 	GDEXTENSION_CLASS(EditorExportPlugin, RefCounted)
 
 public:
-
 	void add_shared_object(const String &path, const PackedStringArray &tags, const String &target);
 	void add_ios_project_static_lib(const String &path);
 	void add_file(const String &path, const PackedByteArray &file, bool remap);
@@ -93,80 +93,80 @@ public:
 	virtual String _get_android_manifest_activity_element_contents(const Ref<EditorExportPlatform> &platform, bool debug) const;
 	virtual String _get_android_manifest_application_element_contents(const Ref<EditorExportPlatform> &platform, bool debug) const;
 	virtual String _get_android_manifest_element_contents(const Ref<EditorExportPlatform> &platform, bool debug) const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		RefCounted::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_export_file),decltype(&T::_export_file)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_export_file), decltype(&T::_export_file)>) {
 			BIND_VIRTUAL_METHOD(T, _export_file);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_export_begin),decltype(&T::_export_begin)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_export_begin), decltype(&T::_export_begin)>) {
 			BIND_VIRTUAL_METHOD(T, _export_begin);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_export_end),decltype(&T::_export_end)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_export_end), decltype(&T::_export_end)>) {
 			BIND_VIRTUAL_METHOD(T, _export_end);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_begin_customize_resources),decltype(&T::_begin_customize_resources)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_begin_customize_resources), decltype(&T::_begin_customize_resources)>) {
 			BIND_VIRTUAL_METHOD(T, _begin_customize_resources);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_customize_resource),decltype(&T::_customize_resource)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_customize_resource), decltype(&T::_customize_resource)>) {
 			BIND_VIRTUAL_METHOD(T, _customize_resource);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_begin_customize_scenes),decltype(&T::_begin_customize_scenes)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_begin_customize_scenes), decltype(&T::_begin_customize_scenes)>) {
 			BIND_VIRTUAL_METHOD(T, _begin_customize_scenes);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_customize_scene),decltype(&T::_customize_scene)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_customize_scene), decltype(&T::_customize_scene)>) {
 			BIND_VIRTUAL_METHOD(T, _customize_scene);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_customization_configuration_hash),decltype(&T::_get_customization_configuration_hash)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_customization_configuration_hash), decltype(&T::_get_customization_configuration_hash)>) {
 			BIND_VIRTUAL_METHOD(T, _get_customization_configuration_hash);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_end_customize_scenes),decltype(&T::_end_customize_scenes)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_end_customize_scenes), decltype(&T::_end_customize_scenes)>) {
 			BIND_VIRTUAL_METHOD(T, _end_customize_scenes);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_end_customize_resources),decltype(&T::_end_customize_resources)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_end_customize_resources), decltype(&T::_end_customize_resources)>) {
 			BIND_VIRTUAL_METHOD(T, _end_customize_resources);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_export_options),decltype(&T::_get_export_options)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_export_options), decltype(&T::_get_export_options)>) {
 			BIND_VIRTUAL_METHOD(T, _get_export_options);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_should_update_export_options),decltype(&T::_should_update_export_options)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_should_update_export_options), decltype(&T::_should_update_export_options)>) {
 			BIND_VIRTUAL_METHOD(T, _should_update_export_options);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_export_option_warning),decltype(&T::_get_export_option_warning)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_export_option_warning), decltype(&T::_get_export_option_warning)>) {
 			BIND_VIRTUAL_METHOD(T, _get_export_option_warning);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_export_features),decltype(&T::_get_export_features)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_export_features), decltype(&T::_get_export_features)>) {
 			BIND_VIRTUAL_METHOD(T, _get_export_features);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_name),decltype(&T::_get_name)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_name), decltype(&T::_get_name)>) {
 			BIND_VIRTUAL_METHOD(T, _get_name);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_supports_platform),decltype(&T::_supports_platform)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_supports_platform), decltype(&T::_supports_platform)>) {
 			BIND_VIRTUAL_METHOD(T, _supports_platform);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_android_dependencies),decltype(&T::_get_android_dependencies)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_android_dependencies), decltype(&T::_get_android_dependencies)>) {
 			BIND_VIRTUAL_METHOD(T, _get_android_dependencies);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_android_dependencies_maven_repos),decltype(&T::_get_android_dependencies_maven_repos)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_android_dependencies_maven_repos), decltype(&T::_get_android_dependencies_maven_repos)>) {
 			BIND_VIRTUAL_METHOD(T, _get_android_dependencies_maven_repos);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_android_libraries),decltype(&T::_get_android_libraries)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_android_libraries), decltype(&T::_get_android_libraries)>) {
 			BIND_VIRTUAL_METHOD(T, _get_android_libraries);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_android_manifest_activity_element_contents),decltype(&T::_get_android_manifest_activity_element_contents)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_android_manifest_activity_element_contents), decltype(&T::_get_android_manifest_activity_element_contents)>) {
 			BIND_VIRTUAL_METHOD(T, _get_android_manifest_activity_element_contents);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_android_manifest_application_element_contents),decltype(&T::_get_android_manifest_application_element_contents)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_android_manifest_application_element_contents), decltype(&T::_get_android_manifest_application_element_contents)>) {
 			BIND_VIRTUAL_METHOD(T, _get_android_manifest_application_element_contents);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_android_manifest_element_contents),decltype(&T::_get_android_manifest_element_contents)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_android_manifest_element_contents), decltype(&T::_get_android_manifest_element_contents)>) {
 			BIND_VIRTUAL_METHOD(T, _get_android_manifest_element_contents);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

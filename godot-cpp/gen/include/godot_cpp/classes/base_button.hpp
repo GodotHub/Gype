@@ -41,7 +41,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class ButtonGroup;
@@ -51,7 +51,6 @@ class BaseButton : public Control {
 	GDEXTENSION_CLASS(BaseButton, Control)
 
 public:
-
 	enum DrawMode {
 		DRAW_NORMAL = 0,
 		DRAW_PRESSED = 1,
@@ -90,20 +89,20 @@ public:
 	Ref<ButtonGroup> get_button_group() const;
 	virtual void _pressed();
 	virtual void _toggled(bool toggled_on);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Control::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_pressed),decltype(&T::_pressed)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_pressed), decltype(&T::_pressed)>) {
 			BIND_VIRTUAL_METHOD(T, _pressed);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_toggled),decltype(&T::_toggled)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_toggled), decltype(&T::_toggled)>) {
 			BIND_VIRTUAL_METHOD(T, _toggled);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

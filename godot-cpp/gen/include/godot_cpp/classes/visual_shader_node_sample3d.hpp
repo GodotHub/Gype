@@ -40,14 +40,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class VisualShaderNodeSample3D : public VisualShaderNode {
 	GDEXTENSION_CLASS(VisualShaderNodeSample3D, VisualShaderNode)
 
 public:
-
 	enum Source {
 		SOURCE_TEXTURE = 0,
 		SOURCE_PORT = 1,
@@ -56,6 +55,7 @@ public:
 
 	void set_source(VisualShaderNodeSample3D::Source value);
 	VisualShaderNodeSample3D::Source get_source() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -63,7 +63,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

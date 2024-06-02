@@ -39,16 +39,16 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class GPUParticlesAttractorSphere3D : public GPUParticlesAttractor3D {
 	GDEXTENSION_CLASS(GPUParticlesAttractorSphere3D, GPUParticlesAttractor3D)
 
 public:
-
 	void set_radius(double radius);
 	double get_radius() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -56,7 +56,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

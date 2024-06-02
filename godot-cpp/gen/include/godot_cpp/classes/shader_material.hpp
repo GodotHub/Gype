@@ -41,7 +41,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Shader;
@@ -51,11 +51,11 @@ class ShaderMaterial : public Material {
 	GDEXTENSION_CLASS(ShaderMaterial, Material)
 
 public:
-
 	void set_shader(const Ref<Shader> &shader);
 	Ref<Shader> get_shader() const;
 	void set_shader_parameter(const StringName &param, const Variant &value);
 	Variant get_shader_parameter(const StringName &param) const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -63,7 +63,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

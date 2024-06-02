@@ -43,7 +43,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Skeleton3D;
@@ -52,7 +52,6 @@ class SkeletonIK3D : public Node {
 	GDEXTENSION_CLASS(SkeletonIK3D, Node)
 
 public:
-
 	void set_root_bone(const StringName &root_bone);
 	StringName get_root_bone() const;
 	void set_tip_bone(const StringName &tip_bone);
@@ -77,6 +76,7 @@ public:
 	int32_t get_max_iterations() const;
 	void start(bool one_time = false);
 	void stop();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -84,7 +84,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

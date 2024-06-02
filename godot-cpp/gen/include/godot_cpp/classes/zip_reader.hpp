@@ -34,16 +34,17 @@
 #define GODOT_CPP_ZIP_READER_HPP
 
 #include <godot_cpp/classes/global_constants.hpp>
-#include <godot_cpp/variant/packed_byte_array.hpp>
-#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/variant/packed_byte_array.hpp>
+#include <godot_cpp/variant/packed_string_array.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class String;
@@ -52,12 +53,12 @@ class ZIPReader : public RefCounted {
 	GDEXTENSION_CLASS(ZIPReader, RefCounted)
 
 public:
-
 	Error open(const String &path);
 	Error close();
 	PackedStringArray get_files();
 	PackedByteArray read_file(const String &path, bool case_sensitive = true);
 	bool file_exists(const String &path, bool case_sensitive = true);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -65,7 +66,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

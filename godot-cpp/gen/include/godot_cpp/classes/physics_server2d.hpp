@@ -33,19 +33,20 @@
 #ifndef GODOT_CPP_PHYSICS_SERVER2D_HPP
 #define GODOT_CPP_PHYSICS_SERVER2D_HPP
 
-#include <godot_cpp/core/object.hpp>
 #include <godot_cpp/classes/physics_test_motion_result2d.hpp>
-#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/core/object.hpp>
+#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/variant/transform2d.hpp>
 #include <godot_cpp/variant/variant.hpp>
 #include <godot_cpp/variant/vector2.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Callable;
@@ -57,7 +58,6 @@ class PhysicsServer2D : public Object {
 	GDEXTENSION_CLASS(PhysicsServer2D, Object)
 
 public:
-
 	enum SpaceParameter {
 		SPACE_PARAM_CONTACT_RECYCLE_RADIUS = 0,
 		SPACE_PARAM_CONTACT_MAX_SEPARATION = 1,
@@ -305,6 +305,7 @@ public:
 	void free_rid(const RID &rid);
 	void set_active(bool active);
 	int32_t get_process_info(PhysicsServer2D::ProcessInfo process_info);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -312,7 +313,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

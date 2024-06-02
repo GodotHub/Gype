@@ -33,16 +33,17 @@
 #ifndef GODOT_CPP_CODE_HIGHLIGHTER_HPP
 #define GODOT_CPP_CODE_HIGHLIGHTER_HPP
 
-#include <godot_cpp/variant/color.hpp>
-#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/syntax_highlighter.hpp>
+#include <godot_cpp/variant/color.hpp>
+#include <godot_cpp/variant/dictionary.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class String;
@@ -51,7 +52,6 @@ class CodeHighlighter : public SyntaxHighlighter {
 	GDEXTENSION_CLASS(CodeHighlighter, SyntaxHighlighter)
 
 public:
-
 	void add_keyword_color(const String &keyword, const Color &color);
 	void remove_keyword_color(const String &keyword);
 	bool has_keyword_color(const String &keyword) const;
@@ -80,6 +80,7 @@ public:
 	Color get_symbol_color() const;
 	void set_member_variable_color(const Color &color);
 	Color get_member_variable_color() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -87,7 +88,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

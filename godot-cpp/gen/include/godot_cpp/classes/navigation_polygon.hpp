@@ -33,17 +33,18 @@
 #ifndef GODOT_CPP_NAVIGATION_POLYGON_HPP
 #define GODOT_CPP_NAVIGATION_POLYGON_HPP
 
-#include <godot_cpp/variant/packed_int32_array.hpp>
-#include <godot_cpp/variant/packed_vector2_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/variant/packed_int32_array.hpp>
+#include <godot_cpp/variant/packed_vector2_array.hpp>
 #include <godot_cpp/variant/string_name.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class NavigationMesh;
@@ -52,7 +53,6 @@ class NavigationPolygon : public Resource {
 	GDEXTENSION_CLASS(NavigationPolygon, Resource)
 
 public:
-
 	enum ParsedGeometryType {
 		PARSED_GEOMETRY_MESH_INSTANCES = 0,
 		PARSED_GEOMETRY_STATIC_COLLIDERS = 1,
@@ -97,6 +97,7 @@ public:
 	void set_agent_radius(double agent_radius);
 	double get_agent_radius() const;
 	void clear();
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -104,7 +105,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

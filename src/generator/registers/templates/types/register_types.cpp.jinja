@@ -1,0 +1,45 @@
+#include "register/register_types.h"
+#include "register/register_builtin_classes.h"
+#include "register/register_utility_functions.h"
+#include "register/utils.h"
+#include <gdextension_interface.h>
+#include <godot_cpp/core/defs.hpp>
+#include <godot_cpp/core/error_macros.hpp>
+#include <godot_cpp/godot.hpp>
+
+using namespace godot;
+
+void initialize_tgds_types(ModuleInitializationLevel p_level) {
+	if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE) {
+		return;
+	}
+	{% for clazz in builtin_classes %}
+	register_builtin_classes_{{clazz.name}}();
+	{% endfor %}
+	register_builtin_classes_Variant();
+	register_utility_functions();
+	auto value = context.eval("import { Callable } from 'Variant';let c = new Callable();GD.print('start');GD.print('processing');GD.print('end');", "<eval>", JS_EVAL_TYPE_MODULE);
+	// context.eval("let c = new Callable();", "<eval>", JS_EVAL_TYPE_MODULE);
+	// context.eval("GD.print('test', c);", "<eval>", JS_EVAL_TYPE_GLOBAL);
+	if (JS_IsException(value.v)) {
+		JSValue exception = JS_GetException(context.ctx);
+		const char *error = JS_ToCString(context.ctx, exception);
+	}
+	ERR_FAIL_COND_EDMSG(JS_IsException(value.v), "fail");
+}
+
+void uninitialize_tgds_types(ModuleInitializationLevel p_level) {
+	if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE) {
+		return;
+	}
+}
+
+extern "C" {
+GDExtensionBool GDE_EXPORT tgds_library_init(GDExtensionInterfaceGetProcAddress p_get_proc_address, GDExtensionClassLibraryPtr p_library, GDExtensionInitialization *r_initialization) {
+	godot::GDExtensionBinding::InitObject init_obj(p_get_proc_address, p_library, r_initialization);
+	init_obj.register_initializer(initialize_tgds_types);
+	init_obj.register_terminator(uninitialize_tgds_types);
+	init_obj.set_minimum_library_initialization_level(MODULE_INITIALIZATION_LEVEL_SCENE);
+	return init_obj.init();
+}
+}

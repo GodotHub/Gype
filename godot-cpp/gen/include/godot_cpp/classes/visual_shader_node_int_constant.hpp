@@ -40,16 +40,16 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class VisualShaderNodeIntConstant : public VisualShaderNodeConstant {
 	GDEXTENSION_CLASS(VisualShaderNodeIntConstant, VisualShaderNodeConstant)
 
 public:
-
 	void set_constant(int32_t constant);
 	int32_t get_constant() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -57,7 +57,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

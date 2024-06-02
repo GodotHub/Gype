@@ -40,14 +40,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class PhysicsMaterial : public Resource {
 	GDEXTENSION_CLASS(PhysicsMaterial, Resource)
 
 public:
-
 	void set_friction(double friction);
 	double get_friction() const;
 	void set_rough(bool rough);
@@ -56,6 +55,7 @@ public:
 	double get_bounce() const;
 	void set_absorbent(bool absorbent);
 	bool is_absorbent() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -63,7 +63,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -33,23 +33,23 @@
 #ifndef GODOT_CPP_SKELETON_MODIFICATION2D_JIGGLE_HPP
 #define GODOT_CPP_SKELETON_MODIFICATION2D_JIGGLE_HPP
 
-#include <godot_cpp/variant/node_path.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/skeleton_modification2d.hpp>
+#include <godot_cpp/variant/node_path.hpp>
 #include <godot_cpp/variant/vector2.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class SkeletonModification2DJiggle : public SkeletonModification2D {
 	GDEXTENSION_CLASS(SkeletonModification2DJiggle, SkeletonModification2D)
 
 public:
-
 	void set_target_node(const NodePath &target_nodepath);
 	NodePath get_target_node() const;
 	void set_jiggle_data_chain_length(int32_t length);
@@ -84,6 +84,7 @@ public:
 	bool get_jiggle_joint_use_gravity(int32_t joint_idx) const;
 	void set_jiggle_joint_gravity(int32_t joint_idx, const Vector2 &gravity);
 	Vector2 get_jiggle_joint_gravity(int32_t joint_idx) const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -91,7 +92,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

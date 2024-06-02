@@ -41,7 +41,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Texture2D;
@@ -50,13 +50,13 @@ class PointLight2D : public Light2D {
 	GDEXTENSION_CLASS(PointLight2D, Light2D)
 
 public:
-
 	void set_texture(const Ref<Texture2D> &texture);
 	Ref<Texture2D> get_texture() const;
 	void set_texture_offset(const Vector2 &texture_offset);
 	Vector2 get_texture_offset() const;
 	void set_texture_scale(double texture_scale);
 	double get_texture_scale() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -64,7 +64,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

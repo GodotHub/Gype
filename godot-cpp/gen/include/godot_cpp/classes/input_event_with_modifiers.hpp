@@ -41,14 +41,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class InputEventWithModifiers : public InputEventFromWindow {
 	GDEXTENSION_CLASS(InputEventWithModifiers, InputEventFromWindow)
 
 public:
-
 	void set_command_or_control_autoremap(bool enable);
 	bool is_command_or_control_autoremap() const;
 	bool is_command_or_control_pressed() const;
@@ -61,6 +60,7 @@ public:
 	void set_meta_pressed(bool pressed);
 	bool is_meta_pressed() const;
 	BitField<KeyModifierMask> get_modifiers_mask() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -68,7 +68,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

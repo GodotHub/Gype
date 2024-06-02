@@ -43,7 +43,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Node;
@@ -54,7 +54,6 @@ class PhysicsBody3D : public CollisionObject3D {
 	GDEXTENSION_CLASS(PhysicsBody3D, CollisionObject3D)
 
 public:
-
 	Ref<KinematicCollision3D> move_and_collide(const Vector3 &motion, bool test_only = false, double safe_margin = 0.001, bool recovery_as_collision = false, int32_t max_collisions = 1);
 	bool test_move(const Transform3D &from, const Vector3 &motion, const Ref<KinematicCollision3D> &collision = nullptr, double safe_margin = 0.001, bool recovery_as_collision = false, int32_t max_collisions = 1);
 	void set_axis_lock(PhysicsServer3D::BodyAxis axis, bool lock);
@@ -62,6 +61,7 @@ public:
 	TypedArray<PhysicsBody3D> get_collision_exceptions();
 	void add_collision_exception_with(Node *body);
 	void remove_collision_exception_with(Node *body);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -69,7 +69,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

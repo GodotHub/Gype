@@ -40,7 +40,7 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 struct Vector2;
@@ -49,8 +49,8 @@ class PlaceholderTexture2D : public Texture2D {
 	GDEXTENSION_CLASS(PlaceholderTexture2D, Texture2D)
 
 public:
-
 	void set_size(const Vector2 &size);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -58,7 +58,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

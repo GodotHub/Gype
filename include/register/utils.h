@@ -1,4 +1,4 @@
-#include "qjspp.h"
+#include "qjspp.hpp"
 #include <godot_cpp/godot.hpp>
 
 const char *underscoreToCamelCase(const std::string &input);

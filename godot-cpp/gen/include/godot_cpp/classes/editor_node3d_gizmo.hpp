@@ -33,22 +33,23 @@
 #ifndef GODOT_CPP_EDITOR_NODE3D_GIZMO_HPP
 #define GODOT_CPP_EDITOR_NODE3D_GIZMO_HPP
 
-#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/node3d_gizmo.hpp>
-#include <godot_cpp/variant/packed_int32_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/skin_reference.hpp>
+#include <godot_cpp/variant/color.hpp>
+#include <godot_cpp/variant/packed_int32_array.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/transform3d.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/variant.hpp>
 
+
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Camera3D;
@@ -65,7 +66,6 @@ class EditorNode3DGizmo : public Node3DGizmo {
 	GDEXTENSION_CLASS(EditorNode3DGizmo, Node3DGizmo)
 
 public:
-
 	void add_lines(const PackedVector3Array &lines, const Ref<Material> &material, bool billboard = false, const Color &modulate = Color(1, 1, 1, 1));
 	void add_mesh(const Ref<Mesh> &mesh, const Ref<Material> &material = nullptr, const Transform3D &transform = Transform3D(), const Ref<SkinReference> &skeleton = nullptr);
 	void add_collision_segments(const PackedVector3Array &segments);
@@ -91,50 +91,50 @@ public:
 	virtual void _set_subgizmo_transform(int32_t id, const Transform3D &transform);
 	virtual Transform3D _get_subgizmo_transform(int32_t id) const;
 	virtual void _commit_subgizmos(const PackedInt32Array &ids, const TypedArray<Transform3D> &restores, bool cancel);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Node3DGizmo::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_redraw),decltype(&T::_redraw)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_redraw), decltype(&T::_redraw)>) {
 			BIND_VIRTUAL_METHOD(T, _redraw);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_handle_name),decltype(&T::_get_handle_name)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_handle_name), decltype(&T::_get_handle_name)>) {
 			BIND_VIRTUAL_METHOD(T, _get_handle_name);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_is_handle_highlighted),decltype(&T::_is_handle_highlighted)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_is_handle_highlighted), decltype(&T::_is_handle_highlighted)>) {
 			BIND_VIRTUAL_METHOD(T, _is_handle_highlighted);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_handle_value),decltype(&T::_get_handle_value)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_handle_value), decltype(&T::_get_handle_value)>) {
 			BIND_VIRTUAL_METHOD(T, _get_handle_value);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_begin_handle_action),decltype(&T::_begin_handle_action)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_begin_handle_action), decltype(&T::_begin_handle_action)>) {
 			BIND_VIRTUAL_METHOD(T, _begin_handle_action);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_set_handle),decltype(&T::_set_handle)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_set_handle), decltype(&T::_set_handle)>) {
 			BIND_VIRTUAL_METHOD(T, _set_handle);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_commit_handle),decltype(&T::_commit_handle)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_commit_handle), decltype(&T::_commit_handle)>) {
 			BIND_VIRTUAL_METHOD(T, _commit_handle);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_subgizmos_intersect_ray),decltype(&T::_subgizmos_intersect_ray)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_subgizmos_intersect_ray), decltype(&T::_subgizmos_intersect_ray)>) {
 			BIND_VIRTUAL_METHOD(T, _subgizmos_intersect_ray);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_subgizmos_intersect_frustum),decltype(&T::_subgizmos_intersect_frustum)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_subgizmos_intersect_frustum), decltype(&T::_subgizmos_intersect_frustum)>) {
 			BIND_VIRTUAL_METHOD(T, _subgizmos_intersect_frustum);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_set_subgizmo_transform),decltype(&T::_set_subgizmo_transform)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_set_subgizmo_transform), decltype(&T::_set_subgizmo_transform)>) {
 			BIND_VIRTUAL_METHOD(T, _set_subgizmo_transform);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_subgizmo_transform),decltype(&T::_get_subgizmo_transform)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_subgizmo_transform), decltype(&T::_get_subgizmo_transform)>) {
 			BIND_VIRTUAL_METHOD(T, _get_subgizmo_transform);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_commit_subgizmos),decltype(&T::_commit_subgizmos)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_commit_subgizmos), decltype(&T::_commit_subgizmos)>) {
 			BIND_VIRTUAL_METHOD(T, _commit_subgizmos);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -33,16 +33,17 @@
 #ifndef GODOT_CPP_PARTICLE_PROCESS_MATERIAL_HPP
 #define GODOT_CPP_PARTICLE_PROCESS_MATERIAL_HPP
 
-#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/variant/vector3.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Texture2D;
@@ -51,7 +52,6 @@ class ParticleProcessMaterial : public Material {
 	GDEXTENSION_CLASS(ParticleProcessMaterial, Material)
 
 public:
-
 	enum Parameter {
 		PARAM_INITIAL_LINEAR_VELOCITY = 0,
 		PARAM_ANGULAR_VELOCITY = 1,
@@ -198,6 +198,7 @@ public:
 	double get_collision_friction() const;
 	void set_collision_bounce(double bounce);
 	double get_collision_bounce() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -205,7 +206,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

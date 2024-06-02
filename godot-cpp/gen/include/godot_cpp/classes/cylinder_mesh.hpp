@@ -40,14 +40,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class CylinderMesh : public PrimitiveMesh {
 	GDEXTENSION_CLASS(CylinderMesh, PrimitiveMesh)
 
 public:
-
 	void set_top_radius(double radius);
 	double get_top_radius() const;
 	void set_bottom_radius(double radius);
@@ -62,6 +61,7 @@ public:
 	bool is_cap_top() const;
 	void set_cap_bottom(bool cap_bottom);
 	bool is_cap_bottom() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -69,7 +69,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

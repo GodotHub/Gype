@@ -33,24 +33,24 @@
 #ifndef GODOT_CPP_PHYSICS_RAY_QUERY_PARAMETERS2D_HPP
 #define GODOT_CPP_PHYSICS_RAY_QUERY_PARAMETERS2D_HPP
 
-#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/vector2.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class PhysicsRayQueryParameters2D : public RefCounted {
 	GDEXTENSION_CLASS(PhysicsRayQueryParameters2D, RefCounted)
 
 public:
-
 	static Ref<PhysicsRayQueryParameters2D> create(const Vector2 &from, const Vector2 &to, uint32_t collision_mask = 4294967295, const TypedArray<RID> &exclude = {});
 	void set_from(const Vector2 &from);
 	Vector2 get_from() const;
@@ -66,6 +66,7 @@ public:
 	bool is_collide_with_areas_enabled() const;
 	void set_hit_from_inside(bool enable);
 	bool is_hit_from_inside_enabled() const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -73,7 +74,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

@@ -40,14 +40,13 @@
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class ResourceUID : public Object {
 	GDEXTENSION_CLASS(ResourceUID, Object)
 
 public:
-
 	static const int INVALID_ID = -1;
 
 	static ResourceUID *get_singleton();
@@ -60,6 +59,7 @@ public:
 	void set_id(int64_t id, const String &path);
 	String get_id_path(int64_t id) const;
 	void remove_id(int64_t id);
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -67,7 +67,6 @@ protected:
 	}
 
 public:
-
 };
 
 } // namespace godot

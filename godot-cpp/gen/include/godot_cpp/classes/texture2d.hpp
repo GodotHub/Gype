@@ -33,16 +33,17 @@
 #ifndef GODOT_CPP_TEXTURE2D_HPP
 #define GODOT_CPP_TEXTURE2D_HPP
 
-#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/texture.hpp>
+#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/variant/vector2.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
 #include <type_traits>
 
-#include <godot_cpp/templates/vararg.h>
+#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Image;
@@ -54,7 +55,6 @@ class Texture2D : public Texture {
 	GDEXTENSION_CLASS(Texture2D, Texture)
 
 public:
-
 	int32_t get_width() const;
 	int32_t get_height() const;
 	Vector2 get_size() const;
@@ -71,35 +71,35 @@ public:
 	virtual void _draw(const RID &to_canvas_item, const Vector2 &pos, const Color &modulate, bool transpose) const;
 	virtual void _draw_rect(const RID &to_canvas_item, const Rect2 &rect, bool tile, const Color &modulate, bool transpose) const;
 	virtual void _draw_rect_region(const RID &to_canvas_item, const Rect2 &rect, const Rect2 &src_rect, const Color &modulate, bool transpose, bool clip_uv) const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Texture::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_get_width),decltype(&T::_get_width)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_width), decltype(&T::_get_width)>) {
 			BIND_VIRTUAL_METHOD(T, _get_width);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_height),decltype(&T::_get_height)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_height), decltype(&T::_get_height)>) {
 			BIND_VIRTUAL_METHOD(T, _get_height);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_is_pixel_opaque),decltype(&T::_is_pixel_opaque)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_is_pixel_opaque), decltype(&T::_is_pixel_opaque)>) {
 			BIND_VIRTUAL_METHOD(T, _is_pixel_opaque);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_has_alpha),decltype(&T::_has_alpha)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_has_alpha), decltype(&T::_has_alpha)>) {
 			BIND_VIRTUAL_METHOD(T, _has_alpha);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_draw),decltype(&T::_draw)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_draw), decltype(&T::_draw)>) {
 			BIND_VIRTUAL_METHOD(T, _draw);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_draw_rect),decltype(&T::_draw_rect)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_draw_rect), decltype(&T::_draw_rect)>) {
 			BIND_VIRTUAL_METHOD(T, _draw_rect);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_draw_rect_region),decltype(&T::_draw_rect_region)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_draw_rect_region), decltype(&T::_draw_rect_region)>) {
 			BIND_VIRTUAL_METHOD(T, _draw_rect_region);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot
