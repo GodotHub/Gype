@@ -6,7 +6,7 @@
 qjs::Runtime runtime;
 qjs::Context context(runtime);
 
-const char *underscoreToCamelCase(const std::string &input) {
+std::string underscoreToCamelCase(const std::string &input) {
 	std::string output;
 	bool capitalizeNext = false;
 
@@ -23,5 +23,20 @@ const char *underscoreToCamelCase(const std::string &input) {
 			}
 		}
 	}
-	return output.c_str();
+	return output;
+}
+
+std::string camelToSnake(const std::string &input) {
+	std::string result;
+	for (size_t i = 0; i < input.size(); ++i) {
+		if (std::isupper(input[i])) {
+			if (i != 0) {
+				result += '_';
+			}
+			result += std::tolower(input[i]);
+		} else {
+			result += input[i];
+		}
+	}
+	return result;
 }

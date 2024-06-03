@@ -1,5 +1,6 @@
 #include "register/register_classes.h"
 #include "register/utils.h"
+#include <godot_cpp/classes/gpu_particles3d.hpp>
 
 using namespace godot;
 
@@ -35,8 +36,8 @@ void register_classes_GPUParticles3D() {
            .property<GPUParticles3D::get_draw_pass_mesh, GPUParticles3D::set_draw_pass_mesh>("draw_pass_3")
            .property<GPUParticles3D::get_draw_pass_mesh, GPUParticles3D::set_draw_pass_mesh>("draw_pass_4")
            .property<GPUParticles3D::get_skin, GPUParticles3D::set_skin>("draw_skin")
-		   .fun<static_cast<void(GPUParticles3D::*)()>(&GPUParticles3D::restart)>("restart")
-		   .fun<static_cast<AABB(GPUParticles3D::*)()const>(&GPUParticles3D::capture_aabb)>("capture_aabb")
-		   .fun<static_cast<void(GPUParticles3D::*)(const Transform3D &,const Vector3 &,const Color &,const Color &,uint32_t)>(&GPUParticles3D::emit_particle)>("emit_particle")
-		   .fun<static_cast<void(GPUParticles3D::*)(Node *)>(&GPUParticles3D::convert_from_particles)>("convert_from_particles")
+		    .fun<static_cast<void(GPUParticles3D::*)()>(&GPUParticles3D::restart)>("restart")
+		    .fun<static_cast<AABB(GPUParticles3D::*)()const>(&GPUParticles3D::capture_aabb)>("capture_aabb")
+		    .fun<static_cast<void(GPUParticles3D::*)(const Transform3D &,const Vector3 &,const Color &,const Color &,uint32_t)>(&GPUParticles3D::emit_particle)>("emit_particle")
+		    .fun<static_cast<void(GPUParticles3D::*)(Node *)>(&GPUParticles3D::convert_from_particles)>("convert_from_particles")
 ;}

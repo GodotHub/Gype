@@ -1,10 +1,11 @@
 #include "register/register_classes.h"
 #include "register/utils.h"
+#include <godot_cpp/classes/node2d.hpp>
 
 using namespace godot;
 
 void register_classes_Node2D() {
-    qjs::Context::Module &_module = _;
+    qjs::Context::Module &_module = _Node2D;
     _module.class_<Node2D>("Node2D")
            .constructor<>()
            .property<Node2D::get_position, Node2D::set_position>("position")
@@ -19,15 +20,15 @@ void register_classes_Node2D() {
            .property<Node2D::get_global_scale, Node2D::set_global_scale>("global_scale")
            .property<Node2D::get_global_skew, Node2D::set_global_skew>("global_skew")
            .property<Node2D::get_global_transform, Node2D::set_global_transform>("global_transform")
-		   .fun<static_cast<void(Node2D::*)(double)>(&Node2D::rotate)>("rotate")
-		   .fun<static_cast<void(Node2D::*)(double,bool)>(&Node2D::move_local_x)>("move_local_x")
-		   .fun<static_cast<void(Node2D::*)(double,bool)>(&Node2D::move_local_y)>("move_local_y")
-		   .fun<static_cast<void(Node2D::*)(const Vector2 &)>(&Node2D::translate)>("translate")
-		   .fun<static_cast<void(Node2D::*)(const Vector2 &)>(&Node2D::global_translate)>("global_translate")
-		   .fun<static_cast<void(Node2D::*)(const Vector2 &)>(&Node2D::apply_scale)>("apply_scale")
-		   .fun<static_cast<void(Node2D::*)(const Vector2 &)>(&Node2D::look_at)>("look_at")
-		   .fun<static_cast<double(Node2D::*)(const Vector2 &)const>(&Node2D::get_angle_to)>("get_angle_to")
-		   .fun<static_cast<Vector2(Node2D::*)(const Vector2 &)const>(&Node2D::to_local)>("to_local")
-		   .fun<static_cast<Vector2(Node2D::*)(const Vector2 &)const>(&Node2D::to_global)>("to_global")
-		   .fun<static_cast<Transform2D(Node2D::*)(Node *)const>(&Node2D::get_relative_transform_to_parent)>("get_relative_transform_to_parent")
+		    .fun<static_cast<void(Node2D::*)(double)>(&Node2D::rotate)>("rotate")
+		    .fun<static_cast<void(Node2D::*)(double,bool)>(&Node2D::move_local_x)>("move_local_x")
+		    .fun<static_cast<void(Node2D::*)(double,bool)>(&Node2D::move_local_y)>("move_local_y")
+		    .fun<static_cast<void(Node2D::*)(const Vector2 &)>(&Node2D::translate)>("translate")
+		    .fun<static_cast<void(Node2D::*)(const Vector2 &)>(&Node2D::global_translate)>("global_translate")
+		    .fun<static_cast<void(Node2D::*)(const Vector2 &)>(&Node2D::apply_scale)>("apply_scale")
+		    .fun<static_cast<void(Node2D::*)(const Vector2 &)>(&Node2D::look_at)>("look_at")
+		    .fun<static_cast<double(Node2D::*)(const Vector2 &)const>(&Node2D::get_angle_to)>("get_angle_to")
+		    .fun<static_cast<Vector2(Node2D::*)(const Vector2 &)const>(&Node2D::to_local)>("to_local")
+		    .fun<static_cast<Vector2(Node2D::*)(const Vector2 &)const>(&Node2D::to_global)>("to_global")
+		    .fun<static_cast<Transform2D(Node2D::*)(Node *)const>(&Node2D::get_relative_transform_to_parent)>("get_relative_transform_to_parent")
 ;}

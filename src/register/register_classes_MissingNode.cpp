@@ -1,5 +1,6 @@
 #include "register/register_classes.h"
 #include "register/utils.h"
+#include <godot_cpp/classes/missing_node.hpp>
 
 using namespace godot;
 

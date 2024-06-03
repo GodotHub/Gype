@@ -1,5 +1,6 @@
 #include "register/register_classes.h"
 #include "register/utils.h"
+#include <godot_cpp/classes/{{clazz.name|camel_to_snake}}.hpp>
 
 using namespace godot;
 
@@ -17,7 +18,7 @@ void register_classes_{{clazz.name}}() {
 {% for method in clazz.methods %}
     {% if method.name not in clazz.properties | map(attribute='getter') and method.name not in clazz.properties | map(attribute='setter') %}
     {% if not method.is_static %}
-		   .fun<static_cast<
+		    .fun<static_cast<
 		{%- if method.return_value -%}
             {%- if method.return_value.meta -%}
                 {{-method.return_value.meta | convert_return_type-}}

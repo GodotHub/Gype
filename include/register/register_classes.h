@@ -6,7 +6,8 @@
 extern qjs::Context::Module &_Node;
 extern qjs::Context::Module &_Node2D;
 extern qjs::Context::Module &_Node3D;
-extern qjs::Context::Module &_System;
+extern qjs::Context::Module &_Control;
+extern qjs::Context::Module &_General;
 
 void register_classes_AESContext();
 void register_classes_AStar2D();

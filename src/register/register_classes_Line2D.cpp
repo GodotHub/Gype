@@ -1,5 +1,6 @@
 #include "register/register_classes.h"
 #include "register/utils.h"
+#include <godot_cpp/classes/line2d.hpp>
 
 using namespace godot;
 
@@ -21,10 +22,10 @@ void register_classes_Line2D() {
            .property<Line2D::get_sharp_limit, Line2D::set_sharp_limit>("sharp_limit")
            .property<Line2D::get_round_precision, Line2D::set_round_precision>("round_precision")
            .property<Line2D::get_antialiased, Line2D::set_antialiased>("antialiased")
-		   .fun<static_cast<void(Line2D::*)(int32_t,const Vector2 &)>(&Line2D::set_point_position)>("set_point_position")
-		   .fun<static_cast<Vector2(Line2D::*)(int32_t)const>(&Line2D::get_point_position)>("get_point_position")
-		   .fun<static_cast<int32_t(Line2D::*)()const>(&Line2D::get_point_count)>("get_point_count")
-		   .fun<static_cast<void(Line2D::*)(const Vector2 &,int32_t)>(&Line2D::add_point)>("add_point")
-		   .fun<static_cast<void(Line2D::*)(int32_t)>(&Line2D::remove_point)>("remove_point")
-		   .fun<static_cast<void(Line2D::*)()>(&Line2D::clear_points)>("clear_points")
+		    .fun<static_cast<void(Line2D::*)(int32_t,const Vector2 &)>(&Line2D::set_point_position)>("set_point_position")
+		    .fun<static_cast<Vector2(Line2D::*)(int32_t)const>(&Line2D::get_point_position)>("get_point_position")
+		    .fun<static_cast<int32_t(Line2D::*)()const>(&Line2D::get_point_count)>("get_point_count")
+		    .fun<static_cast<void(Line2D::*)(const Vector2 &,int32_t)>(&Line2D::add_point)>("add_point")
+		    .fun<static_cast<void(Line2D::*)(int32_t)>(&Line2D::remove_point)>("remove_point")
+		    .fun<static_cast<void(Line2D::*)()>(&Line2D::clear_points)>("clear_points")
 ;}

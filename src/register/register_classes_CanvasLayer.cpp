@@ -1,5 +1,6 @@
 #include "register/register_classes.h"
 #include "register/utils.h"
+#include <godot_cpp/classes/canvas_layer.hpp>
 
 using namespace godot;
 
@@ -16,8 +17,8 @@ void register_classes_CanvasLayer() {
            .property<CanvasLayer::get_custom_viewport, CanvasLayer::set_custom_viewport>("custom_viewport")
            .property<CanvasLayer::is_following_viewport, CanvasLayer::set_follow_viewport>("follow_viewport_enabled")
            .property<CanvasLayer::get_follow_viewport_scale, CanvasLayer::set_follow_viewport_scale>("follow_viewport_scale")
-		   .fun<static_cast<void(CanvasLayer::*)()>(&CanvasLayer::show)>("show")
-		   .fun<static_cast<void(CanvasLayer::*)()>(&CanvasLayer::hide)>("hide")
-		   .fun<static_cast<Transform2D(CanvasLayer::*)()const>(&CanvasLayer::get_final_transform)>("get_final_transform")
-		   .fun<static_cast<RID(CanvasLayer::*)()const>(&CanvasLayer::get_canvas)>("get_canvas")
+		    .fun<static_cast<void(CanvasLayer::*)()>(&CanvasLayer::show)>("show")
+		    .fun<static_cast<void(CanvasLayer::*)()>(&CanvasLayer::hide)>("hide")
+		    .fun<static_cast<Transform2D(CanvasLayer::*)()const>(&CanvasLayer::get_final_transform)>("get_final_transform")
+		    .fun<static_cast<RID(CanvasLayer::*)()const>(&CanvasLayer::get_canvas)>("get_canvas")
 ;}

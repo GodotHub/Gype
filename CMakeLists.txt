@@ -27,9 +27,9 @@ target_link_libraries(gype PUBLIC quickjspp)
 target_include_directories(gype PUBLIC
 	${PROJECT_SOURCE_DIR}/include)
 
-target_compile_options(gype PRIVATE 
-	-fuse-ld=lld
-	-Wl,--threads)
+# target_compile_options(gype PRIVATE 
+# 	-fuse-ld=lld
+# 	-Wl,--threads)
 
 # 设置库的版本
 set_target_properties(gype PROPERTIES VERSION 1.0.0 SOVERSION 10000)

@@ -1,5 +1,6 @@
 #include "register/register_classes.h"
 #include "register/utils.h"
+#include <godot_cpp/classes/remote_transform3d.hpp>
 
 using namespace godot;
 
@@ -12,5 +13,5 @@ void register_classes_RemoteTransform3D() {
            .property<RemoteTransform3D::get_update_position, RemoteTransform3D::set_update_position>("update_position")
            .property<RemoteTransform3D::get_update_rotation, RemoteTransform3D::set_update_rotation>("update_rotation")
            .property<RemoteTransform3D::get_update_scale, RemoteTransform3D::set_update_scale>("update_scale")
-		   .fun<static_cast<void(RemoteTransform3D::*)()>(&RemoteTransform3D::force_update_cache)>("force_update_cache")
+		    .fun<static_cast<void(RemoteTransform3D::*)()>(&RemoteTransform3D::force_update_cache)>("force_update_cache")
 ;}

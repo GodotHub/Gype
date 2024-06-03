@@ -1,5 +1,6 @@
 #include "register/register_classes.h"
 #include "register/utils.h"
+#include <godot_cpp/classes/cone_twist_joint3d.hpp>
 
 using namespace godot;
 

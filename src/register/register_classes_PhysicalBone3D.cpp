@@ -1,5 +1,6 @@
 #include "register/register_classes.h"
 #include "register/utils.h"
+#include <godot_cpp/classes/physical_bone3d.hpp>
 
 using namespace godot;
 
@@ -23,10 +24,10 @@ void register_classes_PhysicalBone3D() {
            .property<PhysicalBone3D::get_linear_velocity, PhysicalBone3D::set_linear_velocity>("linear_velocity")
            .property<PhysicalBone3D::get_angular_velocity, PhysicalBone3D::set_angular_velocity>("angular_velocity")
            .property<PhysicalBone3D::is_able_to_sleep, PhysicalBone3D::set_can_sleep>("can_sleep")
-		   .fun<static_cast<void(PhysicalBone3D::*)(PhysicsDirectBodyState3D *)>(&PhysicalBone3D::_integrate_forces)>("_integrate_forces")
-		   .fun<static_cast<void(PhysicalBone3D::*)(const Vector3 &)>(&PhysicalBone3D::apply_central_impulse)>("apply_central_impulse")
-		   .fun<static_cast<void(PhysicalBone3D::*)(const Vector3 &,const Vector3 &)>(&PhysicalBone3D::apply_impulse)>("apply_impulse")
-		   .fun<static_cast<bool(PhysicalBone3D::*)()>(&PhysicalBone3D::get_simulate_physics)>("get_simulate_physics")
-		   .fun<static_cast<bool(PhysicalBone3D::*)()>(&PhysicalBone3D::is_simulating_physics)>("is_simulating_physics")
-		   .fun<static_cast<int32_t(PhysicalBone3D::*)()const>(&PhysicalBone3D::get_bone_id)>("get_bone_id")
+		    .fun<static_cast<void(PhysicalBone3D::*)(PhysicsDirectBodyState3D *)>(&PhysicalBone3D::_integrate_forces)>("_integrate_forces")
+		    .fun<static_cast<void(PhysicalBone3D::*)(const Vector3 &)>(&PhysicalBone3D::apply_central_impulse)>("apply_central_impulse")
+		    .fun<static_cast<void(PhysicalBone3D::*)(const Vector3 &,const Vector3 &)>(&PhysicalBone3D::apply_impulse)>("apply_impulse")
+		    .fun<static_cast<bool(PhysicalBone3D::*)()>(&PhysicalBone3D::get_simulate_physics)>("get_simulate_physics")
+		    .fun<static_cast<bool(PhysicalBone3D::*)()>(&PhysicalBone3D::is_simulating_physics)>("is_simulating_physics")
+		    .fun<static_cast<int32_t(PhysicalBone3D::*)()const>(&PhysicalBone3D::get_bone_id)>("get_bone_id")
 ;}

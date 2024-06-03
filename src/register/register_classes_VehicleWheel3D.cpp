@@ -1,5 +1,6 @@
 #include "register/register_classes.h"
 #include "register/utils.h"
+#include <godot_cpp/classes/vehicle_wheel3d.hpp>
 
 using namespace godot;
 
@@ -21,8 +22,8 @@ void register_classes_VehicleWheel3D() {
            .property<VehicleWheel3D::get_suspension_max_force, VehicleWheel3D::set_suspension_max_force>("suspension_max_force")
            .property<VehicleWheel3D::get_damping_compression, VehicleWheel3D::set_damping_compression>("damping_compression")
            .property<VehicleWheel3D::get_damping_relaxation, VehicleWheel3D::set_damping_relaxation>("damping_relaxation")
-		   .fun<static_cast<bool(VehicleWheel3D::*)()const>(&VehicleWheel3D::is_in_contact)>("is_in_contact")
-		   .fun<static_cast<Node3D *(VehicleWheel3D::*)()const>(&VehicleWheel3D::get_contact_body)>("get_contact_body")
-		   .fun<static_cast<double(VehicleWheel3D::*)()const>(&VehicleWheel3D::get_skidinfo)>("get_skidinfo")
-		   .fun<static_cast<double(VehicleWheel3D::*)()const>(&VehicleWheel3D::get_rpm)>("get_rpm")
+		    .fun<static_cast<bool(VehicleWheel3D::*)()const>(&VehicleWheel3D::is_in_contact)>("is_in_contact")
+		    .fun<static_cast<Node3D *(VehicleWheel3D::*)()const>(&VehicleWheel3D::get_contact_body)>("get_contact_body")
+		    .fun<static_cast<double(VehicleWheel3D::*)()const>(&VehicleWheel3D::get_skidinfo)>("get_skidinfo")
+		    .fun<static_cast<double(VehicleWheel3D::*)()const>(&VehicleWheel3D::get_rpm)>("get_rpm")
 ;}

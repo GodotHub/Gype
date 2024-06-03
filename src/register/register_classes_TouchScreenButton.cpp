@@ -1,5 +1,6 @@
 #include "register/register_classes.h"
 #include "register/utils.h"
+#include <godot_cpp/classes/touch_screen_button.hpp>
 
 using namespace godot;
 
@@ -16,5 +17,5 @@ void register_classes_TouchScreenButton() {
            .property<TouchScreenButton::is_passby_press_enabled, TouchScreenButton::set_passby_press>("passby_press")
            .property<TouchScreenButton::get_action, TouchScreenButton::set_action>("action")
            .property<TouchScreenButton::get_visibility_mode, TouchScreenButton::set_visibility_mode>("visibility_mode")
-		   .fun<static_cast<bool(TouchScreenButton::*)()const>(&TouchScreenButton::is_pressed)>("is_pressed")
+		    .fun<static_cast<bool(TouchScreenButton::*)()const>(&TouchScreenButton::is_pressed)>("is_pressed")
 ;}

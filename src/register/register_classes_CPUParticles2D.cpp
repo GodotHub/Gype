@@ -1,5 +1,6 @@
 #include "register/register_classes.h"
 #include "register/utils.h"
+#include <godot_cpp/classes/cpu_particles2d.hpp>
 
 using namespace godot;
 
@@ -72,6 +73,6 @@ void register_classes_CPUParticles2D() {
            .property<CPUParticles2D::get_param_min, CPUParticles2D::set_param_min>("anim_offset_min")
            .property<CPUParticles2D::get_param_max, CPUParticles2D::set_param_max>("anim_offset_max")
            .property<CPUParticles2D::get_param_curve, CPUParticles2D::set_param_curve>("anim_offset_curve")
-		   .fun<static_cast<void(CPUParticles2D::*)()>(&CPUParticles2D::restart)>("restart")
-		   .fun<static_cast<void(CPUParticles2D::*)(Node *)>(&CPUParticles2D::convert_from_particles)>("convert_from_particles")
+		    .fun<static_cast<void(CPUParticles2D::*)()>(&CPUParticles2D::restart)>("restart")
+		    .fun<static_cast<void(CPUParticles2D::*)(Node *)>(&CPUParticles2D::convert_from_particles)>("convert_from_particles")
 ;}

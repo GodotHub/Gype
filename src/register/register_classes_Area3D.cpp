@@ -1,5 +1,6 @@
 #include "register/register_classes.h"
 #include "register/utils.h"
+#include <godot_cpp/classes/area3d.hpp>
 
 using namespace godot;
 
@@ -29,10 +30,10 @@ void register_classes_Area3D() {
            .property<Area3D::get_reverb_bus_name, Area3D::set_reverb_bus_name>("reverb_bus_name")
            .property<Area3D::get_reverb_amount, Area3D::set_reverb_amount>("reverb_bus_amount")
            .property<Area3D::get_reverb_uniformity, Area3D::set_reverb_uniformity>("reverb_bus_uniformity")
-		   .fun<static_cast<TypedArray<Node3D>(Area3D::*)()const>(&Area3D::get_overlapping_bodies)>("get_overlapping_bodies")
-		   .fun<static_cast<TypedArray<Area3D>(Area3D::*)()const>(&Area3D::get_overlapping_areas)>("get_overlapping_areas")
-		   .fun<static_cast<bool(Area3D::*)()const>(&Area3D::has_overlapping_bodies)>("has_overlapping_bodies")
-		   .fun<static_cast<bool(Area3D::*)()const>(&Area3D::has_overlapping_areas)>("has_overlapping_areas")
-		   .fun<static_cast<bool(Area3D::*)(Node *)const>(&Area3D::overlaps_body)>("overlaps_body")
-		   .fun<static_cast<bool(Area3D::*)(Node *)const>(&Area3D::overlaps_area)>("overlaps_area")
+		    .fun<static_cast<TypedArray<Node3D>(Area3D::*)()const>(&Area3D::get_overlapping_bodies)>("get_overlapping_bodies")
+		    .fun<static_cast<TypedArray<Area3D>(Area3D::*)()const>(&Area3D::get_overlapping_areas)>("get_overlapping_areas")
+		    .fun<static_cast<bool(Area3D::*)()const>(&Area3D::has_overlapping_bodies)>("has_overlapping_bodies")
+		    .fun<static_cast<bool(Area3D::*)()const>(&Area3D::has_overlapping_areas)>("has_overlapping_areas")
+		    .fun<static_cast<bool(Area3D::*)(Node *)const>(&Area3D::overlaps_body)>("overlaps_body")
+		    .fun<static_cast<bool(Area3D::*)(Node *)const>(&Area3D::overlaps_area)>("overlaps_area")
 ;}

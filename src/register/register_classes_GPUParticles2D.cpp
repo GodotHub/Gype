@@ -1,5 +1,6 @@
 #include "register/register_classes.h"
 #include "register/utils.h"
+#include <godot_cpp/classes/gpu_particles2d.hpp>
 
 using namespace godot;
 
@@ -31,8 +32,8 @@ void register_classes_GPUParticles2D() {
            .property<GPUParticles2D::get_trail_lifetime, GPUParticles2D::set_trail_lifetime>("trail_lifetime")
            .property<GPUParticles2D::get_trail_sections, GPUParticles2D::set_trail_sections>("trail_sections")
            .property<GPUParticles2D::get_trail_section_subdivisions, GPUParticles2D::set_trail_section_subdivisions>("trail_section_subdivisions")
-		   .fun<static_cast<Rect2(GPUParticles2D::*)()const>(&GPUParticles2D::capture_rect)>("capture_rect")
-		   .fun<static_cast<void(GPUParticles2D::*)()>(&GPUParticles2D::restart)>("restart")
-		   .fun<static_cast<void(GPUParticles2D::*)(const Transform2D &,const Vector2 &,const Color &,const Color &,uint32_t)>(&GPUParticles2D::emit_particle)>("emit_particle")
-		   .fun<static_cast<void(GPUParticles2D::*)(Node *)>(&GPUParticles2D::convert_from_particles)>("convert_from_particles")
+		    .fun<static_cast<Rect2(GPUParticles2D::*)()const>(&GPUParticles2D::capture_rect)>("capture_rect")
+		    .fun<static_cast<void(GPUParticles2D::*)()>(&GPUParticles2D::restart)>("restart")
+		    .fun<static_cast<void(GPUParticles2D::*)(const Transform2D &,const Vector2 &,const Color &,const Color &,uint32_t)>(&GPUParticles2D::emit_particle)>("emit_particle")
+		    .fun<static_cast<void(GPUParticles2D::*)(Node *)>(&GPUParticles2D::convert_from_particles)>("convert_from_particles")
 ;}
