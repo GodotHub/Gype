@@ -28,7 +28,7 @@ target_include_directories(gype PUBLIC
 	${PROJECT_SOURCE_DIR}/include)
 
 target_compile_options(gype PRIVATE 
-	-fuse-ld=gold
+	-fuse-ld=lld
 	-Wl,--threads)
 
 # 设置库的版本

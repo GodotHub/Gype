@@ -1,0 +1,15 @@
+#ifndef REGISTER_CLASSES
+#define REGISTER_CLASSES
+
+#include "qjspp.hpp"
+
+extern qjs::Context::Module &_Node;
+extern qjs::Context::Module &_Node2D;
+extern qjs::Context::Module &_Node3D;
+extern qjs::Context::Module &_System;
+
+{% for clazz in classes %}
+void register_classes_{{clazz.name}}();
+{% endfor %}
+
+#endif

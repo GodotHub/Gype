@@ -5,7 +5,6 @@ import re
 import shutil
 from pathlib import Path
 import os
-import inspect
 
 def generate_mod_version(argcount, const=False, returns=False):
     s = """

@@ -1,0 +1,47 @@
+#include "register/register_classes.h"
+#include "register/utils.h"
+
+using namespace godot;
+
+void register_classes_{{clazz.name}}() {
+    qjs::Context::Module &_module = _{{clazz.module}};
+    _module.class_<{{clazz.name}}>("{{clazz.name}}")
+           .constructor<>()
+{% if 'properties' in clazz %}
+{% set getter = clazz.properties.getter %}
+{% set setter = clazz.properties.setter %}
+{% for prop in clazz.properties %}
+           .property<{{clazz.name}}::{{prop.getter}}{% if prop.setter %}, {{clazz.name}}::{{prop.setter}}{% endif %}>("{{prop.name}}")
+{% endfor %}
+{% endif %}
+{% for method in clazz.methods %}
+    {% if method.name not in clazz.properties | map(attribute='getter') and method.name not in clazz.properties | map(attribute='setter') %}
+    {% if not method.is_static %}
+		   .fun<static_cast<
+		{%- if method.return_value -%}
+            {%- if method.return_value.meta -%}
+                {{-method.return_value.meta | convert_return_type-}}
+            {%- else -%}
+                {% if 'typedarray::' in method.return_value.type %}
+				{{-method.return_value.type | typedarray_convert-}}
+                {% else %}
+				{{-method.return_value.type | convert_return_type-}}
+                {% endif %}
+            {%- endif -%}
+		{%- else -%}
+				{{-'void'-}}
+		{%- endif -%}
+			{{-'('-}}{{-clazz.name-}}{{-'::*)'-}}
+            {%- if not method.arguments -%}
+            ()
+            {%- else -%}
+            {{-'('-}}{{ method.arguments | convert_types(method.is_vararg) | join(',') }}{{-')'-}}
+            {% endif %}
+		{%- if method.is_const -%}const{%- endif -%}>(&{{clazz.name}}::{{method.name}})>{{-'("'+method.name+'")'}}
+	{% else %}
+            .static_fun<{{clazz.name}}::{{method.name}}>{{-'("'+method.name+'")'}}
+	{% endif %}
+	{% endif %}
+{% endfor %}
+{{-';'-}}
+}
