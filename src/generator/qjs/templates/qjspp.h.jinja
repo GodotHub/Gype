@@ -1,7 +1,7 @@
 #pragma once
 
-#include "qjs/godot_headers.h"
-#include "qjs/quickjs.h"
+#include "godot_headers.hpp"
+#include "quickjs.h"
 
 #include <algorithm>
 #include <cassert>
@@ -32,6 +32,12 @@ namespace qjs {
 
 class Context;
 class Value;
+
+template <typename>
+struct is_bitfield : std::false_type {};
+
+template <typename T>
+struct is_bitfield<godot::BitField<T>> : std::true_type {};
 
 /** Exception type.
  * Indicates that exception has occured in JS context.
@@ -178,7 +184,7 @@ struct js_traits<{{'const' if type.is_const else ''}} {{type.name}}> {
 		{% elif type.is_const %}
 		return JS_ToCString(ctx, v);
 		{% else %}
-		return JS_ToCString(ctx, v);
+		return const_cast<char *>(JS_ToCString(ctx, v));
 		{% endif %}
 	{% else %}
 		{{type.js_name}} r;
@@ -1142,6 +1148,25 @@ struct js_traits<E, std::enable_if_t<std::is_enum_v<E>>> {
 	}
 };
 
+template <typename E>
+struct js_traits<godot::BitField<E>, std::enable_if_t<std::is_enum_v<E>>> {
+	/// @throws exception
+	static E unwrap(JSContext *ctx, JSValueConst v) {
+		if (JS_IsObject(v)) {
+			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
+			if (ptr) {
+				return *(E *)ptr;
+			}
+		} else {
+			JS_ThrowInternalError(ctx, "Value type error");
+		}
+	}
+
+	static JSValue wrap(JSContext *ctx, godot::BitField<E> v) noexcept {
+		return qjs::Value{ ctx, std::move(v) };
+	}
+};
+
 namespace detail {
 /** A faster std::function-like object with type erasure.
  * Used to convert any callable objects (including lambdas) to JSValue.
@@ -1904,6 +1929,66 @@ struct js_traits<godot::{{clazz.name}}> {
 };
 {% endfor %}
 
+{% for clazz in data.classes %}
+	{% if 'VisualShaderNode' not in clazz.name %}
+template <>
+struct js_traits<godot::{{clazz.name}}> {
+	/// @throws exception
+	static godot::{{clazz.name}} unwrap(JSContext *ctx, JSValueConst v) {
+		if (JS_IsObject(v)) {
+			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
+			if (ptr) {
+				return *(godot::{{clazz.name}} *)ptr;
+			}
+		}
+		JS_ThrowInternalError(ctx, "Value type error");
+		throw exception{ ctx };
+	}
+
+	static JSValue wrap(JSContext *ctx, godot::{{clazz.name}} v) noexcept {
+		return Value{ ctx, std::forward<godot::{{clazz.name}}>(v) };
+	}
+};
+template <>
+struct js_traits<godot::{{clazz.name}} &> {
+	/// @throws exception
+	static godot::{{clazz.name}} &unwrap(JSContext *ctx, JSValueConst v) {
+		if (JS_IsObject(v)) {
+			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
+			if (ptr) {
+				return *(godot::{{clazz.name}} *)ptr;
+			}
+		}
+		JS_ThrowInternalError(ctx, "Value type error");
+		throw exception{ ctx };
+	}
+
+	static JSValue wrap(JSContext *ctx, godot::{{clazz.name}} &v) noexcept {
+		return Value{ ctx, std::forward<godot::{{clazz.name}}>(v) };
+	}
+};
+		{% if clazz.is_refcounted %}
+template <>
+struct js_traits<godot::Ref<godot::{{clazz.name}}>> {
+	/// @throws exception
+	static godot::Ref<godot::{{clazz.name}}> unwrap(JSContext *ctx, JSValueConst v) {
+		if (JS_IsObject(v)) {
+			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
+			if (ptr) {
+				return godot::Ref<godot::{{clazz.name}}>((godot::{{clazz.name}} *)ptr);
+			}
+		}
+		JS_ThrowInternalError(ctx, "Value type error");
+		throw exception{ ctx };
+	}
+
+	static JSValue wrap(JSContext *ctx, godot::Ref<godot::{{clazz.name}}> v) noexcept {
+		return Value{ ctx, std::forward<godot::Ref<godot::{{clazz.name}}>>(v) };
+	}
+};
+		{% endif %}
+	{% endif %}
+{% endfor %}
 
 {% for clazz in data['builtin_classes'] %}
     {% if clazz.name in builtin_classes and not is_packed_array(clazz.name) and clazz.name != 'Array' %}
@@ -2014,13 +2099,49 @@ struct js_traits<godot::{{clazz.name}}> {
 		throw exception{ ctx };
 	}
 
-	static JSValue wrap(JSContext *ctx, godot::{{clazz.name}} rid) noexcept {
-		return Value{ ctx, std::forward<godot::{{clazz.name}}>(rid) };
+	static JSValue wrap(JSContext *ctx, godot::{{clazz.name}} v) noexcept {
+		return Value{ ctx, std::forward<godot::{{clazz.name}}>(v) };
 	}
 };
 		{% endif %}
     {% endif %}
 {% endfor %}
+template <typename T>
+struct js_traits<godot::TypedArray<T>> {
+	/// @throws exception
+	static godot::TypedArray<T> unwrap(JSContext *ctx, JSValueConst v) {
+		if (JS_IsObject(v)) {
+			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
+			if (ptr) {
+				return *(godot::TypedArray<T> *)ptr;
+			}
+		}
+		JS_ThrowInternalError(ctx, "Value type error");
+		throw exception{ ctx };
+	}
+
+	static JSValue wrap(JSContext *ctx, godot::TypedArray<T> rid) noexcept {
+		return Value{ ctx, std::forward<godot::TypedArray<T>>(rid) };
+	}
+};
+template <typename T>
+struct js_traits<godot::TypedArray<T> &> {
+	/// @throws exception
+	static godot::TypedArray<T> &unwrap(JSContext *ctx, JSValueConst v) {
+		if (JS_IsObject(v)) {
+			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
+			if (ptr) {
+				return *(godot::TypedArray<T> *)ptr;
+			}
+		}
+		JS_ThrowInternalError(ctx, "Value type error");
+		throw exception{ ctx };
+	}
+
+	static JSValue wrap(JSContext *ctx, godot::TypedArray<T> &v) noexcept {
+		return Value{ ctx, std::forward<godot::TypedArray<T>>(v) };
+	}
+};
 
 /** Conversion traits for Value.
  */

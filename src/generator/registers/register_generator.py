@@ -4,12 +4,14 @@ import sys
 from pathlib import Path
 from binding_generator import is_pod_type, is_included_type, is_packed_array, is_enum, is_bitfield, get_enum_fullname
 import re
+sys.setrecursionlimit(100)
 
 cur_num = 0
 root = '../../..'
 api_file = '../extension_api.json'
 builtin_classes = []
 engine_classes = {}
+refcounted_classes = {}
 converter = {
     'int': 'int64_t',
     'uint32_t': 'uint32_t',
@@ -133,6 +135,67 @@ def convert_paramter_type(types, is_vararg):
         params.append('rest<Variant> args')
     return params
 
+def convert_types(types, is_vararg):
+    def _convert(t):
+        t = t.get('meta', t['type'])
+        if is_pod_type(t):
+            if t == 'float':
+                return 'double'
+            elif t == 'int':
+                return 'int64_t'
+            return t
+        elif is_variant(t):
+            if t.count('typedarray::') > 0:
+                return f'const TypedArray<{t.removeprefix('typedarray::')}> &'
+            else:
+                return f'const {t} &'
+        elif is_enum(t):
+            return get_enum_fullname(t).replace('.', '::')
+        elif t.rfind('&') != -1:
+            at = t.removesuffix('&')
+            if (is_pod_type(at)):
+                return f'const {converter[at]}&'
+            else:
+                return f'const {at}&'
+        elif is_refcounted(t):
+            return f'const Ref<{t}> &'
+        elif t.startswith('_'):
+            return t.removeprefix('_')
+        elif t.count('*') > 0:
+            return t
+        else:
+            return f'{t} *'
+    params = list(map(_convert, types))
+    if is_vararg:
+        params.append('rest<Variant> args')
+    return params
+
+def convert_type(t):
+    if is_pod_type(t):
+        if type == 'float':
+            return 'double'
+        elif type == 'int':
+            return 'int64_t'
+        return t
+    elif is_variant(t):
+        return f'const {t} &'
+    elif is_enum(t):
+        return get_enum_fullname(t).replace('.', '::')
+    elif t.rfind('&') != -1:
+        at = t.removesuffix('&')
+        if (is_pod_type(at)):
+            return f'const {converter[at]}&'
+        else:
+            return f'const {at}&'
+    elif is_refcounted(t):
+        return f'Ref<{t}> &'
+    elif t.startswith('_'):
+        return t.removeprefix('_')
+    elif t.count('*') > 0:
+        return t
+    else:
+        return f'{t} *'
+
 def convert_return_type_t(type):
     if is_pod_type(type):
         return converter[type]
@@ -146,8 +209,35 @@ def convert_return_type_t(type):
             return f'const {converter[at]}&'
         else:
             return f'const {at}&'
+    
     elif type.startswith('_'):
         return type.removeprefix('_')
+    else:
+        return f'{type} *'
+    
+def convert_return_type(type):
+    if is_pod_type(type):
+        if type == 'float':
+            return 'double'
+        elif type == 'int':
+            return 'int64_t'
+        return type
+    elif is_variant(type):
+        return type
+    elif is_enum(type):
+        return get_enum_fullname(type).replace('.', '::')
+    elif type.rfind('&') != -1:
+        at = type.removesuffix('&')
+        if (is_pod_type(at)):
+            return f'const {converter[at]}&'
+        else:
+            return f'const {at}&'
+    elif is_refcounted(type):
+        return f'Ref<{type}>'
+    elif type.startswith('_'):
+        return type.removeprefix('_')
+    elif type.count('*') > 0:
+        return type
     else:
         return f'{type} *'
 
@@ -158,6 +248,19 @@ def is_variant(type_name):
         or type_name == "Nil"
         or type_name.startswith("typedarray::")
     )
+
+def typedarray_convert(type):
+    type = type.removeprefix('typedarray::')
+    return f'TypedArray<{type}>'
+
+def build_tree(classes, clazz):
+    children = clazz.get('children', {})
+    for clz in classes:
+        if clz.get('inherits', None): 
+            if clz['inherits'] == clazz['name']:
+                children[clz['name']] = clz
+                clazz['children'] = children
+                build_tree(classes, clz)
 
 def generate_utility_functions_cpp(env, data):
     template = env.get_template('./utility_functions/utility_functions.cpp.jinja')
@@ -180,6 +283,71 @@ def generate_builtin_classes_cpp(env, data):
         with open(f'{root}/src/register/register_builtin_classes_{clazz['name']}.cpp', 'w') as file:
             file.write(render)
 
+def generate_classes_h(env, data):
+    template = env.get_template('./classes/classes.h.jinja')
+    render = template.render({ 'classes': data })
+    with open(root + '/include/register/register_classes.h', 'w') as file:
+        file.write(render)
+
+def generate_classes_cpp(env, data):
+    obj = data[422]
+    node = data[413]
+    node2d = data[414]
+    node3d = data[415]
+    node['mudule'] = 'System'
+    node['mudule'] = 'Node'
+    node2d['mudule'] = 'Node2D'
+    node3d['mudule'] = 'Node3D'
+    build_tree(data, obj)
+    
+    def _generate(clazz):
+        if clazz['is_instantiable']:
+            template = env.get_template('./classes/classes.cpp.jinja')
+            render = template.render({ 'clazz': clazz })
+            with open(f'{root}/src/register/register_classes_{clazz['name']}.cpp', 'w') as file:
+                file.write(render)
+
+    def _generate_object(clazz):
+        _generate(clazz)
+        children = clazz.get('children', None)
+        if children:
+            for child in children.values():
+                if child['name'] in ['Node', 'RefCounted']:
+                    continue
+                child['module'] = 'System'
+                _generate_object(child)
+
+    def _generate_node(clazz):
+        _generate(clazz)
+        children = clazz.get('children', None)
+        if children:
+            for child in children.values():
+                if child['name'] in ['Node3D', 'CanvasItem']:
+                    continue
+                child['module'] = 'Node'
+                _generate_node(child)
+
+    def _generate_node2d(clazz):
+        _generate(clazz)
+        children = clazz.get('children', None)
+        if children:
+            for child in children.values():
+                child['module'] = 'Node2D'
+                _generate_node2d(child)
+
+    def _generate_node3d(clazz):
+        _generate(clazz)
+        children = clazz.get('children', None)
+        if children:
+            for child in children.values():
+                child['module'] = 'Node3D'
+                _generate_node3d(child)
+
+    _generate_object(obj)
+    _generate_node(node)
+    _generate_node2d(node2d)
+    _generate_node3d(node3d)
+
 def generate_types_cpp(env, data):
     template = env.get_template('./types/register_types.cpp.jinja')
     render = template.render({ 'builtin_classes': filter(lambda clazz: not is_pod_type(clazz['name']), data['builtin_classes']) })
@@ -190,6 +358,7 @@ if __name__ == '__main__':
     env = Environment(loader=FileSystemLoader('templates'), trim_blocks=True, lstrip_blocks=True)
     env.globals['flush_letter'] = flush_letter
     env.globals['is_pod_type'] = is_pod_type
+    env.globals['is_refcounted'] = is_refcounted
     env.globals['regex_test'] = regex_test
     env.globals['get_property_from_method'] = get_property_from_method
     env.filters['add_arr_surfix'] = add_arr_surfix
@@ -197,9 +366,15 @@ if __name__ == '__main__':
     env.filters['increment_num'] = increment_num
     env.filters['convert_paramter_type'] = convert_paramter_type
     env.filters['convert_return_type_t'] = convert_return_type_t
+    env.filters['convert_return_type'] = convert_return_type
+    env.filters['convert_types'] = convert_types
+    env.filters['convert_type'] = convert_type
+    env.filters['typedarray_convert'] = typedarray_convert
     init_engine_classes()
     init_builtin_classes()
     generate_utility_functions_cpp(env, data['utility_functions'])
     generate_builtin_classes_h(env, data['builtin_classes'])
     generate_builtin_classes_cpp(env, data['builtin_classes'])
+    generate_classes_h(env, data['classes'])
+    generate_classes_cpp(env, data['classes'])
     generate_types_cpp(env, data)
