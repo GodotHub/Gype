@@ -1,5 +1,6 @@
 #include "register/register_classes.h"
 #include "register/utils.h"
+#include <godot_cpp/classes/character_body2d.hpp>
 
 using namespace godot;
 
@@ -22,22 +23,22 @@ void register_classes_CharacterBody2D() {
            .property<CharacterBody2D::get_platform_floor_layers, CharacterBody2D::set_platform_floor_layers>("platform_floor_layers")
            .property<CharacterBody2D::get_platform_wall_layers, CharacterBody2D::set_platform_wall_layers>("platform_wall_layers")
            .property<CharacterBody2D::get_safe_margin, CharacterBody2D::set_safe_margin>("safe_margin")
-		   .fun<static_cast<bool(CharacterBody2D::*)()>(&CharacterBody2D::move_and_slide)>("move_and_slide")
-		   .fun<static_cast<void(CharacterBody2D::*)()>(&CharacterBody2D::apply_floor_snap)>("apply_floor_snap")
-		   .fun<static_cast<bool(CharacterBody2D::*)()const>(&CharacterBody2D::is_on_floor)>("is_on_floor")
-		   .fun<static_cast<bool(CharacterBody2D::*)()const>(&CharacterBody2D::is_on_floor_only)>("is_on_floor_only")
-		   .fun<static_cast<bool(CharacterBody2D::*)()const>(&CharacterBody2D::is_on_ceiling)>("is_on_ceiling")
-		   .fun<static_cast<bool(CharacterBody2D::*)()const>(&CharacterBody2D::is_on_ceiling_only)>("is_on_ceiling_only")
-		   .fun<static_cast<bool(CharacterBody2D::*)()const>(&CharacterBody2D::is_on_wall)>("is_on_wall")
-		   .fun<static_cast<bool(CharacterBody2D::*)()const>(&CharacterBody2D::is_on_wall_only)>("is_on_wall_only")
-		   .fun<static_cast<Vector2(CharacterBody2D::*)()const>(&CharacterBody2D::get_floor_normal)>("get_floor_normal")
-		   .fun<static_cast<Vector2(CharacterBody2D::*)()const>(&CharacterBody2D::get_wall_normal)>("get_wall_normal")
-		   .fun<static_cast<Vector2(CharacterBody2D::*)()const>(&CharacterBody2D::get_last_motion)>("get_last_motion")
-		   .fun<static_cast<Vector2(CharacterBody2D::*)()const>(&CharacterBody2D::get_position_delta)>("get_position_delta")
-		   .fun<static_cast<Vector2(CharacterBody2D::*)()const>(&CharacterBody2D::get_real_velocity)>("get_real_velocity")
-		   .fun<static_cast<double(CharacterBody2D::*)(const Vector2 &)const>(&CharacterBody2D::get_floor_angle)>("get_floor_angle")
-		   .fun<static_cast<Vector2(CharacterBody2D::*)()const>(&CharacterBody2D::get_platform_velocity)>("get_platform_velocity")
-		   .fun<static_cast<int32_t(CharacterBody2D::*)()const>(&CharacterBody2D::get_slide_collision_count)>("get_slide_collision_count")
-		   .fun<static_cast<Ref<KinematicCollision2D>(CharacterBody2D::*)(int32_t)>(&CharacterBody2D::get_slide_collision)>("get_slide_collision")
-		   .fun<static_cast<Ref<KinematicCollision2D>(CharacterBody2D::*)()>(&CharacterBody2D::get_last_slide_collision)>("get_last_slide_collision")
+		    .fun<static_cast<bool(CharacterBody2D::*)()>(&CharacterBody2D::move_and_slide)>("move_and_slide")
+		    .fun<static_cast<void(CharacterBody2D::*)()>(&CharacterBody2D::apply_floor_snap)>("apply_floor_snap")
+		    .fun<static_cast<bool(CharacterBody2D::*)()const>(&CharacterBody2D::is_on_floor)>("is_on_floor")
+		    .fun<static_cast<bool(CharacterBody2D::*)()const>(&CharacterBody2D::is_on_floor_only)>("is_on_floor_only")
+		    .fun<static_cast<bool(CharacterBody2D::*)()const>(&CharacterBody2D::is_on_ceiling)>("is_on_ceiling")
+		    .fun<static_cast<bool(CharacterBody2D::*)()const>(&CharacterBody2D::is_on_ceiling_only)>("is_on_ceiling_only")
+		    .fun<static_cast<bool(CharacterBody2D::*)()const>(&CharacterBody2D::is_on_wall)>("is_on_wall")
+		    .fun<static_cast<bool(CharacterBody2D::*)()const>(&CharacterBody2D::is_on_wall_only)>("is_on_wall_only")
+		    .fun<static_cast<Vector2(CharacterBody2D::*)()const>(&CharacterBody2D::get_floor_normal)>("get_floor_normal")
+		    .fun<static_cast<Vector2(CharacterBody2D::*)()const>(&CharacterBody2D::get_wall_normal)>("get_wall_normal")
+		    .fun<static_cast<Vector2(CharacterBody2D::*)()const>(&CharacterBody2D::get_last_motion)>("get_last_motion")
+		    .fun<static_cast<Vector2(CharacterBody2D::*)()const>(&CharacterBody2D::get_position_delta)>("get_position_delta")
+		    .fun<static_cast<Vector2(CharacterBody2D::*)()const>(&CharacterBody2D::get_real_velocity)>("get_real_velocity")
+		    .fun<static_cast<double(CharacterBody2D::*)(const Vector2 &)const>(&CharacterBody2D::get_floor_angle)>("get_floor_angle")
+		    .fun<static_cast<Vector2(CharacterBody2D::*)()const>(&CharacterBody2D::get_platform_velocity)>("get_platform_velocity")
+		    .fun<static_cast<int32_t(CharacterBody2D::*)()const>(&CharacterBody2D::get_slide_collision_count)>("get_slide_collision_count")
+		    .fun<static_cast<Ref<KinematicCollision2D>(CharacterBody2D::*)(int32_t)>(&CharacterBody2D::get_slide_collision)>("get_slide_collision")
+		    .fun<static_cast<Ref<KinematicCollision2D>(CharacterBody2D::*)()>(&CharacterBody2D::get_last_slide_collision)>("get_last_slide_collision")
 ;}

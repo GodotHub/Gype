@@ -1,5 +1,6 @@
 #include "register/register_classes.h"
 #include "register/utils.h"
+#include <godot_cpp/classes/damped_spring_joint2d.hpp>
 
 using namespace godot;
 

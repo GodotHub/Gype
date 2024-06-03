@@ -1,7 +1,7 @@
 from jinja2 import FileSystemLoader, Environment
 import json,sys
 from pathlib import Path
-from binding_generator import is_pod_type, is_included_struct_type, is_packed_array, get_enum_fullname
+from binding_generator import is_pod_type, is_included_struct_type, is_packed_array, get_enum_fullname, is_variant
 
 root = '../../..'
 builtin_classes = []

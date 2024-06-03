@@ -1,5 +1,6 @@
 #include "register/register_classes.h"
 #include "register/utils.h"
+#include <godot_cpp/classes/camera2d.hpp>
 
 using namespace godot;
 
@@ -34,11 +35,11 @@ void register_classes_Camera2D() {
            .property<Camera2D::is_screen_drawing_enabled, Camera2D::set_screen_drawing_enabled>("editor_draw_screen")
            .property<Camera2D::is_limit_drawing_enabled, Camera2D::set_limit_drawing_enabled>("editor_draw_limits")
            .property<Camera2D::is_margin_drawing_enabled, Camera2D::set_margin_drawing_enabled>("editor_draw_drag_margin")
-		   .fun<static_cast<void(Camera2D::*)()>(&Camera2D::make_current)>("make_current")
-		   .fun<static_cast<bool(Camera2D::*)()const>(&Camera2D::is_current)>("is_current")
-		   .fun<static_cast<Vector2(Camera2D::*)()const>(&Camera2D::get_target_position)>("get_target_position")
-		   .fun<static_cast<Vector2(Camera2D::*)()const>(&Camera2D::get_screen_center_position)>("get_screen_center_position")
-		   .fun<static_cast<void(Camera2D::*)()>(&Camera2D::force_update_scroll)>("force_update_scroll")
-		   .fun<static_cast<void(Camera2D::*)()>(&Camera2D::reset_smoothing)>("reset_smoothing")
-		   .fun<static_cast<void(Camera2D::*)()>(&Camera2D::align)>("align")
+		    .fun<static_cast<void(Camera2D::*)()>(&Camera2D::make_current)>("make_current")
+		    .fun<static_cast<bool(Camera2D::*)()const>(&Camera2D::is_current)>("is_current")
+		    .fun<static_cast<Vector2(Camera2D::*)()const>(&Camera2D::get_target_position)>("get_target_position")
+		    .fun<static_cast<Vector2(Camera2D::*)()const>(&Camera2D::get_screen_center_position)>("get_screen_center_position")
+		    .fun<static_cast<void(Camera2D::*)()>(&Camera2D::force_update_scroll)>("force_update_scroll")
+		    .fun<static_cast<void(Camera2D::*)()>(&Camera2D::reset_smoothing)>("reset_smoothing")
+		    .fun<static_cast<void(Camera2D::*)()>(&Camera2D::align)>("align")
 ;}

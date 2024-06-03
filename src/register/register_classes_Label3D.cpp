@@ -1,5 +1,6 @@
 #include "register/register_classes.h"
 #include "register/utils.h"
+#include <godot_cpp/classes/label3d.hpp>
 
 using namespace godot;
 
@@ -39,5 +40,5 @@ void register_classes_Label3D() {
            .property<Label3D::get_language, Label3D::set_language>("language")
            .property<Label3D::get_structured_text_bidi_override, Label3D::set_structured_text_bidi_override>("structured_text_bidi_override")
            .property<Label3D::get_structured_text_bidi_override_options, Label3D::set_structured_text_bidi_override_options>("structured_text_bidi_override_options")
-		   .fun<static_cast<Ref<TriangleMesh>(Label3D::*)()const>(&Label3D::generate_triangle_mesh)>("generate_triangle_mesh")
+		    .fun<static_cast<Ref<TriangleMesh>(Label3D::*)()const>(&Label3D::generate_triangle_mesh)>("generate_triangle_mesh")
 ;}

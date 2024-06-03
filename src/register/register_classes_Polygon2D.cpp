@@ -1,5 +1,6 @@
 #include "register/register_classes.h"
 #include "register/utils.h"
+#include <godot_cpp/classes/polygon2d.hpp>
 
 using namespace godot;
 
@@ -23,12 +24,12 @@ void register_classes_Polygon2D() {
            .property<Polygon2D::get_polygons, Polygon2D::set_polygons>("polygons")
            .property<Polygon2D::_get_bones, Polygon2D::_set_bones>("bones")
            .property<Polygon2D::get_internal_vertex_count, Polygon2D::set_internal_vertex_count>("internal_vertex_count")
-		   .fun<static_cast<void(Polygon2D::*)(const NodePath &,const PackedFloat32Array &)>(&Polygon2D::add_bone)>("add_bone")
-		   .fun<static_cast<int32_t(Polygon2D::*)()const>(&Polygon2D::get_bone_count)>("get_bone_count")
-		   .fun<static_cast<NodePath(Polygon2D::*)(int32_t)const>(&Polygon2D::get_bone_path)>("get_bone_path")
-		   .fun<static_cast<PackedFloat32Array(Polygon2D::*)(int32_t)const>(&Polygon2D::get_bone_weights)>("get_bone_weights")
-		   .fun<static_cast<void(Polygon2D::*)(int32_t)>(&Polygon2D::erase_bone)>("erase_bone")
-		   .fun<static_cast<void(Polygon2D::*)()>(&Polygon2D::clear_bones)>("clear_bones")
-		   .fun<static_cast<void(Polygon2D::*)(int32_t,const NodePath &)>(&Polygon2D::set_bone_path)>("set_bone_path")
-		   .fun<static_cast<void(Polygon2D::*)(int32_t,const PackedFloat32Array &)>(&Polygon2D::set_bone_weights)>("set_bone_weights")
+		    .fun<static_cast<void(Polygon2D::*)(const NodePath &,const PackedFloat32Array &)>(&Polygon2D::add_bone)>("add_bone")
+		    .fun<static_cast<int32_t(Polygon2D::*)()const>(&Polygon2D::get_bone_count)>("get_bone_count")
+		    .fun<static_cast<NodePath(Polygon2D::*)(int32_t)const>(&Polygon2D::get_bone_path)>("get_bone_path")
+		    .fun<static_cast<PackedFloat32Array(Polygon2D::*)(int32_t)const>(&Polygon2D::get_bone_weights)>("get_bone_weights")
+		    .fun<static_cast<void(Polygon2D::*)(int32_t)>(&Polygon2D::erase_bone)>("erase_bone")
+		    .fun<static_cast<void(Polygon2D::*)()>(&Polygon2D::clear_bones)>("clear_bones")
+		    .fun<static_cast<void(Polygon2D::*)(int32_t,const NodePath &)>(&Polygon2D::set_bone_path)>("set_bone_path")
+		    .fun<static_cast<void(Polygon2D::*)(int32_t,const PackedFloat32Array &)>(&Polygon2D::set_bone_weights)>("set_bone_weights")
 ;}

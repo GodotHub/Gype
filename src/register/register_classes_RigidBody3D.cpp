@@ -1,5 +1,6 @@
 #include "register/register_classes.h"
 #include "register/utils.h"
+#include <godot_cpp/classes/rigid_body3d.hpp>
 
 using namespace godot;
 
@@ -30,18 +31,18 @@ void register_classes_RigidBody3D() {
            .property<RigidBody3D::get_angular_damp, RigidBody3D::set_angular_damp>("angular_damp")
            .property<RigidBody3D::get_constant_force, RigidBody3D::set_constant_force>("constant_force")
            .property<RigidBody3D::get_constant_torque, RigidBody3D::set_constant_torque>("constant_torque")
-		   .fun<static_cast<void(RigidBody3D::*)(PhysicsDirectBodyState3D *)>(&RigidBody3D::_integrate_forces)>("_integrate_forces")
-		   .fun<static_cast<Basis(RigidBody3D::*)()const>(&RigidBody3D::get_inverse_inertia_tensor)>("get_inverse_inertia_tensor")
-		   .fun<static_cast<int32_t(RigidBody3D::*)()const>(&RigidBody3D::get_contact_count)>("get_contact_count")
-		   .fun<static_cast<void(RigidBody3D::*)(const Vector3 &)>(&RigidBody3D::set_axis_velocity)>("set_axis_velocity")
-		   .fun<static_cast<void(RigidBody3D::*)(const Vector3 &)>(&RigidBody3D::apply_central_impulse)>("apply_central_impulse")
-		   .fun<static_cast<void(RigidBody3D::*)(const Vector3 &,const Vector3 &)>(&RigidBody3D::apply_impulse)>("apply_impulse")
-		   .fun<static_cast<void(RigidBody3D::*)(const Vector3 &)>(&RigidBody3D::apply_torque_impulse)>("apply_torque_impulse")
-		   .fun<static_cast<void(RigidBody3D::*)(const Vector3 &)>(&RigidBody3D::apply_central_force)>("apply_central_force")
-		   .fun<static_cast<void(RigidBody3D::*)(const Vector3 &,const Vector3 &)>(&RigidBody3D::apply_force)>("apply_force")
-		   .fun<static_cast<void(RigidBody3D::*)(const Vector3 &)>(&RigidBody3D::apply_torque)>("apply_torque")
-		   .fun<static_cast<void(RigidBody3D::*)(const Vector3 &)>(&RigidBody3D::add_constant_central_force)>("add_constant_central_force")
-		   .fun<static_cast<void(RigidBody3D::*)(const Vector3 &,const Vector3 &)>(&RigidBody3D::add_constant_force)>("add_constant_force")
-		   .fun<static_cast<void(RigidBody3D::*)(const Vector3 &)>(&RigidBody3D::add_constant_torque)>("add_constant_torque")
-		   .fun<static_cast<TypedArray<Node3D>(RigidBody3D::*)()const>(&RigidBody3D::get_colliding_bodies)>("get_colliding_bodies")
+		    .fun<static_cast<void(RigidBody3D::*)(PhysicsDirectBodyState3D *)>(&RigidBody3D::_integrate_forces)>("_integrate_forces")
+		    .fun<static_cast<Basis(RigidBody3D::*)()const>(&RigidBody3D::get_inverse_inertia_tensor)>("get_inverse_inertia_tensor")
+		    .fun<static_cast<int32_t(RigidBody3D::*)()const>(&RigidBody3D::get_contact_count)>("get_contact_count")
+		    .fun<static_cast<void(RigidBody3D::*)(const Vector3 &)>(&RigidBody3D::set_axis_velocity)>("set_axis_velocity")
+		    .fun<static_cast<void(RigidBody3D::*)(const Vector3 &)>(&RigidBody3D::apply_central_impulse)>("apply_central_impulse")
+		    .fun<static_cast<void(RigidBody3D::*)(const Vector3 &,const Vector3 &)>(&RigidBody3D::apply_impulse)>("apply_impulse")
+		    .fun<static_cast<void(RigidBody3D::*)(const Vector3 &)>(&RigidBody3D::apply_torque_impulse)>("apply_torque_impulse")
+		    .fun<static_cast<void(RigidBody3D::*)(const Vector3 &)>(&RigidBody3D::apply_central_force)>("apply_central_force")
+		    .fun<static_cast<void(RigidBody3D::*)(const Vector3 &,const Vector3 &)>(&RigidBody3D::apply_force)>("apply_force")
+		    .fun<static_cast<void(RigidBody3D::*)(const Vector3 &)>(&RigidBody3D::apply_torque)>("apply_torque")
+		    .fun<static_cast<void(RigidBody3D::*)(const Vector3 &)>(&RigidBody3D::add_constant_central_force)>("add_constant_central_force")
+		    .fun<static_cast<void(RigidBody3D::*)(const Vector3 &,const Vector3 &)>(&RigidBody3D::add_constant_force)>("add_constant_force")
+		    .fun<static_cast<void(RigidBody3D::*)(const Vector3 &)>(&RigidBody3D::add_constant_torque)>("add_constant_torque")
+		    .fun<static_cast<TypedArray<Node3D>(RigidBody3D::*)()const>(&RigidBody3D::get_colliding_bodies)>("get_colliding_bodies")
 ;}

@@ -5,7 +5,6 @@ from pathlib import Path
 from binding_generator import is_pod_type, is_included_type, is_packed_array, is_enum, is_bitfield, get_enum_fullname
 import re
 sys.setrecursionlimit(100)
-
 cur_num = 0
 root = '../../..'
 api_file = '../extension_api.json'
@@ -253,6 +252,9 @@ def typedarray_convert(type):
     type = type.removeprefix('typedarray::')
     return f'TypedArray<{type}>'
 
+def camel_to_snake(name):
+    return re.sub(r'(?<=[a-z])[A-Z]|(?<!^)[A-Z](?=[a-z])', r'_\g<0>', name).lower()
+
 def build_tree(classes, clazz):
     children = clazz.get('children', {})
     for clz in classes:
@@ -293,31 +295,29 @@ def generate_classes_cpp(env, data):
     obj = data[422]
     node = data[413]
     node2d = data[414]
+    control = data[163]
     node3d = data[415]
-    node['mudule'] = 'System'
-    node['mudule'] = 'Node'
-    node2d['mudule'] = 'Node2D'
-    node3d['mudule'] = 'Node3D'
     build_tree(data, obj)
-    
     def _generate(clazz):
-        if clazz['is_instantiable']:
+        if clazz['is_instantiable'] and 'VisualShaderNode' not in clazz['name']:
             template = env.get_template('./classes/classes.cpp.jinja')
             render = template.render({ 'clazz': clazz })
             with open(f'{root}/src/register/register_classes_{clazz['name']}.cpp', 'w') as file:
                 file.write(render)
 
     def _generate_object(clazz):
+        clazz['module'] = 'General'
         _generate(clazz)
         children = clazz.get('children', None)
         if children:
             for child in children.values():
-                if child['name'] in ['Node', 'RefCounted']:
+                if child['name'] in ['Node']:
                     continue
-                child['module'] = 'System'
+                child['module'] = 'General'
                 _generate_object(child)
 
     def _generate_node(clazz):
+        clazz['module'] = 'Node'
         _generate(clazz)
         children = clazz.get('children', None)
         if children:
@@ -328,14 +328,25 @@ def generate_classes_cpp(env, data):
                 _generate_node(child)
 
     def _generate_node2d(clazz):
+        clazz['module'] = 'Node2D'
         _generate(clazz)
         children = clazz.get('children', None)
         if children:
             for child in children.values():
                 child['module'] = 'Node2D'
-                _generate_node2d(child)
+                _generate_node2d(child)    
+
+    def _generate_control(clazz):
+        clazz['module'] = 'Control'
+        _generate(clazz)
+        children = clazz.get('children', None)
+        if children:
+            for child in children.values():
+                child['module'] = 'Control'
+                _generate_control(child)
 
     def _generate_node3d(clazz):
+        clazz['module'] = 'Node3D'
         _generate(clazz)
         children = clazz.get('children', None)
         if children:
@@ -346,6 +357,7 @@ def generate_classes_cpp(env, data):
     _generate_object(obj)
     _generate_node(node)
     _generate_node2d(node2d)
+    _generate_control(control)
     _generate_node3d(node3d)
 
 def generate_types_cpp(env, data):
@@ -370,6 +382,7 @@ if __name__ == '__main__':
     env.filters['convert_types'] = convert_types
     env.filters['convert_type'] = convert_type
     env.filters['typedarray_convert'] = typedarray_convert
+    env.filters['camel_to_snake'] = camel_to_snake
     init_engine_classes()
     init_builtin_classes()
     generate_utility_functions_cpp(env, data['utility_functions'])

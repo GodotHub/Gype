@@ -1,5 +1,6 @@
 #include "register/register_classes.h"
 #include "register/utils.h"
+#include <godot_cpp/classes/skeleton_ik3d.hpp>
 
 using namespace godot;
 
@@ -17,8 +18,8 @@ void register_classes_SkeletonIK3D() {
            .property<SkeletonIK3D::get_target_node, SkeletonIK3D::set_target_node>("target_node")
            .property<SkeletonIK3D::get_min_distance, SkeletonIK3D::set_min_distance>("min_distance")
            .property<SkeletonIK3D::get_max_iterations, SkeletonIK3D::set_max_iterations>("max_iterations")
-		   .fun<static_cast<Skeleton3D *(SkeletonIK3D::*)()const>(&SkeletonIK3D::get_parent_skeleton)>("get_parent_skeleton")
-		   .fun<static_cast<bool(SkeletonIK3D::*)()>(&SkeletonIK3D::is_running)>("is_running")
-		   .fun<static_cast<void(SkeletonIK3D::*)(bool)>(&SkeletonIK3D::start)>("start")
-		   .fun<static_cast<void(SkeletonIK3D::*)()>(&SkeletonIK3D::stop)>("stop")
+		    .fun<static_cast<Skeleton3D *(SkeletonIK3D::*)()const>(&SkeletonIK3D::get_parent_skeleton)>("get_parent_skeleton")
+		    .fun<static_cast<bool(SkeletonIK3D::*)()>(&SkeletonIK3D::is_running)>("is_running")
+		    .fun<static_cast<void(SkeletonIK3D::*)(bool)>(&SkeletonIK3D::start)>("start")
+		    .fun<static_cast<void(SkeletonIK3D::*)()>(&SkeletonIK3D::stop)>("stop")
 ;}

@@ -1,5 +1,6 @@
 #include "register/register_classes.h"
 #include "register/utils.h"
+#include <godot_cpp/classes/soft_body3d.hpp>
 
 using namespace godot;
 
@@ -18,15 +19,15 @@ void register_classes_SoftBody3D() {
            .property<SoftBody3D::get_drag_coefficient, SoftBody3D::set_drag_coefficient>("drag_coefficient")
            .property<SoftBody3D::is_ray_pickable, SoftBody3D::set_ray_pickable>("ray_pickable")
            .property<SoftBody3D::get_disable_mode, SoftBody3D::set_disable_mode>("disable_mode")
-		   .fun<static_cast<RID(SoftBody3D::*)()const>(&SoftBody3D::get_physics_rid)>("get_physics_rid")
-		   .fun<static_cast<void(SoftBody3D::*)(int32_t,bool)>(&SoftBody3D::set_collision_mask_value)>("set_collision_mask_value")
-		   .fun<static_cast<bool(SoftBody3D::*)(int32_t)const>(&SoftBody3D::get_collision_mask_value)>("get_collision_mask_value")
-		   .fun<static_cast<void(SoftBody3D::*)(int32_t,bool)>(&SoftBody3D::set_collision_layer_value)>("set_collision_layer_value")
-		   .fun<static_cast<bool(SoftBody3D::*)(int32_t)const>(&SoftBody3D::get_collision_layer_value)>("get_collision_layer_value")
-		   .fun<static_cast<TypedArray<PhysicsBody3D>(SoftBody3D::*)()>(&SoftBody3D::get_collision_exceptions)>("get_collision_exceptions")
-		   .fun<static_cast<void(SoftBody3D::*)(Node *)>(&SoftBody3D::add_collision_exception_with)>("add_collision_exception_with")
-		   .fun<static_cast<void(SoftBody3D::*)(Node *)>(&SoftBody3D::remove_collision_exception_with)>("remove_collision_exception_with")
-		   .fun<static_cast<Vector3(SoftBody3D::*)(int32_t)>(&SoftBody3D::get_point_transform)>("get_point_transform")
-		   .fun<static_cast<void(SoftBody3D::*)(int32_t,bool,const NodePath &)>(&SoftBody3D::set_point_pinned)>("set_point_pinned")
-		   .fun<static_cast<bool(SoftBody3D::*)(int32_t)const>(&SoftBody3D::is_point_pinned)>("is_point_pinned")
+		    .fun<static_cast<RID(SoftBody3D::*)()const>(&SoftBody3D::get_physics_rid)>("get_physics_rid")
+		    .fun<static_cast<void(SoftBody3D::*)(int32_t,bool)>(&SoftBody3D::set_collision_mask_value)>("set_collision_mask_value")
+		    .fun<static_cast<bool(SoftBody3D::*)(int32_t)const>(&SoftBody3D::get_collision_mask_value)>("get_collision_mask_value")
+		    .fun<static_cast<void(SoftBody3D::*)(int32_t,bool)>(&SoftBody3D::set_collision_layer_value)>("set_collision_layer_value")
+		    .fun<static_cast<bool(SoftBody3D::*)(int32_t)const>(&SoftBody3D::get_collision_layer_value)>("get_collision_layer_value")
+		    .fun<static_cast<TypedArray<PhysicsBody3D>(SoftBody3D::*)()>(&SoftBody3D::get_collision_exceptions)>("get_collision_exceptions")
+		    .fun<static_cast<void(SoftBody3D::*)(Node *)>(&SoftBody3D::add_collision_exception_with)>("add_collision_exception_with")
+		    .fun<static_cast<void(SoftBody3D::*)(Node *)>(&SoftBody3D::remove_collision_exception_with)>("remove_collision_exception_with")
+		    .fun<static_cast<Vector3(SoftBody3D::*)(int32_t)>(&SoftBody3D::get_point_transform)>("get_point_transform")
+		    .fun<static_cast<void(SoftBody3D::*)(int32_t,bool,const NodePath &)>(&SoftBody3D::set_point_pinned)>("set_point_pinned")
+		    .fun<static_cast<bool(SoftBody3D::*)(int32_t)const>(&SoftBody3D::is_point_pinned)>("is_point_pinned")
 ;}

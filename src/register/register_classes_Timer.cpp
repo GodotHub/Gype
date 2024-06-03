@@ -1,5 +1,6 @@
 #include "register/register_classes.h"
 #include "register/utils.h"
+#include <godot_cpp/classes/timer.hpp>
 
 using namespace godot;
 
@@ -13,7 +14,7 @@ void register_classes_Timer() {
            .property<Timer::has_autostart, Timer::set_autostart>("autostart")
            .property<Timer::is_paused, Timer::set_paused>("paused")
            .property<Timer::get_time_left>("time_left")
-		   .fun<static_cast<void(Timer::*)(double)>(&Timer::start)>("start")
-		   .fun<static_cast<void(Timer::*)()>(&Timer::stop)>("stop")
-		   .fun<static_cast<bool(Timer::*)()const>(&Timer::is_stopped)>("is_stopped")
+		    .fun<static_cast<void(Timer::*)(double)>(&Timer::start)>("start")
+		    .fun<static_cast<void(Timer::*)()>(&Timer::stop)>("stop")
+		    .fun<static_cast<bool(Timer::*)()const>(&Timer::is_stopped)>("is_stopped")
 ;}

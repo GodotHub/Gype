@@ -1,5 +1,6 @@
 #include "register/register_classes.h"
 #include "register/utils.h"
+#include <godot_cpp/classes/rigid_body2d.hpp>
 
 using namespace godot;
 
@@ -30,17 +31,17 @@ void register_classes_RigidBody2D() {
            .property<RigidBody2D::get_angular_damp, RigidBody2D::set_angular_damp>("angular_damp")
            .property<RigidBody2D::get_constant_force, RigidBody2D::set_constant_force>("constant_force")
            .property<RigidBody2D::get_constant_torque, RigidBody2D::set_constant_torque>("constant_torque")
-		   .fun<static_cast<void(RigidBody2D::*)(PhysicsDirectBodyState2D *)>(&RigidBody2D::_integrate_forces)>("_integrate_forces")
-		   .fun<static_cast<int32_t(RigidBody2D::*)()const>(&RigidBody2D::get_contact_count)>("get_contact_count")
-		   .fun<static_cast<void(RigidBody2D::*)(const Vector2 &)>(&RigidBody2D::set_axis_velocity)>("set_axis_velocity")
-		   .fun<static_cast<void(RigidBody2D::*)(const Vector2 &)>(&RigidBody2D::apply_central_impulse)>("apply_central_impulse")
-		   .fun<static_cast<void(RigidBody2D::*)(const Vector2 &,const Vector2 &)>(&RigidBody2D::apply_impulse)>("apply_impulse")
-		   .fun<static_cast<void(RigidBody2D::*)(double)>(&RigidBody2D::apply_torque_impulse)>("apply_torque_impulse")
-		   .fun<static_cast<void(RigidBody2D::*)(const Vector2 &)>(&RigidBody2D::apply_central_force)>("apply_central_force")
-		   .fun<static_cast<void(RigidBody2D::*)(const Vector2 &,const Vector2 &)>(&RigidBody2D::apply_force)>("apply_force")
-		   .fun<static_cast<void(RigidBody2D::*)(double)>(&RigidBody2D::apply_torque)>("apply_torque")
-		   .fun<static_cast<void(RigidBody2D::*)(const Vector2 &)>(&RigidBody2D::add_constant_central_force)>("add_constant_central_force")
-		   .fun<static_cast<void(RigidBody2D::*)(const Vector2 &,const Vector2 &)>(&RigidBody2D::add_constant_force)>("add_constant_force")
-		   .fun<static_cast<void(RigidBody2D::*)(double)>(&RigidBody2D::add_constant_torque)>("add_constant_torque")
-		   .fun<static_cast<TypedArray<Node2D>(RigidBody2D::*)()const>(&RigidBody2D::get_colliding_bodies)>("get_colliding_bodies")
+		    .fun<static_cast<void(RigidBody2D::*)(PhysicsDirectBodyState2D *)>(&RigidBody2D::_integrate_forces)>("_integrate_forces")
+		    .fun<static_cast<int32_t(RigidBody2D::*)()const>(&RigidBody2D::get_contact_count)>("get_contact_count")
+		    .fun<static_cast<void(RigidBody2D::*)(const Vector2 &)>(&RigidBody2D::set_axis_velocity)>("set_axis_velocity")
+		    .fun<static_cast<void(RigidBody2D::*)(const Vector2 &)>(&RigidBody2D::apply_central_impulse)>("apply_central_impulse")
+		    .fun<static_cast<void(RigidBody2D::*)(const Vector2 &,const Vector2 &)>(&RigidBody2D::apply_impulse)>("apply_impulse")
+		    .fun<static_cast<void(RigidBody2D::*)(double)>(&RigidBody2D::apply_torque_impulse)>("apply_torque_impulse")
+		    .fun<static_cast<void(RigidBody2D::*)(const Vector2 &)>(&RigidBody2D::apply_central_force)>("apply_central_force")
+		    .fun<static_cast<void(RigidBody2D::*)(const Vector2 &,const Vector2 &)>(&RigidBody2D::apply_force)>("apply_force")
+		    .fun<static_cast<void(RigidBody2D::*)(double)>(&RigidBody2D::apply_torque)>("apply_torque")
+		    .fun<static_cast<void(RigidBody2D::*)(const Vector2 &)>(&RigidBody2D::add_constant_central_force)>("add_constant_central_force")
+		    .fun<static_cast<void(RigidBody2D::*)(const Vector2 &,const Vector2 &)>(&RigidBody2D::add_constant_force)>("add_constant_force")
+		    .fun<static_cast<void(RigidBody2D::*)(double)>(&RigidBody2D::add_constant_torque)>("add_constant_torque")
+		    .fun<static_cast<TypedArray<Node2D>(RigidBody2D::*)()const>(&RigidBody2D::get_colliding_bodies)>("get_colliding_bodies")
 ;}

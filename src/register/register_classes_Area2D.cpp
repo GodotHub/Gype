@@ -1,5 +1,6 @@
 #include "register/register_classes.h"
 #include "register/utils.h"
+#include <godot_cpp/classes/area2d.hpp>
 
 using namespace godot;
 
@@ -22,10 +23,10 @@ void register_classes_Area2D() {
            .property<Area2D::get_angular_damp, Area2D::set_angular_damp>("angular_damp")
            .property<Area2D::is_overriding_audio_bus, Area2D::set_audio_bus_override>("audio_bus_override")
            .property<Area2D::get_audio_bus_name, Area2D::set_audio_bus_name>("audio_bus_name")
-		   .fun<static_cast<TypedArray<Node2D>(Area2D::*)()const>(&Area2D::get_overlapping_bodies)>("get_overlapping_bodies")
-		   .fun<static_cast<TypedArray<Area2D>(Area2D::*)()const>(&Area2D::get_overlapping_areas)>("get_overlapping_areas")
-		   .fun<static_cast<bool(Area2D::*)()const>(&Area2D::has_overlapping_bodies)>("has_overlapping_bodies")
-		   .fun<static_cast<bool(Area2D::*)()const>(&Area2D::has_overlapping_areas)>("has_overlapping_areas")
-		   .fun<static_cast<bool(Area2D::*)(Node *)const>(&Area2D::overlaps_body)>("overlaps_body")
-		   .fun<static_cast<bool(Area2D::*)(Node *)const>(&Area2D::overlaps_area)>("overlaps_area")
+		    .fun<static_cast<TypedArray<Node2D>(Area2D::*)()const>(&Area2D::get_overlapping_bodies)>("get_overlapping_bodies")
+		    .fun<static_cast<TypedArray<Area2D>(Area2D::*)()const>(&Area2D::get_overlapping_areas)>("get_overlapping_areas")
+		    .fun<static_cast<bool(Area2D::*)()const>(&Area2D::has_overlapping_bodies)>("has_overlapping_bodies")
+		    .fun<static_cast<bool(Area2D::*)()const>(&Area2D::has_overlapping_areas)>("has_overlapping_areas")
+		    .fun<static_cast<bool(Area2D::*)(Node *)const>(&Area2D::overlaps_body)>("overlaps_body")
+		    .fun<static_cast<bool(Area2D::*)(Node *)const>(&Area2D::overlaps_area)>("overlaps_area")
 ;}

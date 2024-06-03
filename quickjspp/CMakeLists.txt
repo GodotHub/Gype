@@ -12,7 +12,5 @@ target_include_directories(quickjspp INTERFACE ${PROJECT_SOURCE_DIR}/include)
 
 target_link_libraries(quickjspp INTERFACE quickjs)
 
-target_precompile_headers(quickjspp INTERFACE ${PROJECT_SOURCE_DIR}/include/godot_headers.hpp)
-
 target_compile_options(quickjspp INTERFACE -Wa,-mbig-obj)
 

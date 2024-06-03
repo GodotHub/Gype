@@ -1,5 +1,6 @@
 #include "register/register_classes.h"
 #include "register/utils.h"
+#include <godot_cpp/classes/audio_stream_player3d.hpp>
 
 using namespace godot;
 
@@ -27,10 +28,10 @@ void register_classes_AudioStreamPlayer3D() {
            .property<AudioStreamPlayer3D::get_attenuation_filter_cutoff_hz, AudioStreamPlayer3D::set_attenuation_filter_cutoff_hz>("attenuation_filter_cutoff_hz")
            .property<AudioStreamPlayer3D::get_attenuation_filter_db, AudioStreamPlayer3D::set_attenuation_filter_db>("attenuation_filter_db")
            .property<AudioStreamPlayer3D::get_doppler_tracking, AudioStreamPlayer3D::set_doppler_tracking>("doppler_tracking")
-		   .fun<static_cast<void(AudioStreamPlayer3D::*)(double)>(&AudioStreamPlayer3D::play)>("play")
-		   .fun<static_cast<void(AudioStreamPlayer3D::*)(double)>(&AudioStreamPlayer3D::seek)>("seek")
-		   .fun<static_cast<void(AudioStreamPlayer3D::*)()>(&AudioStreamPlayer3D::stop)>("stop")
-		   .fun<static_cast<double(AudioStreamPlayer3D::*)()>(&AudioStreamPlayer3D::get_playback_position)>("get_playback_position")
-		   .fun<static_cast<bool(AudioStreamPlayer3D::*)()>(&AudioStreamPlayer3D::has_stream_playback)>("has_stream_playback")
-		   .fun<static_cast<Ref<AudioStreamPlayback>(AudioStreamPlayer3D::*)()>(&AudioStreamPlayer3D::get_stream_playback)>("get_stream_playback")
+		    .fun<static_cast<void(AudioStreamPlayer3D::*)(double)>(&AudioStreamPlayer3D::play)>("play")
+		    .fun<static_cast<void(AudioStreamPlayer3D::*)(double)>(&AudioStreamPlayer3D::seek)>("seek")
+		    .fun<static_cast<void(AudioStreamPlayer3D::*)()>(&AudioStreamPlayer3D::stop)>("stop")
+		    .fun<static_cast<double(AudioStreamPlayer3D::*)()>(&AudioStreamPlayer3D::get_playback_position)>("get_playback_position")
+		    .fun<static_cast<bool(AudioStreamPlayer3D::*)()>(&AudioStreamPlayer3D::has_stream_playback)>("has_stream_playback")
+		    .fun<static_cast<Ref<AudioStreamPlayback>(AudioStreamPlayer3D::*)()>(&AudioStreamPlayer3D::get_stream_playback)>("get_stream_playback")
 ;}

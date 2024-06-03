@@ -1,5 +1,6 @@
 #include "register/register_classes.h"
 #include "register/utils.h"
+#include <godot_cpp/classes/audio_stream_player.hpp>
 
 using namespace godot;
 
@@ -16,10 +17,10 @@ void register_classes_AudioStreamPlayer() {
            .property<AudioStreamPlayer::get_mix_target, AudioStreamPlayer::set_mix_target>("mix_target")
            .property<AudioStreamPlayer::get_max_polyphony, AudioStreamPlayer::set_max_polyphony>("max_polyphony")
            .property<AudioStreamPlayer::get_bus, AudioStreamPlayer::set_bus>("bus")
-		   .fun<static_cast<void(AudioStreamPlayer::*)(double)>(&AudioStreamPlayer::play)>("play")
-		   .fun<static_cast<void(AudioStreamPlayer::*)(double)>(&AudioStreamPlayer::seek)>("seek")
-		   .fun<static_cast<void(AudioStreamPlayer::*)()>(&AudioStreamPlayer::stop)>("stop")
-		   .fun<static_cast<double(AudioStreamPlayer::*)()>(&AudioStreamPlayer::get_playback_position)>("get_playback_position")
-		   .fun<static_cast<bool(AudioStreamPlayer::*)()>(&AudioStreamPlayer::has_stream_playback)>("has_stream_playback")
-		   .fun<static_cast<Ref<AudioStreamPlayback>(AudioStreamPlayer::*)()>(&AudioStreamPlayer::get_stream_playback)>("get_stream_playback")
+		    .fun<static_cast<void(AudioStreamPlayer::*)(double)>(&AudioStreamPlayer::play)>("play")
+		    .fun<static_cast<void(AudioStreamPlayer::*)(double)>(&AudioStreamPlayer::seek)>("seek")
+		    .fun<static_cast<void(AudioStreamPlayer::*)()>(&AudioStreamPlayer::stop)>("stop")
+		    .fun<static_cast<double(AudioStreamPlayer::*)()>(&AudioStreamPlayer::get_playback_position)>("get_playback_position")
+		    .fun<static_cast<bool(AudioStreamPlayer::*)()>(&AudioStreamPlayer::has_stream_playback)>("has_stream_playback")
+		    .fun<static_cast<Ref<AudioStreamPlayback>(AudioStreamPlayer::*)()>(&AudioStreamPlayer::get_stream_playback)>("get_stream_playback")
 ;}

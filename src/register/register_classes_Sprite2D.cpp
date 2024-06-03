@@ -1,5 +1,6 @@
 #include "register/register_classes.h"
 #include "register/utils.h"
+#include <godot_cpp/classes/sprite2d.hpp>
 
 using namespace godot;
 
@@ -19,6 +20,6 @@ void register_classes_Sprite2D() {
            .property<Sprite2D::is_region_enabled, Sprite2D::set_region_enabled>("region_enabled")
            .property<Sprite2D::get_region_rect, Sprite2D::set_region_rect>("region_rect")
            .property<Sprite2D::is_region_filter_clip_enabled, Sprite2D::set_region_filter_clip_enabled>("region_filter_clip_enabled")
-		   .fun<static_cast<bool(Sprite2D::*)(const Vector2 &)const>(&Sprite2D::is_pixel_opaque)>("is_pixel_opaque")
-		   .fun<static_cast<Rect2(Sprite2D::*)()const>(&Sprite2D::get_rect)>("get_rect")
+		    .fun<static_cast<bool(Sprite2D::*)(const Vector2 &)const>(&Sprite2D::is_pixel_opaque)>("is_pixel_opaque")
+		    .fun<static_cast<Rect2(Sprite2D::*)()const>(&Sprite2D::get_rect)>("get_rect")
 ;}

@@ -1,5 +1,6 @@
 #include "register/register_classes.h"
 #include "register/utils.h"
+#include <godot_cpp/classes/geometry_instance3d.hpp>
 
 using namespace godot;
 
@@ -22,6 +23,6 @@ void register_classes_GeometryInstance3D() {
            .property<GeometryInstance3D::get_visibility_range_end, GeometryInstance3D::set_visibility_range_end>("visibility_range_end")
            .property<GeometryInstance3D::get_visibility_range_end_margin, GeometryInstance3D::set_visibility_range_end_margin>("visibility_range_end_margin")
            .property<GeometryInstance3D::get_visibility_range_fade_mode, GeometryInstance3D::set_visibility_range_fade_mode>("visibility_range_fade_mode")
-		   .fun<static_cast<void(GeometryInstance3D::*)(const StringName &,const Variant &)>(&GeometryInstance3D::set_instance_shader_parameter)>("set_instance_shader_parameter")
-		   .fun<static_cast<Variant(GeometryInstance3D::*)(const StringName &)const>(&GeometryInstance3D::get_instance_shader_parameter)>("get_instance_shader_parameter")
+		    .fun<static_cast<void(GeometryInstance3D::*)(const StringName &,const Variant &)>(&GeometryInstance3D::set_instance_shader_parameter)>("set_instance_shader_parameter")
+		    .fun<static_cast<Variant(GeometryInstance3D::*)(const StringName &)const>(&GeometryInstance3D::get_instance_shader_parameter)>("get_instance_shader_parameter")
 ;}
