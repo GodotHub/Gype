@@ -49,9 +49,9 @@ class VisualShaderNodeCurveTexture : public VisualShaderNodeResizableBase {
 	GDEXTENSION_CLASS(VisualShaderNodeCurveTexture, VisualShaderNodeResizableBase)
 
 public:
+
 	void set_texture(const Ref<CurveTexture> &texture);
 	Ref<CurveTexture> get_texture() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -59,6 +59,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

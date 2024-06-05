@@ -48,12 +48,12 @@ class AudioEffectRecord : public AudioEffect {
 	GDEXTENSION_CLASS(AudioEffectRecord, AudioEffect)
 
 public:
+
 	void set_recording_active(bool record);
 	bool is_recording_active() const;
 	void set_format(AudioStreamWAV::Format format);
 	AudioStreamWAV::Format get_format() const;
 	Ref<AudioStreamWAV> get_recording() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -61,6 +61,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -47,11 +47,11 @@ class VisualShaderNodeUIntParameter : public VisualShaderNodeParameter {
 	GDEXTENSION_CLASS(VisualShaderNodeUIntParameter, VisualShaderNodeParameter)
 
 public:
+
 	void set_default_value_enabled(bool enabled);
 	bool is_default_value_enabled() const;
 	void set_default_value(int32_t value);
 	int32_t get_default_value() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -59,6 +59,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -48,9 +48,9 @@ class VisibleOnScreenNotifier3D : public VisualInstance3D {
 	GDEXTENSION_CLASS(VisibleOnScreenNotifier3D, VisualInstance3D)
 
 public:
+
 	void set_aabb(const AABB &rect);
 	bool is_on_screen() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -58,6 +58,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -50,11 +50,11 @@ class CSGBox3D : public CSGPrimitive3D {
 	GDEXTENSION_CLASS(CSGBox3D, CSGPrimitive3D)
 
 public:
+
 	void set_size(const Vector3 &size);
 	Vector3 get_size() const;
 	void set_material(const Ref<Material> &material);
 	Ref<Material> get_material() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -62,6 +62,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

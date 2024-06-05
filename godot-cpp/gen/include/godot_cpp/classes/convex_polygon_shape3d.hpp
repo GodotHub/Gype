@@ -33,10 +33,9 @@
 #ifndef GODOT_CPP_CONVEX_POLYGON_SHAPE3D_HPP
 #define GODOT_CPP_CONVEX_POLYGON_SHAPE3D_HPP
 
+#include <godot_cpp/variant/packed_vector3_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/shape3d.hpp>
-#include <godot_cpp/variant/packed_vector3_array.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -49,9 +48,9 @@ class ConvexPolygonShape3D : public Shape3D {
 	GDEXTENSION_CLASS(ConvexPolygonShape3D, Shape3D)
 
 public:
+
 	void set_points(const PackedVector3Array &points);
 	PackedVector3Array get_points() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -59,6 +58,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

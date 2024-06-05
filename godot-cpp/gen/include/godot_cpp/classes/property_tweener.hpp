@@ -50,13 +50,13 @@ class PropertyTweener : public Tweener {
 	GDEXTENSION_CLASS(PropertyTweener, Tweener)
 
 public:
+
 	Ref<PropertyTweener> from(const Variant &value);
 	Ref<PropertyTweener> from_current();
 	Ref<PropertyTweener> as_relative();
 	Ref<PropertyTweener> set_trans(Tween::TransitionType trans);
 	Ref<PropertyTweener> set_ease(Tween::EaseType ease);
 	Ref<PropertyTweener> set_delay(double delay);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -64,6 +64,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

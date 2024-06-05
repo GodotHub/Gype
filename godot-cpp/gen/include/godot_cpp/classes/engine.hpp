@@ -33,13 +33,12 @@
 #ifndef GODOT_CPP_ENGINE_HPP
 #define GODOT_CPP_ENGINE_HPP
 
+#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/core/object.hpp>
-#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -56,6 +55,7 @@ class Engine : public Object {
 	GDEXTENSION_CLASS(Engine, Object)
 
 public:
+
 	static Engine *get_singleton();
 
 	void set_physics_ticks_per_second(int32_t physics_ticks_per_second);
@@ -95,7 +95,6 @@ public:
 	String get_write_movie_path() const;
 	void set_print_error_messages(bool enabled);
 	bool is_printing_error_messages() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -103,6 +102,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

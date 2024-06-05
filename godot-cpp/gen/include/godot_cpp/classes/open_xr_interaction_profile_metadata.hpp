@@ -33,9 +33,8 @@
 #ifndef GODOT_CPP_OPEN_XR_INTERACTION_PROFILE_METADATA_HPP
 #define GODOT_CPP_OPEN_XR_INTERACTION_PROFILE_METADATA_HPP
 
-#include <godot_cpp/classes/open_xr_action.hpp>
 #include <godot_cpp/core/object.hpp>
-
+#include <godot_cpp/classes/open_xr_action.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -50,11 +49,11 @@ class OpenXRInteractionProfileMetadata : public Object {
 	GDEXTENSION_CLASS(OpenXRInteractionProfileMetadata, Object)
 
 public:
+
 	void register_profile_rename(const String &old_name, const String &new_name);
 	void register_top_level_path(const String &display_name, const String &openxr_path, const String &openxr_extension_name);
 	void register_interaction_profile(const String &display_name, const String &openxr_path, const String &openxr_extension_name);
 	void register_io_path(const String &interaction_profile, const String &display_name, const String &toplevel_path, const String &openxr_path, const String &openxr_extension_name, OpenXRAction::ActionType action_type);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -62,6 +61,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

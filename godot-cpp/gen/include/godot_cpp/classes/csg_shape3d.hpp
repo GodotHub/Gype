@@ -33,9 +33,8 @@
 #ifndef GODOT_CPP_CSG_SHAPE3D_HPP
 #define GODOT_CPP_CSG_SHAPE3D_HPP
 
-#include <godot_cpp/classes/geometry_instance3d.hpp>
 #include <godot_cpp/variant/array.hpp>
-
+#include <godot_cpp/classes/geometry_instance3d.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -48,6 +47,7 @@ class CSGShape3D : public GeometryInstance3D {
 	GDEXTENSION_CLASS(CSGShape3D, GeometryInstance3D)
 
 public:
+
 	enum Operation {
 		OPERATION_UNION = 0,
 		OPERATION_INTERSECTION = 1,
@@ -74,7 +74,6 @@ public:
 	void set_calculate_tangents(bool enabled);
 	bool is_calculating_tangents() const;
 	Array get_meshes() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -82,6 +81,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

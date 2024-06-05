@@ -33,15 +33,14 @@
 #ifndef GODOT_CPP_PHYSICS_SERVER3D_HPP
 #define GODOT_CPP_PHYSICS_SERVER3D_HPP
 
-#include <godot_cpp/classes/physics_test_motion_result3d.hpp>
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/core/object.hpp>
 #include <godot_cpp/variant/aabb.hpp>
+#include <godot_cpp/core/object.hpp>
+#include <godot_cpp/classes/physics_test_motion_result3d.hpp>
 #include <godot_cpp/variant/rid.hpp>
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/transform3d.hpp>
 #include <godot_cpp/variant/variant.hpp>
 #include <godot_cpp/variant/vector3.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -59,6 +58,7 @@ class PhysicsServer3D : public Object {
 	GDEXTENSION_CLASS(PhysicsServer3D, Object)
 
 public:
+
 	enum JointType {
 		JOINT_TYPE_PIN = 0,
 		JOINT_TYPE_HINGE = 1,
@@ -390,7 +390,6 @@ public:
 	void free_rid(const RID &rid);
 	void set_active(bool active);
 	int32_t get_process_info(PhysicsServer3D::ProcessInfo process_info);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -398,6 +397,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

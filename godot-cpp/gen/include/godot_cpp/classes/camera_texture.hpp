@@ -48,13 +48,13 @@ class CameraTexture : public Texture2D {
 	GDEXTENSION_CLASS(CameraTexture, Texture2D)
 
 public:
+
 	void set_camera_feed_id(int32_t feed_id);
 	int32_t get_camera_feed_id() const;
 	void set_which_feed(CameraServer::FeedImage which_feed);
 	CameraServer::FeedImage get_which_feed() const;
 	void set_camera_active(bool active);
 	bool get_camera_active() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -62,6 +62,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

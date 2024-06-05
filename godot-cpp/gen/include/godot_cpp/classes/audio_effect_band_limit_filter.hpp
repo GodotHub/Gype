@@ -47,6 +47,7 @@ class AudioEffectBandLimitFilter : public AudioEffectFilter {
 	GDEXTENSION_CLASS(AudioEffectBandLimitFilter, AudioEffectFilter)
 
 public:
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -54,6 +55,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

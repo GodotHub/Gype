@@ -35,10 +35,9 @@
 
 #include <godot_cpp/core/defs.hpp>
 
-#include <gdextension_interface.h>
 #include <godot_cpp/core/error_macros.hpp>
 #include <initializer_list>
-
+#include <gdextension_interface.h>
 
 #include <godot_cpp/templates/vararg.hpp>
 namespace godot {
@@ -99,7 +98,7 @@ class PackedFloat32Array {
 	PackedFloat32Array(const Variant *p_variant);
 
 public:
-	_FORCE_INLINE_ GDExtensionTypePtr _native_ptr() const { return const_cast<uint8_t(*)[PACKED_FLOAT32_ARRAY_SIZE]>(&opaque); }
+	_FORCE_INLINE_ GDExtensionTypePtr _native_ptr() const { return const_cast<uint8_t (*)[PACKED_FLOAT32_ARRAY_SIZE]>(&opaque); }
 	PackedFloat32Array();
 	PackedFloat32Array(const PackedFloat32Array &from);
 	PackedFloat32Array(const Array &from);
@@ -139,7 +138,7 @@ public:
 	const float *ptr() const;
 	float *ptrw();
 
-	struct Iterator {
+    struct Iterator {
 		_FORCE_INLINE_ float &operator*() const {
 			return *elem_ptr;
 		}
@@ -203,7 +202,8 @@ public:
 		return ConstIterator(ptr() + size());
 	}
 
-	_FORCE_INLINE_ PackedFloat32Array(std::initializer_list<float> p_init) {
+
+    _FORCE_INLINE_ PackedFloat32Array(std::initializer_list<float> p_init) {
 		ERR_FAIL_COND(resize(p_init.size()) != 0);
 
 		size_t i = 0;
@@ -211,6 +211,7 @@ public:
 			set(i++, element);
 		}
 	}
+
 };
 
 } // namespace godot

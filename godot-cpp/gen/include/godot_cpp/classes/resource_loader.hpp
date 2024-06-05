@@ -33,13 +33,12 @@
 #ifndef GODOT_CPP_RESOURCE_LOADER_HPP
 #define GODOT_CPP_RESOURCE_LOADER_HPP
 
-#include <godot_cpp/classes/global_constants.hpp>
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/core/object.hpp>
 #include <godot_cpp/variant/array.hpp>
+#include <godot_cpp/classes/global_constants.hpp>
+#include <godot_cpp/core/object.hpp>
 #include <godot_cpp/variant/packed_string_array.hpp>
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/string.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -55,6 +54,7 @@ class ResourceLoader : public Object {
 	GDEXTENSION_CLASS(ResourceLoader, Object)
 
 public:
+
 	enum ThreadLoadStatus {
 		THREAD_LOAD_INVALID_RESOURCE = 0,
 		THREAD_LOAD_IN_PROGRESS = 1,
@@ -82,7 +82,6 @@ public:
 	bool has_cached(const String &path);
 	bool exists(const String &path, const String &type_hint = String());
 	int64_t get_resource_uid(const String &path);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -90,6 +89,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

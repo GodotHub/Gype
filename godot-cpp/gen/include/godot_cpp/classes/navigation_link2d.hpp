@@ -48,6 +48,7 @@ class NavigationLink2D : public Node2D {
 	GDEXTENSION_CLASS(NavigationLink2D, Node2D)
 
 public:
+
 	RID get_rid() const;
 	void set_enabled(bool enabled);
 	bool is_enabled() const;
@@ -69,7 +70,6 @@ public:
 	double get_enter_cost() const;
 	void set_travel_cost(double travel_cost);
 	double get_travel_cost() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -77,6 +77,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -47,6 +47,7 @@ class Bone2D : public Node2D {
 	GDEXTENSION_CLASS(Bone2D, Node2D)
 
 public:
+
 	void set_rest(const Transform2D &rest);
 	Transform2D get_rest() const;
 	void apply_rest();
@@ -58,7 +59,6 @@ public:
 	double get_length() const;
 	void set_bone_angle(double angle);
 	double get_bone_angle() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -66,6 +66,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

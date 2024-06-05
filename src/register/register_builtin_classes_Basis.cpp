@@ -1,5 +1,10 @@
+#include <godot_cpp/classes/global_constants.hpp>
+#include <godot_cpp/core/defs.hpp>
+#include <godot_cpp/variant/basis.hpp>
+#include <godot_cpp/variant/quaternion.hpp>
+#include <godot_cpp/variant/vector3.hpp>
+
 #include "register/register_builtin_classes.h"
-#include "register/utils.h"
 
 using namespace godot;
 

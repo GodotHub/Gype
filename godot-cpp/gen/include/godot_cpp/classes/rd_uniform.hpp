@@ -33,12 +33,11 @@
 #ifndef GODOT_CPP_RD_UNIFORM_HPP
 #define GODOT_CPP_RD_UNIFORM_HPP
 
+#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/rendering_device.hpp>
-#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -51,6 +50,7 @@ class RDUniform : public RefCounted {
 	GDEXTENSION_CLASS(RDUniform, RefCounted)
 
 public:
+
 	void set_uniform_type(RenderingDevice::UniformType p_member);
 	RenderingDevice::UniformType get_uniform_type() const;
 	void set_binding(int32_t p_member);
@@ -58,7 +58,6 @@ public:
 	void add_id(const RID &id);
 	void clear_ids();
 	TypedArray<RID> get_ids() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -66,6 +65,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

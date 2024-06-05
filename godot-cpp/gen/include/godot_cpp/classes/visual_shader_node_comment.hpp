@@ -34,9 +34,8 @@
 #define GODOT_CPP_VISUAL_SHADER_NODE_COMMENT_HPP
 
 #include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/visual_shader_node_resizable_base.hpp>
 #include <godot_cpp/variant/string.hpp>
-
+#include <godot_cpp/classes/visual_shader_node_resizable_base.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -49,11 +48,11 @@ class VisualShaderNodeComment : public VisualShaderNodeResizableBase {
 	GDEXTENSION_CLASS(VisualShaderNodeComment, VisualShaderNodeResizableBase)
 
 public:
+
 	void set_title(const String &title);
 	String get_title() const;
 	void set_description(const String &description);
 	String get_description() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -61,6 +60,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

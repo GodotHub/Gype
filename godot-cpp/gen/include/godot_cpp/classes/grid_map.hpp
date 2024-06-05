@@ -33,15 +33,14 @@
 #ifndef GODOT_CPP_GRID_MAP_HPP
 #define GODOT_CPP_GRID_MAP_HPP
 
-#include <godot_cpp/classes/node3d.hpp>
-#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/basis.hpp>
+#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/variant/rid.hpp>
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/vector3.hpp>
 #include <godot_cpp/variant/vector3i.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -58,6 +57,7 @@ class GridMap : public Node3D {
 	GDEXTENSION_CLASS(GridMap, Node3D)
 
 public:
+
 	static const int INVALID_CELL_ITEM = -1;
 
 	void set_collision_layer(uint32_t layer);
@@ -107,7 +107,6 @@ public:
 	RID get_bake_mesh_instance(int32_t idx);
 	void clear_baked_meshes();
 	void make_baked_meshes(bool gen_lightmap_uv = false, double lightmap_uv_texel_size = 0.1);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -115,6 +114,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

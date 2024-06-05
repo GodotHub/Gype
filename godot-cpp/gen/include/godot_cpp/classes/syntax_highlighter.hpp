@@ -33,10 +33,9 @@
 #ifndef GODOT_CPP_SYNTAX_HIGHLIGHTER_HPP
 #define GODOT_CPP_SYNTAX_HIGHLIGHTER_HPP
 
+#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/variant/dictionary.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -51,6 +50,7 @@ class SyntaxHighlighter : public Resource {
 	GDEXTENSION_CLASS(SyntaxHighlighter, Resource)
 
 public:
+
 	Dictionary get_line_syntax_highlighting(int32_t line);
 	void update_cache();
 	void clear_highlighting_cache();
@@ -58,23 +58,23 @@ public:
 	virtual Dictionary _get_line_syntax_highlighting(int32_t line) const;
 	virtual void _clear_highlighting_cache();
 	virtual void _update_cache();
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Resource::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_get_line_syntax_highlighting), decltype(&T::_get_line_syntax_highlighting)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_line_syntax_highlighting),decltype(&T::_get_line_syntax_highlighting)>) {
 			BIND_VIRTUAL_METHOD(T, _get_line_syntax_highlighting);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_clear_highlighting_cache), decltype(&T::_clear_highlighting_cache)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_clear_highlighting_cache),decltype(&T::_clear_highlighting_cache)>) {
 			BIND_VIRTUAL_METHOD(T, _clear_highlighting_cache);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_update_cache), decltype(&T::_update_cache)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_update_cache),decltype(&T::_update_cache)>) {
 			BIND_VIRTUAL_METHOD(T, _update_cache);
 		}
 	}
 
 public:
+
 };
 
 } // namespace godot

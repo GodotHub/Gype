@@ -34,14 +34,13 @@
 #define GODOT_CPP_VIEWPORT_HPP
 
 #include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/variant/rect2.hpp>
 #include <godot_cpp/variant/rid.hpp>
+#include <godot_cpp/variant/rect2.hpp>
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/transform2d.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/variant.hpp>
 #include <godot_cpp/variant/vector2.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -65,6 +64,7 @@ class Viewport : public Node {
 	GDEXTENSION_CLASS(Viewport, Node)
 
 public:
+
 	enum PositionalShadowAtlasQuadrantSubdiv {
 		SHADOW_ATLAS_QUADRANT_SUBDIV_DISABLED = 0,
 		SHADOW_ATLAS_QUADRANT_SUBDIV_1 = 1,
@@ -285,7 +285,6 @@ public:
 	Viewport::VRSMode get_vrs_mode() const;
 	void set_vrs_texture(const Ref<Texture2D> &texture);
 	Ref<Texture2D> get_vrs_texture() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -293,6 +292,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

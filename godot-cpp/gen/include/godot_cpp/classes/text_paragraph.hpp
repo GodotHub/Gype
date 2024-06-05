@@ -33,19 +33,18 @@
 #ifndef GODOT_CPP_TEXT_PARAGRAPH_HPP
 #define GODOT_CPP_TEXT_PARAGRAPH_HPP
 
-#include <godot_cpp/classes/global_constants.hpp>
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/text_server.hpp>
 #include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/color.hpp>
-#include <godot_cpp/variant/rect2.hpp>
+#include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/variant/rid.hpp>
+#include <godot_cpp/variant/rect2.hpp>
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/string.hpp>
+#include <godot_cpp/classes/text_server.hpp>
 #include <godot_cpp/variant/variant.hpp>
 #include <godot_cpp/variant/vector2.hpp>
 #include <godot_cpp/variant/vector2i.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -61,6 +60,7 @@ class TextParagraph : public RefCounted {
 	GDEXTENSION_CLASS(TextParagraph, RefCounted)
 
 public:
+
 	void clear();
 	void set_direction(TextServer::Direction direction);
 	TextServer::Direction get_direction() const;
@@ -115,7 +115,6 @@ public:
 	void draw_dropcap(const RID &canvas, const Vector2 &pos, const Color &color = Color(1, 1, 1, 1)) const;
 	void draw_dropcap_outline(const RID &canvas, const Vector2 &pos, int32_t outline_size = 1, const Color &color = Color(1, 1, 1, 1)) const;
 	int32_t hit_test(const Vector2 &coords) const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -123,6 +122,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

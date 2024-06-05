@@ -47,6 +47,7 @@ class AudioEffectPhaser : public AudioEffect {
 	GDEXTENSION_CLASS(AudioEffectPhaser, AudioEffect)
 
 public:
+
 	void set_range_min_hz(double hz);
 	double get_range_min_hz() const;
 	void set_range_max_hz(double hz);
@@ -57,7 +58,6 @@ public:
 	double get_feedback() const;
 	void set_depth(double depth);
 	double get_depth() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -65,6 +65,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

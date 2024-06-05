@@ -33,18 +33,17 @@
 #ifndef GODOT_CPP_FONT_HPP
 #define GODOT_CPP_FONT_HPP
 
-#include <godot_cpp/classes/global_constants.hpp>
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/text_server.hpp>
 #include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/variant/dictionary.hpp>
+#include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/variant/rid.hpp>
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/string.hpp>
+#include <godot_cpp/classes/text_server.hpp>
 #include <godot_cpp/variant/transform2d.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/vector2.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -57,6 +56,7 @@ class Font : public Resource {
 	GDEXTENSION_CLASS(Font, Resource)
 
 public:
+
 	void set_fallbacks(const TypedArray<Font> &fallbacks);
 	TypedArray<Font> get_fallbacks() const;
 	RID find_variation(const Dictionary &variation_coordinates, int32_t face_index = 0, double strength = 0.0, const Transform2D &transform = Transform2D(), int32_t spacing_top = 0, int32_t spacing_bottom = 0, int32_t spacing_space = 0, int32_t spacing_glyph = 0) const;
@@ -91,7 +91,6 @@ public:
 	Dictionary get_supported_feature_list() const;
 	Dictionary get_supported_variation_list() const;
 	int64_t get_face_count() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -99,6 +98,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -33,12 +33,11 @@
 #ifndef GODOT_CPP_SKELETON_MODIFICATION2D_PHYSICAL_BONES_HPP
 #define GODOT_CPP_SKELETON_MODIFICATION2D_PHYSICAL_BONES_HPP
 
+#include <godot_cpp/variant/node_path.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/skeleton_modification2d.hpp>
-#include <godot_cpp/variant/node_path.hpp>
 #include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -51,6 +50,7 @@ class SkeletonModification2DPhysicalBones : public SkeletonModification2D {
 	GDEXTENSION_CLASS(SkeletonModification2DPhysicalBones, SkeletonModification2D)
 
 public:
+
 	void set_physical_bone_chain_length(int32_t length);
 	int32_t get_physical_bone_chain_length();
 	void set_physical_bone_node(int32_t joint_idx, const NodePath &physicalbone2d_node);
@@ -58,7 +58,6 @@ public:
 	void fetch_physical_bones();
 	void start_simulation(const TypedArray<StringName> &bones = Array());
 	void stop_simulation(const TypedArray<StringName> &bones = Array());
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -66,6 +65,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

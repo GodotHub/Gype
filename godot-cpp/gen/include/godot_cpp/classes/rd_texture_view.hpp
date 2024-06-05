@@ -48,6 +48,7 @@ class RDTextureView : public RefCounted {
 	GDEXTENSION_CLASS(RDTextureView, RefCounted)
 
 public:
+
 	void set_format_override(RenderingDevice::DataFormat p_member);
 	RenderingDevice::DataFormat get_format_override() const;
 	void set_swizzle_r(RenderingDevice::TextureSwizzle p_member);
@@ -58,7 +59,6 @@ public:
 	RenderingDevice::TextureSwizzle get_swizzle_b() const;
 	void set_swizzle_a(RenderingDevice::TextureSwizzle p_member);
 	RenderingDevice::TextureSwizzle get_swizzle_a() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -66,6 +66,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

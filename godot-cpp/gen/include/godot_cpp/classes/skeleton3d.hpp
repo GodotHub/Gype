@@ -34,15 +34,14 @@
 #define GODOT_CPP_SKELETON3D_HPP
 
 #include <godot_cpp/classes/node3d.hpp>
-#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/packed_int32_array.hpp>
 #include <godot_cpp/variant/quaternion.hpp>
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/variant/transform3d.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/vector3.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -59,6 +58,7 @@ class Skeleton3D : public Node3D {
 	GDEXTENSION_CLASS(Skeleton3D, Node3D)
 
 public:
+
 	static const int NOTIFICATION_UPDATE_SKELETON = 50;
 
 	void add_bone(const String &name);
@@ -107,7 +107,6 @@ public:
 	void physical_bones_start_simulation(const TypedArray<StringName> &bones = Array());
 	void physical_bones_add_collision_exception(const RID &exception);
 	void physical_bones_remove_collision_exception(const RID &exception);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -115,6 +114,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

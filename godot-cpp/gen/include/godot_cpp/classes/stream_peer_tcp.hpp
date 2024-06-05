@@ -49,6 +49,7 @@ class StreamPeerTCP : public StreamPeer {
 	GDEXTENSION_CLASS(StreamPeerTCP, StreamPeer)
 
 public:
+
 	enum Status {
 		STATUS_NONE = 0,
 		STATUS_CONNECTING = 1,
@@ -65,7 +66,6 @@ public:
 	int32_t get_local_port() const;
 	void disconnect_from_host();
 	void set_no_delay(bool enabled);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -73,6 +73,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

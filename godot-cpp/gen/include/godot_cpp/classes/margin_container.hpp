@@ -46,6 +46,7 @@ class MarginContainer : public Container {
 	GDEXTENSION_CLASS(MarginContainer, Container)
 
 public:
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -53,6 +54,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

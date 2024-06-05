@@ -49,6 +49,7 @@ class CameraFeed : public RefCounted {
 	GDEXTENSION_CLASS(CameraFeed, RefCounted)
 
 public:
+
 	enum FeedDataType {
 		FEED_NOIMAGE = 0,
 		FEED_RGB = 1,
@@ -70,7 +71,6 @@ public:
 	Transform2D get_transform() const;
 	void set_transform(const Transform2D &transform);
 	CameraFeed::FeedDataType get_datatype() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -78,6 +78,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

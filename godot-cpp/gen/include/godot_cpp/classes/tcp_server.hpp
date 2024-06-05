@@ -51,13 +51,13 @@ class TCPServer : public RefCounted {
 	GDEXTENSION_CLASS(TCPServer, RefCounted)
 
 public:
+
 	Error listen(uint16_t port, const String &bind_address = "*");
 	bool is_connection_available() const;
 	bool is_listening() const;
 	int32_t get_local_port() const;
 	Ref<StreamPeerTCP> take_connection();
 	void stop();
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -65,6 +65,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

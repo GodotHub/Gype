@@ -49,6 +49,7 @@ class TubeTrailMesh : public PrimitiveMesh {
 	GDEXTENSION_CLASS(TubeTrailMesh, PrimitiveMesh)
 
 public:
+
 	void set_radius(double radius);
 	double get_radius() const;
 	void set_radial_steps(int32_t radial_steps);
@@ -65,7 +66,6 @@ public:
 	bool is_cap_bottom() const;
 	void set_curve(const Ref<Curve> &curve);
 	Ref<Curve> get_curve() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -73,6 +73,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

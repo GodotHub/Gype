@@ -48,6 +48,7 @@ class RDPipelineDepthStencilState : public RefCounted {
 	GDEXTENSION_CLASS(RDPipelineDepthStencilState, RefCounted)
 
 public:
+
 	void set_enable_depth_test(bool p_member);
 	bool get_enable_depth_test() const;
 	void set_enable_depth_write(bool p_member);
@@ -90,7 +91,6 @@ public:
 	uint32_t get_back_op_write_mask() const;
 	void set_back_op_reference(uint32_t p_member);
 	uint32_t get_back_op_reference() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -98,6 +98,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

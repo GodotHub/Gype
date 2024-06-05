@@ -48,6 +48,7 @@ class AudioStreamPlayback : public RefCounted {
 	GDEXTENSION_CLASS(AudioStreamPlayback, RefCounted)
 
 public:
+
 	virtual void _start(double from_pos);
 	virtual void _stop();
 	virtual bool _is_playing() const;
@@ -56,38 +57,38 @@ public:
 	virtual void _seek(double position);
 	virtual int32_t _mix(AudioFrame *buffer, double rate_scale, int32_t frames);
 	virtual void _tag_used_streams();
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		RefCounted::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_start), decltype(&T::_start)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_start),decltype(&T::_start)>) {
 			BIND_VIRTUAL_METHOD(T, _start);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_stop), decltype(&T::_stop)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_stop),decltype(&T::_stop)>) {
 			BIND_VIRTUAL_METHOD(T, _stop);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_is_playing), decltype(&T::_is_playing)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_is_playing),decltype(&T::_is_playing)>) {
 			BIND_VIRTUAL_METHOD(T, _is_playing);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_loop_count), decltype(&T::_get_loop_count)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_loop_count),decltype(&T::_get_loop_count)>) {
 			BIND_VIRTUAL_METHOD(T, _get_loop_count);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_playback_position), decltype(&T::_get_playback_position)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_playback_position),decltype(&T::_get_playback_position)>) {
 			BIND_VIRTUAL_METHOD(T, _get_playback_position);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_seek), decltype(&T::_seek)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_seek),decltype(&T::_seek)>) {
 			BIND_VIRTUAL_METHOD(T, _seek);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_mix), decltype(&T::_mix)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_mix),decltype(&T::_mix)>) {
 			BIND_VIRTUAL_METHOD(T, _mix);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_tag_used_streams), decltype(&T::_tag_used_streams)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_tag_used_streams),decltype(&T::_tag_used_streams)>) {
 			BIND_VIRTUAL_METHOD(T, _tag_used_streams);
 		}
 	}
 
 public:
+
 };
 
 } // namespace godot

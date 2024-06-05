@@ -47,6 +47,7 @@ class RemoteTransform3D : public Node3D {
 	GDEXTENSION_CLASS(RemoteTransform3D, Node3D)
 
 public:
+
 	void set_remote_node(const NodePath &path);
 	NodePath get_remote_node() const;
 	void force_update_cache();
@@ -58,7 +59,6 @@ public:
 	bool get_update_rotation() const;
 	void set_update_scale(bool update_remote_scale);
 	bool get_update_scale() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -66,6 +66,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

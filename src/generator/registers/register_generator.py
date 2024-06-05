@@ -1,8 +1,9 @@
 import json
 from jinja2 import FileSystemLoader, Environment
-import sys
+import sys, os
 from pathlib import Path
-from binding_generator import is_pod_type, is_included_type, is_packed_array, is_enum, is_bitfield, get_enum_fullname
+from binding_generator import is_pod_type, is_included_type, is_packed_array, is_enum, is_bitfield, get_enum_fullname,camel_to_snake
+from qjspp_generator import list_files_relative
 import re
 sys.setrecursionlimit(100)
 cur_num = 0
@@ -252,9 +253,6 @@ def typedarray_convert(type):
     type = type.removeprefix('typedarray::')
     return f'TypedArray<{type}>'
 
-def camel_to_snake(name):
-    return re.sub(r'(?<=[a-z])[A-Z]|(?<!^)[A-Z](?=[a-z])', r'_\g<0>', name).lower()
-
 def build_tree(classes, clazz):
     children = clazz.get('children', {})
     for clz in classes:
@@ -263,6 +261,10 @@ def build_tree(classes, clazz):
                 children[clz['name']] = clz
                 clazz['children'] = children
                 build_tree(classes, clz)
+                
+def snake_to_camel(snake_str):
+    components = snake_str.split('_')
+    return ''.join(x.title() for x in components)
 
 def generate_utility_functions_cpp(env, data):
     template = env.get_template('./utility_functions/utility_functions.cpp.jinja')
@@ -291,7 +293,7 @@ def generate_classes_h(env, data):
     with open(root + '/include/register/register_classes.h', 'w') as file:
         file.write(render)
 
-def generate_classes_cpp(env, data):
+def generate_classes_cpp(env, data, classes):
     obj = data[422]
     node = data[413]
     node2d = data[414]
@@ -299,9 +301,9 @@ def generate_classes_cpp(env, data):
     node3d = data[415]
     build_tree(data, obj)
     def _generate(clazz):
-        if clazz['is_instantiable'] and 'VisualShaderNode' not in clazz['name']:
+        if clazz['is_instantiable'] and 'VisualShader' not in clazz['name']:
             template = env.get_template('./classes/classes.cpp.jinja')
-            render = template.render({ 'clazz': clazz })
+            render = template.render({ 'clazz': clazz, 'classes': classes })
             with open(f'{root}/src/register/register_classes_{clazz['name']}.cpp', 'w') as file:
                 file.write(render)
 
@@ -366,7 +368,13 @@ def generate_types_cpp(env, data):
     with open(f'{root}/src/register/register_types.cpp', 'w') as file:
         file.write(render)
 
+def get_file_name(file_path):
+    file_name_with_extension = os.path.basename(file_path)
+    return os.path.splitext(file_name_with_extension)[0]
+
 if __name__ == '__main__':
+    files = list_files_relative(f'{root}/godot-cpp/include')
+    files.extend(list_files_relative(f'{root}/godot-cpp/gen/include'))
     env = Environment(loader=FileSystemLoader('templates'), trim_blocks=True, lstrip_blocks=True)
     env.globals['flush_letter'] = flush_letter
     env.globals['is_pod_type'] = is_pod_type
@@ -383,11 +391,13 @@ if __name__ == '__main__':
     env.filters['convert_type'] = convert_type
     env.filters['typedarray_convert'] = typedarray_convert
     env.filters['camel_to_snake'] = camel_to_snake
+    env.filters['snake_to_camel'] = snake_to_camel
+    env.filters['get_file_name'] = get_file_name
     init_engine_classes()
     init_builtin_classes()
     generate_utility_functions_cpp(env, data['utility_functions'])
     generate_builtin_classes_h(env, data['builtin_classes'])
     generate_builtin_classes_cpp(env, data['builtin_classes'])
     generate_classes_h(env, data['classes'])
-    generate_classes_cpp(env, data['classes'])
+    generate_classes_cpp(env, data['classes'], files)
     generate_types_cpp(env, data)

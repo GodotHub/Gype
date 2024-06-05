@@ -49,30 +49,31 @@ class RenderSceneBuffersExtension : public RenderSceneBuffers {
 	GDEXTENSION_CLASS(RenderSceneBuffersExtension, RenderSceneBuffers)
 
 public:
+
 	virtual void _configure(const Ref<RenderSceneBuffersConfiguration> &config);
 	virtual void _set_fsr_sharpness(double fsr_sharpness);
 	virtual void _set_texture_mipmap_bias(double texture_mipmap_bias);
 	virtual void _set_use_debanding(bool use_debanding);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		RenderSceneBuffers::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_configure), decltype(&T::_configure)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_configure),decltype(&T::_configure)>) {
 			BIND_VIRTUAL_METHOD(T, _configure);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_set_fsr_sharpness), decltype(&T::_set_fsr_sharpness)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_set_fsr_sharpness),decltype(&T::_set_fsr_sharpness)>) {
 			BIND_VIRTUAL_METHOD(T, _set_fsr_sharpness);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_set_texture_mipmap_bias), decltype(&T::_set_texture_mipmap_bias)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_set_texture_mipmap_bias),decltype(&T::_set_texture_mipmap_bias)>) {
 			BIND_VIRTUAL_METHOD(T, _set_texture_mipmap_bias);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_set_use_debanding), decltype(&T::_set_use_debanding)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_set_use_debanding),decltype(&T::_set_use_debanding)>) {
 			BIND_VIRTUAL_METHOD(T, _set_use_debanding);
 		}
 	}
 
 public:
+
 };
 
 } // namespace godot

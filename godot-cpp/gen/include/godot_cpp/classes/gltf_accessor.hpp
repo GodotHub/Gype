@@ -33,10 +33,9 @@
 #ifndef GODOT_CPP_GLTF_ACCESSOR_HPP
 #define GODOT_CPP_GLTF_ACCESSOR_HPP
 
+#include <godot_cpp/variant/packed_float64_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/variant/packed_float64_array.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -49,6 +48,7 @@ class GLTFAccessor : public Resource {
 	GDEXTENSION_CLASS(GLTFAccessor, Resource)
 
 public:
+
 	int32_t get_buffer_view();
 	void set_buffer_view(int32_t buffer_view);
 	int32_t get_byte_offset();
@@ -77,7 +77,6 @@ public:
 	void set_sparse_values_buffer_view(int32_t sparse_values_buffer_view);
 	int32_t get_sparse_values_byte_offset();
 	void set_sparse_values_byte_offset(int32_t sparse_values_byte_offset);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -85,6 +84,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -47,6 +47,7 @@ class AudioEffectLimiter : public AudioEffect {
 	GDEXTENSION_CLASS(AudioEffectLimiter, AudioEffect)
 
 public:
+
 	void set_ceiling_db(double ceiling);
 	double get_ceiling_db() const;
 	void set_threshold_db(double threshold);
@@ -55,7 +56,6 @@ public:
 	double get_soft_clip_db() const;
 	void set_soft_clip_ratio(double soft_clip);
 	double get_soft_clip_ratio() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -63,6 +63,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

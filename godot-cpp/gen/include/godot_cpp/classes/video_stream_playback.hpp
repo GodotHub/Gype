@@ -33,10 +33,9 @@
 #ifndef GODOT_CPP_VIDEO_STREAM_PLAYBACK_HPP
 #define GODOT_CPP_VIDEO_STREAM_PLAYBACK_HPP
 
+#include <godot_cpp/variant/packed_float32_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/variant/packed_float32_array.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -51,6 +50,7 @@ class VideoStreamPlayback : public Resource {
 	GDEXTENSION_CLASS(VideoStreamPlayback, Resource)
 
 public:
+
 	int32_t mix_audio(int32_t num_frames, const PackedFloat32Array &buffer = PackedFloat32Array(), int32_t offset = 0);
 	virtual void _stop();
 	virtual void _play();
@@ -65,53 +65,53 @@ public:
 	virtual void _update(double delta);
 	virtual int32_t _get_channels() const;
 	virtual int32_t _get_mix_rate() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Resource::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_stop), decltype(&T::_stop)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_stop),decltype(&T::_stop)>) {
 			BIND_VIRTUAL_METHOD(T, _stop);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_play), decltype(&T::_play)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_play),decltype(&T::_play)>) {
 			BIND_VIRTUAL_METHOD(T, _play);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_is_playing), decltype(&T::_is_playing)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_is_playing),decltype(&T::_is_playing)>) {
 			BIND_VIRTUAL_METHOD(T, _is_playing);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_set_paused), decltype(&T::_set_paused)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_set_paused),decltype(&T::_set_paused)>) {
 			BIND_VIRTUAL_METHOD(T, _set_paused);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_is_paused), decltype(&T::_is_paused)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_is_paused),decltype(&T::_is_paused)>) {
 			BIND_VIRTUAL_METHOD(T, _is_paused);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_length), decltype(&T::_get_length)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_length),decltype(&T::_get_length)>) {
 			BIND_VIRTUAL_METHOD(T, _get_length);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_playback_position), decltype(&T::_get_playback_position)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_playback_position),decltype(&T::_get_playback_position)>) {
 			BIND_VIRTUAL_METHOD(T, _get_playback_position);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_seek), decltype(&T::_seek)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_seek),decltype(&T::_seek)>) {
 			BIND_VIRTUAL_METHOD(T, _seek);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_set_audio_track), decltype(&T::_set_audio_track)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_set_audio_track),decltype(&T::_set_audio_track)>) {
 			BIND_VIRTUAL_METHOD(T, _set_audio_track);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_texture), decltype(&T::_get_texture)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_texture),decltype(&T::_get_texture)>) {
 			BIND_VIRTUAL_METHOD(T, _get_texture);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_update), decltype(&T::_update)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_update),decltype(&T::_update)>) {
 			BIND_VIRTUAL_METHOD(T, _update);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_channels), decltype(&T::_get_channels)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_channels),decltype(&T::_get_channels)>) {
 			BIND_VIRTUAL_METHOD(T, _get_channels);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_mix_rate), decltype(&T::_get_mix_rate)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_mix_rate),decltype(&T::_get_mix_rate)>) {
 			BIND_VIRTUAL_METHOD(T, _get_mix_rate);
 		}
 	}
 
 public:
+
 };
 
 } // namespace godot

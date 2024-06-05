@@ -46,9 +46,9 @@ class GPUParticlesAttractorSphere3D : public GPUParticlesAttractor3D {
 	GDEXTENSION_CLASS(GPUParticlesAttractorSphere3D, GPUParticlesAttractor3D)
 
 public:
+
 	void set_radius(double radius);
 	double get_radius() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -56,6 +56,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

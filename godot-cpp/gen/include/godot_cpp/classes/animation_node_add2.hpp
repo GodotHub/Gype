@@ -47,6 +47,7 @@ class AnimationNodeAdd2 : public AnimationNodeSync {
 	GDEXTENSION_CLASS(AnimationNodeAdd2, AnimationNodeSync)
 
 public:
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -54,6 +55,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

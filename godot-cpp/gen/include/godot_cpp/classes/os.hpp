@@ -33,13 +33,12 @@
 #ifndef GODOT_CPP_OS_HPP
 #define GODOT_CPP_OS_HPP
 
-#include <godot_cpp/classes/global_constants.hpp>
-#include <godot_cpp/core/object.hpp>
 #include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/dictionary.hpp>
+#include <godot_cpp/classes/global_constants.hpp>
+#include <godot_cpp/core/object.hpp>
 #include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/string.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -52,6 +51,7 @@ class OS : public Object {
 	GDEXTENSION_CLASS(OS, Object)
 
 public:
+
 	enum RenderingDriver {
 		RENDERING_DRIVER_VULKAN = 0,
 		RENDERING_DRIVER_OPENGL3 = 1,
@@ -140,7 +140,6 @@ public:
 	bool request_permissions();
 	PackedStringArray get_granted_permissions() const;
 	void revoke_granted_permissions();
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -148,6 +147,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

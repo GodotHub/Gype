@@ -49,6 +49,7 @@ class PlaneMesh : public PrimitiveMesh {
 	GDEXTENSION_CLASS(PlaneMesh, PrimitiveMesh)
 
 public:
+
 	enum Orientation {
 		FACE_X = 0,
 		FACE_Y = 1,
@@ -65,7 +66,6 @@ public:
 	Vector3 get_center_offset() const;
 	void set_orientation(PlaneMesh::Orientation orientation);
 	PlaneMesh::Orientation get_orientation() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -73,6 +73,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

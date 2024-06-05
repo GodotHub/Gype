@@ -47,6 +47,7 @@ class AudioStreamRandomizer : public AudioStream {
 	GDEXTENSION_CLASS(AudioStreamRandomizer, AudioStream)
 
 public:
+
 	enum PlaybackMode {
 		PLAYBACK_RANDOM_NO_REPEATS = 0,
 		PLAYBACK_RANDOM = 1,
@@ -68,7 +69,6 @@ public:
 	double get_random_volume_offset_db() const;
 	void set_playback_mode(AudioStreamRandomizer::PlaybackMode mode);
 	AudioStreamRandomizer::PlaybackMode get_playback_mode() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -76,6 +76,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

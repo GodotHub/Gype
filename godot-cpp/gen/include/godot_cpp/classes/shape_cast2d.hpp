@@ -34,10 +34,9 @@
 #define GODOT_CPP_SHAPE_CAST2D_HPP
 
 #include <godot_cpp/classes/node2d.hpp>
-#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/rid.hpp>
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/vector2.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -54,6 +53,7 @@ class ShapeCast2D : public Node2D {
 	GDEXTENSION_CLASS(ShapeCast2D, Node2D)
 
 public:
+
 	void set_enabled(bool enabled);
 	bool is_enabled() const;
 	void set_shape(const Ref<Shape2D> &shape);
@@ -89,7 +89,6 @@ public:
 	bool is_collide_with_areas_enabled() const;
 	void set_collide_with_bodies(bool enable);
 	bool is_collide_with_bodies_enabled() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -97,6 +96,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

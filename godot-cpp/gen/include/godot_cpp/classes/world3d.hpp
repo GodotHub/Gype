@@ -33,10 +33,9 @@
 #ifndef GODOT_CPP_WORLD3D_HPP
 #define GODOT_CPP_WORLD3D_HPP
 
+#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/variant/rid.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -53,6 +52,7 @@ class World3D : public Resource {
 	GDEXTENSION_CLASS(World3D, Resource)
 
 public:
+
 	RID get_space() const;
 	RID get_navigation_map() const;
 	RID get_scenario() const;
@@ -63,7 +63,6 @@ public:
 	void set_camera_attributes(const Ref<CameraAttributes> &attributes);
 	Ref<CameraAttributes> get_camera_attributes() const;
 	PhysicsDirectSpaceState3D *get_direct_space_state();
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -71,6 +70,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -47,11 +47,11 @@ class SeparationRayShape3D : public Shape3D {
 	GDEXTENSION_CLASS(SeparationRayShape3D, Shape3D)
 
 public:
+
 	void set_length(double length);
 	double get_length() const;
 	void set_slide_on_slope(bool active);
 	bool get_slide_on_slope() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -59,6 +59,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

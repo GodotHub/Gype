@@ -49,6 +49,7 @@ class AudioStreamPlaybackPolyphonic : public AudioStreamPlayback {
 	GDEXTENSION_CLASS(AudioStreamPlaybackPolyphonic, AudioStreamPlayback)
 
 public:
+
 	static const int INVALID_ID = -1;
 
 	int64_t play_stream(const Ref<AudioStream> &stream, double from_offset = 0, double volume_db = 0, double pitch_scale = 1.0);
@@ -56,7 +57,6 @@ public:
 	void set_stream_pitch_scale(int64_t stream, double pitch_scale);
 	bool is_stream_playing(int64_t stream) const;
 	void stop_stream(int64_t stream);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -64,6 +64,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -33,14 +33,13 @@
 #ifndef GODOT_CPP_CLASS_DB_SINGLETON_HPP
 #define GODOT_CPP_CLASS_DB_SINGLETON_HPP
 
+#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/core/object.hpp>
-#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/variant.hpp>
-
 
 #include <godot_cpp/templates/vararg.hpp>
 namespace godot {
@@ -49,6 +48,7 @@ class ClassDBSingleton : public Object {
 	GDEXTENSION_CLASS_ALIAS(ClassDBSingleton, ClassDB, Object)
 
 public:
+
 	static ClassDBSingleton *get_singleton();
 
 	PackedStringArray get_class_list() const;
@@ -74,7 +74,6 @@ public:
 	PackedStringArray class_get_enum_constants(const StringName &_class, const StringName &_enum, bool no_inheritance = false) const;
 	StringName class_get_integer_constant_enum(const StringName &_class, const StringName &name, bool no_inheritance = false) const;
 	bool is_class_enabled(const StringName &_class) const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -82,79 +81,81 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot
 
-#define CLASSDB_SINGLETON_FORWARD_METHODS                                                                                               \
-	static PackedStringArray get_class_list() {                                                                                         \
-		return ClassDBSingleton::get_singleton()->get_class_list();                                                                     \
-	}                                                                                                                                   \
-	static PackedStringArray get_inheriters_from_class(const StringName &_class) {                                                      \
-		return ClassDBSingleton::get_singleton()->get_inheriters_from_class(_class);                                                    \
-	}                                                                                                                                   \
-	static StringName get_parent_class(const StringName &_class) {                                                                      \
-		return ClassDBSingleton::get_singleton()->get_parent_class(_class);                                                             \
-	}                                                                                                                                   \
-	static bool class_exists(const StringName &_class) {                                                                                \
-		return ClassDBSingleton::get_singleton()->class_exists(_class);                                                                 \
-	}                                                                                                                                   \
-	static bool is_parent_class(const StringName &_class, const StringName &inherits) {                                                 \
-		return ClassDBSingleton::get_singleton()->is_parent_class(_class, inherits);                                                    \
-	}                                                                                                                                   \
-	static bool can_instantiate(const StringName &_class) {                                                                             \
-		return ClassDBSingleton::get_singleton()->can_instantiate(_class);                                                              \
-	}                                                                                                                                   \
-	static Variant instantiate(const StringName &_class) {                                                                              \
-		return ClassDBSingleton::get_singleton()->instantiate(_class);                                                                  \
-	}                                                                                                                                   \
-	static bool class_has_signal(const StringName &_class, const StringName &signal) {                                                  \
-		return ClassDBSingleton::get_singleton()->class_has_signal(_class, signal);                                                     \
-	}                                                                                                                                   \
-	static Dictionary class_get_signal(const StringName &_class, const StringName &signal) {                                            \
-		return ClassDBSingleton::get_singleton()->class_get_signal(_class, signal);                                                     \
-	}                                                                                                                                   \
-	static TypedArray<Dictionary> class_get_signal_list(const StringName &_class, bool no_inheritance = false) {                        \
-		return ClassDBSingleton::get_singleton()->class_get_signal_list(_class, no_inheritance);                                        \
-	}                                                                                                                                   \
-	static TypedArray<Dictionary> class_get_property_list(const StringName &_class, bool no_inheritance = false) {                      \
-		return ClassDBSingleton::get_singleton()->class_get_property_list(_class, no_inheritance);                                      \
-	}                                                                                                                                   \
-	static Variant class_get_property(Object *object, const StringName &property) {                                                     \
-		return ClassDBSingleton::get_singleton()->class_get_property(object, property);                                                 \
-	}                                                                                                                                   \
-	static Error class_set_property(Object *object, const StringName &property, const Variant &value) {                                 \
-		return ClassDBSingleton::get_singleton()->class_set_property(object, property, value);                                          \
-	}                                                                                                                                   \
-	static bool class_has_method(const StringName &_class, const StringName &method, bool no_inheritance = false) {                     \
-		return ClassDBSingleton::get_singleton()->class_has_method(_class, method, no_inheritance);                                     \
-	}                                                                                                                                   \
-	static TypedArray<Dictionary> class_get_method_list(const StringName &_class, bool no_inheritance = false) {                        \
-		return ClassDBSingleton::get_singleton()->class_get_method_list(_class, no_inheritance);                                        \
-	}                                                                                                                                   \
-	static PackedStringArray class_get_integer_constant_list(const StringName &_class, bool no_inheritance = false) {                   \
-		return ClassDBSingleton::get_singleton()->class_get_integer_constant_list(_class, no_inheritance);                              \
-	}                                                                                                                                   \
-	static bool class_has_integer_constant(const StringName &_class, const StringName &name) {                                          \
-		return ClassDBSingleton::get_singleton()->class_has_integer_constant(_class, name);                                             \
-	}                                                                                                                                   \
-	static int64_t class_get_integer_constant(const StringName &_class, const StringName &name) {                                       \
-		return ClassDBSingleton::get_singleton()->class_get_integer_constant(_class, name);                                             \
-	}                                                                                                                                   \
-	static bool class_has_enum(const StringName &_class, const StringName &name, bool no_inheritance = false) {                         \
-		return ClassDBSingleton::get_singleton()->class_has_enum(_class, name, no_inheritance);                                         \
-	}                                                                                                                                   \
-	static PackedStringArray class_get_enum_list(const StringName &_class, bool no_inheritance = false) {                               \
-		return ClassDBSingleton::get_singleton()->class_get_enum_list(_class, no_inheritance);                                          \
-	}                                                                                                                                   \
+#define CLASSDB_SINGLETON_FORWARD_METHODS \
+	static PackedStringArray get_class_list() { \
+		return ClassDBSingleton::get_singleton()->get_class_list(); \
+	} \
+	static PackedStringArray get_inheriters_from_class(const StringName &_class) { \
+		return ClassDBSingleton::get_singleton()->get_inheriters_from_class(_class); \
+	} \
+	static StringName get_parent_class(const StringName &_class) { \
+		return ClassDBSingleton::get_singleton()->get_parent_class(_class); \
+	} \
+	static bool class_exists(const StringName &_class) { \
+		return ClassDBSingleton::get_singleton()->class_exists(_class); \
+	} \
+	static bool is_parent_class(const StringName &_class, const StringName &inherits) { \
+		return ClassDBSingleton::get_singleton()->is_parent_class(_class, inherits); \
+	} \
+	static bool can_instantiate(const StringName &_class) { \
+		return ClassDBSingleton::get_singleton()->can_instantiate(_class); \
+	} \
+	static Variant instantiate(const StringName &_class) { \
+		return ClassDBSingleton::get_singleton()->instantiate(_class); \
+	} \
+	static bool class_has_signal(const StringName &_class, const StringName &signal) { \
+		return ClassDBSingleton::get_singleton()->class_has_signal(_class, signal); \
+	} \
+	static Dictionary class_get_signal(const StringName &_class, const StringName &signal) { \
+		return ClassDBSingleton::get_singleton()->class_get_signal(_class, signal); \
+	} \
+	static TypedArray<Dictionary> class_get_signal_list(const StringName &_class, bool no_inheritance = false) { \
+		return ClassDBSingleton::get_singleton()->class_get_signal_list(_class, no_inheritance); \
+	} \
+	static TypedArray<Dictionary> class_get_property_list(const StringName &_class, bool no_inheritance = false) { \
+		return ClassDBSingleton::get_singleton()->class_get_property_list(_class, no_inheritance); \
+	} \
+	static Variant class_get_property(Object *object, const StringName &property) { \
+		return ClassDBSingleton::get_singleton()->class_get_property(object, property); \
+	} \
+	static Error class_set_property(Object *object, const StringName &property, const Variant &value) { \
+		return ClassDBSingleton::get_singleton()->class_set_property(object, property, value); \
+	} \
+	static bool class_has_method(const StringName &_class, const StringName &method, bool no_inheritance = false) { \
+		return ClassDBSingleton::get_singleton()->class_has_method(_class, method, no_inheritance); \
+	} \
+	static TypedArray<Dictionary> class_get_method_list(const StringName &_class, bool no_inheritance = false) { \
+		return ClassDBSingleton::get_singleton()->class_get_method_list(_class, no_inheritance); \
+	} \
+	static PackedStringArray class_get_integer_constant_list(const StringName &_class, bool no_inheritance = false) { \
+		return ClassDBSingleton::get_singleton()->class_get_integer_constant_list(_class, no_inheritance); \
+	} \
+	static bool class_has_integer_constant(const StringName &_class, const StringName &name) { \
+		return ClassDBSingleton::get_singleton()->class_has_integer_constant(_class, name); \
+	} \
+	static int64_t class_get_integer_constant(const StringName &_class, const StringName &name) { \
+		return ClassDBSingleton::get_singleton()->class_get_integer_constant(_class, name); \
+	} \
+	static bool class_has_enum(const StringName &_class, const StringName &name, bool no_inheritance = false) { \
+		return ClassDBSingleton::get_singleton()->class_has_enum(_class, name, no_inheritance); \
+	} \
+	static PackedStringArray class_get_enum_list(const StringName &_class, bool no_inheritance = false) { \
+		return ClassDBSingleton::get_singleton()->class_get_enum_list(_class, no_inheritance); \
+	} \
 	static PackedStringArray class_get_enum_constants(const StringName &_class, const StringName &_enum, bool no_inheritance = false) { \
-		return ClassDBSingleton::get_singleton()->class_get_enum_constants(_class, _enum, no_inheritance);                              \
-	}                                                                                                                                   \
-	static StringName class_get_integer_constant_enum(const StringName &_class, const StringName &name, bool no_inheritance = false) {  \
-		return ClassDBSingleton::get_singleton()->class_get_integer_constant_enum(_class, name, no_inheritance);                        \
-	}                                                                                                                                   \
-	static bool is_class_enabled(const StringName &_class) {                                                                            \
-		return ClassDBSingleton::get_singleton()->is_class_enabled(_class);                                                             \
-	};
+		return ClassDBSingleton::get_singleton()->class_get_enum_constants(_class, _enum, no_inheritance); \
+	} \
+	static StringName class_get_integer_constant_enum(const StringName &_class, const StringName &name, bool no_inheritance = false) { \
+		return ClassDBSingleton::get_singleton()->class_get_integer_constant_enum(_class, name, no_inheritance); \
+	} \
+	static bool is_class_enabled(const StringName &_class) { \
+		return ClassDBSingleton::get_singleton()->is_class_enabled(_class); \
+	} \
+	;
 
 #endif // ! GODOT_CPP_CLASS_DB_SINGLETON_HPP

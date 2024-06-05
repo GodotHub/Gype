@@ -33,17 +33,16 @@
 #ifndef GODOT_CPP_XR_INTERFACE_EXTENSION_HPP
 #define GODOT_CPP_XR_INTERFACE_EXTENSION_HPP
 
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/xr_interface.hpp>
 #include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/variant/packed_float64_array.hpp>
 #include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/packed_vector3_array.hpp>
 #include <godot_cpp/variant/rid.hpp>
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/variant/transform3d.hpp>
 #include <godot_cpp/variant/vector2.hpp>
-
+#include <godot_cpp/classes/xr_interface.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -60,6 +59,7 @@ class XRInterfaceExtension : public XRInterface {
 	GDEXTENSION_CLASS(XRInterfaceExtension, XRInterface)
 
 public:
+
 	RID get_color_texture();
 	RID get_depth_texture();
 	RID get_velocity_texture();
@@ -96,107 +96,107 @@ public:
 	virtual RID _get_color_texture();
 	virtual RID _get_depth_texture();
 	virtual RID _get_velocity_texture();
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		XRInterface::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_get_name), decltype(&T::_get_name)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_name),decltype(&T::_get_name)>) {
 			BIND_VIRTUAL_METHOD(T, _get_name);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_capabilities), decltype(&T::_get_capabilities)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_capabilities),decltype(&T::_get_capabilities)>) {
 			BIND_VIRTUAL_METHOD(T, _get_capabilities);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_is_initialized), decltype(&T::_is_initialized)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_is_initialized),decltype(&T::_is_initialized)>) {
 			BIND_VIRTUAL_METHOD(T, _is_initialized);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_initialize), decltype(&T::_initialize)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_initialize),decltype(&T::_initialize)>) {
 			BIND_VIRTUAL_METHOD(T, _initialize);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_uninitialize), decltype(&T::_uninitialize)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_uninitialize),decltype(&T::_uninitialize)>) {
 			BIND_VIRTUAL_METHOD(T, _uninitialize);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_system_info), decltype(&T::_get_system_info)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_system_info),decltype(&T::_get_system_info)>) {
 			BIND_VIRTUAL_METHOD(T, _get_system_info);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_supports_play_area_mode), decltype(&T::_supports_play_area_mode)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_supports_play_area_mode),decltype(&T::_supports_play_area_mode)>) {
 			BIND_VIRTUAL_METHOD(T, _supports_play_area_mode);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_play_area_mode), decltype(&T::_get_play_area_mode)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_play_area_mode),decltype(&T::_get_play_area_mode)>) {
 			BIND_VIRTUAL_METHOD(T, _get_play_area_mode);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_set_play_area_mode), decltype(&T::_set_play_area_mode)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_set_play_area_mode),decltype(&T::_set_play_area_mode)>) {
 			BIND_VIRTUAL_METHOD(T, _set_play_area_mode);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_play_area), decltype(&T::_get_play_area)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_play_area),decltype(&T::_get_play_area)>) {
 			BIND_VIRTUAL_METHOD(T, _get_play_area);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_render_target_size), decltype(&T::_get_render_target_size)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_render_target_size),decltype(&T::_get_render_target_size)>) {
 			BIND_VIRTUAL_METHOD(T, _get_render_target_size);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_view_count), decltype(&T::_get_view_count)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_view_count),decltype(&T::_get_view_count)>) {
 			BIND_VIRTUAL_METHOD(T, _get_view_count);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_camera_transform), decltype(&T::_get_camera_transform)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_camera_transform),decltype(&T::_get_camera_transform)>) {
 			BIND_VIRTUAL_METHOD(T, _get_camera_transform);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_transform_for_view), decltype(&T::_get_transform_for_view)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_transform_for_view),decltype(&T::_get_transform_for_view)>) {
 			BIND_VIRTUAL_METHOD(T, _get_transform_for_view);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_projection_for_view), decltype(&T::_get_projection_for_view)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_projection_for_view),decltype(&T::_get_projection_for_view)>) {
 			BIND_VIRTUAL_METHOD(T, _get_projection_for_view);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_vrs_texture), decltype(&T::_get_vrs_texture)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_vrs_texture),decltype(&T::_get_vrs_texture)>) {
 			BIND_VIRTUAL_METHOD(T, _get_vrs_texture);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_process), decltype(&T::_process)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_process),decltype(&T::_process)>) {
 			BIND_VIRTUAL_METHOD(T, _process);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_pre_render), decltype(&T::_pre_render)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_pre_render),decltype(&T::_pre_render)>) {
 			BIND_VIRTUAL_METHOD(T, _pre_render);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_pre_draw_viewport), decltype(&T::_pre_draw_viewport)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_pre_draw_viewport),decltype(&T::_pre_draw_viewport)>) {
 			BIND_VIRTUAL_METHOD(T, _pre_draw_viewport);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_post_draw_viewport), decltype(&T::_post_draw_viewport)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_post_draw_viewport),decltype(&T::_post_draw_viewport)>) {
 			BIND_VIRTUAL_METHOD(T, _post_draw_viewport);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_end_frame), decltype(&T::_end_frame)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_end_frame),decltype(&T::_end_frame)>) {
 			BIND_VIRTUAL_METHOD(T, _end_frame);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_suggested_tracker_names), decltype(&T::_get_suggested_tracker_names)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_suggested_tracker_names),decltype(&T::_get_suggested_tracker_names)>) {
 			BIND_VIRTUAL_METHOD(T, _get_suggested_tracker_names);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_suggested_pose_names), decltype(&T::_get_suggested_pose_names)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_suggested_pose_names),decltype(&T::_get_suggested_pose_names)>) {
 			BIND_VIRTUAL_METHOD(T, _get_suggested_pose_names);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_tracking_status), decltype(&T::_get_tracking_status)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_tracking_status),decltype(&T::_get_tracking_status)>) {
 			BIND_VIRTUAL_METHOD(T, _get_tracking_status);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_trigger_haptic_pulse), decltype(&T::_trigger_haptic_pulse)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_trigger_haptic_pulse),decltype(&T::_trigger_haptic_pulse)>) {
 			BIND_VIRTUAL_METHOD(T, _trigger_haptic_pulse);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_anchor_detection_is_enabled), decltype(&T::_get_anchor_detection_is_enabled)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_anchor_detection_is_enabled),decltype(&T::_get_anchor_detection_is_enabled)>) {
 			BIND_VIRTUAL_METHOD(T, _get_anchor_detection_is_enabled);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_set_anchor_detection_is_enabled), decltype(&T::_set_anchor_detection_is_enabled)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_set_anchor_detection_is_enabled),decltype(&T::_set_anchor_detection_is_enabled)>) {
 			BIND_VIRTUAL_METHOD(T, _set_anchor_detection_is_enabled);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_camera_feed_id), decltype(&T::_get_camera_feed_id)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_camera_feed_id),decltype(&T::_get_camera_feed_id)>) {
 			BIND_VIRTUAL_METHOD(T, _get_camera_feed_id);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_color_texture), decltype(&T::_get_color_texture)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_color_texture),decltype(&T::_get_color_texture)>) {
 			BIND_VIRTUAL_METHOD(T, _get_color_texture);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_depth_texture), decltype(&T::_get_depth_texture)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_depth_texture),decltype(&T::_get_depth_texture)>) {
 			BIND_VIRTUAL_METHOD(T, _get_depth_texture);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_velocity_texture), decltype(&T::_get_velocity_texture)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_velocity_texture),decltype(&T::_get_velocity_texture)>) {
 			BIND_VIRTUAL_METHOD(T, _get_velocity_texture);
 		}
 	}
 
 public:
+
 };
 
 } // namespace godot

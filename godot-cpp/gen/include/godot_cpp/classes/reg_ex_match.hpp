@@ -33,13 +33,12 @@
 #ifndef GODOT_CPP_REG_EX_MATCH_HPP
 #define GODOT_CPP_REG_EX_MATCH_HPP
 
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/variant/packed_string_array.hpp>
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/variant.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -52,6 +51,7 @@ class RegExMatch : public RefCounted {
 	GDEXTENSION_CLASS(RegExMatch, RefCounted)
 
 public:
+
 	String get_subject() const;
 	int32_t get_group_count() const;
 	Dictionary get_names() const;
@@ -59,7 +59,6 @@ public:
 	String get_string(const Variant &name = 0) const;
 	int32_t get_start(const Variant &name = 0) const;
 	int32_t get_end(const Variant &name = 0) const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -67,6 +66,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

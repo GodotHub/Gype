@@ -46,6 +46,7 @@ class VBoxContainer : public BoxContainer {
 	GDEXTENSION_CLASS(VBoxContainer, BoxContainer)
 
 public:
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -53,6 +54,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

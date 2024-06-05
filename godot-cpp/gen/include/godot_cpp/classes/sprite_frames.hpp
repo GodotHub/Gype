@@ -33,10 +33,9 @@
 #ifndef GODOT_CPP_SPRITE_FRAMES_HPP
 #define GODOT_CPP_SPRITE_FRAMES_HPP
 
+#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/variant/packed_string_array.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -52,6 +51,7 @@ class SpriteFrames : public Resource {
 	GDEXTENSION_CLASS(SpriteFrames, Resource)
 
 public:
+
 	void add_animation(const StringName &anim);
 	bool has_animation(const StringName &anim) const;
 	void remove_animation(const StringName &anim);
@@ -69,7 +69,6 @@ public:
 	double get_frame_duration(const StringName &anim, int32_t idx) const;
 	void clear(const StringName &anim);
 	void clear_all();
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -77,6 +76,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

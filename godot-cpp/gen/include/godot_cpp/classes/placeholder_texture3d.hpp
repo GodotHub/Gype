@@ -48,9 +48,9 @@ class PlaceholderTexture3D : public Texture3D {
 	GDEXTENSION_CLASS(PlaceholderTexture3D, Texture3D)
 
 public:
+
 	void set_size(const Vector3i &size);
 	Vector3i get_size() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -58,6 +58,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

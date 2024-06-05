@@ -34,15 +34,14 @@
 #define GODOT_CPP_CAMERA3D_HPP
 
 #include <godot_cpp/classes/node3d.hpp>
-#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/plane.hpp>
 #include <godot_cpp/variant/projection.hpp>
 #include <godot_cpp/variant/rid.hpp>
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/transform3d.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/vector2.hpp>
 #include <godot_cpp/variant/vector3.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -58,6 +57,7 @@ class Camera3D : public Node3D {
 	GDEXTENSION_CLASS(Camera3D, Node3D)
 
 public:
+
 	enum ProjectionType {
 		PROJECTION_PERSPECTIVE = 0,
 		PROJECTION_ORTHOGONAL = 1,
@@ -122,7 +122,6 @@ public:
 	RID get_pyramid_shape_rid();
 	void set_cull_mask_value(int32_t layer_number, bool value);
 	bool get_cull_mask_value(int32_t layer_number) const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -130,6 +129,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -51,6 +51,7 @@ class StreamPeerTLS : public StreamPeer {
 	GDEXTENSION_CLASS(StreamPeerTLS, StreamPeer)
 
 public:
+
 	enum Status {
 		STATUS_DISCONNECTED = 0,
 		STATUS_HANDSHAKING = 1,
@@ -65,7 +66,6 @@ public:
 	StreamPeerTLS::Status get_status() const;
 	Ref<StreamPeer> get_stream() const;
 	void disconnect_from_stream();
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -73,6 +73,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -47,6 +47,7 @@ class VisualShaderNodeIs : public VisualShaderNode {
 	GDEXTENSION_CLASS(VisualShaderNodeIs, VisualShaderNode)
 
 public:
+
 	enum Function {
 		FUNC_IS_INF = 0,
 		FUNC_IS_NAN = 1,
@@ -55,7 +56,6 @@ public:
 
 	void set_function(VisualShaderNodeIs::Function func);
 	VisualShaderNodeIs::Function get_function() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -63,6 +63,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

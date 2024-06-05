@@ -50,13 +50,13 @@ class MeshTexture : public Texture2D {
 	GDEXTENSION_CLASS(MeshTexture, Texture2D)
 
 public:
+
 	void set_mesh(const Ref<Mesh> &mesh);
 	Ref<Mesh> get_mesh() const;
 	void set_image_size(const Vector2 &size);
 	Vector2 get_image_size() const;
 	void set_base_texture(const Ref<Texture2D> &texture);
 	Ref<Texture2D> get_base_texture() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -64,6 +64,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -47,6 +47,7 @@ class ResourceImporter : public RefCounted {
 	GDEXTENSION_CLASS(ResourceImporter, RefCounted)
 
 public:
+
 	enum ImportOrder {
 		IMPORT_ORDER_DEFAULT = 0,
 		IMPORT_ORDER_SCENE = 100,
@@ -59,6 +60,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

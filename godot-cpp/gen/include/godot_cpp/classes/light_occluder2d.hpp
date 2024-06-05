@@ -49,13 +49,13 @@ class LightOccluder2D : public Node2D {
 	GDEXTENSION_CLASS(LightOccluder2D, Node2D)
 
 public:
+
 	void set_occluder_polygon(const Ref<OccluderPolygon2D> &polygon);
 	Ref<OccluderPolygon2D> get_occluder_polygon() const;
 	void set_occluder_light_mask(int32_t mask);
 	int32_t get_occluder_light_mask() const;
 	void set_as_sdf_collision(bool enable);
 	bool is_set_as_sdf_collision() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -63,6 +63,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

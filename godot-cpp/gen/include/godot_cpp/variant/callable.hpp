@@ -35,9 +35,8 @@
 
 #include <godot_cpp/core/defs.hpp>
 
-#include <gdextension_interface.h>
 #include <godot_cpp/variant/callable_custom.hpp>
-
+#include <gdextension_interface.h>
 
 #include <godot_cpp/templates/vararg.hpp>
 namespace godot {
@@ -93,7 +92,7 @@ class Callable {
 	Callable(const Variant *p_variant);
 
 public:
-	_FORCE_INLINE_ GDExtensionTypePtr _native_ptr() const { return const_cast<uint8_t(*)[CALLABLE_SIZE]>(&opaque); }
+	_FORCE_INLINE_ GDExtensionTypePtr _native_ptr() const { return const_cast<uint8_t (*)[CALLABLE_SIZE]>(&opaque); }
 	Callable();
 	Callable(const Callable &from);
 	Callable(Object *object, const StringName &method);
@@ -106,7 +105,7 @@ public:
 	bool is_custom() const;
 	bool is_standard() const;
 	bool is_valid() const;
-	Object *get_object() const;
+	Object * get_object() const;
 	int64_t get_object_id() const;
 	StringName get_method() const;
 	int64_t get_bound_arguments_count() const;

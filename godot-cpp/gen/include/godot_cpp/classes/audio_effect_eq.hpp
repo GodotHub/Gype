@@ -47,10 +47,10 @@ class AudioEffectEQ : public AudioEffect {
 	GDEXTENSION_CLASS(AudioEffectEQ, AudioEffect)
 
 public:
+
 	void set_band_gain_db(int32_t band_idx, double volume_db);
 	double get_band_gain_db(int32_t band_idx) const;
 	int32_t get_band_count() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -58,6 +58,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -35,12 +35,11 @@
 
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/xr_pose.hpp>
-#include <godot_cpp/classes/xr_server.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/variant/variant.hpp>
-
+#include <godot_cpp/classes/xr_pose.hpp>
+#include <godot_cpp/classes/xr_server.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -56,6 +55,7 @@ class XRPositionalTracker : public RefCounted {
 	GDEXTENSION_CLASS(XRPositionalTracker, RefCounted)
 
 public:
+
 	enum TrackerHand {
 		TRACKER_HAND_UNKNOWN = 0,
 		TRACKER_HAND_LEFT = 1,
@@ -78,7 +78,6 @@ public:
 	void set_pose(const StringName &name, const Transform3D &transform, const Vector3 &linear_velocity, const Vector3 &angular_velocity, XRPose::TrackingConfidence tracking_confidence);
 	Variant get_input(const StringName &name) const;
 	void set_input(const StringName &name, const Variant &value);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -86,6 +85,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

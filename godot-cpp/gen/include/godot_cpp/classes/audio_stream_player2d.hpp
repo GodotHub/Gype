@@ -51,6 +51,7 @@ class AudioStreamPlayer2D : public Node2D {
 	GDEXTENSION_CLASS(AudioStreamPlayer2D, Node2D)
 
 public:
+
 	void set_stream(const Ref<AudioStream> &stream);
 	Ref<AudioStream> get_stream() const;
 	void set_volume_db(double volume_db);
@@ -80,7 +81,6 @@ public:
 	double get_panning_strength() const;
 	bool has_stream_playback();
 	Ref<AudioStreamPlayback> get_stream_playback();
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -88,6 +88,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

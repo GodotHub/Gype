@@ -47,6 +47,7 @@ class VisualShaderNodeVectorLen : public VisualShaderNodeVectorBase {
 	GDEXTENSION_CLASS(VisualShaderNodeVectorLen, VisualShaderNodeVectorBase)
 
 public:
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -54,6 +55,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

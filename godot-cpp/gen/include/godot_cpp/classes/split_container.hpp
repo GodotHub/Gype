@@ -46,6 +46,7 @@ class SplitContainer : public Container {
 	GDEXTENSION_CLASS(SplitContainer, Container)
 
 public:
+
 	enum DraggerVisibility {
 		DRAGGER_VISIBLE = 0,
 		DRAGGER_HIDDEN = 1,
@@ -61,7 +62,6 @@ public:
 	SplitContainer::DraggerVisibility get_dragger_visibility() const;
 	void set_vertical(bool vertical);
 	bool is_vertical() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -69,6 +69,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

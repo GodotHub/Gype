@@ -33,12 +33,11 @@
 #ifndef GODOT_CPP_OGG_PACKET_SEQUENCE_HPP
 #define GODOT_CPP_OGG_PACKET_SEQUENCE_HPP
 
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/packed_int64_array.hpp>
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -51,6 +50,7 @@ class OggPacketSequence : public Resource {
 	GDEXTENSION_CLASS(OggPacketSequence, Resource)
 
 public:
+
 	void set_packet_data(const TypedArray<Array> &packet_data);
 	TypedArray<Array> get_packet_data() const;
 	void set_packet_granule_positions(const PackedInt64Array &granule_positions);
@@ -58,7 +58,6 @@ public:
 	void set_sampling_rate(double sampling_rate);
 	double get_sampling_rate() const;
 	double get_length() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -66,6 +65,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

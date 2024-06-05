@@ -33,12 +33,11 @@
 #ifndef GODOT_CPP_PHYSICS_RAY_QUERY_PARAMETERS3D_HPP
 #define GODOT_CPP_PHYSICS_RAY_QUERY_PARAMETERS3D_HPP
 
+#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/vector3.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -51,6 +50,7 @@ class PhysicsRayQueryParameters3D : public RefCounted {
 	GDEXTENSION_CLASS(PhysicsRayQueryParameters3D, RefCounted)
 
 public:
+
 	static Ref<PhysicsRayQueryParameters3D> create(const Vector3 &from, const Vector3 &to, uint32_t collision_mask = 4294967295, const TypedArray<RID> &exclude = {});
 	void set_from(const Vector3 &from);
 	Vector3 get_from() const;
@@ -68,7 +68,6 @@ public:
 	bool is_hit_from_inside_enabled() const;
 	void set_hit_back_faces(bool enable);
 	bool is_hit_back_faces_enabled() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -76,6 +75,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

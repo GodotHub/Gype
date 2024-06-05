@@ -47,6 +47,7 @@ class VisualShaderNodeSwitch : public VisualShaderNode {
 	GDEXTENSION_CLASS(VisualShaderNodeSwitch, VisualShaderNode)
 
 public:
+
 	enum OpType {
 		OP_TYPE_FLOAT = 0,
 		OP_TYPE_INT = 1,
@@ -61,7 +62,6 @@ public:
 
 	void set_op_type(VisualShaderNodeSwitch::OpType type);
 	VisualShaderNodeSwitch::OpType get_op_type() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -69,6 +69,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

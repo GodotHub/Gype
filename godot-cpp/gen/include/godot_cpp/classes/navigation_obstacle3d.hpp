@@ -49,6 +49,7 @@ class NavigationObstacle3D : public Node3D {
 	GDEXTENSION_CLASS(NavigationObstacle3D, Node3D)
 
 public:
+
 	RID get_rid() const;
 	void set_avoidance_enabled(bool enabled);
 	bool get_avoidance_enabled() const;
@@ -68,7 +69,6 @@ public:
 	bool get_avoidance_layer_value(int32_t layer_number) const;
 	void set_use_3d_avoidance(bool enabled);
 	bool get_use_3d_avoidance() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -76,6 +76,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

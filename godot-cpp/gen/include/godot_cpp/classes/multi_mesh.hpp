@@ -33,14 +33,13 @@
 #ifndef GODOT_CPP_MULTI_MESH_HPP
 #define GODOT_CPP_MULTI_MESH_HPP
 
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/aabb.hpp>
 #include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/variant/packed_float32_array.hpp>
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/transform2d.hpp>
 #include <godot_cpp/variant/transform3d.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -55,6 +54,7 @@ class MultiMesh : public Resource {
 	GDEXTENSION_CLASS(MultiMesh, Resource)
 
 public:
+
 	enum TransformFormat {
 		TRANSFORM_2D = 0,
 		TRANSFORM_3D = 1,
@@ -83,7 +83,6 @@ public:
 	AABB get_aabb() const;
 	PackedFloat32Array get_buffer() const;
 	void set_buffer(const PackedFloat32Array &buffer);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -91,6 +90,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

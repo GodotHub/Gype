@@ -33,17 +33,16 @@
 #ifndef GODOT_CPP_EDITOR_NODE3D_GIZMO_PLUGIN_HPP
 #define GODOT_CPP_EDITOR_NODE3D_GIZMO_PLUGIN_HPP
 
+#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/editor_node3d_gizmo.hpp>
+#include <godot_cpp/variant/packed_int32_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/variant/color.hpp>
-#include <godot_cpp/variant/packed_int32_array.hpp>
 #include <godot_cpp/variant/string.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/transform3d.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/variant.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -62,6 +61,7 @@ class EditorNode3DGizmoPlugin : public Resource {
 	GDEXTENSION_CLASS(EditorNode3DGizmoPlugin, Resource)
 
 public:
+
 	void create_material(const String &name, const Color &color, bool billboard = false, bool on_top = false, bool use_vertex_color = false);
 	void create_icon_material(const String &name, const Ref<Texture2D> &texture, bool on_top = false, const Color &color = Color(1, 1, 1, 1));
 	void create_handle_material(const String &name, bool billboard = false, const Ref<Texture2D> &texture = nullptr);
@@ -85,68 +85,68 @@ public:
 	virtual Transform3D _get_subgizmo_transform(const Ref<EditorNode3DGizmo> &gizmo, int32_t subgizmo_id) const;
 	virtual void _set_subgizmo_transform(const Ref<EditorNode3DGizmo> &gizmo, int32_t subgizmo_id, const Transform3D &transform);
 	virtual void _commit_subgizmos(const Ref<EditorNode3DGizmo> &gizmo, const PackedInt32Array &ids, const TypedArray<Transform3D> &restores, bool cancel);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Resource::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_has_gizmo), decltype(&T::_has_gizmo)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_has_gizmo),decltype(&T::_has_gizmo)>) {
 			BIND_VIRTUAL_METHOD(T, _has_gizmo);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_create_gizmo), decltype(&T::_create_gizmo)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_create_gizmo),decltype(&T::_create_gizmo)>) {
 			BIND_VIRTUAL_METHOD(T, _create_gizmo);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_gizmo_name), decltype(&T::_get_gizmo_name)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_gizmo_name),decltype(&T::_get_gizmo_name)>) {
 			BIND_VIRTUAL_METHOD(T, _get_gizmo_name);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_priority), decltype(&T::_get_priority)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_priority),decltype(&T::_get_priority)>) {
 			BIND_VIRTUAL_METHOD(T, _get_priority);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_can_be_hidden), decltype(&T::_can_be_hidden)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_can_be_hidden),decltype(&T::_can_be_hidden)>) {
 			BIND_VIRTUAL_METHOD(T, _can_be_hidden);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_is_selectable_when_hidden), decltype(&T::_is_selectable_when_hidden)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_is_selectable_when_hidden),decltype(&T::_is_selectable_when_hidden)>) {
 			BIND_VIRTUAL_METHOD(T, _is_selectable_when_hidden);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_redraw), decltype(&T::_redraw)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_redraw),decltype(&T::_redraw)>) {
 			BIND_VIRTUAL_METHOD(T, _redraw);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_handle_name), decltype(&T::_get_handle_name)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_handle_name),decltype(&T::_get_handle_name)>) {
 			BIND_VIRTUAL_METHOD(T, _get_handle_name);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_is_handle_highlighted), decltype(&T::_is_handle_highlighted)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_is_handle_highlighted),decltype(&T::_is_handle_highlighted)>) {
 			BIND_VIRTUAL_METHOD(T, _is_handle_highlighted);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_handle_value), decltype(&T::_get_handle_value)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_handle_value),decltype(&T::_get_handle_value)>) {
 			BIND_VIRTUAL_METHOD(T, _get_handle_value);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_begin_handle_action), decltype(&T::_begin_handle_action)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_begin_handle_action),decltype(&T::_begin_handle_action)>) {
 			BIND_VIRTUAL_METHOD(T, _begin_handle_action);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_set_handle), decltype(&T::_set_handle)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_set_handle),decltype(&T::_set_handle)>) {
 			BIND_VIRTUAL_METHOD(T, _set_handle);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_commit_handle), decltype(&T::_commit_handle)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_commit_handle),decltype(&T::_commit_handle)>) {
 			BIND_VIRTUAL_METHOD(T, _commit_handle);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_subgizmos_intersect_ray), decltype(&T::_subgizmos_intersect_ray)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_subgizmos_intersect_ray),decltype(&T::_subgizmos_intersect_ray)>) {
 			BIND_VIRTUAL_METHOD(T, _subgizmos_intersect_ray);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_subgizmos_intersect_frustum), decltype(&T::_subgizmos_intersect_frustum)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_subgizmos_intersect_frustum),decltype(&T::_subgizmos_intersect_frustum)>) {
 			BIND_VIRTUAL_METHOD(T, _subgizmos_intersect_frustum);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_subgizmo_transform), decltype(&T::_get_subgizmo_transform)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_subgizmo_transform),decltype(&T::_get_subgizmo_transform)>) {
 			BIND_VIRTUAL_METHOD(T, _get_subgizmo_transform);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_set_subgizmo_transform), decltype(&T::_set_subgizmo_transform)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_set_subgizmo_transform),decltype(&T::_set_subgizmo_transform)>) {
 			BIND_VIRTUAL_METHOD(T, _set_subgizmo_transform);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_commit_subgizmos), decltype(&T::_commit_subgizmos)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_commit_subgizmos),decltype(&T::_commit_subgizmos)>) {
 			BIND_VIRTUAL_METHOD(T, _commit_subgizmos);
 		}
 	}
 
 public:
+
 };
 
 } // namespace godot

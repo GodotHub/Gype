@@ -33,12 +33,11 @@
 #ifndef GODOT_CPP_OPEN_XR_INTERFACE_HPP
 #define GODOT_CPP_OPEN_XR_INTERFACE_HPP
 
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/xr_interface.hpp>
 #include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/quaternion.hpp>
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/vector3.hpp>
-
+#include <godot_cpp/classes/xr_interface.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -53,6 +52,7 @@ class OpenXRInterface : public XRInterface {
 	GDEXTENSION_CLASS(OpenXRInterface, XRInterface)
 
 public:
+
 	enum Hand {
 		HAND_LEFT = 0,
 		HAND_RIGHT = 1,
@@ -128,7 +128,6 @@ public:
 	Vector3 get_hand_joint_angular_velocity(OpenXRInterface::Hand hand, OpenXRInterface::HandJoints joint) const;
 	bool is_hand_tracking_supported();
 	bool is_eye_gaze_interaction_supported();
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -136,6 +135,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

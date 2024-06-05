@@ -47,6 +47,7 @@ class VisualShaderNodeRandomRange : public VisualShaderNode {
 	GDEXTENSION_CLASS(VisualShaderNodeRandomRange, VisualShaderNode)
 
 public:
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -54,6 +55,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

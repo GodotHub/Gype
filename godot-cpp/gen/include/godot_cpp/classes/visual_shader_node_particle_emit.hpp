@@ -47,6 +47,7 @@ class VisualShaderNodeParticleEmit : public VisualShaderNode {
 	GDEXTENSION_CLASS(VisualShaderNodeParticleEmit, VisualShaderNode)
 
 public:
+
 	enum EmitFlags {
 		EMIT_FLAG_POSITION = 1,
 		EMIT_FLAG_ROT_SCALE = 2,
@@ -57,7 +58,6 @@ public:
 
 	void set_flags(VisualShaderNodeParticleEmit::EmitFlags flags);
 	VisualShaderNodeParticleEmit::EmitFlags get_flags() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -65,6 +65,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

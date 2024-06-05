@@ -47,11 +47,11 @@ class MissingNode : public Node {
 	GDEXTENSION_CLASS(MissingNode, Node)
 
 public:
+
 	void set_original_class(const String &name);
 	String get_original_class() const;
 	void set_recording_properties(bool enable);
 	bool is_recording_properties() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -59,6 +59,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

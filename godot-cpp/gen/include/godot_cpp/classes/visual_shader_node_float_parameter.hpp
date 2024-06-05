@@ -47,6 +47,7 @@ class VisualShaderNodeFloatParameter : public VisualShaderNodeParameter {
 	GDEXTENSION_CLASS(VisualShaderNodeFloatParameter, VisualShaderNodeParameter)
 
 public:
+
 	enum Hint {
 		HINT_NONE = 0,
 		HINT_RANGE = 1,
@@ -66,7 +67,6 @@ public:
 	bool is_default_value_enabled() const;
 	void set_default_value(double value);
 	double get_default_value() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -74,6 +74,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

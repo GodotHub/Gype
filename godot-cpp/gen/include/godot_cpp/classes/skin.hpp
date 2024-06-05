@@ -51,6 +51,7 @@ class Skin : public Resource {
 	GDEXTENSION_CLASS(Skin, Resource)
 
 public:
+
 	void set_bind_count(int32_t bind_count);
 	int32_t get_bind_count() const;
 	void add_bind(int32_t bone, const Transform3D &pose);
@@ -62,7 +63,6 @@ public:
 	void set_bind_bone(int32_t bind_index, int32_t bone);
 	int32_t get_bind_bone(int32_t bind_index) const;
 	void clear_binds();
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -70,6 +70,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

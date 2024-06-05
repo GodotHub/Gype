@@ -46,6 +46,7 @@ class ProgressBar : public Range {
 	GDEXTENSION_CLASS(ProgressBar, Range)
 
 public:
+
 	enum FillMode {
 		FILL_BEGIN_TO_END = 0,
 		FILL_END_TO_BEGIN = 1,
@@ -57,7 +58,6 @@ public:
 	int32_t get_fill_mode();
 	void set_show_percentage(bool visible);
 	bool is_percentage_shown() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -65,6 +65,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -48,8 +48,8 @@ class WeakRef : public RefCounted {
 	GDEXTENSION_CLASS(WeakRef, RefCounted)
 
 public:
-	Variant get_ref() const;
 
+	Variant get_ref() const;
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -57,6 +57,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -49,8 +49,8 @@ class Cubemap : public ImageTextureLayered {
 	GDEXTENSION_CLASS(Cubemap, ImageTextureLayered)
 
 public:
-	Ref<Resource> create_placeholder() const;
 
+	Ref<Resource> create_placeholder() const;
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -58,6 +58,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

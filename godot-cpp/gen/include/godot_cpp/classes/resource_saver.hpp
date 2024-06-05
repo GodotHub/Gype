@@ -34,11 +34,10 @@
 #define GODOT_CPP_RESOURCE_SAVER_HPP
 
 #include <godot_cpp/classes/global_constants.hpp>
-#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/core/object.hpp>
 #include <godot_cpp/variant/packed_string_array.hpp>
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/string.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -54,6 +53,7 @@ class ResourceSaver : public Object {
 	GDEXTENSION_CLASS(ResourceSaver, Object)
 
 public:
+
 	enum SaverFlags : uint64_t {
 		FLAG_NONE = 0,
 		FLAG_RELATIVE_PATHS = 1,
@@ -71,7 +71,6 @@ public:
 	PackedStringArray get_recognized_extensions(const Ref<Resource> &type);
 	void add_resource_format_saver(const Ref<ResourceFormatSaver> &format_saver, bool at_front = false);
 	void remove_resource_format_saver(const Ref<ResourceFormatSaver> &format_saver);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -79,6 +78,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

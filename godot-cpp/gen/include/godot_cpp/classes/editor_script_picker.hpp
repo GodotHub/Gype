@@ -48,9 +48,9 @@ class EditorScriptPicker : public EditorResourcePicker {
 	GDEXTENSION_CLASS(EditorScriptPicker, EditorResourcePicker)
 
 public:
+
 	void set_script_owner(Node *owner_node);
 	Node *get_script_owner() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -58,6 +58,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

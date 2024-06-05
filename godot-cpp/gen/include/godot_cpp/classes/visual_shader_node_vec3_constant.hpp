@@ -34,9 +34,8 @@
 #define GODOT_CPP_VISUAL_SHADER_NODE_VEC3_CONSTANT_HPP
 
 #include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/visual_shader_node_constant.hpp>
 #include <godot_cpp/variant/vector3.hpp>
-
+#include <godot_cpp/classes/visual_shader_node_constant.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -49,9 +48,9 @@ class VisualShaderNodeVec3Constant : public VisualShaderNodeConstant {
 	GDEXTENSION_CLASS(VisualShaderNodeVec3Constant, VisualShaderNodeConstant)
 
 public:
+
 	void set_constant(const Vector3 &constant);
 	Vector3 get_constant() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -59,6 +58,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

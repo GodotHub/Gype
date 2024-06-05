@@ -46,6 +46,7 @@ class Slider : public Range {
 	GDEXTENSION_CLASS(Slider, Range)
 
 public:
+
 	void set_ticks(int32_t count);
 	int32_t get_ticks() const;
 	bool get_ticks_on_borders() const;
@@ -54,7 +55,6 @@ public:
 	bool is_editable() const;
 	void set_scrollable(bool scrollable);
 	bool is_scrollable() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -62,6 +62,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

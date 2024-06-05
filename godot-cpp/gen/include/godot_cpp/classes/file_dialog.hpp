@@ -51,6 +51,7 @@ class FileDialog : public ConfirmationDialog {
 	GDEXTENSION_CLASS(FileDialog, ConfirmationDialog)
 
 public:
+
 	enum FileMode {
 		FILE_MODE_OPEN_FILE = 0,
 		FILE_MODE_OPEN_FILES = 1,
@@ -91,7 +92,6 @@ public:
 	bool get_use_native_dialog() const;
 	void deselect_all();
 	void invalidate();
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -99,6 +99,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

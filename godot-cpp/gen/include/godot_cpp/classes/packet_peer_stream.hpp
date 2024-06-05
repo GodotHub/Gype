@@ -49,13 +49,13 @@ class PacketPeerStream : public PacketPeer {
 	GDEXTENSION_CLASS(PacketPeerStream, PacketPeer)
 
 public:
+
 	void set_stream_peer(const Ref<StreamPeer> &peer);
 	Ref<StreamPeer> get_stream_peer() const;
 	void set_input_buffer_max_size(int32_t max_size_bytes);
 	void set_output_buffer_max_size(int32_t max_size_bytes);
 	int32_t get_input_buffer_max_size() const;
 	int32_t get_output_buffer_max_size() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -63,6 +63,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

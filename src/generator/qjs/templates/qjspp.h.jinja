@@ -190,29 +190,31 @@ struct js_traits<{{'const' if type.is_const else ''}} {{type.name}}> {
 		{{type.return}} *ptr = &ret;
 		return *ptr;
 	{% elif type.is_char_ptr %}
-		if (JS_IsString(v)) 
-			throw exception{ ctx };
+		if (JS_IsString(v)) {
 		{% if type.is_const and type.name != 'char *'%}
-		return reinterpret_cast<{{type.name}}>(const_cast<char *>(JS_ToCString(ctx, v)));
+			return reinterpret_cast<{{type.name}}>(const_cast<char *>(JS_ToCString(ctx, v)));
 		{% elif type.name == 'char*' %}
-		return const_cast<char *>(JS_ToCString(ctx, v));
+			return const_cast<char *>(JS_ToCString(ctx, v));
 		{% elif type.is_const %}
-		return JS_ToCString(ctx, v);
+			return JS_ToCString(ctx, v);
 		{% else %}
-		return const_cast<char *>(JS_ToCString(ctx, v));
+			return const_cast<char *>(JS_ToCString(ctx, v));
 		{% endif %}
+		}
+		throw exception{ ctx };
 	{% elif type.is_ptr %}
 		{{type.js_name}}*r;
-		if ({{type.convert}}(ctx, r, v))
-			throw exception{ ctx };
-		{{type.base}} ret = static_cast<{{type.base}}>(*r);
-		{{type.base}} *ptr = &ret;
-		return ptr;
+			if ({{type.convert}}(ctx, r, v)){
+			{{type.base}} ret = static_cast<{{type.base}}>(*r);
+			{{type.base}} *ptr = &ret;
+			return ptr;
+		}
+		throw exception{ ctx };
 	{% else %}
 		{{type.js_name}} r;
 		if ({{type.convert}}(ctx, &r, v))
-			throw exception{ ctx };
-		return r;
+			return r;
+		throw exception{ ctx };
 	{% endif %}
 	}
 	
@@ -302,6 +304,25 @@ struct js_traits<const void *const *> {
 
 	static const void *const *unwrap(JSContext *ctx, JSValueConst v) {
 		throw std::runtime_error("Unwrapping to const void* const* is not implemented");
+	}
+};
+
+template <>
+struct js_traits<const uint8_t **> {
+	/// @throws exception
+	static const uint8_t **unwrap(JSContext *ctx, JSValueConst v) {
+		if (JS_IsArray(ctx, v))
+			throw exception{ ctx };
+		return new const uint8_t *[1]{ static_cast<uint8_t *>(JS_GetOpaque(v, 2)) };
+	}
+};
+template <>
+struct js_traits<const uint8_t *> {
+	/// @throws exception
+	static const uint8_t *unwrap(JSContext *ctx, JSValueConst v) {
+		if (JS_IsArray(ctx, v))
+			throw exception{ ctx };
+		return static_cast<uint8_t *>(JS_GetOpaque(v, 2));
 	}
 };
 

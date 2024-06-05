@@ -33,18 +33,17 @@
 #ifndef GODOT_CPP_CANVAS_ITEM_HPP
 #define GODOT_CPP_CANVAS_ITEM_HPP
 
+#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/variant/packed_vector2_array.hpp>
+#include <godot_cpp/variant/rid.hpp>
+#include <godot_cpp/variant/rect2.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/text_server.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/variant/color.hpp>
-#include <godot_cpp/variant/packed_vector2_array.hpp>
-#include <godot_cpp/variant/rect2.hpp>
-#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/variant/transform2d.hpp>
 #include <godot_cpp/variant/vector2.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -67,6 +66,7 @@ class CanvasItem : public Node {
 	GDEXTENSION_CLASS(CanvasItem, Node)
 
 public:
+
 	enum TextureFilter {
 		TEXTURE_FILTER_PARENT_NODE = 0,
 		TEXTURE_FILTER_NEAREST = 1,
@@ -188,17 +188,17 @@ public:
 	void set_clip_children_mode(CanvasItem::ClipChildrenMode mode);
 	CanvasItem::ClipChildrenMode get_clip_children_mode() const;
 	virtual void _draw();
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Node::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_draw), decltype(&T::_draw)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_draw),decltype(&T::_draw)>) {
 			BIND_VIRTUAL_METHOD(T, _draw);
 		}
 	}
 
 public:
+
 };
 
 } // namespace godot

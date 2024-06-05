@@ -33,13 +33,12 @@
 #ifndef GODOT_CPP_PHYSICS_SHAPE_QUERY_PARAMETERS2D_HPP
 #define GODOT_CPP_PHYSICS_SHAPE_QUERY_PARAMETERS2D_HPP
 
+#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/variant/transform2d.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/vector2.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -54,6 +53,7 @@ class PhysicsShapeQueryParameters2D : public RefCounted {
 	GDEXTENSION_CLASS(PhysicsShapeQueryParameters2D, RefCounted)
 
 public:
+
 	void set_shape(const Ref<Resource> &shape);
 	Ref<Resource> get_shape() const;
 	void set_shape_rid(const RID &shape);
@@ -72,7 +72,6 @@ public:
 	bool is_collide_with_bodies_enabled() const;
 	void set_collide_with_areas(bool enable);
 	bool is_collide_with_areas_enabled() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -80,6 +79,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

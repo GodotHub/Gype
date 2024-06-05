@@ -46,6 +46,7 @@ class MainLoop : public Object {
 	GDEXTENSION_CLASS(MainLoop, Object)
 
 public:
+
 	static const int NOTIFICATION_OS_MEMORY_WARNING = 2009;
 	static const int NOTIFICATION_TRANSLATION_CHANGED = 2010;
 	static const int NOTIFICATION_WM_ABOUT = 2011;
@@ -61,26 +62,26 @@ public:
 	virtual bool _physics_process(double delta);
 	virtual bool _process(double delta);
 	virtual void _finalize();
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_initialize), decltype(&T::_initialize)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_initialize),decltype(&T::_initialize)>) {
 			BIND_VIRTUAL_METHOD(T, _initialize);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_physics_process), decltype(&T::_physics_process)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_physics_process),decltype(&T::_physics_process)>) {
 			BIND_VIRTUAL_METHOD(T, _physics_process);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_process), decltype(&T::_process)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_process),decltype(&T::_process)>) {
 			BIND_VIRTUAL_METHOD(T, _process);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_finalize), decltype(&T::_finalize)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_finalize),decltype(&T::_finalize)>) {
 			BIND_VIRTUAL_METHOD(T, _finalize);
 		}
 	}
 
 public:
+
 };
 
 } // namespace godot

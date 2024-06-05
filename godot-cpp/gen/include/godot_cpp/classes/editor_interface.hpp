@@ -34,14 +34,13 @@
 #define GODOT_CPP_EDITOR_INTERFACE_HPP
 
 #include <godot_cpp/classes/global_constants.hpp>
-#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/core/object.hpp>
 #include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/rect2i.hpp>
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/vector2i.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -74,6 +73,7 @@ class EditorInterface : public Object {
 	GDEXTENSION_CLASS(EditorInterface, Object)
 
 public:
+
 	static EditorInterface *get_singleton();
 
 	void restart_editor(bool save = true);
@@ -128,7 +128,6 @@ public:
 	String get_playing_scene() const;
 	void set_movie_maker_enabled(bool enabled);
 	bool is_movie_maker_enabled() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -136,6 +135,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -47,6 +47,7 @@ class GPUParticlesCollisionHeightField3D : public GPUParticlesCollision3D {
 	GDEXTENSION_CLASS(GPUParticlesCollisionHeightField3D, GPUParticlesCollision3D)
 
 public:
+
 	enum Resolution {
 		RESOLUTION_256 = 0,
 		RESOLUTION_512 = 1,
@@ -70,7 +71,6 @@ public:
 	GPUParticlesCollisionHeightField3D::UpdateMode get_update_mode() const;
 	void set_follow_camera_enabled(bool enabled);
 	bool is_follow_camera_enabled() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -78,6 +78,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

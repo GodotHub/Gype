@@ -52,6 +52,7 @@ class TouchScreenButton : public Node2D {
 	GDEXTENSION_CLASS(TouchScreenButton, Node2D)
 
 public:
+
 	enum VisibilityMode {
 		VISIBILITY_ALWAYS = 0,
 		VISIBILITY_TOUCHSCREEN_ONLY = 1,
@@ -76,7 +77,6 @@ public:
 	void set_passby_press(bool enabled);
 	bool is_passby_press_enabled() const;
 	bool is_pressed() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -84,6 +84,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

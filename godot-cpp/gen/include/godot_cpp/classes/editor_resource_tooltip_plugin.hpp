@@ -52,23 +52,24 @@ class EditorResourceTooltipPlugin : public RefCounted {
 	GDEXTENSION_CLASS(EditorResourceTooltipPlugin, RefCounted)
 
 public:
+
 	void request_thumbnail(const String &path, TextureRect *control) const;
 	virtual bool _handles(const String &type) const;
 	virtual Control *_make_tooltip_for_path(const String &path, const Dictionary &metadata, Control *base) const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		RefCounted::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_handles), decltype(&T::_handles)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_handles),decltype(&T::_handles)>) {
 			BIND_VIRTUAL_METHOD(T, _handles);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_make_tooltip_for_path), decltype(&T::_make_tooltip_for_path)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_make_tooltip_for_path),decltype(&T::_make_tooltip_for_path)>) {
 			BIND_VIRTUAL_METHOD(T, _make_tooltip_for_path);
 		}
 	}
 
 public:
+
 };
 
 } // namespace godot

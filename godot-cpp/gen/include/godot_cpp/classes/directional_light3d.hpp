@@ -46,6 +46,7 @@ class DirectionalLight3D : public Light3D {
 	GDEXTENSION_CLASS(DirectionalLight3D, Light3D)
 
 public:
+
 	enum ShadowMode {
 		SHADOW_ORTHOGONAL = 0,
 		SHADOW_PARALLEL_2_SPLITS = 1,
@@ -64,7 +65,6 @@ public:
 	bool is_blend_splits_enabled() const;
 	void set_sky_mode(DirectionalLight3D::SkyMode mode);
 	DirectionalLight3D::SkyMode get_sky_mode() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -72,6 +72,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

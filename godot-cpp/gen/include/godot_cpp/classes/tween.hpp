@@ -57,6 +57,7 @@ class Tween : public RefCounted {
 	GDEXTENSION_CLASS(Tween, RefCounted)
 
 public:
+
 	enum TweenProcessMode {
 		TWEEN_PROCESS_PHYSICS = 0,
 		TWEEN_PROCESS_IDLE = 1,
@@ -114,7 +115,6 @@ public:
 	Ref<Tween> parallel();
 	Ref<Tween> chain();
 	static Variant interpolate_value(const Variant &initial_value, const Variant &delta_value, double elapsed_time, double duration, Tween::TransitionType trans_type, Tween::EaseType ease_type);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -122,6 +122,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

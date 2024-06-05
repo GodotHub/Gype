@@ -47,6 +47,7 @@ class GLTFTextureSampler : public Resource {
 	GDEXTENSION_CLASS(GLTFTextureSampler, Resource)
 
 public:
+
 	int32_t get_mag_filter() const;
 	void set_mag_filter(int32_t filter_mode);
 	int32_t get_min_filter() const;
@@ -55,7 +56,6 @@ public:
 	void set_wrap_s(int32_t wrap_mode);
 	int32_t get_wrap_t() const;
 	void set_wrap_t(int32_t wrap_mode);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -63,6 +63,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

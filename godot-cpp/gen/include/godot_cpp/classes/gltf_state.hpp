@@ -33,15 +33,14 @@
 #ifndef GODOT_CPP_GLTF_STATE_HPP
 #define GODOT_CPP_GLTF_STATE_HPP
 
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/variant/packed_byte_array.hpp>
 #include <godot_cpp/variant/packed_int32_array.hpp>
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/variant.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -71,6 +70,7 @@ class GLTFState : public Resource {
 	GDEXTENSION_CLASS(GLTFState, Resource)
 
 public:
+
 	static const int HANDLE_BINARY_DISCARD_TEXTURES = 0;
 	static const int HANDLE_BINARY_EXTRACT_TEXTURES = 1;
 	static const int HANDLE_BINARY_EMBED_AS_BASISU = 2;
@@ -139,7 +139,6 @@ public:
 	void set_additional_data(const StringName &extension_name, const Variant &additional_data);
 	int32_t get_handle_binary_image();
 	void set_handle_binary_image(int32_t method);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -147,6 +146,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

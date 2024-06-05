@@ -33,11 +33,10 @@
 #ifndef GODOT_CPP_SCENE_REPLICATION_CONFIG_HPP
 #define GODOT_CPP_SCENE_REPLICATION_CONFIG_HPP
 
+#include <godot_cpp/variant/node_path.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/variant/node_path.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -50,6 +49,7 @@ class SceneReplicationConfig : public Resource {
 	GDEXTENSION_CLASS(SceneReplicationConfig, Resource)
 
 public:
+
 	enum ReplicationMode {
 		REPLICATION_MODE_NEVER = 0,
 		REPLICATION_MODE_ALWAYS = 1,
@@ -69,7 +69,6 @@ public:
 	void property_set_sync(const NodePath &path, bool enabled);
 	bool property_get_watch(const NodePath &path);
 	void property_set_watch(const NodePath &path, bool enabled);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -77,6 +76,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -50,6 +50,7 @@ class SpringArm3D : public Node3D {
 	GDEXTENSION_CLASS(SpringArm3D, Node3D)
 
 public:
+
 	double get_hit_length();
 	void set_length(double length);
 	double get_length() const;
@@ -62,7 +63,6 @@ public:
 	uint32_t get_collision_mask();
 	void set_margin(double margin);
 	double get_margin();
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -70,6 +70,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

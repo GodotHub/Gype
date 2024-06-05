@@ -47,6 +47,7 @@ class VisualShaderNodeTexture2DArrayParameter : public VisualShaderNodeTexturePa
 	GDEXTENSION_CLASS(VisualShaderNodeTexture2DArrayParameter, VisualShaderNodeTextureParameter)
 
 public:
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -54,6 +55,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

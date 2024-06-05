@@ -33,16 +33,15 @@
 #ifndef GODOT_CPP_XR_INTERFACE_HPP
 #define GODOT_CPP_XR_INTERFACE_HPP
 
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/variant/packed_vector3_array.hpp>
 #include <godot_cpp/variant/projection.hpp>
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/variant/transform3d.hpp>
 #include <godot_cpp/variant/vector2.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -57,6 +56,7 @@ class XRInterface : public RefCounted {
 	GDEXTENSION_CLASS(XRInterface, RefCounted)
 
 public:
+
 	enum Capabilities {
 		XR_NONE = 0,
 		XR_MONO = 1,
@@ -117,7 +117,6 @@ public:
 	Array get_supported_environment_blend_modes();
 	bool set_environment_blend_mode(XRInterface::EnvironmentBlendMode mode);
 	XRInterface::EnvironmentBlendMode get_environment_blend_mode() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -125,6 +124,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

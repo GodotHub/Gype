@@ -33,10 +33,9 @@
 #ifndef GODOT_CPP_OPEN_XR_EXTENSION_WRAPPER_EXTENSION_HPP
 #define GODOT_CPP_OPEN_XR_EXTENSION_WRAPPER_EXTENSION_HPP
 
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/core/object.hpp>
 #include <godot_cpp/variant/dictionary.hpp>
-
+#include <godot_cpp/core/object.hpp>
+#include <godot_cpp/classes/ref.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -51,6 +50,7 @@ class OpenXRExtensionWrapperExtension : public Object {
 	GDEXTENSION_CLASS(OpenXRExtensionWrapperExtension, Object)
 
 public:
+
 	Ref<OpenXRAPIExtension> get_openxr_api();
 	void register_extension_wrapper();
 	virtual Dictionary _get_requested_extensions();
@@ -75,80 +75,80 @@ public:
 	virtual void _on_state_loss_pending();
 	virtual void _on_state_exiting();
 	virtual bool _on_event_polled(const void *event);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_get_requested_extensions), decltype(&T::_get_requested_extensions)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_requested_extensions),decltype(&T::_get_requested_extensions)>) {
 			BIND_VIRTUAL_METHOD(T, _get_requested_extensions);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_set_system_properties_and_get_next_pointer), decltype(&T::_set_system_properties_and_get_next_pointer)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_set_system_properties_and_get_next_pointer),decltype(&T::_set_system_properties_and_get_next_pointer)>) {
 			BIND_VIRTUAL_METHOD(T, _set_system_properties_and_get_next_pointer);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_set_instance_create_info_and_get_next_pointer), decltype(&T::_set_instance_create_info_and_get_next_pointer)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_set_instance_create_info_and_get_next_pointer),decltype(&T::_set_instance_create_info_and_get_next_pointer)>) {
 			BIND_VIRTUAL_METHOD(T, _set_instance_create_info_and_get_next_pointer);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_set_session_create_and_get_next_pointer), decltype(&T::_set_session_create_and_get_next_pointer)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_set_session_create_and_get_next_pointer),decltype(&T::_set_session_create_and_get_next_pointer)>) {
 			BIND_VIRTUAL_METHOD(T, _set_session_create_and_get_next_pointer);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_set_swapchain_create_info_and_get_next_pointer), decltype(&T::_set_swapchain_create_info_and_get_next_pointer)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_set_swapchain_create_info_and_get_next_pointer),decltype(&T::_set_swapchain_create_info_and_get_next_pointer)>) {
 			BIND_VIRTUAL_METHOD(T, _set_swapchain_create_info_and_get_next_pointer);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_on_register_metadata), decltype(&T::_on_register_metadata)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_on_register_metadata),decltype(&T::_on_register_metadata)>) {
 			BIND_VIRTUAL_METHOD(T, _on_register_metadata);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_on_before_instance_created), decltype(&T::_on_before_instance_created)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_on_before_instance_created),decltype(&T::_on_before_instance_created)>) {
 			BIND_VIRTUAL_METHOD(T, _on_before_instance_created);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_on_instance_created), decltype(&T::_on_instance_created)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_on_instance_created),decltype(&T::_on_instance_created)>) {
 			BIND_VIRTUAL_METHOD(T, _on_instance_created);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_on_instance_destroyed), decltype(&T::_on_instance_destroyed)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_on_instance_destroyed),decltype(&T::_on_instance_destroyed)>) {
 			BIND_VIRTUAL_METHOD(T, _on_instance_destroyed);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_on_session_created), decltype(&T::_on_session_created)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_on_session_created),decltype(&T::_on_session_created)>) {
 			BIND_VIRTUAL_METHOD(T, _on_session_created);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_on_process), decltype(&T::_on_process)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_on_process),decltype(&T::_on_process)>) {
 			BIND_VIRTUAL_METHOD(T, _on_process);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_on_pre_render), decltype(&T::_on_pre_render)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_on_pre_render),decltype(&T::_on_pre_render)>) {
 			BIND_VIRTUAL_METHOD(T, _on_pre_render);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_on_session_destroyed), decltype(&T::_on_session_destroyed)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_on_session_destroyed),decltype(&T::_on_session_destroyed)>) {
 			BIND_VIRTUAL_METHOD(T, _on_session_destroyed);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_on_state_idle), decltype(&T::_on_state_idle)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_on_state_idle),decltype(&T::_on_state_idle)>) {
 			BIND_VIRTUAL_METHOD(T, _on_state_idle);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_on_state_ready), decltype(&T::_on_state_ready)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_on_state_ready),decltype(&T::_on_state_ready)>) {
 			BIND_VIRTUAL_METHOD(T, _on_state_ready);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_on_state_synchronized), decltype(&T::_on_state_synchronized)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_on_state_synchronized),decltype(&T::_on_state_synchronized)>) {
 			BIND_VIRTUAL_METHOD(T, _on_state_synchronized);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_on_state_visible), decltype(&T::_on_state_visible)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_on_state_visible),decltype(&T::_on_state_visible)>) {
 			BIND_VIRTUAL_METHOD(T, _on_state_visible);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_on_state_focused), decltype(&T::_on_state_focused)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_on_state_focused),decltype(&T::_on_state_focused)>) {
 			BIND_VIRTUAL_METHOD(T, _on_state_focused);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_on_state_stopping), decltype(&T::_on_state_stopping)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_on_state_stopping),decltype(&T::_on_state_stopping)>) {
 			BIND_VIRTUAL_METHOD(T, _on_state_stopping);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_on_state_loss_pending), decltype(&T::_on_state_loss_pending)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_on_state_loss_pending),decltype(&T::_on_state_loss_pending)>) {
 			BIND_VIRTUAL_METHOD(T, _on_state_loss_pending);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_on_state_exiting), decltype(&T::_on_state_exiting)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_on_state_exiting),decltype(&T::_on_state_exiting)>) {
 			BIND_VIRTUAL_METHOD(T, _on_state_exiting);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_on_event_polled), decltype(&T::_on_event_polled)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_on_event_polled),decltype(&T::_on_event_polled)>) {
 			BIND_VIRTUAL_METHOD(T, _on_event_polled);
 		}
 	}
 
 public:
+
 };
 
 } // namespace godot

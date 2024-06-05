@@ -48,9 +48,9 @@ class BoxShape3D : public Shape3D {
 	GDEXTENSION_CLASS(BoxShape3D, Shape3D)
 
 public:
+
 	void set_size(const Vector3 &size);
 	Vector3 get_size() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -58,6 +58,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

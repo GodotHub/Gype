@@ -51,6 +51,7 @@ class RayCast2D : public Node2D {
 	GDEXTENSION_CLASS(RayCast2D, Node2D)
 
 public:
+
 	void set_enabled(bool enabled);
 	bool is_enabled() const;
 	void set_target_position(const Vector2 &local_point);
@@ -79,7 +80,6 @@ public:
 	bool is_collide_with_bodies_enabled() const;
 	void set_hit_from_inside(bool enable);
 	bool is_hit_from_inside_enabled() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -87,6 +87,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -1,5 +1,43 @@
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/core/object_id.hpp>
+#include <godot_cpp/variant/aabb.hpp>
+#include <godot_cpp/variant/array.hpp>
+#include <godot_cpp/variant/basis.hpp>
+#include <godot_cpp/variant/callable.hpp>
+#include <godot_cpp/variant/color.hpp>
+#include <godot_cpp/variant/dictionary.hpp>
+#include <godot_cpp/variant/node_path.hpp>
+#include <godot_cpp/variant/packed_byte_array.hpp>
+#include <godot_cpp/variant/packed_color_array.hpp>
+#include <godot_cpp/variant/packed_float32_array.hpp>
+#include <godot_cpp/variant/packed_float64_array.hpp>
+#include <godot_cpp/variant/packed_int32_array.hpp>
+#include <godot_cpp/variant/packed_int64_array.hpp>
+#include <godot_cpp/variant/packed_string_array.hpp>
+#include <godot_cpp/variant/packed_vector2_array.hpp>
+#include <godot_cpp/variant/packed_vector3_array.hpp>
+#include <godot_cpp/variant/plane.hpp>
+#include <godot_cpp/variant/projection.hpp>
+#include <godot_cpp/variant/quaternion.hpp>
+#include <godot_cpp/variant/rect2.hpp>
+#include <godot_cpp/variant/rect2i.hpp>
+#include <godot_cpp/variant/rid.hpp>
+#include <godot_cpp/variant/signal.hpp>
+#include <godot_cpp/variant/string.hpp>
+#include <godot_cpp/variant/string_name.hpp>
+#include <godot_cpp/variant/transform2d.hpp>
+#include <godot_cpp/variant/transform3d.hpp>
+#include <godot_cpp/variant/variant.hpp>
+#include <godot_cpp/variant/vector2.hpp>
+#include <godot_cpp/variant/vector2i.hpp>
+#include <godot_cpp/variant/vector3.hpp>
+#include <godot_cpp/variant/vector3i.hpp>
+#include <godot_cpp/variant/vector4.hpp>
+#include <godot_cpp/variant/vector4i.hpp>
+
+#include <iosfwd>
+
 #include "register/register_builtin_classes.h"
-#include "register/utils.h"
 
 using namespace godot;
 

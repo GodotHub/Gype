@@ -35,9 +35,8 @@
 
 #include <godot_cpp/core/defs.hpp>
 
-#include <gdextension_interface.h>
 #include <godot_cpp/variant/array_helpers.hpp>
-
+#include <gdextension_interface.h>
 
 #include <godot_cpp/templates/vararg.hpp>
 namespace godot {
@@ -145,7 +144,7 @@ class Array {
 	Array(const Variant *p_variant);
 
 public:
-	_FORCE_INLINE_ GDExtensionTypePtr _native_ptr() const { return const_cast<uint8_t(*)[ARRAY_SIZE]>(&opaque); }
+	_FORCE_INLINE_ GDExtensionTypePtr _native_ptr() const { return const_cast<uint8_t (*)[ARRAY_SIZE]>(&opaque); }
 	Array();
 	Array(const Array &from);
 	Array(const Array &base, int64_t type, const StringName &class_name, const Variant &script);

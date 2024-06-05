@@ -47,6 +47,7 @@ class VisualShaderNodeTextureParameterTriplanar : public VisualShaderNodeTexture
 	GDEXTENSION_CLASS(VisualShaderNodeTextureParameterTriplanar, VisualShaderNodeTextureParameter)
 
 public:
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -54,6 +55,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

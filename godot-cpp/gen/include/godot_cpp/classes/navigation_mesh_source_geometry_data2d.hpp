@@ -33,11 +33,10 @@
 #ifndef GODOT_CPP_NAVIGATION_MESH_SOURCE_GEOMETRY_DATA2D_HPP
 #define GODOT_CPP_NAVIGATION_MESH_SOURCE_GEOMETRY_DATA2D_HPP
 
+#include <godot_cpp/variant/packed_vector2_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/variant/packed_vector2_array.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -50,6 +49,7 @@ class NavigationMeshSourceGeometryData2D : public Resource {
 	GDEXTENSION_CLASS(NavigationMeshSourceGeometryData2D, Resource)
 
 public:
+
 	void clear();
 	bool has_data();
 	void set_traversable_outlines(const TypedArray<PackedVector2Array> &traversable_outlines);
@@ -58,7 +58,6 @@ public:
 	TypedArray<PackedVector2Array> get_obstruction_outlines() const;
 	void add_traversable_outline(const PackedVector2Array &shape_outline);
 	void add_obstruction_outline(const PackedVector2Array &shape_outline);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -66,6 +65,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

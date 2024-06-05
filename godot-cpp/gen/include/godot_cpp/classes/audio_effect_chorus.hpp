@@ -47,6 +47,7 @@ class AudioEffectChorus : public AudioEffect {
 	GDEXTENSION_CLASS(AudioEffectChorus, AudioEffect)
 
 public:
+
 	void set_voice_count(int32_t voices);
 	int32_t get_voice_count() const;
 	void set_voice_delay_ms(int32_t voice_idx, double delay_ms);
@@ -65,7 +66,6 @@ public:
 	double get_wet() const;
 	void set_dry(double amount);
 	double get_dry() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -73,6 +73,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

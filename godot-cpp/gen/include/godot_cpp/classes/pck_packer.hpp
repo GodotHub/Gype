@@ -49,10 +49,10 @@ class PCKPacker : public RefCounted {
 	GDEXTENSION_CLASS(PCKPacker, RefCounted)
 
 public:
+
 	Error pck_start(const String &pck_name, int32_t alignment = 32, const String &key = "0000000000000000000000000000000000000000000000000000000000000000", bool encrypt_directory = false);
 	Error add_file(const String &pck_path, const String &source_path, bool encrypt = false);
 	Error flush(bool verbose = false);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -60,6 +60,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

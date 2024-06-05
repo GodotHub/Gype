@@ -47,6 +47,7 @@ class AudioEffectPitchShift : public AudioEffect {
 	GDEXTENSION_CLASS(AudioEffectPitchShift, AudioEffect)
 
 public:
+
 	enum FFTSize {
 		FFT_SIZE_256 = 0,
 		FFT_SIZE_512 = 1,
@@ -62,7 +63,6 @@ public:
 	int32_t get_oversampling() const;
 	void set_fft_size(AudioEffectPitchShift::FFTSize size);
 	AudioEffectPitchShift::FFTSize get_fft_size() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -70,6 +70,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

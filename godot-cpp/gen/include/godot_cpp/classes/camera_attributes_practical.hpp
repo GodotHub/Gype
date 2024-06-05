@@ -47,6 +47,7 @@ class CameraAttributesPractical : public CameraAttributes {
 	GDEXTENSION_CLASS(CameraAttributesPractical, CameraAttributes)
 
 public:
+
 	void set_dof_blur_far_enabled(bool enabled);
 	bool is_dof_blur_far_enabled() const;
 	void set_dof_blur_far_distance(double distance);
@@ -65,7 +66,6 @@ public:
 	double get_auto_exposure_max_sensitivity() const;
 	void set_auto_exposure_min_sensitivity(double min_sensitivity);
 	double get_auto_exposure_min_sensitivity() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -73,6 +73,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

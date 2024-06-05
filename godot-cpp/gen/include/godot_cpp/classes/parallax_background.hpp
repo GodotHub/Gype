@@ -47,6 +47,7 @@ class ParallaxBackground : public CanvasLayer {
 	GDEXTENSION_CLASS(ParallaxBackground, CanvasLayer)
 
 public:
+
 	void set_scroll_offset(const Vector2 &offset);
 	Vector2 get_scroll_offset() const;
 	void set_scroll_base_offset(const Vector2 &offset);
@@ -59,7 +60,6 @@ public:
 	Vector2 get_limit_end() const;
 	void set_ignore_camera_zoom(bool ignore);
 	bool is_ignore_camera_zoom();
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -67,6 +67,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

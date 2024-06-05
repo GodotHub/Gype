@@ -48,6 +48,7 @@ class UPNPDevice : public RefCounted {
 	GDEXTENSION_CLASS(UPNPDevice, RefCounted)
 
 public:
+
 	enum IGDStatus {
 		IGD_STATUS_OK = 0,
 		IGD_STATUS_HTTP_ERROR = 1,
@@ -77,7 +78,6 @@ public:
 	String get_igd_our_addr() const;
 	void set_igd_status(UPNPDevice::IGDStatus status);
 	UPNPDevice::IGDStatus get_igd_status() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -85,6 +85,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

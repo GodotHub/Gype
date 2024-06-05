@@ -47,6 +47,7 @@ class AudioEffectReverb : public AudioEffect {
 	GDEXTENSION_CLASS(AudioEffectReverb, AudioEffect)
 
 public:
+
 	void set_predelay_msec(double msec);
 	double get_predelay_msec() const;
 	void set_predelay_feedback(double feedback);
@@ -63,7 +64,6 @@ public:
 	double get_wet() const;
 	void set_hpf(double amount);
 	double get_hpf() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -71,6 +71,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

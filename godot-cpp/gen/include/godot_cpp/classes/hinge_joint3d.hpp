@@ -46,6 +46,7 @@ class HingeJoint3D : public Joint3D {
 	GDEXTENSION_CLASS(HingeJoint3D, Joint3D)
 
 public:
+
 	enum Param {
 		PARAM_BIAS = 0,
 		PARAM_LIMIT_UPPER = 1,
@@ -68,7 +69,6 @@ public:
 	double get_param(HingeJoint3D::Param param) const;
 	void set_flag(HingeJoint3D::Flag flag, bool enabled);
 	bool get_flag(HingeJoint3D::Flag flag) const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -76,6 +76,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

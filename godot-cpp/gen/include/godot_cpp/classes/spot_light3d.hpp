@@ -46,6 +46,7 @@ class SpotLight3D : public Light3D {
 	GDEXTENSION_CLASS(SpotLight3D, Light3D)
 
 public:
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -53,6 +54,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

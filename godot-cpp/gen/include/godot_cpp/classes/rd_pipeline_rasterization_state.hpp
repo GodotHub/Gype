@@ -48,6 +48,7 @@ class RDPipelineRasterizationState : public RefCounted {
 	GDEXTENSION_CLASS(RDPipelineRasterizationState, RefCounted)
 
 public:
+
 	void set_enable_depth_clamp(bool p_member);
 	bool get_enable_depth_clamp() const;
 	void set_discard_primitives(bool p_member);
@@ -70,7 +71,6 @@ public:
 	double get_line_width() const;
 	void set_patch_control_points(uint32_t p_member);
 	uint32_t get_patch_control_points() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -78,6 +78,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

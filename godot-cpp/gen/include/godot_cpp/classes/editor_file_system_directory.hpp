@@ -48,6 +48,7 @@ class EditorFileSystemDirectory : public Object {
 	GDEXTENSION_CLASS(EditorFileSystemDirectory, Object)
 
 public:
+
 	int32_t get_subdir_count() const;
 	EditorFileSystemDirectory *get_subdir(int32_t idx);
 	int32_t get_file_count() const;
@@ -62,7 +63,6 @@ public:
 	EditorFileSystemDirectory *get_parent();
 	int32_t find_file_index(const String &name) const;
 	int32_t find_dir_index(const String &name) const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -70,6 +70,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

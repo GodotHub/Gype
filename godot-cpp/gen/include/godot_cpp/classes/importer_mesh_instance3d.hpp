@@ -35,9 +35,8 @@
 
 #include <godot_cpp/classes/geometry_instance3d.hpp>
 #include <godot_cpp/classes/node3d.hpp>
-#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/node_path.hpp>
-
+#include <godot_cpp/classes/ref.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -53,6 +52,7 @@ class ImporterMeshInstance3D : public Node3D {
 	GDEXTENSION_CLASS(ImporterMeshInstance3D, Node3D)
 
 public:
+
 	void set_mesh(const Ref<ImporterMesh> &mesh);
 	Ref<ImporterMesh> get_mesh() const;
 	void set_skin(const Ref<Skin> &skin);
@@ -73,7 +73,6 @@ public:
 	double get_visibility_range_begin() const;
 	void set_visibility_range_fade_mode(GeometryInstance3D::VisibilityRangeFadeMode mode);
 	GeometryInstance3D::VisibilityRangeFadeMode get_visibility_range_fade_mode() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -81,6 +80,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

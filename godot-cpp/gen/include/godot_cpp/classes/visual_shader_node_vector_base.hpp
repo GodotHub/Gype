@@ -47,6 +47,7 @@ class VisualShaderNodeVectorBase : public VisualShaderNode {
 	GDEXTENSION_CLASS(VisualShaderNodeVectorBase, VisualShaderNode)
 
 public:
+
 	enum OpType {
 		OP_TYPE_VECTOR_2D = 0,
 		OP_TYPE_VECTOR_3D = 1,
@@ -56,7 +57,6 @@ public:
 
 	void set_op_type(VisualShaderNodeVectorBase::OpType type);
 	VisualShaderNodeVectorBase::OpType get_op_type() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -64,6 +64,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

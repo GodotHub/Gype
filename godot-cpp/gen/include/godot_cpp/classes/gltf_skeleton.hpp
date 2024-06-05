@@ -33,13 +33,12 @@
 #ifndef GODOT_CPP_GLTF_SKELETON_HPP
 #define GODOT_CPP_GLTF_SKELETON_HPP
 
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/variant/packed_int32_array.hpp>
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -55,6 +54,7 @@ class GLTFSkeleton : public Resource {
 	GDEXTENSION_CLASS(GLTFSkeleton, Resource)
 
 public:
+
 	PackedInt32Array get_joints();
 	void set_joints(const PackedInt32Array &joints);
 	PackedInt32Array get_roots();
@@ -66,7 +66,6 @@ public:
 	void set_godot_bone_node(const Dictionary &godot_bone_node);
 	int32_t get_bone_attachment_count();
 	BoneAttachment3D *get_bone_attachment(int32_t idx);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -74,6 +73,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

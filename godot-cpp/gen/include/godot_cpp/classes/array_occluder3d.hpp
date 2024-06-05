@@ -50,10 +50,10 @@ class ArrayOccluder3D : public Occluder3D {
 	GDEXTENSION_CLASS(ArrayOccluder3D, Occluder3D)
 
 public:
+
 	void set_arrays(const PackedVector3Array &vertices, const PackedInt32Array &indices);
 	void set_vertices(const PackedVector3Array &vertices);
 	void set_indices(const PackedInt32Array &indices);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -61,6 +61,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

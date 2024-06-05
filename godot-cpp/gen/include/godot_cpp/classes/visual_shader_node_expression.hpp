@@ -34,9 +34,8 @@
 #define GODOT_CPP_VISUAL_SHADER_NODE_EXPRESSION_HPP
 
 #include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/visual_shader_node_group_base.hpp>
 #include <godot_cpp/variant/string.hpp>
-
+#include <godot_cpp/classes/visual_shader_node_group_base.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -49,9 +48,9 @@ class VisualShaderNodeExpression : public VisualShaderNodeGroupBase {
 	GDEXTENSION_CLASS(VisualShaderNodeExpression, VisualShaderNodeGroupBase)
 
 public:
+
 	void set_expression(const String &expression);
 	String get_expression() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -59,6 +58,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

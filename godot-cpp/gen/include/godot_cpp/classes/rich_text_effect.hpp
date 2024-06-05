@@ -49,18 +49,19 @@ class RichTextEffect : public Resource {
 	GDEXTENSION_CLASS(RichTextEffect, Resource)
 
 public:
-	virtual bool _process_custom_fx(const Ref<CharFXTransform> &char_fx) const;
 
+	virtual bool _process_custom_fx(const Ref<CharFXTransform> &char_fx) const;
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Resource::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_process_custom_fx), decltype(&T::_process_custom_fx)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_process_custom_fx),decltype(&T::_process_custom_fx)>) {
 			BIND_VIRTUAL_METHOD(T, _process_custom_fx);
 		}
 	}
 
 public:
+
 };
 
 } // namespace godot

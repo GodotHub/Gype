@@ -48,9 +48,9 @@ class QuadOccluder3D : public Occluder3D {
 	GDEXTENSION_CLASS(QuadOccluder3D, Occluder3D)
 
 public:
+
 	void set_size(const Vector2 &size);
 	Vector2 get_size() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -58,6 +58,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

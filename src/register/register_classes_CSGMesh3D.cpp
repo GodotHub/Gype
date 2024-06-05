@@ -1,13 +1,16 @@
-#include "register/register_classes.h"
-#include "register/utils.h"
 #include <godot_cpp/classes/csg_mesh3d.hpp>
+#include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/mesh.hpp>
+
+#include "qjspp.hpp"
+#include "register/register_classes.h"
 
 using namespace godot;
 
 void register_classes_CSGMesh3D() {
-    qjs::Context::Module &_module = _Node3D;
-    _module.class_<CSGMesh3D>("CSGMesh3D")
-           .constructor<>()
-           .property<CSGMesh3D::get_mesh, CSGMesh3D::set_mesh>("mesh")
-           .property<CSGMesh3D::get_material, CSGMesh3D::set_material>("material")
-;}
+	qjs::Context::Module &_module = _Node3D;
+	_module.class_<CSGMesh3D>("CSGMesh3D")
+			.constructor<>()
+			.property<&CSGMesh3D::get_mesh, &CSGMesh3D::set_mesh>("mesh")
+			.property<&CSGMesh3D::get_material, &CSGMesh3D::set_material>("material");
+}

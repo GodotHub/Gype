@@ -47,6 +47,7 @@ class VisualShaderNodeIntOp : public VisualShaderNode {
 	GDEXTENSION_CLASS(VisualShaderNodeIntOp, VisualShaderNode)
 
 public:
+
 	enum Operator {
 		OP_ADD = 0,
 		OP_SUB = 1,
@@ -65,7 +66,6 @@ public:
 
 	void set_operator(VisualShaderNodeIntOp::Operator op);
 	VisualShaderNodeIntOp::Operator get_operator() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -73,6 +73,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

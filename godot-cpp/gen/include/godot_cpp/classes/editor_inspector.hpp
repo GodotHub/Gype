@@ -49,9 +49,9 @@ class EditorInspector : public ScrollContainer {
 	GDEXTENSION_CLASS(EditorInspector, ScrollContainer)
 
 public:
+
 	String get_selected_path() const;
 	Object *get_edited_object();
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -59,6 +59,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

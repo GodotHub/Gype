@@ -33,10 +33,9 @@
 #ifndef GODOT_CPP_WORLD2D_HPP
 #define GODOT_CPP_WORLD2D_HPP
 
+#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/variant/rid.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -51,11 +50,11 @@ class World2D : public Resource {
 	GDEXTENSION_CLASS(World2D, Resource)
 
 public:
+
 	RID get_canvas() const;
 	RID get_space() const;
 	RID get_navigation_map() const;
 	PhysicsDirectSpaceState2D *get_direct_space_state();
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -63,6 +62,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

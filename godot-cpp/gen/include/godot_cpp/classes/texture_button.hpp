@@ -50,6 +50,7 @@ class TextureButton : public BaseButton {
 	GDEXTENSION_CLASS(TextureButton, BaseButton)
 
 public:
+
 	enum StretchMode {
 		STRETCH_SCALE = 0,
 		STRETCH_TILE = 1,
@@ -80,7 +81,6 @@ public:
 	Ref<BitMap> get_click_mask() const;
 	bool get_ignore_texture_size() const;
 	TextureButton::StretchMode get_stretch_mode() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -88,6 +88,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

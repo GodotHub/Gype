@@ -47,6 +47,7 @@ class VisualShaderNodeScreenNormalWorldSpace : public VisualShaderNode {
 	GDEXTENSION_CLASS(VisualShaderNodeScreenNormalWorldSpace, VisualShaderNode)
 
 public:
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -54,6 +55,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

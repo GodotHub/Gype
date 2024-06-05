@@ -48,6 +48,7 @@ class RDPipelineColorBlendStateAttachment : public RefCounted {
 	GDEXTENSION_CLASS(RDPipelineColorBlendStateAttachment, RefCounted)
 
 public:
+
 	void set_as_mix();
 	void set_enable_blend(bool p_member);
 	bool get_enable_blend() const;
@@ -71,7 +72,6 @@ public:
 	bool get_write_b() const;
 	void set_write_a(bool p_member);
 	bool get_write_a() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -79,6 +79,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -47,9 +47,9 @@ class AudioEffectPanner : public AudioEffect {
 	GDEXTENSION_CLASS(AudioEffectPanner, AudioEffect)
 
 public:
+
 	void set_pan(double cpanume);
 	double get_pan() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -57,6 +57,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

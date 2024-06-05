@@ -47,8 +47,8 @@ class PackedDataContainerRef : public RefCounted {
 	GDEXTENSION_CLASS(PackedDataContainerRef, RefCounted)
 
 public:
-	int32_t size() const;
 
+	int32_t size() const;
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -56,6 +56,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -33,10 +33,9 @@
 #ifndef GODOT_CPP_COLOR_PICKER_HPP
 #define GODOT_CPP_COLOR_PICKER_HPP
 
-#include <godot_cpp/classes/v_box_container.hpp>
 #include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/variant/packed_color_array.hpp>
-
+#include <godot_cpp/classes/v_box_container.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -49,6 +48,7 @@ class ColorPicker : public VBoxContainer {
 	GDEXTENSION_CLASS(ColorPicker, VBoxContainer)
 
 public:
+
 	enum ColorModeType {
 		MODE_RGB = 0,
 		MODE_HSV = 1,
@@ -92,7 +92,6 @@ public:
 	PackedColorArray get_recent_presets() const;
 	void set_picker_shape(ColorPicker::PickerShapeType shape);
 	ColorPicker::PickerShapeType get_picker_shape() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -100,6 +99,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

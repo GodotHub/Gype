@@ -47,6 +47,7 @@ class EditorSceneFormatImporterFBX : public EditorSceneFormatImporter {
 	GDEXTENSION_CLASS(EditorSceneFormatImporterFBX, EditorSceneFormatImporter)
 
 public:
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -54,6 +55,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

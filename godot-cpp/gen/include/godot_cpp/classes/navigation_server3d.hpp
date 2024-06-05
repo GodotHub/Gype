@@ -33,14 +33,13 @@
 #ifndef GODOT_CPP_NAVIGATION_SERVER3D_HPP
 #define GODOT_CPP_NAVIGATION_SERVER3D_HPP
 
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/core/object.hpp>
 #include <godot_cpp/variant/callable.hpp>
+#include <godot_cpp/core/object.hpp>
 #include <godot_cpp/variant/packed_vector3_array.hpp>
 #include <godot_cpp/variant/rid.hpp>
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/vector3.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -60,6 +59,7 @@ class NavigationServer3D : public Object {
 	GDEXTENSION_CLASS(NavigationServer3D, Object)
 
 public:
+
 	enum ProcessInfo {
 		INFO_ACTIVE_MAPS = 0,
 		INFO_REGION_COUNT = 1,
@@ -189,7 +189,6 @@ public:
 	void set_debug_enabled(bool enabled);
 	bool get_debug_enabled() const;
 	int32_t get_process_info(NavigationServer3D::ProcessInfo process_info) const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -197,6 +196,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

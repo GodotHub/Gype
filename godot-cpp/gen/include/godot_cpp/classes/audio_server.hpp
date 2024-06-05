@@ -33,12 +33,11 @@
 #ifndef GODOT_CPP_AUDIO_SERVER_HPP
 #define GODOT_CPP_AUDIO_SERVER_HPP
 
-#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/core/object.hpp>
 #include <godot_cpp/variant/packed_string_array.hpp>
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/string_name.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -55,6 +54,7 @@ class AudioServer : public Object {
 	GDEXTENSION_CLASS(AudioServer, Object)
 
 public:
+
 	enum SpeakerMode {
 		SPEAKER_MODE_STEREO = 0,
 		SPEAKER_SURROUND_31 = 1,
@@ -111,7 +111,6 @@ public:
 	void set_bus_layout(const Ref<AudioBusLayout> &bus_layout);
 	Ref<AudioBusLayout> generate_bus_layout() const;
 	void set_enable_tagging_used_audio_streams(bool enable);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -119,6 +118,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

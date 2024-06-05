@@ -34,11 +34,10 @@
 #define GODOT_CPP_DIR_ACCESS_HPP
 
 #include <godot_cpp/classes/global_constants.hpp>
+#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/string.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -51,6 +50,7 @@ class DirAccess : public RefCounted {
 	GDEXTENSION_CLASS(DirAccess, RefCounted)
 
 public:
+
 	static Ref<DirAccess> open(const String &path);
 	static Error get_open_error();
 	Error list_dir_begin();
@@ -85,7 +85,6 @@ public:
 	void set_include_hidden(bool enable);
 	bool get_include_hidden() const;
 	bool is_case_sensitive(const String &path) const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -93,6 +92,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

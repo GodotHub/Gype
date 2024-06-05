@@ -53,34 +53,35 @@ class EditorResourcePreviewGenerator : public RefCounted {
 	GDEXTENSION_CLASS(EditorResourcePreviewGenerator, RefCounted)
 
 public:
+
 	virtual bool _handles(const String &type) const;
 	virtual Ref<Texture2D> _generate(const Ref<Resource> &resource, const Vector2i &size, const Dictionary &metadata) const;
 	virtual Ref<Texture2D> _generate_from_path(const String &path, const Vector2i &size, const Dictionary &metadata) const;
 	virtual bool _generate_small_preview_automatically() const;
 	virtual bool _can_generate_small_preview() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		RefCounted::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_handles), decltype(&T::_handles)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_handles),decltype(&T::_handles)>) {
 			BIND_VIRTUAL_METHOD(T, _handles);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_generate), decltype(&T::_generate)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_generate),decltype(&T::_generate)>) {
 			BIND_VIRTUAL_METHOD(T, _generate);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_generate_from_path), decltype(&T::_generate_from_path)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_generate_from_path),decltype(&T::_generate_from_path)>) {
 			BIND_VIRTUAL_METHOD(T, _generate_from_path);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_generate_small_preview_automatically), decltype(&T::_generate_small_preview_automatically)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_generate_small_preview_automatically),decltype(&T::_generate_small_preview_automatically)>) {
 			BIND_VIRTUAL_METHOD(T, _generate_small_preview_automatically);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_can_generate_small_preview), decltype(&T::_can_generate_small_preview)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_can_generate_small_preview),decltype(&T::_can_generate_small_preview)>) {
 			BIND_VIRTUAL_METHOD(T, _can_generate_small_preview);
 		}
 	}
 
 public:
+
 };
 
 } // namespace godot

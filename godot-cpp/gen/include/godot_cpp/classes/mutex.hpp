@@ -47,10 +47,10 @@ class Mutex : public RefCounted {
 	GDEXTENSION_CLASS(Mutex, RefCounted)
 
 public:
+
 	void lock();
 	bool try_lock();
 	void unlock();
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -58,6 +58,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

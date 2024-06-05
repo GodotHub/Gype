@@ -47,6 +47,7 @@ class ImageFormatLoader : public RefCounted {
 	GDEXTENSION_CLASS(ImageFormatLoader, RefCounted)
 
 public:
+
 	enum LoaderFlags : uint64_t {
 		FLAG_NONE = 0,
 		FLAG_FORCE_LINEAR = 1,
@@ -60,6 +61,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

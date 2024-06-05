@@ -49,18 +49,19 @@ class AudioEffect : public Resource {
 	GDEXTENSION_CLASS(AudioEffect, Resource)
 
 public:
-	virtual Ref<AudioEffectInstance> _instantiate();
 
+	virtual Ref<AudioEffectInstance> _instantiate();
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Resource::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_instantiate), decltype(&T::_instantiate)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_instantiate),decltype(&T::_instantiate)>) {
 			BIND_VIRTUAL_METHOD(T, _instantiate);
 		}
 	}
 
 public:
+
 };
 
 } // namespace godot

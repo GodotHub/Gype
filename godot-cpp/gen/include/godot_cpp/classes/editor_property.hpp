@@ -52,6 +52,7 @@ class EditorProperty : public Container {
 	GDEXTENSION_CLASS(EditorProperty, Container)
 
 public:
+
 	void set_label(const String &text);
 	String get_label() const;
 	void set_read_only(bool read_only);
@@ -74,20 +75,20 @@ public:
 	void emit_changed(const StringName &property, const Variant &value, const StringName &field = StringName(), bool changing = false);
 	virtual void _update_property();
 	virtual void _set_read_only(bool read_only);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Container::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_update_property), decltype(&T::_update_property)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_update_property),decltype(&T::_update_property)>) {
 			BIND_VIRTUAL_METHOD(T, _update_property);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_set_read_only), decltype(&T::_set_read_only)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_set_read_only),decltype(&T::_set_read_only)>) {
 			BIND_VIRTUAL_METHOD(T, _set_read_only);
 		}
 	}
 
 public:
+
 };
 
 } // namespace godot

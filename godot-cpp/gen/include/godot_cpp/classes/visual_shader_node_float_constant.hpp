@@ -47,9 +47,9 @@ class VisualShaderNodeFloatConstant : public VisualShaderNodeConstant {
 	GDEXTENSION_CLASS(VisualShaderNodeFloatConstant, VisualShaderNodeConstant)
 
 public:
+
 	void set_constant(double constant);
 	double get_constant() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -57,6 +57,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

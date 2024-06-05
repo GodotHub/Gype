@@ -33,10 +33,9 @@
 #ifndef GODOT_CPP_XR_ANCHOR3D_HPP
 #define GODOT_CPP_XR_ANCHOR3D_HPP
 
-#include <godot_cpp/classes/xr_node3d.hpp>
 #include <godot_cpp/variant/plane.hpp>
 #include <godot_cpp/variant/vector3.hpp>
-
+#include <godot_cpp/classes/xr_node3d.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -49,9 +48,9 @@ class XRAnchor3D : public XRNode3D {
 	GDEXTENSION_CLASS(XRAnchor3D, XRNode3D)
 
 public:
+
 	Vector3 get_size() const;
 	Plane get_plane() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -59,6 +58,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

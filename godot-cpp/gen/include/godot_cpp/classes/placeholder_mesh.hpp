@@ -49,8 +49,8 @@ class PlaceholderMesh : public Mesh {
 	GDEXTENSION_CLASS(PlaceholderMesh, Mesh)
 
 public:
-	void set_aabb(const AABB &aabb);
 
+	void set_aabb(const AABB &aabb);
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -58,6 +58,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

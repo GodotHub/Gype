@@ -47,6 +47,7 @@ class VisualShaderNodeVectorFunc : public VisualShaderNodeVectorBase {
 	GDEXTENSION_CLASS(VisualShaderNodeVectorFunc, VisualShaderNodeVectorBase)
 
 public:
+
 	enum Function {
 		FUNC_NORMALIZE = 0,
 		FUNC_SATURATE = 1,
@@ -86,7 +87,6 @@ public:
 
 	void set_function(VisualShaderNodeVectorFunc::Function func);
 	VisualShaderNodeVectorFunc::Function get_function() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -94,6 +94,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

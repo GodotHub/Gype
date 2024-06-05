@@ -33,10 +33,9 @@
 #ifndef GODOT_CPP_COLLISION_SHAPE2D_HPP
 #define GODOT_CPP_COLLISION_SHAPE2D_HPP
 
+#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/variant/color.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -51,6 +50,7 @@ class CollisionShape2D : public Node2D {
 	GDEXTENSION_CLASS(CollisionShape2D, Node2D)
 
 public:
+
 	void set_shape(const Ref<Shape2D> &shape);
 	Ref<Shape2D> get_shape() const;
 	void set_disabled(bool disabled);
@@ -61,7 +61,6 @@ public:
 	double get_one_way_collision_margin() const;
 	void set_debug_color(const Color &color);
 	Color get_debug_color() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -69,6 +68,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

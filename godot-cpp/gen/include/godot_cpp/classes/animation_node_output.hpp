@@ -47,6 +47,7 @@ class AnimationNodeOutput : public AnimationNode {
 	GDEXTENSION_CLASS(AnimationNodeOutput, AnimationNode)
 
 public:
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -54,6 +55,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

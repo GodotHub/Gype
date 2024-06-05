@@ -47,6 +47,7 @@ class VisualShaderNodeTexture3DParameter : public VisualShaderNodeTextureParamet
 	GDEXTENSION_CLASS(VisualShaderNodeTexture3DParameter, VisualShaderNodeTextureParameter)
 
 public:
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -54,6 +55,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

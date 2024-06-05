@@ -47,6 +47,7 @@ class VisualShaderNodeDerivativeFunc : public VisualShaderNode {
 	GDEXTENSION_CLASS(VisualShaderNodeDerivativeFunc, VisualShaderNode)
 
 public:
+
 	enum OpType {
 		OP_TYPE_SCALAR = 0,
 		OP_TYPE_VECTOR_2D = 1,
@@ -75,7 +76,6 @@ public:
 	VisualShaderNodeDerivativeFunc::Function get_function() const;
 	void set_precision(VisualShaderNodeDerivativeFunc::Precision precision);
 	VisualShaderNodeDerivativeFunc::Precision get_precision() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -83,6 +83,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -46,13 +46,13 @@ class CanvasGroup : public Node2D {
 	GDEXTENSION_CLASS(CanvasGroup, Node2D)
 
 public:
+
 	void set_fit_margin(double fit_margin);
 	double get_fit_margin() const;
 	void set_clear_margin(double clear_margin);
 	double get_clear_margin() const;
 	void set_use_mipmaps(bool use_mipmaps);
 	bool is_using_mipmaps() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -60,6 +60,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

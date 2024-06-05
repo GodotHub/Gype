@@ -48,6 +48,7 @@ class TextureLayered : public Texture {
 	GDEXTENSION_CLASS(TextureLayered, Texture)
 
 public:
+
 	enum LayeredType {
 		LAYERED_TYPE_2D_ARRAY = 0,
 		LAYERED_TYPE_CUBEMAP = 1,
@@ -68,35 +69,35 @@ public:
 	virtual int32_t _get_layers() const;
 	virtual bool _has_mipmaps() const;
 	virtual Ref<Image> _get_layer_data(int32_t layer_index) const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Texture::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_get_format), decltype(&T::_get_format)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_format),decltype(&T::_get_format)>) {
 			BIND_VIRTUAL_METHOD(T, _get_format);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_layered_type), decltype(&T::_get_layered_type)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_layered_type),decltype(&T::_get_layered_type)>) {
 			BIND_VIRTUAL_METHOD(T, _get_layered_type);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_width), decltype(&T::_get_width)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_width),decltype(&T::_get_width)>) {
 			BIND_VIRTUAL_METHOD(T, _get_width);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_height), decltype(&T::_get_height)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_height),decltype(&T::_get_height)>) {
 			BIND_VIRTUAL_METHOD(T, _get_height);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_layers), decltype(&T::_get_layers)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_layers),decltype(&T::_get_layers)>) {
 			BIND_VIRTUAL_METHOD(T, _get_layers);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_has_mipmaps), decltype(&T::_has_mipmaps)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_has_mipmaps),decltype(&T::_has_mipmaps)>) {
 			BIND_VIRTUAL_METHOD(T, _has_mipmaps);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_layer_data), decltype(&T::_get_layer_data)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_layer_data),decltype(&T::_get_layer_data)>) {
 			BIND_VIRTUAL_METHOD(T, _get_layer_data);
 		}
 	}
 
 public:
+
 };
 
 } // namespace godot

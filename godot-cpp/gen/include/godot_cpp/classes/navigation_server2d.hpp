@@ -33,14 +33,13 @@
 #ifndef GODOT_CPP_NAVIGATION_SERVER2D_HPP
 #define GODOT_CPP_NAVIGATION_SERVER2D_HPP
 
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/core/object.hpp>
 #include <godot_cpp/variant/callable.hpp>
+#include <godot_cpp/core/object.hpp>
 #include <godot_cpp/variant/packed_vector2_array.hpp>
 #include <godot_cpp/variant/rid.hpp>
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/vector2.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -60,6 +59,7 @@ class NavigationServer2D : public Object {
 	GDEXTENSION_CLASS(NavigationServer2D, Object)
 
 public:
+
 	static NavigationServer2D *get_singleton();
 
 	TypedArray<RID> get_maps() const;
@@ -162,7 +162,6 @@ public:
 	void free_rid(const RID &rid);
 	void set_debug_enabled(bool enabled);
 	bool get_debug_enabled() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -170,6 +169,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -51,6 +51,7 @@ class ZIPPacker : public RefCounted {
 	GDEXTENSION_CLASS(ZIPPacker, RefCounted)
 
 public:
+
 	enum ZipAppend {
 		APPEND_CREATE = 0,
 		APPEND_CREATEAFTER = 1,
@@ -62,7 +63,6 @@ public:
 	Error write_file(const PackedByteArray &data);
 	Error close_file();
 	Error close();
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -70,6 +70,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

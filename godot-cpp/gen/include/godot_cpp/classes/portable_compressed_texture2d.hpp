@@ -49,6 +49,7 @@ class PortableCompressedTexture2D : public Texture2D {
 	GDEXTENSION_CLASS(PortableCompressedTexture2D, Texture2D)
 
 public:
+
 	enum CompressionMode {
 		COMPRESSION_MODE_LOSSLESS = 0,
 		COMPRESSION_MODE_LOSSY = 1,
@@ -67,7 +68,6 @@ public:
 	bool is_keeping_compressed_buffer() const;
 	static void set_keep_all_compressed_buffers(bool keep);
 	static bool is_keeping_all_compressed_buffers();
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -75,6 +75,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -47,6 +47,7 @@ class VisualShaderNodeClamp : public VisualShaderNode {
 	GDEXTENSION_CLASS(VisualShaderNodeClamp, VisualShaderNode)
 
 public:
+
 	enum OpType {
 		OP_TYPE_FLOAT = 0,
 		OP_TYPE_INT = 1,
@@ -59,7 +60,6 @@ public:
 
 	void set_op_type(VisualShaderNodeClamp::OpType op_type);
 	VisualShaderNodeClamp::OpType get_op_type() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -67,6 +67,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

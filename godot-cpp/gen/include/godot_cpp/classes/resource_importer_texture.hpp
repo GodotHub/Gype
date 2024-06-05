@@ -47,6 +47,7 @@ class ResourceImporterTexture : public ResourceImporter {
 	GDEXTENSION_CLASS(ResourceImporterTexture, ResourceImporter)
 
 public:
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -54,6 +55,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

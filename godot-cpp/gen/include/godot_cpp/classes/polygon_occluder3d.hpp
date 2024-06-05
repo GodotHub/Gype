@@ -34,9 +34,8 @@
 #define GODOT_CPP_POLYGON_OCCLUDER3D_HPP
 
 #include <godot_cpp/classes/occluder3d.hpp>
-#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/packed_vector2_array.hpp>
-
+#include <godot_cpp/classes/ref.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -49,9 +48,9 @@ class PolygonOccluder3D : public Occluder3D {
 	GDEXTENSION_CLASS(PolygonOccluder3D, Occluder3D)
 
 public:
+
 	void set_polygon(const PackedVector2Array &polygon);
 	PackedVector2Array get_polygon() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -59,6 +58,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

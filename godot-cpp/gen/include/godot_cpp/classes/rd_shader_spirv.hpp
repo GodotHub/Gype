@@ -33,12 +33,11 @@
 #ifndef GODOT_CPP_RD_SHADER_SPIRV_HPP
 #define GODOT_CPP_RD_SHADER_SPIRV_HPP
 
+#include <godot_cpp/variant/packed_byte_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/rendering_device.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/variant/packed_byte_array.hpp>
 #include <godot_cpp/variant/string.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -51,11 +50,11 @@ class RDShaderSPIRV : public Resource {
 	GDEXTENSION_CLASS(RDShaderSPIRV, Resource)
 
 public:
+
 	void set_stage_bytecode(RenderingDevice::ShaderStage stage, const PackedByteArray &bytecode);
 	PackedByteArray get_stage_bytecode(RenderingDevice::ShaderStage stage) const;
 	void set_stage_compile_error(RenderingDevice::ShaderStage stage, const String &compile_error);
 	String get_stage_compile_error(RenderingDevice::ShaderStage stage) const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -63,6 +62,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

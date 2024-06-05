@@ -52,6 +52,7 @@ class PacketPeerDTLS : public PacketPeer {
 	GDEXTENSION_CLASS(PacketPeerDTLS, PacketPeer)
 
 public:
+
 	enum Status {
 		STATUS_DISCONNECTED = 0,
 		STATUS_HANDSHAKING = 1,
@@ -64,7 +65,6 @@ public:
 	Error connect_to_peer(const Ref<PacketPeerUDP> &packet_peer, const String &hostname, const Ref<TLSOptions> &client_options = nullptr);
 	PacketPeerDTLS::Status get_status() const;
 	void disconnect_from_peer();
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -72,6 +72,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -47,6 +47,7 @@ class VisualShaderNodeTextureParameter : public VisualShaderNodeParameter {
 	GDEXTENSION_CLASS(VisualShaderNodeTextureParameter, VisualShaderNodeParameter)
 
 public:
+
 	enum TextureType {
 		TYPE_DATA = 0,
 		TYPE_COLOR = 1,
@@ -98,7 +99,6 @@ public:
 	VisualShaderNodeTextureParameter::TextureRepeat get_texture_repeat() const;
 	void set_texture_source(VisualShaderNodeTextureParameter::TextureSource source);
 	VisualShaderNodeTextureParameter::TextureSource get_texture_source() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -106,6 +106,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

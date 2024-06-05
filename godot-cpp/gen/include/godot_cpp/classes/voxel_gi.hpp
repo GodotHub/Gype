@@ -35,9 +35,8 @@
 
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/visual_instance3d.hpp>
 #include <godot_cpp/variant/vector3.hpp>
-
+#include <godot_cpp/classes/visual_instance3d.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -53,6 +52,7 @@ class VoxelGI : public VisualInstance3D {
 	GDEXTENSION_CLASS(VoxelGI, VisualInstance3D)
 
 public:
+
 	enum Subdiv {
 		SUBDIV_64 = 0,
 		SUBDIV_128 = 1,
@@ -71,7 +71,6 @@ public:
 	Ref<CameraAttributes> get_camera_attributes() const;
 	void bake(Node *from_node = nullptr, bool create_visual_debug = false);
 	void debug_bake();
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -79,6 +78,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

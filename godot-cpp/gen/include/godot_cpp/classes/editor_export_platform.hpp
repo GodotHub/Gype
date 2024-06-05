@@ -48,8 +48,8 @@ class EditorExportPlatform : public RefCounted {
 	GDEXTENSION_CLASS(EditorExportPlatform, RefCounted)
 
 public:
-	String get_os_name() const;
 
+	String get_os_name() const;
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -57,6 +57,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

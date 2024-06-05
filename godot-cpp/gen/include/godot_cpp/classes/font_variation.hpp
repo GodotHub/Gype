@@ -33,12 +33,11 @@
 #ifndef GODOT_CPP_FONT_VARIATION_HPP
 #define GODOT_CPP_FONT_VARIATION_HPP
 
+#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/text_server.hpp>
-#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/variant/transform2d.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -51,6 +50,7 @@ class FontVariation : public Font {
 	GDEXTENSION_CLASS(FontVariation, Font)
 
 public:
+
 	void set_base_font(const Ref<Font> &font);
 	Ref<Font> get_base_font() const;
 	void set_variation_opentype(const Dictionary &coords);
@@ -63,7 +63,6 @@ public:
 	Transform2D get_variation_transform() const;
 	void set_opentype_features(const Dictionary &features);
 	void set_spacing(TextServer::SpacingType spacing, int32_t value);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -71,6 +70,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

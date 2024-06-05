@@ -47,6 +47,7 @@ class AudioBusLayout : public Resource {
 	GDEXTENSION_CLASS(AudioBusLayout, Resource)
 
 public:
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -54,6 +55,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

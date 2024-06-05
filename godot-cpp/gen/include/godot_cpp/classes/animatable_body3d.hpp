@@ -46,9 +46,9 @@ class AnimatableBody3D : public StaticBody3D {
 	GDEXTENSION_CLASS(AnimatableBody3D, StaticBody3D)
 
 public:
+
 	void set_sync_to_physics(bool enable);
 	bool is_sync_to_physics_enabled() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -56,6 +56,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

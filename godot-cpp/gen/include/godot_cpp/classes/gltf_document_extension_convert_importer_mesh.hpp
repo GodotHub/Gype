@@ -47,6 +47,7 @@ class GLTFDocumentExtensionConvertImporterMesh : public GLTFDocumentExtension {
 	GDEXTENSION_CLASS(GLTFDocumentExtensionConvertImporterMesh, GLTFDocumentExtension)
 
 public:
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -54,6 +55,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -1,9 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
 
-# 设置C和C++编译器
-set(CMAKE_C_COMPILER D:/mingw64/bin/gcc.exe)
-set(CMAKE_CXX_COMPILER D:/mingw64/bin/g++.exe)
-
 # 项目名称和语言
 project(godot-cpp C CXX)
 
@@ -18,8 +14,8 @@ file(GLOB_RECURSE GODOT_HEADERS
 # 添加静态库
 add_library(godot-cpp STATIC ${GODOT_SOURCES})
 
-target_compile_options(godot-cpp PRIVATE 
-	-fno-omit-frame-pointer -O0 -g)
+target_compile_options(godot-cpp PUBLIC 
+	-fno-omit-frame-pointer -Os -g)
 
 # 包含include目录和所有子目录
 target_include_directories(godot-cpp SYSTEM PUBLIC 

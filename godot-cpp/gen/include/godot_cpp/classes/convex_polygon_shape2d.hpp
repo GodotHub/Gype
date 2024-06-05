@@ -33,10 +33,9 @@
 #ifndef GODOT_CPP_CONVEX_POLYGON_SHAPE2D_HPP
 #define GODOT_CPP_CONVEX_POLYGON_SHAPE2D_HPP
 
+#include <godot_cpp/variant/packed_vector2_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/shape2d.hpp>
-#include <godot_cpp/variant/packed_vector2_array.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -49,10 +48,10 @@ class ConvexPolygonShape2D : public Shape2D {
 	GDEXTENSION_CLASS(ConvexPolygonShape2D, Shape2D)
 
 public:
+
 	void set_point_cloud(const PackedVector2Array &point_cloud);
 	void set_points(const PackedVector2Array &points);
 	PackedVector2Array get_points() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -60,6 +59,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

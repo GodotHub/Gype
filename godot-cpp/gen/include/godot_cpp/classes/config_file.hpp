@@ -34,12 +34,11 @@
 #define GODOT_CPP_CONFIG_FILE_HPP
 
 #include <godot_cpp/classes/global_constants.hpp>
+#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/variant.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -54,6 +53,7 @@ class ConfigFile : public RefCounted {
 	GDEXTENSION_CLASS(ConfigFile, RefCounted)
 
 public:
+
 	void set_value(const String &section, const String &key, const Variant &value);
 	Variant get_value(const String &section, const String &key, const Variant &_default = nullptr) const;
 	bool has_section(const String &section) const;
@@ -71,7 +71,6 @@ public:
 	Error save_encrypted(const String &path, const PackedByteArray &key);
 	Error save_encrypted_pass(const String &path, const String &password);
 	void clear();
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -79,6 +78,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

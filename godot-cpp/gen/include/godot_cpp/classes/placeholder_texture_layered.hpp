@@ -48,10 +48,10 @@ class PlaceholderTextureLayered : public TextureLayered {
 	GDEXTENSION_CLASS(PlaceholderTextureLayered, TextureLayered)
 
 public:
+
 	void set_size(const Vector2i &size);
 	Vector2i get_size() const;
 	void set_layers(int32_t layers);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -59,6 +59,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -34,10 +34,9 @@
 #define GODOT_CPP_EDITOR_RESOURCE_PICKER_HPP
 
 #include <godot_cpp/classes/h_box_container.hpp>
-#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/packed_string_array.hpp>
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/string.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -53,6 +52,7 @@ class EditorResourcePicker : public HBoxContainer {
 	GDEXTENSION_CLASS(EditorResourcePicker, HBoxContainer)
 
 public:
+
 	void set_base_type(const String &base_type);
 	String get_base_type() const;
 	PackedStringArray get_allowed_types() const;
@@ -65,20 +65,20 @@ public:
 	bool is_editable() const;
 	virtual void _set_create_options(Object *menu_node);
 	virtual bool _handle_menu_selected(int32_t id);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		HBoxContainer::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_set_create_options), decltype(&T::_set_create_options)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_set_create_options),decltype(&T::_set_create_options)>) {
 			BIND_VIRTUAL_METHOD(T, _set_create_options);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_handle_menu_selected), decltype(&T::_handle_menu_selected)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_handle_menu_selected),decltype(&T::_handle_menu_selected)>) {
 			BIND_VIRTUAL_METHOD(T, _handle_menu_selected);
 		}
 	}
 
 public:
+
 };
 
 } // namespace godot

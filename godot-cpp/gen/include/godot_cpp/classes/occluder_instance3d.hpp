@@ -49,6 +49,7 @@ class OccluderInstance3D : public Node3D {
 	GDEXTENSION_CLASS(OccluderInstance3D, Node3D)
 
 public:
+
 	void set_bake_mask(uint32_t mask);
 	uint32_t get_bake_mask() const;
 	void set_bake_mask_value(int32_t layer_number, bool value);
@@ -57,7 +58,6 @@ public:
 	double get_bake_simplification_distance() const;
 	void set_occluder(const Ref<Occluder3D> &occluder);
 	Ref<Occluder3D> get_occluder() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -65,6 +65,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -33,16 +33,15 @@
 #ifndef GODOT_CPP_NODE3D_HPP
 #define GODOT_CPP_NODE3D_HPP
 
+#include <godot_cpp/variant/basis.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/variant/basis.hpp>
 #include <godot_cpp/variant/node_path.hpp>
 #include <godot_cpp/variant/quaternion.hpp>
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/transform3d.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/vector3.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -58,6 +57,7 @@ class Node3D : public Node {
 	GDEXTENSION_CLASS(Node3D, Node)
 
 public:
+
 	enum RotationEditMode {
 		ROTATION_EDIT_MODE_EULER = 0,
 		ROTATION_EDIT_MODE_QUATERNION = 1,
@@ -140,7 +140,6 @@ public:
 	void look_at_from_position(const Vector3 &position, const Vector3 &target, const Vector3 &up = Vector3(0, 1, 0), bool use_model_front = false);
 	Vector3 to_local(const Vector3 &global_point) const;
 	Vector3 to_global(const Vector3 &local_point) const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -148,6 +147,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

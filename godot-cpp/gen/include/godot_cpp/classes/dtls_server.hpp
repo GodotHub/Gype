@@ -52,9 +52,9 @@ class DTLSServer : public RefCounted {
 	GDEXTENSION_CLASS(DTLSServer, RefCounted)
 
 public:
+
 	Error setup(const Ref<TLSOptions> &server_options);
 	Ref<PacketPeerDTLS> take_connection(const Ref<PacketPeerUDP> &udp_peer);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -62,6 +62,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

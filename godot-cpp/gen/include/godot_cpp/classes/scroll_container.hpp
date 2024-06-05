@@ -50,6 +50,7 @@ class ScrollContainer : public Container {
 	GDEXTENSION_CLASS(ScrollContainer, Container)
 
 public:
+
 	enum ScrollMode {
 		SCROLL_MODE_DISABLED = 0,
 		SCROLL_MODE_AUTO = 1,
@@ -76,7 +77,6 @@ public:
 	HScrollBar *get_h_scroll_bar();
 	VScrollBar *get_v_scroll_bar();
 	void ensure_control_visible(Control *control);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -84,6 +84,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -49,6 +49,7 @@ class RDPipelineMultisampleState : public RefCounted {
 	GDEXTENSION_CLASS(RDPipelineMultisampleState, RefCounted)
 
 public:
+
 	void set_sample_count(RenderingDevice::TextureSamples p_member);
 	RenderingDevice::TextureSamples get_sample_count() const;
 	void set_enable_sample_shading(bool p_member);
@@ -61,7 +62,6 @@ public:
 	bool get_enable_alpha_to_one() const;
 	void set_sample_masks(const TypedArray<int> &masks);
 	TypedArray<int> get_sample_masks() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -69,6 +69,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot
