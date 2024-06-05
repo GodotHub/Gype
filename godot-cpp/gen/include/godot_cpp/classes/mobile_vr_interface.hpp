@@ -47,6 +47,7 @@ class MobileVRInterface : public XRInterface {
 	GDEXTENSION_CLASS(MobileVRInterface, XRInterface)
 
 public:
+
 	void set_eye_height(double eye_height);
 	double get_eye_height() const;
 	void set_iod(double iod);
@@ -61,7 +62,6 @@ public:
 	double get_k1() const;
 	void set_k2(double k);
 	double get_k2() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -69,6 +69,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

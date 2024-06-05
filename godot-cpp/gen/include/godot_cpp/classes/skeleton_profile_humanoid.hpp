@@ -47,6 +47,7 @@ class SkeletonProfileHumanoid : public SkeletonProfile {
 	GDEXTENSION_CLASS(SkeletonProfileHumanoid, SkeletonProfile)
 
 public:
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -54,6 +55,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

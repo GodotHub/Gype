@@ -49,6 +49,7 @@ class TileMapPattern : public Resource {
 	GDEXTENSION_CLASS(TileMapPattern, Resource)
 
 public:
+
 	void set_cell(const Vector2i &coords, int32_t source_id = -1, const Vector2i &atlas_coords = Vector2i(-1, -1), int32_t alternative_tile = -1);
 	bool has_cell(const Vector2i &coords) const;
 	void remove_cell(const Vector2i &coords, bool update_size);
@@ -59,7 +60,6 @@ public:
 	Vector2i get_size() const;
 	void set_size(const Vector2i &size);
 	bool is_empty() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -67,6 +67,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

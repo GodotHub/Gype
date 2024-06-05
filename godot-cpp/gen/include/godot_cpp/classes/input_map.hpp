@@ -33,11 +33,10 @@
 #ifndef GODOT_CPP_INPUT_MAP_HPP
 #define GODOT_CPP_INPUT_MAP_HPP
 
-#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/core/object.hpp>
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -52,6 +51,7 @@ class InputMap : public Object {
 	GDEXTENSION_CLASS(InputMap, Object)
 
 public:
+
 	static InputMap *get_singleton();
 
 	bool has_action(const StringName &action) const;
@@ -67,7 +67,6 @@ public:
 	TypedArray<InputEvent> action_get_events(const StringName &action);
 	bool event_is_action(const Ref<InputEvent> &event, const StringName &action, bool exact_match = false) const;
 	void load_from_project_settings();
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -75,6 +74,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

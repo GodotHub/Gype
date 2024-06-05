@@ -34,11 +34,10 @@
 #define GODOT_CPP_PACKET_PEER_HPP
 
 #include <godot_cpp/classes/global_constants.hpp>
+#include <godot_cpp/variant/packed_byte_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/variant/packed_byte_array.hpp>
 #include <godot_cpp/variant/variant.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -51,6 +50,7 @@ class PacketPeer : public RefCounted {
 	GDEXTENSION_CLASS(PacketPeer, RefCounted)
 
 public:
+
 	Variant get_var(bool allow_objects = false);
 	Error put_var(const Variant &var, bool full_objects = false);
 	PackedByteArray get_packet();
@@ -59,7 +59,6 @@ public:
 	int32_t get_available_packet_count() const;
 	int32_t get_encode_buffer_max_size() const;
 	void set_encode_buffer_max_size(int32_t max_size);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -67,6 +66,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

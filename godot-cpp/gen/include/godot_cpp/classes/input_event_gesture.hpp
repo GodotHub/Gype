@@ -48,9 +48,9 @@ class InputEventGesture : public InputEventWithModifiers {
 	GDEXTENSION_CLASS(InputEventGesture, InputEventWithModifiers)
 
 public:
+
 	void set_position(const Vector2 &position);
 	Vector2 get_position() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -58,6 +58,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

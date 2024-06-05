@@ -36,10 +36,9 @@
 #include <godot_cpp/classes/container.hpp>
 #include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/tab_bar.hpp>
 #include <godot_cpp/variant/string.hpp>
+#include <godot_cpp/classes/tab_bar.hpp>
 #include <godot_cpp/variant/variant.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -57,6 +56,7 @@ class TabContainer : public Container {
 	GDEXTENSION_CLASS(TabContainer, Container)
 
 public:
+
 	int32_t get_tab_count() const;
 	void set_current_tab(int32_t tab_idx);
 	int32_t get_current_tab() const;
@@ -98,7 +98,6 @@ public:
 	bool get_use_hidden_tabs_for_min_size() const;
 	void set_tab_focus_mode(Control::FocusMode focus_mode);
 	Control::FocusMode get_tab_focus_mode() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -106,6 +105,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

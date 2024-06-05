@@ -46,6 +46,7 @@ class Separator : public Control {
 	GDEXTENSION_CLASS(Separator, Control)
 
 public:
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -53,6 +54,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

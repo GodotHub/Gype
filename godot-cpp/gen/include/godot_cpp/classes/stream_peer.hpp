@@ -33,13 +33,12 @@
 #ifndef GODOT_CPP_STREAM_PEER_HPP
 #define GODOT_CPP_STREAM_PEER_HPP
 
+#include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/variant.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -54,6 +53,7 @@ class StreamPeer : public RefCounted {
 	GDEXTENSION_CLASS(StreamPeer, RefCounted)
 
 public:
+
 	Error put_data(const PackedByteArray &data);
 	Array put_partial_data(const PackedByteArray &data);
 	Array get_data(int32_t bytes);
@@ -87,7 +87,6 @@ public:
 	String get_string(int32_t bytes = -1);
 	String get_utf8_string(int32_t bytes = -1);
 	Variant get_var(bool allow_objects = false);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -95,6 +94,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

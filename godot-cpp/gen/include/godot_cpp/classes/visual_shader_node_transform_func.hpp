@@ -47,6 +47,7 @@ class VisualShaderNodeTransformFunc : public VisualShaderNode {
 	GDEXTENSION_CLASS(VisualShaderNodeTransformFunc, VisualShaderNode)
 
 public:
+
 	enum Function {
 		FUNC_INVERSE = 0,
 		FUNC_TRANSPOSE = 1,
@@ -55,7 +56,6 @@ public:
 
 	void set_function(VisualShaderNodeTransformFunc::Function func);
 	VisualShaderNodeTransformFunc::Function get_function() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -63,6 +63,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -47,6 +47,7 @@ class CollisionPolygon3D : public Node3D {
 	GDEXTENSION_CLASS(CollisionPolygon3D, Node3D)
 
 public:
+
 	void set_depth(double depth);
 	double get_depth() const;
 	void set_polygon(const PackedVector2Array &polygon);
@@ -55,7 +56,6 @@ public:
 	bool is_disabled() const;
 	void set_margin(double margin);
 	double get_margin() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -63,6 +63,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

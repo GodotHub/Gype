@@ -33,12 +33,11 @@
 #ifndef GODOT_CPP_STYLE_BOX_FLAT_HPP
 #define GODOT_CPP_STYLE_BOX_FLAT_HPP
 
+#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/style_box.hpp>
-#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/variant/vector2.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -51,6 +50,7 @@ class StyleBoxFlat : public StyleBox {
 	GDEXTENSION_CLASS(StyleBoxFlat, StyleBox)
 
 public:
+
 	void set_bg_color(const Color &color);
 	Color get_bg_color() const;
 	void set_border_color(const Color &color);
@@ -83,7 +83,6 @@ public:
 	double get_aa_size() const;
 	void set_corner_detail(int32_t detail);
 	int32_t get_corner_detail() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -91,6 +90,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

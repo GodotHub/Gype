@@ -47,6 +47,7 @@ class PlaceholderTexture2DArray : public PlaceholderTextureLayered {
 	GDEXTENSION_CLASS(PlaceholderTexture2DArray, PlaceholderTextureLayered)
 
 public:
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -54,6 +55,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

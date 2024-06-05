@@ -34,9 +34,8 @@
 #define GODOT_CPP_MULTIPLAYER_SYNCHRONIZER_HPP
 
 #include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/node_path.hpp>
-
+#include <godot_cpp/classes/ref.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -52,6 +51,7 @@ class MultiplayerSynchronizer : public Node {
 	GDEXTENSION_CLASS(MultiplayerSynchronizer, Node)
 
 public:
+
 	enum VisibilityUpdateMode {
 		VISIBILITY_PROCESS_IDLE = 0,
 		VISIBILITY_PROCESS_PHYSICS = 1,
@@ -75,7 +75,6 @@ public:
 	void remove_visibility_filter(const Callable &filter);
 	void set_visibility_for(int32_t peer, bool visible);
 	bool get_visibility_for(int32_t peer) const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -83,6 +82,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

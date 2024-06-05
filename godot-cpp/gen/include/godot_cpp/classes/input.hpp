@@ -33,15 +33,14 @@
 #ifndef GODOT_CPP_INPUT_HPP
 #define GODOT_CPP_INPUT_HPP
 
-#include <godot_cpp/classes/global_constants.hpp>
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/core/object.hpp>
 #include <godot_cpp/variant/dictionary.hpp>
+#include <godot_cpp/classes/global_constants.hpp>
+#include <godot_cpp/core/object.hpp>
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/vector2.hpp>
 #include <godot_cpp/variant/vector3.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -58,6 +57,7 @@ class Input : public Object {
 	GDEXTENSION_CLASS(Input, Object)
 
 public:
+
 	enum MouseMode {
 		MOUSE_MODE_VISIBLE = 0,
 		MOUSE_MODE_HIDDEN = 1,
@@ -137,7 +137,6 @@ public:
 	void set_use_accumulated_input(bool enable);
 	bool is_using_accumulated_input();
 	void flush_buffered_events();
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -145,6 +144,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

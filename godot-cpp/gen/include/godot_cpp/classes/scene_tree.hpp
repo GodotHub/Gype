@@ -35,10 +35,9 @@
 
 #include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/classes/main_loop.hpp>
-#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/node_path.hpp>
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -62,6 +61,7 @@ class SceneTree : public MainLoop {
 	GDEXTENSION_CLASS(SceneTree, MainLoop)
 
 public:
+
 	enum GroupCallFlags {
 		GROUP_CALL_DEFAULT = 0,
 		GROUP_CALL_REVERSE = 1,
@@ -92,39 +92,29 @@ public:
 	int64_t get_frame() const;
 	void quit(int32_t exit_code = 0);
 	void queue_delete(Object *obj);
-
-private:
-private:
-	void call_group_flags_internal(const Variant **args, GDExtensionInt arg_count);
-
-public:
-	void call_group_flags(int64_t flags, const StringName &group, const StringName &method, rest<Variant> args) {
+	private: private: void call_group_flags_internal(const Variant **args, GDExtensionInt arg_count);
+	public: void call_group_flags(int64_t flags, const StringName &group, const StringName &method, rest<Variant> args) {
 		std::vector<Variant> variant_args;
 		variant_args.push_back(Variant(flags));
 		variant_args.push_back(Variant(group));
 		variant_args.push_back(Variant(method));
 		variant_args.insert(variant_args.end(), args.begin(), args.end());
 		std::vector<const Variant *> call_args;
-		for (size_t i = 0; i < variant_args.size(); i++) {
+		for(size_t i = 0; i < variant_args.size(); i++) {
 			call_args.push_back(&variant_args[i]);
 		}
 		call_group_flags_internal(call_args.data(), variant_args.size());
 	}
 	void notify_group_flags(uint32_t call_flags, const StringName &group, int32_t notification);
 	void set_group_flags(uint32_t call_flags, const StringName &group, const String &property, const Variant &value);
-
-private:
-private:
-	void call_group_internal(const Variant **args, GDExtensionInt arg_count);
-
-public:
-	void call_group(const StringName &group, const StringName &method, rest<Variant> args) {
+	private: private: void call_group_internal(const Variant **args, GDExtensionInt arg_count);
+	public: void call_group(const StringName &group, const StringName &method, rest<Variant> args) {
 		std::vector<Variant> variant_args;
 		variant_args.push_back(Variant(group));
 		variant_args.push_back(Variant(method));
 		variant_args.insert(variant_args.end(), args.begin(), args.end());
 		std::vector<const Variant *> call_args;
-		for (size_t i = 0; i < variant_args.size(); i++) {
+		for(size_t i = 0; i < variant_args.size(); i++) {
 			call_args.push_back(&variant_args[i]);
 		}
 		call_group_internal(call_args.data(), variant_args.size());
@@ -143,7 +133,6 @@ public:
 	Ref<MultiplayerAPI> get_multiplayer(const NodePath &for_path = NodePath("")) const;
 	void set_multiplayer_poll_enabled(bool enabled);
 	bool is_multiplayer_poll_enabled() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -151,6 +140,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

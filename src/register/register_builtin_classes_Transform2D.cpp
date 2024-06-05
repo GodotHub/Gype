@@ -1,5 +1,8 @@
+#include <godot_cpp/core/defs.hpp>
+#include <godot_cpp/variant/transform2d.hpp>
+#include <godot_cpp/variant/vector2.hpp>
+
 #include "register/register_builtin_classes.h"
-#include "register/utils.h"
 
 using namespace godot;
 

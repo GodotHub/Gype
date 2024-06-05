@@ -33,11 +33,10 @@
 #ifndef GODOT_CPP_KINEMATIC_COLLISION3D_HPP
 #define GODOT_CPP_KINEMATIC_COLLISION3D_HPP
 
+#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/variant/vector3.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -52,6 +51,7 @@ class KinematicCollision3D : public RefCounted {
 	GDEXTENSION_CLASS(KinematicCollision3D, RefCounted)
 
 public:
+
 	Vector3 get_travel() const;
 	Vector3 get_remainder() const;
 	double get_depth() const;
@@ -66,7 +66,6 @@ public:
 	Object *get_collider_shape(int32_t collision_index = 0) const;
 	int32_t get_collider_shape_index(int32_t collision_index = 0) const;
 	Vector3 get_collider_velocity(int32_t collision_index = 0) const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -74,6 +73,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

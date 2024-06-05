@@ -1,7 +1,10 @@
 #include "register/utils.h"
+
+#include <stddef.h>
 #include <cctype>
-#include <iostream>
 #include <string>
+
+#include "qjspp.hpp"
 
 qjs::Runtime runtime;
 qjs::Context context(runtime);

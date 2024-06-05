@@ -51,9 +51,9 @@ class ResourceImporterOggVorbis : public ResourceImporter {
 	GDEXTENSION_CLASS(ResourceImporterOggVorbis, ResourceImporter)
 
 public:
+
 	static Ref<AudioStreamOggVorbis> load_from_buffer(const PackedByteArray &buffer);
 	static Ref<AudioStreamOggVorbis> load_from_file(const String &path);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -61,6 +61,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

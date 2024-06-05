@@ -30,18 +30,17 @@
 
 // THIS FILE IS GENERATED. EDITS WILL BE LOST.
 
-#include <godot_cpp/templates/vararg.hpp>
+#include <godot_cpp/variant/variant.hpp>
 #include <godot_cpp/variant/callable.hpp>
 #include <godot_cpp/variant/signal.hpp>
-#include <godot_cpp/variant/variant.hpp>
-
+#include <godot_cpp/templates/vararg.hpp>
 using namespace godot;
 
 Variant Callable::call(rest<Variant> args) const {
 	std::vector<Variant> variant_args;
 	variant_args.insert(variant_args.end(), args.begin(), args.end());
 	std::vector<const Variant *> call_args;
-	for (size_t i = 0; i < variant_args.size(); i++) {
+	for(size_t i = 0; i < variant_args.size(); i++) {
 		call_args.push_back(&variant_args[i]);
 	}
 	Variant ret;
@@ -53,7 +52,7 @@ void Callable::call_deferred(rest<Variant> args) const {
 	std::vector<Variant> variant_args;
 	variant_args.insert(variant_args.end(), args.begin(), args.end());
 	std::vector<const Variant *> call_args;
-	for (size_t i = 0; i < variant_args.size(); i++) {
+	for(size_t i = 0; i < variant_args.size(); i++) {
 		call_args.push_back(&variant_args[i]);
 	}
 	_method_bindings.method_call_deferred((GDExtensionTypePtr)&opaque, reinterpret_cast<GDExtensionConstTypePtr *>(call_args.data()), nullptr, 0 + call_args.size());
@@ -63,7 +62,7 @@ void Callable::rpc(rest<Variant> args) const {
 	std::vector<Variant> variant_args;
 	variant_args.insert(variant_args.end(), args.begin(), args.end());
 	std::vector<const Variant *> call_args;
-	for (size_t i = 0; i < variant_args.size(); i++) {
+	for(size_t i = 0; i < variant_args.size(); i++) {
 		call_args.push_back(&variant_args[i]);
 	}
 	_method_bindings.method_rpc((GDExtensionTypePtr)&opaque, reinterpret_cast<GDExtensionConstTypePtr *>(call_args.data()), nullptr, 0 + call_args.size());
@@ -74,7 +73,7 @@ void Callable::rpc_id(int64_t peer_id, rest<Variant> args) const {
 	variant_args.push_back(Variant(peer_id));
 	variant_args.insert(variant_args.end(), args.begin(), args.end());
 	std::vector<const Variant *> call_args;
-	for (size_t i = 0; i < variant_args.size(); i++) {
+	for(size_t i = 0; i < variant_args.size(); i++) {
 		call_args.push_back(&variant_args[i]);
 	}
 	_method_bindings.method_rpc_id((GDExtensionTypePtr)&opaque, reinterpret_cast<GDExtensionConstTypePtr *>(call_args.data()), nullptr, 1 + call_args.size());
@@ -84,7 +83,7 @@ Callable Callable::bind(rest<Variant> args) const {
 	std::vector<Variant> variant_args;
 	variant_args.insert(variant_args.end(), args.begin(), args.end());
 	std::vector<const Variant *> call_args;
-	for (size_t i = 0; i < variant_args.size(); i++) {
+	for(size_t i = 0; i < variant_args.size(); i++) {
 		call_args.push_back(&variant_args[i]);
 	}
 	Callable ret;
@@ -96,7 +95,7 @@ void Signal::emit(rest<Variant> args) const {
 	std::vector<Variant> variant_args;
 	variant_args.insert(variant_args.end(), args.begin(), args.end());
 	std::vector<const Variant *> call_args;
-	for (size_t i = 0; i < variant_args.size(); i++) {
+	for(size_t i = 0; i < variant_args.size(); i++) {
 		call_args.push_back(&variant_args[i]);
 	}
 	_method_bindings.method_emit((GDExtensionTypePtr)&opaque, reinterpret_cast<GDExtensionConstTypePtr *>(call_args.data()), nullptr, 0 + call_args.size());

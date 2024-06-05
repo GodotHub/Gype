@@ -1,11 +1,13 @@
 cmake_minimum_required(VERSION 3.10)
 
 # 设置C和C++编译器
-set(CMAKE_C_COMPILER gcc)
-set(CMAKE_CXX_COMPILER g++)
+set(CMAKE_C_COMPILER clang)
+set(CMAKE_CXX_COMPILER clang++)
 
 # 项目名称和语言
 project(gype C CXX)
+
+# find_program(IWYU_EXECUTABLE include-what-you-use D:/Godot/Gype/iwyu/include-what-you-use.exe REQUIRED)
 
 add_subdirectory(godot-cpp)
 add_subdirectory(quickjs)
@@ -27,9 +29,10 @@ target_link_libraries(gype PUBLIC quickjspp)
 target_include_directories(gype PUBLIC
 	${PROJECT_SOURCE_DIR}/include)
 
-# target_compile_options(gype PRIVATE 
-# 	-fuse-ld=lld
-# 	-Wl,--threads)
+# set_target_properties(gype PROPERTIES CXX_INCLUDE_WHAT_YOU_USE ${IWYU_EXECUTABLE})
+# target_compile_options(gype PUBLIC -DCMAKE_EXPORT_COMPILE_COMMANDS=ON)
+
+# target_compile_options(gype PRIVATE -fuse-ld=lld)
 
 # 设置库的版本
 set_target_properties(gype PROPERTIES VERSION 1.0.0 SOVERSION 10000)

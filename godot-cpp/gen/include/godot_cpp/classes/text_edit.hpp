@@ -33,19 +33,18 @@
 #ifndef GODOT_CPP_TEXT_EDIT_HPP
 #define GODOT_CPP_TEXT_EDIT_HPP
 
-#include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/text_server.hpp>
 #include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/color.hpp>
+#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/variant/packed_int32_array.hpp>
 #include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/rect2i.hpp>
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/string.hpp>
+#include <godot_cpp/classes/text_server.hpp>
 #include <godot_cpp/variant/variant.hpp>
 #include <godot_cpp/variant/vector2.hpp>
 #include <godot_cpp/variant/vector2i.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -65,6 +64,7 @@ class TextEdit : public Control {
 	GDEXTENSION_CLASS(TextEdit, Control)
 
 public:
+
 	enum MenuItems {
 		MENU_CUT = 0,
 		MENU_COPY = 1,
@@ -349,32 +349,32 @@ public:
 	virtual void _copy(int32_t caret_index);
 	virtual void _paste(int32_t caret_index);
 	virtual void _paste_primary_clipboard(int32_t caret_index);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Control::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_handle_unicode_input), decltype(&T::_handle_unicode_input)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_handle_unicode_input),decltype(&T::_handle_unicode_input)>) {
 			BIND_VIRTUAL_METHOD(T, _handle_unicode_input);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_backspace), decltype(&T::_backspace)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_backspace),decltype(&T::_backspace)>) {
 			BIND_VIRTUAL_METHOD(T, _backspace);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_cut), decltype(&T::_cut)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_cut),decltype(&T::_cut)>) {
 			BIND_VIRTUAL_METHOD(T, _cut);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_copy), decltype(&T::_copy)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_copy),decltype(&T::_copy)>) {
 			BIND_VIRTUAL_METHOD(T, _copy);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_paste), decltype(&T::_paste)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_paste),decltype(&T::_paste)>) {
 			BIND_VIRTUAL_METHOD(T, _paste);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_paste_primary_clipboard), decltype(&T::_paste_primary_clipboard)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_paste_primary_clipboard),decltype(&T::_paste_primary_clipboard)>) {
 			BIND_VIRTUAL_METHOD(T, _paste_primary_clipboard);
 		}
 	}
 
 public:
+
 };
 
 } // namespace godot

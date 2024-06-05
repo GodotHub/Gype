@@ -50,13 +50,13 @@ class StaticBody2D : public PhysicsBody2D {
 	GDEXTENSION_CLASS(StaticBody2D, PhysicsBody2D)
 
 public:
+
 	void set_constant_linear_velocity(const Vector2 &vel);
 	void set_constant_angular_velocity(double vel);
 	Vector2 get_constant_linear_velocity() const;
 	double get_constant_angular_velocity() const;
 	void set_physics_material_override(const Ref<PhysicsMaterial> &physics_material_override);
 	Ref<PhysicsMaterial> get_physics_material_override() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -64,6 +64,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

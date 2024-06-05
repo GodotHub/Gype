@@ -50,6 +50,7 @@ class PhysicalBone3D : public PhysicsBody3D {
 	GDEXTENSION_CLASS(PhysicalBone3D, PhysicsBody3D)
 
 public:
+
 	enum DampMode {
 		DAMP_MODE_COMBINE = 0,
 		DAMP_MODE_REPLACE = 1,
@@ -102,17 +103,17 @@ public:
 	void set_can_sleep(bool able_to_sleep);
 	bool is_able_to_sleep() const;
 	virtual void _integrate_forces(PhysicsDirectBodyState3D *state);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		PhysicsBody3D::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_integrate_forces), decltype(&T::_integrate_forces)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_integrate_forces),decltype(&T::_integrate_forces)>) {
 			BIND_VIRTUAL_METHOD(T, _integrate_forces);
 		}
 	}
 
 public:
+
 };
 
 } // namespace godot

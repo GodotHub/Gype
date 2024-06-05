@@ -47,13 +47,13 @@ class AudioEffectStereoEnhance : public AudioEffect {
 	GDEXTENSION_CLASS(AudioEffectStereoEnhance, AudioEffect)
 
 public:
+
 	void set_pan_pullout(double amount);
 	double get_pan_pullout() const;
 	void set_time_pullout(double amount);
 	double get_time_pullout() const;
 	void set_surround(double amount);
 	double get_surround() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -61,6 +61,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

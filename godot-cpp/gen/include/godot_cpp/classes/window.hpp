@@ -33,16 +33,15 @@
 #ifndef GODOT_CPP_WINDOW_HPP
 #define GODOT_CPP_WINDOW_HPP
 
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/viewport.hpp>
 #include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/variant/packed_vector2_array.hpp>
 #include <godot_cpp/variant/rect2i.hpp>
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/variant/vector2.hpp>
 #include <godot_cpp/variant/vector2i.hpp>
-
+#include <godot_cpp/classes/viewport.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -61,6 +60,7 @@ class Window : public Viewport {
 	GDEXTENSION_CLASS(Window, Viewport)
 
 public:
+
 	enum Mode {
 		MODE_WINDOWED = 0,
 		MODE_MINIMIZED = 1,
@@ -235,17 +235,17 @@ public:
 	void popup_exclusive_centered_ratio(Node *from_node, double ratio = 0.8);
 	void popup_exclusive_centered_clamped(Node *from_node, const Vector2i &minsize = Vector2i(0, 0), double fallback_ratio = 0.75);
 	virtual Vector2 _get_contents_minimum_size() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Viewport::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_get_contents_minimum_size), decltype(&T::_get_contents_minimum_size)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_contents_minimum_size),decltype(&T::_get_contents_minimum_size)>) {
 			BIND_VIRTUAL_METHOD(T, _get_contents_minimum_size);
 		}
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -47,6 +47,7 @@ class VisualShaderNodeFresnel : public VisualShaderNode {
 	GDEXTENSION_CLASS(VisualShaderNodeFresnel, VisualShaderNode)
 
 public:
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -54,6 +55,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

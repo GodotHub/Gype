@@ -49,9 +49,9 @@ class EditorCommandPalette : public ConfirmationDialog {
 	GDEXTENSION_CLASS(EditorCommandPalette, ConfirmationDialog)
 
 public:
+
 	void add_command(const String &command_name, const String &key_name, const Callable &binded_callable, const String &shortcut_text = "None");
 	void remove_command(const String &key_name);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -59,6 +59,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

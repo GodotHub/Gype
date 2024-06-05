@@ -49,6 +49,7 @@ class AnimationNodeStateMachinePlayback : public Resource {
 	GDEXTENSION_CLASS(AnimationNodeStateMachinePlayback, Resource)
 
 public:
+
 	void travel(const StringName &to_node, bool reset_on_teleport = true);
 	void start(const StringName &node, bool reset = true);
 	void next();
@@ -59,7 +60,6 @@ public:
 	double get_current_length() const;
 	StringName get_fading_from_node() const;
 	TypedArray<StringName> get_travel_path() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -67,6 +67,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

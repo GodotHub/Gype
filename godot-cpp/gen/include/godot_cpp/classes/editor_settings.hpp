@@ -33,12 +33,11 @@
 #ifndef GODOT_CPP_EDITOR_SETTINGS_HPP
 #define GODOT_CPP_EDITOR_SETTINGS_HPP
 
+#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/variant.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -56,6 +55,7 @@ class EditorSettings : public Resource {
 	GDEXTENSION_CLASS(EditorSettings, Resource)
 
 public:
+
 	static const int NOTIFICATION_EDITOR_SETTINGS_CHANGED = 10000;
 
 	bool has_setting(const String &name) const;
@@ -74,7 +74,6 @@ public:
 	bool check_changed_settings_in_group(const String &setting_prefix) const;
 	PackedStringArray get_changed_settings() const;
 	void mark_setting_changed(const String &setting);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -82,6 +81,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

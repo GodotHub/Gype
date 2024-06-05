@@ -33,10 +33,9 @@
 #ifndef GODOT_CPP_STYLE_BOX_LINE_HPP
 #define GODOT_CPP_STYLE_BOX_LINE_HPP
 
+#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/style_box.hpp>
-#include <godot_cpp/variant/color.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -49,6 +48,7 @@ class StyleBoxLine : public StyleBox {
 	GDEXTENSION_CLASS(StyleBoxLine, StyleBox)
 
 public:
+
 	void set_color(const Color &color);
 	Color get_color() const;
 	void set_thickness(int32_t thickness);
@@ -59,7 +59,6 @@ public:
 	double get_grow_end() const;
 	void set_vertical(bool vertical);
 	bool is_vertical() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -67,6 +66,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

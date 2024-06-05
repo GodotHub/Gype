@@ -33,12 +33,11 @@
 #ifndef GODOT_CPP_STYLE_BOX_TEXTURE_HPP
 #define GODOT_CPP_STYLE_BOX_TEXTURE_HPP
 
+#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
+#include <godot_cpp/variant/rect2.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/style_box.hpp>
-#include <godot_cpp/variant/color.hpp>
-#include <godot_cpp/variant/rect2.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -53,6 +52,7 @@ class StyleBoxTexture : public StyleBox {
 	GDEXTENSION_CLASS(StyleBoxTexture, StyleBox)
 
 public:
+
 	enum AxisStretchMode {
 		AXIS_STRETCH_MODE_STRETCH = 0,
 		AXIS_STRETCH_MODE_TILE = 1,
@@ -77,7 +77,6 @@ public:
 	StyleBoxTexture::AxisStretchMode get_h_axis_stretch_mode() const;
 	void set_v_axis_stretch_mode(StyleBoxTexture::AxisStretchMode mode);
 	StyleBoxTexture::AxisStretchMode get_v_axis_stretch_mode() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -85,6 +84,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

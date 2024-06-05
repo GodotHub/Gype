@@ -33,9 +33,8 @@
 #ifndef GODOT_CPP_PHYSICAL_BONE2D_HPP
 #define GODOT_CPP_PHYSICAL_BONE2D_HPP
 
-#include <godot_cpp/classes/rigid_body2d.hpp>
 #include <godot_cpp/variant/node_path.hpp>
-
+#include <godot_cpp/classes/rigid_body2d.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -50,6 +49,7 @@ class PhysicalBone2D : public RigidBody2D {
 	GDEXTENSION_CLASS(PhysicalBone2D, RigidBody2D)
 
 public:
+
 	Joint2D *get_joint() const;
 	bool get_auto_configure_joint() const;
 	void set_auto_configure_joint(bool auto_configure_joint);
@@ -62,7 +62,6 @@ public:
 	int32_t get_bone2d_index() const;
 	void set_follow_bone_when_simulating(bool follow_bone);
 	bool get_follow_bone_when_simulating() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -70,6 +69,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

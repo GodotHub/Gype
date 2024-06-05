@@ -33,16 +33,15 @@
 #ifndef GODOT_CPP_ANIMATION_HPP
 #define GODOT_CPP_ANIMATION_HPP
 
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/node_path.hpp>
 #include <godot_cpp/variant/quaternion.hpp>
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/variant/variant.hpp>
 #include <godot_cpp/variant/vector2.hpp>
 #include <godot_cpp/variant/vector3.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -55,6 +54,7 @@ class Animation : public Resource {
 	GDEXTENSION_CLASS(Animation, Resource)
 
 public:
+
 	enum TrackType {
 		TYPE_VALUE = 0,
 		TYPE_POSITION_3D = 1,
@@ -172,7 +172,6 @@ public:
 	void clear();
 	void copy_track(int32_t track_idx, const Ref<Animation> &to_animation);
 	void compress(uint32_t page_size = 8192, uint32_t fps = 120, double split_tolerance = 4.0);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -180,6 +179,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

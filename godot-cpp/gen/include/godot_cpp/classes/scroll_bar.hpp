@@ -46,9 +46,9 @@ class ScrollBar : public Range {
 	GDEXTENSION_CLASS(ScrollBar, Range)
 
 public:
+
 	void set_custom_step(double step);
 	double get_custom_step() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -56,6 +56,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

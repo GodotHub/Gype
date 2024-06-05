@@ -47,6 +47,7 @@ class VisualShaderNodeCompare : public VisualShaderNode {
 	GDEXTENSION_CLASS(VisualShaderNodeCompare, VisualShaderNode)
 
 public:
+
 	enum ComparisonType {
 		CTYPE_SCALAR = 0,
 		CTYPE_SCALAR_INT = 1,
@@ -81,7 +82,6 @@ public:
 	VisualShaderNodeCompare::Function get_function() const;
 	void set_condition(VisualShaderNodeCompare::Condition condition);
 	VisualShaderNodeCompare::Condition get_condition() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -89,6 +89,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

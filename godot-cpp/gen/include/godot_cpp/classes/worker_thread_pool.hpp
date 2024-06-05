@@ -50,6 +50,7 @@ class WorkerThreadPool : public Object {
 	GDEXTENSION_CLASS(WorkerThreadPool, Object)
 
 public:
+
 	static WorkerThreadPool *get_singleton();
 
 	int64_t add_task(const Callable &action, bool high_priority = false, const String &description = String());
@@ -59,7 +60,6 @@ public:
 	bool is_group_task_completed(int64_t group_id) const;
 	uint32_t get_group_processed_element_count(int64_t group_id) const;
 	void wait_for_group_task_completion(int64_t group_id);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -68,12 +68,13 @@ protected:
 
 public:
 	enum {
-		INVALID_TASK_ID = -1
+	INVALID_TASK_ID = -1
 	};
 	typedef int64_t TaskID;
 	typedef int64_t GroupID;
 	TaskID add_native_task(void (*p_func)(void *), void *p_userdata, bool p_high_priority = false, const String &p_description = String());
 	GroupID add_native_group_task(void (*p_func)(void *, uint32_t), void *p_userdata, int p_elements, int p_tasks = -1, bool p_high_priority = false, const String &p_description = String());
+
 };
 
 } // namespace godot

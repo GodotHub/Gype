@@ -34,9 +34,8 @@
 #define GODOT_CPP_NAVIGATION_REGION2D_HPP
 
 #include <godot_cpp/classes/node2d.hpp>
-#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/rid.hpp>
-
+#include <godot_cpp/classes/ref.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -51,6 +50,7 @@ class NavigationRegion2D : public Node2D {
 	GDEXTENSION_CLASS(NavigationRegion2D, Node2D)
 
 public:
+
 	RID get_rid() const;
 	void set_navigation_polygon(const Ref<NavigationPolygon> &navigation_polygon);
 	Ref<NavigationPolygon> get_navigation_polygon() const;
@@ -76,7 +76,6 @@ public:
 	void set_travel_cost(double travel_cost);
 	double get_travel_cost() const;
 	void bake_navigation_polygon(bool on_thread = true);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -84,6 +83,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

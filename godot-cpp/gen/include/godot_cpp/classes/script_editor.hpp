@@ -53,6 +53,7 @@ class ScriptEditor : public PanelContainer {
 	GDEXTENSION_CLASS(ScriptEditor, PanelContainer)
 
 public:
+
 	ScriptEditorBase *get_current_editor() const;
 	TypedArray<ScriptEditorBase> get_open_script_editors() const;
 	void register_syntax_highlighter(const Ref<EditorSyntaxHighlighter> &syntax_highlighter);
@@ -61,7 +62,6 @@ public:
 	Ref<Script> get_current_script();
 	TypedArray<Script> get_open_scripts() const;
 	void open_script_create_dialog(const String &base_name, const String &base_path);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -69,6 +69,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

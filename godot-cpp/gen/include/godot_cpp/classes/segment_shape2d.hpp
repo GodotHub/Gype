@@ -48,11 +48,11 @@ class SegmentShape2D : public Shape2D {
 	GDEXTENSION_CLASS(SegmentShape2D, Shape2D)
 
 public:
+
 	void set_a(const Vector2 &a);
 	Vector2 get_a() const;
 	void set_b(const Vector2 &b);
 	Vector2 get_b() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -60,6 +60,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

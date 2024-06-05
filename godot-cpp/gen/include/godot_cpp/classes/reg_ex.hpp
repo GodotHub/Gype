@@ -34,12 +34,11 @@
 #define GODOT_CPP_REG_EX_HPP
 
 #include <godot_cpp/classes/global_constants.hpp>
+#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -54,6 +53,7 @@ class RegEx : public RefCounted {
 	GDEXTENSION_CLASS(RegEx, RefCounted)
 
 public:
+
 	static Ref<RegEx> create_from_string(const String &pattern);
 	void clear();
 	Error compile(const String &pattern);
@@ -64,7 +64,6 @@ public:
 	String get_pattern() const;
 	int32_t get_group_count() const;
 	PackedStringArray get_names() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -72,6 +71,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

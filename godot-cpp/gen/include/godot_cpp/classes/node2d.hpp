@@ -50,6 +50,7 @@ class Node2D : public CanvasItem {
 	GDEXTENSION_CLASS(Node2D, CanvasItem)
 
 public:
+
 	void set_position(const Vector2 &position);
 	void set_rotation(double radians);
 	void set_rotation_degrees(double degrees);
@@ -83,7 +84,6 @@ public:
 	Vector2 to_local(const Vector2 &global_point) const;
 	Vector2 to_global(const Vector2 &local_point) const;
 	Transform2D get_relative_transform_to_parent(Node *parent) const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -91,6 +91,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

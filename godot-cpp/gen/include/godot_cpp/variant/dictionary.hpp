@@ -89,7 +89,7 @@ class Dictionary {
 	Dictionary(const Variant *p_variant);
 
 public:
-	_FORCE_INLINE_ GDExtensionTypePtr _native_ptr() const { return const_cast<uint8_t(*)[DICTIONARY_SIZE]>(&opaque); }
+	_FORCE_INLINE_ GDExtensionTypePtr _native_ptr() const { return const_cast<uint8_t (*)[DICTIONARY_SIZE]>(&opaque); }
 	Dictionary();
 	Dictionary(const Dictionary &from);
 	Dictionary(Dictionary &&other);

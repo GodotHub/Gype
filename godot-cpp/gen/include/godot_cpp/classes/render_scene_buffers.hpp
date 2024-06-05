@@ -49,8 +49,8 @@ class RenderSceneBuffers : public RefCounted {
 	GDEXTENSION_CLASS(RenderSceneBuffers, RefCounted)
 
 public:
-	void configure(const Ref<RenderSceneBuffersConfiguration> &config);
 
+	void configure(const Ref<RenderSceneBuffersConfiguration> &config);
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -58,6 +58,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

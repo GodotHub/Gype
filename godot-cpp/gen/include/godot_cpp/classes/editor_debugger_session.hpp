@@ -33,10 +33,9 @@
 #ifndef GODOT_CPP_EDITOR_DEBUGGER_SESSION_HPP
 #define GODOT_CPP_EDITOR_DEBUGGER_SESSION_HPP
 
+#include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/variant/array.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -52,6 +51,7 @@ class EditorDebuggerSession : public RefCounted {
 	GDEXTENSION_CLASS(EditorDebuggerSession, RefCounted)
 
 public:
+
 	void send_message(const String &message, const Array &data = Array());
 	void toggle_profiler(const String &profiler, bool enable, const Array &data = Array());
 	bool is_breaked();
@@ -59,7 +59,6 @@ public:
 	bool is_active();
 	void add_session_tab(Control *control);
 	void remove_session_tab(Control *control);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -67,6 +66,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

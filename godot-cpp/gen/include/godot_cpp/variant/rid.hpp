@@ -71,7 +71,7 @@ class RID {
 	RID(const Variant *p_variant);
 
 public:
-	_FORCE_INLINE_ GDExtensionTypePtr _native_ptr() const { return const_cast<uint8_t(*)[RID_SIZE]>(&opaque); }
+	_FORCE_INLINE_ GDExtensionTypePtr _native_ptr() const { return const_cast<uint8_t (*)[RID_SIZE]>(&opaque); }
 	RID();
 	RID(const RID &from);
 	RID(RID &&other);

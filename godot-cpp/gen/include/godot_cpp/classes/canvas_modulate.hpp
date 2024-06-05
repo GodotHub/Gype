@@ -33,9 +33,8 @@
 #ifndef GODOT_CPP_CANVAS_MODULATE_HPP
 #define GODOT_CPP_CANVAS_MODULATE_HPP
 
-#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/color.hpp>
-
+#include <godot_cpp/classes/node2d.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -48,9 +47,9 @@ class CanvasModulate : public Node2D {
 	GDEXTENSION_CLASS(CanvasModulate, Node2D)
 
 public:
+
 	void set_color(const Color &color);
 	Color get_color() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -58,6 +57,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

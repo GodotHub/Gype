@@ -34,9 +34,8 @@
 #define GODOT_CPP_VISUAL_SHADER_NODE_TRANSFORM_CONSTANT_HPP
 
 #include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/visual_shader_node_constant.hpp>
 #include <godot_cpp/variant/transform3d.hpp>
-
+#include <godot_cpp/classes/visual_shader_node_constant.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -49,9 +48,9 @@ class VisualShaderNodeTransformConstant : public VisualShaderNodeConstant {
 	GDEXTENSION_CLASS(VisualShaderNodeTransformConstant, VisualShaderNodeConstant)
 
 public:
+
 	void set_constant(const Transform3D &constant);
 	Transform3D get_constant() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -59,6 +58,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

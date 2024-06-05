@@ -49,13 +49,13 @@ class InputEventMouse : public InputEventWithModifiers {
 	GDEXTENSION_CLASS(InputEventMouse, InputEventWithModifiers)
 
 public:
+
 	void set_button_mask(BitField<MouseButtonMask> button_mask);
 	BitField<MouseButtonMask> get_button_mask() const;
 	void set_position(const Vector2 &position);
 	Vector2 get_position() const;
 	void set_global_position(const Vector2 &global_position);
 	Vector2 get_global_position() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -63,6 +63,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

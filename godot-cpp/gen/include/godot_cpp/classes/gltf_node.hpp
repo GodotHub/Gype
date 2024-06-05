@@ -33,14 +33,13 @@
 #ifndef GODOT_CPP_GLTF_NODE_HPP
 #define GODOT_CPP_GLTF_NODE_HPP
 
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/packed_int32_array.hpp>
 #include <godot_cpp/variant/quaternion.hpp>
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/transform3d.hpp>
 #include <godot_cpp/variant/variant.hpp>
 #include <godot_cpp/variant/vector3.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -55,6 +54,7 @@ class GLTFNode : public Resource {
 	GDEXTENSION_CLASS(GLTFNode, Resource)
 
 public:
+
 	int32_t get_parent();
 	void set_parent(int32_t parent);
 	int32_t get_height();
@@ -81,7 +81,6 @@ public:
 	void set_light(int32_t light);
 	Variant get_additional_data(const StringName &extension_name);
 	void set_additional_data(const StringName &extension_name, const Variant &additional_data);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -89,6 +88,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -47,6 +47,7 @@ class VisualShaderNodeTransformVecMult : public VisualShaderNode {
 	GDEXTENSION_CLASS(VisualShaderNodeTransformVecMult, VisualShaderNode)
 
 public:
+
 	enum Operator {
 		OP_AxB = 0,
 		OP_BxA = 1,
@@ -57,7 +58,6 @@ public:
 
 	void set_operator(VisualShaderNodeTransformVecMult::Operator op);
 	VisualShaderNodeTransformVecMult::Operator get_operator() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -65,6 +65,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

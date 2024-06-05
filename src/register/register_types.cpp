@@ -1,11 +1,15 @@
 #include "register/register_types.h"
-#include "register/register_builtin_classes.h"
-#include "register/register_utility_functions.h"
-#include "register/utils.h"
+
 #include <gdextension_interface.h>
 #include <godot_cpp/core/defs.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 #include <godot_cpp/godot.hpp>
+
+#include "register/register_builtin_classes.h"
+#include "register/register_utility_functions.h"
+#include "register/utils.h"
+#include "qjspp.hpp"
+#include "quickjs.h"
 
 using namespace godot;
 

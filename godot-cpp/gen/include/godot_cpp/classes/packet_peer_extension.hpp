@@ -48,30 +48,31 @@ class PacketPeerExtension : public PacketPeer {
 	GDEXTENSION_CLASS(PacketPeerExtension, PacketPeer)
 
 public:
-	virtual Error _get_packet(const uint8_t **r_buffer, int32_t *r_buffer_size);
+
+	virtual Error _get_packet(const uint8_t * *r_buffer, int32_t *r_buffer_size);
 	virtual Error _put_packet(const uint8_t *p_buffer, int32_t p_buffer_size);
 	virtual int32_t _get_available_packet_count() const;
 	virtual int32_t _get_max_packet_size() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		PacketPeer::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_get_packet), decltype(&T::_get_packet)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_packet),decltype(&T::_get_packet)>) {
 			BIND_VIRTUAL_METHOD(T, _get_packet);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_put_packet), decltype(&T::_put_packet)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_put_packet),decltype(&T::_put_packet)>) {
 			BIND_VIRTUAL_METHOD(T, _put_packet);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_available_packet_count), decltype(&T::_get_available_packet_count)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_available_packet_count),decltype(&T::_get_available_packet_count)>) {
 			BIND_VIRTUAL_METHOD(T, _get_available_packet_count);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_max_packet_size), decltype(&T::_get_max_packet_size)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_max_packet_size),decltype(&T::_get_max_packet_size)>) {
 			BIND_VIRTUAL_METHOD(T, _get_max_packet_size);
 		}
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -47,6 +47,7 @@ class AnimationNodeTimeScale : public AnimationNode {
 	GDEXTENSION_CLASS(AnimationNodeTimeScale, AnimationNode)
 
 public:
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -54,6 +55,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -48,21 +48,17 @@ class GDScript : public Script {
 	GDEXTENSION_CLASS(GDScript, Script)
 
 public:
-private:
-private:
-	Variant new__internal(const Variant **args, GDExtensionInt arg_count);
 
-public:
-	Variant new_(rest<Variant> args) {
+	private: private: Variant new__internal(const Variant **args, GDExtensionInt arg_count);
+	public: Variant new_(rest<Variant> args) {
 		std::vector<Variant> variant_args;
 		variant_args.insert(variant_args.end(), args.begin(), args.end());
 		std::vector<const Variant *> call_args;
-		for (size_t i = 0; i < variant_args.size(); i++) {
+		for(size_t i = 0; i < variant_args.size(); i++) {
 			call_args.push_back(&variant_args[i]);
 		}
 		return new__internal(call_args.data(), variant_args.size());
 	}
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -70,6 +66,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

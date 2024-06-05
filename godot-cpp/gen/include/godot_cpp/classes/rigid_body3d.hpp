@@ -33,12 +33,11 @@
 #ifndef GODOT_CPP_RIGID_BODY3D_HPP
 #define GODOT_CPP_RIGID_BODY3D_HPP
 
+#include <godot_cpp/variant/basis.hpp>
 #include <godot_cpp/classes/physics_body3d.hpp>
 #include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/variant/basis.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/vector3.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -55,6 +54,7 @@ class RigidBody3D : public PhysicsBody3D {
 	GDEXTENSION_CLASS(RigidBody3D, PhysicsBody3D)
 
 public:
+
 	enum FreezeMode {
 		FREEZE_MODE_STATIC = 0,
 		FREEZE_MODE_KINEMATIC = 1,
@@ -130,17 +130,17 @@ public:
 	RigidBody3D::FreezeMode get_freeze_mode() const;
 	TypedArray<Node3D> get_colliding_bodies() const;
 	virtual void _integrate_forces(PhysicsDirectBodyState3D *state);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		PhysicsBody3D::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_integrate_forces), decltype(&T::_integrate_forces)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_integrate_forces),decltype(&T::_integrate_forces)>) {
 			BIND_VIRTUAL_METHOD(T, _integrate_forces);
 		}
 	}
 
 public:
+
 };
 
 } // namespace godot

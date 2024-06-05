@@ -51,6 +51,7 @@ class OpenXRAPIExtension : public RefCounted {
 	GDEXTENSION_CLASS(OpenXRAPIExtension, RefCounted)
 
 public:
+
 	uint64_t get_instance();
 	uint64_t get_system_id();
 	uint64_t get_session();
@@ -65,7 +66,6 @@ public:
 	uint64_t get_play_space();
 	int64_t get_next_frame_time();
 	bool can_render();
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -73,6 +73,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

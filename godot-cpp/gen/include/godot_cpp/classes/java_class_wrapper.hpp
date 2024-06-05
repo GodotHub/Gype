@@ -33,9 +33,8 @@
 #ifndef GODOT_CPP_JAVA_CLASS_WRAPPER_HPP
 #define GODOT_CPP_JAVA_CLASS_WRAPPER_HPP
 
-#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/core/object.hpp>
-
+#include <godot_cpp/classes/ref.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -51,10 +50,10 @@ class JavaClassWrapper : public Object {
 	GDEXTENSION_CLASS(JavaClassWrapper, Object)
 
 public:
+
 	static JavaClassWrapper *get_singleton();
 
 	Ref<JavaClass> wrap(const String &name);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -62,6 +61,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

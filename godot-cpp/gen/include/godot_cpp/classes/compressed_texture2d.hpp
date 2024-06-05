@@ -35,9 +35,8 @@
 
 #include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/string.hpp>
-
+#include <godot_cpp/classes/texture2d.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -50,9 +49,9 @@ class CompressedTexture2D : public Texture2D {
 	GDEXTENSION_CLASS(CompressedTexture2D, Texture2D)
 
 public:
+
 	Error load(const String &path);
 	String get_load_path() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -60,6 +59,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

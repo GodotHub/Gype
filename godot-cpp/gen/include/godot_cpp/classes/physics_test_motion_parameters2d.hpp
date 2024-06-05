@@ -33,13 +33,12 @@
 #ifndef GODOT_CPP_PHYSICS_TEST_MOTION_PARAMETERS2D_HPP
 #define GODOT_CPP_PHYSICS_TEST_MOTION_PARAMETERS2D_HPP
 
+#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/variant/transform2d.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/vector2.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -52,6 +51,7 @@ class PhysicsTestMotionParameters2D : public RefCounted {
 	GDEXTENSION_CLASS(PhysicsTestMotionParameters2D, RefCounted)
 
 public:
+
 	Transform2D get_from() const;
 	void set_from(const Transform2D &from);
 	Vector2 get_motion() const;
@@ -66,7 +66,6 @@ public:
 	void set_exclude_objects(const TypedArray<int> &exclude_list);
 	bool is_recovery_as_collision_enabled() const;
 	void set_recovery_as_collision_enabled(bool enabled);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -74,6 +73,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

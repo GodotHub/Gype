@@ -47,6 +47,7 @@ class RandomNumberGenerator : public RefCounted {
 	GDEXTENSION_CLASS(RandomNumberGenerator, RefCounted)
 
 public:
+
 	void set_seed(uint64_t seed);
 	uint64_t get_seed();
 	void set_state(uint64_t state);
@@ -57,7 +58,6 @@ public:
 	double randf_range(double from, double to);
 	int32_t randi_range(int32_t from, int32_t to);
 	void randomize();
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -65,6 +65,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

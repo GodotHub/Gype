@@ -33,16 +33,15 @@
 #ifndef GODOT_CPP_POLYGON2D_HPP
 #define GODOT_CPP_POLYGON2D_HPP
 
-#include <godot_cpp/classes/node2d.hpp>
-#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/color.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/node_path.hpp>
 #include <godot_cpp/variant/packed_color_array.hpp>
 #include <godot_cpp/variant/packed_float32_array.hpp>
 #include <godot_cpp/variant/packed_vector2_array.hpp>
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/vector2.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -57,6 +56,7 @@ class Polygon2D : public Node2D {
 	GDEXTENSION_CLASS(Polygon2D, Node2D)
 
 public:
+
 	void set_polygon(const PackedVector2Array &polygon);
 	PackedVector2Array get_polygon() const;
 	void set_uv(const PackedVector2Array &uv);
@@ -95,7 +95,6 @@ public:
 	NodePath get_skeleton() const;
 	void set_internal_vertex_count(int32_t internal_vertex_count);
 	int32_t get_internal_vertex_count() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -103,6 +102,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

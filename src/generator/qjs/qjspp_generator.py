@@ -9,8 +9,7 @@ builtin_classes = []
 def list_files_relative(directory):
     directory = Path(directory)
     relative_paths = [file.relative_to(directory) for file in directory.rglob('*') if file.is_file()]
-    ''.count('visual_shader')
-    return list(filter(lambda path: path.count('visual_shader_node') == 0, map(lambda path: str(path).replace('\\', '/'), relative_paths)))
+    return list(filter(lambda path: path.count('visual_shader') == 0, map(lambda path: str(path).replace('\\', '/'), relative_paths)))
 
 def add_builtin_classes(data):
     global builtin_classes

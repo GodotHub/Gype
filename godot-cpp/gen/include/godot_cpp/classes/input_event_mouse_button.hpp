@@ -48,6 +48,7 @@ class InputEventMouseButton : public InputEventMouse {
 	GDEXTENSION_CLASS(InputEventMouseButton, InputEventMouse)
 
 public:
+
 	void set_factor(double factor);
 	double get_factor() const;
 	void set_button_index(MouseButton button_index);
@@ -56,7 +57,6 @@ public:
 	void set_canceled(bool canceled);
 	void set_double_click(bool double_click);
 	bool is_double_click() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -64,6 +64,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

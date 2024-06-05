@@ -47,6 +47,7 @@ class VisualShaderNodeSmoothStep : public VisualShaderNode {
 	GDEXTENSION_CLASS(VisualShaderNodeSmoothStep, VisualShaderNode)
 
 public:
+
 	enum OpType {
 		OP_TYPE_SCALAR = 0,
 		OP_TYPE_VECTOR_2D = 1,
@@ -60,7 +61,6 @@ public:
 
 	void set_op_type(VisualShaderNodeSmoothStep::OpType op_type);
 	VisualShaderNodeSmoothStep::OpType get_op_type() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -68,6 +68,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

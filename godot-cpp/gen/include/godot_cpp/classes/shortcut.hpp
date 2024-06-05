@@ -33,11 +33,10 @@
 #ifndef GODOT_CPP_SHORTCUT_HPP
 #define GODOT_CPP_SHORTCUT_HPP
 
+#include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/string.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -52,12 +51,12 @@ class Shortcut : public Resource {
 	GDEXTENSION_CLASS(Shortcut, Resource)
 
 public:
+
 	void set_events(const Array &events);
 	Array get_events() const;
 	bool has_valid_event() const;
 	bool matches_event(const Ref<InputEvent> &event) const;
 	String get_as_text() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -65,6 +64,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

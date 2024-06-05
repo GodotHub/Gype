@@ -46,6 +46,7 @@ class VehicleWheel3D : public Node3D {
 	GDEXTENSION_CLASS(VehicleWheel3D, Node3D)
 
 public:
+
 	void set_radius(double length);
 	double get_radius() const;
 	void set_suspension_rest_length(double length);
@@ -78,7 +79,6 @@ public:
 	double get_brake() const;
 	void set_steering(double steering);
 	double get_steering() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -86,6 +86,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

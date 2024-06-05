@@ -33,11 +33,10 @@
 #ifndef GODOT_CPP_OPEN_XR_ACTION_HPP
 #define GODOT_CPP_OPEN_XR_ACTION_HPP
 
+#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/string.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -50,6 +49,7 @@ class OpenXRAction : public Resource {
 	GDEXTENSION_CLASS(OpenXRAction, Resource)
 
 public:
+
 	enum ActionType {
 		OPENXR_ACTION_BOOL = 0,
 		OPENXR_ACTION_FLOAT = 1,
@@ -63,7 +63,6 @@ public:
 	OpenXRAction::ActionType get_action_type() const;
 	void set_toplevel_paths(const PackedStringArray &toplevel_paths);
 	PackedStringArray get_toplevel_paths() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -71,6 +70,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

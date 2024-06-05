@@ -46,6 +46,7 @@ class SliderJoint3D : public Joint3D {
 	GDEXTENSION_CLASS(SliderJoint3D, Joint3D)
 
 public:
+
 	enum Param {
 		PARAM_LINEAR_LIMIT_UPPER = 0,
 		PARAM_LINEAR_LIMIT_LOWER = 1,
@@ -74,7 +75,6 @@ public:
 
 	void set_param(SliderJoint3D::Param param, double value);
 	double get_param(SliderJoint3D::Param param) const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -82,6 +82,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

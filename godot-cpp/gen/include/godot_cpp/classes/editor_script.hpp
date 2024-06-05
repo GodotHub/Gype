@@ -50,21 +50,22 @@ class EditorScript : public RefCounted {
 	GDEXTENSION_CLASS(EditorScript, RefCounted)
 
 public:
+
 	void add_root_node(Node *node);
 	Node *get_scene() const;
 	EditorInterface *get_editor_interface() const;
 	virtual void _run();
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		RefCounted::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_run), decltype(&T::_run)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_run),decltype(&T::_run)>) {
 			BIND_VIRTUAL_METHOD(T, _run);
 		}
 	}
 
 public:
+
 };
 
 } // namespace godot

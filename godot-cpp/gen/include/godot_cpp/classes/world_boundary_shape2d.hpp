@@ -48,11 +48,11 @@ class WorldBoundaryShape2D : public Shape2D {
 	GDEXTENSION_CLASS(WorldBoundaryShape2D, Shape2D)
 
 public:
+
 	void set_normal(const Vector2 &normal);
 	Vector2 get_normal() const;
 	void set_distance(double distance);
 	double get_distance() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -60,6 +60,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

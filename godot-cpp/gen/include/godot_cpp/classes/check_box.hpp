@@ -46,6 +46,7 @@ class CheckBox : public Button {
 	GDEXTENSION_CLASS(CheckBox, Button)
 
 public:
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -53,6 +54,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

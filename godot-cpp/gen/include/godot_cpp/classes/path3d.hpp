@@ -49,9 +49,9 @@ class Path3D : public Node3D {
 	GDEXTENSION_CLASS(Path3D, Node3D)
 
 public:
+
 	void set_curve(const Ref<Curve3D> &curve);
 	Ref<Curve3D> get_curve() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -59,6 +59,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -47,6 +47,7 @@ class VisualShaderNodeParticleBoxEmitter : public VisualShaderNodeParticleEmitte
 	GDEXTENSION_CLASS(VisualShaderNodeParticleBoxEmitter, VisualShaderNodeParticleEmitter)
 
 public:
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -54,6 +55,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

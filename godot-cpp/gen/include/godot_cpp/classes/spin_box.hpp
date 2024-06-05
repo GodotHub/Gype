@@ -50,6 +50,7 @@ class SpinBox : public Range {
 	GDEXTENSION_CLASS(SpinBox, Range)
 
 public:
+
 	void set_horizontal_alignment(HorizontalAlignment alignment);
 	HorizontalAlignment get_horizontal_alignment() const;
 	void set_suffix(const String &suffix);
@@ -66,7 +67,6 @@ public:
 	bool is_select_all_on_focus() const;
 	void apply();
 	LineEdit *get_line_edit();
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -74,6 +74,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

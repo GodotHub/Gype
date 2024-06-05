@@ -50,12 +50,12 @@ class ImageTexture : public Texture2D {
 	GDEXTENSION_CLASS(ImageTexture, Texture2D)
 
 public:
+
 	static Ref<ImageTexture> create_from_image(const Ref<Image> &image);
 	Image::Format get_format() const;
 	void set_image(const Ref<Image> &image);
 	void update(const Ref<Image> &image);
 	void set_size_override(const Vector2i &size);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -63,6 +63,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -33,11 +33,10 @@
 #ifndef GODOT_CPP_OCCLUDER3D_HPP
 #define GODOT_CPP_OCCLUDER3D_HPP
 
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/packed_int32_array.hpp>
 #include <godot_cpp/variant/packed_vector3_array.hpp>
-
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/classes/resource.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -50,9 +49,9 @@ class Occluder3D : public Resource {
 	GDEXTENSION_CLASS(Occluder3D, Resource)
 
 public:
+
 	PackedVector3Array get_vertices() const;
 	PackedInt32Array get_indices() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -60,6 +59,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

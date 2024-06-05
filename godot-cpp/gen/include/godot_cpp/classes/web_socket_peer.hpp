@@ -34,12 +34,11 @@
 #define GODOT_CPP_WEB_SOCKET_PEER_HPP
 
 #include <godot_cpp/classes/global_constants.hpp>
+#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/classes/packet_peer.hpp>
 #include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/tls_options.hpp>
-#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/string.hpp>
-
+#include <godot_cpp/classes/tls_options.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -55,6 +54,7 @@ class WebSocketPeer : public PacketPeer {
 	GDEXTENSION_CLASS(WebSocketPeer, PacketPeer)
 
 public:
+
 	enum WriteMode {
 		WRITE_MODE_TEXT = 0,
 		WRITE_MODE_BINARY = 1,
@@ -93,7 +93,6 @@ public:
 	void set_outbound_buffer_size(int32_t buffer_size);
 	void set_max_queued_packets(int32_t buffer_size);
 	int32_t get_max_queued_packets() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -101,6 +100,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

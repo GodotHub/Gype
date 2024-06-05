@@ -53,6 +53,7 @@ class PhysicsDirectSpaceState2DExtension : public PhysicsDirectSpaceState2D {
 	GDEXTENSION_CLASS(PhysicsDirectSpaceState2DExtension, PhysicsDirectSpaceState2D)
 
 public:
+
 	bool is_body_excluded_from_query(const RID &body) const;
 	virtual bool _intersect_ray(const Vector2 &from, const Vector2 &to, uint32_t collision_mask, bool collide_with_bodies, bool collide_with_areas, bool hit_from_inside, PhysicsServer2DExtensionRayResult *result);
 	virtual int32_t _intersect_point(const Vector2 &position, uint64_t canvas_instance_id, uint32_t collision_mask, bool collide_with_bodies, bool collide_with_areas, PhysicsServer2DExtensionShapeResult *results, int32_t max_results);
@@ -60,32 +61,32 @@ public:
 	virtual bool _cast_motion(const RID &shape_rid, const Transform2D &transform, const Vector2 &motion, double margin, uint32_t collision_mask, bool collide_with_bodies, bool collide_with_areas, float *closest_safe, float *closest_unsafe);
 	virtual bool _collide_shape(const RID &shape_rid, const Transform2D &transform, const Vector2 &motion, double margin, uint32_t collision_mask, bool collide_with_bodies, bool collide_with_areas, void *results, int32_t max_results, int32_t *result_count);
 	virtual bool _rest_info(const RID &shape_rid, const Transform2D &transform, const Vector2 &motion, double margin, uint32_t collision_mask, bool collide_with_bodies, bool collide_with_areas, PhysicsServer2DExtensionShapeRestInfo *rest_info);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		PhysicsDirectSpaceState2D::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_intersect_ray), decltype(&T::_intersect_ray)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_intersect_ray),decltype(&T::_intersect_ray)>) {
 			BIND_VIRTUAL_METHOD(T, _intersect_ray);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_intersect_point), decltype(&T::_intersect_point)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_intersect_point),decltype(&T::_intersect_point)>) {
 			BIND_VIRTUAL_METHOD(T, _intersect_point);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_intersect_shape), decltype(&T::_intersect_shape)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_intersect_shape),decltype(&T::_intersect_shape)>) {
 			BIND_VIRTUAL_METHOD(T, _intersect_shape);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_cast_motion), decltype(&T::_cast_motion)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_cast_motion),decltype(&T::_cast_motion)>) {
 			BIND_VIRTUAL_METHOD(T, _cast_motion);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_collide_shape), decltype(&T::_collide_shape)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_collide_shape),decltype(&T::_collide_shape)>) {
 			BIND_VIRTUAL_METHOD(T, _collide_shape);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_rest_info), decltype(&T::_rest_info)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_rest_info),decltype(&T::_rest_info)>) {
 			BIND_VIRTUAL_METHOD(T, _rest_info);
 		}
 	}
 
 public:
+
 };
 
 } // namespace godot

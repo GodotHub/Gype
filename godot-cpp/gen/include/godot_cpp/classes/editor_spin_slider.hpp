@@ -47,6 +47,7 @@ class EditorSpinSlider : public Range {
 	GDEXTENSION_CLASS(EditorSpinSlider, Range)
 
 public:
+
 	void set_label(const String &label);
 	String get_label() const;
 	void set_suffix(const String &suffix);
@@ -57,7 +58,6 @@ public:
 	bool is_flat() const;
 	void set_hide_slider(bool hide_slider);
 	bool is_hiding_slider() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -65,6 +65,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

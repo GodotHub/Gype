@@ -33,15 +33,14 @@
 #ifndef GODOT_CPP_VISUAL_SHADER_NODE_CUSTOM_HPP
 #define GODOT_CPP_VISUAL_SHADER_NODE_CUSTOM_HPP
 
+#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/shader.hpp>
-#include <godot_cpp/classes/visual_shader.hpp>
-#include <godot_cpp/classes/visual_shader_node.hpp>
-#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/variant.hpp>
-
+#include <godot_cpp/classes/visual_shader.hpp>
+#include <godot_cpp/classes/visual_shader_node.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -54,6 +53,7 @@ class VisualShaderNodeCustom : public VisualShaderNode {
 	GDEXTENSION_CLASS(VisualShaderNodeCustom, VisualShaderNode)
 
 public:
+
 	int32_t get_option_index(int32_t option) const;
 	virtual String _get_name() const;
 	virtual String _get_description() const;
@@ -76,77 +76,77 @@ public:
 	virtual String _get_global_code(Shader::Mode mode) const;
 	virtual bool _is_highend() const;
 	virtual bool _is_available(Shader::Mode mode, VisualShader::Type type) const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		VisualShaderNode::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_get_name), decltype(&T::_get_name)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_name),decltype(&T::_get_name)>) {
 			BIND_VIRTUAL_METHOD(T, _get_name);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_description), decltype(&T::_get_description)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_description),decltype(&T::_get_description)>) {
 			BIND_VIRTUAL_METHOD(T, _get_description);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_category), decltype(&T::_get_category)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_category),decltype(&T::_get_category)>) {
 			BIND_VIRTUAL_METHOD(T, _get_category);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_return_icon_type), decltype(&T::_get_return_icon_type)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_return_icon_type),decltype(&T::_get_return_icon_type)>) {
 			BIND_VIRTUAL_METHOD(T, _get_return_icon_type);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_input_port_count), decltype(&T::_get_input_port_count)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_input_port_count),decltype(&T::_get_input_port_count)>) {
 			BIND_VIRTUAL_METHOD(T, _get_input_port_count);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_input_port_type), decltype(&T::_get_input_port_type)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_input_port_type),decltype(&T::_get_input_port_type)>) {
 			BIND_VIRTUAL_METHOD(T, _get_input_port_type);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_input_port_name), decltype(&T::_get_input_port_name)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_input_port_name),decltype(&T::_get_input_port_name)>) {
 			BIND_VIRTUAL_METHOD(T, _get_input_port_name);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_input_port_default_value), decltype(&T::_get_input_port_default_value)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_input_port_default_value),decltype(&T::_get_input_port_default_value)>) {
 			BIND_VIRTUAL_METHOD(T, _get_input_port_default_value);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_default_input_port), decltype(&T::_get_default_input_port)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_default_input_port),decltype(&T::_get_default_input_port)>) {
 			BIND_VIRTUAL_METHOD(T, _get_default_input_port);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_output_port_count), decltype(&T::_get_output_port_count)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_output_port_count),decltype(&T::_get_output_port_count)>) {
 			BIND_VIRTUAL_METHOD(T, _get_output_port_count);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_output_port_type), decltype(&T::_get_output_port_type)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_output_port_type),decltype(&T::_get_output_port_type)>) {
 			BIND_VIRTUAL_METHOD(T, _get_output_port_type);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_output_port_name), decltype(&T::_get_output_port_name)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_output_port_name),decltype(&T::_get_output_port_name)>) {
 			BIND_VIRTUAL_METHOD(T, _get_output_port_name);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_property_count), decltype(&T::_get_property_count)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_property_count),decltype(&T::_get_property_count)>) {
 			BIND_VIRTUAL_METHOD(T, _get_property_count);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_property_name), decltype(&T::_get_property_name)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_property_name),decltype(&T::_get_property_name)>) {
 			BIND_VIRTUAL_METHOD(T, _get_property_name);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_property_default_index), decltype(&T::_get_property_default_index)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_property_default_index),decltype(&T::_get_property_default_index)>) {
 			BIND_VIRTUAL_METHOD(T, _get_property_default_index);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_property_options), decltype(&T::_get_property_options)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_property_options),decltype(&T::_get_property_options)>) {
 			BIND_VIRTUAL_METHOD(T, _get_property_options);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_code), decltype(&T::_get_code)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_code),decltype(&T::_get_code)>) {
 			BIND_VIRTUAL_METHOD(T, _get_code);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_func_code), decltype(&T::_get_func_code)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_func_code),decltype(&T::_get_func_code)>) {
 			BIND_VIRTUAL_METHOD(T, _get_func_code);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_global_code), decltype(&T::_get_global_code)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_global_code),decltype(&T::_get_global_code)>) {
 			BIND_VIRTUAL_METHOD(T, _get_global_code);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_is_highend), decltype(&T::_is_highend)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_is_highend),decltype(&T::_is_highend)>) {
 			BIND_VIRTUAL_METHOD(T, _is_highend);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_is_available), decltype(&T::_is_available)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_is_available),decltype(&T::_is_available)>) {
 			BIND_VIRTUAL_METHOD(T, _is_available);
 		}
 	}
 
 public:
+
 };
 
 } // namespace godot

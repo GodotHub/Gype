@@ -46,9 +46,9 @@ class GPUParticlesCollision3D : public VisualInstance3D {
 	GDEXTENSION_CLASS(GPUParticlesCollision3D, VisualInstance3D)
 
 public:
+
 	void set_cull_mask(uint32_t mask);
 	uint32_t get_cull_mask() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -56,6 +56,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

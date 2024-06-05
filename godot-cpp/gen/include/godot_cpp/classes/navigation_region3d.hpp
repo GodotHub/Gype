@@ -34,9 +34,8 @@
 #define GODOT_CPP_NAVIGATION_REGION3D_HPP
 
 #include <godot_cpp/classes/node3d.hpp>
-#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/rid.hpp>
-
+#include <godot_cpp/classes/ref.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -51,6 +50,7 @@ class NavigationRegion3D : public Node3D {
 	GDEXTENSION_CLASS(NavigationRegion3D, Node3D)
 
 public:
+
 	RID get_rid() const;
 	void set_navigation_mesh(const Ref<NavigationMesh> &navigation_mesh);
 	Ref<NavigationMesh> get_navigation_mesh() const;
@@ -70,7 +70,6 @@ public:
 	void set_travel_cost(double travel_cost);
 	double get_travel_cost() const;
 	void bake_navigation_mesh(bool on_thread = true);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -78,6 +77,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

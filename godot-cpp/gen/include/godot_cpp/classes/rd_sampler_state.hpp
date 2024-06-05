@@ -48,6 +48,7 @@ class RDSamplerState : public RefCounted {
 	GDEXTENSION_CLASS(RDSamplerState, RefCounted)
 
 public:
+
 	void set_mag_filter(RenderingDevice::SamplerFilter p_member);
 	RenderingDevice::SamplerFilter get_mag_filter() const;
 	void set_min_filter(RenderingDevice::SamplerFilter p_member);
@@ -78,7 +79,6 @@ public:
 	RenderingDevice::SamplerBorderColor get_border_color() const;
 	void set_unnormalized_uvw(bool p_member);
 	bool get_unnormalized_uvw() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -86,6 +86,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

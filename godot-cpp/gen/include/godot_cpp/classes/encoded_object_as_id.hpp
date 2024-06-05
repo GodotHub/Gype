@@ -47,9 +47,9 @@ class EncodedObjectAsID : public RefCounted {
 	GDEXTENSION_CLASS(EncodedObjectAsID, RefCounted)
 
 public:
+
 	void set_object_id(uint64_t id);
 	uint64_t get_object_id() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -57,6 +57,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

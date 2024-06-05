@@ -49,6 +49,7 @@ class CurveTexture : public Texture2D {
 	GDEXTENSION_CLASS(CurveTexture, Texture2D)
 
 public:
+
 	enum TextureMode {
 		TEXTURE_MODE_RGB = 0,
 		TEXTURE_MODE_RED = 1,
@@ -59,7 +60,6 @@ public:
 	Ref<Curve> get_curve() const;
 	void set_texture_mode(CurveTexture::TextureMode texture_mode);
 	CurveTexture::TextureMode get_texture_mode() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -67,6 +67,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

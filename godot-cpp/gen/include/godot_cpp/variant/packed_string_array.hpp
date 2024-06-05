@@ -35,11 +35,10 @@
 
 #include <godot_cpp/core/defs.hpp>
 
-#include <gdextension_interface.h>
-#include <godot_cpp/core/error_macros.hpp>
 #include <godot_cpp/variant/string.hpp>
+#include <godot_cpp/core/error_macros.hpp>
 #include <initializer_list>
-
+#include <gdextension_interface.h>
 
 #include <godot_cpp/templates/vararg.hpp>
 namespace godot {
@@ -101,7 +100,7 @@ class PackedStringArray {
 	PackedStringArray(const Variant *p_variant);
 
 public:
-	_FORCE_INLINE_ GDExtensionTypePtr _native_ptr() const { return const_cast<uint8_t(*)[PACKED_STRING_ARRAY_SIZE]>(&opaque); }
+	_FORCE_INLINE_ GDExtensionTypePtr _native_ptr() const { return const_cast<uint8_t (*)[PACKED_STRING_ARRAY_SIZE]>(&opaque); }
 	PackedStringArray();
 	PackedStringArray(const PackedStringArray &from);
 	PackedStringArray(const Array &from);
@@ -141,7 +140,7 @@ public:
 	const String *ptr() const;
 	String *ptrw();
 
-	struct Iterator {
+    struct Iterator {
 		_FORCE_INLINE_ String &operator*() const {
 			return *elem_ptr;
 		}
@@ -205,7 +204,8 @@ public:
 		return ConstIterator(ptr() + size());
 	}
 
-	_FORCE_INLINE_ PackedStringArray(std::initializer_list<String> p_init) {
+
+    _FORCE_INLINE_ PackedStringArray(std::initializer_list<String> p_init) {
 		ERR_FAIL_COND(resize(p_init.size()) != 0);
 
 		size_t i = 0;
@@ -213,6 +213,7 @@ public:
 			set(i++, element);
 		}
 	}
+
 };
 
 } // namespace godot

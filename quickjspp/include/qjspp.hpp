@@ -165,11 +165,12 @@ struct js_traits<int *> {
 	/// @throws exception
 	static int *unwrap(JSContext *ctx, JSValueConst v) {
 		int *r;
-		if (JS_ToInt32(ctx, r, v))
-			throw exception{ ctx };
-		int ret = static_cast<int>(*r);
-		int *ptr = &ret;
-		return ptr;
+		if (JS_ToInt32(ctx, r, v)) {
+			int ret = static_cast<int>(*r);
+			int *ptr = &ret;
+			return ptr;
+		}
+		throw exception{ ctx };
 	}
 
 	static JSValue wrap(JSContext *ctx, int *v) noexcept {
@@ -198,8 +199,8 @@ struct js_traits<float> {
 	static float unwrap(JSContext *ctx, JSValueConst v) {
 		double r;
 		if (JS_ToFloat64(ctx, &r, v))
-			throw exception{ ctx };
-		return r;
+			return r;
+		throw exception{ ctx };
 	}
 
 	static JSValue wrap(JSContext *ctx, float v) noexcept {
@@ -211,11 +212,12 @@ struct js_traits<float *> {
 	/// @throws exception
 	static float *unwrap(JSContext *ctx, JSValueConst v) {
 		double *r;
-		if (JS_ToFloat64(ctx, r, v))
-			throw exception{ ctx };
-		float ret = static_cast<float>(*r);
-		float *ptr = &ret;
-		return ptr;
+		if (JS_ToFloat64(ctx, r, v)) {
+			float ret = static_cast<float>(*r);
+			float *ptr = &ret;
+			return ptr;
+		}
+		throw exception{ ctx };
 	}
 
 	static JSValue wrap(JSContext *ctx, float *v) noexcept {
@@ -244,8 +246,8 @@ struct js_traits<double> {
 	static double unwrap(JSContext *ctx, JSValueConst v) {
 		double r;
 		if (JS_ToFloat64(ctx, &r, v))
-			throw exception{ ctx };
-		return r;
+			return r;
+		throw exception{ ctx };
 	}
 
 	static JSValue wrap(JSContext *ctx, double v) noexcept {
@@ -257,11 +259,12 @@ struct js_traits<double *> {
 	/// @throws exception
 	static double *unwrap(JSContext *ctx, JSValueConst v) {
 		double *r;
-		if (JS_ToFloat64(ctx, r, v))
-			throw exception{ ctx };
-		double ret = static_cast<double>(*r);
-		double *ptr = &ret;
-		return ptr;
+		if (JS_ToFloat64(ctx, r, v)) {
+			double ret = static_cast<double>(*r);
+			double *ptr = &ret;
+			return ptr;
+		}
+		throw exception{ ctx };
 	}
 
 	static JSValue wrap(JSContext *ctx, double *v) noexcept {
@@ -288,9 +291,10 @@ template <>
 struct js_traits<char *> {
 	/// @throws exception
 	static char *unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsString(v))
-			throw exception{ ctx };
-		return const_cast<char *>(JS_ToCString(ctx, v));
+		if (JS_IsString(v)) {
+			return const_cast<char *>(JS_ToCString(ctx, v));
+		}
+		throw exception{ ctx };
 	}
 
 	static JSValue wrap(JSContext *ctx, char *v) noexcept {
@@ -301,9 +305,10 @@ template <>
 struct js_traits<const char16_t *> {
 	/// @throws exception
 	static char16_t *unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsString(v))
-			throw exception{ ctx };
-		return reinterpret_cast<char16_t *>(const_cast<char *>(JS_ToCString(ctx, v)));
+		if (JS_IsString(v)) {
+			return reinterpret_cast<char16_t *>(const_cast<char *>(JS_ToCString(ctx, v)));
+		}
+		throw exception{ ctx };
 	}
 
 	static JSValue wrap(JSContext *ctx, char16_t *v) noexcept {
@@ -314,9 +319,10 @@ template <>
 struct js_traits<const char32_t *> {
 	/// @throws exception
 	static char32_t *unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsString(v))
-			throw exception{ ctx };
-		return reinterpret_cast<char32_t *>(const_cast<char *>(JS_ToCString(ctx, v)));
+		if (JS_IsString(v)) {
+			return reinterpret_cast<char32_t *>(const_cast<char *>(JS_ToCString(ctx, v)));
+		}
+		throw exception{ ctx };
 	}
 
 	static JSValue wrap(JSContext *ctx, char32_t *v) noexcept {
@@ -327,9 +333,10 @@ template <>
 struct js_traits<const wchar_t *> {
 	/// @throws exception
 	static wchar_t *unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsString(v))
-			throw exception{ ctx };
-		return reinterpret_cast<wchar_t *>(const_cast<char *>(JS_ToCString(ctx, v)));
+		if (JS_IsString(v)) {
+			return reinterpret_cast<wchar_t *>(const_cast<char *>(JS_ToCString(ctx, v)));
+		}
+		throw exception{ ctx };
 	}
 
 	static JSValue wrap(JSContext *ctx, wchar_t *v) noexcept {
@@ -394,6 +401,25 @@ struct js_traits<const void *const *> {
 
 	static const void *const *unwrap(JSContext *ctx, JSValueConst v) {
 		throw std::runtime_error("Unwrapping to const void* const* is not implemented");
+	}
+};
+
+template <>
+struct js_traits<const uint8_t **> {
+	/// @throws exception
+	static const uint8_t **unwrap(JSContext *ctx, JSValueConst v) {
+		if (JS_IsArray(ctx, v))
+			throw exception{ ctx };
+		return new const uint8_t *[1]{ static_cast<uint8_t *>(JS_GetOpaque(v, 2)) };
+	}
+};
+template <>
+struct js_traits<const uint8_t *> {
+	/// @throws exception
+	static const uint8_t *unwrap(JSContext *ctx, JSValueConst v) {
+		if (JS_IsArray(ctx, v))
+			throw exception{ ctx };
+		return static_cast<uint8_t *>(JS_GetOpaque(v, 2));
 	}
 };
 
@@ -2043,26 +2069,6 @@ struct js_traits<godot::ObjectID &> {
 	}
 };
 
-// 等待更新
-// template <typename T>
-// struct js_traits<godot::Ref<T>, std::enable_if_t<std::is_base_of_v<godot::RefCounted, T>>> {
-// 	/// @throws exception
-// 	static godot::Ref<T> unwrap(JSContext *ctx, JSValueConst v) {
-// 		if (JS_IsObject(v)) {
-// 			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-// 			if (ptr) {
-// 				return godot::Ref<T>((T *)ptr);
-// 			}
-// 		}
-
-// 		throw exception{ ctx };
-// 	}
-
-// 	static JSValue wrap(JSContext *ctx, godot::Ref<T> v) noexcept {
-// 		return Value{ ctx, std::move(v) };
-// 	}
-// };
-
 template <typename T>
 struct js_traits<T, std::enable_if_t<is_ref<T>::value>> {
 	/// @throws exception
@@ -2071,25 +2077,6 @@ struct js_traits<T, std::enable_if_t<is_ref<T>::value>> {
 			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
 			if (ptr) {
 				return T((T *)ptr);
-			}
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, T v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-
-template <typename T>
-struct js_traits<T, std::enable_if_t<std::is_base_of_v<godot::Object, T> && !std::is_base_of_v<godot::RefCounted, T>>> {
-	/// @throws exception
-	static T unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(T *)ptr;
 			}
 		}
 

@@ -36,11 +36,10 @@
 #include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/classes/http_client.hpp>
 #include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/packed_byte_array.hpp>
 #include <godot_cpp/variant/packed_string_array.hpp>
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/string.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -55,6 +54,7 @@ class HTTPRequest : public Node {
 	GDEXTENSION_CLASS(HTTPRequest, Node)
 
 public:
+
 	enum Result {
 		RESULT_SUCCESS = 0,
 		RESULT_CHUNKED_BODY_SIZE_MISMATCH = 1,
@@ -95,7 +95,6 @@ public:
 	int32_t get_download_chunk_size() const;
 	void set_http_proxy(const String &host, int32_t port);
 	void set_https_proxy(const String &host, int32_t port);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -103,6 +102,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

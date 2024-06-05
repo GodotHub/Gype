@@ -49,11 +49,11 @@ class X509Certificate : public Resource {
 	GDEXTENSION_CLASS(X509Certificate, Resource)
 
 public:
+
 	Error save(const String &path);
 	Error load(const String &path);
 	String save_to_string();
 	Error load_from_string(const String &string);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -61,6 +61,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

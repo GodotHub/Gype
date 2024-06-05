@@ -33,11 +33,10 @@
 #ifndef GODOT_CPP_JSONRPC_HPP
 #define GODOT_CPP_JSONRPC_HPP
 
-#include <godot_cpp/core/object.hpp>
 #include <godot_cpp/variant/dictionary.hpp>
+#include <godot_cpp/core/object.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/variant.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -50,6 +49,7 @@ class JSONRPC : public Object {
 	GDEXTENSION_CLASS(JSONRPC, Object)
 
 public:
+
 	enum ErrorCode {
 		PARSE_ERROR = -32700,
 		INVALID_REQUEST = -32600,
@@ -65,7 +65,6 @@ public:
 	Dictionary make_response(const Variant &result, const Variant &id);
 	Dictionary make_notification(const String &method, const Variant &params);
 	Dictionary make_response_error(int32_t code, const String &message, const Variant &id = nullptr) const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -73,6 +72,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

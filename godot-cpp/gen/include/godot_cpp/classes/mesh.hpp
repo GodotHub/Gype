@@ -33,16 +33,15 @@
 #ifndef GODOT_CPP_MESH_HPP
 #define GODOT_CPP_MESH_HPP
 
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/aabb.hpp>
 #include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/variant/packed_vector3_array.hpp>
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/vector2i.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -60,6 +59,7 @@ class Mesh : public Resource {
 	GDEXTENSION_CLASS(Mesh, Resource)
 
 public:
+
 	enum PrimitiveType {
 		PRIMITIVE_POINTS = 0,
 		PRIMITIVE_LINES = 1,
@@ -160,56 +160,56 @@ public:
 	virtual StringName _get_blend_shape_name(int32_t index) const;
 	virtual void _set_blend_shape_name(int32_t index, const StringName &name);
 	virtual AABB _get_aabb() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Resource::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_get_surface_count), decltype(&T::_get_surface_count)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_surface_count),decltype(&T::_get_surface_count)>) {
 			BIND_VIRTUAL_METHOD(T, _get_surface_count);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_surface_get_array_len), decltype(&T::_surface_get_array_len)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_surface_get_array_len),decltype(&T::_surface_get_array_len)>) {
 			BIND_VIRTUAL_METHOD(T, _surface_get_array_len);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_surface_get_array_index_len), decltype(&T::_surface_get_array_index_len)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_surface_get_array_index_len),decltype(&T::_surface_get_array_index_len)>) {
 			BIND_VIRTUAL_METHOD(T, _surface_get_array_index_len);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_surface_get_arrays), decltype(&T::_surface_get_arrays)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_surface_get_arrays),decltype(&T::_surface_get_arrays)>) {
 			BIND_VIRTUAL_METHOD(T, _surface_get_arrays);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_surface_get_blend_shape_arrays), decltype(&T::_surface_get_blend_shape_arrays)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_surface_get_blend_shape_arrays),decltype(&T::_surface_get_blend_shape_arrays)>) {
 			BIND_VIRTUAL_METHOD(T, _surface_get_blend_shape_arrays);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_surface_get_lods), decltype(&T::_surface_get_lods)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_surface_get_lods),decltype(&T::_surface_get_lods)>) {
 			BIND_VIRTUAL_METHOD(T, _surface_get_lods);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_surface_get_format), decltype(&T::_surface_get_format)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_surface_get_format),decltype(&T::_surface_get_format)>) {
 			BIND_VIRTUAL_METHOD(T, _surface_get_format);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_surface_get_primitive_type), decltype(&T::_surface_get_primitive_type)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_surface_get_primitive_type),decltype(&T::_surface_get_primitive_type)>) {
 			BIND_VIRTUAL_METHOD(T, _surface_get_primitive_type);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_surface_set_material), decltype(&T::_surface_set_material)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_surface_set_material),decltype(&T::_surface_set_material)>) {
 			BIND_VIRTUAL_METHOD(T, _surface_set_material);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_surface_get_material), decltype(&T::_surface_get_material)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_surface_get_material),decltype(&T::_surface_get_material)>) {
 			BIND_VIRTUAL_METHOD(T, _surface_get_material);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_blend_shape_count), decltype(&T::_get_blend_shape_count)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_blend_shape_count),decltype(&T::_get_blend_shape_count)>) {
 			BIND_VIRTUAL_METHOD(T, _get_blend_shape_count);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_blend_shape_name), decltype(&T::_get_blend_shape_name)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_blend_shape_name),decltype(&T::_get_blend_shape_name)>) {
 			BIND_VIRTUAL_METHOD(T, _get_blend_shape_name);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_set_blend_shape_name), decltype(&T::_set_blend_shape_name)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_set_blend_shape_name),decltype(&T::_set_blend_shape_name)>) {
 			BIND_VIRTUAL_METHOD(T, _set_blend_shape_name);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_aabb), decltype(&T::_get_aabb)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_aabb),decltype(&T::_get_aabb)>) {
 			BIND_VIRTUAL_METHOD(T, _get_aabb);
 		}
 	}
 
 public:
+
 };
 
 } // namespace godot

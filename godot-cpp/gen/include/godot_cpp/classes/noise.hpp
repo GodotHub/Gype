@@ -52,6 +52,7 @@ class Noise : public Resource {
 	GDEXTENSION_CLASS(Noise, Resource)
 
 public:
+
 	double get_noise_1d(double x) const;
 	double get_noise_2d(double x, double y) const;
 	double get_noise_2dv(const Vector2 &v) const;
@@ -61,7 +62,6 @@ public:
 	Ref<Image> get_seamless_image(int32_t width, int32_t height, bool invert = false, bool in_3d_space = false, double skirt = 0.1, bool normalize = true) const;
 	TypedArray<Image> get_image_3d(int32_t width, int32_t height, int32_t depth, bool invert = false, bool normalize = true) const;
 	TypedArray<Image> get_seamless_image_3d(int32_t width, int32_t height, int32_t depth, bool invert = false, double skirt = 0.1, bool normalize = true) const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -69,6 +69,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -33,18 +33,17 @@
 #ifndef GODOT_CPP_IMPORTER_MESH_HPP
 #define GODOT_CPP_IMPORTER_MESH_HPP
 
+#include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/classes/array_mesh.hpp>
+#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/variant/packed_int32_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/variant/array.hpp>
-#include <godot_cpp/variant/dictionary.hpp>
-#include <godot_cpp/variant/packed_int32_array.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/vector2i.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -57,6 +56,7 @@ class ImporterMesh : public Resource {
 	GDEXTENSION_CLASS(ImporterMesh, Resource)
 
 public:
+
 	void add_blend_shape(const String &name);
 	int32_t get_blend_shape_count() const;
 	String get_blend_shape_name(int32_t blend_shape_idx) const;
@@ -80,7 +80,6 @@ public:
 	void clear();
 	void set_lightmap_size_hint(const Vector2i &size);
 	Vector2i get_lightmap_size_hint() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -88,6 +87,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

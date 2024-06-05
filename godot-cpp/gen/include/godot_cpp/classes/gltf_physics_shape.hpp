@@ -33,12 +33,11 @@
 #ifndef GODOT_CPP_GLTF_PHYSICS_SHAPE_HPP
 #define GODOT_CPP_GLTF_PHYSICS_SHAPE_HPP
 
+#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/vector3.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -54,6 +53,7 @@ class GLTFPhysicsShape : public Resource {
 	GDEXTENSION_CLASS(GLTFPhysicsShape, Resource)
 
 public:
+
 	static Ref<GLTFPhysicsShape> from_node(CollisionShape3D *shape_node);
 	CollisionShape3D *to_node(bool cache_shapes = false);
 	static Ref<GLTFPhysicsShape> from_dictionary(const Dictionary &dictionary);
@@ -72,7 +72,6 @@ public:
 	void set_mesh_index(int32_t mesh_index);
 	Ref<ImporterMesh> get_importer_mesh() const;
 	void set_importer_mesh(const Ref<ImporterMesh> &importer_mesh);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -80,6 +79,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

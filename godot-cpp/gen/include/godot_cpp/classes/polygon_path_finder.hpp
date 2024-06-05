@@ -33,12 +33,11 @@
 #ifndef GODOT_CPP_POLYGON_PATH_FINDER_HPP
 #define GODOT_CPP_POLYGON_PATH_FINDER_HPP
 
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/packed_vector2_array.hpp>
 #include <godot_cpp/variant/rect2.hpp>
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/vector2.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -53,6 +52,7 @@ class PolygonPathFinder : public Resource {
 	GDEXTENSION_CLASS(PolygonPathFinder, Resource)
 
 public:
+
 	void setup(const PackedVector2Array &points, const PackedInt32Array &connections);
 	PackedVector2Array find_path(const Vector2 &from, const Vector2 &to);
 	PackedVector2Array get_intersections(const Vector2 &from, const Vector2 &to) const;
@@ -61,7 +61,6 @@ public:
 	void set_point_penalty(int32_t idx, double penalty);
 	double get_point_penalty(int32_t idx) const;
 	Rect2 get_bounds() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -69,6 +68,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

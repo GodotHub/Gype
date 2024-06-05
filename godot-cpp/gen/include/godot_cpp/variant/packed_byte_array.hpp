@@ -35,10 +35,9 @@
 
 #include <godot_cpp/core/defs.hpp>
 
-#include <gdextension_interface.h>
 #include <godot_cpp/core/error_macros.hpp>
 #include <initializer_list>
-
+#include <gdextension_interface.h>
 
 #include <godot_cpp/templates/vararg.hpp>
 namespace godot {
@@ -141,7 +140,7 @@ class PackedByteArray {
 	PackedByteArray(const Variant *p_variant);
 
 public:
-	_FORCE_INLINE_ GDExtensionTypePtr _native_ptr() const { return const_cast<uint8_t(*)[PACKED_BYTE_ARRAY_SIZE]>(&opaque); }
+	_FORCE_INLINE_ GDExtensionTypePtr _native_ptr() const { return const_cast<uint8_t (*)[PACKED_BYTE_ARRAY_SIZE]>(&opaque); }
 	PackedByteArray();
 	PackedByteArray(const PackedByteArray &from);
 	PackedByteArray(const Array &from);
@@ -219,7 +218,7 @@ public:
 	const uint8_t *ptr() const;
 	uint8_t *ptrw();
 
-	struct Iterator {
+    struct Iterator {
 		_FORCE_INLINE_ uint8_t &operator*() const {
 			return *elem_ptr;
 		}
@@ -283,7 +282,8 @@ public:
 		return ConstIterator(ptr() + size());
 	}
 
-	_FORCE_INLINE_ PackedByteArray(std::initializer_list<uint8_t> p_init) {
+
+    _FORCE_INLINE_ PackedByteArray(std::initializer_list<uint8_t> p_init) {
 		ERR_FAIL_COND(resize(p_init.size()) != 0);
 
 		size_t i = 0;
@@ -291,6 +291,7 @@ public:
 			set(i++, element);
 		}
 	}
+
 };
 
 } // namespace godot

@@ -49,29 +49,30 @@ class PhysicsServer3DRenderingServerHandler : public Object {
 	GDEXTENSION_CLASS(PhysicsServer3DRenderingServerHandler, Object)
 
 public:
+
 	void set_vertex(int32_t vertex_id, const Vector3 &vertex);
 	void set_normal(int32_t vertex_id, const Vector3 &normal);
 	void set_aabb(const AABB &aabb);
 	virtual void _set_vertex(int32_t vertex_id, const Vector3 &vertex);
 	virtual void _set_normal(int32_t vertex_id, const Vector3 &normal);
 	virtual void _set_aabb(const AABB &aabb);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_set_vertex), decltype(&T::_set_vertex)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_set_vertex),decltype(&T::_set_vertex)>) {
 			BIND_VIRTUAL_METHOD(T, _set_vertex);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_set_normal), decltype(&T::_set_normal)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_set_normal),decltype(&T::_set_normal)>) {
 			BIND_VIRTUAL_METHOD(T, _set_normal);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_set_aabb), decltype(&T::_set_aabb)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_set_aabb),decltype(&T::_set_aabb)>) {
 			BIND_VIRTUAL_METHOD(T, _set_aabb);
 		}
 	}
 
 public:
+
 };
 
 } // namespace godot

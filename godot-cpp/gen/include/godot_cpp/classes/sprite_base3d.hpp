@@ -34,13 +34,12 @@
 #define GODOT_CPP_SPRITE_BASE3D_HPP
 
 #include <godot_cpp/classes/base_material3d.hpp>
-#include <godot_cpp/classes/geometry_instance3d.hpp>
-#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/color.hpp>
+#include <godot_cpp/classes/geometry_instance3d.hpp>
 #include <godot_cpp/variant/rect2.hpp>
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/vector2.hpp>
 #include <godot_cpp/variant/vector3.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -55,6 +54,7 @@ class SpriteBase3D : public GeometryInstance3D {
 	GDEXTENSION_CLASS(SpriteBase3D, GeometryInstance3D)
 
 public:
+
 	enum DrawFlags {
 		FLAG_TRANSPARENT = 0,
 		FLAG_SHADED = 1,
@@ -105,7 +105,6 @@ public:
 	BaseMaterial3D::TextureFilter get_texture_filter() const;
 	Rect2 get_item_rect() const;
 	Ref<TriangleMesh> generate_triangle_mesh() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -113,6 +112,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

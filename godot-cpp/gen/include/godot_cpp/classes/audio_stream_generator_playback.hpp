@@ -50,13 +50,13 @@ class AudioStreamGeneratorPlayback : public AudioStreamPlaybackResampled {
 	GDEXTENSION_CLASS(AudioStreamGeneratorPlayback, AudioStreamPlaybackResampled)
 
 public:
+
 	bool push_frame(const Vector2 &frame);
 	bool can_push_buffer(int32_t amount) const;
 	bool push_buffer(const PackedVector2Array &frames);
 	int32_t get_frames_available() const;
 	int32_t get_skips() const;
 	void clear_buffer();
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -64,6 +64,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

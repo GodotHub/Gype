@@ -52,6 +52,7 @@ class OptionButton : public Button {
 	GDEXTENSION_CLASS(OptionButton, Button)
 
 public:
+
 	void add_item(const String &label, int32_t id = -1);
 	void add_icon_item(const Ref<Texture2D> &texture, const String &label, int32_t id = -1);
 	void set_item_text(int32_t idx, const String &text);
@@ -86,7 +87,6 @@ public:
 	void set_allow_reselect(bool allow);
 	bool get_allow_reselect() const;
 	void set_disable_shortcuts(bool disabled);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -94,6 +94,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

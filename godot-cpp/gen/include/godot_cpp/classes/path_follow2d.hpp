@@ -46,6 +46,7 @@ class PathFollow2D : public Node2D {
 	GDEXTENSION_CLASS(PathFollow2D, Node2D)
 
 public:
+
 	void set_progress(double progress);
 	double get_progress() const;
 	void set_h_offset(double h_offset);
@@ -60,7 +61,6 @@ public:
 	bool get_cubic_interpolation() const;
 	void set_loop(bool loop);
 	bool has_loop() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -68,6 +68,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -33,12 +33,11 @@
 #ifndef GODOT_CPP_GRADIENT_HPP
 #define GODOT_CPP_GRADIENT_HPP
 
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/variant/packed_color_array.hpp>
 #include <godot_cpp/variant/packed_float32_array.hpp>
-
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/classes/resource.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -51,6 +50,7 @@ class Gradient : public Resource {
 	GDEXTENSION_CLASS(Gradient, Resource)
 
 public:
+
 	enum InterpolationMode {
 		GRADIENT_INTERPOLATE_LINEAR = 0,
 		GRADIENT_INTERPOLATE_CONSTANT = 1,
@@ -80,7 +80,6 @@ public:
 	Gradient::InterpolationMode get_interpolation_mode();
 	void set_interpolation_color_space(Gradient::ColorSpace interpolation_color_space);
 	Gradient::ColorSpace get_interpolation_color_space();
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -88,6 +87,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -47,6 +47,7 @@ class StandardMaterial3D : public BaseMaterial3D {
 	GDEXTENSION_CLASS(StandardMaterial3D, BaseMaterial3D)
 
 public:
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -54,6 +55,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

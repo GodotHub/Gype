@@ -50,11 +50,11 @@ class ButtonGroup : public Resource {
 	GDEXTENSION_CLASS(ButtonGroup, Resource)
 
 public:
+
 	BaseButton *get_pressed_button();
 	TypedArray<BaseButton> get_buttons();
 	void set_allow_unpress(bool enabled);
 	bool is_allow_unpress();
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -62,6 +62,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

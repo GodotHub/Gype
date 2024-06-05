@@ -49,6 +49,7 @@ class CSGCylinder3D : public CSGPrimitive3D {
 	GDEXTENSION_CLASS(CSGCylinder3D, CSGPrimitive3D)
 
 public:
+
 	void set_radius(double radius);
 	double get_radius() const;
 	void set_height(double height);
@@ -61,7 +62,6 @@ public:
 	Ref<Material> get_material() const;
 	void set_smooth_faces(bool smooth_faces);
 	bool get_smooth_faces() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -69,6 +69,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

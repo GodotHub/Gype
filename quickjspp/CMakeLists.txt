@@ -1,9 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
 
-# 设置C和C++编译器
-set(CMAKE_C_COMPILER D:/mingw64/bin/gcc.exe)
-set(CMAKE_CXX_COMPILER D:/mingw64/bin/g++.exe)
-
 project(quickjspp C CXX)
 
 add_library(quickjspp INTERFACE)

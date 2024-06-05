@@ -33,17 +33,16 @@
 #ifndef GODOT_CPP_NODE_HPP
 #define GODOT_CPP_NODE_HPP
 
-#include <godot_cpp/classes/global_constants.hpp>
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/core/object.hpp>
 #include <godot_cpp/variant/array.hpp>
+#include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/variant/node_path.hpp>
+#include <godot_cpp/core/object.hpp>
 #include <godot_cpp/variant/packed_string_array.hpp>
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/variant.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -63,6 +62,7 @@ class Node : public Object {
 	GDEXTENSION_CLASS(Node, Object)
 
 public:
+
 	enum ProcessMode {
 		PROCESS_MODE_INHERIT = 0,
 		PROCESS_MODE_PAUSABLE = 1,
@@ -235,70 +235,50 @@ public:
 	String get_editor_description() const;
 	void set_unique_name_in_owner(bool enable);
 	bool is_unique_name_in_owner() const;
-
-private:
-private:
-	Error rpc_internal(const Variant **args, GDExtensionInt arg_count);
-
-public:
-	Error rpc(const StringName &method, rest<Variant> args) {
+	private: private: Error rpc_internal(const Variant **args, GDExtensionInt arg_count);
+	public: Error rpc(const StringName &method, rest<Variant> args) {
 		std::vector<Variant> variant_args;
 		variant_args.push_back(Variant(method));
 		variant_args.insert(variant_args.end(), args.begin(), args.end());
 		std::vector<const Variant *> call_args;
-		for (size_t i = 0; i < variant_args.size(); i++) {
+		for(size_t i = 0; i < variant_args.size(); i++) {
 			call_args.push_back(&variant_args[i]);
 		}
 		return rpc_internal(call_args.data(), variant_args.size());
 	}
-
-private:
-private:
-	Error rpc_id_internal(const Variant **args, GDExtensionInt arg_count);
-
-public:
-	Error rpc_id(int64_t peer_id, const StringName &method, rest<Variant> args) {
+	private: private: Error rpc_id_internal(const Variant **args, GDExtensionInt arg_count);
+	public: Error rpc_id(int64_t peer_id, const StringName &method, rest<Variant> args) {
 		std::vector<Variant> variant_args;
 		variant_args.push_back(Variant(peer_id));
 		variant_args.push_back(Variant(method));
 		variant_args.insert(variant_args.end(), args.begin(), args.end());
 		std::vector<const Variant *> call_args;
-		for (size_t i = 0; i < variant_args.size(); i++) {
+		for(size_t i = 0; i < variant_args.size(); i++) {
 			call_args.push_back(&variant_args[i]);
 		}
 		return rpc_id_internal(call_args.data(), variant_args.size());
 	}
 	void update_configuration_warnings();
-
-private:
-private:
-	Variant call_deferred_thread_group_internal(const Variant **args, GDExtensionInt arg_count);
-
-public:
-	Variant call_deferred_thread_group(const StringName &method, rest<Variant> args) {
+	private: private: Variant call_deferred_thread_group_internal(const Variant **args, GDExtensionInt arg_count);
+	public: Variant call_deferred_thread_group(const StringName &method, rest<Variant> args) {
 		std::vector<Variant> variant_args;
 		variant_args.push_back(Variant(method));
 		variant_args.insert(variant_args.end(), args.begin(), args.end());
 		std::vector<const Variant *> call_args;
-		for (size_t i = 0; i < variant_args.size(); i++) {
+		for(size_t i = 0; i < variant_args.size(); i++) {
 			call_args.push_back(&variant_args[i]);
 		}
 		return call_deferred_thread_group_internal(call_args.data(), variant_args.size());
 	}
 	void set_deferred_thread_group(const StringName &property, const Variant &value);
 	void notify_deferred_thread_group(int32_t what);
-
-private:
-private:
-	Variant call_thread_safe_internal(const Variant **args, GDExtensionInt arg_count);
-
-public:
-	Variant call_thread_safe(const StringName &method, rest<Variant> args) {
+	private: private: Variant call_thread_safe_internal(const Variant **args, GDExtensionInt arg_count);
+	public: Variant call_thread_safe(const StringName &method, rest<Variant> args) {
 		std::vector<Variant> variant_args;
 		variant_args.push_back(Variant(method));
 		variant_args.insert(variant_args.end(), args.begin(), args.end());
 		std::vector<const Variant *> call_args;
-		for (size_t i = 0; i < variant_args.size(); i++) {
+		for(size_t i = 0; i < variant_args.size(); i++) {
 			call_args.push_back(&variant_args[i]);
 		}
 		return call_thread_safe_internal(call_args.data(), variant_args.size());
@@ -315,44 +295,44 @@ public:
 	virtual void _shortcut_input(const Ref<InputEvent> &event);
 	virtual void _unhandled_input(const Ref<InputEvent> &event);
 	virtual void _unhandled_key_input(const Ref<InputEvent> &event);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_process), decltype(&T::_process)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_process),decltype(&T::_process)>) {
 			BIND_VIRTUAL_METHOD(T, _process);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_physics_process), decltype(&T::_physics_process)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_physics_process),decltype(&T::_physics_process)>) {
 			BIND_VIRTUAL_METHOD(T, _physics_process);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_enter_tree), decltype(&T::_enter_tree)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_enter_tree),decltype(&T::_enter_tree)>) {
 			BIND_VIRTUAL_METHOD(T, _enter_tree);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_exit_tree), decltype(&T::_exit_tree)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_exit_tree),decltype(&T::_exit_tree)>) {
 			BIND_VIRTUAL_METHOD(T, _exit_tree);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_ready), decltype(&T::_ready)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_ready),decltype(&T::_ready)>) {
 			BIND_VIRTUAL_METHOD(T, _ready);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_configuration_warnings), decltype(&T::_get_configuration_warnings)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_configuration_warnings),decltype(&T::_get_configuration_warnings)>) {
 			BIND_VIRTUAL_METHOD(T, _get_configuration_warnings);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_input), decltype(&T::_input)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_input),decltype(&T::_input)>) {
 			BIND_VIRTUAL_METHOD(T, _input);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_shortcut_input), decltype(&T::_shortcut_input)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_shortcut_input),decltype(&T::_shortcut_input)>) {
 			BIND_VIRTUAL_METHOD(T, _shortcut_input);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_unhandled_input), decltype(&T::_unhandled_input)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_unhandled_input),decltype(&T::_unhandled_input)>) {
 			BIND_VIRTUAL_METHOD(T, _unhandled_input);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_unhandled_key_input), decltype(&T::_unhandled_key_input)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_unhandled_key_input),decltype(&T::_unhandled_key_input)>) {
 			BIND_VIRTUAL_METHOD(T, _unhandled_key_input);
 		}
 	}
 
 public:
+
 };
 
 } // namespace godot

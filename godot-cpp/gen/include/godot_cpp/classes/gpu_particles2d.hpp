@@ -34,10 +34,9 @@
 #define GODOT_CPP_GPU_PARTICLES2D_HPP
 
 #include <godot_cpp/classes/node2d.hpp>
-#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/node_path.hpp>
 #include <godot_cpp/variant/rect2.hpp>
-
+#include <godot_cpp/classes/ref.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -57,6 +56,7 @@ class GPUParticles2D : public Node2D {
 	GDEXTENSION_CLASS(GPUParticles2D, Node2D)
 
 public:
+
 	enum DrawOrder {
 		DRAW_ORDER_INDEX = 0,
 		DRAW_ORDER_LIFETIME = 1,
@@ -123,7 +123,6 @@ public:
 	void convert_from_particles(Node *particles);
 	void set_amount_ratio(double ratio);
 	double get_amount_ratio() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -131,6 +130,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

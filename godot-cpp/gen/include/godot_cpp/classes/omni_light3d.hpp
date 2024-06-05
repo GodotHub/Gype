@@ -46,6 +46,7 @@ class OmniLight3D : public Light3D {
 	GDEXTENSION_CLASS(OmniLight3D, Light3D)
 
 public:
+
 	enum ShadowMode {
 		SHADOW_DUAL_PARABOLOID = 0,
 		SHADOW_CUBE = 1,
@@ -53,7 +54,6 @@ public:
 
 	void set_shadow_mode(OmniLight3D::ShadowMode mode);
 	OmniLight3D::ShadowMode get_shadow_mode() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -61,6 +61,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

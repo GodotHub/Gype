@@ -50,6 +50,7 @@ class GDExtension : public Resource {
 	GDEXTENSION_CLASS(GDExtension, Resource)
 
 public:
+
 	enum InitializationLevel {
 		INITIALIZATION_LEVEL_CORE = 0,
 		INITIALIZATION_LEVEL_SERVERS = 1,
@@ -62,7 +63,6 @@ public:
 	bool is_library_open() const;
 	GDExtension::InitializationLevel get_minimum_library_initialization_level() const;
 	void initialize_library(GDExtension::InitializationLevel level);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -70,6 +70,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

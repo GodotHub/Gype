@@ -46,6 +46,7 @@ class XRCamera3D : public Camera3D {
 	GDEXTENSION_CLASS(XRCamera3D, Camera3D)
 
 public:
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -53,6 +54,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

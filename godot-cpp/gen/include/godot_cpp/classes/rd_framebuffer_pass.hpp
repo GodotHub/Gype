@@ -33,10 +33,9 @@
 #ifndef GODOT_CPP_RD_FRAMEBUFFER_PASS_HPP
 #define GODOT_CPP_RD_FRAMEBUFFER_PASS_HPP
 
+#include <godot_cpp/variant/packed_int32_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/variant/packed_int32_array.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -49,6 +48,7 @@ class RDFramebufferPass : public RefCounted {
 	GDEXTENSION_CLASS(RDFramebufferPass, RefCounted)
 
 public:
+
 	static const int ATTACHMENT_UNUSED = -1;
 
 	void set_color_attachments(const PackedInt32Array &p_member);
@@ -61,7 +61,6 @@ public:
 	PackedInt32Array get_preserve_attachments() const;
 	void set_depth_attachment(int32_t p_member);
 	int32_t get_depth_attachment() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -69,6 +68,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

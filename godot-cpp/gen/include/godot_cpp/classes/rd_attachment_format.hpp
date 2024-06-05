@@ -48,13 +48,13 @@ class RDAttachmentFormat : public RefCounted {
 	GDEXTENSION_CLASS(RDAttachmentFormat, RefCounted)
 
 public:
+
 	void set_format(RenderingDevice::DataFormat p_member);
 	RenderingDevice::DataFormat get_format() const;
 	void set_samples(RenderingDevice::TextureSamples p_member);
 	RenderingDevice::TextureSamples get_samples() const;
 	void set_usage_flags(uint32_t p_member);
 	uint32_t get_usage_flags() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -62,6 +62,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

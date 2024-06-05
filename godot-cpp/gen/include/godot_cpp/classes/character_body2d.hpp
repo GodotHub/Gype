@@ -50,6 +50,7 @@ class CharacterBody2D : public PhysicsBody2D {
 	GDEXTENSION_CLASS(CharacterBody2D, PhysicsBody2D)
 
 public:
+
 	enum MotionMode {
 		MOTION_MODE_GROUNDED = 0,
 		MOTION_MODE_FLOATING = 1,
@@ -109,7 +110,6 @@ public:
 	int32_t get_slide_collision_count() const;
 	Ref<KinematicCollision2D> get_slide_collision(int32_t slide_idx);
 	Ref<KinematicCollision2D> get_last_slide_collision();
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -117,6 +117,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

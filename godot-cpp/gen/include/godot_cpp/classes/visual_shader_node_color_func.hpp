@@ -47,6 +47,7 @@ class VisualShaderNodeColorFunc : public VisualShaderNode {
 	GDEXTENSION_CLASS(VisualShaderNodeColorFunc, VisualShaderNode)
 
 public:
+
 	enum Function {
 		FUNC_GRAYSCALE = 0,
 		FUNC_HSV2RGB = 1,
@@ -57,7 +58,6 @@ public:
 
 	void set_function(VisualShaderNodeColorFunc::Function func);
 	VisualShaderNodeColorFunc::Function get_function() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -65,6 +65,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

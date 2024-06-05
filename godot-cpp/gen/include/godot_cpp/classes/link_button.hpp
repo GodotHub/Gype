@@ -33,12 +33,11 @@
 #ifndef GODOT_CPP_LINK_BUTTON_HPP
 #define GODOT_CPP_LINK_BUTTON_HPP
 
+#include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/classes/base_button.hpp>
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/text_server.hpp>
-#include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/string.hpp>
-
+#include <godot_cpp/classes/text_server.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -51,6 +50,7 @@ class LinkButton : public BaseButton {
 	GDEXTENSION_CLASS(LinkButton, BaseButton)
 
 public:
+
 	enum UnderlineMode {
 		UNDERLINE_MODE_ALWAYS = 0,
 		UNDERLINE_MODE_ON_HOVER = 1,
@@ -71,7 +71,6 @@ public:
 	TextServer::StructuredTextParser get_structured_text_bidi_override() const;
 	void set_structured_text_bidi_override_options(const Array &args);
 	Array get_structured_text_bidi_override_options() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -79,6 +78,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

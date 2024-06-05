@@ -50,11 +50,11 @@ class WorldEnvironment : public Node {
 	GDEXTENSION_CLASS(WorldEnvironment, Node)
 
 public:
+
 	void set_environment(const Ref<Environment> &env);
 	Ref<Environment> get_environment() const;
 	void set_camera_attributes(const Ref<CameraAttributes> &camera_attributes);
 	Ref<CameraAttributes> get_camera_attributes() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -62,6 +62,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

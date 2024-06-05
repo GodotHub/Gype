@@ -47,6 +47,7 @@ class CompressedTexture2DArray : public CompressedTextureLayered {
 	GDEXTENSION_CLASS(CompressedTexture2DArray, CompressedTextureLayered)
 
 public:
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -54,6 +55,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

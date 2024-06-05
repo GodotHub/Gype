@@ -54,6 +54,7 @@ class EditorInspectorPlugin : public RefCounted {
 	GDEXTENSION_CLASS(EditorInspectorPlugin, RefCounted)
 
 public:
+
 	void add_custom_control(Control *control);
 	void add_property_editor(const String &property, Control *editor, bool add_to_end = false);
 	void add_property_editor_for_multiple_properties(const String &label, const PackedStringArray &properties, Control *editor);
@@ -63,32 +64,32 @@ public:
 	virtual void _parse_group(Object *object, const String &group);
 	virtual bool _parse_property(Object *object, Variant::Type type, const String &name, PropertyHint hint_type, const String &hint_string, BitField<PropertyUsageFlags> usage_flags, bool wide);
 	virtual void _parse_end(Object *object);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		RefCounted::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_can_handle), decltype(&T::_can_handle)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_can_handle),decltype(&T::_can_handle)>) {
 			BIND_VIRTUAL_METHOD(T, _can_handle);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_parse_begin), decltype(&T::_parse_begin)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_parse_begin),decltype(&T::_parse_begin)>) {
 			BIND_VIRTUAL_METHOD(T, _parse_begin);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_parse_category), decltype(&T::_parse_category)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_parse_category),decltype(&T::_parse_category)>) {
 			BIND_VIRTUAL_METHOD(T, _parse_category);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_parse_group), decltype(&T::_parse_group)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_parse_group),decltype(&T::_parse_group)>) {
 			BIND_VIRTUAL_METHOD(T, _parse_group);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_parse_property), decltype(&T::_parse_property)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_parse_property),decltype(&T::_parse_property)>) {
 			BIND_VIRTUAL_METHOD(T, _parse_property);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_parse_end), decltype(&T::_parse_end)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_parse_end),decltype(&T::_parse_end)>) {
 			BIND_VIRTUAL_METHOD(T, _parse_end);
 		}
 	}
 
 public:
+
 };
 
 } // namespace godot

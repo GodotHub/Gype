@@ -47,6 +47,7 @@ class Node3DGizmo : public RefCounted {
 	GDEXTENSION_CLASS(Node3DGizmo, RefCounted)
 
 public:
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -54,6 +55,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

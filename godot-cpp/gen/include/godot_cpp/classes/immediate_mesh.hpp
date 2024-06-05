@@ -53,6 +53,7 @@ class ImmediateMesh : public Mesh {
 	GDEXTENSION_CLASS(ImmediateMesh, Mesh)
 
 public:
+
 	void surface_begin(Mesh::PrimitiveType primitive, const Ref<Material> &material = nullptr);
 	void surface_set_color(const Color &color);
 	void surface_set_normal(const Vector3 &normal);
@@ -63,7 +64,6 @@ public:
 	void surface_add_vertex_2d(const Vector2 &vertex);
 	void surface_end();
 	void clear_surfaces();
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -71,6 +71,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

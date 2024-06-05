@@ -48,13 +48,13 @@ class TileSetSource : public Resource {
 	GDEXTENSION_CLASS(TileSetSource, Resource)
 
 public:
+
 	int32_t get_tiles_count() const;
 	Vector2i get_tile_id(int32_t index) const;
 	bool has_tile(const Vector2i &atlas_coords) const;
 	int32_t get_alternative_tiles_count(const Vector2i &atlas_coords) const;
 	int32_t get_alternative_tile_id(const Vector2i &atlas_coords, int32_t index) const;
 	bool has_alternative_tile(const Vector2i &atlas_coords, int32_t alternative_tile) const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -62,6 +62,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

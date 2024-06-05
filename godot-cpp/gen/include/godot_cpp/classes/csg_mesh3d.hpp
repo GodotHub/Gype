@@ -50,11 +50,11 @@ class CSGMesh3D : public CSGPrimitive3D {
 	GDEXTENSION_CLASS(CSGMesh3D, CSGPrimitive3D)
 
 public:
+
 	void set_mesh(const Ref<Mesh> &mesh);
 	Ref<Mesh> get_mesh();
 	void set_material(const Ref<Material> &material);
 	Ref<Material> get_material() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -62,6 +62,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

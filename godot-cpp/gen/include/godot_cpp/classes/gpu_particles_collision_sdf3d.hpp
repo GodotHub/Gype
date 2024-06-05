@@ -50,6 +50,7 @@ class GPUParticlesCollisionSDF3D : public GPUParticlesCollision3D {
 	GDEXTENSION_CLASS(GPUParticlesCollisionSDF3D, GPUParticlesCollision3D)
 
 public:
+
 	enum Resolution {
 		RESOLUTION_16 = 0,
 		RESOLUTION_32 = 1,
@@ -72,7 +73,6 @@ public:
 	uint32_t get_bake_mask() const;
 	void set_bake_mask_value(int32_t layer_number, bool value);
 	bool get_bake_mask_value(int32_t layer_number) const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -80,6 +80,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -47,6 +47,7 @@ class EditorExportPlatformPC : public EditorExportPlatform {
 	GDEXTENSION_CLASS(EditorExportPlatformPC, EditorExportPlatform)
 
 public:
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -54,6 +55,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

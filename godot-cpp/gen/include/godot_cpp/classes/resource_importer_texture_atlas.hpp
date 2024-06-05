@@ -47,6 +47,7 @@ class ResourceImporterTextureAtlas : public ResourceImporter {
 	GDEXTENSION_CLASS(ResourceImporterTextureAtlas, ResourceImporter)
 
 public:
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -54,6 +55,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

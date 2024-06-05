@@ -13,3 +13,4 @@ build
 godot-cpp/.sconsign.dblite
 godot-cpp/__pycache__
 .venv
+.cache

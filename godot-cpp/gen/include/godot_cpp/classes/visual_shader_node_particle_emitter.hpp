@@ -47,9 +47,9 @@ class VisualShaderNodeParticleEmitter : public VisualShaderNode {
 	GDEXTENSION_CLASS(VisualShaderNodeParticleEmitter, VisualShaderNode)
 
 public:
+
 	void set_mode_2d(bool enabled);
 	bool is_mode_2d() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -57,6 +57,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -33,9 +33,8 @@
 #ifndef GODOT_CPP_REFERENCE_RECT_HPP
 #define GODOT_CPP_REFERENCE_RECT_HPP
 
-#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/variant/color.hpp>
-
+#include <godot_cpp/classes/control.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -48,13 +47,13 @@ class ReferenceRect : public Control {
 	GDEXTENSION_CLASS(ReferenceRect, Control)
 
 public:
+
 	Color get_border_color() const;
 	void set_border_color(const Color &color);
 	double get_border_width() const;
 	void set_border_width(double width);
 	bool get_editor_only() const;
 	void set_editor_only(bool enabled);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -62,6 +61,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

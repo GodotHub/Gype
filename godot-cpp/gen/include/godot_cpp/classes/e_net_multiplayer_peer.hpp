@@ -52,6 +52,7 @@ class ENetMultiplayerPeer : public MultiplayerPeer {
 	GDEXTENSION_CLASS(ENetMultiplayerPeer, MultiplayerPeer)
 
 public:
+
 	Error create_server(int32_t port, int32_t max_clients = 32, int32_t max_channels = 0, int32_t in_bandwidth = 0, int32_t out_bandwidth = 0);
 	Error create_client(const String &address, int32_t port, int32_t channel_count = 0, int32_t in_bandwidth = 0, int32_t out_bandwidth = 0, int32_t local_port = 0);
 	Error create_mesh(int32_t unique_id);
@@ -59,7 +60,6 @@ public:
 	void set_bind_ip(const String &ip);
 	Ref<ENetConnection> get_host() const;
 	Ref<ENetPacketPeer> get_peer(int32_t id) const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -67,6 +67,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

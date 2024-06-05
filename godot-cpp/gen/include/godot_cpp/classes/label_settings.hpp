@@ -33,11 +33,10 @@
 #ifndef GODOT_CPP_LABEL_SETTINGS_HPP
 #define GODOT_CPP_LABEL_SETTINGS_HPP
 
+#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/variant/vector2.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -52,6 +51,7 @@ class LabelSettings : public Resource {
 	GDEXTENSION_CLASS(LabelSettings, Resource)
 
 public:
+
 	void set_line_spacing(double spacing);
 	double get_line_spacing() const;
 	void set_font(const Ref<Font> &font);
@@ -70,7 +70,6 @@ public:
 	Color get_shadow_color() const;
 	void set_shadow_offset(const Vector2 &offset);
 	Vector2 get_shadow_offset() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -78,6 +77,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

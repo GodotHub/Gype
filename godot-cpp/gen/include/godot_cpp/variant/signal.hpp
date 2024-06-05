@@ -83,14 +83,14 @@ class Signal {
 	Signal(const Variant *p_variant);
 
 public:
-	_FORCE_INLINE_ GDExtensionTypePtr _native_ptr() const { return const_cast<uint8_t(*)[SIGNAL_SIZE]>(&opaque); }
+	_FORCE_INLINE_ GDExtensionTypePtr _native_ptr() const { return const_cast<uint8_t (*)[SIGNAL_SIZE]>(&opaque); }
 	Signal();
 	Signal(const Signal &from);
 	Signal(Object *object, const StringName &signal);
 	Signal(Signal &&other);
 	~Signal();
 	bool is_null() const;
-	Object *get_object() const;
+	Object * get_object() const;
 	int64_t get_object_id() const;
 	StringName get_name() const;
 	int64_t connect(const Callable &callable, int64_t flags = 0);

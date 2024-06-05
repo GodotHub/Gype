@@ -48,6 +48,7 @@ class AnimationNodeAnimation : public AnimationRootNode {
 	GDEXTENSION_CLASS(AnimationNodeAnimation, AnimationRootNode)
 
 public:
+
 	enum PlayMode {
 		PLAY_MODE_FORWARD = 0,
 		PLAY_MODE_BACKWARD = 1,
@@ -57,7 +58,6 @@ public:
 	StringName get_animation() const;
 	void set_play_mode(AnimationNodeAnimation::PlayMode mode);
 	AnimationNodeAnimation::PlayMode get_play_mode() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -65,6 +65,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

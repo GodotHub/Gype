@@ -48,6 +48,7 @@ class RDVertexAttribute : public RefCounted {
 	GDEXTENSION_CLASS(RDVertexAttribute, RefCounted)
 
 public:
+
 	void set_location(uint32_t p_member);
 	uint32_t get_location() const;
 	void set_offset(uint32_t p_member);
@@ -58,7 +59,6 @@ public:
 	uint32_t get_stride() const;
 	void set_frequency(RenderingDevice::VertexFrequency p_member);
 	RenderingDevice::VertexFrequency get_frequency() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -66,6 +66,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

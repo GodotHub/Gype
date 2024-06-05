@@ -46,13 +46,13 @@ class VehicleBody3D : public RigidBody3D {
 	GDEXTENSION_CLASS(VehicleBody3D, RigidBody3D)
 
 public:
+
 	void set_engine_force(double engine_force);
 	double get_engine_force() const;
 	void set_brake(double brake);
 	double get_brake() const;
 	void set_steering(double steering);
 	double get_steering() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -60,6 +60,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

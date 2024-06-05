@@ -48,6 +48,7 @@ class Joint2D : public Node2D {
 	GDEXTENSION_CLASS(Joint2D, Node2D)
 
 public:
+
 	void set_node_a(const NodePath &node);
 	NodePath get_node_a() const;
 	void set_node_b(const NodePath &node);
@@ -57,7 +58,6 @@ public:
 	void set_exclude_nodes_from_collision(bool enable);
 	bool get_exclude_nodes_from_collision() const;
 	RID get_rid() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -65,6 +65,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

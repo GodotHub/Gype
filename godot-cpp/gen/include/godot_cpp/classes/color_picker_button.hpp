@@ -50,13 +50,13 @@ class ColorPickerButton : public Button {
 	GDEXTENSION_CLASS(ColorPickerButton, Button)
 
 public:
+
 	void set_pick_color(const Color &color);
 	Color get_pick_color() const;
 	ColorPicker *get_picker();
 	PopupPanel *get_popup();
 	void set_edit_alpha(bool show);
 	bool is_editing_alpha() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -64,6 +64,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -48,6 +48,7 @@ class Curve : public Resource {
 	GDEXTENSION_CLASS(Curve, Resource)
 
 public:
+
 	enum TangentMode {
 		TANGENT_FREE = 0,
 		TANGENT_LINEAR = 1,
@@ -80,7 +81,6 @@ public:
 	void bake();
 	int32_t get_bake_resolution() const;
 	void set_bake_resolution(int32_t resolution);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -88,6 +88,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

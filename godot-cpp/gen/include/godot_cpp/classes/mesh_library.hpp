@@ -33,13 +33,12 @@
 #ifndef GODOT_CPP_MESH_LIBRARY_HPP
 #define GODOT_CPP_MESH_LIBRARY_HPP
 
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/packed_int32_array.hpp>
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/transform3d.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -56,6 +55,7 @@ class MeshLibrary : public Resource {
 	GDEXTENSION_CLASS(MeshLibrary, Resource)
 
 public:
+
 	void create_item(int32_t id);
 	void set_item_name(int32_t id, const String &name);
 	void set_item_mesh(int32_t id, const Ref<Mesh> &mesh);
@@ -78,7 +78,6 @@ public:
 	void clear();
 	PackedInt32Array get_item_list() const;
 	int32_t get_last_unused_item_id() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -86,6 +85,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

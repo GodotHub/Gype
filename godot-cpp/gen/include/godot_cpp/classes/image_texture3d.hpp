@@ -50,9 +50,9 @@ class ImageTexture3D : public Texture3D {
 	GDEXTENSION_CLASS(ImageTexture3D, Texture3D)
 
 public:
+
 	Error create(Image::Format format, int32_t width, int32_t height, int32_t depth, bool use_mipmaps, const TypedArray<Image> &data);
 	void update(const TypedArray<Image> &data);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -60,6 +60,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

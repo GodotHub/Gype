@@ -10,7 +10,9 @@ extern qjs::Context::Module &_Control;
 extern qjs::Context::Module &_General;
 
 {% for clazz in classes %}
+    {% if 'VisualShader' not in clazz.name %}
 void register_classes_{{clazz.name}}();
+    {% endif %}
 {% endfor %}
 
 #endif

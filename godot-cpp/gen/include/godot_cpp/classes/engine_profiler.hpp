@@ -49,26 +49,27 @@ class EngineProfiler : public RefCounted {
 	GDEXTENSION_CLASS(EngineProfiler, RefCounted)
 
 public:
+
 	virtual void _toggle(bool enable, const Array &options);
 	virtual void _add_frame(const Array &data);
 	virtual void _tick(double frame_time, double process_time, double physics_time, double physics_frame_time);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		RefCounted::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_toggle), decltype(&T::_toggle)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_toggle),decltype(&T::_toggle)>) {
 			BIND_VIRTUAL_METHOD(T, _toggle);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_add_frame), decltype(&T::_add_frame)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_add_frame),decltype(&T::_add_frame)>) {
 			BIND_VIRTUAL_METHOD(T, _add_frame);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_tick), decltype(&T::_tick)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_tick),decltype(&T::_tick)>) {
 			BIND_VIRTUAL_METHOD(T, _tick);
 		}
 	}
 
 public:
+
 };
 
 } // namespace godot

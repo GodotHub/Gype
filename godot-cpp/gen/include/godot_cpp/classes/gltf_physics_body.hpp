@@ -33,13 +33,12 @@
 #ifndef GODOT_CPP_GLTF_PHYSICS_BODY_HPP
 #define GODOT_CPP_GLTF_PHYSICS_BODY_HPP
 
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/basis.hpp>
 #include <godot_cpp/variant/dictionary.hpp>
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/vector3.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -54,6 +53,7 @@ class GLTFPhysicsBody : public Resource {
 	GDEXTENSION_CLASS(GLTFPhysicsBody, Resource)
 
 public:
+
 	static Ref<GLTFPhysicsBody> from_node(CollisionObject3D *body_node);
 	CollisionObject3D *to_node() const;
 	static Ref<GLTFPhysicsBody> from_dictionary(const Dictionary &dictionary);
@@ -70,7 +70,6 @@ public:
 	void set_center_of_mass(const Vector3 &center_of_mass);
 	Basis get_inertia_tensor() const;
 	void set_inertia_tensor(const Basis &inertia_tensor);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -78,6 +77,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

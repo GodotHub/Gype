@@ -50,12 +50,12 @@ class BoneMap : public Resource {
 	GDEXTENSION_CLASS(BoneMap, Resource)
 
 public:
+
 	Ref<SkeletonProfile> get_profile() const;
 	void set_profile(const Ref<SkeletonProfile> &profile);
 	StringName get_skeleton_bone_name(const StringName &profile_bone_name) const;
 	void set_skeleton_bone_name(const StringName &profile_bone_name, const StringName &skeleton_bone_name);
 	StringName find_profile_bone_name(const StringName &skeleton_bone_name) const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -63,6 +63,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -33,20 +33,19 @@
 #ifndef GODOT_CPP_FONT_FILE_HPP
 #define GODOT_CPP_FONT_FILE_HPP
 
+#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/text_server.hpp>
-#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/variant/packed_byte_array.hpp>
 #include <godot_cpp/variant/packed_int32_array.hpp>
 #include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/rect2.hpp>
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/classes/text_server.hpp>
 #include <godot_cpp/variant/transform2d.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/vector2.hpp>
 #include <godot_cpp/variant/vector2i.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -62,6 +61,7 @@ class FontFile : public Font {
 	GDEXTENSION_CLASS(FontFile, Font)
 
 public:
+
 	Error load_bitmap_font(const String &path);
 	Error load_dynamic_font(const String &path);
 	void set_data(const PackedByteArray &data);
@@ -160,7 +160,6 @@ public:
 	Dictionary get_opentype_feature_overrides() const;
 	int32_t get_glyph_index(int32_t size, int64_t _char, int64_t variation_selector) const;
 	int64_t get_char_from_glyph_index(int32_t size, int32_t glyph_index) const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -168,6 +167,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -47,10 +47,10 @@ class Semaphore : public RefCounted {
 	GDEXTENSION_CLASS(Semaphore, RefCounted)
 
 public:
+
 	void wait();
 	bool try_wait();
 	void post();
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -58,6 +58,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

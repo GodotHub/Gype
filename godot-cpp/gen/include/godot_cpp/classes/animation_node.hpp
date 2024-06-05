@@ -34,13 +34,12 @@
 #define GODOT_CPP_ANIMATION_NODE_HPP
 
 #include <godot_cpp/classes/animation.hpp>
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/dictionary.hpp>
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/variant.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -56,6 +55,7 @@ class AnimationNode : public Resource {
 	GDEXTENSION_CLASS(AnimationNode, Resource)
 
 public:
+
 	enum FilterAction {
 		FILTER_IGNORE = 0,
 		FILTER_PASS = 1,
@@ -86,38 +86,38 @@ public:
 	virtual double _process(double time, bool seek, bool is_external_seeking, bool test_only) const;
 	virtual String _get_caption() const;
 	virtual bool _has_filter() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Resource::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_get_child_nodes), decltype(&T::_get_child_nodes)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_child_nodes),decltype(&T::_get_child_nodes)>) {
 			BIND_VIRTUAL_METHOD(T, _get_child_nodes);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_parameter_list), decltype(&T::_get_parameter_list)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_parameter_list),decltype(&T::_get_parameter_list)>) {
 			BIND_VIRTUAL_METHOD(T, _get_parameter_list);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_child_by_name), decltype(&T::_get_child_by_name)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_child_by_name),decltype(&T::_get_child_by_name)>) {
 			BIND_VIRTUAL_METHOD(T, _get_child_by_name);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_parameter_default_value), decltype(&T::_get_parameter_default_value)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_parameter_default_value),decltype(&T::_get_parameter_default_value)>) {
 			BIND_VIRTUAL_METHOD(T, _get_parameter_default_value);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_is_parameter_read_only), decltype(&T::_is_parameter_read_only)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_is_parameter_read_only),decltype(&T::_is_parameter_read_only)>) {
 			BIND_VIRTUAL_METHOD(T, _is_parameter_read_only);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_process), decltype(&T::_process)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_process),decltype(&T::_process)>) {
 			BIND_VIRTUAL_METHOD(T, _process);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_caption), decltype(&T::_get_caption)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_caption),decltype(&T::_get_caption)>) {
 			BIND_VIRTUAL_METHOD(T, _get_caption);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_has_filter), decltype(&T::_has_filter)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_has_filter),decltype(&T::_has_filter)>) {
 			BIND_VIRTUAL_METHOD(T, _has_filter);
 		}
 	}
 
 public:
+
 };
 
 } // namespace godot

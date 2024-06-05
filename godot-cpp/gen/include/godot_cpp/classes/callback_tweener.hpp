@@ -47,8 +47,8 @@ class CallbackTweener : public Tweener {
 	GDEXTENSION_CLASS(CallbackTweener, Tweener)
 
 public:
-	Ref<CallbackTweener> set_delay(double delay);
 
+	Ref<CallbackTweener> set_delay(double delay);
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -56,6 +56,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

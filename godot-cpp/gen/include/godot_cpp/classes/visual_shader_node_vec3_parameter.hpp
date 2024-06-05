@@ -34,9 +34,8 @@
 #define GODOT_CPP_VISUAL_SHADER_NODE_VEC3_PARAMETER_HPP
 
 #include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/visual_shader_node_parameter.hpp>
 #include <godot_cpp/variant/vector3.hpp>
-
+#include <godot_cpp/classes/visual_shader_node_parameter.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -49,11 +48,11 @@ class VisualShaderNodeVec3Parameter : public VisualShaderNodeParameter {
 	GDEXTENSION_CLASS(VisualShaderNodeVec3Parameter, VisualShaderNodeParameter)
 
 public:
+
 	void set_default_value_enabled(bool enabled);
 	bool is_default_value_enabled() const;
 	void set_default_value(const Vector3 &value);
 	Vector3 get_default_value() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -61,6 +60,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

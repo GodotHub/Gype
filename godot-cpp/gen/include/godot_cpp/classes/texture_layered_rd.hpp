@@ -33,10 +33,9 @@
 #ifndef GODOT_CPP_TEXTURE_LAYERED_RD_HPP
 #define GODOT_CPP_TEXTURE_LAYERED_RD_HPP
 
+#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/texture_layered.hpp>
-#include <godot_cpp/variant/rid.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -49,9 +48,9 @@ class TextureLayeredRD : public TextureLayered {
 	GDEXTENSION_CLASS(TextureLayeredRD, TextureLayered)
 
 public:
+
 	void set_texture_rd_rid(const RID &texture_rd_rid);
 	RID get_texture_rd_rid() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -59,6 +58,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

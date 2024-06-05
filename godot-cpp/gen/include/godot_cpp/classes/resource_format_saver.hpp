@@ -34,10 +34,9 @@
 #define GODOT_CPP_RESOURCE_FORMAT_SAVER_HPP
 
 #include <godot_cpp/classes/global_constants.hpp>
+#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/variant/packed_string_array.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -53,34 +52,35 @@ class ResourceFormatSaver : public RefCounted {
 	GDEXTENSION_CLASS(ResourceFormatSaver, RefCounted)
 
 public:
+
 	virtual Error _save(const Ref<Resource> &resource, const String &path, uint32_t flags);
 	virtual Error _set_uid(const String &path, int64_t uid);
 	virtual bool _recognize(const Ref<Resource> &resource) const;
 	virtual PackedStringArray _get_recognized_extensions(const Ref<Resource> &resource) const;
 	virtual bool _recognize_path(const Ref<Resource> &resource, const String &path) const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		RefCounted::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_save), decltype(&T::_save)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_save),decltype(&T::_save)>) {
 			BIND_VIRTUAL_METHOD(T, _save);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_set_uid), decltype(&T::_set_uid)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_set_uid),decltype(&T::_set_uid)>) {
 			BIND_VIRTUAL_METHOD(T, _set_uid);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_recognize), decltype(&T::_recognize)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_recognize),decltype(&T::_recognize)>) {
 			BIND_VIRTUAL_METHOD(T, _recognize);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_recognized_extensions), decltype(&T::_get_recognized_extensions)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_recognized_extensions),decltype(&T::_get_recognized_extensions)>) {
 			BIND_VIRTUAL_METHOD(T, _get_recognized_extensions);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_recognize_path), decltype(&T::_recognize_path)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_recognize_path),decltype(&T::_recognize_path)>) {
 			BIND_VIRTUAL_METHOD(T, _recognize_path);
 		}
 	}
 
 public:
+
 };
 
 } // namespace godot

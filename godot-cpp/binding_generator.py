@@ -2116,7 +2116,7 @@ def generate_utility_functions(api, output_dir):
 def camel_to_snake(name):
     name = re.sub("(.)([A-Z][a-z]+)", r"\1_\2", name)
     name = re.sub("([a-z0-9])([A-Z])", r"\1_\2", name)
-    return name.replace("2_D", "2D").replace("3_D", "3D").lower()
+    return name.replace("1_D", "1D").replace("2_D", "2D").replace("3_D", "3D").lower()
 
 
 def make_function_parameters(parameters, include_default=False, for_builtin=False, is_vararg=False):

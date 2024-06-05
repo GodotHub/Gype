@@ -33,15 +33,14 @@
 #ifndef GODOT_CPP_SCRIPT_HPP
 #define GODOT_CPP_SCRIPT_HPP
 
+#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/variant.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -56,6 +55,7 @@ class Script : public Resource {
 	GDEXTENSION_CLASS(Script, Resource)
 
 public:
+
 	bool can_instantiate() const;
 	bool instance_has(Object *base_object) const;
 	bool has_source_code() const;
@@ -72,7 +72,6 @@ public:
 	Variant get_property_default_value(const StringName &property);
 	bool is_tool() const;
 	bool is_abstract() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -80,6 +79,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

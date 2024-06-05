@@ -33,11 +33,10 @@
 #ifndef GODOT_CPP_EDITOR_TRANSLATION_PARSER_PLUGIN_HPP
 #define GODOT_CPP_EDITOR_TRANSLATION_PARSER_PLUGIN_HPP
 
+#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -53,22 +52,23 @@ class EditorTranslationParserPlugin : public RefCounted {
 	GDEXTENSION_CLASS(EditorTranslationParserPlugin, RefCounted)
 
 public:
+
 	virtual void _parse_file(const String &path, const TypedArray<String> &msgids, const TypedArray<Array> &msgids_context_plural);
 	virtual PackedStringArray _get_recognized_extensions() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		RefCounted::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_parse_file), decltype(&T::_parse_file)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_parse_file),decltype(&T::_parse_file)>) {
 			BIND_VIRTUAL_METHOD(T, _parse_file);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_recognized_extensions), decltype(&T::_get_recognized_extensions)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_recognized_extensions),decltype(&T::_get_recognized_extensions)>) {
 			BIND_VIRTUAL_METHOD(T, _get_recognized_extensions);
 		}
 	}
 
 public:
+
 };
 
 } // namespace godot

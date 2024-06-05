@@ -34,9 +34,8 @@
 #define GODOT_CPP_VISUAL_SHADER_NODE_PARAMETER_REF_HPP
 
 #include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/variant/string.hpp>
-
+#include <godot_cpp/classes/visual_shader_node.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -49,9 +48,9 @@ class VisualShaderNodeParameterRef : public VisualShaderNode {
 	GDEXTENSION_CLASS(VisualShaderNodeParameterRef, VisualShaderNode)
 
 public:
+
 	void set_parameter_name(const String &name);
 	String get_parameter_name() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -59,6 +58,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

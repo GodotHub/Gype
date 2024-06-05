@@ -49,12 +49,12 @@ class EditorSelection : public Object {
 	GDEXTENSION_CLASS(EditorSelection, Object)
 
 public:
+
 	void clear();
 	void add_node(Node *node);
 	void remove_node(Node *node);
 	TypedArray<Node> get_selected_nodes();
 	TypedArray<Node> get_transformable_selected_nodes();
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -62,6 +62,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

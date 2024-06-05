@@ -46,6 +46,7 @@ class PinJoint3D : public Joint3D {
 	GDEXTENSION_CLASS(PinJoint3D, Joint3D)
 
 public:
+
 	enum Param {
 		PARAM_BIAS = 0,
 		PARAM_DAMPING = 1,
@@ -54,7 +55,6 @@ public:
 
 	void set_param(PinJoint3D::Param param, double value);
 	double get_param(PinJoint3D::Param param) const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -62,6 +62,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

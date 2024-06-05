@@ -33,13 +33,12 @@
 #ifndef GODOT_CPP_GRAPH_NODE_HPP
 #define GODOT_CPP_GRAPH_NODE_HPP
 
+#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/graph_element.hpp>
 #include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/variant/string.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/vector2.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -55,6 +54,7 @@ class GraphNode : public GraphElement {
 	GDEXTENSION_CLASS(GraphNode, GraphElement)
 
 public:
+
 	void set_title(const String &title);
 	String get_title() const;
 	HBoxContainer *get_titlebar_hbox();
@@ -86,17 +86,17 @@ public:
 	Color get_output_port_color(int32_t port_idx);
 	int32_t get_output_port_slot(int32_t port_idx);
 	virtual void _draw_port(int32_t slot_index, const Vector2i &position, bool left, const Color &color);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		GraphElement::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_draw_port), decltype(&T::_draw_port)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_draw_port),decltype(&T::_draw_port)>) {
 			BIND_VIRTUAL_METHOD(T, _draw_port);
 		}
 	}
 
 public:
+
 };
 
 } // namespace godot

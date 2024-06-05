@@ -33,12 +33,11 @@
 #ifndef GODOT_CPP_TEXTURE_PROGRESS_BAR_HPP
 #define GODOT_CPP_TEXTURE_PROGRESS_BAR_HPP
 
+#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/classes/range.hpp>
 #include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/variant/vector2.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -53,6 +52,7 @@ class TextureProgressBar : public Range {
 	GDEXTENSION_CLASS(TextureProgressBar, Range)
 
 public:
+
 	enum FillMode {
 		FILL_LEFT_TO_RIGHT = 0,
 		FILL_RIGHT_TO_LEFT = 1,
@@ -91,7 +91,6 @@ public:
 	int32_t get_stretch_margin(Side margin) const;
 	void set_nine_patch_stretch(bool stretch);
 	bool get_nine_patch_stretch() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -99,6 +98,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

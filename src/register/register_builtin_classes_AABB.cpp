@@ -1,5 +1,9 @@
+#include <godot_cpp/core/defs.hpp>
+#include <godot_cpp/variant/aabb.hpp>
+#include <godot_cpp/variant/plane.hpp>
+#include <godot_cpp/variant/vector3.hpp>
+
 #include "register/register_builtin_classes.h"
-#include "register/utils.h"
 
 using namespace godot;
 

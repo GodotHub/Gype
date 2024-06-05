@@ -48,23 +48,24 @@ class AudioStreamPlaybackResampled : public AudioStreamPlayback {
 	GDEXTENSION_CLASS(AudioStreamPlaybackResampled, AudioStreamPlayback)
 
 public:
+
 	void begin_resample();
 	virtual int32_t _mix_resampled(AudioFrame *dst_buffer, int32_t frame_count);
 	virtual double _get_stream_sampling_rate() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		AudioStreamPlayback::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_mix_resampled), decltype(&T::_mix_resampled)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_mix_resampled),decltype(&T::_mix_resampled)>) {
 			BIND_VIRTUAL_METHOD(T, _mix_resampled);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_stream_sampling_rate), decltype(&T::_get_stream_sampling_rate)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_stream_sampling_rate),decltype(&T::_get_stream_sampling_rate)>) {
 			BIND_VIRTUAL_METHOD(T, _get_stream_sampling_rate);
 		}
 	}
 
 public:
+
 };
 
 } // namespace godot

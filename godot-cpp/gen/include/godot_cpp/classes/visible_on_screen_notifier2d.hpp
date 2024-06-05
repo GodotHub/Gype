@@ -47,10 +47,10 @@ class VisibleOnScreenNotifier2D : public Node2D {
 	GDEXTENSION_CLASS(VisibleOnScreenNotifier2D, Node2D)
 
 public:
+
 	void set_rect(const Rect2 &rect);
 	Rect2 get_rect() const;
 	bool is_on_screen() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -58,6 +58,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -47,6 +47,7 @@ class OpenXRHand : public Node3D {
 	GDEXTENSION_CLASS(OpenXRHand, Node3D)
 
 public:
+
 	enum Hands {
 		HAND_LEFT = 0,
 		HAND_RIGHT = 1,
@@ -65,7 +66,6 @@ public:
 	NodePath get_hand_skeleton() const;
 	void set_motion_range(OpenXRHand::MotionRange motion_range);
 	OpenXRHand::MotionRange get_motion_range() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -73,6 +73,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

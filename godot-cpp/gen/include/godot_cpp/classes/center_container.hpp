@@ -46,9 +46,9 @@ class CenterContainer : public Container {
 	GDEXTENSION_CLASS(CenterContainer, Container)
 
 public:
+
 	void set_use_top_left(bool enable);
 	bool is_using_top_left() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -56,6 +56,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

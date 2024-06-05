@@ -49,6 +49,7 @@ class Sky : public Resource {
 	GDEXTENSION_CLASS(Sky, Resource)
 
 public:
+
 	enum RadianceSize {
 		RADIANCE_SIZE_32 = 0,
 		RADIANCE_SIZE_64 = 1,
@@ -73,7 +74,6 @@ public:
 	Sky::ProcessMode get_process_mode() const;
 	void set_material(const Ref<Material> &material);
 	Ref<Material> get_material() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -81,6 +81,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

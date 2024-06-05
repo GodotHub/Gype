@@ -46,9 +46,9 @@ class DirectionalLight2D : public Light2D {
 	GDEXTENSION_CLASS(DirectionalLight2D, Light2D)
 
 public:
+
 	void set_max_distance(double pixels);
 	double get_max_distance() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -56,6 +56,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

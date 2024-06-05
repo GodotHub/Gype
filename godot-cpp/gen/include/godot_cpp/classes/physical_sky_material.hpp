@@ -33,10 +33,9 @@
 #ifndef GODOT_CPP_PHYSICAL_SKY_MATERIAL_HPP
 #define GODOT_CPP_PHYSICAL_SKY_MATERIAL_HPP
 
+#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/variant/color.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -51,6 +50,7 @@ class PhysicalSkyMaterial : public Material {
 	GDEXTENSION_CLASS(PhysicalSkyMaterial, Material)
 
 public:
+
 	void set_rayleigh_coefficient(double rayleigh);
 	double get_rayleigh_coefficient() const;
 	void set_rayleigh_color(const Color &color);
@@ -73,7 +73,6 @@ public:
 	bool get_use_debanding() const;
 	void set_night_sky(const Ref<Texture2D> &night_sky);
 	Ref<Texture2D> get_night_sky() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -81,6 +80,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

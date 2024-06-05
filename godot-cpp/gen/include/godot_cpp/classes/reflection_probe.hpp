@@ -33,10 +33,9 @@
 #ifndef GODOT_CPP_REFLECTION_PROBE_HPP
 #define GODOT_CPP_REFLECTION_PROBE_HPP
 
-#include <godot_cpp/classes/visual_instance3d.hpp>
 #include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/variant/vector3.hpp>
-
+#include <godot_cpp/classes/visual_instance3d.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -49,6 +48,7 @@ class ReflectionProbe : public VisualInstance3D {
 	GDEXTENSION_CLASS(ReflectionProbe, VisualInstance3D)
 
 public:
+
 	enum UpdateMode {
 		UPDATE_ONCE = 0,
 		UPDATE_ALWAYS = 1,
@@ -86,7 +86,6 @@ public:
 	uint32_t get_cull_mask() const;
 	void set_update_mode(ReflectionProbe::UpdateMode mode);
 	ReflectionProbe::UpdateMode get_update_mode() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -94,6 +93,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

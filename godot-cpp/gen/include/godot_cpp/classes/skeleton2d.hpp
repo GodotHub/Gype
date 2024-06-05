@@ -34,10 +34,9 @@
 #define GODOT_CPP_SKELETON2D_HPP
 
 #include <godot_cpp/classes/node2d.hpp>
-#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/rid.hpp>
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/transform2d.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -53,6 +52,7 @@ class Skeleton2D : public Node2D {
 	GDEXTENSION_CLASS(Skeleton2D, Node2D)
 
 public:
+
 	int32_t get_bone_count() const;
 	Bone2D *get_bone(int32_t idx);
 	RID get_skeleton() const;
@@ -61,7 +61,6 @@ public:
 	void execute_modifications(double delta, int32_t execution_mode);
 	void set_bone_local_pose_override(int32_t bone_idx, const Transform2D &override_pose, double strength, bool persistent);
 	Transform2D get_bone_local_pose_override(int32_t bone_idx);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -69,6 +68,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

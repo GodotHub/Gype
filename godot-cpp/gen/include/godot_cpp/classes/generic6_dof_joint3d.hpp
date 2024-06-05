@@ -46,6 +46,7 @@ class Generic6DOFJoint3D : public Joint3D {
 	GDEXTENSION_CLASS(Generic6DOFJoint3D, Joint3D)
 
 public:
+
 	enum Param {
 		PARAM_LINEAR_LOWER_LIMIT = 0,
 		PARAM_LINEAR_UPPER_LIMIT = 1,
@@ -94,7 +95,6 @@ public:
 	bool get_flag_y(Generic6DOFJoint3D::Flag flag) const;
 	void set_flag_z(Generic6DOFJoint3D::Flag flag, bool value);
 	bool get_flag_z(Generic6DOFJoint3D::Flag flag) const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -102,6 +102,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

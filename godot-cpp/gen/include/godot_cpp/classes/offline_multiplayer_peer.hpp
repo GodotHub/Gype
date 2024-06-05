@@ -47,6 +47,7 @@ class OfflineMultiplayerPeer : public MultiplayerPeer {
 	GDEXTENSION_CLASS(OfflineMultiplayerPeer, MultiplayerPeer)
 
 public:
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -54,6 +55,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

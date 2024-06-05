@@ -33,10 +33,9 @@
 #ifndef GODOT_CPP_PROCEDURAL_SKY_MATERIAL_HPP
 #define GODOT_CPP_PROCEDURAL_SKY_MATERIAL_HPP
 
+#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/variant/color.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -51,6 +50,7 @@ class ProceduralSkyMaterial : public Material {
 	GDEXTENSION_CLASS(ProceduralSkyMaterial, Material)
 
 public:
+
 	void set_sky_top_color(const Color &color);
 	Color get_sky_top_color() const;
 	void set_sky_horizon_color(const Color &color);
@@ -77,7 +77,6 @@ public:
 	double get_sun_curve() const;
 	void set_use_debanding(bool use_debanding);
 	bool get_use_debanding() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -85,6 +84,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

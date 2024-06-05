@@ -33,12 +33,11 @@
 #ifndef GODOT_CPP_CURVE2D_HPP
 #define GODOT_CPP_CURVE2D_HPP
 
+#include <godot_cpp/variant/packed_vector2_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/variant/packed_vector2_array.hpp>
 #include <godot_cpp/variant/transform2d.hpp>
 #include <godot_cpp/variant/vector2.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -51,6 +50,7 @@ class Curve2D : public Resource {
 	GDEXTENSION_CLASS(Curve2D, Resource)
 
 public:
+
 	int32_t get_point_count() const;
 	void set_point_count(int32_t count);
 	void add_point(const Vector2 &position, const Vector2 &in = Vector2(0, 0), const Vector2 &out = Vector2(0, 0), int32_t index = -1);
@@ -74,7 +74,6 @@ public:
 	double get_closest_offset(const Vector2 &to_point) const;
 	PackedVector2Array tessellate(int32_t max_stages = 5, double tolerance_degrees = 4) const;
 	PackedVector2Array tessellate_even_length(int32_t max_stages = 5, double tolerance_length = 20.0) const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -82,6 +81,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

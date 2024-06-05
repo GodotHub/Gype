@@ -35,9 +35,8 @@
 
 #include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/classes/multiplayer_peer.hpp>
-#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/packed_byte_array.hpp>
-
+#include <godot_cpp/classes/ref.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -50,7 +49,8 @@ class MultiplayerPeerExtension : public MultiplayerPeer {
 	GDEXTENSION_CLASS(MultiplayerPeerExtension, MultiplayerPeer)
 
 public:
-	virtual Error _get_packet(const uint8_t **r_buffer, int32_t *r_buffer_size);
+
+	virtual Error _get_packet(const uint8_t * *r_buffer, int32_t *r_buffer_size);
 	virtual Error _put_packet(const uint8_t *p_buffer, int32_t p_buffer_size);
 	virtual int32_t _get_available_packet_count() const;
 	virtual int32_t _get_max_packet_size() const;
@@ -73,83 +73,83 @@ public:
 	virtual bool _is_refusing_new_connections() const;
 	virtual bool _is_server_relay_supported() const;
 	virtual MultiplayerPeer::ConnectionStatus _get_connection_status() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		MultiplayerPeer::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_get_packet), decltype(&T::_get_packet)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_packet),decltype(&T::_get_packet)>) {
 			BIND_VIRTUAL_METHOD(T, _get_packet);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_put_packet), decltype(&T::_put_packet)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_put_packet),decltype(&T::_put_packet)>) {
 			BIND_VIRTUAL_METHOD(T, _put_packet);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_available_packet_count), decltype(&T::_get_available_packet_count)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_available_packet_count),decltype(&T::_get_available_packet_count)>) {
 			BIND_VIRTUAL_METHOD(T, _get_available_packet_count);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_max_packet_size), decltype(&T::_get_max_packet_size)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_max_packet_size),decltype(&T::_get_max_packet_size)>) {
 			BIND_VIRTUAL_METHOD(T, _get_max_packet_size);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_packet_script), decltype(&T::_get_packet_script)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_packet_script),decltype(&T::_get_packet_script)>) {
 			BIND_VIRTUAL_METHOD(T, _get_packet_script);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_put_packet_script), decltype(&T::_put_packet_script)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_put_packet_script),decltype(&T::_put_packet_script)>) {
 			BIND_VIRTUAL_METHOD(T, _put_packet_script);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_packet_channel), decltype(&T::_get_packet_channel)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_packet_channel),decltype(&T::_get_packet_channel)>) {
 			BIND_VIRTUAL_METHOD(T, _get_packet_channel);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_packet_mode), decltype(&T::_get_packet_mode)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_packet_mode),decltype(&T::_get_packet_mode)>) {
 			BIND_VIRTUAL_METHOD(T, _get_packet_mode);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_set_transfer_channel), decltype(&T::_set_transfer_channel)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_set_transfer_channel),decltype(&T::_set_transfer_channel)>) {
 			BIND_VIRTUAL_METHOD(T, _set_transfer_channel);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_transfer_channel), decltype(&T::_get_transfer_channel)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_transfer_channel),decltype(&T::_get_transfer_channel)>) {
 			BIND_VIRTUAL_METHOD(T, _get_transfer_channel);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_set_transfer_mode), decltype(&T::_set_transfer_mode)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_set_transfer_mode),decltype(&T::_set_transfer_mode)>) {
 			BIND_VIRTUAL_METHOD(T, _set_transfer_mode);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_transfer_mode), decltype(&T::_get_transfer_mode)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_transfer_mode),decltype(&T::_get_transfer_mode)>) {
 			BIND_VIRTUAL_METHOD(T, _get_transfer_mode);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_set_target_peer), decltype(&T::_set_target_peer)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_set_target_peer),decltype(&T::_set_target_peer)>) {
 			BIND_VIRTUAL_METHOD(T, _set_target_peer);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_packet_peer), decltype(&T::_get_packet_peer)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_packet_peer),decltype(&T::_get_packet_peer)>) {
 			BIND_VIRTUAL_METHOD(T, _get_packet_peer);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_is_server), decltype(&T::_is_server)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_is_server),decltype(&T::_is_server)>) {
 			BIND_VIRTUAL_METHOD(T, _is_server);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_poll), decltype(&T::_poll)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_poll),decltype(&T::_poll)>) {
 			BIND_VIRTUAL_METHOD(T, _poll);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_close), decltype(&T::_close)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_close),decltype(&T::_close)>) {
 			BIND_VIRTUAL_METHOD(T, _close);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_disconnect_peer), decltype(&T::_disconnect_peer)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_disconnect_peer),decltype(&T::_disconnect_peer)>) {
 			BIND_VIRTUAL_METHOD(T, _disconnect_peer);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_unique_id), decltype(&T::_get_unique_id)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_unique_id),decltype(&T::_get_unique_id)>) {
 			BIND_VIRTUAL_METHOD(T, _get_unique_id);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_set_refuse_new_connections), decltype(&T::_set_refuse_new_connections)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_set_refuse_new_connections),decltype(&T::_set_refuse_new_connections)>) {
 			BIND_VIRTUAL_METHOD(T, _set_refuse_new_connections);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_is_refusing_new_connections), decltype(&T::_is_refusing_new_connections)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_is_refusing_new_connections),decltype(&T::_is_refusing_new_connections)>) {
 			BIND_VIRTUAL_METHOD(T, _is_refusing_new_connections);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_is_server_relay_supported), decltype(&T::_is_server_relay_supported)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_is_server_relay_supported),decltype(&T::_is_server_relay_supported)>) {
 			BIND_VIRTUAL_METHOD(T, _is_server_relay_supported);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_connection_status), decltype(&T::_get_connection_status)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_connection_status),decltype(&T::_get_connection_status)>) {
 			BIND_VIRTUAL_METHOD(T, _get_connection_status);
 		}
 	}
 
 public:
+
 };
 
 } // namespace godot

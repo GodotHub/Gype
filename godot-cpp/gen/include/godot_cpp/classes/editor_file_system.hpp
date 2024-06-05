@@ -50,6 +50,7 @@ class EditorFileSystem : public Node {
 	GDEXTENSION_CLASS(EditorFileSystem, Node)
 
 public:
+
 	EditorFileSystemDirectory *get_filesystem();
 	bool is_scanning() const;
 	double get_scanning_progress() const;
@@ -59,7 +60,6 @@ public:
 	EditorFileSystemDirectory *get_filesystem_path(const String &path);
 	String get_file_type(const String &path) const;
 	void reimport_files(const PackedStringArray &files);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -67,6 +67,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

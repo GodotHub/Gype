@@ -33,12 +33,11 @@
 #ifndef GODOT_CPP_TRANSLATION_HPP
 #define GODOT_CPP_TRANSLATION_HPP
 
+#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/string_name.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -51,6 +50,7 @@ class Translation : public Resource {
 	GDEXTENSION_CLASS(Translation, Resource)
 
 public:
+
 	void set_locale(const String &locale);
 	String get_locale() const;
 	void add_message(const StringName &src_message, const StringName &xlated_message, const StringName &context = String());
@@ -63,20 +63,20 @@ public:
 	int32_t get_message_count() const;
 	virtual StringName _get_plural_message(const StringName &src_message, const StringName &src_plural_message, int32_t n, const StringName &context) const;
 	virtual StringName _get_message(const StringName &src_message, const StringName &context) const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Resource::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_get_plural_message), decltype(&T::_get_plural_message)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_plural_message),decltype(&T::_get_plural_message)>) {
 			BIND_VIRTUAL_METHOD(T, _get_plural_message);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_message), decltype(&T::_get_message)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_message),decltype(&T::_get_message)>) {
 			BIND_VIRTUAL_METHOD(T, _get_message);
 		}
 	}
 
 public:
+
 };
 
 } // namespace godot

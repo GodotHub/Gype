@@ -33,9 +33,8 @@
 #ifndef GODOT_CPP_REF_COUNTED_HPP
 #define GODOT_CPP_REF_COUNTED_HPP
 
-#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/core/object.hpp>
-
+#include <godot_cpp/classes/ref.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -48,11 +47,11 @@ class RefCounted : public Object {
 	GDEXTENSION_CLASS(RefCounted, Object)
 
 public:
+
 	bool init_ref();
 	bool reference();
 	bool unreference();
 	int32_t get_reference_count() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -60,6 +59,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

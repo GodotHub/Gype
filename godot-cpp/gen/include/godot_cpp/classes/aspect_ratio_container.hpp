@@ -46,6 +46,7 @@ class AspectRatioContainer : public Container {
 	GDEXTENSION_CLASS(AspectRatioContainer, Container)
 
 public:
+
 	enum StretchMode {
 		STRETCH_WIDTH_CONTROLS_HEIGHT = 0,
 		STRETCH_HEIGHT_CONTROLS_WIDTH = 1,
@@ -67,7 +68,6 @@ public:
 	AspectRatioContainer::AlignmentMode get_alignment_horizontal() const;
 	void set_alignment_vertical(AspectRatioContainer::AlignmentMode alignment_vertical);
 	AspectRatioContainer::AlignmentMode get_alignment_vertical() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -75,6 +75,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

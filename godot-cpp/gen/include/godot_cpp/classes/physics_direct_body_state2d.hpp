@@ -51,6 +51,7 @@ class PhysicsDirectBodyState2D : public Object {
 	GDEXTENSION_CLASS(PhysicsDirectBodyState2D, Object)
 
 public:
+
 	Vector2 get_total_gravity() const;
 	double get_total_linear_damp() const;
 	double get_total_angular_damp() const;
@@ -95,7 +96,6 @@ public:
 	double get_step() const;
 	void integrate_forces();
 	PhysicsDirectSpaceState2D *get_space_state();
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -103,6 +103,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

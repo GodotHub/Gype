@@ -33,9 +33,8 @@
 #ifndef GODOT_CPP_EDITOR_UNDO_REDO_MANAGER_HPP
 #define GODOT_CPP_EDITOR_UNDO_REDO_MANAGER_HPP
 
-#include <godot_cpp/classes/undo_redo.hpp>
 #include <godot_cpp/core/object.hpp>
-
+#include <godot_cpp/classes/undo_redo.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -52,6 +51,7 @@ class EditorUndoRedoManager : public Object {
 	GDEXTENSION_CLASS(EditorUndoRedoManager, Object)
 
 public:
+
 	enum SpecialHistory {
 		GLOBAL_HISTORY = 0,
 		REMOTE_HISTORY = -9,
@@ -61,36 +61,26 @@ public:
 	void create_action(const String &name, UndoRedo::MergeMode merge_mode = (UndoRedo::MergeMode)0, Object *custom_context = nullptr, bool backward_undo_ops = false);
 	void commit_action(bool execute = true);
 	bool is_committing_action() const;
-
-private:
-private:
-	void add_do_method_internal(const Variant **args, GDExtensionInt arg_count);
-
-public:
-	void add_do_method(Object *object, const StringName &method, rest<Variant> args) {
+	private: private: void add_do_method_internal(const Variant **args, GDExtensionInt arg_count);
+	public: void add_do_method(Object *object, const StringName &method, rest<Variant> args) {
 		std::vector<Variant> variant_args;
 		variant_args.push_back(Variant(object));
 		variant_args.push_back(Variant(method));
 		variant_args.insert(variant_args.end(), args.begin(), args.end());
 		std::vector<const Variant *> call_args;
-		for (size_t i = 0; i < variant_args.size(); i++) {
+		for(size_t i = 0; i < variant_args.size(); i++) {
 			call_args.push_back(&variant_args[i]);
 		}
 		add_do_method_internal(call_args.data(), variant_args.size());
 	}
-
-private:
-private:
-	void add_undo_method_internal(const Variant **args, GDExtensionInt arg_count);
-
-public:
-	void add_undo_method(Object *object, const StringName &method, rest<Variant> args) {
+	private: private: void add_undo_method_internal(const Variant **args, GDExtensionInt arg_count);
+	public: void add_undo_method(Object *object, const StringName &method, rest<Variant> args) {
 		std::vector<Variant> variant_args;
 		variant_args.push_back(Variant(object));
 		variant_args.push_back(Variant(method));
 		variant_args.insert(variant_args.end(), args.begin(), args.end());
 		std::vector<const Variant *> call_args;
-		for (size_t i = 0; i < variant_args.size(); i++) {
+		for(size_t i = 0; i < variant_args.size(); i++) {
 			call_args.push_back(&variant_args[i]);
 		}
 		add_undo_method_internal(call_args.data(), variant_args.size());
@@ -101,7 +91,6 @@ public:
 	void add_undo_reference(Object *object);
 	int32_t get_object_history_id(Object *object) const;
 	UndoRedo *get_history_undo_redo(int32_t id) const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -109,6 +98,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

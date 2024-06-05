@@ -46,6 +46,7 @@ class Timer : public Node {
 	GDEXTENSION_CLASS(Timer, Node)
 
 public:
+
 	enum TimerProcessCallback {
 		TIMER_PROCESS_PHYSICS = 0,
 		TIMER_PROCESS_IDLE = 1,
@@ -65,7 +66,6 @@ public:
 	double get_time_left() const;
 	void set_timer_process_callback(Timer::TimerProcessCallback callback);
 	Timer::TimerProcessCallback get_timer_process_callback() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -73,6 +73,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

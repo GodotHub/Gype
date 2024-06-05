@@ -49,9 +49,9 @@ class VisualShaderNodeTexture2DArray : public VisualShaderNodeSample3D {
 	GDEXTENSION_CLASS(VisualShaderNodeTexture2DArray, VisualShaderNodeSample3D)
 
 public:
+
 	void set_texture_array(const Ref<Texture2DArray> &value);
 	Ref<Texture2DArray> get_texture_array() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -59,6 +59,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

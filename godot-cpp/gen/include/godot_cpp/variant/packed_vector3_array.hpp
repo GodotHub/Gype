@@ -35,11 +35,10 @@
 
 #include <godot_cpp/core/defs.hpp>
 
-#include <gdextension_interface.h>
-#include <godot_cpp/core/error_macros.hpp>
 #include <godot_cpp/variant/vector3.hpp>
+#include <godot_cpp/core/error_macros.hpp>
 #include <initializer_list>
-
+#include <gdextension_interface.h>
 
 #include <godot_cpp/templates/vararg.hpp>
 namespace godot {
@@ -103,7 +102,7 @@ class PackedVector3Array {
 	PackedVector3Array(const Variant *p_variant);
 
 public:
-	_FORCE_INLINE_ GDExtensionTypePtr _native_ptr() const { return const_cast<uint8_t(*)[PACKED_VECTOR3_ARRAY_SIZE]>(&opaque); }
+	_FORCE_INLINE_ GDExtensionTypePtr _native_ptr() const { return const_cast<uint8_t (*)[PACKED_VECTOR3_ARRAY_SIZE]>(&opaque); }
 	PackedVector3Array();
 	PackedVector3Array(const PackedVector3Array &from);
 	PackedVector3Array(const Array &from);
@@ -144,7 +143,7 @@ public:
 	const Vector3 *ptr() const;
 	Vector3 *ptrw();
 
-	struct Iterator {
+    struct Iterator {
 		_FORCE_INLINE_ Vector3 &operator*() const {
 			return *elem_ptr;
 		}
@@ -208,7 +207,8 @@ public:
 		return ConstIterator(ptr() + size());
 	}
 
-	_FORCE_INLINE_ PackedVector3Array(std::initializer_list<Vector3> p_init) {
+
+    _FORCE_INLINE_ PackedVector3Array(std::initializer_list<Vector3> p_init) {
 		ERR_FAIL_COND(resize(p_init.size()) != 0);
 
 		size_t i = 0;
@@ -216,6 +216,7 @@ public:
 			set(i++, element);
 		}
 	}
+
 };
 
 } // namespace godot

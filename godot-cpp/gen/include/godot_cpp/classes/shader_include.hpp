@@ -48,9 +48,9 @@ class ShaderInclude : public Resource {
 	GDEXTENSION_CLASS(ShaderInclude, Resource)
 
 public:
+
 	void set_code(const String &code);
 	String get_code() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -58,6 +58,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

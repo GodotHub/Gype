@@ -33,14 +33,13 @@
 #ifndef GODOT_CPP_POPUP_MENU_HPP
 #define GODOT_CPP_POPUP_MENU_HPP
 
+#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/classes/popup.hpp>
 #include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/variant.hpp>
-
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -57,6 +56,7 @@ class PopupMenu : public Popup {
 	GDEXTENSION_CLASS(PopupMenu, Popup)
 
 public:
+
 	bool activate_item_by_event(const Ref<InputEvent> &event, bool for_global_only = false);
 	void add_item(const String &label, int32_t id = -1, Key accel = (Key)0);
 	void add_icon_item(const Ref<Texture2D> &texture, const String &label, int32_t id = -1, Key accel = (Key)0);
@@ -132,7 +132,6 @@ public:
 	double get_submenu_popup_delay() const;
 	void set_allow_search(bool allow);
 	bool get_allow_search() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -140,6 +139,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

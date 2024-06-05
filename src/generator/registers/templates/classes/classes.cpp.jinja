@@ -2,6 +2,13 @@
 #include "register/utils.h"
 #include <godot_cpp/classes/{{clazz.name|camel_to_snake}}.hpp>
 
+{% for file_path in classes%}
+    {% set clz = file_path | get_file_name | snake_to_camel %}
+    {% if file_path != 'godot_cpp/variant/array_helpers.hpp' %}
+#include <{{file_path}}>
+    {% endif %}
+{% endfor %}
+
 using namespace godot;
 
 void register_classes_{{clazz.name}}() {
@@ -12,7 +19,11 @@ void register_classes_{{clazz.name}}() {
 {% set getter = clazz.properties.getter %}
 {% set setter = clazz.properties.setter %}
 {% for prop in clazz.properties %}
-           .property<{{clazz.name}}::{{prop.getter}}{% if prop.setter %}, {{clazz.name}}::{{prop.setter}}{% endif %}>("{{prop.name}}")
+    {% if prop.getter and (not prop.getter.startswith('_')) and prop.setter and (not prop.setter.startswith('_')) %}
+           .property<&{{clazz.name}}::{{prop.getter}}, &{{clazz.name}}::{{prop.setter}}>("{{prop.name}}")
+    {% elif prop.getter and not prop.getter.startswith('_') %}
+           .property<&{{clazz.name}}::{{prop.getter}}>("{{prop.name}}")
+    {% endif %}
 {% endfor %}
 {% endif %}
 {% for method in clazz.methods %}
@@ -40,7 +51,7 @@ void register_classes_{{clazz.name}}() {
             {% endif %}
 		{%- if method.is_const -%}const{%- endif -%}>(&{{clazz.name}}::{{method.name}})>{{-'("'+method.name+'")'}}
 	{% else %}
-            .static_fun<{{clazz.name}}::{{method.name}}>{{-'("'+method.name+'")'}}
+            .static_fun<&{{clazz.name}}::{{method.name}}>{{-'("'+method.name+'")'}}
 	{% endif %}
 	{% endif %}
 {% endfor %}

@@ -52,6 +52,7 @@ class Thread : public RefCounted {
 	GDEXTENSION_CLASS(Thread, RefCounted)
 
 public:
+
 	enum Priority {
 		PRIORITY_LOW = 0,
 		PRIORITY_NORMAL = 1,
@@ -64,7 +65,6 @@ public:
 	bool is_alive() const;
 	Variant wait_to_finish();
 	static void set_thread_safety_checks_enabled(bool enabled);
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -72,6 +72,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

@@ -50,6 +50,7 @@ class UPNP : public RefCounted {
 	GDEXTENSION_CLASS(UPNP, RefCounted)
 
 public:
+
 	enum UPNPResult {
 		UPNP_RESULT_SUCCESS = 0,
 		UPNP_RESULT_NOT_AUTHORIZED = 1,
@@ -99,7 +100,6 @@ public:
 	int32_t get_discover_local_port() const;
 	void set_discover_ipv6(bool ipv6);
 	bool is_discover_ipv6() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -107,6 +107,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

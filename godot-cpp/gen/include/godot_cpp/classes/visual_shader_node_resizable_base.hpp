@@ -34,9 +34,8 @@
 #define GODOT_CPP_VISUAL_SHADER_NODE_RESIZABLE_BASE_HPP
 
 #include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/variant/vector2.hpp>
-
+#include <godot_cpp/classes/visual_shader_node.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -49,9 +48,9 @@ class VisualShaderNodeResizableBase : public VisualShaderNode {
 	GDEXTENSION_CLASS(VisualShaderNodeResizableBase, VisualShaderNode)
 
 public:
+
 	void set_size(const Vector2 &size);
 	Vector2 get_size() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -59,6 +58,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

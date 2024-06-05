@@ -50,6 +50,7 @@ class SkeletonModificationStack2D : public Resource {
 	GDEXTENSION_CLASS(SkeletonModificationStack2D, Resource)
 
 public:
+
 	void setup();
 	void execute(double delta, int32_t execution_mode);
 	void enable_all_modifications(bool enabled);
@@ -65,7 +66,6 @@ public:
 	void set_strength(double strength);
 	double get_strength() const;
 	Skeleton2D *get_skeleton() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -73,6 +73,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot
