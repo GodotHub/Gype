@@ -29483,6 +29483,8 @@ static __exception int js_parse_source_element(JSParseState *s)
     return 0;
 }
 
+__exception int (*js_parse_source_element_func)(JSParseState *s) = js_parse_source_element;
+
 static JSFunctionDef *js_new_function_def(JSContext *ctx,
                                           JSFunctionDef *parent,
                                           BOOL is_eval,

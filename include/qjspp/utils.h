@@ -1,11 +1,6 @@
 #include "qjspp.hpp"
 #include <string>
 
-namespace qjs {
-class Context;
-class Runtime;
-} // namespace qjs
-
 std::string underscoreToCamelCase(const std::string &input);
 std::string camelToSnake(const std::string &input);
 

@@ -33,14 +33,15 @@
 #ifndef GODOT_CPP_SCRIPT_LANGUAGE_EXTENSION_HPP
 #define GODOT_CPP_SCRIPT_LANGUAGE_EXTENSION_HPP
 
-#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
-#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/script_language.hpp>
 #include <godot_cpp/classes/script_language_extension_profiling_info.hpp>
+#include <godot_cpp/variant/dictionary.hpp>
+#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
+
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -58,7 +59,6 @@ class ScriptLanguageExtension : public ScriptLanguage {
 	GDEXTENSION_CLASS(ScriptLanguageExtension, ScriptLanguage)
 
 public:
-
 	enum LookupResultType {
 		LOOKUP_RESULT_SCRIPT_LOCATION = 0,
 		LOOKUP_RESULT_CLASS = 1,
@@ -148,179 +148,179 @@ public:
 	virtual void _frame();
 	virtual bool _handles_global_class_type(const String &type) const;
 	virtual Dictionary _get_global_class_name(const String &path) const;
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		ScriptLanguage::register_virtuals<T, B>();
-		if constexpr (!std::is_same_v<decltype(&B::_get_name),decltype(&T::_get_name)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_name), decltype(&T::_get_name)>) {
 			BIND_VIRTUAL_METHOD(T, _get_name);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_init),decltype(&T::_init)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_init), decltype(&T::_init)>) {
 			BIND_VIRTUAL_METHOD(T, _init);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_type),decltype(&T::_get_type)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_type), decltype(&T::_get_type)>) {
 			BIND_VIRTUAL_METHOD(T, _get_type);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_extension),decltype(&T::_get_extension)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_extension), decltype(&T::_get_extension)>) {
 			BIND_VIRTUAL_METHOD(T, _get_extension);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_finish),decltype(&T::_finish)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_finish), decltype(&T::_finish)>) {
 			BIND_VIRTUAL_METHOD(T, _finish);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_reserved_words),decltype(&T::_get_reserved_words)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_reserved_words), decltype(&T::_get_reserved_words)>) {
 			BIND_VIRTUAL_METHOD(T, _get_reserved_words);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_is_control_flow_keyword),decltype(&T::_is_control_flow_keyword)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_is_control_flow_keyword), decltype(&T::_is_control_flow_keyword)>) {
 			BIND_VIRTUAL_METHOD(T, _is_control_flow_keyword);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_comment_delimiters),decltype(&T::_get_comment_delimiters)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_comment_delimiters), decltype(&T::_get_comment_delimiters)>) {
 			BIND_VIRTUAL_METHOD(T, _get_comment_delimiters);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_doc_comment_delimiters),decltype(&T::_get_doc_comment_delimiters)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_doc_comment_delimiters), decltype(&T::_get_doc_comment_delimiters)>) {
 			BIND_VIRTUAL_METHOD(T, _get_doc_comment_delimiters);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_string_delimiters),decltype(&T::_get_string_delimiters)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_string_delimiters), decltype(&T::_get_string_delimiters)>) {
 			BIND_VIRTUAL_METHOD(T, _get_string_delimiters);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_make_template),decltype(&T::_make_template)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_make_template), decltype(&T::_make_template)>) {
 			BIND_VIRTUAL_METHOD(T, _make_template);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_built_in_templates),decltype(&T::_get_built_in_templates)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_built_in_templates), decltype(&T::_get_built_in_templates)>) {
 			BIND_VIRTUAL_METHOD(T, _get_built_in_templates);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_is_using_templates),decltype(&T::_is_using_templates)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_is_using_templates), decltype(&T::_is_using_templates)>) {
 			BIND_VIRTUAL_METHOD(T, _is_using_templates);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_validate),decltype(&T::_validate)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_validate), decltype(&T::_validate)>) {
 			BIND_VIRTUAL_METHOD(T, _validate);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_validate_path),decltype(&T::_validate_path)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_validate_path), decltype(&T::_validate_path)>) {
 			BIND_VIRTUAL_METHOD(T, _validate_path);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_create_script),decltype(&T::_create_script)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_create_script), decltype(&T::_create_script)>) {
 			BIND_VIRTUAL_METHOD(T, _create_script);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_has_named_classes),decltype(&T::_has_named_classes)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_has_named_classes), decltype(&T::_has_named_classes)>) {
 			BIND_VIRTUAL_METHOD(T, _has_named_classes);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_supports_builtin_mode),decltype(&T::_supports_builtin_mode)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_supports_builtin_mode), decltype(&T::_supports_builtin_mode)>) {
 			BIND_VIRTUAL_METHOD(T, _supports_builtin_mode);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_supports_documentation),decltype(&T::_supports_documentation)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_supports_documentation), decltype(&T::_supports_documentation)>) {
 			BIND_VIRTUAL_METHOD(T, _supports_documentation);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_can_inherit_from_file),decltype(&T::_can_inherit_from_file)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_can_inherit_from_file), decltype(&T::_can_inherit_from_file)>) {
 			BIND_VIRTUAL_METHOD(T, _can_inherit_from_file);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_find_function),decltype(&T::_find_function)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_find_function), decltype(&T::_find_function)>) {
 			BIND_VIRTUAL_METHOD(T, _find_function);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_make_function),decltype(&T::_make_function)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_make_function), decltype(&T::_make_function)>) {
 			BIND_VIRTUAL_METHOD(T, _make_function);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_open_in_external_editor),decltype(&T::_open_in_external_editor)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_open_in_external_editor), decltype(&T::_open_in_external_editor)>) {
 			BIND_VIRTUAL_METHOD(T, _open_in_external_editor);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_overrides_external_editor),decltype(&T::_overrides_external_editor)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_overrides_external_editor), decltype(&T::_overrides_external_editor)>) {
 			BIND_VIRTUAL_METHOD(T, _overrides_external_editor);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_complete_code),decltype(&T::_complete_code)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_complete_code), decltype(&T::_complete_code)>) {
 			BIND_VIRTUAL_METHOD(T, _complete_code);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_lookup_code),decltype(&T::_lookup_code)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_lookup_code), decltype(&T::_lookup_code)>) {
 			BIND_VIRTUAL_METHOD(T, _lookup_code);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_auto_indent_code),decltype(&T::_auto_indent_code)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_auto_indent_code), decltype(&T::_auto_indent_code)>) {
 			BIND_VIRTUAL_METHOD(T, _auto_indent_code);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_add_global_constant),decltype(&T::_add_global_constant)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_add_global_constant), decltype(&T::_add_global_constant)>) {
 			BIND_VIRTUAL_METHOD(T, _add_global_constant);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_add_named_global_constant),decltype(&T::_add_named_global_constant)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_add_named_global_constant), decltype(&T::_add_named_global_constant)>) {
 			BIND_VIRTUAL_METHOD(T, _add_named_global_constant);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_remove_named_global_constant),decltype(&T::_remove_named_global_constant)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_remove_named_global_constant), decltype(&T::_remove_named_global_constant)>) {
 			BIND_VIRTUAL_METHOD(T, _remove_named_global_constant);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_thread_enter),decltype(&T::_thread_enter)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_thread_enter), decltype(&T::_thread_enter)>) {
 			BIND_VIRTUAL_METHOD(T, _thread_enter);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_thread_exit),decltype(&T::_thread_exit)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_thread_exit), decltype(&T::_thread_exit)>) {
 			BIND_VIRTUAL_METHOD(T, _thread_exit);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_debug_get_error),decltype(&T::_debug_get_error)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_debug_get_error), decltype(&T::_debug_get_error)>) {
 			BIND_VIRTUAL_METHOD(T, _debug_get_error);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_debug_get_stack_level_count),decltype(&T::_debug_get_stack_level_count)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_debug_get_stack_level_count), decltype(&T::_debug_get_stack_level_count)>) {
 			BIND_VIRTUAL_METHOD(T, _debug_get_stack_level_count);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_debug_get_stack_level_line),decltype(&T::_debug_get_stack_level_line)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_debug_get_stack_level_line), decltype(&T::_debug_get_stack_level_line)>) {
 			BIND_VIRTUAL_METHOD(T, _debug_get_stack_level_line);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_debug_get_stack_level_function),decltype(&T::_debug_get_stack_level_function)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_debug_get_stack_level_function), decltype(&T::_debug_get_stack_level_function)>) {
 			BIND_VIRTUAL_METHOD(T, _debug_get_stack_level_function);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_debug_get_stack_level_locals),decltype(&T::_debug_get_stack_level_locals)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_debug_get_stack_level_locals), decltype(&T::_debug_get_stack_level_locals)>) {
 			BIND_VIRTUAL_METHOD(T, _debug_get_stack_level_locals);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_debug_get_stack_level_members),decltype(&T::_debug_get_stack_level_members)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_debug_get_stack_level_members), decltype(&T::_debug_get_stack_level_members)>) {
 			BIND_VIRTUAL_METHOD(T, _debug_get_stack_level_members);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_debug_get_stack_level_instance),decltype(&T::_debug_get_stack_level_instance)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_debug_get_stack_level_instance), decltype(&T::_debug_get_stack_level_instance)>) {
 			BIND_VIRTUAL_METHOD(T, _debug_get_stack_level_instance);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_debug_get_globals),decltype(&T::_debug_get_globals)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_debug_get_globals), decltype(&T::_debug_get_globals)>) {
 			BIND_VIRTUAL_METHOD(T, _debug_get_globals);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_debug_parse_stack_level_expression),decltype(&T::_debug_parse_stack_level_expression)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_debug_parse_stack_level_expression), decltype(&T::_debug_parse_stack_level_expression)>) {
 			BIND_VIRTUAL_METHOD(T, _debug_parse_stack_level_expression);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_debug_get_current_stack_info),decltype(&T::_debug_get_current_stack_info)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_debug_get_current_stack_info), decltype(&T::_debug_get_current_stack_info)>) {
 			BIND_VIRTUAL_METHOD(T, _debug_get_current_stack_info);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_reload_all_scripts),decltype(&T::_reload_all_scripts)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_reload_all_scripts), decltype(&T::_reload_all_scripts)>) {
 			BIND_VIRTUAL_METHOD(T, _reload_all_scripts);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_reload_tool_script),decltype(&T::_reload_tool_script)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_reload_tool_script), decltype(&T::_reload_tool_script)>) {
 			BIND_VIRTUAL_METHOD(T, _reload_tool_script);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_recognized_extensions),decltype(&T::_get_recognized_extensions)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_recognized_extensions), decltype(&T::_get_recognized_extensions)>) {
 			BIND_VIRTUAL_METHOD(T, _get_recognized_extensions);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_public_functions),decltype(&T::_get_public_functions)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_public_functions), decltype(&T::_get_public_functions)>) {
 			BIND_VIRTUAL_METHOD(T, _get_public_functions);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_public_constants),decltype(&T::_get_public_constants)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_public_constants), decltype(&T::_get_public_constants)>) {
 			BIND_VIRTUAL_METHOD(T, _get_public_constants);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_public_annotations),decltype(&T::_get_public_annotations)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_public_annotations), decltype(&T::_get_public_annotations)>) {
 			BIND_VIRTUAL_METHOD(T, _get_public_annotations);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_profiling_start),decltype(&T::_profiling_start)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_profiling_start), decltype(&T::_profiling_start)>) {
 			BIND_VIRTUAL_METHOD(T, _profiling_start);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_profiling_stop),decltype(&T::_profiling_stop)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_profiling_stop), decltype(&T::_profiling_stop)>) {
 			BIND_VIRTUAL_METHOD(T, _profiling_stop);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_profiling_get_accumulated_data),decltype(&T::_profiling_get_accumulated_data)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_profiling_get_accumulated_data), decltype(&T::_profiling_get_accumulated_data)>) {
 			BIND_VIRTUAL_METHOD(T, _profiling_get_accumulated_data);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_profiling_get_frame_data),decltype(&T::_profiling_get_frame_data)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_profiling_get_frame_data), decltype(&T::_profiling_get_frame_data)>) {
 			BIND_VIRTUAL_METHOD(T, _profiling_get_frame_data);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_frame),decltype(&T::_frame)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_frame), decltype(&T::_frame)>) {
 			BIND_VIRTUAL_METHOD(T, _frame);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_handles_global_class_type),decltype(&T::_handles_global_class_type)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_handles_global_class_type), decltype(&T::_handles_global_class_type)>) {
 			BIND_VIRTUAL_METHOD(T, _handles_global_class_type);
 		}
-		if constexpr (!std::is_same_v<decltype(&B::_get_global_class_name),decltype(&T::_get_global_class_name)>) {
+		if constexpr (!std::is_same_v<decltype(&B::_get_global_class_name), decltype(&T::_get_global_class_name)>) {
 			BIND_VIRTUAL_METHOD(T, _get_global_class_name);
 		}
 	}
 
 public:
-
 };
 
 } // namespace godot
