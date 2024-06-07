@@ -13,3 +13,11 @@ config_version=5
 config/name="game"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[editor]
+
+script/search_in_file_extensions=PackedStringArray("gd", "gdshader", "ts")
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gype/plugin.cfg")

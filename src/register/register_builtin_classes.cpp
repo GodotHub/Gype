@@ -1,6 +1,6 @@
 #include "register/register_builtin_classes.h"
 
-#include "register/utils.h"
+#include "qjspp/utils.h"
 
 using namespace godot;
 

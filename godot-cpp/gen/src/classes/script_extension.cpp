@@ -35,8 +35,9 @@
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
-#include <godot_cpp/core/object.hpp>
 #include <godot_cpp/classes/script_language.hpp>
+#include <godot_cpp/core/object.hpp>
+
 
 namespace godot {
 
@@ -174,5 +175,4 @@ Variant ScriptExtension::_get_rpc_config() const {
 	return Variant();
 }
 
-
-} // namespace godot 
+} // namespace godot
