@@ -32,13 +32,13 @@
 
 #include <godot_cpp/classes/editor_inspector_plugin.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
 #include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/core/object.hpp>
 #include <godot_cpp/variant/packed_string_array.hpp>
-#include <godot_cpp/variant/string.hpp>
 
 namespace godot {
 
@@ -48,12 +48,12 @@ void EditorInspectorPlugin::add_custom_control(Control *control) {
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, (control != nullptr ? &control->_owner : nullptr));
 }
 
-void EditorInspectorPlugin::add_property_editor(const String &property, Control *editor, bool add_to_end) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorInspectorPlugin::get_class_static()._native_ptr(), StringName("add_property_editor")._native_ptr(), 3406284123);
+void EditorInspectorPlugin::add_property_editor(const String &property, Control *editor, bool add_to_end, const String &label) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorInspectorPlugin::get_class_static()._native_ptr(), StringName("add_property_editor")._native_ptr(), 2042698479);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	int8_t add_to_end_encoded;
 	PtrToArg<bool>::encode(add_to_end, &add_to_end_encoded);
-	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &property, (editor != nullptr ? &editor->_owner : nullptr), &add_to_end_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &property, (editor != nullptr ? &editor->_owner : nullptr), &add_to_end_encoded, &label);
 }
 
 void EditorInspectorPlugin::add_property_editor_for_multiple_properties(const String &label, const PackedStringArray &properties, Control *editor) {

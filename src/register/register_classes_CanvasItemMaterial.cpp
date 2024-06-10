@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_CanvasItemMaterial() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<CanvasItemMaterial>("CanvasItemMaterial")
 			.constructor<>()
 			.property<&CanvasItemMaterial::get_blend_mode, &CanvasItemMaterial::set_blend_mode>("blend_mode")

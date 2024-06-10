@@ -9,7 +9,7 @@
 using namespace godot;
 
 void register_classes_UPNP() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<UPNP>("UPNP")
 			.constructor<>()
 			.property<&UPNP::get_discover_multicast_if, &UPNP::set_discover_multicast_if>("discover_multicast_if")

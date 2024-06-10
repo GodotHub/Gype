@@ -9,10 +9,7 @@
 using namespace godot;
 
 void register_builtin_classes_PackedVector3Array() {
-	_Variant.class_<PackedVector3Array>("PackedVector3Array")
-			.constructor<>()
-			.constructor<const PackedVector3Array &>("PackedVector3Array_1")
-			.constructor<const Array &>("PackedVector3Array_2")
+	get_Variant_module().class_<PackedVector3Array>("PackedVector3Array").constructor<>().constructor<const PackedVector3Array &>("PackedVector3Array_1").constructor<const Array &>("PackedVector3Array_2")
 
 			.fun<static_cast<int64_t (PackedVector3Array::*)() const>(&PackedVector3Array::size)>("size")
 			.fun<static_cast<bool (PackedVector3Array::*)() const>(&PackedVector3Array::is_empty)>("is_empty")

@@ -6,8 +6,9 @@
 using namespace godot;
 
 void register_classes_RefCounted() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<RefCounted>("RefCounted")
+			.base<Object>()
 			.constructor<>()
 			.fun<static_cast<bool (RefCounted::*)()>(&RefCounted::init_ref)>("init_ref")
 			.fun<static_cast<bool (RefCounted::*)()>(&RefCounted::reference)>("reference")

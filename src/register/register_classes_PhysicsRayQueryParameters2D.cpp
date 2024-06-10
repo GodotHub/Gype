@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_PhysicsRayQueryParameters2D() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<PhysicsRayQueryParameters2D>("PhysicsRayQueryParameters2D")
 			.constructor<>()
 			.property<&PhysicsRayQueryParameters2D::get_from, &PhysicsRayQueryParameters2D::set_from>("from")

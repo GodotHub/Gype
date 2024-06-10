@@ -3,16 +3,13 @@
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/string.hpp>
 
-
 #include "qjspp.hpp"
 #include "register/register_classes.h"
-
 
 using namespace godot;
 
 void register_classes_JavaClassWrapper() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<JavaClassWrapper>("JavaClassWrapper")
-			.constructor<>()
 			.fun<static_cast<Ref<JavaClass> (JavaClassWrapper::*)(const String &)>(&JavaClassWrapper::wrap)>("wrap");
 }

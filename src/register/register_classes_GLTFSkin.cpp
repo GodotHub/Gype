@@ -6,7 +6,7 @@
 using namespace godot;
 
 void register_classes_GLTFSkin() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<GLTFSkin>("GLTFSkin")
 			.constructor<>()
 			.property<&GLTFSkin::get_skin_root, &GLTFSkin::set_skin_root>("skin_root")

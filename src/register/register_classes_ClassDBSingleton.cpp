@@ -13,9 +13,8 @@
 using namespace godot;
 
 void register_classes_ClassDBSingleton() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<ClassDBSingleton>("ClassDBSingleton")
-			.constructor<>()
 			.fun<static_cast<PackedStringArray (ClassDBSingleton::*)() const>(&ClassDBSingleton::get_class_list)>("get_class_list")
 			.fun<static_cast<PackedStringArray (ClassDBSingleton::*)(const StringName &) const>(&ClassDBSingleton::get_inheriters_from_class)>("get_inheriters_from_class")
 			.fun<static_cast<StringName (ClassDBSingleton::*)(const StringName &) const>(&ClassDBSingleton::get_parent_class)>("get_parent_class")

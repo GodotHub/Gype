@@ -34,6 +34,7 @@
 #define GODOT_CPP_EDITOR_FILE_DIALOG_HPP
 
 #include <godot_cpp/classes/confirmation_dialog.hpp>
+#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/string.hpp>
 
@@ -76,6 +77,16 @@ public:
 	void add_filter(const String &filter, const String &description = String());
 	void set_filters(const PackedStringArray &filters);
 	PackedStringArray get_filters() const;
+	String get_option_name(int32_t option) const;
+	PackedStringArray get_option_values(int32_t option) const;
+	int32_t get_option_default(int32_t option) const;
+	void set_option_name(int32_t option, const String &name);
+	void set_option_values(int32_t option, const PackedStringArray &values);
+	void set_option_default(int32_t option, int32_t default_value_index);
+	void set_option_count(int32_t count);
+	int32_t get_option_count() const;
+	void add_option(const String &name, const PackedStringArray &values, int32_t default_value_index);
+	Dictionary get_selected_options() const;
 	String get_current_dir() const;
 	String get_current_file() const;
 	String get_current_path() const;
@@ -95,6 +106,7 @@ public:
 	void set_disable_overwrite_warning(bool disable);
 	bool is_overwrite_warning_disabled() const;
 	void add_side_menu(Control *menu, const String &title = String());
+	void popup_file_dialog();
 	void invalidate();
 protected:
 	template <typename T, typename B>

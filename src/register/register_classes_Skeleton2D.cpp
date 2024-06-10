@@ -11,7 +11,7 @@
 using namespace godot;
 
 void register_classes_Skeleton2D() {
-	qjs::Context::Module &_module = _Node2D;
+	qjs::Context::Module &_module = get_Node2D_module();
 	_module.class_<Skeleton2D>("Skeleton2D")
 			.constructor<>()
 			.fun<static_cast<int32_t (Skeleton2D::*)() const>(&Skeleton2D::get_bone_count)>("get_bone_count")

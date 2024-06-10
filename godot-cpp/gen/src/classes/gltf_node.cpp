@@ -32,12 +32,25 @@
 
 #include <godot_cpp/classes/gltf_node.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
 #include <godot_cpp/variant/string_name.hpp>
 
 namespace godot {
+
+String GLTFNode::get_original_name() {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFNode::get_class_static()._native_ptr(), StringName("get_original_name")._native_ptr(), 2841200299);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, String());
+	return internal::_call_native_mb_ret<String>(_gde_method_bind, _owner);
+}
+
+void GLTFNode::set_original_name(const String &original_name) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFNode::get_class_static()._native_ptr(), StringName("set_original_name")._native_ptr(), 83702148);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &original_name);
+}
 
 int32_t GLTFNode::get_parent() {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFNode::get_class_static()._native_ptr(), StringName("get_parent")._native_ptr(), 2455072627);

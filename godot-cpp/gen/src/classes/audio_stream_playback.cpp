@@ -32,8 +32,11 @@
 
 #include <godot_cpp/classes/audio_stream_playback.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
+
+#include <godot_cpp/variant/string_name.hpp>
 
 namespace godot {
 
@@ -60,6 +63,12 @@ int32_t AudioStreamPlayback::_mix(AudioFrame *buffer, double rate_scale, int32_t
 }
 
 void AudioStreamPlayback::_tag_used_streams() {}
+
+void AudioStreamPlayback::_set_parameter(const StringName &name, const Variant &value) {}
+
+Variant AudioStreamPlayback::_get_parameter(const StringName &name) const {
+	return Variant();
+}
 
 
 } // namespace godot 

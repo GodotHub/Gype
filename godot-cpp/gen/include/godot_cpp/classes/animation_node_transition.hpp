@@ -53,6 +53,8 @@ public:
 	void set_input_count(int32_t input_count);
 	void set_input_as_auto_advance(int32_t input, bool enable);
 	bool is_input_set_as_auto_advance(int32_t input) const;
+	void set_input_break_loop_at_end(int32_t input, bool enable);
+	bool is_input_loop_broken_at_end(int32_t input) const;
 	void set_input_reset(int32_t input, bool enable);
 	bool is_input_reset(int32_t input) const;
 	void set_xfade_time(double time);

@@ -6,6 +6,7 @@ import shutil
 from pathlib import Path
 import os
 
+
 def generate_mod_version(argcount, const=False, returns=False):
     s = """
 #define MODBIND$VER($RETTYPE m_name$ARG) \\
@@ -309,6 +310,10 @@ def generate_bindings(api_filepath, use_template_get_node, bits="64", precision=
     generate_utility_functions(api, target_dir)
 
 
+CLASS_ALIASES = {
+    "ClassDB": "ClassDBSingleton",
+}
+
 builtin_classes = []
 
 # Key is class name, value is boolean where True means the class is refcounted.
@@ -498,6 +503,7 @@ def generate_builtin_class_vararg_method_implements_header(builtin_classes):
     result.append("#include <godot_cpp/variant/signal.hpp>")
     result.append("#include <godot_cpp/templates/vararg.hpp>")
     result.append("using namespace godot;")
+
     result.append("")
     for builtin_api in builtin_classes:
         if not "methods" in builtin_api:
@@ -549,6 +555,8 @@ def generate_builtin_class_header(builtin_api, size, used_classes, fully_used_cl
         result.append("#include <godot_cpp/variant/vector2.hpp>")
     if class_name == "PackedVector3Array":
         result.append("#include <godot_cpp/variant/vector3.hpp>")
+    if class_name == "PackedVector4Array":
+        result.append("#include <godot_cpp/variant/vector4.hpp>")
 
     if is_packed_array(class_name):
         result.append("#include <godot_cpp/core/error_macros.hpp>")
@@ -559,6 +567,7 @@ def generate_builtin_class_header(builtin_api, size, used_classes, fully_used_cl
 
     if class_name == "Callable":
         result.append("#include <godot_cpp/variant/callable_custom.hpp>")
+
     for include in fully_used_classes:
         if include == "TypedArray":
             result.append("#include <godot_cpp/variant/typed_array.hpp>")
@@ -568,20 +577,20 @@ def generate_builtin_class_header(builtin_api, size, used_classes, fully_used_cl
     if len(fully_used_classes) > 0:
         result.append("")
 
+    result.append("#include <godot_cpp/templates/vararg.hpp>")
     result.append("#include <gdextension_interface.h>")
     result.append("")
-    # ADD
-    result.append("#include <godot_cpp/templates/vararg.hpp>")
+
     result.append("namespace godot {")
     result.append("")
-
     for type_name in used_classes:
         if is_struct_type(type_name):
             result.append(f"struct {type_name};")
         else:
             result.append(f"class {type_name};")
-    # ADD
-    # result.append("class String;")
+
+    # for type_name in used_classes:
+    #     result.append(f'#include <godot_cpp/{get_include_path(type_name)}>')
 
     if len(used_classes) > 0:
         result.append("")
@@ -706,6 +715,8 @@ def generate_builtin_class_header(builtin_api, size, used_classes, fully_used_cl
             method_list.append(method["name"])
 
             vararg = method["is_vararg"]
+
+            # DELETE
             # if vararg:
             #     result.append("\ttemplate<typename... Args>")
 
@@ -958,8 +969,6 @@ def generate_builtin_class_source(builtin_api, size, used_classes, fully_used_cl
     result.append("")
     result.append("#include <godot_cpp/godot.hpp>")
     result.append("")
-    # ADD
-    # result.append("#include \"qjspp.h\"")
 
     # Only used since the "fully used" is included in header already.
     for include in used_classes:
@@ -1269,9 +1278,9 @@ def generate_engine_classes_bindings(api, output_dir, use_template_get_node):
     # First create map of classes and singletons.
     for class_api in api["classes"]:
         # Generate code for the ClassDB singleton under a different name.
-        if class_api["name"] == "ClassDB":
-            class_api["name"] = "ClassDBSingleton"
-            class_api["alias_for"] = "ClassDB"
+        if class_api["name"] in CLASS_ALIASES:
+            class_api["alias_for"] = class_api["name"]
+            class_api["name"] = CLASS_ALIASES[class_api["alias_for"]]
         engine_classes[class_api["name"]] = class_api["is_refcounted"]
     for native_struct in api["native_structures"]:
         if native_struct["name"] == "ObjectID":
@@ -1281,9 +1290,9 @@ def generate_engine_classes_bindings(api, output_dir, use_template_get_node):
 
     for singleton in api["singletons"]:
         # Generate code for the ClassDB singleton under a different name.
-        if singleton["name"] == "ClassDB":
-            singleton["name"] = "ClassDBSingleton"
-            singleton["alias_for"] = "ClassDB"
+        if singleton["name"] in CLASS_ALIASES:
+            singleton["alias_for"] = singleton["name"]
+            singleton["name"] = CLASS_ALIASES[singleton["name"]]
         singletons.append(singleton["name"])
 
     for class_api in api["classes"]:
@@ -1487,7 +1496,11 @@ def generate_engine_class_header(class_api, used_classes, fully_used_classes, us
         result.append("")
         result.append("#include <type_traits>")
         result.append("")
-    
+
+    if class_name == "ClassDBSingleton":
+        result.append("#include <godot_cpp/core/binder_common.hpp>")
+        result.append("")
+
     result.append("#include <godot_cpp/templates/vararg.hpp>")
     result.append("namespace godot {")
     result.append("")
@@ -1497,8 +1510,13 @@ def generate_engine_class_header(class_api, used_classes, fully_used_classes, us
             result.append(f"struct {type_name};")
         else:
             result.append(f"class {type_name};")
-    #ADD
-    # result.append("class String;")
+
+    # for type_name in used_classes:
+    #     result.append(f"#include <godot_cpp/{get_include_path(type_name)}>")
+    # result.append("")
+
+    # result.append("namespace godot {")
+    # result.append("")
 
     if len(used_classes) > 0:
         result.append("")
@@ -1511,6 +1529,10 @@ def generate_engine_class_header(class_api, used_classes, fully_used_classes, us
     else:
         result.append(f"\tGDEXTENSION_CLASS({class_name}, {inherits})")
     result.append("")
+
+    if is_singleton:
+        result.append(f"\tstatic {class_name} *singleton;")
+        result.append("")
 
     result.append("public:")
     result.append("")
@@ -1592,6 +1614,11 @@ def generate_engine_class_header(class_api, used_classes, fully_used_classes, us
 
     result.append("\t}")
     result.append("")
+
+    if is_singleton:
+        result.append(f"\t~{class_name}();")
+        result.append("")
+
     result.append("public:")
 
     # Special cases.
@@ -1649,6 +1676,19 @@ def generate_engine_class_header(class_api, used_classes, fully_used_classes, us
 
     if class_name == "ClassDBSingleton":
         result.append("#define CLASSDB_SINGLETON_FORWARD_METHODS \\")
+
+        if "enums" in class_api:
+            for enum_api in class_api["enums"]:
+                if enum_api["is_bitfield"]:
+                    result.append(f'\tenum {enum_api["name"]} : uint64_t {{ \\')
+                else:
+                    result.append(f'\tenum {enum_api["name"]} {{ \\')
+
+                for value in enum_api["values"]:
+                    result.append(f'\t\t{value["name"]} = {value["value"]}, \\')
+                result.append("\t}; \\")
+                result.append("\t \\")
+
         for method in class_api["methods"]:
             # ClassDBSingleton shouldn't have any static or vararg methods, but if some appear later, lets skip them.
             if vararg:
@@ -1657,12 +1697,17 @@ def generate_engine_class_header(class_api, used_classes, fully_used_classes, us
                 continue
 
             method_signature = "\tstatic "
+            return_type = None
             if "return_type" in method:
-                method_signature += f'{correct_type(method["return_type"])} '
+                return_type = correct_type(method["return_type"].replace("ClassDBSingleton", "ClassDB"), None, False)
             elif "return_value" in method:
-                method_signature += (
-                    correct_type(method["return_value"]["type"], method["return_value"].get("meta", None)) + " "
+                return_type = correct_type(
+                    method["return_value"]["type"].replace("ClassDBSingleton", "ClassDB"),
+                    method["return_value"].get("meta", None),
+                    False,
                 )
+            if return_type is not None:
+                method_signature += return_type + " "
             else:
                 method_signature += "void "
 
@@ -1681,14 +1726,28 @@ def generate_engine_class_header(class_api, used_classes, fully_used_classes, us
             result.append(method_signature)
 
             method_body = "\t\t"
-            if "return_type" in method or "return_value" in method:
+            if return_type is not None:
                 method_body += "return "
+                if "alias_for" in class_api and return_type.startswith(class_api["alias_for"] + "::"):
+                    method_body += f"({return_type})"
             method_body += f'ClassDBSingleton::get_singleton()->{method["name"]}('
             method_body += ", ".join(map(lambda x: escape_identifier(x["name"]), method_arguments))
             method_body += "); \\"
 
             result.append(method_body)
             result.append("\t} \\")
+        result.append("\t;")
+        result.append("")
+
+        result.append("#define CLASSDB_SINGLETON_VARIANT_CAST \\")
+
+        if "enums" in class_api:
+            for enum_api in class_api["enums"]:
+                if enum_api["is_bitfield"]:
+                    result.append(f'\tVARIANT_BITFIELD_CAST({class_api["alias_for"]}::{enum_api["name"]}); \\')
+                else:
+                    result.append(f'\tVARIANT_ENUM_CAST({class_api["alias_for"]}::{enum_api["name"]}); \\')
+
         result.append("\t;")
         result.append("")
 
@@ -1709,10 +1768,9 @@ def generate_engine_class_source(class_api, used_classes, fully_used_classes, us
 
     result.append(f"#include <godot_cpp/classes/{snake_class_name}.hpp>")
     result.append("")
+    result.append("#include <godot_cpp/core/class_db.hpp>")
     result.append("#include <godot_cpp/core/engine_ptrcall.hpp>")
     result.append("#include <godot_cpp/core/error_macros.hpp>")
-    # ADD
-    # result.append("#include \"qjspp.h\"")
     result.append("")
 
     for included in used_classes:
@@ -1725,9 +1783,10 @@ def generate_engine_class_source(class_api, used_classes, fully_used_classes, us
     result.append("")
 
     if is_singleton:
+        result.append(f"{class_name} *{class_name}::singleton = nullptr;")
+        result.append("")
         result.append(f"{class_name} *{class_name}::get_singleton() {{")
         # We assume multi-threaded access is OK because each assignment will assign the same value every time
-        result.append(f"\tstatic {class_name} *singleton = nullptr;")
         result.append("\tif (unlikely(singleton == nullptr)) {")
         result.append(
             f"\t\tGDExtensionObjectPtr singleton_obj = internal::gdextension_interface_global_get_singleton({class_name}::get_class_static()._native_ptr());"
@@ -1741,8 +1800,19 @@ def generate_engine_class_source(class_api, used_classes, fully_used_classes, us
         result.append("#ifdef DEBUG_ENABLED")
         result.append("\t\tERR_FAIL_NULL_V(singleton, nullptr);")
         result.append("#endif // DEBUG_ENABLED")
+        result.append("\t\tif (likely(singleton)) {")
+        result.append(f"\t\t\tClassDB::_register_engine_singleton({class_name}::get_class_static(), singleton);")
+        result.append("\t\t}")
         result.append("\t}")
         result.append("\treturn singleton;")
+        result.append("}")
+        result.append("")
+
+        result.append(f"{class_name}::~{class_name}() {{")
+        result.append("\tif (singleton == this) {")
+        result.append(f"\t\tClassDB::_unregister_engine_singleton({class_name}::get_class_static());")
+        result.append("\t\tsingleton = nullptr;")
+        result.append("\t}")
         result.append("}")
         result.append("")
 
@@ -2001,11 +2071,11 @@ def generate_utility_functions(api, output_dir):
     header.append(f"#ifndef {header_guard}")
     header.append(f"#define {header_guard}")
     header.append("")
+    header.append("#include <godot_cpp/templates/vararg.hpp>")
     header.append("#include <godot_cpp/variant/builtin_types.hpp>")
     header.append("#include <godot_cpp/variant/variant.hpp>")
     header.append("")
-    # ADD
-    header.append("#include <godot_cpp/templates/vararg.hpp>")
+    header.append("#include <array>")
     header.append("")
     header.append("namespace godot {")
     header.append("")
@@ -2146,6 +2216,7 @@ def make_function_parameters(parameters, include_default=False, for_builtin=Fals
 
     return ", ".join(signature)
 
+
 def type_for_parameter(type_name, meta=None):
     if type_name == "void":
         return "Variant "
@@ -2265,6 +2336,7 @@ def make_varargs_template(
     if with_public_declare:
         function_signature = "public: "
 
+    # DELETE
     # function_signature += "template<typename... Args> "
 
     if static:
@@ -2308,7 +2380,6 @@ def make_varargs_template(
     function_signature += " {"
     result.append(function_signature)
 
-    # Modify
     # args_array = f"\tstd::array<Variant, {len(method_arguments)} + sizeof...(Args)> variant_args {{ "
     # for argument in method_arguments:
     #     if argument["type"] == "Variant":
@@ -2318,6 +2389,11 @@ def make_varargs_template(
     #     args_array += ", "
 
     # args_array += "Variant(args)... };"
+    # result.append(args_array)
+    # result.append(f"\tstd::array<const Variant *, {len(method_arguments)} + sizeof...(Args)> call_args;")
+    # result.append("\tfor(size_t i = 0; i < variant_args.size(); i++) {")
+    # result.append("\t\tcall_args[i] = &variant_args[i];")
+    # result.append("\t}")
 
     args_array = f"\tstd::vector<Variant> variant_args;"
     result.append(args_array)
@@ -2350,6 +2426,10 @@ def make_varargs_template(
             result.append(f'\t{correct_type(function_data["return_type"])} ret;')
 
         function_name = function_data["name"]
+        # MODIFY
+        # result.append(
+        #     f"\t_method_bindings.method_{function_name}({base}, reinterpret_cast<GDExtensionConstTypePtr *>(call_args.data()), {ret}, {len(method_arguments)} + sizeof...(Args));"
+        # )
         result.append(
             f"\t_method_bindings.method_{function_name}({base}, reinterpret_cast<GDExtensionConstTypePtr *>(call_args.data()), {ret}, {len(method_arguments)} + call_args.size());"
         )
@@ -2433,6 +2513,7 @@ def is_packed_array(type_name):
         "PackedStringArray",
         "PackedVector2Array",
         "PackedVector3Array",
+        "PackedVector4Array",
     ]
 
 
@@ -2541,7 +2622,7 @@ def correct_typed_array(type_name):
     return type_name
 
 
-def correct_type(type_name, meta=None):
+def correct_type(type_name, meta=None, use_alias=True):
     type_conversion = {"float": "double", "int": "int64_t", "Nil": "Variant"}
     if meta != None:
         if "int" in meta:
@@ -2557,11 +2638,15 @@ def correct_type(type_name, meta=None):
     if is_enum(type_name):
         if is_bitfield(type_name):
             base_class = get_enum_class(type_name)
+            if use_alias and base_class in CLASS_ALIASES:
+                base_class = CLASS_ALIASES[base_class]
             if base_class == "GlobalConstants":
                 return f"BitField<{get_enum_name(type_name)}>"
             return f"BitField<{base_class}::{get_enum_name(type_name)}>"
         else:
             base_class = get_enum_class(type_name)
+            if use_alias and base_class in CLASS_ALIASES:
+                base_class = CLASS_ALIASES[base_class]
             if base_class == "GlobalConstants":
                 return f"{get_enum_name(type_name)}"
             return f"{base_class}::{get_enum_name(type_name)}"
@@ -2721,7 +2806,7 @@ if __name__ == "__main__":
     GODOT_GDEXTENSION_API_FILE = "gdextension/extension_api.json" # 替换为实际路径
     GENERATE_BINDING_PARAMETERS = False # 或 "False" 根据需要设置
     BITS = "64" # "64" 或 "32"
-    FLOAT_PRECISION = "float" # "single" 或 "double"
+    FLOAT_PRECISION = "float" # "float" 或 "double"
     OUTPUT_DIRECTORY = "." # 替换为实际输出路径
 
     # 确保输出目录存在

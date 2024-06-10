@@ -15,7 +15,7 @@
 using namespace godot;
 
 void register_classes_TileData() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<TileData>("TileData")
 			.constructor<>()
 			.property<&TileData::get_flip_h, &TileData::set_flip_h>("flip_h")
@@ -30,7 +30,7 @@ void register_classes_TileData() {
 			.property<&TileData::get_terrain, &TileData::set_terrain>("terrain")
 			.property<&TileData::get_probability, &TileData::set_probability>("probability")
 			.fun<static_cast<void (TileData::*)(int32_t, const Ref<OccluderPolygon2D> &)>(&TileData::set_occluder)>("set_occluder")
-			.fun<static_cast<Ref<OccluderPolygon2D> (TileData::*)(int32_t) const>(&TileData::get_occluder)>("get_occluder")
+			.fun<static_cast<Ref<OccluderPolygon2D> (TileData::*)(int32_t, bool, bool, bool) const>(&TileData::get_occluder)>("get_occluder")
 			.fun<static_cast<void (TileData::*)(int32_t, const Vector2 &)>(&TileData::set_constant_linear_velocity)>("set_constant_linear_velocity")
 			.fun<static_cast<Vector2 (TileData::*)(int32_t) const>(&TileData::get_constant_linear_velocity)>("get_constant_linear_velocity")
 			.fun<static_cast<void (TileData::*)(int32_t, double)>(&TileData::set_constant_angular_velocity)>("set_constant_angular_velocity")
@@ -48,7 +48,7 @@ void register_classes_TileData() {
 			.fun<static_cast<void (TileData::*)(TileSet::CellNeighbor, int32_t)>(&TileData::set_terrain_peering_bit)>("set_terrain_peering_bit")
 			.fun<static_cast<int32_t (TileData::*)(TileSet::CellNeighbor) const>(&TileData::get_terrain_peering_bit)>("get_terrain_peering_bit")
 			.fun<static_cast<void (TileData::*)(int32_t, const Ref<NavigationPolygon> &)>(&TileData::set_navigation_polygon)>("set_navigation_polygon")
-			.fun<static_cast<Ref<NavigationPolygon> (TileData::*)(int32_t) const>(&TileData::get_navigation_polygon)>("get_navigation_polygon")
+			.fun<static_cast<Ref<NavigationPolygon> (TileData::*)(int32_t, bool, bool, bool) const>(&TileData::get_navigation_polygon)>("get_navigation_polygon")
 			.fun<static_cast<void (TileData::*)(const String &, const Variant &)>(&TileData::set_custom_data)>("set_custom_data")
 			.fun<static_cast<Variant (TileData::*)(const String &) const>(&TileData::get_custom_data)>("get_custom_data")
 			.fun<static_cast<void (TileData::*)(int32_t, const Variant &)>(&TileData::set_custom_data_by_layer_id)>("set_custom_data_by_layer_id")

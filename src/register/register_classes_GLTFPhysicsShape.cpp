@@ -9,7 +9,7 @@
 using namespace godot;
 
 void register_classes_GLTFPhysicsShape() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<GLTFPhysicsShape>("GLTFPhysicsShape")
 			.constructor<>()
 			.property<&GLTFPhysicsShape::get_shape_type, &GLTFPhysicsShape::set_shape_type>("shape_type")

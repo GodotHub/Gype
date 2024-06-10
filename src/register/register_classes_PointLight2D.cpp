@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_PointLight2D() {
-	qjs::Context::Module &_module = _Node2D;
+	qjs::Context::Module &_module = get_Node2D_module();
 	_module.class_<PointLight2D>("PointLight2D")
 			.constructor<>()
 			.property<&PointLight2D::get_texture, &PointLight2D::set_texture>("texture")

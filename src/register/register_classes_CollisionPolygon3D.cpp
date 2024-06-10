@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_CollisionPolygon3D() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<CollisionPolygon3D>("CollisionPolygon3D")
 			.constructor<>()
 			.property<&CollisionPolygon3D::get_depth, &CollisionPolygon3D::set_depth>("depth")

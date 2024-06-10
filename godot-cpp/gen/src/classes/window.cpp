@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/window.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -243,6 +244,20 @@ bool Window::is_transient() const {
 	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
 }
 
+void Window::set_transient_to_focused(bool enable) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Window::get_class_static()._native_ptr(), StringName("set_transient_to_focused")._native_ptr(), 2586408642);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int8_t enable_encoded;
+	PtrToArg<bool>::encode(enable, &enable_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &enable_encoded);
+}
+
+bool Window::is_transient_to_focused() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Window::get_class_static()._native_ptr(), StringName("is_transient_to_focused")._native_ptr(), 36873697);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
+}
+
 void Window::set_exclusive(bool exclusive) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Window::get_class_static()._native_ptr(), StringName("set_exclusive")._native_ptr(), 2586408642);
 	CHECK_METHOD_BIND(_gde_method_bind);
@@ -307,6 +322,20 @@ Vector2 Window::get_contents_minimum_size() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Window::get_class_static()._native_ptr(), StringName("get_contents_minimum_size")._native_ptr(), 3341600327);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Vector2());
 	return internal::_call_native_mb_ret<Vector2>(_gde_method_bind, _owner);
+}
+
+void Window::set_force_native(bool force_native) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Window::get_class_static()._native_ptr(), StringName("set_force_native")._native_ptr(), 2586408642);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int8_t force_native_encoded;
+	PtrToArg<bool>::encode(force_native, &force_native_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &force_native_encoded);
+}
+
+bool Window::get_force_native() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Window::get_class_static()._native_ptr(), StringName("get_force_native")._native_ptr(), 36873697);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
 }
 
 void Window::set_content_scale_size(const Vector2i &size) {
@@ -544,37 +573,37 @@ void Window::remove_theme_constant_override(const StringName &name) {
 }
 
 Ref<Texture2D> Window::get_theme_icon(const StringName &name, const StringName &theme_type) const {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Window::get_class_static()._native_ptr(), StringName("get_theme_icon")._native_ptr(), 3163973443);
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Window::get_class_static()._native_ptr(), StringName("get_theme_icon")._native_ptr(), 2336455395);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Ref<Texture2D>());
 	return Ref<Texture2D>::_gde_internal_constructor(internal::_call_native_mb_ret_obj<Texture2D>(_gde_method_bind, _owner, &name, &theme_type));
 }
 
 Ref<StyleBox> Window::get_theme_stylebox(const StringName &name, const StringName &theme_type) const {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Window::get_class_static()._native_ptr(), StringName("get_theme_stylebox")._native_ptr(), 604739069);
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Window::get_class_static()._native_ptr(), StringName("get_theme_stylebox")._native_ptr(), 2759935355);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Ref<StyleBox>());
 	return Ref<StyleBox>::_gde_internal_constructor(internal::_call_native_mb_ret_obj<StyleBox>(_gde_method_bind, _owner, &name, &theme_type));
 }
 
 Ref<Font> Window::get_theme_font(const StringName &name, const StringName &theme_type) const {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Window::get_class_static()._native_ptr(), StringName("get_theme_font")._native_ptr(), 2826986490);
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Window::get_class_static()._native_ptr(), StringName("get_theme_font")._native_ptr(), 387378635);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Ref<Font>());
 	return Ref<Font>::_gde_internal_constructor(internal::_call_native_mb_ret_obj<Font>(_gde_method_bind, _owner, &name, &theme_type));
 }
 
 int32_t Window::get_theme_font_size(const StringName &name, const StringName &theme_type) const {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Window::get_class_static()._native_ptr(), StringName("get_theme_font_size")._native_ptr(), 1327056374);
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Window::get_class_static()._native_ptr(), StringName("get_theme_font_size")._native_ptr(), 229578101);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
 	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &name, &theme_type);
 }
 
 Color Window::get_theme_color(const StringName &name, const StringName &theme_type) const {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Window::get_class_static()._native_ptr(), StringName("get_theme_color")._native_ptr(), 2798751242);
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Window::get_class_static()._native_ptr(), StringName("get_theme_color")._native_ptr(), 2377051548);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Color());
 	return internal::_call_native_mb_ret<Color>(_gde_method_bind, _owner, &name, &theme_type);
 }
 
 int32_t Window::get_theme_constant(const StringName &name, const StringName &theme_type) const {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Window::get_class_static()._native_ptr(), StringName("get_theme_constant")._native_ptr(), 1327056374);
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Window::get_class_static()._native_ptr(), StringName("get_theme_constant")._native_ptr(), 229578101);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
 	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &name, &theme_type);
 }
@@ -616,37 +645,37 @@ bool Window::has_theme_constant_override(const StringName &name) const {
 }
 
 bool Window::has_theme_icon(const StringName &name, const StringName &theme_type) const {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Window::get_class_static()._native_ptr(), StringName("has_theme_icon")._native_ptr(), 866386512);
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Window::get_class_static()._native_ptr(), StringName("has_theme_icon")._native_ptr(), 1187511791);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
 	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner, &name, &theme_type);
 }
 
 bool Window::has_theme_stylebox(const StringName &name, const StringName &theme_type) const {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Window::get_class_static()._native_ptr(), StringName("has_theme_stylebox")._native_ptr(), 866386512);
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Window::get_class_static()._native_ptr(), StringName("has_theme_stylebox")._native_ptr(), 1187511791);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
 	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner, &name, &theme_type);
 }
 
 bool Window::has_theme_font(const StringName &name, const StringName &theme_type) const {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Window::get_class_static()._native_ptr(), StringName("has_theme_font")._native_ptr(), 866386512);
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Window::get_class_static()._native_ptr(), StringName("has_theme_font")._native_ptr(), 1187511791);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
 	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner, &name, &theme_type);
 }
 
 bool Window::has_theme_font_size(const StringName &name, const StringName &theme_type) const {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Window::get_class_static()._native_ptr(), StringName("has_theme_font_size")._native_ptr(), 866386512);
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Window::get_class_static()._native_ptr(), StringName("has_theme_font_size")._native_ptr(), 1187511791);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
 	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner, &name, &theme_type);
 }
 
 bool Window::has_theme_color(const StringName &name, const StringName &theme_type) const {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Window::get_class_static()._native_ptr(), StringName("has_theme_color")._native_ptr(), 866386512);
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Window::get_class_static()._native_ptr(), StringName("has_theme_color")._native_ptr(), 1187511791);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
 	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner, &name, &theme_type);
 }
 
 bool Window::has_theme_constant(const StringName &name, const StringName &theme_type) const {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Window::get_class_static()._native_ptr(), StringName("has_theme_constant")._native_ptr(), 866386512);
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Window::get_class_static()._native_ptr(), StringName("has_theme_constant")._native_ptr(), 1187511791);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
 	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner, &name, &theme_type);
 }

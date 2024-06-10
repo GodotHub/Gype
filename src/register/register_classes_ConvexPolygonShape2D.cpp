@@ -4,11 +4,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_ConvexPolygonShape2D() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<ConvexPolygonShape2D>("ConvexPolygonShape2D")
 			.constructor<>()
 			.property<&ConvexPolygonShape2D::get_points, &ConvexPolygonShape2D::set_points>("points")

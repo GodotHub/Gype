@@ -44,6 +44,7 @@
 namespace godot {
 
 class CameraAttributes;
+class Compositor;
 class Environment;
 
 class WorldEnvironment : public Node {
@@ -55,6 +56,8 @@ public:
 	Ref<Environment> get_environment() const;
 	void set_camera_attributes(const Ref<CameraAttributes> &camera_attributes);
 	Ref<CameraAttributes> get_camera_attributes() const;
+	void set_compositor(const Ref<Compositor> &compositor);
+	Ref<Compositor> get_compositor() const;
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {

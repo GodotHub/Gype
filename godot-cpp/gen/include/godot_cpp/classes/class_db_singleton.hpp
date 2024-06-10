@@ -41,11 +41,15 @@
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/variant.hpp>
 
+#include <godot_cpp/core/binder_common.hpp>
+
 #include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class ClassDBSingleton : public Object {
 	GDEXTENSION_CLASS_ALIAS(ClassDBSingleton, ClassDB, Object)
+
+	static ClassDBSingleton *singleton;
 
 public:
 
@@ -64,7 +68,9 @@ public:
 	TypedArray<Dictionary> class_get_property_list(const StringName &_class, bool no_inheritance = false) const;
 	Variant class_get_property(Object *object, const StringName &property) const;
 	Error class_set_property(Object *object, const StringName &property, const Variant &value) const;
+	Variant class_get_property_default_value(const StringName &_class, const StringName &property) const;
 	bool class_has_method(const StringName &_class, const StringName &method, bool no_inheritance = false) const;
+	int32_t class_get_method_argument_count(const StringName &_class, const StringName &method, bool no_inheritance = false) const;
 	TypedArray<Dictionary> class_get_method_list(const StringName &_class, bool no_inheritance = false) const;
 	PackedStringArray class_get_integer_constant_list(const StringName &_class, bool no_inheritance = false) const;
 	bool class_has_integer_constant(const StringName &_class, const StringName &name) const;
@@ -73,12 +79,15 @@ public:
 	PackedStringArray class_get_enum_list(const StringName &_class, bool no_inheritance = false) const;
 	PackedStringArray class_get_enum_constants(const StringName &_class, const StringName &_enum, bool no_inheritance = false) const;
 	StringName class_get_integer_constant_enum(const StringName &_class, const StringName &name, bool no_inheritance = false) const;
+	bool is_class_enum_bitfield(const StringName &_class, const StringName &_enum, bool no_inheritance = false) const;
 	bool is_class_enabled(const StringName &_class) const;
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
 	}
+
+	~ClassDBSingleton();
 
 public:
 
@@ -126,8 +135,14 @@ public:
 	static Error class_set_property(Object *object, const StringName &property, const Variant &value) { \
 		return ClassDBSingleton::get_singleton()->class_set_property(object, property, value); \
 	} \
+	static Variant class_get_property_default_value(const StringName &_class, const StringName &property) { \
+		return ClassDBSingleton::get_singleton()->class_get_property_default_value(_class, property); \
+	} \
 	static bool class_has_method(const StringName &_class, const StringName &method, bool no_inheritance = false) { \
 		return ClassDBSingleton::get_singleton()->class_has_method(_class, method, no_inheritance); \
+	} \
+	static int32_t class_get_method_argument_count(const StringName &_class, const StringName &method, bool no_inheritance = false) { \
+		return ClassDBSingleton::get_singleton()->class_get_method_argument_count(_class, method, no_inheritance); \
 	} \
 	static TypedArray<Dictionary> class_get_method_list(const StringName &_class, bool no_inheritance = false) { \
 		return ClassDBSingleton::get_singleton()->class_get_method_list(_class, no_inheritance); \
@@ -153,9 +168,15 @@ public:
 	static StringName class_get_integer_constant_enum(const StringName &_class, const StringName &name, bool no_inheritance = false) { \
 		return ClassDBSingleton::get_singleton()->class_get_integer_constant_enum(_class, name, no_inheritance); \
 	} \
+	static bool is_class_enum_bitfield(const StringName &_class, const StringName &_enum, bool no_inheritance = false) { \
+		return ClassDBSingleton::get_singleton()->is_class_enum_bitfield(_class, _enum, no_inheritance); \
+	} \
 	static bool is_class_enabled(const StringName &_class) { \
 		return ClassDBSingleton::get_singleton()->is_class_enabled(_class); \
 	} \
+	;
+
+#define CLASSDB_SINGLETON_VARIANT_CAST \
 	;
 
 #endif // ! GODOT_CPP_CLASS_DB_SINGLETON_HPP

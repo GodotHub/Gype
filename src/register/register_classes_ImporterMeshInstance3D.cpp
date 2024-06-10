@@ -8,7 +8,7 @@
 using namespace godot;
 
 void register_classes_ImporterMeshInstance3D() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<ImporterMeshInstance3D>("ImporterMeshInstance3D")
 			.constructor<>()
 			.property<&ImporterMeshInstance3D::get_mesh, &ImporterMeshInstance3D::set_mesh>("mesh")

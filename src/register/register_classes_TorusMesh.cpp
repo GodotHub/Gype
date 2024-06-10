@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_TorusMesh() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<TorusMesh>("TorusMesh")
 			.constructor<>()
 			.property<&TorusMesh::get_inner_radius, &TorusMesh::set_inner_radius>("inner_radius")

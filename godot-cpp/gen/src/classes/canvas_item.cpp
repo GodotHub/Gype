@@ -32,9 +32,11 @@
 
 #include <godot_cpp/classes/canvas_item.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
+#include <godot_cpp/classes/canvas_layer.hpp>
 #include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/classes/material.hpp>
@@ -215,8 +217,8 @@ void CanvasItem::draw_line(const Vector2 &from, const Vector2 &to, const Color &
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &from, &to, &color, &width_encoded, &antialiased_encoded);
 }
 
-void CanvasItem::draw_dashed_line(const Vector2 &from, const Vector2 &to, const Color &color, double width, double dash, bool aligned) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(CanvasItem::get_class_static()._native_ptr(), StringName("draw_dashed_line")._native_ptr(), 684651049);
+void CanvasItem::draw_dashed_line(const Vector2 &from, const Vector2 &to, const Color &color, double width, double dash, bool aligned, bool antialiased) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(CanvasItem::get_class_static()._native_ptr(), StringName("draw_dashed_line")._native_ptr(), 3653831622);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	double width_encoded;
 	PtrToArg<double>::encode(width, &width_encoded);
@@ -224,7 +226,9 @@ void CanvasItem::draw_dashed_line(const Vector2 &from, const Vector2 &to, const 
 	PtrToArg<double>::encode(dash, &dash_encoded);
 	int8_t aligned_encoded;
 	PtrToArg<bool>::encode(aligned, &aligned_encoded);
-	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &from, &to, &color, &width_encoded, &dash_encoded, &aligned_encoded);
+	int8_t antialiased_encoded;
+	PtrToArg<bool>::encode(antialiased, &antialiased_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &from, &to, &color, &width_encoded, &dash_encoded, &aligned_encoded, &antialiased_encoded);
 }
 
 void CanvasItem::draw_polyline(const PackedVector2Array &points, const Color &color, double width, bool antialiased) {
@@ -265,38 +269,50 @@ void CanvasItem::draw_arc(const Vector2 &center, double radius, double start_ang
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &center, &radius_encoded, &start_angle_encoded, &end_angle_encoded, &point_count_encoded, &color, &width_encoded, &antialiased_encoded);
 }
 
-void CanvasItem::draw_multiline(const PackedVector2Array &points, const Color &color, double width) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(CanvasItem::get_class_static()._native_ptr(), StringName("draw_multiline")._native_ptr(), 2239075205);
+void CanvasItem::draw_multiline(const PackedVector2Array &points, const Color &color, double width, bool antialiased) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(CanvasItem::get_class_static()._native_ptr(), StringName("draw_multiline")._native_ptr(), 3797364428);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	double width_encoded;
 	PtrToArg<double>::encode(width, &width_encoded);
-	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &points, &color, &width_encoded);
+	int8_t antialiased_encoded;
+	PtrToArg<bool>::encode(antialiased, &antialiased_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &points, &color, &width_encoded, &antialiased_encoded);
 }
 
-void CanvasItem::draw_multiline_colors(const PackedVector2Array &points, const PackedColorArray &colors, double width) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(CanvasItem::get_class_static()._native_ptr(), StringName("draw_multiline_colors")._native_ptr(), 4072951537);
+void CanvasItem::draw_multiline_colors(const PackedVector2Array &points, const PackedColorArray &colors, double width, bool antialiased) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(CanvasItem::get_class_static()._native_ptr(), StringName("draw_multiline_colors")._native_ptr(), 2311979562);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	double width_encoded;
 	PtrToArg<double>::encode(width, &width_encoded);
-	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &points, &colors, &width_encoded);
+	int8_t antialiased_encoded;
+	PtrToArg<bool>::encode(antialiased, &antialiased_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &points, &colors, &width_encoded, &antialiased_encoded);
 }
 
-void CanvasItem::draw_rect(const Rect2 &rect, const Color &color, bool filled, double width) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(CanvasItem::get_class_static()._native_ptr(), StringName("draw_rect")._native_ptr(), 2417231121);
+void CanvasItem::draw_rect(const Rect2 &rect, const Color &color, bool filled, double width, bool antialiased) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(CanvasItem::get_class_static()._native_ptr(), StringName("draw_rect")._native_ptr(), 2773573813);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	int8_t filled_encoded;
 	PtrToArg<bool>::encode(filled, &filled_encoded);
 	double width_encoded;
 	PtrToArg<double>::encode(width, &width_encoded);
-	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &rect, &color, &filled_encoded, &width_encoded);
+	int8_t antialiased_encoded;
+	PtrToArg<bool>::encode(antialiased, &antialiased_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &rect, &color, &filled_encoded, &width_encoded, &antialiased_encoded);
 }
 
-void CanvasItem::draw_circle(const Vector2 &position, double radius, const Color &color) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(CanvasItem::get_class_static()._native_ptr(), StringName("draw_circle")._native_ptr(), 3063020269);
+void CanvasItem::draw_circle(const Vector2 &position, double radius, const Color &color, bool filled, double width, bool antialiased) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(CanvasItem::get_class_static()._native_ptr(), StringName("draw_circle")._native_ptr(), 3153026596);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	double radius_encoded;
 	PtrToArg<double>::encode(radius, &radius_encoded);
-	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &position, &radius_encoded, &color);
+	int8_t filled_encoded;
+	PtrToArg<bool>::encode(filled, &filled_encoded);
+	double width_encoded;
+	PtrToArg<double>::encode(width, &width_encoded);
+	int8_t antialiased_encoded;
+	PtrToArg<bool>::encode(antialiased, &antialiased_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &position, &radius_encoded, &color, &filled_encoded, &width_encoded, &antialiased_encoded);
 }
 
 void CanvasItem::draw_texture(const Ref<Texture2D> &texture, const Vector2 &position, const Color &modulate) {
@@ -537,6 +553,12 @@ RID CanvasItem::get_canvas() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(CanvasItem::get_class_static()._native_ptr(), StringName("get_canvas")._native_ptr(), 2944877500);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, RID());
 	return internal::_call_native_mb_ret<RID>(_gde_method_bind, _owner);
+}
+
+CanvasLayer *CanvasItem::get_canvas_layer_node() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(CanvasItem::get_class_static()._native_ptr(), StringName("get_canvas_layer_node")._native_ptr(), 2602762519);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, nullptr);
+	return internal::_call_native_mb_ret_obj<CanvasLayer>(_gde_method_bind, _owner);
 }
 
 Ref<World2D> CanvasItem::get_world_2d() const {

@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_StreamPeerGZIP() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<StreamPeerGZIP>("StreamPeerGZIP")
 			.constructor<>()
 			.fun<static_cast<Error (StreamPeerGZIP::*)(bool, int32_t)>(&StreamPeerGZIP::start_compression)>("start_compression")

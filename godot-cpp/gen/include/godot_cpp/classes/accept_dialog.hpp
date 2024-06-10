@@ -44,8 +44,8 @@
 namespace godot {
 
 class Button;
-class Control;
 class Label;
+class LineEdit;
 
 class AcceptDialog : public Window {
 	GDEXTENSION_CLASS(AcceptDialog, Window)
@@ -60,8 +60,8 @@ public:
 	bool get_close_on_escape() const;
 	Button *add_button(const String &text, bool right = false, const String &action = String());
 	Button *add_cancel_button(const String &name);
-	void remove_button(Control *button);
-	void register_text_enter(Control *line_edit);
+	void remove_button(Button *button);
+	void register_text_enter(LineEdit *line_edit);
 	void set_text(const String &text);
 	String get_text() const;
 	void set_autowrap(bool autowrap);

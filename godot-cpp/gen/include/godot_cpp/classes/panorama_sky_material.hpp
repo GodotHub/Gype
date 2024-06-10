@@ -54,6 +54,8 @@ public:
 	Ref<Texture2D> get_panorama() const;
 	void set_filtering_enabled(bool enabled);
 	bool is_filtering_enabled() const;
+	void set_energy_multiplier(double multiplier);
+	double get_energy_multiplier() const;
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {

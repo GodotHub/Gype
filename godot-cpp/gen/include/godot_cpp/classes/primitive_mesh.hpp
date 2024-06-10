@@ -63,6 +63,7 @@ public:
 	bool get_add_uv2() const;
 	void set_uv2_padding(double uv2_padding);
 	double get_uv2_padding() const;
+	void request_update();
 	virtual Array _create_mesh_array() const;
 protected:
 	template <typename T, typename B>

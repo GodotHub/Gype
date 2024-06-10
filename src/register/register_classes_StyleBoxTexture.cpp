@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_StyleBoxTexture() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<StyleBoxTexture>("StyleBoxTexture")
 			.constructor<>()
 			.property<&StyleBoxTexture::get_texture, &StyleBoxTexture::set_texture>("texture")

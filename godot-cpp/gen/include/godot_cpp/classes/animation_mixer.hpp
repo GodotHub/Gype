@@ -40,6 +40,7 @@
 #include <godot_cpp/variant/quaternion.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/string_name.hpp>
+#include <godot_cpp/classes/tween.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/variant.hpp>
 #include <godot_cpp/variant/vector3.hpp>
@@ -53,7 +54,6 @@ namespace godot {
 
 class Animation;
 class AnimationLibrary;
-class Object;
 
 class AnimationMixer : public Node {
 	GDEXTENSION_CLASS(AnimationMixer, Node)
@@ -69,6 +69,12 @@ public:
 	enum AnimationCallbackModeMethod {
 		ANIMATION_CALLBACK_MODE_METHOD_DEFERRED = 0,
 		ANIMATION_CALLBACK_MODE_METHOD_IMMEDIATE = 1,
+	};
+
+	enum AnimationCallbackModeDiscrete {
+		ANIMATION_CALLBACK_MODE_DISCRETE_DOMINANT = 0,
+		ANIMATION_CALLBACK_MODE_DISCRETE_RECESSIVE = 1,
+		ANIMATION_CALLBACK_MODE_DISCRETE_FORCE_CONTINUOUS = 2,
 	};
 
 	Error add_animation_library(const StringName &name, const Ref<AnimationLibrary> &library);
@@ -90,6 +96,8 @@ public:
 	AnimationMixer::AnimationCallbackModeProcess get_callback_mode_process() const;
 	void set_callback_mode_method(AnimationMixer::AnimationCallbackModeMethod mode);
 	AnimationMixer::AnimationCallbackModeMethod get_callback_mode_method() const;
+	void set_callback_mode_discrete(AnimationMixer::AnimationCallbackModeDiscrete mode);
+	AnimationMixer::AnimationCallbackModeDiscrete get_callback_mode_discrete() const;
 	void set_audio_max_polyphony(int32_t max_polyphony);
 	int32_t get_audio_max_polyphony() const;
 	void set_root_motion_track(const NodePath &path);
@@ -102,11 +110,12 @@ public:
 	Vector3 get_root_motion_scale_accumulator() const;
 	void clear_caches();
 	void advance(double delta);
+	void capture(const StringName &name, double duration, Tween::TransitionType trans_type = (Tween::TransitionType)0, Tween::EaseType ease_type = (Tween::EaseType)0);
 	void set_reset_on_save_enabled(bool enabled);
 	bool is_reset_on_save_enabled() const;
 	StringName find_animation(const Ref<Animation> &animation) const;
 	StringName find_animation_library(const Ref<Animation> &animation) const;
-	virtual Variant _post_process_key_value(const Ref<Animation> &animation, int32_t track, const Variant &value, Object *object, int32_t object_idx) const;
+	virtual Variant _post_process_key_value(const Ref<Animation> &animation, int32_t track, const Variant &value, uint64_t object_id, int32_t object_sub_idx) const;
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -124,5 +133,6 @@ public:
 
 VARIANT_ENUM_CAST(AnimationMixer::AnimationCallbackModeProcess);
 VARIANT_ENUM_CAST(AnimationMixer::AnimationCallbackModeMethod);
+VARIANT_ENUM_CAST(AnimationMixer::AnimationCallbackModeDiscrete);
 
 #endif // ! GODOT_CPP_ANIMATION_MIXER_HPP

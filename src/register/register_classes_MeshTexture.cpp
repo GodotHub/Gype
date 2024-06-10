@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_MeshTexture() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<MeshTexture>("MeshTexture")
 			.constructor<>()
 			.property<&MeshTexture::get_mesh, &MeshTexture::set_mesh>("mesh")

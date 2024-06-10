@@ -6,17 +6,14 @@
 #include <godot_cpp/variant/variant.hpp>
 #include <godot_cpp/variant/vector2.hpp>
 
-
 #include "qjspp.hpp"
 #include "register/register_classes.h"
-
 
 using namespace godot;
 
 void register_classes_Geometry2D() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<Geometry2D>("Geometry2D")
-			.constructor<>()
 			.fun<static_cast<bool (Geometry2D::*)(const Vector2 &, const Vector2 &, double)>(&Geometry2D::is_point_in_circle)>("is_point_in_circle")
 			.fun<static_cast<double (Geometry2D::*)(const Vector2 &, const Vector2 &, const Vector2 &, double)>(&Geometry2D::segment_intersects_circle)>("segment_intersects_circle")
 			.fun<static_cast<Variant (Geometry2D::*)(const Vector2 &, const Vector2 &, const Vector2 &, const Vector2 &)>(&Geometry2D::segment_intersects_segment)>("segment_intersects_segment")

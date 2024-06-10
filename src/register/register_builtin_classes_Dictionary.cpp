@@ -8,9 +8,7 @@
 using namespace godot;
 
 void register_builtin_classes_Dictionary() {
-	_Variant.class_<Dictionary>("Dictionary")
-			.constructor<>()
-			.constructor<const Dictionary &>("Dictionary_1")
+	get_Variant_module().class_<Dictionary>("Dictionary").constructor<>().constructor<const Dictionary &>("Dictionary_1")
 
 			.fun<static_cast<int64_t (Dictionary::*)() const>(&Dictionary::size)>("size")
 			.fun<static_cast<bool (Dictionary::*)() const>(&Dictionary::is_empty)>("is_empty")

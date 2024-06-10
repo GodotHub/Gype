@@ -9,7 +9,7 @@
 using namespace godot;
 
 void register_classes_MeshInstance2D() {
-	qjs::Context::Module &_module = _Node2D;
+	qjs::Context::Module &_module = get_Node2D_module();
 	_module.class_<MeshInstance2D>("MeshInstance2D")
 			.constructor<>()
 			.property<&MeshInstance2D::get_mesh, &MeshInstance2D::set_mesh>("mesh")

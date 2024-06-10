@@ -4,17 +4,14 @@
 #include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 
-
 #include "qjspp.hpp"
 #include "register/register_classes.h"
-
 
 using namespace godot;
 
 void register_classes_InputMap() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<InputMap>("InputMap")
-			.constructor<>()
 			.fun<static_cast<bool (InputMap::*)(const StringName &) const>(&InputMap::has_action)>("has_action")
 			.fun<static_cast<TypedArray<StringName> (InputMap::*)()>(&InputMap::get_actions)>("get_actions")
 			.fun<static_cast<void (InputMap::*)(const StringName &, double)>(&InputMap::add_action)>("add_action")

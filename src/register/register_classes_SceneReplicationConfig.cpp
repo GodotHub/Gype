@@ -8,7 +8,7 @@
 using namespace godot;
 
 void register_classes_SceneReplicationConfig() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<SceneReplicationConfig>("SceneReplicationConfig")
 			.constructor<>()
 			.fun<static_cast<TypedArray<NodePath> (SceneReplicationConfig::*)() const>(&SceneReplicationConfig::get_properties)>("get_properties")

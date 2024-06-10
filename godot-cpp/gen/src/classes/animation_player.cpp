@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/animation_player.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -77,8 +78,60 @@ double AnimationPlayer::get_default_blend_time() const {
 	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner);
 }
 
+void AnimationPlayer::set_auto_capture(bool auto_capture) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationPlayer::get_class_static()._native_ptr(), StringName("set_auto_capture")._native_ptr(), 2586408642);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int8_t auto_capture_encoded;
+	PtrToArg<bool>::encode(auto_capture, &auto_capture_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &auto_capture_encoded);
+}
+
+bool AnimationPlayer::is_auto_capture() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationPlayer::get_class_static()._native_ptr(), StringName("is_auto_capture")._native_ptr(), 36873697);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
+}
+
+void AnimationPlayer::set_auto_capture_duration(double auto_capture_duration) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationPlayer::get_class_static()._native_ptr(), StringName("set_auto_capture_duration")._native_ptr(), 373806689);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	double auto_capture_duration_encoded;
+	PtrToArg<double>::encode(auto_capture_duration, &auto_capture_duration_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &auto_capture_duration_encoded);
+}
+
+double AnimationPlayer::get_auto_capture_duration() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationPlayer::get_class_static()._native_ptr(), StringName("get_auto_capture_duration")._native_ptr(), 1740695150);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner);
+}
+
+void AnimationPlayer::set_auto_capture_transition_type(Tween::TransitionType auto_capture_transition_type) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationPlayer::get_class_static()._native_ptr(), StringName("set_auto_capture_transition_type")._native_ptr(), 1058637742);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &auto_capture_transition_type);
+}
+
+Tween::TransitionType AnimationPlayer::get_auto_capture_transition_type() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationPlayer::get_class_static()._native_ptr(), StringName("get_auto_capture_transition_type")._native_ptr(), 3842314528);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Tween::TransitionType(0));
+	return (Tween::TransitionType)internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
+}
+
+void AnimationPlayer::set_auto_capture_ease_type(Tween::EaseType auto_capture_ease_type) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationPlayer::get_class_static()._native_ptr(), StringName("set_auto_capture_ease_type")._native_ptr(), 1208105857);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &auto_capture_ease_type);
+}
+
+Tween::EaseType AnimationPlayer::get_auto_capture_ease_type() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationPlayer::get_class_static()._native_ptr(), StringName("get_auto_capture_ease_type")._native_ptr(), 631880200);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Tween::EaseType(0));
+	return (Tween::EaseType)internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
+}
+
 void AnimationPlayer::play(const StringName &name, double custom_blend, double custom_speed, bool from_end) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationPlayer::get_class_static()._native_ptr(), StringName("play")._native_ptr(), 3118260607);
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationPlayer::get_class_static()._native_ptr(), StringName("play")._native_ptr(), 3697947785);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	double custom_blend_encoded;
 	PtrToArg<double>::encode(custom_blend, &custom_blend_encoded);
@@ -90,11 +143,25 @@ void AnimationPlayer::play(const StringName &name, double custom_blend, double c
 }
 
 void AnimationPlayer::play_backwards(const StringName &name, double custom_blend) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationPlayer::get_class_static()._native_ptr(), StringName("play_backwards")._native_ptr(), 2787282401);
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationPlayer::get_class_static()._native_ptr(), StringName("play_backwards")._native_ptr(), 3890664824);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	double custom_blend_encoded;
 	PtrToArg<double>::encode(custom_blend, &custom_blend_encoded);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &name, &custom_blend_encoded);
+}
+
+void AnimationPlayer::play_with_capture(const StringName &name, double duration, double custom_blend, double custom_speed, bool from_end, Tween::TransitionType trans_type, Tween::EaseType ease_type) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationPlayer::get_class_static()._native_ptr(), StringName("play_with_capture")._native_ptr(), 3180464118);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	double duration_encoded;
+	PtrToArg<double>::encode(duration, &duration_encoded);
+	double custom_blend_encoded;
+	PtrToArg<double>::encode(custom_blend, &custom_blend_encoded);
+	double custom_speed_encoded;
+	PtrToArg<double>::encode(custom_speed, &custom_speed_encoded);
+	int8_t from_end_encoded;
+	PtrToArg<bool>::encode(from_end, &from_end_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &name, &duration_encoded, &custom_blend_encoded, &custom_speed_encoded, &from_end_encoded, &trans_type, &ease_type);
 }
 
 void AnimationPlayer::pause() {

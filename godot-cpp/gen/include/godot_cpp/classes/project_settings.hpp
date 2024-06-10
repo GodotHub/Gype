@@ -52,6 +52,8 @@ class StringName;
 class ProjectSettings : public Object {
 	GDEXTENSION_CLASS(ProjectSettings, Object)
 
+	static ProjectSettings *singleton;
+
 public:
 
 	static ProjectSettings *get_singleton();
@@ -79,6 +81,8 @@ protected:
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
 	}
+
+	~ProjectSettings();
 
 public:
 

@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/navigation_polygon.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -153,6 +154,20 @@ double NavigationPolygon::get_cell_size() const {
 	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner);
 }
 
+void NavigationPolygon::set_border_size(double border_size) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationPolygon::get_class_static()._native_ptr(), StringName("set_border_size")._native_ptr(), 373806689);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	double border_size_encoded;
+	PtrToArg<double>::encode(border_size, &border_size_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &border_size_encoded);
+}
+
+double NavigationPolygon::get_border_size() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationPolygon::get_class_static()._native_ptr(), StringName("get_border_size")._native_ptr(), 1740695150);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner);
+}
+
 void NavigationPolygon::set_parsed_geometry_type(NavigationPolygon::ParsedGeometryType geometry_type) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationPolygon::get_class_static()._native_ptr(), StringName("set_parsed_geometry_type")._native_ptr(), 2507971764);
 	CHECK_METHOD_BIND(_gde_method_bind);
@@ -233,6 +248,30 @@ double NavigationPolygon::get_agent_radius() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationPolygon::get_class_static()._native_ptr(), StringName("get_agent_radius")._native_ptr(), 1740695150);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
 	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner);
+}
+
+void NavigationPolygon::set_baking_rect(const Rect2 &rect) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationPolygon::get_class_static()._native_ptr(), StringName("set_baking_rect")._native_ptr(), 2046264180);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &rect);
+}
+
+Rect2 NavigationPolygon::get_baking_rect() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationPolygon::get_class_static()._native_ptr(), StringName("get_baking_rect")._native_ptr(), 1639390495);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Rect2());
+	return internal::_call_native_mb_ret<Rect2>(_gde_method_bind, _owner);
+}
+
+void NavigationPolygon::set_baking_rect_offset(const Vector2 &rect_offset) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationPolygon::get_class_static()._native_ptr(), StringName("set_baking_rect_offset")._native_ptr(), 743155724);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &rect_offset);
+}
+
+Vector2 NavigationPolygon::get_baking_rect_offset() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationPolygon::get_class_static()._native_ptr(), StringName("get_baking_rect_offset")._native_ptr(), 3341600327);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Vector2());
+	return internal::_call_native_mb_ret<Vector2>(_gde_method_bind, _owner);
 }
 
 void NavigationPolygon::clear() {

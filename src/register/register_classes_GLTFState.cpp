@@ -11,7 +11,7 @@
 using namespace godot;
 
 void register_classes_GLTFState() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<GLTFState>("GLTFState")
 			.constructor<>()
 			.property<&GLTFState::get_json, &GLTFState::set_json>("json")

@@ -2,15 +2,13 @@
 #include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 
-
 #include "qjspp.hpp"
 #include "register/register_classes.h"
-
 
 using namespace godot;
 
 void register_classes_AnimationNodeStateMachinePlayback() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<AnimationNodeStateMachinePlayback>("AnimationNodeStateMachinePlayback")
 			.constructor<>()
 			.fun<static_cast<void (AnimationNodeStateMachinePlayback::*)(const StringName &, bool)>(&AnimationNodeStateMachinePlayback::travel)>("travel")

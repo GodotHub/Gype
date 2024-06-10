@@ -8,10 +8,7 @@
 using namespace godot;
 
 void register_builtin_classes_PackedInt64Array() {
-	_Variant.class_<PackedInt64Array>("PackedInt64Array")
-			.constructor<>()
-			.constructor<const PackedInt64Array &>("PackedInt64Array_1")
-			.constructor<const Array &>("PackedInt64Array_2")
+	get_Variant_module().class_<PackedInt64Array>("PackedInt64Array").constructor<>().constructor<const PackedInt64Array &>("PackedInt64Array_1").constructor<const Array &>("PackedInt64Array_2")
 
 			.fun<static_cast<int64_t (PackedInt64Array::*)() const>(&PackedInt64Array::size)>("size")
 			.fun<static_cast<bool (PackedInt64Array::*)() const>(&PackedInt64Array::is_empty)>("is_empty")

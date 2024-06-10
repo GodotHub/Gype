@@ -13,7 +13,7 @@
 using namespace godot;
 
 void register_classes_EditorImportPlugin() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<EditorImportPlugin>("EditorImportPlugin")
 			.constructor<>()
 			.fun<static_cast<String (EditorImportPlugin::*)() const>(&EditorImportPlugin::_get_importer_name)>("_get_importer_name")

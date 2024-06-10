@@ -121,6 +121,7 @@ public:
 		BREAK_GRAPHEME_BOUND = 4,
 		BREAK_ADAPTIVE = 8,
 		BREAK_TRIM_EDGE_SPACES = 16,
+		BREAK_TRIM_INDENT = 32,
 	};
 
 	enum VisibleCharactersBehavior {
@@ -162,6 +163,7 @@ public:
 		GRAPHEME_IS_CONNECTED = 1024,
 		GRAPHEME_IS_SAFE_TO_INSERT_TATWEEL = 2048,
 		GRAPHEME_IS_EMBEDDED_OBJECT = 4096,
+		GRAPHEME_IS_SOFT_HYPHEN = 8192,
 	};
 
 	enum Hinting {
@@ -264,6 +266,8 @@ public:
 	int64_t font_get_stretch(const RID &font_rid) const;
 	void font_set_antialiasing(const RID &font_rid, TextServer::FontAntialiasing antialiasing);
 	TextServer::FontAntialiasing font_get_antialiasing(const RID &font_rid) const;
+	void font_set_disable_embedded_bitmaps(const RID &font_rid, bool disable_embedded_bitmaps);
+	bool font_get_disable_embedded_bitmaps(const RID &font_rid) const;
 	void font_set_generate_mipmaps(const RID &font_rid, bool generate_mipmaps);
 	bool font_get_generate_mipmaps(const RID &font_rid) const;
 	void font_set_multichannel_signed_distance_field(const RID &font_rid, bool msdf);
@@ -288,6 +292,8 @@ public:
 	double font_get_embolden(const RID &font_rid) const;
 	void font_set_spacing(const RID &font_rid, TextServer::SpacingType spacing, int64_t value);
 	int64_t font_get_spacing(const RID &font_rid, TextServer::SpacingType spacing) const;
+	void font_set_baseline_offset(const RID &font_rid, double baseline_offset);
+	double font_get_baseline_offset(const RID &font_rid) const;
 	void font_set_transform(const RID &font_rid, const Transform2D &transform);
 	Transform2D font_get_transform(const RID &font_rid) const;
 	void font_set_variation_coordinates(const RID &font_rid, const Dictionary &variation_coordinates);
@@ -369,6 +375,8 @@ public:
 	void shaped_text_set_bidi_override(const RID &shaped, const Array &override);
 	void shaped_text_set_custom_punctuation(const RID &shaped, const String &punct);
 	String shaped_text_get_custom_punctuation(const RID &shaped) const;
+	void shaped_text_set_custom_ellipsis(const RID &shaped, int64_t _char);
+	int64_t shaped_text_get_custom_ellipsis(const RID &shaped) const;
 	void shaped_text_set_orientation(const RID &shaped, TextServer::Orientation orientation = (TextServer::Orientation)0);
 	TextServer::Orientation shaped_text_get_orientation(const RID &shaped) const;
 	void shaped_text_set_preserve_invalid(const RID &shaped, bool enabled);
@@ -396,7 +404,7 @@ public:
 	Vector2i shaped_text_get_range(const RID &shaped) const;
 	PackedInt32Array shaped_text_get_line_breaks_adv(const RID &shaped, const PackedFloat32Array &width, int64_t start = 0, bool once = true, BitField<TextServer::LineBreakFlag> break_flags = (BitField<TextServer::LineBreakFlag>)3) const;
 	PackedInt32Array shaped_text_get_line_breaks(const RID &shaped, double width, int64_t start = 0, BitField<TextServer::LineBreakFlag> break_flags = (BitField<TextServer::LineBreakFlag>)3) const;
-	PackedInt32Array shaped_text_get_word_breaks(const RID &shaped, BitField<TextServer::GraphemeFlag> grapheme_flags = (BitField<TextServer::GraphemeFlag>)264) const;
+	PackedInt32Array shaped_text_get_word_breaks(const RID &shaped, BitField<TextServer::GraphemeFlag> grapheme_flags = (BitField<TextServer::GraphemeFlag>)264, BitField<TextServer::GraphemeFlag> skip_grapheme_flags = (BitField<TextServer::GraphemeFlag>)4) const;
 	int64_t shaped_text_get_trim_pos(const RID &shaped) const;
 	int64_t shaped_text_get_ellipsis_pos(const RID &shaped) const;
 	TypedArray<Dictionary> shaped_text_get_ellipsis_glyphs(const RID &shaped) const;
@@ -404,6 +412,8 @@ public:
 	void shaped_text_overrun_trim_to_width(const RID &shaped, double width = 0, BitField<TextServer::TextOverrunFlag> overrun_trim_flags = (BitField<TextServer::TextOverrunFlag>)0);
 	Array shaped_text_get_objects(const RID &shaped) const;
 	Rect2 shaped_text_get_object_rect(const RID &shaped, const Variant &key) const;
+	Vector2i shaped_text_get_object_range(const RID &shaped, const Variant &key) const;
+	int64_t shaped_text_get_object_glyph(const RID &shaped, const Variant &key) const;
 	Vector2 shaped_text_get_size(const RID &shaped) const;
 	double shaped_text_get_ascent(const RID &shaped) const;
 	double shaped_text_get_descent(const RID &shaped) const;
@@ -433,8 +443,10 @@ public:
 	bool spoof_check(const String &string) const;
 	String strip_diacritics(const String &string) const;
 	bool is_valid_identifier(const String &string) const;
+	bool is_valid_letter(int64_t unicode) const;
 	String string_to_upper(const String &string, const String &language = String()) const;
 	String string_to_lower(const String &string, const String &language = String()) const;
+	String string_to_title(const String &string, const String &language = String()) const;
 	TypedArray<Vector3i> parse_structured_text(TextServer::StructuredTextParser parser_type, const Array &args, const String &text) const;
 protected:
 	template <typename T, typename B>

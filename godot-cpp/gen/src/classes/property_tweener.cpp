@@ -32,9 +32,11 @@
 
 #include <godot_cpp/classes/property_tweener.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
+#include <godot_cpp/variant/callable.hpp>
 #include <godot_cpp/variant/variant.hpp>
 
 namespace godot {
@@ -67,6 +69,12 @@ Ref<PropertyTweener> PropertyTweener::set_ease(Tween::EaseType ease) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PropertyTweener::get_class_static()._native_ptr(), StringName("set_ease")._native_ptr(), 1080455622);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Ref<PropertyTweener>());
 	return Ref<PropertyTweener>::_gde_internal_constructor(internal::_call_native_mb_ret_obj<PropertyTweener>(_gde_method_bind, _owner, &ease));
+}
+
+Ref<PropertyTweener> PropertyTweener::set_custom_interpolator(const Callable &interpolator_method) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PropertyTweener::get_class_static()._native_ptr(), StringName("set_custom_interpolator")._native_ptr(), 3174170268);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Ref<PropertyTweener>());
+	return Ref<PropertyTweener>::_gde_internal_constructor(internal::_call_native_mb_ret_obj<PropertyTweener>(_gde_method_bind, _owner, &interpolator_method));
 }
 
 Ref<PropertyTweener> PropertyTweener::set_delay(double delay) {

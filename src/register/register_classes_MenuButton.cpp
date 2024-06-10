@@ -4,11 +4,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_MenuButton() {
-	qjs::Context::Module &_module = _Control;
+	qjs::Context::Module &_module = get_Control_module();
 	_module.class_<MenuButton>("MenuButton")
 			.constructor<>()
 			.property<&MenuButton::is_switch_on_hover, &MenuButton::set_switch_on_hover>("switch_on_hover")

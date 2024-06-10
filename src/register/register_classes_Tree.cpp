@@ -12,7 +12,7 @@
 using namespace godot;
 
 void register_classes_Tree() {
-	qjs::Context::Module &_module = _Control;
+	qjs::Context::Module &_module = get_Control_module();
 	_module.class_<Tree>("Tree")
 			.constructor<>()
 			.property<&Tree::get_columns, &Tree::set_columns>("columns")

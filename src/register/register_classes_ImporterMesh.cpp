@@ -16,7 +16,7 @@
 using namespace godot;
 
 void register_classes_ImporterMesh() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<ImporterMesh>("ImporterMesh")
 			.constructor<>()
 			.fun<static_cast<void (ImporterMesh::*)(const String &)>(&ImporterMesh::add_blend_shape)>("add_blend_shape")

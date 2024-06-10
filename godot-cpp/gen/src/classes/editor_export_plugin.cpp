@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/editor_export_plugin.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -149,6 +150,10 @@ void EditorExportPlugin::_end_customize_resources() {}
 
 TypedArray<Dictionary> EditorExportPlugin::_get_export_options(const Ref<EditorExportPlatform> &platform) const {
 	return TypedArray<Dictionary>();
+}
+
+Dictionary EditorExportPlugin::_get_export_options_overrides(const Ref<EditorExportPlatform> &platform) const {
+	return Dictionary();
 }
 
 bool EditorExportPlugin::_should_update_export_options(const Ref<EditorExportPlatform> &platform) const {

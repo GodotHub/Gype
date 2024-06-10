@@ -8,7 +8,7 @@
 using namespace godot;
 
 void register_classes_AudioStreamRandomizer() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<AudioStreamRandomizer>("AudioStreamRandomizer")
 			.constructor<>()
 			.property<&AudioStreamRandomizer::get_playback_mode, &AudioStreamRandomizer::set_playback_mode>("playback_mode")

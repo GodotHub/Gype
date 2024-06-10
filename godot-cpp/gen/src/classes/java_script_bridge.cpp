@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/java_script_bridge.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -41,8 +42,9 @@
 
 namespace godot {
 
+JavaScriptBridge *JavaScriptBridge::singleton = nullptr;
+
 JavaScriptBridge *JavaScriptBridge::get_singleton() {
-	static JavaScriptBridge *singleton = nullptr;
 	if (unlikely(singleton == nullptr)) {
 		GDExtensionObjectPtr singleton_obj = internal::gdextension_interface_global_get_singleton(JavaScriptBridge::get_class_static()._native_ptr());
 #ifdef DEBUG_ENABLED
@@ -52,8 +54,18 @@ JavaScriptBridge *JavaScriptBridge::get_singleton() {
 #ifdef DEBUG_ENABLED
 		ERR_FAIL_NULL_V(singleton, nullptr);
 #endif // DEBUG_ENABLED
+		if (likely(singleton)) {
+			ClassDB::_register_engine_singleton(JavaScriptBridge::get_class_static(), singleton);
+		}
 	}
 	return singleton;
+}
+
+JavaScriptBridge::~JavaScriptBridge() {
+	if (singleton == this) {
+		ClassDB::_unregister_engine_singleton(JavaScriptBridge::get_class_static());
+		singleton = nullptr;
+	}
 }
 
 Variant JavaScriptBridge::eval(const String &code, bool use_global_execution_context) {

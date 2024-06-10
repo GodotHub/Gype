@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_BackBufferCopy() {
-	qjs::Context::Module &_module = _Node2D;
+	qjs::Context::Module &_module = get_Node2D_module();
 	_module.class_<BackBufferCopy>("BackBufferCopy")
 			.constructor<>()
 			.property<&BackBufferCopy::get_copy_mode, &BackBufferCopy::set_copy_mode>("copy_mode")

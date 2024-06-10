@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_CameraAttributesPhysical() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<CameraAttributesPhysical>("CameraAttributesPhysical")
 			.constructor<>()
 			.property<&CameraAttributesPhysical::get_focus_distance, &CameraAttributesPhysical::set_focus_distance>("frustum_focus_distance")

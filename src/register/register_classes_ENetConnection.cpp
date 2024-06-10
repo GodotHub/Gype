@@ -14,7 +14,7 @@
 using namespace godot;
 
 void register_classes_ENetConnection() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<ENetConnection>("ENetConnection")
 			.constructor<>()
 			.fun<static_cast<Error (ENetConnection::*)(const String &, int32_t, int32_t, int32_t, int32_t, int32_t)>(&ENetConnection::create_host_bound)>("create_host_bound")

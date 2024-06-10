@@ -13,17 +13,19 @@ class Typescript;
 
 using namespace godot;
 
+typedef struct TypescriptInstanceInfo TypescriptInstanceInfo;
+
 class TypescriptInstance {
 public:
-	static TypescriptInstanceInfo instance_info;
+	static TypescriptInstanceInfo *instance_info;
 
 	explicit TypescriptInstance(const Ref<Typescript> &parent, Object *host_object);
 
-	static GDExtensionScriptInstancePtr create_instance(const Ref<Typescript> parent, Object *host_object);
+	static GDExtensionScriptInstancePtr create_instance(const Ref<Typescript> &parent, Object *host_object);
 
 	List<GDExtensionPropertyInfo> get_properties() { return properties; };
 	HashMap<StringName, Variant> get_values() { return values; };
-	Ref<Typescript> get_script() { return Ref(_parent); };
+	const Typescript *get_script() const { return _parent; };
 
 private:
 	const Typescript *_parent;
@@ -32,6 +34,17 @@ private:
 	HashMap<StringName, Variant> values;
 };
 
-struct TypescriptInstanceInfo : GDExtensionScriptInstanceInfo2 {
+struct TypescriptInstanceInfo : GDExtensionScriptInstanceInfo3 {
+public:
+	TypescriptInstanceInfo();
 };
+
+GDExtensionBool _set_func(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionConstVariantPtr p_value);
+GDExtensionBool _get_func(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret);
+const GDExtensionPropertyInfo *_get_property_list_func(GDExtensionScriptInstanceDataPtr p_instance, uint32_t *r_count);
+void _free_property_list_func(GDExtensionScriptInstanceDataPtr p_instance, const GDExtensionPropertyInfo *p_list);
+GDExtensionBool _has_method_func(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionConstStringNamePtr p_name);
+void _call_func(GDExtensionScriptInstanceDataPtr p_self, GDExtensionConstStringNamePtr p_method, const GDExtensionConstVariantPtr *p_args, GDExtensionInt p_argument_count, GDExtensionVariantPtr r_return, GDExtensionCallError *r_error);
+TypescriptInstance *from_ptr(GDExtensionScriptInstanceDataPtr p_instance);
+
 #endif // !TS_INSTANCE_SUPPORT

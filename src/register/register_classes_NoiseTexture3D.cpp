@@ -8,7 +8,7 @@
 using namespace godot;
 
 void register_classes_NoiseTexture3D() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<NoiseTexture3D>("NoiseTexture3D")
 			.constructor<>()
 			.property<&NoiseTexture3D::get_width, &NoiseTexture3D::set_width>("width")

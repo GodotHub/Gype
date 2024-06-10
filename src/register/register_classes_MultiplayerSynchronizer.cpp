@@ -9,7 +9,7 @@
 using namespace godot;
 
 void register_classes_MultiplayerSynchronizer() {
-	qjs::Context::Module &_module = _Node;
+	qjs::Context::Module &_module = get_Node_module();
 	_module.class_<MultiplayerSynchronizer>("MultiplayerSynchronizer")
 			.constructor<>()
 			.property<&MultiplayerSynchronizer::get_root_path, &MultiplayerSynchronizer::set_root_path>("root_path")

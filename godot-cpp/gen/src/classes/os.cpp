@@ -32,13 +32,15 @@
 
 #include <godot_cpp/classes/os.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
 namespace godot {
 
+OS *OS::singleton = nullptr;
+
 OS *OS::get_singleton() {
-	static OS *singleton = nullptr;
 	if (unlikely(singleton == nullptr)) {
 		GDExtensionObjectPtr singleton_obj = internal::gdextension_interface_global_get_singleton(OS::get_class_static()._native_ptr());
 #ifdef DEBUG_ENABLED
@@ -48,8 +50,18 @@ OS *OS::get_singleton() {
 #ifdef DEBUG_ENABLED
 		ERR_FAIL_NULL_V(singleton, nullptr);
 #endif // DEBUG_ENABLED
+		if (likely(singleton)) {
+			ClassDB::_register_engine_singleton(OS::get_class_static(), singleton);
+		}
 	}
 	return singleton;
+}
+
+OS::~OS() {
+	if (singleton == this) {
+		ClassDB::_unregister_engine_singleton(OS::get_class_static());
+		singleton = nullptr;
+	}
 }
 
 PackedStringArray OS::get_connected_midi_inputs() {
@@ -188,6 +200,12 @@ int32_t OS::execute(const String &path, const PackedStringArray &arguments, cons
 	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &path, &arguments, &output, &read_stderr_encoded, &open_console_encoded);
 }
 
+Dictionary OS::execute_with_pipe(const String &path, const PackedStringArray &arguments) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(OS::get_class_static()._native_ptr(), StringName("execute_with_pipe")._native_ptr(), 3845631403);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Dictionary());
+	return internal::_call_native_mb_ret<Dictionary>(_gde_method_bind, _owner, &path, &arguments);
+}
+
 int32_t OS::create_process(const String &path, const PackedStringArray &arguments, bool open_console) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(OS::get_class_static()._native_ptr(), StringName("create_process")._native_ptr(), 2903767230);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
@@ -230,6 +248,14 @@ bool OS::is_process_running(int32_t pid) const {
 	int64_t pid_encoded;
 	PtrToArg<int64_t>::encode(pid, &pid_encoded);
 	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner, &pid_encoded);
+}
+
+int32_t OS::get_process_exit_code(int32_t pid) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(OS::get_class_static()._native_ptr(), StringName("get_process_exit_code")._native_ptr(), 923996154);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
+	int64_t pid_encoded;
+	PtrToArg<int64_t>::encode(pid, &pid_encoded);
+	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &pid_encoded);
 }
 
 int32_t OS::get_process_id() const {

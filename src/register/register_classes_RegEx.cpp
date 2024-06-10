@@ -12,7 +12,7 @@
 using namespace godot;
 
 void register_classes_RegEx() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<RegEx>("RegEx")
 			.constructor<>()
 			.static_fun<&RegEx::create_from_string>("create_from_string")

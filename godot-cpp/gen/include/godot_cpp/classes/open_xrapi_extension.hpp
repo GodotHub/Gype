@@ -46,11 +46,18 @@
 namespace godot {
 
 class Array;
+class OpenXRExtensionWrapperExtension;
 
 class OpenXRAPIExtension : public RefCounted {
 	GDEXTENSION_CLASS(OpenXRAPIExtension, RefCounted)
 
 public:
+
+	enum OpenXRAlphaBlendModeSupport {
+		OPENXR_ALPHA_BLEND_MODE_SUPPORT_NONE = 0,
+		OPENXR_ALPHA_BLEND_MODE_SUPPORT_REAL = 1,
+		OPENXR_ALPHA_BLEND_MODE_SUPPORT_EMULATING = 2,
+	};
 
 	uint64_t get_instance();
 	uint64_t get_system_id();
@@ -64,8 +71,14 @@ public:
 	bool is_initialized();
 	bool is_running();
 	uint64_t get_play_space();
+	int64_t get_predicted_display_time();
 	int64_t get_next_frame_time();
 	bool can_render();
+	uint64_t get_hand_tracker(int32_t hand_index);
+	void register_composition_layer_provider(OpenXRExtensionWrapperExtension *extension);
+	void unregister_composition_layer_provider(OpenXRExtensionWrapperExtension *extension);
+	void set_emulate_environment_blend_mode_alpha_blend(bool enabled);
+	OpenXRAPIExtension::OpenXRAlphaBlendModeSupport is_environment_blend_mode_alpha_supported();
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -77,5 +90,7 @@ public:
 };
 
 } // namespace godot
+
+VARIANT_ENUM_CAST(OpenXRAPIExtension::OpenXRAlphaBlendModeSupport);
 
 #endif // ! GODOT_CPP_OPEN_XRAPI_EXTENSION_HPP

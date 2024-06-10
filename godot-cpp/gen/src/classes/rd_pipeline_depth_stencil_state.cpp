@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/rd_pipeline_depth_stencil_state.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 

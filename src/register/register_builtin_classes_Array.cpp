@@ -17,19 +17,7 @@
 using namespace godot;
 
 void register_builtin_classes_Array() {
-	_Variant.class_<Array>("Array")
-			.constructor<>()
-			.constructor<const Array &>("Array_1")
-			.constructor<const Array &, int64_t, const StringName &, const Variant &>("Array_2")
-			.constructor<const PackedByteArray &>("Array_3")
-			.constructor<const PackedInt32Array &>("Array_4")
-			.constructor<const PackedInt64Array &>("Array_5")
-			.constructor<const PackedFloat32Array &>("Array_6")
-			.constructor<const PackedFloat64Array &>("Array_7")
-			.constructor<const PackedStringArray &>("Array_8")
-			.constructor<const PackedVector2Array &>("Array_9")
-			.constructor<const PackedVector3Array &>("Array_10")
-			.constructor<const PackedColorArray &>("Array_11")
+	get_Variant_module().class_<Array>("Array").constructor<>().constructor<const Array &>("Array_1").constructor<const Array &, int64_t, const StringName &, const Variant &>("Array_2").constructor<const PackedByteArray &>("Array_3").constructor<const PackedInt32Array &>("Array_4").constructor<const PackedInt64Array &>("Array_5").constructor<const PackedFloat32Array &>("Array_6").constructor<const PackedFloat64Array &>("Array_7").constructor<const PackedStringArray &>("Array_8").constructor<const PackedVector2Array &>("Array_9").constructor<const PackedVector3Array &>("Array_10").constructor<const PackedColorArray &>("Array_11")
 
 			.fun<static_cast<int64_t (Array::*)() const>(&Array::size)>("size")
 			.fun<static_cast<bool (Array::*)() const>(&Array::is_empty)>("is_empty")

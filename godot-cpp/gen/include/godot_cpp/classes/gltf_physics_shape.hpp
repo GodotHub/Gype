@@ -48,6 +48,7 @@ namespace godot {
 
 class CollisionShape3D;
 class ImporterMesh;
+class Shape3D;
 
 class GLTFPhysicsShape : public Resource {
 	GDEXTENSION_CLASS(GLTFPhysicsShape, Resource)
@@ -56,6 +57,8 @@ public:
 
 	static Ref<GLTFPhysicsShape> from_node(CollisionShape3D *shape_node);
 	CollisionShape3D *to_node(bool cache_shapes = false);
+	static Ref<GLTFPhysicsShape> from_resource(const Ref<Shape3D> &shape_resource);
+	Ref<Shape3D> to_resource(bool cache_shapes = false);
 	static Ref<GLTFPhysicsShape> from_dictionary(const Dictionary &dictionary);
 	Dictionary to_dictionary() const;
 	String get_shape_type() const;

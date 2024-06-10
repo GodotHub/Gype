@@ -69,6 +69,13 @@ public:
 		DIAGONAL_MODE_MAX = 4,
 	};
 
+	enum CellShape {
+		CELL_SHAPE_SQUARE = 0,
+		CELL_SHAPE_ISOMETRIC_RIGHT = 1,
+		CELL_SHAPE_ISOMETRIC_DOWN = 2,
+		CELL_SHAPE_MAX = 3,
+	};
+
 	void set_region(const Rect2i &region);
 	Rect2i get_region() const;
 	void set_size(const Vector2i &size);
@@ -77,6 +84,8 @@ public:
 	Vector2 get_offset() const;
 	void set_cell_size(const Vector2 &cell_size);
 	Vector2 get_cell_size() const;
+	void set_cell_shape(AStarGrid2D::CellShape cell_shape);
+	AStarGrid2D::CellShape get_cell_shape() const;
 	bool is_in_bounds(int32_t x, int32_t y) const;
 	bool is_in_boundsv(const Vector2i &id) const;
 	bool is_dirty() const;
@@ -97,8 +106,8 @@ public:
 	void fill_weight_scale_region(const Rect2i &region, double weight_scale);
 	void clear();
 	Vector2 get_point_position(const Vector2i &id) const;
-	PackedVector2Array get_point_path(const Vector2i &from_id, const Vector2i &to_id);
-	TypedArray<Vector2i> get_id_path(const Vector2i &from_id, const Vector2i &to_id);
+	PackedVector2Array get_point_path(const Vector2i &from_id, const Vector2i &to_id, bool allow_partial_path = false);
+	TypedArray<Vector2i> get_id_path(const Vector2i &from_id, const Vector2i &to_id, bool allow_partial_path = false);
 	virtual double _estimate_cost(const Vector2i &from_id, const Vector2i &to_id) const;
 	virtual double _compute_cost(const Vector2i &from_id, const Vector2i &to_id) const;
 protected:
@@ -121,5 +130,6 @@ public:
 
 VARIANT_ENUM_CAST(AStarGrid2D::Heuristic);
 VARIANT_ENUM_CAST(AStarGrid2D::DiagonalMode);
+VARIANT_ENUM_CAST(AStarGrid2D::CellShape);
 
 #endif // ! GODOT_CPP_A_STAR_GRID2D_HPP

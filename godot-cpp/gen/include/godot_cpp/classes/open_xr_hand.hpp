@@ -60,12 +60,28 @@ public:
 		MOTION_RANGE_MAX = 2,
 	};
 
+	enum SkeletonRig {
+		SKELETON_RIG_OPENXR = 0,
+		SKELETON_RIG_HUMANOID = 1,
+		SKELETON_RIG_MAX = 2,
+	};
+
+	enum BoneUpdate {
+		BONE_UPDATE_FULL = 0,
+		BONE_UPDATE_ROTATION_ONLY = 1,
+		BONE_UPDATE_MAX = 2,
+	};
+
 	void set_hand(OpenXRHand::Hands hand);
 	OpenXRHand::Hands get_hand() const;
 	void set_hand_skeleton(const NodePath &hand_skeleton);
 	NodePath get_hand_skeleton() const;
 	void set_motion_range(OpenXRHand::MotionRange motion_range);
 	OpenXRHand::MotionRange get_motion_range() const;
+	void set_skeleton_rig(OpenXRHand::SkeletonRig skeleton_rig);
+	OpenXRHand::SkeletonRig get_skeleton_rig() const;
+	void set_bone_update(OpenXRHand::BoneUpdate bone_update);
+	OpenXRHand::BoneUpdate get_bone_update() const;
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -80,5 +96,7 @@ public:
 
 VARIANT_ENUM_CAST(OpenXRHand::Hands);
 VARIANT_ENUM_CAST(OpenXRHand::MotionRange);
+VARIANT_ENUM_CAST(OpenXRHand::SkeletonRig);
+VARIANT_ENUM_CAST(OpenXRHand::BoneUpdate);
 
 #endif // ! GODOT_CPP_OPEN_XR_HAND_HPP

@@ -10,7 +10,7 @@
 using namespace godot;
 
 void register_classes_Curve3D() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<Curve3D>("Curve3D")
 			.constructor<>()
 			.property<&Curve3D::get_bake_interval, &Curve3D::set_bake_interval>("bake_interval")

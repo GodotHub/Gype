@@ -8,7 +8,7 @@
 using namespace godot;
 
 void register_classes_PCKPacker() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<PCKPacker>("PCKPacker")
 			.constructor<>()
 			.fun<static_cast<Error (PCKPacker::*)(const String &, int32_t, const String &, bool)>(&PCKPacker::pck_start)>("pck_start")

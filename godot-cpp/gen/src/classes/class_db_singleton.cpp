@@ -32,13 +32,15 @@
 
 #include <godot_cpp/classes/class_db_singleton.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
 namespace godot {
 
+ClassDBSingleton *ClassDBSingleton::singleton = nullptr;
+
 ClassDBSingleton *ClassDBSingleton::get_singleton() {
-	static ClassDBSingleton *singleton = nullptr;
 	if (unlikely(singleton == nullptr)) {
 		GDExtensionObjectPtr singleton_obj = internal::gdextension_interface_global_get_singleton(ClassDBSingleton::get_class_static()._native_ptr());
 #ifdef DEBUG_ENABLED
@@ -48,8 +50,18 @@ ClassDBSingleton *ClassDBSingleton::get_singleton() {
 #ifdef DEBUG_ENABLED
 		ERR_FAIL_NULL_V(singleton, nullptr);
 #endif // DEBUG_ENABLED
+		if (likely(singleton)) {
+			ClassDB::_register_engine_singleton(ClassDBSingleton::get_class_static(), singleton);
+		}
 	}
 	return singleton;
+}
+
+ClassDBSingleton::~ClassDBSingleton() {
+	if (singleton == this) {
+		ClassDB::_unregister_engine_singleton(ClassDBSingleton::get_class_static());
+		singleton = nullptr;
+	}
 }
 
 PackedStringArray ClassDBSingleton::get_class_list() const {
@@ -134,12 +146,26 @@ Error ClassDBSingleton::class_set_property(Object *object, const StringName &pro
 	return (Error)internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, (object != nullptr ? &object->_owner : nullptr), &property, &value);
 }
 
+Variant ClassDBSingleton::class_get_property_default_value(const StringName &_class, const StringName &property) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(ClassDBSingleton::get_class_static()._native_ptr(), StringName("class_get_property_default_value")._native_ptr(), 2718203076);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Variant());
+	return internal::_call_native_mb_ret<Variant>(_gde_method_bind, _owner, &_class, &property);
+}
+
 bool ClassDBSingleton::class_has_method(const StringName &_class, const StringName &method, bool no_inheritance) const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(ClassDBSingleton::get_class_static()._native_ptr(), StringName("class_has_method")._native_ptr(), 3860701026);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
 	int8_t no_inheritance_encoded;
 	PtrToArg<bool>::encode(no_inheritance, &no_inheritance_encoded);
 	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner, &_class, &method, &no_inheritance_encoded);
+}
+
+int32_t ClassDBSingleton::class_get_method_argument_count(const StringName &_class, const StringName &method, bool no_inheritance) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(ClassDBSingleton::get_class_static()._native_ptr(), StringName("class_get_method_argument_count")._native_ptr(), 3885694822);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
+	int8_t no_inheritance_encoded;
+	PtrToArg<bool>::encode(no_inheritance, &no_inheritance_encoded);
+	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &_class, &method, &no_inheritance_encoded);
 }
 
 TypedArray<Dictionary> ClassDBSingleton::class_get_method_list(const StringName &_class, bool no_inheritance) const {
@@ -200,6 +226,14 @@ StringName ClassDBSingleton::class_get_integer_constant_enum(const StringName &_
 	int8_t no_inheritance_encoded;
 	PtrToArg<bool>::encode(no_inheritance, &no_inheritance_encoded);
 	return internal::_call_native_mb_ret<StringName>(_gde_method_bind, _owner, &_class, &name, &no_inheritance_encoded);
+}
+
+bool ClassDBSingleton::is_class_enum_bitfield(const StringName &_class, const StringName &_enum, bool no_inheritance) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(ClassDBSingleton::get_class_static()._native_ptr(), StringName("is_class_enum_bitfield")._native_ptr(), 3860701026);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	int8_t no_inheritance_encoded;
+	PtrToArg<bool>::encode(no_inheritance, &no_inheritance_encoded);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner, &_class, &_enum, &no_inheritance_encoded);
 }
 
 bool ClassDBSingleton::is_class_enabled(const StringName &_class) const {

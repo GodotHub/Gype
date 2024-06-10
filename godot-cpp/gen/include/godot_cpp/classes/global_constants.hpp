@@ -309,6 +309,12 @@ namespace godot {
 		KEY_MASK_GROUP_SWITCH = 1073741824,
 	};
 
+	enum KeyLocation {
+		KEY_LOCATION_UNSPECIFIED = 0,
+		KEY_LOCATION_LEFT = 1,
+		KEY_LOCATION_RIGHT = 2,
+	};
+
 	enum MouseButton {
 		MOUSE_BUTTON_NONE = 0,
 		MOUSE_BUTTON_LEFT = 1,

@@ -8,7 +8,7 @@
 using namespace godot;
 
 void register_classes_LightmapGI() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<LightmapGI>("LightmapGI")
 			.constructor<>()
 			.property<&LightmapGI::get_bake_quality, &LightmapGI::set_bake_quality>("quality")

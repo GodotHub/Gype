@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/open_xr_interface.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -139,6 +140,12 @@ OpenXRInterface::HandMotionRange OpenXRInterface::get_motion_range(OpenXRInterfa
 	return (OpenXRInterface::HandMotionRange)internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &hand);
 }
 
+OpenXRInterface::HandTrackedSource OpenXRInterface::get_hand_tracking_source(OpenXRInterface::Hand hand) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(OpenXRInterface::get_class_static()._native_ptr(), StringName("get_hand_tracking_source")._native_ptr(), 4092421202);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, OpenXRInterface::HandTrackedSource(0));
+	return (OpenXRInterface::HandTrackedSource)internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &hand);
+}
+
 BitField<OpenXRInterface::HandJointFlags> OpenXRInterface::get_hand_joint_flags(OpenXRInterface::Hand hand, OpenXRInterface::HandJoints joint) const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(OpenXRInterface::get_class_static()._native_ptr(), StringName("get_hand_joint_flags")._native_ptr(), 720567706);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, BitField<OpenXRInterface::HandJointFlags>(0));
@@ -181,10 +188,44 @@ bool OpenXRInterface::is_hand_tracking_supported() {
 	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
 }
 
+bool OpenXRInterface::is_hand_interaction_supported() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(OpenXRInterface::get_class_static()._native_ptr(), StringName("is_hand_interaction_supported")._native_ptr(), 36873697);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
+}
+
 bool OpenXRInterface::is_eye_gaze_interaction_supported() {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(OpenXRInterface::get_class_static()._native_ptr(), StringName("is_eye_gaze_interaction_supported")._native_ptr(), 2240911060);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
 	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
+}
+
+double OpenXRInterface::get_vrs_min_radius() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(OpenXRInterface::get_class_static()._native_ptr(), StringName("get_vrs_min_radius")._native_ptr(), 1740695150);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner);
+}
+
+void OpenXRInterface::set_vrs_min_radius(double radius) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(OpenXRInterface::get_class_static()._native_ptr(), StringName("set_vrs_min_radius")._native_ptr(), 373806689);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	double radius_encoded;
+	PtrToArg<double>::encode(radius, &radius_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &radius_encoded);
+}
+
+double OpenXRInterface::get_vrs_strength() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(OpenXRInterface::get_class_static()._native_ptr(), StringName("get_vrs_strength")._native_ptr(), 1740695150);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner);
+}
+
+void OpenXRInterface::set_vrs_strength(double strength) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(OpenXRInterface::get_class_static()._native_ptr(), StringName("set_vrs_strength")._native_ptr(), 373806689);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	double strength_encoded;
+	PtrToArg<double>::encode(strength, &strength_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &strength_encoded);
 }
 
 

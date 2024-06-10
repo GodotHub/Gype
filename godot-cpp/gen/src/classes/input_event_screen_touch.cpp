@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/input_event_screen_touch.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 

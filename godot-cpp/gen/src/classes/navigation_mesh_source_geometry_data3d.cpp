@@ -32,10 +32,10 @@
 
 #include <godot_cpp/classes/navigation_mesh_source_geometry_data3d.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
-#include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/variant/packed_vector3_array.hpp>
 #include <godot_cpp/variant/transform3d.hpp>
@@ -66,6 +66,12 @@ PackedInt32Array NavigationMeshSourceGeometryData3D::get_indices() const {
 	return internal::_call_native_mb_ret<PackedInt32Array>(_gde_method_bind, _owner);
 }
 
+void NavigationMeshSourceGeometryData3D::append_arrays(const PackedFloat32Array &vertices, const PackedInt32Array &indices) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationMeshSourceGeometryData3D::get_class_static()._native_ptr(), StringName("append_arrays")._native_ptr(), 3117535015);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &vertices, &indices);
+}
+
 void NavigationMeshSourceGeometryData3D::clear() {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationMeshSourceGeometryData3D::get_class_static()._native_ptr(), StringName("clear")._native_ptr(), 3218959716);
 	CHECK_METHOD_BIND(_gde_method_bind);
@@ -94,6 +100,42 @@ void NavigationMeshSourceGeometryData3D::add_faces(const PackedVector3Array &fac
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationMeshSourceGeometryData3D::get_class_static()._native_ptr(), StringName("add_faces")._native_ptr(), 1440358797);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &faces, &xform);
+}
+
+void NavigationMeshSourceGeometryData3D::merge(const Ref<NavigationMeshSourceGeometryData3D> &other_geometry) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationMeshSourceGeometryData3D::get_class_static()._native_ptr(), StringName("merge")._native_ptr(), 655828145);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, (other_geometry != nullptr ? &other_geometry->_owner : nullptr));
+}
+
+void NavigationMeshSourceGeometryData3D::add_projected_obstruction(const PackedVector3Array &vertices, double elevation, double height, bool carve) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationMeshSourceGeometryData3D::get_class_static()._native_ptr(), StringName("add_projected_obstruction")._native_ptr(), 3351846707);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	double elevation_encoded;
+	PtrToArg<double>::encode(elevation, &elevation_encoded);
+	double height_encoded;
+	PtrToArg<double>::encode(height, &height_encoded);
+	int8_t carve_encoded;
+	PtrToArg<bool>::encode(carve, &carve_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &vertices, &elevation_encoded, &height_encoded, &carve_encoded);
+}
+
+void NavigationMeshSourceGeometryData3D::clear_projected_obstructions() {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationMeshSourceGeometryData3D::get_class_static()._native_ptr(), StringName("clear_projected_obstructions")._native_ptr(), 3218959716);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner);
+}
+
+void NavigationMeshSourceGeometryData3D::set_projected_obstructions(const Array &projected_obstructions) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationMeshSourceGeometryData3D::get_class_static()._native_ptr(), StringName("set_projected_obstructions")._native_ptr(), 381264803);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &projected_obstructions);
+}
+
+Array NavigationMeshSourceGeometryData3D::get_projected_obstructions() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationMeshSourceGeometryData3D::get_class_static()._native_ptr(), StringName("get_projected_obstructions")._native_ptr(), 3995934104);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Array());
+	return internal::_call_native_mb_ret<Array>(_gde_method_bind, _owner);
 }
 
 

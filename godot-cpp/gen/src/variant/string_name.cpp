@@ -54,6 +54,7 @@
 #include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/packed_vector2_array.hpp>
 #include <godot_cpp/variant/packed_vector3_array.hpp>
+#include <godot_cpp/variant/packed_vector4_array.hpp>
 #include <godot_cpp/variant/plane.hpp>
 #include <godot_cpp/variant/projection.hpp>
 #include <godot_cpp/variant/quaternion.hpp>
@@ -97,6 +98,10 @@ void StringName::init_bindings() {
 	_method_bindings.method_naturalcasecmp_to = internal::gdextension_interface_variant_get_ptr_builtin_method(GDEXTENSION_VARIANT_TYPE_STRING_NAME, _gde_name._native_ptr(), 2920860731);
 	_gde_name = StringName("naturalnocasecmp_to");
 	_method_bindings.method_naturalnocasecmp_to = internal::gdextension_interface_variant_get_ptr_builtin_method(GDEXTENSION_VARIANT_TYPE_STRING_NAME, _gde_name._native_ptr(), 2920860731);
+	_gde_name = StringName("filecasecmp_to");
+	_method_bindings.method_filecasecmp_to = internal::gdextension_interface_variant_get_ptr_builtin_method(GDEXTENSION_VARIANT_TYPE_STRING_NAME, _gde_name._native_ptr(), 2920860731);
+	_gde_name = StringName("filenocasecmp_to");
+	_method_bindings.method_filenocasecmp_to = internal::gdextension_interface_variant_get_ptr_builtin_method(GDEXTENSION_VARIANT_TYPE_STRING_NAME, _gde_name._native_ptr(), 2920860731);
 	_gde_name = StringName("length");
 	_method_bindings.method_length = internal::gdextension_interface_variant_get_ptr_builtin_method(GDEXTENSION_VARIANT_TYPE_STRING_NAME, _gde_name._native_ptr(), 3173160232);
 	_gde_name = StringName("substr");
@@ -109,12 +114,12 @@ void StringName::init_bindings() {
 	_method_bindings.method_get_slice_count = internal::gdextension_interface_variant_get_ptr_builtin_method(GDEXTENSION_VARIANT_TYPE_STRING_NAME, _gde_name._native_ptr(), 2920860731);
 	_gde_name = StringName("find");
 	_method_bindings.method_find = internal::gdextension_interface_variant_get_ptr_builtin_method(GDEXTENSION_VARIANT_TYPE_STRING_NAME, _gde_name._native_ptr(), 1760645412);
+	_gde_name = StringName("findn");
+	_method_bindings.method_findn = internal::gdextension_interface_variant_get_ptr_builtin_method(GDEXTENSION_VARIANT_TYPE_STRING_NAME, _gde_name._native_ptr(), 1760645412);
 	_gde_name = StringName("count");
 	_method_bindings.method_count = internal::gdextension_interface_variant_get_ptr_builtin_method(GDEXTENSION_VARIANT_TYPE_STRING_NAME, _gde_name._native_ptr(), 2343087891);
 	_gde_name = StringName("countn");
 	_method_bindings.method_countn = internal::gdextension_interface_variant_get_ptr_builtin_method(GDEXTENSION_VARIANT_TYPE_STRING_NAME, _gde_name._native_ptr(), 2343087891);
-	_gde_name = StringName("findn");
-	_method_bindings.method_findn = internal::gdextension_interface_variant_get_ptr_builtin_method(GDEXTENSION_VARIANT_TYPE_STRING_NAME, _gde_name._native_ptr(), 1760645412);
 	_gde_name = StringName("rfind");
 	_method_bindings.method_rfind = internal::gdextension_interface_variant_get_ptr_builtin_method(GDEXTENSION_VARIANT_TYPE_STRING_NAME, _gde_name._native_ptr(), 1760645412);
 	_gde_name = StringName("rfindn");
@@ -209,6 +214,8 @@ void StringName::init_bindings() {
 	_method_bindings.method_is_empty = internal::gdextension_interface_variant_get_ptr_builtin_method(GDEXTENSION_VARIANT_TYPE_STRING_NAME, _gde_name._native_ptr(), 3918633141);
 	_gde_name = StringName("contains");
 	_method_bindings.method_contains = internal::gdextension_interface_variant_get_ptr_builtin_method(GDEXTENSION_VARIANT_TYPE_STRING_NAME, _gde_name._native_ptr(), 2566493496);
+	_gde_name = StringName("containsn");
+	_method_bindings.method_containsn = internal::gdextension_interface_variant_get_ptr_builtin_method(GDEXTENSION_VARIANT_TYPE_STRING_NAME, _gde_name._native_ptr(), 2566493496);
 	_gde_name = StringName("is_absolute_path");
 	_method_bindings.method_is_absolute_path = internal::gdextension_interface_variant_get_ptr_builtin_method(GDEXTENSION_VARIANT_TYPE_STRING_NAME, _gde_name._native_ptr(), 3918633141);
 	_gde_name = StringName("is_relative_path");
@@ -341,6 +348,7 @@ void StringName::init_bindings() {
 	_method_bindings.operator_module_PackedVector2Array = internal::gdextension_interface_variant_get_ptr_operator_evaluator(GDEXTENSION_VARIANT_OP_MODULE, GDEXTENSION_VARIANT_TYPE_STRING_NAME, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY);
 	_method_bindings.operator_module_PackedVector3Array = internal::gdextension_interface_variant_get_ptr_operator_evaluator(GDEXTENSION_VARIANT_OP_MODULE, GDEXTENSION_VARIANT_TYPE_STRING_NAME, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY);
 	_method_bindings.operator_module_PackedColorArray = internal::gdextension_interface_variant_get_ptr_operator_evaluator(GDEXTENSION_VARIANT_OP_MODULE, GDEXTENSION_VARIANT_TYPE_STRING_NAME, GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY);
+	_method_bindings.operator_module_PackedVector4Array = internal::gdextension_interface_variant_get_ptr_operator_evaluator(GDEXTENSION_VARIANT_OP_MODULE, GDEXTENSION_VARIANT_TYPE_STRING_NAME, GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR4_ARRAY);
 }
 
 StringName::StringName(const Variant *p_variant) {
@@ -383,6 +391,14 @@ int64_t StringName::naturalnocasecmp_to(const String &to) const{
 	return internal::_call_builtin_method_ptr_ret<int64_t>(_method_bindings.method_naturalnocasecmp_to, (GDExtensionTypePtr)&opaque, &to);
 }
 
+int64_t StringName::filecasecmp_to(const String &to) const{
+	return internal::_call_builtin_method_ptr_ret<int64_t>(_method_bindings.method_filecasecmp_to, (GDExtensionTypePtr)&opaque, &to);
+}
+
+int64_t StringName::filenocasecmp_to(const String &to) const{
+	return internal::_call_builtin_method_ptr_ret<int64_t>(_method_bindings.method_filenocasecmp_to, (GDExtensionTypePtr)&opaque, &to);
+}
+
 int64_t StringName::length() const{
 	return internal::_call_builtin_method_ptr_ret<int64_t>(_method_bindings.method_length, (GDExtensionTypePtr)&opaque);
 }
@@ -419,6 +435,12 @@ int64_t StringName::find(const String &what, int64_t from) const{
 	return internal::_call_builtin_method_ptr_ret<int64_t>(_method_bindings.method_find, (GDExtensionTypePtr)&opaque, &what, &from_encoded);
 }
 
+int64_t StringName::findn(const String &what, int64_t from) const{
+	int64_t from_encoded;
+	PtrToArg<int64_t>::encode(from, &from_encoded);
+	return internal::_call_builtin_method_ptr_ret<int64_t>(_method_bindings.method_findn, (GDExtensionTypePtr)&opaque, &what, &from_encoded);
+}
+
 int64_t StringName::count(const String &what, int64_t from, int64_t to) const{
 	int64_t from_encoded;
 	PtrToArg<int64_t>::encode(from, &from_encoded);
@@ -433,12 +455,6 @@ int64_t StringName::countn(const String &what, int64_t from, int64_t to) const{
 	int64_t to_encoded;
 	PtrToArg<int64_t>::encode(to, &to_encoded);
 	return internal::_call_builtin_method_ptr_ret<int64_t>(_method_bindings.method_countn, (GDExtensionTypePtr)&opaque, &what, &from_encoded, &to_encoded);
-}
-
-int64_t StringName::findn(const String &what, int64_t from) const{
-	int64_t from_encoded;
-	PtrToArg<int64_t>::encode(from, &from_encoded);
-	return internal::_call_builtin_method_ptr_ret<int64_t>(_method_bindings.method_findn, (GDExtensionTypePtr)&opaque, &what, &from_encoded);
 }
 
 int64_t StringName::rfind(const String &what, int64_t from) const{
@@ -659,6 +675,10 @@ bool StringName::is_empty() const{
 
 bool StringName::contains(const String &what) const{
 	return internal::_call_builtin_method_ptr_ret<int8_t>(_method_bindings.method_contains, (GDExtensionTypePtr)&opaque, &what);
+}
+
+bool StringName::containsn(const String &what) const{
+	return internal::_call_builtin_method_ptr_ret<int8_t>(_method_bindings.method_containsn, (GDExtensionTypePtr)&opaque, &what);
 }
 
 bool StringName::is_absolute_path() const{
@@ -1029,6 +1049,10 @@ String StringName::operator%(const PackedVector3Array &other) const {
 
 String StringName::operator%(const PackedColorArray &other) const {
 	return internal::_call_builtin_operator_ptr<String>(_method_bindings.operator_module_PackedColorArray, (GDExtensionConstTypePtr)&opaque, (GDExtensionConstTypePtr)&other);
+}
+
+String StringName::operator%(const PackedVector4Array &other) const {
+	return internal::_call_builtin_operator_ptr<String>(_method_bindings.operator_module_PackedVector4Array, (GDExtensionConstTypePtr)&opaque, (GDExtensionConstTypePtr)&other);
 }
 
 StringName &StringName::operator=(const StringName &other) {

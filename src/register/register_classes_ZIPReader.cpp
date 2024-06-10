@@ -4,15 +4,13 @@
 #include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/string.hpp>
 
-
 #include "qjspp.hpp"
 #include "register/register_classes.h"
-
 
 using namespace godot;
 
 void register_classes_ZIPReader() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<ZIPReader>("ZIPReader")
 			.constructor<>()
 			.fun<static_cast<Error (ZIPReader::*)(const String &)>(&ZIPReader::open)>("open")

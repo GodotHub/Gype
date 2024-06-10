@@ -77,6 +77,8 @@ public:
 	bool has_undo() const;
 	bool has_redo() const;
 	uint64_t get_version() const;
+	void set_max_steps(int32_t max_steps);
+	int32_t get_max_steps() const;
 	bool redo();
 	bool undo();
 protected:

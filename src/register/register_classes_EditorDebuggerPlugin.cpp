@@ -10,7 +10,7 @@
 using namespace godot;
 
 void register_classes_EditorDebuggerPlugin() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<EditorDebuggerPlugin>("EditorDebuggerPlugin")
 			.constructor<>()
 			.fun<static_cast<void (EditorDebuggerPlugin::*)(int32_t)>(&EditorDebuggerPlugin::_setup_session)>("_setup_session")

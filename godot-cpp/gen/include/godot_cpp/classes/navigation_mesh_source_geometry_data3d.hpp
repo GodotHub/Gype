@@ -33,6 +33,7 @@
 #ifndef GODOT_CPP_NAVIGATION_MESH_SOURCE_GEOMETRY_DATA3D_HPP
 #define GODOT_CPP_NAVIGATION_MESH_SOURCE_GEOMETRY_DATA3D_HPP
 
+#include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/packed_float32_array.hpp>
 #include <godot_cpp/variant/packed_int32_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
@@ -45,7 +46,6 @@
 #include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
-class Array;
 class Mesh;
 class PackedVector3Array;
 struct Transform3D;
@@ -59,11 +59,17 @@ public:
 	PackedFloat32Array get_vertices() const;
 	void set_indices(const PackedInt32Array &indices);
 	PackedInt32Array get_indices() const;
+	void append_arrays(const PackedFloat32Array &vertices, const PackedInt32Array &indices);
 	void clear();
 	bool has_data();
 	void add_mesh(const Ref<Mesh> &mesh, const Transform3D &xform);
 	void add_mesh_array(const Array &mesh_array, const Transform3D &xform);
 	void add_faces(const PackedVector3Array &faces, const Transform3D &xform);
+	void merge(const Ref<NavigationMeshSourceGeometryData3D> &other_geometry);
+	void add_projected_obstruction(const PackedVector3Array &vertices, double elevation, double height, bool carve);
+	void clear_projected_obstructions();
+	void set_projected_obstructions(const Array &projected_obstructions);
+	Array get_projected_obstructions() const;
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {

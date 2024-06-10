@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/input_event_screen_drag.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -115,6 +116,18 @@ Vector2 InputEventScreenDrag::get_relative() const {
 	return internal::_call_native_mb_ret<Vector2>(_gde_method_bind, _owner);
 }
 
+void InputEventScreenDrag::set_screen_relative(const Vector2 &relative) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(InputEventScreenDrag::get_class_static()._native_ptr(), StringName("set_screen_relative")._native_ptr(), 743155724);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &relative);
+}
+
+Vector2 InputEventScreenDrag::get_screen_relative() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(InputEventScreenDrag::get_class_static()._native_ptr(), StringName("get_screen_relative")._native_ptr(), 3341600327);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Vector2());
+	return internal::_call_native_mb_ret<Vector2>(_gde_method_bind, _owner);
+}
+
 void InputEventScreenDrag::set_velocity(const Vector2 &velocity) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(InputEventScreenDrag::get_class_static()._native_ptr(), StringName("set_velocity")._native_ptr(), 743155724);
 	CHECK_METHOD_BIND(_gde_method_bind);
@@ -123,6 +136,18 @@ void InputEventScreenDrag::set_velocity(const Vector2 &velocity) {
 
 Vector2 InputEventScreenDrag::get_velocity() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(InputEventScreenDrag::get_class_static()._native_ptr(), StringName("get_velocity")._native_ptr(), 3341600327);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Vector2());
+	return internal::_call_native_mb_ret<Vector2>(_gde_method_bind, _owner);
+}
+
+void InputEventScreenDrag::set_screen_velocity(const Vector2 &velocity) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(InputEventScreenDrag::get_class_static()._native_ptr(), StringName("set_screen_velocity")._native_ptr(), 743155724);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &velocity);
+}
+
+Vector2 InputEventScreenDrag::get_screen_velocity() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(InputEventScreenDrag::get_class_static()._native_ptr(), StringName("get_screen_velocity")._native_ptr(), 3341600327);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Vector2());
 	return internal::_call_native_mb_ret<Vector2>(_gde_method_bind, _owner);
 }

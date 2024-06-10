@@ -7,11 +7,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_Material() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<Material>("Material")
 			.constructor<>()
 			.property<&Material::get_render_priority, &Material::set_render_priority>("render_priority")

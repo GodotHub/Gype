@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/particle_process_material.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -91,6 +92,18 @@ double ParticleProcessMaterial::get_flatness() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(ParticleProcessMaterial::get_class_static()._native_ptr(), StringName("get_flatness")._native_ptr(), 1740695150);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
 	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner);
+}
+
+void ParticleProcessMaterial::set_param(ParticleProcessMaterial::Parameter param, const Vector2 &value) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(ParticleProcessMaterial::get_class_static()._native_ptr(), StringName("set_param")._native_ptr(), 676779352);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &param, &value);
+}
+
+Vector2 ParticleProcessMaterial::get_param(ParticleProcessMaterial::Parameter param) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(ParticleProcessMaterial::get_class_static()._native_ptr(), StringName("get_param")._native_ptr(), 2623708480);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Vector2());
+	return internal::_call_native_mb_ret<Vector2>(_gde_method_bind, _owner, &param);
 }
 
 void ParticleProcessMaterial::set_param_min(ParticleProcessMaterial::Parameter param, double value) {

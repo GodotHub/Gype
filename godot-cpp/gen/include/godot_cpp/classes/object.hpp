@@ -86,6 +86,7 @@ public:
 	TypedArray<StringName> get_meta_list() const;
 	void add_user_signal(const String &signal, const Array &arguments = Array());
 	bool has_user_signal(const StringName &signal) const;
+	void remove_user_signal(const StringName &signal);
 	private: private: Error emit_signal_internal(const Variant **args, GDExtensionInt arg_count);
 	public: Error emit_signal(const StringName &signal, rest<Variant> args) {
 		std::vector<Variant> variant_args;
@@ -122,6 +123,7 @@ public:
 	void set_deferred(const StringName &property, const Variant &value);
 	Variant callv(const StringName &method, const Array &arg_array);
 	bool has_method(const StringName &method) const;
+	int32_t get_method_argument_count(const StringName &method) const;
 	bool has_signal(const StringName &signal) const;
 	TypedArray<Dictionary> get_signal_list() const;
 	TypedArray<Dictionary> get_signal_connection_list(const StringName &signal) const;
@@ -134,8 +136,8 @@ public:
 	void notify_property_list_changed();
 	void set_message_translation(bool enable);
 	bool can_translate_messages() const;
-	String tr(const StringName &message, const StringName &context = String()) const;
-	String tr_n(const StringName &message, const StringName &plural_message, int32_t n, const StringName &context = String()) const;
+	String tr(const StringName &message, const StringName &context = StringName()) const;
+	String tr_n(const StringName &message, const StringName &plural_message, int32_t n, const StringName &context = StringName()) const;
 	bool is_queued_for_deletion() const;
 	void cancel_free();
 protected:

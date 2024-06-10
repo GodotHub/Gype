@@ -32,9 +32,11 @@
 
 #include <godot_cpp/classes/editor_interface.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
+#include <godot_cpp/variant/callable.hpp>
 #include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/editor_command_palette.hpp>
 #include <godot_cpp/classes/editor_file_system.hpp>
@@ -57,8 +59,9 @@
 
 namespace godot {
 
+EditorInterface *EditorInterface::singleton = nullptr;
+
 EditorInterface *EditorInterface::get_singleton() {
-	static EditorInterface *singleton = nullptr;
 	if (unlikely(singleton == nullptr)) {
 		GDExtensionObjectPtr singleton_obj = internal::gdextension_interface_global_get_singleton(EditorInterface::get_class_static()._native_ptr());
 #ifdef DEBUG_ENABLED
@@ -68,8 +71,18 @@ EditorInterface *EditorInterface::get_singleton() {
 #ifdef DEBUG_ENABLED
 		ERR_FAIL_NULL_V(singleton, nullptr);
 #endif // DEBUG_ENABLED
+		if (likely(singleton)) {
+			ClassDB::_register_engine_singleton(EditorInterface::get_class_static(), singleton);
+		}
 	}
 	return singleton;
+}
+
+EditorInterface::~EditorInterface() {
+	if (singleton == this) {
+		ClassDB::_unregister_engine_singleton(EditorInterface::get_class_static());
+		singleton = nullptr;
+	}
 }
 
 void EditorInterface::restart_editor(bool save) {
@@ -196,6 +209,12 @@ bool EditorInterface::is_distraction_free_mode_enabled() const {
 	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
 }
 
+bool EditorInterface::is_multi_window_enabled() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorInterface::get_class_static()._native_ptr(), StringName("is_multi_window_enabled")._native_ptr(), 36873697);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
+}
+
 double EditorInterface::get_editor_scale() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorInterface::get_class_static()._native_ptr(), StringName("get_editor_scale")._native_ptr(), 1740695150);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
@@ -240,6 +259,18 @@ void EditorInterface::set_current_feature_profile(const String &profile_name) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorInterface::get_class_static()._native_ptr(), StringName("set_current_feature_profile")._native_ptr(), 83702148);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &profile_name);
+}
+
+void EditorInterface::popup_node_selector(const Callable &callback, const TypedArray<StringName> &valid_types) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorInterface::get_class_static()._native_ptr(), StringName("popup_node_selector")._native_ptr(), 2271411043);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &callback, &valid_types);
+}
+
+void EditorInterface::popup_property_selector(Object *object, const Callable &callback, const PackedInt32Array &type_filter) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorInterface::get_class_static()._native_ptr(), StringName("popup_property_selector")._native_ptr(), 261221679);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, (object != nullptr ? &object->_owner : nullptr), &callback, &type_filter);
 }
 
 FileSystemDock *EditorInterface::get_file_system_dock() const {

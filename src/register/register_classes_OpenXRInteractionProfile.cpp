@@ -8,7 +8,7 @@
 using namespace godot;
 
 void register_classes_OpenXRInteractionProfile() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<OpenXRInteractionProfile>("OpenXRInteractionProfile")
 			.constructor<>()
 			.property<&OpenXRInteractionProfile::get_interaction_profile_path, &OpenXRInteractionProfile::set_interaction_profile_path>("interaction_profile_path")

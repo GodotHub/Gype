@@ -2,16 +2,16 @@
 #include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/label.hpp>
+#include <godot_cpp/classes/line_edit.hpp>
 #include <godot_cpp/variant/string.hpp>
 
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_AcceptDialog() {
-	qjs::Context::Module &_module = _Node;
+	qjs::Context::Module &_module = get_Node_module();
 	_module.class_<AcceptDialog>("AcceptDialog")
 			.constructor<>()
 			.property<&AcceptDialog::get_ok_button_text, &AcceptDialog::set_ok_button_text>("ok_button_text")
@@ -23,6 +23,6 @@ void register_classes_AcceptDialog() {
 			.fun<static_cast<Label *(AcceptDialog::*)()>(&AcceptDialog::get_label)>("get_label")
 			.fun<static_cast<Button *(AcceptDialog::*)(const String &, bool, const String &)>(&AcceptDialog::add_button)>("add_button")
 			.fun<static_cast<Button *(AcceptDialog::*)(const String &)>(&AcceptDialog::add_cancel_button)>("add_cancel_button")
-			.fun<static_cast<void (AcceptDialog::*)(Control *)>(&AcceptDialog::remove_button)>("remove_button")
-			.fun<static_cast<void (AcceptDialog::*)(Control *)>(&AcceptDialog::register_text_enter)>("register_text_enter");
+			.fun<static_cast<void (AcceptDialog::*)(Button *)>(&AcceptDialog::remove_button)>("remove_button")
+			.fun<static_cast<void (AcceptDialog::*)(LineEdit *)>(&AcceptDialog::register_text_enter)>("register_text_enter");
 }

@@ -56,6 +56,8 @@ class StringName;
 class Input : public Object {
 	GDEXTENSION_CLASS(Input, Object)
 
+	static Input *singleton;
+
 public:
 
 	enum MouseMode {
@@ -114,7 +116,7 @@ public:
 	double get_joy_vibration_duration(int32_t device);
 	void start_joy_vibration(int32_t device, double weak_magnitude, double strong_magnitude, double duration = 0);
 	void stop_joy_vibration(int32_t device);
-	void vibrate_handheld(int32_t duration_ms = 500);
+	void vibrate_handheld(int32_t duration_ms = 500, double amplitude = -1.0);
 	Vector3 get_gravity() const;
 	Vector3 get_accelerometer() const;
 	Vector3 get_magnetometer() const;
@@ -124,6 +126,7 @@ public:
 	void set_magnetometer(const Vector3 &value);
 	void set_gyroscope(const Vector3 &value);
 	Vector2 get_last_mouse_velocity();
+	Vector2 get_last_mouse_screen_velocity();
 	BitField<MouseButtonMask> get_mouse_button_mask() const;
 	void set_mouse_mode(Input::MouseMode mode);
 	Input::MouseMode get_mouse_mode() const;
@@ -137,11 +140,17 @@ public:
 	void set_use_accumulated_input(bool enable);
 	bool is_using_accumulated_input();
 	void flush_buffered_events();
+	void set_emulate_mouse_from_touch(bool enable);
+	bool is_emulating_mouse_from_touch() const;
+	void set_emulate_touch_from_mouse(bool enable);
+	bool is_emulating_touch_from_mouse() const;
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
 	}
+
+	~Input();
 
 public:
 

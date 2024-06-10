@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_Bone2D() {
-	qjs::Context::Module &_module = _Node2D;
+	qjs::Context::Module &_module = get_Node2D_module();
 	_module.class_<Bone2D>("Bone2D")
 			.constructor<>()
 			.property<&Bone2D::get_rest, &Bone2D::set_rest>("rest")

@@ -6,17 +6,14 @@
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/string_name.hpp>
 
-
 #include "qjspp.hpp"
 #include "register/register_classes.h"
-
 
 using namespace godot;
 
 void register_classes_EngineDebugger() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<EngineDebugger>("EngineDebugger")
-			.constructor<>()
 			.fun<static_cast<bool (EngineDebugger::*)()>(&EngineDebugger::is_active)>("is_active")
 			.fun<static_cast<void (EngineDebugger::*)(const StringName &, const Ref<EngineProfiler> &)>(&EngineDebugger::register_profiler)>("register_profiler")
 			.fun<static_cast<void (EngineDebugger::*)(const StringName &)>(&EngineDebugger::unregister_profiler)>("unregister_profiler")

@@ -72,8 +72,8 @@ public:
 	void clear();
 	int64_t get_closest_point(const Vector2 &to_position, bool include_disabled = false) const;
 	Vector2 get_closest_position_in_segment(const Vector2 &to_position) const;
-	PackedVector2Array get_point_path(int64_t from_id, int64_t to_id);
-	PackedInt64Array get_id_path(int64_t from_id, int64_t to_id);
+	PackedVector2Array get_point_path(int64_t from_id, int64_t to_id, bool allow_partial_path = false);
+	PackedInt64Array get_id_path(int64_t from_id, int64_t to_id, bool allow_partial_path = false);
 	virtual double _estimate_cost(int64_t from_id, int64_t to_id) const;
 	virtual double _compute_cost(int64_t from_id, int64_t to_id) const;
 protected:

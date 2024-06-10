@@ -9,7 +9,7 @@
 using namespace godot;
 
 void register_classes_NavigationMesh() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<NavigationMesh>("NavigationMesh")
 			.constructor<>()
 			.property<&NavigationMesh::get_vertices, &NavigationMesh::set_vertices>("vertices")

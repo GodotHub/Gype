@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_InputEventMIDI() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<InputEventMIDI>("InputEventMIDI")
 			.constructor<>()
 			.property<&InputEventMIDI::get_channel, &InputEventMIDI::set_channel>("channel")

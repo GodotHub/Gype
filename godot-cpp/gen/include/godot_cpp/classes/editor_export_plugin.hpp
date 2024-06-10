@@ -82,6 +82,7 @@ public:
 	virtual void _end_customize_scenes();
 	virtual void _end_customize_resources();
 	virtual TypedArray<Dictionary> _get_export_options(const Ref<EditorExportPlatform> &platform) const;
+	virtual Dictionary _get_export_options_overrides(const Ref<EditorExportPlatform> &platform) const;
 	virtual bool _should_update_export_options(const Ref<EditorExportPlatform> &platform) const;
 	virtual String _get_export_option_warning(const Ref<EditorExportPlatform> &platform, const String &option) const;
 	virtual PackedStringArray _get_export_features(const Ref<EditorExportPlatform> &platform, bool debug) const;
@@ -129,6 +130,9 @@ protected:
 		}
 		if constexpr (!std::is_same_v<decltype(&B::_get_export_options),decltype(&T::_get_export_options)>) {
 			BIND_VIRTUAL_METHOD(T, _get_export_options);
+		}
+		if constexpr (!std::is_same_v<decltype(&B::_get_export_options_overrides),decltype(&T::_get_export_options_overrides)>) {
+			BIND_VIRTUAL_METHOD(T, _get_export_options_overrides);
 		}
 		if constexpr (!std::is_same_v<decltype(&B::_should_update_export_options),decltype(&T::_should_update_export_options)>) {
 			BIND_VIRTUAL_METHOD(T, _should_update_export_options);

@@ -13,9 +13,8 @@
 using namespace godot;
 
 void register_classes_ResourceLoader() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<ResourceLoader>("ResourceLoader")
-			.constructor<>()
 			.fun<static_cast<Error (ResourceLoader::*)(const String &, const String &, bool, ResourceLoader::CacheMode)>(&ResourceLoader::load_threaded_request)>("load_threaded_request")
 			.fun<static_cast<ResourceLoader::ThreadLoadStatus (ResourceLoader::*)(const String &, const Array &)>(&ResourceLoader::load_threaded_get_status)>("load_threaded_get_status")
 			.fun<static_cast<Ref<Resource> (ResourceLoader::*)(const String &)>(&ResourceLoader::load_threaded_get)>("load_threaded_get")

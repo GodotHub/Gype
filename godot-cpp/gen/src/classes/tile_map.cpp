@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/tile_map.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -280,8 +281,8 @@ void TileMap::set_collision_visibility_mode(TileMap::VisibilityMode collision_vi
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &collision_visibility_mode);
 }
 
-TileMap::VisibilityMode TileMap::get_collision_visibility_mode() {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TileMap::get_class_static()._native_ptr(), StringName("get_collision_visibility_mode")._native_ptr(), 2026313073);
+TileMap::VisibilityMode TileMap::get_collision_visibility_mode() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TileMap::get_class_static()._native_ptr(), StringName("get_collision_visibility_mode")._native_ptr(), 1697018252);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, TileMap::VisibilityMode(0));
 	return (TileMap::VisibilityMode)internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
 }
@@ -292,8 +293,8 @@ void TileMap::set_navigation_visibility_mode(TileMap::VisibilityMode navigation_
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &navigation_visibility_mode);
 }
 
-TileMap::VisibilityMode TileMap::get_navigation_visibility_mode() {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TileMap::get_class_static()._native_ptr(), StringName("get_navigation_visibility_mode")._native_ptr(), 2026313073);
+TileMap::VisibilityMode TileMap::get_navigation_visibility_mode() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TileMap::get_class_static()._native_ptr(), StringName("get_navigation_visibility_mode")._native_ptr(), 1697018252);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, TileMap::VisibilityMode(0));
 	return (TileMap::VisibilityMode)internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
 }

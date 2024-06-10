@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_AnimationNodeStateMachineTransition() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<AnimationNodeStateMachineTransition>("AnimationNodeStateMachineTransition")
 			.constructor<>()
 			.property<&AnimationNodeStateMachineTransition::get_xfade_time, &AnimationNodeStateMachineTransition::set_xfade_time>("xfade_time")

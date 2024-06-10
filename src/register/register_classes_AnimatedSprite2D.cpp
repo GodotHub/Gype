@@ -8,7 +8,7 @@
 using namespace godot;
 
 void register_classes_AnimatedSprite2D() {
-	qjs::Context::Module &_module = _Node2D;
+	qjs::Context::Module &_module = get_Node2D_module();
 	_module.class_<AnimatedSprite2D>("AnimatedSprite2D")
 			.constructor<>()
 			.property<&AnimatedSprite2D::get_sprite_frames, &AnimatedSprite2D::set_sprite_frames>("sprite_frames")

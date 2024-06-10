@@ -13,7 +13,7 @@
 using namespace godot;
 
 void register_classes_EditorScenePostImportPlugin() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<EditorScenePostImportPlugin>("EditorScenePostImportPlugin")
 			.constructor<>()
 			.fun<static_cast<void (EditorScenePostImportPlugin::*)(int32_t)>(&EditorScenePostImportPlugin::_get_internal_import_options)>("_get_internal_import_options")

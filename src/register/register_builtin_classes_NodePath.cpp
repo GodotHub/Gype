@@ -8,10 +8,7 @@
 using namespace godot;
 
 void register_builtin_classes_NodePath() {
-	_Variant.class_<NodePath>("NodePath")
-			.constructor<>()
-			.constructor<const NodePath &>("NodePath_1")
-			.constructor<const String &>("NodePath_2")
+	get_Variant_module().class_<NodePath>("NodePath").constructor<>().constructor<const NodePath &>("NodePath_1").constructor<const String &>("NodePath_2")
 
 			.fun<static_cast<bool (NodePath::*)() const>(&NodePath::is_absolute)>("is_absolute")
 			.fun<static_cast<int64_t (NodePath::*)() const>(&NodePath::get_name_count)>("get_name_count")

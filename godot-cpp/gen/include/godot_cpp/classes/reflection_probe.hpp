@@ -84,6 +84,8 @@ public:
 	bool are_shadows_enabled() const;
 	void set_cull_mask(uint32_t layers);
 	uint32_t get_cull_mask() const;
+	void set_reflection_mask(uint32_t layers);
+	uint32_t get_reflection_mask() const;
 	void set_update_mode(ReflectionProbe::UpdateMode mode);
 	ReflectionProbe::UpdateMode get_update_mode() const;
 protected:

@@ -36,6 +36,7 @@
 #include <godot_cpp/classes/audio_frame.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/variant/variant.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -43,6 +44,8 @@
 
 #include <godot_cpp/templates/vararg.hpp>
 namespace godot {
+
+class StringName;
 
 class AudioStreamPlayback : public RefCounted {
 	GDEXTENSION_CLASS(AudioStreamPlayback, RefCounted)
@@ -57,6 +60,8 @@ public:
 	virtual void _seek(double position);
 	virtual int32_t _mix(AudioFrame *buffer, double rate_scale, int32_t frames);
 	virtual void _tag_used_streams();
+	virtual void _set_parameter(const StringName &name, const Variant &value);
+	virtual Variant _get_parameter(const StringName &name) const;
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -84,6 +89,12 @@ protected:
 		}
 		if constexpr (!std::is_same_v<decltype(&B::_tag_used_streams),decltype(&T::_tag_used_streams)>) {
 			BIND_VIRTUAL_METHOD(T, _tag_used_streams);
+		}
+		if constexpr (!std::is_same_v<decltype(&B::_set_parameter),decltype(&T::_set_parameter)>) {
+			BIND_VIRTUAL_METHOD(T, _set_parameter);
+		}
+		if constexpr (!std::is_same_v<decltype(&B::_get_parameter),decltype(&T::_get_parameter)>) {
+			BIND_VIRTUAL_METHOD(T, _get_parameter);
 		}
 	}
 

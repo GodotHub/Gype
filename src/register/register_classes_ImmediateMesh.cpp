@@ -7,15 +7,13 @@
 #include <godot_cpp/variant/vector2.hpp>
 #include <godot_cpp/variant/vector3.hpp>
 
-
 #include "qjspp.hpp"
 #include "register/register_classes.h"
-
 
 using namespace godot;
 
 void register_classes_ImmediateMesh() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<ImmediateMesh>("ImmediateMesh")
 			.constructor<>()
 			.fun<static_cast<void (ImmediateMesh::*)(Mesh::PrimitiveType, const Ref<Material> &)>(&ImmediateMesh::surface_begin)>("surface_begin")

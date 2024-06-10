@@ -8,7 +8,7 @@
 using namespace godot;
 
 void register_classes_EditorFileSystemDirectory() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<EditorFileSystemDirectory>("EditorFileSystemDirectory")
 			.constructor<>()
 			.fun<static_cast<int32_t (EditorFileSystemDirectory::*)() const>(&EditorFileSystemDirectory::get_subdir_count)>("get_subdir_count")

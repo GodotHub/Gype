@@ -35,6 +35,7 @@
 
 #include <godot_cpp/variant/basis.hpp>
 #include <godot_cpp/variant/dictionary.hpp>
+#include <godot_cpp/variant/quaternion.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/string.hpp>
@@ -68,6 +69,10 @@ public:
 	void set_angular_velocity(const Vector3 &angular_velocity);
 	Vector3 get_center_of_mass() const;
 	void set_center_of_mass(const Vector3 &center_of_mass);
+	Vector3 get_inertia_diagonal() const;
+	void set_inertia_diagonal(const Vector3 &inertia_diagonal);
+	Quaternion get_inertia_orientation() const;
+	void set_inertia_orientation(const Quaternion &inertia_orientation);
 	Basis get_inertia_tensor() const;
 	void set_inertia_tensor(const Basis &inertia_tensor);
 protected:

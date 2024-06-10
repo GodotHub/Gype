@@ -9,7 +9,7 @@
 using namespace godot;
 
 void register_classes_MultiplayerSpawner() {
-	qjs::Context::Module &_module = _Node;
+	qjs::Context::Module &_module = get_Node_module();
 	_module.class_<MultiplayerSpawner>("MultiplayerSpawner")
 			.constructor<>()
 			.property<&MultiplayerSpawner::get_spawn_path, &MultiplayerSpawner::set_spawn_path>("spawn_path")

@@ -32,13 +32,15 @@
 
 #include <godot_cpp/classes/resource_uid.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
 namespace godot {
 
+ResourceUID *ResourceUID::singleton = nullptr;
+
 ResourceUID *ResourceUID::get_singleton() {
-	static ResourceUID *singleton = nullptr;
 	if (unlikely(singleton == nullptr)) {
 		GDExtensionObjectPtr singleton_obj = internal::gdextension_interface_global_get_singleton(ResourceUID::get_class_static()._native_ptr());
 #ifdef DEBUG_ENABLED
@@ -48,8 +50,18 @@ ResourceUID *ResourceUID::get_singleton() {
 #ifdef DEBUG_ENABLED
 		ERR_FAIL_NULL_V(singleton, nullptr);
 #endif // DEBUG_ENABLED
+		if (likely(singleton)) {
+			ClassDB::_register_engine_singleton(ResourceUID::get_class_static(), singleton);
+		}
 	}
 	return singleton;
+}
+
+ResourceUID::~ResourceUID() {
+	if (singleton == this) {
+		ClassDB::_unregister_engine_singleton(ResourceUID::get_class_static());
+		singleton = nullptr;
+	}
 }
 
 String ResourceUID::id_to_text(int64_t id) const {

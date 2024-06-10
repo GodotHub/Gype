@@ -1,13 +1,22 @@
 #include "register/register_types.h"
 #include "register/register_builtin_classes.h"
 #include "register/register_utility_functions.h"
+#include "register/register_classes.h"
 #include "qjspp/utils.h"
+#include "support/typescript.h"
+#include "support/typescript_language.h"
+#include "support/typescript_loader.h"
+
 #include <gdextension_interface.h>
+#include <godot_cpp/classes/engine.hpp>
+#include <godot_cpp/classes/resource_loader.hpp>
 #include <godot_cpp/core/defs.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 #include <godot_cpp/godot.hpp>
 
 using namespace godot;
+
+TypescriptLoader *loader;
 
 void initialize_tgds_types(ModuleInitializationLevel p_level) {
 	if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE) {
@@ -17,18 +26,18 @@ void initialize_tgds_types(ModuleInitializationLevel p_level) {
 	register_builtin_classes_{{clazz.name}}();
 	{% endfor %}
 	{% for clazz in classes %}
+		{% if 'VisualShader' not in clazz.name and clazz.is_instantiable%}
 	register_classes_{{clazz.name}}();
+		{% endif %}
 	{% endfor %}
 	register_builtin_classes_Variant();
 	register_utility_functions();
-	auto value = context.eval("import { Callable } from 'Variant';let c = new Callable();GD.print('start');GD.print('processing');GD.print('end');", "<eval>", JS_EVAL_TYPE_MODULE);
-	// context.eval("let c = new Callable();", "<eval>", JS_EVAL_TYPE_MODULE);
-	// context.eval("GD.print('test', c);", "<eval>", JS_EVAL_TYPE_GLOBAL);
-	if (JS_IsException(value.v)) {
-		JSValue exception = JS_GetException(context.ctx);
-		const char *error = JS_ToCString(context.ctx, exception);
-	}
-	ERR_FAIL_COND_EDMSG(JS_IsException(value.v), "fail");
+	GDREGISTER_CLASS(TypescriptLanguage);
+	GDREGISTER_CLASS(TypescriptLoader);
+	GDREGISTER_CLASS(Typescript);
+	Engine::get_singleton()->register_script_language(TypescriptLanguage::get_singleton());
+	loader = memnew(TypescriptLoader());
+	ResourceLoader::get_singleton()->add_resource_format_loader(loader);
 }
 
 void uninitialize_tgds_types(ModuleInitializationLevel p_level) {

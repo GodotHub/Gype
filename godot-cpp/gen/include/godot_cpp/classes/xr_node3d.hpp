@@ -56,6 +56,8 @@ public:
 	StringName get_tracker() const;
 	void set_pose_name(const StringName &pose);
 	StringName get_pose_name() const;
+	void set_show_when_tracked(bool show);
+	bool get_show_when_tracked() const;
 	bool get_is_active() const;
 	bool get_has_tracking_data() const;
 	Ref<XRPose> get_pose();

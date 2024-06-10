@@ -46,10 +46,27 @@ template <typename T>
 struct is_bitfield<godot::BitField<T>> : std::true_type {};
 
 template <typename>
-struct is_ref : std::false_type {};
+struct is_ref_impl : std::false_type {};
 
 template <typename T>
-struct is_ref<godot::Ref<T>> : std::true_type {};
+struct is_ref_impl<godot::Ref<T>> : std::true_type {};
+
+template <typename T>
+struct is_ref : is_ref_impl<std::remove_cv_t<std::remove_reference_t<T>>> {};
+
+template <typename T>
+inline constexpr bool is_ref_v = is_ref<T>::value;
+
+template <typename T>
+struct extract_ref_type;
+
+template <typename T>
+struct extract_ref_type<godot::Ref<T>> {
+	using type = T;
+};
+
+template <typename T>
+using extract_ref_type_v = typename extract_ref_type<std::remove_cv_t<std::remove_reference_t<T>>>::type;
 
 /** Exception type.
  * Indicates that exception has occured in JS context.
@@ -205,11 +222,9 @@ struct js_traits<{{'const' if type.is_const else ''}} {{type.name}}> {
 	{% elif type.is_ptr %}
 		{{type.js_name}}*r;
 			if ({{type.convert}}(ctx, r, v)){
-			{{type.base}} ret = static_cast<{{type.base}}>(*r);
-			{{type.base}} *ptr = &ret;
-			return ptr;
+			throw exception{ ctx };
 		}
-		throw exception{ ctx };
+		return new {{type.base}}[1]{ static_cast<{{type.base}}>(*r) };
 	{% else %}
 		{{type.js_name}} r;
 		if ({{type.convert}}(ctx, &r, v))
@@ -377,12 +392,12 @@ struct js_traits<godot::Variant> {
 		if (JS_IsNumber(v)) {
 			if (JS_IsInt(v)) {
 				int32_t num;
-				if (JS_ToInt32(ctx, &num, v)) {
+				if (JS_ToInt32(ctx, &num, v) == 0) {
 					return num;
 				}
 			} else if (JS_IsFloat(v)) {
 				double num;
-				if (JS_ToFloat64(ctx, &num, v)) {
+				if (JS_ToFloat64(ctx, &num, v) == 0) {
 					return num;
 				}
 			}
@@ -1973,13 +1988,13 @@ struct js_traits<godot::ObjectID &> {
 };
 
 template <typename T>
-struct js_traits<T, std::enable_if_t<is_ref<T>::value>> {
+struct js_traits<T, std::enable_if_t<is_ref_v<T>>> {
 	/// @throws exception
 	static T unwrap(JSContext *ctx, JSValueConst v) {
 		if (JS_IsObject(v)) {
 			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
 			if (ptr) {
-				return T((T *)ptr);
+				return *(T *)ptr;
 			}
 		}
 
@@ -1990,6 +2005,8 @@ struct js_traits<T, std::enable_if_t<is_ref<T>::value>> {
 		return Value{ ctx, std::move(v) };
 	}
 };
+
+
 
 template <typename T>
 struct js_traits<T, std::enable_if_t<std::is_base_of_v<godot::Object, T>>> {
@@ -2056,7 +2073,7 @@ struct js_traits<godot::{{clazz.name}}> {
 	/// @throws exception
 	static godot::{{clazz.name}} unwrap(JSContext *ctx, JSValueConst v) {
 		godot::{{clazz.name}} gd_arr;
-		if (JS_IsArray(ctx, v) || JS_IsArrayInt8(ctx, v)) {
+		if (JS_IsArray(ctx, v)) {
 			Value jsarray{ ctx, JS_DupValue(ctx, v) };
 			for (int32_t i = 0; i < static_cast<uint32_t>(jsarray["length"]); i++) {
 				gd_arr.append(static_cast<{{clazz.value_type}}>(jsarray[i]));
@@ -2068,6 +2085,52 @@ struct js_traits<godot::{{clazz.name}}> {
 	}
 
 	static JSValue wrap(JSContext *ctx, godot::{{clazz.name}} gd_arr) noexcept {
+		JSValue buff = JS_NewArrayBuffer(ctx, (uint8_t *) gd_arr._native_ptr(), gd_arr.size(), nullptr, nullptr, false);
+		JSValue js_arr = JS_NewTypedArray(ctx, gd_arr.size(), &buff, JSTypedArrayEnum::JS_TYPED_ARRAY_{{clazz.enum }});
+		return js_arr;
+	}
+};
+
+template <>
+struct js_traits<godot::{{clazz.name}} &> {
+	/// @throws exception
+	static godot::{{clazz.name}} unwrap(JSContext *ctx, JSValueConst v) {
+		godot::{{clazz.name}} gd_arr;
+		if (JS_IsArray(ctx, v) || JS_IsArrayInt8(ctx, v)) {
+			Value jsarray{ ctx, JS_DupValue(ctx, v) };
+			for (int32_t i = 0; i < static_cast<uint32_t>(jsarray["length"]); i++) {
+				gd_arr.append(static_cast<{{clazz.value_type}}>(jsarray[i]));
+			}
+			return gd_arr;
+		}
+		
+		throw exception{ ctx };
+	}
+
+	static JSValue wrap(JSContext *ctx, godot::{{clazz.name}} &gd_arr) noexcept {
+		JSValue buff = JS_NewArrayBuffer(ctx, (uint8_t *) gd_arr._native_ptr(), gd_arr.size(), nullptr, nullptr, false);
+		JSValue js_arr = JS_NewTypedArray(ctx, gd_arr.size(), &buff, JSTypedArrayEnum::JS_TYPED_ARRAY_{{clazz.enum }});
+		return js_arr;
+	}
+};
+
+template <>
+struct js_traits<const godot::{{clazz.name}} &> {
+	/// @throws exception
+	static godot::{{clazz.name}} unwrap(JSContext *ctx, JSValueConst v) {
+		godot::{{clazz.name}} gd_arr;
+		if (JS_IsArray(ctx, v) || JS_IsArrayInt8(ctx, v)) {
+			Value jsarray{ ctx, JS_DupValue(ctx, v) };
+			for (int32_t i = 0; i < static_cast<uint32_t>(jsarray["length"]); i++) {
+				gd_arr.append(static_cast<{{clazz.value_type}}>(jsarray[i]));
+			}
+			return gd_arr;
+		}
+		
+		throw exception{ ctx };
+	}
+
+	static JSValue wrap(JSContext *ctx, const godot::{{clazz.name}} &gd_arr) noexcept {
 		JSValue buff = JS_NewArrayBuffer(ctx, (uint8_t *) gd_arr._native_ptr(), gd_arr.size(), nullptr, nullptr, false);
 		JSValue js_arr = JS_NewTypedArray(ctx, gd_arr.size(), &buff, JSTypedArrayEnum::JS_TYPED_ARRAY_{{clazz.enum }});
 		return js_arr;
@@ -2100,6 +2163,24 @@ struct js_traits<godot::{{clazz.name}} &> {
 			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
 			if (ptr) {
 				return *(godot::{{clazz.name}} *)ptr;
+			}
+		}
+
+		throw exception{ ctx };
+	}
+
+	static JSValue wrap(JSContext *ctx, godot::{{clazz.name}} &v) noexcept {
+		return Value{ ctx, std::move(v) };
+	}
+};
+template <>
+struct js_traits<const godot::{{clazz.name}} &> {
+	/// @throws exception
+	static godot::{{clazz.name}} &unwrap(JSContext *ctx, JSValueConst v) {
+		if (JS_IsObject(v)) {
+			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
+			if (ptr) {
+				return *reinterpret_cast<godot::{{clazz.name}} *>(ptr);
 			}
 		}
 

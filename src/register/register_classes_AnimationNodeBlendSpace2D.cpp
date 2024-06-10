@@ -9,7 +9,7 @@
 using namespace godot;
 
 void register_classes_AnimationNodeBlendSpace2D() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<AnimationNodeBlendSpace2D>("AnimationNodeBlendSpace2D")
 			.constructor<>()
 			.property<&AnimationNodeBlendSpace2D::get_auto_triangles, &AnimationNodeBlendSpace2D::set_auto_triangles>("auto_triangles")

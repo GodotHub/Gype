@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_Gradient() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<Gradient>("Gradient")
 			.constructor<>()
 			.property<&Gradient::get_interpolation_mode, &Gradient::set_interpolation_mode>("interpolation_mode")

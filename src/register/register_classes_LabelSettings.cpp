@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_LabelSettings() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<LabelSettings>("LabelSettings")
 			.constructor<>()
 			.property<&LabelSettings::get_line_spacing, &LabelSettings::set_line_spacing>("line_spacing")

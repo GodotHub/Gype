@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/tab_container.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -112,6 +113,18 @@ TabBar::AlignmentMode TabContainer::get_tab_alignment() const {
 	return (TabBar::AlignmentMode)internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
 }
 
+void TabContainer::set_tabs_position(TabContainer::TabPosition tabs_position) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TabContainer::get_class_static()._native_ptr(), StringName("set_tabs_position")._native_ptr(), 256673370);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &tabs_position);
+}
+
+TabContainer::TabPosition TabContainer::get_tabs_position() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TabContainer::get_class_static()._native_ptr(), StringName("get_tabs_position")._native_ptr(), 919937023);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, TabContainer::TabPosition(0));
+	return (TabContainer::TabPosition)internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
+}
+
 void TabContainer::set_clip_tabs(bool clip_tabs) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TabContainer::get_class_static()._native_ptr(), StringName("set_clip_tabs")._native_ptr(), 2586408642);
 	CHECK_METHOD_BIND(_gde_method_bind);
@@ -170,6 +183,22 @@ String TabContainer::get_tab_title(int32_t tab_idx) const {
 	return internal::_call_native_mb_ret<String>(_gde_method_bind, _owner, &tab_idx_encoded);
 }
 
+void TabContainer::set_tab_tooltip(int32_t tab_idx, const String &tooltip) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TabContainer::get_class_static()._native_ptr(), StringName("set_tab_tooltip")._native_ptr(), 501894301);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t tab_idx_encoded;
+	PtrToArg<int64_t>::encode(tab_idx, &tab_idx_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &tab_idx_encoded, &tooltip);
+}
+
+String TabContainer::get_tab_tooltip(int32_t tab_idx) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TabContainer::get_class_static()._native_ptr(), StringName("get_tab_tooltip")._native_ptr(), 844755477);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, String());
+	int64_t tab_idx_encoded;
+	PtrToArg<int64_t>::encode(tab_idx, &tab_idx_encoded);
+	return internal::_call_native_mb_ret<String>(_gde_method_bind, _owner, &tab_idx_encoded);
+}
+
 void TabContainer::set_tab_icon(int32_t tab_idx, const Ref<Texture2D> &icon) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TabContainer::get_class_static()._native_ptr(), StringName("set_tab_icon")._native_ptr(), 666127730);
 	CHECK_METHOD_BIND(_gde_method_bind);
@@ -184,6 +213,24 @@ Ref<Texture2D> TabContainer::get_tab_icon(int32_t tab_idx) const {
 	int64_t tab_idx_encoded;
 	PtrToArg<int64_t>::encode(tab_idx, &tab_idx_encoded);
 	return Ref<Texture2D>::_gde_internal_constructor(internal::_call_native_mb_ret_obj<Texture2D>(_gde_method_bind, _owner, &tab_idx_encoded));
+}
+
+void TabContainer::set_tab_icon_max_width(int32_t tab_idx, int32_t width) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TabContainer::get_class_static()._native_ptr(), StringName("set_tab_icon_max_width")._native_ptr(), 3937882851);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t tab_idx_encoded;
+	PtrToArg<int64_t>::encode(tab_idx, &tab_idx_encoded);
+	int64_t width_encoded;
+	PtrToArg<int64_t>::encode(width, &width_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &tab_idx_encoded, &width_encoded);
+}
+
+int32_t TabContainer::get_tab_icon_max_width(int32_t tab_idx) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TabContainer::get_class_static()._native_ptr(), StringName("get_tab_icon_max_width")._native_ptr(), 923996154);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
+	int64_t tab_idx_encoded;
+	PtrToArg<int64_t>::encode(tab_idx, &tab_idx_encoded);
+	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &tab_idx_encoded);
 }
 
 void TabContainer::set_tab_disabled(int32_t tab_idx, bool disabled) {
@@ -330,6 +377,20 @@ Control::FocusMode TabContainer::get_tab_focus_mode() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TabContainer::get_class_static()._native_ptr(), StringName("get_tab_focus_mode")._native_ptr(), 2132829277);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Control::FocusMode(0));
 	return (Control::FocusMode)internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
+}
+
+void TabContainer::set_deselect_enabled(bool enabled) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TabContainer::get_class_static()._native_ptr(), StringName("set_deselect_enabled")._native_ptr(), 2586408642);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int8_t enabled_encoded;
+	PtrToArg<bool>::encode(enabled, &enabled_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &enabled_encoded);
+}
+
+bool TabContainer::get_deselect_enabled() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TabContainer::get_class_static()._native_ptr(), StringName("get_deselect_enabled")._native_ptr(), 36873697);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
 }
 
 

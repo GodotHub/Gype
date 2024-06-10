@@ -36,6 +36,7 @@
 #include <godot_cpp/core/property_info.hpp>
 
 #include <godot_cpp/templates/list.hpp>
+#include <godot_cpp/templates/vector.hpp>
 
 #include <godot_cpp/godot.hpp>
 
@@ -77,7 +78,7 @@ protected:
 	static GDExtensionBool set_bind(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionConstVariantPtr p_value) { return false; }
 	static GDExtensionBool get_bind(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret) { return false; }
 	static const GDExtensionPropertyInfo *get_property_list_bind(GDExtensionClassInstancePtr p_instance, uint32_t *r_count) { return nullptr; }
-	static void free_property_list_bind(GDExtensionClassInstancePtr p_instance, const GDExtensionPropertyInfo *p_list) {}
+	static void free_property_list_bind(GDExtensionClassInstancePtr p_instance, const GDExtensionPropertyInfo *p_list, uint32_t p_count) {}
 	static GDExtensionBool property_can_revert_bind(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name) { return false; }
 	static GDExtensionBool property_get_revert_bind(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret) { return false; }
 	static GDExtensionBool validate_property_bind(GDExtensionClassInstancePtr p_instance, GDExtensionPropertyInfo *p_property) { return false; }
@@ -88,14 +89,15 @@ protected:
 	::godot::List<::godot::PropertyInfo> plist_owned;
 
 	void _postinitialize();
+	virtual void _notificationv(int32_t p_what, bool p_reversed = false) {}
 
 	Wrapped(const StringName p_godot_class);
 	Wrapped(GodotObject *p_godot_object);
 	virtual ~Wrapped() {}
 
 public:
-	static StringName &get_class_static() {
-		static StringName string_name = StringName("Wrapped");
+	static const StringName &get_class_static() {
+		static const StringName string_name = StringName("Wrapped");
 		return string_name;
 	}
 
@@ -106,6 +108,26 @@ public:
 	// Must be public but you should not touch this.
 	GodotObject *_owner = nullptr;
 };
+
+_FORCE_INLINE_ void snarray_add_str(Vector<StringName> &arr) {
+}
+
+_FORCE_INLINE_ void snarray_add_str(Vector<StringName> &arr, const StringName &p_str) {
+	arr.push_back(p_str);
+}
+
+template <typename... P>
+_FORCE_INLINE_ void snarray_add_str(Vector<StringName> &arr, const StringName &p_str, P... p_args) {
+	arr.push_back(p_str);
+	snarray_add_str(arr, p_args...);
+}
+
+template <typename... P>
+_FORCE_INLINE_ Vector<StringName> snarray(P... p_args) {
+	Vector<StringName> arr;
+	snarray_add_str(arr, p_args...);
+	return arr;
+}
 
 namespace internal {
 
@@ -193,6 +215,7 @@ protected:                                                                      
                                                                                                                                                                                        \
 public:                                                                                                                                                                                \
 	typedef m_class self_type;                                                                                                                                                         \
+	typedef m_inherits parent_type;                                                                                                                                                    \
                                                                                                                                                                                        \
 	static void initialize_class() {                                                                                                                                                   \
 		static bool initialized = false;                                                                                                                                               \
@@ -207,12 +230,12 @@ public:                                                                         
 		initialized = true;                                                                                                                                                            \
 	}                                                                                                                                                                                  \
                                                                                                                                                                                        \
-	static ::godot::StringName &get_class_static() {                                                                                                                                   \
-		static ::godot::StringName string_name = ::godot::StringName(#m_class);                                                                                                        \
+	static const ::godot::StringName &get_class_static() {                                                                                                                             \
+		static const ::godot::StringName string_name = ::godot::StringName(#m_class);                                                                                                  \
 		return string_name;                                                                                                                                                            \
 	}                                                                                                                                                                                  \
                                                                                                                                                                                        \
-	static ::godot::StringName &get_parent_class_static() {                                                                                                                            \
+	static const ::godot::StringName &get_parent_class_static() {                                                                                                                      \
 		return m_inherits::get_class_static();                                                                                                                                         \
 	}                                                                                                                                                                                  \
                                                                                                                                                                                        \
@@ -270,11 +293,10 @@ public:                                                                         
 		return ::godot::internal::create_c_property_list(plist_cpp, r_count);                                                                                                          \
 	}                                                                                                                                                                                  \
                                                                                                                                                                                        \
-	static void free_property_list_bind(GDExtensionClassInstancePtr p_instance, const GDExtensionPropertyInfo *p_list) {                                                               \
+	static void free_property_list_bind(GDExtensionClassInstancePtr p_instance, const GDExtensionPropertyInfo *p_list, uint32_t p_count) {                                             \
 		if (p_instance) {                                                                                                                                                              \
 			m_class *cls = reinterpret_cast<m_class *>(p_instance);                                                                                                                    \
 			cls->plist_owned.clear();                                                                                                                                                  \
-			/* TODO `GDExtensionClassFreePropertyList` is ill-defined, we need a non-const pointer to free this. */                                                                    \
 			::godot::internal::free_c_property_list(const_cast<GDExtensionPropertyInfo *>(p_list));                                                                                    \
 		}                                                                                                                                                                              \
 	}                                                                                                                                                                                  \
@@ -353,6 +375,11 @@ public:                                                                         
 		_gde_binding_reference_callback,                                                                                                                                               \
 	};                                                                                                                                                                                 \
                                                                                                                                                                                        \
+protected:                                                                                                                                                                             \
+	virtual void _notificationv(int32_t p_what, bool p_reversed = false) override {                                                                                                    \
+		m_class::notification_bind(this, p_what, p_reversed);                                                                                                                          \
+	}                                                                                                                                                                                  \
+                                                                                                                                                                                       \
 private:
 
 // Don't use this for your classes, use GDCLASS() instead.
@@ -360,6 +387,7 @@ private:
 private:                                                                                                                                                                               \
 	inline static ::godot::internal::EngineClassRegistration<m_class> _gde_engine_class_registration_helper;                                                                           \
 	void operator=(const m_class &p_rval) {}                                                                                                                                           \
+	friend class ::godot::ClassDB;                                                                                                                                                     \
                                                                                                                                                                                        \
 protected:                                                                                                                                                                             \
 	virtual const GDExtensionInstanceBindingCallbacks *_get_bindings_callbacks() const override {                                                                                      \
@@ -368,6 +396,8 @@ protected:                                                                      
                                                                                                                                                                                        \
 	m_class(const char *p_godot_class) : m_inherits(p_godot_class) {}                                                                                                                  \
 	m_class(GodotObject *p_godot_object) : m_inherits(p_godot_object) {}                                                                                                               \
+                                                                                                                                                                                       \
+	static void _bind_methods() {}                                                                                                                                                     \
                                                                                                                                                                                        \
 	static void (*_get_bind_methods())() {                                                                                                                                             \
 		return nullptr;                                                                                                                                                                \
@@ -411,15 +441,16 @@ protected:                                                                      
                                                                                                                                                                                        \
 public:                                                                                                                                                                                \
 	typedef m_class self_type;                                                                                                                                                         \
+	typedef m_inherits parent_type;                                                                                                                                                    \
                                                                                                                                                                                        \
 	static void initialize_class() {}                                                                                                                                                  \
                                                                                                                                                                                        \
-	static ::godot::StringName &get_class_static() {                                                                                                                                   \
-		static ::godot::StringName string_name = ::godot::StringName(#m_alias_for);                                                                                                    \
+	static const ::godot::StringName &get_class_static() {                                                                                                                             \
+		static const ::godot::StringName string_name = ::godot::StringName(#m_alias_for);                                                                                              \
 		return string_name;                                                                                                                                                            \
 	}                                                                                                                                                                                  \
                                                                                                                                                                                        \
-	static ::godot::StringName &get_parent_class_static() {                                                                                                                            \
+	static const ::godot::StringName &get_parent_class_static() {                                                                                                                      \
 		return m_inherits::get_class_static();                                                                                                                                         \
 	}                                                                                                                                                                                  \
                                                                                                                                                                                        \
@@ -449,5 +480,15 @@ private:
 
 // Don't use this for your classes, use GDCLASS() instead.
 #define GDEXTENSION_CLASS(m_class, m_inherits) GDEXTENSION_CLASS_ALIAS(m_class, m_class, m_inherits)
+
+#define GDVIRTUAL_CALL(m_name, ...) _gdvirtual_##m_name##_call<false>(__VA_ARGS__)
+#define GDVIRTUAL_CALL_PTR(m_obj, m_name, ...) m_obj->_gdvirtual_##m_name##_call<false>(__VA_ARGS__)
+
+#define GDVIRTUAL_REQUIRED_CALL(m_name, ...) _gdvirtual_##m_name##_call<true>(__VA_ARGS__)
+#define GDVIRTUAL_REQUIRED_CALL_PTR(m_obj, m_name, ...) m_obj->_gdvirtual_##m_name##_call<true>(__VA_ARGS__)
+
+#define GDVIRTUAL_BIND(m_name, ...) ::godot::ClassDB::add_virtual_method(get_class_static(), _gdvirtual_##m_name##_get_method_info(), ::godot::snarray(__VA_ARGS__));
+#define GDVIRTUAL_IS_OVERRIDDEN(m_name) _gdvirtual_##m_name##_overridden()
+#define GDVIRTUAL_IS_OVERRIDDEN_PTR(m_obj, m_name) m_obj->_gdvirtual_##m_name##_overridden()
 
 #endif // GODOT_WRAPPED_HPP

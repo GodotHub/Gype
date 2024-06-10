@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_QuadOccluder3D() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<QuadOccluder3D>("QuadOccluder3D")
 			.constructor<>()
 			.property<&QuadOccluder3D::get_size, &QuadOccluder3D::set_size>("size");

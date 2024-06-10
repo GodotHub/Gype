@@ -33,6 +33,7 @@
 #ifndef GODOT_CPP_ANIMATION_NODE_ANIMATION_HPP
 #define GODOT_CPP_ANIMATION_NODE_ANIMATION_HPP
 
+#include <godot_cpp/classes/animation.hpp>
 #include <godot_cpp/classes/animation_root_node.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/string_name.hpp>
@@ -58,6 +59,16 @@ public:
 	StringName get_animation() const;
 	void set_play_mode(AnimationNodeAnimation::PlayMode mode);
 	AnimationNodeAnimation::PlayMode get_play_mode() const;
+	void set_use_custom_timeline(bool use_custom_timeline);
+	bool is_using_custom_timeline() const;
+	void set_timeline_length(double timeline_length);
+	double get_timeline_length() const;
+	void set_stretch_time_scale(bool stretch_time_scale);
+	bool is_stretching_time_scale() const;
+	void set_start_offset(double start_offset);
+	double get_start_offset() const;
+	void set_loop_mode(Animation::LoopMode loop_mode);
+	Animation::LoopMode get_loop_mode() const;
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {

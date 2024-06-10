@@ -5,11 +5,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_EditorInspector() {
-	qjs::Context::Module &_module = _Control;
+	qjs::Context::Module &_module = get_Control_module();
 	_module.class_<EditorInspector>("EditorInspector")
 			.constructor<>()
 			.fun<static_cast<String (EditorInspector::*)() const>(&EditorInspector::get_selected_path)>("get_selected_path")

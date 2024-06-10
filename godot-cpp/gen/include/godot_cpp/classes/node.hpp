@@ -83,6 +83,12 @@ public:
 		FLAG_PROCESS_THREAD_MESSAGES_ALL = 3,
 	};
 
+	enum PhysicsInterpolationMode {
+		PHYSICS_INTERPOLATION_MODE_INHERIT = 0,
+		PHYSICS_INTERPOLATION_MODE_ON = 1,
+		PHYSICS_INTERPOLATION_MODE_OFF = 2,
+	};
+
 	enum DuplicateFlags {
 		DUPLICATE_SIGNALS = 1,
 		DUPLICATE_GROUPS = 2,
@@ -94,6 +100,12 @@ public:
 		INTERNAL_MODE_DISABLED = 0,
 		INTERNAL_MODE_FRONT = 1,
 		INTERNAL_MODE_BACK = 2,
+	};
+
+	enum AutoTranslateMode {
+		AUTO_TRANSLATE_MODE_INHERIT = 0,
+		AUTO_TRANSLATE_MODE_ALWAYS = 1,
+		AUTO_TRANSLATE_MODE_DISABLED = 2,
 	};
 
 	static const int NOTIFICATION_ENTER_TREE = 10;
@@ -116,6 +128,7 @@ public:
 	static const int NOTIFICATION_POST_ENTER_TREE = 27;
 	static const int NOTIFICATION_DISABLED = 28;
 	static const int NOTIFICATION_ENABLED = 29;
+	static const int NOTIFICATION_RESET_PHYSICS_INTERPOLATION = 2001;
 	static const int NOTIFICATION_EDITOR_PRE_SAVE = 9001;
 	static const int NOTIFICATION_EDITOR_POST_SAVE = 9002;
 	static const int NOTIFICATION_WM_MOUSE_ENTER = 1002;
@@ -159,6 +172,7 @@ public:
 	bool has_node_and_resource(const NodePath &path) const;
 	Array get_node_and_resource(const NodePath &path);
 	bool is_inside_tree() const;
+	bool is_part_of_edited_scene() const;
 	bool is_ancestor_of(Node *node) const;
 	bool is_greater_than(Node *node) const;
 	NodePath get_path() const;
@@ -212,6 +226,13 @@ public:
 	bool is_processing_internal() const;
 	void set_physics_process_internal(bool enable);
 	bool is_physics_processing_internal() const;
+	void set_physics_interpolation_mode(Node::PhysicsInterpolationMode mode);
+	Node::PhysicsInterpolationMode get_physics_interpolation_mode() const;
+	bool is_physics_interpolated() const;
+	bool is_physics_interpolated_and_enabled() const;
+	void reset_physics_interpolation();
+	void set_auto_translate_mode(Node::AutoTranslateMode mode);
+	Node::AutoTranslateMode get_auto_translate_mode() const;
 	Window *get_window() const;
 	Window *get_last_exclusive_window() const;
 	SceneTree *get_tree() const;
@@ -235,6 +256,8 @@ public:
 	String get_editor_description() const;
 	void set_unique_name_in_owner(bool enable);
 	bool is_unique_name_in_owner() const;
+	String atr(const String &message, const StringName &context = String()) const;
+	String atr_n(const String &message, const StringName &plural_message, int32_t n, const StringName &context = String()) const;
 	private: private: Error rpc_internal(const Variant **args, GDExtensionInt arg_count);
 	public: Error rpc(const StringName &method, rest<Variant> args) {
 		std::vector<Variant> variant_args;
@@ -340,7 +363,9 @@ public:
 VARIANT_ENUM_CAST(Node::ProcessMode);
 VARIANT_ENUM_CAST(Node::ProcessThreadGroup);
 VARIANT_BITFIELD_CAST(Node::ProcessThreadMessages);
+VARIANT_ENUM_CAST(Node::PhysicsInterpolationMode);
 VARIANT_ENUM_CAST(Node::DuplicateFlags);
 VARIANT_ENUM_CAST(Node::InternalMode);
+VARIANT_ENUM_CAST(Node::AutoTranslateMode);
 
 #endif // ! GODOT_CPP_NODE_HPP

@@ -17,7 +17,7 @@
 using namespace godot;
 
 void register_classes_PhysicsServer2DExtension() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<PhysicsServer2DExtension>("PhysicsServer2DExtension")
 			.constructor<>()
 			.fun<static_cast<RID (PhysicsServer2DExtension::*)()>(&PhysicsServer2DExtension::_world_boundary_shape_create)>("_world_boundary_shape_create")

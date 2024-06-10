@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/skeleton3d.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -41,10 +42,10 @@
 
 namespace godot {
 
-void Skeleton3D::add_bone(const String &name) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Skeleton3D::get_class_static()._native_ptr(), StringName("add_bone")._native_ptr(), 83702148);
-	CHECK_METHOD_BIND(_gde_method_bind);
-	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &name);
+int32_t Skeleton3D::add_bone(const String &name) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Skeleton3D::get_class_static()._native_ptr(), StringName("add_bone")._native_ptr(), 1597066294);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
+	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &name);
 }
 
 int32_t Skeleton3D::find_bone(const String &name) const {
@@ -177,6 +178,14 @@ Transform3D Skeleton3D::get_bone_pose(int32_t bone_idx) const {
 	return internal::_call_native_mb_ret<Transform3D>(_gde_method_bind, _owner, &bone_idx_encoded);
 }
 
+void Skeleton3D::set_bone_pose(int32_t bone_idx, const Transform3D &pose) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Skeleton3D::get_class_static()._native_ptr(), StringName("set_bone_pose")._native_ptr(), 3616898986);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t bone_idx_encoded;
+	PtrToArg<int64_t>::encode(bone_idx, &bone_idx_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &bone_idx_encoded, &pose);
+}
+
 void Skeleton3D::set_bone_pose_position(int32_t bone_idx, const Vector3 &position) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Skeleton3D::get_class_static()._native_ptr(), StringName("set_bone_pose_position")._native_ptr(), 1530502735);
 	CHECK_METHOD_BIND(_gde_method_bind);
@@ -257,32 +266,6 @@ void Skeleton3D::set_bone_enabled(int32_t bone_idx, bool enabled) {
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &bone_idx_encoded, &enabled_encoded);
 }
 
-void Skeleton3D::clear_bones_global_pose_override() {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Skeleton3D::get_class_static()._native_ptr(), StringName("clear_bones_global_pose_override")._native_ptr(), 3218959716);
-	CHECK_METHOD_BIND(_gde_method_bind);
-	internal::_call_native_mb_no_ret(_gde_method_bind, _owner);
-}
-
-void Skeleton3D::set_bone_global_pose_override(int32_t bone_idx, const Transform3D &pose, double amount, bool persistent) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Skeleton3D::get_class_static()._native_ptr(), StringName("set_bone_global_pose_override")._native_ptr(), 3483398371);
-	CHECK_METHOD_BIND(_gde_method_bind);
-	int64_t bone_idx_encoded;
-	PtrToArg<int64_t>::encode(bone_idx, &bone_idx_encoded);
-	double amount_encoded;
-	PtrToArg<double>::encode(amount, &amount_encoded);
-	int8_t persistent_encoded;
-	PtrToArg<bool>::encode(persistent, &persistent_encoded);
-	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &bone_idx_encoded, &pose, &amount_encoded, &persistent_encoded);
-}
-
-Transform3D Skeleton3D::get_bone_global_pose_override(int32_t bone_idx) const {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Skeleton3D::get_class_static()._native_ptr(), StringName("get_bone_global_pose_override")._native_ptr(), 1965739696);
-	CHECK_METHOD_BIND_RET(_gde_method_bind, Transform3D());
-	int64_t bone_idx_encoded;
-	PtrToArg<int64_t>::encode(bone_idx, &bone_idx_encoded);
-	return internal::_call_native_mb_ret<Transform3D>(_gde_method_bind, _owner, &bone_idx_encoded);
-}
-
 Transform3D Skeleton3D::get_bone_global_pose(int32_t bone_idx) const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Skeleton3D::get_class_static()._native_ptr(), StringName("get_bone_global_pose")._native_ptr(), 1965739696);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Transform3D());
@@ -291,12 +274,12 @@ Transform3D Skeleton3D::get_bone_global_pose(int32_t bone_idx) const {
 	return internal::_call_native_mb_ret<Transform3D>(_gde_method_bind, _owner, &bone_idx_encoded);
 }
 
-Transform3D Skeleton3D::get_bone_global_pose_no_override(int32_t bone_idx) const {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Skeleton3D::get_class_static()._native_ptr(), StringName("get_bone_global_pose_no_override")._native_ptr(), 1965739696);
-	CHECK_METHOD_BIND_RET(_gde_method_bind, Transform3D());
+void Skeleton3D::set_bone_global_pose(int32_t bone_idx, const Transform3D &pose) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Skeleton3D::get_class_static()._native_ptr(), StringName("set_bone_global_pose")._native_ptr(), 3616898986);
+	CHECK_METHOD_BIND(_gde_method_bind);
 	int64_t bone_idx_encoded;
 	PtrToArg<int64_t>::encode(bone_idx, &bone_idx_encoded);
-	return internal::_call_native_mb_ret<Transform3D>(_gde_method_bind, _owner, &bone_idx_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &bone_idx_encoded, &pose);
 }
 
 void Skeleton3D::force_update_all_bone_transforms() {
@@ -339,6 +322,52 @@ bool Skeleton3D::is_show_rest_only() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Skeleton3D::get_class_static()._native_ptr(), StringName("is_show_rest_only")._native_ptr(), 36873697);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
 	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
+}
+
+void Skeleton3D::set_modifier_callback_mode_process(Skeleton3D::ModifierCallbackModeProcess mode) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Skeleton3D::get_class_static()._native_ptr(), StringName("set_modifier_callback_mode_process")._native_ptr(), 3916362634);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &mode);
+}
+
+Skeleton3D::ModifierCallbackModeProcess Skeleton3D::get_modifier_callback_mode_process() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Skeleton3D::get_class_static()._native_ptr(), StringName("get_modifier_callback_mode_process")._native_ptr(), 997182536);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Skeleton3D::ModifierCallbackModeProcess(0));
+	return (Skeleton3D::ModifierCallbackModeProcess)internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
+}
+
+void Skeleton3D::clear_bones_global_pose_override() {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Skeleton3D::get_class_static()._native_ptr(), StringName("clear_bones_global_pose_override")._native_ptr(), 3218959716);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner);
+}
+
+void Skeleton3D::set_bone_global_pose_override(int32_t bone_idx, const Transform3D &pose, double amount, bool persistent) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Skeleton3D::get_class_static()._native_ptr(), StringName("set_bone_global_pose_override")._native_ptr(), 3483398371);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t bone_idx_encoded;
+	PtrToArg<int64_t>::encode(bone_idx, &bone_idx_encoded);
+	double amount_encoded;
+	PtrToArg<double>::encode(amount, &amount_encoded);
+	int8_t persistent_encoded;
+	PtrToArg<bool>::encode(persistent, &persistent_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &bone_idx_encoded, &pose, &amount_encoded, &persistent_encoded);
+}
+
+Transform3D Skeleton3D::get_bone_global_pose_override(int32_t bone_idx) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Skeleton3D::get_class_static()._native_ptr(), StringName("get_bone_global_pose_override")._native_ptr(), 1965739696);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Transform3D());
+	int64_t bone_idx_encoded;
+	PtrToArg<int64_t>::encode(bone_idx, &bone_idx_encoded);
+	return internal::_call_native_mb_ret<Transform3D>(_gde_method_bind, _owner, &bone_idx_encoded);
+}
+
+Transform3D Skeleton3D::get_bone_global_pose_no_override(int32_t bone_idx) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Skeleton3D::get_class_static()._native_ptr(), StringName("get_bone_global_pose_no_override")._native_ptr(), 1965739696);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Transform3D());
+	int64_t bone_idx_encoded;
+	PtrToArg<int64_t>::encode(bone_idx, &bone_idx_encoded);
+	return internal::_call_native_mb_ret<Transform3D>(_gde_method_bind, _owner, &bone_idx_encoded);
 }
 
 void Skeleton3D::set_animate_physical_bones(bool enabled) {

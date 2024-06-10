@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/font_variation.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -113,6 +114,20 @@ void FontVariation::set_spacing(TextServer::SpacingType spacing, int32_t value) 
 	int64_t value_encoded;
 	PtrToArg<int64_t>::encode(value, &value_encoded);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &spacing, &value_encoded);
+}
+
+void FontVariation::set_baseline_offset(double baseline_offset) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(FontVariation::get_class_static()._native_ptr(), StringName("set_baseline_offset")._native_ptr(), 373806689);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	double baseline_offset_encoded;
+	PtrToArg<double>::encode(baseline_offset, &baseline_offset_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &baseline_offset_encoded);
+}
+
+double FontVariation::get_baseline_offset() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(FontVariation::get_class_static()._native_ptr(), StringName("get_baseline_offset")._native_ptr(), 1740695150);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner);
 }
 
 

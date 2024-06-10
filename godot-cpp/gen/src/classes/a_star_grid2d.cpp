@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/a_star_grid2d.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -83,6 +84,18 @@ Vector2 AStarGrid2D::get_cell_size() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AStarGrid2D::get_class_static()._native_ptr(), StringName("get_cell_size")._native_ptr(), 3341600327);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Vector2());
 	return internal::_call_native_mb_ret<Vector2>(_gde_method_bind, _owner);
+}
+
+void AStarGrid2D::set_cell_shape(AStarGrid2D::CellShape cell_shape) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AStarGrid2D::get_class_static()._native_ptr(), StringName("set_cell_shape")._native_ptr(), 4130591146);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &cell_shape);
+}
+
+AStarGrid2D::CellShape AStarGrid2D::get_cell_shape() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AStarGrid2D::get_class_static()._native_ptr(), StringName("get_cell_shape")._native_ptr(), 3293463634);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, AStarGrid2D::CellShape(0));
+	return (AStarGrid2D::CellShape)internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
 }
 
 bool AStarGrid2D::is_in_bounds(int32_t x, int32_t y) const {
@@ -219,16 +232,20 @@ Vector2 AStarGrid2D::get_point_position(const Vector2i &id) const {
 	return internal::_call_native_mb_ret<Vector2>(_gde_method_bind, _owner, &id);
 }
 
-PackedVector2Array AStarGrid2D::get_point_path(const Vector2i &from_id, const Vector2i &to_id) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AStarGrid2D::get_class_static()._native_ptr(), StringName("get_point_path")._native_ptr(), 690373547);
+PackedVector2Array AStarGrid2D::get_point_path(const Vector2i &from_id, const Vector2i &to_id, bool allow_partial_path) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AStarGrid2D::get_class_static()._native_ptr(), StringName("get_point_path")._native_ptr(), 1641925693);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, PackedVector2Array());
-	return internal::_call_native_mb_ret<PackedVector2Array>(_gde_method_bind, _owner, &from_id, &to_id);
+	int8_t allow_partial_path_encoded;
+	PtrToArg<bool>::encode(allow_partial_path, &allow_partial_path_encoded);
+	return internal::_call_native_mb_ret<PackedVector2Array>(_gde_method_bind, _owner, &from_id, &to_id, &allow_partial_path_encoded);
 }
 
-TypedArray<Vector2i> AStarGrid2D::get_id_path(const Vector2i &from_id, const Vector2i &to_id) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AStarGrid2D::get_class_static()._native_ptr(), StringName("get_id_path")._native_ptr(), 1989391000);
+TypedArray<Vector2i> AStarGrid2D::get_id_path(const Vector2i &from_id, const Vector2i &to_id, bool allow_partial_path) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AStarGrid2D::get_class_static()._native_ptr(), StringName("get_id_path")._native_ptr(), 1918132273);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, TypedArray<Vector2i>());
-	return internal::_call_native_mb_ret<TypedArray<Vector2i>>(_gde_method_bind, _owner, &from_id, &to_id);
+	int8_t allow_partial_path_encoded;
+	PtrToArg<bool>::encode(allow_partial_path, &allow_partial_path_encoded);
+	return internal::_call_native_mb_ret<TypedArray<Vector2i>>(_gde_method_bind, _owner, &from_id, &to_id, &allow_partial_path_encoded);
 }
 
 double AStarGrid2D::_estimate_cost(const Vector2i &from_id, const Vector2i &to_id) const {

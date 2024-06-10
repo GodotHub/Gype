@@ -51,6 +51,7 @@
 namespace godot {
 
 class CameraAttributes;
+class Compositor;
 class Environment;
 
 class Camera3D : public Node3D {
@@ -112,6 +113,8 @@ public:
 	Ref<Environment> get_environment() const;
 	void set_attributes(const Ref<CameraAttributes> &env);
 	Ref<CameraAttributes> get_attributes() const;
+	void set_compositor(const Ref<Compositor> &compositor);
+	Ref<Compositor> get_compositor() const;
 	void set_keep_aspect_mode(Camera3D::KeepAspect mode);
 	Camera3D::KeepAspect get_keep_aspect_mode() const;
 	void set_doppler_tracking(Camera3D::DopplerTracking mode);

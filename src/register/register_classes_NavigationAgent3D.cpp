@@ -11,7 +11,7 @@
 using namespace godot;
 
 void register_classes_NavigationAgent3D() {
-	qjs::Context::Module &_module = _Node;
+	qjs::Context::Module &_module = get_Node_module();
 	_module.class_<NavigationAgent3D>("NavigationAgent3D")
 			.constructor<>()
 			.property<&NavigationAgent3D::get_target_position, &NavigationAgent3D::set_target_position>("target_position")

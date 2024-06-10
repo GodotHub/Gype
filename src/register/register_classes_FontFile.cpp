@@ -19,7 +19,7 @@
 using namespace godot;
 
 void register_classes_FontFile() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<FontFile>("FontFile")
 			.constructor<>()
 			.property<&FontFile::get_data, &FontFile::set_data>("data")

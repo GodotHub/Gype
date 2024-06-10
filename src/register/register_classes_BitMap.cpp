@@ -12,7 +12,7 @@
 using namespace godot;
 
 void register_classes_BitMap() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<BitMap>("BitMap")
 			.constructor<>()
 			.fun<static_cast<void (BitMap::*)(const Vector2i &)>(&BitMap::create)>("create")

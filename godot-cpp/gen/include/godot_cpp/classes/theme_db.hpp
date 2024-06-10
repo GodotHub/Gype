@@ -51,6 +51,8 @@ class Theme;
 class ThemeDB : public Object {
 	GDEXTENSION_CLASS(ThemeDB, Object)
 
+	static ThemeDB *singleton;
+
 public:
 
 	static ThemeDB *get_singleton();
@@ -72,6 +74,8 @@ protected:
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
 	}
+
+	~ThemeDB();
 
 public:
 

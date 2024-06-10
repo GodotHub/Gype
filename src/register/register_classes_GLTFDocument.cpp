@@ -13,7 +13,7 @@
 using namespace godot;
 
 void register_classes_GLTFDocument() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<GLTFDocument>("GLTFDocument")
 			.constructor<>()
 			.property<&GLTFDocument::get_image_format, &GLTFDocument::set_image_format>("image_format")

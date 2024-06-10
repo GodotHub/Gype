@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/resource_loader.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -40,8 +41,9 @@
 
 namespace godot {
 
+ResourceLoader *ResourceLoader::singleton = nullptr;
+
 ResourceLoader *ResourceLoader::get_singleton() {
-	static ResourceLoader *singleton = nullptr;
 	if (unlikely(singleton == nullptr)) {
 		GDExtensionObjectPtr singleton_obj = internal::gdextension_interface_global_get_singleton(ResourceLoader::get_class_static()._native_ptr());
 #ifdef DEBUG_ENABLED
@@ -51,8 +53,18 @@ ResourceLoader *ResourceLoader::get_singleton() {
 #ifdef DEBUG_ENABLED
 		ERR_FAIL_NULL_V(singleton, nullptr);
 #endif // DEBUG_ENABLED
+		if (likely(singleton)) {
+			ClassDB::_register_engine_singleton(ResourceLoader::get_class_static(), singleton);
+		}
 	}
 	return singleton;
+}
+
+ResourceLoader::~ResourceLoader() {
+	if (singleton == this) {
+		ClassDB::_unregister_engine_singleton(ResourceLoader::get_class_static());
+		singleton = nullptr;
+	}
 }
 
 Error ResourceLoader::load_threaded_request(const String &path, const String &type_hint, bool use_sub_threads, ResourceLoader::CacheMode cache_mode) {

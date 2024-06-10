@@ -77,6 +77,8 @@ public:
 	bool select_next_available();
 	void set_tab_title(int32_t tab_idx, const String &title);
 	String get_tab_title(int32_t tab_idx) const;
+	void set_tab_tooltip(int32_t tab_idx, const String &tooltip);
+	String get_tab_tooltip(int32_t tab_idx) const;
 	void set_tab_text_direction(int32_t tab_idx, Control::TextDirection direction);
 	Control::TextDirection get_tab_text_direction(int32_t tab_idx) const;
 	void set_tab_language(int32_t tab_idx, const String &language);
@@ -119,6 +121,8 @@ public:
 	bool get_scroll_to_selected() const;
 	void set_select_with_rmb(bool enabled);
 	bool get_select_with_rmb() const;
+	void set_deselect_enabled(bool enabled);
+	bool get_deselect_enabled() const;
 	void clear_tabs();
 protected:
 	template <typename T, typename B>

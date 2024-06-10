@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_GradientTexture2D() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<GradientTexture2D>("GradientTexture2D")
 			.constructor<>()
 			.property<&GradientTexture2D::get_gradient, &GradientTexture2D::set_gradient>("gradient")

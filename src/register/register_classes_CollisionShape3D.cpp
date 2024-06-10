@@ -9,7 +9,7 @@
 using namespace godot;
 
 void register_classes_CollisionShape3D() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<CollisionShape3D>("CollisionShape3D")
 			.constructor<>()
 			.property<&CollisionShape3D::get_shape, &CollisionShape3D::set_shape>("shape")

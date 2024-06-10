@@ -32,12 +32,13 @@
 
 #include <godot_cpp/classes/accept_dialog.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
 #include <godot_cpp/classes/button.hpp>
-#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/label.hpp>
+#include <godot_cpp/classes/line_edit.hpp>
 
 namespace godot {
 
@@ -95,14 +96,14 @@ Button *AcceptDialog::add_cancel_button(const String &name) {
 	return internal::_call_native_mb_ret_obj<Button>(_gde_method_bind, _owner, &name);
 }
 
-void AcceptDialog::remove_button(Control *button) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AcceptDialog::get_class_static()._native_ptr(), StringName("remove_button")._native_ptr(), 1496901182);
+void AcceptDialog::remove_button(Button *button) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AcceptDialog::get_class_static()._native_ptr(), StringName("remove_button")._native_ptr(), 2068354942);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, (button != nullptr ? &button->_owner : nullptr));
 }
 
-void AcceptDialog::register_text_enter(Control *line_edit) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AcceptDialog::get_class_static()._native_ptr(), StringName("register_text_enter")._native_ptr(), 1496901182);
+void AcceptDialog::register_text_enter(LineEdit *line_edit) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AcceptDialog::get_class_static()._native_ptr(), StringName("register_text_enter")._native_ptr(), 3714008017);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, (line_edit != nullptr ? &line_edit->_owner : nullptr));
 }

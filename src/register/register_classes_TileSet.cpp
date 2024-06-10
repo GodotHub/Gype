@@ -15,7 +15,7 @@
 using namespace godot;
 
 void register_classes_TileSet() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<TileSet>("TileSet")
 			.constructor<>()
 			.property<&TileSet::get_tile_shape, &TileSet::set_tile_shape>("tile_shape")

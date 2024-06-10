@@ -11,7 +11,7 @@
 using namespace godot;
 
 void register_classes_SkeletonProfile() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<SkeletonProfile>("SkeletonProfile")
 			.constructor<>()
 			.property<&SkeletonProfile::get_root_bone, &SkeletonProfile::set_root_bone>("root_bone")

@@ -9,7 +9,7 @@
 using namespace godot;
 
 void register_classes_XMLParser() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<XMLParser>("XMLParser")
 			.constructor<>()
 			.fun<static_cast<Error (XMLParser::*)()>(&XMLParser::read)>("read")

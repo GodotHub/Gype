@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/editor_plugin.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -66,16 +67,16 @@ void EditorPlugin::add_control_to_container(EditorPlugin::CustomControlContainer
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &container, (control != nullptr ? &control->_owner : nullptr));
 }
 
-Button *EditorPlugin::add_control_to_bottom_panel(Control *control, const String &title) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorPlugin::get_class_static()._native_ptr(), StringName("add_control_to_bottom_panel")._native_ptr(), 3526039376);
+Button *EditorPlugin::add_control_to_bottom_panel(Control *control, const String &title, const Ref<Shortcut> &shortcut) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorPlugin::get_class_static()._native_ptr(), StringName("add_control_to_bottom_panel")._native_ptr(), 111032269);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, nullptr);
-	return internal::_call_native_mb_ret_obj<Button>(_gde_method_bind, _owner, (control != nullptr ? &control->_owner : nullptr), &title);
+	return internal::_call_native_mb_ret_obj<Button>(_gde_method_bind, _owner, (control != nullptr ? &control->_owner : nullptr), &title, (shortcut != nullptr ? &shortcut->_owner : nullptr));
 }
 
-void EditorPlugin::add_control_to_dock(EditorPlugin::DockSlot slot, Control *control) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorPlugin::get_class_static()._native_ptr(), StringName("add_control_to_dock")._native_ptr(), 3354871258);
+void EditorPlugin::add_control_to_dock(EditorPlugin::DockSlot slot, Control *control, const Ref<Shortcut> &shortcut) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorPlugin::get_class_static()._native_ptr(), StringName("add_control_to_dock")._native_ptr(), 2994930786);
 	CHECK_METHOD_BIND(_gde_method_bind);
-	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &slot, (control != nullptr ? &control->_owner : nullptr));
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &slot, (control != nullptr ? &control->_owner : nullptr), (shortcut != nullptr ? &shortcut->_owner : nullptr));
 }
 
 void EditorPlugin::remove_control_from_docks(Control *control) {
@@ -94,6 +95,12 @@ void EditorPlugin::remove_control_from_container(EditorPlugin::CustomControlCont
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorPlugin::get_class_static()._native_ptr(), StringName("remove_control_from_container")._native_ptr(), 3092750152);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &container, (control != nullptr ? &control->_owner : nullptr));
+}
+
+void EditorPlugin::set_dock_tab_icon(Control *control, const Ref<Texture2D> &icon) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorPlugin::get_class_static()._native_ptr(), StringName("set_dock_tab_icon")._native_ptr(), 3450529724);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, (control != nullptr ? &control->_owner : nullptr), (icon != nullptr ? &icon->_owner : nullptr));
 }
 
 void EditorPlugin::add_tool_menu_item(const String &name, const Callable &callable) {

@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_BaseButton() {
-	qjs::Context::Module &_module = _Control;
+	qjs::Context::Module &_module = get_Control_module();
 	_module.class_<BaseButton>("BaseButton")
 			.constructor<>()
 			.property<&BaseButton::is_disabled, &BaseButton::set_disabled>("disabled")

@@ -50,11 +50,14 @@ namespace godot {
 class OS : public Object {
 	GDEXTENSION_CLASS(OS, Object)
 
+	static OS *singleton;
+
 public:
 
 	enum RenderingDriver {
 		RENDERING_DRIVER_VULKAN = 0,
 		RENDERING_DRIVER_OPENGL3 = 1,
+		RENDERING_DRIVER_D3D12 = 2,
 	};
 
 	enum SystemDir {
@@ -89,12 +92,14 @@ public:
 	String get_executable_path() const;
 	String read_string_from_stdin();
 	int32_t execute(const String &path, const PackedStringArray &arguments, const Array &output = Array(), bool read_stderr = false, bool open_console = false);
+	Dictionary execute_with_pipe(const String &path, const PackedStringArray &arguments);
 	int32_t create_process(const String &path, const PackedStringArray &arguments, bool open_console = false);
 	int32_t create_instance(const PackedStringArray &arguments);
 	Error kill(int32_t pid);
 	Error shell_open(const String &uri);
 	Error shell_show_in_file_manager(const String &file_or_dir_path, bool open_folder = true);
 	bool is_process_running(int32_t pid) const;
+	int32_t get_process_exit_code(int32_t pid) const;
 	int32_t get_process_id() const;
 	bool has_environment(const String &variable) const;
 	String get_environment(const String &variable) const;
@@ -145,6 +150,8 @@ protected:
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
 	}
+
+	~OS();
 
 public:
 

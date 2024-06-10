@@ -9,9 +9,8 @@
 using namespace godot;
 
 void register_classes_CameraServer() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<CameraServer>("CameraServer")
-			.constructor<>()
 			.fun<static_cast<Ref<CameraFeed> (CameraServer::*)(int32_t)>(&CameraServer::get_feed)>("get_feed")
 			.fun<static_cast<int32_t (CameraServer::*)()>(&CameraServer::get_feed_count)>("get_feed_count")
 			.fun<static_cast<TypedArray<CameraFeed> (CameraServer::*)()>(&CameraServer::feeds)>("feeds")

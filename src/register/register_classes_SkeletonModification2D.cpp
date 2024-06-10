@@ -2,15 +2,13 @@
 #include <godot_cpp/classes/skeleton_modification2d.hpp>
 #include <godot_cpp/classes/skeleton_modification_stack2d.hpp>
 
-
 #include "qjspp.hpp"
 #include "register/register_classes.h"
-
 
 using namespace godot;
 
 void register_classes_SkeletonModification2D() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<SkeletonModification2D>("SkeletonModification2D")
 			.constructor<>()
 			.property<&SkeletonModification2D::get_enabled, &SkeletonModification2D::set_enabled>("enabled")

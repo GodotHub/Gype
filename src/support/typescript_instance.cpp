@@ -2,25 +2,22 @@
 
 using namespace godot;
 
-// Object *get_object_from_instance(GDExtensionScriptInstanceDataPtr p_instance) {
-// 	TypescriptInstance *instance = reinterpret_cast<TypescriptInstance *>(p_instance);
-// 	return instance->get_host_object();
-// }
+TypescriptInstanceInfo *TypescriptInstance::instance_info = new TypescriptInstanceInfo();
 
 TypescriptInstance::TypescriptInstance(const Ref<Typescript> &parent, Object *host_object) {
 	_parent = parent.ptr();
 	_host_object = host_object;
 }
 
-GDExtensionScriptInstancePtr TypescriptInstance::create_instance(const Ref<Typescript> parent, Object *host_object) {
-	return internal::gdextension_interface_script_instance_create2(&TypescriptInstance::instance_info, new TypescriptInstance(parent, host_object));
+GDExtensionScriptInstancePtr TypescriptInstance::create_instance(const Ref<Typescript> &parent, Object *host_object) {
+	return internal::gdextension_interface_script_instance_create3(TypescriptInstance::instance_info, new TypescriptInstance(parent, host_object));
 }
 
 TypescriptInstanceInfo::TypescriptInstanceInfo() {
 	set_func = &_set_func;
 	get_func = &_get_func;
 	get_property_list_func = &_get_property_list_func;
-	free_property_list_func = &_free_property_list_func;
+	has_method_func = &_has_method_func;
 }
 
 GDExtensionBool _set_func(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionConstVariantPtr p_value) {
@@ -45,10 +42,6 @@ const GDExtensionPropertyInfo *_get_property_list_func(GDExtensionScriptInstance
 		arr[i] = instance->get_properties()[i];
 	}
 	return arr;
-}
-
-void _free_property_list_func(GDExtensionScriptInstanceDataPtr p_instance, const GDExtensionPropertyInfo *p_list) {
-	// TODO
 }
 
 GDExtensionBool _has_method_func(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionConstStringNamePtr p_name) {

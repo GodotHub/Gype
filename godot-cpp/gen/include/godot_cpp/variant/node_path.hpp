@@ -35,9 +35,9 @@
 
 #include <godot_cpp/core/defs.hpp>
 
+#include <godot_cpp/templates/vararg.hpp>
 #include <gdextension_interface.h>
 
-#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Array;
@@ -66,6 +66,7 @@ class NodePath {
 		GDExtensionPtrBuiltInMethod method_get_subname;
 		GDExtensionPtrBuiltInMethod method_get_concatenated_names;
 		GDExtensionPtrBuiltInMethod method_get_concatenated_subnames;
+		GDExtensionPtrBuiltInMethod method_slice;
 		GDExtensionPtrBuiltInMethod method_get_as_property_path;
 		GDExtensionPtrBuiltInMethod method_is_empty;
 		GDExtensionPtrOperatorEvaluator operator_equal_Variant;
@@ -101,6 +102,7 @@ public:
 	StringName get_subname(int64_t idx) const;
 	StringName get_concatenated_names() const;
 	StringName get_concatenated_subnames() const;
+	NodePath slice(int64_t begin, int64_t end = 2147483647) const;
 	NodePath get_as_property_path() const;
 	bool is_empty() const;
 	bool operator==(const Variant &other) const;

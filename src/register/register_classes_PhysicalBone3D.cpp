@@ -8,7 +8,7 @@
 using namespace godot;
 
 void register_classes_PhysicalBone3D() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<PhysicalBone3D>("PhysicalBone3D")
 			.constructor<>()
 			.property<&PhysicalBone3D::get_joint_type, &PhysicalBone3D::set_joint_type>("joint_type")

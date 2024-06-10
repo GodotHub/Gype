@@ -8,7 +8,7 @@
 using namespace godot;
 
 void register_classes_TouchScreenButton() {
-	qjs::Context::Module &_module = _Node2D;
+	qjs::Context::Module &_module = get_Node2D_module();
 	_module.class_<TouchScreenButton>("TouchScreenButton")
 			.constructor<>()
 			.property<&TouchScreenButton::get_texture_normal, &TouchScreenButton::set_texture_normal>("texture_normal")

@@ -80,6 +80,8 @@ public:
 	Color get_instance_color(int32_t instance) const;
 	void set_instance_custom_data(int32_t instance, const Color &custom_data);
 	Color get_instance_custom_data(int32_t instance) const;
+	void set_custom_aabb(const AABB &aabb);
+	AABB get_custom_aabb() const;
 	AABB get_aabb() const;
 	PackedFloat32Array get_buffer() const;
 	void set_buffer(const PackedFloat32Array &buffer);

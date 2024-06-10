@@ -221,9 +221,6 @@ namespace Math {
 // Functions reproduced as in Godot's source code `math_funcs.h`.
 // Some are overloads to automatically support changing real_t into either double or float in the way Godot does.
 
-inline bool is_finite(double p_val) { return std::isfinite(p_val); }
-inline bool is_finite(float p_val) { return std::isfinite(p_val); }
-
 inline double fmod(double p_x, double p_y) {
 	return ::fmod(p_x, p_y);
 }
@@ -624,6 +621,14 @@ inline bool is_inf(float p_val) {
 
 inline bool is_inf(double p_val) {
 	return std::isinf(p_val);
+}
+
+inline bool is_finite(float p_val) {
+	return std::isfinite(p_val);
+}
+
+inline bool is_finite(double p_val) {
+	return std::isfinite(p_val);
 }
 
 inline bool is_equal_approx(float a, float b) {

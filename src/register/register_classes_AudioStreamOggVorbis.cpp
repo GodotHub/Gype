@@ -6,7 +6,7 @@
 using namespace godot;
 
 void register_classes_AudioStreamOggVorbis() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<AudioStreamOggVorbis>("AudioStreamOggVorbis")
 			.constructor<>()
 			.property<&AudioStreamOggVorbis::get_packet_sequence, &AudioStreamOggVorbis::set_packet_sequence>("packet_sequence")

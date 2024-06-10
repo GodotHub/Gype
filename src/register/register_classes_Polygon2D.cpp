@@ -8,7 +8,7 @@
 using namespace godot;
 
 void register_classes_Polygon2D() {
-	qjs::Context::Module &_module = _Node2D;
+	qjs::Context::Module &_module = get_Node2D_module();
 	_module.class_<Polygon2D>("Polygon2D")
 			.constructor<>()
 			.property<&Polygon2D::get_color, &Polygon2D::set_color>("color")

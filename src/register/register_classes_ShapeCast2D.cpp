@@ -11,7 +11,7 @@
 using namespace godot;
 
 void register_classes_ShapeCast2D() {
-	qjs::Context::Module &_module = _Node2D;
+	qjs::Context::Module &_module = get_Node2D_module();
 	_module.class_<ShapeCast2D>("ShapeCast2D")
 			.constructor<>()
 			.property<&ShapeCast2D::is_enabled, &ShapeCast2D::set_enabled>("enabled")

@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/translation_server.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -39,8 +40,9 @@
 
 namespace godot {
 
+TranslationServer *TranslationServer::singleton = nullptr;
+
 TranslationServer *TranslationServer::get_singleton() {
-	static TranslationServer *singleton = nullptr;
 	if (unlikely(singleton == nullptr)) {
 		GDExtensionObjectPtr singleton_obj = internal::gdextension_interface_global_get_singleton(TranslationServer::get_class_static()._native_ptr());
 #ifdef DEBUG_ENABLED
@@ -50,8 +52,18 @@ TranslationServer *TranslationServer::get_singleton() {
 #ifdef DEBUG_ENABLED
 		ERR_FAIL_NULL_V(singleton, nullptr);
 #endif // DEBUG_ENABLED
+		if (likely(singleton)) {
+			ClassDB::_register_engine_singleton(TranslationServer::get_class_static(), singleton);
+		}
 	}
 	return singleton;
+}
+
+TranslationServer::~TranslationServer() {
+	if (singleton == this) {
+		ClassDB::_unregister_engine_singleton(TranslationServer::get_class_static());
+		singleton = nullptr;
+	}
 }
 
 void TranslationServer::set_locale(const String &locale) {
@@ -127,13 +139,13 @@ String TranslationServer::get_locale_name(const String &locale) const {
 }
 
 StringName TranslationServer::translate(const StringName &message, const StringName &context) const {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TranslationServer::get_class_static()._native_ptr(), StringName("translate")._native_ptr(), 1829228469);
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TranslationServer::get_class_static()._native_ptr(), StringName("translate")._native_ptr(), 58037827);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, StringName());
 	return internal::_call_native_mb_ret<StringName>(_gde_method_bind, _owner, &message, &context);
 }
 
 StringName TranslationServer::translate_plural(const StringName &message, const StringName &plural_message, int32_t n, const StringName &context) const {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TranslationServer::get_class_static()._native_ptr(), StringName("translate_plural")._native_ptr(), 229954002);
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TranslationServer::get_class_static()._native_ptr(), StringName("translate_plural")._native_ptr(), 1333931916);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, StringName());
 	int64_t n_encoded;
 	PtrToArg<int64_t>::encode(n, &n_encoded);

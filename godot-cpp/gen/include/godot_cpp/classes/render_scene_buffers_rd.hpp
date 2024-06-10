@@ -37,6 +37,7 @@
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/render_scene_buffers.hpp>
 #include <godot_cpp/classes/rendering_device.hpp>
+#include <godot_cpp/classes/rendering_server.hpp>
 #include <godot_cpp/variant/vector2i.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
@@ -65,15 +66,16 @@ public:
 	RID get_texture_slice_view(const StringName &context, const StringName &name, uint32_t layer, uint32_t mipmap, uint32_t layers, uint32_t mipmaps, const Ref<RDTextureView> &view);
 	Vector2i get_texture_slice_size(const StringName &context, const StringName &name, uint32_t mipmap);
 	void clear_context(const StringName &context);
-	RID get_color_texture();
-	RID get_color_layer(uint32_t layer);
-	RID get_depth_texture();
-	RID get_depth_layer(uint32_t layer);
-	RID get_velocity_texture();
-	RID get_velocity_layer(uint32_t layer);
+	RID get_color_texture(bool msaa = false);
+	RID get_color_layer(uint32_t layer, bool msaa = false);
+	RID get_depth_texture(bool msaa = false);
+	RID get_depth_layer(uint32_t layer, bool msaa = false);
+	RID get_velocity_texture(bool msaa = false);
+	RID get_velocity_layer(uint32_t layer, bool msaa = false);
 	RID get_render_target() const;
 	uint32_t get_view_count() const;
 	Vector2i get_internal_size() const;
+	RenderingServer::ViewportMSAA get_msaa_3d() const;
 	bool get_use_taa() const;
 protected:
 	template <typename T, typename B>

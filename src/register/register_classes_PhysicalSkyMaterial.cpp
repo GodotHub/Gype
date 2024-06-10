@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_PhysicalSkyMaterial() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<PhysicalSkyMaterial>("PhysicalSkyMaterial")
 			.constructor<>()
 			.property<&PhysicalSkyMaterial::get_rayleigh_coefficient, &PhysicalSkyMaterial::set_rayleigh_coefficient>("rayleigh_coefficient")

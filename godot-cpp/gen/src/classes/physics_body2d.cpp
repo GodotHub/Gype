@@ -32,12 +32,12 @@
 
 #include <godot_cpp/classes/physics_body2d.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/transform2d.hpp>
-#include <godot_cpp/variant/vector2.hpp>
 
 namespace godot {
 
@@ -61,6 +61,12 @@ bool PhysicsBody2D::test_move(const Transform2D &from, const Vector2 &motion, co
 	int8_t recovery_as_collision_encoded;
 	PtrToArg<bool>::encode(recovery_as_collision, &recovery_as_collision_encoded);
 	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner, &from, &motion, (collision != nullptr ? &collision->_owner : nullptr), &safe_margin_encoded, &recovery_as_collision_encoded);
+}
+
+Vector2 PhysicsBody2D::get_gravity() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsBody2D::get_class_static()._native_ptr(), StringName("get_gravity")._native_ptr(), 3341600327);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Vector2());
+	return internal::_call_native_mb_ret<Vector2>(_gde_method_bind, _owner);
 }
 
 TypedArray<PhysicsBody2D> PhysicsBody2D::get_collision_exceptions() {

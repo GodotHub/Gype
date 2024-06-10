@@ -53,6 +53,8 @@ class InputEvent : public Resource {
 
 public:
 
+	static const int DEVICE_ID_EMULATION = -1;
+
 	void set_device(int32_t device);
 	int32_t get_device() const;
 	bool is_action(const StringName &action, bool exact_match = false) const;

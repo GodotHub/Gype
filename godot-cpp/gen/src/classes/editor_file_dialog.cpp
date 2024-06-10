@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/editor_file_dialog.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -63,6 +64,84 @@ PackedStringArray EditorFileDialog::get_filters() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorFileDialog::get_class_static()._native_ptr(), StringName("get_filters")._native_ptr(), 1139954409);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, PackedStringArray());
 	return internal::_call_native_mb_ret<PackedStringArray>(_gde_method_bind, _owner);
+}
+
+String EditorFileDialog::get_option_name(int32_t option) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorFileDialog::get_class_static()._native_ptr(), StringName("get_option_name")._native_ptr(), 844755477);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, String());
+	int64_t option_encoded;
+	PtrToArg<int64_t>::encode(option, &option_encoded);
+	return internal::_call_native_mb_ret<String>(_gde_method_bind, _owner, &option_encoded);
+}
+
+PackedStringArray EditorFileDialog::get_option_values(int32_t option) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorFileDialog::get_class_static()._native_ptr(), StringName("get_option_values")._native_ptr(), 647634434);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, PackedStringArray());
+	int64_t option_encoded;
+	PtrToArg<int64_t>::encode(option, &option_encoded);
+	return internal::_call_native_mb_ret<PackedStringArray>(_gde_method_bind, _owner, &option_encoded);
+}
+
+int32_t EditorFileDialog::get_option_default(int32_t option) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorFileDialog::get_class_static()._native_ptr(), StringName("get_option_default")._native_ptr(), 923996154);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
+	int64_t option_encoded;
+	PtrToArg<int64_t>::encode(option, &option_encoded);
+	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &option_encoded);
+}
+
+void EditorFileDialog::set_option_name(int32_t option, const String &name) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorFileDialog::get_class_static()._native_ptr(), StringName("set_option_name")._native_ptr(), 501894301);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t option_encoded;
+	PtrToArg<int64_t>::encode(option, &option_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &option_encoded, &name);
+}
+
+void EditorFileDialog::set_option_values(int32_t option, const PackedStringArray &values) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorFileDialog::get_class_static()._native_ptr(), StringName("set_option_values")._native_ptr(), 3353661094);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t option_encoded;
+	PtrToArg<int64_t>::encode(option, &option_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &option_encoded, &values);
+}
+
+void EditorFileDialog::set_option_default(int32_t option, int32_t default_value_index) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorFileDialog::get_class_static()._native_ptr(), StringName("set_option_default")._native_ptr(), 3937882851);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t option_encoded;
+	PtrToArg<int64_t>::encode(option, &option_encoded);
+	int64_t default_value_index_encoded;
+	PtrToArg<int64_t>::encode(default_value_index, &default_value_index_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &option_encoded, &default_value_index_encoded);
+}
+
+void EditorFileDialog::set_option_count(int32_t count) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorFileDialog::get_class_static()._native_ptr(), StringName("set_option_count")._native_ptr(), 1286410249);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t count_encoded;
+	PtrToArg<int64_t>::encode(count, &count_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &count_encoded);
+}
+
+int32_t EditorFileDialog::get_option_count() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorFileDialog::get_class_static()._native_ptr(), StringName("get_option_count")._native_ptr(), 3905245786);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
+	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
+}
+
+void EditorFileDialog::add_option(const String &name, const PackedStringArray &values, int32_t default_value_index) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorFileDialog::get_class_static()._native_ptr(), StringName("add_option")._native_ptr(), 149592325);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t default_value_index_encoded;
+	PtrToArg<int64_t>::encode(default_value_index, &default_value_index_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &name, &values, &default_value_index_encoded);
+}
+
+Dictionary EditorFileDialog::get_selected_options() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorFileDialog::get_class_static()._native_ptr(), StringName("get_selected_options")._native_ptr(), 3102165223);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Dictionary());
+	return internal::_call_native_mb_ret<Dictionary>(_gde_method_bind, _owner);
 }
 
 String EditorFileDialog::get_current_dir() const {
@@ -181,6 +260,12 @@ void EditorFileDialog::add_side_menu(Control *menu, const String &title) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorFileDialog::get_class_static()._native_ptr(), StringName("add_side_menu")._native_ptr(), 402368861);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, (menu != nullptr ? &menu->_owner : nullptr), &title);
+}
+
+void EditorFileDialog::popup_file_dialog() {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorFileDialog::get_class_static()._native_ptr(), StringName("popup_file_dialog")._native_ptr(), 3218959716);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner);
 }
 
 void EditorFileDialog::invalidate() {

@@ -1,15 +1,13 @@
 #include <godot_cpp/classes/line_edit.hpp>
 #include <godot_cpp/classes/spin_box.hpp>
 
-
 #include "qjspp.hpp"
 #include "register/register_classes.h"
-
 
 using namespace godot;
 
 void register_classes_SpinBox() {
-	qjs::Context::Module &_module = _Control;
+	qjs::Context::Module &_module = get_Control_module();
 	_module.class_<SpinBox>("SpinBox")
 			.constructor<>()
 			.property<&SpinBox::get_horizontal_alignment, &SpinBox::set_horizontal_alignment>("alignment")

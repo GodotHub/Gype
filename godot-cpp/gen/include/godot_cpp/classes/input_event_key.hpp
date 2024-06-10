@@ -59,6 +59,8 @@ public:
 	Key get_key_label() const;
 	void set_unicode(int64_t unicode);
 	int64_t get_unicode() const;
+	void set_location(KeyLocation location);
+	KeyLocation get_location() const;
 	void set_echo(bool echo);
 	Key get_keycode_with_modifiers() const;
 	Key get_physical_keycode_with_modifiers() const;
@@ -66,6 +68,7 @@ public:
 	String as_text_keycode() const;
 	String as_text_physical_keycode() const;
 	String as_text_key_label() const;
+	String as_text_location() const;
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {

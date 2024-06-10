@@ -33,8 +33,8 @@
 #ifndef GODOT_CPP_SKELETON_IK3D_HPP
 #define GODOT_CPP_SKELETON_IK3D_HPP
 
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/node_path.hpp>
+#include <godot_cpp/classes/skeleton_modifier3d.hpp>
 #include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/variant/transform3d.hpp>
 #include <godot_cpp/variant/vector3.hpp>
@@ -48,8 +48,8 @@ namespace godot {
 
 class Skeleton3D;
 
-class SkeletonIK3D : public Node {
-	GDEXTENSION_CLASS(SkeletonIK3D, Node)
+class SkeletonIK3D : public SkeletonModifier3D {
+	GDEXTENSION_CLASS(SkeletonIK3D, SkeletonModifier3D)
 
 public:
 
@@ -57,8 +57,6 @@ public:
 	StringName get_root_bone() const;
 	void set_tip_bone(const StringName &tip_bone);
 	StringName get_tip_bone() const;
-	void set_interpolation(double interpolation);
-	double get_interpolation() const;
 	void set_target_transform(const Transform3D &target);
 	Transform3D get_target_transform() const;
 	void set_target_node(const NodePath &node);
@@ -77,10 +75,12 @@ public:
 	int32_t get_max_iterations() const;
 	void start(bool one_time = false);
 	void stop();
+	void set_interpolation(double interpolation);
+	double get_interpolation() const;
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
-		Node::register_virtuals<T, B>();
+		SkeletonModifier3D::register_virtuals<T, B>();
 	}
 
 public:

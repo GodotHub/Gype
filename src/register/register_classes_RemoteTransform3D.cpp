@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_RemoteTransform3D() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<RemoteTransform3D>("RemoteTransform3D")
 			.constructor<>()
 			.property<&RemoteTransform3D::get_remote_node, &RemoteTransform3D::set_remote_node>("remote_path")

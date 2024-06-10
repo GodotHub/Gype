@@ -15,8 +15,9 @@
 using namespace godot;
 
 void register_classes_Animation() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<Animation>("Animation")
+			.base<Resource>()
 			.constructor<>()
 			.property<&Animation::get_length, &Animation::set_length>("length")
 			.property<&Animation::get_loop_mode, &Animation::set_loop_mode>("loop_mode")
@@ -40,10 +41,10 @@ void register_classes_Animation() {
 			.fun<static_cast<int32_t (Animation::*)(int32_t, double, const Quaternion &)>(&Animation::rotation_track_insert_key)>("rotation_track_insert_key")
 			.fun<static_cast<int32_t (Animation::*)(int32_t, double, const Vector3 &)>(&Animation::scale_track_insert_key)>("scale_track_insert_key")
 			.fun<static_cast<int32_t (Animation::*)(int32_t, double, double)>(&Animation::blend_shape_track_insert_key)>("blend_shape_track_insert_key")
-			.fun<static_cast<Vector3 (Animation::*)(int32_t, double) const>(&Animation::position_track_interpolate)>("position_track_interpolate")
-			.fun<static_cast<Quaternion (Animation::*)(int32_t, double) const>(&Animation::rotation_track_interpolate)>("rotation_track_interpolate")
-			.fun<static_cast<Vector3 (Animation::*)(int32_t, double) const>(&Animation::scale_track_interpolate)>("scale_track_interpolate")
-			.fun<static_cast<double (Animation::*)(int32_t, double) const>(&Animation::blend_shape_track_interpolate)>("blend_shape_track_interpolate")
+			.fun<static_cast<Vector3 (Animation::*)(int32_t, double, bool) const>(&Animation::position_track_interpolate)>("position_track_interpolate")
+			.fun<static_cast<Quaternion (Animation::*)(int32_t, double, bool) const>(&Animation::rotation_track_interpolate)>("rotation_track_interpolate")
+			.fun<static_cast<Vector3 (Animation::*)(int32_t, double, bool) const>(&Animation::scale_track_interpolate)>("scale_track_interpolate")
+			.fun<static_cast<double (Animation::*)(int32_t, double, bool) const>(&Animation::blend_shape_track_interpolate)>("blend_shape_track_interpolate")
 			.fun<static_cast<int32_t (Animation::*)(int32_t, double, const Variant &, double)>(&Animation::track_insert_key)>("track_insert_key")
 			.fun<static_cast<void (Animation::*)(int32_t, int32_t)>(&Animation::track_remove_key)>("track_remove_key")
 			.fun<static_cast<void (Animation::*)(int32_t, double)>(&Animation::track_remove_key_at_time)>("track_remove_key_at_time")
@@ -54,7 +55,7 @@ void register_classes_Animation() {
 			.fun<static_cast<int32_t (Animation::*)(int32_t) const>(&Animation::track_get_key_count)>("track_get_key_count")
 			.fun<static_cast<Variant (Animation::*)(int32_t, int32_t) const>(&Animation::track_get_key_value)>("track_get_key_value")
 			.fun<static_cast<double (Animation::*)(int32_t, int32_t) const>(&Animation::track_get_key_time)>("track_get_key_time")
-			.fun<static_cast<int32_t (Animation::*)(int32_t, double, Animation::FindMode) const>(&Animation::track_find_key)>("track_find_key")
+			.fun<static_cast<int32_t (Animation::*)(int32_t, double, Animation::FindMode, bool) const>(&Animation::track_find_key)>("track_find_key")
 			.fun<static_cast<void (Animation::*)(int32_t, Animation::InterpolationType)>(&Animation::track_set_interpolation_type)>("track_set_interpolation_type")
 			.fun<static_cast<Animation::InterpolationType (Animation::*)(int32_t) const>(&Animation::track_get_interpolation_type)>("track_get_interpolation_type")
 			.fun<static_cast<void (Animation::*)(int32_t, bool)>(&Animation::track_set_interpolation_loop_wrap)>("track_set_interpolation_loop_wrap")
@@ -62,7 +63,7 @@ void register_classes_Animation() {
 			.fun<static_cast<bool (Animation::*)(int32_t) const>(&Animation::track_is_compressed)>("track_is_compressed")
 			.fun<static_cast<void (Animation::*)(int32_t, Animation::UpdateMode)>(&Animation::value_track_set_update_mode)>("value_track_set_update_mode")
 			.fun<static_cast<Animation::UpdateMode (Animation::*)(int32_t) const>(&Animation::value_track_get_update_mode)>("value_track_get_update_mode")
-			.fun<static_cast<Variant (Animation::*)(int32_t, double) const>(&Animation::value_track_interpolate)>("value_track_interpolate")
+			.fun<static_cast<Variant (Animation::*)(int32_t, double, bool) const>(&Animation::value_track_interpolate)>("value_track_interpolate")
 			.fun<static_cast<StringName (Animation::*)(int32_t, int32_t) const>(&Animation::method_track_get_name)>("method_track_get_name")
 			.fun<static_cast<Array (Animation::*)(int32_t, int32_t) const>(&Animation::method_track_get_params)>("method_track_get_params")
 			.fun<static_cast<int32_t (Animation::*)(int32_t, double, double, const Vector2 &, const Vector2 &)>(&Animation::bezier_track_insert_key)>("bezier_track_insert_key")

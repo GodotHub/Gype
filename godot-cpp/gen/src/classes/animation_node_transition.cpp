@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/animation_node_transition.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -59,6 +60,24 @@ void AnimationNodeTransition::set_input_as_auto_advance(int32_t input, bool enab
 
 bool AnimationNodeTransition::is_input_set_as_auto_advance(int32_t input) const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationNodeTransition::get_class_static()._native_ptr(), StringName("is_input_set_as_auto_advance")._native_ptr(), 1116898809);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	int64_t input_encoded;
+	PtrToArg<int64_t>::encode(input, &input_encoded);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner, &input_encoded);
+}
+
+void AnimationNodeTransition::set_input_break_loop_at_end(int32_t input, bool enable) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationNodeTransition::get_class_static()._native_ptr(), StringName("set_input_break_loop_at_end")._native_ptr(), 300928843);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t input_encoded;
+	PtrToArg<int64_t>::encode(input, &input_encoded);
+	int8_t enable_encoded;
+	PtrToArg<bool>::encode(enable, &enable_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &input_encoded, &enable_encoded);
+}
+
+bool AnimationNodeTransition::is_input_loop_broken_at_end(int32_t input) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationNodeTransition::get_class_static()._native_ptr(), StringName("is_input_loop_broken_at_end")._native_ptr(), 1116898809);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
 	int64_t input_encoded;
 	PtrToArg<int64_t>::encode(input, &input_encoded);

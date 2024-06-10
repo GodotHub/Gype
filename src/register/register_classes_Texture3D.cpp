@@ -10,7 +10,7 @@
 using namespace godot;
 
 void register_classes_Texture3D() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<Texture3D>("Texture3D")
 			.constructor<>()
 			.fun<static_cast<Image::Format (Texture3D::*)() const>(&Texture3D::_get_format)>("_get_format")

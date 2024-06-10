@@ -2,15 +2,13 @@
 #include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/variant/transform2d.hpp>
 
-
 #include "qjspp.hpp"
 #include "register/register_classes.h"
-
 
 using namespace godot;
 
 void register_classes_CanvasLayer() {
-	qjs::Context::Module &_module = _Node;
+	qjs::Context::Module &_module = get_Node_module();
 	_module.class_<CanvasLayer>("CanvasLayer")
 			.constructor<>()
 			.property<&CanvasLayer::get_layer, &CanvasLayer::set_layer>("layer")

@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_RDPipelineRasterizationState() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<RDPipelineRasterizationState>("RDPipelineRasterizationState")
 			.constructor<>()
 			.property<&RDPipelineRasterizationState::get_enable_depth_clamp, &RDPipelineRasterizationState::set_enable_depth_clamp>("enable_depth_clamp")

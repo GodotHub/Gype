@@ -36,6 +36,7 @@
 #include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
+#include <godot_cpp/classes/native_menu.hpp>
 #include <godot_cpp/classes/popup.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/string.hpp>
@@ -58,6 +59,8 @@ class PopupMenu : public Popup {
 public:
 
 	bool activate_item_by_event(const Ref<InputEvent> &event, bool for_global_only = false);
+	void set_prefer_native_menu(bool enabled);
+	bool is_prefer_native_menu() const;
 	void add_item(const String &label, int32_t id = -1, Key accel = (Key)0);
 	void add_icon_item(const Ref<Texture2D> &texture, const String &label, int32_t id = -1, Key accel = (Key)0);
 	void add_check_item(const String &label, int32_t id = -1, Key accel = (Key)0);
@@ -72,6 +75,7 @@ public:
 	void add_radio_check_shortcut(const Ref<Shortcut> &shortcut, int32_t id = -1, bool global = false);
 	void add_icon_radio_check_shortcut(const Ref<Texture2D> &texture, const Ref<Shortcut> &shortcut, int32_t id = -1, bool global = false);
 	void add_submenu_item(const String &label, const String &submenu, int32_t id = -1);
+	void add_submenu_node_item(const String &label, PopupMenu *submenu, int32_t id = -1);
 	void set_item_text(int32_t index, const String &text);
 	void set_item_text_direction(int32_t index, Control::TextDirection direction);
 	void set_item_language(int32_t index, const String &language);
@@ -84,6 +88,7 @@ public:
 	void set_item_metadata(int32_t index, const Variant &metadata);
 	void set_item_disabled(int32_t index, bool disabled);
 	void set_item_submenu(int32_t index, const String &submenu);
+	void set_item_submenu_node(int32_t index, PopupMenu *submenu);
 	void set_item_as_separator(int32_t index, bool enable);
 	void set_item_as_checkable(int32_t index, bool enable);
 	void set_item_as_radio_checkable(int32_t index, bool enable);
@@ -91,6 +96,7 @@ public:
 	void set_item_shortcut(int32_t index, const Ref<Shortcut> &shortcut, bool global = false);
 	void set_item_indent(int32_t index, int32_t indent);
 	void set_item_multistate(int32_t index, int32_t state);
+	void set_item_multistate_max(int32_t index, int32_t max_states);
 	void set_item_shortcut_disabled(int32_t index, bool disabled);
 	void toggle_item_checked(int32_t index);
 	void toggle_item_multistate(int32_t index);
@@ -107,6 +113,7 @@ public:
 	Variant get_item_metadata(int32_t index) const;
 	bool is_item_disabled(int32_t index) const;
 	String get_item_submenu(int32_t index) const;
+	PopupMenu *get_item_submenu_node(int32_t index) const;
 	bool is_item_separator(int32_t index) const;
 	bool is_item_checkable(int32_t index) const;
 	bool is_item_radio_checkable(int32_t index) const;
@@ -114,6 +121,8 @@ public:
 	String get_item_tooltip(int32_t index) const;
 	Ref<Shortcut> get_item_shortcut(int32_t index) const;
 	int32_t get_item_indent(int32_t index) const;
+	int32_t get_item_multistate_max(int32_t index) const;
+	int32_t get_item_multistate(int32_t index) const;
 	void set_focused_item(int32_t index);
 	int32_t get_focused_item() const;
 	void set_item_count(int32_t count);
@@ -132,6 +141,9 @@ public:
 	double get_submenu_popup_delay() const;
 	void set_allow_search(bool allow);
 	bool get_allow_search() const;
+	bool is_system_menu() const;
+	void set_system_menu(NativeMenu::SystemMenus system_menu_id);
+	NativeMenu::SystemMenus get_system_menu() const;
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {

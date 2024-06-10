@@ -15,9 +15,8 @@
 using namespace godot;
 
 void register_classes_Engine() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<Engine>("Engine")
-			.constructor<>()
 			.property<&Engine::is_printing_error_messages, &Engine::set_print_error_messages>("print_error_messages")
 			.property<&Engine::get_physics_ticks_per_second, &Engine::set_physics_ticks_per_second>("physics_ticks_per_second")
 			.property<&Engine::get_max_physics_steps_per_frame, &Engine::set_max_physics_steps_per_frame>("max_physics_steps_per_frame")

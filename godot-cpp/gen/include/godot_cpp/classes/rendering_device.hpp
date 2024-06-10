@@ -84,6 +84,19 @@ public:
 	};
 
 	enum DriverResource {
+		DRIVER_RESOURCE_LOGICAL_DEVICE = 0,
+		DRIVER_RESOURCE_PHYSICAL_DEVICE = 1,
+		DRIVER_RESOURCE_TOPMOST_OBJECT = 2,
+		DRIVER_RESOURCE_COMMAND_QUEUE = 3,
+		DRIVER_RESOURCE_QUEUE_FAMILY = 4,
+		DRIVER_RESOURCE_TEXTURE = 5,
+		DRIVER_RESOURCE_TEXTURE_VIEW = 6,
+		DRIVER_RESOURCE_TEXTURE_DATA_FORMAT = 7,
+		DRIVER_RESOURCE_SAMPLER = 8,
+		DRIVER_RESOURCE_UNIFORM_SET = 9,
+		DRIVER_RESOURCE_BUFFER = 10,
+		DRIVER_RESOURCE_COMPUTE_PIPELINE = 11,
+		DRIVER_RESOURCE_RENDER_PIPELINE = 12,
 		DRIVER_RESOURCE_VULKAN_DEVICE = 0,
 		DRIVER_RESOURCE_VULKAN_PHYSICAL_DEVICE = 1,
 		DRIVER_RESOURCE_VULKAN_INSTANCE = 2,
@@ -548,20 +561,23 @@ public:
 	};
 
 	enum InitialAction {
-		INITIAL_ACTION_CLEAR = 0,
+		INITIAL_ACTION_LOAD = 0,
+		INITIAL_ACTION_CLEAR = 1,
+		INITIAL_ACTION_DISCARD = 2,
+		INITIAL_ACTION_MAX = 3,
 		INITIAL_ACTION_CLEAR_REGION = 1,
-		INITIAL_ACTION_CLEAR_REGION_CONTINUE = 2,
-		INITIAL_ACTION_KEEP = 3,
-		INITIAL_ACTION_DROP = 4,
-		INITIAL_ACTION_CONTINUE = 5,
-		INITIAL_ACTION_MAX = 6,
+		INITIAL_ACTION_CLEAR_REGION_CONTINUE = 1,
+		INITIAL_ACTION_KEEP = 0,
+		INITIAL_ACTION_DROP = 2,
+		INITIAL_ACTION_CONTINUE = 0,
 	};
 
 	enum FinalAction {
-		FINAL_ACTION_READ = 0,
+		FINAL_ACTION_STORE = 0,
 		FINAL_ACTION_DISCARD = 1,
-		FINAL_ACTION_CONTINUE = 2,
-		FINAL_ACTION_MAX = 3,
+		FINAL_ACTION_MAX = 2,
+		FINAL_ACTION_READ = 0,
+		FINAL_ACTION_CONTINUE = 0,
 	};
 
 	enum ShaderStage {
@@ -642,14 +658,14 @@ public:
 	RID texture_create_shared(const Ref<RDTextureView> &view, const RID &with_texture);
 	RID texture_create_shared_from_slice(const Ref<RDTextureView> &view, const RID &with_texture, uint32_t layer, uint32_t mipmap, uint32_t mipmaps = 1, RenderingDevice::TextureSliceType slice_type = (RenderingDevice::TextureSliceType)0);
 	RID texture_create_from_extension(RenderingDevice::TextureType type, RenderingDevice::DataFormat format, RenderingDevice::TextureSamples samples, BitField<RenderingDevice::TextureUsageBits> usage_flags, uint64_t image, uint64_t width, uint64_t height, uint64_t depth, uint64_t layers);
-	Error texture_update(const RID &texture, uint32_t layer, const PackedByteArray &data, BitField<RenderingDevice::BarrierMask> post_barrier = (BitField<RenderingDevice::BarrierMask>)32767);
+	Error texture_update(const RID &texture, uint32_t layer, const PackedByteArray &data);
 	PackedByteArray texture_get_data(const RID &texture, uint32_t layer);
 	bool texture_is_format_supported_for_usage(RenderingDevice::DataFormat format, BitField<RenderingDevice::TextureUsageBits> usage_flags) const;
 	bool texture_is_shared(const RID &texture);
 	bool texture_is_valid(const RID &texture);
-	Error texture_copy(const RID &from_texture, const RID &to_texture, const Vector3 &from_pos, const Vector3 &to_pos, const Vector3 &size, uint32_t src_mipmap, uint32_t dst_mipmap, uint32_t src_layer, uint32_t dst_layer, BitField<RenderingDevice::BarrierMask> post_barrier = (BitField<RenderingDevice::BarrierMask>)32767);
-	Error texture_clear(const RID &texture, const Color &color, uint32_t base_mipmap, uint32_t mipmap_count, uint32_t base_layer, uint32_t layer_count, BitField<RenderingDevice::BarrierMask> post_barrier = (BitField<RenderingDevice::BarrierMask>)32767);
-	Error texture_resolve_multisample(const RID &from_texture, const RID &to_texture, BitField<RenderingDevice::BarrierMask> post_barrier = (BitField<RenderingDevice::BarrierMask>)32767);
+	Error texture_copy(const RID &from_texture, const RID &to_texture, const Vector3 &from_pos, const Vector3 &to_pos, const Vector3 &size, uint32_t src_mipmap, uint32_t dst_mipmap, uint32_t src_layer, uint32_t dst_layer);
+	Error texture_clear(const RID &texture, const Color &color, uint32_t base_mipmap, uint32_t mipmap_count, uint32_t base_layer, uint32_t layer_count);
+	Error texture_resolve_multisample(const RID &from_texture, const RID &to_texture);
 	Ref<RDTextureFormat> texture_get_format(const RID &texture);
 	uint64_t texture_get_native_handle(const RID &texture);
 	int64_t framebuffer_format_create(const TypedArray<RDAttachmentFormat> &attachments, uint32_t view_count = 1);
@@ -679,8 +695,9 @@ public:
 	RID texture_buffer_create(uint32_t size_bytes, RenderingDevice::DataFormat format, const PackedByteArray &data = PackedByteArray());
 	RID uniform_set_create(const TypedArray<RDUniform> &uniforms, const RID &shader, uint32_t shader_set);
 	bool uniform_set_is_valid(const RID &uniform_set);
-	Error buffer_update(const RID &buffer, uint32_t offset, uint32_t size_bytes, const PackedByteArray &data, BitField<RenderingDevice::BarrierMask> post_barrier = (BitField<RenderingDevice::BarrierMask>)32767);
-	Error buffer_clear(const RID &buffer, uint32_t offset, uint32_t size_bytes, BitField<RenderingDevice::BarrierMask> post_barrier = (BitField<RenderingDevice::BarrierMask>)32767);
+	Error buffer_copy(const RID &src_buffer, const RID &dst_buffer, uint32_t src_offset, uint32_t dst_offset, uint32_t size);
+	Error buffer_update(const RID &buffer, uint32_t offset, uint32_t size_bytes, const PackedByteArray &data);
+	Error buffer_clear(const RID &buffer, uint32_t offset, uint32_t size_bytes);
 	PackedByteArray buffer_get_data(const RID &buffer, uint32_t offset_bytes = 0, uint32_t size_bytes = 0);
 	RID render_pipeline_create(const RID &shader, int64_t framebuffer_format, int64_t vertex_format, RenderingDevice::RenderPrimitive primitive, const Ref<RDPipelineRasterizationState> &rasterization_state, const Ref<RDPipelineMultisampleState> &multisample_state, const Ref<RDPipelineDepthStencilState> &stencil_state, const Ref<RDPipelineColorBlendState> &color_blend_state, BitField<RenderingDevice::PipelineDynamicStateFlags> dynamic_state_flags = (BitField<RenderingDevice::PipelineDynamicStateFlags>)0, uint32_t for_render_pass = 0, const TypedArray<RDPipelineSpecializationConstant> &specialization_constants = {});
 	bool render_pipeline_is_valid(const RID &render_pipeline);
@@ -688,9 +705,9 @@ public:
 	bool compute_pipeline_is_valid(const RID &compute_pipeline);
 	int32_t screen_get_width(int32_t screen = 0) const;
 	int32_t screen_get_height(int32_t screen = 0) const;
-	int64_t screen_get_framebuffer_format() const;
+	int64_t screen_get_framebuffer_format(int32_t screen = 0) const;
 	int64_t draw_list_begin_for_screen(int32_t screen = 0, const Color &clear_color = Color(0, 0, 0, 1));
-	int64_t draw_list_begin(const RID &framebuffer, RenderingDevice::InitialAction initial_color_action, RenderingDevice::FinalAction final_color_action, RenderingDevice::InitialAction initial_depth_action, RenderingDevice::FinalAction final_depth_action, const PackedColorArray &clear_color_values = PackedColorArray(), double clear_depth = 1.0, uint32_t clear_stencil = 0, const Rect2 &region = Rect2(0, 0, 0, 0), const TypedArray<RID> &storage_textures = {});
+	int64_t draw_list_begin(const RID &framebuffer, RenderingDevice::InitialAction initial_color_action, RenderingDevice::FinalAction final_color_action, RenderingDevice::InitialAction initial_depth_action, RenderingDevice::FinalAction final_depth_action, const PackedColorArray &clear_color_values = PackedColorArray(), double clear_depth = 1.0, uint32_t clear_stencil = 0, const Rect2 &region = Rect2(0, 0, 0, 0));
 	PackedInt64Array draw_list_begin_split(const RID &framebuffer, uint32_t splits, RenderingDevice::InitialAction initial_color_action, RenderingDevice::FinalAction final_color_action, RenderingDevice::InitialAction initial_depth_action, RenderingDevice::FinalAction final_depth_action, const PackedColorArray &clear_color_values = PackedColorArray(), double clear_depth = 1.0, uint32_t clear_stencil = 0, const Rect2 &region = Rect2(0, 0, 0, 0), const TypedArray<RID> &storage_textures = {});
 	void draw_list_set_blend_constants(int64_t draw_list, const Color &color);
 	void draw_list_bind_render_pipeline(int64_t draw_list, const RID &render_pipeline);
@@ -703,14 +720,15 @@ public:
 	void draw_list_disable_scissor(int64_t draw_list);
 	int64_t draw_list_switch_to_next_pass();
 	PackedInt64Array draw_list_switch_to_next_pass_split(uint32_t splits);
-	void draw_list_end(BitField<RenderingDevice::BarrierMask> post_barrier = (BitField<RenderingDevice::BarrierMask>)32767);
-	int64_t compute_list_begin(bool allow_draw_overlap = false);
+	void draw_list_end();
+	int64_t compute_list_begin();
 	void compute_list_bind_compute_pipeline(int64_t compute_list, const RID &compute_pipeline);
 	void compute_list_set_push_constant(int64_t compute_list, const PackedByteArray &buffer, uint32_t size_bytes);
 	void compute_list_bind_uniform_set(int64_t compute_list, const RID &uniform_set, uint32_t set_index);
 	void compute_list_dispatch(int64_t compute_list, uint32_t x_groups, uint32_t y_groups, uint32_t z_groups);
+	void compute_list_dispatch_indirect(int64_t compute_list, const RID &buffer, uint32_t offset);
 	void compute_list_add_barrier(int64_t compute_list);
-	void compute_list_end(BitField<RenderingDevice::BarrierMask> post_barrier = (BitField<RenderingDevice::BarrierMask>)32767);
+	void compute_list_end();
 	void free_rid(const RID &rid);
 	void capture_timestamp(const String &name);
 	uint32_t get_captured_timestamps_count() const;

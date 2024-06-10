@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/collision_object3d.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -291,7 +292,7 @@ uint32_t CollisionObject3D::shape_find_owner(int32_t shape_index) const {
 	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &shape_index_encoded);
 }
 
-void CollisionObject3D::_input_event(Camera3D *camera, const Ref<InputEvent> &event, const Vector3 &position, const Vector3 &normal, int32_t shape_idx) {}
+void CollisionObject3D::_input_event(Camera3D *camera, const Ref<InputEvent> &event, const Vector3 &event_position, const Vector3 &normal, int32_t shape_idx) {}
 
 void CollisionObject3D::_mouse_enter() {}
 

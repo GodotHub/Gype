@@ -33,6 +33,7 @@
 #ifndef GODOT_CPP_CPU_PARTICLES3D_HPP
 #define GODOT_CPP_CPU_PARTICLES3D_HPP
 
+#include <godot_cpp/variant/aabb.hpp>
 #include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/geometry_instance3d.hpp>
 #include <godot_cpp/variant/packed_color_array.hpp>
@@ -104,6 +105,7 @@ public:
 	void set_pre_process_time(double secs);
 	void set_explosiveness_ratio(double ratio);
 	void set_randomness_ratio(double ratio);
+	void set_visibility_aabb(const AABB &aabb);
 	void set_lifetime_randomness(double random);
 	void set_use_local_coordinates(bool enable);
 	void set_fixed_fps(int32_t fps);
@@ -116,6 +118,7 @@ public:
 	double get_pre_process_time() const;
 	double get_explosiveness_ratio() const;
 	double get_randomness_ratio() const;
+	AABB get_visibility_aabb() const;
 	double get_lifetime_randomness() const;
 	bool get_use_local_coordinates() const;
 	int32_t get_fixed_fps() const;

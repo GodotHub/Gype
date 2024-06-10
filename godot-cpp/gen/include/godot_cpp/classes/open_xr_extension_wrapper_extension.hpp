@@ -35,7 +35,9 @@
 
 #include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/core/object.hpp>
+#include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/variant/typed_array.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -58,6 +60,11 @@ public:
 	virtual uint64_t _set_instance_create_info_and_get_next_pointer(void *next_pointer);
 	virtual uint64_t _set_session_create_and_get_next_pointer(void *next_pointer);
 	virtual uint64_t _set_swapchain_create_info_and_get_next_pointer(void *next_pointer);
+	virtual uint64_t _set_hand_joint_locations_and_get_next_pointer(int32_t hand_index, void *next_pointer);
+	virtual int32_t _get_composition_layer_count();
+	virtual uint64_t _get_composition_layer(int32_t index);
+	virtual int32_t _get_composition_layer_order(int32_t index);
+	virtual PackedStringArray _get_suggested_tracker_names();
 	virtual void _on_register_metadata();
 	virtual void _on_before_instance_created();
 	virtual void _on_instance_created(uint64_t instance);
@@ -65,6 +72,7 @@ public:
 	virtual void _on_session_created(uint64_t session);
 	virtual void _on_process();
 	virtual void _on_pre_render();
+	virtual void _on_main_swapchains_created();
 	virtual void _on_session_destroyed();
 	virtual void _on_state_idle();
 	virtual void _on_state_ready();
@@ -75,6 +83,10 @@ public:
 	virtual void _on_state_loss_pending();
 	virtual void _on_state_exiting();
 	virtual bool _on_event_polled(const void *event);
+	virtual uint64_t _set_viewport_composition_layer_and_get_next_pointer(const void *layer, const Dictionary &property_values, void *next_pointer);
+	virtual TypedArray<Dictionary> _get_viewport_composition_layer_extension_properties();
+	virtual Dictionary _get_viewport_composition_layer_extension_property_defaults();
+	virtual void _on_viewport_composition_layer_destroyed(const void *layer);
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -93,6 +105,21 @@ protected:
 		}
 		if constexpr (!std::is_same_v<decltype(&B::_set_swapchain_create_info_and_get_next_pointer),decltype(&T::_set_swapchain_create_info_and_get_next_pointer)>) {
 			BIND_VIRTUAL_METHOD(T, _set_swapchain_create_info_and_get_next_pointer);
+		}
+		if constexpr (!std::is_same_v<decltype(&B::_set_hand_joint_locations_and_get_next_pointer),decltype(&T::_set_hand_joint_locations_and_get_next_pointer)>) {
+			BIND_VIRTUAL_METHOD(T, _set_hand_joint_locations_and_get_next_pointer);
+		}
+		if constexpr (!std::is_same_v<decltype(&B::_get_composition_layer_count),decltype(&T::_get_composition_layer_count)>) {
+			BIND_VIRTUAL_METHOD(T, _get_composition_layer_count);
+		}
+		if constexpr (!std::is_same_v<decltype(&B::_get_composition_layer),decltype(&T::_get_composition_layer)>) {
+			BIND_VIRTUAL_METHOD(T, _get_composition_layer);
+		}
+		if constexpr (!std::is_same_v<decltype(&B::_get_composition_layer_order),decltype(&T::_get_composition_layer_order)>) {
+			BIND_VIRTUAL_METHOD(T, _get_composition_layer_order);
+		}
+		if constexpr (!std::is_same_v<decltype(&B::_get_suggested_tracker_names),decltype(&T::_get_suggested_tracker_names)>) {
+			BIND_VIRTUAL_METHOD(T, _get_suggested_tracker_names);
 		}
 		if constexpr (!std::is_same_v<decltype(&B::_on_register_metadata),decltype(&T::_on_register_metadata)>) {
 			BIND_VIRTUAL_METHOD(T, _on_register_metadata);
@@ -114,6 +141,9 @@ protected:
 		}
 		if constexpr (!std::is_same_v<decltype(&B::_on_pre_render),decltype(&T::_on_pre_render)>) {
 			BIND_VIRTUAL_METHOD(T, _on_pre_render);
+		}
+		if constexpr (!std::is_same_v<decltype(&B::_on_main_swapchains_created),decltype(&T::_on_main_swapchains_created)>) {
+			BIND_VIRTUAL_METHOD(T, _on_main_swapchains_created);
 		}
 		if constexpr (!std::is_same_v<decltype(&B::_on_session_destroyed),decltype(&T::_on_session_destroyed)>) {
 			BIND_VIRTUAL_METHOD(T, _on_session_destroyed);
@@ -144,6 +174,18 @@ protected:
 		}
 		if constexpr (!std::is_same_v<decltype(&B::_on_event_polled),decltype(&T::_on_event_polled)>) {
 			BIND_VIRTUAL_METHOD(T, _on_event_polled);
+		}
+		if constexpr (!std::is_same_v<decltype(&B::_set_viewport_composition_layer_and_get_next_pointer),decltype(&T::_set_viewport_composition_layer_and_get_next_pointer)>) {
+			BIND_VIRTUAL_METHOD(T, _set_viewport_composition_layer_and_get_next_pointer);
+		}
+		if constexpr (!std::is_same_v<decltype(&B::_get_viewport_composition_layer_extension_properties),decltype(&T::_get_viewport_composition_layer_extension_properties)>) {
+			BIND_VIRTUAL_METHOD(T, _get_viewport_composition_layer_extension_properties);
+		}
+		if constexpr (!std::is_same_v<decltype(&B::_get_viewport_composition_layer_extension_property_defaults),decltype(&T::_get_viewport_composition_layer_extension_property_defaults)>) {
+			BIND_VIRTUAL_METHOD(T, _get_viewport_composition_layer_extension_property_defaults);
+		}
+		if constexpr (!std::is_same_v<decltype(&B::_on_viewport_composition_layer_destroyed),decltype(&T::_on_viewport_composition_layer_destroyed)>) {
+			BIND_VIRTUAL_METHOD(T, _on_viewport_composition_layer_destroyed);
 		}
 	}
 

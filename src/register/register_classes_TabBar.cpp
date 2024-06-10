@@ -13,7 +13,7 @@
 using namespace godot;
 
 void register_classes_TabBar() {
-	qjs::Context::Module &_module = _Control;
+	qjs::Context::Module &_module = get_Control_module();
 	_module.class_<TabBar>("TabBar")
 			.constructor<>()
 			.property<&TabBar::get_tab_count, &TabBar::set_tab_count>("tab_count")

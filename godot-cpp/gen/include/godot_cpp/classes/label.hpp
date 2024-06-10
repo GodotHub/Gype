@@ -37,6 +37,7 @@
 #include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/variant/packed_float32_array.hpp>
+#include <godot_cpp/variant/rect2.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/classes/text_server.hpp>
@@ -77,6 +78,8 @@ public:
 	PackedFloat32Array get_tab_stops() const;
 	void set_text_overrun_behavior(TextServer::OverrunBehavior overrun_behavior);
 	TextServer::OverrunBehavior get_text_overrun_behavior() const;
+	void set_ellipsis_char(const String &_char);
+	String get_ellipsis_char() const;
 	void set_uppercase(bool enable);
 	bool is_uppercase() const;
 	int32_t get_line_height(int32_t line = -1) const;
@@ -97,6 +100,7 @@ public:
 	TextServer::StructuredTextParser get_structured_text_bidi_override() const;
 	void set_structured_text_bidi_override_options(const Array &args);
 	Array get_structured_text_bidi_override_options() const;
+	Rect2 get_character_bounds(int32_t pos) const;
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {

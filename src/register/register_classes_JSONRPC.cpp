@@ -10,7 +10,7 @@
 using namespace godot;
 
 void register_classes_JSONRPC() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<JSONRPC>("JSONRPC")
 			.constructor<>()
 			.fun<static_cast<void (JSONRPC::*)(const String &, Object *)>(&JSONRPC::set_scope)>("set_scope")

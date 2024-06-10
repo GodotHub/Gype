@@ -6,7 +6,7 @@
 using namespace godot;
 
 void register_classes_GLTFMesh() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<GLTFMesh>("GLTFMesh")
 			.constructor<>()
 			.property<&GLTFMesh::get_mesh, &GLTFMesh::set_mesh>("mesh")

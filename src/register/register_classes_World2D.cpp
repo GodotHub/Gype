@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_World2D() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<World2D>("World2D")
 			.constructor<>()
 			.property<&World2D::get_canvas>("canvas")

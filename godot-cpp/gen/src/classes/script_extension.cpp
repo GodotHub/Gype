@@ -32,12 +32,12 @@
 
 #include <godot_cpp/classes/script_extension.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
-#include <godot_cpp/classes/script_language.hpp>
 #include <godot_cpp/core/object.hpp>
-
+#include <godot_cpp/classes/script_language.hpp>
 
 namespace godot {
 
@@ -109,6 +109,10 @@ bool ScriptExtension::_has_static_method(const StringName &method) const {
 	return false;
 }
 
+Variant ScriptExtension::_get_script_method_argument_count(const StringName &method) const {
+	return Variant();
+}
+
 Dictionary ScriptExtension::_get_method_info(const StringName &method) const {
 	return Dictionary();
 }
@@ -175,4 +179,5 @@ Variant ScriptExtension::_get_rpc_config() const {
 	return Variant();
 }
 
-} // namespace godot
+
+} // namespace godot 

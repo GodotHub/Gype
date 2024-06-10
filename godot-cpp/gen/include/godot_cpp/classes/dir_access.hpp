@@ -80,6 +80,9 @@ public:
 	static Error rename_absolute(const String &from, const String &to);
 	Error remove(const String &path);
 	static Error remove_absolute(const String &path);
+	bool is_link(const String &path);
+	String read_link(const String &path);
+	Error create_link(const String &source, const String &target);
 	void set_include_navigational(bool enable);
 	bool get_include_navigational() const;
 	void set_include_hidden(bool enable);

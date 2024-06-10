@@ -11,7 +11,7 @@
 using namespace godot;
 
 void register_classes_WebRTCPeerConnection() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<WebRTCPeerConnection>("WebRTCPeerConnection")
 			.constructor<>()
 			.static_fun<&WebRTCPeerConnection::set_default_extension>("set_default_extension")

@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_AudioEffectInstance() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<AudioEffectInstance>("AudioEffectInstance")
 			.constructor<>()
 			.fun<static_cast<void (AudioEffectInstance::*)(const void *, AudioFrame *, int32_t)>(&AudioEffectInstance::_process)>("_process")

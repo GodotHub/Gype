@@ -32,13 +32,15 @@
 
 #include <godot_cpp/classes/graph_edit.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
+#include <godot_cpp/classes/graph_frame.hpp>
 #include <godot_cpp/classes/h_box_container.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/core/object.hpp>
-#include <godot_cpp/variant/string_name.hpp>
+#include <godot_cpp/variant/rect2.hpp>
 
 namespace godot {
 
@@ -88,6 +90,20 @@ TypedArray<Dictionary> GraphEdit::get_connection_list() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GraphEdit::get_class_static()._native_ptr(), StringName("get_connection_list")._native_ptr(), 3995934104);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, TypedArray<Dictionary>());
 	return internal::_call_native_mb_ret<TypedArray<Dictionary>>(_gde_method_bind, _owner);
+}
+
+Dictionary GraphEdit::get_closest_connection_at_point(const Vector2 &point, double max_distance) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GraphEdit::get_class_static()._native_ptr(), StringName("get_closest_connection_at_point")._native_ptr(), 453879819);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Dictionary());
+	double max_distance_encoded;
+	PtrToArg<double>::encode(max_distance, &max_distance_encoded);
+	return internal::_call_native_mb_ret<Dictionary>(_gde_method_bind, _owner, &point, &max_distance_encoded);
+}
+
+TypedArray<Dictionary> GraphEdit::get_connections_intersecting_with_rect(const Rect2 &rect) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GraphEdit::get_class_static()._native_ptr(), StringName("get_connections_intersecting_with_rect")._native_ptr(), 2709748719);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, TypedArray<Dictionary>());
+	return internal::_call_native_mb_ret<TypedArray<Dictionary>>(_gde_method_bind, _owner, &rect);
 }
 
 void GraphEdit::clear_connections() {
@@ -176,10 +192,34 @@ bool GraphEdit::is_valid_connection_type(int32_t from_type, int32_t to_type) con
 	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner, &from_type_encoded, &to_type_encoded);
 }
 
-PackedVector2Array GraphEdit::get_connection_line(const Vector2 &from_node, const Vector2 &to_node) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GraphEdit::get_class_static()._native_ptr(), StringName("get_connection_line")._native_ptr(), 1562168077);
+PackedVector2Array GraphEdit::get_connection_line(const Vector2 &from_node, const Vector2 &to_node) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GraphEdit::get_class_static()._native_ptr(), StringName("get_connection_line")._native_ptr(), 3932192302);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, PackedVector2Array());
 	return internal::_call_native_mb_ret<PackedVector2Array>(_gde_method_bind, _owner, &from_node, &to_node);
+}
+
+void GraphEdit::attach_graph_element_to_frame(const StringName &element, const StringName &frame) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GraphEdit::get_class_static()._native_ptr(), StringName("attach_graph_element_to_frame")._native_ptr(), 3740211285);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &element, &frame);
+}
+
+void GraphEdit::detach_graph_element_from_frame(const StringName &element) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GraphEdit::get_class_static()._native_ptr(), StringName("detach_graph_element_from_frame")._native_ptr(), 3304788590);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &element);
+}
+
+GraphFrame *GraphEdit::get_element_frame(const StringName &element) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GraphEdit::get_class_static()._native_ptr(), StringName("get_element_frame")._native_ptr(), 988084372);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, nullptr);
+	return internal::_call_native_mb_ret_obj<GraphFrame>(_gde_method_bind, _owner, &element);
+}
+
+TypedArray<StringName> GraphEdit::get_attached_nodes_of_frame(const StringName &frame) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GraphEdit::get_class_static()._native_ptr(), StringName("get_attached_nodes_of_frame")._native_ptr(), 689397652);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, TypedArray<StringName>());
+	return internal::_call_native_mb_ret<TypedArray<StringName>>(_gde_method_bind, _owner, &frame);
 }
 
 void GraphEdit::set_panning_scheme(GraphEdit::PanningScheme scheme) {
@@ -262,6 +302,18 @@ bool GraphEdit::is_showing_grid() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GraphEdit::get_class_static()._native_ptr(), StringName("is_showing_grid")._native_ptr(), 36873697);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
 	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
+}
+
+void GraphEdit::set_grid_pattern(GraphEdit::GridPattern pattern) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GraphEdit::get_class_static()._native_ptr(), StringName("set_grid_pattern")._native_ptr(), 1074098205);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &pattern);
+}
+
+GraphEdit::GridPattern GraphEdit::get_grid_pattern() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GraphEdit::get_class_static()._native_ptr(), StringName("get_grid_pattern")._native_ptr(), 1286127528);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, GraphEdit::GridPattern(0));
+	return (GraphEdit::GridPattern)internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
 }
 
 void GraphEdit::set_snapping_enabled(bool enable) {

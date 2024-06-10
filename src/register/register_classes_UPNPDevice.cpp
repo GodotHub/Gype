@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_UPNPDevice() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<UPNPDevice>("UPNPDevice")
 			.constructor<>()
 			.property<&UPNPDevice::get_description_url, &UPNPDevice::set_description_url>("description_url")

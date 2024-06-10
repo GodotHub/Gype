@@ -8,9 +8,8 @@
 using namespace godot;
 
 void register_classes_Time() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<Time>("Time")
-			.constructor<>()
 			.fun<static_cast<Dictionary (Time::*)(int64_t) const>(&Time::get_datetime_dict_from_unix_time)>("get_datetime_dict_from_unix_time")
 			.fun<static_cast<Dictionary (Time::*)(int64_t) const>(&Time::get_date_dict_from_unix_time)>("get_date_dict_from_unix_time")
 			.fun<static_cast<Dictionary (Time::*)(int64_t) const>(&Time::get_time_dict_from_unix_time)>("get_time_dict_from_unix_time")

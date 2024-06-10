@@ -48,6 +48,7 @@
 #include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/packed_vector2_array.hpp>
 #include <godot_cpp/variant/packed_vector3_array.hpp>
+#include <godot_cpp/variant/packed_vector4_array.hpp>
 #include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/variant/variant.hpp>
 
@@ -73,6 +74,7 @@ void Array::_init_bindings_constructors_destructor() {
 	_method_bindings.constructor_9 = internal::gdextension_interface_variant_get_ptr_constructor(GDEXTENSION_VARIANT_TYPE_ARRAY, 9);
 	_method_bindings.constructor_10 = internal::gdextension_interface_variant_get_ptr_constructor(GDEXTENSION_VARIANT_TYPE_ARRAY, 10);
 	_method_bindings.constructor_11 = internal::gdextension_interface_variant_get_ptr_constructor(GDEXTENSION_VARIANT_TYPE_ARRAY, 11);
+	_method_bindings.constructor_12 = internal::gdextension_interface_variant_get_ptr_constructor(GDEXTENSION_VARIANT_TYPE_ARRAY, 12);
 	_method_bindings.destructor = internal::gdextension_interface_variant_get_ptr_destructor(GDEXTENSION_VARIANT_TYPE_ARRAY);
 }
 void Array::init_bindings() {
@@ -238,6 +240,10 @@ Array::Array(const PackedVector3Array &from) {
 
 Array::Array(const PackedColorArray &from) {
 	internal::_call_builtin_constructor(_method_bindings.constructor_11, &opaque, &from);
+}
+
+Array::Array(const PackedVector4Array &from) {
+	internal::_call_builtin_constructor(_method_bindings.constructor_12, &opaque, &from);
 }
 
 Array::Array(Array &&other) {

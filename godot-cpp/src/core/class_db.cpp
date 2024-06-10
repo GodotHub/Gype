@@ -32,6 +32,7 @@
 
 #include <godot_cpp/core/error_macros.hpp>
 #include <godot_cpp/godot.hpp>
+#include <godot_cpp/templates/vector.hpp>
 
 #include <godot_cpp/core/memory.hpp>
 
@@ -42,6 +43,8 @@ namespace godot {
 std::unordered_map<StringName, ClassDB::ClassInfo> ClassDB::classes;
 std::unordered_map<StringName, const GDExtensionInstanceBindingCallbacks *> ClassDB::instance_binding_callbacks;
 std::vector<StringName> ClassDB::class_register_order;
+std::unordered_map<StringName, Object *> ClassDB::engine_singletons;
+std::mutex ClassDB::engine_singletons_mutex;
 GDExtensionInitializationLevel ClassDB::current_level = GDEXTENSION_INITIALIZATION_CORE;
 
 MethodDefinition D_METHOD(StringName p_name) {
@@ -337,6 +340,46 @@ void ClassDB::bind_virtual_method(const StringName &p_class, const StringName &p
 	type.virtual_methods[p_method] = p_call;
 }
 
+void ClassDB::add_virtual_method(const StringName &p_class, const MethodInfo &p_method, const Vector<StringName> &p_arg_names) {
+	std::unordered_map<StringName, ClassInfo>::iterator type_it = classes.find(p_class);
+	ERR_FAIL_COND_MSG(type_it == classes.end(), String("Class '{0}' doesn't exist.").format(Array::make(p_class)));
+
+	GDExtensionClassVirtualMethodInfo mi;
+	mi.name = (GDExtensionStringNamePtr)&p_method.name;
+	mi.method_flags = p_method.flags;
+	mi.return_value = p_method.return_val._to_gdextension();
+	mi.return_value_metadata = p_method.return_val_metadata;
+	mi.argument_count = p_method.arguments.size();
+	if (mi.argument_count > 0) {
+		mi.arguments = (GDExtensionPropertyInfo *)memalloc(sizeof(GDExtensionPropertyInfo) * mi.argument_count);
+		mi.arguments_metadata = (GDExtensionClassMethodArgumentMetadata *)memalloc(sizeof(GDExtensionClassMethodArgumentMetadata) * mi.argument_count);
+		for (int i = 0; i < mi.argument_count; i++) {
+			mi.arguments[i] = p_method.arguments[i]._to_gdextension();
+			mi.arguments_metadata[i] = p_method.arguments_metadata[i];
+		}
+	} else {
+		mi.arguments = nullptr;
+		mi.arguments_metadata = nullptr;
+	}
+
+	if (p_arg_names.size() != mi.argument_count) {
+		WARN_PRINT("Mismatch argument name count for virtual method: " + String(p_class) + "::" + p_method.name);
+	} else {
+		for (int i = 0; i < p_arg_names.size(); i++) {
+			mi.arguments[i].name = (GDExtensionStringNamePtr)&p_arg_names[i];
+		}
+	}
+
+	internal::gdextension_interface_classdb_register_extension_class_virtual_method(internal::library, &p_class, &mi);
+
+	if (mi.arguments) {
+		memfree(mi.arguments);
+	}
+	if (mi.arguments_metadata) {
+		memfree(mi.arguments_metadata);
+	}
+}
+
 void ClassDB::initialize_class(const ClassInfo &p_cl) {
 }
 
@@ -377,6 +420,22 @@ void ClassDB::deinitialize(GDExtensionInitializationLevel p_level) {
 			return to_erase.count(p_name) > 0;
 		});
 		class_register_order.erase(it, class_register_order.end());
+	}
+
+	if (p_level == GDEXTENSION_INITIALIZATION_CORE) {
+		// Make a new list of the singleton objects, since freeing the instance bindings will lead to
+		// elements getting removed from engine_singletons.
+		std::vector<Object *> singleton_objects;
+		{
+			std::lock_guard<std::mutex> lock(engine_singletons_mutex);
+			singleton_objects.reserve(engine_singletons.size());
+			for (const std::pair<StringName, Object *> &pair : engine_singletons) {
+				singleton_objects.push_back(pair.second);
+			}
+		}
+		for (std::vector<Object *>::iterator i = singleton_objects.begin(); i != singleton_objects.end(); i++) {
+			internal::gdextension_interface_object_free_instance_binding((*i)->_owner, internal::token);
+		}
 	}
 }
 

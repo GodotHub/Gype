@@ -144,6 +144,10 @@ public:
 		}
 	}
 
+	// _FORCE_INLINE_ Ref<T *> operator=(const T *ptr) {
+	// 	return Ref<T *>(ptr);
+	// }
+
 	template <typename T_Other>
 	void reference_ptr(T_Other *p_ptr) {
 		if (reference == p_ptr) {

@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_CameraAttributesPractical() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<CameraAttributesPractical>("CameraAttributesPractical")
 			.constructor<>()
 			.property<&CameraAttributesPractical::is_dof_blur_far_enabled, &CameraAttributesPractical::set_dof_blur_far_enabled>("dof_blur_far_enabled")

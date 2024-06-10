@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_CameraAttributes() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<CameraAttributes>("CameraAttributes")
 			.constructor<>()
 			.property<&CameraAttributes::get_exposure_sensitivity, &CameraAttributes::set_exposure_sensitivity>("exposure_sensitivity")

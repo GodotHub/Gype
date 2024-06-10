@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/navigation_region3d.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -169,6 +170,12 @@ void NavigationRegion3D::bake_navigation_mesh(bool on_thread) {
 	int8_t on_thread_encoded;
 	PtrToArg<bool>::encode(on_thread, &on_thread_encoded);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &on_thread_encoded);
+}
+
+bool NavigationRegion3D::is_baking() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationRegion3D::get_class_static()._native_ptr(), StringName("is_baking")._native_ptr(), 36873697);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
 }
 
 

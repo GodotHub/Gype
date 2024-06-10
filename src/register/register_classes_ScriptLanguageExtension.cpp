@@ -17,7 +17,7 @@
 using namespace godot;
 
 void register_classes_ScriptLanguageExtension() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<ScriptLanguageExtension>("ScriptLanguageExtension")
 			.constructor<>()
 			.fun<static_cast<String (ScriptLanguageExtension::*)() const>(&ScriptLanguageExtension::_get_name)>("_get_name")

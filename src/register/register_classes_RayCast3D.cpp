@@ -10,7 +10,7 @@
 using namespace godot;
 
 void register_classes_RayCast3D() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<RayCast3D>("RayCast3D")
 			.constructor<>()
 			.property<&RayCast3D::is_enabled, &RayCast3D::set_enabled>("enabled")

@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/render_scene_buffers_rd.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -129,46 +130,58 @@ void RenderSceneBuffersRD::clear_context(const StringName &context) {
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &context);
 }
 
-RID RenderSceneBuffersRD::get_color_texture() {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(RenderSceneBuffersRD::get_class_static()._native_ptr(), StringName("get_color_texture")._native_ptr(), 529393457);
+RID RenderSceneBuffersRD::get_color_texture(bool msaa) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(RenderSceneBuffersRD::get_class_static()._native_ptr(), StringName("get_color_texture")._native_ptr(), 3050822880);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, RID());
-	return internal::_call_native_mb_ret<RID>(_gde_method_bind, _owner);
+	int8_t msaa_encoded;
+	PtrToArg<bool>::encode(msaa, &msaa_encoded);
+	return internal::_call_native_mb_ret<RID>(_gde_method_bind, _owner, &msaa_encoded);
 }
 
-RID RenderSceneBuffersRD::get_color_layer(uint32_t layer) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(RenderSceneBuffersRD::get_class_static()._native_ptr(), StringName("get_color_layer")._native_ptr(), 937000113);
+RID RenderSceneBuffersRD::get_color_layer(uint32_t layer, bool msaa) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(RenderSceneBuffersRD::get_class_static()._native_ptr(), StringName("get_color_layer")._native_ptr(), 3087988589);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, RID());
 	int64_t layer_encoded;
 	PtrToArg<int64_t>::encode(layer, &layer_encoded);
-	return internal::_call_native_mb_ret<RID>(_gde_method_bind, _owner, &layer_encoded);
+	int8_t msaa_encoded;
+	PtrToArg<bool>::encode(msaa, &msaa_encoded);
+	return internal::_call_native_mb_ret<RID>(_gde_method_bind, _owner, &layer_encoded, &msaa_encoded);
 }
 
-RID RenderSceneBuffersRD::get_depth_texture() {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(RenderSceneBuffersRD::get_class_static()._native_ptr(), StringName("get_depth_texture")._native_ptr(), 529393457);
+RID RenderSceneBuffersRD::get_depth_texture(bool msaa) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(RenderSceneBuffersRD::get_class_static()._native_ptr(), StringName("get_depth_texture")._native_ptr(), 3050822880);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, RID());
-	return internal::_call_native_mb_ret<RID>(_gde_method_bind, _owner);
+	int8_t msaa_encoded;
+	PtrToArg<bool>::encode(msaa, &msaa_encoded);
+	return internal::_call_native_mb_ret<RID>(_gde_method_bind, _owner, &msaa_encoded);
 }
 
-RID RenderSceneBuffersRD::get_depth_layer(uint32_t layer) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(RenderSceneBuffersRD::get_class_static()._native_ptr(), StringName("get_depth_layer")._native_ptr(), 937000113);
-	CHECK_METHOD_BIND_RET(_gde_method_bind, RID());
-	int64_t layer_encoded;
-	PtrToArg<int64_t>::encode(layer, &layer_encoded);
-	return internal::_call_native_mb_ret<RID>(_gde_method_bind, _owner, &layer_encoded);
-}
-
-RID RenderSceneBuffersRD::get_velocity_texture() {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(RenderSceneBuffersRD::get_class_static()._native_ptr(), StringName("get_velocity_texture")._native_ptr(), 529393457);
-	CHECK_METHOD_BIND_RET(_gde_method_bind, RID());
-	return internal::_call_native_mb_ret<RID>(_gde_method_bind, _owner);
-}
-
-RID RenderSceneBuffersRD::get_velocity_layer(uint32_t layer) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(RenderSceneBuffersRD::get_class_static()._native_ptr(), StringName("get_velocity_layer")._native_ptr(), 937000113);
+RID RenderSceneBuffersRD::get_depth_layer(uint32_t layer, bool msaa) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(RenderSceneBuffersRD::get_class_static()._native_ptr(), StringName("get_depth_layer")._native_ptr(), 3087988589);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, RID());
 	int64_t layer_encoded;
 	PtrToArg<int64_t>::encode(layer, &layer_encoded);
-	return internal::_call_native_mb_ret<RID>(_gde_method_bind, _owner, &layer_encoded);
+	int8_t msaa_encoded;
+	PtrToArg<bool>::encode(msaa, &msaa_encoded);
+	return internal::_call_native_mb_ret<RID>(_gde_method_bind, _owner, &layer_encoded, &msaa_encoded);
+}
+
+RID RenderSceneBuffersRD::get_velocity_texture(bool msaa) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(RenderSceneBuffersRD::get_class_static()._native_ptr(), StringName("get_velocity_texture")._native_ptr(), 3050822880);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, RID());
+	int8_t msaa_encoded;
+	PtrToArg<bool>::encode(msaa, &msaa_encoded);
+	return internal::_call_native_mb_ret<RID>(_gde_method_bind, _owner, &msaa_encoded);
+}
+
+RID RenderSceneBuffersRD::get_velocity_layer(uint32_t layer, bool msaa) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(RenderSceneBuffersRD::get_class_static()._native_ptr(), StringName("get_velocity_layer")._native_ptr(), 3087988589);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, RID());
+	int64_t layer_encoded;
+	PtrToArg<int64_t>::encode(layer, &layer_encoded);
+	int8_t msaa_encoded;
+	PtrToArg<bool>::encode(msaa, &msaa_encoded);
+	return internal::_call_native_mb_ret<RID>(_gde_method_bind, _owner, &layer_encoded, &msaa_encoded);
 }
 
 RID RenderSceneBuffersRD::get_render_target() const {
@@ -187,6 +200,12 @@ Vector2i RenderSceneBuffersRD::get_internal_size() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(RenderSceneBuffersRD::get_class_static()._native_ptr(), StringName("get_internal_size")._native_ptr(), 3690982128);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Vector2i());
 	return internal::_call_native_mb_ret<Vector2i>(_gde_method_bind, _owner);
+}
+
+RenderingServer::ViewportMSAA RenderSceneBuffersRD::get_msaa_3d() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(RenderSceneBuffersRD::get_class_static()._native_ptr(), StringName("get_msaa_3d")._native_ptr(), 3109158617);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, RenderingServer::ViewportMSAA(0));
+	return (RenderingServer::ViewportMSAA)internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
 }
 
 bool RenderSceneBuffersRD::get_use_taa() const {

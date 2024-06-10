@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/script_language_extension.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -118,12 +119,16 @@ bool ScriptLanguageExtension::_can_inherit_from_file() const {
 	return false;
 }
 
-int32_t ScriptLanguageExtension::_find_function(const String &class_name, const String &function_name) const {
+int32_t ScriptLanguageExtension::_find_function(const String &function, const String &code) const {
 	return 0;
 }
 
 String ScriptLanguageExtension::_make_function(const String &class_name, const String &function_name, const PackedStringArray &function_args) const {
 	return String();
+}
+
+bool ScriptLanguageExtension::_can_make_function() const {
+	return false;
 }
 
 Error ScriptLanguageExtension::_open_in_external_editor(const Ref<Script> &script, int32_t line, int32_t column) {
@@ -132,6 +137,10 @@ Error ScriptLanguageExtension::_open_in_external_editor(const Ref<Script> &scrip
 
 bool ScriptLanguageExtension::_overrides_external_editor() {
 	return false;
+}
+
+ScriptLanguage::ScriptNameCasing ScriptLanguageExtension::_preferred_file_name_casing() const {
+	return ScriptLanguage::ScriptNameCasing(0);
 }
 
 Dictionary ScriptLanguageExtension::_complete_code(const String &code, const String &path, Object *owner) const {
@@ -219,6 +228,8 @@ TypedArray<Dictionary> ScriptLanguageExtension::_get_public_annotations() const 
 void ScriptLanguageExtension::_profiling_start() {}
 
 void ScriptLanguageExtension::_profiling_stop() {}
+
+void ScriptLanguageExtension::_profiling_set_save_native_calls(bool enable) {}
 
 int32_t ScriptLanguageExtension::_profiling_get_accumulated_data(ScriptLanguageExtensionProfilingInfo *info_array, int32_t info_max) {
 	return 0;

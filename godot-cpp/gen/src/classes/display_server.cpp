@@ -32,18 +32,21 @@
 
 #include <godot_cpp/classes/display_server.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
 #include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/variant/packed_vector2_array.hpp>
+#include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 
 namespace godot {
 
+DisplayServer *DisplayServer::singleton = nullptr;
+
 DisplayServer *DisplayServer::get_singleton() {
-	static DisplayServer *singleton = nullptr;
 	if (unlikely(singleton == nullptr)) {
 		GDExtensionObjectPtr singleton_obj = internal::gdextension_interface_global_get_singleton(DisplayServer::get_class_static()._native_ptr());
 #ifdef DEBUG_ENABLED
@@ -53,8 +56,18 @@ DisplayServer *DisplayServer::get_singleton() {
 #ifdef DEBUG_ENABLED
 		ERR_FAIL_NULL_V(singleton, nullptr);
 #endif // DEBUG_ENABLED
+		if (likely(singleton)) {
+			ClassDB::_register_engine_singleton(DisplayServer::get_class_static(), singleton);
+		}
 	}
 	return singleton;
+}
+
+DisplayServer::~DisplayServer() {
+	if (singleton == this) {
+		ClassDB::_unregister_engine_singleton(DisplayServer::get_class_static());
+		singleton = nullptr;
+	}
 }
 
 bool DisplayServer::has_feature(DisplayServer::Feature feature) const {
@@ -67,6 +80,12 @@ String DisplayServer::get_name() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(DisplayServer::get_class_static()._native_ptr(), StringName("get_name")._native_ptr(), 201670096);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, String());
 	return internal::_call_native_mb_ret<String>(_gde_method_bind, _owner);
+}
+
+void DisplayServer::help_set_search_callbacks(const Callable &search_callback, const Callable &action_callback) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(DisplayServer::get_class_static()._native_ptr(), StringName("help_set_search_callbacks")._native_ptr(), 1687350599);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &search_callback, &action_callback);
 }
 
 void DisplayServer::global_menu_set_popup_callbacks(const String &menu_root, const Callable &open_callback, const Callable &close_callback) {
@@ -463,6 +482,12 @@ void DisplayServer::global_menu_clear(const String &menu_root) {
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &menu_root);
 }
 
+Dictionary DisplayServer::global_menu_get_system_menu_roots() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(DisplayServer::get_class_static()._native_ptr(), StringName("global_menu_get_system_menu_roots")._native_ptr(), 3102165223);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Dictionary());
+	return internal::_call_native_mb_ret<Dictionary>(_gde_method_bind, _owner);
+}
+
 bool DisplayServer::tts_is_speaking() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(DisplayServer::get_class_static()._native_ptr(), StringName("tts_is_speaking")._native_ptr(), 36873697);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
@@ -543,6 +568,18 @@ Color DisplayServer::get_accent_color() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(DisplayServer::get_class_static()._native_ptr(), StringName("get_accent_color")._native_ptr(), 3444240500);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Color());
 	return internal::_call_native_mb_ret<Color>(_gde_method_bind, _owner);
+}
+
+Color DisplayServer::get_base_color() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(DisplayServer::get_class_static()._native_ptr(), StringName("get_base_color")._native_ptr(), 3444240500);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Color());
+	return internal::_call_native_mb_ret<Color>(_gde_method_bind, _owner);
+}
+
+void DisplayServer::set_system_theme_change_callback(const Callable &callable) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(DisplayServer::get_class_static()._native_ptr(), StringName("set_system_theme_change_callback")._native_ptr(), 1611583062);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &callable);
 }
 
 void DisplayServer::mouse_set_mode(DisplayServer::MouseMode mouse_mode) {
@@ -1213,6 +1250,14 @@ Error DisplayServer::file_dialog_show(const String &title, const String &current
 	return (Error)internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &title, &current_directory, &filename, &show_hidden_encoded, &mode, &filters, &callback);
 }
 
+Error DisplayServer::file_dialog_with_options_show(const String &title, const String &current_directory, const String &root, const String &filename, bool show_hidden, DisplayServer::FileDialogMode mode, const PackedStringArray &filters, const TypedArray<Dictionary> &options, const Callable &callback) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(DisplayServer::get_class_static()._native_ptr(), StringName("file_dialog_with_options_show")._native_ptr(), 1305318754);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Error(0));
+	int8_t show_hidden_encoded;
+	PtrToArg<bool>::encode(show_hidden, &show_hidden_encoded);
+	return (Error)internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &title, &current_directory, &root, &filename, &show_hidden_encoded, &mode, &filters, &options, &callback);
+}
+
 int32_t DisplayServer::keyboard_get_layout_count() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(DisplayServer::get_class_static()._native_ptr(), StringName("keyboard_get_layout_count")._native_ptr(), 3905245786);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
@@ -1285,6 +1330,60 @@ void DisplayServer::set_icon(const Ref<Image> &image) {
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, (image != nullptr ? &image->_owner : nullptr));
 }
 
+int32_t DisplayServer::create_status_indicator(const Ref<Texture2D> &icon, const String &tooltip, const Callable &callback) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(DisplayServer::get_class_static()._native_ptr(), StringName("create_status_indicator")._native_ptr(), 1904285171);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
+	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, (icon != nullptr ? &icon->_owner : nullptr), &tooltip, &callback);
+}
+
+void DisplayServer::status_indicator_set_icon(int32_t id, const Ref<Texture2D> &icon) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(DisplayServer::get_class_static()._native_ptr(), StringName("status_indicator_set_icon")._native_ptr(), 666127730);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t id_encoded;
+	PtrToArg<int64_t>::encode(id, &id_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &id_encoded, (icon != nullptr ? &icon->_owner : nullptr));
+}
+
+void DisplayServer::status_indicator_set_tooltip(int32_t id, const String &tooltip) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(DisplayServer::get_class_static()._native_ptr(), StringName("status_indicator_set_tooltip")._native_ptr(), 501894301);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t id_encoded;
+	PtrToArg<int64_t>::encode(id, &id_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &id_encoded, &tooltip);
+}
+
+void DisplayServer::status_indicator_set_menu(int32_t id, const RID &menu_rid) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(DisplayServer::get_class_static()._native_ptr(), StringName("status_indicator_set_menu")._native_ptr(), 4040184819);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t id_encoded;
+	PtrToArg<int64_t>::encode(id, &id_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &id_encoded, &menu_rid);
+}
+
+void DisplayServer::status_indicator_set_callback(int32_t id, const Callable &callback) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(DisplayServer::get_class_static()._native_ptr(), StringName("status_indicator_set_callback")._native_ptr(), 957362965);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t id_encoded;
+	PtrToArg<int64_t>::encode(id, &id_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &id_encoded, &callback);
+}
+
+Rect2 DisplayServer::status_indicator_get_rect(int32_t id) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(DisplayServer::get_class_static()._native_ptr(), StringName("status_indicator_get_rect")._native_ptr(), 3327874267);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Rect2());
+	int64_t id_encoded;
+	PtrToArg<int64_t>::encode(id, &id_encoded);
+	return internal::_call_native_mb_ret<Rect2>(_gde_method_bind, _owner, &id_encoded);
+}
+
+void DisplayServer::delete_status_indicator(int32_t id) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(DisplayServer::get_class_static()._native_ptr(), StringName("delete_status_indicator")._native_ptr(), 1286410249);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t id_encoded;
+	PtrToArg<int64_t>::encode(id, &id_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &id_encoded);
+}
+
 int32_t DisplayServer::tablet_get_driver_count() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(DisplayServer::get_class_static()._native_ptr(), StringName("tablet_get_driver_count")._native_ptr(), 3905245786);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
@@ -1309,6 +1408,12 @@ void DisplayServer::tablet_set_current_driver(const String &name) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(DisplayServer::get_class_static()._native_ptr(), StringName("tablet_set_current_driver")._native_ptr(), 83702148);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &name);
+}
+
+bool DisplayServer::is_window_transparency_available() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(DisplayServer::get_class_static()._native_ptr(), StringName("is_window_transparency_available")._native_ptr(), 36873697);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
 }
 
 

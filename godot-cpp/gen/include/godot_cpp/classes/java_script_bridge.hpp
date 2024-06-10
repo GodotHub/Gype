@@ -53,6 +53,8 @@ class PackedByteArray;
 class JavaScriptBridge : public Object {
 	GDEXTENSION_CLASS(JavaScriptBridge, Object)
 
+	static JavaScriptBridge *singleton;
+
 public:
 
 	static JavaScriptBridge *get_singleton();
@@ -80,6 +82,8 @@ protected:
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
 	}
+
+	~JavaScriptBridge();
 
 public:
 

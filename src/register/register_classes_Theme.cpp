@@ -15,7 +15,7 @@
 using namespace godot;
 
 void register_classes_Theme() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<Theme>("Theme")
 			.constructor<>()
 			.property<&Theme::get_default_base_scale, &Theme::set_default_base_scale>("default_base_scale")

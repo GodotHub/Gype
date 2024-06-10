@@ -38,6 +38,7 @@
 #include <godot_cpp/variant/packed_vector3_array.hpp>
 #include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/variant/transform3d.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/vector3.hpp>
 
@@ -53,10 +54,11 @@ class NavigationMeshSourceGeometryData3D;
 class NavigationPathQueryParameters3D;
 class NavigationPathQueryResult3D;
 class Node;
-struct Transform3D;
 
 class NavigationServer3D : public Object {
 	GDEXTENSION_CLASS(NavigationServer3D, Object)
+
+	static NavigationServer3D *singleton;
 
 public:
 
@@ -84,6 +86,8 @@ public:
 	double map_get_cell_size(const RID &map) const;
 	void map_set_cell_height(const RID &map, double cell_height);
 	double map_get_cell_height(const RID &map) const;
+	void map_set_merge_rasterizer_cell_scale(const RID &map, double scale);
+	double map_get_merge_rasterizer_cell_scale(const RID &map) const;
 	void map_set_use_edge_connections(const RID &map, bool enabled);
 	bool map_get_use_edge_connections(const RID &map) const;
 	void map_set_edge_connection_margin(const RID &map, double margin);
@@ -100,6 +104,8 @@ public:
 	TypedArray<RID> map_get_agents(const RID &map) const;
 	TypedArray<RID> map_get_obstacles(const RID &map) const;
 	void map_force_update(const RID &map);
+	uint32_t map_get_iteration_id(const RID &map) const;
+	Vector3 map_get_random_point(const RID &map, uint32_t navigation_layers, bool uniformly) const;
 	void query_path(const Ref<NavigationPathQueryParameters3D> &parameters, const Ref<NavigationPathQueryResult3D> &result) const;
 	RID region_create();
 	void region_set_enabled(const RID &region, bool enabled);
@@ -118,11 +124,13 @@ public:
 	void region_set_navigation_layers(const RID &region, uint32_t navigation_layers);
 	uint32_t region_get_navigation_layers(const RID &region) const;
 	void region_set_transform(const RID &region, const Transform3D &transform);
+	Transform3D region_get_transform(const RID &region) const;
 	void region_set_navigation_mesh(const RID &region, const Ref<NavigationMesh> &navigation_mesh);
 	void region_bake_navigation_mesh(const Ref<NavigationMesh> &navigation_mesh, Node *root_node);
 	int32_t region_get_connections_count(const RID &region) const;
 	Vector3 region_get_connection_pathway_start(const RID &region, int32_t connection) const;
 	Vector3 region_get_connection_pathway_end(const RID &region, int32_t connection) const;
+	Vector3 region_get_random_point(const RID &region, uint32_t navigation_layers, bool uniformly) const;
 	RID link_create();
 	void link_set_map(const RID &link, const RID &map);
 	RID link_get_map(const RID &link) const;
@@ -152,20 +160,33 @@ public:
 	void agent_set_paused(const RID &agent, bool paused);
 	bool agent_get_paused(const RID &agent) const;
 	void agent_set_neighbor_distance(const RID &agent, double distance);
+	double agent_get_neighbor_distance(const RID &agent) const;
 	void agent_set_max_neighbors(const RID &agent, int32_t count);
+	int32_t agent_get_max_neighbors(const RID &agent) const;
 	void agent_set_time_horizon_agents(const RID &agent, double time_horizon);
+	double agent_get_time_horizon_agents(const RID &agent) const;
 	void agent_set_time_horizon_obstacles(const RID &agent, double time_horizon);
+	double agent_get_time_horizon_obstacles(const RID &agent) const;
 	void agent_set_radius(const RID &agent, double radius);
+	double agent_get_radius(const RID &agent) const;
 	void agent_set_height(const RID &agent, double height);
+	double agent_get_height(const RID &agent) const;
 	void agent_set_max_speed(const RID &agent, double max_speed);
+	double agent_get_max_speed(const RID &agent) const;
 	void agent_set_velocity_forced(const RID &agent, const Vector3 &velocity);
 	void agent_set_velocity(const RID &agent, const Vector3 &velocity);
+	Vector3 agent_get_velocity(const RID &agent) const;
 	void agent_set_position(const RID &agent, const Vector3 &position);
+	Vector3 agent_get_position(const RID &agent) const;
 	bool agent_is_map_changed(const RID &agent) const;
 	void agent_set_avoidance_callback(const RID &agent, const Callable &callback);
+	bool agent_has_avoidance_callback(const RID &agent) const;
 	void agent_set_avoidance_layers(const RID &agent, uint32_t layers);
+	uint32_t agent_get_avoidance_layers(const RID &agent) const;
 	void agent_set_avoidance_mask(const RID &agent, uint32_t mask);
+	uint32_t agent_get_avoidance_mask(const RID &agent) const;
 	void agent_set_avoidance_priority(const RID &agent, double priority);
+	double agent_get_avoidance_priority(const RID &agent) const;
 	RID obstacle_create();
 	void obstacle_set_avoidance_enabled(const RID &obstacle, bool enabled);
 	bool obstacle_get_avoidance_enabled(const RID &obstacle) const;
@@ -176,14 +197,24 @@ public:
 	void obstacle_set_paused(const RID &obstacle, bool paused);
 	bool obstacle_get_paused(const RID &obstacle) const;
 	void obstacle_set_radius(const RID &obstacle, double radius);
+	double obstacle_get_radius(const RID &obstacle) const;
 	void obstacle_set_height(const RID &obstacle, double height);
+	double obstacle_get_height(const RID &obstacle) const;
 	void obstacle_set_velocity(const RID &obstacle, const Vector3 &velocity);
+	Vector3 obstacle_get_velocity(const RID &obstacle) const;
 	void obstacle_set_position(const RID &obstacle, const Vector3 &position);
+	Vector3 obstacle_get_position(const RID &obstacle) const;
 	void obstacle_set_vertices(const RID &obstacle, const PackedVector3Array &vertices);
+	PackedVector3Array obstacle_get_vertices(const RID &obstacle) const;
 	void obstacle_set_avoidance_layers(const RID &obstacle, uint32_t layers);
+	uint32_t obstacle_get_avoidance_layers(const RID &obstacle) const;
 	void parse_source_geometry_data(const Ref<NavigationMesh> &navigation_mesh, const Ref<NavigationMeshSourceGeometryData3D> &source_geometry_data, Node *root_node, const Callable &callback = Callable());
 	void bake_from_source_geometry_data(const Ref<NavigationMesh> &navigation_mesh, const Ref<NavigationMeshSourceGeometryData3D> &source_geometry_data, const Callable &callback = Callable());
 	void bake_from_source_geometry_data_async(const Ref<NavigationMesh> &navigation_mesh, const Ref<NavigationMeshSourceGeometryData3D> &source_geometry_data, const Callable &callback = Callable());
+	bool is_baking_navigation_mesh(const Ref<NavigationMesh> &navigation_mesh) const;
+	RID source_geometry_parser_create();
+	void source_geometry_parser_set_callback(const RID &parser, const Callable &callback);
+	PackedVector3Array simplify_path(const PackedVector3Array &path, double epsilon);
 	void free_rid(const RID &rid);
 	void set_active(bool active);
 	void set_debug_enabled(bool enabled);
@@ -194,6 +225,8 @@ protected:
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
 	}
+
+	~NavigationServer3D();
 
 public:
 

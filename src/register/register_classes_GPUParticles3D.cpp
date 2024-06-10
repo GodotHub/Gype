@@ -14,7 +14,7 @@
 using namespace godot;
 
 void register_classes_GPUParticles3D() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<GPUParticles3D>("GPUParticles3D")
 			.constructor<>()
 			.property<&GPUParticles3D::is_emitting, &GPUParticles3D::set_emitting>("emitting")

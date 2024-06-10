@@ -70,6 +70,7 @@ public:
 	void set_travel_cost(double travel_cost);
 	double get_travel_cost() const;
 	void bake_navigation_mesh(bool on_thread = true);
+	bool is_baking() const;
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {

@@ -32,8 +32,8 @@
 #define GODOT_VARIANT_HPP
 
 #include <godot_cpp/core/defs.hpp>
-
 #include <godot_cpp/templates/vararg.hpp>
+
 #include <godot_cpp/variant/builtin_types.hpp>
 #include <godot_cpp/variant/variant_size.hpp>
 
@@ -285,6 +285,7 @@ public:
 
 	static void callp_static(Variant::Type type, const StringName &method, const Variant **args, int argcount, Variant &r_ret, GDExtensionCallError &r_error);
 
+	template <typename... Args>
 	static Variant call_static(Variant::Type type, const StringName &method, rest<Variant> args) {
 		std::vector<Variant> variant_args;
 		variant_args.insert(variant_args.end(), args.begin(), args.end());
@@ -354,8 +355,6 @@ String vformat(const String &p_text, const VarArgs... p_args) {
 
 	return p_text % args_array;
 }
-
-// #include <godot_cpp/variant/builtin_vararg_methods.hpp>
 
 #ifdef REAL_T_IS_DOUBLE
 using PackedRealArray = PackedFloat64Array;

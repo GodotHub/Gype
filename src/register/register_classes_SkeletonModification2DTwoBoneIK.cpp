@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_SkeletonModification2DTwoBoneIK() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<SkeletonModification2DTwoBoneIK>("SkeletonModification2DTwoBoneIK")
 			.constructor<>()
 			.property<&SkeletonModification2DTwoBoneIK::get_target_node, &SkeletonModification2DTwoBoneIK::set_target_node>("target_nodepath")

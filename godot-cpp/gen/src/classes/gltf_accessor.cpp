@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/gltf_accessor.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -105,6 +106,20 @@ void GLTFAccessor::set_count(int32_t count) {
 	int64_t count_encoded;
 	PtrToArg<int64_t>::encode(count, &count_encoded);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &count_encoded);
+}
+
+int32_t GLTFAccessor::get_accessor_type() {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFAccessor::get_class_static()._native_ptr(), StringName("get_accessor_type")._native_ptr(), 2455072627);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
+	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
+}
+
+void GLTFAccessor::set_accessor_type(int32_t accessor_type) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFAccessor::get_class_static()._native_ptr(), StringName("set_accessor_type")._native_ptr(), 1286410249);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t accessor_type_encoded;
+	PtrToArg<int64_t>::encode(accessor_type, &accessor_type_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &accessor_type_encoded);
 }
 
 int32_t GLTFAccessor::get_type() {

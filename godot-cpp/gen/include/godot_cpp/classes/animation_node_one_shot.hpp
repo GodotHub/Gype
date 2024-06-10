@@ -70,6 +70,8 @@ public:
 	double get_fadeout_time() const;
 	void set_fadeout_curve(const Ref<Curve> &curve);
 	Ref<Curve> get_fadeout_curve() const;
+	void set_break_loop_at_end(bool enable);
+	bool is_loop_broken_at_end() const;
 	void set_autorestart(bool active);
 	bool has_autorestart() const;
 	void set_autorestart_delay(double time);

@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/text_edit.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -48,6 +49,18 @@ bool TextEdit::has_ime_text() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("has_ime_text")._native_ptr(), 36873697);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
 	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
+}
+
+void TextEdit::cancel_ime() {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("cancel_ime")._native_ptr(), 3218959716);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner);
+}
+
+void TextEdit::apply_ime() {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("apply_ime")._native_ptr(), 3218959716);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner);
 }
 
 void TextEdit::set_editable(bool enabled) {
@@ -124,6 +137,20 @@ int32_t TextEdit::get_tab_size() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("get_tab_size")._native_ptr(), 3905245786);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
 	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
+}
+
+void TextEdit::set_indent_wrapped_lines(bool enabled) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("set_indent_wrapped_lines")._native_ptr(), 2586408642);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int8_t enabled_encoded;
+	PtrToArg<bool>::encode(enabled, &enabled_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &enabled_encoded);
+}
+
+bool TextEdit::is_indent_wrapped_lines() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("is_indent_wrapped_lines")._native_ptr(), 36873697);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
 }
 
 void TextEdit::set_overtype_mode_enabled(bool enabled) {
@@ -298,12 +325,36 @@ void TextEdit::insert_line_at(int32_t line, const String &text) {
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &line_encoded, &text);
 }
 
+void TextEdit::remove_line_at(int32_t line, bool move_carets_down) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("remove_line_at")._native_ptr(), 972357352);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t line_encoded;
+	PtrToArg<int64_t>::encode(line, &line_encoded);
+	int8_t move_carets_down_encoded;
+	PtrToArg<bool>::encode(move_carets_down, &move_carets_down_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &line_encoded, &move_carets_down_encoded);
+}
+
 void TextEdit::insert_text_at_caret(const String &text, int32_t caret_index) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("insert_text_at_caret")._native_ptr(), 2697778442);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	int64_t caret_index_encoded;
 	PtrToArg<int64_t>::encode(caret_index, &caret_index_encoded);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &text, &caret_index_encoded);
+}
+
+void TextEdit::insert_text(const String &text, int32_t line, int32_t column, bool before_selection_begin, bool before_selection_end) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("insert_text")._native_ptr(), 1881564334);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t line_encoded;
+	PtrToArg<int64_t>::encode(line, &line_encoded);
+	int64_t column_encoded;
+	PtrToArg<int64_t>::encode(column, &column_encoded);
+	int8_t before_selection_begin_encoded;
+	PtrToArg<bool>::encode(before_selection_begin, &before_selection_begin_encoded);
+	int8_t before_selection_end_encoded;
+	PtrToArg<bool>::encode(before_selection_end, &before_selection_end_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &text, &line_encoded, &column_encoded, &before_selection_begin_encoded, &before_selection_end_encoded);
 }
 
 void TextEdit::remove_text(int32_t from_line, int32_t from_column, int32_t to_line, int32_t to_column) {
@@ -474,16 +525,16 @@ void TextEdit::set_search_flags(uint32_t flags) {
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &flags_encoded);
 }
 
-Vector2i TextEdit::search(const String &text, uint32_t flags, int32_t from_line, int32_t from_colum) const {
+Vector2i TextEdit::search(const String &text, uint32_t flags, int32_t from_line, int32_t from_column) const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("search")._native_ptr(), 1203739136);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Vector2i());
 	int64_t flags_encoded;
 	PtrToArg<int64_t>::encode(flags, &flags_encoded);
 	int64_t from_line_encoded;
 	PtrToArg<int64_t>::encode(from_line, &from_line_encoded);
-	int64_t from_colum_encoded;
-	PtrToArg<int64_t>::encode(from_colum, &from_colum_encoded);
-	return internal::_call_native_mb_ret<Vector2i>(_gde_method_bind, _owner, &text, &flags_encoded, &from_line_encoded, &from_colum_encoded);
+	int64_t from_column_encoded;
+	PtrToArg<int64_t>::encode(from_column, &from_column_encoded);
+	return internal::_call_native_mb_ret<Vector2i>(_gde_method_bind, _owner, &text, &flags_encoded, &from_line_encoded, &from_column_encoded);
 }
 
 void TextEdit::set_tooltip_request_func(const Callable &callback) {
@@ -650,14 +701,14 @@ bool TextEdit::is_multiple_carets_enabled() const {
 	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
 }
 
-int32_t TextEdit::add_caret(int32_t line, int32_t col) {
+int32_t TextEdit::add_caret(int32_t line, int32_t column) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("add_caret")._native_ptr(), 50157827);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
 	int64_t line_encoded;
 	PtrToArg<int64_t>::encode(line, &line_encoded);
-	int64_t col_encoded;
-	PtrToArg<int64_t>::encode(col, &col_encoded);
-	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &line_encoded, &col_encoded);
+	int64_t column_encoded;
+	PtrToArg<int64_t>::encode(column, &column_encoded);
+	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &line_encoded, &column_encoded);
 }
 
 void TextEdit::remove_caret(int32_t caret) {
@@ -670,12 +721,6 @@ void TextEdit::remove_caret(int32_t caret) {
 
 void TextEdit::remove_secondary_carets() {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("remove_secondary_carets")._native_ptr(), 3218959716);
-	CHECK_METHOD_BIND(_gde_method_bind);
-	internal::_call_native_mb_no_ret(_gde_method_bind, _owner);
-}
-
-void TextEdit::merge_overlapping_carets() {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("merge_overlapping_carets")._native_ptr(), 3218959716);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner);
 }
@@ -694,26 +739,60 @@ void TextEdit::add_caret_at_carets(bool below) {
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &below_encoded);
 }
 
-PackedInt32Array TextEdit::get_caret_index_edit_order() {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("get_caret_index_edit_order")._native_ptr(), 969006518);
+PackedInt32Array TextEdit::get_sorted_carets(bool include_ignored_carets) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("get_sorted_carets")._native_ptr(), 2131714034);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, PackedInt32Array());
-	return internal::_call_native_mb_ret<PackedInt32Array>(_gde_method_bind, _owner);
+	int8_t include_ignored_carets_encoded;
+	PtrToArg<bool>::encode(include_ignored_carets, &include_ignored_carets_encoded);
+	return internal::_call_native_mb_ret<PackedInt32Array>(_gde_method_bind, _owner, &include_ignored_carets_encoded);
 }
 
-void TextEdit::adjust_carets_after_edit(int32_t caret, int32_t from_line, int32_t from_col, int32_t to_line, int32_t to_col) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("adjust_carets_after_edit")._native_ptr(), 1770277138);
+void TextEdit::collapse_carets(int32_t from_line, int32_t from_column, int32_t to_line, int32_t to_column, bool inclusive) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("collapse_carets")._native_ptr(), 228654177);
 	CHECK_METHOD_BIND(_gde_method_bind);
-	int64_t caret_encoded;
-	PtrToArg<int64_t>::encode(caret, &caret_encoded);
 	int64_t from_line_encoded;
 	PtrToArg<int64_t>::encode(from_line, &from_line_encoded);
-	int64_t from_col_encoded;
-	PtrToArg<int64_t>::encode(from_col, &from_col_encoded);
+	int64_t from_column_encoded;
+	PtrToArg<int64_t>::encode(from_column, &from_column_encoded);
 	int64_t to_line_encoded;
 	PtrToArg<int64_t>::encode(to_line, &to_line_encoded);
-	int64_t to_col_encoded;
-	PtrToArg<int64_t>::encode(to_col, &to_col_encoded);
-	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &caret_encoded, &from_line_encoded, &from_col_encoded, &to_line_encoded, &to_col_encoded);
+	int64_t to_column_encoded;
+	PtrToArg<int64_t>::encode(to_column, &to_column_encoded);
+	int8_t inclusive_encoded;
+	PtrToArg<bool>::encode(inclusive, &inclusive_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &from_line_encoded, &from_column_encoded, &to_line_encoded, &to_column_encoded, &inclusive_encoded);
+}
+
+void TextEdit::merge_overlapping_carets() {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("merge_overlapping_carets")._native_ptr(), 3218959716);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner);
+}
+
+void TextEdit::begin_multicaret_edit() {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("begin_multicaret_edit")._native_ptr(), 3218959716);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner);
+}
+
+void TextEdit::end_multicaret_edit() {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("end_multicaret_edit")._native_ptr(), 3218959716);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner);
+}
+
+bool TextEdit::is_in_mulitcaret_edit() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("is_in_mulitcaret_edit")._native_ptr(), 36873697);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
+}
+
+bool TextEdit::multicaret_edit_ignore_caret(int32_t caret_index) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("multicaret_edit_ignore_caret")._native_ptr(), 1116898809);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	int64_t caret_index_encoded;
+	PtrToArg<int64_t>::encode(caret_index, &caret_index_encoded);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner, &caret_index_encoded);
 }
 
 bool TextEdit::is_caret_visible(int32_t caret_index) const {
@@ -834,16 +913,10 @@ bool TextEdit::is_drag_and_drop_selection_enabled() const {
 	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
 }
 
-void TextEdit::set_selection_mode(TextEdit::SelectionMode mode, int32_t line, int32_t column, int32_t caret_index) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("set_selection_mode")._native_ptr(), 1443345937);
+void TextEdit::set_selection_mode(TextEdit::SelectionMode mode) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("set_selection_mode")._native_ptr(), 1658801786);
 	CHECK_METHOD_BIND(_gde_method_bind);
-	int64_t line_encoded;
-	PtrToArg<int64_t>::encode(line, &line_encoded);
-	int64_t column_encoded;
-	PtrToArg<int64_t>::encode(column, &column_encoded);
-	int64_t caret_index_encoded;
-	PtrToArg<int64_t>::encode(caret_index, &caret_index_encoded);
-	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &mode, &line_encoded, &column_encoded, &caret_index_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &mode);
 }
 
 TextEdit::SelectionMode TextEdit::get_selection_mode() const {
@@ -872,20 +945,26 @@ void TextEdit::add_selection_for_next_occurrence() {
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner);
 }
 
-void TextEdit::select(int32_t from_line, int32_t from_column, int32_t to_line, int32_t to_column, int32_t caret_index) {
+void TextEdit::skip_selection_for_next_occurrence() {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("skip_selection_for_next_occurrence")._native_ptr(), 3218959716);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner);
+}
+
+void TextEdit::select(int32_t origin_line, int32_t origin_column, int32_t caret_line, int32_t caret_column, int32_t caret_index) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("select")._native_ptr(), 2560984452);
 	CHECK_METHOD_BIND(_gde_method_bind);
-	int64_t from_line_encoded;
-	PtrToArg<int64_t>::encode(from_line, &from_line_encoded);
-	int64_t from_column_encoded;
-	PtrToArg<int64_t>::encode(from_column, &from_column_encoded);
-	int64_t to_line_encoded;
-	PtrToArg<int64_t>::encode(to_line, &to_line_encoded);
-	int64_t to_column_encoded;
-	PtrToArg<int64_t>::encode(to_column, &to_column_encoded);
+	int64_t origin_line_encoded;
+	PtrToArg<int64_t>::encode(origin_line, &origin_line_encoded);
+	int64_t origin_column_encoded;
+	PtrToArg<int64_t>::encode(origin_column, &origin_column_encoded);
+	int64_t caret_line_encoded;
+	PtrToArg<int64_t>::encode(caret_line, &caret_line_encoded);
+	int64_t caret_column_encoded;
+	PtrToArg<int64_t>::encode(caret_column, &caret_column_encoded);
 	int64_t caret_index_encoded;
 	PtrToArg<int64_t>::encode(caret_index, &caret_index_encoded);
-	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &from_line_encoded, &from_column_encoded, &to_line_encoded, &to_column_encoded, &caret_index_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &origin_line_encoded, &origin_column_encoded, &caret_line_encoded, &caret_column_encoded, &caret_index_encoded);
 }
 
 bool TextEdit::has_selection(int32_t caret_index) const {
@@ -904,20 +983,68 @@ String TextEdit::get_selected_text(int32_t caret_index) {
 	return internal::_call_native_mb_ret<String>(_gde_method_bind, _owner, &caret_index_encoded);
 }
 
-int32_t TextEdit::get_selection_line(int32_t caret_index) const {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("get_selection_line")._native_ptr(), 1591665591);
+int32_t TextEdit::get_selection_at_line_column(int32_t line, int32_t column, bool include_edges, bool only_selections) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("get_selection_at_line_column")._native_ptr(), 1810224333);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
+	int64_t line_encoded;
+	PtrToArg<int64_t>::encode(line, &line_encoded);
+	int64_t column_encoded;
+	PtrToArg<int64_t>::encode(column, &column_encoded);
+	int8_t include_edges_encoded;
+	PtrToArg<bool>::encode(include_edges, &include_edges_encoded);
+	int8_t only_selections_encoded;
+	PtrToArg<bool>::encode(only_selections, &only_selections_encoded);
+	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &line_encoded, &column_encoded, &include_edges_encoded, &only_selections_encoded);
+}
+
+TypedArray<Vector2i> TextEdit::get_line_ranges_from_carets(bool only_selections, bool merge_adjacent) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("get_line_ranges_from_carets")._native_ptr(), 2393089247);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, TypedArray<Vector2i>());
+	int8_t only_selections_encoded;
+	PtrToArg<bool>::encode(only_selections, &only_selections_encoded);
+	int8_t merge_adjacent_encoded;
+	PtrToArg<bool>::encode(merge_adjacent, &merge_adjacent_encoded);
+	return internal::_call_native_mb_ret<TypedArray<Vector2i>>(_gde_method_bind, _owner, &only_selections_encoded, &merge_adjacent_encoded);
+}
+
+int32_t TextEdit::get_selection_origin_line(int32_t caret_index) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("get_selection_origin_line")._native_ptr(), 1591665591);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
 	int64_t caret_index_encoded;
 	PtrToArg<int64_t>::encode(caret_index, &caret_index_encoded);
 	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &caret_index_encoded);
 }
 
-int32_t TextEdit::get_selection_column(int32_t caret_index) const {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("get_selection_column")._native_ptr(), 1591665591);
+int32_t TextEdit::get_selection_origin_column(int32_t caret_index) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("get_selection_origin_column")._native_ptr(), 1591665591);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
 	int64_t caret_index_encoded;
 	PtrToArg<int64_t>::encode(caret_index, &caret_index_encoded);
 	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &caret_index_encoded);
+}
+
+void TextEdit::set_selection_origin_line(int32_t line, bool can_be_hidden, int32_t wrap_index, int32_t caret_index) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("set_selection_origin_line")._native_ptr(), 195434140);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t line_encoded;
+	PtrToArg<int64_t>::encode(line, &line_encoded);
+	int8_t can_be_hidden_encoded;
+	PtrToArg<bool>::encode(can_be_hidden, &can_be_hidden_encoded);
+	int64_t wrap_index_encoded;
+	PtrToArg<int64_t>::encode(wrap_index, &wrap_index_encoded);
+	int64_t caret_index_encoded;
+	PtrToArg<int64_t>::encode(caret_index, &caret_index_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &line_encoded, &can_be_hidden_encoded, &wrap_index_encoded, &caret_index_encoded);
+}
+
+void TextEdit::set_selection_origin_column(int32_t column, int32_t caret_index) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("set_selection_origin_column")._native_ptr(), 2230941749);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t column_encoded;
+	PtrToArg<int64_t>::encode(column, &column_encoded);
+	int64_t caret_index_encoded;
+	PtrToArg<int64_t>::encode(caret_index, &caret_index_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &column_encoded, &caret_index_encoded);
 }
 
 int32_t TextEdit::get_selection_from_line(int32_t caret_index) const {
@@ -950,6 +1077,14 @@ int32_t TextEdit::get_selection_to_column(int32_t caret_index) const {
 	int64_t caret_index_encoded;
 	PtrToArg<int64_t>::encode(caret_index, &caret_index_encoded);
 	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &caret_index_encoded);
+}
+
+bool TextEdit::is_caret_after_selection_origin(int32_t caret_index) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("is_caret_after_selection_origin")._native_ptr(), 1051549951);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	int64_t caret_index_encoded;
+	PtrToArg<int64_t>::encode(caret_index, &caret_index_encoded);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner, &caret_index_encoded);
 }
 
 void TextEdit::deselect(int32_t caret_index) {
@@ -1620,6 +1755,44 @@ void TextEdit::menu_option(int32_t option) {
 	int64_t option_encoded;
 	PtrToArg<int64_t>::encode(option, &option_encoded);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &option_encoded);
+}
+
+void TextEdit::adjust_carets_after_edit(int32_t caret, int32_t from_line, int32_t from_col, int32_t to_line, int32_t to_col) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("adjust_carets_after_edit")._native_ptr(), 1770277138);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t caret_encoded;
+	PtrToArg<int64_t>::encode(caret, &caret_encoded);
+	int64_t from_line_encoded;
+	PtrToArg<int64_t>::encode(from_line, &from_line_encoded);
+	int64_t from_col_encoded;
+	PtrToArg<int64_t>::encode(from_col, &from_col_encoded);
+	int64_t to_line_encoded;
+	PtrToArg<int64_t>::encode(to_line, &to_line_encoded);
+	int64_t to_col_encoded;
+	PtrToArg<int64_t>::encode(to_col, &to_col_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &caret_encoded, &from_line_encoded, &from_col_encoded, &to_line_encoded, &to_col_encoded);
+}
+
+PackedInt32Array TextEdit::get_caret_index_edit_order() {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("get_caret_index_edit_order")._native_ptr(), 969006518);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, PackedInt32Array());
+	return internal::_call_native_mb_ret<PackedInt32Array>(_gde_method_bind, _owner);
+}
+
+int32_t TextEdit::get_selection_line(int32_t caret_index) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("get_selection_line")._native_ptr(), 1591665591);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
+	int64_t caret_index_encoded;
+	PtrToArg<int64_t>::encode(caret_index, &caret_index_encoded);
+	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &caret_index_encoded);
+}
+
+int32_t TextEdit::get_selection_column(int32_t caret_index) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextEdit::get_class_static()._native_ptr(), StringName("get_selection_column")._native_ptr(), 1591665591);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
+	int64_t caret_index_encoded;
+	PtrToArg<int64_t>::encode(caret_index, &caret_index_encoded);
+	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &caret_index_encoded);
 }
 
 void TextEdit::_handle_unicode_input(int32_t unicode_char, int32_t caret_index) {}

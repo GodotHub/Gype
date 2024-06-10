@@ -11,7 +11,7 @@
 using namespace godot;
 
 void register_classes_WebRTCMultiplayerPeer() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<WebRTCMultiplayerPeer>("WebRTCMultiplayerPeer")
 			.constructor<>()
 			.fun<static_cast<Error (WebRTCMultiplayerPeer::*)(const Array &)>(&WebRTCMultiplayerPeer::create_server)>("create_server")

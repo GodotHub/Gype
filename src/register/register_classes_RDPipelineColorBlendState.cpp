@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_RDPipelineColorBlendState() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<RDPipelineColorBlendState>("RDPipelineColorBlendState")
 			.constructor<>()
 			.property<&RDPipelineColorBlendState::get_enable_logic_op, &RDPipelineColorBlendState::set_enable_logic_op>("enable_logic_op")

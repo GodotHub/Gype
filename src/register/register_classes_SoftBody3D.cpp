@@ -12,7 +12,7 @@
 using namespace godot;
 
 void register_classes_SoftBody3D() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<SoftBody3D>("SoftBody3D")
 			.constructor<>()
 			.property<&SoftBody3D::get_collision_layer, &SoftBody3D::set_collision_layer>("collision_layer")

@@ -102,6 +102,8 @@ public:
 	virtual int64_t _font_get_stretch(const RID &font_rid) const;
 	virtual void _font_set_antialiasing(const RID &font_rid, TextServer::FontAntialiasing antialiasing);
 	virtual TextServer::FontAntialiasing _font_get_antialiasing(const RID &font_rid) const;
+	virtual void _font_set_disable_embedded_bitmaps(const RID &font_rid, bool disable_embedded_bitmaps);
+	virtual bool _font_get_disable_embedded_bitmaps(const RID &font_rid) const;
 	virtual void _font_set_generate_mipmaps(const RID &font_rid, bool generate_mipmaps);
 	virtual bool _font_get_generate_mipmaps(const RID &font_rid) const;
 	virtual void _font_set_multichannel_signed_distance_field(const RID &font_rid, bool msdf);
@@ -126,6 +128,8 @@ public:
 	virtual double _font_get_embolden(const RID &font_rid) const;
 	virtual void _font_set_spacing(const RID &font_rid, TextServer::SpacingType spacing, int64_t value);
 	virtual int64_t _font_get_spacing(const RID &font_rid, TextServer::SpacingType spacing) const;
+	virtual void _font_set_baseline_offset(const RID &font_rid, double baseline_offset);
+	virtual double _font_get_baseline_offset(const RID &font_rid) const;
 	virtual void _font_set_transform(const RID &font_rid, const Transform2D &transform);
 	virtual Transform2D _font_get_transform(const RID &font_rid) const;
 	virtual void _font_set_variation_coordinates(const RID &font_rid, const Dictionary &variation_coordinates);
@@ -207,6 +211,8 @@ public:
 	virtual void _shaped_text_set_bidi_override(const RID &shaped, const Array &override);
 	virtual void _shaped_text_set_custom_punctuation(const RID &shaped, const String &punct);
 	virtual String _shaped_text_get_custom_punctuation(const RID &shaped) const;
+	virtual void _shaped_text_set_custom_ellipsis(const RID &shaped, int64_t _char);
+	virtual int64_t _shaped_text_get_custom_ellipsis(const RID &shaped) const;
 	virtual void _shaped_text_set_orientation(const RID &shaped, TextServer::Orientation orientation);
 	virtual TextServer::Orientation _shaped_text_get_orientation(const RID &shaped) const;
 	virtual void _shaped_text_set_preserve_invalid(const RID &shaped, bool enabled);
@@ -235,7 +241,7 @@ public:
 	virtual Vector2i _shaped_text_get_range(const RID &shaped) const;
 	virtual PackedInt32Array _shaped_text_get_line_breaks_adv(const RID &shaped, const PackedFloat32Array &width, int64_t start, bool once, BitField<TextServer::LineBreakFlag> break_flags) const;
 	virtual PackedInt32Array _shaped_text_get_line_breaks(const RID &shaped, double width, int64_t start, BitField<TextServer::LineBreakFlag> break_flags) const;
-	virtual PackedInt32Array _shaped_text_get_word_breaks(const RID &shaped, BitField<TextServer::GraphemeFlag> grapheme_flags) const;
+	virtual PackedInt32Array _shaped_text_get_word_breaks(const RID &shaped, BitField<TextServer::GraphemeFlag> grapheme_flags, BitField<TextServer::GraphemeFlag> skip_grapheme_flags) const;
 	virtual int64_t _shaped_text_get_trim_pos(const RID &shaped) const;
 	virtual int64_t _shaped_text_get_ellipsis_pos(const RID &shaped) const;
 	virtual int64_t _shaped_text_get_ellipsis_glyph_count(const RID &shaped) const;
@@ -243,6 +249,8 @@ public:
 	virtual void _shaped_text_overrun_trim_to_width(const RID &shaped, double width, BitField<TextServer::TextOverrunFlag> trim_flags);
 	virtual Array _shaped_text_get_objects(const RID &shaped) const;
 	virtual Rect2 _shaped_text_get_object_rect(const RID &shaped, const Variant &key) const;
+	virtual Vector2i _shaped_text_get_object_range(const RID &shaped, const Variant &key) const;
+	virtual int64_t _shaped_text_get_object_glyph(const RID &shaped, const Variant &key) const;
 	virtual Vector2 _shaped_text_get_size(const RID &shaped) const;
 	virtual double _shaped_text_get_ascent(const RID &shaped) const;
 	virtual double _shaped_text_get_descent(const RID &shaped) const;
@@ -263,17 +271,19 @@ public:
 	virtual int64_t _shaped_text_next_character_pos(const RID &shaped, int64_t pos) const;
 	virtual int64_t _shaped_text_prev_character_pos(const RID &shaped, int64_t pos) const;
 	virtual int64_t _shaped_text_closest_character_pos(const RID &shaped, int64_t pos) const;
-	virtual String _format_number(const String &string, const String &language) const;
-	virtual String _parse_number(const String &string, const String &language) const;
+	virtual String _format_number(const String &number, const String &language) const;
+	virtual String _parse_number(const String &number, const String &language) const;
 	virtual String _percent_sign(const String &language) const;
 	virtual String _strip_diacritics(const String &string) const;
 	virtual bool _is_valid_identifier(const String &string) const;
+	virtual bool _is_valid_letter(int64_t unicode) const;
 	virtual PackedInt32Array _string_get_word_breaks(const String &string, const String &language, int64_t chars_per_line) const;
 	virtual PackedInt32Array _string_get_character_breaks(const String &string, const String &language) const;
 	virtual int64_t _is_confusable(const String &string, const PackedStringArray &dict) const;
 	virtual bool _spoof_check(const String &string) const;
 	virtual String _string_to_upper(const String &string, const String &language) const;
 	virtual String _string_to_lower(const String &string, const String &language) const;
+	virtual String _string_to_title(const String &string, const String &language) const;
 	virtual TypedArray<Vector3i> _parse_structured_text(TextServer::StructuredTextParser parser_type, const Array &args, const String &text) const;
 	virtual void _cleanup();
 protected:
@@ -376,6 +386,12 @@ protected:
 		if constexpr (!std::is_same_v<decltype(&B::_font_get_antialiasing),decltype(&T::_font_get_antialiasing)>) {
 			BIND_VIRTUAL_METHOD(T, _font_get_antialiasing);
 		}
+		if constexpr (!std::is_same_v<decltype(&B::_font_set_disable_embedded_bitmaps),decltype(&T::_font_set_disable_embedded_bitmaps)>) {
+			BIND_VIRTUAL_METHOD(T, _font_set_disable_embedded_bitmaps);
+		}
+		if constexpr (!std::is_same_v<decltype(&B::_font_get_disable_embedded_bitmaps),decltype(&T::_font_get_disable_embedded_bitmaps)>) {
+			BIND_VIRTUAL_METHOD(T, _font_get_disable_embedded_bitmaps);
+		}
 		if constexpr (!std::is_same_v<decltype(&B::_font_set_generate_mipmaps),decltype(&T::_font_set_generate_mipmaps)>) {
 			BIND_VIRTUAL_METHOD(T, _font_set_generate_mipmaps);
 		}
@@ -447,6 +463,12 @@ protected:
 		}
 		if constexpr (!std::is_same_v<decltype(&B::_font_get_spacing),decltype(&T::_font_get_spacing)>) {
 			BIND_VIRTUAL_METHOD(T, _font_get_spacing);
+		}
+		if constexpr (!std::is_same_v<decltype(&B::_font_set_baseline_offset),decltype(&T::_font_set_baseline_offset)>) {
+			BIND_VIRTUAL_METHOD(T, _font_set_baseline_offset);
+		}
+		if constexpr (!std::is_same_v<decltype(&B::_font_get_baseline_offset),decltype(&T::_font_get_baseline_offset)>) {
+			BIND_VIRTUAL_METHOD(T, _font_get_baseline_offset);
 		}
 		if constexpr (!std::is_same_v<decltype(&B::_font_set_transform),decltype(&T::_font_set_transform)>) {
 			BIND_VIRTUAL_METHOD(T, _font_set_transform);
@@ -691,6 +713,12 @@ protected:
 		if constexpr (!std::is_same_v<decltype(&B::_shaped_text_get_custom_punctuation),decltype(&T::_shaped_text_get_custom_punctuation)>) {
 			BIND_VIRTUAL_METHOD(T, _shaped_text_get_custom_punctuation);
 		}
+		if constexpr (!std::is_same_v<decltype(&B::_shaped_text_set_custom_ellipsis),decltype(&T::_shaped_text_set_custom_ellipsis)>) {
+			BIND_VIRTUAL_METHOD(T, _shaped_text_set_custom_ellipsis);
+		}
+		if constexpr (!std::is_same_v<decltype(&B::_shaped_text_get_custom_ellipsis),decltype(&T::_shaped_text_get_custom_ellipsis)>) {
+			BIND_VIRTUAL_METHOD(T, _shaped_text_get_custom_ellipsis);
+		}
 		if constexpr (!std::is_same_v<decltype(&B::_shaped_text_set_orientation),decltype(&T::_shaped_text_set_orientation)>) {
 			BIND_VIRTUAL_METHOD(T, _shaped_text_set_orientation);
 		}
@@ -799,6 +827,12 @@ protected:
 		if constexpr (!std::is_same_v<decltype(&B::_shaped_text_get_object_rect),decltype(&T::_shaped_text_get_object_rect)>) {
 			BIND_VIRTUAL_METHOD(T, _shaped_text_get_object_rect);
 		}
+		if constexpr (!std::is_same_v<decltype(&B::_shaped_text_get_object_range),decltype(&T::_shaped_text_get_object_range)>) {
+			BIND_VIRTUAL_METHOD(T, _shaped_text_get_object_range);
+		}
+		if constexpr (!std::is_same_v<decltype(&B::_shaped_text_get_object_glyph),decltype(&T::_shaped_text_get_object_glyph)>) {
+			BIND_VIRTUAL_METHOD(T, _shaped_text_get_object_glyph);
+		}
 		if constexpr (!std::is_same_v<decltype(&B::_shaped_text_get_size),decltype(&T::_shaped_text_get_size)>) {
 			BIND_VIRTUAL_METHOD(T, _shaped_text_get_size);
 		}
@@ -874,6 +908,9 @@ protected:
 		if constexpr (!std::is_same_v<decltype(&B::_is_valid_identifier),decltype(&T::_is_valid_identifier)>) {
 			BIND_VIRTUAL_METHOD(T, _is_valid_identifier);
 		}
+		if constexpr (!std::is_same_v<decltype(&B::_is_valid_letter),decltype(&T::_is_valid_letter)>) {
+			BIND_VIRTUAL_METHOD(T, _is_valid_letter);
+		}
 		if constexpr (!std::is_same_v<decltype(&B::_string_get_word_breaks),decltype(&T::_string_get_word_breaks)>) {
 			BIND_VIRTUAL_METHOD(T, _string_get_word_breaks);
 		}
@@ -891,6 +928,9 @@ protected:
 		}
 		if constexpr (!std::is_same_v<decltype(&B::_string_to_lower),decltype(&T::_string_to_lower)>) {
 			BIND_VIRTUAL_METHOD(T, _string_to_lower);
+		}
+		if constexpr (!std::is_same_v<decltype(&B::_string_to_title),decltype(&T::_string_to_title)>) {
+			BIND_VIRTUAL_METHOD(T, _string_to_title);
 		}
 		if constexpr (!std::is_same_v<decltype(&B::_parse_structured_text),decltype(&T::_parse_structured_text)>) {
 			BIND_VIRTUAL_METHOD(T, _parse_structured_text);

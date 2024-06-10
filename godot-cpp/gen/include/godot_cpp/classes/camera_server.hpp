@@ -49,6 +49,8 @@ class CameraFeed;
 class CameraServer : public Object {
 	GDEXTENSION_CLASS(CameraServer, Object)
 
+	static CameraServer *singleton;
+
 public:
 
 	enum FeedImage {
@@ -70,6 +72,8 @@ protected:
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
 	}
+
+	~CameraServer();
 
 public:
 

@@ -35,6 +35,8 @@
 
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/variant/string.hpp>
+#include <godot_cpp/variant/variant.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -43,13 +45,19 @@
 #include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
+class StringName;
+
 class GLTFAnimation : public Resource {
 	GDEXTENSION_CLASS(GLTFAnimation, Resource)
 
 public:
 
+	String get_original_name();
+	void set_original_name(const String &original_name);
 	bool get_loop() const;
 	void set_loop(bool loop);
+	Variant get_additional_data(const StringName &extension_name);
+	void set_additional_data(const StringName &extension_name, const Variant &additional_data);
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {

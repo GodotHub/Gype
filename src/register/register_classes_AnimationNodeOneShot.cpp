@@ -6,7 +6,7 @@
 using namespace godot;
 
 void register_classes_AnimationNodeOneShot() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<AnimationNodeOneShot>("AnimationNodeOneShot")
 			.constructor<>()
 			.property<&AnimationNodeOneShot::get_mix_mode, &AnimationNodeOneShot::set_mix_mode>("mix_mode")

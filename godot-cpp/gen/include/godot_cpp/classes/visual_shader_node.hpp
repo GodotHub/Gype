@@ -72,6 +72,8 @@ public:
 	void clear_default_input_values();
 	void set_default_input_values(const Array &values);
 	Array get_default_input_values() const;
+	void set_frame(int32_t frame);
+	int32_t get_frame() const;
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {

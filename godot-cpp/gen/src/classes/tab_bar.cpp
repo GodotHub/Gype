@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/tab_bar.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -95,6 +96,22 @@ void TabBar::set_tab_title(int32_t tab_idx, const String &title) {
 
 String TabBar::get_tab_title(int32_t tab_idx) const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TabBar::get_class_static()._native_ptr(), StringName("get_tab_title")._native_ptr(), 844755477);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, String());
+	int64_t tab_idx_encoded;
+	PtrToArg<int64_t>::encode(tab_idx, &tab_idx_encoded);
+	return internal::_call_native_mb_ret<String>(_gde_method_bind, _owner, &tab_idx_encoded);
+}
+
+void TabBar::set_tab_tooltip(int32_t tab_idx, const String &tooltip) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TabBar::get_class_static()._native_ptr(), StringName("set_tab_tooltip")._native_ptr(), 501894301);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t tab_idx_encoded;
+	PtrToArg<int64_t>::encode(tab_idx, &tab_idx_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &tab_idx_encoded, &tooltip);
+}
+
+String TabBar::get_tab_tooltip(int32_t tab_idx) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TabBar::get_class_static()._native_ptr(), StringName("get_tab_tooltip")._native_ptr(), 844755477);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, String());
 	int64_t tab_idx_encoded;
 	PtrToArg<int64_t>::encode(tab_idx, &tab_idx_encoded);
@@ -411,6 +428,20 @@ void TabBar::set_select_with_rmb(bool enabled) {
 
 bool TabBar::get_select_with_rmb() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TabBar::get_class_static()._native_ptr(), StringName("get_select_with_rmb")._native_ptr(), 36873697);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
+}
+
+void TabBar::set_deselect_enabled(bool enabled) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TabBar::get_class_static()._native_ptr(), StringName("set_deselect_enabled")._native_ptr(), 2586408642);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int8_t enabled_encoded;
+	PtrToArg<bool>::encode(enabled, &enabled_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &enabled_encoded);
+}
+
+bool TabBar::get_deselect_enabled() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TabBar::get_class_static()._native_ptr(), StringName("get_deselect_enabled")._native_ptr(), 36873697);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
 	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
 }

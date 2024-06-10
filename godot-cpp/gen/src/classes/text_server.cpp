@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/text_server.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -235,6 +236,20 @@ TextServer::FontAntialiasing TextServer::font_get_antialiasing(const RID &font_r
 	return (TextServer::FontAntialiasing)internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &font_rid);
 }
 
+void TextServer::font_set_disable_embedded_bitmaps(const RID &font_rid, bool disable_embedded_bitmaps) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextServer::get_class_static()._native_ptr(), StringName("font_set_disable_embedded_bitmaps")._native_ptr(), 1265174801);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int8_t disable_embedded_bitmaps_encoded;
+	PtrToArg<bool>::encode(disable_embedded_bitmaps, &disable_embedded_bitmaps_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &font_rid, &disable_embedded_bitmaps_encoded);
+}
+
+bool TextServer::font_get_disable_embedded_bitmaps(const RID &font_rid) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextServer::get_class_static()._native_ptr(), StringName("font_get_disable_embedded_bitmaps")._native_ptr(), 4155700596);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner, &font_rid);
+}
+
 void TextServer::font_set_generate_mipmaps(const RID &font_rid, bool generate_mipmaps) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextServer::get_class_static()._native_ptr(), StringName("font_set_generate_mipmaps")._native_ptr(), 1265174801);
 	CHECK_METHOD_BIND(_gde_method_bind);
@@ -395,6 +410,20 @@ int64_t TextServer::font_get_spacing(const RID &font_rid, TextServer::SpacingTyp
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextServer::get_class_static()._native_ptr(), StringName("font_get_spacing")._native_ptr(), 1213653558);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
 	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &font_rid, &spacing);
+}
+
+void TextServer::font_set_baseline_offset(const RID &font_rid, double baseline_offset) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextServer::get_class_static()._native_ptr(), StringName("font_set_baseline_offset")._native_ptr(), 1794382983);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	double baseline_offset_encoded;
+	PtrToArg<double>::encode(baseline_offset, &baseline_offset_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &font_rid, &baseline_offset_encoded);
+}
+
+double TextServer::font_get_baseline_offset(const RID &font_rid) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextServer::get_class_static()._native_ptr(), StringName("font_get_baseline_offset")._native_ptr(), 866169185);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner, &font_rid);
 }
 
 void TextServer::font_set_transform(const RID &font_rid, const Transform2D &transform) {
@@ -1013,6 +1042,20 @@ String TextServer::shaped_text_get_custom_punctuation(const RID &shaped) const {
 	return internal::_call_native_mb_ret<String>(_gde_method_bind, _owner, &shaped);
 }
 
+void TextServer::shaped_text_set_custom_ellipsis(const RID &shaped, int64_t _char) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextServer::get_class_static()._native_ptr(), StringName("shaped_text_set_custom_ellipsis")._native_ptr(), 3411492887);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t _char_encoded;
+	PtrToArg<int64_t>::encode(_char, &_char_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &shaped, &_char_encoded);
+}
+
+int64_t TextServer::shaped_text_get_custom_ellipsis(const RID &shaped) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextServer::get_class_static()._native_ptr(), StringName("shaped_text_get_custom_ellipsis")._native_ptr(), 2198884583);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
+	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &shaped);
+}
+
 void TextServer::shaped_text_set_orientation(const RID &shaped, TextServer::Orientation orientation) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextServer::get_class_static()._native_ptr(), StringName("shaped_text_set_orientation")._native_ptr(), 3019609126);
 	CHECK_METHOD_BIND(_gde_method_bind);
@@ -1209,10 +1252,10 @@ PackedInt32Array TextServer::shaped_text_get_line_breaks(const RID &shaped, doub
 	return internal::_call_native_mb_ret<PackedInt32Array>(_gde_method_bind, _owner, &shaped, &width_encoded, &start_encoded, &break_flags);
 }
 
-PackedInt32Array TextServer::shaped_text_get_word_breaks(const RID &shaped, BitField<TextServer::GraphemeFlag> grapheme_flags) const {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextServer::get_class_static()._native_ptr(), StringName("shaped_text_get_word_breaks")._native_ptr(), 185957063);
+PackedInt32Array TextServer::shaped_text_get_word_breaks(const RID &shaped, BitField<TextServer::GraphemeFlag> grapheme_flags, BitField<TextServer::GraphemeFlag> skip_grapheme_flags) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextServer::get_class_static()._native_ptr(), StringName("shaped_text_get_word_breaks")._native_ptr(), 4099476853);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, PackedInt32Array());
-	return internal::_call_native_mb_ret<PackedInt32Array>(_gde_method_bind, _owner, &shaped, &grapheme_flags);
+	return internal::_call_native_mb_ret<PackedInt32Array>(_gde_method_bind, _owner, &shaped, &grapheme_flags, &skip_grapheme_flags);
 }
 
 int64_t TextServer::shaped_text_get_trim_pos(const RID &shaped) const {
@@ -1257,6 +1300,18 @@ Rect2 TextServer::shaped_text_get_object_rect(const RID &shaped, const Variant &
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextServer::get_class_static()._native_ptr(), StringName("shaped_text_get_object_rect")._native_ptr(), 447978354);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Rect2());
 	return internal::_call_native_mb_ret<Rect2>(_gde_method_bind, _owner, &shaped, &key);
+}
+
+Vector2i TextServer::shaped_text_get_object_range(const RID &shaped, const Variant &key) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextServer::get_class_static()._native_ptr(), StringName("shaped_text_get_object_range")._native_ptr(), 2524675647);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Vector2i());
+	return internal::_call_native_mb_ret<Vector2i>(_gde_method_bind, _owner, &shaped, &key);
+}
+
+int64_t TextServer::shaped_text_get_object_glyph(const RID &shaped, const Variant &key) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextServer::get_class_static()._native_ptr(), StringName("shaped_text_get_object_glyph")._native_ptr(), 1260085030);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
+	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &shaped, &key);
 }
 
 Vector2 TextServer::shaped_text_get_size(const RID &shaped) const {
@@ -1471,6 +1526,14 @@ bool TextServer::is_valid_identifier(const String &string) const {
 	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner, &string);
 }
 
+bool TextServer::is_valid_letter(int64_t unicode) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextServer::get_class_static()._native_ptr(), StringName("is_valid_letter")._native_ptr(), 1116898809);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	int64_t unicode_encoded;
+	PtrToArg<int64_t>::encode(unicode, &unicode_encoded);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner, &unicode_encoded);
+}
+
 String TextServer::string_to_upper(const String &string, const String &language) const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextServer::get_class_static()._native_ptr(), StringName("string_to_upper")._native_ptr(), 2664628024);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, String());
@@ -1479,6 +1542,12 @@ String TextServer::string_to_upper(const String &string, const String &language)
 
 String TextServer::string_to_lower(const String &string, const String &language) const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextServer::get_class_static()._native_ptr(), StringName("string_to_lower")._native_ptr(), 2664628024);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, String());
+	return internal::_call_native_mb_ret<String>(_gde_method_bind, _owner, &string, &language);
+}
+
+String TextServer::string_to_title(const String &string, const String &language) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextServer::get_class_static()._native_ptr(), StringName("string_to_title")._native_ptr(), 2664628024);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, String());
 	return internal::_call_native_mb_ret<String>(_gde_method_bind, _owner, &string, &language);
 }

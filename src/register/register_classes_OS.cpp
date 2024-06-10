@@ -11,9 +11,8 @@
 using namespace godot;
 
 void register_classes_OS() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<OS>("OS")
-			.constructor<>()
 			.property<&OS::is_in_low_processor_usage_mode, &OS::set_low_processor_usage_mode>("low_processor_usage_mode")
 			.property<&OS::get_low_processor_usage_mode_sleep_usec, &OS::set_low_processor_usage_mode_sleep_usec>("low_processor_usage_mode_sleep_usec")
 			.property<&OS::is_delta_smoothing_enabled, &OS::set_delta_smoothing>("delta_smoothing")

@@ -92,6 +92,8 @@ public:
 	double get_cell_size() const;
 	void set_cell_height(double cell_height);
 	double get_cell_height() const;
+	void set_border_size(double border_size);
+	double get_border_size() const;
 	void set_agent_height(double agent_height);
 	double get_agent_height() const;
 	void set_agent_radius(double agent_radius);

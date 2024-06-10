@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/multi_mesh.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -181,6 +182,18 @@ Color MultiMesh::get_instance_custom_data(int32_t instance) const {
 	int64_t instance_encoded;
 	PtrToArg<int64_t>::encode(instance, &instance_encoded);
 	return internal::_call_native_mb_ret<Color>(_gde_method_bind, _owner, &instance_encoded);
+}
+
+void MultiMesh::set_custom_aabb(const AABB &aabb) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(MultiMesh::get_class_static()._native_ptr(), StringName("set_custom_aabb")._native_ptr(), 259215842);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &aabb);
+}
+
+AABB MultiMesh::get_custom_aabb() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(MultiMesh::get_class_static()._native_ptr(), StringName("get_custom_aabb")._native_ptr(), 1068685055);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, AABB());
+	return internal::_call_native_mb_ret<AABB>(_gde_method_bind, _owner);
 }
 
 AABB MultiMesh::get_aabb() const {

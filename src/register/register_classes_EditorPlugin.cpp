@@ -32,7 +32,7 @@
 using namespace godot;
 
 void register_classes_EditorPlugin() {
-	qjs::Context::Module &_module = _Node;
+	qjs::Context::Module &_module = get_Node_module();
 	_module.class_<EditorPlugin>("EditorPlugin")
 			.constructor<>()
 			.fun<static_cast<bool (EditorPlugin::*)(const Ref<InputEvent> &)>(&EditorPlugin::_forward_canvas_gui_input)>("_forward_canvas_gui_input")
@@ -60,8 +60,8 @@ void register_classes_EditorPlugin() {
 			.fun<static_cast<void (EditorPlugin::*)()>(&EditorPlugin::_enable_plugin)>("_enable_plugin")
 			.fun<static_cast<void (EditorPlugin::*)()>(&EditorPlugin::_disable_plugin)>("_disable_plugin")
 			.fun<static_cast<void (EditorPlugin::*)(EditorPlugin::CustomControlContainer, Control *)>(&EditorPlugin::add_control_to_container)>("add_control_to_container")
-			.fun<static_cast<Button *(EditorPlugin::*)(Control *, const String &)>(&EditorPlugin::add_control_to_bottom_panel)>("add_control_to_bottom_panel")
-			.fun<static_cast<void (EditorPlugin::*)(EditorPlugin::DockSlot, Control *)>(&EditorPlugin::add_control_to_dock)>("add_control_to_dock")
+			.fun<static_cast<Button *(EditorPlugin::*)(Control *, const String &, const Ref<godot::Shortcut> &)>(&EditorPlugin::add_control_to_bottom_panel)>("add_control_to_bottom_panel")
+			.fun<static_cast<void (EditorPlugin::*)(EditorPlugin::DockSlot, Control *, const Ref<godot::Shortcut> &)>(&EditorPlugin::add_control_to_dock)>("add_control_to_dock")
 			.fun<static_cast<void (EditorPlugin::*)(Control *)>(&EditorPlugin::remove_control_from_docks)>("remove_control_from_docks")
 			.fun<static_cast<void (EditorPlugin::*)(Control *)>(&EditorPlugin::remove_control_from_bottom_panel)>("remove_control_from_bottom_panel")
 			.fun<static_cast<void (EditorPlugin::*)(EditorPlugin::CustomControlContainer, Control *)>(&EditorPlugin::remove_control_from_container)>("remove_control_from_container")

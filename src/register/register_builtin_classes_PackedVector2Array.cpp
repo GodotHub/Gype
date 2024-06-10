@@ -9,10 +9,7 @@
 using namespace godot;
 
 void register_builtin_classes_PackedVector2Array() {
-	_Variant.class_<PackedVector2Array>("PackedVector2Array")
-			.constructor<>()
-			.constructor<const PackedVector2Array &>("PackedVector2Array_1")
-			.constructor<const Array &>("PackedVector2Array_2")
+	get_Variant_module().class_<PackedVector2Array>("PackedVector2Array").constructor<>().constructor<const PackedVector2Array &>("PackedVector2Array_1").constructor<const Array &>("PackedVector2Array_2")
 
 			.fun<static_cast<int64_t (PackedVector2Array::*)() const>(&PackedVector2Array::size)>("size")
 			.fun<static_cast<bool (PackedVector2Array::*)() const>(&PackedVector2Array::is_empty)>("is_empty")

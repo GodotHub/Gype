@@ -12,7 +12,7 @@
 using namespace godot;
 
 void register_classes_GPUParticles2D() {
-	qjs::Context::Module &_module = _Node2D;
+	qjs::Context::Module &_module = get_Node2D_module();
 	_module.class_<GPUParticles2D>("GPUParticles2D")
 			.constructor<>()
 			.property<&GPUParticles2D::is_emitting, &GPUParticles2D::set_emitting>("emitting")

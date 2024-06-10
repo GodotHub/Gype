@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_AudioEffectSpectrumAnalyzer() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<AudioEffectSpectrumAnalyzer>("AudioEffectSpectrumAnalyzer")
 			.constructor<>()
 			.property<&AudioEffectSpectrumAnalyzer::get_buffer_length, &AudioEffectSpectrumAnalyzer::set_buffer_length>("buffer_length")

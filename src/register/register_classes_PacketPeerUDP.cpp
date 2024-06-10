@@ -8,7 +8,7 @@
 using namespace godot;
 
 void register_classes_PacketPeerUDP() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<PacketPeerUDP>("PacketPeerUDP")
 			.constructor<>()
 			.fun<static_cast<Error (PacketPeerUDP::*)(int32_t, const String &, int32_t)>(&PacketPeerUDP::bind)>("bind")

@@ -16,7 +16,7 @@
 using namespace godot;
 
 void register_classes_ScriptExtension() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<ScriptExtension>("ScriptExtension")
 			.constructor<>()
 			.fun<static_cast<bool (ScriptExtension::*)()>(&ScriptExtension::_editor_can_reload_from_file)>("_editor_can_reload_from_file")

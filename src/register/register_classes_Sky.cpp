@@ -8,7 +8,7 @@
 using namespace godot;
 
 void register_classes_Sky() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<Sky>("Sky")
 			.constructor<>()
 			.property<&Sky::get_material, &Sky::set_material>("sky_material")

@@ -11,7 +11,7 @@
 using namespace godot;
 
 void register_classes_AStarGrid2D() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<AStarGrid2D>("AStarGrid2D")
 			.constructor<>()
 			.property<&AStarGrid2D::get_region, &AStarGrid2D::set_region>("region")
@@ -36,6 +36,6 @@ void register_classes_AStarGrid2D() {
 			.fun<static_cast<void (AStarGrid2D::*)(const Rect2i &, double)>(&AStarGrid2D::fill_weight_scale_region)>("fill_weight_scale_region")
 			.fun<static_cast<void (AStarGrid2D::*)()>(&AStarGrid2D::clear)>("clear")
 			.fun<static_cast<Vector2 (AStarGrid2D::*)(const Vector2i &) const>(&AStarGrid2D::get_point_position)>("get_point_position")
-			.fun<static_cast<PackedVector2Array (AStarGrid2D::*)(const Vector2i &, const Vector2i &)>(&AStarGrid2D::get_point_path)>("get_point_path")
-			.fun<static_cast<TypedArray<Vector2i> (AStarGrid2D::*)(const Vector2i &, const Vector2i &)>(&AStarGrid2D::get_id_path)>("get_id_path");
+			.fun<static_cast<PackedVector2Array (AStarGrid2D::*)(const Vector2i &, const Vector2i &, bool)>(&AStarGrid2D::get_point_path)>("get_point_path")
+			.fun<static_cast<TypedArray<Vector2i> (AStarGrid2D::*)(const Vector2i &, const Vector2i &, bool)>(&AStarGrid2D::get_id_path)>("get_id_path");
 }

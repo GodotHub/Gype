@@ -78,6 +78,12 @@ public:
 		MENU_MAX = 2,
 	};
 
+	enum MetaUnderline {
+		META_UNDERLINE_NEVER = 0,
+		META_UNDERLINE_ALWAYS = 1,
+		META_UNDERLINE_ON_HOVER = 2,
+	};
+
 	enum ImageUpdateMask : uint64_t {
 		UPDATE_TEXTURE = 1,
 		UPDATE_SIZE = 2,
@@ -95,7 +101,8 @@ public:
 	void add_image(const Ref<Texture2D> &image, int32_t width = 0, int32_t height = 0, const Color &color = Color(1, 1, 1, 1), InlineAlignment inline_align = (InlineAlignment)5, const Rect2 &region = Rect2(0, 0, 0, 0), const Variant &key = nullptr, bool pad = false, const String &tooltip = String(), bool size_in_percent = false);
 	void update_image(const Variant &key, BitField<RichTextLabel::ImageUpdateMask> mask, const Ref<Texture2D> &image, int32_t width = 0, int32_t height = 0, const Color &color = Color(1, 1, 1, 1), InlineAlignment inline_align = (InlineAlignment)5, const Rect2 &region = Rect2(0, 0, 0, 0), bool pad = false, const String &tooltip = String(), bool size_in_percent = false);
 	void newline();
-	bool remove_paragraph(int32_t paragraph);
+	bool remove_paragraph(int32_t paragraph, bool no_invalidate = false);
+	bool invalidate_paragraph(int32_t paragraph);
 	void push_font(const Ref<Font> &font, int32_t font_size = 0);
 	void push_font_size(int32_t font_size);
 	void push_normal();
@@ -109,7 +116,7 @@ public:
 	void push_paragraph(HorizontalAlignment alignment, Control::TextDirection base_direction = (Control::TextDirection)0, const String &language = String(), TextServer::StructuredTextParser st_parser = (TextServer::StructuredTextParser)0, BitField<TextServer::JustificationFlag> justification_flags = (BitField<TextServer::JustificationFlag>)163, const PackedFloat32Array &tab_stops = PackedFloat32Array());
 	void push_indent(int32_t level);
 	void push_list(int32_t level, RichTextLabel::ListType type, bool capitalize, const String &bullet = "•");
-	void push_meta(const Variant &data);
+	void push_meta(const Variant &data, RichTextLabel::MetaUnderline underline_mode = (RichTextLabel::MetaUnderline)1);
 	void push_hint(const String &description);
 	void push_language(const String &language);
 	void push_underline();
@@ -219,6 +226,7 @@ public:
 
 VARIANT_ENUM_CAST(RichTextLabel::ListType);
 VARIANT_ENUM_CAST(RichTextLabel::MenuItems);
+VARIANT_ENUM_CAST(RichTextLabel::MetaUnderline);
 VARIANT_BITFIELD_CAST(RichTextLabel::ImageUpdateMask);
 
 #endif // ! GODOT_CPP_RICH_TEXT_LABEL_HPP

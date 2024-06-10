@@ -13,10 +13,7 @@
 using namespace godot;
 
 void register_builtin_classes_PackedByteArray() {
-	_Variant.class_<PackedByteArray>("PackedByteArray")
-			.constructor<>()
-			.constructor<const PackedByteArray &>("PackedByteArray_1")
-			.constructor<const Array &>("PackedByteArray_2")
+	get_Variant_module().class_<PackedByteArray>("PackedByteArray").constructor<>().constructor<const PackedByteArray &>("PackedByteArray_1").constructor<const Array &>("PackedByteArray_2")
 
 			.fun<static_cast<int64_t (PackedByteArray::*)() const>(&PackedByteArray::size)>("size")
 			.fun<static_cast<bool (PackedByteArray::*)() const>(&PackedByteArray::is_empty)>("is_empty")

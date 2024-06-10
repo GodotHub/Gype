@@ -32,12 +32,14 @@
 
 #include <godot_cpp/classes/mesh_instance3d.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
 #include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/classes/skin.hpp>
+#include <godot_cpp/classes/skin_reference.hpp>
 #include <godot_cpp/variant/string_name.hpp>
 
 namespace godot {
@@ -76,6 +78,12 @@ Ref<Skin> MeshInstance3D::get_skin() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(MeshInstance3D::get_class_static()._native_ptr(), StringName("get_skin")._native_ptr(), 2074563878);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Ref<Skin>());
 	return Ref<Skin>::_gde_internal_constructor(internal::_call_native_mb_ret_obj<Skin>(_gde_method_bind, _owner));
+}
+
+Ref<SkinReference> MeshInstance3D::get_skin_reference() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(MeshInstance3D::get_class_static()._native_ptr(), StringName("get_skin_reference")._native_ptr(), 2060603409);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Ref<SkinReference>());
+	return Ref<SkinReference>::_gde_internal_constructor(internal::_call_native_mb_ret_obj<SkinReference>(_gde_method_bind, _owner));
 }
 
 int32_t MeshInstance3D::get_surface_override_material_count() const {
@@ -164,6 +172,12 @@ void MeshInstance3D::create_debug_tangents() {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(MeshInstance3D::get_class_static()._native_ptr(), StringName("create_debug_tangents")._native_ptr(), 3218959716);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner);
+}
+
+Ref<ArrayMesh> MeshInstance3D::bake_mesh_from_current_blend_shape_mix(const Ref<ArrayMesh> &existing) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(MeshInstance3D::get_class_static()._native_ptr(), StringName("bake_mesh_from_current_blend_shape_mix")._native_ptr(), 1457573577);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Ref<ArrayMesh>());
+	return Ref<ArrayMesh>::_gde_internal_constructor(internal::_call_native_mb_ret_obj<ArrayMesh>(_gde_method_bind, _owner, (existing != nullptr ? &existing->_owner : nullptr)));
 }
 
 

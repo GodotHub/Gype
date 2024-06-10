@@ -44,6 +44,7 @@
 #include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
+class Callable;
 class Variant;
 
 class PropertyTweener : public Tweener {
@@ -56,6 +57,7 @@ public:
 	Ref<PropertyTweener> as_relative();
 	Ref<PropertyTweener> set_trans(Tween::TransitionType trans);
 	Ref<PropertyTweener> set_ease(Tween::EaseType ease);
+	Ref<PropertyTweener> set_custom_interpolator(const Callable &interpolator_method);
 	Ref<PropertyTweener> set_delay(double delay);
 protected:
 	template <typename T, typename B>

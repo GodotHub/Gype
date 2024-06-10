@@ -11,9 +11,8 @@
 using namespace godot;
 
 void register_classes_ThemeDB() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<ThemeDB>("ThemeDB")
-			.constructor<>()
 			.property<&ThemeDB::get_fallback_base_scale, &ThemeDB::set_fallback_base_scale>("fallback_base_scale")
 			.property<&ThemeDB::get_fallback_font, &ThemeDB::set_fallback_font>("fallback_font")
 			.property<&ThemeDB::get_fallback_font_size, &ThemeDB::set_fallback_font_size>("fallback_font_size")

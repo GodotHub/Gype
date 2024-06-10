@@ -54,6 +54,8 @@ public:
 	void set_pressed(bool pressed);
 	void set_strength(double strength);
 	double get_strength() const;
+	void set_event_index(int32_t index);
+	int32_t get_event_index() const;
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {

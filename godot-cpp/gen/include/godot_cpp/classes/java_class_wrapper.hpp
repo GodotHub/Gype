@@ -49,6 +49,8 @@ class String;
 class JavaClassWrapper : public Object {
 	GDEXTENSION_CLASS(JavaClassWrapper, Object)
 
+	static JavaClassWrapper *singleton;
+
 public:
 
 	static JavaClassWrapper *get_singleton();
@@ -59,6 +61,8 @@ protected:
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
 	}
+
+	~JavaClassWrapper();
 
 public:
 

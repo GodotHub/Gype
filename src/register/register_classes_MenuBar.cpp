@@ -8,7 +8,7 @@
 using namespace godot;
 
 void register_classes_MenuBar() {
-	qjs::Context::Module &_module = _Control;
+	qjs::Context::Module &_module = get_Control_module();
 	_module.class_<MenuBar>("MenuBar")
 			.constructor<>()
 			.property<&MenuBar::is_flat, &MenuBar::set_flat>("flat")

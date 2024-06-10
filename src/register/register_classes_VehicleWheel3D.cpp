@@ -1,15 +1,13 @@
 #include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/vehicle_wheel3d.hpp>
 
-
 #include "qjspp.hpp"
 #include "register/register_classes.h"
-
 
 using namespace godot;
 
 void register_classes_VehicleWheel3D() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<VehicleWheel3D>("VehicleWheel3D")
 			.constructor<>()
 			.property<&VehicleWheel3D::get_engine_force, &VehicleWheel3D::set_engine_force>("engine_force")

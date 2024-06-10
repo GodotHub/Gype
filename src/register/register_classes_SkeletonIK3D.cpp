@@ -1,15 +1,13 @@
 #include <godot_cpp/classes/skeleton3d.hpp>
 #include <godot_cpp/classes/skeleton_ik3d.hpp>
 
-
 #include "qjspp.hpp"
 #include "register/register_classes.h"
-
 
 using namespace godot;
 
 void register_classes_SkeletonIK3D() {
-	qjs::Context::Module &_module = _Node;
+	qjs::Context::Module &_module = get_Node_module();
 	_module.class_<SkeletonIK3D>("SkeletonIK3D")
 			.constructor<>()
 			.property<&SkeletonIK3D::get_root_bone, &SkeletonIK3D::set_root_bone>("root_bone")

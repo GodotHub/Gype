@@ -14,7 +14,7 @@
 using namespace godot;
 
 void register_classes_Image() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<Image>("Image")
 			.constructor<>()
 			.fun<static_cast<int32_t (Image::*)() const>(&Image::get_width)>("get_width")

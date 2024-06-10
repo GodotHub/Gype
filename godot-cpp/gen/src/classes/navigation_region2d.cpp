@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/navigation_region2d.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -129,52 +130,6 @@ bool NavigationRegion2D::get_navigation_layer_value(int32_t layer_number) const 
 	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner, &layer_number_encoded);
 }
 
-void NavigationRegion2D::set_constrain_avoidance(bool enabled) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationRegion2D::get_class_static()._native_ptr(), StringName("set_constrain_avoidance")._native_ptr(), 2586408642);
-	CHECK_METHOD_BIND(_gde_method_bind);
-	int8_t enabled_encoded;
-	PtrToArg<bool>::encode(enabled, &enabled_encoded);
-	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &enabled_encoded);
-}
-
-bool NavigationRegion2D::get_constrain_avoidance() const {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationRegion2D::get_class_static()._native_ptr(), StringName("get_constrain_avoidance")._native_ptr(), 36873697);
-	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
-	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
-}
-
-void NavigationRegion2D::set_avoidance_layers(uint32_t layers) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationRegion2D::get_class_static()._native_ptr(), StringName("set_avoidance_layers")._native_ptr(), 1286410249);
-	CHECK_METHOD_BIND(_gde_method_bind);
-	int64_t layers_encoded;
-	PtrToArg<int64_t>::encode(layers, &layers_encoded);
-	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &layers_encoded);
-}
-
-uint32_t NavigationRegion2D::get_avoidance_layers() const {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationRegion2D::get_class_static()._native_ptr(), StringName("get_avoidance_layers")._native_ptr(), 3905245786);
-	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
-	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
-}
-
-void NavigationRegion2D::set_avoidance_layer_value(int32_t layer_number, bool value) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationRegion2D::get_class_static()._native_ptr(), StringName("set_avoidance_layer_value")._native_ptr(), 300928843);
-	CHECK_METHOD_BIND(_gde_method_bind);
-	int64_t layer_number_encoded;
-	PtrToArg<int64_t>::encode(layer_number, &layer_number_encoded);
-	int8_t value_encoded;
-	PtrToArg<bool>::encode(value, &value_encoded);
-	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &layer_number_encoded, &value_encoded);
-}
-
-bool NavigationRegion2D::get_avoidance_layer_value(int32_t layer_number) const {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationRegion2D::get_class_static()._native_ptr(), StringName("get_avoidance_layer_value")._native_ptr(), 1116898809);
-	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
-	int64_t layer_number_encoded;
-	PtrToArg<int64_t>::encode(layer_number, &layer_number_encoded);
-	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner, &layer_number_encoded);
-}
-
 RID NavigationRegion2D::get_region_rid() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationRegion2D::get_class_static()._native_ptr(), StringName("get_region_rid")._native_ptr(), 2944877500);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, RID());
@@ -215,6 +170,12 @@ void NavigationRegion2D::bake_navigation_polygon(bool on_thread) {
 	int8_t on_thread_encoded;
 	PtrToArg<bool>::encode(on_thread, &on_thread_encoded);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &on_thread_encoded);
+}
+
+bool NavigationRegion2D::is_baking() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationRegion2D::get_class_static()._native_ptr(), StringName("is_baking")._native_ptr(), 36873697);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
 }
 
 

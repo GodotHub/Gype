@@ -44,6 +44,8 @@
 #include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
+class Image;
+
 class HeightMapShape3D : public Shape3D {
 	GDEXTENSION_CLASS(HeightMapShape3D, Shape3D)
 
@@ -55,6 +57,9 @@ public:
 	int32_t get_map_depth() const;
 	void set_map_data(const PackedFloat32Array &data);
 	PackedFloat32Array get_map_data() const;
+	double get_min_height() const;
+	double get_max_height() const;
+	void update_map_data_from_image(const Ref<Image> &image, double height_min, double height_max);
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {

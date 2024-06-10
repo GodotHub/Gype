@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_AudioEffectCapture() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<AudioEffectCapture>("AudioEffectCapture")
 			.constructor<>()
 			.property<&AudioEffectCapture::get_buffer_length, &AudioEffectCapture::set_buffer_length>("buffer_length")

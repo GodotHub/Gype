@@ -11,7 +11,7 @@
 using namespace godot;
 
 void register_classes_EditorSceneFormatImporter() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<EditorSceneFormatImporter>("EditorSceneFormatImporter")
 			.constructor<>()
 			.fun<static_cast<uint32_t (EditorSceneFormatImporter::*)() const>(&EditorSceneFormatImporter::_get_import_flags)>("_get_import_flags")

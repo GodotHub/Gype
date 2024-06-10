@@ -51,6 +51,8 @@ class TextServer;
 class TextServerManager : public Object {
 	GDEXTENSION_CLASS(TextServerManager, Object)
 
+	static TextServerManager *singleton;
+
 public:
 
 	static TextServerManager *get_singleton();
@@ -68,6 +70,8 @@ protected:
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
 	}
+
+	~TextServerManager();
 
 public:
 

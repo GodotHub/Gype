@@ -45,7 +45,7 @@
 #include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
-class XRPositionalTracker;
+class XRControllerTracker;
 
 class WebXRInterface : public XRInterface {
 	GDEXTENSION_CLASS(WebXRInterface, XRInterface)
@@ -67,10 +67,11 @@ public:
 	void set_optional_features(const String &optional_features);
 	String get_optional_features() const;
 	String get_reference_space_type() const;
+	String get_enabled_features() const;
 	void set_requested_reference_space_types(const String &requested_reference_space_types);
 	String get_requested_reference_space_types() const;
 	bool is_input_source_active(int32_t input_source_id) const;
-	Ref<XRPositionalTracker> get_input_source_tracker(int32_t input_source_id) const;
+	Ref<XRControllerTracker> get_input_source_tracker(int32_t input_source_id) const;
 	WebXRInterface::TargetRayMode get_input_source_target_ray_mode(int32_t input_source_id) const;
 	String get_visibility_state() const;
 	double get_display_refresh_rate() const;

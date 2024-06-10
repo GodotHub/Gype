@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/gltf_state.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -60,6 +61,14 @@ void GLTFState::add_used_extension(const String &extension_name, bool required) 
 	int8_t required_encoded;
 	PtrToArg<bool>::encode(required, &required_encoded);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &extension_name, &required_encoded);
+}
+
+int32_t GLTFState::append_data_to_buffers(const PackedByteArray &data, bool deduplication) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFState::get_class_static()._native_ptr(), StringName("append_data_to_buffers")._native_ptr(), 1460416665);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
+	int8_t deduplication_encoded;
+	PtrToArg<bool>::encode(deduplication, &deduplication_encoded);
+	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &data, &deduplication_encoded);
 }
 
 Dictionary GLTFState::get_json() {
@@ -398,6 +407,20 @@ void GLTFState::set_create_animations(bool create_animations) {
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &create_animations_encoded);
 }
 
+bool GLTFState::get_import_as_skeleton_bones() {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFState::get_class_static()._native_ptr(), StringName("get_import_as_skeleton_bones")._native_ptr(), 2240911060);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
+}
+
+void GLTFState::set_import_as_skeleton_bones(bool import_as_skeleton_bones) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFState::get_class_static()._native_ptr(), StringName("set_import_as_skeleton_bones")._native_ptr(), 2586408642);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int8_t import_as_skeleton_bones_encoded;
+	PtrToArg<bool>::encode(import_as_skeleton_bones, &import_as_skeleton_bones_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &import_as_skeleton_bones_encoded);
+}
+
 TypedArray<GLTFAnimation> GLTFState::get_animations() {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFState::get_class_static()._native_ptr(), StringName("get_animations")._native_ptr(), 2915620761);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, TypedArray<GLTFAnimation>());
@@ -448,6 +471,20 @@ void GLTFState::set_handle_binary_image(int32_t method) {
 	int64_t method_encoded;
 	PtrToArg<int64_t>::encode(method, &method_encoded);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &method_encoded);
+}
+
+void GLTFState::set_bake_fps(double value) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFState::get_class_static()._native_ptr(), StringName("set_bake_fps")._native_ptr(), 373806689);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	double value_encoded;
+	PtrToArg<double>::encode(value, &value_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &value_encoded);
+}
+
+double GLTFState::get_bake_fps() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFState::get_class_static()._native_ptr(), StringName("get_bake_fps")._native_ptr(), 1740695150);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner);
 }
 
 

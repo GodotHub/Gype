@@ -3,15 +3,13 @@
 #include <godot_cpp/variant/packed_int32_array.hpp>
 #include <godot_cpp/variant/rect2.hpp>
 
-
 #include "qjspp.hpp"
 #include "register/register_classes.h"
-
 
 using namespace godot;
 
 void register_classes_Container() {
-	qjs::Context::Module &_module = _Control;
+	qjs::Context::Module &_module = get_Control_module();
 	_module.class_<Container>("Container")
 			.constructor<>()
 			.fun<static_cast<PackedInt32Array (Container::*)() const>(&Container::_get_allowed_size_flags_horizontal)>("_get_allowed_size_flags_horizontal")

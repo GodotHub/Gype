@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_ProgressBar() {
-	qjs::Context::Module &_module = _Control;
+	qjs::Context::Module &_module = get_Control_module();
 	_module.class_<ProgressBar>("ProgressBar")
 			.constructor<>()
 			.property<&ProgressBar::get_fill_mode, &ProgressBar::set_fill_mode>("fill_mode")

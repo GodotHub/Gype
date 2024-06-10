@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/script.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -85,6 +86,12 @@ Ref<Script> Script::get_base_script() const {
 
 StringName Script::get_instance_base_type() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Script::get_class_static()._native_ptr(), StringName("get_instance_base_type")._native_ptr(), 2002593661);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, StringName());
+	return internal::_call_native_mb_ret<StringName>(_gde_method_bind, _owner);
+}
+
+StringName Script::get_global_name() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Script::get_class_static()._native_ptr(), StringName("get_global_name")._native_ptr(), 2002593661);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, StringName());
 	return internal::_call_native_mb_ret<StringName>(_gde_method_bind, _owner);
 }

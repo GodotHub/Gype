@@ -95,9 +95,9 @@ public:
 	void set_collision_animatable(bool enabled);
 	bool is_collision_animatable() const;
 	void set_collision_visibility_mode(TileMap::VisibilityMode collision_visibility_mode);
-	TileMap::VisibilityMode get_collision_visibility_mode();
+	TileMap::VisibilityMode get_collision_visibility_mode() const;
 	void set_navigation_visibility_mode(TileMap::VisibilityMode navigation_visibility_mode);
-	TileMap::VisibilityMode get_navigation_visibility_mode();
+	TileMap::VisibilityMode get_navigation_visibility_mode() const;
 	void set_cell(int32_t layer, const Vector2i &coords, int32_t source_id = -1, const Vector2i &atlas_coords = Vector2i(-1, -1), int32_t alternative_tile = 0);
 	void erase_cell(int32_t layer, const Vector2i &coords);
 	int32_t get_cell_source_id(int32_t layer, const Vector2i &coords, bool use_proxies = false) const;

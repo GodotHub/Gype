@@ -8,7 +8,7 @@
 using namespace godot;
 
 void register_classes_TextureLayered() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<TextureLayered>("TextureLayered")
 			.constructor<>()
 			.fun<static_cast<Image::Format (TextureLayered::*)() const>(&TextureLayered::_get_format)>("_get_format")

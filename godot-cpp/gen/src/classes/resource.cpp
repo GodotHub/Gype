@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/resource.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -99,6 +100,24 @@ void Resource::setup_local_to_scene() {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Resource::get_class_static()._native_ptr(), StringName("setup_local_to_scene")._native_ptr(), 3218959716);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner);
+}
+
+String Resource::generate_scene_unique_id() {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Resource::get_class_static()._native_ptr(), StringName("generate_scene_unique_id")._native_ptr(), 2841200299);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, String());
+	return internal::_call_native_mb_ret<String>(_gde_method_bind, nullptr);
+}
+
+void Resource::set_scene_unique_id(const String &id) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Resource::get_class_static()._native_ptr(), StringName("set_scene_unique_id")._native_ptr(), 83702148);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &id);
+}
+
+String Resource::get_scene_unique_id() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Resource::get_class_static()._native_ptr(), StringName("get_scene_unique_id")._native_ptr(), 201670096);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, String());
+	return internal::_call_native_mb_ret<String>(_gde_method_bind, _owner);
 }
 
 void Resource::emit_changed() {

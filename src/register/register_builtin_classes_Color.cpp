@@ -8,14 +8,7 @@
 using namespace godot;
 
 void register_builtin_classes_Color() {
-	_Variant.class_<Color>("Color")
-			.constructor<>()
-			.constructor<const Color &>("Color_1")
-			.constructor<const Color &, real_t>("Color_2")
-			.constructor<real_t, real_t, real_t>("Color_3")
-			.constructor<real_t, real_t, real_t, real_t>("Color_4")
-			.constructor<const String &>("Color_5")
-			.constructor<const String &, real_t>("Color_6")
+	get_Variant_module().class_<Color>("Color").constructor<>().constructor<const Color &>("Color_1").constructor<const Color &, real_t>("Color_2").constructor<real_t, real_t, real_t>("Color_3").constructor<real_t, real_t, real_t, real_t>("Color_4").constructor<const String &>("Color_5").constructor<const String &, real_t>("Color_6")
 
 			.fun<static_cast<uint32_t (Color::*)() const>(&Color::to_argb32)>("to_argb32")
 			.fun<static_cast<uint32_t (Color::*)() const>(&Color::to_abgr32)>("to_abgr32")

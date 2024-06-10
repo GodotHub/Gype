@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_TubeTrailMesh() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<TubeTrailMesh>("TubeTrailMesh")
 			.constructor<>()
 			.property<&TubeTrailMesh::get_radius, &TubeTrailMesh::set_radius>("radius")

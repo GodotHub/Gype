@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/mobile_vr_interface.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -93,6 +94,18 @@ double MobileVRInterface::get_display_to_lens() const {
 	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner);
 }
 
+void MobileVRInterface::set_offset_rect(const Rect2 &offset_rect) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(MobileVRInterface::get_class_static()._native_ptr(), StringName("set_offset_rect")._native_ptr(), 2046264180);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &offset_rect);
+}
+
+Rect2 MobileVRInterface::get_offset_rect() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(MobileVRInterface::get_class_static()._native_ptr(), StringName("get_offset_rect")._native_ptr(), 1639390495);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Rect2());
+	return internal::_call_native_mb_ret<Rect2>(_gde_method_bind, _owner);
+}
+
 void MobileVRInterface::set_oversample(double oversample) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(MobileVRInterface::get_class_static()._native_ptr(), StringName("set_oversample")._native_ptr(), 373806689);
 	CHECK_METHOD_BIND(_gde_method_bind);
@@ -133,6 +146,34 @@ double MobileVRInterface::get_k2() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(MobileVRInterface::get_class_static()._native_ptr(), StringName("get_k2")._native_ptr(), 1740695150);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
 	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner);
+}
+
+double MobileVRInterface::get_vrs_min_radius() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(MobileVRInterface::get_class_static()._native_ptr(), StringName("get_vrs_min_radius")._native_ptr(), 1740695150);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner);
+}
+
+void MobileVRInterface::set_vrs_min_radius(double radius) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(MobileVRInterface::get_class_static()._native_ptr(), StringName("set_vrs_min_radius")._native_ptr(), 373806689);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	double radius_encoded;
+	PtrToArg<double>::encode(radius, &radius_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &radius_encoded);
+}
+
+double MobileVRInterface::get_vrs_strength() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(MobileVRInterface::get_class_static()._native_ptr(), StringName("get_vrs_strength")._native_ptr(), 1740695150);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner);
+}
+
+void MobileVRInterface::set_vrs_strength(double strength) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(MobileVRInterface::get_class_static()._native_ptr(), StringName("set_vrs_strength")._native_ptr(), 373806689);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	double strength_encoded;
+	PtrToArg<double>::encode(strength, &strength_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &strength_encoded);
 }
 
 

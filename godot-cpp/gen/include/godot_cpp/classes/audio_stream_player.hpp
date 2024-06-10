@@ -72,7 +72,7 @@ public:
 	void set_bus(const StringName &bus);
 	StringName get_bus() const;
 	void set_autoplay(bool enable);
-	bool is_autoplay_enabled();
+	bool is_autoplay_enabled() const;
 	void set_mix_target(AudioStreamPlayer::MixTarget mix_target);
 	AudioStreamPlayer::MixTarget get_mix_target() const;
 	void set_stream_paused(bool pause);

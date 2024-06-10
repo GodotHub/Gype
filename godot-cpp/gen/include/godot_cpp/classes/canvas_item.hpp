@@ -52,6 +52,7 @@
 #include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
+class CanvasLayer;
 class Font;
 class InputEvent;
 class Material;
@@ -126,14 +127,14 @@ public:
 	void set_draw_behind_parent(bool enable);
 	bool is_draw_behind_parent_enabled() const;
 	void draw_line(const Vector2 &from, const Vector2 &to, const Color &color, double width = -1.0, bool antialiased = false);
-	void draw_dashed_line(const Vector2 &from, const Vector2 &to, const Color &color, double width = -1.0, double dash = 2.0, bool aligned = true);
+	void draw_dashed_line(const Vector2 &from, const Vector2 &to, const Color &color, double width = -1.0, double dash = 2.0, bool aligned = true, bool antialiased = false);
 	void draw_polyline(const PackedVector2Array &points, const Color &color, double width = -1.0, bool antialiased = false);
 	void draw_polyline_colors(const PackedVector2Array &points, const PackedColorArray &colors, double width = -1.0, bool antialiased = false);
 	void draw_arc(const Vector2 &center, double radius, double start_angle, double end_angle, int32_t point_count, const Color &color, double width = -1.0, bool antialiased = false);
-	void draw_multiline(const PackedVector2Array &points, const Color &color, double width = -1.0);
-	void draw_multiline_colors(const PackedVector2Array &points, const PackedColorArray &colors, double width = -1.0);
-	void draw_rect(const Rect2 &rect, const Color &color, bool filled = true, double width = -1.0);
-	void draw_circle(const Vector2 &position, double radius, const Color &color);
+	void draw_multiline(const PackedVector2Array &points, const Color &color, double width = -1.0, bool antialiased = false);
+	void draw_multiline_colors(const PackedVector2Array &points, const PackedColorArray &colors, double width = -1.0, bool antialiased = false);
+	void draw_rect(const Rect2 &rect, const Color &color, bool filled = true, double width = -1.0, bool antialiased = false);
+	void draw_circle(const Vector2 &position, double radius, const Color &color, bool filled = true, double width = -1.0, bool antialiased = false);
 	void draw_texture(const Ref<Texture2D> &texture, const Vector2 &position, const Color &modulate = Color(1, 1, 1, 1));
 	void draw_texture_rect(const Ref<Texture2D> &texture, const Rect2 &rect, bool tile, const Color &modulate = Color(1, 1, 1, 1), bool transpose = false);
 	void draw_texture_rect_region(const Ref<Texture2D> &texture, const Rect2 &rect, const Rect2 &src_rect, const Color &modulate = Color(1, 1, 1, 1), bool transpose = false, bool clip_uv = true);
@@ -165,6 +166,7 @@ public:
 	Vector2 get_local_mouse_position() const;
 	Vector2 get_global_mouse_position() const;
 	RID get_canvas() const;
+	CanvasLayer *get_canvas_layer_node() const;
 	Ref<World2D> get_world_2d() const;
 	void set_material(const Ref<Material> &material);
 	Ref<Material> get_material() const;

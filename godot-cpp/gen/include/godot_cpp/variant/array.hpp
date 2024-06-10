@@ -36,9 +36,9 @@
 #include <godot_cpp/core/defs.hpp>
 
 #include <godot_cpp/variant/array_helpers.hpp>
+#include <godot_cpp/templates/vararg.hpp>
 #include <gdextension_interface.h>
 
-#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Callable;
@@ -52,6 +52,7 @@ class PackedInt64Array;
 class PackedStringArray;
 class PackedVector2Array;
 class PackedVector3Array;
+class PackedVector4Array;
 class StringName;
 class Variant;
 
@@ -75,6 +76,7 @@ class Array {
 		GDExtensionPtrConstructor constructor_9;
 		GDExtensionPtrConstructor constructor_10;
 		GDExtensionPtrConstructor constructor_11;
+		GDExtensionPtrConstructor constructor_12;
 		GDExtensionPtrDestructor destructor;
 		GDExtensionPtrBuiltInMethod method_size;
 		GDExtensionPtrBuiltInMethod method_is_empty;
@@ -157,6 +159,7 @@ public:
 	Array(const PackedVector2Array &from);
 	Array(const PackedVector3Array &from);
 	Array(const PackedColorArray &from);
+	Array(const PackedVector4Array &from);
 	Array(Array &&other);
 	~Array();
 	int64_t size() const;

@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/undo_redo.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -161,6 +162,20 @@ uint64_t UndoRedo::get_version() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(UndoRedo::get_class_static()._native_ptr(), StringName("get_version")._native_ptr(), 3905245786);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
 	return internal::_call_native_mb_ret<uint64_t>(_gde_method_bind, _owner);
+}
+
+void UndoRedo::set_max_steps(int32_t max_steps) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(UndoRedo::get_class_static()._native_ptr(), StringName("set_max_steps")._native_ptr(), 1286410249);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t max_steps_encoded;
+	PtrToArg<int64_t>::encode(max_steps, &max_steps_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &max_steps_encoded);
+}
+
+int32_t UndoRedo::get_max_steps() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(UndoRedo::get_class_static()._native_ptr(), StringName("get_max_steps")._native_ptr(), 3905245786);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
+	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
 }
 
 bool UndoRedo::redo() {

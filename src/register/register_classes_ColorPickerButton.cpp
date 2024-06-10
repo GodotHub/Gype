@@ -2,15 +2,13 @@
 #include <godot_cpp/classes/color_picker_button.hpp>
 #include <godot_cpp/classes/popup_panel.hpp>
 
-
 #include "qjspp.hpp"
 #include "register/register_classes.h"
-
 
 using namespace godot;
 
 void register_classes_ColorPickerButton() {
-	qjs::Context::Module &_module = _Control;
+	qjs::Context::Module &_module = get_Control_module();
 	_module.class_<ColorPickerButton>("ColorPickerButton")
 			.constructor<>()
 			.property<&ColorPickerButton::get_pick_color, &ColorPickerButton::set_pick_color>("color")

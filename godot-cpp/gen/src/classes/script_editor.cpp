@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/script_editor.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -90,6 +91,12 @@ void ScriptEditor::open_script_create_dialog(const String &base_name, const Stri
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(ScriptEditor::get_class_static()._native_ptr(), StringName("open_script_create_dialog")._native_ptr(), 3186203200);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &base_name, &base_path);
+}
+
+void ScriptEditor::goto_help(const String &topic) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(ScriptEditor::get_class_static()._native_ptr(), StringName("goto_help")._native_ptr(), 83702148);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &topic);
 }
 
 

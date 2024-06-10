@@ -126,6 +126,7 @@ public:
 		BLEND_MODE_ADD = 1,
 		BLEND_MODE_SUB = 2,
 		BLEND_MODE_MUL = 3,
+		BLEND_MODE_PREMULT_ALPHA = 4,
 	};
 
 	enum AlphaAntiAliasing {

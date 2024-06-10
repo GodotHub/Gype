@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/surface_tool.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -229,6 +230,12 @@ void SurfaceTool::create_from(const Ref<Mesh> &existing, int32_t surface) {
 	int64_t surface_encoded;
 	PtrToArg<int64_t>::encode(surface, &surface_encoded);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, (existing != nullptr ? &existing->_owner : nullptr), &surface_encoded);
+}
+
+void SurfaceTool::create_from_arrays(const Array &arrays, Mesh::PrimitiveType primitive_type) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(SurfaceTool::get_class_static()._native_ptr(), StringName("create_from_arrays")._native_ptr(), 1894639680);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &arrays, &primitive_type);
 }
 
 void SurfaceTool::create_from_blend_shape(const Ref<Mesh> &existing, int32_t surface, const String &blend_shape) {

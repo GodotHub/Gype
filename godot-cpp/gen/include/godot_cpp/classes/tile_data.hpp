@@ -76,7 +76,7 @@ public:
 	void set_y_sort_origin(int32_t y_sort_origin);
 	int32_t get_y_sort_origin() const;
 	void set_occluder(int32_t layer_id, const Ref<OccluderPolygon2D> &occluder_polygon);
-	Ref<OccluderPolygon2D> get_occluder(int32_t layer_id) const;
+	Ref<OccluderPolygon2D> get_occluder(int32_t layer_id, bool flip_h = false, bool flip_v = false, bool transpose = false) const;
 	void set_constant_linear_velocity(int32_t layer_id, const Vector2 &velocity);
 	Vector2 get_constant_linear_velocity(int32_t layer_id) const;
 	void set_constant_angular_velocity(int32_t layer_id, double velocity);
@@ -97,8 +97,9 @@ public:
 	int32_t get_terrain() const;
 	void set_terrain_peering_bit(TileSet::CellNeighbor peering_bit, int32_t terrain);
 	int32_t get_terrain_peering_bit(TileSet::CellNeighbor peering_bit) const;
+	bool is_valid_terrain_peering_bit(TileSet::CellNeighbor peering_bit) const;
 	void set_navigation_polygon(int32_t layer_id, const Ref<NavigationPolygon> &navigation_polygon);
-	Ref<NavigationPolygon> get_navigation_polygon(int32_t layer_id) const;
+	Ref<NavigationPolygon> get_navigation_polygon(int32_t layer_id, bool flip_h = false, bool flip_v = false, bool transpose = false) const;
 	void set_probability(double probability);
 	double get_probability() const;
 	void set_custom_data(const String &layer_name, const Variant &value);

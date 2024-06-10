@@ -3,6 +3,7 @@
 
 #include "qjspp/utils.h"
 #include "quickjs-parser.h"
+#include "support/typescript_language.h"
 #include <support/typescript_instance.h>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/script_extension.hpp>
@@ -12,20 +13,20 @@
 
 using namespace godot;
 
+class TypescriptInstance;
+
 class Typescript : public ScriptExtension {
 	GDCLASS(Typescript, ScriptExtension)
 
-	const TypescriptLanguage *language = TypescriptLanguage::get_singleton();
-
 	String _script_path;
 	String _source_code;
-	JSParseState *s;
+	JSParseState *_parse_state;
 	HashSet<StringName> _members;
+	StringName _base;
+
 	mutable HashMap<uint64_t, TypescriptInstance *> _instances = HashMap<uint64_t, TypescriptInstance *>();
 
 public:
-	Typescript();
-
 	bool _editor_can_reload_from_file() override;
 	void _placeholder_erased(void *placeholder) override;
 	bool _can_instantiate() const override;
@@ -69,7 +70,7 @@ protected:
 	}
 
 private:
-	JSParseState *parse_source_code(const String &source_code);
+	JSParseState *_parse_source_code(const String &source_code);
 };
 
 struct TSFunction {

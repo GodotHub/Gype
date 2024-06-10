@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_AudioEffectStereoEnhance() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<AudioEffectStereoEnhance>("AudioEffectStereoEnhance")
 			.constructor<>()
 			.property<&AudioEffectStereoEnhance::get_pan_pullout, &AudioEffectStereoEnhance::set_pan_pullout>("pan_pullout")

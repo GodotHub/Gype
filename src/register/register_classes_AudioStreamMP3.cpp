@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_AudioStreamMP3() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<AudioStreamMP3>("AudioStreamMP3")
 			.constructor<>()
 			.property<&AudioStreamMP3::get_data, &AudioStreamMP3::set_data>("data")

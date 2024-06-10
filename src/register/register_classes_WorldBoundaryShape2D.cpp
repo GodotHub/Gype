@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_WorldBoundaryShape2D() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<WorldBoundaryShape2D>("WorldBoundaryShape2D")
 			.constructor<>()
 			.property<&WorldBoundaryShape2D::get_normal, &WorldBoundaryShape2D::set_normal>("normal")

@@ -12,7 +12,7 @@
 using namespace godot;
 
 void register_classes_TileSetAtlasSource() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<TileSetAtlasSource>("TileSetAtlasSource")
 			.constructor<>()
 			.property<&TileSetAtlasSource::get_texture, &TileSetAtlasSource::set_texture>("texture")

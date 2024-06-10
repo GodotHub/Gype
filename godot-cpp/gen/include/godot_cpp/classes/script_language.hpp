@@ -47,6 +47,13 @@ class ScriptLanguage : public Object {
 
 public:
 
+	enum ScriptNameCasing {
+		SCRIPT_NAME_CASING_AUTO = 0,
+		SCRIPT_NAME_CASING_PASCAL_CASE = 1,
+		SCRIPT_NAME_CASING_SNAKE_CASE = 2,
+		SCRIPT_NAME_CASING_KEBAB_CASE = 3,
+	};
+
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -58,5 +65,7 @@ public:
 };
 
 } // namespace godot
+
+VARIANT_ENUM_CAST(ScriptLanguage::ScriptNameCasing);
 
 #endif // ! GODOT_CPP_SCRIPT_LANGUAGE_HPP

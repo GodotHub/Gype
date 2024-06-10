@@ -6,7 +6,7 @@
 using namespace godot;
 
 void register_classes_AnimationTree() {
-	qjs::Context::Module &_module = _Node;
+	qjs::Context::Module &_module = get_Node_module();
 	_module.class_<AnimationTree>("AnimationTree")
 			.constructor<>()
 			.property<&AnimationTree::get_tree_root, &AnimationTree::set_tree_root>("tree_root")

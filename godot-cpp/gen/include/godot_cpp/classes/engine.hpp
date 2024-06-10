@@ -54,6 +54,8 @@ class StringName;
 class Engine : public Object {
 	GDEXTENSION_CLASS(Engine, Object)
 
+	static Engine *singleton;
+
 public:
 
 	static Engine *get_singleton();
@@ -100,6 +102,8 @@ protected:
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
 	}
+
+	~Engine();
 
 public:
 

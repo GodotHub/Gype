@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_InputEventShortcut() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<InputEventShortcut>("InputEventShortcut")
 			.constructor<>()
 			.property<&InputEventShortcut::get_shortcut, &InputEventShortcut::set_shortcut>("shortcut");

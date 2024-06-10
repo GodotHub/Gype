@@ -33,10 +33,11 @@
 #ifndef GODOT_CPP_UTILITY_FUNCTIONS_HPP
 #define GODOT_CPP_UTILITY_FUNCTIONS_HPP
 
+#include <godot_cpp/templates/vararg.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 #include <godot_cpp/variant/variant.hpp>
 
-#include <godot_cpp/templates/vararg.hpp>
+#include <array>
 
 namespace godot {
 

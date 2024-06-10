@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_GPUParticlesCollisionSDF3D() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<GPUParticlesCollisionSDF3D>("GPUParticlesCollisionSDF3D")
 			.constructor<>()
 			.property<&GPUParticlesCollisionSDF3D::get_size, &GPUParticlesCollisionSDF3D::set_size>("size")

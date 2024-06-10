@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/navigation_mesh.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -143,6 +144,20 @@ void NavigationMesh::set_cell_height(double cell_height) {
 
 double NavigationMesh::get_cell_height() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationMesh::get_class_static()._native_ptr(), StringName("get_cell_height")._native_ptr(), 1740695150);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner);
+}
+
+void NavigationMesh::set_border_size(double border_size) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationMesh::get_class_static()._native_ptr(), StringName("set_border_size")._native_ptr(), 373806689);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	double border_size_encoded;
+	PtrToArg<double>::encode(border_size, &border_size_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &border_size_encoded);
+}
+
+double NavigationMesh::get_border_size() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationMesh::get_class_static()._native_ptr(), StringName("get_border_size")._native_ptr(), 1740695150);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
 	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner);
 }

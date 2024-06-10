@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_RDPipelineMultisampleState() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<RDPipelineMultisampleState>("RDPipelineMultisampleState")
 			.constructor<>()
 			.property<&RDPipelineMultisampleState::get_sample_count, &RDPipelineMultisampleState::set_sample_count>("sample_count")

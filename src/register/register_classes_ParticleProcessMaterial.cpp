@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_ParticleProcessMaterial() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<ParticleProcessMaterial>("ParticleProcessMaterial")
 			.constructor<>()
 			.property<&ParticleProcessMaterial::get_lifetime_randomness, &ParticleProcessMaterial::set_lifetime_randomness>("lifetime_randomness")

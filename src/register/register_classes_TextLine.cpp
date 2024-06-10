@@ -17,7 +17,7 @@
 using namespace godot;
 
 void register_classes_TextLine() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<TextLine>("TextLine")
 			.constructor<>()
 			.property<&TextLine::get_direction, &TextLine::set_direction>("direction")

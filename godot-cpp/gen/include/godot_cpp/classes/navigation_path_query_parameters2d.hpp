@@ -81,6 +81,10 @@ public:
 	uint32_t get_navigation_layers() const;
 	void set_metadata_flags(BitField<NavigationPathQueryParameters2D::PathMetadataFlags> flags);
 	BitField<NavigationPathQueryParameters2D::PathMetadataFlags> get_metadata_flags() const;
+	void set_simplify_path(bool enabled);
+	bool get_simplify_path() const;
+	void set_simplify_epsilon(double epsilon);
+	double get_simplify_epsilon() const;
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {

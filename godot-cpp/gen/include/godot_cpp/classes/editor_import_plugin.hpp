@@ -69,6 +69,7 @@ public:
 	virtual int32_t _get_import_order() const;
 	virtual bool _get_option_visibility(const String &path, const StringName &option_name, const Dictionary &options) const;
 	virtual Error _import(const String &source_file, const String &save_path, const Dictionary &options, const TypedArray<String> &platform_variants, const TypedArray<String> &gen_files) const;
+	virtual bool _can_import_threaded() const;
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -108,6 +109,9 @@ protected:
 		}
 		if constexpr (!std::is_same_v<decltype(&B::_import),decltype(&T::_import)>) {
 			BIND_VIRTUAL_METHOD(T, _import);
+		}
+		if constexpr (!std::is_same_v<decltype(&B::_can_import_threaded),decltype(&T::_can_import_threaded)>) {
+			BIND_VIRTUAL_METHOD(T, _can_import_threaded);
 		}
 	}
 

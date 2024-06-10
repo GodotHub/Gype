@@ -50,6 +50,8 @@ namespace godot {
 class IP : public Object {
 	GDEXTENSION_CLASS(IP, Object)
 
+	static IP *singleton;
+
 public:
 
 	enum ResolverStatus {
@@ -86,6 +88,8 @@ protected:
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
 	}
+
+	~IP();
 
 public:
 

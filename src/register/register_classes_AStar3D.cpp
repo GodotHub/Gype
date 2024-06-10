@@ -9,7 +9,7 @@
 using namespace godot;
 
 void register_classes_AStar3D() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<AStar3D>("AStar3D")
 			.constructor<>()
 			.fun<static_cast<double (AStar3D::*)(int64_t, int64_t) const>(&AStar3D::_estimate_cost)>("_estimate_cost")
@@ -35,6 +35,6 @@ void register_classes_AStar3D() {
 			.fun<static_cast<void (AStar3D::*)()>(&AStar3D::clear)>("clear")
 			.fun<static_cast<int64_t (AStar3D::*)(const Vector3 &, bool) const>(&AStar3D::get_closest_point)>("get_closest_point")
 			.fun<static_cast<Vector3 (AStar3D::*)(const Vector3 &) const>(&AStar3D::get_closest_position_in_segment)>("get_closest_position_in_segment")
-			.fun<static_cast<PackedVector3Array (AStar3D::*)(int64_t, int64_t)>(&AStar3D::get_point_path)>("get_point_path")
-			.fun<static_cast<PackedInt64Array (AStar3D::*)(int64_t, int64_t)>(&AStar3D::get_id_path)>("get_id_path");
+			.fun<static_cast<PackedVector3Array (AStar3D::*)(int64_t, int64_t, bool)>(&AStar3D::get_point_path)>("get_point_path")
+			.fun<static_cast<PackedInt64Array (AStar3D::*)(int64_t, int64_t, bool)>(&AStar3D::get_id_path)>("get_id_path");
 }

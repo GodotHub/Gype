@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/tree_item.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -382,6 +383,22 @@ void TreeItem::set_custom_draw(int32_t column, Object *object, const StringName 
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &column_encoded, (object != nullptr ? &object->_owner : nullptr), &callback);
 }
 
+void TreeItem::set_custom_draw_callback(int32_t column, const Callable &callback) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TreeItem::get_class_static()._native_ptr(), StringName("set_custom_draw_callback")._native_ptr(), 957362965);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t column_encoded;
+	PtrToArg<int64_t>::encode(column, &column_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &column_encoded, &callback);
+}
+
+Callable TreeItem::get_custom_draw_callback(int32_t column) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TreeItem::get_class_static()._native_ptr(), StringName("get_custom_draw_callback")._native_ptr(), 1317077508);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Callable());
+	int64_t column_encoded;
+	PtrToArg<int64_t>::encode(column, &column_encoded);
+	return internal::_call_native_mb_ret<Callable>(_gde_method_bind, _owner, &column_encoded);
+}
+
 void TreeItem::set_collapsed(bool enable) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TreeItem::get_class_static()._native_ptr(), StringName("set_collapsed")._native_ptr(), 2586408642);
 	CHECK_METHOD_BIND(_gde_method_bind);
@@ -422,6 +439,12 @@ void TreeItem::set_visible(bool enable) {
 
 bool TreeItem::is_visible() {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TreeItem::get_class_static()._native_ptr(), StringName("is_visible")._native_ptr(), 2240911060);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
+}
+
+bool TreeItem::is_visible_in_tree() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TreeItem::get_class_static()._native_ptr(), StringName("is_visible_in_tree")._native_ptr(), 36873697);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
 	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
 }
@@ -656,6 +679,16 @@ int32_t TreeItem::get_button_by_id(int32_t column, int32_t id) const {
 	int64_t id_encoded;
 	PtrToArg<int64_t>::encode(id, &id_encoded);
 	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &column_encoded, &id_encoded);
+}
+
+Color TreeItem::get_button_color(int32_t column, int32_t id) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TreeItem::get_class_static()._native_ptr(), StringName("get_button_color")._native_ptr(), 2165839948);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Color());
+	int64_t column_encoded;
+	PtrToArg<int64_t>::encode(column, &column_encoded);
+	int64_t id_encoded;
+	PtrToArg<int64_t>::encode(id, &id_encoded);
+	return internal::_call_native_mb_ret<Color>(_gde_method_bind, _owner, &column_encoded, &id_encoded);
 }
 
 Ref<Texture2D> TreeItem::get_button(int32_t column, int32_t button_index) const {

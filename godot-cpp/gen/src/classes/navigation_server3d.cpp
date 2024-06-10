@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/navigation_server3d.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -40,12 +41,12 @@
 #include <godot_cpp/classes/navigation_path_query_parameters3d.hpp>
 #include <godot_cpp/classes/navigation_path_query_result3d.hpp>
 #include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/variant/transform3d.hpp>
 
 namespace godot {
 
+NavigationServer3D *NavigationServer3D::singleton = nullptr;
+
 NavigationServer3D *NavigationServer3D::get_singleton() {
-	static NavigationServer3D *singleton = nullptr;
 	if (unlikely(singleton == nullptr)) {
 		GDExtensionObjectPtr singleton_obj = internal::gdextension_interface_global_get_singleton(NavigationServer3D::get_class_static()._native_ptr());
 #ifdef DEBUG_ENABLED
@@ -55,8 +56,18 @@ NavigationServer3D *NavigationServer3D::get_singleton() {
 #ifdef DEBUG_ENABLED
 		ERR_FAIL_NULL_V(singleton, nullptr);
 #endif // DEBUG_ENABLED
+		if (likely(singleton)) {
+			ClassDB::_register_engine_singleton(NavigationServer3D::get_class_static(), singleton);
+		}
 	}
 	return singleton;
+}
+
+NavigationServer3D::~NavigationServer3D() {
+	if (singleton == this) {
+		ClassDB::_unregister_engine_singleton(NavigationServer3D::get_class_static());
+		singleton = nullptr;
+	}
 }
 
 TypedArray<RID> NavigationServer3D::get_maps() const {
@@ -121,6 +132,20 @@ void NavigationServer3D::map_set_cell_height(const RID &map, double cell_height)
 
 double NavigationServer3D::map_get_cell_height(const RID &map) const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("map_get_cell_height")._native_ptr(), 866169185);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner, &map);
+}
+
+void NavigationServer3D::map_set_merge_rasterizer_cell_scale(const RID &map, double scale) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("map_set_merge_rasterizer_cell_scale")._native_ptr(), 1794382983);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	double scale_encoded;
+	PtrToArg<double>::encode(scale, &scale_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &map, &scale_encoded);
+}
+
+double NavigationServer3D::map_get_merge_rasterizer_cell_scale(const RID &map) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("map_get_merge_rasterizer_cell_scale")._native_ptr(), 866169185);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
 	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner, &map);
 }
@@ -231,6 +256,22 @@ void NavigationServer3D::map_force_update(const RID &map) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("map_force_update")._native_ptr(), 2722037293);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &map);
+}
+
+uint32_t NavigationServer3D::map_get_iteration_id(const RID &map) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("map_get_iteration_id")._native_ptr(), 2198884583);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
+	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &map);
+}
+
+Vector3 NavigationServer3D::map_get_random_point(const RID &map, uint32_t navigation_layers, bool uniformly) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("map_get_random_point")._native_ptr(), 722801526);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Vector3());
+	int64_t navigation_layers_encoded;
+	PtrToArg<int64_t>::encode(navigation_layers, &navigation_layers_encoded);
+	int8_t uniformly_encoded;
+	PtrToArg<bool>::encode(uniformly, &uniformly_encoded);
+	return internal::_call_native_mb_ret<Vector3>(_gde_method_bind, _owner, &map, &navigation_layers_encoded, &uniformly_encoded);
 }
 
 void NavigationServer3D::query_path(const Ref<NavigationPathQueryParameters3D> &parameters, const Ref<NavigationPathQueryResult3D> &result) const {
@@ -353,6 +394,12 @@ void NavigationServer3D::region_set_transform(const RID &region, const Transform
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &region, &transform);
 }
 
+Transform3D NavigationServer3D::region_get_transform(const RID &region) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("region_get_transform")._native_ptr(), 1128465797);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Transform3D());
+	return internal::_call_native_mb_ret<Transform3D>(_gde_method_bind, _owner, &region);
+}
+
 void NavigationServer3D::region_set_navigation_mesh(const RID &region, const Ref<NavigationMesh> &navigation_mesh) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("region_set_navigation_mesh")._native_ptr(), 2764952978);
 	CHECK_METHOD_BIND(_gde_method_bind);
@@ -385,6 +432,16 @@ Vector3 NavigationServer3D::region_get_connection_pathway_end(const RID &region,
 	int64_t connection_encoded;
 	PtrToArg<int64_t>::encode(connection, &connection_encoded);
 	return internal::_call_native_mb_ret<Vector3>(_gde_method_bind, _owner, &region, &connection_encoded);
+}
+
+Vector3 NavigationServer3D::region_get_random_point(const RID &region, uint32_t navigation_layers, bool uniformly) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("region_get_random_point")._native_ptr(), 722801526);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Vector3());
+	int64_t navigation_layers_encoded;
+	PtrToArg<int64_t>::encode(navigation_layers, &navigation_layers_encoded);
+	int8_t uniformly_encoded;
+	PtrToArg<bool>::encode(uniformly, &uniformly_encoded);
+	return internal::_call_native_mb_ret<Vector3>(_gde_method_bind, _owner, &region, &navigation_layers_encoded, &uniformly_encoded);
 }
 
 RID NavigationServer3D::link_create() {
@@ -581,12 +638,24 @@ void NavigationServer3D::agent_set_neighbor_distance(const RID &agent, double di
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &agent, &distance_encoded);
 }
 
+double NavigationServer3D::agent_get_neighbor_distance(const RID &agent) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("agent_get_neighbor_distance")._native_ptr(), 866169185);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner, &agent);
+}
+
 void NavigationServer3D::agent_set_max_neighbors(const RID &agent, int32_t count) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("agent_set_max_neighbors")._native_ptr(), 3411492887);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	int64_t count_encoded;
 	PtrToArg<int64_t>::encode(count, &count_encoded);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &agent, &count_encoded);
+}
+
+int32_t NavigationServer3D::agent_get_max_neighbors(const RID &agent) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("agent_get_max_neighbors")._native_ptr(), 2198884583);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
+	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &agent);
 }
 
 void NavigationServer3D::agent_set_time_horizon_agents(const RID &agent, double time_horizon) {
@@ -597,12 +666,24 @@ void NavigationServer3D::agent_set_time_horizon_agents(const RID &agent, double 
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &agent, &time_horizon_encoded);
 }
 
+double NavigationServer3D::agent_get_time_horizon_agents(const RID &agent) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("agent_get_time_horizon_agents")._native_ptr(), 866169185);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner, &agent);
+}
+
 void NavigationServer3D::agent_set_time_horizon_obstacles(const RID &agent, double time_horizon) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("agent_set_time_horizon_obstacles")._native_ptr(), 1794382983);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	double time_horizon_encoded;
 	PtrToArg<double>::encode(time_horizon, &time_horizon_encoded);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &agent, &time_horizon_encoded);
+}
+
+double NavigationServer3D::agent_get_time_horizon_obstacles(const RID &agent) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("agent_get_time_horizon_obstacles")._native_ptr(), 866169185);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner, &agent);
 }
 
 void NavigationServer3D::agent_set_radius(const RID &agent, double radius) {
@@ -613,6 +694,12 @@ void NavigationServer3D::agent_set_radius(const RID &agent, double radius) {
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &agent, &radius_encoded);
 }
 
+double NavigationServer3D::agent_get_radius(const RID &agent) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("agent_get_radius")._native_ptr(), 866169185);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner, &agent);
+}
+
 void NavigationServer3D::agent_set_height(const RID &agent, double height) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("agent_set_height")._native_ptr(), 1794382983);
 	CHECK_METHOD_BIND(_gde_method_bind);
@@ -621,12 +708,24 @@ void NavigationServer3D::agent_set_height(const RID &agent, double height) {
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &agent, &height_encoded);
 }
 
+double NavigationServer3D::agent_get_height(const RID &agent) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("agent_get_height")._native_ptr(), 866169185);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner, &agent);
+}
+
 void NavigationServer3D::agent_set_max_speed(const RID &agent, double max_speed) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("agent_set_max_speed")._native_ptr(), 1794382983);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	double max_speed_encoded;
 	PtrToArg<double>::encode(max_speed, &max_speed_encoded);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &agent, &max_speed_encoded);
+}
+
+double NavigationServer3D::agent_get_max_speed(const RID &agent) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("agent_get_max_speed")._native_ptr(), 866169185);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner, &agent);
 }
 
 void NavigationServer3D::agent_set_velocity_forced(const RID &agent, const Vector3 &velocity) {
@@ -641,10 +740,22 @@ void NavigationServer3D::agent_set_velocity(const RID &agent, const Vector3 &vel
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &agent, &velocity);
 }
 
+Vector3 NavigationServer3D::agent_get_velocity(const RID &agent) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("agent_get_velocity")._native_ptr(), 531438156);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Vector3());
+	return internal::_call_native_mb_ret<Vector3>(_gde_method_bind, _owner, &agent);
+}
+
 void NavigationServer3D::agent_set_position(const RID &agent, const Vector3 &position) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("agent_set_position")._native_ptr(), 3227306858);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &agent, &position);
+}
+
+Vector3 NavigationServer3D::agent_get_position(const RID &agent) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("agent_get_position")._native_ptr(), 531438156);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Vector3());
+	return internal::_call_native_mb_ret<Vector3>(_gde_method_bind, _owner, &agent);
 }
 
 bool NavigationServer3D::agent_is_map_changed(const RID &agent) const {
@@ -659,12 +770,24 @@ void NavigationServer3D::agent_set_avoidance_callback(const RID &agent, const Ca
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &agent, &callback);
 }
 
+bool NavigationServer3D::agent_has_avoidance_callback(const RID &agent) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("agent_has_avoidance_callback")._native_ptr(), 4155700596);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner, &agent);
+}
+
 void NavigationServer3D::agent_set_avoidance_layers(const RID &agent, uint32_t layers) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("agent_set_avoidance_layers")._native_ptr(), 3411492887);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	int64_t layers_encoded;
 	PtrToArg<int64_t>::encode(layers, &layers_encoded);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &agent, &layers_encoded);
+}
+
+uint32_t NavigationServer3D::agent_get_avoidance_layers(const RID &agent) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("agent_get_avoidance_layers")._native_ptr(), 2198884583);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
+	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &agent);
 }
 
 void NavigationServer3D::agent_set_avoidance_mask(const RID &agent, uint32_t mask) {
@@ -675,12 +798,24 @@ void NavigationServer3D::agent_set_avoidance_mask(const RID &agent, uint32_t mas
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &agent, &mask_encoded);
 }
 
+uint32_t NavigationServer3D::agent_get_avoidance_mask(const RID &agent) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("agent_get_avoidance_mask")._native_ptr(), 2198884583);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
+	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &agent);
+}
+
 void NavigationServer3D::agent_set_avoidance_priority(const RID &agent, double priority) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("agent_set_avoidance_priority")._native_ptr(), 1794382983);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	double priority_encoded;
 	PtrToArg<double>::encode(priority, &priority_encoded);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &agent, &priority_encoded);
+}
+
+double NavigationServer3D::agent_get_avoidance_priority(const RID &agent) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("agent_get_avoidance_priority")._native_ptr(), 866169185);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner, &agent);
 }
 
 RID NavigationServer3D::obstacle_create() {
@@ -751,6 +886,12 @@ void NavigationServer3D::obstacle_set_radius(const RID &obstacle, double radius)
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &obstacle, &radius_encoded);
 }
 
+double NavigationServer3D::obstacle_get_radius(const RID &obstacle) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("obstacle_get_radius")._native_ptr(), 866169185);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner, &obstacle);
+}
+
 void NavigationServer3D::obstacle_set_height(const RID &obstacle, double height) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("obstacle_set_height")._native_ptr(), 1794382983);
 	CHECK_METHOD_BIND(_gde_method_bind);
@@ -759,10 +900,22 @@ void NavigationServer3D::obstacle_set_height(const RID &obstacle, double height)
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &obstacle, &height_encoded);
 }
 
+double NavigationServer3D::obstacle_get_height(const RID &obstacle) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("obstacle_get_height")._native_ptr(), 866169185);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner, &obstacle);
+}
+
 void NavigationServer3D::obstacle_set_velocity(const RID &obstacle, const Vector3 &velocity) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("obstacle_set_velocity")._native_ptr(), 3227306858);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &obstacle, &velocity);
+}
+
+Vector3 NavigationServer3D::obstacle_get_velocity(const RID &obstacle) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("obstacle_get_velocity")._native_ptr(), 531438156);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Vector3());
+	return internal::_call_native_mb_ret<Vector3>(_gde_method_bind, _owner, &obstacle);
 }
 
 void NavigationServer3D::obstacle_set_position(const RID &obstacle, const Vector3 &position) {
@@ -771,10 +924,22 @@ void NavigationServer3D::obstacle_set_position(const RID &obstacle, const Vector
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &obstacle, &position);
 }
 
+Vector3 NavigationServer3D::obstacle_get_position(const RID &obstacle) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("obstacle_get_position")._native_ptr(), 531438156);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Vector3());
+	return internal::_call_native_mb_ret<Vector3>(_gde_method_bind, _owner, &obstacle);
+}
+
 void NavigationServer3D::obstacle_set_vertices(const RID &obstacle, const PackedVector3Array &vertices) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("obstacle_set_vertices")._native_ptr(), 4030257846);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &obstacle, &vertices);
+}
+
+PackedVector3Array NavigationServer3D::obstacle_get_vertices(const RID &obstacle) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("obstacle_get_vertices")._native_ptr(), 808965560);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, PackedVector3Array());
+	return internal::_call_native_mb_ret<PackedVector3Array>(_gde_method_bind, _owner, &obstacle);
 }
 
 void NavigationServer3D::obstacle_set_avoidance_layers(const RID &obstacle, uint32_t layers) {
@@ -783,6 +948,12 @@ void NavigationServer3D::obstacle_set_avoidance_layers(const RID &obstacle, uint
 	int64_t layers_encoded;
 	PtrToArg<int64_t>::encode(layers, &layers_encoded);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &obstacle, &layers_encoded);
+}
+
+uint32_t NavigationServer3D::obstacle_get_avoidance_layers(const RID &obstacle) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("obstacle_get_avoidance_layers")._native_ptr(), 2198884583);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
+	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &obstacle);
 }
 
 void NavigationServer3D::parse_source_geometry_data(const Ref<NavigationMesh> &navigation_mesh, const Ref<NavigationMeshSourceGeometryData3D> &source_geometry_data, Node *root_node, const Callable &callback) {
@@ -801,6 +972,32 @@ void NavigationServer3D::bake_from_source_geometry_data_async(const Ref<Navigati
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("bake_from_source_geometry_data_async")._native_ptr(), 2469318639);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, (navigation_mesh != nullptr ? &navigation_mesh->_owner : nullptr), (source_geometry_data != nullptr ? &source_geometry_data->_owner : nullptr), &callback);
+}
+
+bool NavigationServer3D::is_baking_navigation_mesh(const Ref<NavigationMesh> &navigation_mesh) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("is_baking_navigation_mesh")._native_ptr(), 3142026141);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner, (navigation_mesh != nullptr ? &navigation_mesh->_owner : nullptr));
+}
+
+RID NavigationServer3D::source_geometry_parser_create() {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("source_geometry_parser_create")._native_ptr(), 529393457);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, RID());
+	return internal::_call_native_mb_ret<RID>(_gde_method_bind, _owner);
+}
+
+void NavigationServer3D::source_geometry_parser_set_callback(const RID &parser, const Callable &callback) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("source_geometry_parser_set_callback")._native_ptr(), 3379118538);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &parser, &callback);
+}
+
+PackedVector3Array NavigationServer3D::simplify_path(const PackedVector3Array &path, double epsilon) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer3D::get_class_static()._native_ptr(), StringName("simplify_path")._native_ptr(), 2344122170);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, PackedVector3Array());
+	double epsilon_encoded;
+	PtrToArg<double>::encode(epsilon, &epsilon_encoded);
+	return internal::_call_native_mb_ret<PackedVector3Array>(_gde_method_bind, _owner, &path, &epsilon_encoded);
 }
 
 void NavigationServer3D::free_rid(const RID &rid) {

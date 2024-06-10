@@ -47,6 +47,8 @@ namespace godot {
 class Time : public Object {
 	GDEXTENSION_CLASS(Time, Object)
 
+	static Time *singleton;
+
 public:
 
 	enum Month {
@@ -102,6 +104,8 @@ protected:
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
 	}
+
+	~Time();
 
 public:
 

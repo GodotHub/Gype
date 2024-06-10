@@ -59,11 +59,14 @@ namespace godot {
 
 class Image;
 class PackedVector2Array;
+class RID;
 class Resource;
 class Texture2D;
 
 class DisplayServer : public Object {
 	GDEXTENSION_CLASS(DisplayServer, Object)
+
+	static DisplayServer *singleton;
 
 public:
 
@@ -89,6 +92,10 @@ public:
 		FEATURE_TEXT_TO_SPEECH = 19,
 		FEATURE_EXTEND_TO_TITLE = 20,
 		FEATURE_SCREEN_CAPTURE = 21,
+		FEATURE_STATUS_INDICATOR = 22,
+		FEATURE_NATIVE_HELP = 23,
+		FEATURE_NATIVE_DIALOG_INPUT = 24,
+		FEATURE_NATIVE_DIALOG_FILE = 25,
 	};
 
 	enum MouseMode {
@@ -207,11 +214,13 @@ public:
 	static const int SCREEN_OF_MAIN_WINDOW = -1;
 	static const int MAIN_WINDOW_ID = 0;
 	static const int INVALID_WINDOW_ID = -1;
+	static const int INVALID_INDICATOR_ID = -1;
 
 	static DisplayServer *get_singleton();
 
 	bool has_feature(DisplayServer::Feature feature) const;
 	String get_name() const;
+	void help_set_search_callbacks(const Callable &search_callback, const Callable &action_callback);
 	void global_menu_set_popup_callbacks(const String &menu_root, const Callable &open_callback, const Callable &close_callback);
 	int32_t global_menu_add_submenu_item(const String &menu_root, const String &label, const String &submenu, int32_t index = -1);
 	int32_t global_menu_add_item(const String &menu_root, const String &label, const Callable &callback = Callable(), const Callable &key_callback = Callable(), const Variant &tag = nullptr, Key accelerator = (Key)0, int32_t index = -1);
@@ -260,6 +269,7 @@ public:
 	int32_t global_menu_get_item_count(const String &menu_root) const;
 	void global_menu_remove_item(const String &menu_root, int32_t idx);
 	void global_menu_clear(const String &menu_root);
+	Dictionary global_menu_get_system_menu_roots() const;
 	bool tts_is_speaking() const;
 	bool tts_is_paused() const;
 	TypedArray<Dictionary> tts_get_voices() const;
@@ -272,6 +282,8 @@ public:
 	bool is_dark_mode_supported() const;
 	bool is_dark_mode() const;
 	Color get_accent_color() const;
+	Color get_base_color() const;
+	void set_system_theme_change_callback(const Callable &callable);
 	void mouse_set_mode(DisplayServer::MouseMode mouse_mode);
 	DisplayServer::MouseMode mouse_get_mode() const;
 	void warp_mouse(const Vector2i &position);
@@ -363,6 +375,7 @@ public:
 	Error dialog_show(const String &title, const String &description, const PackedStringArray &buttons, const Callable &callback);
 	Error dialog_input_text(const String &title, const String &description, const String &existing_text, const Callable &callback);
 	Error file_dialog_show(const String &title, const String &current_directory, const String &filename, bool show_hidden, DisplayServer::FileDialogMode mode, const PackedStringArray &filters, const Callable &callback);
+	Error file_dialog_with_options_show(const String &title, const String &current_directory, const String &root, const String &filename, bool show_hidden, DisplayServer::FileDialogMode mode, const PackedStringArray &filters, const TypedArray<Dictionary> &options, const Callable &callback);
 	int32_t keyboard_get_layout_count() const;
 	int32_t keyboard_get_current_layout() const;
 	void keyboard_set_current_layout(int32_t index);
@@ -374,15 +387,25 @@ public:
 	void force_process_and_drop_events();
 	void set_native_icon(const String &filename);
 	void set_icon(const Ref<Image> &image);
+	int32_t create_status_indicator(const Ref<Texture2D> &icon, const String &tooltip, const Callable &callback);
+	void status_indicator_set_icon(int32_t id, const Ref<Texture2D> &icon);
+	void status_indicator_set_tooltip(int32_t id, const String &tooltip);
+	void status_indicator_set_menu(int32_t id, const RID &menu_rid);
+	void status_indicator_set_callback(int32_t id, const Callable &callback);
+	Rect2 status_indicator_get_rect(int32_t id) const;
+	void delete_status_indicator(int32_t id);
 	int32_t tablet_get_driver_count() const;
 	String tablet_get_driver_name(int32_t idx) const;
 	String tablet_get_current_driver() const;
 	void tablet_set_current_driver(const String &name);
+	bool is_window_transparency_available() const;
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
 	}
+
+	~DisplayServer();
 
 public:
 

@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/input_event_action.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -69,6 +70,20 @@ double InputEventAction::get_strength() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(InputEventAction::get_class_static()._native_ptr(), StringName("get_strength")._native_ptr(), 1740695150);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
 	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner);
+}
+
+void InputEventAction::set_event_index(int32_t index) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(InputEventAction::get_class_static()._native_ptr(), StringName("set_event_index")._native_ptr(), 1286410249);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t index_encoded;
+	PtrToArg<int64_t>::encode(index, &index_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &index_encoded);
+}
+
+int32_t InputEventAction::get_event_index() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(InputEventAction::get_class_static()._native_ptr(), StringName("get_event_index")._native_ptr(), 3905245786);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
+	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
 }
 
 

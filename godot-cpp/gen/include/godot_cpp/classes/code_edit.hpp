@@ -130,6 +130,7 @@ public:
 	void fold_all_lines();
 	void unfold_all_lines();
 	void toggle_foldable_line(int32_t line);
+	void toggle_foldable_lines_at_carets();
 	bool is_line_folded(int32_t line) const;
 	TypedArray<int> get_folded_lines() const;
 	void create_code_region();
@@ -160,7 +161,7 @@ public:
 	void set_code_hint_draw_below(bool draw_below);
 	String get_text_for_code_completion() const;
 	void request_code_completion(bool force = false);
-	void add_code_completion_option(CodeEdit::CodeCompletionKind type, const String &display_text, const String &insert_text, const Color &text_color = Color(1, 1, 1, 1), const Ref<Resource> &icon = nullptr, const Variant &value = 0, int32_t location = 1024);
+	void add_code_completion_option(CodeEdit::CodeCompletionKind type, const String &display_text, const String &insert_text, const Color &text_color = Color(1, 1, 1, 1), const Ref<Resource> &icon = nullptr, const Variant &value = nullptr, int32_t location = 1024);
 	void update_code_completion_options(bool force);
 	TypedArray<Dictionary> get_code_completion_options() const;
 	Dictionary get_code_completion_option(int32_t index) const;
@@ -179,6 +180,10 @@ public:
 	String get_text_for_symbol_lookup() const;
 	String get_text_with_cursor_char(int32_t line, int32_t column) const;
 	void set_symbol_lookup_word_as_valid(bool valid);
+	void move_lines_up();
+	void move_lines_down();
+	void delete_lines();
+	void duplicate_selection();
 	void duplicate_lines();
 	virtual void _confirm_code_completion(bool replace);
 	virtual void _request_code_completion(bool force);

@@ -9,10 +9,7 @@
 using namespace godot;
 
 void register_builtin_classes_PackedColorArray() {
-	_Variant.class_<PackedColorArray>("PackedColorArray")
-			.constructor<>()
-			.constructor<const PackedColorArray &>("PackedColorArray_1")
-			.constructor<const Array &>("PackedColorArray_2")
+	get_Variant_module().class_<PackedColorArray>("PackedColorArray").constructor<>().constructor<const PackedColorArray &>("PackedColorArray_1").constructor<const Array &>("PackedColorArray_2")
 
 			.fun<static_cast<int64_t (PackedColorArray::*)() const>(&PackedColorArray::size)>("size")
 			.fun<static_cast<bool (PackedColorArray::*)() const>(&PackedColorArray::is_empty)>("is_empty")

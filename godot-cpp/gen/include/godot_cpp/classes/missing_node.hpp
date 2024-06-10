@@ -50,6 +50,8 @@ public:
 
 	void set_original_class(const String &name);
 	String get_original_class() const;
+	void set_original_scene(const String &name);
+	String get_original_scene() const;
 	void set_recording_properties(bool enable);
 	bool is_recording_properties() const;
 protected:

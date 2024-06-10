@@ -14,7 +14,7 @@
 using namespace godot;
 
 void register_classes_AnimationNode() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<AnimationNode>("AnimationNode")
 			.constructor<>()
 			.property<&AnimationNode::is_filter_enabled, &AnimationNode::set_filter_enabled>("filter_enabled")

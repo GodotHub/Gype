@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/rd_shader_file.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 

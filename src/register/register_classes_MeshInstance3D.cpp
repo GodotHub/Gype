@@ -12,7 +12,7 @@
 using namespace godot;
 
 void register_classes_MeshInstance3D() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<MeshInstance3D>("MeshInstance3D")
 			.constructor<>()
 			.property<&MeshInstance3D::get_mesh, &MeshInstance3D::set_mesh>("mesh")

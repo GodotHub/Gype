@@ -38,6 +38,7 @@
 #include <godot_cpp/classes/physics_server3d.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
+#include <godot_cpp/variant/vector3.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -48,7 +49,6 @@ namespace godot {
 
 class Node;
 struct Transform3D;
-struct Vector3;
 
 class PhysicsBody3D : public CollisionObject3D {
 	GDEXTENSION_CLASS(PhysicsBody3D, CollisionObject3D)
@@ -57,6 +57,7 @@ public:
 
 	Ref<KinematicCollision3D> move_and_collide(const Vector3 &motion, bool test_only = false, double safe_margin = 0.001, bool recovery_as_collision = false, int32_t max_collisions = 1);
 	bool test_move(const Transform3D &from, const Vector3 &motion, const Ref<KinematicCollision3D> &collision = nullptr, double safe_margin = 0.001, bool recovery_as_collision = false, int32_t max_collisions = 1);
+	Vector3 get_gravity() const;
 	void set_axis_lock(PhysicsServer3D::BodyAxis axis, bool lock);
 	bool get_axis_lock(PhysicsServer3D::BodyAxis axis) const;
 	TypedArray<PhysicsBody3D> get_collision_exceptions();

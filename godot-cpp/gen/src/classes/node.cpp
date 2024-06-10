@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/node.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -182,6 +183,12 @@ Array Node::get_node_and_resource(const NodePath &path) {
 
 bool Node::is_inside_tree() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Node::get_class_static()._native_ptr(), StringName("is_inside_tree")._native_ptr(), 36873697);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
+}
+
+bool Node::is_part_of_edited_scene() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Node::get_class_static()._native_ptr(), StringName("is_part_of_edited_scene")._native_ptr(), 36873697);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
 	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
 }
@@ -540,6 +547,48 @@ bool Node::is_physics_processing_internal() const {
 	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
 }
 
+void Node::set_physics_interpolation_mode(Node::PhysicsInterpolationMode mode) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Node::get_class_static()._native_ptr(), StringName("set_physics_interpolation_mode")._native_ptr(), 3202404928);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &mode);
+}
+
+Node::PhysicsInterpolationMode Node::get_physics_interpolation_mode() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Node::get_class_static()._native_ptr(), StringName("get_physics_interpolation_mode")._native_ptr(), 2920385216);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Node::PhysicsInterpolationMode(0));
+	return (Node::PhysicsInterpolationMode)internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
+}
+
+bool Node::is_physics_interpolated() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Node::get_class_static()._native_ptr(), StringName("is_physics_interpolated")._native_ptr(), 36873697);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
+}
+
+bool Node::is_physics_interpolated_and_enabled() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Node::get_class_static()._native_ptr(), StringName("is_physics_interpolated_and_enabled")._native_ptr(), 36873697);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
+}
+
+void Node::reset_physics_interpolation() {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Node::get_class_static()._native_ptr(), StringName("reset_physics_interpolation")._native_ptr(), 3218959716);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner);
+}
+
+void Node::set_auto_translate_mode(Node::AutoTranslateMode mode) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Node::get_class_static()._native_ptr(), StringName("set_auto_translate_mode")._native_ptr(), 776149714);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &mode);
+}
+
+Node::AutoTranslateMode Node::get_auto_translate_mode() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Node::get_class_static()._native_ptr(), StringName("get_auto_translate_mode")._native_ptr(), 2498906432);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Node::AutoTranslateMode(0));
+	return (Node::AutoTranslateMode)internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
+}
+
 Window *Node::get_window() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Node::get_class_static()._native_ptr(), StringName("get_window")._native_ptr(), 1757182445);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, nullptr);
@@ -690,6 +739,20 @@ bool Node::is_unique_name_in_owner() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Node::get_class_static()._native_ptr(), StringName("is_unique_name_in_owner")._native_ptr(), 36873697);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
 	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
+}
+
+String Node::atr(const String &message, const StringName &context) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Node::get_class_static()._native_ptr(), StringName("atr")._native_ptr(), 3344478075);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, String());
+	return internal::_call_native_mb_ret<String>(_gde_method_bind, _owner, &message, &context);
+}
+
+String Node::atr_n(const String &message, const StringName &plural_message, int32_t n, const StringName &context) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Node::get_class_static()._native_ptr(), StringName("atr_n")._native_ptr(), 259354841);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, String());
+	int64_t n_encoded;
+	PtrToArg<int64_t>::encode(n, &n_encoded);
+	return internal::_call_native_mb_ret<String>(_gde_method_bind, _owner, &message, &plural_message, &n_encoded, &context);
 }
 
 Error Node::rpc_internal(const Variant **args, GDExtensionInt arg_count) {

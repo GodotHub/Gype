@@ -16,7 +16,7 @@
 using namespace godot;
 
 void register_classes_Tween() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<Tween>("Tween")
 			.constructor<>()
 			.fun<static_cast<Ref<PropertyTweener> (Tween::*)(Object *, const NodePath &, const Variant &, double)>(&Tween::tween_property)>("tween_property")

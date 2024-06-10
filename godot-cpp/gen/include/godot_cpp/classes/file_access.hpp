@@ -90,6 +90,7 @@ public:
 	static Error get_open_error();
 	static PackedByteArray get_file_as_bytes(const String &path);
 	static String get_file_as_string(const String &path);
+	Error resize(int64_t length);
 	void flush();
 	String get_path() const;
 	String get_path_absolute() const;

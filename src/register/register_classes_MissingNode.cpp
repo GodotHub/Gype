@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_MissingNode() {
-	qjs::Context::Module &_module = _Node;
+	qjs::Context::Module &_module = get_Node_module();
 	_module.class_<MissingNode>("MissingNode")
 			.constructor<>()
 			.property<&MissingNode::get_original_class, &MissingNode::set_original_class>("original_class")

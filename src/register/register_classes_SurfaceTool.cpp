@@ -24,7 +24,7 @@
 using namespace godot;
 
 void register_classes_SurfaceTool() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<SurfaceTool>("SurfaceTool")
 			.constructor<>()
 			.fun<static_cast<void (SurfaceTool::*)(SurfaceTool::SkinWeightCount)>(&SurfaceTool::set_skin_weight_count)>("set_skin_weight_count")

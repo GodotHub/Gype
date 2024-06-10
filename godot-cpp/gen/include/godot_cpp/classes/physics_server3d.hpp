@@ -52,10 +52,13 @@ namespace godot {
 class Callable;
 class PhysicsDirectBodyState3D;
 class PhysicsDirectSpaceState3D;
+class PhysicsServer3DRenderingServerHandler;
 class PhysicsTestMotionParameters3D;
 
 class PhysicsServer3D : public Object {
 	GDEXTENSION_CLASS(PhysicsServer3D, Object)
+
+	static PhysicsServer3D *singleton;
 
 public:
 
@@ -132,6 +135,9 @@ public:
 		G6DOF_JOINT_LINEAR_DAMPING = 4,
 		G6DOF_JOINT_LINEAR_MOTOR_TARGET_VELOCITY = 5,
 		G6DOF_JOINT_LINEAR_MOTOR_FORCE_LIMIT = 6,
+		G6DOF_JOINT_LINEAR_SPRING_STIFFNESS = 7,
+		G6DOF_JOINT_LINEAR_SPRING_DAMPING = 8,
+		G6DOF_JOINT_LINEAR_SPRING_EQUILIBRIUM_POINT = 9,
 		G6DOF_JOINT_ANGULAR_LOWER_LIMIT = 10,
 		G6DOF_JOINT_ANGULAR_UPPER_LIMIT = 11,
 		G6DOF_JOINT_ANGULAR_LIMIT_SOFTNESS = 12,
@@ -141,13 +147,20 @@ public:
 		G6DOF_JOINT_ANGULAR_ERP = 16,
 		G6DOF_JOINT_ANGULAR_MOTOR_TARGET_VELOCITY = 17,
 		G6DOF_JOINT_ANGULAR_MOTOR_FORCE_LIMIT = 18,
+		G6DOF_JOINT_ANGULAR_SPRING_STIFFNESS = 19,
+		G6DOF_JOINT_ANGULAR_SPRING_DAMPING = 20,
+		G6DOF_JOINT_ANGULAR_SPRING_EQUILIBRIUM_POINT = 21,
+		G6DOF_JOINT_MAX = 22,
 	};
 
 	enum G6DOFJointAxisFlag {
 		G6DOF_JOINT_FLAG_ENABLE_LINEAR_LIMIT = 0,
 		G6DOF_JOINT_FLAG_ENABLE_ANGULAR_LIMIT = 1,
+		G6DOF_JOINT_FLAG_ENABLE_ANGULAR_SPRING = 2,
+		G6DOF_JOINT_FLAG_ENABLE_LINEAR_SPRING = 3,
 		G6DOF_JOINT_FLAG_ENABLE_MOTOR = 4,
 		G6DOF_JOINT_FLAG_ENABLE_LINEAR_MOTOR = 5,
+		G6DOF_JOINT_FLAG_MAX = 6,
 	};
 
 	enum ShapeType {
@@ -267,8 +280,10 @@ public:
 	RID heightmap_shape_create();
 	RID custom_shape_create();
 	void shape_set_data(const RID &shape, const Variant &data);
+	void shape_set_margin(const RID &shape, double margin);
 	PhysicsServer3D::ShapeType shape_get_type(const RID &shape) const;
 	Variant shape_get_data(const RID &shape) const;
+	double shape_get_margin(const RID &shape) const;
 	RID space_create();
 	void space_set_active(const RID &space, bool active);
 	bool space_is_active(const RID &space) const;
@@ -356,7 +371,39 @@ public:
 	void body_set_ray_pickable(const RID &body, bool enable);
 	bool body_test_motion(const RID &body, const Ref<PhysicsTestMotionParameters3D> &parameters, const Ref<PhysicsTestMotionResult3D> &result = nullptr);
 	PhysicsDirectBodyState3D *body_get_direct_state(const RID &body);
+	RID soft_body_create();
+	void soft_body_update_rendering_server(const RID &body, PhysicsServer3DRenderingServerHandler *rendering_server_handler);
+	void soft_body_set_space(const RID &body, const RID &space);
+	RID soft_body_get_space(const RID &body) const;
+	void soft_body_set_mesh(const RID &body, const RID &mesh);
 	AABB soft_body_get_bounds(const RID &body) const;
+	void soft_body_set_collision_layer(const RID &body, uint32_t layer);
+	uint32_t soft_body_get_collision_layer(const RID &body) const;
+	void soft_body_set_collision_mask(const RID &body, uint32_t mask);
+	uint32_t soft_body_get_collision_mask(const RID &body) const;
+	void soft_body_add_collision_exception(const RID &body, const RID &body_b);
+	void soft_body_remove_collision_exception(const RID &body, const RID &body_b);
+	void soft_body_set_state(const RID &body, PhysicsServer3D::BodyState state, const Variant &variant);
+	Variant soft_body_get_state(const RID &body, PhysicsServer3D::BodyState state) const;
+	void soft_body_set_transform(const RID &body, const Transform3D &transform);
+	void soft_body_set_ray_pickable(const RID &body, bool enable);
+	void soft_body_set_simulation_precision(const RID &body, int32_t simulation_precision);
+	int32_t soft_body_get_simulation_precision(const RID &body) const;
+	void soft_body_set_total_mass(const RID &body, double total_mass);
+	double soft_body_get_total_mass(const RID &body) const;
+	void soft_body_set_linear_stiffness(const RID &body, double stiffness);
+	double soft_body_get_linear_stiffness(const RID &body) const;
+	void soft_body_set_pressure_coefficient(const RID &body, double pressure_coefficient);
+	double soft_body_get_pressure_coefficient(const RID &body) const;
+	void soft_body_set_damping_coefficient(const RID &body, double damping_coefficient);
+	double soft_body_get_damping_coefficient(const RID &body) const;
+	void soft_body_set_drag_coefficient(const RID &body, double drag_coefficient);
+	double soft_body_get_drag_coefficient(const RID &body) const;
+	void soft_body_move_point(const RID &body, int32_t point_index, const Vector3 &global_position);
+	Vector3 soft_body_get_point_global_position(const RID &body, int32_t point_index) const;
+	void soft_body_remove_all_pinned_points(const RID &body);
+	void soft_body_pin_point(const RID &body, int32_t point_index, bool pin);
+	bool soft_body_is_point_pinned(const RID &body, int32_t point_index) const;
 	RID joint_create();
 	void joint_clear(const RID &joint);
 	void joint_make_pin(const RID &joint, const RID &body_A, const Vector3 &local_A, const RID &body_B, const Vector3 &local_B);
@@ -395,6 +442,8 @@ protected:
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
 	}
+
+	~PhysicsServer3D();
 
 public:
 

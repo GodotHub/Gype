@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_OccluderInstance3D() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<OccluderInstance3D>("OccluderInstance3D")
 			.constructor<>()
 			.property<&OccluderInstance3D::get_occluder, &OccluderInstance3D::set_occluder>("occluder")

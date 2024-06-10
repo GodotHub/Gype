@@ -8,7 +8,7 @@
 using namespace godot;
 
 void register_classes_NavigationRegion3D() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<NavigationRegion3D>("NavigationRegion3D")
 			.constructor<>()
 			.property<&NavigationRegion3D::get_navigation_mesh, &NavigationRegion3D::set_navigation_mesh>("navigation_mesh")

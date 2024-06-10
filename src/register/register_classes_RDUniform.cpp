@@ -2,15 +2,13 @@
 #include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 
-
 #include "qjspp.hpp"
 #include "register/register_classes.h"
-
 
 using namespace godot;
 
 void register_classes_RDUniform() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<RDUniform>("RDUniform")
 			.constructor<>()
 			.property<&RDUniform::get_uniform_type, &RDUniform::set_uniform_type>("uniform_type")

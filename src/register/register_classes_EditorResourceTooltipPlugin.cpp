@@ -4,15 +4,13 @@
 #include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/variant/string.hpp>
 
-
 #include "qjspp.hpp"
 #include "register/register_classes.h"
-
 
 using namespace godot;
 
 void register_classes_EditorResourceTooltipPlugin() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<EditorResourceTooltipPlugin>("EditorResourceTooltipPlugin")
 			.constructor<>()
 			.fun<static_cast<bool (EditorResourceTooltipPlugin::*)(const String &) const>(&EditorResourceTooltipPlugin::_handles)>("_handles")

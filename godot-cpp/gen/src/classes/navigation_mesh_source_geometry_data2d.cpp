@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/navigation_mesh_source_geometry_data2d.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -73,6 +74,18 @@ TypedArray<PackedVector2Array> NavigationMeshSourceGeometryData2D::get_obstructi
 	return internal::_call_native_mb_ret<TypedArray<PackedVector2Array>>(_gde_method_bind, _owner);
 }
 
+void NavigationMeshSourceGeometryData2D::append_traversable_outlines(const TypedArray<PackedVector2Array> &traversable_outlines) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationMeshSourceGeometryData2D::get_class_static()._native_ptr(), StringName("append_traversable_outlines")._native_ptr(), 381264803);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &traversable_outlines);
+}
+
+void NavigationMeshSourceGeometryData2D::append_obstruction_outlines(const TypedArray<PackedVector2Array> &obstruction_outlines) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationMeshSourceGeometryData2D::get_class_static()._native_ptr(), StringName("append_obstruction_outlines")._native_ptr(), 381264803);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &obstruction_outlines);
+}
+
 void NavigationMeshSourceGeometryData2D::add_traversable_outline(const PackedVector2Array &shape_outline) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationMeshSourceGeometryData2D::get_class_static()._native_ptr(), StringName("add_traversable_outline")._native_ptr(), 1509147220);
 	CHECK_METHOD_BIND(_gde_method_bind);
@@ -83,6 +96,38 @@ void NavigationMeshSourceGeometryData2D::add_obstruction_outline(const PackedVec
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationMeshSourceGeometryData2D::get_class_static()._native_ptr(), StringName("add_obstruction_outline")._native_ptr(), 1509147220);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &shape_outline);
+}
+
+void NavigationMeshSourceGeometryData2D::merge(const Ref<NavigationMeshSourceGeometryData2D> &other_geometry) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationMeshSourceGeometryData2D::get_class_static()._native_ptr(), StringName("merge")._native_ptr(), 742424872);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, (other_geometry != nullptr ? &other_geometry->_owner : nullptr));
+}
+
+void NavigationMeshSourceGeometryData2D::add_projected_obstruction(const PackedVector2Array &vertices, bool carve) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationMeshSourceGeometryData2D::get_class_static()._native_ptr(), StringName("add_projected_obstruction")._native_ptr(), 3882407395);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int8_t carve_encoded;
+	PtrToArg<bool>::encode(carve, &carve_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &vertices, &carve_encoded);
+}
+
+void NavigationMeshSourceGeometryData2D::clear_projected_obstructions() {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationMeshSourceGeometryData2D::get_class_static()._native_ptr(), StringName("clear_projected_obstructions")._native_ptr(), 3218959716);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner);
+}
+
+void NavigationMeshSourceGeometryData2D::set_projected_obstructions(const Array &projected_obstructions) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationMeshSourceGeometryData2D::get_class_static()._native_ptr(), StringName("set_projected_obstructions")._native_ptr(), 381264803);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &projected_obstructions);
+}
+
+Array NavigationMeshSourceGeometryData2D::get_projected_obstructions() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationMeshSourceGeometryData2D::get_class_static()._native_ptr(), StringName("get_projected_obstructions")._native_ptr(), 3995934104);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Array());
+	return internal::_call_native_mb_ret<Array>(_gde_method_bind, _owner);
 }
 
 

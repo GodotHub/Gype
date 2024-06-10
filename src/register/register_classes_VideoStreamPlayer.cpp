@@ -10,7 +10,7 @@
 using namespace godot;
 
 void register_classes_VideoStreamPlayer() {
-	qjs::Context::Module &_module = _Control;
+	qjs::Context::Module &_module = get_Control_module();
 	_module.class_<VideoStreamPlayer>("VideoStreamPlayer")
 			.constructor<>()
 			.property<&VideoStreamPlayer::get_audio_track, &VideoStreamPlayer::set_audio_track>("audio_track")

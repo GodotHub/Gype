@@ -8,7 +8,7 @@
 using namespace godot;
 
 void register_classes_Environment() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<Environment>("Environment")
 			.constructor<>()
 			.property<&Environment::get_background, &Environment::set_background>("background_mode")

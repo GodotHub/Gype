@@ -61,8 +61,12 @@ public:
 	Vector2 get_position() const;
 	void set_relative(const Vector2 &relative);
 	Vector2 get_relative() const;
+	void set_screen_relative(const Vector2 &relative);
+	Vector2 get_screen_relative() const;
 	void set_velocity(const Vector2 &velocity);
 	Vector2 get_velocity() const;
+	void set_screen_velocity(const Vector2 &velocity);
+	Vector2 get_screen_velocity() const;
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {

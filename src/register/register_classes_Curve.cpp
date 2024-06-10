@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_Curve() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<Curve>("Curve")
 			.constructor<>()
 			.property<&Curve::get_min_value, &Curve::set_min_value>("min_value")

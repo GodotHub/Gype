@@ -11,7 +11,7 @@
 using namespace godot;
 
 void register_classes_OptionButton() {
-	qjs::Context::Module &_module = _Control;
+	qjs::Context::Module &_module = get_Control_module();
 	_module.class_<OptionButton>("OptionButton")
 			.constructor<>()
 			.property<&OptionButton::get_item_count, &OptionButton::set_item_count>("item_count")

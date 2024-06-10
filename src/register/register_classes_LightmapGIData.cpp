@@ -9,7 +9,7 @@
 using namespace godot;
 
 void register_classes_LightmapGIData() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<LightmapGIData>("LightmapGIData")
 			.constructor<>()
 			.property<&LightmapGIData::get_lightmap_textures, &LightmapGIData::set_lightmap_textures>("lightmap_textures")
