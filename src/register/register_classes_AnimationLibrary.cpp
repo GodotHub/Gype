@@ -5,15 +5,13 @@
 #include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 
-
 #include "qjspp.hpp"
 #include "register/register_classes.h"
-
 
 using namespace godot;
 
 void register_classes_AnimationLibrary() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<AnimationLibrary>("AnimationLibrary")
 			.constructor<>()
 			.fun<static_cast<Error (AnimationLibrary::*)(const StringName &, const Ref<Animation> &)>(&AnimationLibrary::add_animation)>("add_animation")

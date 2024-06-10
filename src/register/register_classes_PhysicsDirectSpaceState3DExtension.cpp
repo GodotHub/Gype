@@ -12,7 +12,7 @@
 using namespace godot;
 
 void register_classes_PhysicsDirectSpaceState3DExtension() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<PhysicsDirectSpaceState3DExtension>("PhysicsDirectSpaceState3DExtension")
 			.constructor<>()
 			.fun<static_cast<bool (PhysicsDirectSpaceState3DExtension::*)(const Vector3 &, const Vector3 &, uint32_t, bool, bool, bool, bool, bool, PhysicsServer3DExtensionRayResult *)>(&PhysicsDirectSpaceState3DExtension::_intersect_ray)>("_intersect_ray")

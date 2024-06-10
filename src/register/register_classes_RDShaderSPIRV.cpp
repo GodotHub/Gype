@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_RDShaderSPIRV() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<RDShaderSPIRV>("RDShaderSPIRV")
 			.constructor<>()
 			.property<&RDShaderSPIRV::get_stage_bytecode, &RDShaderSPIRV::set_stage_bytecode>("bytecode_vertex")

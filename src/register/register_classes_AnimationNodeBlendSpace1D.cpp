@@ -8,7 +8,7 @@
 using namespace godot;
 
 void register_classes_AnimationNodeBlendSpace1D() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<AnimationNodeBlendSpace1D>("AnimationNodeBlendSpace1D")
 			.constructor<>()
 			.property<&AnimationNodeBlendSpace1D::get_min_space, &AnimationNodeBlendSpace1D::set_min_space>("min_space")

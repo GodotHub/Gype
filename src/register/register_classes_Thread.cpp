@@ -4,15 +4,13 @@
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/variant.hpp>
 
-
 #include "qjspp.hpp"
 #include "register/register_classes.h"
-
 
 using namespace godot;
 
 void register_classes_Thread() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<Thread>("Thread")
 			.constructor<>()
 			.fun<static_cast<Error (Thread::*)(const Callable &, Thread::Priority)>(&Thread::start)>("start")

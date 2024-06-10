@@ -32,18 +32,20 @@
 
 #include <godot_cpp/classes/xr_server.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/classes/xr_interface.hpp>
-#include <godot_cpp/classes/xr_positional_tracker.hpp>
+#include <godot_cpp/classes/xr_tracker.hpp>
 
 namespace godot {
 
+XRServer *XRServer::singleton = nullptr;
+
 XRServer *XRServer::get_singleton() {
-	static XRServer *singleton = nullptr;
 	if (unlikely(singleton == nullptr)) {
 		GDExtensionObjectPtr singleton_obj = internal::gdextension_interface_global_get_singleton(XRServer::get_class_static()._native_ptr());
 #ifdef DEBUG_ENABLED
@@ -53,8 +55,18 @@ XRServer *XRServer::get_singleton() {
 #ifdef DEBUG_ENABLED
 		ERR_FAIL_NULL_V(singleton, nullptr);
 #endif // DEBUG_ENABLED
+		if (likely(singleton)) {
+			ClassDB::_register_engine_singleton(XRServer::get_class_static(), singleton);
+		}
 	}
 	return singleton;
+}
+
+XRServer::~XRServer() {
+	if (singleton == this) {
+		ClassDB::_unregister_engine_singleton(XRServer::get_class_static());
+		singleton = nullptr;
+	}
 }
 
 double XRServer::get_world_scale() const {
@@ -87,6 +99,12 @@ Transform3D XRServer::get_reference_frame() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(XRServer::get_class_static()._native_ptr(), StringName("get_reference_frame")._native_ptr(), 3229777777);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Transform3D());
 	return internal::_call_native_mb_ret<Transform3D>(_gde_method_bind, _owner);
+}
+
+void XRServer::clear_reference_frame() {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(XRServer::get_class_static()._native_ptr(), StringName("clear_reference_frame")._native_ptr(), 3218959716);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner);
 }
 
 void XRServer::center_on_hmd(XRServer::RotationMode rotation_mode, bool keep_height) {
@@ -141,14 +159,14 @@ Ref<XRInterface> XRServer::find_interface(const String &name) const {
 	return Ref<XRInterface>::_gde_internal_constructor(internal::_call_native_mb_ret_obj<XRInterface>(_gde_method_bind, _owner, &name));
 }
 
-void XRServer::add_tracker(const Ref<XRPositionalTracker> &tracker) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(XRServer::get_class_static()._native_ptr(), StringName("add_tracker")._native_ptr(), 2692800323);
+void XRServer::add_tracker(const Ref<XRTracker> &tracker) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(XRServer::get_class_static()._native_ptr(), StringName("add_tracker")._native_ptr(), 684804553);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, (tracker != nullptr ? &tracker->_owner : nullptr));
 }
 
-void XRServer::remove_tracker(const Ref<XRPositionalTracker> &tracker) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(XRServer::get_class_static()._native_ptr(), StringName("remove_tracker")._native_ptr(), 2692800323);
+void XRServer::remove_tracker(const Ref<XRTracker> &tracker) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(XRServer::get_class_static()._native_ptr(), StringName("remove_tracker")._native_ptr(), 684804553);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, (tracker != nullptr ? &tracker->_owner : nullptr));
 }
@@ -161,10 +179,10 @@ Dictionary XRServer::get_trackers(int32_t tracker_types) {
 	return internal::_call_native_mb_ret<Dictionary>(_gde_method_bind, _owner, &tracker_types_encoded);
 }
 
-Ref<XRPositionalTracker> XRServer::get_tracker(const StringName &tracker_name) const {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(XRServer::get_class_static()._native_ptr(), StringName("get_tracker")._native_ptr(), 2742084544);
-	CHECK_METHOD_BIND_RET(_gde_method_bind, Ref<XRPositionalTracker>());
-	return Ref<XRPositionalTracker>::_gde_internal_constructor(internal::_call_native_mb_ret_obj<XRPositionalTracker>(_gde_method_bind, _owner, &tracker_name));
+Ref<XRTracker> XRServer::get_tracker(const StringName &tracker_name) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(XRServer::get_class_static()._native_ptr(), StringName("get_tracker")._native_ptr(), 147382240);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Ref<XRTracker>());
+	return Ref<XRTracker>::_gde_internal_constructor(internal::_call_native_mb_ret_obj<XRTracker>(_gde_method_bind, _owner, &tracker_name));
 }
 
 Ref<XRInterface> XRServer::get_primary_interface() const {

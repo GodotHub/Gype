@@ -2,15 +2,13 @@
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/sub_viewport_container.hpp>
 
-
 #include "qjspp.hpp"
 #include "register/register_classes.h"
-
 
 using namespace godot;
 
 void register_classes_SubViewportContainer() {
-	qjs::Context::Module &_module = _Control;
+	qjs::Context::Module &_module = get_Control_module();
 	_module.class_<SubViewportContainer>("SubViewportContainer")
 			.constructor<>()
 			.property<&SubViewportContainer::is_stretch_enabled, &SubViewportContainer::set_stretch>("stretch")

@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_PacketPeerExtension() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<PacketPeerExtension>("PacketPeerExtension")
 			.constructor<>()
 			.fun<static_cast<Error (PacketPeerExtension::*)(const uint8_t **, int32_t *)>(&PacketPeerExtension::_get_packet)>("_get_packet")

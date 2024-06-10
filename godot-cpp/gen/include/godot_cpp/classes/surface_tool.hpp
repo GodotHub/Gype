@@ -111,6 +111,7 @@ public:
 	Mesh::PrimitiveType get_primitive_type() const;
 	void clear();
 	void create_from(const Ref<Mesh> &existing, int32_t surface);
+	void create_from_arrays(const Array &arrays, Mesh::PrimitiveType primitive_type = (Mesh::PrimitiveType)3);
 	void create_from_blend_shape(const Ref<Mesh> &existing, int32_t surface, const String &blend_shape);
 	void append_from(const Ref<Mesh> &existing, int32_t surface, const Transform3D &transform);
 	Ref<ArrayMesh> commit(const Ref<ArrayMesh> &existing = nullptr, uint64_t flags = 0);

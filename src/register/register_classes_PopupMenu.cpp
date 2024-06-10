@@ -15,7 +15,7 @@
 using namespace godot;
 
 void register_classes_PopupMenu() {
-	qjs::Context::Module &_module = _Node;
+	qjs::Context::Module &_module = get_Node_module();
 	_module.class_<PopupMenu>("PopupMenu")
 			.constructor<>()
 			.property<&PopupMenu::is_hide_on_item_selection, &PopupMenu::set_hide_on_item_selection>("hide_on_item_selection")

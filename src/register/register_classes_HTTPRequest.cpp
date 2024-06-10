@@ -13,7 +13,7 @@
 using namespace godot;
 
 void register_classes_HTTPRequest() {
-	qjs::Context::Module &_module = _Node;
+	qjs::Context::Module &_module = get_Node_module();
 	_module.class_<HTTPRequest>("HTTPRequest")
 			.constructor<>()
 			.property<&HTTPRequest::get_download_file, &HTTPRequest::set_download_file>("download_file")

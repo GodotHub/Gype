@@ -10,7 +10,7 @@
 using namespace godot;
 
 void register_classes_NavigationPolygon() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<NavigationPolygon>("NavigationPolygon")
 			.constructor<>()
 			.property<&NavigationPolygon::get_vertices, &NavigationPolygon::set_vertices>("vertices")

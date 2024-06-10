@@ -90,6 +90,10 @@ public:
 	RID get_navigation_map() const;
 	void set_target_position(const Vector2 &position);
 	Vector2 get_target_position() const;
+	void set_simplify_path(bool enabled);
+	bool get_simplify_path() const;
+	void set_simplify_epsilon(double epsilon);
+	double get_simplify_epsilon() const;
 	Vector2 get_next_path_position();
 	void set_velocity_forced(const Vector2 &velocity);
 	void set_velocity(const Vector2 &velocity);

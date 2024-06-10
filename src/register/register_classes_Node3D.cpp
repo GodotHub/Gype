@@ -12,7 +12,7 @@
 using namespace godot;
 
 void register_classes_Node3D() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<Node3D>("Node3D")
 			.constructor<>()
 			.property<&Node3D::get_transform, &Node3D::set_transform>("transform")

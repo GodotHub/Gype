@@ -9,7 +9,7 @@
 using namespace godot;
 
 void register_classes_Skin() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<Skin>("Skin")
 			.constructor<>()
 			.fun<static_cast<void (Skin::*)(int32_t)>(&Skin::set_bind_count)>("set_bind_count")

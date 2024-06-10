@@ -32,10 +32,25 @@
 
 #include <godot_cpp/classes/gltf_animation.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
+#include <godot_cpp/variant/string_name.hpp>
+
 namespace godot {
+
+String GLTFAnimation::get_original_name() {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFAnimation::get_class_static()._native_ptr(), StringName("get_original_name")._native_ptr(), 2841200299);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, String());
+	return internal::_call_native_mb_ret<String>(_gde_method_bind, _owner);
+}
+
+void GLTFAnimation::set_original_name(const String &original_name) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFAnimation::get_class_static()._native_ptr(), StringName("set_original_name")._native_ptr(), 83702148);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &original_name);
+}
 
 bool GLTFAnimation::get_loop() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFAnimation::get_class_static()._native_ptr(), StringName("get_loop")._native_ptr(), 36873697);
@@ -49,6 +64,18 @@ void GLTFAnimation::set_loop(bool loop) {
 	int8_t loop_encoded;
 	PtrToArg<bool>::encode(loop, &loop_encoded);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &loop_encoded);
+}
+
+Variant GLTFAnimation::get_additional_data(const StringName &extension_name) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFAnimation::get_class_static()._native_ptr(), StringName("get_additional_data")._native_ptr(), 2138907829);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Variant());
+	return internal::_call_native_mb_ret<Variant>(_gde_method_bind, _owner, &extension_name);
+}
+
+void GLTFAnimation::set_additional_data(const StringName &extension_name, const Variant &additional_data) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFAnimation::get_class_static()._native_ptr(), StringName("set_additional_data")._native_ptr(), 3776071444);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &extension_name, &additional_data);
 }
 
 

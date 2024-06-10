@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/rich_text_label.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -97,8 +98,18 @@ void RichTextLabel::newline() {
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner);
 }
 
-bool RichTextLabel::remove_paragraph(int32_t paragraph) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(RichTextLabel::get_class_static()._native_ptr(), StringName("remove_paragraph")._native_ptr(), 3067735520);
+bool RichTextLabel::remove_paragraph(int32_t paragraph, bool no_invalidate) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(RichTextLabel::get_class_static()._native_ptr(), StringName("remove_paragraph")._native_ptr(), 3262369265);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	int64_t paragraph_encoded;
+	PtrToArg<int64_t>::encode(paragraph, &paragraph_encoded);
+	int8_t no_invalidate_encoded;
+	PtrToArg<bool>::encode(no_invalidate, &no_invalidate_encoded);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner, &paragraph_encoded, &no_invalidate_encoded);
+}
+
+bool RichTextLabel::invalidate_paragraph(int32_t paragraph) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(RichTextLabel::get_class_static()._native_ptr(), StringName("invalidate_paragraph")._native_ptr(), 3067735520);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
 	int64_t paragraph_encoded;
 	PtrToArg<int64_t>::encode(paragraph, &paragraph_encoded);
@@ -195,10 +206,10 @@ void RichTextLabel::push_list(int32_t level, RichTextLabel::ListType type, bool 
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &level_encoded, &type, &capitalize_encoded, &bullet);
 }
 
-void RichTextLabel::push_meta(const Variant &data) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(RichTextLabel::get_class_static()._native_ptr(), StringName("push_meta")._native_ptr(), 1114965689);
+void RichTextLabel::push_meta(const Variant &data, RichTextLabel::MetaUnderline underline_mode) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(RichTextLabel::get_class_static()._native_ptr(), StringName("push_meta")._native_ptr(), 2206155733);
 	CHECK_METHOD_BIND(_gde_method_bind);
-	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &data);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &data, &underline_mode);
 }
 
 void RichTextLabel::push_hint(const String &description) {

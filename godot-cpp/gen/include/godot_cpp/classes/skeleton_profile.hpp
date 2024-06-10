@@ -86,6 +86,8 @@ public:
 	void set_handle_offset(int32_t bone_idx, const Vector2 &handle_offset);
 	StringName get_group(int32_t bone_idx) const;
 	void set_group(int32_t bone_idx, const StringName &group);
+	bool is_required(int32_t bone_idx) const;
+	void set_required(int32_t bone_idx, bool required);
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {

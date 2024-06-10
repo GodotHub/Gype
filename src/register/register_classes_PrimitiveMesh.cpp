@@ -9,7 +9,7 @@
 using namespace godot;
 
 void register_classes_PrimitiveMesh() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<PrimitiveMesh>("PrimitiveMesh")
 			.constructor<>()
 			.property<&PrimitiveMesh::get_material, &PrimitiveMesh::set_material>("material")

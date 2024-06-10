@@ -62,6 +62,7 @@ public:
 	Ref<Script> get_current_script();
 	TypedArray<Script> get_open_scripts() const;
 	void open_script_create_dialog(const String &base_name, const String &base_path);
+	void goto_help(const String &topic);
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {

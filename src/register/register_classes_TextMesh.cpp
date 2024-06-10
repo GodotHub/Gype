@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_TextMesh() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<TextMesh>("TextMesh")
 			.constructor<>()
 			.property<&TextMesh::get_text, &TextMesh::set_text>("text")

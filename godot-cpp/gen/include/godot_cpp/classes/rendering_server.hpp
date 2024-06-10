@@ -75,6 +75,8 @@ struct Vector3;
 class RenderingServer : public Object {
 	GDEXTENSION_CLASS(RenderingServer, Object)
 
+	static RenderingServer *singleton;
+
 public:
 
 	enum TextureLayeredType {
@@ -412,7 +414,8 @@ public:
 	enum ViewportRenderInfoType {
 		VIEWPORT_RENDER_INFO_TYPE_VISIBLE = 0,
 		VIEWPORT_RENDER_INFO_TYPE_SHADOW = 1,
-		VIEWPORT_RENDER_INFO_TYPE_MAX = 2,
+		VIEWPORT_RENDER_INFO_TYPE_CANVAS = 2,
+		VIEWPORT_RENDER_INFO_TYPE_MAX = 3,
 	};
 
 	enum ViewportDebugDraw {
@@ -452,11 +455,35 @@ public:
 		VIEWPORT_VRS_MAX = 3,
 	};
 
+	enum ViewportVRSUpdateMode {
+		VIEWPORT_VRS_UPDATE_DISABLED = 0,
+		VIEWPORT_VRS_UPDATE_ONCE = 1,
+		VIEWPORT_VRS_UPDATE_ALWAYS = 2,
+		VIEWPORT_VRS_UPDATE_MAX = 3,
+	};
+
 	enum SkyMode {
 		SKY_MODE_AUTOMATIC = 0,
 		SKY_MODE_QUALITY = 1,
 		SKY_MODE_INCREMENTAL = 2,
 		SKY_MODE_REALTIME = 3,
+	};
+
+	enum CompositorEffectFlags {
+		COMPOSITOR_EFFECT_FLAG_ACCESS_RESOLVED_COLOR = 1,
+		COMPOSITOR_EFFECT_FLAG_ACCESS_RESOLVED_DEPTH = 2,
+		COMPOSITOR_EFFECT_FLAG_NEEDS_MOTION_VECTORS = 4,
+		COMPOSITOR_EFFECT_FLAG_NEEDS_ROUGHNESS = 8,
+		COMPOSITOR_EFFECT_FLAG_NEEDS_SEPARATE_SPECULAR = 16,
+	};
+
+	enum CompositorEffectCallbackType {
+		COMPOSITOR_EFFECT_CALLBACK_TYPE_PRE_OPAQUE = 0,
+		COMPOSITOR_EFFECT_CALLBACK_TYPE_POST_OPAQUE = 1,
+		COMPOSITOR_EFFECT_CALLBACK_TYPE_POST_SKY = 2,
+		COMPOSITOR_EFFECT_CALLBACK_TYPE_PRE_TRANSPARENT = 3,
+		COMPOSITOR_EFFECT_CALLBACK_TYPE_POST_TRANSPARENT = 4,
+		COMPOSITOR_EFFECT_CALLBACK_TYPE_ANY = -1,
 	};
 
 	enum EnvironmentBG {
@@ -488,6 +515,11 @@ public:
 		ENV_GLOW_BLEND_MODE_SOFTLIGHT = 2,
 		ENV_GLOW_BLEND_MODE_REPLACE = 3,
 		ENV_GLOW_BLEND_MODE_MIX = 4,
+	};
+
+	enum EnvironmentFogMode {
+		ENV_FOG_MODE_EXPONENTIAL = 0,
+		ENV_FOG_MODE_DEPTH = 1,
 	};
 
 	enum EnvironmentToneMapper {
@@ -737,6 +769,7 @@ public:
 	static const int MAX_GLOW_LEVELS = 7;
 	static const int MAX_CURSORS = 8;
 	static const int MAX_2D_DIRECTIONAL_LIGHTS = 8;
+	static const int MAX_MESH_SURFACES = 256;
 	static const int MATERIAL_RENDER_PRIORITY_MIN = -128;
 	static const int MATERIAL_RENDER_PRIORITY_MAX = 127;
 	static const int ARRAY_CUSTOM_COUNT = 4;
@@ -819,6 +852,8 @@ public:
 	void multimesh_instance_set_custom_data(const RID &multimesh, int32_t index, const Color &custom_data);
 	RID multimesh_get_mesh(const RID &multimesh) const;
 	AABB multimesh_get_aabb(const RID &multimesh) const;
+	void multimesh_set_custom_aabb(const RID &multimesh, const AABB &aabb);
+	AABB multimesh_get_custom_aabb(const RID &multimesh) const;
 	Transform3D multimesh_instance_get_transform(const RID &multimesh, int32_t index) const;
 	Transform2D multimesh_instance_get_transform_2d(const RID &multimesh, int32_t index) const;
 	Color multimesh_instance_get_color(const RID &multimesh, int32_t index) const;
@@ -869,6 +904,7 @@ public:
 	void reflection_probe_set_enable_box_projection(const RID &probe, bool enable);
 	void reflection_probe_set_enable_shadows(const RID &probe, bool enable);
 	void reflection_probe_set_cull_mask(const RID &probe, uint32_t layers);
+	void reflection_probe_set_reflection_mask(const RID &probe, uint32_t layers);
 	void reflection_probe_set_resolution(const RID &probe, int32_t resolution);
 	void reflection_probe_set_mesh_lod_threshold(const RID &probe, double pixels);
 	RID decal_create();
@@ -973,6 +1009,7 @@ public:
 	void camera_set_cull_mask(const RID &camera, uint32_t layers);
 	void camera_set_environment(const RID &camera, const RID &env);
 	void camera_set_camera_attributes(const RID &camera, const RID &effects);
+	void camera_set_compositor(const RID &camera, const RID &compositor);
 	void camera_set_use_vertical_aspect(const RID &camera, bool enable);
 	RID viewport_create();
 	void viewport_set_use_xr(const RID &viewport, bool use_xr);
@@ -987,6 +1024,7 @@ public:
 	void viewport_set_fsr_sharpness(const RID &viewport, double sharpness);
 	void viewport_set_texture_mipmap_bias(const RID &viewport, double mipmap_bias);
 	void viewport_set_update_mode(const RID &viewport, RenderingServer::ViewportUpdateMode update_mode);
+	RenderingServer::ViewportUpdateMode viewport_get_update_mode(const RID &viewport) const;
 	void viewport_set_clear_mode(const RID &viewport, RenderingServer::ViewportClearMode clear_mode);
 	RID viewport_get_render_target(const RID &viewport) const;
 	RID viewport_get_texture(const RID &viewport) const;
@@ -1023,12 +1061,19 @@ public:
 	double viewport_get_measured_render_time_cpu(const RID &viewport) const;
 	double viewport_get_measured_render_time_gpu(const RID &viewport) const;
 	void viewport_set_vrs_mode(const RID &viewport, RenderingServer::ViewportVRSMode mode);
+	void viewport_set_vrs_update_mode(const RID &viewport, RenderingServer::ViewportVRSUpdateMode mode);
 	void viewport_set_vrs_texture(const RID &viewport, const RID &texture);
 	RID sky_create();
 	void sky_set_radiance_size(const RID &sky, int32_t radiance_size);
 	void sky_set_mode(const RID &sky, RenderingServer::SkyMode mode);
 	void sky_set_material(const RID &sky, const RID &material);
 	Ref<Image> sky_bake_panorama(const RID &sky, double energy, bool bake_irradiance, const Vector2i &size);
+	RID compositor_effect_create();
+	void compositor_effect_set_enabled(const RID &effect, bool enabled);
+	void compositor_effect_set_callback(const RID &effect, RenderingServer::CompositorEffectCallbackType callback_type, const Callable &callback);
+	void compositor_effect_set_flag(const RID &effect, RenderingServer::CompositorEffectFlags flag, bool set);
+	RID compositor_create();
+	void compositor_set_compositor_effects(const RID &compositor, const TypedArray<RID> &effects);
 	RID environment_create();
 	void environment_set_background(const RID &env, RenderingServer::EnvironmentBG bg);
 	void environment_set_sky(const RID &env, const RID &sky);
@@ -1043,7 +1088,7 @@ public:
 	void environment_set_adjustment(const RID &env, bool enable, double brightness, double contrast, double saturation, bool use_1d_color_correction, const RID &color_correction);
 	void environment_set_ssr(const RID &env, bool enable, int32_t max_steps, double fade_in, double fade_out, double depth_tolerance);
 	void environment_set_ssao(const RID &env, bool enable, double radius, double intensity, double power, double detail, double horizon, double sharpness, double light_affect, double ao_channel_affect);
-	void environment_set_fog(const RID &env, bool enable, const Color &light_color, double light_energy, double sun_scatter, double density, double height, double height_density, double aerial_perspective, double sky_affect);
+	void environment_set_fog(const RID &env, bool enable, const Color &light_color, double light_energy, double sun_scatter, double density, double height, double height_density, double aerial_perspective, double sky_affect, RenderingServer::EnvironmentFogMode fog_mode = (RenderingServer::EnvironmentFogMode)0);
 	void environment_set_sdfgi(const RID &env, bool enable, int32_t cascades, double min_cell_size, RenderingServer::EnvironmentSDFGIYScale y_scale, bool use_occlusion, double bounce_feedback, bool read_sky, double energy, double normal_bias, double probe_bias);
 	void environment_set_volumetric_fog(const RID &env, bool enable, double density, const Color &albedo, const Color &emission, double emission_energy, double anisotropy, double length, double p_detail_spread, double gi_inject, bool temporal_reprojection, double temporal_reprojection_amount, double ambient_inject, double sky_affect);
 	void environment_glow_set_use_bicubic_upscale(bool enable);
@@ -1069,6 +1114,7 @@ public:
 	void scenario_set_environment(const RID &scenario, const RID &environment);
 	void scenario_set_fallback_environment(const RID &scenario, const RID &environment);
 	void scenario_set_camera_attributes(const RID &scenario, const RID &effects);
+	void scenario_set_compositor(const RID &scenario, const RID &compositor);
 	RID instance_create2(const RID &base, const RID &scenario);
 	RID instance_create();
 	void instance_set_base(const RID &instance, const RID &base);
@@ -1103,6 +1149,7 @@ public:
 	TypedArray<Image> bake_render_uv2(const RID &base, const TypedArray<RID> &material_overrides, const Vector2i &image_size);
 	RID canvas_create();
 	void canvas_set_item_mirroring(const RID &canvas, const RID &item, const Vector2 &mirroring);
+	void canvas_set_item_repeat(const RID &item, const Vector2 &repeat_size, int32_t repeat_times);
 	void canvas_set_modulate(const RID &canvas, const Color &color);
 	void canvas_set_disable_scale(bool disable);
 	RID canvas_texture_create();
@@ -1124,11 +1171,14 @@ public:
 	void canvas_item_set_modulate(const RID &item, const Color &color);
 	void canvas_item_set_self_modulate(const RID &item, const Color &color);
 	void canvas_item_set_draw_behind_parent(const RID &item, bool enabled);
+	void canvas_item_set_interpolated(const RID &item, bool interpolated);
+	void canvas_item_reset_physics_interpolation(const RID &item);
+	void canvas_item_transform_physics_interpolation(const RID &item, const Transform2D &transform);
 	void canvas_item_add_line(const RID &item, const Vector2 &from, const Vector2 &to, const Color &color, double width = -1.0, bool antialiased = false);
 	void canvas_item_add_polyline(const RID &item, const PackedVector2Array &points, const PackedColorArray &colors, double width = -1.0, bool antialiased = false);
-	void canvas_item_add_multiline(const RID &item, const PackedVector2Array &points, const PackedColorArray &colors, double width = -1.0);
-	void canvas_item_add_rect(const RID &item, const Rect2 &rect, const Color &color);
-	void canvas_item_add_circle(const RID &item, const Vector2 &pos, double radius, const Color &color);
+	void canvas_item_add_multiline(const RID &item, const PackedVector2Array &points, const PackedColorArray &colors, double width = -1.0, bool antialiased = false);
+	void canvas_item_add_rect(const RID &item, const Rect2 &rect, const Color &color, bool antialiased = false);
+	void canvas_item_add_circle(const RID &item, const Vector2 &pos, double radius, const Color &color, bool antialiased = false);
 	void canvas_item_add_texture_rect(const RID &item, const Rect2 &rect, const RID &texture, bool tile = false, const Color &modulate = Color(1, 1, 1, 1), bool transpose = false);
 	void canvas_item_add_msdf_texture_rect_region(const RID &item, const Rect2 &rect, const RID &texture, const Rect2 &src_rect, const Color &modulate = Color(1, 1, 1, 1), int32_t outline_size = 0, double px_range = 1.0, double scale = 1.0);
 	void canvas_item_add_lcd_texture_rect_region(const RID &item, const Rect2 &rect, const RID &texture, const Rect2 &src_rect, const Color &modulate);
@@ -1174,6 +1224,9 @@ public:
 	void canvas_light_set_shadow_color(const RID &light, const Color &color);
 	void canvas_light_set_shadow_smooth(const RID &light, double smooth);
 	void canvas_light_set_blend_mode(const RID &light, RenderingServer::CanvasLightBlendMode mode);
+	void canvas_light_set_interpolated(const RID &light, bool interpolated);
+	void canvas_light_reset_physics_interpolation(const RID &light);
+	void canvas_light_transform_physics_interpolation(const RID &light, const Transform2D &transform);
 	RID canvas_light_occluder_create();
 	void canvas_light_occluder_attach_to_canvas(const RID &occluder, const RID &canvas);
 	void canvas_light_occluder_set_enabled(const RID &occluder, bool enabled);
@@ -1181,6 +1234,9 @@ public:
 	void canvas_light_occluder_set_as_sdf_collision(const RID &occluder, bool enable);
 	void canvas_light_occluder_set_transform(const RID &occluder, const Transform2D &transform);
 	void canvas_light_occluder_set_light_mask(const RID &occluder, int32_t mask);
+	void canvas_light_occluder_set_interpolated(const RID &occluder, bool interpolated);
+	void canvas_light_occluder_reset_physics_interpolation(const RID &occluder);
+	void canvas_light_occluder_transform_physics_interpolation(const RID &occluder, const Transform2D &transform);
 	RID canvas_occluder_polygon_create();
 	void canvas_occluder_polygon_set_shape(const RID &occluder_polygon, const PackedVector2Array &shape, bool closed);
 	void canvas_occluder_polygon_set_cull_mode(const RID &occluder_polygon, RenderingServer::CanvasOccluderPolygonCullMode mode);
@@ -1207,7 +1263,6 @@ public:
 	void set_boot_image(const Ref<Image> &image, const Color &color, bool scale, bool use_filter = true);
 	Color get_default_clear_color();
 	void set_default_clear_color(const Color &color);
-	bool has_feature(RenderingServer::Features feature) const;
 	bool has_os_feature(const String &feature) const;
 	void set_debug_generate_wireframes(bool generate);
 	bool is_render_loop_enabled() const;
@@ -1217,12 +1272,16 @@ public:
 	void force_draw(bool swap_buffers = true, double frame_step = 0.0);
 	RenderingDevice *get_rendering_device() const;
 	RenderingDevice *create_local_rendering_device() const;
+	bool is_on_render_thread();
 	void call_on_render_thread(const Callable &callable);
+	bool has_feature(RenderingServer::Features feature) const;
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
 	}
+
+	~RenderingServer();
 
 public:
 
@@ -1271,11 +1330,15 @@ VARIANT_ENUM_CAST(RenderingServer::ViewportRenderInfo);
 VARIANT_ENUM_CAST(RenderingServer::ViewportRenderInfoType);
 VARIANT_ENUM_CAST(RenderingServer::ViewportDebugDraw);
 VARIANT_ENUM_CAST(RenderingServer::ViewportVRSMode);
+VARIANT_ENUM_CAST(RenderingServer::ViewportVRSUpdateMode);
 VARIANT_ENUM_CAST(RenderingServer::SkyMode);
+VARIANT_ENUM_CAST(RenderingServer::CompositorEffectFlags);
+VARIANT_ENUM_CAST(RenderingServer::CompositorEffectCallbackType);
 VARIANT_ENUM_CAST(RenderingServer::EnvironmentBG);
 VARIANT_ENUM_CAST(RenderingServer::EnvironmentAmbientSource);
 VARIANT_ENUM_CAST(RenderingServer::EnvironmentReflectionSource);
 VARIANT_ENUM_CAST(RenderingServer::EnvironmentGlowBlendMode);
+VARIANT_ENUM_CAST(RenderingServer::EnvironmentFogMode);
 VARIANT_ENUM_CAST(RenderingServer::EnvironmentToneMapper);
 VARIANT_ENUM_CAST(RenderingServer::EnvironmentSSRRoughnessQuality);
 VARIANT_ENUM_CAST(RenderingServer::EnvironmentSSAOQuality);

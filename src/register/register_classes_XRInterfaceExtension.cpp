@@ -18,7 +18,7 @@
 using namespace godot;
 
 void register_classes_XRInterfaceExtension() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<XRInterfaceExtension>("XRInterfaceExtension")
 			.constructor<>()
 			.fun<static_cast<StringName (XRInterfaceExtension::*)() const>(&XRInterfaceExtension::_get_name)>("_get_name")

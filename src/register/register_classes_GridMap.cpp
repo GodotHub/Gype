@@ -16,7 +16,7 @@
 using namespace godot;
 
 void register_classes_GridMap() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<GridMap>("GridMap")
 			.constructor<>()
 			.property<&GridMap::get_mesh_library, &GridMap::set_mesh_library>("mesh_library")

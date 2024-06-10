@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_CSGTorus3D() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<CSGTorus3D>("CSGTorus3D")
 			.constructor<>()
 			.property<&CSGTorus3D::get_inner_radius, &CSGTorus3D::set_inner_radius>("inner_radius")

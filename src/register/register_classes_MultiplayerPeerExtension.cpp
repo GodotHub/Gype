@@ -9,7 +9,7 @@
 using namespace godot;
 
 void register_classes_MultiplayerPeerExtension() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<MultiplayerPeerExtension>("MultiplayerPeerExtension")
 			.constructor<>()
 			.fun<static_cast<Error (MultiplayerPeerExtension::*)(const uint8_t **, int32_t *)>(&MultiplayerPeerExtension::_get_packet)>("_get_packet")

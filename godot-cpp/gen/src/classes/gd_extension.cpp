@@ -32,24 +32,11 @@
 
 #include <godot_cpp/classes/gd_extension.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
-#include <godot_cpp/variant/string.hpp>
-
 namespace godot {
-
-Error GDExtension::open_library(const String &path, const String &entry_symbol) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GDExtension::get_class_static()._native_ptr(), StringName("open_library")._native_ptr(), 852856452);
-	CHECK_METHOD_BIND_RET(_gde_method_bind, Error(0));
-	return (Error)internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &path, &entry_symbol);
-}
-
-void GDExtension::close_library() {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GDExtension::get_class_static()._native_ptr(), StringName("close_library")._native_ptr(), 3218959716);
-	CHECK_METHOD_BIND(_gde_method_bind);
-	internal::_call_native_mb_no_ret(_gde_method_bind, _owner);
-}
 
 bool GDExtension::is_library_open() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GDExtension::get_class_static()._native_ptr(), StringName("is_library_open")._native_ptr(), 36873697);
@@ -61,12 +48,6 @@ GDExtension::InitializationLevel GDExtension::get_minimum_library_initialization
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GDExtension::get_class_static()._native_ptr(), StringName("get_minimum_library_initialization_level")._native_ptr(), 964858755);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, GDExtension::InitializationLevel(0));
 	return (GDExtension::InitializationLevel)internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
-}
-
-void GDExtension::initialize_library(GDExtension::InitializationLevel level) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GDExtension::get_class_static()._native_ptr(), StringName("initialize_library")._native_ptr(), 3409922941);
-	CHECK_METHOD_BIND(_gde_method_bind);
-	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &level);
 }
 
 

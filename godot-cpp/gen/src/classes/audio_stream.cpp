@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/audio_stream.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -79,6 +80,10 @@ double AudioStream::_get_bpm() const {
 
 int32_t AudioStream::_get_beat_count() const {
 	return 0;
+}
+
+TypedArray<Dictionary> AudioStream::_get_parameter_list() const {
+	return TypedArray<Dictionary>();
 }
 
 

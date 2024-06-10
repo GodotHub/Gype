@@ -9,7 +9,7 @@
 using namespace godot;
 
 void register_classes_OpenXRAPIExtension() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<OpenXRAPIExtension>("OpenXRAPIExtension")
 			.constructor<>()
 			.fun<static_cast<uint64_t (OpenXRAPIExtension::*)()>(&OpenXRAPIExtension::get_instance)>("get_instance")

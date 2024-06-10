@@ -12,7 +12,7 @@
 using namespace godot;
 
 void register_classes_Crypto() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<Crypto>("Crypto")
 			.constructor<>()
 			.fun<static_cast<PackedByteArray (Crypto::*)(int32_t)>(&Crypto::generate_random_bytes)>("generate_random_bytes")

@@ -5,15 +5,13 @@
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/vector3.hpp>
 
-
 #include "qjspp.hpp"
 #include "register/register_classes.h"
-
 
 using namespace godot;
 
 void register_classes_OpenXRInterface() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<OpenXRInterface>("OpenXRInterface")
 			.constructor<>()
 			.property<&OpenXRInterface::get_display_refresh_rate, &OpenXRInterface::set_display_refresh_rate>("display_refresh_rate")

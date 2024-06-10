@@ -14,9 +14,8 @@
 using namespace godot;
 
 void register_classes_XRServer() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<XRServer>("XRServer")
-			.constructor<>()
 			.property<&XRServer::get_world_scale, &XRServer::set_world_scale>("world_scale")
 			.property<&XRServer::get_world_origin, &XRServer::set_world_origin>("world_origin")
 			.property<&XRServer::get_primary_interface, &XRServer::set_primary_interface>("primary_interface")
@@ -29,8 +28,8 @@ void register_classes_XRServer() {
 			.fun<static_cast<Ref<XRInterface> (XRServer::*)(int32_t) const>(&XRServer::get_interface)>("get_interface")
 			.fun<static_cast<TypedArray<Dictionary> (XRServer::*)() const>(&XRServer::get_interfaces)>("get_interfaces")
 			.fun<static_cast<Ref<XRInterface> (XRServer::*)(const String &) const>(&XRServer::find_interface)>("find_interface")
-			.fun<static_cast<void (XRServer::*)(const Ref<XRPositionalTracker> &)>(&XRServer::add_tracker)>("add_tracker")
-			.fun<static_cast<void (XRServer::*)(const Ref<XRPositionalTracker> &)>(&XRServer::remove_tracker)>("remove_tracker")
+			.fun<static_cast<void (XRServer::*)(const Ref<XRTracker> &)>(&XRServer::add_tracker)>("add_tracker")
+			.fun<static_cast<void (XRServer::*)(const Ref<XRTracker> &)>(&XRServer::remove_tracker)>("remove_tracker")
 			.fun<static_cast<Dictionary (XRServer::*)(int32_t)>(&XRServer::get_trackers)>("get_trackers")
-			.fun<static_cast<Ref<XRPositionalTracker> (XRServer::*)(const StringName &) const>(&XRServer::get_tracker)>("get_tracker");
+			.fun<static_cast<Ref<XRTracker> (XRServer::*)(const StringName &) const>(&XRServer::get_tracker)>("get_tracker");
 }

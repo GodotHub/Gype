@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_XROrigin3D() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<XROrigin3D>("XROrigin3D")
 			.constructor<>()
 			.property<&XROrigin3D::get_world_scale, &XROrigin3D::set_world_scale>("world_scale")

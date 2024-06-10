@@ -3,15 +3,13 @@
 #include <godot_cpp/classes/scroll_container.hpp>
 #include <godot_cpp/classes/v_scroll_bar.hpp>
 
-
 #include "qjspp.hpp"
 #include "register/register_classes.h"
-
 
 using namespace godot;
 
 void register_classes_ScrollContainer() {
-	qjs::Context::Module &_module = _Control;
+	qjs::Context::Module &_module = get_Control_module();
 	_module.class_<ScrollContainer>("ScrollContainer")
 			.constructor<>()
 			.property<&ScrollContainer::is_following_focus, &ScrollContainer::set_follow_focus>("follow_focus")

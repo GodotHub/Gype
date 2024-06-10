@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/editor_import_plugin.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -91,6 +92,10 @@ bool EditorImportPlugin::_get_option_visibility(const String &path, const String
 
 Error EditorImportPlugin::_import(const String &source_file, const String &save_path, const Dictionary &options, const TypedArray<String> &platform_variants, const TypedArray<String> &gen_files) const {
 	return Error(0);
+}
+
+bool EditorImportPlugin::_can_import_threaded() const {
+	return false;
 }
 
 

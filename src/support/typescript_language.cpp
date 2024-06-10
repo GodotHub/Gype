@@ -1,14 +1,21 @@
 #include "support/typescript_language.h"
 #include "support/typescript.h"
 
-const StringName TypescriptLanguage::EXTENSION = "js";
-const StringName TypescriptLanguage::TYPE = "Javascript";
+const char *TypescriptLanguage::EXTENSION = "js";
+const char *TypescriptLanguage::TYPE = "Javascript";
+TypescriptLanguage *TypescriptLanguage::singleton = nullptr;
 
 TypescriptLanguage::TypescriptLanguage() {
-	TypescriptLanguage::singleton = memnew(TypescriptLanguage);
 }
 
-const TypescriptLanguage *TypescriptLanguage::get_singleton() {
+TypescriptLanguage::~TypescriptLanguage() {
+	singleton = nullptr;
+}
+
+TypescriptLanguage *TypescriptLanguage::get_singleton() {
+	if (!singleton) {
+		singleton = memnew(TypescriptLanguage);
+	}
 	return singleton;
 }
 
@@ -56,6 +63,9 @@ PackedStringArray TypescriptLanguage::_get_string_delimiters() const {
 }
 
 TypedArray<Dictionary> TypescriptLanguage::_get_built_in_templates(const StringName &object) const {
+	if (templates.has(object)) {
+		return templates[object];
+	}
 	return TypedArray<Dictionary>();
 }
 

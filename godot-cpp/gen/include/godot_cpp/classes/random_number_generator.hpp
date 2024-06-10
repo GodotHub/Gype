@@ -43,6 +43,8 @@
 #include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
+class PackedFloat32Array;
+
 class RandomNumberGenerator : public RefCounted {
 	GDEXTENSION_CLASS(RandomNumberGenerator, RefCounted)
 
@@ -57,6 +59,7 @@ public:
 	double randfn(double mean = 0.0, double deviation = 1.0);
 	double randf_range(double from, double to);
 	int32_t randi_range(int32_t from, int32_t to);
+	int64_t rand_weighted(const PackedFloat32Array &weights);
 	void randomize();
 protected:
 	template <typename T, typename B>

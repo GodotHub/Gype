@@ -3,7 +3,7 @@
 
 #include "qjspp.hpp"
 
-extern qjs::Context::Module &_Variant;
+qjs::Context::Module &get_Variant_module();
 
 void register_builtin_classes_RID();
 void register_builtin_classes_Callable();

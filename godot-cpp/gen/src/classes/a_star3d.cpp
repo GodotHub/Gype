@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/a_star3d.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -211,24 +212,28 @@ Vector3 AStar3D::get_closest_position_in_segment(const Vector3 &to_position) con
 	return internal::_call_native_mb_ret<Vector3>(_gde_method_bind, _owner, &to_position);
 }
 
-PackedVector3Array AStar3D::get_point_path(int64_t from_id, int64_t to_id) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AStar3D::get_class_static()._native_ptr(), StringName("get_point_path")._native_ptr(), 880819742);
+PackedVector3Array AStar3D::get_point_path(int64_t from_id, int64_t to_id, bool allow_partial_path) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AStar3D::get_class_static()._native_ptr(), StringName("get_point_path")._native_ptr(), 1562654675);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, PackedVector3Array());
 	int64_t from_id_encoded;
 	PtrToArg<int64_t>::encode(from_id, &from_id_encoded);
 	int64_t to_id_encoded;
 	PtrToArg<int64_t>::encode(to_id, &to_id_encoded);
-	return internal::_call_native_mb_ret<PackedVector3Array>(_gde_method_bind, _owner, &from_id_encoded, &to_id_encoded);
+	int8_t allow_partial_path_encoded;
+	PtrToArg<bool>::encode(allow_partial_path, &allow_partial_path_encoded);
+	return internal::_call_native_mb_ret<PackedVector3Array>(_gde_method_bind, _owner, &from_id_encoded, &to_id_encoded, &allow_partial_path_encoded);
 }
 
-PackedInt64Array AStar3D::get_id_path(int64_t from_id, int64_t to_id) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AStar3D::get_class_static()._native_ptr(), StringName("get_id_path")._native_ptr(), 3404614526);
+PackedInt64Array AStar3D::get_id_path(int64_t from_id, int64_t to_id, bool allow_partial_path) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AStar3D::get_class_static()._native_ptr(), StringName("get_id_path")._native_ptr(), 3136199648);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, PackedInt64Array());
 	int64_t from_id_encoded;
 	PtrToArg<int64_t>::encode(from_id, &from_id_encoded);
 	int64_t to_id_encoded;
 	PtrToArg<int64_t>::encode(to_id, &to_id_encoded);
-	return internal::_call_native_mb_ret<PackedInt64Array>(_gde_method_bind, _owner, &from_id_encoded, &to_id_encoded);
+	int8_t allow_partial_path_encoded;
+	PtrToArg<bool>::encode(allow_partial_path, &allow_partial_path_encoded);
+	return internal::_call_native_mb_ret<PackedInt64Array>(_gde_method_bind, _owner, &from_id_encoded, &to_id_encoded, &allow_partial_path_encoded);
 }
 
 double AStar3D::_estimate_cost(int64_t from_id, int64_t to_id) const {

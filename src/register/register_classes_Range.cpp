@@ -1,15 +1,13 @@
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/range.hpp>
 
-
 #include "qjspp.hpp"
 #include "register/register_classes.h"
-
 
 using namespace godot;
 
 void register_classes_Range() {
-	qjs::Context::Module &_module = _Control;
+	qjs::Context::Module &_module = get_Control_module();
 	_module.class_<Range>("Range")
 			.constructor<>()
 			.property<&Range::get_min, &Range::set_min>("min_value")

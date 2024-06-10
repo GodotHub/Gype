@@ -77,6 +77,7 @@ public:
 	static const int HANDLE_BINARY_EMBED_AS_UNCOMPRESSED = 3;
 
 	void add_used_extension(const String &extension_name, bool required);
+	int32_t append_data_to_buffers(const PackedByteArray &data, bool deduplication);
 	Dictionary get_json();
 	void set_json(const Dictionary &json);
 	int32_t get_major_version();
@@ -131,6 +132,8 @@ public:
 	void set_skeletons(const TypedArray<GLTFSkeleton> &skeletons);
 	bool get_create_animations();
 	void set_create_animations(bool create_animations);
+	bool get_import_as_skeleton_bones();
+	void set_import_as_skeleton_bones(bool import_as_skeleton_bones);
 	TypedArray<GLTFAnimation> get_animations();
 	void set_animations(const TypedArray<GLTFAnimation> &animations);
 	Node *get_scene_node(int32_t idx);
@@ -139,6 +142,8 @@ public:
 	void set_additional_data(const StringName &extension_name, const Variant &additional_data);
 	int32_t get_handle_binary_image();
 	void set_handle_binary_image(int32_t method);
+	void set_bake_fps(double value);
+	double get_bake_fps() const;
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {

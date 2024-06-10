@@ -77,6 +77,8 @@ void NodePath::init_bindings() {
 	_method_bindings.method_get_concatenated_names = internal::gdextension_interface_variant_get_ptr_builtin_method(GDEXTENSION_VARIANT_TYPE_NODE_PATH, _gde_name._native_ptr(), 1825232092);
 	_gde_name = StringName("get_concatenated_subnames");
 	_method_bindings.method_get_concatenated_subnames = internal::gdextension_interface_variant_get_ptr_builtin_method(GDEXTENSION_VARIANT_TYPE_NODE_PATH, _gde_name._native_ptr(), 1825232092);
+	_gde_name = StringName("slice");
+	_method_bindings.method_slice = internal::gdextension_interface_variant_get_ptr_builtin_method(GDEXTENSION_VARIANT_TYPE_NODE_PATH, _gde_name._native_ptr(), 421628484);
 	_gde_name = StringName("get_as_property_path");
 	_method_bindings.method_get_as_property_path = internal::gdextension_interface_variant_get_ptr_builtin_method(GDEXTENSION_VARIANT_TYPE_NODE_PATH, _gde_name._native_ptr(), 1598598043);
 	_gde_name = StringName("is_empty");
@@ -148,6 +150,14 @@ StringName NodePath::get_concatenated_names() const{
 
 StringName NodePath::get_concatenated_subnames() const{
 	return internal::_call_builtin_method_ptr_ret<StringName>(_method_bindings.method_get_concatenated_subnames, (GDExtensionTypePtr)&opaque);
+}
+
+NodePath NodePath::slice(int64_t begin, int64_t end) const{
+	int64_t begin_encoded;
+	PtrToArg<int64_t>::encode(begin, &begin_encoded);
+	int64_t end_encoded;
+	PtrToArg<int64_t>::encode(end, &end_encoded);
+	return internal::_call_builtin_method_ptr_ret<NodePath>(_method_bindings.method_slice, (GDExtensionTypePtr)&opaque, &begin_encoded, &end_encoded);
 }
 
 NodePath NodePath::get_as_property_path() const{

@@ -32,18 +32,21 @@
 
 #include <godot_cpp/classes/physics_server3d.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
 #include <godot_cpp/variant/callable.hpp>
 #include <godot_cpp/classes/physics_direct_body_state3d.hpp>
 #include <godot_cpp/classes/physics_direct_space_state3d.hpp>
+#include <godot_cpp/classes/physics_server3d_rendering_server_handler.hpp>
 #include <godot_cpp/classes/physics_test_motion_parameters3d.hpp>
 
 namespace godot {
 
+PhysicsServer3D *PhysicsServer3D::singleton = nullptr;
+
 PhysicsServer3D *PhysicsServer3D::get_singleton() {
-	static PhysicsServer3D *singleton = nullptr;
 	if (unlikely(singleton == nullptr)) {
 		GDExtensionObjectPtr singleton_obj = internal::gdextension_interface_global_get_singleton(PhysicsServer3D::get_class_static()._native_ptr());
 #ifdef DEBUG_ENABLED
@@ -53,8 +56,18 @@ PhysicsServer3D *PhysicsServer3D::get_singleton() {
 #ifdef DEBUG_ENABLED
 		ERR_FAIL_NULL_V(singleton, nullptr);
 #endif // DEBUG_ENABLED
+		if (likely(singleton)) {
+			ClassDB::_register_engine_singleton(PhysicsServer3D::get_class_static(), singleton);
+		}
 	}
 	return singleton;
+}
+
+PhysicsServer3D::~PhysicsServer3D() {
+	if (singleton == this) {
+		ClassDB::_unregister_engine_singleton(PhysicsServer3D::get_class_static());
+		singleton = nullptr;
+	}
 }
 
 RID PhysicsServer3D::world_boundary_shape_create() {
@@ -123,6 +136,14 @@ void PhysicsServer3D::shape_set_data(const RID &shape, const Variant &data) {
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &shape, &data);
 }
 
+void PhysicsServer3D::shape_set_margin(const RID &shape, double margin) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsServer3D::get_class_static()._native_ptr(), StringName("shape_set_margin")._native_ptr(), 1794382983);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	double margin_encoded;
+	PtrToArg<double>::encode(margin, &margin_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &shape, &margin_encoded);
+}
+
 PhysicsServer3D::ShapeType PhysicsServer3D::shape_get_type(const RID &shape) const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsServer3D::get_class_static()._native_ptr(), StringName("shape_get_type")._native_ptr(), 3418923367);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, PhysicsServer3D::ShapeType(0));
@@ -133,6 +154,12 @@ Variant PhysicsServer3D::shape_get_data(const RID &shape) const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsServer3D::get_class_static()._native_ptr(), StringName("shape_get_data")._native_ptr(), 4171304767);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Variant());
 	return internal::_call_native_mb_ret<Variant>(_gde_method_bind, _owner, &shape);
+}
+
+double PhysicsServer3D::shape_get_margin(const RID &shape) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsServer3D::get_class_static()._native_ptr(), StringName("shape_get_margin")._native_ptr(), 866169185);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner, &shape);
 }
 
 RID PhysicsServer3D::space_create() {
@@ -721,10 +748,230 @@ PhysicsDirectBodyState3D *PhysicsServer3D::body_get_direct_state(const RID &body
 	return internal::_call_native_mb_ret_obj<PhysicsDirectBodyState3D>(_gde_method_bind, _owner, &body);
 }
 
+RID PhysicsServer3D::soft_body_create() {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsServer3D::get_class_static()._native_ptr(), StringName("soft_body_create")._native_ptr(), 529393457);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, RID());
+	return internal::_call_native_mb_ret<RID>(_gde_method_bind, _owner);
+}
+
+void PhysicsServer3D::soft_body_update_rendering_server(const RID &body, PhysicsServer3DRenderingServerHandler *rendering_server_handler) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsServer3D::get_class_static()._native_ptr(), StringName("soft_body_update_rendering_server")._native_ptr(), 2218179753);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &body, (rendering_server_handler != nullptr ? &rendering_server_handler->_owner : nullptr));
+}
+
+void PhysicsServer3D::soft_body_set_space(const RID &body, const RID &space) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsServer3D::get_class_static()._native_ptr(), StringName("soft_body_set_space")._native_ptr(), 395945892);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &body, &space);
+}
+
+RID PhysicsServer3D::soft_body_get_space(const RID &body) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsServer3D::get_class_static()._native_ptr(), StringName("soft_body_get_space")._native_ptr(), 3814569979);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, RID());
+	return internal::_call_native_mb_ret<RID>(_gde_method_bind, _owner, &body);
+}
+
+void PhysicsServer3D::soft_body_set_mesh(const RID &body, const RID &mesh) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsServer3D::get_class_static()._native_ptr(), StringName("soft_body_set_mesh")._native_ptr(), 395945892);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &body, &mesh);
+}
+
 AABB PhysicsServer3D::soft_body_get_bounds(const RID &body) const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsServer3D::get_class_static()._native_ptr(), StringName("soft_body_get_bounds")._native_ptr(), 974181306);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, AABB());
 	return internal::_call_native_mb_ret<AABB>(_gde_method_bind, _owner, &body);
+}
+
+void PhysicsServer3D::soft_body_set_collision_layer(const RID &body, uint32_t layer) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsServer3D::get_class_static()._native_ptr(), StringName("soft_body_set_collision_layer")._native_ptr(), 3411492887);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t layer_encoded;
+	PtrToArg<int64_t>::encode(layer, &layer_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &body, &layer_encoded);
+}
+
+uint32_t PhysicsServer3D::soft_body_get_collision_layer(const RID &body) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsServer3D::get_class_static()._native_ptr(), StringName("soft_body_get_collision_layer")._native_ptr(), 2198884583);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
+	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &body);
+}
+
+void PhysicsServer3D::soft_body_set_collision_mask(const RID &body, uint32_t mask) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsServer3D::get_class_static()._native_ptr(), StringName("soft_body_set_collision_mask")._native_ptr(), 3411492887);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t mask_encoded;
+	PtrToArg<int64_t>::encode(mask, &mask_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &body, &mask_encoded);
+}
+
+uint32_t PhysicsServer3D::soft_body_get_collision_mask(const RID &body) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsServer3D::get_class_static()._native_ptr(), StringName("soft_body_get_collision_mask")._native_ptr(), 2198884583);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
+	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &body);
+}
+
+void PhysicsServer3D::soft_body_add_collision_exception(const RID &body, const RID &body_b) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsServer3D::get_class_static()._native_ptr(), StringName("soft_body_add_collision_exception")._native_ptr(), 395945892);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &body, &body_b);
+}
+
+void PhysicsServer3D::soft_body_remove_collision_exception(const RID &body, const RID &body_b) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsServer3D::get_class_static()._native_ptr(), StringName("soft_body_remove_collision_exception")._native_ptr(), 395945892);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &body, &body_b);
+}
+
+void PhysicsServer3D::soft_body_set_state(const RID &body, PhysicsServer3D::BodyState state, const Variant &variant) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsServer3D::get_class_static()._native_ptr(), StringName("soft_body_set_state")._native_ptr(), 599977762);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &body, &state, &variant);
+}
+
+Variant PhysicsServer3D::soft_body_get_state(const RID &body, PhysicsServer3D::BodyState state) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsServer3D::get_class_static()._native_ptr(), StringName("soft_body_get_state")._native_ptr(), 1850449534);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Variant());
+	return internal::_call_native_mb_ret<Variant>(_gde_method_bind, _owner, &body, &state);
+}
+
+void PhysicsServer3D::soft_body_set_transform(const RID &body, const Transform3D &transform) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsServer3D::get_class_static()._native_ptr(), StringName("soft_body_set_transform")._native_ptr(), 3935195649);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &body, &transform);
+}
+
+void PhysicsServer3D::soft_body_set_ray_pickable(const RID &body, bool enable) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsServer3D::get_class_static()._native_ptr(), StringName("soft_body_set_ray_pickable")._native_ptr(), 1265174801);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int8_t enable_encoded;
+	PtrToArg<bool>::encode(enable, &enable_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &body, &enable_encoded);
+}
+
+void PhysicsServer3D::soft_body_set_simulation_precision(const RID &body, int32_t simulation_precision) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsServer3D::get_class_static()._native_ptr(), StringName("soft_body_set_simulation_precision")._native_ptr(), 3411492887);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t simulation_precision_encoded;
+	PtrToArg<int64_t>::encode(simulation_precision, &simulation_precision_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &body, &simulation_precision_encoded);
+}
+
+int32_t PhysicsServer3D::soft_body_get_simulation_precision(const RID &body) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsServer3D::get_class_static()._native_ptr(), StringName("soft_body_get_simulation_precision")._native_ptr(), 2198884583);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
+	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &body);
+}
+
+void PhysicsServer3D::soft_body_set_total_mass(const RID &body, double total_mass) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsServer3D::get_class_static()._native_ptr(), StringName("soft_body_set_total_mass")._native_ptr(), 1794382983);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	double total_mass_encoded;
+	PtrToArg<double>::encode(total_mass, &total_mass_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &body, &total_mass_encoded);
+}
+
+double PhysicsServer3D::soft_body_get_total_mass(const RID &body) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsServer3D::get_class_static()._native_ptr(), StringName("soft_body_get_total_mass")._native_ptr(), 866169185);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner, &body);
+}
+
+void PhysicsServer3D::soft_body_set_linear_stiffness(const RID &body, double stiffness) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsServer3D::get_class_static()._native_ptr(), StringName("soft_body_set_linear_stiffness")._native_ptr(), 1794382983);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	double stiffness_encoded;
+	PtrToArg<double>::encode(stiffness, &stiffness_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &body, &stiffness_encoded);
+}
+
+double PhysicsServer3D::soft_body_get_linear_stiffness(const RID &body) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsServer3D::get_class_static()._native_ptr(), StringName("soft_body_get_linear_stiffness")._native_ptr(), 866169185);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner, &body);
+}
+
+void PhysicsServer3D::soft_body_set_pressure_coefficient(const RID &body, double pressure_coefficient) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsServer3D::get_class_static()._native_ptr(), StringName("soft_body_set_pressure_coefficient")._native_ptr(), 1794382983);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	double pressure_coefficient_encoded;
+	PtrToArg<double>::encode(pressure_coefficient, &pressure_coefficient_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &body, &pressure_coefficient_encoded);
+}
+
+double PhysicsServer3D::soft_body_get_pressure_coefficient(const RID &body) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsServer3D::get_class_static()._native_ptr(), StringName("soft_body_get_pressure_coefficient")._native_ptr(), 866169185);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner, &body);
+}
+
+void PhysicsServer3D::soft_body_set_damping_coefficient(const RID &body, double damping_coefficient) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsServer3D::get_class_static()._native_ptr(), StringName("soft_body_set_damping_coefficient")._native_ptr(), 1794382983);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	double damping_coefficient_encoded;
+	PtrToArg<double>::encode(damping_coefficient, &damping_coefficient_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &body, &damping_coefficient_encoded);
+}
+
+double PhysicsServer3D::soft_body_get_damping_coefficient(const RID &body) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsServer3D::get_class_static()._native_ptr(), StringName("soft_body_get_damping_coefficient")._native_ptr(), 866169185);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner, &body);
+}
+
+void PhysicsServer3D::soft_body_set_drag_coefficient(const RID &body, double drag_coefficient) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsServer3D::get_class_static()._native_ptr(), StringName("soft_body_set_drag_coefficient")._native_ptr(), 1794382983);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	double drag_coefficient_encoded;
+	PtrToArg<double>::encode(drag_coefficient, &drag_coefficient_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &body, &drag_coefficient_encoded);
+}
+
+double PhysicsServer3D::soft_body_get_drag_coefficient(const RID &body) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsServer3D::get_class_static()._native_ptr(), StringName("soft_body_get_drag_coefficient")._native_ptr(), 866169185);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner, &body);
+}
+
+void PhysicsServer3D::soft_body_move_point(const RID &body, int32_t point_index, const Vector3 &global_position) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsServer3D::get_class_static()._native_ptr(), StringName("soft_body_move_point")._native_ptr(), 831953689);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t point_index_encoded;
+	PtrToArg<int64_t>::encode(point_index, &point_index_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &body, &point_index_encoded, &global_position);
+}
+
+Vector3 PhysicsServer3D::soft_body_get_point_global_position(const RID &body, int32_t point_index) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsServer3D::get_class_static()._native_ptr(), StringName("soft_body_get_point_global_position")._native_ptr(), 3440143363);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Vector3());
+	int64_t point_index_encoded;
+	PtrToArg<int64_t>::encode(point_index, &point_index_encoded);
+	return internal::_call_native_mb_ret<Vector3>(_gde_method_bind, _owner, &body, &point_index_encoded);
+}
+
+void PhysicsServer3D::soft_body_remove_all_pinned_points(const RID &body) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsServer3D::get_class_static()._native_ptr(), StringName("soft_body_remove_all_pinned_points")._native_ptr(), 2722037293);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &body);
+}
+
+void PhysicsServer3D::soft_body_pin_point(const RID &body, int32_t point_index, bool pin) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsServer3D::get_class_static()._native_ptr(), StringName("soft_body_pin_point")._native_ptr(), 2658558584);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t point_index_encoded;
+	PtrToArg<int64_t>::encode(point_index, &point_index_encoded);
+	int8_t pin_encoded;
+	PtrToArg<bool>::encode(pin, &pin_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &body, &point_index_encoded, &pin_encoded);
+}
+
+bool PhysicsServer3D::soft_body_is_point_pinned(const RID &body, int32_t point_index) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsServer3D::get_class_static()._native_ptr(), StringName("soft_body_is_point_pinned")._native_ptr(), 3120086654);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	int64_t point_index_encoded;
+	PtrToArg<int64_t>::encode(point_index, &point_index_encoded);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner, &body, &point_index_encoded);
 }
 
 RID PhysicsServer3D::joint_create() {

@@ -12,7 +12,7 @@
 using namespace godot;
 
 void register_classes_WebSocketPeer() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<WebSocketPeer>("WebSocketPeer")
 			.constructor<>()
 			.property<&WebSocketPeer::get_supported_protocols, &WebSocketPeer::set_supported_protocols>("supported_protocols")

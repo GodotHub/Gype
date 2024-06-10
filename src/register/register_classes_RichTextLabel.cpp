@@ -24,7 +24,7 @@
 using namespace godot;
 
 void register_classes_RichTextLabel() {
-	qjs::Context::Module &_module = _Control;
+	qjs::Context::Module &_module = get_Control_module();
 	_module.class_<RichTextLabel>("RichTextLabel")
 			.constructor<>()
 			.property<&RichTextLabel::is_using_bbcode, &RichTextLabel::set_use_bbcode>("bbcode_enabled")
@@ -56,7 +56,7 @@ void register_classes_RichTextLabel() {
 			.fun<static_cast<void (RichTextLabel::*)(const Ref<Texture2D> &, int32_t, int32_t, const Color &, InlineAlignment, const Rect2 &, const Variant &, bool, const String &, bool)>(&RichTextLabel::add_image)>("add_image")
 			.fun<static_cast<void (RichTextLabel::*)(const Variant &, BitField<RichTextLabel::ImageUpdateMask>, const Ref<Texture2D> &, int32_t, int32_t, const Color &, InlineAlignment, const Rect2 &, bool, const String &, bool)>(&RichTextLabel::update_image)>("update_image")
 			.fun<static_cast<void (RichTextLabel::*)()>(&RichTextLabel::newline)>("newline")
-			.fun<static_cast<bool (RichTextLabel::*)(int32_t)>(&RichTextLabel::remove_paragraph)>("remove_paragraph")
+			.fun<static_cast<bool (RichTextLabel::*)(int32_t, bool)>(&RichTextLabel::remove_paragraph)>("remove_paragraph")
 			.fun<static_cast<void (RichTextLabel::*)(const Ref<Font> &, int32_t)>(&RichTextLabel::push_font)>("push_font")
 			.fun<static_cast<void (RichTextLabel::*)(int32_t)>(&RichTextLabel::push_font_size)>("push_font_size")
 			.fun<static_cast<void (RichTextLabel::*)()>(&RichTextLabel::push_normal)>("push_normal")
@@ -70,7 +70,7 @@ void register_classes_RichTextLabel() {
 			.fun<static_cast<void (RichTextLabel::*)(HorizontalAlignment, Control::TextDirection, const String &, TextServer::StructuredTextParser, BitField<TextServer::JustificationFlag>, const PackedFloat32Array &)>(&RichTextLabel::push_paragraph)>("push_paragraph")
 			.fun<static_cast<void (RichTextLabel::*)(int32_t)>(&RichTextLabel::push_indent)>("push_indent")
 			.fun<static_cast<void (RichTextLabel::*)(int32_t, RichTextLabel::ListType, bool, const String &)>(&RichTextLabel::push_list)>("push_list")
-			.fun<static_cast<void (RichTextLabel::*)(const Variant &)>(&RichTextLabel::push_meta)>("push_meta")
+			.fun<static_cast<void (RichTextLabel::*)(const Variant &, RichTextLabel::MetaUnderline)>(&RichTextLabel::push_meta)>("push_meta")
 			.fun<static_cast<void (RichTextLabel::*)(const String &)>(&RichTextLabel::push_hint)>("push_hint")
 			.fun<static_cast<void (RichTextLabel::*)(const String &)>(&RichTextLabel::push_language)>("push_language")
 			.fun<static_cast<void (RichTextLabel::*)()>(&RichTextLabel::push_underline)>("push_underline")

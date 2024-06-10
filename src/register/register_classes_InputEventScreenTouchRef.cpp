@@ -1,0 +1,9 @@
+#include "register/register_classes.h"
+#include <godot_cpp/classes/input_event_screen_touch.hpp>
+
+using namespace godot;
+
+void register_classes_InputEventScreenTouchRef() {
+	qjs::Context::Module &_General = get_General_module();
+	_General.class_<Ref<InputEventScreenTouch>>("InputEventScreenTouchRef").constructor<InputEventScreenTouch *>();
+}

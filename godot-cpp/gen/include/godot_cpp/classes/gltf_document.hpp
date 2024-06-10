@@ -61,18 +61,18 @@ public:
 		ROOT_NODE_MODE_MULTI_ROOT = 2,
 	};
 
-	Error append_from_file(const String &path, const Ref<GLTFState> &state, uint32_t flags = 0, const String &base_path = String());
-	Error append_from_buffer(const PackedByteArray &bytes, const String &base_path, const Ref<GLTFState> &state, uint32_t flags = 0);
-	Error append_from_scene(Node *node, const Ref<GLTFState> &state, uint32_t flags = 0);
-	Node *generate_scene(const Ref<GLTFState> &state, double bake_fps = 30, bool trimming = false, bool remove_immutable_tracks = true);
-	PackedByteArray generate_buffer(const Ref<GLTFState> &state);
-	Error write_to_filesystem(const Ref<GLTFState> &state, const String &path);
 	void set_image_format(const String &image_format);
 	String get_image_format() const;
 	void set_lossy_quality(double lossy_quality);
 	double get_lossy_quality() const;
 	void set_root_node_mode(GLTFDocument::RootNodeMode root_node_mode);
 	GLTFDocument::RootNodeMode get_root_node_mode() const;
+	Error append_from_file(const String &path, const Ref<GLTFState> &state, uint32_t flags = 0, const String &base_path = String());
+	Error append_from_buffer(const PackedByteArray &bytes, const String &base_path, const Ref<GLTFState> &state, uint32_t flags = 0);
+	Error append_from_scene(Node *node, const Ref<GLTFState> &state, uint32_t flags = 0);
+	Node *generate_scene(const Ref<GLTFState> &state, double bake_fps = 30, bool trimming = false, bool remove_immutable_tracks = true);
+	PackedByteArray generate_buffer(const Ref<GLTFState> &state);
+	Error write_to_filesystem(const Ref<GLTFState> &state, const String &path);
 	static void register_gltf_document_extension(const Ref<GLTFDocumentExtension> &extension, bool first_priority = false);
 	static void unregister_gltf_document_extension(const Ref<GLTFDocumentExtension> &extension);
 protected:

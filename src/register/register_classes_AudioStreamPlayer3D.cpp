@@ -9,7 +9,7 @@
 using namespace godot;
 
 void register_classes_AudioStreamPlayer3D() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<AudioStreamPlayer3D>("AudioStreamPlayer3D")
 			.constructor<>()
 			.property<&AudioStreamPlayer3D::get_stream, &AudioStreamPlayer3D::set_stream>("stream")

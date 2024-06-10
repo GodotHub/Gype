@@ -2,15 +2,13 @@
 #include <godot_cpp/classes/gltf_physics_body.hpp>
 #include <godot_cpp/variant/dictionary.hpp>
 
-
 #include "qjspp.hpp"
 #include "register/register_classes.h"
-
 
 using namespace godot;
 
 void register_classes_GLTFPhysicsBody() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<GLTFPhysicsBody>("GLTFPhysicsBody")
 			.constructor<>()
 			.property<&GLTFPhysicsBody::get_body_type, &GLTFPhysicsBody::set_body_type>("body_type")

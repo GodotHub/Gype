@@ -35,9 +35,9 @@
 
 #include <godot_cpp/core/defs.hpp>
 
+#include <godot_cpp/templates/vararg.hpp>
 #include <gdextension_interface.h>
 
-#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Array;
@@ -58,6 +58,7 @@ class Dictionary {
 		GDExtensionPtrBuiltInMethod method_is_empty;
 		GDExtensionPtrBuiltInMethod method_clear;
 		GDExtensionPtrBuiltInMethod method_merge;
+		GDExtensionPtrBuiltInMethod method_merged;
 		GDExtensionPtrBuiltInMethod method_has;
 		GDExtensionPtrBuiltInMethod method_has_all;
 		GDExtensionPtrBuiltInMethod method_find_key;
@@ -67,6 +68,7 @@ class Dictionary {
 		GDExtensionPtrBuiltInMethod method_values;
 		GDExtensionPtrBuiltInMethod method_duplicate;
 		GDExtensionPtrBuiltInMethod method_get;
+		GDExtensionPtrBuiltInMethod method_get_or_add;
 		GDExtensionPtrBuiltInMethod method_make_read_only;
 		GDExtensionPtrBuiltInMethod method_is_read_only;
 		GDExtensionPtrIndexedSetter indexed_setter;
@@ -98,6 +100,7 @@ public:
 	bool is_empty() const;
 	void clear();
 	void merge(const Dictionary &dictionary, bool overwrite = false);
+	Dictionary merged(const Dictionary &dictionary, bool overwrite = false) const;
 	bool has(const Variant &key) const;
 	bool has_all(const Array &keys) const;
 	Variant find_key(const Variant &value) const;
@@ -107,6 +110,7 @@ public:
 	Array values() const;
 	Dictionary duplicate(bool deep = false) const;
 	Variant get(const Variant &key, const Variant &_default) const;
+	Variant get_or_add(const Variant &key, const Variant &_default);
 	void make_read_only();
 	bool is_read_only() const;
 	bool operator==(const Variant &other) const;

@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_StreamPeerExtension() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<StreamPeerExtension>("StreamPeerExtension")
 			.constructor<>()
 			.fun<static_cast<Error (StreamPeerExtension::*)(uint8_t *, int32_t, int32_t *)>(&StreamPeerExtension::_get_data)>("_get_data")

@@ -1,15 +1,13 @@
 #include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/classes/confirmation_dialog.hpp>
 
-
 #include "qjspp.hpp"
 #include "register/register_classes.h"
-
 
 using namespace godot;
 
 void register_classes_ConfirmationDialog() {
-	qjs::Context::Module &_module = _Node;
+	qjs::Context::Module &_module = get_Node_module();
 	_module.class_<ConfirmationDialog>("ConfirmationDialog")
 			.constructor<>()
 			.property<&ConfirmationDialog::get_cancel_button_text, &ConfirmationDialog::set_cancel_button_text>("cancel_button_text")

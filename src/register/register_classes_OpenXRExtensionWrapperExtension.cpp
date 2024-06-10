@@ -9,7 +9,7 @@
 using namespace godot;
 
 void register_classes_OpenXRExtensionWrapperExtension() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<OpenXRExtensionWrapperExtension>("OpenXRExtensionWrapperExtension")
 			.constructor<>()
 			.fun<static_cast<Dictionary (OpenXRExtensionWrapperExtension::*)()>(&OpenXRExtensionWrapperExtension::_get_requested_extensions)>("_get_requested_extensions")

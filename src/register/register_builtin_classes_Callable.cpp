@@ -11,10 +11,7 @@
 using namespace godot;
 
 void register_builtin_classes_Callable() {
-	_Variant.class_<Callable>("Callable")
-			.constructor<>()
-			.constructor<const Callable &>("Callable_1")
-			.constructor<Object *, const StringName &>("Callable_2")
+	get_Variant_module().class_<Callable>("Callable").constructor<>().constructor<const Callable &>("Callable_1").constructor<Object *, const StringName &>("Callable_2")
 
 			.fun<static_cast<Variant (Callable::*)(const Array &) const>(&Callable::callv)>("callv")
 			.fun<static_cast<bool (Callable::*)() const>(&Callable::is_null)>("is_null")

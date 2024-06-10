@@ -34,12 +34,10 @@
 #define GODOT_CPP_XR_POSITIONAL_TRACKER_HPP
 
 #include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/string.hpp>
-#include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/variant/variant.hpp>
 #include <godot_cpp/classes/xr_pose.hpp>
-#include <godot_cpp/classes/xr_server.hpp>
+#include <godot_cpp/classes/xr_tracker.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -48,11 +46,12 @@
 #include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
+class StringName;
 struct Transform3D;
 struct Vector3;
 
-class XRPositionalTracker : public RefCounted {
-	GDEXTENSION_CLASS(XRPositionalTracker, RefCounted)
+class XRPositionalTracker : public XRTracker {
+	GDEXTENSION_CLASS(XRPositionalTracker, XRTracker)
 
 public:
 
@@ -60,14 +59,9 @@ public:
 		TRACKER_HAND_UNKNOWN = 0,
 		TRACKER_HAND_LEFT = 1,
 		TRACKER_HAND_RIGHT = 2,
+		TRACKER_HAND_MAX = 3,
 	};
 
-	XRServer::TrackerType get_tracker_type() const;
-	void set_tracker_type(XRServer::TrackerType type);
-	StringName get_tracker_name() const;
-	void set_tracker_name(const StringName &name);
-	String get_tracker_desc() const;
-	void set_tracker_desc(const String &description);
 	String get_tracker_profile() const;
 	void set_tracker_profile(const String &profile);
 	XRPositionalTracker::TrackerHand get_tracker_hand() const;
@@ -81,7 +75,7 @@ public:
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
-		RefCounted::register_virtuals<T, B>();
+		XRTracker::register_virtuals<T, B>();
 	}
 
 public:

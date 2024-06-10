@@ -49,10 +49,12 @@ namespace godot {
 class String;
 class StringName;
 class XRInterface;
-class XRPositionalTracker;
+class XRTracker;
 
 class XRServer : public Object {
 	GDEXTENSION_CLASS(XRServer, Object)
+
+	static XRServer *singleton;
 
 public:
 
@@ -61,6 +63,9 @@ public:
 		TRACKER_CONTROLLER = 2,
 		TRACKER_BASESTATION = 4,
 		TRACKER_ANCHOR = 8,
+		TRACKER_HAND = 16,
+		TRACKER_BODY = 32,
+		TRACKER_FACE = 64,
 		TRACKER_ANY_KNOWN = 127,
 		TRACKER_UNKNOWN = 128,
 		TRACKER_ANY = 255,
@@ -79,6 +84,7 @@ public:
 	Transform3D get_world_origin() const;
 	void set_world_origin(const Transform3D &world_origin);
 	Transform3D get_reference_frame() const;
+	void clear_reference_frame();
 	void center_on_hmd(XRServer::RotationMode rotation_mode, bool keep_height);
 	Transform3D get_hmd_transform();
 	void add_interface(const Ref<XRInterface> &interface);
@@ -87,10 +93,10 @@ public:
 	Ref<XRInterface> get_interface(int32_t idx) const;
 	TypedArray<Dictionary> get_interfaces() const;
 	Ref<XRInterface> find_interface(const String &name) const;
-	void add_tracker(const Ref<XRPositionalTracker> &tracker);
-	void remove_tracker(const Ref<XRPositionalTracker> &tracker);
+	void add_tracker(const Ref<XRTracker> &tracker);
+	void remove_tracker(const Ref<XRTracker> &tracker);
 	Dictionary get_trackers(int32_t tracker_types);
-	Ref<XRPositionalTracker> get_tracker(const StringName &tracker_name) const;
+	Ref<XRTracker> get_tracker(const StringName &tracker_name) const;
 	Ref<XRInterface> get_primary_interface() const;
 	void set_primary_interface(const Ref<XRInterface> &interface);
 protected:
@@ -98,6 +104,8 @@ protected:
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
 	}
+
+	~XRServer();
 
 public:
 

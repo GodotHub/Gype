@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/physics_server2d.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -42,8 +43,9 @@
 
 namespace godot {
 
+PhysicsServer2D *PhysicsServer2D::singleton = nullptr;
+
 PhysicsServer2D *PhysicsServer2D::get_singleton() {
-	static PhysicsServer2D *singleton = nullptr;
 	if (unlikely(singleton == nullptr)) {
 		GDExtensionObjectPtr singleton_obj = internal::gdextension_interface_global_get_singleton(PhysicsServer2D::get_class_static()._native_ptr());
 #ifdef DEBUG_ENABLED
@@ -53,8 +55,18 @@ PhysicsServer2D *PhysicsServer2D::get_singleton() {
 #ifdef DEBUG_ENABLED
 		ERR_FAIL_NULL_V(singleton, nullptr);
 #endif // DEBUG_ENABLED
+		if (likely(singleton)) {
+			ClassDB::_register_engine_singleton(PhysicsServer2D::get_class_static(), singleton);
+		}
 	}
 	return singleton;
+}
+
+PhysicsServer2D::~PhysicsServer2D() {
+	if (singleton == this) {
+		ClassDB::_unregister_engine_singleton(PhysicsServer2D::get_class_static());
+		singleton = nullptr;
+	}
 }
 
 RID PhysicsServer2D::world_boundary_shape_create() {

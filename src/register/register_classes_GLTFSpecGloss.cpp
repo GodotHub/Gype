@@ -6,7 +6,7 @@
 using namespace godot;
 
 void register_classes_GLTFSpecGloss() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<GLTFSpecGloss>("GLTFSpecGloss")
 			.constructor<>()
 			.property<&GLTFSpecGloss::get_diffuse_img, &GLTFSpecGloss::set_diffuse_img>("diffuse_img")

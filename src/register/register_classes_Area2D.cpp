@@ -3,15 +3,13 @@
 #include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 
-
 #include "qjspp.hpp"
 #include "register/register_classes.h"
-
 
 using namespace godot;
 
 void register_classes_Area2D() {
-	qjs::Context::Module &_module = _Node2D;
+	qjs::Context::Module &_module = get_Node2D_module();
 	_module.class_<Area2D>("Area2D")
 			.constructor<>()
 			.property<&Area2D::is_monitoring, &Area2D::set_monitoring>("monitoring")

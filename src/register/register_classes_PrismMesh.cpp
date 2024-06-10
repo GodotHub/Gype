@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_PrismMesh() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<PrismMesh>("PrismMesh")
 			.constructor<>()
 			.property<&PrismMesh::get_left_to_right, &PrismMesh::set_left_to_right>("left_to_right")

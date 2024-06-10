@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_AtlasTexture() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<AtlasTexture>("AtlasTexture")
 			.constructor<>()
 			.property<&AtlasTexture::get_atlas, &AtlasTexture::set_atlas>("atlas")

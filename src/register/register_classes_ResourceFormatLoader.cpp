@@ -12,7 +12,7 @@
 using namespace godot;
 
 void register_classes_ResourceFormatLoader() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<ResourceFormatLoader>("ResourceFormatLoader")
 			.constructor<>()
 			.fun<static_cast<PackedStringArray (ResourceFormatLoader::*)() const>(&ResourceFormatLoader::_get_recognized_extensions)>("_get_recognized_extensions")

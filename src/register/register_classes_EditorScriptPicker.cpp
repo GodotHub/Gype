@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_EditorScriptPicker() {
-	qjs::Context::Module &_module = _Control;
+	qjs::Context::Module &_module = get_Control_module();
 	_module.class_<EditorScriptPicker>("EditorScriptPicker")
 			.constructor<>()
 			.property<&EditorScriptPicker::get_script_owner, &EditorScriptPicker::set_script_owner>("script_owner");

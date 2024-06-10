@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_DampedSpringJoint2D() {
-	qjs::Context::Module &_module = _Node2D;
+	qjs::Context::Module &_module = get_Node2D_module();
 	_module.class_<DampedSpringJoint2D>("DampedSpringJoint2D")
 			.constructor<>()
 			.property<&DampedSpringJoint2D::get_length, &DampedSpringJoint2D::set_length>("length")

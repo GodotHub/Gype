@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_ReferenceRect() {
-	qjs::Context::Module &_module = _Control;
+	qjs::Context::Module &_module = get_Control_module();
 	_module.class_<ReferenceRect>("ReferenceRect")
 			.constructor<>()
 			.property<&ReferenceRect::get_border_color, &ReferenceRect::set_border_color>("border_color")

@@ -37,6 +37,7 @@
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/classes/shortcut.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/classes/editor_plugin_registration.hpp>
 
@@ -109,11 +110,12 @@ public:
 	};
 
 	void add_control_to_container(EditorPlugin::CustomControlContainer container, Control *control);
-	Button *add_control_to_bottom_panel(Control *control, const String &title);
-	void add_control_to_dock(EditorPlugin::DockSlot slot, Control *control);
+	Button *add_control_to_bottom_panel(Control *control, const String &title, const Ref<Shortcut> &shortcut = nullptr);
+	void add_control_to_dock(EditorPlugin::DockSlot slot, Control *control, const Ref<Shortcut> &shortcut = nullptr);
 	void remove_control_from_docks(Control *control);
 	void remove_control_from_bottom_panel(Control *control);
 	void remove_control_from_container(EditorPlugin::CustomControlContainer container, Control *control);
+	void set_dock_tab_icon(Control *control, const Ref<Texture2D> &icon);
 	void add_tool_menu_item(const String &name, const Callable &callable);
 	void add_tool_submenu_item(const String &name, PopupMenu *submenu);
 	void remove_tool_menu_item(const String &name);

@@ -42,6 +42,7 @@
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/classes/text_server.hpp>
+#include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/variant.hpp>
 #include <godot_cpp/variant/vector2.hpp>
 #include <godot_cpp/variant/vector2i.hpp>
@@ -137,6 +138,8 @@ public:
 	};
 
 	bool has_ime_text() const;
+	void cancel_ime();
+	void apply_ime();
 	void set_editable(bool enabled);
 	bool is_editable() const;
 	void set_text_direction(Control::TextDirection direction);
@@ -149,6 +152,8 @@ public:
 	Array get_structured_text_bidi_override_options() const;
 	void set_tab_size(int32_t size);
 	int32_t get_tab_size() const;
+	void set_indent_wrapped_lines(bool enabled);
+	bool is_indent_wrapped_lines() const;
 	void set_overtype_mode_enabled(bool enabled);
 	bool is_overtype_mode_enabled() const;
 	void set_context_menu_enabled(bool enabled);
@@ -173,7 +178,9 @@ public:
 	int32_t get_first_non_whitespace_column(int32_t line) const;
 	void swap_lines(int32_t from_line, int32_t to_line);
 	void insert_line_at(int32_t line, const String &text);
+	void remove_line_at(int32_t line, bool move_carets_down = true);
 	void insert_text_at_caret(const String &text, int32_t caret_index = -1);
+	void insert_text(const String &text, int32_t line, int32_t column, bool before_selection_begin = true, bool before_selection_end = false);
 	void remove_text(int32_t from_line, int32_t from_column, int32_t to_line, int32_t to_column);
 	int32_t get_last_unhidden_line() const;
 	int32_t get_next_visible_line_offset_from(int32_t line, int32_t visible_amount) const;
@@ -197,7 +204,7 @@ public:
 	uint32_t get_saved_version() const;
 	void set_search_text(const String &search_text);
 	void set_search_flags(uint32_t flags);
-	Vector2i search(const String &text, uint32_t flags, int32_t from_line, int32_t from_colum) const;
+	Vector2i search(const String &text, uint32_t flags, int32_t from_line, int32_t from_column) const;
 	void set_tooltip_request_func(const Callable &callback);
 	Vector2 get_local_mouse_pos() const;
 	String get_word_at_pos(const Vector2 &position) const;
@@ -221,14 +228,18 @@ public:
 	bool is_caret_mid_grapheme_enabled() const;
 	void set_multiple_carets_enabled(bool enabled);
 	bool is_multiple_carets_enabled() const;
-	int32_t add_caret(int32_t line, int32_t col);
+	int32_t add_caret(int32_t line, int32_t column);
 	void remove_caret(int32_t caret);
 	void remove_secondary_carets();
-	void merge_overlapping_carets();
 	int32_t get_caret_count() const;
 	void add_caret_at_carets(bool below);
-	PackedInt32Array get_caret_index_edit_order();
-	void adjust_carets_after_edit(int32_t caret, int32_t from_line, int32_t from_col, int32_t to_line, int32_t to_col);
+	PackedInt32Array get_sorted_carets(bool include_ignored_carets = false) const;
+	void collapse_carets(int32_t from_line, int32_t from_column, int32_t to_line, int32_t to_column, bool inclusive = false);
+	void merge_overlapping_carets();
+	void begin_multicaret_edit();
+	void end_multicaret_edit();
+	bool is_in_mulitcaret_edit() const;
+	bool multicaret_edit_ignore_caret(int32_t caret_index) const;
 	bool is_caret_visible(int32_t caret_index = 0) const;
 	Vector2 get_caret_draw_pos(int32_t caret_index = 0) const;
 	void set_caret_line(int32_t line, bool adjust_viewport = true, bool can_be_hidden = true, int32_t wrap_index = 0, int32_t caret_index = 0);
@@ -243,20 +254,26 @@ public:
 	bool is_deselect_on_focus_loss_enabled() const;
 	void set_drag_and_drop_selection_enabled(bool enable);
 	bool is_drag_and_drop_selection_enabled() const;
-	void set_selection_mode(TextEdit::SelectionMode mode, int32_t line = -1, int32_t column = -1, int32_t caret_index = 0);
+	void set_selection_mode(TextEdit::SelectionMode mode);
 	TextEdit::SelectionMode get_selection_mode() const;
 	void select_all();
 	void select_word_under_caret(int32_t caret_index = -1);
 	void add_selection_for_next_occurrence();
-	void select(int32_t from_line, int32_t from_column, int32_t to_line, int32_t to_column, int32_t caret_index = 0);
+	void skip_selection_for_next_occurrence();
+	void select(int32_t origin_line, int32_t origin_column, int32_t caret_line, int32_t caret_column, int32_t caret_index = 0);
 	bool has_selection(int32_t caret_index = -1) const;
 	String get_selected_text(int32_t caret_index = -1);
-	int32_t get_selection_line(int32_t caret_index = 0) const;
-	int32_t get_selection_column(int32_t caret_index = 0) const;
+	int32_t get_selection_at_line_column(int32_t line, int32_t column, bool include_edges = true, bool only_selections = true) const;
+	TypedArray<Vector2i> get_line_ranges_from_carets(bool only_selections = false, bool merge_adjacent = true) const;
+	int32_t get_selection_origin_line(int32_t caret_index = 0) const;
+	int32_t get_selection_origin_column(int32_t caret_index = 0) const;
+	void set_selection_origin_line(int32_t line, bool can_be_hidden = true, int32_t wrap_index = -1, int32_t caret_index = 0);
+	void set_selection_origin_column(int32_t column, int32_t caret_index = 0);
 	int32_t get_selection_from_line(int32_t caret_index = 0) const;
 	int32_t get_selection_from_column(int32_t caret_index = 0) const;
 	int32_t get_selection_to_line(int32_t caret_index = 0) const;
 	int32_t get_selection_to_column(int32_t caret_index = 0) const;
+	bool is_caret_after_selection_origin(int32_t caret_index = 0) const;
 	void deselect(int32_t caret_index = -1);
 	void delete_selection(int32_t caret_index = -1);
 	void set_line_wrapping_mode(TextEdit::LineWrappingMode mode);
@@ -343,6 +360,10 @@ public:
 	PopupMenu *get_menu() const;
 	bool is_menu_visible() const;
 	void menu_option(int32_t option);
+	void adjust_carets_after_edit(int32_t caret, int32_t from_line, int32_t from_col, int32_t to_line, int32_t to_col);
+	PackedInt32Array get_caret_index_edit_order();
+	int32_t get_selection_line(int32_t caret_index = 0) const;
+	int32_t get_selection_column(int32_t caret_index = 0) const;
 	virtual void _handle_unicode_input(int32_t unicode_char, int32_t caret_index);
 	virtual void _backspace(int32_t caret_index);
 	virtual void _cut(int32_t caret_index);

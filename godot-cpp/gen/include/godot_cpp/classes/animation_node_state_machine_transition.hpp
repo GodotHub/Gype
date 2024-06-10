@@ -74,6 +74,8 @@ public:
 	double get_xfade_time() const;
 	void set_xfade_curve(const Ref<Curve> &curve);
 	Ref<Curve> get_xfade_curve() const;
+	void set_break_loop_at_end(bool enable);
+	bool is_loop_broken_at_end() const;
 	void set_reset(bool reset);
 	bool is_reset() const;
 	void set_priority(int32_t priority);

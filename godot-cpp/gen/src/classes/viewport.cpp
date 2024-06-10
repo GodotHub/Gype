@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/viewport.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -266,6 +267,20 @@ bool Viewport::get_physics_object_picking_sort() {
 	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
 }
 
+void Viewport::set_physics_object_picking_first_only(bool enable) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Viewport::get_class_static()._native_ptr(), StringName("set_physics_object_picking_first_only")._native_ptr(), 2586408642);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int8_t enable_encoded;
+	PtrToArg<bool>::encode(enable, &enable_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &enable_encoded);
+}
+
+bool Viewport::get_physics_object_picking_first_only() {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Viewport::get_class_static()._native_ptr(), StringName("get_physics_object_picking_first_only")._native_ptr(), 2240911060);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
+}
+
 RID Viewport::get_viewport_rid() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Viewport::get_class_static()._native_ptr(), StringName("get_viewport_rid")._native_ptr(), 2944877500);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, RID());
@@ -292,26 +307,6 @@ void Viewport::push_unhandled_input(const Ref<InputEvent> &event, bool in_local_
 	int8_t in_local_coords_encoded;
 	PtrToArg<bool>::encode(in_local_coords, &in_local_coords_encoded);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, (event != nullptr ? &event->_owner : nullptr), &in_local_coords_encoded);
-}
-
-Camera2D *Viewport::get_camera_2d() const {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Viewport::get_class_static()._native_ptr(), StringName("get_camera_2d")._native_ptr(), 3551466917);
-	CHECK_METHOD_BIND_RET(_gde_method_bind, nullptr);
-	return internal::_call_native_mb_ret_obj<Camera2D>(_gde_method_bind, _owner);
-}
-
-void Viewport::set_as_audio_listener_2d(bool enable) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Viewport::get_class_static()._native_ptr(), StringName("set_as_audio_listener_2d")._native_ptr(), 2586408642);
-	CHECK_METHOD_BIND(_gde_method_bind);
-	int8_t enable_encoded;
-	PtrToArg<bool>::encode(enable, &enable_encoded);
-	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &enable_encoded);
-}
-
-bool Viewport::is_audio_listener_2d() const {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Viewport::get_class_static()._native_ptr(), StringName("is_audio_listener_2d")._native_ptr(), 36873697);
-	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
-	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
 }
 
 Vector2 Viewport::get_mouse_position() const {
@@ -358,6 +353,12 @@ void Viewport::gui_release_focus() {
 
 Control *Viewport::gui_get_focus_owner() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Viewport::get_class_static()._native_ptr(), StringName("gui_get_focus_owner")._native_ptr(), 2783021301);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, nullptr);
+	return internal::_call_native_mb_ret_obj<Control>(_gde_method_bind, _owner);
+}
+
+Control *Viewport::gui_get_hovered_control() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Viewport::get_class_static()._native_ptr(), StringName("gui_get_hovered_control")._native_ptr(), 2783021301);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, nullptr);
 	return internal::_call_native_mb_ret_obj<Control>(_gde_method_bind, _owner);
 }
@@ -602,6 +603,26 @@ double Viewport::get_mesh_lod_threshold() const {
 	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner);
 }
 
+void Viewport::set_as_audio_listener_2d(bool enable) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Viewport::get_class_static()._native_ptr(), StringName("set_as_audio_listener_2d")._native_ptr(), 2586408642);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int8_t enable_encoded;
+	PtrToArg<bool>::encode(enable, &enable_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &enable_encoded);
+}
+
+bool Viewport::is_audio_listener_2d() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Viewport::get_class_static()._native_ptr(), StringName("is_audio_listener_2d")._native_ptr(), 36873697);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
+}
+
+Camera2D *Viewport::get_camera_2d() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Viewport::get_class_static()._native_ptr(), StringName("get_camera_2d")._native_ptr(), 3551466917);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, nullptr);
+	return internal::_call_native_mb_ret_obj<Camera2D>(_gde_method_bind, _owner);
+}
+
 void Viewport::set_world_3d(const Ref<World3D> &world_3d) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Viewport::get_class_static()._native_ptr(), StringName("set_world_3d")._native_ptr(), 1400875337);
 	CHECK_METHOD_BIND(_gde_method_bind);
@@ -746,6 +767,18 @@ Viewport::VRSMode Viewport::get_vrs_mode() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Viewport::get_class_static()._native_ptr(), StringName("get_vrs_mode")._native_ptr(), 349660525);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Viewport::VRSMode(0));
 	return (Viewport::VRSMode)internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
+}
+
+void Viewport::set_vrs_update_mode(Viewport::VRSUpdateMode mode) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Viewport::get_class_static()._native_ptr(), StringName("set_vrs_update_mode")._native_ptr(), 3182412319);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &mode);
+}
+
+Viewport::VRSUpdateMode Viewport::get_vrs_update_mode() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Viewport::get_class_static()._native_ptr(), StringName("get_vrs_update_mode")._native_ptr(), 2255951583);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Viewport::VRSUpdateMode(0));
+	return (Viewport::VRSUpdateMode)internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
 }
 
 void Viewport::set_vrs_texture(const Ref<Texture2D> &texture) {

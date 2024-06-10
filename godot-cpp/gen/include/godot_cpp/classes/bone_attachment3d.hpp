@@ -53,7 +53,7 @@ public:
 	String get_bone_name() const;
 	void set_bone_idx(int32_t bone_idx);
 	int32_t get_bone_idx() const;
-	void on_bone_pose_update(int32_t bone_index);
+	void on_skeleton_update();
 	void set_override_pose(bool override_pose);
 	bool get_override_pose() const;
 	void set_use_external_skeleton(bool use_external_skeleton);

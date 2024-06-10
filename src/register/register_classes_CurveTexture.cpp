@@ -6,7 +6,7 @@
 using namespace godot;
 
 void register_classes_CurveTexture() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<CurveTexture>("CurveTexture")
 			.constructor<>()
 			.property<&CurveTexture::get_width, &CurveTexture::set_width>("width")

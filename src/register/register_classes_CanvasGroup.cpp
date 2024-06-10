@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_CanvasGroup() {
-	qjs::Context::Module &_module = _Node2D;
+	qjs::Context::Module &_module = get_Node2D_module();
 	_module.class_<CanvasGroup>("CanvasGroup")
 			.constructor<>()
 			.property<&CanvasGroup::get_fit_margin, &CanvasGroup::set_fit_margin>("fit_margin")

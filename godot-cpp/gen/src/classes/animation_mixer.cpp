@@ -32,12 +32,12 @@
 
 #include <godot_cpp/classes/animation_mixer.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
 #include <godot_cpp/classes/animation.hpp>
 #include <godot_cpp/classes/animation_library.hpp>
-#include <godot_cpp/core/object.hpp>
 
 namespace godot {
 
@@ -159,6 +159,18 @@ AnimationMixer::AnimationCallbackModeMethod AnimationMixer::get_callback_mode_me
 	return (AnimationMixer::AnimationCallbackModeMethod)internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
 }
 
+void AnimationMixer::set_callback_mode_discrete(AnimationMixer::AnimationCallbackModeDiscrete mode) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationMixer::get_class_static()._native_ptr(), StringName("set_callback_mode_discrete")._native_ptr(), 1998944670);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &mode);
+}
+
+AnimationMixer::AnimationCallbackModeDiscrete AnimationMixer::get_callback_mode_discrete() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationMixer::get_class_static()._native_ptr(), StringName("get_callback_mode_discrete")._native_ptr(), 3493168860);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, AnimationMixer::AnimationCallbackModeDiscrete(0));
+	return (AnimationMixer::AnimationCallbackModeDiscrete)internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
+}
+
 void AnimationMixer::set_audio_max_polyphony(int32_t max_polyphony) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationMixer::get_class_static()._native_ptr(), StringName("set_audio_max_polyphony")._native_ptr(), 1286410249);
 	CHECK_METHOD_BIND(_gde_method_bind);
@@ -235,6 +247,14 @@ void AnimationMixer::advance(double delta) {
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &delta_encoded);
 }
 
+void AnimationMixer::capture(const StringName &name, double duration, Tween::TransitionType trans_type, Tween::EaseType ease_type) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationMixer::get_class_static()._native_ptr(), StringName("capture")._native_ptr(), 1333632127);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	double duration_encoded;
+	PtrToArg<double>::encode(duration, &duration_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &name, &duration_encoded, &trans_type, &ease_type);
+}
+
 void AnimationMixer::set_reset_on_save_enabled(bool enabled) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationMixer::get_class_static()._native_ptr(), StringName("set_reset_on_save_enabled")._native_ptr(), 2586408642);
 	CHECK_METHOD_BIND(_gde_method_bind);
@@ -261,7 +281,7 @@ StringName AnimationMixer::find_animation_library(const Ref<Animation> &animatio
 	return internal::_call_native_mb_ret<StringName>(_gde_method_bind, _owner, (animation != nullptr ? &animation->_owner : nullptr));
 }
 
-Variant AnimationMixer::_post_process_key_value(const Ref<Animation> &animation, int32_t track, const Variant &value, Object *object, int32_t object_idx) const {
+Variant AnimationMixer::_post_process_key_value(const Ref<Animation> &animation, int32_t track, const Variant &value, uint64_t object_id, int32_t object_sub_idx) const {
 	return Variant();
 }
 

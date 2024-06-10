@@ -24,7 +24,7 @@
 using namespace godot;
 
 void register_classes_Control() {
-	qjs::Context::Module &_module = _Control;
+	qjs::Context::Module &_module = get_Control_module();
 	_module.class_<Control>("Control")
 			.constructor<>()
 			.property<&Control::is_clipping_contents, &Control::set_clip_contents>("clip_contents")

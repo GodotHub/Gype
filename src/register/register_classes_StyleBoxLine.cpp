@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_StyleBoxLine() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<StyleBoxLine>("StyleBoxLine")
 			.constructor<>()
 			.property<&StyleBoxLine::get_color, &StyleBoxLine::set_color>("color")

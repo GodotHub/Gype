@@ -8,7 +8,7 @@
 using namespace godot;
 
 void register_classes_OpenXRActionSet() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<OpenXRActionSet>("OpenXRActionSet")
 			.constructor<>()
 			.property<&OpenXRActionSet::get_localized_name, &OpenXRActionSet::set_localized_name>("localized_name")

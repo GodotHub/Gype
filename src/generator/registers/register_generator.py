@@ -362,9 +362,21 @@ def generate_classes_cpp(env, data, classes):
     _generate_control(control)
     _generate_node3d(node3d)
 
+def generate_ref_classes_cpp(env, data):
+    classes = list(filter(lambda cl: cl['is_refcounted'] and 'VisualShader' not in cl['name'], data))
+    for clazz in classes:
+        template = env.get_template('./ref_classes/ref_classes.cpp.jinja')
+        render = template.render({'clazz':clazz})
+        with open(f'{root}/src/register/register_classes_{clazz['name']}Ref.cpp', 'w') as file:
+            file.write(render)
+    template = env.get_template('./ref_classes/register_ref_classes.cpp.jinja')
+    render = template.render({'classes':classes})
+    with open(f'{root}/src/register/register_classes_Ref.cpp', 'w') as file:
+        file.write(render)
+
 def generate_types_cpp(env, data):
     template = env.get_template('./types/register_types.cpp.jinja')
-    render = template.render({ 'builtin_classes': filter(lambda clazz: not is_pod_type(clazz['name']), data['builtin_classes']) })
+    render = template.render({ 'builtin_classes': filter(lambda clazz: not is_pod_type(clazz['name']), data['builtin_classes']), 'classes': data['classes'] })
     with open(f'{root}/src/register/register_types.cpp', 'w') as file:
         file.write(render)
 
@@ -395,9 +407,10 @@ if __name__ == '__main__':
     env.filters['get_file_name'] = get_file_name
     init_engine_classes()
     init_builtin_classes()
-    generate_utility_functions_cpp(env, data['utility_functions'])
-    generate_builtin_classes_h(env, data['builtin_classes'])
-    generate_builtin_classes_cpp(env, data['builtin_classes'])
-    generate_classes_h(env, data['classes'])
-    generate_classes_cpp(env, data['classes'], files)
-    generate_types_cpp(env, data)
+    # generate_utility_functions_cpp(env, data['utility_functions'])
+    # generate_builtin_classes_h(env, data['builtin_classes'])
+    # generate_builtin_classes_cpp(env, data['builtin_classes'])
+    # generate_classes_h(env, data['classes'])
+    # generate_classes_cpp(env, data['classes'], files)
+    generate_ref_classes_cpp(env, data['classes'])
+    # generate_types_cpp(env, data)

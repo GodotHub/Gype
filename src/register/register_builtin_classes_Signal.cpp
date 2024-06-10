@@ -12,10 +12,7 @@
 using namespace godot;
 
 void register_builtin_classes_Signal() {
-	_Variant.class_<Signal>("Signal")
-			.constructor<>()
-			.constructor<const Signal &>("Signal_1")
-			.constructor<Object *, const StringName &>("Signal_2")
+	get_Variant_module().class_<Signal>("Signal").constructor<>().constructor<const Signal &>("Signal_1").constructor<Object *, const StringName &>("Signal_2")
 
 			.fun<static_cast<bool (Signal::*)() const>(&Signal::is_null)>("is_null")
 			.fun<static_cast<Object *(Signal::*)() const>(&Signal::get_object)>("get_object")

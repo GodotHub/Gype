@@ -6,11 +6,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_EditorResourceConversionPlugin() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<EditorResourceConversionPlugin>("EditorResourceConversionPlugin")
 			.constructor<>()
 			.fun<static_cast<String (EditorResourceConversionPlugin::*)() const>(&EditorResourceConversionPlugin::_converts_to)>("_converts_to")

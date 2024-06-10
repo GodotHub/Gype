@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_AudioEffectDistortion() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<AudioEffectDistortion>("AudioEffectDistortion")
 			.constructor<>()
 			.property<&AudioEffectDistortion::get_mode, &AudioEffectDistortion::set_mode>("mode")

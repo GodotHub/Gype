@@ -8,7 +8,7 @@
 using namespace godot;
 
 void register_classes_PhysicsServer3DRenderingServerHandler() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<PhysicsServer3DRenderingServerHandler>("PhysicsServer3DRenderingServerHandler")
 			.constructor<>()
 			.fun<static_cast<void (PhysicsServer3DRenderingServerHandler::*)(int32_t, const Vector3 &)>(&PhysicsServer3DRenderingServerHandler::_set_vertex)>("_set_vertex")

@@ -10,7 +10,7 @@
 using namespace godot;
 
 void register_classes_UDPServer() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<UDPServer>("UDPServer")
 			.constructor<>()
 			.property<&UDPServer::get_max_pending_connections, &UDPServer::set_max_pending_connections>("max_pending_connections")

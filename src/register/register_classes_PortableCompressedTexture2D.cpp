@@ -2,15 +2,13 @@
 #include <godot_cpp/classes/portable_compressed_texture2d.hpp>
 #include <godot_cpp/classes/ref.hpp>
 
-
 #include "qjspp.hpp"
 #include "register/register_classes.h"
-
 
 using namespace godot;
 
 void register_classes_PortableCompressedTexture2D() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<PortableCompressedTexture2D>("PortableCompressedTexture2D")
 			.constructor<>()
 			.property<&PortableCompressedTexture2D::get_size_override, &PortableCompressedTexture2D::set_size_override>("size_override")

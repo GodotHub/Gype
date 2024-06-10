@@ -2,6 +2,10 @@
 #define TS_LANGUAGE_SUPPORT
 
 #include <godot_cpp/classes/script_language_extension.hpp>
+#include <godot_cpp/templates/hash_map.hpp>
+#include <godot_cpp/variant/dictionary.hpp>
+#include <godot_cpp/variant/typed_array.hpp>
+#include <string>
 
 using namespace godot;
 
@@ -10,15 +14,18 @@ class TypescriptLanguage;
 class TypescriptLanguage : public ScriptLanguageExtension {
 	GDCLASS(TypescriptLanguage, ScriptLanguageExtension)
 
-	static const TypescriptLanguage *singleton;
+	static TypescriptLanguage *singleton;
+
+	HashMap<StringName, TypedArray<Dictionary>> templates;
 
 public:
-	static const StringName EXTENSION;
-	static const StringName TYPE;
+	static const char *EXTENSION;
+	static const char *TYPE;
 
-	explicit TypescriptLanguage();
+	TypescriptLanguage();
+	~TypescriptLanguage();
 
-	static const TypescriptLanguage *get_singleton();
+	static TypescriptLanguage *get_singleton();
 	void _thread_enter() override;
 	void _thread_exit() override;
 	void _frame() override;

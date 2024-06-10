@@ -11,7 +11,7 @@
 using namespace godot;
 
 void register_classes_AnimationNodeStateMachine() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<AnimationNodeStateMachine>("AnimationNodeStateMachine")
 			.constructor<>()
 			.property<&AnimationNodeStateMachine::get_state_machine_type, &AnimationNodeStateMachine::set_state_machine_type>("state_machine_type")

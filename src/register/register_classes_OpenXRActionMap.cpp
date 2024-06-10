@@ -10,7 +10,7 @@
 using namespace godot;
 
 void register_classes_OpenXRActionMap() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<OpenXRActionMap>("OpenXRActionMap")
 			.constructor<>()
 			.property<&OpenXRActionMap::get_action_sets, &OpenXRActionMap::set_action_sets>("action_sets")

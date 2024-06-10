@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/animation_node_animation.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -59,6 +60,74 @@ AnimationNodeAnimation::PlayMode AnimationNodeAnimation::get_play_mode() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationNodeAnimation::get_class_static()._native_ptr(), StringName("get_play_mode")._native_ptr(), 2061244637);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, AnimationNodeAnimation::PlayMode(0));
 	return (AnimationNodeAnimation::PlayMode)internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
+}
+
+void AnimationNodeAnimation::set_use_custom_timeline(bool use_custom_timeline) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationNodeAnimation::get_class_static()._native_ptr(), StringName("set_use_custom_timeline")._native_ptr(), 2586408642);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int8_t use_custom_timeline_encoded;
+	PtrToArg<bool>::encode(use_custom_timeline, &use_custom_timeline_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &use_custom_timeline_encoded);
+}
+
+bool AnimationNodeAnimation::is_using_custom_timeline() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationNodeAnimation::get_class_static()._native_ptr(), StringName("is_using_custom_timeline")._native_ptr(), 36873697);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
+}
+
+void AnimationNodeAnimation::set_timeline_length(double timeline_length) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationNodeAnimation::get_class_static()._native_ptr(), StringName("set_timeline_length")._native_ptr(), 373806689);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	double timeline_length_encoded;
+	PtrToArg<double>::encode(timeline_length, &timeline_length_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &timeline_length_encoded);
+}
+
+double AnimationNodeAnimation::get_timeline_length() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationNodeAnimation::get_class_static()._native_ptr(), StringName("get_timeline_length")._native_ptr(), 1740695150);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner);
+}
+
+void AnimationNodeAnimation::set_stretch_time_scale(bool stretch_time_scale) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationNodeAnimation::get_class_static()._native_ptr(), StringName("set_stretch_time_scale")._native_ptr(), 2586408642);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int8_t stretch_time_scale_encoded;
+	PtrToArg<bool>::encode(stretch_time_scale, &stretch_time_scale_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &stretch_time_scale_encoded);
+}
+
+bool AnimationNodeAnimation::is_stretching_time_scale() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationNodeAnimation::get_class_static()._native_ptr(), StringName("is_stretching_time_scale")._native_ptr(), 36873697);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
+}
+
+void AnimationNodeAnimation::set_start_offset(double start_offset) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationNodeAnimation::get_class_static()._native_ptr(), StringName("set_start_offset")._native_ptr(), 373806689);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	double start_offset_encoded;
+	PtrToArg<double>::encode(start_offset, &start_offset_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &start_offset_encoded);
+}
+
+double AnimationNodeAnimation::get_start_offset() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationNodeAnimation::get_class_static()._native_ptr(), StringName("get_start_offset")._native_ptr(), 1740695150);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner);
+}
+
+void AnimationNodeAnimation::set_loop_mode(Animation::LoopMode loop_mode) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationNodeAnimation::get_class_static()._native_ptr(), StringName("set_loop_mode")._native_ptr(), 3155355575);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &loop_mode);
+}
+
+Animation::LoopMode AnimationNodeAnimation::get_loop_mode() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationNodeAnimation::get_class_static()._native_ptr(), StringName("get_loop_mode")._native_ptr(), 1988889481);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Animation::LoopMode(0));
+	return (Animation::LoopMode)internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
 }
 
 

@@ -11,9 +11,8 @@
 using namespace godot;
 
 void register_classes_TextServerManager() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<TextServerManager>("TextServerManager")
-			.constructor<>()
 			.fun<static_cast<void (TextServerManager::*)(const Ref<TextServer> &)>(&TextServerManager::add_interface)>("add_interface")
 			.fun<static_cast<int32_t (TextServerManager::*)() const>(&TextServerManager::get_interface_count)>("get_interface_count")
 			.fun<static_cast<void (TextServerManager::*)(const Ref<TextServer> &)>(&TextServerManager::remove_interface)>("remove_interface")

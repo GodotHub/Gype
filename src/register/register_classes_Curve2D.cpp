@@ -9,7 +9,7 @@
 using namespace godot;
 
 void register_classes_Curve2D() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<Curve2D>("Curve2D")
 			.constructor<>()
 			.property<&Curve2D::get_bake_interval, &Curve2D::set_bake_interval>("bake_interval")

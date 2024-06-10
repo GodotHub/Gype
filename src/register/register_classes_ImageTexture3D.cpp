@@ -9,7 +9,7 @@
 using namespace godot;
 
 void register_classes_ImageTexture3D() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<ImageTexture3D>("ImageTexture3D")
 			.constructor<>()
 			.fun<static_cast<Error (ImageTexture3D::*)(Image::Format, int32_t, int32_t, int32_t, bool, const TypedArray<Image> &)>(&ImageTexture3D::create)>("create")

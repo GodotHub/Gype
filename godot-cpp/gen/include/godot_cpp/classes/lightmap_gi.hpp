@@ -108,12 +108,16 @@ public:
 	Color get_environment_custom_color() const;
 	void set_environment_custom_energy(double energy);
 	double get_environment_custom_energy() const;
+	void set_texel_scale(double texel_scale);
+	double get_texel_scale() const;
 	void set_max_texture_size(int32_t max_texture_size);
 	int32_t get_max_texture_size() const;
 	void set_use_denoiser(bool use_denoiser);
 	bool is_using_denoiser() const;
 	void set_denoiser_strength(double denoiser_strength);
 	double get_denoiser_strength() const;
+	void set_denoiser_range(int32_t denoiser_range);
+	int32_t get_denoiser_range() const;
 	void set_interior(bool enable);
 	bool is_interior() const;
 	void set_directional(bool directional);

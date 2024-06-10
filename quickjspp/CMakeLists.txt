@@ -8,5 +8,3 @@ target_include_directories(quickjspp INTERFACE ${PROJECT_SOURCE_DIR}/include)
 
 target_link_libraries(quickjspp INTERFACE quickjs)
 
-target_compile_options(quickjspp INTERFACE -Wa,-mbig-obj)
-

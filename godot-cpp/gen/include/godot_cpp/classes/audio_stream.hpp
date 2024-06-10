@@ -33,9 +33,11 @@
 #ifndef GODOT_CPP_AUDIO_STREAM_HPP
 #define GODOT_CPP_AUDIO_STREAM_HPP
 
+#include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/string.hpp>
+#include <godot_cpp/variant/typed_array.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -60,6 +62,7 @@ public:
 	virtual bool _is_monophonic() const;
 	virtual double _get_bpm() const;
 	virtual int32_t _get_beat_count() const;
+	virtual TypedArray<Dictionary> _get_parameter_list() const;
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -81,6 +84,9 @@ protected:
 		}
 		if constexpr (!std::is_same_v<decltype(&B::_get_beat_count),decltype(&T::_get_beat_count)>) {
 			BIND_VIRTUAL_METHOD(T, _get_beat_count);
+		}
+		if constexpr (!std::is_same_v<decltype(&B::_get_parameter_list),decltype(&T::_get_parameter_list)>) {
+			BIND_VIRTUAL_METHOD(T, _get_parameter_list);
 		}
 	}
 

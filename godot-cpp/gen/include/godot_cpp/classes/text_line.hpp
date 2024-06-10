@@ -82,6 +82,8 @@ public:
 	BitField<TextServer::JustificationFlag> get_flags() const;
 	void set_text_overrun_behavior(TextServer::OverrunBehavior overrun_behavior);
 	TextServer::OverrunBehavior get_text_overrun_behavior() const;
+	void set_ellipsis_char(const String &_char);
+	String get_ellipsis_char() const;
 	Array get_objects() const;
 	Rect2 get_object_rect(const Variant &key) const;
 	Vector2 get_size() const;

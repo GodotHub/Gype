@@ -15,7 +15,7 @@
 using namespace godot;
 
 void register_classes_CodeEdit() {
-	qjs::Context::Module &_module = _Control;
+	qjs::Context::Module &_module = get_Control_module();
 	_module.class_<CodeEdit>("CodeEdit")
 			.constructor<>()
 			.property<&CodeEdit::is_symbol_lookup_on_click_enabled, &CodeEdit::set_symbol_lookup_on_click_enabled>("symbol_lookup_on_click")

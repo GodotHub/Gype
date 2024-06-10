@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/skeleton_profile.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -239,6 +240,24 @@ void SkeletonProfile::set_group(int32_t bone_idx, const StringName &group) {
 	int64_t bone_idx_encoded;
 	PtrToArg<int64_t>::encode(bone_idx, &bone_idx_encoded);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &bone_idx_encoded, &group);
+}
+
+bool SkeletonProfile::is_required(int32_t bone_idx) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(SkeletonProfile::get_class_static()._native_ptr(), StringName("is_required")._native_ptr(), 1116898809);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	int64_t bone_idx_encoded;
+	PtrToArg<int64_t>::encode(bone_idx, &bone_idx_encoded);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner, &bone_idx_encoded);
+}
+
+void SkeletonProfile::set_required(int32_t bone_idx, bool required) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(SkeletonProfile::get_class_static()._native_ptr(), StringName("set_required")._native_ptr(), 300928843);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t bone_idx_encoded;
+	PtrToArg<int64_t>::encode(bone_idx, &bone_idx_encoded);
+	int8_t required_encoded;
+	PtrToArg<bool>::encode(required, &required_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &bone_idx_encoded, &required_encoded);
 }
 
 

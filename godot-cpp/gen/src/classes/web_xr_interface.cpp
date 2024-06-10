@@ -32,10 +32,11 @@
 
 #include <godot_cpp/classes/web_xr_interface.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
-#include <godot_cpp/classes/xr_positional_tracker.hpp>
+#include <godot_cpp/classes/xr_controller_tracker.hpp>
 
 namespace godot {
 
@@ -87,6 +88,12 @@ String WebXRInterface::get_reference_space_type() const {
 	return internal::_call_native_mb_ret<String>(_gde_method_bind, _owner);
 }
 
+String WebXRInterface::get_enabled_features() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(WebXRInterface::get_class_static()._native_ptr(), StringName("get_enabled_features")._native_ptr(), 201670096);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, String());
+	return internal::_call_native_mb_ret<String>(_gde_method_bind, _owner);
+}
+
 void WebXRInterface::set_requested_reference_space_types(const String &requested_reference_space_types) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(WebXRInterface::get_class_static()._native_ptr(), StringName("set_requested_reference_space_types")._native_ptr(), 83702148);
 	CHECK_METHOD_BIND(_gde_method_bind);
@@ -107,12 +114,12 @@ bool WebXRInterface::is_input_source_active(int32_t input_source_id) const {
 	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner, &input_source_id_encoded);
 }
 
-Ref<XRPositionalTracker> WebXRInterface::get_input_source_tracker(int32_t input_source_id) const {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(WebXRInterface::get_class_static()._native_ptr(), StringName("get_input_source_tracker")._native_ptr(), 636011756);
-	CHECK_METHOD_BIND_RET(_gde_method_bind, Ref<XRPositionalTracker>());
+Ref<XRControllerTracker> WebXRInterface::get_input_source_tracker(int32_t input_source_id) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(WebXRInterface::get_class_static()._native_ptr(), StringName("get_input_source_tracker")._native_ptr(), 399776966);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Ref<XRControllerTracker>());
 	int64_t input_source_id_encoded;
 	PtrToArg<int64_t>::encode(input_source_id, &input_source_id_encoded);
-	return Ref<XRPositionalTracker>::_gde_internal_constructor(internal::_call_native_mb_ret_obj<XRPositionalTracker>(_gde_method_bind, _owner, &input_source_id_encoded));
+	return Ref<XRControllerTracker>::_gde_internal_constructor(internal::_call_native_mb_ret_obj<XRControllerTracker>(_gde_method_bind, _owner, &input_source_id_encoded));
 }
 
 WebXRInterface::TargetRayMode WebXRInterface::get_input_source_target_ray_mode(int32_t input_source_id) const {

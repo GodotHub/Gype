@@ -17,7 +17,7 @@
 using namespace godot;
 
 void register_classes_EditorExportPlugin() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<EditorExportPlugin>("EditorExportPlugin")
 			.constructor<>()
 			.fun<static_cast<void (EditorExportPlugin::*)(const String &, const String &, const PackedStringArray &)>(&EditorExportPlugin::_export_file)>("_export_file")

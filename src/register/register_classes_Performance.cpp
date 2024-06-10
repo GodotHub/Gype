@@ -11,9 +11,8 @@
 using namespace godot;
 
 void register_classes_Performance() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<Performance>("Performance")
-			.constructor<>()
 			.fun<static_cast<double (Performance::*)(Performance::Monitor) const>(&Performance::get_monitor)>("get_monitor")
 			.fun<static_cast<void (Performance::*)(const StringName &, const Callable &, const Array &)>(&Performance::add_custom_monitor)>("add_custom_monitor")
 			.fun<static_cast<void (Performance::*)(const StringName &)>(&Performance::remove_custom_monitor)>("remove_custom_monitor")

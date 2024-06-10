@@ -13,7 +13,7 @@
 using namespace godot;
 
 void register_classes_ShapeCast3D() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<ShapeCast3D>("ShapeCast3D")
 			.constructor<>()
 			.property<&ShapeCast3D::is_enabled, &ShapeCast3D::set_enabled>("enabled")

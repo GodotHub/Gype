@@ -4,15 +4,13 @@
 #include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 
-
 #include "qjspp.hpp"
 #include "register/register_classes.h"
-
 
 using namespace godot;
 
 void register_classes_RDShaderFile() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<RDShaderFile>("RDShaderFile")
 			.constructor<>()
 			.property<&RDShaderFile::get_base_error, &RDShaderFile::set_base_error>("base_error")

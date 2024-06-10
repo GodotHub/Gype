@@ -1,15 +1,13 @@
 #include <godot_cpp/classes/joint2d.hpp>
 #include <godot_cpp/classes/physical_bone2d.hpp>
 
-
 #include "qjspp.hpp"
 #include "register/register_classes.h"
-
 
 using namespace godot;
 
 void register_classes_PhysicalBone2D() {
-	qjs::Context::Module &_module = _Node2D;
+	qjs::Context::Module &_module = get_Node2D_module();
 	_module.class_<PhysicalBone2D>("PhysicalBone2D")
 			.constructor<>()
 			.property<&PhysicalBone2D::get_bone2d_nodepath, &PhysicalBone2D::set_bone2d_nodepath>("bone2d_nodepath")

@@ -38,9 +38,9 @@
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 #include <initializer_list>
+#include <godot_cpp/templates/vararg.hpp>
 #include <gdextension_interface.h>
 
-#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Array;

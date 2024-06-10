@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/dir_access.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -217,6 +218,24 @@ Error DirAccess::remove_absolute(const String &path) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(DirAccess::get_class_static()._native_ptr(), StringName("remove_absolute")._native_ptr(), 166001499);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Error(0));
 	return (Error)internal::_call_native_mb_ret<int64_t>(_gde_method_bind, nullptr, &path);
+}
+
+bool DirAccess::is_link(const String &path) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(DirAccess::get_class_static()._native_ptr(), StringName("is_link")._native_ptr(), 2323990056);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner, &path);
+}
+
+String DirAccess::read_link(const String &path) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(DirAccess::get_class_static()._native_ptr(), StringName("read_link")._native_ptr(), 1703090593);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, String());
+	return internal::_call_native_mb_ret<String>(_gde_method_bind, _owner, &path);
+}
+
+Error DirAccess::create_link(const String &source, const String &target) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(DirAccess::get_class_static()._native_ptr(), StringName("create_link")._native_ptr(), 852856452);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Error(0));
+	return (Error)internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &source, &target);
 }
 
 void DirAccess::set_include_navigational(bool enable) {

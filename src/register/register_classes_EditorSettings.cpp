@@ -7,15 +7,13 @@
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/variant.hpp>
 
-
 #include "qjspp.hpp"
 #include "register/register_classes.h"
-
 
 using namespace godot;
 
 void register_classes_EditorSettings() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<EditorSettings>("EditorSettings")
 			.constructor<>()
 			.fun<static_cast<bool (EditorSettings::*)(const String &) const>(&EditorSettings::has_setting)>("has_setting")

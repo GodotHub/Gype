@@ -32,22 +32,11 @@
 
 #include <godot_cpp/classes/visual_shader_node_comment.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
 namespace godot {
-
-void VisualShaderNodeComment::set_title(const String &title) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(VisualShaderNodeComment::get_class_static()._native_ptr(), StringName("set_title")._native_ptr(), 83702148);
-	CHECK_METHOD_BIND(_gde_method_bind);
-	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &title);
-}
-
-String VisualShaderNodeComment::get_title() const {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(VisualShaderNodeComment::get_class_static()._native_ptr(), StringName("get_title")._native_ptr(), 201670096);
-	CHECK_METHOD_BIND_RET(_gde_method_bind, String());
-	return internal::_call_native_mb_ret<String>(_gde_method_bind, _owner);
-}
 
 void VisualShaderNodeComment::set_description(const String &description) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(VisualShaderNodeComment::get_class_static()._native_ptr(), StringName("set_description")._native_ptr(), 83702148);

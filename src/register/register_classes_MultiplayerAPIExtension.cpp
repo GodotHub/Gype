@@ -14,7 +14,7 @@
 using namespace godot;
 
 void register_classes_MultiplayerAPIExtension() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<MultiplayerAPIExtension>("MultiplayerAPIExtension")
 			.constructor<>()
 			.fun<static_cast<Error (MultiplayerAPIExtension::*)()>(&MultiplayerAPIExtension::_poll)>("_poll")

@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_Decal() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<Decal>("Decal")
 			.constructor<>()
 			.property<&Decal::get_size, &Decal::set_size>("size")

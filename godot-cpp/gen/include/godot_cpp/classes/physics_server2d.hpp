@@ -56,6 +56,8 @@ class PhysicsTestMotionParameters2D;
 class PhysicsServer2D : public Object {
 	GDEXTENSION_CLASS(PhysicsServer2D, Object)
 
+	static PhysicsServer2D *singleton;
+
 public:
 
 	enum SpaceParameter {
@@ -310,6 +312,8 @@ protected:
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
 	}
+
+	~PhysicsServer2D();
 
 public:
 

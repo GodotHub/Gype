@@ -50,6 +50,8 @@ class InputEvent;
 class InputMap : public Object {
 	GDEXTENSION_CLASS(InputMap, Object)
 
+	static InputMap *singleton;
+
 public:
 
 	static InputMap *get_singleton();
@@ -72,6 +74,8 @@ protected:
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
 	}
+
+	~InputMap();
 
 public:
 

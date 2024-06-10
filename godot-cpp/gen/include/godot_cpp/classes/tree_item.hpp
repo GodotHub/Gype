@@ -34,6 +34,7 @@
 #define GODOT_CPP_TREE_ITEM_HPP
 
 #include <godot_cpp/variant/array.hpp>
+#include <godot_cpp/variant/callable.hpp>
 #include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/variant/dictionary.hpp>
@@ -111,12 +112,15 @@ public:
 	void set_metadata(int32_t column, const Variant &meta);
 	Variant get_metadata(int32_t column) const;
 	void set_custom_draw(int32_t column, Object *object, const StringName &callback);
+	void set_custom_draw_callback(int32_t column, const Callable &callback);
+	Callable get_custom_draw_callback(int32_t column) const;
 	void set_collapsed(bool enable);
 	bool is_collapsed();
 	void set_collapsed_recursive(bool enable);
 	bool is_any_collapsed(bool only_visible = false);
 	void set_visible(bool enable);
 	bool is_visible();
+	bool is_visible_in_tree() const;
 	void uncollapse_tree();
 	void set_custom_minimum_height(int32_t height);
 	int32_t get_custom_minimum_height() const;
@@ -144,6 +148,7 @@ public:
 	String get_button_tooltip_text(int32_t column, int32_t button_index) const;
 	int32_t get_button_id(int32_t column, int32_t button_index) const;
 	int32_t get_button_by_id(int32_t column, int32_t id) const;
+	Color get_button_color(int32_t column, int32_t id) const;
 	Ref<Texture2D> get_button(int32_t column, int32_t button_index) const;
 	void set_button_tooltip_text(int32_t column, int32_t button_index, const String &tooltip);
 	void set_button(int32_t column, int32_t button_index, const Ref<Texture2D> &button);

@@ -83,7 +83,7 @@ public:
 	void set_bus(const StringName &bus);
 	StringName get_bus() const;
 	void set_autoplay(bool enable);
-	bool is_autoplay_enabled();
+	bool is_autoplay_enabled() const;
 	void set_max_distance(double meters);
 	double get_max_distance() const;
 	void set_area_mask(uint32_t mask);

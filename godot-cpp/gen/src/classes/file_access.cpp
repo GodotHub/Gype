@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/file_access.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -77,6 +78,14 @@ String FileAccess::get_file_as_string(const String &path) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(FileAccess::get_class_static()._native_ptr(), StringName("get_file_as_string")._native_ptr(), 1703090593);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, String());
 	return internal::_call_native_mb_ret<String>(_gde_method_bind, nullptr, &path);
+}
+
+Error FileAccess::resize(int64_t length) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(FileAccess::get_class_static()._native_ptr(), StringName("resize")._native_ptr(), 844576869);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Error(0));
+	int64_t length_encoded;
+	PtrToArg<int64_t>::encode(length, &length_encoded);
+	return (Error)internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &length_encoded);
 }
 
 void FileAccess::flush() {

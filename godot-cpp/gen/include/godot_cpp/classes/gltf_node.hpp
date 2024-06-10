@@ -37,6 +37,7 @@
 #include <godot_cpp/variant/quaternion.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/transform3d.hpp>
 #include <godot_cpp/variant/variant.hpp>
 #include <godot_cpp/variant/vector3.hpp>
@@ -55,6 +56,8 @@ class GLTFNode : public Resource {
 
 public:
 
+	String get_original_name();
+	void set_original_name(const String &original_name);
 	int32_t get_parent();
 	void set_parent(int32_t parent);
 	int32_t get_height();

@@ -51,6 +51,8 @@ class Translation;
 class TranslationServer : public Object {
 	GDEXTENSION_CLASS(TranslationServer, Object)
 
+	static TranslationServer *singleton;
+
 public:
 
 	static TranslationServer *get_singleton();
@@ -67,8 +69,8 @@ public:
 	PackedStringArray get_all_countries() const;
 	String get_country_name(const String &country) const;
 	String get_locale_name(const String &locale) const;
-	StringName translate(const StringName &message, const StringName &context = String()) const;
-	StringName translate_plural(const StringName &message, const StringName &plural_message, int32_t n, const StringName &context = String()) const;
+	StringName translate(const StringName &message, const StringName &context = StringName()) const;
+	StringName translate_plural(const StringName &message, const StringName &plural_message, int32_t n, const StringName &context = StringName()) const;
 	void add_translation(const Ref<Translation> &translation);
 	void remove_translation(const Ref<Translation> &translation);
 	Ref<Translation> get_translation_object(const String &locale);
@@ -83,6 +85,8 @@ protected:
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
 	}
+
+	~TranslationServer();
 
 public:
 

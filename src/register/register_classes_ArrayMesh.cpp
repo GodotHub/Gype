@@ -16,7 +16,7 @@
 using namespace godot;
 
 void register_classes_ArrayMesh() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<ArrayMesh>("ArrayMesh")
 			.constructor<>()
 			.property<&ArrayMesh::get_blend_shape_mode, &ArrayMesh::set_blend_shape_mode>("blend_shape_mode")

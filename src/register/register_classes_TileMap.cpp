@@ -17,7 +17,7 @@
 using namespace godot;
 
 void register_classes_TileMap() {
-	qjs::Context::Module &_module = _Node2D;
+	qjs::Context::Module &_module = get_Node2D_module();
 	_module.class_<TileMap>("TileMap")
 			.constructor<>()
 			.property<&TileMap::get_tileset, &TileMap::set_tileset>("tile_set")

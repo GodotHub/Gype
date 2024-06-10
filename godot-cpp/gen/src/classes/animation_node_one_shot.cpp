@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/animation_node_one_shot.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -89,6 +90,20 @@ Ref<Curve> AnimationNodeOneShot::get_fadeout_curve() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationNodeOneShot::get_class_static()._native_ptr(), StringName("get_fadeout_curve")._native_ptr(), 2460114913);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Ref<Curve>());
 	return Ref<Curve>::_gde_internal_constructor(internal::_call_native_mb_ret_obj<Curve>(_gde_method_bind, _owner));
+}
+
+void AnimationNodeOneShot::set_break_loop_at_end(bool enable) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationNodeOneShot::get_class_static()._native_ptr(), StringName("set_break_loop_at_end")._native_ptr(), 2586408642);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int8_t enable_encoded;
+	PtrToArg<bool>::encode(enable, &enable_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &enable_encoded);
+}
+
+bool AnimationNodeOneShot::is_loop_broken_at_end() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationNodeOneShot::get_class_static()._native_ptr(), StringName("is_loop_broken_at_end")._native_ptr(), 36873697);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
 }
 
 void AnimationNodeOneShot::set_autorestart(bool active) {

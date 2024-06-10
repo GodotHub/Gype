@@ -52,6 +52,8 @@ class StringName;
 class EngineDebugger : public Object {
 	GDEXTENSION_CLASS(EngineDebugger, Object)
 
+	static EngineDebugger *singleton;
+
 public:
 
 	static EngineDebugger *get_singleton();
@@ -72,6 +74,8 @@ protected:
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
 	}
+
+	~EngineDebugger();
 
 public:
 

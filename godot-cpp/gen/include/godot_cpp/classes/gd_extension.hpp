@@ -33,7 +33,6 @@
 #ifndef GODOT_CPP_GD_EXTENSION_HPP
 #define GODOT_CPP_GD_EXTENSION_HPP
 
-#include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
 
@@ -43,8 +42,6 @@
 
 #include <godot_cpp/templates/vararg.hpp>
 namespace godot {
-
-class String;
 
 class GDExtension : public Resource {
 	GDEXTENSION_CLASS(GDExtension, Resource)
@@ -58,11 +55,8 @@ public:
 		INITIALIZATION_LEVEL_EDITOR = 3,
 	};
 
-	Error open_library(const String &path, const String &entry_symbol);
-	void close_library();
 	bool is_library_open() const;
 	GDExtension::InitializationLevel get_minimum_library_initialization_level() const;
-	void initialize_library(GDExtension::InitializationLevel level);
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {

@@ -11,7 +11,7 @@
 using namespace godot;
 
 void register_classes_WebSocketMultiplayerPeer() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<WebSocketMultiplayerPeer>("WebSocketMultiplayerPeer")
 			.constructor<>()
 			.property<&WebSocketMultiplayerPeer::get_supported_protocols, &WebSocketMultiplayerPeer::set_supported_protocols>("supported_protocols")

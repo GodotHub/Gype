@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_ParallaxBackground() {
-	qjs::Context::Module &_module = _Node;
+	qjs::Context::Module &_module = get_Node_module();
 	_module.class_<ParallaxBackground>("ParallaxBackground")
 			.constructor<>()
 			.property<&ParallaxBackground::get_scroll_offset, &ParallaxBackground::set_scroll_offset>("scroll_offset")

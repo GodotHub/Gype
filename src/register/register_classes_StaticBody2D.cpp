@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_StaticBody2D() {
-	qjs::Context::Module &_module = _Node2D;
+	qjs::Context::Module &_module = get_Node2D_module();
 	_module.class_<StaticBody2D>("StaticBody2D")
 			.constructor<>()
 			.property<&StaticBody2D::get_physics_material_override, &StaticBody2D::set_physics_material_override>("physics_material_override")

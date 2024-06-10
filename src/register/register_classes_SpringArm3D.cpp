@@ -8,7 +8,7 @@
 using namespace godot;
 
 void register_classes_SpringArm3D() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<SpringArm3D>("SpringArm3D")
 			.constructor<>()
 			.property<&SpringArm3D::get_collision_mask, &SpringArm3D::set_collision_mask>("collision_mask")

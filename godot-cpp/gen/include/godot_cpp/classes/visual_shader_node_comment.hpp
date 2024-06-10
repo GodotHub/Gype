@@ -35,7 +35,7 @@
 
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/string.hpp>
-#include <godot_cpp/classes/visual_shader_node_resizable_base.hpp>
+#include <godot_cpp/classes/visual_shader_node_frame.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -44,19 +44,17 @@
 #include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
-class VisualShaderNodeComment : public VisualShaderNodeResizableBase {
-	GDEXTENSION_CLASS(VisualShaderNodeComment, VisualShaderNodeResizableBase)
+class VisualShaderNodeComment : public VisualShaderNodeFrame {
+	GDEXTENSION_CLASS(VisualShaderNodeComment, VisualShaderNodeFrame)
 
 public:
 
-	void set_title(const String &title);
-	String get_title() const;
 	void set_description(const String &description);
 	String get_description() const;
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
-		VisualShaderNodeResizableBase::register_virtuals<T, B>();
+		VisualShaderNodeFrame::register_virtuals<T, B>();
 	}
 
 public:

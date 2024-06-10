@@ -9,7 +9,7 @@
 using namespace godot;
 
 void register_classes_WebRTCDataChannelExtension() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<WebRTCDataChannelExtension>("WebRTCDataChannelExtension")
 			.constructor<>()
 			.fun<static_cast<Error (WebRTCDataChannelExtension::*)(const uint8_t **, int32_t *)>(&WebRTCDataChannelExtension::_get_packet)>("_get_packet")

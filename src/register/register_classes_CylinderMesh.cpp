@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_CylinderMesh() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<CylinderMesh>("CylinderMesh")
 			.constructor<>()
 			.property<&CylinderMesh::get_top_radius, &CylinderMesh::set_top_radius>("top_radius")

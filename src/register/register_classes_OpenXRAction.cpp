@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_OpenXRAction() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<OpenXRAction>("OpenXRAction")
 			.constructor<>()
 			.property<&OpenXRAction::get_localized_name, &OpenXRAction::set_localized_name>("localized_name")

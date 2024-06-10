@@ -8,7 +8,7 @@
 using namespace godot;
 
 void register_classes_SkeletonModification2DJiggle() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<SkeletonModification2DJiggle>("SkeletonModification2DJiggle")
 			.constructor<>()
 			.property<&SkeletonModification2DJiggle::get_target_node, &SkeletonModification2DJiggle::set_target_node>("target_nodepath")

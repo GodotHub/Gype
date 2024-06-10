@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/environment.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -890,6 +891,18 @@ bool Environment::is_fog_enabled() const {
 	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
 }
 
+void Environment::set_fog_mode(Environment::FogMode mode) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Environment::get_class_static()._native_ptr(), StringName("set_fog_mode")._native_ptr(), 3059806579);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &mode);
+}
+
+Environment::FogMode Environment::get_fog_mode() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Environment::get_class_static()._native_ptr(), StringName("get_fog_mode")._native_ptr(), 2456062483);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Environment::FogMode(0));
+	return (Environment::FogMode)internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
+}
+
 void Environment::set_fog_light_color(const Color &light_color) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Environment::get_class_static()._native_ptr(), StringName("set_fog_light_color")._native_ptr(), 2920490490);
 	CHECK_METHOD_BIND(_gde_method_bind);
@@ -996,6 +1009,48 @@ void Environment::set_fog_sky_affect(double sky_affect) {
 
 double Environment::get_fog_sky_affect() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Environment::get_class_static()._native_ptr(), StringName("get_fog_sky_affect")._native_ptr(), 1740695150);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner);
+}
+
+void Environment::set_fog_depth_curve(double curve) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Environment::get_class_static()._native_ptr(), StringName("set_fog_depth_curve")._native_ptr(), 373806689);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	double curve_encoded;
+	PtrToArg<double>::encode(curve, &curve_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &curve_encoded);
+}
+
+double Environment::get_fog_depth_curve() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Environment::get_class_static()._native_ptr(), StringName("get_fog_depth_curve")._native_ptr(), 1740695150);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner);
+}
+
+void Environment::set_fog_depth_begin(double begin) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Environment::get_class_static()._native_ptr(), StringName("set_fog_depth_begin")._native_ptr(), 373806689);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	double begin_encoded;
+	PtrToArg<double>::encode(begin, &begin_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &begin_encoded);
+}
+
+double Environment::get_fog_depth_begin() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Environment::get_class_static()._native_ptr(), StringName("get_fog_depth_begin")._native_ptr(), 1740695150);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner);
+}
+
+void Environment::set_fog_depth_end(double end) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Environment::get_class_static()._native_ptr(), StringName("set_fog_depth_end")._native_ptr(), 373806689);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	double end_encoded;
+	PtrToArg<double>::encode(end, &end_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &end_encoded);
+}
+
+double Environment::get_fog_depth_end() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Environment::get_class_static()._native_ptr(), StringName("get_fog_depth_end")._native_ptr(), 1740695150);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
 	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner);
 }

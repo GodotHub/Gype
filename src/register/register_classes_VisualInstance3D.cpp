@@ -8,7 +8,7 @@
 using namespace godot;
 
 void register_classes_VisualInstance3D() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<VisualInstance3D>("VisualInstance3D")
 			.constructor<>()
 			.property<&VisualInstance3D::get_layer_mask, &VisualInstance3D::set_layer_mask>("layers")

@@ -32,13 +32,15 @@
 
 #include <godot_cpp/classes/time.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
 namespace godot {
 
+Time *Time::singleton = nullptr;
+
 Time *Time::get_singleton() {
-	static Time *singleton = nullptr;
 	if (unlikely(singleton == nullptr)) {
 		GDExtensionObjectPtr singleton_obj = internal::gdextension_interface_global_get_singleton(Time::get_class_static()._native_ptr());
 #ifdef DEBUG_ENABLED
@@ -48,8 +50,18 @@ Time *Time::get_singleton() {
 #ifdef DEBUG_ENABLED
 		ERR_FAIL_NULL_V(singleton, nullptr);
 #endif // DEBUG_ENABLED
+		if (likely(singleton)) {
+			ClassDB::_register_engine_singleton(Time::get_class_static(), singleton);
+		}
 	}
 	return singleton;
+}
+
+Time::~Time() {
+	if (singleton == this) {
+		ClassDB::_unregister_engine_singleton(Time::get_class_static());
+		singleton = nullptr;
+	}
 }
 
 Dictionary Time::get_datetime_dict_from_unix_time(int64_t unix_time_val) const {

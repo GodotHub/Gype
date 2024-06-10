@@ -8,7 +8,7 @@
 using namespace godot;
 
 void register_classes_SkeletonModification2DFABRIK() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<SkeletonModification2DFABRIK>("SkeletonModification2DFABRIK")
 			.constructor<>()
 			.property<&SkeletonModification2DFABRIK::get_target_node, &SkeletonModification2DFABRIK::set_target_node>("target_nodepath")

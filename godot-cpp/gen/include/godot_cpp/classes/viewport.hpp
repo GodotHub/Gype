@@ -107,7 +107,8 @@ public:
 	enum RenderInfoType {
 		RENDER_INFO_TYPE_VISIBLE = 0,
 		RENDER_INFO_TYPE_SHADOW = 1,
-		RENDER_INFO_TYPE_MAX = 2,
+		RENDER_INFO_TYPE_CANVAS = 2,
+		RENDER_INFO_TYPE_MAX = 3,
 	};
 
 	enum DebugDraw {
@@ -177,6 +178,13 @@ public:
 		VRS_MAX = 3,
 	};
 
+	enum VRSUpdateMode {
+		VRS_UPDATE_DISABLED = 0,
+		VRS_UPDATE_ONCE = 1,
+		VRS_UPDATE_ALWAYS = 2,
+		VRS_UPDATE_MAX = 3,
+	};
+
 	void set_world_2d(const Ref<World2D> &world_2d);
 	Ref<World2D> get_world_2d() const;
 	Ref<World2D> find_world_2d() const;
@@ -211,13 +219,12 @@ public:
 	bool get_physics_object_picking();
 	void set_physics_object_picking_sort(bool enable);
 	bool get_physics_object_picking_sort();
+	void set_physics_object_picking_first_only(bool enable);
+	bool get_physics_object_picking_first_only();
 	RID get_viewport_rid() const;
 	void push_text_input(const String &text);
 	void push_input(const Ref<InputEvent> &event, bool in_local_coords = false);
 	void push_unhandled_input(const Ref<InputEvent> &event, bool in_local_coords = false);
-	Camera2D *get_camera_2d() const;
-	void set_as_audio_listener_2d(bool enable);
-	bool is_audio_listener_2d() const;
 	Vector2 get_mouse_position() const;
 	void warp_mouse(const Vector2 &position);
 	void update_mouse_cursor_state();
@@ -226,6 +233,7 @@ public:
 	bool gui_is_drag_successful() const;
 	void gui_release_focus();
 	Control *gui_get_focus_owner() const;
+	Control *gui_get_hovered_control() const;
 	void set_disable_input(bool disable);
 	bool is_input_disabled() const;
 	void set_positional_shadow_atlas_size(int32_t size);
@@ -261,6 +269,9 @@ public:
 	Viewport::SDFScale get_sdf_scale() const;
 	void set_mesh_lod_threshold(double pixels);
 	double get_mesh_lod_threshold() const;
+	void set_as_audio_listener_2d(bool enable);
+	bool is_audio_listener_2d() const;
+	Camera2D *get_camera_2d() const;
 	void set_world_3d(const Ref<World3D> &world_3d);
 	Ref<World3D> get_world_3d() const;
 	Ref<World3D> find_world_3d() const;
@@ -283,6 +294,8 @@ public:
 	double get_texture_mipmap_bias() const;
 	void set_vrs_mode(Viewport::VRSMode mode);
 	Viewport::VRSMode get_vrs_mode() const;
+	void set_vrs_update_mode(Viewport::VRSUpdateMode mode);
+	Viewport::VRSUpdateMode get_vrs_update_mode() const;
 	void set_vrs_texture(const Ref<Texture2D> &texture);
 	Ref<Texture2D> get_vrs_texture() const;
 protected:
@@ -309,5 +322,6 @@ VARIANT_ENUM_CAST(Viewport::DefaultCanvasItemTextureRepeat);
 VARIANT_ENUM_CAST(Viewport::SDFOversize);
 VARIANT_ENUM_CAST(Viewport::SDFScale);
 VARIANT_ENUM_CAST(Viewport::VRSMode);
+VARIANT_ENUM_CAST(Viewport::VRSUpdateMode);
 
 #endif // ! GODOT_CPP_VIEWPORT_HPP

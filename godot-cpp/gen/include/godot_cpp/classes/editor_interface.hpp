@@ -35,10 +35,12 @@
 
 #include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/core/object.hpp>
+#include <godot_cpp/variant/packed_int32_array.hpp>
 #include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/rect2i.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/string.hpp>
+#include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/vector2i.hpp>
 
@@ -49,6 +51,7 @@
 #include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
+class Callable;
 class Control;
 class EditorCommandPalette;
 class EditorFileSystem;
@@ -71,6 +74,8 @@ class Window;
 
 class EditorInterface : public Object {
 	GDEXTENSION_CLASS(EditorInterface, Object)
+
+	static EditorInterface *singleton;
 
 public:
 
@@ -95,6 +100,7 @@ public:
 	void set_main_screen_editor(const String &name);
 	void set_distraction_free_mode(bool enter);
 	bool is_distraction_free_mode_enabled() const;
+	bool is_multi_window_enabled() const;
 	double get_editor_scale() const;
 	void popup_dialog(Window *dialog, const Rect2i &rect = Rect2i(0, 0, 0, 0));
 	void popup_dialog_centered(Window *dialog, const Vector2i &minsize = Vector2i(0, 0));
@@ -102,6 +108,8 @@ public:
 	void popup_dialog_centered_clamped(Window *dialog, const Vector2i &minsize = Vector2i(0, 0), double fallback_ratio = 0.75);
 	String get_current_feature_profile() const;
 	void set_current_feature_profile(const String &profile_name);
+	void popup_node_selector(const Callable &callback, const TypedArray<StringName> &valid_types = {});
+	void popup_property_selector(Object *object, const Callable &callback, const PackedInt32Array &type_filter = PackedInt32Array());
 	FileSystemDock *get_file_system_dock() const;
 	void select_file(const String &file);
 	PackedStringArray get_selected_paths() const;
@@ -133,6 +141,8 @@ protected:
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
 	}
+
+	~EditorInterface();
 
 public:
 

@@ -18,7 +18,7 @@
 using namespace godot;
 
 void register_classes_Mesh() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<Mesh>("Mesh")
 			.constructor<>()
 			.property<&Mesh::get_lightmap_size_hint, &Mesh::set_lightmap_size_hint>("lightmap_size_hint")

@@ -66,5 +66,6 @@
 #include <godot_cpp/variant/packed_vector2_array.hpp>
 #include <godot_cpp/variant/packed_vector3_array.hpp>
 #include <godot_cpp/variant/packed_color_array.hpp>
+#include <godot_cpp/variant/packed_vector4_array.hpp>
 
 #endif // ! GODOT_CPP_BUILTIN_TYPES_HPP

@@ -5,15 +5,13 @@
 #include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/variant/vector2.hpp>
 
-
 #include "qjspp.hpp"
 #include "register/register_classes.h"
-
 
 using namespace godot;
 
 void register_classes_StyleBox() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<StyleBox>("StyleBox")
 			.constructor<>()
 			.property<&StyleBox::get_content_margin, &StyleBox::set_content_margin>("content_margin_left")

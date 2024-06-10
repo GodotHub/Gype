@@ -109,6 +109,8 @@ public:
 	TypedArray<Dictionary> get_node_connections(VisualShader::Type type) const;
 	void set_graph_offset(const Vector2 &offset);
 	Vector2 get_graph_offset() const;
+	void attach_node_to_frame(VisualShader::Type type, int32_t id, int32_t frame);
+	void detach_node_from_frame(VisualShader::Type type, int32_t id);
 	void add_varying(const String &name, VisualShader::VaryingMode mode, VisualShader::VaryingType type);
 	void remove_varying(const String &name);
 	bool has_varying(const String &name) const;

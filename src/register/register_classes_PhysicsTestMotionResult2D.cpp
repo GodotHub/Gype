@@ -9,7 +9,7 @@
 using namespace godot;
 
 void register_classes_PhysicsTestMotionResult2D() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<PhysicsTestMotionResult2D>("PhysicsTestMotionResult2D")
 			.constructor<>()
 			.fun<static_cast<Vector2 (PhysicsTestMotionResult2D::*)() const>(&PhysicsTestMotionResult2D::get_travel)>("get_travel")

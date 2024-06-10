@@ -6,11 +6,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_FileDialog() {
-	qjs::Context::Module &_module = _Node;
+	qjs::Context::Module &_module = get_Node_module();
 	_module.class_<FileDialog>("FileDialog")
 			.constructor<>()
 			.property<&FileDialog::is_mode_overriding_title, &FileDialog::set_mode_overrides_title>("mode_overrides_title")

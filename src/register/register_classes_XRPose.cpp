@@ -4,11 +4,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_XRPose() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<XRPose>("XRPose")
 			.constructor<>()
 			.property<&XRPose::get_has_tracking_data, &XRPose::set_has_tracking_data>("has_tracking_data")

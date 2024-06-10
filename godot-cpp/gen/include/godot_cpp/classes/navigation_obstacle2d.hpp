@@ -65,6 +65,10 @@ public:
 	uint32_t get_avoidance_layers() const;
 	void set_avoidance_layer_value(int32_t layer_number, bool value);
 	bool get_avoidance_layer_value(int32_t layer_number) const;
+	void set_affect_navigation_mesh(bool enabled);
+	bool get_affect_navigation_mesh() const;
+	void set_carve_navigation_mesh(bool enabled);
+	bool get_carve_navigation_mesh() const;
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {

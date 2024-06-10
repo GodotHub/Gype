@@ -6,7 +6,7 @@
 using namespace godot;
 
 void register_classes_FlowContainer() {
-	qjs::Context::Module &_module = _Control;
+	qjs::Context::Module &_module = get_Control_module();
 	_module.class_<FlowContainer>("FlowContainer")
 			.constructor<>()
 			.property<&FlowContainer::get_alignment, &FlowContainer::set_alignment>("alignment")

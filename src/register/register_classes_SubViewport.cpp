@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_SubViewport() {
-	qjs::Context::Module &_module = _Node;
+	qjs::Context::Module &_module = get_Node_module();
 	_module.class_<SubViewport>("SubViewport")
 			.constructor<>()
 			.property<&SubViewport::get_size, &SubViewport::set_size>("size")

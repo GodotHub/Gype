@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_FastNoiseLite() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<FastNoiseLite>("FastNoiseLite")
 			.constructor<>()
 			.property<&FastNoiseLite::get_noise_type, &FastNoiseLite::set_noise_type>("noise_type")

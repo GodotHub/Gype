@@ -30,7 +30,7 @@
 using namespace godot;
 
 void register_classes_TextServerExtension() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<TextServerExtension>("TextServerExtension")
 			.constructor<>()
 			.fun<static_cast<bool (TextServerExtension::*)(TextServer::Feature) const>(&TextServerExtension::_has_feature)>("_has_feature")
@@ -198,7 +198,7 @@ void register_classes_TextServerExtension() {
 			.fun<static_cast<Vector2i (TextServerExtension::*)(const RID &) const>(&TextServerExtension::_shaped_text_get_range)>("_shaped_text_get_range")
 			.fun<static_cast<PackedInt32Array (TextServerExtension::*)(const RID &, const PackedFloat32Array &, int64_t, bool, BitField<TextServer::LineBreakFlag>) const>(&TextServerExtension::_shaped_text_get_line_breaks_adv)>("_shaped_text_get_line_breaks_adv")
 			.fun<static_cast<PackedInt32Array (TextServerExtension::*)(const RID &, double, int64_t, BitField<TextServer::LineBreakFlag>) const>(&TextServerExtension::_shaped_text_get_line_breaks)>("_shaped_text_get_line_breaks")
-			.fun<static_cast<PackedInt32Array (TextServerExtension::*)(const RID &, BitField<TextServer::GraphemeFlag>) const>(&TextServerExtension::_shaped_text_get_word_breaks)>("_shaped_text_get_word_breaks")
+			.fun<static_cast<PackedInt32Array (TextServerExtension::*)(const RID &, BitField<TextServer::GraphemeFlag>, BitField<TextServer::GraphemeFlag>) const>(&TextServerExtension::_shaped_text_get_word_breaks)>("_shaped_text_get_word_breaks")
 			.fun<static_cast<int64_t (TextServerExtension::*)(const RID &) const>(&TextServerExtension::_shaped_text_get_trim_pos)>("_shaped_text_get_trim_pos")
 			.fun<static_cast<int64_t (TextServerExtension::*)(const RID &) const>(&TextServerExtension::_shaped_text_get_ellipsis_pos)>("_shaped_text_get_ellipsis_pos")
 			.fun<static_cast<int64_t (TextServerExtension::*)(const RID &) const>(&TextServerExtension::_shaped_text_get_ellipsis_glyph_count)>("_shaped_text_get_ellipsis_glyph_count")

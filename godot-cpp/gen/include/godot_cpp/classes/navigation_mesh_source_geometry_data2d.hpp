@@ -33,6 +33,7 @@
 #ifndef GODOT_CPP_NAVIGATION_MESH_SOURCE_GEOMETRY_DATA2D_HPP
 #define GODOT_CPP_NAVIGATION_MESH_SOURCE_GEOMETRY_DATA2D_HPP
 
+#include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/packed_vector2_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
@@ -56,8 +57,15 @@ public:
 	TypedArray<PackedVector2Array> get_traversable_outlines() const;
 	void set_obstruction_outlines(const TypedArray<PackedVector2Array> &obstruction_outlines);
 	TypedArray<PackedVector2Array> get_obstruction_outlines() const;
+	void append_traversable_outlines(const TypedArray<PackedVector2Array> &traversable_outlines);
+	void append_obstruction_outlines(const TypedArray<PackedVector2Array> &obstruction_outlines);
 	void add_traversable_outline(const PackedVector2Array &shape_outline);
 	void add_obstruction_outline(const PackedVector2Array &shape_outline);
+	void merge(const Ref<NavigationMeshSourceGeometryData2D> &other_geometry);
+	void add_projected_obstruction(const PackedVector2Array &vertices, bool carve);
+	void clear_projected_obstructions();
+	void set_projected_obstructions(const Array &projected_obstructions);
+	Array get_projected_obstructions() const;
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {

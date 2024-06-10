@@ -59,6 +59,8 @@ public:
 		CACHE_MODE_IGNORE = 0,
 		CACHE_MODE_REUSE = 1,
 		CACHE_MODE_REPLACE = 2,
+		CACHE_MODE_IGNORE_DEEP = 3,
+		CACHE_MODE_REPLACE_DEEP = 4,
 	};
 
 	virtual PackedStringArray _get_recognized_extensions() const;

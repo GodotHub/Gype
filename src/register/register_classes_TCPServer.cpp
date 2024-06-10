@@ -10,7 +10,7 @@
 using namespace godot;
 
 void register_classes_TCPServer() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<TCPServer>("TCPServer")
 			.constructor<>()
 			.fun<static_cast<Error (TCPServer::*)(uint16_t, const String &)>(&TCPServer::listen)>("listen")

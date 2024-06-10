@@ -9,7 +9,7 @@
 using namespace godot;
 
 void register_classes_SkeletonModification2DPhysicalBones() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<SkeletonModification2DPhysicalBones>("SkeletonModification2DPhysicalBones")
 			.constructor<>()
 			.property<&SkeletonModification2DPhysicalBones::get_physical_bone_chain_length, &SkeletonModification2DPhysicalBones::set_physical_bone_chain_length>("physical_bone_chain_length")

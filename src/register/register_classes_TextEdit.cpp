@@ -21,7 +21,7 @@
 using namespace godot;
 
 void register_classes_TextEdit() {
-	qjs::Context::Module &_module = _Control;
+	qjs::Context::Module &_module = get_Control_module();
 	_module.class_<TextEdit>("TextEdit")
 			.constructor<>()
 			.property<&TextEdit::get_text, &TextEdit::set_text>("text")
@@ -132,7 +132,7 @@ void register_classes_TextEdit() {
 			.fun<static_cast<int32_t (TextEdit::*)(int32_t) const>(&TextEdit::get_caret_column)>("get_caret_column")
 			.fun<static_cast<int32_t (TextEdit::*)(int32_t) const>(&TextEdit::get_caret_wrap_index)>("get_caret_wrap_index")
 			.fun<static_cast<String (TextEdit::*)(int32_t) const>(&TextEdit::get_word_under_caret)>("get_word_under_caret")
-			.fun<static_cast<void (TextEdit::*)(TextEdit::SelectionMode, int32_t, int32_t, int32_t)>(&TextEdit::set_selection_mode)>("set_selection_mode")
+			.fun<static_cast<void (TextEdit::*)(TextEdit::SelectionMode)>(&TextEdit::set_selection_mode)>("set_selection_mode")
 			.fun<static_cast<TextEdit::SelectionMode (TextEdit::*)() const>(&TextEdit::get_selection_mode)>("get_selection_mode")
 			.fun<static_cast<void (TextEdit::*)()>(&TextEdit::select_all)>("select_all")
 			.fun<static_cast<void (TextEdit::*)(int32_t)>(&TextEdit::select_word_under_caret)>("select_word_under_caret")

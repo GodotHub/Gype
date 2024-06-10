@@ -9,7 +9,7 @@
 using namespace godot;
 
 void register_classes_KinematicCollision3D() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<KinematicCollision3D>("KinematicCollision3D")
 			.constructor<>()
 			.fun<static_cast<Vector3 (KinematicCollision3D::*)() const>(&KinematicCollision3D::get_travel)>("get_travel")

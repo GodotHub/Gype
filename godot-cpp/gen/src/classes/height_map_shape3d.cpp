@@ -32,8 +32,11 @@
 
 #include <godot_cpp/classes/height_map_shape3d.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
+
+#include <godot_cpp/classes/image.hpp>
 
 namespace godot {
 
@@ -75,6 +78,28 @@ PackedFloat32Array HeightMapShape3D::get_map_data() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(HeightMapShape3D::get_class_static()._native_ptr(), StringName("get_map_data")._native_ptr(), 675695659);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, PackedFloat32Array());
 	return internal::_call_native_mb_ret<PackedFloat32Array>(_gde_method_bind, _owner);
+}
+
+double HeightMapShape3D::get_min_height() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(HeightMapShape3D::get_class_static()._native_ptr(), StringName("get_min_height")._native_ptr(), 1740695150);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner);
+}
+
+double HeightMapShape3D::get_max_height() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(HeightMapShape3D::get_class_static()._native_ptr(), StringName("get_max_height")._native_ptr(), 1740695150);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner);
+}
+
+void HeightMapShape3D::update_map_data_from_image(const Ref<Image> &image, double height_min, double height_max) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(HeightMapShape3D::get_class_static()._native_ptr(), StringName("update_map_data_from_image")._native_ptr(), 2636652979);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	double height_min_encoded;
+	PtrToArg<double>::encode(height_min, &height_min_encoded);
+	double height_max_encoded;
+	PtrToArg<double>::encode(height_max, &height_max_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, (image != nullptr ? &image->_owner : nullptr), &height_min_encoded, &height_max_encoded);
 }
 
 

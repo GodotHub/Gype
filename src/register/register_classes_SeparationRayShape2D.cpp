@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_SeparationRayShape2D() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<SeparationRayShape2D>("SeparationRayShape2D")
 			.constructor<>()
 			.property<&SeparationRayShape2D::get_length, &SeparationRayShape2D::set_length>("length")

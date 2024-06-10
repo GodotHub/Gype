@@ -36,7 +36,9 @@
 #include <godot_cpp/variant/packed_float32_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
+#include <godot_cpp/variant/variant.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -47,18 +49,23 @@ namespace godot {
 
 class ImporterMesh;
 class Material;
+class StringName;
 
 class GLTFMesh : public Resource {
 	GDEXTENSION_CLASS(GLTFMesh, Resource)
 
 public:
 
+	String get_original_name();
+	void set_original_name(const String &original_name);
 	Ref<ImporterMesh> get_mesh();
 	void set_mesh(const Ref<ImporterMesh> &mesh);
 	PackedFloat32Array get_blend_weights();
 	void set_blend_weights(const PackedFloat32Array &blend_weights);
 	TypedArray<Material> get_instance_materials();
 	void set_instance_materials(const TypedArray<Material> &instance_materials);
+	Variant get_additional_data(const StringName &extension_name);
+	void set_additional_data(const StringName &extension_name, const Variant &additional_data);
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {

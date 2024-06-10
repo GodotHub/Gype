@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_EditorSpinSlider() {
-	qjs::Context::Module &_module = _Control;
+	qjs::Context::Module &_module = get_Control_module();
 	_module.class_<EditorSpinSlider>("EditorSpinSlider")
 			.constructor<>()
 			.property<&EditorSpinSlider::get_label, &EditorSpinSlider::set_label>("label")

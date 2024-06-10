@@ -6,7 +6,7 @@
 using namespace godot;
 
 void register_classes_AudioEffectEQ() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<AudioEffectEQ>("AudioEffectEQ")
 			.constructor<>()
 			.fun<static_cast<void (AudioEffectEQ::*)(int32_t, double)>(&AudioEffectEQ::set_band_gain_db)>("set_band_gain_db")

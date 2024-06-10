@@ -63,6 +63,8 @@ public:
 	Transform2D get_variation_transform() const;
 	void set_opentype_features(const Dictionary &features);
 	void set_spacing(TextServer::SpacingType spacing, int32_t value);
+	void set_baseline_offset(double baseline_offset);
+	double get_baseline_offset() const;
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {

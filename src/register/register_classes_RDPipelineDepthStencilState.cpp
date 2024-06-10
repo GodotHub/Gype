@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_RDPipelineDepthStencilState() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<RDPipelineDepthStencilState>("RDPipelineDepthStencilState")
 			.constructor<>()
 			.property<&RDPipelineDepthStencilState::get_enable_depth_test, &RDPipelineDepthStencilState::set_enable_depth_test>("enable_depth_test")

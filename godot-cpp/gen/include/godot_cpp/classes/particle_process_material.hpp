@@ -36,6 +36,7 @@
 #include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/variant/vector2.hpp>
 #include <godot_cpp/variant/vector3.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
@@ -116,6 +117,8 @@ public:
 	double get_spread() const;
 	void set_flatness(double amount);
 	double get_flatness() const;
+	void set_param(ParticleProcessMaterial::Parameter param, const Vector2 &value);
+	Vector2 get_param(ParticleProcessMaterial::Parameter param) const;
 	void set_param_min(ParticleProcessMaterial::Parameter param, double value);
 	double get_param_min(ParticleProcessMaterial::Parameter param) const;
 	void set_param_max(ParticleProcessMaterial::Parameter param, double value);

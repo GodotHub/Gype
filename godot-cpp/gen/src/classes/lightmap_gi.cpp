@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/lightmap_gi.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -169,6 +170,20 @@ double LightmapGI::get_environment_custom_energy() const {
 	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner);
 }
 
+void LightmapGI::set_texel_scale(double texel_scale) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(LightmapGI::get_class_static()._native_ptr(), StringName("set_texel_scale")._native_ptr(), 373806689);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	double texel_scale_encoded;
+	PtrToArg<double>::encode(texel_scale, &texel_scale_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &texel_scale_encoded);
+}
+
+double LightmapGI::get_texel_scale() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(LightmapGI::get_class_static()._native_ptr(), StringName("get_texel_scale")._native_ptr(), 1740695150);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner);
+}
+
 void LightmapGI::set_max_texture_size(int32_t max_texture_size) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(LightmapGI::get_class_static()._native_ptr(), StringName("set_max_texture_size")._native_ptr(), 1286410249);
 	CHECK_METHOD_BIND(_gde_method_bind);
@@ -209,6 +224,20 @@ double LightmapGI::get_denoiser_strength() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(LightmapGI::get_class_static()._native_ptr(), StringName("get_denoiser_strength")._native_ptr(), 1740695150);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
 	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner);
+}
+
+void LightmapGI::set_denoiser_range(int32_t denoiser_range) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(LightmapGI::get_class_static()._native_ptr(), StringName("set_denoiser_range")._native_ptr(), 1286410249);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t denoiser_range_encoded;
+	PtrToArg<int64_t>::encode(denoiser_range, &denoiser_range_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &denoiser_range_encoded);
+}
+
+int32_t LightmapGI::get_denoiser_range() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(LightmapGI::get_class_static()._native_ptr(), StringName("get_denoiser_range")._native_ptr(), 3905245786);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
+	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
 }
 
 void LightmapGI::set_interior(bool enable) {

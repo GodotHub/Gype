@@ -36,9 +36,9 @@
 #include <godot_cpp/core/defs.hpp>
 
 #include <godot_cpp/variant/callable_custom.hpp>
+#include <godot_cpp/templates/vararg.hpp>
 #include <gdextension_interface.h>
 
-#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 class Array;
@@ -59,6 +59,7 @@ class Callable {
 		GDExtensionPtrConstructor constructor_1;
 		GDExtensionPtrConstructor constructor_2;
 		GDExtensionPtrDestructor destructor;
+		GDExtensionPtrBuiltInMethod method_create;
 		GDExtensionPtrBuiltInMethod method_callv;
 		GDExtensionPtrBuiltInMethod method_is_null;
 		GDExtensionPtrBuiltInMethod method_is_custom;
@@ -67,6 +68,7 @@ class Callable {
 		GDExtensionPtrBuiltInMethod method_get_object;
 		GDExtensionPtrBuiltInMethod method_get_object_id;
 		GDExtensionPtrBuiltInMethod method_get_method;
+		GDExtensionPtrBuiltInMethod method_get_argument_count;
 		GDExtensionPtrBuiltInMethod method_get_bound_arguments_count;
 		GDExtensionPtrBuiltInMethod method_get_bound_arguments;
 		GDExtensionPtrBuiltInMethod method_hash;
@@ -100,6 +102,7 @@ public:
 	Callable(CallableCustom *p_custom);
 	CallableCustom *get_custom() const;
 	~Callable();
+	static Callable create(const Variant &variant, const StringName &method);
 	Variant callv(const Array &arguments) const;
 	bool is_null() const;
 	bool is_custom() const;
@@ -108,6 +111,7 @@ public:
 	Object * get_object() const;
 	int64_t get_object_id() const;
 	StringName get_method() const;
+	int64_t get_argument_count() const;
 	int64_t get_bound_arguments_count() const;
 	Array get_bound_arguments() const;
 	int64_t hash() const;

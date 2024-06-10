@@ -12,7 +12,7 @@
 using namespace godot;
 
 void register_classes_RigidBody3D() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<RigidBody3D>("RigidBody3D")
 			.constructor<>()
 			.property<&RigidBody3D::get_mass, &RigidBody3D::set_mass>("mass")

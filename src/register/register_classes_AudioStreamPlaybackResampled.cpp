@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_AudioStreamPlaybackResampled() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<AudioStreamPlaybackResampled>("AudioStreamPlaybackResampled")
 			.constructor<>()
 			.fun<static_cast<int32_t (AudioStreamPlaybackResampled::*)(AudioFrame *, int32_t)>(&AudioStreamPlaybackResampled::_mix_resampled)>("_mix_resampled")

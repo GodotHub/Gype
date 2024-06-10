@@ -35,9 +35,11 @@
 
 #include <godot_cpp/variant/packed_int32_array.hpp>
 #include <godot_cpp/variant/packed_vector2_array.hpp>
+#include <godot_cpp/variant/rect2.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/string_name.hpp>
+#include <godot_cpp/variant/vector2.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -84,6 +86,8 @@ public:
 	void make_polygons_from_outlines();
 	void set_cell_size(double cell_size);
 	double get_cell_size() const;
+	void set_border_size(double border_size);
+	double get_border_size() const;
 	void set_parsed_geometry_type(NavigationPolygon::ParsedGeometryType geometry_type);
 	NavigationPolygon::ParsedGeometryType get_parsed_geometry_type() const;
 	void set_parsed_collision_mask(uint32_t mask);
@@ -96,6 +100,10 @@ public:
 	StringName get_source_geometry_group_name() const;
 	void set_agent_radius(double agent_radius);
 	double get_agent_radius() const;
+	void set_baking_rect(const Rect2 &rect);
+	Rect2 get_baking_rect() const;
+	void set_baking_rect_offset(const Vector2 &rect_offset);
+	Vector2 get_baking_rect_offset() const;
 	void clear();
 protected:
 	template <typename T, typename B>

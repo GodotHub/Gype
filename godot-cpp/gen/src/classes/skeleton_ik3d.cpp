@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/skeleton_ik3d.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -61,20 +62,6 @@ StringName SkeletonIK3D::get_tip_bone() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(SkeletonIK3D::get_class_static()._native_ptr(), StringName("get_tip_bone")._native_ptr(), 2002593661);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, StringName());
 	return internal::_call_native_mb_ret<StringName>(_gde_method_bind, _owner);
-}
-
-void SkeletonIK3D::set_interpolation(double interpolation) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(SkeletonIK3D::get_class_static()._native_ptr(), StringName("set_interpolation")._native_ptr(), 373806689);
-	CHECK_METHOD_BIND(_gde_method_bind);
-	double interpolation_encoded;
-	PtrToArg<double>::encode(interpolation, &interpolation_encoded);
-	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &interpolation_encoded);
-}
-
-double SkeletonIK3D::get_interpolation() const {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(SkeletonIK3D::get_class_static()._native_ptr(), StringName("get_interpolation")._native_ptr(), 1740695150);
-	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
-	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner);
 }
 
 void SkeletonIK3D::set_target_transform(const Transform3D &target) {
@@ -193,6 +180,20 @@ void SkeletonIK3D::stop() {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(SkeletonIK3D::get_class_static()._native_ptr(), StringName("stop")._native_ptr(), 3218959716);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner);
+}
+
+void SkeletonIK3D::set_interpolation(double interpolation) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(SkeletonIK3D::get_class_static()._native_ptr(), StringName("set_interpolation")._native_ptr(), 373806689);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	double interpolation_encoded;
+	PtrToArg<double>::encode(interpolation, &interpolation_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &interpolation_encoded);
+}
+
+double SkeletonIK3D::get_interpolation() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(SkeletonIK3D::get_class_static()._native_ptr(), StringName("get_interpolation")._native_ptr(), 1740695150);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner);
 }
 
 

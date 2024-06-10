@@ -36,6 +36,7 @@
 #include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/variant.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
@@ -48,7 +49,6 @@ namespace godot {
 class Control;
 class Object;
 class PackedStringArray;
-class String;
 
 class EditorInspectorPlugin : public RefCounted {
 	GDEXTENSION_CLASS(EditorInspectorPlugin, RefCounted)
@@ -56,7 +56,7 @@ class EditorInspectorPlugin : public RefCounted {
 public:
 
 	void add_custom_control(Control *control);
-	void add_property_editor(const String &property, Control *editor, bool add_to_end = false);
+	void add_property_editor(const String &property, Control *editor, bool add_to_end = false, const String &label = String());
 	void add_property_editor_for_multiple_properties(const String &label, const PackedStringArray &properties, Control *editor);
 	virtual bool _can_handle(Object *object) const;
 	virtual void _parse_begin(Object *object);

@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/navigation_server2d.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -40,12 +41,12 @@
 #include <godot_cpp/classes/navigation_path_query_result2d.hpp>
 #include <godot_cpp/classes/navigation_polygon.hpp>
 #include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/variant/transform2d.hpp>
 
 namespace godot {
 
+NavigationServer2D *NavigationServer2D::singleton = nullptr;
+
 NavigationServer2D *NavigationServer2D::get_singleton() {
-	static NavigationServer2D *singleton = nullptr;
 	if (unlikely(singleton == nullptr)) {
 		GDExtensionObjectPtr singleton_obj = internal::gdextension_interface_global_get_singleton(NavigationServer2D::get_class_static()._native_ptr());
 #ifdef DEBUG_ENABLED
@@ -55,8 +56,18 @@ NavigationServer2D *NavigationServer2D::get_singleton() {
 #ifdef DEBUG_ENABLED
 		ERR_FAIL_NULL_V(singleton, nullptr);
 #endif // DEBUG_ENABLED
+		if (likely(singleton)) {
+			ClassDB::_register_engine_singleton(NavigationServer2D::get_class_static(), singleton);
+		}
 	}
 	return singleton;
+}
+
+NavigationServer2D::~NavigationServer2D() {
+	if (singleton == this) {
+		ClassDB::_unregister_engine_singleton(NavigationServer2D::get_class_static());
+		singleton = nullptr;
+	}
 }
 
 TypedArray<RID> NavigationServer2D::get_maps() const {
@@ -193,6 +204,22 @@ void NavigationServer2D::map_force_update(const RID &map) {
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &map);
 }
 
+uint32_t NavigationServer2D::map_get_iteration_id(const RID &map) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer2D::get_class_static()._native_ptr(), StringName("map_get_iteration_id")._native_ptr(), 2198884583);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
+	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &map);
+}
+
+Vector2 NavigationServer2D::map_get_random_point(const RID &map, uint32_t navigation_layers, bool uniformly) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer2D::get_class_static()._native_ptr(), StringName("map_get_random_point")._native_ptr(), 3271000763);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Vector2());
+	int64_t navigation_layers_encoded;
+	PtrToArg<int64_t>::encode(navigation_layers, &navigation_layers_encoded);
+	int8_t uniformly_encoded;
+	PtrToArg<bool>::encode(uniformly, &uniformly_encoded);
+	return internal::_call_native_mb_ret<Vector2>(_gde_method_bind, _owner, &map, &navigation_layers_encoded, &uniformly_encoded);
+}
+
 void NavigationServer2D::query_path(const Ref<NavigationPathQueryParameters2D> &parameters, const Ref<NavigationPathQueryResult2D> &result) const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer2D::get_class_static()._native_ptr(), StringName("query_path")._native_ptr(), 3394638789);
 	CHECK_METHOD_BIND(_gde_method_bind);
@@ -313,6 +340,12 @@ void NavigationServer2D::region_set_transform(const RID &region, const Transform
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &region, &transform);
 }
 
+Transform2D NavigationServer2D::region_get_transform(const RID &region) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer2D::get_class_static()._native_ptr(), StringName("region_get_transform")._native_ptr(), 213527486);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Transform2D());
+	return internal::_call_native_mb_ret<Transform2D>(_gde_method_bind, _owner, &region);
+}
+
 void NavigationServer2D::region_set_navigation_polygon(const RID &region, const Ref<NavigationPolygon> &navigation_polygon) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer2D::get_class_static()._native_ptr(), StringName("region_set_navigation_polygon")._native_ptr(), 3633623451);
 	CHECK_METHOD_BIND(_gde_method_bind);
@@ -339,6 +372,16 @@ Vector2 NavigationServer2D::region_get_connection_pathway_end(const RID &region,
 	int64_t connection_encoded;
 	PtrToArg<int64_t>::encode(connection, &connection_encoded);
 	return internal::_call_native_mb_ret<Vector2>(_gde_method_bind, _owner, &region, &connection_encoded);
+}
+
+Vector2 NavigationServer2D::region_get_random_point(const RID &region, uint32_t navigation_layers, bool uniformly) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer2D::get_class_static()._native_ptr(), StringName("region_get_random_point")._native_ptr(), 3271000763);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Vector2());
+	int64_t navigation_layers_encoded;
+	PtrToArg<int64_t>::encode(navigation_layers, &navigation_layers_encoded);
+	int8_t uniformly_encoded;
+	PtrToArg<bool>::encode(uniformly, &uniformly_encoded);
+	return internal::_call_native_mb_ret<Vector2>(_gde_method_bind, _owner, &region, &navigation_layers_encoded, &uniformly_encoded);
 }
 
 RID NavigationServer2D::link_create() {
@@ -521,12 +564,24 @@ void NavigationServer2D::agent_set_neighbor_distance(const RID &agent, double di
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &agent, &distance_encoded);
 }
 
+double NavigationServer2D::agent_get_neighbor_distance(const RID &agent) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer2D::get_class_static()._native_ptr(), StringName("agent_get_neighbor_distance")._native_ptr(), 866169185);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner, &agent);
+}
+
 void NavigationServer2D::agent_set_max_neighbors(const RID &agent, int32_t count) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer2D::get_class_static()._native_ptr(), StringName("agent_set_max_neighbors")._native_ptr(), 3411492887);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	int64_t count_encoded;
 	PtrToArg<int64_t>::encode(count, &count_encoded);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &agent, &count_encoded);
+}
+
+int32_t NavigationServer2D::agent_get_max_neighbors(const RID &agent) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer2D::get_class_static()._native_ptr(), StringName("agent_get_max_neighbors")._native_ptr(), 2198884583);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
+	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &agent);
 }
 
 void NavigationServer2D::agent_set_time_horizon_agents(const RID &agent, double time_horizon) {
@@ -537,12 +592,24 @@ void NavigationServer2D::agent_set_time_horizon_agents(const RID &agent, double 
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &agent, &time_horizon_encoded);
 }
 
+double NavigationServer2D::agent_get_time_horizon_agents(const RID &agent) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer2D::get_class_static()._native_ptr(), StringName("agent_get_time_horizon_agents")._native_ptr(), 866169185);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner, &agent);
+}
+
 void NavigationServer2D::agent_set_time_horizon_obstacles(const RID &agent, double time_horizon) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer2D::get_class_static()._native_ptr(), StringName("agent_set_time_horizon_obstacles")._native_ptr(), 1794382983);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	double time_horizon_encoded;
 	PtrToArg<double>::encode(time_horizon, &time_horizon_encoded);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &agent, &time_horizon_encoded);
+}
+
+double NavigationServer2D::agent_get_time_horizon_obstacles(const RID &agent) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer2D::get_class_static()._native_ptr(), StringName("agent_get_time_horizon_obstacles")._native_ptr(), 866169185);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner, &agent);
 }
 
 void NavigationServer2D::agent_set_radius(const RID &agent, double radius) {
@@ -553,12 +620,24 @@ void NavigationServer2D::agent_set_radius(const RID &agent, double radius) {
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &agent, &radius_encoded);
 }
 
+double NavigationServer2D::agent_get_radius(const RID &agent) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer2D::get_class_static()._native_ptr(), StringName("agent_get_radius")._native_ptr(), 866169185);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner, &agent);
+}
+
 void NavigationServer2D::agent_set_max_speed(const RID &agent, double max_speed) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer2D::get_class_static()._native_ptr(), StringName("agent_set_max_speed")._native_ptr(), 1794382983);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	double max_speed_encoded;
 	PtrToArg<double>::encode(max_speed, &max_speed_encoded);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &agent, &max_speed_encoded);
+}
+
+double NavigationServer2D::agent_get_max_speed(const RID &agent) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer2D::get_class_static()._native_ptr(), StringName("agent_get_max_speed")._native_ptr(), 866169185);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner, &agent);
 }
 
 void NavigationServer2D::agent_set_velocity_forced(const RID &agent, const Vector2 &velocity) {
@@ -573,10 +652,22 @@ void NavigationServer2D::agent_set_velocity(const RID &agent, const Vector2 &vel
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &agent, &velocity);
 }
 
+Vector2 NavigationServer2D::agent_get_velocity(const RID &agent) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer2D::get_class_static()._native_ptr(), StringName("agent_get_velocity")._native_ptr(), 2440833711);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Vector2());
+	return internal::_call_native_mb_ret<Vector2>(_gde_method_bind, _owner, &agent);
+}
+
 void NavigationServer2D::agent_set_position(const RID &agent, const Vector2 &position) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer2D::get_class_static()._native_ptr(), StringName("agent_set_position")._native_ptr(), 3201125042);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &agent, &position);
+}
+
+Vector2 NavigationServer2D::agent_get_position(const RID &agent) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer2D::get_class_static()._native_ptr(), StringName("agent_get_position")._native_ptr(), 2440833711);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Vector2());
+	return internal::_call_native_mb_ret<Vector2>(_gde_method_bind, _owner, &agent);
 }
 
 bool NavigationServer2D::agent_is_map_changed(const RID &agent) const {
@@ -591,12 +682,24 @@ void NavigationServer2D::agent_set_avoidance_callback(const RID &agent, const Ca
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &agent, &callback);
 }
 
+bool NavigationServer2D::agent_has_avoidance_callback(const RID &agent) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer2D::get_class_static()._native_ptr(), StringName("agent_has_avoidance_callback")._native_ptr(), 4155700596);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner, &agent);
+}
+
 void NavigationServer2D::agent_set_avoidance_layers(const RID &agent, uint32_t layers) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer2D::get_class_static()._native_ptr(), StringName("agent_set_avoidance_layers")._native_ptr(), 3411492887);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	int64_t layers_encoded;
 	PtrToArg<int64_t>::encode(layers, &layers_encoded);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &agent, &layers_encoded);
+}
+
+uint32_t NavigationServer2D::agent_get_avoidance_layers(const RID &agent) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer2D::get_class_static()._native_ptr(), StringName("agent_get_avoidance_layers")._native_ptr(), 2198884583);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
+	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &agent);
 }
 
 void NavigationServer2D::agent_set_avoidance_mask(const RID &agent, uint32_t mask) {
@@ -607,12 +710,24 @@ void NavigationServer2D::agent_set_avoidance_mask(const RID &agent, uint32_t mas
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &agent, &mask_encoded);
 }
 
+uint32_t NavigationServer2D::agent_get_avoidance_mask(const RID &agent) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer2D::get_class_static()._native_ptr(), StringName("agent_get_avoidance_mask")._native_ptr(), 2198884583);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
+	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &agent);
+}
+
 void NavigationServer2D::agent_set_avoidance_priority(const RID &agent, double priority) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer2D::get_class_static()._native_ptr(), StringName("agent_set_avoidance_priority")._native_ptr(), 1794382983);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	double priority_encoded;
 	PtrToArg<double>::encode(priority, &priority_encoded);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &agent, &priority_encoded);
+}
+
+double NavigationServer2D::agent_get_avoidance_priority(const RID &agent) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer2D::get_class_static()._native_ptr(), StringName("agent_get_avoidance_priority")._native_ptr(), 866169185);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner, &agent);
 }
 
 RID NavigationServer2D::obstacle_create() {
@@ -669,10 +784,22 @@ void NavigationServer2D::obstacle_set_radius(const RID &obstacle, double radius)
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &obstacle, &radius_encoded);
 }
 
+double NavigationServer2D::obstacle_get_radius(const RID &obstacle) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer2D::get_class_static()._native_ptr(), StringName("obstacle_get_radius")._native_ptr(), 866169185);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner, &obstacle);
+}
+
 void NavigationServer2D::obstacle_set_velocity(const RID &obstacle, const Vector2 &velocity) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer2D::get_class_static()._native_ptr(), StringName("obstacle_set_velocity")._native_ptr(), 3201125042);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &obstacle, &velocity);
+}
+
+Vector2 NavigationServer2D::obstacle_get_velocity(const RID &obstacle) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer2D::get_class_static()._native_ptr(), StringName("obstacle_get_velocity")._native_ptr(), 2440833711);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Vector2());
+	return internal::_call_native_mb_ret<Vector2>(_gde_method_bind, _owner, &obstacle);
 }
 
 void NavigationServer2D::obstacle_set_position(const RID &obstacle, const Vector2 &position) {
@@ -681,10 +808,22 @@ void NavigationServer2D::obstacle_set_position(const RID &obstacle, const Vector
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &obstacle, &position);
 }
 
+Vector2 NavigationServer2D::obstacle_get_position(const RID &obstacle) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer2D::get_class_static()._native_ptr(), StringName("obstacle_get_position")._native_ptr(), 2440833711);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Vector2());
+	return internal::_call_native_mb_ret<Vector2>(_gde_method_bind, _owner, &obstacle);
+}
+
 void NavigationServer2D::obstacle_set_vertices(const RID &obstacle, const PackedVector2Array &vertices) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer2D::get_class_static()._native_ptr(), StringName("obstacle_set_vertices")._native_ptr(), 29476483);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &obstacle, &vertices);
+}
+
+PackedVector2Array NavigationServer2D::obstacle_get_vertices(const RID &obstacle) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer2D::get_class_static()._native_ptr(), StringName("obstacle_get_vertices")._native_ptr(), 2222557395);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, PackedVector2Array());
+	return internal::_call_native_mb_ret<PackedVector2Array>(_gde_method_bind, _owner, &obstacle);
 }
 
 void NavigationServer2D::obstacle_set_avoidance_layers(const RID &obstacle, uint32_t layers) {
@@ -693,6 +832,12 @@ void NavigationServer2D::obstacle_set_avoidance_layers(const RID &obstacle, uint
 	int64_t layers_encoded;
 	PtrToArg<int64_t>::encode(layers, &layers_encoded);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &obstacle, &layers_encoded);
+}
+
+uint32_t NavigationServer2D::obstacle_get_avoidance_layers(const RID &obstacle) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer2D::get_class_static()._native_ptr(), StringName("obstacle_get_avoidance_layers")._native_ptr(), 2198884583);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
+	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &obstacle);
 }
 
 void NavigationServer2D::parse_source_geometry_data(const Ref<NavigationPolygon> &navigation_polygon, const Ref<NavigationMeshSourceGeometryData2D> &source_geometry_data, Node *root_node, const Callable &callback) {
@@ -711,6 +856,32 @@ void NavigationServer2D::bake_from_source_geometry_data_async(const Ref<Navigati
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer2D::get_class_static()._native_ptr(), StringName("bake_from_source_geometry_data_async")._native_ptr(), 2909414286);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, (navigation_polygon != nullptr ? &navigation_polygon->_owner : nullptr), (source_geometry_data != nullptr ? &source_geometry_data->_owner : nullptr), &callback);
+}
+
+bool NavigationServer2D::is_baking_navigation_polygon(const Ref<NavigationPolygon> &navigation_polygon) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer2D::get_class_static()._native_ptr(), StringName("is_baking_navigation_polygon")._native_ptr(), 3729405808);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner, (navigation_polygon != nullptr ? &navigation_polygon->_owner : nullptr));
+}
+
+RID NavigationServer2D::source_geometry_parser_create() {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer2D::get_class_static()._native_ptr(), StringName("source_geometry_parser_create")._native_ptr(), 529393457);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, RID());
+	return internal::_call_native_mb_ret<RID>(_gde_method_bind, _owner);
+}
+
+void NavigationServer2D::source_geometry_parser_set_callback(const RID &parser, const Callable &callback) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer2D::get_class_static()._native_ptr(), StringName("source_geometry_parser_set_callback")._native_ptr(), 3379118538);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &parser, &callback);
+}
+
+PackedVector2Array NavigationServer2D::simplify_path(const PackedVector2Array &path, double epsilon) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationServer2D::get_class_static()._native_ptr(), StringName("simplify_path")._native_ptr(), 2457191505);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, PackedVector2Array());
+	double epsilon_encoded;
+	PtrToArg<double>::encode(epsilon, &epsilon_encoded);
+	return internal::_call_native_mb_ret<PackedVector2Array>(_gde_method_bind, _owner, &path, &epsilon_encoded);
 }
 
 void NavigationServer2D::free_rid(const RID &rid) {

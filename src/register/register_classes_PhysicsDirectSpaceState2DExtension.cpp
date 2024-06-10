@@ -12,7 +12,7 @@
 using namespace godot;
 
 void register_classes_PhysicsDirectSpaceState2DExtension() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<PhysicsDirectSpaceState2DExtension>("PhysicsDirectSpaceState2DExtension")
 			.constructor<>()
 			.fun<static_cast<bool (PhysicsDirectSpaceState2DExtension::*)(const Vector2 &, const Vector2 &, uint32_t, bool, bool, bool, PhysicsServer2DExtensionRayResult *)>(&PhysicsDirectSpaceState2DExtension::_intersect_ray)>("_intersect_ray")

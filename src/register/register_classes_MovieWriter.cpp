@@ -12,7 +12,7 @@
 using namespace godot;
 
 void register_classes_MovieWriter() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<MovieWriter>("MovieWriter")
 			.constructor<>()
 			.fun<static_cast<uint32_t (MovieWriter::*)() const>(&MovieWriter::_get_audio_mix_rate)>("_get_audio_mix_rate")

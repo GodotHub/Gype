@@ -13,9 +13,8 @@
 using namespace godot;
 
 void register_classes_AudioServer() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<AudioServer>("AudioServer")
-			.constructor<>()
 			.property<&AudioServer::get_bus_count, &AudioServer::set_bus_count>("bus_count")
 			.property<&AudioServer::get_output_device, &AudioServer::set_output_device>("output_device")
 			.property<&AudioServer::get_input_device, &AudioServer::set_input_device>("input_device")

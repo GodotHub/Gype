@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_ProceduralSkyMaterial() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<ProceduralSkyMaterial>("ProceduralSkyMaterial")
 			.constructor<>()
 			.property<&ProceduralSkyMaterial::get_sky_top_color, &ProceduralSkyMaterial::set_sky_top_color>("sky_top_color")

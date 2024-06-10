@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/graph_node.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -142,6 +143,22 @@ Color GraphNode::get_slot_color_left(int32_t slot_index) const {
 	return internal::_call_native_mb_ret<Color>(_gde_method_bind, _owner, &slot_index_encoded);
 }
 
+void GraphNode::set_slot_custom_icon_left(int32_t slot_index, const Ref<Texture2D> &custom_icon) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GraphNode::get_class_static()._native_ptr(), StringName("set_slot_custom_icon_left")._native_ptr(), 666127730);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t slot_index_encoded;
+	PtrToArg<int64_t>::encode(slot_index, &slot_index_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &slot_index_encoded, (custom_icon != nullptr ? &custom_icon->_owner : nullptr));
+}
+
+Ref<Texture2D> GraphNode::get_slot_custom_icon_left(int32_t slot_index) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GraphNode::get_class_static()._native_ptr(), StringName("get_slot_custom_icon_left")._native_ptr(), 3536238170);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Ref<Texture2D>());
+	int64_t slot_index_encoded;
+	PtrToArg<int64_t>::encode(slot_index, &slot_index_encoded);
+	return Ref<Texture2D>::_gde_internal_constructor(internal::_call_native_mb_ret_obj<Texture2D>(_gde_method_bind, _owner, &slot_index_encoded));
+}
+
 bool GraphNode::is_slot_enabled_right(int32_t slot_index) const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GraphNode::get_class_static()._native_ptr(), StringName("is_slot_enabled_right")._native_ptr(), 1116898809);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
@@ -194,6 +211,22 @@ Color GraphNode::get_slot_color_right(int32_t slot_index) const {
 	return internal::_call_native_mb_ret<Color>(_gde_method_bind, _owner, &slot_index_encoded);
 }
 
+void GraphNode::set_slot_custom_icon_right(int32_t slot_index, const Ref<Texture2D> &custom_icon) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GraphNode::get_class_static()._native_ptr(), StringName("set_slot_custom_icon_right")._native_ptr(), 666127730);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t slot_index_encoded;
+	PtrToArg<int64_t>::encode(slot_index, &slot_index_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &slot_index_encoded, (custom_icon != nullptr ? &custom_icon->_owner : nullptr));
+}
+
+Ref<Texture2D> GraphNode::get_slot_custom_icon_right(int32_t slot_index) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GraphNode::get_class_static()._native_ptr(), StringName("get_slot_custom_icon_right")._native_ptr(), 3536238170);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Ref<Texture2D>());
+	int64_t slot_index_encoded;
+	PtrToArg<int64_t>::encode(slot_index, &slot_index_encoded);
+	return Ref<Texture2D>::_gde_internal_constructor(internal::_call_native_mb_ret_obj<Texture2D>(_gde_method_bind, _owner, &slot_index_encoded));
+}
+
 bool GraphNode::is_slot_draw_stylebox(int32_t slot_index) const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GraphNode::get_class_static()._native_ptr(), StringName("is_slot_draw_stylebox")._native_ptr(), 1116898809);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
@@ -210,6 +243,20 @@ void GraphNode::set_slot_draw_stylebox(int32_t slot_index, bool enable) {
 	int8_t enable_encoded;
 	PtrToArg<bool>::encode(enable, &enable_encoded);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &slot_index_encoded, &enable_encoded);
+}
+
+void GraphNode::set_ignore_invalid_connection_type(bool ignore) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GraphNode::get_class_static()._native_ptr(), StringName("set_ignore_invalid_connection_type")._native_ptr(), 2586408642);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int8_t ignore_encoded;
+	PtrToArg<bool>::encode(ignore, &ignore_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &ignore_encoded);
+}
+
+bool GraphNode::is_ignoring_valid_connection_type() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GraphNode::get_class_static()._native_ptr(), StringName("is_ignoring_valid_connection_type")._native_ptr(), 36873697);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
 }
 
 int32_t GraphNode::get_input_port_count() {

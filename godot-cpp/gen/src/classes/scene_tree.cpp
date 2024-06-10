@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/scene_tree.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -202,6 +203,20 @@ void SceneTree::quit(int32_t exit_code) {
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &exit_code_encoded);
 }
 
+void SceneTree::set_physics_interpolation_enabled(bool enabled) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(SceneTree::get_class_static()._native_ptr(), StringName("set_physics_interpolation_enabled")._native_ptr(), 2586408642);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int8_t enabled_encoded;
+	PtrToArg<bool>::encode(enabled, &enabled_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &enabled_encoded);
+}
+
+bool SceneTree::is_physics_interpolation_enabled() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(SceneTree::get_class_static()._native_ptr(), StringName("is_physics_interpolation_enabled")._native_ptr(), 36873697);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
+}
+
 void SceneTree::queue_delete(Object *obj) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(SceneTree::get_class_static()._native_ptr(), StringName("queue_delete")._native_ptr(), 3975164845);
 	CHECK_METHOD_BIND(_gde_method_bind);
@@ -266,6 +281,12 @@ Node *SceneTree::get_first_node_in_group(const StringName &group) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(SceneTree::get_class_static()._native_ptr(), StringName("get_first_node_in_group")._native_ptr(), 4071044623);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, nullptr);
 	return internal::_call_native_mb_ret_obj<Node>(_gde_method_bind, _owner, &group);
+}
+
+int32_t SceneTree::get_node_count_in_group(const StringName &group) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(SceneTree::get_class_static()._native_ptr(), StringName("get_node_count_in_group")._native_ptr(), 2458036349);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
+	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &group);
 }
 
 void SceneTree::set_current_scene(Node *child_node) {

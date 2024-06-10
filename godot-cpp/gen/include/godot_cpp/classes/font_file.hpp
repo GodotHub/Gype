@@ -73,6 +73,8 @@ public:
 	void set_font_stretch(int32_t stretch);
 	void set_antialiasing(TextServer::FontAntialiasing antialiasing);
 	TextServer::FontAntialiasing get_antialiasing() const;
+	void set_disable_embedded_bitmaps(bool disable_embedded_bitmaps);
+	bool get_disable_embedded_bitmaps() const;
 	void set_generate_mipmaps(bool generate_mipmaps);
 	bool get_generate_mipmaps() const;
 	void set_multichannel_signed_distance_field(bool msdf);
@@ -109,6 +111,8 @@ public:
 	Transform2D get_transform(int32_t cache_index) const;
 	void set_extra_spacing(int32_t cache_index, TextServer::SpacingType spacing, int64_t value);
 	int64_t get_extra_spacing(int32_t cache_index, TextServer::SpacingType spacing) const;
+	void set_extra_baseline_offset(int32_t cache_index, double baseline_offset);
+	double get_extra_baseline_offset(int32_t cache_index) const;
 	void set_face_index(int32_t cache_index, int64_t face_index);
 	int64_t get_face_index(int32_t cache_index) const;
 	void set_cache_ascent(int32_t cache_index, int32_t size, double ascent);

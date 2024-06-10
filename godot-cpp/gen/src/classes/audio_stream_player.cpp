@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/audio_stream_player.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -134,8 +135,8 @@ void AudioStreamPlayer::set_autoplay(bool enable) {
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &enable_encoded);
 }
 
-bool AudioStreamPlayer::is_autoplay_enabled() {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AudioStreamPlayer::get_class_static()._native_ptr(), StringName("is_autoplay_enabled")._native_ptr(), 2240911060);
+bool AudioStreamPlayer::is_autoplay_enabled() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AudioStreamPlayer::get_class_static()._native_ptr(), StringName("is_autoplay_enabled")._native_ptr(), 36873697);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
 	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
 }

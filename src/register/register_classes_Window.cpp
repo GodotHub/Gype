@@ -17,7 +17,7 @@
 using namespace godot;
 
 void register_classes_Window() {
-	qjs::Context::Module &_module = _Node;
+	qjs::Context::Module &_module = get_Node_module();
 	_module.class_<Window>("Window")
 			.constructor<>()
 			.property<&Window::get_mode, &Window::set_mode>("mode")

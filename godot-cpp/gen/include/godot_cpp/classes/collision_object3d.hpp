@@ -95,7 +95,7 @@ public:
 	void shape_owner_remove_shape(uint32_t owner_id, int32_t shape_id);
 	void shape_owner_clear_shapes(uint32_t owner_id);
 	uint32_t shape_find_owner(int32_t shape_index) const;
-	virtual void _input_event(Camera3D *camera, const Ref<InputEvent> &event, const Vector3 &position, const Vector3 &normal, int32_t shape_idx);
+	virtual void _input_event(Camera3D *camera, const Ref<InputEvent> &event, const Vector3 &event_position, const Vector3 &normal, int32_t shape_idx);
 	virtual void _mouse_enter();
 	virtual void _mouse_exit();
 protected:

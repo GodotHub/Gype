@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_CSGSphere3D() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<CSGSphere3D>("CSGSphere3D")
 			.constructor<>()
 			.property<&CSGSphere3D::get_radius, &CSGSphere3D::set_radius>("radius")

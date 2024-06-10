@@ -50,6 +50,8 @@ class String;
 class GDExtensionManager : public Object {
 	GDEXTENSION_CLASS(GDExtensionManager, Object)
 
+	static GDExtensionManager *singleton;
+
 public:
 
 	enum LoadStatus {
@@ -73,6 +75,8 @@ protected:
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
 	}
+
+	~GDExtensionManager();
 
 public:
 

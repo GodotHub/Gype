@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_NavigationObstacle2D() {
-	qjs::Context::Module &_module = _Node2D;
+	qjs::Context::Module &_module = get_Node2D_module();
 	_module.class_<NavigationObstacle2D>("NavigationObstacle2D")
 			.constructor<>()
 			.property<&NavigationObstacle2D::get_avoidance_enabled, &NavigationObstacle2D::set_avoidance_enabled>("avoidance_enabled")

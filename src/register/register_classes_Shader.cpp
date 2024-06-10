@@ -10,7 +10,7 @@
 using namespace godot;
 
 void register_classes_Shader() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<Shader>("Shader")
 			.constructor<>()
 			.property<&Shader::get_code, &Shader::set_code>("code")

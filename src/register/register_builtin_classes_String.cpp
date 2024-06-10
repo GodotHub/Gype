@@ -12,11 +12,7 @@
 using namespace godot;
 
 void register_builtin_classes_String() {
-	_Variant.class_<String>("String")
-			.constructor<>()
-			.constructor<const String &>("String_1")
-			.constructor<const StringName &>("String_2")
-			.constructor<const NodePath &>("String_3")
+	get_Variant_module().class_<String>("String").constructor<>().constructor<const String &>("String_1").constructor<const StringName &>("String_2").constructor<const NodePath &>("String_3")
 
 			.fun<static_cast<int64_t (String::*)(const String &) const>(&String::casecmp_to)>("casecmp_to")
 			.fun<static_cast<int64_t (String::*)(const String &) const>(&String::nocasecmp_to)>("nocasecmp_to")

@@ -4,8 +4,6 @@
 #include <cctype>
 #include <string>
 
-#include "qjspp.hpp"
-
 qjs::Runtime runtime;
 qjs::Context context(runtime);
 

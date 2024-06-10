@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_AnimatedSprite3D() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<AnimatedSprite3D>("AnimatedSprite3D")
 			.constructor<>()
 			.property<&AnimatedSprite3D::get_sprite_frames, &AnimatedSprite3D::set_sprite_frames>("sprite_frames")

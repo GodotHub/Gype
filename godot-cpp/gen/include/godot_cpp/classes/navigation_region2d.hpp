@@ -64,18 +64,13 @@ public:
 	uint32_t get_navigation_layers() const;
 	void set_navigation_layer_value(int32_t layer_number, bool value);
 	bool get_navigation_layer_value(int32_t layer_number) const;
-	void set_constrain_avoidance(bool enabled);
-	bool get_constrain_avoidance() const;
-	void set_avoidance_layers(uint32_t layers);
-	uint32_t get_avoidance_layers() const;
-	void set_avoidance_layer_value(int32_t layer_number, bool value);
-	bool get_avoidance_layer_value(int32_t layer_number) const;
 	RID get_region_rid() const;
 	void set_enter_cost(double enter_cost);
 	double get_enter_cost() const;
 	void set_travel_cost(double travel_cost);
 	double get_travel_cost() const;
 	void bake_navigation_polygon(bool on_thread = true);
+	bool is_baking() const;
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {

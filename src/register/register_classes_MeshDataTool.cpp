@@ -17,7 +17,7 @@
 using namespace godot;
 
 void register_classes_MeshDataTool() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<MeshDataTool>("MeshDataTool")
 			.constructor<>()
 			.fun<static_cast<void (MeshDataTool::*)()>(&MeshDataTool::clear)>("clear")

@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_Generic6DOFJoint3D() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<Generic6DOFJoint3D>("Generic6DOFJoint3D")
 			.constructor<>()
 			.fun<static_cast<void (Generic6DOFJoint3D::*)(Generic6DOFJoint3D::Param, double)>(&Generic6DOFJoint3D::set_param_x)>("set_param_x")

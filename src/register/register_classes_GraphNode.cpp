@@ -12,7 +12,7 @@
 using namespace godot;
 
 void register_classes_GraphNode() {
-	qjs::Context::Module &_module = _Control;
+	qjs::Context::Module &_module = get_Control_module();
 	_module.class_<GraphNode>("GraphNode")
 			.constructor<>()
 			.property<&GraphNode::get_title, &GraphNode::set_title>("title")

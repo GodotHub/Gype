@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_GPUParticlesCollisionHeightField3D() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<GPUParticlesCollisionHeightField3D>("GPUParticlesCollisionHeightField3D")
 			.constructor<>()
 			.property<&GPUParticlesCollisionHeightField3D::get_size, &GPUParticlesCollisionHeightField3D::set_size>("size")

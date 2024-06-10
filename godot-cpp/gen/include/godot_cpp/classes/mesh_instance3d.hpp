@@ -33,6 +33,7 @@
 #ifndef GODOT_CPP_MESH_INSTANCE3D_HPP
 #define GODOT_CPP_MESH_INSTANCE3D_HPP
 
+#include <godot_cpp/classes/array_mesh.hpp>
 #include <godot_cpp/classes/geometry_instance3d.hpp>
 #include <godot_cpp/classes/mesh_convex_decomposition_settings.hpp>
 #include <godot_cpp/variant/node_path.hpp>
@@ -48,6 +49,7 @@ namespace godot {
 class Material;
 class Mesh;
 class Skin;
+class SkinReference;
 class StringName;
 
 class MeshInstance3D : public GeometryInstance3D {
@@ -61,6 +63,7 @@ public:
 	NodePath get_skeleton_path();
 	void set_skin(const Ref<Skin> &skin);
 	Ref<Skin> get_skin() const;
+	Ref<SkinReference> get_skin_reference() const;
 	int32_t get_surface_override_material_count() const;
 	void set_surface_override_material(int32_t surface, const Ref<Material> &material);
 	Ref<Material> get_surface_override_material(int32_t surface) const;
@@ -73,6 +76,7 @@ public:
 	double get_blend_shape_value(int32_t blend_shape_idx) const;
 	void set_blend_shape_value(int32_t blend_shape_idx, double value);
 	void create_debug_tangents();
+	Ref<ArrayMesh> bake_mesh_from_current_blend_shape_mix(const Ref<ArrayMesh> &existing = nullptr);
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {

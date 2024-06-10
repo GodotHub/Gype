@@ -32,12 +32,12 @@
 
 #include <godot_cpp/classes/physics_body3d.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/transform3d.hpp>
-#include <godot_cpp/variant/vector3.hpp>
 
 namespace godot {
 
@@ -65,6 +65,12 @@ bool PhysicsBody3D::test_move(const Transform3D &from, const Vector3 &motion, co
 	int64_t max_collisions_encoded;
 	PtrToArg<int64_t>::encode(max_collisions, &max_collisions_encoded);
 	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner, &from, &motion, (collision != nullptr ? &collision->_owner : nullptr), &safe_margin_encoded, &recovery_as_collision_encoded, &max_collisions_encoded);
+}
+
+Vector3 PhysicsBody3D::get_gravity() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsBody3D::get_class_static()._native_ptr(), StringName("get_gravity")._native_ptr(), 3360562783);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Vector3());
+	return internal::_call_native_mb_ret<Vector3>(_gde_method_bind, _owner);
 }
 
 void PhysicsBody3D::set_axis_lock(PhysicsServer3D::BodyAxis axis, bool lock) {

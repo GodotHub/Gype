@@ -58,6 +58,10 @@ public:
 	int32_t get_fill_mode();
 	void set_show_percentage(bool visible);
 	bool is_percentage_shown() const;
+	void set_indeterminate(bool indeterminate);
+	bool is_indeterminate() const;
+	void set_editor_preview_indeterminate(bool preview_indeterminate);
+	bool is_editor_preview_indeterminate_enabled() const;
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {

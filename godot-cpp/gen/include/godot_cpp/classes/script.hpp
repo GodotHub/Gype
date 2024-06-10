@@ -64,6 +64,7 @@ public:
 	Error reload(bool keep_state = false);
 	Ref<Script> get_base_script() const;
 	StringName get_instance_base_type() const;
+	StringName get_global_name() const;
 	bool has_script_signal(const StringName &signal_name) const;
 	TypedArray<Dictionary> get_script_property_list();
 	TypedArray<Dictionary> get_script_method_list();

@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_CSGBox3D() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<CSGBox3D>("CSGBox3D")
 			.constructor<>()
 			.property<&CSGBox3D::get_size, &CSGBox3D::set_size>("size")

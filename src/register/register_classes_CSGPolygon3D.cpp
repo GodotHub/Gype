@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_CSGPolygon3D() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<CSGPolygon3D>("CSGPolygon3D")
 			.constructor<>()
 			.property<&CSGPolygon3D::get_polygon, &CSGPolygon3D::set_polygon>("polygon")

@@ -8,7 +8,7 @@
 using namespace godot;
 
 void register_classes_TileSetScenesCollectionSource() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<TileSetScenesCollectionSource>("TileSetScenesCollectionSource")
 			.constructor<>()
 			.fun<static_cast<int32_t (TileSetScenesCollectionSource::*)()>(&TileSetScenesCollectionSource::get_scene_tiles_count)>("get_scene_tiles_count")

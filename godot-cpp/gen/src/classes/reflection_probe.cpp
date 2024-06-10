@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/reflection_probe.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -193,6 +194,20 @@ void ReflectionProbe::set_cull_mask(uint32_t layers) {
 
 uint32_t ReflectionProbe::get_cull_mask() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(ReflectionProbe::get_class_static()._native_ptr(), StringName("get_cull_mask")._native_ptr(), 3905245786);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
+	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
+}
+
+void ReflectionProbe::set_reflection_mask(uint32_t layers) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(ReflectionProbe::get_class_static()._native_ptr(), StringName("set_reflection_mask")._native_ptr(), 1286410249);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t layers_encoded;
+	PtrToArg<int64_t>::encode(layers, &layers_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &layers_encoded);
+}
+
+uint32_t ReflectionProbe::get_reflection_mask() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(ReflectionProbe::get_class_static()._native_ptr(), StringName("get_reflection_mask")._native_ptr(), 3905245786);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
 	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
 }

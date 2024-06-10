@@ -6,7 +6,7 @@
 using namespace godot;
 
 void register_classes_AudioEffectChorus() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<AudioEffectChorus>("AudioEffectChorus")
 			.constructor<>()
 			.property<&AudioEffectChorus::get_voice_count, &AudioEffectChorus::set_voice_count>("voice_count")

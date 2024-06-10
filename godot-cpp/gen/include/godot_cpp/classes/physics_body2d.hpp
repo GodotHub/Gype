@@ -37,6 +37,7 @@
 #include <godot_cpp/classes/kinematic_collision2d.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
+#include <godot_cpp/variant/vector2.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -47,7 +48,6 @@ namespace godot {
 
 class Node;
 struct Transform2D;
-struct Vector2;
 
 class PhysicsBody2D : public CollisionObject2D {
 	GDEXTENSION_CLASS(PhysicsBody2D, CollisionObject2D)
@@ -56,6 +56,7 @@ public:
 
 	Ref<KinematicCollision2D> move_and_collide(const Vector2 &motion, bool test_only = false, double safe_margin = 0.08, bool recovery_as_collision = false);
 	bool test_move(const Transform2D &from, const Vector2 &motion, const Ref<KinematicCollision2D> &collision = nullptr, double safe_margin = 0.08, bool recovery_as_collision = false);
+	Vector2 get_gravity() const;
 	TypedArray<PhysicsBody2D> get_collision_exceptions();
 	void add_collision_exception_with(Node *body);
 	void remove_collision_exception_with(Node *body);

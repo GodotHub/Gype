@@ -4,15 +4,13 @@
 #include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/string_name.hpp>
 
-
 #include "qjspp.hpp"
 #include "register/register_classes.h"
-
 
 using namespace godot;
 
 void register_classes_ResourcePreloader() {
-	qjs::Context::Module &_module = _Node;
+	qjs::Context::Module &_module = get_Node_module();
 	_module.class_<ResourcePreloader>("ResourcePreloader")
 			.constructor<>()
 			.fun<static_cast<void (ResourcePreloader::*)(const StringName &, const Ref<Resource> &)>(&ResourcePreloader::add_resource)>("add_resource")

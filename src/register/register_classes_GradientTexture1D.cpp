@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_GradientTexture1D() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<GradientTexture1D>("GradientTexture1D")
 			.constructor<>()
 			.property<&GradientTexture1D::get_gradient, &GradientTexture1D::set_gradient>("gradient")

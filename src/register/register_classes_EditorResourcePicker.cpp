@@ -8,7 +8,7 @@
 using namespace godot;
 
 void register_classes_EditorResourcePicker() {
-	qjs::Context::Module &_module = _Control;
+	qjs::Context::Module &_module = get_Control_module();
 	_module.class_<EditorResourcePicker>("EditorResourcePicker")
 			.constructor<>()
 			.property<&EditorResourcePicker::get_base_type, &EditorResourcePicker::set_base_type>("base_type")

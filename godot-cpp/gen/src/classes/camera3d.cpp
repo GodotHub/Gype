@@ -32,10 +32,12 @@
 
 #include <godot_cpp/classes/camera3d.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
 #include <godot_cpp/classes/camera_attributes.hpp>
+#include <godot_cpp/classes/compositor.hpp>
 #include <godot_cpp/classes/environment.hpp>
 
 namespace godot {
@@ -298,6 +300,18 @@ Ref<CameraAttributes> Camera3D::get_attributes() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Camera3D::get_class_static()._native_ptr(), StringName("get_attributes")._native_ptr(), 3921283215);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Ref<CameraAttributes>());
 	return Ref<CameraAttributes>::_gde_internal_constructor(internal::_call_native_mb_ret_obj<CameraAttributes>(_gde_method_bind, _owner));
+}
+
+void Camera3D::set_compositor(const Ref<Compositor> &compositor) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Camera3D::get_class_static()._native_ptr(), StringName("set_compositor")._native_ptr(), 1586754307);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, (compositor != nullptr ? &compositor->_owner : nullptr));
+}
+
+Ref<Compositor> Camera3D::get_compositor() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Camera3D::get_class_static()._native_ptr(), StringName("get_compositor")._native_ptr(), 3647707413);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Ref<Compositor>());
+	return Ref<Compositor>::_gde_internal_constructor(internal::_call_native_mb_ret_obj<Compositor>(_gde_method_bind, _owner));
 }
 
 void Camera3D::set_keep_aspect_mode(Camera3D::KeepAspect mode) {

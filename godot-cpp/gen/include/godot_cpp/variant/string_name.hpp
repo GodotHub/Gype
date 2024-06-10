@@ -37,9 +37,9 @@
 
 #include <godot_cpp/variant/string.hpp>
 
+#include <godot_cpp/templates/vararg.hpp>
 #include <gdextension_interface.h>
 
-#include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
 struct AABB;
@@ -59,6 +59,7 @@ class PackedInt64Array;
 class PackedStringArray;
 class PackedVector2Array;
 class PackedVector3Array;
+class PackedVector4Array;
 struct Plane;
 struct Projection;
 struct Quaternion;
@@ -91,15 +92,17 @@ class StringName {
 		GDExtensionPtrBuiltInMethod method_nocasecmp_to;
 		GDExtensionPtrBuiltInMethod method_naturalcasecmp_to;
 		GDExtensionPtrBuiltInMethod method_naturalnocasecmp_to;
+		GDExtensionPtrBuiltInMethod method_filecasecmp_to;
+		GDExtensionPtrBuiltInMethod method_filenocasecmp_to;
 		GDExtensionPtrBuiltInMethod method_length;
 		GDExtensionPtrBuiltInMethod method_substr;
 		GDExtensionPtrBuiltInMethod method_get_slice;
 		GDExtensionPtrBuiltInMethod method_get_slicec;
 		GDExtensionPtrBuiltInMethod method_get_slice_count;
 		GDExtensionPtrBuiltInMethod method_find;
+		GDExtensionPtrBuiltInMethod method_findn;
 		GDExtensionPtrBuiltInMethod method_count;
 		GDExtensionPtrBuiltInMethod method_countn;
-		GDExtensionPtrBuiltInMethod method_findn;
 		GDExtensionPtrBuiltInMethod method_rfind;
 		GDExtensionPtrBuiltInMethod method_rfindn;
 		GDExtensionPtrBuiltInMethod method_match;
@@ -147,6 +150,7 @@ class StringName {
 		GDExtensionPtrBuiltInMethod method_sha256_buffer;
 		GDExtensionPtrBuiltInMethod method_is_empty;
 		GDExtensionPtrBuiltInMethod method_contains;
+		GDExtensionPtrBuiltInMethod method_containsn;
 		GDExtensionPtrBuiltInMethod method_is_absolute_path;
 		GDExtensionPtrBuiltInMethod method_is_relative_path;
 		GDExtensionPtrBuiltInMethod method_simplify_path;
@@ -241,6 +245,7 @@ class StringName {
 		GDExtensionPtrOperatorEvaluator operator_module_PackedVector2Array;
 		GDExtensionPtrOperatorEvaluator operator_module_PackedVector3Array;
 		GDExtensionPtrOperatorEvaluator operator_module_PackedColorArray;
+		GDExtensionPtrOperatorEvaluator operator_module_PackedVector4Array;
 	} _method_bindings;
 
 	static void init_bindings();
@@ -263,15 +268,17 @@ public:
 	int64_t nocasecmp_to(const String &to) const;
 	int64_t naturalcasecmp_to(const String &to) const;
 	int64_t naturalnocasecmp_to(const String &to) const;
+	int64_t filecasecmp_to(const String &to) const;
+	int64_t filenocasecmp_to(const String &to) const;
 	int64_t length() const;
 	String substr(int64_t from, int64_t len = -1) const;
 	String get_slice(const String &delimiter, int64_t slice) const;
 	String get_slicec(int64_t delimiter, int64_t slice) const;
 	int64_t get_slice_count(const String &delimiter) const;
 	int64_t find(const String &what, int64_t from = 0) const;
+	int64_t findn(const String &what, int64_t from = 0) const;
 	int64_t count(const String &what, int64_t from = 0, int64_t to = 0) const;
 	int64_t countn(const String &what, int64_t from = 0, int64_t to = 0) const;
-	int64_t findn(const String &what, int64_t from = 0) const;
 	int64_t rfind(const String &what, int64_t from = -1) const;
 	int64_t rfindn(const String &what, int64_t from = -1) const;
 	bool match(const String &expr) const;
@@ -319,6 +326,7 @@ public:
 	PackedByteArray sha256_buffer() const;
 	bool is_empty() const;
 	bool contains(const String &what) const;
+	bool containsn(const String &what) const;
 	bool is_absolute_path() const;
 	bool is_relative_path() const;
 	String simplify_path() const;
@@ -407,6 +415,7 @@ public:
 	String operator%(const PackedVector2Array &other) const;
 	String operator%(const PackedVector3Array &other) const;
 	String operator%(const PackedColorArray &other) const;
+	String operator%(const PackedVector4Array &other) const;
 	StringName &operator=(const StringName &other);
 	StringName &operator=(StringName &&other);
 };

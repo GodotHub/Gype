@@ -62,6 +62,9 @@ public:
 	bool is_local_to_scene() const;
 	Node *get_local_scene() const;
 	void setup_local_to_scene();
+	static String generate_scene_unique_id();
+	void set_scene_unique_id(const String &id);
+	String get_scene_unique_id() const;
 	void emit_changed();
 	Ref<Resource> duplicate(bool subresources = false) const;
 	virtual void _setup_local_to_scene();

@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/translation.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -50,25 +51,25 @@ String Translation::get_locale() const {
 }
 
 void Translation::add_message(const StringName &src_message, const StringName &xlated_message, const StringName &context) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Translation::get_class_static()._native_ptr(), StringName("add_message")._native_ptr(), 3898530326);
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Translation::get_class_static()._native_ptr(), StringName("add_message")._native_ptr(), 971803314);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &src_message, &xlated_message, &context);
 }
 
 void Translation::add_plural_message(const StringName &src_message, const PackedStringArray &xlated_messages, const StringName &context) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Translation::get_class_static()._native_ptr(), StringName("add_plural_message")._native_ptr(), 2356982266);
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Translation::get_class_static()._native_ptr(), StringName("add_plural_message")._native_ptr(), 360316719);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &src_message, &xlated_messages, &context);
 }
 
 StringName Translation::get_message(const StringName &src_message, const StringName &context) const {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Translation::get_class_static()._native_ptr(), StringName("get_message")._native_ptr(), 1829228469);
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Translation::get_class_static()._native_ptr(), StringName("get_message")._native_ptr(), 58037827);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, StringName());
 	return internal::_call_native_mb_ret<StringName>(_gde_method_bind, _owner, &src_message, &context);
 }
 
 StringName Translation::get_plural_message(const StringName &src_message, const StringName &src_plural_message, int32_t n, const StringName &context) const {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Translation::get_class_static()._native_ptr(), StringName("get_plural_message")._native_ptr(), 229954002);
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Translation::get_class_static()._native_ptr(), StringName("get_plural_message")._native_ptr(), 1333931916);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, StringName());
 	int64_t n_encoded;
 	PtrToArg<int64_t>::encode(n, &n_encoded);
@@ -76,7 +77,7 @@ StringName Translation::get_plural_message(const StringName &src_message, const 
 }
 
 void Translation::erase_message(const StringName &src_message, const StringName &context) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Translation::get_class_static()._native_ptr(), StringName("erase_message")._native_ptr(), 3959009644);
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Translation::get_class_static()._native_ptr(), StringName("erase_message")._native_ptr(), 3919944288);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &src_message, &context);
 }

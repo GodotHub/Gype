@@ -51,6 +51,8 @@ class Callable;
 class Performance : public Object {
 	GDEXTENSION_CLASS(Performance, Object)
 
+	static Performance *singleton;
+
 public:
 
 	enum Monitor {
@@ -104,6 +106,8 @@ protected:
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
 	}
+
+	~Performance();
 
 public:
 

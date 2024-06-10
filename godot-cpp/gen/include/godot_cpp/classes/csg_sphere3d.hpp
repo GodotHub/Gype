@@ -34,7 +34,6 @@
 #define GODOT_CPP_CSG_SPHERE3D_HPP
 
 #include <godot_cpp/classes/csg_primitive3d.hpp>
-#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/ref.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
@@ -50,6 +49,7 @@ class CSGSphere3D : public CSGPrimitive3D {
 	GDEXTENSION_CLASS(CSGSphere3D, CSGPrimitive3D)
 
 public:
+
 	void set_radius(double radius);
 	double get_radius() const;
 	void set_radial_segments(int32_t radial_segments);
@@ -60,7 +60,6 @@ public:
 	bool get_smooth_faces() const;
 	void set_material(const Ref<Material> &material);
 	Ref<Material> get_material() const;
-
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -68,6 +67,7 @@ protected:
 	}
 
 public:
+
 };
 
 } // namespace godot

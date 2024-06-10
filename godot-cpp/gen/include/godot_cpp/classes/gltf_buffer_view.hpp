@@ -33,6 +33,7 @@
 #ifndef GODOT_CPP_GLTF_BUFFER_VIEW_HPP
 #define GODOT_CPP_GLTF_BUFFER_VIEW_HPP
 
+#include <godot_cpp/variant/packed_byte_array.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/resource.hpp>
 
@@ -43,21 +44,26 @@
 #include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
+class GLTFState;
+
 class GLTFBufferView : public Resource {
 	GDEXTENSION_CLASS(GLTFBufferView, Resource)
 
 public:
 
-	int32_t get_buffer();
+	PackedByteArray load_buffer_view_data(const Ref<GLTFState> &state) const;
+	int32_t get_buffer() const;
 	void set_buffer(int32_t buffer);
-	int32_t get_byte_offset();
+	int32_t get_byte_offset() const;
 	void set_byte_offset(int32_t byte_offset);
-	int32_t get_byte_length();
+	int32_t get_byte_length() const;
 	void set_byte_length(int32_t byte_length);
-	int32_t get_byte_stride();
+	int32_t get_byte_stride() const;
 	void set_byte_stride(int32_t byte_stride);
-	bool get_indices();
+	bool get_indices() const;
 	void set_indices(bool indices);
+	bool get_vertex_attributes() const;
+	void set_vertex_attributes(bool is_attributes);
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {

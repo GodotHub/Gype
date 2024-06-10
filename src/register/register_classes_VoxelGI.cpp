@@ -9,7 +9,7 @@
 using namespace godot;
 
 void register_classes_VoxelGI() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<VoxelGI>("VoxelGI")
 			.constructor<>()
 			.property<&VoxelGI::get_subdiv, &VoxelGI::set_subdiv>("subdiv")

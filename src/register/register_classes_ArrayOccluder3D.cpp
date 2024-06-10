@@ -5,11 +5,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_ArrayOccluder3D() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<ArrayOccluder3D>("ArrayOccluder3D")
 			.constructor<>()
 			.property<&ArrayOccluder3D::get_vertices, &ArrayOccluder3D::set_vertices>("vertices")

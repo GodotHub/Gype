@@ -15,7 +15,7 @@
 using namespace godot;
 
 void register_classes_TabContainer() {
-	qjs::Context::Module &_module = _Control;
+	qjs::Context::Module &_module = get_Control_module();
 	_module.class_<TabContainer>("TabContainer")
 			.constructor<>()
 			.property<&TabContainer::get_tab_alignment, &TabContainer::set_tab_alignment>("tab_alignment")

@@ -37,6 +37,7 @@
 namespace godot {
 
 class Variant;
+class Vector3;
 
 struct _NO_DISCARD_ Plane {
 	Vector3 normal;
@@ -62,6 +63,7 @@ struct _NO_DISCARD_ Plane {
 	bool _intersect_3(const Plane &p_plane1, const Plane &p_plane2, Vector3 *r_result = nullptr) const;
 	bool _intersects_ray(const Vector3 &p_from, const Vector3 &p_dir, Vector3 *p_intersection) const;
 	bool _intersects_segment(const Vector3 &p_begin, const Vector3 &p_end, Vector3 *p_intersection) const;
+
 	bool intersect_3(const Plane &p_plane1, const Plane &p_plane2) const;
 	bool intersects_ray(const Vector3 &p_from, const Vector3 &p_dir) const;
 	bool intersects_segment(const Vector3 &p_begin, const Vector3 &p_end) const;
@@ -81,6 +83,7 @@ struct _NO_DISCARD_ Plane {
 	bool is_equal_approx(const Plane &p_plane) const;
 	bool is_equal_approx_any_side(const Plane &p_plane) const;
 	bool is_finite() const;
+
 	_FORCE_INLINE_ bool operator==(const Plane &p_plane) const;
 	_FORCE_INLINE_ bool operator!=(const Plane &p_plane) const;
 	operator String() const;

@@ -10,7 +10,7 @@
 using namespace godot;
 
 void register_classes_SceneMultiplayer() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<SceneMultiplayer>("SceneMultiplayer")
 			.constructor<>()
 			.property<&SceneMultiplayer::get_root_path, &SceneMultiplayer::set_root_path>("root_path")

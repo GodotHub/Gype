@@ -9,7 +9,7 @@
 using namespace godot;
 
 void register_classes_MultiMeshInstance2D() {
-	qjs::Context::Module &_module = _Node2D;
+	qjs::Context::Module &_module = get_Node2D_module();
 	_module.class_<MultiMeshInstance2D>("MultiMeshInstance2D")
 			.constructor<>()
 			.property<&MultiMeshInstance2D::get_multimesh, &MultiMeshInstance2D::set_multimesh>("multimesh")

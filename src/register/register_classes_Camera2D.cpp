@@ -4,11 +4,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_Camera2D() {
-	qjs::Context::Module &_module = _Node2D;
+	qjs::Context::Module &_module = get_Node2D_module();
 	_module.class_<Camera2D>("Camera2D")
 			.constructor<>()
 			.property<&Camera2D::get_offset, &Camera2D::set_offset>("offset")

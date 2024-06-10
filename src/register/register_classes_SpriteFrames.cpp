@@ -10,7 +10,7 @@
 using namespace godot;
 
 void register_classes_SpriteFrames() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<SpriteFrames>("SpriteFrames")
 			.constructor<>()
 			.fun<static_cast<void (SpriteFrames::*)(const StringName &)>(&SpriteFrames::add_animation)>("add_animation")

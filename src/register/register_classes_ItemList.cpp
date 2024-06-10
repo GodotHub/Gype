@@ -16,7 +16,7 @@
 using namespace godot;
 
 void register_classes_ItemList() {
-	qjs::Context::Module &_module = _Control;
+	qjs::Context::Module &_module = get_Control_module();
 	_module.class_<ItemList>("ItemList")
 			.constructor<>()
 			.property<&ItemList::get_select_mode, &ItemList::set_select_mode>("select_mode")

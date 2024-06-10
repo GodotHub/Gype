@@ -11,9 +11,8 @@
 using namespace godot;
 
 void register_classes_TranslationServer() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<TranslationServer>("TranslationServer")
-			.constructor<>()
 			.property<&TranslationServer::is_pseudolocalization_enabled, &TranslationServer::set_pseudolocalization_enabled>("pseudolocalization_enabled")
 			.fun<static_cast<void (TranslationServer::*)(const String &)>(&TranslationServer::set_locale)>("set_locale")
 			.fun<static_cast<String (TranslationServer::*)() const>(&TranslationServer::get_locale)>("get_locale")

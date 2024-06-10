@@ -53,6 +53,8 @@ class ResourceFormatLoader;
 class ResourceLoader : public Object {
 	GDEXTENSION_CLASS(ResourceLoader, Object)
 
+	static ResourceLoader *singleton;
+
 public:
 
 	enum ThreadLoadStatus {
@@ -66,6 +68,8 @@ public:
 		CACHE_MODE_IGNORE = 0,
 		CACHE_MODE_REUSE = 1,
 		CACHE_MODE_REPLACE = 2,
+		CACHE_MODE_IGNORE_DEEP = 3,
+		CACHE_MODE_REPLACE_DEEP = 4,
 	};
 
 	static ResourceLoader *get_singleton();
@@ -87,6 +91,8 @@ protected:
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
 	}
+
+	~ResourceLoader();
 
 public:
 

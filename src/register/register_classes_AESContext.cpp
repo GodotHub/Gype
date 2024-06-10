@@ -5,12 +5,12 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_AESContext() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<AESContext>("AESContext")
+			.base<RefCounted>()
 			.constructor<>()
 			.fun<static_cast<Error (AESContext::*)(AESContext::Mode, const PackedByteArray &, const PackedByteArray &)>(&AESContext::start)>("start")
 			.fun<static_cast<PackedByteArray (AESContext::*)(const PackedByteArray &)>(&AESContext::update)>("update")

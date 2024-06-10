@@ -11,7 +11,7 @@
 using namespace godot;
 
 void register_classes_UndoRedo() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<UndoRedo>("UndoRedo")
 			.constructor<>()
 			.fun<static_cast<void (UndoRedo::*)(const String &, UndoRedo::MergeMode, bool)>(&UndoRedo::create_action)>("create_action")

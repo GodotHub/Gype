@@ -8,7 +8,7 @@
 using namespace godot;
 
 void register_classes_SyntaxHighlighter() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<SyntaxHighlighter>("SyntaxHighlighter")
 			.constructor<>()
 			.fun<static_cast<Dictionary (SyntaxHighlighter::*)(int32_t) const>(&SyntaxHighlighter::_get_line_syntax_highlighting)>("_get_line_syntax_highlighting")

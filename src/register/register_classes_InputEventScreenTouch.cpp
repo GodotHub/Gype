@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_InputEventScreenTouch() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<InputEventScreenTouch>("InputEventScreenTouch")
 			.constructor<>()
 			.property<&InputEventScreenTouch::get_index, &InputEventScreenTouch::set_index>("index")

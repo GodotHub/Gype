@@ -32,49 +32,15 @@
 
 #include <godot_cpp/classes/xr_positional_tracker.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
+#include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/variant/transform3d.hpp>
 #include <godot_cpp/variant/vector3.hpp>
 
 namespace godot {
-
-XRServer::TrackerType XRPositionalTracker::get_tracker_type() const {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(XRPositionalTracker::get_class_static()._native_ptr(), StringName("get_tracker_type")._native_ptr(), 2784508102);
-	CHECK_METHOD_BIND_RET(_gde_method_bind, XRServer::TrackerType(0));
-	return (XRServer::TrackerType)internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
-}
-
-void XRPositionalTracker::set_tracker_type(XRServer::TrackerType type) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(XRPositionalTracker::get_class_static()._native_ptr(), StringName("set_tracker_type")._native_ptr(), 3055763575);
-	CHECK_METHOD_BIND(_gde_method_bind);
-	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &type);
-}
-
-StringName XRPositionalTracker::get_tracker_name() const {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(XRPositionalTracker::get_class_static()._native_ptr(), StringName("get_tracker_name")._native_ptr(), 2002593661);
-	CHECK_METHOD_BIND_RET(_gde_method_bind, StringName());
-	return internal::_call_native_mb_ret<StringName>(_gde_method_bind, _owner);
-}
-
-void XRPositionalTracker::set_tracker_name(const StringName &name) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(XRPositionalTracker::get_class_static()._native_ptr(), StringName("set_tracker_name")._native_ptr(), 3304788590);
-	CHECK_METHOD_BIND(_gde_method_bind);
-	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &name);
-}
-
-String XRPositionalTracker::get_tracker_desc() const {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(XRPositionalTracker::get_class_static()._native_ptr(), StringName("get_tracker_desc")._native_ptr(), 201670096);
-	CHECK_METHOD_BIND_RET(_gde_method_bind, String());
-	return internal::_call_native_mb_ret<String>(_gde_method_bind, _owner);
-}
-
-void XRPositionalTracker::set_tracker_desc(const String &description) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(XRPositionalTracker::get_class_static()._native_ptr(), StringName("set_tracker_desc")._native_ptr(), 83702148);
-	CHECK_METHOD_BIND(_gde_method_bind);
-	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &description);
-}
 
 String XRPositionalTracker::get_tracker_profile() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(XRPositionalTracker::get_class_static()._native_ptr(), StringName("get_tracker_profile")._native_ptr(), 201670096);

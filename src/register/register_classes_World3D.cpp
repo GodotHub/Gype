@@ -9,7 +9,7 @@
 using namespace godot;
 
 void register_classes_World3D() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<World3D>("World3D")
 			.constructor<>()
 			.property<&World3D::get_environment, &World3D::set_environment>("environment")

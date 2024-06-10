@@ -9,7 +9,7 @@
 using namespace godot;
 
 void register_classes_CharacterBody3D() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<CharacterBody3D>("CharacterBody3D")
 			.constructor<>()
 			.property<&CharacterBody3D::get_motion_mode, &CharacterBody3D::set_motion_mode>("motion_mode")

@@ -52,6 +52,8 @@ class ResourceFormatSaver;
 class ResourceSaver : public Object {
 	GDEXTENSION_CLASS(ResourceSaver, Object)
 
+	static ResourceSaver *singleton;
+
 public:
 
 	enum SaverFlags : uint64_t {
@@ -76,6 +78,8 @@ protected:
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
 	}
+
+	~ResourceSaver();
 
 public:
 

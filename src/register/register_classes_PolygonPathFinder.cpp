@@ -10,7 +10,7 @@
 using namespace godot;
 
 void register_classes_PolygonPathFinder() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<PolygonPathFinder>("PolygonPathFinder")
 			.constructor<>()
 			.fun<static_cast<void (PolygonPathFinder::*)(const PackedVector2Array &, const PackedInt32Array &)>(&PolygonPathFinder::setup)>("setup")

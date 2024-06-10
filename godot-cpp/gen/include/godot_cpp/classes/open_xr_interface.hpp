@@ -65,6 +65,13 @@ public:
 		HAND_MOTION_RANGE_MAX = 2,
 	};
 
+	enum HandTrackedSource {
+		HAND_TRACKED_SOURCE_UNKNOWN = 0,
+		HAND_TRACKED_SOURCE_UNOBSTRUCTED = 1,
+		HAND_TRACKED_SOURCE_CONTROLLER = 2,
+		HAND_TRACKED_SOURCE_MAX = 3,
+	};
+
 	enum HandJoints {
 		HAND_JOINT_PALM = 0,
 		HAND_JOINT_WRIST = 1,
@@ -120,6 +127,7 @@ public:
 	Array get_available_display_refresh_rates() const;
 	void set_motion_range(OpenXRInterface::Hand hand, OpenXRInterface::HandMotionRange motion_range);
 	OpenXRInterface::HandMotionRange get_motion_range(OpenXRInterface::Hand hand) const;
+	OpenXRInterface::HandTrackedSource get_hand_tracking_source(OpenXRInterface::Hand hand) const;
 	BitField<OpenXRInterface::HandJointFlags> get_hand_joint_flags(OpenXRInterface::Hand hand, OpenXRInterface::HandJoints joint) const;
 	Quaternion get_hand_joint_rotation(OpenXRInterface::Hand hand, OpenXRInterface::HandJoints joint) const;
 	Vector3 get_hand_joint_position(OpenXRInterface::Hand hand, OpenXRInterface::HandJoints joint) const;
@@ -127,7 +135,12 @@ public:
 	Vector3 get_hand_joint_linear_velocity(OpenXRInterface::Hand hand, OpenXRInterface::HandJoints joint) const;
 	Vector3 get_hand_joint_angular_velocity(OpenXRInterface::Hand hand, OpenXRInterface::HandJoints joint) const;
 	bool is_hand_tracking_supported();
+	bool is_hand_interaction_supported() const;
 	bool is_eye_gaze_interaction_supported();
+	double get_vrs_min_radius() const;
+	void set_vrs_min_radius(double radius);
+	double get_vrs_strength() const;
+	void set_vrs_strength(double strength);
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -142,6 +155,7 @@ public:
 
 VARIANT_ENUM_CAST(OpenXRInterface::Hand);
 VARIANT_ENUM_CAST(OpenXRInterface::HandMotionRange);
+VARIANT_ENUM_CAST(OpenXRInterface::HandTrackedSource);
 VARIANT_ENUM_CAST(OpenXRInterface::HandJoints);
 VARIANT_BITFIELD_CAST(OpenXRInterface::HandJointFlags);
 

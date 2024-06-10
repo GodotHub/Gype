@@ -15,7 +15,7 @@ file(GLOB_RECURSE GODOT_HEADERS
 add_library(godot-cpp STATIC ${GODOT_SOURCES})
 
 target_compile_options(godot-cpp PUBLIC 
-	-fno-omit-frame-pointer -Os -g)
+	-fno-omit-frame-pointer -O0 -g)
 
 # 包含include目录和所有子目录
 target_include_directories(godot-cpp SYSTEM PUBLIC 
@@ -24,7 +24,7 @@ target_include_directories(godot-cpp SYSTEM PUBLIC
 	${PROJECT_SOURCE_DIR}/gdextension)
 
 target_compile_features(godot-cpp
-	PRIVATE
+	PUBLIC
 		cxx_std_17
 )
 

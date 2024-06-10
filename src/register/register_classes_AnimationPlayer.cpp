@@ -6,11 +6,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_AnimationPlayer() {
-	qjs::Context::Module &_module = _Node;
+	qjs::Context::Module &_module = get_Node_module();
 	_module.class_<AnimationPlayer>("AnimationPlayer")
 			.constructor<>()
 			.property<&AnimationPlayer::get_current_animation, &AnimationPlayer::set_current_animation>("current_animation")

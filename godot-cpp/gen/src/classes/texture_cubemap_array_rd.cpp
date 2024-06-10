@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/texture_cubemap_array_rd.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 

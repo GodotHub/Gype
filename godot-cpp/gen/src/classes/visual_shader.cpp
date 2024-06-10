@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/visual_shader.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -193,6 +194,24 @@ Vector2 VisualShader::get_graph_offset() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(VisualShader::get_class_static()._native_ptr(), StringName("get_graph_offset")._native_ptr(), 3341600327);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Vector2());
 	return internal::_call_native_mb_ret<Vector2>(_gde_method_bind, _owner);
+}
+
+void VisualShader::attach_node_to_frame(VisualShader::Type type, int32_t id, int32_t frame) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(VisualShader::get_class_static()._native_ptr(), StringName("attach_node_to_frame")._native_ptr(), 2479945279);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t id_encoded;
+	PtrToArg<int64_t>::encode(id, &id_encoded);
+	int64_t frame_encoded;
+	PtrToArg<int64_t>::encode(frame, &frame_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &type, &id_encoded, &frame_encoded);
+}
+
+void VisualShader::detach_node_from_frame(VisualShader::Type type, int32_t id) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(VisualShader::get_class_static()._native_ptr(), StringName("detach_node_from_frame")._native_ptr(), 844050912);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t id_encoded;
+	PtrToArg<int64_t>::encode(id, &id_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &type, &id_encoded);
 }
 
 void VisualShader::add_varying(const String &name, VisualShader::VaryingMode mode, VisualShader::VaryingType type) {

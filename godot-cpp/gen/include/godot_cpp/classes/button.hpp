@@ -58,6 +58,8 @@ public:
 	String get_text() const;
 	void set_text_overrun_behavior(TextServer::OverrunBehavior overrun_behavior);
 	TextServer::OverrunBehavior get_text_overrun_behavior() const;
+	void set_autowrap_mode(TextServer::AutowrapMode autowrap_mode);
+	TextServer::AutowrapMode get_autowrap_mode() const;
 	void set_text_direction(Control::TextDirection direction);
 	Control::TextDirection get_text_direction() const;
 	void set_language(const String &language);

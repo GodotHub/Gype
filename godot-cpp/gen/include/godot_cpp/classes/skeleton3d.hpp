@@ -59,9 +59,14 @@ class Skeleton3D : public Node3D {
 
 public:
 
+	enum ModifierCallbackModeProcess {
+		MODIFIER_CALLBACK_MODE_PROCESS_PHYSICS = 0,
+		MODIFIER_CALLBACK_MODE_PROCESS_IDLE = 1,
+	};
+
 	static const int NOTIFICATION_UPDATE_SKELETON = 50;
 
-	void add_bone(const String &name);
+	int32_t add_bone(const String &name);
 	int32_t find_bone(const String &name) const;
 	String get_bone_name(int32_t bone_idx) const;
 	void set_bone_name(int32_t bone_idx, const String &name);
@@ -80,6 +85,7 @@ public:
 	void localize_rests();
 	void clear_bones();
 	Transform3D get_bone_pose(int32_t bone_idx) const;
+	void set_bone_pose(int32_t bone_idx, const Transform3D &pose);
 	void set_bone_pose_position(int32_t bone_idx, const Vector3 &position);
 	void set_bone_pose_rotation(int32_t bone_idx, const Quaternion &rotation);
 	void set_bone_pose_scale(int32_t bone_idx, const Vector3 &scale);
@@ -90,17 +96,20 @@ public:
 	void reset_bone_poses();
 	bool is_bone_enabled(int32_t bone_idx) const;
 	void set_bone_enabled(int32_t bone_idx, bool enabled = true);
-	void clear_bones_global_pose_override();
-	void set_bone_global_pose_override(int32_t bone_idx, const Transform3D &pose, double amount, bool persistent = false);
-	Transform3D get_bone_global_pose_override(int32_t bone_idx) const;
 	Transform3D get_bone_global_pose(int32_t bone_idx) const;
-	Transform3D get_bone_global_pose_no_override(int32_t bone_idx) const;
+	void set_bone_global_pose(int32_t bone_idx, const Transform3D &pose);
 	void force_update_all_bone_transforms();
 	void force_update_bone_child_transform(int32_t bone_idx);
 	void set_motion_scale(double motion_scale);
 	double get_motion_scale() const;
 	void set_show_rest_only(bool enabled);
 	bool is_show_rest_only() const;
+	void set_modifier_callback_mode_process(Skeleton3D::ModifierCallbackModeProcess mode);
+	Skeleton3D::ModifierCallbackModeProcess get_modifier_callback_mode_process() const;
+	void clear_bones_global_pose_override();
+	void set_bone_global_pose_override(int32_t bone_idx, const Transform3D &pose, double amount, bool persistent = false);
+	Transform3D get_bone_global_pose_override(int32_t bone_idx) const;
+	Transform3D get_bone_global_pose_no_override(int32_t bone_idx) const;
 	void set_animate_physical_bones(bool enabled);
 	bool get_animate_physical_bones() const;
 	void physical_bones_stop_simulation();
@@ -118,5 +127,7 @@ public:
 };
 
 } // namespace godot
+
+VARIANT_ENUM_CAST(Skeleton3D::ModifierCallbackModeProcess);
 
 #endif // ! GODOT_CPP_SKELETON3D_HPP

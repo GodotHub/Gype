@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_Label() {
-	qjs::Context::Module &_module = _Control;
+	qjs::Context::Module &_module = get_Control_module();
 	_module.class_<Label>("Label")
 			.constructor<>()
 			.property<&Label::get_text, &Label::set_text>("text")

@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_OggPacketSequence() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<OggPacketSequence>("OggPacketSequence")
 			.constructor<>()
 			.property<&OggPacketSequence::get_packet_data, &OggPacketSequence::set_packet_data>("packet_data")

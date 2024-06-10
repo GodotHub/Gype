@@ -2,15 +2,13 @@
 #include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/variant/variant.hpp>
 
-
 #include "qjspp.hpp"
 #include "register/register_classes.h"
-
 
 using namespace godot;
 
 void register_classes_ShaderMaterial() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<ShaderMaterial>("ShaderMaterial")
 			.constructor<>()
 			.property<&ShaderMaterial::get_shader, &ShaderMaterial::set_shader>("shader")

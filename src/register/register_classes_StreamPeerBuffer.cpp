@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_StreamPeerBuffer() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<StreamPeerBuffer>("StreamPeerBuffer")
 			.constructor<>()
 			.property<&StreamPeerBuffer::get_data_array, &StreamPeerBuffer::set_data_array>("data_array")

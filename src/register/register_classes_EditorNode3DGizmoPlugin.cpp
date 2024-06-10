@@ -20,7 +20,7 @@
 using namespace godot;
 
 void register_classes_EditorNode3DGizmoPlugin() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<EditorNode3DGizmoPlugin>("EditorNode3DGizmoPlugin")
 			.constructor<>()
 			.fun<static_cast<bool (EditorNode3DGizmoPlugin::*)(Node3D *) const>(&EditorNode3DGizmoPlugin::_has_gizmo)>("_has_gizmo")

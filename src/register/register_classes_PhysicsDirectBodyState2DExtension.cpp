@@ -11,7 +11,7 @@
 using namespace godot;
 
 void register_classes_PhysicsDirectBodyState2DExtension() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<PhysicsDirectBodyState2DExtension>("PhysicsDirectBodyState2DExtension")
 			.constructor<>()
 			.fun<static_cast<Vector2 (PhysicsDirectBodyState2DExtension::*)() const>(&PhysicsDirectBodyState2DExtension::_get_total_gravity)>("_get_total_gravity")

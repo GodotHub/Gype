@@ -8,7 +8,7 @@
 using namespace godot;
 
 void register_classes_CSGMesh3D() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<CSGMesh3D>("CSGMesh3D")
 			.constructor<>()
 			.property<&CSGMesh3D::get_mesh, &CSGMesh3D::set_mesh>("mesh")

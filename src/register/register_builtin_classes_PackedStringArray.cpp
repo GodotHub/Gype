@@ -9,10 +9,7 @@
 using namespace godot;
 
 void register_builtin_classes_PackedStringArray() {
-	_Variant.class_<PackedStringArray>("PackedStringArray")
-			.constructor<>()
-			.constructor<const PackedStringArray &>("PackedStringArray_1")
-			.constructor<const Array &>("PackedStringArray_2")
+	get_Variant_module().class_<PackedStringArray>("PackedStringArray").constructor<>().constructor<const PackedStringArray &>("PackedStringArray_1").constructor<const Array &>("PackedStringArray_2")
 
 			.fun<static_cast<int64_t (PackedStringArray::*)() const>(&PackedStringArray::size)>("size")
 			.fun<static_cast<bool (PackedStringArray::*)() const>(&PackedStringArray::is_empty)>("is_empty")

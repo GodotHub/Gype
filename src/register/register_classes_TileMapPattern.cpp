@@ -8,7 +8,7 @@
 using namespace godot;
 
 void register_classes_TileMapPattern() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<TileMapPattern>("TileMapPattern")
 			.constructor<>()
 			.fun<static_cast<void (TileMapPattern::*)(const Vector2i &, int32_t, const Vector2i &, int32_t)>(&TileMapPattern::set_cell)>("set_cell")

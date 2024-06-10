@@ -34,6 +34,7 @@
 #define GODOT_CPP_GEOMETRY3D_HPP
 
 #include <godot_cpp/core/object.hpp>
+#include <godot_cpp/variant/packed_int32_array.hpp>
 #include <godot_cpp/variant/packed_vector3_array.hpp>
 #include <godot_cpp/variant/plane.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
@@ -49,6 +50,8 @@ namespace godot {
 
 class Geometry3D : public Object {
 	GDEXTENSION_CLASS(Geometry3D, Object)
+
+	static Geometry3D *singleton;
 
 public:
 
@@ -68,11 +71,14 @@ public:
 	PackedVector3Array segment_intersects_cylinder(const Vector3 &from, const Vector3 &to, double height, double radius);
 	PackedVector3Array segment_intersects_convex(const Vector3 &from, const Vector3 &to, const TypedArray<Plane> &planes);
 	PackedVector3Array clip_polygon(const PackedVector3Array &points, const Plane &plane);
+	PackedInt32Array tetrahedralize_delaunay(const PackedVector3Array &points);
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
 	}
+
+	~Geometry3D();
 
 public:
 

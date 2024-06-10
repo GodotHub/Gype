@@ -59,6 +59,8 @@ public:
 	void set_normalized(bool normalized);
 	int32_t get_count();
 	void set_count(int32_t count);
+	int32_t get_accessor_type();
+	void set_accessor_type(int32_t accessor_type);
 	int32_t get_type();
 	void set_type(int32_t type);
 	PackedFloat64Array get_min();

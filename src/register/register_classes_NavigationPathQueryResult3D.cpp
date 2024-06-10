@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_NavigationPathQueryResult3D() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<NavigationPathQueryResult3D>("NavigationPathQueryResult3D")
 			.constructor<>()
 			.property<&NavigationPathQueryResult3D::get_path, &NavigationPathQueryResult3D::set_path>("path")

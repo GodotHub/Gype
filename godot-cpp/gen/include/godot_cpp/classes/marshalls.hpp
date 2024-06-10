@@ -48,6 +48,8 @@ namespace godot {
 class Marshalls : public Object {
 	GDEXTENSION_CLASS(Marshalls, Object)
 
+	static Marshalls *singleton;
+
 public:
 
 	static Marshalls *get_singleton();
@@ -63,6 +65,8 @@ protected:
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
 	}
+
+	~Marshalls();
 
 public:
 

@@ -46,6 +46,8 @@ namespace godot {
 class ResourceUID : public Object {
 	GDEXTENSION_CLASS(ResourceUID, Object)
 
+	static ResourceUID *singleton;
+
 public:
 
 	static const int INVALID_ID = -1;
@@ -65,6 +67,8 @@ protected:
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
 	}
+
+	~ResourceUID();
 
 public:
 

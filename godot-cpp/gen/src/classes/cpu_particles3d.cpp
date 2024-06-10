@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/cpu_particles3d.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -96,6 +97,12 @@ void CPUParticles3D::set_randomness_ratio(double ratio) {
 	double ratio_encoded;
 	PtrToArg<double>::encode(ratio, &ratio_encoded);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &ratio_encoded);
+}
+
+void CPUParticles3D::set_visibility_aabb(const AABB &aabb) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(CPUParticles3D::get_class_static()._native_ptr(), StringName("set_visibility_aabb")._native_ptr(), 259215842);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &aabb);
 }
 
 void CPUParticles3D::set_lifetime_randomness(double random) {
@@ -178,6 +185,12 @@ double CPUParticles3D::get_randomness_ratio() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(CPUParticles3D::get_class_static()._native_ptr(), StringName("get_randomness_ratio")._native_ptr(), 1740695150);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
 	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner);
+}
+
+AABB CPUParticles3D::get_visibility_aabb() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(CPUParticles3D::get_class_static()._native_ptr(), StringName("get_visibility_aabb")._native_ptr(), 1068685055);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, AABB());
+	return internal::_call_native_mb_ret<AABB>(_gde_method_bind, _owner);
 }
 
 double CPUParticles3D::get_lifetime_randomness() const {

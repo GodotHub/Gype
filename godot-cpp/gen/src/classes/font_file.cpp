@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/font_file.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -108,6 +109,20 @@ TextServer::FontAntialiasing FontFile::get_antialiasing() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(FontFile::get_class_static()._native_ptr(), StringName("get_antialiasing")._native_ptr(), 4262718649);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, TextServer::FontAntialiasing(0));
 	return (TextServer::FontAntialiasing)internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
+}
+
+void FontFile::set_disable_embedded_bitmaps(bool disable_embedded_bitmaps) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(FontFile::get_class_static()._native_ptr(), StringName("set_disable_embedded_bitmaps")._native_ptr(), 2586408642);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int8_t disable_embedded_bitmaps_encoded;
+	PtrToArg<bool>::encode(disable_embedded_bitmaps, &disable_embedded_bitmaps_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &disable_embedded_bitmaps_encoded);
+}
+
+bool FontFile::get_disable_embedded_bitmaps() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(FontFile::get_class_static()._native_ptr(), StringName("get_disable_embedded_bitmaps")._native_ptr(), 36873697);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
 }
 
 void FontFile::set_generate_mipmaps(bool generate_mipmaps) {
@@ -368,6 +383,24 @@ int64_t FontFile::get_extra_spacing(int32_t cache_index, TextServer::SpacingType
 	int64_t cache_index_encoded;
 	PtrToArg<int64_t>::encode(cache_index, &cache_index_encoded);
 	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &cache_index_encoded, &spacing);
+}
+
+void FontFile::set_extra_baseline_offset(int32_t cache_index, double baseline_offset) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(FontFile::get_class_static()._native_ptr(), StringName("set_extra_baseline_offset")._native_ptr(), 1602489585);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int64_t cache_index_encoded;
+	PtrToArg<int64_t>::encode(cache_index, &cache_index_encoded);
+	double baseline_offset_encoded;
+	PtrToArg<double>::encode(baseline_offset, &baseline_offset_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &cache_index_encoded, &baseline_offset_encoded);
+}
+
+double FontFile::get_extra_baseline_offset(int32_t cache_index) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(FontFile::get_class_static()._native_ptr(), StringName("get_extra_baseline_offset")._native_ptr(), 2339986948);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	int64_t cache_index_encoded;
+	PtrToArg<int64_t>::encode(cache_index, &cache_index_encoded);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner, &cache_index_encoded);
 }
 
 void FontFile::set_face_index(int32_t cache_index, int64_t face_index) {

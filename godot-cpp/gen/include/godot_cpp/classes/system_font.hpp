@@ -52,6 +52,8 @@ public:
 
 	void set_antialiasing(TextServer::FontAntialiasing antialiasing);
 	TextServer::FontAntialiasing get_antialiasing() const;
+	void set_disable_embedded_bitmaps(bool disable_embedded_bitmaps);
+	bool get_disable_embedded_bitmaps() const;
 	void set_generate_mipmaps(bool generate_mipmaps);
 	bool get_generate_mipmaps() const;
 	void set_allow_system_fallback(bool allow_system_fallback);

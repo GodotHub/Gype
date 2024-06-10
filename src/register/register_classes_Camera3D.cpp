@@ -15,7 +15,7 @@
 using namespace godot;
 
 void register_classes_Camera3D() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<Camera3D>("Camera3D")
 			.constructor<>()
 			.property<&Camera3D::get_keep_aspect_mode, &Camera3D::set_keep_aspect_mode>("keep_aspect")

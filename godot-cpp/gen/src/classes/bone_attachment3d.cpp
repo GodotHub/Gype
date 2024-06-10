@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/bone_attachment3d.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -63,12 +64,10 @@ int32_t BoneAttachment3D::get_bone_idx() const {
 	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
 }
 
-void BoneAttachment3D::on_bone_pose_update(int32_t bone_index) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(BoneAttachment3D::get_class_static()._native_ptr(), StringName("on_bone_pose_update")._native_ptr(), 1286410249);
+void BoneAttachment3D::on_skeleton_update() {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(BoneAttachment3D::get_class_static()._native_ptr(), StringName("on_skeleton_update")._native_ptr(), 3218959716);
 	CHECK_METHOD_BIND(_gde_method_bind);
-	int64_t bone_index_encoded;
-	PtrToArg<int64_t>::encode(bone_index, &bone_index_encoded);
-	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &bone_index_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner);
 }
 
 void BoneAttachment3D::set_override_pose(bool override_pose) {

@@ -10,7 +10,7 @@
 using namespace godot;
 
 void register_classes_GeometryInstance3D() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<GeometryInstance3D>("GeometryInstance3D")
 			.constructor<>()
 			.property<&GeometryInstance3D::get_material_override, &GeometryInstance3D::set_material_override>("material_override")

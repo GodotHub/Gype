@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_HingeJoint3D() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<HingeJoint3D>("HingeJoint3D")
 			.constructor<>()
 			.fun<static_cast<void (HingeJoint3D::*)(HingeJoint3D::Param, double)>(&HingeJoint3D::set_param)>("set_param")

@@ -53,11 +53,22 @@ public:
 		ALIGNMENT_END = 2,
 	};
 
+	enum LastWrapAlignmentMode {
+		LAST_WRAP_ALIGNMENT_INHERIT = 0,
+		LAST_WRAP_ALIGNMENT_BEGIN = 1,
+		LAST_WRAP_ALIGNMENT_CENTER = 2,
+		LAST_WRAP_ALIGNMENT_END = 3,
+	};
+
 	int32_t get_line_count() const;
 	void set_alignment(FlowContainer::AlignmentMode alignment);
 	FlowContainer::AlignmentMode get_alignment() const;
+	void set_last_wrap_alignment(FlowContainer::LastWrapAlignmentMode last_wrap_alignment);
+	FlowContainer::LastWrapAlignmentMode get_last_wrap_alignment() const;
 	void set_vertical(bool vertical);
 	bool is_vertical() const;
+	void set_reverse_fill(bool reverse_fill);
+	bool is_reverse_fill() const;
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -71,5 +82,6 @@ public:
 } // namespace godot
 
 VARIANT_ENUM_CAST(FlowContainer::AlignmentMode);
+VARIANT_ENUM_CAST(FlowContainer::LastWrapAlignmentMode);
 
 #endif // ! GODOT_CPP_FLOW_CONTAINER_HPP

@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_PathFollow2D() {
-	qjs::Context::Module &_module = _Node2D;
+	qjs::Context::Module &_module = get_Node2D_module();
 	_module.class_<PathFollow2D>("PathFollow2D")
 			.constructor<>()
 			.property<&PathFollow2D::get_progress, &PathFollow2D::set_progress>("progress")

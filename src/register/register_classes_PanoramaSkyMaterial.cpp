@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_PanoramaSkyMaterial() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<PanoramaSkyMaterial>("PanoramaSkyMaterial")
 			.constructor<>()
 			.property<&PanoramaSkyMaterial::get_panorama, &PanoramaSkyMaterial::set_panorama>("panorama")

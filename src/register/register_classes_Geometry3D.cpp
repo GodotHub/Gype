@@ -11,9 +11,8 @@
 using namespace godot;
 
 void register_classes_Geometry3D() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<Geometry3D>("Geometry3D")
-			.constructor<>()
 			.fun<static_cast<PackedVector3Array (Geometry3D::*)(const TypedArray<Plane> &)>(&Geometry3D::compute_convex_mesh_points)>("compute_convex_mesh_points")
 			.fun<static_cast<TypedArray<Plane> (Geometry3D::*)(const Vector3 &)>(&Geometry3D::build_box_planes)>("build_box_planes")
 			.fun<static_cast<TypedArray<Plane> (Geometry3D::*)(double, double, int32_t, Vector3::Axis)>(&Geometry3D::build_cylinder_planes)>("build_cylinder_planes")

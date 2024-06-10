@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/placeholder_cubemap_array.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 

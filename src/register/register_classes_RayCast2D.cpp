@@ -10,7 +10,7 @@
 using namespace godot;
 
 void register_classes_RayCast2D() {
-	qjs::Context::Module &_module = _Node2D;
+	qjs::Context::Module &_module = get_Node2D_module();
 	_module.class_<RayCast2D>("RayCast2D")
 			.constructor<>()
 			.property<&RayCast2D::is_enabled, &RayCast2D::set_enabled>("enabled")

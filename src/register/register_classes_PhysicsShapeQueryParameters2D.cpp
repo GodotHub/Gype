@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_PhysicsShapeQueryParameters2D() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<PhysicsShapeQueryParameters2D>("PhysicsShapeQueryParameters2D")
 			.constructor<>()
 			.property<&PhysicsShapeQueryParameters2D::get_collision_mask, &PhysicsShapeQueryParameters2D::set_collision_mask>("collision_mask")

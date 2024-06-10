@@ -32,13 +32,15 @@
 
 #include <godot_cpp/classes/geometry3d.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
 namespace godot {
 
+Geometry3D *Geometry3D::singleton = nullptr;
+
 Geometry3D *Geometry3D::get_singleton() {
-	static Geometry3D *singleton = nullptr;
 	if (unlikely(singleton == nullptr)) {
 		GDExtensionObjectPtr singleton_obj = internal::gdextension_interface_global_get_singleton(Geometry3D::get_class_static()._native_ptr());
 #ifdef DEBUG_ENABLED
@@ -48,8 +50,18 @@ Geometry3D *Geometry3D::get_singleton() {
 #ifdef DEBUG_ENABLED
 		ERR_FAIL_NULL_V(singleton, nullptr);
 #endif // DEBUG_ENABLED
+		if (likely(singleton)) {
+			ClassDB::_register_engine_singleton(Geometry3D::get_class_static(), singleton);
+		}
 	}
 	return singleton;
+}
+
+Geometry3D::~Geometry3D() {
+	if (singleton == this) {
+		ClassDB::_unregister_engine_singleton(Geometry3D::get_class_static());
+		singleton = nullptr;
+	}
 }
 
 PackedVector3Array Geometry3D::compute_convex_mesh_points(const TypedArray<Plane> &planes) {
@@ -154,6 +166,12 @@ PackedVector3Array Geometry3D::clip_polygon(const PackedVector3Array &points, co
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Geometry3D::get_class_static()._native_ptr(), StringName("clip_polygon")._native_ptr(), 2603188319);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, PackedVector3Array());
 	return internal::_call_native_mb_ret<PackedVector3Array>(_gde_method_bind, _owner, &points, &plane);
+}
+
+PackedInt32Array Geometry3D::tetrahedralize_delaunay(const PackedVector3Array &points) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Geometry3D::get_class_static()._native_ptr(), StringName("tetrahedralize_delaunay")._native_ptr(), 1230191221);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, PackedInt32Array());
+	return internal::_call_native_mb_ret<PackedInt32Array>(_gde_method_bind, _owner, &points);
 }
 
 

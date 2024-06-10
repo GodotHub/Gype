@@ -91,6 +91,11 @@ public:
 		GLOW_BLEND_MODE_MIX = 4,
 	};
 
+	enum FogMode {
+		FOG_MODE_EXPONENTIAL = 0,
+		FOG_MODE_DEPTH = 1,
+	};
+
 	enum SDFGIYScale {
 		SDFGI_Y_SCALE_50_PERCENT = 0,
 		SDFGI_Y_SCALE_75_PERCENT = 1,
@@ -221,6 +226,8 @@ public:
 	Ref<Texture> get_glow_map() const;
 	void set_fog_enabled(bool enabled);
 	bool is_fog_enabled() const;
+	void set_fog_mode(Environment::FogMode mode);
+	Environment::FogMode get_fog_mode() const;
 	void set_fog_light_color(const Color &light_color);
 	Color get_fog_light_color() const;
 	void set_fog_light_energy(double light_energy);
@@ -237,6 +244,12 @@ public:
 	double get_fog_aerial_perspective() const;
 	void set_fog_sky_affect(double sky_affect);
 	double get_fog_sky_affect() const;
+	void set_fog_depth_curve(double curve);
+	double get_fog_depth_curve() const;
+	void set_fog_depth_begin(double begin);
+	double get_fog_depth_begin() const;
+	void set_fog_depth_end(double end);
+	double get_fog_depth_end() const;
 	void set_volumetric_fog_enabled(bool enabled);
 	bool is_volumetric_fog_enabled() const;
 	void set_volumetric_fog_emission(const Color &color);
@@ -290,6 +303,7 @@ VARIANT_ENUM_CAST(Environment::AmbientSource);
 VARIANT_ENUM_CAST(Environment::ReflectionSource);
 VARIANT_ENUM_CAST(Environment::ToneMapper);
 VARIANT_ENUM_CAST(Environment::GlowBlendMode);
+VARIANT_ENUM_CAST(Environment::FogMode);
 VARIANT_ENUM_CAST(Environment::SDFGIYScale);
 
 #endif // ! GODOT_CPP_ENVIRONMENT_HPP

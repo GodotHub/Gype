@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/text_server_extension.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -150,6 +151,12 @@ TextServer::FontAntialiasing TextServerExtension::_font_get_antialiasing(const R
 	return TextServer::FontAntialiasing(0);
 }
 
+void TextServerExtension::_font_set_disable_embedded_bitmaps(const RID &font_rid, bool disable_embedded_bitmaps) {}
+
+bool TextServerExtension::_font_get_disable_embedded_bitmaps(const RID &font_rid) const {
+	return false;
+}
+
 void TextServerExtension::_font_set_generate_mipmaps(const RID &font_rid, bool generate_mipmaps) {}
 
 bool TextServerExtension::_font_get_generate_mipmaps(const RID &font_rid) const {
@@ -220,6 +227,12 @@ void TextServerExtension::_font_set_spacing(const RID &font_rid, TextServer::Spa
 
 int64_t TextServerExtension::_font_get_spacing(const RID &font_rid, TextServer::SpacingType spacing) const {
 	return 0;
+}
+
+void TextServerExtension::_font_set_baseline_offset(const RID &font_rid, double baseline_offset) {}
+
+double TextServerExtension::_font_get_baseline_offset(const RID &font_rid) const {
+	return 0.0;
 }
 
 void TextServerExtension::_font_set_transform(const RID &font_rid, const Transform2D &transform) {}
@@ -468,6 +481,12 @@ String TextServerExtension::_shaped_text_get_custom_punctuation(const RID &shape
 	return String();
 }
 
+void TextServerExtension::_shaped_text_set_custom_ellipsis(const RID &shaped, int64_t _char) {}
+
+int64_t TextServerExtension::_shaped_text_get_custom_ellipsis(const RID &shaped) const {
+	return 0;
+}
+
 void TextServerExtension::_shaped_text_set_orientation(const RID &shaped, TextServer::Orientation orientation) {}
 
 TextServer::Orientation TextServerExtension::_shaped_text_get_orientation(const RID &shaped) const {
@@ -570,7 +589,7 @@ PackedInt32Array TextServerExtension::_shaped_text_get_line_breaks(const RID &sh
 	return PackedInt32Array();
 }
 
-PackedInt32Array TextServerExtension::_shaped_text_get_word_breaks(const RID &shaped, BitField<TextServer::GraphemeFlag> grapheme_flags) const {
+PackedInt32Array TextServerExtension::_shaped_text_get_word_breaks(const RID &shaped, BitField<TextServer::GraphemeFlag> grapheme_flags, BitField<TextServer::GraphemeFlag> skip_grapheme_flags) const {
 	return PackedInt32Array();
 }
 
@@ -598,6 +617,14 @@ Array TextServerExtension::_shaped_text_get_objects(const RID &shaped) const {
 
 Rect2 TextServerExtension::_shaped_text_get_object_rect(const RID &shaped, const Variant &key) const {
 	return Rect2();
+}
+
+Vector2i TextServerExtension::_shaped_text_get_object_range(const RID &shaped, const Variant &key) const {
+	return Vector2i();
+}
+
+int64_t TextServerExtension::_shaped_text_get_object_glyph(const RID &shaped, const Variant &key) const {
+	return 0;
 }
 
 Vector2 TextServerExtension::_shaped_text_get_size(const RID &shaped) const {
@@ -674,11 +701,11 @@ int64_t TextServerExtension::_shaped_text_closest_character_pos(const RID &shape
 	return 0;
 }
 
-String TextServerExtension::_format_number(const String &string, const String &language) const {
+String TextServerExtension::_format_number(const String &number, const String &language) const {
 	return String();
 }
 
-String TextServerExtension::_parse_number(const String &string, const String &language) const {
+String TextServerExtension::_parse_number(const String &number, const String &language) const {
 	return String();
 }
 
@@ -691,6 +718,10 @@ String TextServerExtension::_strip_diacritics(const String &string) const {
 }
 
 bool TextServerExtension::_is_valid_identifier(const String &string) const {
+	return false;
+}
+
+bool TextServerExtension::_is_valid_letter(int64_t unicode) const {
 	return false;
 }
 
@@ -715,6 +746,10 @@ String TextServerExtension::_string_to_upper(const String &string, const String 
 }
 
 String TextServerExtension::_string_to_lower(const String &string, const String &language) const {
+	return String();
+}
+
+String TextServerExtension::_string_to_title(const String &string, const String &language) const {
 	return String();
 }
 

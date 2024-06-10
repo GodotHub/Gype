@@ -37,6 +37,7 @@
 #include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/variant/packed_vector2_array.hpp>
+#include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/vector2.hpp>
 
@@ -47,10 +48,11 @@
 #include <godot_cpp/templates/vararg.hpp>
 namespace godot {
 
+class GraphFrame;
 class HBoxContainer;
 class Node;
 class Object;
-class StringName;
+struct Rect2;
 
 class GraphEdit : public Control {
 	GDEXTENSION_CLASS(GraphEdit, Control)
@@ -62,11 +64,18 @@ public:
 		SCROLL_PANS = 1,
 	};
 
+	enum GridPattern {
+		GRID_PATTERN_LINES = 0,
+		GRID_PATTERN_DOTS = 1,
+	};
+
 	Error connect_node(const StringName &from_node, int32_t from_port, const StringName &to_node, int32_t to_port);
 	bool is_node_connected(const StringName &from_node, int32_t from_port, const StringName &to_node, int32_t to_port);
 	void disconnect_node(const StringName &from_node, int32_t from_port, const StringName &to_node, int32_t to_port);
 	void set_connection_activity(const StringName &from_node, int32_t from_port, const StringName &to_node, int32_t to_port, double amount);
 	TypedArray<Dictionary> get_connection_list() const;
+	Dictionary get_closest_connection_at_point(const Vector2 &point, double max_distance = 4.0) const;
+	TypedArray<Dictionary> get_connections_intersecting_with_rect(const Rect2 &rect) const;
 	void clear_connections();
 	void force_connection_drag_end();
 	Vector2 get_scroll_offset() const;
@@ -78,7 +87,11 @@ public:
 	void add_valid_connection_type(int32_t from_type, int32_t to_type);
 	void remove_valid_connection_type(int32_t from_type, int32_t to_type);
 	bool is_valid_connection_type(int32_t from_type, int32_t to_type) const;
-	PackedVector2Array get_connection_line(const Vector2 &from_node, const Vector2 &to_node);
+	PackedVector2Array get_connection_line(const Vector2 &from_node, const Vector2 &to_node) const;
+	void attach_graph_element_to_frame(const StringName &element, const StringName &frame);
+	void detach_graph_element_from_frame(const StringName &element);
+	GraphFrame *get_element_frame(const StringName &element);
+	TypedArray<StringName> get_attached_nodes_of_frame(const StringName &frame);
 	void set_panning_scheme(GraphEdit::PanningScheme scheme);
 	GraphEdit::PanningScheme get_panning_scheme() const;
 	void set_zoom(double zoom);
@@ -91,6 +104,8 @@ public:
 	double get_zoom_step() const;
 	void set_show_grid(bool enable);
 	bool is_showing_grid() const;
+	void set_grid_pattern(GraphEdit::GridPattern pattern);
+	GraphEdit::GridPattern get_grid_pattern() const;
 	void set_snapping_enabled(bool enable);
 	bool is_snapping_enabled() const;
 	void set_snapping_distance(int32_t pixels);
@@ -153,5 +168,6 @@ public:
 } // namespace godot
 
 VARIANT_ENUM_CAST(GraphEdit::PanningScheme);
+VARIANT_ENUM_CAST(GraphEdit::GridPattern);
 
 #endif // ! GODOT_CPP_GRAPH_EDIT_HPP

@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_OccluderPolygon2D() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<OccluderPolygon2D>("OccluderPolygon2D")
 			.constructor<>()
 			.property<&OccluderPolygon2D::is_closed, &OccluderPolygon2D::set_closed>("closed")

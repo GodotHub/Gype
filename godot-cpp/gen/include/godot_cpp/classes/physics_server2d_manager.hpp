@@ -48,6 +48,8 @@ class String;
 class PhysicsServer2DManager : public Object {
 	GDEXTENSION_CLASS(PhysicsServer2DManager, Object)
 
+	static PhysicsServer2DManager *singleton;
+
 public:
 
 	static PhysicsServer2DManager *get_singleton();
@@ -59,6 +61,8 @@ protected:
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
 	}
+
+	~PhysicsServer2DManager();
 
 public:
 

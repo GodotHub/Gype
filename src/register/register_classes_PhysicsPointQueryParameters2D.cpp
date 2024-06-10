@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_PhysicsPointQueryParameters2D() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<PhysicsPointQueryParameters2D>("PhysicsPointQueryParameters2D")
 			.constructor<>()
 			.property<&PhysicsPointQueryParameters2D::get_position, &PhysicsPointQueryParameters2D::set_position>("position")

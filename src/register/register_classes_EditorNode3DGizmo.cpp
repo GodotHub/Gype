@@ -24,7 +24,7 @@
 using namespace godot;
 
 void register_classes_EditorNode3DGizmo() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<EditorNode3DGizmo>("EditorNode3DGizmo")
 			.constructor<>()
 			.fun<static_cast<void (EditorNode3DGizmo::*)()>(&EditorNode3DGizmo::_redraw)>("_redraw")

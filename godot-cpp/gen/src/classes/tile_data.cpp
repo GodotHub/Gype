@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/tile_data.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -156,12 +157,18 @@ void TileData::set_occluder(int32_t layer_id, const Ref<OccluderPolygon2D> &occl
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &layer_id_encoded, (occluder_polygon != nullptr ? &occluder_polygon->_owner : nullptr));
 }
 
-Ref<OccluderPolygon2D> TileData::get_occluder(int32_t layer_id) const {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TileData::get_class_static()._native_ptr(), StringName("get_occluder")._native_ptr(), 2458574231);
+Ref<OccluderPolygon2D> TileData::get_occluder(int32_t layer_id, bool flip_h, bool flip_v, bool transpose) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TileData::get_class_static()._native_ptr(), StringName("get_occluder")._native_ptr(), 2377324099);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Ref<OccluderPolygon2D>());
 	int64_t layer_id_encoded;
 	PtrToArg<int64_t>::encode(layer_id, &layer_id_encoded);
-	return Ref<OccluderPolygon2D>::_gde_internal_constructor(internal::_call_native_mb_ret_obj<OccluderPolygon2D>(_gde_method_bind, _owner, &layer_id_encoded));
+	int8_t flip_h_encoded;
+	PtrToArg<bool>::encode(flip_h, &flip_h_encoded);
+	int8_t flip_v_encoded;
+	PtrToArg<bool>::encode(flip_v, &flip_v_encoded);
+	int8_t transpose_encoded;
+	PtrToArg<bool>::encode(transpose, &transpose_encoded);
+	return Ref<OccluderPolygon2D>::_gde_internal_constructor(internal::_call_native_mb_ret_obj<OccluderPolygon2D>(_gde_method_bind, _owner, &layer_id_encoded, &flip_h_encoded, &flip_v_encoded, &transpose_encoded));
 }
 
 void TileData::set_constant_linear_velocity(int32_t layer_id, const Vector2 &velocity) {
@@ -340,6 +347,12 @@ int32_t TileData::get_terrain_peering_bit(TileSet::CellNeighbor peering_bit) con
 	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &peering_bit);
 }
 
+bool TileData::is_valid_terrain_peering_bit(TileSet::CellNeighbor peering_bit) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TileData::get_class_static()._native_ptr(), StringName("is_valid_terrain_peering_bit")._native_ptr(), 845723972);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner, &peering_bit);
+}
+
 void TileData::set_navigation_polygon(int32_t layer_id, const Ref<NavigationPolygon> &navigation_polygon) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TileData::get_class_static()._native_ptr(), StringName("set_navigation_polygon")._native_ptr(), 2224691167);
 	CHECK_METHOD_BIND(_gde_method_bind);
@@ -348,12 +361,18 @@ void TileData::set_navigation_polygon(int32_t layer_id, const Ref<NavigationPoly
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &layer_id_encoded, (navigation_polygon != nullptr ? &navigation_polygon->_owner : nullptr));
 }
 
-Ref<NavigationPolygon> TileData::get_navigation_polygon(int32_t layer_id) const {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TileData::get_class_static()._native_ptr(), StringName("get_navigation_polygon")._native_ptr(), 3991786031);
+Ref<NavigationPolygon> TileData::get_navigation_polygon(int32_t layer_id, bool flip_h, bool flip_v, bool transpose) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TileData::get_class_static()._native_ptr(), StringName("get_navigation_polygon")._native_ptr(), 2907127272);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Ref<NavigationPolygon>());
 	int64_t layer_id_encoded;
 	PtrToArg<int64_t>::encode(layer_id, &layer_id_encoded);
-	return Ref<NavigationPolygon>::_gde_internal_constructor(internal::_call_native_mb_ret_obj<NavigationPolygon>(_gde_method_bind, _owner, &layer_id_encoded));
+	int8_t flip_h_encoded;
+	PtrToArg<bool>::encode(flip_h, &flip_h_encoded);
+	int8_t flip_v_encoded;
+	PtrToArg<bool>::encode(flip_v, &flip_v_encoded);
+	int8_t transpose_encoded;
+	PtrToArg<bool>::encode(transpose, &transpose_encoded);
+	return Ref<NavigationPolygon>::_gde_internal_constructor(internal::_call_native_mb_ret_obj<NavigationPolygon>(_gde_method_bind, _owner, &layer_id_encoded, &flip_h_encoded, &flip_v_encoded, &transpose_encoded));
 }
 
 void TileData::set_probability(double probability) {

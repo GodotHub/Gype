@@ -116,6 +116,7 @@
 #include <godot_cpp/classes/audio_effect_eq21.hpp>
 #include <godot_cpp/classes/audio_effect_eq6.hpp>
 #include <godot_cpp/classes/audio_effect_filter.hpp>
+#include <godot_cpp/classes/audio_effect_hard_limiter.hpp>
 #include <godot_cpp/classes/audio_effect_high_pass_filter.hpp>
 #include <godot_cpp/classes/audio_effect_high_shelf_filter.hpp>
 #include <godot_cpp/classes/audio_effect_instance.hpp>
@@ -138,18 +139,24 @@
 #include <godot_cpp/classes/audio_stream.hpp>
 #include <godot_cpp/classes/audio_stream_generator.hpp>
 #include <godot_cpp/classes/audio_stream_generator_playback.hpp>
+#include <godot_cpp/classes/audio_stream_interactive.hpp>
 #include <godot_cpp/classes/audio_stream_microphone.hpp>
 #include <godot_cpp/classes/audio_stream_mp3.hpp>
 #include <godot_cpp/classes/audio_stream_ogg_vorbis.hpp>
 #include <godot_cpp/classes/audio_stream_playback.hpp>
+#include <godot_cpp/classes/audio_stream_playback_interactive.hpp>
 #include <godot_cpp/classes/audio_stream_playback_ogg_vorbis.hpp>
+#include <godot_cpp/classes/audio_stream_playback_playlist.hpp>
 #include <godot_cpp/classes/audio_stream_playback_polyphonic.hpp>
 #include <godot_cpp/classes/audio_stream_playback_resampled.hpp>
+#include <godot_cpp/classes/audio_stream_playback_synchronized.hpp>
 #include <godot_cpp/classes/audio_stream_player.hpp>
 #include <godot_cpp/classes/audio_stream_player2d.hpp>
 #include <godot_cpp/classes/audio_stream_player3d.hpp>
+#include <godot_cpp/classes/audio_stream_playlist.hpp>
 #include <godot_cpp/classes/audio_stream_polyphonic.hpp>
 #include <godot_cpp/classes/audio_stream_randomizer.hpp>
+#include <godot_cpp/classes/audio_stream_synchronized.hpp>
 #include <godot_cpp/classes/audio_stream_wav.hpp>
 #include <godot_cpp/classes/a_star2d.hpp>
 #include <godot_cpp/classes/a_star3d.hpp>
@@ -205,6 +212,8 @@
 #include <godot_cpp/classes/color_picker.hpp>
 #include <godot_cpp/classes/color_picker_button.hpp>
 #include <godot_cpp/classes/color_rect.hpp>
+#include <godot_cpp/classes/compositor.hpp>
+#include <godot_cpp/classes/compositor_effect.hpp>
 #include <godot_cpp/classes/compressed_cubemap.hpp>
 #include <godot_cpp/classes/compressed_cubemap_array.hpp>
 #include <godot_cpp/classes/compressed_texture2d.hpp>
@@ -282,8 +291,9 @@
 #include <godot_cpp/classes/editor_resource_tooltip_plugin.hpp>
 #include <godot_cpp/classes/editor_scene_format_importer.hpp>
 #include <godot_cpp/classes/editor_scene_format_importer_blend.hpp>
-#include <godot_cpp/classes/editor_scene_format_importer_fbx.hpp>
+#include <godot_cpp/classes/editor_scene_format_importer_fbx2_gltf.hpp>
 #include <godot_cpp/classes/editor_scene_format_importer_gltf.hpp>
+#include <godot_cpp/classes/editor_scene_format_importer_ufbx.hpp>
 #include <godot_cpp/classes/editor_scene_post_import.hpp>
 #include <godot_cpp/classes/editor_scene_post_import_plugin.hpp>
 #include <godot_cpp/classes/editor_script.hpp>
@@ -305,6 +315,8 @@
 #include <godot_cpp/classes/e_net_multiplayer_peer.hpp>
 #include <godot_cpp/classes/e_net_packet_peer.hpp>
 #include <godot_cpp/classes/fast_noise_lite.hpp>
+#include <godot_cpp/classes/fbx_document.hpp>
+#include <godot_cpp/classes/fbx_state.hpp>
 #include <godot_cpp/classes/file_access.hpp>
 #include <godot_cpp/classes/file_dialog.hpp>
 #include <godot_cpp/classes/file_system_dock.hpp>
@@ -314,6 +326,7 @@
 #include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/font_file.hpp>
 #include <godot_cpp/classes/font_variation.hpp>
+#include <godot_cpp/classes/framebuffer_cache_rd.hpp>
 #include <godot_cpp/classes/gd_extension.hpp>
 #include <godot_cpp/classes/gd_extension_manager.hpp>
 #include <godot_cpp/classes/gd_script.hpp>
@@ -358,6 +371,7 @@
 #include <godot_cpp/classes/gradient_texture2d.hpp>
 #include <godot_cpp/classes/graph_edit.hpp>
 #include <godot_cpp/classes/graph_element.hpp>
+#include <godot_cpp/classes/graph_frame.hpp>
 #include <godot_cpp/classes/graph_node.hpp>
 #include <godot_cpp/classes/grid_container.hpp>
 #include <godot_cpp/classes/grid_map.hpp>
@@ -461,6 +475,7 @@
 #include <godot_cpp/classes/multi_mesh_instance2d.hpp>
 #include <godot_cpp/classes/multi_mesh_instance3d.hpp>
 #include <godot_cpp/classes/mutex.hpp>
+#include <godot_cpp/classes/native_menu.hpp>
 #include <godot_cpp/classes/navigation_agent2d.hpp>
 #include <godot_cpp/classes/navigation_agent3d.hpp>
 #include <godot_cpp/classes/navigation_link2d.hpp>
@@ -501,6 +516,10 @@
 #include <godot_cpp/classes/open_xr_action.hpp>
 #include <godot_cpp/classes/open_xr_action_map.hpp>
 #include <godot_cpp/classes/open_xr_action_set.hpp>
+#include <godot_cpp/classes/open_xr_composition_layer.hpp>
+#include <godot_cpp/classes/open_xr_composition_layer_cylinder.hpp>
+#include <godot_cpp/classes/open_xr_composition_layer_equirect.hpp>
+#include <godot_cpp/classes/open_xr_composition_layer_quad.hpp>
 #include <godot_cpp/classes/open_xr_extension_wrapper_extension.hpp>
 #include <godot_cpp/classes/open_xr_hand.hpp>
 #include <godot_cpp/classes/open_xr_interaction_profile.hpp>
@@ -521,6 +540,7 @@
 #include <godot_cpp/classes/panel.hpp>
 #include <godot_cpp/classes/panel_container.hpp>
 #include <godot_cpp/classes/panorama_sky_material.hpp>
+#include <godot_cpp/classes/parallax2d.hpp>
 #include <godot_cpp/classes/parallax_background.hpp>
 #include <godot_cpp/classes/parallax_layer.hpp>
 #include <godot_cpp/classes/particle_process_material.hpp>
@@ -532,6 +552,7 @@
 #include <godot_cpp/classes/performance.hpp>
 #include <godot_cpp/classes/physical_bone2d.hpp>
 #include <godot_cpp/classes/physical_bone3d.hpp>
+#include <godot_cpp/classes/physical_bone_simulator3d.hpp>
 #include <godot_cpp/classes/physical_sky_material.hpp>
 #include <godot_cpp/classes/physics_body2d.hpp>
 #include <godot_cpp/classes/physics_body3d.hpp>
@@ -628,10 +649,16 @@
 #include <godot_cpp/classes/remote_transform3d.hpp>
 #include <godot_cpp/classes/rendering_device.hpp>
 #include <godot_cpp/classes/rendering_server.hpp>
+#include <godot_cpp/classes/render_data.hpp>
+#include <godot_cpp/classes/render_data_extension.hpp>
+#include <godot_cpp/classes/render_data_rd.hpp>
 #include <godot_cpp/classes/render_scene_buffers.hpp>
 #include <godot_cpp/classes/render_scene_buffers_configuration.hpp>
 #include <godot_cpp/classes/render_scene_buffers_extension.hpp>
 #include <godot_cpp/classes/render_scene_buffers_rd.hpp>
+#include <godot_cpp/classes/render_scene_data.hpp>
+#include <godot_cpp/classes/render_scene_data_extension.hpp>
+#include <godot_cpp/classes/render_scene_data_rd.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/resource_format_loader.hpp>
 #include <godot_cpp/classes/resource_format_saver.hpp>
@@ -702,6 +729,7 @@
 #include <godot_cpp/classes/skeleton_modification2d_stack_holder.hpp>
 #include <godot_cpp/classes/skeleton_modification2d_two_bone_ik.hpp>
 #include <godot_cpp/classes/skeleton_modification_stack2d.hpp>
+#include <godot_cpp/classes/skeleton_modifier3d.hpp>
 #include <godot_cpp/classes/skeleton_profile.hpp>
 #include <godot_cpp/classes/skeleton_profile_humanoid.hpp>
 #include <godot_cpp/classes/skin.hpp>
@@ -724,6 +752,7 @@
 #include <godot_cpp/classes/standard_material3d.hpp>
 #include <godot_cpp/classes/static_body2d.hpp>
 #include <godot_cpp/classes/static_body3d.hpp>
+#include <godot_cpp/classes/status_indicator.hpp>
 #include <godot_cpp/classes/stream_peer.hpp>
 #include <godot_cpp/classes/stream_peer_buffer.hpp>
 #include <godot_cpp/classes/stream_peer_extension.hpp>
@@ -771,6 +800,7 @@
 #include <godot_cpp/classes/thread.hpp>
 #include <godot_cpp/classes/tile_data.hpp>
 #include <godot_cpp/classes/tile_map.hpp>
+#include <godot_cpp/classes/tile_map_layer.hpp>
 #include <godot_cpp/classes/tile_map_pattern.hpp>
 #include <godot_cpp/classes/tile_set.hpp>
 #include <godot_cpp/classes/tile_set_atlas_source.hpp>
@@ -791,6 +821,7 @@
 #include <godot_cpp/classes/tweener.hpp>
 #include <godot_cpp/classes/udp_server.hpp>
 #include <godot_cpp/classes/undo_redo.hpp>
+#include <godot_cpp/classes/uniform_set_cache_rd.hpp>
 #include <godot_cpp/classes/upnp.hpp>
 #include <godot_cpp/classes/upnp_device.hpp>
 #include <godot_cpp/classes/vehicle_body3d.hpp>
@@ -832,9 +863,17 @@
 #include <godot_cpp/classes/world_environment.hpp>
 #include <godot_cpp/classes/x509_certificate.hpp>
 #include <godot_cpp/classes/xml_parser.hpp>
+#include <godot_cpp/classes/xrvrs.hpp>
 #include <godot_cpp/classes/xr_anchor3d.hpp>
+#include <godot_cpp/classes/xr_body_modifier3d.hpp>
+#include <godot_cpp/classes/xr_body_tracker.hpp>
 #include <godot_cpp/classes/xr_camera3d.hpp>
 #include <godot_cpp/classes/xr_controller3d.hpp>
+#include <godot_cpp/classes/xr_controller_tracker.hpp>
+#include <godot_cpp/classes/xr_face_modifier3d.hpp>
+#include <godot_cpp/classes/xr_face_tracker.hpp>
+#include <godot_cpp/classes/xr_hand_modifier3d.hpp>
+#include <godot_cpp/classes/xr_hand_tracker.hpp>
 #include <godot_cpp/classes/xr_interface.hpp>
 #include <godot_cpp/classes/xr_interface_extension.hpp>
 #include <godot_cpp/classes/xr_node3d.hpp>
@@ -842,6 +881,7 @@
 #include <godot_cpp/classes/xr_pose.hpp>
 #include <godot_cpp/classes/xr_positional_tracker.hpp>
 #include <godot_cpp/classes/xr_server.hpp>
+#include <godot_cpp/classes/xr_tracker.hpp>
 #include <godot_cpp/classes/zip_packer.hpp>
 #include <godot_cpp/classes/zip_reader.hpp>
 #include <godot_cpp/core/ext_wrappers.gen.inc>
@@ -862,6 +902,7 @@
 #include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/packed_vector2_array.hpp>
 #include <godot_cpp/variant/packed_vector3_array.hpp>
+#include <godot_cpp/variant/packed_vector4_array.hpp>
 #include <godot_cpp/variant/rid.hpp>
 #include <godot_cpp/variant/signal.hpp>
 #include <godot_cpp/variant/string.hpp>

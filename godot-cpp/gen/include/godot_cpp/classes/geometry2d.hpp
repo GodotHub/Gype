@@ -51,6 +51,8 @@ namespace godot {
 class Geometry2D : public Object {
 	GDEXTENSION_CLASS(Geometry2D, Object)
 
+	static Geometry2D *singleton;
+
 public:
 
 	enum PolyBooleanOperation {
@@ -104,6 +106,8 @@ protected:
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
 	}
+
+	~Geometry2D();
 
 public:
 

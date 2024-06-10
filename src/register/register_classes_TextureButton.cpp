@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_TextureButton() {
-	qjs::Context::Module &_module = _Control;
+	qjs::Context::Module &_module = get_Control_module();
 	_module.class_<TextureButton>("TextureButton")
 			.constructor<>()
 			.property<&TextureButton::get_texture_normal, &TextureButton::set_texture_normal>("texture_normal")

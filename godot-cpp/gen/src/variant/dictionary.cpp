@@ -65,6 +65,8 @@ void Dictionary::init_bindings() {
 	_method_bindings.method_clear = internal::gdextension_interface_variant_get_ptr_builtin_method(GDEXTENSION_VARIANT_TYPE_DICTIONARY, _gde_name._native_ptr(), 3218959716);
 	_gde_name = StringName("merge");
 	_method_bindings.method_merge = internal::gdextension_interface_variant_get_ptr_builtin_method(GDEXTENSION_VARIANT_TYPE_DICTIONARY, _gde_name._native_ptr(), 2079548978);
+	_gde_name = StringName("merged");
+	_method_bindings.method_merged = internal::gdextension_interface_variant_get_ptr_builtin_method(GDEXTENSION_VARIANT_TYPE_DICTIONARY, _gde_name._native_ptr(), 2271165639);
 	_gde_name = StringName("has");
 	_method_bindings.method_has = internal::gdextension_interface_variant_get_ptr_builtin_method(GDEXTENSION_VARIANT_TYPE_DICTIONARY, _gde_name._native_ptr(), 3680194679);
 	_gde_name = StringName("has_all");
@@ -83,6 +85,8 @@ void Dictionary::init_bindings() {
 	_method_bindings.method_duplicate = internal::gdextension_interface_variant_get_ptr_builtin_method(GDEXTENSION_VARIANT_TYPE_DICTIONARY, _gde_name._native_ptr(), 830099069);
 	_gde_name = StringName("get");
 	_method_bindings.method_get = internal::gdextension_interface_variant_get_ptr_builtin_method(GDEXTENSION_VARIANT_TYPE_DICTIONARY, _gde_name._native_ptr(), 2205440559);
+	_gde_name = StringName("get_or_add");
+	_method_bindings.method_get_or_add = internal::gdextension_interface_variant_get_ptr_builtin_method(GDEXTENSION_VARIANT_TYPE_DICTIONARY, _gde_name._native_ptr(), 1052551076);
 	_gde_name = StringName("make_read_only");
 	_method_bindings.method_make_read_only = internal::gdextension_interface_variant_get_ptr_builtin_method(GDEXTENSION_VARIANT_TYPE_DICTIONARY, _gde_name._native_ptr(), 3218959716);
 	_gde_name = StringName("is_read_only");
@@ -139,6 +143,12 @@ void Dictionary::merge(const Dictionary &dictionary, bool overwrite){
 	internal::_call_builtin_method_ptr_no_ret(_method_bindings.method_merge, (GDExtensionTypePtr)&opaque, &dictionary, &overwrite_encoded);
 }
 
+Dictionary Dictionary::merged(const Dictionary &dictionary, bool overwrite) const{
+	int8_t overwrite_encoded;
+	PtrToArg<bool>::encode(overwrite, &overwrite_encoded);
+	return internal::_call_builtin_method_ptr_ret<Dictionary>(_method_bindings.method_merged, (GDExtensionTypePtr)&opaque, &dictionary, &overwrite_encoded);
+}
+
 bool Dictionary::has(const Variant &key) const{
 	return internal::_call_builtin_method_ptr_ret<int8_t>(_method_bindings.method_has, (GDExtensionTypePtr)&opaque, &key);
 }
@@ -175,6 +185,10 @@ Dictionary Dictionary::duplicate(bool deep) const{
 
 Variant Dictionary::get(const Variant &key, const Variant &_default) const{
 	return internal::_call_builtin_method_ptr_ret<Variant>(_method_bindings.method_get, (GDExtensionTypePtr)&opaque, &key, &_default);
+}
+
+Variant Dictionary::get_or_add(const Variant &key, const Variant &_default){
+	return internal::_call_builtin_method_ptr_ret<Variant>(_method_bindings.method_get_or_add, (GDExtensionTypePtr)&opaque, &key, &_default);
 }
 
 void Dictionary::make_read_only(){

@@ -61,6 +61,8 @@ void Callable::_init_bindings_constructors_destructor() {
 void Callable::init_bindings() {
 	Callable::_init_bindings_constructors_destructor();
 	StringName _gde_name;
+	_gde_name = StringName("create");
+	_method_bindings.method_create = internal::gdextension_interface_variant_get_ptr_builtin_method(GDEXTENSION_VARIANT_TYPE_CALLABLE, _gde_name._native_ptr(), 1709381114);
 	_gde_name = StringName("callv");
 	_method_bindings.method_callv = internal::gdextension_interface_variant_get_ptr_builtin_method(GDEXTENSION_VARIANT_TYPE_CALLABLE, _gde_name._native_ptr(), 413578926);
 	_gde_name = StringName("is_null");
@@ -77,6 +79,8 @@ void Callable::init_bindings() {
 	_method_bindings.method_get_object_id = internal::gdextension_interface_variant_get_ptr_builtin_method(GDEXTENSION_VARIANT_TYPE_CALLABLE, _gde_name._native_ptr(), 3173160232);
 	_gde_name = StringName("get_method");
 	_method_bindings.method_get_method = internal::gdextension_interface_variant_get_ptr_builtin_method(GDEXTENSION_VARIANT_TYPE_CALLABLE, _gde_name._native_ptr(), 1825232092);
+	_gde_name = StringName("get_argument_count");
+	_method_bindings.method_get_argument_count = internal::gdextension_interface_variant_get_ptr_builtin_method(GDEXTENSION_VARIANT_TYPE_CALLABLE, _gde_name._native_ptr(), 3173160232);
 	_gde_name = StringName("get_bound_arguments_count");
 	_method_bindings.method_get_bound_arguments_count = internal::gdextension_interface_variant_get_ptr_builtin_method(GDEXTENSION_VARIANT_TYPE_CALLABLE, _gde_name._native_ptr(), 3173160232);
 	_gde_name = StringName("get_bound_arguments");
@@ -130,6 +134,10 @@ Callable::~Callable() {
 	_method_bindings.destructor(&opaque);
 }
 
+Callable Callable::create(const Variant &variant, const StringName &method){
+	return internal::_call_builtin_method_ptr_ret<Callable>(_method_bindings.method_create, nullptr, &variant, &method);
+}
+
 Variant Callable::callv(const Array &arguments) const{
 	return internal::_call_builtin_method_ptr_ret<Variant>(_method_bindings.method_callv, (GDExtensionTypePtr)&opaque, &arguments);
 }
@@ -160,6 +168,10 @@ int64_t Callable::get_object_id() const{
 
 StringName Callable::get_method() const{
 	return internal::_call_builtin_method_ptr_ret<StringName>(_method_bindings.method_get_method, (GDExtensionTypePtr)&opaque);
+}
+
+int64_t Callable::get_argument_count() const{
+	return internal::_call_builtin_method_ptr_ret<int64_t>(_method_bindings.method_get_argument_count, (GDExtensionTypePtr)&opaque);
 }
 
 int64_t Callable::get_bound_arguments_count() const{

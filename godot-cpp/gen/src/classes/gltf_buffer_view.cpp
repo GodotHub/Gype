@@ -32,13 +32,22 @@
 
 #include <godot_cpp/classes/gltf_buffer_view.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
+#include <godot_cpp/classes/gltf_state.hpp>
+
 namespace godot {
 
-int32_t GLTFBufferView::get_buffer() {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFBufferView::get_class_static()._native_ptr(), StringName("get_buffer")._native_ptr(), 2455072627);
+PackedByteArray GLTFBufferView::load_buffer_view_data(const Ref<GLTFState> &state) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFBufferView::get_class_static()._native_ptr(), StringName("load_buffer_view_data")._native_ptr(), 3945446907);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, PackedByteArray());
+	return internal::_call_native_mb_ret<PackedByteArray>(_gde_method_bind, _owner, (state != nullptr ? &state->_owner : nullptr));
+}
+
+int32_t GLTFBufferView::get_buffer() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFBufferView::get_class_static()._native_ptr(), StringName("get_buffer")._native_ptr(), 3905245786);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
 	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
 }
@@ -51,8 +60,8 @@ void GLTFBufferView::set_buffer(int32_t buffer) {
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &buffer_encoded);
 }
 
-int32_t GLTFBufferView::get_byte_offset() {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFBufferView::get_class_static()._native_ptr(), StringName("get_byte_offset")._native_ptr(), 2455072627);
+int32_t GLTFBufferView::get_byte_offset() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFBufferView::get_class_static()._native_ptr(), StringName("get_byte_offset")._native_ptr(), 3905245786);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
 	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
 }
@@ -65,8 +74,8 @@ void GLTFBufferView::set_byte_offset(int32_t byte_offset) {
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &byte_offset_encoded);
 }
 
-int32_t GLTFBufferView::get_byte_length() {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFBufferView::get_class_static()._native_ptr(), StringName("get_byte_length")._native_ptr(), 2455072627);
+int32_t GLTFBufferView::get_byte_length() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFBufferView::get_class_static()._native_ptr(), StringName("get_byte_length")._native_ptr(), 3905245786);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
 	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
 }
@@ -79,8 +88,8 @@ void GLTFBufferView::set_byte_length(int32_t byte_length) {
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &byte_length_encoded);
 }
 
-int32_t GLTFBufferView::get_byte_stride() {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFBufferView::get_class_static()._native_ptr(), StringName("get_byte_stride")._native_ptr(), 2455072627);
+int32_t GLTFBufferView::get_byte_stride() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFBufferView::get_class_static()._native_ptr(), StringName("get_byte_stride")._native_ptr(), 3905245786);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
 	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
 }
@@ -93,8 +102,8 @@ void GLTFBufferView::set_byte_stride(int32_t byte_stride) {
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &byte_stride_encoded);
 }
 
-bool GLTFBufferView::get_indices() {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFBufferView::get_class_static()._native_ptr(), StringName("get_indices")._native_ptr(), 2240911060);
+bool GLTFBufferView::get_indices() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFBufferView::get_class_static()._native_ptr(), StringName("get_indices")._native_ptr(), 36873697);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
 	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
 }
@@ -105,6 +114,20 @@ void GLTFBufferView::set_indices(bool indices) {
 	int8_t indices_encoded;
 	PtrToArg<bool>::encode(indices, &indices_encoded);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &indices_encoded);
+}
+
+bool GLTFBufferView::get_vertex_attributes() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFBufferView::get_class_static()._native_ptr(), StringName("get_vertex_attributes")._native_ptr(), 36873697);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
+}
+
+void GLTFBufferView::set_vertex_attributes(bool is_attributes) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFBufferView::get_class_static()._native_ptr(), StringName("set_vertex_attributes")._native_ptr(), 2586408642);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int8_t is_attributes_encoded;
+	PtrToArg<bool>::encode(is_attributes, &is_attributes_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &is_attributes_encoded);
 }
 
 

@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_CollisionPolygon2D() {
-	qjs::Context::Module &_module = _Node2D;
+	qjs::Context::Module &_module = get_Node2D_module();
 	_module.class_<CollisionPolygon2D>("CollisionPolygon2D")
 			.constructor<>()
 			.property<&CollisionPolygon2D::get_build_mode, &CollisionPolygon2D::set_build_mode>("build_mode")

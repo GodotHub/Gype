@@ -51,6 +51,8 @@ class Node;
 class NavigationMeshGenerator : public Object {
 	GDEXTENSION_CLASS(NavigationMeshGenerator, Object)
 
+	static NavigationMeshGenerator *singleton;
+
 public:
 
 	static NavigationMeshGenerator *get_singleton();
@@ -64,6 +66,8 @@ protected:
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
 	}
+
+	~NavigationMeshGenerator();
 
 public:
 

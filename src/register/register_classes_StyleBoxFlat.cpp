@@ -6,7 +6,7 @@
 using namespace godot;
 
 void register_classes_StyleBoxFlat() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<StyleBoxFlat>("StyleBoxFlat")
 			.constructor<>()
 			.property<&StyleBoxFlat::get_bg_color, &StyleBoxFlat::set_bg_color>("bg_color")

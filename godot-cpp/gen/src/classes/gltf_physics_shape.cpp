@@ -32,11 +32,13 @@
 
 #include <godot_cpp/classes/gltf_physics_shape.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
 #include <godot_cpp/classes/collision_shape3d.hpp>
 #include <godot_cpp/classes/importer_mesh.hpp>
+#include <godot_cpp/classes/shape3d.hpp>
 
 namespace godot {
 
@@ -52,6 +54,20 @@ CollisionShape3D *GLTFPhysicsShape::to_node(bool cache_shapes) {
 	int8_t cache_shapes_encoded;
 	PtrToArg<bool>::encode(cache_shapes, &cache_shapes_encoded);
 	return internal::_call_native_mb_ret_obj<CollisionShape3D>(_gde_method_bind, _owner, &cache_shapes_encoded);
+}
+
+Ref<GLTFPhysicsShape> GLTFPhysicsShape::from_resource(const Ref<Shape3D> &shape_resource) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFPhysicsShape::get_class_static()._native_ptr(), StringName("from_resource")._native_ptr(), 3845569786);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Ref<GLTFPhysicsShape>());
+	return Ref<GLTFPhysicsShape>::_gde_internal_constructor(internal::_call_native_mb_ret_obj<GLTFPhysicsShape>(_gde_method_bind, nullptr, (shape_resource != nullptr ? &shape_resource->_owner : nullptr)));
+}
+
+Ref<Shape3D> GLTFPhysicsShape::to_resource(bool cache_shapes) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFPhysicsShape::get_class_static()._native_ptr(), StringName("to_resource")._native_ptr(), 1913542110);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Ref<Shape3D>());
+	int8_t cache_shapes_encoded;
+	PtrToArg<bool>::encode(cache_shapes, &cache_shapes_encoded);
+	return Ref<Shape3D>::_gde_internal_constructor(internal::_call_native_mb_ret_obj<Shape3D>(_gde_method_bind, _owner, &cache_shapes_encoded));
 }
 
 Ref<GLTFPhysicsShape> GLTFPhysicsShape::from_dictionary(const Dictionary &dictionary) {

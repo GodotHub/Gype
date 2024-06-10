@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/navigation_path_query_parameters3d.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -121,6 +122,34 @@ BitField<NavigationPathQueryParameters3D::PathMetadataFlags> NavigationPathQuery
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationPathQueryParameters3D::get_class_static()._native_ptr(), StringName("get_metadata_flags")._native_ptr(), 1582332802);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, BitField<NavigationPathQueryParameters3D::PathMetadataFlags>(0));
 	return (int64_t)internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
+}
+
+void NavigationPathQueryParameters3D::set_simplify_path(bool enabled) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationPathQueryParameters3D::get_class_static()._native_ptr(), StringName("set_simplify_path")._native_ptr(), 2586408642);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int8_t enabled_encoded;
+	PtrToArg<bool>::encode(enabled, &enabled_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &enabled_encoded);
+}
+
+bool NavigationPathQueryParameters3D::get_simplify_path() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationPathQueryParameters3D::get_class_static()._native_ptr(), StringName("get_simplify_path")._native_ptr(), 36873697);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
+}
+
+void NavigationPathQueryParameters3D::set_simplify_epsilon(double epsilon) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationPathQueryParameters3D::get_class_static()._native_ptr(), StringName("set_simplify_epsilon")._native_ptr(), 373806689);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	double epsilon_encoded;
+	PtrToArg<double>::encode(epsilon, &epsilon_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &epsilon_encoded);
+}
+
+double NavigationPathQueryParameters3D::get_simplify_epsilon() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationPathQueryParameters3D::get_class_static()._native_ptr(), StringName("get_simplify_epsilon")._native_ptr(), 1740695150);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
+	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner);
 }
 
 

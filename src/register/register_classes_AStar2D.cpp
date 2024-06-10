@@ -1,15 +1,13 @@
+#include "register/register_classes.h"
 #include <godot_cpp/classes/a_star2d.hpp>
 #include <godot_cpp/variant/packed_int64_array.hpp>
 #include <godot_cpp/variant/packed_vector2_array.hpp>
 #include <godot_cpp/variant/vector2.hpp>
 
-#include "qjspp.hpp"
-#include "register/register_classes.h"
-
 using namespace godot;
 
 void register_classes_AStar2D() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<AStar2D>("AStar2D")
 			.constructor<>()
 			.fun<static_cast<double (AStar2D::*)(int64_t, int64_t) const>(&AStar2D::_estimate_cost)>("_estimate_cost")
@@ -35,6 +33,6 @@ void register_classes_AStar2D() {
 			.fun<static_cast<void (AStar2D::*)()>(&AStar2D::clear)>("clear")
 			.fun<static_cast<int64_t (AStar2D::*)(const Vector2 &, bool) const>(&AStar2D::get_closest_point)>("get_closest_point")
 			.fun<static_cast<Vector2 (AStar2D::*)(const Vector2 &) const>(&AStar2D::get_closest_position_in_segment)>("get_closest_position_in_segment")
-			.fun<static_cast<PackedVector2Array (AStar2D::*)(int64_t, int64_t)>(&AStar2D::get_point_path)>("get_point_path")
-			.fun<static_cast<PackedInt64Array (AStar2D::*)(int64_t, int64_t)>(&AStar2D::get_id_path)>("get_id_path");
+			.fun<static_cast<PackedVector2Array (AStar2D::*)(int64_t, int64_t, bool)>(&AStar2D::get_point_path)>("get_point_path")
+			.fun<static_cast<PackedInt64Array (AStar2D::*)(int64_t, int64_t, bool)>(&AStar2D::get_id_path)>("get_id_path");
 }

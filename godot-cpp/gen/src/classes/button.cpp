@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/button.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -61,6 +62,18 @@ TextServer::OverrunBehavior Button::get_text_overrun_behavior() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Button::get_class_static()._native_ptr(), StringName("get_text_overrun_behavior")._native_ptr(), 3779142101);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, TextServer::OverrunBehavior(0));
 	return (TextServer::OverrunBehavior)internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
+}
+
+void Button::set_autowrap_mode(TextServer::AutowrapMode autowrap_mode) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Button::get_class_static()._native_ptr(), StringName("set_autowrap_mode")._native_ptr(), 3289138044);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &autowrap_mode);
+}
+
+TextServer::AutowrapMode Button::get_autowrap_mode() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Button::get_class_static()._native_ptr(), StringName("get_autowrap_mode")._native_ptr(), 1549071663);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, TextServer::AutowrapMode(0));
+	return (TextServer::AutowrapMode)internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner);
 }
 
 void Button::set_text_direction(Control::TextDirection direction) {

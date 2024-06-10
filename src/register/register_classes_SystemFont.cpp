@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_SystemFont() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<SystemFont>("SystemFont")
 			.constructor<>()
 			.property<&SystemFont::get_font_names, &SystemFont::set_font_names>("font_names")

@@ -2,15 +2,13 @@
 #include <godot_cpp/classes/button_group.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 
-
 #include "qjspp.hpp"
 #include "register/register_classes.h"
-
 
 using namespace godot;
 
 void register_classes_ButtonGroup() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<ButtonGroup>("ButtonGroup")
 			.constructor<>()
 			.property<&ButtonGroup::is_allow_unpress, &ButtonGroup::set_allow_unpress>("allow_unpress")

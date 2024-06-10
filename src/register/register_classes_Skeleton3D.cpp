@@ -17,13 +17,13 @@
 using namespace godot;
 
 void register_classes_Skeleton3D() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<Skeleton3D>("Skeleton3D")
 			.constructor<>()
 			.property<&Skeleton3D::get_motion_scale, &Skeleton3D::set_motion_scale>("motion_scale")
 			.property<&Skeleton3D::is_show_rest_only, &Skeleton3D::set_show_rest_only>("show_rest_only")
 			.property<&Skeleton3D::get_animate_physical_bones, &Skeleton3D::set_animate_physical_bones>("animate_physical_bones")
-			.fun<static_cast<void (Skeleton3D::*)(const String &)>(&Skeleton3D::add_bone)>("add_bone")
+			.fun<static_cast<int32_t (Skeleton3D::*)(const String &)>(&Skeleton3D::add_bone)>("add_bone")
 			.fun<static_cast<int32_t (Skeleton3D::*)(const String &) const>(&Skeleton3D::find_bone)>("find_bone")
 			.fun<static_cast<String (Skeleton3D::*)(int32_t) const>(&Skeleton3D::get_bone_name)>("get_bone_name")
 			.fun<static_cast<void (Skeleton3D::*)(int32_t, const String &)>(&Skeleton3D::set_bone_name)>("set_bone_name")

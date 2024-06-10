@@ -91,6 +91,8 @@ public:
 	int32_t get_node_count() const;
 	int64_t get_frame() const;
 	void quit(int32_t exit_code = 0);
+	void set_physics_interpolation_enabled(bool enabled);
+	bool is_physics_interpolation_enabled() const;
 	void queue_delete(Object *obj);
 	private: private: void call_group_flags_internal(const Variant **args, GDExtensionInt arg_count);
 	public: void call_group_flags(int64_t flags, const StringName &group, const StringName &method, rest<Variant> args) {
@@ -123,6 +125,7 @@ public:
 	void set_group(const StringName &group, const String &property, const Variant &value);
 	TypedArray<Node> get_nodes_in_group(const StringName &group);
 	Node *get_first_node_in_group(const StringName &group);
+	int32_t get_node_count_in_group(const StringName &group) const;
 	void set_current_scene(Node *child_node);
 	Node *get_current_scene() const;
 	Error change_scene_to_file(const String &path);

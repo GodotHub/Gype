@@ -21,7 +21,7 @@
 using namespace godot;
 
 void register_classes_SceneTree() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<SceneTree>("SceneTree")
 			.constructor<>()
 			.property<&SceneTree::is_auto_accept_quit, &SceneTree::set_auto_accept_quit>("auto_accept_quit")

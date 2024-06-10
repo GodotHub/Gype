@@ -59,7 +59,7 @@ public:
 
 	void set_fallbacks(const TypedArray<Font> &fallbacks);
 	TypedArray<Font> get_fallbacks() const;
-	RID find_variation(const Dictionary &variation_coordinates, int32_t face_index = 0, double strength = 0.0, const Transform2D &transform = Transform2D(), int32_t spacing_top = 0, int32_t spacing_bottom = 0, int32_t spacing_space = 0, int32_t spacing_glyph = 0) const;
+	RID find_variation(const Dictionary &variation_coordinates, int32_t face_index = 0, double strength = 0.0, const Transform2D &transform = Transform2D(), int32_t spacing_top = 0, int32_t spacing_bottom = 0, int32_t spacing_space = 0, int32_t spacing_glyph = 0, double baseline_offset = 0.0) const;
 	TypedArray<RID> get_rids() const;
 	double get_height(int32_t font_size = 16) const;
 	double get_ascent(int32_t font_size = 16) const;

@@ -77,6 +77,8 @@ public:
 	double get_sun_curve() const;
 	void set_use_debanding(bool use_debanding);
 	bool get_use_debanding() const;
+	void set_energy_multiplier(double multiplier);
+	double get_energy_multiplier() const;
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {

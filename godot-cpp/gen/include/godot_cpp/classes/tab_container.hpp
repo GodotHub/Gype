@@ -57,6 +57,12 @@ class TabContainer : public Container {
 
 public:
 
+	enum TabPosition {
+		POSITION_TOP = 0,
+		POSITION_BOTTOM = 1,
+		POSITION_MAX = 2,
+	};
+
 	int32_t get_tab_count() const;
 	void set_current_tab(int32_t tab_idx);
 	int32_t get_current_tab() const;
@@ -68,6 +74,8 @@ public:
 	Control *get_tab_control(int32_t tab_idx) const;
 	void set_tab_alignment(TabBar::AlignmentMode alignment);
 	TabBar::AlignmentMode get_tab_alignment() const;
+	void set_tabs_position(TabContainer::TabPosition tabs_position);
+	TabContainer::TabPosition get_tabs_position() const;
 	void set_clip_tabs(bool clip_tabs);
 	bool get_clip_tabs() const;
 	void set_tabs_visible(bool visible);
@@ -76,8 +84,12 @@ public:
 	bool is_all_tabs_in_front() const;
 	void set_tab_title(int32_t tab_idx, const String &title);
 	String get_tab_title(int32_t tab_idx) const;
+	void set_tab_tooltip(int32_t tab_idx, const String &tooltip);
+	String get_tab_tooltip(int32_t tab_idx) const;
 	void set_tab_icon(int32_t tab_idx, const Ref<Texture2D> &icon);
 	Ref<Texture2D> get_tab_icon(int32_t tab_idx) const;
+	void set_tab_icon_max_width(int32_t tab_idx, int32_t width);
+	int32_t get_tab_icon_max_width(int32_t tab_idx) const;
 	void set_tab_disabled(int32_t tab_idx, bool disabled);
 	bool is_tab_disabled(int32_t tab_idx) const;
 	void set_tab_hidden(int32_t tab_idx, bool hidden);
@@ -98,6 +110,8 @@ public:
 	bool get_use_hidden_tabs_for_min_size() const;
 	void set_tab_focus_mode(Control::FocusMode focus_mode);
 	Control::FocusMode get_tab_focus_mode() const;
+	void set_deselect_enabled(bool enabled);
+	bool get_deselect_enabled() const;
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {
@@ -109,5 +123,7 @@ public:
 };
 
 } // namespace godot
+
+VARIANT_ENUM_CAST(TabContainer::TabPosition);
 
 #endif // ! GODOT_CPP_TAB_CONTAINER_HPP

@@ -7,11 +7,7 @@
 using namespace godot;
 
 void register_builtin_classes_Vector4i() {
-	_Variant.class_<Vector4i>("Vector4i")
-			.constructor<>()
-			.constructor<const Vector4i &>("Vector4i_1")
-			.constructor<const Vector4 &>("Vector4i_2")
-			.constructor<int64_t, int64_t, int64_t, int64_t>("Vector4i_3")
+	get_Variant_module().class_<Vector4i>("Vector4i").constructor<>().constructor<const Vector4i &>("Vector4i_1").constructor<const Vector4 &>("Vector4i_2").constructor<int64_t, int64_t, int64_t, int64_t>("Vector4i_3")
 
 			.fun<static_cast<Vector4i::Axis (Vector4i::*)() const>(&Vector4i::min_axis_index)>("min_axis_index")
 			.fun<static_cast<Vector4i::Axis (Vector4i::*)() const>(&Vector4i::max_axis_index)>("max_axis_index")

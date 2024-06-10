@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_AudioEffectLimiter() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<AudioEffectLimiter>("AudioEffectLimiter")
 			.constructor<>()
 			.property<&AudioEffectLimiter::get_ceiling_db, &AudioEffectLimiter::set_ceiling_db>("ceiling_db")

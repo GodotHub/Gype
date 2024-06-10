@@ -56,6 +56,7 @@ public:
 		FORMAT_8_BITS = 0,
 		FORMAT_16_BITS = 1,
 		FORMAT_IMA_ADPCM = 2,
+		FORMAT_QOA = 3,
 	};
 
 	enum LoopMode {

@@ -13,7 +13,7 @@
 using namespace godot;
 
 void register_classes_Texture2D() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<Texture2D>("Texture2D")
 			.constructor<>()
 			.fun<static_cast<int32_t (Texture2D::*)() const>(&Texture2D::_get_width)>("_get_width")

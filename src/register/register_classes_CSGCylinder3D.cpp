@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_CSGCylinder3D() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<CSGCylinder3D>("CSGCylinder3D")
 			.constructor<>()
 			.property<&CSGCylinder3D::get_radius, &CSGCylinder3D::set_radius>("radius")

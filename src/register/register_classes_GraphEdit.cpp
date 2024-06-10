@@ -15,7 +15,7 @@
 using namespace godot;
 
 void register_classes_GraphEdit() {
-	qjs::Context::Module &_module = _Control;
+	qjs::Context::Module &_module = get_Control_module();
 	_module.class_<GraphEdit>("GraphEdit")
 			.constructor<>()
 			.property<&GraphEdit::get_scroll_offset, &GraphEdit::set_scroll_offset>("scroll_offset")
@@ -58,7 +58,7 @@ void register_classes_GraphEdit() {
 			.fun<static_cast<void (GraphEdit::*)(int32_t, int32_t)>(&GraphEdit::add_valid_connection_type)>("add_valid_connection_type")
 			.fun<static_cast<void (GraphEdit::*)(int32_t, int32_t)>(&GraphEdit::remove_valid_connection_type)>("remove_valid_connection_type")
 			.fun<static_cast<bool (GraphEdit::*)(int32_t, int32_t) const>(&GraphEdit::is_valid_connection_type)>("is_valid_connection_type")
-			.fun<static_cast<PackedVector2Array (GraphEdit::*)(const Vector2 &, const Vector2 &)>(&GraphEdit::get_connection_line)>("get_connection_line")
+			.fun<static_cast<PackedVector2Array (GraphEdit::*)(const Vector2 &, const Vector2 &) const>(&GraphEdit::get_connection_line)>("get_connection_line")
 			.fun<static_cast<HBoxContainer *(GraphEdit::*)()>(&GraphEdit::get_menu_hbox)>("get_menu_hbox")
 			.fun<static_cast<void (GraphEdit::*)()>(&GraphEdit::arrange_nodes)>("arrange_nodes")
 			.fun<static_cast<void (GraphEdit::*)(Node *)>(&GraphEdit::set_selected)>("set_selected");

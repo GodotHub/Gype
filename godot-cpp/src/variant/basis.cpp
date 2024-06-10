@@ -1067,5 +1067,4 @@ void Basis::rotate_sh(real_t *p_values) {
 	p_values[7] = -d3;
 	p_values[8] = d4 * s_scale_dst4;
 }
-
 } // namespace godot

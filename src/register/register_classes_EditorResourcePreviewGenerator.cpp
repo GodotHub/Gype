@@ -6,15 +6,13 @@
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/vector2i.hpp>
 
-
 #include "qjspp.hpp"
 #include "register/register_classes.h"
-
 
 using namespace godot;
 
 void register_classes_EditorResourcePreviewGenerator() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<EditorResourcePreviewGenerator>("EditorResourcePreviewGenerator")
 			.constructor<>()
 			.fun<static_cast<bool (EditorResourcePreviewGenerator::*)(const String &) const>(&EditorResourcePreviewGenerator::_handles)>("_handles")

@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_RDFramebufferPass() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<RDFramebufferPass>("RDFramebufferPass")
 			.constructor<>()
 			.property<&RDFramebufferPass::get_color_attachments, &RDFramebufferPass::set_color_attachments>("color_attachments")

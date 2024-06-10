@@ -53,11 +53,11 @@ public:
 
 	void set_locale(const String &locale);
 	String get_locale() const;
-	void add_message(const StringName &src_message, const StringName &xlated_message, const StringName &context = String());
-	void add_plural_message(const StringName &src_message, const PackedStringArray &xlated_messages, const StringName &context = String());
-	StringName get_message(const StringName &src_message, const StringName &context = String()) const;
-	StringName get_plural_message(const StringName &src_message, const StringName &src_plural_message, int32_t n, const StringName &context = String()) const;
-	void erase_message(const StringName &src_message, const StringName &context = String());
+	void add_message(const StringName &src_message, const StringName &xlated_message, const StringName &context = StringName());
+	void add_plural_message(const StringName &src_message, const PackedStringArray &xlated_messages, const StringName &context = StringName());
+	StringName get_message(const StringName &src_message, const StringName &context = StringName()) const;
+	StringName get_plural_message(const StringName &src_message, const StringName &src_plural_message, int32_t n, const StringName &context = StringName()) const;
+	void erase_message(const StringName &src_message, const StringName &context = StringName());
 	PackedStringArray get_message_list() const;
 	PackedStringArray get_translated_message_list() const;
 	int32_t get_message_count() const;

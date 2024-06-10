@@ -12,9 +12,8 @@
 using namespace godot;
 
 void register_classes_ProjectSettings() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<ProjectSettings>("ProjectSettings")
-			.constructor<>()
 			.fun<static_cast<bool (ProjectSettings::*)(const String &) const>(&ProjectSettings::has_setting)>("has_setting")
 			.fun<static_cast<void (ProjectSettings::*)(const String &, const Variant &)>(&ProjectSettings::set_setting)>("set_setting")
 			.fun<static_cast<Variant (ProjectSettings::*)(const String &, const Variant &) const>(&ProjectSettings::get_setting)>("get_setting")

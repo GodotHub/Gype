@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/primitive_mesh.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -109,6 +110,12 @@ double PrimitiveMesh::get_uv2_padding() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PrimitiveMesh::get_class_static()._native_ptr(), StringName("get_uv2_padding")._native_ptr(), 1740695150);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);
 	return internal::_call_native_mb_ret<double>(_gde_method_bind, _owner);
+}
+
+void PrimitiveMesh::request_update() {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PrimitiveMesh::get_class_static()._native_ptr(), StringName("request_update")._native_ptr(), 3218959716);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner);
 }
 
 Array PrimitiveMesh::_create_mesh_array() const {

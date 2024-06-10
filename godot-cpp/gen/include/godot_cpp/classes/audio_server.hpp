@@ -53,6 +53,8 @@ class AudioEffectInstance;
 class AudioServer : public Object {
 	GDEXTENSION_CLASS(AudioServer, Object)
 
+	static AudioServer *singleton;
+
 public:
 
 	enum SpeakerMode {
@@ -116,6 +118,8 @@ protected:
 	static void register_virtuals() {
 		Object::register_virtuals<T, B>();
 	}
+
+	~AudioServer();
 
 public:
 

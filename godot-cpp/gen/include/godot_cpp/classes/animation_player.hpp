@@ -38,6 +38,7 @@
 #include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/string_name.hpp>
+#include <godot_cpp/classes/tween.hpp>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -68,8 +69,17 @@ public:
 	double get_blend_time(const StringName &animation_from, const StringName &animation_to) const;
 	void set_default_blend_time(double sec);
 	double get_default_blend_time() const;
-	void play(const StringName &name = String(), double custom_blend = -1, double custom_speed = 1.0, bool from_end = false);
-	void play_backwards(const StringName &name = String(), double custom_blend = -1);
+	void set_auto_capture(bool auto_capture);
+	bool is_auto_capture() const;
+	void set_auto_capture_duration(double auto_capture_duration);
+	double get_auto_capture_duration() const;
+	void set_auto_capture_transition_type(Tween::TransitionType auto_capture_transition_type);
+	Tween::TransitionType get_auto_capture_transition_type() const;
+	void set_auto_capture_ease_type(Tween::EaseType auto_capture_ease_type);
+	Tween::EaseType get_auto_capture_ease_type() const;
+	void play(const StringName &name = StringName(), double custom_blend = -1, double custom_speed = 1.0, bool from_end = false);
+	void play_backwards(const StringName &name = StringName(), double custom_blend = -1);
+	void play_with_capture(const StringName &name = StringName(), double duration = -1.0, double custom_blend = -1, double custom_speed = 1.0, bool from_end = false, Tween::TransitionType trans_type = (Tween::TransitionType)0, Tween::EaseType ease_type = (Tween::EaseType)0);
 	void pause();
 	void stop(bool keep_state = false);
 	bool is_playing() const;

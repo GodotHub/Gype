@@ -32,13 +32,15 @@
 
 #include <godot_cpp/classes/geometry2d.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
 namespace godot {
 
+Geometry2D *Geometry2D::singleton = nullptr;
+
 Geometry2D *Geometry2D::get_singleton() {
-	static Geometry2D *singleton = nullptr;
 	if (unlikely(singleton == nullptr)) {
 		GDExtensionObjectPtr singleton_obj = internal::gdextension_interface_global_get_singleton(Geometry2D::get_class_static()._native_ptr());
 #ifdef DEBUG_ENABLED
@@ -48,8 +50,18 @@ Geometry2D *Geometry2D::get_singleton() {
 #ifdef DEBUG_ENABLED
 		ERR_FAIL_NULL_V(singleton, nullptr);
 #endif // DEBUG_ENABLED
+		if (likely(singleton)) {
+			ClassDB::_register_engine_singleton(Geometry2D::get_class_static(), singleton);
+		}
 	}
 	return singleton;
+}
+
+Geometry2D::~Geometry2D() {
+	if (singleton == this) {
+		ClassDB::_unregister_engine_singleton(Geometry2D::get_class_static());
+		singleton = nullptr;
+	}
 }
 
 bool Geometry2D::is_point_in_circle(const Vector2 &point, const Vector2 &circle_position, double circle_radius) {

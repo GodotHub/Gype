@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_ColorRect() {
-	qjs::Context::Module &_module = _Control;
+	qjs::Context::Module &_module = get_Control_module();
 	_module.class_<ColorRect>("ColorRect")
 			.constructor<>()
 			.property<&ColorRect::get_color, &ColorRect::set_color>("color");

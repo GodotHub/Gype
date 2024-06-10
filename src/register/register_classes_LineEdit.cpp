@@ -8,7 +8,7 @@
 using namespace godot;
 
 void register_classes_LineEdit() {
-	qjs::Context::Module &_module = _Control;
+	qjs::Context::Module &_module = get_Control_module();
 	_module.class_<LineEdit>("LineEdit")
 			.constructor<>()
 			.property<&LineEdit::get_text, &LineEdit::set_text>("text")

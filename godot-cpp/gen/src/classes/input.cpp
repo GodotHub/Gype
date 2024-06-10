@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/input.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -41,8 +42,9 @@
 
 namespace godot {
 
+Input *Input::singleton = nullptr;
+
 Input *Input::get_singleton() {
-	static Input *singleton = nullptr;
 	if (unlikely(singleton == nullptr)) {
 		GDExtensionObjectPtr singleton_obj = internal::gdextension_interface_global_get_singleton(Input::get_class_static()._native_ptr());
 #ifdef DEBUG_ENABLED
@@ -52,8 +54,18 @@ Input *Input::get_singleton() {
 #ifdef DEBUG_ENABLED
 		ERR_FAIL_NULL_V(singleton, nullptr);
 #endif // DEBUG_ENABLED
+		if (likely(singleton)) {
+			ClassDB::_register_engine_singleton(Input::get_class_static(), singleton);
+		}
 	}
 	return singleton;
+}
+
+Input::~Input() {
+	if (singleton == this) {
+		ClassDB::_unregister_engine_singleton(Input::get_class_static());
+		singleton = nullptr;
+	}
 }
 
 bool Input::is_anything_pressed() const {
@@ -256,12 +268,14 @@ void Input::stop_joy_vibration(int32_t device) {
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &device_encoded);
 }
 
-void Input::vibrate_handheld(int32_t duration_ms) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Input::get_class_static()._native_ptr(), StringName("vibrate_handheld")._native_ptr(), 955504365);
+void Input::vibrate_handheld(int32_t duration_ms, double amplitude) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Input::get_class_static()._native_ptr(), StringName("vibrate_handheld")._native_ptr(), 544894297);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	int64_t duration_ms_encoded;
 	PtrToArg<int64_t>::encode(duration_ms, &duration_ms_encoded);
-	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &duration_ms_encoded);
+	double amplitude_encoded;
+	PtrToArg<double>::encode(amplitude, &amplitude_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &duration_ms_encoded, &amplitude_encoded);
 }
 
 Vector3 Input::get_gravity() const {
@@ -314,6 +328,12 @@ void Input::set_gyroscope(const Vector3 &value) {
 
 Vector2 Input::get_last_mouse_velocity() {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Input::get_class_static()._native_ptr(), StringName("get_last_mouse_velocity")._native_ptr(), 1497962370);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Vector2());
+	return internal::_call_native_mb_ret<Vector2>(_gde_method_bind, _owner);
+}
+
+Vector2 Input::get_last_mouse_screen_velocity() {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Input::get_class_static()._native_ptr(), StringName("get_last_mouse_screen_velocity")._native_ptr(), 1497962370);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Vector2());
 	return internal::_call_native_mb_ret<Vector2>(_gde_method_bind, _owner);
 }
@@ -398,6 +418,34 @@ void Input::flush_buffered_events() {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Input::get_class_static()._native_ptr(), StringName("flush_buffered_events")._native_ptr(), 3218959716);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner);
+}
+
+void Input::set_emulate_mouse_from_touch(bool enable) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Input::get_class_static()._native_ptr(), StringName("set_emulate_mouse_from_touch")._native_ptr(), 2586408642);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int8_t enable_encoded;
+	PtrToArg<bool>::encode(enable, &enable_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &enable_encoded);
+}
+
+bool Input::is_emulating_mouse_from_touch() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Input::get_class_static()._native_ptr(), StringName("is_emulating_mouse_from_touch")._native_ptr(), 36873697);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
+}
+
+void Input::set_emulate_touch_from_mouse(bool enable) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Input::get_class_static()._native_ptr(), StringName("set_emulate_touch_from_mouse")._native_ptr(), 2586408642);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	int8_t enable_encoded;
+	PtrToArg<bool>::encode(enable, &enable_encoded);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &enable_encoded);
+}
+
+bool Input::is_emulating_touch_from_mouse() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Input::get_class_static()._native_ptr(), StringName("is_emulating_touch_from_mouse")._native_ptr(), 36873697);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
+	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner);
 }
 
 

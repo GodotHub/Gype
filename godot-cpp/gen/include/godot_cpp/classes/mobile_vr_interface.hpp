@@ -33,6 +33,7 @@
 #ifndef GODOT_CPP_MOBILE_VR_INTERFACE_HPP
 #define GODOT_CPP_MOBILE_VR_INTERFACE_HPP
 
+#include <godot_cpp/variant/rect2.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/xr_interface.hpp>
 
@@ -56,12 +57,18 @@ public:
 	double get_display_width() const;
 	void set_display_to_lens(double display_to_lens);
 	double get_display_to_lens() const;
+	void set_offset_rect(const Rect2 &offset_rect);
+	Rect2 get_offset_rect() const;
 	void set_oversample(double oversample);
 	double get_oversample() const;
 	void set_k1(double k);
 	double get_k1() const;
 	void set_k2(double k);
 	double get_k2() const;
+	double get_vrs_min_radius() const;
+	void set_vrs_min_radius(double radius);
+	double get_vrs_strength() const;
+	void set_vrs_strength(double strength);
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {

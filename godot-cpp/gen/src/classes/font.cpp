@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/font.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -49,8 +50,8 @@ TypedArray<Font> Font::get_fallbacks() const {
 	return internal::_call_native_mb_ret<TypedArray<Font>>(_gde_method_bind, _owner);
 }
 
-RID Font::find_variation(const Dictionary &variation_coordinates, int32_t face_index, double strength, const Transform2D &transform, int32_t spacing_top, int32_t spacing_bottom, int32_t spacing_space, int32_t spacing_glyph) const {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Font::get_class_static()._native_ptr(), StringName("find_variation")._native_ptr(), 3344325384);
+RID Font::find_variation(const Dictionary &variation_coordinates, int32_t face_index, double strength, const Transform2D &transform, int32_t spacing_top, int32_t spacing_bottom, int32_t spacing_space, int32_t spacing_glyph, double baseline_offset) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Font::get_class_static()._native_ptr(), StringName("find_variation")._native_ptr(), 2553855095);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, RID());
 	int64_t face_index_encoded;
 	PtrToArg<int64_t>::encode(face_index, &face_index_encoded);
@@ -64,7 +65,9 @@ RID Font::find_variation(const Dictionary &variation_coordinates, int32_t face_i
 	PtrToArg<int64_t>::encode(spacing_space, &spacing_space_encoded);
 	int64_t spacing_glyph_encoded;
 	PtrToArg<int64_t>::encode(spacing_glyph, &spacing_glyph_encoded);
-	return internal::_call_native_mb_ret<RID>(_gde_method_bind, _owner, &variation_coordinates, &face_index_encoded, &strength_encoded, &transform, &spacing_top_encoded, &spacing_bottom_encoded, &spacing_space_encoded, &spacing_glyph_encoded);
+	double baseline_offset_encoded;
+	PtrToArg<double>::encode(baseline_offset, &baseline_offset_encoded);
+	return internal::_call_native_mb_ret<RID>(_gde_method_bind, _owner, &variation_coordinates, &face_index_encoded, &strength_encoded, &transform, &spacing_top_encoded, &spacing_bottom_encoded, &spacing_space_encoded, &spacing_glyph_encoded, &baseline_offset_encoded);
 }
 
 TypedArray<RID> Font::get_rids() const {

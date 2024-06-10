@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/gltf_physics_body.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -123,6 +124,30 @@ void GLTFPhysicsBody::set_center_of_mass(const Vector3 &center_of_mass) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFPhysicsBody::get_class_static()._native_ptr(), StringName("set_center_of_mass")._native_ptr(), 3460891852);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &center_of_mass);
+}
+
+Vector3 GLTFPhysicsBody::get_inertia_diagonal() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFPhysicsBody::get_class_static()._native_ptr(), StringName("get_inertia_diagonal")._native_ptr(), 3360562783);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Vector3());
+	return internal::_call_native_mb_ret<Vector3>(_gde_method_bind, _owner);
+}
+
+void GLTFPhysicsBody::set_inertia_diagonal(const Vector3 &inertia_diagonal) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFPhysicsBody::get_class_static()._native_ptr(), StringName("set_inertia_diagonal")._native_ptr(), 3460891852);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &inertia_diagonal);
+}
+
+Quaternion GLTFPhysicsBody::get_inertia_orientation() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFPhysicsBody::get_class_static()._native_ptr(), StringName("get_inertia_orientation")._native_ptr(), 1222331677);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, Quaternion());
+	return internal::_call_native_mb_ret<Quaternion>(_gde_method_bind, _owner);
+}
+
+void GLTFPhysicsBody::set_inertia_orientation(const Quaternion &inertia_orientation) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFPhysicsBody::get_class_static()._native_ptr(), StringName("set_inertia_orientation")._native_ptr(), 1727505552);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &inertia_orientation);
 }
 
 Basis GLTFPhysicsBody::get_inertia_tensor() const {

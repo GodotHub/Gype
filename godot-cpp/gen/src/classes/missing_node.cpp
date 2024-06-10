@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/missing_node.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -45,6 +46,18 @@ void MissingNode::set_original_class(const String &name) {
 
 String MissingNode::get_original_class() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(MissingNode::get_class_static()._native_ptr(), StringName("get_original_class")._native_ptr(), 201670096);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, String());
+	return internal::_call_native_mb_ret<String>(_gde_method_bind, _owner);
+}
+
+void MissingNode::set_original_scene(const String &name) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(MissingNode::get_class_static()._native_ptr(), StringName("set_original_scene")._native_ptr(), 83702148);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &name);
+}
+
+String MissingNode::get_original_scene() const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(MissingNode::get_class_static()._native_ptr(), StringName("get_original_scene")._native_ptr(), 201670096);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, String());
 	return internal::_call_native_mb_ret<String>(_gde_method_bind, _owner);
 }

@@ -8,7 +8,7 @@
 using namespace godot;
 
 void register_classes_StreamPeerTCP() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<StreamPeerTCP>("StreamPeerTCP")
 			.constructor<>()
 			.fun<static_cast<Error (StreamPeerTCP::*)(int32_t, const String &)>(&StreamPeerTCP::bind)>("bind")

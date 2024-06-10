@@ -9,7 +9,7 @@
 using namespace godot;
 
 void register_classes_SkeletonModificationStack2D() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<SkeletonModificationStack2D>("SkeletonModificationStack2D")
 			.constructor<>()
 			.property<&SkeletonModificationStack2D::get_enabled, &SkeletonModificationStack2D::set_enabled>("enabled")

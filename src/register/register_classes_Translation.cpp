@@ -8,7 +8,7 @@
 using namespace godot;
 
 void register_classes_Translation() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<Translation>("Translation")
 			.constructor<>()
 			.property<&Translation::get_locale, &Translation::set_locale>("locale")

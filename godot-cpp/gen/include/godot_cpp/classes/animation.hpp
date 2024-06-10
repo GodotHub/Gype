@@ -118,10 +118,10 @@ public:
 	int32_t rotation_track_insert_key(int32_t track_idx, double time, const Quaternion &rotation);
 	int32_t scale_track_insert_key(int32_t track_idx, double time, const Vector3 &scale);
 	int32_t blend_shape_track_insert_key(int32_t track_idx, double time, double amount);
-	Vector3 position_track_interpolate(int32_t track_idx, double time_sec) const;
-	Quaternion rotation_track_interpolate(int32_t track_idx, double time_sec) const;
-	Vector3 scale_track_interpolate(int32_t track_idx, double time_sec) const;
-	double blend_shape_track_interpolate(int32_t track_idx, double time_sec) const;
+	Vector3 position_track_interpolate(int32_t track_idx, double time_sec, bool backward = false) const;
+	Quaternion rotation_track_interpolate(int32_t track_idx, double time_sec, bool backward = false) const;
+	Vector3 scale_track_interpolate(int32_t track_idx, double time_sec, bool backward = false) const;
+	double blend_shape_track_interpolate(int32_t track_idx, double time_sec, bool backward = false) const;
 	int32_t track_insert_key(int32_t track_idx, double time, const Variant &key, double transition = 1);
 	void track_remove_key(int32_t track_idx, int32_t key_idx);
 	void track_remove_key_at_time(int32_t track_idx, double time);
@@ -132,7 +132,7 @@ public:
 	int32_t track_get_key_count(int32_t track_idx) const;
 	Variant track_get_key_value(int32_t track_idx, int32_t key_idx) const;
 	double track_get_key_time(int32_t track_idx, int32_t key_idx) const;
-	int32_t track_find_key(int32_t track_idx, double time, Animation::FindMode find_mode = (Animation::FindMode)0) const;
+	int32_t track_find_key(int32_t track_idx, double time, Animation::FindMode find_mode = (Animation::FindMode)0, bool limit = false) const;
 	void track_set_interpolation_type(int32_t track_idx, Animation::InterpolationType interpolation);
 	Animation::InterpolationType track_get_interpolation_type(int32_t track_idx) const;
 	void track_set_interpolation_loop_wrap(int32_t track_idx, bool interpolation);
@@ -140,7 +140,7 @@ public:
 	bool track_is_compressed(int32_t track_idx) const;
 	void value_track_set_update_mode(int32_t track_idx, Animation::UpdateMode mode);
 	Animation::UpdateMode value_track_get_update_mode(int32_t track_idx) const;
-	Variant value_track_interpolate(int32_t track_idx, double time_sec) const;
+	Variant value_track_interpolate(int32_t track_idx, double time_sec, bool backward = false) const;
 	StringName method_track_get_name(int32_t track_idx, int32_t key_idx) const;
 	Array method_track_get_params(int32_t track_idx, int32_t key_idx) const;
 	int32_t bezier_track_insert_key(int32_t track_idx, double time, double value, const Vector2 &in_handle = Vector2(0, 0), const Vector2 &out_handle = Vector2(0, 0));
@@ -172,6 +172,7 @@ public:
 	void clear();
 	void copy_track(int32_t track_idx, const Ref<Animation> &to_animation);
 	void compress(uint32_t page_size = 8192, uint32_t fps = 120, double split_tolerance = 4.0);
+	bool is_capture_included() const;
 protected:
 	template <typename T, typename B>
 	static void register_virtuals() {

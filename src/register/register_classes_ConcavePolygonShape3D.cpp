@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_ConcavePolygonShape3D() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<ConcavePolygonShape3D>("ConcavePolygonShape3D")
 			.constructor<>()
 			.property<&ConcavePolygonShape3D::get_faces, &ConcavePolygonShape3D::set_faces>("data")

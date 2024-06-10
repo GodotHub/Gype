@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/code_edit.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -415,6 +416,12 @@ void CodeEdit::toggle_foldable_line(int32_t line) {
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &line_encoded);
 }
 
+void CodeEdit::toggle_foldable_lines_at_carets() {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(CodeEdit::get_class_static()._native_ptr(), StringName("toggle_foldable_lines_at_carets")._native_ptr(), 3218959716);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner);
+}
+
 bool CodeEdit::is_line_folded(int32_t line) const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(CodeEdit::get_class_static()._native_ptr(), StringName("is_line_folded")._native_ptr(), 1116898809);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
@@ -630,7 +637,7 @@ void CodeEdit::request_code_completion(bool force) {
 }
 
 void CodeEdit::add_code_completion_option(CodeEdit::CodeCompletionKind type, const String &display_text, const String &insert_text, const Color &text_color, const Ref<Resource> &icon, const Variant &value, int32_t location) {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(CodeEdit::get_class_static()._native_ptr(), StringName("add_code_completion_option")._native_ptr(), 947964390);
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(CodeEdit::get_class_static()._native_ptr(), StringName("add_code_completion_option")._native_ptr(), 3944379502);
 	CHECK_METHOD_BIND(_gde_method_bind);
 	int64_t location_encoded;
 	PtrToArg<int64_t>::encode(location, &location_encoded);
@@ -761,6 +768,30 @@ void CodeEdit::set_symbol_lookup_word_as_valid(bool valid) {
 	int8_t valid_encoded;
 	PtrToArg<bool>::encode(valid, &valid_encoded);
 	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &valid_encoded);
+}
+
+void CodeEdit::move_lines_up() {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(CodeEdit::get_class_static()._native_ptr(), StringName("move_lines_up")._native_ptr(), 3218959716);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner);
+}
+
+void CodeEdit::move_lines_down() {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(CodeEdit::get_class_static()._native_ptr(), StringName("move_lines_down")._native_ptr(), 3218959716);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner);
+}
+
+void CodeEdit::delete_lines() {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(CodeEdit::get_class_static()._native_ptr(), StringName("delete_lines")._native_ptr(), 3218959716);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner);
+}
+
+void CodeEdit::duplicate_selection() {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(CodeEdit::get_class_static()._native_ptr(), StringName("duplicate_selection")._native_ptr(), 3218959716);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner);
 }
 
 void CodeEdit::duplicate_lines() {

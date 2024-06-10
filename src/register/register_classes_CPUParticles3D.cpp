@@ -10,7 +10,7 @@
 using namespace godot;
 
 void register_classes_CPUParticles3D() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<CPUParticles3D>("CPUParticles3D")
 			.constructor<>()
 			.property<&CPUParticles3D::is_emitting, &CPUParticles3D::set_emitting>("emitting")

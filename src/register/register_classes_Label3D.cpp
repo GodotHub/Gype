@@ -9,7 +9,7 @@
 using namespace godot;
 
 void register_classes_Label3D() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<Label3D>("Label3D")
 			.constructor<>()
 			.property<&Label3D::get_pixel_size, &Label3D::set_pixel_size>("pixel_size")

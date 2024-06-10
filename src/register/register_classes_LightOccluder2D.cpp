@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_LightOccluder2D() {
-	qjs::Context::Module &_module = _Node2D;
+	qjs::Context::Module &_module = get_Node2D_module();
 	_module.class_<LightOccluder2D>("LightOccluder2D")
 			.constructor<>()
 			.property<&LightOccluder2D::get_occluder_polygon, &LightOccluder2D::set_occluder_polygon>("occluder")

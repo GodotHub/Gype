@@ -8,7 +8,7 @@
 using namespace godot;
 
 void register_classes_WorldEnvironment() {
-	qjs::Context::Module &_module = _Node;
+	qjs::Context::Module &_module = get_Node_module();
 	_module.class_<WorldEnvironment>("WorldEnvironment")
 			.constructor<>()
 			.property<&WorldEnvironment::get_environment, &WorldEnvironment::set_environment>("environment")

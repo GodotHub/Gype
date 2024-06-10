@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_DirectionalLight3D() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<DirectionalLight3D>("DirectionalLight3D")
 			.constructor<>()
 			.property<&DirectionalLight3D::get_shadow_mode, &DirectionalLight3D::set_shadow_mode>("directional_shadow_mode")

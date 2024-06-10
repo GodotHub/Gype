@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_Sprite3D() {
-	qjs::Context::Module &_module = _Node3D;
+	qjs::Context::Module &_module = get_Node3D_module();
 	_module.class_<Sprite3D>("Sprite3D")
 			.constructor<>()
 			.property<&Sprite3D::get_texture, &Sprite3D::set_texture>("texture")

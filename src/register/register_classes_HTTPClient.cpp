@@ -14,7 +14,7 @@
 using namespace godot;
 
 void register_classes_HTTPClient() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<HTTPClient>("HTTPClient")
 			.constructor<>()
 			.property<&HTTPClient::is_blocking_mode_enabled, &HTTPClient::set_blocking_mode>("blocking_mode_enabled")

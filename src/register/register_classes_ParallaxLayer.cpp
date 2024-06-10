@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_ParallaxLayer() {
-	qjs::Context::Module &_module = _Node2D;
+	qjs::Context::Module &_module = get_Node2D_module();
 	_module.class_<ParallaxLayer>("ParallaxLayer")
 			.constructor<>()
 			.property<&ParallaxLayer::get_motion_scale, &ParallaxLayer::set_motion_scale>("motion_scale")

@@ -7,7 +7,7 @@
 using namespace godot;
 
 void register_classes_PacketPeerStream() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<PacketPeerStream>("PacketPeerStream")
 			.constructor<>()
 			.property<&PacketPeerStream::get_input_buffer_max_size, &PacketPeerStream::set_input_buffer_max_size>("input_buffer_max_size")

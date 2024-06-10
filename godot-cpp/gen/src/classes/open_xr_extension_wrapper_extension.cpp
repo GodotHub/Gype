@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/open_xr_extension_wrapper_extension.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -71,6 +72,26 @@ uint64_t OpenXRExtensionWrapperExtension::_set_swapchain_create_info_and_get_nex
 	return 0;
 }
 
+uint64_t OpenXRExtensionWrapperExtension::_set_hand_joint_locations_and_get_next_pointer(int32_t hand_index, void *next_pointer) {
+	return 0;
+}
+
+int32_t OpenXRExtensionWrapperExtension::_get_composition_layer_count() {
+	return 0;
+}
+
+uint64_t OpenXRExtensionWrapperExtension::_get_composition_layer(int32_t index) {
+	return 0;
+}
+
+int32_t OpenXRExtensionWrapperExtension::_get_composition_layer_order(int32_t index) {
+	return 0;
+}
+
+PackedStringArray OpenXRExtensionWrapperExtension::_get_suggested_tracker_names() {
+	return PackedStringArray();
+}
+
 void OpenXRExtensionWrapperExtension::_on_register_metadata() {}
 
 void OpenXRExtensionWrapperExtension::_on_before_instance_created() {}
@@ -84,6 +105,8 @@ void OpenXRExtensionWrapperExtension::_on_session_created(uint64_t session) {}
 void OpenXRExtensionWrapperExtension::_on_process() {}
 
 void OpenXRExtensionWrapperExtension::_on_pre_render() {}
+
+void OpenXRExtensionWrapperExtension::_on_main_swapchains_created() {}
 
 void OpenXRExtensionWrapperExtension::_on_session_destroyed() {}
 
@@ -106,6 +129,20 @@ void OpenXRExtensionWrapperExtension::_on_state_exiting() {}
 bool OpenXRExtensionWrapperExtension::_on_event_polled(const void *event) {
 	return false;
 }
+
+uint64_t OpenXRExtensionWrapperExtension::_set_viewport_composition_layer_and_get_next_pointer(const void *layer, const Dictionary &property_values, void *next_pointer) {
+	return 0;
+}
+
+TypedArray<Dictionary> OpenXRExtensionWrapperExtension::_get_viewport_composition_layer_extension_properties() {
+	return TypedArray<Dictionary>();
+}
+
+Dictionary OpenXRExtensionWrapperExtension::_get_viewport_composition_layer_extension_property_defaults() {
+	return Dictionary();
+}
+
+void OpenXRExtensionWrapperExtension::_on_viewport_composition_layer_destroyed(const void *layer) {}
 
 
 } // namespace godot 

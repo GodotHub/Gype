@@ -82,8 +82,16 @@ struct _NO_DISCARD_ Vector3 {
 		return Vector3(MIN(x, p_vector3.x), MIN(y, p_vector3.y), MIN(z, p_vector3.z));
 	}
 
+	Vector3 minf(real_t p_scalar) const {
+		return Vector3(MIN(x, p_scalar), MIN(y, p_scalar), MIN(z, p_scalar));
+	}
+
 	Vector3 max(const Vector3 &p_vector3) const {
 		return Vector3(MAX(x, p_vector3.x), MAX(y, p_vector3.y), MAX(z, p_vector3.z));
+	}
+
+	Vector3 maxf(real_t p_scalar) const {
+		return Vector3(MAX(x, p_scalar), MAX(y, p_scalar), MAX(z, p_scalar));
 	}
 
 	_FORCE_INLINE_ real_t length() const;
@@ -98,7 +106,9 @@ struct _NO_DISCARD_ Vector3 {
 	_FORCE_INLINE_ void zero();
 
 	void snap(const Vector3 &p_val);
+	void snapf(real_t p_val);
 	Vector3 snapped(const Vector3 &p_val) const;
+	Vector3 snappedf(real_t p_val) const;
 
 	void rotate(const Vector3 &p_axis, const real_t p_angle);
 	Vector3 rotated(const Vector3 &p_axis, const real_t p_angle) const;
@@ -111,7 +121,6 @@ struct _NO_DISCARD_ Vector3 {
 	_FORCE_INLINE_ Vector3 cubic_interpolate_in_time(const Vector3 &p_b, const Vector3 &p_pre_a, const Vector3 &p_post_b, const real_t p_weight, const real_t &p_b_t, const real_t &p_pre_a_t, const real_t &p_post_b_t) const;
 	_FORCE_INLINE_ Vector3 bezier_interpolate(const Vector3 &p_control_1, const Vector3 &p_control_2, const Vector3 &p_end, const real_t p_t) const;
 	_FORCE_INLINE_ Vector3 bezier_derivative(const Vector3 &p_control_1, const Vector3 &p_control_2, const Vector3 &p_end, real_t p_t) const;
-
 	Vector3 move_toward(const Vector3 &p_to, const real_t p_delta) const;
 
 	Vector2 octahedron_encode() const;
@@ -129,6 +138,7 @@ struct _NO_DISCARD_ Vector3 {
 	_FORCE_INLINE_ Vector3 ceil() const;
 	_FORCE_INLINE_ Vector3 round() const;
 	Vector3 clamp(const Vector3 &p_min, const Vector3 &p_max) const;
+	Vector3 clampf(real_t p_min, real_t p_max) const;
 
 	_FORCE_INLINE_ real_t distance_to(const Vector3 &p_to) const;
 	_FORCE_INLINE_ real_t distance_squared_to(const Vector3 &p_to) const;

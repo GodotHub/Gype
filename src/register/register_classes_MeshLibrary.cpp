@@ -14,7 +14,7 @@
 using namespace godot;
 
 void register_classes_MeshLibrary() {
-	qjs::Context::Module &_module = _General;
+	qjs::Context::Module &_module = get_General_module();
 	_module.class_<MeshLibrary>("MeshLibrary")
 			.constructor<>()
 			.fun<static_cast<void (MeshLibrary::*)(int32_t)>(&MeshLibrary::create_item)>("create_item")

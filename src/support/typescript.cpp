@@ -3,9 +3,6 @@
 
 using namespace godot;
 
-Typescript::Typescript() {
-}
-
 bool Typescript::_editor_can_reload_from_file() {
 	return false;
 }
@@ -46,7 +43,7 @@ bool Typescript::_is_abstract() const {
 }
 
 ScriptLanguage *Typescript::_get_language() const {
-	return const_cast<TypescriptLanguage *>(language);
+	return TypescriptLanguage::get_singleton();
 }
 
 bool Typescript::_has_script_signal(const StringName &signal) const {
@@ -89,12 +86,12 @@ Variant Typescript::_get_rpc_config() const {
 	return Variant();
 }
 
-JSParseState *Typescript::parse_source_code(const String &source_code) {
+JSParseState *Typescript::_parse_source_code(const String &source_code) {
 	PackedByteArray source_code_bytes = source_code.to_utf8_buffer();
 	PackedByteArray script_path_bytes = _script_path.to_utf8_buffer();
 	JSParseState *s = new JSParseState();
-	js_parse_init(context.ctx, s, (const char *)source_code_bytes.ptr(), source_code_bytes.size(), (const char *)script_path_bytes.ptr());
-	ERR_FAIL_COND_V_EDMSG(js_parse_source_element_func(&s), nullptr, "Syntax error.");
+	js_parse_init_func(context.ctx, s, (const char *)source_code_bytes.ptr(), source_code_bytes.size(), (const char *)script_path_bytes.ptr());
+	ERR_FAIL_COND_V_EDMSG(js_parse_source_element_func(s), nullptr, "Syntax error.");
 	return s;
 }
 
@@ -102,6 +99,13 @@ Ref<Script> Typescript::_get_base_script() const {
 	return Ref<Script>();
 }
 
+StringName Typescript::_get_global_name() const {
+	return StringName();
+}
+
+bool Typescript::_inherits_script(const Ref<Script> &script) const {
+	return false;
+}
 StringName Typescript::_get_instance_base_type() const {
 	return StringName("Object");
 }
@@ -112,7 +116,8 @@ String Typescript::_get_source_code() const {
 
 void Typescript::_set_source_code(const String &code) {
 	_source_code = code;
-	s = parse_source_code(code);
+	_parse_state = _parse_source_code(code);
+	ERR_FAIL_MSG(_parse_state->cur_func->func_name);
 }
 
 Error Typescript::_reload(bool keep_state) {
@@ -124,7 +129,7 @@ void Typescript::_update_exports() {
 }
 
 void *Typescript::_instance_create(Object *for_object) const {
-	TypescriptInstance *instance = static_cast<TypescriptInstance *>(TypescriptInstance::create_instance(Ref(this), for_object));
+	TypescriptInstance *instance = static_cast<TypescriptInstance *>(TypescriptInstance::create_instance(Ref<Typescript>(this), for_object));
 	_instances.insert(for_object->get_instance_id(), instance, false);
 	return instance;
 }

@@ -3,11 +3,10 @@
 #include "qjspp.hpp"
 #include "register/register_classes.h"
 
-
 using namespace godot;
 
 void register_classes_AudioListener2D() {
-	qjs::Context::Module &_module = _Node2D;
+	qjs::Context::Module &_module = get_Node2D_module();
 	_module.class_<AudioListener2D>("AudioListener2D")
 			.constructor<>()
 			.fun<static_cast<void (AudioListener2D::*)()>(&AudioListener2D::make_current)>("make_current")

@@ -32,6 +32,7 @@
 
 #include <godot_cpp/classes/object.hpp>
 
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/engine_ptrcall.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 
@@ -176,6 +177,12 @@ bool Object::has_user_signal(const StringName &signal) const {
 	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner, &signal);
 }
 
+void Object::remove_user_signal(const StringName &signal) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Object::get_class_static()._native_ptr(), StringName("remove_user_signal")._native_ptr(), 3304788590);
+	CHECK_METHOD_BIND(_gde_method_bind);
+	internal::_call_native_mb_no_ret(_gde_method_bind, _owner, &signal);
+}
+
 Error Object::emit_signal_internal(const Variant **args, GDExtensionInt arg_count) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Object::get_class_static()._native_ptr(), StringName("emit_signal")._native_ptr(), 4047867050);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Error(0));
@@ -219,6 +226,12 @@ bool Object::has_method(const StringName &method) const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Object::get_class_static()._native_ptr(), StringName("has_method")._native_ptr(), 2619796661);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, false);
 	return internal::_call_native_mb_ret<int8_t>(_gde_method_bind, _owner, &method);
+}
+
+int32_t Object::get_method_argument_count(const StringName &method) const {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Object::get_class_static()._native_ptr(), StringName("get_method_argument_count")._native_ptr(), 2458036349);
+	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);
+	return internal::_call_native_mb_ret<int64_t>(_gde_method_bind, _owner, &method);
 }
 
 bool Object::has_signal(const StringName &signal) const {
@@ -300,13 +313,13 @@ bool Object::can_translate_messages() const {
 }
 
 String Object::tr(const StringName &message, const StringName &context) const {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Object::get_class_static()._native_ptr(), StringName("tr")._native_ptr(), 1195764410);
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Object::get_class_static()._native_ptr(), StringName("tr")._native_ptr(), 2475554935);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, String());
 	return internal::_call_native_mb_ret<String>(_gde_method_bind, _owner, &message, &context);
 }
 
 String Object::tr_n(const StringName &message, const StringName &plural_message, int32_t n, const StringName &context) const {
-	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Object::get_class_static()._native_ptr(), StringName("tr_n")._native_ptr(), 162698058);
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Object::get_class_static()._native_ptr(), StringName("tr_n")._native_ptr(), 4021311862);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, String());
 	int64_t n_encoded;
 	PtrToArg<int64_t>::encode(n, &n_encoded);
