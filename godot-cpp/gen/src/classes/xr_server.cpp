@@ -43,6 +43,7 @@
 
 namespace godot {
 
+
 XRServer *XRServer::singleton = nullptr;
 
 XRServer *XRServer::get_singleton() {

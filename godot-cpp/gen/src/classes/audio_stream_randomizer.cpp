@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void AudioStreamRandomizer::add_stream(int32_t index, const Ref<AudioStream> &stream, double weight) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AudioStreamRandomizer::get_class_static()._native_ptr(), StringName("add_stream")._native_ptr(), 1892018854);
 	CHECK_METHOD_BIND(_gde_method_bind);

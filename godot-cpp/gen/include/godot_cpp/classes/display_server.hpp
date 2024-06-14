@@ -208,13 +208,13 @@ public:
 		TTS_UTTERANCE_BOUNDARY = 3,
 	};
 
-	static const int SCREEN_WITH_MOUSE_FOCUS = -4;
-	static const int SCREEN_WITH_KEYBOARD_FOCUS = -3;
-	static const int SCREEN_PRIMARY = -2;
-	static const int SCREEN_OF_MAIN_WINDOW = -1;
-	static const int MAIN_WINDOW_ID = 0;
-	static const int INVALID_WINDOW_ID = -1;
-	static const int INVALID_INDICATOR_ID = -1;
+	static const int SCREEN_WITH_MOUSE_FOCUS;
+	static const int SCREEN_WITH_KEYBOARD_FOCUS;
+	static const int SCREEN_PRIMARY;
+	static const int SCREEN_OF_MAIN_WINDOW;
+	static const int MAIN_WINDOW_ID;
+	static const int INVALID_WINDOW_ID;
+	static const int INVALID_INDICATOR_ID;
 
 	static DisplayServer *get_singleton();
 

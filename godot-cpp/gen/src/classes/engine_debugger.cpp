@@ -43,6 +43,7 @@
 
 namespace godot {
 
+
 EngineDebugger *EngineDebugger::singleton = nullptr;
 
 EngineDebugger *EngineDebugger::get_singleton() {

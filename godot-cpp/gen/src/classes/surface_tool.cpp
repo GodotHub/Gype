@@ -46,6 +46,7 @@
 
 namespace godot {
 
+
 void SurfaceTool::set_skin_weight_count(SurfaceTool::SkinWeightCount count) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(SurfaceTool::get_class_static()._native_ptr(), StringName("set_skin_weight_count")._native_ptr(), 618679515);
 	CHECK_METHOD_BIND(_gde_method_bind);

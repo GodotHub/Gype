@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void RootMotionView::set_animation_path(const NodePath &path) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(RootMotionView::get_class_static()._native_ptr(), StringName("set_animation_path")._native_ptr(), 1348162250);
 	CHECK_METHOD_BIND(_gde_method_bind);

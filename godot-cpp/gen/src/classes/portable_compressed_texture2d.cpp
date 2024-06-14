@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void PortableCompressedTexture2D::create_from_image(const Ref<Image> &image, PortableCompressedTexture2D::CompressionMode compression_mode, bool normal_map, double lossy_quality) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PortableCompressedTexture2D::get_class_static()._native_ptr(), StringName("create_from_image")._native_ptr(), 3679243433);
 	CHECK_METHOD_BIND(_gde_method_bind);

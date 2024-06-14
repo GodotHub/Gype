@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void NavigationPathQueryResult3D::set_path(const PackedVector3Array &path) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationPathQueryResult3D::get_class_static()._native_ptr(), StringName("set_path")._native_ptr(), 334873810);
 	CHECK_METHOD_BIND(_gde_method_bind);

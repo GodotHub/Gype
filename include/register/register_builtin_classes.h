@@ -37,6 +37,7 @@ void register_builtin_classes_PackedFloat64Array();
 void register_builtin_classes_PackedStringArray();
 void register_builtin_classes_PackedVector2Array();
 void register_builtin_classes_PackedVector3Array();
+void register_builtin_classes_PackedVector4Array();
 void register_builtin_classes_PackedColorArray();
 void register_builtin_classes_Variant();
 #endif

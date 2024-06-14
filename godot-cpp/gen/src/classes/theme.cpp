@@ -43,6 +43,7 @@
 
 namespace godot {
 
+
 void Theme::set_icon(const StringName &name, const StringName &theme_type, const Ref<Texture2D> &texture) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Theme::get_class_static()._native_ptr(), StringName("set_icon")._native_ptr(), 2188371082);
 	CHECK_METHOD_BIND(_gde_method_bind);

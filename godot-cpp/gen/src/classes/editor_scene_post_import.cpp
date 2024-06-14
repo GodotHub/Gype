@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 String EditorScenePostImport::get_source_file() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorScenePostImport::get_class_static()._native_ptr(), StringName("get_source_file")._native_ptr(), 201670096);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, String());

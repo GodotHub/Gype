@@ -44,6 +44,14 @@
 
 namespace godot {
 
+const int DisplayServer::SCREEN_WITH_MOUSE_FOCUS = -4;
+const int DisplayServer::SCREEN_WITH_KEYBOARD_FOCUS = -3;
+const int DisplayServer::SCREEN_PRIMARY = -2;
+const int DisplayServer::SCREEN_OF_MAIN_WINDOW = -1;
+const int DisplayServer::MAIN_WINDOW_ID = 0;
+const int DisplayServer::INVALID_WINDOW_ID = -1;
+const int DisplayServer::INVALID_INDICATOR_ID = -1;
+
 DisplayServer *DisplayServer::singleton = nullptr;
 
 DisplayServer *DisplayServer::get_singleton() {

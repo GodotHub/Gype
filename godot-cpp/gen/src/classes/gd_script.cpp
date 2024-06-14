@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 Variant GDScript::new__internal(const Variant **args, GDExtensionInt arg_count) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GDScript::get_class_static()._native_ptr(), StringName("new")._native_ptr(), 1545262638);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Variant());

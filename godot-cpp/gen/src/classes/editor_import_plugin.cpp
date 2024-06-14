@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 Error EditorImportPlugin::append_import_external_resource(const String &path, const Dictionary &custom_options, const String &custom_importer, const Variant &generator_parameters) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorImportPlugin::get_class_static()._native_ptr(), StringName("append_import_external_resource")._native_ptr(), 320493106);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Error(0));

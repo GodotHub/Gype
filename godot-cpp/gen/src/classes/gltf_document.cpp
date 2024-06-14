@@ -42,6 +42,7 @@
 
 namespace godot {
 
+
 void GLTFDocument::set_image_format(const String &image_format) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFDocument::get_class_static()._native_ptr(), StringName("set_image_format")._native_ptr(), 83702148);
 	CHECK_METHOD_BIND(_gde_method_bind);

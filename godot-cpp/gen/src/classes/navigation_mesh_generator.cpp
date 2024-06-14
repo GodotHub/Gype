@@ -42,6 +42,7 @@
 
 namespace godot {
 
+
 NavigationMeshGenerator *NavigationMeshGenerator::singleton = nullptr;
 
 NavigationMeshGenerator *NavigationMeshGenerator::get_singleton() {

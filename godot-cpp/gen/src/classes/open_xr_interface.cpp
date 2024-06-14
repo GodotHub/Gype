@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 double OpenXRInterface::get_display_refresh_rate() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(OpenXRInterface::get_class_static()._native_ptr(), StringName("get_display_refresh_rate")._native_ptr(), 1740695150);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);

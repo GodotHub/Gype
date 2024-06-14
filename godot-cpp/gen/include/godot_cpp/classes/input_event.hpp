@@ -53,7 +53,7 @@ class InputEvent : public Resource {
 
 public:
 
-	static const int DEVICE_ID_EMULATION = -1;
+	static const int DEVICE_ID_EMULATION;
 
 	void set_device(int32_t device);
 	int32_t get_device() const;

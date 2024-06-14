@@ -37,7 +37,6 @@
 namespace godot {
 
 class Variant;
-class Vector3;
 
 struct _NO_DISCARD_ Plane {
 	Vector3 normal;

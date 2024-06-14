@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 Ref<CallbackTweener> CallbackTweener::set_delay(double delay) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(CallbackTweener::get_class_static()._native_ptr(), StringName("set_delay")._native_ptr(), 3008182292);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Ref<CallbackTweener>());

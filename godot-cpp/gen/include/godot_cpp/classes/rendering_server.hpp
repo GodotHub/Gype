@@ -762,22 +762,22 @@ public:
 		FEATURE_MULTITHREADED = 1,
 	};
 
-	static const int NO_INDEX_ARRAY = -1;
-	static const int ARRAY_WEIGHTS_SIZE = 4;
-	static const int CANVAS_ITEM_Z_MIN = -4096;
-	static const int CANVAS_ITEM_Z_MAX = 4096;
-	static const int MAX_GLOW_LEVELS = 7;
-	static const int MAX_CURSORS = 8;
-	static const int MAX_2D_DIRECTIONAL_LIGHTS = 8;
-	static const int MAX_MESH_SURFACES = 256;
-	static const int MATERIAL_RENDER_PRIORITY_MIN = -128;
-	static const int MATERIAL_RENDER_PRIORITY_MAX = 127;
-	static const int ARRAY_CUSTOM_COUNT = 4;
-	static const int PARTICLES_EMIT_FLAG_POSITION = 1;
-	static const int PARTICLES_EMIT_FLAG_ROTATION_SCALE = 2;
-	static const int PARTICLES_EMIT_FLAG_VELOCITY = 4;
-	static const int PARTICLES_EMIT_FLAG_COLOR = 8;
-	static const int PARTICLES_EMIT_FLAG_CUSTOM = 16;
+	static const int NO_INDEX_ARRAY;
+	static const int ARRAY_WEIGHTS_SIZE;
+	static const int CANVAS_ITEM_Z_MIN;
+	static const int CANVAS_ITEM_Z_MAX;
+	static const int MAX_GLOW_LEVELS;
+	static const int MAX_CURSORS;
+	static const int MAX_2D_DIRECTIONAL_LIGHTS;
+	static const int MAX_MESH_SURFACES;
+	static const int MATERIAL_RENDER_PRIORITY_MIN;
+	static const int MATERIAL_RENDER_PRIORITY_MAX;
+	static const int ARRAY_CUSTOM_COUNT;
+	static const int PARTICLES_EMIT_FLAG_POSITION;
+	static const int PARTICLES_EMIT_FLAG_ROTATION_SCALE;
+	static const int PARTICLES_EMIT_FLAG_VELOCITY;
+	static const int PARTICLES_EMIT_FLAG_COLOR;
+	static const int PARTICLES_EMIT_FLAG_CUSTOM;
 
 	static RenderingServer *get_singleton();
 

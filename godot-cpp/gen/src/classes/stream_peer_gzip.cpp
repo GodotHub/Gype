@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 Error StreamPeerGZIP::start_compression(bool use_deflate, int32_t buffer_size) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(StreamPeerGZIP::get_class_static()._native_ptr(), StringName("start_compression")._native_ptr(), 781582770);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Error(0));

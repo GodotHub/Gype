@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 void PanoramaSkyMaterial::set_panorama(const Ref<Texture2D> &texture) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PanoramaSkyMaterial::get_class_static()._native_ptr(), StringName("set_panorama")._native_ptr(), 4051416890);
 	CHECK_METHOD_BIND(_gde_method_bind);

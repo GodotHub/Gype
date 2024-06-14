@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 bool Script::can_instantiate() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Script::get_class_static()._native_ptr(), StringName("can_instantiate")._native_ptr(), 36873697);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, false);

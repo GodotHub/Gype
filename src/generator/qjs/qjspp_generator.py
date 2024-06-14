@@ -18,11 +18,11 @@ def add_builtin_classes(data):
             builtin_classes.append(clazz['name'])
 
 def generate_qjspp_h(env, data):
-    generate_godot_headers_h(env)
+    # generate_godot_headers_h(env)
     add_builtin_classes(data)
     template = env.get_template('qjspp.h.jinja')
     render = template.render({ 'data': data, 'builtin_classes': builtin_classes })
-    with open(f'{root}/quickjspp/include/qjspp.hpp', 'w') as file:
+    with open(f'{root}/quickjs/include/qjspp.hpp', 'w') as file:
         file.write(render)
 
 def generate_godot_headers_h(env):

@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 void Shortcut::set_events(const Array &events) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Shortcut::get_class_static()._native_ptr(), StringName("set_events")._native_ptr(), 381264803);
 	CHECK_METHOD_BIND(_gde_method_bind);

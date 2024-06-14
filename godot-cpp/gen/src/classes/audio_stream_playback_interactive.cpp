@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 void AudioStreamPlaybackInteractive::switch_to_clip_by_name(const StringName &clip_name) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AudioStreamPlaybackInteractive::get_class_static()._native_ptr(), StringName("switch_to_clip_by_name")._native_ptr(), 3304788590);
 	CHECK_METHOD_BIND(_gde_method_bind);

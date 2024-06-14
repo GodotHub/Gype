@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 NativeMenu *NativeMenu::singleton = nullptr;
 
 NativeMenu *NativeMenu::get_singleton() {

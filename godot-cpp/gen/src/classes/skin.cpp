@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 void Skin::set_bind_count(int32_t bind_count) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Skin::get_class_static()._native_ptr(), StringName("set_bind_count")._native_ptr(), 1286410249);
 	CHECK_METHOD_BIND(_gde_method_bind);

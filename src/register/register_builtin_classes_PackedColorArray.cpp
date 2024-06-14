@@ -1,15 +1,21 @@
 
 #include <godot_cpp/variant/array.hpp>
-#include <godot_cpp/variant/color.hpp>
-#include <godot_cpp/variant/packed_byte_array.hpp>
 #include <godot_cpp/variant/packed_color_array.hpp>
 
+#include <godot_cpp/variant/color.hpp>
+#include <godot_cpp/variant/packed_byte_array.hpp>
+
+#include "qjspp.hpp"
 #include "register/register_builtin_classes.h"
 
 using namespace godot;
 
 void register_builtin_classes_PackedColorArray() {
-	get_Variant_module().class_<PackedColorArray>("PackedColorArray").constructor<>().constructor<const PackedColorArray &>("PackedColorArray_1").constructor<const Array &>("PackedColorArray_2")
+	qjs::Context::Module &_Variant = get_Variant_module();
+	_Variant.class_<PackedColorArray>("PackedColorArray")
+			.constructor<>()
+			.constructor<const PackedColorArray &>("PackedColorArray_1")
+			.constructor<const Array &>("PackedColorArray_2")
 
 			.fun<static_cast<int64_t (PackedColorArray::*)() const>(&PackedColorArray::size)>("size")
 			.fun<static_cast<bool (PackedColorArray::*)() const>(&PackedColorArray::is_empty)>("is_empty")

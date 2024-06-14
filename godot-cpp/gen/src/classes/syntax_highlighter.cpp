@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 Dictionary SyntaxHighlighter::get_line_syntax_highlighting(int32_t line) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(SyntaxHighlighter::get_class_static()._native_ptr(), StringName("get_line_syntax_highlighting")._native_ptr(), 3554694381);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Dictionary());

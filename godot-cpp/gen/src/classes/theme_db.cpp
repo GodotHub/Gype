@@ -43,6 +43,7 @@
 
 namespace godot {
 
+
 ThemeDB *ThemeDB::singleton = nullptr;
 
 ThemeDB *ThemeDB::get_singleton() {

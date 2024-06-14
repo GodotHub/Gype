@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 void VoxelGI::set_probe_data(const Ref<VoxelGIData> &data) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(VoxelGI::get_class_static()._native_ptr(), StringName("set_probe_data")._native_ptr(), 1637849675);
 	CHECK_METHOD_BIND(_gde_method_bind);

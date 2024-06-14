@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 Variant WeakRef::get_ref() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(WeakRef::get_class_static()._native_ptr(), StringName("get_ref")._native_ptr(), 1214101251);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Variant());

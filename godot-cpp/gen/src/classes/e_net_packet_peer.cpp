@@ -40,6 +40,12 @@
 
 namespace godot {
 
+const int ENetPacketPeer::PACKET_LOSS_SCALE = 65536;
+const int ENetPacketPeer::PACKET_THROTTLE_SCALE = 32;
+const int ENetPacketPeer::FLAG_RELIABLE = 1;
+const int ENetPacketPeer::FLAG_UNSEQUENCED = 2;
+const int ENetPacketPeer::FLAG_UNRELIABLE_FRAGMENT = 8;
+
 void ENetPacketPeer::peer_disconnect(int32_t data) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(ENetPacketPeer::get_class_static()._native_ptr(), StringName("peer_disconnect")._native_ptr(), 1995695955);
 	CHECK_METHOD_BIND(_gde_method_bind);

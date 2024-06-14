@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 Error HTTPRequest::request(const String &url, const PackedStringArray &custom_headers, HTTPClient::Method method, const String &request_data) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(HTTPRequest::get_class_static()._native_ptr(), StringName("request")._native_ptr(), 3215244323);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Error(0));

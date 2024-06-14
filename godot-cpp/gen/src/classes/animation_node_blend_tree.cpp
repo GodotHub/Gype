@@ -41,6 +41,13 @@
 
 namespace godot {
 
+const int AnimationNodeBlendTree::CONNECTION_OK = 0;
+const int AnimationNodeBlendTree::CONNECTION_ERROR_NO_INPUT = 1;
+const int AnimationNodeBlendTree::CONNECTION_ERROR_NO_INPUT_INDEX = 2;
+const int AnimationNodeBlendTree::CONNECTION_ERROR_NO_OUTPUT = 3;
+const int AnimationNodeBlendTree::CONNECTION_ERROR_SAME_NODE = 4;
+const int AnimationNodeBlendTree::CONNECTION_ERROR_CONNECTION_EXISTS = 5;
+
 void AnimationNodeBlendTree::add_node(const StringName &name, const Ref<AnimationNode> &node, const Vector2 &position) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationNodeBlendTree::get_class_static()._native_ptr(), StringName("add_node")._native_ptr(), 1980270704);
 	CHECK_METHOD_BIND(_gde_method_bind);

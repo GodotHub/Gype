@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 int32_t VisualShaderNode::get_default_input_port(VisualShaderNode::PortType type) const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(VisualShaderNode::get_class_static()._native_ptr(), StringName("get_default_input_port")._native_ptr(), 1894493699);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);

@@ -1,4 +1,6 @@
 #include <godot_cpp/classes/capsule_shape3d.hpp>
+#include <godot_cpp/classes/shape3d.hpp>
+#include <string>
 
 #include "qjspp.hpp"
 #include "register/register_classes.h"
@@ -9,6 +11,7 @@ void register_classes_CapsuleShape3D() {
 	qjs::Context::Module &_module = get_General_module();
 	_module.class_<CapsuleShape3D>("CapsuleShape3D")
 			.constructor<>()
-			.property<&CapsuleShape3D::get_radius, &CapsuleShape3D::set_radius>("radius")
-			.property<&CapsuleShape3D::get_height, &CapsuleShape3D::set_height>("height");
+			.base<Shape3D>()
+			.property<static_cast<double (CapsuleShape3D::*)() const>(&CapsuleShape3D::get_radius), static_cast<void (CapsuleShape3D::*)(double)>(&CapsuleShape3D::set_radius)>((new std::string("radius"))->c_str())
+			.property<static_cast<double (CapsuleShape3D::*)() const>(&CapsuleShape3D::get_height), static_cast<void (CapsuleShape3D::*)(double)>(&CapsuleShape3D::set_height)>((new std::string("height"))->c_str());
 }

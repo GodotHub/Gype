@@ -47,16 +47,16 @@ class MainLoop : public Object {
 
 public:
 
-	static const int NOTIFICATION_OS_MEMORY_WARNING = 2009;
-	static const int NOTIFICATION_TRANSLATION_CHANGED = 2010;
-	static const int NOTIFICATION_WM_ABOUT = 2011;
-	static const int NOTIFICATION_CRASH = 2012;
-	static const int NOTIFICATION_OS_IME_UPDATE = 2013;
-	static const int NOTIFICATION_APPLICATION_RESUMED = 2014;
-	static const int NOTIFICATION_APPLICATION_PAUSED = 2015;
-	static const int NOTIFICATION_APPLICATION_FOCUS_IN = 2016;
-	static const int NOTIFICATION_APPLICATION_FOCUS_OUT = 2017;
-	static const int NOTIFICATION_TEXT_SERVER_CHANGED = 2018;
+	static const int NOTIFICATION_OS_MEMORY_WARNING;
+	static const int NOTIFICATION_TRANSLATION_CHANGED;
+	static const int NOTIFICATION_WM_ABOUT;
+	static const int NOTIFICATION_CRASH;
+	static const int NOTIFICATION_OS_IME_UPDATE;
+	static const int NOTIFICATION_APPLICATION_RESUMED;
+	static const int NOTIFICATION_APPLICATION_PAUSED;
+	static const int NOTIFICATION_APPLICATION_FOCUS_IN;
+	static const int NOTIFICATION_APPLICATION_FOCUS_OUT;
+	static const int NOTIFICATION_TEXT_SERVER_CHANGED;
 
 	virtual void _initialize();
 	virtual bool _physics_process(double delta);

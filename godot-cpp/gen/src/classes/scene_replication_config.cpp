@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 TypedArray<NodePath> SceneReplicationConfig::get_properties() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(SceneReplicationConfig::get_class_static()._native_ptr(), StringName("get_properties")._native_ptr(), 3995934104);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, TypedArray<NodePath>());

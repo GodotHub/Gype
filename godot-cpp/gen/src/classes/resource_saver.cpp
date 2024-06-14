@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 ResourceSaver *ResourceSaver::singleton = nullptr;
 
 ResourceSaver *ResourceSaver::get_singleton() {

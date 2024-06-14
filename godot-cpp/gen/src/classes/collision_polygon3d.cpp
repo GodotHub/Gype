@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void CollisionPolygon3D::set_depth(double depth) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(CollisionPolygon3D::get_class_static()._native_ptr(), StringName("set_depth")._native_ptr(), 373806689);
 	CHECK_METHOD_BIND(_gde_method_bind);

@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 void EditorDebuggerSession::send_message(const String &message, const Array &data) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorDebuggerSession::get_class_static()._native_ptr(), StringName("send_message")._native_ptr(), 85656714);
 	CHECK_METHOD_BIND(_gde_method_bind);

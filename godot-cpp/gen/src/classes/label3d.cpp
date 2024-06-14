@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 void Label3D::set_horizontal_alignment(HorizontalAlignment alignment) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Label3D::get_class_static()._native_ptr(), StringName("set_horizontal_alignment")._native_ptr(), 2312603777);
 	CHECK_METHOD_BIND(_gde_method_bind);

@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 Error WebSocketMultiplayerPeer::create_client(const String &url, const Ref<TLSOptions> &tls_client_options) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(WebSocketMultiplayerPeer::get_class_static()._native_ptr(), StringName("create_client")._native_ptr(), 1966198364);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Error(0));

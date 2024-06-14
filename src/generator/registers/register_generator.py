@@ -2,7 +2,7 @@ import json
 from jinja2 import FileSystemLoader, Environment
 import sys, os
 from pathlib import Path
-from binding_generator import is_pod_type, is_included_type, is_packed_array, is_enum, is_bitfield, get_enum_fullname,camel_to_snake
+from binding_generator import is_pod_type, is_included_type, is_packed_array, is_enum, is_bitfield, get_enum_fullname, camel_to_snake
 from qjspp_generator import list_files_relative
 import re
 sys.setrecursionlimit(100)
@@ -31,7 +31,7 @@ def is_refcounted(type_name):
 def init_engine_classes():
     global data
     for class_api in data["classes"]:
-        # Generate code for the ClassDB singleton under a different name.
+        # Generate code for the ClassDB singletons under a different name.
         if class_api["name"] == "ClassDB":
             class_api["name"] = "ClassDBSingleton"
             class_api["alias_for"] = "ClassDB"
@@ -126,14 +126,15 @@ def convert_paramter_type(types, is_vararg):
                 return f'const {converter[at]}&'
             else:
                 return f'const {at}&'
-        elif t.startswith('_'):
-            return t.removeprefix('_')
         else:
             return f'{t} *'
     params = list(map(_convert, types))
     if is_vararg:
         params.append('rest<Variant> args')
     return params
+
+# def convert_arguments(args, is_vararg):
+
 
 def convert_types(types, is_vararg):
     def _convert(t):
@@ -159,8 +160,6 @@ def convert_types(types, is_vararg):
                 return f'const {at}&'
         elif is_refcounted(t):
             return f'const Ref<{t}> &'
-        elif t.startswith('_'):
-            return t.removeprefix('_')
         elif t.count('*') > 0:
             return t
         else:
@@ -172,13 +171,16 @@ def convert_types(types, is_vararg):
 
 def convert_type(t):
     if is_pod_type(t):
-        if type == 'float':
+        if t == 'float':
             return 'double'
-        elif type == 'int':
+        elif t == 'int':
             return 'int64_t'
         return t
     elif is_variant(t):
-        return f'const {t} &'
+        if t.count('typedarray::') > 0:
+            return f'const TypedArray<{t.removeprefix('typedarray::')}> &'
+        else:
+            return f'const {t} &'
     elif is_enum(t):
         return get_enum_fullname(t).replace('.', '::')
     elif t.rfind('&') != -1:
@@ -188,9 +190,7 @@ def convert_type(t):
         else:
             return f'const {at}&'
     elif is_refcounted(t):
-        return f'Ref<{t}> &'
-    elif t.startswith('_'):
-        return t.removeprefix('_')
+        return f'const Ref<{t}> &'
     elif t.count('*') > 0:
         return t
     else:
@@ -250,17 +250,49 @@ def is_variant(type_name):
     )
 
 def typedarray_convert(type):
-    type = type.removeprefix('typedarray::')
-    return f'TypedArray<{type}>'
+    if type.count('typedarray::') > 0:
+        type = type.removeprefix('typedarray::')
+        return f'TypedArray<{type}>'
+    return type
 
 def build_tree(classes, clazz):
-    children = clazz.get('children', {})
-    for clz in classes:
-        if clz.get('inherits', None): 
-            if clz['inherits'] == clazz['name']:
-                children[clz['name']] = clz
-                clazz['children'] = children
-                build_tree(classes, clz)
+    def helper(classes, clazz):
+        children = clazz.get('children', [])
+        for clz in classes:
+            if clz.get('inherits', None): 
+                if clz['inherits'] == clazz['name']:
+                    children.append(clz)
+                    clazz['children'] = children
+                    build_tree(classes, clz)
+    if not clazz.get('children', None):
+        helper(classes, clazz)
+
+def calculate_max_depth(root):
+    def helper(node):
+        if node is None:
+            return 0
+        if not node.get('children', None):  # 如果没有子节点
+            node['depth'] = 1
+            return 1
+        max_child_depth = 0
+        for child in node.get('children', []):
+            child_depth = helper(child)
+            if child_depth > max_child_depth:
+                max_child_depth = child_depth
+        node['depth'] = max_child_depth + 1
+        return node['depth']
+    helper(root)
+
+def caculate_deep(clazz, deep = 0):
+    for clz in clazz.get('children', []):
+        caculate_deep(clz, deep + 1)
+    
+
+def sort_tree(clazz):
+    for clz in clazz.get('children', []):
+        sort_tree(clz)
+    clazz['children'] = clazz.get('children', [])
+    clazz['children'].sort(key = lambda e: e['depth'])
                 
 def snake_to_camel(snake_str):
     components = snake_str.split('_')
@@ -287,23 +319,24 @@ def generate_builtin_classes_cpp(env, data):
         with open(f'{root}/src/register/register_builtin_classes_{clazz['name']}.cpp', 'w') as file:
             file.write(render)
 
-def generate_classes_h(env, data):
+def generate_classes_h(env, classes, singletons):
     template = env.get_template('./classes/classes.h.jinja')
-    render = template.render({ 'classes': data })
+    render = template.render({ 'classes': classes, 'singletons': singletons })
     with open(root + '/include/register/register_classes.h', 'w') as file:
         file.write(render)
 
-def generate_classes_cpp(env, data, classes):
-    obj = data[422]
-    node = data[413]
-    node2d = data[414]
-    control = data[163]
-    node3d = data[415]
+def generate_classes_cpp(env, data, classes, singletons):
+    obj = data[437]
+    node = data[428]
+    node2d = data[429]
+    control = data[172]
+    node3d = data[430]
+    canvasitem = data[131]
     build_tree(data, obj)
     def _generate(clazz):
-        if clazz['is_instantiable'] and 'VisualShader' not in clazz['name']:
+        if 'VisualShader' not in clazz['name'] and clazz['name'] not in map(lambda e: e['type'], singletons):
             template = env.get_template('./classes/classes.cpp.jinja')
-            render = template.render({ 'clazz': clazz, 'classes': classes })
+            render = template.render({ 'clazz': clazz, 'classes': classes, 'singletons': singletons })
             with open(f'{root}/src/register/register_classes_{clazz['name']}.cpp', 'w') as file:
                 file.write(render)
 
@@ -312,7 +345,7 @@ def generate_classes_cpp(env, data, classes):
         _generate(clazz)
         children = clazz.get('children', None)
         if children:
-            for child in children.values():
+            for child in children:
                 if child['name'] in ['Node']:
                     continue
                 child['module'] = 'General'
@@ -323,7 +356,7 @@ def generate_classes_cpp(env, data, classes):
         _generate(clazz)
         children = clazz.get('children', None)
         if children:
-            for child in children.values():
+            for child in children:
                 if child['name'] in ['Node3D', 'CanvasItem']:
                     continue
                 child['module'] = 'Node'
@@ -334,7 +367,7 @@ def generate_classes_cpp(env, data, classes):
         _generate(clazz)
         children = clazz.get('children', None)
         if children:
-            for child in children.values():
+            for child in children:
                 child['module'] = 'Node2D'
                 _generate_node2d(child)    
 
@@ -343,7 +376,7 @@ def generate_classes_cpp(env, data, classes):
         _generate(clazz)
         children = clazz.get('children', None)
         if children:
-            for child in children.values():
+            for child in children:
                 child['module'] = 'Control'
                 _generate_control(child)
 
@@ -352,15 +385,20 @@ def generate_classes_cpp(env, data, classes):
         _generate(clazz)
         children = clazz.get('children', None)
         if children:
-            for child in children.values():
+            for child in children:
                 child['module'] = 'Node3D'
                 _generate_node3d(child)
+
+    def _generate_canvasitem(clazz):
+        clazz['module'] = 'CanvasItem'
+        _generate(clazz)
 
     _generate_object(obj)
     _generate_node(node)
     _generate_node2d(node2d)
     _generate_control(control)
     _generate_node3d(node3d)
+    _generate_canvasitem(canvasitem)
 
 def generate_ref_classes_cpp(env, data):
     classes = list(filter(lambda cl: cl['is_refcounted'] and 'VisualShader' not in cl['name'], data))
@@ -374,11 +412,52 @@ def generate_ref_classes_cpp(env, data):
     with open(f'{root}/src/register/register_classes_Ref.cpp', 'w') as file:
         file.write(render)
 
+def generate_singletons_cpp(env, data, classes, singletons):
+    def _generate(clazz):
+        if clazz['name'] in map(lambda e: e['type'], singletons) and 'VisualShader' not in clazz['name']:
+            template = env.get_template('./singletons/singletons.cpp.jinja')
+            render = template.render({ 'clazz': clazz, 'classes': classes, 'singletons': singletons })
+            with open(f'{root}/src/register/register_singletons_{clazz['name']}.cpp', 'w') as file:
+                file.write(render)
+
+    def _generate_object(clazz):
+        clazz['module'] = 'General'
+        _generate(clazz)
+        children = clazz.get('children', None)
+        if children:
+            for child in children:
+                if child['name'] in ['Node']:
+                    continue
+                child['module'] = 'General'
+                _generate_object(child)
+
+    obj = data[437]
+    build_tree(data, obj)
+    _generate_object(obj)
+    
+
 def generate_types_cpp(env, data):
+    classes = data['classes']
+    singletons = data['singletons']
+    obj = classes[437]
+    build_tree(classes, obj)
+    calculate_max_depth(obj)
+    sort_tree(obj)
     template = env.get_template('./types/register_types.cpp.jinja')
-    render = template.render({ 'builtin_classes': filter(lambda clazz: not is_pod_type(clazz['name']), data['builtin_classes']), 'classes': data['classes'] })
+    render = template.render({ 'builtin_classes': filter(lambda clazz: not is_pod_type(clazz['name']), data['builtin_classes']), 'classes': classes, 'object': obj, 'singletons': singletons })
     with open(f'{root}/src/register/register_types.cpp', 'w') as file:
         file.write(render)
+
+def bfs_classes(obj):
+    queue = [obj]
+    result = []
+    
+    while queue:
+        current = queue.pop(0)
+        if 'VisualShader' not in current['name']:
+            result.append(f'register_classes_{current['name']}()')
+        queue.extend(current.get('children', []))
+    return result
 
 def get_file_name(file_path):
     file_name_with_extension = os.path.basename(file_path)
@@ -388,6 +467,7 @@ if __name__ == '__main__':
     files = list_files_relative(f'{root}/godot-cpp/include')
     files.extend(list_files_relative(f'{root}/godot-cpp/gen/include'))
     env = Environment(loader=FileSystemLoader('templates'), trim_blocks=True, lstrip_blocks=True)
+    env.globals['bfs_classes'] = bfs_classes
     env.globals['flush_letter'] = flush_letter
     env.globals['is_pod_type'] = is_pod_type
     env.globals['is_refcounted'] = is_refcounted
@@ -410,7 +490,7 @@ if __name__ == '__main__':
     # generate_utility_functions_cpp(env, data['utility_functions'])
     # generate_builtin_classes_h(env, data['builtin_classes'])
     # generate_builtin_classes_cpp(env, data['builtin_classes'])
-    # generate_classes_h(env, data['classes'])
-    # generate_classes_cpp(env, data['classes'], files)
-    generate_ref_classes_cpp(env, data['classes'])
+    # generate_classes_h(env, data['classes'], data['singletons'])
+    generate_classes_cpp(env, data['classes'], files, data['singletons'])
+    generate_singletons_cpp(env, data['classes'], files, data['singletons'])
     # generate_types_cpp(env, data)

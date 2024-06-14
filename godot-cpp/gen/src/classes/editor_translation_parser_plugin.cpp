@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 void EditorTranslationParserPlugin::_parse_file(const String &path, const TypedArray<String> &msgids, const TypedArray<Array> &msgids_context_plural) {}
 
 PackedStringArray EditorTranslationParserPlugin::_get_recognized_extensions() const {

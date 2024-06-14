@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 bool GDExtension::is_library_open() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GDExtension::get_class_static()._native_ptr(), StringName("is_library_open")._native_ptr(), 36873697);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, false);

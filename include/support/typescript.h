@@ -1,15 +1,36 @@
 #ifndef TS_SUPPORT
 #define TS_SUPPORT
 
-#include "qjspp/utils.h"
-#include "quickjs-parser.h"
-#include "support/typescript_language.h"
 #include <support/typescript_instance.h>
+#include <godot_cpp/classes/global_constants.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/script.hpp>
 #include <godot_cpp/classes/script_extension.hpp>
+#include <godot_cpp/classes/script_language.hpp>
+#include <godot_cpp/classes/wrapped.hpp>
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/templates/hash_map.hpp>
 #include <godot_cpp/templates/hash_set.hpp>
 #include <godot_cpp/templates/list.hpp>
+#include <godot_cpp/variant/dictionary.hpp>
+#include <godot_cpp/variant/string.hpp>
+#include <godot_cpp/variant/string_name.hpp>
+#include <godot_cpp/variant/typed_array.hpp>
+#include <godot_cpp/variant/variant.hpp>
+#include <stdint.h>
+#include <stdint.h>
+
+#include "qjspp/utils.h"
+#include "quickjs-parser.h"
+#include "support/typescript_language.h"
+
+namespace godot {
+class ClassDB;
+class Object;
+class ScriptLanguage;
+}  // namespace godot
 
 using namespace godot;
 

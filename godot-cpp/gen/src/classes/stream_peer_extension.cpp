@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 Error StreamPeerExtension::_get_data(uint8_t *r_buffer, int32_t r_bytes, int32_t *r_received) {
 	return Error(0);
 }

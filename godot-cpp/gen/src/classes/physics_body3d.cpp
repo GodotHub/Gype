@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 Ref<KinematicCollision3D> PhysicsBody3D::move_and_collide(const Vector3 &motion, bool test_only, double safe_margin, bool recovery_as_collision, int32_t max_collisions) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsBody3D::get_class_static()._native_ptr(), StringName("move_and_collide")._native_ptr(), 3208792678);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Ref<KinematicCollision3D>());

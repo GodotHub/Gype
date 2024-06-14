@@ -44,6 +44,7 @@
 
 namespace godot {
 
+
 Error MultiplayerAPIExtension::_poll() {
 	return Error(0);
 }

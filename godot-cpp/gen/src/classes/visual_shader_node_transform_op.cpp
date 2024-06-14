@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void VisualShaderNodeTransformOp::set_operator(VisualShaderNodeTransformOp::Operator op) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(VisualShaderNodeTransformOp::get_class_static()._native_ptr(), StringName("set_operator")._native_ptr(), 2287310733);
 	CHECK_METHOD_BIND(_gde_method_bind);

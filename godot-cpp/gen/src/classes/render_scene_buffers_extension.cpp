@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 void RenderSceneBuffersExtension::_configure(const Ref<RenderSceneBuffersConfiguration> &config) {}
 
 void RenderSceneBuffersExtension::_set_fsr_sharpness(double fsr_sharpness) {}

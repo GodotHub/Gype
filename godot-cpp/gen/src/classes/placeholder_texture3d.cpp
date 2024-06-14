@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void PlaceholderTexture3D::set_size(const Vector3i &size) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PlaceholderTexture3D::get_class_static()._native_ptr(), StringName("set_size")._native_ptr(), 560364750);
 	CHECK_METHOD_BIND(_gde_method_bind);

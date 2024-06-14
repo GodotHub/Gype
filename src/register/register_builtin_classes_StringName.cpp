@@ -1,31 +1,39 @@
 
+#include <godot_cpp/variant/string.hpp>
+#include <godot_cpp/variant/string_name.hpp>
+
 #include <godot_cpp/variant/packed_byte_array.hpp>
 #include <godot_cpp/variant/packed_float64_array.hpp>
 #include <godot_cpp/variant/packed_string_array.hpp>
-#include <godot_cpp/variant/string.hpp>
-#include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/variant/variant.hpp>
 
+#include "qjspp.hpp"
 #include "register/register_builtin_classes.h"
 
 using namespace godot;
 
 void register_builtin_classes_StringName() {
-	get_Variant_module().class_<StringName>("StringName").constructor<>().constructor<const StringName &>("StringName_1").constructor<const String &>("StringName_2")
+	qjs::Context::Module &_Variant = get_Variant_module();
+	_Variant.class_<StringName>("StringName")
+			.constructor<>()
+			.constructor<const StringName &>("StringName_1")
+			.constructor<const String &>("StringName_2")
 
 			.fun<static_cast<int64_t (StringName::*)(const String &) const>(&StringName::casecmp_to)>("casecmp_to")
 			.fun<static_cast<int64_t (StringName::*)(const String &) const>(&StringName::nocasecmp_to)>("nocasecmp_to")
 			.fun<static_cast<int64_t (StringName::*)(const String &) const>(&StringName::naturalcasecmp_to)>("naturalcasecmp_to")
 			.fun<static_cast<int64_t (StringName::*)(const String &) const>(&StringName::naturalnocasecmp_to)>("naturalnocasecmp_to")
+			.fun<static_cast<int64_t (StringName::*)(const String &) const>(&StringName::filecasecmp_to)>("filecasecmp_to")
+			.fun<static_cast<int64_t (StringName::*)(const String &) const>(&StringName::filenocasecmp_to)>("filenocasecmp_to")
 			.fun<static_cast<int64_t (StringName::*)() const>(&StringName::length)>("length")
 			.fun<static_cast<String (StringName::*)(int64_t, int64_t) const>(&StringName::substr)>("substr")
 			.fun<static_cast<String (StringName::*)(const String &, int64_t) const>(&StringName::get_slice)>("get_slice")
 			.fun<static_cast<String (StringName::*)(int64_t, int64_t) const>(&StringName::get_slicec)>("get_slicec")
 			.fun<static_cast<int64_t (StringName::*)(const String &) const>(&StringName::get_slice_count)>("get_slice_count")
 			.fun<static_cast<int64_t (StringName::*)(const String &, int64_t) const>(&StringName::find)>("find")
+			.fun<static_cast<int64_t (StringName::*)(const String &, int64_t) const>(&StringName::findn)>("findn")
 			.fun<static_cast<int64_t (StringName::*)(const String &, int64_t, int64_t) const>(&StringName::count)>("count")
 			.fun<static_cast<int64_t (StringName::*)(const String &, int64_t, int64_t) const>(&StringName::countn)>("countn")
-			.fun<static_cast<int64_t (StringName::*)(const String &, int64_t) const>(&StringName::findn)>("findn")
 			.fun<static_cast<int64_t (StringName::*)(const String &, int64_t) const>(&StringName::rfind)>("rfind")
 			.fun<static_cast<int64_t (StringName::*)(const String &, int64_t) const>(&StringName::rfindn)>("rfindn")
 			.fun<static_cast<bool (StringName::*)(const String &) const>(&StringName::match)>("match")
@@ -73,6 +81,7 @@ void register_builtin_classes_StringName() {
 			.fun<static_cast<PackedByteArray (StringName::*)() const>(&StringName::sha256_buffer)>("sha256_buffer")
 			.fun<static_cast<bool (StringName::*)() const>(&StringName::is_empty)>("is_empty")
 			.fun<static_cast<bool (StringName::*)(const String &) const>(&StringName::contains)>("contains")
+			.fun<static_cast<bool (StringName::*)(const String &) const>(&StringName::containsn)>("containsn")
 			.fun<static_cast<bool (StringName::*)() const>(&StringName::is_absolute_path)>("is_absolute_path")
 			.fun<static_cast<bool (StringName::*)() const>(&StringName::is_relative_path)>("is_relative_path")
 			.fun<static_cast<String (StringName::*)() const>(&StringName::simplify_path)>("simplify_path")

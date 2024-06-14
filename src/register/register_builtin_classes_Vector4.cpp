@@ -3,11 +3,17 @@
 #include <godot_cpp/variant/vector4i.hpp>
 
 #include "register/register_builtin_classes.h"
+#include "qjspp.hpp"
 
 using namespace godot;
 
 void register_builtin_classes_Vector4() {
-	get_Variant_module().class_<Vector4>("Vector4").constructor<>().constructor<const Vector4 &>("Vector4_1").constructor<const Vector4i &>("Vector4_2").constructor<real_t, real_t, real_t, real_t>("Vector4_3")
+	qjs::Context::Module &_Variant = get_Variant_module();
+	_Variant.class_<Vector4>("Vector4")
+			.constructor<>()
+			.constructor<const Vector4 &>("Vector4_1")
+			.constructor<const Vector4i &>("Vector4_2")
+			.constructor<real_t, real_t, real_t, real_t>("Vector4_3")
 
 			.fun<static_cast<Vector4::Axis (Vector4::*)() const>(&Vector4::min_axis_index)>("min_axis_index")
 			.fun<static_cast<Vector4::Axis (Vector4::*)() const>(&Vector4::max_axis_index)>("max_axis_index")
@@ -24,7 +30,9 @@ void register_builtin_classes_Vector4() {
 			.fun<static_cast<Vector4 (Vector4::*)(real_t) const>(&Vector4::posmod)>("posmod")
 			.fun<static_cast<Vector4 (Vector4::*)(const Vector4 &) const>(&Vector4::posmodv)>("posmodv")
 			.fun<static_cast<Vector4 (Vector4::*)(const Vector4 &) const>(&Vector4::snapped)>("snapped")
+			.fun<static_cast<Vector4 (Vector4::*)(real_t) const>(&Vector4::snappedf)>("snappedf")
 			.fun<static_cast<Vector4 (Vector4::*)(const Vector4 &, const Vector4 &) const>(&Vector4::clamp)>("clamp")
+			.fun<static_cast<Vector4 (Vector4::*)(real_t, real_t) const>(&Vector4::clampf)>("clampf")
 			.fun<static_cast<Vector4 (Vector4::*)() const>(&Vector4::normalized)>("normalized")
 			.fun<static_cast<bool (Vector4::*)() const>(&Vector4::is_normalized)>("is_normalized")
 			.fun<static_cast<Vector4 (Vector4::*)(const Vector4 &) const>(&Vector4::direction_to)>("direction_to")
@@ -34,5 +42,9 @@ void register_builtin_classes_Vector4() {
 			.fun<static_cast<Vector4 (Vector4::*)() const>(&Vector4::inverse)>("inverse")
 			.fun<static_cast<bool (Vector4::*)(const Vector4 &) const>(&Vector4::is_equal_approx)>("is_equal_approx")
 			.fun<static_cast<bool (Vector4::*)() const>(&Vector4::is_zero_approx)>("is_zero_approx")
-			.fun<static_cast<bool (Vector4::*)() const>(&Vector4::is_finite)>("is_finite");
+			.fun<static_cast<bool (Vector4::*)() const>(&Vector4::is_finite)>("is_finite")
+			.fun<static_cast<Vector4 (Vector4::*)(const Vector4 &) const>(&Vector4::min)>("min")
+			.fun<static_cast<Vector4 (Vector4::*)(real_t) const>(&Vector4::minf)>("minf")
+			.fun<static_cast<Vector4 (Vector4::*)(const Vector4 &) const>(&Vector4::max)>("max")
+			.fun<static_cast<Vector4 (Vector4::*)(real_t) const>(&Vector4::maxf)>("maxf");
 }

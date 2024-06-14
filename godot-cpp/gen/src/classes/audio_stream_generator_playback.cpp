@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 bool AudioStreamGeneratorPlayback::push_frame(const Vector2 &frame) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AudioStreamGeneratorPlayback::get_class_static()._native_ptr(), StringName("push_frame")._native_ptr(), 3975407249);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, false);

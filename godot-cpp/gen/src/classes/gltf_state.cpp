@@ -55,6 +55,11 @@
 
 namespace godot {
 
+const int GLTFState::HANDLE_BINARY_DISCARD_TEXTURES = 0;
+const int GLTFState::HANDLE_BINARY_EXTRACT_TEXTURES = 1;
+const int GLTFState::HANDLE_BINARY_EMBED_AS_BASISU = 2;
+const int GLTFState::HANDLE_BINARY_EMBED_AS_UNCOMPRESSED = 3;
+
 void GLTFState::add_used_extension(const String &extension_name, bool required) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFState::get_class_static()._native_ptr(), StringName("add_used_extension")._native_ptr(), 2678287736);
 	CHECK_METHOD_BIND(_gde_method_bind);

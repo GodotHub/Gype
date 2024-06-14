@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 Geometry3D *Geometry3D::singleton = nullptr;
 
 Geometry3D *Geometry3D::get_singleton() {

@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 Ref<OpenXRAPIExtension> OpenXRExtensionWrapperExtension::get_openxr_api() {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(OpenXRExtensionWrapperExtension::get_class_static()._native_ptr(), StringName("get_openxr_api")._native_ptr(), 1637791613);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Ref<OpenXRAPIExtension>());

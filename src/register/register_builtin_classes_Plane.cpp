@@ -3,11 +3,20 @@
 #include <godot_cpp/variant/vector3.hpp>
 
 #include "register/register_builtin_classes.h"
+#include "qjspp.hpp"
 
 using namespace godot;
 
 void register_builtin_classes_Plane() {
-	get_Variant_module().class_<Plane>("Plane").constructor<>().constructor<const Plane &>("Plane_1").constructor<const Vector3 &>("Plane_2").constructor<const Vector3 &, real_t>("Plane_3").constructor<const Vector3 &, const Vector3 &>("Plane_4").constructor<const Vector3 &, const Vector3 &, const Vector3 &>("Plane_5").constructor<real_t, real_t, real_t, real_t>("Plane_6")
+	qjs::Context::Module &_Variant = get_Variant_module();
+	_Variant.class_<Plane>("Plane")
+			.constructor<>()
+			.constructor<const Plane &>("Plane_1")
+			.constructor<const Vector3 &>("Plane_2")
+			.constructor<const Vector3 &, real_t>("Plane_3")
+			.constructor<const Vector3 &, const Vector3 &>("Plane_4")
+			.constructor<const Vector3 &, const Vector3 &, const Vector3 &>("Plane_5")
+			.constructor<real_t, real_t, real_t, real_t>("Plane_6")
 
 			.fun<static_cast<Plane (Plane::*)() const>(&Plane::normalized)>("normalized")
 			.fun<static_cast<bool (Plane::*)(const Plane &) const>(&Plane::is_equal_approx)>("is_equal_approx")

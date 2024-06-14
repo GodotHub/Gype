@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 void GeometryInstance3D::set_material_override(const Ref<Material> &material) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GeometryInstance3D::get_class_static()._native_ptr(), StringName("set_material_override")._native_ptr(), 2757459619);
 	CHECK_METHOD_BIND(_gde_method_bind);

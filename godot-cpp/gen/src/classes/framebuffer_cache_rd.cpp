@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 RID FramebufferCacheRD::get_cache_multipass(const TypedArray<RID> &textures, const TypedArray<RDFramebufferPass> &passes, uint32_t views) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(FramebufferCacheRD::get_class_static()._native_ptr(), StringName("get_cache_multipass")._native_ptr(), 3437881813);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, RID());

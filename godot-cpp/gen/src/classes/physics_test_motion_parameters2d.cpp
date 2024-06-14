@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 Transform2D PhysicsTestMotionParameters2D::get_from() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsTestMotionParameters2D::get_class_static()._native_ptr(), StringName("get_from")._native_ptr(), 3814499831);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Transform2D());

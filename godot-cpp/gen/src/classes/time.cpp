@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 Time *Time::singleton = nullptr;
 
 Time *Time::get_singleton() {

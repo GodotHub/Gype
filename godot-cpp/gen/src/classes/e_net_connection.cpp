@@ -42,6 +42,7 @@
 
 namespace godot {
 
+
 Error ENetConnection::create_host_bound(const String &bind_address, int32_t bind_port, int32_t max_peers, int32_t max_channels, int32_t in_bandwidth, int32_t out_bandwidth) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(ENetConnection::get_class_static()._native_ptr(), StringName("create_host_bound")._native_ptr(), 1515002313);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Error(0));

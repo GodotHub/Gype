@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 bool ScriptExtension::_editor_can_reload_from_file() {
 	return false;
 }

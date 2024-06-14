@@ -38,6 +38,9 @@
 
 namespace godot {
 
+const int Material::RENDER_PRIORITY_MAX = 127;
+const int Material::RENDER_PRIORITY_MIN = -128;
+
 void Material::set_next_pass(const Ref<Material> &next_pass) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Material::get_class_static()._native_ptr(), StringName("set_next_pass")._native_ptr(), 2757459619);
 	CHECK_METHOD_BIND(_gde_method_bind);

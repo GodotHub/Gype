@@ -42,6 +42,7 @@
 
 namespace godot {
 
+
 void EditorInspectorPlugin::add_custom_control(Control *control) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorInspectorPlugin::get_class_static()._native_ptr(), StringName("add_custom_control")._native_ptr(), 1496901182);
 	CHECK_METHOD_BIND(_gde_method_bind);

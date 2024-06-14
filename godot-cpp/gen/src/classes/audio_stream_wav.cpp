@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 void AudioStreamWAV::set_data(const PackedByteArray &data) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AudioStreamWAV::get_class_static()._native_ptr(), StringName("set_data")._native_ptr(), 2971499966);
 	CHECK_METHOD_BIND(_gde_method_bind);

@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 Transform2D CharFXTransform::get_transform() {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(CharFXTransform::get_class_static()._native_ptr(), StringName("get_transform")._native_ptr(), 3761352769);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Transform2D());

@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 void AnimationNodeStateMachineTransition::set_switch_mode(AnimationNodeStateMachineTransition::SwitchMode mode) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationNodeStateMachineTransition::get_class_static()._native_ptr(), StringName("set_switch_mode")._native_ptr(), 2074906633);
 	CHECK_METHOD_BIND(_gde_method_bind);

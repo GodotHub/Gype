@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void Gradient::add_point(double offset, const Color &color) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Gradient::get_class_static()._native_ptr(), StringName("add_point")._native_ptr(), 3629403827);
 	CHECK_METHOD_BIND(_gde_method_bind);

@@ -42,6 +42,7 @@
 
 namespace godot {
 
+
 AudioServer *AudioServer::singleton = nullptr;
 
 AudioServer *AudioServer::get_singleton() {

@@ -42,6 +42,7 @@
 
 namespace godot {
 
+
 Input *Input::singleton = nullptr;
 
 Input *Input::get_singleton() {

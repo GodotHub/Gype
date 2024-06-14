@@ -1,15 +1,21 @@
 
 #include <godot_cpp/variant/array.hpp>
-#include <godot_cpp/variant/packed_byte_array.hpp>
 #include <godot_cpp/variant/packed_vector3_array.hpp>
+
+#include <godot_cpp/variant/packed_byte_array.hpp>
 #include <godot_cpp/variant/vector3.hpp>
 
+#include "qjspp.hpp"
 #include "register/register_builtin_classes.h"
 
 using namespace godot;
 
 void register_builtin_classes_PackedVector3Array() {
-	get_Variant_module().class_<PackedVector3Array>("PackedVector3Array").constructor<>().constructor<const PackedVector3Array &>("PackedVector3Array_1").constructor<const Array &>("PackedVector3Array_2")
+	qjs::Context::Module &_Variant = get_Variant_module();
+	_Variant.class_<PackedVector3Array>("PackedVector3Array")
+			.constructor<>()
+			.constructor<const PackedVector3Array &>("PackedVector3Array_1")
+			.constructor<const Array &>("PackedVector3Array_2")
 
 			.fun<static_cast<int64_t (PackedVector3Array::*)() const>(&PackedVector3Array::size)>("size")
 			.fun<static_cast<bool (PackedVector3Array::*)() const>(&PackedVector3Array::is_empty)>("is_empty")

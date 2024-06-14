@@ -50,8 +50,8 @@ class Container : public Control {
 
 public:
 
-	static const int NOTIFICATION_PRE_SORT_CHILDREN = 50;
-	static const int NOTIFICATION_SORT_CHILDREN = 51;
+	static const int NOTIFICATION_PRE_SORT_CHILDREN;
+	static const int NOTIFICATION_SORT_CHILDREN;
 
 	void queue_sort();
 	void fit_child_in_rect(Control *child, const Rect2 &rect);

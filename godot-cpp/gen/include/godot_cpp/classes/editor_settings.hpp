@@ -56,7 +56,7 @@ class EditorSettings : public Resource {
 
 public:
 
-	static const int NOTIFICATION_EDITOR_SETTINGS_CHANGED = 10000;
+	static const int NOTIFICATION_EDITOR_SETTINGS_CHANGED;
 
 	bool has_setting(const String &name) const;
 	void set_setting(const String &name, const Variant &value);

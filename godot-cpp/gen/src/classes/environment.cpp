@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 void Environment::set_background(Environment::BGMode mode) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Environment::get_class_static()._native_ptr(), StringName("set_background")._native_ptr(), 4071623990);
 	CHECK_METHOD_BIND(_gde_method_bind);

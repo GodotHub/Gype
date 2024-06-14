@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 String GLTFAnimation::get_original_name() {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFAnimation::get_class_static()._native_ptr(), StringName("get_original_name")._native_ptr(), 2841200299);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, String());

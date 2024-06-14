@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 PackedByteArray Crypto::generate_random_bytes(int32_t size) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Crypto::get_class_static()._native_ptr(), StringName("generate_random_bytes")._native_ptr(), 47165747);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, PackedByteArray());

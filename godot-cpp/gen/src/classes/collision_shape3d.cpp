@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 void CollisionShape3D::resource_changed(const Ref<Resource> &resource) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(CollisionShape3D::get_class_static()._native_ptr(), StringName("resource_changed")._native_ptr(), 968641751);
 	CHECK_METHOD_BIND(_gde_method_bind);

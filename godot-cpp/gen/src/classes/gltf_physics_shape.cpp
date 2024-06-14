@@ -42,6 +42,7 @@
 
 namespace godot {
 
+
 Ref<GLTFPhysicsShape> GLTFPhysicsShape::from_node(CollisionShape3D *shape_node) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFPhysicsShape::get_class_static()._native_ptr(), StringName("from_node")._native_ptr(), 3613751275);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Ref<GLTFPhysicsShape>());

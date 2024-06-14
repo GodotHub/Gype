@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 void EngineProfiler::_toggle(bool enable, const Array &options) {}
 
 void EngineProfiler::_add_frame(const Array &data) {}

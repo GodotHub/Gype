@@ -41,6 +41,8 @@
 
 namespace godot {
 
+const int InputEvent::DEVICE_ID_EMULATION = -1;
+
 void InputEvent::set_device(int32_t device) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(InputEvent::get_class_static()._native_ptr(), StringName("set_device")._native_ptr(), 1286410249);
 	CHECK_METHOD_BIND(_gde_method_bind);

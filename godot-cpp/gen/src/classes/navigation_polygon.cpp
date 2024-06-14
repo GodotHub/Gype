@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 void NavigationPolygon::set_vertices(const PackedVector2Array &vertices) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationPolygon::get_class_static()._native_ptr(), StringName("set_vertices")._native_ptr(), 1509147220);
 	CHECK_METHOD_BIND(_gde_method_bind);

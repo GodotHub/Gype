@@ -42,6 +42,7 @@
 
 namespace godot {
 
+
 Error DTLSServer::setup(const Ref<TLSOptions> &server_options) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(DTLSServer::get_class_static()._native_ptr(), StringName("setup")._native_ptr(), 1262296096);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Error(0));

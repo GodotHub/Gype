@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 Ref<ImageTexture> ImageTexture::create_from_image(const Ref<Image> &image) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(ImageTexture::get_class_static()._native_ptr(), StringName("create_from_image")._native_ptr(), 2775144163);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Ref<ImageTexture>());

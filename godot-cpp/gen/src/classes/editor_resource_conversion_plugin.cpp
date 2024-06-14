@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 String EditorResourceConversionPlugin::_converts_to() const {
 	return String();
 }

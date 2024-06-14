@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 Ref<Resource> Texture2DArray::create_placeholder() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Texture2DArray::get_class_static()._native_ptr(), StringName("create_placeholder")._native_ptr(), 121922552);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Ref<Resource>());

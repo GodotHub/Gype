@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 void GraphFrame::set_title(const String &title) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GraphFrame::get_class_static()._native_ptr(), StringName("set_title")._native_ptr(), 83702148);
 	CHECK_METHOD_BIND(_gde_method_bind);

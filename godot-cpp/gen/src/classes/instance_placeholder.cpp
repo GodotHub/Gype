@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 Dictionary InstancePlaceholder::get_stored_values(bool with_order) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(InstancePlaceholder::get_class_static()._native_ptr(), StringName("get_stored_values")._native_ptr(), 2230153369);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Dictionary());

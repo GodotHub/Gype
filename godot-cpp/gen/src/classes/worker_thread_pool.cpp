@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 WorkerThreadPool *WorkerThreadPool::singleton = nullptr;
 
 WorkerThreadPool *WorkerThreadPool::get_singleton() {

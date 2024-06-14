@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 void EditorCommandPalette::add_command(const String &command_name, const String &key_name, const Callable &binded_callable, const String &shortcut_text) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorCommandPalette::get_class_static()._native_ptr(), StringName("add_command")._native_ptr(), 864043298);
 	CHECK_METHOD_BIND(_gde_method_bind);

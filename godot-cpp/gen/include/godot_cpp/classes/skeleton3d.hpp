@@ -64,7 +64,7 @@ public:
 		MODIFIER_CALLBACK_MODE_PROCESS_IDLE = 1,
 	};
 
-	static const int NOTIFICATION_UPDATE_SKELETON = 50;
+	static const int NOTIFICATION_UPDATE_SKELETON;
 
 	int32_t add_bone(const String &name);
 	int32_t find_bone(const String &name) const;

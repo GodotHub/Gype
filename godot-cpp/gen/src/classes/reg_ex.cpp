@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 Ref<RegEx> RegEx::create_from_string(const String &pattern) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(RegEx::get_class_static()._native_ptr(), StringName("create_from_string")._native_ptr(), 2150300909);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Ref<RegEx>());

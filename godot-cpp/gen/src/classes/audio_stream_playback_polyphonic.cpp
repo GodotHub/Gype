@@ -40,6 +40,8 @@
 
 namespace godot {
 
+const int AudioStreamPlaybackPolyphonic::INVALID_ID = -1;
+
 int64_t AudioStreamPlaybackPolyphonic::play_stream(const Ref<AudioStream> &stream, double from_offset, double volume_db, double pitch_scale) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AudioStreamPlaybackPolyphonic::get_class_static()._native_ptr(), StringName("play_stream")._native_ptr(), 604492179);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);

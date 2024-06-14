@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void AnimationNodeStateMachinePlayback::travel(const StringName &to_node, bool reset_on_teleport) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationNodeStateMachinePlayback::get_class_static()._native_ptr(), StringName("travel")._native_ptr(), 3823612587);
 	CHECK_METHOD_BIND(_gde_method_bind);

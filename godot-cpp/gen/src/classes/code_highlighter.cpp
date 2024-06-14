@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 void CodeHighlighter::add_keyword_color(const String &keyword, const Color &color) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(CodeHighlighter::get_class_static()._native_ptr(), StringName("add_keyword_color")._native_ptr(), 1636512886);
 	CHECK_METHOD_BIND(_gde_method_bind);

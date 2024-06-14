@@ -50,7 +50,7 @@ class AudioStreamPlaybackPolyphonic : public AudioStreamPlayback {
 
 public:
 
-	static const int INVALID_ID = -1;
+	static const int INVALID_ID;
 
 	int64_t play_stream(const Ref<AudioStream> &stream, double from_offset = 0, double volume_db = 0, double pitch_scale = 1.0);
 	void set_stream_volume(int64_t stream, double volume_db);

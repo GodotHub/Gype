@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 Performance *Performance::singleton = nullptr;
 
 Performance *Performance::get_singleton() {

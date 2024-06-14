@@ -1,15 +1,21 @@
 
 #include <godot_cpp/variant/array.hpp>
-#include <godot_cpp/variant/packed_byte_array.hpp>
 #include <godot_cpp/variant/packed_string_array.hpp>
+
+#include <godot_cpp/variant/packed_byte_array.hpp>
 #include <godot_cpp/variant/string.hpp>
 
+#include "qjspp.hpp"
 #include "register/register_builtin_classes.h"
 
 using namespace godot;
 
 void register_builtin_classes_PackedStringArray() {
-	get_Variant_module().class_<PackedStringArray>("PackedStringArray").constructor<>().constructor<const PackedStringArray &>("PackedStringArray_1").constructor<const Array &>("PackedStringArray_2")
+	qjs::Context::Module &_Variant = get_Variant_module();
+	_Variant.class_<PackedStringArray>("PackedStringArray")
+			.constructor<>()
+			.constructor<const PackedStringArray &>("PackedStringArray_1")
+			.constructor<const Array &>("PackedStringArray_2")
 
 			.fun<static_cast<int64_t (PackedStringArray::*)() const>(&PackedStringArray::size)>("size")
 			.fun<static_cast<bool (PackedStringArray::*)() const>(&PackedStringArray::is_empty)>("is_empty")

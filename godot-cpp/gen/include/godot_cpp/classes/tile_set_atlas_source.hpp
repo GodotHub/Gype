@@ -60,9 +60,9 @@ public:
 		TILE_ANIMATION_MODE_MAX = 2,
 	};
 
-	static const int TRANSFORM_FLIP_H = 4096;
-	static const int TRANSFORM_FLIP_V = 8192;
-	static const int TRANSFORM_TRANSPOSE = 16384;
+	static const int TRANSFORM_FLIP_H;
+	static const int TRANSFORM_FLIP_V;
+	static const int TRANSFORM_TRANSPOSE;
 
 	void set_texture(const Ref<Texture2D> &texture);
 	Ref<Texture2D> get_texture() const;

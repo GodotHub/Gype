@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 Marshalls *Marshalls::singleton = nullptr;
 
 Marshalls *Marshalls::get_singleton() {

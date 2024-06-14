@@ -5,11 +5,18 @@
 #include <godot_cpp/variant/vector3.hpp>
 
 #include "register/register_builtin_classes.h"
+#include "qjspp.hpp"
 
 using namespace godot;
 
 void register_builtin_classes_Transform3D() {
-	get_Variant_module().class_<Transform3D>("Transform3D").constructor<>().constructor<const Transform3D &>("Transform3D_1").constructor<const Basis &, const Vector3 &>("Transform3D_2").constructor<const Vector3 &, const Vector3 &, const Vector3 &, const Vector3 &>("Transform3D_3").constructor<const Projection &>("Transform3D_4")
+	qjs::Context::Module &_Variant = get_Variant_module();
+	_Variant.class_<Transform3D>("Transform3D")
+			.constructor<>()
+			.constructor<const Transform3D &>("Transform3D_1")
+			.constructor<const Basis &, const Vector3 &>("Transform3D_2")
+			.constructor<const Vector3 &, const Vector3 &, const Vector3 &, const Vector3 &>("Transform3D_3")
+			.constructor<const Projection &>("Transform3D_4")
 
 			.fun<static_cast<Transform3D (Transform3D::*)() const>(&Transform3D::inverse)>("inverse")
 			.fun<static_cast<Transform3D (Transform3D::*)() const>(&Transform3D::affine_inverse)>("affine_inverse")

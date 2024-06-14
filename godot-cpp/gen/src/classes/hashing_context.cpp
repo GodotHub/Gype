@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 Error HashingContext::start(HashingContext::HashType type) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(HashingContext::get_class_static()._native_ptr(), StringName("start")._native_ptr(), 3940338335);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Error(0));

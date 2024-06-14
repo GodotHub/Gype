@@ -1,18 +1,35 @@
 #ifndef TS_LOADER
 #define TS_LOADER
 
+#include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/classes/random_number_generator.hpp>
 #include <godot_cpp/classes/resource_format_loader.hpp>
+#include <godot_cpp/classes/wrapped.hpp>
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/templates/hash_map.hpp>
+#include <godot_cpp/variant/dictionary.hpp>
+#include <godot_cpp/variant/packed_string_array.hpp>
+#include <godot_cpp/variant/string.hpp>
+#include <godot_cpp/variant/string_name.hpp>
+#include <godot_cpp/variant/variant.hpp>
+#include <stdint.h>
+#include <stdint.h>
+
+namespace godot {
+class ClassDB;
+}  // namespace godot
 
 using namespace godot;
 
 class TypescriptLoader : public ResourceFormatLoader {
 	GDCLASS(TypescriptLoader, ResourceFormatLoader)
 
-	HashMap<const String, uint32_t> *uids = new HashMap<const String, uint32_t>();
+	static TypescriptLoader *singleton;
 
 public:
+	static TypescriptLoader *get_singleton();
+	TypescriptLoader();
+	~TypescriptLoader();
 	PackedStringArray _get_recognized_extensions() const override;
 	bool _recognize_path(const String &path, const StringName &type) const override;
 	bool _handles_type(const StringName &type) const override;

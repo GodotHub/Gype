@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 String EditorInspector::get_selected_path() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorInspector::get_class_static()._native_ptr(), StringName("get_selected_path")._native_ptr(), 201670096);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, String());

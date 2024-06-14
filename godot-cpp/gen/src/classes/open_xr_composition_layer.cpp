@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 void OpenXRCompositionLayer::set_layer_viewport(SubViewport *viewport) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(OpenXRCompositionLayer::get_class_static()._native_ptr(), StringName("set_layer_viewport")._native_ptr(), 3888077664);
 	CHECK_METHOD_BIND(_gde_method_bind);

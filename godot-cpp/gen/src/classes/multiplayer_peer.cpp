@@ -38,6 +38,9 @@
 
 namespace godot {
 
+const int MultiplayerPeer::TARGET_PEER_BROADCAST = 0;
+const int MultiplayerPeer::TARGET_PEER_SERVER = 1;
+
 void MultiplayerPeer::set_transfer_channel(int32_t channel) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(MultiplayerPeer::get_class_static()._native_ptr(), StringName("set_transfer_channel")._native_ptr(), 1286410249);
 	CHECK_METHOD_BIND(_gde_method_bind);

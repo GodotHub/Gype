@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 Geometry2D *Geometry2D::singleton = nullptr;
 
 Geometry2D *Geometry2D::get_singleton() {

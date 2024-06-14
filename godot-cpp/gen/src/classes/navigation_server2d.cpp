@@ -44,6 +44,7 @@
 
 namespace godot {
 
+
 NavigationServer2D *NavigationServer2D::singleton = nullptr;
 
 NavigationServer2D *NavigationServer2D::get_singleton() {

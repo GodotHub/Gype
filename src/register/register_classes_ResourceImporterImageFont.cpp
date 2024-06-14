@@ -1,12 +1,14 @@
 #include <godot_cpp/classes/resource_importer_image_font.hpp>
+#include <godot_cpp/classes/resource_importer.hpp>
 
-#include "qjspp.hpp"
 #include "register/register_classes.h"
+#include "qjspp.hpp"
 
 using namespace godot;
 
 void register_classes_ResourceImporterImageFont() {
-	qjs::Context::Module &_module = get_General_module();
-	_module.class_<ResourceImporterImageFont>("ResourceImporterImageFont")
-			.constructor<>();
-}
+    qjs::Context::Module &_module = get_General_module();
+    _module.class_<ResourceImporterImageFont>("ResourceImporterImageFont")
+            .constructor<>()
+            .base<ResourceImporter>()
+;}

@@ -116,8 +116,8 @@ public:
 		WINDOW_INITIAL_POSITION_CENTER_SCREEN_WITH_KEYBOARD_FOCUS = 5,
 	};
 
-	static const int NOTIFICATION_VISIBILITY_CHANGED = 30;
-	static const int NOTIFICATION_THEME_CHANGED = 32;
+	static const int NOTIFICATION_VISIBILITY_CHANGED;
+	static const int NOTIFICATION_THEME_CHANGED;
 
 	void set_title(const String &title);
 	String get_title() const;

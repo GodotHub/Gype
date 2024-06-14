@@ -38,6 +38,8 @@
 
 namespace godot {
 
+const int RDFramebufferPass::ATTACHMENT_UNUSED = -1;
+
 void RDFramebufferPass::set_color_attachments(const PackedInt32Array &p_member) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(RDFramebufferPass::get_class_static()._native_ptr(), StringName("set_color_attachments")._native_ptr(), 3614634198);
 	CHECK_METHOD_BIND(_gde_method_bind);

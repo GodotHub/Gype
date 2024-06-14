@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void JSONRPC::set_scope(const String &scope, Object *target) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(JSONRPC::get_class_static()._native_ptr(), StringName("set_scope")._native_ptr(), 2572618360);
 	CHECK_METHOD_BIND(_gde_method_bind);

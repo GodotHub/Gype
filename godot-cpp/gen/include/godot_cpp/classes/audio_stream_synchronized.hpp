@@ -48,7 +48,7 @@ class AudioStreamSynchronized : public AudioStream {
 
 public:
 
-	static const int MAX_STREAMS = 32;
+	static const int MAX_STREAMS;
 
 	void set_stream_count(int32_t stream_count);
 	int32_t get_stream_count() const;

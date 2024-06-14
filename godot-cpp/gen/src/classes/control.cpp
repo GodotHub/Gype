@@ -48,6 +48,18 @@
 
 namespace godot {
 
+const int Control::NOTIFICATION_RESIZED = 40;
+const int Control::NOTIFICATION_MOUSE_ENTER = 41;
+const int Control::NOTIFICATION_MOUSE_EXIT = 42;
+const int Control::NOTIFICATION_MOUSE_ENTER_SELF = 60;
+const int Control::NOTIFICATION_MOUSE_EXIT_SELF = 61;
+const int Control::NOTIFICATION_FOCUS_ENTER = 43;
+const int Control::NOTIFICATION_FOCUS_EXIT = 44;
+const int Control::NOTIFICATION_THEME_CHANGED = 45;
+const int Control::NOTIFICATION_SCROLL_BEGIN = 47;
+const int Control::NOTIFICATION_SCROLL_END = 48;
+const int Control::NOTIFICATION_LAYOUT_DIRECTION_CHANGED = 49;
+
 void Control::accept_event() {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Control::get_class_static()._native_ptr(), StringName("accept_event")._native_ptr(), 3218959716);
 	CHECK_METHOD_BIND(_gde_method_bind);

@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 int32_t Skeleton2D::get_bone_count() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Skeleton2D::get_class_static()._native_ptr(), StringName("get_bone_count")._native_ptr(), 3905245786);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);

@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 void MultiMesh::set_mesh(const Ref<Mesh> &mesh) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(MultiMesh::get_class_static()._native_ptr(), StringName("set_mesh")._native_ptr(), 194775623);
 	CHECK_METHOD_BIND(_gde_method_bind);

@@ -44,6 +44,7 @@
 
 namespace godot {
 
+
 PhysicsServer3D *PhysicsServer3D::singleton = nullptr;
 
 PhysicsServer3D *PhysicsServer3D::get_singleton() {

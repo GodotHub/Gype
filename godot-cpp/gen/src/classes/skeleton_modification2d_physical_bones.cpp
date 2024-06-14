@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void SkeletonModification2DPhysicalBones::set_physical_bone_chain_length(int32_t length) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(SkeletonModification2DPhysicalBones::get_class_static()._native_ptr(), StringName("set_physical_bone_chain_length")._native_ptr(), 1286410249);
 	CHECK_METHOD_BIND(_gde_method_bind);

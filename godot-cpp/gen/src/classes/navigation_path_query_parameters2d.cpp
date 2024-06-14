@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void NavigationPathQueryParameters2D::set_pathfinding_algorithm(NavigationPathQueryParameters2D::PathfindingAlgorithm pathfinding_algorithm) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(NavigationPathQueryParameters2D::get_class_static()._native_ptr(), StringName("set_pathfinding_algorithm")._native_ptr(), 2783519915);
 	CHECK_METHOD_BIND(_gde_method_bind);

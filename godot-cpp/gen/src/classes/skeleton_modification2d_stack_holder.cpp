@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 void SkeletonModification2DStackHolder::set_held_modification_stack(const Ref<SkeletonModificationStack2D> &held_modification_stack) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(SkeletonModification2DStackHolder::get_class_static()._native_ptr(), StringName("set_held_modification_stack")._native_ptr(), 3907307132);
 	CHECK_METHOD_BIND(_gde_method_bind);

@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void VisualShaderNodeBillboard::set_billboard_type(VisualShaderNodeBillboard::BillboardType billboard_type) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(VisualShaderNodeBillboard::get_class_static()._native_ptr(), StringName("set_billboard_type")._native_ptr(), 1227463289);
 	CHECK_METHOD_BIND(_gde_method_bind);

@@ -45,6 +45,50 @@
 
 namespace godot {
 
+const int Node::NOTIFICATION_ENTER_TREE = 10;
+const int Node::NOTIFICATION_EXIT_TREE = 11;
+const int Node::NOTIFICATION_MOVED_IN_PARENT = 12;
+const int Node::NOTIFICATION_READY = 13;
+const int Node::NOTIFICATION_PAUSED = 14;
+const int Node::NOTIFICATION_UNPAUSED = 15;
+const int Node::NOTIFICATION_PHYSICS_PROCESS = 16;
+const int Node::NOTIFICATION_PROCESS = 17;
+const int Node::NOTIFICATION_PARENTED = 18;
+const int Node::NOTIFICATION_UNPARENTED = 19;
+const int Node::NOTIFICATION_SCENE_INSTANTIATED = 20;
+const int Node::NOTIFICATION_DRAG_BEGIN = 21;
+const int Node::NOTIFICATION_DRAG_END = 22;
+const int Node::NOTIFICATION_PATH_RENAMED = 23;
+const int Node::NOTIFICATION_CHILD_ORDER_CHANGED = 24;
+const int Node::NOTIFICATION_INTERNAL_PROCESS = 25;
+const int Node::NOTIFICATION_INTERNAL_PHYSICS_PROCESS = 26;
+const int Node::NOTIFICATION_POST_ENTER_TREE = 27;
+const int Node::NOTIFICATION_DISABLED = 28;
+const int Node::NOTIFICATION_ENABLED = 29;
+const int Node::NOTIFICATION_RESET_PHYSICS_INTERPOLATION = 2001;
+const int Node::NOTIFICATION_EDITOR_PRE_SAVE = 9001;
+const int Node::NOTIFICATION_EDITOR_POST_SAVE = 9002;
+const int Node::NOTIFICATION_WM_MOUSE_ENTER = 1002;
+const int Node::NOTIFICATION_WM_MOUSE_EXIT = 1003;
+const int Node::NOTIFICATION_WM_WINDOW_FOCUS_IN = 1004;
+const int Node::NOTIFICATION_WM_WINDOW_FOCUS_OUT = 1005;
+const int Node::NOTIFICATION_WM_CLOSE_REQUEST = 1006;
+const int Node::NOTIFICATION_WM_GO_BACK_REQUEST = 1007;
+const int Node::NOTIFICATION_WM_SIZE_CHANGED = 1008;
+const int Node::NOTIFICATION_WM_DPI_CHANGE = 1009;
+const int Node::NOTIFICATION_VP_MOUSE_ENTER = 1010;
+const int Node::NOTIFICATION_VP_MOUSE_EXIT = 1011;
+const int Node::NOTIFICATION_OS_MEMORY_WARNING = 2009;
+const int Node::NOTIFICATION_TRANSLATION_CHANGED = 2010;
+const int Node::NOTIFICATION_WM_ABOUT = 2011;
+const int Node::NOTIFICATION_CRASH = 2012;
+const int Node::NOTIFICATION_OS_IME_UPDATE = 2013;
+const int Node::NOTIFICATION_APPLICATION_RESUMED = 2014;
+const int Node::NOTIFICATION_APPLICATION_PAUSED = 2015;
+const int Node::NOTIFICATION_APPLICATION_FOCUS_IN = 2016;
+const int Node::NOTIFICATION_APPLICATION_FOCUS_OUT = 2017;
+const int Node::NOTIFICATION_TEXT_SERVER_CHANGED = 2018;
+
 void Node::print_orphan_nodes() {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Node::get_class_static()._native_ptr(), StringName("print_orphan_nodes")._native_ptr(), 3218959716);
 	CHECK_METHOD_BIND(_gde_method_bind);

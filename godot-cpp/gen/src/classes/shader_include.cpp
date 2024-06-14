@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void ShaderInclude::set_code(const String &code) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(ShaderInclude::get_class_static()._native_ptr(), StringName("set_code")._native_ptr(), 83702148);
 	CHECK_METHOD_BIND(_gde_method_bind);

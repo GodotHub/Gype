@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 String EditorPaths::get_data_dir() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorPaths::get_class_static()._native_ptr(), StringName("get_data_dir")._native_ptr(), 201670096);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, String());

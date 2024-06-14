@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 Vector3 XRAnchor3D::get_size() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(XRAnchor3D::get_class_static()._native_ptr(), StringName("get_size")._native_ptr(), 3360562783);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Vector3());

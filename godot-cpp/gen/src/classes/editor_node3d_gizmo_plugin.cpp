@@ -44,6 +44,7 @@
 
 namespace godot {
 
+
 void EditorNode3DGizmoPlugin::create_material(const String &name, const Color &color, bool billboard, bool on_top, bool use_vertex_color) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorNode3DGizmoPlugin::get_class_static()._native_ptr(), StringName("create_material")._native_ptr(), 3486012546);
 	CHECK_METHOD_BIND(_gde_method_bind);

@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 void RenderSceneBuffers::configure(const Ref<RenderSceneBuffersConfiguration> &config) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(RenderSceneBuffers::get_class_static()._native_ptr(), StringName("configure")._native_ptr(), 3072623270);
 	CHECK_METHOD_BIND(_gde_method_bind);

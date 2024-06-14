@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 void AudioStreamPlayer3D::set_stream(const Ref<AudioStream> &stream) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AudioStreamPlayer3D::get_class_static()._native_ptr(), StringName("set_stream")._native_ptr(), 2210767741);
 	CHECK_METHOD_BIND(_gde_method_bind);

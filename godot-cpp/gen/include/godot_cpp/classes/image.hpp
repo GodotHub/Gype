@@ -142,8 +142,8 @@ public:
 		ASTC_FORMAT_8x8 = 1,
 	};
 
-	static const int MAX_WIDTH = 16777216;
-	static const int MAX_HEIGHT = 16777216;
+	static const int MAX_WIDTH;
+	static const int MAX_HEIGHT;
 
 	int32_t get_width() const;
 	int32_t get_height() const;

@@ -49,7 +49,7 @@ class RDFramebufferPass : public RefCounted {
 
 public:
 
-	static const int ATTACHMENT_UNUSED = -1;
+	static const int ATTACHMENT_UNUSED;
 
 	void set_color_attachments(const PackedInt32Array &p_member);
 	PackedInt32Array get_color_attachments() const;

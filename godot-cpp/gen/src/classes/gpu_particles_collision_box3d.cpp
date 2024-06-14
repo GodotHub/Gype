@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void GPUParticlesCollisionBox3D::set_size(const Vector3 &size) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GPUParticlesCollisionBox3D::get_class_static()._native_ptr(), StringName("set_size")._native_ptr(), 3460891852);
 	CHECK_METHOD_BIND(_gde_method_bind);

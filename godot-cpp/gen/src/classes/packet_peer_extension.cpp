@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 Error PacketPeerExtension::_get_packet(const uint8_t * *r_buffer, int32_t *r_buffer_size) {
 	return Error(0);
 }

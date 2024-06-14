@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 void BitMap::create(const Vector2i &size) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(BitMap::get_class_static()._native_ptr(), StringName("create")._native_ptr(), 1130785943);
 	CHECK_METHOD_BIND(_gde_method_bind);

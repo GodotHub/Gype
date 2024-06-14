@@ -1,15 +1,26 @@
 #ifndef TS_INSTANCE_SUPPORT
 #define TS_INSTANCE_SUPPORT
 
-#include "qjspp.hpp"
-#include "support/typescript.h"
-#include "support/typescript_language.h"
 #include <gdextension_interface.h>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/templates/hash_map.hpp>
 #include <godot_cpp/templates/list.hpp>
+#include <stdint.h>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/variant/string_name.hpp>
+#include <godot_cpp/variant/variant.hpp>
+
+#include "qjspp.hpp"
+#include "support/typescript.h"
+#include "support/typescript_language.h"
 
 class Typescript;
+
+namespace godot {
+class Object;
+template <typename T> class Ref;
+}  // namespace godot
 
 using namespace godot;
 

@@ -43,6 +43,7 @@
 
 namespace godot {
 
+
 ScriptEditorBase *ScriptEditor::get_current_editor() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(ScriptEditor::get_class_static()._native_ptr(), StringName("get_current_editor")._native_ptr(), 1906266726);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, nullptr);

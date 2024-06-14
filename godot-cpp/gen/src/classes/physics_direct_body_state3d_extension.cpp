@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 Vector3 PhysicsDirectBodyState3DExtension::_get_total_gravity() const {
 	return Vector3();
 }

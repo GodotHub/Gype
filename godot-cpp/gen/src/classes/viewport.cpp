@@ -49,6 +49,7 @@
 
 namespace godot {
 
+
 void Viewport::set_world_2d(const Ref<World2D> &world_2d) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Viewport::get_class_static()._native_ptr(), StringName("set_world_2d")._native_ptr(), 2736080068);
 	CHECK_METHOD_BIND(_gde_method_bind);

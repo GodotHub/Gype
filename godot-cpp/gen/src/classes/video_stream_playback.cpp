@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 int32_t VideoStreamPlayback::mix_audio(int32_t num_frames, const PackedFloat32Array &buffer, int32_t offset) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(VideoStreamPlayback::get_class_static()._native_ptr(), StringName("mix_audio")._native_ptr(), 93876830);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);

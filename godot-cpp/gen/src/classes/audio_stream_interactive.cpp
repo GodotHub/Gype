@@ -38,6 +38,8 @@
 
 namespace godot {
 
+const int AudioStreamInteractive::CLIP_ANY = -1;
+
 void AudioStreamInteractive::set_clip_count(int32_t clip_count) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AudioStreamInteractive::get_class_static()._native_ptr(), StringName("set_clip_count")._native_ptr(), 1286410249);
 	CHECK_METHOD_BIND(_gde_method_bind);

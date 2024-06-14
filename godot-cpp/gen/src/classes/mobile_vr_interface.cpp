@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void MobileVRInterface::set_eye_height(double eye_height) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(MobileVRInterface::get_class_static()._native_ptr(), StringName("set_eye_height")._native_ptr(), 373806689);
 	CHECK_METHOD_BIND(_gde_method_bind);

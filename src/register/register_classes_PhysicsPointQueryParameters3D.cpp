@@ -1,4 +1,10 @@
+
 #include <godot_cpp/classes/physics_point_query_parameters3d.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/variant/rid.hpp>
+#include <godot_cpp/variant/typed_array.hpp>
+#include <godot_cpp/variant/vector3.hpp>
+#include <string>
 
 #include "qjspp.hpp"
 #include "register/register_classes.h"
@@ -9,9 +15,10 @@ void register_classes_PhysicsPointQueryParameters3D() {
 	qjs::Context::Module &_module = get_General_module();
 	_module.class_<PhysicsPointQueryParameters3D>("PhysicsPointQueryParameters3D")
 			.constructor<>()
-			.property<&PhysicsPointQueryParameters3D::get_position, &PhysicsPointQueryParameters3D::set_position>("position")
-			.property<&PhysicsPointQueryParameters3D::get_collision_mask, &PhysicsPointQueryParameters3D::set_collision_mask>("collision_mask")
-			.property<&PhysicsPointQueryParameters3D::get_exclude, &PhysicsPointQueryParameters3D::set_exclude>("exclude")
-			.property<&PhysicsPointQueryParameters3D::is_collide_with_bodies_enabled, &PhysicsPointQueryParameters3D::set_collide_with_bodies>("collide_with_bodies")
-			.property<&PhysicsPointQueryParameters3D::is_collide_with_areas_enabled, &PhysicsPointQueryParameters3D::set_collide_with_areas>("collide_with_areas");
+			.base<RefCounted>()
+			.property<static_cast<Vector3 (PhysicsPointQueryParameters3D::*)() const>(&PhysicsPointQueryParameters3D::get_position), static_cast<void (PhysicsPointQueryParameters3D::*)(const Vector3 &)>(&PhysicsPointQueryParameters3D::set_position)>((new std::string("position"))->c_str())
+			.property<static_cast<uint32_t (PhysicsPointQueryParameters3D::*)() const>(&PhysicsPointQueryParameters3D::get_collision_mask), static_cast<void (PhysicsPointQueryParameters3D::*)(uint32_t)>(&PhysicsPointQueryParameters3D::set_collision_mask)>((new std::string("collision_mask"))->c_str())
+			.property<static_cast<TypedArray<RID> (PhysicsPointQueryParameters3D::*)() const>(&PhysicsPointQueryParameters3D::get_exclude), static_cast<void (PhysicsPointQueryParameters3D::*)(const TypedArray<RID> &)>(&PhysicsPointQueryParameters3D::set_exclude)>((new std::string("exclude"))->c_str())
+			.property<static_cast<bool (PhysicsPointQueryParameters3D::*)() const>(&PhysicsPointQueryParameters3D::is_collide_with_bodies_enabled), static_cast<void (PhysicsPointQueryParameters3D::*)(bool)>(&PhysicsPointQueryParameters3D::set_collide_with_bodies)>((new std::string("collide_with_bodies"))->c_str())
+			.property<static_cast<bool (PhysicsPointQueryParameters3D::*)() const>(&PhysicsPointQueryParameters3D::is_collide_with_areas_enabled), static_cast<void (PhysicsPointQueryParameters3D::*)(bool)>(&PhysicsPointQueryParameters3D::set_collide_with_areas)>((new std::string("collide_with_areas"))->c_str());
 }

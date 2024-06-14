@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 void ArrayOccluder3D::set_arrays(const PackedVector3Array &vertices, const PackedInt32Array &indices) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(ArrayOccluder3D::get_class_static()._native_ptr(), StringName("set_arrays")._native_ptr(), 3233972621);
 	CHECK_METHOD_BIND(_gde_method_bind);

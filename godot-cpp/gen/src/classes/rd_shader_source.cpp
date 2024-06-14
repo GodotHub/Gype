@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void RDShaderSource::set_stage_source(RenderingDevice::ShaderStage stage, const String &source) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(RDShaderSource::get_class_static()._native_ptr(), StringName("set_stage_source")._native_ptr(), 620821314);
 	CHECK_METHOD_BIND(_gde_method_bind);

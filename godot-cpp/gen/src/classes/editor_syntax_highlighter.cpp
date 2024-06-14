@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 String EditorSyntaxHighlighter::_get_name() const {
 	return String();
 }

@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 void SkeletonIK3D::set_root_bone(const StringName &root_bone) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(SkeletonIK3D::get_class_static()._native_ptr(), StringName("set_root_bone")._native_ptr(), 3304788590);
 	CHECK_METHOD_BIND(_gde_method_bind);

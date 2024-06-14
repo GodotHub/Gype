@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 GDExtensionManager *GDExtensionManager::singleton = nullptr;
 
 GDExtensionManager *GDExtensionManager::get_singleton() {

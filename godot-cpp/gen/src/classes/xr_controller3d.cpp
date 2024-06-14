@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 bool XRController3D::is_button_pressed(const StringName &name) const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(XRController3D::get_class_static()._native_ptr(), StringName("is_button_pressed")._native_ptr(), 2619796661);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, false);

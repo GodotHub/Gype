@@ -3,11 +3,18 @@
 #include <godot_cpp/variant/vector2.hpp>
 
 #include "register/register_builtin_classes.h"
+#include "qjspp.hpp"
 
 using namespace godot;
 
 void register_builtin_classes_Transform2D() {
-	get_Variant_module().class_<Transform2D>("Transform2D").constructor<>().constructor<const Transform2D &>("Transform2D_1").constructor<real_t, const Vector2 &>("Transform2D_2").constructor<real_t, const Vector2 &, real_t, const Vector2 &>("Transform2D_3").constructor<const Vector2 &, const Vector2 &, const Vector2 &>("Transform2D_4")
+	qjs::Context::Module &_Variant = get_Variant_module();
+	_Variant.class_<Transform2D>("Transform2D")
+			.constructor<>()
+			.constructor<const Transform2D &>("Transform2D_1")
+			.constructor<real_t, const Vector2 &>("Transform2D_2")
+			.constructor<real_t, const Vector2 &, real_t, const Vector2 &>("Transform2D_3")
+			.constructor<const Vector2 &, const Vector2 &, const Vector2 &>("Transform2D_4")
 
 			.fun<static_cast<Transform2D (Transform2D::*)() const>(&Transform2D::inverse)>("inverse")
 			.fun<static_cast<Transform2D (Transform2D::*)() const>(&Transform2D::affine_inverse)>("affine_inverse")

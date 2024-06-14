@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void StreamPeerBuffer::seek(int32_t position) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(StreamPeerBuffer::get_class_static()._native_ptr(), StringName("seek")._native_ptr(), 1286410249);
 	CHECK_METHOD_BIND(_gde_method_bind);

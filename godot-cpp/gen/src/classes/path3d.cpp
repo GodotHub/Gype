@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 void Path3D::set_curve(const Ref<Curve3D> &curve) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Path3D::get_class_static()._native_ptr(), StringName("set_curve")._native_ptr(), 408955118);
 	CHECK_METHOD_BIND(_gde_method_bind);

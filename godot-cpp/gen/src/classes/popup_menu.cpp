@@ -42,6 +42,7 @@
 
 namespace godot {
 
+
 bool PopupMenu::activate_item_by_event(const Ref<InputEvent> &event, bool for_global_only) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PopupMenu::get_class_static()._native_ptr(), StringName("activate_item_by_event")._native_ptr(), 3716412023);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, false);

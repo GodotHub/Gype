@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 ResourceLoader *ResourceLoader::singleton = nullptr;
 
 ResourceLoader *ResourceLoader::get_singleton() {

@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void AudioEffectPitchShift::set_pitch_scale(double rate) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AudioEffectPitchShift::get_class_static()._native_ptr(), StringName("set_pitch_scale")._native_ptr(), 373806689);
 	CHECK_METHOD_BIND(_gde_method_bind);

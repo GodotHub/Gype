@@ -40,6 +40,9 @@
 
 namespace godot {
 
+const int Container::NOTIFICATION_PRE_SORT_CHILDREN = 50;
+const int Container::NOTIFICATION_SORT_CHILDREN = 51;
+
 void Container::queue_sort() {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Container::get_class_static()._native_ptr(), StringName("queue_sort")._native_ptr(), 3218959716);
 	CHECK_METHOD_BIND(_gde_method_bind);

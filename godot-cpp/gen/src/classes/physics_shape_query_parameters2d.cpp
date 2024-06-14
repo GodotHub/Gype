@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 void PhysicsShapeQueryParameters2D::set_shape(const Ref<Resource> &shape) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsShapeQueryParameters2D::get_class_static()._native_ptr(), StringName("set_shape")._native_ptr(), 968641751);
 	CHECK_METHOD_BIND(_gde_method_bind);

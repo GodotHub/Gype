@@ -40,6 +40,9 @@
 
 namespace godot {
 
+const int Image::MAX_WIDTH = 16777216;
+const int Image::MAX_HEIGHT = 16777216;
+
 int32_t Image::get_width() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Image::get_class_static()._native_ptr(), StringName("get_width")._native_ptr(), 3905245786);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);

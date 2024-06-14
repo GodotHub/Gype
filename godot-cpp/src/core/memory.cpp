@@ -28,8 +28,10 @@
 /* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                 */
 /**************************************************************************/
 
+#include <stddef.h>
+#include <stdint.h>
+#include <godot_cpp/core/error_macros.hpp>
 #include <godot_cpp/core/memory.hpp>
-
 #include <godot_cpp/godot.hpp>
 
 namespace godot {

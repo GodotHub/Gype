@@ -1,4 +1,7 @@
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/viewport_texture.hpp>
+#include <godot_cpp/variant/node_path.hpp>
+#include <string>
 
 #include "qjspp.hpp"
 #include "register/register_classes.h"
@@ -9,5 +12,6 @@ void register_classes_ViewportTexture() {
 	qjs::Context::Module &_module = get_General_module();
 	_module.class_<ViewportTexture>("ViewportTexture")
 			.constructor<>()
-			.property<&ViewportTexture::get_viewport_path_in_scene, &ViewportTexture::set_viewport_path_in_scene>("viewport_path");
+			.base<Texture2D>()
+			.property<static_cast<NodePath (ViewportTexture::*)() const>(&ViewportTexture::get_viewport_path_in_scene), static_cast<void (ViewportTexture::*)(const NodePath &)>(&ViewportTexture::set_viewport_path_in_scene)>((new std::string("viewport_path"))->c_str());
 }

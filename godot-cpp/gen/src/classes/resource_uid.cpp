@@ -38,6 +38,8 @@
 
 namespace godot {
 
+const int ResourceUID::INVALID_ID = -1;
+
 ResourceUID *ResourceUID::singleton = nullptr;
 
 ResourceUID *ResourceUID::get_singleton() {

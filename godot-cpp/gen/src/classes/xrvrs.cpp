@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 double XRVRS::get_vrs_min_radius() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(XRVRS::get_class_static()._native_ptr(), StringName("get_vrs_min_radius")._native_ptr(), 1740695150);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);

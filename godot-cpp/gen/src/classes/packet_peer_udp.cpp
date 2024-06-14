@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 Error PacketPeerUDP::bind(int32_t port, const String &bind_address, int32_t recv_buf_size) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PacketPeerUDP::get_class_static()._native_ptr(), StringName("bind")._native_ptr(), 4051239242);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Error(0));

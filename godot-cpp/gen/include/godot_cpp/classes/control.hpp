@@ -160,17 +160,17 @@ public:
 		TEXT_DIRECTION_RTL = 2,
 	};
 
-	static const int NOTIFICATION_RESIZED = 40;
-	static const int NOTIFICATION_MOUSE_ENTER = 41;
-	static const int NOTIFICATION_MOUSE_EXIT = 42;
-	static const int NOTIFICATION_MOUSE_ENTER_SELF = 60;
-	static const int NOTIFICATION_MOUSE_EXIT_SELF = 61;
-	static const int NOTIFICATION_FOCUS_ENTER = 43;
-	static const int NOTIFICATION_FOCUS_EXIT = 44;
-	static const int NOTIFICATION_THEME_CHANGED = 45;
-	static const int NOTIFICATION_SCROLL_BEGIN = 47;
-	static const int NOTIFICATION_SCROLL_END = 48;
-	static const int NOTIFICATION_LAYOUT_DIRECTION_CHANGED = 49;
+	static const int NOTIFICATION_RESIZED;
+	static const int NOTIFICATION_MOUSE_ENTER;
+	static const int NOTIFICATION_MOUSE_EXIT;
+	static const int NOTIFICATION_MOUSE_ENTER_SELF;
+	static const int NOTIFICATION_MOUSE_EXIT_SELF;
+	static const int NOTIFICATION_FOCUS_ENTER;
+	static const int NOTIFICATION_FOCUS_EXIT;
+	static const int NOTIFICATION_THEME_CHANGED;
+	static const int NOTIFICATION_SCROLL_BEGIN;
+	static const int NOTIFICATION_SCROLL_END;
+	static const int NOTIFICATION_LAYOUT_DIRECTION_CHANGED;
 
 	void accept_event();
 	Vector2 get_minimum_size() const;

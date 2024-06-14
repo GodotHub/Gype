@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 Error AnimationLibrary::add_animation(const StringName &name, const Ref<Animation> &animation) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationLibrary::get_class_static()._native_ptr(), StringName("add_animation")._native_ptr(), 1811855551);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Error(0));

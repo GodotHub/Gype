@@ -42,6 +42,7 @@
 
 namespace godot {
 
+
 Vector3 Camera3D::project_ray_normal(const Vector2 &screen_point) const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Camera3D::get_class_static()._native_ptr(), StringName("project_ray_normal")._native_ptr(), 1718073306);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Vector3());

@@ -1,9 +1,0 @@
-#include "register/register_classes.h"
-#include <godot_cpp/classes/physics_test_motion_parameters2d.hpp>
-
-using namespace godot;
-
-void register_classes_PhysicsTestMotionParameters2DRef() {
-	qjs::Context::Module &_General = get_General_module();
-	_General.class_<Ref<PhysicsTestMotionParameters2D>>("PhysicsTestMotionParameters2DRef").constructor<PhysicsTestMotionParameters2D *>();
-}

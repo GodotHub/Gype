@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 double AudioStream::get_length() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AudioStream::get_class_static()._native_ptr(), StringName("get_length")._native_ptr(), 1740695150);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);

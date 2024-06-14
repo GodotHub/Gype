@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 Color ReferenceRect::get_border_color() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(ReferenceRect::get_class_static()._native_ptr(), StringName("get_border_color")._native_ptr(), 3444240500);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Color());

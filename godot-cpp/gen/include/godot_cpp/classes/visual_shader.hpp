@@ -89,8 +89,8 @@ public:
 		VARYING_TYPE_MAX = 8,
 	};
 
-	static const int NODE_ID_INVALID = -1;
-	static const int NODE_ID_OUTPUT = 0;
+	static const int NODE_ID_INVALID;
+	static const int NODE_ID_OUTPUT;
 
 	void set_mode(Shader::Mode mode);
 	void add_node(VisualShader::Type type, const Ref<VisualShaderNode> &node, const Vector2 &position, int32_t id);

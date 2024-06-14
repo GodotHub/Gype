@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void ConvexPolygonShape2D::set_point_cloud(const PackedVector2Array &point_cloud) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(ConvexPolygonShape2D::get_class_static()._native_ptr(), StringName("set_point_cloud")._native_ptr(), 1509147220);
 	CHECK_METHOD_BIND(_gde_method_bind);

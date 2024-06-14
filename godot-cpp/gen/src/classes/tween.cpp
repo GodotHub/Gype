@@ -47,6 +47,7 @@
 
 namespace godot {
 
+
 Ref<PropertyTweener> Tween::tween_property(Object *object, const NodePath &property, const Variant &final_val, double duration) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Tween::get_class_static()._native_ptr(), StringName("tween_property")._native_ptr(), 4049770449);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Ref<PropertyTweener>());

@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void InputEventJoypadMotion::set_axis(JoyAxis axis) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(InputEventJoypadMotion::get_class_static()._native_ptr(), StringName("set_axis")._native_ptr(), 1332685170);
 	CHECK_METHOD_BIND(_gde_method_bind);

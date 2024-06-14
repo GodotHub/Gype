@@ -1,5 +1,9 @@
+
 #include <godot_cpp/classes/curve.hpp>
+#include <godot_cpp/classes/primitive_mesh.hpp>
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/tube_trail_mesh.hpp>
+#include <string>
 
 #include "qjspp.hpp"
 #include "register/register_classes.h"
@@ -10,12 +14,13 @@ void register_classes_TubeTrailMesh() {
 	qjs::Context::Module &_module = get_General_module();
 	_module.class_<TubeTrailMesh>("TubeTrailMesh")
 			.constructor<>()
-			.property<&TubeTrailMesh::get_radius, &TubeTrailMesh::set_radius>("radius")
-			.property<&TubeTrailMesh::get_radial_steps, &TubeTrailMesh::set_radial_steps>("radial_steps")
-			.property<&TubeTrailMesh::get_sections, &TubeTrailMesh::set_sections>("sections")
-			.property<&TubeTrailMesh::get_section_length, &TubeTrailMesh::set_section_length>("section_length")
-			.property<&TubeTrailMesh::get_section_rings, &TubeTrailMesh::set_section_rings>("section_rings")
-			.property<&TubeTrailMesh::is_cap_top, &TubeTrailMesh::set_cap_top>("cap_top")
-			.property<&TubeTrailMesh::is_cap_bottom, &TubeTrailMesh::set_cap_bottom>("cap_bottom")
-			.property<&TubeTrailMesh::get_curve, &TubeTrailMesh::set_curve>("curve");
+			.base<PrimitiveMesh>()
+			.property<static_cast<double (TubeTrailMesh::*)() const>(&TubeTrailMesh::get_radius), static_cast<void (TubeTrailMesh::*)(double)>(&TubeTrailMesh::set_radius)>((new std::string("radius"))->c_str())
+			.property<static_cast<int32_t (TubeTrailMesh::*)() const>(&TubeTrailMesh::get_radial_steps), static_cast<void (TubeTrailMesh::*)(int32_t)>(&TubeTrailMesh::set_radial_steps)>((new std::string("radial_steps"))->c_str())
+			.property<static_cast<int32_t (TubeTrailMesh::*)() const>(&TubeTrailMesh::get_sections), static_cast<void (TubeTrailMesh::*)(int32_t)>(&TubeTrailMesh::set_sections)>((new std::string("sections"))->c_str())
+			.property<static_cast<double (TubeTrailMesh::*)() const>(&TubeTrailMesh::get_section_length), static_cast<void (TubeTrailMesh::*)(double)>(&TubeTrailMesh::set_section_length)>((new std::string("section_length"))->c_str())
+			.property<static_cast<int32_t (TubeTrailMesh::*)() const>(&TubeTrailMesh::get_section_rings), static_cast<void (TubeTrailMesh::*)(int32_t)>(&TubeTrailMesh::set_section_rings)>((new std::string("section_rings"))->c_str())
+			.property<static_cast<bool (TubeTrailMesh::*)() const>(&TubeTrailMesh::is_cap_top), static_cast<void (TubeTrailMesh::*)(bool)>(&TubeTrailMesh::set_cap_top)>((new std::string("cap_top"))->c_str())
+			.property<static_cast<bool (TubeTrailMesh::*)() const>(&TubeTrailMesh::is_cap_bottom), static_cast<void (TubeTrailMesh::*)(bool)>(&TubeTrailMesh::set_cap_bottom)>((new std::string("cap_bottom"))->c_str())
+			.property<static_cast<Ref<Curve> (TubeTrailMesh::*)() const>(&TubeTrailMesh::get_curve), static_cast<void (TubeTrailMesh::*)(const Ref<Curve> &)>(&TubeTrailMesh::set_curve)>((new std::string("curve"))->c_str());
 }

@@ -3,7 +3,7 @@
 
 #include "qjspp.hpp"
 
-extern qjs::Context::Module &_Variant;
+qjs::Context::Module &get_Variant_module();
 
 {% for clazz in builtin_classes %}
     {% if not is_pod_type(clazz.name) %}

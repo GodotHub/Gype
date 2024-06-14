@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 void BaseMaterial3D::set_albedo(const Color &albedo) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(BaseMaterial3D::get_class_static()._native_ptr(), StringName("set_albedo")._native_ptr(), 2920490490);
 	CHECK_METHOD_BIND(_gde_method_bind);

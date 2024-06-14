@@ -1,15 +1,21 @@
 #include <godot_cpp/core/defs.hpp>
 #include <godot_cpp/variant/aabb.hpp>
-#include <godot_cpp/variant/plane.hpp>
 #include <godot_cpp/variant/vector3.hpp>
+#include <godot_cpp/variant/plane.hpp>
 
 #include "register/register_builtin_classes.h"
+#include "qjspp.hpp"
 
 using namespace godot;
 
 void register_builtin_classes_AABB() {
-	get_Variant_module().class_<AABB>("AABB").constructor<>().constructor<const AABB &>("AABB_1").constructor<const Vector3 &, const Vector3 &>("AABB_2")
-
+	qjs::Context::Module &_Variant = get_Variant_module();
+	_Variant.class_<AABB>("AABB")
+			.constructor<>()
+			.constructor<const AABB &>("AABB_1")
+			.constructor<const Vector3 &, const Vector3 &>("AABB_2")
+			.property<&AABB::get_position, &AABB::set_position>("position")
+			.property<&AABB::get_size, &AABB::set_size>("size")
 			.fun<static_cast<AABB (AABB::*)() const>(&AABB::abs)>("abs")
 			.fun<static_cast<Vector3 (AABB::*)() const>(&AABB::get_center)>("get_center")
 			.fun<static_cast<real_t (AABB::*)() const>(&AABB::get_volume)>("get_volume")

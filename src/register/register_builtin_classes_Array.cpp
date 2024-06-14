@@ -1,5 +1,5 @@
+
 #include <godot_cpp/variant/array.hpp>
-#include <godot_cpp/variant/callable.hpp>
 #include <godot_cpp/variant/packed_byte_array.hpp>
 #include <godot_cpp/variant/packed_color_array.hpp>
 #include <godot_cpp/variant/packed_float32_array.hpp>
@@ -9,16 +9,33 @@
 #include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/packed_vector2_array.hpp>
 #include <godot_cpp/variant/packed_vector3_array.hpp>
+#include <godot_cpp/variant/packed_vector4_array.hpp>
 #include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/variant/variant.hpp>
 
+#include <godot_cpp/variant/callable.hpp>
+
+#include "qjspp.hpp"
 #include "register/register_builtin_classes.h"
 
 using namespace godot;
 
 void register_builtin_classes_Array() {
-	get_Variant_module().class_<Array>("Array").constructor<>().constructor<const Array &>("Array_1").constructor<const Array &, int64_t, const StringName &, const Variant &>("Array_2").constructor<const PackedByteArray &>("Array_3").constructor<const PackedInt32Array &>("Array_4").constructor<const PackedInt64Array &>("Array_5").constructor<const PackedFloat32Array &>("Array_6").constructor<const PackedFloat64Array &>("Array_7").constructor<const PackedStringArray &>("Array_8").constructor<const PackedVector2Array &>("Array_9").constructor<const PackedVector3Array &>("Array_10").constructor<const PackedColorArray &>("Array_11")
-
+	qjs::Context::Module &_Variant = get_Variant_module();
+	_Variant.class_<Array>("Array")
+			.constructor<>()
+			.constructor<const Array &>("Array_1")
+			.constructor<const Array &, int64_t, const StringName &, const Variant &>("Array_2")
+			.constructor<const PackedByteArray &>("Array_3")
+			.constructor<const PackedInt32Array &>("Array_4")
+			.constructor<const PackedInt64Array &>("Array_5")
+			.constructor<const PackedFloat32Array &>("Array_6")
+			.constructor<const PackedFloat64Array &>("Array_7")
+			.constructor<const PackedStringArray &>("Array_8")
+			.constructor<const PackedVector2Array &>("Array_9")
+			.constructor<const PackedVector3Array &>("Array_10")
+			.constructor<const PackedColorArray &>("Array_11")
+			.constructor<const PackedVector4Array &>("Array_12")
 			.fun<static_cast<int64_t (Array::*)() const>(&Array::size)>("size")
 			.fun<static_cast<bool (Array::*)() const>(&Array::is_empty)>("is_empty")
 			.fun<static_cast<void (Array::*)()>(&Array::clear)>("clear")

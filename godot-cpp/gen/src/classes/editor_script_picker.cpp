@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 void EditorScriptPicker::set_script_owner(Node *owner_node) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorScriptPicker::get_class_static()._native_ptr(), StringName("set_script_owner")._native_ptr(), 1078189570);
 	CHECK_METHOD_BIND(_gde_method_bind);

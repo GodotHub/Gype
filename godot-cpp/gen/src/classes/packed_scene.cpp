@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 Error PackedScene::pack(Node *path) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PackedScene::get_class_static()._native_ptr(), StringName("pack")._native_ptr(), 2584678054);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Error(0));

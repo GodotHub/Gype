@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 void AudioStreamPlayback::_start(double from_pos) {}
 
 void AudioStreamPlayback::_stop() {}

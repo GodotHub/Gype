@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void RDVertexAttribute::set_location(uint32_t p_member) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(RDVertexAttribute::get_class_static()._native_ptr(), StringName("set_location")._native_ptr(), 1286410249);
 	CHECK_METHOD_BIND(_gde_method_bind);

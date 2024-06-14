@@ -1,4 +1,8 @@
 #include <godot_cpp/classes/compressed_texture3d.hpp>
+#include <godot_cpp/classes/global_constants.hpp>
+#include <godot_cpp/classes/texture3d.hpp>
+#include <godot_cpp/variant/string.hpp>
+#include <string>
 
 #include "qjspp.hpp"
 #include "register/register_classes.h"
@@ -9,5 +13,6 @@ void register_classes_CompressedTexture3D() {
 	qjs::Context::Module &_module = get_General_module();
 	_module.class_<CompressedTexture3D>("CompressedTexture3D")
 			.constructor<>()
-			.property<&CompressedTexture3D::get_load_path, &CompressedTexture3D::load>("load_path");
+			.base<Texture3D>()
+			.property<static_cast<String (CompressedTexture3D::*)() const>(&CompressedTexture3D::get_load_path), static_cast<Error (CompressedTexture3D::*)(const String &)>(&CompressedTexture3D::load)>((new std::string("load_path"))->c_str());
 }

@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 Variant PacketPeer::get_var(bool allow_objects) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PacketPeer::get_class_static()._native_ptr(), StringName("get_var")._native_ptr(), 3442865206);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Variant());

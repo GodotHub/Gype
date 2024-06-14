@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void DirectionalLight3D::set_shadow_mode(DirectionalLight3D::ShadowMode mode) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(DirectionalLight3D::get_class_static()._native_ptr(), StringName("set_shadow_mode")._native_ptr(), 1261211726);
 	CHECK_METHOD_BIND(_gde_method_bind);

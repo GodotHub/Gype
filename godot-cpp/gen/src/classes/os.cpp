@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 OS *OS::singleton = nullptr;
 
 OS *OS::get_singleton() {

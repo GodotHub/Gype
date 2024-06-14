@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 void EditorScript::add_root_node(Node *node) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorScript::get_class_static()._native_ptr(), StringName("add_root_node")._native_ptr(), 1078189570);
 	CHECK_METHOD_BIND(_gde_method_bind);

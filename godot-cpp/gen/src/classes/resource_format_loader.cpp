@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 PackedStringArray ResourceFormatLoader::_get_recognized_extensions() const {
 	return PackedStringArray();
 }

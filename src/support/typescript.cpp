@@ -1,5 +1,15 @@
 #include "support/typescript.h"
+
+#include <godot_cpp/core/error_macros.hpp>
+#include <godot_cpp/variant/array.hpp>
+#include <godot_cpp/variant/packed_byte_array.hpp>
+#include <godot_cpp/classes/object.hpp>
+
+#include "qjspp.hpp"
+#include "qjspp/utils.h"
 #include "support/typescript_instance.h"
+#include "support/typescript_language.h"
+
 
 using namespace godot;
 
@@ -90,7 +100,7 @@ JSParseState *Typescript::_parse_source_code(const String &source_code) {
 	PackedByteArray source_code_bytes = source_code.to_utf8_buffer();
 	PackedByteArray script_path_bytes = _script_path.to_utf8_buffer();
 	JSParseState *s = new JSParseState();
-	js_parse_init_func(context.ctx, s, (const char *)source_code_bytes.ptr(), source_code_bytes.size(), (const char *)script_path_bytes.ptr());
+	js_parse_init_func(context->ctx, s, (const char *)source_code_bytes.ptr(), source_code_bytes.size(), (const char *)script_path_bytes.ptr());
 	ERR_FAIL_COND_V_EDMSG(js_parse_source_element_func(s), nullptr, "Syntax error.");
 	return s;
 }

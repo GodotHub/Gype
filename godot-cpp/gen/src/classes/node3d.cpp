@@ -41,6 +41,12 @@
 
 namespace godot {
 
+const int Node3D::NOTIFICATION_TRANSFORM_CHANGED = 2000;
+const int Node3D::NOTIFICATION_ENTER_WORLD = 41;
+const int Node3D::NOTIFICATION_EXIT_WORLD = 42;
+const int Node3D::NOTIFICATION_VISIBILITY_CHANGED = 43;
+const int Node3D::NOTIFICATION_LOCAL_TRANSFORM_CHANGED = 44;
+
 void Node3D::set_transform(const Transform3D &local) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Node3D::get_class_static()._native_ptr(), StringName("set_transform")._native_ptr(), 2952846383);
 	CHECK_METHOD_BIND(_gde_method_bind);

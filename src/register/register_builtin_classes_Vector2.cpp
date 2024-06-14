@@ -3,11 +3,17 @@
 #include <godot_cpp/variant/vector2i.hpp>
 
 #include "register/register_builtin_classes.h"
+#include "qjspp.hpp"
 
 using namespace godot;
 
 void register_builtin_classes_Vector2() {
-	get_Variant_module().class_<Vector2>("Vector2").constructor<>().constructor<const Vector2 &>("Vector2_1").constructor<const Vector2i &>("Vector2_2").constructor<real_t, real_t>("Vector2_3")
+	qjs::Context::Module &_Variant = get_Variant_module();
+	_Variant.class_<Vector2>("Vector2")
+			.constructor<>()
+			.constructor<const Vector2 &>("Vector2_1")
+			.constructor<const Vector2i &>("Vector2_2")
+			.constructor<real_t, real_t>("Vector2_3")
 
 			.fun<static_cast<real_t (Vector2::*)() const>(&Vector2::angle)>("angle")
 			.fun<static_cast<real_t (Vector2::*)(const Vector2 &) const>(&Vector2::angle_to)>("angle_to")
@@ -49,6 +55,12 @@ void register_builtin_classes_Vector2() {
 			.fun<static_cast<Vector2 (Vector2::*)() const>(&Vector2::abs)>("abs")
 			.fun<static_cast<Vector2 (Vector2::*)() const>(&Vector2::sign)>("sign")
 			.fun<static_cast<Vector2 (Vector2::*)(const Vector2 &, const Vector2 &) const>(&Vector2::clamp)>("clamp")
+			.fun<static_cast<Vector2 (Vector2::*)(real_t, real_t) const>(&Vector2::clampf)>("clampf")
 			.fun<static_cast<Vector2 (Vector2::*)(const Vector2 &) const>(&Vector2::snapped)>("snapped")
-			.static_fun<Vector2::from_angle>("from_angle");
+			.fun<static_cast<Vector2 (Vector2::*)(real_t) const>(&Vector2::snappedf)>("snappedf")
+			.fun<static_cast<Vector2 (Vector2::*)(const Vector2 &) const>(&Vector2::min)>("min")
+			.fun<static_cast<Vector2 (Vector2::*)(real_t) const>(&Vector2::minf)>("minf")
+			.fun<static_cast<Vector2 (Vector2::*)(const Vector2 &) const>(&Vector2::max)>("max")
+			.fun<static_cast<Vector2 (Vector2::*)(real_t) const>(&Vector2::maxf)>("maxf")
+			.static_fun<static_cast<Vector2 (*)(real_t)>(&Vector2::from_angle)>("from_angle");
 }
