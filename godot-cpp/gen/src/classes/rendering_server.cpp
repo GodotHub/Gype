@@ -45,6 +45,23 @@
 
 namespace godot {
 
+const int RenderingServer::NO_INDEX_ARRAY = -1;
+const int RenderingServer::ARRAY_WEIGHTS_SIZE = 4;
+const int RenderingServer::CANVAS_ITEM_Z_MIN = -4096;
+const int RenderingServer::CANVAS_ITEM_Z_MAX = 4096;
+const int RenderingServer::MAX_GLOW_LEVELS = 7;
+const int RenderingServer::MAX_CURSORS = 8;
+const int RenderingServer::MAX_2D_DIRECTIONAL_LIGHTS = 8;
+const int RenderingServer::MAX_MESH_SURFACES = 256;
+const int RenderingServer::MATERIAL_RENDER_PRIORITY_MIN = -128;
+const int RenderingServer::MATERIAL_RENDER_PRIORITY_MAX = 127;
+const int RenderingServer::ARRAY_CUSTOM_COUNT = 4;
+const int RenderingServer::PARTICLES_EMIT_FLAG_POSITION = 1;
+const int RenderingServer::PARTICLES_EMIT_FLAG_ROTATION_SCALE = 2;
+const int RenderingServer::PARTICLES_EMIT_FLAG_VELOCITY = 4;
+const int RenderingServer::PARTICLES_EMIT_FLAG_COLOR = 8;
+const int RenderingServer::PARTICLES_EMIT_FLAG_CUSTOM = 16;
+
 RenderingServer *RenderingServer::singleton = nullptr;
 
 RenderingServer *RenderingServer::get_singleton() {

@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 PackedVector3Array Occluder3D::get_vertices() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Occluder3D::get_class_static()._native_ptr(), StringName("get_vertices")._native_ptr(), 497664490);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, PackedVector3Array());

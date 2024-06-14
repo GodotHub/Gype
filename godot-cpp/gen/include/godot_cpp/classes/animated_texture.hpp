@@ -48,7 +48,7 @@ class AnimatedTexture : public Texture2D {
 
 public:
 
-	static const int MAX_FRAMES = 256;
+	static const int MAX_FRAMES;
 
 	void set_frames(int32_t frames);
 	int32_t get_frames() const;

@@ -82,11 +82,11 @@ public:
 		PEER_PACKET_THROTTLE_INTERVAL = 13,
 	};
 
-	static const int PACKET_LOSS_SCALE = 65536;
-	static const int PACKET_THROTTLE_SCALE = 32;
-	static const int FLAG_RELIABLE = 1;
-	static const int FLAG_UNSEQUENCED = 2;
-	static const int FLAG_UNRELIABLE_FRAGMENT = 8;
+	static const int PACKET_LOSS_SCALE;
+	static const int PACKET_THROTTLE_SCALE;
+	static const int FLAG_RELIABLE;
+	static const int FLAG_UNSEQUENCED;
+	static const int FLAG_UNRELIABLE_FRAGMENT;
 
 	void peer_disconnect(int32_t data = 0);
 	void peer_disconnect_later(int32_t data = 0);

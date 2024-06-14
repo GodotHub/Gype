@@ -48,6 +48,7 @@
 
 namespace godot {
 
+
 void EditorNode3DGizmo::add_lines(const PackedVector3Array &lines, const Ref<Material> &material, bool billboard, const Color &modulate) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorNode3DGizmo::get_class_static()._native_ptr(), StringName("add_lines")._native_ptr(), 2910971437);
 	CHECK_METHOD_BIND(_gde_method_bind);

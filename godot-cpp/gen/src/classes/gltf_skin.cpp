@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 int32_t GLTFSkin::get_skin_root() {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFSkin::get_class_static()._native_ptr(), StringName("get_skin_root")._native_ptr(), 2455072627);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);

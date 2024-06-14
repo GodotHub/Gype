@@ -42,6 +42,7 @@
 
 namespace godot {
 
+
 void ScrollContainer::set_h_scroll(int32_t value) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(ScrollContainer::get_class_static()._native_ptr(), StringName("set_h_scroll")._native_ptr(), 1286410249);
 	CHECK_METHOD_BIND(_gde_method_bind);

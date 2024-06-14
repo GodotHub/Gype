@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 RID World2D::get_canvas() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(World2D::get_class_static()._native_ptr(), StringName("get_canvas")._native_ptr(), 2944877500);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, RID());

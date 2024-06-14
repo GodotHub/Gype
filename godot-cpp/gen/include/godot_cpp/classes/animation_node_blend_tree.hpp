@@ -52,12 +52,12 @@ class AnimationNodeBlendTree : public AnimationRootNode {
 
 public:
 
-	static const int CONNECTION_OK = 0;
-	static const int CONNECTION_ERROR_NO_INPUT = 1;
-	static const int CONNECTION_ERROR_NO_INPUT_INDEX = 2;
-	static const int CONNECTION_ERROR_NO_OUTPUT = 3;
-	static const int CONNECTION_ERROR_SAME_NODE = 4;
-	static const int CONNECTION_ERROR_CONNECTION_EXISTS = 5;
+	static const int CONNECTION_OK;
+	static const int CONNECTION_ERROR_NO_INPUT;
+	static const int CONNECTION_ERROR_NO_INPUT_INDEX;
+	static const int CONNECTION_ERROR_NO_OUTPUT;
+	static const int CONNECTION_ERROR_SAME_NODE;
+	static const int CONNECTION_ERROR_CONNECTION_EXISTS;
 
 	void add_node(const StringName &name, const Ref<AnimationNode> &node, const Vector2 &position = Vector2(0, 0));
 	Ref<AnimationNode> get_node(const StringName &name) const;

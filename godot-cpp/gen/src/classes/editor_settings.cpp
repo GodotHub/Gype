@@ -43,6 +43,8 @@
 
 namespace godot {
 
+const int EditorSettings::NOTIFICATION_EDITOR_SETTINGS_CHANGED = 10000;
+
 bool EditorSettings::has_setting(const String &name) const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorSettings::get_class_static()._native_ptr(), StringName("has_setting")._native_ptr(), 3927539163);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, false);

@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 bool AnimationNode::add_input(const String &name) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationNode::get_class_static()._native_ptr(), StringName("add_input")._native_ptr(), 2323990056);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, false);

@@ -43,6 +43,7 @@
 
 namespace godot {
 
+
 void ImmediateMesh::surface_begin(Mesh::PrimitiveType primitive, const Ref<Material> &material) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(ImmediateMesh::get_class_static()._native_ptr(), StringName("surface_begin")._native_ptr(), 2794442543);
 	CHECK_METHOD_BIND(_gde_method_bind);

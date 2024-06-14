@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 StringName XRInterface::get_name() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(XRInterface::get_class_static()._native_ptr(), StringName("get_name")._native_ptr(), 2002593661);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, StringName());

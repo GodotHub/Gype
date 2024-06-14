@@ -42,6 +42,7 @@
 
 namespace godot {
 
+
 bool RenderSceneBuffersRD::has_texture(const StringName &context, const StringName &name) const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(RenderSceneBuffersRD::get_class_static()._native_ptr(), StringName("has_texture")._native_ptr(), 471820014);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, false);

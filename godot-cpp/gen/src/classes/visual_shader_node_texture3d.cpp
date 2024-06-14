@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 void VisualShaderNodeTexture3D::set_texture(const Ref<Texture3D> &value) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(VisualShaderNodeTexture3D::get_class_static()._native_ptr(), StringName("set_texture")._native_ptr(), 1188404210);
 	CHECK_METHOD_BIND(_gde_method_bind);

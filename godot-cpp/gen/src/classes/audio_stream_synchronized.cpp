@@ -38,6 +38,8 @@
 
 namespace godot {
 
+const int AudioStreamSynchronized::MAX_STREAMS = 32;
+
 void AudioStreamSynchronized::set_stream_count(int32_t stream_count) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AudioStreamSynchronized::get_class_static()._native_ptr(), StringName("set_stream_count")._native_ptr(), 1286410249);
 	CHECK_METHOD_BIND(_gde_method_bind);

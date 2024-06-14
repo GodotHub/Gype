@@ -59,6 +59,7 @@
 
 namespace godot {
 
+
 EditorInterface *EditorInterface::singleton = nullptr;
 
 EditorInterface *EditorInterface::get_singleton() {

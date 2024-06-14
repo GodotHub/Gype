@@ -42,6 +42,14 @@
 
 namespace godot {
 
+const int EditorSceneFormatImporter::IMPORT_SCENE = 1;
+const int EditorSceneFormatImporter::IMPORT_ANIMATION = 2;
+const int EditorSceneFormatImporter::IMPORT_FAIL_ON_MISSING_DEPENDENCIES = 4;
+const int EditorSceneFormatImporter::IMPORT_GENERATE_TANGENT_ARRAYS = 8;
+const int EditorSceneFormatImporter::IMPORT_USE_NAMED_SKIN_BINDS = 16;
+const int EditorSceneFormatImporter::IMPORT_DISCARD_MESHES_AND_MATERIALS = 32;
+const int EditorSceneFormatImporter::IMPORT_FORCE_DISABLE_MESH_COMPRESSION = 64;
+
 uint32_t EditorSceneFormatImporter::_get_import_flags() const {
 	return 0;
 }

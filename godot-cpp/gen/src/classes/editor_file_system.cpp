@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 EditorFileSystemDirectory *EditorFileSystem::get_filesystem() {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorFileSystem::get_class_static()._native_ptr(), StringName("get_filesystem")._native_ptr(), 842323275);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, nullptr);

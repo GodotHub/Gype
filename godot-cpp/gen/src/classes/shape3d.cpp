@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 void Shape3D::set_custom_solver_bias(double bias) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Shape3D::get_class_static()._native_ptr(), StringName("set_custom_solver_bias")._native_ptr(), 373806689);
 	CHECK_METHOD_BIND(_gde_method_bind);

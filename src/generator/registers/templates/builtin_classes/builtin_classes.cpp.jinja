@@ -1,9 +1,12 @@
 #include "register/register_builtin_classes.h"
 #include "qjspp/utils.h"
 
+{% from 'utils/builtin_classes_method.cpp.jinja' import method_parser, static_method_parser %}
+
 using namespace godot;
 
 void register_builtin_classes_{{clazz.name}}() {
+	qjs::Context::Module &_Variant = get_Variant_module();
 	_Variant.class_<{{clazz.name}}>("{{clazz.name}}")
 {% for ctr in clazz.constructors %}
 	{% set types = ctr.arguments | map(attribute='type') %}
@@ -15,21 +18,14 @@ void register_builtin_classes_{{clazz.name}}() {
 {% endfor %}{{ flush_letter() }}
 {% for method in clazz.methods %}
 	{% if not method.is_static %}
-			.fun<static_cast<
-		{%- if method.return_type -%}
-				{{-method.return_type | convert_return_type_t-}}
-		{%- else -%}
-				{{-'void'-}}
-		{%- endif -%} 
-			({{-clazz.name-}}::*)({{- method.arguments | map(attribute='type') | convert_paramter_type(method.is_vararg) | join(',') -}}) 
-		{%- if method.is_const -%}const{%- endif -%}>(&{{clazz.name}}::{{method.name}})>
+			.fun<{{method_parser(clazz, method)}}>
 		{%- if loop.last %}
 				{{-'("'+method.name+'");'}}
 		{% else %}
 				{{-'("'+method.name+'")'}}
 		{% endif %}
 	{% else %}
-            .static_fun<{{clazz.name}}::{{method.name}}>
+            .static_fun<{{static_method_parser(clazz, method)}}>
 		{%- if loop.last %}
 				{{-'("'+method.name+'");'}}
 		{% else %}

@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 void VisualShaderNodeCubemap::set_source(VisualShaderNodeCubemap::Source value) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(VisualShaderNodeCubemap::get_class_static()._native_ptr(), StringName("set_source")._native_ptr(), 1625400621);
 	CHECK_METHOD_BIND(_gde_method_bind);

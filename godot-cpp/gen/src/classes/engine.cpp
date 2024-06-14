@@ -42,6 +42,7 @@
 
 namespace godot {
 
+
 Engine *Engine::singleton = nullptr;
 
 Engine *Engine::get_singleton() {

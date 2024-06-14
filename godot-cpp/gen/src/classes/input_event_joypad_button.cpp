@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void InputEventJoypadButton::set_button_index(JoyButton button_index) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(InputEventJoypadButton::get_class_static()._native_ptr(), StringName("set_button_index")._native_ptr(), 1466368136);
 	CHECK_METHOD_BIND(_gde_method_bind);

@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 void VisualShaderNodeTexture2DArray::set_texture_array(const Ref<Texture2DArray> &value) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(VisualShaderNodeTexture2DArray::get_class_static()._native_ptr(), StringName("set_texture_array")._native_ptr(), 2206200446);
 	CHECK_METHOD_BIND(_gde_method_bind);

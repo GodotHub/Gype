@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 void HeightMapShape3D::set_map_width(int32_t width) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(HeightMapShape3D::get_class_static()._native_ptr(), StringName("set_map_width")._native_ptr(), 1286410249);
 	CHECK_METHOD_BIND(_gde_method_bind);

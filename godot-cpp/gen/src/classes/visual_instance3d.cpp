@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void VisualInstance3D::set_base(const RID &base) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(VisualInstance3D::get_class_static()._native_ptr(), StringName("set_base")._native_ptr(), 2722037293);
 	CHECK_METHOD_BIND(_gde_method_bind);

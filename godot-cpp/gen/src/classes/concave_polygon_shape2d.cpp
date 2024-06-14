@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void ConcavePolygonShape2D::set_segments(const PackedVector2Array &segments) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(ConcavePolygonShape2D::get_class_static()._native_ptr(), StringName("set_segments")._native_ptr(), 1509147220);
 	CHECK_METHOD_BIND(_gde_method_bind);

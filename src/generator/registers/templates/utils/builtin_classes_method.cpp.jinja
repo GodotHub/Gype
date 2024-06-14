@@ -1,0 +1,36 @@
+
+{%- macro method_parser(clazz, method) -%}
+    {%- if method -%}
+    {{-'static_cast<'-}}
+    {%- if method.return_type -%}
+        {{method.return_type}}
+    {%- else -%}
+            {{-'void'-}}
+    {%- endif -%}
+        {{-'('-}}{{-clazz.name-}}{{-'::*)'-}}
+        {%- if not method.arguments -%}
+        ()
+        {%- else -%}
+        {{-'('-}}{{ method.arguments | convert_types(method.is_vararg) | join(',') }}{{-')'-}}
+        {% endif %}
+    {%- if method.is_const -%}const{%- endif -%}>(&{{clazz.name}}::{{method.name}})
+    {%- endif -%}
+{%- endmacro -%}
+
+{%- macro static_method_parser(clazz, method) -%}
+    {%- if method -%}
+    {{-'static_cast<'-}}
+    {%- if method.return_type -%}
+            {{method.return_type}}
+    {%- else -%}
+            {{-'void'-}}
+    {%- endif -%}
+        {{-'(*)'-}}
+        {%- if not method.arguments -%}
+        ()
+        {%- else -%}
+        {{-'('-}}{{ method.arguments | convert_types(method.is_vararg) | join(',') }}{{-')'-}}
+        {% endif %}
+    {%- if method.is_const -%}const{%- endif -%}>(&{{clazz.name}}::{{method.name}})
+    {%- endif -%}
+{%- endmacro -%}

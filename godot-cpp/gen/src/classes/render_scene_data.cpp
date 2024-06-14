@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 Transform3D RenderSceneData::get_cam_transform() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(RenderSceneData::get_class_static()._native_ptr(), StringName("get_cam_transform")._native_ptr(), 3229777777);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Transform3D());

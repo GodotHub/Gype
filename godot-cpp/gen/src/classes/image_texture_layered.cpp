@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 Error ImageTextureLayered::create_from_images(const TypedArray<Image> &images) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(ImageTextureLayered::get_class_static()._native_ptr(), StringName("create_from_images")._native_ptr(), 2785773503);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Error(0));

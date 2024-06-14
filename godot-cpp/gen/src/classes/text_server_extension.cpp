@@ -43,6 +43,7 @@
 
 namespace godot {
 
+
 bool TextServerExtension::_has_feature(TextServer::Feature feature) const {
 	return false;
 }

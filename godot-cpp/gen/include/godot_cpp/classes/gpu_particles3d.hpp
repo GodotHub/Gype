@@ -80,7 +80,7 @@ public:
 		TRANSFORM_ALIGN_Z_BILLBOARD_Y_TO_VELOCITY = 3,
 	};
 
-	static const int MAX_DRAW_PASSES = 4;
+	static const int MAX_DRAW_PASSES;
 
 	void set_emitting(bool emitting);
 	void set_amount(int32_t amount);

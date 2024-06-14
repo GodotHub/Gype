@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 void StreamPeerTLS::poll() {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(StreamPeerTLS::get_class_static()._native_ptr(), StringName("poll")._native_ptr(), 3218959716);
 	CHECK_METHOD_BIND(_gde_method_bind);

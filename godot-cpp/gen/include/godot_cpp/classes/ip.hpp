@@ -68,8 +68,8 @@ public:
 		TYPE_ANY = 3,
 	};
 
-	static const int RESOLVER_MAX_QUERIES = 256;
-	static const int RESOLVER_INVALID_ID = -1;
+	static const int RESOLVER_MAX_QUERIES;
+	static const int RESOLVER_INVALID_ID;
 
 	static IP *get_singleton();
 

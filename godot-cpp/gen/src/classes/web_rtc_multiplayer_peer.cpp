@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 Error WebRTCMultiplayerPeer::create_server(const Array &channels_config) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(WebRTCMultiplayerPeer::get_class_static()._native_ptr(), StringName("create_server")._native_ptr(), 2865356025);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Error(0));

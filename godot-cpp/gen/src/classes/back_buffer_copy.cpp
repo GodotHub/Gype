@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void BackBufferCopy::set_rect(const Rect2 &rect) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(BackBufferCopy::get_class_static()._native_ptr(), StringName("set_rect")._native_ptr(), 2046264180);
 	CHECK_METHOD_BIND(_gde_method_bind);

@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 void ShaderMaterial::set_shader(const Ref<Shader> &shader) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(ShaderMaterial::get_class_static()._native_ptr(), StringName("set_shader")._native_ptr(), 3341921675);
 	CHECK_METHOD_BIND(_gde_method_bind);

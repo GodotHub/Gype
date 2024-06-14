@@ -64,11 +64,11 @@ public:
 		ROTATION_EDIT_MODE_BASIS = 2,
 	};
 
-	static const int NOTIFICATION_TRANSFORM_CHANGED = 2000;
-	static const int NOTIFICATION_ENTER_WORLD = 41;
-	static const int NOTIFICATION_EXIT_WORLD = 42;
-	static const int NOTIFICATION_VISIBILITY_CHANGED = 43;
-	static const int NOTIFICATION_LOCAL_TRANSFORM_CHANGED = 44;
+	static const int NOTIFICATION_TRANSFORM_CHANGED;
+	static const int NOTIFICATION_ENTER_WORLD;
+	static const int NOTIFICATION_EXIT_WORLD;
+	static const int NOTIFICATION_VISIBILITY_CHANGED;
+	static const int NOTIFICATION_LOCAL_TRANSFORM_CHANGED;
 
 	void set_transform(const Transform3D &local);
 	Transform3D get_transform() const;

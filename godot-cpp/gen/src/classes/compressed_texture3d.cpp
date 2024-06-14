@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 Error CompressedTexture3D::load(const String &path) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(CompressedTexture3D::get_class_static()._native_ptr(), StringName("load")._native_ptr(), 166001499);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Error(0));

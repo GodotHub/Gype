@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 TextServerManager *TextServerManager::singleton = nullptr;
 
 TextServerManager *TextServerManager::get_singleton() {

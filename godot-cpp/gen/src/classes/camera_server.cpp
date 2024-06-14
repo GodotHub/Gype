@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 CameraServer *CameraServer::singleton = nullptr;
 
 CameraServer *CameraServer::get_singleton() {

@@ -8,15 +8,15 @@ qjs::Context::Module &get_Node2D_module();
 qjs::Context::Module &get_Node3D_module();
 qjs::Context::Module &get_Control_module();
 qjs::Context::Module &get_General_module();
+qjs::Context::Module &get_CanvasItem_module();
 
-
-void register_classes_Ref();
+{% set singletons_type = singletons | map(attribute='type') | list %}
 {% for clazz in classes %}
-    {% if 'VisualShader' not in clazz.name %}
-void register_classes_{{clazz.name}}();
-        {% if clazz.is_refcounted %}
-void register_classes_{{clazz.name}}Ref();
-        {% endif %}
+    {% if 'VisualShader' not in clazz.name and clazz.name not in singletons_type %}
+void register_classes_{{clazz.name}}(); 
+    {% endif %}
+    {% if clazz.name in (singletons | map(attribute='type') | list)%}
+void register_singletons_{{clazz.name}}();
     {% endif %}
 {% endfor %}
 

@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 bool AudioEffectCapture::can_get_buffer(int32_t frames) const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AudioEffectCapture::get_class_static()._native_ptr(), StringName("can_get_buffer")._native_ptr(), 1116898809);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, false);

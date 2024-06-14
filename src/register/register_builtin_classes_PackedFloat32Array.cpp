@@ -1,14 +1,20 @@
 
 #include <godot_cpp/variant/array.hpp>
-#include <godot_cpp/variant/packed_byte_array.hpp>
 #include <godot_cpp/variant/packed_float32_array.hpp>
 
+#include <godot_cpp/variant/packed_byte_array.hpp>
+
+#include "qjspp.hpp"
 #include "register/register_builtin_classes.h"
 
 using namespace godot;
 
 void register_builtin_classes_PackedFloat32Array() {
-	get_Variant_module().class_<PackedFloat32Array>("PackedFloat32Array").constructor<>().constructor<const PackedFloat32Array &>("PackedFloat32Array_1").constructor<const Array &>("PackedFloat32Array_2")
+	qjs::Context::Module &_Variant = get_Variant_module();
+	_Variant.class_<PackedFloat32Array>("PackedFloat32Array")
+			.constructor<>()
+			.constructor<const PackedFloat32Array &>("PackedFloat32Array_1")
+			.constructor<const Array &>("PackedFloat32Array_2")
 
 			.fun<static_cast<int64_t (PackedFloat32Array::*)() const>(&PackedFloat32Array::size)>("size")
 			.fun<static_cast<bool (PackedFloat32Array::*)() const>(&PackedFloat32Array::is_empty)>("is_empty")

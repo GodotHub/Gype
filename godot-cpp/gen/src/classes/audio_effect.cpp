@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 Ref<AudioEffectInstance> AudioEffect::_instantiate() {
 	return Ref<AudioEffectInstance>();
 }

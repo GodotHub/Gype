@@ -45,6 +45,7 @@
 
 namespace godot {
 
+
 void EditorResourcePreview::queue_resource_preview(const String &path, Object *receiver, const StringName &receiver_func, const Variant &userdata) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorResourcePreview::get_class_static()._native_ptr(), StringName("queue_resource_preview")._native_ptr(), 233177534);
 	CHECK_METHOD_BIND(_gde_method_bind);

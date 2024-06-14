@@ -43,6 +43,7 @@
 
 namespace godot {
 
+
 PhysicsServer2D *PhysicsServer2D::singleton = nullptr;
 
 PhysicsServer2D *PhysicsServer2D::get_singleton() {

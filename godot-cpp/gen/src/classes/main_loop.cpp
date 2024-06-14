@@ -38,6 +38,17 @@
 
 namespace godot {
 
+const int MainLoop::NOTIFICATION_OS_MEMORY_WARNING = 2009;
+const int MainLoop::NOTIFICATION_TRANSLATION_CHANGED = 2010;
+const int MainLoop::NOTIFICATION_WM_ABOUT = 2011;
+const int MainLoop::NOTIFICATION_CRASH = 2012;
+const int MainLoop::NOTIFICATION_OS_IME_UPDATE = 2013;
+const int MainLoop::NOTIFICATION_APPLICATION_RESUMED = 2014;
+const int MainLoop::NOTIFICATION_APPLICATION_PAUSED = 2015;
+const int MainLoop::NOTIFICATION_APPLICATION_FOCUS_IN = 2016;
+const int MainLoop::NOTIFICATION_APPLICATION_FOCUS_OUT = 2017;
+const int MainLoop::NOTIFICATION_TEXT_SERVER_CHANGED = 2018;
+
 void MainLoop::_initialize() {}
 
 bool MainLoop::_physics_process(double delta) {

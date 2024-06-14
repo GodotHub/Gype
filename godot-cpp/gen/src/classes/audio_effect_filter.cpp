@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void AudioEffectFilter::set_cutoff(double freq) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AudioEffectFilter::get_class_static()._native_ptr(), StringName("set_cutoff")._native_ptr(), 373806689);
 	CHECK_METHOD_BIND(_gde_method_bind);

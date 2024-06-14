@@ -49,6 +49,14 @@
 
 namespace godot {
 
+const int CanvasItem::NOTIFICATION_TRANSFORM_CHANGED = 2000;
+const int CanvasItem::NOTIFICATION_LOCAL_TRANSFORM_CHANGED = 35;
+const int CanvasItem::NOTIFICATION_DRAW = 30;
+const int CanvasItem::NOTIFICATION_VISIBILITY_CHANGED = 31;
+const int CanvasItem::NOTIFICATION_ENTER_CANVAS = 32;
+const int CanvasItem::NOTIFICATION_EXIT_CANVAS = 33;
+const int CanvasItem::NOTIFICATION_WORLD_2D_CHANGED = 36;
+
 RID CanvasItem::get_canvas_item() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(CanvasItem::get_class_static()._native_ptr(), StringName("get_canvas_item")._native_ptr(), 2944877500);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, RID());

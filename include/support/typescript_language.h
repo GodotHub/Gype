@@ -1,13 +1,29 @@
 #ifndef TS_LANGUAGE_SUPPORT
 #define TS_LANGUAGE_SUPPORT
 
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/classes/script.hpp>
 #include <godot_cpp/classes/script_language_extension.hpp>
+#include <godot_cpp/classes/wrapped.hpp>
+#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/templates/hash_map.hpp>
 #include <godot_cpp/variant/dictionary.hpp>
+#include <godot_cpp/variant/packed_string_array.hpp>
+#include <godot_cpp/variant/string.hpp>
+#include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
-#include <string>
+#include <godot_cpp/variant/variant.hpp>
+#include <stdint.h>
+#include <stdint.h>
+
+namespace godot {
+class ClassDB;
+class Object;
+}  // namespace godot
 
 using namespace godot;
+
 
 class TypescriptLanguage;
 

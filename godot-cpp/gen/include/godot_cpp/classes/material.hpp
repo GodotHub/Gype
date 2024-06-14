@@ -50,8 +50,8 @@ class Material : public Resource {
 
 public:
 
-	static const int RENDER_PRIORITY_MAX = 127;
-	static const int RENDER_PRIORITY_MIN = -128;
+	static const int RENDER_PRIORITY_MAX;
+	static const int RENDER_PRIORITY_MIN;
 
 	void set_next_pass(const Ref<Material> &next_pass);
 	Ref<Material> get_next_pass() const;

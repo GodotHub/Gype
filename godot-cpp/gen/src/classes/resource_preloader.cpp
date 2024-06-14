@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 void ResourcePreloader::add_resource(const StringName &name, const Ref<Resource> &resource) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(ResourcePreloader::get_class_static()._native_ptr(), StringName("add_resource")._native_ptr(), 1168801743);
 	CHECK_METHOD_BIND(_gde_method_bind);

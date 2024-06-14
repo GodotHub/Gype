@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 Transform3D RenderSceneDataExtension::_get_cam_transform() const {
 	return Transform3D();
 }

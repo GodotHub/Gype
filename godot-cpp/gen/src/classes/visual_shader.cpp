@@ -42,6 +42,9 @@
 
 namespace godot {
 
+const int VisualShader::NODE_ID_INVALID = -1;
+const int VisualShader::NODE_ID_OUTPUT = 0;
+
 void VisualShader::set_mode(Shader::Mode mode) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(VisualShader::get_class_static()._native_ptr(), StringName("set_mode")._native_ptr(), 3978014962);
 	CHECK_METHOD_BIND(_gde_method_bind);

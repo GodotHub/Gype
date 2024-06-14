@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void InputEventWithModifiers::set_command_or_control_autoremap(bool enable) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(InputEventWithModifiers::get_class_static()._native_ptr(), StringName("set_command_or_control_autoremap")._native_ptr(), 2586408642);
 	CHECK_METHOD_BIND(_gde_method_bind);

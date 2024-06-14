@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void StyleBoxFlat::set_bg_color(const Color &color) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(StyleBoxFlat::get_class_static()._native_ptr(), StringName("set_bg_color")._native_ptr(), 2920490490);
 	CHECK_METHOD_BIND(_gde_method_bind);

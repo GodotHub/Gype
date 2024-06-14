@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 void PhysicsServer3DRenderingServerHandler::set_vertex(int32_t vertex_id, const Vector3 &vertex) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsServer3DRenderingServerHandler::get_class_static()._native_ptr(), StringName("set_vertex")._native_ptr(), 1530502735);
 	CHECK_METHOD_BIND(_gde_method_bind);

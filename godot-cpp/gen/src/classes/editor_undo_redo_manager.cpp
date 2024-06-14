@@ -42,6 +42,7 @@
 
 namespace godot {
 
+
 void EditorUndoRedoManager::create_action(const String &name, UndoRedo::MergeMode merge_mode, Object *custom_context, bool backward_undo_ops) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorUndoRedoManager::get_class_static()._native_ptr(), StringName("create_action")._native_ptr(), 2107025470);
 	CHECK_METHOD_BIND(_gde_method_bind);

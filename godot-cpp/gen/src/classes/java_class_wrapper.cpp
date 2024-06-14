@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 JavaClassWrapper *JavaClassWrapper::singleton = nullptr;
 
 JavaClassWrapper *JavaClassWrapper::get_singleton() {

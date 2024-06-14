@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 bool RichTextEffect::_process_custom_fx(const Ref<CharFXTransform> &char_fx) const {
 	return false;
 }

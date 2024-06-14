@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 bool PhysicalBoneSimulator3D::is_simulating_physics() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicalBoneSimulator3D::get_class_static()._native_ptr(), StringName("is_simulating_physics")._native_ptr(), 36873697);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, false);

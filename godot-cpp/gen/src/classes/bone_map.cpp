@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 Ref<SkeletonProfile> BoneMap::get_profile() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(BoneMap::get_class_static()._native_ptr(), StringName("get_profile")._native_ptr(), 4291782652);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Ref<SkeletonProfile>());

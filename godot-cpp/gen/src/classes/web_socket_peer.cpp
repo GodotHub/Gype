@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 Error WebSocketPeer::connect_to_url(const String &url, const Ref<TLSOptions> &tls_client_options) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(WebSocketPeer::get_class_static()._native_ptr(), StringName("connect_to_url")._native_ptr(), 1966198364);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Error(0));

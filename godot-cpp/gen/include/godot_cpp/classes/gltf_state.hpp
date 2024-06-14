@@ -71,10 +71,10 @@ class GLTFState : public Resource {
 
 public:
 
-	static const int HANDLE_BINARY_DISCARD_TEXTURES = 0;
-	static const int HANDLE_BINARY_EXTRACT_TEXTURES = 1;
-	static const int HANDLE_BINARY_EMBED_AS_BASISU = 2;
-	static const int HANDLE_BINARY_EMBED_AS_UNCOMPRESSED = 3;
+	static const int HANDLE_BINARY_DISCARD_TEXTURES;
+	static const int HANDLE_BINARY_EXTRACT_TEXTURES;
+	static const int HANDLE_BINARY_EMBED_AS_BASISU;
+	static const int HANDLE_BINARY_EMBED_AS_UNCOMPRESSED;
 
 	void add_used_extension(const String &extension_name, bool required);
 	int32_t append_data_to_buffers(const PackedByteArray &data, bool deduplication);

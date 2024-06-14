@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void InputEventMouse::set_button_mask(BitField<MouseButtonMask> button_mask) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(InputEventMouse::get_class_static()._native_ptr(), StringName("set_button_mask")._native_ptr(), 3950145251);
 	CHECK_METHOD_BIND(_gde_method_bind);

@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 Ref<GLTFCamera> GLTFCamera::from_node(Camera3D *camera_node) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFCamera::get_class_static()._native_ptr(), StringName("from_node")._native_ptr(), 237784);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Ref<GLTFCamera>());

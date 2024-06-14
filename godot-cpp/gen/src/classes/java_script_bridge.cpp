@@ -42,6 +42,7 @@
 
 namespace godot {
 
+
 JavaScriptBridge *JavaScriptBridge::singleton = nullptr;
 
 JavaScriptBridge *JavaScriptBridge::get_singleton() {

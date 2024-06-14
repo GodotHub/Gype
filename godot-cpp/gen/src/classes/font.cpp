@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void Font::set_fallbacks(const TypedArray<Font> &fallbacks) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Font::get_class_static()._native_ptr(), StringName("set_fallbacks")._native_ptr(), 381264803);
 	CHECK_METHOD_BIND(_gde_method_bind);

@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 double SpringArm3D::get_hit_length() {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(SpringArm3D::get_class_static()._native_ptr(), StringName("get_hit_length")._native_ptr(), 191475506);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0.0);

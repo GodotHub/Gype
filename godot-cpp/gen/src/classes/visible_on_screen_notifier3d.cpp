@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 void VisibleOnScreenNotifier3D::set_aabb(const AABB &rect) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(VisibleOnScreenNotifier3D::get_class_static()._native_ptr(), StringName("set_aabb")._native_ptr(), 259215842);
 	CHECK_METHOD_BIND(_gde_method_bind);

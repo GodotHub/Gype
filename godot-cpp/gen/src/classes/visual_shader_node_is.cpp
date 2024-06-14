@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void VisualShaderNodeIs::set_function(VisualShaderNodeIs::Function func) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(VisualShaderNodeIs::get_class_static()._native_ptr(), StringName("set_function")._native_ptr(), 1438374690);
 	CHECK_METHOD_BIND(_gde_method_bind);

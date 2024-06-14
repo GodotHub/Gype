@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 Ref<RenderSceneBuffers> RenderDataExtension::_get_render_scene_buffers() const {
 	return Ref<RenderSceneBuffers>();
 }

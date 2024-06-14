@@ -2,10 +2,11 @@
 
 #include <stddef.h>
 #include <cctype>
-#include <string>
 
-qjs::Runtime runtime;
-qjs::Context context(runtime);
+#include "qjspp.hpp"
+
+qjs::Runtime *runtime = new qjs::Runtime();
+qjs::Context *context = new qjs::Context(*runtime);
 
 std::string underscoreToCamelCase(const std::string &input) {
 	std::string output;

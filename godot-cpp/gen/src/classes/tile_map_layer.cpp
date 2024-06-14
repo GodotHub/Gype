@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 void TileMapLayer::set_cell(const Vector2i &coords, int32_t source_id, const Vector2i &atlas_coords, int32_t alternative_tile) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TileMapLayer::get_class_static()._native_ptr(), StringName("set_cell")._native_ptr(), 2428518503);
 	CHECK_METHOD_BIND(_gde_method_bind);

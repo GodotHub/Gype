@@ -54,6 +54,9 @@
 
 namespace godot {
 
+const int RenderingDevice::INVALID_ID = -1;
+const int RenderingDevice::INVALID_FORMAT_ID = -1;
+
 RID RenderingDevice::texture_create(const Ref<RDTextureFormat> &format, const Ref<RDTextureView> &view, const TypedArray<PackedByteArray> &data) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(RenderingDevice::get_class_static()._native_ptr(), StringName("texture_create")._native_ptr(), 3709173589);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, RID());

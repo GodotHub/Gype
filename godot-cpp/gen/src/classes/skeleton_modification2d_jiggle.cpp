@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void SkeletonModification2DJiggle::set_target_node(const NodePath &target_nodepath) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(SkeletonModification2DJiggle::get_class_static()._native_ptr(), StringName("set_target_node")._native_ptr(), 1348162250);
 	CHECK_METHOD_BIND(_gde_method_bind);

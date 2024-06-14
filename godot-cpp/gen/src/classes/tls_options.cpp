@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 Ref<TLSOptions> TLSOptions::client(const Ref<X509Certificate> &trusted_chain, const String &common_name_override) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TLSOptions::get_class_static()._native_ptr(), StringName("client")._native_ptr(), 3565000357);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Ref<TLSOptions>());

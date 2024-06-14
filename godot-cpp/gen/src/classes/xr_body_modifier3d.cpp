@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void XRBodyModifier3D::set_body_tracker(const StringName &tracker_name) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(XRBodyModifier3D::get_class_static()._native_ptr(), StringName("set_body_tracker")._native_ptr(), 3304788590);
 	CHECK_METHOD_BIND(_gde_method_bind);

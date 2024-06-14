@@ -42,6 +42,7 @@
 
 namespace godot {
 
+
 bool TextServer::has_feature(TextServer::Feature feature) const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextServer::get_class_static()._native_ptr(), StringName("has_feature")._native_ptr(), 3967367083);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, false);

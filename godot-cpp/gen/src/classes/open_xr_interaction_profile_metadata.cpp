@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 void OpenXRInteractionProfileMetadata::register_profile_rename(const String &old_name, const String &new_name) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(OpenXRInteractionProfileMetadata::get_class_static()._native_ptr(), StringName("register_profile_rename")._native_ptr(), 3186203200);
 	CHECK_METHOD_BIND(_gde_method_bind);

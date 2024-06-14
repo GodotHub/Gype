@@ -1,0 +1,107 @@
+#include "register/register_classes.h"
+#include "qjspp/utils.h"
+#include <godot_cpp/classes/{{clazz.name|camel_to_snake}}.hpp>
+{% for file_path in classes%}
+    {% set clz = file_path | get_file_name | snake_to_camel %}
+    {% if file_path != 'godot_cpp/variant/array_helpers.hpp' %}
+#include <{{file_path}}>
+    {% endif %}
+{% endfor %}
+
+{%- macro method_parser(clazz, method) -%}
+    {%- if method -%}
+    {{-'static_cast<'-}}
+    {%- if method.return_value -%}
+        {%- if method.return_value.meta -%}
+            {{-method.return_value.meta | convert_return_type-}}
+        {%- else -%}
+            {% if 'typedarray::' in method.return_value.type %}
+            {{-method.return_value.type | typedarray_convert-}}
+            {% else %}
+            {{-method.return_value.type | convert_return_type-}}
+            {% endif %}
+        {%- endif -%}
+    {%- else -%}
+            {{-'void'-}}
+    {%- endif -%}
+        {{-'('-}}{{-clazz.name-}}{{-'::*)'-}}
+        {%- if not method.arguments -%}
+        ()
+        {%- else -%}
+        {{-'('-}}{{ method.arguments | convert_types(method.is_vararg) | join(',') }}{{-')'-}}
+        {% endif %}
+    {%- if method.is_const -%}const{%- endif -%}>(&{{clazz.name}}::{{method.name}})
+    {%- endif -%}
+{%- endmacro -%}
+
+{%- macro static_method_parser(clazz, method) -%}
+    {%- if method -%}
+    {{-'static_cast<'-}}
+    {%- if method.return_value -%}
+        {%- if method.return_value.meta -%}
+            {{-method.return_value.meta | convert_return_type-}}
+        {%- else -%}
+            {% if 'typedarray::' in method.return_value.type %}
+            {{-method.return_value.type | typedarray_convert-}}
+            {% else %}
+            {{-method.return_value.type | convert_return_type-}}
+            {% endif %}
+        {%- endif -%}
+    {%- else -%}
+            {{-'void'-}}
+    {%- endif -%}
+        {{-'(*)'-}}
+        {%- if not method.arguments -%}
+        ()
+        {%- else -%}
+        {{-'('-}}{{ method.arguments | convert_types(method.is_vararg) | join(',') }}{{-')'-}}
+        {% endif %}
+    {%- if method.is_const -%}const{%- endif -%}>(&{{clazz.name}}::{{method.name}})
+    {%- endif -%}
+{%- endmacro -%}
+
+using namespace godot;
+
+void register_singletons_{{clazz.name}}() {
+{% if clazz.name in (singletons | map(attribute='type') | list) %}
+	qjs::Value js_singleton = context->newObject();
+    {{clazz.name}} *singleton = {{clazz.name}}::get_singleton();
+    {% for method in clazz.methods %}
+    js_singleton.add(std::string("{{method.name}}").c_str(), [singleton]{{-'('-}}
+            {%- for arg in method.arguments -%}
+            {% if arg.meta %}
+            {{-arg.meta|convert_type-}}
+            {%else%}
+            {{-arg.type|convert_type-}}
+            {% endif %}
+            {{-' '+arg.name-}}
+            {% if not loop.last %}{{-','-}}{% endif %}
+            {%- endfor -%}
+        {{-')'-}}
+        {%- if method.return_value -%}
+            {%- if 'typedarray::' in method.return_value.type -%}
+        {{-'->'-}}{{-method.return_value.type | typedarray_convert-}}
+            {%- else -%}
+        {{-'->'-}}{{-method.return_value.type | convert_return_type-}}
+            {%- endif -%}
+        {return singleton->{{-method.name-}}({{-method.arguments | map(attribute='name') | join(',')-}});});
+        {% else %}
+        {{-'->'-}}{{-'void'-}}
+        {singleton->{{-method.name-}}({{-method.arguments | map(attribute='name') | join(',')-}});});
+        {% endif %}
+    {% endfor %}
+    context->global()[std::string("{{clazz.name}}").c_str()] = js_singleton;
+{% endif %}
+
+{% if clazz.enums %}
+{% for _enum in clazz.enums %}
+    {% if clazz.name in (singletons | map(attribute='type') | list) %}
+    qjs::Value _{{_enum.name}} = context->newObject();
+    {% for value in _enum['values'] %}
+    _{{_enum.name}}[std::string("{{value.name}}").c_str()] = {{clazz.name}}::{{_enum.name}}::{{value.name}};
+    {% endfor %}
+    js_singleton[std::string("{{_enum.name}}").c_str()] = _{{_enum.name}};
+    {% endif %}
+{% endfor %}
+{% endif %}
+}

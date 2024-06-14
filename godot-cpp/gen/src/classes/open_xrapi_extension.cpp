@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 uint64_t OpenXRAPIExtension::get_instance() {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(OpenXRAPIExtension::get_class_static()._native_ptr(), StringName("get_instance")._native_ptr(), 2455072627);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);

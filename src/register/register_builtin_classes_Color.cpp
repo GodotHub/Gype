@@ -1,15 +1,26 @@
-
-#include <godot_cpp/core/defs.hpp>
 #include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/variant/string.hpp>
 
+#include "qjspp.hpp"
 #include "register/register_builtin_classes.h"
 
 using namespace godot;
 
 void register_builtin_classes_Color() {
-	get_Variant_module().class_<Color>("Color").constructor<>().constructor<const Color &>("Color_1").constructor<const Color &, real_t>("Color_2").constructor<real_t, real_t, real_t>("Color_3").constructor<real_t, real_t, real_t, real_t>("Color_4").constructor<const String &>("Color_5").constructor<const String &, real_t>("Color_6")
-
+	qjs::Context::Module &_Variant = get_Variant_module();
+	_Variant.class_<Color>("Color")
+			.constructor<>()
+			.constructor<const Color &>("Color_1")
+			.constructor<const Color &, float>("Color_2")
+			.constructor<float, float, float>("Color_3")
+			.constructor<float, float, float, float>("Color_4")
+			.constructor<const String &>("Color_5")
+			.constructor<const String &, float>("Color_6")
+			.fun<&Color::a>("a")
+			.fun<&Color::b>("b")
+			.fun<&Color::g>("g")
+			.fun<&Color::r>("r")
+			// .fun<&Color::components>("components")
 			.fun<static_cast<uint32_t (Color::*)() const>(&Color::to_argb32)>("to_argb32")
 			.fun<static_cast<uint32_t (Color::*)() const>(&Color::to_abgr32)>("to_abgr32")
 			.fun<static_cast<uint32_t (Color::*)() const>(&Color::to_rgba32)>("to_rgba32")
@@ -19,19 +30,19 @@ void register_builtin_classes_Color() {
 			.fun<static_cast<String (Color::*)(bool) const>(&Color::to_html)>("to_html")
 			.fun<static_cast<Color (Color::*)(const Color &, const Color &) const>(&Color::clamp)>("clamp")
 			.fun<static_cast<Color (Color::*)() const>(&Color::inverted)>("inverted")
-			.fun<static_cast<Color (Color::*)(const Color &, real_t) const>(&Color::lerp)>("lerp")
-			.fun<static_cast<Color (Color::*)(real_t) const>(&Color::lightened)>("lightened")
-			.fun<static_cast<Color (Color::*)(real_t) const>(&Color::darkened)>("darkened")
+			.fun<static_cast<Color (Color::*)(const Color &, float) const>(&Color::lerp)>("lerp")
+			.fun<static_cast<Color (Color::*)(float) const>(&Color::lightened)>("lightened")
+			.fun<static_cast<Color (Color::*)(float) const>(&Color::darkened)>("darkened")
 			.fun<static_cast<Color (Color::*)(const Color &) const>(&Color::blend)>("blend")
-			.fun<static_cast<real_t (Color::*)() const>(&Color::get_luminance)>("get_luminance")
+			.fun<static_cast<float (Color::*)() const>(&Color::get_luminance)>("get_luminance")
 			.fun<static_cast<Color (Color::*)() const>(&Color::srgb_to_linear)>("srgb_to_linear")
 			.fun<static_cast<Color (Color::*)() const>(&Color::linear_to_srgb)>("linear_to_srgb")
 			.fun<static_cast<bool (Color::*)(const Color &) const>(&Color::is_equal_approx)>("is_equal_approx")
-			.static_fun<Color::hex>("hex")
-			.static_fun<Color::hex64>("hex64")
-			.static_fun<Color::html>("html")
-			.static_fun<Color::html_is_valid>("html_is_valid")
-			.static_fun<Color::from_string>("from_string")
-			.static_fun<Color::from_hsv>("from_hsv")
-			.static_fun<Color::from_rgbe9995>("from_rgbe9995");
+			.static_fun<static_cast<Color (*)(uint32_t)>(&Color::hex)>("hex")
+			.static_fun<static_cast<Color (*)(uint64_t)>(&Color::hex64)>("hex64")
+			.static_fun<static_cast<Color (*)(const String &)>(&Color::html)>("html")
+			.static_fun<static_cast<bool (*)(const String &)>(&Color::html_is_valid)>("html_is_valid")
+			.static_fun<static_cast<Color (*)(const String &, const Color &)>(&Color::from_string)>("from_string")
+			.static_fun<static_cast<Color (*)(float, float, float, float)>(&Color::from_hsv)>("from_hsv")
+			.static_fun<static_cast<Color (*)(uint32_t)>(&Color::from_rgbe9995)>("from_rgbe9995");
 }

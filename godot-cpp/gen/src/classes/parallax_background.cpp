@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void ParallaxBackground::set_scroll_offset(const Vector2 &offset) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(ParallaxBackground::get_class_static()._native_ptr(), StringName("set_scroll_offset")._native_ptr(), 743155724);
 	CHECK_METHOD_BIND(_gde_method_bind);

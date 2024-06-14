@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void RDPipelineMultisampleState::set_sample_count(RenderingDevice::TextureSamples p_member) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(RDPipelineMultisampleState::get_class_static()._native_ptr(), StringName("set_sample_count")._native_ptr(), 3774171498);
 	CHECK_METHOD_BIND(_gde_method_bind);

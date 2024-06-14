@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void SystemFont::set_antialiasing(TextServer::FontAntialiasing antialiasing) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(SystemFont::get_class_static()._native_ptr(), StringName("set_antialiasing")._native_ptr(), 1669900);
 	CHECK_METHOD_BIND(_gde_method_bind);

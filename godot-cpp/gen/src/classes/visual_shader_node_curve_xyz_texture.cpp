@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 void VisualShaderNodeCurveXYZTexture::set_texture(const Ref<CurveXYZTexture> &texture) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(VisualShaderNodeCurveXYZTexture::get_class_static()._native_ptr(), StringName("set_texture")._native_ptr(), 8031783);
 	CHECK_METHOD_BIND(_gde_method_bind);

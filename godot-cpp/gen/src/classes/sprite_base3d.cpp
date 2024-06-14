@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 void SpriteBase3D::set_centered(bool centered) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(SpriteBase3D::get_class_static()._native_ptr(), StringName("set_centered")._native_ptr(), 2586408642);
 	CHECK_METHOD_BIND(_gde_method_bind);

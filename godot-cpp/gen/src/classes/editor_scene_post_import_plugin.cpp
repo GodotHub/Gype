@@ -42,6 +42,7 @@
 
 namespace godot {
 
+
 Variant EditorScenePostImportPlugin::get_option_value(const StringName &name) const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorScenePostImportPlugin::get_class_static()._native_ptr(), StringName("get_option_value")._native_ptr(), 2760726917);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Variant());

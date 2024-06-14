@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void VisualShaderNodeCompare::set_comparison_type(VisualShaderNodeCompare::ComparisonType type) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(VisualShaderNodeCompare::get_class_static()._native_ptr(), StringName("set_comparison_type")._native_ptr(), 516558320);
 	CHECK_METHOD_BIND(_gde_method_bind);

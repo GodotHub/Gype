@@ -1,4 +1,8 @@
+
 #include <godot_cpp/classes/rd_pipeline_depth_stencil_state.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/rendering_device.hpp>
+#include <string>
 
 #include "qjspp.hpp"
 #include "register/register_classes.h"
@@ -9,25 +13,26 @@ void register_classes_RDPipelineDepthStencilState() {
 	qjs::Context::Module &_module = get_General_module();
 	_module.class_<RDPipelineDepthStencilState>("RDPipelineDepthStencilState")
 			.constructor<>()
-			.property<&RDPipelineDepthStencilState::get_enable_depth_test, &RDPipelineDepthStencilState::set_enable_depth_test>("enable_depth_test")
-			.property<&RDPipelineDepthStencilState::get_enable_depth_write, &RDPipelineDepthStencilState::set_enable_depth_write>("enable_depth_write")
-			.property<&RDPipelineDepthStencilState::get_depth_compare_operator, &RDPipelineDepthStencilState::set_depth_compare_operator>("depth_compare_operator")
-			.property<&RDPipelineDepthStencilState::get_enable_depth_range, &RDPipelineDepthStencilState::set_enable_depth_range>("enable_depth_range")
-			.property<&RDPipelineDepthStencilState::get_depth_range_min, &RDPipelineDepthStencilState::set_depth_range_min>("depth_range_min")
-			.property<&RDPipelineDepthStencilState::get_depth_range_max, &RDPipelineDepthStencilState::set_depth_range_max>("depth_range_max")
-			.property<&RDPipelineDepthStencilState::get_enable_stencil, &RDPipelineDepthStencilState::set_enable_stencil>("enable_stencil")
-			.property<&RDPipelineDepthStencilState::get_front_op_fail, &RDPipelineDepthStencilState::set_front_op_fail>("front_op_fail")
-			.property<&RDPipelineDepthStencilState::get_front_op_pass, &RDPipelineDepthStencilState::set_front_op_pass>("front_op_pass")
-			.property<&RDPipelineDepthStencilState::get_front_op_depth_fail, &RDPipelineDepthStencilState::set_front_op_depth_fail>("front_op_depth_fail")
-			.property<&RDPipelineDepthStencilState::get_front_op_compare, &RDPipelineDepthStencilState::set_front_op_compare>("front_op_compare")
-			.property<&RDPipelineDepthStencilState::get_front_op_compare_mask, &RDPipelineDepthStencilState::set_front_op_compare_mask>("front_op_compare_mask")
-			.property<&RDPipelineDepthStencilState::get_front_op_write_mask, &RDPipelineDepthStencilState::set_front_op_write_mask>("front_op_write_mask")
-			.property<&RDPipelineDepthStencilState::get_front_op_reference, &RDPipelineDepthStencilState::set_front_op_reference>("front_op_reference")
-			.property<&RDPipelineDepthStencilState::get_back_op_fail, &RDPipelineDepthStencilState::set_back_op_fail>("back_op_fail")
-			.property<&RDPipelineDepthStencilState::get_back_op_pass, &RDPipelineDepthStencilState::set_back_op_pass>("back_op_pass")
-			.property<&RDPipelineDepthStencilState::get_back_op_depth_fail, &RDPipelineDepthStencilState::set_back_op_depth_fail>("back_op_depth_fail")
-			.property<&RDPipelineDepthStencilState::get_back_op_compare, &RDPipelineDepthStencilState::set_back_op_compare>("back_op_compare")
-			.property<&RDPipelineDepthStencilState::get_back_op_compare_mask, &RDPipelineDepthStencilState::set_back_op_compare_mask>("back_op_compare_mask")
-			.property<&RDPipelineDepthStencilState::get_back_op_write_mask, &RDPipelineDepthStencilState::set_back_op_write_mask>("back_op_write_mask")
-			.property<&RDPipelineDepthStencilState::get_back_op_reference, &RDPipelineDepthStencilState::set_back_op_reference>("back_op_reference");
+			.base<RefCounted>()
+			.property<static_cast<bool (RDPipelineDepthStencilState::*)() const>(&RDPipelineDepthStencilState::get_enable_depth_test), static_cast<void (RDPipelineDepthStencilState::*)(bool)>(&RDPipelineDepthStencilState::set_enable_depth_test)>((new std::string("enable_depth_test"))->c_str())
+			.property<static_cast<bool (RDPipelineDepthStencilState::*)() const>(&RDPipelineDepthStencilState::get_enable_depth_write), static_cast<void (RDPipelineDepthStencilState::*)(bool)>(&RDPipelineDepthStencilState::set_enable_depth_write)>((new std::string("enable_depth_write"))->c_str())
+			.property<static_cast<RenderingDevice::CompareOperator (RDPipelineDepthStencilState::*)() const>(&RDPipelineDepthStencilState::get_depth_compare_operator), static_cast<void (RDPipelineDepthStencilState::*)(RenderingDevice::CompareOperator)>(&RDPipelineDepthStencilState::set_depth_compare_operator)>((new std::string("depth_compare_operator"))->c_str())
+			.property<static_cast<bool (RDPipelineDepthStencilState::*)() const>(&RDPipelineDepthStencilState::get_enable_depth_range), static_cast<void (RDPipelineDepthStencilState::*)(bool)>(&RDPipelineDepthStencilState::set_enable_depth_range)>((new std::string("enable_depth_range"))->c_str())
+			.property<static_cast<double (RDPipelineDepthStencilState::*)() const>(&RDPipelineDepthStencilState::get_depth_range_min), static_cast<void (RDPipelineDepthStencilState::*)(double)>(&RDPipelineDepthStencilState::set_depth_range_min)>((new std::string("depth_range_min"))->c_str())
+			.property<static_cast<double (RDPipelineDepthStencilState::*)() const>(&RDPipelineDepthStencilState::get_depth_range_max), static_cast<void (RDPipelineDepthStencilState::*)(double)>(&RDPipelineDepthStencilState::set_depth_range_max)>((new std::string("depth_range_max"))->c_str())
+			.property<static_cast<bool (RDPipelineDepthStencilState::*)() const>(&RDPipelineDepthStencilState::get_enable_stencil), static_cast<void (RDPipelineDepthStencilState::*)(bool)>(&RDPipelineDepthStencilState::set_enable_stencil)>((new std::string("enable_stencil"))->c_str())
+			.property<static_cast<RenderingDevice::StencilOperation (RDPipelineDepthStencilState::*)() const>(&RDPipelineDepthStencilState::get_front_op_fail), static_cast<void (RDPipelineDepthStencilState::*)(RenderingDevice::StencilOperation)>(&RDPipelineDepthStencilState::set_front_op_fail)>((new std::string("front_op_fail"))->c_str())
+			.property<static_cast<RenderingDevice::StencilOperation (RDPipelineDepthStencilState::*)() const>(&RDPipelineDepthStencilState::get_front_op_pass), static_cast<void (RDPipelineDepthStencilState::*)(RenderingDevice::StencilOperation)>(&RDPipelineDepthStencilState::set_front_op_pass)>((new std::string("front_op_pass"))->c_str())
+			.property<static_cast<RenderingDevice::StencilOperation (RDPipelineDepthStencilState::*)() const>(&RDPipelineDepthStencilState::get_front_op_depth_fail), static_cast<void (RDPipelineDepthStencilState::*)(RenderingDevice::StencilOperation)>(&RDPipelineDepthStencilState::set_front_op_depth_fail)>((new std::string("front_op_depth_fail"))->c_str())
+			.property<static_cast<RenderingDevice::CompareOperator (RDPipelineDepthStencilState::*)() const>(&RDPipelineDepthStencilState::get_front_op_compare), static_cast<void (RDPipelineDepthStencilState::*)(RenderingDevice::CompareOperator)>(&RDPipelineDepthStencilState::set_front_op_compare)>((new std::string("front_op_compare"))->c_str())
+			.property<static_cast<uint32_t (RDPipelineDepthStencilState::*)() const>(&RDPipelineDepthStencilState::get_front_op_compare_mask), static_cast<void (RDPipelineDepthStencilState::*)(uint32_t)>(&RDPipelineDepthStencilState::set_front_op_compare_mask)>((new std::string("front_op_compare_mask"))->c_str())
+			.property<static_cast<uint32_t (RDPipelineDepthStencilState::*)() const>(&RDPipelineDepthStencilState::get_front_op_write_mask), static_cast<void (RDPipelineDepthStencilState::*)(uint32_t)>(&RDPipelineDepthStencilState::set_front_op_write_mask)>((new std::string("front_op_write_mask"))->c_str())
+			.property<static_cast<uint32_t (RDPipelineDepthStencilState::*)() const>(&RDPipelineDepthStencilState::get_front_op_reference), static_cast<void (RDPipelineDepthStencilState::*)(uint32_t)>(&RDPipelineDepthStencilState::set_front_op_reference)>((new std::string("front_op_reference"))->c_str())
+			.property<static_cast<RenderingDevice::StencilOperation (RDPipelineDepthStencilState::*)() const>(&RDPipelineDepthStencilState::get_back_op_fail), static_cast<void (RDPipelineDepthStencilState::*)(RenderingDevice::StencilOperation)>(&RDPipelineDepthStencilState::set_back_op_fail)>((new std::string("back_op_fail"))->c_str())
+			.property<static_cast<RenderingDevice::StencilOperation (RDPipelineDepthStencilState::*)() const>(&RDPipelineDepthStencilState::get_back_op_pass), static_cast<void (RDPipelineDepthStencilState::*)(RenderingDevice::StencilOperation)>(&RDPipelineDepthStencilState::set_back_op_pass)>((new std::string("back_op_pass"))->c_str())
+			.property<static_cast<RenderingDevice::StencilOperation (RDPipelineDepthStencilState::*)() const>(&RDPipelineDepthStencilState::get_back_op_depth_fail), static_cast<void (RDPipelineDepthStencilState::*)(RenderingDevice::StencilOperation)>(&RDPipelineDepthStencilState::set_back_op_depth_fail)>((new std::string("back_op_depth_fail"))->c_str())
+			.property<static_cast<RenderingDevice::CompareOperator (RDPipelineDepthStencilState::*)() const>(&RDPipelineDepthStencilState::get_back_op_compare), static_cast<void (RDPipelineDepthStencilState::*)(RenderingDevice::CompareOperator)>(&RDPipelineDepthStencilState::set_back_op_compare)>((new std::string("back_op_compare"))->c_str())
+			.property<static_cast<uint32_t (RDPipelineDepthStencilState::*)() const>(&RDPipelineDepthStencilState::get_back_op_compare_mask), static_cast<void (RDPipelineDepthStencilState::*)(uint32_t)>(&RDPipelineDepthStencilState::set_back_op_compare_mask)>((new std::string("back_op_compare_mask"))->c_str())
+			.property<static_cast<uint32_t (RDPipelineDepthStencilState::*)() const>(&RDPipelineDepthStencilState::get_back_op_write_mask), static_cast<void (RDPipelineDepthStencilState::*)(uint32_t)>(&RDPipelineDepthStencilState::set_back_op_write_mask)>((new std::string("back_op_write_mask"))->c_str())
+			.property<static_cast<uint32_t (RDPipelineDepthStencilState::*)() const>(&RDPipelineDepthStencilState::get_back_op_reference), static_cast<void (RDPipelineDepthStencilState::*)(uint32_t)>(&RDPipelineDepthStencilState::set_back_op_reference)>((new std::string("back_op_reference"))->c_str());
 }

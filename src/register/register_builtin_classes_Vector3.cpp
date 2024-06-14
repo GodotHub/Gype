@@ -1,15 +1,21 @@
 #include <godot_cpp/core/defs.hpp>
-#include <godot_cpp/variant/basis.hpp>
-#include <godot_cpp/variant/vector2.hpp>
 #include <godot_cpp/variant/vector3.hpp>
 #include <godot_cpp/variant/vector3i.hpp>
+#include <godot_cpp/variant/basis.hpp>
+#include <godot_cpp/variant/vector2.hpp>
 
 #include "register/register_builtin_classes.h"
+#include "qjspp.hpp"
 
 using namespace godot;
 
 void register_builtin_classes_Vector3() {
-	get_Variant_module().class_<Vector3>("Vector3").constructor<>().constructor<const Vector3 &>("Vector3_1").constructor<const Vector3i &>("Vector3_2").constructor<real_t, real_t, real_t>("Vector3_3")
+	qjs::Context::Module &_Variant = get_Variant_module();
+	_Variant.class_<Vector3>("Vector3")
+			.constructor<>()
+			.constructor<const Vector3 &>("Vector3_1")
+			.constructor<const Vector3i &>("Vector3_2")
+			.constructor<real_t, real_t, real_t>("Vector3_3")
 
 			.fun<static_cast<Vector3::Axis (Vector3::*)() const>(&Vector3::min_axis_index)>("min_axis_index")
 			.fun<static_cast<Vector3::Axis (Vector3::*)() const>(&Vector3::max_axis_index)>("max_axis_index")
@@ -28,7 +34,9 @@ void register_builtin_classes_Vector3() {
 			.fun<static_cast<bool (Vector3::*)() const>(&Vector3::is_finite)>("is_finite")
 			.fun<static_cast<Vector3 (Vector3::*)() const>(&Vector3::inverse)>("inverse")
 			.fun<static_cast<Vector3 (Vector3::*)(const Vector3 &, const Vector3 &) const>(&Vector3::clamp)>("clamp")
+			.fun<static_cast<Vector3 (Vector3::*)(real_t, real_t) const>(&Vector3::clampf)>("clampf")
 			.fun<static_cast<Vector3 (Vector3::*)(const Vector3 &) const>(&Vector3::snapped)>("snapped")
+			.fun<static_cast<Vector3 (Vector3::*)(real_t) const>(&Vector3::snappedf)>("snappedf")
 			.fun<static_cast<Vector3 (Vector3::*)(const Vector3 &, real_t) const>(&Vector3::rotated)>("rotated")
 			.fun<static_cast<Vector3 (Vector3::*)(const Vector3 &, real_t) const>(&Vector3::lerp)>("lerp")
 			.fun<static_cast<Vector3 (Vector3::*)(const Vector3 &, real_t) const>(&Vector3::slerp)>("slerp")
@@ -52,5 +60,9 @@ void register_builtin_classes_Vector3() {
 			.fun<static_cast<Vector3 (Vector3::*)(const Vector3 &) const>(&Vector3::reflect)>("reflect")
 			.fun<static_cast<Vector3 (Vector3::*)() const>(&Vector3::sign)>("sign")
 			.fun<static_cast<Vector2 (Vector3::*)() const>(&Vector3::octahedron_encode)>("octahedron_encode")
-			.static_fun<Vector3::octahedron_decode>("octahedron_decode");
+			.fun<static_cast<Vector3 (Vector3::*)(const Vector3 &) const>(&Vector3::min)>("min")
+			.fun<static_cast<Vector3 (Vector3::*)(real_t) const>(&Vector3::minf)>("minf")
+			.fun<static_cast<Vector3 (Vector3::*)(const Vector3 &) const>(&Vector3::max)>("max")
+			.fun<static_cast<Vector3 (Vector3::*)(real_t) const>(&Vector3::maxf)>("maxf")
+			.static_fun<static_cast<Vector3 (*)(const Vector2 &)>(&Vector3::octahedron_decode)>("octahedron_decode");
 }

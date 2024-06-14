@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 void LightOccluder2D::set_occluder_polygon(const Ref<OccluderPolygon2D> &polygon) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(LightOccluder2D::get_class_static()._native_ptr(), StringName("set_occluder_polygon")._native_ptr(), 3258315893);
 	CHECK_METHOD_BIND(_gde_method_bind);

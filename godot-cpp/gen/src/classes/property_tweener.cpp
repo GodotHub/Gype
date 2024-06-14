@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 Ref<PropertyTweener> PropertyTweener::from(const Variant &value) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PropertyTweener::get_class_static()._native_ptr(), StringName("from")._native_ptr(), 4190193059);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Ref<PropertyTweener>());

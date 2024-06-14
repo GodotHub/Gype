@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 void Area3D::set_gravity_space_override_mode(Area3D::SpaceOverride space_override_mode) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Area3D::get_class_static()._native_ptr(), StringName("set_gravity_space_override_mode")._native_ptr(), 2311433571);
 	CHECK_METHOD_BIND(_gde_method_bind);

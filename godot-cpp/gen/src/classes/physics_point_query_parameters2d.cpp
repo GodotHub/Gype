@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void PhysicsPointQueryParameters2D::set_position(const Vector2 &position) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsPointQueryParameters2D::get_class_static()._native_ptr(), StringName("set_position")._native_ptr(), 743155724);
 	CHECK_METHOD_BIND(_gde_method_bind);

@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void AudioListener3D::make_current() {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AudioListener3D::get_class_static()._native_ptr(), StringName("make_current")._native_ptr(), 3218959716);
 	CHECK_METHOD_BIND(_gde_method_bind);

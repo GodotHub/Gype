@@ -651,8 +651,8 @@ public:
 		MEMORY_TOTAL = 2,
 	};
 
-	static const int INVALID_ID = -1;
-	static const int INVALID_FORMAT_ID = -1;
+	static const int INVALID_ID;
+	static const int INVALID_FORMAT_ID;
 
 	RID texture_create(const Ref<RDTextureFormat> &format, const Ref<RDTextureView> &view, const TypedArray<PackedByteArray> &data = Array());
 	RID texture_create_shared(const Ref<RDTextureView> &view, const RID &with_texture);

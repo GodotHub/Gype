@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 int32_t Animation::add_track(Animation::TrackType type, int32_t at_position) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Animation::get_class_static()._native_ptr(), StringName("add_track")._native_ptr(), 3843682357);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);

@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 Ref<Image> GLTFSpecGloss::get_diffuse_img() {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GLTFSpecGloss::get_class_static()._native_ptr(), StringName("get_diffuse_img")._native_ptr(), 564927088);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Ref<Image>());

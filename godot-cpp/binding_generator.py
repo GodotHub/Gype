@@ -1553,7 +1553,8 @@ def generate_engine_class_header(class_api, used_classes, fully_used_classes, us
         for value in class_api["constants"]:
             if "type" not in value:
                 value["type"] = "int"
-            result.append(f'\tstatic const {value["type"]} {value["name"]} = {value["value"]};')
+            result.append(f'\tstatic const {value["type"]} {value["name"]};')
+            # result.append(f'\tstatic const {value["type"]} {value["name"]} = {value["value"]};')
         result.append("")
 
     if is_singleton:
@@ -1781,6 +1782,14 @@ def generate_engine_class_source(class_api, used_classes, fully_used_classes, us
 
     result.append("namespace godot {")
     result.append("")
+
+    if 'constants' in class_api:
+        for value in class_api["constants"]:
+            if "type" not in value:
+                value["type"] = "int"
+            result.append(f'const {value["type"]} {class_api['name']}::{value["name"]} = {value["value"]};')
+
+    result.append('')
 
     if is_singleton:
         result.append(f"{class_name} *{class_name}::singleton = nullptr;")

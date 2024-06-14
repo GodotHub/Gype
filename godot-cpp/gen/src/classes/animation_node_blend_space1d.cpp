@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void AnimationNodeBlendSpace1D::add_blend_point(const Ref<AnimationRootNode> &node, double pos, int32_t at_index) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationNodeBlendSpace1D::get_class_static()._native_ptr(), StringName("add_blend_point")._native_ptr(), 285050433);
 	CHECK_METHOD_BIND(_gde_method_bind);

@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void ParallaxLayer::set_motion_scale(const Vector2 &scale) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(ParallaxLayer::get_class_static()._native_ptr(), StringName("set_motion_scale")._native_ptr(), 743155724);
 	CHECK_METHOD_BIND(_gde_method_bind);

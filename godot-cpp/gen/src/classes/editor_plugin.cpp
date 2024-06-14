@@ -61,6 +61,7 @@
 
 namespace godot {
 
+
 void EditorPlugin::add_control_to_container(EditorPlugin::CustomControlContainer container, Control *control) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorPlugin::get_class_static()._native_ptr(), StringName("add_control_to_container")._native_ptr(), 3092750152);
 	CHECK_METHOD_BIND(_gde_method_bind);

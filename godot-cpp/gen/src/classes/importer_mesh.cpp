@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void ImporterMesh::add_blend_shape(const String &name) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(ImporterMesh::get_class_static()._native_ptr(), StringName("add_blend_shape")._native_ptr(), 83702148);
 	CHECK_METHOD_BIND(_gde_method_bind);

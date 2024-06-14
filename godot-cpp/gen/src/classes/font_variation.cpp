@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void FontVariation::set_base_font(const Ref<Font> &font) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(FontVariation::get_class_static()._native_ptr(), StringName("set_base_font")._native_ptr(), 1262170328);
 	CHECK_METHOD_BIND(_gde_method_bind);

@@ -1,12 +1,15 @@
 #include "register/register_utility_functions.h"
-#include "qjspp/utils.h"
+
 #include <godot_cpp/variant/utility_functions.hpp>
+
+#include "qjspp.hpp"
+#include "qjspp/utils.h"
 
 using namespace godot;
 
 void register_utility_functions() {
-	qjs::Value gd = context.newObject();
-	qjs::Value math = context.newObject();
+	qjs::Value gd = context->newObject();
+	qjs::Value math = context->newObject();
 	math.add("sin", UtilityFunctions::sin);
 	math.add("cos", UtilityFunctions::cos);
 	math.add("tan", UtilityFunctions::tan);
@@ -112,6 +115,6 @@ void register_utility_functions() {
 	gd.add("rid_allocate_id", UtilityFunctions::rid_allocate_id);
 	gd.add("rid_from_int64", UtilityFunctions::rid_from_int64);
 	gd.add("is_same", UtilityFunctions::is_same);
-	context.global()["GD"] = gd;
-	context.global()["Math"] = math;
+	context->global()[(new std::string("GD"))->c_str()] = gd;
+	context->global()[(new std::string("Math"))->c_str()] = math;
 }

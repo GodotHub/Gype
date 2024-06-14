@@ -43,6 +43,7 @@
 
 namespace godot {
 
+
 void TreeItem::set_cell_mode(int32_t column, TreeItem::TreeCellMode mode) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TreeItem::get_class_static()._native_ptr(), StringName("set_cell_mode")._native_ptr(), 289920701);
 	CHECK_METHOD_BIND(_gde_method_bind);

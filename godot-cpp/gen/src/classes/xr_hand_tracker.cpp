@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void XRHandTracker::set_has_tracking_data(bool has_data) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(XRHandTracker::get_class_static()._native_ptr(), StringName("set_has_tracking_data")._native_ptr(), 2586408642);
 	CHECK_METHOD_BIND(_gde_method_bind);

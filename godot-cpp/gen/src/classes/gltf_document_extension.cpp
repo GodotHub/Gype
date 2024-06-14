@@ -46,6 +46,7 @@
 
 namespace godot {
 
+
 Error GLTFDocumentExtension::_import_preflight(const Ref<GLTFState> &state, const PackedStringArray &extensions) {
 	return Error(0);
 }

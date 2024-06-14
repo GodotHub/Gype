@@ -43,6 +43,7 @@
 
 namespace godot {
 
+
 String ScriptLanguageExtension::_get_name() const {
 	return String();
 }

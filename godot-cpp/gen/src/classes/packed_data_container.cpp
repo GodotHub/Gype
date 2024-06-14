@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 Error PackedDataContainer::pack(const Variant &value) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PackedDataContainer::get_class_static()._native_ptr(), StringName("pack")._native_ptr(), 966674026);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Error(0));

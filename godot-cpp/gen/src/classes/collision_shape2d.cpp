@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 void CollisionShape2D::set_shape(const Ref<Shape2D> &shape) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(CollisionShape2D::get_class_static()._native_ptr(), StringName("set_shape")._native_ptr(), 771364740);
 	CHECK_METHOD_BIND(_gde_method_bind);

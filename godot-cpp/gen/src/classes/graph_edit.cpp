@@ -44,6 +44,7 @@
 
 namespace godot {
 
+
 Error GraphEdit::connect_node(const StringName &from_node, int32_t from_port, const StringName &to_node, int32_t to_port) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GraphEdit::get_class_static()._native_ptr(), StringName("connect_node")._native_ptr(), 195065850);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Error(0));

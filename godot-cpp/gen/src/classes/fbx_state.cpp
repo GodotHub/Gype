@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 bool FBXState::get_allow_geometry_helper_nodes() {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(FBXState::get_class_static()._native_ptr(), StringName("get_allow_geometry_helper_nodes")._native_ptr(), 2240911060);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, false);

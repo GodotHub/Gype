@@ -44,6 +44,7 @@
 
 namespace godot {
 
+
 bool EditorResourcePreviewGenerator::_handles(const String &type) const {
 	return false;
 }

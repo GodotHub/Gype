@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 ClassDBSingleton *ClassDBSingleton::singleton = nullptr;
 
 ClassDBSingleton *ClassDBSingleton::get_singleton() {

@@ -1,6 +1,7 @@
 
 #include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/packed_byte_array.hpp>
+
 #include <godot_cpp/variant/packed_float32_array.hpp>
 #include <godot_cpp/variant/packed_float64_array.hpp>
 #include <godot_cpp/variant/packed_int32_array.hpp>
@@ -8,12 +9,17 @@
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/variant.hpp>
 
+#include "qjspp.hpp"
 #include "register/register_builtin_classes.h"
 
 using namespace godot;
 
 void register_builtin_classes_PackedByteArray() {
-	get_Variant_module().class_<PackedByteArray>("PackedByteArray").constructor<>().constructor<const PackedByteArray &>("PackedByteArray_1").constructor<const Array &>("PackedByteArray_2")
+	qjs::Context::Module &_Variant = get_Variant_module();
+	_Variant.class_<PackedByteArray>("PackedByteArray")
+			.constructor<>()
+			.constructor<const PackedByteArray &>("PackedByteArray_1")
+			.constructor<const Array &>("PackedByteArray_2")
 
 			.fun<static_cast<int64_t (PackedByteArray::*)() const>(&PackedByteArray::size)>("size")
 			.fun<static_cast<bool (PackedByteArray::*)() const>(&PackedByteArray::is_empty)>("is_empty")

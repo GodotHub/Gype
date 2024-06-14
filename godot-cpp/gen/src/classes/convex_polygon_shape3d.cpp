@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void ConvexPolygonShape3D::set_points(const PackedVector3Array &points) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(ConvexPolygonShape3D::get_class_static()._native_ptr(), StringName("set_points")._native_ptr(), 334873810);
 	CHECK_METHOD_BIND(_gde_method_bind);

@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 Dictionary EditorVCSInterface::create_diff_line(int32_t new_line_no, int32_t old_line_no, const String &content, const String &status) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorVCSInterface::get_class_static()._native_ptr(), StringName("create_diff_line")._native_ptr(), 2901184053);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Dictionary());

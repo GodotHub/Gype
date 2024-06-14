@@ -42,6 +42,7 @@
 
 namespace godot {
 
+
 RID XRInterfaceExtension::get_color_texture() {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(XRInterfaceExtension::get_class_static()._native_ptr(), StringName("get_color_texture")._native_ptr(), 529393457);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, RID());

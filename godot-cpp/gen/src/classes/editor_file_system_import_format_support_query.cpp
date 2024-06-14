@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 bool EditorFileSystemImportFormatSupportQuery::_is_active() const {
 	return false;
 }

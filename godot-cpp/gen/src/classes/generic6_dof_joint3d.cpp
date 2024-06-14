@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void Generic6DOFJoint3D::set_param_x(Generic6DOFJoint3D::Param param, double value) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Generic6DOFJoint3D::get_class_static()._native_ptr(), StringName("set_param_x")._native_ptr(), 2018184242);
 	CHECK_METHOD_BIND(_gde_method_bind);

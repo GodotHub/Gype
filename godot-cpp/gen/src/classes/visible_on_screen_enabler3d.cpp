@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void VisibleOnScreenEnabler3D::set_enable_mode(VisibleOnScreenEnabler3D::EnableMode mode) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(VisibleOnScreenEnabler3D::get_class_static()._native_ptr(), StringName("set_enable_mode")._native_ptr(), 320303646);
 	CHECK_METHOD_BIND(_gde_method_bind);

@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 String JSON::stringify(const Variant &data, const String &indent, bool sort_keys, bool full_precision) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(JSON::get_class_static()._native_ptr(), StringName("stringify")._native_ptr(), 462733549);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, String());

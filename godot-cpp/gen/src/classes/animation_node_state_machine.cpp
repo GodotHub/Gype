@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 void AnimationNodeStateMachine::add_node(const StringName &name, const Ref<AnimationNode> &node, const Vector2 &position) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationNodeStateMachine::get_class_static()._native_ptr(), StringName("add_node")._native_ptr(), 1980270704);
 	CHECK_METHOD_BIND(_gde_method_bind);

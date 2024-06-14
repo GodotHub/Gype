@@ -1,4 +1,8 @@
 #include "support/typescript_language.h"
+
+#include <godot_cpp/core/memory.hpp>
+#include <godot_cpp/core/error_macros.hpp>
+
 #include "support/typescript.h"
 
 const char *TypescriptLanguage::EXTENSION = "js";
@@ -6,16 +10,17 @@ const char *TypescriptLanguage::TYPE = "Javascript";
 TypescriptLanguage *TypescriptLanguage::singleton = nullptr;
 
 TypescriptLanguage::TypescriptLanguage() {
+	singleton = this;
 }
 
 TypescriptLanguage::~TypescriptLanguage() {
 	singleton = nullptr;
+	delete TYPE;
+	delete EXTENSION;
 }
 
 TypescriptLanguage *TypescriptLanguage::get_singleton() {
-	if (!singleton) {
-		singleton = memnew(TypescriptLanguage);
-	}
+	ERR_FAIL_NULL_V(singleton, nullptr);
 	return singleton;
 }
 

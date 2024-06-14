@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void VoxelGIData::allocate(const Transform3D &to_cell_xform, const AABB &aabb, const Vector3 &octree_size, const PackedByteArray &octree_cells, const PackedByteArray &data_cells, const PackedByteArray &distance_field, const PackedInt32Array &level_counts) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(VoxelGIData::get_class_static()._native_ptr(), StringName("allocate")._native_ptr(), 4041601946);
 	CHECK_METHOD_BIND(_gde_method_bind);

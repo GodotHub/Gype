@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void CSGPrimitive3D::set_flip_faces(bool flip_faces) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(CSGPrimitive3D::get_class_static()._native_ptr(), StringName("set_flip_faces")._native_ptr(), 2586408642);
 	CHECK_METHOD_BIND(_gde_method_bind);

@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 Shader::Mode Shader::get_mode() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Shader::get_class_static()._native_ptr(), StringName("get_mode")._native_ptr(), 3392948163);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Shader::Mode(0));

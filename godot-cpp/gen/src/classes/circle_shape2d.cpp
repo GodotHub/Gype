@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void CircleShape2D::set_radius(double radius) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(CircleShape2D::get_class_static()._native_ptr(), StringName("set_radius")._native_ptr(), 373806689);
 	CHECK_METHOD_BIND(_gde_method_bind);

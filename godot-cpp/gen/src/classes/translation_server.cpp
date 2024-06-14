@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 TranslationServer *TranslationServer::singleton = nullptr;
 
 TranslationServer *TranslationServer::get_singleton() {

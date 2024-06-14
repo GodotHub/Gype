@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 Error ZIPReader::open(const String &path) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(ZIPReader::get_class_static()._native_ptr(), StringName("open")._native_ptr(), 166001499);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Error(0));

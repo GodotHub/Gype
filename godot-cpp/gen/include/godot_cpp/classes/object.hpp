@@ -60,9 +60,9 @@ public:
 		CONNECT_REFERENCE_COUNTED = 8,
 	};
 
-	static const int NOTIFICATION_POSTINITIALIZE = 0;
-	static const int NOTIFICATION_PREDELETE = 1;
-	static const int NOTIFICATION_EXTENSION_RELOADED = 2;
+	static const int NOTIFICATION_POSTINITIALIZE;
+	static const int NOTIFICATION_PREDELETE;
+	static const int NOTIFICATION_EXTENSION_RELOADED;
 
 	String get_class() const;
 	bool is_class(const String &_class) const;

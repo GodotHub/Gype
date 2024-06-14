@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 ProjectSettings *ProjectSettings::singleton = nullptr;
 
 ProjectSettings *ProjectSettings::get_singleton() {

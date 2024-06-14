@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 void OptionButton::add_item(const String &label, int32_t id) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(OptionButton::get_class_static()._native_ptr(), StringName("add_item")._native_ptr(), 2697778442);
 	CHECK_METHOD_BIND(_gde_method_bind);

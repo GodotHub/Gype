@@ -58,7 +58,7 @@ class GridMap : public Node3D {
 
 public:
 
-	static const int INVALID_CELL_ITEM = -1;
+	static const int INVALID_CELL_ITEM;
 
 	void set_collision_layer(uint32_t layer);
 	uint32_t get_collision_layer() const;

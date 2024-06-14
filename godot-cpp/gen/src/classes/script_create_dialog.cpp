@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 void ScriptCreateDialog::config(const String &inherits, const String &path, bool built_in_enabled, bool load_enabled) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(ScriptCreateDialog::get_class_static()._native_ptr(), StringName("config")._native_ptr(), 869314288);
 	CHECK_METHOD_BIND(_gde_method_bind);

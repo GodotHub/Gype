@@ -5,6 +5,6 @@
 using namespace godot;
 
 qjs::Context::Module &get_Variant_module() {
-	static qjs::Context::Module &_Variant = context.addModule("Variant");
+	static qjs::Context::Module &_Variant = context->addModule("Variant");
 	return _Variant;
 }

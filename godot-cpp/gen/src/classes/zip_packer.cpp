@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 Error ZIPPacker::open(const String &path, ZIPPacker::ZipAppend append) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(ZIPPacker::get_class_static()._native_ptr(), StringName("open")._native_ptr(), 1936816515);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Error(0));

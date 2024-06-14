@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 void PhysicalBone3D::apply_central_impulse(const Vector3 &impulse) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicalBone3D::get_class_static()._native_ptr(), StringName("apply_central_impulse")._native_ptr(), 3460891852);
 	CHECK_METHOD_BIND(_gde_method_bind);

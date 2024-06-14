@@ -1,4 +1,6 @@
 #include <godot_cpp/classes/damped_spring_joint2d.hpp>
+#include <godot_cpp/classes/joint2d.hpp>
+#include <string>
 
 #include "qjspp.hpp"
 #include "register/register_classes.h"
@@ -9,8 +11,9 @@ void register_classes_DampedSpringJoint2D() {
 	qjs::Context::Module &_module = get_Node2D_module();
 	_module.class_<DampedSpringJoint2D>("DampedSpringJoint2D")
 			.constructor<>()
-			.property<&DampedSpringJoint2D::get_length, &DampedSpringJoint2D::set_length>("length")
-			.property<&DampedSpringJoint2D::get_rest_length, &DampedSpringJoint2D::set_rest_length>("rest_length")
-			.property<&DampedSpringJoint2D::get_stiffness, &DampedSpringJoint2D::set_stiffness>("stiffness")
-			.property<&DampedSpringJoint2D::get_damping, &DampedSpringJoint2D::set_damping>("damping");
+			.base<Joint2D>()
+			.property<static_cast<double (DampedSpringJoint2D::*)() const>(&DampedSpringJoint2D::get_length), static_cast<void (DampedSpringJoint2D::*)(double)>(&DampedSpringJoint2D::set_length)>((new std::string("length"))->c_str())
+			.property<static_cast<double (DampedSpringJoint2D::*)() const>(&DampedSpringJoint2D::get_rest_length), static_cast<void (DampedSpringJoint2D::*)(double)>(&DampedSpringJoint2D::set_rest_length)>((new std::string("rest_length"))->c_str())
+			.property<static_cast<double (DampedSpringJoint2D::*)() const>(&DampedSpringJoint2D::get_stiffness), static_cast<void (DampedSpringJoint2D::*)(double)>(&DampedSpringJoint2D::set_stiffness)>((new std::string("stiffness"))->c_str())
+			.property<static_cast<double (DampedSpringJoint2D::*)() const>(&DampedSpringJoint2D::get_damping), static_cast<void (DampedSpringJoint2D::*)(double)>(&DampedSpringJoint2D::set_damping)>((new std::string("damping"))->c_str());
 }

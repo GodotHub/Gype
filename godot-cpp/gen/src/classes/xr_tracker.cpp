@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 XRServer::TrackerType XRTracker::get_tracker_type() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(XRTracker::get_class_static()._native_ptr(), StringName("get_tracker_type")._native_ptr(), 2784508102);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, XRServer::TrackerType(0));

@@ -41,6 +41,10 @@
 
 namespace godot {
 
+const int Object::NOTIFICATION_POSTINITIALIZE = 0;
+const int Object::NOTIFICATION_PREDELETE = 1;
+const int Object::NOTIFICATION_EXTENSION_RELOADED = 2;
+
 String Object::get_class() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(Object::get_class_static()._native_ptr(), StringName("get_class")._native_ptr(), 201670096);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, String());

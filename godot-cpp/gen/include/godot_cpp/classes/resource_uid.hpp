@@ -50,7 +50,7 @@ class ResourceUID : public Object {
 
 public:
 
-	static const int INVALID_ID = -1;
+	static const int INVALID_ID;
 
 	static ResourceUID *get_singleton();
 

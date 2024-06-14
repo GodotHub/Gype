@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 Error AnimationMixer::add_animation_library(const StringName &name, const Ref<AnimationLibrary> &library) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AnimationMixer::get_class_static()._native_ptr(), StringName("add_animation_library")._native_ptr(), 618909818);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Error(0));

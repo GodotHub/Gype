@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 int32_t ItemList::add_item(const String &text, const Ref<Texture2D> &icon, bool selectable) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(ItemList::get_class_static()._native_ptr(), StringName("add_item")._native_ptr(), 359861678);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, 0);

@@ -1,4 +1,7 @@
 #include <godot_cpp/classes/color_rect.hpp>
+#include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/variant/color.hpp>
+#include <string>
 
 #include "qjspp.hpp"
 #include "register/register_classes.h"
@@ -9,5 +12,6 @@ void register_classes_ColorRect() {
 	qjs::Context::Module &_module = get_Control_module();
 	_module.class_<ColorRect>("ColorRect")
 			.constructor<>()
-			.property<&ColorRect::get_color, &ColorRect::set_color>("color");
+			.base<Control>()
+			.property<static_cast<Color (ColorRect::*)() const>(&ColorRect::get_color), static_cast<void (ColorRect::*)(const Color &)>(&ColorRect::set_color)>((new std::string("color"))->c_str());
 }

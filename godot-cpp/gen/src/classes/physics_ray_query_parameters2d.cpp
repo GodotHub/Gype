@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 Ref<PhysicsRayQueryParameters2D> PhysicsRayQueryParameters2D::create(const Vector2 &from, const Vector2 &to, uint32_t collision_mask, const TypedArray<RID> &exclude) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsRayQueryParameters2D::get_class_static()._native_ptr(), StringName("create")._native_ptr(), 3196569324);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Ref<PhysicsRayQueryParameters2D>());

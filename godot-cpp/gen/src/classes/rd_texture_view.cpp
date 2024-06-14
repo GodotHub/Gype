@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void RDTextureView::set_format_override(RenderingDevice::DataFormat p_member) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(RDTextureView::get_class_static()._native_ptr(), StringName("set_format_override")._native_ptr(), 565531219);
 	CHECK_METHOD_BIND(_gde_method_bind);

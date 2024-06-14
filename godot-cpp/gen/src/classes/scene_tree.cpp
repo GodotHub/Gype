@@ -49,6 +49,7 @@
 
 namespace godot {
 
+
 Window *SceneTree::get_root() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(SceneTree::get_class_static()._native_ptr(), StringName("get_root")._native_ptr(), 1757182445);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, nullptr);

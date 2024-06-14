@@ -94,13 +94,13 @@ public:
 		CLIP_CHILDREN_MAX = 3,
 	};
 
-	static const int NOTIFICATION_TRANSFORM_CHANGED = 2000;
-	static const int NOTIFICATION_LOCAL_TRANSFORM_CHANGED = 35;
-	static const int NOTIFICATION_DRAW = 30;
-	static const int NOTIFICATION_VISIBILITY_CHANGED = 31;
-	static const int NOTIFICATION_ENTER_CANVAS = 32;
-	static const int NOTIFICATION_EXIT_CANVAS = 33;
-	static const int NOTIFICATION_WORLD_2D_CHANGED = 36;
+	static const int NOTIFICATION_TRANSFORM_CHANGED;
+	static const int NOTIFICATION_LOCAL_TRANSFORM_CHANGED;
+	static const int NOTIFICATION_DRAW;
+	static const int NOTIFICATION_VISIBILITY_CHANGED;
+	static const int NOTIFICATION_ENTER_CANVAS;
+	static const int NOTIFICATION_EXIT_CANVAS;
+	static const int NOTIFICATION_WORLD_2D_CHANGED;
 
 	RID get_canvas_item() const;
 	void set_visible(bool visible);

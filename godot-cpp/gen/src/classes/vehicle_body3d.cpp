@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void VehicleBody3D::set_engine_force(double engine_force) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(VehicleBody3D::get_class_static()._native_ptr(), StringName("set_engine_force")._native_ptr(), 373806689);
 	CHECK_METHOD_BIND(_gde_method_bind);

@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 Vector2 KinematicCollision2D::get_position() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(KinematicCollision2D::get_class_static()._native_ptr(), StringName("get_position")._native_ptr(), 3341600327);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Vector2());

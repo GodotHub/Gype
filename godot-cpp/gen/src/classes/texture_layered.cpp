@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 Image::Format TextureLayered::get_format() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(TextureLayered::get_class_static()._native_ptr(), StringName("get_format")._native_ptr(), 3847873762);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Image::Format(0));

@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void AudioEffectEQ::set_band_gain_db(int32_t band_idx, double volume_db) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AudioEffectEQ::get_class_static()._native_ptr(), StringName("set_band_gain_db")._native_ptr(), 1602489585);
 	CHECK_METHOD_BIND(_gde_method_bind);

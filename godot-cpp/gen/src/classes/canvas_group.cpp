@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void CanvasGroup::set_fit_margin(double fit_margin) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(CanvasGroup::get_class_static()._native_ptr(), StringName("set_fit_margin")._native_ptr(), 373806689);
 	CHECK_METHOD_BIND(_gde_method_bind);

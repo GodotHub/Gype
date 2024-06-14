@@ -44,6 +44,7 @@
 
 namespace godot {
 
+
 void EditorExportPlugin::add_shared_object(const String &path, const PackedStringArray &tags, const String &target) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorExportPlugin::get_class_static()._native_ptr(), StringName("add_shared_object")._native_ptr(), 3098291045);
 	CHECK_METHOD_BIND(_gde_method_bind);

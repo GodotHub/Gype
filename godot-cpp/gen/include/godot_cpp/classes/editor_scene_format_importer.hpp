@@ -54,13 +54,13 @@ class EditorSceneFormatImporter : public RefCounted {
 
 public:
 
-	static const int IMPORT_SCENE = 1;
-	static const int IMPORT_ANIMATION = 2;
-	static const int IMPORT_FAIL_ON_MISSING_DEPENDENCIES = 4;
-	static const int IMPORT_GENERATE_TANGENT_ARRAYS = 8;
-	static const int IMPORT_USE_NAMED_SKIN_BINDS = 16;
-	static const int IMPORT_DISCARD_MESHES_AND_MATERIALS = 32;
-	static const int IMPORT_FORCE_DISABLE_MESH_COMPRESSION = 64;
+	static const int IMPORT_SCENE;
+	static const int IMPORT_ANIMATION;
+	static const int IMPORT_FAIL_ON_MISSING_DEPENDENCIES;
+	static const int IMPORT_GENERATE_TANGENT_ARRAYS;
+	static const int IMPORT_USE_NAMED_SKIN_BINDS;
+	static const int IMPORT_DISCARD_MESHES_AND_MATERIALS;
+	static const int IMPORT_FORCE_DISABLE_MESH_COMPRESSION;
 
 	virtual uint32_t _get_import_flags() const;
 	virtual PackedStringArray _get_extensions() const;

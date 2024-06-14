@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 void GradientTexture2D::set_gradient(const Ref<Gradient> &gradient) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(GradientTexture2D::get_class_static()._native_ptr(), StringName("set_gradient")._native_ptr(), 2756054477);
 	CHECK_METHOD_BIND(_gde_method_bind);

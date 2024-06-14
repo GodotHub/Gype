@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 Vector2 AudioEffectSpectrumAnalyzerInstance::get_magnitude_for_frequency_range(double from_hz, double to_hz, AudioEffectSpectrumAnalyzerInstance::MagnitudeMode mode) const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AudioEffectSpectrumAnalyzerInstance::get_class_static()._native_ptr(), StringName("get_magnitude_for_frequency_range")._native_ptr(), 797993915);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Vector2());

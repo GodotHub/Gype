@@ -1,11 +1,27 @@
 #include "support/typescript_loader.h"
-#include "qjspp/utils.h"
+#include <godot_cpp/classes/file_access.hpp>
+#include <godot_cpp/core/error_macros.hpp>
+#include <godot_cpp/core/memory.hpp>
+
 #include "support/typescript.h"
 #include "support/typescript_language.h"
-#include <godot_cpp/classes/file_access.hpp>
-#include <godot_cpp/classes/resource_uid.hpp>
 
 using namespace godot;
+
+TypescriptLoader *TypescriptLoader::singleton = nullptr;
+
+TypescriptLoader *TypescriptLoader::get_singleton() {
+	ERR_FAIL_NULL_V(singleton, nullptr);
+	return singleton;
+}
+
+TypescriptLoader::TypescriptLoader() {
+	singleton = this;
+}
+
+TypescriptLoader::~TypescriptLoader() {
+	singleton = nullptr;
+}
 
 PackedStringArray TypescriptLoader::_get_recognized_extensions() const {
 	return { TypescriptLanguage::EXTENSION };

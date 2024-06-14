@@ -1,5 +1,11 @@
 #include "support/typescript_instance.h"
 
+#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/godot.hpp>
+
+
+#include "support/typescript.h"
+
 using namespace godot;
 
 TypescriptInstanceInfo *TypescriptInstance::instance_info = new TypescriptInstanceInfo();
@@ -38,7 +44,7 @@ const GDExtensionPropertyInfo *_get_property_list_func(GDExtensionScriptInstance
 	TypescriptInstance *instance = from_ptr(p_instance);
 	*r_count = instance->get_properties().size();
 	GDExtensionPropertyInfo *arr = new GDExtensionPropertyInfo[*r_count];
-	for (int i = 0; i < *r_count; i++) {
+	for (uint32_t i = 0; i < *r_count; i++) {
 		arr[i] = instance->get_properties()[i];
 	}
 	return arr;

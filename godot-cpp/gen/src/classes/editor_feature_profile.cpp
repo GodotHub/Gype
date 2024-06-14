@@ -40,6 +40,7 @@
 
 namespace godot {
 
+
 void EditorFeatureProfile::set_disable_class(const StringName &class_name, bool disable) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(EditorFeatureProfile::get_class_static()._native_ptr(), StringName("set_disable_class")._native_ptr(), 2524380260);
 	CHECK_METHOD_BIND(_gde_method_bind);

@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void AudioEffectDistortion::set_mode(AudioEffectDistortion::Mode mode) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(AudioEffectDistortion::get_class_static()._native_ptr(), StringName("set_mode")._native_ptr(), 1314744793);
 	CHECK_METHOD_BIND(_gde_method_bind);

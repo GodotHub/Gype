@@ -38,6 +38,9 @@
 
 namespace godot {
 
+const int IP::RESOLVER_MAX_QUERIES = 256;
+const int IP::RESOLVER_INVALID_ID = -1;
+
 IP *IP::singleton = nullptr;
 
 IP *IP::get_singleton() {

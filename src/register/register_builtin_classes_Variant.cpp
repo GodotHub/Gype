@@ -1,3 +1,4 @@
+
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/core/object_id.hpp>
 #include <godot_cpp/variant/aabb.hpp>
@@ -34,7 +35,6 @@
 #include <godot_cpp/variant/vector3i.hpp>
 #include <godot_cpp/variant/vector4.hpp>
 #include <godot_cpp/variant/vector4i.hpp>
-
 #include <iosfwd>
 
 #include "register/register_builtin_classes.h"

@@ -41,6 +41,7 @@
 
 namespace godot {
 
+
 Vector2 StyleBox::get_minimum_size() const {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(StyleBox::get_class_static()._native_ptr(), StringName("get_minimum_size")._native_ptr(), 3341600327);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Vector2());

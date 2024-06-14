@@ -42,6 +42,7 @@
 
 namespace godot {
 
+
 WebRTCPeerConnection::ConnectionState WebRTCPeerConnectionExtension::_get_connection_state() const {
 	return WebRTCPeerConnection::ConnectionState(0);
 }

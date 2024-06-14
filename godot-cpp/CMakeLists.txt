@@ -15,7 +15,8 @@ file(GLOB_RECURSE GODOT_HEADERS
 add_library(godot-cpp STATIC ${GODOT_SOURCES})
 
 target_compile_options(godot-cpp PUBLIC 
-	-fno-omit-frame-pointer -O0 -g)
+	-fno-omit-frame-pointer -O0 -g
+    -Wl,--stack,134217728)
 
 # 包含include目录和所有子目录
 target_include_directories(godot-cpp SYSTEM PUBLIC 

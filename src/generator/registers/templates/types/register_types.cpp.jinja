@@ -16,28 +16,40 @@
 
 using namespace godot;
 
-TypescriptLoader *loader;
+{% set global = namespace(classes_register = []) %}
+{% set singletons_type = singletons | map(attribute='type') | list %}
+{% macro register_classes_tree(node) %}
+	{%- if 'VisualShader' not in node.name and node.name not in singletons_type and (node.name | replace('Extension', '')) not in singletons_type -%}
+		{%- set global.classes_register = global.classes_register + ['register_classes_' + node.name + '();\n'] -%}
+	{%- endif -%}
+	{% if node.children and node.children | length > 0 %}
+		{% for value in node.children %}
+	{{ register_classes_tree(value) }}
+		{% endfor %}
+	{% endif %}
+{% endmacro %}
 
 void initialize_tgds_types(ModuleInitializationLevel p_level) {
 	if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE) {
 		return;
 	}
+	register_utility_functions();
+	register_builtin_classes_Variant();
 	{% for clazz in builtin_classes %}
 	register_builtin_classes_{{clazz.name}}();
 	{% endfor %}
+	{{-register_classes_tree(object)-}}
+	{{global.classes_register | join()}}
 	{% for clazz in classes %}
-		{% if 'VisualShader' not in clazz.name and clazz.is_instantiable%}
-	register_classes_{{clazz.name}}();
+		{% if clazz.name in singletons_type %}
+	register_singletons_{{clazz.name}}();
 		{% endif %}
 	{% endfor %}
-	register_builtin_classes_Variant();
-	register_utility_functions();
 	GDREGISTER_CLASS(TypescriptLanguage);
 	GDREGISTER_CLASS(TypescriptLoader);
 	GDREGISTER_CLASS(Typescript);
-	Engine::get_singleton()->register_script_language(TypescriptLanguage::get_singleton());
-	loader = memnew(TypescriptLoader());
-	ResourceLoader::get_singleton()->add_resource_format_loader(loader);
+	Engine::get_singleton()->register_script_language(memnew(TypescriptLanguage()));
+	ResourceLoader::get_singleton()->add_resource_format_loader(memnew(TypescriptLoader()));
 }
 
 void uninitialize_tgds_types(ModuleInitializationLevel p_level) {

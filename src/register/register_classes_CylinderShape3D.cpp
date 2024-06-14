@@ -1,4 +1,6 @@
 #include <godot_cpp/classes/cylinder_shape3d.hpp>
+#include <godot_cpp/classes/shape3d.hpp>
+#include <string>
 
 #include "qjspp.hpp"
 #include "register/register_classes.h"
@@ -9,6 +11,7 @@ void register_classes_CylinderShape3D() {
 	qjs::Context::Module &_module = get_General_module();
 	_module.class_<CylinderShape3D>("CylinderShape3D")
 			.constructor<>()
-			.property<&CylinderShape3D::get_height, &CylinderShape3D::set_height>("height")
-			.property<&CylinderShape3D::get_radius, &CylinderShape3D::set_radius>("radius");
+			.base<Shape3D>()
+			.property<static_cast<double (CylinderShape3D::*)() const>(&CylinderShape3D::get_height), static_cast<void (CylinderShape3D::*)(double)>(&CylinderShape3D::set_height)>((new std::string("height"))->c_str())
+			.property<static_cast<double (CylinderShape3D::*)() const>(&CylinderShape3D::get_radius), static_cast<void (CylinderShape3D::*)(double)>(&CylinderShape3D::set_radius)>((new std::string("radius"))->c_str());
 }

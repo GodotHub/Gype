@@ -60,8 +60,8 @@ public:
 		TRANSFER_MODE_RELIABLE = 2,
 	};
 
-	static const int TARGET_PEER_BROADCAST = 0;
-	static const int TARGET_PEER_SERVER = 1;
+	static const int TARGET_PEER_BROADCAST;
+	static const int TARGET_PEER_SERVER;
 
 	void set_transfer_channel(int32_t channel);
 	int32_t get_transfer_channel() const;

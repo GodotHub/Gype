@@ -76,7 +76,7 @@ public:
 		AUTO_ADVANCE_RETURN_TO_HOLD = 2,
 	};
 
-	static const int CLIP_ANY = -1;
+	static const int CLIP_ANY;
 
 	void set_clip_count(int32_t clip_count);
 	int32_t get_clip_count() const;

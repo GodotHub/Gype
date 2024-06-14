@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 Ref<FileAccess> FileAccess::open(const String &path, FileAccess::ModeFlags flags) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(FileAccess::get_class_static()._native_ptr(), StringName("open")._native_ptr(), 1247358404);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Ref<FileAccess>());

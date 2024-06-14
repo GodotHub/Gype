@@ -38,6 +38,7 @@
 
 namespace godot {
 
+
 void VisualShaderNodeVec3Constant::set_constant(const Vector3 &constant) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(VisualShaderNodeVec3Constant::get_class_static()._native_ptr(), StringName("set_constant")._native_ptr(), 3460891852);
 	CHECK_METHOD_BIND(_gde_method_bind);

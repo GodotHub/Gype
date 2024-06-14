@@ -42,6 +42,7 @@
 
 namespace godot {
 
+
 Ref<AudioStreamOggVorbis> ResourceImporterOggVorbis::load_from_buffer(const PackedByteArray &buffer) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(ResourceImporterOggVorbis::get_class_static()._native_ptr(), StringName("load_from_buffer")._native_ptr(), 354904730);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Ref<AudioStreamOggVorbis>());

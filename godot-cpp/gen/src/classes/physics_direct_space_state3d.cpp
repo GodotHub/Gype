@@ -42,6 +42,7 @@
 
 namespace godot {
 
+
 TypedArray<Dictionary> PhysicsDirectSpaceState3D::intersect_point(const Ref<PhysicsPointQueryParameters3D> &parameters, int32_t max_results) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(PhysicsDirectSpaceState3D::get_class_static()._native_ptr(), StringName("intersect_point")._native_ptr(), 975173756);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, TypedArray<Dictionary>());
