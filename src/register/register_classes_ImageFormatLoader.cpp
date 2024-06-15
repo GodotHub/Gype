@@ -2,20 +2,20 @@
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <utility>
 
-#include "qjspp.hpp"
-#include "qjspp/utils.h"
 #include "register/register_classes.h"
+#include "qjspp/utils.h"
+#include "qjspp.hpp"
 
 using namespace godot;
 
 void register_classes_ImageFormatLoader() {
-	qjs::Context::Module &_module = get_General_module();
-	_module.class_<ImageFormatLoader>("ImageFormatLoader")
-			.constructor<>()
-			.base<RefCounted>();
-	qjs::Value _LoaderFlags = context->newObject();
-	_LoaderFlags[(new std::string("FLAG_NONE"))->c_str()] = ImageFormatLoader::LoaderFlags::FLAG_NONE;
-	_LoaderFlags[(new std::string("FLAG_FORCE_LINEAR"))->c_str()] = ImageFormatLoader::LoaderFlags::FLAG_FORCE_LINEAR;
-	_LoaderFlags[(new std::string("FLAG_CONVERT_COLORS"))->c_str()] = ImageFormatLoader::LoaderFlags::FLAG_CONVERT_COLORS;
-	_module.add("LoaderFlags", std::move(_LoaderFlags));
+    qjs::Context::Module &_module = get_General_module();
+    _module.class_<ImageFormatLoader>("ImageFormatLoader")
+            .constructor<>()
+            .base<RefCounted>()
+;    qjs::Value _LoaderFlags = context->newObject();
+    _LoaderFlags["FLAG_NONE"] = ImageFormatLoader::LoaderFlags::FLAG_NONE;
+    _LoaderFlags["FLAG_FORCE_LINEAR"] = ImageFormatLoader::LoaderFlags::FLAG_FORCE_LINEAR;
+    _LoaderFlags["FLAG_CONVERT_COLORS"] = ImageFormatLoader::LoaderFlags::FLAG_CONVERT_COLORS;
+    _module.add("LoaderFlags", std::move(_LoaderFlags));
 }

@@ -1,9 +1,9 @@
 
 #include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/packed_vector4_array.hpp>
-
 #include <godot_cpp/variant/packed_byte_array.hpp>
 #include <godot_cpp/variant/vector4.hpp>
+#include <stdint.h>
 
 #include "qjspp.hpp"
 #include "register/register_builtin_classes.h"

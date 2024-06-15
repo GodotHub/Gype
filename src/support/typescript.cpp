@@ -1,15 +1,14 @@
 #include "support/typescript.h"
 
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 #include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/packed_byte_array.hpp>
-#include <godot_cpp/classes/object.hpp>
 
 #include "qjspp.hpp"
 #include "qjspp/utils.h"
 #include "support/typescript_instance.h"
 #include "support/typescript_language.h"
-
 
 using namespace godot;
 
@@ -114,7 +113,7 @@ StringName Typescript::_get_global_name() const {
 }
 
 bool Typescript::_inherits_script(const Ref<Script> &script) const {
-	return false;
+	return true;
 }
 StringName Typescript::_get_instance_base_type() const {
 	return StringName("Object");
