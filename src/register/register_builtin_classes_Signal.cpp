@@ -2,11 +2,11 @@
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/signal.hpp>
 #include <godot_cpp/variant/string_name.hpp>
-
 #include <godot_cpp/templates/vararg.hpp>
 #include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/callable.hpp>
 #include <godot_cpp/variant/variant.hpp>
+#include <stdint.h>
 
 #include "qjspp.hpp"
 #include "register/register_builtin_classes.h"

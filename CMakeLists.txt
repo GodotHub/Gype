@@ -3,7 +3,6 @@ cmake_minimum_required(VERSION 3.10)
 # 设置C和C++编译器
 set(CMAKE_C_COMPILER gcc)
 set(CMAKE_CXX_COMPILER g++)
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -O0 -g")
 
 # 项目名称和语言
 project(gype C CXX)

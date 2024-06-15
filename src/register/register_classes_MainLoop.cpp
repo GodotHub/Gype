@@ -1,29 +1,28 @@
 #include <godot_cpp/classes/main_loop.hpp>
 #include <godot_cpp/classes/object.hpp>
-#include <string>
 
-#include "qjspp.hpp"
 #include "register/register_classes.h"
+#include "qjspp.hpp"
 
 using namespace godot;
 
 void register_classes_MainLoop() {
-	qjs::Context::Module &_module = get_General_module();
-	_module.class_<MainLoop>("MainLoop")
-			.constructor<>()
-			.base<Object>()
-			.static_fun<&MainLoop::NOTIFICATION_OS_MEMORY_WARNING>((new std::string("NOTIFICATION_OS_MEMORY_WARNING"))->c_str())
-			.static_fun<&MainLoop::NOTIFICATION_TRANSLATION_CHANGED>((new std::string("NOTIFICATION_TRANSLATION_CHANGED"))->c_str())
-			.static_fun<&MainLoop::NOTIFICATION_WM_ABOUT>((new std::string("NOTIFICATION_WM_ABOUT"))->c_str())
-			.static_fun<&MainLoop::NOTIFICATION_CRASH>((new std::string("NOTIFICATION_CRASH"))->c_str())
-			.static_fun<&MainLoop::NOTIFICATION_OS_IME_UPDATE>((new std::string("NOTIFICATION_OS_IME_UPDATE"))->c_str())
-			.static_fun<&MainLoop::NOTIFICATION_APPLICATION_RESUMED>((new std::string("NOTIFICATION_APPLICATION_RESUMED"))->c_str())
-			.static_fun<&MainLoop::NOTIFICATION_APPLICATION_PAUSED>((new std::string("NOTIFICATION_APPLICATION_PAUSED"))->c_str())
-			.static_fun<&MainLoop::NOTIFICATION_APPLICATION_FOCUS_IN>((new std::string("NOTIFICATION_APPLICATION_FOCUS_IN"))->c_str())
-			.static_fun<&MainLoop::NOTIFICATION_APPLICATION_FOCUS_OUT>((new std::string("NOTIFICATION_APPLICATION_FOCUS_OUT"))->c_str())
-			.static_fun<&MainLoop::NOTIFICATION_TEXT_SERVER_CHANGED>((new std::string("NOTIFICATION_TEXT_SERVER_CHANGED"))->c_str())
-			.fun<static_cast<void (MainLoop::*)()>(&MainLoop::_initialize)>((new std::string("_initialize"))->c_str())
-			.fun<static_cast<bool (MainLoop::*)(double)>(&MainLoop::_physics_process)>((new std::string("_physics_process"))->c_str())
-			.fun<static_cast<bool (MainLoop::*)(double)>(&MainLoop::_process)>((new std::string("_process"))->c_str())
-			.fun<static_cast<void (MainLoop::*)()>(&MainLoop::_finalize)>((new std::string("_finalize"))->c_str());
-}
+    qjs::Context::Module &_module = get_General_module();
+    _module.class_<MainLoop>("MainLoop")
+            .constructor<>()
+            .base<Object>()
+            .static_fun<&MainLoop::NOTIFICATION_OS_MEMORY_WARNING>("NOTIFICATION_OS_MEMORY_WARNING")
+            .static_fun<&MainLoop::NOTIFICATION_TRANSLATION_CHANGED>("NOTIFICATION_TRANSLATION_CHANGED")
+            .static_fun<&MainLoop::NOTIFICATION_WM_ABOUT>("NOTIFICATION_WM_ABOUT")
+            .static_fun<&MainLoop::NOTIFICATION_CRASH>("NOTIFICATION_CRASH")
+            .static_fun<&MainLoop::NOTIFICATION_OS_IME_UPDATE>("NOTIFICATION_OS_IME_UPDATE")
+            .static_fun<&MainLoop::NOTIFICATION_APPLICATION_RESUMED>("NOTIFICATION_APPLICATION_RESUMED")
+            .static_fun<&MainLoop::NOTIFICATION_APPLICATION_PAUSED>("NOTIFICATION_APPLICATION_PAUSED")
+            .static_fun<&MainLoop::NOTIFICATION_APPLICATION_FOCUS_IN>("NOTIFICATION_APPLICATION_FOCUS_IN")
+            .static_fun<&MainLoop::NOTIFICATION_APPLICATION_FOCUS_OUT>("NOTIFICATION_APPLICATION_FOCUS_OUT")
+            .static_fun<&MainLoop::NOTIFICATION_TEXT_SERVER_CHANGED>("NOTIFICATION_TEXT_SERVER_CHANGED")
+            .fun<static_cast<void(MainLoop::*)()>(&MainLoop::_initialize)>("_initialize")
+            .fun<static_cast<bool(MainLoop::*)(double)>(&MainLoop::_physics_process)>("_physics_process")
+            .fun<static_cast<bool(MainLoop::*)(double)>(&MainLoop::_process)>("_process")
+            .fun<static_cast<void(MainLoop::*)()>(&MainLoop::_finalize)>("_finalize")
+;}

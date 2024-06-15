@@ -1,8 +1,8 @@
 
 #include <godot_cpp/variant/node_path.hpp>
 #include <godot_cpp/variant/string.hpp>
-
 #include <godot_cpp/variant/string_name.hpp>
+#include <stdint.h>
 
 #include "qjspp.hpp"
 #include "register/register_builtin_classes.h"

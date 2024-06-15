@@ -12,8 +12,8 @@
 #include <godot_cpp/variant/packed_vector4_array.hpp>
 #include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/variant/variant.hpp>
-
 #include <godot_cpp/variant/callable.hpp>
+#include <stdint.h>
 
 #include "qjspp.hpp"
 #include "register/register_builtin_classes.h"

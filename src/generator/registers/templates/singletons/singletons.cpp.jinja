@@ -67,7 +67,7 @@ void register_singletons_{{clazz.name}}() {
 	qjs::Value js_singleton = context->newObject();
     {{clazz.name}} *singleton = {{clazz.name}}::get_singleton();
     {% for method in clazz.methods %}
-    js_singleton.add(std::string("{{method.name}}").c_str(), [singleton]{{-'('-}}
+    js_singleton.add("{{method.name}}", [singleton]{{-'('-}}
             {%- for arg in method.arguments -%}
             {% if arg.meta %}
             {{-arg.meta|convert_type-}}
@@ -90,7 +90,7 @@ void register_singletons_{{clazz.name}}() {
         {singleton->{{-method.name-}}({{-method.arguments | map(attribute='name') | join(',')-}});});
         {% endif %}
     {% endfor %}
-    context->global()[std::string("{{clazz.name}}").c_str()] = js_singleton;
+    context->global()["{{clazz.name}}"] = js_singleton;
 {% endif %}
 
 {% if clazz.enums %}
@@ -98,9 +98,9 @@ void register_singletons_{{clazz.name}}() {
     {% if clazz.name in (singletons | map(attribute='type') | list) %}
     qjs::Value _{{_enum.name}} = context->newObject();
     {% for value in _enum['values'] %}
-    _{{_enum.name}}[std::string("{{value.name}}").c_str()] = {{clazz.name}}::{{_enum.name}}::{{value.name}};
+    _{{_enum.name}}["{{value.name}}"] = {{clazz.name}}::{{_enum.name}}::{{value.name}};
     {% endfor %}
-    js_singleton[std::string("{{_enum.name}}").c_str()] = _{{_enum.name}};
+    js_singleton["{{_enum.name}}"] = _{{_enum.name}};
     {% endif %}
 {% endfor %}
 {% endif %}

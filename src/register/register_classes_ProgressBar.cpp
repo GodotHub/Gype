@@ -1,28 +1,27 @@
-
 #include <godot_cpp/classes/progress_bar.hpp>
 #include <godot_cpp/classes/range.hpp>
-#include <string>
+#include <stdint.h>
 #include <utility>
 
-#include "qjspp.hpp"
-#include "qjspp/utils.h"
 #include "register/register_classes.h"
+#include "qjspp/utils.h"
+#include "qjspp.hpp"
 
 using namespace godot;
 
 void register_classes_ProgressBar() {
-	qjs::Context::Module &_module = get_Control_module();
-	_module.class_<ProgressBar>("ProgressBar")
-			.constructor<>()
-			.base<Range>()
-			.property<static_cast<int32_t (ProgressBar::*)()>(&ProgressBar::get_fill_mode), static_cast<void (ProgressBar::*)(int32_t)>(&ProgressBar::set_fill_mode)>((new std::string("fill_mode"))->c_str())
-			.property<static_cast<bool (ProgressBar::*)() const>(&ProgressBar::is_percentage_shown), static_cast<void (ProgressBar::*)(bool)>(&ProgressBar::set_show_percentage)>((new std::string("show_percentage"))->c_str())
-			.property<static_cast<bool (ProgressBar::*)() const>(&ProgressBar::is_indeterminate), static_cast<void (ProgressBar::*)(bool)>(&ProgressBar::set_indeterminate)>((new std::string("indeterminate"))->c_str())
-			.property<static_cast<bool (ProgressBar::*)() const>(&ProgressBar::is_editor_preview_indeterminate_enabled), static_cast<void (ProgressBar::*)(bool)>(&ProgressBar::set_editor_preview_indeterminate)>((new std::string("editor_preview_indeterminate"))->c_str());
-	qjs::Value _FillMode = context->newObject();
-	_FillMode[(new std::string("FILL_BEGIN_TO_END"))->c_str()] = ProgressBar::FillMode::FILL_BEGIN_TO_END;
-	_FillMode[(new std::string("FILL_END_TO_BEGIN"))->c_str()] = ProgressBar::FillMode::FILL_END_TO_BEGIN;
-	_FillMode[(new std::string("FILL_TOP_TO_BOTTOM"))->c_str()] = ProgressBar::FillMode::FILL_TOP_TO_BOTTOM;
-	_FillMode[(new std::string("FILL_BOTTOM_TO_TOP"))->c_str()] = ProgressBar::FillMode::FILL_BOTTOM_TO_TOP;
-	_module.add("FillMode", std::move(_FillMode));
+    qjs::Context::Module &_module = get_Control_module();
+    _module.class_<ProgressBar>("ProgressBar")
+            .constructor<>()
+            .base<Range>()
+            .property<static_cast<int32_t(ProgressBar::*)()>(&ProgressBar::get_fill_mode),static_cast<void(ProgressBar::*)(int32_t)>(&ProgressBar::set_fill_mode)>("fill_mode")
+            .property<static_cast<bool(ProgressBar::*)()const>(&ProgressBar::is_percentage_shown),static_cast<void(ProgressBar::*)(bool)>(&ProgressBar::set_show_percentage)>("show_percentage")
+            .property<static_cast<bool(ProgressBar::*)()const>(&ProgressBar::is_indeterminate),static_cast<void(ProgressBar::*)(bool)>(&ProgressBar::set_indeterminate)>("indeterminate")
+            .property<static_cast<bool(ProgressBar::*)()const>(&ProgressBar::is_editor_preview_indeterminate_enabled),static_cast<void(ProgressBar::*)(bool)>(&ProgressBar::set_editor_preview_indeterminate)>("editor_preview_indeterminate")
+;    qjs::Value _FillMode = context->newObject();
+    _FillMode["FILL_BEGIN_TO_END"] = ProgressBar::FillMode::FILL_BEGIN_TO_END;
+    _FillMode["FILL_END_TO_BEGIN"] = ProgressBar::FillMode::FILL_END_TO_BEGIN;
+    _FillMode["FILL_TOP_TO_BOTTOM"] = ProgressBar::FillMode::FILL_TOP_TO_BOTTOM;
+    _FillMode["FILL_BOTTOM_TO_TOP"] = ProgressBar::FillMode::FILL_BOTTOM_TO_TOP;
+    _module.add("FillMode", std::move(_FillMode));
 }

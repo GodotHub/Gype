@@ -1,9 +1,9 @@
 
 #include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/packed_color_array.hpp>
-
 #include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/variant/packed_byte_array.hpp>
+#include <stdint.h>
 
 #include "qjspp.hpp"
 #include "register/register_builtin_classes.h"

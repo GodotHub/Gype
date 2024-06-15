@@ -1,5 +1,6 @@
 
 #include <godot_cpp/variant/rid.hpp>
+#include <stdint.h>
 
 #include "qjspp.hpp"
 #include "register/register_builtin_classes.h"

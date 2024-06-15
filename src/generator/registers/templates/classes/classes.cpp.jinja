@@ -74,7 +74,7 @@ void register_classes_{{clazz.name}}() {
             {% endif %}
             {% if clazz.constants %}
                 {% for constant in clazz.constants %}
-            .static_fun<&{{clazz.name}}::{{constant.name}}>(std::string("{{constant.name}}").c_str())
+            .static_fun<&{{clazz.name}}::{{constant.name}}>("{{constant.name}}")
                 {% endfor %}
             {% endif %}
 {% if 'properties' in clazz %}
@@ -82,11 +82,11 @@ void register_classes_{{clazz.name}}() {
     {% set setter = (clazz.methods | selectattr('name', 'equalto', prop.setter) | list | first) %}
     {% set getter = (clazz.methods | selectattr('name', 'equalto', prop.getter) | list | first) %}
     {% if (prop.getter and getter and not prop.getter.startswith('_')) and (prop.setter and setter and not prop.setter.startswith('_')) %}
-            .property<{{- method_parser(clazz, getter) -}}, {{- method_parser(clazz, setter) -}}>(std::string("{{prop.name}}").c_str())
+            .property<{{- method_parser(clazz, getter) -}}, {{- method_parser(clazz, setter) -}}>("{{prop.name}}")
     {% elif prop.getter and getter and not prop.getter.startswith('_') %}
-            .property<{{- method_parser(clazz, getter) -}}>(std::string("{{prop.name}}").c_str())
+            .property<{{- method_parser(clazz, getter) -}}>("{{prop.name}}")
     {% elif prop.setter and setter and not prop.setter.startswith('_')%}
-            .property<{{- method_parser(clazz, setter) -}}>(std::string("{{setter}}").c_str())
+            .property<{{- method_parser(clazz, setter) -}}>("{{setter}}")
     {% endif %}
 {% endfor %}
 {% endif %}
@@ -95,9 +95,9 @@ void register_classes_{{clazz.name}}() {
     {% set setter_names = clazz.properties | map(attribute='setter') %}
     {% if method.name not in getter_names and method.name not in setter_names %}
         {% if not method.is_static %}
-            .fun<{{- method_parser(clazz, method) -}}>(std::string("{{method.name}}").c_str())
+            .fun<{{- method_parser(clazz, method) -}}>("{{method.name}}")
         {% else %}
-            .static_fun<{{-static_method_parser(clazz, method)-}}>(std::string("{{method.name}}").c_str())
+            .static_fun<{{-static_method_parser(clazz, method)-}}>("{{method.name}}")
         {% endif %}
 	{% endif %}
 {% endfor %}

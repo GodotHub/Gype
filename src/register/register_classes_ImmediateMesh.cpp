@@ -1,31 +1,30 @@
 #include <godot_cpp/classes/immediate_mesh.hpp>
-#include <godot_cpp/classes/material.hpp>
-#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/variant/plane.hpp>
 #include <godot_cpp/variant/vector2.hpp>
 #include <godot_cpp/variant/vector3.hpp>
-#include <string>
+#include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/mesh.hpp>
 
-#include "qjspp.hpp"
 #include "register/register_classes.h"
+#include "qjspp.hpp"
 
 using namespace godot;
 
 void register_classes_ImmediateMesh() {
-	qjs::Context::Module &_module = get_General_module();
-	_module.class_<ImmediateMesh>("ImmediateMesh")
-			.constructor<>()
-			.base<Mesh>()
-			.fun<static_cast<void (ImmediateMesh::*)(Mesh::PrimitiveType, const Ref<Material> &)>(&ImmediateMesh::surface_begin)>((new std::string("surface_begin"))->c_str())
-			.fun<static_cast<void (ImmediateMesh::*)(const Color &)>(&ImmediateMesh::surface_set_color)>((new std::string("surface_set_color"))->c_str())
-			.fun<static_cast<void (ImmediateMesh::*)(const Vector3 &)>(&ImmediateMesh::surface_set_normal)>((new std::string("surface_set_normal"))->c_str())
-			.fun<static_cast<void (ImmediateMesh::*)(const Plane &)>(&ImmediateMesh::surface_set_tangent)>((new std::string("surface_set_tangent"))->c_str())
-			.fun<static_cast<void (ImmediateMesh::*)(const Vector2 &)>(&ImmediateMesh::surface_set_uv)>((new std::string("surface_set_uv"))->c_str())
-			.fun<static_cast<void (ImmediateMesh::*)(const Vector2 &)>(&ImmediateMesh::surface_set_uv2)>((new std::string("surface_set_uv2"))->c_str())
-			.fun<static_cast<void (ImmediateMesh::*)(const Vector3 &)>(&ImmediateMesh::surface_add_vertex)>((new std::string("surface_add_vertex"))->c_str())
-			.fun<static_cast<void (ImmediateMesh::*)(const Vector2 &)>(&ImmediateMesh::surface_add_vertex_2d)>((new std::string("surface_add_vertex_2d"))->c_str())
-			.fun<static_cast<void (ImmediateMesh::*)()>(&ImmediateMesh::surface_end)>((new std::string("surface_end"))->c_str())
-			.fun<static_cast<void (ImmediateMesh::*)()>(&ImmediateMesh::clear_surfaces)>((new std::string("clear_surfaces"))->c_str());
-}
+    qjs::Context::Module &_module = get_General_module();
+    _module.class_<ImmediateMesh>("ImmediateMesh")
+            .constructor<>()
+            .base<Mesh>()
+            .fun<static_cast<void(ImmediateMesh::*)(Mesh::PrimitiveType,const Ref<Material> &)>(&ImmediateMesh::surface_begin)>("surface_begin")
+            .fun<static_cast<void(ImmediateMesh::*)(const Color &)>(&ImmediateMesh::surface_set_color)>("surface_set_color")
+            .fun<static_cast<void(ImmediateMesh::*)(const Vector3 &)>(&ImmediateMesh::surface_set_normal)>("surface_set_normal")
+            .fun<static_cast<void(ImmediateMesh::*)(const Plane &)>(&ImmediateMesh::surface_set_tangent)>("surface_set_tangent")
+            .fun<static_cast<void(ImmediateMesh::*)(const Vector2 &)>(&ImmediateMesh::surface_set_uv)>("surface_set_uv")
+            .fun<static_cast<void(ImmediateMesh::*)(const Vector2 &)>(&ImmediateMesh::surface_set_uv2)>("surface_set_uv2")
+            .fun<static_cast<void(ImmediateMesh::*)(const Vector3 &)>(&ImmediateMesh::surface_add_vertex)>("surface_add_vertex")
+            .fun<static_cast<void(ImmediateMesh::*)(const Vector2 &)>(&ImmediateMesh::surface_add_vertex_2d)>("surface_add_vertex_2d")
+            .fun<static_cast<void(ImmediateMesh::*)()>(&ImmediateMesh::surface_end)>("surface_end")
+            .fun<static_cast<void(ImmediateMesh::*)()>(&ImmediateMesh::clear_surfaces)>("clear_surfaces")
+;}

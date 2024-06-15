@@ -2,11 +2,11 @@
 #include <godot_cpp/variant/node_path.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/string_name.hpp>
-
 #include <godot_cpp/variant/packed_byte_array.hpp>
 #include <godot_cpp/variant/packed_float64_array.hpp>
 #include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/variant.hpp>
+#include <stdint.h>
 
 #include "qjspp.hpp"
 #include "register/register_builtin_classes.h"

@@ -1,5 +1,6 @@
 #include <godot_cpp/variant/color.hpp>
 #include <godot_cpp/variant/string.hpp>
+#include <stdint.h>
 
 #include "qjspp.hpp"
 #include "register/register_builtin_classes.h"

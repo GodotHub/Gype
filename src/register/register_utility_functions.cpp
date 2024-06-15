@@ -1,6 +1,7 @@
 #include "register/register_utility_functions.h"
 
 #include <godot_cpp/variant/utility_functions.hpp>
+#include <string>
 
 #include "qjspp.hpp"
 #include "qjspp/utils.h"
