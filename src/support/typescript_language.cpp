@@ -1,7 +1,7 @@
 #include "support/typescript_language.h"
 
-#include <godot_cpp/core/memory.hpp>
 #include <godot_cpp/core/error_macros.hpp>
+#include <godot_cpp/core/memory.hpp>
 
 #include "support/typescript.h"
 
@@ -60,17 +60,14 @@ bool TypescriptLanguage::_is_control_flow_keyword(const String &keyword) const {
 }
 
 PackedStringArray TypescriptLanguage::_get_comment_delimiters() const {
-	return PackedStringArray();
+	return { "//" };
 }
 
 PackedStringArray TypescriptLanguage::_get_string_delimiters() const {
-	return PackedStringArray();
+	return { "\"", "\'" };
 }
 
 TypedArray<Dictionary> TypescriptLanguage::_get_built_in_templates(const StringName &object) const {
-	if (templates.has(object)) {
-		return templates[object];
-	}
 	return TypedArray<Dictionary>();
 }
 
@@ -155,8 +152,7 @@ void TypescriptLanguage::_reload_tool_script(const Ref<Script> &script, bool sof
 
 PackedStringArray TypescriptLanguage::_get_recognized_extensions() const {
 	PackedStringArray extensions;
-	extensions.append(_get_extension());
-	return extensions;
+	return { TypescriptLanguage::EXTENSION };
 }
 
 TypedArray<Dictionary> TypescriptLanguage::_get_public_functions() const {
@@ -187,8 +183,22 @@ Dictionary TypescriptLanguage::_get_global_class_name(const String &path) const 
 
 Ref<Script> TypescriptLanguage::_make_template(const String &_template, const String &class_name,
 		const String &base_class_name) const {
-	Typescript *created = static_cast<Typescript *>(_create_script());
-	Ref<Script> ret = Ref<Script>(created);
-	ret->reference();
-	return ret;
+	Ref<Typescript> script;
+	script.instantiate();
+	Array values;
+	values.append(class_name);
+	values.append(base_class_name);
+	String code = String(
+			R"xxx(class {0} extends {1} {
+	function _ready(){
+
+	}
+
+	function _process() {
+
+	}
+})xxx")
+						  .format(values);
+	script->set_source_code(code);
+	return script;
 }

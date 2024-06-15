@@ -3,7 +3,6 @@
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/godot.hpp>
 
-
 #include "support/typescript.h"
 
 using namespace godot;
@@ -16,7 +15,9 @@ TypescriptInstance::TypescriptInstance(const Ref<Typescript> &parent, Object *ho
 }
 
 GDExtensionScriptInstancePtr TypescriptInstance::create_instance(const Ref<Typescript> &parent, Object *host_object) {
-	return internal::gdextension_interface_script_instance_create3(TypescriptInstance::instance_info, new TypescriptInstance(parent, host_object));
+	GDExtensionScriptInstancePtr instance = internal::gdextension_interface_script_instance_create3(TypescriptInstance::instance_info, new TypescriptInstance(parent, host_object));
+	parent->_instances[host_object->get_instance_id()] = static_cast<TypescriptInstance *>(instance);
+	return instance;
 }
 
 TypescriptInstanceInfo::TypescriptInstanceInfo() {
