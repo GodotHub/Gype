@@ -1,6 +1,7 @@
 #ifndef TS_LANGUAGE_SUPPORT
 #define TS_LANGUAGE_SUPPORT
 
+#include <stdint.h>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/script.hpp>
@@ -14,16 +15,14 @@
 #include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/variant/variant.hpp>
-#include <stdint.h>
-#include <stdint.h>
+
 
 namespace godot {
 class ClassDB;
 class Object;
-}  // namespace godot
+} // namespace godot
 
 using namespace godot;
-
 
 class TypescriptLanguage;
 
@@ -32,7 +31,7 @@ class TypescriptLanguage : public ScriptLanguageExtension {
 
 	static TypescriptLanguage *singleton;
 
-	HashMap<StringName, TypedArray<Dictionary>> templates;
+	TypedArray<Dictionary> templates;
 
 public:
 	static const char *EXTENSION;

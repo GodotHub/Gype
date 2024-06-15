@@ -3,6 +3,7 @@
 #include <gdextension_interface.h>
 #include <godot_cpp/classes/engine.hpp>
 #include <godot_cpp/classes/resource_loader.hpp>
+#include <godot_cpp/classes/resource_saver.hpp>
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/defs.hpp>
 #include <godot_cpp/core/memory.hpp>
@@ -14,6 +15,7 @@
 #include "support/typescript.h"
 #include "support/typescript_language.h"
 #include "support/typescript_loader.h"
+#include "support/typescript_saver.h"
 
 using namespace godot;
 
@@ -865,9 +867,11 @@ void initialize_tgds_types(ModuleInitializationLevel p_level) {
 	register_singletons_XRServer();
 	GDREGISTER_CLASS(TypescriptLanguage);
 	GDREGISTER_CLASS(TypescriptLoader);
+	GDREGISTER_CLASS(TypescriptSaver);
 	GDREGISTER_CLASS(Typescript);
 	Engine::get_singleton()->register_script_language(memnew(TypescriptLanguage()));
 	ResourceLoader::get_singleton()->add_resource_format_loader(memnew(TypescriptLoader()));
+	ResourceSaver::get_singleton()->add_resource_format_saver(memnew(TypescriptSaver));
 }
 
 void uninitialize_tgds_types(ModuleInitializationLevel p_level) {

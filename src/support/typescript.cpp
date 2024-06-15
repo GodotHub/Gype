@@ -125,8 +125,8 @@ String Typescript::_get_source_code() const {
 
 void Typescript::_set_source_code(const String &code) {
 	_source_code = code;
-	_parse_state = _parse_source_code(code);
-	ERR_FAIL_MSG(_parse_state->cur_func->func_name);
+	// _parse_state = _parse_source_code(code);
+	// ERR_FAIL_MSG(_parse_state->cur_func->func_name);
 }
 
 Error Typescript::_reload(bool keep_state) {
@@ -139,7 +139,6 @@ void Typescript::_update_exports() {
 
 void *Typescript::_instance_create(Object *for_object) const {
 	TypescriptInstance *instance = static_cast<TypescriptInstance *>(TypescriptInstance::create_instance(Ref<Typescript>(this), for_object));
-	_instances.insert(for_object->get_instance_id(), instance, false);
 	return instance;
 }
 

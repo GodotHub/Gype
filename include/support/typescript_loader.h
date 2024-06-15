@@ -1,6 +1,7 @@
 #ifndef TS_LOADER
 #define TS_LOADER
 
+#include <stdint.h>
 #include <godot_cpp/classes/global_constants.hpp>
 #include <godot_cpp/classes/random_number_generator.hpp>
 #include <godot_cpp/classes/resource_format_loader.hpp>
@@ -12,12 +13,11 @@
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/string_name.hpp>
 #include <godot_cpp/variant/variant.hpp>
-#include <stdint.h>
-#include <stdint.h>
+
 
 namespace godot {
 class ClassDB;
-}  // namespace godot
+} // namespace godot
 
 using namespace godot;
 
@@ -35,7 +35,7 @@ public:
 	bool _handles_type(const StringName &type) const override;
 	String _get_resource_type(const String &path) const override;
 	String _get_resource_script_class(const String &path) const override;
-	// int64_t _get_resource_uid(const String &path) const;
+	int64_t _get_resource_uid(const String &path) const;
 	// void _register_resource_uid(const String &path);
 	PackedStringArray _get_dependencies(const String &path, bool add_types) const override;
 	Error _rename_dependencies(const String &path, const Dictionary &renames) const override;

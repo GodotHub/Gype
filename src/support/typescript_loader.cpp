@@ -1,10 +1,11 @@
 #include "support/typescript_loader.h"
-#include <godot_cpp/classes/file_access.hpp>
-#include <godot_cpp/core/error_macros.hpp>
-#include <godot_cpp/core/memory.hpp>
-
 #include "support/typescript.h"
 #include "support/typescript_language.h"
+#include "support/typescript_saver.h"
+#include <godot_cpp/classes/file_access.hpp>
+#include <godot_cpp/classes/resource_uid.hpp>
+#include <godot_cpp/core/error_macros.hpp>
+#include <godot_cpp/core/memory.hpp>
 
 using namespace godot;
 
@@ -44,6 +45,13 @@ String TypescriptLoader::_get_resource_type(const String &path) const {
 
 String TypescriptLoader::_get_resource_script_class(const String &path) const {
 	return String();
+}
+
+int64_t TypescriptLoader::_get_resource_uid(const String &path) const {
+	if (TypescriptSaver::get_singleton()->uids.has(path)) {
+		return TypescriptSaver::get_singleton()->uids[path];
+	}
+	return ResourceUID::INVALID_ID;
 }
 
 // void TypescriptLoader::_register_resource_uid(const String &path) {
