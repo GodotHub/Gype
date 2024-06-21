@@ -16,7 +16,7 @@ TypescriptInstance::TypescriptInstance(const Ref<Typescript> &parent, Object *ho
 
 GDExtensionScriptInstancePtr TypescriptInstance::create_instance(const Ref<Typescript> &parent, Object *host_object) {
 	GDExtensionScriptInstancePtr instance = internal::gdextension_interface_script_instance_create3(TypescriptInstance::instance_info, new TypescriptInstance(parent, host_object));
-	parent->_instances[host_object->get_instance_id()] = static_cast<TypescriptInstance *>(instance);
+	parent->_instances.insert(host_object);
 	return instance;
 }
 

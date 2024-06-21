@@ -82,7 +82,8 @@ PackedStringArray TypescriptLoader::_get_classes_used(const String &path) const 
 
 Variant TypescriptLoader::_load(const String &path, const String &original_path, bool use_sub_threads, int32_t cache_mode) const {
 	Typescript *script = memnew(Typescript);
-	script->_script_path = original_path;
+	script->_original_path = original_path;
+	script->_path = path;
 	String code = FileAccess::get_file_as_string(original_path);
 	script->_set_source_code(code);
 	return script;

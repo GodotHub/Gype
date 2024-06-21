@@ -9,6 +9,7 @@ project(gype C CXX)
 
 # find_program(IWYU_EXECUTABLE include-what-you-use D:/Godot/Gype/iwyu/include-what-you-use.exe REQUIRED)
 
+add_subdirectory(tree-sitter)
 add_subdirectory(godot-cpp)
 add_subdirectory(quickjs)
 
@@ -21,6 +22,7 @@ file(GLOB_RECURSE HEADERS
 # 添加动态库
 add_library(gype SHARED ${SOURCE})
 
+target_link_libraries(gype PUBLIC tree-sitter)
 target_link_libraries(gype PUBLIC godot-cpp)
 target_link_libraries(gype PUBLIC quickjs)
 

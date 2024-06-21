@@ -12,6 +12,7 @@
 #include "register/register_builtin_classes.h"
 #include "register/register_classes.h"
 #include "register/register_utility_functions.h"
+#include "support/js_parser.h"
 #include "support/typescript.h"
 #include "support/typescript_language.h"
 #include "support/typescript_loader.h"
@@ -23,6 +24,7 @@ void initialize_tgds_types(ModuleInitializationLevel p_level) {
 	if (p_level != MODULE_INITIALIZATION_LEVEL_EDITOR) {
 		return;
 	}
+	init_module();
 	register_utility_functions();
 	register_builtin_classes_Variant();
 	register_builtin_classes_String();
@@ -865,6 +867,7 @@ void initialize_tgds_types(ModuleInitializationLevel p_level) {
 	register_singletons_TranslationServer();
 	register_singletons_WorkerThreadPool();
 	register_singletons_XRServer();
+	init_js_parser();
 	GDREGISTER_CLASS(TypescriptLanguage);
 	GDREGISTER_CLASS(TypescriptLoader);
 	GDREGISTER_CLASS(TypescriptSaver);

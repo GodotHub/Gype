@@ -21,10 +21,11 @@ Error TypescriptSaver::_save(const Ref<Resource> &resource, const String &path, 
 	Ref<Typescript> script = resource;
 	ERR_FAIL_COND_V(script.is_null(), ERR_INVALID_PARAMETER);
 	String source = script->get_source_code();
+	script->_filename = path;
 	{
 		Ref<FileAccess> file = FileAccess::open(path, FileAccess::WRITE);
 		Error err = FileAccess::get_open_error();
-		ERR_FAIL_COND_V_MSG(err, err, "Cannot save GDScript file '" + path + "'.");
+		ERR_FAIL_COND_V_MSG(err, err, "Cannot save TypeScript file '" + path + "'.");
 
 		file->store_string(source);
 		if (file->get_error() != OK && file->get_error() != ERR_FILE_EOF) {
