@@ -1,14 +1,14 @@
 #include "support/typescript.h"
 
-#include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/core/error_macros.hpp>
-#include <godot_cpp/variant/array.hpp>
-#include <godot_cpp/variant/packed_byte_array.hpp>
-
 #include "qjspp.hpp"
 #include "qjspp/utils.h"
 #include "support/typescript_instance.h"
 #include "support/typescript_language.h"
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/core/error_macros.hpp>
+#include <godot_cpp/variant/array.hpp>
+#include <godot_cpp/variant/packed_byte_array.hpp>
+#include <godot_cpp/variant/utility_functions.hpp>
 
 using namespace godot;
 
@@ -60,15 +60,15 @@ bool Typescript::_has_script_signal(const StringName &signal) const {
 }
 
 TypedArray<Dictionary> Typescript::_get_script_signal_list() const {
-	return Array();
+	return TypedArray<Dictionary>();
 }
 
 TypedArray<Dictionary> Typescript::_get_script_method_list() const {
-	return Array();
+	return TypedArray<Dictionary>();
 }
 
 TypedArray<Dictionary> Typescript::_get_script_property_list() const {
-	return Array();
+	return TypedArray<Dictionary>();
 }
 
 int32_t Typescript::_get_member_line(const StringName &member) const {
@@ -95,13 +95,94 @@ Variant Typescript::_get_rpc_config() const {
 	return Variant();
 }
 
-JSParseState *Typescript::_parse_source_code(const String &source_code) {
-	PackedByteArray source_code_bytes = source_code.to_utf8_buffer();
-	PackedByteArray script_path_bytes = _script_path.to_utf8_buffer();
-	JSParseState *s = new JSParseState();
-	js_parse_init_func(context->ctx, s, (const char *)source_code_bytes.ptr(), source_code_bytes.size(), (const char *)script_path_bytes.ptr());
-	ERR_FAIL_COND_V_EDMSG(js_parse_source_element_func(s), nullptr, "Syntax error.");
-	return s;
+void Typescript::_parse_source_code(const String &filename, const String &source_code) {
+	int _source_code_len;
+	char *_source_code = _parse_ustring(source_code, &_source_code_len);
+	std::string stdcode = std::string(_source_code);
+	TSTree *tree = js_parse(_source_code);
+
+	const char *query_src =
+			R"XXX(
+	(class_declaration
+		name: (identifier) @class
+		body: (class_body
+			(method_definition
+				name: (property_identifier) @method
+				parameters: (formal_parameters (identifier) @parameter)*
+			)*
+		)
+	)
+	)XXX";
+	uint32_t error_offset;
+	TSQueryError error_type;
+	TSQuery *query = ts_query_new(language, query_src, strlen(query_src), &error_offset, &error_type);
+	ERR_FAIL_COND(error_type != 0);
+	TSQueryCursor *query_cursor = ts_query_cursor_new();
+	ts_query_cursor_exec(query_cursor, query, ts_tree_root_node(tree));
+
+	uint32_t i;
+	TSQueryMatch match;
+	while (ts_query_cursor_next_match(query_cursor, &match)) {
+		for (uint32_t i = 0; i < match.capture_count; i++) {
+			TSQueryCapture capture = match.captures[i];
+			uint32_t length;
+			const char *capture_name = ts_query_capture_name_for_id(query, capture.index, &length);
+			TSNode capture_node = capture.node;
+			const char *text = js_node_text(capture_node, _source_code);
+			const char *method;
+			if (strcmp("class", capture_name) == 0) {
+				_class_name = text;
+			} else if (strcmp("method", capture_name) == 0) {
+				method = text;
+				if (!_methods.has(method)) {
+					JSMethod js_method = { text, 0, false };
+					_methods[method] = js_method;
+				}
+			} else if (strcmp("parameter", capture_name) == 0) {
+				_methods[method].paramters++;
+			}
+
+			if (strcmp("class", capture_name) == 0 || strcmp("method", capture_name) == 0 || strcmp("parameter", capture_name) == 0) {
+				UtilityFunctions::print(stdcode.substr(ts_node_start_byte(capture_node), ts_node_end_byte(capture_node) - ts_node_start_byte(capture_node)).c_str(), rest<Variant>());
+			}
+		}
+	}
+
+	// while (ts_query_cursor_next_capture(query_cursor, &match, &i)) {
+	// 	TSQueryCapture capture = match.captures[i];
+	// 	uint32_t length;
+	// 	const char *capture_name = ts_query_capture_name_for_id(query, capture.index, &length);
+	// 	TSNode capture_node = capture.node;
+	// 	const char *text = js_node_text(capture_node, _source_code);
+	// 	const char *method;
+
+	// 	if (strcmp("class", capture_name) == 0) {
+	// 		_class_name = text;
+	// 	} else if (strcmp("method", capture_name) == 0) {
+	// 		method = text;
+	// 		if (!_methods.has(text)) {
+	// 			JSMethod js_method = { text, 0, false };
+	// 			_methods[text] = js_method;
+	// 		}
+	// 	} else if (strcmp("parameter", capture_name) == 0) {
+	// 	}
+
+	// 	if (strcmp("class", capture_name) == 0 || strcmp("method", capture_name) == 0 || strcmp("parameter", capture_name) == 0) {
+	// 		UtilityFunctions::print(stdcode.substr(ts_node_start_byte(capture_node), ts_node_end_byte(capture_node) - ts_node_start_byte(capture_node)).c_str(), rest<Variant>());
+	// 	}
+	// }
+}
+
+void Typescript::_parse_program(TSNode node) {
+}
+
+char *Typescript::_parse_ustring(const String &str, int *len) {
+	PackedByteArray bytes = str.to_utf8_buffer();
+	char *c_str = new char[bytes.size() + 1];
+	strncpy(c_str, (const char *)bytes.ptr(), bytes.size());
+	c_str[bytes.size()] = '\0';
+	*len = bytes.size();
+	return c_str;
 }
 
 Ref<Script> Typescript::_get_base_script() const {
@@ -115,8 +196,10 @@ StringName Typescript::_get_global_name() const {
 bool Typescript::_inherits_script(const Ref<Script> &script) const {
 	return true;
 }
+
 StringName Typescript::_get_instance_base_type() const {
-	return StringName("Object");
+	// return _instances->_host_object->get_class();
+	return "Object";
 }
 
 String Typescript::_get_source_code() const {
@@ -125,12 +208,12 @@ String Typescript::_get_source_code() const {
 
 void Typescript::_set_source_code(const String &code) {
 	_source_code = code;
-	// _parse_state = _parse_source_code(code);
-	// ERR_FAIL_MSG(_parse_state->cur_func->func_name);
+	_parse_source_code(_filename, _source_code);
+	// _parse_program(_ts_root);
 }
 
 Error Typescript::_reload(bool keep_state) {
-	return Error();
+	return OK;
 }
 
 void Typescript::_update_exports() {
@@ -138,8 +221,7 @@ void Typescript::_update_exports() {
 }
 
 void *Typescript::_instance_create(Object *for_object) const {
-	TypescriptInstance *instance = static_cast<TypescriptInstance *>(TypescriptInstance::create_instance(Ref<Typescript>(this), for_object));
-	return instance;
+	return static_cast<TypescriptInstance *>(TypescriptInstance::create_instance(Ref<Typescript>(this), for_object));
 }
 
 void *Typescript::_placeholder_instance_create(Object *for_object) const {
@@ -147,7 +229,7 @@ void *Typescript::_placeholder_instance_create(Object *for_object) const {
 }
 
 bool Typescript::_instance_has(Object *object) const {
-	return _instances.has(object->get_instance_id()) && _instances[object->get_instance_id()] != nullptr;
+	return _instances.has(object);
 }
 
 TypedArray<Dictionary> Typescript::_get_documentation() const {

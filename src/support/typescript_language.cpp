@@ -1,12 +1,10 @@
 #include "support/typescript_language.h"
-
+#include "support/typescript.h"
 #include <godot_cpp/core/error_macros.hpp>
 #include <godot_cpp/core/memory.hpp>
 
-#include "support/typescript.h"
-
 const char *TypescriptLanguage::EXTENSION = "js";
-const char *TypescriptLanguage::TYPE = "Javascript";
+const char *TypescriptLanguage::TYPE = "JavaScript";
 TypescriptLanguage *TypescriptLanguage::singleton = nullptr;
 
 TypescriptLanguage::TypescriptLanguage() {
@@ -64,7 +62,7 @@ PackedStringArray TypescriptLanguage::_get_comment_delimiters() const {
 }
 
 PackedStringArray TypescriptLanguage::_get_string_delimiters() const {
-	return { "\"", "\'" };
+	return { "\" \"", "\' \'" };
 }
 
 TypedArray<Dictionary> TypescriptLanguage::_get_built_in_templates(const StringName &object) const {
@@ -189,14 +187,14 @@ Ref<Script> TypescriptLanguage::_make_template(const String &_template, const St
 	values.append(class_name);
 	values.append(base_class_name);
 	String code = String(
-			R"xxx(class {0} extends {1} {
-	function _ready(){
+			R"xxx(import {Node} from 'Node';
 
-	}
+class {0} {
 
-	function _process() {
+	_ready() {}
 
-	}
+	_process(delta) {}
+
 })xxx")
 						  .format(values);
 	script->set_source_code(code);

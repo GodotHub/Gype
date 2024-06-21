@@ -22,9 +22,11 @@
 #include <godot_cpp/variant/variant.hpp>
 
 #include "qjspp/utils.h"
-#include "quickjs-parser.h"
+#include "support/js_parser.h"
 #include "support/typescript_instance.h"
 #include "support/typescript_language.h"
+#include "support/typescript_loader.h"
+#include "support/typescript_saver.h"
 
 namespace godot {
 class ClassDB;
@@ -35,17 +37,24 @@ class ScriptLanguage;
 using namespace godot;
 
 class TypescriptInstance;
+struct JSMethod;
 
 class Typescript : public ScriptExtension {
 	GDCLASS(Typescript, ScriptExtension)
 
-	String _script_path;
+	String _filename;
+	String _class_name;
+	String _base_class_name;
+	String _path;
+	String _original_path;
 	String _source_code;
 	JSParseState *_parse_state;
 	HashSet<StringName> _members;
-	StringName _base;
+	Typescript *_base;
+	TSNode _ts_root;
 
-	HashMap<uint64_t, TypescriptInstance *> _instances = HashMap<uint64_t, TypescriptInstance *>();
+	HashSet<Object *> _instances;
+	HashMap<StringName, JSMethod> _methods;
 
 public:
 	bool _editor_can_reload_from_file() override;
@@ -86,26 +95,28 @@ public:
 
 	friend class TypescriptLoader;
 	friend class TypescriptInstance;
+	friend class TypescriptLanguage;
+	friend class TypescriptSaver;
+	friend class TypescriptInstance;
 
 protected:
 	static void _bind_methods() {
 	}
 
 private:
-	JSParseState *_parse_source_code(const String &source_code);
+	void _parse_source_code(const String &filename, const String &source_code);
+	void _parse_program(TSNode node);
+	char *_parse_ustring(const String &str, int *len);
 };
 
-struct TSFunction {
-	String method;
-	StringName body;
-	List<Variant::Type> args_type;
-	Variant::Type return_type;
+struct JSMethod {
+	String name;
+	int paramters;
 	bool is_async;
 };
 
-struct TSMember {
-	String member;
-	uint32_t line;
+struct JSMember {
+	String name;
 };
 
 #endif

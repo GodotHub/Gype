@@ -334,26 +334,14 @@ typedef struct JSStackFrame {
     JSValue *cur_sp;
 } JSStackFrame;
 
-typedef enum {
-    JS_GC_OBJ_TYPE_JS_OBJECT,
-    JS_GC_OBJ_TYPE_FUNCTION_BYTECODE,
-    JS_GC_OBJ_TYPE_SHAPE,
-    JS_GC_OBJ_TYPE_VAR_REF,
-    JS_GC_OBJ_TYPE_ASYNC_FUNCTION,
-    JS_GC_OBJ_TYPE_JS_CONTEXT,
-} JSGCObjectTypeEnum;
-
-/* header for GC objects. GC objects are C data structures with a
-   reference count that can reference other GC objects. JS Objects are
-   a particular type of GC object. */
-struct JSGCObjectHeader {
-    int ref_count; /* must come first, 32-bit */
-    JSGCObjectTypeEnum gc_obj_type : 4;
-    uint8_t mark : 4; /* used by the GC */
-    uint8_t dummy1; /* not used by the GC */
-    uint16_t dummy2; /* not used by the GC */
-    struct list_head link;
-};
+// typedef enum {
+//     JS_GC_OBJ_TYPE_JS_OBJECT,
+//     JS_GC_OBJ_TYPE_FUNCTION_BYTECODE,
+//     JS_GC_OBJ_TYPE_SHAPE,
+//     JS_GC_OBJ_TYPE_VAR_REF,
+//     JS_GC_OBJ_TYPE_ASYNC_FUNCTION,
+//     JS_GC_OBJ_TYPE_JS_CONTEXT,
+// } JSGCObjectTypeEnum;
 
 typedef struct JSVarRef {
     union {
@@ -580,47 +568,47 @@ struct JSString {
 //     JS_FUNC_ASYNC_GENERATOR = (JS_FUNC_GENERATOR | JS_FUNC_ASYNC),
 // } JSFunctionKindEnum;
 
-typedef struct JSFunctionBytecode {
-    JSGCObjectHeader header; /* must come first */
-    uint8_t js_mode;
-    uint8_t has_prototype : 1; /* true if a prototype field is necessary */
-    uint8_t has_simple_parameter_list : 1;
-    uint8_t is_derived_class_constructor : 1;
-    /* true if home_object needs to be initialized */
-    uint8_t need_home_object : 1;
-    uint8_t func_kind : 2;
-    uint8_t new_target_allowed : 1;
-    uint8_t super_call_allowed : 1;
-    uint8_t super_allowed : 1;
-    uint8_t arguments_allowed : 1;
-    uint8_t has_debug : 1;
-    uint8_t backtrace_barrier : 1; /* stop backtrace on this function */
-    uint8_t read_only_bytecode : 1;
-    uint8_t is_direct_or_indirect_eval : 1; /* used by JS_GetScriptOrModuleName() */
-    /* XXX: 10 bits available */
-    uint8_t *byte_code_buf; /* (self pointer) */
-    int byte_code_len;
-    JSAtom func_name;
-    JSVarDef *vardefs; /* arguments + local variables (arg_count + var_count) (self pointer) */
-    JSClosureVar *closure_var; /* list of variables in the closure (self pointer) */
-    uint16_t arg_count;
-    uint16_t var_count;
-    uint16_t defined_arg_count; /* for length function property */
-    uint16_t stack_size; /* maximum stack size */
-    JSContext *realm; /* function realm */
-    JSValue *cpool; /* constant pool (self pointer) */
-    int cpool_count;
-    int closure_var_count;
-    struct {
-        /* debug info, move to separate structure to save memory? */
-        JSAtom filename;
-        int line_num;
-        int source_len;
-        int pc2line_len;
-        uint8_t *pc2line_buf;
-        char *source;
-    } debug;
-} JSFunctionBytecode;
+// typedef struct JSFunctionBytecode {
+//     JSGCObjectHeader header; /* must come first */
+//     uint8_t js_mode;
+//     uint8_t has_prototype : 1; /* true if a prototype field is necessary */
+//     uint8_t has_simple_parameter_list : 1;
+//     uint8_t is_derived_class_constructor : 1;
+//     /* true if home_object needs to be initialized */
+//     uint8_t need_home_object : 1;
+//     uint8_t func_kind : 2;
+//     uint8_t new_target_allowed : 1;
+//     uint8_t super_call_allowed : 1;
+//     uint8_t super_allowed : 1;
+//     uint8_t arguments_allowed : 1;
+//     uint8_t has_debug : 1;
+//     uint8_t backtrace_barrier : 1; /* stop backtrace on this function */
+//     uint8_t read_only_bytecode : 1;
+//     uint8_t is_direct_or_indirect_eval : 1; /* used by JS_GetScriptOrModuleName() */
+//     /* XXX: 10 bits available */
+//     uint8_t *byte_code_buf; /* (self pointer) */
+//     int byte_code_len;
+//     JSAtom func_name;
+//     JSVarDef *vardefs; /* arguments + local variables (arg_count + var_count) (self pointer) */
+//     JSClosureVar *closure_var; /* list of variables in the closure (self pointer) */
+//     uint16_t arg_count;
+//     uint16_t var_count;
+//     uint16_t defined_arg_count; /* for length function property */
+//     uint16_t stack_size; /* maximum stack size */
+//     JSContext *realm; /* function realm */
+//     JSValue *cpool; /* constant pool (self pointer) */
+//     int cpool_count;
+//     int closure_var_count;
+//     struct {
+//         /* debug info, move to separate structure to save memory? */
+//         JSAtom filename;
+//         int line_num;
+//         int source_len;
+//         int pc2line_len;
+//         uint8_t *pc2line_buf;
+//         char *source;
+//     } debug;
+// } JSFunctionBytecode;
 
 typedef struct JSBoundFunction {
     JSValue func_obj;
@@ -732,97 +720,97 @@ typedef struct {
     JSBinaryOperatorDef right;
 } JSOperatorSetData;
 
-typedef struct JSReqModuleEntry {
-    JSAtom module_name;
-    JSModuleDef *module; /* used using resolution */
-} JSReqModuleEntry;
+// typedef struct JSReqModuleEntry {
+//     JSAtom module_name;
+//     JSModuleDef *module; /* used using resolution */
+// } JSReqModuleEntry;
 
-typedef enum JSExportTypeEnum {
-    JS_EXPORT_TYPE_LOCAL,
-    JS_EXPORT_TYPE_INDIRECT,
-} JSExportTypeEnum;
+// typedef enum JSExportTypeEnum {
+//     JS_EXPORT_TYPE_LOCAL,
+//     JS_EXPORT_TYPE_INDIRECT,
+// } JSExportTypeEnum;
 
-typedef struct JSExportEntry {
-    union {
-        struct {
-            int var_idx; /* closure variable index */
-            JSVarRef *var_ref; /* if != NULL, reference to the variable */
-        } local; /* for local export */
-        int req_module_idx; /* module for indirect export */
-    } u;
-    JSExportTypeEnum export_type;
-    JSAtom local_name; /* '*' if export ns from. not used for local
-                          export after compilation */
-    JSAtom export_name; /* exported variable name */
-} JSExportEntry;
+// typedef struct JSExportEntry {
+//     union {
+//         struct {
+//             int var_idx; /* closure variable index */
+//             JSVarRef *var_ref; /* if != NULL, reference to the variable */
+//         } local; /* for local export */
+//         int req_module_idx; /* module for indirect export */
+//     } u;
+//     JSExportTypeEnum export_type;
+//     JSAtom local_name; /* '*' if export ns from. not used for local
+//                           export after compilation */
+//     JSAtom export_name; /* exported variable name */
+// } JSExportEntry;
 
-typedef struct JSStarExportEntry {
-    int req_module_idx; /* in req_module_entries */
-} JSStarExportEntry;
+// typedef struct JSStarExportEntry {
+//     int req_module_idx; /* in req_module_entries */
+// } JSStarExportEntry;
 
-typedef struct JSImportEntry {
-    int var_idx; /* closure variable index */
-    JSAtom import_name;
-    int req_module_idx; /* in req_module_entries */
-} JSImportEntry;
+// typedef struct JSImportEntry {
+//     int var_idx; /* closure variable index */
+//     JSAtom import_name;
+//     int req_module_idx; /* in req_module_entries */
+// } JSImportEntry;
 
-typedef enum {
-    JS_MODULE_STATUS_UNLINKED,
-    JS_MODULE_STATUS_LINKING,
-    JS_MODULE_STATUS_LINKED,
-    JS_MODULE_STATUS_EVALUATING,
-    JS_MODULE_STATUS_EVALUATING_ASYNC,
-    JS_MODULE_STATUS_EVALUATED,
-} JSModuleStatus;
+// typedef enum {
+//     JS_MODULE_STATUS_UNLINKED,
+//     JS_MODULE_STATUS_LINKING,
+//     JS_MODULE_STATUS_LINKED,
+//     JS_MODULE_STATUS_EVALUATING,
+//     JS_MODULE_STATUS_EVALUATING_ASYNC,
+//     JS_MODULE_STATUS_EVALUATED,
+// } JSModuleStatus;
 
-struct JSModuleDef {
-    JSRefCountHeader header; /* must come first, 32-bit */
-    JSAtom module_name;
-    struct list_head link;
+// struct JSModuleDef {
+//     JSRefCountHeader header; /* must come first, 32-bit */
+//     JSAtom module_name;
+//     struct list_head link;
 
-    JSReqModuleEntry *req_module_entries;
-    int req_module_entries_count;
-    int req_module_entries_size;
+//     JSReqModuleEntry *req_module_entries;
+//     int req_module_entries_count;
+//     int req_module_entries_size;
 
-    JSExportEntry *export_entries;
-    int export_entries_count;
-    int export_entries_size;
+//     JSExportEntry *export_entries;
+//     int export_entries_count;
+//     int export_entries_size;
 
-    JSStarExportEntry *star_export_entries;
-    int star_export_entries_count;
-    int star_export_entries_size;
+//     JSStarExportEntry *star_export_entries;
+//     int star_export_entries_count;
+//     int star_export_entries_size;
 
-    JSImportEntry *import_entries;
-    int import_entries_count;
-    int import_entries_size;
+//     JSImportEntry *import_entries;
+//     int import_entries_count;
+//     int import_entries_size;
 
-    JSValue module_ns;
-    JSValue func_obj; /* only used for JS modules */
-    JSModuleInitFunc *init_func; /* only used for C modules */
-    BOOL has_tla : 8; /* true if func_obj contains await */
-    BOOL resolved : 8;
-    BOOL func_created : 8;
-    JSModuleStatus status : 8;
-    /* temp use during js_module_link() & js_module_evaluate() */
-    int dfs_index, dfs_ancestor_index;
-    JSModuleDef *stack_prev;
-    /* temp use during js_module_evaluate() */
-    JSModuleDef **async_parent_modules;
-    int async_parent_modules_count;
-    int async_parent_modules_size;
-    int pending_async_dependencies;
-    BOOL async_evaluation;
-    int64_t async_evaluation_timestamp;
-    JSModuleDef *cycle_root;
-    JSValue promise; /* corresponds to spec field: capability */
-    JSValue resolving_funcs[2]; /* corresponds to spec field: capability */
+//     JSValue module_ns;
+//     JSValue func_obj; /* only used for JS modules */
+//     JSModuleInitFunc *init_func; /* only used for C modules */
+//     BOOL has_tla : 8; /* true if func_obj contains await */
+//     BOOL resolved : 8;
+//     BOOL func_created : 8;
+//     JSModuleStatus status : 8;
+//     /* temp use during js_module_link() & js_module_evaluate() */
+//     int dfs_index, dfs_ancestor_index;
+//     JSModuleDef *stack_prev;
+//     /* temp use during js_module_evaluate() */
+//     JSModuleDef **async_parent_modules;
+//     int async_parent_modules_count;
+//     int async_parent_modules_size;
+//     int pending_async_dependencies;
+//     BOOL async_evaluation;
+//     int64_t async_evaluation_timestamp;
+//     JSModuleDef *cycle_root;
+//     JSValue promise; /* corresponds to spec field: capability */
+//     JSValue resolving_funcs[2]; /* corresponds to spec field: capability */
 
-    /* true if evaluation yielded an exception. It is saved in
-       eval_exception */
-    BOOL eval_has_exception : 8;
-    JSValue eval_exception;
-    JSValue meta_obj; /* for import.meta */
-};
+//     /* true if evaluation yielded an exception. It is saved in
+//        eval_exception */
+//     BOOL eval_has_exception : 8;
+//     JSValue eval_exception;
+//     JSValue meta_obj; /* for import.meta */
+// };
 
 typedef struct JSJobEntry {
     struct list_head link;
@@ -19783,109 +19771,6 @@ static JSValue js_async_generator_function_call(JSContext *ctx, JSValueConst fun
 
 /* JS parser */
 
-enum {
-    TOK_NUMBER = -128,
-    TOK_STRING,
-    TOK_TEMPLATE,
-    TOK_IDENT,
-    TOK_REGEXP,
-    /* warning: order matters (see js_parse_assign_expr) */
-    TOK_MUL_ASSIGN,
-    TOK_DIV_ASSIGN,
-    TOK_MOD_ASSIGN,
-    TOK_PLUS_ASSIGN,
-    TOK_MINUS_ASSIGN,
-    TOK_SHL_ASSIGN,
-    TOK_SAR_ASSIGN,
-    TOK_SHR_ASSIGN,
-    TOK_AND_ASSIGN,
-    TOK_XOR_ASSIGN,
-    TOK_OR_ASSIGN,
-#ifdef CONFIG_BIGNUM
-    TOK_MATH_POW_ASSIGN,
-#endif
-    TOK_POW_ASSIGN,
-    TOK_LAND_ASSIGN,
-    TOK_LOR_ASSIGN,
-    TOK_DOUBLE_QUESTION_MARK_ASSIGN,
-    TOK_DEC,
-    TOK_INC,
-    TOK_SHL,
-    TOK_SAR,
-    TOK_SHR,
-    TOK_LT,
-    TOK_LTE,
-    TOK_GT,
-    TOK_GTE,
-    TOK_EQ,
-    TOK_STRICT_EQ,
-    TOK_NEQ,
-    TOK_STRICT_NEQ,
-    TOK_LAND,
-    TOK_LOR,
-#ifdef CONFIG_BIGNUM
-    TOK_MATH_POW,
-#endif
-    TOK_POW,
-    TOK_ARROW,
-    TOK_ELLIPSIS,
-    TOK_DOUBLE_QUESTION_MARK,
-    TOK_QUESTION_MARK_DOT,
-    TOK_ERROR,
-    TOK_PRIVATE_NAME,
-    TOK_EOF,
-    /* keywords: WARNING: same order as atoms */
-    TOK_NULL, /* must be first */
-    TOK_FALSE,
-    TOK_TRUE,
-    TOK_IF,
-    TOK_ELSE,
-    TOK_RETURN,
-    TOK_VAR,
-    TOK_THIS,
-    TOK_DELETE,
-    TOK_VOID,
-    TOK_TYPEOF,
-    TOK_NEW,
-    TOK_IN,
-    TOK_INSTANCEOF,
-    TOK_DO,
-    TOK_WHILE,
-    TOK_FOR,
-    TOK_BREAK,
-    TOK_CONTINUE,
-    TOK_SWITCH,
-    TOK_CASE,
-    TOK_DEFAULT,
-    TOK_THROW,
-    TOK_TRY,
-    TOK_CATCH,
-    TOK_FINALLY,
-    TOK_FUNCTION,
-    TOK_DEBUGGER,
-    TOK_WITH,
-    /* FutureReservedWord */
-    TOK_CLASS,
-    TOK_CONST,
-    TOK_ENUM,
-    TOK_EXPORT,
-    TOK_EXTENDS,
-    TOK_IMPORT,
-    TOK_SUPER,
-    /* FutureReservedWords when parsing strict mode code */
-    TOK_IMPLEMENTS,
-    TOK_INTERFACE,
-    TOK_LET,
-    TOK_PACKAGE,
-    TOK_PRIVATE,
-    TOK_PROTECTED,
-    TOK_PUBLIC,
-    TOK_STATIC,
-    TOK_YIELD,
-    TOK_AWAIT, /* must be last */
-    TOK_OF,     /* only used for js_parse_skip_parens_token() */
-};
-
 #define TOK_FIRST_KEYWORD   TOK_NULL
 #define TOK_LAST_KEYWORD    TOK_AWAIT
 
@@ -21205,6 +21090,8 @@ static __exception int next_token(JSParseState *s)
     return -1;
 }
 
+__exception int (*next_token_func)(JSParseState *s) = next_token;
+
 /* 'c' is the first character. Return JS_ATOM_NULL in case of error */
 static JSAtom json_parse_ident(JSParseState *s, const uint8_t **pp, int c)
 {
@@ -21539,6 +21426,8 @@ static int simple_next_token(const uint8_t **pp, BOOL no_line_terminator)
         return c;
     }
 }
+
+int (*simple_next_token_func)(const uint8_t **pp, BOOL no_line_terminator) = simple_next_token;
 
 static int peek_token(JSParseState *s, BOOL no_line_terminator)
 {
@@ -22870,6 +22759,8 @@ static __exception int js_parse_left_hand_side_expr(JSParseState *s)
 {
     return js_parse_postfix_expr(s, PF_POSTFIX_CALL);
 }
+
+__exception int (*js_parse_left_hand_side_expr_func)(JSParseState *s) = js_parse_left_hand_side_expr;
 
 /* XXX: could generate specific bytecode */
 static __exception int js_parse_class_default_ctor(JSParseState *s,
@@ -25148,6 +25039,8 @@ static __exception int js_parse_postfix_expr(JSParseState *s, int parse_flags)
     return 0;
 }
 
+__exception int (*js_parse_postfix_expr_func)(JSParseState *s, int parse_flags) = js_parse_postfix_expr;
+
 static __exception int js_parse_delete(JSParseState *s)
 {
     JSFunctionDef *fd = s->cur_func;
@@ -26137,12 +26030,6 @@ static void emit_return(JSParseState *s, BOOL hasval)
         emit_op(s, hasval ? OP_return : OP_return_undef);
     }
 }
-
-#define DECL_MASK_FUNC  (1 << 0) /* allow normal function declaration */
-/* ored with DECL_MASK_FUNC if function declarations are allowed with a label */
-#define DECL_MASK_FUNC_WITH_LABEL (1 << 1)
-#define DECL_MASK_OTHER (1 << 2) /* all other declarations */
-#define DECL_MASK_ALL   (DECL_MASK_FUNC | DECL_MASK_FUNC_WITH_LABEL | DECL_MASK_OTHER)
 
 static __exception int js_parse_statement_or_decl(JSParseState *s,
                                                   int decl_mask);
@@ -27297,6 +27184,8 @@ fail:
     JS_FreeAtom(ctx, label_name);
     return -1;
 }
+
+__exception int (*js_parse_statement_or_decl_func)(JSParseState *s, int decl_mask) = js_parse_statement_or_decl;
 
 /* 'name' is freed */
 static JSModuleDef *js_new_module_def(JSContext *ctx, JSAtom name)
@@ -29543,6 +29432,8 @@ static JSFunctionDef *js_new_function_def(JSContext *ctx,
 
     return fd;
 }
+
+JSFunctionDef *(*js_new_function_def_func)(JSContext *ctx,JSFunctionDef *parent, BOOL is_eval, BOOL is_func_expr, const char *filename, int line_num) = js_new_function_def;
 
 static void free_bytecode_atoms(JSRuntime *rt,
                                 const uint8_t *bc_buf, int bc_len,
@@ -34385,6 +34276,8 @@ static __exception int js_parse_program(JSParseState *s)
 
     return 0;
 }
+
+__exception int (*js_parse_program_func)(JSParseState *s) = js_parse_program;
 
 static void js_parse_init(JSContext *ctx, JSParseState *s,
                           const char *input, size_t input_len,

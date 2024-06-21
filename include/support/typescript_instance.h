@@ -39,6 +39,8 @@ public:
 	HashMap<StringName, Variant> get_values() { return values; };
 	const Typescript *get_script() const { return _parent; };
 
+	friend class Typescript;
+
 private:
 	const Typescript *_parent;
 	Object *_host_object;
