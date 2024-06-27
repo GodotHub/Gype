@@ -9,7 +9,6 @@ build
 *.dll
 *.so
 *.a
-!script/gype/*.js
 godot-cpp/.sconsign.dblite
 godot-cpp/__pycache__
 .venv
