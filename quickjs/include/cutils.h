@@ -35,10 +35,10 @@
 #define no_inline __attribute__((noinline))
 #define __maybe_unused __attribute__((unused))
 
-#define _xglue(x, y) x ## y
-#define _glue(x, y) _xglue(x, y)
-#define _stringify(s)    _tostring(s)
-#define _tostring(s)     #s
+#define xglue(x, y) x ## y
+#define glue(x, y) xglue(x, y)
+#define stringify(s)    tostring(s)
+#define tostring(s)     #s
 
 #ifndef offsetof
 #define offsetof(type, field) ((size_t) &((type *)0)->field)

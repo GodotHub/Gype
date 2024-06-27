@@ -1,13 +1,7 @@
 #pragma once
 
+#include "gdextension_interface.h"
 #include "quickjs.h"
-
-#include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/ref.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/core/object_id.hpp>
-#include <godot_cpp/core/type_info.hpp>
-#include <godot_cpp/variant/builtin_types.hpp>
 
 #include <algorithm>
 #include <cassert>
@@ -18,7 +12,6 @@
 #include <ios>
 #include <memory>
 #include <optional>
-#include <queue>
 #include <sstream>
 #include <stdexcept>
 #include <string>
@@ -39,35 +32,6 @@ namespace qjs {
 
 class Context;
 class Value;
-
-template <typename>
-struct is_bitfield : std::false_type {};
-
-template <typename T>
-struct is_bitfield<godot::BitField<T>> : std::true_type {};
-
-template <typename>
-struct is_ref_impl : std::false_type {};
-
-template <typename T>
-struct is_ref_impl<godot::Ref<T>> : std::true_type {};
-
-template <typename T>
-struct is_ref : is_ref_impl<std::remove_cv_t<std::remove_reference_t<T>>> {};
-
-template <typename T>
-inline constexpr bool is_ref_v = is_ref<T>::value;
-
-template <typename T>
-struct extract_ref_type;
-
-template <typename T>
-struct extract_ref_type<godot::Ref<T>> {
-	using type = T;
-};
-
-template <typename T>
-using extract_ref_type_v = typename extract_ref_type<std::remove_cv_t<std::remove_reference_t<T>>>::type;
 
 /** Exception type.
  * Indicates that exception has occured in JS context.
@@ -179,341 +143,105 @@ struct js_traits<void> {
 };
 
 template <>
-struct js_traits<int *> {
-	/// @throws exception
-	static int *unwrap(JSContext *ctx, JSValueConst v) {
-		int r;
-		if (JS_ToInt32(ctx, &r, v)) {
-			throw exception{ ctx };
-		}
-		return new int[1]{ static_cast<int>(r) };
-	}
-
-	static JSValue wrap(JSContext *ctx, int *v) noexcept {
-		return JS_NewInt32(ctx, *v);
-	}
-};
-template <>
-struct js_traits<int &> {
-	/// @throws exception
-	static int unwrap(JSContext *ctx, JSValueConst v) {
-		int r;
-		if (JS_ToInt32(ctx, &r, v))
-			throw exception{ ctx };
-		int ret = static_cast<int>(r);
-		return ret;
-	}
-
-	static JSValue wrap(JSContext *ctx, int &v) noexcept {
-		return JS_NewInt32(ctx, v);
-	}
-};
-template <>
-struct js_traits<float> {
-	/// @throws exception
-	static float unwrap(JSContext *ctx, JSValueConst v) {
-		double r;
-		if (JS_ToFloat64(ctx, &r, v))
-			return r;
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, float v) noexcept {
-		return JS_NewFloat64(ctx, v);
-	}
-};
-template <>
-struct js_traits<float *> {
-	/// @throws exception
-	static float *unwrap(JSContext *ctx, JSValueConst v) {
-		double r;
-		if (JS_ToFloat64(ctx, &r, v)) {
-			throw exception{ ctx };
-		}
-		return new float[1]{ static_cast<float>(r) };
-	}
-
-	static JSValue wrap(JSContext *ctx, float *v) noexcept {
-		return JS_NewFloat64(ctx, *v);
-	}
-};
-template <>
-struct js_traits<float &> {
-	/// @throws exception
-	static float unwrap(JSContext *ctx, JSValueConst v) {
-		double r;
-		if (JS_ToFloat64(ctx, &r, v))
-			throw exception{ ctx };
-		float ret = static_cast<float>(r);
-		return ret;
-	}
-
-	static JSValue wrap(JSContext *ctx, float &v) noexcept {
-		return JS_NewFloat64(ctx, v);
-	}
-};
-template <>
-struct js_traits<double> {
-	/// @throws exception
-	static double unwrap(JSContext *ctx, JSValueConst v) {
-		double r;
-		if (JS_ToFloat64(ctx, &r, v))
-			return r;
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, double v) noexcept {
-		return JS_NewFloat64(ctx, v);
-	}
-};
-template <>
-struct js_traits<double *> {
-	/// @throws exception
-	static double *unwrap(JSContext *ctx, JSValueConst v) {
-		double r;
-		if (JS_ToFloat64(ctx, &r, v)) {
-			throw exception{ ctx };
-		}
-		return new double[1]{ static_cast<double>(r) };
-	}
-
-	static JSValue wrap(JSContext *ctx, double *v) noexcept {
-		return JS_NewFloat64(ctx, *v);
-	}
-};
-template <>
-struct js_traits<double &> {
-	/// @throws exception
-	static double unwrap(JSContext *ctx, JSValueConst v) {
-		double r;
-		if (JS_ToFloat64(ctx, &r, v))
-			throw exception{ ctx };
-		double ret = static_cast<double>(r);
-		return ret;
-	}
-
-	static JSValue wrap(JSContext *ctx, double &v) noexcept {
-		return JS_NewFloat64(ctx, v);
-	}
-};
-template <>
-struct js_traits<char *> {
-	/// @throws exception
-	static char *unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsString(v)) {
-			return const_cast<char *>(JS_ToCString(ctx, v));
-		}
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, char *v) noexcept {
-		return JS_NewString(ctx, reinterpret_cast<const char *>(v));
-	}
-};
-template <>
-struct js_traits<const char16_t *> {
-	/// @throws exception
-	static char16_t *unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsString(v)) {
-			return reinterpret_cast<char16_t *>(const_cast<char *>(JS_ToCString(ctx, v)));
-		}
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, char16_t *v) noexcept {
-		return JS_NewString(ctx, reinterpret_cast<const char *>(v));
-	}
-};
-template <>
-struct js_traits<const char32_t *> {
-	/// @throws exception
-	static char32_t *unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsString(v)) {
-			return reinterpret_cast<char32_t *>(const_cast<char *>(JS_ToCString(ctx, v)));
-		}
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, char32_t *v) noexcept {
-		return JS_NewString(ctx, reinterpret_cast<const char *>(v));
-	}
-};
-template <>
-struct js_traits<const wchar_t *> {
-	/// @throws exception
-	static wchar_t *unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsString(v)) {
-			return reinterpret_cast<wchar_t *>(const_cast<char *>(JS_ToCString(ctx, v)));
-		}
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, wchar_t *v) noexcept {
-		return JS_NewString(ctx, reinterpret_cast<const char *>(v));
-	}
-};
-
-template <>
-struct js_traits<std::nullptr_t> {
-	static JSValue wrap(JSContext *ctx, std::nullptr_t value) {
-		return JS_NULL;
-	}
-
-	static std::nullptr_t unwrap(JSContext *ctx, JSValueConst value) {
-		if (JS_IsNull(value))
-			throw exception{ ctx };
-		return nullptr;
-	}
-};
-
-template <>
 struct js_traits<void *> {
 	static JSValue wrap(JSContext *ctx, void *value) {
 		return JS_NewInt64(ctx, reinterpret_cast<int64_t>(value));
 	}
 
-	static void *unwrap(JSContext *ctx, JSValueConst value) {
-		int64_t ptr;
-		if (JS_ToInt64(ctx, &ptr, value))
+	static void *unwrap(JSContext *ctx, JSValue value) {
+		int64_t i;
+		if (JS_ToInt64(ctx, &i, value)) {
 			throw exception{ ctx };
-		return reinterpret_cast<void *>(ptr);
+		}
+		return reinterpret_cast<void *>(i);
+	}
+};
+
+template <>
+struct js_traits<void **> {
+	static JSValue wrap(JSContext *ctx, void **value) {
+		return JS_NewInt64(ctx, reinterpret_cast<int64_t>(value));
+	}
+
+	static void **unwrap(JSContext *ctx, JSValue value) {
+		int64_t i;
+		if (JS_ToInt64(ctx, &i, value)) {
+			throw exception{ ctx };
+		}
+		return reinterpret_cast<void **>(i);
 	}
 };
 
 template <>
 struct js_traits<const void *> {
 	static JSValue wrap(JSContext *ctx, const void *value) {
-		return JS_NewBigUint64(ctx, reinterpret_cast<uint64_t>(value));
+		return JS_NewInt64(ctx, reinterpret_cast<int64_t>(value));
 	}
 
-	static const void *unwrap(JSContext *ctx, JSValueConst value) {
-		uint64_t ptr;
-		if (JS_ToIndex(ctx, &ptr, value))
+	static const void *unwrap(JSContext *ctx, JSValue value) {
+		int64_t i;
+		if (JS_ToInt64(ctx, &i, value)) {
 			throw exception{ ctx };
-		return reinterpret_cast<const void *>(ptr);
+		}
+		return reinterpret_cast<const void *>(i);
+	}
+};
+
+template <>
+struct js_traits<const void **> {
+	static JSValue wrap(JSContext *ctx, const void **value) {
+		return JS_NewInt64(ctx, reinterpret_cast<int64_t>(value));
+	}
+
+	static const void **unwrap(JSContext *ctx, JSValue value) {
+		int64_t i;
+		if (JS_ToInt64(ctx, &i, value)) {
+			throw exception{ ctx };
+		}
+		return reinterpret_cast<const void **>(i);
 	}
 };
 
 template <>
 struct js_traits<const void *const *> {
 	static JSValue wrap(JSContext *ctx, const void *const *value) {
-		auto jsArray = JS_NewArray(ctx);
-
-		for (int i = 0; i < 4; i++) {
-			int elem = *reinterpret_cast<const int *>(value[i]);
-			JSValue jsElem = JS_NewInt32(ctx, elem);
-			JS_SetPropertyUint32(ctx, jsArray, i, jsElem);
-		}
-
-		return jsArray;
+		return JS_NewInt64(ctx, reinterpret_cast<int64_t>(value));
 	}
 
-	static const void *const *unwrap(JSContext *ctx, JSValueConst v) {
-		throw std::runtime_error("Unwrapping to const void* const* is not implemented");
-	}
-};
-
-template <>
-struct js_traits<const uint8_t **> {
-	/// @throws exception
-	static const uint8_t **unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsArray(ctx, v))
+	static const void *const *unwrap(JSContext *ctx, JSValue value) {
+		int64_t i;
+		if (JS_ToInt64(ctx, &i, value)) {
 			throw exception{ ctx };
-		return new const uint8_t *[1]{ static_cast<uint8_t *>(JS_GetOpaque(v, 2)) };
+		}
+		return reinterpret_cast<const void *const *>(i);
 	}
 };
+
+/** Conversion traits for float64/double.
+ */
+template <>
+struct js_traits<double> {
+	/// @throws exception
+	static double unwrap(JSContext *ctx, JSValueConst v) {
+		double r;
+		if (JS_ToFloat64(ctx, &r, v))
+			throw exception{ ctx };
+		return r;
+	}
+
+	static JSValue wrap(JSContext *ctx, double i) noexcept {
+		return JS_NewFloat64(ctx, i);
+	}
+};
+
 template <>
 struct js_traits<const uint8_t *> {
-	/// @throws exception
-	static const uint8_t *unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsArray(ctx, v))
-			throw exception{ ctx };
-		return static_cast<uint8_t *>(JS_GetOpaque(v, 2));
-	}
-};
-
-template <>
-struct js_traits<long long unsigned int> {
-	static JSValue wrap(JSContext *ctx, long long unsigned int value) {
-		return JS_NewInt64(ctx, static_cast<int64_t>(value));
+	static JSValue wrap(JSContext *ctx, const uint8_t *value) {
+		return JS_MKPTR(JS_TAG_OBJECT, (void *)value);
 	}
 
-	static long long unsigned int unwrap(JSContext *ctx, JSValueConst value) {
-		int64_t ptr;
-		if (JS_ToInt64(ctx, &ptr, value))
-			throw exception{ ctx };
-		return static_cast<long long unsigned int>(ptr);
-	}
-};
-
-template <>
-struct js_traits<long long int> {
-	static JSValue wrap(JSContext *ctx, long long int value) {
-		return JS_NewInt64(ctx, static_cast<int64_t>(value));
-	}
-
-	static long long int unwrap(JSContext *ctx, JSValueConst value) {
-		int64_t ptr;
-		if (JS_ToInt64(ctx, &ptr, value)) {
-			throw exception{ ctx };
-		}
-		return static_cast<long long int>(ptr);
-	}
-};
-
-template <>
-struct js_traits<unsigned char *> {
-	static JSValue wrap(JSContext *ctx, unsigned char *value) {
-		return JS_NewString(ctx, reinterpret_cast<const char *>(value));
-	}
-
-	static unsigned char *unwrap(JSContext *ctx, JSValueConst value) {
-		if (JS_IsString(value)) {
-			return reinterpret_cast<unsigned char *>(const_cast<char *>(JS_ToCString(ctx, value)));
-		} else {
-			throw exception{ ctx };
-		}
-	}
-};
-
-template <>
-struct js_traits<godot::Variant> {
-	/// @throws exception
-	static godot::Variant unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsNumber(v)) {
-			if (JS_IsInt(v)) {
-				int32_t num;
-				if (JS_ToInt32(ctx, &num, v) == 0) {
-					return num;
-				}
-			} else if (JS_IsFloat(v)) {
-				double num;
-				if (JS_ToFloat64(ctx, &num, v) == 0) {
-					return num;
-				}
-			}
-		} else if (JS_IsBool(v)) {
-			return JS_ToBool(ctx, v);
-		} else if (JS_IsString(v)) {
-			return JS_ToCString(ctx, v);
-		}
-		return nullptr;
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Variant variant) noexcept {
-		switch (variant.get_type()) {
-			case godot::Variant::Type::INT:
-				return JS_NewInt32(ctx, variant);
-			case godot::Variant::Type::FLOAT:
-				return JS_NewFloat64(ctx, variant);
-			case godot::Variant::Type::BOOL:
-				return JS_NewBool(ctx, variant);
-			case godot::Variant::Type::STRING:
-			case godot::Variant::Type::STRING_NAME:
-				return JS_NewString(ctx, (const char *)variant._native_ptr());
-			default:
-				return JS_UNDEFINED;
-		}
+	static const uint8_t *unwrap(JSContext *ctx, JSValue value) {
+		return reinterpret_cast<const uint8_t *>(JS_VALUE_GET_PTR(value));
 	}
 };
 
@@ -812,11 +540,11 @@ struct js_traits<std::variant<Ts...>> {
 	}
 };
 
-// template <typename T>
-// struct rest : std::vector<T> {
-// 	using std::vector<T>::vector;
-// 	using std::vector<T>::operator=;
-// };
+template <typename T>
+struct rest : std::vector<T> {
+	using std::vector<T>::vector;
+	using std::vector<T>::operator=;
+};
 
 namespace detail {
 
@@ -1080,12 +808,8 @@ struct js_traits<std::shared_ptr<T>> {
 	/// Signature of the function to obtain the std::shared_ptr from the JSValue.
 	using ptr_cast_fcn_t = std::function<std::shared_ptr<T>(JSContext *, JSValueConst)>;
 
-	using proptr_cast_fcn_t = std::function<std::shared_ptr<void>(JSContext *, JSValueConst)>;
-
 	/// Used by registerDerivedClass to register new derived classes with this class' base type.
 	inline static std::function<void(JSClassID, ptr_cast_fcn_t)> registerWithBase;
-
-	inline static std::vector<std::pair<JSClassID, std::function<std::shared_ptr<void>(JSContext *, JSValueConst)>>> registerWithBaseQueue;
 
 	/// Mapping between derived class' JSClassID and function to obtain the std::shared_ptr from the JSValue.
 	inline static std::unordered_map<JSClassID, ptr_cast_fcn_t> ptrCastFcnMap;
@@ -1096,54 +820,26 @@ struct js_traits<std::shared_ptr<T>> {
 	 * @param derived_class_id class id of the derived class
 	 * @param ptr_cast_fcn function to obtain a std::shared_ptr from the JSValue
 	 */
-	// template <typename D>
-	// static void registerDerivedClass(JSClassID derived_class_id, ptr_cast_fcn_t ptr_cast_fcn) {
-	// 	static_assert(std::is_base_of<T, D>::value && !std::is_same<T, D>::value, "Type is not a derived class");
-	// 	using derived_ptr_cast_fcn_t = typename js_traits<std::shared_ptr<D>>::ptr_cast_fcn_t;
-
-	// 	// Register how to obtain the std::shared_ptr from the derived class.
-	// 	ptrCastFcnMap[derived_class_id] = ptr_cast_fcn;
-
-	// 	// Propagate the registration to our base class (if any).
-	// 	if (registerWithBase)
-	// 		registerWithBase(derived_class_id, ptr_cast_fcn);
-
-	// 	// Instrument the derived class so that it can propagate new derived classes to us.
-	// 	auto old_registerWithBase = js_traits<std::shared_ptr<D>>::registerWithBase;
-	// 	js_traits<std::shared_ptr<D>>::registerWithBase =
-	// 			[old_registerWithBase = std::move(old_registerWithBase)](JSClassID derived_class_id, derived_ptr_cast_fcn_t derived_ptr_cast_fcn) {
-	// 				if (old_registerWithBase)
-	// 					old_registerWithBase(derived_class_id, derived_ptr_cast_fcn);
-	// 				registerDerivedClass<D>(derived_class_id, [derived_cast_fcn = std::move(derived_ptr_cast_fcn)](JSContext *ctx, JSValueConst v) { return std::shared_ptr<T>(derived_cast_fcn(ctx, v)); });
-	// 			};
-	// }
-
-	static proptr_cast_fcn_t convert_to_proptr_cast_fcn_t(ptr_cast_fcn_t &func) {
-		return [&func](JSContext *ctx, JSValueConst val) -> std::shared_ptr<void> {
-			return std::static_pointer_cast<void>(func(ctx, val));
-		};
-	}
-
-	static ptr_cast_fcn_t convert_to_ptr_cast_fcn_t(proptr_cast_fcn_t &func) {
-		return [&func](JSContext *ctx, JSValueConst val) -> std::shared_ptr<T> {
-			return std::static_pointer_cast<T>(func(ctx, val));
-		};
-	}
-
 	template <typename D>
 	static void registerDerivedClass(JSClassID derived_class_id, ptr_cast_fcn_t ptr_cast_fcn) {
 		static_assert(std::is_base_of<T, D>::value && !std::is_same<T, D>::value, "Type is not a derived class");
-		// using derived_ptr_cast_fcn_t = typename js_traits<std::shared_ptr<D>>::ptr_cast_fcn_t;
+		using derived_ptr_cast_fcn_t = typename js_traits<std::shared_ptr<D>>::ptr_cast_fcn_t;
 
+		// Register how to obtain the std::shared_ptr from the derived class.
 		ptrCastFcnMap[derived_class_id] = ptr_cast_fcn;
 
-		std::vector<std::pair<JSClassID, std::function<std::shared_ptr<void>(JSContext *, JSValueConst)>>> queue = registerWithBaseQueue;
-		while (!queue.empty()) {
-			std::pair<JSClassID, std::function<std::shared_ptr<void>(JSContext *, JSValueConst)>> &old = queue.back();
-			queue.pop_back();
-			ptrCastFcnMap[old.first] = [derived_cast_fcn = js_traits<std::shared_ptr<D>>::convert_to_ptr_cast_fcn_t(old.second)](JSContext *ctx, JSValueConst v) { return std::shared_ptr<T>(derived_cast_fcn(ctx, v)); };
-		}
-		registerWithBaseQueue.push_back({ derived_class_id, std::move(js_traits<std::shared_ptr<T>>::convert_to_proptr_cast_fcn_t(ptr_cast_fcn)) });
+		// Propagate the registration to our base class (if any).
+		if (registerWithBase)
+			registerWithBase(derived_class_id, ptr_cast_fcn);
+
+		// Instrument the derived class so that it can propagate new derived classes to us.
+		auto old_registerWithBase = js_traits<std::shared_ptr<D>>::registerWithBase;
+		js_traits<std::shared_ptr<D>>::registerWithBase =
+				[old_registerWithBase = std::move(old_registerWithBase)](JSClassID derived_class_id, derived_ptr_cast_fcn_t derived_ptr_cast_fcn) {
+					if (old_registerWithBase)
+						old_registerWithBase(derived_class_id, derived_ptr_cast_fcn);
+					registerDerivedClass<D>(derived_class_id, [derived_cast_fcn = std::move(derived_ptr_cast_fcn)](JSContext *ctx, JSValueConst v) { return std::shared_ptr<T>(derived_cast_fcn(ctx, v)); });
+				};
 	}
 
 	template <typename B>
@@ -2072,1554 +1768,6 @@ public:
 	}
 };
 
-template <>
-struct js_traits<godot::ObjectID> {
-	/// @throws exception
-	static godot::ObjectID unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::ObjectID *)ptr;
-			}
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::ObjectID v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-
-template <>
-struct js_traits<godot::ObjectID &> {
-	/// @throws exception
-	static godot::ObjectID &unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::ObjectID *)ptr;
-			}
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::ObjectID &v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-
-template <typename T>
-struct js_traits<T, std::enable_if_t<is_ref_v<T>>> {
-	/// @throws exception
-	static T unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(T *)ptr;
-			}
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, T v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-
-template <typename T>
-struct js_traits<T, std::enable_if_t<std::is_base_of_v<godot::Object, T>>> {
-	/// @throws exception
-	static T unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(T *)ptr;
-			}
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, T v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-
-template <typename T>
-struct js_traits<T *, std::enable_if_t<std::is_reference_v<T> && std::is_base_of_v<godot::Object, T>>> {
-	/// @throws exception
-	static T *unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return (T *)ptr;
-			}
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, T *v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-
-template <typename T>
-struct js_traits<T &, std::enable_if_t<std::is_pointer_v<T> && std::is_base_of_v<godot::Object, T>>> {
-	/// @throws exception
-	static T unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(T *)ptr;
-			}
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, T &v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-
-template <>
-struct js_traits<godot::String> {
-	/// @throws exception
-	static godot::String unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::String *)ptr;
-			}
-		}
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::String v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::String &> {
-	/// @throws exception
-	static godot::String &unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::String *)ptr;
-			}
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::String &v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::Vector2> {
-	/// @throws exception
-	static godot::Vector2 unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::Vector2 *)ptr;
-			}
-		}
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Vector2 v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::Vector2 &> {
-	/// @throws exception
-	static godot::Vector2 &unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::Vector2 *)ptr;
-			}
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Vector2 &v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::Vector2i> {
-	/// @throws exception
-	static godot::Vector2i unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::Vector2i *)ptr;
-			}
-		}
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Vector2i v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::Vector2i &> {
-	/// @throws exception
-	static godot::Vector2i &unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::Vector2i *)ptr;
-			}
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Vector2i &v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::Rect2> {
-	/// @throws exception
-	static godot::Rect2 unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::Rect2 *)ptr;
-			}
-		}
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Rect2 v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::Rect2 &> {
-	/// @throws exception
-	static godot::Rect2 &unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::Rect2 *)ptr;
-			}
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Rect2 &v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::Rect2i> {
-	/// @throws exception
-	static godot::Rect2i unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::Rect2i *)ptr;
-			}
-		}
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Rect2i v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::Rect2i &> {
-	/// @throws exception
-	static godot::Rect2i &unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::Rect2i *)ptr;
-			}
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Rect2i &v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::Vector3> {
-	/// @throws exception
-	static godot::Vector3 unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::Vector3 *)ptr;
-			}
-		}
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Vector3 v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::Vector3 &> {
-	/// @throws exception
-	static godot::Vector3 &unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::Vector3 *)ptr;
-			}
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Vector3 &v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::Vector3i> {
-	/// @throws exception
-	static godot::Vector3i unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::Vector3i *)ptr;
-			}
-		}
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Vector3i v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::Vector3i &> {
-	/// @throws exception
-	static godot::Vector3i &unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::Vector3i *)ptr;
-			}
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Vector3i &v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::Transform2D> {
-	/// @throws exception
-	static godot::Transform2D unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::Transform2D *)ptr;
-			}
-		}
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Transform2D v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::Transform2D &> {
-	/// @throws exception
-	static godot::Transform2D &unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::Transform2D *)ptr;
-			}
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Transform2D &v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::Vector4> {
-	/// @throws exception
-	static godot::Vector4 unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::Vector4 *)ptr;
-			}
-		}
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Vector4 v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::Vector4 &> {
-	/// @throws exception
-	static godot::Vector4 &unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::Vector4 *)ptr;
-			}
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Vector4 &v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::Vector4i> {
-	/// @throws exception
-	static godot::Vector4i unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::Vector4i *)ptr;
-			}
-		}
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Vector4i v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::Vector4i &> {
-	/// @throws exception
-	static godot::Vector4i &unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::Vector4i *)ptr;
-			}
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Vector4i &v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::Plane> {
-	/// @throws exception
-	static godot::Plane unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::Plane *)ptr;
-			}
-		}
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Plane v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::Plane &> {
-	/// @throws exception
-	static godot::Plane &unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::Plane *)ptr;
-			}
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Plane &v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::Quaternion> {
-	/// @throws exception
-	static godot::Quaternion unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::Quaternion *)ptr;
-			}
-		}
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Quaternion v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::Quaternion &> {
-	/// @throws exception
-	static godot::Quaternion &unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::Quaternion *)ptr;
-			}
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Quaternion &v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::AABB> {
-	/// @throws exception
-	static godot::AABB unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::AABB *)ptr;
-			}
-		}
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::AABB v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::AABB &> {
-	/// @throws exception
-	static godot::AABB &unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::AABB *)ptr;
-			}
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::AABB &v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::Basis> {
-	/// @throws exception
-	static godot::Basis unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::Basis *)ptr;
-			}
-		}
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Basis v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::Basis &> {
-	/// @throws exception
-	static godot::Basis &unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::Basis *)ptr;
-			}
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Basis &v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::Transform3D> {
-	/// @throws exception
-	static godot::Transform3D unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::Transform3D *)ptr;
-			}
-		}
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Transform3D v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::Transform3D &> {
-	/// @throws exception
-	static godot::Transform3D &unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::Transform3D *)ptr;
-			}
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Transform3D &v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::Projection> {
-	/// @throws exception
-	static godot::Projection unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::Projection *)ptr;
-			}
-		}
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Projection v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::Projection &> {
-	/// @throws exception
-	static godot::Projection &unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::Projection *)ptr;
-			}
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Projection &v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::Color> {
-	/// @throws exception
-	static godot::Color unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::Color *)ptr;
-			}
-		}
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Color v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::Color &> {
-	/// @throws exception
-	static godot::Color &unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::Color *)ptr;
-			}
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Color &v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::StringName> {
-	/// @throws exception
-	static godot::StringName unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::StringName *)ptr;
-			}
-		}
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::StringName v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::StringName &> {
-	/// @throws exception
-	static godot::StringName &unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::StringName *)ptr;
-			}
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::StringName &v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::NodePath> {
-	/// @throws exception
-	static godot::NodePath unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::NodePath *)ptr;
-			}
-		}
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::NodePath v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::NodePath &> {
-	/// @throws exception
-	static godot::NodePath &unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::NodePath *)ptr;
-			}
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::NodePath &v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::RID> {
-	/// @throws exception
-	static godot::RID unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::RID *)ptr;
-			}
-		}
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::RID v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::RID &> {
-	/// @throws exception
-	static godot::RID &unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::RID *)ptr;
-			}
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::RID &v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::Callable> {
-	/// @throws exception
-	static godot::Callable unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::Callable *)ptr;
-			}
-		}
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Callable v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::Callable &> {
-	/// @throws exception
-	static godot::Callable &unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::Callable *)ptr;
-			}
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Callable &v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::Signal> {
-	/// @throws exception
-	static godot::Signal unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::Signal *)ptr;
-			}
-		}
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Signal v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::Signal &> {
-	/// @throws exception
-	static godot::Signal &unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::Signal *)ptr;
-			}
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Signal &v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::Dictionary> {
-	/// @throws exception
-	static godot::Dictionary unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::Dictionary *)ptr;
-			}
-		}
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Dictionary v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-template <>
-struct js_traits<godot::Dictionary &> {
-	/// @throws exception
-	static godot::Dictionary &unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::Dictionary *)ptr;
-			}
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Dictionary &v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-
-template <>
-struct js_traits<godot::Array> {
-	/// @throws exception
-	static godot::Array unwrap(JSContext *ctx, JSValueConst v) {
-		godot::Array gd_arr;
-		if (JS_IsArray(ctx, v)) {
-			Value jsarray{ ctx, JS_DupValue(ctx, v) };
-			for (uint32_t i = 0; i < static_cast<uint32_t>(jsarray["length"]); i++) {
-				gd_arr.append(godot::Variant(jsarray[i]));
-			}
-			return gd_arr;
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Array gd_arr) noexcept {
-		JSValue buff = JS_NewArrayBuffer(ctx, (uint8_t *)gd_arr._native_ptr(), gd_arr.size(), nullptr, nullptr, false);
-		JSValue js_arr = JS_NewArray(ctx);
-		for (int i = 0; i < gd_arr.size(); i++) {
-			JS_SetPropertyUint32(ctx, js_arr, i, JS_GetPropertyUint32(ctx, buff, i));
-		}
-		return js_arr;
-	}
-};
-
-template <>
-struct js_traits<godot::Array &> {
-	/// @throws exception
-	static godot::Array unwrap(JSContext *ctx, JSValueConst v) {
-		godot::Array gd_arr;
-		if (JS_IsArray(ctx, v)) {
-			Value jsarray{ ctx, JS_DupValue(ctx, v) };
-			for (uint32_t i = 0; i < static_cast<uint32_t>(jsarray["length"]); i++) {
-				gd_arr.append(godot::Variant(jsarray[i]));
-			}
-			return gd_arr;
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::Array &gd_arr) noexcept {
-		JSValue buff = JS_NewArrayBuffer(ctx, (uint8_t *)gd_arr._native_ptr(), gd_arr.size(), nullptr, nullptr, false);
-		JSValue js_arr = JS_NewArray(ctx);
-		for (int i = 0; i < gd_arr.size(); i++) {
-			JS_SetPropertyUint32(ctx, js_arr, i, JS_GetPropertyUint32(ctx, buff, i));
-		}
-		return js_arr;
-	}
-};
-
-template <>
-struct js_traits<godot::PackedInt32Array> {
-	/// @throws exception
-	static godot::PackedInt32Array unwrap(JSContext *ctx, JSValueConst v) {
-		godot::PackedInt32Array gd_arr;
-		if (JS_IsArray(ctx, v)) {
-			Value jsarray{ ctx, JS_DupValue(ctx, v) };
-			for (uint32_t i = 0; i < static_cast<uint32_t>(jsarray["length"]); i++) {
-				gd_arr.append(godot::Variant(jsarray[i]));
-			}
-			return gd_arr;
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::PackedInt32Array gd_arr) noexcept {
-		JSValue buff = JS_NewArrayBuffer(ctx, (uint8_t *)gd_arr._native_ptr(), gd_arr.size(), nullptr, nullptr, false);
-		JSValue js_arr = JS_NewArray(ctx);
-		for (int i = 0; i < gd_arr.size(); i++) {
-			JS_SetPropertyUint32(ctx, js_arr, i, JS_GetPropertyUint32(ctx, buff, i));
-		}
-		return js_arr;
-	}
-};
-
-template <>
-struct js_traits<godot::PackedInt32Array &> {
-	/// @throws exception
-	static godot::PackedInt32Array unwrap(JSContext *ctx, JSValueConst v) {
-		godot::PackedInt32Array gd_arr;
-		if (JS_IsArray(ctx, v)) {
-			Value jsarray{ ctx, JS_DupValue(ctx, v) };
-			for (uint32_t i = 0; i < static_cast<uint32_t>(jsarray["length"]); i++) {
-				gd_arr.append(godot::Variant(jsarray[i]));
-			}
-			return gd_arr;
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::PackedInt32Array &gd_arr) noexcept {
-		JSValue buff = JS_NewArrayBuffer(ctx, (uint8_t *)gd_arr._native_ptr(), gd_arr.size(), nullptr, nullptr, false);
-		JSValue js_arr = JS_NewArray(ctx);
-		for (int i = 0; i < gd_arr.size(); i++) {
-			JS_SetPropertyUint32(ctx, js_arr, i, JS_GetPropertyUint32(ctx, buff, i));
-		}
-		return js_arr;
-	}
-};
-
-template <>
-struct js_traits<godot::PackedInt64Array> {
-	/// @throws exception
-	static godot::PackedInt64Array unwrap(JSContext *ctx, JSValueConst v) {
-		godot::PackedInt64Array gd_arr;
-		if (JS_IsArray(ctx, v)) {
-			Value jsarray{ ctx, JS_DupValue(ctx, v) };
-			for (uint32_t i = 0; i < static_cast<uint32_t>(jsarray["length"]); i++) {
-				gd_arr.append(godot::Variant(jsarray[i]));
-			}
-			return gd_arr;
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::PackedInt64Array gd_arr) noexcept {
-		JSValue buff = JS_NewArrayBuffer(ctx, (uint8_t *)gd_arr._native_ptr(), gd_arr.size(), nullptr, nullptr, false);
-		JSValue js_arr = JS_NewArray(ctx);
-		for (int i = 0; i < gd_arr.size(); i++) {
-			JS_SetPropertyUint32(ctx, js_arr, i, JS_GetPropertyUint32(ctx, buff, i));
-		}
-		return js_arr;
-	}
-};
-
-template <>
-struct js_traits<godot::PackedInt64Array &> {
-	/// @throws exception
-	static godot::PackedInt64Array unwrap(JSContext *ctx, JSValueConst v) {
-		godot::PackedInt64Array gd_arr;
-		if (JS_IsArray(ctx, v)) {
-			Value jsarray{ ctx, JS_DupValue(ctx, v) };
-			for (uint32_t i = 0; i < static_cast<uint32_t>(jsarray["length"]); i++) {
-				gd_arr.append(godot::Variant(jsarray[i]));
-			}
-			return gd_arr;
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::PackedInt64Array &gd_arr) noexcept {
-		JSValue buff = JS_NewArrayBuffer(ctx, (uint8_t *)gd_arr._native_ptr(), gd_arr.size(), nullptr, nullptr, false);
-		JSValue js_arr = JS_NewArray(ctx);
-		for (int i = 0; i < gd_arr.size(); i++) {
-			JS_SetPropertyUint32(ctx, js_arr, i, JS_GetPropertyUint32(ctx, buff, i));
-		}
-		return js_arr;
-	}
-};
-
-template <>
-struct js_traits<godot::PackedFloat32Array> {
-	/// @throws exception
-	static godot::PackedFloat32Array unwrap(JSContext *ctx, JSValueConst v) {
-		godot::PackedFloat32Array gd_arr;
-		if (JS_IsArray(ctx, v)) {
-			Value jsarray{ ctx, JS_DupValue(ctx, v) };
-			for (uint32_t i = 0; i < static_cast<uint32_t>(jsarray["length"]); i++) {
-				gd_arr.append(godot::Variant(jsarray[i]));
-			}
-			return gd_arr;
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::PackedFloat32Array gd_arr) noexcept {
-		JSValue buff = JS_NewArrayBuffer(ctx, (uint8_t *)gd_arr._native_ptr(), gd_arr.size(), nullptr, nullptr, false);
-		JSValue js_arr = JS_NewArray(ctx);
-		for (int i = 0; i < gd_arr.size(); i++) {
-			JS_SetPropertyUint32(ctx, js_arr, i, JS_GetPropertyUint32(ctx, buff, i));
-		}
-		return js_arr;
-	}
-};
-
-template <>
-struct js_traits<godot::PackedFloat32Array &> {
-	/// @throws exception
-	static godot::PackedFloat32Array unwrap(JSContext *ctx, JSValueConst v) {
-		godot::PackedFloat32Array gd_arr;
-		if (JS_IsArray(ctx, v)) {
-			Value jsarray{ ctx, JS_DupValue(ctx, v) };
-			for (uint32_t i = 0; i < static_cast<uint32_t>(jsarray["length"]); i++) {
-				gd_arr.append(godot::Variant(jsarray[i]));
-			}
-			return gd_arr;
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::PackedFloat32Array &gd_arr) noexcept {
-		JSValue buff = JS_NewArrayBuffer(ctx, (uint8_t *)gd_arr._native_ptr(), gd_arr.size(), nullptr, nullptr, false);
-		JSValue js_arr = JS_NewArray(ctx);
-		for (int i = 0; i < gd_arr.size(); i++) {
-			JS_SetPropertyUint32(ctx, js_arr, i, JS_GetPropertyUint32(ctx, buff, i));
-		}
-		return js_arr;
-	}
-};
-
-template <>
-struct js_traits<godot::PackedFloat64Array> {
-	/// @throws exception
-	static godot::PackedFloat64Array unwrap(JSContext *ctx, JSValueConst v) {
-		godot::PackedFloat64Array gd_arr;
-		if (JS_IsArray(ctx, v)) {
-			Value jsarray{ ctx, JS_DupValue(ctx, v) };
-			for (uint32_t i = 0; i < static_cast<uint32_t>(jsarray["length"]); i++) {
-				gd_arr.append(godot::Variant(jsarray[i]));
-			}
-			return gd_arr;
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::PackedFloat64Array gd_arr) noexcept {
-		JSValue buff = JS_NewArrayBuffer(ctx, (uint8_t *)gd_arr._native_ptr(), gd_arr.size(), nullptr, nullptr, false);
-		JSValue js_arr = JS_NewArray(ctx);
-		for (int i = 0; i < gd_arr.size(); i++) {
-			JS_SetPropertyUint32(ctx, js_arr, i, JS_GetPropertyUint32(ctx, buff, i));
-		}
-		return js_arr;
-	}
-};
-
-template <>
-struct js_traits<godot::PackedFloat64Array &> {
-	/// @throws exception
-	static godot::PackedFloat64Array unwrap(JSContext *ctx, JSValueConst v) {
-		godot::PackedFloat64Array gd_arr;
-		if (JS_IsArray(ctx, v)) {
-			Value jsarray{ ctx, JS_DupValue(ctx, v) };
-			for (uint32_t i = 0; i < static_cast<uint32_t>(jsarray["length"]); i++) {
-				gd_arr.append(godot::Variant(jsarray[i]));
-			}
-			return gd_arr;
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::PackedFloat64Array &gd_arr) noexcept {
-		JSValue buff = JS_NewArrayBuffer(ctx, (uint8_t *)gd_arr._native_ptr(), gd_arr.size(), nullptr, nullptr, false);
-		JSValue js_arr = JS_NewArray(ctx);
-		for (int i = 0; i < gd_arr.size(); i++) {
-			JS_SetPropertyUint32(ctx, js_arr, i, JS_GetPropertyUint32(ctx, buff, i));
-		}
-		return js_arr;
-	}
-};
-
-template <>
-struct js_traits<godot::PackedStringArray> {
-	/// @throws exception
-	static godot::PackedStringArray unwrap(JSContext *ctx, JSValueConst v) {
-		godot::PackedStringArray gd_arr;
-		if (JS_IsArray(ctx, v)) {
-			Value jsarray{ ctx, JS_DupValue(ctx, v) };
-			for (uint32_t i = 0; i < static_cast<uint32_t>(jsarray["length"]); i++) {
-				gd_arr.append(godot::Variant(jsarray[i]));
-			}
-			return gd_arr;
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::PackedStringArray gd_arr) noexcept {
-		JSValue buff = JS_NewArrayBuffer(ctx, (uint8_t *)gd_arr._native_ptr(), gd_arr.size(), nullptr, nullptr, false);
-		JSValue js_arr = JS_NewArray(ctx);
-		for (int i = 0; i < gd_arr.size(); i++) {
-			JS_SetPropertyUint32(ctx, js_arr, i, JS_GetPropertyUint32(ctx, buff, i));
-		}
-		return js_arr;
-	}
-};
-
-template <>
-struct js_traits<godot::PackedStringArray &> {
-	/// @throws exception
-	static godot::PackedStringArray unwrap(JSContext *ctx, JSValueConst v) {
-		godot::PackedStringArray gd_arr;
-		if (JS_IsArray(ctx, v)) {
-			Value jsarray{ ctx, JS_DupValue(ctx, v) };
-			for (uint32_t i = 0; i < static_cast<uint32_t>(jsarray["length"]); i++) {
-				gd_arr.append(godot::Variant(jsarray[i]));
-			}
-			return gd_arr;
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::PackedStringArray &gd_arr) noexcept {
-		JSValue buff = JS_NewArrayBuffer(ctx, (uint8_t *)gd_arr._native_ptr(), gd_arr.size(), nullptr, nullptr, false);
-		JSValue js_arr = JS_NewArray(ctx);
-		for (int i = 0; i < gd_arr.size(); i++) {
-			JS_SetPropertyUint32(ctx, js_arr, i, JS_GetPropertyUint32(ctx, buff, i));
-		}
-		return js_arr;
-	}
-};
-
-template <>
-struct js_traits<godot::PackedVector2Array> {
-	/// @throws exception
-	static godot::PackedVector2Array unwrap(JSContext *ctx, JSValueConst v) {
-		godot::PackedVector2Array gd_arr;
-		if (JS_IsArray(ctx, v)) {
-			Value jsarray{ ctx, JS_DupValue(ctx, v) };
-			for (uint32_t i = 0; i < static_cast<uint32_t>(jsarray["length"]); i++) {
-				gd_arr.append(godot::Variant(jsarray[i]));
-			}
-			return gd_arr;
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::PackedVector2Array gd_arr) noexcept {
-		JSValue buff = JS_NewArrayBuffer(ctx, (uint8_t *)gd_arr._native_ptr(), gd_arr.size(), nullptr, nullptr, false);
-		JSValue js_arr = JS_NewArray(ctx);
-		for (int i = 0; i < gd_arr.size(); i++) {
-			JS_SetPropertyUint32(ctx, js_arr, i, JS_GetPropertyUint32(ctx, buff, i));
-		}
-		return js_arr;
-	}
-};
-
-template <>
-struct js_traits<godot::PackedVector2Array &> {
-	/// @throws exception
-	static godot::PackedVector2Array unwrap(JSContext *ctx, JSValueConst v) {
-		godot::PackedVector2Array gd_arr;
-		if (JS_IsArray(ctx, v)) {
-			Value jsarray{ ctx, JS_DupValue(ctx, v) };
-			for (uint32_t i = 0; i < static_cast<uint32_t>(jsarray["length"]); i++) {
-				gd_arr.append(godot::Variant(jsarray[i]));
-			}
-			return gd_arr;
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::PackedVector2Array &gd_arr) noexcept {
-		JSValue buff = JS_NewArrayBuffer(ctx, (uint8_t *)gd_arr._native_ptr(), gd_arr.size(), nullptr, nullptr, false);
-		JSValue js_arr = JS_NewArray(ctx);
-		for (int i = 0; i < gd_arr.size(); i++) {
-			JS_SetPropertyUint32(ctx, js_arr, i, JS_GetPropertyUint32(ctx, buff, i));
-		}
-		return js_arr;
-	}
-};
-
-template <>
-struct js_traits<godot::PackedVector3Array> {
-	/// @throws exception
-	static godot::PackedVector3Array unwrap(JSContext *ctx, JSValueConst v) {
-		godot::PackedVector3Array gd_arr;
-		if (JS_IsArray(ctx, v)) {
-			Value jsarray{ ctx, JS_DupValue(ctx, v) };
-			for (uint32_t i = 0; i < static_cast<uint32_t>(jsarray["length"]); i++) {
-				gd_arr.append(godot::Variant(jsarray[i]));
-			}
-			return gd_arr;
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::PackedVector3Array gd_arr) noexcept {
-		JSValue buff = JS_NewArrayBuffer(ctx, (uint8_t *)gd_arr._native_ptr(), gd_arr.size(), nullptr, nullptr, false);
-		JSValue js_arr = JS_NewArray(ctx);
-		for (int i = 0; i < gd_arr.size(); i++) {
-			JS_SetPropertyUint32(ctx, js_arr, i, JS_GetPropertyUint32(ctx, buff, i));
-		}
-		return js_arr;
-	}
-};
-
-template <>
-struct js_traits<godot::PackedVector3Array &> {
-	/// @throws exception
-	static godot::PackedVector3Array unwrap(JSContext *ctx, JSValueConst v) {
-		godot::PackedVector3Array gd_arr;
-		if (JS_IsArray(ctx, v)) {
-			Value jsarray{ ctx, JS_DupValue(ctx, v) };
-			for (uint32_t i = 0; i < static_cast<uint32_t>(jsarray["length"]); i++) {
-				gd_arr.append(godot::Variant(jsarray[i]));
-			}
-			return gd_arr;
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::PackedVector3Array &gd_arr) noexcept {
-		JSValue buff = JS_NewArrayBuffer(ctx, (uint8_t *)gd_arr._native_ptr(), gd_arr.size(), nullptr, nullptr, false);
-		JSValue js_arr = JS_NewArray(ctx);
-		for (int i = 0; i < gd_arr.size(); i++) {
-			JS_SetPropertyUint32(ctx, js_arr, i, JS_GetPropertyUint32(ctx, buff, i));
-		}
-		return js_arr;
-	}
-};
-
-template <>
-struct js_traits<godot::PackedVector4Array> {
-	/// @throws exception
-	static godot::PackedVector4Array unwrap(JSContext *ctx, JSValueConst v) {
-		godot::PackedVector4Array gd_arr;
-		if (JS_IsArray(ctx, v)) {
-			Value jsarray{ ctx, JS_DupValue(ctx, v) };
-			for (uint32_t i = 0; i < static_cast<uint32_t>(jsarray["length"]); i++) {
-				gd_arr.append(godot::Variant(jsarray[i]));
-			}
-			return gd_arr;
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::PackedVector4Array gd_arr) noexcept {
-		JSValue buff = JS_NewArrayBuffer(ctx, (uint8_t *)gd_arr._native_ptr(), gd_arr.size(), nullptr, nullptr, false);
-		JSValue js_arr = JS_NewArray(ctx);
-		for (int i = 0; i < gd_arr.size(); i++) {
-			JS_SetPropertyUint32(ctx, js_arr, i, JS_GetPropertyUint32(ctx, buff, i));
-		}
-		return js_arr;
-	}
-};
-
-template <>
-struct js_traits<godot::PackedVector4Array &> {
-	/// @throws exception
-	static godot::PackedVector4Array unwrap(JSContext *ctx, JSValueConst v) {
-		godot::PackedVector4Array gd_arr;
-		if (JS_IsArray(ctx, v)) {
-			Value jsarray{ ctx, JS_DupValue(ctx, v) };
-			for (uint32_t i = 0; i < static_cast<uint32_t>(jsarray["length"]); i++) {
-				gd_arr.append(godot::Variant(jsarray[i]));
-			}
-			return gd_arr;
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::PackedVector4Array &gd_arr) noexcept {
-		JSValue buff = JS_NewArrayBuffer(ctx, (uint8_t *)gd_arr._native_ptr(), gd_arr.size(), nullptr, nullptr, false);
-		JSValue js_arr = JS_NewArray(ctx);
-		for (int i = 0; i < gd_arr.size(); i++) {
-			JS_SetPropertyUint32(ctx, js_arr, i, JS_GetPropertyUint32(ctx, buff, i));
-		}
-		return js_arr;
-	}
-};
-
-template <>
-struct js_traits<godot::PackedColorArray> {
-	/// @throws exception
-	static godot::PackedColorArray unwrap(JSContext *ctx, JSValueConst v) {
-		godot::PackedColorArray gd_arr;
-		if (JS_IsArray(ctx, v)) {
-			Value jsarray{ ctx, JS_DupValue(ctx, v) };
-			for (uint32_t i = 0; i < static_cast<uint32_t>(jsarray["length"]); i++) {
-				gd_arr.append(godot::Variant(jsarray[i]));
-			}
-			return gd_arr;
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::PackedColorArray gd_arr) noexcept {
-		JSValue buff = JS_NewArrayBuffer(ctx, (uint8_t *)gd_arr._native_ptr(), gd_arr.size(), nullptr, nullptr, false);
-		JSValue js_arr = JS_NewArray(ctx);
-		for (int i = 0; i < gd_arr.size(); i++) {
-			JS_SetPropertyUint32(ctx, js_arr, i, JS_GetPropertyUint32(ctx, buff, i));
-		}
-		return js_arr;
-	}
-};
-
-template <>
-struct js_traits<godot::PackedColorArray &> {
-	/// @throws exception
-	static godot::PackedColorArray unwrap(JSContext *ctx, JSValueConst v) {
-		godot::PackedColorArray gd_arr;
-		if (JS_IsArray(ctx, v)) {
-			Value jsarray{ ctx, JS_DupValue(ctx, v) };
-			for (uint32_t i = 0; i < static_cast<uint32_t>(jsarray["length"]); i++) {
-				gd_arr.append(godot::Variant(jsarray[i]));
-			}
-			return gd_arr;
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::PackedColorArray &gd_arr) noexcept {
-		JSValue buff = JS_NewArrayBuffer(ctx, (uint8_t *)gd_arr._native_ptr(), gd_arr.size(), nullptr, nullptr, false);
-		JSValue js_arr = JS_NewArray(ctx);
-		for (int i = 0; i < gd_arr.size(); i++) {
-			JS_SetPropertyUint32(ctx, js_arr, i, JS_GetPropertyUint32(ctx, buff, i));
-		}
-		return js_arr;
-	}
-};
-
-template <>
-struct js_traits<godot::PackedByteArray> {
-	/// @throws exception
-	static godot::PackedByteArray unwrap(JSContext *ctx, JSValueConst v) {
-		godot::PackedByteArray gd_arr;
-		if (JS_IsArray(ctx, v)) {
-			Value jsarray{ ctx, JS_DupValue(ctx, v) };
-			for (uint32_t i = 0; i < static_cast<uint32_t>(jsarray["length"]); i++) {
-				gd_arr.append(godot::Variant(jsarray[i]));
-			}
-			return gd_arr;
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::PackedByteArray gd_arr) noexcept {
-		JSValue buff = JS_NewArrayBuffer(ctx, (uint8_t *)gd_arr._native_ptr(), gd_arr.size(), nullptr, nullptr, false);
-		JSValue js_arr = JS_NewArray(ctx);
-		for (int i = 0; i < gd_arr.size(); i++) {
-			JS_SetPropertyUint32(ctx, js_arr, i, JS_GetPropertyUint32(ctx, buff, i));
-		}
-		return js_arr;
-	}
-};
-
-template <>
-struct js_traits<godot::PackedByteArray &> {
-	/// @throws exception
-	static godot::PackedByteArray unwrap(JSContext *ctx, JSValueConst v) {
-		godot::PackedByteArray gd_arr;
-		if (JS_IsArray(ctx, v)) {
-			Value jsarray{ ctx, JS_DupValue(ctx, v) };
-			for (uint32_t i = 0; i < static_cast<uint32_t>(jsarray["length"]); i++) {
-				gd_arr.append(godot::Variant(jsarray[i]));
-			}
-			return gd_arr;
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::PackedByteArray &gd_arr) noexcept {
-		JSValue buff = JS_NewArrayBuffer(ctx, (uint8_t *)gd_arr._native_ptr(), gd_arr.size(), nullptr, nullptr, false);
-		JSValue js_arr = JS_NewArray(ctx);
-		for (int i = 0; i < gd_arr.size(); i++) {
-			JS_SetPropertyUint32(ctx, js_arr, i, JS_GetPropertyUint32(ctx, buff, i));
-		}
-		return js_arr;
-	}
-};
-
-template <typename T>
-struct js_traits<godot::TypedArray<T>> {
-	/// @throws exception
-	static godot::TypedArray<T> unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::TypedArray<T> *)ptr;
-			}
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::TypedArray<T> v) noexcept {
-		return Value{ ctx, std::forward<godot::TypedArray<T>>(v) };
-	}
-};
-
-template <typename T>
-struct js_traits<godot::TypedArray<T> &> {
-	/// @throws exception
-	static godot::TypedArray<T> &unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(godot::TypedArray<T> *)ptr;
-			}
-		}
-
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::TypedArray<T> &v) noexcept {
-		return Value{ ctx, std::move(v) };
-	}
-};
-
-template <typename E>
-struct js_traits<godot::BitField<E>, std::enable_if_t<std::is_enum_v<E>>> {
-	/// @throws exception
-	static E unwrap(JSContext *ctx, JSValueConst v) {
-		if (JS_IsObject(v)) {
-			void *ptr = JS_GetOpaque(v, JS_GetClassID(v));
-			if (ptr) {
-				return *(E *)ptr;
-			}
-		}
-		throw exception{ ctx };
-	}
-
-	static JSValue wrap(JSContext *ctx, godot::BitField<E> v) noexcept {
-		return qjs::Value{ ctx, std::move(v) };
-	}
-};
-
 /** Conversion traits for Value.
  */
 template <>
@@ -3931,5 +2079,89 @@ inline Context *Runtime::executePendingJob() {
 	}
 	return &Context::get(ctx);
 }
+
+static uint8_t *get_array_buf(JSContext *ctx, JSValue v) {
+	int class_id = JS_GetClassID(v);
+	size_t len;
+	if (class_id >= 21 && class_id <= 31) {
+		JSValue tbuf = JS_GetTypedArrayBuffer(ctx, v, NULL, NULL, NULL);
+		uint8_t *abuf = JS_GetArrayBuffer(ctx, &len, tbuf);
+		return abuf;
+	} else if (class_id == 2) {
+		uint8_t *abuf = JS_GetArrayBuffer(ctx, &len, v);
+		return abuf;
+	} else {
+		return nullptr;
+	}
+}
+
+template <>
+struct js_traits<GDExtensionPtrBuiltInMethod> {
+	static JSValue inner_method(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv, int magic, JSValue *func_data) {
+		GDExtensionTypePtr p_base = js_traits<GDExtensionTypePtr>::unwrap(ctx, JS_GetPropertyUint32(ctx, *argv, 0));
+		GDExtensionConstTypePtr *p_args = js_traits<GDExtensionConstTypePtr *>::unwrap(ctx, JS_GetPropertyUint32(ctx, *argv, 1));
+		GDExtensionTypePtr r_return = js_traits<GDExtensionTypePtr>::unwrap(ctx, JS_GetPropertyUint32(ctx, *argv, 2));
+		int p_argument_count = js_traits<int>::unwrap(ctx, JS_GetPropertyUint32(ctx, *argv, 3));
+		GDExtensionPtrBuiltInMethod method = reinterpret_cast<GDExtensionPtrBuiltInMethod>(JS_VALUE_GET_PTR(*func_data));
+		method(p_base, p_args, r_return, p_argument_count);
+		return JS_UNDEFINED;
+	}
+
+	static JSValue wrap(JSContext *ctx, GDExtensionPtrBuiltInMethod v) noexcept {
+		JSValue data[1];
+		data[0] = js_traits<std::function<void(GDExtensionTypePtr, const GDExtensionConstTypePtr *, GDExtensionTypePtr, int)>>::wrap(ctx, v);
+		return JS_NewCFunctionData(ctx, &inner_method, 4, 0, 1, data);
+	}
+};
+
+template <>
+struct js_traits<GDExtensionPtrConstructor> {
+	static JSValue inner_method(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv, int magic, JSValue *func_data) {
+		GDExtensionUninitializedTypePtr p_base = reinterpret_cast<GDExtensionUninitializedTypePtr>(get_array_buf(ctx, argv[0]));
+		const GDExtensionConstTypePtr *p_args = reinterpret_cast<const GDExtensionConstTypePtr *>(get_array_buf(ctx, argv[1]));
+		js_traits<std::function<void(GDExtensionUninitializedTypePtr, const GDExtensionConstTypePtr *)>>::unwrap(ctx, *func_data)(p_base, p_args);
+		return JS_UNDEFINED;
+	}
+
+	static JSValue wrap(JSContext *ctx, GDExtensionPtrConstructor v) noexcept {
+		JSValue data[1];
+		data[0] = js_traits<std::function<void(GDExtensionUninitializedTypePtr, const GDExtensionConstTypePtr *)>>::wrap(ctx, v);
+		return JS_NewCFunctionData(ctx, &inner_method, 2, 0, 1, data);
+	}
+};
+
+template <>
+struct js_traits<GDExtensionPtrUtilityFunction> {
+	static JSValue inner_method(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv, int magic, JSValue *func_data) {
+		GDExtensionTypePtr r_return = js_traits<GDExtensionTypePtr>::unwrap(ctx, argv[0]);
+		const GDExtensionConstTypePtr *p_args = reinterpret_cast<const GDExtensionConstTypePtr *>(get_array_buf(ctx, argv[1]));
+		int p_argument_count = js_traits<int>::unwrap(ctx, argv[2]);
+		js_traits<std::function<void(GDExtensionTypePtr, const GDExtensionConstTypePtr *, int)>>::unwrap(ctx, *func_data)(r_return, p_args, p_argument_count);
+		return JS_UNDEFINED;
+	}
+
+	static JSValue wrap(JSContext *ctx, GDExtensionPtrUtilityFunction v) noexcept {
+		JSValue data[1];
+		data[0] = js_traits<std::function<void(GDExtensionTypePtr, const GDExtensionConstTypePtr *, int)>>::wrap(ctx, v);
+		return JS_NewCFunctionData(ctx, &inner_method, 3, 0, 1, data);
+	}
+};
+
+template <>
+struct js_traits<GDExtensionVariantFromTypeConstructorFunc> {
+	static JSValue inner_method(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv, int magic, JSValue *func_data) {
+		GDExtensionUninitializedVariantPtr arg1 = js_traits<GDExtensionUninitializedVariantPtr>::unwrap(ctx, JS_GetPropertyUint32(ctx, *argv, 0));
+		GDExtensionTypePtr arg2 = js_traits<GDExtensionTypePtr>::unwrap(ctx, JS_GetPropertyUint32(ctx, *argv, 1));
+		GDExtensionVariantFromTypeConstructorFunc method = reinterpret_cast<GDExtensionVariantFromTypeConstructorFunc>(JS_VALUE_GET_PTR(*func_data));
+		method(arg1, arg2);
+		return JS_UNDEFINED;
+	}
+
+	static JSValue wrap(JSContext *ctx, GDExtensionVariantFromTypeConstructorFunc v) noexcept {
+		JSValue data[1];
+		data[0] = js_traits<std::function<void(GDExtensionUninitializedVariantPtr, GDExtensionTypePtr)>>::wrap(ctx, v);
+		return JS_NewCFunctionData(ctx, &inner_method, 2, 0, 1, data);
+	}
+};
 
 } // namespace qjs

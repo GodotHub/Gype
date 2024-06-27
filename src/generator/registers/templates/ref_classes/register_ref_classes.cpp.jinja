@@ -1,9 +1,0 @@
-#include "register/register_classes.h"
-
-using namespace godot;
-
-void register_classes_Ref() {
-{% for clazz in classes%}
-    register_classes_{{clazz.name}}Ref();
-{% endfor %}
-}
