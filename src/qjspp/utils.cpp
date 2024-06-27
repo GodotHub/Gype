@@ -2,9 +2,11 @@
 #include "qjspp.hpp"
 #include <stddef.h>
 #include <cctype>
+#include <cstring>
+#include <iostream>
 
-qjs::Runtime *runtime = new qjs::Runtime();
-qjs::Context *context = new qjs::Context(*runtime);
+qjs::Runtime runtime;
+qjs::Context context(runtime);
 
 std::string underscoreToCamelCase(const std::string &input) {
 	std::string output;
@@ -41,48 +43,28 @@ std::string camelToSnake(const std::string &input) {
 	return result;
 }
 
-static JSModuleDef *module_loader(JSContext *ctx, const char *module_name, void *opaque) {
-	char filename[256];
-	snprintf(filename, sizeof(filename), "%s.js", module_name);
+JSModuleDef *module_loader(JSContext *ctx, const char *module_name, void *opaque) {
+	char filepath[1024];
+	sprintf(filepath, "%s/%s.js", (char *)opaque, module_name); // 构建文件路径
+	std::optional<std::string> opt;
+	JSValue func_val;
 
-	FILE *file = fopen(filename, "r");
-	if (!file) {
-		fprintf(stderr, "Failed to open file: %s\n", filename);
+	opt = qjs::detail::readFile(filepath);
+	if (!opt.has_value()) {
+		return NULL;
+	}
+	char *buf = (char *)opt.value().c_str();
+	size_t buf_len = strlen(buf);
+
+	// 编译模块
+	func_val = JS_Eval(ctx, (char *)buf, buf_len, module_name, JS_EVAL_TYPE_MODULE | JS_EVAL_FLAG_COMPILE_ONLY);
+	if (JS_IsException(func_val)) {
+		JS_FreeValue(ctx, func_val);
 		return NULL;
 	}
 
-	fseek(file, 0, SEEK_END);
-	long length = ftell(file);
-	fseek(file, 0, SEEK_SET);
-	char *source_code = (char *)malloc(length + 1);
-	if (source_code) {
-		fread(source_code, 1, length, file);
-		source_code[length] = '\0';
-	}
-	fclose(file);
-
-	if (!source_code) {
-		fprintf(stderr, "Failed to read file: %s\n", filename);
-		return NULL;
-	}
-
-	JSValue module_val = JS_Eval(ctx, source_code, length, module_name, JS_EVAL_TYPE_MODULE);
-	free(source_code);
-
-	if (JS_IsException(module_val)) {
-		JSValue exception = JS_GetException(ctx);
-		const char *exception_str = JS_ToCString(ctx, exception);
-		fprintf(stderr, "Module load error: %s\n", exception_str);
-		JS_FreeCString(ctx, exception_str);
-		JS_FreeValue(ctx, exception);
-		return NULL;
-	}
-
-	JSModuleDef *m = (JSModuleDef *)JS_VALUE_GET_PTR(module_val);
-	JS_FreeValue(ctx, module_val);
+	// 获取模块定义
+	JSModuleDef *m = (JSModuleDef *)JS_VALUE_GET_PTR(func_val);
+	JS_FreeValue(ctx, func_val);
 	return m;
-}
-
-void init_module() {
-	JS_SetModuleLoaderFunc(runtime->rt, NULL, module_loader, NULL);
 }

@@ -9,13 +9,17 @@ file(GLOB_RECURSE HEADERS
 
 add_library(quickjs STATIC ${SOURCE})
 
-target_include_directories(quickjs PUBLIC ${PROJECT_SOURCE_DIR}/include)
+target_include_directories(quickjs 
+    PUBLIC 
+        ${PROJECT_SOURCE_DIR}/include)
 
-target_compile_options(quickjs PUBLIC 
-    -O0 -g)
+target_compile_options(quickjs 
+    PUBLIC 
+        -O0 -g)
 
 # 添加必要的编译选项
 target_compile_definitions(quickjs PRIVATE 
     -DGNU_SOURCE 
     -DCONFIG_BIGNUM 
+    -DDUMP_PROMISE
     -DCONFIG_VERSION="2024-05-20")
