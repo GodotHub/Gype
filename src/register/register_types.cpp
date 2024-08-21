@@ -1,5 +1,5 @@
 #include "register/register_types.h"
-#include "gde/gdextension_interface.h"
+#include "gdextension_interface.h"
 #include "godot_cpp/godot.hpp"
 #include "quickjs/finalizer.h"
 #include "quickjs/utils.h"
