@@ -3,5 +3,6 @@
 
 void initialize_tgds_types();
 void uninitialize_tgds_types();
+void init_quickjs();
 
 #endif // SUMMATOR_REGISTER_TYPES_H

@@ -11,10 +11,12 @@ add_library(quickjs STATIC ${SOURCE})
 
 target_include_directories(quickjs 
     PUBLIC 
-        ${PROJECT_SOURCE_DIR}/include)
+        ${PROJECT_SOURCE_DIR}/include
+        ${CMAKE_SOURCE_DIR}/godot-cpp/include
+        ${CMAKE_SOURCE_DIR}/godot-cpp/gdextension)
 
 target_compile_options(quickjs 
-    PUBLIC 
+    PRIVATE 
         -O0 -g)
 
 # 添加必要的编译选项
@@ -22,4 +24,5 @@ target_compile_definitions(quickjs PRIVATE
     -DGNU_SOURCE 
     -DCONFIG_BIGNUM 
     -DDUMP_PROMISE
+    -DDUMP_LEAKS
     -DCONFIG_VERSION="2024-05-20")

@@ -40,12 +40,12 @@
 #include <malloc_np.h>
 #endif
 
-#include "cutils.h"
-#include "list.h"
-#include "quickjs.h"
-#include "libregexp.h"
-#include "libunicode.h"
-#include "libbf.h"
+#include "quickjs/cutils.h"
+#include "quickjs/list.h"
+#include "quickjs/quickjs.h"
+#include "quickjs/libregexp.h"
+#include "quickjs/libunicode.h"
+#include "quickjs/libbf.h"
 
 #define OPTIMIZE         1
 #define SHORT_OPCODES    1
@@ -973,7 +973,7 @@ struct JSObject {
 enum {
     __JS_ATOM_NULL = JS_ATOM_NULL,
 #define DEF(name, str) JS_ATOM_ ## name,
-#include "quickjs-atom.h"
+#include "quickjs/quickjs-atom.h"
 #undef DEF
     JS_ATOM_END,
 };
@@ -982,14 +982,14 @@ enum {
 
 static const char js_atom_init[] =
 #define DEF(name, str) str "\0"
-#include "quickjs-atom.h"
+#include "quickjs/quickjs-atom.h"
 #undef DEF
 ;
 
 typedef enum OPCodeFormat {
 #define FMT(f) OP_FMT_ ## f,
 #define DEF(id, size, n_pop, n_push, f)
-#include "quickjs-opcode.h"
+#include "quickjs/quickjs-opcode.h"
 #undef DEF
 #undef FMT
 } OPCodeFormat;
@@ -998,7 +998,7 @@ enum OPCodeEnum {
 #define FMT(f)
 #define DEF(id, size, n_pop, n_push, f) OP_ ## id,
 #define def(id, size, n_pop, n_push, f)
-#include "quickjs-opcode.h"
+#include "quickjs/quickjs-opcode.h"
 #undef def
 #undef DEF
 #undef FMT
@@ -1009,7 +1009,7 @@ enum OPCodeEnum {
 #define FMT(f)
 #define DEF(id, size, n_pop, n_push, f)
 #define def(id, size, n_pop, n_push, f) OP_ ## id,
-#include "quickjs-opcode.h"
+#include "quickjs/quickjs-opcode.h"
 #undef def
 #undef DEF
 #undef FMT
@@ -12123,6 +12123,17 @@ int JS_IsArray(JSContext *ctx, JSValueConst val)
     }
 }
 
+
+int JS_IsTypedArray(JSValueConst val) {
+    if (JS_IsObject(val)){
+        JSClassID class_id = JS_GetClassID(val);
+        if (class_id >= JS_CLASS_UINT8_ARRAY && class_id <= JS_CLASS_FLOAT64_ARRAY) {
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+
 static double js_pow(double a, double b)
 {
     if (unlikely(!isfinite(b)) && fabs(a) == 1) {
@@ -16183,7 +16194,7 @@ static JSValue JS_CallInternal(JSContext *caller_ctx, JSValueConst func_obj,
 #else
 #define def(id, size, n_pop, n_push, f) && case_default,
 #endif
-#include "quickjs-opcode.h"
+#include "quickjs/quickjs-opcode.h"
         [ OP_COUNT ... 255 ] = &&case_default
     };
 #define SWITCH(pc)      goto *dispatch_table[opcode = *pc++];
@@ -20128,7 +20139,7 @@ static const JSOpCode opcode_info[OP_COUNT + (OP_TEMP_END - OP_TEMP_START)] = {
 #else
 #define DEF(id, size, n_pop, n_push, f) { size, n_pop, n_push, OP_FMT_ ## f },
 #endif
-#include "quickjs-opcode.h"
+#include "quickjs/quickjs-opcode.h"
 #undef DEF
 #undef FMT
 };
@@ -53226,6 +53237,21 @@ uint8_t *JS_GetArrayBuffer(JSContext *ctx, size_t *psize, JSValueConst obj)
     return abuf->data;
  fail:
     *psize = 0;
+    return NULL;
+}
+
+JSValue *JS_GetArrayValues(JSContext *ctx, size_t *psize, JSValueConst v) 
+{
+    JSObject *obj = JS_VALUE_GET_OBJ(v);
+    JSValue *values = obj->u.array.u.values;
+    if (obj->class_id != JS_CLASS_ARRAY)
+    {
+        goto fail;
+    }
+    *psize = obj->u.array.u1.size;
+    return values;
+ fail:
+    JS_ThrowTypeErrorInvalidClass(ctx, JS_CLASS_ARRAY_BUFFER);
     return NULL;
 }
 

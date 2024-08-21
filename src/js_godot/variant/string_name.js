@@ -1,10 +1,15 @@
 import {
   get_variant_to_type_constructor,
   variant_get_ptr_constructor,
-  string_name_new_with_latin1_chars
+  string_name_new_with_latin1_chars,
+  variant_get_ptr_builtin_method,
+  variant_get_ptr_destructor
 } from '__internal__'
 import { GDExtensionVariantType } from 'src/js_godot/gde/gde'
-import { _call_builtin_constructor } from 'src/js_godot/core/builtin_ptrcall'
+import {
+  _call_builtin_constructor,
+  _call_builtin_method_ptr_ret
+} from 'src/js_godot/core/builtin_ptrcall'
 import { Variant } from 'src/js_godot/variant/variant'
 import { GDString } from 'src/js_godot/variant/gdstring'
 
@@ -192,6 +197,12 @@ export class StringName {
   constructor (value) {
     if (!value) {
       _call_builtin_constructor(StringName._bindings.constructor_0, this.opaque)
+    } else if (value instanceof StringName) {
+      _call_builtin_constructor(StringName._bindings.constructor_1, this.opaque)
+    } else if (value instanceof GDString) {
+      _call_builtin_constructor(StringName._bindings.constructor_2, this.opaque)
+    } else if (value instanceof Variant) {
+      StringName._bindings.from_variant_constructor(this.opaque, value.opaque)
     } else if (typeof value == 'string') {
       string_name_new_with_latin1_chars(this.opaque, value, true)
     }
@@ -200,6 +211,13 @@ export class StringName {
   static _init_bindings () {
     GDString.__init_bindings_constructors_destructor()
     this.__init_bindings_constructors_destructor()
+
+    let _gde_name = new StringName('length')
+    this._bindings.method_length = variant_get_ptr_builtin_method(
+      GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
+      _gde_name.opaque,
+      3173160232
+    )
   }
 
   static __init_bindings_constructors_destructor () {
@@ -217,6 +235,26 @@ export class StringName {
     this._bindings.constructor_2 = variant_get_ptr_constructor(
       GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
       2
+    )
+    this._bindings.destructor = variant_get_ptr_destructor(
+      GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME
+    )
+  }
+
+  cast (type) {
+    switch (type) {
+      case Variant.Type.STRING:
+        return new GDString(this)
+      default:
+        break
+    }
+  }
+
+  length () {
+    return _call_builtin_method_ptr_ret(
+      StringName._bindings.method_length,
+      this.opaque,
+      'int'
     )
   }
 }
