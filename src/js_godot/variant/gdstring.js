@@ -1,10 +1,16 @@
 import {
   get_variant_to_type_constructor,
   variant_get_ptr_constructor,
-  string_new_with_latin1_chars
+  string_new_with_latin1_chars,
+  variant_get_ptr_builtin_method,
+  variant_get_ptr_destructor
 } from '__internal__'
 import { GDExtensionVariantType } from 'src/js_godot/gde/gde'
-import { _call_builtin_constructor } from 'src/js_godot/core/builtin_ptrcall'
+import {
+  _call_builtin_constructor,
+  _call_builtin_method_ptr_ret
+} from 'src/js_godot/core/builtin_ptrcall'
+import { StringName } from 'src/js_godot/variant/string_name'
 import { Variant } from 'src/js_godot/variant/variant'
 
 class _MethodBindings {
@@ -191,13 +197,64 @@ export class GDString {
   constructor (value) {
     if (!value) {
       _call_builtin_constructor(GDString._bindings.constructor_0, this.opaque)
-    } else if (value instanceof String) {
+    } else if (typeof value == 'string') {
       string_new_with_latin1_chars(this.opaque, value)
+    } else if (value instanceof GDString) {
+      _call_builtin_constructor(GDString._bindings.constructor_1, this.opaque, [
+        value.opaque
+      ])
+    } else if (value instanceof StringName) {
+      _call_builtin_constructor(GDString._bindings.constructor_2, this.opaque, [
+        value.opaque
+      ])
     }
   }
 
+  // static {
+  //   GDString.prototype[Symbol.operatorSet] = Operators.create({
+  //     '=' (a) {
+  //       return true
+  //     }
+  //   })
+  // }
+
   static _init_bindings () {
     this.__init_bindings_constructors_destructor()
+
+    let _gde_name = new StringName('length')
+    this._bindings.method_length = variant_get_ptr_builtin_method(
+      GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+      _gde_name.opaque,
+      3173160232
+    )
+
+    _gde_name = new StringName('casecmp_to')
+    this._bindings.method_casecmp_to = variant_get_ptr_builtin_method(
+      GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+      _gde_name.opaque,
+      2920860731
+    )
+
+    _gde_name = new StringName('nocasecmp_to')
+    this._bindings.method_nocasecmp_to = variant_get_ptr_builtin_method(
+      GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+      _gde_name.opaque,
+      2920860731
+    )
+
+    _gde_name = new StringName('naturalcasecmp_to')
+    this._bindings.method_naturalcasecmp_to = variant_get_ptr_builtin_method(
+      GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+      _gde_name.opaque,
+      2920860731
+    )
+
+    _gde_name = new StringName('naturalnocasecmp_to')
+    this._bindings.method_naturalnocasecmp_to = variant_get_ptr_builtin_method(
+      GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+      _gde_name.opaque,
+      2920860731
+    )
   }
 
   static __init_bindings_constructors_destructor () {
@@ -219,6 +276,53 @@ export class GDString {
     this._bindings.constructor_3 = variant_get_ptr_constructor(
       GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
       3
+    )
+    this._bindings.destructor = variant_get_ptr_destructor(
+      GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING
+    )
+  }
+
+  casecmp_to (to) {
+    return _call_builtin_method_ptr_ret(
+      GDString._bindings.method_casecmp_to,
+      this.opaque,
+      'int',
+      [to.opaque]
+    )
+  }
+
+  nocasecmp_to (to) {
+    return _call_builtin_method_ptr_ret(
+      GDString._bindings.method_nocasecmp_to,
+      this.opaque,
+      'int',
+      [to.opaque]
+    )
+  }
+
+  naturalcasecmp_to (to) {
+    return _call_builtin_method_ptr_ret(
+      GDString._bindings.method_naturalcasecmp_to,
+      this.opaque,
+      'int',
+      [to.opaque]
+    )
+  }
+
+  naturalnocasecmp_to (to) {
+    return _call_builtin_method_ptr_ret(
+      GDString._bindings.method_naturalnocasecmp_to,
+      this.opaque,
+      'int',
+      [to.opaque]
+    )
+  }
+
+  length () {
+    return _call_builtin_method_ptr_ret(
+      GDString._bindings.method_length,
+      this.opaque,
+      'int'
     )
   }
 }

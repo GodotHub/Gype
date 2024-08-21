@@ -28,7 +28,6 @@
 #include <stdint.h>
 #include <stdio.h>
 
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -710,6 +709,7 @@ JS_BOOL JS_SetConstructorBit(JSContext *ctx, JSValueConst func_obj, JS_BOOL val)
 
 JSValue JS_NewArray(JSContext *ctx);
 int JS_IsArray(JSContext *ctx, JSValueConst val);
+int JS_IsTypedArray(JSValueConst val);
 
 JSValue JS_NewDate(JSContext *ctx, double epoch_ms);
 
@@ -809,6 +809,7 @@ JSValue JS_NewArrayBuffer(JSContext *ctx, uint8_t *buf, size_t len,
 JSValue JS_NewArrayBufferCopy(JSContext *ctx, const uint8_t *buf, size_t len);
 void JS_DetachArrayBuffer(JSContext *ctx, JSValueConst obj);
 uint8_t *JS_GetArrayBuffer(JSContext *ctx, size_t *psize, JSValueConst obj);
+JSValue *JS_GetArrayValues(JSContext *ctx, size_t *psize, JSValueConst obj);
 
 typedef enum JSTypedArrayEnum {
 	JS_TYPED_ARRAY_UINT8C = 0,

@@ -1,6 +1,8 @@
 import {
   get_variant_from_type_constructor,
-  get_variant_to_type_constructor
+  get_variant_to_type_constructor,
+  variant_new_nil,
+  variant_new_copy
 } from '__internal__'
 // import { GDExtensionVariantType } from 'src/js_godot/gde/gde.js'
 import { GDString } from 'src/js_godot/variant/gdstring'
@@ -11,26 +13,57 @@ export class Variant {
   static to_type_constructor = []
 
   opaque = new Uint8Array(24)
+  type = undefined
 
   constructor (value) {
     if (!value) {
-      variant_new_nil(opaque)
+      this.type = Variant.Type.NIL
+      variant_new_nil(this.opaque)
     } else if (value instanceof GDString) {
-      from_type_constructor[this.Type.STRING](this.opaque, value.opaque)
+      this.type = Variant.Type.STRING
+      Variant.from_type_constructor[Variant.Type.STRING](
+        this.opaque,
+        value.opaque
+      )
     } else if (value instanceof StringName) {
-      from_type_constructor[this.Type.STRING_NAME](this.opaque, value.opaque)
-    } else if (value instanceof String) {
-      from_type_constructor[this.Type.STRING](
+      this.type = Variant.Type.STRING_NAME
+      Variant.from_type_constructor[Variant.Type.STRING_NAME](
+        this.opaque,
+        value.opaque
+      )
+    } else if (value instanceof Variant) {
+      this.type = Variant.Type.VARIANT_MAX
+      variant_new_copy(this.opaque, value.opaque)
+    } else {
+      this.#primitive_constructor(value)
+    }
+  }
+
+  #primitive_constructor (value) {
+    if (typeof value == 'boolean') {
+      this.type = Variant.Type.BOOL
+      Variant.from_type_constructor[Variant.Type.BOOL](this.opaque, value)
+    } else if (typeof value == 'string') {
+      this.type = Variant.Type.STRING
+      Variant.from_type_constructor[Variant.Type.STRING](
         this.opaque,
         new GDString(value).opaque
       )
+    } else if (typeof value == 'number') {
+      if (Number.isInteger(value)) {
+        Variant.from_type_constructor[Variant.Type.INT](this.opaque, value)
+      } else {
+        Variant.from_type_constructor[Variant.Type.FLOAT](this.opaque, value)
+      }
+    } else {
+      throw new TypeError()
     }
   }
 
   static _init_bindings () {
     for (let i = 1; i < this.Type.VARIANT_MAX; i++) {
-      Variant.from_type_constructor[i] = get_variant_from_type_constructor(i)
-      Variant.to_type_constructor[i] = get_variant_to_type_constructor(i)
+      this.from_type_constructor[i] = get_variant_from_type_constructor(i)
+      this.to_type_constructor[i] = get_variant_to_type_constructor(i)
     }
     GDString._init_bindings()
     StringName._init_bindings()
@@ -83,8 +116,9 @@ export class Variant {
     PACKED_VECTOR2_ARRAY: 35,
     PACKED_VECTOR3_ARRAY: 36,
     PACKED_COLOR_ARRAY: 37,
+    PACKED_VECTOR4_ARRAY: 38,
 
-    VARIANT_MAX: 38
+    VARIANT_MAX: 39
   }
 
   static Operator = {

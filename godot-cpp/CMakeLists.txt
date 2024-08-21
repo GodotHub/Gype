@@ -3,6 +3,8 @@ cmake_minimum_required(VERSION 3.10)
 # 项目名称和语言
 project(godot-cpp C CXX)
 
+# find_package(quickjs REQUIRED)
+
 file(GLOB_RECURSE GODOT_SOURCES
 	${PROJECT_SOURCE_DIR}/src/*.c**)
 file(GLOB_RECURSE GODOT_HEADERS
@@ -12,15 +14,17 @@ file(GLOB_RECURSE GODOT_HEADERS
 # 添加静态库
 add_library(godot-cpp STATIC ${GODOT_SOURCES})
 
-target_compile_options(godot-cpp PUBLIC 
-	-fno-omit-frame-pointer -O0 -g)
+add_dependencies(godot-cpp quickjs)
+
+target_compile_options(godot-cpp PRIVATE 
+	-O0 -g)
 
 # 包含include目录和所有子目录
 target_include_directories(godot-cpp SYSTEM 
 	PUBLIC 
-		${CMAKE_CURRENT_SOURCE_DIR}/quickjs/include
 		${PROJECT_SOURCE_DIR}/include
 		${PROJECT_SOURCE_DIR}/gdextension
+		${CMAKE_SOURCE_DIR}/quickjs/include
 )
 
 target_compile_features(godot-cpp

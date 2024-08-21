@@ -1,5 +1,4 @@
-#include "qjspp/utils.h"
-#include "qjspp.hpp"
+#include "quickjs/utils.h"
 #include <stddef.h>
 #include <cctype>
 #include <cstring>
@@ -67,4 +66,13 @@ JSModuleDef *module_loader(JSContext *ctx, const char *module_name, void *opaque
 	JSModuleDef *m = (JSModuleDef *)JS_VALUE_GET_PTR(func_val);
 	JS_FreeValue(ctx, func_val);
 	return m;
+}
+
+void js_print_error(JSValue val) {
+	if (JS_IsException(val)) {
+		JSValue exception = JS_GetException(context.ctx);
+		const char *message = JS_ToCString(context.ctx, exception);
+		printf(message);
+		JS_FreeCString(context.ctx, message);
+	}
 }
