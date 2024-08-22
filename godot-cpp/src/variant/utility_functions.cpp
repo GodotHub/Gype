@@ -1,4 +1,4 @@
-#include "quickjs/utils.h"
+#include "quickjs/env.h"
 #include <stdarg.h>
 #include <stdio.h>
 #include <godot_cpp/core/logger.hpp>
@@ -26,7 +26,7 @@ std::string UtilityFunctions::to_string(JSValue value) {
 		case JS_TAG_STRING:
 			return qjs::js_traits<std::string>::unwrap(context.ctx, value);
 		case JS_TAG_INT:
-			return std::to_string(qjs::js_traits<int32_t>::unwrap(context.ctx, value));
+			return std::to_string(qjs::js_traits<int64_t>::unwrap(context.ctx, value));
 		case JS_TAG_BOOL:
 			return std::to_string(qjs::js_traits<bool>::unwrap(context.ctx, value));
 		case JS_TAG_FLOAT64:

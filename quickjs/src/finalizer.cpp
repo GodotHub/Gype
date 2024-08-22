@@ -1,4 +1,5 @@
-#include "quickjs/utils.h"
+#include "quickjs/env.h"
+#include <quickjs/class_ids.h>
 #include <quickjs/finalizer.h>
 #include <string.h>
 
@@ -40,13 +41,15 @@ static JSClassDef variant = {
 	.finalizer = variant_finalizer,
 };
 
-static JSClassID my_class_id;
+static JSClassID class_id;
 
-#define REGISTER_CLASS(ctx, def)                        \
-	JS_NewClassID(&my_class_id);                        \
-	JS_NewClass(JS_GetRuntime(ctx), my_class_id, &def); \
-	JSValue proto_##def = JS_NewObject(ctx);            \
-	JS_SetClassProto(ctx, my_class_id, proto_##def);
+#define REGISTER_CLASS(ctx, def)                           \
+	JSClassID class_id_##def = JS_NewClassID(&class_id);   \
+	JS_NewClass(JS_GetRuntime(ctx), class_id_##def, &def); \
+	JSValue proto_##def = JS_NewObject(ctx);               \
+	JS_SetClassProto(ctx, class_id_##def, proto_##def);    \
+	custom_class_ids[#def] = class_id_##def;               \
+	class_id = 0;
 
 void js_init_module(JSContext *ctx) {
 	REGISTER_CLASS(ctx, string)

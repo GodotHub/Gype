@@ -1,5 +1,5 @@
 #include "gdstring_test.hpp"
-#include "quickjs/utils.h"
+#include "quickjs/env.h"
 
 void test_gdstring() {
 	JSValue ret = context.eval(R"xxx(
@@ -10,10 +10,12 @@ void test_gdstring() {
 			let string = new GDString('123456');
 			let string2 = new GDString('123789');
 			// GD.print(string.length());
-			GD.print(string.casecmp_to(string2));
+			// GD.print(string.casecmp_to(string2));
 			// GD.print(string.nocasecmp_to(string2));
 			// GD.print(string.naturalcasecmp_to());
 			// GD.print(string.naturalnocasecmp_to());
+			GD.print(string.reverse());
+			// GD.print(string.substr(0,3))
 		}
     )xxx",
 			"<eval>", JS_EVAL_TYPE_MODULE);
