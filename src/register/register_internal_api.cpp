@@ -1,6 +1,6 @@
 #include "register/register_internal_api.h"
 #include "godot_cpp/godot.hpp"
-#include "quickjs/utils.h"
+#include "quickjs/env.h"
 #include <stdarg.h>
 #include <stdio.h>
 

@@ -1,5 +1,5 @@
 #include "register/register_utility_functions.h"
-#include "quickjs/utils.h"
+#include "quickjs/env.h"
 #include <godot_cpp/variant/utility_functions.hpp>
 
 using namespace JSGodot;

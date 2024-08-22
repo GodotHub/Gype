@@ -1,0 +1,38 @@
+{%- macro call_returned(method, indent) -%}
+{%- set args = method['arguments'] -%}
+{{ method['name'] }} ({{ args | map(attribute='name') | join(',') }}) {
+    {%- if method['return_type'] in variant_types() %}
+  {{indent}}let ret = new {{ to_js_type(method['return_type']) }}()
+  {{indent}}ret.opaque = _call_builtin_method_ptr_ret(
+    {%- else %}
+  {{indent}}let ret
+  {{indent}}ret = _call_builtin_method_ptr_ret(
+    {%- endif %}
+  {{indent}}GDString._bindings.method_{{ method['name'] }},
+    {{indent}}this.opaque,
+    {{indent}}'{{ method['return_type'] }}',
+    {%- if args %}
+    {{indent}}[{{- args | add_opaque| join(',') }}]
+    {%- else %}
+    {{indent}}[]
+    {%- endif %}
+  {{indent}})
+  {{indent}}return ret
+{{indent}}}
+{%- endmacro -%}
+
+{% macro init_binding(methods, indent) %}
+{{indent}}static _init_bindings () {
+  {{indent}}this.__init_bindings_constructors_destructor()
+    {%- for method in methods %}
+  {{indent}}{
+    {{indent}}let _gde_name = new StringName('{{ method['name'] }}')
+    {{indent}}this._bindings.method_{{ method['name'] }} = variant_get_ptr_builtin_method(
+      {{indent}}GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+      {{indent}}_gde_name.opaque,
+      {{indent}}{{method['hash']}}
+    {{indent}})
+  {{indent}}}
+  {%- endfor %}
+{{indent}}}
+{% endmacro %}

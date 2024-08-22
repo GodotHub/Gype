@@ -2,10 +2,13 @@
 
 #include "quickjs.h"
 #include <gdextension_interface.h>
+#include <quickjs/class_ids.h>
+#include <quickjs/str_utils.h>
 #include <godot_cpp/core/error_macros.hpp>
 #include <godot_cpp/core/method_ptrcall.hpp>
 
 #include <algorithm>
+#include <any>
 #include <cassert>
 #include <cstddef>
 #include <filesystem>
@@ -34,6 +37,14 @@ namespace qjs {
 
 class Context;
 class Value;
+
+// using ArgType = std::variant<int, double, std::string, JSValue>;
+
+static GDExtensionInt encodeInt(JSContext *ctx, JSValue v);
+static double encodeDouble(JSContext *ctx, JSValue v);
+static uint64_t variant_byte_size(std::string type);
+static int variant_size(std::string type);
+static JSValue to_js_value(JSContext *ctx, std::string type, void *value);
 
 /** Exception type.
  * Indicates that exception has occured in JS context.
@@ -2136,73 +2147,115 @@ static T *get_array_values(JSContext *ctx, JSValue v) {
 }
 
 // 获取数组指针
-static const void **get_p_args(JSContext *ctx, JSValue v) {
+static std::vector<std::any> get_args(JSContext *ctx, JSValue v) {
 	int length = js_traits<int>::unwrap(ctx, JS_GetPropertyStr(ctx, v, "length"));
-	void **p_args = new void *[length];
+	if (length == 0) {
+		return std::vector<std::any>();
+	}
+	std::vector<std::any> args;
+
 	for (int i = 0; i < length; i++) {
 		JSValue el = JS_GetPropertyUint32(ctx, v, i);
-		JSValue js_constructor = JS_GetPropertyStr(ctx, el, "constructor");
-		JSValue js_name = JS_GetPropertyStr(ctx, js_constructor, "name");
-		std::string name = js_traits<std::string>::unwrap(ctx, js_name);
-		if (name == "Uint8Array") {
-			p_args[i] = get_typed_array_buf(ctx, el);
+		if (JS_IsObject(el)) {
+			JSValue js_constructor = JS_GetPropertyStr(ctx, el, "constructor");
+			JSValue js_name = JS_GetPropertyStr(ctx, js_constructor, "name");
+			std::string name = js_traits<std::string>::unwrap(ctx, js_name);
+			if (name == "Uint8Array") {
+				args.push_back(get_typed_array_buf(ctx, el));
+			}
+		} else if (JS_IsNumber(el)) {
+			if (JS_IsInt(el)) {
+				int64_t num = encodeInt(ctx, el);
+				args.push_back(num);
+			} else {
+				double num = encodeDouble(ctx, el);
+				args.push_back(num);
+			}
 		}
 	}
-	return const_cast<const void **>(p_args);
+	return args;
 }
 
-static GDExtensionBool *encodeBool(JSContext *ctx, JSValue v) {
+static GDExtensionBool encodeBool(JSContext *ctx, JSValue v) {
 	GDExtensionBool encoded;
 	if (JS_IsBool(v)) {
 		JSGodot::PtrToArg<GDExtensionBool>::encode(JS_ToBool(ctx, v), &encoded);
-		GDExtensionBool *ret = reinterpret_cast<GDExtensionBool *>(js_malloc(ctx, sizeof(encoded)));
-		*ret = encoded;
-		return ret;
+		return encoded;
 	}
-	ERR_FAIL_V(nullptr);
+	ERR_FAIL_V(false);
 }
 
-static GDExtensionInt *encodeInt(JSContext *ctx, JSValue v) {
+static GDExtensionInt encodeInt(JSContext *ctx, JSValue v) {
 	GDExtensionInt encoded;
 	int64_t i;
 	if (JS_ToInt64(ctx, &i, v)) {
-		ERR_FAIL_V(nullptr);
+		ERR_FAIL_V(0);
 	}
 	JSGodot::PtrToArg<int64_t>::encode(i, &encoded);
-	GDExtensionInt *ret = reinterpret_cast<GDExtensionInt *>(js_malloc(ctx, sizeof(encoded)));
-	*ret = encoded;
-	return ret;
+	return encoded;
 }
 
-static double *encodeDouble(JSContext *ctx, JSValue v) {
+static double encodeDouble(JSContext *ctx, JSValue v) {
 	double encoded;
 	double d;
 	if (JS_ToFloat64(ctx, &d, v)) {
-		ERR_FAIL_V(nullptr);
+		ERR_FAIL_V(0);
 	}
 	JSGodot::PtrToArg<double>::encode(d, &encoded);
-	double *ret = reinterpret_cast<double *>(js_malloc(ctx, sizeof(encoded)));
-	*ret = encoded;
+	return encoded;
+}
+
+static void *malloc_variant(JSContext *ctx, std::string type) {
+	uint64_t size = variant_byte_size(type);
+	void *ret = js_malloc(ctx, size);
+	memset(ret, 0, size);
 	return ret;
+}
+
+static uint64_t variant_byte_size(std::string type) {
+	int size = variant_size(type);
+	if (type == "int") {
+		return sizeof(int64_t) * size;
+	} else if (type == "String") {
+		return sizeof(uint8_t) * size;
+	}
+	return 0;
+}
+
+static int variant_size(std::string type) {
+	if (type == "int") {
+		return 1;
+	} else if (type == "String") {
+		return 8;
+	}
+	return 0;
+}
+
+static JSValue to_js_value(JSContext *ctx, std::string type, void *value) {
+	int size = variant_size(type);
+	if (type == "int") {
+		return JS_NewInt32(ctx, *(int *)value);
+	} else if (type == "String") {
+		uint8_t *u8 = reinterpret_cast<uint8_t *>(value);
+		JSValue buf = JS_NewArrayBuffer(ctx, u8, size, NULL, NULL, false);
+		JSValue ofs = JS_NewInt64(ctx, 0);
+		JSValue *args = new JSValue[3]{ buf, ofs, JS_NewInt64(ctx, size) };
+		return JS_NewTypedArray(ctx, size, args, JSTypedArrayEnum::JS_TYPED_ARRAY_UINT8);
+	}
+	return JS_UNDEFINED;
 }
 
 template <>
 struct js_traits<GDExtensionPtrBuiltInMethod> {
 	static JSValue inner_method(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv, int magic, JSValue *func_data) {
 		GDExtensionTypePtr p_base = reinterpret_cast<GDExtensionTypePtr>(get_typed_array_buf(ctx, argv[0]));
-		const GDExtensionConstTypePtr *p_args = get_p_args(ctx, argv[1]);
+		void *args = get_args(ctx, argv[1]).data();
+		const GDExtensionConstTypePtr *p_args = &args;
 		std::string return_type = js_traits<std::string>::unwrap(ctx, argv[2]);
-		void *r_return;
-		if (return_type == "int") {
-			r_return = new int[1]{ js_traits<int>::unwrap(ctx, argv[2]) };
-		}
+		void *r_return = malloc_variant(ctx, return_type);
 		int p_argument_count = js_traits<int>::unwrap(ctx, argv[3]);
 		js_traits<std::function<void(GDExtensionTypePtr, const GDExtensionConstTypePtr *, GDExtensionTypePtr, int)>>::unwrap(ctx, *func_data)(p_base, p_args, r_return, p_argument_count);
-		if (return_type == "int") {
-			return JS_NewInt32(ctx, *(int *)r_return);
-		} else {
-			return JS_UNDEFINED;
-		}
+		return to_js_value(ctx, return_type, r_return);
 	}
 
 	static JSValue wrap(JSContext *ctx, GDExtensionPtrBuiltInMethod v) noexcept {
@@ -2216,7 +2269,8 @@ template <>
 struct js_traits<GDExtensionPtrConstructor> {
 	static JSValue inner_method(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv, int magic, JSValue *func_data) {
 		GDExtensionUninitializedTypePtr p_base = reinterpret_cast<GDExtensionUninitializedTypePtr>(get_typed_array_buf(ctx, argv[0]));
-		const GDExtensionConstTypePtr *p_args = get_p_args(ctx, argv[1]);
+		void *args = get_args(ctx, argv[1]).data();
+		const GDExtensionConstTypePtr *p_args = &args;
 		js_traits<std::function<void(GDExtensionUninitializedTypePtr, const GDExtensionConstTypePtr *)>>::unwrap(ctx, *func_data)(p_base, p_args);
 		return JS_UNDEFINED;
 	}
@@ -2253,11 +2307,17 @@ struct js_traits<GDExtensionVariantFromTypeConstructorFunc> {
 		if (JS_IsTypedArray(argv[1])) {
 			arg2 = reinterpret_cast<GDExtensionTypePtr>(get_typed_array_buf(ctx, argv[1]));
 		} else if (JS_IsBool(argv[1])) {
-			arg2 = encodeBool(ctx, argv[1]);
+			bool ret = encodeBool(ctx, argv[1]);
+			arg2 = js_malloc(ctx, sizeof(bool));
+			*reinterpret_cast<bool *>(arg2) = ret;
 		} else if (JS_IsInt(argv[1])) {
-			arg2 = encodeInt(ctx, argv[1]);
+			int64_t ret = encodeInt(ctx, argv[1]);
+			arg2 = js_malloc(ctx, sizeof(int64_t));
+			*reinterpret_cast<int64_t *>(arg2) = ret;
 		} else if (JS_IsFloat(argv[1])) {
-			arg2 = encodeDouble(ctx, argv[1]);
+			double ret = encodeDouble(ctx, argv[1]);
+			arg2 = js_malloc(ctx, sizeof(double));
+			*reinterpret_cast<int64_t *>(arg2) = ret;
 		}
 		js_traits<void(GDExtensionUninitializedVariantPtr, GDExtensionTypePtr)>::unwrap(ctx, *func_data)(arg1, arg2);
 		js_free(ctx, arg2);

@@ -19,7 +19,6 @@ class _MethodBindings {
   constructor_1
   constructor_2
   constructor_3
-  destructor
   method_casecmp_to
   method_nocasecmp_to
   method_naturalcasecmp_to
@@ -127,12 +126,10 @@ class _MethodBindings {
   method_num_uint64
   method_chr
   method_humanize_size
-  indexed_setter
-  indexed_getter
   operator_equal_Variant
   operator_not_equal_Variant
   operator_module_Variant
-  operator_not
+  operator_not_
   operator_module_bool
   operator_module_int
   operator_module_float
@@ -210,51 +207,869 @@ export class GDString {
     }
   }
 
-  // static {
-  //   GDString.prototype[Symbol.operatorSet] = Operators.create({
-  //     '=' (a) {
-  //       return true
-  //     }
-  //   })
-  // }
-
   static _init_bindings () {
     this.__init_bindings_constructors_destructor()
-
-    let _gde_name = new StringName('length')
-    this._bindings.method_length = variant_get_ptr_builtin_method(
-      GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
-      _gde_name.opaque,
-      3173160232
-    )
-
-    _gde_name = new StringName('casecmp_to')
-    this._bindings.method_casecmp_to = variant_get_ptr_builtin_method(
-      GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
-      _gde_name.opaque,
-      2920860731
-    )
-
-    _gde_name = new StringName('nocasecmp_to')
-    this._bindings.method_nocasecmp_to = variant_get_ptr_builtin_method(
-      GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
-      _gde_name.opaque,
-      2920860731
-    )
-
-    _gde_name = new StringName('naturalcasecmp_to')
-    this._bindings.method_naturalcasecmp_to = variant_get_ptr_builtin_method(
-      GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
-      _gde_name.opaque,
-      2920860731
-    )
-
-    _gde_name = new StringName('naturalnocasecmp_to')
-    this._bindings.method_naturalnocasecmp_to = variant_get_ptr_builtin_method(
-      GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
-      _gde_name.opaque,
-      2920860731
-    )
+    {
+      let _gde_name = new StringName('casecmp_to')
+      this._bindings.method_casecmp_to = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        2920860731
+      )
+    }
+    {
+      let _gde_name = new StringName('nocasecmp_to')
+      this._bindings.method_nocasecmp_to = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        2920860731
+      )
+    }
+    {
+      let _gde_name = new StringName('naturalcasecmp_to')
+      this._bindings.method_naturalcasecmp_to = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        2920860731
+      )
+    }
+    {
+      let _gde_name = new StringName('naturalnocasecmp_to')
+      this._bindings.method_naturalnocasecmp_to =
+        variant_get_ptr_builtin_method(
+          GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+          _gde_name.opaque,
+          2920860731
+        )
+    }
+    {
+      let _gde_name = new StringName('filecasecmp_to')
+      this._bindings.method_filecasecmp_to = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        2920860731
+      )
+    }
+    {
+      let _gde_name = new StringName('filenocasecmp_to')
+      this._bindings.method_filenocasecmp_to = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        2920860731
+      )
+    }
+    {
+      let _gde_name = new StringName('length')
+      this._bindings.method_length = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3173160232
+      )
+    }
+    {
+      let _gde_name = new StringName('substr')
+      this._bindings.method_substr = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        787537301
+      )
+    }
+    {
+      let _gde_name = new StringName('get_slice')
+      this._bindings.method_get_slice = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3535100402
+      )
+    }
+    {
+      let _gde_name = new StringName('get_slicec')
+      this._bindings.method_get_slicec = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        787537301
+      )
+    }
+    {
+      let _gde_name = new StringName('get_slice_count')
+      this._bindings.method_get_slice_count = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        2920860731
+      )
+    }
+    {
+      let _gde_name = new StringName('find')
+      this._bindings.method_find = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        1760645412
+      )
+    }
+    {
+      let _gde_name = new StringName('findn')
+      this._bindings.method_findn = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        1760645412
+      )
+    }
+    {
+      let _gde_name = new StringName('count')
+      this._bindings.method_count = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        2343087891
+      )
+    }
+    {
+      let _gde_name = new StringName('countn')
+      this._bindings.method_countn = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        2343087891
+      )
+    }
+    {
+      let _gde_name = new StringName('rfind')
+      this._bindings.method_rfind = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        1760645412
+      )
+    }
+    {
+      let _gde_name = new StringName('rfindn')
+      this._bindings.method_rfindn = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        1760645412
+      )
+    }
+    {
+      let _gde_name = new StringName('match')
+      this._bindings.method_match = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        2566493496
+      )
+    }
+    {
+      let _gde_name = new StringName('matchn')
+      this._bindings.method_matchn = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        2566493496
+      )
+    }
+    {
+      let _gde_name = new StringName('begins_with')
+      this._bindings.method_begins_with = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        2566493496
+      )
+    }
+    {
+      let _gde_name = new StringName('ends_with')
+      this._bindings.method_ends_with = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        2566493496
+      )
+    }
+    {
+      let _gde_name = new StringName('is_subsequence_of')
+      this._bindings.method_is_subsequence_of = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        2566493496
+      )
+    }
+    {
+      let _gde_name = new StringName('is_subsequence_ofn')
+      this._bindings.method_is_subsequence_ofn = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        2566493496
+      )
+    }
+    {
+      let _gde_name = new StringName('bigrams')
+      this._bindings.method_bigrams = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        747180633
+      )
+    }
+    {
+      let _gde_name = new StringName('similarity')
+      this._bindings.method_similarity = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        2697460964
+      )
+    }
+    {
+      let _gde_name = new StringName('format')
+      this._bindings.method_format = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3212199029
+      )
+    }
+    {
+      let _gde_name = new StringName('replace')
+      this._bindings.method_replace = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        1340436205
+      )
+    }
+    {
+      let _gde_name = new StringName('replacen')
+      this._bindings.method_replacen = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        1340436205
+      )
+    }
+    {
+      let _gde_name = new StringName('repeat')
+      this._bindings.method_repeat = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        2162347432
+      )
+    }
+    {
+      let _gde_name = new StringName('reverse')
+      this._bindings.method_reverse = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3942272618
+      )
+    }
+    {
+      let _gde_name = new StringName('insert')
+      this._bindings.method_insert = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        248737229
+      )
+    }
+    {
+      let _gde_name = new StringName('erase')
+      this._bindings.method_erase = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        787537301
+      )
+    }
+    {
+      let _gde_name = new StringName('capitalize')
+      this._bindings.method_capitalize = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3942272618
+      )
+    }
+    {
+      let _gde_name = new StringName('to_camel_case')
+      this._bindings.method_to_camel_case = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3942272618
+      )
+    }
+    {
+      let _gde_name = new StringName('to_pascal_case')
+      this._bindings.method_to_pascal_case = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3942272618
+      )
+    }
+    {
+      let _gde_name = new StringName('to_snake_case')
+      this._bindings.method_to_snake_case = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3942272618
+      )
+    }
+    {
+      let _gde_name = new StringName('split')
+      this._bindings.method_split = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        1252735785
+      )
+    }
+    {
+      let _gde_name = new StringName('rsplit')
+      this._bindings.method_rsplit = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        1252735785
+      )
+    }
+    {
+      let _gde_name = new StringName('split_floats')
+      this._bindings.method_split_floats = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        2092079095
+      )
+    }
+    {
+      let _gde_name = new StringName('join')
+      this._bindings.method_join = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3595973238
+      )
+    }
+    {
+      let _gde_name = new StringName('to_upper')
+      this._bindings.method_to_upper = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3942272618
+      )
+    }
+    {
+      let _gde_name = new StringName('to_lower')
+      this._bindings.method_to_lower = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3942272618
+      )
+    }
+    {
+      let _gde_name = new StringName('left')
+      this._bindings.method_left = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        2162347432
+      )
+    }
+    {
+      let _gde_name = new StringName('right')
+      this._bindings.method_right = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        2162347432
+      )
+    }
+    {
+      let _gde_name = new StringName('strip_edges')
+      this._bindings.method_strip_edges = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        907855311
+      )
+    }
+    {
+      let _gde_name = new StringName('strip_escapes')
+      this._bindings.method_strip_escapes = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3942272618
+      )
+    }
+    {
+      let _gde_name = new StringName('lstrip')
+      this._bindings.method_lstrip = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3134094431
+      )
+    }
+    {
+      let _gde_name = new StringName('rstrip')
+      this._bindings.method_rstrip = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3134094431
+      )
+    }
+    {
+      let _gde_name = new StringName('get_extension')
+      this._bindings.method_get_extension = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3942272618
+      )
+    }
+    {
+      let _gde_name = new StringName('get_basename')
+      this._bindings.method_get_basename = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3942272618
+      )
+    }
+    {
+      let _gde_name = new StringName('path_join')
+      this._bindings.method_path_join = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3134094431
+      )
+    }
+    {
+      let _gde_name = new StringName('unicode_at')
+      this._bindings.method_unicode_at = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        4103005248
+      )
+    }
+    {
+      let _gde_name = new StringName('indent')
+      this._bindings.method_indent = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3134094431
+      )
+    }
+    {
+      let _gde_name = new StringName('dedent')
+      this._bindings.method_dedent = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3942272618
+      )
+    }
+    {
+      let _gde_name = new StringName('hash')
+      this._bindings.method_hash = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3173160232
+      )
+    }
+    {
+      let _gde_name = new StringName('md5_text')
+      this._bindings.method_md5_text = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3942272618
+      )
+    }
+    {
+      let _gde_name = new StringName('sha1_text')
+      this._bindings.method_sha1_text = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3942272618
+      )
+    }
+    {
+      let _gde_name = new StringName('sha256_text')
+      this._bindings.method_sha256_text = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3942272618
+      )
+    }
+    {
+      let _gde_name = new StringName('md5_buffer')
+      this._bindings.method_md5_buffer = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        247621236
+      )
+    }
+    {
+      let _gde_name = new StringName('sha1_buffer')
+      this._bindings.method_sha1_buffer = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        247621236
+      )
+    }
+    {
+      let _gde_name = new StringName('sha256_buffer')
+      this._bindings.method_sha256_buffer = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        247621236
+      )
+    }
+    {
+      let _gde_name = new StringName('is_empty')
+      this._bindings.method_is_empty = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3918633141
+      )
+    }
+    {
+      let _gde_name = new StringName('contains')
+      this._bindings.method_contains = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        2566493496
+      )
+    }
+    {
+      let _gde_name = new StringName('containsn')
+      this._bindings.method_containsn = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        2566493496
+      )
+    }
+    {
+      let _gde_name = new StringName('is_absolute_path')
+      this._bindings.method_is_absolute_path = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3918633141
+      )
+    }
+    {
+      let _gde_name = new StringName('is_relative_path')
+      this._bindings.method_is_relative_path = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3918633141
+      )
+    }
+    {
+      let _gde_name = new StringName('simplify_path')
+      this._bindings.method_simplify_path = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3942272618
+      )
+    }
+    {
+      let _gde_name = new StringName('get_base_dir')
+      this._bindings.method_get_base_dir = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3942272618
+      )
+    }
+    {
+      let _gde_name = new StringName('get_file')
+      this._bindings.method_get_file = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3942272618
+      )
+    }
+    {
+      let _gde_name = new StringName('xml_escape')
+      this._bindings.method_xml_escape = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3429816538
+      )
+    }
+    {
+      let _gde_name = new StringName('xml_unescape')
+      this._bindings.method_xml_unescape = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3942272618
+      )
+    }
+    {
+      let _gde_name = new StringName('uri_encode')
+      this._bindings.method_uri_encode = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3942272618
+      )
+    }
+    {
+      let _gde_name = new StringName('uri_decode')
+      this._bindings.method_uri_decode = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3942272618
+      )
+    }
+    {
+      let _gde_name = new StringName('c_escape')
+      this._bindings.method_c_escape = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3942272618
+      )
+    }
+    {
+      let _gde_name = new StringName('c_unescape')
+      this._bindings.method_c_unescape = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3942272618
+      )
+    }
+    {
+      let _gde_name = new StringName('json_escape')
+      this._bindings.method_json_escape = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3942272618
+      )
+    }
+    {
+      let _gde_name = new StringName('validate_node_name')
+      this._bindings.method_validate_node_name = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3942272618
+      )
+    }
+    {
+      let _gde_name = new StringName('validate_filename')
+      this._bindings.method_validate_filename = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3942272618
+      )
+    }
+    {
+      let _gde_name = new StringName('is_valid_identifier')
+      this._bindings.method_is_valid_identifier =
+        variant_get_ptr_builtin_method(
+          GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+          _gde_name.opaque,
+          3918633141
+        )
+    }
+    {
+      let _gde_name = new StringName('is_valid_int')
+      this._bindings.method_is_valid_int = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3918633141
+      )
+    }
+    {
+      let _gde_name = new StringName('is_valid_float')
+      this._bindings.method_is_valid_float = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3918633141
+      )
+    }
+    {
+      let _gde_name = new StringName('is_valid_hex_number')
+      this._bindings.method_is_valid_hex_number =
+        variant_get_ptr_builtin_method(
+          GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+          _gde_name.opaque,
+          593672999
+        )
+    }
+    {
+      let _gde_name = new StringName('is_valid_html_color')
+      this._bindings.method_is_valid_html_color =
+        variant_get_ptr_builtin_method(
+          GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+          _gde_name.opaque,
+          3918633141
+        )
+    }
+    {
+      let _gde_name = new StringName('is_valid_ip_address')
+      this._bindings.method_is_valid_ip_address =
+        variant_get_ptr_builtin_method(
+          GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+          _gde_name.opaque,
+          3918633141
+        )
+    }
+    {
+      let _gde_name = new StringName('is_valid_filename')
+      this._bindings.method_is_valid_filename = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3918633141
+      )
+    }
+    {
+      let _gde_name = new StringName('to_int')
+      this._bindings.method_to_int = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3173160232
+      )
+    }
+    {
+      let _gde_name = new StringName('to_float')
+      this._bindings.method_to_float = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        466405837
+      )
+    }
+    {
+      let _gde_name = new StringName('hex_to_int')
+      this._bindings.method_hex_to_int = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3173160232
+      )
+    }
+    {
+      let _gde_name = new StringName('bin_to_int')
+      this._bindings.method_bin_to_int = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3173160232
+      )
+    }
+    {
+      let _gde_name = new StringName('lpad')
+      this._bindings.method_lpad = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        248737229
+      )
+    }
+    {
+      let _gde_name = new StringName('rpad')
+      this._bindings.method_rpad = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        248737229
+      )
+    }
+    {
+      let _gde_name = new StringName('pad_decimals')
+      this._bindings.method_pad_decimals = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        2162347432
+      )
+    }
+    {
+      let _gde_name = new StringName('pad_zeros')
+      this._bindings.method_pad_zeros = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        2162347432
+      )
+    }
+    {
+      let _gde_name = new StringName('trim_prefix')
+      this._bindings.method_trim_prefix = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3134094431
+      )
+    }
+    {
+      let _gde_name = new StringName('trim_suffix')
+      this._bindings.method_trim_suffix = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        3134094431
+      )
+    }
+    {
+      let _gde_name = new StringName('to_ascii_buffer')
+      this._bindings.method_to_ascii_buffer = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        247621236
+      )
+    }
+    {
+      let _gde_name = new StringName('to_utf8_buffer')
+      this._bindings.method_to_utf8_buffer = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        247621236
+      )
+    }
+    {
+      let _gde_name = new StringName('to_utf16_buffer')
+      this._bindings.method_to_utf16_buffer = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        247621236
+      )
+    }
+    {
+      let _gde_name = new StringName('to_utf32_buffer')
+      this._bindings.method_to_utf32_buffer = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        247621236
+      )
+    }
+    {
+      let _gde_name = new StringName('hex_decode')
+      this._bindings.method_hex_decode = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        247621236
+      )
+    }
+    {
+      let _gde_name = new StringName('to_wchar_buffer')
+      this._bindings.method_to_wchar_buffer = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        247621236
+      )
+    }
+    {
+      let _gde_name = new StringName('num_scientific')
+      this._bindings.method_num_scientific = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        2710373411
+      )
+    }
+    {
+      let _gde_name = new StringName('num')
+      this._bindings.method_num = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        1555901022
+      )
+    }
+    {
+      let _gde_name = new StringName('num_int64')
+      this._bindings.method_num_int64 = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        2111271071
+      )
+    }
+    {
+      let _gde_name = new StringName('num_uint64')
+      this._bindings.method_num_uint64 = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        2111271071
+      )
+    }
+    {
+      let _gde_name = new StringName('chr')
+      this._bindings.method_chr = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        897497541
+      )
+    }
+    {
+      let _gde_name = new StringName('humanize_size')
+      this._bindings.method_humanize_size = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        _gde_name.opaque,
+        897497541
+      )
+    }
   }
 
   static __init_bindings_constructors_destructor () {
@@ -283,46 +1098,1073 @@ export class GDString {
   }
 
   casecmp_to (to) {
-    return _call_builtin_method_ptr_ret(
+    let ret
+    ret = _call_builtin_method_ptr_ret(
       GDString._bindings.method_casecmp_to,
       this.opaque,
       'int',
       [to.opaque]
     )
+    return ret
   }
-
   nocasecmp_to (to) {
-    return _call_builtin_method_ptr_ret(
+    let ret
+    ret = _call_builtin_method_ptr_ret(
       GDString._bindings.method_nocasecmp_to,
       this.opaque,
       'int',
       [to.opaque]
     )
+    return ret
   }
-
   naturalcasecmp_to (to) {
-    return _call_builtin_method_ptr_ret(
+    let ret
+    ret = _call_builtin_method_ptr_ret(
       GDString._bindings.method_naturalcasecmp_to,
       this.opaque,
       'int',
       [to.opaque]
     )
+    return ret
   }
-
   naturalnocasecmp_to (to) {
-    return _call_builtin_method_ptr_ret(
+    let ret
+    ret = _call_builtin_method_ptr_ret(
       GDString._bindings.method_naturalnocasecmp_to,
       this.opaque,
       'int',
       [to.opaque]
     )
+    return ret
   }
-
+  filecasecmp_to (to) {
+    let ret
+    ret = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_filecasecmp_to,
+      this.opaque,
+      'int',
+      [to.opaque]
+    )
+    return ret
+  }
+  filenocasecmp_to (to) {
+    let ret
+    ret = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_filenocasecmp_to,
+      this.opaque,
+      'int',
+      [to.opaque]
+    )
+    return ret
+  }
   length () {
-    return _call_builtin_method_ptr_ret(
+    let ret
+    ret = _call_builtin_method_ptr_ret(
       GDString._bindings.method_length,
       this.opaque,
-      'int'
+      'int',
+      []
     )
+    return ret
+  }
+  substr (from, len) {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_substr,
+      this.opaque,
+      'String',
+      [from, len]
+    )
+    return ret
+  }
+  get_slice (delimiter, slice) {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_get_slice,
+      this.opaque,
+      'String',
+      [delimiter.opaque, slice]
+    )
+    return ret
+  }
+  get_slicec (delimiter, slice) {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_get_slicec,
+      this.opaque,
+      'String',
+      [delimiter, slice]
+    )
+    return ret
+  }
+  get_slice_count (delimiter) {
+    let ret
+    ret = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_get_slice_count,
+      this.opaque,
+      'int',
+      [delimiter.opaque]
+    )
+    return ret
+  }
+  find (what, from) {
+    let ret
+    ret = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_find,
+      this.opaque,
+      'int',
+      [what.opaque, from]
+    )
+    return ret
+  }
+  findn (what, from) {
+    let ret
+    ret = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_findn,
+      this.opaque,
+      'int',
+      [what.opaque, from]
+    )
+    return ret
+  }
+  count (what, from, to) {
+    let ret
+    ret = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_count,
+      this.opaque,
+      'int',
+      [what.opaque, from, to]
+    )
+    return ret
+  }
+  countn (what, from, to) {
+    let ret
+    ret = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_countn,
+      this.opaque,
+      'int',
+      [what.opaque, from, to]
+    )
+    return ret
+  }
+  rfind (what, from) {
+    let ret
+    ret = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_rfind,
+      this.opaque,
+      'int',
+      [what.opaque, from]
+    )
+    return ret
+  }
+  rfindn (what, from) {
+    let ret
+    ret = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_rfindn,
+      this.opaque,
+      'int',
+      [what.opaque, from]
+    )
+    return ret
+  }
+  match (expr) {
+    let ret
+    ret = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_match,
+      this.opaque,
+      'bool',
+      [expr.opaque]
+    )
+    return ret
+  }
+  matchn (expr) {
+    let ret
+    ret = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_matchn,
+      this.opaque,
+      'bool',
+      [expr.opaque]
+    )
+    return ret
+  }
+  begins_with (text) {
+    let ret
+    ret = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_begins_with,
+      this.opaque,
+      'bool',
+      [text.opaque]
+    )
+    return ret
+  }
+  ends_with (text) {
+    let ret
+    ret = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_ends_with,
+      this.opaque,
+      'bool',
+      [text.opaque]
+    )
+    return ret
+  }
+  is_subsequence_of (text) {
+    let ret
+    ret = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_is_subsequence_of,
+      this.opaque,
+      'bool',
+      [text.opaque]
+    )
+    return ret
+  }
+  is_subsequence_ofn (text) {
+    let ret
+    ret = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_is_subsequence_ofn,
+      this.opaque,
+      'bool',
+      [text.opaque]
+    )
+    return ret
+  }
+  bigrams () {
+    let ret = new PackedStringArray()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_bigrams,
+      this.opaque,
+      'PackedStringArray',
+      []
+    )
+    return ret
+  }
+  similarity (text) {
+    let ret
+    ret = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_similarity,
+      this.opaque,
+      'float',
+      [text.opaque]
+    )
+    return ret
+  }
+  format (values, placeholder) {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_format,
+      this.opaque,
+      'String',
+      [values, placeholder.opaque]
+    )
+    return ret
+  }
+  replace (what, forwhat) {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_replace,
+      this.opaque,
+      'String',
+      [what.opaque, forwhat.opaque]
+    )
+    return ret
+  }
+  replacen (what, forwhat) {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_replacen,
+      this.opaque,
+      'String',
+      [what.opaque, forwhat.opaque]
+    )
+    return ret
+  }
+  repeat (count) {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_repeat,
+      this.opaque,
+      'String',
+      [count]
+    )
+    return ret
+  }
+  reverse () {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_reverse,
+      this.opaque,
+      'String',
+      []
+    )
+    return ret
+  }
+  insert (position, what) {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_insert,
+      this.opaque,
+      'String',
+      [position, what.opaque]
+    )
+    return ret
+  }
+  erase (position, chars) {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_erase,
+      this.opaque,
+      'String',
+      [position, chars]
+    )
+    return ret
+  }
+  capitalize () {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_capitalize,
+      this.opaque,
+      'String',
+      []
+    )
+    return ret
+  }
+  to_camel_case () {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_to_camel_case,
+      this.opaque,
+      'String',
+      []
+    )
+    return ret
+  }
+  to_pascal_case () {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_to_pascal_case,
+      this.opaque,
+      'String',
+      []
+    )
+    return ret
+  }
+  to_snake_case () {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_to_snake_case,
+      this.opaque,
+      'String',
+      []
+    )
+    return ret
+  }
+  split (delimiter, allow_empty, maxsplit) {
+    let ret = new PackedStringArray()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_split,
+      this.opaque,
+      'PackedStringArray',
+      [delimiter.opaque, allow_empty, maxsplit]
+    )
+    return ret
+  }
+  rsplit (delimiter, allow_empty, maxsplit) {
+    let ret = new PackedStringArray()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_rsplit,
+      this.opaque,
+      'PackedStringArray',
+      [delimiter.opaque, allow_empty, maxsplit]
+    )
+    return ret
+  }
+  split_floats (delimiter, allow_empty) {
+    let ret = new PackedFloat64Array()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_split_floats,
+      this.opaque,
+      'PackedFloat64Array',
+      [delimiter.opaque, allow_empty]
+    )
+    return ret
+  }
+  join (parts) {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_join,
+      this.opaque,
+      'String',
+      [parts.opaque]
+    )
+    return ret
+  }
+  to_upper () {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_to_upper,
+      this.opaque,
+      'String',
+      []
+    )
+    return ret
+  }
+  to_lower () {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_to_lower,
+      this.opaque,
+      'String',
+      []
+    )
+    return ret
+  }
+  left (length) {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_left,
+      this.opaque,
+      'String',
+      [length]
+    )
+    return ret
+  }
+  right (length) {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_right,
+      this.opaque,
+      'String',
+      [length]
+    )
+    return ret
+  }
+  strip_edges (left, right) {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_strip_edges,
+      this.opaque,
+      'String',
+      [left, right]
+    )
+    return ret
+  }
+  strip_escapes () {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_strip_escapes,
+      this.opaque,
+      'String',
+      []
+    )
+    return ret
+  }
+  lstrip (chars) {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_lstrip,
+      this.opaque,
+      'String',
+      [chars.opaque]
+    )
+    return ret
+  }
+  rstrip (chars) {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_rstrip,
+      this.opaque,
+      'String',
+      [chars.opaque]
+    )
+    return ret
+  }
+  get_extension () {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_get_extension,
+      this.opaque,
+      'String',
+      []
+    )
+    return ret
+  }
+  get_basename () {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_get_basename,
+      this.opaque,
+      'String',
+      []
+    )
+    return ret
+  }
+  path_join (file) {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_path_join,
+      this.opaque,
+      'String',
+      [file.opaque]
+    )
+    return ret
+  }
+  unicode_at (at) {
+    let ret
+    ret = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_unicode_at,
+      this.opaque,
+      'int',
+      [at]
+    )
+    return ret
+  }
+  indent (prefix) {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_indent,
+      this.opaque,
+      'String',
+      [prefix.opaque]
+    )
+    return ret
+  }
+  dedent () {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_dedent,
+      this.opaque,
+      'String',
+      []
+    )
+    return ret
+  }
+  hash () {
+    let ret
+    ret = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_hash,
+      this.opaque,
+      'int',
+      []
+    )
+    return ret
+  }
+  md5_text () {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_md5_text,
+      this.opaque,
+      'String',
+      []
+    )
+    return ret
+  }
+  sha1_text () {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_sha1_text,
+      this.opaque,
+      'String',
+      []
+    )
+    return ret
+  }
+  sha256_text () {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_sha256_text,
+      this.opaque,
+      'String',
+      []
+    )
+    return ret
+  }
+  md5_buffer () {
+    let ret = new PackedByteArray()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_md5_buffer,
+      this.opaque,
+      'PackedByteArray',
+      []
+    )
+    return ret
+  }
+  sha1_buffer () {
+    let ret = new PackedByteArray()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_sha1_buffer,
+      this.opaque,
+      'PackedByteArray',
+      []
+    )
+    return ret
+  }
+  sha256_buffer () {
+    let ret = new PackedByteArray()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_sha256_buffer,
+      this.opaque,
+      'PackedByteArray',
+      []
+    )
+    return ret
+  }
+  is_empty () {
+    let ret
+    ret = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_is_empty,
+      this.opaque,
+      'bool',
+      []
+    )
+    return ret
+  }
+  contains (what) {
+    let ret
+    ret = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_contains,
+      this.opaque,
+      'bool',
+      [what.opaque]
+    )
+    return ret
+  }
+  containsn (what) {
+    let ret
+    ret = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_containsn,
+      this.opaque,
+      'bool',
+      [what.opaque]
+    )
+    return ret
+  }
+  is_absolute_path () {
+    let ret
+    ret = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_is_absolute_path,
+      this.opaque,
+      'bool',
+      []
+    )
+    return ret
+  }
+  is_relative_path () {
+    let ret
+    ret = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_is_relative_path,
+      this.opaque,
+      'bool',
+      []
+    )
+    return ret
+  }
+  simplify_path () {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_simplify_path,
+      this.opaque,
+      'String',
+      []
+    )
+    return ret
+  }
+  get_base_dir () {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_get_base_dir,
+      this.opaque,
+      'String',
+      []
+    )
+    return ret
+  }
+  get_file () {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_get_file,
+      this.opaque,
+      'String',
+      []
+    )
+    return ret
+  }
+  xml_escape (escape_quotes) {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_xml_escape,
+      this.opaque,
+      'String',
+      [escape_quotes]
+    )
+    return ret
+  }
+  xml_unescape () {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_xml_unescape,
+      this.opaque,
+      'String',
+      []
+    )
+    return ret
+  }
+  uri_encode () {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_uri_encode,
+      this.opaque,
+      'String',
+      []
+    )
+    return ret
+  }
+  uri_decode () {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_uri_decode,
+      this.opaque,
+      'String',
+      []
+    )
+    return ret
+  }
+  c_escape () {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_c_escape,
+      this.opaque,
+      'String',
+      []
+    )
+    return ret
+  }
+  c_unescape () {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_c_unescape,
+      this.opaque,
+      'String',
+      []
+    )
+    return ret
+  }
+  json_escape () {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_json_escape,
+      this.opaque,
+      'String',
+      []
+    )
+    return ret
+  }
+  validate_node_name () {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_validate_node_name,
+      this.opaque,
+      'String',
+      []
+    )
+    return ret
+  }
+  validate_filename () {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_validate_filename,
+      this.opaque,
+      'String',
+      []
+    )
+    return ret
+  }
+  is_valid_identifier () {
+    let ret
+    ret = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_is_valid_identifier,
+      this.opaque,
+      'bool',
+      []
+    )
+    return ret
+  }
+  is_valid_int () {
+    let ret
+    ret = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_is_valid_int,
+      this.opaque,
+      'bool',
+      []
+    )
+    return ret
+  }
+  is_valid_float () {
+    let ret
+    ret = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_is_valid_float,
+      this.opaque,
+      'bool',
+      []
+    )
+    return ret
+  }
+  is_valid_hex_number (with_prefix) {
+    let ret
+    ret = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_is_valid_hex_number,
+      this.opaque,
+      'bool',
+      [with_prefix]
+    )
+    return ret
+  }
+  is_valid_html_color () {
+    let ret
+    ret = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_is_valid_html_color,
+      this.opaque,
+      'bool',
+      []
+    )
+    return ret
+  }
+  is_valid_ip_address () {
+    let ret
+    ret = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_is_valid_ip_address,
+      this.opaque,
+      'bool',
+      []
+    )
+    return ret
+  }
+  is_valid_filename () {
+    let ret
+    ret = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_is_valid_filename,
+      this.opaque,
+      'bool',
+      []
+    )
+    return ret
+  }
+  to_int () {
+    let ret
+    ret = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_to_int,
+      this.opaque,
+      'int',
+      []
+    )
+    return ret
+  }
+  to_float () {
+    let ret
+    ret = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_to_float,
+      this.opaque,
+      'float',
+      []
+    )
+    return ret
+  }
+  hex_to_int () {
+    let ret
+    ret = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_hex_to_int,
+      this.opaque,
+      'int',
+      []
+    )
+    return ret
+  }
+  bin_to_int () {
+    let ret
+    ret = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_bin_to_int,
+      this.opaque,
+      'int',
+      []
+    )
+    return ret
+  }
+  lpad (min_length, character) {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_lpad,
+      this.opaque,
+      'String',
+      [min_length, character.opaque]
+    )
+    return ret
+  }
+  rpad (min_length, character) {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_rpad,
+      this.opaque,
+      'String',
+      [min_length, character.opaque]
+    )
+    return ret
+  }
+  pad_decimals (digits) {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_pad_decimals,
+      this.opaque,
+      'String',
+      [digits]
+    )
+    return ret
+  }
+  pad_zeros (digits) {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_pad_zeros,
+      this.opaque,
+      'String',
+      [digits]
+    )
+    return ret
+  }
+  trim_prefix (prefix) {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_trim_prefix,
+      this.opaque,
+      'String',
+      [prefix.opaque]
+    )
+    return ret
+  }
+  trim_suffix (suffix) {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_trim_suffix,
+      this.opaque,
+      'String',
+      [suffix.opaque]
+    )
+    return ret
+  }
+  to_ascii_buffer () {
+    let ret = new PackedByteArray()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_to_ascii_buffer,
+      this.opaque,
+      'PackedByteArray',
+      []
+    )
+    return ret
+  }
+  to_utf8_buffer () {
+    let ret = new PackedByteArray()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_to_utf8_buffer,
+      this.opaque,
+      'PackedByteArray',
+      []
+    )
+    return ret
+  }
+  to_utf16_buffer () {
+    let ret = new PackedByteArray()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_to_utf16_buffer,
+      this.opaque,
+      'PackedByteArray',
+      []
+    )
+    return ret
+  }
+  to_utf32_buffer () {
+    let ret = new PackedByteArray()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_to_utf32_buffer,
+      this.opaque,
+      'PackedByteArray',
+      []
+    )
+    return ret
+  }
+  hex_decode () {
+    let ret = new PackedByteArray()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_hex_decode,
+      this.opaque,
+      'PackedByteArray',
+      []
+    )
+    return ret
+  }
+  to_wchar_buffer () {
+    let ret = new PackedByteArray()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_to_wchar_buffer,
+      this.opaque,
+      'PackedByteArray',
+      []
+    )
+    return ret
+  }
+  num_scientific (number) {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_num_scientific,
+      this.opaque,
+      'String',
+      [number]
+    )
+    return ret
+  }
+  num (number, decimals) {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_num,
+      this.opaque,
+      'String',
+      [number, decimals]
+    )
+    return ret
+  }
+  num_int64 (number, base, capitalize_hex) {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_num_int64,
+      this.opaque,
+      'String',
+      [number, base, capitalize_hex]
+    )
+    return ret
+  }
+  num_uint64 (number, base, capitalize_hex) {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_num_uint64,
+      this.opaque,
+      'String',
+      [number, base, capitalize_hex]
+    )
+    return ret
+  }
+  chr (char) {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_chr,
+      this.opaque,
+      'String',
+      [char]
+    )
+    return ret
+  }
+  humanize_size (size) {
+    let ret = new GDString()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      GDString._bindings.method_humanize_size,
+      this.opaque,
+      'String',
+      [size]
+    )
+    return ret
   }
 }

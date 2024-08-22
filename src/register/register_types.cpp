@@ -1,8 +1,8 @@
 #include "register/register_types.h"
 #include "gdextension_interface.h"
 #include "godot_cpp/godot.hpp"
+#include "quickjs/env.h"
 #include "quickjs/finalizer.h"
-#include "quickjs/utils.h"
 #include "register/register_internal_api.h"
 #include "register/register_utility_functions.h"
 #include <godot_cpp/core/os_windows.hpp>
@@ -72,13 +72,8 @@ void init_quickjs() {
 	JSValue ret = context.eval(R"xxx(
 		import { Variant } from 'src/js_godot/variant/variant';
 		Variant._init_bindings();
-		// await (async()=>{
-		// 	let mod = await import('src/js_godot/variant/variant');
-		// 	mod.Variant._init_bindings();
-		// })();
 	)xxx",
 			"<eval>", JS_EVAL_TYPE_MODULE);
-	js_print_error(ret);
 	JS_FreeValue(context.ctx, ret);
 }
 

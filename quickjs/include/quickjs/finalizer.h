@@ -1,7 +1,10 @@
 #ifndef QUICKJS_FINALIZER
 #define QUICKJS_FINALIZER
 
-#include "quickjs/utils.h"
+#include "quickjs/env.h"
+#include <quickjs/class_ids.h>
+#include <string>
+#include <unordered_map>
 
 #ifdef __cplusplus
 extern "C" {

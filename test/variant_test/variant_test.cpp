@@ -1,5 +1,5 @@
 #include "variant_test.hpp"
-#include "quickjs/utils.h"
+#include "quickjs/env.h"
 
 void test_variant() {
 	JSValue ret = context.eval(R"xxx(
