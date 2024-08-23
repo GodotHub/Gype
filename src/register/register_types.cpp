@@ -9,6 +9,7 @@
 
 #ifdef DEBUG_ENABLED
 #include "gdstring_test/gdstring_test.hpp"
+#include "node_path_test/node_path_test.hpp"
 #include "variant_test/variant_test.hpp"
 
 #endif
@@ -26,8 +27,9 @@ void initialize_tgds_types(void *user_data, GDExtensionInitializationLevel p_lev
 	printf("%s", "Quickjs start initialization\n");
 	init_quickjs();
 #ifdef DEBUG_ENABLED
-	// test_variant();
+	test_variant();
 	test_gdstring();
+	test_node_path();
 #endif // DEBUG
 	// JSValue value = context.eval("import { GD } from 'src/js_godot/variant/utility_functions.js';GD.print('123');", "<eval>", JS_EVAL_TYPE_MODULE);
 	// context.eval("import { StringName } from 'src/js_godot/variant/string_name.js';new StringName();", "<eval>", JS_EVAL_TYPE_MODULE);
@@ -65,15 +67,11 @@ void uninitialize_tgds_types(void *user_data, GDExtensionInitializationLevel p_l
 
 void init_quickjs() {
 	register_internal_api();
-	register_utility_functions();
+	// register_utility_functions();
 	js_init_module(context.ctx);
 	JS_AddIntrinsicOperators(context.ctx);
 	JS_SetModuleLoaderFunc(runtime.rt, NULL, module_loader, (void *)"D:/Godot/Gype");
-	JSValue ret = context.eval(R"xxx(
-		import { Variant } from 'src/js_godot/variant/variant';
-		Variant._init_bindings();
-	)xxx",
-			"<eval>", JS_EVAL_TYPE_MODULE);
+	JSValue ret = context.eval("import { Variant } from 'src/js_godot/variant/variant'; Variant._init_bindings();", "<eval>", JS_EVAL_TYPE_MODULE);
 	JS_FreeValue(context.ctx, ret);
 }
 

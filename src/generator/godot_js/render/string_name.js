@@ -3,22 +3,24 @@ import {
   variant_get_ptr_constructor,
   string_new_with_latin1_chars,
   variant_get_ptr_builtin_method,
-  variant_get_ptr_destructor
+  variant_get_ptr_destructor,
+  string_name_new_with_latin1_chars
 } from '__internal__'
 import { GDExtensionVariantType } from 'src/js_godot/gde/gde'
 import {
   _call_builtin_constructor,
   _call_builtin_method_ptr_ret
 } from 'src/js_godot/core/builtin_ptrcall'
-import { StringName } from 'src/js_godot/variant/string_name'
+import { GDString } from 'src/js_godot/variant/gd_string'
+import { NodePath } from 'src/js_godot/variant/node_path'
 import { Variant } from 'src/js_godot/variant/variant'
 
 class _MethodBindings {
   from_variant_constructor
+  destructor
   constructor_0
   constructor_1
   constructor_2
-  constructor_3
   method_casecmp_to
   method_nocasecmp_to
   method_naturalcasecmp_to
@@ -73,7 +75,6 @@ class _MethodBindings {
   method_unicode_at
   method_indent
   method_dedent
-  method_hash
   method_md5_text
   method_sha1_text
   method_sha256_text
@@ -120,12 +121,7 @@ class _MethodBindings {
   method_to_utf32_buffer
   method_hex_decode
   method_to_wchar_buffer
-  method_num_scientific
-  method_num
-  method_num_int64
-  method_num_uint64
-  method_chr
-  method_humanize_size
+  method_hash
   operator_equal_Variant
   operator_not_equal_Variant
   operator_module_Variant
@@ -135,10 +131,6 @@ class _MethodBindings {
   operator_module_float
   operator_equal_String
   operator_not_equal_String
-  operator_less_String
-  operator_less_equal_String
-  operator_greater_String
-  operator_greater_equal_String
   operator_add_String
   operator_module_String
   operator_in_String
@@ -160,6 +152,10 @@ class _MethodBindings {
   operator_module_Color
   operator_equal_StringName
   operator_not_equal_StringName
+  operator_less_StringName
+  operator_less_equal_StringName
+  operator_greater_StringName
+  operator_greater_equal_StringName
   operator_add_StringName
   operator_module_StringName
   operator_in_StringName
@@ -185,34 +181,58 @@ class _MethodBindings {
   operator_module_PackedVector4Array
 }
 
-export class GDString {
-  static STRING_SIZE = 8
-  opaque = new Uint8Array(GDString.STRING_SIZE)
+export class StringName {
+  static #SIZE = 8
+  opaque = new Uint8Array(StringName.#SIZE)
 
   static _bindings = new _MethodBindings()
 
-  constructor (value) {
-    if (!value) {
-      _call_builtin_constructor(GDString._bindings.constructor_0, this.opaque)
-    } else if (typeof value == 'string') {
-      string_new_with_latin1_chars(this.opaque, value)
-    } else if (value instanceof GDString) {
-      _call_builtin_constructor(GDString._bindings.constructor_1, this.opaque, [
-        value.opaque
+  constructor (from) {
+    if (!from) {
+      _call_builtin_constructor(StringName._bindings.constructor_0, this)
+    } else if (from instanceof StringName) {
+      _call_builtin_constructor(StringName._bindings.constructor_1, this, [
+        from
       ])
-    } else if (value instanceof StringName) {
-      _call_builtin_constructor(GDString._bindings.constructor_2, this.opaque, [
-        value.opaque
+    } else if (from instanceof GDString) {
+      _call_builtin_constructor(StringName._bindings.constructor_2, this, [
+        from
       ])
-    }
+    } else if (from instanceof Variant) {
+      StringName._bindings.from_variant_constructor(this.opaque, from.opaque)
+    } else if (typeof from == 'string') {
+      string_name_new_with_latin1_chars(this.opaque, from, false)
+    } else if (typeof from == 'number' || typeof from == "boolean") {
+      string_name_new_with_latin1_chars(this.opaque, from.toString(), false)
+    }}
+  
+  static __init_bindings_constructors_destructor () {
+    this._bindings.from_variant_constructor = get_variant_to_type_constructor(
+      GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME
+    )
+    this._bindings.constructor_0 = variant_get_ptr_constructor(
+      GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
+      0
+    )
+    this._bindings.constructor_1 = variant_get_ptr_constructor(
+      GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
+      1
+    )
+    this._bindings.constructor_2 = variant_get_ptr_constructor(
+      GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
+      2
+    )
+    this._bindings.destructor = variant_get_ptr_destructor(
+      GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME
+    )
   }
-
+  
   static _init_bindings () {
     this.__init_bindings_constructors_destructor()
     {
       let _gde_name = new StringName('casecmp_to')
       this._bindings.method_casecmp_to = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         2920860731
       )
@@ -220,7 +240,7 @@ export class GDString {
     {
       let _gde_name = new StringName('nocasecmp_to')
       this._bindings.method_nocasecmp_to = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         2920860731
       )
@@ -228,24 +248,23 @@ export class GDString {
     {
       let _gde_name = new StringName('naturalcasecmp_to')
       this._bindings.method_naturalcasecmp_to = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         2920860731
       )
     }
     {
       let _gde_name = new StringName('naturalnocasecmp_to')
-      this._bindings.method_naturalnocasecmp_to =
-        variant_get_ptr_builtin_method(
-          GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
-          _gde_name.opaque,
-          2920860731
-        )
+      this._bindings.method_naturalnocasecmp_to = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
+        _gde_name.opaque,
+        2920860731
+      )
     }
     {
       let _gde_name = new StringName('filecasecmp_to')
       this._bindings.method_filecasecmp_to = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         2920860731
       )
@@ -253,7 +272,7 @@ export class GDString {
     {
       let _gde_name = new StringName('filenocasecmp_to')
       this._bindings.method_filenocasecmp_to = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         2920860731
       )
@@ -261,7 +280,7 @@ export class GDString {
     {
       let _gde_name = new StringName('length')
       this._bindings.method_length = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3173160232
       )
@@ -269,7 +288,7 @@ export class GDString {
     {
       let _gde_name = new StringName('substr')
       this._bindings.method_substr = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         787537301
       )
@@ -277,7 +296,7 @@ export class GDString {
     {
       let _gde_name = new StringName('get_slice')
       this._bindings.method_get_slice = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3535100402
       )
@@ -285,7 +304,7 @@ export class GDString {
     {
       let _gde_name = new StringName('get_slicec')
       this._bindings.method_get_slicec = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         787537301
       )
@@ -293,7 +312,7 @@ export class GDString {
     {
       let _gde_name = new StringName('get_slice_count')
       this._bindings.method_get_slice_count = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         2920860731
       )
@@ -301,7 +320,7 @@ export class GDString {
     {
       let _gde_name = new StringName('find')
       this._bindings.method_find = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         1760645412
       )
@@ -309,7 +328,7 @@ export class GDString {
     {
       let _gde_name = new StringName('findn')
       this._bindings.method_findn = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         1760645412
       )
@@ -317,7 +336,7 @@ export class GDString {
     {
       let _gde_name = new StringName('count')
       this._bindings.method_count = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         2343087891
       )
@@ -325,7 +344,7 @@ export class GDString {
     {
       let _gde_name = new StringName('countn')
       this._bindings.method_countn = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         2343087891
       )
@@ -333,7 +352,7 @@ export class GDString {
     {
       let _gde_name = new StringName('rfind')
       this._bindings.method_rfind = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         1760645412
       )
@@ -341,7 +360,7 @@ export class GDString {
     {
       let _gde_name = new StringName('rfindn')
       this._bindings.method_rfindn = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         1760645412
       )
@@ -349,7 +368,7 @@ export class GDString {
     {
       let _gde_name = new StringName('match')
       this._bindings.method_match = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         2566493496
       )
@@ -357,7 +376,7 @@ export class GDString {
     {
       let _gde_name = new StringName('matchn')
       this._bindings.method_matchn = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         2566493496
       )
@@ -365,7 +384,7 @@ export class GDString {
     {
       let _gde_name = new StringName('begins_with')
       this._bindings.method_begins_with = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         2566493496
       )
@@ -373,7 +392,7 @@ export class GDString {
     {
       let _gde_name = new StringName('ends_with')
       this._bindings.method_ends_with = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         2566493496
       )
@@ -381,7 +400,7 @@ export class GDString {
     {
       let _gde_name = new StringName('is_subsequence_of')
       this._bindings.method_is_subsequence_of = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         2566493496
       )
@@ -389,7 +408,7 @@ export class GDString {
     {
       let _gde_name = new StringName('is_subsequence_ofn')
       this._bindings.method_is_subsequence_ofn = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         2566493496
       )
@@ -397,7 +416,7 @@ export class GDString {
     {
       let _gde_name = new StringName('bigrams')
       this._bindings.method_bigrams = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         747180633
       )
@@ -405,7 +424,7 @@ export class GDString {
     {
       let _gde_name = new StringName('similarity')
       this._bindings.method_similarity = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         2697460964
       )
@@ -413,7 +432,7 @@ export class GDString {
     {
       let _gde_name = new StringName('format')
       this._bindings.method_format = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3212199029
       )
@@ -421,7 +440,7 @@ export class GDString {
     {
       let _gde_name = new StringName('replace')
       this._bindings.method_replace = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         1340436205
       )
@@ -429,7 +448,7 @@ export class GDString {
     {
       let _gde_name = new StringName('replacen')
       this._bindings.method_replacen = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         1340436205
       )
@@ -437,7 +456,7 @@ export class GDString {
     {
       let _gde_name = new StringName('repeat')
       this._bindings.method_repeat = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         2162347432
       )
@@ -445,7 +464,7 @@ export class GDString {
     {
       let _gde_name = new StringName('reverse')
       this._bindings.method_reverse = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3942272618
       )
@@ -453,7 +472,7 @@ export class GDString {
     {
       let _gde_name = new StringName('insert')
       this._bindings.method_insert = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         248737229
       )
@@ -461,7 +480,7 @@ export class GDString {
     {
       let _gde_name = new StringName('erase')
       this._bindings.method_erase = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         787537301
       )
@@ -469,7 +488,7 @@ export class GDString {
     {
       let _gde_name = new StringName('capitalize')
       this._bindings.method_capitalize = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3942272618
       )
@@ -477,7 +496,7 @@ export class GDString {
     {
       let _gde_name = new StringName('to_camel_case')
       this._bindings.method_to_camel_case = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3942272618
       )
@@ -485,7 +504,7 @@ export class GDString {
     {
       let _gde_name = new StringName('to_pascal_case')
       this._bindings.method_to_pascal_case = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3942272618
       )
@@ -493,7 +512,7 @@ export class GDString {
     {
       let _gde_name = new StringName('to_snake_case')
       this._bindings.method_to_snake_case = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3942272618
       )
@@ -501,7 +520,7 @@ export class GDString {
     {
       let _gde_name = new StringName('split')
       this._bindings.method_split = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         1252735785
       )
@@ -509,7 +528,7 @@ export class GDString {
     {
       let _gde_name = new StringName('rsplit')
       this._bindings.method_rsplit = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         1252735785
       )
@@ -517,7 +536,7 @@ export class GDString {
     {
       let _gde_name = new StringName('split_floats')
       this._bindings.method_split_floats = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         2092079095
       )
@@ -525,7 +544,7 @@ export class GDString {
     {
       let _gde_name = new StringName('join')
       this._bindings.method_join = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3595973238
       )
@@ -533,7 +552,7 @@ export class GDString {
     {
       let _gde_name = new StringName('to_upper')
       this._bindings.method_to_upper = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3942272618
       )
@@ -541,7 +560,7 @@ export class GDString {
     {
       let _gde_name = new StringName('to_lower')
       this._bindings.method_to_lower = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3942272618
       )
@@ -549,7 +568,7 @@ export class GDString {
     {
       let _gde_name = new StringName('left')
       this._bindings.method_left = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         2162347432
       )
@@ -557,7 +576,7 @@ export class GDString {
     {
       let _gde_name = new StringName('right')
       this._bindings.method_right = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         2162347432
       )
@@ -565,7 +584,7 @@ export class GDString {
     {
       let _gde_name = new StringName('strip_edges')
       this._bindings.method_strip_edges = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         907855311
       )
@@ -573,7 +592,7 @@ export class GDString {
     {
       let _gde_name = new StringName('strip_escapes')
       this._bindings.method_strip_escapes = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3942272618
       )
@@ -581,7 +600,7 @@ export class GDString {
     {
       let _gde_name = new StringName('lstrip')
       this._bindings.method_lstrip = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3134094431
       )
@@ -589,7 +608,7 @@ export class GDString {
     {
       let _gde_name = new StringName('rstrip')
       this._bindings.method_rstrip = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3134094431
       )
@@ -597,7 +616,7 @@ export class GDString {
     {
       let _gde_name = new StringName('get_extension')
       this._bindings.method_get_extension = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3942272618
       )
@@ -605,7 +624,7 @@ export class GDString {
     {
       let _gde_name = new StringName('get_basename')
       this._bindings.method_get_basename = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3942272618
       )
@@ -613,7 +632,7 @@ export class GDString {
     {
       let _gde_name = new StringName('path_join')
       this._bindings.method_path_join = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3134094431
       )
@@ -621,7 +640,7 @@ export class GDString {
     {
       let _gde_name = new StringName('unicode_at')
       this._bindings.method_unicode_at = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         4103005248
       )
@@ -629,7 +648,7 @@ export class GDString {
     {
       let _gde_name = new StringName('indent')
       this._bindings.method_indent = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3134094431
       )
@@ -637,23 +656,15 @@ export class GDString {
     {
       let _gde_name = new StringName('dedent')
       this._bindings.method_dedent = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3942272618
       )
     }
     {
-      let _gde_name = new StringName('hash')
-      this._bindings.method_hash = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
-        _gde_name.opaque,
-        3173160232
-      )
-    }
-    {
       let _gde_name = new StringName('md5_text')
       this._bindings.method_md5_text = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3942272618
       )
@@ -661,7 +672,7 @@ export class GDString {
     {
       let _gde_name = new StringName('sha1_text')
       this._bindings.method_sha1_text = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3942272618
       )
@@ -669,7 +680,7 @@ export class GDString {
     {
       let _gde_name = new StringName('sha256_text')
       this._bindings.method_sha256_text = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3942272618
       )
@@ -677,7 +688,7 @@ export class GDString {
     {
       let _gde_name = new StringName('md5_buffer')
       this._bindings.method_md5_buffer = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         247621236
       )
@@ -685,7 +696,7 @@ export class GDString {
     {
       let _gde_name = new StringName('sha1_buffer')
       this._bindings.method_sha1_buffer = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         247621236
       )
@@ -693,7 +704,7 @@ export class GDString {
     {
       let _gde_name = new StringName('sha256_buffer')
       this._bindings.method_sha256_buffer = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         247621236
       )
@@ -701,7 +712,7 @@ export class GDString {
     {
       let _gde_name = new StringName('is_empty')
       this._bindings.method_is_empty = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3918633141
       )
@@ -709,7 +720,7 @@ export class GDString {
     {
       let _gde_name = new StringName('contains')
       this._bindings.method_contains = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         2566493496
       )
@@ -717,7 +728,7 @@ export class GDString {
     {
       let _gde_name = new StringName('containsn')
       this._bindings.method_containsn = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         2566493496
       )
@@ -725,7 +736,7 @@ export class GDString {
     {
       let _gde_name = new StringName('is_absolute_path')
       this._bindings.method_is_absolute_path = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3918633141
       )
@@ -733,7 +744,7 @@ export class GDString {
     {
       let _gde_name = new StringName('is_relative_path')
       this._bindings.method_is_relative_path = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3918633141
       )
@@ -741,7 +752,7 @@ export class GDString {
     {
       let _gde_name = new StringName('simplify_path')
       this._bindings.method_simplify_path = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3942272618
       )
@@ -749,7 +760,7 @@ export class GDString {
     {
       let _gde_name = new StringName('get_base_dir')
       this._bindings.method_get_base_dir = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3942272618
       )
@@ -757,7 +768,7 @@ export class GDString {
     {
       let _gde_name = new StringName('get_file')
       this._bindings.method_get_file = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3942272618
       )
@@ -765,7 +776,7 @@ export class GDString {
     {
       let _gde_name = new StringName('xml_escape')
       this._bindings.method_xml_escape = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3429816538
       )
@@ -773,7 +784,7 @@ export class GDString {
     {
       let _gde_name = new StringName('xml_unescape')
       this._bindings.method_xml_unescape = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3942272618
       )
@@ -781,7 +792,7 @@ export class GDString {
     {
       let _gde_name = new StringName('uri_encode')
       this._bindings.method_uri_encode = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3942272618
       )
@@ -789,7 +800,7 @@ export class GDString {
     {
       let _gde_name = new StringName('uri_decode')
       this._bindings.method_uri_decode = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3942272618
       )
@@ -797,7 +808,7 @@ export class GDString {
     {
       let _gde_name = new StringName('c_escape')
       this._bindings.method_c_escape = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3942272618
       )
@@ -805,7 +816,7 @@ export class GDString {
     {
       let _gde_name = new StringName('c_unescape')
       this._bindings.method_c_unescape = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3942272618
       )
@@ -813,7 +824,7 @@ export class GDString {
     {
       let _gde_name = new StringName('json_escape')
       this._bindings.method_json_escape = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3942272618
       )
@@ -821,7 +832,7 @@ export class GDString {
     {
       let _gde_name = new StringName('validate_node_name')
       this._bindings.method_validate_node_name = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3942272618
       )
@@ -829,24 +840,23 @@ export class GDString {
     {
       let _gde_name = new StringName('validate_filename')
       this._bindings.method_validate_filename = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3942272618
       )
     }
     {
       let _gde_name = new StringName('is_valid_identifier')
-      this._bindings.method_is_valid_identifier =
-        variant_get_ptr_builtin_method(
-          GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
-          _gde_name.opaque,
-          3918633141
-        )
+      this._bindings.method_is_valid_identifier = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
+        _gde_name.opaque,
+        3918633141
+      )
     }
     {
       let _gde_name = new StringName('is_valid_int')
       this._bindings.method_is_valid_int = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3918633141
       )
@@ -854,42 +864,39 @@ export class GDString {
     {
       let _gde_name = new StringName('is_valid_float')
       this._bindings.method_is_valid_float = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3918633141
       )
     }
     {
       let _gde_name = new StringName('is_valid_hex_number')
-      this._bindings.method_is_valid_hex_number =
-        variant_get_ptr_builtin_method(
-          GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
-          _gde_name.opaque,
-          593672999
-        )
+      this._bindings.method_is_valid_hex_number = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
+        _gde_name.opaque,
+        593672999
+      )
     }
     {
       let _gde_name = new StringName('is_valid_html_color')
-      this._bindings.method_is_valid_html_color =
-        variant_get_ptr_builtin_method(
-          GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
-          _gde_name.opaque,
-          3918633141
-        )
+      this._bindings.method_is_valid_html_color = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
+        _gde_name.opaque,
+        3918633141
+      )
     }
     {
       let _gde_name = new StringName('is_valid_ip_address')
-      this._bindings.method_is_valid_ip_address =
-        variant_get_ptr_builtin_method(
-          GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
-          _gde_name.opaque,
-          3918633141
-        )
+      this._bindings.method_is_valid_ip_address = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
+        _gde_name.opaque,
+        3918633141
+      )
     }
     {
       let _gde_name = new StringName('is_valid_filename')
       this._bindings.method_is_valid_filename = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3918633141
       )
@@ -897,7 +904,7 @@ export class GDString {
     {
       let _gde_name = new StringName('to_int')
       this._bindings.method_to_int = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3173160232
       )
@@ -905,7 +912,7 @@ export class GDString {
     {
       let _gde_name = new StringName('to_float')
       this._bindings.method_to_float = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         466405837
       )
@@ -913,7 +920,7 @@ export class GDString {
     {
       let _gde_name = new StringName('hex_to_int')
       this._bindings.method_hex_to_int = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3173160232
       )
@@ -921,7 +928,7 @@ export class GDString {
     {
       let _gde_name = new StringName('bin_to_int')
       this._bindings.method_bin_to_int = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3173160232
       )
@@ -929,7 +936,7 @@ export class GDString {
     {
       let _gde_name = new StringName('lpad')
       this._bindings.method_lpad = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         248737229
       )
@@ -937,7 +944,7 @@ export class GDString {
     {
       let _gde_name = new StringName('rpad')
       this._bindings.method_rpad = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         248737229
       )
@@ -945,7 +952,7 @@ export class GDString {
     {
       let _gde_name = new StringName('pad_decimals')
       this._bindings.method_pad_decimals = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         2162347432
       )
@@ -953,7 +960,7 @@ export class GDString {
     {
       let _gde_name = new StringName('pad_zeros')
       this._bindings.method_pad_zeros = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         2162347432
       )
@@ -961,7 +968,7 @@ export class GDString {
     {
       let _gde_name = new StringName('trim_prefix')
       this._bindings.method_trim_prefix = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3134094431
       )
@@ -969,7 +976,7 @@ export class GDString {
     {
       let _gde_name = new StringName('trim_suffix')
       this._bindings.method_trim_suffix = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         3134094431
       )
@@ -977,7 +984,7 @@ export class GDString {
     {
       let _gde_name = new StringName('to_ascii_buffer')
       this._bindings.method_to_ascii_buffer = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         247621236
       )
@@ -985,7 +992,7 @@ export class GDString {
     {
       let _gde_name = new StringName('to_utf8_buffer')
       this._bindings.method_to_utf8_buffer = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         247621236
       )
@@ -993,7 +1000,7 @@ export class GDString {
     {
       let _gde_name = new StringName('to_utf16_buffer')
       this._bindings.method_to_utf16_buffer = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         247621236
       )
@@ -1001,7 +1008,7 @@ export class GDString {
     {
       let _gde_name = new StringName('to_utf32_buffer')
       this._bindings.method_to_utf32_buffer = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         247621236
       )
@@ -1009,7 +1016,7 @@ export class GDString {
     {
       let _gde_name = new StringName('hex_decode')
       this._bindings.method_hex_decode = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         247621236
       )
@@ -1017,151 +1024,86 @@ export class GDString {
     {
       let _gde_name = new StringName('to_wchar_buffer')
       this._bindings.method_to_wchar_buffer = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
         247621236
       )
     }
     {
-      let _gde_name = new StringName('num_scientific')
-      this._bindings.method_num_scientific = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
+      let _gde_name = new StringName('hash')
+      this._bindings.method_hash = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME,
         _gde_name.opaque,
-        2710373411
+        3173160232
       )
     }
-    {
-      let _gde_name = new StringName('num')
-      this._bindings.method_num = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
-        _gde_name.opaque,
-        1555901022
-      )
-    }
-    {
-      let _gde_name = new StringName('num_int64')
-      this._bindings.method_num_int64 = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
-        _gde_name.opaque,
-        2111271071
-      )
-    }
-    {
-      let _gde_name = new StringName('num_uint64')
-      this._bindings.method_num_uint64 = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
-        _gde_name.opaque,
-        2111271071
-      )
-    }
-    {
-      let _gde_name = new StringName('chr')
-      this._bindings.method_chr = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
-        _gde_name.opaque,
-        897497541
-      )
-    }
-    {
-      let _gde_name = new StringName('humanize_size')
-      this._bindings.method_humanize_size = variant_get_ptr_builtin_method(
-        GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
-        _gde_name.opaque,
-        897497541
-      )
-    }
-  }
-
-  static __init_bindings_constructors_destructor () {
-    this._bindings.from_variant_constructor = get_variant_to_type_constructor(
-      GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING
-    )
-    this._bindings.constructor_0 = variant_get_ptr_constructor(
-      GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
-      0
-    )
-    this._bindings.constructor_1 = variant_get_ptr_constructor(
-      GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
-      1
-    )
-    this._bindings.constructor_2 = variant_get_ptr_constructor(
-      GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
-      2
-    )
-    this._bindings.constructor_3 = variant_get_ptr_constructor(
-      GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING,
-      3
-    )
-    this._bindings.destructor = variant_get_ptr_destructor(
-      GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING
-    )
   }
 
   casecmp_to (to) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_casecmp_to,
-      this.opaque,
+      StringName._bindings.method_casecmp_to,
+      this,
       'int',
-      [to.opaque]
+      [to]
     )
     return ret
   }
   nocasecmp_to (to) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_nocasecmp_to,
-      this.opaque,
+      StringName._bindings.method_nocasecmp_to,
+      this,
       'int',
-      [to.opaque]
+      [to]
     )
     return ret
   }
   naturalcasecmp_to (to) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_naturalcasecmp_to,
-      this.opaque,
+      StringName._bindings.method_naturalcasecmp_to,
+      this,
       'int',
-      [to.opaque]
+      [to]
     )
     return ret
   }
   naturalnocasecmp_to (to) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_naturalnocasecmp_to,
-      this.opaque,
+      StringName._bindings.method_naturalnocasecmp_to,
+      this,
       'int',
-      [to.opaque]
+      [to]
     )
     return ret
   }
   filecasecmp_to (to) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_filecasecmp_to,
-      this.opaque,
+      StringName._bindings.method_filecasecmp_to,
+      this,
       'int',
-      [to.opaque]
+      [to]
     )
     return ret
   }
   filenocasecmp_to (to) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_filenocasecmp_to,
-      this.opaque,
+      StringName._bindings.method_filenocasecmp_to,
+      this,
       'int',
-      [to.opaque]
+      [to]
     )
     return ret
   }
   length () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_length,
-      this.opaque,
+      StringName._bindings.method_length,
+      this,
       'int',
       []
     )
@@ -1170,9 +1112,9 @@ export class GDString {
   substr (from, len) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_substr,
-      this.opaque,
-      'String',
+      StringName._bindings.method_substr,
+      this,
+      'GDString',
       [from, len]
     )
     return ret
@@ -1180,19 +1122,19 @@ export class GDString {
   get_slice (delimiter, slice) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_get_slice,
-      this.opaque,
-      'String',
-      [delimiter.opaque, slice]
+      StringName._bindings.method_get_slice,
+      this,
+      'GDString',
+      [delimiter, slice]
     )
     return ret
   }
   get_slicec (delimiter, slice) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_get_slicec,
-      this.opaque,
-      'String',
+      StringName._bindings.method_get_slicec,
+      this,
+      'GDString',
       [delimiter, slice]
     )
     return ret
@@ -1200,138 +1142,138 @@ export class GDString {
   get_slice_count (delimiter) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_get_slice_count,
-      this.opaque,
+      StringName._bindings.method_get_slice_count,
+      this,
       'int',
-      [delimiter.opaque]
+      [delimiter]
     )
     return ret
   }
   find (what, from) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_find,
-      this.opaque,
+      StringName._bindings.method_find,
+      this,
       'int',
-      [what.opaque, from]
+      [what, from]
     )
     return ret
   }
   findn (what, from) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_findn,
-      this.opaque,
+      StringName._bindings.method_findn,
+      this,
       'int',
-      [what.opaque, from]
+      [what, from]
     )
     return ret
   }
   count (what, from, to) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_count,
-      this.opaque,
+      StringName._bindings.method_count,
+      this,
       'int',
-      [what.opaque, from, to]
+      [what, from, to]
     )
     return ret
   }
   countn (what, from, to) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_countn,
-      this.opaque,
+      StringName._bindings.method_countn,
+      this,
       'int',
-      [what.opaque, from, to]
+      [what, from, to]
     )
     return ret
   }
   rfind (what, from) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_rfind,
-      this.opaque,
+      StringName._bindings.method_rfind,
+      this,
       'int',
-      [what.opaque, from]
+      [what, from]
     )
     return ret
   }
   rfindn (what, from) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_rfindn,
-      this.opaque,
+      StringName._bindings.method_rfindn,
+      this,
       'int',
-      [what.opaque, from]
+      [what, from]
     )
     return ret
   }
   match (expr) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_match,
-      this.opaque,
+      StringName._bindings.method_match,
+      this,
       'bool',
-      [expr.opaque]
+      [expr]
     )
     return ret
   }
   matchn (expr) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_matchn,
-      this.opaque,
+      StringName._bindings.method_matchn,
+      this,
       'bool',
-      [expr.opaque]
+      [expr]
     )
     return ret
   }
   begins_with (text) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_begins_with,
-      this.opaque,
+      StringName._bindings.method_begins_with,
+      this,
       'bool',
-      [text.opaque]
+      [text]
     )
     return ret
   }
   ends_with (text) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_ends_with,
-      this.opaque,
+      StringName._bindings.method_ends_with,
+      this,
       'bool',
-      [text.opaque]
+      [text]
     )
     return ret
   }
   is_subsequence_of (text) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_is_subsequence_of,
-      this.opaque,
+      StringName._bindings.method_is_subsequence_of,
+      this,
       'bool',
-      [text.opaque]
+      [text]
     )
     return ret
   }
   is_subsequence_ofn (text) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_is_subsequence_ofn,
-      this.opaque,
+      StringName._bindings.method_is_subsequence_ofn,
+      this,
       'bool',
-      [text.opaque]
+      [text]
     )
     return ret
   }
   bigrams () {
     let ret = new PackedStringArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_bigrams,
-      this.opaque,
+      StringName._bindings.method_bigrams,
+      this,
       'PackedStringArray',
       []
     )
@@ -1340,49 +1282,49 @@ export class GDString {
   similarity (text) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_similarity,
-      this.opaque,
+      StringName._bindings.method_similarity,
+      this,
       'float',
-      [text.opaque]
+      [text]
     )
     return ret
   }
   format (values, placeholder) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_format,
-      this.opaque,
-      'String',
-      [values, placeholder.opaque]
+      StringName._bindings.method_format,
+      this,
+      'GDString',
+      [values, placeholder]
     )
     return ret
   }
   replace (what, forwhat) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_replace,
-      this.opaque,
-      'String',
-      [what.opaque, forwhat.opaque]
+      StringName._bindings.method_replace,
+      this,
+      'GDString',
+      [what, forwhat]
     )
     return ret
   }
   replacen (what, forwhat) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_replacen,
-      this.opaque,
-      'String',
-      [what.opaque, forwhat.opaque]
+      StringName._bindings.method_replacen,
+      this,
+      'GDString',
+      [what, forwhat]
     )
     return ret
   }
   repeat (count) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_repeat,
-      this.opaque,
-      'String',
+      StringName._bindings.method_repeat,
+      this,
+      'GDString',
       [count]
     )
     return ret
@@ -1390,9 +1332,9 @@ export class GDString {
   reverse () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_reverse,
-      this.opaque,
-      'String',
+      StringName._bindings.method_reverse,
+      this,
+      'GDString',
       []
     )
     return ret
@@ -1400,19 +1342,19 @@ export class GDString {
   insert (position, what) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_insert,
-      this.opaque,
-      'String',
-      [position, what.opaque]
+      StringName._bindings.method_insert,
+      this,
+      'GDString',
+      [position, what]
     )
     return ret
   }
   erase (position, chars) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_erase,
-      this.opaque,
-      'String',
+      StringName._bindings.method_erase,
+      this,
+      'GDString',
       [position, chars]
     )
     return ret
@@ -1420,9 +1362,9 @@ export class GDString {
   capitalize () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_capitalize,
-      this.opaque,
-      'String',
+      StringName._bindings.method_capitalize,
+      this,
+      'GDString',
       []
     )
     return ret
@@ -1430,9 +1372,9 @@ export class GDString {
   to_camel_case () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_to_camel_case,
-      this.opaque,
-      'String',
+      StringName._bindings.method_to_camel_case,
+      this,
+      'GDString',
       []
     )
     return ret
@@ -1440,9 +1382,9 @@ export class GDString {
   to_pascal_case () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_to_pascal_case,
-      this.opaque,
-      'String',
+      StringName._bindings.method_to_pascal_case,
+      this,
+      'GDString',
       []
     )
     return ret
@@ -1450,9 +1392,9 @@ export class GDString {
   to_snake_case () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_to_snake_case,
-      this.opaque,
-      'String',
+      StringName._bindings.method_to_snake_case,
+      this,
+      'GDString',
       []
     )
     return ret
@@ -1460,49 +1402,49 @@ export class GDString {
   split (delimiter, allow_empty, maxsplit) {
     let ret = new PackedStringArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_split,
-      this.opaque,
+      StringName._bindings.method_split,
+      this,
       'PackedStringArray',
-      [delimiter.opaque, allow_empty, maxsplit]
+      [delimiter, allow_empty, maxsplit]
     )
     return ret
   }
   rsplit (delimiter, allow_empty, maxsplit) {
     let ret = new PackedStringArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_rsplit,
-      this.opaque,
+      StringName._bindings.method_rsplit,
+      this,
       'PackedStringArray',
-      [delimiter.opaque, allow_empty, maxsplit]
+      [delimiter, allow_empty, maxsplit]
     )
     return ret
   }
   split_floats (delimiter, allow_empty) {
     let ret = new PackedFloat64Array()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_split_floats,
-      this.opaque,
+      StringName._bindings.method_split_floats,
+      this,
       'PackedFloat64Array',
-      [delimiter.opaque, allow_empty]
+      [delimiter, allow_empty]
     )
     return ret
   }
   join (parts) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_join,
-      this.opaque,
-      'String',
-      [parts.opaque]
+      StringName._bindings.method_join,
+      this,
+      'GDString',
+      [parts]
     )
     return ret
   }
   to_upper () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_to_upper,
-      this.opaque,
-      'String',
+      StringName._bindings.method_to_upper,
+      this,
+      'GDString',
       []
     )
     return ret
@@ -1510,9 +1452,9 @@ export class GDString {
   to_lower () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_to_lower,
-      this.opaque,
-      'String',
+      StringName._bindings.method_to_lower,
+      this,
+      'GDString',
       []
     )
     return ret
@@ -1520,9 +1462,9 @@ export class GDString {
   left (length) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_left,
-      this.opaque,
-      'String',
+      StringName._bindings.method_left,
+      this,
+      'GDString',
       [length]
     )
     return ret
@@ -1530,9 +1472,9 @@ export class GDString {
   right (length) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_right,
-      this.opaque,
-      'String',
+      StringName._bindings.method_right,
+      this,
+      'GDString',
       [length]
     )
     return ret
@@ -1540,9 +1482,9 @@ export class GDString {
   strip_edges (left, right) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_strip_edges,
-      this.opaque,
-      'String',
+      StringName._bindings.method_strip_edges,
+      this,
+      'GDString',
       [left, right]
     )
     return ret
@@ -1550,9 +1492,9 @@ export class GDString {
   strip_escapes () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_strip_escapes,
-      this.opaque,
-      'String',
+      StringName._bindings.method_strip_escapes,
+      this,
+      'GDString',
       []
     )
     return ret
@@ -1560,29 +1502,29 @@ export class GDString {
   lstrip (chars) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_lstrip,
-      this.opaque,
-      'String',
-      [chars.opaque]
+      StringName._bindings.method_lstrip,
+      this,
+      'GDString',
+      [chars]
     )
     return ret
   }
   rstrip (chars) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_rstrip,
-      this.opaque,
-      'String',
-      [chars.opaque]
+      StringName._bindings.method_rstrip,
+      this,
+      'GDString',
+      [chars]
     )
     return ret
   }
   get_extension () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_get_extension,
-      this.opaque,
-      'String',
+      StringName._bindings.method_get_extension,
+      this,
+      'GDString',
       []
     )
     return ret
@@ -1590,9 +1532,9 @@ export class GDString {
   get_basename () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_get_basename,
-      this.opaque,
-      'String',
+      StringName._bindings.method_get_basename,
+      this,
+      'GDString',
       []
     )
     return ret
@@ -1600,18 +1542,18 @@ export class GDString {
   path_join (file) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_path_join,
-      this.opaque,
-      'String',
-      [file.opaque]
+      StringName._bindings.method_path_join,
+      this,
+      'GDString',
+      [file]
     )
     return ret
   }
   unicode_at (at) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_unicode_at,
-      this.opaque,
+      StringName._bindings.method_unicode_at,
+      this,
       'int',
       [at]
     )
@@ -1620,29 +1562,19 @@ export class GDString {
   indent (prefix) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_indent,
-      this.opaque,
-      'String',
-      [prefix.opaque]
+      StringName._bindings.method_indent,
+      this,
+      'GDString',
+      [prefix]
     )
     return ret
   }
   dedent () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_dedent,
-      this.opaque,
-      'String',
-      []
-    )
-    return ret
-  }
-  hash () {
-    let ret
-    ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_hash,
-      this.opaque,
-      'int',
+      StringName._bindings.method_dedent,
+      this,
+      'GDString',
       []
     )
     return ret
@@ -1650,9 +1582,9 @@ export class GDString {
   md5_text () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_md5_text,
-      this.opaque,
-      'String',
+      StringName._bindings.method_md5_text,
+      this,
+      'GDString',
       []
     )
     return ret
@@ -1660,9 +1592,9 @@ export class GDString {
   sha1_text () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_sha1_text,
-      this.opaque,
-      'String',
+      StringName._bindings.method_sha1_text,
+      this,
+      'GDString',
       []
     )
     return ret
@@ -1670,9 +1602,9 @@ export class GDString {
   sha256_text () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_sha256_text,
-      this.opaque,
-      'String',
+      StringName._bindings.method_sha256_text,
+      this,
+      'GDString',
       []
     )
     return ret
@@ -1680,8 +1612,8 @@ export class GDString {
   md5_buffer () {
     let ret = new PackedByteArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_md5_buffer,
-      this.opaque,
+      StringName._bindings.method_md5_buffer,
+      this,
       'PackedByteArray',
       []
     )
@@ -1690,8 +1622,8 @@ export class GDString {
   sha1_buffer () {
     let ret = new PackedByteArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_sha1_buffer,
-      this.opaque,
+      StringName._bindings.method_sha1_buffer,
+      this,
       'PackedByteArray',
       []
     )
@@ -1700,8 +1632,8 @@ export class GDString {
   sha256_buffer () {
     let ret = new PackedByteArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_sha256_buffer,
-      this.opaque,
+      StringName._bindings.method_sha256_buffer,
+      this,
       'PackedByteArray',
       []
     )
@@ -1710,8 +1642,8 @@ export class GDString {
   is_empty () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_is_empty,
-      this.opaque,
+      StringName._bindings.method_is_empty,
+      this,
       'bool',
       []
     )
@@ -1720,28 +1652,28 @@ export class GDString {
   contains (what) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_contains,
-      this.opaque,
+      StringName._bindings.method_contains,
+      this,
       'bool',
-      [what.opaque]
+      [what]
     )
     return ret
   }
   containsn (what) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_containsn,
-      this.opaque,
+      StringName._bindings.method_containsn,
+      this,
       'bool',
-      [what.opaque]
+      [what]
     )
     return ret
   }
   is_absolute_path () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_is_absolute_path,
-      this.opaque,
+      StringName._bindings.method_is_absolute_path,
+      this,
       'bool',
       []
     )
@@ -1750,8 +1682,8 @@ export class GDString {
   is_relative_path () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_is_relative_path,
-      this.opaque,
+      StringName._bindings.method_is_relative_path,
+      this,
       'bool',
       []
     )
@@ -1760,9 +1692,9 @@ export class GDString {
   simplify_path () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_simplify_path,
-      this.opaque,
-      'String',
+      StringName._bindings.method_simplify_path,
+      this,
+      'GDString',
       []
     )
     return ret
@@ -1770,9 +1702,9 @@ export class GDString {
   get_base_dir () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_get_base_dir,
-      this.opaque,
-      'String',
+      StringName._bindings.method_get_base_dir,
+      this,
+      'GDString',
       []
     )
     return ret
@@ -1780,9 +1712,9 @@ export class GDString {
   get_file () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_get_file,
-      this.opaque,
-      'String',
+      StringName._bindings.method_get_file,
+      this,
+      'GDString',
       []
     )
     return ret
@@ -1790,9 +1722,9 @@ export class GDString {
   xml_escape (escape_quotes) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_xml_escape,
-      this.opaque,
-      'String',
+      StringName._bindings.method_xml_escape,
+      this,
+      'GDString',
       [escape_quotes]
     )
     return ret
@@ -1800,9 +1732,9 @@ export class GDString {
   xml_unescape () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_xml_unescape,
-      this.opaque,
-      'String',
+      StringName._bindings.method_xml_unescape,
+      this,
+      'GDString',
       []
     )
     return ret
@@ -1810,9 +1742,9 @@ export class GDString {
   uri_encode () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_uri_encode,
-      this.opaque,
-      'String',
+      StringName._bindings.method_uri_encode,
+      this,
+      'GDString',
       []
     )
     return ret
@@ -1820,9 +1752,9 @@ export class GDString {
   uri_decode () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_uri_decode,
-      this.opaque,
-      'String',
+      StringName._bindings.method_uri_decode,
+      this,
+      'GDString',
       []
     )
     return ret
@@ -1830,9 +1762,9 @@ export class GDString {
   c_escape () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_c_escape,
-      this.opaque,
-      'String',
+      StringName._bindings.method_c_escape,
+      this,
+      'GDString',
       []
     )
     return ret
@@ -1840,9 +1772,9 @@ export class GDString {
   c_unescape () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_c_unescape,
-      this.opaque,
-      'String',
+      StringName._bindings.method_c_unescape,
+      this,
+      'GDString',
       []
     )
     return ret
@@ -1850,9 +1782,9 @@ export class GDString {
   json_escape () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_json_escape,
-      this.opaque,
-      'String',
+      StringName._bindings.method_json_escape,
+      this,
+      'GDString',
       []
     )
     return ret
@@ -1860,9 +1792,9 @@ export class GDString {
   validate_node_name () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_validate_node_name,
-      this.opaque,
-      'String',
+      StringName._bindings.method_validate_node_name,
+      this,
+      'GDString',
       []
     )
     return ret
@@ -1870,9 +1802,9 @@ export class GDString {
   validate_filename () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_validate_filename,
-      this.opaque,
-      'String',
+      StringName._bindings.method_validate_filename,
+      this,
+      'GDString',
       []
     )
     return ret
@@ -1880,8 +1812,8 @@ export class GDString {
   is_valid_identifier () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_is_valid_identifier,
-      this.opaque,
+      StringName._bindings.method_is_valid_identifier,
+      this,
       'bool',
       []
     )
@@ -1890,8 +1822,8 @@ export class GDString {
   is_valid_int () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_is_valid_int,
-      this.opaque,
+      StringName._bindings.method_is_valid_int,
+      this,
       'bool',
       []
     )
@@ -1900,8 +1832,8 @@ export class GDString {
   is_valid_float () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_is_valid_float,
-      this.opaque,
+      StringName._bindings.method_is_valid_float,
+      this,
       'bool',
       []
     )
@@ -1910,8 +1842,8 @@ export class GDString {
   is_valid_hex_number (with_prefix) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_is_valid_hex_number,
-      this.opaque,
+      StringName._bindings.method_is_valid_hex_number,
+      this,
       'bool',
       [with_prefix]
     )
@@ -1920,8 +1852,8 @@ export class GDString {
   is_valid_html_color () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_is_valid_html_color,
-      this.opaque,
+      StringName._bindings.method_is_valid_html_color,
+      this,
       'bool',
       []
     )
@@ -1930,8 +1862,8 @@ export class GDString {
   is_valid_ip_address () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_is_valid_ip_address,
-      this.opaque,
+      StringName._bindings.method_is_valid_ip_address,
+      this,
       'bool',
       []
     )
@@ -1940,8 +1872,8 @@ export class GDString {
   is_valid_filename () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_is_valid_filename,
-      this.opaque,
+      StringName._bindings.method_is_valid_filename,
+      this,
       'bool',
       []
     )
@@ -1950,8 +1882,8 @@ export class GDString {
   to_int () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_to_int,
-      this.opaque,
+      StringName._bindings.method_to_int,
+      this,
       'int',
       []
     )
@@ -1960,8 +1892,8 @@ export class GDString {
   to_float () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_to_float,
-      this.opaque,
+      StringName._bindings.method_to_float,
+      this,
       'float',
       []
     )
@@ -1970,8 +1902,8 @@ export class GDString {
   hex_to_int () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_hex_to_int,
-      this.opaque,
+      StringName._bindings.method_hex_to_int,
+      this,
       'int',
       []
     )
@@ -1980,8 +1912,8 @@ export class GDString {
   bin_to_int () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_bin_to_int,
-      this.opaque,
+      StringName._bindings.method_bin_to_int,
+      this,
       'int',
       []
     )
@@ -1990,29 +1922,29 @@ export class GDString {
   lpad (min_length, character) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_lpad,
-      this.opaque,
-      'String',
-      [min_length, character.opaque]
+      StringName._bindings.method_lpad,
+      this,
+      'GDString',
+      [min_length, character]
     )
     return ret
   }
   rpad (min_length, character) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_rpad,
-      this.opaque,
-      'String',
-      [min_length, character.opaque]
+      StringName._bindings.method_rpad,
+      this,
+      'GDString',
+      [min_length, character]
     )
     return ret
   }
   pad_decimals (digits) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_pad_decimals,
-      this.opaque,
-      'String',
+      StringName._bindings.method_pad_decimals,
+      this,
+      'GDString',
       [digits]
     )
     return ret
@@ -2020,9 +1952,9 @@ export class GDString {
   pad_zeros (digits) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_pad_zeros,
-      this.opaque,
-      'String',
+      StringName._bindings.method_pad_zeros,
+      this,
+      'GDString',
       [digits]
     )
     return ret
@@ -2030,28 +1962,28 @@ export class GDString {
   trim_prefix (prefix) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_trim_prefix,
-      this.opaque,
-      'String',
-      [prefix.opaque]
+      StringName._bindings.method_trim_prefix,
+      this,
+      'GDString',
+      [prefix]
     )
     return ret
   }
   trim_suffix (suffix) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_trim_suffix,
-      this.opaque,
-      'String',
-      [suffix.opaque]
+      StringName._bindings.method_trim_suffix,
+      this,
+      'GDString',
+      [suffix]
     )
     return ret
   }
   to_ascii_buffer () {
     let ret = new PackedByteArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_to_ascii_buffer,
-      this.opaque,
+      StringName._bindings.method_to_ascii_buffer,
+      this,
       'PackedByteArray',
       []
     )
@@ -2060,8 +1992,8 @@ export class GDString {
   to_utf8_buffer () {
     let ret = new PackedByteArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_to_utf8_buffer,
-      this.opaque,
+      StringName._bindings.method_to_utf8_buffer,
+      this,
       'PackedByteArray',
       []
     )
@@ -2070,8 +2002,8 @@ export class GDString {
   to_utf16_buffer () {
     let ret = new PackedByteArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_to_utf16_buffer,
-      this.opaque,
+      StringName._bindings.method_to_utf16_buffer,
+      this,
       'PackedByteArray',
       []
     )
@@ -2080,8 +2012,8 @@ export class GDString {
   to_utf32_buffer () {
     let ret = new PackedByteArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_to_utf32_buffer,
-      this.opaque,
+      StringName._bindings.method_to_utf32_buffer,
+      this,
       'PackedByteArray',
       []
     )
@@ -2090,8 +2022,8 @@ export class GDString {
   hex_decode () {
     let ret = new PackedByteArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_hex_decode,
-      this.opaque,
+      StringName._bindings.method_hex_decode,
+      this,
       'PackedByteArray',
       []
     )
@@ -2100,71 +2032,22 @@ export class GDString {
   to_wchar_buffer () {
     let ret = new PackedByteArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_to_wchar_buffer,
-      this.opaque,
+      StringName._bindings.method_to_wchar_buffer,
+      this,
       'PackedByteArray',
       []
     )
     return ret
   }
-  num_scientific (number) {
-    let ret = new GDString()
-    ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_num_scientific,
-      this.opaque,
-      'String',
-      [number]
+  hash () {
+    let ret
+    ret = _call_builtin_method_ptr_ret(
+      StringName._bindings.method_hash,
+      this,
+      'int',
+      []
     )
     return ret
   }
-  num (number, decimals) {
-    let ret = new GDString()
-    ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_num,
-      this.opaque,
-      'String',
-      [number, decimals]
-    )
-    return ret
-  }
-  num_int64 (number, base, capitalize_hex) {
-    let ret = new GDString()
-    ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_num_int64,
-      this.opaque,
-      'String',
-      [number, base, capitalize_hex]
-    )
-    return ret
-  }
-  num_uint64 (number, base, capitalize_hex) {
-    let ret = new GDString()
-    ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_num_uint64,
-      this.opaque,
-      'String',
-      [number, base, capitalize_hex]
-    )
-    return ret
-  }
-  chr (char) {
-    let ret = new GDString()
-    ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_chr,
-      this.opaque,
-      'String',
-      [char]
-    )
-    return ret
-  }
-  humanize_size (size) {
-    let ret = new GDString()
-    ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_humanize_size,
-      this.opaque,
-      'String',
-      [size]
-    )
-    return ret
-  }
+  
 }
