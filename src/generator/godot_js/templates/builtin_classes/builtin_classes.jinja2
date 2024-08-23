@@ -1,0 +1,47 @@
+{%- set clazz = gde_json['builtin_classes'][index] -%}
+{%- set size = ((gde_json['builtin_class_sizes'] | selectattr('build_configuration', 'equalto', precision | string) | first)['sizes'] | selectattr('name', 'equalto', 'String') | first)['size'] -%}
+import {
+  get_variant_to_type_constructor,
+  variant_get_ptr_constructor,
+  string_new_with_latin1_chars,
+  variant_get_ptr_builtin_method,
+  variant_get_ptr_destructor,
+  string_name_new_with_latin1_chars
+} from '__internal__'
+import { GDExtensionVariantType } from 'src/js_godot/gde/gde'
+import {
+  _call_builtin_constructor,
+  _call_builtin_method_ptr_ret
+} from 'src/js_godot/core/builtin_ptrcall'
+{%- for dependcy in dependcies %}
+import { {{dependcy}} } from '{{ get_module_path(dependcy) }}'
+{%- endfor %}
+
+{%- from 'utils/utils.jinja2' import bindings_class %}
+{{bindings_class(clazz)}}
+export class {{to_js_type(clazz['name'])}} {
+  static #SIZE = {{size}}
+  opaque = new Uint8Array({{to_js_type(clazz['name'])}}.#SIZE)
+
+  static _bindings = new _MethodBindings()
+
+  constructor (from) {
+    {%- from 'utils/utils.jinja2' import base_ctor -%}
+    {{-base_ctor(clazz)-}}
+    {%- set path = camel_to_snake(to_js_type(clazz['name'])) + '.jinja2' -%}
+    {%- include path -%}
+  }
+  {%- from 'utils/utils.jinja2' import bind_ctor %}
+  {{ bind_ctor(clazz, GDExtensionVariantType) }}
+  {%- set methods = clazz['methods'] -%}
+  {% from 'utils/utils.jinja2' import init_binding %}
+  {{ init_binding(methods, GDExtensionVariantType) }}
+  {% from 'utils/utils.jinja2' import call_returned %}
+  {%- for method in methods -%}
+    {%- if method['return_type'] -%}
+{{-call_returned(clazz,method)-}}
+    {%- else -%}
+    ERROR
+    {% endif %}
+  {% endfor %}
+}

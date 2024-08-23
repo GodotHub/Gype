@@ -1,6 +1,6 @@
 from jinja2 import Environment, FileSystemLoader
-from scripts.builtin_classes.gdstring import render_gdstring
+from scripts.builtin_classes.builtin_classes import render_builtin_classes
 
 if __name__ == '__main__':
-    render_gdstring()
+    render_builtin_classes('float_64')
     pass

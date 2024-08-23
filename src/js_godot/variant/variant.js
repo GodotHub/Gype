@@ -2,71 +2,68 @@ import {
   get_variant_from_type_constructor,
   get_variant_to_type_constructor,
   variant_new_nil,
-  variant_new_copy
-} from '__internal__'
-// import { GDExtensionVariantType } from 'src/js_godot/gde/gde.js'
-import { GDString } from 'src/js_godot/variant/gdstring'
-import { StringName } from 'src/js_godot/variant/string_name'
+  variant_new_copy,
+} from "__internal__";
+import { GDString } from "src/js_godot/variant/gd_string";
+import { StringName } from "src/js_godot/variant/string_name";
+import { NodePath } from "src/js_godot/variant/node_path";
+import { UtilityFunctions } from "src/js_godot/variant/utility_functions";
 
 export class Variant {
-  static from_type_constructor = []
-  static to_type_constructor = []
+  static from_type_constructor = [];
+  static to_type_constructor = [];
 
-  opaque = new Uint8Array(24)
-  type = undefined
+  static #VARIANT_SIZE = 24;
+  opaque = new Uint8Array(Variant.#VARIANT_SIZE);
 
-  constructor (value) {
+  constructor(value) {
     if (!value) {
-      this.type = Variant.Type.NIL
-      variant_new_nil(this.opaque)
+      variant_new_nil(this.opaque);
     } else if (value instanceof GDString) {
-      this.type = Variant.Type.STRING
       Variant.from_type_constructor[Variant.Type.STRING](
         this.opaque,
         value.opaque
-      )
+      );
     } else if (value instanceof StringName) {
-      this.type = Variant.Type.STRING_NAME
       Variant.from_type_constructor[Variant.Type.STRING_NAME](
         this.opaque,
         value.opaque
-      )
+      );
     } else if (value instanceof Variant) {
-      this.type = Variant.Type.VARIANT_MAX
-      variant_new_copy(this.opaque, value.opaque)
+      variant_new_copy(this.opaque, value.opaque);
     } else {
-      this.#primitive_constructor(value)
+      this.#primitive_constructor(value);
     }
   }
 
-  #primitive_constructor (value) {
-    if (typeof value == 'boolean') {
-      this.type = Variant.Type.BOOL
-      Variant.from_type_constructor[Variant.Type.BOOL](this.opaque, value)
-    } else if (typeof value == 'string') {
-      this.type = Variant.Type.STRING
+  #primitive_constructor(value) {
+    if (typeof value == "boolean") {
+      Variant.from_type_constructor[Variant.Type.BOOL](this.opaque, value);
+    } else if (typeof value == "string") {
       Variant.from_type_constructor[Variant.Type.STRING](
         this.opaque,
         new GDString(value).opaque
-      )
-    } else if (typeof value == 'number') {
+      );
+    } else if (typeof value == "number") {
       if (Number.isInteger(value)) {
-        Variant.from_type_constructor[Variant.Type.INT](this.opaque, value)
+        Variant.from_type_constructor[Variant.Type.INT](this.opaque, value);
       } else {
-        Variant.from_type_constructor[Variant.Type.FLOAT](this.opaque, value)
+        Variant.from_type_constructor[Variant.Type.FLOAT](this.opaque, value);
       }
     } else {
-      throw new TypeError()
+      throw new TypeError();
     }
   }
 
-  static _init_bindings () {
+  static _init_bindings() {
     for (let i = 1; i < this.Type.VARIANT_MAX; i++) {
-      this.from_type_constructor[i] = get_variant_from_type_constructor(i)
-      this.to_type_constructor[i] = get_variant_to_type_constructor(i)
+      this.from_type_constructor[i] = get_variant_from_type_constructor(i);
+      this.to_type_constructor[i] = get_variant_to_type_constructor(i);
     }
-    GDString._init_bindings()
-    StringName._init_bindings()
+    StringName._init_bindings();
+    GDString._init_bindings();
+    NodePath._init_bindings();
+    UtilityFunctions._init_bindings();
   }
 
   static Type = {
@@ -118,8 +115,8 @@ export class Variant {
     PACKED_COLOR_ARRAY: 37,
     PACKED_VECTOR4_ARRAY: 38,
 
-    VARIANT_MAX: 39
-  }
+    VARIANT_MAX: 39,
+  };
 
   static Operator = {
     // comparison
@@ -152,6 +149,8 @@ export class Variant {
     OP_NOT: 23,
     // containment
     OP_IN: 24,
-    OP_MAX: 25
-  }
+    OP_MAX: 25,
+  };
 }
+
+export { StringName, GDString, NodePath, UtilityFunctions };

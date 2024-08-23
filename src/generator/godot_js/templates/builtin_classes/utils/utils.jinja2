@@ -1,0 +1,92 @@
+{%- macro call_returned(clazz, method) -%}
+{%- set args = method['arguments'] -%}
+  {{ method['name'] }} ({{ args | map(attribute='name') | join(', ') }}) {
+      {%- if method['return_type'] in variant_types() %}
+    let ret = new {{ to_js_type(method['return_type']) }}()
+    ret.opaque = _call_builtin_method_ptr_ret(
+      {%- else %}
+    let ret
+    ret = _call_builtin_method_ptr_ret(
+      {%- endif %}
+      {{to_js_type(clazz['name'])}}._bindings.method_{{ method['name'] }},
+      this,
+      '{{ to_js_type(method['return_type']) }}',
+      {%- if args %}
+      [{{- args | map(attribute='name') | join(', ') }}]
+      {%- else %}
+      []
+      {%- endif %}
+    )
+    return ret
+  }
+{%- endmacro -%}
+
+{% macro init_binding(methods, type) %}
+  static _init_bindings () {
+    this.__init_bindings_constructors_destructor()
+      {%- for method in methods %}
+    {
+      let _gde_name = new StringName('{{ method['name'] }}')
+      this._bindings.method_{{ method['name'] }} = variant_get_ptr_builtin_method(
+        GDExtensionVariantType.{{type}},
+        _gde_name.opaque,
+        {{method['hash']}}
+      )
+    }
+    {%- endfor %}
+  }
+{% endmacro %}
+
+{% macro bindings_class(obj) %}
+class _MethodBindings {
+  from_variant_constructor
+  {%- if obj['has_destructor'] %}
+  destructor
+  {%- endif %}
+  {%- for constructor in obj['constructors'] %}
+  constructor_{{constructor['index']}}
+  {%- endfor %}
+  {%- for method in obj['methods'] %}
+  method_{{method['name']}}
+  {%- endfor %}
+  {%- for operator in (obj['operators'] | norm_op_name) %}
+  {{operator}}
+  {%- endfor %}
+}
+{% endmacro %}
+
+{%- macro bind_ctor(obj,type) %}
+  static __init_bindings_constructors_destructor () {
+    {%- set ctors = obj['constructors'] %}
+    this._bindings.from_variant_constructor = get_variant_to_type_constructor(
+      GDExtensionVariantType.{{type}}
+    )
+    {%- for ctor in ctors %}
+    this._bindings.constructor_{{ctor['index']}} = variant_get_ptr_constructor(
+      GDExtensionVariantType.{{type}},
+      {{ctor.index}}
+    )
+    {%- endfor %}
+    {%- if obj['has_destructor'] %}
+    this._bindings.destructor = variant_get_ptr_destructor(
+      GDExtensionVariantType.{{type}}
+    )
+    {%- endif %}
+  }
+{%- endmacro %}
+
+{% macro base_ctor(clazz) %}
+    {%- set ctors = clazz['constructors'] -%}
+    {%- for ctor in clazz['constructors'] %}
+      {%- if not ctor['arguments'] %}
+    if (!from) {
+      _call_builtin_constructor({{to_js_type(clazz['name'])}}._bindings.constructor_{{ctor['index']}}, this)
+    }{% else %} else if (from instanceof {{to_js_type((ctor['arguments'] | first)['type'])}}) {
+      _call_builtin_constructor({{to_js_type(clazz['name'])}}._bindings.constructor_{{ctor['index']}}, this, [
+        {{ ctor['arguments'] | map(attribute='name') | join(',') }}
+      ])
+    }
+    {%- endif %}
+  {%- endfor %} else if (from instanceof Variant) {
+      {{to_js_type(clazz['name'])}}._bindings.from_variant_constructor(this.opaque, from.opaque)
+    } {% endmacro -%}
