@@ -9,7 +9,7 @@ import { StringName } from "src/js_godot/variant/string_name";
 import { NodePath } from "src/js_godot/variant/node_path";
 import { UtilityFunctions } from "src/js_godot/variant/utility_functions";
 
-export class Variant {
+class Variant {
   static from_type_constructor = [];
   static to_type_constructor = [];
 
@@ -153,4 +153,4 @@ export class Variant {
   };
 }
 
-export { StringName, GDString, NodePath, UtilityFunctions };
+export { Variant, StringName, GDString, NodePath, UtilityFunctions };

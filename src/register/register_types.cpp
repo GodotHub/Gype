@@ -8,6 +8,7 @@
 #include <godot_cpp/core/os_windows.hpp>
 
 #ifdef DEBUG_ENABLED
+#include "class_db_test/class_db_test.hpp"
 #include "gdstring_test/gdstring_test.hpp"
 #include "node_path_test/node_path_test.hpp"
 #include "variant_test/variant_test.hpp"
@@ -27,9 +28,10 @@ void initialize_tgds_types(void *user_data, GDExtensionInitializationLevel p_lev
 	printf("%s", "Quickjs start initialization\n");
 	init_quickjs();
 #ifdef DEBUG_ENABLED
-	test_variant();
-	test_gdstring();
-	test_node_path();
+	// test_variant();
+	// test_gdstring();
+	// test_node_path();
+	test_class_db();
 #endif // DEBUG
 	// JSValue value = context.eval("import { GD } from 'src/js_godot/variant/utility_functions.js';GD.print('123');", "<eval>", JS_EVAL_TYPE_MODULE);
 	// context.eval("import { StringName } from 'src/js_godot/variant/string_name.js';new StringName();", "<eval>", JS_EVAL_TYPE_MODULE);
