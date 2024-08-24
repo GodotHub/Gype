@@ -3,6 +3,7 @@
 #include "quickjs.h"
 #include <gdextension_interface.h>
 #include <quickjs/class_ids.h>
+#include <quickjs/js_pointer.h>
 #include <quickjs/str_utils.h>
 #include <godot_cpp/core/error_macros.hpp>
 #include <godot_cpp/core/method_ptrcall.hpp>
@@ -34,6 +35,14 @@
 #define QJSPP_TYPENAME(...) #__VA_ARGS__
 #endif
 
+typedef JSValue Pointer;
+typedef JSValue RetBuffer;
+typedef JSValue GDString;
+typedef JSValue SRCBuff;
+typedef JSValue Buff;
+
+class JSPointer;
+
 namespace qjs {
 
 class Context;
@@ -45,8 +54,10 @@ static GDExtensionInt encodeInt(JSContext *ctx, JSValue v);
 static double encodeDouble(JSContext *ctx, JSValue v);
 static uint64_t variant_byte_size(std::string type);
 static int variant_size(std::string type);
+static int variant_size(GDExtensionVariantType type);
 static JSValue to_js_value(JSContext *ctx, std::string type, void *value);
-
+static JSValue to_js_value(JSContext *ctx, GDExtensionVariantType type, void *value);
+static void *to_c_pointer(JSContext *ctx, Pointer js_pointer);
 /** Exception type.
  * Indicates that exception has occured in JS context.
  */
@@ -153,96 +164,6 @@ struct js_traits<void> {
 	static void unwrap(JSContext *ctx, JSValueConst value) {
 		if (JS_IsException(value))
 			throw exception{ ctx };
-	}
-};
-
-template <>
-struct js_traits<void *> {
-	static JSValue wrap(JSContext *ctx, void *value) {
-		return JS_NewInt64(ctx, reinterpret_cast<int64_t>(value));
-	}
-
-	static void *unwrap(JSContext *ctx, JSValue value) {
-		int64_t i;
-		if (JS_ToInt64(ctx, &i, value)) {
-			throw exception{ ctx };
-		}
-		return reinterpret_cast<void *>(i);
-	}
-};
-
-template <>
-struct js_traits<void **> {
-	static JSValue wrap(JSContext *ctx, void **value) {
-		return JS_NewInt64(ctx, reinterpret_cast<int64_t>(value));
-	}
-
-	static void **unwrap(JSContext *ctx, JSValue value) {
-		int64_t i;
-		if (JS_ToInt64(ctx, &i, value)) {
-			throw exception{ ctx };
-		}
-		return reinterpret_cast<void **>(i);
-	}
-};
-
-template <>
-struct js_traits<const void *> {
-	static JSValue wrap(JSContext *ctx, const void *value) {
-		return JS_NewInt64(ctx, reinterpret_cast<int64_t>(value));
-	}
-
-	static const void *unwrap(JSContext *ctx, JSValue value) {
-		int64_t i;
-		if (JS_ToInt64(ctx, &i, value)) {
-			throw exception{ ctx };
-		}
-		return reinterpret_cast<const void *>(i);
-	}
-};
-
-template <>
-struct js_traits<const void **> {
-	static JSValue wrap(JSContext *ctx, const void **value) {
-		return JS_NewInt64(ctx, reinterpret_cast<int64_t>(value));
-	}
-
-	static const void **unwrap(JSContext *ctx, JSValue value) {
-		int64_t i;
-		if (JS_ToInt64(ctx, &i, value)) {
-			throw exception{ ctx };
-		}
-		return reinterpret_cast<const void **>(i);
-	}
-};
-
-template <>
-struct js_traits<const void *const *> {
-	static JSValue wrap(JSContext *ctx, const void *const *value) {
-		return JS_NewInt64(ctx, reinterpret_cast<int64_t>(value));
-	}
-
-	static const void *const *unwrap(JSContext *ctx, JSValue value) {
-		int64_t i;
-		if (JS_ToInt64(ctx, &i, value)) {
-			throw exception{ ctx };
-		}
-		return reinterpret_cast<const void *const *>(i);
-	}
-};
-
-template <>
-struct js_traits<const void *const> {
-	static JSValue wrap(JSContext *ctx, const void *const value) {
-		return JS_NewInt64(ctx, reinterpret_cast<int64_t>(value));
-	}
-
-	static const void *const unwrap(JSContext *ctx, JSValue value) {
-		int64_t i;
-		if (JS_ToInt64(ctx, &i, value)) {
-			throw exception{ ctx };
-		}
-		return reinterpret_cast<const void *const>(i);
 	}
 };
 
@@ -1261,9 +1182,9 @@ public:
 			ctx(ctx) {
 		v = js_traits<std::decay_t<T>>::wrap(ctx, std::forward<T>(val));
 		if (JS_IsException(v)) {
-			// JSValue exp = JS_GetException(ctx);
-			// JSValue mssage = JS_GetPropertyStr(ctx, exp, "stack");
-			// printf("%s", JS_ToCString(ctx, mssage));
+			JSValue exp = JS_GetException(ctx);
+			JSValue message = JS_GetPropertyStr(ctx, exp, "message");
+			printf("%s", JS_ToCString(ctx, message));
 			throw exception{ ctx };
 		}
 	}
@@ -2122,6 +2043,84 @@ inline Context *Runtime::executePendingJob() {
 	return &Context::get(ctx);
 }
 
+template <>
+struct js_traits<void *> {
+	static JSValue wrap(JSContext *ctx, void *value) {
+		intptr_t ip = (intptr_t)value;
+		return js_traits<std::shared_ptr<JSPointer>>::wrap(ctx, std::shared_ptr<JSPointer>(new JSPointer(ip)));
+	}
+
+	static void *unwrap(JSContext *ctx, JSValue value) {
+		intptr_t pointer = js_traits<std::shared_ptr<JSPointer>>::unwrap(ctx, value)->get_pointer();
+		return reinterpret_cast<void *>(pointer);
+	}
+};
+
+template <>
+struct js_traits<void **> {
+	static JSValue wrap(JSContext *ctx, void **value) {
+		intptr_t ip = (intptr_t)value;
+		return js_traits<std::shared_ptr<JSPointer>>::wrap(ctx, std::shared_ptr<JSPointer>(new JSPointer(ip)));
+	}
+
+	static void **unwrap(JSContext *ctx, JSValue value) {
+		intptr_t pointer = js_traits<std::shared_ptr<JSPointer>>::unwrap(ctx, value)->get_pointer();
+		return reinterpret_cast<void **>(pointer);
+	}
+};
+
+template <>
+struct js_traits<const void *> {
+	static JSValue wrap(JSContext *ctx, const void *value) {
+		intptr_t ip = (intptr_t)value;
+		return js_traits<std::shared_ptr<JSPointer>>::wrap(ctx, std::shared_ptr<JSPointer>(new JSPointer(ip)));
+	}
+
+	static const void *unwrap(JSContext *ctx, JSValue value) {
+		intptr_t pointer = js_traits<std::shared_ptr<JSPointer>>::unwrap(ctx, value)->get_pointer();
+		return reinterpret_cast<const void *>(pointer);
+	}
+};
+
+template <>
+struct js_traits<const void **> {
+	static JSValue wrap(JSContext *ctx, const void **value) {
+		intptr_t ip = (intptr_t)value;
+		return js_traits<std::shared_ptr<JSPointer>>::wrap(ctx, std::shared_ptr<JSPointer>(new JSPointer(ip)));
+	}
+
+	static const void **unwrap(JSContext *ctx, JSValue value) {
+		intptr_t pointer = js_traits<std::shared_ptr<JSPointer>>::unwrap(ctx, value)->get_pointer();
+		return reinterpret_cast<const void **>(pointer);
+	}
+};
+
+template <>
+struct js_traits<const void *const *> {
+	static JSValue wrap(JSContext *ctx, const void *const *value) {
+		intptr_t ip = (intptr_t)value;
+		return js_traits<std::shared_ptr<JSPointer>>::wrap(ctx, std::shared_ptr<JSPointer>(new JSPointer(ip)));
+	}
+
+	static const void *const *unwrap(JSContext *ctx, JSValue value) {
+		intptr_t pointer = js_traits<std::shared_ptr<JSPointer>>::unwrap(ctx, value)->get_pointer();
+		return reinterpret_cast<const void *const *>(pointer);
+	}
+};
+
+template <>
+struct js_traits<const void *const> {
+	static JSValue wrap(JSContext *ctx, const void *const value) {
+		intptr_t ip = (intptr_t)value;
+		return js_traits<std::shared_ptr<JSPointer>>::wrap(ctx, std::shared_ptr<JSPointer>(new JSPointer(ip)));
+	}
+
+	static const void *constunwrap(JSContext *ctx, JSValue value) {
+		intptr_t pointer = js_traits<std::shared_ptr<JSPointer>>::unwrap(ctx, value)->get_pointer();
+		return reinterpret_cast<const void *const>(pointer);
+	}
+};
+
 static uint8_t *get_typed_array_buf(JSContext *ctx, JSValue v) {
 	int class_id = JS_GetClassID(v);
 	size_t len;
@@ -2166,8 +2165,6 @@ static std::vector<void *> get_args(JSContext *ctx, JSValue v) {
 			if (name == "Uint8Array") {
 				args.push_back(get_typed_array_buf(ctx, el));
 			}
-			JS_FreeValue(ctx, js_constructor);
-			JS_FreeValue(ctx, js_name);
 		} else if (JS_IsNumber(el)) {
 			if (JS_IsInt(el)) {
 				int64_t num = encodeInt(ctx, el);
@@ -2181,7 +2178,38 @@ static std::vector<void *> get_args(JSContext *ctx, JSValue v) {
 				args.push_back(m_num);
 			}
 		}
-		JS_FreeValue(ctx, el);
+	}
+	return args;
+}
+
+static std::vector<void *> get_args(JSContext *ctx, rest<JSValue> v) {
+	int length = v.size();
+	if (length == 0) {
+		return std::vector<void *>(0);
+	}
+	std::vector<void *> args;
+	for (int i = 0; i < length; i++) {
+		JSValue el = v[i];
+		if (JS_IsObject(el)) {
+			JSValue js_constructor = JS_GetPropertyStr(ctx, el, "constructor");
+			JSValue js_name = JS_GetPropertyStr(ctx, js_constructor, "name");
+			std::string name = js_traits<std::string>::unwrap(ctx, js_name);
+			if (name == "Uint8Array") {
+				args.push_back(get_typed_array_buf(ctx, el));
+			}
+		} else if (JS_IsNumber(el)) {
+			if (JS_IsInt(el)) {
+				int64_t num = encodeInt(ctx, el);
+				int64_t *m_num = reinterpret_cast<int64_t *>(js_malloc(ctx, sizeof(int64_t)));
+				*m_num = num;
+				args.push_back(m_num);
+			} else {
+				double num = encodeDouble(ctx, el);
+				double *m_num = reinterpret_cast<double *>(js_malloc(ctx, sizeof(double)));
+				*m_num = num;
+				args.push_back(m_num);
+			}
+		}
 	}
 	return args;
 }
@@ -2242,6 +2270,19 @@ static int variant_size(std::string type) {
 	return 0;
 }
 
+static int variant_size(GDExtensionVariantType type) {
+	switch (type) {
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_INT:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_FLOAT:
+			return 1;
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_STRING:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_STRING_NAME:
+			return 8;
+		default:
+			return 0;
+	}
+}
+
 static JSValue to_js_value(JSContext *ctx, std::string type, void *value) {
 	int size = variant_size(type);
 	if (type == "int") {
@@ -2260,6 +2301,28 @@ static JSValue to_js_value(JSContext *ctx, std::string type, void *value) {
 		return JS_NewTypedArray(ctx, size, args, JSTypedArrayEnum::JS_TYPED_ARRAY_UINT8);
 	}
 	return JS_UNDEFINED;
+}
+
+static JSValue to_js_value(JSContext *ctx, GDExtensionVariantType type, void *value) {
+	int size = variant_size(type);
+	switch (type) {
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_INT:
+			return JS_NewInt32(ctx, *reinterpret_cast<int32_t *>(value));
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_BOOL:
+			return JS_NewBool(ctx, *reinterpret_cast<bool *>(value));
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_FLOAT:
+			return JS_NewFloat64(ctx, *reinterpret_cast<double *>(value));
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_STRING:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_STRING_NAME: {
+			uint8_t *u8 = reinterpret_cast<uint8_t *>(value);
+			JSValue buf = JS_NewArrayBuffer(ctx, u8, size, NULL, NULL, false);
+			JSValue ofs = JS_NewInt64(ctx, 0);
+			JSValue *args = new JSValue[3]{ buf, ofs, JS_NewInt64(ctx, size) };
+			return JS_NewTypedArray(ctx, size, args, JSTypedArrayEnum::JS_TYPED_ARRAY_UINT8);
+		}
+		default:
+			return JS_UNDEFINED;
+	}
 }
 
 static void *to_c_value(JSContext *ctx, JSValue value) {
@@ -2282,6 +2345,28 @@ static void *to_c_value(JSContext *ctx, JSValue value) {
 		return nullptr;
 	}
 	return arg;
+}
+
+static void *malloc_variant(JSContext *ctx, GDExtensionVariantType type) {
+	switch (type) {
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_INT:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_FLOAT:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_STRING:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_STRING_NAME:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_NODE_PATH:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_OBJECT:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_ARRAY:
+			return js_mallocz(ctx, 8 * sizeof(uint8_t));
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY:
+			return js_mallocz(ctx, 16 * sizeof(uint8_t));
+		default:
+			return nullptr;
+	}
+}
+
+static void *to_c_pointer(JSContext *ctx, Pointer js_pointer) {
+	std::shared_ptr<JSPointer> pointer = js_traits<std::shared_ptr<JSPointer>>::unwrap(ctx, js_pointer);
+	return reinterpret_cast<void *>(pointer.get()->get_pointer());
 }
 
 template <>
@@ -2336,7 +2421,7 @@ struct js_traits<GDExtensionPtrUtilityFunction> {
 	static JSValue wrap(JSContext *ctx, GDExtensionPtrUtilityFunction v) noexcept {
 		JSValue data[1];
 		data[0] = js_traits<std::function<void(GDExtensionTypePtr, const GDExtensionConstTypePtr *, int)>>::wrap(ctx, v);
-		return JS_NewCFunctionData(ctx, &inner_method, 3, 0, 1, data);
+		return JS_NewCFunctionData(ctx, &inner_method, 2, 0, 1, data);
 	}
 };
 
