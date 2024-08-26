@@ -31,12 +31,13 @@
 #ifndef GODOT_PROPERTY_INFO_HPP
 #define GODOT_PROPERTY_INFO_HPP
 
-#include "quickjs/env.h"
 #include <gdextension_interface.h>
+#include <any>
 #include <godot_cpp/core/defs.hpp>
 #include <godot_cpp/core/memory.hpp>
 #include <godot_cpp/godot.hpp>
 #include <godot_cpp/variant_size.hpp>
+#include <string>
 #include <unordered_map>
 #include <vector>
 

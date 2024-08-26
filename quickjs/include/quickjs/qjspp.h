@@ -7,6 +7,7 @@
 #include <quickjs/str_utils.h>
 #include <godot_cpp/core/error_macros.hpp>
 #include <godot_cpp/core/method_ptrcall.hpp>
+#include <godot_cpp/core/property_info.hpp>
 
 #include <algorithm>
 #include <any>
@@ -48,8 +49,7 @@ namespace qjs {
 class Context;
 class Value;
 
-// using ArgType = std::variant<int, double, std::string, JSValue>;
-
+static uint8_t *get_typed_array_buf(JSContext *ctx, JSValue v);
 static GDExtensionInt encodeInt(JSContext *ctx, JSValue v);
 static double encodeDouble(JSContext *ctx, JSValue v);
 static uint64_t variant_byte_size(std::string type);
@@ -58,6 +58,7 @@ static int variant_size(GDExtensionVariantType type);
 static JSValue to_js_value(JSContext *ctx, std::string type, void *value);
 static JSValue to_js_value(JSContext *ctx, GDExtensionVariantType type, void *value);
 static void *to_c_pointer(JSContext *ctx, Pointer js_pointer);
+
 /** Exception type.
  * Indicates that exception has occured in JS context.
  */
@@ -2115,22 +2116,61 @@ struct js_traits<const void *const> {
 		return js_traits<std::shared_ptr<JSPointer>>::wrap(ctx, std::shared_ptr<JSPointer>(new JSPointer(ip)));
 	}
 
-	static const void *constunwrap(JSContext *ctx, JSValue value) {
+	static const void *const unwrap(JSContext *ctx, JSValue value) {
 		intptr_t pointer = js_traits<std::shared_ptr<JSPointer>>::unwrap(ctx, value)->get_pointer();
 		return reinterpret_cast<const void *const>(pointer);
 	}
 };
 
-// template <>
-// struct js_traits<uint8_t *> {
-// 	static JSValue wrap(JSContext *ctx, uint8_t *value) {
-// 		JSValue buff = JS_NewArrayBuffer(ctx, value, len, NULL, NULL, false);
-// 	}
+template <>
+struct js_traits<uint8_t *> {
+	static JSValue wrap(JSContext *ctx, uint8_t *value) {
+		intptr_t ip = (intptr_t)value;
+		return js_traits<std::shared_ptr<JSPointer>>::wrap(ctx, std::shared_ptr<JSPointer>(new JSPointer(ip)));
+	}
 
-// 	static uint8_t *unwrap(JSContext *ctx, JSValue value) {
-// 		return get_typed_array_buf(ctx, value);
-// 	}
-// };
+	static uint8_t *unwrap(JSContext *ctx, JSValue value) {
+		intptr_t pointer = js_traits<std::shared_ptr<JSPointer>>::unwrap(ctx, value)->get_pointer();
+		return reinterpret_cast<uint8_t *>(pointer);
+	}
+};
+
+template <>
+struct js_traits<const uint8_t *> {
+	static JSValue wrap(JSContext *ctx, const uint8_t *value) {
+		intptr_t ip = (intptr_t)value;
+		return js_traits<std::shared_ptr<JSPointer>>::wrap(ctx, std::shared_ptr<JSPointer>(new JSPointer(ip)));
+	}
+
+	static const uint8_t *unwrap(JSContext *ctx, JSValue value) {
+		intptr_t pointer = js_traits<std::shared_ptr<JSPointer>>::unwrap(ctx, value)->get_pointer();
+		return reinterpret_cast<uint8_t *>(pointer);
+	}
+};
+
+template <>
+struct js_traits<JSGodot::PropertyInfo> {
+	static JSValue wrap(JSContext *ctx, JSGodot::PropertyInfo value) {
+		return js_traits<std::shared_ptr<JSGodot::PropertyInfo>>::wrap(ctx, std::shared_ptr<JSGodot::PropertyInfo>(&value));
+	}
+
+	static JSGodot::PropertyInfo unwrap(JSContext *ctx, JSValue value) {
+		return *js_traits<std::shared_ptr<JSGodot::PropertyInfo>>::unwrap(ctx, value).get();
+	}
+};
+
+template <>
+struct js_traits<GDExtensionCallError *> {
+	static JSValue wrap(JSContext *ctx, GDExtensionCallError *value) {
+		// Wrap a reference using a shared_ptr with a custom deleter to avoid deletion
+		return js_traits<std::shared_ptr<GDExtensionCallError>>::wrap(ctx, std::shared_ptr<GDExtensionCallError>(value));
+	}
+
+	static GDExtensionCallError *unwrap(JSContext *ctx, JSValue value) {
+		// Unwrap and return a reference to GDExtensionCallError
+		return js_traits<std::shared_ptr<GDExtensionCallError>>::unwrap(ctx, value).get();
+	}
+};
 
 static uint8_t *get_typed_array_buf(JSContext *ctx, JSValue v) {
 	int class_id = JS_GetClassID(v);
@@ -2492,7 +2532,8 @@ template <>
 struct js_traits<GDExtensionPtrDestructor> {
 	static JSValue inner_method(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv, int magic, JSValue *func_data) {
 		GDExtensionTypePtr p_base = reinterpret_cast<GDExtensionTypePtr>(get_typed_array_buf(ctx, argv[0]));
-		js_traits<std::function<void(GDExtensionTypePtr)>>::unwrap(ctx, *func_data)(p_base);
+		auto method = js_traits<std::function<void(GDExtensionTypePtr)>>::unwrap(ctx, *func_data);
+		method(p_base);
 		return JS_UNDEFINED;
 	}
 
@@ -2503,4 +2544,87 @@ struct js_traits<GDExtensionPtrDestructor> {
 	}
 };
 
+typedef std::vector<uint8_t> (*CALL)(GDExtensionClassInstancePtr, const GDExtensionConstVariantPtr *, GDExtensionInt, GDExtensionCallError *);
+
+template <>
+struct js_traits<CALL> {
+	static JSValue inner_method(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv, int magic, JSValue *func_data) {
+		auto method = js_traits<std::function<std::vector<uint8_t>(GDExtensionClassInstancePtr, const GDExtensionConstVariantPtr *, GDExtensionInt, GDExtensionCallError *)>>::unwrap(ctx, *func_data);
+		GDExtensionClassInstancePtr p_instance = js_traits<GDExtensionClassInstancePtr>::unwrap(ctx, argv[0]);
+		std::vector<void *> args = get_args(ctx, argv[1]);
+		const GDExtensionConstVariantPtr *p_args = args.data();
+		GDExtensionInt p_argument_count = js_traits<GDExtensionInt>::unwrap(ctx, argv[2]);
+		GDExtensionCallError *r_error = js_traits<GDExtensionCallError *>::unwrap(ctx, argv[3]);
+		return Value(ctx, method(p_instance, p_args, p_argument_count, r_error));
+	}
+
+	static JSValue wrap(JSContext *ctx, CALL method) {
+		JSValue data = js_traits<std::function<std::vector<uint8_t>(GDExtensionClassInstancePtr, const GDExtensionConstVariantPtr *, GDExtensionInt, GDExtensionCallError *)>>::wrap(ctx, method);
+		return JS_NewCFunctionData(ctx, &inner_method, 4, 0, 1, &data);
+	}
+};
+
+// typedef void (*PTRCALL)(GDExtensionClassInstancePtr, const GDExtensionConstTypePtr *, GDExtensionTypePtr);
+
+// template <>
+// struct js_traits<PTRCALL> {
+// 	static JSValue inner_method(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv, int magic, JSValue *func_data) {
+// 		auto method = js_traits<std::function<void(GDExtensionClassInstancePtr, const GDExtensionConstTypePtr *, GDExtensionTypePtr)>>::unwrap(ctx, *func_data);
+// 		GDExtensionClassInstancePtr p_instance = js_traits<GDExtensionClassInstancePtr>::unwrap(ctx, argv[0]);
+// 		std::vector<void *> args = get_args(ctx, argv[1]);
+// 		const GDExtensionConstTypePtr *p_args = args.data();
+// 		GDExtensionTypePtr r_return = js_traits<GDExtensionTypePtr>::unwrap(ctx, argv[2]);
+// 		method(p_instance, p_args, r_return);
+// 		return JS_UNDEFINED;
+// 	}
+
+// 	static JSValue wrap(JSContext *ctx, CALL method) {
+// 		JSValue data = js_traits<std::function<void(GDExtensionClassInstancePtr, const GDExtensionConstTypePtr *, GDExtensionTypePtr)>>::wrap(ctx, method);
+// 		return JS_NewCFunctionData(ctx, &inner_method, 3, 0, 1, &data);
+// 	}
+// };
+
+typedef void (*BIND_CALL)(void *, GDExtensionClassInstancePtr, const GDExtensionConstVariantPtr *, GDExtensionInt, GDExtensionVariantPtr, GDExtensionCallError *);
+
+template <>
+struct js_traits<BIND_CALL> {
+	static JSValue inner_method(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv, int magic, JSValue *func_data) {
+		auto method = js_traits<std::function<void(void *, GDExtensionClassInstancePtr, const GDExtensionConstVariantPtr *, GDExtensionInt, GDExtensionVariantPtr, GDExtensionCallError *)>>::unwrap(ctx, *func_data);
+		void *user_data = js_traits<void *>::unwrap(ctx, argv[0]);
+		GDExtensionClassInstancePtr p_instance = js_traits<GDExtensionClassInstancePtr>::unwrap(ctx, argv[1]);
+		std::vector<void *> args = get_args(ctx, argv[2]);
+		const GDExtensionConstVariantPtr *p_args = args.data();
+		GDExtensionInt p_argument_count = js_traits<GDExtensionInt>::unwrap(ctx, argv[3]);
+		GDExtensionVariantPtr r_return = js_traits<GDExtensionVariantPtr>::unwrap(ctx, argv[4]);
+		GDExtensionCallError *r_error = js_traits<GDExtensionCallError *>::unwrap(ctx, argv[5]);
+		method(user_data, p_instance, p_args, p_argument_count, r_return, r_error);
+		return JS_UNDEFINED;
+	}
+
+	static JSValue wrap(JSContext *ctx, BIND_CALL method) {
+		JSValue data = js_traits<std::function<void(void *, GDExtensionClassInstancePtr, const GDExtensionConstVariantPtr *, GDExtensionInt, GDExtensionVariantPtr, GDExtensionCallError *)>>::wrap(ctx, method);
+		return JS_NewCFunctionData(ctx, &inner_method, 5, 0, 1, &data);
+	}
+};
+
+typedef void (*BIND_PTRCALL)(void *p_method_userdata, GDExtensionClassInstancePtr p_instance, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_return);
+
+template <>
+struct js_traits<BIND_PTRCALL> {
+	static JSValue inner_method(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv, int magic, JSValue *func_data) {
+		auto method = js_traits<std::function<void(void *p_method_userdata, GDExtensionClassInstancePtr p_instance, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_return)>>::unwrap(ctx, *func_data);
+		void *user_data = js_traits<void *>::unwrap(ctx, argv[0]);
+		GDExtensionClassInstancePtr p_instance = js_traits<GDExtensionClassInstancePtr>::unwrap(ctx, argv[1]);
+		std::vector<void *> args = get_args(ctx, argv[1]);
+		const GDExtensionConstVariantPtr *p_args = args.data();
+		GDExtensionVariantPtr r_return = js_traits<GDExtensionVariantPtr>::unwrap(ctx, argv[2]);
+		method(user_data, p_instance, p_args, r_return);
+		return JS_UNDEFINED;
+	}
+
+	static JSValue wrap(JSContext *ctx, BIND_PTRCALL method) {
+		JSValue data = js_traits<std::function<void(void *p_method_userdata, GDExtensionClassInstancePtr p_instance, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_return)>>::wrap(ctx, method);
+		return JS_NewCFunctionData(ctx, &inner_method, 3, 0, 1, &data);
+	}
+};
 } // namespace qjs
