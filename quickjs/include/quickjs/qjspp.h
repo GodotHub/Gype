@@ -184,16 +184,16 @@ struct js_traits<double> {
 	}
 };
 
-template <>
-struct js_traits<const uint8_t *> {
-	static JSValue wrap(JSContext *ctx, const uint8_t *value) {
-		return JS_MKPTR(JS_TAG_OBJECT, (void *)value);
-	}
+// template <>
+// struct js_traits<const uint8_t *> {
+// 	static JSValue wrap(JSContext *ctx, const uint8_t *value) {
+// 		return JS_MKPTR(JS_TAG_OBJECT, (void *)value);
+// 	}
 
-	static const uint8_t *unwrap(JSContext *ctx, JSValue value) {
-		return reinterpret_cast<const uint8_t *>(JS_VALUE_GET_PTR(value));
-	}
-};
+// 	static const uint8_t *unwrap(JSContext *ctx, JSValue value) {
+// 		return reinterpret_cast<const uint8_t *>(JS_VALUE_GET_PTR(value));
+// 	}
+// };
 
 namespace detail {
 /** Fake std::string_view which frees the string on destruction.
@@ -2120,6 +2120,17 @@ struct js_traits<const void *const> {
 		return reinterpret_cast<const void *const>(pointer);
 	}
 };
+
+// template <>
+// struct js_traits<uint8_t *> {
+// 	static JSValue wrap(JSContext *ctx, uint8_t *value) {
+// 		JSValue buff = JS_NewArrayBuffer(ctx, value, len, NULL, NULL, false);
+// 	}
+
+// 	static uint8_t *unwrap(JSContext *ctx, JSValue value) {
+// 		return get_typed_array_buf(ctx, value);
+// 	}
+// };
 
 static uint8_t *get_typed_array_buf(JSContext *ctx, JSValue v) {
 	int class_id = JS_GetClassID(v);

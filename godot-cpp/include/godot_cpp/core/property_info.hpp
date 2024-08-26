@@ -34,8 +34,11 @@
 #include "quickjs/env.h"
 #include <gdextension_interface.h>
 #include <godot_cpp/core/defs.hpp>
+#include <godot_cpp/core/memory.hpp>
 #include <godot_cpp/godot.hpp>
+#include <godot_cpp/variant_size.hpp>
 #include <unordered_map>
+#include <vector>
 
 namespace JSGodot {
 
@@ -126,21 +129,21 @@ struct PropertyInfo {
 
 	PropertyInfo() = default;
 
-	PropertyInfo(GDExtensionVariantType p_type, const uint8_t *p_name, PropertyHint p_hint, const uint8_t *p_hint_string, uint32_t p_usage, const uint8_t *p_class_name) :
+	PropertyInfo(GDExtensionVariantType p_type, std::vector<uint8_t> p_name, PropertyHint p_hint, std::vector<uint8_t> p_hint_string, uint32_t p_usage, std::vector<uint8_t> p_class_name) :
 			type(p_type),
-			name(const_cast<uint8_t *>(p_name)),
+			name(p_name.data()),
 			hint(p_hint),
-			hint_string(const_cast<uint8_t *>(p_hint_string)),
+			hint_string(p_hint_string.data()),
 			usage(p_usage) {
 		if (hint == PropertyHint::PROPERTY_HINT_RESOURCE_TYPE) {
 			class_name = hint_string;
 		} else {
-			class_name = const_cast<uint8_t *>(p_class_name);
+			class_name = p_class_name.data();
 		}
 	}
 
 	PropertyInfo(const GDExtensionPropertyInfo *p_info) :
-			PropertyInfo(p_info->type, *reinterpret_cast<uint8_t **>(p_info->name), (PropertyHint)p_info->hint, *reinterpret_cast<uint8_t **>(p_info->hint_string), p_info->usage, *reinterpret_cast<uint8_t **>(p_info->class_name)) {}
+			PropertyInfo(p_info->type, Memory::arr_to_vector(GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_STRING_NAME, (uint8_t *)p_info->name), (PropertyHint)p_info->hint, Memory::arr_to_vector(GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_STRING, (uint8_t *)p_info->hint_string), p_info->usage, Memory::arr_to_vector(GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_STRING, (uint8_t *)p_info->class_name)) {}
 
 	std::unordered_map<std::string, std::any> to_dict() const {
 		std::unordered_map<std::string, std::any> dict;
