@@ -95,10 +95,10 @@ PropertyInfo MethodBind::get_argument_info(int p_argument) const {
 
 void MethodBind::bind_call(void *p_method_userdata, GDExtensionClassInstancePtr p_instance, const GDExtensionConstVariantPtr *p_args, GDExtensionInt p_argument_count, GDExtensionVariantPtr r_return, GDExtensionCallError *r_error) {
 	const MethodBind *bind = reinterpret_cast<const MethodBind *>(p_method_userdata);
-	uint8_t *ret = bind->call(p_instance, p_args, p_argument_count, *r_error);
+	std::vector<uint8_t> ret = bind->call(p_instance, p_args, p_argument_count, r_error);
 	// This assumes the return value is an empty uint8_t *, so it doesn't need to call the destructor first.
 	// Since only GDExtensionMethodBind calls this from the Godot side, it should always be the case.
-	internal::gdextension_interface_variant_new_copy(r_return, ret);
+	internal::gdextension_interface_variant_new_copy(r_return, ret.data());
 }
 
 void MethodBind::bind_ptrcall(void *p_method_userdata, GDExtensionClassInstancePtr p_instance, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_return) {
