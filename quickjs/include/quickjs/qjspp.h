@@ -2356,9 +2356,44 @@ static void *malloc_variant(JSContext *ctx, GDExtensionVariantType type) {
 		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_NODE_PATH:
 		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_OBJECT:
 		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_ARRAY:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_VECTOR2:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_VECTOR2I:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_RID:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_DICTIONARY:
 			return js_mallocz(ctx, 8 * sizeof(uint8_t));
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_VECTOR3:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_VECTOR3I:
+			return js_mallocz(ctx, 12 * sizeof(uint8_t));
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_RECT2:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_RECT2I:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_VECTOR4:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_VECTOR4I:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PLANE:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_QUATERNION:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_AABB:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_COLOR:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_CALLABLE:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_SIGNAL:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY:
 		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR4_ARRAY:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY:
 			return js_mallocz(ctx, 16 * sizeof(uint8_t));
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_TRANSFORM2D:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_VARIANT_MAX:
+			return js_mallocz(ctx, 24 * sizeof(uint8_t));
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_BASIS:
+			return js_mallocz(ctx, 36 * sizeof(uint8_t));
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_TRANSFORM3D:
+			return js_mallocz(ctx, 48 * sizeof(uint8_t));
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PROJECTION:
+			return js_mallocz(ctx, 64 * sizeof(uint8_t));
 		default:
 			return nullptr;
 	}
@@ -2375,7 +2410,7 @@ struct js_traits<GDExtensionPtrBuiltInMethod> {
 		GDExtensionTypePtr p_base = reinterpret_cast<GDExtensionTypePtr>(get_typed_array_buf(ctx, argv[0]));
 		std::vector<void *> args = get_args(ctx, argv[1]);
 		const GDExtensionConstTypePtr *p_args = args.data();
-		std::string return_type = js_traits<std::string>::unwrap(ctx, argv[2]);
+		GDExtensionVariantType return_type = js_traits<GDExtensionVariantType>::unwrap(ctx, argv[2]);
 		void *r_return = malloc_variant(ctx, return_type);
 		int p_argument_count = args.size();
 		js_traits<std::function<void(GDExtensionTypePtr, const GDExtensionConstTypePtr *, GDExtensionTypePtr, int)>>::unwrap(ctx, *func_data)(p_base, p_args, r_return, p_argument_count);
@@ -2385,7 +2420,7 @@ struct js_traits<GDExtensionPtrBuiltInMethod> {
 	static JSValue wrap(JSContext *ctx, GDExtensionPtrBuiltInMethod v) noexcept {
 		JSValue data[1];
 		data[0] = js_traits<std::function<void(GDExtensionTypePtr, const GDExtensionConstTypePtr *, GDExtensionTypePtr, int)>>::wrap(ctx, v);
-		return JS_NewCFunctionData(ctx, &inner_method, 4, 0, 1, data);
+		return JS_NewCFunctionData(ctx, &inner_method, 3, 0, 1, data);
 	}
 };
 
@@ -2409,7 +2444,7 @@ struct js_traits<GDExtensionPtrConstructor> {
 template <>
 struct js_traits<GDExtensionPtrUtilityFunction> {
 	static JSValue inner_method(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv, int magic, JSValue *func_data) {
-		GDExtensionTypePtr r_return = reinterpret_cast<GDExtensionUninitializedTypePtr>(get_typed_array_buf(ctx, argv[0]));
+		GDExtensionTypePtr r_return = reinterpret_cast<GDExtensionTypePtr>(get_typed_array_buf(ctx, argv[0]));
 		std::vector<void *> args = get_args(ctx, argv[1]);
 		const GDExtensionConstTypePtr *p_args = args.data();
 		int p_argument_count = args.size();
@@ -2421,7 +2456,7 @@ struct js_traits<GDExtensionPtrUtilityFunction> {
 	static JSValue wrap(JSContext *ctx, GDExtensionPtrUtilityFunction v) noexcept {
 		JSValue data[1];
 		data[0] = js_traits<std::function<void(GDExtensionTypePtr, const GDExtensionConstTypePtr *, int)>>::wrap(ctx, v);
-		return JS_NewCFunctionData(ctx, &inner_method, 2, 0, 1, data);
+		return JS_NewCFunctionData(ctx, &inner_method, 3, 0, 1, data);
 	}
 };
 

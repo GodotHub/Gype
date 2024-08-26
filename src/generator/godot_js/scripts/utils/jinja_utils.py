@@ -1,6 +1,9 @@
 import re
 from scripts.utils.file_utils import gde_json
 
+def is_variant(t):
+    return t in variant_types()
+
 def variant_types():
     vt = map(lambda e: e['name'], gde_json['builtin_classes'])
     pt = pod_types()
@@ -11,12 +14,20 @@ def variant_types():
 def to_js_type(gd_type):
     if gd_type == 'String':
         return 'GDString'
+    elif gd_type == 'Object':
+        return 'GodotObject'
+    elif gd_type =='Array':
+        return 'GDArray'
     else:
         return gd_type
     
-def to_c_type(gd_type):
+def to_gd_type(gd_type):
     if gd_type == 'GDString':
         return 'String'
+    elif gd_type.find('typedarray') != -1:
+        return 'Array'
+    elif gd_type == 'GDArray':
+        return 'Array'
     else:
         return gd_type
 
@@ -71,53 +82,11 @@ def operator_id_name(op):
     }
     return op_id_map[op]
 
-GDExtensionVariantType = [
-    'GDEXTENSION_VARIANT_TYPE_NIL',
-
-    'GDEXTENSION_VARIANT_TYPE_BOOL',
-    'GDEXTENSION_VARIANT_TYPE_INT',
-    'GDEXTENSION_VARIANT_TYPE_FLOAT',
-    'GDEXTENSION_VARIANT_TYPE_STRING',
-
-    'GDEXTENSION_VARIANT_TYPE_VECTOR2',
-    'GDEXTENSION_VARIANT_TYPE_VECTOR2I',
-    'GDEXTENSION_VARIANT_TYPE_RECT2',
-    'GDEXTENSION_VARIANT_TYPE_RECT2I',
-    'GDEXTENSION_VARIANT_TYPE_VECTOR3',
-    'GDEXTENSION_VARIANT_TYPE_VECTOR3I',
-    'GDEXTENSION_VARIANT_TYPE_TRANSFORM2D',
-    'GDEXTENSION_VARIANT_TYPE_VECTOR4',
-    'GDEXTENSION_VARIANT_TYPE_VECTOR4I',
-    'GDEXTENSION_VARIANT_TYPE_PLANE',
-    'GDEXTENSION_VARIANT_TYPE_QUATERNION',
-    'GDEXTENSION_VARIANT_TYPE_AABB',
-    'GDEXTENSION_VARIANT_TYPE_BASIS',
-    'GDEXTENSION_VARIANT_TYPE_TRANSFORM3D',
-    'GDEXTENSION_VARIANT_TYPE_PROJECTION',
-
-    'GDEXTENSION_VARIANT_TYPE_COLOR',
-    'GDEXTENSION_VARIANT_TYPE_STRING_NAME',
-    'GDEXTENSION_VARIANT_TYPE_NODE_PATH',
-    'GDEXTENSION_VARIANT_TYPE_RID',
-    'GDEXTENSION_VARIANT_TYPE_OBJECT',
-    'GDEXTENSION_VARIANT_TYPE_CALLABLE',
-    'GDEXTENSION_VARIANT_TYPE_SIGNAL',
-    'GDEXTENSION_VARIANT_TYPE_DICTIONARY',
-    'GDEXTENSION_VARIANT_TYPE_ARRAY',
-
-    'GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY',
-    'GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY',
-    'GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY',
-    'GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY',
-    'GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY',
-    'GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY',
-    'GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY',
-    'GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY',
-    'GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY',
-    'GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR4_ARRAY',
-
-    'GDEXTENSION_VARIANT_TYPE_VARIANT_MAX'
-]
+def add_prefix_suffix(values, prefix='', suffix=''):
+    _values = list(values)
+    for i in range(0, len(_values)):
+        _values[i] = (f"{prefix}{_values[i]}{suffix}")
+    return _values
 
 def add_opaque(args):
     v_types = variant_types()
@@ -142,7 +111,8 @@ def camel_to_snake(x):
     return re.sub(r'(?<=[a-z])[A-Z]|(?<!^)[A-Z](?=[a-z])', r'_\g<0>', x).lower()
 
 def get_module_path(class_name):
-    if to_c_type(class_name) in variant_types():
-        return 'src/js_godot/variant/%s' % camel_to_snake(class_name)
+    if to_gd_type(class_name) in variant_types():
+        return 'src/js_godot/variant/%s' % camel_to_snake(to_js_type(class_name))
     else:
-        raise Exception()
+        return 'src/js_godot/classes%s' % camel_to_snake(to_js_type(class_name))
+    

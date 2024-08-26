@@ -3,7 +3,9 @@
 
 void test_variant() {
 	JSValue ret = context.eval(R"xxx(
-        import { Variant, StringName, GDString } from 'src/js_godot/variant/variant';
+        import { Variant } from 'src/js_godot/variant/variant';
+        import { StringName } from 'src/js_godot/variant/string_name';
+        import { GDString } from 'src/js_godot/variant/gd_string';
 		{
 			let gdstring = new GDString('123');
 			let string_name = new StringName('123');

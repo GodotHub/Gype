@@ -7,9 +7,9 @@ import {
 import { GDString } from "src/js_godot/variant/gd_string";
 import { StringName } from "src/js_godot/variant/string_name";
 import { NodePath } from "src/js_godot/variant/node_path";
-import { UtilityFunctions } from "src/js_godot/variant/utility_functions";
+import { GD, Math, Random } from "src/js_godot/variant/utility_functions";
 
-class Variant {
+export class Variant {
   static from_type_constructor = [];
   static to_type_constructor = [];
 
@@ -63,7 +63,9 @@ class Variant {
     StringName._init_bindings();
     GDString._init_bindings();
     NodePath._init_bindings();
-    UtilityFunctions._init_bindings();
+    GD._init_bindings();
+    Math._init_bindings();
+    Random._init_bindings();
   }
 
   static Type = {
@@ -153,4 +155,4 @@ class Variant {
   };
 }
 
-export { Variant, StringName, GDString, NodePath, UtilityFunctions };
+// export { Variant, StringName, GDString, NodePath, UtilityFunctions };

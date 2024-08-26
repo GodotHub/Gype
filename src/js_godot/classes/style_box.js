@@ -1,0 +1,258 @@
+import * as internal from '__internal__';
+import { Resource } from 'src/js_godot/classesresource'
+import { Rect2 } from 'src/js_godot/variant/rect2'
+import { Vector2 } from 'src/js_godot/variant/vector2'
+import { RID } from 'src/js_godot/variant/rid'
+class _MethodBindings {
+    method__draw;
+    method__get_draw_rect;
+    method__get_minimum_size;
+    method__test_mask;
+    method_get_minimum_size;
+    method_set_content_margin;
+    method_set_content_margin_all;
+    method_get_content_margin;
+    method_get_margin;
+    method_get_offset;
+    method_draw;
+    method_get_current_item_drawn;
+    method_test_mask;
+}
+
+
+export class StyleBox extends Resource{
+
+  static _bindings = new _MethodBindings();
+
+  constructor(godot_object) {
+    if (!godot_object) {
+      super("StyleBox");
+    } else {
+      super(godot_object);
+    }
+  }
+  
+  static _init_bindings() {
+    {
+      let classname = new StringName("StyleBox");
+      let methodname = new StringName("_draw");
+      this._bindings.method__draw = internal.classdb_get_method_bind(
+        classname.opaque, 
+        methodname.opaque, 
+        
+      );
+    }
+    {
+      let classname = new StringName("StyleBox");
+      let methodname = new StringName("_get_draw_rect");
+      this._bindings.method__get_draw_rect = internal.classdb_get_method_bind(
+        classname.opaque, 
+        methodname.opaque, 
+        
+      );
+    }
+    {
+      let classname = new StringName("StyleBox");
+      let methodname = new StringName("_get_minimum_size");
+      this._bindings.method__get_minimum_size = internal.classdb_get_method_bind(
+        classname.opaque, 
+        methodname.opaque, 
+        
+      );
+    }
+    {
+      let classname = new StringName("StyleBox");
+      let methodname = new StringName("_test_mask");
+      this._bindings.method__test_mask = internal.classdb_get_method_bind(
+        classname.opaque, 
+        methodname.opaque, 
+        
+      );
+    }
+    {
+      let classname = new StringName("StyleBox");
+      let methodname = new StringName("get_minimum_size");
+      this._bindings.method_get_minimum_size = internal.classdb_get_method_bind(
+        classname.opaque, 
+        methodname.opaque, 
+        3341600327
+      );
+    }
+    {
+      let classname = new StringName("StyleBox");
+      let methodname = new StringName("set_content_margin");
+      this._bindings.method_set_content_margin = internal.classdb_get_method_bind(
+        classname.opaque, 
+        methodname.opaque, 
+        4290182280
+      );
+    }
+    {
+      let classname = new StringName("StyleBox");
+      let methodname = new StringName("set_content_margin_all");
+      this._bindings.method_set_content_margin_all = internal.classdb_get_method_bind(
+        classname.opaque, 
+        methodname.opaque, 
+        373806689
+      );
+    }
+    {
+      let classname = new StringName("StyleBox");
+      let methodname = new StringName("get_content_margin");
+      this._bindings.method_get_content_margin = internal.classdb_get_method_bind(
+        classname.opaque, 
+        methodname.opaque, 
+        2869120046
+      );
+    }
+    {
+      let classname = new StringName("StyleBox");
+      let methodname = new StringName("get_margin");
+      this._bindings.method_get_margin = internal.classdb_get_method_bind(
+        classname.opaque, 
+        methodname.opaque, 
+        2869120046
+      );
+    }
+    {
+      let classname = new StringName("StyleBox");
+      let methodname = new StringName("get_offset");
+      this._bindings.method_get_offset = internal.classdb_get_method_bind(
+        classname.opaque, 
+        methodname.opaque, 
+        3341600327
+      );
+    }
+    {
+      let classname = new StringName("StyleBox");
+      let methodname = new StringName("draw");
+      this._bindings.method_draw = internal.classdb_get_method_bind(
+        classname.opaque, 
+        methodname.opaque, 
+        2275962004
+      );
+    }
+    {
+      let classname = new StringName("StyleBox");
+      let methodname = new StringName("get_current_item_drawn");
+      this._bindings.method_get_current_item_drawn = internal.classdb_get_method_bind(
+        classname.opaque, 
+        methodname.opaque, 
+        3213695180
+      );
+    }
+    {
+      let classname = new StringName("StyleBox");
+      let methodname = new StringName("test_mask");
+      this._bindings.method_test_mask = internal.classdb_get_method_bind(
+        classname.opaque, 
+        methodname.opaque, 
+        3735564539
+      );
+    }
+  }
+  _draw(_to_canvas_item, _rect) {
+    return _call_native_mb_no_ret(
+      ClassDB._bindings.method__draw,
+      this._owner,
+      _to_canvas_item, _rect
+    );
+  }
+  _get_draw_rect(_rect) {
+    return _call_native_mb_ret(
+      ClassDB._bindings.method__get_draw_rect,
+      this._owner,
+			Variant.Type.RECT2
+    ,
+      _rect
+    );
+  }
+  _get_minimum_size() {
+    return _call_native_mb_ret(
+      ClassDB._bindings.method__get_minimum_size,
+      this._owner,
+			Variant.Type.VECTOR2
+    ,
+      
+    );
+  }
+  _test_mask(_point, _rect) {
+    return _call_native_mb_ret(
+      ClassDB._bindings.method__test_mask,
+      this._owner,
+			Variant.Type.BOOL,
+      _point, _rect
+    );
+  }
+  get_minimum_size() {
+    return _call_native_mb_ret(
+      ClassDB._bindings.method_get_minimum_size,
+      this._owner,
+			Variant.Type.VECTOR2
+    ,
+      
+    );
+  }
+  set_content_margin(_margin, _offset) {
+    return _call_native_mb_no_ret(
+      ClassDB._bindings.method_set_content_margin,
+      this._owner,
+      _margin, _offset
+    );
+  }
+  set_content_margin_all(_offset) {
+    return _call_native_mb_no_ret(
+      ClassDB._bindings.method_set_content_margin_all,
+      this._owner,
+      _offset
+    );
+  }
+  get_content_margin(_margin) {
+    return _call_native_mb_ret(
+      ClassDB._bindings.method_get_content_margin,
+      this._owner,
+			Variant.Type.FLOAT,
+      _margin
+    );
+  }
+  get_margin(_margin) {
+    return _call_native_mb_ret(
+      ClassDB._bindings.method_get_margin,
+      this._owner,
+			Variant.Type.FLOAT,
+      _margin
+    );
+  }
+  get_offset() {
+    return _call_native_mb_ret(
+      ClassDB._bindings.method_get_offset,
+      this._owner,
+			Variant.Type.VECTOR2
+    ,
+      
+    );
+  }
+  draw(_canvas_item, _rect) {
+    return _call_native_mb_no_ret(
+      ClassDB._bindings.method_draw,
+      this._owner,
+      _canvas_item, _rect
+    );
+  }
+  get_current_item_drawn() {
+    return _call_native_mb_ret(
+      ClassDB._bindings.method_get_current_item_drawn,
+      this._owner,
+			Variant.INT,
+      
+    );
+  }
+  test_mask(_point, _rect) {
+    return _call_native_mb_ret(
+      ClassDB._bindings.method_test_mask,
+      this._owner,
+			Variant.Type.BOOL,
+      _point, _rect
+    );
+  }
+}
