@@ -4,6 +4,7 @@
 #include "quickjs/js_pointer.h"
 #include <stdarg.h>
 #include <stdio.h>
+#include <godot_cpp/core/method_bind.hpp>
 
 using namespace JSGodot;
 
@@ -17,6 +18,22 @@ void register_internal_api() {
 	_module.class_<JSPointer>("JSPointer")
 			.constructor()
 			.property<&JSPointer::get_pointer, &JSPointer::set_pointer>("pointer");
+	// _module.class_<MethodBind>("MethodBind")
+	// 		.property<&MethodBind::get_name, &MethodBind::set_name>("name")
+	// 		.property<&MethodBind::get_instance_class, &MethodBind::set_instance_class>("instance_class")
+	// 		.property<&MethodBind::get_hint_flags, &MethodBind::set_hint_flags>("hint_flags")
+	// 		.property<&MethodBind::get_argument_names, &MethodBind::set_argument_names>("argument_names")
+	// 		.fun<&MethodBind::is_const>("is_const")
+	// 		.fun<&MethodBind::is_static>("is_static")
+	// 		.fun<&MethodBind::is_vararg>("is_vararg")
+	// 		.fun<&MethodBind::has_return>("has_return")
+	// 		.fun<&MethodBind::set_default_arguments>("set_default_arguments")
+	// 		.fun<&MethodBind::get_argument_type>("get_argument_type")
+	// 		.fun<&MethodBind::get_argument_info>("get_argument_info")
+	// 		.fun<&MethodBind::get_argument_metadata>("get_argument_metadata")
+	// 		.fun<&MethodBind::get_arguments_info_list>("get_arguments_info_list")
+	// 		.fun<&MethodBind::get_arguments_metadata_list>("get_arguments_metadata_list");
+
 	_module.function("get_godot_version", [](GDExtensionGodotVersion *r_godot_version) {
 			   internal::gdextension_interface_get_godot_version(r_godot_version);
 		   })

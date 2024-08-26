@@ -29,8 +29,8 @@
 /**************************************************************************/
 
 #include <godot_cpp/core/memory.hpp>
-
 #include <godot_cpp/godot.hpp>
+#include <vector>
 
 namespace JSGodot {
 
@@ -91,6 +91,18 @@ void Memory::free_static(void *p_ptr, bool p_pad_align) {
 		mem -= DATA_OFFSET;
 	}
 	internal::gdextension_interface_mem_free(mem);
+}
+
+static std::vector<uint8_t> arr_to_vector(GDExtensionVariantType type, uint8_t *arr) {
+	switch (type) {
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_STRING_NAME:
+		case GDExtensionVariantType ::GDEXTENSION_VARIANT_TYPE_STRING:
+			return std::vector<uint8_t>(arr, arr + STRING_SIZE);
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_VARIANT_MAX:
+			return std::vector<uint8_t>(arr, arr + VARIANT_SIZE);
+		default:
+			return std::vector<uint8_t>(0);
+	}
 }
 
 _GlobalNil::_GlobalNil() {

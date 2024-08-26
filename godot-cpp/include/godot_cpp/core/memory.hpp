@@ -37,8 +37,9 @@
 #include <godot_cpp/core/defs.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 #include <godot_cpp/godot.hpp>
-
+#include <godot_cpp/variant_size.hpp>
 #include <type_traits>
+#include <vector>
 
 // p_dummy argument is added to avoid conflicts with the engine functions when both engine and GDExtension are built as a static library on iOS.
 void *operator new(size_t p_size, const char *p_dummy, const char *p_description); ///< operator new that takes a description and uses MemoryStaticPool
@@ -80,6 +81,8 @@ public:
 	static void *alloc_static(size_t p_bytes, bool p_pad_align = false);
 	static void *realloc_static(void *p_memory, size_t p_bytes, bool p_pad_align = false);
 	static void free_static(void *p_ptr, bool p_pad_align = false);
+
+	static std::vector<uint8_t> arr_to_vector(GDExtensionVariantType type, uint8_t *arr);
 };
 
 template <typename T>
