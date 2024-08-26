@@ -1,28 +1,33 @@
-import { convert_args } from "src/js_godot/core/convert";
-import { GDExtensionVariantType } from "src/js_godot/gde/gde";
+import { convert_vars } from "src/js_godot/core/convert";
 import { StringName } from "src/js_godot/variant/string_name";
 import { GDString } from "src/js_godot/variant/gd_string";
+import { Variant } from "src/js_godot/variant/variant";
 import { object_method_bind_ptrcall } from "__internal__";
 
-export function call_utility_ret(method, ret, ...args) {
-  method(ret.opaque, convert_args(...args));
+export function call_utility_ret(method, ...args) {
+  let ret = new Variant();
+  method(ret.opaque, convert_vars(...args), args.length);
   return ret;
 }
 
+export function call_utility_no_ret(method, ...args) {
+  let ret = new Variant();
+  method(ret.opaque, convert_vars(...args), args.length);
+}
+
 export function _call_native_mb_ret(mb, instance, type, ...args) {
-  let data = object_method_bind_ptrcall(mb, instance, type, ...args);
+  let data = object_method_bind_ptrcall(mb, instance, type, args);
   switch (type) {
-    case GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_NIL:
-    case GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_INT:
-    case GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_FLOAT:
-    case GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_BOOL:
+    case Variant.Type.INT:
+    case Variant.Type.FLOAT:
+    case Variant.Type.BOOL:
       return data;
-    case GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING: {
+    case Variant.Type.STRING: {
       let ret = new GDString();
       ret.opaque = data;
       return ret;
     }
-    case GDExtensionVariantType.GDEXTENSION_VARIANT_TYPE_STRING_NAME: {
+    case Variant.Type.STRING_NAME: {
       let ret = new StringName();
       ret.opaque = data;
       return ret;
@@ -30,4 +35,8 @@ export function _call_native_mb_ret(mb, instance, type, ...args) {
     default:
       return undefined;
   }
+}
+
+export function _call_native_mb_no_ret(mb, instance, ...args) {
+  object_method_bind_ptrcall(mb, instance, ...args);
 }

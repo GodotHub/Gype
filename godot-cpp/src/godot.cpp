@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <godot_cpp/core/error_macros.hpp>
 #include <godot_cpp/godot.hpp>
+#include <set>
+#include <unordered_map>
 
 namespace JSGodot {
 namespace internal {
@@ -371,5 +373,18 @@ GDExtensionBool Initializer::init() {
 	LOAD_PROC_ADDRESS(image_ptr, GDExtensionInterfaceImagePtr);
 	return true;
 }
+
+// struct ClassInfo {
+// 	char *name;
+// 	char *parent_name;
+// 	GDExtensionInitializationLevel level = GDEXTENSION_INITIALIZATION_SCENE;
+// 	std::unordered_map<const char *, MethodBind *> method_map;
+// 	std::set<const char *> signal_names;
+// 	std::unordered_map<const char *, GDExtensionClassCallVirtual> virtual_methods;
+// 	std::set<const char *> property_names;
+// 	std::set<const char *> constant_names;
+// 	// Pointer to the parent custom class, if any. Will be null if the parent class is a Godot class.
+// 	ClassInfo *parent_ptr = nullptr;
+// };
 
 } // namespace JSGodot

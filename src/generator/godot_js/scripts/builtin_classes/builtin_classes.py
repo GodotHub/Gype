@@ -1,6 +1,7 @@
 from jinja2 import Environment, FileSystemLoader
-from scripts.utils.file_utils import gde_json, workspace_dir
-from scripts.utils.jinja_utils import variant_types, add_opaque, norm_op_name, to_js_type, camel_to_snake, get_module_path, GDExtensionVariantType
+from scripts.utils.file_utils import gde_json, workspace_dir, js_generated_dir
+from scripts.utils.jinja_utils import variant_types, add_opaque, norm_op_name, to_js_type, camel_to_snake, get_module_path, is_variant, add_prefix_suffix
+import os
 
 __precision__ = 'float_64'
 
@@ -9,12 +10,29 @@ def __render__(env, template_name, dependcies, index):
     content = template.render({'gde_json': gde_json, 
                                'precision': __precision__, 
                                'dependcies': dependcies,
-                               'GDExtensionVariantType': GDExtensionVariantType[index], 
                                'index': index})
     file_name = camel_to_snake(to_js_type(gde_json['builtin_classes'][index]['name']))
-    with open('%s/render/%s.js' % (workspace_dir, file_name), mode='w') as f:
+    with open('%s\\variant\\%s.js' % (js_generated_dir, file_name), mode='w') as f:
         f.write(content)
-    
+
+def dependcies_collect(clazz):
+    depencies = set()
+    for ctor in clazz.get('constructors', []):
+        for arg in ctor.get('arguments', []):
+            _type = arg.get('type', None)
+            if _type and is_variant(_type):
+                depencies.add(to_js_type(_type))
+    for method in clazz.get('methods', []):
+        _type = method.get('return_type', None)
+        if _type and is_variant(_type):
+            depencies.add(to_js_type(_type))
+        for arg in method.get('arguments', []):
+            _type = arg.get('type', None)
+            if _type and is_variant(_type):
+                depencies.add(to_js_type(_type))
+    depencies.add('Variant')
+    depencies.discard(to_js_type(clazz['name']))
+    return depencies
 
 def render_builtin_classes(precision):
     global __precision__
@@ -23,11 +41,11 @@ def render_builtin_classes(precision):
 
     env.filters['add_opaque'] = add_opaque
     env.filters['norm_op_name'] = norm_op_name
+    env.filters['add_prefix_suffix'] = add_prefix_suffix
     env.globals['camel_to_snake'] = camel_to_snake
     env.globals['get_module_path'] = get_module_path
     env.globals['to_js_type'] = to_js_type
     env.globals['variant_types'] = variant_types
 
-    __render__(env, 'builtin_classes.jinja2', ['StringName', 'NodePath', 'Variant'], 4)
-    __render__(env, 'builtin_classes.jinja2', ['GDString', 'NodePath', 'Variant'], 21)
-    __render__(env, 'builtin_classes.jinja2', ['StringName', 'GDString', 'Variant'], 22)
+    for i in range(4, 38):
+        __render__(env, 'builtin_classes.jinja2', dependcies_collect(gde_json['builtin_classes'][i]), i)

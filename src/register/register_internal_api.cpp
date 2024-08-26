@@ -39,10 +39,10 @@ void register_internal_api() {
 						reinterpret_cast<GDExtensionUninitializedStringNamePtr>(qjs::get_typed_array_buf(context.ctx, r_dest)),
 						p_contents);
 			})
-			.function("variant_get_ptr_builtin_method", [](GDExtensionVariantType p_type, GDString p_method, GDExtensionInt p_hash) -> GDExtensionPtrBuiltInMethod {
+			.function("variant_get_ptr_builtin_method", [](GDExtensionVariantType p_type, Buff p_method, GDExtensionInt p_hash) -> GDExtensionPtrBuiltInMethod {
 				return internal::gdextension_interface_variant_get_ptr_builtin_method(p_type, qjs::get_typed_array_buf(context.ctx, p_method), p_hash);
 			})
-			.function("variant_get_ptr_utility_function", [](GDString p_function, GDExtensionInt p_hash) -> GDExtensionPtrUtilityFunction {
+			.function("variant_get_ptr_utility_function", [](Buff p_function, GDExtensionInt p_hash) -> GDExtensionPtrUtilityFunction {
 				return internal::gdextension_interface_variant_get_ptr_utility_function(
 						reinterpret_cast<GDExtensionConstStringNamePtr>(qjs::get_typed_array_buf(context.ctx, p_function)),
 						p_hash);
@@ -75,11 +75,7 @@ void register_internal_api() {
 				JSValue ret = qjs::to_js_value(context.ctx, type, r_ret);
 				return ret;
 			})
-			.function("classdb_construct_object", [](GDString p_classname) -> GDExtensionObjectPtr {
+			.function("classdb_construct_object", [](Buff p_classname) -> GDExtensionObjectPtr {
 				return internal::gdextension_interface_classdb_construct_object(qjs::get_typed_array_buf(context.ctx, p_classname));
 			});
-
-	// .function("string_operator_index_const", [](JSValue p_self, GDExtensionInt p_index) -> const char32_t * {
-	// 	return internal::gdextension_interface_string_operator_index_const(qjs::get_typed_array_buf(context.ctx, p_self), p_index);
-	// });
 }

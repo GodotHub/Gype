@@ -3,8 +3,8 @@
 #include "godot_cpp/godot.hpp"
 #include "quickjs/env.h"
 #include "quickjs/finalizer.h"
+#include "register/register_enums.h"
 #include "register/register_internal_api.h"
-#include "register/register_utility_functions.h"
 #include <godot_cpp/core/os_windows.hpp>
 
 #ifdef DEBUG_ENABLED
@@ -29,9 +29,9 @@ void initialize_tgds_types(void *user_data, GDExtensionInitializationLevel p_lev
 	init_quickjs();
 #ifdef DEBUG_ENABLED
 	// test_variant();
-	// test_gdstring();
+	test_gdstring();
 	// test_node_path();
-	test_class_db();
+	// test_class_db();
 #endif // DEBUG
 	// JSValue value = context.eval("import { GD } from 'src/js_godot/variant/utility_functions.js';GD.print('123');", "<eval>", JS_EVAL_TYPE_MODULE);
 	// context.eval("import { StringName } from 'src/js_godot/variant/string_name.js';new StringName();", "<eval>", JS_EVAL_TYPE_MODULE);
@@ -68,12 +68,20 @@ void uninitialize_tgds_types(void *user_data, GDExtensionInitializationLevel p_l
 }
 
 void init_quickjs() {
+	register_enums();
 	register_internal_api();
-	// register_utility_functions();
 	js_init_module(context.ctx);
 	JS_AddIntrinsicOperators(context.ctx);
 	JS_SetModuleLoaderFunc(runtime.rt, NULL, module_loader, (void *)"D:/Godot/Gype");
-	JSValue ret = context.eval("import { Variant } from 'src/js_godot/variant/variant'; Variant._init_bindings();", "<eval>", JS_EVAL_TYPE_MODULE);
+	JSValue ret = context.eval(R"xxx(
+		import { Variant } from 'src/js_godot/variant/variant';
+		import { GD, Math, Random } from 'src/js_godot/variant/utility_functions';
+		Variant._init_bindings();
+		globalThis.GD = new GD();
+		globalThis.Math = new Math();
+		globalThis.Random = new Random();
+	)xxx",
+			"<eval>", JS_EVAL_TYPE_MODULE);
 	JS_FreeValue(context.ctx, ret);
 }
 

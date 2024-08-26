@@ -1,0 +1,66 @@
+
+{%- set clazz = gde_json['classes'][index] -%}
+{%- set methods = clazz['methods'] -%}
+{%- set singletons = gde_json['singletons'] | map(attribute='type') -%}
+{%- from 'utils/utils.jinja2' import singleton_class_name -%}
+import * as internal from '__internal__';
+{%- for dependcy in dependcies %}
+import { {{to_js_type(dependcy)}} } from '{{ get_module_path(dependcy) }}'
+{%- endfor %}
+{%- if clazz['name'] == 'Object' %}
+import { Wrapped } from 'src/js_godot/classes/wrapped'
+{%- endif %}
+class _MethodBindings {
+  {%- for method in methods %}
+    method_{{method['name']}};
+  {%- endfor %}
+}
+
+{{singleton_class_name(clazz, singletons)}} {{ 'extends ' + to_js_type(clazz['inherits']) if to_js_type(clazz['inherits']) else ''}}{
+
+  static _bindings = new _MethodBindings();
+
+  constructor(godot_object) {
+    if (!godot_object) {
+      super("{{clazz['name']}}");
+    } else {
+      super(godot_object);
+    }
+  }
+  {% from 'utils/utils.jinja2' import define_args %}
+  static _init_bindings() {
+    {%- for method in methods %}
+    {
+      let classname = new StringName("{{clazz['name']}}");
+      let methodname = new StringName("{{method['name']}}");
+      this._bindings.method_{{method['name']}} = internal.classdb_get_method_bind(
+        classname.opaque, 
+        methodname.opaque, 
+        {{method['hash']}}
+      );
+    }
+    {%- endfor %}
+  }
+  
+  {%- from 'utils/utils.jinja2' import conn_args, type_enum %}
+  {%- for method in methods %}
+  {{method['name']}}({{-conn_args(method['arguments'])-}}) {
+    return _call_native_mb{{'' if method['return_value'] else '_no'}}_ret(
+      ClassDB._bindings.method_{{method['name']}},
+      this._owner,
+      {%- if method['return_value'] -%}
+      {{-type_enum(method['return_value'], '\t\t\t')}},
+      {%- endif %}
+      {{conn_args(method['arguments'])}}
+    );
+  }
+  {%- endfor %}
+
+  {%- for enum in clazz['enums'] %}
+  static {{enum['name']}} = {
+    {%- for value in enum['values'] %}
+    {{value['name']}}: {{value['value']}},
+    {%- endfor %}
+  }
+  {%- endfor %}
+}

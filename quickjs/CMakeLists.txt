@@ -24,5 +24,6 @@ target_compile_definitions(quickjs PRIVATE
     -DGNU_SOURCE 
     -DCONFIG_BIGNUM 
     -DDUMP_PROMISE
-    -DDUMP_LEAKS
+    # -DDUMP_LEAKS
+    -DDUMP_MODULE_RESOLVE
     -DCONFIG_VERSION="2024-05-20")

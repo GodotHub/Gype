@@ -11,7 +11,23 @@ export function convert_args(...args) {
       element instanceof Variant
     ) {
       args[index] = element.opaque;
+    } else {
+      let variant = new Variant(args[index]);
+      args[index] = variant.opaque;
     }
   }
   return args;
+}
+
+export function convert_vars(...vars) {
+  for (let index = 0; index < vars.length; index++) {
+    const element = vars[index];
+    let variant = new Variant(vars[index]);
+    if (!element instanceof Variant) {
+      vars[index] = variant.opaque;
+    } else {
+      vars[index] = variant.opaque;
+    }
+  }
+  return vars;
 }
