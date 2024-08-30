@@ -1,9 +1,16 @@
 import * as internal from '__internal__';
-import { PackedInt32Array } from 'src/js_godot/variant/packed_int32_array'
-import { GDArray } from 'src/js_godot/variant/gd_array'
-import { Variant } from 'src/js_godot/variant/variant'
 import { StringName } from 'src/js_godot/variant/string_name'
-import { RefCounted } from 'src/js_godot/classesref_counted'
+import { PackedInt32Array } from 'src/js_godot/variant/packed_int32_array'
+import { Variant } from 'src/js_godot/variant/variant'
+import { GDArray } from 'src/js_godot/variant/gd_array'
+import { RefCounted } from 'src/js_godot/classes/ref_counted'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_has_multiplayer_peer;
     method_get_multiplayer_peer;
@@ -35,132 +42,132 @@ export class MultiplayerAPI extends RefCounted{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("MultiplayerAPI");
-      let methodname = new StringName("has_multiplayer_peer");
-      this._bindings.method_has_multiplayer_peer = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2240911060
-      );
-    }
-    {
-      let classname = new StringName("MultiplayerAPI");
-      let methodname = new StringName("get_multiplayer_peer");
-      this._bindings.method_get_multiplayer_peer = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3223692825
-      );
-    }
-    {
-      let classname = new StringName("MultiplayerAPI");
-      let methodname = new StringName("set_multiplayer_peer");
-      this._bindings.method_set_multiplayer_peer = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3694835298
-      );
-    }
-    {
-      let classname = new StringName("MultiplayerAPI");
-      let methodname = new StringName("get_unique_id");
-      this._bindings.method_get_unique_id = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2455072627
-      );
-    }
-    {
-      let classname = new StringName("MultiplayerAPI");
-      let methodname = new StringName("is_server");
-      this._bindings.method_is_server = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2240911060
-      );
-    }
-    {
-      let classname = new StringName("MultiplayerAPI");
-      let methodname = new StringName("get_remote_sender_id");
-      this._bindings.method_get_remote_sender_id = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2455072627
-      );
-    }
-    {
-      let classname = new StringName("MultiplayerAPI");
-      let methodname = new StringName("poll");
-      this._bindings.method_poll = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        166280745
-      );
-    }
-    {
-      let classname = new StringName("MultiplayerAPI");
-      let methodname = new StringName("rpc");
-      this._bindings.method_rpc = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2077486355
-      );
-    }
-    {
-      let classname = new StringName("MultiplayerAPI");
-      let methodname = new StringName("object_configuration_add");
-      this._bindings.method_object_configuration_add = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1171879464
-      );
-    }
-    {
-      let classname = new StringName("MultiplayerAPI");
-      let methodname = new StringName("object_configuration_remove");
-      this._bindings.method_object_configuration_remove = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1171879464
-      );
-    }
-    {
-      let classname = new StringName("MultiplayerAPI");
-      let methodname = new StringName("get_peers");
-      this._bindings.method_get_peers = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        969006518
-      );
-    }
-    {
-      let classname = new StringName("MultiplayerAPI");
-      let methodname = new StringName("set_default_interface");
-      this._bindings.method_set_default_interface = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3304788590
-      );
-    }
-    {
-      let classname = new StringName("MultiplayerAPI");
-      let methodname = new StringName("get_default_interface");
-      this._bindings.method_get_default_interface = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2737447660
-      );
-    }
-    {
-      let classname = new StringName("MultiplayerAPI");
-      let methodname = new StringName("create_default_interface");
-      this._bindings.method_create_default_interface = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3294156723
-      );
-    }
+      {
+        let classname = new StringName("MultiplayerAPI");
+        let methodname = new StringName("has_multiplayer_peer");
+        this._bindings.method_has_multiplayer_peer = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2240911060
+        );
+      }
+      {
+        let classname = new StringName("MultiplayerAPI");
+        let methodname = new StringName("get_multiplayer_peer");
+        this._bindings.method_get_multiplayer_peer = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3223692825
+        );
+      }
+      {
+        let classname = new StringName("MultiplayerAPI");
+        let methodname = new StringName("set_multiplayer_peer");
+        this._bindings.method_set_multiplayer_peer = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3694835298
+        );
+      }
+      {
+        let classname = new StringName("MultiplayerAPI");
+        let methodname = new StringName("get_unique_id");
+        this._bindings.method_get_unique_id = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2455072627
+        );
+      }
+      {
+        let classname = new StringName("MultiplayerAPI");
+        let methodname = new StringName("is_server");
+        this._bindings.method_is_server = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2240911060
+        );
+      }
+      {
+        let classname = new StringName("MultiplayerAPI");
+        let methodname = new StringName("get_remote_sender_id");
+        this._bindings.method_get_remote_sender_id = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2455072627
+        );
+      }
+      {
+        let classname = new StringName("MultiplayerAPI");
+        let methodname = new StringName("poll");
+        this._bindings.method_poll = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          166280745
+        );
+      }
+      {
+        let classname = new StringName("MultiplayerAPI");
+        let methodname = new StringName("rpc");
+        this._bindings.method_rpc = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2077486355
+        );
+      }
+      {
+        let classname = new StringName("MultiplayerAPI");
+        let methodname = new StringName("object_configuration_add");
+        this._bindings.method_object_configuration_add = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1171879464
+        );
+      }
+      {
+        let classname = new StringName("MultiplayerAPI");
+        let methodname = new StringName("object_configuration_remove");
+        this._bindings.method_object_configuration_remove = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1171879464
+        );
+      }
+      {
+        let classname = new StringName("MultiplayerAPI");
+        let methodname = new StringName("get_peers");
+        this._bindings.method_get_peers = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          969006518
+        );
+      }
+      {
+        let classname = new StringName("MultiplayerAPI");
+        let methodname = new StringName("set_default_interface");
+        this._bindings.method_set_default_interface = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3304788590
+        );
+      }
+      {
+        let classname = new StringName("MultiplayerAPI");
+        let methodname = new StringName("get_default_interface");
+        this._bindings.method_get_default_interface = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2737447660
+        );
+      }
+      {
+        let classname = new StringName("MultiplayerAPI");
+        let methodname = new StringName("create_default_interface");
+        this._bindings.method_create_default_interface = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3294156723
+        );
+      }
   }
   has_multiplayer_peer() {
     return _call_native_mb_ret(
@@ -169,6 +176,7 @@ export class MultiplayerAPI extends RefCounted{
 			Variant.Type.BOOL,
       
     );
+    
   }
   get_multiplayer_peer() {
     return _call_native_mb_ret(
@@ -177,6 +185,7 @@ export class MultiplayerAPI extends RefCounted{
 			Variant.INT,
       
     );
+    
   }
   set_multiplayer_peer(_peer) {
     return _call_native_mb_no_ret(
@@ -184,6 +193,7 @@ export class MultiplayerAPI extends RefCounted{
       this._owner,
       _peer
     );
+    
   }
   get_unique_id() {
     return _call_native_mb_ret(
@@ -192,6 +202,7 @@ export class MultiplayerAPI extends RefCounted{
 			Variant.Type.INT,
       
     );
+    
   }
   is_server() {
     return _call_native_mb_ret(
@@ -200,6 +211,7 @@ export class MultiplayerAPI extends RefCounted{
 			Variant.Type.BOOL,
       
     );
+    
   }
   get_remote_sender_id() {
     return _call_native_mb_ret(
@@ -208,6 +220,7 @@ export class MultiplayerAPI extends RefCounted{
 			Variant.Type.INT,
       
     );
+    
   }
   poll() {
     return _call_native_mb_ret(
@@ -216,6 +229,7 @@ export class MultiplayerAPI extends RefCounted{
 			Variant.INT,
       
     );
+    
   }
   rpc(_peer, _object, _method, _arguments) {
     return _call_native_mb_ret(
@@ -224,6 +238,7 @@ export class MultiplayerAPI extends RefCounted{
 			Variant.INT,
       _peer, _object, _method, _arguments
     );
+    
   }
   object_configuration_add(_object, _configuration) {
     return _call_native_mb_ret(
@@ -232,6 +247,7 @@ export class MultiplayerAPI extends RefCounted{
 			Variant.INT,
       _object, _configuration
     );
+    
   }
   object_configuration_remove(_object, _configuration) {
     return _call_native_mb_ret(
@@ -240,6 +256,7 @@ export class MultiplayerAPI extends RefCounted{
 			Variant.INT,
       _object, _configuration
     );
+    
   }
   get_peers() {
     return _call_native_mb_ret(
@@ -249,6 +266,7 @@ export class MultiplayerAPI extends RefCounted{
     ,
       
     );
+    
   }
   set_default_interface(_interface_name) {
     return _call_native_mb_no_ret(
@@ -256,6 +274,7 @@ export class MultiplayerAPI extends RefCounted{
       this._owner,
       _interface_name
     );
+    
   }
   get_default_interface() {
     return _call_native_mb_ret(
@@ -265,6 +284,7 @@ export class MultiplayerAPI extends RefCounted{
     ,
       
     );
+    
   }
   create_default_interface() {
     return _call_native_mb_ret(
@@ -273,6 +293,7 @@ export class MultiplayerAPI extends RefCounted{
 			Variant.INT,
       
     );
+    
   }
   static RPCMode = {
     RPC_MODE_DISABLED: 0,

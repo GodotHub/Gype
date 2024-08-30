@@ -1,8 +1,16 @@
 import * as internal from '__internal__';
-import { GDArray } from 'src/js_godot/variant/gd_array'
-import { PackedStringArray } from 'src/js_godot/variant/packed_string_array'
-import { GodotObject } from 'src/js_godot/classesgodot_object'
+import { GodotObject } from 'src/js_godot/classes/godot_object'
 import { GDString } from 'src/js_godot/variant/gd_string'
+import { StringName } from 'src/js_godot/variant/string_name'
+import { PackedStringArray } from 'src/js_godot/variant/packed_string_array'
+import { GDArray } from 'src/js_godot/variant/gd_array'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_load_threaded_request;
     method_load_threaded_get_status;
@@ -33,114 +41,114 @@ class _ResourceLoader extends GodotObject{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("ResourceLoader");
-      let methodname = new StringName("load_threaded_request");
-      this._bindings.method_load_threaded_request = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3614384323
-      );
-    }
-    {
-      let classname = new StringName("ResourceLoader");
-      let methodname = new StringName("load_threaded_get_status");
-      this._bindings.method_load_threaded_get_status = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4137685479
-      );
-    }
-    {
-      let classname = new StringName("ResourceLoader");
-      let methodname = new StringName("load_threaded_get");
-      this._bindings.method_load_threaded_get = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1748875256
-      );
-    }
-    {
-      let classname = new StringName("ResourceLoader");
-      let methodname = new StringName("load");
-      this._bindings.method_load = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3358495409
-      );
-    }
-    {
-      let classname = new StringName("ResourceLoader");
-      let methodname = new StringName("get_recognized_extensions_for_type");
-      this._bindings.method_get_recognized_extensions_for_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3538744774
-      );
-    }
-    {
-      let classname = new StringName("ResourceLoader");
-      let methodname = new StringName("add_resource_format_loader");
-      this._bindings.method_add_resource_format_loader = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2896595483
-      );
-    }
-    {
-      let classname = new StringName("ResourceLoader");
-      let methodname = new StringName("remove_resource_format_loader");
-      this._bindings.method_remove_resource_format_loader = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        405397102
-      );
-    }
-    {
-      let classname = new StringName("ResourceLoader");
-      let methodname = new StringName("set_abort_on_missing_resources");
-      this._bindings.method_set_abort_on_missing_resources = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("ResourceLoader");
-      let methodname = new StringName("get_dependencies");
-      this._bindings.method_get_dependencies = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3538744774
-      );
-    }
-    {
-      let classname = new StringName("ResourceLoader");
-      let methodname = new StringName("has_cached");
-      this._bindings.method_has_cached = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2323990056
-      );
-    }
-    {
-      let classname = new StringName("ResourceLoader");
-      let methodname = new StringName("exists");
-      this._bindings.method_exists = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4185558881
-      );
-    }
-    {
-      let classname = new StringName("ResourceLoader");
-      let methodname = new StringName("get_resource_uid");
-      this._bindings.method_get_resource_uid = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1597066294
-      );
-    }
+      {
+        let classname = new StringName("ResourceLoader");
+        let methodname = new StringName("load_threaded_request");
+        this._bindings.method_load_threaded_request = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3614384323
+        );
+      }
+      {
+        let classname = new StringName("ResourceLoader");
+        let methodname = new StringName("load_threaded_get_status");
+        this._bindings.method_load_threaded_get_status = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4137685479
+        );
+      }
+      {
+        let classname = new StringName("ResourceLoader");
+        let methodname = new StringName("load_threaded_get");
+        this._bindings.method_load_threaded_get = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1748875256
+        );
+      }
+      {
+        let classname = new StringName("ResourceLoader");
+        let methodname = new StringName("load");
+        this._bindings.method_load = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3358495409
+        );
+      }
+      {
+        let classname = new StringName("ResourceLoader");
+        let methodname = new StringName("get_recognized_extensions_for_type");
+        this._bindings.method_get_recognized_extensions_for_type = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3538744774
+        );
+      }
+      {
+        let classname = new StringName("ResourceLoader");
+        let methodname = new StringName("add_resource_format_loader");
+        this._bindings.method_add_resource_format_loader = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2896595483
+        );
+      }
+      {
+        let classname = new StringName("ResourceLoader");
+        let methodname = new StringName("remove_resource_format_loader");
+        this._bindings.method_remove_resource_format_loader = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          405397102
+        );
+      }
+      {
+        let classname = new StringName("ResourceLoader");
+        let methodname = new StringName("set_abort_on_missing_resources");
+        this._bindings.method_set_abort_on_missing_resources = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("ResourceLoader");
+        let methodname = new StringName("get_dependencies");
+        this._bindings.method_get_dependencies = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3538744774
+        );
+      }
+      {
+        let classname = new StringName("ResourceLoader");
+        let methodname = new StringName("has_cached");
+        this._bindings.method_has_cached = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2323990056
+        );
+      }
+      {
+        let classname = new StringName("ResourceLoader");
+        let methodname = new StringName("exists");
+        this._bindings.method_exists = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4185558881
+        );
+      }
+      {
+        let classname = new StringName("ResourceLoader");
+        let methodname = new StringName("get_resource_uid");
+        this._bindings.method_get_resource_uid = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1597066294
+        );
+      }
   }
   load_threaded_request(_path, _type_hint, _use_sub_threads, _cache_mode) {
     return _call_native_mb_ret(
@@ -149,6 +157,7 @@ class _ResourceLoader extends GodotObject{
 			Variant.INT,
       _path, _type_hint, _use_sub_threads, _cache_mode
     );
+    
   }
   load_threaded_get_status(_path, _progress) {
     return _call_native_mb_ret(
@@ -157,6 +166,7 @@ class _ResourceLoader extends GodotObject{
 			Variant.INT,
       _path, _progress
     );
+    
   }
   load_threaded_get(_path) {
     return _call_native_mb_ret(
@@ -165,6 +175,7 @@ class _ResourceLoader extends GodotObject{
 			Variant.INT,
       _path
     );
+    
   }
   load(_path, _type_hint, _cache_mode) {
     return _call_native_mb_ret(
@@ -173,6 +184,7 @@ class _ResourceLoader extends GodotObject{
 			Variant.INT,
       _path, _type_hint, _cache_mode
     );
+    
   }
   get_recognized_extensions_for_type(_type) {
     return _call_native_mb_ret(
@@ -182,6 +194,7 @@ class _ResourceLoader extends GodotObject{
     ,
       _type
     );
+    
   }
   add_resource_format_loader(_format_loader, _at_front) {
     return _call_native_mb_no_ret(
@@ -189,6 +202,7 @@ class _ResourceLoader extends GodotObject{
       this._owner,
       _format_loader, _at_front
     );
+    
   }
   remove_resource_format_loader(_format_loader) {
     return _call_native_mb_no_ret(
@@ -196,6 +210,7 @@ class _ResourceLoader extends GodotObject{
       this._owner,
       _format_loader
     );
+    
   }
   set_abort_on_missing_resources(_abort) {
     return _call_native_mb_no_ret(
@@ -203,6 +218,7 @@ class _ResourceLoader extends GodotObject{
       this._owner,
       _abort
     );
+    
   }
   get_dependencies(_path) {
     return _call_native_mb_ret(
@@ -212,6 +228,7 @@ class _ResourceLoader extends GodotObject{
     ,
       _path
     );
+    
   }
   has_cached(_path) {
     return _call_native_mb_ret(
@@ -220,6 +237,7 @@ class _ResourceLoader extends GodotObject{
 			Variant.Type.BOOL,
       _path
     );
+    
   }
   exists(_path, _type_hint) {
     return _call_native_mb_ret(
@@ -228,6 +246,7 @@ class _ResourceLoader extends GodotObject{
 			Variant.Type.BOOL,
       _path, _type_hint
     );
+    
   }
   get_resource_uid(_path) {
     return _call_native_mb_ret(
@@ -236,6 +255,7 @@ class _ResourceLoader extends GodotObject{
 			Variant.Type.INT,
       _path
     );
+    
   }
   static ThreadLoadStatus = {
     THREAD_LOAD_INVALID_RESOURCE: 0,

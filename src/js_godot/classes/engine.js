@@ -1,9 +1,16 @@
 import * as internal from '__internal__';
+import { GodotObject } from 'src/js_godot/classes/godot_object'
 import { GDString } from 'src/js_godot/variant/gd_string'
 import { StringName } from 'src/js_godot/variant/string_name'
-import { GodotObject } from 'src/js_godot/classesgodot_object'
 import { PackedStringArray } from 'src/js_godot/variant/packed_string_array'
 import { Dictionary } from 'src/js_godot/variant/dictionary'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_set_physics_ticks_per_second;
     method_get_physics_ticks_per_second;
@@ -59,339 +66,339 @@ class _Engine extends GodotObject{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("Engine");
-      let methodname = new StringName("set_physics_ticks_per_second");
-      this._bindings.method_set_physics_ticks_per_second = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("Engine");
-      let methodname = new StringName("get_physics_ticks_per_second");
-      this._bindings.method_get_physics_ticks_per_second = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("Engine");
-      let methodname = new StringName("set_max_physics_steps_per_frame");
-      this._bindings.method_set_max_physics_steps_per_frame = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("Engine");
-      let methodname = new StringName("get_max_physics_steps_per_frame");
-      this._bindings.method_get_max_physics_steps_per_frame = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("Engine");
-      let methodname = new StringName("set_physics_jitter_fix");
-      this._bindings.method_set_physics_jitter_fix = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("Engine");
-      let methodname = new StringName("get_physics_jitter_fix");
-      this._bindings.method_get_physics_jitter_fix = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("Engine");
-      let methodname = new StringName("get_physics_interpolation_fraction");
-      this._bindings.method_get_physics_interpolation_fraction = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("Engine");
-      let methodname = new StringName("set_max_fps");
-      this._bindings.method_set_max_fps = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("Engine");
-      let methodname = new StringName("get_max_fps");
-      this._bindings.method_get_max_fps = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("Engine");
-      let methodname = new StringName("set_time_scale");
-      this._bindings.method_set_time_scale = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("Engine");
-      let methodname = new StringName("get_time_scale");
-      this._bindings.method_get_time_scale = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        191475506
-      );
-    }
-    {
-      let classname = new StringName("Engine");
-      let methodname = new StringName("get_frames_drawn");
-      this._bindings.method_get_frames_drawn = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2455072627
-      );
-    }
-    {
-      let classname = new StringName("Engine");
-      let methodname = new StringName("get_frames_per_second");
-      this._bindings.method_get_frames_per_second = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("Engine");
-      let methodname = new StringName("get_physics_frames");
-      this._bindings.method_get_physics_frames = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("Engine");
-      let methodname = new StringName("get_process_frames");
-      this._bindings.method_get_process_frames = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("Engine");
-      let methodname = new StringName("get_main_loop");
-      this._bindings.method_get_main_loop = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1016888095
-      );
-    }
-    {
-      let classname = new StringName("Engine");
-      let methodname = new StringName("get_version_info");
-      this._bindings.method_get_version_info = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3102165223
-      );
-    }
-    {
-      let classname = new StringName("Engine");
-      let methodname = new StringName("get_author_info");
-      this._bindings.method_get_author_info = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3102165223
-      );
-    }
-    {
-      let classname = new StringName("Engine");
-      let methodname = new StringName("get_copyright_info");
-      this._bindings.method_get_copyright_info = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3995934104
-      );
-    }
-    {
-      let classname = new StringName("Engine");
-      let methodname = new StringName("get_donor_info");
-      this._bindings.method_get_donor_info = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3102165223
-      );
-    }
-    {
-      let classname = new StringName("Engine");
-      let methodname = new StringName("get_license_info");
-      this._bindings.method_get_license_info = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3102165223
-      );
-    }
-    {
-      let classname = new StringName("Engine");
-      let methodname = new StringName("get_license_text");
-      this._bindings.method_get_license_text = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        201670096
-      );
-    }
-    {
-      let classname = new StringName("Engine");
-      let methodname = new StringName("get_architecture_name");
-      this._bindings.method_get_architecture_name = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        201670096
-      );
-    }
-    {
-      let classname = new StringName("Engine");
-      let methodname = new StringName("is_in_physics_frame");
-      this._bindings.method_is_in_physics_frame = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("Engine");
-      let methodname = new StringName("has_singleton");
-      this._bindings.method_has_singleton = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2619796661
-      );
-    }
-    {
-      let classname = new StringName("Engine");
-      let methodname = new StringName("get_singleton");
-      this._bindings.method_get_singleton = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1371597918
-      );
-    }
-    {
-      let classname = new StringName("Engine");
-      let methodname = new StringName("register_singleton");
-      this._bindings.method_register_singleton = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        965313290
-      );
-    }
-    {
-      let classname = new StringName("Engine");
-      let methodname = new StringName("unregister_singleton");
-      this._bindings.method_unregister_singleton = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3304788590
-      );
-    }
-    {
-      let classname = new StringName("Engine");
-      let methodname = new StringName("get_singleton_list");
-      this._bindings.method_get_singleton_list = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1139954409
-      );
-    }
-    {
-      let classname = new StringName("Engine");
-      let methodname = new StringName("register_script_language");
-      this._bindings.method_register_script_language = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1850254898
-      );
-    }
-    {
-      let classname = new StringName("Engine");
-      let methodname = new StringName("unregister_script_language");
-      this._bindings.method_unregister_script_language = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1850254898
-      );
-    }
-    {
-      let classname = new StringName("Engine");
-      let methodname = new StringName("get_script_language_count");
-      this._bindings.method_get_script_language_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2455072627
-      );
-    }
-    {
-      let classname = new StringName("Engine");
-      let methodname = new StringName("get_script_language");
-      this._bindings.method_get_script_language = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2151255799
-      );
-    }
-    {
-      let classname = new StringName("Engine");
-      let methodname = new StringName("is_editor_hint");
-      this._bindings.method_is_editor_hint = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("Engine");
-      let methodname = new StringName("get_write_movie_path");
-      this._bindings.method_get_write_movie_path = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        201670096
-      );
-    }
-    {
-      let classname = new StringName("Engine");
-      let methodname = new StringName("set_print_error_messages");
-      this._bindings.method_set_print_error_messages = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("Engine");
-      let methodname = new StringName("is_printing_error_messages");
-      this._bindings.method_is_printing_error_messages = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
+      {
+        let classname = new StringName("Engine");
+        let methodname = new StringName("set_physics_ticks_per_second");
+        this._bindings.method_set_physics_ticks_per_second = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1286410249
+        );
+      }
+      {
+        let classname = new StringName("Engine");
+        let methodname = new StringName("get_physics_ticks_per_second");
+        this._bindings.method_get_physics_ticks_per_second = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
+      {
+        let classname = new StringName("Engine");
+        let methodname = new StringName("set_max_physics_steps_per_frame");
+        this._bindings.method_set_max_physics_steps_per_frame = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1286410249
+        );
+      }
+      {
+        let classname = new StringName("Engine");
+        let methodname = new StringName("get_max_physics_steps_per_frame");
+        this._bindings.method_get_max_physics_steps_per_frame = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
+      {
+        let classname = new StringName("Engine");
+        let methodname = new StringName("set_physics_jitter_fix");
+        this._bindings.method_set_physics_jitter_fix = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("Engine");
+        let methodname = new StringName("get_physics_jitter_fix");
+        this._bindings.method_get_physics_jitter_fix = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("Engine");
+        let methodname = new StringName("get_physics_interpolation_fraction");
+        this._bindings.method_get_physics_interpolation_fraction = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("Engine");
+        let methodname = new StringName("set_max_fps");
+        this._bindings.method_set_max_fps = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1286410249
+        );
+      }
+      {
+        let classname = new StringName("Engine");
+        let methodname = new StringName("get_max_fps");
+        this._bindings.method_get_max_fps = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
+      {
+        let classname = new StringName("Engine");
+        let methodname = new StringName("set_time_scale");
+        this._bindings.method_set_time_scale = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("Engine");
+        let methodname = new StringName("get_time_scale");
+        this._bindings.method_get_time_scale = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          191475506
+        );
+      }
+      {
+        let classname = new StringName("Engine");
+        let methodname = new StringName("get_frames_drawn");
+        this._bindings.method_get_frames_drawn = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2455072627
+        );
+      }
+      {
+        let classname = new StringName("Engine");
+        let methodname = new StringName("get_frames_per_second");
+        this._bindings.method_get_frames_per_second = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("Engine");
+        let methodname = new StringName("get_physics_frames");
+        this._bindings.method_get_physics_frames = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
+      {
+        let classname = new StringName("Engine");
+        let methodname = new StringName("get_process_frames");
+        this._bindings.method_get_process_frames = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
+      {
+        let classname = new StringName("Engine");
+        let methodname = new StringName("get_main_loop");
+        this._bindings.method_get_main_loop = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1016888095
+        );
+      }
+      {
+        let classname = new StringName("Engine");
+        let methodname = new StringName("get_version_info");
+        this._bindings.method_get_version_info = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3102165223
+        );
+      }
+      {
+        let classname = new StringName("Engine");
+        let methodname = new StringName("get_author_info");
+        this._bindings.method_get_author_info = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3102165223
+        );
+      }
+      {
+        let classname = new StringName("Engine");
+        let methodname = new StringName("get_copyright_info");
+        this._bindings.method_get_copyright_info = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3995934104
+        );
+      }
+      {
+        let classname = new StringName("Engine");
+        let methodname = new StringName("get_donor_info");
+        this._bindings.method_get_donor_info = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3102165223
+        );
+      }
+      {
+        let classname = new StringName("Engine");
+        let methodname = new StringName("get_license_info");
+        this._bindings.method_get_license_info = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3102165223
+        );
+      }
+      {
+        let classname = new StringName("Engine");
+        let methodname = new StringName("get_license_text");
+        this._bindings.method_get_license_text = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          201670096
+        );
+      }
+      {
+        let classname = new StringName("Engine");
+        let methodname = new StringName("get_architecture_name");
+        this._bindings.method_get_architecture_name = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          201670096
+        );
+      }
+      {
+        let classname = new StringName("Engine");
+        let methodname = new StringName("is_in_physics_frame");
+        this._bindings.method_is_in_physics_frame = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("Engine");
+        let methodname = new StringName("has_singleton");
+        this._bindings.method_has_singleton = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2619796661
+        );
+      }
+      {
+        let classname = new StringName("Engine");
+        let methodname = new StringName("get_singleton");
+        this._bindings.method_get_singleton = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1371597918
+        );
+      }
+      {
+        let classname = new StringName("Engine");
+        let methodname = new StringName("register_singleton");
+        this._bindings.method_register_singleton = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          965313290
+        );
+      }
+      {
+        let classname = new StringName("Engine");
+        let methodname = new StringName("unregister_singleton");
+        this._bindings.method_unregister_singleton = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3304788590
+        );
+      }
+      {
+        let classname = new StringName("Engine");
+        let methodname = new StringName("get_singleton_list");
+        this._bindings.method_get_singleton_list = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1139954409
+        );
+      }
+      {
+        let classname = new StringName("Engine");
+        let methodname = new StringName("register_script_language");
+        this._bindings.method_register_script_language = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1850254898
+        );
+      }
+      {
+        let classname = new StringName("Engine");
+        let methodname = new StringName("unregister_script_language");
+        this._bindings.method_unregister_script_language = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1850254898
+        );
+      }
+      {
+        let classname = new StringName("Engine");
+        let methodname = new StringName("get_script_language_count");
+        this._bindings.method_get_script_language_count = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2455072627
+        );
+      }
+      {
+        let classname = new StringName("Engine");
+        let methodname = new StringName("get_script_language");
+        this._bindings.method_get_script_language = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2151255799
+        );
+      }
+      {
+        let classname = new StringName("Engine");
+        let methodname = new StringName("is_editor_hint");
+        this._bindings.method_is_editor_hint = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("Engine");
+        let methodname = new StringName("get_write_movie_path");
+        this._bindings.method_get_write_movie_path = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          201670096
+        );
+      }
+      {
+        let classname = new StringName("Engine");
+        let methodname = new StringName("set_print_error_messages");
+        this._bindings.method_set_print_error_messages = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("Engine");
+        let methodname = new StringName("is_printing_error_messages");
+        this._bindings.method_is_printing_error_messages = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
   }
   set_physics_ticks_per_second(_physics_ticks_per_second) {
     return _call_native_mb_no_ret(
@@ -399,6 +406,7 @@ class _Engine extends GodotObject{
       this._owner,
       _physics_ticks_per_second
     );
+    
   }
   get_physics_ticks_per_second() {
     return _call_native_mb_ret(
@@ -407,6 +415,7 @@ class _Engine extends GodotObject{
 			Variant.Type.INT,
       
     );
+    
   }
   set_max_physics_steps_per_frame(_max_physics_steps) {
     return _call_native_mb_no_ret(
@@ -414,6 +423,7 @@ class _Engine extends GodotObject{
       this._owner,
       _max_physics_steps
     );
+    
   }
   get_max_physics_steps_per_frame() {
     return _call_native_mb_ret(
@@ -422,6 +432,7 @@ class _Engine extends GodotObject{
 			Variant.Type.INT,
       
     );
+    
   }
   set_physics_jitter_fix(_physics_jitter_fix) {
     return _call_native_mb_no_ret(
@@ -429,6 +440,7 @@ class _Engine extends GodotObject{
       this._owner,
       _physics_jitter_fix
     );
+    
   }
   get_physics_jitter_fix() {
     return _call_native_mb_ret(
@@ -437,6 +449,7 @@ class _Engine extends GodotObject{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   get_physics_interpolation_fraction() {
     return _call_native_mb_ret(
@@ -445,6 +458,7 @@ class _Engine extends GodotObject{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_max_fps(_max_fps) {
     return _call_native_mb_no_ret(
@@ -452,6 +466,7 @@ class _Engine extends GodotObject{
       this._owner,
       _max_fps
     );
+    
   }
   get_max_fps() {
     return _call_native_mb_ret(
@@ -460,6 +475,7 @@ class _Engine extends GodotObject{
 			Variant.Type.INT,
       
     );
+    
   }
   set_time_scale(_time_scale) {
     return _call_native_mb_no_ret(
@@ -467,6 +483,7 @@ class _Engine extends GodotObject{
       this._owner,
       _time_scale
     );
+    
   }
   get_time_scale() {
     return _call_native_mb_ret(
@@ -475,6 +492,7 @@ class _Engine extends GodotObject{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   get_frames_drawn() {
     return _call_native_mb_ret(
@@ -483,6 +501,7 @@ class _Engine extends GodotObject{
 			Variant.Type.INT,
       
     );
+    
   }
   get_frames_per_second() {
     return _call_native_mb_ret(
@@ -491,6 +510,7 @@ class _Engine extends GodotObject{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   get_physics_frames() {
     return _call_native_mb_ret(
@@ -499,6 +519,7 @@ class _Engine extends GodotObject{
 			Variant.Type.INT,
       
     );
+    
   }
   get_process_frames() {
     return _call_native_mb_ret(
@@ -507,6 +528,7 @@ class _Engine extends GodotObject{
 			Variant.Type.INT,
       
     );
+    
   }
   get_main_loop() {
     return _call_native_mb_ret(
@@ -515,6 +537,7 @@ class _Engine extends GodotObject{
 			Variant.INT,
       
     );
+    
   }
   get_version_info() {
     return _call_native_mb_ret(
@@ -524,6 +547,7 @@ class _Engine extends GodotObject{
     ,
       
     );
+    
   }
   get_author_info() {
     return _call_native_mb_ret(
@@ -533,6 +557,7 @@ class _Engine extends GodotObject{
     ,
       
     );
+    
   }
   get_copyright_info() {
     return _call_native_mb_ret(
@@ -541,6 +566,7 @@ class _Engine extends GodotObject{
 			Variant.INT,
       
     );
+    
   }
   get_donor_info() {
     return _call_native_mb_ret(
@@ -550,6 +576,7 @@ class _Engine extends GodotObject{
     ,
       
     );
+    
   }
   get_license_info() {
     return _call_native_mb_ret(
@@ -559,6 +586,7 @@ class _Engine extends GodotObject{
     ,
       
     );
+    
   }
   get_license_text() {
     return _call_native_mb_ret(
@@ -568,6 +596,7 @@ class _Engine extends GodotObject{
     ,
       
     );
+    
   }
   get_architecture_name() {
     return _call_native_mb_ret(
@@ -577,6 +606,7 @@ class _Engine extends GodotObject{
     ,
       
     );
+    
   }
   is_in_physics_frame() {
     return _call_native_mb_ret(
@@ -585,6 +615,7 @@ class _Engine extends GodotObject{
 			Variant.Type.BOOL,
       
     );
+    
   }
   has_singleton(_name) {
     return _call_native_mb_ret(
@@ -593,6 +624,7 @@ class _Engine extends GodotObject{
 			Variant.Type.BOOL,
       _name
     );
+    
   }
   get_singleton(_name) {
     return _call_native_mb_ret(
@@ -601,6 +633,7 @@ class _Engine extends GodotObject{
 			Variant.INT,
       _name
     );
+    
   }
   register_singleton(_name, _instance) {
     return _call_native_mb_no_ret(
@@ -608,6 +641,7 @@ class _Engine extends GodotObject{
       this._owner,
       _name, _instance
     );
+    
   }
   unregister_singleton(_name) {
     return _call_native_mb_no_ret(
@@ -615,6 +649,7 @@ class _Engine extends GodotObject{
       this._owner,
       _name
     );
+    
   }
   get_singleton_list() {
     return _call_native_mb_ret(
@@ -624,6 +659,7 @@ class _Engine extends GodotObject{
     ,
       
     );
+    
   }
   register_script_language(_language) {
     return _call_native_mb_ret(
@@ -632,6 +668,7 @@ class _Engine extends GodotObject{
 			Variant.INT,
       _language
     );
+    
   }
   unregister_script_language(_language) {
     return _call_native_mb_ret(
@@ -640,6 +677,7 @@ class _Engine extends GodotObject{
 			Variant.INT,
       _language
     );
+    
   }
   get_script_language_count() {
     return _call_native_mb_ret(
@@ -648,6 +686,7 @@ class _Engine extends GodotObject{
 			Variant.Type.INT,
       
     );
+    
   }
   get_script_language(_index) {
     return _call_native_mb_ret(
@@ -656,6 +695,7 @@ class _Engine extends GodotObject{
 			Variant.INT,
       _index
     );
+    
   }
   is_editor_hint() {
     return _call_native_mb_ret(
@@ -664,6 +704,7 @@ class _Engine extends GodotObject{
 			Variant.Type.BOOL,
       
     );
+    
   }
   get_write_movie_path() {
     return _call_native_mb_ret(
@@ -673,6 +714,7 @@ class _Engine extends GodotObject{
     ,
       
     );
+    
   }
   set_print_error_messages(_enabled) {
     return _call_native_mb_no_ret(
@@ -680,6 +722,7 @@ class _Engine extends GodotObject{
       this._owner,
       _enabled
     );
+    
   }
   is_printing_error_messages() {
     return _call_native_mb_ret(
@@ -688,5 +731,6 @@ class _Engine extends GodotObject{
 			Variant.Type.BOOL,
       
     );
+    
   }
 }

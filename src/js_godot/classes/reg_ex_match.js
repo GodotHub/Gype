@@ -1,9 +1,17 @@
 import * as internal from '__internal__';
 import { GDString } from 'src/js_godot/variant/gd_string'
-import { Variant } from 'src/js_godot/variant/variant'
+import { StringName } from 'src/js_godot/variant/string_name'
 import { PackedStringArray } from 'src/js_godot/variant/packed_string_array'
-import { RefCounted } from 'src/js_godot/classesref_counted'
 import { Dictionary } from 'src/js_godot/variant/dictionary'
+import { Variant } from 'src/js_godot/variant/variant'
+import { RefCounted } from 'src/js_godot/classes/ref_counted'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_get_subject;
     method_get_group_count;
@@ -28,69 +36,69 @@ export class RegExMatch extends RefCounted{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("RegExMatch");
-      let methodname = new StringName("get_subject");
-      this._bindings.method_get_subject = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        201670096
-      );
-    }
-    {
-      let classname = new StringName("RegExMatch");
-      let methodname = new StringName("get_group_count");
-      this._bindings.method_get_group_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("RegExMatch");
-      let methodname = new StringName("get_names");
-      this._bindings.method_get_names = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3102165223
-      );
-    }
-    {
-      let classname = new StringName("RegExMatch");
-      let methodname = new StringName("get_strings");
-      this._bindings.method_get_strings = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1139954409
-      );
-    }
-    {
-      let classname = new StringName("RegExMatch");
-      let methodname = new StringName("get_string");
-      this._bindings.method_get_string = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        687115856
-      );
-    }
-    {
-      let classname = new StringName("RegExMatch");
-      let methodname = new StringName("get_start");
-      this._bindings.method_get_start = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        490464691
-      );
-    }
-    {
-      let classname = new StringName("RegExMatch");
-      let methodname = new StringName("get_end");
-      this._bindings.method_get_end = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        490464691
-      );
-    }
+      {
+        let classname = new StringName("RegExMatch");
+        let methodname = new StringName("get_subject");
+        this._bindings.method_get_subject = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          201670096
+        );
+      }
+      {
+        let classname = new StringName("RegExMatch");
+        let methodname = new StringName("get_group_count");
+        this._bindings.method_get_group_count = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
+      {
+        let classname = new StringName("RegExMatch");
+        let methodname = new StringName("get_names");
+        this._bindings.method_get_names = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3102165223
+        );
+      }
+      {
+        let classname = new StringName("RegExMatch");
+        let methodname = new StringName("get_strings");
+        this._bindings.method_get_strings = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1139954409
+        );
+      }
+      {
+        let classname = new StringName("RegExMatch");
+        let methodname = new StringName("get_string");
+        this._bindings.method_get_string = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          687115856
+        );
+      }
+      {
+        let classname = new StringName("RegExMatch");
+        let methodname = new StringName("get_start");
+        this._bindings.method_get_start = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          490464691
+        );
+      }
+      {
+        let classname = new StringName("RegExMatch");
+        let methodname = new StringName("get_end");
+        this._bindings.method_get_end = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          490464691
+        );
+      }
   }
   get_subject() {
     return _call_native_mb_ret(
@@ -100,6 +108,7 @@ export class RegExMatch extends RefCounted{
     ,
       
     );
+    
   }
   get_group_count() {
     return _call_native_mb_ret(
@@ -108,6 +117,7 @@ export class RegExMatch extends RefCounted{
 			Variant.Type.INT,
       
     );
+    
   }
   get_names() {
     return _call_native_mb_ret(
@@ -117,6 +127,7 @@ export class RegExMatch extends RefCounted{
     ,
       
     );
+    
   }
   get_strings() {
     return _call_native_mb_ret(
@@ -126,6 +137,7 @@ export class RegExMatch extends RefCounted{
     ,
       
     );
+    
   }
   get_string(_name) {
     return _call_native_mb_ret(
@@ -135,6 +147,7 @@ export class RegExMatch extends RefCounted{
     ,
       _name
     );
+    
   }
   get_start(_name) {
     return _call_native_mb_ret(
@@ -143,6 +156,7 @@ export class RegExMatch extends RefCounted{
 			Variant.Type.INT,
       _name
     );
+    
   }
   get_end(_name) {
     return _call_native_mb_ret(
@@ -151,5 +165,6 @@ export class RegExMatch extends RefCounted{
 			Variant.Type.INT,
       _name
     );
+    
   }
 }

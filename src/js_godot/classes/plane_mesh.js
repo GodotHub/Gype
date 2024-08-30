@@ -1,7 +1,15 @@
 import * as internal from '__internal__';
-import { PrimitiveMesh } from 'src/js_godot/classesprimitive_mesh'
-import { Vector2 } from 'src/js_godot/variant/vector2'
 import { Vector3 } from 'src/js_godot/variant/vector3'
+import { Vector2 } from 'src/js_godot/variant/vector2'
+import { PrimitiveMesh } from 'src/js_godot/classes/primitive_mesh'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_set_size;
     method_get_size;
@@ -29,96 +37,96 @@ export class PlaneMesh extends PrimitiveMesh{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("PlaneMesh");
-      let methodname = new StringName("set_size");
-      this._bindings.method_set_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        743155724
-      );
-    }
-    {
-      let classname = new StringName("PlaneMesh");
-      let methodname = new StringName("get_size");
-      this._bindings.method_get_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3341600327
-      );
-    }
-    {
-      let classname = new StringName("PlaneMesh");
-      let methodname = new StringName("set_subdivide_width");
-      this._bindings.method_set_subdivide_width = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("PlaneMesh");
-      let methodname = new StringName("get_subdivide_width");
-      this._bindings.method_get_subdivide_width = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("PlaneMesh");
-      let methodname = new StringName("set_subdivide_depth");
-      this._bindings.method_set_subdivide_depth = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("PlaneMesh");
-      let methodname = new StringName("get_subdivide_depth");
-      this._bindings.method_get_subdivide_depth = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("PlaneMesh");
-      let methodname = new StringName("set_center_offset");
-      this._bindings.method_set_center_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3460891852
-      );
-    }
-    {
-      let classname = new StringName("PlaneMesh");
-      let methodname = new StringName("get_center_offset");
-      this._bindings.method_get_center_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3360562783
-      );
-    }
-    {
-      let classname = new StringName("PlaneMesh");
-      let methodname = new StringName("set_orientation");
-      this._bindings.method_set_orientation = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2751399687
-      );
-    }
-    {
-      let classname = new StringName("PlaneMesh");
-      let methodname = new StringName("get_orientation");
-      this._bindings.method_get_orientation = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3227599250
-      );
-    }
+      {
+        let classname = new StringName("PlaneMesh");
+        let methodname = new StringName("set_size");
+        this._bindings.method_set_size = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          743155724
+        );
+      }
+      {
+        let classname = new StringName("PlaneMesh");
+        let methodname = new StringName("get_size");
+        this._bindings.method_get_size = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3341600327
+        );
+      }
+      {
+        let classname = new StringName("PlaneMesh");
+        let methodname = new StringName("set_subdivide_width");
+        this._bindings.method_set_subdivide_width = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1286410249
+        );
+      }
+      {
+        let classname = new StringName("PlaneMesh");
+        let methodname = new StringName("get_subdivide_width");
+        this._bindings.method_get_subdivide_width = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
+      {
+        let classname = new StringName("PlaneMesh");
+        let methodname = new StringName("set_subdivide_depth");
+        this._bindings.method_set_subdivide_depth = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1286410249
+        );
+      }
+      {
+        let classname = new StringName("PlaneMesh");
+        let methodname = new StringName("get_subdivide_depth");
+        this._bindings.method_get_subdivide_depth = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
+      {
+        let classname = new StringName("PlaneMesh");
+        let methodname = new StringName("set_center_offset");
+        this._bindings.method_set_center_offset = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3460891852
+        );
+      }
+      {
+        let classname = new StringName("PlaneMesh");
+        let methodname = new StringName("get_center_offset");
+        this._bindings.method_get_center_offset = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3360562783
+        );
+      }
+      {
+        let classname = new StringName("PlaneMesh");
+        let methodname = new StringName("set_orientation");
+        this._bindings.method_set_orientation = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2751399687
+        );
+      }
+      {
+        let classname = new StringName("PlaneMesh");
+        let methodname = new StringName("get_orientation");
+        this._bindings.method_get_orientation = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3227599250
+        );
+      }
   }
   set_size(_size) {
     return _call_native_mb_no_ret(
@@ -126,6 +134,7 @@ export class PlaneMesh extends PrimitiveMesh{
       this._owner,
       _size
     );
+    
   }
   get_size() {
     return _call_native_mb_ret(
@@ -135,6 +144,7 @@ export class PlaneMesh extends PrimitiveMesh{
     ,
       
     );
+    
   }
   set_subdivide_width(_subdivide) {
     return _call_native_mb_no_ret(
@@ -142,6 +152,7 @@ export class PlaneMesh extends PrimitiveMesh{
       this._owner,
       _subdivide
     );
+    
   }
   get_subdivide_width() {
     return _call_native_mb_ret(
@@ -150,6 +161,7 @@ export class PlaneMesh extends PrimitiveMesh{
 			Variant.Type.INT,
       
     );
+    
   }
   set_subdivide_depth(_subdivide) {
     return _call_native_mb_no_ret(
@@ -157,6 +169,7 @@ export class PlaneMesh extends PrimitiveMesh{
       this._owner,
       _subdivide
     );
+    
   }
   get_subdivide_depth() {
     return _call_native_mb_ret(
@@ -165,6 +178,7 @@ export class PlaneMesh extends PrimitiveMesh{
 			Variant.Type.INT,
       
     );
+    
   }
   set_center_offset(_offset) {
     return _call_native_mb_no_ret(
@@ -172,6 +186,7 @@ export class PlaneMesh extends PrimitiveMesh{
       this._owner,
       _offset
     );
+    
   }
   get_center_offset() {
     return _call_native_mb_ret(
@@ -181,6 +196,7 @@ export class PlaneMesh extends PrimitiveMesh{
     ,
       
     );
+    
   }
   set_orientation(_orientation) {
     return _call_native_mb_no_ret(
@@ -188,6 +204,7 @@ export class PlaneMesh extends PrimitiveMesh{
       this._owner,
       _orientation
     );
+    
   }
   get_orientation() {
     return _call_native_mb_ret(
@@ -196,6 +213,7 @@ export class PlaneMesh extends PrimitiveMesh{
 			Variant.INT,
       
     );
+    
   }
   static Orientation = {
     FACE_X: 0,

@@ -1,6 +1,14 @@
 import * as internal from '__internal__';
-import { Shape3D } from 'src/js_godot/classesshape3d'
+import { Shape3D } from 'src/js_godot/classes/shape3d'
 import { Vector3 } from 'src/js_godot/variant/vector3'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_set_size;
     method_get_size;
@@ -20,24 +28,24 @@ export class BoxShape3D extends Shape3D{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("BoxShape3D");
-      let methodname = new StringName("set_size");
-      this._bindings.method_set_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3460891852
-      );
-    }
-    {
-      let classname = new StringName("BoxShape3D");
-      let methodname = new StringName("get_size");
-      this._bindings.method_get_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3360562783
-      );
-    }
+      {
+        let classname = new StringName("BoxShape3D");
+        let methodname = new StringName("set_size");
+        this._bindings.method_set_size = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3460891852
+        );
+      }
+      {
+        let classname = new StringName("BoxShape3D");
+        let methodname = new StringName("get_size");
+        this._bindings.method_get_size = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3360562783
+        );
+      }
   }
   set_size(_size) {
     return _call_native_mb_no_ret(
@@ -45,6 +53,7 @@ export class BoxShape3D extends Shape3D{
       this._owner,
       _size
     );
+    
   }
   get_size() {
     return _call_native_mb_ret(
@@ -54,5 +63,6 @@ export class BoxShape3D extends Shape3D{
     ,
       
     );
+    
   }
 }

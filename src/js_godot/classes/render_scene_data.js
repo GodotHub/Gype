@@ -1,9 +1,17 @@
 import * as internal from '__internal__';
-import { Vector3 } from 'src/js_godot/variant/vector3'
-import { GodotObject } from 'src/js_godot/classesgodot_object'
+import { GodotObject } from 'src/js_godot/classes/godot_object'
+import { StringName } from 'src/js_godot/variant/string_name'
 import { Transform3D } from 'src/js_godot/variant/transform3d'
+import { Vector3 } from 'src/js_godot/variant/vector3'
 import { RID } from 'src/js_godot/variant/rid'
 import { Projection } from 'src/js_godot/variant/projection'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_get_cam_transform;
     method_get_cam_projection;
@@ -27,60 +35,60 @@ export class RenderSceneData extends GodotObject{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("RenderSceneData");
-      let methodname = new StringName("get_cam_transform");
-      this._bindings.method_get_cam_transform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3229777777
-      );
-    }
-    {
-      let classname = new StringName("RenderSceneData");
-      let methodname = new StringName("get_cam_projection");
-      this._bindings.method_get_cam_projection = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2910717950
-      );
-    }
-    {
-      let classname = new StringName("RenderSceneData");
-      let methodname = new StringName("get_view_count");
-      this._bindings.method_get_view_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("RenderSceneData");
-      let methodname = new StringName("get_view_eye_offset");
-      this._bindings.method_get_view_eye_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        711720468
-      );
-    }
-    {
-      let classname = new StringName("RenderSceneData");
-      let methodname = new StringName("get_view_projection");
-      this._bindings.method_get_view_projection = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3179846605
-      );
-    }
-    {
-      let classname = new StringName("RenderSceneData");
-      let methodname = new StringName("get_uniform_buffer");
-      this._bindings.method_get_uniform_buffer = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2944877500
-      );
-    }
+      {
+        let classname = new StringName("RenderSceneData");
+        let methodname = new StringName("get_cam_transform");
+        this._bindings.method_get_cam_transform = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3229777777
+        );
+      }
+      {
+        let classname = new StringName("RenderSceneData");
+        let methodname = new StringName("get_cam_projection");
+        this._bindings.method_get_cam_projection = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2910717950
+        );
+      }
+      {
+        let classname = new StringName("RenderSceneData");
+        let methodname = new StringName("get_view_count");
+        this._bindings.method_get_view_count = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
+      {
+        let classname = new StringName("RenderSceneData");
+        let methodname = new StringName("get_view_eye_offset");
+        this._bindings.method_get_view_eye_offset = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          711720468
+        );
+      }
+      {
+        let classname = new StringName("RenderSceneData");
+        let methodname = new StringName("get_view_projection");
+        this._bindings.method_get_view_projection = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3179846605
+        );
+      }
+      {
+        let classname = new StringName("RenderSceneData");
+        let methodname = new StringName("get_uniform_buffer");
+        this._bindings.method_get_uniform_buffer = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2944877500
+        );
+      }
   }
   get_cam_transform() {
     return _call_native_mb_ret(
@@ -90,6 +98,7 @@ export class RenderSceneData extends GodotObject{
     ,
       
     );
+    
   }
   get_cam_projection() {
     return _call_native_mb_ret(
@@ -99,6 +108,7 @@ export class RenderSceneData extends GodotObject{
     ,
       
     );
+    
   }
   get_view_count() {
     return _call_native_mb_ret(
@@ -107,6 +117,7 @@ export class RenderSceneData extends GodotObject{
 			Variant.Type.INT,
       
     );
+    
   }
   get_view_eye_offset(_view) {
     return _call_native_mb_ret(
@@ -116,6 +127,7 @@ export class RenderSceneData extends GodotObject{
     ,
       _view
     );
+    
   }
   get_view_projection(_view) {
     return _call_native_mb_ret(
@@ -125,6 +137,7 @@ export class RenderSceneData extends GodotObject{
     ,
       _view
     );
+    
   }
   get_uniform_buffer() {
     return _call_native_mb_ret(
@@ -134,5 +147,6 @@ export class RenderSceneData extends GodotObject{
     ,
       
     );
+    
   }
 }

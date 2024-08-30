@@ -1,7 +1,15 @@
 import * as internal from '__internal__';
+import { GodotObject } from 'src/js_godot/classes/godot_object'
 import { PackedStringArray } from 'src/js_godot/variant/packed_string_array'
-import { GodotObject } from 'src/js_godot/classesgodot_object'
 import { GDString } from 'src/js_godot/variant/gd_string'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_save;
     method_get_recognized_extensions;
@@ -24,42 +32,42 @@ class _ResourceSaver extends GodotObject{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("ResourceSaver");
-      let methodname = new StringName("save");
-      this._bindings.method_save = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2983274697
-      );
-    }
-    {
-      let classname = new StringName("ResourceSaver");
-      let methodname = new StringName("get_recognized_extensions");
-      this._bindings.method_get_recognized_extensions = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4223597960
-      );
-    }
-    {
-      let classname = new StringName("ResourceSaver");
-      let methodname = new StringName("add_resource_format_saver");
-      this._bindings.method_add_resource_format_saver = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        362894272
-      );
-    }
-    {
-      let classname = new StringName("ResourceSaver");
-      let methodname = new StringName("remove_resource_format_saver");
-      this._bindings.method_remove_resource_format_saver = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3373026878
-      );
-    }
+      {
+        let classname = new StringName("ResourceSaver");
+        let methodname = new StringName("save");
+        this._bindings.method_save = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2983274697
+        );
+      }
+      {
+        let classname = new StringName("ResourceSaver");
+        let methodname = new StringName("get_recognized_extensions");
+        this._bindings.method_get_recognized_extensions = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4223597960
+        );
+      }
+      {
+        let classname = new StringName("ResourceSaver");
+        let methodname = new StringName("add_resource_format_saver");
+        this._bindings.method_add_resource_format_saver = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          362894272
+        );
+      }
+      {
+        let classname = new StringName("ResourceSaver");
+        let methodname = new StringName("remove_resource_format_saver");
+        this._bindings.method_remove_resource_format_saver = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3373026878
+        );
+      }
   }
   save(_resource, _path, _flags) {
     return _call_native_mb_ret(
@@ -68,6 +76,7 @@ class _ResourceSaver extends GodotObject{
 			Variant.INT,
       _resource, _path, _flags
     );
+    
   }
   get_recognized_extensions(_type) {
     return _call_native_mb_ret(
@@ -77,6 +86,7 @@ class _ResourceSaver extends GodotObject{
     ,
       _type
     );
+    
   }
   add_resource_format_saver(_format_saver, _at_front) {
     return _call_native_mb_no_ret(
@@ -84,6 +94,7 @@ class _ResourceSaver extends GodotObject{
       this._owner,
       _format_saver, _at_front
     );
+    
   }
   remove_resource_format_saver(_format_saver) {
     return _call_native_mb_no_ret(
@@ -91,6 +102,7 @@ class _ResourceSaver extends GodotObject{
       this._owner,
       _format_saver
     );
+    
   }
   static SaverFlags = {
     FLAG_NONE: 0,

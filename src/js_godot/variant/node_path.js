@@ -5,8 +5,8 @@ import {
   _call_builtin_method_ptr_no_ret
 } from 'src/js_godot/core/builtin_ptrcall'
 import { GDString } from 'src/js_godot/variant/gd_string'
-import { StringName } from 'src/js_godot/variant/string_name'
 import { Variant } from 'src/js_godot/variant/variant'
+import { StringName } from 'src/js_godot/variant/string_name'
 
 class _MethodBindings {
   from_variant_constructor
@@ -43,13 +43,11 @@ export class NodePath {
   constructor (from) {
     if (!from) {
       _call_builtin_constructor(NodePath._bindings.constructor_0, this)
-    } else if (arguments[0] instanceof NodePath) {
-      let from = arguments[0];
+    }else if (from instanceof NodePath) {
       _call_builtin_constructor(NodePath._bindings.constructor_1, this, [
         from
       ])
-    } else if (arguments[0] instanceof GDString) {
-      let from = arguments[0];
+    }else if (from instanceof GDString) {
       _call_builtin_constructor(NodePath._bindings.constructor_2, this, [
         from
       ])

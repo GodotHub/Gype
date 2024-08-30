@@ -1,6 +1,14 @@
 import * as internal from '__internal__';
-import { StreamPeer } from 'src/js_godot/classesstream_peer'
+import { StreamPeer } from 'src/js_godot/classes/stream_peer'
 import { GDString } from 'src/js_godot/variant/gd_string'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_bind;
     method_connect_to_host;
@@ -27,87 +35,87 @@ export class StreamPeerTCP extends StreamPeer{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("StreamPeerTCP");
-      let methodname = new StringName("bind");
-      this._bindings.method_bind = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3167955072
-      );
-    }
-    {
-      let classname = new StringName("StreamPeerTCP");
-      let methodname = new StringName("connect_to_host");
-      this._bindings.method_connect_to_host = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        993915709
-      );
-    }
-    {
-      let classname = new StringName("StreamPeerTCP");
-      let methodname = new StringName("poll");
-      this._bindings.method_poll = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        166280745
-      );
-    }
-    {
-      let classname = new StringName("StreamPeerTCP");
-      let methodname = new StringName("get_status");
-      this._bindings.method_get_status = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        859471121
-      );
-    }
-    {
-      let classname = new StringName("StreamPeerTCP");
-      let methodname = new StringName("get_connected_host");
-      this._bindings.method_get_connected_host = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        201670096
-      );
-    }
-    {
-      let classname = new StringName("StreamPeerTCP");
-      let methodname = new StringName("get_connected_port");
-      this._bindings.method_get_connected_port = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("StreamPeerTCP");
-      let methodname = new StringName("get_local_port");
-      this._bindings.method_get_local_port = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("StreamPeerTCP");
-      let methodname = new StringName("disconnect_from_host");
-      this._bindings.method_disconnect_from_host = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3218959716
-      );
-    }
-    {
-      let classname = new StringName("StreamPeerTCP");
-      let methodname = new StringName("set_no_delay");
-      this._bindings.method_set_no_delay = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
+      {
+        let classname = new StringName("StreamPeerTCP");
+        let methodname = new StringName("bind");
+        this._bindings.method_bind = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3167955072
+        );
+      }
+      {
+        let classname = new StringName("StreamPeerTCP");
+        let methodname = new StringName("connect_to_host");
+        this._bindings.method_connect_to_host = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          993915709
+        );
+      }
+      {
+        let classname = new StringName("StreamPeerTCP");
+        let methodname = new StringName("poll");
+        this._bindings.method_poll = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          166280745
+        );
+      }
+      {
+        let classname = new StringName("StreamPeerTCP");
+        let methodname = new StringName("get_status");
+        this._bindings.method_get_status = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          859471121
+        );
+      }
+      {
+        let classname = new StringName("StreamPeerTCP");
+        let methodname = new StringName("get_connected_host");
+        this._bindings.method_get_connected_host = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          201670096
+        );
+      }
+      {
+        let classname = new StringName("StreamPeerTCP");
+        let methodname = new StringName("get_connected_port");
+        this._bindings.method_get_connected_port = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
+      {
+        let classname = new StringName("StreamPeerTCP");
+        let methodname = new StringName("get_local_port");
+        this._bindings.method_get_local_port = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
+      {
+        let classname = new StringName("StreamPeerTCP");
+        let methodname = new StringName("disconnect_from_host");
+        this._bindings.method_disconnect_from_host = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3218959716
+        );
+      }
+      {
+        let classname = new StringName("StreamPeerTCP");
+        let methodname = new StringName("set_no_delay");
+        this._bindings.method_set_no_delay = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
   }
   bind(_port, _host) {
     return _call_native_mb_ret(
@@ -116,6 +124,7 @@ export class StreamPeerTCP extends StreamPeer{
 			Variant.INT,
       _port, _host
     );
+    
   }
   connect_to_host(_host, _port) {
     return _call_native_mb_ret(
@@ -124,6 +133,7 @@ export class StreamPeerTCP extends StreamPeer{
 			Variant.INT,
       _host, _port
     );
+    
   }
   poll() {
     return _call_native_mb_ret(
@@ -132,6 +142,7 @@ export class StreamPeerTCP extends StreamPeer{
 			Variant.INT,
       
     );
+    
   }
   get_status() {
     return _call_native_mb_ret(
@@ -140,6 +151,7 @@ export class StreamPeerTCP extends StreamPeer{
 			Variant.INT,
       
     );
+    
   }
   get_connected_host() {
     return _call_native_mb_ret(
@@ -149,6 +161,7 @@ export class StreamPeerTCP extends StreamPeer{
     ,
       
     );
+    
   }
   get_connected_port() {
     return _call_native_mb_ret(
@@ -157,6 +170,7 @@ export class StreamPeerTCP extends StreamPeer{
 			Variant.Type.INT,
       
     );
+    
   }
   get_local_port() {
     return _call_native_mb_ret(
@@ -165,6 +179,7 @@ export class StreamPeerTCP extends StreamPeer{
 			Variant.Type.INT,
       
     );
+    
   }
   disconnect_from_host() {
     return _call_native_mb_no_ret(
@@ -172,6 +187,7 @@ export class StreamPeerTCP extends StreamPeer{
       this._owner,
       
     );
+    
   }
   set_no_delay(_enabled) {
     return _call_native_mb_no_ret(
@@ -179,6 +195,7 @@ export class StreamPeerTCP extends StreamPeer{
       this._owner,
       _enabled
     );
+    
   }
   static Status = {
     STATUS_NONE: 0,

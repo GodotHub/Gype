@@ -4,9 +4,10 @@ import {
   _call_builtin_method_ptr_ret,
   _call_builtin_method_ptr_no_ret
 } from 'src/js_godot/core/builtin_ptrcall'
-import { Rect2 } from 'src/js_godot/variant/rect2'
 import { Vector2i } from 'src/js_godot/variant/vector2i'
+import { StringName } from 'src/js_godot/variant/string_name'
 import { Variant } from 'src/js_godot/variant/variant'
+import { Rect2 } from 'src/js_godot/variant/rect2'
 
 class _MethodBindings {
   from_variant_constructor
@@ -38,7 +39,7 @@ class _MethodBindings {
 }
 
 export class Rect2i {
-  static #SIZE = 8
+  static #SIZE = 16
   opaque = new Uint8Array(Rect2i.#SIZE)
 
   static _bindings = new _MethodBindings()
@@ -46,23 +47,21 @@ export class Rect2i {
   constructor (from) {
     if (!from) {
       _call_builtin_constructor(Rect2i._bindings.constructor_0, this)
-    } else if (arguments[0] instanceof Rect2i) {
-      let from = arguments[0];
+    }else if (from instanceof Rect2i) {
       _call_builtin_constructor(Rect2i._bindings.constructor_1, this, [
         from
       ])
-    } else if (arguments[0] instanceof Rect2) {
-      let from = arguments[0];
+    }else if (from instanceof Rect2) {
       _call_builtin_constructor(Rect2i._bindings.constructor_2, this, [
         from
       ])
-    } else if (arguments[0] instanceof Vector2i) {
+    } else if (arguments.length == 2&& arguments[0] instanceof Vector2i&& arguments[1] instanceof Vector2i) {
       let position = arguments[0];
       let size = arguments[1];
       _call_builtin_constructor(Rect2i._bindings.constructor_3, this, [
         position, size
       ])
-    } else if (arguments[0] instanceof int) {
+    } else if (arguments.length == 4&& typeof arguments[0] == "number"&& typeof arguments[1] == "number"&& typeof arguments[2] == "number"&& typeof arguments[3] == "number") {
       let x = arguments[0];
       let y = arguments[1];
       let width = arguments[2];

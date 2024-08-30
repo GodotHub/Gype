@@ -1,7 +1,15 @@
 import * as internal from '__internal__';
-import { Material } from 'src/js_godot/classesmaterial'
-import { Color } from 'src/js_godot/variant/color'
+import { StringName } from 'src/js_godot/variant/string_name'
+import { Material } from 'src/js_godot/classes/material'
 import { Vector3 } from 'src/js_godot/variant/vector3'
+import { Color } from 'src/js_godot/variant/color'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_set_albedo;
     method_get_albedo;
@@ -155,1230 +163,1230 @@ export class BaseMaterial3D extends Material{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_albedo");
-      this._bindings.method_set_albedo = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2920490490
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_albedo");
-      this._bindings.method_get_albedo = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3444240500
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_transparency");
-      this._bindings.method_set_transparency = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3435651667
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_transparency");
-      this._bindings.method_get_transparency = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        990903061
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_alpha_antialiasing");
-      this._bindings.method_set_alpha_antialiasing = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3212649852
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_alpha_antialiasing");
-      this._bindings.method_get_alpha_antialiasing = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2889939400
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_alpha_antialiasing_edge");
-      this._bindings.method_set_alpha_antialiasing_edge = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_alpha_antialiasing_edge");
-      this._bindings.method_get_alpha_antialiasing_edge = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_shading_mode");
-      this._bindings.method_set_shading_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3368750322
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_shading_mode");
-      this._bindings.method_get_shading_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2132070559
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_specular");
-      this._bindings.method_set_specular = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_specular");
-      this._bindings.method_get_specular = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_metallic");
-      this._bindings.method_set_metallic = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_metallic");
-      this._bindings.method_get_metallic = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_roughness");
-      this._bindings.method_set_roughness = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_roughness");
-      this._bindings.method_get_roughness = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_emission");
-      this._bindings.method_set_emission = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2920490490
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_emission");
-      this._bindings.method_get_emission = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3444240500
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_emission_energy_multiplier");
-      this._bindings.method_set_emission_energy_multiplier = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_emission_energy_multiplier");
-      this._bindings.method_get_emission_energy_multiplier = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_emission_intensity");
-      this._bindings.method_set_emission_intensity = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_emission_intensity");
-      this._bindings.method_get_emission_intensity = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_normal_scale");
-      this._bindings.method_set_normal_scale = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_normal_scale");
-      this._bindings.method_get_normal_scale = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_rim");
-      this._bindings.method_set_rim = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_rim");
-      this._bindings.method_get_rim = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_rim_tint");
-      this._bindings.method_set_rim_tint = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_rim_tint");
-      this._bindings.method_get_rim_tint = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_clearcoat");
-      this._bindings.method_set_clearcoat = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_clearcoat");
-      this._bindings.method_get_clearcoat = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_clearcoat_roughness");
-      this._bindings.method_set_clearcoat_roughness = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_clearcoat_roughness");
-      this._bindings.method_get_clearcoat_roughness = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_anisotropy");
-      this._bindings.method_set_anisotropy = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_anisotropy");
-      this._bindings.method_get_anisotropy = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_heightmap_scale");
-      this._bindings.method_set_heightmap_scale = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_heightmap_scale");
-      this._bindings.method_get_heightmap_scale = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_subsurface_scattering_strength");
-      this._bindings.method_set_subsurface_scattering_strength = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_subsurface_scattering_strength");
-      this._bindings.method_get_subsurface_scattering_strength = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_transmittance_color");
-      this._bindings.method_set_transmittance_color = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2920490490
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_transmittance_color");
-      this._bindings.method_get_transmittance_color = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3444240500
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_transmittance_depth");
-      this._bindings.method_set_transmittance_depth = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_transmittance_depth");
-      this._bindings.method_get_transmittance_depth = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_transmittance_boost");
-      this._bindings.method_set_transmittance_boost = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_transmittance_boost");
-      this._bindings.method_get_transmittance_boost = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_backlight");
-      this._bindings.method_set_backlight = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2920490490
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_backlight");
-      this._bindings.method_get_backlight = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3444240500
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_refraction");
-      this._bindings.method_set_refraction = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_refraction");
-      this._bindings.method_get_refraction = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_point_size");
-      this._bindings.method_set_point_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_point_size");
-      this._bindings.method_get_point_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_detail_uv");
-      this._bindings.method_set_detail_uv = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        456801921
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_detail_uv");
-      this._bindings.method_get_detail_uv = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2306920512
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_blend_mode");
-      this._bindings.method_set_blend_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2830186259
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_blend_mode");
-      this._bindings.method_get_blend_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4022690962
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_depth_draw_mode");
-      this._bindings.method_set_depth_draw_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1456584748
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_depth_draw_mode");
-      this._bindings.method_get_depth_draw_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2578197639
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_cull_mode");
-      this._bindings.method_set_cull_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2338909218
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_cull_mode");
-      this._bindings.method_get_cull_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1941499586
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_diffuse_mode");
-      this._bindings.method_set_diffuse_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1045299638
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_diffuse_mode");
-      this._bindings.method_get_diffuse_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3973617136
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_specular_mode");
-      this._bindings.method_set_specular_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        584737147
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_specular_mode");
-      this._bindings.method_get_specular_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2569953298
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_flag");
-      this._bindings.method_set_flag = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3070159527
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_flag");
-      this._bindings.method_get_flag = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410065
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_texture_filter");
-      this._bindings.method_set_texture_filter = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        22904437
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_texture_filter");
-      this._bindings.method_get_texture_filter = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3289213076
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_feature");
-      this._bindings.method_set_feature = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2819288693
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_feature");
-      this._bindings.method_get_feature = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1965241794
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_texture");
-      this._bindings.method_set_texture = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        464208135
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_texture");
-      this._bindings.method_get_texture = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        329605813
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_detail_blend_mode");
-      this._bindings.method_set_detail_blend_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2830186259
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_detail_blend_mode");
-      this._bindings.method_get_detail_blend_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4022690962
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_uv1_scale");
-      this._bindings.method_set_uv1_scale = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3460891852
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_uv1_scale");
-      this._bindings.method_get_uv1_scale = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3360562783
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_uv1_offset");
-      this._bindings.method_set_uv1_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3460891852
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_uv1_offset");
-      this._bindings.method_get_uv1_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3360562783
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_uv1_triplanar_blend_sharpness");
-      this._bindings.method_set_uv1_triplanar_blend_sharpness = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_uv1_triplanar_blend_sharpness");
-      this._bindings.method_get_uv1_triplanar_blend_sharpness = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_uv2_scale");
-      this._bindings.method_set_uv2_scale = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3460891852
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_uv2_scale");
-      this._bindings.method_get_uv2_scale = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3360562783
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_uv2_offset");
-      this._bindings.method_set_uv2_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3460891852
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_uv2_offset");
-      this._bindings.method_get_uv2_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3360562783
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_uv2_triplanar_blend_sharpness");
-      this._bindings.method_set_uv2_triplanar_blend_sharpness = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_uv2_triplanar_blend_sharpness");
-      this._bindings.method_get_uv2_triplanar_blend_sharpness = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_billboard_mode");
-      this._bindings.method_set_billboard_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4202036497
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_billboard_mode");
-      this._bindings.method_get_billboard_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1283840139
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_particles_anim_h_frames");
-      this._bindings.method_set_particles_anim_h_frames = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_particles_anim_h_frames");
-      this._bindings.method_get_particles_anim_h_frames = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_particles_anim_v_frames");
-      this._bindings.method_set_particles_anim_v_frames = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_particles_anim_v_frames");
-      this._bindings.method_get_particles_anim_v_frames = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_particles_anim_loop");
-      this._bindings.method_set_particles_anim_loop = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_particles_anim_loop");
-      this._bindings.method_get_particles_anim_loop = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_heightmap_deep_parallax");
-      this._bindings.method_set_heightmap_deep_parallax = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("is_heightmap_deep_parallax_enabled");
-      this._bindings.method_is_heightmap_deep_parallax_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_heightmap_deep_parallax_min_layers");
-      this._bindings.method_set_heightmap_deep_parallax_min_layers = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_heightmap_deep_parallax_min_layers");
-      this._bindings.method_get_heightmap_deep_parallax_min_layers = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_heightmap_deep_parallax_max_layers");
-      this._bindings.method_set_heightmap_deep_parallax_max_layers = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_heightmap_deep_parallax_max_layers");
-      this._bindings.method_get_heightmap_deep_parallax_max_layers = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_heightmap_deep_parallax_flip_tangent");
-      this._bindings.method_set_heightmap_deep_parallax_flip_tangent = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_heightmap_deep_parallax_flip_tangent");
-      this._bindings.method_get_heightmap_deep_parallax_flip_tangent = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_heightmap_deep_parallax_flip_binormal");
-      this._bindings.method_set_heightmap_deep_parallax_flip_binormal = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_heightmap_deep_parallax_flip_binormal");
-      this._bindings.method_get_heightmap_deep_parallax_flip_binormal = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_grow");
-      this._bindings.method_set_grow = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_grow");
-      this._bindings.method_get_grow = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_emission_operator");
-      this._bindings.method_set_emission_operator = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3825128922
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_emission_operator");
-      this._bindings.method_get_emission_operator = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        974205018
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_ao_light_affect");
-      this._bindings.method_set_ao_light_affect = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_ao_light_affect");
-      this._bindings.method_get_ao_light_affect = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_alpha_scissor_threshold");
-      this._bindings.method_set_alpha_scissor_threshold = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_alpha_scissor_threshold");
-      this._bindings.method_get_alpha_scissor_threshold = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_alpha_hash_scale");
-      this._bindings.method_set_alpha_hash_scale = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_alpha_hash_scale");
-      this._bindings.method_get_alpha_hash_scale = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_grow_enabled");
-      this._bindings.method_set_grow_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("is_grow_enabled");
-      this._bindings.method_is_grow_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_metallic_texture_channel");
-      this._bindings.method_set_metallic_texture_channel = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        744167988
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_metallic_texture_channel");
-      this._bindings.method_get_metallic_texture_channel = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        568133867
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_roughness_texture_channel");
-      this._bindings.method_set_roughness_texture_channel = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        744167988
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_roughness_texture_channel");
-      this._bindings.method_get_roughness_texture_channel = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        568133867
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_ao_texture_channel");
-      this._bindings.method_set_ao_texture_channel = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        744167988
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_ao_texture_channel");
-      this._bindings.method_get_ao_texture_channel = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        568133867
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_refraction_texture_channel");
-      this._bindings.method_set_refraction_texture_channel = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        744167988
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_refraction_texture_channel");
-      this._bindings.method_get_refraction_texture_channel = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        568133867
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_proximity_fade_enabled");
-      this._bindings.method_set_proximity_fade_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("is_proximity_fade_enabled");
-      this._bindings.method_is_proximity_fade_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_proximity_fade_distance");
-      this._bindings.method_set_proximity_fade_distance = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_proximity_fade_distance");
-      this._bindings.method_get_proximity_fade_distance = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_msdf_pixel_range");
-      this._bindings.method_set_msdf_pixel_range = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_msdf_pixel_range");
-      this._bindings.method_get_msdf_pixel_range = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_msdf_outline_size");
-      this._bindings.method_set_msdf_outline_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_msdf_outline_size");
-      this._bindings.method_get_msdf_outline_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_distance_fade");
-      this._bindings.method_set_distance_fade = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1379478617
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_distance_fade");
-      this._bindings.method_get_distance_fade = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2694575734
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_distance_fade_max_distance");
-      this._bindings.method_set_distance_fade_max_distance = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_distance_fade_max_distance");
-      this._bindings.method_get_distance_fade_max_distance = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("set_distance_fade_min_distance");
-      this._bindings.method_set_distance_fade_min_distance = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("BaseMaterial3D");
-      let methodname = new StringName("get_distance_fade_min_distance");
-      this._bindings.method_get_distance_fade_min_distance = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_albedo");
+        this._bindings.method_set_albedo = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2920490490
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_albedo");
+        this._bindings.method_get_albedo = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3444240500
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_transparency");
+        this._bindings.method_set_transparency = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3435651667
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_transparency");
+        this._bindings.method_get_transparency = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          990903061
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_alpha_antialiasing");
+        this._bindings.method_set_alpha_antialiasing = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3212649852
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_alpha_antialiasing");
+        this._bindings.method_get_alpha_antialiasing = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2889939400
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_alpha_antialiasing_edge");
+        this._bindings.method_set_alpha_antialiasing_edge = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_alpha_antialiasing_edge");
+        this._bindings.method_get_alpha_antialiasing_edge = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_shading_mode");
+        this._bindings.method_set_shading_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3368750322
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_shading_mode");
+        this._bindings.method_get_shading_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2132070559
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_specular");
+        this._bindings.method_set_specular = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_specular");
+        this._bindings.method_get_specular = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_metallic");
+        this._bindings.method_set_metallic = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_metallic");
+        this._bindings.method_get_metallic = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_roughness");
+        this._bindings.method_set_roughness = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_roughness");
+        this._bindings.method_get_roughness = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_emission");
+        this._bindings.method_set_emission = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2920490490
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_emission");
+        this._bindings.method_get_emission = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3444240500
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_emission_energy_multiplier");
+        this._bindings.method_set_emission_energy_multiplier = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_emission_energy_multiplier");
+        this._bindings.method_get_emission_energy_multiplier = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_emission_intensity");
+        this._bindings.method_set_emission_intensity = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_emission_intensity");
+        this._bindings.method_get_emission_intensity = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_normal_scale");
+        this._bindings.method_set_normal_scale = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_normal_scale");
+        this._bindings.method_get_normal_scale = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_rim");
+        this._bindings.method_set_rim = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_rim");
+        this._bindings.method_get_rim = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_rim_tint");
+        this._bindings.method_set_rim_tint = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_rim_tint");
+        this._bindings.method_get_rim_tint = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_clearcoat");
+        this._bindings.method_set_clearcoat = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_clearcoat");
+        this._bindings.method_get_clearcoat = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_clearcoat_roughness");
+        this._bindings.method_set_clearcoat_roughness = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_clearcoat_roughness");
+        this._bindings.method_get_clearcoat_roughness = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_anisotropy");
+        this._bindings.method_set_anisotropy = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_anisotropy");
+        this._bindings.method_get_anisotropy = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_heightmap_scale");
+        this._bindings.method_set_heightmap_scale = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_heightmap_scale");
+        this._bindings.method_get_heightmap_scale = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_subsurface_scattering_strength");
+        this._bindings.method_set_subsurface_scattering_strength = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_subsurface_scattering_strength");
+        this._bindings.method_get_subsurface_scattering_strength = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_transmittance_color");
+        this._bindings.method_set_transmittance_color = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2920490490
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_transmittance_color");
+        this._bindings.method_get_transmittance_color = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3444240500
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_transmittance_depth");
+        this._bindings.method_set_transmittance_depth = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_transmittance_depth");
+        this._bindings.method_get_transmittance_depth = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_transmittance_boost");
+        this._bindings.method_set_transmittance_boost = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_transmittance_boost");
+        this._bindings.method_get_transmittance_boost = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_backlight");
+        this._bindings.method_set_backlight = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2920490490
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_backlight");
+        this._bindings.method_get_backlight = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3444240500
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_refraction");
+        this._bindings.method_set_refraction = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_refraction");
+        this._bindings.method_get_refraction = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_point_size");
+        this._bindings.method_set_point_size = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_point_size");
+        this._bindings.method_get_point_size = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_detail_uv");
+        this._bindings.method_set_detail_uv = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          456801921
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_detail_uv");
+        this._bindings.method_get_detail_uv = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2306920512
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_blend_mode");
+        this._bindings.method_set_blend_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2830186259
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_blend_mode");
+        this._bindings.method_get_blend_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4022690962
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_depth_draw_mode");
+        this._bindings.method_set_depth_draw_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1456584748
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_depth_draw_mode");
+        this._bindings.method_get_depth_draw_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2578197639
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_cull_mode");
+        this._bindings.method_set_cull_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2338909218
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_cull_mode");
+        this._bindings.method_get_cull_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1941499586
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_diffuse_mode");
+        this._bindings.method_set_diffuse_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1045299638
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_diffuse_mode");
+        this._bindings.method_get_diffuse_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3973617136
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_specular_mode");
+        this._bindings.method_set_specular_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          584737147
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_specular_mode");
+        this._bindings.method_get_specular_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2569953298
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_flag");
+        this._bindings.method_set_flag = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3070159527
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_flag");
+        this._bindings.method_get_flag = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1286410065
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_texture_filter");
+        this._bindings.method_set_texture_filter = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          22904437
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_texture_filter");
+        this._bindings.method_get_texture_filter = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3289213076
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_feature");
+        this._bindings.method_set_feature = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2819288693
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_feature");
+        this._bindings.method_get_feature = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1965241794
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_texture");
+        this._bindings.method_set_texture = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          464208135
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_texture");
+        this._bindings.method_get_texture = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          329605813
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_detail_blend_mode");
+        this._bindings.method_set_detail_blend_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2830186259
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_detail_blend_mode");
+        this._bindings.method_get_detail_blend_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4022690962
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_uv1_scale");
+        this._bindings.method_set_uv1_scale = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3460891852
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_uv1_scale");
+        this._bindings.method_get_uv1_scale = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3360562783
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_uv1_offset");
+        this._bindings.method_set_uv1_offset = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3460891852
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_uv1_offset");
+        this._bindings.method_get_uv1_offset = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3360562783
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_uv1_triplanar_blend_sharpness");
+        this._bindings.method_set_uv1_triplanar_blend_sharpness = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_uv1_triplanar_blend_sharpness");
+        this._bindings.method_get_uv1_triplanar_blend_sharpness = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_uv2_scale");
+        this._bindings.method_set_uv2_scale = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3460891852
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_uv2_scale");
+        this._bindings.method_get_uv2_scale = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3360562783
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_uv2_offset");
+        this._bindings.method_set_uv2_offset = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3460891852
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_uv2_offset");
+        this._bindings.method_get_uv2_offset = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3360562783
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_uv2_triplanar_blend_sharpness");
+        this._bindings.method_set_uv2_triplanar_blend_sharpness = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_uv2_triplanar_blend_sharpness");
+        this._bindings.method_get_uv2_triplanar_blend_sharpness = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_billboard_mode");
+        this._bindings.method_set_billboard_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4202036497
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_billboard_mode");
+        this._bindings.method_get_billboard_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1283840139
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_particles_anim_h_frames");
+        this._bindings.method_set_particles_anim_h_frames = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1286410249
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_particles_anim_h_frames");
+        this._bindings.method_get_particles_anim_h_frames = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_particles_anim_v_frames");
+        this._bindings.method_set_particles_anim_v_frames = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1286410249
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_particles_anim_v_frames");
+        this._bindings.method_get_particles_anim_v_frames = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_particles_anim_loop");
+        this._bindings.method_set_particles_anim_loop = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_particles_anim_loop");
+        this._bindings.method_get_particles_anim_loop = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_heightmap_deep_parallax");
+        this._bindings.method_set_heightmap_deep_parallax = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("is_heightmap_deep_parallax_enabled");
+        this._bindings.method_is_heightmap_deep_parallax_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_heightmap_deep_parallax_min_layers");
+        this._bindings.method_set_heightmap_deep_parallax_min_layers = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1286410249
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_heightmap_deep_parallax_min_layers");
+        this._bindings.method_get_heightmap_deep_parallax_min_layers = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_heightmap_deep_parallax_max_layers");
+        this._bindings.method_set_heightmap_deep_parallax_max_layers = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1286410249
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_heightmap_deep_parallax_max_layers");
+        this._bindings.method_get_heightmap_deep_parallax_max_layers = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_heightmap_deep_parallax_flip_tangent");
+        this._bindings.method_set_heightmap_deep_parallax_flip_tangent = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_heightmap_deep_parallax_flip_tangent");
+        this._bindings.method_get_heightmap_deep_parallax_flip_tangent = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_heightmap_deep_parallax_flip_binormal");
+        this._bindings.method_set_heightmap_deep_parallax_flip_binormal = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_heightmap_deep_parallax_flip_binormal");
+        this._bindings.method_get_heightmap_deep_parallax_flip_binormal = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_grow");
+        this._bindings.method_set_grow = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_grow");
+        this._bindings.method_get_grow = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_emission_operator");
+        this._bindings.method_set_emission_operator = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3825128922
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_emission_operator");
+        this._bindings.method_get_emission_operator = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          974205018
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_ao_light_affect");
+        this._bindings.method_set_ao_light_affect = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_ao_light_affect");
+        this._bindings.method_get_ao_light_affect = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_alpha_scissor_threshold");
+        this._bindings.method_set_alpha_scissor_threshold = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_alpha_scissor_threshold");
+        this._bindings.method_get_alpha_scissor_threshold = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_alpha_hash_scale");
+        this._bindings.method_set_alpha_hash_scale = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_alpha_hash_scale");
+        this._bindings.method_get_alpha_hash_scale = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_grow_enabled");
+        this._bindings.method_set_grow_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("is_grow_enabled");
+        this._bindings.method_is_grow_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_metallic_texture_channel");
+        this._bindings.method_set_metallic_texture_channel = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          744167988
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_metallic_texture_channel");
+        this._bindings.method_get_metallic_texture_channel = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          568133867
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_roughness_texture_channel");
+        this._bindings.method_set_roughness_texture_channel = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          744167988
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_roughness_texture_channel");
+        this._bindings.method_get_roughness_texture_channel = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          568133867
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_ao_texture_channel");
+        this._bindings.method_set_ao_texture_channel = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          744167988
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_ao_texture_channel");
+        this._bindings.method_get_ao_texture_channel = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          568133867
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_refraction_texture_channel");
+        this._bindings.method_set_refraction_texture_channel = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          744167988
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_refraction_texture_channel");
+        this._bindings.method_get_refraction_texture_channel = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          568133867
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_proximity_fade_enabled");
+        this._bindings.method_set_proximity_fade_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("is_proximity_fade_enabled");
+        this._bindings.method_is_proximity_fade_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_proximity_fade_distance");
+        this._bindings.method_set_proximity_fade_distance = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_proximity_fade_distance");
+        this._bindings.method_get_proximity_fade_distance = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_msdf_pixel_range");
+        this._bindings.method_set_msdf_pixel_range = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_msdf_pixel_range");
+        this._bindings.method_get_msdf_pixel_range = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_msdf_outline_size");
+        this._bindings.method_set_msdf_outline_size = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_msdf_outline_size");
+        this._bindings.method_get_msdf_outline_size = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_distance_fade");
+        this._bindings.method_set_distance_fade = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1379478617
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_distance_fade");
+        this._bindings.method_get_distance_fade = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2694575734
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_distance_fade_max_distance");
+        this._bindings.method_set_distance_fade_max_distance = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_distance_fade_max_distance");
+        this._bindings.method_get_distance_fade_max_distance = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("set_distance_fade_min_distance");
+        this._bindings.method_set_distance_fade_min_distance = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("BaseMaterial3D");
+        let methodname = new StringName("get_distance_fade_min_distance");
+        this._bindings.method_get_distance_fade_min_distance = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
   }
   set_albedo(_albedo) {
     return _call_native_mb_no_ret(
@@ -1386,6 +1394,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _albedo
     );
+    
   }
   get_albedo() {
     return _call_native_mb_ret(
@@ -1395,6 +1404,7 @@ export class BaseMaterial3D extends Material{
     ,
       
     );
+    
   }
   set_transparency(_transparency) {
     return _call_native_mb_no_ret(
@@ -1402,6 +1412,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _transparency
     );
+    
   }
   get_transparency() {
     return _call_native_mb_ret(
@@ -1410,6 +1421,7 @@ export class BaseMaterial3D extends Material{
 			Variant.INT,
       
     );
+    
   }
   set_alpha_antialiasing(_alpha_aa) {
     return _call_native_mb_no_ret(
@@ -1417,6 +1429,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _alpha_aa
     );
+    
   }
   get_alpha_antialiasing() {
     return _call_native_mb_ret(
@@ -1425,6 +1438,7 @@ export class BaseMaterial3D extends Material{
 			Variant.INT,
       
     );
+    
   }
   set_alpha_antialiasing_edge(_edge) {
     return _call_native_mb_no_ret(
@@ -1432,6 +1446,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _edge
     );
+    
   }
   get_alpha_antialiasing_edge() {
     return _call_native_mb_ret(
@@ -1440,6 +1455,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_shading_mode(_shading_mode) {
     return _call_native_mb_no_ret(
@@ -1447,6 +1463,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _shading_mode
     );
+    
   }
   get_shading_mode() {
     return _call_native_mb_ret(
@@ -1455,6 +1472,7 @@ export class BaseMaterial3D extends Material{
 			Variant.INT,
       
     );
+    
   }
   set_specular(_specular) {
     return _call_native_mb_no_ret(
@@ -1462,6 +1480,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _specular
     );
+    
   }
   get_specular() {
     return _call_native_mb_ret(
@@ -1470,6 +1489,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_metallic(_metallic) {
     return _call_native_mb_no_ret(
@@ -1477,6 +1497,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _metallic
     );
+    
   }
   get_metallic() {
     return _call_native_mb_ret(
@@ -1485,6 +1506,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_roughness(_roughness) {
     return _call_native_mb_no_ret(
@@ -1492,6 +1514,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _roughness
     );
+    
   }
   get_roughness() {
     return _call_native_mb_ret(
@@ -1500,6 +1523,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_emission(_emission) {
     return _call_native_mb_no_ret(
@@ -1507,6 +1531,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _emission
     );
+    
   }
   get_emission() {
     return _call_native_mb_ret(
@@ -1516,6 +1541,7 @@ export class BaseMaterial3D extends Material{
     ,
       
     );
+    
   }
   set_emission_energy_multiplier(_emission_energy_multiplier) {
     return _call_native_mb_no_ret(
@@ -1523,6 +1549,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _emission_energy_multiplier
     );
+    
   }
   get_emission_energy_multiplier() {
     return _call_native_mb_ret(
@@ -1531,6 +1558,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_emission_intensity(_emission_energy_multiplier) {
     return _call_native_mb_no_ret(
@@ -1538,6 +1566,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _emission_energy_multiplier
     );
+    
   }
   get_emission_intensity() {
     return _call_native_mb_ret(
@@ -1546,6 +1575,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_normal_scale(_normal_scale) {
     return _call_native_mb_no_ret(
@@ -1553,6 +1583,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _normal_scale
     );
+    
   }
   get_normal_scale() {
     return _call_native_mb_ret(
@@ -1561,6 +1592,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_rim(_rim) {
     return _call_native_mb_no_ret(
@@ -1568,6 +1600,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _rim
     );
+    
   }
   get_rim() {
     return _call_native_mb_ret(
@@ -1576,6 +1609,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_rim_tint(_rim_tint) {
     return _call_native_mb_no_ret(
@@ -1583,6 +1617,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _rim_tint
     );
+    
   }
   get_rim_tint() {
     return _call_native_mb_ret(
@@ -1591,6 +1626,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_clearcoat(_clearcoat) {
     return _call_native_mb_no_ret(
@@ -1598,6 +1634,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _clearcoat
     );
+    
   }
   get_clearcoat() {
     return _call_native_mb_ret(
@@ -1606,6 +1643,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_clearcoat_roughness(_clearcoat_roughness) {
     return _call_native_mb_no_ret(
@@ -1613,6 +1651,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _clearcoat_roughness
     );
+    
   }
   get_clearcoat_roughness() {
     return _call_native_mb_ret(
@@ -1621,6 +1660,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_anisotropy(_anisotropy) {
     return _call_native_mb_no_ret(
@@ -1628,6 +1668,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _anisotropy
     );
+    
   }
   get_anisotropy() {
     return _call_native_mb_ret(
@@ -1636,6 +1677,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_heightmap_scale(_heightmap_scale) {
     return _call_native_mb_no_ret(
@@ -1643,6 +1685,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _heightmap_scale
     );
+    
   }
   get_heightmap_scale() {
     return _call_native_mb_ret(
@@ -1651,6 +1694,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_subsurface_scattering_strength(_strength) {
     return _call_native_mb_no_ret(
@@ -1658,6 +1702,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _strength
     );
+    
   }
   get_subsurface_scattering_strength() {
     return _call_native_mb_ret(
@@ -1666,6 +1711,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_transmittance_color(_color) {
     return _call_native_mb_no_ret(
@@ -1673,6 +1719,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _color
     );
+    
   }
   get_transmittance_color() {
     return _call_native_mb_ret(
@@ -1682,6 +1729,7 @@ export class BaseMaterial3D extends Material{
     ,
       
     );
+    
   }
   set_transmittance_depth(_depth) {
     return _call_native_mb_no_ret(
@@ -1689,6 +1737,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _depth
     );
+    
   }
   get_transmittance_depth() {
     return _call_native_mb_ret(
@@ -1697,6 +1746,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_transmittance_boost(_boost) {
     return _call_native_mb_no_ret(
@@ -1704,6 +1754,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _boost
     );
+    
   }
   get_transmittance_boost() {
     return _call_native_mb_ret(
@@ -1712,6 +1763,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_backlight(_backlight) {
     return _call_native_mb_no_ret(
@@ -1719,6 +1771,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _backlight
     );
+    
   }
   get_backlight() {
     return _call_native_mb_ret(
@@ -1728,6 +1781,7 @@ export class BaseMaterial3D extends Material{
     ,
       
     );
+    
   }
   set_refraction(_refraction) {
     return _call_native_mb_no_ret(
@@ -1735,6 +1789,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _refraction
     );
+    
   }
   get_refraction() {
     return _call_native_mb_ret(
@@ -1743,6 +1798,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_point_size(_point_size) {
     return _call_native_mb_no_ret(
@@ -1750,6 +1806,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _point_size
     );
+    
   }
   get_point_size() {
     return _call_native_mb_ret(
@@ -1758,6 +1815,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_detail_uv(_detail_uv) {
     return _call_native_mb_no_ret(
@@ -1765,6 +1823,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _detail_uv
     );
+    
   }
   get_detail_uv() {
     return _call_native_mb_ret(
@@ -1773,6 +1832,7 @@ export class BaseMaterial3D extends Material{
 			Variant.INT,
       
     );
+    
   }
   set_blend_mode(_blend_mode) {
     return _call_native_mb_no_ret(
@@ -1780,6 +1840,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _blend_mode
     );
+    
   }
   get_blend_mode() {
     return _call_native_mb_ret(
@@ -1788,6 +1849,7 @@ export class BaseMaterial3D extends Material{
 			Variant.INT,
       
     );
+    
   }
   set_depth_draw_mode(_depth_draw_mode) {
     return _call_native_mb_no_ret(
@@ -1795,6 +1857,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _depth_draw_mode
     );
+    
   }
   get_depth_draw_mode() {
     return _call_native_mb_ret(
@@ -1803,6 +1866,7 @@ export class BaseMaterial3D extends Material{
 			Variant.INT,
       
     );
+    
   }
   set_cull_mode(_cull_mode) {
     return _call_native_mb_no_ret(
@@ -1810,6 +1874,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _cull_mode
     );
+    
   }
   get_cull_mode() {
     return _call_native_mb_ret(
@@ -1818,6 +1883,7 @@ export class BaseMaterial3D extends Material{
 			Variant.INT,
       
     );
+    
   }
   set_diffuse_mode(_diffuse_mode) {
     return _call_native_mb_no_ret(
@@ -1825,6 +1891,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _diffuse_mode
     );
+    
   }
   get_diffuse_mode() {
     return _call_native_mb_ret(
@@ -1833,6 +1900,7 @@ export class BaseMaterial3D extends Material{
 			Variant.INT,
       
     );
+    
   }
   set_specular_mode(_specular_mode) {
     return _call_native_mb_no_ret(
@@ -1840,6 +1908,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _specular_mode
     );
+    
   }
   get_specular_mode() {
     return _call_native_mb_ret(
@@ -1848,6 +1917,7 @@ export class BaseMaterial3D extends Material{
 			Variant.INT,
       
     );
+    
   }
   set_flag(_flag, _enable) {
     return _call_native_mb_no_ret(
@@ -1855,6 +1925,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _flag, _enable
     );
+    
   }
   get_flag(_flag) {
     return _call_native_mb_ret(
@@ -1863,6 +1934,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.BOOL,
       _flag
     );
+    
   }
   set_texture_filter(_mode) {
     return _call_native_mb_no_ret(
@@ -1870,6 +1942,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _mode
     );
+    
   }
   get_texture_filter() {
     return _call_native_mb_ret(
@@ -1878,6 +1951,7 @@ export class BaseMaterial3D extends Material{
 			Variant.INT,
       
     );
+    
   }
   set_feature(_feature, _enable) {
     return _call_native_mb_no_ret(
@@ -1885,6 +1959,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _feature, _enable
     );
+    
   }
   get_feature(_feature) {
     return _call_native_mb_ret(
@@ -1893,6 +1968,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.BOOL,
       _feature
     );
+    
   }
   set_texture(_param, _texture) {
     return _call_native_mb_no_ret(
@@ -1900,6 +1976,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _param, _texture
     );
+    
   }
   get_texture(_param) {
     return _call_native_mb_ret(
@@ -1908,6 +1985,7 @@ export class BaseMaterial3D extends Material{
 			Variant.INT,
       _param
     );
+    
   }
   set_detail_blend_mode(_detail_blend_mode) {
     return _call_native_mb_no_ret(
@@ -1915,6 +1993,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _detail_blend_mode
     );
+    
   }
   get_detail_blend_mode() {
     return _call_native_mb_ret(
@@ -1923,6 +2002,7 @@ export class BaseMaterial3D extends Material{
 			Variant.INT,
       
     );
+    
   }
   set_uv1_scale(_scale) {
     return _call_native_mb_no_ret(
@@ -1930,6 +2010,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _scale
     );
+    
   }
   get_uv1_scale() {
     return _call_native_mb_ret(
@@ -1939,6 +2020,7 @@ export class BaseMaterial3D extends Material{
     ,
       
     );
+    
   }
   set_uv1_offset(_offset) {
     return _call_native_mb_no_ret(
@@ -1946,6 +2028,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _offset
     );
+    
   }
   get_uv1_offset() {
     return _call_native_mb_ret(
@@ -1955,6 +2038,7 @@ export class BaseMaterial3D extends Material{
     ,
       
     );
+    
   }
   set_uv1_triplanar_blend_sharpness(_sharpness) {
     return _call_native_mb_no_ret(
@@ -1962,6 +2046,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _sharpness
     );
+    
   }
   get_uv1_triplanar_blend_sharpness() {
     return _call_native_mb_ret(
@@ -1970,6 +2055,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_uv2_scale(_scale) {
     return _call_native_mb_no_ret(
@@ -1977,6 +2063,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _scale
     );
+    
   }
   get_uv2_scale() {
     return _call_native_mb_ret(
@@ -1986,6 +2073,7 @@ export class BaseMaterial3D extends Material{
     ,
       
     );
+    
   }
   set_uv2_offset(_offset) {
     return _call_native_mb_no_ret(
@@ -1993,6 +2081,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _offset
     );
+    
   }
   get_uv2_offset() {
     return _call_native_mb_ret(
@@ -2002,6 +2091,7 @@ export class BaseMaterial3D extends Material{
     ,
       
     );
+    
   }
   set_uv2_triplanar_blend_sharpness(_sharpness) {
     return _call_native_mb_no_ret(
@@ -2009,6 +2099,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _sharpness
     );
+    
   }
   get_uv2_triplanar_blend_sharpness() {
     return _call_native_mb_ret(
@@ -2017,6 +2108,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_billboard_mode(_mode) {
     return _call_native_mb_no_ret(
@@ -2024,6 +2116,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _mode
     );
+    
   }
   get_billboard_mode() {
     return _call_native_mb_ret(
@@ -2032,6 +2125,7 @@ export class BaseMaterial3D extends Material{
 			Variant.INT,
       
     );
+    
   }
   set_particles_anim_h_frames(_frames) {
     return _call_native_mb_no_ret(
@@ -2039,6 +2133,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _frames
     );
+    
   }
   get_particles_anim_h_frames() {
     return _call_native_mb_ret(
@@ -2047,6 +2142,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.INT,
       
     );
+    
   }
   set_particles_anim_v_frames(_frames) {
     return _call_native_mb_no_ret(
@@ -2054,6 +2150,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _frames
     );
+    
   }
   get_particles_anim_v_frames() {
     return _call_native_mb_ret(
@@ -2062,6 +2159,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.INT,
       
     );
+    
   }
   set_particles_anim_loop(_loop) {
     return _call_native_mb_no_ret(
@@ -2069,6 +2167,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _loop
     );
+    
   }
   get_particles_anim_loop() {
     return _call_native_mb_ret(
@@ -2077,6 +2176,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.BOOL,
       
     );
+    
   }
   set_heightmap_deep_parallax(_enable) {
     return _call_native_mb_no_ret(
@@ -2084,6 +2184,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _enable
     );
+    
   }
   is_heightmap_deep_parallax_enabled() {
     return _call_native_mb_ret(
@@ -2092,6 +2193,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.BOOL,
       
     );
+    
   }
   set_heightmap_deep_parallax_min_layers(_layer) {
     return _call_native_mb_no_ret(
@@ -2099,6 +2201,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _layer
     );
+    
   }
   get_heightmap_deep_parallax_min_layers() {
     return _call_native_mb_ret(
@@ -2107,6 +2210,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.INT,
       
     );
+    
   }
   set_heightmap_deep_parallax_max_layers(_layer) {
     return _call_native_mb_no_ret(
@@ -2114,6 +2218,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _layer
     );
+    
   }
   get_heightmap_deep_parallax_max_layers() {
     return _call_native_mb_ret(
@@ -2122,6 +2227,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.INT,
       
     );
+    
   }
   set_heightmap_deep_parallax_flip_tangent(_flip) {
     return _call_native_mb_no_ret(
@@ -2129,6 +2235,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _flip
     );
+    
   }
   get_heightmap_deep_parallax_flip_tangent() {
     return _call_native_mb_ret(
@@ -2137,6 +2244,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.BOOL,
       
     );
+    
   }
   set_heightmap_deep_parallax_flip_binormal(_flip) {
     return _call_native_mb_no_ret(
@@ -2144,6 +2252,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _flip
     );
+    
   }
   get_heightmap_deep_parallax_flip_binormal() {
     return _call_native_mb_ret(
@@ -2152,6 +2261,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.BOOL,
       
     );
+    
   }
   set_grow(_amount) {
     return _call_native_mb_no_ret(
@@ -2159,6 +2269,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _amount
     );
+    
   }
   get_grow() {
     return _call_native_mb_ret(
@@ -2167,6 +2278,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_emission_operator(_operator) {
     return _call_native_mb_no_ret(
@@ -2174,6 +2286,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _operator
     );
+    
   }
   get_emission_operator() {
     return _call_native_mb_ret(
@@ -2182,6 +2295,7 @@ export class BaseMaterial3D extends Material{
 			Variant.INT,
       
     );
+    
   }
   set_ao_light_affect(_amount) {
     return _call_native_mb_no_ret(
@@ -2189,6 +2303,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _amount
     );
+    
   }
   get_ao_light_affect() {
     return _call_native_mb_ret(
@@ -2197,6 +2312,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_alpha_scissor_threshold(_threshold) {
     return _call_native_mb_no_ret(
@@ -2204,6 +2320,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _threshold
     );
+    
   }
   get_alpha_scissor_threshold() {
     return _call_native_mb_ret(
@@ -2212,6 +2329,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_alpha_hash_scale(_threshold) {
     return _call_native_mb_no_ret(
@@ -2219,6 +2337,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _threshold
     );
+    
   }
   get_alpha_hash_scale() {
     return _call_native_mb_ret(
@@ -2227,6 +2346,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_grow_enabled(_enable) {
     return _call_native_mb_no_ret(
@@ -2234,6 +2354,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _enable
     );
+    
   }
   is_grow_enabled() {
     return _call_native_mb_ret(
@@ -2242,6 +2363,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.BOOL,
       
     );
+    
   }
   set_metallic_texture_channel(_channel) {
     return _call_native_mb_no_ret(
@@ -2249,6 +2371,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _channel
     );
+    
   }
   get_metallic_texture_channel() {
     return _call_native_mb_ret(
@@ -2257,6 +2380,7 @@ export class BaseMaterial3D extends Material{
 			Variant.INT,
       
     );
+    
   }
   set_roughness_texture_channel(_channel) {
     return _call_native_mb_no_ret(
@@ -2264,6 +2388,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _channel
     );
+    
   }
   get_roughness_texture_channel() {
     return _call_native_mb_ret(
@@ -2272,6 +2397,7 @@ export class BaseMaterial3D extends Material{
 			Variant.INT,
       
     );
+    
   }
   set_ao_texture_channel(_channel) {
     return _call_native_mb_no_ret(
@@ -2279,6 +2405,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _channel
     );
+    
   }
   get_ao_texture_channel() {
     return _call_native_mb_ret(
@@ -2287,6 +2414,7 @@ export class BaseMaterial3D extends Material{
 			Variant.INT,
       
     );
+    
   }
   set_refraction_texture_channel(_channel) {
     return _call_native_mb_no_ret(
@@ -2294,6 +2422,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _channel
     );
+    
   }
   get_refraction_texture_channel() {
     return _call_native_mb_ret(
@@ -2302,6 +2431,7 @@ export class BaseMaterial3D extends Material{
 			Variant.INT,
       
     );
+    
   }
   set_proximity_fade_enabled(_enabled) {
     return _call_native_mb_no_ret(
@@ -2309,6 +2439,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _enabled
     );
+    
   }
   is_proximity_fade_enabled() {
     return _call_native_mb_ret(
@@ -2317,6 +2448,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.BOOL,
       
     );
+    
   }
   set_proximity_fade_distance(_distance) {
     return _call_native_mb_no_ret(
@@ -2324,6 +2456,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _distance
     );
+    
   }
   get_proximity_fade_distance() {
     return _call_native_mb_ret(
@@ -2332,6 +2465,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_msdf_pixel_range(_range) {
     return _call_native_mb_no_ret(
@@ -2339,6 +2473,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _range
     );
+    
   }
   get_msdf_pixel_range() {
     return _call_native_mb_ret(
@@ -2347,6 +2482,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_msdf_outline_size(_size) {
     return _call_native_mb_no_ret(
@@ -2354,6 +2490,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _size
     );
+    
   }
   get_msdf_outline_size() {
     return _call_native_mb_ret(
@@ -2362,6 +2499,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_distance_fade(_mode) {
     return _call_native_mb_no_ret(
@@ -2369,6 +2507,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _mode
     );
+    
   }
   get_distance_fade() {
     return _call_native_mb_ret(
@@ -2377,6 +2516,7 @@ export class BaseMaterial3D extends Material{
 			Variant.INT,
       
     );
+    
   }
   set_distance_fade_max_distance(_distance) {
     return _call_native_mb_no_ret(
@@ -2384,6 +2524,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _distance
     );
+    
   }
   get_distance_fade_max_distance() {
     return _call_native_mb_ret(
@@ -2392,6 +2533,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_distance_fade_min_distance(_distance) {
     return _call_native_mb_no_ret(
@@ -2399,6 +2541,7 @@ export class BaseMaterial3D extends Material{
       this._owner,
       _distance
     );
+    
   }
   get_distance_fade_min_distance() {
     return _call_native_mb_ret(
@@ -2407,6 +2550,7 @@ export class BaseMaterial3D extends Material{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   static TextureParam = {
     TEXTURE_ALBEDO: 0,

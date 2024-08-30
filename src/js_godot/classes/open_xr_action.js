@@ -1,7 +1,15 @@
 import * as internal from '__internal__';
-import { Resource } from 'src/js_godot/classesresource'
 import { PackedStringArray } from 'src/js_godot/variant/packed_string_array'
+import { Resource } from 'src/js_godot/classes/resource'
 import { GDString } from 'src/js_godot/variant/gd_string'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_set_localized_name;
     method_get_localized_name;
@@ -25,60 +33,60 @@ export class OpenXRAction extends Resource{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("OpenXRAction");
-      let methodname = new StringName("set_localized_name");
-      this._bindings.method_set_localized_name = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        83702148
-      );
-    }
-    {
-      let classname = new StringName("OpenXRAction");
-      let methodname = new StringName("get_localized_name");
-      this._bindings.method_get_localized_name = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        201670096
-      );
-    }
-    {
-      let classname = new StringName("OpenXRAction");
-      let methodname = new StringName("set_action_type");
-      this._bindings.method_set_action_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1675238366
-      );
-    }
-    {
-      let classname = new StringName("OpenXRAction");
-      let methodname = new StringName("get_action_type");
-      this._bindings.method_get_action_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3536542431
-      );
-    }
-    {
-      let classname = new StringName("OpenXRAction");
-      let methodname = new StringName("set_toplevel_paths");
-      this._bindings.method_set_toplevel_paths = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4015028928
-      );
-    }
-    {
-      let classname = new StringName("OpenXRAction");
-      let methodname = new StringName("get_toplevel_paths");
-      this._bindings.method_get_toplevel_paths = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1139954409
-      );
-    }
+      {
+        let classname = new StringName("OpenXRAction");
+        let methodname = new StringName("set_localized_name");
+        this._bindings.method_set_localized_name = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          83702148
+        );
+      }
+      {
+        let classname = new StringName("OpenXRAction");
+        let methodname = new StringName("get_localized_name");
+        this._bindings.method_get_localized_name = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          201670096
+        );
+      }
+      {
+        let classname = new StringName("OpenXRAction");
+        let methodname = new StringName("set_action_type");
+        this._bindings.method_set_action_type = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1675238366
+        );
+      }
+      {
+        let classname = new StringName("OpenXRAction");
+        let methodname = new StringName("get_action_type");
+        this._bindings.method_get_action_type = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3536542431
+        );
+      }
+      {
+        let classname = new StringName("OpenXRAction");
+        let methodname = new StringName("set_toplevel_paths");
+        this._bindings.method_set_toplevel_paths = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4015028928
+        );
+      }
+      {
+        let classname = new StringName("OpenXRAction");
+        let methodname = new StringName("get_toplevel_paths");
+        this._bindings.method_get_toplevel_paths = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1139954409
+        );
+      }
   }
   set_localized_name(_localized_name) {
     return _call_native_mb_no_ret(
@@ -86,6 +94,7 @@ export class OpenXRAction extends Resource{
       this._owner,
       _localized_name
     );
+    
   }
   get_localized_name() {
     return _call_native_mb_ret(
@@ -95,6 +104,7 @@ export class OpenXRAction extends Resource{
     ,
       
     );
+    
   }
   set_action_type(_action_type) {
     return _call_native_mb_no_ret(
@@ -102,6 +112,7 @@ export class OpenXRAction extends Resource{
       this._owner,
       _action_type
     );
+    
   }
   get_action_type() {
     return _call_native_mb_ret(
@@ -110,6 +121,7 @@ export class OpenXRAction extends Resource{
 			Variant.INT,
       
     );
+    
   }
   set_toplevel_paths(_toplevel_paths) {
     return _call_native_mb_no_ret(
@@ -117,6 +129,7 @@ export class OpenXRAction extends Resource{
       this._owner,
       _toplevel_paths
     );
+    
   }
   get_toplevel_paths() {
     return _call_native_mb_ret(
@@ -126,6 +139,7 @@ export class OpenXRAction extends Resource{
     ,
       
     );
+    
   }
   static ActionType = {
     OPENXR_ACTION_BOOL: 0,

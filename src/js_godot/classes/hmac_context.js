@@ -1,6 +1,14 @@
 import * as internal from '__internal__';
 import { PackedByteArray } from 'src/js_godot/variant/packed_byte_array'
-import { RefCounted } from 'src/js_godot/classesref_counted'
+import { RefCounted } from 'src/js_godot/classes/ref_counted'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_start;
     method_update;
@@ -21,33 +29,33 @@ export class HMACContext extends RefCounted{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("HMACContext");
-      let methodname = new StringName("start");
-      this._bindings.method_start = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3537364598
-      );
-    }
-    {
-      let classname = new StringName("HMACContext");
-      let methodname = new StringName("update");
-      this._bindings.method_update = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        680677267
-      );
-    }
-    {
-      let classname = new StringName("HMACContext");
-      let methodname = new StringName("finish");
-      this._bindings.method_finish = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2115431945
-      );
-    }
+      {
+        let classname = new StringName("HMACContext");
+        let methodname = new StringName("start");
+        this._bindings.method_start = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3537364598
+        );
+      }
+      {
+        let classname = new StringName("HMACContext");
+        let methodname = new StringName("update");
+        this._bindings.method_update = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          680677267
+        );
+      }
+      {
+        let classname = new StringName("HMACContext");
+        let methodname = new StringName("finish");
+        this._bindings.method_finish = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2115431945
+        );
+      }
   }
   start(_hash_type, _key) {
     return _call_native_mb_ret(
@@ -56,6 +64,7 @@ export class HMACContext extends RefCounted{
 			Variant.INT,
       _hash_type, _key
     );
+    
   }
   update(_data) {
     return _call_native_mb_ret(
@@ -64,6 +73,7 @@ export class HMACContext extends RefCounted{
 			Variant.INT,
       _data
     );
+    
   }
   finish() {
     return _call_native_mb_ret(
@@ -73,5 +83,6 @@ export class HMACContext extends RefCounted{
     ,
       
     );
+    
   }
 }

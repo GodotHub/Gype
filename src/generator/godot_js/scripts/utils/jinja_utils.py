@@ -18,6 +18,11 @@ def to_js_type(gd_type):
         return 'GodotObject'
     elif gd_type =='Array':
         return 'GDArray'
+    elif is_pod_type(gd_type):
+        if gd_type == 'float' or gd_type == 'int':
+            return 'number'
+        else:
+            return gd_type
     else:
         return gd_type
     
@@ -50,6 +55,9 @@ def pod_types():
         "uint32_t",
         "uint64_t",
     ]
+
+def is_pod_type(t):
+    return t in pod_types()
 
 def operator_id_name(op):
     op_id_map = {
@@ -114,5 +122,5 @@ def get_module_path(class_name):
     if to_gd_type(class_name) in variant_types():
         return 'src/js_godot/variant/%s' % camel_to_snake(to_js_type(class_name))
     else:
-        return 'src/js_godot/classes%s' % camel_to_snake(to_js_type(class_name))
+        return 'src/js_godot/classes/%s' % camel_to_snake(to_js_type(class_name))
     

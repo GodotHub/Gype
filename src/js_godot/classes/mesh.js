@@ -1,26 +1,19 @@
 import * as internal from '__internal__';
-import { PackedVector3Array } from 'src/js_godot/variant/packed_vector3_array'
-import { GDArray } from 'src/js_godot/variant/gd_array'
+import { Resource } from 'src/js_godot/classes/resource'
 import { Vector2i } from 'src/js_godot/variant/vector2i'
 import { StringName } from 'src/js_godot/variant/string_name'
 import { AABB } from 'src/js_godot/variant/aabb'
-import { Resource } from 'src/js_godot/classesresource'
+import { PackedVector3Array } from 'src/js_godot/variant/packed_vector3_array'
 import { Dictionary } from 'src/js_godot/variant/dictionary'
+import { GDArray } from 'src/js_godot/variant/gd_array'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
-    method__get_surface_count;
-    method__surface_get_array_len;
-    method__surface_get_array_index_len;
-    method__surface_get_arrays;
-    method__surface_get_blend_shape_arrays;
-    method__surface_get_lods;
-    method__surface_get_format;
-    method__surface_get_primitive_type;
-    method__surface_set_material;
-    method__surface_get_material;
-    method__get_blend_shape_count;
-    method__get_blend_shape_name;
-    method__set_blend_shape_name;
-    method__get_aabb;
     method_set_lightmap_size_hint;
     method_get_lightmap_size_hint;
     method_get_aabb;
@@ -51,372 +44,160 @@ export class Mesh extends Resource{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("Mesh");
-      let methodname = new StringName("_get_surface_count");
-      this._bindings.method__get_surface_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        
-      );
-    }
-    {
-      let classname = new StringName("Mesh");
-      let methodname = new StringName("_surface_get_array_len");
-      this._bindings.method__surface_get_array_len = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        
-      );
-    }
-    {
-      let classname = new StringName("Mesh");
-      let methodname = new StringName("_surface_get_array_index_len");
-      this._bindings.method__surface_get_array_index_len = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        
-      );
-    }
-    {
-      let classname = new StringName("Mesh");
-      let methodname = new StringName("_surface_get_arrays");
-      this._bindings.method__surface_get_arrays = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        
-      );
-    }
-    {
-      let classname = new StringName("Mesh");
-      let methodname = new StringName("_surface_get_blend_shape_arrays");
-      this._bindings.method__surface_get_blend_shape_arrays = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        
-      );
-    }
-    {
-      let classname = new StringName("Mesh");
-      let methodname = new StringName("_surface_get_lods");
-      this._bindings.method__surface_get_lods = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        
-      );
-    }
-    {
-      let classname = new StringName("Mesh");
-      let methodname = new StringName("_surface_get_format");
-      this._bindings.method__surface_get_format = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        
-      );
-    }
-    {
-      let classname = new StringName("Mesh");
-      let methodname = new StringName("_surface_get_primitive_type");
-      this._bindings.method__surface_get_primitive_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        
-      );
-    }
-    {
-      let classname = new StringName("Mesh");
-      let methodname = new StringName("_surface_set_material");
-      this._bindings.method__surface_set_material = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        
-      );
-    }
-    {
-      let classname = new StringName("Mesh");
-      let methodname = new StringName("_surface_get_material");
-      this._bindings.method__surface_get_material = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        
-      );
-    }
-    {
-      let classname = new StringName("Mesh");
-      let methodname = new StringName("_get_blend_shape_count");
-      this._bindings.method__get_blend_shape_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        
-      );
-    }
-    {
-      let classname = new StringName("Mesh");
-      let methodname = new StringName("_get_blend_shape_name");
-      this._bindings.method__get_blend_shape_name = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        
-      );
-    }
-    {
-      let classname = new StringName("Mesh");
-      let methodname = new StringName("_set_blend_shape_name");
-      this._bindings.method__set_blend_shape_name = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        
-      );
-    }
-    {
-      let classname = new StringName("Mesh");
-      let methodname = new StringName("_get_aabb");
-      this._bindings.method__get_aabb = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        
-      );
-    }
-    {
-      let classname = new StringName("Mesh");
-      let methodname = new StringName("set_lightmap_size_hint");
-      this._bindings.method_set_lightmap_size_hint = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1130785943
-      );
-    }
-    {
-      let classname = new StringName("Mesh");
-      let methodname = new StringName("get_lightmap_size_hint");
-      this._bindings.method_get_lightmap_size_hint = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3690982128
-      );
-    }
-    {
-      let classname = new StringName("Mesh");
-      let methodname = new StringName("get_aabb");
-      this._bindings.method_get_aabb = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1068685055
-      );
-    }
-    {
-      let classname = new StringName("Mesh");
-      let methodname = new StringName("get_faces");
-      this._bindings.method_get_faces = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        497664490
-      );
-    }
-    {
-      let classname = new StringName("Mesh");
-      let methodname = new StringName("get_surface_count");
-      this._bindings.method_get_surface_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("Mesh");
-      let methodname = new StringName("surface_get_arrays");
-      this._bindings.method_surface_get_arrays = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        663333327
-      );
-    }
-    {
-      let classname = new StringName("Mesh");
-      let methodname = new StringName("surface_get_blend_shape_arrays");
-      this._bindings.method_surface_get_blend_shape_arrays = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        663333327
-      );
-    }
-    {
-      let classname = new StringName("Mesh");
-      let methodname = new StringName("surface_set_material");
-      this._bindings.method_surface_set_material = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3671737478
-      );
-    }
-    {
-      let classname = new StringName("Mesh");
-      let methodname = new StringName("surface_get_material");
-      this._bindings.method_surface_get_material = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2897466400
-      );
-    }
-    {
-      let classname = new StringName("Mesh");
-      let methodname = new StringName("create_placeholder");
-      this._bindings.method_create_placeholder = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        121922552
-      );
-    }
-    {
-      let classname = new StringName("Mesh");
-      let methodname = new StringName("create_trimesh_shape");
-      this._bindings.method_create_trimesh_shape = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4160111210
-      );
-    }
-    {
-      let classname = new StringName("Mesh");
-      let methodname = new StringName("create_convex_shape");
-      this._bindings.method_create_convex_shape = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2529984628
-      );
-    }
-    {
-      let classname = new StringName("Mesh");
-      let methodname = new StringName("create_outline");
-      this._bindings.method_create_outline = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1208642001
-      );
-    }
-    {
-      let classname = new StringName("Mesh");
-      let methodname = new StringName("generate_triangle_mesh");
-      this._bindings.method_generate_triangle_mesh = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3476533166
-      );
-    }
+      {
+        let classname = new StringName("Mesh");
+        let methodname = new StringName("set_lightmap_size_hint");
+        this._bindings.method_set_lightmap_size_hint = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1130785943
+        );
+      }
+      {
+        let classname = new StringName("Mesh");
+        let methodname = new StringName("get_lightmap_size_hint");
+        this._bindings.method_get_lightmap_size_hint = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3690982128
+        );
+      }
+      {
+        let classname = new StringName("Mesh");
+        let methodname = new StringName("get_aabb");
+        this._bindings.method_get_aabb = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1068685055
+        );
+      }
+      {
+        let classname = new StringName("Mesh");
+        let methodname = new StringName("get_faces");
+        this._bindings.method_get_faces = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          497664490
+        );
+      }
+      {
+        let classname = new StringName("Mesh");
+        let methodname = new StringName("get_surface_count");
+        this._bindings.method_get_surface_count = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
+      {
+        let classname = new StringName("Mesh");
+        let methodname = new StringName("surface_get_arrays");
+        this._bindings.method_surface_get_arrays = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          663333327
+        );
+      }
+      {
+        let classname = new StringName("Mesh");
+        let methodname = new StringName("surface_get_blend_shape_arrays");
+        this._bindings.method_surface_get_blend_shape_arrays = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          663333327
+        );
+      }
+      {
+        let classname = new StringName("Mesh");
+        let methodname = new StringName("surface_set_material");
+        this._bindings.method_surface_set_material = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3671737478
+        );
+      }
+      {
+        let classname = new StringName("Mesh");
+        let methodname = new StringName("surface_get_material");
+        this._bindings.method_surface_get_material = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2897466400
+        );
+      }
+      {
+        let classname = new StringName("Mesh");
+        let methodname = new StringName("create_placeholder");
+        this._bindings.method_create_placeholder = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          121922552
+        );
+      }
+      {
+        let classname = new StringName("Mesh");
+        let methodname = new StringName("create_trimesh_shape");
+        this._bindings.method_create_trimesh_shape = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4160111210
+        );
+      }
+      {
+        let classname = new StringName("Mesh");
+        let methodname = new StringName("create_convex_shape");
+        this._bindings.method_create_convex_shape = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2529984628
+        );
+      }
+      {
+        let classname = new StringName("Mesh");
+        let methodname = new StringName("create_outline");
+        this._bindings.method_create_outline = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1208642001
+        );
+      }
+      {
+        let classname = new StringName("Mesh");
+        let methodname = new StringName("generate_triangle_mesh");
+        this._bindings.method_generate_triangle_mesh = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3476533166
+        );
+      }
   }
   _get_surface_count() {
-    return _call_native_mb_ret(
-      ClassDB._bindings.method__get_surface_count,
-      this._owner,
-			Variant.Type.INT,
-      
-    );
   }
   _surface_get_array_len(_index) {
-    return _call_native_mb_ret(
-      ClassDB._bindings.method__surface_get_array_len,
-      this._owner,
-			Variant.Type.INT,
-      _index
-    );
   }
   _surface_get_array_index_len(_index) {
-    return _call_native_mb_ret(
-      ClassDB._bindings.method__surface_get_array_index_len,
-      this._owner,
-			Variant.Type.INT,
-      _index
-    );
   }
   _surface_get_arrays(_index) {
-    return _call_native_mb_ret(
-      ClassDB._bindings.method__surface_get_arrays,
-      this._owner,
-			Variant.Type.ARRAY
-    ,
-      _index
-    );
   }
   _surface_get_blend_shape_arrays(_index) {
-    return _call_native_mb_ret(
-      ClassDB._bindings.method__surface_get_blend_shape_arrays,
-      this._owner,
-			Variant.INT,
-      _index
-    );
   }
   _surface_get_lods(_index) {
-    return _call_native_mb_ret(
-      ClassDB._bindings.method__surface_get_lods,
-      this._owner,
-			Variant.Type.DICTIONARY
-    ,
-      _index
-    );
   }
   _surface_get_format(_index) {
-    return _call_native_mb_ret(
-      ClassDB._bindings.method__surface_get_format,
-      this._owner,
-			Variant.Type.INT,
-      _index
-    );
   }
   _surface_get_primitive_type(_index) {
-    return _call_native_mb_ret(
-      ClassDB._bindings.method__surface_get_primitive_type,
-      this._owner,
-			Variant.Type.INT,
-      _index
-    );
   }
   _surface_set_material(_index, _material) {
-    return _call_native_mb_no_ret(
-      ClassDB._bindings.method__surface_set_material,
-      this._owner,
-      _index, _material
-    );
   }
   _surface_get_material(_index) {
-    return _call_native_mb_ret(
-      ClassDB._bindings.method__surface_get_material,
-      this._owner,
-			Variant.INT,
-      _index
-    );
   }
   _get_blend_shape_count() {
-    return _call_native_mb_ret(
-      ClassDB._bindings.method__get_blend_shape_count,
-      this._owner,
-			Variant.Type.INT,
-      
-    );
   }
   _get_blend_shape_name(_index) {
-    return _call_native_mb_ret(
-      ClassDB._bindings.method__get_blend_shape_name,
-      this._owner,
-			Variant.Type.STRING_NAME
-    ,
-      _index
-    );
   }
   _set_blend_shape_name(_index, _name) {
-    return _call_native_mb_no_ret(
-      ClassDB._bindings.method__set_blend_shape_name,
-      this._owner,
-      _index, _name
-    );
   }
   _get_aabb() {
-    return _call_native_mb_ret(
-      ClassDB._bindings.method__get_aabb,
-      this._owner,
-			Variant.Type.AABB
-    ,
-      
-    );
   }
   set_lightmap_size_hint(_size) {
     return _call_native_mb_no_ret(
@@ -424,6 +205,7 @@ export class Mesh extends Resource{
       this._owner,
       _size
     );
+    
   }
   get_lightmap_size_hint() {
     return _call_native_mb_ret(
@@ -433,6 +215,7 @@ export class Mesh extends Resource{
     ,
       
     );
+    
   }
   get_aabb() {
     return _call_native_mb_ret(
@@ -442,6 +225,7 @@ export class Mesh extends Resource{
     ,
       
     );
+    
   }
   get_faces() {
     return _call_native_mb_ret(
@@ -451,6 +235,7 @@ export class Mesh extends Resource{
     ,
       
     );
+    
   }
   get_surface_count() {
     return _call_native_mb_ret(
@@ -459,6 +244,7 @@ export class Mesh extends Resource{
 			Variant.Type.INT,
       
     );
+    
   }
   surface_get_arrays(_surf_idx) {
     return _call_native_mb_ret(
@@ -468,6 +254,7 @@ export class Mesh extends Resource{
     ,
       _surf_idx
     );
+    
   }
   surface_get_blend_shape_arrays(_surf_idx) {
     return _call_native_mb_ret(
@@ -476,6 +263,7 @@ export class Mesh extends Resource{
 			Variant.INT,
       _surf_idx
     );
+    
   }
   surface_set_material(_surf_idx, _material) {
     return _call_native_mb_no_ret(
@@ -483,6 +271,7 @@ export class Mesh extends Resource{
       this._owner,
       _surf_idx, _material
     );
+    
   }
   surface_get_material(_surf_idx) {
     return _call_native_mb_ret(
@@ -491,6 +280,7 @@ export class Mesh extends Resource{
 			Variant.INT,
       _surf_idx
     );
+    
   }
   create_placeholder() {
     return _call_native_mb_ret(
@@ -499,6 +289,7 @@ export class Mesh extends Resource{
 			Variant.INT,
       
     );
+    
   }
   create_trimesh_shape() {
     return _call_native_mb_ret(
@@ -507,6 +298,7 @@ export class Mesh extends Resource{
 			Variant.INT,
       
     );
+    
   }
   create_convex_shape(_clean, _simplify) {
     return _call_native_mb_ret(
@@ -515,6 +307,7 @@ export class Mesh extends Resource{
 			Variant.INT,
       _clean, _simplify
     );
+    
   }
   create_outline(_margin) {
     return _call_native_mb_ret(
@@ -523,6 +316,7 @@ export class Mesh extends Resource{
 			Variant.INT,
       _margin
     );
+    
   }
   generate_triangle_mesh() {
     return _call_native_mb_ret(
@@ -531,6 +325,7 @@ export class Mesh extends Resource{
 			Variant.INT,
       
     );
+    
   }
   static PrimitiveType = {
     PRIMITIVE_POINTS: 0,

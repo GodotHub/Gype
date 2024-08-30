@@ -1,5 +1,13 @@
 import * as internal from '__internal__';
-import { Joint3D } from 'src/js_godot/classesjoint3d'
+import { Joint3D } from 'src/js_godot/classes/joint3d'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_set_param;
     method_get_param;
@@ -21,42 +29,42 @@ export class HingeJoint3D extends Joint3D{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("HingeJoint3D");
-      let methodname = new StringName("set_param");
-      this._bindings.method_set_param = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3082977519
-      );
-    }
-    {
-      let classname = new StringName("HingeJoint3D");
-      let methodname = new StringName("get_param");
-      this._bindings.method_get_param = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4066002676
-      );
-    }
-    {
-      let classname = new StringName("HingeJoint3D");
-      let methodname = new StringName("set_flag");
-      this._bindings.method_set_flag = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1083494620
-      );
-    }
-    {
-      let classname = new StringName("HingeJoint3D");
-      let methodname = new StringName("get_flag");
-      this._bindings.method_get_flag = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2841369610
-      );
-    }
+      {
+        let classname = new StringName("HingeJoint3D");
+        let methodname = new StringName("set_param");
+        this._bindings.method_set_param = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3082977519
+        );
+      }
+      {
+        let classname = new StringName("HingeJoint3D");
+        let methodname = new StringName("get_param");
+        this._bindings.method_get_param = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4066002676
+        );
+      }
+      {
+        let classname = new StringName("HingeJoint3D");
+        let methodname = new StringName("set_flag");
+        this._bindings.method_set_flag = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1083494620
+        );
+      }
+      {
+        let classname = new StringName("HingeJoint3D");
+        let methodname = new StringName("get_flag");
+        this._bindings.method_get_flag = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2841369610
+        );
+      }
   }
   set_param(_param, _value) {
     return _call_native_mb_no_ret(
@@ -64,6 +72,7 @@ export class HingeJoint3D extends Joint3D{
       this._owner,
       _param, _value
     );
+    
   }
   get_param(_param) {
     return _call_native_mb_ret(
@@ -72,6 +81,7 @@ export class HingeJoint3D extends Joint3D{
 			Variant.Type.FLOAT,
       _param
     );
+    
   }
   set_flag(_flag, _enabled) {
     return _call_native_mb_no_ret(
@@ -79,6 +89,7 @@ export class HingeJoint3D extends Joint3D{
       this._owner,
       _flag, _enabled
     );
+    
   }
   get_flag(_flag) {
     return _call_native_mb_ret(
@@ -87,6 +98,7 @@ export class HingeJoint3D extends Joint3D{
 			Variant.Type.BOOL,
       _flag
     );
+    
   }
   static Param = {
     PARAM_BIAS: 0,

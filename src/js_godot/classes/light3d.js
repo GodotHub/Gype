@@ -1,6 +1,14 @@
 import * as internal from '__internal__';
-import { VisualInstance3D } from 'src/js_godot/classesvisual_instance3d'
+import { StringName } from 'src/js_godot/variant/string_name'
+import { VisualInstance3D } from 'src/js_godot/classes/visual_instance3d'
 import { Color } from 'src/js_godot/variant/color'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_set_editor_only;
     method_is_editor_only;
@@ -47,267 +55,267 @@ export class Light3D extends VisualInstance3D{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("Light3D");
-      let methodname = new StringName("set_editor_only");
-      this._bindings.method_set_editor_only = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("Light3D");
-      let methodname = new StringName("is_editor_only");
-      this._bindings.method_is_editor_only = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("Light3D");
-      let methodname = new StringName("set_param");
-      this._bindings.method_set_param = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1722734213
-      );
-    }
-    {
-      let classname = new StringName("Light3D");
-      let methodname = new StringName("get_param");
-      this._bindings.method_get_param = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1844084987
-      );
-    }
-    {
-      let classname = new StringName("Light3D");
-      let methodname = new StringName("set_shadow");
-      this._bindings.method_set_shadow = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("Light3D");
-      let methodname = new StringName("has_shadow");
-      this._bindings.method_has_shadow = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("Light3D");
-      let methodname = new StringName("set_negative");
-      this._bindings.method_set_negative = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("Light3D");
-      let methodname = new StringName("is_negative");
-      this._bindings.method_is_negative = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("Light3D");
-      let methodname = new StringName("set_cull_mask");
-      this._bindings.method_set_cull_mask = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("Light3D");
-      let methodname = new StringName("get_cull_mask");
-      this._bindings.method_get_cull_mask = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("Light3D");
-      let methodname = new StringName("set_enable_distance_fade");
-      this._bindings.method_set_enable_distance_fade = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("Light3D");
-      let methodname = new StringName("is_distance_fade_enabled");
-      this._bindings.method_is_distance_fade_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("Light3D");
-      let methodname = new StringName("set_distance_fade_begin");
-      this._bindings.method_set_distance_fade_begin = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("Light3D");
-      let methodname = new StringName("get_distance_fade_begin");
-      this._bindings.method_get_distance_fade_begin = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("Light3D");
-      let methodname = new StringName("set_distance_fade_shadow");
-      this._bindings.method_set_distance_fade_shadow = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("Light3D");
-      let methodname = new StringName("get_distance_fade_shadow");
-      this._bindings.method_get_distance_fade_shadow = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("Light3D");
-      let methodname = new StringName("set_distance_fade_length");
-      this._bindings.method_set_distance_fade_length = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("Light3D");
-      let methodname = new StringName("get_distance_fade_length");
-      this._bindings.method_get_distance_fade_length = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("Light3D");
-      let methodname = new StringName("set_color");
-      this._bindings.method_set_color = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2920490490
-      );
-    }
-    {
-      let classname = new StringName("Light3D");
-      let methodname = new StringName("get_color");
-      this._bindings.method_get_color = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3444240500
-      );
-    }
-    {
-      let classname = new StringName("Light3D");
-      let methodname = new StringName("set_shadow_reverse_cull_face");
-      this._bindings.method_set_shadow_reverse_cull_face = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("Light3D");
-      let methodname = new StringName("get_shadow_reverse_cull_face");
-      this._bindings.method_get_shadow_reverse_cull_face = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("Light3D");
-      let methodname = new StringName("set_bake_mode");
-      this._bindings.method_set_bake_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        37739303
-      );
-    }
-    {
-      let classname = new StringName("Light3D");
-      let methodname = new StringName("get_bake_mode");
-      this._bindings.method_get_bake_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        371737608
-      );
-    }
-    {
-      let classname = new StringName("Light3D");
-      let methodname = new StringName("set_projector");
-      this._bindings.method_set_projector = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4051416890
-      );
-    }
-    {
-      let classname = new StringName("Light3D");
-      let methodname = new StringName("get_projector");
-      this._bindings.method_get_projector = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3635182373
-      );
-    }
-    {
-      let classname = new StringName("Light3D");
-      let methodname = new StringName("set_temperature");
-      this._bindings.method_set_temperature = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("Light3D");
-      let methodname = new StringName("get_temperature");
-      this._bindings.method_get_temperature = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("Light3D");
-      let methodname = new StringName("get_correlated_color");
-      this._bindings.method_get_correlated_color = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3444240500
-      );
-    }
+      {
+        let classname = new StringName("Light3D");
+        let methodname = new StringName("set_editor_only");
+        this._bindings.method_set_editor_only = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("Light3D");
+        let methodname = new StringName("is_editor_only");
+        this._bindings.method_is_editor_only = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("Light3D");
+        let methodname = new StringName("set_param");
+        this._bindings.method_set_param = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1722734213
+        );
+      }
+      {
+        let classname = new StringName("Light3D");
+        let methodname = new StringName("get_param");
+        this._bindings.method_get_param = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1844084987
+        );
+      }
+      {
+        let classname = new StringName("Light3D");
+        let methodname = new StringName("set_shadow");
+        this._bindings.method_set_shadow = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("Light3D");
+        let methodname = new StringName("has_shadow");
+        this._bindings.method_has_shadow = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("Light3D");
+        let methodname = new StringName("set_negative");
+        this._bindings.method_set_negative = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("Light3D");
+        let methodname = new StringName("is_negative");
+        this._bindings.method_is_negative = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("Light3D");
+        let methodname = new StringName("set_cull_mask");
+        this._bindings.method_set_cull_mask = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1286410249
+        );
+      }
+      {
+        let classname = new StringName("Light3D");
+        let methodname = new StringName("get_cull_mask");
+        this._bindings.method_get_cull_mask = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
+      {
+        let classname = new StringName("Light3D");
+        let methodname = new StringName("set_enable_distance_fade");
+        this._bindings.method_set_enable_distance_fade = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("Light3D");
+        let methodname = new StringName("is_distance_fade_enabled");
+        this._bindings.method_is_distance_fade_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("Light3D");
+        let methodname = new StringName("set_distance_fade_begin");
+        this._bindings.method_set_distance_fade_begin = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("Light3D");
+        let methodname = new StringName("get_distance_fade_begin");
+        this._bindings.method_get_distance_fade_begin = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("Light3D");
+        let methodname = new StringName("set_distance_fade_shadow");
+        this._bindings.method_set_distance_fade_shadow = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("Light3D");
+        let methodname = new StringName("get_distance_fade_shadow");
+        this._bindings.method_get_distance_fade_shadow = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("Light3D");
+        let methodname = new StringName("set_distance_fade_length");
+        this._bindings.method_set_distance_fade_length = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("Light3D");
+        let methodname = new StringName("get_distance_fade_length");
+        this._bindings.method_get_distance_fade_length = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("Light3D");
+        let methodname = new StringName("set_color");
+        this._bindings.method_set_color = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2920490490
+        );
+      }
+      {
+        let classname = new StringName("Light3D");
+        let methodname = new StringName("get_color");
+        this._bindings.method_get_color = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3444240500
+        );
+      }
+      {
+        let classname = new StringName("Light3D");
+        let methodname = new StringName("set_shadow_reverse_cull_face");
+        this._bindings.method_set_shadow_reverse_cull_face = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("Light3D");
+        let methodname = new StringName("get_shadow_reverse_cull_face");
+        this._bindings.method_get_shadow_reverse_cull_face = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("Light3D");
+        let methodname = new StringName("set_bake_mode");
+        this._bindings.method_set_bake_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          37739303
+        );
+      }
+      {
+        let classname = new StringName("Light3D");
+        let methodname = new StringName("get_bake_mode");
+        this._bindings.method_get_bake_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          371737608
+        );
+      }
+      {
+        let classname = new StringName("Light3D");
+        let methodname = new StringName("set_projector");
+        this._bindings.method_set_projector = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4051416890
+        );
+      }
+      {
+        let classname = new StringName("Light3D");
+        let methodname = new StringName("get_projector");
+        this._bindings.method_get_projector = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3635182373
+        );
+      }
+      {
+        let classname = new StringName("Light3D");
+        let methodname = new StringName("set_temperature");
+        this._bindings.method_set_temperature = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("Light3D");
+        let methodname = new StringName("get_temperature");
+        this._bindings.method_get_temperature = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("Light3D");
+        let methodname = new StringName("get_correlated_color");
+        this._bindings.method_get_correlated_color = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3444240500
+        );
+      }
   }
   set_editor_only(_editor_only) {
     return _call_native_mb_no_ret(
@@ -315,6 +323,7 @@ export class Light3D extends VisualInstance3D{
       this._owner,
       _editor_only
     );
+    
   }
   is_editor_only() {
     return _call_native_mb_ret(
@@ -323,6 +332,7 @@ export class Light3D extends VisualInstance3D{
 			Variant.Type.BOOL,
       
     );
+    
   }
   set_param(_param, _value) {
     return _call_native_mb_no_ret(
@@ -330,6 +340,7 @@ export class Light3D extends VisualInstance3D{
       this._owner,
       _param, _value
     );
+    
   }
   get_param(_param) {
     return _call_native_mb_ret(
@@ -338,6 +349,7 @@ export class Light3D extends VisualInstance3D{
 			Variant.Type.FLOAT,
       _param
     );
+    
   }
   set_shadow(_enabled) {
     return _call_native_mb_no_ret(
@@ -345,6 +357,7 @@ export class Light3D extends VisualInstance3D{
       this._owner,
       _enabled
     );
+    
   }
   has_shadow() {
     return _call_native_mb_ret(
@@ -353,6 +366,7 @@ export class Light3D extends VisualInstance3D{
 			Variant.Type.BOOL,
       
     );
+    
   }
   set_negative(_enabled) {
     return _call_native_mb_no_ret(
@@ -360,6 +374,7 @@ export class Light3D extends VisualInstance3D{
       this._owner,
       _enabled
     );
+    
   }
   is_negative() {
     return _call_native_mb_ret(
@@ -368,6 +383,7 @@ export class Light3D extends VisualInstance3D{
 			Variant.Type.BOOL,
       
     );
+    
   }
   set_cull_mask(_cull_mask) {
     return _call_native_mb_no_ret(
@@ -375,6 +391,7 @@ export class Light3D extends VisualInstance3D{
       this._owner,
       _cull_mask
     );
+    
   }
   get_cull_mask() {
     return _call_native_mb_ret(
@@ -383,6 +400,7 @@ export class Light3D extends VisualInstance3D{
 			Variant.Type.INT,
       
     );
+    
   }
   set_enable_distance_fade(_enable) {
     return _call_native_mb_no_ret(
@@ -390,6 +408,7 @@ export class Light3D extends VisualInstance3D{
       this._owner,
       _enable
     );
+    
   }
   is_distance_fade_enabled() {
     return _call_native_mb_ret(
@@ -398,6 +417,7 @@ export class Light3D extends VisualInstance3D{
 			Variant.Type.BOOL,
       
     );
+    
   }
   set_distance_fade_begin(_distance) {
     return _call_native_mb_no_ret(
@@ -405,6 +425,7 @@ export class Light3D extends VisualInstance3D{
       this._owner,
       _distance
     );
+    
   }
   get_distance_fade_begin() {
     return _call_native_mb_ret(
@@ -413,6 +434,7 @@ export class Light3D extends VisualInstance3D{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_distance_fade_shadow(_distance) {
     return _call_native_mb_no_ret(
@@ -420,6 +442,7 @@ export class Light3D extends VisualInstance3D{
       this._owner,
       _distance
     );
+    
   }
   get_distance_fade_shadow() {
     return _call_native_mb_ret(
@@ -428,6 +451,7 @@ export class Light3D extends VisualInstance3D{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_distance_fade_length(_distance) {
     return _call_native_mb_no_ret(
@@ -435,6 +459,7 @@ export class Light3D extends VisualInstance3D{
       this._owner,
       _distance
     );
+    
   }
   get_distance_fade_length() {
     return _call_native_mb_ret(
@@ -443,6 +468,7 @@ export class Light3D extends VisualInstance3D{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_color(_color) {
     return _call_native_mb_no_ret(
@@ -450,6 +476,7 @@ export class Light3D extends VisualInstance3D{
       this._owner,
       _color
     );
+    
   }
   get_color() {
     return _call_native_mb_ret(
@@ -459,6 +486,7 @@ export class Light3D extends VisualInstance3D{
     ,
       
     );
+    
   }
   set_shadow_reverse_cull_face(_enable) {
     return _call_native_mb_no_ret(
@@ -466,6 +494,7 @@ export class Light3D extends VisualInstance3D{
       this._owner,
       _enable
     );
+    
   }
   get_shadow_reverse_cull_face() {
     return _call_native_mb_ret(
@@ -474,6 +503,7 @@ export class Light3D extends VisualInstance3D{
 			Variant.Type.BOOL,
       
     );
+    
   }
   set_bake_mode(_bake_mode) {
     return _call_native_mb_no_ret(
@@ -481,6 +511,7 @@ export class Light3D extends VisualInstance3D{
       this._owner,
       _bake_mode
     );
+    
   }
   get_bake_mode() {
     return _call_native_mb_ret(
@@ -489,6 +520,7 @@ export class Light3D extends VisualInstance3D{
 			Variant.INT,
       
     );
+    
   }
   set_projector(_projector) {
     return _call_native_mb_no_ret(
@@ -496,6 +528,7 @@ export class Light3D extends VisualInstance3D{
       this._owner,
       _projector
     );
+    
   }
   get_projector() {
     return _call_native_mb_ret(
@@ -504,6 +537,7 @@ export class Light3D extends VisualInstance3D{
 			Variant.INT,
       
     );
+    
   }
   set_temperature(_temperature) {
     return _call_native_mb_no_ret(
@@ -511,6 +545,7 @@ export class Light3D extends VisualInstance3D{
       this._owner,
       _temperature
     );
+    
   }
   get_temperature() {
     return _call_native_mb_ret(
@@ -519,6 +554,7 @@ export class Light3D extends VisualInstance3D{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   get_correlated_color() {
     return _call_native_mb_ret(
@@ -528,6 +564,7 @@ export class Light3D extends VisualInstance3D{
     ,
       
     );
+    
   }
   static Param = {
     PARAM_ENERGY: 0,

@@ -1,5 +1,13 @@
 import * as internal from '__internal__';
-import { GLTFDocument } from 'src/js_godot/classesgltf_document'
+import { GLTFDocument } from 'src/js_godot/classes/gltf_document'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
 }
 

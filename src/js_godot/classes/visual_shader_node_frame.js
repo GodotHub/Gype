@@ -1,8 +1,16 @@
 import * as internal from '__internal__';
+import { GDString } from 'src/js_godot/variant/gd_string'
+import { StringName } from 'src/js_godot/variant/string_name'
+import { VisualShaderNodeResizableBase } from 'src/js_godot/classes/visual_shader_node_resizable_base'
 import { PackedInt32Array } from 'src/js_godot/variant/packed_int32_array'
 import { Color } from 'src/js_godot/variant/color'
-import { VisualShaderNodeResizableBase } from 'src/js_godot/classesvisual_shader_node_resizable_base'
-import { GDString } from 'src/js_godot/variant/gd_string'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_set_title;
     method_get_title;
@@ -32,114 +40,114 @@ export class VisualShaderNodeFrame extends VisualShaderNodeResizableBase{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("VisualShaderNodeFrame");
-      let methodname = new StringName("set_title");
-      this._bindings.method_set_title = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        83702148
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNodeFrame");
-      let methodname = new StringName("get_title");
-      this._bindings.method_get_title = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        201670096
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNodeFrame");
-      let methodname = new StringName("set_tint_color_enabled");
-      this._bindings.method_set_tint_color_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNodeFrame");
-      let methodname = new StringName("is_tint_color_enabled");
-      this._bindings.method_is_tint_color_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNodeFrame");
-      let methodname = new StringName("set_tint_color");
-      this._bindings.method_set_tint_color = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2920490490
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNodeFrame");
-      let methodname = new StringName("get_tint_color");
-      this._bindings.method_get_tint_color = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3444240500
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNodeFrame");
-      let methodname = new StringName("set_autoshrink_enabled");
-      this._bindings.method_set_autoshrink_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNodeFrame");
-      let methodname = new StringName("is_autoshrink_enabled");
-      this._bindings.method_is_autoshrink_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNodeFrame");
-      let methodname = new StringName("add_attached_node");
-      this._bindings.method_add_attached_node = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNodeFrame");
-      let methodname = new StringName("remove_attached_node");
-      this._bindings.method_remove_attached_node = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNodeFrame");
-      let methodname = new StringName("set_attached_nodes");
-      this._bindings.method_set_attached_nodes = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3614634198
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNodeFrame");
-      let methodname = new StringName("get_attached_nodes");
-      this._bindings.method_get_attached_nodes = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1930428628
-      );
-    }
+      {
+        let classname = new StringName("VisualShaderNodeFrame");
+        let methodname = new StringName("set_title");
+        this._bindings.method_set_title = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          83702148
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNodeFrame");
+        let methodname = new StringName("get_title");
+        this._bindings.method_get_title = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          201670096
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNodeFrame");
+        let methodname = new StringName("set_tint_color_enabled");
+        this._bindings.method_set_tint_color_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNodeFrame");
+        let methodname = new StringName("is_tint_color_enabled");
+        this._bindings.method_is_tint_color_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNodeFrame");
+        let methodname = new StringName("set_tint_color");
+        this._bindings.method_set_tint_color = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2920490490
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNodeFrame");
+        let methodname = new StringName("get_tint_color");
+        this._bindings.method_get_tint_color = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3444240500
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNodeFrame");
+        let methodname = new StringName("set_autoshrink_enabled");
+        this._bindings.method_set_autoshrink_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNodeFrame");
+        let methodname = new StringName("is_autoshrink_enabled");
+        this._bindings.method_is_autoshrink_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNodeFrame");
+        let methodname = new StringName("add_attached_node");
+        this._bindings.method_add_attached_node = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1286410249
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNodeFrame");
+        let methodname = new StringName("remove_attached_node");
+        this._bindings.method_remove_attached_node = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1286410249
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNodeFrame");
+        let methodname = new StringName("set_attached_nodes");
+        this._bindings.method_set_attached_nodes = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3614634198
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNodeFrame");
+        let methodname = new StringName("get_attached_nodes");
+        this._bindings.method_get_attached_nodes = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1930428628
+        );
+      }
   }
   set_title(_title) {
     return _call_native_mb_no_ret(
@@ -147,6 +155,7 @@ export class VisualShaderNodeFrame extends VisualShaderNodeResizableBase{
       this._owner,
       _title
     );
+    
   }
   get_title() {
     return _call_native_mb_ret(
@@ -156,6 +165,7 @@ export class VisualShaderNodeFrame extends VisualShaderNodeResizableBase{
     ,
       
     );
+    
   }
   set_tint_color_enabled(_enable) {
     return _call_native_mb_no_ret(
@@ -163,6 +173,7 @@ export class VisualShaderNodeFrame extends VisualShaderNodeResizableBase{
       this._owner,
       _enable
     );
+    
   }
   is_tint_color_enabled() {
     return _call_native_mb_ret(
@@ -171,6 +182,7 @@ export class VisualShaderNodeFrame extends VisualShaderNodeResizableBase{
 			Variant.Type.BOOL,
       
     );
+    
   }
   set_tint_color(_color) {
     return _call_native_mb_no_ret(
@@ -178,6 +190,7 @@ export class VisualShaderNodeFrame extends VisualShaderNodeResizableBase{
       this._owner,
       _color
     );
+    
   }
   get_tint_color() {
     return _call_native_mb_ret(
@@ -187,6 +200,7 @@ export class VisualShaderNodeFrame extends VisualShaderNodeResizableBase{
     ,
       
     );
+    
   }
   set_autoshrink_enabled(_enable) {
     return _call_native_mb_no_ret(
@@ -194,6 +208,7 @@ export class VisualShaderNodeFrame extends VisualShaderNodeResizableBase{
       this._owner,
       _enable
     );
+    
   }
   is_autoshrink_enabled() {
     return _call_native_mb_ret(
@@ -202,6 +217,7 @@ export class VisualShaderNodeFrame extends VisualShaderNodeResizableBase{
 			Variant.Type.BOOL,
       
     );
+    
   }
   add_attached_node(_node) {
     return _call_native_mb_no_ret(
@@ -209,6 +225,7 @@ export class VisualShaderNodeFrame extends VisualShaderNodeResizableBase{
       this._owner,
       _node
     );
+    
   }
   remove_attached_node(_node) {
     return _call_native_mb_no_ret(
@@ -216,6 +233,7 @@ export class VisualShaderNodeFrame extends VisualShaderNodeResizableBase{
       this._owner,
       _node
     );
+    
   }
   set_attached_nodes(_attached_nodes) {
     return _call_native_mb_no_ret(
@@ -223,6 +241,7 @@ export class VisualShaderNodeFrame extends VisualShaderNodeResizableBase{
       this._owner,
       _attached_nodes
     );
+    
   }
   get_attached_nodes() {
     return _call_native_mb_ret(
@@ -232,5 +251,6 @@ export class VisualShaderNodeFrame extends VisualShaderNodeResizableBase{
     ,
       
     );
+    
   }
 }

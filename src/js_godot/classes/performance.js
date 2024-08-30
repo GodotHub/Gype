@@ -1,9 +1,16 @@
 import * as internal from '__internal__';
-import { GDArray } from 'src/js_godot/variant/gd_array'
-import { Variant } from 'src/js_godot/variant/variant'
+import { GodotObject } from 'src/js_godot/classes/godot_object'
 import { StringName } from 'src/js_godot/variant/string_name'
-import { GodotObject } from 'src/js_godot/classesgodot_object'
 import { Callable } from 'src/js_godot/variant/callable'
+import { Variant } from 'src/js_godot/variant/variant'
+import { GDArray } from 'src/js_godot/variant/gd_array'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_get_monitor;
     method_add_custom_monitor;
@@ -29,69 +36,69 @@ class _Performance extends GodotObject{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("Performance");
-      let methodname = new StringName("get_monitor");
-      this._bindings.method_get_monitor = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1943275655
-      );
-    }
-    {
-      let classname = new StringName("Performance");
-      let methodname = new StringName("add_custom_monitor");
-      this._bindings.method_add_custom_monitor = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4099036814
-      );
-    }
-    {
-      let classname = new StringName("Performance");
-      let methodname = new StringName("remove_custom_monitor");
-      this._bindings.method_remove_custom_monitor = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3304788590
-      );
-    }
-    {
-      let classname = new StringName("Performance");
-      let methodname = new StringName("has_custom_monitor");
-      this._bindings.method_has_custom_monitor = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2041966384
-      );
-    }
-    {
-      let classname = new StringName("Performance");
-      let methodname = new StringName("get_custom_monitor");
-      this._bindings.method_get_custom_monitor = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2138907829
-      );
-    }
-    {
-      let classname = new StringName("Performance");
-      let methodname = new StringName("get_monitor_modification_time");
-      this._bindings.method_get_monitor_modification_time = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2455072627
-      );
-    }
-    {
-      let classname = new StringName("Performance");
-      let methodname = new StringName("get_custom_monitor_names");
-      this._bindings.method_get_custom_monitor_names = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2915620761
-      );
-    }
+      {
+        let classname = new StringName("Performance");
+        let methodname = new StringName("get_monitor");
+        this._bindings.method_get_monitor = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1943275655
+        );
+      }
+      {
+        let classname = new StringName("Performance");
+        let methodname = new StringName("add_custom_monitor");
+        this._bindings.method_add_custom_monitor = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4099036814
+        );
+      }
+      {
+        let classname = new StringName("Performance");
+        let methodname = new StringName("remove_custom_monitor");
+        this._bindings.method_remove_custom_monitor = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3304788590
+        );
+      }
+      {
+        let classname = new StringName("Performance");
+        let methodname = new StringName("has_custom_monitor");
+        this._bindings.method_has_custom_monitor = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2041966384
+        );
+      }
+      {
+        let classname = new StringName("Performance");
+        let methodname = new StringName("get_custom_monitor");
+        this._bindings.method_get_custom_monitor = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2138907829
+        );
+      }
+      {
+        let classname = new StringName("Performance");
+        let methodname = new StringName("get_monitor_modification_time");
+        this._bindings.method_get_monitor_modification_time = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2455072627
+        );
+      }
+      {
+        let classname = new StringName("Performance");
+        let methodname = new StringName("get_custom_monitor_names");
+        this._bindings.method_get_custom_monitor_names = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2915620761
+        );
+      }
   }
   get_monitor(_monitor) {
     return _call_native_mb_ret(
@@ -100,6 +107,7 @@ class _Performance extends GodotObject{
 			Variant.Type.FLOAT,
       _monitor
     );
+    
   }
   add_custom_monitor(_id, _callable, _arguments) {
     return _call_native_mb_no_ret(
@@ -107,6 +115,7 @@ class _Performance extends GodotObject{
       this._owner,
       _id, _callable, _arguments
     );
+    
   }
   remove_custom_monitor(_id) {
     return _call_native_mb_no_ret(
@@ -114,6 +123,7 @@ class _Performance extends GodotObject{
       this._owner,
       _id
     );
+    
   }
   has_custom_monitor(_id) {
     return _call_native_mb_ret(
@@ -122,6 +132,7 @@ class _Performance extends GodotObject{
 			Variant.Type.BOOL,
       _id
     );
+    
   }
   get_custom_monitor(_id) {
     return _call_native_mb_ret(
@@ -131,6 +142,7 @@ class _Performance extends GodotObject{
     ,
       _id
     );
+    
   }
   get_monitor_modification_time() {
     return _call_native_mb_ret(
@@ -139,6 +151,7 @@ class _Performance extends GodotObject{
 			Variant.Type.INT,
       
     );
+    
   }
   get_custom_monitor_names() {
     return _call_native_mb_ret(
@@ -147,6 +160,7 @@ class _Performance extends GodotObject{
 			Variant.INT,
       
     );
+    
   }
   static Monitor = {
     TIME_FPS: 0,

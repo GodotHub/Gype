@@ -1,6 +1,14 @@
 import * as internal from '__internal__';
-import { Node3D } from 'src/js_godot/classesnode3d'
 import { Transform3D } from 'src/js_godot/variant/transform3d'
+import { Node3D } from 'src/js_godot/classes/node3d'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_make_current;
     method_clear_current;
@@ -22,42 +30,42 @@ export class AudioListener3D extends Node3D{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("AudioListener3D");
-      let methodname = new StringName("make_current");
-      this._bindings.method_make_current = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3218959716
-      );
-    }
-    {
-      let classname = new StringName("AudioListener3D");
-      let methodname = new StringName("clear_current");
-      this._bindings.method_clear_current = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3218959716
-      );
-    }
-    {
-      let classname = new StringName("AudioListener3D");
-      let methodname = new StringName("is_current");
-      this._bindings.method_is_current = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("AudioListener3D");
-      let methodname = new StringName("get_listener_transform");
-      this._bindings.method_get_listener_transform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3229777777
-      );
-    }
+      {
+        let classname = new StringName("AudioListener3D");
+        let methodname = new StringName("make_current");
+        this._bindings.method_make_current = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3218959716
+        );
+      }
+      {
+        let classname = new StringName("AudioListener3D");
+        let methodname = new StringName("clear_current");
+        this._bindings.method_clear_current = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3218959716
+        );
+      }
+      {
+        let classname = new StringName("AudioListener3D");
+        let methodname = new StringName("is_current");
+        this._bindings.method_is_current = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("AudioListener3D");
+        let methodname = new StringName("get_listener_transform");
+        this._bindings.method_get_listener_transform = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3229777777
+        );
+      }
   }
   make_current() {
     return _call_native_mb_no_ret(
@@ -65,6 +73,7 @@ export class AudioListener3D extends Node3D{
       this._owner,
       
     );
+    
   }
   clear_current() {
     return _call_native_mb_no_ret(
@@ -72,6 +81,7 @@ export class AudioListener3D extends Node3D{
       this._owner,
       
     );
+    
   }
   is_current() {
     return _call_native_mb_ret(
@@ -80,6 +90,7 @@ export class AudioListener3D extends Node3D{
 			Variant.Type.BOOL,
       
     );
+    
   }
   get_listener_transform() {
     return _call_native_mb_ret(
@@ -89,5 +100,6 @@ export class AudioListener3D extends Node3D{
     ,
       
     );
+    
   }
 }

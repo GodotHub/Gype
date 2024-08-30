@@ -1,11 +1,18 @@
 import * as internal from "__internal__";
-import { NodePath } from "src/js_godot/variant/node_path";
 import { GDString } from "src/js_godot/variant/gd_string";
+import { StringName } from "src/js_godot/variant/string_name";
+import { NodePath } from "src/js_godot/variant/node_path";
+import { Callable } from "src/js_godot/variant/callable";
 import { Variant } from "src/js_godot/variant/variant";
 import { GDArray } from "src/js_godot/variant/gd_array";
-import { StringName } from "src/js_godot/variant/string_name";
-import { Callable } from "src/js_godot/variant/callable";
 import { Wrapped } from "src/js_godot/classes/wrapped";
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret,
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
   method_get_class;
   method_is_class;

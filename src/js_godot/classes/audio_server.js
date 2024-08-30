@@ -1,8 +1,15 @@
 import * as internal from '__internal__';
-import { StringName } from 'src/js_godot/variant/string_name'
-import { GodotObject } from 'src/js_godot/classesgodot_object'
+import { GodotObject } from 'src/js_godot/classes/godot_object'
 import { PackedStringArray } from 'src/js_godot/variant/packed_string_array'
 import { GDString } from 'src/js_godot/variant/gd_string'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_set_bus_count;
     method_get_bus_count;
@@ -70,447 +77,447 @@ class _AudioServer extends GodotObject{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("set_bus_count");
-      this._bindings.method_set_bus_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("get_bus_count");
-      this._bindings.method_get_bus_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("remove_bus");
-      this._bindings.method_remove_bus = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("add_bus");
-      this._bindings.method_add_bus = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1025054187
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("move_bus");
-      this._bindings.method_move_bus = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3937882851
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("set_bus_name");
-      this._bindings.method_set_bus_name = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        501894301
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("get_bus_name");
-      this._bindings.method_get_bus_name = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        844755477
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("get_bus_index");
-      this._bindings.method_get_bus_index = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2458036349
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("get_bus_channels");
-      this._bindings.method_get_bus_channels = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        923996154
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("set_bus_volume_db");
-      this._bindings.method_set_bus_volume_db = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1602489585
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("get_bus_volume_db");
-      this._bindings.method_get_bus_volume_db = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2339986948
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("set_bus_send");
-      this._bindings.method_set_bus_send = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3780747571
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("get_bus_send");
-      this._bindings.method_get_bus_send = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        659327637
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("set_bus_solo");
-      this._bindings.method_set_bus_solo = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        300928843
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("is_bus_solo");
-      this._bindings.method_is_bus_solo = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1116898809
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("set_bus_mute");
-      this._bindings.method_set_bus_mute = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        300928843
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("is_bus_mute");
-      this._bindings.method_is_bus_mute = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1116898809
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("set_bus_bypass_effects");
-      this._bindings.method_set_bus_bypass_effects = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        300928843
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("is_bus_bypassing_effects");
-      this._bindings.method_is_bus_bypassing_effects = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1116898809
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("add_bus_effect");
-      this._bindings.method_add_bus_effect = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4068819785
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("remove_bus_effect");
-      this._bindings.method_remove_bus_effect = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3937882851
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("get_bus_effect_count");
-      this._bindings.method_get_bus_effect_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3744713108
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("get_bus_effect");
-      this._bindings.method_get_bus_effect = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        726064442
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("get_bus_effect_instance");
-      this._bindings.method_get_bus_effect_instance = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1829771234
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("swap_bus_effects");
-      this._bindings.method_swap_bus_effects = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1649997291
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("set_bus_effect_enabled");
-      this._bindings.method_set_bus_effect_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1383440665
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("is_bus_effect_enabled");
-      this._bindings.method_is_bus_effect_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2522259332
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("get_bus_peak_volume_left_db");
-      this._bindings.method_get_bus_peak_volume_left_db = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3085491603
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("get_bus_peak_volume_right_db");
-      this._bindings.method_get_bus_peak_volume_right_db = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3085491603
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("set_playback_speed_scale");
-      this._bindings.method_set_playback_speed_scale = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("get_playback_speed_scale");
-      this._bindings.method_get_playback_speed_scale = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("lock");
-      this._bindings.method_lock = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3218959716
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("unlock");
-      this._bindings.method_unlock = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3218959716
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("get_speaker_mode");
-      this._bindings.method_get_speaker_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2549190337
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("get_mix_rate");
-      this._bindings.method_get_mix_rate = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("get_output_device_list");
-      this._bindings.method_get_output_device_list = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2981934095
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("get_output_device");
-      this._bindings.method_get_output_device = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2841200299
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("set_output_device");
-      this._bindings.method_set_output_device = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        83702148
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("get_time_to_next_mix");
-      this._bindings.method_get_time_to_next_mix = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("get_time_since_last_mix");
-      this._bindings.method_get_time_since_last_mix = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("get_output_latency");
-      this._bindings.method_get_output_latency = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("get_input_device_list");
-      this._bindings.method_get_input_device_list = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2981934095
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("get_input_device");
-      this._bindings.method_get_input_device = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2841200299
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("set_input_device");
-      this._bindings.method_set_input_device = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        83702148
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("set_bus_layout");
-      this._bindings.method_set_bus_layout = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3319058824
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("generate_bus_layout");
-      this._bindings.method_generate_bus_layout = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3769973890
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("set_enable_tagging_used_audio_streams");
-      this._bindings.method_set_enable_tagging_used_audio_streams = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("is_stream_registered_as_sample");
-      this._bindings.method_is_stream_registered_as_sample = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        500225754
-      );
-    }
-    {
-      let classname = new StringName("AudioServer");
-      let methodname = new StringName("register_stream_as_sample");
-      this._bindings.method_register_stream_as_sample = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2210767741
-      );
-    }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("set_bus_count");
+        this._bindings.method_set_bus_count = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1286410249
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("get_bus_count");
+        this._bindings.method_get_bus_count = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("remove_bus");
+        this._bindings.method_remove_bus = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1286410249
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("add_bus");
+        this._bindings.method_add_bus = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1025054187
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("move_bus");
+        this._bindings.method_move_bus = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3937882851
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("set_bus_name");
+        this._bindings.method_set_bus_name = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          501894301
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("get_bus_name");
+        this._bindings.method_get_bus_name = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          844755477
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("get_bus_index");
+        this._bindings.method_get_bus_index = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2458036349
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("get_bus_channels");
+        this._bindings.method_get_bus_channels = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          923996154
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("set_bus_volume_db");
+        this._bindings.method_set_bus_volume_db = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1602489585
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("get_bus_volume_db");
+        this._bindings.method_get_bus_volume_db = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2339986948
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("set_bus_send");
+        this._bindings.method_set_bus_send = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3780747571
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("get_bus_send");
+        this._bindings.method_get_bus_send = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          659327637
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("set_bus_solo");
+        this._bindings.method_set_bus_solo = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          300928843
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("is_bus_solo");
+        this._bindings.method_is_bus_solo = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1116898809
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("set_bus_mute");
+        this._bindings.method_set_bus_mute = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          300928843
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("is_bus_mute");
+        this._bindings.method_is_bus_mute = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1116898809
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("set_bus_bypass_effects");
+        this._bindings.method_set_bus_bypass_effects = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          300928843
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("is_bus_bypassing_effects");
+        this._bindings.method_is_bus_bypassing_effects = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1116898809
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("add_bus_effect");
+        this._bindings.method_add_bus_effect = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4068819785
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("remove_bus_effect");
+        this._bindings.method_remove_bus_effect = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3937882851
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("get_bus_effect_count");
+        this._bindings.method_get_bus_effect_count = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3744713108
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("get_bus_effect");
+        this._bindings.method_get_bus_effect = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          726064442
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("get_bus_effect_instance");
+        this._bindings.method_get_bus_effect_instance = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1829771234
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("swap_bus_effects");
+        this._bindings.method_swap_bus_effects = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1649997291
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("set_bus_effect_enabled");
+        this._bindings.method_set_bus_effect_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1383440665
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("is_bus_effect_enabled");
+        this._bindings.method_is_bus_effect_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2522259332
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("get_bus_peak_volume_left_db");
+        this._bindings.method_get_bus_peak_volume_left_db = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3085491603
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("get_bus_peak_volume_right_db");
+        this._bindings.method_get_bus_peak_volume_right_db = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3085491603
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("set_playback_speed_scale");
+        this._bindings.method_set_playback_speed_scale = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("get_playback_speed_scale");
+        this._bindings.method_get_playback_speed_scale = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("lock");
+        this._bindings.method_lock = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3218959716
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("unlock");
+        this._bindings.method_unlock = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3218959716
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("get_speaker_mode");
+        this._bindings.method_get_speaker_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2549190337
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("get_mix_rate");
+        this._bindings.method_get_mix_rate = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("get_output_device_list");
+        this._bindings.method_get_output_device_list = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2981934095
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("get_output_device");
+        this._bindings.method_get_output_device = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2841200299
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("set_output_device");
+        this._bindings.method_set_output_device = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          83702148
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("get_time_to_next_mix");
+        this._bindings.method_get_time_to_next_mix = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("get_time_since_last_mix");
+        this._bindings.method_get_time_since_last_mix = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("get_output_latency");
+        this._bindings.method_get_output_latency = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("get_input_device_list");
+        this._bindings.method_get_input_device_list = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2981934095
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("get_input_device");
+        this._bindings.method_get_input_device = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2841200299
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("set_input_device");
+        this._bindings.method_set_input_device = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          83702148
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("set_bus_layout");
+        this._bindings.method_set_bus_layout = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3319058824
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("generate_bus_layout");
+        this._bindings.method_generate_bus_layout = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3769973890
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("set_enable_tagging_used_audio_streams");
+        this._bindings.method_set_enable_tagging_used_audio_streams = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("is_stream_registered_as_sample");
+        this._bindings.method_is_stream_registered_as_sample = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          500225754
+        );
+      }
+      {
+        let classname = new StringName("AudioServer");
+        let methodname = new StringName("register_stream_as_sample");
+        this._bindings.method_register_stream_as_sample = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2210767741
+        );
+      }
   }
   set_bus_count(_amount) {
     return _call_native_mb_no_ret(
@@ -518,6 +525,7 @@ class _AudioServer extends GodotObject{
       this._owner,
       _amount
     );
+    
   }
   get_bus_count() {
     return _call_native_mb_ret(
@@ -526,6 +534,7 @@ class _AudioServer extends GodotObject{
 			Variant.Type.INT,
       
     );
+    
   }
   remove_bus(_index) {
     return _call_native_mb_no_ret(
@@ -533,6 +542,7 @@ class _AudioServer extends GodotObject{
       this._owner,
       _index
     );
+    
   }
   add_bus(_at_position) {
     return _call_native_mb_no_ret(
@@ -540,6 +550,7 @@ class _AudioServer extends GodotObject{
       this._owner,
       _at_position
     );
+    
   }
   move_bus(_index, _to_index) {
     return _call_native_mb_no_ret(
@@ -547,6 +558,7 @@ class _AudioServer extends GodotObject{
       this._owner,
       _index, _to_index
     );
+    
   }
   set_bus_name(_bus_idx, _name) {
     return _call_native_mb_no_ret(
@@ -554,6 +566,7 @@ class _AudioServer extends GodotObject{
       this._owner,
       _bus_idx, _name
     );
+    
   }
   get_bus_name(_bus_idx) {
     return _call_native_mb_ret(
@@ -563,6 +576,7 @@ class _AudioServer extends GodotObject{
     ,
       _bus_idx
     );
+    
   }
   get_bus_index(_bus_name) {
     return _call_native_mb_ret(
@@ -571,6 +585,7 @@ class _AudioServer extends GodotObject{
 			Variant.Type.INT,
       _bus_name
     );
+    
   }
   get_bus_channels(_bus_idx) {
     return _call_native_mb_ret(
@@ -579,6 +594,7 @@ class _AudioServer extends GodotObject{
 			Variant.Type.INT,
       _bus_idx
     );
+    
   }
   set_bus_volume_db(_bus_idx, _volume_db) {
     return _call_native_mb_no_ret(
@@ -586,6 +602,7 @@ class _AudioServer extends GodotObject{
       this._owner,
       _bus_idx, _volume_db
     );
+    
   }
   get_bus_volume_db(_bus_idx) {
     return _call_native_mb_ret(
@@ -594,6 +611,7 @@ class _AudioServer extends GodotObject{
 			Variant.Type.FLOAT,
       _bus_idx
     );
+    
   }
   set_bus_send(_bus_idx, _send) {
     return _call_native_mb_no_ret(
@@ -601,6 +619,7 @@ class _AudioServer extends GodotObject{
       this._owner,
       _bus_idx, _send
     );
+    
   }
   get_bus_send(_bus_idx) {
     return _call_native_mb_ret(
@@ -610,6 +629,7 @@ class _AudioServer extends GodotObject{
     ,
       _bus_idx
     );
+    
   }
   set_bus_solo(_bus_idx, _enable) {
     return _call_native_mb_no_ret(
@@ -617,6 +637,7 @@ class _AudioServer extends GodotObject{
       this._owner,
       _bus_idx, _enable
     );
+    
   }
   is_bus_solo(_bus_idx) {
     return _call_native_mb_ret(
@@ -625,6 +646,7 @@ class _AudioServer extends GodotObject{
 			Variant.Type.BOOL,
       _bus_idx
     );
+    
   }
   set_bus_mute(_bus_idx, _enable) {
     return _call_native_mb_no_ret(
@@ -632,6 +654,7 @@ class _AudioServer extends GodotObject{
       this._owner,
       _bus_idx, _enable
     );
+    
   }
   is_bus_mute(_bus_idx) {
     return _call_native_mb_ret(
@@ -640,6 +663,7 @@ class _AudioServer extends GodotObject{
 			Variant.Type.BOOL,
       _bus_idx
     );
+    
   }
   set_bus_bypass_effects(_bus_idx, _enable) {
     return _call_native_mb_no_ret(
@@ -647,6 +671,7 @@ class _AudioServer extends GodotObject{
       this._owner,
       _bus_idx, _enable
     );
+    
   }
   is_bus_bypassing_effects(_bus_idx) {
     return _call_native_mb_ret(
@@ -655,6 +680,7 @@ class _AudioServer extends GodotObject{
 			Variant.Type.BOOL,
       _bus_idx
     );
+    
   }
   add_bus_effect(_bus_idx, _effect, _at_position) {
     return _call_native_mb_no_ret(
@@ -662,6 +688,7 @@ class _AudioServer extends GodotObject{
       this._owner,
       _bus_idx, _effect, _at_position
     );
+    
   }
   remove_bus_effect(_bus_idx, _effect_idx) {
     return _call_native_mb_no_ret(
@@ -669,6 +696,7 @@ class _AudioServer extends GodotObject{
       this._owner,
       _bus_idx, _effect_idx
     );
+    
   }
   get_bus_effect_count(_bus_idx) {
     return _call_native_mb_ret(
@@ -677,6 +705,7 @@ class _AudioServer extends GodotObject{
 			Variant.Type.INT,
       _bus_idx
     );
+    
   }
   get_bus_effect(_bus_idx, _effect_idx) {
     return _call_native_mb_ret(
@@ -685,6 +714,7 @@ class _AudioServer extends GodotObject{
 			Variant.INT,
       _bus_idx, _effect_idx
     );
+    
   }
   get_bus_effect_instance(_bus_idx, _effect_idx, _channel) {
     return _call_native_mb_ret(
@@ -693,6 +723,7 @@ class _AudioServer extends GodotObject{
 			Variant.INT,
       _bus_idx, _effect_idx, _channel
     );
+    
   }
   swap_bus_effects(_bus_idx, _effect_idx, _by_effect_idx) {
     return _call_native_mb_no_ret(
@@ -700,6 +731,7 @@ class _AudioServer extends GodotObject{
       this._owner,
       _bus_idx, _effect_idx, _by_effect_idx
     );
+    
   }
   set_bus_effect_enabled(_bus_idx, _effect_idx, _enabled) {
     return _call_native_mb_no_ret(
@@ -707,6 +739,7 @@ class _AudioServer extends GodotObject{
       this._owner,
       _bus_idx, _effect_idx, _enabled
     );
+    
   }
   is_bus_effect_enabled(_bus_idx, _effect_idx) {
     return _call_native_mb_ret(
@@ -715,6 +748,7 @@ class _AudioServer extends GodotObject{
 			Variant.Type.BOOL,
       _bus_idx, _effect_idx
     );
+    
   }
   get_bus_peak_volume_left_db(_bus_idx, _channel) {
     return _call_native_mb_ret(
@@ -723,6 +757,7 @@ class _AudioServer extends GodotObject{
 			Variant.Type.FLOAT,
       _bus_idx, _channel
     );
+    
   }
   get_bus_peak_volume_right_db(_bus_idx, _channel) {
     return _call_native_mb_ret(
@@ -731,6 +766,7 @@ class _AudioServer extends GodotObject{
 			Variant.Type.FLOAT,
       _bus_idx, _channel
     );
+    
   }
   set_playback_speed_scale(_scale) {
     return _call_native_mb_no_ret(
@@ -738,6 +774,7 @@ class _AudioServer extends GodotObject{
       this._owner,
       _scale
     );
+    
   }
   get_playback_speed_scale() {
     return _call_native_mb_ret(
@@ -746,6 +783,7 @@ class _AudioServer extends GodotObject{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   lock() {
     return _call_native_mb_no_ret(
@@ -753,6 +791,7 @@ class _AudioServer extends GodotObject{
       this._owner,
       
     );
+    
   }
   unlock() {
     return _call_native_mb_no_ret(
@@ -760,6 +799,7 @@ class _AudioServer extends GodotObject{
       this._owner,
       
     );
+    
   }
   get_speaker_mode() {
     return _call_native_mb_ret(
@@ -768,6 +808,7 @@ class _AudioServer extends GodotObject{
 			Variant.INT,
       
     );
+    
   }
   get_mix_rate() {
     return _call_native_mb_ret(
@@ -776,6 +817,7 @@ class _AudioServer extends GodotObject{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   get_output_device_list() {
     return _call_native_mb_ret(
@@ -785,6 +827,7 @@ class _AudioServer extends GodotObject{
     ,
       
     );
+    
   }
   get_output_device() {
     return _call_native_mb_ret(
@@ -794,6 +837,7 @@ class _AudioServer extends GodotObject{
     ,
       
     );
+    
   }
   set_output_device(_name) {
     return _call_native_mb_no_ret(
@@ -801,6 +845,7 @@ class _AudioServer extends GodotObject{
       this._owner,
       _name
     );
+    
   }
   get_time_to_next_mix() {
     return _call_native_mb_ret(
@@ -809,6 +854,7 @@ class _AudioServer extends GodotObject{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   get_time_since_last_mix() {
     return _call_native_mb_ret(
@@ -817,6 +863,7 @@ class _AudioServer extends GodotObject{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   get_output_latency() {
     return _call_native_mb_ret(
@@ -825,6 +872,7 @@ class _AudioServer extends GodotObject{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   get_input_device_list() {
     return _call_native_mb_ret(
@@ -834,6 +882,7 @@ class _AudioServer extends GodotObject{
     ,
       
     );
+    
   }
   get_input_device() {
     return _call_native_mb_ret(
@@ -843,6 +892,7 @@ class _AudioServer extends GodotObject{
     ,
       
     );
+    
   }
   set_input_device(_name) {
     return _call_native_mb_no_ret(
@@ -850,6 +900,7 @@ class _AudioServer extends GodotObject{
       this._owner,
       _name
     );
+    
   }
   set_bus_layout(_bus_layout) {
     return _call_native_mb_no_ret(
@@ -857,6 +908,7 @@ class _AudioServer extends GodotObject{
       this._owner,
       _bus_layout
     );
+    
   }
   generate_bus_layout() {
     return _call_native_mb_ret(
@@ -865,6 +917,7 @@ class _AudioServer extends GodotObject{
 			Variant.INT,
       
     );
+    
   }
   set_enable_tagging_used_audio_streams(_enable) {
     return _call_native_mb_no_ret(
@@ -872,6 +925,7 @@ class _AudioServer extends GodotObject{
       this._owner,
       _enable
     );
+    
   }
   is_stream_registered_as_sample(_stream) {
     return _call_native_mb_ret(
@@ -880,6 +934,7 @@ class _AudioServer extends GodotObject{
 			Variant.Type.BOOL,
       _stream
     );
+    
   }
   register_stream_as_sample(_stream) {
     return _call_native_mb_no_ret(
@@ -887,6 +942,7 @@ class _AudioServer extends GodotObject{
       this._owner,
       _stream
     );
+    
   }
   static SpeakerMode = {
     SPEAKER_MODE_STEREO: 0,

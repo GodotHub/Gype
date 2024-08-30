@@ -1,10 +1,16 @@
 import * as internal from '__internal__';
 import { PackedStringArray } from 'src/js_godot/variant/packed_string_array'
-import { RefCounted } from 'src/js_godot/classesref_counted'
 import { GDString } from 'src/js_godot/variant/gd_string'
+import { RefCounted } from 'src/js_godot/classes/ref_counted'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
-    method__parse_file;
-    method__get_recognized_extensions;
 }
 
 
@@ -21,39 +27,9 @@ export class EditorTranslationParserPlugin extends RefCounted{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("EditorTranslationParserPlugin");
-      let methodname = new StringName("_parse_file");
-      this._bindings.method__parse_file = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        
-      );
-    }
-    {
-      let classname = new StringName("EditorTranslationParserPlugin");
-      let methodname = new StringName("_get_recognized_extensions");
-      this._bindings.method__get_recognized_extensions = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        
-      );
-    }
   }
   _parse_file(_path, _msgids, _msgids_context_plural) {
-    return _call_native_mb_no_ret(
-      ClassDB._bindings.method__parse_file,
-      this._owner,
-      _path, _msgids, _msgids_context_plural
-    );
   }
   _get_recognized_extensions() {
-    return _call_native_mb_ret(
-      ClassDB._bindings.method__get_recognized_extensions,
-      this._owner,
-			Variant.Type.PACKED_STRING_ARRAY
-    ,
-      
-    );
   }
 }

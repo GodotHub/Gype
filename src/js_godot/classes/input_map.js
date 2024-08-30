@@ -1,6 +1,13 @@
 import * as internal from '__internal__';
+import { GodotObject } from 'src/js_godot/classes/godot_object'
 import { StringName } from 'src/js_godot/variant/string_name'
-import { GodotObject } from 'src/js_godot/classesgodot_object'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_has_action;
     method_get_actions;
@@ -32,123 +39,123 @@ class _InputMap extends GodotObject{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("InputMap");
-      let methodname = new StringName("has_action");
-      this._bindings.method_has_action = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2619796661
-      );
-    }
-    {
-      let classname = new StringName("InputMap");
-      let methodname = new StringName("get_actions");
-      this._bindings.method_get_actions = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2915620761
-      );
-    }
-    {
-      let classname = new StringName("InputMap");
-      let methodname = new StringName("add_action");
-      this._bindings.method_add_action = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4100757082
-      );
-    }
-    {
-      let classname = new StringName("InputMap");
-      let methodname = new StringName("erase_action");
-      this._bindings.method_erase_action = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3304788590
-      );
-    }
-    {
-      let classname = new StringName("InputMap");
-      let methodname = new StringName("action_set_deadzone");
-      this._bindings.method_action_set_deadzone = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4135858297
-      );
-    }
-    {
-      let classname = new StringName("InputMap");
-      let methodname = new StringName("action_get_deadzone");
-      this._bindings.method_action_get_deadzone = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1391627649
-      );
-    }
-    {
-      let classname = new StringName("InputMap");
-      let methodname = new StringName("action_add_event");
-      this._bindings.method_action_add_event = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        518302593
-      );
-    }
-    {
-      let classname = new StringName("InputMap");
-      let methodname = new StringName("action_has_event");
-      this._bindings.method_action_has_event = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1185871985
-      );
-    }
-    {
-      let classname = new StringName("InputMap");
-      let methodname = new StringName("action_erase_event");
-      this._bindings.method_action_erase_event = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        518302593
-      );
-    }
-    {
-      let classname = new StringName("InputMap");
-      let methodname = new StringName("action_erase_events");
-      this._bindings.method_action_erase_events = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3304788590
-      );
-    }
-    {
-      let classname = new StringName("InputMap");
-      let methodname = new StringName("action_get_events");
-      this._bindings.method_action_get_events = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        689397652
-      );
-    }
-    {
-      let classname = new StringName("InputMap");
-      let methodname = new StringName("event_is_action");
-      this._bindings.method_event_is_action = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3193353650
-      );
-    }
-    {
-      let classname = new StringName("InputMap");
-      let methodname = new StringName("load_from_project_settings");
-      this._bindings.method_load_from_project_settings = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3218959716
-      );
-    }
+      {
+        let classname = new StringName("InputMap");
+        let methodname = new StringName("has_action");
+        this._bindings.method_has_action = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2619796661
+        );
+      }
+      {
+        let classname = new StringName("InputMap");
+        let methodname = new StringName("get_actions");
+        this._bindings.method_get_actions = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2915620761
+        );
+      }
+      {
+        let classname = new StringName("InputMap");
+        let methodname = new StringName("add_action");
+        this._bindings.method_add_action = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4100757082
+        );
+      }
+      {
+        let classname = new StringName("InputMap");
+        let methodname = new StringName("erase_action");
+        this._bindings.method_erase_action = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3304788590
+        );
+      }
+      {
+        let classname = new StringName("InputMap");
+        let methodname = new StringName("action_set_deadzone");
+        this._bindings.method_action_set_deadzone = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4135858297
+        );
+      }
+      {
+        let classname = new StringName("InputMap");
+        let methodname = new StringName("action_get_deadzone");
+        this._bindings.method_action_get_deadzone = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1391627649
+        );
+      }
+      {
+        let classname = new StringName("InputMap");
+        let methodname = new StringName("action_add_event");
+        this._bindings.method_action_add_event = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          518302593
+        );
+      }
+      {
+        let classname = new StringName("InputMap");
+        let methodname = new StringName("action_has_event");
+        this._bindings.method_action_has_event = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1185871985
+        );
+      }
+      {
+        let classname = new StringName("InputMap");
+        let methodname = new StringName("action_erase_event");
+        this._bindings.method_action_erase_event = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          518302593
+        );
+      }
+      {
+        let classname = new StringName("InputMap");
+        let methodname = new StringName("action_erase_events");
+        this._bindings.method_action_erase_events = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3304788590
+        );
+      }
+      {
+        let classname = new StringName("InputMap");
+        let methodname = new StringName("action_get_events");
+        this._bindings.method_action_get_events = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          689397652
+        );
+      }
+      {
+        let classname = new StringName("InputMap");
+        let methodname = new StringName("event_is_action");
+        this._bindings.method_event_is_action = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3193353650
+        );
+      }
+      {
+        let classname = new StringName("InputMap");
+        let methodname = new StringName("load_from_project_settings");
+        this._bindings.method_load_from_project_settings = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3218959716
+        );
+      }
   }
   has_action(_action) {
     return _call_native_mb_ret(
@@ -157,6 +164,7 @@ class _InputMap extends GodotObject{
 			Variant.Type.BOOL,
       _action
     );
+    
   }
   get_actions() {
     return _call_native_mb_ret(
@@ -165,6 +173,7 @@ class _InputMap extends GodotObject{
 			Variant.INT,
       
     );
+    
   }
   add_action(_action, _deadzone) {
     return _call_native_mb_no_ret(
@@ -172,6 +181,7 @@ class _InputMap extends GodotObject{
       this._owner,
       _action, _deadzone
     );
+    
   }
   erase_action(_action) {
     return _call_native_mb_no_ret(
@@ -179,6 +189,7 @@ class _InputMap extends GodotObject{
       this._owner,
       _action
     );
+    
   }
   action_set_deadzone(_action, _deadzone) {
     return _call_native_mb_no_ret(
@@ -186,6 +197,7 @@ class _InputMap extends GodotObject{
       this._owner,
       _action, _deadzone
     );
+    
   }
   action_get_deadzone(_action) {
     return _call_native_mb_ret(
@@ -194,6 +206,7 @@ class _InputMap extends GodotObject{
 			Variant.Type.FLOAT,
       _action
     );
+    
   }
   action_add_event(_action, _event) {
     return _call_native_mb_no_ret(
@@ -201,6 +214,7 @@ class _InputMap extends GodotObject{
       this._owner,
       _action, _event
     );
+    
   }
   action_has_event(_action, _event) {
     return _call_native_mb_ret(
@@ -209,6 +223,7 @@ class _InputMap extends GodotObject{
 			Variant.Type.BOOL,
       _action, _event
     );
+    
   }
   action_erase_event(_action, _event) {
     return _call_native_mb_no_ret(
@@ -216,6 +231,7 @@ class _InputMap extends GodotObject{
       this._owner,
       _action, _event
     );
+    
   }
   action_erase_events(_action) {
     return _call_native_mb_no_ret(
@@ -223,6 +239,7 @@ class _InputMap extends GodotObject{
       this._owner,
       _action
     );
+    
   }
   action_get_events(_action) {
     return _call_native_mb_ret(
@@ -231,6 +248,7 @@ class _InputMap extends GodotObject{
 			Variant.INT,
       _action
     );
+    
   }
   event_is_action(_event, _action, _exact_match) {
     return _call_native_mb_ret(
@@ -239,6 +257,7 @@ class _InputMap extends GodotObject{
 			Variant.Type.BOOL,
       _event, _action, _exact_match
     );
+    
   }
   load_from_project_settings() {
     return _call_native_mb_no_ret(
@@ -246,5 +265,6 @@ class _InputMap extends GodotObject{
       this._owner,
       
     );
+    
   }
 }

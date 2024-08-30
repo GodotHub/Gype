@@ -1,6 +1,6 @@
 from jinja2 import Environment, FileSystemLoader
 from scripts.utils.file_utils import gde_json, workspace_dir, js_generated_dir
-from scripts.utils.jinja_utils import variant_types, add_opaque, norm_op_name, to_js_type, camel_to_snake, get_module_path, is_variant, add_prefix_suffix
+from scripts.utils.jinja_utils import variant_types, add_opaque, norm_op_name, to_js_type, camel_to_snake, get_module_path, is_variant, is_pod_type, add_prefix_suffix
 import os
 
 __precision__ = 'float_64'
@@ -31,6 +31,7 @@ def dependcies_collect(clazz):
             if _type and is_variant(_type):
                 depencies.add(to_js_type(_type))
     depencies.add('Variant')
+    depencies.add('StringName')
     depencies.discard(to_js_type(clazz['name']))
     return depencies
 
@@ -46,6 +47,8 @@ def render_builtin_classes(precision):
     env.globals['get_module_path'] = get_module_path
     env.globals['to_js_type'] = to_js_type
     env.globals['variant_types'] = variant_types
+    env.globals['is_variant'] = is_variant
+    env.globals['is_pod_type'] = is_pod_type
 
     for i in range(4, 38):
         __render__(env, 'builtin_classes.jinja2', dependcies_collect(gde_json['builtin_classes'][i]), i)

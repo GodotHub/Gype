@@ -1,9 +1,17 @@
 import * as internal from '__internal__';
-import { GDString } from 'src/js_godot/variant/gd_string'
-import { GDArray } from 'src/js_godot/variant/gd_array'
-import { Vector3 } from 'src/js_godot/variant/vector3'
-import { XRInterface } from 'src/js_godot/classesxr_interface'
+import { XRInterface } from 'src/js_godot/classes/xr_interface'
 import { Quaternion } from 'src/js_godot/variant/quaternion'
+import { GDString } from 'src/js_godot/variant/gd_string'
+import { StringName } from 'src/js_godot/variant/string_name'
+import { Vector3 } from 'src/js_godot/variant/vector3'
+import { GDArray } from 'src/js_godot/variant/gd_array'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_get_display_refresh_rate;
     method_set_display_refresh_rate;
@@ -50,267 +58,267 @@ export class OpenXRInterface extends XRInterface{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("OpenXRInterface");
-      let methodname = new StringName("get_display_refresh_rate");
-      this._bindings.method_get_display_refresh_rate = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("OpenXRInterface");
-      let methodname = new StringName("set_display_refresh_rate");
-      this._bindings.method_set_display_refresh_rate = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("OpenXRInterface");
-      let methodname = new StringName("get_render_target_size_multiplier");
-      this._bindings.method_get_render_target_size_multiplier = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("OpenXRInterface");
-      let methodname = new StringName("set_render_target_size_multiplier");
-      this._bindings.method_set_render_target_size_multiplier = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("OpenXRInterface");
-      let methodname = new StringName("is_foveation_supported");
-      this._bindings.method_is_foveation_supported = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("OpenXRInterface");
-      let methodname = new StringName("get_foveation_level");
-      this._bindings.method_get_foveation_level = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("OpenXRInterface");
-      let methodname = new StringName("set_foveation_level");
-      this._bindings.method_set_foveation_level = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("OpenXRInterface");
-      let methodname = new StringName("get_foveation_dynamic");
-      this._bindings.method_get_foveation_dynamic = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("OpenXRInterface");
-      let methodname = new StringName("set_foveation_dynamic");
-      this._bindings.method_set_foveation_dynamic = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("OpenXRInterface");
-      let methodname = new StringName("is_action_set_active");
-      this._bindings.method_is_action_set_active = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3927539163
-      );
-    }
-    {
-      let classname = new StringName("OpenXRInterface");
-      let methodname = new StringName("set_action_set_active");
-      this._bindings.method_set_action_set_active = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2678287736
-      );
-    }
-    {
-      let classname = new StringName("OpenXRInterface");
-      let methodname = new StringName("get_action_sets");
-      this._bindings.method_get_action_sets = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3995934104
-      );
-    }
-    {
-      let classname = new StringName("OpenXRInterface");
-      let methodname = new StringName("get_available_display_refresh_rates");
-      this._bindings.method_get_available_display_refresh_rates = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3995934104
-      );
-    }
-    {
-      let classname = new StringName("OpenXRInterface");
-      let methodname = new StringName("set_motion_range");
-      this._bindings.method_set_motion_range = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        855158159
-      );
-    }
-    {
-      let classname = new StringName("OpenXRInterface");
-      let methodname = new StringName("get_motion_range");
-      this._bindings.method_get_motion_range = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3955838114
-      );
-    }
-    {
-      let classname = new StringName("OpenXRInterface");
-      let methodname = new StringName("get_hand_tracking_source");
-      this._bindings.method_get_hand_tracking_source = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4092421202
-      );
-    }
-    {
-      let classname = new StringName("OpenXRInterface");
-      let methodname = new StringName("get_hand_joint_flags");
-      this._bindings.method_get_hand_joint_flags = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        720567706
-      );
-    }
-    {
-      let classname = new StringName("OpenXRInterface");
-      let methodname = new StringName("get_hand_joint_rotation");
-      this._bindings.method_get_hand_joint_rotation = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1974618321
-      );
-    }
-    {
-      let classname = new StringName("OpenXRInterface");
-      let methodname = new StringName("get_hand_joint_position");
-      this._bindings.method_get_hand_joint_position = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3529194242
-      );
-    }
-    {
-      let classname = new StringName("OpenXRInterface");
-      let methodname = new StringName("get_hand_joint_radius");
-      this._bindings.method_get_hand_joint_radius = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        901522724
-      );
-    }
-    {
-      let classname = new StringName("OpenXRInterface");
-      let methodname = new StringName("get_hand_joint_linear_velocity");
-      this._bindings.method_get_hand_joint_linear_velocity = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3529194242
-      );
-    }
-    {
-      let classname = new StringName("OpenXRInterface");
-      let methodname = new StringName("get_hand_joint_angular_velocity");
-      this._bindings.method_get_hand_joint_angular_velocity = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3529194242
-      );
-    }
-    {
-      let classname = new StringName("OpenXRInterface");
-      let methodname = new StringName("is_hand_tracking_supported");
-      this._bindings.method_is_hand_tracking_supported = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2240911060
-      );
-    }
-    {
-      let classname = new StringName("OpenXRInterface");
-      let methodname = new StringName("is_hand_interaction_supported");
-      this._bindings.method_is_hand_interaction_supported = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("OpenXRInterface");
-      let methodname = new StringName("is_eye_gaze_interaction_supported");
-      this._bindings.method_is_eye_gaze_interaction_supported = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2240911060
-      );
-    }
-    {
-      let classname = new StringName("OpenXRInterface");
-      let methodname = new StringName("get_vrs_min_radius");
-      this._bindings.method_get_vrs_min_radius = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("OpenXRInterface");
-      let methodname = new StringName("set_vrs_min_radius");
-      this._bindings.method_set_vrs_min_radius = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("OpenXRInterface");
-      let methodname = new StringName("get_vrs_strength");
-      this._bindings.method_get_vrs_strength = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("OpenXRInterface");
-      let methodname = new StringName("set_vrs_strength");
-      this._bindings.method_set_vrs_strength = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
+      {
+        let classname = new StringName("OpenXRInterface");
+        let methodname = new StringName("get_display_refresh_rate");
+        this._bindings.method_get_display_refresh_rate = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("OpenXRInterface");
+        let methodname = new StringName("set_display_refresh_rate");
+        this._bindings.method_set_display_refresh_rate = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("OpenXRInterface");
+        let methodname = new StringName("get_render_target_size_multiplier");
+        this._bindings.method_get_render_target_size_multiplier = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("OpenXRInterface");
+        let methodname = new StringName("set_render_target_size_multiplier");
+        this._bindings.method_set_render_target_size_multiplier = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("OpenXRInterface");
+        let methodname = new StringName("is_foveation_supported");
+        this._bindings.method_is_foveation_supported = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("OpenXRInterface");
+        let methodname = new StringName("get_foveation_level");
+        this._bindings.method_get_foveation_level = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
+      {
+        let classname = new StringName("OpenXRInterface");
+        let methodname = new StringName("set_foveation_level");
+        this._bindings.method_set_foveation_level = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1286410249
+        );
+      }
+      {
+        let classname = new StringName("OpenXRInterface");
+        let methodname = new StringName("get_foveation_dynamic");
+        this._bindings.method_get_foveation_dynamic = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("OpenXRInterface");
+        let methodname = new StringName("set_foveation_dynamic");
+        this._bindings.method_set_foveation_dynamic = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("OpenXRInterface");
+        let methodname = new StringName("is_action_set_active");
+        this._bindings.method_is_action_set_active = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3927539163
+        );
+      }
+      {
+        let classname = new StringName("OpenXRInterface");
+        let methodname = new StringName("set_action_set_active");
+        this._bindings.method_set_action_set_active = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2678287736
+        );
+      }
+      {
+        let classname = new StringName("OpenXRInterface");
+        let methodname = new StringName("get_action_sets");
+        this._bindings.method_get_action_sets = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3995934104
+        );
+      }
+      {
+        let classname = new StringName("OpenXRInterface");
+        let methodname = new StringName("get_available_display_refresh_rates");
+        this._bindings.method_get_available_display_refresh_rates = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3995934104
+        );
+      }
+      {
+        let classname = new StringName("OpenXRInterface");
+        let methodname = new StringName("set_motion_range");
+        this._bindings.method_set_motion_range = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          855158159
+        );
+      }
+      {
+        let classname = new StringName("OpenXRInterface");
+        let methodname = new StringName("get_motion_range");
+        this._bindings.method_get_motion_range = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3955838114
+        );
+      }
+      {
+        let classname = new StringName("OpenXRInterface");
+        let methodname = new StringName("get_hand_tracking_source");
+        this._bindings.method_get_hand_tracking_source = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4092421202
+        );
+      }
+      {
+        let classname = new StringName("OpenXRInterface");
+        let methodname = new StringName("get_hand_joint_flags");
+        this._bindings.method_get_hand_joint_flags = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          720567706
+        );
+      }
+      {
+        let classname = new StringName("OpenXRInterface");
+        let methodname = new StringName("get_hand_joint_rotation");
+        this._bindings.method_get_hand_joint_rotation = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1974618321
+        );
+      }
+      {
+        let classname = new StringName("OpenXRInterface");
+        let methodname = new StringName("get_hand_joint_position");
+        this._bindings.method_get_hand_joint_position = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3529194242
+        );
+      }
+      {
+        let classname = new StringName("OpenXRInterface");
+        let methodname = new StringName("get_hand_joint_radius");
+        this._bindings.method_get_hand_joint_radius = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          901522724
+        );
+      }
+      {
+        let classname = new StringName("OpenXRInterface");
+        let methodname = new StringName("get_hand_joint_linear_velocity");
+        this._bindings.method_get_hand_joint_linear_velocity = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3529194242
+        );
+      }
+      {
+        let classname = new StringName("OpenXRInterface");
+        let methodname = new StringName("get_hand_joint_angular_velocity");
+        this._bindings.method_get_hand_joint_angular_velocity = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3529194242
+        );
+      }
+      {
+        let classname = new StringName("OpenXRInterface");
+        let methodname = new StringName("is_hand_tracking_supported");
+        this._bindings.method_is_hand_tracking_supported = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2240911060
+        );
+      }
+      {
+        let classname = new StringName("OpenXRInterface");
+        let methodname = new StringName("is_hand_interaction_supported");
+        this._bindings.method_is_hand_interaction_supported = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("OpenXRInterface");
+        let methodname = new StringName("is_eye_gaze_interaction_supported");
+        this._bindings.method_is_eye_gaze_interaction_supported = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2240911060
+        );
+      }
+      {
+        let classname = new StringName("OpenXRInterface");
+        let methodname = new StringName("get_vrs_min_radius");
+        this._bindings.method_get_vrs_min_radius = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("OpenXRInterface");
+        let methodname = new StringName("set_vrs_min_radius");
+        this._bindings.method_set_vrs_min_radius = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("OpenXRInterface");
+        let methodname = new StringName("get_vrs_strength");
+        this._bindings.method_get_vrs_strength = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("OpenXRInterface");
+        let methodname = new StringName("set_vrs_strength");
+        this._bindings.method_set_vrs_strength = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
   }
   get_display_refresh_rate() {
     return _call_native_mb_ret(
@@ -319,6 +327,7 @@ export class OpenXRInterface extends XRInterface{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_display_refresh_rate(_refresh_rate) {
     return _call_native_mb_no_ret(
@@ -326,6 +335,7 @@ export class OpenXRInterface extends XRInterface{
       this._owner,
       _refresh_rate
     );
+    
   }
   get_render_target_size_multiplier() {
     return _call_native_mb_ret(
@@ -334,6 +344,7 @@ export class OpenXRInterface extends XRInterface{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_render_target_size_multiplier(_multiplier) {
     return _call_native_mb_no_ret(
@@ -341,6 +352,7 @@ export class OpenXRInterface extends XRInterface{
       this._owner,
       _multiplier
     );
+    
   }
   is_foveation_supported() {
     return _call_native_mb_ret(
@@ -349,6 +361,7 @@ export class OpenXRInterface extends XRInterface{
 			Variant.Type.BOOL,
       
     );
+    
   }
   get_foveation_level() {
     return _call_native_mb_ret(
@@ -357,6 +370,7 @@ export class OpenXRInterface extends XRInterface{
 			Variant.Type.INT,
       
     );
+    
   }
   set_foveation_level(_foveation_level) {
     return _call_native_mb_no_ret(
@@ -364,6 +378,7 @@ export class OpenXRInterface extends XRInterface{
       this._owner,
       _foveation_level
     );
+    
   }
   get_foveation_dynamic() {
     return _call_native_mb_ret(
@@ -372,6 +387,7 @@ export class OpenXRInterface extends XRInterface{
 			Variant.Type.BOOL,
       
     );
+    
   }
   set_foveation_dynamic(_foveation_dynamic) {
     return _call_native_mb_no_ret(
@@ -379,6 +395,7 @@ export class OpenXRInterface extends XRInterface{
       this._owner,
       _foveation_dynamic
     );
+    
   }
   is_action_set_active(_name) {
     return _call_native_mb_ret(
@@ -387,6 +404,7 @@ export class OpenXRInterface extends XRInterface{
 			Variant.Type.BOOL,
       _name
     );
+    
   }
   set_action_set_active(_name, _active) {
     return _call_native_mb_no_ret(
@@ -394,6 +412,7 @@ export class OpenXRInterface extends XRInterface{
       this._owner,
       _name, _active
     );
+    
   }
   get_action_sets() {
     return _call_native_mb_ret(
@@ -403,6 +422,7 @@ export class OpenXRInterface extends XRInterface{
     ,
       
     );
+    
   }
   get_available_display_refresh_rates() {
     return _call_native_mb_ret(
@@ -412,6 +432,7 @@ export class OpenXRInterface extends XRInterface{
     ,
       
     );
+    
   }
   set_motion_range(_hand, _motion_range) {
     return _call_native_mb_no_ret(
@@ -419,6 +440,7 @@ export class OpenXRInterface extends XRInterface{
       this._owner,
       _hand, _motion_range
     );
+    
   }
   get_motion_range(_hand) {
     return _call_native_mb_ret(
@@ -427,6 +449,7 @@ export class OpenXRInterface extends XRInterface{
 			Variant.INT,
       _hand
     );
+    
   }
   get_hand_tracking_source(_hand) {
     return _call_native_mb_ret(
@@ -435,6 +458,7 @@ export class OpenXRInterface extends XRInterface{
 			Variant.INT,
       _hand
     );
+    
   }
   get_hand_joint_flags(_hand, _joint) {
     return _call_native_mb_ret(
@@ -443,6 +467,7 @@ export class OpenXRInterface extends XRInterface{
 			Variant.INT,
       _hand, _joint
     );
+    
   }
   get_hand_joint_rotation(_hand, _joint) {
     return _call_native_mb_ret(
@@ -452,6 +477,7 @@ export class OpenXRInterface extends XRInterface{
     ,
       _hand, _joint
     );
+    
   }
   get_hand_joint_position(_hand, _joint) {
     return _call_native_mb_ret(
@@ -461,6 +487,7 @@ export class OpenXRInterface extends XRInterface{
     ,
       _hand, _joint
     );
+    
   }
   get_hand_joint_radius(_hand, _joint) {
     return _call_native_mb_ret(
@@ -469,6 +496,7 @@ export class OpenXRInterface extends XRInterface{
 			Variant.Type.FLOAT,
       _hand, _joint
     );
+    
   }
   get_hand_joint_linear_velocity(_hand, _joint) {
     return _call_native_mb_ret(
@@ -478,6 +506,7 @@ export class OpenXRInterface extends XRInterface{
     ,
       _hand, _joint
     );
+    
   }
   get_hand_joint_angular_velocity(_hand, _joint) {
     return _call_native_mb_ret(
@@ -487,6 +516,7 @@ export class OpenXRInterface extends XRInterface{
     ,
       _hand, _joint
     );
+    
   }
   is_hand_tracking_supported() {
     return _call_native_mb_ret(
@@ -495,6 +525,7 @@ export class OpenXRInterface extends XRInterface{
 			Variant.Type.BOOL,
       
     );
+    
   }
   is_hand_interaction_supported() {
     return _call_native_mb_ret(
@@ -503,6 +534,7 @@ export class OpenXRInterface extends XRInterface{
 			Variant.Type.BOOL,
       
     );
+    
   }
   is_eye_gaze_interaction_supported() {
     return _call_native_mb_ret(
@@ -511,6 +543,7 @@ export class OpenXRInterface extends XRInterface{
 			Variant.Type.BOOL,
       
     );
+    
   }
   get_vrs_min_radius() {
     return _call_native_mb_ret(
@@ -519,6 +552,7 @@ export class OpenXRInterface extends XRInterface{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_vrs_min_radius(_radius) {
     return _call_native_mb_no_ret(
@@ -526,6 +560,7 @@ export class OpenXRInterface extends XRInterface{
       this._owner,
       _radius
     );
+    
   }
   get_vrs_strength() {
     return _call_native_mb_ret(
@@ -534,6 +569,7 @@ export class OpenXRInterface extends XRInterface{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_vrs_strength(_strength) {
     return _call_native_mb_no_ret(
@@ -541,6 +577,7 @@ export class OpenXRInterface extends XRInterface{
       this._owner,
       _strength
     );
+    
   }
   static Hand = {
     HAND_LEFT: 0,

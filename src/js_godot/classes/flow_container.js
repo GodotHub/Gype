@@ -1,5 +1,13 @@
 import * as internal from '__internal__';
-import { Container } from 'src/js_godot/classescontainer'
+import { Container } from 'src/js_godot/classes/container'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_get_line_count;
     method_set_alignment;
@@ -26,87 +34,87 @@ export class FlowContainer extends Container{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("FlowContainer");
-      let methodname = new StringName("get_line_count");
-      this._bindings.method_get_line_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("FlowContainer");
-      let methodname = new StringName("set_alignment");
-      this._bindings.method_set_alignment = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        575250951
-      );
-    }
-    {
-      let classname = new StringName("FlowContainer");
-      let methodname = new StringName("get_alignment");
-      this._bindings.method_get_alignment = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3749743559
-      );
-    }
-    {
-      let classname = new StringName("FlowContainer");
-      let methodname = new StringName("set_last_wrap_alignment");
-      this._bindings.method_set_last_wrap_alignment = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2899697495
-      );
-    }
-    {
-      let classname = new StringName("FlowContainer");
-      let methodname = new StringName("get_last_wrap_alignment");
-      this._bindings.method_get_last_wrap_alignment = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3743456014
-      );
-    }
-    {
-      let classname = new StringName("FlowContainer");
-      let methodname = new StringName("set_vertical");
-      this._bindings.method_set_vertical = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("FlowContainer");
-      let methodname = new StringName("is_vertical");
-      this._bindings.method_is_vertical = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("FlowContainer");
-      let methodname = new StringName("set_reverse_fill");
-      this._bindings.method_set_reverse_fill = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("FlowContainer");
-      let methodname = new StringName("is_reverse_fill");
-      this._bindings.method_is_reverse_fill = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
+      {
+        let classname = new StringName("FlowContainer");
+        let methodname = new StringName("get_line_count");
+        this._bindings.method_get_line_count = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
+      {
+        let classname = new StringName("FlowContainer");
+        let methodname = new StringName("set_alignment");
+        this._bindings.method_set_alignment = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          575250951
+        );
+      }
+      {
+        let classname = new StringName("FlowContainer");
+        let methodname = new StringName("get_alignment");
+        this._bindings.method_get_alignment = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3749743559
+        );
+      }
+      {
+        let classname = new StringName("FlowContainer");
+        let methodname = new StringName("set_last_wrap_alignment");
+        this._bindings.method_set_last_wrap_alignment = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2899697495
+        );
+      }
+      {
+        let classname = new StringName("FlowContainer");
+        let methodname = new StringName("get_last_wrap_alignment");
+        this._bindings.method_get_last_wrap_alignment = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3743456014
+        );
+      }
+      {
+        let classname = new StringName("FlowContainer");
+        let methodname = new StringName("set_vertical");
+        this._bindings.method_set_vertical = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("FlowContainer");
+        let methodname = new StringName("is_vertical");
+        this._bindings.method_is_vertical = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("FlowContainer");
+        let methodname = new StringName("set_reverse_fill");
+        this._bindings.method_set_reverse_fill = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("FlowContainer");
+        let methodname = new StringName("is_reverse_fill");
+        this._bindings.method_is_reverse_fill = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
   }
   get_line_count() {
     return _call_native_mb_ret(
@@ -115,6 +123,7 @@ export class FlowContainer extends Container{
 			Variant.Type.INT,
       
     );
+    
   }
   set_alignment(_alignment) {
     return _call_native_mb_no_ret(
@@ -122,6 +131,7 @@ export class FlowContainer extends Container{
       this._owner,
       _alignment
     );
+    
   }
   get_alignment() {
     return _call_native_mb_ret(
@@ -130,6 +140,7 @@ export class FlowContainer extends Container{
 			Variant.INT,
       
     );
+    
   }
   set_last_wrap_alignment(_last_wrap_alignment) {
     return _call_native_mb_no_ret(
@@ -137,6 +148,7 @@ export class FlowContainer extends Container{
       this._owner,
       _last_wrap_alignment
     );
+    
   }
   get_last_wrap_alignment() {
     return _call_native_mb_ret(
@@ -145,6 +157,7 @@ export class FlowContainer extends Container{
 			Variant.INT,
       
     );
+    
   }
   set_vertical(_vertical) {
     return _call_native_mb_no_ret(
@@ -152,6 +165,7 @@ export class FlowContainer extends Container{
       this._owner,
       _vertical
     );
+    
   }
   is_vertical() {
     return _call_native_mb_ret(
@@ -160,6 +174,7 @@ export class FlowContainer extends Container{
 			Variant.Type.BOOL,
       
     );
+    
   }
   set_reverse_fill(_reverse_fill) {
     return _call_native_mb_no_ret(
@@ -167,6 +182,7 @@ export class FlowContainer extends Container{
       this._owner,
       _reverse_fill
     );
+    
   }
   is_reverse_fill() {
     return _call_native_mb_ret(
@@ -175,6 +191,7 @@ export class FlowContainer extends Container{
 			Variant.Type.BOOL,
       
     );
+    
   }
   static AlignmentMode = {
     ALIGNMENT_BEGIN: 0,

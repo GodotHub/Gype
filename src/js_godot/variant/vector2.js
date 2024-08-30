@@ -4,8 +4,9 @@ import {
   _call_builtin_method_ptr_ret,
   _call_builtin_method_ptr_no_ret
 } from 'src/js_godot/core/builtin_ptrcall'
-import { Vector2i } from 'src/js_godot/variant/vector2i'
 import { Variant } from 'src/js_godot/variant/variant'
+import { Vector2i } from 'src/js_godot/variant/vector2i'
+import { StringName } from 'src/js_godot/variant/string_name'
 
 class _MethodBindings {
   from_variant_constructor
@@ -95,17 +96,15 @@ export class Vector2 {
   constructor (from) {
     if (!from) {
       _call_builtin_constructor(Vector2._bindings.constructor_0, this)
-    } else if (arguments[0] instanceof Vector2) {
-      let from = arguments[0];
+    }else if (from instanceof Vector2) {
       _call_builtin_constructor(Vector2._bindings.constructor_1, this, [
         from
       ])
-    } else if (arguments[0] instanceof Vector2i) {
-      let from = arguments[0];
+    }else if (from instanceof Vector2i) {
       _call_builtin_constructor(Vector2._bindings.constructor_2, this, [
         from
       ])
-    } else if (arguments[0] instanceof float) {
+    } else if (arguments.length == 2&& typeof arguments[0] == "number"&& typeof arguments[1] == "number") {
       let x = arguments[0];
       let y = arguments[1];
       _call_builtin_constructor(Vector2._bindings.constructor_3, this, [

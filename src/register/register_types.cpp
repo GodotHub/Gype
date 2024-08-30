@@ -29,7 +29,7 @@ void initialize_tgds_types(void *user_data, GDExtensionInitializationLevel p_lev
 	init_quickjs();
 #ifdef DEBUG_ENABLED
 	// test_variant();
-	test_gdstring();
+	// test_gdstring();
 	// test_node_path();
 	// test_class_db();
 #endif // DEBUG
@@ -76,10 +76,20 @@ void init_quickjs() {
 	JSValue ret = context.eval(R"xxx(
 		import { Variant } from 'src/js_godot/variant/variant';
 		import { GD, Math, Random } from 'src/js_godot/variant/utility_functions';
-		Variant._init_bindings();
-		globalThis.GD = new GD();
-		globalThis.Math = new Math();
-		globalThis.Random = new Random();
+		import { Node } from 'src/js_godot/classes/node';
+		import { ClassDB } from 'src/js_godot/classes/class_db';
+		import { GodotObject } from 'src/js_godot/classes/godot_object';
+		{
+			Variant._init_bindings();
+			globalThis.GD = new GD();
+			globalThis.Math = new Math();
+			globalThis.Random = new Random();
+			Node._init_bindings();
+			ClassDB._init_bindings();
+			globalThis.ClassDB = new ClassDB();
+			GodotObject._init_bindings();
+			let node = new Node();
+		}
 	)xxx",
 			"<eval>", JS_EVAL_TYPE_MODULE);
 	JS_FreeValue(context.ctx, ret);

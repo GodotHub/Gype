@@ -1,6 +1,14 @@
 import * as internal from '__internal__';
-import { XRTracker } from 'src/js_godot/classesxr_tracker'
+import { XRTracker } from 'src/js_godot/classes/xr_tracker'
 import { PackedFloat32Array } from 'src/js_godot/variant/packed_float32_array'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_get_blend_shape;
     method_set_blend_shape;
@@ -22,42 +30,42 @@ export class XRFaceTracker extends XRTracker{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("XRFaceTracker");
-      let methodname = new StringName("get_blend_shape");
-      this._bindings.method_get_blend_shape = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        330010046
-      );
-    }
-    {
-      let classname = new StringName("XRFaceTracker");
-      let methodname = new StringName("set_blend_shape");
-      this._bindings.method_set_blend_shape = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2352588791
-      );
-    }
-    {
-      let classname = new StringName("XRFaceTracker");
-      let methodname = new StringName("get_blend_shapes");
-      this._bindings.method_get_blend_shapes = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        675695659
-      );
-    }
-    {
-      let classname = new StringName("XRFaceTracker");
-      let methodname = new StringName("set_blend_shapes");
-      this._bindings.method_set_blend_shapes = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2899603908
-      );
-    }
+      {
+        let classname = new StringName("XRFaceTracker");
+        let methodname = new StringName("get_blend_shape");
+        this._bindings.method_get_blend_shape = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          330010046
+        );
+      }
+      {
+        let classname = new StringName("XRFaceTracker");
+        let methodname = new StringName("set_blend_shape");
+        this._bindings.method_set_blend_shape = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2352588791
+        );
+      }
+      {
+        let classname = new StringName("XRFaceTracker");
+        let methodname = new StringName("get_blend_shapes");
+        this._bindings.method_get_blend_shapes = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          675695659
+        );
+      }
+      {
+        let classname = new StringName("XRFaceTracker");
+        let methodname = new StringName("set_blend_shapes");
+        this._bindings.method_set_blend_shapes = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2899603908
+        );
+      }
   }
   get_blend_shape(_blend_shape) {
     return _call_native_mb_ret(
@@ -66,6 +74,7 @@ export class XRFaceTracker extends XRTracker{
 			Variant.Type.FLOAT,
       _blend_shape
     );
+    
   }
   set_blend_shape(_blend_shape, _weight) {
     return _call_native_mb_no_ret(
@@ -73,6 +82,7 @@ export class XRFaceTracker extends XRTracker{
       this._owner,
       _blend_shape, _weight
     );
+    
   }
   get_blend_shapes() {
     return _call_native_mb_ret(
@@ -82,6 +92,7 @@ export class XRFaceTracker extends XRTracker{
     ,
       
     );
+    
   }
   set_blend_shapes(_weights) {
     return _call_native_mb_no_ret(
@@ -89,6 +100,7 @@ export class XRFaceTracker extends XRTracker{
       this._owner,
       _weights
     );
+    
   }
   static BlendShapeEntry = {
     FT_EYE_LOOK_OUT_RIGHT: 0,

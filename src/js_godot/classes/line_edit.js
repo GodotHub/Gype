@@ -1,7 +1,15 @@
 import * as internal from '__internal__';
-import { Control } from 'src/js_godot/classescontrol'
+import { Control } from 'src/js_godot/classes/control'
 import { GDArray } from 'src/js_godot/variant/gd_array'
 import { GDString } from 'src/js_godot/variant/gd_string'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_set_horizontal_alignment;
     method_get_horizontal_alignment;
@@ -94,681 +102,681 @@ export class LineEdit extends Control{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("set_horizontal_alignment");
-      this._bindings.method_set_horizontal_alignment = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2312603777
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("get_horizontal_alignment");
-      this._bindings.method_get_horizontal_alignment = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        341400642
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("clear");
-      this._bindings.method_clear = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3218959716
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("select");
-      this._bindings.method_select = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1328111411
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("select_all");
-      this._bindings.method_select_all = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3218959716
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("deselect");
-      this._bindings.method_deselect = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3218959716
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("has_selection");
-      this._bindings.method_has_selection = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("get_selected_text");
-      this._bindings.method_get_selected_text = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2841200299
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("get_selection_from_column");
-      this._bindings.method_get_selection_from_column = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("get_selection_to_column");
-      this._bindings.method_get_selection_to_column = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("set_text");
-      this._bindings.method_set_text = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        83702148
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("get_text");
-      this._bindings.method_get_text = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        201670096
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("get_draw_control_chars");
-      this._bindings.method_get_draw_control_chars = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("set_draw_control_chars");
-      this._bindings.method_set_draw_control_chars = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("set_text_direction");
-      this._bindings.method_set_text_direction = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        119160795
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("get_text_direction");
-      this._bindings.method_get_text_direction = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        797257663
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("set_language");
-      this._bindings.method_set_language = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        83702148
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("get_language");
-      this._bindings.method_get_language = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        201670096
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("set_structured_text_bidi_override");
-      this._bindings.method_set_structured_text_bidi_override = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        55961453
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("get_structured_text_bidi_override");
-      this._bindings.method_get_structured_text_bidi_override = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3385126229
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("set_structured_text_bidi_override_options");
-      this._bindings.method_set_structured_text_bidi_override_options = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        381264803
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("get_structured_text_bidi_override_options");
-      this._bindings.method_get_structured_text_bidi_override_options = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3995934104
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("set_placeholder");
-      this._bindings.method_set_placeholder = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        83702148
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("get_placeholder");
-      this._bindings.method_get_placeholder = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        201670096
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("set_caret_column");
-      this._bindings.method_set_caret_column = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("get_caret_column");
-      this._bindings.method_get_caret_column = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("get_scroll_offset");
-      this._bindings.method_get_scroll_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("set_expand_to_text_length_enabled");
-      this._bindings.method_set_expand_to_text_length_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("is_expand_to_text_length_enabled");
-      this._bindings.method_is_expand_to_text_length_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("set_caret_blink_enabled");
-      this._bindings.method_set_caret_blink_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("is_caret_blink_enabled");
-      this._bindings.method_is_caret_blink_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("set_caret_mid_grapheme_enabled");
-      this._bindings.method_set_caret_mid_grapheme_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("is_caret_mid_grapheme_enabled");
-      this._bindings.method_is_caret_mid_grapheme_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("set_caret_force_displayed");
-      this._bindings.method_set_caret_force_displayed = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("is_caret_force_displayed");
-      this._bindings.method_is_caret_force_displayed = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("set_caret_blink_interval");
-      this._bindings.method_set_caret_blink_interval = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("get_caret_blink_interval");
-      this._bindings.method_get_caret_blink_interval = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("set_max_length");
-      this._bindings.method_set_max_length = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("get_max_length");
-      this._bindings.method_get_max_length = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("insert_text_at_caret");
-      this._bindings.method_insert_text_at_caret = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        83702148
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("delete_char_at_caret");
-      this._bindings.method_delete_char_at_caret = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3218959716
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("delete_text");
-      this._bindings.method_delete_text = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3937882851
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("set_editable");
-      this._bindings.method_set_editable = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("is_editable");
-      this._bindings.method_is_editable = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("set_secret");
-      this._bindings.method_set_secret = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("is_secret");
-      this._bindings.method_is_secret = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("set_secret_character");
-      this._bindings.method_set_secret_character = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        83702148
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("get_secret_character");
-      this._bindings.method_get_secret_character = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        201670096
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("menu_option");
-      this._bindings.method_menu_option = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("get_menu");
-      this._bindings.method_get_menu = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        229722558
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("is_menu_visible");
-      this._bindings.method_is_menu_visible = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("set_context_menu_enabled");
-      this._bindings.method_set_context_menu_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("is_context_menu_enabled");
-      this._bindings.method_is_context_menu_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2240911060
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("set_virtual_keyboard_enabled");
-      this._bindings.method_set_virtual_keyboard_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("is_virtual_keyboard_enabled");
-      this._bindings.method_is_virtual_keyboard_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("set_virtual_keyboard_type");
-      this._bindings.method_set_virtual_keyboard_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2696893573
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("get_virtual_keyboard_type");
-      this._bindings.method_get_virtual_keyboard_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1928699316
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("set_clear_button_enabled");
-      this._bindings.method_set_clear_button_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("is_clear_button_enabled");
-      this._bindings.method_is_clear_button_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("set_shortcut_keys_enabled");
-      this._bindings.method_set_shortcut_keys_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("is_shortcut_keys_enabled");
-      this._bindings.method_is_shortcut_keys_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("set_middle_mouse_paste_enabled");
-      this._bindings.method_set_middle_mouse_paste_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("is_middle_mouse_paste_enabled");
-      this._bindings.method_is_middle_mouse_paste_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("set_selecting_enabled");
-      this._bindings.method_set_selecting_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("is_selecting_enabled");
-      this._bindings.method_is_selecting_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("set_deselect_on_focus_loss_enabled");
-      this._bindings.method_set_deselect_on_focus_loss_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("is_deselect_on_focus_loss_enabled");
-      this._bindings.method_is_deselect_on_focus_loss_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("set_drag_and_drop_selection_enabled");
-      this._bindings.method_set_drag_and_drop_selection_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("is_drag_and_drop_selection_enabled");
-      this._bindings.method_is_drag_and_drop_selection_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("set_right_icon");
-      this._bindings.method_set_right_icon = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4051416890
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("get_right_icon");
-      this._bindings.method_get_right_icon = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        255860311
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("set_flat");
-      this._bindings.method_set_flat = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("is_flat");
-      this._bindings.method_is_flat = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("set_select_all_on_focus");
-      this._bindings.method_set_select_all_on_focus = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("LineEdit");
-      let methodname = new StringName("is_select_all_on_focus");
-      this._bindings.method_is_select_all_on_focus = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("set_horizontal_alignment");
+        this._bindings.method_set_horizontal_alignment = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2312603777
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("get_horizontal_alignment");
+        this._bindings.method_get_horizontal_alignment = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          341400642
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("clear");
+        this._bindings.method_clear = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3218959716
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("select");
+        this._bindings.method_select = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1328111411
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("select_all");
+        this._bindings.method_select_all = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3218959716
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("deselect");
+        this._bindings.method_deselect = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3218959716
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("has_selection");
+        this._bindings.method_has_selection = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("get_selected_text");
+        this._bindings.method_get_selected_text = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2841200299
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("get_selection_from_column");
+        this._bindings.method_get_selection_from_column = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("get_selection_to_column");
+        this._bindings.method_get_selection_to_column = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("set_text");
+        this._bindings.method_set_text = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          83702148
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("get_text");
+        this._bindings.method_get_text = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          201670096
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("get_draw_control_chars");
+        this._bindings.method_get_draw_control_chars = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("set_draw_control_chars");
+        this._bindings.method_set_draw_control_chars = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("set_text_direction");
+        this._bindings.method_set_text_direction = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          119160795
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("get_text_direction");
+        this._bindings.method_get_text_direction = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          797257663
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("set_language");
+        this._bindings.method_set_language = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          83702148
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("get_language");
+        this._bindings.method_get_language = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          201670096
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("set_structured_text_bidi_override");
+        this._bindings.method_set_structured_text_bidi_override = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          55961453
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("get_structured_text_bidi_override");
+        this._bindings.method_get_structured_text_bidi_override = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3385126229
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("set_structured_text_bidi_override_options");
+        this._bindings.method_set_structured_text_bidi_override_options = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          381264803
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("get_structured_text_bidi_override_options");
+        this._bindings.method_get_structured_text_bidi_override_options = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3995934104
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("set_placeholder");
+        this._bindings.method_set_placeholder = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          83702148
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("get_placeholder");
+        this._bindings.method_get_placeholder = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          201670096
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("set_caret_column");
+        this._bindings.method_set_caret_column = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1286410249
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("get_caret_column");
+        this._bindings.method_get_caret_column = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("get_scroll_offset");
+        this._bindings.method_get_scroll_offset = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("set_expand_to_text_length_enabled");
+        this._bindings.method_set_expand_to_text_length_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("is_expand_to_text_length_enabled");
+        this._bindings.method_is_expand_to_text_length_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("set_caret_blink_enabled");
+        this._bindings.method_set_caret_blink_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("is_caret_blink_enabled");
+        this._bindings.method_is_caret_blink_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("set_caret_mid_grapheme_enabled");
+        this._bindings.method_set_caret_mid_grapheme_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("is_caret_mid_grapheme_enabled");
+        this._bindings.method_is_caret_mid_grapheme_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("set_caret_force_displayed");
+        this._bindings.method_set_caret_force_displayed = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("is_caret_force_displayed");
+        this._bindings.method_is_caret_force_displayed = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("set_caret_blink_interval");
+        this._bindings.method_set_caret_blink_interval = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("get_caret_blink_interval");
+        this._bindings.method_get_caret_blink_interval = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("set_max_length");
+        this._bindings.method_set_max_length = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1286410249
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("get_max_length");
+        this._bindings.method_get_max_length = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("insert_text_at_caret");
+        this._bindings.method_insert_text_at_caret = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          83702148
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("delete_char_at_caret");
+        this._bindings.method_delete_char_at_caret = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3218959716
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("delete_text");
+        this._bindings.method_delete_text = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3937882851
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("set_editable");
+        this._bindings.method_set_editable = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("is_editable");
+        this._bindings.method_is_editable = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("set_secret");
+        this._bindings.method_set_secret = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("is_secret");
+        this._bindings.method_is_secret = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("set_secret_character");
+        this._bindings.method_set_secret_character = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          83702148
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("get_secret_character");
+        this._bindings.method_get_secret_character = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          201670096
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("menu_option");
+        this._bindings.method_menu_option = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1286410249
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("get_menu");
+        this._bindings.method_get_menu = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          229722558
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("is_menu_visible");
+        this._bindings.method_is_menu_visible = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("set_context_menu_enabled");
+        this._bindings.method_set_context_menu_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("is_context_menu_enabled");
+        this._bindings.method_is_context_menu_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2240911060
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("set_virtual_keyboard_enabled");
+        this._bindings.method_set_virtual_keyboard_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("is_virtual_keyboard_enabled");
+        this._bindings.method_is_virtual_keyboard_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("set_virtual_keyboard_type");
+        this._bindings.method_set_virtual_keyboard_type = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2696893573
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("get_virtual_keyboard_type");
+        this._bindings.method_get_virtual_keyboard_type = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1928699316
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("set_clear_button_enabled");
+        this._bindings.method_set_clear_button_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("is_clear_button_enabled");
+        this._bindings.method_is_clear_button_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("set_shortcut_keys_enabled");
+        this._bindings.method_set_shortcut_keys_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("is_shortcut_keys_enabled");
+        this._bindings.method_is_shortcut_keys_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("set_middle_mouse_paste_enabled");
+        this._bindings.method_set_middle_mouse_paste_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("is_middle_mouse_paste_enabled");
+        this._bindings.method_is_middle_mouse_paste_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("set_selecting_enabled");
+        this._bindings.method_set_selecting_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("is_selecting_enabled");
+        this._bindings.method_is_selecting_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("set_deselect_on_focus_loss_enabled");
+        this._bindings.method_set_deselect_on_focus_loss_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("is_deselect_on_focus_loss_enabled");
+        this._bindings.method_is_deselect_on_focus_loss_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("set_drag_and_drop_selection_enabled");
+        this._bindings.method_set_drag_and_drop_selection_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("is_drag_and_drop_selection_enabled");
+        this._bindings.method_is_drag_and_drop_selection_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("set_right_icon");
+        this._bindings.method_set_right_icon = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4051416890
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("get_right_icon");
+        this._bindings.method_get_right_icon = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          255860311
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("set_flat");
+        this._bindings.method_set_flat = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("is_flat");
+        this._bindings.method_is_flat = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("set_select_all_on_focus");
+        this._bindings.method_set_select_all_on_focus = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("LineEdit");
+        let methodname = new StringName("is_select_all_on_focus");
+        this._bindings.method_is_select_all_on_focus = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
   }
   set_horizontal_alignment(_alignment) {
     return _call_native_mb_no_ret(
@@ -776,6 +784,7 @@ export class LineEdit extends Control{
       this._owner,
       _alignment
     );
+    
   }
   get_horizontal_alignment() {
     return _call_native_mb_ret(
@@ -784,6 +793,7 @@ export class LineEdit extends Control{
 			Variant.INT,
       
     );
+    
   }
   clear() {
     return _call_native_mb_no_ret(
@@ -791,6 +801,7 @@ export class LineEdit extends Control{
       this._owner,
       
     );
+    
   }
   select(_from, _to) {
     return _call_native_mb_no_ret(
@@ -798,6 +809,7 @@ export class LineEdit extends Control{
       this._owner,
       _from, _to
     );
+    
   }
   select_all() {
     return _call_native_mb_no_ret(
@@ -805,6 +817,7 @@ export class LineEdit extends Control{
       this._owner,
       
     );
+    
   }
   deselect() {
     return _call_native_mb_no_ret(
@@ -812,6 +825,7 @@ export class LineEdit extends Control{
       this._owner,
       
     );
+    
   }
   has_selection() {
     return _call_native_mb_ret(
@@ -820,6 +834,7 @@ export class LineEdit extends Control{
 			Variant.Type.BOOL,
       
     );
+    
   }
   get_selected_text() {
     return _call_native_mb_ret(
@@ -829,6 +844,7 @@ export class LineEdit extends Control{
     ,
       
     );
+    
   }
   get_selection_from_column() {
     return _call_native_mb_ret(
@@ -837,6 +853,7 @@ export class LineEdit extends Control{
 			Variant.Type.INT,
       
     );
+    
   }
   get_selection_to_column() {
     return _call_native_mb_ret(
@@ -845,6 +862,7 @@ export class LineEdit extends Control{
 			Variant.Type.INT,
       
     );
+    
   }
   set_text(_text) {
     return _call_native_mb_no_ret(
@@ -852,6 +870,7 @@ export class LineEdit extends Control{
       this._owner,
       _text
     );
+    
   }
   get_text() {
     return _call_native_mb_ret(
@@ -861,6 +880,7 @@ export class LineEdit extends Control{
     ,
       
     );
+    
   }
   get_draw_control_chars() {
     return _call_native_mb_ret(
@@ -869,6 +889,7 @@ export class LineEdit extends Control{
 			Variant.Type.BOOL,
       
     );
+    
   }
   set_draw_control_chars(_enable) {
     return _call_native_mb_no_ret(
@@ -876,6 +897,7 @@ export class LineEdit extends Control{
       this._owner,
       _enable
     );
+    
   }
   set_text_direction(_direction) {
     return _call_native_mb_no_ret(
@@ -883,6 +905,7 @@ export class LineEdit extends Control{
       this._owner,
       _direction
     );
+    
   }
   get_text_direction() {
     return _call_native_mb_ret(
@@ -891,6 +914,7 @@ export class LineEdit extends Control{
 			Variant.INT,
       
     );
+    
   }
   set_language(_language) {
     return _call_native_mb_no_ret(
@@ -898,6 +922,7 @@ export class LineEdit extends Control{
       this._owner,
       _language
     );
+    
   }
   get_language() {
     return _call_native_mb_ret(
@@ -907,6 +932,7 @@ export class LineEdit extends Control{
     ,
       
     );
+    
   }
   set_structured_text_bidi_override(_parser) {
     return _call_native_mb_no_ret(
@@ -914,6 +940,7 @@ export class LineEdit extends Control{
       this._owner,
       _parser
     );
+    
   }
   get_structured_text_bidi_override() {
     return _call_native_mb_ret(
@@ -922,6 +949,7 @@ export class LineEdit extends Control{
 			Variant.INT,
       
     );
+    
   }
   set_structured_text_bidi_override_options(_args) {
     return _call_native_mb_no_ret(
@@ -929,6 +957,7 @@ export class LineEdit extends Control{
       this._owner,
       _args
     );
+    
   }
   get_structured_text_bidi_override_options() {
     return _call_native_mb_ret(
@@ -938,6 +967,7 @@ export class LineEdit extends Control{
     ,
       
     );
+    
   }
   set_placeholder(_text) {
     return _call_native_mb_no_ret(
@@ -945,6 +975,7 @@ export class LineEdit extends Control{
       this._owner,
       _text
     );
+    
   }
   get_placeholder() {
     return _call_native_mb_ret(
@@ -954,6 +985,7 @@ export class LineEdit extends Control{
     ,
       
     );
+    
   }
   set_caret_column(_position) {
     return _call_native_mb_no_ret(
@@ -961,6 +993,7 @@ export class LineEdit extends Control{
       this._owner,
       _position
     );
+    
   }
   get_caret_column() {
     return _call_native_mb_ret(
@@ -969,6 +1002,7 @@ export class LineEdit extends Control{
 			Variant.Type.INT,
       
     );
+    
   }
   get_scroll_offset() {
     return _call_native_mb_ret(
@@ -977,6 +1011,7 @@ export class LineEdit extends Control{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_expand_to_text_length_enabled(_enabled) {
     return _call_native_mb_no_ret(
@@ -984,6 +1019,7 @@ export class LineEdit extends Control{
       this._owner,
       _enabled
     );
+    
   }
   is_expand_to_text_length_enabled() {
     return _call_native_mb_ret(
@@ -992,6 +1028,7 @@ export class LineEdit extends Control{
 			Variant.Type.BOOL,
       
     );
+    
   }
   set_caret_blink_enabled(_enabled) {
     return _call_native_mb_no_ret(
@@ -999,6 +1036,7 @@ export class LineEdit extends Control{
       this._owner,
       _enabled
     );
+    
   }
   is_caret_blink_enabled() {
     return _call_native_mb_ret(
@@ -1007,6 +1045,7 @@ export class LineEdit extends Control{
 			Variant.Type.BOOL,
       
     );
+    
   }
   set_caret_mid_grapheme_enabled(_enabled) {
     return _call_native_mb_no_ret(
@@ -1014,6 +1053,7 @@ export class LineEdit extends Control{
       this._owner,
       _enabled
     );
+    
   }
   is_caret_mid_grapheme_enabled() {
     return _call_native_mb_ret(
@@ -1022,6 +1062,7 @@ export class LineEdit extends Control{
 			Variant.Type.BOOL,
       
     );
+    
   }
   set_caret_force_displayed(_enabled) {
     return _call_native_mb_no_ret(
@@ -1029,6 +1070,7 @@ export class LineEdit extends Control{
       this._owner,
       _enabled
     );
+    
   }
   is_caret_force_displayed() {
     return _call_native_mb_ret(
@@ -1037,6 +1079,7 @@ export class LineEdit extends Control{
 			Variant.Type.BOOL,
       
     );
+    
   }
   set_caret_blink_interval(_interval) {
     return _call_native_mb_no_ret(
@@ -1044,6 +1087,7 @@ export class LineEdit extends Control{
       this._owner,
       _interval
     );
+    
   }
   get_caret_blink_interval() {
     return _call_native_mb_ret(
@@ -1052,6 +1096,7 @@ export class LineEdit extends Control{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_max_length(_chars) {
     return _call_native_mb_no_ret(
@@ -1059,6 +1104,7 @@ export class LineEdit extends Control{
       this._owner,
       _chars
     );
+    
   }
   get_max_length() {
     return _call_native_mb_ret(
@@ -1067,6 +1113,7 @@ export class LineEdit extends Control{
 			Variant.Type.INT,
       
     );
+    
   }
   insert_text_at_caret(_text) {
     return _call_native_mb_no_ret(
@@ -1074,6 +1121,7 @@ export class LineEdit extends Control{
       this._owner,
       _text
     );
+    
   }
   delete_char_at_caret() {
     return _call_native_mb_no_ret(
@@ -1081,6 +1129,7 @@ export class LineEdit extends Control{
       this._owner,
       
     );
+    
   }
   delete_text(_from_column, _to_column) {
     return _call_native_mb_no_ret(
@@ -1088,6 +1137,7 @@ export class LineEdit extends Control{
       this._owner,
       _from_column, _to_column
     );
+    
   }
   set_editable(_enabled) {
     return _call_native_mb_no_ret(
@@ -1095,6 +1145,7 @@ export class LineEdit extends Control{
       this._owner,
       _enabled
     );
+    
   }
   is_editable() {
     return _call_native_mb_ret(
@@ -1103,6 +1154,7 @@ export class LineEdit extends Control{
 			Variant.Type.BOOL,
       
     );
+    
   }
   set_secret(_enabled) {
     return _call_native_mb_no_ret(
@@ -1110,6 +1162,7 @@ export class LineEdit extends Control{
       this._owner,
       _enabled
     );
+    
   }
   is_secret() {
     return _call_native_mb_ret(
@@ -1118,6 +1171,7 @@ export class LineEdit extends Control{
 			Variant.Type.BOOL,
       
     );
+    
   }
   set_secret_character(_character) {
     return _call_native_mb_no_ret(
@@ -1125,6 +1179,7 @@ export class LineEdit extends Control{
       this._owner,
       _character
     );
+    
   }
   get_secret_character() {
     return _call_native_mb_ret(
@@ -1134,6 +1189,7 @@ export class LineEdit extends Control{
     ,
       
     );
+    
   }
   menu_option(_option) {
     return _call_native_mb_no_ret(
@@ -1141,6 +1197,7 @@ export class LineEdit extends Control{
       this._owner,
       _option
     );
+    
   }
   get_menu() {
     return _call_native_mb_ret(
@@ -1149,6 +1206,7 @@ export class LineEdit extends Control{
 			Variant.INT,
       
     );
+    
   }
   is_menu_visible() {
     return _call_native_mb_ret(
@@ -1157,6 +1215,7 @@ export class LineEdit extends Control{
 			Variant.Type.BOOL,
       
     );
+    
   }
   set_context_menu_enabled(_enable) {
     return _call_native_mb_no_ret(
@@ -1164,6 +1223,7 @@ export class LineEdit extends Control{
       this._owner,
       _enable
     );
+    
   }
   is_context_menu_enabled() {
     return _call_native_mb_ret(
@@ -1172,6 +1232,7 @@ export class LineEdit extends Control{
 			Variant.Type.BOOL,
       
     );
+    
   }
   set_virtual_keyboard_enabled(_enable) {
     return _call_native_mb_no_ret(
@@ -1179,6 +1240,7 @@ export class LineEdit extends Control{
       this._owner,
       _enable
     );
+    
   }
   is_virtual_keyboard_enabled() {
     return _call_native_mb_ret(
@@ -1187,6 +1249,7 @@ export class LineEdit extends Control{
 			Variant.Type.BOOL,
       
     );
+    
   }
   set_virtual_keyboard_type(_type) {
     return _call_native_mb_no_ret(
@@ -1194,6 +1257,7 @@ export class LineEdit extends Control{
       this._owner,
       _type
     );
+    
   }
   get_virtual_keyboard_type() {
     return _call_native_mb_ret(
@@ -1202,6 +1266,7 @@ export class LineEdit extends Control{
 			Variant.INT,
       
     );
+    
   }
   set_clear_button_enabled(_enable) {
     return _call_native_mb_no_ret(
@@ -1209,6 +1274,7 @@ export class LineEdit extends Control{
       this._owner,
       _enable
     );
+    
   }
   is_clear_button_enabled() {
     return _call_native_mb_ret(
@@ -1217,6 +1283,7 @@ export class LineEdit extends Control{
 			Variant.Type.BOOL,
       
     );
+    
   }
   set_shortcut_keys_enabled(_enable) {
     return _call_native_mb_no_ret(
@@ -1224,6 +1291,7 @@ export class LineEdit extends Control{
       this._owner,
       _enable
     );
+    
   }
   is_shortcut_keys_enabled() {
     return _call_native_mb_ret(
@@ -1232,6 +1300,7 @@ export class LineEdit extends Control{
 			Variant.Type.BOOL,
       
     );
+    
   }
   set_middle_mouse_paste_enabled(_enable) {
     return _call_native_mb_no_ret(
@@ -1239,6 +1308,7 @@ export class LineEdit extends Control{
       this._owner,
       _enable
     );
+    
   }
   is_middle_mouse_paste_enabled() {
     return _call_native_mb_ret(
@@ -1247,6 +1317,7 @@ export class LineEdit extends Control{
 			Variant.Type.BOOL,
       
     );
+    
   }
   set_selecting_enabled(_enable) {
     return _call_native_mb_no_ret(
@@ -1254,6 +1325,7 @@ export class LineEdit extends Control{
       this._owner,
       _enable
     );
+    
   }
   is_selecting_enabled() {
     return _call_native_mb_ret(
@@ -1262,6 +1334,7 @@ export class LineEdit extends Control{
 			Variant.Type.BOOL,
       
     );
+    
   }
   set_deselect_on_focus_loss_enabled(_enable) {
     return _call_native_mb_no_ret(
@@ -1269,6 +1342,7 @@ export class LineEdit extends Control{
       this._owner,
       _enable
     );
+    
   }
   is_deselect_on_focus_loss_enabled() {
     return _call_native_mb_ret(
@@ -1277,6 +1351,7 @@ export class LineEdit extends Control{
 			Variant.Type.BOOL,
       
     );
+    
   }
   set_drag_and_drop_selection_enabled(_enable) {
     return _call_native_mb_no_ret(
@@ -1284,6 +1359,7 @@ export class LineEdit extends Control{
       this._owner,
       _enable
     );
+    
   }
   is_drag_and_drop_selection_enabled() {
     return _call_native_mb_ret(
@@ -1292,6 +1368,7 @@ export class LineEdit extends Control{
 			Variant.Type.BOOL,
       
     );
+    
   }
   set_right_icon(_icon) {
     return _call_native_mb_no_ret(
@@ -1299,6 +1376,7 @@ export class LineEdit extends Control{
       this._owner,
       _icon
     );
+    
   }
   get_right_icon() {
     return _call_native_mb_ret(
@@ -1307,6 +1385,7 @@ export class LineEdit extends Control{
 			Variant.INT,
       
     );
+    
   }
   set_flat(_enabled) {
     return _call_native_mb_no_ret(
@@ -1314,6 +1393,7 @@ export class LineEdit extends Control{
       this._owner,
       _enabled
     );
+    
   }
   is_flat() {
     return _call_native_mb_ret(
@@ -1322,6 +1402,7 @@ export class LineEdit extends Control{
 			Variant.Type.BOOL,
       
     );
+    
   }
   set_select_all_on_focus(_enabled) {
     return _call_native_mb_no_ret(
@@ -1329,6 +1410,7 @@ export class LineEdit extends Control{
       this._owner,
       _enabled
     );
+    
   }
   is_select_all_on_focus() {
     return _call_native_mb_ret(
@@ -1337,6 +1419,7 @@ export class LineEdit extends Control{
 			Variant.Type.BOOL,
       
     );
+    
   }
   static MenuItems = {
     MENU_CUT: 0,

@@ -1,6 +1,14 @@
 import * as internal from '__internal__';
-import { GPUParticlesCollision3D } from 'src/js_godot/classesgpu_particles_collision3d'
 import { Vector3 } from 'src/js_godot/variant/vector3'
+import { GPUParticlesCollision3D } from 'src/js_godot/classes/gpu_particles_collision3d'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_set_size;
     method_get_size;
@@ -26,78 +34,78 @@ export class GPUParticlesCollisionHeightField3D extends GPUParticlesCollision3D{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("GPUParticlesCollisionHeightField3D");
-      let methodname = new StringName("set_size");
-      this._bindings.method_set_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3460891852
-      );
-    }
-    {
-      let classname = new StringName("GPUParticlesCollisionHeightField3D");
-      let methodname = new StringName("get_size");
-      this._bindings.method_get_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3360562783
-      );
-    }
-    {
-      let classname = new StringName("GPUParticlesCollisionHeightField3D");
-      let methodname = new StringName("set_resolution");
-      this._bindings.method_set_resolution = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1009996517
-      );
-    }
-    {
-      let classname = new StringName("GPUParticlesCollisionHeightField3D");
-      let methodname = new StringName("get_resolution");
-      this._bindings.method_get_resolution = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1156065644
-      );
-    }
-    {
-      let classname = new StringName("GPUParticlesCollisionHeightField3D");
-      let methodname = new StringName("set_update_mode");
-      this._bindings.method_set_update_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        673680859
-      );
-    }
-    {
-      let classname = new StringName("GPUParticlesCollisionHeightField3D");
-      let methodname = new StringName("get_update_mode");
-      this._bindings.method_get_update_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1998141380
-      );
-    }
-    {
-      let classname = new StringName("GPUParticlesCollisionHeightField3D");
-      let methodname = new StringName("set_follow_camera_enabled");
-      this._bindings.method_set_follow_camera_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("GPUParticlesCollisionHeightField3D");
-      let methodname = new StringName("is_follow_camera_enabled");
-      this._bindings.method_is_follow_camera_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
+      {
+        let classname = new StringName("GPUParticlesCollisionHeightField3D");
+        let methodname = new StringName("set_size");
+        this._bindings.method_set_size = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3460891852
+        );
+      }
+      {
+        let classname = new StringName("GPUParticlesCollisionHeightField3D");
+        let methodname = new StringName("get_size");
+        this._bindings.method_get_size = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3360562783
+        );
+      }
+      {
+        let classname = new StringName("GPUParticlesCollisionHeightField3D");
+        let methodname = new StringName("set_resolution");
+        this._bindings.method_set_resolution = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1009996517
+        );
+      }
+      {
+        let classname = new StringName("GPUParticlesCollisionHeightField3D");
+        let methodname = new StringName("get_resolution");
+        this._bindings.method_get_resolution = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1156065644
+        );
+      }
+      {
+        let classname = new StringName("GPUParticlesCollisionHeightField3D");
+        let methodname = new StringName("set_update_mode");
+        this._bindings.method_set_update_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          673680859
+        );
+      }
+      {
+        let classname = new StringName("GPUParticlesCollisionHeightField3D");
+        let methodname = new StringName("get_update_mode");
+        this._bindings.method_get_update_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1998141380
+        );
+      }
+      {
+        let classname = new StringName("GPUParticlesCollisionHeightField3D");
+        let methodname = new StringName("set_follow_camera_enabled");
+        this._bindings.method_set_follow_camera_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("GPUParticlesCollisionHeightField3D");
+        let methodname = new StringName("is_follow_camera_enabled");
+        this._bindings.method_is_follow_camera_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
   }
   set_size(_size) {
     return _call_native_mb_no_ret(
@@ -105,6 +113,7 @@ export class GPUParticlesCollisionHeightField3D extends GPUParticlesCollision3D{
       this._owner,
       _size
     );
+    
   }
   get_size() {
     return _call_native_mb_ret(
@@ -114,6 +123,7 @@ export class GPUParticlesCollisionHeightField3D extends GPUParticlesCollision3D{
     ,
       
     );
+    
   }
   set_resolution(_resolution) {
     return _call_native_mb_no_ret(
@@ -121,6 +131,7 @@ export class GPUParticlesCollisionHeightField3D extends GPUParticlesCollision3D{
       this._owner,
       _resolution
     );
+    
   }
   get_resolution() {
     return _call_native_mb_ret(
@@ -129,6 +140,7 @@ export class GPUParticlesCollisionHeightField3D extends GPUParticlesCollision3D{
 			Variant.INT,
       
     );
+    
   }
   set_update_mode(_update_mode) {
     return _call_native_mb_no_ret(
@@ -136,6 +148,7 @@ export class GPUParticlesCollisionHeightField3D extends GPUParticlesCollision3D{
       this._owner,
       _update_mode
     );
+    
   }
   get_update_mode() {
     return _call_native_mb_ret(
@@ -144,6 +157,7 @@ export class GPUParticlesCollisionHeightField3D extends GPUParticlesCollision3D{
 			Variant.INT,
       
     );
+    
   }
   set_follow_camera_enabled(_enabled) {
     return _call_native_mb_no_ret(
@@ -151,6 +165,7 @@ export class GPUParticlesCollisionHeightField3D extends GPUParticlesCollision3D{
       this._owner,
       _enabled
     );
+    
   }
   is_follow_camera_enabled() {
     return _call_native_mb_ret(
@@ -159,6 +174,7 @@ export class GPUParticlesCollisionHeightField3D extends GPUParticlesCollision3D{
 			Variant.Type.BOOL,
       
     );
+    
   }
   static Resolution = {
     RESOLUTION_256: 0,

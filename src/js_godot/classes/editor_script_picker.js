@@ -1,5 +1,13 @@
 import * as internal from '__internal__';
-import { EditorResourcePicker } from 'src/js_godot/classeseditor_resource_picker'
+import { EditorResourcePicker } from 'src/js_godot/classes/editor_resource_picker'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_set_script_owner;
     method_get_script_owner;
@@ -19,24 +27,24 @@ export class EditorScriptPicker extends EditorResourcePicker{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("EditorScriptPicker");
-      let methodname = new StringName("set_script_owner");
-      this._bindings.method_set_script_owner = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1078189570
-      );
-    }
-    {
-      let classname = new StringName("EditorScriptPicker");
-      let methodname = new StringName("get_script_owner");
-      this._bindings.method_get_script_owner = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3160264692
-      );
-    }
+      {
+        let classname = new StringName("EditorScriptPicker");
+        let methodname = new StringName("set_script_owner");
+        this._bindings.method_set_script_owner = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1078189570
+        );
+      }
+      {
+        let classname = new StringName("EditorScriptPicker");
+        let methodname = new StringName("get_script_owner");
+        this._bindings.method_get_script_owner = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3160264692
+        );
+      }
   }
   set_script_owner(_owner_node) {
     return _call_native_mb_no_ret(
@@ -44,6 +52,7 @@ export class EditorScriptPicker extends EditorResourcePicker{
       this._owner,
       _owner_node
     );
+    
   }
   get_script_owner() {
     return _call_native_mb_ret(
@@ -52,5 +61,6 @@ export class EditorScriptPicker extends EditorResourcePicker{
 			Variant.INT,
       
     );
+    
   }
 }

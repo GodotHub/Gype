@@ -39,6 +39,7 @@
 #include <godot_cpp/variant_size.hpp>
 #include <string>
 #include <unordered_map>
+#include <variant>
 #include <vector>
 
 namespace JSGodot {
@@ -121,6 +122,8 @@ enum PropertyUsageFlags : uint64_t {
 };
 
 struct PropertyInfo {
+	using Type = std::variant<uint32_t, int, uint8_t *, GDExtensionVariantType>;
+
 	GDExtensionVariantType type = GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_NIL;
 	uint8_t *name;
 	uint8_t *class_name;
@@ -146,8 +149,8 @@ struct PropertyInfo {
 	PropertyInfo(const GDExtensionPropertyInfo *p_info) :
 			PropertyInfo(p_info->type, Memory::arr_to_vector(GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_STRING_NAME, (uint8_t *)p_info->name), (PropertyHint)p_info->hint, Memory::arr_to_vector(GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_STRING, (uint8_t *)p_info->hint_string), p_info->usage, Memory::arr_to_vector(GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_STRING, (uint8_t *)p_info->class_name)) {}
 
-	std::unordered_map<std::string, std::any> to_dict() const {
-		std::unordered_map<std::string, std::any> dict;
+	std::unordered_map<std::variant<std::string>, Type> to_dict() const {
+		std::unordered_map<std::variant<std::string>, Type> dict;
 		dict["name"] = name;
 		dict["class_name"] = class_name;
 		dict["type"] = type;
@@ -157,25 +160,25 @@ struct PropertyInfo {
 		return dict;
 	}
 
-	static PropertyInfo from_dict(std::unordered_map<std::string, std::any> p_dict) {
+	static PropertyInfo from_dict(std::unordered_map<std::variant<std::string>, Type> p_dict) {
 		PropertyInfo pi;
 		if (p_dict.count("type") > 0) {
-			pi.type = GDExtensionVariantType(std::any_cast<int>(p_dict["type"]));
+			pi.type = std::get<GDExtensionVariantType>(p_dict["type"]);
 		}
 		if (p_dict.count("name") > 0) {
-			pi.name = std::any_cast<uint8_t *>(p_dict["name"]);
+			pi.name = std::get<uint8_t *>(p_dict["name"]);
 		}
 		if (p_dict.count("class_name") > 0) {
-			pi.class_name = std::any_cast<uint8_t *>(p_dict["class_name"]);
+			pi.class_name = std::get<uint8_t *>(p_dict["class_name"]);
 		}
 		if (p_dict.count("hint") > 0) {
-			pi.hint = PropertyHint(std::any_cast<int>(p_dict["hint"]));
+			pi.hint = PropertyHint(std::get<int>(p_dict["hint"]));
 		}
 		if (p_dict.count("hint_string") > 0) {
-			pi.hint_string = std::any_cast<uint8_t *>(p_dict["hint_string"]);
+			pi.hint_string = std::get<uint8_t *>(p_dict["hint_string"]);
 		}
 		if (p_dict.count("usage") > 0) {
-			pi.usage = std::any_cast<uint32_t>(p_dict["usage"]);
+			pi.usage = std::get<uint32_t>(p_dict["usage"]);
 		}
 		return pi;
 	}

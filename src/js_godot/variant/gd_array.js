@@ -4,19 +4,19 @@ import {
   _call_builtin_method_ptr_ret,
   _call_builtin_method_ptr_no_ret
 } from 'src/js_godot/core/builtin_ptrcall'
-import { PackedInt64Array } from 'src/js_godot/variant/packed_int64_array'
+import { PackedFloat32Array } from 'src/js_godot/variant/packed_float32_array'
+import { PackedVector2Array } from 'src/js_godot/variant/packed_vector2_array'
+import { StringName } from 'src/js_godot/variant/string_name'
+import { PackedVector4Array } from 'src/js_godot/variant/packed_vector4_array'
+import { PackedStringArray } from 'src/js_godot/variant/packed_string_array'
 import { PackedInt32Array } from 'src/js_godot/variant/packed_int32_array'
+import { Callable } from 'src/js_godot/variant/callable'
 import { PackedVector3Array } from 'src/js_godot/variant/packed_vector3_array'
+import { PackedFloat64Array } from 'src/js_godot/variant/packed_float64_array'
+import { PackedInt64Array } from 'src/js_godot/variant/packed_int64_array'
 import { Variant } from 'src/js_godot/variant/variant'
 import { PackedByteArray } from 'src/js_godot/variant/packed_byte_array'
-import { StringName } from 'src/js_godot/variant/string_name'
-import { Callable } from 'src/js_godot/variant/callable'
-import { PackedVector2Array } from 'src/js_godot/variant/packed_vector2_array'
 import { PackedColorArray } from 'src/js_godot/variant/packed_color_array'
-import { PackedFloat64Array } from 'src/js_godot/variant/packed_float64_array'
-import { PackedStringArray } from 'src/js_godot/variant/packed_string_array'
-import { PackedVector4Array } from 'src/js_godot/variant/packed_vector4_array'
-import { PackedFloat32Array } from 'src/js_godot/variant/packed_float32_array'
 
 class _MethodBindings {
   from_variant_constructor
@@ -103,12 +103,11 @@ export class GDArray {
   constructor (from) {
     if (!from) {
       _call_builtin_constructor(GDArray._bindings.constructor_0, this)
-    } else if (arguments[0] instanceof GDArray) {
-      let from = arguments[0];
+    }else if (from instanceof GDArray) {
       _call_builtin_constructor(GDArray._bindings.constructor_1, this, [
         from
       ])
-    } else if (arguments[0] instanceof GDArray) {
+    } else if (arguments.length == 4&& arguments[0] instanceof GDArray&& typeof arguments[1] == "number"&& arguments[2] instanceof StringName&& arguments[3] instanceof Variant) {
       let base = arguments[0];
       let type = arguments[1];
       let class_name = arguments[2];
@@ -116,59 +115,53 @@ export class GDArray {
       _call_builtin_constructor(GDArray._bindings.constructor_2, this, [
         base, type, class_name, script
       ])
-    } else if (arguments[0] instanceof PackedByteArray) {
-      let from = arguments[0];
+    }else if (from instanceof PackedByteArray) {
       _call_builtin_constructor(GDArray._bindings.constructor_3, this, [
         from
       ])
-    } else if (arguments[0] instanceof PackedInt32Array) {
-      let from = arguments[0];
+    }else if (from instanceof PackedInt32Array) {
       _call_builtin_constructor(GDArray._bindings.constructor_4, this, [
         from
       ])
-    } else if (arguments[0] instanceof PackedInt64Array) {
-      let from = arguments[0];
+    }else if (from instanceof PackedInt64Array) {
       _call_builtin_constructor(GDArray._bindings.constructor_5, this, [
         from
       ])
-    } else if (arguments[0] instanceof PackedFloat32Array) {
-      let from = arguments[0];
+    }else if (from instanceof PackedFloat32Array) {
       _call_builtin_constructor(GDArray._bindings.constructor_6, this, [
         from
       ])
-    } else if (arguments[0] instanceof PackedFloat64Array) {
-      let from = arguments[0];
+    }else if (from instanceof PackedFloat64Array) {
       _call_builtin_constructor(GDArray._bindings.constructor_7, this, [
         from
       ])
-    } else if (arguments[0] instanceof PackedStringArray) {
-      let from = arguments[0];
+    }else if (from instanceof PackedStringArray) {
       _call_builtin_constructor(GDArray._bindings.constructor_8, this, [
         from
       ])
-    } else if (arguments[0] instanceof PackedVector2Array) {
-      let from = arguments[0];
+    }else if (from instanceof PackedVector2Array) {
       _call_builtin_constructor(GDArray._bindings.constructor_9, this, [
         from
       ])
-    } else if (arguments[0] instanceof PackedVector3Array) {
-      let from = arguments[0];
+    }else if (from instanceof PackedVector3Array) {
       _call_builtin_constructor(GDArray._bindings.constructor_10, this, [
         from
       ])
-    } else if (arguments[0] instanceof PackedColorArray) {
-      let from = arguments[0];
+    }else if (from instanceof PackedColorArray) {
       _call_builtin_constructor(GDArray._bindings.constructor_11, this, [
         from
       ])
-    } else if (arguments[0] instanceof PackedVector4Array) {
-      let from = arguments[0];
+    }else if (from instanceof PackedVector4Array) {
       _call_builtin_constructor(GDArray._bindings.constructor_12, this, [
         from
       ])
     } else if (from instanceof Variant) {
       GDArray._bindings.from_variant_constructor(this.opaque, from.opaque)
-    } 
+    } else if (from instanceof Array) {
+      for (let i = 0; i < from.length; i++) {
+        append(from[i]);
+      }
+    }
   }
   
   static __init_bindings_constructors_destructor () {

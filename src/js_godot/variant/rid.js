@@ -5,6 +5,7 @@ import {
   _call_builtin_method_ptr_no_ret
 } from 'src/js_godot/core/builtin_ptrcall'
 import { Variant } from 'src/js_godot/variant/variant'
+import { StringName } from 'src/js_godot/variant/string_name'
 
 class _MethodBindings {
   from_variant_constructor
@@ -32,8 +33,7 @@ export class RID {
   constructor (from) {
     if (!from) {
       _call_builtin_constructor(RID._bindings.constructor_0, this)
-    } else if (arguments[0] instanceof RID) {
-      let from = arguments[0];
+    }else if (from instanceof RID) {
       _call_builtin_constructor(RID._bindings.constructor_1, this, [
         from
       ])

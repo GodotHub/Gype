@@ -1,6 +1,14 @@
 import * as internal from '__internal__';
-import { GodotObject } from 'src/js_godot/classesgodot_object'
+import { GodotObject } from 'src/js_godot/classes/godot_object'
 import { GDString } from 'src/js_godot/variant/gd_string'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_add_interface;
     method_get_interface_count;
@@ -27,78 +35,78 @@ class _TextServerManager extends GodotObject{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("TextServerManager");
-      let methodname = new StringName("add_interface");
-      this._bindings.method_add_interface = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1799689403
-      );
-    }
-    {
-      let classname = new StringName("TextServerManager");
-      let methodname = new StringName("get_interface_count");
-      this._bindings.method_get_interface_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("TextServerManager");
-      let methodname = new StringName("remove_interface");
-      this._bindings.method_remove_interface = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1799689403
-      );
-    }
-    {
-      let classname = new StringName("TextServerManager");
-      let methodname = new StringName("get_interface");
-      this._bindings.method_get_interface = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1672475555
-      );
-    }
-    {
-      let classname = new StringName("TextServerManager");
-      let methodname = new StringName("get_interfaces");
-      this._bindings.method_get_interfaces = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3995934104
-      );
-    }
-    {
-      let classname = new StringName("TextServerManager");
-      let methodname = new StringName("find_interface");
-      this._bindings.method_find_interface = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2240905781
-      );
-    }
-    {
-      let classname = new StringName("TextServerManager");
-      let methodname = new StringName("set_primary_interface");
-      this._bindings.method_set_primary_interface = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1799689403
-      );
-    }
-    {
-      let classname = new StringName("TextServerManager");
-      let methodname = new StringName("get_primary_interface");
-      this._bindings.method_get_primary_interface = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        905850878
-      );
-    }
+      {
+        let classname = new StringName("TextServerManager");
+        let methodname = new StringName("add_interface");
+        this._bindings.method_add_interface = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1799689403
+        );
+      }
+      {
+        let classname = new StringName("TextServerManager");
+        let methodname = new StringName("get_interface_count");
+        this._bindings.method_get_interface_count = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
+      {
+        let classname = new StringName("TextServerManager");
+        let methodname = new StringName("remove_interface");
+        this._bindings.method_remove_interface = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1799689403
+        );
+      }
+      {
+        let classname = new StringName("TextServerManager");
+        let methodname = new StringName("get_interface");
+        this._bindings.method_get_interface = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1672475555
+        );
+      }
+      {
+        let classname = new StringName("TextServerManager");
+        let methodname = new StringName("get_interfaces");
+        this._bindings.method_get_interfaces = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3995934104
+        );
+      }
+      {
+        let classname = new StringName("TextServerManager");
+        let methodname = new StringName("find_interface");
+        this._bindings.method_find_interface = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2240905781
+        );
+      }
+      {
+        let classname = new StringName("TextServerManager");
+        let methodname = new StringName("set_primary_interface");
+        this._bindings.method_set_primary_interface = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1799689403
+        );
+      }
+      {
+        let classname = new StringName("TextServerManager");
+        let methodname = new StringName("get_primary_interface");
+        this._bindings.method_get_primary_interface = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          905850878
+        );
+      }
   }
   add_interface(_interface) {
     return _call_native_mb_no_ret(
@@ -106,6 +114,7 @@ class _TextServerManager extends GodotObject{
       this._owner,
       _interface
     );
+    
   }
   get_interface_count() {
     return _call_native_mb_ret(
@@ -114,6 +123,7 @@ class _TextServerManager extends GodotObject{
 			Variant.Type.INT,
       
     );
+    
   }
   remove_interface(_interface) {
     return _call_native_mb_no_ret(
@@ -121,6 +131,7 @@ class _TextServerManager extends GodotObject{
       this._owner,
       _interface
     );
+    
   }
   get_interface(_idx) {
     return _call_native_mb_ret(
@@ -129,6 +140,7 @@ class _TextServerManager extends GodotObject{
 			Variant.INT,
       _idx
     );
+    
   }
   get_interfaces() {
     return _call_native_mb_ret(
@@ -137,6 +149,7 @@ class _TextServerManager extends GodotObject{
 			Variant.INT,
       
     );
+    
   }
   find_interface(_name) {
     return _call_native_mb_ret(
@@ -145,6 +158,7 @@ class _TextServerManager extends GodotObject{
 			Variant.INT,
       _name
     );
+    
   }
   set_primary_interface(_index) {
     return _call_native_mb_no_ret(
@@ -152,6 +166,7 @@ class _TextServerManager extends GodotObject{
       this._owner,
       _index
     );
+    
   }
   get_primary_interface() {
     return _call_native_mb_ret(
@@ -160,5 +175,6 @@ class _TextServerManager extends GodotObject{
 			Variant.INT,
       
     );
+    
   }
 }

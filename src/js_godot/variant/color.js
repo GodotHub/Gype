@@ -6,6 +6,7 @@ import {
 } from 'src/js_godot/core/builtin_ptrcall'
 import { GDString } from 'src/js_godot/variant/gd_string'
 import { Variant } from 'src/js_godot/variant/variant'
+import { StringName } from 'src/js_godot/variant/string_name'
 
 class _MethodBindings {
   from_variant_constructor
@@ -62,7 +63,7 @@ class _MethodBindings {
 }
 
 export class Color {
-  static #SIZE = 8
+  static #SIZE = 16
   opaque = new Uint8Array(Color.#SIZE)
 
   static _bindings = new _MethodBindings()
@@ -70,25 +71,24 @@ export class Color {
   constructor (from) {
     if (!from) {
       _call_builtin_constructor(Color._bindings.constructor_0, this)
-    } else if (arguments[0] instanceof Color) {
-      let from = arguments[0];
+    }else if (from instanceof Color) {
       _call_builtin_constructor(Color._bindings.constructor_1, this, [
         from
       ])
-    } else if (arguments[0] instanceof Color) {
+    } else if (arguments.length == 2&& arguments[0] instanceof Color&& typeof arguments[1] == "number") {
       let from = arguments[0];
       let alpha = arguments[1];
       _call_builtin_constructor(Color._bindings.constructor_2, this, [
         from, alpha
       ])
-    } else if (arguments[0] instanceof float) {
+    } else if (arguments.length == 3&& typeof arguments[0] == "number"&& typeof arguments[1] == "number"&& typeof arguments[2] == "number") {
       let r = arguments[0];
       let g = arguments[1];
       let b = arguments[2];
       _call_builtin_constructor(Color._bindings.constructor_3, this, [
         r, g, b
       ])
-    } else if (arguments[0] instanceof float) {
+    } else if (arguments.length == 4&& typeof arguments[0] == "number"&& typeof arguments[1] == "number"&& typeof arguments[2] == "number"&& typeof arguments[3] == "number") {
       let r = arguments[0];
       let g = arguments[1];
       let b = arguments[2];
@@ -96,12 +96,11 @@ export class Color {
       _call_builtin_constructor(Color._bindings.constructor_4, this, [
         r, g, b, a
       ])
-    } else if (arguments[0] instanceof GDString) {
-      let code = arguments[0];
+    }else if (from instanceof GDString) {
       _call_builtin_constructor(Color._bindings.constructor_5, this, [
         code
       ])
-    } else if (arguments[0] instanceof GDString) {
+    } else if (arguments.length == 2&& arguments[0] instanceof GDString&& typeof arguments[1] == "number") {
       let code = arguments[0];
       let alpha = arguments[1];
       _call_builtin_constructor(Color._bindings.constructor_6, this, [

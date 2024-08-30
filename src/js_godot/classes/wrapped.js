@@ -1,23 +1,35 @@
 import { StringName } from "src/js_godot/variant/string_name";
-import { classdb_construct_object, JSPointer } from "__internal__";
+import {
+  classdb_construct_object,
+  object_set_instance,
+  object_set_instance_binding,
+  JSPointer,
+} from "__internal__";
 
 export class Wrapped {
   _owner;
+  _constructing_extension_class_name = undefined;
 
   constructor(value) {
-    GDCLASS.call(this);
     if (typeof value == "string") {
-      let name = new StringName(value);
-      this._owner = classdb_construct_object(name.opaque);
-      // TODO
+      this._constructing_extension_class_name =
+        this._get_extension_class_name();
+      let p_godot_class = new StringName(value);
+      this._owner = classdb_construct_object(p_godot_class.opaque);
+      if (this._constructing_extension_class_name) {
+        object_set_instance(
+          _owner,
+          this._constructing_extension_class_name.opaque,
+          this
+        );
+      }
+      object_set_instance_binding(this._owner, this);
     } else {
       this._owner = value;
     }
   }
 
-  static #_get_extension_class_name() {
-    return undefined;
-  }
+  _get_extension_class_name() {}
 
   __get_notification() {}
   __get_get() {}
@@ -29,19 +41,15 @@ export class Wrapped {
   __get_to_string() {}
   __has_get_property_list() {}
 
-  static notification_bind(instance, what, p_reversed) {}
-  static set_bind(instance, name, ret) {
-    return false;
-  }
-  static get_bind(instance, name, value) {
-    return false;
-  }
-  static get_property_list_bind(instance) {}
-  static free_property_list_bind(instance, list, count) {}
-  static property_can_revert_bind(instance, name) {}
-  static property_get_revert_bind(instance, name, ret) {}
-  static validate_property_bind(instance, property) {}
-  static to_string_bind(instace) {}
+  static __notification_bind(instance, what, p_reversed) {}
+  static __set_bind(instance, name, ret) {}
+  static __get_bind(instance, name, value) {}
+  static __get_property_list_bind(instance) {}
+  static __free_property_list_bind(instance, list, count) {}
+  static __property_can_revert_bind(instance, name) {}
+  static __property_get_revert_bind(instance, name, ret) {}
+  static __validate_property_bind(instance, property) {}
+  static __to_string_bind(instace) {}
 
   _notification(p_what) {}
   _set(p_name, p_property) {

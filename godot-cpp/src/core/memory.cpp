@@ -93,7 +93,7 @@ void Memory::free_static(void *p_ptr, bool p_pad_align) {
 	internal::gdextension_interface_mem_free(mem);
 }
 
-static std::vector<uint8_t> arr_to_vector(GDExtensionVariantType type, uint8_t *arr) {
+std::vector<uint8_t> Memory::arr_to_vector(GDExtensionVariantType type, uint8_t *arr) {
 	switch (type) {
 		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_STRING_NAME:
 		case GDExtensionVariantType ::GDEXTENSION_VARIANT_TYPE_STRING:

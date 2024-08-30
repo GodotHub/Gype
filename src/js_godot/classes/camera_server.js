@@ -1,5 +1,13 @@
 import * as internal from '__internal__';
-import { GodotObject } from 'src/js_godot/classesgodot_object'
+import { GodotObject } from 'src/js_godot/classes/godot_object'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_get_feed;
     method_get_feed_count;
@@ -23,51 +31,51 @@ class _CameraServer extends GodotObject{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("CameraServer");
-      let methodname = new StringName("get_feed");
-      this._bindings.method_get_feed = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        361927068
-      );
-    }
-    {
-      let classname = new StringName("CameraServer");
-      let methodname = new StringName("get_feed_count");
-      this._bindings.method_get_feed_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2455072627
-      );
-    }
-    {
-      let classname = new StringName("CameraServer");
-      let methodname = new StringName("feeds");
-      this._bindings.method_feeds = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2915620761
-      );
-    }
-    {
-      let classname = new StringName("CameraServer");
-      let methodname = new StringName("add_feed");
-      this._bindings.method_add_feed = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3204782488
-      );
-    }
-    {
-      let classname = new StringName("CameraServer");
-      let methodname = new StringName("remove_feed");
-      this._bindings.method_remove_feed = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3204782488
-      );
-    }
+      {
+        let classname = new StringName("CameraServer");
+        let methodname = new StringName("get_feed");
+        this._bindings.method_get_feed = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          361927068
+        );
+      }
+      {
+        let classname = new StringName("CameraServer");
+        let methodname = new StringName("get_feed_count");
+        this._bindings.method_get_feed_count = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2455072627
+        );
+      }
+      {
+        let classname = new StringName("CameraServer");
+        let methodname = new StringName("feeds");
+        this._bindings.method_feeds = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2915620761
+        );
+      }
+      {
+        let classname = new StringName("CameraServer");
+        let methodname = new StringName("add_feed");
+        this._bindings.method_add_feed = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3204782488
+        );
+      }
+      {
+        let classname = new StringName("CameraServer");
+        let methodname = new StringName("remove_feed");
+        this._bindings.method_remove_feed = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3204782488
+        );
+      }
   }
   get_feed(_index) {
     return _call_native_mb_ret(
@@ -76,6 +84,7 @@ class _CameraServer extends GodotObject{
 			Variant.INT,
       _index
     );
+    
   }
   get_feed_count() {
     return _call_native_mb_ret(
@@ -84,6 +93,7 @@ class _CameraServer extends GodotObject{
 			Variant.Type.INT,
       
     );
+    
   }
   feeds() {
     return _call_native_mb_ret(
@@ -92,6 +102,7 @@ class _CameraServer extends GodotObject{
 			Variant.INT,
       
     );
+    
   }
   add_feed(_feed) {
     return _call_native_mb_no_ret(
@@ -99,6 +110,7 @@ class _CameraServer extends GodotObject{
       this._owner,
       _feed
     );
+    
   }
   remove_feed(_feed) {
     return _call_native_mb_no_ret(
@@ -106,6 +118,7 @@ class _CameraServer extends GodotObject{
       this._owner,
       _feed
     );
+    
   }
   static FeedImage = {
     FEED_RGBA_IMAGE: 0,

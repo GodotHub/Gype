@@ -1,5 +1,13 @@
 import * as internal from '__internal__';
-import { InputEvent } from 'src/js_godot/classesinput_event'
+import { InputEvent } from 'src/js_godot/classes/input_event'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_set_axis;
     method_get_axis;
@@ -21,42 +29,42 @@ export class InputEventJoypadMotion extends InputEvent{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("InputEventJoypadMotion");
-      let methodname = new StringName("set_axis");
-      this._bindings.method_set_axis = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1332685170
-      );
-    }
-    {
-      let classname = new StringName("InputEventJoypadMotion");
-      let methodname = new StringName("get_axis");
-      this._bindings.method_get_axis = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4019121683
-      );
-    }
-    {
-      let classname = new StringName("InputEventJoypadMotion");
-      let methodname = new StringName("set_axis_value");
-      this._bindings.method_set_axis_value = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("InputEventJoypadMotion");
-      let methodname = new StringName("get_axis_value");
-      this._bindings.method_get_axis_value = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
+      {
+        let classname = new StringName("InputEventJoypadMotion");
+        let methodname = new StringName("set_axis");
+        this._bindings.method_set_axis = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1332685170
+        );
+      }
+      {
+        let classname = new StringName("InputEventJoypadMotion");
+        let methodname = new StringName("get_axis");
+        this._bindings.method_get_axis = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4019121683
+        );
+      }
+      {
+        let classname = new StringName("InputEventJoypadMotion");
+        let methodname = new StringName("set_axis_value");
+        this._bindings.method_set_axis_value = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("InputEventJoypadMotion");
+        let methodname = new StringName("get_axis_value");
+        this._bindings.method_get_axis_value = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
   }
   set_axis(_axis) {
     return _call_native_mb_no_ret(
@@ -64,6 +72,7 @@ export class InputEventJoypadMotion extends InputEvent{
       this._owner,
       _axis
     );
+    
   }
   get_axis() {
     return _call_native_mb_ret(
@@ -72,6 +81,7 @@ export class InputEventJoypadMotion extends InputEvent{
 			Variant.INT,
       
     );
+    
   }
   set_axis_value(_axis_value) {
     return _call_native_mb_no_ret(
@@ -79,6 +89,7 @@ export class InputEventJoypadMotion extends InputEvent{
       this._owner,
       _axis_value
     );
+    
   }
   get_axis_value() {
     return _call_native_mb_ret(
@@ -87,5 +98,6 @@ export class InputEventJoypadMotion extends InputEvent{
 			Variant.Type.FLOAT,
       
     );
+    
   }
 }

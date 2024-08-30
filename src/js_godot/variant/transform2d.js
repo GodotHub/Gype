@@ -4,8 +4,9 @@ import {
   _call_builtin_method_ptr_ret,
   _call_builtin_method_ptr_no_ret
 } from 'src/js_godot/core/builtin_ptrcall'
-import { Variant } from 'src/js_godot/variant/variant'
 import { Vector2 } from 'src/js_godot/variant/vector2'
+import { Variant } from 'src/js_godot/variant/variant'
+import { StringName } from 'src/js_godot/variant/string_name'
 
 class _MethodBindings {
   from_variant_constructor
@@ -53,7 +54,7 @@ class _MethodBindings {
 }
 
 export class Transform2D {
-  static #SIZE = 8
+  static #SIZE = 24
   opaque = new Uint8Array(Transform2D.#SIZE)
 
   static _bindings = new _MethodBindings()
@@ -61,18 +62,17 @@ export class Transform2D {
   constructor (from) {
     if (!from) {
       _call_builtin_constructor(Transform2D._bindings.constructor_0, this)
-    } else if (arguments[0] instanceof Transform2D) {
-      let from = arguments[0];
+    }else if (from instanceof Transform2D) {
       _call_builtin_constructor(Transform2D._bindings.constructor_1, this, [
         from
       ])
-    } else if (arguments[0] instanceof float) {
+    } else if (arguments.length == 2&& typeof arguments[0] == "number"&& arguments[1] instanceof Vector2) {
       let rotation = arguments[0];
       let position = arguments[1];
       _call_builtin_constructor(Transform2D._bindings.constructor_2, this, [
         rotation, position
       ])
-    } else if (arguments[0] instanceof float) {
+    } else if (arguments.length == 4&& typeof arguments[0] == "number"&& arguments[1] instanceof Vector2&& typeof arguments[2] == "number"&& arguments[3] instanceof Vector2) {
       let rotation = arguments[0];
       let scale = arguments[1];
       let skew = arguments[2];
@@ -80,7 +80,7 @@ export class Transform2D {
       _call_builtin_constructor(Transform2D._bindings.constructor_3, this, [
         rotation, scale, skew, position
       ])
-    } else if (arguments[0] instanceof Vector2) {
+    } else if (arguments.length == 3&& arguments[0] instanceof Vector2&& arguments[1] instanceof Vector2&& arguments[2] instanceof Vector2) {
       let x_axis = arguments[0];
       let y_axis = arguments[1];
       let origin = arguments[2];

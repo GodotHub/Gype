@@ -1,8 +1,14 @@
 import * as internal from '__internal__';
-import { RefCounted } from 'src/js_godot/classesref_counted'
+import { RefCounted } from 'src/js_godot/classes/ref_counted'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
-    method__process;
-    method__process_silence;
 }
 
 
@@ -19,38 +25,9 @@ export class AudioEffectInstance extends RefCounted{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("AudioEffectInstance");
-      let methodname = new StringName("_process");
-      this._bindings.method__process = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        
-      );
-    }
-    {
-      let classname = new StringName("AudioEffectInstance");
-      let methodname = new StringName("_process_silence");
-      this._bindings.method__process_silence = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        
-      );
-    }
   }
   _process(_src_buffer, _dst_buffer, _frame_count) {
-    return _call_native_mb_no_ret(
-      ClassDB._bindings.method__process,
-      this._owner,
-      _src_buffer, _dst_buffer, _frame_count
-    );
   }
   _process_silence() {
-    return _call_native_mb_ret(
-      ClassDB._bindings.method__process_silence,
-      this._owner,
-			Variant.Type.BOOL,
-      
-    );
   }
 }

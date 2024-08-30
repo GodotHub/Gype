@@ -1,5 +1,13 @@
 import * as internal from '__internal__';
-import { VisualShaderNode } from 'src/js_godot/classesvisual_shader_node'
+import { VisualShaderNode } from 'src/js_godot/classes/visual_shader_node'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_set_source;
     method_get_source;
@@ -23,60 +31,60 @@ export class VisualShaderNodeTexture extends VisualShaderNode{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("VisualShaderNodeTexture");
-      let methodname = new StringName("set_source");
-      this._bindings.method_set_source = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        905262939
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNodeTexture");
-      let methodname = new StringName("get_source");
-      this._bindings.method_get_source = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2896297444
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNodeTexture");
-      let methodname = new StringName("set_texture");
-      this._bindings.method_set_texture = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4051416890
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNodeTexture");
-      let methodname = new StringName("get_texture");
-      this._bindings.method_get_texture = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3635182373
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNodeTexture");
-      let methodname = new StringName("set_texture_type");
-      this._bindings.method_set_texture_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        986314081
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNodeTexture");
-      let methodname = new StringName("get_texture_type");
-      this._bindings.method_get_texture_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3290430153
-      );
-    }
+      {
+        let classname = new StringName("VisualShaderNodeTexture");
+        let methodname = new StringName("set_source");
+        this._bindings.method_set_source = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          905262939
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNodeTexture");
+        let methodname = new StringName("get_source");
+        this._bindings.method_get_source = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2896297444
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNodeTexture");
+        let methodname = new StringName("set_texture");
+        this._bindings.method_set_texture = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4051416890
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNodeTexture");
+        let methodname = new StringName("get_texture");
+        this._bindings.method_get_texture = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3635182373
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNodeTexture");
+        let methodname = new StringName("set_texture_type");
+        this._bindings.method_set_texture_type = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          986314081
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNodeTexture");
+        let methodname = new StringName("get_texture_type");
+        this._bindings.method_get_texture_type = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3290430153
+        );
+      }
   }
   set_source(_value) {
     return _call_native_mb_no_ret(
@@ -84,6 +92,7 @@ export class VisualShaderNodeTexture extends VisualShaderNode{
       this._owner,
       _value
     );
+    
   }
   get_source() {
     return _call_native_mb_ret(
@@ -92,6 +101,7 @@ export class VisualShaderNodeTexture extends VisualShaderNode{
 			Variant.INT,
       
     );
+    
   }
   set_texture(_value) {
     return _call_native_mb_no_ret(
@@ -99,6 +109,7 @@ export class VisualShaderNodeTexture extends VisualShaderNode{
       this._owner,
       _value
     );
+    
   }
   get_texture() {
     return _call_native_mb_ret(
@@ -107,6 +118,7 @@ export class VisualShaderNodeTexture extends VisualShaderNode{
 			Variant.INT,
       
     );
+    
   }
   set_texture_type(_value) {
     return _call_native_mb_no_ret(
@@ -114,6 +126,7 @@ export class VisualShaderNodeTexture extends VisualShaderNode{
       this._owner,
       _value
     );
+    
   }
   get_texture_type() {
     return _call_native_mb_ret(
@@ -122,6 +135,7 @@ export class VisualShaderNodeTexture extends VisualShaderNode{
 			Variant.INT,
       
     );
+    
   }
   static Source = {
     SOURCE_TEXTURE: 0,

@@ -1,6 +1,14 @@
 import * as internal from '__internal__';
-import { RefCounted } from 'src/js_godot/classesref_counted'
 import { GDString } from 'src/js_godot/variant/gd_string'
+import { RefCounted } from 'src/js_godot/classes/ref_counted'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_get_device_count;
     method_get_device;
@@ -35,159 +43,159 @@ export class UPNP extends RefCounted{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("UPNP");
-      let methodname = new StringName("get_device_count");
-      this._bindings.method_get_device_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("UPNP");
-      let methodname = new StringName("get_device");
-      this._bindings.method_get_device = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2193290270
-      );
-    }
-    {
-      let classname = new StringName("UPNP");
-      let methodname = new StringName("add_device");
-      this._bindings.method_add_device = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        986715920
-      );
-    }
-    {
-      let classname = new StringName("UPNP");
-      let methodname = new StringName("set_device");
-      this._bindings.method_set_device = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3015133723
-      );
-    }
-    {
-      let classname = new StringName("UPNP");
-      let methodname = new StringName("remove_device");
-      this._bindings.method_remove_device = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("UPNP");
-      let methodname = new StringName("clear_devices");
-      this._bindings.method_clear_devices = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3218959716
-      );
-    }
-    {
-      let classname = new StringName("UPNP");
-      let methodname = new StringName("get_gateway");
-      this._bindings.method_get_gateway = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2276800779
-      );
-    }
-    {
-      let classname = new StringName("UPNP");
-      let methodname = new StringName("discover");
-      this._bindings.method_discover = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1575334765
-      );
-    }
-    {
-      let classname = new StringName("UPNP");
-      let methodname = new StringName("query_external_address");
-      this._bindings.method_query_external_address = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        201670096
-      );
-    }
-    {
-      let classname = new StringName("UPNP");
-      let methodname = new StringName("add_port_mapping");
-      this._bindings.method_add_port_mapping = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        818314583
-      );
-    }
-    {
-      let classname = new StringName("UPNP");
-      let methodname = new StringName("delete_port_mapping");
-      this._bindings.method_delete_port_mapping = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3444187325
-      );
-    }
-    {
-      let classname = new StringName("UPNP");
-      let methodname = new StringName("set_discover_multicast_if");
-      this._bindings.method_set_discover_multicast_if = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        83702148
-      );
-    }
-    {
-      let classname = new StringName("UPNP");
-      let methodname = new StringName("get_discover_multicast_if");
-      this._bindings.method_get_discover_multicast_if = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        201670096
-      );
-    }
-    {
-      let classname = new StringName("UPNP");
-      let methodname = new StringName("set_discover_local_port");
-      this._bindings.method_set_discover_local_port = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("UPNP");
-      let methodname = new StringName("get_discover_local_port");
-      this._bindings.method_get_discover_local_port = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("UPNP");
-      let methodname = new StringName("set_discover_ipv6");
-      this._bindings.method_set_discover_ipv6 = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("UPNP");
-      let methodname = new StringName("is_discover_ipv6");
-      this._bindings.method_is_discover_ipv6 = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
+      {
+        let classname = new StringName("UPNP");
+        let methodname = new StringName("get_device_count");
+        this._bindings.method_get_device_count = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
+      {
+        let classname = new StringName("UPNP");
+        let methodname = new StringName("get_device");
+        this._bindings.method_get_device = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2193290270
+        );
+      }
+      {
+        let classname = new StringName("UPNP");
+        let methodname = new StringName("add_device");
+        this._bindings.method_add_device = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          986715920
+        );
+      }
+      {
+        let classname = new StringName("UPNP");
+        let methodname = new StringName("set_device");
+        this._bindings.method_set_device = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3015133723
+        );
+      }
+      {
+        let classname = new StringName("UPNP");
+        let methodname = new StringName("remove_device");
+        this._bindings.method_remove_device = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1286410249
+        );
+      }
+      {
+        let classname = new StringName("UPNP");
+        let methodname = new StringName("clear_devices");
+        this._bindings.method_clear_devices = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3218959716
+        );
+      }
+      {
+        let classname = new StringName("UPNP");
+        let methodname = new StringName("get_gateway");
+        this._bindings.method_get_gateway = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2276800779
+        );
+      }
+      {
+        let classname = new StringName("UPNP");
+        let methodname = new StringName("discover");
+        this._bindings.method_discover = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1575334765
+        );
+      }
+      {
+        let classname = new StringName("UPNP");
+        let methodname = new StringName("query_external_address");
+        this._bindings.method_query_external_address = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          201670096
+        );
+      }
+      {
+        let classname = new StringName("UPNP");
+        let methodname = new StringName("add_port_mapping");
+        this._bindings.method_add_port_mapping = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          818314583
+        );
+      }
+      {
+        let classname = new StringName("UPNP");
+        let methodname = new StringName("delete_port_mapping");
+        this._bindings.method_delete_port_mapping = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3444187325
+        );
+      }
+      {
+        let classname = new StringName("UPNP");
+        let methodname = new StringName("set_discover_multicast_if");
+        this._bindings.method_set_discover_multicast_if = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          83702148
+        );
+      }
+      {
+        let classname = new StringName("UPNP");
+        let methodname = new StringName("get_discover_multicast_if");
+        this._bindings.method_get_discover_multicast_if = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          201670096
+        );
+      }
+      {
+        let classname = new StringName("UPNP");
+        let methodname = new StringName("set_discover_local_port");
+        this._bindings.method_set_discover_local_port = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1286410249
+        );
+      }
+      {
+        let classname = new StringName("UPNP");
+        let methodname = new StringName("get_discover_local_port");
+        this._bindings.method_get_discover_local_port = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
+      {
+        let classname = new StringName("UPNP");
+        let methodname = new StringName("set_discover_ipv6");
+        this._bindings.method_set_discover_ipv6 = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("UPNP");
+        let methodname = new StringName("is_discover_ipv6");
+        this._bindings.method_is_discover_ipv6 = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
   }
   get_device_count() {
     return _call_native_mb_ret(
@@ -196,6 +204,7 @@ export class UPNP extends RefCounted{
 			Variant.Type.INT,
       
     );
+    
   }
   get_device(_index) {
     return _call_native_mb_ret(
@@ -204,6 +213,7 @@ export class UPNP extends RefCounted{
 			Variant.INT,
       _index
     );
+    
   }
   add_device(_device) {
     return _call_native_mb_no_ret(
@@ -211,6 +221,7 @@ export class UPNP extends RefCounted{
       this._owner,
       _device
     );
+    
   }
   set_device(_index, _device) {
     return _call_native_mb_no_ret(
@@ -218,6 +229,7 @@ export class UPNP extends RefCounted{
       this._owner,
       _index, _device
     );
+    
   }
   remove_device(_index) {
     return _call_native_mb_no_ret(
@@ -225,6 +237,7 @@ export class UPNP extends RefCounted{
       this._owner,
       _index
     );
+    
   }
   clear_devices() {
     return _call_native_mb_no_ret(
@@ -232,6 +245,7 @@ export class UPNP extends RefCounted{
       this._owner,
       
     );
+    
   }
   get_gateway() {
     return _call_native_mb_ret(
@@ -240,6 +254,7 @@ export class UPNP extends RefCounted{
 			Variant.INT,
       
     );
+    
   }
   discover(_timeout, _ttl, _device_filter) {
     return _call_native_mb_ret(
@@ -248,6 +263,7 @@ export class UPNP extends RefCounted{
 			Variant.Type.INT,
       _timeout, _ttl, _device_filter
     );
+    
   }
   query_external_address() {
     return _call_native_mb_ret(
@@ -257,6 +273,7 @@ export class UPNP extends RefCounted{
     ,
       
     );
+    
   }
   add_port_mapping(_port, _port_internal, _desc, _proto, _duration) {
     return _call_native_mb_ret(
@@ -265,6 +282,7 @@ export class UPNP extends RefCounted{
 			Variant.Type.INT,
       _port, _port_internal, _desc, _proto, _duration
     );
+    
   }
   delete_port_mapping(_port, _proto) {
     return _call_native_mb_ret(
@@ -273,6 +291,7 @@ export class UPNP extends RefCounted{
 			Variant.Type.INT,
       _port, _proto
     );
+    
   }
   set_discover_multicast_if(_m_if) {
     return _call_native_mb_no_ret(
@@ -280,6 +299,7 @@ export class UPNP extends RefCounted{
       this._owner,
       _m_if
     );
+    
   }
   get_discover_multicast_if() {
     return _call_native_mb_ret(
@@ -289,6 +309,7 @@ export class UPNP extends RefCounted{
     ,
       
     );
+    
   }
   set_discover_local_port(_port) {
     return _call_native_mb_no_ret(
@@ -296,6 +317,7 @@ export class UPNP extends RefCounted{
       this._owner,
       _port
     );
+    
   }
   get_discover_local_port() {
     return _call_native_mb_ret(
@@ -304,6 +326,7 @@ export class UPNP extends RefCounted{
 			Variant.Type.INT,
       
     );
+    
   }
   set_discover_ipv6(_ipv6) {
     return _call_native_mb_no_ret(
@@ -311,6 +334,7 @@ export class UPNP extends RefCounted{
       this._owner,
       _ipv6
     );
+    
   }
   is_discover_ipv6() {
     return _call_native_mb_ret(
@@ -319,6 +343,7 @@ export class UPNP extends RefCounted{
 			Variant.Type.BOOL,
       
     );
+    
   }
   static UPNPResult = {
     UPNP_RESULT_SUCCESS: 0,

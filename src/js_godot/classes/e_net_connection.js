@@ -1,8 +1,16 @@
 import * as internal from '__internal__';
-import { GDArray } from 'src/js_godot/variant/gd_array'
-import { RefCounted } from 'src/js_godot/classesref_counted'
-import { PackedByteArray } from 'src/js_godot/variant/packed_byte_array'
 import { GDString } from 'src/js_godot/variant/gd_string'
+import { StringName } from 'src/js_godot/variant/string_name'
+import { GDArray } from 'src/js_godot/variant/gd_array'
+import { PackedByteArray } from 'src/js_godot/variant/packed_byte_array'
+import { RefCounted } from 'src/js_godot/classes/ref_counted'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_create_host_bound;
     method_create_host;
@@ -38,168 +46,168 @@ export class ENetConnection extends RefCounted{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("ENetConnection");
-      let methodname = new StringName("create_host_bound");
-      this._bindings.method_create_host_bound = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1515002313
-      );
-    }
-    {
-      let classname = new StringName("ENetConnection");
-      let methodname = new StringName("create_host");
-      this._bindings.method_create_host = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        117198950
-      );
-    }
-    {
-      let classname = new StringName("ENetConnection");
-      let methodname = new StringName("destroy");
-      this._bindings.method_destroy = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3218959716
-      );
-    }
-    {
-      let classname = new StringName("ENetConnection");
-      let methodname = new StringName("connect_to_host");
-      this._bindings.method_connect_to_host = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2171300490
-      );
-    }
-    {
-      let classname = new StringName("ENetConnection");
-      let methodname = new StringName("service");
-      this._bindings.method_service = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2402345344
-      );
-    }
-    {
-      let classname = new StringName("ENetConnection");
-      let methodname = new StringName("flush");
-      this._bindings.method_flush = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3218959716
-      );
-    }
-    {
-      let classname = new StringName("ENetConnection");
-      let methodname = new StringName("bandwidth_limit");
-      this._bindings.method_bandwidth_limit = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2302169788
-      );
-    }
-    {
-      let classname = new StringName("ENetConnection");
-      let methodname = new StringName("channel_limit");
-      this._bindings.method_channel_limit = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("ENetConnection");
-      let methodname = new StringName("broadcast");
-      this._bindings.method_broadcast = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2772371345
-      );
-    }
-    {
-      let classname = new StringName("ENetConnection");
-      let methodname = new StringName("compress");
-      this._bindings.method_compress = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2660215187
-      );
-    }
-    {
-      let classname = new StringName("ENetConnection");
-      let methodname = new StringName("dtls_server_setup");
-      this._bindings.method_dtls_server_setup = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1262296096
-      );
-    }
-    {
-      let classname = new StringName("ENetConnection");
-      let methodname = new StringName("dtls_client_setup");
-      this._bindings.method_dtls_client_setup = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1966198364
-      );
-    }
-    {
-      let classname = new StringName("ENetConnection");
-      let methodname = new StringName("refuse_new_connections");
-      this._bindings.method_refuse_new_connections = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("ENetConnection");
-      let methodname = new StringName("pop_statistic");
-      this._bindings.method_pop_statistic = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2166904170
-      );
-    }
-    {
-      let classname = new StringName("ENetConnection");
-      let methodname = new StringName("get_max_channels");
-      this._bindings.method_get_max_channels = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("ENetConnection");
-      let methodname = new StringName("get_local_port");
-      this._bindings.method_get_local_port = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("ENetConnection");
-      let methodname = new StringName("get_peers");
-      this._bindings.method_get_peers = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2915620761
-      );
-    }
-    {
-      let classname = new StringName("ENetConnection");
-      let methodname = new StringName("socket_send");
-      this._bindings.method_socket_send = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1100646812
-      );
-    }
+      {
+        let classname = new StringName("ENetConnection");
+        let methodname = new StringName("create_host_bound");
+        this._bindings.method_create_host_bound = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1515002313
+        );
+      }
+      {
+        let classname = new StringName("ENetConnection");
+        let methodname = new StringName("create_host");
+        this._bindings.method_create_host = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          117198950
+        );
+      }
+      {
+        let classname = new StringName("ENetConnection");
+        let methodname = new StringName("destroy");
+        this._bindings.method_destroy = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3218959716
+        );
+      }
+      {
+        let classname = new StringName("ENetConnection");
+        let methodname = new StringName("connect_to_host");
+        this._bindings.method_connect_to_host = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2171300490
+        );
+      }
+      {
+        let classname = new StringName("ENetConnection");
+        let methodname = new StringName("service");
+        this._bindings.method_service = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2402345344
+        );
+      }
+      {
+        let classname = new StringName("ENetConnection");
+        let methodname = new StringName("flush");
+        this._bindings.method_flush = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3218959716
+        );
+      }
+      {
+        let classname = new StringName("ENetConnection");
+        let methodname = new StringName("bandwidth_limit");
+        this._bindings.method_bandwidth_limit = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2302169788
+        );
+      }
+      {
+        let classname = new StringName("ENetConnection");
+        let methodname = new StringName("channel_limit");
+        this._bindings.method_channel_limit = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1286410249
+        );
+      }
+      {
+        let classname = new StringName("ENetConnection");
+        let methodname = new StringName("broadcast");
+        this._bindings.method_broadcast = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2772371345
+        );
+      }
+      {
+        let classname = new StringName("ENetConnection");
+        let methodname = new StringName("compress");
+        this._bindings.method_compress = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2660215187
+        );
+      }
+      {
+        let classname = new StringName("ENetConnection");
+        let methodname = new StringName("dtls_server_setup");
+        this._bindings.method_dtls_server_setup = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1262296096
+        );
+      }
+      {
+        let classname = new StringName("ENetConnection");
+        let methodname = new StringName("dtls_client_setup");
+        this._bindings.method_dtls_client_setup = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1966198364
+        );
+      }
+      {
+        let classname = new StringName("ENetConnection");
+        let methodname = new StringName("refuse_new_connections");
+        this._bindings.method_refuse_new_connections = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("ENetConnection");
+        let methodname = new StringName("pop_statistic");
+        this._bindings.method_pop_statistic = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2166904170
+        );
+      }
+      {
+        let classname = new StringName("ENetConnection");
+        let methodname = new StringName("get_max_channels");
+        this._bindings.method_get_max_channels = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
+      {
+        let classname = new StringName("ENetConnection");
+        let methodname = new StringName("get_local_port");
+        this._bindings.method_get_local_port = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
+      {
+        let classname = new StringName("ENetConnection");
+        let methodname = new StringName("get_peers");
+        this._bindings.method_get_peers = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2915620761
+        );
+      }
+      {
+        let classname = new StringName("ENetConnection");
+        let methodname = new StringName("socket_send");
+        this._bindings.method_socket_send = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1100646812
+        );
+      }
   }
   create_host_bound(_bind_address, _bind_port, _max_peers, _max_channels, _in_bandwidth, _out_bandwidth) {
     return _call_native_mb_ret(
@@ -208,6 +216,7 @@ export class ENetConnection extends RefCounted{
 			Variant.INT,
       _bind_address, _bind_port, _max_peers, _max_channels, _in_bandwidth, _out_bandwidth
     );
+    
   }
   create_host(_max_peers, _max_channels, _in_bandwidth, _out_bandwidth) {
     return _call_native_mb_ret(
@@ -216,6 +225,7 @@ export class ENetConnection extends RefCounted{
 			Variant.INT,
       _max_peers, _max_channels, _in_bandwidth, _out_bandwidth
     );
+    
   }
   destroy() {
     return _call_native_mb_no_ret(
@@ -223,6 +233,7 @@ export class ENetConnection extends RefCounted{
       this._owner,
       
     );
+    
   }
   connect_to_host(_address, _port, _channels, _data) {
     return _call_native_mb_ret(
@@ -231,6 +242,7 @@ export class ENetConnection extends RefCounted{
 			Variant.INT,
       _address, _port, _channels, _data
     );
+    
   }
   service(_timeout) {
     return _call_native_mb_ret(
@@ -240,6 +252,7 @@ export class ENetConnection extends RefCounted{
     ,
       _timeout
     );
+    
   }
   flush() {
     return _call_native_mb_no_ret(
@@ -247,6 +260,7 @@ export class ENetConnection extends RefCounted{
       this._owner,
       
     );
+    
   }
   bandwidth_limit(_in_bandwidth, _out_bandwidth) {
     return _call_native_mb_no_ret(
@@ -254,6 +268,7 @@ export class ENetConnection extends RefCounted{
       this._owner,
       _in_bandwidth, _out_bandwidth
     );
+    
   }
   channel_limit(_limit) {
     return _call_native_mb_no_ret(
@@ -261,6 +276,7 @@ export class ENetConnection extends RefCounted{
       this._owner,
       _limit
     );
+    
   }
   broadcast(_channel, _packet, _flags) {
     return _call_native_mb_no_ret(
@@ -268,6 +284,7 @@ export class ENetConnection extends RefCounted{
       this._owner,
       _channel, _packet, _flags
     );
+    
   }
   compress(_mode) {
     return _call_native_mb_no_ret(
@@ -275,6 +292,7 @@ export class ENetConnection extends RefCounted{
       this._owner,
       _mode
     );
+    
   }
   dtls_server_setup(_server_options) {
     return _call_native_mb_ret(
@@ -283,6 +301,7 @@ export class ENetConnection extends RefCounted{
 			Variant.INT,
       _server_options
     );
+    
   }
   dtls_client_setup(_hostname, _client_options) {
     return _call_native_mb_ret(
@@ -291,6 +310,7 @@ export class ENetConnection extends RefCounted{
 			Variant.INT,
       _hostname, _client_options
     );
+    
   }
   refuse_new_connections(_refuse) {
     return _call_native_mb_no_ret(
@@ -298,6 +318,7 @@ export class ENetConnection extends RefCounted{
       this._owner,
       _refuse
     );
+    
   }
   pop_statistic(_statistic) {
     return _call_native_mb_ret(
@@ -306,6 +327,7 @@ export class ENetConnection extends RefCounted{
 			Variant.Type.FLOAT,
       _statistic
     );
+    
   }
   get_max_channels() {
     return _call_native_mb_ret(
@@ -314,6 +336,7 @@ export class ENetConnection extends RefCounted{
 			Variant.Type.INT,
       
     );
+    
   }
   get_local_port() {
     return _call_native_mb_ret(
@@ -322,6 +345,7 @@ export class ENetConnection extends RefCounted{
 			Variant.Type.INT,
       
     );
+    
   }
   get_peers() {
     return _call_native_mb_ret(
@@ -330,6 +354,7 @@ export class ENetConnection extends RefCounted{
 			Variant.INT,
       
     );
+    
   }
   socket_send(_destination_address, _destination_port, _packet) {
     return _call_native_mb_no_ret(
@@ -337,6 +362,7 @@ export class ENetConnection extends RefCounted{
       this._owner,
       _destination_address, _destination_port, _packet
     );
+    
   }
   static CompressionMode = {
     COMPRESS_NONE: 0,

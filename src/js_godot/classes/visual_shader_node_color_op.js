@@ -1,5 +1,13 @@
 import * as internal from '__internal__';
-import { VisualShaderNode } from 'src/js_godot/classesvisual_shader_node'
+import { VisualShaderNode } from 'src/js_godot/classes/visual_shader_node'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_set_operator;
     method_get_operator;
@@ -19,24 +27,24 @@ export class VisualShaderNodeColorOp extends VisualShaderNode{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("VisualShaderNodeColorOp");
-      let methodname = new StringName("set_operator");
-      this._bindings.method_set_operator = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4260370673
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNodeColorOp");
-      let methodname = new StringName("get_operator");
-      this._bindings.method_get_operator = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1950956529
-      );
-    }
+      {
+        let classname = new StringName("VisualShaderNodeColorOp");
+        let methodname = new StringName("set_operator");
+        this._bindings.method_set_operator = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4260370673
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNodeColorOp");
+        let methodname = new StringName("get_operator");
+        this._bindings.method_get_operator = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1950956529
+        );
+      }
   }
   set_operator(_op) {
     return _call_native_mb_no_ret(
@@ -44,6 +52,7 @@ export class VisualShaderNodeColorOp extends VisualShaderNode{
       this._owner,
       _op
     );
+    
   }
   get_operator() {
     return _call_native_mb_ret(
@@ -52,6 +61,7 @@ export class VisualShaderNodeColorOp extends VisualShaderNode{
 			Variant.INT,
       
     );
+    
   }
   static Operator = {
     OP_SCREEN: 0,

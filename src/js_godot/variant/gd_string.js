@@ -4,12 +4,12 @@ import {
   _call_builtin_method_ptr_ret,
   _call_builtin_method_ptr_no_ret
 } from 'src/js_godot/core/builtin_ptrcall'
+import { StringName } from 'src/js_godot/variant/string_name'
 import { NodePath } from 'src/js_godot/variant/node_path'
+import { PackedStringArray } from 'src/js_godot/variant/packed_string_array'
+import { PackedFloat64Array } from 'src/js_godot/variant/packed_float64_array'
 import { Variant } from 'src/js_godot/variant/variant'
 import { PackedByteArray } from 'src/js_godot/variant/packed_byte_array'
-import { StringName } from 'src/js_godot/variant/string_name'
-import { PackedFloat64Array } from 'src/js_godot/variant/packed_float64_array'
-import { PackedStringArray } from 'src/js_godot/variant/packed_string_array'
 
 class _MethodBindings {
   from_variant_constructor
@@ -193,18 +193,15 @@ export class GDString {
   constructor (from) {
     if (!from) {
       _call_builtin_constructor(GDString._bindings.constructor_0, this)
-    } else if (arguments[0] instanceof GDString) {
-      let from = arguments[0];
+    }else if (from instanceof GDString) {
       _call_builtin_constructor(GDString._bindings.constructor_1, this, [
         from
       ])
-    } else if (arguments[0] instanceof StringName) {
-      let from = arguments[0];
+    }else if (from instanceof StringName) {
       _call_builtin_constructor(GDString._bindings.constructor_2, this, [
         from
       ])
-    } else if (arguments[0] instanceof NodePath) {
-      let from = arguments[0];
+    }else if (from instanceof NodePath) {
       _call_builtin_constructor(GDString._bindings.constructor_3, this, [
         from
       ])

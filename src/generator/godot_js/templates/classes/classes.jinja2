@@ -10,9 +10,18 @@ import { {{to_js_type(dependcy)}} } from '{{ get_module_path(dependcy) }}'
 {%- if clazz['name'] == 'Object' %}
 import { Wrapped } from 'src/js_godot/classes/wrapped'
 {%- endif %}
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
   {%- for method in methods %}
+    {%- if not method['is_virtual'] %}
     method_{{method['name']}};
+    {%- endif %}
   {%- endfor %}
 }
 
@@ -30,29 +39,33 @@ class _MethodBindings {
   {% from 'utils/utils.jinja2' import define_args %}
   static _init_bindings() {
     {%- for method in methods %}
-    {
-      let classname = new StringName("{{clazz['name']}}");
-      let methodname = new StringName("{{method['name']}}");
-      this._bindings.method_{{method['name']}} = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        {{method['hash']}}
-      );
-    }
+      {%- if not method['is_virtual'] %}
+      {
+        let classname = new StringName("{{clazz['name']}}");
+        let methodname = new StringName("{{method['name']}}");
+        this._bindings.method_{{method['name']}} = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          {{method['hash']}}
+        );
+      }
+      {%- endif %}
     {%- endfor %}
   }
   
   {%- from 'utils/utils.jinja2' import conn_args, type_enum %}
   {%- for method in methods %}
   {{method['name']}}({{-conn_args(method['arguments'])-}}) {
-    return _call_native_mb{{'' if method['return_value'] else '_no'}}_ret(
+    {%- if not method['is_virtual'] %}
+    return _call_native_mb{{-'' if method['return_value'] else '_no'-}}_ret(
       ClassDB._bindings.method_{{method['name']}},
       this._owner,
       {%- if method['return_value'] -%}
-      {{-type_enum(method['return_value'], '\t\t\t')}},
+      {{-type_enum(method['return_value'], '\t\t\t')-}},
       {%- endif %}
       {{conn_args(method['arguments'])}}
     );
+    {% endif %}
   }
   {%- endfor %}
 
