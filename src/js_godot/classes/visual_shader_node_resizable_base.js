@@ -1,6 +1,14 @@
 import * as internal from '__internal__';
-import { VisualShaderNode } from 'src/js_godot/classesvisual_shader_node'
 import { Vector2 } from 'src/js_godot/variant/vector2'
+import { VisualShaderNode } from 'src/js_godot/classes/visual_shader_node'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_set_size;
     method_get_size;
@@ -20,24 +28,24 @@ export class VisualShaderNodeResizableBase extends VisualShaderNode{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("VisualShaderNodeResizableBase");
-      let methodname = new StringName("set_size");
-      this._bindings.method_set_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        743155724
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNodeResizableBase");
-      let methodname = new StringName("get_size");
-      this._bindings.method_get_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3341600327
-      );
-    }
+      {
+        let classname = new StringName("VisualShaderNodeResizableBase");
+        let methodname = new StringName("set_size");
+        this._bindings.method_set_size = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          743155724
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNodeResizableBase");
+        let methodname = new StringName("get_size");
+        this._bindings.method_get_size = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3341600327
+        );
+      }
   }
   set_size(_size) {
     return _call_native_mb_no_ret(
@@ -45,6 +53,7 @@ export class VisualShaderNodeResizableBase extends VisualShaderNode{
       this._owner,
       _size
     );
+    
   }
   get_size() {
     return _call_native_mb_ret(
@@ -54,5 +63,6 @@ export class VisualShaderNodeResizableBase extends VisualShaderNode{
     ,
       
     );
+    
   }
 }

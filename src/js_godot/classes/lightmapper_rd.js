@@ -1,5 +1,13 @@
 import * as internal from '__internal__';
-import { Lightmapper } from 'src/js_godot/classeslightmapper'
+import { StringName } from 'src/js_godot/variant/string_name'
+import { Lightmapper } from 'src/js_godot/classes/lightmapper'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
 }
 

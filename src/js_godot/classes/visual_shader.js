@@ -1,9 +1,16 @@
 import * as internal from '__internal__';
+import { Shader } from 'src/js_godot/classes/shader'
 import { Vector2 } from 'src/js_godot/variant/vector2'
 import { GDString } from 'src/js_godot/variant/gd_string'
-import { PackedInt32Array } from 'src/js_godot/variant/packed_int32_array'
 import { StringName } from 'src/js_godot/variant/string_name'
-import { Shader } from 'src/js_godot/classesshader'
+import { PackedInt32Array } from 'src/js_godot/variant/packed_int32_array'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_set_mode;
     method_add_node;
@@ -43,204 +50,204 @@ export class VisualShader extends Shader{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("VisualShader");
-      let methodname = new StringName("set_mode");
-      this._bindings.method_set_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3978014962
-      );
-    }
-    {
-      let classname = new StringName("VisualShader");
-      let methodname = new StringName("add_node");
-      this._bindings.method_add_node = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1560769431
-      );
-    }
-    {
-      let classname = new StringName("VisualShader");
-      let methodname = new StringName("get_node");
-      this._bindings.method_get_node = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3784670312
-      );
-    }
-    {
-      let classname = new StringName("VisualShader");
-      let methodname = new StringName("set_node_position");
-      this._bindings.method_set_node_position = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2726660721
-      );
-    }
-    {
-      let classname = new StringName("VisualShader");
-      let methodname = new StringName("get_node_position");
-      this._bindings.method_get_node_position = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2175036082
-      );
-    }
-    {
-      let classname = new StringName("VisualShader");
-      let methodname = new StringName("get_node_list");
-      this._bindings.method_get_node_list = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2370592410
-      );
-    }
-    {
-      let classname = new StringName("VisualShader");
-      let methodname = new StringName("get_valid_node_id");
-      this._bindings.method_get_valid_node_id = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        629467342
-      );
-    }
-    {
-      let classname = new StringName("VisualShader");
-      let methodname = new StringName("remove_node");
-      this._bindings.method_remove_node = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        844050912
-      );
-    }
-    {
-      let classname = new StringName("VisualShader");
-      let methodname = new StringName("replace_node");
-      this._bindings.method_replace_node = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3144735253
-      );
-    }
-    {
-      let classname = new StringName("VisualShader");
-      let methodname = new StringName("is_node_connection");
-      this._bindings.method_is_node_connection = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3922381898
-      );
-    }
-    {
-      let classname = new StringName("VisualShader");
-      let methodname = new StringName("can_connect_nodes");
-      this._bindings.method_can_connect_nodes = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3922381898
-      );
-    }
-    {
-      let classname = new StringName("VisualShader");
-      let methodname = new StringName("connect_nodes");
-      this._bindings.method_connect_nodes = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3081049573
-      );
-    }
-    {
-      let classname = new StringName("VisualShader");
-      let methodname = new StringName("disconnect_nodes");
-      this._bindings.method_disconnect_nodes = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2268060358
-      );
-    }
-    {
-      let classname = new StringName("VisualShader");
-      let methodname = new StringName("connect_nodes_forced");
-      this._bindings.method_connect_nodes_forced = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2268060358
-      );
-    }
-    {
-      let classname = new StringName("VisualShader");
-      let methodname = new StringName("get_node_connections");
-      this._bindings.method_get_node_connections = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1441964831
-      );
-    }
-    {
-      let classname = new StringName("VisualShader");
-      let methodname = new StringName("set_graph_offset");
-      this._bindings.method_set_graph_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        743155724
-      );
-    }
-    {
-      let classname = new StringName("VisualShader");
-      let methodname = new StringName("get_graph_offset");
-      this._bindings.method_get_graph_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3341600327
-      );
-    }
-    {
-      let classname = new StringName("VisualShader");
-      let methodname = new StringName("attach_node_to_frame");
-      this._bindings.method_attach_node_to_frame = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2479945279
-      );
-    }
-    {
-      let classname = new StringName("VisualShader");
-      let methodname = new StringName("detach_node_from_frame");
-      this._bindings.method_detach_node_from_frame = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        844050912
-      );
-    }
-    {
-      let classname = new StringName("VisualShader");
-      let methodname = new StringName("add_varying");
-      this._bindings.method_add_varying = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2084110726
-      );
-    }
-    {
-      let classname = new StringName("VisualShader");
-      let methodname = new StringName("remove_varying");
-      this._bindings.method_remove_varying = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        83702148
-      );
-    }
-    {
-      let classname = new StringName("VisualShader");
-      let methodname = new StringName("has_varying");
-      this._bindings.method_has_varying = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3927539163
-      );
-    }
+      {
+        let classname = new StringName("VisualShader");
+        let methodname = new StringName("set_mode");
+        this._bindings.method_set_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3978014962
+        );
+      }
+      {
+        let classname = new StringName("VisualShader");
+        let methodname = new StringName("add_node");
+        this._bindings.method_add_node = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1560769431
+        );
+      }
+      {
+        let classname = new StringName("VisualShader");
+        let methodname = new StringName("get_node");
+        this._bindings.method_get_node = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3784670312
+        );
+      }
+      {
+        let classname = new StringName("VisualShader");
+        let methodname = new StringName("set_node_position");
+        this._bindings.method_set_node_position = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2726660721
+        );
+      }
+      {
+        let classname = new StringName("VisualShader");
+        let methodname = new StringName("get_node_position");
+        this._bindings.method_get_node_position = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2175036082
+        );
+      }
+      {
+        let classname = new StringName("VisualShader");
+        let methodname = new StringName("get_node_list");
+        this._bindings.method_get_node_list = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2370592410
+        );
+      }
+      {
+        let classname = new StringName("VisualShader");
+        let methodname = new StringName("get_valid_node_id");
+        this._bindings.method_get_valid_node_id = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          629467342
+        );
+      }
+      {
+        let classname = new StringName("VisualShader");
+        let methodname = new StringName("remove_node");
+        this._bindings.method_remove_node = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          844050912
+        );
+      }
+      {
+        let classname = new StringName("VisualShader");
+        let methodname = new StringName("replace_node");
+        this._bindings.method_replace_node = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3144735253
+        );
+      }
+      {
+        let classname = new StringName("VisualShader");
+        let methodname = new StringName("is_node_connection");
+        this._bindings.method_is_node_connection = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3922381898
+        );
+      }
+      {
+        let classname = new StringName("VisualShader");
+        let methodname = new StringName("can_connect_nodes");
+        this._bindings.method_can_connect_nodes = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3922381898
+        );
+      }
+      {
+        let classname = new StringName("VisualShader");
+        let methodname = new StringName("connect_nodes");
+        this._bindings.method_connect_nodes = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3081049573
+        );
+      }
+      {
+        let classname = new StringName("VisualShader");
+        let methodname = new StringName("disconnect_nodes");
+        this._bindings.method_disconnect_nodes = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2268060358
+        );
+      }
+      {
+        let classname = new StringName("VisualShader");
+        let methodname = new StringName("connect_nodes_forced");
+        this._bindings.method_connect_nodes_forced = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2268060358
+        );
+      }
+      {
+        let classname = new StringName("VisualShader");
+        let methodname = new StringName("get_node_connections");
+        this._bindings.method_get_node_connections = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1441964831
+        );
+      }
+      {
+        let classname = new StringName("VisualShader");
+        let methodname = new StringName("set_graph_offset");
+        this._bindings.method_set_graph_offset = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          743155724
+        );
+      }
+      {
+        let classname = new StringName("VisualShader");
+        let methodname = new StringName("get_graph_offset");
+        this._bindings.method_get_graph_offset = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3341600327
+        );
+      }
+      {
+        let classname = new StringName("VisualShader");
+        let methodname = new StringName("attach_node_to_frame");
+        this._bindings.method_attach_node_to_frame = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2479945279
+        );
+      }
+      {
+        let classname = new StringName("VisualShader");
+        let methodname = new StringName("detach_node_from_frame");
+        this._bindings.method_detach_node_from_frame = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          844050912
+        );
+      }
+      {
+        let classname = new StringName("VisualShader");
+        let methodname = new StringName("add_varying");
+        this._bindings.method_add_varying = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2084110726
+        );
+      }
+      {
+        let classname = new StringName("VisualShader");
+        let methodname = new StringName("remove_varying");
+        this._bindings.method_remove_varying = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          83702148
+        );
+      }
+      {
+        let classname = new StringName("VisualShader");
+        let methodname = new StringName("has_varying");
+        this._bindings.method_has_varying = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3927539163
+        );
+      }
   }
   set_mode(_mode) {
     return _call_native_mb_no_ret(
@@ -248,6 +255,7 @@ export class VisualShader extends Shader{
       this._owner,
       _mode
     );
+    
   }
   add_node(_type, _node, _position, _id) {
     return _call_native_mb_no_ret(
@@ -255,6 +263,7 @@ export class VisualShader extends Shader{
       this._owner,
       _type, _node, _position, _id
     );
+    
   }
   get_node(_type, _id) {
     return _call_native_mb_ret(
@@ -263,6 +272,7 @@ export class VisualShader extends Shader{
 			Variant.INT,
       _type, _id
     );
+    
   }
   set_node_position(_type, _id, _position) {
     return _call_native_mb_no_ret(
@@ -270,6 +280,7 @@ export class VisualShader extends Shader{
       this._owner,
       _type, _id, _position
     );
+    
   }
   get_node_position(_type, _id) {
     return _call_native_mb_ret(
@@ -279,6 +290,7 @@ export class VisualShader extends Shader{
     ,
       _type, _id
     );
+    
   }
   get_node_list(_type) {
     return _call_native_mb_ret(
@@ -288,6 +300,7 @@ export class VisualShader extends Shader{
     ,
       _type
     );
+    
   }
   get_valid_node_id(_type) {
     return _call_native_mb_ret(
@@ -296,6 +309,7 @@ export class VisualShader extends Shader{
 			Variant.Type.INT,
       _type
     );
+    
   }
   remove_node(_type, _id) {
     return _call_native_mb_no_ret(
@@ -303,6 +317,7 @@ export class VisualShader extends Shader{
       this._owner,
       _type, _id
     );
+    
   }
   replace_node(_type, _id, _new_class) {
     return _call_native_mb_no_ret(
@@ -310,6 +325,7 @@ export class VisualShader extends Shader{
       this._owner,
       _type, _id, _new_class
     );
+    
   }
   is_node_connection(_type, _from_node, _from_port, _to_node, _to_port) {
     return _call_native_mb_ret(
@@ -318,6 +334,7 @@ export class VisualShader extends Shader{
 			Variant.Type.BOOL,
       _type, _from_node, _from_port, _to_node, _to_port
     );
+    
   }
   can_connect_nodes(_type, _from_node, _from_port, _to_node, _to_port) {
     return _call_native_mb_ret(
@@ -326,6 +343,7 @@ export class VisualShader extends Shader{
 			Variant.Type.BOOL,
       _type, _from_node, _from_port, _to_node, _to_port
     );
+    
   }
   connect_nodes(_type, _from_node, _from_port, _to_node, _to_port) {
     return _call_native_mb_ret(
@@ -334,6 +352,7 @@ export class VisualShader extends Shader{
 			Variant.INT,
       _type, _from_node, _from_port, _to_node, _to_port
     );
+    
   }
   disconnect_nodes(_type, _from_node, _from_port, _to_node, _to_port) {
     return _call_native_mb_no_ret(
@@ -341,6 +360,7 @@ export class VisualShader extends Shader{
       this._owner,
       _type, _from_node, _from_port, _to_node, _to_port
     );
+    
   }
   connect_nodes_forced(_type, _from_node, _from_port, _to_node, _to_port) {
     return _call_native_mb_no_ret(
@@ -348,6 +368,7 @@ export class VisualShader extends Shader{
       this._owner,
       _type, _from_node, _from_port, _to_node, _to_port
     );
+    
   }
   get_node_connections(_type) {
     return _call_native_mb_ret(
@@ -356,6 +377,7 @@ export class VisualShader extends Shader{
 			Variant.INT,
       _type
     );
+    
   }
   set_graph_offset(_offset) {
     return _call_native_mb_no_ret(
@@ -363,6 +385,7 @@ export class VisualShader extends Shader{
       this._owner,
       _offset
     );
+    
   }
   get_graph_offset() {
     return _call_native_mb_ret(
@@ -372,6 +395,7 @@ export class VisualShader extends Shader{
     ,
       
     );
+    
   }
   attach_node_to_frame(_type, _id, _frame) {
     return _call_native_mb_no_ret(
@@ -379,6 +403,7 @@ export class VisualShader extends Shader{
       this._owner,
       _type, _id, _frame
     );
+    
   }
   detach_node_from_frame(_type, _id) {
     return _call_native_mb_no_ret(
@@ -386,6 +411,7 @@ export class VisualShader extends Shader{
       this._owner,
       _type, _id
     );
+    
   }
   add_varying(_name, _mode, _type) {
     return _call_native_mb_no_ret(
@@ -393,6 +419,7 @@ export class VisualShader extends Shader{
       this._owner,
       _name, _mode, _type
     );
+    
   }
   remove_varying(_name) {
     return _call_native_mb_no_ret(
@@ -400,6 +427,7 @@ export class VisualShader extends Shader{
       this._owner,
       _name
     );
+    
   }
   has_varying(_name) {
     return _call_native_mb_ret(
@@ -408,6 +436,7 @@ export class VisualShader extends Shader{
 			Variant.Type.BOOL,
       _name
     );
+    
   }
   static Type = {
     TYPE_VERTEX: 0,

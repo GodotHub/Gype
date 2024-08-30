@@ -1,5 +1,13 @@
 import * as internal from '__internal__';
-import { VisualShaderNodeParameter } from 'src/js_godot/classesvisual_shader_node_parameter'
+import { VisualShaderNodeParameter } from 'src/js_godot/classes/visual_shader_node_parameter'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_set_hint;
     method_get_hint;
@@ -29,114 +37,114 @@ export class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("VisualShaderNodeIntParameter");
-      let methodname = new StringName("set_hint");
-      this._bindings.method_set_hint = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2540512075
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNodeIntParameter");
-      let methodname = new StringName("get_hint");
-      this._bindings.method_get_hint = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4250814924
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNodeIntParameter");
-      let methodname = new StringName("set_min");
-      this._bindings.method_set_min = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNodeIntParameter");
-      let methodname = new StringName("get_min");
-      this._bindings.method_get_min = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNodeIntParameter");
-      let methodname = new StringName("set_max");
-      this._bindings.method_set_max = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNodeIntParameter");
-      let methodname = new StringName("get_max");
-      this._bindings.method_get_max = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNodeIntParameter");
-      let methodname = new StringName("set_step");
-      this._bindings.method_set_step = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNodeIntParameter");
-      let methodname = new StringName("get_step");
-      this._bindings.method_get_step = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNodeIntParameter");
-      let methodname = new StringName("set_default_value_enabled");
-      this._bindings.method_set_default_value_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNodeIntParameter");
-      let methodname = new StringName("is_default_value_enabled");
-      this._bindings.method_is_default_value_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNodeIntParameter");
-      let methodname = new StringName("set_default_value");
-      this._bindings.method_set_default_value = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNodeIntParameter");
-      let methodname = new StringName("get_default_value");
-      this._bindings.method_get_default_value = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
+      {
+        let classname = new StringName("VisualShaderNodeIntParameter");
+        let methodname = new StringName("set_hint");
+        this._bindings.method_set_hint = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2540512075
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNodeIntParameter");
+        let methodname = new StringName("get_hint");
+        this._bindings.method_get_hint = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4250814924
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNodeIntParameter");
+        let methodname = new StringName("set_min");
+        this._bindings.method_set_min = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1286410249
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNodeIntParameter");
+        let methodname = new StringName("get_min");
+        this._bindings.method_get_min = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNodeIntParameter");
+        let methodname = new StringName("set_max");
+        this._bindings.method_set_max = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1286410249
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNodeIntParameter");
+        let methodname = new StringName("get_max");
+        this._bindings.method_get_max = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNodeIntParameter");
+        let methodname = new StringName("set_step");
+        this._bindings.method_set_step = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1286410249
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNodeIntParameter");
+        let methodname = new StringName("get_step");
+        this._bindings.method_get_step = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNodeIntParameter");
+        let methodname = new StringName("set_default_value_enabled");
+        this._bindings.method_set_default_value_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNodeIntParameter");
+        let methodname = new StringName("is_default_value_enabled");
+        this._bindings.method_is_default_value_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNodeIntParameter");
+        let methodname = new StringName("set_default_value");
+        this._bindings.method_set_default_value = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1286410249
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNodeIntParameter");
+        let methodname = new StringName("get_default_value");
+        this._bindings.method_get_default_value = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
   }
   set_hint(_hint) {
     return _call_native_mb_no_ret(
@@ -144,6 +152,7 @@ export class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
       this._owner,
       _hint
     );
+    
   }
   get_hint() {
     return _call_native_mb_ret(
@@ -152,6 +161,7 @@ export class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
 			Variant.INT,
       
     );
+    
   }
   set_min(_value) {
     return _call_native_mb_no_ret(
@@ -159,6 +169,7 @@ export class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
       this._owner,
       _value
     );
+    
   }
   get_min() {
     return _call_native_mb_ret(
@@ -167,6 +178,7 @@ export class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
 			Variant.Type.INT,
       
     );
+    
   }
   set_max(_value) {
     return _call_native_mb_no_ret(
@@ -174,6 +186,7 @@ export class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
       this._owner,
       _value
     );
+    
   }
   get_max() {
     return _call_native_mb_ret(
@@ -182,6 +195,7 @@ export class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
 			Variant.Type.INT,
       
     );
+    
   }
   set_step(_value) {
     return _call_native_mb_no_ret(
@@ -189,6 +203,7 @@ export class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
       this._owner,
       _value
     );
+    
   }
   get_step() {
     return _call_native_mb_ret(
@@ -197,6 +212,7 @@ export class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
 			Variant.Type.INT,
       
     );
+    
   }
   set_default_value_enabled(_enabled) {
     return _call_native_mb_no_ret(
@@ -204,6 +220,7 @@ export class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
       this._owner,
       _enabled
     );
+    
   }
   is_default_value_enabled() {
     return _call_native_mb_ret(
@@ -212,6 +229,7 @@ export class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
 			Variant.Type.BOOL,
       
     );
+    
   }
   set_default_value(_value) {
     return _call_native_mb_no_ret(
@@ -219,6 +237,7 @@ export class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
       this._owner,
       _value
     );
+    
   }
   get_default_value() {
     return _call_native_mb_ret(
@@ -227,6 +246,7 @@ export class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
 			Variant.Type.INT,
       
     );
+    
   }
   static Hint = {
     HINT_NONE: 0,

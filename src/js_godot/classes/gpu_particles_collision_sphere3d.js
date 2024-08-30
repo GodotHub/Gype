@@ -1,5 +1,13 @@
 import * as internal from '__internal__';
-import { GPUParticlesCollision3D } from 'src/js_godot/classesgpu_particles_collision3d'
+import { GPUParticlesCollision3D } from 'src/js_godot/classes/gpu_particles_collision3d'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_set_radius;
     method_get_radius;
@@ -19,24 +27,24 @@ export class GPUParticlesCollisionSphere3D extends GPUParticlesCollision3D{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("GPUParticlesCollisionSphere3D");
-      let methodname = new StringName("set_radius");
-      this._bindings.method_set_radius = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("GPUParticlesCollisionSphere3D");
-      let methodname = new StringName("get_radius");
-      this._bindings.method_get_radius = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
+      {
+        let classname = new StringName("GPUParticlesCollisionSphere3D");
+        let methodname = new StringName("set_radius");
+        this._bindings.method_set_radius = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("GPUParticlesCollisionSphere3D");
+        let methodname = new StringName("get_radius");
+        this._bindings.method_get_radius = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
   }
   set_radius(_radius) {
     return _call_native_mb_no_ret(
@@ -44,6 +52,7 @@ export class GPUParticlesCollisionSphere3D extends GPUParticlesCollision3D{
       this._owner,
       _radius
     );
+    
   }
   get_radius() {
     return _call_native_mb_ret(
@@ -52,5 +61,6 @@ export class GPUParticlesCollisionSphere3D extends GPUParticlesCollision3D{
 			Variant.Type.FLOAT,
       
     );
+    
   }
 }

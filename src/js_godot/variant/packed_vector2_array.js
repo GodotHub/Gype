@@ -4,10 +4,11 @@ import {
   _call_builtin_method_ptr_ret,
   _call_builtin_method_ptr_no_ret
 } from 'src/js_godot/core/builtin_ptrcall'
-import { Vector2 } from 'src/js_godot/variant/vector2'
 import { PackedByteArray } from 'src/js_godot/variant/packed_byte_array'
-import { Variant } from 'src/js_godot/variant/variant'
+import { Vector2 } from 'src/js_godot/variant/vector2'
+import { StringName } from 'src/js_godot/variant/string_name'
 import { GDArray } from 'src/js_godot/variant/gd_array'
+import { Variant } from 'src/js_godot/variant/variant'
 
 class _MethodBindings {
   from_variant_constructor
@@ -48,7 +49,7 @@ class _MethodBindings {
 }
 
 export class PackedVector2Array {
-  static #SIZE = 8
+  static #SIZE = 16
   opaque = new Uint8Array(PackedVector2Array.#SIZE)
 
   static _bindings = new _MethodBindings()
@@ -56,13 +57,11 @@ export class PackedVector2Array {
   constructor (from) {
     if (!from) {
       _call_builtin_constructor(PackedVector2Array._bindings.constructor_0, this)
-    } else if (arguments[0] instanceof PackedVector2Array) {
-      let from = arguments[0];
+    }else if (from instanceof PackedVector2Array) {
       _call_builtin_constructor(PackedVector2Array._bindings.constructor_1, this, [
         from
       ])
-    } else if (arguments[0] instanceof GDArray) {
-      let from = arguments[0];
+    }else if (from instanceof GDArray) {
       _call_builtin_constructor(PackedVector2Array._bindings.constructor_2, this, [
         from
       ])

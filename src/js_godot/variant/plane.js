@@ -6,6 +6,7 @@ import {
 } from 'src/js_godot/core/builtin_ptrcall'
 import { Variant } from 'src/js_godot/variant/variant'
 import { Vector3 } from 'src/js_godot/variant/vector3'
+import { StringName } from 'src/js_godot/variant/string_name'
 
 class _MethodBindings {
   from_variant_constructor
@@ -40,7 +41,7 @@ class _MethodBindings {
 }
 
 export class Plane {
-  static #SIZE = 8
+  static #SIZE = 16
   opaque = new Uint8Array(Plane.#SIZE)
 
   static _bindings = new _MethodBindings()
@@ -48,36 +49,34 @@ export class Plane {
   constructor (from) {
     if (!from) {
       _call_builtin_constructor(Plane._bindings.constructor_0, this)
-    } else if (arguments[0] instanceof Plane) {
-      let from = arguments[0];
+    }else if (from instanceof Plane) {
       _call_builtin_constructor(Plane._bindings.constructor_1, this, [
         from
       ])
-    } else if (arguments[0] instanceof Vector3) {
-      let normal = arguments[0];
+    }else if (from instanceof Vector3) {
       _call_builtin_constructor(Plane._bindings.constructor_2, this, [
         normal
       ])
-    } else if (arguments[0] instanceof Vector3) {
+    } else if (arguments.length == 2&& arguments[0] instanceof Vector3&& typeof arguments[1] == "number") {
       let normal = arguments[0];
       let d = arguments[1];
       _call_builtin_constructor(Plane._bindings.constructor_3, this, [
         normal, d
       ])
-    } else if (arguments[0] instanceof Vector3) {
+    } else if (arguments.length == 2&& arguments[0] instanceof Vector3&& arguments[1] instanceof Vector3) {
       let normal = arguments[0];
       let point = arguments[1];
       _call_builtin_constructor(Plane._bindings.constructor_4, this, [
         normal, point
       ])
-    } else if (arguments[0] instanceof Vector3) {
+    } else if (arguments.length == 3&& arguments[0] instanceof Vector3&& arguments[1] instanceof Vector3&& arguments[2] instanceof Vector3) {
       let point1 = arguments[0];
       let point2 = arguments[1];
       let point3 = arguments[2];
       _call_builtin_constructor(Plane._bindings.constructor_5, this, [
         point1, point2, point3
       ])
-    } else if (arguments[0] instanceof float) {
+    } else if (arguments.length == 4&& typeof arguments[0] == "number"&& typeof arguments[1] == "number"&& typeof arguments[2] == "number"&& typeof arguments[3] == "number") {
       let a = arguments[0];
       let b = arguments[1];
       let c = arguments[2];

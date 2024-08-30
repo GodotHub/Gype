@@ -5,12 +5,13 @@ import {
   _call_builtin_method_ptr_no_ret
 } from 'src/js_godot/core/builtin_ptrcall'
 import { GDString } from 'src/js_godot/variant/gd_string'
-import { PackedInt64Array } from 'src/js_godot/variant/packed_int64_array'
+import { PackedFloat32Array } from 'src/js_godot/variant/packed_float32_array'
+import { StringName } from 'src/js_godot/variant/string_name'
 import { PackedInt32Array } from 'src/js_godot/variant/packed_int32_array'
-import { Variant } from 'src/js_godot/variant/variant'
 import { PackedFloat64Array } from 'src/js_godot/variant/packed_float64_array'
 import { GDArray } from 'src/js_godot/variant/gd_array'
-import { PackedFloat32Array } from 'src/js_godot/variant/packed_float32_array'
+import { PackedInt64Array } from 'src/js_godot/variant/packed_int64_array'
+import { Variant } from 'src/js_godot/variant/variant'
 
 class _MethodBindings {
   from_variant_constructor
@@ -88,7 +89,7 @@ class _MethodBindings {
 }
 
 export class PackedByteArray {
-  static #SIZE = 8
+  static #SIZE = 16
   opaque = new Uint8Array(PackedByteArray.#SIZE)
 
   static _bindings = new _MethodBindings()
@@ -96,13 +97,11 @@ export class PackedByteArray {
   constructor (from) {
     if (!from) {
       _call_builtin_constructor(PackedByteArray._bindings.constructor_0, this)
-    } else if (arguments[0] instanceof PackedByteArray) {
-      let from = arguments[0];
+    }else if (from instanceof PackedByteArray) {
       _call_builtin_constructor(PackedByteArray._bindings.constructor_1, this, [
         from
       ])
-    } else if (arguments[0] instanceof GDArray) {
-      let from = arguments[0];
+    }else if (from instanceof GDArray) {
       _call_builtin_constructor(PackedByteArray._bindings.constructor_2, this, [
         from
       ])

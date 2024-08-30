@@ -4,8 +4,9 @@ import {
   _call_builtin_method_ptr_ret,
   _call_builtin_method_ptr_no_ret
 } from 'src/js_godot/core/builtin_ptrcall'
-import { Variant } from 'src/js_godot/variant/variant'
 import { GDArray } from 'src/js_godot/variant/gd_array'
+import { Variant } from 'src/js_godot/variant/variant'
+import { StringName } from 'src/js_godot/variant/string_name'
 
 class _MethodBindings {
   from_variant_constructor
@@ -48,8 +49,7 @@ export class Dictionary {
   constructor (from) {
     if (!from) {
       _call_builtin_constructor(Dictionary._bindings.constructor_0, this)
-    } else if (arguments[0] instanceof Dictionary) {
-      let from = arguments[0];
+    }else if (from instanceof Dictionary) {
       _call_builtin_constructor(Dictionary._bindings.constructor_1, this, [
         from
       ])

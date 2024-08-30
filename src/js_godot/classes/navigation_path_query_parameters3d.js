@@ -1,7 +1,15 @@
 import * as internal from '__internal__';
 import { Vector3 } from 'src/js_godot/variant/vector3'
-import { RefCounted } from 'src/js_godot/classesref_counted'
 import { RID } from 'src/js_godot/variant/rid'
+import { RefCounted } from 'src/js_godot/classes/ref_counted'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_set_pathfinding_algorithm;
     method_get_pathfinding_algorithm;
@@ -37,168 +45,168 @@ export class NavigationPathQueryParameters3D extends RefCounted{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("NavigationPathQueryParameters3D");
-      let methodname = new StringName("set_pathfinding_algorithm");
-      this._bindings.method_set_pathfinding_algorithm = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        394560454
-      );
-    }
-    {
-      let classname = new StringName("NavigationPathQueryParameters3D");
-      let methodname = new StringName("get_pathfinding_algorithm");
-      this._bindings.method_get_pathfinding_algorithm = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3398491350
-      );
-    }
-    {
-      let classname = new StringName("NavigationPathQueryParameters3D");
-      let methodname = new StringName("set_path_postprocessing");
-      this._bindings.method_set_path_postprocessing = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2267362344
-      );
-    }
-    {
-      let classname = new StringName("NavigationPathQueryParameters3D");
-      let methodname = new StringName("get_path_postprocessing");
-      this._bindings.method_get_path_postprocessing = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3883858360
-      );
-    }
-    {
-      let classname = new StringName("NavigationPathQueryParameters3D");
-      let methodname = new StringName("set_map");
-      this._bindings.method_set_map = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2722037293
-      );
-    }
-    {
-      let classname = new StringName("NavigationPathQueryParameters3D");
-      let methodname = new StringName("get_map");
-      this._bindings.method_get_map = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2944877500
-      );
-    }
-    {
-      let classname = new StringName("NavigationPathQueryParameters3D");
-      let methodname = new StringName("set_start_position");
-      this._bindings.method_set_start_position = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3460891852
-      );
-    }
-    {
-      let classname = new StringName("NavigationPathQueryParameters3D");
-      let methodname = new StringName("get_start_position");
-      this._bindings.method_get_start_position = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3360562783
-      );
-    }
-    {
-      let classname = new StringName("NavigationPathQueryParameters3D");
-      let methodname = new StringName("set_target_position");
-      this._bindings.method_set_target_position = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3460891852
-      );
-    }
-    {
-      let classname = new StringName("NavigationPathQueryParameters3D");
-      let methodname = new StringName("get_target_position");
-      this._bindings.method_get_target_position = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3360562783
-      );
-    }
-    {
-      let classname = new StringName("NavigationPathQueryParameters3D");
-      let methodname = new StringName("set_navigation_layers");
-      this._bindings.method_set_navigation_layers = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("NavigationPathQueryParameters3D");
-      let methodname = new StringName("get_navigation_layers");
-      this._bindings.method_get_navigation_layers = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("NavigationPathQueryParameters3D");
-      let methodname = new StringName("set_metadata_flags");
-      this._bindings.method_set_metadata_flags = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2713846708
-      );
-    }
-    {
-      let classname = new StringName("NavigationPathQueryParameters3D");
-      let methodname = new StringName("get_metadata_flags");
-      this._bindings.method_get_metadata_flags = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1582332802
-      );
-    }
-    {
-      let classname = new StringName("NavigationPathQueryParameters3D");
-      let methodname = new StringName("set_simplify_path");
-      this._bindings.method_set_simplify_path = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("NavigationPathQueryParameters3D");
-      let methodname = new StringName("get_simplify_path");
-      this._bindings.method_get_simplify_path = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("NavigationPathQueryParameters3D");
-      let methodname = new StringName("set_simplify_epsilon");
-      this._bindings.method_set_simplify_epsilon = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("NavigationPathQueryParameters3D");
-      let methodname = new StringName("get_simplify_epsilon");
-      this._bindings.method_get_simplify_epsilon = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
+      {
+        let classname = new StringName("NavigationPathQueryParameters3D");
+        let methodname = new StringName("set_pathfinding_algorithm");
+        this._bindings.method_set_pathfinding_algorithm = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          394560454
+        );
+      }
+      {
+        let classname = new StringName("NavigationPathQueryParameters3D");
+        let methodname = new StringName("get_pathfinding_algorithm");
+        this._bindings.method_get_pathfinding_algorithm = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3398491350
+        );
+      }
+      {
+        let classname = new StringName("NavigationPathQueryParameters3D");
+        let methodname = new StringName("set_path_postprocessing");
+        this._bindings.method_set_path_postprocessing = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2267362344
+        );
+      }
+      {
+        let classname = new StringName("NavigationPathQueryParameters3D");
+        let methodname = new StringName("get_path_postprocessing");
+        this._bindings.method_get_path_postprocessing = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3883858360
+        );
+      }
+      {
+        let classname = new StringName("NavigationPathQueryParameters3D");
+        let methodname = new StringName("set_map");
+        this._bindings.method_set_map = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2722037293
+        );
+      }
+      {
+        let classname = new StringName("NavigationPathQueryParameters3D");
+        let methodname = new StringName("get_map");
+        this._bindings.method_get_map = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2944877500
+        );
+      }
+      {
+        let classname = new StringName("NavigationPathQueryParameters3D");
+        let methodname = new StringName("set_start_position");
+        this._bindings.method_set_start_position = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3460891852
+        );
+      }
+      {
+        let classname = new StringName("NavigationPathQueryParameters3D");
+        let methodname = new StringName("get_start_position");
+        this._bindings.method_get_start_position = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3360562783
+        );
+      }
+      {
+        let classname = new StringName("NavigationPathQueryParameters3D");
+        let methodname = new StringName("set_target_position");
+        this._bindings.method_set_target_position = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3460891852
+        );
+      }
+      {
+        let classname = new StringName("NavigationPathQueryParameters3D");
+        let methodname = new StringName("get_target_position");
+        this._bindings.method_get_target_position = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3360562783
+        );
+      }
+      {
+        let classname = new StringName("NavigationPathQueryParameters3D");
+        let methodname = new StringName("set_navigation_layers");
+        this._bindings.method_set_navigation_layers = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1286410249
+        );
+      }
+      {
+        let classname = new StringName("NavigationPathQueryParameters3D");
+        let methodname = new StringName("get_navigation_layers");
+        this._bindings.method_get_navigation_layers = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
+      {
+        let classname = new StringName("NavigationPathQueryParameters3D");
+        let methodname = new StringName("set_metadata_flags");
+        this._bindings.method_set_metadata_flags = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2713846708
+        );
+      }
+      {
+        let classname = new StringName("NavigationPathQueryParameters3D");
+        let methodname = new StringName("get_metadata_flags");
+        this._bindings.method_get_metadata_flags = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1582332802
+        );
+      }
+      {
+        let classname = new StringName("NavigationPathQueryParameters3D");
+        let methodname = new StringName("set_simplify_path");
+        this._bindings.method_set_simplify_path = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("NavigationPathQueryParameters3D");
+        let methodname = new StringName("get_simplify_path");
+        this._bindings.method_get_simplify_path = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("NavigationPathQueryParameters3D");
+        let methodname = new StringName("set_simplify_epsilon");
+        this._bindings.method_set_simplify_epsilon = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("NavigationPathQueryParameters3D");
+        let methodname = new StringName("get_simplify_epsilon");
+        this._bindings.method_get_simplify_epsilon = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
   }
   set_pathfinding_algorithm(_pathfinding_algorithm) {
     return _call_native_mb_no_ret(
@@ -206,6 +214,7 @@ export class NavigationPathQueryParameters3D extends RefCounted{
       this._owner,
       _pathfinding_algorithm
     );
+    
   }
   get_pathfinding_algorithm() {
     return _call_native_mb_ret(
@@ -214,6 +223,7 @@ export class NavigationPathQueryParameters3D extends RefCounted{
 			Variant.INT,
       
     );
+    
   }
   set_path_postprocessing(_path_postprocessing) {
     return _call_native_mb_no_ret(
@@ -221,6 +231,7 @@ export class NavigationPathQueryParameters3D extends RefCounted{
       this._owner,
       _path_postprocessing
     );
+    
   }
   get_path_postprocessing() {
     return _call_native_mb_ret(
@@ -229,6 +240,7 @@ export class NavigationPathQueryParameters3D extends RefCounted{
 			Variant.INT,
       
     );
+    
   }
   set_map(_map) {
     return _call_native_mb_no_ret(
@@ -236,6 +248,7 @@ export class NavigationPathQueryParameters3D extends RefCounted{
       this._owner,
       _map
     );
+    
   }
   get_map() {
     return _call_native_mb_ret(
@@ -245,6 +258,7 @@ export class NavigationPathQueryParameters3D extends RefCounted{
     ,
       
     );
+    
   }
   set_start_position(_start_position) {
     return _call_native_mb_no_ret(
@@ -252,6 +266,7 @@ export class NavigationPathQueryParameters3D extends RefCounted{
       this._owner,
       _start_position
     );
+    
   }
   get_start_position() {
     return _call_native_mb_ret(
@@ -261,6 +276,7 @@ export class NavigationPathQueryParameters3D extends RefCounted{
     ,
       
     );
+    
   }
   set_target_position(_target_position) {
     return _call_native_mb_no_ret(
@@ -268,6 +284,7 @@ export class NavigationPathQueryParameters3D extends RefCounted{
       this._owner,
       _target_position
     );
+    
   }
   get_target_position() {
     return _call_native_mb_ret(
@@ -277,6 +294,7 @@ export class NavigationPathQueryParameters3D extends RefCounted{
     ,
       
     );
+    
   }
   set_navigation_layers(_navigation_layers) {
     return _call_native_mb_no_ret(
@@ -284,6 +302,7 @@ export class NavigationPathQueryParameters3D extends RefCounted{
       this._owner,
       _navigation_layers
     );
+    
   }
   get_navigation_layers() {
     return _call_native_mb_ret(
@@ -292,6 +311,7 @@ export class NavigationPathQueryParameters3D extends RefCounted{
 			Variant.Type.INT,
       
     );
+    
   }
   set_metadata_flags(_flags) {
     return _call_native_mb_no_ret(
@@ -299,6 +319,7 @@ export class NavigationPathQueryParameters3D extends RefCounted{
       this._owner,
       _flags
     );
+    
   }
   get_metadata_flags() {
     return _call_native_mb_ret(
@@ -307,6 +328,7 @@ export class NavigationPathQueryParameters3D extends RefCounted{
 			Variant.INT,
       
     );
+    
   }
   set_simplify_path(_enabled) {
     return _call_native_mb_no_ret(
@@ -314,6 +336,7 @@ export class NavigationPathQueryParameters3D extends RefCounted{
       this._owner,
       _enabled
     );
+    
   }
   get_simplify_path() {
     return _call_native_mb_ret(
@@ -322,6 +345,7 @@ export class NavigationPathQueryParameters3D extends RefCounted{
 			Variant.Type.BOOL,
       
     );
+    
   }
   set_simplify_epsilon(_epsilon) {
     return _call_native_mb_no_ret(
@@ -329,6 +353,7 @@ export class NavigationPathQueryParameters3D extends RefCounted{
       this._owner,
       _epsilon
     );
+    
   }
   get_simplify_epsilon() {
     return _call_native_mb_ret(
@@ -337,6 +362,7 @@ export class NavigationPathQueryParameters3D extends RefCounted{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   static PathfindingAlgorithm = {
     PATHFINDING_ALGORITHM_ASTAR: 0,

@@ -1,6 +1,14 @@
 import * as internal from '__internal__';
+import { XRPositionalTracker } from 'src/js_godot/classes/xr_positional_tracker'
 import { Transform3D } from 'src/js_godot/variant/transform3d'
-import { XRPositionalTracker } from 'src/js_godot/classesxr_positional_tracker'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_set_has_tracking_data;
     method_get_has_tracking_data;
@@ -26,78 +34,78 @@ export class XRBodyTracker extends XRPositionalTracker{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("XRBodyTracker");
-      let methodname = new StringName("set_has_tracking_data");
-      this._bindings.method_set_has_tracking_data = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("XRBodyTracker");
-      let methodname = new StringName("get_has_tracking_data");
-      this._bindings.method_get_has_tracking_data = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("XRBodyTracker");
-      let methodname = new StringName("set_body_flags");
-      this._bindings.method_set_body_flags = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2103235750
-      );
-    }
-    {
-      let classname = new StringName("XRBodyTracker");
-      let methodname = new StringName("get_body_flags");
-      this._bindings.method_get_body_flags = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3543166366
-      );
-    }
-    {
-      let classname = new StringName("XRBodyTracker");
-      let methodname = new StringName("set_joint_flags");
-      this._bindings.method_set_joint_flags = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        592144999
-      );
-    }
-    {
-      let classname = new StringName("XRBodyTracker");
-      let methodname = new StringName("get_joint_flags");
-      this._bindings.method_get_joint_flags = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1030162609
-      );
-    }
-    {
-      let classname = new StringName("XRBodyTracker");
-      let methodname = new StringName("set_joint_transform");
-      this._bindings.method_set_joint_transform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2635424328
-      );
-    }
-    {
-      let classname = new StringName("XRBodyTracker");
-      let methodname = new StringName("get_joint_transform");
-      this._bindings.method_get_joint_transform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3474811534
-      );
-    }
+      {
+        let classname = new StringName("XRBodyTracker");
+        let methodname = new StringName("set_has_tracking_data");
+        this._bindings.method_set_has_tracking_data = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("XRBodyTracker");
+        let methodname = new StringName("get_has_tracking_data");
+        this._bindings.method_get_has_tracking_data = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("XRBodyTracker");
+        let methodname = new StringName("set_body_flags");
+        this._bindings.method_set_body_flags = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2103235750
+        );
+      }
+      {
+        let classname = new StringName("XRBodyTracker");
+        let methodname = new StringName("get_body_flags");
+        this._bindings.method_get_body_flags = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3543166366
+        );
+      }
+      {
+        let classname = new StringName("XRBodyTracker");
+        let methodname = new StringName("set_joint_flags");
+        this._bindings.method_set_joint_flags = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          592144999
+        );
+      }
+      {
+        let classname = new StringName("XRBodyTracker");
+        let methodname = new StringName("get_joint_flags");
+        this._bindings.method_get_joint_flags = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1030162609
+        );
+      }
+      {
+        let classname = new StringName("XRBodyTracker");
+        let methodname = new StringName("set_joint_transform");
+        this._bindings.method_set_joint_transform = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2635424328
+        );
+      }
+      {
+        let classname = new StringName("XRBodyTracker");
+        let methodname = new StringName("get_joint_transform");
+        this._bindings.method_get_joint_transform = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3474811534
+        );
+      }
   }
   set_has_tracking_data(_has_data) {
     return _call_native_mb_no_ret(
@@ -105,6 +113,7 @@ export class XRBodyTracker extends XRPositionalTracker{
       this._owner,
       _has_data
     );
+    
   }
   get_has_tracking_data() {
     return _call_native_mb_ret(
@@ -113,6 +122,7 @@ export class XRBodyTracker extends XRPositionalTracker{
 			Variant.Type.BOOL,
       
     );
+    
   }
   set_body_flags(_flags) {
     return _call_native_mb_no_ret(
@@ -120,6 +130,7 @@ export class XRBodyTracker extends XRPositionalTracker{
       this._owner,
       _flags
     );
+    
   }
   get_body_flags() {
     return _call_native_mb_ret(
@@ -128,6 +139,7 @@ export class XRBodyTracker extends XRPositionalTracker{
 			Variant.INT,
       
     );
+    
   }
   set_joint_flags(_joint, _flags) {
     return _call_native_mb_no_ret(
@@ -135,6 +147,7 @@ export class XRBodyTracker extends XRPositionalTracker{
       this._owner,
       _joint, _flags
     );
+    
   }
   get_joint_flags(_joint) {
     return _call_native_mb_ret(
@@ -143,6 +156,7 @@ export class XRBodyTracker extends XRPositionalTracker{
 			Variant.INT,
       _joint
     );
+    
   }
   set_joint_transform(_joint, _transform) {
     return _call_native_mb_no_ret(
@@ -150,6 +164,7 @@ export class XRBodyTracker extends XRPositionalTracker{
       this._owner,
       _joint, _transform
     );
+    
   }
   get_joint_transform(_joint) {
     return _call_native_mb_ret(
@@ -159,6 +174,7 @@ export class XRBodyTracker extends XRPositionalTracker{
     ,
       _joint
     );
+    
   }
   static BodyFlags = {
     BODY_FLAG_UPPER_BODY_SUPPORTED: 1,

@@ -1,5 +1,13 @@
 import * as internal from '__internal__';
-import { VisualShaderNode } from 'src/js_godot/classesvisual_shader_node'
+import { VisualShaderNode } from 'src/js_godot/classes/visual_shader_node'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_set_comparison_type;
     method_get_comparison_type;
@@ -23,60 +31,60 @@ export class VisualShaderNodeCompare extends VisualShaderNode{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("VisualShaderNodeCompare");
-      let methodname = new StringName("set_comparison_type");
-      this._bindings.method_set_comparison_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        516558320
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNodeCompare");
-      let methodname = new StringName("get_comparison_type");
-      this._bindings.method_get_comparison_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3495315961
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNodeCompare");
-      let methodname = new StringName("set_function");
-      this._bindings.method_set_function = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2370951349
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNodeCompare");
-      let methodname = new StringName("get_function");
-      this._bindings.method_get_function = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4089164265
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNodeCompare");
-      let methodname = new StringName("set_condition");
-      this._bindings.method_set_condition = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        918742392
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNodeCompare");
-      let methodname = new StringName("get_condition");
-      this._bindings.method_get_condition = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3281078941
-      );
-    }
+      {
+        let classname = new StringName("VisualShaderNodeCompare");
+        let methodname = new StringName("set_comparison_type");
+        this._bindings.method_set_comparison_type = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          516558320
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNodeCompare");
+        let methodname = new StringName("get_comparison_type");
+        this._bindings.method_get_comparison_type = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3495315961
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNodeCompare");
+        let methodname = new StringName("set_function");
+        this._bindings.method_set_function = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2370951349
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNodeCompare");
+        let methodname = new StringName("get_function");
+        this._bindings.method_get_function = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4089164265
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNodeCompare");
+        let methodname = new StringName("set_condition");
+        this._bindings.method_set_condition = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          918742392
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNodeCompare");
+        let methodname = new StringName("get_condition");
+        this._bindings.method_get_condition = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3281078941
+        );
+      }
   }
   set_comparison_type(_type) {
     return _call_native_mb_no_ret(
@@ -84,6 +92,7 @@ export class VisualShaderNodeCompare extends VisualShaderNode{
       this._owner,
       _type
     );
+    
   }
   get_comparison_type() {
     return _call_native_mb_ret(
@@ -92,6 +101,7 @@ export class VisualShaderNodeCompare extends VisualShaderNode{
 			Variant.INT,
       
     );
+    
   }
   set_function(_func) {
     return _call_native_mb_no_ret(
@@ -99,6 +109,7 @@ export class VisualShaderNodeCompare extends VisualShaderNode{
       this._owner,
       _func
     );
+    
   }
   get_function() {
     return _call_native_mb_ret(
@@ -107,6 +118,7 @@ export class VisualShaderNodeCompare extends VisualShaderNode{
 			Variant.INT,
       
     );
+    
   }
   set_condition(_condition) {
     return _call_native_mb_no_ret(
@@ -114,6 +126,7 @@ export class VisualShaderNodeCompare extends VisualShaderNode{
       this._owner,
       _condition
     );
+    
   }
   get_condition() {
     return _call_native_mb_ret(
@@ -122,6 +135,7 @@ export class VisualShaderNodeCompare extends VisualShaderNode{
 			Variant.INT,
       
     );
+    
   }
   static ComparisonType = {
     CTYPE_SCALAR: 0,

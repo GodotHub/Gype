@@ -1,10 +1,18 @@
 import * as internal from '__internal__';
+import { GodotObject } from 'src/js_godot/classes/godot_object'
 import { Vector2 } from 'src/js_godot/variant/vector2'
+import { StringName } from 'src/js_godot/variant/string_name'
 import { PackedInt32Array } from 'src/js_godot/variant/packed_int32_array'
-import { Variant } from 'src/js_godot/variant/variant'
-import { GodotObject } from 'src/js_godot/classesgodot_object'
-import { PackedVector2Array } from 'src/js_godot/variant/packed_vector2_array'
 import { Dictionary } from 'src/js_godot/variant/dictionary'
+import { Variant } from 'src/js_godot/variant/variant'
+import { PackedVector2Array } from 'src/js_godot/variant/packed_vector2_array'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_is_point_in_circle;
     method_segment_intersects_circle;
@@ -46,213 +54,213 @@ class _Geometry2D extends GodotObject{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("Geometry2D");
-      let methodname = new StringName("is_point_in_circle");
-      this._bindings.method_is_point_in_circle = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2929491703
-      );
-    }
-    {
-      let classname = new StringName("Geometry2D");
-      let methodname = new StringName("segment_intersects_circle");
-      this._bindings.method_segment_intersects_circle = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1356928167
-      );
-    }
-    {
-      let classname = new StringName("Geometry2D");
-      let methodname = new StringName("segment_intersects_segment");
-      this._bindings.method_segment_intersects_segment = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2058025344
-      );
-    }
-    {
-      let classname = new StringName("Geometry2D");
-      let methodname = new StringName("line_intersects_line");
-      this._bindings.method_line_intersects_line = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2058025344
-      );
-    }
-    {
-      let classname = new StringName("Geometry2D");
-      let methodname = new StringName("get_closest_points_between_segments");
-      this._bindings.method_get_closest_points_between_segments = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3344690961
-      );
-    }
-    {
-      let classname = new StringName("Geometry2D");
-      let methodname = new StringName("get_closest_point_to_segment");
-      this._bindings.method_get_closest_point_to_segment = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4172901909
-      );
-    }
-    {
-      let classname = new StringName("Geometry2D");
-      let methodname = new StringName("get_closest_point_to_segment_uncapped");
-      this._bindings.method_get_closest_point_to_segment_uncapped = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4172901909
-      );
-    }
-    {
-      let classname = new StringName("Geometry2D");
-      let methodname = new StringName("point_is_inside_triangle");
-      this._bindings.method_point_is_inside_triangle = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1025948137
-      );
-    }
-    {
-      let classname = new StringName("Geometry2D");
-      let methodname = new StringName("is_polygon_clockwise");
-      this._bindings.method_is_polygon_clockwise = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1361156557
-      );
-    }
-    {
-      let classname = new StringName("Geometry2D");
-      let methodname = new StringName("is_point_in_polygon");
-      this._bindings.method_is_point_in_polygon = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        738277916
-      );
-    }
-    {
-      let classname = new StringName("Geometry2D");
-      let methodname = new StringName("triangulate_polygon");
-      this._bindings.method_triangulate_polygon = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1389921771
-      );
-    }
-    {
-      let classname = new StringName("Geometry2D");
-      let methodname = new StringName("triangulate_delaunay");
-      this._bindings.method_triangulate_delaunay = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1389921771
-      );
-    }
-    {
-      let classname = new StringName("Geometry2D");
-      let methodname = new StringName("convex_hull");
-      this._bindings.method_convex_hull = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2004331998
-      );
-    }
-    {
-      let classname = new StringName("Geometry2D");
-      let methodname = new StringName("decompose_polygon_in_convex");
-      this._bindings.method_decompose_polygon_in_convex = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3982393695
-      );
-    }
-    {
-      let classname = new StringName("Geometry2D");
-      let methodname = new StringName("merge_polygons");
-      this._bindings.method_merge_polygons = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3637387053
-      );
-    }
-    {
-      let classname = new StringName("Geometry2D");
-      let methodname = new StringName("clip_polygons");
-      this._bindings.method_clip_polygons = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3637387053
-      );
-    }
-    {
-      let classname = new StringName("Geometry2D");
-      let methodname = new StringName("intersect_polygons");
-      this._bindings.method_intersect_polygons = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3637387053
-      );
-    }
-    {
-      let classname = new StringName("Geometry2D");
-      let methodname = new StringName("exclude_polygons");
-      this._bindings.method_exclude_polygons = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3637387053
-      );
-    }
-    {
-      let classname = new StringName("Geometry2D");
-      let methodname = new StringName("clip_polyline_with_polygon");
-      this._bindings.method_clip_polyline_with_polygon = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3637387053
-      );
-    }
-    {
-      let classname = new StringName("Geometry2D");
-      let methodname = new StringName("intersect_polyline_with_polygon");
-      this._bindings.method_intersect_polyline_with_polygon = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3637387053
-      );
-    }
-    {
-      let classname = new StringName("Geometry2D");
-      let methodname = new StringName("offset_polygon");
-      this._bindings.method_offset_polygon = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1275354010
-      );
-    }
-    {
-      let classname = new StringName("Geometry2D");
-      let methodname = new StringName("offset_polyline");
-      this._bindings.method_offset_polyline = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2328231778
-      );
-    }
-    {
-      let classname = new StringName("Geometry2D");
-      let methodname = new StringName("make_atlas");
-      this._bindings.method_make_atlas = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1337682371
-      );
-    }
+      {
+        let classname = new StringName("Geometry2D");
+        let methodname = new StringName("is_point_in_circle");
+        this._bindings.method_is_point_in_circle = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2929491703
+        );
+      }
+      {
+        let classname = new StringName("Geometry2D");
+        let methodname = new StringName("segment_intersects_circle");
+        this._bindings.method_segment_intersects_circle = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1356928167
+        );
+      }
+      {
+        let classname = new StringName("Geometry2D");
+        let methodname = new StringName("segment_intersects_segment");
+        this._bindings.method_segment_intersects_segment = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2058025344
+        );
+      }
+      {
+        let classname = new StringName("Geometry2D");
+        let methodname = new StringName("line_intersects_line");
+        this._bindings.method_line_intersects_line = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2058025344
+        );
+      }
+      {
+        let classname = new StringName("Geometry2D");
+        let methodname = new StringName("get_closest_points_between_segments");
+        this._bindings.method_get_closest_points_between_segments = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3344690961
+        );
+      }
+      {
+        let classname = new StringName("Geometry2D");
+        let methodname = new StringName("get_closest_point_to_segment");
+        this._bindings.method_get_closest_point_to_segment = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4172901909
+        );
+      }
+      {
+        let classname = new StringName("Geometry2D");
+        let methodname = new StringName("get_closest_point_to_segment_uncapped");
+        this._bindings.method_get_closest_point_to_segment_uncapped = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4172901909
+        );
+      }
+      {
+        let classname = new StringName("Geometry2D");
+        let methodname = new StringName("point_is_inside_triangle");
+        this._bindings.method_point_is_inside_triangle = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1025948137
+        );
+      }
+      {
+        let classname = new StringName("Geometry2D");
+        let methodname = new StringName("is_polygon_clockwise");
+        this._bindings.method_is_polygon_clockwise = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1361156557
+        );
+      }
+      {
+        let classname = new StringName("Geometry2D");
+        let methodname = new StringName("is_point_in_polygon");
+        this._bindings.method_is_point_in_polygon = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          738277916
+        );
+      }
+      {
+        let classname = new StringName("Geometry2D");
+        let methodname = new StringName("triangulate_polygon");
+        this._bindings.method_triangulate_polygon = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1389921771
+        );
+      }
+      {
+        let classname = new StringName("Geometry2D");
+        let methodname = new StringName("triangulate_delaunay");
+        this._bindings.method_triangulate_delaunay = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1389921771
+        );
+      }
+      {
+        let classname = new StringName("Geometry2D");
+        let methodname = new StringName("convex_hull");
+        this._bindings.method_convex_hull = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2004331998
+        );
+      }
+      {
+        let classname = new StringName("Geometry2D");
+        let methodname = new StringName("decompose_polygon_in_convex");
+        this._bindings.method_decompose_polygon_in_convex = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3982393695
+        );
+      }
+      {
+        let classname = new StringName("Geometry2D");
+        let methodname = new StringName("merge_polygons");
+        this._bindings.method_merge_polygons = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3637387053
+        );
+      }
+      {
+        let classname = new StringName("Geometry2D");
+        let methodname = new StringName("clip_polygons");
+        this._bindings.method_clip_polygons = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3637387053
+        );
+      }
+      {
+        let classname = new StringName("Geometry2D");
+        let methodname = new StringName("intersect_polygons");
+        this._bindings.method_intersect_polygons = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3637387053
+        );
+      }
+      {
+        let classname = new StringName("Geometry2D");
+        let methodname = new StringName("exclude_polygons");
+        this._bindings.method_exclude_polygons = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3637387053
+        );
+      }
+      {
+        let classname = new StringName("Geometry2D");
+        let methodname = new StringName("clip_polyline_with_polygon");
+        this._bindings.method_clip_polyline_with_polygon = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3637387053
+        );
+      }
+      {
+        let classname = new StringName("Geometry2D");
+        let methodname = new StringName("intersect_polyline_with_polygon");
+        this._bindings.method_intersect_polyline_with_polygon = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3637387053
+        );
+      }
+      {
+        let classname = new StringName("Geometry2D");
+        let methodname = new StringName("offset_polygon");
+        this._bindings.method_offset_polygon = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1275354010
+        );
+      }
+      {
+        let classname = new StringName("Geometry2D");
+        let methodname = new StringName("offset_polyline");
+        this._bindings.method_offset_polyline = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2328231778
+        );
+      }
+      {
+        let classname = new StringName("Geometry2D");
+        let methodname = new StringName("make_atlas");
+        this._bindings.method_make_atlas = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1337682371
+        );
+      }
   }
   is_point_in_circle(_point, _circle_position, _circle_radius) {
     return _call_native_mb_ret(
@@ -261,6 +269,7 @@ class _Geometry2D extends GodotObject{
 			Variant.Type.BOOL,
       _point, _circle_position, _circle_radius
     );
+    
   }
   segment_intersects_circle(_segment_from, _segment_to, _circle_position, _circle_radius) {
     return _call_native_mb_ret(
@@ -269,6 +278,7 @@ class _Geometry2D extends GodotObject{
 			Variant.Type.FLOAT,
       _segment_from, _segment_to, _circle_position, _circle_radius
     );
+    
   }
   segment_intersects_segment(_from_a, _to_a, _from_b, _to_b) {
     return _call_native_mb_ret(
@@ -278,6 +288,7 @@ class _Geometry2D extends GodotObject{
     ,
       _from_a, _to_a, _from_b, _to_b
     );
+    
   }
   line_intersects_line(_from_a, _dir_a, _from_b, _dir_b) {
     return _call_native_mb_ret(
@@ -287,6 +298,7 @@ class _Geometry2D extends GodotObject{
     ,
       _from_a, _dir_a, _from_b, _dir_b
     );
+    
   }
   get_closest_points_between_segments(_p1, _q1, _p2, _q2) {
     return _call_native_mb_ret(
@@ -296,6 +308,7 @@ class _Geometry2D extends GodotObject{
     ,
       _p1, _q1, _p2, _q2
     );
+    
   }
   get_closest_point_to_segment(_point, _s1, _s2) {
     return _call_native_mb_ret(
@@ -305,6 +318,7 @@ class _Geometry2D extends GodotObject{
     ,
       _point, _s1, _s2
     );
+    
   }
   get_closest_point_to_segment_uncapped(_point, _s1, _s2) {
     return _call_native_mb_ret(
@@ -314,6 +328,7 @@ class _Geometry2D extends GodotObject{
     ,
       _point, _s1, _s2
     );
+    
   }
   point_is_inside_triangle(_point, _a, _b, _c) {
     return _call_native_mb_ret(
@@ -322,6 +337,7 @@ class _Geometry2D extends GodotObject{
 			Variant.Type.BOOL,
       _point, _a, _b, _c
     );
+    
   }
   is_polygon_clockwise(_polygon) {
     return _call_native_mb_ret(
@@ -330,6 +346,7 @@ class _Geometry2D extends GodotObject{
 			Variant.Type.BOOL,
       _polygon
     );
+    
   }
   is_point_in_polygon(_point, _polygon) {
     return _call_native_mb_ret(
@@ -338,6 +355,7 @@ class _Geometry2D extends GodotObject{
 			Variant.Type.BOOL,
       _point, _polygon
     );
+    
   }
   triangulate_polygon(_polygon) {
     return _call_native_mb_ret(
@@ -347,6 +365,7 @@ class _Geometry2D extends GodotObject{
     ,
       _polygon
     );
+    
   }
   triangulate_delaunay(_points) {
     return _call_native_mb_ret(
@@ -356,6 +375,7 @@ class _Geometry2D extends GodotObject{
     ,
       _points
     );
+    
   }
   convex_hull(_points) {
     return _call_native_mb_ret(
@@ -365,6 +385,7 @@ class _Geometry2D extends GodotObject{
     ,
       _points
     );
+    
   }
   decompose_polygon_in_convex(_polygon) {
     return _call_native_mb_ret(
@@ -373,6 +394,7 @@ class _Geometry2D extends GodotObject{
 			Variant.INT,
       _polygon
     );
+    
   }
   merge_polygons(_polygon_a, _polygon_b) {
     return _call_native_mb_ret(
@@ -381,6 +403,7 @@ class _Geometry2D extends GodotObject{
 			Variant.INT,
       _polygon_a, _polygon_b
     );
+    
   }
   clip_polygons(_polygon_a, _polygon_b) {
     return _call_native_mb_ret(
@@ -389,6 +412,7 @@ class _Geometry2D extends GodotObject{
 			Variant.INT,
       _polygon_a, _polygon_b
     );
+    
   }
   intersect_polygons(_polygon_a, _polygon_b) {
     return _call_native_mb_ret(
@@ -397,6 +421,7 @@ class _Geometry2D extends GodotObject{
 			Variant.INT,
       _polygon_a, _polygon_b
     );
+    
   }
   exclude_polygons(_polygon_a, _polygon_b) {
     return _call_native_mb_ret(
@@ -405,6 +430,7 @@ class _Geometry2D extends GodotObject{
 			Variant.INT,
       _polygon_a, _polygon_b
     );
+    
   }
   clip_polyline_with_polygon(_polyline, _polygon) {
     return _call_native_mb_ret(
@@ -413,6 +439,7 @@ class _Geometry2D extends GodotObject{
 			Variant.INT,
       _polyline, _polygon
     );
+    
   }
   intersect_polyline_with_polygon(_polyline, _polygon) {
     return _call_native_mb_ret(
@@ -421,6 +448,7 @@ class _Geometry2D extends GodotObject{
 			Variant.INT,
       _polyline, _polygon
     );
+    
   }
   offset_polygon(_polygon, _delta, _join_type) {
     return _call_native_mb_ret(
@@ -429,6 +457,7 @@ class _Geometry2D extends GodotObject{
 			Variant.INT,
       _polygon, _delta, _join_type
     );
+    
   }
   offset_polyline(_polyline, _delta, _join_type, _end_type) {
     return _call_native_mb_ret(
@@ -437,6 +466,7 @@ class _Geometry2D extends GodotObject{
 			Variant.INT,
       _polyline, _delta, _join_type, _end_type
     );
+    
   }
   make_atlas(_sizes) {
     return _call_native_mb_ret(
@@ -446,6 +476,7 @@ class _Geometry2D extends GodotObject{
     ,
       _sizes
     );
+    
   }
   static PolyBooleanOperation = {
     OPERATION_UNION: 0,

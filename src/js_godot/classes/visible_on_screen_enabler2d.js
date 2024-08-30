@@ -1,6 +1,14 @@
 import * as internal from '__internal__';
 import { NodePath } from 'src/js_godot/variant/node_path'
-import { VisibleOnScreenNotifier2D } from 'src/js_godot/classesvisible_on_screen_notifier2d'
+import { StringName } from 'src/js_godot/variant/string_name'
+import { VisibleOnScreenNotifier2D } from 'src/js_godot/classes/visible_on_screen_notifier2d'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_set_enable_mode;
     method_get_enable_mode;
@@ -22,42 +30,42 @@ export class VisibleOnScreenEnabler2D extends VisibleOnScreenNotifier2D{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("VisibleOnScreenEnabler2D");
-      let methodname = new StringName("set_enable_mode");
-      this._bindings.method_set_enable_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2961788752
-      );
-    }
-    {
-      let classname = new StringName("VisibleOnScreenEnabler2D");
-      let methodname = new StringName("get_enable_mode");
-      this._bindings.method_get_enable_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2650445576
-      );
-    }
-    {
-      let classname = new StringName("VisibleOnScreenEnabler2D");
-      let methodname = new StringName("set_enable_node_path");
-      this._bindings.method_set_enable_node_path = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1348162250
-      );
-    }
-    {
-      let classname = new StringName("VisibleOnScreenEnabler2D");
-      let methodname = new StringName("get_enable_node_path");
-      this._bindings.method_get_enable_node_path = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        277076166
-      );
-    }
+      {
+        let classname = new StringName("VisibleOnScreenEnabler2D");
+        let methodname = new StringName("set_enable_mode");
+        this._bindings.method_set_enable_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2961788752
+        );
+      }
+      {
+        let classname = new StringName("VisibleOnScreenEnabler2D");
+        let methodname = new StringName("get_enable_mode");
+        this._bindings.method_get_enable_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2650445576
+        );
+      }
+      {
+        let classname = new StringName("VisibleOnScreenEnabler2D");
+        let methodname = new StringName("set_enable_node_path");
+        this._bindings.method_set_enable_node_path = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1348162250
+        );
+      }
+      {
+        let classname = new StringName("VisibleOnScreenEnabler2D");
+        let methodname = new StringName("get_enable_node_path");
+        this._bindings.method_get_enable_node_path = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          277076166
+        );
+      }
   }
   set_enable_mode(_mode) {
     return _call_native_mb_no_ret(
@@ -65,6 +73,7 @@ export class VisibleOnScreenEnabler2D extends VisibleOnScreenNotifier2D{
       this._owner,
       _mode
     );
+    
   }
   get_enable_mode() {
     return _call_native_mb_ret(
@@ -73,6 +82,7 @@ export class VisibleOnScreenEnabler2D extends VisibleOnScreenNotifier2D{
 			Variant.INT,
       
     );
+    
   }
   set_enable_node_path(_path) {
     return _call_native_mb_no_ret(
@@ -80,6 +90,7 @@ export class VisibleOnScreenEnabler2D extends VisibleOnScreenNotifier2D{
       this._owner,
       _path
     );
+    
   }
   get_enable_node_path() {
     return _call_native_mb_ret(
@@ -89,6 +100,7 @@ export class VisibleOnScreenEnabler2D extends VisibleOnScreenNotifier2D{
     ,
       
     );
+    
   }
   static EnableMode = {
     ENABLE_MODE_INHERIT: 0,

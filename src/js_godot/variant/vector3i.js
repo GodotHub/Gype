@@ -4,8 +4,9 @@ import {
   _call_builtin_method_ptr_ret,
   _call_builtin_method_ptr_no_ret
 } from 'src/js_godot/core/builtin_ptrcall'
-import { Variant } from 'src/js_godot/variant/variant'
 import { Vector3 } from 'src/js_godot/variant/vector3'
+import { Variant } from 'src/js_godot/variant/variant'
+import { StringName } from 'src/js_godot/variant/string_name'
 
 class _MethodBindings {
   from_variant_constructor
@@ -55,7 +56,7 @@ class _MethodBindings {
 }
 
 export class Vector3i {
-  static #SIZE = 8
+  static #SIZE = 12
   opaque = new Uint8Array(Vector3i.#SIZE)
 
   static _bindings = new _MethodBindings()
@@ -63,17 +64,15 @@ export class Vector3i {
   constructor (from) {
     if (!from) {
       _call_builtin_constructor(Vector3i._bindings.constructor_0, this)
-    } else if (arguments[0] instanceof Vector3i) {
-      let from = arguments[0];
+    }else if (from instanceof Vector3i) {
       _call_builtin_constructor(Vector3i._bindings.constructor_1, this, [
         from
       ])
-    } else if (arguments[0] instanceof Vector3) {
-      let from = arguments[0];
+    }else if (from instanceof Vector3) {
       _call_builtin_constructor(Vector3i._bindings.constructor_2, this, [
         from
       ])
-    } else if (arguments[0] instanceof int) {
+    } else if (arguments.length == 3&& typeof arguments[0] == "number"&& typeof arguments[1] == "number"&& typeof arguments[2] == "number") {
       let x = arguments[0];
       let y = arguments[1];
       let z = arguments[2];

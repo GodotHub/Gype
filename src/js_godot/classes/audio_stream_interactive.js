@@ -1,7 +1,14 @@
 import * as internal from '__internal__';
+import { AudioStream } from 'src/js_godot/classes/audio_stream'
 import { PackedInt32Array } from 'src/js_godot/variant/packed_int32_array'
 import { StringName } from 'src/js_godot/variant/string_name'
-import { AudioStream } from 'src/js_godot/classesaudio_stream'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_set_clip_count;
     method_get_clip_count;
@@ -42,213 +49,213 @@ export class AudioStreamInteractive extends AudioStream{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("AudioStreamInteractive");
-      let methodname = new StringName("set_clip_count");
-      this._bindings.method_set_clip_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("AudioStreamInteractive");
-      let methodname = new StringName("get_clip_count");
-      this._bindings.method_get_clip_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("AudioStreamInteractive");
-      let methodname = new StringName("set_initial_clip");
-      this._bindings.method_set_initial_clip = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("AudioStreamInteractive");
-      let methodname = new StringName("get_initial_clip");
-      this._bindings.method_get_initial_clip = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("AudioStreamInteractive");
-      let methodname = new StringName("set_clip_name");
-      this._bindings.method_set_clip_name = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3780747571
-      );
-    }
-    {
-      let classname = new StringName("AudioStreamInteractive");
-      let methodname = new StringName("get_clip_name");
-      this._bindings.method_get_clip_name = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        659327637
-      );
-    }
-    {
-      let classname = new StringName("AudioStreamInteractive");
-      let methodname = new StringName("set_clip_stream");
-      this._bindings.method_set_clip_stream = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        111075094
-      );
-    }
-    {
-      let classname = new StringName("AudioStreamInteractive");
-      let methodname = new StringName("get_clip_stream");
-      this._bindings.method_get_clip_stream = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2739380747
-      );
-    }
-    {
-      let classname = new StringName("AudioStreamInteractive");
-      let methodname = new StringName("set_clip_auto_advance");
-      this._bindings.method_set_clip_auto_advance = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        57217598
-      );
-    }
-    {
-      let classname = new StringName("AudioStreamInteractive");
-      let methodname = new StringName("get_clip_auto_advance");
-      this._bindings.method_get_clip_auto_advance = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1778634807
-      );
-    }
-    {
-      let classname = new StringName("AudioStreamInteractive");
-      let methodname = new StringName("set_clip_auto_advance_next_clip");
-      this._bindings.method_set_clip_auto_advance_next_clip = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3937882851
-      );
-    }
-    {
-      let classname = new StringName("AudioStreamInteractive");
-      let methodname = new StringName("get_clip_auto_advance_next_clip");
-      this._bindings.method_get_clip_auto_advance_next_clip = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        923996154
-      );
-    }
-    {
-      let classname = new StringName("AudioStreamInteractive");
-      let methodname = new StringName("add_transition");
-      this._bindings.method_add_transition = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1630280552
-      );
-    }
-    {
-      let classname = new StringName("AudioStreamInteractive");
-      let methodname = new StringName("has_transition");
-      this._bindings.method_has_transition = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2522259332
-      );
-    }
-    {
-      let classname = new StringName("AudioStreamInteractive");
-      let methodname = new StringName("erase_transition");
-      this._bindings.method_erase_transition = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3937882851
-      );
-    }
-    {
-      let classname = new StringName("AudioStreamInteractive");
-      let methodname = new StringName("get_transition_list");
-      this._bindings.method_get_transition_list = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1930428628
-      );
-    }
-    {
-      let classname = new StringName("AudioStreamInteractive");
-      let methodname = new StringName("get_transition_from_time");
-      this._bindings.method_get_transition_from_time = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3453338158
-      );
-    }
-    {
-      let classname = new StringName("AudioStreamInteractive");
-      let methodname = new StringName("get_transition_to_time");
-      this._bindings.method_get_transition_to_time = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1369651373
-      );
-    }
-    {
-      let classname = new StringName("AudioStreamInteractive");
-      let methodname = new StringName("get_transition_fade_mode");
-      this._bindings.method_get_transition_fade_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4065396087
-      );
-    }
-    {
-      let classname = new StringName("AudioStreamInteractive");
-      let methodname = new StringName("get_transition_fade_beats");
-      this._bindings.method_get_transition_fade_beats = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3085491603
-      );
-    }
-    {
-      let classname = new StringName("AudioStreamInteractive");
-      let methodname = new StringName("is_transition_using_filler_clip");
-      this._bindings.method_is_transition_using_filler_clip = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2522259332
-      );
-    }
-    {
-      let classname = new StringName("AudioStreamInteractive");
-      let methodname = new StringName("get_transition_filler_clip");
-      this._bindings.method_get_transition_filler_clip = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3175239445
-      );
-    }
-    {
-      let classname = new StringName("AudioStreamInteractive");
-      let methodname = new StringName("is_transition_holding_previous");
-      this._bindings.method_is_transition_holding_previous = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2522259332
-      );
-    }
+      {
+        let classname = new StringName("AudioStreamInteractive");
+        let methodname = new StringName("set_clip_count");
+        this._bindings.method_set_clip_count = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1286410249
+        );
+      }
+      {
+        let classname = new StringName("AudioStreamInteractive");
+        let methodname = new StringName("get_clip_count");
+        this._bindings.method_get_clip_count = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
+      {
+        let classname = new StringName("AudioStreamInteractive");
+        let methodname = new StringName("set_initial_clip");
+        this._bindings.method_set_initial_clip = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1286410249
+        );
+      }
+      {
+        let classname = new StringName("AudioStreamInteractive");
+        let methodname = new StringName("get_initial_clip");
+        this._bindings.method_get_initial_clip = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
+      {
+        let classname = new StringName("AudioStreamInteractive");
+        let methodname = new StringName("set_clip_name");
+        this._bindings.method_set_clip_name = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3780747571
+        );
+      }
+      {
+        let classname = new StringName("AudioStreamInteractive");
+        let methodname = new StringName("get_clip_name");
+        this._bindings.method_get_clip_name = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          659327637
+        );
+      }
+      {
+        let classname = new StringName("AudioStreamInteractive");
+        let methodname = new StringName("set_clip_stream");
+        this._bindings.method_set_clip_stream = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          111075094
+        );
+      }
+      {
+        let classname = new StringName("AudioStreamInteractive");
+        let methodname = new StringName("get_clip_stream");
+        this._bindings.method_get_clip_stream = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2739380747
+        );
+      }
+      {
+        let classname = new StringName("AudioStreamInteractive");
+        let methodname = new StringName("set_clip_auto_advance");
+        this._bindings.method_set_clip_auto_advance = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          57217598
+        );
+      }
+      {
+        let classname = new StringName("AudioStreamInteractive");
+        let methodname = new StringName("get_clip_auto_advance");
+        this._bindings.method_get_clip_auto_advance = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1778634807
+        );
+      }
+      {
+        let classname = new StringName("AudioStreamInteractive");
+        let methodname = new StringName("set_clip_auto_advance_next_clip");
+        this._bindings.method_set_clip_auto_advance_next_clip = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3937882851
+        );
+      }
+      {
+        let classname = new StringName("AudioStreamInteractive");
+        let methodname = new StringName("get_clip_auto_advance_next_clip");
+        this._bindings.method_get_clip_auto_advance_next_clip = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          923996154
+        );
+      }
+      {
+        let classname = new StringName("AudioStreamInteractive");
+        let methodname = new StringName("add_transition");
+        this._bindings.method_add_transition = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1630280552
+        );
+      }
+      {
+        let classname = new StringName("AudioStreamInteractive");
+        let methodname = new StringName("has_transition");
+        this._bindings.method_has_transition = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2522259332
+        );
+      }
+      {
+        let classname = new StringName("AudioStreamInteractive");
+        let methodname = new StringName("erase_transition");
+        this._bindings.method_erase_transition = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3937882851
+        );
+      }
+      {
+        let classname = new StringName("AudioStreamInteractive");
+        let methodname = new StringName("get_transition_list");
+        this._bindings.method_get_transition_list = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1930428628
+        );
+      }
+      {
+        let classname = new StringName("AudioStreamInteractive");
+        let methodname = new StringName("get_transition_from_time");
+        this._bindings.method_get_transition_from_time = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3453338158
+        );
+      }
+      {
+        let classname = new StringName("AudioStreamInteractive");
+        let methodname = new StringName("get_transition_to_time");
+        this._bindings.method_get_transition_to_time = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1369651373
+        );
+      }
+      {
+        let classname = new StringName("AudioStreamInteractive");
+        let methodname = new StringName("get_transition_fade_mode");
+        this._bindings.method_get_transition_fade_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4065396087
+        );
+      }
+      {
+        let classname = new StringName("AudioStreamInteractive");
+        let methodname = new StringName("get_transition_fade_beats");
+        this._bindings.method_get_transition_fade_beats = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3085491603
+        );
+      }
+      {
+        let classname = new StringName("AudioStreamInteractive");
+        let methodname = new StringName("is_transition_using_filler_clip");
+        this._bindings.method_is_transition_using_filler_clip = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2522259332
+        );
+      }
+      {
+        let classname = new StringName("AudioStreamInteractive");
+        let methodname = new StringName("get_transition_filler_clip");
+        this._bindings.method_get_transition_filler_clip = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3175239445
+        );
+      }
+      {
+        let classname = new StringName("AudioStreamInteractive");
+        let methodname = new StringName("is_transition_holding_previous");
+        this._bindings.method_is_transition_holding_previous = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2522259332
+        );
+      }
   }
   set_clip_count(_clip_count) {
     return _call_native_mb_no_ret(
@@ -256,6 +263,7 @@ export class AudioStreamInteractive extends AudioStream{
       this._owner,
       _clip_count
     );
+    
   }
   get_clip_count() {
     return _call_native_mb_ret(
@@ -264,6 +272,7 @@ export class AudioStreamInteractive extends AudioStream{
 			Variant.Type.INT,
       
     );
+    
   }
   set_initial_clip(_clip_index) {
     return _call_native_mb_no_ret(
@@ -271,6 +280,7 @@ export class AudioStreamInteractive extends AudioStream{
       this._owner,
       _clip_index
     );
+    
   }
   get_initial_clip() {
     return _call_native_mb_ret(
@@ -279,6 +289,7 @@ export class AudioStreamInteractive extends AudioStream{
 			Variant.Type.INT,
       
     );
+    
   }
   set_clip_name(_clip_index, _name) {
     return _call_native_mb_no_ret(
@@ -286,6 +297,7 @@ export class AudioStreamInteractive extends AudioStream{
       this._owner,
       _clip_index, _name
     );
+    
   }
   get_clip_name(_clip_index) {
     return _call_native_mb_ret(
@@ -295,6 +307,7 @@ export class AudioStreamInteractive extends AudioStream{
     ,
       _clip_index
     );
+    
   }
   set_clip_stream(_clip_index, _stream) {
     return _call_native_mb_no_ret(
@@ -302,6 +315,7 @@ export class AudioStreamInteractive extends AudioStream{
       this._owner,
       _clip_index, _stream
     );
+    
   }
   get_clip_stream(_clip_index) {
     return _call_native_mb_ret(
@@ -310,6 +324,7 @@ export class AudioStreamInteractive extends AudioStream{
 			Variant.INT,
       _clip_index
     );
+    
   }
   set_clip_auto_advance(_clip_index, _mode) {
     return _call_native_mb_no_ret(
@@ -317,6 +332,7 @@ export class AudioStreamInteractive extends AudioStream{
       this._owner,
       _clip_index, _mode
     );
+    
   }
   get_clip_auto_advance(_clip_index) {
     return _call_native_mb_ret(
@@ -325,6 +341,7 @@ export class AudioStreamInteractive extends AudioStream{
 			Variant.INT,
       _clip_index
     );
+    
   }
   set_clip_auto_advance_next_clip(_clip_index, _auto_advance_next_clip) {
     return _call_native_mb_no_ret(
@@ -332,6 +349,7 @@ export class AudioStreamInteractive extends AudioStream{
       this._owner,
       _clip_index, _auto_advance_next_clip
     );
+    
   }
   get_clip_auto_advance_next_clip(_clip_index) {
     return _call_native_mb_ret(
@@ -340,6 +358,7 @@ export class AudioStreamInteractive extends AudioStream{
 			Variant.Type.INT,
       _clip_index
     );
+    
   }
   add_transition(_from_clip, _to_clip, _from_time, _to_time, _fade_mode, _fade_beats, _use_filler_clip, _filler_clip, _hold_previous) {
     return _call_native_mb_no_ret(
@@ -347,6 +366,7 @@ export class AudioStreamInteractive extends AudioStream{
       this._owner,
       _from_clip, _to_clip, _from_time, _to_time, _fade_mode, _fade_beats, _use_filler_clip, _filler_clip, _hold_previous
     );
+    
   }
   has_transition(_from_clip, _to_clip) {
     return _call_native_mb_ret(
@@ -355,6 +375,7 @@ export class AudioStreamInteractive extends AudioStream{
 			Variant.Type.BOOL,
       _from_clip, _to_clip
     );
+    
   }
   erase_transition(_from_clip, _to_clip) {
     return _call_native_mb_no_ret(
@@ -362,6 +383,7 @@ export class AudioStreamInteractive extends AudioStream{
       this._owner,
       _from_clip, _to_clip
     );
+    
   }
   get_transition_list() {
     return _call_native_mb_ret(
@@ -371,6 +393,7 @@ export class AudioStreamInteractive extends AudioStream{
     ,
       
     );
+    
   }
   get_transition_from_time(_from_clip, _to_clip) {
     return _call_native_mb_ret(
@@ -379,6 +402,7 @@ export class AudioStreamInteractive extends AudioStream{
 			Variant.INT,
       _from_clip, _to_clip
     );
+    
   }
   get_transition_to_time(_from_clip, _to_clip) {
     return _call_native_mb_ret(
@@ -387,6 +411,7 @@ export class AudioStreamInteractive extends AudioStream{
 			Variant.INT,
       _from_clip, _to_clip
     );
+    
   }
   get_transition_fade_mode(_from_clip, _to_clip) {
     return _call_native_mb_ret(
@@ -395,6 +420,7 @@ export class AudioStreamInteractive extends AudioStream{
 			Variant.INT,
       _from_clip, _to_clip
     );
+    
   }
   get_transition_fade_beats(_from_clip, _to_clip) {
     return _call_native_mb_ret(
@@ -403,6 +429,7 @@ export class AudioStreamInteractive extends AudioStream{
 			Variant.Type.FLOAT,
       _from_clip, _to_clip
     );
+    
   }
   is_transition_using_filler_clip(_from_clip, _to_clip) {
     return _call_native_mb_ret(
@@ -411,6 +438,7 @@ export class AudioStreamInteractive extends AudioStream{
 			Variant.Type.BOOL,
       _from_clip, _to_clip
     );
+    
   }
   get_transition_filler_clip(_from_clip, _to_clip) {
     return _call_native_mb_ret(
@@ -419,6 +447,7 @@ export class AudioStreamInteractive extends AudioStream{
 			Variant.Type.INT,
       _from_clip, _to_clip
     );
+    
   }
   is_transition_holding_previous(_from_clip, _to_clip) {
     return _call_native_mb_ret(
@@ -427,6 +456,7 @@ export class AudioStreamInteractive extends AudioStream{
 			Variant.Type.BOOL,
       _from_clip, _to_clip
     );
+    
   }
   static TransitionFromTime = {
     TRANSITION_FROM_TIME_IMMEDIATE: 0,

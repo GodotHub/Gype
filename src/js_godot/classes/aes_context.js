@@ -1,6 +1,14 @@
 import * as internal from '__internal__';
 import { PackedByteArray } from 'src/js_godot/variant/packed_byte_array'
-import { RefCounted } from 'src/js_godot/classesref_counted'
+import { RefCounted } from 'src/js_godot/classes/ref_counted'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_start;
     method_update;
@@ -22,42 +30,42 @@ export class AESContext extends RefCounted{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("AESContext");
-      let methodname = new StringName("start");
-      this._bindings.method_start = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3122411423
-      );
-    }
-    {
-      let classname = new StringName("AESContext");
-      let methodname = new StringName("update");
-      this._bindings.method_update = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        527836100
-      );
-    }
-    {
-      let classname = new StringName("AESContext");
-      let methodname = new StringName("get_iv_state");
-      this._bindings.method_get_iv_state = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2115431945
-      );
-    }
-    {
-      let classname = new StringName("AESContext");
-      let methodname = new StringName("finish");
-      this._bindings.method_finish = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3218959716
-      );
-    }
+      {
+        let classname = new StringName("AESContext");
+        let methodname = new StringName("start");
+        this._bindings.method_start = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3122411423
+        );
+      }
+      {
+        let classname = new StringName("AESContext");
+        let methodname = new StringName("update");
+        this._bindings.method_update = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          527836100
+        );
+      }
+      {
+        let classname = new StringName("AESContext");
+        let methodname = new StringName("get_iv_state");
+        this._bindings.method_get_iv_state = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2115431945
+        );
+      }
+      {
+        let classname = new StringName("AESContext");
+        let methodname = new StringName("finish");
+        this._bindings.method_finish = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3218959716
+        );
+      }
   }
   start(_mode, _key, _iv) {
     return _call_native_mb_ret(
@@ -66,6 +74,7 @@ export class AESContext extends RefCounted{
 			Variant.INT,
       _mode, _key, _iv
     );
+    
   }
   update(_src) {
     return _call_native_mb_ret(
@@ -75,6 +84,7 @@ export class AESContext extends RefCounted{
     ,
       _src
     );
+    
   }
   get_iv_state() {
     return _call_native_mb_ret(
@@ -84,6 +94,7 @@ export class AESContext extends RefCounted{
     ,
       
     );
+    
   }
   finish() {
     return _call_native_mb_no_ret(
@@ -91,6 +102,7 @@ export class AESContext extends RefCounted{
       this._owner,
       
     );
+    
   }
   static Mode = {
     MODE_ECB_ENCRYPT: 0,

@@ -1,7 +1,14 @@
 import * as internal from '__internal__';
-import { Resource } from 'src/js_godot/classesresource'
+import { Resource } from 'src/js_godot/classes/resource'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
-    method__instantiate;
 }
 
 
@@ -18,22 +25,7 @@ export class AudioEffect extends Resource{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("AudioEffect");
-      let methodname = new StringName("_instantiate");
-      this._bindings.method__instantiate = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        
-      );
-    }
   }
   _instantiate() {
-    return _call_native_mb_ret(
-      ClassDB._bindings.method__instantiate,
-      this._owner,
-			Variant.INT,
-      
-    );
   }
 }

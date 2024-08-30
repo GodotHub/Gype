@@ -1,5 +1,13 @@
 import * as internal from '__internal__';
-import { XRPositionalTracker } from 'src/js_godot/classesxr_positional_tracker'
+import { XRPositionalTracker } from 'src/js_godot/classes/xr_positional_tracker'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
 }
 

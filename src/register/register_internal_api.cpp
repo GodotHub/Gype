@@ -4,7 +4,10 @@
 #include "quickjs/js_pointer.h"
 #include <stdarg.h>
 #include <stdio.h>
+#include <godot_cpp/core/instance_binding.hpp>
+#include <godot_cpp/core/instance_info.hpp>
 #include <godot_cpp/core/method_bind.hpp>
+#include <memory>
 
 using namespace JSGodot;
 
@@ -54,7 +57,7 @@ void register_internal_api() {
 			.fun<&MethodBind::ptrcall>("ptrcall")
 			.fun<&MethodBind::bind_call>("bind_call")
 			.fun<&MethodBind::bind_ptrcall>("bind_ptrcall");
-
+	_module.add("TypeScriptInstanceInfo", new TypeScriptInstanceInfo());
 	_module.function("get_godot_version", [](GDExtensionGodotVersion *r_godot_version) {
 			   internal::gdextension_interface_get_godot_version(r_godot_version);
 		   })
@@ -115,5 +118,11 @@ void register_internal_api() {
 			})
 			.function("classdb_construct_object", [](Buff p_classname) -> GDExtensionObjectPtr {
 				return internal::gdextension_interface_classdb_construct_object(qjs::get_typed_array_buf(context.ctx, p_classname));
+			})
+			.function("object_set_instance", [](GDExtensionObjectPtr p_o, GDString p_classname, GDExtensionClassInstancePtr p_instance) {
+				internal::gdextension_interface_object_set_instance(p_o, qjs::get_typed_array_buf(context.ctx, p_classname), p_instance);
+			})
+			.function("object_set_instance_binding", [](GDExtensionObjectPtr p_o, JSValue p_binding) {
+				internal::gdextension_interface_object_set_instance_binding(p_o, internal::token, &p_binding, &internal::callbacks);
 			});
 }

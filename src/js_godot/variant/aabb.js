@@ -4,6 +4,7 @@ import {
   _call_builtin_method_ptr_ret,
   _call_builtin_method_ptr_no_ret
 } from 'src/js_godot/core/builtin_ptrcall'
+import { StringName } from 'src/js_godot/variant/string_name'
 import { Variant } from 'src/js_godot/variant/variant'
 import { Vector3 } from 'src/js_godot/variant/vector3'
 import { Plane } from 'src/js_godot/variant/plane'
@@ -49,7 +50,7 @@ class _MethodBindings {
 }
 
 export class AABB {
-  static #SIZE = 8
+  static #SIZE = 24
   opaque = new Uint8Array(AABB.#SIZE)
 
   static _bindings = new _MethodBindings()
@@ -57,12 +58,11 @@ export class AABB {
   constructor (from) {
     if (!from) {
       _call_builtin_constructor(AABB._bindings.constructor_0, this)
-    } else if (arguments[0] instanceof AABB) {
-      let from = arguments[0];
+    }else if (from instanceof AABB) {
       _call_builtin_constructor(AABB._bindings.constructor_1, this, [
         from
       ])
-    } else if (arguments[0] instanceof Vector3) {
+    } else if (arguments.length == 2&& arguments[0] instanceof Vector3&& arguments[1] instanceof Vector3) {
       let position = arguments[0];
       let size = arguments[1];
       _call_builtin_constructor(AABB._bindings.constructor_2, this, [

@@ -1185,7 +1185,7 @@ public:
 		if (JS_IsException(v)) {
 			JSValue exp = JS_GetException(ctx);
 			JSValue message = JS_GetPropertyStr(ctx, exp, "message");
-			printf("%s", JS_ToCString(ctx, message));
+			printf("%s\n", JS_ToCString(ctx, message));
 			throw exception{ ctx };
 		}
 	}
@@ -2160,6 +2160,39 @@ struct js_traits<JSGodot::PropertyInfo> {
 };
 
 template <>
+struct js_traits<JSGodot::PropertyInfo *> {
+	static JSValue wrap(JSContext *ctx, JSGodot::PropertyInfo *value) {
+		return js_traits<std::shared_ptr<JSGodot::PropertyInfo>>::wrap(ctx, std::shared_ptr<JSGodot::PropertyInfo>(value));
+	}
+
+	static JSGodot::PropertyInfo *unwrap(JSContext *ctx, JSValue value) {
+		return js_traits<std::shared_ptr<JSGodot::PropertyInfo>>::unwrap(ctx, value).get();
+	}
+};
+
+template <>
+struct js_traits<GDExtensionPropertyInfo> {
+	static JSValue wrap(JSContext *ctx, GDExtensionPropertyInfo value) {
+		return js_traits<std::shared_ptr<GDExtensionPropertyInfo>>::wrap(ctx, std::shared_ptr<GDExtensionPropertyInfo>(&value));
+	}
+
+	static GDExtensionPropertyInfo unwrap(JSContext *ctx, JSValue value) {
+		return *js_traits<std::shared_ptr<GDExtensionPropertyInfo>>::unwrap(ctx, value).get();
+	}
+};
+
+template <>
+struct js_traits<GDExtensionPropertyInfo *> {
+	static JSValue wrap(JSContext *ctx, GDExtensionPropertyInfo *value) {
+		return js_traits<std::shared_ptr<GDExtensionPropertyInfo>>::wrap(ctx, std::shared_ptr<GDExtensionPropertyInfo>(value));
+	}
+
+	static GDExtensionPropertyInfo *unwrap(JSContext *ctx, JSValue value) {
+		return js_traits<std::shared_ptr<GDExtensionPropertyInfo>>::unwrap(ctx, value).get();
+	}
+};
+
+template <>
 struct js_traits<GDExtensionCallError *> {
 	static JSValue wrap(JSContext *ctx, GDExtensionCallError *value) {
 		// Wrap a reference using a shared_ptr with a custom deleter to avoid deletion
@@ -2169,6 +2202,64 @@ struct js_traits<GDExtensionCallError *> {
 	static GDExtensionCallError *unwrap(JSContext *ctx, JSValue value) {
 		// Unwrap and return a reference to GDExtensionCallError
 		return js_traits<std::shared_ptr<GDExtensionCallError>>::unwrap(ctx, value).get();
+	}
+};
+
+// template <typename K, typename V>
+// struct js_traits<std::unordered_map<std::variant<K>, std::variant<V>>> {
+// 	static JSValue wrap(JSContext *ctx, std::unordered_map<std::variant<K>, std::variant<V>> value) {
+// 		JSValue js_map = JS_NewObjectClass(ctx, 38);
+// 		JSValue setter = JS_GetPropertyStr(ctx, js_map, "set");
+// 		for (const std::pair<std::variant<K>, std::variant<V>> &pair : value) {
+// 			JSValue arr[2] = { Value(ctx, pair.first), Value(ctx, pair.second) };
+// 			JS_Call(ctx, setter, js_map, 2, arr);
+// 		}
+// 		return js_map;
+// 	}
+
+// 	static std::unordered_map<std::variant<K>, std::variant<V>> unwrap(JSContext *ctx, JSValue value) {
+// 		std::unordered_map<std::variant<K>, std::variant<V>> map;
+// 		JSValue keys_func = JS_GetPropertyStr(ctx, value, "keys");
+// 		JSValue keys = JS_Call(ctx, keys_func, value, 0, NULL);
+// 		JSValue get_func = JS_GetPropertyStr(ctx, value, "get");
+// 		int length = js_traits<int>::unwrap(ctx, JS_GetPropertyStr(ctx, keys, "length"));
+// 		for (int i = 0; i < length; i++) {
+// 			JSValue js_k = JS_GetPropertyUint32(ctx, keys, i);
+// 			JSValue js_v = JS_Call(ctx, get_func, value, 1, &js_k);
+// 			K k = js_traits<std::variant<K>>::unwrap(ctx, js_k);
+// 			V v = js_traits<std::variant<V>>::unwrap(ctx, js_v);
+// 			map[k] = (v);
+// 		}
+// 		return map;
+// 	}
+// };
+
+template <>
+struct js_traits<std::unordered_map<std::variant<std::string>, JSGodot::PropertyInfo::Type>> {
+	static JSValue wrap(JSContext *ctx, std::unordered_map<std::variant<std::string>, JSGodot::PropertyInfo::Type> value) {
+		JSValue js_map = JS_NewObjectClass(ctx, 38);
+		JSValue setter = JS_GetPropertyStr(ctx, js_map, "set");
+		for (const auto &pair : value) {
+			JSValue arr[2] = { Value(ctx, pair.first), Value(ctx, pair.second) };
+			JS_Call(ctx, setter, js_map, 2, arr);
+		}
+		return js_map;
+	}
+
+	static std::unordered_map<std::variant<std::string>, JSGodot::PropertyInfo::Type> unwrap(JSContext *ctx, JSValue value) {
+		std::unordered_map<std::variant<std::string>, JSGodot::PropertyInfo::Type> map;
+		JSValue keys_func = JS_GetPropertyStr(ctx, value, "keys");
+		JSValue keys = JS_Call(ctx, keys_func, value, 0, NULL);
+		JSValue get_func = JS_GetPropertyStr(ctx, value, "get");
+		int length = js_traits<int>::unwrap(ctx, JS_GetPropertyStr(ctx, keys, "length"));
+		for (int i = 0; i < length; i++) {
+			JSValue js_k = JS_GetPropertyUint32(ctx, keys, i);
+			JSValue js_v = JS_Call(ctx, get_func, value, 1, &js_k);
+			std::variant<std::string> k = js_traits<std::variant<std::string>>::unwrap(ctx, js_k);
+			JSGodot::PropertyInfo::Type v = js_traits<JSGodot::PropertyInfo::Type>::unwrap(ctx, js_v);
+			map[k] = (v);
+		}
+		return map;
 	}
 };
 
@@ -2627,4 +2718,71 @@ struct js_traits<BIND_PTRCALL> {
 		return JS_NewCFunctionData(ctx, &inner_method, 3, 0, 1, &data);
 	}
 };
+
+// template <>
+// struct js_traits<GDExtensionInstanceBindingCreateCallback> {
+// 	static JSValue inner_method(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv, int magic, JSValue *func_data) {
+// 		void *p_token = (void *)js_traits<std::shared_ptr<JSPointer>>::unwrap(ctx, argv[0])->get_pointer();
+// 		void *p_instance = (void *)js_traits<std::shared_ptr<JSPointer>>::unwrap(ctx, argv[1])->get_pointer();
+// 		auto method = js_traits<std::function<void *(void *, void *)>>::unwrap(ctx, *func_data);
+// 		return js_traits<std::shared_ptr<JSPointer>>::wrap(ctx, (intptr_t)method(p_token, p_instance));
+// 	}
+
+// 	static JSValue wrap(JSContext *ctx, GDExtensionInstanceBindingCreateCallback method) noexcept {
+// 		JSValue data = js_traits<std::function<void *(void *, void *)>>::wrap(ctx, method);
+// 		return JS_NewCFunctionData(ctx, &inner_method, 2, 0, 1, &data);
+// 	}
+
+// 	static GDExtensionInstanceBindingCreateCallback unwrap(JSContext *ctx, JSValue method) {
+// 		std::function<void *(void *, void *)> func = js_traits<std::function<void *(void *, void *)>>::unwrap(ctx, method);
+// 		GDExtensionInstanceBindingCreateCallback method_ptr = func.target<void *(void *, void *)>();
+// 		return method_ptr;
+// 	}
+// };
+
+// template <>
+// struct js_traits<GDExtensionInstanceBindingFreeCallback> {
+// 	static JSValue inner_method(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv, int magic, JSValue *func_data) {
+// 		void *p_token = (void *)js_traits<std::shared_ptr<JSPointer>>::unwrap(ctx, argv[0])->get_pointer();
+// 		void *p_instance = (void *)js_traits<std::shared_ptr<JSPointer>>::unwrap(ctx, argv[1])->get_pointer();
+// 		void *p_binding = (void *)js_traits<std::shared_ptr<JSPointer>>::unwrap(ctx, argv[2])->get_pointer();
+// 		auto method = js_traits<std::function<void(void *, void *, void *)>>::unwrap(ctx, *func_data);
+// 		method(p_token, p_instance, p_binding);
+// 		return JS_UNDEFINED;
+// 	}
+
+// 	static JSValue wrap(JSContext *ctx, GDExtensionInstanceBindingFreeCallback method) noexcept {
+// 		JSValue data = js_traits<std::function<void(void *, void *, void *)>>::wrap(ctx, method);
+// 		return JS_NewCFunctionData(ctx, &inner_method, 3, 0, 1, &data);
+// 	}
+
+// 	static GDExtensionInstanceBindingFreeCallback unwrap(JSContext *ctx, JSValue method) {
+// 		std::function<void(void *, void *, void *)> func = js_traits<std::function<void(void *, void *, void *)>>::unwrap(ctx, method);
+// 		GDExtensionInstanceBindingFreeCallback method_ptr = func.target<void(void *, void *, void *)>();
+// 		return method_ptr;
+// 	}
+// };
+
+// template <>
+// struct js_traits<GDExtensionInstanceBindingReferenceCallback> {
+// 	static JSValue inner_method(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv, int magic, JSValue *func_data) {
+// 		void *p_token = (void *)js_traits<std::shared_ptr<JSPointer>>::unwrap(ctx, argv[0])->get_pointer();
+// 		void *p_instance = (void *)js_traits<std::shared_ptr<JSPointer>>::unwrap(ctx, argv[1])->get_pointer();
+// 		GDExtensionBool p_reference = js_traits<GDExtensionBool>::unwrap(ctx, argv[2]);
+// 		auto method = js_traits<std::function<GDExtensionBool(void *, void *, GDExtensionBool)>>::unwrap(ctx, *func_data);
+// 		method(p_token, p_instance, p_reference);
+// 		return JS_UNDEFINED;
+// 	}
+
+// 	static JSValue wrap(JSContext *ctx, GDExtensionInstanceBindingReferenceCallback method) noexcept {
+// 		JSValue data = js_traits<std::function<GDExtensionBool(void *, void *, GDExtensionBool)>>::wrap(ctx, method);
+// 		return JS_NewCFunctionData(ctx, &inner_method, 3, 0, 1, &data);
+// 	}
+
+// 	static GDExtensionInstanceBindingReferenceCallback unwrap(JSContext *ctx, JSValue method) {
+// 		std::function<GDExtensionBool(void *, void *, GDExtensionBool)> func = js_traits<std::function<GDExtensionBool(void *, void *, GDExtensionBool)>>::unwrap(ctx, method);
+// 		GDExtensionInstanceBindingReferenceCallback method_ptr = func.target<GDExtensionBool(void *, void *, GDExtensionBool)>();
+// 		return method_ptr;
+// 	}
+// };
 } // namespace qjs

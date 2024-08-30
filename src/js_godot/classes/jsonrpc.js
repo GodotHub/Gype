@@ -1,8 +1,16 @@
 import * as internal from '__internal__';
-import { Variant } from 'src/js_godot/variant/variant'
-import { GodotObject } from 'src/js_godot/classesgodot_object'
-import { Dictionary } from 'src/js_godot/variant/dictionary'
+import { GodotObject } from 'src/js_godot/classes/godot_object'
 import { GDString } from 'src/js_godot/variant/gd_string'
+import { StringName } from 'src/js_godot/variant/string_name'
+import { Dictionary } from 'src/js_godot/variant/dictionary'
+import { Variant } from 'src/js_godot/variant/variant'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_set_scope;
     method_process_action;
@@ -27,69 +35,69 @@ export class JSONRPC extends GodotObject{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("JSONRPC");
-      let methodname = new StringName("set_scope");
-      this._bindings.method_set_scope = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2572618360
-      );
-    }
-    {
-      let classname = new StringName("JSONRPC");
-      let methodname = new StringName("process_action");
-      this._bindings.method_process_action = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2963479484
-      );
-    }
-    {
-      let classname = new StringName("JSONRPC");
-      let methodname = new StringName("process_string");
-      this._bindings.method_process_string = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1703090593
-      );
-    }
-    {
-      let classname = new StringName("JSONRPC");
-      let methodname = new StringName("make_request");
-      this._bindings.method_make_request = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3423508980
-      );
-    }
-    {
-      let classname = new StringName("JSONRPC");
-      let methodname = new StringName("make_response");
-      this._bindings.method_make_response = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        5053918
-      );
-    }
-    {
-      let classname = new StringName("JSONRPC");
-      let methodname = new StringName("make_notification");
-      this._bindings.method_make_notification = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2949127017
-      );
-    }
-    {
-      let classname = new StringName("JSONRPC");
-      let methodname = new StringName("make_response_error");
-      this._bindings.method_make_response_error = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        928596297
-      );
-    }
+      {
+        let classname = new StringName("JSONRPC");
+        let methodname = new StringName("set_scope");
+        this._bindings.method_set_scope = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2572618360
+        );
+      }
+      {
+        let classname = new StringName("JSONRPC");
+        let methodname = new StringName("process_action");
+        this._bindings.method_process_action = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2963479484
+        );
+      }
+      {
+        let classname = new StringName("JSONRPC");
+        let methodname = new StringName("process_string");
+        this._bindings.method_process_string = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1703090593
+        );
+      }
+      {
+        let classname = new StringName("JSONRPC");
+        let methodname = new StringName("make_request");
+        this._bindings.method_make_request = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3423508980
+        );
+      }
+      {
+        let classname = new StringName("JSONRPC");
+        let methodname = new StringName("make_response");
+        this._bindings.method_make_response = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          5053918
+        );
+      }
+      {
+        let classname = new StringName("JSONRPC");
+        let methodname = new StringName("make_notification");
+        this._bindings.method_make_notification = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2949127017
+        );
+      }
+      {
+        let classname = new StringName("JSONRPC");
+        let methodname = new StringName("make_response_error");
+        this._bindings.method_make_response_error = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          928596297
+        );
+      }
   }
   set_scope(_scope, _target) {
     return _call_native_mb_no_ret(
@@ -97,6 +105,7 @@ export class JSONRPC extends GodotObject{
       this._owner,
       _scope, _target
     );
+    
   }
   process_action(_action, _recurse) {
     return _call_native_mb_ret(
@@ -106,6 +115,7 @@ export class JSONRPC extends GodotObject{
     ,
       _action, _recurse
     );
+    
   }
   process_string(_action) {
     return _call_native_mb_ret(
@@ -115,6 +125,7 @@ export class JSONRPC extends GodotObject{
     ,
       _action
     );
+    
   }
   make_request(_method, _params, _id) {
     return _call_native_mb_ret(
@@ -124,6 +135,7 @@ export class JSONRPC extends GodotObject{
     ,
       _method, _params, _id
     );
+    
   }
   make_response(_result, _id) {
     return _call_native_mb_ret(
@@ -133,6 +145,7 @@ export class JSONRPC extends GodotObject{
     ,
       _result, _id
     );
+    
   }
   make_notification(_method, _params) {
     return _call_native_mb_ret(
@@ -142,6 +155,7 @@ export class JSONRPC extends GodotObject{
     ,
       _method, _params
     );
+    
   }
   make_response_error(_code, _message, _id) {
     return _call_native_mb_ret(
@@ -151,6 +165,7 @@ export class JSONRPC extends GodotObject{
     ,
       _code, _message, _id
     );
+    
   }
   static ErrorCode = {
     PARSE_ERROR: -32700,

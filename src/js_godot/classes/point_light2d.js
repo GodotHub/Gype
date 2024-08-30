@@ -1,6 +1,14 @@
 import * as internal from '__internal__';
-import { Light2D } from 'src/js_godot/classeslight2d'
+import { Light2D } from 'src/js_godot/classes/light2d'
 import { Vector2 } from 'src/js_godot/variant/vector2'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_set_texture;
     method_get_texture;
@@ -24,60 +32,60 @@ export class PointLight2D extends Light2D{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("PointLight2D");
-      let methodname = new StringName("set_texture");
-      this._bindings.method_set_texture = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4051416890
-      );
-    }
-    {
-      let classname = new StringName("PointLight2D");
-      let methodname = new StringName("get_texture");
-      this._bindings.method_get_texture = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3635182373
-      );
-    }
-    {
-      let classname = new StringName("PointLight2D");
-      let methodname = new StringName("set_texture_offset");
-      this._bindings.method_set_texture_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        743155724
-      );
-    }
-    {
-      let classname = new StringName("PointLight2D");
-      let methodname = new StringName("get_texture_offset");
-      this._bindings.method_get_texture_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3341600327
-      );
-    }
-    {
-      let classname = new StringName("PointLight2D");
-      let methodname = new StringName("set_texture_scale");
-      this._bindings.method_set_texture_scale = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("PointLight2D");
-      let methodname = new StringName("get_texture_scale");
-      this._bindings.method_get_texture_scale = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
+      {
+        let classname = new StringName("PointLight2D");
+        let methodname = new StringName("set_texture");
+        this._bindings.method_set_texture = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4051416890
+        );
+      }
+      {
+        let classname = new StringName("PointLight2D");
+        let methodname = new StringName("get_texture");
+        this._bindings.method_get_texture = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3635182373
+        );
+      }
+      {
+        let classname = new StringName("PointLight2D");
+        let methodname = new StringName("set_texture_offset");
+        this._bindings.method_set_texture_offset = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          743155724
+        );
+      }
+      {
+        let classname = new StringName("PointLight2D");
+        let methodname = new StringName("get_texture_offset");
+        this._bindings.method_get_texture_offset = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3341600327
+        );
+      }
+      {
+        let classname = new StringName("PointLight2D");
+        let methodname = new StringName("set_texture_scale");
+        this._bindings.method_set_texture_scale = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("PointLight2D");
+        let methodname = new StringName("get_texture_scale");
+        this._bindings.method_get_texture_scale = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
   }
   set_texture(_texture) {
     return _call_native_mb_no_ret(
@@ -85,6 +93,7 @@ export class PointLight2D extends Light2D{
       this._owner,
       _texture
     );
+    
   }
   get_texture() {
     return _call_native_mb_ret(
@@ -93,6 +102,7 @@ export class PointLight2D extends Light2D{
 			Variant.INT,
       
     );
+    
   }
   set_texture_offset(_texture_offset) {
     return _call_native_mb_no_ret(
@@ -100,6 +110,7 @@ export class PointLight2D extends Light2D{
       this._owner,
       _texture_offset
     );
+    
   }
   get_texture_offset() {
     return _call_native_mb_ret(
@@ -109,6 +120,7 @@ export class PointLight2D extends Light2D{
     ,
       
     );
+    
   }
   set_texture_scale(_texture_scale) {
     return _call_native_mb_no_ret(
@@ -116,6 +128,7 @@ export class PointLight2D extends Light2D{
       this._owner,
       _texture_scale
     );
+    
   }
   get_texture_scale() {
     return _call_native_mb_ret(
@@ -124,5 +137,6 @@ export class PointLight2D extends Light2D{
 			Variant.Type.FLOAT,
       
     );
+    
   }
 }

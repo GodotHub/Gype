@@ -1,29 +1,36 @@
 import * as internal from '__internal__';
-import { PackedVector3Array } from 'src/js_godot/variant/packed_vector3_array'
-import { PackedByteArray } from 'src/js_godot/variant/packed_byte_array'
-import { Rect2 } from 'src/js_godot/variant/rect2'
-import { GodotObject } from 'src/js_godot/classesgodot_object'
-import { Basis } from 'src/js_godot/variant/basis'
-import { AABB } from 'src/js_godot/variant/aabb'
-import { Color } from 'src/js_godot/variant/color'
-import { Variant } from 'src/js_godot/variant/variant'
-import { Transform3D } from 'src/js_godot/variant/transform3d'
-import { PackedColorArray } from 'src/js_godot/variant/packed_color_array'
-import { Dictionary } from 'src/js_godot/variant/dictionary'
-import { Vector3i } from 'src/js_godot/variant/vector3i'
-import { Vector2 } from 'src/js_godot/variant/vector2'
-import { PackedInt64Array } from 'src/js_godot/variant/packed_int64_array'
-import { PackedInt32Array } from 'src/js_godot/variant/packed_int32_array'
-import { GDArray } from 'src/js_godot/variant/gd_array'
-import { Vector3 } from 'src/js_godot/variant/vector3'
-import { PackedVector2Array } from 'src/js_godot/variant/packed_vector2_array'
-import { Transform2D } from 'src/js_godot/variant/transform2d'
-import { PackedFloat32Array } from 'src/js_godot/variant/packed_float32_array'
 import { GDString } from 'src/js_godot/variant/gd_string'
+import { Variant } from 'src/js_godot/variant/variant'
+import { PackedColorArray } from 'src/js_godot/variant/packed_color_array'
+import { PackedInt32Array } from 'src/js_godot/variant/packed_int32_array'
+import { PackedVector2Array } from 'src/js_godot/variant/packed_vector2_array'
+import { GodotObject } from 'src/js_godot/classes/godot_object'
+import { Vector2 } from 'src/js_godot/variant/vector2'
+import { AABB } from 'src/js_godot/variant/aabb'
+import { Transform3D } from 'src/js_godot/variant/transform3d'
+import { PackedVector3Array } from 'src/js_godot/variant/packed_vector3_array'
+import { PackedInt64Array } from 'src/js_godot/variant/packed_int64_array'
+import { Basis } from 'src/js_godot/variant/basis'
+import { RID } from 'src/js_godot/variant/rid'
+import { Color } from 'src/js_godot/variant/color'
+import { PackedFloat32Array } from 'src/js_godot/variant/packed_float32_array'
 import { Vector2i } from 'src/js_godot/variant/vector2i'
 import { StringName } from 'src/js_godot/variant/string_name'
-import { RID } from 'src/js_godot/variant/rid'
+import { Transform2D } from 'src/js_godot/variant/transform2d'
 import { Callable } from 'src/js_godot/variant/callable'
+import { Vector3i } from 'src/js_godot/variant/vector3i'
+import { Dictionary } from 'src/js_godot/variant/dictionary'
+import { Vector3 } from 'src/js_godot/variant/vector3'
+import { GDArray } from 'src/js_godot/variant/gd_array'
+import { Rect2 } from 'src/js_godot/variant/rect2'
+import { PackedByteArray } from 'src/js_godot/variant/packed_byte_array'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_texture_2d_create;
     method_texture_2d_layered_create;
@@ -536,4452 +543,4452 @@ class _RenderingServer extends GodotObject{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("texture_2d_create");
-      this._bindings.method_texture_2d_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2010018390
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("texture_2d_layered_create");
-      this._bindings.method_texture_2d_layered_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        913689023
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("texture_3d_create");
-      this._bindings.method_texture_3d_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4036838706
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("texture_proxy_create");
-      this._bindings.method_texture_proxy_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        41030802
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("texture_2d_update");
-      this._bindings.method_texture_2d_update = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        999539803
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("texture_3d_update");
-      this._bindings.method_texture_3d_update = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        684822712
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("texture_proxy_update");
-      this._bindings.method_texture_proxy_update = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("texture_2d_placeholder_create");
-      this._bindings.method_texture_2d_placeholder_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("texture_2d_layered_placeholder_create");
-      this._bindings.method_texture_2d_layered_placeholder_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1394585590
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("texture_3d_placeholder_create");
-      this._bindings.method_texture_3d_placeholder_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("texture_2d_get");
-      this._bindings.method_texture_2d_get = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4206205781
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("texture_2d_layer_get");
-      this._bindings.method_texture_2d_layer_get = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2705440895
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("texture_3d_get");
-      this._bindings.method_texture_3d_get = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2684255073
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("texture_replace");
-      this._bindings.method_texture_replace = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("texture_set_size_override");
-      this._bindings.method_texture_set_size_override = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4288446313
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("texture_set_path");
-      this._bindings.method_texture_set_path = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2726140452
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("texture_get_path");
-      this._bindings.method_texture_get_path = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        642473191
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("texture_get_format");
-      this._bindings.method_texture_get_format = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1932918979
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("texture_set_force_redraw_if_visible");
-      this._bindings.method_texture_set_force_redraw_if_visible = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("texture_rd_create");
-      this._bindings.method_texture_rd_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1434128712
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("texture_get_rd_texture");
-      this._bindings.method_texture_get_rd_texture = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2790148051
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("texture_get_native_handle");
-      this._bindings.method_texture_get_native_handle = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1834114100
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("shader_create");
-      this._bindings.method_shader_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("shader_set_code");
-      this._bindings.method_shader_set_code = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2726140452
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("shader_set_path_hint");
-      this._bindings.method_shader_set_path_hint = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2726140452
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("shader_get_code");
-      this._bindings.method_shader_get_code = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        642473191
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("get_shader_parameter_list");
-      this._bindings.method_get_shader_parameter_list = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2684255073
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("shader_get_parameter_default");
-      this._bindings.method_shader_get_parameter_default = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2621281810
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("shader_set_default_texture_parameter");
-      this._bindings.method_shader_set_default_texture_parameter = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4094001817
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("shader_get_default_texture_parameter");
-      this._bindings.method_shader_get_default_texture_parameter = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1464608890
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("material_create");
-      this._bindings.method_material_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("material_set_shader");
-      this._bindings.method_material_set_shader = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("material_set_param");
-      this._bindings.method_material_set_param = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3477296213
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("material_get_param");
-      this._bindings.method_material_get_param = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2621281810
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("material_set_render_priority");
-      this._bindings.method_material_set_render_priority = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3411492887
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("material_set_next_pass");
-      this._bindings.method_material_set_next_pass = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("mesh_create_from_surfaces");
-      this._bindings.method_mesh_create_from_surfaces = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4291747531
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("mesh_create");
-      this._bindings.method_mesh_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("mesh_surface_get_format_offset");
-      this._bindings.method_mesh_surface_get_format_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2981368685
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("mesh_surface_get_format_vertex_stride");
-      this._bindings.method_mesh_surface_get_format_vertex_stride = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3188363337
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("mesh_surface_get_format_normal_tangent_stride");
-      this._bindings.method_mesh_surface_get_format_normal_tangent_stride = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3188363337
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("mesh_surface_get_format_attribute_stride");
-      this._bindings.method_mesh_surface_get_format_attribute_stride = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3188363337
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("mesh_surface_get_format_skin_stride");
-      this._bindings.method_mesh_surface_get_format_skin_stride = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3188363337
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("mesh_add_surface");
-      this._bindings.method_mesh_add_surface = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1217542888
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("mesh_add_surface_from_arrays");
-      this._bindings.method_mesh_add_surface_from_arrays = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2342446560
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("mesh_get_blend_shape_count");
-      this._bindings.method_mesh_get_blend_shape_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2198884583
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("mesh_set_blend_shape_mode");
-      this._bindings.method_mesh_set_blend_shape_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1294662092
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("mesh_get_blend_shape_mode");
-      this._bindings.method_mesh_get_blend_shape_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4282291819
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("mesh_surface_set_material");
-      this._bindings.method_mesh_surface_set_material = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2310537182
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("mesh_surface_get_material");
-      this._bindings.method_mesh_surface_get_material = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1066463050
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("mesh_get_surface");
-      this._bindings.method_mesh_get_surface = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        186674697
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("mesh_surface_get_arrays");
-      this._bindings.method_mesh_surface_get_arrays = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1778388067
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("mesh_surface_get_blend_shape_arrays");
-      this._bindings.method_mesh_surface_get_blend_shape_arrays = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1778388067
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("mesh_get_surface_count");
-      this._bindings.method_mesh_get_surface_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2198884583
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("mesh_set_custom_aabb");
-      this._bindings.method_mesh_set_custom_aabb = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3696536120
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("mesh_get_custom_aabb");
-      this._bindings.method_mesh_get_custom_aabb = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        974181306
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("mesh_clear");
-      this._bindings.method_mesh_clear = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2722037293
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("mesh_surface_update_vertex_region");
-      this._bindings.method_mesh_surface_update_vertex_region = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2900195149
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("mesh_surface_update_attribute_region");
-      this._bindings.method_mesh_surface_update_attribute_region = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2900195149
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("mesh_surface_update_skin_region");
-      this._bindings.method_mesh_surface_update_skin_region = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2900195149
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("mesh_set_shadow_mesh");
-      this._bindings.method_mesh_set_shadow_mesh = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("multimesh_create");
-      this._bindings.method_multimesh_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("multimesh_allocate_data");
-      this._bindings.method_multimesh_allocate_data = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        283685892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("multimesh_get_instance_count");
-      this._bindings.method_multimesh_get_instance_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2198884583
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("multimesh_set_mesh");
-      this._bindings.method_multimesh_set_mesh = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("multimesh_instance_set_transform");
-      this._bindings.method_multimesh_instance_set_transform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        675327471
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("multimesh_instance_set_transform_2d");
-      this._bindings.method_multimesh_instance_set_transform_2d = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        736082694
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("multimesh_instance_set_color");
-      this._bindings.method_multimesh_instance_set_color = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        176975443
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("multimesh_instance_set_custom_data");
-      this._bindings.method_multimesh_instance_set_custom_data = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        176975443
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("multimesh_get_mesh");
-      this._bindings.method_multimesh_get_mesh = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3814569979
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("multimesh_get_aabb");
-      this._bindings.method_multimesh_get_aabb = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        974181306
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("multimesh_set_custom_aabb");
-      this._bindings.method_multimesh_set_custom_aabb = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3696536120
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("multimesh_get_custom_aabb");
-      this._bindings.method_multimesh_get_custom_aabb = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        974181306
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("multimesh_instance_get_transform");
-      this._bindings.method_multimesh_instance_get_transform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1050775521
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("multimesh_instance_get_transform_2d");
-      this._bindings.method_multimesh_instance_get_transform_2d = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1324854622
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("multimesh_instance_get_color");
-      this._bindings.method_multimesh_instance_get_color = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2946315076
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("multimesh_instance_get_custom_data");
-      this._bindings.method_multimesh_instance_get_custom_data = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2946315076
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("multimesh_set_visible_instances");
-      this._bindings.method_multimesh_set_visible_instances = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3411492887
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("multimesh_get_visible_instances");
-      this._bindings.method_multimesh_get_visible_instances = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2198884583
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("multimesh_set_buffer");
-      this._bindings.method_multimesh_set_buffer = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2960552364
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("multimesh_get_buffer");
-      this._bindings.method_multimesh_get_buffer = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3964669176
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("skeleton_create");
-      this._bindings.method_skeleton_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("skeleton_allocate_data");
-      this._bindings.method_skeleton_allocate_data = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1904426712
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("skeleton_get_bone_count");
-      this._bindings.method_skeleton_get_bone_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2198884583
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("skeleton_bone_set_transform");
-      this._bindings.method_skeleton_bone_set_transform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        675327471
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("skeleton_bone_get_transform");
-      this._bindings.method_skeleton_bone_get_transform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1050775521
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("skeleton_bone_set_transform_2d");
-      this._bindings.method_skeleton_bone_set_transform_2d = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        736082694
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("skeleton_bone_get_transform_2d");
-      this._bindings.method_skeleton_bone_get_transform_2d = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1324854622
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("skeleton_set_base_transform_2d");
-      this._bindings.method_skeleton_set_base_transform_2d = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1246044741
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("directional_light_create");
-      this._bindings.method_directional_light_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("omni_light_create");
-      this._bindings.method_omni_light_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("spot_light_create");
-      this._bindings.method_spot_light_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("light_set_color");
-      this._bindings.method_light_set_color = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2948539648
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("light_set_param");
-      this._bindings.method_light_set_param = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        501936875
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("light_set_shadow");
-      this._bindings.method_light_set_shadow = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("light_set_projector");
-      this._bindings.method_light_set_projector = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("light_set_negative");
-      this._bindings.method_light_set_negative = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("light_set_cull_mask");
-      this._bindings.method_light_set_cull_mask = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3411492887
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("light_set_distance_fade");
-      this._bindings.method_light_set_distance_fade = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1622292572
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("light_set_reverse_cull_face_mode");
-      this._bindings.method_light_set_reverse_cull_face_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("light_set_bake_mode");
-      this._bindings.method_light_set_bake_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1048525260
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("light_set_max_sdfgi_cascade");
-      this._bindings.method_light_set_max_sdfgi_cascade = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3411492887
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("light_omni_set_shadow_mode");
-      this._bindings.method_light_omni_set_shadow_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2552677200
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("light_directional_set_shadow_mode");
-      this._bindings.method_light_directional_set_shadow_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        380462970
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("light_directional_set_blend_splits");
-      this._bindings.method_light_directional_set_blend_splits = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("light_directional_set_sky_mode");
-      this._bindings.method_light_directional_set_sky_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2559740754
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("light_projectors_set_filter");
-      this._bindings.method_light_projectors_set_filter = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        43944325
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("positional_soft_shadow_filter_set_quality");
-      this._bindings.method_positional_soft_shadow_filter_set_quality = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3613045266
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("directional_soft_shadow_filter_set_quality");
-      this._bindings.method_directional_soft_shadow_filter_set_quality = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3613045266
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("directional_shadow_atlas_set_size");
-      this._bindings.method_directional_shadow_atlas_set_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        300928843
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("reflection_probe_create");
-      this._bindings.method_reflection_probe_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("reflection_probe_set_update_mode");
-      this._bindings.method_reflection_probe_set_update_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3853670147
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("reflection_probe_set_intensity");
-      this._bindings.method_reflection_probe_set_intensity = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("reflection_probe_set_ambient_mode");
-      this._bindings.method_reflection_probe_set_ambient_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        184163074
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("reflection_probe_set_ambient_color");
-      this._bindings.method_reflection_probe_set_ambient_color = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2948539648
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("reflection_probe_set_ambient_energy");
-      this._bindings.method_reflection_probe_set_ambient_energy = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("reflection_probe_set_max_distance");
-      this._bindings.method_reflection_probe_set_max_distance = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("reflection_probe_set_size");
-      this._bindings.method_reflection_probe_set_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3227306858
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("reflection_probe_set_origin_offset");
-      this._bindings.method_reflection_probe_set_origin_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3227306858
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("reflection_probe_set_as_interior");
-      this._bindings.method_reflection_probe_set_as_interior = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("reflection_probe_set_enable_box_projection");
-      this._bindings.method_reflection_probe_set_enable_box_projection = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("reflection_probe_set_enable_shadows");
-      this._bindings.method_reflection_probe_set_enable_shadows = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("reflection_probe_set_cull_mask");
-      this._bindings.method_reflection_probe_set_cull_mask = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3411492887
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("reflection_probe_set_reflection_mask");
-      this._bindings.method_reflection_probe_set_reflection_mask = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3411492887
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("reflection_probe_set_resolution");
-      this._bindings.method_reflection_probe_set_resolution = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3411492887
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("reflection_probe_set_mesh_lod_threshold");
-      this._bindings.method_reflection_probe_set_mesh_lod_threshold = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("decal_create");
-      this._bindings.method_decal_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("decal_set_size");
-      this._bindings.method_decal_set_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3227306858
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("decal_set_texture");
-      this._bindings.method_decal_set_texture = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3953344054
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("decal_set_emission_energy");
-      this._bindings.method_decal_set_emission_energy = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("decal_set_albedo_mix");
-      this._bindings.method_decal_set_albedo_mix = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("decal_set_modulate");
-      this._bindings.method_decal_set_modulate = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2948539648
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("decal_set_cull_mask");
-      this._bindings.method_decal_set_cull_mask = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3411492887
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("decal_set_distance_fade");
-      this._bindings.method_decal_set_distance_fade = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2972769666
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("decal_set_fade");
-      this._bindings.method_decal_set_fade = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2513314492
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("decal_set_normal_fade");
-      this._bindings.method_decal_set_normal_fade = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("decals_set_filter");
-      this._bindings.method_decals_set_filter = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3519875702
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("gi_set_use_half_resolution");
-      this._bindings.method_gi_set_use_half_resolution = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("voxel_gi_create");
-      this._bindings.method_voxel_gi_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("voxel_gi_allocate_data");
-      this._bindings.method_voxel_gi_allocate_data = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4108223027
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("voxel_gi_get_octree_size");
-      this._bindings.method_voxel_gi_get_octree_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2607699645
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("voxel_gi_get_octree_cells");
-      this._bindings.method_voxel_gi_get_octree_cells = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3348040486
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("voxel_gi_get_data_cells");
-      this._bindings.method_voxel_gi_get_data_cells = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3348040486
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("voxel_gi_get_distance_field");
-      this._bindings.method_voxel_gi_get_distance_field = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3348040486
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("voxel_gi_get_level_counts");
-      this._bindings.method_voxel_gi_get_level_counts = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        788230395
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("voxel_gi_get_to_cell_xform");
-      this._bindings.method_voxel_gi_get_to_cell_xform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1128465797
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("voxel_gi_set_dynamic_range");
-      this._bindings.method_voxel_gi_set_dynamic_range = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("voxel_gi_set_propagation");
-      this._bindings.method_voxel_gi_set_propagation = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("voxel_gi_set_energy");
-      this._bindings.method_voxel_gi_set_energy = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("voxel_gi_set_baked_exposure_normalization");
-      this._bindings.method_voxel_gi_set_baked_exposure_normalization = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("voxel_gi_set_bias");
-      this._bindings.method_voxel_gi_set_bias = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("voxel_gi_set_normal_bias");
-      this._bindings.method_voxel_gi_set_normal_bias = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("voxel_gi_set_interior");
-      this._bindings.method_voxel_gi_set_interior = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("voxel_gi_set_use_two_bounces");
-      this._bindings.method_voxel_gi_set_use_two_bounces = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("voxel_gi_set_quality");
-      this._bindings.method_voxel_gi_set_quality = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1538689978
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("lightmap_create");
-      this._bindings.method_lightmap_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("lightmap_set_textures");
-      this._bindings.method_lightmap_set_textures = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2646464759
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("lightmap_set_probe_bounds");
-      this._bindings.method_lightmap_set_probe_bounds = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3696536120
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("lightmap_set_probe_interior");
-      this._bindings.method_lightmap_set_probe_interior = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("lightmap_set_probe_capture_data");
-      this._bindings.method_lightmap_set_probe_capture_data = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3217845880
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("lightmap_get_probe_capture_points");
-      this._bindings.method_lightmap_get_probe_capture_points = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        808965560
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("lightmap_get_probe_capture_sh");
-      this._bindings.method_lightmap_get_probe_capture_sh = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1569415609
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("lightmap_get_probe_capture_tetrahedra");
-      this._bindings.method_lightmap_get_probe_capture_tetrahedra = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        788230395
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("lightmap_get_probe_capture_bsp_tree");
-      this._bindings.method_lightmap_get_probe_capture_bsp_tree = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        788230395
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("lightmap_set_baked_exposure_normalization");
-      this._bindings.method_lightmap_set_baked_exposure_normalization = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("lightmap_set_probe_capture_update_speed");
-      this._bindings.method_lightmap_set_probe_capture_update_speed = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_create");
-      this._bindings.method_particles_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_set_mode");
-      this._bindings.method_particles_set_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3492270028
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_set_emitting");
-      this._bindings.method_particles_set_emitting = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_get_emitting");
-      this._bindings.method_particles_get_emitting = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3521089500
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_set_amount");
-      this._bindings.method_particles_set_amount = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3411492887
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_set_amount_ratio");
-      this._bindings.method_particles_set_amount_ratio = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_set_lifetime");
-      this._bindings.method_particles_set_lifetime = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_set_one_shot");
-      this._bindings.method_particles_set_one_shot = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_set_pre_process_time");
-      this._bindings.method_particles_set_pre_process_time = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_set_explosiveness_ratio");
-      this._bindings.method_particles_set_explosiveness_ratio = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_set_randomness_ratio");
-      this._bindings.method_particles_set_randomness_ratio = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_set_interp_to_end");
-      this._bindings.method_particles_set_interp_to_end = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_set_emitter_velocity");
-      this._bindings.method_particles_set_emitter_velocity = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3227306858
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_set_custom_aabb");
-      this._bindings.method_particles_set_custom_aabb = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3696536120
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_set_speed_scale");
-      this._bindings.method_particles_set_speed_scale = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_set_use_local_coordinates");
-      this._bindings.method_particles_set_use_local_coordinates = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_set_process_material");
-      this._bindings.method_particles_set_process_material = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_set_fixed_fps");
-      this._bindings.method_particles_set_fixed_fps = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3411492887
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_set_interpolate");
-      this._bindings.method_particles_set_interpolate = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_set_fractional_delta");
-      this._bindings.method_particles_set_fractional_delta = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_set_collision_base_size");
-      this._bindings.method_particles_set_collision_base_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_set_transform_align");
-      this._bindings.method_particles_set_transform_align = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3264971368
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_set_trails");
-      this._bindings.method_particles_set_trails = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2010054925
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_set_trail_bind_poses");
-      this._bindings.method_particles_set_trail_bind_poses = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        684822712
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_is_inactive");
-      this._bindings.method_particles_is_inactive = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3521089500
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_request_process");
-      this._bindings.method_particles_request_process = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2722037293
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_restart");
-      this._bindings.method_particles_restart = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2722037293
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_set_subemitter");
-      this._bindings.method_particles_set_subemitter = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_emit");
-      this._bindings.method_particles_emit = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4043136117
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_set_draw_order");
-      this._bindings.method_particles_set_draw_order = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        935028487
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_set_draw_passes");
-      this._bindings.method_particles_set_draw_passes = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3411492887
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_set_draw_pass_mesh");
-      this._bindings.method_particles_set_draw_pass_mesh = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2310537182
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_get_current_aabb");
-      this._bindings.method_particles_get_current_aabb = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3952830260
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_set_emission_transform");
-      this._bindings.method_particles_set_emission_transform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3935195649
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_collision_create");
-      this._bindings.method_particles_collision_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_collision_set_collision_type");
-      this._bindings.method_particles_collision_set_collision_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1497044930
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_collision_set_cull_mask");
-      this._bindings.method_particles_collision_set_cull_mask = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3411492887
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_collision_set_sphere_radius");
-      this._bindings.method_particles_collision_set_sphere_radius = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_collision_set_box_extents");
-      this._bindings.method_particles_collision_set_box_extents = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3227306858
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_collision_set_attractor_strength");
-      this._bindings.method_particles_collision_set_attractor_strength = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_collision_set_attractor_directionality");
-      this._bindings.method_particles_collision_set_attractor_directionality = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_collision_set_attractor_attenuation");
-      this._bindings.method_particles_collision_set_attractor_attenuation = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_collision_set_field_texture");
-      this._bindings.method_particles_collision_set_field_texture = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_collision_height_field_update");
-      this._bindings.method_particles_collision_height_field_update = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2722037293
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("particles_collision_set_height_field_resolution");
-      this._bindings.method_particles_collision_set_height_field_resolution = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        962977297
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("fog_volume_create");
-      this._bindings.method_fog_volume_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("fog_volume_set_shape");
-      this._bindings.method_fog_volume_set_shape = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3818703106
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("fog_volume_set_size");
-      this._bindings.method_fog_volume_set_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3227306858
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("fog_volume_set_material");
-      this._bindings.method_fog_volume_set_material = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("visibility_notifier_create");
-      this._bindings.method_visibility_notifier_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("visibility_notifier_set_aabb");
-      this._bindings.method_visibility_notifier_set_aabb = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3696536120
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("visibility_notifier_set_callbacks");
-      this._bindings.method_visibility_notifier_set_callbacks = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2689735388
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("occluder_create");
-      this._bindings.method_occluder_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("occluder_set_mesh");
-      this._bindings.method_occluder_set_mesh = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3854404263
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("camera_create");
-      this._bindings.method_camera_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("camera_set_perspective");
-      this._bindings.method_camera_set_perspective = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        157498339
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("camera_set_orthogonal");
-      this._bindings.method_camera_set_orthogonal = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        157498339
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("camera_set_frustum");
-      this._bindings.method_camera_set_frustum = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1889878953
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("camera_set_transform");
-      this._bindings.method_camera_set_transform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3935195649
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("camera_set_cull_mask");
-      this._bindings.method_camera_set_cull_mask = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3411492887
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("camera_set_environment");
-      this._bindings.method_camera_set_environment = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("camera_set_camera_attributes");
-      this._bindings.method_camera_set_camera_attributes = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("camera_set_compositor");
-      this._bindings.method_camera_set_compositor = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("camera_set_use_vertical_aspect");
-      this._bindings.method_camera_set_use_vertical_aspect = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_create");
-      this._bindings.method_viewport_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_use_xr");
-      this._bindings.method_viewport_set_use_xr = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_size");
-      this._bindings.method_viewport_set_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4288446313
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_active");
-      this._bindings.method_viewport_set_active = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_parent_viewport");
-      this._bindings.method_viewport_set_parent_viewport = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_attach_to_screen");
-      this._bindings.method_viewport_attach_to_screen = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1062245816
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_render_direct_to_screen");
-      this._bindings.method_viewport_set_render_direct_to_screen = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_canvas_cull_mask");
-      this._bindings.method_viewport_set_canvas_cull_mask = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3411492887
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_scaling_3d_mode");
-      this._bindings.method_viewport_set_scaling_3d_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2386524376
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_scaling_3d_scale");
-      this._bindings.method_viewport_set_scaling_3d_scale = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_fsr_sharpness");
-      this._bindings.method_viewport_set_fsr_sharpness = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_texture_mipmap_bias");
-      this._bindings.method_viewport_set_texture_mipmap_bias = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_update_mode");
-      this._bindings.method_viewport_set_update_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3161116010
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_get_update_mode");
-      this._bindings.method_viewport_get_update_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3803901472
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_clear_mode");
-      this._bindings.method_viewport_set_clear_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3628367896
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_get_render_target");
-      this._bindings.method_viewport_get_render_target = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3814569979
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_get_texture");
-      this._bindings.method_viewport_get_texture = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3814569979
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_disable_3d");
-      this._bindings.method_viewport_set_disable_3d = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_disable_2d");
-      this._bindings.method_viewport_set_disable_2d = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_environment_mode");
-      this._bindings.method_viewport_set_environment_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2196892182
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_attach_camera");
-      this._bindings.method_viewport_attach_camera = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_scenario");
-      this._bindings.method_viewport_set_scenario = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_attach_canvas");
-      this._bindings.method_viewport_attach_canvas = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_remove_canvas");
-      this._bindings.method_viewport_remove_canvas = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_snap_2d_transforms_to_pixel");
-      this._bindings.method_viewport_set_snap_2d_transforms_to_pixel = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_snap_2d_vertices_to_pixel");
-      this._bindings.method_viewport_set_snap_2d_vertices_to_pixel = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_default_canvas_item_texture_filter");
-      this._bindings.method_viewport_set_default_canvas_item_texture_filter = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1155129294
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_default_canvas_item_texture_repeat");
-      this._bindings.method_viewport_set_default_canvas_item_texture_repeat = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1652956681
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_canvas_transform");
-      this._bindings.method_viewport_set_canvas_transform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3608606053
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_canvas_stacking");
-      this._bindings.method_viewport_set_canvas_stacking = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3713930247
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_transparent_background");
-      this._bindings.method_viewport_set_transparent_background = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_global_canvas_transform");
-      this._bindings.method_viewport_set_global_canvas_transform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1246044741
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_sdf_oversize_and_scale");
-      this._bindings.method_viewport_set_sdf_oversize_and_scale = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1329198632
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_positional_shadow_atlas_size");
-      this._bindings.method_viewport_set_positional_shadow_atlas_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1904426712
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_positional_shadow_atlas_quadrant_subdivision");
-      this._bindings.method_viewport_set_positional_shadow_atlas_quadrant_subdivision = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4288446313
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_msaa_3d");
-      this._bindings.method_viewport_set_msaa_3d = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3764433340
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_msaa_2d");
-      this._bindings.method_viewport_set_msaa_2d = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3764433340
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_use_hdr_2d");
-      this._bindings.method_viewport_set_use_hdr_2d = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_screen_space_aa");
-      this._bindings.method_viewport_set_screen_space_aa = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1447279591
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_use_taa");
-      this._bindings.method_viewport_set_use_taa = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_use_debanding");
-      this._bindings.method_viewport_set_use_debanding = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_use_occlusion_culling");
-      this._bindings.method_viewport_set_use_occlusion_culling = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_occlusion_rays_per_thread");
-      this._bindings.method_viewport_set_occlusion_rays_per_thread = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_occlusion_culling_build_quality");
-      this._bindings.method_viewport_set_occlusion_culling_build_quality = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2069725696
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_get_render_info");
-      this._bindings.method_viewport_get_render_info = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2041262392
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_debug_draw");
-      this._bindings.method_viewport_set_debug_draw = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2089420930
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_measure_render_time");
-      this._bindings.method_viewport_set_measure_render_time = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_get_measured_render_time_cpu");
-      this._bindings.method_viewport_get_measured_render_time_cpu = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        866169185
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_get_measured_render_time_gpu");
-      this._bindings.method_viewport_get_measured_render_time_gpu = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        866169185
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_vrs_mode");
-      this._bindings.method_viewport_set_vrs_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        398809874
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_vrs_update_mode");
-      this._bindings.method_viewport_set_vrs_update_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2696154815
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("viewport_set_vrs_texture");
-      this._bindings.method_viewport_set_vrs_texture = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("sky_create");
-      this._bindings.method_sky_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("sky_set_radiance_size");
-      this._bindings.method_sky_set_radiance_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3411492887
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("sky_set_mode");
-      this._bindings.method_sky_set_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3279019937
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("sky_set_material");
-      this._bindings.method_sky_set_material = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("sky_bake_panorama");
-      this._bindings.method_sky_bake_panorama = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3875285818
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("compositor_effect_create");
-      this._bindings.method_compositor_effect_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("compositor_effect_set_enabled");
-      this._bindings.method_compositor_effect_set_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("compositor_effect_set_callback");
-      this._bindings.method_compositor_effect_set_callback = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        487412485
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("compositor_effect_set_flag");
-      this._bindings.method_compositor_effect_set_flag = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3659527075
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("compositor_create");
-      this._bindings.method_compositor_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("compositor_set_compositor_effects");
-      this._bindings.method_compositor_set_compositor_effects = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        684822712
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("environment_create");
-      this._bindings.method_environment_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("environment_set_background");
-      this._bindings.method_environment_set_background = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3937328877
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("environment_set_sky");
-      this._bindings.method_environment_set_sky = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("environment_set_sky_custom_fov");
-      this._bindings.method_environment_set_sky_custom_fov = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("environment_set_sky_orientation");
-      this._bindings.method_environment_set_sky_orientation = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1735850857
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("environment_set_bg_color");
-      this._bindings.method_environment_set_bg_color = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2948539648
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("environment_set_bg_energy");
-      this._bindings.method_environment_set_bg_energy = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2513314492
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("environment_set_canvas_max_layer");
-      this._bindings.method_environment_set_canvas_max_layer = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3411492887
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("environment_set_ambient_light");
-      this._bindings.method_environment_set_ambient_light = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1214961493
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("environment_set_glow");
-      this._bindings.method_environment_set_glow = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2421724940
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("environment_set_tonemap");
-      this._bindings.method_environment_set_tonemap = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2914312638
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("environment_set_adjustment");
-      this._bindings.method_environment_set_adjustment = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        876799838
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("environment_set_ssr");
-      this._bindings.method_environment_set_ssr = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3607294374
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("environment_set_ssao");
-      this._bindings.method_environment_set_ssao = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3994732740
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("environment_set_fog");
-      this._bindings.method_environment_set_fog = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        105051629
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("environment_set_sdfgi");
-      this._bindings.method_environment_set_sdfgi = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3519144388
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("environment_set_volumetric_fog");
-      this._bindings.method_environment_set_volumetric_fog = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1553633833
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("environment_glow_set_use_bicubic_upscale");
-      this._bindings.method_environment_glow_set_use_bicubic_upscale = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("environment_set_ssr_roughness_quality");
-      this._bindings.method_environment_set_ssr_roughness_quality = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1190026788
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("environment_set_ssao_quality");
-      this._bindings.method_environment_set_ssao_quality = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        189753569
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("environment_set_ssil_quality");
-      this._bindings.method_environment_set_ssil_quality = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1713836683
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("environment_set_sdfgi_ray_count");
-      this._bindings.method_environment_set_sdfgi_ray_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        340137951
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("environment_set_sdfgi_frames_to_converge");
-      this._bindings.method_environment_set_sdfgi_frames_to_converge = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2182444374
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("environment_set_sdfgi_frames_to_update_light");
-      this._bindings.method_environment_set_sdfgi_frames_to_update_light = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1251144068
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("environment_set_volumetric_fog_volume_size");
-      this._bindings.method_environment_set_volumetric_fog_volume_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3937882851
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("environment_set_volumetric_fog_filter_active");
-      this._bindings.method_environment_set_volumetric_fog_filter_active = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("environment_bake_panorama");
-      this._bindings.method_environment_bake_panorama = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2452908646
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("screen_space_roughness_limiter_set_active");
-      this._bindings.method_screen_space_roughness_limiter_set_active = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        916716790
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("sub_surface_scattering_set_quality");
-      this._bindings.method_sub_surface_scattering_set_quality = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        64571803
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("sub_surface_scattering_set_scale");
-      this._bindings.method_sub_surface_scattering_set_scale = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1017552074
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("camera_attributes_create");
-      this._bindings.method_camera_attributes_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("camera_attributes_set_dof_blur_quality");
-      this._bindings.method_camera_attributes_set_dof_blur_quality = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2220136795
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("camera_attributes_set_dof_blur_bokeh_shape");
-      this._bindings.method_camera_attributes_set_dof_blur_bokeh_shape = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1205058394
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("camera_attributes_set_dof_blur");
-      this._bindings.method_camera_attributes_set_dof_blur = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        316272616
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("camera_attributes_set_exposure");
-      this._bindings.method_camera_attributes_set_exposure = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2513314492
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("camera_attributes_set_auto_exposure");
-      this._bindings.method_camera_attributes_set_auto_exposure = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4266986332
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("scenario_create");
-      this._bindings.method_scenario_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("scenario_set_environment");
-      this._bindings.method_scenario_set_environment = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("scenario_set_fallback_environment");
-      this._bindings.method_scenario_set_fallback_environment = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("scenario_set_camera_attributes");
-      this._bindings.method_scenario_set_camera_attributes = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("scenario_set_compositor");
-      this._bindings.method_scenario_set_compositor = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("instance_create2");
-      this._bindings.method_instance_create2 = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        746547085
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("instance_create");
-      this._bindings.method_instance_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("instance_set_base");
-      this._bindings.method_instance_set_base = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("instance_set_scenario");
-      this._bindings.method_instance_set_scenario = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("instance_set_layer_mask");
-      this._bindings.method_instance_set_layer_mask = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3411492887
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("instance_set_pivot_data");
-      this._bindings.method_instance_set_pivot_data = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1280615259
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("instance_set_transform");
-      this._bindings.method_instance_set_transform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3935195649
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("instance_attach_object_instance_id");
-      this._bindings.method_instance_attach_object_instance_id = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3411492887
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("instance_set_blend_shape_weight");
-      this._bindings.method_instance_set_blend_shape_weight = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1892459533
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("instance_set_surface_override_material");
-      this._bindings.method_instance_set_surface_override_material = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2310537182
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("instance_set_visible");
-      this._bindings.method_instance_set_visible = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("instance_geometry_set_transparency");
-      this._bindings.method_instance_geometry_set_transparency = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("instance_set_custom_aabb");
-      this._bindings.method_instance_set_custom_aabb = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3696536120
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("instance_attach_skeleton");
-      this._bindings.method_instance_attach_skeleton = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("instance_set_extra_visibility_margin");
-      this._bindings.method_instance_set_extra_visibility_margin = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("instance_set_visibility_parent");
-      this._bindings.method_instance_set_visibility_parent = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("instance_set_ignore_culling");
-      this._bindings.method_instance_set_ignore_culling = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("instance_geometry_set_flag");
-      this._bindings.method_instance_geometry_set_flag = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1014989537
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("instance_geometry_set_cast_shadows_setting");
-      this._bindings.method_instance_geometry_set_cast_shadows_setting = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3768836020
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("instance_geometry_set_material_override");
-      this._bindings.method_instance_geometry_set_material_override = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("instance_geometry_set_material_overlay");
-      this._bindings.method_instance_geometry_set_material_overlay = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("instance_geometry_set_visibility_range");
-      this._bindings.method_instance_geometry_set_visibility_range = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4263925858
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("instance_geometry_set_lightmap");
-      this._bindings.method_instance_geometry_set_lightmap = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        536974962
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("instance_geometry_set_lod_bias");
-      this._bindings.method_instance_geometry_set_lod_bias = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("instance_geometry_set_shader_parameter");
-      this._bindings.method_instance_geometry_set_shader_parameter = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3477296213
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("instance_geometry_get_shader_parameter");
-      this._bindings.method_instance_geometry_get_shader_parameter = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2621281810
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("instance_geometry_get_shader_parameter_default_value");
-      this._bindings.method_instance_geometry_get_shader_parameter_default_value = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2621281810
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("instance_geometry_get_shader_parameter_list");
-      this._bindings.method_instance_geometry_get_shader_parameter_list = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2684255073
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("instances_cull_aabb");
-      this._bindings.method_instances_cull_aabb = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2570105777
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("instances_cull_ray");
-      this._bindings.method_instances_cull_ray = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2208759584
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("instances_cull_convex");
-      this._bindings.method_instances_cull_convex = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2488539944
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("bake_render_uv2");
-      this._bindings.method_bake_render_uv2 = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1904608558
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_create");
-      this._bindings.method_canvas_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_set_item_mirroring");
-      this._bindings.method_canvas_set_item_mirroring = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2343975398
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_set_item_repeat");
-      this._bindings.method_canvas_set_item_repeat = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1739512717
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_set_modulate");
-      this._bindings.method_canvas_set_modulate = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2948539648
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_set_disable_scale");
-      this._bindings.method_canvas_set_disable_scale = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_texture_create");
-      this._bindings.method_canvas_texture_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_texture_set_channel");
-      this._bindings.method_canvas_texture_set_channel = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3822119138
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_texture_set_shading_parameters");
-      this._bindings.method_canvas_texture_set_shading_parameters = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2124967469
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_texture_set_texture_filter");
-      this._bindings.method_canvas_texture_set_texture_filter = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1155129294
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_texture_set_texture_repeat");
-      this._bindings.method_canvas_texture_set_texture_repeat = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1652956681
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_create");
-      this._bindings.method_canvas_item_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_set_parent");
-      this._bindings.method_canvas_item_set_parent = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_set_default_texture_filter");
-      this._bindings.method_canvas_item_set_default_texture_filter = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1155129294
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_set_default_texture_repeat");
-      this._bindings.method_canvas_item_set_default_texture_repeat = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1652956681
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_set_visible");
-      this._bindings.method_canvas_item_set_visible = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_set_light_mask");
-      this._bindings.method_canvas_item_set_light_mask = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3411492887
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_set_visibility_layer");
-      this._bindings.method_canvas_item_set_visibility_layer = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3411492887
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_set_transform");
-      this._bindings.method_canvas_item_set_transform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1246044741
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_set_clip");
-      this._bindings.method_canvas_item_set_clip = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_set_distance_field_mode");
-      this._bindings.method_canvas_item_set_distance_field_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_set_custom_rect");
-      this._bindings.method_canvas_item_set_custom_rect = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1333997032
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_set_modulate");
-      this._bindings.method_canvas_item_set_modulate = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2948539648
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_set_self_modulate");
-      this._bindings.method_canvas_item_set_self_modulate = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2948539648
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_set_draw_behind_parent");
-      this._bindings.method_canvas_item_set_draw_behind_parent = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_set_interpolated");
-      this._bindings.method_canvas_item_set_interpolated = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_reset_physics_interpolation");
-      this._bindings.method_canvas_item_reset_physics_interpolation = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2722037293
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_transform_physics_interpolation");
-      this._bindings.method_canvas_item_transform_physics_interpolation = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1246044741
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_add_line");
-      this._bindings.method_canvas_item_add_line = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1819681853
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_add_polyline");
-      this._bindings.method_canvas_item_add_polyline = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3098767073
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_add_multiline");
-      this._bindings.method_canvas_item_add_multiline = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3098767073
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_add_rect");
-      this._bindings.method_canvas_item_add_rect = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3523446176
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_add_circle");
-      this._bindings.method_canvas_item_add_circle = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        333077949
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_add_texture_rect");
-      this._bindings.method_canvas_item_add_texture_rect = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        324864032
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_add_msdf_texture_rect_region");
-      this._bindings.method_canvas_item_add_msdf_texture_rect_region = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        97408773
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_add_lcd_texture_rect_region");
-      this._bindings.method_canvas_item_add_lcd_texture_rect_region = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        359793297
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_add_texture_rect_region");
-      this._bindings.method_canvas_item_add_texture_rect_region = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        485157892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_add_nine_patch");
-      this._bindings.method_canvas_item_add_nine_patch = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        389957886
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_add_primitive");
-      this._bindings.method_canvas_item_add_primitive = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3731601077
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_add_polygon");
-      this._bindings.method_canvas_item_add_polygon = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3580000528
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_add_triangle_array");
-      this._bindings.method_canvas_item_add_triangle_array = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        660261329
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_add_mesh");
-      this._bindings.method_canvas_item_add_mesh = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        316450961
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_add_multimesh");
-      this._bindings.method_canvas_item_add_multimesh = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2131855138
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_add_particles");
-      this._bindings.method_canvas_item_add_particles = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2575754278
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_add_set_transform");
-      this._bindings.method_canvas_item_add_set_transform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1246044741
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_add_clip_ignore");
-      this._bindings.method_canvas_item_add_clip_ignore = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_add_animation_slice");
-      this._bindings.method_canvas_item_add_animation_slice = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2646834499
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_set_sort_children_by_y");
-      this._bindings.method_canvas_item_set_sort_children_by_y = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_set_z_index");
-      this._bindings.method_canvas_item_set_z_index = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3411492887
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_set_z_as_relative_to_parent");
-      this._bindings.method_canvas_item_set_z_as_relative_to_parent = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_set_copy_to_backbuffer");
-      this._bindings.method_canvas_item_set_copy_to_backbuffer = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2429202503
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_clear");
-      this._bindings.method_canvas_item_clear = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2722037293
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_set_draw_index");
-      this._bindings.method_canvas_item_set_draw_index = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3411492887
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_set_material");
-      this._bindings.method_canvas_item_set_material = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_set_use_parent_material");
-      this._bindings.method_canvas_item_set_use_parent_material = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_set_visibility_notifier");
-      this._bindings.method_canvas_item_set_visibility_notifier = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3568945579
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_item_set_canvas_group_mode");
-      this._bindings.method_canvas_item_set_canvas_group_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3973586316
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("debug_canvas_item_get_rect");
-      this._bindings.method_debug_canvas_item_get_rect = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        624227424
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_light_create");
-      this._bindings.method_canvas_light_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_light_attach_to_canvas");
-      this._bindings.method_canvas_light_attach_to_canvas = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_light_set_enabled");
-      this._bindings.method_canvas_light_set_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_light_set_texture_scale");
-      this._bindings.method_canvas_light_set_texture_scale = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_light_set_transform");
-      this._bindings.method_canvas_light_set_transform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1246044741
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_light_set_texture");
-      this._bindings.method_canvas_light_set_texture = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_light_set_texture_offset");
-      this._bindings.method_canvas_light_set_texture_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3201125042
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_light_set_color");
-      this._bindings.method_canvas_light_set_color = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2948539648
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_light_set_height");
-      this._bindings.method_canvas_light_set_height = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_light_set_energy");
-      this._bindings.method_canvas_light_set_energy = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_light_set_z_range");
-      this._bindings.method_canvas_light_set_z_range = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4288446313
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_light_set_layer_range");
-      this._bindings.method_canvas_light_set_layer_range = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4288446313
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_light_set_item_cull_mask");
-      this._bindings.method_canvas_light_set_item_cull_mask = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3411492887
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_light_set_item_shadow_cull_mask");
-      this._bindings.method_canvas_light_set_item_shadow_cull_mask = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3411492887
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_light_set_mode");
-      this._bindings.method_canvas_light_set_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2957564891
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_light_set_shadow_enabled");
-      this._bindings.method_canvas_light_set_shadow_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_light_set_shadow_filter");
-      this._bindings.method_canvas_light_set_shadow_filter = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        393119659
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_light_set_shadow_color");
-      this._bindings.method_canvas_light_set_shadow_color = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2948539648
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_light_set_shadow_smooth");
-      this._bindings.method_canvas_light_set_shadow_smooth = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_light_set_blend_mode");
-      this._bindings.method_canvas_light_set_blend_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        804895945
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_light_set_interpolated");
-      this._bindings.method_canvas_light_set_interpolated = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_light_reset_physics_interpolation");
-      this._bindings.method_canvas_light_reset_physics_interpolation = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2722037293
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_light_transform_physics_interpolation");
-      this._bindings.method_canvas_light_transform_physics_interpolation = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1246044741
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_light_occluder_create");
-      this._bindings.method_canvas_light_occluder_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_light_occluder_attach_to_canvas");
-      this._bindings.method_canvas_light_occluder_attach_to_canvas = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_light_occluder_set_enabled");
-      this._bindings.method_canvas_light_occluder_set_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_light_occluder_set_polygon");
-      this._bindings.method_canvas_light_occluder_set_polygon = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_light_occluder_set_as_sdf_collision");
-      this._bindings.method_canvas_light_occluder_set_as_sdf_collision = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_light_occluder_set_transform");
-      this._bindings.method_canvas_light_occluder_set_transform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1246044741
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_light_occluder_set_light_mask");
-      this._bindings.method_canvas_light_occluder_set_light_mask = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3411492887
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_light_occluder_set_interpolated");
-      this._bindings.method_canvas_light_occluder_set_interpolated = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_light_occluder_reset_physics_interpolation");
-      this._bindings.method_canvas_light_occluder_reset_physics_interpolation = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2722037293
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_light_occluder_transform_physics_interpolation");
-      this._bindings.method_canvas_light_occluder_transform_physics_interpolation = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1246044741
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_occluder_polygon_create");
-      this._bindings.method_canvas_occluder_polygon_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_occluder_polygon_set_shape");
-      this._bindings.method_canvas_occluder_polygon_set_shape = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2103882027
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_occluder_polygon_set_cull_mode");
-      this._bindings.method_canvas_occluder_polygon_set_cull_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1839404663
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("canvas_set_shadow_texture_size");
-      this._bindings.method_canvas_set_shadow_texture_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("global_shader_parameter_add");
-      this._bindings.method_global_shader_parameter_add = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        463390080
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("global_shader_parameter_remove");
-      this._bindings.method_global_shader_parameter_remove = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3304788590
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("global_shader_parameter_get_list");
-      this._bindings.method_global_shader_parameter_get_list = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3995934104
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("global_shader_parameter_set");
-      this._bindings.method_global_shader_parameter_set = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3776071444
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("global_shader_parameter_set_override");
-      this._bindings.method_global_shader_parameter_set_override = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3776071444
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("global_shader_parameter_get");
-      this._bindings.method_global_shader_parameter_get = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2760726917
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("global_shader_parameter_get_type");
-      this._bindings.method_global_shader_parameter_get_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1601414142
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("free_rid");
-      this._bindings.method_free_rid = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2722037293
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("request_frame_drawn_callback");
-      this._bindings.method_request_frame_drawn_callback = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1611583062
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("has_changed");
-      this._bindings.method_has_changed = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("get_rendering_info");
-      this._bindings.method_get_rendering_info = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3763192241
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("get_video_adapter_name");
-      this._bindings.method_get_video_adapter_name = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        201670096
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("get_video_adapter_vendor");
-      this._bindings.method_get_video_adapter_vendor = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        201670096
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("get_video_adapter_type");
-      this._bindings.method_get_video_adapter_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3099547011
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("get_video_adapter_api_version");
-      this._bindings.method_get_video_adapter_api_version = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        201670096
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("make_sphere_mesh");
-      this._bindings.method_make_sphere_mesh = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2251015897
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("get_test_cube");
-      this._bindings.method_get_test_cube = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("get_test_texture");
-      this._bindings.method_get_test_texture = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("get_white_texture");
-      this._bindings.method_get_white_texture = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("set_boot_image");
-      this._bindings.method_set_boot_image = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3759744527
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("get_default_clear_color");
-      this._bindings.method_get_default_clear_color = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3200896285
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("set_default_clear_color");
-      this._bindings.method_set_default_clear_color = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2920490490
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("has_os_feature");
-      this._bindings.method_has_os_feature = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3927539163
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("set_debug_generate_wireframes");
-      this._bindings.method_set_debug_generate_wireframes = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("is_render_loop_enabled");
-      this._bindings.method_is_render_loop_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("set_render_loop_enabled");
-      this._bindings.method_set_render_loop_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("get_frame_setup_time_cpu");
-      this._bindings.method_get_frame_setup_time_cpu = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("force_sync");
-      this._bindings.method_force_sync = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3218959716
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("force_draw");
-      this._bindings.method_force_draw = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1076185472
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("get_rendering_device");
-      this._bindings.method_get_rendering_device = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1405107940
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("create_local_rendering_device");
-      this._bindings.method_create_local_rendering_device = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1405107940
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("is_on_render_thread");
-      this._bindings.method_is_on_render_thread = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2240911060
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("call_on_render_thread");
-      this._bindings.method_call_on_render_thread = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1611583062
-      );
-    }
-    {
-      let classname = new StringName("RenderingServer");
-      let methodname = new StringName("has_feature");
-      this._bindings.method_has_feature = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        598462696
-      );
-    }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("texture_2d_create");
+        this._bindings.method_texture_2d_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2010018390
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("texture_2d_layered_create");
+        this._bindings.method_texture_2d_layered_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          913689023
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("texture_3d_create");
+        this._bindings.method_texture_3d_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4036838706
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("texture_proxy_create");
+        this._bindings.method_texture_proxy_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          41030802
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("texture_2d_update");
+        this._bindings.method_texture_2d_update = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          999539803
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("texture_3d_update");
+        this._bindings.method_texture_3d_update = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          684822712
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("texture_proxy_update");
+        this._bindings.method_texture_proxy_update = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("texture_2d_placeholder_create");
+        this._bindings.method_texture_2d_placeholder_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("texture_2d_layered_placeholder_create");
+        this._bindings.method_texture_2d_layered_placeholder_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1394585590
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("texture_3d_placeholder_create");
+        this._bindings.method_texture_3d_placeholder_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("texture_2d_get");
+        this._bindings.method_texture_2d_get = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4206205781
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("texture_2d_layer_get");
+        this._bindings.method_texture_2d_layer_get = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2705440895
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("texture_3d_get");
+        this._bindings.method_texture_3d_get = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2684255073
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("texture_replace");
+        this._bindings.method_texture_replace = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("texture_set_size_override");
+        this._bindings.method_texture_set_size_override = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4288446313
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("texture_set_path");
+        this._bindings.method_texture_set_path = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2726140452
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("texture_get_path");
+        this._bindings.method_texture_get_path = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          642473191
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("texture_get_format");
+        this._bindings.method_texture_get_format = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1932918979
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("texture_set_force_redraw_if_visible");
+        this._bindings.method_texture_set_force_redraw_if_visible = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("texture_rd_create");
+        this._bindings.method_texture_rd_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1434128712
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("texture_get_rd_texture");
+        this._bindings.method_texture_get_rd_texture = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2790148051
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("texture_get_native_handle");
+        this._bindings.method_texture_get_native_handle = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1834114100
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("shader_create");
+        this._bindings.method_shader_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("shader_set_code");
+        this._bindings.method_shader_set_code = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2726140452
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("shader_set_path_hint");
+        this._bindings.method_shader_set_path_hint = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2726140452
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("shader_get_code");
+        this._bindings.method_shader_get_code = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          642473191
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("get_shader_parameter_list");
+        this._bindings.method_get_shader_parameter_list = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2684255073
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("shader_get_parameter_default");
+        this._bindings.method_shader_get_parameter_default = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2621281810
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("shader_set_default_texture_parameter");
+        this._bindings.method_shader_set_default_texture_parameter = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4094001817
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("shader_get_default_texture_parameter");
+        this._bindings.method_shader_get_default_texture_parameter = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1464608890
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("material_create");
+        this._bindings.method_material_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("material_set_shader");
+        this._bindings.method_material_set_shader = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("material_set_param");
+        this._bindings.method_material_set_param = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3477296213
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("material_get_param");
+        this._bindings.method_material_get_param = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2621281810
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("material_set_render_priority");
+        this._bindings.method_material_set_render_priority = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3411492887
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("material_set_next_pass");
+        this._bindings.method_material_set_next_pass = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("mesh_create_from_surfaces");
+        this._bindings.method_mesh_create_from_surfaces = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4291747531
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("mesh_create");
+        this._bindings.method_mesh_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("mesh_surface_get_format_offset");
+        this._bindings.method_mesh_surface_get_format_offset = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2981368685
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("mesh_surface_get_format_vertex_stride");
+        this._bindings.method_mesh_surface_get_format_vertex_stride = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3188363337
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("mesh_surface_get_format_normal_tangent_stride");
+        this._bindings.method_mesh_surface_get_format_normal_tangent_stride = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3188363337
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("mesh_surface_get_format_attribute_stride");
+        this._bindings.method_mesh_surface_get_format_attribute_stride = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3188363337
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("mesh_surface_get_format_skin_stride");
+        this._bindings.method_mesh_surface_get_format_skin_stride = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3188363337
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("mesh_add_surface");
+        this._bindings.method_mesh_add_surface = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1217542888
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("mesh_add_surface_from_arrays");
+        this._bindings.method_mesh_add_surface_from_arrays = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2342446560
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("mesh_get_blend_shape_count");
+        this._bindings.method_mesh_get_blend_shape_count = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2198884583
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("mesh_set_blend_shape_mode");
+        this._bindings.method_mesh_set_blend_shape_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1294662092
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("mesh_get_blend_shape_mode");
+        this._bindings.method_mesh_get_blend_shape_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4282291819
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("mesh_surface_set_material");
+        this._bindings.method_mesh_surface_set_material = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2310537182
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("mesh_surface_get_material");
+        this._bindings.method_mesh_surface_get_material = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1066463050
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("mesh_get_surface");
+        this._bindings.method_mesh_get_surface = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          186674697
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("mesh_surface_get_arrays");
+        this._bindings.method_mesh_surface_get_arrays = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1778388067
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("mesh_surface_get_blend_shape_arrays");
+        this._bindings.method_mesh_surface_get_blend_shape_arrays = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1778388067
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("mesh_get_surface_count");
+        this._bindings.method_mesh_get_surface_count = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2198884583
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("mesh_set_custom_aabb");
+        this._bindings.method_mesh_set_custom_aabb = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3696536120
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("mesh_get_custom_aabb");
+        this._bindings.method_mesh_get_custom_aabb = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          974181306
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("mesh_clear");
+        this._bindings.method_mesh_clear = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2722037293
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("mesh_surface_update_vertex_region");
+        this._bindings.method_mesh_surface_update_vertex_region = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2900195149
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("mesh_surface_update_attribute_region");
+        this._bindings.method_mesh_surface_update_attribute_region = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2900195149
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("mesh_surface_update_skin_region");
+        this._bindings.method_mesh_surface_update_skin_region = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2900195149
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("mesh_set_shadow_mesh");
+        this._bindings.method_mesh_set_shadow_mesh = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("multimesh_create");
+        this._bindings.method_multimesh_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("multimesh_allocate_data");
+        this._bindings.method_multimesh_allocate_data = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          283685892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("multimesh_get_instance_count");
+        this._bindings.method_multimesh_get_instance_count = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2198884583
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("multimesh_set_mesh");
+        this._bindings.method_multimesh_set_mesh = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("multimesh_instance_set_transform");
+        this._bindings.method_multimesh_instance_set_transform = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          675327471
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("multimesh_instance_set_transform_2d");
+        this._bindings.method_multimesh_instance_set_transform_2d = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          736082694
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("multimesh_instance_set_color");
+        this._bindings.method_multimesh_instance_set_color = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          176975443
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("multimesh_instance_set_custom_data");
+        this._bindings.method_multimesh_instance_set_custom_data = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          176975443
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("multimesh_get_mesh");
+        this._bindings.method_multimesh_get_mesh = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3814569979
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("multimesh_get_aabb");
+        this._bindings.method_multimesh_get_aabb = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          974181306
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("multimesh_set_custom_aabb");
+        this._bindings.method_multimesh_set_custom_aabb = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3696536120
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("multimesh_get_custom_aabb");
+        this._bindings.method_multimesh_get_custom_aabb = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          974181306
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("multimesh_instance_get_transform");
+        this._bindings.method_multimesh_instance_get_transform = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1050775521
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("multimesh_instance_get_transform_2d");
+        this._bindings.method_multimesh_instance_get_transform_2d = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1324854622
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("multimesh_instance_get_color");
+        this._bindings.method_multimesh_instance_get_color = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2946315076
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("multimesh_instance_get_custom_data");
+        this._bindings.method_multimesh_instance_get_custom_data = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2946315076
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("multimesh_set_visible_instances");
+        this._bindings.method_multimesh_set_visible_instances = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3411492887
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("multimesh_get_visible_instances");
+        this._bindings.method_multimesh_get_visible_instances = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2198884583
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("multimesh_set_buffer");
+        this._bindings.method_multimesh_set_buffer = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2960552364
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("multimesh_get_buffer");
+        this._bindings.method_multimesh_get_buffer = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3964669176
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("skeleton_create");
+        this._bindings.method_skeleton_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("skeleton_allocate_data");
+        this._bindings.method_skeleton_allocate_data = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1904426712
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("skeleton_get_bone_count");
+        this._bindings.method_skeleton_get_bone_count = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2198884583
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("skeleton_bone_set_transform");
+        this._bindings.method_skeleton_bone_set_transform = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          675327471
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("skeleton_bone_get_transform");
+        this._bindings.method_skeleton_bone_get_transform = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1050775521
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("skeleton_bone_set_transform_2d");
+        this._bindings.method_skeleton_bone_set_transform_2d = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          736082694
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("skeleton_bone_get_transform_2d");
+        this._bindings.method_skeleton_bone_get_transform_2d = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1324854622
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("skeleton_set_base_transform_2d");
+        this._bindings.method_skeleton_set_base_transform_2d = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1246044741
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("directional_light_create");
+        this._bindings.method_directional_light_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("omni_light_create");
+        this._bindings.method_omni_light_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("spot_light_create");
+        this._bindings.method_spot_light_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("light_set_color");
+        this._bindings.method_light_set_color = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2948539648
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("light_set_param");
+        this._bindings.method_light_set_param = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          501936875
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("light_set_shadow");
+        this._bindings.method_light_set_shadow = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("light_set_projector");
+        this._bindings.method_light_set_projector = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("light_set_negative");
+        this._bindings.method_light_set_negative = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("light_set_cull_mask");
+        this._bindings.method_light_set_cull_mask = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3411492887
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("light_set_distance_fade");
+        this._bindings.method_light_set_distance_fade = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1622292572
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("light_set_reverse_cull_face_mode");
+        this._bindings.method_light_set_reverse_cull_face_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("light_set_bake_mode");
+        this._bindings.method_light_set_bake_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1048525260
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("light_set_max_sdfgi_cascade");
+        this._bindings.method_light_set_max_sdfgi_cascade = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3411492887
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("light_omni_set_shadow_mode");
+        this._bindings.method_light_omni_set_shadow_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2552677200
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("light_directional_set_shadow_mode");
+        this._bindings.method_light_directional_set_shadow_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          380462970
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("light_directional_set_blend_splits");
+        this._bindings.method_light_directional_set_blend_splits = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("light_directional_set_sky_mode");
+        this._bindings.method_light_directional_set_sky_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2559740754
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("light_projectors_set_filter");
+        this._bindings.method_light_projectors_set_filter = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          43944325
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("positional_soft_shadow_filter_set_quality");
+        this._bindings.method_positional_soft_shadow_filter_set_quality = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3613045266
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("directional_soft_shadow_filter_set_quality");
+        this._bindings.method_directional_soft_shadow_filter_set_quality = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3613045266
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("directional_shadow_atlas_set_size");
+        this._bindings.method_directional_shadow_atlas_set_size = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          300928843
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("reflection_probe_create");
+        this._bindings.method_reflection_probe_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("reflection_probe_set_update_mode");
+        this._bindings.method_reflection_probe_set_update_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3853670147
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("reflection_probe_set_intensity");
+        this._bindings.method_reflection_probe_set_intensity = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("reflection_probe_set_ambient_mode");
+        this._bindings.method_reflection_probe_set_ambient_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          184163074
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("reflection_probe_set_ambient_color");
+        this._bindings.method_reflection_probe_set_ambient_color = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2948539648
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("reflection_probe_set_ambient_energy");
+        this._bindings.method_reflection_probe_set_ambient_energy = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("reflection_probe_set_max_distance");
+        this._bindings.method_reflection_probe_set_max_distance = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("reflection_probe_set_size");
+        this._bindings.method_reflection_probe_set_size = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3227306858
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("reflection_probe_set_origin_offset");
+        this._bindings.method_reflection_probe_set_origin_offset = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3227306858
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("reflection_probe_set_as_interior");
+        this._bindings.method_reflection_probe_set_as_interior = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("reflection_probe_set_enable_box_projection");
+        this._bindings.method_reflection_probe_set_enable_box_projection = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("reflection_probe_set_enable_shadows");
+        this._bindings.method_reflection_probe_set_enable_shadows = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("reflection_probe_set_cull_mask");
+        this._bindings.method_reflection_probe_set_cull_mask = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3411492887
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("reflection_probe_set_reflection_mask");
+        this._bindings.method_reflection_probe_set_reflection_mask = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3411492887
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("reflection_probe_set_resolution");
+        this._bindings.method_reflection_probe_set_resolution = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3411492887
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("reflection_probe_set_mesh_lod_threshold");
+        this._bindings.method_reflection_probe_set_mesh_lod_threshold = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("decal_create");
+        this._bindings.method_decal_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("decal_set_size");
+        this._bindings.method_decal_set_size = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3227306858
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("decal_set_texture");
+        this._bindings.method_decal_set_texture = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3953344054
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("decal_set_emission_energy");
+        this._bindings.method_decal_set_emission_energy = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("decal_set_albedo_mix");
+        this._bindings.method_decal_set_albedo_mix = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("decal_set_modulate");
+        this._bindings.method_decal_set_modulate = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2948539648
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("decal_set_cull_mask");
+        this._bindings.method_decal_set_cull_mask = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3411492887
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("decal_set_distance_fade");
+        this._bindings.method_decal_set_distance_fade = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2972769666
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("decal_set_fade");
+        this._bindings.method_decal_set_fade = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2513314492
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("decal_set_normal_fade");
+        this._bindings.method_decal_set_normal_fade = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("decals_set_filter");
+        this._bindings.method_decals_set_filter = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3519875702
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("gi_set_use_half_resolution");
+        this._bindings.method_gi_set_use_half_resolution = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("voxel_gi_create");
+        this._bindings.method_voxel_gi_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("voxel_gi_allocate_data");
+        this._bindings.method_voxel_gi_allocate_data = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4108223027
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("voxel_gi_get_octree_size");
+        this._bindings.method_voxel_gi_get_octree_size = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2607699645
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("voxel_gi_get_octree_cells");
+        this._bindings.method_voxel_gi_get_octree_cells = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3348040486
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("voxel_gi_get_data_cells");
+        this._bindings.method_voxel_gi_get_data_cells = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3348040486
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("voxel_gi_get_distance_field");
+        this._bindings.method_voxel_gi_get_distance_field = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3348040486
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("voxel_gi_get_level_counts");
+        this._bindings.method_voxel_gi_get_level_counts = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          788230395
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("voxel_gi_get_to_cell_xform");
+        this._bindings.method_voxel_gi_get_to_cell_xform = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1128465797
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("voxel_gi_set_dynamic_range");
+        this._bindings.method_voxel_gi_set_dynamic_range = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("voxel_gi_set_propagation");
+        this._bindings.method_voxel_gi_set_propagation = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("voxel_gi_set_energy");
+        this._bindings.method_voxel_gi_set_energy = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("voxel_gi_set_baked_exposure_normalization");
+        this._bindings.method_voxel_gi_set_baked_exposure_normalization = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("voxel_gi_set_bias");
+        this._bindings.method_voxel_gi_set_bias = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("voxel_gi_set_normal_bias");
+        this._bindings.method_voxel_gi_set_normal_bias = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("voxel_gi_set_interior");
+        this._bindings.method_voxel_gi_set_interior = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("voxel_gi_set_use_two_bounces");
+        this._bindings.method_voxel_gi_set_use_two_bounces = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("voxel_gi_set_quality");
+        this._bindings.method_voxel_gi_set_quality = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1538689978
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("lightmap_create");
+        this._bindings.method_lightmap_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("lightmap_set_textures");
+        this._bindings.method_lightmap_set_textures = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2646464759
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("lightmap_set_probe_bounds");
+        this._bindings.method_lightmap_set_probe_bounds = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3696536120
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("lightmap_set_probe_interior");
+        this._bindings.method_lightmap_set_probe_interior = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("lightmap_set_probe_capture_data");
+        this._bindings.method_lightmap_set_probe_capture_data = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3217845880
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("lightmap_get_probe_capture_points");
+        this._bindings.method_lightmap_get_probe_capture_points = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          808965560
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("lightmap_get_probe_capture_sh");
+        this._bindings.method_lightmap_get_probe_capture_sh = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1569415609
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("lightmap_get_probe_capture_tetrahedra");
+        this._bindings.method_lightmap_get_probe_capture_tetrahedra = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          788230395
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("lightmap_get_probe_capture_bsp_tree");
+        this._bindings.method_lightmap_get_probe_capture_bsp_tree = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          788230395
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("lightmap_set_baked_exposure_normalization");
+        this._bindings.method_lightmap_set_baked_exposure_normalization = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("lightmap_set_probe_capture_update_speed");
+        this._bindings.method_lightmap_set_probe_capture_update_speed = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_create");
+        this._bindings.method_particles_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_set_mode");
+        this._bindings.method_particles_set_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3492270028
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_set_emitting");
+        this._bindings.method_particles_set_emitting = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_get_emitting");
+        this._bindings.method_particles_get_emitting = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3521089500
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_set_amount");
+        this._bindings.method_particles_set_amount = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3411492887
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_set_amount_ratio");
+        this._bindings.method_particles_set_amount_ratio = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_set_lifetime");
+        this._bindings.method_particles_set_lifetime = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_set_one_shot");
+        this._bindings.method_particles_set_one_shot = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_set_pre_process_time");
+        this._bindings.method_particles_set_pre_process_time = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_set_explosiveness_ratio");
+        this._bindings.method_particles_set_explosiveness_ratio = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_set_randomness_ratio");
+        this._bindings.method_particles_set_randomness_ratio = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_set_interp_to_end");
+        this._bindings.method_particles_set_interp_to_end = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_set_emitter_velocity");
+        this._bindings.method_particles_set_emitter_velocity = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3227306858
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_set_custom_aabb");
+        this._bindings.method_particles_set_custom_aabb = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3696536120
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_set_speed_scale");
+        this._bindings.method_particles_set_speed_scale = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_set_use_local_coordinates");
+        this._bindings.method_particles_set_use_local_coordinates = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_set_process_material");
+        this._bindings.method_particles_set_process_material = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_set_fixed_fps");
+        this._bindings.method_particles_set_fixed_fps = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3411492887
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_set_interpolate");
+        this._bindings.method_particles_set_interpolate = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_set_fractional_delta");
+        this._bindings.method_particles_set_fractional_delta = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_set_collision_base_size");
+        this._bindings.method_particles_set_collision_base_size = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_set_transform_align");
+        this._bindings.method_particles_set_transform_align = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3264971368
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_set_trails");
+        this._bindings.method_particles_set_trails = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2010054925
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_set_trail_bind_poses");
+        this._bindings.method_particles_set_trail_bind_poses = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          684822712
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_is_inactive");
+        this._bindings.method_particles_is_inactive = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3521089500
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_request_process");
+        this._bindings.method_particles_request_process = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2722037293
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_restart");
+        this._bindings.method_particles_restart = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2722037293
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_set_subemitter");
+        this._bindings.method_particles_set_subemitter = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_emit");
+        this._bindings.method_particles_emit = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4043136117
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_set_draw_order");
+        this._bindings.method_particles_set_draw_order = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          935028487
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_set_draw_passes");
+        this._bindings.method_particles_set_draw_passes = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3411492887
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_set_draw_pass_mesh");
+        this._bindings.method_particles_set_draw_pass_mesh = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2310537182
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_get_current_aabb");
+        this._bindings.method_particles_get_current_aabb = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3952830260
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_set_emission_transform");
+        this._bindings.method_particles_set_emission_transform = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3935195649
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_collision_create");
+        this._bindings.method_particles_collision_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_collision_set_collision_type");
+        this._bindings.method_particles_collision_set_collision_type = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1497044930
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_collision_set_cull_mask");
+        this._bindings.method_particles_collision_set_cull_mask = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3411492887
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_collision_set_sphere_radius");
+        this._bindings.method_particles_collision_set_sphere_radius = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_collision_set_box_extents");
+        this._bindings.method_particles_collision_set_box_extents = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3227306858
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_collision_set_attractor_strength");
+        this._bindings.method_particles_collision_set_attractor_strength = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_collision_set_attractor_directionality");
+        this._bindings.method_particles_collision_set_attractor_directionality = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_collision_set_attractor_attenuation");
+        this._bindings.method_particles_collision_set_attractor_attenuation = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_collision_set_field_texture");
+        this._bindings.method_particles_collision_set_field_texture = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_collision_height_field_update");
+        this._bindings.method_particles_collision_height_field_update = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2722037293
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("particles_collision_set_height_field_resolution");
+        this._bindings.method_particles_collision_set_height_field_resolution = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          962977297
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("fog_volume_create");
+        this._bindings.method_fog_volume_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("fog_volume_set_shape");
+        this._bindings.method_fog_volume_set_shape = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3818703106
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("fog_volume_set_size");
+        this._bindings.method_fog_volume_set_size = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3227306858
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("fog_volume_set_material");
+        this._bindings.method_fog_volume_set_material = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("visibility_notifier_create");
+        this._bindings.method_visibility_notifier_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("visibility_notifier_set_aabb");
+        this._bindings.method_visibility_notifier_set_aabb = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3696536120
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("visibility_notifier_set_callbacks");
+        this._bindings.method_visibility_notifier_set_callbacks = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2689735388
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("occluder_create");
+        this._bindings.method_occluder_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("occluder_set_mesh");
+        this._bindings.method_occluder_set_mesh = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3854404263
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("camera_create");
+        this._bindings.method_camera_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("camera_set_perspective");
+        this._bindings.method_camera_set_perspective = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          157498339
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("camera_set_orthogonal");
+        this._bindings.method_camera_set_orthogonal = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          157498339
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("camera_set_frustum");
+        this._bindings.method_camera_set_frustum = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1889878953
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("camera_set_transform");
+        this._bindings.method_camera_set_transform = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3935195649
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("camera_set_cull_mask");
+        this._bindings.method_camera_set_cull_mask = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3411492887
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("camera_set_environment");
+        this._bindings.method_camera_set_environment = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("camera_set_camera_attributes");
+        this._bindings.method_camera_set_camera_attributes = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("camera_set_compositor");
+        this._bindings.method_camera_set_compositor = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("camera_set_use_vertical_aspect");
+        this._bindings.method_camera_set_use_vertical_aspect = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_create");
+        this._bindings.method_viewport_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_use_xr");
+        this._bindings.method_viewport_set_use_xr = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_size");
+        this._bindings.method_viewport_set_size = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4288446313
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_active");
+        this._bindings.method_viewport_set_active = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_parent_viewport");
+        this._bindings.method_viewport_set_parent_viewport = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_attach_to_screen");
+        this._bindings.method_viewport_attach_to_screen = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1062245816
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_render_direct_to_screen");
+        this._bindings.method_viewport_set_render_direct_to_screen = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_canvas_cull_mask");
+        this._bindings.method_viewport_set_canvas_cull_mask = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3411492887
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_scaling_3d_mode");
+        this._bindings.method_viewport_set_scaling_3d_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2386524376
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_scaling_3d_scale");
+        this._bindings.method_viewport_set_scaling_3d_scale = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_fsr_sharpness");
+        this._bindings.method_viewport_set_fsr_sharpness = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_texture_mipmap_bias");
+        this._bindings.method_viewport_set_texture_mipmap_bias = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_update_mode");
+        this._bindings.method_viewport_set_update_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3161116010
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_get_update_mode");
+        this._bindings.method_viewport_get_update_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3803901472
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_clear_mode");
+        this._bindings.method_viewport_set_clear_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3628367896
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_get_render_target");
+        this._bindings.method_viewport_get_render_target = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3814569979
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_get_texture");
+        this._bindings.method_viewport_get_texture = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3814569979
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_disable_3d");
+        this._bindings.method_viewport_set_disable_3d = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_disable_2d");
+        this._bindings.method_viewport_set_disable_2d = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_environment_mode");
+        this._bindings.method_viewport_set_environment_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2196892182
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_attach_camera");
+        this._bindings.method_viewport_attach_camera = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_scenario");
+        this._bindings.method_viewport_set_scenario = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_attach_canvas");
+        this._bindings.method_viewport_attach_canvas = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_remove_canvas");
+        this._bindings.method_viewport_remove_canvas = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_snap_2d_transforms_to_pixel");
+        this._bindings.method_viewport_set_snap_2d_transforms_to_pixel = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_snap_2d_vertices_to_pixel");
+        this._bindings.method_viewport_set_snap_2d_vertices_to_pixel = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_default_canvas_item_texture_filter");
+        this._bindings.method_viewport_set_default_canvas_item_texture_filter = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1155129294
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_default_canvas_item_texture_repeat");
+        this._bindings.method_viewport_set_default_canvas_item_texture_repeat = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1652956681
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_canvas_transform");
+        this._bindings.method_viewport_set_canvas_transform = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3608606053
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_canvas_stacking");
+        this._bindings.method_viewport_set_canvas_stacking = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3713930247
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_transparent_background");
+        this._bindings.method_viewport_set_transparent_background = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_global_canvas_transform");
+        this._bindings.method_viewport_set_global_canvas_transform = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1246044741
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_sdf_oversize_and_scale");
+        this._bindings.method_viewport_set_sdf_oversize_and_scale = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1329198632
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_positional_shadow_atlas_size");
+        this._bindings.method_viewport_set_positional_shadow_atlas_size = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1904426712
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_positional_shadow_atlas_quadrant_subdivision");
+        this._bindings.method_viewport_set_positional_shadow_atlas_quadrant_subdivision = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4288446313
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_msaa_3d");
+        this._bindings.method_viewport_set_msaa_3d = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3764433340
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_msaa_2d");
+        this._bindings.method_viewport_set_msaa_2d = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3764433340
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_use_hdr_2d");
+        this._bindings.method_viewport_set_use_hdr_2d = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_screen_space_aa");
+        this._bindings.method_viewport_set_screen_space_aa = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1447279591
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_use_taa");
+        this._bindings.method_viewport_set_use_taa = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_use_debanding");
+        this._bindings.method_viewport_set_use_debanding = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_use_occlusion_culling");
+        this._bindings.method_viewport_set_use_occlusion_culling = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_occlusion_rays_per_thread");
+        this._bindings.method_viewport_set_occlusion_rays_per_thread = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1286410249
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_occlusion_culling_build_quality");
+        this._bindings.method_viewport_set_occlusion_culling_build_quality = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2069725696
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_get_render_info");
+        this._bindings.method_viewport_get_render_info = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2041262392
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_debug_draw");
+        this._bindings.method_viewport_set_debug_draw = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2089420930
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_measure_render_time");
+        this._bindings.method_viewport_set_measure_render_time = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_get_measured_render_time_cpu");
+        this._bindings.method_viewport_get_measured_render_time_cpu = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          866169185
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_get_measured_render_time_gpu");
+        this._bindings.method_viewport_get_measured_render_time_gpu = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          866169185
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_vrs_mode");
+        this._bindings.method_viewport_set_vrs_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          398809874
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_vrs_update_mode");
+        this._bindings.method_viewport_set_vrs_update_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2696154815
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("viewport_set_vrs_texture");
+        this._bindings.method_viewport_set_vrs_texture = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("sky_create");
+        this._bindings.method_sky_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("sky_set_radiance_size");
+        this._bindings.method_sky_set_radiance_size = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3411492887
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("sky_set_mode");
+        this._bindings.method_sky_set_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3279019937
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("sky_set_material");
+        this._bindings.method_sky_set_material = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("sky_bake_panorama");
+        this._bindings.method_sky_bake_panorama = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3875285818
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("compositor_effect_create");
+        this._bindings.method_compositor_effect_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("compositor_effect_set_enabled");
+        this._bindings.method_compositor_effect_set_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("compositor_effect_set_callback");
+        this._bindings.method_compositor_effect_set_callback = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          487412485
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("compositor_effect_set_flag");
+        this._bindings.method_compositor_effect_set_flag = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3659527075
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("compositor_create");
+        this._bindings.method_compositor_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("compositor_set_compositor_effects");
+        this._bindings.method_compositor_set_compositor_effects = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          684822712
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("environment_create");
+        this._bindings.method_environment_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("environment_set_background");
+        this._bindings.method_environment_set_background = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3937328877
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("environment_set_sky");
+        this._bindings.method_environment_set_sky = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("environment_set_sky_custom_fov");
+        this._bindings.method_environment_set_sky_custom_fov = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("environment_set_sky_orientation");
+        this._bindings.method_environment_set_sky_orientation = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1735850857
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("environment_set_bg_color");
+        this._bindings.method_environment_set_bg_color = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2948539648
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("environment_set_bg_energy");
+        this._bindings.method_environment_set_bg_energy = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2513314492
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("environment_set_canvas_max_layer");
+        this._bindings.method_environment_set_canvas_max_layer = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3411492887
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("environment_set_ambient_light");
+        this._bindings.method_environment_set_ambient_light = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1214961493
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("environment_set_glow");
+        this._bindings.method_environment_set_glow = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2421724940
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("environment_set_tonemap");
+        this._bindings.method_environment_set_tonemap = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2914312638
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("environment_set_adjustment");
+        this._bindings.method_environment_set_adjustment = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          876799838
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("environment_set_ssr");
+        this._bindings.method_environment_set_ssr = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3607294374
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("environment_set_ssao");
+        this._bindings.method_environment_set_ssao = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3994732740
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("environment_set_fog");
+        this._bindings.method_environment_set_fog = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          105051629
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("environment_set_sdfgi");
+        this._bindings.method_environment_set_sdfgi = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3519144388
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("environment_set_volumetric_fog");
+        this._bindings.method_environment_set_volumetric_fog = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1553633833
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("environment_glow_set_use_bicubic_upscale");
+        this._bindings.method_environment_glow_set_use_bicubic_upscale = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("environment_set_ssr_roughness_quality");
+        this._bindings.method_environment_set_ssr_roughness_quality = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1190026788
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("environment_set_ssao_quality");
+        this._bindings.method_environment_set_ssao_quality = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          189753569
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("environment_set_ssil_quality");
+        this._bindings.method_environment_set_ssil_quality = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1713836683
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("environment_set_sdfgi_ray_count");
+        this._bindings.method_environment_set_sdfgi_ray_count = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          340137951
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("environment_set_sdfgi_frames_to_converge");
+        this._bindings.method_environment_set_sdfgi_frames_to_converge = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2182444374
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("environment_set_sdfgi_frames_to_update_light");
+        this._bindings.method_environment_set_sdfgi_frames_to_update_light = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1251144068
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("environment_set_volumetric_fog_volume_size");
+        this._bindings.method_environment_set_volumetric_fog_volume_size = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3937882851
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("environment_set_volumetric_fog_filter_active");
+        this._bindings.method_environment_set_volumetric_fog_filter_active = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("environment_bake_panorama");
+        this._bindings.method_environment_bake_panorama = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2452908646
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("screen_space_roughness_limiter_set_active");
+        this._bindings.method_screen_space_roughness_limiter_set_active = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          916716790
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("sub_surface_scattering_set_quality");
+        this._bindings.method_sub_surface_scattering_set_quality = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          64571803
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("sub_surface_scattering_set_scale");
+        this._bindings.method_sub_surface_scattering_set_scale = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1017552074
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("camera_attributes_create");
+        this._bindings.method_camera_attributes_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("camera_attributes_set_dof_blur_quality");
+        this._bindings.method_camera_attributes_set_dof_blur_quality = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2220136795
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("camera_attributes_set_dof_blur_bokeh_shape");
+        this._bindings.method_camera_attributes_set_dof_blur_bokeh_shape = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1205058394
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("camera_attributes_set_dof_blur");
+        this._bindings.method_camera_attributes_set_dof_blur = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          316272616
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("camera_attributes_set_exposure");
+        this._bindings.method_camera_attributes_set_exposure = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2513314492
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("camera_attributes_set_auto_exposure");
+        this._bindings.method_camera_attributes_set_auto_exposure = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4266986332
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("scenario_create");
+        this._bindings.method_scenario_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("scenario_set_environment");
+        this._bindings.method_scenario_set_environment = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("scenario_set_fallback_environment");
+        this._bindings.method_scenario_set_fallback_environment = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("scenario_set_camera_attributes");
+        this._bindings.method_scenario_set_camera_attributes = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("scenario_set_compositor");
+        this._bindings.method_scenario_set_compositor = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("instance_create2");
+        this._bindings.method_instance_create2 = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          746547085
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("instance_create");
+        this._bindings.method_instance_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("instance_set_base");
+        this._bindings.method_instance_set_base = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("instance_set_scenario");
+        this._bindings.method_instance_set_scenario = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("instance_set_layer_mask");
+        this._bindings.method_instance_set_layer_mask = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3411492887
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("instance_set_pivot_data");
+        this._bindings.method_instance_set_pivot_data = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1280615259
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("instance_set_transform");
+        this._bindings.method_instance_set_transform = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3935195649
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("instance_attach_object_instance_id");
+        this._bindings.method_instance_attach_object_instance_id = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3411492887
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("instance_set_blend_shape_weight");
+        this._bindings.method_instance_set_blend_shape_weight = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1892459533
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("instance_set_surface_override_material");
+        this._bindings.method_instance_set_surface_override_material = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2310537182
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("instance_set_visible");
+        this._bindings.method_instance_set_visible = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("instance_geometry_set_transparency");
+        this._bindings.method_instance_geometry_set_transparency = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("instance_set_custom_aabb");
+        this._bindings.method_instance_set_custom_aabb = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3696536120
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("instance_attach_skeleton");
+        this._bindings.method_instance_attach_skeleton = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("instance_set_extra_visibility_margin");
+        this._bindings.method_instance_set_extra_visibility_margin = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("instance_set_visibility_parent");
+        this._bindings.method_instance_set_visibility_parent = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("instance_set_ignore_culling");
+        this._bindings.method_instance_set_ignore_culling = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("instance_geometry_set_flag");
+        this._bindings.method_instance_geometry_set_flag = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1014989537
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("instance_geometry_set_cast_shadows_setting");
+        this._bindings.method_instance_geometry_set_cast_shadows_setting = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3768836020
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("instance_geometry_set_material_override");
+        this._bindings.method_instance_geometry_set_material_override = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("instance_geometry_set_material_overlay");
+        this._bindings.method_instance_geometry_set_material_overlay = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("instance_geometry_set_visibility_range");
+        this._bindings.method_instance_geometry_set_visibility_range = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4263925858
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("instance_geometry_set_lightmap");
+        this._bindings.method_instance_geometry_set_lightmap = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          536974962
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("instance_geometry_set_lod_bias");
+        this._bindings.method_instance_geometry_set_lod_bias = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("instance_geometry_set_shader_parameter");
+        this._bindings.method_instance_geometry_set_shader_parameter = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3477296213
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("instance_geometry_get_shader_parameter");
+        this._bindings.method_instance_geometry_get_shader_parameter = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2621281810
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("instance_geometry_get_shader_parameter_default_value");
+        this._bindings.method_instance_geometry_get_shader_parameter_default_value = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2621281810
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("instance_geometry_get_shader_parameter_list");
+        this._bindings.method_instance_geometry_get_shader_parameter_list = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2684255073
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("instances_cull_aabb");
+        this._bindings.method_instances_cull_aabb = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2570105777
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("instances_cull_ray");
+        this._bindings.method_instances_cull_ray = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2208759584
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("instances_cull_convex");
+        this._bindings.method_instances_cull_convex = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2488539944
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("bake_render_uv2");
+        this._bindings.method_bake_render_uv2 = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1904608558
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_create");
+        this._bindings.method_canvas_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_set_item_mirroring");
+        this._bindings.method_canvas_set_item_mirroring = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2343975398
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_set_item_repeat");
+        this._bindings.method_canvas_set_item_repeat = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1739512717
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_set_modulate");
+        this._bindings.method_canvas_set_modulate = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2948539648
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_set_disable_scale");
+        this._bindings.method_canvas_set_disable_scale = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_texture_create");
+        this._bindings.method_canvas_texture_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_texture_set_channel");
+        this._bindings.method_canvas_texture_set_channel = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3822119138
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_texture_set_shading_parameters");
+        this._bindings.method_canvas_texture_set_shading_parameters = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2124967469
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_texture_set_texture_filter");
+        this._bindings.method_canvas_texture_set_texture_filter = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1155129294
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_texture_set_texture_repeat");
+        this._bindings.method_canvas_texture_set_texture_repeat = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1652956681
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_create");
+        this._bindings.method_canvas_item_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_set_parent");
+        this._bindings.method_canvas_item_set_parent = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_set_default_texture_filter");
+        this._bindings.method_canvas_item_set_default_texture_filter = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1155129294
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_set_default_texture_repeat");
+        this._bindings.method_canvas_item_set_default_texture_repeat = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1652956681
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_set_visible");
+        this._bindings.method_canvas_item_set_visible = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_set_light_mask");
+        this._bindings.method_canvas_item_set_light_mask = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3411492887
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_set_visibility_layer");
+        this._bindings.method_canvas_item_set_visibility_layer = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3411492887
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_set_transform");
+        this._bindings.method_canvas_item_set_transform = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1246044741
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_set_clip");
+        this._bindings.method_canvas_item_set_clip = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_set_distance_field_mode");
+        this._bindings.method_canvas_item_set_distance_field_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_set_custom_rect");
+        this._bindings.method_canvas_item_set_custom_rect = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1333997032
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_set_modulate");
+        this._bindings.method_canvas_item_set_modulate = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2948539648
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_set_self_modulate");
+        this._bindings.method_canvas_item_set_self_modulate = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2948539648
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_set_draw_behind_parent");
+        this._bindings.method_canvas_item_set_draw_behind_parent = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_set_interpolated");
+        this._bindings.method_canvas_item_set_interpolated = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_reset_physics_interpolation");
+        this._bindings.method_canvas_item_reset_physics_interpolation = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2722037293
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_transform_physics_interpolation");
+        this._bindings.method_canvas_item_transform_physics_interpolation = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1246044741
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_add_line");
+        this._bindings.method_canvas_item_add_line = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1819681853
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_add_polyline");
+        this._bindings.method_canvas_item_add_polyline = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3098767073
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_add_multiline");
+        this._bindings.method_canvas_item_add_multiline = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3098767073
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_add_rect");
+        this._bindings.method_canvas_item_add_rect = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3523446176
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_add_circle");
+        this._bindings.method_canvas_item_add_circle = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          333077949
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_add_texture_rect");
+        this._bindings.method_canvas_item_add_texture_rect = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          324864032
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_add_msdf_texture_rect_region");
+        this._bindings.method_canvas_item_add_msdf_texture_rect_region = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          97408773
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_add_lcd_texture_rect_region");
+        this._bindings.method_canvas_item_add_lcd_texture_rect_region = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          359793297
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_add_texture_rect_region");
+        this._bindings.method_canvas_item_add_texture_rect_region = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          485157892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_add_nine_patch");
+        this._bindings.method_canvas_item_add_nine_patch = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          389957886
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_add_primitive");
+        this._bindings.method_canvas_item_add_primitive = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3731601077
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_add_polygon");
+        this._bindings.method_canvas_item_add_polygon = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3580000528
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_add_triangle_array");
+        this._bindings.method_canvas_item_add_triangle_array = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          660261329
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_add_mesh");
+        this._bindings.method_canvas_item_add_mesh = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          316450961
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_add_multimesh");
+        this._bindings.method_canvas_item_add_multimesh = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2131855138
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_add_particles");
+        this._bindings.method_canvas_item_add_particles = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2575754278
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_add_set_transform");
+        this._bindings.method_canvas_item_add_set_transform = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1246044741
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_add_clip_ignore");
+        this._bindings.method_canvas_item_add_clip_ignore = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_add_animation_slice");
+        this._bindings.method_canvas_item_add_animation_slice = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2646834499
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_set_sort_children_by_y");
+        this._bindings.method_canvas_item_set_sort_children_by_y = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_set_z_index");
+        this._bindings.method_canvas_item_set_z_index = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3411492887
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_set_z_as_relative_to_parent");
+        this._bindings.method_canvas_item_set_z_as_relative_to_parent = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_set_copy_to_backbuffer");
+        this._bindings.method_canvas_item_set_copy_to_backbuffer = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2429202503
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_clear");
+        this._bindings.method_canvas_item_clear = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2722037293
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_set_draw_index");
+        this._bindings.method_canvas_item_set_draw_index = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3411492887
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_set_material");
+        this._bindings.method_canvas_item_set_material = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_set_use_parent_material");
+        this._bindings.method_canvas_item_set_use_parent_material = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_set_visibility_notifier");
+        this._bindings.method_canvas_item_set_visibility_notifier = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3568945579
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_item_set_canvas_group_mode");
+        this._bindings.method_canvas_item_set_canvas_group_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3973586316
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("debug_canvas_item_get_rect");
+        this._bindings.method_debug_canvas_item_get_rect = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          624227424
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_light_create");
+        this._bindings.method_canvas_light_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_light_attach_to_canvas");
+        this._bindings.method_canvas_light_attach_to_canvas = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_light_set_enabled");
+        this._bindings.method_canvas_light_set_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_light_set_texture_scale");
+        this._bindings.method_canvas_light_set_texture_scale = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_light_set_transform");
+        this._bindings.method_canvas_light_set_transform = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1246044741
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_light_set_texture");
+        this._bindings.method_canvas_light_set_texture = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_light_set_texture_offset");
+        this._bindings.method_canvas_light_set_texture_offset = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3201125042
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_light_set_color");
+        this._bindings.method_canvas_light_set_color = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2948539648
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_light_set_height");
+        this._bindings.method_canvas_light_set_height = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_light_set_energy");
+        this._bindings.method_canvas_light_set_energy = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_light_set_z_range");
+        this._bindings.method_canvas_light_set_z_range = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4288446313
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_light_set_layer_range");
+        this._bindings.method_canvas_light_set_layer_range = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4288446313
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_light_set_item_cull_mask");
+        this._bindings.method_canvas_light_set_item_cull_mask = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3411492887
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_light_set_item_shadow_cull_mask");
+        this._bindings.method_canvas_light_set_item_shadow_cull_mask = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3411492887
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_light_set_mode");
+        this._bindings.method_canvas_light_set_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2957564891
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_light_set_shadow_enabled");
+        this._bindings.method_canvas_light_set_shadow_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_light_set_shadow_filter");
+        this._bindings.method_canvas_light_set_shadow_filter = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          393119659
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_light_set_shadow_color");
+        this._bindings.method_canvas_light_set_shadow_color = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2948539648
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_light_set_shadow_smooth");
+        this._bindings.method_canvas_light_set_shadow_smooth = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_light_set_blend_mode");
+        this._bindings.method_canvas_light_set_blend_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          804895945
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_light_set_interpolated");
+        this._bindings.method_canvas_light_set_interpolated = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_light_reset_physics_interpolation");
+        this._bindings.method_canvas_light_reset_physics_interpolation = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2722037293
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_light_transform_physics_interpolation");
+        this._bindings.method_canvas_light_transform_physics_interpolation = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1246044741
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_light_occluder_create");
+        this._bindings.method_canvas_light_occluder_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_light_occluder_attach_to_canvas");
+        this._bindings.method_canvas_light_occluder_attach_to_canvas = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_light_occluder_set_enabled");
+        this._bindings.method_canvas_light_occluder_set_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_light_occluder_set_polygon");
+        this._bindings.method_canvas_light_occluder_set_polygon = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_light_occluder_set_as_sdf_collision");
+        this._bindings.method_canvas_light_occluder_set_as_sdf_collision = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_light_occluder_set_transform");
+        this._bindings.method_canvas_light_occluder_set_transform = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1246044741
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_light_occluder_set_light_mask");
+        this._bindings.method_canvas_light_occluder_set_light_mask = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3411492887
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_light_occluder_set_interpolated");
+        this._bindings.method_canvas_light_occluder_set_interpolated = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_light_occluder_reset_physics_interpolation");
+        this._bindings.method_canvas_light_occluder_reset_physics_interpolation = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2722037293
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_light_occluder_transform_physics_interpolation");
+        this._bindings.method_canvas_light_occluder_transform_physics_interpolation = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1246044741
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_occluder_polygon_create");
+        this._bindings.method_canvas_occluder_polygon_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_occluder_polygon_set_shape");
+        this._bindings.method_canvas_occluder_polygon_set_shape = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2103882027
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_occluder_polygon_set_cull_mode");
+        this._bindings.method_canvas_occluder_polygon_set_cull_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1839404663
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("canvas_set_shadow_texture_size");
+        this._bindings.method_canvas_set_shadow_texture_size = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1286410249
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("global_shader_parameter_add");
+        this._bindings.method_global_shader_parameter_add = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          463390080
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("global_shader_parameter_remove");
+        this._bindings.method_global_shader_parameter_remove = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3304788590
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("global_shader_parameter_get_list");
+        this._bindings.method_global_shader_parameter_get_list = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3995934104
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("global_shader_parameter_set");
+        this._bindings.method_global_shader_parameter_set = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3776071444
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("global_shader_parameter_set_override");
+        this._bindings.method_global_shader_parameter_set_override = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3776071444
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("global_shader_parameter_get");
+        this._bindings.method_global_shader_parameter_get = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2760726917
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("global_shader_parameter_get_type");
+        this._bindings.method_global_shader_parameter_get_type = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1601414142
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("free_rid");
+        this._bindings.method_free_rid = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2722037293
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("request_frame_drawn_callback");
+        this._bindings.method_request_frame_drawn_callback = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1611583062
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("has_changed");
+        this._bindings.method_has_changed = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("get_rendering_info");
+        this._bindings.method_get_rendering_info = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3763192241
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("get_video_adapter_name");
+        this._bindings.method_get_video_adapter_name = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          201670096
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("get_video_adapter_vendor");
+        this._bindings.method_get_video_adapter_vendor = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          201670096
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("get_video_adapter_type");
+        this._bindings.method_get_video_adapter_type = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3099547011
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("get_video_adapter_api_version");
+        this._bindings.method_get_video_adapter_api_version = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          201670096
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("make_sphere_mesh");
+        this._bindings.method_make_sphere_mesh = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2251015897
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("get_test_cube");
+        this._bindings.method_get_test_cube = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("get_test_texture");
+        this._bindings.method_get_test_texture = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("get_white_texture");
+        this._bindings.method_get_white_texture = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("set_boot_image");
+        this._bindings.method_set_boot_image = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3759744527
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("get_default_clear_color");
+        this._bindings.method_get_default_clear_color = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3200896285
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("set_default_clear_color");
+        this._bindings.method_set_default_clear_color = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2920490490
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("has_os_feature");
+        this._bindings.method_has_os_feature = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3927539163
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("set_debug_generate_wireframes");
+        this._bindings.method_set_debug_generate_wireframes = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("is_render_loop_enabled");
+        this._bindings.method_is_render_loop_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("set_render_loop_enabled");
+        this._bindings.method_set_render_loop_enabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("get_frame_setup_time_cpu");
+        this._bindings.method_get_frame_setup_time_cpu = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("force_sync");
+        this._bindings.method_force_sync = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3218959716
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("force_draw");
+        this._bindings.method_force_draw = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1076185472
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("get_rendering_device");
+        this._bindings.method_get_rendering_device = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1405107940
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("create_local_rendering_device");
+        this._bindings.method_create_local_rendering_device = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1405107940
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("is_on_render_thread");
+        this._bindings.method_is_on_render_thread = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2240911060
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("call_on_render_thread");
+        this._bindings.method_call_on_render_thread = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1611583062
+        );
+      }
+      {
+        let classname = new StringName("RenderingServer");
+        let methodname = new StringName("has_feature");
+        this._bindings.method_has_feature = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          598462696
+        );
+      }
   }
   texture_2d_create(_image) {
     return _call_native_mb_ret(
@@ -4991,6 +4998,7 @@ class _RenderingServer extends GodotObject{
     ,
       _image
     );
+    
   }
   texture_2d_layered_create(_layers, _layered_type) {
     return _call_native_mb_ret(
@@ -5000,6 +5008,7 @@ class _RenderingServer extends GodotObject{
     ,
       _layers, _layered_type
     );
+    
   }
   texture_3d_create(_format, _width, _height, _depth, _mipmaps, _data) {
     return _call_native_mb_ret(
@@ -5009,6 +5018,7 @@ class _RenderingServer extends GodotObject{
     ,
       _format, _width, _height, _depth, _mipmaps, _data
     );
+    
   }
   texture_proxy_create(_base) {
     return _call_native_mb_ret(
@@ -5018,6 +5028,7 @@ class _RenderingServer extends GodotObject{
     ,
       _base
     );
+    
   }
   texture_2d_update(_texture, _image, _layer) {
     return _call_native_mb_no_ret(
@@ -5025,6 +5036,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _texture, _image, _layer
     );
+    
   }
   texture_3d_update(_texture, _data) {
     return _call_native_mb_no_ret(
@@ -5032,6 +5044,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _texture, _data
     );
+    
   }
   texture_proxy_update(_texture, _proxy_to) {
     return _call_native_mb_no_ret(
@@ -5039,6 +5052,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _texture, _proxy_to
     );
+    
   }
   texture_2d_placeholder_create() {
     return _call_native_mb_ret(
@@ -5048,6 +5062,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   texture_2d_layered_placeholder_create(_layered_type) {
     return _call_native_mb_ret(
@@ -5057,6 +5072,7 @@ class _RenderingServer extends GodotObject{
     ,
       _layered_type
     );
+    
   }
   texture_3d_placeholder_create() {
     return _call_native_mb_ret(
@@ -5066,6 +5082,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   texture_2d_get(_texture) {
     return _call_native_mb_ret(
@@ -5074,6 +5091,7 @@ class _RenderingServer extends GodotObject{
 			Variant.INT,
       _texture
     );
+    
   }
   texture_2d_layer_get(_texture, _layer) {
     return _call_native_mb_ret(
@@ -5082,6 +5100,7 @@ class _RenderingServer extends GodotObject{
 			Variant.INT,
       _texture, _layer
     );
+    
   }
   texture_3d_get(_texture) {
     return _call_native_mb_ret(
@@ -5090,6 +5109,7 @@ class _RenderingServer extends GodotObject{
 			Variant.INT,
       _texture
     );
+    
   }
   texture_replace(_texture, _by_texture) {
     return _call_native_mb_no_ret(
@@ -5097,6 +5117,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _texture, _by_texture
     );
+    
   }
   texture_set_size_override(_texture, _width, _height) {
     return _call_native_mb_no_ret(
@@ -5104,6 +5125,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _texture, _width, _height
     );
+    
   }
   texture_set_path(_texture, _path) {
     return _call_native_mb_no_ret(
@@ -5111,6 +5133,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _texture, _path
     );
+    
   }
   texture_get_path(_texture) {
     return _call_native_mb_ret(
@@ -5120,6 +5143,7 @@ class _RenderingServer extends GodotObject{
     ,
       _texture
     );
+    
   }
   texture_get_format(_texture) {
     return _call_native_mb_ret(
@@ -5128,6 +5152,7 @@ class _RenderingServer extends GodotObject{
 			Variant.INT,
       _texture
     );
+    
   }
   texture_set_force_redraw_if_visible(_texture, _enable) {
     return _call_native_mb_no_ret(
@@ -5135,6 +5160,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _texture, _enable
     );
+    
   }
   texture_rd_create(_rd_texture, _layer_type) {
     return _call_native_mb_ret(
@@ -5144,6 +5170,7 @@ class _RenderingServer extends GodotObject{
     ,
       _rd_texture, _layer_type
     );
+    
   }
   texture_get_rd_texture(_texture, _srgb) {
     return _call_native_mb_ret(
@@ -5153,6 +5180,7 @@ class _RenderingServer extends GodotObject{
     ,
       _texture, _srgb
     );
+    
   }
   texture_get_native_handle(_texture, _srgb) {
     return _call_native_mb_ret(
@@ -5161,6 +5189,7 @@ class _RenderingServer extends GodotObject{
 			Variant.Type.INT,
       _texture, _srgb
     );
+    
   }
   shader_create() {
     return _call_native_mb_ret(
@@ -5170,6 +5199,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   shader_set_code(_shader, _code) {
     return _call_native_mb_no_ret(
@@ -5177,6 +5207,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _shader, _code
     );
+    
   }
   shader_set_path_hint(_shader, _path) {
     return _call_native_mb_no_ret(
@@ -5184,6 +5215,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _shader, _path
     );
+    
   }
   shader_get_code(_shader) {
     return _call_native_mb_ret(
@@ -5193,6 +5225,7 @@ class _RenderingServer extends GodotObject{
     ,
       _shader
     );
+    
   }
   get_shader_parameter_list(_shader) {
     return _call_native_mb_ret(
@@ -5201,6 +5234,7 @@ class _RenderingServer extends GodotObject{
 			Variant.INT,
       _shader
     );
+    
   }
   shader_get_parameter_default(_shader, _name) {
     return _call_native_mb_ret(
@@ -5210,6 +5244,7 @@ class _RenderingServer extends GodotObject{
     ,
       _shader, _name
     );
+    
   }
   shader_set_default_texture_parameter(_shader, _name, _texture, _index) {
     return _call_native_mb_no_ret(
@@ -5217,6 +5252,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _shader, _name, _texture, _index
     );
+    
   }
   shader_get_default_texture_parameter(_shader, _name, _index) {
     return _call_native_mb_ret(
@@ -5226,6 +5262,7 @@ class _RenderingServer extends GodotObject{
     ,
       _shader, _name, _index
     );
+    
   }
   material_create() {
     return _call_native_mb_ret(
@@ -5235,6 +5272,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   material_set_shader(_shader_material, _shader) {
     return _call_native_mb_no_ret(
@@ -5242,6 +5280,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _shader_material, _shader
     );
+    
   }
   material_set_param(_material, _parameter, _value) {
     return _call_native_mb_no_ret(
@@ -5249,6 +5288,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _material, _parameter, _value
     );
+    
   }
   material_get_param(_material, _parameter) {
     return _call_native_mb_ret(
@@ -5258,6 +5298,7 @@ class _RenderingServer extends GodotObject{
     ,
       _material, _parameter
     );
+    
   }
   material_set_render_priority(_material, _priority) {
     return _call_native_mb_no_ret(
@@ -5265,6 +5306,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _material, _priority
     );
+    
   }
   material_set_next_pass(_material, _next_material) {
     return _call_native_mb_no_ret(
@@ -5272,6 +5314,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _material, _next_material
     );
+    
   }
   mesh_create_from_surfaces(_surfaces, _blend_shape_count) {
     return _call_native_mb_ret(
@@ -5281,6 +5324,7 @@ class _RenderingServer extends GodotObject{
     ,
       _surfaces, _blend_shape_count
     );
+    
   }
   mesh_create() {
     return _call_native_mb_ret(
@@ -5290,6 +5334,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   mesh_surface_get_format_offset(_format, _vertex_count, _array_index) {
     return _call_native_mb_ret(
@@ -5298,6 +5343,7 @@ class _RenderingServer extends GodotObject{
 			Variant.Type.INT,
       _format, _vertex_count, _array_index
     );
+    
   }
   mesh_surface_get_format_vertex_stride(_format, _vertex_count) {
     return _call_native_mb_ret(
@@ -5306,6 +5352,7 @@ class _RenderingServer extends GodotObject{
 			Variant.Type.INT,
       _format, _vertex_count
     );
+    
   }
   mesh_surface_get_format_normal_tangent_stride(_format, _vertex_count) {
     return _call_native_mb_ret(
@@ -5314,6 +5361,7 @@ class _RenderingServer extends GodotObject{
 			Variant.Type.INT,
       _format, _vertex_count
     );
+    
   }
   mesh_surface_get_format_attribute_stride(_format, _vertex_count) {
     return _call_native_mb_ret(
@@ -5322,6 +5370,7 @@ class _RenderingServer extends GodotObject{
 			Variant.Type.INT,
       _format, _vertex_count
     );
+    
   }
   mesh_surface_get_format_skin_stride(_format, _vertex_count) {
     return _call_native_mb_ret(
@@ -5330,6 +5379,7 @@ class _RenderingServer extends GodotObject{
 			Variant.Type.INT,
       _format, _vertex_count
     );
+    
   }
   mesh_add_surface(_mesh, _surface) {
     return _call_native_mb_no_ret(
@@ -5337,6 +5387,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _mesh, _surface
     );
+    
   }
   mesh_add_surface_from_arrays(_mesh, _primitive, _arrays, _blend_shapes, _lods, _compress_format) {
     return _call_native_mb_no_ret(
@@ -5344,6 +5395,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _mesh, _primitive, _arrays, _blend_shapes, _lods, _compress_format
     );
+    
   }
   mesh_get_blend_shape_count(_mesh) {
     return _call_native_mb_ret(
@@ -5352,6 +5404,7 @@ class _RenderingServer extends GodotObject{
 			Variant.Type.INT,
       _mesh
     );
+    
   }
   mesh_set_blend_shape_mode(_mesh, _mode) {
     return _call_native_mb_no_ret(
@@ -5359,6 +5412,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _mesh, _mode
     );
+    
   }
   mesh_get_blend_shape_mode(_mesh) {
     return _call_native_mb_ret(
@@ -5367,6 +5421,7 @@ class _RenderingServer extends GodotObject{
 			Variant.INT,
       _mesh
     );
+    
   }
   mesh_surface_set_material(_mesh, _surface, _material) {
     return _call_native_mb_no_ret(
@@ -5374,6 +5429,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _mesh, _surface, _material
     );
+    
   }
   mesh_surface_get_material(_mesh, _surface) {
     return _call_native_mb_ret(
@@ -5383,6 +5439,7 @@ class _RenderingServer extends GodotObject{
     ,
       _mesh, _surface
     );
+    
   }
   mesh_get_surface(_mesh, _surface) {
     return _call_native_mb_ret(
@@ -5392,6 +5449,7 @@ class _RenderingServer extends GodotObject{
     ,
       _mesh, _surface
     );
+    
   }
   mesh_surface_get_arrays(_mesh, _surface) {
     return _call_native_mb_ret(
@@ -5401,6 +5459,7 @@ class _RenderingServer extends GodotObject{
     ,
       _mesh, _surface
     );
+    
   }
   mesh_surface_get_blend_shape_arrays(_mesh, _surface) {
     return _call_native_mb_ret(
@@ -5409,6 +5468,7 @@ class _RenderingServer extends GodotObject{
 			Variant.INT,
       _mesh, _surface
     );
+    
   }
   mesh_get_surface_count(_mesh) {
     return _call_native_mb_ret(
@@ -5417,6 +5477,7 @@ class _RenderingServer extends GodotObject{
 			Variant.Type.INT,
       _mesh
     );
+    
   }
   mesh_set_custom_aabb(_mesh, _aabb) {
     return _call_native_mb_no_ret(
@@ -5424,6 +5485,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _mesh, _aabb
     );
+    
   }
   mesh_get_custom_aabb(_mesh) {
     return _call_native_mb_ret(
@@ -5433,6 +5495,7 @@ class _RenderingServer extends GodotObject{
     ,
       _mesh
     );
+    
   }
   mesh_clear(_mesh) {
     return _call_native_mb_no_ret(
@@ -5440,6 +5503,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _mesh
     );
+    
   }
   mesh_surface_update_vertex_region(_mesh, _surface, _offset, _data) {
     return _call_native_mb_no_ret(
@@ -5447,6 +5511,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _mesh, _surface, _offset, _data
     );
+    
   }
   mesh_surface_update_attribute_region(_mesh, _surface, _offset, _data) {
     return _call_native_mb_no_ret(
@@ -5454,6 +5519,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _mesh, _surface, _offset, _data
     );
+    
   }
   mesh_surface_update_skin_region(_mesh, _surface, _offset, _data) {
     return _call_native_mb_no_ret(
@@ -5461,6 +5527,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _mesh, _surface, _offset, _data
     );
+    
   }
   mesh_set_shadow_mesh(_mesh, _shadow_mesh) {
     return _call_native_mb_no_ret(
@@ -5468,6 +5535,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _mesh, _shadow_mesh
     );
+    
   }
   multimesh_create() {
     return _call_native_mb_ret(
@@ -5477,6 +5545,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   multimesh_allocate_data(_multimesh, _instances, _transform_format, _color_format, _custom_data_format) {
     return _call_native_mb_no_ret(
@@ -5484,6 +5553,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _multimesh, _instances, _transform_format, _color_format, _custom_data_format
     );
+    
   }
   multimesh_get_instance_count(_multimesh) {
     return _call_native_mb_ret(
@@ -5492,6 +5562,7 @@ class _RenderingServer extends GodotObject{
 			Variant.Type.INT,
       _multimesh
     );
+    
   }
   multimesh_set_mesh(_multimesh, _mesh) {
     return _call_native_mb_no_ret(
@@ -5499,6 +5570,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _multimesh, _mesh
     );
+    
   }
   multimesh_instance_set_transform(_multimesh, _index, _transform) {
     return _call_native_mb_no_ret(
@@ -5506,6 +5578,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _multimesh, _index, _transform
     );
+    
   }
   multimesh_instance_set_transform_2d(_multimesh, _index, _transform) {
     return _call_native_mb_no_ret(
@@ -5513,6 +5586,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _multimesh, _index, _transform
     );
+    
   }
   multimesh_instance_set_color(_multimesh, _index, _color) {
     return _call_native_mb_no_ret(
@@ -5520,6 +5594,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _multimesh, _index, _color
     );
+    
   }
   multimesh_instance_set_custom_data(_multimesh, _index, _custom_data) {
     return _call_native_mb_no_ret(
@@ -5527,6 +5602,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _multimesh, _index, _custom_data
     );
+    
   }
   multimesh_get_mesh(_multimesh) {
     return _call_native_mb_ret(
@@ -5536,6 +5612,7 @@ class _RenderingServer extends GodotObject{
     ,
       _multimesh
     );
+    
   }
   multimesh_get_aabb(_multimesh) {
     return _call_native_mb_ret(
@@ -5545,6 +5622,7 @@ class _RenderingServer extends GodotObject{
     ,
       _multimesh
     );
+    
   }
   multimesh_set_custom_aabb(_multimesh, _aabb) {
     return _call_native_mb_no_ret(
@@ -5552,6 +5630,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _multimesh, _aabb
     );
+    
   }
   multimesh_get_custom_aabb(_multimesh) {
     return _call_native_mb_ret(
@@ -5561,6 +5640,7 @@ class _RenderingServer extends GodotObject{
     ,
       _multimesh
     );
+    
   }
   multimesh_instance_get_transform(_multimesh, _index) {
     return _call_native_mb_ret(
@@ -5570,6 +5650,7 @@ class _RenderingServer extends GodotObject{
     ,
       _multimesh, _index
     );
+    
   }
   multimesh_instance_get_transform_2d(_multimesh, _index) {
     return _call_native_mb_ret(
@@ -5579,6 +5660,7 @@ class _RenderingServer extends GodotObject{
     ,
       _multimesh, _index
     );
+    
   }
   multimesh_instance_get_color(_multimesh, _index) {
     return _call_native_mb_ret(
@@ -5588,6 +5670,7 @@ class _RenderingServer extends GodotObject{
     ,
       _multimesh, _index
     );
+    
   }
   multimesh_instance_get_custom_data(_multimesh, _index) {
     return _call_native_mb_ret(
@@ -5597,6 +5680,7 @@ class _RenderingServer extends GodotObject{
     ,
       _multimesh, _index
     );
+    
   }
   multimesh_set_visible_instances(_multimesh, _visible) {
     return _call_native_mb_no_ret(
@@ -5604,6 +5688,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _multimesh, _visible
     );
+    
   }
   multimesh_get_visible_instances(_multimesh) {
     return _call_native_mb_ret(
@@ -5612,6 +5697,7 @@ class _RenderingServer extends GodotObject{
 			Variant.Type.INT,
       _multimesh
     );
+    
   }
   multimesh_set_buffer(_multimesh, _buffer) {
     return _call_native_mb_no_ret(
@@ -5619,6 +5705,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _multimesh, _buffer
     );
+    
   }
   multimesh_get_buffer(_multimesh) {
     return _call_native_mb_ret(
@@ -5628,6 +5715,7 @@ class _RenderingServer extends GodotObject{
     ,
       _multimesh
     );
+    
   }
   skeleton_create() {
     return _call_native_mb_ret(
@@ -5637,6 +5725,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   skeleton_allocate_data(_skeleton, _bones, _is_2d_skeleton) {
     return _call_native_mb_no_ret(
@@ -5644,6 +5733,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _skeleton, _bones, _is_2d_skeleton
     );
+    
   }
   skeleton_get_bone_count(_skeleton) {
     return _call_native_mb_ret(
@@ -5652,6 +5742,7 @@ class _RenderingServer extends GodotObject{
 			Variant.Type.INT,
       _skeleton
     );
+    
   }
   skeleton_bone_set_transform(_skeleton, _bone, _transform) {
     return _call_native_mb_no_ret(
@@ -5659,6 +5750,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _skeleton, _bone, _transform
     );
+    
   }
   skeleton_bone_get_transform(_skeleton, _bone) {
     return _call_native_mb_ret(
@@ -5668,6 +5760,7 @@ class _RenderingServer extends GodotObject{
     ,
       _skeleton, _bone
     );
+    
   }
   skeleton_bone_set_transform_2d(_skeleton, _bone, _transform) {
     return _call_native_mb_no_ret(
@@ -5675,6 +5768,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _skeleton, _bone, _transform
     );
+    
   }
   skeleton_bone_get_transform_2d(_skeleton, _bone) {
     return _call_native_mb_ret(
@@ -5684,6 +5778,7 @@ class _RenderingServer extends GodotObject{
     ,
       _skeleton, _bone
     );
+    
   }
   skeleton_set_base_transform_2d(_skeleton, _base_transform) {
     return _call_native_mb_no_ret(
@@ -5691,6 +5786,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _skeleton, _base_transform
     );
+    
   }
   directional_light_create() {
     return _call_native_mb_ret(
@@ -5700,6 +5796,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   omni_light_create() {
     return _call_native_mb_ret(
@@ -5709,6 +5806,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   spot_light_create() {
     return _call_native_mb_ret(
@@ -5718,6 +5816,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   light_set_color(_light, _color) {
     return _call_native_mb_no_ret(
@@ -5725,6 +5824,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _light, _color
     );
+    
   }
   light_set_param(_light, _param, _value) {
     return _call_native_mb_no_ret(
@@ -5732,6 +5832,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _light, _param, _value
     );
+    
   }
   light_set_shadow(_light, _enabled) {
     return _call_native_mb_no_ret(
@@ -5739,6 +5840,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _light, _enabled
     );
+    
   }
   light_set_projector(_light, _texture) {
     return _call_native_mb_no_ret(
@@ -5746,6 +5848,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _light, _texture
     );
+    
   }
   light_set_negative(_light, _enable) {
     return _call_native_mb_no_ret(
@@ -5753,6 +5856,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _light, _enable
     );
+    
   }
   light_set_cull_mask(_light, _mask) {
     return _call_native_mb_no_ret(
@@ -5760,6 +5864,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _light, _mask
     );
+    
   }
   light_set_distance_fade(_decal, _enabled, _begin, _shadow, _length) {
     return _call_native_mb_no_ret(
@@ -5767,6 +5872,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _decal, _enabled, _begin, _shadow, _length
     );
+    
   }
   light_set_reverse_cull_face_mode(_light, _enabled) {
     return _call_native_mb_no_ret(
@@ -5774,6 +5880,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _light, _enabled
     );
+    
   }
   light_set_bake_mode(_light, _bake_mode) {
     return _call_native_mb_no_ret(
@@ -5781,6 +5888,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _light, _bake_mode
     );
+    
   }
   light_set_max_sdfgi_cascade(_light, _cascade) {
     return _call_native_mb_no_ret(
@@ -5788,6 +5896,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _light, _cascade
     );
+    
   }
   light_omni_set_shadow_mode(_light, _mode) {
     return _call_native_mb_no_ret(
@@ -5795,6 +5904,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _light, _mode
     );
+    
   }
   light_directional_set_shadow_mode(_light, _mode) {
     return _call_native_mb_no_ret(
@@ -5802,6 +5912,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _light, _mode
     );
+    
   }
   light_directional_set_blend_splits(_light, _enable) {
     return _call_native_mb_no_ret(
@@ -5809,6 +5920,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _light, _enable
     );
+    
   }
   light_directional_set_sky_mode(_light, _mode) {
     return _call_native_mb_no_ret(
@@ -5816,6 +5928,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _light, _mode
     );
+    
   }
   light_projectors_set_filter(_filter) {
     return _call_native_mb_no_ret(
@@ -5823,6 +5936,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _filter
     );
+    
   }
   positional_soft_shadow_filter_set_quality(_quality) {
     return _call_native_mb_no_ret(
@@ -5830,6 +5944,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _quality
     );
+    
   }
   directional_soft_shadow_filter_set_quality(_quality) {
     return _call_native_mb_no_ret(
@@ -5837,6 +5952,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _quality
     );
+    
   }
   directional_shadow_atlas_set_size(_size, _is_16bits) {
     return _call_native_mb_no_ret(
@@ -5844,6 +5960,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _size, _is_16bits
     );
+    
   }
   reflection_probe_create() {
     return _call_native_mb_ret(
@@ -5853,6 +5970,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   reflection_probe_set_update_mode(_probe, _mode) {
     return _call_native_mb_no_ret(
@@ -5860,6 +5978,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _probe, _mode
     );
+    
   }
   reflection_probe_set_intensity(_probe, _intensity) {
     return _call_native_mb_no_ret(
@@ -5867,6 +5986,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _probe, _intensity
     );
+    
   }
   reflection_probe_set_ambient_mode(_probe, _mode) {
     return _call_native_mb_no_ret(
@@ -5874,6 +5994,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _probe, _mode
     );
+    
   }
   reflection_probe_set_ambient_color(_probe, _color) {
     return _call_native_mb_no_ret(
@@ -5881,6 +6002,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _probe, _color
     );
+    
   }
   reflection_probe_set_ambient_energy(_probe, _energy) {
     return _call_native_mb_no_ret(
@@ -5888,6 +6010,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _probe, _energy
     );
+    
   }
   reflection_probe_set_max_distance(_probe, _distance) {
     return _call_native_mb_no_ret(
@@ -5895,6 +6018,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _probe, _distance
     );
+    
   }
   reflection_probe_set_size(_probe, _size) {
     return _call_native_mb_no_ret(
@@ -5902,6 +6026,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _probe, _size
     );
+    
   }
   reflection_probe_set_origin_offset(_probe, _offset) {
     return _call_native_mb_no_ret(
@@ -5909,6 +6034,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _probe, _offset
     );
+    
   }
   reflection_probe_set_as_interior(_probe, _enable) {
     return _call_native_mb_no_ret(
@@ -5916,6 +6042,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _probe, _enable
     );
+    
   }
   reflection_probe_set_enable_box_projection(_probe, _enable) {
     return _call_native_mb_no_ret(
@@ -5923,6 +6050,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _probe, _enable
     );
+    
   }
   reflection_probe_set_enable_shadows(_probe, _enable) {
     return _call_native_mb_no_ret(
@@ -5930,6 +6058,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _probe, _enable
     );
+    
   }
   reflection_probe_set_cull_mask(_probe, _layers) {
     return _call_native_mb_no_ret(
@@ -5937,6 +6066,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _probe, _layers
     );
+    
   }
   reflection_probe_set_reflection_mask(_probe, _layers) {
     return _call_native_mb_no_ret(
@@ -5944,6 +6074,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _probe, _layers
     );
+    
   }
   reflection_probe_set_resolution(_probe, _resolution) {
     return _call_native_mb_no_ret(
@@ -5951,6 +6082,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _probe, _resolution
     );
+    
   }
   reflection_probe_set_mesh_lod_threshold(_probe, _pixels) {
     return _call_native_mb_no_ret(
@@ -5958,6 +6090,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _probe, _pixels
     );
+    
   }
   decal_create() {
     return _call_native_mb_ret(
@@ -5967,6 +6100,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   decal_set_size(_decal, _size) {
     return _call_native_mb_no_ret(
@@ -5974,6 +6108,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _decal, _size
     );
+    
   }
   decal_set_texture(_decal, _type, _texture) {
     return _call_native_mb_no_ret(
@@ -5981,6 +6116,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _decal, _type, _texture
     );
+    
   }
   decal_set_emission_energy(_decal, _energy) {
     return _call_native_mb_no_ret(
@@ -5988,6 +6124,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _decal, _energy
     );
+    
   }
   decal_set_albedo_mix(_decal, _albedo_mix) {
     return _call_native_mb_no_ret(
@@ -5995,6 +6132,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _decal, _albedo_mix
     );
+    
   }
   decal_set_modulate(_decal, _color) {
     return _call_native_mb_no_ret(
@@ -6002,6 +6140,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _decal, _color
     );
+    
   }
   decal_set_cull_mask(_decal, _mask) {
     return _call_native_mb_no_ret(
@@ -6009,6 +6148,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _decal, _mask
     );
+    
   }
   decal_set_distance_fade(_decal, _enabled, _begin, _length) {
     return _call_native_mb_no_ret(
@@ -6016,6 +6156,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _decal, _enabled, _begin, _length
     );
+    
   }
   decal_set_fade(_decal, _above, _below) {
     return _call_native_mb_no_ret(
@@ -6023,6 +6164,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _decal, _above, _below
     );
+    
   }
   decal_set_normal_fade(_decal, _fade) {
     return _call_native_mb_no_ret(
@@ -6030,6 +6172,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _decal, _fade
     );
+    
   }
   decals_set_filter(_filter) {
     return _call_native_mb_no_ret(
@@ -6037,6 +6180,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _filter
     );
+    
   }
   gi_set_use_half_resolution(_half_resolution) {
     return _call_native_mb_no_ret(
@@ -6044,6 +6188,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _half_resolution
     );
+    
   }
   voxel_gi_create() {
     return _call_native_mb_ret(
@@ -6053,6 +6198,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   voxel_gi_allocate_data(_voxel_gi, _to_cell_xform, _aabb, _octree_size, _octree_cells, _data_cells, _distance_field, _level_counts) {
     return _call_native_mb_no_ret(
@@ -6060,6 +6206,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _voxel_gi, _to_cell_xform, _aabb, _octree_size, _octree_cells, _data_cells, _distance_field, _level_counts
     );
+    
   }
   voxel_gi_get_octree_size(_voxel_gi) {
     return _call_native_mb_ret(
@@ -6069,6 +6216,7 @@ class _RenderingServer extends GodotObject{
     ,
       _voxel_gi
     );
+    
   }
   voxel_gi_get_octree_cells(_voxel_gi) {
     return _call_native_mb_ret(
@@ -6078,6 +6226,7 @@ class _RenderingServer extends GodotObject{
     ,
       _voxel_gi
     );
+    
   }
   voxel_gi_get_data_cells(_voxel_gi) {
     return _call_native_mb_ret(
@@ -6087,6 +6236,7 @@ class _RenderingServer extends GodotObject{
     ,
       _voxel_gi
     );
+    
   }
   voxel_gi_get_distance_field(_voxel_gi) {
     return _call_native_mb_ret(
@@ -6096,6 +6246,7 @@ class _RenderingServer extends GodotObject{
     ,
       _voxel_gi
     );
+    
   }
   voxel_gi_get_level_counts(_voxel_gi) {
     return _call_native_mb_ret(
@@ -6105,6 +6256,7 @@ class _RenderingServer extends GodotObject{
     ,
       _voxel_gi
     );
+    
   }
   voxel_gi_get_to_cell_xform(_voxel_gi) {
     return _call_native_mb_ret(
@@ -6114,6 +6266,7 @@ class _RenderingServer extends GodotObject{
     ,
       _voxel_gi
     );
+    
   }
   voxel_gi_set_dynamic_range(_voxel_gi, _range) {
     return _call_native_mb_no_ret(
@@ -6121,6 +6274,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _voxel_gi, _range
     );
+    
   }
   voxel_gi_set_propagation(_voxel_gi, _amount) {
     return _call_native_mb_no_ret(
@@ -6128,6 +6282,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _voxel_gi, _amount
     );
+    
   }
   voxel_gi_set_energy(_voxel_gi, _energy) {
     return _call_native_mb_no_ret(
@@ -6135,6 +6290,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _voxel_gi, _energy
     );
+    
   }
   voxel_gi_set_baked_exposure_normalization(_voxel_gi, _baked_exposure) {
     return _call_native_mb_no_ret(
@@ -6142,6 +6298,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _voxel_gi, _baked_exposure
     );
+    
   }
   voxel_gi_set_bias(_voxel_gi, _bias) {
     return _call_native_mb_no_ret(
@@ -6149,6 +6306,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _voxel_gi, _bias
     );
+    
   }
   voxel_gi_set_normal_bias(_voxel_gi, _bias) {
     return _call_native_mb_no_ret(
@@ -6156,6 +6314,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _voxel_gi, _bias
     );
+    
   }
   voxel_gi_set_interior(_voxel_gi, _enable) {
     return _call_native_mb_no_ret(
@@ -6163,6 +6322,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _voxel_gi, _enable
     );
+    
   }
   voxel_gi_set_use_two_bounces(_voxel_gi, _enable) {
     return _call_native_mb_no_ret(
@@ -6170,6 +6330,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _voxel_gi, _enable
     );
+    
   }
   voxel_gi_set_quality(_quality) {
     return _call_native_mb_no_ret(
@@ -6177,6 +6338,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _quality
     );
+    
   }
   lightmap_create() {
     return _call_native_mb_ret(
@@ -6186,6 +6348,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   lightmap_set_textures(_lightmap, _light, _uses_sh) {
     return _call_native_mb_no_ret(
@@ -6193,6 +6356,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _lightmap, _light, _uses_sh
     );
+    
   }
   lightmap_set_probe_bounds(_lightmap, _bounds) {
     return _call_native_mb_no_ret(
@@ -6200,6 +6364,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _lightmap, _bounds
     );
+    
   }
   lightmap_set_probe_interior(_lightmap, _interior) {
     return _call_native_mb_no_ret(
@@ -6207,6 +6372,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _lightmap, _interior
     );
+    
   }
   lightmap_set_probe_capture_data(_lightmap, _points, _point_sh, _tetrahedra, _bsp_tree) {
     return _call_native_mb_no_ret(
@@ -6214,6 +6380,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _lightmap, _points, _point_sh, _tetrahedra, _bsp_tree
     );
+    
   }
   lightmap_get_probe_capture_points(_lightmap) {
     return _call_native_mb_ret(
@@ -6223,6 +6390,7 @@ class _RenderingServer extends GodotObject{
     ,
       _lightmap
     );
+    
   }
   lightmap_get_probe_capture_sh(_lightmap) {
     return _call_native_mb_ret(
@@ -6232,6 +6400,7 @@ class _RenderingServer extends GodotObject{
     ,
       _lightmap
     );
+    
   }
   lightmap_get_probe_capture_tetrahedra(_lightmap) {
     return _call_native_mb_ret(
@@ -6241,6 +6410,7 @@ class _RenderingServer extends GodotObject{
     ,
       _lightmap
     );
+    
   }
   lightmap_get_probe_capture_bsp_tree(_lightmap) {
     return _call_native_mb_ret(
@@ -6250,6 +6420,7 @@ class _RenderingServer extends GodotObject{
     ,
       _lightmap
     );
+    
   }
   lightmap_set_baked_exposure_normalization(_lightmap, _baked_exposure) {
     return _call_native_mb_no_ret(
@@ -6257,6 +6428,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _lightmap, _baked_exposure
     );
+    
   }
   lightmap_set_probe_capture_update_speed(_speed) {
     return _call_native_mb_no_ret(
@@ -6264,6 +6436,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _speed
     );
+    
   }
   particles_create() {
     return _call_native_mb_ret(
@@ -6273,6 +6446,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   particles_set_mode(_particles, _mode) {
     return _call_native_mb_no_ret(
@@ -6280,6 +6454,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles, _mode
     );
+    
   }
   particles_set_emitting(_particles, _emitting) {
     return _call_native_mb_no_ret(
@@ -6287,6 +6462,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles, _emitting
     );
+    
   }
   particles_get_emitting(_particles) {
     return _call_native_mb_ret(
@@ -6295,6 +6471,7 @@ class _RenderingServer extends GodotObject{
 			Variant.Type.BOOL,
       _particles
     );
+    
   }
   particles_set_amount(_particles, _amount) {
     return _call_native_mb_no_ret(
@@ -6302,6 +6479,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles, _amount
     );
+    
   }
   particles_set_amount_ratio(_particles, _ratio) {
     return _call_native_mb_no_ret(
@@ -6309,6 +6487,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles, _ratio
     );
+    
   }
   particles_set_lifetime(_particles, _lifetime) {
     return _call_native_mb_no_ret(
@@ -6316,6 +6495,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles, _lifetime
     );
+    
   }
   particles_set_one_shot(_particles, _one_shot) {
     return _call_native_mb_no_ret(
@@ -6323,6 +6503,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles, _one_shot
     );
+    
   }
   particles_set_pre_process_time(_particles, _time) {
     return _call_native_mb_no_ret(
@@ -6330,6 +6511,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles, _time
     );
+    
   }
   particles_set_explosiveness_ratio(_particles, _ratio) {
     return _call_native_mb_no_ret(
@@ -6337,6 +6519,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles, _ratio
     );
+    
   }
   particles_set_randomness_ratio(_particles, _ratio) {
     return _call_native_mb_no_ret(
@@ -6344,6 +6527,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles, _ratio
     );
+    
   }
   particles_set_interp_to_end(_particles, _factor) {
     return _call_native_mb_no_ret(
@@ -6351,6 +6535,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles, _factor
     );
+    
   }
   particles_set_emitter_velocity(_particles, _velocity) {
     return _call_native_mb_no_ret(
@@ -6358,6 +6543,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles, _velocity
     );
+    
   }
   particles_set_custom_aabb(_particles, _aabb) {
     return _call_native_mb_no_ret(
@@ -6365,6 +6551,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles, _aabb
     );
+    
   }
   particles_set_speed_scale(_particles, _scale) {
     return _call_native_mb_no_ret(
@@ -6372,6 +6559,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles, _scale
     );
+    
   }
   particles_set_use_local_coordinates(_particles, _enable) {
     return _call_native_mb_no_ret(
@@ -6379,6 +6567,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles, _enable
     );
+    
   }
   particles_set_process_material(_particles, _material) {
     return _call_native_mb_no_ret(
@@ -6386,6 +6575,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles, _material
     );
+    
   }
   particles_set_fixed_fps(_particles, _fps) {
     return _call_native_mb_no_ret(
@@ -6393,6 +6583,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles, _fps
     );
+    
   }
   particles_set_interpolate(_particles, _enable) {
     return _call_native_mb_no_ret(
@@ -6400,6 +6591,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles, _enable
     );
+    
   }
   particles_set_fractional_delta(_particles, _enable) {
     return _call_native_mb_no_ret(
@@ -6407,6 +6599,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles, _enable
     );
+    
   }
   particles_set_collision_base_size(_particles, _size) {
     return _call_native_mb_no_ret(
@@ -6414,6 +6607,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles, _size
     );
+    
   }
   particles_set_transform_align(_particles, _align) {
     return _call_native_mb_no_ret(
@@ -6421,6 +6615,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles, _align
     );
+    
   }
   particles_set_trails(_particles, _enable, _length_sec) {
     return _call_native_mb_no_ret(
@@ -6428,6 +6623,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles, _enable, _length_sec
     );
+    
   }
   particles_set_trail_bind_poses(_particles, _bind_poses) {
     return _call_native_mb_no_ret(
@@ -6435,6 +6631,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles, _bind_poses
     );
+    
   }
   particles_is_inactive(_particles) {
     return _call_native_mb_ret(
@@ -6443,6 +6640,7 @@ class _RenderingServer extends GodotObject{
 			Variant.Type.BOOL,
       _particles
     );
+    
   }
   particles_request_process(_particles) {
     return _call_native_mb_no_ret(
@@ -6450,6 +6648,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles
     );
+    
   }
   particles_restart(_particles) {
     return _call_native_mb_no_ret(
@@ -6457,6 +6656,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles
     );
+    
   }
   particles_set_subemitter(_particles, _subemitter_particles) {
     return _call_native_mb_no_ret(
@@ -6464,6 +6664,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles, _subemitter_particles
     );
+    
   }
   particles_emit(_particles, _transform, _velocity, _color, _custom, _emit_flags) {
     return _call_native_mb_no_ret(
@@ -6471,6 +6672,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles, _transform, _velocity, _color, _custom, _emit_flags
     );
+    
   }
   particles_set_draw_order(_particles, _order) {
     return _call_native_mb_no_ret(
@@ -6478,6 +6680,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles, _order
     );
+    
   }
   particles_set_draw_passes(_particles, _count) {
     return _call_native_mb_no_ret(
@@ -6485,6 +6688,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles, _count
     );
+    
   }
   particles_set_draw_pass_mesh(_particles, _pass, _mesh) {
     return _call_native_mb_no_ret(
@@ -6492,6 +6696,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles, _pass, _mesh
     );
+    
   }
   particles_get_current_aabb(_particles) {
     return _call_native_mb_ret(
@@ -6501,6 +6706,7 @@ class _RenderingServer extends GodotObject{
     ,
       _particles
     );
+    
   }
   particles_set_emission_transform(_particles, _transform) {
     return _call_native_mb_no_ret(
@@ -6508,6 +6714,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles, _transform
     );
+    
   }
   particles_collision_create() {
     return _call_native_mb_ret(
@@ -6517,6 +6724,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   particles_collision_set_collision_type(_particles_collision, _type) {
     return _call_native_mb_no_ret(
@@ -6524,6 +6732,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles_collision, _type
     );
+    
   }
   particles_collision_set_cull_mask(_particles_collision, _mask) {
     return _call_native_mb_no_ret(
@@ -6531,6 +6740,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles_collision, _mask
     );
+    
   }
   particles_collision_set_sphere_radius(_particles_collision, _radius) {
     return _call_native_mb_no_ret(
@@ -6538,6 +6748,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles_collision, _radius
     );
+    
   }
   particles_collision_set_box_extents(_particles_collision, _extents) {
     return _call_native_mb_no_ret(
@@ -6545,6 +6756,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles_collision, _extents
     );
+    
   }
   particles_collision_set_attractor_strength(_particles_collision, _strength) {
     return _call_native_mb_no_ret(
@@ -6552,6 +6764,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles_collision, _strength
     );
+    
   }
   particles_collision_set_attractor_directionality(_particles_collision, _amount) {
     return _call_native_mb_no_ret(
@@ -6559,6 +6772,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles_collision, _amount
     );
+    
   }
   particles_collision_set_attractor_attenuation(_particles_collision, _curve) {
     return _call_native_mb_no_ret(
@@ -6566,6 +6780,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles_collision, _curve
     );
+    
   }
   particles_collision_set_field_texture(_particles_collision, _texture) {
     return _call_native_mb_no_ret(
@@ -6573,6 +6788,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles_collision, _texture
     );
+    
   }
   particles_collision_height_field_update(_particles_collision) {
     return _call_native_mb_no_ret(
@@ -6580,6 +6796,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles_collision
     );
+    
   }
   particles_collision_set_height_field_resolution(_particles_collision, _resolution) {
     return _call_native_mb_no_ret(
@@ -6587,6 +6804,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _particles_collision, _resolution
     );
+    
   }
   fog_volume_create() {
     return _call_native_mb_ret(
@@ -6596,6 +6814,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   fog_volume_set_shape(_fog_volume, _shape) {
     return _call_native_mb_no_ret(
@@ -6603,6 +6822,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _fog_volume, _shape
     );
+    
   }
   fog_volume_set_size(_fog_volume, _size) {
     return _call_native_mb_no_ret(
@@ -6610,6 +6830,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _fog_volume, _size
     );
+    
   }
   fog_volume_set_material(_fog_volume, _material) {
     return _call_native_mb_no_ret(
@@ -6617,6 +6838,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _fog_volume, _material
     );
+    
   }
   visibility_notifier_create() {
     return _call_native_mb_ret(
@@ -6626,6 +6848,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   visibility_notifier_set_aabb(_notifier, _aabb) {
     return _call_native_mb_no_ret(
@@ -6633,6 +6856,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _notifier, _aabb
     );
+    
   }
   visibility_notifier_set_callbacks(_notifier, _enter_callable, _exit_callable) {
     return _call_native_mb_no_ret(
@@ -6640,6 +6864,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _notifier, _enter_callable, _exit_callable
     );
+    
   }
   occluder_create() {
     return _call_native_mb_ret(
@@ -6649,6 +6874,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   occluder_set_mesh(_occluder, _vertices, _indices) {
     return _call_native_mb_no_ret(
@@ -6656,6 +6882,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _occluder, _vertices, _indices
     );
+    
   }
   camera_create() {
     return _call_native_mb_ret(
@@ -6665,6 +6892,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   camera_set_perspective(_camera, _fovy_degrees, _z_near, _z_far) {
     return _call_native_mb_no_ret(
@@ -6672,6 +6900,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _camera, _fovy_degrees, _z_near, _z_far
     );
+    
   }
   camera_set_orthogonal(_camera, _size, _z_near, _z_far) {
     return _call_native_mb_no_ret(
@@ -6679,6 +6908,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _camera, _size, _z_near, _z_far
     );
+    
   }
   camera_set_frustum(_camera, _size, _offset, _z_near, _z_far) {
     return _call_native_mb_no_ret(
@@ -6686,6 +6916,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _camera, _size, _offset, _z_near, _z_far
     );
+    
   }
   camera_set_transform(_camera, _transform) {
     return _call_native_mb_no_ret(
@@ -6693,6 +6924,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _camera, _transform
     );
+    
   }
   camera_set_cull_mask(_camera, _layers) {
     return _call_native_mb_no_ret(
@@ -6700,6 +6932,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _camera, _layers
     );
+    
   }
   camera_set_environment(_camera, _env) {
     return _call_native_mb_no_ret(
@@ -6707,6 +6940,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _camera, _env
     );
+    
   }
   camera_set_camera_attributes(_camera, _effects) {
     return _call_native_mb_no_ret(
@@ -6714,6 +6948,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _camera, _effects
     );
+    
   }
   camera_set_compositor(_camera, _compositor) {
     return _call_native_mb_no_ret(
@@ -6721,6 +6956,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _camera, _compositor
     );
+    
   }
   camera_set_use_vertical_aspect(_camera, _enable) {
     return _call_native_mb_no_ret(
@@ -6728,6 +6964,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _camera, _enable
     );
+    
   }
   viewport_create() {
     return _call_native_mb_ret(
@@ -6737,6 +6974,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   viewport_set_use_xr(_viewport, _use_xr) {
     return _call_native_mb_no_ret(
@@ -6744,6 +6982,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _use_xr
     );
+    
   }
   viewport_set_size(_viewport, _width, _height) {
     return _call_native_mb_no_ret(
@@ -6751,6 +6990,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _width, _height
     );
+    
   }
   viewport_set_active(_viewport, _active) {
     return _call_native_mb_no_ret(
@@ -6758,6 +6998,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _active
     );
+    
   }
   viewport_set_parent_viewport(_viewport, _parent_viewport) {
     return _call_native_mb_no_ret(
@@ -6765,6 +7006,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _parent_viewport
     );
+    
   }
   viewport_attach_to_screen(_viewport, _rect, _screen) {
     return _call_native_mb_no_ret(
@@ -6772,6 +7014,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _rect, _screen
     );
+    
   }
   viewport_set_render_direct_to_screen(_viewport, _enabled) {
     return _call_native_mb_no_ret(
@@ -6779,6 +7022,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _enabled
     );
+    
   }
   viewport_set_canvas_cull_mask(_viewport, _canvas_cull_mask) {
     return _call_native_mb_no_ret(
@@ -6786,6 +7030,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _canvas_cull_mask
     );
+    
   }
   viewport_set_scaling_3d_mode(_viewport, _scaling_3d_mode) {
     return _call_native_mb_no_ret(
@@ -6793,6 +7038,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _scaling_3d_mode
     );
+    
   }
   viewport_set_scaling_3d_scale(_viewport, _scale) {
     return _call_native_mb_no_ret(
@@ -6800,6 +7046,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _scale
     );
+    
   }
   viewport_set_fsr_sharpness(_viewport, _sharpness) {
     return _call_native_mb_no_ret(
@@ -6807,6 +7054,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _sharpness
     );
+    
   }
   viewport_set_texture_mipmap_bias(_viewport, _mipmap_bias) {
     return _call_native_mb_no_ret(
@@ -6814,6 +7062,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _mipmap_bias
     );
+    
   }
   viewport_set_update_mode(_viewport, _update_mode) {
     return _call_native_mb_no_ret(
@@ -6821,6 +7070,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _update_mode
     );
+    
   }
   viewport_get_update_mode(_viewport) {
     return _call_native_mb_ret(
@@ -6829,6 +7079,7 @@ class _RenderingServer extends GodotObject{
 			Variant.INT,
       _viewport
     );
+    
   }
   viewport_set_clear_mode(_viewport, _clear_mode) {
     return _call_native_mb_no_ret(
@@ -6836,6 +7087,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _clear_mode
     );
+    
   }
   viewport_get_render_target(_viewport) {
     return _call_native_mb_ret(
@@ -6845,6 +7097,7 @@ class _RenderingServer extends GodotObject{
     ,
       _viewport
     );
+    
   }
   viewport_get_texture(_viewport) {
     return _call_native_mb_ret(
@@ -6854,6 +7107,7 @@ class _RenderingServer extends GodotObject{
     ,
       _viewport
     );
+    
   }
   viewport_set_disable_3d(_viewport, _disable) {
     return _call_native_mb_no_ret(
@@ -6861,6 +7115,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _disable
     );
+    
   }
   viewport_set_disable_2d(_viewport, _disable) {
     return _call_native_mb_no_ret(
@@ -6868,6 +7123,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _disable
     );
+    
   }
   viewport_set_environment_mode(_viewport, _mode) {
     return _call_native_mb_no_ret(
@@ -6875,6 +7131,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _mode
     );
+    
   }
   viewport_attach_camera(_viewport, _camera) {
     return _call_native_mb_no_ret(
@@ -6882,6 +7139,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _camera
     );
+    
   }
   viewport_set_scenario(_viewport, _scenario) {
     return _call_native_mb_no_ret(
@@ -6889,6 +7147,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _scenario
     );
+    
   }
   viewport_attach_canvas(_viewport, _canvas) {
     return _call_native_mb_no_ret(
@@ -6896,6 +7155,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _canvas
     );
+    
   }
   viewport_remove_canvas(_viewport, _canvas) {
     return _call_native_mb_no_ret(
@@ -6903,6 +7163,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _canvas
     );
+    
   }
   viewport_set_snap_2d_transforms_to_pixel(_viewport, _enabled) {
     return _call_native_mb_no_ret(
@@ -6910,6 +7171,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _enabled
     );
+    
   }
   viewport_set_snap_2d_vertices_to_pixel(_viewport, _enabled) {
     return _call_native_mb_no_ret(
@@ -6917,6 +7179,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _enabled
     );
+    
   }
   viewport_set_default_canvas_item_texture_filter(_viewport, _filter) {
     return _call_native_mb_no_ret(
@@ -6924,6 +7187,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _filter
     );
+    
   }
   viewport_set_default_canvas_item_texture_repeat(_viewport, _repeat) {
     return _call_native_mb_no_ret(
@@ -6931,6 +7195,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _repeat
     );
+    
   }
   viewport_set_canvas_transform(_viewport, _canvas, _offset) {
     return _call_native_mb_no_ret(
@@ -6938,6 +7203,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _canvas, _offset
     );
+    
   }
   viewport_set_canvas_stacking(_viewport, _canvas, _layer, _sublayer) {
     return _call_native_mb_no_ret(
@@ -6945,6 +7211,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _canvas, _layer, _sublayer
     );
+    
   }
   viewport_set_transparent_background(_viewport, _enabled) {
     return _call_native_mb_no_ret(
@@ -6952,6 +7219,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _enabled
     );
+    
   }
   viewport_set_global_canvas_transform(_viewport, _transform) {
     return _call_native_mb_no_ret(
@@ -6959,6 +7227,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _transform
     );
+    
   }
   viewport_set_sdf_oversize_and_scale(_viewport, _oversize, _scale) {
     return _call_native_mb_no_ret(
@@ -6966,6 +7235,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _oversize, _scale
     );
+    
   }
   viewport_set_positional_shadow_atlas_size(_viewport, _size, _use_16_bits) {
     return _call_native_mb_no_ret(
@@ -6973,6 +7243,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _size, _use_16_bits
     );
+    
   }
   viewport_set_positional_shadow_atlas_quadrant_subdivision(_viewport, _quadrant, _subdivision) {
     return _call_native_mb_no_ret(
@@ -6980,6 +7251,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _quadrant, _subdivision
     );
+    
   }
   viewport_set_msaa_3d(_viewport, _msaa) {
     return _call_native_mb_no_ret(
@@ -6987,6 +7259,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _msaa
     );
+    
   }
   viewport_set_msaa_2d(_viewport, _msaa) {
     return _call_native_mb_no_ret(
@@ -6994,6 +7267,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _msaa
     );
+    
   }
   viewport_set_use_hdr_2d(_viewport, _enabled) {
     return _call_native_mb_no_ret(
@@ -7001,6 +7275,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _enabled
     );
+    
   }
   viewport_set_screen_space_aa(_viewport, _mode) {
     return _call_native_mb_no_ret(
@@ -7008,6 +7283,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _mode
     );
+    
   }
   viewport_set_use_taa(_viewport, _enable) {
     return _call_native_mb_no_ret(
@@ -7015,6 +7291,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _enable
     );
+    
   }
   viewport_set_use_debanding(_viewport, _enable) {
     return _call_native_mb_no_ret(
@@ -7022,6 +7299,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _enable
     );
+    
   }
   viewport_set_use_occlusion_culling(_viewport, _enable) {
     return _call_native_mb_no_ret(
@@ -7029,6 +7307,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _enable
     );
+    
   }
   viewport_set_occlusion_rays_per_thread(_rays_per_thread) {
     return _call_native_mb_no_ret(
@@ -7036,6 +7315,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _rays_per_thread
     );
+    
   }
   viewport_set_occlusion_culling_build_quality(_quality) {
     return _call_native_mb_no_ret(
@@ -7043,6 +7323,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _quality
     );
+    
   }
   viewport_get_render_info(_viewport, _type, _info) {
     return _call_native_mb_ret(
@@ -7051,6 +7332,7 @@ class _RenderingServer extends GodotObject{
 			Variant.Type.INT,
       _viewport, _type, _info
     );
+    
   }
   viewport_set_debug_draw(_viewport, _draw) {
     return _call_native_mb_no_ret(
@@ -7058,6 +7340,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _draw
     );
+    
   }
   viewport_set_measure_render_time(_viewport, _enable) {
     return _call_native_mb_no_ret(
@@ -7065,6 +7348,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _enable
     );
+    
   }
   viewport_get_measured_render_time_cpu(_viewport) {
     return _call_native_mb_ret(
@@ -7073,6 +7357,7 @@ class _RenderingServer extends GodotObject{
 			Variant.Type.FLOAT,
       _viewport
     );
+    
   }
   viewport_get_measured_render_time_gpu(_viewport) {
     return _call_native_mb_ret(
@@ -7081,6 +7366,7 @@ class _RenderingServer extends GodotObject{
 			Variant.Type.FLOAT,
       _viewport
     );
+    
   }
   viewport_set_vrs_mode(_viewport, _mode) {
     return _call_native_mb_no_ret(
@@ -7088,6 +7374,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _mode
     );
+    
   }
   viewport_set_vrs_update_mode(_viewport, _mode) {
     return _call_native_mb_no_ret(
@@ -7095,6 +7382,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _mode
     );
+    
   }
   viewport_set_vrs_texture(_viewport, _texture) {
     return _call_native_mb_no_ret(
@@ -7102,6 +7390,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _viewport, _texture
     );
+    
   }
   sky_create() {
     return _call_native_mb_ret(
@@ -7111,6 +7400,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   sky_set_radiance_size(_sky, _radiance_size) {
     return _call_native_mb_no_ret(
@@ -7118,6 +7408,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _sky, _radiance_size
     );
+    
   }
   sky_set_mode(_sky, _mode) {
     return _call_native_mb_no_ret(
@@ -7125,6 +7416,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _sky, _mode
     );
+    
   }
   sky_set_material(_sky, _material) {
     return _call_native_mb_no_ret(
@@ -7132,6 +7424,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _sky, _material
     );
+    
   }
   sky_bake_panorama(_sky, _energy, _bake_irradiance, _size) {
     return _call_native_mb_ret(
@@ -7140,6 +7433,7 @@ class _RenderingServer extends GodotObject{
 			Variant.INT,
       _sky, _energy, _bake_irradiance, _size
     );
+    
   }
   compositor_effect_create() {
     return _call_native_mb_ret(
@@ -7149,6 +7443,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   compositor_effect_set_enabled(_effect, _enabled) {
     return _call_native_mb_no_ret(
@@ -7156,6 +7451,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _effect, _enabled
     );
+    
   }
   compositor_effect_set_callback(_effect, _callback_type, _callback) {
     return _call_native_mb_no_ret(
@@ -7163,6 +7459,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _effect, _callback_type, _callback
     );
+    
   }
   compositor_effect_set_flag(_effect, _flag, _set) {
     return _call_native_mb_no_ret(
@@ -7170,6 +7467,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _effect, _flag, _set
     );
+    
   }
   compositor_create() {
     return _call_native_mb_ret(
@@ -7179,6 +7477,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   compositor_set_compositor_effects(_compositor, _effects) {
     return _call_native_mb_no_ret(
@@ -7186,6 +7485,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _compositor, _effects
     );
+    
   }
   environment_create() {
     return _call_native_mb_ret(
@@ -7195,6 +7495,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   environment_set_background(_env, _bg) {
     return _call_native_mb_no_ret(
@@ -7202,6 +7503,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _env, _bg
     );
+    
   }
   environment_set_sky(_env, _sky) {
     return _call_native_mb_no_ret(
@@ -7209,6 +7511,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _env, _sky
     );
+    
   }
   environment_set_sky_custom_fov(_env, _scale) {
     return _call_native_mb_no_ret(
@@ -7216,6 +7519,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _env, _scale
     );
+    
   }
   environment_set_sky_orientation(_env, _orientation) {
     return _call_native_mb_no_ret(
@@ -7223,6 +7527,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _env, _orientation
     );
+    
   }
   environment_set_bg_color(_env, _color) {
     return _call_native_mb_no_ret(
@@ -7230,6 +7535,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _env, _color
     );
+    
   }
   environment_set_bg_energy(_env, _multiplier, _exposure_value) {
     return _call_native_mb_no_ret(
@@ -7237,6 +7543,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _env, _multiplier, _exposure_value
     );
+    
   }
   environment_set_canvas_max_layer(_env, _max_layer) {
     return _call_native_mb_no_ret(
@@ -7244,6 +7551,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _env, _max_layer
     );
+    
   }
   environment_set_ambient_light(_env, _color, _ambient, _energy, _sky_contibution, _reflection_source) {
     return _call_native_mb_no_ret(
@@ -7251,6 +7559,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _env, _color, _ambient, _energy, _sky_contibution, _reflection_source
     );
+    
   }
   environment_set_glow(_env, _enable, _levels, _intensity, _strength, _mix, _bloom_threshold, _blend_mode, _hdr_bleed_threshold, _hdr_bleed_scale, _hdr_luminance_cap, _glow_map_strength, _glow_map) {
     return _call_native_mb_no_ret(
@@ -7258,6 +7567,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _env, _enable, _levels, _intensity, _strength, _mix, _bloom_threshold, _blend_mode, _hdr_bleed_threshold, _hdr_bleed_scale, _hdr_luminance_cap, _glow_map_strength, _glow_map
     );
+    
   }
   environment_set_tonemap(_env, _tone_mapper, _exposure, _white) {
     return _call_native_mb_no_ret(
@@ -7265,6 +7575,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _env, _tone_mapper, _exposure, _white
     );
+    
   }
   environment_set_adjustment(_env, _enable, _brightness, _contrast, _saturation, _use_1d_color_correction, _color_correction) {
     return _call_native_mb_no_ret(
@@ -7272,6 +7583,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _env, _enable, _brightness, _contrast, _saturation, _use_1d_color_correction, _color_correction
     );
+    
   }
   environment_set_ssr(_env, _enable, _max_steps, _fade_in, _fade_out, _depth_tolerance) {
     return _call_native_mb_no_ret(
@@ -7279,6 +7591,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _env, _enable, _max_steps, _fade_in, _fade_out, _depth_tolerance
     );
+    
   }
   environment_set_ssao(_env, _enable, _radius, _intensity, _power, _detail, _horizon, _sharpness, _light_affect, _ao_channel_affect) {
     return _call_native_mb_no_ret(
@@ -7286,6 +7599,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _env, _enable, _radius, _intensity, _power, _detail, _horizon, _sharpness, _light_affect, _ao_channel_affect
     );
+    
   }
   environment_set_fog(_env, _enable, _light_color, _light_energy, _sun_scatter, _density, _height, _height_density, _aerial_perspective, _sky_affect, _fog_mode) {
     return _call_native_mb_no_ret(
@@ -7293,6 +7607,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _env, _enable, _light_color, _light_energy, _sun_scatter, _density, _height, _height_density, _aerial_perspective, _sky_affect, _fog_mode
     );
+    
   }
   environment_set_sdfgi(_env, _enable, _cascades, _min_cell_size, _y_scale, _use_occlusion, _bounce_feedback, _read_sky, _energy, _normal_bias, _probe_bias) {
     return _call_native_mb_no_ret(
@@ -7300,6 +7615,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _env, _enable, _cascades, _min_cell_size, _y_scale, _use_occlusion, _bounce_feedback, _read_sky, _energy, _normal_bias, _probe_bias
     );
+    
   }
   environment_set_volumetric_fog(_env, _enable, _density, _albedo, _emission, _emission_energy, _anisotropy, _length, _p_detail_spread, _gi_inject, _temporal_reprojection, _temporal_reprojection_amount, _ambient_inject, _sky_affect) {
     return _call_native_mb_no_ret(
@@ -7307,6 +7623,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _env, _enable, _density, _albedo, _emission, _emission_energy, _anisotropy, _length, _p_detail_spread, _gi_inject, _temporal_reprojection, _temporal_reprojection_amount, _ambient_inject, _sky_affect
     );
+    
   }
   environment_glow_set_use_bicubic_upscale(_enable) {
     return _call_native_mb_no_ret(
@@ -7314,6 +7631,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _enable
     );
+    
   }
   environment_set_ssr_roughness_quality(_quality) {
     return _call_native_mb_no_ret(
@@ -7321,6 +7639,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _quality
     );
+    
   }
   environment_set_ssao_quality(_quality, _half_size, _adaptive_target, _blur_passes, _fadeout_from, _fadeout_to) {
     return _call_native_mb_no_ret(
@@ -7328,6 +7647,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _quality, _half_size, _adaptive_target, _blur_passes, _fadeout_from, _fadeout_to
     );
+    
   }
   environment_set_ssil_quality(_quality, _half_size, _adaptive_target, _blur_passes, _fadeout_from, _fadeout_to) {
     return _call_native_mb_no_ret(
@@ -7335,6 +7655,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _quality, _half_size, _adaptive_target, _blur_passes, _fadeout_from, _fadeout_to
     );
+    
   }
   environment_set_sdfgi_ray_count(_ray_count) {
     return _call_native_mb_no_ret(
@@ -7342,6 +7663,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _ray_count
     );
+    
   }
   environment_set_sdfgi_frames_to_converge(_frames) {
     return _call_native_mb_no_ret(
@@ -7349,6 +7671,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _frames
     );
+    
   }
   environment_set_sdfgi_frames_to_update_light(_frames) {
     return _call_native_mb_no_ret(
@@ -7356,6 +7679,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _frames
     );
+    
   }
   environment_set_volumetric_fog_volume_size(_size, _depth) {
     return _call_native_mb_no_ret(
@@ -7363,6 +7687,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _size, _depth
     );
+    
   }
   environment_set_volumetric_fog_filter_active(_active) {
     return _call_native_mb_no_ret(
@@ -7370,6 +7695,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _active
     );
+    
   }
   environment_bake_panorama(_environment, _bake_irradiance, _size) {
     return _call_native_mb_ret(
@@ -7378,6 +7704,7 @@ class _RenderingServer extends GodotObject{
 			Variant.INT,
       _environment, _bake_irradiance, _size
     );
+    
   }
   screen_space_roughness_limiter_set_active(_enable, _amount, _limit) {
     return _call_native_mb_no_ret(
@@ -7385,6 +7712,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _enable, _amount, _limit
     );
+    
   }
   sub_surface_scattering_set_quality(_quality) {
     return _call_native_mb_no_ret(
@@ -7392,6 +7720,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _quality
     );
+    
   }
   sub_surface_scattering_set_scale(_scale, _depth_scale) {
     return _call_native_mb_no_ret(
@@ -7399,6 +7728,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _scale, _depth_scale
     );
+    
   }
   camera_attributes_create() {
     return _call_native_mb_ret(
@@ -7408,6 +7738,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   camera_attributes_set_dof_blur_quality(_quality, _use_jitter) {
     return _call_native_mb_no_ret(
@@ -7415,6 +7746,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _quality, _use_jitter
     );
+    
   }
   camera_attributes_set_dof_blur_bokeh_shape(_shape) {
     return _call_native_mb_no_ret(
@@ -7422,6 +7754,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _shape
     );
+    
   }
   camera_attributes_set_dof_blur(_camera_attributes, _far_enable, _far_distance, _far_transition, _near_enable, _near_distance, _near_transition, _amount) {
     return _call_native_mb_no_ret(
@@ -7429,6 +7762,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _camera_attributes, _far_enable, _far_distance, _far_transition, _near_enable, _near_distance, _near_transition, _amount
     );
+    
   }
   camera_attributes_set_exposure(_camera_attributes, _multiplier, _normalization) {
     return _call_native_mb_no_ret(
@@ -7436,6 +7770,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _camera_attributes, _multiplier, _normalization
     );
+    
   }
   camera_attributes_set_auto_exposure(_camera_attributes, _enable, _min_sensitivity, _max_sensitivity, _speed, _scale) {
     return _call_native_mb_no_ret(
@@ -7443,6 +7778,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _camera_attributes, _enable, _min_sensitivity, _max_sensitivity, _speed, _scale
     );
+    
   }
   scenario_create() {
     return _call_native_mb_ret(
@@ -7452,6 +7788,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   scenario_set_environment(_scenario, _environment) {
     return _call_native_mb_no_ret(
@@ -7459,6 +7796,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _scenario, _environment
     );
+    
   }
   scenario_set_fallback_environment(_scenario, _environment) {
     return _call_native_mb_no_ret(
@@ -7466,6 +7804,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _scenario, _environment
     );
+    
   }
   scenario_set_camera_attributes(_scenario, _effects) {
     return _call_native_mb_no_ret(
@@ -7473,6 +7812,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _scenario, _effects
     );
+    
   }
   scenario_set_compositor(_scenario, _compositor) {
     return _call_native_mb_no_ret(
@@ -7480,6 +7820,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _scenario, _compositor
     );
+    
   }
   instance_create2(_base, _scenario) {
     return _call_native_mb_ret(
@@ -7489,6 +7830,7 @@ class _RenderingServer extends GodotObject{
     ,
       _base, _scenario
     );
+    
   }
   instance_create() {
     return _call_native_mb_ret(
@@ -7498,6 +7840,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   instance_set_base(_instance, _base) {
     return _call_native_mb_no_ret(
@@ -7505,6 +7848,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _instance, _base
     );
+    
   }
   instance_set_scenario(_instance, _scenario) {
     return _call_native_mb_no_ret(
@@ -7512,6 +7856,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _instance, _scenario
     );
+    
   }
   instance_set_layer_mask(_instance, _mask) {
     return _call_native_mb_no_ret(
@@ -7519,6 +7864,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _instance, _mask
     );
+    
   }
   instance_set_pivot_data(_instance, _sorting_offset, _use_aabb_center) {
     return _call_native_mb_no_ret(
@@ -7526,6 +7872,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _instance, _sorting_offset, _use_aabb_center
     );
+    
   }
   instance_set_transform(_instance, _transform) {
     return _call_native_mb_no_ret(
@@ -7533,6 +7880,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _instance, _transform
     );
+    
   }
   instance_attach_object_instance_id(_instance, _id) {
     return _call_native_mb_no_ret(
@@ -7540,6 +7888,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _instance, _id
     );
+    
   }
   instance_set_blend_shape_weight(_instance, _shape, _weight) {
     return _call_native_mb_no_ret(
@@ -7547,6 +7896,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _instance, _shape, _weight
     );
+    
   }
   instance_set_surface_override_material(_instance, _surface, _material) {
     return _call_native_mb_no_ret(
@@ -7554,6 +7904,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _instance, _surface, _material
     );
+    
   }
   instance_set_visible(_instance, _visible) {
     return _call_native_mb_no_ret(
@@ -7561,6 +7912,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _instance, _visible
     );
+    
   }
   instance_geometry_set_transparency(_instance, _transparency) {
     return _call_native_mb_no_ret(
@@ -7568,6 +7920,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _instance, _transparency
     );
+    
   }
   instance_set_custom_aabb(_instance, _aabb) {
     return _call_native_mb_no_ret(
@@ -7575,6 +7928,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _instance, _aabb
     );
+    
   }
   instance_attach_skeleton(_instance, _skeleton) {
     return _call_native_mb_no_ret(
@@ -7582,6 +7936,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _instance, _skeleton
     );
+    
   }
   instance_set_extra_visibility_margin(_instance, _margin) {
     return _call_native_mb_no_ret(
@@ -7589,6 +7944,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _instance, _margin
     );
+    
   }
   instance_set_visibility_parent(_instance, _parent) {
     return _call_native_mb_no_ret(
@@ -7596,6 +7952,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _instance, _parent
     );
+    
   }
   instance_set_ignore_culling(_instance, _enabled) {
     return _call_native_mb_no_ret(
@@ -7603,6 +7960,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _instance, _enabled
     );
+    
   }
   instance_geometry_set_flag(_instance, _flag, _enabled) {
     return _call_native_mb_no_ret(
@@ -7610,6 +7968,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _instance, _flag, _enabled
     );
+    
   }
   instance_geometry_set_cast_shadows_setting(_instance, _shadow_casting_setting) {
     return _call_native_mb_no_ret(
@@ -7617,6 +7976,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _instance, _shadow_casting_setting
     );
+    
   }
   instance_geometry_set_material_override(_instance, _material) {
     return _call_native_mb_no_ret(
@@ -7624,6 +7984,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _instance, _material
     );
+    
   }
   instance_geometry_set_material_overlay(_instance, _material) {
     return _call_native_mb_no_ret(
@@ -7631,6 +7992,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _instance, _material
     );
+    
   }
   instance_geometry_set_visibility_range(_instance, _min, _max, _min_margin, _max_margin, _fade_mode) {
     return _call_native_mb_no_ret(
@@ -7638,6 +8000,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _instance, _min, _max, _min_margin, _max_margin, _fade_mode
     );
+    
   }
   instance_geometry_set_lightmap(_instance, _lightmap, _lightmap_uv_scale, _lightmap_slice) {
     return _call_native_mb_no_ret(
@@ -7645,6 +8008,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _instance, _lightmap, _lightmap_uv_scale, _lightmap_slice
     );
+    
   }
   instance_geometry_set_lod_bias(_instance, _lod_bias) {
     return _call_native_mb_no_ret(
@@ -7652,6 +8016,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _instance, _lod_bias
     );
+    
   }
   instance_geometry_set_shader_parameter(_instance, _parameter, _value) {
     return _call_native_mb_no_ret(
@@ -7659,6 +8024,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _instance, _parameter, _value
     );
+    
   }
   instance_geometry_get_shader_parameter(_instance, _parameter) {
     return _call_native_mb_ret(
@@ -7668,6 +8034,7 @@ class _RenderingServer extends GodotObject{
     ,
       _instance, _parameter
     );
+    
   }
   instance_geometry_get_shader_parameter_default_value(_instance, _parameter) {
     return _call_native_mb_ret(
@@ -7677,6 +8044,7 @@ class _RenderingServer extends GodotObject{
     ,
       _instance, _parameter
     );
+    
   }
   instance_geometry_get_shader_parameter_list(_instance) {
     return _call_native_mb_ret(
@@ -7685,6 +8053,7 @@ class _RenderingServer extends GodotObject{
 			Variant.INT,
       _instance
     );
+    
   }
   instances_cull_aabb(_aabb, _scenario) {
     return _call_native_mb_ret(
@@ -7694,6 +8063,7 @@ class _RenderingServer extends GodotObject{
     ,
       _aabb, _scenario
     );
+    
   }
   instances_cull_ray(_from, _to, _scenario) {
     return _call_native_mb_ret(
@@ -7703,6 +8073,7 @@ class _RenderingServer extends GodotObject{
     ,
       _from, _to, _scenario
     );
+    
   }
   instances_cull_convex(_convex, _scenario) {
     return _call_native_mb_ret(
@@ -7712,6 +8083,7 @@ class _RenderingServer extends GodotObject{
     ,
       _convex, _scenario
     );
+    
   }
   bake_render_uv2(_base, _material_overrides, _image_size) {
     return _call_native_mb_ret(
@@ -7720,6 +8092,7 @@ class _RenderingServer extends GodotObject{
 			Variant.INT,
       _base, _material_overrides, _image_size
     );
+    
   }
   canvas_create() {
     return _call_native_mb_ret(
@@ -7729,6 +8102,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   canvas_set_item_mirroring(_canvas, _item, _mirroring) {
     return _call_native_mb_no_ret(
@@ -7736,6 +8110,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _canvas, _item, _mirroring
     );
+    
   }
   canvas_set_item_repeat(_item, _repeat_size, _repeat_times) {
     return _call_native_mb_no_ret(
@@ -7743,6 +8118,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _repeat_size, _repeat_times
     );
+    
   }
   canvas_set_modulate(_canvas, _color) {
     return _call_native_mb_no_ret(
@@ -7750,6 +8126,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _canvas, _color
     );
+    
   }
   canvas_set_disable_scale(_disable) {
     return _call_native_mb_no_ret(
@@ -7757,6 +8134,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _disable
     );
+    
   }
   canvas_texture_create() {
     return _call_native_mb_ret(
@@ -7766,6 +8144,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   canvas_texture_set_channel(_canvas_texture, _channel, _texture) {
     return _call_native_mb_no_ret(
@@ -7773,6 +8152,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _canvas_texture, _channel, _texture
     );
+    
   }
   canvas_texture_set_shading_parameters(_canvas_texture, _base_color, _shininess) {
     return _call_native_mb_no_ret(
@@ -7780,6 +8160,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _canvas_texture, _base_color, _shininess
     );
+    
   }
   canvas_texture_set_texture_filter(_canvas_texture, _filter) {
     return _call_native_mb_no_ret(
@@ -7787,6 +8168,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _canvas_texture, _filter
     );
+    
   }
   canvas_texture_set_texture_repeat(_canvas_texture, _repeat) {
     return _call_native_mb_no_ret(
@@ -7794,6 +8176,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _canvas_texture, _repeat
     );
+    
   }
   canvas_item_create() {
     return _call_native_mb_ret(
@@ -7803,6 +8186,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   canvas_item_set_parent(_item, _parent) {
     return _call_native_mb_no_ret(
@@ -7810,6 +8194,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _parent
     );
+    
   }
   canvas_item_set_default_texture_filter(_item, _filter) {
     return _call_native_mb_no_ret(
@@ -7817,6 +8202,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _filter
     );
+    
   }
   canvas_item_set_default_texture_repeat(_item, _repeat) {
     return _call_native_mb_no_ret(
@@ -7824,6 +8210,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _repeat
     );
+    
   }
   canvas_item_set_visible(_item, _visible) {
     return _call_native_mb_no_ret(
@@ -7831,6 +8218,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _visible
     );
+    
   }
   canvas_item_set_light_mask(_item, _mask) {
     return _call_native_mb_no_ret(
@@ -7838,6 +8226,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _mask
     );
+    
   }
   canvas_item_set_visibility_layer(_item, _visibility_layer) {
     return _call_native_mb_no_ret(
@@ -7845,6 +8234,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _visibility_layer
     );
+    
   }
   canvas_item_set_transform(_item, _transform) {
     return _call_native_mb_no_ret(
@@ -7852,6 +8242,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _transform
     );
+    
   }
   canvas_item_set_clip(_item, _clip) {
     return _call_native_mb_no_ret(
@@ -7859,6 +8250,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _clip
     );
+    
   }
   canvas_item_set_distance_field_mode(_item, _enabled) {
     return _call_native_mb_no_ret(
@@ -7866,6 +8258,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _enabled
     );
+    
   }
   canvas_item_set_custom_rect(_item, _use_custom_rect, _rect) {
     return _call_native_mb_no_ret(
@@ -7873,6 +8266,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _use_custom_rect, _rect
     );
+    
   }
   canvas_item_set_modulate(_item, _color) {
     return _call_native_mb_no_ret(
@@ -7880,6 +8274,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _color
     );
+    
   }
   canvas_item_set_self_modulate(_item, _color) {
     return _call_native_mb_no_ret(
@@ -7887,6 +8282,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _color
     );
+    
   }
   canvas_item_set_draw_behind_parent(_item, _enabled) {
     return _call_native_mb_no_ret(
@@ -7894,6 +8290,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _enabled
     );
+    
   }
   canvas_item_set_interpolated(_item, _interpolated) {
     return _call_native_mb_no_ret(
@@ -7901,6 +8298,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _interpolated
     );
+    
   }
   canvas_item_reset_physics_interpolation(_item) {
     return _call_native_mb_no_ret(
@@ -7908,6 +8306,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item
     );
+    
   }
   canvas_item_transform_physics_interpolation(_item, _transform) {
     return _call_native_mb_no_ret(
@@ -7915,6 +8314,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _transform
     );
+    
   }
   canvas_item_add_line(_item, _from, _to, _color, _width, _antialiased) {
     return _call_native_mb_no_ret(
@@ -7922,6 +8322,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _from, _to, _color, _width, _antialiased
     );
+    
   }
   canvas_item_add_polyline(_item, _points, _colors, _width, _antialiased) {
     return _call_native_mb_no_ret(
@@ -7929,6 +8330,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _points, _colors, _width, _antialiased
     );
+    
   }
   canvas_item_add_multiline(_item, _points, _colors, _width, _antialiased) {
     return _call_native_mb_no_ret(
@@ -7936,6 +8338,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _points, _colors, _width, _antialiased
     );
+    
   }
   canvas_item_add_rect(_item, _rect, _color, _antialiased) {
     return _call_native_mb_no_ret(
@@ -7943,6 +8346,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _rect, _color, _antialiased
     );
+    
   }
   canvas_item_add_circle(_item, _pos, _radius, _color, _antialiased) {
     return _call_native_mb_no_ret(
@@ -7950,6 +8354,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _pos, _radius, _color, _antialiased
     );
+    
   }
   canvas_item_add_texture_rect(_item, _rect, _texture, _tile, _modulate, _transpose) {
     return _call_native_mb_no_ret(
@@ -7957,6 +8362,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _rect, _texture, _tile, _modulate, _transpose
     );
+    
   }
   canvas_item_add_msdf_texture_rect_region(_item, _rect, _texture, _src_rect, _modulate, _outline_size, _px_range, _scale) {
     return _call_native_mb_no_ret(
@@ -7964,6 +8370,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _rect, _texture, _src_rect, _modulate, _outline_size, _px_range, _scale
     );
+    
   }
   canvas_item_add_lcd_texture_rect_region(_item, _rect, _texture, _src_rect, _modulate) {
     return _call_native_mb_no_ret(
@@ -7971,6 +8378,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _rect, _texture, _src_rect, _modulate
     );
+    
   }
   canvas_item_add_texture_rect_region(_item, _rect, _texture, _src_rect, _modulate, _transpose, _clip_uv) {
     return _call_native_mb_no_ret(
@@ -7978,6 +8386,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _rect, _texture, _src_rect, _modulate, _transpose, _clip_uv
     );
+    
   }
   canvas_item_add_nine_patch(_item, _rect, _source, _texture, _topleft, _bottomright, _x_axis_mode, _y_axis_mode, _draw_center, _modulate) {
     return _call_native_mb_no_ret(
@@ -7985,6 +8394,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _rect, _source, _texture, _topleft, _bottomright, _x_axis_mode, _y_axis_mode, _draw_center, _modulate
     );
+    
   }
   canvas_item_add_primitive(_item, _points, _colors, _uvs, _texture) {
     return _call_native_mb_no_ret(
@@ -7992,6 +8402,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _points, _colors, _uvs, _texture
     );
+    
   }
   canvas_item_add_polygon(_item, _points, _colors, _uvs, _texture) {
     return _call_native_mb_no_ret(
@@ -7999,6 +8410,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _points, _colors, _uvs, _texture
     );
+    
   }
   canvas_item_add_triangle_array(_item, _indices, _points, _colors, _uvs, _bones, _weights, _texture, _count) {
     return _call_native_mb_no_ret(
@@ -8006,6 +8418,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _indices, _points, _colors, _uvs, _bones, _weights, _texture, _count
     );
+    
   }
   canvas_item_add_mesh(_item, _mesh, _transform, _modulate, _texture) {
     return _call_native_mb_no_ret(
@@ -8013,6 +8426,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _mesh, _transform, _modulate, _texture
     );
+    
   }
   canvas_item_add_multimesh(_item, _mesh, _texture) {
     return _call_native_mb_no_ret(
@@ -8020,6 +8434,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _mesh, _texture
     );
+    
   }
   canvas_item_add_particles(_item, _particles, _texture) {
     return _call_native_mb_no_ret(
@@ -8027,6 +8442,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _particles, _texture
     );
+    
   }
   canvas_item_add_set_transform(_item, _transform) {
     return _call_native_mb_no_ret(
@@ -8034,6 +8450,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _transform
     );
+    
   }
   canvas_item_add_clip_ignore(_item, _ignore) {
     return _call_native_mb_no_ret(
@@ -8041,6 +8458,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _ignore
     );
+    
   }
   canvas_item_add_animation_slice(_item, _animation_length, _slice_begin, _slice_end, _offset) {
     return _call_native_mb_no_ret(
@@ -8048,6 +8466,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _animation_length, _slice_begin, _slice_end, _offset
     );
+    
   }
   canvas_item_set_sort_children_by_y(_item, _enabled) {
     return _call_native_mb_no_ret(
@@ -8055,6 +8474,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _enabled
     );
+    
   }
   canvas_item_set_z_index(_item, _z_index) {
     return _call_native_mb_no_ret(
@@ -8062,6 +8482,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _z_index
     );
+    
   }
   canvas_item_set_z_as_relative_to_parent(_item, _enabled) {
     return _call_native_mb_no_ret(
@@ -8069,6 +8490,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _enabled
     );
+    
   }
   canvas_item_set_copy_to_backbuffer(_item, _enabled, _rect) {
     return _call_native_mb_no_ret(
@@ -8076,6 +8498,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _enabled, _rect
     );
+    
   }
   canvas_item_clear(_item) {
     return _call_native_mb_no_ret(
@@ -8083,6 +8506,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item
     );
+    
   }
   canvas_item_set_draw_index(_item, _index) {
     return _call_native_mb_no_ret(
@@ -8090,6 +8514,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _index
     );
+    
   }
   canvas_item_set_material(_item, _material) {
     return _call_native_mb_no_ret(
@@ -8097,6 +8522,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _material
     );
+    
   }
   canvas_item_set_use_parent_material(_item, _enabled) {
     return _call_native_mb_no_ret(
@@ -8104,6 +8530,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _enabled
     );
+    
   }
   canvas_item_set_visibility_notifier(_item, _enable, _area, _enter_callable, _exit_callable) {
     return _call_native_mb_no_ret(
@@ -8111,6 +8538,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _enable, _area, _enter_callable, _exit_callable
     );
+    
   }
   canvas_item_set_canvas_group_mode(_item, _mode, _clear_margin, _fit_empty, _fit_margin, _blur_mipmaps) {
     return _call_native_mb_no_ret(
@@ -8118,6 +8546,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _item, _mode, _clear_margin, _fit_empty, _fit_margin, _blur_mipmaps
     );
+    
   }
   debug_canvas_item_get_rect(_item) {
     return _call_native_mb_ret(
@@ -8127,6 +8556,7 @@ class _RenderingServer extends GodotObject{
     ,
       _item
     );
+    
   }
   canvas_light_create() {
     return _call_native_mb_ret(
@@ -8136,6 +8566,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   canvas_light_attach_to_canvas(_light, _canvas) {
     return _call_native_mb_no_ret(
@@ -8143,6 +8574,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _light, _canvas
     );
+    
   }
   canvas_light_set_enabled(_light, _enabled) {
     return _call_native_mb_no_ret(
@@ -8150,6 +8582,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _light, _enabled
     );
+    
   }
   canvas_light_set_texture_scale(_light, _scale) {
     return _call_native_mb_no_ret(
@@ -8157,6 +8590,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _light, _scale
     );
+    
   }
   canvas_light_set_transform(_light, _transform) {
     return _call_native_mb_no_ret(
@@ -8164,6 +8598,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _light, _transform
     );
+    
   }
   canvas_light_set_texture(_light, _texture) {
     return _call_native_mb_no_ret(
@@ -8171,6 +8606,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _light, _texture
     );
+    
   }
   canvas_light_set_texture_offset(_light, _offset) {
     return _call_native_mb_no_ret(
@@ -8178,6 +8614,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _light, _offset
     );
+    
   }
   canvas_light_set_color(_light, _color) {
     return _call_native_mb_no_ret(
@@ -8185,6 +8622,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _light, _color
     );
+    
   }
   canvas_light_set_height(_light, _height) {
     return _call_native_mb_no_ret(
@@ -8192,6 +8630,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _light, _height
     );
+    
   }
   canvas_light_set_energy(_light, _energy) {
     return _call_native_mb_no_ret(
@@ -8199,6 +8638,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _light, _energy
     );
+    
   }
   canvas_light_set_z_range(_light, _min_z, _max_z) {
     return _call_native_mb_no_ret(
@@ -8206,6 +8646,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _light, _min_z, _max_z
     );
+    
   }
   canvas_light_set_layer_range(_light, _min_layer, _max_layer) {
     return _call_native_mb_no_ret(
@@ -8213,6 +8654,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _light, _min_layer, _max_layer
     );
+    
   }
   canvas_light_set_item_cull_mask(_light, _mask) {
     return _call_native_mb_no_ret(
@@ -8220,6 +8662,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _light, _mask
     );
+    
   }
   canvas_light_set_item_shadow_cull_mask(_light, _mask) {
     return _call_native_mb_no_ret(
@@ -8227,6 +8670,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _light, _mask
     );
+    
   }
   canvas_light_set_mode(_light, _mode) {
     return _call_native_mb_no_ret(
@@ -8234,6 +8678,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _light, _mode
     );
+    
   }
   canvas_light_set_shadow_enabled(_light, _enabled) {
     return _call_native_mb_no_ret(
@@ -8241,6 +8686,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _light, _enabled
     );
+    
   }
   canvas_light_set_shadow_filter(_light, _filter) {
     return _call_native_mb_no_ret(
@@ -8248,6 +8694,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _light, _filter
     );
+    
   }
   canvas_light_set_shadow_color(_light, _color) {
     return _call_native_mb_no_ret(
@@ -8255,6 +8702,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _light, _color
     );
+    
   }
   canvas_light_set_shadow_smooth(_light, _smooth) {
     return _call_native_mb_no_ret(
@@ -8262,6 +8710,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _light, _smooth
     );
+    
   }
   canvas_light_set_blend_mode(_light, _mode) {
     return _call_native_mb_no_ret(
@@ -8269,6 +8718,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _light, _mode
     );
+    
   }
   canvas_light_set_interpolated(_light, _interpolated) {
     return _call_native_mb_no_ret(
@@ -8276,6 +8726,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _light, _interpolated
     );
+    
   }
   canvas_light_reset_physics_interpolation(_light) {
     return _call_native_mb_no_ret(
@@ -8283,6 +8734,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _light
     );
+    
   }
   canvas_light_transform_physics_interpolation(_light, _transform) {
     return _call_native_mb_no_ret(
@@ -8290,6 +8742,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _light, _transform
     );
+    
   }
   canvas_light_occluder_create() {
     return _call_native_mb_ret(
@@ -8299,6 +8752,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   canvas_light_occluder_attach_to_canvas(_occluder, _canvas) {
     return _call_native_mb_no_ret(
@@ -8306,6 +8760,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _occluder, _canvas
     );
+    
   }
   canvas_light_occluder_set_enabled(_occluder, _enabled) {
     return _call_native_mb_no_ret(
@@ -8313,6 +8768,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _occluder, _enabled
     );
+    
   }
   canvas_light_occluder_set_polygon(_occluder, _polygon) {
     return _call_native_mb_no_ret(
@@ -8320,6 +8776,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _occluder, _polygon
     );
+    
   }
   canvas_light_occluder_set_as_sdf_collision(_occluder, _enable) {
     return _call_native_mb_no_ret(
@@ -8327,6 +8784,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _occluder, _enable
     );
+    
   }
   canvas_light_occluder_set_transform(_occluder, _transform) {
     return _call_native_mb_no_ret(
@@ -8334,6 +8792,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _occluder, _transform
     );
+    
   }
   canvas_light_occluder_set_light_mask(_occluder, _mask) {
     return _call_native_mb_no_ret(
@@ -8341,6 +8800,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _occluder, _mask
     );
+    
   }
   canvas_light_occluder_set_interpolated(_occluder, _interpolated) {
     return _call_native_mb_no_ret(
@@ -8348,6 +8808,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _occluder, _interpolated
     );
+    
   }
   canvas_light_occluder_reset_physics_interpolation(_occluder) {
     return _call_native_mb_no_ret(
@@ -8355,6 +8816,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _occluder
     );
+    
   }
   canvas_light_occluder_transform_physics_interpolation(_occluder, _transform) {
     return _call_native_mb_no_ret(
@@ -8362,6 +8824,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _occluder, _transform
     );
+    
   }
   canvas_occluder_polygon_create() {
     return _call_native_mb_ret(
@@ -8371,6 +8834,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   canvas_occluder_polygon_set_shape(_occluder_polygon, _shape, _closed) {
     return _call_native_mb_no_ret(
@@ -8378,6 +8842,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _occluder_polygon, _shape, _closed
     );
+    
   }
   canvas_occluder_polygon_set_cull_mode(_occluder_polygon, _mode) {
     return _call_native_mb_no_ret(
@@ -8385,6 +8850,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _occluder_polygon, _mode
     );
+    
   }
   canvas_set_shadow_texture_size(_size) {
     return _call_native_mb_no_ret(
@@ -8392,6 +8858,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _size
     );
+    
   }
   global_shader_parameter_add(_name, _type, _default_value) {
     return _call_native_mb_no_ret(
@@ -8399,6 +8866,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _name, _type, _default_value
     );
+    
   }
   global_shader_parameter_remove(_name) {
     return _call_native_mb_no_ret(
@@ -8406,6 +8874,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _name
     );
+    
   }
   global_shader_parameter_get_list() {
     return _call_native_mb_ret(
@@ -8414,6 +8883,7 @@ class _RenderingServer extends GodotObject{
 			Variant.INT,
       
     );
+    
   }
   global_shader_parameter_set(_name, _value) {
     return _call_native_mb_no_ret(
@@ -8421,6 +8891,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _name, _value
     );
+    
   }
   global_shader_parameter_set_override(_name, _value) {
     return _call_native_mb_no_ret(
@@ -8428,6 +8899,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _name, _value
     );
+    
   }
   global_shader_parameter_get(_name) {
     return _call_native_mb_ret(
@@ -8437,6 +8909,7 @@ class _RenderingServer extends GodotObject{
     ,
       _name
     );
+    
   }
   global_shader_parameter_get_type(_name) {
     return _call_native_mb_ret(
@@ -8445,6 +8918,7 @@ class _RenderingServer extends GodotObject{
 			Variant.INT,
       _name
     );
+    
   }
   free_rid(_rid) {
     return _call_native_mb_no_ret(
@@ -8452,6 +8926,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _rid
     );
+    
   }
   request_frame_drawn_callback(_callable) {
     return _call_native_mb_no_ret(
@@ -8459,6 +8934,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _callable
     );
+    
   }
   has_changed() {
     return _call_native_mb_ret(
@@ -8467,6 +8943,7 @@ class _RenderingServer extends GodotObject{
 			Variant.Type.BOOL,
       
     );
+    
   }
   get_rendering_info(_info) {
     return _call_native_mb_ret(
@@ -8475,6 +8952,7 @@ class _RenderingServer extends GodotObject{
 			Variant.Type.INT,
       _info
     );
+    
   }
   get_video_adapter_name() {
     return _call_native_mb_ret(
@@ -8484,6 +8962,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   get_video_adapter_vendor() {
     return _call_native_mb_ret(
@@ -8493,6 +8972,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   get_video_adapter_type() {
     return _call_native_mb_ret(
@@ -8501,6 +8981,7 @@ class _RenderingServer extends GodotObject{
 			Variant.INT,
       
     );
+    
   }
   get_video_adapter_api_version() {
     return _call_native_mb_ret(
@@ -8510,6 +8991,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   make_sphere_mesh(_latitudes, _longitudes, _radius) {
     return _call_native_mb_ret(
@@ -8519,6 +9001,7 @@ class _RenderingServer extends GodotObject{
     ,
       _latitudes, _longitudes, _radius
     );
+    
   }
   get_test_cube() {
     return _call_native_mb_ret(
@@ -8528,6 +9011,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   get_test_texture() {
     return _call_native_mb_ret(
@@ -8537,6 +9021,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   get_white_texture() {
     return _call_native_mb_ret(
@@ -8546,6 +9031,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   set_boot_image(_image, _color, _scale, _use_filter) {
     return _call_native_mb_no_ret(
@@ -8553,6 +9039,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _image, _color, _scale, _use_filter
     );
+    
   }
   get_default_clear_color() {
     return _call_native_mb_ret(
@@ -8562,6 +9049,7 @@ class _RenderingServer extends GodotObject{
     ,
       
     );
+    
   }
   set_default_clear_color(_color) {
     return _call_native_mb_no_ret(
@@ -8569,6 +9057,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _color
     );
+    
   }
   has_os_feature(_feature) {
     return _call_native_mb_ret(
@@ -8577,6 +9066,7 @@ class _RenderingServer extends GodotObject{
 			Variant.Type.BOOL,
       _feature
     );
+    
   }
   set_debug_generate_wireframes(_generate) {
     return _call_native_mb_no_ret(
@@ -8584,6 +9074,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _generate
     );
+    
   }
   is_render_loop_enabled() {
     return _call_native_mb_ret(
@@ -8592,6 +9083,7 @@ class _RenderingServer extends GodotObject{
 			Variant.Type.BOOL,
       
     );
+    
   }
   set_render_loop_enabled(_enabled) {
     return _call_native_mb_no_ret(
@@ -8599,6 +9091,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _enabled
     );
+    
   }
   get_frame_setup_time_cpu() {
     return _call_native_mb_ret(
@@ -8607,6 +9100,7 @@ class _RenderingServer extends GodotObject{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   force_sync() {
     return _call_native_mb_no_ret(
@@ -8614,6 +9108,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       
     );
+    
   }
   force_draw(_swap_buffers, _frame_step) {
     return _call_native_mb_no_ret(
@@ -8621,6 +9116,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _swap_buffers, _frame_step
     );
+    
   }
   get_rendering_device() {
     return _call_native_mb_ret(
@@ -8629,6 +9125,7 @@ class _RenderingServer extends GodotObject{
 			Variant.INT,
       
     );
+    
   }
   create_local_rendering_device() {
     return _call_native_mb_ret(
@@ -8637,6 +9134,7 @@ class _RenderingServer extends GodotObject{
 			Variant.INT,
       
     );
+    
   }
   is_on_render_thread() {
     return _call_native_mb_ret(
@@ -8645,6 +9143,7 @@ class _RenderingServer extends GodotObject{
 			Variant.Type.BOOL,
       
     );
+    
   }
   call_on_render_thread(_callable) {
     return _call_native_mb_no_ret(
@@ -8652,6 +9151,7 @@ class _RenderingServer extends GodotObject{
       this._owner,
       _callable
     );
+    
   }
   has_feature(_feature) {
     return _call_native_mb_ret(
@@ -8660,6 +9160,7 @@ class _RenderingServer extends GodotObject{
 			Variant.Type.BOOL,
       _feature
     );
+    
   }
   static TextureLayeredType = {
     TEXTURE_LAYERED_2D_ARRAY: 0,

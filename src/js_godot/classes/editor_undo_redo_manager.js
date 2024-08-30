@@ -1,8 +1,15 @@
 import * as internal from '__internal__';
+import { GodotObject } from 'src/js_godot/classes/godot_object'
 import { Variant } from 'src/js_godot/variant/variant'
-import { StringName } from 'src/js_godot/variant/string_name'
-import { GodotObject } from 'src/js_godot/classesgodot_object'
 import { GDString } from 'src/js_godot/variant/gd_string'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_create_action;
     method_commit_action;
@@ -32,114 +39,114 @@ export class EditorUndoRedoManager extends GodotObject{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("EditorUndoRedoManager");
-      let methodname = new StringName("create_action");
-      this._bindings.method_create_action = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2107025470
-      );
-    }
-    {
-      let classname = new StringName("EditorUndoRedoManager");
-      let methodname = new StringName("commit_action");
-      this._bindings.method_commit_action = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3216645846
-      );
-    }
-    {
-      let classname = new StringName("EditorUndoRedoManager");
-      let methodname = new StringName("is_committing_action");
-      this._bindings.method_is_committing_action = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("EditorUndoRedoManager");
-      let methodname = new StringName("force_fixed_history");
-      this._bindings.method_force_fixed_history = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3218959716
-      );
-    }
-    {
-      let classname = new StringName("EditorUndoRedoManager");
-      let methodname = new StringName("add_do_method");
-      this._bindings.method_add_do_method = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1517810467
-      );
-    }
-    {
-      let classname = new StringName("EditorUndoRedoManager");
-      let methodname = new StringName("add_undo_method");
-      this._bindings.method_add_undo_method = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1517810467
-      );
-    }
-    {
-      let classname = new StringName("EditorUndoRedoManager");
-      let methodname = new StringName("add_do_property");
-      this._bindings.method_add_do_property = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1017172818
-      );
-    }
-    {
-      let classname = new StringName("EditorUndoRedoManager");
-      let methodname = new StringName("add_undo_property");
-      this._bindings.method_add_undo_property = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1017172818
-      );
-    }
-    {
-      let classname = new StringName("EditorUndoRedoManager");
-      let methodname = new StringName("add_do_reference");
-      this._bindings.method_add_do_reference = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3975164845
-      );
-    }
-    {
-      let classname = new StringName("EditorUndoRedoManager");
-      let methodname = new StringName("add_undo_reference");
-      this._bindings.method_add_undo_reference = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3975164845
-      );
-    }
-    {
-      let classname = new StringName("EditorUndoRedoManager");
-      let methodname = new StringName("get_object_history_id");
-      this._bindings.method_get_object_history_id = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1107568780
-      );
-    }
-    {
-      let classname = new StringName("EditorUndoRedoManager");
-      let methodname = new StringName("get_history_undo_redo");
-      this._bindings.method_get_history_undo_redo = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2417974513
-      );
-    }
+      {
+        let classname = new StringName("EditorUndoRedoManager");
+        let methodname = new StringName("create_action");
+        this._bindings.method_create_action = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2107025470
+        );
+      }
+      {
+        let classname = new StringName("EditorUndoRedoManager");
+        let methodname = new StringName("commit_action");
+        this._bindings.method_commit_action = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3216645846
+        );
+      }
+      {
+        let classname = new StringName("EditorUndoRedoManager");
+        let methodname = new StringName("is_committing_action");
+        this._bindings.method_is_committing_action = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          36873697
+        );
+      }
+      {
+        let classname = new StringName("EditorUndoRedoManager");
+        let methodname = new StringName("force_fixed_history");
+        this._bindings.method_force_fixed_history = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3218959716
+        );
+      }
+      {
+        let classname = new StringName("EditorUndoRedoManager");
+        let methodname = new StringName("add_do_method");
+        this._bindings.method_add_do_method = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1517810467
+        );
+      }
+      {
+        let classname = new StringName("EditorUndoRedoManager");
+        let methodname = new StringName("add_undo_method");
+        this._bindings.method_add_undo_method = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1517810467
+        );
+      }
+      {
+        let classname = new StringName("EditorUndoRedoManager");
+        let methodname = new StringName("add_do_property");
+        this._bindings.method_add_do_property = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1017172818
+        );
+      }
+      {
+        let classname = new StringName("EditorUndoRedoManager");
+        let methodname = new StringName("add_undo_property");
+        this._bindings.method_add_undo_property = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1017172818
+        );
+      }
+      {
+        let classname = new StringName("EditorUndoRedoManager");
+        let methodname = new StringName("add_do_reference");
+        this._bindings.method_add_do_reference = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3975164845
+        );
+      }
+      {
+        let classname = new StringName("EditorUndoRedoManager");
+        let methodname = new StringName("add_undo_reference");
+        this._bindings.method_add_undo_reference = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3975164845
+        );
+      }
+      {
+        let classname = new StringName("EditorUndoRedoManager");
+        let methodname = new StringName("get_object_history_id");
+        this._bindings.method_get_object_history_id = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1107568780
+        );
+      }
+      {
+        let classname = new StringName("EditorUndoRedoManager");
+        let methodname = new StringName("get_history_undo_redo");
+        this._bindings.method_get_history_undo_redo = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2417974513
+        );
+      }
   }
   create_action(_name, _merge_mode, _custom_context, _backward_undo_ops) {
     return _call_native_mb_no_ret(
@@ -147,6 +154,7 @@ export class EditorUndoRedoManager extends GodotObject{
       this._owner,
       _name, _merge_mode, _custom_context, _backward_undo_ops
     );
+    
   }
   commit_action(_execute) {
     return _call_native_mb_no_ret(
@@ -154,6 +162,7 @@ export class EditorUndoRedoManager extends GodotObject{
       this._owner,
       _execute
     );
+    
   }
   is_committing_action() {
     return _call_native_mb_ret(
@@ -162,6 +171,7 @@ export class EditorUndoRedoManager extends GodotObject{
 			Variant.Type.BOOL,
       
     );
+    
   }
   force_fixed_history() {
     return _call_native_mb_no_ret(
@@ -169,6 +179,7 @@ export class EditorUndoRedoManager extends GodotObject{
       this._owner,
       
     );
+    
   }
   add_do_method(_object, _method) {
     return _call_native_mb_no_ret(
@@ -176,6 +187,7 @@ export class EditorUndoRedoManager extends GodotObject{
       this._owner,
       _object, _method
     );
+    
   }
   add_undo_method(_object, _method) {
     return _call_native_mb_no_ret(
@@ -183,6 +195,7 @@ export class EditorUndoRedoManager extends GodotObject{
       this._owner,
       _object, _method
     );
+    
   }
   add_do_property(_object, _property, _value) {
     return _call_native_mb_no_ret(
@@ -190,6 +203,7 @@ export class EditorUndoRedoManager extends GodotObject{
       this._owner,
       _object, _property, _value
     );
+    
   }
   add_undo_property(_object, _property, _value) {
     return _call_native_mb_no_ret(
@@ -197,6 +211,7 @@ export class EditorUndoRedoManager extends GodotObject{
       this._owner,
       _object, _property, _value
     );
+    
   }
   add_do_reference(_object) {
     return _call_native_mb_no_ret(
@@ -204,6 +219,7 @@ export class EditorUndoRedoManager extends GodotObject{
       this._owner,
       _object
     );
+    
   }
   add_undo_reference(_object) {
     return _call_native_mb_no_ret(
@@ -211,6 +227,7 @@ export class EditorUndoRedoManager extends GodotObject{
       this._owner,
       _object
     );
+    
   }
   get_object_history_id(_object) {
     return _call_native_mb_ret(
@@ -219,6 +236,7 @@ export class EditorUndoRedoManager extends GodotObject{
 			Variant.Type.INT,
       _object
     );
+    
   }
   get_history_undo_redo(_id) {
     return _call_native_mb_ret(
@@ -227,6 +245,7 @@ export class EditorUndoRedoManager extends GodotObject{
 			Variant.INT,
       _id
     );
+    
   }
   static SpecialHistory = {
     GLOBAL_HISTORY: 0,

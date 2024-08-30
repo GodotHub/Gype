@@ -26,6 +26,7 @@ def dependencies_collect(clazz):
             if _type and is_variant(_type):
                 dependencies.add(to_gd_type(_type))
     dependencies.discard(to_js_type(clazz['name']))
+    dependencies.add('StringName')
     return dependencies
             
 

@@ -5,414 +5,6 @@ import {
 } from "src/js_godot/core/engine_ptrcall";
 import { StringName } from "src/js_godot/variant/string_name";
 import { variant_get_ptr_utility_function } from "__internal__";
-export class GD {
-  static #weakref_func;
-  static #typeof_func;
-  static #type_convert_func;
-  static #str_func;
-  static #error_string_func;
-  static #type_string_func;
-  static #print_func;
-  static #print_rich_func;
-  static #printerr_func;
-  static #printt_func;
-  static #prints_func;
-  static #printraw_func;
-  static #print_verbose_func;
-  static #push_error_func;
-  static #push_warning_func;
-  static #var_to_str_func;
-  static #str_to_var_func;
-  static #var_to_bytes_func;
-  static #bytes_to_var_func;
-  static #var_to_bytes_with_objects_func;
-  static #bytes_to_var_with_objects_func;
-  static #hash_func;
-  static #instance_from_id_func;
-  static #is_instance_id_valid_func;
-  static #is_instance_valid_func;
-  static #rid_allocate_id_func;
-  static #rid_from_int64_func;
-  static #is_same_func;
-
-  static _init_bindings() {
-    this.#weakref_func = variant_get_ptr_utility_function(
-      new StringName("weakref").opaque,
-      4776452
-    );
-    this.#typeof_func = variant_get_ptr_utility_function(
-      new StringName("typeof").opaque,
-      326422594
-    );
-    this.#type_convert_func = variant_get_ptr_utility_function(
-      new StringName("type_convert").opaque,
-      2453062746
-    );
-    this.#str_func = variant_get_ptr_utility_function(
-      new StringName("str").opaque,
-      32569176
-    );
-    this.#error_string_func = variant_get_ptr_utility_function(
-      new StringName("error_string").opaque,
-      942708242
-    );
-    this.#type_string_func = variant_get_ptr_utility_function(
-      new StringName("type_string").opaque,
-      942708242
-    );
-    this.#print_func = variant_get_ptr_utility_function(
-      new StringName("print").opaque,
-      2648703342
-    );
-    this.#print_rich_func = variant_get_ptr_utility_function(
-      new StringName("print_rich").opaque,
-      2648703342
-    );
-    this.#printerr_func = variant_get_ptr_utility_function(
-      new StringName("printerr").opaque,
-      2648703342
-    );
-    this.#printt_func = variant_get_ptr_utility_function(
-      new StringName("printt").opaque,
-      2648703342
-    );
-    this.#prints_func = variant_get_ptr_utility_function(
-      new StringName("prints").opaque,
-      2648703342
-    );
-    this.#printraw_func = variant_get_ptr_utility_function(
-      new StringName("printraw").opaque,
-      2648703342
-    );
-    this.#print_verbose_func = variant_get_ptr_utility_function(
-      new StringName("print_verbose").opaque,
-      2648703342
-    );
-    this.#push_error_func = variant_get_ptr_utility_function(
-      new StringName("push_error").opaque,
-      2648703342
-    );
-    this.#push_warning_func = variant_get_ptr_utility_function(
-      new StringName("push_warning").opaque,
-      2648703342
-    );
-    this.#var_to_str_func = variant_get_ptr_utility_function(
-      new StringName("var_to_str").opaque,
-      866625479
-    );
-    this.#str_to_var_func = variant_get_ptr_utility_function(
-      new StringName("str_to_var").opaque,
-      1891498491
-    );
-    this.#var_to_bytes_func = variant_get_ptr_utility_function(
-      new StringName("var_to_bytes").opaque,
-      2947269930
-    );
-    this.#bytes_to_var_func = variant_get_ptr_utility_function(
-      new StringName("bytes_to_var").opaque,
-      4249819452
-    );
-    this.#var_to_bytes_with_objects_func = variant_get_ptr_utility_function(
-      new StringName("var_to_bytes_with_objects").opaque,
-      2947269930
-    );
-    this.#bytes_to_var_with_objects_func = variant_get_ptr_utility_function(
-      new StringName("bytes_to_var_with_objects").opaque,
-      4249819452
-    );
-    this.#hash_func = variant_get_ptr_utility_function(
-      new StringName("hash").opaque,
-      326422594
-    );
-    this.#instance_from_id_func = variant_get_ptr_utility_function(
-      new StringName("instance_from_id").opaque,
-      1156694636
-    );
-    this.#is_instance_id_valid_func = variant_get_ptr_utility_function(
-      new StringName("is_instance_id_valid").opaque,
-      2232439758
-    );
-    this.#is_instance_valid_func = variant_get_ptr_utility_function(
-      new StringName("is_instance_valid").opaque,
-      996128841
-    );
-    this.#rid_allocate_id_func = variant_get_ptr_utility_function(
-      new StringName("rid_allocate_id").opaque,
-      701202648
-    );
-    this.#rid_from_int64_func = variant_get_ptr_utility_function(
-      new StringName("rid_from_int64").opaque,
-      3426892196
-    );
-    this.#is_same_func = variant_get_ptr_utility_function(
-      new StringName("is_same").opaque,
-      1409423524
-    );
-  }
-  static #weakref_internal(obj) {
-    return call_utility_ret(this.#weakref_func, obj);
-  }
-  static #typeof_internal(variable) {
-    return call_utility_ret(this.#typeof_func, variable);
-  }
-  static #type_convert_internal(variant, type) {
-    return call_utility_ret(this.#type_convert_func, variant, type);
-  }
-  static #str_internal(arg1, ...args) {
-    return call_utility_ret(this.#str_func, arg1, ...args);
-  }
-  static #error_string_internal(error) {
-    return call_utility_ret(this.#error_string_func, error);
-  }
-  static #type_string_internal(type) {
-    return call_utility_ret(this.#type_string_func, type);
-  }
-  static #print_internal(arg1, ...args) {
-    call_utility_no_ret(this.#print_func, arg1, ...args);
-  }
-  static #print_rich_internal(arg1, ...args) {
-    call_utility_no_ret(this.#print_rich_func, arg1, ...args);
-  }
-  static #printerr_internal(arg1, ...args) {
-    call_utility_no_ret(this.#printerr_func, arg1, ...args);
-  }
-  static #printt_internal(arg1, ...args) {
-    call_utility_no_ret(this.#printt_func, arg1, ...args);
-  }
-  static #prints_internal(arg1, ...args) {
-    call_utility_no_ret(this.#prints_func, arg1, ...args);
-  }
-  static #printraw_internal(arg1, ...args) {
-    call_utility_no_ret(this.#printraw_func, arg1, ...args);
-  }
-  static #print_verbose_internal(arg1, ...args) {
-    call_utility_no_ret(this.#print_verbose_func, arg1, ...args);
-  }
-  static #push_error_internal(arg1, ...args) {
-    call_utility_no_ret(this.#push_error_func, arg1, ...args);
-  }
-  static #push_warning_internal(arg1, ...args) {
-    call_utility_no_ret(this.#push_warning_func, arg1, ...args);
-  }
-  static #var_to_str_internal(variable) {
-    return call_utility_ret(this.#var_to_str_func, variable);
-  }
-  static #str_to_var_internal(string) {
-    return call_utility_ret(this.#str_to_var_func, string);
-  }
-  static #var_to_bytes_internal(variable) {
-    return call_utility_ret(this.#var_to_bytes_func, variable);
-  }
-  static #bytes_to_var_internal(bytes) {
-    return call_utility_ret(this.#bytes_to_var_func, bytes);
-  }
-  static #var_to_bytes_with_objects_internal(variable) {
-    return call_utility_ret(this.#var_to_bytes_with_objects_func, variable);
-  }
-  static #bytes_to_var_with_objects_internal(bytes) {
-    return call_utility_ret(this.#bytes_to_var_with_objects_func, bytes);
-  }
-  static #hash_internal(variable) {
-    return call_utility_ret(this.#hash_func, variable);
-  }
-  static #instance_from_id_internal(instance_id) {
-    return call_utility_ret(this.#instance_from_id_func, instance_id);
-  }
-  static #is_instance_id_valid_internal(id) {
-    return call_utility_ret(this.#is_instance_id_valid_func, id);
-  }
-  static #is_instance_valid_internal(instance) {
-    return call_utility_ret(this.#is_instance_valid_func, instance);
-  }
-  static #rid_allocate_id_internal() {
-    return call_utility_ret(this.#rid_allocate_id_func, );
-  }
-  static #rid_from_int64_internal(base) {
-    return call_utility_ret(this.#rid_from_int64_func, base);
-  }
-  static #is_same_internal(a, b) {
-    return call_utility_ret(this.#is_same_func, a, b);
-  }
-  weakref(obj) {
-    return GD.#weakref_internal(obj);
-  }
-  typeof(variable) {
-    return GD.#typeof_internal(variable);
-  }
-  type_convert(variant, type) {
-    return GD.#type_convert_internal(variant, type);
-  }
-  str(arg1, ...args) {
-    return GD.#str_internal(arg1, ...args);
-  }
-  error_string(error) {
-    return GD.#error_string_internal(error);
-  }
-  type_string(type) {
-    return GD.#type_string_internal(type);
-  }
-  print(arg1, ...args) {
-    return GD.#print_internal(arg1, ...args);
-  }
-  print_rich(arg1, ...args) {
-    return GD.#print_rich_internal(arg1, ...args);
-  }
-  printerr(arg1, ...args) {
-    return GD.#printerr_internal(arg1, ...args);
-  }
-  printt(arg1, ...args) {
-    return GD.#printt_internal(arg1, ...args);
-  }
-  prints(arg1, ...args) {
-    return GD.#prints_internal(arg1, ...args);
-  }
-  printraw(arg1, ...args) {
-    return GD.#printraw_internal(arg1, ...args);
-  }
-  print_verbose(arg1, ...args) {
-    return GD.#print_verbose_internal(arg1, ...args);
-  }
-  push_error(arg1, ...args) {
-    return GD.#push_error_internal(arg1, ...args);
-  }
-  push_warning(arg1, ...args) {
-    return GD.#push_warning_internal(arg1, ...args);
-  }
-  var_to_str(variable) {
-    return GD.#var_to_str_internal(variable);
-  }
-  str_to_var(string) {
-    return GD.#str_to_var_internal(string);
-  }
-  var_to_bytes(variable) {
-    return GD.#var_to_bytes_internal(variable);
-  }
-  bytes_to_var(bytes) {
-    return GD.#bytes_to_var_internal(bytes);
-  }
-  var_to_bytes_with_objects(variable) {
-    return GD.#var_to_bytes_with_objects_internal(variable);
-  }
-  bytes_to_var_with_objects(bytes) {
-    return GD.#bytes_to_var_with_objects_internal(bytes);
-  }
-  hash(variable) {
-    return GD.#hash_internal(variable);
-  }
-  instance_from_id(instance_id) {
-    return GD.#instance_from_id_internal(instance_id);
-  }
-  is_instance_id_valid(id) {
-    return GD.#is_instance_id_valid_internal(id);
-  }
-  is_instance_valid(instance) {
-    return GD.#is_instance_valid_internal(instance);
-  }
-  rid_allocate_id() {
-    return GD.#rid_allocate_id_internal();
-  }
-  rid_from_int64(base) {
-    return GD.#rid_from_int64_internal(base);
-  }
-  is_same(a, b) {
-    return GD.#is_same_internal(a, b);
-  }
-}
-
-export class Random {
-  static #randomize_func;
-  static #randi_func;
-  static #randf_func;
-  static #randi_range_func;
-  static #randf_range_func;
-  static #randfn_func;
-  static #seed_func;
-  static #rand_from_seed_func;
-
-  static _init_bindings() {
-    this.#randomize_func = variant_get_ptr_utility_function(
-      new StringName("randomize").opaque,
-      1691721052
-    );
-    this.#randi_func = variant_get_ptr_utility_function(
-      new StringName("randi").opaque,
-      701202648
-    );
-    this.#randf_func = variant_get_ptr_utility_function(
-      new StringName("randf").opaque,
-      2086227845
-    );
-    this.#randi_range_func = variant_get_ptr_utility_function(
-      new StringName("randi_range").opaque,
-      3133453818
-    );
-    this.#randf_range_func = variant_get_ptr_utility_function(
-      new StringName("randf_range").opaque,
-      92296394
-    );
-    this.#randfn_func = variant_get_ptr_utility_function(
-      new StringName("randfn").opaque,
-      92296394
-    );
-    this.#seed_func = variant_get_ptr_utility_function(
-      new StringName("seed").opaque,
-      382931173
-    );
-    this.#rand_from_seed_func = variant_get_ptr_utility_function(
-      new StringName("rand_from_seed").opaque,
-      1391063685
-    );
-  }
-  static #randomize_internal() {
-    call_utility_no_ret(this.#randomize_func, );
-  }
-  static #randi_internal() {
-    return call_utility_ret(this.#randi_func, );
-  }
-  static #randf_internal() {
-    return call_utility_ret(this.#randf_func, );
-  }
-  static #randi_range_internal(from, to) {
-    return call_utility_ret(this.#randi_range_func, from, to);
-  }
-  static #randf_range_internal(from, to) {
-    return call_utility_ret(this.#randf_range_func, from, to);
-  }
-  static #randfn_internal(mean, deviation) {
-    return call_utility_ret(this.#randfn_func, mean, deviation);
-  }
-  static #seed_internal(base) {
-    call_utility_no_ret(this.#seed_func, base);
-  }
-  static #rand_from_seed_internal(seed) {
-    return call_utility_ret(this.#rand_from_seed_func, seed);
-  }
-  randomize() {
-    return Random.#randomize_internal();
-  }
-  randi() {
-    return Random.#randi_internal();
-  }
-  randf() {
-    return Random.#randf_internal();
-  }
-  randi_range(from, to) {
-    return Random.#randi_range_internal(from, to);
-  }
-  randf_range(from, to) {
-    return Random.#randf_range_internal(from, to);
-  }
-  randfn(mean, deviation) {
-    return Random.#randfn_internal(mean, deviation);
-  }
-  seed(base) {
-    return Random.#seed_internal(base);
-  }
-  rand_from_seed(seed) {
-    return Random.#rand_from_seed_internal(seed);
-  }
-}
-
 export class Math {
   static #sin_func;
   static #cos_func;
@@ -1274,5 +866,413 @@ export class Math {
   }
   pingpong(value, length) {
     return Math.#pingpong_internal(value, length);
+  }
+}
+
+export class GD {
+  static #weakref_func;
+  static #typeof_func;
+  static #type_convert_func;
+  static #str_func;
+  static #error_string_func;
+  static #type_string_func;
+  static #print_func;
+  static #print_rich_func;
+  static #printerr_func;
+  static #printt_func;
+  static #prints_func;
+  static #printraw_func;
+  static #print_verbose_func;
+  static #push_error_func;
+  static #push_warning_func;
+  static #var_to_str_func;
+  static #str_to_var_func;
+  static #var_to_bytes_func;
+  static #bytes_to_var_func;
+  static #var_to_bytes_with_objects_func;
+  static #bytes_to_var_with_objects_func;
+  static #hash_func;
+  static #instance_from_id_func;
+  static #is_instance_id_valid_func;
+  static #is_instance_valid_func;
+  static #rid_allocate_id_func;
+  static #rid_from_int64_func;
+  static #is_same_func;
+
+  static _init_bindings() {
+    this.#weakref_func = variant_get_ptr_utility_function(
+      new StringName("weakref").opaque,
+      4776452
+    );
+    this.#typeof_func = variant_get_ptr_utility_function(
+      new StringName("typeof").opaque,
+      326422594
+    );
+    this.#type_convert_func = variant_get_ptr_utility_function(
+      new StringName("type_convert").opaque,
+      2453062746
+    );
+    this.#str_func = variant_get_ptr_utility_function(
+      new StringName("str").opaque,
+      32569176
+    );
+    this.#error_string_func = variant_get_ptr_utility_function(
+      new StringName("error_string").opaque,
+      942708242
+    );
+    this.#type_string_func = variant_get_ptr_utility_function(
+      new StringName("type_string").opaque,
+      942708242
+    );
+    this.#print_func = variant_get_ptr_utility_function(
+      new StringName("print").opaque,
+      2648703342
+    );
+    this.#print_rich_func = variant_get_ptr_utility_function(
+      new StringName("print_rich").opaque,
+      2648703342
+    );
+    this.#printerr_func = variant_get_ptr_utility_function(
+      new StringName("printerr").opaque,
+      2648703342
+    );
+    this.#printt_func = variant_get_ptr_utility_function(
+      new StringName("printt").opaque,
+      2648703342
+    );
+    this.#prints_func = variant_get_ptr_utility_function(
+      new StringName("prints").opaque,
+      2648703342
+    );
+    this.#printraw_func = variant_get_ptr_utility_function(
+      new StringName("printraw").opaque,
+      2648703342
+    );
+    this.#print_verbose_func = variant_get_ptr_utility_function(
+      new StringName("print_verbose").opaque,
+      2648703342
+    );
+    this.#push_error_func = variant_get_ptr_utility_function(
+      new StringName("push_error").opaque,
+      2648703342
+    );
+    this.#push_warning_func = variant_get_ptr_utility_function(
+      new StringName("push_warning").opaque,
+      2648703342
+    );
+    this.#var_to_str_func = variant_get_ptr_utility_function(
+      new StringName("var_to_str").opaque,
+      866625479
+    );
+    this.#str_to_var_func = variant_get_ptr_utility_function(
+      new StringName("str_to_var").opaque,
+      1891498491
+    );
+    this.#var_to_bytes_func = variant_get_ptr_utility_function(
+      new StringName("var_to_bytes").opaque,
+      2947269930
+    );
+    this.#bytes_to_var_func = variant_get_ptr_utility_function(
+      new StringName("bytes_to_var").opaque,
+      4249819452
+    );
+    this.#var_to_bytes_with_objects_func = variant_get_ptr_utility_function(
+      new StringName("var_to_bytes_with_objects").opaque,
+      2947269930
+    );
+    this.#bytes_to_var_with_objects_func = variant_get_ptr_utility_function(
+      new StringName("bytes_to_var_with_objects").opaque,
+      4249819452
+    );
+    this.#hash_func = variant_get_ptr_utility_function(
+      new StringName("hash").opaque,
+      326422594
+    );
+    this.#instance_from_id_func = variant_get_ptr_utility_function(
+      new StringName("instance_from_id").opaque,
+      1156694636
+    );
+    this.#is_instance_id_valid_func = variant_get_ptr_utility_function(
+      new StringName("is_instance_id_valid").opaque,
+      2232439758
+    );
+    this.#is_instance_valid_func = variant_get_ptr_utility_function(
+      new StringName("is_instance_valid").opaque,
+      996128841
+    );
+    this.#rid_allocate_id_func = variant_get_ptr_utility_function(
+      new StringName("rid_allocate_id").opaque,
+      701202648
+    );
+    this.#rid_from_int64_func = variant_get_ptr_utility_function(
+      new StringName("rid_from_int64").opaque,
+      3426892196
+    );
+    this.#is_same_func = variant_get_ptr_utility_function(
+      new StringName("is_same").opaque,
+      1409423524
+    );
+  }
+  static #weakref_internal(obj) {
+    return call_utility_ret(this.#weakref_func, obj);
+  }
+  static #typeof_internal(variable) {
+    return call_utility_ret(this.#typeof_func, variable);
+  }
+  static #type_convert_internal(variant, type) {
+    return call_utility_ret(this.#type_convert_func, variant, type);
+  }
+  static #str_internal(arg1, ...args) {
+    return call_utility_ret(this.#str_func, arg1, ...args);
+  }
+  static #error_string_internal(error) {
+    return call_utility_ret(this.#error_string_func, error);
+  }
+  static #type_string_internal(type) {
+    return call_utility_ret(this.#type_string_func, type);
+  }
+  static #print_internal(arg1, ...args) {
+    call_utility_no_ret(this.#print_func, arg1, ...args);
+  }
+  static #print_rich_internal(arg1, ...args) {
+    call_utility_no_ret(this.#print_rich_func, arg1, ...args);
+  }
+  static #printerr_internal(arg1, ...args) {
+    call_utility_no_ret(this.#printerr_func, arg1, ...args);
+  }
+  static #printt_internal(arg1, ...args) {
+    call_utility_no_ret(this.#printt_func, arg1, ...args);
+  }
+  static #prints_internal(arg1, ...args) {
+    call_utility_no_ret(this.#prints_func, arg1, ...args);
+  }
+  static #printraw_internal(arg1, ...args) {
+    call_utility_no_ret(this.#printraw_func, arg1, ...args);
+  }
+  static #print_verbose_internal(arg1, ...args) {
+    call_utility_no_ret(this.#print_verbose_func, arg1, ...args);
+  }
+  static #push_error_internal(arg1, ...args) {
+    call_utility_no_ret(this.#push_error_func, arg1, ...args);
+  }
+  static #push_warning_internal(arg1, ...args) {
+    call_utility_no_ret(this.#push_warning_func, arg1, ...args);
+  }
+  static #var_to_str_internal(variable) {
+    return call_utility_ret(this.#var_to_str_func, variable);
+  }
+  static #str_to_var_internal(string) {
+    return call_utility_ret(this.#str_to_var_func, string);
+  }
+  static #var_to_bytes_internal(variable) {
+    return call_utility_ret(this.#var_to_bytes_func, variable);
+  }
+  static #bytes_to_var_internal(bytes) {
+    return call_utility_ret(this.#bytes_to_var_func, bytes);
+  }
+  static #var_to_bytes_with_objects_internal(variable) {
+    return call_utility_ret(this.#var_to_bytes_with_objects_func, variable);
+  }
+  static #bytes_to_var_with_objects_internal(bytes) {
+    return call_utility_ret(this.#bytes_to_var_with_objects_func, bytes);
+  }
+  static #hash_internal(variable) {
+    return call_utility_ret(this.#hash_func, variable);
+  }
+  static #instance_from_id_internal(instance_id) {
+    return call_utility_ret(this.#instance_from_id_func, instance_id);
+  }
+  static #is_instance_id_valid_internal(id) {
+    return call_utility_ret(this.#is_instance_id_valid_func, id);
+  }
+  static #is_instance_valid_internal(instance) {
+    return call_utility_ret(this.#is_instance_valid_func, instance);
+  }
+  static #rid_allocate_id_internal() {
+    return call_utility_ret(this.#rid_allocate_id_func, );
+  }
+  static #rid_from_int64_internal(base) {
+    return call_utility_ret(this.#rid_from_int64_func, base);
+  }
+  static #is_same_internal(a, b) {
+    return call_utility_ret(this.#is_same_func, a, b);
+  }
+  weakref(obj) {
+    return GD.#weakref_internal(obj);
+  }
+  typeof(variable) {
+    return GD.#typeof_internal(variable);
+  }
+  type_convert(variant, type) {
+    return GD.#type_convert_internal(variant, type);
+  }
+  str(arg1, ...args) {
+    return GD.#str_internal(arg1, ...args);
+  }
+  error_string(error) {
+    return GD.#error_string_internal(error);
+  }
+  type_string(type) {
+    return GD.#type_string_internal(type);
+  }
+  print(arg1, ...args) {
+    return GD.#print_internal(arg1, ...args);
+  }
+  print_rich(arg1, ...args) {
+    return GD.#print_rich_internal(arg1, ...args);
+  }
+  printerr(arg1, ...args) {
+    return GD.#printerr_internal(arg1, ...args);
+  }
+  printt(arg1, ...args) {
+    return GD.#printt_internal(arg1, ...args);
+  }
+  prints(arg1, ...args) {
+    return GD.#prints_internal(arg1, ...args);
+  }
+  printraw(arg1, ...args) {
+    return GD.#printraw_internal(arg1, ...args);
+  }
+  print_verbose(arg1, ...args) {
+    return GD.#print_verbose_internal(arg1, ...args);
+  }
+  push_error(arg1, ...args) {
+    return GD.#push_error_internal(arg1, ...args);
+  }
+  push_warning(arg1, ...args) {
+    return GD.#push_warning_internal(arg1, ...args);
+  }
+  var_to_str(variable) {
+    return GD.#var_to_str_internal(variable);
+  }
+  str_to_var(string) {
+    return GD.#str_to_var_internal(string);
+  }
+  var_to_bytes(variable) {
+    return GD.#var_to_bytes_internal(variable);
+  }
+  bytes_to_var(bytes) {
+    return GD.#bytes_to_var_internal(bytes);
+  }
+  var_to_bytes_with_objects(variable) {
+    return GD.#var_to_bytes_with_objects_internal(variable);
+  }
+  bytes_to_var_with_objects(bytes) {
+    return GD.#bytes_to_var_with_objects_internal(bytes);
+  }
+  hash(variable) {
+    return GD.#hash_internal(variable);
+  }
+  instance_from_id(instance_id) {
+    return GD.#instance_from_id_internal(instance_id);
+  }
+  is_instance_id_valid(id) {
+    return GD.#is_instance_id_valid_internal(id);
+  }
+  is_instance_valid(instance) {
+    return GD.#is_instance_valid_internal(instance);
+  }
+  rid_allocate_id() {
+    return GD.#rid_allocate_id_internal();
+  }
+  rid_from_int64(base) {
+    return GD.#rid_from_int64_internal(base);
+  }
+  is_same(a, b) {
+    return GD.#is_same_internal(a, b);
+  }
+}
+
+export class Random {
+  static #randomize_func;
+  static #randi_func;
+  static #randf_func;
+  static #randi_range_func;
+  static #randf_range_func;
+  static #randfn_func;
+  static #seed_func;
+  static #rand_from_seed_func;
+
+  static _init_bindings() {
+    this.#randomize_func = variant_get_ptr_utility_function(
+      new StringName("randomize").opaque,
+      1691721052
+    );
+    this.#randi_func = variant_get_ptr_utility_function(
+      new StringName("randi").opaque,
+      701202648
+    );
+    this.#randf_func = variant_get_ptr_utility_function(
+      new StringName("randf").opaque,
+      2086227845
+    );
+    this.#randi_range_func = variant_get_ptr_utility_function(
+      new StringName("randi_range").opaque,
+      3133453818
+    );
+    this.#randf_range_func = variant_get_ptr_utility_function(
+      new StringName("randf_range").opaque,
+      92296394
+    );
+    this.#randfn_func = variant_get_ptr_utility_function(
+      new StringName("randfn").opaque,
+      92296394
+    );
+    this.#seed_func = variant_get_ptr_utility_function(
+      new StringName("seed").opaque,
+      382931173
+    );
+    this.#rand_from_seed_func = variant_get_ptr_utility_function(
+      new StringName("rand_from_seed").opaque,
+      1391063685
+    );
+  }
+  static #randomize_internal() {
+    call_utility_no_ret(this.#randomize_func, );
+  }
+  static #randi_internal() {
+    return call_utility_ret(this.#randi_func, );
+  }
+  static #randf_internal() {
+    return call_utility_ret(this.#randf_func, );
+  }
+  static #randi_range_internal(from, to) {
+    return call_utility_ret(this.#randi_range_func, from, to);
+  }
+  static #randf_range_internal(from, to) {
+    return call_utility_ret(this.#randf_range_func, from, to);
+  }
+  static #randfn_internal(mean, deviation) {
+    return call_utility_ret(this.#randfn_func, mean, deviation);
+  }
+  static #seed_internal(base) {
+    call_utility_no_ret(this.#seed_func, base);
+  }
+  static #rand_from_seed_internal(seed) {
+    return call_utility_ret(this.#rand_from_seed_func, seed);
+  }
+  randomize() {
+    return Random.#randomize_internal();
+  }
+  randi() {
+    return Random.#randi_internal();
+  }
+  randf() {
+    return Random.#randf_internal();
+  }
+  randi_range(from, to) {
+    return Random.#randi_range_internal(from, to);
+  }
+  randf_range(from, to) {
+    return Random.#randf_range_internal(from, to);
+  }
+  randfn(mean, deviation) {
+    return Random.#randfn_internal(mean, deviation);
+  }
+  seed(base) {
+    return Random.#seed_internal(base);
+  }
+  rand_from_seed(seed) {
+    return Random.#rand_from_seed_internal(seed);
   }
 }

@@ -4,8 +4,9 @@ import {
   _call_builtin_method_ptr_ret,
   _call_builtin_method_ptr_no_ret
 } from 'src/js_godot/core/builtin_ptrcall'
-import { Variant } from 'src/js_godot/variant/variant'
+import { StringName } from 'src/js_godot/variant/string_name'
 import { Vector3 } from 'src/js_godot/variant/vector3'
+import { Variant } from 'src/js_godot/variant/variant'
 import { Basis } from 'src/js_godot/variant/basis'
 import { Projection } from 'src/js_godot/variant/projection'
 
@@ -48,7 +49,7 @@ class _MethodBindings {
 }
 
 export class Transform3D {
-  static #SIZE = 8
+  static #SIZE = 48
   opaque = new Uint8Array(Transform3D.#SIZE)
 
   static _bindings = new _MethodBindings()
@@ -56,18 +57,17 @@ export class Transform3D {
   constructor (from) {
     if (!from) {
       _call_builtin_constructor(Transform3D._bindings.constructor_0, this)
-    } else if (arguments[0] instanceof Transform3D) {
-      let from = arguments[0];
+    }else if (from instanceof Transform3D) {
       _call_builtin_constructor(Transform3D._bindings.constructor_1, this, [
         from
       ])
-    } else if (arguments[0] instanceof Basis) {
+    } else if (arguments.length == 2&& arguments[0] instanceof Basis&& arguments[1] instanceof Vector3) {
       let basis = arguments[0];
       let origin = arguments[1];
       _call_builtin_constructor(Transform3D._bindings.constructor_2, this, [
         basis, origin
       ])
-    } else if (arguments[0] instanceof Vector3) {
+    } else if (arguments.length == 4&& arguments[0] instanceof Vector3&& arguments[1] instanceof Vector3&& arguments[2] instanceof Vector3&& arguments[3] instanceof Vector3) {
       let x_axis = arguments[0];
       let y_axis = arguments[1];
       let z_axis = arguments[2];
@@ -75,8 +75,7 @@ export class Transform3D {
       _call_builtin_constructor(Transform3D._bindings.constructor_3, this, [
         x_axis, y_axis, z_axis, origin
       ])
-    } else if (arguments[0] instanceof Projection) {
-      let from = arguments[0];
+    }else if (from instanceof Projection) {
       _call_builtin_constructor(Transform3D._bindings.constructor_4, this, [
         from
       ])

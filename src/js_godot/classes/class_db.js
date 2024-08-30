@@ -1,9 +1,16 @@
 import * as internal from "__internal__";
-import { Variant } from "src/js_godot/variant/variant";
+import { GodotObject } from "src/js_godot/classes/godot_object";
 import { StringName } from "src/js_godot/variant/string_name";
-import { GodotObject } from "src/js_godot/classesgodot_object";
 import { PackedStringArray } from "src/js_godot/variant/packed_string_array";
 import { Dictionary } from "src/js_godot/variant/dictionary";
+import { Variant } from "src/js_godot/variant/variant";
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret,
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
   method_get_class_list;
   method_get_inheriters_from_class;
@@ -33,9 +40,9 @@ class _MethodBindings {
   method_is_class_enabled;
 }
 
-export const ClassDB = new _ClassDB();
+// export const ClassDB = new _ClassDB();
 
-class _ClassDB extends GodotObject {
+export class ClassDB extends GodotObject {
   static _bindings = new _MethodBindings();
 
   constructor(godot_object) {

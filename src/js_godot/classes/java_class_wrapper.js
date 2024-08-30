@@ -1,6 +1,14 @@
 import * as internal from '__internal__';
-import { GodotObject } from 'src/js_godot/classesgodot_object'
+import { GodotObject } from 'src/js_godot/classes/godot_object'
 import { GDString } from 'src/js_godot/variant/gd_string'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_wrap;
 }
@@ -20,15 +28,15 @@ class _JavaClassWrapper extends GodotObject{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("JavaClassWrapper");
-      let methodname = new StringName("wrap");
-      this._bindings.method_wrap = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1124367868
-      );
-    }
+      {
+        let classname = new StringName("JavaClassWrapper");
+        let methodname = new StringName("wrap");
+        this._bindings.method_wrap = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1124367868
+        );
+      }
   }
   wrap(_name) {
     return _call_native_mb_ret(
@@ -37,5 +45,6 @@ class _JavaClassWrapper extends GodotObject{
 			Variant.INT,
       _name
     );
+    
   }
 }

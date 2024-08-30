@@ -1,5 +1,5 @@
 {%- set clazz = gde_json['builtin_classes'][index] -%}
-{%- set size = ((gde_json['builtin_class_sizes'] | selectattr('build_configuration', 'equalto', precision | string) | first)['sizes'] | selectattr('name', 'equalto', 'String') | first)['size'] -%}
+{%- set size = ((gde_json['builtin_class_sizes'] | selectattr('build_configuration', 'equalto', precision | string) | first)['sizes'] | selectattr('name', 'equalto', clazz['name']) | first)['size'] -%}
 import * as internal from '__internal__'
 import {
   _call_builtin_constructor,
@@ -8,6 +8,9 @@ import {
 } from 'src/js_godot/core/builtin_ptrcall'
 {%- for dependcy in dependcies %}
 import { {{to_js_type(dependcy)}} } from '{{ get_module_path(dependcy) }}'
+{%- if to_js_type(dependcy) == 'StringName' -%}
+  {%- set has_string_name = true -%}
+{%- endif -%}
 {%- endfor %}
 
 {%- from 'utils/utils.jinja2' import bindings_class %}

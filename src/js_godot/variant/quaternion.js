@@ -4,9 +4,10 @@ import {
   _call_builtin_method_ptr_ret,
   _call_builtin_method_ptr_no_ret
 } from 'src/js_godot/core/builtin_ptrcall'
-import { Variant } from 'src/js_godot/variant/variant'
+import { StringName } from 'src/js_godot/variant/string_name'
 import { Vector3 } from 'src/js_godot/variant/vector3'
 import { Basis } from 'src/js_godot/variant/basis'
+import { Variant } from 'src/js_godot/variant/variant'
 
 class _MethodBindings {
   from_variant_constructor
@@ -55,7 +56,7 @@ class _MethodBindings {
 }
 
 export class Quaternion {
-  static #SIZE = 8
+  static #SIZE = 16
   opaque = new Uint8Array(Quaternion.#SIZE)
 
   static _bindings = new _MethodBindings()
@@ -63,29 +64,27 @@ export class Quaternion {
   constructor (from) {
     if (!from) {
       _call_builtin_constructor(Quaternion._bindings.constructor_0, this)
-    } else if (arguments[0] instanceof Quaternion) {
-      let from = arguments[0];
+    }else if (from instanceof Quaternion) {
       _call_builtin_constructor(Quaternion._bindings.constructor_1, this, [
         from
       ])
-    } else if (arguments[0] instanceof Basis) {
-      let from = arguments[0];
+    }else if (from instanceof Basis) {
       _call_builtin_constructor(Quaternion._bindings.constructor_2, this, [
         from
       ])
-    } else if (arguments[0] instanceof Vector3) {
+    } else if (arguments.length == 2&& arguments[0] instanceof Vector3&& typeof arguments[1] == "number") {
       let axis = arguments[0];
       let angle = arguments[1];
       _call_builtin_constructor(Quaternion._bindings.constructor_3, this, [
         axis, angle
       ])
-    } else if (arguments[0] instanceof Vector3) {
+    } else if (arguments.length == 2&& arguments[0] instanceof Vector3&& arguments[1] instanceof Vector3) {
       let arc_from = arguments[0];
       let arc_to = arguments[1];
       _call_builtin_constructor(Quaternion._bindings.constructor_4, this, [
         arc_from, arc_to
       ])
-    } else if (arguments[0] instanceof float) {
+    } else if (arguments.length == 4&& typeof arguments[0] == "number"&& typeof arguments[1] == "number"&& typeof arguments[2] == "number"&& typeof arguments[3] == "number") {
       let x = arguments[0];
       let y = arguments[1];
       let z = arguments[2];

@@ -1,5 +1,13 @@
 import * as internal from '__internal__';
-import { VisualInstance3D } from 'src/js_godot/classesvisual_instance3d'
+import { VisualInstance3D } from 'src/js_godot/classes/visual_instance3d'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_set_cull_mask;
     method_get_cull_mask;
@@ -25,78 +33,78 @@ export class GPUParticlesAttractor3D extends VisualInstance3D{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("GPUParticlesAttractor3D");
-      let methodname = new StringName("set_cull_mask");
-      this._bindings.method_set_cull_mask = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("GPUParticlesAttractor3D");
-      let methodname = new StringName("get_cull_mask");
-      this._bindings.method_get_cull_mask = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("GPUParticlesAttractor3D");
-      let methodname = new StringName("set_strength");
-      this._bindings.method_set_strength = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("GPUParticlesAttractor3D");
-      let methodname = new StringName("get_strength");
-      this._bindings.method_get_strength = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("GPUParticlesAttractor3D");
-      let methodname = new StringName("set_attenuation");
-      this._bindings.method_set_attenuation = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("GPUParticlesAttractor3D");
-      let methodname = new StringName("get_attenuation");
-      this._bindings.method_get_attenuation = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("GPUParticlesAttractor3D");
-      let methodname = new StringName("set_directionality");
-      this._bindings.method_set_directionality = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("GPUParticlesAttractor3D");
-      let methodname = new StringName("get_directionality");
-      this._bindings.method_get_directionality = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
+      {
+        let classname = new StringName("GPUParticlesAttractor3D");
+        let methodname = new StringName("set_cull_mask");
+        this._bindings.method_set_cull_mask = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1286410249
+        );
+      }
+      {
+        let classname = new StringName("GPUParticlesAttractor3D");
+        let methodname = new StringName("get_cull_mask");
+        this._bindings.method_get_cull_mask = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
+      {
+        let classname = new StringName("GPUParticlesAttractor3D");
+        let methodname = new StringName("set_strength");
+        this._bindings.method_set_strength = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("GPUParticlesAttractor3D");
+        let methodname = new StringName("get_strength");
+        this._bindings.method_get_strength = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("GPUParticlesAttractor3D");
+        let methodname = new StringName("set_attenuation");
+        this._bindings.method_set_attenuation = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("GPUParticlesAttractor3D");
+        let methodname = new StringName("get_attenuation");
+        this._bindings.method_get_attenuation = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
+      {
+        let classname = new StringName("GPUParticlesAttractor3D");
+        let methodname = new StringName("set_directionality");
+        this._bindings.method_set_directionality = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          373806689
+        );
+      }
+      {
+        let classname = new StringName("GPUParticlesAttractor3D");
+        let methodname = new StringName("get_directionality");
+        this._bindings.method_get_directionality = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1740695150
+        );
+      }
   }
   set_cull_mask(_mask) {
     return _call_native_mb_no_ret(
@@ -104,6 +112,7 @@ export class GPUParticlesAttractor3D extends VisualInstance3D{
       this._owner,
       _mask
     );
+    
   }
   get_cull_mask() {
     return _call_native_mb_ret(
@@ -112,6 +121,7 @@ export class GPUParticlesAttractor3D extends VisualInstance3D{
 			Variant.Type.INT,
       
     );
+    
   }
   set_strength(_strength) {
     return _call_native_mb_no_ret(
@@ -119,6 +129,7 @@ export class GPUParticlesAttractor3D extends VisualInstance3D{
       this._owner,
       _strength
     );
+    
   }
   get_strength() {
     return _call_native_mb_ret(
@@ -127,6 +138,7 @@ export class GPUParticlesAttractor3D extends VisualInstance3D{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_attenuation(_attenuation) {
     return _call_native_mb_no_ret(
@@ -134,6 +146,7 @@ export class GPUParticlesAttractor3D extends VisualInstance3D{
       this._owner,
       _attenuation
     );
+    
   }
   get_attenuation() {
     return _call_native_mb_ret(
@@ -142,6 +155,7 @@ export class GPUParticlesAttractor3D extends VisualInstance3D{
 			Variant.Type.FLOAT,
       
     );
+    
   }
   set_directionality(_amount) {
     return _call_native_mb_no_ret(
@@ -149,6 +163,7 @@ export class GPUParticlesAttractor3D extends VisualInstance3D{
       this._owner,
       _amount
     );
+    
   }
   get_directionality() {
     return _call_native_mb_ret(
@@ -157,5 +172,6 @@ export class GPUParticlesAttractor3D extends VisualInstance3D{
 			Variant.Type.FLOAT,
       
     );
+    
   }
 }

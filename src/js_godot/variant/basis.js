@@ -4,9 +4,10 @@ import {
   _call_builtin_method_ptr_ret,
   _call_builtin_method_ptr_no_ret
 } from 'src/js_godot/core/builtin_ptrcall'
-import { Variant } from 'src/js_godot/variant/variant'
-import { Vector3 } from 'src/js_godot/variant/vector3'
 import { Quaternion } from 'src/js_godot/variant/quaternion'
+import { StringName } from 'src/js_godot/variant/string_name'
+import { Vector3 } from 'src/js_godot/variant/vector3'
+import { Variant } from 'src/js_godot/variant/variant'
 
 class _MethodBindings {
   from_variant_constructor
@@ -50,7 +51,7 @@ class _MethodBindings {
 }
 
 export class Basis {
-  static #SIZE = 8
+  static #SIZE = 36
   opaque = new Uint8Array(Basis.#SIZE)
 
   static _bindings = new _MethodBindings()
@@ -58,23 +59,21 @@ export class Basis {
   constructor (from) {
     if (!from) {
       _call_builtin_constructor(Basis._bindings.constructor_0, this)
-    } else if (arguments[0] instanceof Basis) {
-      let from = arguments[0];
+    }else if (from instanceof Basis) {
       _call_builtin_constructor(Basis._bindings.constructor_1, this, [
         from
       ])
-    } else if (arguments[0] instanceof Quaternion) {
-      let from = arguments[0];
+    }else if (from instanceof Quaternion) {
       _call_builtin_constructor(Basis._bindings.constructor_2, this, [
         from
       ])
-    } else if (arguments[0] instanceof Vector3) {
+    } else if (arguments.length == 2&& arguments[0] instanceof Vector3&& typeof arguments[1] == "number") {
       let axis = arguments[0];
       let angle = arguments[1];
       _call_builtin_constructor(Basis._bindings.constructor_3, this, [
         axis, angle
       ])
-    } else if (arguments[0] instanceof Vector3) {
+    } else if (arguments.length == 3&& arguments[0] instanceof Vector3&& arguments[1] instanceof Vector3&& arguments[2] instanceof Vector3) {
       let x_axis = arguments[0];
       let y_axis = arguments[1];
       let z_axis = arguments[2];

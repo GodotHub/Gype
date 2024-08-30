@@ -1,5 +1,13 @@
 import * as internal from '__internal__';
-import { Light3D } from 'src/js_godot/classeslight3d'
+import { Light3D } from 'src/js_godot/classes/light3d'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_set_shadow_mode;
     method_get_shadow_mode;
@@ -19,24 +27,24 @@ export class OmniLight3D extends Light3D{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("OmniLight3D");
-      let methodname = new StringName("set_shadow_mode");
-      this._bindings.method_set_shadow_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        121862228
-      );
-    }
-    {
-      let classname = new StringName("OmniLight3D");
-      let methodname = new StringName("get_shadow_mode");
-      this._bindings.method_get_shadow_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4181586331
-      );
-    }
+      {
+        let classname = new StringName("OmniLight3D");
+        let methodname = new StringName("set_shadow_mode");
+        this._bindings.method_set_shadow_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          121862228
+        );
+      }
+      {
+        let classname = new StringName("OmniLight3D");
+        let methodname = new StringName("get_shadow_mode");
+        this._bindings.method_get_shadow_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4181586331
+        );
+      }
   }
   set_shadow_mode(_mode) {
     return _call_native_mb_no_ret(
@@ -44,6 +52,7 @@ export class OmniLight3D extends Light3D{
       this._owner,
       _mode
     );
+    
   }
   get_shadow_mode() {
     return _call_native_mb_ret(
@@ -52,6 +61,7 @@ export class OmniLight3D extends Light3D{
 			Variant.INT,
       
     );
+    
   }
   static ShadowMode = {
     SHADOW_DUAL_PARABOLOID: 0,

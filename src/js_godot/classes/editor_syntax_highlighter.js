@@ -1,10 +1,16 @@
 import * as internal from '__internal__';
-import { SyntaxHighlighter } from 'src/js_godot/classessyntax_highlighter'
 import { PackedStringArray } from 'src/js_godot/variant/packed_string_array'
+import { SyntaxHighlighter } from 'src/js_godot/classes/syntax_highlighter'
 import { GDString } from 'src/js_godot/variant/gd_string'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
-    method__get_name;
-    method__get_supported_languages;
 }
 
 
@@ -21,41 +27,9 @@ export class EditorSyntaxHighlighter extends SyntaxHighlighter{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("EditorSyntaxHighlighter");
-      let methodname = new StringName("_get_name");
-      this._bindings.method__get_name = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        
-      );
-    }
-    {
-      let classname = new StringName("EditorSyntaxHighlighter");
-      let methodname = new StringName("_get_supported_languages");
-      this._bindings.method__get_supported_languages = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        
-      );
-    }
   }
   _get_name() {
-    return _call_native_mb_ret(
-      ClassDB._bindings.method__get_name,
-      this._owner,
-			Variant.Type.STRING
-    ,
-      
-    );
   }
   _get_supported_languages() {
-    return _call_native_mb_ret(
-      ClassDB._bindings.method__get_supported_languages,
-      this._owner,
-			Variant.Type.PACKED_STRING_ARRAY
-    ,
-      
-    );
   }
 }

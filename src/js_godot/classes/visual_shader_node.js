@@ -1,7 +1,15 @@
 import * as internal from '__internal__';
-import { Resource } from 'src/js_godot/classesresource'
 import { Variant } from 'src/js_godot/variant/variant'
 import { GDArray } from 'src/js_godot/variant/gd_array'
+import { Resource } from 'src/js_godot/classes/resource'
+import { StringName } from 'src/js_godot/variant/string_name'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_get_default_input_port;
     method_set_output_port_for_preview;
@@ -30,105 +38,105 @@ export class VisualShaderNode extends Resource{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("VisualShaderNode");
-      let methodname = new StringName("get_default_input_port");
-      this._bindings.method_get_default_input_port = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1894493699
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNode");
-      let methodname = new StringName("set_output_port_for_preview");
-      this._bindings.method_set_output_port_for_preview = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNode");
-      let methodname = new StringName("get_output_port_for_preview");
-      this._bindings.method_get_output_port_for_preview = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNode");
-      let methodname = new StringName("set_input_port_default_value");
-      this._bindings.method_set_input_port_default_value = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        150923387
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNode");
-      let methodname = new StringName("get_input_port_default_value");
-      this._bindings.method_get_input_port_default_value = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4227898402
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNode");
-      let methodname = new StringName("remove_input_port_default_value");
-      this._bindings.method_remove_input_port_default_value = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNode");
-      let methodname = new StringName("clear_default_input_values");
-      this._bindings.method_clear_default_input_values = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3218959716
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNode");
-      let methodname = new StringName("set_default_input_values");
-      this._bindings.method_set_default_input_values = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        381264803
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNode");
-      let methodname = new StringName("get_default_input_values");
-      this._bindings.method_get_default_input_values = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3995934104
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNode");
-      let methodname = new StringName("set_frame");
-      this._bindings.method_set_frame = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("VisualShaderNode");
-      let methodname = new StringName("get_frame");
-      this._bindings.method_get_frame = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
+      {
+        let classname = new StringName("VisualShaderNode");
+        let methodname = new StringName("get_default_input_port");
+        this._bindings.method_get_default_input_port = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1894493699
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNode");
+        let methodname = new StringName("set_output_port_for_preview");
+        this._bindings.method_set_output_port_for_preview = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1286410249
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNode");
+        let methodname = new StringName("get_output_port_for_preview");
+        this._bindings.method_get_output_port_for_preview = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNode");
+        let methodname = new StringName("set_input_port_default_value");
+        this._bindings.method_set_input_port_default_value = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          150923387
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNode");
+        let methodname = new StringName("get_input_port_default_value");
+        this._bindings.method_get_input_port_default_value = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4227898402
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNode");
+        let methodname = new StringName("remove_input_port_default_value");
+        this._bindings.method_remove_input_port_default_value = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1286410249
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNode");
+        let methodname = new StringName("clear_default_input_values");
+        this._bindings.method_clear_default_input_values = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3218959716
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNode");
+        let methodname = new StringName("set_default_input_values");
+        this._bindings.method_set_default_input_values = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          381264803
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNode");
+        let methodname = new StringName("get_default_input_values");
+        this._bindings.method_get_default_input_values = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3995934104
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNode");
+        let methodname = new StringName("set_frame");
+        this._bindings.method_set_frame = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1286410249
+        );
+      }
+      {
+        let classname = new StringName("VisualShaderNode");
+        let methodname = new StringName("get_frame");
+        this._bindings.method_get_frame = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
   }
   get_default_input_port(_type) {
     return _call_native_mb_ret(
@@ -137,6 +145,7 @@ export class VisualShaderNode extends Resource{
 			Variant.Type.INT,
       _type
     );
+    
   }
   set_output_port_for_preview(_port) {
     return _call_native_mb_no_ret(
@@ -144,6 +153,7 @@ export class VisualShaderNode extends Resource{
       this._owner,
       _port
     );
+    
   }
   get_output_port_for_preview() {
     return _call_native_mb_ret(
@@ -152,6 +162,7 @@ export class VisualShaderNode extends Resource{
 			Variant.Type.INT,
       
     );
+    
   }
   set_input_port_default_value(_port, _value, _prev_value) {
     return _call_native_mb_no_ret(
@@ -159,6 +170,7 @@ export class VisualShaderNode extends Resource{
       this._owner,
       _port, _value, _prev_value
     );
+    
   }
   get_input_port_default_value(_port) {
     return _call_native_mb_ret(
@@ -168,6 +180,7 @@ export class VisualShaderNode extends Resource{
     ,
       _port
     );
+    
   }
   remove_input_port_default_value(_port) {
     return _call_native_mb_no_ret(
@@ -175,6 +188,7 @@ export class VisualShaderNode extends Resource{
       this._owner,
       _port
     );
+    
   }
   clear_default_input_values() {
     return _call_native_mb_no_ret(
@@ -182,6 +196,7 @@ export class VisualShaderNode extends Resource{
       this._owner,
       
     );
+    
   }
   set_default_input_values(_values) {
     return _call_native_mb_no_ret(
@@ -189,6 +204,7 @@ export class VisualShaderNode extends Resource{
       this._owner,
       _values
     );
+    
   }
   get_default_input_values() {
     return _call_native_mb_ret(
@@ -198,6 +214,7 @@ export class VisualShaderNode extends Resource{
     ,
       
     );
+    
   }
   set_frame(_frame) {
     return _call_native_mb_no_ret(
@@ -205,6 +222,7 @@ export class VisualShaderNode extends Resource{
       this._owner,
       _frame
     );
+    
   }
   get_frame() {
     return _call_native_mb_ret(
@@ -213,6 +231,7 @@ export class VisualShaderNode extends Resource{
 			Variant.Type.INT,
       
     );
+    
   }
   static PortType = {
     PORT_TYPE_SCALAR: 0,

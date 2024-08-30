@@ -7,7 +7,37 @@ import {
 import { GDString } from "src/js_godot/variant/gd_string";
 import { StringName } from "src/js_godot/variant/string_name";
 import { NodePath } from "src/js_godot/variant/node_path";
+import { GDArray } from "src/js_godot/variant/gd_array";
+import { PackedStringArray } from "src/js_godot/variant/packed_string_array";
+import { PackedByteArray } from "src/js_godot/variant/packed_byte_array";
 import { GD, Math, Random } from "src/js_godot/variant/utility_functions";
+import { Dictionary } from "src/js_godot/variant/dictionary";
+import { Callable } from "src/js_godot/variant/callable";
+import { AABB } from "src/js_godot/variant/aabb";
+import { Basis } from "src/js_godot/variant/basis";
+import { Color } from "src/js_godot/variant/color";
+import { PackedFloat32Array } from "src/js_godot/variant/packed_float32_array";
+import { PackedFloat64Array } from "src/js_godot/variant/packed_float64_array";
+import { PackedInt32Array } from "src/js_godot/variant/packed_int32_array";
+import { PackedInt64Array } from "src/js_godot/variant/packed_int64_array";
+import { PackedVector2Array } from "src/js_godot/variant/packed_vector2_array";
+import { PackedVector3Array } from "src/js_godot/variant/packed_vector3_array";
+import { PackedVector4Array } from "src/js_godot/variant/packed_vector4_array";
+import { Vector2 } from "src/js_godot/variant/vector2";
+import { Vector2i } from "src/js_godot/variant/vector2i";
+import { Vector3 } from "src/js_godot/variant/vector3";
+import { Vector3i } from "src/js_godot/variant/vector3i";
+import { Vector4 } from "src/js_godot/variant/vector4";
+import { Vector4i } from "src/js_godot/variant/vector4i";
+import { Plane } from "src/js_godot/variant/plane";
+import { Projection } from "src/js_godot/variant/projection";
+import { Quaternion } from "src/js_godot/variant/quaternion";
+import { Rect2 } from "src/js_godot/variant/rect2";
+import { Rect2i } from "src/js_godot/variant/rect2i";
+import { RID } from "src/js_godot/variant/rid";
+import { Signal } from "src/js_godot/variant/signal";
+import { Transform2D } from "src/js_godot/variant/transform2d";
+import { Transform3D } from "src/js_godot/variant/transform3d";
 
 export class Variant {
   static from_type_constructor = [];
@@ -63,6 +93,36 @@ export class Variant {
     StringName._init_bindings();
     GDString._init_bindings();
     NodePath._init_bindings();
+    GDArray._init_bindings();
+    Dictionary._init_bindings();
+    Callable._init_bindings();
+    AABB._init_bindings();
+    Basis._init_bindings();
+    Color._init_bindings();
+    Plane._init_bindings();
+    Projection._init_bindings();
+    Quaternion._init_bindings();
+    Rect2._init_bindings();
+    Rect2i._init_bindings();
+    RID._init_bindings();
+    Signal._init_bindings();
+    Transform2D._init_bindings();
+    Transform3D._init_bindings();
+    Vector2._init_bindings();
+    Vector2i._init_bindings();
+    Vector3._init_bindings();
+    Vector3i._init_bindings();
+    Vector4._init_bindings();
+    Vector4i._init_bindings();
+    PackedByteArray._init_bindings();
+    PackedStringArray._init_bindings();
+    PackedFloat64Array._init_bindings();
+    PackedFloat32Array._init_bindings();
+    PackedInt32Array._init_bindings();
+    PackedInt64Array._init_bindings();
+    PackedVector2Array._init_bindings();
+    PackedVector3Array._init_bindings();
+    PackedVector4Array._init_bindings();
     GD._init_bindings();
     Math._init_bindings();
     Random._init_bindings();
@@ -117,7 +177,7 @@ export class Variant {
     PACKED_COLOR_ARRAY: 37,
     PACKED_VECTOR4_ARRAY: 38,
 
-    VARIANT_MAX: 39,
+    VARIANT: 39,
   };
 
   static Operator = {

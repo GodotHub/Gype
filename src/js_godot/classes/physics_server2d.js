@@ -1,10 +1,18 @@
 import * as internal from '__internal__';
+import { GodotObject } from 'src/js_godot/classes/godot_object'
 import { Vector2 } from 'src/js_godot/variant/vector2'
-import { Variant } from 'src/js_godot/variant/variant'
-import { GodotObject } from 'src/js_godot/classesgodot_object'
-import { RID } from 'src/js_godot/variant/rid'
+import { StringName } from 'src/js_godot/variant/string_name'
 import { Transform2D } from 'src/js_godot/variant/transform2d'
 import { Callable } from 'src/js_godot/variant/callable'
+import { Variant } from 'src/js_godot/variant/variant'
+import { RID } from 'src/js_godot/variant/rid'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_world_boundary_shape_create;
     method_separation_ray_shape_create;
@@ -142,1077 +150,1077 @@ class _PhysicsServer2D extends GodotObject{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("world_boundary_shape_create");
-      this._bindings.method_world_boundary_shape_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("separation_ray_shape_create");
-      this._bindings.method_separation_ray_shape_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("segment_shape_create");
-      this._bindings.method_segment_shape_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("circle_shape_create");
-      this._bindings.method_circle_shape_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("rectangle_shape_create");
-      this._bindings.method_rectangle_shape_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("capsule_shape_create");
-      this._bindings.method_capsule_shape_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("convex_polygon_shape_create");
-      this._bindings.method_convex_polygon_shape_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("concave_polygon_shape_create");
-      this._bindings.method_concave_polygon_shape_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("shape_set_data");
-      this._bindings.method_shape_set_data = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3175752987
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("shape_get_type");
-      this._bindings.method_shape_get_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1240598777
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("shape_get_data");
-      this._bindings.method_shape_get_data = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4171304767
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("space_create");
-      this._bindings.method_space_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("space_set_active");
-      this._bindings.method_space_set_active = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("space_is_active");
-      this._bindings.method_space_is_active = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4155700596
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("space_set_param");
-      this._bindings.method_space_set_param = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        949194586
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("space_get_param");
-      this._bindings.method_space_get_param = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        874111783
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("space_get_direct_state");
-      this._bindings.method_space_get_direct_state = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3160173886
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("area_create");
-      this._bindings.method_area_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("area_set_space");
-      this._bindings.method_area_set_space = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("area_get_space");
-      this._bindings.method_area_get_space = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3814569979
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("area_add_shape");
-      this._bindings.method_area_add_shape = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        339056240
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("area_set_shape");
-      this._bindings.method_area_set_shape = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2310537182
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("area_set_shape_transform");
-      this._bindings.method_area_set_shape_transform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        736082694
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("area_set_shape_disabled");
-      this._bindings.method_area_set_shape_disabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2658558584
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("area_get_shape_count");
-      this._bindings.method_area_get_shape_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2198884583
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("area_get_shape");
-      this._bindings.method_area_get_shape = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1066463050
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("area_get_shape_transform");
-      this._bindings.method_area_get_shape_transform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1324854622
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("area_remove_shape");
-      this._bindings.method_area_remove_shape = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3411492887
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("area_clear_shapes");
-      this._bindings.method_area_clear_shapes = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2722037293
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("area_set_collision_layer");
-      this._bindings.method_area_set_collision_layer = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3411492887
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("area_get_collision_layer");
-      this._bindings.method_area_get_collision_layer = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2198884583
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("area_set_collision_mask");
-      this._bindings.method_area_set_collision_mask = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3411492887
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("area_get_collision_mask");
-      this._bindings.method_area_get_collision_mask = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2198884583
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("area_set_param");
-      this._bindings.method_area_set_param = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1257146028
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("area_set_transform");
-      this._bindings.method_area_set_transform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1246044741
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("area_get_param");
-      this._bindings.method_area_get_param = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3047435120
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("area_get_transform");
-      this._bindings.method_area_get_transform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        213527486
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("area_attach_object_instance_id");
-      this._bindings.method_area_attach_object_instance_id = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3411492887
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("area_get_object_instance_id");
-      this._bindings.method_area_get_object_instance_id = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2198884583
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("area_attach_canvas_instance_id");
-      this._bindings.method_area_attach_canvas_instance_id = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3411492887
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("area_get_canvas_instance_id");
-      this._bindings.method_area_get_canvas_instance_id = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2198884583
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("area_set_monitor_callback");
-      this._bindings.method_area_set_monitor_callback = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3379118538
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("area_set_area_monitor_callback");
-      this._bindings.method_area_set_area_monitor_callback = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3379118538
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("area_set_monitorable");
-      this._bindings.method_area_set_monitorable = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_create");
-      this._bindings.method_body_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_set_space");
-      this._bindings.method_body_set_space = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_get_space");
-      this._bindings.method_body_get_space = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3814569979
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_set_mode");
-      this._bindings.method_body_set_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1658067650
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_get_mode");
-      this._bindings.method_body_get_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3261702585
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_add_shape");
-      this._bindings.method_body_add_shape = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        339056240
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_set_shape");
-      this._bindings.method_body_set_shape = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2310537182
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_set_shape_transform");
-      this._bindings.method_body_set_shape_transform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        736082694
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_get_shape_count");
-      this._bindings.method_body_get_shape_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2198884583
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_get_shape");
-      this._bindings.method_body_get_shape = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1066463050
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_get_shape_transform");
-      this._bindings.method_body_get_shape_transform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1324854622
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_remove_shape");
-      this._bindings.method_body_remove_shape = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3411492887
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_clear_shapes");
-      this._bindings.method_body_clear_shapes = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2722037293
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_set_shape_disabled");
-      this._bindings.method_body_set_shape_disabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2658558584
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_set_shape_as_one_way_collision");
-      this._bindings.method_body_set_shape_as_one_way_collision = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2556489974
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_attach_object_instance_id");
-      this._bindings.method_body_attach_object_instance_id = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3411492887
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_get_object_instance_id");
-      this._bindings.method_body_get_object_instance_id = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2198884583
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_attach_canvas_instance_id");
-      this._bindings.method_body_attach_canvas_instance_id = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3411492887
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_get_canvas_instance_id");
-      this._bindings.method_body_get_canvas_instance_id = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2198884583
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_set_continuous_collision_detection_mode");
-      this._bindings.method_body_set_continuous_collision_detection_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1882257015
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_get_continuous_collision_detection_mode");
-      this._bindings.method_body_get_continuous_collision_detection_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2661282217
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_set_collision_layer");
-      this._bindings.method_body_set_collision_layer = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3411492887
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_get_collision_layer");
-      this._bindings.method_body_get_collision_layer = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2198884583
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_set_collision_mask");
-      this._bindings.method_body_set_collision_mask = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3411492887
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_get_collision_mask");
-      this._bindings.method_body_get_collision_mask = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2198884583
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_set_collision_priority");
-      this._bindings.method_body_set_collision_priority = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_get_collision_priority");
-      this._bindings.method_body_get_collision_priority = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        866169185
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_set_param");
-      this._bindings.method_body_set_param = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2715630609
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_get_param");
-      this._bindings.method_body_get_param = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3208033526
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_reset_mass_properties");
-      this._bindings.method_body_reset_mass_properties = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2722037293
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_set_state");
-      this._bindings.method_body_set_state = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1706355209
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_get_state");
-      this._bindings.method_body_get_state = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4036367961
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_apply_central_impulse");
-      this._bindings.method_body_apply_central_impulse = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3201125042
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_apply_torque_impulse");
-      this._bindings.method_body_apply_torque_impulse = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_apply_impulse");
-      this._bindings.method_body_apply_impulse = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        205485391
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_apply_central_force");
-      this._bindings.method_body_apply_central_force = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3201125042
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_apply_force");
-      this._bindings.method_body_apply_force = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        205485391
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_apply_torque");
-      this._bindings.method_body_apply_torque = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_add_constant_central_force");
-      this._bindings.method_body_add_constant_central_force = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3201125042
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_add_constant_force");
-      this._bindings.method_body_add_constant_force = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        205485391
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_add_constant_torque");
-      this._bindings.method_body_add_constant_torque = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_set_constant_force");
-      this._bindings.method_body_set_constant_force = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3201125042
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_get_constant_force");
-      this._bindings.method_body_get_constant_force = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2440833711
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_set_constant_torque");
-      this._bindings.method_body_set_constant_torque = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1794382983
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_get_constant_torque");
-      this._bindings.method_body_get_constant_torque = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        866169185
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_set_axis_velocity");
-      this._bindings.method_body_set_axis_velocity = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3201125042
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_add_collision_exception");
-      this._bindings.method_body_add_collision_exception = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_remove_collision_exception");
-      this._bindings.method_body_remove_collision_exception = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        395945892
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_set_max_contacts_reported");
-      this._bindings.method_body_set_max_contacts_reported = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3411492887
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_get_max_contacts_reported");
-      this._bindings.method_body_get_max_contacts_reported = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2198884583
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_set_omit_force_integration");
-      this._bindings.method_body_set_omit_force_integration = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_is_omitting_force_integration");
-      this._bindings.method_body_is_omitting_force_integration = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4155700596
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_set_state_sync_callback");
-      this._bindings.method_body_set_state_sync_callback = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3379118538
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_set_force_integration_callback");
-      this._bindings.method_body_set_force_integration_callback = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3059434249
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_test_motion");
-      this._bindings.method_body_test_motion = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1699844009
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("body_get_direct_state");
-      this._bindings.method_body_get_direct_state = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1191931871
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("joint_create");
-      this._bindings.method_joint_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        529393457
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("joint_clear");
-      this._bindings.method_joint_clear = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2722037293
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("joint_set_param");
-      this._bindings.method_joint_set_param = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3972556514
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("joint_get_param");
-      this._bindings.method_joint_get_param = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4016448949
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("joint_disable_collisions_between_bodies");
-      this._bindings.method_joint_disable_collisions_between_bodies = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1265174801
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("joint_is_disabled_collisions_between_bodies");
-      this._bindings.method_joint_is_disabled_collisions_between_bodies = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4155700596
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("joint_make_pin");
-      this._bindings.method_joint_make_pin = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1612646186
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("joint_make_groove");
-      this._bindings.method_joint_make_groove = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        481430435
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("joint_make_damped_spring");
-      this._bindings.method_joint_make_damped_spring = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1994657646
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("pin_joint_set_flag");
-      this._bindings.method_pin_joint_set_flag = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3520002352
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("pin_joint_get_flag");
-      this._bindings.method_pin_joint_get_flag = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2647867364
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("pin_joint_set_param");
-      this._bindings.method_pin_joint_set_param = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        550574241
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("pin_joint_get_param");
-      this._bindings.method_pin_joint_get_param = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        348281383
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("damped_spring_joint_set_param");
-      this._bindings.method_damped_spring_joint_set_param = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        220564071
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("damped_spring_joint_get_param");
-      this._bindings.method_damped_spring_joint_get_param = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2075871277
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("joint_get_type");
-      this._bindings.method_joint_get_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4262502231
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("free_rid");
-      this._bindings.method_free_rid = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2722037293
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("set_active");
-      this._bindings.method_set_active = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("PhysicsServer2D");
-      let methodname = new StringName("get_process_info");
-      this._bindings.method_get_process_info = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        576496006
-      );
-    }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("world_boundary_shape_create");
+        this._bindings.method_world_boundary_shape_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("separation_ray_shape_create");
+        this._bindings.method_separation_ray_shape_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("segment_shape_create");
+        this._bindings.method_segment_shape_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("circle_shape_create");
+        this._bindings.method_circle_shape_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("rectangle_shape_create");
+        this._bindings.method_rectangle_shape_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("capsule_shape_create");
+        this._bindings.method_capsule_shape_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("convex_polygon_shape_create");
+        this._bindings.method_convex_polygon_shape_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("concave_polygon_shape_create");
+        this._bindings.method_concave_polygon_shape_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("shape_set_data");
+        this._bindings.method_shape_set_data = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3175752987
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("shape_get_type");
+        this._bindings.method_shape_get_type = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1240598777
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("shape_get_data");
+        this._bindings.method_shape_get_data = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4171304767
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("space_create");
+        this._bindings.method_space_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("space_set_active");
+        this._bindings.method_space_set_active = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("space_is_active");
+        this._bindings.method_space_is_active = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4155700596
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("space_set_param");
+        this._bindings.method_space_set_param = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          949194586
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("space_get_param");
+        this._bindings.method_space_get_param = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          874111783
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("space_get_direct_state");
+        this._bindings.method_space_get_direct_state = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3160173886
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("area_create");
+        this._bindings.method_area_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("area_set_space");
+        this._bindings.method_area_set_space = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("area_get_space");
+        this._bindings.method_area_get_space = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3814569979
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("area_add_shape");
+        this._bindings.method_area_add_shape = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          339056240
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("area_set_shape");
+        this._bindings.method_area_set_shape = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2310537182
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("area_set_shape_transform");
+        this._bindings.method_area_set_shape_transform = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          736082694
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("area_set_shape_disabled");
+        this._bindings.method_area_set_shape_disabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2658558584
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("area_get_shape_count");
+        this._bindings.method_area_get_shape_count = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2198884583
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("area_get_shape");
+        this._bindings.method_area_get_shape = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1066463050
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("area_get_shape_transform");
+        this._bindings.method_area_get_shape_transform = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1324854622
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("area_remove_shape");
+        this._bindings.method_area_remove_shape = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3411492887
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("area_clear_shapes");
+        this._bindings.method_area_clear_shapes = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2722037293
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("area_set_collision_layer");
+        this._bindings.method_area_set_collision_layer = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3411492887
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("area_get_collision_layer");
+        this._bindings.method_area_get_collision_layer = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2198884583
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("area_set_collision_mask");
+        this._bindings.method_area_set_collision_mask = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3411492887
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("area_get_collision_mask");
+        this._bindings.method_area_get_collision_mask = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2198884583
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("area_set_param");
+        this._bindings.method_area_set_param = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1257146028
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("area_set_transform");
+        this._bindings.method_area_set_transform = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1246044741
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("area_get_param");
+        this._bindings.method_area_get_param = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3047435120
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("area_get_transform");
+        this._bindings.method_area_get_transform = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          213527486
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("area_attach_object_instance_id");
+        this._bindings.method_area_attach_object_instance_id = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3411492887
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("area_get_object_instance_id");
+        this._bindings.method_area_get_object_instance_id = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2198884583
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("area_attach_canvas_instance_id");
+        this._bindings.method_area_attach_canvas_instance_id = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3411492887
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("area_get_canvas_instance_id");
+        this._bindings.method_area_get_canvas_instance_id = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2198884583
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("area_set_monitor_callback");
+        this._bindings.method_area_set_monitor_callback = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3379118538
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("area_set_area_monitor_callback");
+        this._bindings.method_area_set_area_monitor_callback = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3379118538
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("area_set_monitorable");
+        this._bindings.method_area_set_monitorable = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_create");
+        this._bindings.method_body_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_set_space");
+        this._bindings.method_body_set_space = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_get_space");
+        this._bindings.method_body_get_space = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3814569979
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_set_mode");
+        this._bindings.method_body_set_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1658067650
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_get_mode");
+        this._bindings.method_body_get_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3261702585
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_add_shape");
+        this._bindings.method_body_add_shape = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          339056240
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_set_shape");
+        this._bindings.method_body_set_shape = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2310537182
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_set_shape_transform");
+        this._bindings.method_body_set_shape_transform = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          736082694
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_get_shape_count");
+        this._bindings.method_body_get_shape_count = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2198884583
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_get_shape");
+        this._bindings.method_body_get_shape = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1066463050
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_get_shape_transform");
+        this._bindings.method_body_get_shape_transform = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1324854622
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_remove_shape");
+        this._bindings.method_body_remove_shape = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3411492887
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_clear_shapes");
+        this._bindings.method_body_clear_shapes = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2722037293
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_set_shape_disabled");
+        this._bindings.method_body_set_shape_disabled = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2658558584
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_set_shape_as_one_way_collision");
+        this._bindings.method_body_set_shape_as_one_way_collision = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2556489974
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_attach_object_instance_id");
+        this._bindings.method_body_attach_object_instance_id = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3411492887
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_get_object_instance_id");
+        this._bindings.method_body_get_object_instance_id = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2198884583
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_attach_canvas_instance_id");
+        this._bindings.method_body_attach_canvas_instance_id = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3411492887
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_get_canvas_instance_id");
+        this._bindings.method_body_get_canvas_instance_id = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2198884583
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_set_continuous_collision_detection_mode");
+        this._bindings.method_body_set_continuous_collision_detection_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1882257015
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_get_continuous_collision_detection_mode");
+        this._bindings.method_body_get_continuous_collision_detection_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2661282217
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_set_collision_layer");
+        this._bindings.method_body_set_collision_layer = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3411492887
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_get_collision_layer");
+        this._bindings.method_body_get_collision_layer = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2198884583
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_set_collision_mask");
+        this._bindings.method_body_set_collision_mask = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3411492887
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_get_collision_mask");
+        this._bindings.method_body_get_collision_mask = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2198884583
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_set_collision_priority");
+        this._bindings.method_body_set_collision_priority = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_get_collision_priority");
+        this._bindings.method_body_get_collision_priority = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          866169185
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_set_param");
+        this._bindings.method_body_set_param = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2715630609
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_get_param");
+        this._bindings.method_body_get_param = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3208033526
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_reset_mass_properties");
+        this._bindings.method_body_reset_mass_properties = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2722037293
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_set_state");
+        this._bindings.method_body_set_state = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1706355209
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_get_state");
+        this._bindings.method_body_get_state = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4036367961
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_apply_central_impulse");
+        this._bindings.method_body_apply_central_impulse = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3201125042
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_apply_torque_impulse");
+        this._bindings.method_body_apply_torque_impulse = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_apply_impulse");
+        this._bindings.method_body_apply_impulse = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          205485391
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_apply_central_force");
+        this._bindings.method_body_apply_central_force = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3201125042
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_apply_force");
+        this._bindings.method_body_apply_force = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          205485391
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_apply_torque");
+        this._bindings.method_body_apply_torque = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_add_constant_central_force");
+        this._bindings.method_body_add_constant_central_force = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3201125042
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_add_constant_force");
+        this._bindings.method_body_add_constant_force = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          205485391
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_add_constant_torque");
+        this._bindings.method_body_add_constant_torque = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_set_constant_force");
+        this._bindings.method_body_set_constant_force = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3201125042
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_get_constant_force");
+        this._bindings.method_body_get_constant_force = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2440833711
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_set_constant_torque");
+        this._bindings.method_body_set_constant_torque = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1794382983
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_get_constant_torque");
+        this._bindings.method_body_get_constant_torque = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          866169185
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_set_axis_velocity");
+        this._bindings.method_body_set_axis_velocity = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3201125042
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_add_collision_exception");
+        this._bindings.method_body_add_collision_exception = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_remove_collision_exception");
+        this._bindings.method_body_remove_collision_exception = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          395945892
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_set_max_contacts_reported");
+        this._bindings.method_body_set_max_contacts_reported = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3411492887
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_get_max_contacts_reported");
+        this._bindings.method_body_get_max_contacts_reported = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2198884583
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_set_omit_force_integration");
+        this._bindings.method_body_set_omit_force_integration = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_is_omitting_force_integration");
+        this._bindings.method_body_is_omitting_force_integration = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4155700596
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_set_state_sync_callback");
+        this._bindings.method_body_set_state_sync_callback = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3379118538
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_set_force_integration_callback");
+        this._bindings.method_body_set_force_integration_callback = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3059434249
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_test_motion");
+        this._bindings.method_body_test_motion = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1699844009
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("body_get_direct_state");
+        this._bindings.method_body_get_direct_state = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1191931871
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("joint_create");
+        this._bindings.method_joint_create = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          529393457
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("joint_clear");
+        this._bindings.method_joint_clear = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2722037293
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("joint_set_param");
+        this._bindings.method_joint_set_param = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3972556514
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("joint_get_param");
+        this._bindings.method_joint_get_param = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4016448949
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("joint_disable_collisions_between_bodies");
+        this._bindings.method_joint_disable_collisions_between_bodies = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1265174801
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("joint_is_disabled_collisions_between_bodies");
+        this._bindings.method_joint_is_disabled_collisions_between_bodies = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4155700596
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("joint_make_pin");
+        this._bindings.method_joint_make_pin = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1612646186
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("joint_make_groove");
+        this._bindings.method_joint_make_groove = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          481430435
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("joint_make_damped_spring");
+        this._bindings.method_joint_make_damped_spring = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1994657646
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("pin_joint_set_flag");
+        this._bindings.method_pin_joint_set_flag = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3520002352
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("pin_joint_get_flag");
+        this._bindings.method_pin_joint_get_flag = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2647867364
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("pin_joint_set_param");
+        this._bindings.method_pin_joint_set_param = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          550574241
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("pin_joint_get_param");
+        this._bindings.method_pin_joint_get_param = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          348281383
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("damped_spring_joint_set_param");
+        this._bindings.method_damped_spring_joint_set_param = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          220564071
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("damped_spring_joint_get_param");
+        this._bindings.method_damped_spring_joint_get_param = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2075871277
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("joint_get_type");
+        this._bindings.method_joint_get_type = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4262502231
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("free_rid");
+        this._bindings.method_free_rid = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2722037293
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("set_active");
+        this._bindings.method_set_active = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2586408642
+        );
+      }
+      {
+        let classname = new StringName("PhysicsServer2D");
+        let methodname = new StringName("get_process_info");
+        this._bindings.method_get_process_info = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          576496006
+        );
+      }
   }
   world_boundary_shape_create() {
     return _call_native_mb_ret(
@@ -1222,6 +1230,7 @@ class _PhysicsServer2D extends GodotObject{
     ,
       
     );
+    
   }
   separation_ray_shape_create() {
     return _call_native_mb_ret(
@@ -1231,6 +1240,7 @@ class _PhysicsServer2D extends GodotObject{
     ,
       
     );
+    
   }
   segment_shape_create() {
     return _call_native_mb_ret(
@@ -1240,6 +1250,7 @@ class _PhysicsServer2D extends GodotObject{
     ,
       
     );
+    
   }
   circle_shape_create() {
     return _call_native_mb_ret(
@@ -1249,6 +1260,7 @@ class _PhysicsServer2D extends GodotObject{
     ,
       
     );
+    
   }
   rectangle_shape_create() {
     return _call_native_mb_ret(
@@ -1258,6 +1270,7 @@ class _PhysicsServer2D extends GodotObject{
     ,
       
     );
+    
   }
   capsule_shape_create() {
     return _call_native_mb_ret(
@@ -1267,6 +1280,7 @@ class _PhysicsServer2D extends GodotObject{
     ,
       
     );
+    
   }
   convex_polygon_shape_create() {
     return _call_native_mb_ret(
@@ -1276,6 +1290,7 @@ class _PhysicsServer2D extends GodotObject{
     ,
       
     );
+    
   }
   concave_polygon_shape_create() {
     return _call_native_mb_ret(
@@ -1285,6 +1300,7 @@ class _PhysicsServer2D extends GodotObject{
     ,
       
     );
+    
   }
   shape_set_data(_shape, _data) {
     return _call_native_mb_no_ret(
@@ -1292,6 +1308,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _shape, _data
     );
+    
   }
   shape_get_type(_shape) {
     return _call_native_mb_ret(
@@ -1300,6 +1317,7 @@ class _PhysicsServer2D extends GodotObject{
 			Variant.INT,
       _shape
     );
+    
   }
   shape_get_data(_shape) {
     return _call_native_mb_ret(
@@ -1309,6 +1327,7 @@ class _PhysicsServer2D extends GodotObject{
     ,
       _shape
     );
+    
   }
   space_create() {
     return _call_native_mb_ret(
@@ -1318,6 +1337,7 @@ class _PhysicsServer2D extends GodotObject{
     ,
       
     );
+    
   }
   space_set_active(_space, _active) {
     return _call_native_mb_no_ret(
@@ -1325,6 +1345,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _space, _active
     );
+    
   }
   space_is_active(_space) {
     return _call_native_mb_ret(
@@ -1333,6 +1354,7 @@ class _PhysicsServer2D extends GodotObject{
 			Variant.Type.BOOL,
       _space
     );
+    
   }
   space_set_param(_space, _param, _value) {
     return _call_native_mb_no_ret(
@@ -1340,6 +1362,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _space, _param, _value
     );
+    
   }
   space_get_param(_space, _param) {
     return _call_native_mb_ret(
@@ -1348,6 +1371,7 @@ class _PhysicsServer2D extends GodotObject{
 			Variant.Type.FLOAT,
       _space, _param
     );
+    
   }
   space_get_direct_state(_space) {
     return _call_native_mb_ret(
@@ -1356,6 +1380,7 @@ class _PhysicsServer2D extends GodotObject{
 			Variant.INT,
       _space
     );
+    
   }
   area_create() {
     return _call_native_mb_ret(
@@ -1365,6 +1390,7 @@ class _PhysicsServer2D extends GodotObject{
     ,
       
     );
+    
   }
   area_set_space(_area, _space) {
     return _call_native_mb_no_ret(
@@ -1372,6 +1398,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _area, _space
     );
+    
   }
   area_get_space(_area) {
     return _call_native_mb_ret(
@@ -1381,6 +1408,7 @@ class _PhysicsServer2D extends GodotObject{
     ,
       _area
     );
+    
   }
   area_add_shape(_area, _shape, _transform, _disabled) {
     return _call_native_mb_no_ret(
@@ -1388,6 +1416,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _area, _shape, _transform, _disabled
     );
+    
   }
   area_set_shape(_area, _shape_idx, _shape) {
     return _call_native_mb_no_ret(
@@ -1395,6 +1424,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _area, _shape_idx, _shape
     );
+    
   }
   area_set_shape_transform(_area, _shape_idx, _transform) {
     return _call_native_mb_no_ret(
@@ -1402,6 +1432,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _area, _shape_idx, _transform
     );
+    
   }
   area_set_shape_disabled(_area, _shape_idx, _disabled) {
     return _call_native_mb_no_ret(
@@ -1409,6 +1440,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _area, _shape_idx, _disabled
     );
+    
   }
   area_get_shape_count(_area) {
     return _call_native_mb_ret(
@@ -1417,6 +1449,7 @@ class _PhysicsServer2D extends GodotObject{
 			Variant.Type.INT,
       _area
     );
+    
   }
   area_get_shape(_area, _shape_idx) {
     return _call_native_mb_ret(
@@ -1426,6 +1459,7 @@ class _PhysicsServer2D extends GodotObject{
     ,
       _area, _shape_idx
     );
+    
   }
   area_get_shape_transform(_area, _shape_idx) {
     return _call_native_mb_ret(
@@ -1435,6 +1469,7 @@ class _PhysicsServer2D extends GodotObject{
     ,
       _area, _shape_idx
     );
+    
   }
   area_remove_shape(_area, _shape_idx) {
     return _call_native_mb_no_ret(
@@ -1442,6 +1477,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _area, _shape_idx
     );
+    
   }
   area_clear_shapes(_area) {
     return _call_native_mb_no_ret(
@@ -1449,6 +1485,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _area
     );
+    
   }
   area_set_collision_layer(_area, _layer) {
     return _call_native_mb_no_ret(
@@ -1456,6 +1493,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _area, _layer
     );
+    
   }
   area_get_collision_layer(_area) {
     return _call_native_mb_ret(
@@ -1464,6 +1502,7 @@ class _PhysicsServer2D extends GodotObject{
 			Variant.Type.INT,
       _area
     );
+    
   }
   area_set_collision_mask(_area, _mask) {
     return _call_native_mb_no_ret(
@@ -1471,6 +1510,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _area, _mask
     );
+    
   }
   area_get_collision_mask(_area) {
     return _call_native_mb_ret(
@@ -1479,6 +1519,7 @@ class _PhysicsServer2D extends GodotObject{
 			Variant.Type.INT,
       _area
     );
+    
   }
   area_set_param(_area, _param, _value) {
     return _call_native_mb_no_ret(
@@ -1486,6 +1527,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _area, _param, _value
     );
+    
   }
   area_set_transform(_area, _transform) {
     return _call_native_mb_no_ret(
@@ -1493,6 +1535,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _area, _transform
     );
+    
   }
   area_get_param(_area, _param) {
     return _call_native_mb_ret(
@@ -1502,6 +1545,7 @@ class _PhysicsServer2D extends GodotObject{
     ,
       _area, _param
     );
+    
   }
   area_get_transform(_area) {
     return _call_native_mb_ret(
@@ -1511,6 +1555,7 @@ class _PhysicsServer2D extends GodotObject{
     ,
       _area
     );
+    
   }
   area_attach_object_instance_id(_area, _id) {
     return _call_native_mb_no_ret(
@@ -1518,6 +1563,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _area, _id
     );
+    
   }
   area_get_object_instance_id(_area) {
     return _call_native_mb_ret(
@@ -1526,6 +1572,7 @@ class _PhysicsServer2D extends GodotObject{
 			Variant.Type.INT,
       _area
     );
+    
   }
   area_attach_canvas_instance_id(_area, _id) {
     return _call_native_mb_no_ret(
@@ -1533,6 +1580,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _area, _id
     );
+    
   }
   area_get_canvas_instance_id(_area) {
     return _call_native_mb_ret(
@@ -1541,6 +1589,7 @@ class _PhysicsServer2D extends GodotObject{
 			Variant.Type.INT,
       _area
     );
+    
   }
   area_set_monitor_callback(_area, _callback) {
     return _call_native_mb_no_ret(
@@ -1548,6 +1597,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _area, _callback
     );
+    
   }
   area_set_area_monitor_callback(_area, _callback) {
     return _call_native_mb_no_ret(
@@ -1555,6 +1605,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _area, _callback
     );
+    
   }
   area_set_monitorable(_area, _monitorable) {
     return _call_native_mb_no_ret(
@@ -1562,6 +1613,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _area, _monitorable
     );
+    
   }
   body_create() {
     return _call_native_mb_ret(
@@ -1571,6 +1623,7 @@ class _PhysicsServer2D extends GodotObject{
     ,
       
     );
+    
   }
   body_set_space(_body, _space) {
     return _call_native_mb_no_ret(
@@ -1578,6 +1631,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _body, _space
     );
+    
   }
   body_get_space(_body) {
     return _call_native_mb_ret(
@@ -1587,6 +1641,7 @@ class _PhysicsServer2D extends GodotObject{
     ,
       _body
     );
+    
   }
   body_set_mode(_body, _mode) {
     return _call_native_mb_no_ret(
@@ -1594,6 +1649,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _body, _mode
     );
+    
   }
   body_get_mode(_body) {
     return _call_native_mb_ret(
@@ -1602,6 +1658,7 @@ class _PhysicsServer2D extends GodotObject{
 			Variant.INT,
       _body
     );
+    
   }
   body_add_shape(_body, _shape, _transform, _disabled) {
     return _call_native_mb_no_ret(
@@ -1609,6 +1666,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _body, _shape, _transform, _disabled
     );
+    
   }
   body_set_shape(_body, _shape_idx, _shape) {
     return _call_native_mb_no_ret(
@@ -1616,6 +1674,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _body, _shape_idx, _shape
     );
+    
   }
   body_set_shape_transform(_body, _shape_idx, _transform) {
     return _call_native_mb_no_ret(
@@ -1623,6 +1682,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _body, _shape_idx, _transform
     );
+    
   }
   body_get_shape_count(_body) {
     return _call_native_mb_ret(
@@ -1631,6 +1691,7 @@ class _PhysicsServer2D extends GodotObject{
 			Variant.Type.INT,
       _body
     );
+    
   }
   body_get_shape(_body, _shape_idx) {
     return _call_native_mb_ret(
@@ -1640,6 +1701,7 @@ class _PhysicsServer2D extends GodotObject{
     ,
       _body, _shape_idx
     );
+    
   }
   body_get_shape_transform(_body, _shape_idx) {
     return _call_native_mb_ret(
@@ -1649,6 +1711,7 @@ class _PhysicsServer2D extends GodotObject{
     ,
       _body, _shape_idx
     );
+    
   }
   body_remove_shape(_body, _shape_idx) {
     return _call_native_mb_no_ret(
@@ -1656,6 +1719,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _body, _shape_idx
     );
+    
   }
   body_clear_shapes(_body) {
     return _call_native_mb_no_ret(
@@ -1663,6 +1727,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _body
     );
+    
   }
   body_set_shape_disabled(_body, _shape_idx, _disabled) {
     return _call_native_mb_no_ret(
@@ -1670,6 +1735,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _body, _shape_idx, _disabled
     );
+    
   }
   body_set_shape_as_one_way_collision(_body, _shape_idx, _enable, _margin) {
     return _call_native_mb_no_ret(
@@ -1677,6 +1743,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _body, _shape_idx, _enable, _margin
     );
+    
   }
   body_attach_object_instance_id(_body, _id) {
     return _call_native_mb_no_ret(
@@ -1684,6 +1751,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _body, _id
     );
+    
   }
   body_get_object_instance_id(_body) {
     return _call_native_mb_ret(
@@ -1692,6 +1760,7 @@ class _PhysicsServer2D extends GodotObject{
 			Variant.Type.INT,
       _body
     );
+    
   }
   body_attach_canvas_instance_id(_body, _id) {
     return _call_native_mb_no_ret(
@@ -1699,6 +1768,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _body, _id
     );
+    
   }
   body_get_canvas_instance_id(_body) {
     return _call_native_mb_ret(
@@ -1707,6 +1777,7 @@ class _PhysicsServer2D extends GodotObject{
 			Variant.Type.INT,
       _body
     );
+    
   }
   body_set_continuous_collision_detection_mode(_body, _mode) {
     return _call_native_mb_no_ret(
@@ -1714,6 +1785,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _body, _mode
     );
+    
   }
   body_get_continuous_collision_detection_mode(_body) {
     return _call_native_mb_ret(
@@ -1722,6 +1794,7 @@ class _PhysicsServer2D extends GodotObject{
 			Variant.INT,
       _body
     );
+    
   }
   body_set_collision_layer(_body, _layer) {
     return _call_native_mb_no_ret(
@@ -1729,6 +1802,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _body, _layer
     );
+    
   }
   body_get_collision_layer(_body) {
     return _call_native_mb_ret(
@@ -1737,6 +1811,7 @@ class _PhysicsServer2D extends GodotObject{
 			Variant.Type.INT,
       _body
     );
+    
   }
   body_set_collision_mask(_body, _mask) {
     return _call_native_mb_no_ret(
@@ -1744,6 +1819,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _body, _mask
     );
+    
   }
   body_get_collision_mask(_body) {
     return _call_native_mb_ret(
@@ -1752,6 +1828,7 @@ class _PhysicsServer2D extends GodotObject{
 			Variant.Type.INT,
       _body
     );
+    
   }
   body_set_collision_priority(_body, _priority) {
     return _call_native_mb_no_ret(
@@ -1759,6 +1836,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _body, _priority
     );
+    
   }
   body_get_collision_priority(_body) {
     return _call_native_mb_ret(
@@ -1767,6 +1845,7 @@ class _PhysicsServer2D extends GodotObject{
 			Variant.Type.FLOAT,
       _body
     );
+    
   }
   body_set_param(_body, _param, _value) {
     return _call_native_mb_no_ret(
@@ -1774,6 +1853,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _body, _param, _value
     );
+    
   }
   body_get_param(_body, _param) {
     return _call_native_mb_ret(
@@ -1783,6 +1863,7 @@ class _PhysicsServer2D extends GodotObject{
     ,
       _body, _param
     );
+    
   }
   body_reset_mass_properties(_body) {
     return _call_native_mb_no_ret(
@@ -1790,6 +1871,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _body
     );
+    
   }
   body_set_state(_body, _state, _value) {
     return _call_native_mb_no_ret(
@@ -1797,6 +1879,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _body, _state, _value
     );
+    
   }
   body_get_state(_body, _state) {
     return _call_native_mb_ret(
@@ -1806,6 +1889,7 @@ class _PhysicsServer2D extends GodotObject{
     ,
       _body, _state
     );
+    
   }
   body_apply_central_impulse(_body, _impulse) {
     return _call_native_mb_no_ret(
@@ -1813,6 +1897,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _body, _impulse
     );
+    
   }
   body_apply_torque_impulse(_body, _impulse) {
     return _call_native_mb_no_ret(
@@ -1820,6 +1905,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _body, _impulse
     );
+    
   }
   body_apply_impulse(_body, _impulse, _position) {
     return _call_native_mb_no_ret(
@@ -1827,6 +1913,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _body, _impulse, _position
     );
+    
   }
   body_apply_central_force(_body, _force) {
     return _call_native_mb_no_ret(
@@ -1834,6 +1921,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _body, _force
     );
+    
   }
   body_apply_force(_body, _force, _position) {
     return _call_native_mb_no_ret(
@@ -1841,6 +1929,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _body, _force, _position
     );
+    
   }
   body_apply_torque(_body, _torque) {
     return _call_native_mb_no_ret(
@@ -1848,6 +1937,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _body, _torque
     );
+    
   }
   body_add_constant_central_force(_body, _force) {
     return _call_native_mb_no_ret(
@@ -1855,6 +1945,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _body, _force
     );
+    
   }
   body_add_constant_force(_body, _force, _position) {
     return _call_native_mb_no_ret(
@@ -1862,6 +1953,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _body, _force, _position
     );
+    
   }
   body_add_constant_torque(_body, _torque) {
     return _call_native_mb_no_ret(
@@ -1869,6 +1961,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _body, _torque
     );
+    
   }
   body_set_constant_force(_body, _force) {
     return _call_native_mb_no_ret(
@@ -1876,6 +1969,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _body, _force
     );
+    
   }
   body_get_constant_force(_body) {
     return _call_native_mb_ret(
@@ -1885,6 +1979,7 @@ class _PhysicsServer2D extends GodotObject{
     ,
       _body
     );
+    
   }
   body_set_constant_torque(_body, _torque) {
     return _call_native_mb_no_ret(
@@ -1892,6 +1987,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _body, _torque
     );
+    
   }
   body_get_constant_torque(_body) {
     return _call_native_mb_ret(
@@ -1900,6 +1996,7 @@ class _PhysicsServer2D extends GodotObject{
 			Variant.Type.FLOAT,
       _body
     );
+    
   }
   body_set_axis_velocity(_body, _axis_velocity) {
     return _call_native_mb_no_ret(
@@ -1907,6 +2004,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _body, _axis_velocity
     );
+    
   }
   body_add_collision_exception(_body, _excepted_body) {
     return _call_native_mb_no_ret(
@@ -1914,6 +2012,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _body, _excepted_body
     );
+    
   }
   body_remove_collision_exception(_body, _excepted_body) {
     return _call_native_mb_no_ret(
@@ -1921,6 +2020,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _body, _excepted_body
     );
+    
   }
   body_set_max_contacts_reported(_body, _amount) {
     return _call_native_mb_no_ret(
@@ -1928,6 +2028,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _body, _amount
     );
+    
   }
   body_get_max_contacts_reported(_body) {
     return _call_native_mb_ret(
@@ -1936,6 +2037,7 @@ class _PhysicsServer2D extends GodotObject{
 			Variant.Type.INT,
       _body
     );
+    
   }
   body_set_omit_force_integration(_body, _enable) {
     return _call_native_mb_no_ret(
@@ -1943,6 +2045,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _body, _enable
     );
+    
   }
   body_is_omitting_force_integration(_body) {
     return _call_native_mb_ret(
@@ -1951,6 +2054,7 @@ class _PhysicsServer2D extends GodotObject{
 			Variant.Type.BOOL,
       _body
     );
+    
   }
   body_set_state_sync_callback(_body, _callable) {
     return _call_native_mb_no_ret(
@@ -1958,6 +2062,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _body, _callable
     );
+    
   }
   body_set_force_integration_callback(_body, _callable, _userdata) {
     return _call_native_mb_no_ret(
@@ -1965,6 +2070,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _body, _callable, _userdata
     );
+    
   }
   body_test_motion(_body, _parameters, _result) {
     return _call_native_mb_ret(
@@ -1973,6 +2079,7 @@ class _PhysicsServer2D extends GodotObject{
 			Variant.Type.BOOL,
       _body, _parameters, _result
     );
+    
   }
   body_get_direct_state(_body) {
     return _call_native_mb_ret(
@@ -1981,6 +2088,7 @@ class _PhysicsServer2D extends GodotObject{
 			Variant.INT,
       _body
     );
+    
   }
   joint_create() {
     return _call_native_mb_ret(
@@ -1990,6 +2098,7 @@ class _PhysicsServer2D extends GodotObject{
     ,
       
     );
+    
   }
   joint_clear(_joint) {
     return _call_native_mb_no_ret(
@@ -1997,6 +2106,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _joint
     );
+    
   }
   joint_set_param(_joint, _param, _value) {
     return _call_native_mb_no_ret(
@@ -2004,6 +2114,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _joint, _param, _value
     );
+    
   }
   joint_get_param(_joint, _param) {
     return _call_native_mb_ret(
@@ -2012,6 +2123,7 @@ class _PhysicsServer2D extends GodotObject{
 			Variant.Type.FLOAT,
       _joint, _param
     );
+    
   }
   joint_disable_collisions_between_bodies(_joint, _disable) {
     return _call_native_mb_no_ret(
@@ -2019,6 +2131,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _joint, _disable
     );
+    
   }
   joint_is_disabled_collisions_between_bodies(_joint) {
     return _call_native_mb_ret(
@@ -2027,6 +2140,7 @@ class _PhysicsServer2D extends GodotObject{
 			Variant.Type.BOOL,
       _joint
     );
+    
   }
   joint_make_pin(_joint, _anchor, _body_a, _body_b) {
     return _call_native_mb_no_ret(
@@ -2034,6 +2148,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _joint, _anchor, _body_a, _body_b
     );
+    
   }
   joint_make_groove(_joint, _groove1_a, _groove2_a, _anchor_b, _body_a, _body_b) {
     return _call_native_mb_no_ret(
@@ -2041,6 +2156,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _joint, _groove1_a, _groove2_a, _anchor_b, _body_a, _body_b
     );
+    
   }
   joint_make_damped_spring(_joint, _anchor_a, _anchor_b, _body_a, _body_b) {
     return _call_native_mb_no_ret(
@@ -2048,6 +2164,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _joint, _anchor_a, _anchor_b, _body_a, _body_b
     );
+    
   }
   pin_joint_set_flag(_joint, _flag, _enabled) {
     return _call_native_mb_no_ret(
@@ -2055,6 +2172,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _joint, _flag, _enabled
     );
+    
   }
   pin_joint_get_flag(_joint, _flag) {
     return _call_native_mb_ret(
@@ -2063,6 +2181,7 @@ class _PhysicsServer2D extends GodotObject{
 			Variant.Type.BOOL,
       _joint, _flag
     );
+    
   }
   pin_joint_set_param(_joint, _param, _value) {
     return _call_native_mb_no_ret(
@@ -2070,6 +2189,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _joint, _param, _value
     );
+    
   }
   pin_joint_get_param(_joint, _param) {
     return _call_native_mb_ret(
@@ -2078,6 +2198,7 @@ class _PhysicsServer2D extends GodotObject{
 			Variant.Type.FLOAT,
       _joint, _param
     );
+    
   }
   damped_spring_joint_set_param(_joint, _param, _value) {
     return _call_native_mb_no_ret(
@@ -2085,6 +2206,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _joint, _param, _value
     );
+    
   }
   damped_spring_joint_get_param(_joint, _param) {
     return _call_native_mb_ret(
@@ -2093,6 +2215,7 @@ class _PhysicsServer2D extends GodotObject{
 			Variant.Type.FLOAT,
       _joint, _param
     );
+    
   }
   joint_get_type(_joint) {
     return _call_native_mb_ret(
@@ -2101,6 +2224,7 @@ class _PhysicsServer2D extends GodotObject{
 			Variant.INT,
       _joint
     );
+    
   }
   free_rid(_rid) {
     return _call_native_mb_no_ret(
@@ -2108,6 +2232,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _rid
     );
+    
   }
   set_active(_active) {
     return _call_native_mb_no_ret(
@@ -2115,6 +2240,7 @@ class _PhysicsServer2D extends GodotObject{
       this._owner,
       _active
     );
+    
   }
   get_process_info(_process_info) {
     return _call_native_mb_ret(
@@ -2123,6 +2249,7 @@ class _PhysicsServer2D extends GodotObject{
 			Variant.Type.INT,
       _process_info
     );
+    
   }
   static SpaceParameter = {
     SPACE_PARAM_CONTACT_RECYCLE_RADIUS: 0,

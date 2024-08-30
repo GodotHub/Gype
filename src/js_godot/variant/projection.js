@@ -4,13 +4,14 @@ import {
   _call_builtin_method_ptr_ret,
   _call_builtin_method_ptr_no_ret
 } from 'src/js_godot/core/builtin_ptrcall'
+import { Vector4 } from 'src/js_godot/variant/vector4'
 import { Vector2 } from 'src/js_godot/variant/vector2'
-import { Rect2 } from 'src/js_godot/variant/rect2'
-import { Variant } from 'src/js_godot/variant/variant'
+import { StringName } from 'src/js_godot/variant/string_name'
 import { Transform3D } from 'src/js_godot/variant/transform3d'
 import { AABB } from 'src/js_godot/variant/aabb'
+import { Variant } from 'src/js_godot/variant/variant'
+import { Rect2 } from 'src/js_godot/variant/rect2'
 import { Plane } from 'src/js_godot/variant/plane'
-import { Vector4 } from 'src/js_godot/variant/vector4'
 
 class _MethodBindings {
   from_variant_constructor
@@ -56,7 +57,7 @@ class _MethodBindings {
 }
 
 export class Projection {
-  static #SIZE = 8
+  static #SIZE = 64
   opaque = new Uint8Array(Projection.#SIZE)
 
   static _bindings = new _MethodBindings()
@@ -64,17 +65,15 @@ export class Projection {
   constructor (from) {
     if (!from) {
       _call_builtin_constructor(Projection._bindings.constructor_0, this)
-    } else if (arguments[0] instanceof Projection) {
-      let from = arguments[0];
+    }else if (from instanceof Projection) {
       _call_builtin_constructor(Projection._bindings.constructor_1, this, [
         from
       ])
-    } else if (arguments[0] instanceof Transform3D) {
-      let from = arguments[0];
+    }else if (from instanceof Transform3D) {
       _call_builtin_constructor(Projection._bindings.constructor_2, this, [
         from
       ])
-    } else if (arguments[0] instanceof Vector4) {
+    } else if (arguments.length == 4&& arguments[0] instanceof Vector4&& arguments[1] instanceof Vector4&& arguments[2] instanceof Vector4&& arguments[3] instanceof Vector4) {
       let x_axis = arguments[0];
       let y_axis = arguments[1];
       let z_axis = arguments[2];

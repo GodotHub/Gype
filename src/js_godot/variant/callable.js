@@ -4,9 +4,9 @@ import {
   _call_builtin_method_ptr_ret,
   _call_builtin_method_ptr_no_ret
 } from 'src/js_godot/core/builtin_ptrcall'
+import { GDArray } from 'src/js_godot/variant/gd_array'
 import { Variant } from 'src/js_godot/variant/variant'
 import { StringName } from 'src/js_godot/variant/string_name'
-import { GDArray } from 'src/js_godot/variant/gd_array'
 
 class _MethodBindings {
   from_variant_constructor
@@ -44,7 +44,7 @@ class _MethodBindings {
 }
 
 export class Callable {
-  static #SIZE = 8
+  static #SIZE = 16
   opaque = new Uint8Array(Callable.#SIZE)
 
   static _bindings = new _MethodBindings()
@@ -52,12 +52,11 @@ export class Callable {
   constructor (from) {
     if (!from) {
       _call_builtin_constructor(Callable._bindings.constructor_0, this)
-    } else if (arguments[0] instanceof Callable) {
-      let from = arguments[0];
+    }else if (from instanceof Callable) {
       _call_builtin_constructor(Callable._bindings.constructor_1, this, [
         from
       ])
-    } else if (arguments[0] instanceof GodotObject) {
+    } else if (arguments.length == 2&& arguments[0] instanceof GodotObject&& arguments[1] instanceof StringName) {
       let object = arguments[0];
       let method = arguments[1];
       _call_builtin_constructor(Callable._bindings.constructor_2, this, [

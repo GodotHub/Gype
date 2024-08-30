@@ -1,8 +1,16 @@
 import * as internal from '__internal__';
-import { Resource } from 'src/js_godot/classesresource'
+import { PackedFloat32Array } from 'src/js_godot/variant/packed_float32_array'
+import { Resource } from 'src/js_godot/classes/resource'
+import { StringName } from 'src/js_godot/variant/string_name'
 import { Color } from 'src/js_godot/variant/color'
 import { PackedColorArray } from 'src/js_godot/variant/packed_color_array'
-import { PackedFloat32Array } from 'src/js_godot/variant/packed_float32_array'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
     method_add_point;
     method_remove_point;
@@ -37,159 +45,159 @@ export class Gradient extends Resource{
   }
   
   static _init_bindings() {
-    {
-      let classname = new StringName("Gradient");
-      let methodname = new StringName("add_point");
-      this._bindings.method_add_point = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3629403827
-      );
-    }
-    {
-      let classname = new StringName("Gradient");
-      let methodname = new StringName("remove_point");
-      this._bindings.method_remove_point = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("Gradient");
-      let methodname = new StringName("set_offset");
-      this._bindings.method_set_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1602489585
-      );
-    }
-    {
-      let classname = new StringName("Gradient");
-      let methodname = new StringName("get_offset");
-      this._bindings.method_get_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4025615559
-      );
-    }
-    {
-      let classname = new StringName("Gradient");
-      let methodname = new StringName("reverse");
-      this._bindings.method_reverse = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3218959716
-      );
-    }
-    {
-      let classname = new StringName("Gradient");
-      let methodname = new StringName("set_color");
-      this._bindings.method_set_color = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2878471219
-      );
-    }
-    {
-      let classname = new StringName("Gradient");
-      let methodname = new StringName("get_color");
-      this._bindings.method_get_color = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2624840992
-      );
-    }
-    {
-      let classname = new StringName("Gradient");
-      let methodname = new StringName("sample");
-      this._bindings.method_sample = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1250405064
-      );
-    }
-    {
-      let classname = new StringName("Gradient");
-      let methodname = new StringName("get_point_count");
-      this._bindings.method_get_point_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("Gradient");
-      let methodname = new StringName("set_offsets");
-      this._bindings.method_set_offsets = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2899603908
-      );
-    }
-    {
-      let classname = new StringName("Gradient");
-      let methodname = new StringName("get_offsets");
-      this._bindings.method_get_offsets = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        675695659
-      );
-    }
-    {
-      let classname = new StringName("Gradient");
-      let methodname = new StringName("set_colors");
-      this._bindings.method_set_colors = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3546319833
-      );
-    }
-    {
-      let classname = new StringName("Gradient");
-      let methodname = new StringName("get_colors");
-      this._bindings.method_get_colors = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1392750486
-      );
-    }
-    {
-      let classname = new StringName("Gradient");
-      let methodname = new StringName("set_interpolation_mode");
-      this._bindings.method_set_interpolation_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1971444490
-      );
-    }
-    {
-      let classname = new StringName("Gradient");
-      let methodname = new StringName("get_interpolation_mode");
-      this._bindings.method_get_interpolation_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3674172981
-      );
-    }
-    {
-      let classname = new StringName("Gradient");
-      let methodname = new StringName("set_interpolation_color_space");
-      this._bindings.method_set_interpolation_color_space = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3685995981
-      );
-    }
-    {
-      let classname = new StringName("Gradient");
-      let methodname = new StringName("get_interpolation_color_space");
-      this._bindings.method_get_interpolation_color_space = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1538296000
-      );
-    }
+      {
+        let classname = new StringName("Gradient");
+        let methodname = new StringName("add_point");
+        this._bindings.method_add_point = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3629403827
+        );
+      }
+      {
+        let classname = new StringName("Gradient");
+        let methodname = new StringName("remove_point");
+        this._bindings.method_remove_point = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1286410249
+        );
+      }
+      {
+        let classname = new StringName("Gradient");
+        let methodname = new StringName("set_offset");
+        this._bindings.method_set_offset = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1602489585
+        );
+      }
+      {
+        let classname = new StringName("Gradient");
+        let methodname = new StringName("get_offset");
+        this._bindings.method_get_offset = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          4025615559
+        );
+      }
+      {
+        let classname = new StringName("Gradient");
+        let methodname = new StringName("reverse");
+        this._bindings.method_reverse = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3218959716
+        );
+      }
+      {
+        let classname = new StringName("Gradient");
+        let methodname = new StringName("set_color");
+        this._bindings.method_set_color = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2878471219
+        );
+      }
+      {
+        let classname = new StringName("Gradient");
+        let methodname = new StringName("get_color");
+        this._bindings.method_get_color = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2624840992
+        );
+      }
+      {
+        let classname = new StringName("Gradient");
+        let methodname = new StringName("sample");
+        this._bindings.method_sample = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1250405064
+        );
+      }
+      {
+        let classname = new StringName("Gradient");
+        let methodname = new StringName("get_point_count");
+        this._bindings.method_get_point_count = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3905245786
+        );
+      }
+      {
+        let classname = new StringName("Gradient");
+        let methodname = new StringName("set_offsets");
+        this._bindings.method_set_offsets = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          2899603908
+        );
+      }
+      {
+        let classname = new StringName("Gradient");
+        let methodname = new StringName("get_offsets");
+        this._bindings.method_get_offsets = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          675695659
+        );
+      }
+      {
+        let classname = new StringName("Gradient");
+        let methodname = new StringName("set_colors");
+        this._bindings.method_set_colors = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3546319833
+        );
+      }
+      {
+        let classname = new StringName("Gradient");
+        let methodname = new StringName("get_colors");
+        this._bindings.method_get_colors = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1392750486
+        );
+      }
+      {
+        let classname = new StringName("Gradient");
+        let methodname = new StringName("set_interpolation_mode");
+        this._bindings.method_set_interpolation_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1971444490
+        );
+      }
+      {
+        let classname = new StringName("Gradient");
+        let methodname = new StringName("get_interpolation_mode");
+        this._bindings.method_get_interpolation_mode = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3674172981
+        );
+      }
+      {
+        let classname = new StringName("Gradient");
+        let methodname = new StringName("set_interpolation_color_space");
+        this._bindings.method_set_interpolation_color_space = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          3685995981
+        );
+      }
+      {
+        let classname = new StringName("Gradient");
+        let methodname = new StringName("get_interpolation_color_space");
+        this._bindings.method_get_interpolation_color_space = internal.classdb_get_method_bind(
+          classname.opaque, 
+          methodname.opaque, 
+          1538296000
+        );
+      }
   }
   add_point(_offset, _color) {
     return _call_native_mb_no_ret(
@@ -197,6 +205,7 @@ export class Gradient extends Resource{
       this._owner,
       _offset, _color
     );
+    
   }
   remove_point(_point) {
     return _call_native_mb_no_ret(
@@ -204,6 +213,7 @@ export class Gradient extends Resource{
       this._owner,
       _point
     );
+    
   }
   set_offset(_point, _offset) {
     return _call_native_mb_no_ret(
@@ -211,6 +221,7 @@ export class Gradient extends Resource{
       this._owner,
       _point, _offset
     );
+    
   }
   get_offset(_point) {
     return _call_native_mb_ret(
@@ -219,6 +230,7 @@ export class Gradient extends Resource{
 			Variant.Type.FLOAT,
       _point
     );
+    
   }
   reverse() {
     return _call_native_mb_no_ret(
@@ -226,6 +238,7 @@ export class Gradient extends Resource{
       this._owner,
       
     );
+    
   }
   set_color(_point, _color) {
     return _call_native_mb_no_ret(
@@ -233,6 +246,7 @@ export class Gradient extends Resource{
       this._owner,
       _point, _color
     );
+    
   }
   get_color(_point) {
     return _call_native_mb_ret(
@@ -242,6 +256,7 @@ export class Gradient extends Resource{
     ,
       _point
     );
+    
   }
   sample(_offset) {
     return _call_native_mb_ret(
@@ -251,6 +266,7 @@ export class Gradient extends Resource{
     ,
       _offset
     );
+    
   }
   get_point_count() {
     return _call_native_mb_ret(
@@ -259,6 +275,7 @@ export class Gradient extends Resource{
 			Variant.Type.INT,
       
     );
+    
   }
   set_offsets(_offsets) {
     return _call_native_mb_no_ret(
@@ -266,6 +283,7 @@ export class Gradient extends Resource{
       this._owner,
       _offsets
     );
+    
   }
   get_offsets() {
     return _call_native_mb_ret(
@@ -275,6 +293,7 @@ export class Gradient extends Resource{
     ,
       
     );
+    
   }
   set_colors(_colors) {
     return _call_native_mb_no_ret(
@@ -282,6 +301,7 @@ export class Gradient extends Resource{
       this._owner,
       _colors
     );
+    
   }
   get_colors() {
     return _call_native_mb_ret(
@@ -291,6 +311,7 @@ export class Gradient extends Resource{
     ,
       
     );
+    
   }
   set_interpolation_mode(_interpolation_mode) {
     return _call_native_mb_no_ret(
@@ -298,6 +319,7 @@ export class Gradient extends Resource{
       this._owner,
       _interpolation_mode
     );
+    
   }
   get_interpolation_mode() {
     return _call_native_mb_ret(
@@ -306,6 +328,7 @@ export class Gradient extends Resource{
 			Variant.INT,
       
     );
+    
   }
   set_interpolation_color_space(_interpolation_color_space) {
     return _call_native_mb_no_ret(
@@ -313,6 +336,7 @@ export class Gradient extends Resource{
       this._owner,
       _interpolation_color_space
     );
+    
   }
   get_interpolation_color_space() {
     return _call_native_mb_ret(
@@ -321,6 +345,7 @@ export class Gradient extends Resource{
 			Variant.INT,
       
     );
+    
   }
   static InterpolationMode = {
     GRADIENT_INTERPOLATE_LINEAR: 0,

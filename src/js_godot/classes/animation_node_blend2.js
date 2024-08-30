@@ -1,5 +1,13 @@
 import * as internal from '__internal__';
-import { AnimationNodeSync } from 'src/js_godot/classesanimation_node_sync'
+import { StringName } from 'src/js_godot/variant/string_name'
+import { AnimationNodeSync } from 'src/js_godot/classes/animation_node_sync'
+import {
+  call_utility_ret,
+  call_utility_no_ret,
+  _call_native_mb_ret,
+  _call_native_mb_no_ret
+} from "src/js_godot/core/engine_ptrcall";
+
 class _MethodBindings {
 }
 
