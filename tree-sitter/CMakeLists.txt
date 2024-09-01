@@ -7,17 +7,17 @@ file(GLOB_RECURSE SOURCE
 
 add_library(tree-sitter SHARED ${SOURCE})
 
-target_link_directories(tree-sitter PUBLIC ${PROJECT_SOURCE_DIR}/bin)
+target_link_directories(tree-sitter PRIVATE ${PROJECT_SOURCE_DIR}/bin)
 
-target_link_libraries(tree-sitter PUBLIC tree-sitter-javascript)
+target_link_libraries(tree-sitter PRIVATE tree-sitter-javascript)
 
-target_link_options(tree-sitter PUBLIC
+target_link_options(tree-sitter PRIVATE
     -static-libgcc
     -static-libstdc++
     -static
 )
 
 target_include_directories(tree-sitter 
-    PUBLIC 
+    PRIVATE 
         ${PROJECT_SOURCE_DIR}/include
         ${PROJECT_SOURCE_DIR}/src)

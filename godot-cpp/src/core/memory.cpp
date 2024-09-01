@@ -29,10 +29,10 @@
 /**************************************************************************/
 
 #include <godot_cpp/core/memory.hpp>
-#include <godot_cpp/godot.hpp>
-#include <vector>
 
-namespace JSGodot {
+#include <godot_cpp/godot.hpp>
+
+namespace godot {
 
 void *Memory::alloc_static(size_t p_bytes, bool p_pad_align) {
 #ifdef DEBUG_ENABLED
@@ -93,18 +93,6 @@ void Memory::free_static(void *p_ptr, bool p_pad_align) {
 	internal::gdextension_interface_mem_free(mem);
 }
 
-std::vector<uint8_t> Memory::arr_to_vector(GDExtensionVariantType type, uint8_t *arr) {
-	switch (type) {
-		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_STRING_NAME:
-		case GDExtensionVariantType ::GDEXTENSION_VARIANT_TYPE_STRING:
-			return std::vector<uint8_t>(arr, arr + STRING_SIZE);
-		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_VARIANT_MAX:
-			return std::vector<uint8_t>(arr, arr + VARIANT_SIZE);
-		default:
-			return std::vector<uint8_t>(0);
-	}
-}
-
 _GlobalNil::_GlobalNil() {
 	left = this;
 	right = this;
@@ -113,18 +101,18 @@ _GlobalNil::_GlobalNil() {
 
 _GlobalNil _GlobalNilClass::_nil;
 
-} //namespace JSGodot
+} // namespace godot
 
 // p_dummy argument is added to avoid conflicts with the engine functions when both engine and GDExtension are built as a static library on iOS.
 void *operator new(size_t p_size, const char *p_dummy, const char *p_description) {
-	return JSGodot::Memory::alloc_static(p_size);
+	return godot::Memory::alloc_static(p_size);
 }
 
 void *operator new(size_t p_size, const char *p_dummy, void *(*p_allocfunc)(size_t p_size)) {
 	return p_allocfunc(p_size);
 }
 
-using namespace JSGodot;
+using namespace godot;
 
 #ifdef _MSC_VER
 void operator delete(void *p_mem, const char *p_dummy, const char *p_description) {

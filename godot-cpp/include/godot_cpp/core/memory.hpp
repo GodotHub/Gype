@@ -1,5 +1,5 @@
-/*  memory.hpp                                                            */
 /**************************************************************************/
+/*  memory.hpp                                                            */
 /**************************************************************************/
 /*                         This file is part of:                          */
 /*                             GODOT ENGINE                               */
@@ -37,9 +37,8 @@
 #include <godot_cpp/core/defs.hpp>
 #include <godot_cpp/core/error_macros.hpp>
 #include <godot_cpp/godot.hpp>
-#include <godot_cpp/variant_size.hpp>
+
 #include <type_traits>
-#include <vector>
 
 // p_dummy argument is added to avoid conflicts with the engine functions when both engine and GDExtension are built as a static library on iOS.
 void *operator new(size_t p_size, const char *p_dummy, const char *p_description); ///< operator new that takes a description and uses MemoryStaticPool
@@ -58,7 +57,7 @@ void operator delete(void *p_mem, const char *p_dummy, void *(*p_allocfunc)(size
 void operator delete(void *p_mem, const char *p_dummy, void *p_pointer, size_t check, const char *p_description);
 #endif
 
-namespace JSGodot {
+namespace godot {
 
 class Wrapped;
 
@@ -81,11 +80,9 @@ public:
 	static void *alloc_static(size_t p_bytes, bool p_pad_align = false);
 	static void *realloc_static(void *p_memory, size_t p_bytes, bool p_pad_align = false);
 	static void free_static(void *p_ptr, bool p_pad_align = false);
-
-	static std::vector<uint8_t> arr_to_vector(GDExtensionVariantType type, uint8_t *arr);
 };
 
-template <typename T>
+template <typename T, std::enable_if_t<!std::is_base_of<::godot::Wrapped, T>::value, bool> = true>
 _ALWAYS_INLINE_ void _pre_initialize() {}
 
 _ALWAYS_INLINE_ void postinitialize_handler(void *) {}
@@ -96,20 +93,43 @@ _ALWAYS_INLINE_ T *_post_initialize(T *p_obj) {
 	return p_obj;
 }
 
-#define memalloc(m_size) ::JSGodot::Memory::alloc_static(m_size)
-#define memrealloc(m_mem, m_size) ::JSGodot::Memory::realloc_static(m_mem, m_size)
-#define memfree(m_mem) ::JSGodot::Memory::free_static(m_mem)
+#define memalloc(m_size) ::godot::Memory::alloc_static(m_size)
+#define memrealloc(m_mem, m_size) ::godot::Memory::realloc_static(m_mem, m_size)
+#define memfree(m_mem) ::godot::Memory::free_static(m_mem)
 
-#define memnew(m_class) (::JSGodot::_pre_initialize<std::remove_pointer_t<decltype(new ("", "") m_class)>>(), ::JSGodot::_post_initialize(new ("", "") m_class))
+#define memnew(m_class) (::godot::_pre_initialize<std::remove_pointer_t<decltype(new ("", "") m_class)>>(), ::godot::_post_initialize(new ("", "") m_class))
 
-#define memnew_allocator(m_class, m_allocator) (::JSGodot::_pre_initialize<std::remove_pointer_t<decltype(new ("", "") m_class)>>(), ::JSGodot::_post_initialize(new ("", m_allocator::alloc) m_class))
-#define memnew_placement(m_placement, m_class) (::JSGodot::_pre_initialize<std::remove_pointer_t<decltype(new ("", "") m_class)>>(), ::JSGodot::_post_initialize(new ("", m_placement, sizeof(m_class), "") m_class))
+#define memnew_allocator(m_class, m_allocator) (::godot::_pre_initialize<std::remove_pointer_t<decltype(new ("", "") m_class)>>(), ::godot::_post_initialize(new ("", m_allocator::alloc) m_class))
+#define memnew_placement(m_placement, m_class) (::godot::_pre_initialize<std::remove_pointer_t<decltype(new ("", "") m_class)>>(), ::godot::_post_initialize(new ("", m_placement, sizeof(m_class), "") m_class))
 
 // Generic comparator used in Map, List, etc.
 template <typename T>
 struct Comparator {
 	_ALWAYS_INLINE_ bool operator()(const T &p_a, const T &p_b) const { return (p_a < p_b); }
 };
+
+template <typename T>
+void memdelete(T *p_class, typename std::enable_if<!std::is_base_of_v<godot::Wrapped, T>>::type * = nullptr) {
+	if constexpr (!std::is_trivially_destructible_v<T>) {
+		p_class->~T();
+	}
+
+	Memory::free_static(p_class);
+}
+
+template <typename T, std::enable_if_t<std::is_base_of_v<godot::Wrapped, T>, bool> = true>
+void memdelete(T *p_class) {
+	godot::internal::gdextension_interface_object_destroy(p_class->_owner);
+}
+
+template <typename T, typename A>
+void memdelete_allocator(T *p_class) {
+	if constexpr (!std::is_trivially_destructible_v<T>) {
+		p_class->~T();
+	}
+
+	A::free(p_class);
+}
 
 class DefaultAllocator {
 public:
@@ -195,6 +215,6 @@ struct _GlobalNilClass {
 	static _GlobalNil _nil;
 };
 
-} //namespace JSGodot
+} // namespace godot
 
 #endif // GODOT_MEMORY_HPP

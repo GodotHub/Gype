@@ -3,9 +3,11 @@ import { JSPointer } from "__internal__";
 
 export class TypeScriptInstance {
   godot_object;
-  instance_info = new TypeScriptInstanceInfo();
 
   constructor(godot_object) {
     this.godot_object = godot_object;
   }
+
+  set(name, p_value) {}
+  get(name, r_ret) {}
 }
