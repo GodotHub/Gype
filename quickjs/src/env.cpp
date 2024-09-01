@@ -1,4 +1,5 @@
 #include <quickjs/env.h>
+#include <cstring>
 
 qjs::Runtime runtime;
 qjs::Context context(runtime);
@@ -6,7 +7,6 @@ qjs::Context context(runtime);
 JSModuleDef *module_loader(JSContext *ctx, const char *module_name, void *opaque) {
 	char filepath[1024];
 	sprintf(filepath, "%s/%s.js", (char *)opaque, module_name); // 构建文件路径
-	printf("%s\n", filepath);
 	std::optional<std::string> opt;
 	JSValue func_val;
 

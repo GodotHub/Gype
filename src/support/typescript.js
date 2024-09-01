@@ -2,6 +2,10 @@ import { ScriptExtension } from "src/js_godot/classes/script_extension";
 import { TypeScriptInstance } from "src/js_godot/classes/typescript_instance";
 
 export class TypeScript extends ScriptExtension {
+  constructor() {
+    super();
+  }
+
   _editor_can_reload_from_file() {
     return true;
   }
@@ -11,9 +15,7 @@ export class TypeScript extends ScriptExtension {
   _get_global_name() {}
   _inherits_script(_script) {}
   _get_instance_base_type() {}
-  _instance_create(_for_object) {
-    return new TypeScriptInstance(_for_object);
-  }
+  _instance_create(_for_object) {}
   _placeholder_instance_create(_for_object) {}
   _instance_has(_object) {}
   _has_source_code() {}

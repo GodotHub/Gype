@@ -31,21 +31,25 @@
 #ifndef GODOT_ERROR_MACROS_HPP
 #define GODOT_ERROR_MACROS_HPP
 
-#include "godot_cpp/core/error_macros.hpp"
+#include <godot_cpp/core/defs.hpp>
+
 #include <atomic>
 
-namespace JSGodot {
+namespace godot {
 
 class String;
 
 void _err_print_error(const char *p_function, const char *p_file, int p_line, const char *p_error, bool p_editor_notify = false, bool p_is_warning = false);
+void _err_print_error(const char *p_function, const char *p_file, int p_line, const String &p_error, bool p_editor_notify = false, bool p_is_warning = false);
 void _err_print_error(const char *p_function, const char *p_file, int p_line, const char *p_error, const char *p_message, bool p_editor_notify = false, bool p_is_warning = false);
+void _err_print_error(const char *p_function, const char *p_file, int p_line, const String &p_error, const char *p_message, bool p_editor_notify = false, bool p_is_warning = false);
 void _err_print_error(const char *p_function, const char *p_file, int p_line, const char *p_error, const String &p_message, bool p_editor_notify = false, bool p_is_warning = false);
+void _err_print_error(const char *p_function, const char *p_file, int p_line, const String &p_error, const String &p_message, bool p_editor_notify = false, bool p_is_warning = false);
 void _err_print_index_error(const char *p_function, const char *p_file, int p_line, int64_t p_index, int64_t p_size, const char *p_index_str, const char *p_size_str, const char *p_message = "", bool p_editor_notify = false, bool p_fatal = false);
 void _err_print_index_error(const char *p_function, const char *p_file, int p_line, int64_t p_index, int64_t p_size, const char *p_index_str, const char *p_size_str, const String &p_message, bool p_editor_notify = false, bool p_fatal = false);
 void _err_flush_stdout();
 
-} //namespace JSGodot
+} // namespace godot
 
 #ifdef __GNUC__
 #define FUNCTION_STR __FUNCTION__
@@ -93,32 +97,32 @@ void _err_flush_stdout();
  * Ensures an integer index `m_index` is less than `m_size` and greater than or equal to 0.
  * If not, the current function returns.
  */
-#define ERR_FAIL_INDEX(m_index, m_size)                                                                                    \
-	if (unlikely((m_index) < 0 || (m_index) >= (m_size))) {                                                                \
-		::JSGodot::_err_print_index_error(FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, _STR(m_index), _STR(m_size)); \
-		return;                                                                                                            \
-	} else                                                                                                                 \
+#define ERR_FAIL_INDEX(m_index, m_size)                                                                                  \
+	if (unlikely((m_index) < 0 || (m_index) >= (m_size))) {                                                              \
+		::godot::_err_print_index_error(FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, _STR(m_index), _STR(m_size)); \
+		return;                                                                                                          \
+	} else                                                                                                               \
 		((void)0)
 
 /**
  * Ensures an integer index `m_index` is less than `m_size` and greater than or equal to 0.
  * If not, prints `m_msg` and the current function returns.
  */
-#define ERR_FAIL_INDEX_MSG(m_index, m_size, m_msg)                                                                                \
-	if (unlikely((m_index) < 0 || (m_index) >= (m_size))) {                                                                       \
-		::JSGodot::_err_print_index_error(FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, _STR(m_index), _STR(m_size), m_msg); \
-		return;                                                                                                                   \
-	} else                                                                                                                        \
+#define ERR_FAIL_INDEX_MSG(m_index, m_size, m_msg)                                                                              \
+	if (unlikely((m_index) < 0 || (m_index) >= (m_size))) {                                                                     \
+		::godot::_err_print_index_error(FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, _STR(m_index), _STR(m_size), m_msg); \
+		return;                                                                                                                 \
+	} else                                                                                                                      \
 		((void)0)
 
 /**
  * Same as `ERR_FAIL_INDEX_MSG` but also notifies the editor.
  */
-#define ERR_FAIL_INDEX_EDMSG(m_index, m_size, m_msg)                                                                                    \
-	if (unlikely((m_index) < 0 || (m_index) >= (m_size))) {                                                                             \
-		::JSGodot::_err_print_index_error(FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, _STR(m_index), _STR(m_size), m_msg, true); \
-		return;                                                                                                                         \
-	} else                                                                                                                              \
+#define ERR_FAIL_INDEX_EDMSG(m_index, m_size, m_msg)                                                                                  \
+	if (unlikely((m_index) < 0 || (m_index) >= (m_size))) {                                                                           \
+		::godot::_err_print_index_error(FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, _STR(m_index), _STR(m_size), m_msg, true); \
+		return;                                                                                                                       \
+	} else                                                                                                                            \
 		((void)0)
 
 /**
@@ -128,32 +132,32 @@ void _err_flush_stdout();
  * Ensures an integer index `m_index` is less than `m_size` and greater than or equal to 0.
  * If not, the current function returns `m_retval`.
  */
-#define ERR_FAIL_INDEX_V(m_index, m_size, m_retval)                                                                        \
-	if (unlikely((m_index) < 0 || (m_index) >= (m_size))) {                                                                \
-		::JSGodot::_err_print_index_error(FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, _STR(m_index), _STR(m_size)); \
-		return m_retval;                                                                                                   \
-	} else                                                                                                                 \
+#define ERR_FAIL_INDEX_V(m_index, m_size, m_retval)                                                                      \
+	if (unlikely((m_index) < 0 || (m_index) >= (m_size))) {                                                              \
+		::godot::_err_print_index_error(FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, _STR(m_index), _STR(m_size)); \
+		return m_retval;                                                                                                 \
+	} else                                                                                                               \
 		((void)0)
 
 /**
  * Ensures an integer index `m_index` is less than `m_size` and greater than or equal to 0.
  * If not, prints `m_msg` and the current function returns `m_retval`.
  */
-#define ERR_FAIL_INDEX_V_MSG(m_index, m_size, m_retval, m_msg)                                                                    \
-	if (unlikely((m_index) < 0 || (m_index) >= (m_size))) {                                                                       \
-		::JSGodot::_err_print_index_error(FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, _STR(m_index), _STR(m_size), m_msg); \
-		return m_retval;                                                                                                          \
-	} else                                                                                                                        \
+#define ERR_FAIL_INDEX_V_MSG(m_index, m_size, m_retval, m_msg)                                                                  \
+	if (unlikely((m_index) < 0 || (m_index) >= (m_size))) {                                                                     \
+		::godot::_err_print_index_error(FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, _STR(m_index), _STR(m_size), m_msg); \
+		return m_retval;                                                                                                        \
+	} else                                                                                                                      \
 		((void)0)
 
 /**
  * Same as `ERR_FAIL_INDEX_V_MSG` but also notifies the editor.
  */
-#define ERR_FAIL_INDEX_V_EDMSG(m_index, m_size, m_retval, m_msg)                                                                        \
-	if (unlikely((m_index) < 0 || (m_index) >= (m_size))) {                                                                             \
-		::JSGodot::_err_print_index_error(FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, _STR(m_index), _STR(m_size), m_msg, true); \
-		return m_retval;                                                                                                                \
-	} else                                                                                                                              \
+#define ERR_FAIL_INDEX_V_EDMSG(m_index, m_size, m_retval, m_msg)                                                                      \
+	if (unlikely((m_index) < 0 || (m_index) >= (m_size))) {                                                                           \
+		::godot::_err_print_index_error(FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, _STR(m_index), _STR(m_size), m_msg, true); \
+		return m_retval;                                                                                                              \
+	} else                                                                                                                            \
 		((void)0)
 
 /**
@@ -164,12 +168,12 @@ void _err_flush_stdout();
  * Ensures an integer index `m_index` is less than `m_size` and greater than or equal to 0.
  * If not, the application crashes.
  */
-#define CRASH_BAD_INDEX(m_index, m_size)                                                                                                    \
-	if (unlikely((m_index) < 0 || (m_index) >= (m_size))) {                                                                                 \
-		::JSGodot::_err_print_index_error(FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, _STR(m_index), _STR(m_size), "", false, true); \
-		::JSGodot::_err_flush_stdout();                                                                                                     \
-		GENERATE_TRAP();                                                                                                                    \
-	} else                                                                                                                                  \
+#define CRASH_BAD_INDEX(m_index, m_size)                                                                                                  \
+	if (unlikely((m_index) < 0 || (m_index) >= (m_size))) {                                                                               \
+		::godot::_err_print_index_error(FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, _STR(m_index), _STR(m_size), "", false, true); \
+		::godot::_err_flush_stdout();                                                                                                     \
+		GENERATE_TRAP();                                                                                                                  \
+	} else                                                                                                                                \
 		((void)0)
 
 /**
@@ -179,12 +183,12 @@ void _err_flush_stdout();
  * Ensures an integer index `m_index` is less than `m_size` and greater than or equal to 0.
  * If not, prints `m_msg` and the application crashes.
  */
-#define CRASH_BAD_INDEX_MSG(m_index, m_size, m_msg)                                                                                            \
-	if (unlikely((m_index) < 0 || (m_index) >= (m_size))) {                                                                                    \
-		::JSGodot::_err_print_index_error(FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, _STR(m_index), _STR(m_size), m_msg, false, true); \
-		::JSGodot::_err_flush_stdout();                                                                                                        \
-		GENERATE_TRAP();                                                                                                                       \
-	} else                                                                                                                                     \
+#define CRASH_BAD_INDEX_MSG(m_index, m_size, m_msg)                                                                                          \
+	if (unlikely((m_index) < 0 || (m_index) >= (m_size))) {                                                                                  \
+		::godot::_err_print_index_error(FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, _STR(m_index), _STR(m_size), m_msg, false, true); \
+		::godot::_err_flush_stdout();                                                                                                        \
+		GENERATE_TRAP();                                                                                                                     \
+	} else                                                                                                                                   \
 		((void)0)
 
 // Unsigned integer index out of bounds error macros.
@@ -196,32 +200,32 @@ void _err_flush_stdout();
  * Ensures an unsigned integer index `m_index` is less than `m_size`.
  * If not, the current function returns.
  */
-#define ERR_FAIL_UNSIGNED_INDEX(m_index, m_size)                                                                           \
-	if (unlikely((m_index) >= (m_size))) {                                                                                 \
-		::JSGodot::_err_print_index_error(FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, _STR(m_index), _STR(m_size)); \
-		return;                                                                                                            \
-	} else                                                                                                                 \
+#define ERR_FAIL_UNSIGNED_INDEX(m_index, m_size)                                                                         \
+	if (unlikely((m_index) >= (m_size))) {                                                                               \
+		::godot::_err_print_index_error(FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, _STR(m_index), _STR(m_size)); \
+		return;                                                                                                          \
+	} else                                                                                                               \
 		((void)0)
 
 /**
  * Ensures an unsigned integer index `m_index` is less than `m_size`.
  * If not, prints `m_msg` and the current function returns.
  */
-#define ERR_FAIL_UNSIGNED_INDEX_MSG(m_index, m_size, m_msg)                                                                       \
-	if (unlikely((m_index) >= (m_size))) {                                                                                        \
-		::JSGodot::_err_print_index_error(FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, _STR(m_index), _STR(m_size), m_msg); \
-		return;                                                                                                                   \
-	} else                                                                                                                        \
+#define ERR_FAIL_UNSIGNED_INDEX_MSG(m_index, m_size, m_msg)                                                                     \
+	if (unlikely((m_index) >= (m_size))) {                                                                                      \
+		::godot::_err_print_index_error(FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, _STR(m_index), _STR(m_size), m_msg); \
+		return;                                                                                                                 \
+	} else                                                                                                                      \
 		((void)0)
 
 /**
  * Same as `ERR_FAIL_UNSIGNED_INDEX_MSG` but also notifies the editor.
  */
-#define ERR_FAIL_UNSIGNED_INDEX_EDMSG(m_index, m_size, m_msg)                                                                           \
-	if (unlikely((m_index) >= (m_size))) {                                                                                              \
-		::JSGodot::_err_print_index_error(FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, _STR(m_index), _STR(m_size), m_msg, true); \
-		return;                                                                                                                         \
-	} else                                                                                                                              \
+#define ERR_FAIL_UNSIGNED_INDEX_EDMSG(m_index, m_size, m_msg)                                                                         \
+	if (unlikely((m_index) >= (m_size))) {                                                                                            \
+		::godot::_err_print_index_error(FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, _STR(m_index), _STR(m_size), m_msg, true); \
+		return;                                                                                                                       \
+	} else                                                                                                                            \
 		((void)0)
 
 /**
@@ -231,32 +235,32 @@ void _err_flush_stdout();
  * Ensures an unsigned integer index `m_index` is less than `m_size`.
  * If not, the current function returns `m_retval`.
  */
-#define ERR_FAIL_UNSIGNED_INDEX_V(m_index, m_size, m_retval)                                                               \
-	if (unlikely((m_index) >= (m_size))) {                                                                                 \
-		::JSGodot::_err_print_index_error(FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, _STR(m_index), _STR(m_size)); \
-		return m_retval;                                                                                                   \
-	} else                                                                                                                 \
+#define ERR_FAIL_UNSIGNED_INDEX_V(m_index, m_size, m_retval)                                                             \
+	if (unlikely((m_index) >= (m_size))) {                                                                               \
+		::godot::_err_print_index_error(FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, _STR(m_index), _STR(m_size)); \
+		return m_retval;                                                                                                 \
+	} else                                                                                                               \
 		((void)0)
 
 /**
  * Ensures an unsigned integer index `m_index` is less than `m_size`.
  * If not, prints `m_msg` and the current function returns `m_retval`.
  */
-#define ERR_FAIL_UNSIGNED_INDEX_V_MSG(m_index, m_size, m_retval, m_msg)                                                           \
-	if (unlikely((m_index) >= (m_size))) {                                                                                        \
-		::JSGodot::_err_print_index_error(FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, _STR(m_index), _STR(m_size), m_msg); \
-		return m_retval;                                                                                                          \
-	} else                                                                                                                        \
+#define ERR_FAIL_UNSIGNED_INDEX_V_MSG(m_index, m_size, m_retval, m_msg)                                                         \
+	if (unlikely((m_index) >= (m_size))) {                                                                                      \
+		::godot::_err_print_index_error(FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, _STR(m_index), _STR(m_size), m_msg); \
+		return m_retval;                                                                                                        \
+	} else                                                                                                                      \
 		((void)0)
 
 /**
  * Same as `ERR_FAIL_UNSIGNED_INDEX_V_EDMSG` but also notifies the editor.
  */
-#define ERR_FAIL_UNSIGNED_INDEX_V_EDMSG(m_index, m_size, m_retval, m_msg)                                                               \
-	if (unlikely((m_index) >= (m_size))) {                                                                                              \
-		::JSGodot::_err_print_index_error(FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, _STR(m_index), _STR(m_size), m_msg, true); \
-		return m_retval;                                                                                                                \
-	} else                                                                                                                              \
+#define ERR_FAIL_UNSIGNED_INDEX_V_EDMSG(m_index, m_size, m_retval, m_msg)                                                             \
+	if (unlikely((m_index) >= (m_size))) {                                                                                            \
+		::godot::_err_print_index_error(FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, _STR(m_index), _STR(m_size), m_msg, true); \
+		return m_retval;                                                                                                              \
+	} else                                                                                                                            \
 		((void)0)
 
 /**
@@ -267,12 +271,12 @@ void _err_flush_stdout();
  * Ensures an unsigned integer index `m_index` is less than `m_size`.
  * If not, the application crashes.
  */
-#define CRASH_BAD_UNSIGNED_INDEX(m_index, m_size)                                                                                           \
-	if (unlikely((m_index) >= (m_size))) {                                                                                                  \
-		::JSGodot::_err_print_index_error(FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, _STR(m_index), _STR(m_size), "", false, true); \
-		::JSGodot::_err_flush_stdout();                                                                                                     \
-		GENERATE_TRAP();                                                                                                                    \
-	} else                                                                                                                                  \
+#define CRASH_BAD_UNSIGNED_INDEX(m_index, m_size)                                                                                         \
+	if (unlikely((m_index) >= (m_size))) {                                                                                                \
+		::godot::_err_print_index_error(FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, _STR(m_index), _STR(m_size), "", false, true); \
+		::godot::_err_flush_stdout();                                                                                                     \
+		GENERATE_TRAP();                                                                                                                  \
+	} else                                                                                                                                \
 		((void)0)
 
 /**
@@ -282,12 +286,12 @@ void _err_flush_stdout();
  * Ensures an unsigned integer index `m_index` is less than `m_size`.
  * If not, prints `m_msg` and the application crashes.
  */
-#define CRASH_BAD_UNSIGNED_INDEX_MSG(m_index, m_size, m_msg)                                                                                   \
-	if (unlikely((m_index) >= (m_size))) {                                                                                                     \
-		::JSGodot::_err_print_index_error(FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, _STR(m_index), _STR(m_size), m_msg, false, true); \
-		::JSGodot::_err_flush_stdout();                                                                                                        \
-		GENERATE_TRAP();                                                                                                                       \
-	} else                                                                                                                                     \
+#define CRASH_BAD_UNSIGNED_INDEX_MSG(m_index, m_size, m_msg)                                                                                 \
+	if (unlikely((m_index) >= (m_size))) {                                                                                                   \
+		::godot::_err_print_index_error(FUNCTION_STR, __FILE__, __LINE__, m_index, m_size, _STR(m_index), _STR(m_size), m_msg, false, true); \
+		::godot::_err_flush_stdout();                                                                                                        \
+		GENERATE_TRAP();                                                                                                                     \
+	} else                                                                                                                                   \
 		((void)0)
 
 // Null reference error macros.
@@ -299,32 +303,32 @@ void _err_flush_stdout();
  * Ensures a pointer `m_param` is not null.
  * If it is null, the current function returns.
  */
-#define ERR_FAIL_NULL(m_param)                                                                                     \
-	if (unlikely(m_param == nullptr)) {                                                                            \
-		::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Parameter \"" _STR(m_param) "\" is null."); \
-		return;                                                                                                    \
-	} else                                                                                                         \
+#define ERR_FAIL_NULL(m_param)                                                                                   \
+	if (unlikely(m_param == nullptr)) {                                                                          \
+		::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Parameter \"" _STR(m_param) "\" is null."); \
+		return;                                                                                                  \
+	} else                                                                                                       \
 		((void)0)
 
 /**
  * Ensures a pointer `m_param` is not null.
  * If it is null, prints `m_msg` and the current function returns.
  */
-#define ERR_FAIL_NULL_MSG(m_param, m_msg)                                                                                 \
-	if (unlikely(m_param == nullptr)) {                                                                                   \
-		::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Parameter \"" _STR(m_param) "\" is null.", m_msg); \
-		return;                                                                                                           \
-	} else                                                                                                                \
+#define ERR_FAIL_NULL_MSG(m_param, m_msg)                                                                               \
+	if (unlikely(m_param == nullptr)) {                                                                                 \
+		::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Parameter \"" _STR(m_param) "\" is null.", m_msg); \
+		return;                                                                                                         \
+	} else                                                                                                              \
 		((void)0)
 
 /**
  * Same as `ERR_FAIL_NULL_MSG` but also notifies the editor.
  */
-#define ERR_FAIL_NULL_EDMSG(m_param, m_msg)                                                                                     \
-	if (unlikely(m_param == nullptr)) {                                                                                         \
-		::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Parameter \"" _STR(m_param) "\" is null.", m_msg, true); \
-		return;                                                                                                                 \
-	} else                                                                                                                      \
+#define ERR_FAIL_NULL_EDMSG(m_param, m_msg)                                                                                   \
+	if (unlikely(m_param == nullptr)) {                                                                                       \
+		::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Parameter \"" _STR(m_param) "\" is null.", m_msg, true); \
+		return;                                                                                                               \
+	} else                                                                                                                    \
 		((void)0)
 
 /**
@@ -334,32 +338,32 @@ void _err_flush_stdout();
  * Ensures a pointer `m_param` is not null.
  * If it is null, the current function returns `m_retval`.
  */
-#define ERR_FAIL_NULL_V(m_param, m_retval)                                                                         \
-	if (unlikely(m_param == nullptr)) {                                                                            \
-		::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Parameter \"" _STR(m_param) "\" is null."); \
-		return m_retval;                                                                                           \
-	} else                                                                                                         \
+#define ERR_FAIL_NULL_V(m_param, m_retval)                                                                       \
+	if (unlikely(m_param == nullptr)) {                                                                          \
+		::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Parameter \"" _STR(m_param) "\" is null."); \
+		return m_retval;                                                                                         \
+	} else                                                                                                       \
 		((void)0)
 
 /**
  * Ensures a pointer `m_param` is not null.
  * If it is null, prints `m_msg` and the current function returns `m_retval`.
  */
-#define ERR_FAIL_NULL_V_MSG(m_param, m_retval, m_msg)                                                                     \
-	if (unlikely(m_param == nullptr)) {                                                                                   \
-		::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Parameter \"" _STR(m_param) "\" is null.", m_msg); \
-		return m_retval;                                                                                                  \
-	} else                                                                                                                \
+#define ERR_FAIL_NULL_V_MSG(m_param, m_retval, m_msg)                                                                   \
+	if (unlikely(m_param == nullptr)) {                                                                                 \
+		::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Parameter \"" _STR(m_param) "\" is null.", m_msg); \
+		return m_retval;                                                                                                \
+	} else                                                                                                              \
 		((void)0)
 
 /**
  * Same as `ERR_FAIL_NULL_V_MSG` but also notifies the editor.
  */
-#define ERR_FAIL_NULL_V_EDMSG(m_param, m_retval, m_msg)                                                                         \
-	if (unlikely(m_param == nullptr)) {                                                                                         \
-		::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Parameter \"" _STR(m_param) "\" is null.", m_msg, true); \
-		return m_retval;                                                                                                        \
-	} else                                                                                                                      \
+#define ERR_FAIL_NULL_V_EDMSG(m_param, m_retval, m_msg)                                                                       \
+	if (unlikely(m_param == nullptr)) {                                                                                       \
+		::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Parameter \"" _STR(m_param) "\" is null.", m_msg, true); \
+		return m_retval;                                                                                                      \
+	} else                                                                                                                    \
 		((void)0)
 
 /**
@@ -371,11 +375,11 @@ void _err_flush_stdout();
  * Ensures `m_cond` is false.
  * If `m_cond` is true, the current function returns.
  */
-#define ERR_FAIL_COND(m_cond)                                                                                     \
-	if (unlikely(m_cond)) {                                                                                       \
-		::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Condition \"" _STR(m_cond) "\" is true."); \
-		return;                                                                                                   \
-	} else                                                                                                        \
+#define ERR_FAIL_COND(m_cond)                                                                                   \
+	if (unlikely(m_cond)) {                                                                                     \
+		::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Condition \"" _STR(m_cond) "\" is true."); \
+		return;                                                                                                 \
+	} else                                                                                                      \
 		((void)0)
 
 /**
@@ -385,21 +389,21 @@ void _err_flush_stdout();
  * If checking for null use ERR_FAIL_NULL_MSG instead.
  * If checking index bounds use ERR_FAIL_INDEX_MSG instead.
  */
-#define ERR_FAIL_COND_MSG(m_cond, m_msg)                                                                                 \
-	if (unlikely(m_cond)) {                                                                                              \
-		::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Condition \"" _STR(m_cond) "\" is true.", m_msg); \
-		return;                                                                                                          \
-	} else                                                                                                               \
+#define ERR_FAIL_COND_MSG(m_cond, m_msg)                                                                               \
+	if (unlikely(m_cond)) {                                                                                            \
+		::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Condition \"" _STR(m_cond) "\" is true.", m_msg); \
+		return;                                                                                                        \
+	} else                                                                                                             \
 		((void)0)
 
 /**
  * Same as `ERR_FAIL_COND_MSG` but also notifies the editor.
  */
-#define ERR_FAIL_COND_EDMSG(m_cond, m_msg)                                                                                     \
-	if (unlikely(m_cond)) {                                                                                                    \
-		::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Condition \"" _STR(m_cond) "\" is true.", m_msg, true); \
-		return;                                                                                                                \
-	} else                                                                                                                     \
+#define ERR_FAIL_COND_EDMSG(m_cond, m_msg)                                                                                   \
+	if (unlikely(m_cond)) {                                                                                                  \
+		::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Condition \"" _STR(m_cond) "\" is true.", m_msg, true); \
+		return;                                                                                                              \
+	} else                                                                                                                   \
 		((void)0)
 
 /**
@@ -411,11 +415,11 @@ void _err_flush_stdout();
  * Ensures `m_cond` is false.
  * If `m_cond` is true, the current function returns `m_retval`.
  */
-#define ERR_FAIL_COND_V(m_cond, m_retval)                                                                                                    \
-	if (unlikely(m_cond)) {                                                                                                                  \
-		::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Condition \"" _STR(m_cond) "\" is true. Returning: " _STR(m_retval)); \
-		return m_retval;                                                                                                                     \
-	} else                                                                                                                                   \
+#define ERR_FAIL_COND_V(m_cond, m_retval)                                                                                                  \
+	if (unlikely(m_cond)) {                                                                                                                \
+		::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Condition \"" _STR(m_cond) "\" is true. Returning: " _STR(m_retval)); \
+		return m_retval;                                                                                                                   \
+	} else                                                                                                                                 \
 		((void)0)
 
 /**
@@ -425,21 +429,21 @@ void _err_flush_stdout();
  * If checking for null use ERR_FAIL_NULL_V_MSG instead.
  * If checking index bounds use ERR_FAIL_INDEX_V_MSG instead.
  */
-#define ERR_FAIL_COND_V_MSG(m_cond, m_retval, m_msg)                                                                                                \
-	if (unlikely(m_cond)) {                                                                                                                         \
-		::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Condition \"" _STR(m_cond) "\" is true. Returning: " _STR(m_retval), m_msg); \
-		return m_retval;                                                                                                                            \
-	} else                                                                                                                                          \
+#define ERR_FAIL_COND_V_MSG(m_cond, m_retval, m_msg)                                                                                              \
+	if (unlikely(m_cond)) {                                                                                                                       \
+		::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Condition \"" _STR(m_cond) "\" is true. Returning: " _STR(m_retval), m_msg); \
+		return m_retval;                                                                                                                          \
+	} else                                                                                                                                        \
 		((void)0)
 
 /**
  * Same as `ERR_FAIL_COND_V_MSG` but also notifies the editor.
  */
-#define ERR_FAIL_COND_V_EDMSG(m_cond, m_retval, m_msg)                                                                                                    \
-	if (unlikely(m_cond)) {                                                                                                                               \
-		::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Condition \"" _STR(m_cond) "\" is true. Returning: " _STR(m_retval), m_msg, true); \
-		return m_retval;                                                                                                                                  \
-	} else                                                                                                                                                \
+#define ERR_FAIL_COND_V_EDMSG(m_cond, m_retval, m_msg)                                                                                                  \
+	if (unlikely(m_cond)) {                                                                                                                             \
+		::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Condition \"" _STR(m_cond) "\" is true. Returning: " _STR(m_retval), m_msg, true); \
+		return m_retval;                                                                                                                                \
+	} else                                                                                                                                              \
 		((void)0)
 
 /**
@@ -449,32 +453,32 @@ void _err_flush_stdout();
  * Ensures `m_cond` is false.
  * If `m_cond` is true, the current loop continues.
  */
-#define ERR_CONTINUE(m_cond)                                                                                                  \
-	if (unlikely(m_cond)) {                                                                                                   \
-		::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Condition \"" _STR(m_cond) "\" is true. Continuing."); \
-		continue;                                                                                                             \
-	} else                                                                                                                    \
+#define ERR_CONTINUE(m_cond)                                                                                                \
+	if (unlikely(m_cond)) {                                                                                                 \
+		::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Condition \"" _STR(m_cond) "\" is true. Continuing."); \
+		continue;                                                                                                           \
+	} else                                                                                                                  \
 		((void)0)
 
 /**
  * Ensures `m_cond` is false.
  * If `m_cond` is true, prints `m_msg` and the current loop continues.
  */
-#define ERR_CONTINUE_MSG(m_cond, m_msg)                                                                                              \
-	if (unlikely(m_cond)) {                                                                                                          \
-		::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Condition \"" _STR(m_cond) "\" is true. Continuing.", m_msg); \
-		continue;                                                                                                                    \
-	} else                                                                                                                           \
+#define ERR_CONTINUE_MSG(m_cond, m_msg)                                                                                            \
+	if (unlikely(m_cond)) {                                                                                                        \
+		::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Condition \"" _STR(m_cond) "\" is true. Continuing.", m_msg); \
+		continue;                                                                                                                  \
+	} else                                                                                                                         \
 		((void)0)
 
 /**
  * Same as `ERR_CONTINUE_MSG` but also notifies the editor.
  */
-#define ERR_CONTINUE_EDMSG(m_cond, m_msg)                                                                                                  \
-	if (unlikely(m_cond)) {                                                                                                                \
-		::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Condition \"" _STR(m_cond) "\" is true. Continuing.", m_msg, true); \
-		continue;                                                                                                                          \
-	} else                                                                                                                                 \
+#define ERR_CONTINUE_EDMSG(m_cond, m_msg)                                                                                                \
+	if (unlikely(m_cond)) {                                                                                                              \
+		::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Condition \"" _STR(m_cond) "\" is true. Continuing.", m_msg, true); \
+		continue;                                                                                                                        \
+	} else                                                                                                                               \
 		((void)0)
 
 /**
@@ -484,32 +488,32 @@ void _err_flush_stdout();
  * Ensures `m_cond` is false.
  * If `m_cond` is true, the current loop breaks.
  */
-#define ERR_BREAK(m_cond)                                                                                                   \
-	if (unlikely(m_cond)) {                                                                                                 \
-		::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Condition \"" _STR(m_cond) "\" is true. Breaking."); \
-		break;                                                                                                              \
-	} else                                                                                                                  \
+#define ERR_BREAK(m_cond)                                                                                                 \
+	if (unlikely(m_cond)) {                                                                                               \
+		::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Condition \"" _STR(m_cond) "\" is true. Breaking."); \
+		break;                                                                                                            \
+	} else                                                                                                                \
 		((void)0)
 
 /**
  * Ensures `m_cond` is false.
  * If `m_cond` is true, prints `m_msg` and the current loop breaks.
  */
-#define ERR_BREAK_MSG(m_cond, m_msg)                                                                                               \
-	if (unlikely(m_cond)) {                                                                                                        \
-		::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Condition \"" _STR(m_cond) "\" is true. Breaking.", m_msg); \
-		break;                                                                                                                     \
-	} else                                                                                                                         \
+#define ERR_BREAK_MSG(m_cond, m_msg)                                                                                             \
+	if (unlikely(m_cond)) {                                                                                                      \
+		::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Condition \"" _STR(m_cond) "\" is true. Breaking.", m_msg); \
+		break;                                                                                                                   \
+	} else                                                                                                                       \
 		((void)0)
 
 /**
  * Same as `ERR_BREAK_MSG` but also notifies the editor.
  */
-#define ERR_BREAK_EDMSG(m_cond, m_msg)                                                                                                   \
-	if (unlikely(m_cond)) {                                                                                                              \
-		::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Condition \"" _STR(m_cond) "\" is true. Breaking.", m_msg, true); \
-		break;                                                                                                                           \
-	} else                                                                                                                               \
+#define ERR_BREAK_EDMSG(m_cond, m_msg)                                                                                                 \
+	if (unlikely(m_cond)) {                                                                                                            \
+		::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Condition \"" _STR(m_cond) "\" is true. Breaking.", m_msg, true); \
+		break;                                                                                                                         \
+	} else                                                                                                                             \
 		((void)0)
 
 /**
@@ -520,12 +524,12 @@ void _err_flush_stdout();
  * Ensures `m_cond` is false.
  * If `m_cond` is true, the application crashes.
  */
-#define CRASH_COND(m_cond)                                                                                               \
-	if (unlikely(m_cond)) {                                                                                              \
-		::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "FATAL: Condition \"" _STR(m_cond) "\" is true."); \
-		::JSGodot::_err_flush_stdout();                                                                                  \
-		GENERATE_TRAP();                                                                                                 \
-	} else                                                                                                               \
+#define CRASH_COND(m_cond)                                                                                             \
+	if (unlikely(m_cond)) {                                                                                            \
+		::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "FATAL: Condition \"" _STR(m_cond) "\" is true."); \
+		::godot::_err_flush_stdout();                                                                                  \
+		GENERATE_TRAP();                                                                                               \
+	} else                                                                                                             \
 		((void)0)
 
 /**
@@ -535,12 +539,12 @@ void _err_flush_stdout();
  * Ensures `m_cond` is false.
  * If `m_cond` is true, prints `m_msg` and the application crashes.
  */
-#define CRASH_COND_MSG(m_cond, m_msg)                                                                                           \
-	if (unlikely(m_cond)) {                                                                                                     \
-		::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "FATAL: Condition \"" _STR(m_cond) "\" is true.", m_msg); \
-		::JSGodot::_err_flush_stdout();                                                                                         \
-		GENERATE_TRAP();                                                                                                        \
-	} else                                                                                                                      \
+#define CRASH_COND_MSG(m_cond, m_msg)                                                                                         \
+	if (unlikely(m_cond)) {                                                                                                   \
+		::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "FATAL: Condition \"" _STR(m_cond) "\" is true.", m_msg); \
+		::godot::_err_flush_stdout();                                                                                         \
+		GENERATE_TRAP();                                                                                                      \
+	} else                                                                                                                    \
 		((void)0)
 
 // Generic error macros.
@@ -552,11 +556,11 @@ void _err_flush_stdout();
  *
  * The current function returns.
  */
-#define ERR_FAIL()                                                                                \
-	if (true) {                                                                                   \
-		::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Method/function failed."); \
-		return;                                                                                   \
-	} else                                                                                        \
+#define ERR_FAIL()                                                                              \
+	if (true) {                                                                                 \
+		::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Method/function failed."); \
+		return;                                                                                 \
+	} else                                                                                      \
 		((void)0)
 
 /**
@@ -565,21 +569,21 @@ void _err_flush_stdout();
  *
  * Prints `m_msg`, and the current function returns.
  */
-#define ERR_FAIL_MSG(m_msg)                                                                              \
-	if (true) {                                                                                          \
-		::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Method/function failed.", m_msg); \
-		return;                                                                                          \
-	} else                                                                                               \
+#define ERR_FAIL_MSG(m_msg)                                                                            \
+	if (true) {                                                                                        \
+		::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Method/function failed.", m_msg); \
+		return;                                                                                        \
+	} else                                                                                             \
 		((void)0)
 
 /**
  * Same as `ERR_FAIL_MSG` but also notifies the editor.
  */
-#define ERR_FAIL_EDMSG(m_msg)                                                                                  \
-	if (true) {                                                                                                \
-		::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Method/function failed.", m_msg, true); \
-		return;                                                                                                \
-	} else                                                                                                     \
+#define ERR_FAIL_EDMSG(m_msg)                                                                                \
+	if (true) {                                                                                              \
+		::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Method/function failed.", m_msg, true); \
+		return;                                                                                              \
+	} else                                                                                                   \
 		((void)0)
 
 /**
@@ -589,11 +593,11 @@ void _err_flush_stdout();
  *
  * The current function returns `m_retval`.
  */
-#define ERR_FAIL_V(m_retval)                                                                                                 \
-	if (true) {                                                                                                              \
-		::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Method/function failed. Returning: " _STR(m_retval)); \
-		return m_retval;                                                                                                     \
-	} else                                                                                                                   \
+#define ERR_FAIL_V(m_retval)                                                                                               \
+	if (true) {                                                                                                            \
+		::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Method/function failed. Returning: " _STR(m_retval)); \
+		return m_retval;                                                                                                   \
+	} else                                                                                                                 \
 		((void)0)
 
 /**
@@ -602,21 +606,21 @@ void _err_flush_stdout();
  *
  * Prints `m_msg`, and the current function returns `m_retval`.
  */
-#define ERR_FAIL_V_MSG(m_retval, m_msg)                                                                                             \
-	if (true) {                                                                                                                     \
-		::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Method/function failed. Returning: " _STR(m_retval), m_msg); \
-		return m_retval;                                                                                                            \
-	} else                                                                                                                          \
+#define ERR_FAIL_V_MSG(m_retval, m_msg)                                                                                           \
+	if (true) {                                                                                                                   \
+		::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Method/function failed. Returning: " _STR(m_retval), m_msg); \
+		return m_retval;                                                                                                          \
+	} else                                                                                                                        \
 		((void)0)
 
 /**
  * Same as `ERR_FAIL_V_MSG` but also notifies the editor.
  */
-#define ERR_FAIL_V_EDMSG(m_retval, m_msg)                                                                                                 \
-	if (true) {                                                                                                                           \
-		::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Method/function failed. Returning: " _STR(m_retval), m_msg, true); \
-		return m_retval;                                                                                                                  \
-	} else                                                                                                                                \
+#define ERR_FAIL_V_EDMSG(m_retval, m_msg)                                                                                               \
+	if (true) {                                                                                                                         \
+		::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "Method/function failed. Returning: " _STR(m_retval), m_msg, true); \
+		return m_retval;                                                                                                                \
+	} else                                                                                                                              \
 		((void)0)
 
 /**
@@ -627,38 +631,38 @@ void _err_flush_stdout();
  * Prints `m_msg`.
  */
 #define ERR_PRINT(m_msg) \
-	::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, m_msg)
+	::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, m_msg)
 
 /**
  * Same as `ERR_PRINT` but also notifies the editor.
  */
 #define ERR_PRINT_ED(m_msg) \
-	::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, m_msg, true)
+	::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, m_msg, true)
 
 /**
  * Prints `m_msg` once during the application lifetime.
  */
-#define ERR_PRINT_ONCE(m_msg)                                                     \
-	if (true) {                                                                   \
-		static bool first_print = true;                                           \
-		if (first_print) {                                                        \
-			::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, m_msg); \
-			first_print = false;                                                  \
-		}                                                                         \
-	} else                                                                        \
+#define ERR_PRINT_ONCE(m_msg)                                                   \
+	if (true) {                                                                 \
+		static bool first_print = true;                                         \
+		if (first_print) {                                                      \
+			::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, m_msg); \
+			first_print = false;                                                \
+		}                                                                       \
+	} else                                                                      \
 		((void)0)
 
 /**
  * Same as `ERR_PRINT_ONCE` but also notifies the editor.
  */
-#define ERR_PRINT_ONCE_ED(m_msg)                                                        \
-	if (true) {                                                                         \
-		static bool first_print = true;                                                 \
-		if (first_print) {                                                              \
-			::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, m_msg, true); \
-			first_print = false;                                                        \
-		}                                                                               \
-	} else                                                                              \
+#define ERR_PRINT_ONCE_ED(m_msg)                                                      \
+	if (true) {                                                                       \
+		static bool first_print = true;                                               \
+		if (first_print) {                                                            \
+			::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, m_msg, true); \
+			first_print = false;                                                      \
+		}                                                                             \
+	} else                                                                            \
 		((void)0)
 
 // Print warning message macros.
@@ -669,40 +673,40 @@ void _err_flush_stdout();
  * If warning about deprecated usage, use `WARN_DEPRECATED` or `WARN_DEPRECATED_MSG` instead.
  */
 #define WARN_PRINT(m_msg) \
-	::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, m_msg, false, true)
+	::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, m_msg, false, true)
 
 /**
  * Same as `WARN_PRINT` but also notifies the editor.
  */
 #define WARN_PRINT_ED(m_msg) \
-	::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, m_msg, true, true)
+	::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, m_msg, true, true)
 
 /**
  * Prints `m_msg` once during the application lifetime.
  *
  * If warning about deprecated usage, use `WARN_DEPRECATED` or `WARN_DEPRECATED_MSG` instead.
  */
-#define WARN_PRINT_ONCE(m_msg)                                                                 \
-	if (true) {                                                                                \
-		static bool first_print = true;                                                        \
-		if (first_print) {                                                                     \
-			::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, m_msg, false, true); \
-			first_print = false;                                                               \
-		}                                                                                      \
-	} else                                                                                     \
+#define WARN_PRINT_ONCE(m_msg)                                                               \
+	if (true) {                                                                              \
+		static bool first_print = true;                                                      \
+		if (first_print) {                                                                   \
+			::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, m_msg, false, true); \
+			first_print = false;                                                             \
+		}                                                                                    \
+	} else                                                                                   \
 		((void)0)
 
 /**
  * Same as `WARN_PRINT_ONCE` but also notifies the editor.
  */
-#define WARN_PRINT_ONCE_ED(m_msg)                                                             \
-	if (true) {                                                                               \
-		static bool first_print = true;                                                       \
-		if (first_print) {                                                                    \
-			::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, m_msg, true, true); \
-			first_print = false;                                                              \
-		}                                                                                     \
-	} else                                                                                    \
+#define WARN_PRINT_ONCE_ED(m_msg)                                                           \
+	if (true) {                                                                             \
+		static bool first_print = true;                                                     \
+		if (first_print) {                                                                  \
+			::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, m_msg, true, true); \
+			first_print = false;                                                            \
+		}                                                                                   \
+	} else                                                                                  \
 		((void)0)
 
 // Print deprecated warning message macros.
@@ -710,27 +714,27 @@ void _err_flush_stdout();
 /**
  * Warns that the current function is deprecated.
  */
-#define WARN_DEPRECATED                                                                                                                                       \
-	if (true) {                                                                                                                                               \
-		static std::atomic<bool> warning_shown;                                                                                                               \
-		if (!warning_shown.load()) {                                                                                                                          \
-			::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "This method has been deprecated and will be removed in the future.", false, true); \
-			warning_shown.store(true);                                                                                                                        \
-		}                                                                                                                                                     \
-	} else                                                                                                                                                    \
+#define WARN_DEPRECATED                                                                                                                                     \
+	if (true) {                                                                                                                                             \
+		static std::atomic<bool> warning_shown;                                                                                                             \
+		if (!warning_shown.load()) {                                                                                                                        \
+			::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "This method has been deprecated and will be removed in the future.", false, true); \
+			warning_shown.store(true);                                                                                                                      \
+		}                                                                                                                                                   \
+	} else                                                                                                                                                  \
 		((void)0)
 
 /**
  * Warns that the current function is deprecated and prints `m_msg`.
  */
-#define WARN_DEPRECATED_MSG(m_msg)                                                                                                                                   \
-	if (true) {                                                                                                                                                      \
-		static std::atomic<bool> warning_shown;                                                                                                                      \
-		if (!warning_shown.load()) {                                                                                                                                 \
-			::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "This method has been deprecated and will be removed in the future.", m_msg, false, true); \
-			warning_shown.store(true);                                                                                                                               \
-		}                                                                                                                                                            \
-	} else                                                                                                                                                           \
+#define WARN_DEPRECATED_MSG(m_msg)                                                                                                                                 \
+	if (true) {                                                                                                                                                    \
+		static std::atomic<bool> warning_shown;                                                                                                                    \
+		if (!warning_shown.load()) {                                                                                                                               \
+			::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "This method has been deprecated and will be removed in the future.", m_msg, false, true); \
+			warning_shown.store(true);                                                                                                                             \
+		}                                                                                                                                                          \
+	} else                                                                                                                                                         \
 		((void)0)
 
 /**
@@ -739,12 +743,12 @@ void _err_flush_stdout();
  *
  * The application crashes.
  */
-#define CRASH_NOW()                                                                                      \
-	if (true) {                                                                                          \
-		::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "FATAL: Method/function failed."); \
-		::JSGodot::_err_flush_stdout();                                                                  \
-		GENERATE_TRAP();                                                                                 \
-	} else                                                                                               \
+#define CRASH_NOW()                                                                                    \
+	if (true) {                                                                                        \
+		::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "FATAL: Method/function failed."); \
+		::godot::_err_flush_stdout();                                                                  \
+		GENERATE_TRAP();                                                                               \
+	} else                                                                                             \
 		((void)0)
 
 /**
@@ -752,12 +756,12 @@ void _err_flush_stdout();
  *
  * Prints `m_msg`, and then the application crashes.
  */
-#define CRASH_NOW_MSG(m_msg)                                                                                    \
-	if (true) {                                                                                                 \
-		::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "FATAL: Method/function failed.", m_msg); \
-		::JSGodot::_err_flush_stdout();                                                                         \
-		GENERATE_TRAP();                                                                                        \
-	} else                                                                                                      \
+#define CRASH_NOW_MSG(m_msg)                                                                                  \
+	if (true) {                                                                                               \
+		::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "FATAL: Method/function failed.", m_msg); \
+		::godot::_err_flush_stdout();                                                                         \
+		GENERATE_TRAP();                                                                                      \
+	} else                                                                                                    \
 		((void)0)
 
 /**
@@ -765,12 +769,12 @@ void _err_flush_stdout();
  *  only used in dev builds.
  */
 #ifdef DEBUG_ENABLED
-#define DEV_ASSERT(m_cond)                                                                                                         \
-	if (unlikely(!(m_cond))) {                                                                                                     \
-		::JSGodot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "FATAL: DEV_ASSERT failed  \"" _STR(m_cond) "\" is false."); \
-		::JSGodot::_err_flush_stdout();                                                                                            \
-		GENERATE_TRAP();                                                                                                           \
-	} else                                                                                                                         \
+#define DEV_ASSERT(m_cond)                                                                                                       \
+	if (unlikely(!(m_cond))) {                                                                                                   \
+		::godot::_err_print_error(FUNCTION_STR, __FILE__, __LINE__, "FATAL: DEV_ASSERT failed  \"" _STR(m_cond) "\" is false."); \
+		::godot::_err_flush_stdout();                                                                                            \
+		GENERATE_TRAP();                                                                                                         \
+	} else                                                                                                                       \
 		((void)0)
 #else
 #define DEV_ASSERT(m_cond)

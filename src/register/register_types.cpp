@@ -1,11 +1,19 @@
 #include "register/register_types.h"
-#include "gdextension_interface.h"
-#include "godot_cpp/godot.hpp"
 #include "quickjs/env.h"
-#include "quickjs/finalizer.h"
 #include "register/register_enums.h"
 #include "register/register_internal_api.h"
-#include <godot_cpp/core/os_windows.hpp>
+#include "support/console_support.hpp"
+#include "support/javascript.hpp"
+#include "support/javascript_language.hpp"
+#include "support/javascript_loader.hpp"
+#include "support/javascript_saver.hpp"
+#include <gdextension_interface.h>
+#include <quickjs/finalizer.h>
+#include <godot_cpp/classes/engine.hpp>
+#include <godot_cpp/classes/resource_loader.hpp>
+#include <godot_cpp/classes/resource_saver.hpp>
+#include <godot_cpp/core/class_db.hpp>
+#include <godot_cpp/core/defs.hpp>
 
 #ifdef DEBUG_ENABLED
 #include "class_db_test/class_db_test.hpp"
@@ -20,13 +28,20 @@
 // #include "support/typescript_loader.h"
 // #include "support/typescript_saver.h"
 
-void initialize_tgds_types(void *user_data, GDExtensionInitializationLevel p_level) {
-	if (p_level != GDEXTENSION_INITIALIZATION_SCENE) {
+void initialize_tgds_types(godot::ModuleInitializationLevel p_level) {
+	if (p_level != godot::ModuleInitializationLevel::MODULE_INITIALIZATION_LEVEL_SCENE) {
 		return;
 	}
 	RedirectIOToConsole();
 	printf("%s", "Quickjs start initialization\n");
 	init_quickjs();
+	GDREGISTER_CLASS(JavaScriptLoader);
+	GDREGISTER_CLASS(JavaScriptSaver);
+	GDREGISTER_CLASS(JavaScriptLanguage);
+	GDREGISTER_CLASS(JavaScript);
+	ResourceSaver::get_singleton()->add_resource_format_saver(JavaScriptSaver::get_singleton());
+	ResourceLoader::get_singleton()->add_resource_format_loader(JavaScriptLoader::get_singleton());
+	Engine::get_singleton()->register_script_language(JavaScriptLanguage::get_singleton());
 #ifdef DEBUG_ENABLED
 	// test_variant();
 	// test_gdstring();
@@ -60,8 +75,8 @@ void initialize_tgds_types(void *user_data, GDExtensionInitializationLevel p_lev
 	printf("%s", "Quickjs initialization is over\n");
 }
 
-void uninitialize_tgds_types(void *user_data, GDExtensionInitializationLevel p_level) {
-	if (p_level != GDEXTENSION_INITIALIZATION_SCENE) {
+void uninitialize_tgds_types(godot::ModuleInitializationLevel p_level) {
+	if (p_level != godot::ModuleInitializationLevel::MODULE_INITIALIZATION_LEVEL_SCENE) {
 		return;
 	}
 	printf("Quickjs close\n");
@@ -84,11 +99,10 @@ void init_quickjs() {
 			globalThis.GD = new GD();
 			globalThis.Math = new Math();
 			globalThis.Random = new Random();
-			Node._init_bindings();
-			ClassDB._init_bindings();
-			globalThis.ClassDB = new ClassDB();
-			GodotObject._init_bindings();
-			let node = new Node();
+			// Node._init_bindings();
+			// ClassDB._init_bindings();
+			// globalThis.ClassDB = new ClassDB();
+			// GodotObject._init_bindings();
 		}
 	)xxx",
 			"<eval>", JS_EVAL_TYPE_MODULE);
@@ -96,11 +110,14 @@ void init_quickjs() {
 }
 
 extern "C" {
-GDExtensionBool __declspec(dllexport) tgds_library_init(GDExtensionInterfaceGetProcAddress p_get_proc_address, GDExtensionClassLibraryPtr p_library, GDExtensionInitialization *r_initialization) {
-	JSGodot::Initializer initializer(p_get_proc_address, p_library, r_initialization);
-	initializer.register_initializer(initialize_tgds_types);
-	initializer.register_terminator(uninitialize_tgds_types);
-	initializer.set_minimum_library_initialization_level(GDEXTENSION_INITIALIZATION_SCENE);
-	return initializer.init();
+
+GDExtensionBool GDE_EXPORT tgds_library_init(GDExtensionInterfaceGetProcAddress p_get_proc_address, GDExtensionClassLibraryPtr p_library, GDExtensionInitialization *r_initialization) {
+	godot::GDExtensionBinding::InitObject initObj(p_get_proc_address, p_library, r_initialization);
+
+	initObj.register_initializer(initialize_tgds_types);
+	initObj.register_terminator(uninitialize_tgds_types);
+	initObj.set_minimum_library_initialization_level(godot::ModuleInitializationLevel::MODULE_INITIALIZATION_LEVEL_SCENE);
+
+	return initObj.init();
 }
 }

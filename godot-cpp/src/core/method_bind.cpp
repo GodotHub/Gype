@@ -28,18 +28,16 @@
 /* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                 */
 /**************************************************************************/
 
-#include <godot_cpp/core/memory.hpp>
 #include <godot_cpp/core/method_bind.hpp>
-#include <godot_cpp/variant_size.hpp>
 
-namespace JSGodot {
+namespace godot {
 
-uint8_t *MethodBind::get_name() const {
+StringName MethodBind::get_name() const {
 	return name;
 }
 
-void MethodBind::set_name(const uint8_t *p_name) {
-	name = const_cast<uint8_t *>(p_name);
+void MethodBind::set_name(const StringName &p_name) {
+	name = p_name;
 }
 
 void MethodBind::set_argument_count(int p_count) {
@@ -62,11 +60,11 @@ void MethodBind::set_vararg(bool p_vararg) {
 	_vararg = p_vararg;
 }
 
-void MethodBind::set_argument_names(const std::vector<uint8_t *> &p_names) {
+void MethodBind::set_argument_names(const std::vector<StringName> &p_names) {
 	argument_names = p_names;
 }
 
-std::vector<uint8_t *> MethodBind::get_argument_names() const {
+std::vector<StringName> MethodBind::get_argument_names() const {
 	return argument_names;
 }
 
@@ -88,17 +86,17 @@ void MethodBind::generate_argument_types(int p_count) {
 PropertyInfo MethodBind::get_argument_info(int p_argument) const {
 	PropertyInfo info = gen_argument_type_info(p_argument);
 	if (p_argument >= 0) {
-		info.name = p_argument < (int)argument_names.size() ? argument_names[p_argument] : (uint8_t *)memalloc(STRING_NAME_SIZE);
+		info.name = p_argument < (int)argument_names.size() ? argument_names[p_argument] : "";
 	}
 	return info;
 }
 
 void MethodBind::bind_call(void *p_method_userdata, GDExtensionClassInstancePtr p_instance, const GDExtensionConstVariantPtr *p_args, GDExtensionInt p_argument_count, GDExtensionVariantPtr r_return, GDExtensionCallError *r_error) {
 	const MethodBind *bind = reinterpret_cast<const MethodBind *>(p_method_userdata);
-	std::vector<uint8_t> ret = bind->call(p_instance, p_args, p_argument_count, r_error);
-	// This assumes the return value is an empty uint8_t *, so it doesn't need to call the destructor first.
+	Variant ret = bind->call(p_instance, p_args, p_argument_count, *r_error);
+	// This assumes the return value is an empty Variant, so it doesn't need to call the destructor first.
 	// Since only GDExtensionMethodBind calls this from the Godot side, it should always be the case.
-	internal::gdextension_interface_variant_new_copy(r_return, ret.data());
+	internal::gdextension_interface_variant_new_copy(r_return, ret._native_ptr());
 }
 
 void MethodBind::bind_ptrcall(void *p_method_userdata, GDExtensionClassInstancePtr p_instance, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_return) {
@@ -112,4 +110,4 @@ MethodBind::~MethodBind() {
 	}
 }
 
-} //namespace JSGodot
+} // namespace godot

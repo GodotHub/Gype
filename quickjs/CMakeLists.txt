@@ -10,9 +10,8 @@ file(GLOB_RECURSE HEADERS
 add_library(quickjs STATIC ${SOURCE})
 
 target_include_directories(quickjs 
-    PUBLIC 
+    PRIVATE 
         ${PROJECT_SOURCE_DIR}/include
-        ${CMAKE_SOURCE_DIR}/godot-cpp/include
         ${CMAKE_SOURCE_DIR}/godot-cpp/gdextension)
 
 target_compile_options(quickjs 

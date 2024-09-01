@@ -32,9 +32,12 @@
 #define GODOT_METHOD_PTRCALL_HPP
 
 #include <godot_cpp/core/defs.hpp>
-#include <godot_cpp/godot.hpp>
 
-namespace JSGodot {
+#include <godot_cpp/core/object.hpp>
+#include <godot_cpp/godot.hpp>
+#include <godot_cpp/variant/variant.hpp>
+
+namespace godot {
 
 template <typename T>
 struct PtrToArg {};
@@ -125,67 +128,68 @@ MAKE_PTRARG(uint64_t);
 MAKE_PTRARGCONV(float, double);
 MAKE_PTRARG(double);
 
-// MAKE_PTRARG(String);
-// MAKE_PTRARG(Vector2);
-// MAKE_PTRARG(Vector2i);
-// MAKE_PTRARG(Rect2);
-// MAKE_PTRARG(Rect2i);
-// MAKE_PTRARG_BY_REFERENCE(Vector3);
-// MAKE_PTRARG_BY_REFERENCE(Vector3i);
-// MAKE_PTRARG(Transform2D);
-// MAKE_PTRARG_BY_REFERENCE(Vector4);
-// MAKE_PTRARG_BY_REFERENCE(Vector4i);
-// MAKE_PTRARG_BY_REFERENCE(Plane);
-// MAKE_PTRARG(Quaternion);
-// MAKE_PTRARG_BY_REFERENCE(AABB);
-// MAKE_PTRARG_BY_REFERENCE(Basis);
-// MAKE_PTRARG_BY_REFERENCE(Transform3D);
-// MAKE_PTRARG_BY_REFERENCE(Projection);
-// MAKE_PTRARG_BY_REFERENCE(Color);
-// MAKE_PTRARG(StringName);
-// MAKE_PTRARG(NodePath);
-// MAKE_PTRARG(RID);
+MAKE_PTRARG(String);
+MAKE_PTRARG(Vector2);
+MAKE_PTRARG(Vector2i);
+MAKE_PTRARG(Rect2);
+MAKE_PTRARG(Rect2i);
+MAKE_PTRARG_BY_REFERENCE(Vector3);
+MAKE_PTRARG_BY_REFERENCE(Vector3i);
+MAKE_PTRARG(Transform2D);
+MAKE_PTRARG_BY_REFERENCE(Vector4);
+MAKE_PTRARG_BY_REFERENCE(Vector4i);
+MAKE_PTRARG_BY_REFERENCE(Plane);
+MAKE_PTRARG(Quaternion);
+MAKE_PTRARG_BY_REFERENCE(AABB);
+MAKE_PTRARG_BY_REFERENCE(Basis);
+MAKE_PTRARG_BY_REFERENCE(Transform3D);
+MAKE_PTRARG_BY_REFERENCE(Projection);
+MAKE_PTRARG_BY_REFERENCE(Color);
+MAKE_PTRARG(StringName);
+MAKE_PTRARG(NodePath);
+MAKE_PTRARG(RID);
 // Object doesn't need this.
-// MAKE_PTRARG(Callable);
-// MAKE_PTRARG(Signal);
-// MAKE_PTRARG(Dictionary);
-// MAKE_PTRARG(Array);
-// MAKE_PTRARG(PackedByteArray);
-// MAKE_PTRARG(PackedInt32Array);
-// MAKE_PTRARG(PackedInt64Array);
-// MAKE_PTRARG(PackedFloat32Array);
-// MAKE_PTRARG(PackedFloat64Array);
-// MAKE_PTRARG(PackedStringArray);
-// MAKE_PTRARG(PackedVector2Array);
-// MAKE_PTRARG(PackedVector3Array);
-// MAKE_PTRARG(PackedColorArray);
-// MAKE_PTRARG_BY_REFERENCE(Variant);
+MAKE_PTRARG(Callable);
+MAKE_PTRARG(Signal);
+MAKE_PTRARG(Dictionary);
+MAKE_PTRARG(Array);
+MAKE_PTRARG(PackedByteArray);
+MAKE_PTRARG(PackedInt32Array);
+MAKE_PTRARG(PackedInt64Array);
+MAKE_PTRARG(PackedFloat32Array);
+MAKE_PTRARG(PackedFloat64Array);
+MAKE_PTRARG(PackedStringArray);
+MAKE_PTRARG(PackedVector2Array);
+MAKE_PTRARG(PackedVector3Array);
+MAKE_PTRARG(PackedVector4Array);
+MAKE_PTRARG(PackedColorArray);
+MAKE_PTRARG_BY_REFERENCE(Variant);
 
 // This is for Object.
 
-// template <typename T>
-// struct PtrToArg<T *> {
-// 	static_assert(std::is_base_of<Object, T>::value, "Cannot encode non-Object value as an Object");
-// 	_FORCE_INLINE_ static T *convert(const void *p_ptr) {
-// 		return likely(p_ptr) ? reinterpret_cast<T *>(godot::internal::get_object_instance_binding(*reinterpret_cast<GDExtensionObjectPtr *>(const_cast<void *>(p_ptr)))) : nullptr;
-// 	}
-// 	typedef Object *EncodeT;
-// 	_FORCE_INLINE_ static void encode(T *p_var, void *p_ptr) {
-// 		*reinterpret_cast<const void **>(p_ptr) = likely(p_var) ? p_var->_owner : nullptr;
-// 	}
-// };
+template <typename T>
+struct PtrToArg<T *> {
+	static_assert(std::is_base_of<Object, T>::value, "Cannot encode non-Object value as an Object");
+	_FORCE_INLINE_ static T *convert(const void *p_ptr) {
+		return likely(p_ptr) ? reinterpret_cast<T *>(godot::internal::get_object_instance_binding(*reinterpret_cast<GDExtensionObjectPtr *>(const_cast<void *>(p_ptr)))) : nullptr;
+	}
+	typedef Object *EncodeT;
+	_FORCE_INLINE_ static void encode(T *p_var, void *p_ptr) {
+		*reinterpret_cast<const void **>(p_ptr) = likely(p_var) ? p_var->_owner : nullptr;
+	}
+};
 
-// template <typename T>
-// struct PtrToArg<const T *> {
-// 	static_assert(std::is_base_of<Object, T>::value, "Cannot encode non-Object value as an Object");
-// 	_FORCE_INLINE_ static const T *convert(const void *p_ptr) {
-// 		return likely(p_ptr) ? reinterpret_cast<const T *>(godot::internal::get_object_instance_binding(*reinterpret_cast<GDExtensionObjectPtr *>(const_cast<void *>(p_ptr)))) : nullptr;
-// 	}
-// 	typedef const Object *EncodeT;
-// 	_FORCE_INLINE_ static void encode(T *p_var, void *p_ptr) {
-// 		*reinterpret_cast<const void **>(p_ptr) = likely(p_var) ? p_var->_owner : nullptr;
-// 	}
-// };
+template <typename T>
+struct PtrToArg<const T *> {
+	static_assert(std::is_base_of<Object, T>::value, "Cannot encode non-Object value as an Object");
+	_FORCE_INLINE_ static const T *convert(const void *p_ptr) {
+		return likely(p_ptr) ? reinterpret_cast<const T *>(godot::internal::get_object_instance_binding(*reinterpret_cast<GDExtensionObjectPtr *>(const_cast<void *>(p_ptr)))) : nullptr;
+	}
+	typedef const Object *EncodeT;
+	_FORCE_INLINE_ static void encode(T *p_var, void *p_ptr) {
+		*reinterpret_cast<const void **>(p_ptr) = likely(p_var) ? p_var->_owner : nullptr;
+	}
+};
 
 // Pointers.
 #define GDVIRTUAL_NATIVE_PTR(m_type)                                          \
@@ -211,24 +215,24 @@ MAKE_PTRARG(double);
 		}                                                                     \
 	}
 
-// GDVIRTUAL_NATIVE_PTR(void);
-// GDVIRTUAL_NATIVE_PTR(bool);
-// GDVIRTUAL_NATIVE_PTR(char);
-// GDVIRTUAL_NATIVE_PTR(char16_t);
-// GDVIRTUAL_NATIVE_PTR(char32_t);
-// GDVIRTUAL_NATIVE_PTR(wchar_t);
-// GDVIRTUAL_NATIVE_PTR(uint8_t);
-// GDVIRTUAL_NATIVE_PTR(uint8_t *);
-// GDVIRTUAL_NATIVE_PTR(int8_t);
-// GDVIRTUAL_NATIVE_PTR(uint16_t);
-// GDVIRTUAL_NATIVE_PTR(int16_t);
-// GDVIRTUAL_NATIVE_PTR(uint32_t);
-// GDVIRTUAL_NATIVE_PTR(int32_t);
-// GDVIRTUAL_NATIVE_PTR(int64_t);
-// GDVIRTUAL_NATIVE_PTR(uint64_t);
-// GDVIRTUAL_NATIVE_PTR(float);
-// GDVIRTUAL_NATIVE_PTR(double);
+GDVIRTUAL_NATIVE_PTR(void);
+GDVIRTUAL_NATIVE_PTR(bool);
+GDVIRTUAL_NATIVE_PTR(char);
+GDVIRTUAL_NATIVE_PTR(char16_t);
+GDVIRTUAL_NATIVE_PTR(char32_t);
+GDVIRTUAL_NATIVE_PTR(wchar_t);
+GDVIRTUAL_NATIVE_PTR(uint8_t);
+GDVIRTUAL_NATIVE_PTR(uint8_t *);
+GDVIRTUAL_NATIVE_PTR(int8_t);
+GDVIRTUAL_NATIVE_PTR(uint16_t);
+GDVIRTUAL_NATIVE_PTR(int16_t);
+GDVIRTUAL_NATIVE_PTR(uint32_t);
+GDVIRTUAL_NATIVE_PTR(int32_t);
+GDVIRTUAL_NATIVE_PTR(int64_t);
+GDVIRTUAL_NATIVE_PTR(uint64_t);
+GDVIRTUAL_NATIVE_PTR(float);
+GDVIRTUAL_NATIVE_PTR(double);
 
-} //namespace JSGodot
+} // namespace godot
 
 #endif // GODOT_METHOD_PTRCALL_HPP
