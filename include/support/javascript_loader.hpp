@@ -3,8 +3,12 @@
 #include "support/javascript.hpp"
 #include <godot_cpp/classes/resource_format_loader.hpp>
 #include <godot_cpp/templates/hash_map.hpp>
+#include <godot_cpp/variant/variant.hpp>
 
-using namespace godot;
+namespace godot {
+
+class Variant;
+class Object;
 
 class JavaScriptLoader : public ResourceFormatLoader {
 	GDCLASS(JavaScriptLoader, ResourceFormatLoader)
@@ -28,3 +32,4 @@ public:
 protected:
 	static void _bind_methods() {}
 };
+} // namespace godot

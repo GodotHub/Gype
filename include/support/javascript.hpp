@@ -1,16 +1,24 @@
 #pragma once
 
+#include "support/javascript_instance.hpp"
 #include "support/javascript_language.hpp"
 #include "support/javascript_saver.hpp"
 #include <godot_cpp/classes/script_extension.hpp>
 
-using namespace godot;
+namespace godot {
+
+class JavaScriptInstance;
+class JavaScript;
+class Variant;
+class Object;
+class ScriptExtension;
 
 class JavaScript : public ScriptExtension {
 	GDCLASS(JavaScript, ScriptExtension)
 
 	friend class JavaScriptLanguage;
 	friend class JavaScriptSaver;
+	friend class JavaScriptInstance;
 
 	String source_code;
 	String origin_path;
@@ -60,3 +68,4 @@ public:
 protected:
 	static void _bind_methods() {}
 };
+} // namespace godot

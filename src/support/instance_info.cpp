@@ -6,6 +6,8 @@
 #include <godot_cpp/core/memory.hpp>
 #include <godot_cpp/godot.hpp>
 
+using namespace godot;
+
 GDExtensionBool set_func(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionConstVariantPtr p_value) {
 	JavaScriptInstance *instance = reinterpret_cast<JavaScriptInstance *>(p_instance);
 	instance->set(p_name, p_value);

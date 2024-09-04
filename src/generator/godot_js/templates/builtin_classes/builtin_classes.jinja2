@@ -5,7 +5,7 @@ import {
   _call_builtin_constructor,
   _call_builtin_method_ptr_ret,
   _call_builtin_method_ptr_no_ret
-} from 'src/js_godot/core/builtin_ptrcall'
+} from '@js_godot/core/builtin_ptrcall'
 {%- for dependcy in dependcies %}
 import { {{to_js_type(dependcy)}} } from '{{ get_module_path(dependcy) }}'
 {%- if to_js_type(dependcy) == 'StringName' -%}
@@ -19,7 +19,8 @@ export class {{to_js_type(clazz['name'])}} {
   static #SIZE = {{size}}
   opaque = new Uint8Array({{to_js_type(clazz['name'])}}.#SIZE)
 
-  static _bindings = new _MethodBindings()
+  static _bindings = new _MethodBindings();
+  static #initialized = false;
 
   constructor (from) {
     {%- from 'utils/utils.jinja2' import base_ctor -%}
@@ -40,4 +41,9 @@ export class {{to_js_type(clazz['name'])}} {
   {{call_no_returned(clazz,method)}}
     {%- endif %}
   {%- endfor %}
+  {%- from 'utils/utils.jinja2' import set_property -%}
+  {{- set_property(clazz) -}}
+  static {
+    this._init_bindings();
+  }
 }

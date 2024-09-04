@@ -2,14 +2,14 @@
 
 #include <godot_cpp/classes/resource_format_saver.hpp>
 
-using namespace godot;
+namespace godot {
+
+class Variant;
 
 class JavaScriptSaver : public ResourceFormatSaver {
 	GDCLASS(JavaScriptSaver, ResourceFormatSaver)
 
 	static JavaScriptSaver *singleton;
-
-	
 
 public:
 	static JavaScriptSaver *get_singleton();
@@ -22,3 +22,4 @@ public:
 protected:
 	static void _bind_methods() {}
 };
+} // namespace godot

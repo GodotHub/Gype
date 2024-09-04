@@ -1,10 +1,10 @@
 #pragma once
 
 #include <gdextension_interface.h>
-#include <quickjs/class_ids.h>
 #include <quickjs/js_pointer.h>
 #include <quickjs/quickjs.h>
 #include <quickjs/str_utils.h>
+#include <godot_cpp/variant/variant.hpp>
 
 #include <algorithm>
 #include <any>
@@ -33,6 +33,10 @@
 #define QJSPP_TYPENAME(...) #__VA_ARGS__
 #endif
 
+namespace godot {
+class Variant;
+} // namespace godot
+
 typedef struct JSValue JSValue;
 typedef JSValue Pointer;
 typedef JSValue RetBuffer;
@@ -52,10 +56,13 @@ static GDExtensionInt encodeInt(JSContext *ctx, JSValue v);
 static double encodeDouble(JSContext *ctx, JSValue v);
 static uint64_t variant_byte_size(std::string type);
 static int variant_size(std::string type);
-static int variant_size(GDExtensionVariantType type);
+static int variant_size(int type);
 static JSValue to_js_value(JSContext *ctx, std::string type, void *value);
 static JSValue to_js_value(JSContext *ctx, GDExtensionVariantType type, void *value);
 static void *to_c_pointer(JSContext *ctx, Pointer js_pointer);
+static bool is_typed_array(JSValue value);
+static bool is_int(JSValue value);
+static bool is_float(JSValue value);
 
 /** Exception type.
  * Indicates that exception has occured in JS context.
@@ -2273,22 +2280,6 @@ static uint8_t *get_typed_array_buf(JSContext *ctx, JSValue v) {
 	}
 }
 
-template <typename T>
-static T *get_array_values(JSContext *ctx, JSValue v) {
-	int class_id = JS_GetClassID(v);
-	size_t len;
-	if (class_id == 2) {
-		JSValue *values = JS_GetArrayValues(ctx, &len, v);
-		std::vector<T> vector;
-		for (int i = 0; i < len; i++) {
-			vector.push_back(js_traits<T>::unwrap(ctx, values[i]));
-		}
-		return vector.data();
-	} else {
-		return nullptr;
-	}
-}
-
 // 获取参数数组的指针
 static std::vector<void *> get_args(JSContext *ctx, JSValue v) {
 	int length = js_traits<int>::unwrap(ctx, JS_GetPropertyStr(ctx, v, "length"));
@@ -2306,7 +2297,7 @@ static std::vector<void *> get_args(JSContext *ctx, JSValue v) {
 				args.push_back(get_typed_array_buf(ctx, el));
 			}
 		} else if (JS_IsNumber(el)) {
-			if (JS_IsInt(el)) {
+			if (is_int(el)) {
 				int64_t num = encodeInt(ctx, el);
 				int64_t *m_num = reinterpret_cast<int64_t *>(js_malloc(ctx, sizeof(int64_t)));
 				*m_num = num;
@@ -2338,7 +2329,7 @@ static std::vector<void *> get_args(JSContext *ctx, rest<JSValue> v) {
 				args.push_back(get_typed_array_buf(ctx, el));
 			}
 		} else if (JS_IsNumber(el)) {
-			if (JS_IsInt(el)) {
+			if (is_int(el)) {
 				int64_t num = encodeInt(ctx, el);
 				int64_t *m_num = reinterpret_cast<int64_t *>(js_malloc(ctx, sizeof(int64_t)));
 				*m_num = num;
@@ -2408,14 +2399,57 @@ static int variant_size(std::string type) {
 	return 0;
 }
 
-static int variant_size(GDExtensionVariantType type) {
+static int variant_size(int type) {
 	switch (type) {
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_NIL:
+			return 0;
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_BOOL:
+			return 1;
 		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_INT:
 		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_FLOAT:
-			return 1;
 		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_STRING:
 		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_STRING_NAME:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_NODE_PATH:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_OBJECT:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_ARRAY:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_VECTOR2:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_VECTOR2I:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_RID:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_DICTIONARY:
 			return 8;
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_VECTOR3:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_VECTOR3I:
+			return 12;
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_RECT2:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_RECT2I:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_VECTOR4:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_VECTOR4I:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PLANE:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_QUATERNION:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_AABB:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_COLOR:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_CALLABLE:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_SIGNAL:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR4_ARRAY:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY:
+			return 16;
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_TRANSFORM2D:
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_VARIANT_MAX:
+			return 24;
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_BASIS:
+			return 36;
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_TRANSFORM3D:
+			return 48;
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PROJECTION:
+			return 64;
 		default:
 			return 0;
 	}
@@ -2441,6 +2475,107 @@ static JSValue to_js_value(JSContext *ctx, std::string type, void *value) {
 	return JS_UNDEFINED;
 }
 
+// static JSValue get_import(Context *context, GDExtensionVariantType type) {
+// 	switch (type) {
+// 		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_INT:
+// 			break;
+
+// 		default:
+// 			break;
+// 	}
+// }
+
+static const char *to_js_type(int type) {
+	switch (type) {
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_NIL:
+			return "nil";
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_INT:
+			return "int";
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_FLOAT:
+			return "float";
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_BOOL:
+			return "bool";
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_STRING:
+			return "GDString";
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_STRING_NAME:
+			return "StringName";
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY:
+			return "PackedByteArray";
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY:
+			return "PackedInt32Array";
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY:
+			return "PackedInt64Array";
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY:
+			return "PackedStringArray";
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY:
+			return "PackedFloat32Array";
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY:
+			return "PackedFloat64Array";
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY:
+			return "PackedVector2Array";
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY:
+			return "PackedVector3Array";
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR4_ARRAY:
+			return "PackedVector4Array";
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY:
+			return "PackedColorArray";
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_VECTOR2:
+			return "Vector2";
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_VECTOR2I:
+			return "Vector2I";
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_VECTOR3:
+			return "Vector3";
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_VECTOR3I:
+			return "Vector3I";
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_VECTOR4:
+			return "Vector4";
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_VECTOR4I:
+			return "Vector4I";
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_ARRAY:
+			return "GDArray";
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_DICTIONARY:
+			return "Dictionary";
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_BASIS:
+			return "Basis";
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_NODE_PATH:
+			return "NodePath";
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_CALLABLE:
+			return "Callable";
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_OBJECT:
+			return "GodotObject";
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PLANE:
+			return "Plane";
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PROJECTION:
+			return "Projection";
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_QUATERNION:
+			return "Quaternion";
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_SIGNAL:
+			return "Signal";
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_TRANSFORM2D:
+			return "Transform2D";
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_TRANSFORM3D:
+			return "Transform3D";
+		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_VARIANT_MAX:
+			return "Variant";
+		default:
+			return "";
+	}
+}
+
+static JSValue to_js_value(Context *context, int type, void *value, size_t len) {
+	const char *md = to_js_type(type);
+	char code[1024];
+	std::string snake = camelToSnake(md);
+	sprintf(code, "import { %s } from \"@js_godot/variant/%s\"; let value = new %s();value;", md, snake.c_str(), md);
+	printf("%s\n", code);
+	JSValue ret = context->eval(code, "<input>", JS_EVAL_TYPE_MODULE);
+	JSValue buf = JS_NewArrayBuffer(context->ctx, (uint8_t *)value, len, NULL, NULL, false);
+	JSValue *args = new JSValue[3]{ buf, JS_NewInt64(context->ctx, 0), JS_NewInt64(context->ctx, len) };
+	JSValue opaque = JS_NewTypedArray(context->ctx, len, args, JSTypedArrayEnum::JS_TYPED_ARRAY_UINT8);
+	JS_SetPropertyStr(context->ctx, ret, "opaque", opaque);
+	return ret;
+}
+
 static JSValue to_js_value(JSContext *ctx, GDExtensionVariantType type, void *value) {
 	int size = variant_size(type);
 	switch (type) {
@@ -2463,25 +2598,125 @@ static JSValue to_js_value(JSContext *ctx, GDExtensionVariantType type, void *va
 	}
 }
 
+static godot::Variant to_gd_value(JSContext *ctx, JSValue value) {
+	JSAtom opaque_atom = JS_NewAtom(ctx, "opaque");
+	godot::Variant ret;
+	if (JS_HasProperty(ctx, value, opaque_atom)) {
+		JSValue opaque = JS_GetProperty(ctx, value, opaque_atom);
+		void *buf = qjs::get_typed_array_buf(ctx, opaque);
+		GDExtensionVariantType type = godot::internal::gdextension_interface_variant_get_type(buf);
+		switch (type) {
+			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_NIL:
+				ret = godot::Variant();
+			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_INT:
+				ret = (int)(*(godot::Variant *)buf);
+			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_FLOAT:
+				ret = (double)(*(godot::Variant *)buf);
+			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_BOOL:
+				ret = (bool)(*(godot::Variant *)buf);
+			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_STRING:
+				ret = *(godot::String *)buf;
+			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_STRING_NAME:
+				ret = *(godot::StringName *)buf;
+			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY:
+				ret = *(godot::PackedByteArray *)buf;
+			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY:
+				ret = *(godot::PackedInt32Array *)buf;
+			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY:
+				ret = *(godot::PackedInt64Array *)buf;
+			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY:
+				ret = *(godot::PackedStringArray *)buf;
+			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY:
+				ret = *(godot::PackedFloat32Array *)buf;
+			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY:
+				ret = *(godot::PackedFloat64Array *)buf;
+			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY:
+				ret = *(godot::PackedVector2Array *)buf;
+			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY:
+				ret = *(godot::PackedVector3Array *)buf;
+			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR4_ARRAY:
+				ret = *(godot::PackedVector4Array *)buf;
+			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY:
+				ret = *(godot::PackedColorArray *)buf;
+			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_VECTOR2:
+				ret = *(godot::Vector2 *)buf;
+			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_VECTOR2I:
+				ret = *(godot::Vector2i *)buf;
+			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_VECTOR3:
+				ret = *(godot::Vector3 *)buf;
+			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_VECTOR3I:
+				ret = *(godot::Vector3i *)buf;
+			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_VECTOR4:
+				ret = *(godot::Vector4 *)buf;
+			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_VECTOR4I:
+				ret = *(godot::Vector4i *)buf;
+			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_ARRAY:
+				ret = *(godot::Array *)buf;
+			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_DICTIONARY:
+				ret = *(godot::Dictionary *)buf;
+			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_BASIS:
+				ret = *(godot::Basis *)buf;
+			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_NODE_PATH:
+				ret = *(godot::NodePath *)buf;
+			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_CALLABLE:
+				ret = *(godot::Callable *)buf;
+			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_OBJECT:
+				ret = (godot::Object *)buf;
+			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PLANE:
+				ret = *(godot::Plane *)buf;
+			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PROJECTION:
+				ret = *(godot::Projection *)buf;
+			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_QUATERNION:
+				ret = *(godot::Quaternion *)buf;
+			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_SIGNAL:
+				ret = *(godot::Signal *)buf;
+			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_TRANSFORM2D:
+				ret = *(godot::Transform2D *)buf;
+			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_TRANSFORM3D:
+				ret = *(godot::Transform3D *)buf;
+			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_VARIANT_MAX:
+				ret = *(godot::Variant *)buf;
+			default:
+				ret = godot::Variant();
+		}
+	} else if (JS_IsUndefined(value) || JS_IsNull(value)) {
+		ret = godot::Variant();
+	} else if (JS_IsBool(value)) {
+		ret = godot::Variant(encodeBool(ctx, value));
+	} else if (is_int(value)) {
+		ret = godot::Variant(encodeInt(ctx, value));
+	} else if (is_float(value)) {
+		ret = godot::Variant(encodeDouble(ctx, value));
+	} else {
+		ret = godot::Variant();
+	}
+	return ret;
+}
+
 static void *to_c_value(JSContext *ctx, JSValue value) {
 	void *arg;
-	if (JS_IsTypedArray(value)) {
+	JSAtom opaque_atom = JS_NewAtom(ctx, "opaque");
+	if (is_typed_array(value)) {
 		arg = reinterpret_cast<GDExtensionTypePtr>(get_typed_array_buf(ctx, value));
+	} else if (JS_HasProperty(ctx, value, opaque_atom)) {
+		JSValue opaque = JS_GetProperty(ctx, value, opaque_atom);
+		arg = reinterpret_cast<GDExtensionTypePtr>(get_typed_array_buf(ctx, opaque));
 	} else if (JS_IsBool(value)) {
 		bool ret = encodeBool(ctx, value);
 		arg = js_mallocz(ctx, sizeof(bool));
 		*reinterpret_cast<bool *>(arg) = ret;
-	} else if (JS_IsInt(value)) {
+	} else if (is_int(value)) {
 		int64_t ret = encodeInt(ctx, value);
 		arg = js_mallocz(ctx, sizeof(int64_t));
 		*reinterpret_cast<int64_t *>(arg) = ret;
-	} else if (JS_IsFloat(value)) {
+	} else if (is_float(value)) {
 		double ret = encodeDouble(ctx, value);
 		arg = js_mallocz(ctx, sizeof(double));
 		*reinterpret_cast<double *>(arg) = ret;
 	} else {
 		return nullptr;
 	}
+	JS_FreeAtom(ctx, opaque_atom);
 	return arg;
 }
 
@@ -2781,4 +3016,18 @@ struct js_traits<BIND_PTRCALL> {
 // 		return method_ptr;
 // 	}
 // };
+
+static bool is_typed_array(JSValue value) {
+	JSClassID class_id = JS_GetClassID(value);
+	return class_id >= 21 && class_id <= 31;
+}
+
+static bool is_int(JSValue value) {
+	return JS_VALUE_GET_TAG(value) == JS_TAG_INT;
+}
+
+static bool is_float(JSValue value) {
+	return JS_VALUE_GET_TAG(value) == JS_TAG_FLOAT64;
+}
+
 } // namespace qjs

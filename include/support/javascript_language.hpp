@@ -1,8 +1,12 @@
 #pragma once
 
 #include <godot_cpp/classes/script_language_extension.hpp>
+#include <godot_cpp/variant/variant.hpp>
 
-using namespace godot;
+namespace godot {
+
+class Variant;
+class Object;
 
 class JavaScriptLanguage : public ScriptLanguageExtension {
 	GDCLASS(JavaScriptLanguage, ScriptLanguageExtension)
@@ -76,3 +80,4 @@ public:
 protected:
 	static void _bind_methods() {}
 };
+} // namespace godot

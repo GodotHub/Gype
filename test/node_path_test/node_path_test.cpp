@@ -3,10 +3,10 @@
 
 void test_node_path() {
 	JSValue ret = context.eval(R"xxx(
-        import { Variant } from 'src/js_godot/variant/variant';
-        import { StringName } from 'src/js_godot/variant/string_name';
-        import { GDString } from 'src/js_godot/variant/gd_string';
-        import { NodePath } from 'src/js_godot/variant/node_path';
+        import { Variant } from '@js_godot/variant/variant';
+        import { StringName } from '@js_godot/variant/string_name';
+        import { GDString } from '@js_godot/variant/gd_string';
+        import { NodePath } from '@js_godot/variant/node_path';
 		{
 			let node_path = new NodePath('a/b')
 			// (node_path.is_absolute());

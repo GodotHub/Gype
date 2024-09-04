@@ -2,26 +2,26 @@
 
 #include "quickjs/env.h"
 #include <gdextension_interface.h>
+#include <godot_cpp/classes/object.hpp>
 
 namespace godot {
 
 class GodotInstanceBinding {
-	JSValue *p_instance;
+	JSValue p_instance;
 
 public:
-	GodotInstanceBinding(JSValue *p_instance) :
-			p_instance(p_instance) {
-			};
+	GodotInstanceBinding(JSValue p_instance = JS_UNDEFINED) :
+			p_instance(p_instance) {};
 
 	void free() {
-		JS_FreeValue(context.ctx, *p_instance);
+		JS_FreeValue(context.ctx, p_instance);
 	}
 
 	void dup() {
-		JS_DupValue(context.ctx, *p_instance);
+		JS_DupValue(context.ctx, p_instance);
 	}
 
-	JSValue *get_instance() {
+	JSValue get_instance() {
 		return p_instance;
 	}
 };
@@ -31,7 +31,7 @@ namespace internal {
 static GDExtensionInstanceBindingCallbacks callbacks = {
 	// create
 	[](void *p_token, void *p_instance) -> void * {
-		return new GodotInstanceBinding((JSValue *)p_instance);
+		return new GodotInstanceBinding(*(JSValue *)p_instance);
 	},
 	// free
 	[](void *p_token, void *p_instance, void *p_binding) -> void {
@@ -40,8 +40,8 @@ static GDExtensionInstanceBindingCallbacks callbacks = {
 	// reference
 	[](void *p_token, void *p_binding, GDExtensionBool p_reference) -> GDExtensionBool {
 		GodotInstanceBinding *binding = reinterpret_cast<GodotInstanceBinding *>(p_binding);
-		JSValue count_func = JS_GetPropertyStr(context.ctx, *binding->get_instance(), "get_reference_count");
-		int count = qjs::js_traits<int>::unwrap(context.ctx, JS_Call(context.ctx, count_func, *binding->get_instance(), 0, NULL));
+		JSValue count_func = JS_GetPropertyStr(context.ctx, binding->get_instance(), "get_reference_count");
+		int count = qjs::js_traits<int>::unwrap(context.ctx, JS_Call(context.ctx, count_func, binding->get_instance(), 0, NULL));
 		if (count == 0) {
 			binding->free();
 			free(binding);

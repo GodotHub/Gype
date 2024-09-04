@@ -1,33 +1,39 @@
 
 {%- set clazz = gde_json['classes'][index] -%}
 {%- set methods = clazz['methods'] -%}
-{%- set singletons = gde_json['singletons'] | map(attribute='type') -%}
+{%- set singletons = gde_json['singletons'] | map(attribute='name') | list -%}
 {%- from 'utils/utils.jinja2' import singleton_class_name -%}
 import * as internal from '__internal__';
 {%- for dependcy in dependcies %}
 import { {{to_js_type(dependcy)}} } from '{{ get_module_path(dependcy) }}'
 {%- endfor %}
 {%- if clazz['name'] == 'Object' %}
-import { Wrapped } from 'src/js_godot/classes/wrapped'
+import { Wrapped } from '@js_godot/classes/wrapped'
 {%- endif %}
 import {
   call_utility_ret,
   call_utility_no_ret,
   _call_native_mb_ret,
   _call_native_mb_no_ret
-} from "src/js_godot/core/engine_ptrcall";
+} from "@js_godot/core/engine_ptrcall";
 
 class _MethodBindings {
   {%- for method in methods %}
     {%- if not method['is_virtual'] %}
-    method_{{method['name']}};
+  method_{{method['name']}};
     {%- endif %}
   {%- endfor %}
 }
+{%- if clazz['name'] in singletons -%}
+{%- set class_name = "_"+clazz['name'] -%}
+{% else %}
+{%- set class_name = to_js_type(clazz['name']) -%}
+{%- endif -%}
 
 {{singleton_class_name(clazz, singletons)}} {{ 'extends ' + to_js_type(clazz['inherits']) if to_js_type(clazz['inherits']) else ''}}{
 
   static _bindings = new _MethodBindings();
+  static #initialized = false;
 
   constructor(godot_object) {
     if (!godot_object) {
@@ -37,18 +43,22 @@ class _MethodBindings {
     }
   }
   {% from 'utils/utils.jinja2' import define_args %}
-  static _init_bindings() {
+  static async _init_bindings() {
+    if (this.#initialized) {
+      return;
+    }
+    this.#initialized = true;
     {%- for method in methods %}
       {%- if not method['is_virtual'] %}
-      {
-        let classname = new StringName("{{clazz['name']}}");
-        let methodname = new StringName("{{method['name']}}");
-        this._bindings.method_{{method['name']}} = internal.classdb_get_method_bind(
-          classname.opaque, 
-          methodname.opaque, 
-          {{method['hash']}}
-        );
-      }
+    {
+      let classname = new StringName("{{clazz['name']}}");
+      let methodname = new StringName("{{method['name']}}");
+      this._bindings.method_{{method['name']}} = internal.classdb_get_method_bind(
+        classname.opaque, 
+        methodname.opaque, 
+        {{method['hash']}}
+      );
+    }
       {%- endif %}
     {%- endfor %}
   }
@@ -61,13 +71,15 @@ class _MethodBindings {
       ClassDB._bindings.method_{{method['name']}},
       this._owner,
       {%- if method['return_value'] -%}
-      {{-type_enum(method['return_value'], '\t\t\t')-}},
+      {{-type_enum(method['return_value'], '\t\t\t')-}}
       {%- endif %}
       {{conn_args(method['arguments'])}}
     );
     {% endif %}
   }
   {%- endfor %}
+  {% from 'utils/utils.jinja2' import set_property %}
+  {{- set_property(clazz) -}}
 
   {%- for enum in clazz['enums'] %}
   static {{enum['name']}} = {
@@ -76,4 +88,12 @@ class _MethodBindings {
     {%- endfor %}
   }
   {%- endfor %}
+
+  static {
+    this._init_bindings();
+  }
 }
+
+{%- if clazz['name'] in singletons %}
+export const {{to_js_type(clazz['name'])}} = new _{{clazz['name']}}();
+{%- endif %}

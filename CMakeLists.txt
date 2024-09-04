@@ -7,9 +7,9 @@ set(CMAKE_CXX_COMPILER g++)
 # 项目名称和语言
 project(gype C CXX)
 
-add_subdirectory(quickjs)
 add_subdirectory(godot-cpp)
-add_subdirectory(tree-sitter)
+add_subdirectory(quickjs)
+# add_subdirectory(tree-sitter)
 
 
 # 查找src目录和所有子目录中的.c和.cpp文件
@@ -23,15 +23,17 @@ file(GLOB_RECURSE HEADERS
 # 添加动态库
 add_library(gype SHARED ${SOURCE} ${TEST})
 
-target_link_libraries(gype PUBLIC quickjs)
-target_link_libraries(gype PUBLIC godot-cpp)
-target_link_libraries(gype PUBLIC tree-sitter)
+target_link_libraries(gype PRIVATE quickjs)
+# target_link_libraries(gype PUBLIC tree-sitter)
 
-
-target_include_directories(gype PRIVATE
+target_include_directories(gype PUBLIC
 	${PROJECT_SOURCE_DIR}/include
-	${PROJECT_SOURCE_DIR}/quickjs/include
 	${PROJECT_SOURCE_DIR}/test
+)
+
+target_compile_features(${PROJECT_NAME}
+	PRIVATE
+		cxx_std_17
 )
 
 target_compile_options(gype PUBLIC 

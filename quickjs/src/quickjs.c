@@ -34,7 +34,7 @@
 #include <math.h>
 #if defined(__APPLE__)
 #include <malloc/malloc.h>
-#elif defined(__linux__)
+#elif defined(__linux__) || defined(__GLIBC__)
 #include <malloc.h>
 #elif defined(__FreeBSD__)
 #include <malloc_np.h>
@@ -1681,7 +1681,7 @@ JSRuntime *JS_NewRuntime2(const JSMallocFunctions *mf, void *opaque)
     rt->stack_size = JS_DEFAULT_STACK_SIZE;
     JS_UpdateStackTop(rt);
 
-    rt->current_exception = JS_NULL;
+    rt->current_exception = JS_UNINITIALIZED;
 
     return rt;
  fail:
@@ -1708,7 +1708,7 @@ static size_t js_def_malloc_usable_size(const void *ptr)
     return _msize((void *)ptr);
 #elif defined(EMSCRIPTEN)
     return 0;
-#elif defined(__linux__)
+#elif defined(__linux__) || defined(__GLIBC__)
     return malloc_usable_size((void *)ptr);
 #else
     /* change this to `return 0;` if compilation fails */
@@ -6398,13 +6398,13 @@ JSValue JS_GetException(JSContext *ctx)
     JSValue val;
     JSRuntime *rt = ctx->rt;
     val = rt->current_exception;
-    rt->current_exception = JS_NULL;
+    rt->current_exception = JS_UNINITIALIZED;
     return val;
 }
 
 JS_BOOL JS_HasException(JSContext *ctx)
 {
-    return !JS_IsNull(ctx->rt->current_exception);
+    return !JS_IsUninitialized(ctx->rt->current_exception);
 }
 
 static void dbuf_put_leb128(DynBuf *s, uint32_t v)
@@ -12123,17 +12123,6 @@ int JS_IsArray(JSContext *ctx, JSValueConst val)
     }
 }
 
-
-int JS_IsTypedArray(JSValueConst val) {
-    if (JS_IsObject(val)){
-        JSClassID class_id = JS_GetClassID(val);
-        if (class_id >= JS_CLASS_UINT8_ARRAY && class_id <= JS_CLASS_FLOAT64_ARRAY) {
-            return TRUE;
-        }
-    }
-    return FALSE;
-}
-
 static double js_pow(double a, double b)
 {
     if (unlikely(!isfinite(b)) && fabs(a) == 1) {
@@ -15332,7 +15321,7 @@ static int JS_IteratorClose(JSContext *ctx, JSValueConst enum_obj,
 
     if (is_exception_pending) {
         ex_obj = ctx->rt->current_exception;
-        ctx->rt->current_exception = JS_NULL;
+        ctx->rt->current_exception = JS_UNINITIALIZED;
         res = -1;
     } else {
         ex_obj = JS_UNDEFINED;
@@ -18685,7 +18674,7 @@ static JSValue JS_CallInternal(JSContext *caller_ctx, JSValueConst func_obj,
                     JS_IteratorClose(ctx, sp[-1], TRUE);
                 } else {
                     *sp++ = rt->current_exception;
-                    rt->current_exception = JS_NULL;
+                    rt->current_exception = JS_UNINITIALIZED;
                     pc = b->byte_code_buf + pos;
                     goto restart;
                 }
@@ -46162,8 +46151,10 @@ static JSValue js_proxy_get(JSContext *ctx, JSValueConst obj, JSAtom atom,
     if (JS_IsException(ret))
         return JS_EXCEPTION;
     res = JS_GetOwnPropertyInternal(ctx, &desc, JS_VALUE_GET_OBJ(s->target), atom);
-    if (res < 0)
+    if (res < 0) {
+        JS_FreeValue(ctx, ret);
         return JS_EXCEPTION;
+    }
     if (res) {
         if ((desc.flags & (JS_PROP_GETSET | JS_PROP_CONFIGURABLE | JS_PROP_WRITABLE)) == 0) {
             if (!js_same_value(ctx, desc.value, ret)) {
@@ -48159,8 +48150,15 @@ static JSValue js_promise_resolve_function_call(JSContext *ctx,
         resolution = JS_UNDEFINED;
 #ifdef DUMP_PROMISE
     printf("js_promise_resolving_function_call: is_reject=%d resolution=", is_reject);
-    // JS_DumpValue(ctx, resolution);
-    JS_DumpValue(ctx, JS_GetPropertyStr(ctx, resolution, "message"));
+    if (is_reject) {
+        JSValue message = JS_GetPropertyStr(ctx, resolution, "message");
+        JSValue stack = JS_GetPropertyStr(ctx, resolution, "stack");
+        const char* str1 = JS_ToCString(ctx,message);
+        const char* str2 = JS_ToCString(ctx,stack);
+        printf("%s\n",str1);
+        printf("%s\n",str2);
+    }
+    JS_DumpValue(ctx, resolution);
     printf("\n");
 #endif
     if (is_reject || !JS_IsObject(resolution)) {
@@ -53238,21 +53236,6 @@ uint8_t *JS_GetArrayBuffer(JSContext *ctx, size_t *psize, JSValueConst obj)
     return abuf->data;
  fail:
     *psize = 0;
-    return NULL;
-}
-
-JSValue *JS_GetArrayValues(JSContext *ctx, size_t *psize, JSValueConst v) 
-{
-    JSObject *obj = JS_VALUE_GET_OBJ(v);
-    JSValue *values = obj->u.array.u.values;
-    if (obj->class_id != JS_CLASS_ARRAY)
-    {
-        goto fail;
-    }
-    *psize = obj->u.array.u1.size;
-    return values;
- fail:
-    JS_ThrowTypeErrorInvalidClass(ctx, JS_CLASS_ARRAY_BUFFER);
     return NULL;
 }
 

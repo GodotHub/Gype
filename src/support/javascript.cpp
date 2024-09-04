@@ -2,6 +2,9 @@
 #include "support/instance_info.hpp"
 #include "support/javascript_instance.hpp"
 #include "support/javascript_language.hpp"
+#include <godot_cpp/variant/variant.hpp>
+
+using namespace godot;
 
 bool JavaScript::_editor_can_reload_from_file() {
 	return false;

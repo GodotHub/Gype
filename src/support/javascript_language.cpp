@@ -1,6 +1,8 @@
 #include "support/javascript_language.hpp"
 #include "support/javascript.hpp"
 
+using namespace godot;
+
 JavaScriptLanguage *JavaScriptLanguage::singleton;
 
 JavaScriptLanguage *JavaScriptLanguage::get_singleton() {

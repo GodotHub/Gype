@@ -1,4 +1,4 @@
-import { TypeScriptInstanceInfo } from "src/js_godot/support/typescript";
+import { TypeScriptInstanceInfo } from "support/typescript";
 import { JSPointer } from "__internal__";
 
 export class TypeScriptInstance {
