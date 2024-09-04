@@ -43,6 +43,7 @@
 namespace godot {
 
 class ObjectID;
+class Object;
 
 class Variant {
 	uint8_t opaque[GODOT_CPP_VARIANT_SIZE]{ 0 };

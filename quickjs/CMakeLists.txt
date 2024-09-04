@@ -10,17 +10,22 @@ file(GLOB_RECURSE HEADERS
 add_library(quickjs STATIC ${SOURCE})
 
 target_include_directories(quickjs 
-    PRIVATE 
-        ${PROJECT_SOURCE_DIR}/include
-        ${CMAKE_SOURCE_DIR}/godot-cpp/gdextension)
+    PUBLIC 
+        ${PROJECT_SOURCE_DIR}/include)
+
+target_link_libraries(quickjs PUBLIC godot-cpp)
 
 target_compile_options(quickjs 
     PRIVATE 
         -O0 -g)
 
+target_compile_features(${PROJECT_NAME}
+	PRIVATE
+		cxx_std_17
+)
 # 添加必要的编译选项
 target_compile_definitions(quickjs PRIVATE 
-    -DGNU_SOURCE 
+    # -D_GNU_SOURCE 
     -DCONFIG_BIGNUM 
     -DDUMP_PROMISE
     # -DDUMP_LEAKS

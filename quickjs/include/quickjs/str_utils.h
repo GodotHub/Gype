@@ -3,8 +3,8 @@
 
 #include <string>
 
-std::string underscoreToCamelCase(const std::string &input);
-std::string camelToSnake(const std::string &input);
+std::string underscoreToCamelCase(std::string input);
+std::string camelToSnake(std::string input);
 // void js_print_error(JSValue val);
 
 #endif // !QUICKJS_UTILS

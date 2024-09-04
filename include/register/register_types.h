@@ -6,5 +6,6 @@
 void initialize_tgds_types(godot::ModuleInitializationLevel p_level);
 void uninitialize_tgds_types(godot::ModuleInitializationLevel p_level);
 void init_quickjs();
+void init_language();
 
 #endif // SUMMATOR_REGISTER_TYPES_H

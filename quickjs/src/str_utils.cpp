@@ -4,7 +4,7 @@
 #include <cstring>
 #include <iostream>
 
-std::string underscoreToCamelCase(const std::string &input) {
+std::string underscoreToCamelCase(std::string input) {
 	std::string output;
 	bool capitalizeNext = false;
 
@@ -24,7 +24,7 @@ std::string underscoreToCamelCase(const std::string &input) {
 	return output;
 }
 
-std::string camelToSnake(const std::string &input) {
+std::string camelToSnake(std::string input) {
 	std::string result;
 	for (size_t i = 0; i < input.size(); ++i) {
 		if (std::isupper(input[i])) {

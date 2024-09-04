@@ -1,4 +1,4 @@
-import { GDString } from 'src/js_godot/variant/gdstring.js'
-import { GD } from 'src/js_godot/variant/utility_functions.js'
+import { GDString } from "variant/gdstring.js";
+import { GD } from "variant/utility_functions.js";
 
-GD.print('ABC')
+GD.print("ABC");

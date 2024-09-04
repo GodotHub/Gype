@@ -14,21 +14,34 @@
   {%- if return_value %}
     {%- set type = return_value['type'] -%}
     {%- if type in variant_types() %}
-{{indent}}Variant.Type.{{ to_gd_type(camel_to_snake(type)) | upper }}
+{{indent}}Variant.Type.{{ to_gd_type(camel_to_snake(type)) | upper }},
     {% elif type in pod_types() %}
-{{indent}}Variant.Type.{{ to_gd_type(type) | upper }}
+{{indent}}Variant.Type.{{ to_gd_type(type) | upper }},
     {%- else %}
-{{indent}}Variant.INT
+{{indent}}Variant.INT,
     {%- endif %}
   {%- endif %}
 {%- endmacro %}
 
 {%- macro singleton_class_name(clazz, singletons) -%}
   {%- if clazz['name'] in singletons -%}
-export const {{to_js_type(clazz['name'])}} = new _{{clazz['name']}}();
-
 class _{{to_js_type(clazz['name'])-}}
   {% else %}
 export class {{to_js_type(clazz['name'])-}}
   {%- endif -%}
 {%- endmacro -%}
+
+{% macro set_property(clazz) %}
+  {%- for property in clazz['properties'] %}
+{%- if property['getter'] %}
+get {{property['name']}} () {
+  return this.{{property['getter']}}();
+}
+{%- endif %}
+{%- if property['setter'] %}
+set {{property['name']}} (new_value) {
+  this.{{property['setter']}}(new_value);
+}
+{%- endif %}
+  {%- endfor %}
+{% endmacro %}

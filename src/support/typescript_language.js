@@ -1,6 +1,6 @@
-import { ScriptLanguageExtension } from "src/js_godot/classes/script_language_extension";
-import { PackedStringArray } from "src/js_godot/variant/packed_string_array";
-import { GDString } from "src/js_godot/variant/gd_string";
+import { ScriptLanguageExtension } from "classes/script_language_extension";
+import { PackedStringArray } from "variant/packed_string_array";
+import { GDString } from "variant/gd_string";
 
 export class TypeScriptLanguage extends ScriptLanguageExtension {
   constructor() {

@@ -3,8 +3,8 @@
 
 void test_class_db() {
 	context.eval(R"xxx(
-        import { ClassDB } from 'src/js_godot/core/class_db';
-		import { UtilityFunctions } from "src/js_godot/variant/utility_functions";
+        import { ClassDB } from 'core/class_db';
+		import { UtilityFunctions } from "variant/utility_functions";
         ClassDB._init_bindings();
         // ClassDB.get_class_list();
     )xxx",

@@ -1,1 +1,5 @@
-console.log("hello")
+namespace test{
+    export class Test {
+        
+    }
+}

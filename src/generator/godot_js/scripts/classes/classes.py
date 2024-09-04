@@ -27,6 +27,9 @@ def dependencies_collect(clazz):
                 dependencies.add(to_gd_type(_type))
     dependencies.discard(to_js_type(clazz['name']))
     dependencies.add('StringName')
+    # if clazz['name'] != 'ClassDB':
+    #     dependencies.add('ClassDB')
+    dependencies.add('Variant')
     return dependencies
             
 

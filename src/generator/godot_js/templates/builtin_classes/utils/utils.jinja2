@@ -10,7 +10,7 @@
       {%- endif %}
       {{to_js_type(clazz['name'])}}._bindings.method_{{ method['name'] }},
       this,
-      Variant.Type.{{ camel_to_snake(method['return_type']) | upper }},
+      {{ get_type_index(camel_to_snake(method['return_type']) | upper) }},
       {%- if args %}
       [{{- args | map(attribute='name') | add_prefix_suffix('_', '') | join(', ') }}]
       {%- else %}
@@ -37,13 +37,17 @@
 {%- endmacro %}
 
 {% macro init_binding(methods, type) %}
-  static _init_bindings () {
+  static async _init_bindings () {
+    if (this.#initialized) {
+      return;
+    }
+    this.#initialized = true;
     this.__init_bindings_constructors_destructor()
       {%- for method in methods %}
     {
       let _gde_name = new StringName('{{ method['name'] }}')
       this._bindings.method_{{ method['name'] }} = internal.variant_get_ptr_builtin_method(
-        Variant.Type.{{camel_to_snake(type) | upper}},
+        {{get_type_index(camel_to_snake(type) | upper)}},
         _gde_name.opaque,
         {{method['hash']}}
       )
@@ -74,17 +78,17 @@ class _MethodBindings {
   static __init_bindings_constructors_destructor () {
     {%- set ctors = obj['constructors'] %}
     this._bindings.from_variant_constructor = internal.get_variant_to_type_constructor(
-      Variant.Type.{{camel_to_snake(type) | upper}}
+      {{get_type_index(camel_to_snake(type) | upper)}}
     )
     {%- for ctor in ctors %}
     this._bindings.constructor_{{ctor['index']}} = internal.variant_get_ptr_constructor(
-      Variant.Type.{{camel_to_snake(type) | upper}},
+      {{get_type_index(camel_to_snake(type) | upper)}},
       {{ctor.index}}
     )
     {%- endfor %}
     {%- if obj['has_destructor'] %}
     this._bindings.destructor = internal.variant_get_ptr_destructor(
-      Variant.Type.{{camel_to_snake(type) | upper}}
+      {{get_type_index(camel_to_snake(type) | upper)}}
     )
     {%- endif %}
   }
@@ -124,6 +128,21 @@ class _MethodBindings {
     }
       {%- endif %}
     {%- endif %}
-  {%- endfor %} else if (from instanceof Variant) {
+  {%- endfor %} else if (from.constructor.name === "Variant") {
       {{to_js_type(clazz['name'])}}._bindings.from_variant_constructor(this.opaque, from.opaque)
     } {% endmacro -%}
+
+{% macro set_property(clazz) %}
+  {%- for property in clazz['properties'] %}
+{%- if property['getter'] %}
+get {{property['name']}} () {
+  return this.{{property['getter']}}();
+}
+{%- endif %}
+{%- if property['setter'] %}
+set {{property['name']}} (new_value) {
+  this.{{property['setter']}}(new_value);
+}
+{%- endif %}
+  {%- endfor %}
+{% endmacro %}

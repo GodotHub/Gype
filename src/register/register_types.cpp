@@ -7,6 +7,7 @@
 #include "support/javascript_language.hpp"
 #include "support/javascript_loader.hpp"
 #include "support/javascript_saver.hpp"
+#include "support/module_loader.hpp"
 #include <gdextension_interface.h>
 #include <quickjs/finalizer.h>
 #include <godot_cpp/classes/engine.hpp>
@@ -23,6 +24,8 @@
 
 #endif
 
+using namespace godot;
+
 // #include "support/typescript.h"
 // #include "support/typescript_language.h"
 // #include "support/typescript_loader.h"
@@ -34,25 +37,19 @@ void initialize_tgds_types(godot::ModuleInitializationLevel p_level) {
 	}
 	RedirectIOToConsole();
 	printf("%s", "Quickjs start initialization\n");
+	init_language();
 	init_quickjs();
-	GDREGISTER_CLASS(JavaScriptLoader);
-	GDREGISTER_CLASS(JavaScriptSaver);
-	GDREGISTER_CLASS(JavaScriptLanguage);
-	GDREGISTER_CLASS(JavaScript);
-	ResourceSaver::get_singleton()->add_resource_format_saver(JavaScriptSaver::get_singleton());
-	ResourceLoader::get_singleton()->add_resource_format_loader(JavaScriptLoader::get_singleton());
-	Engine::get_singleton()->register_script_language(JavaScriptLanguage::get_singleton());
 #ifdef DEBUG_ENABLED
 	// test_variant();
 	// test_gdstring();
 	// test_node_path();
 	// test_class_db();
 #endif // DEBUG
-	// JSValue value = context.eval("import { GD } from 'src/js_godot/variant/utility_functions.js';GD.print('123');", "<eval>", JS_EVAL_TYPE_MODULE);
-	// context.eval("import { StringName } from 'src/js_godot/variant/string_name.js';new StringName();", "<eval>", JS_EVAL_TYPE_MODULE);
+	// JSValue value = context.eval("import { GD } from 'variant/utility_functions.js';GD.print('123');", "<eval>", JS_EVAL_TYPE_MODULE);
+	// context.eval("import { StringName } from 'variant/string_name.js';new StringName();", "<eval>", JS_EVAL_TYPE_MODULE);
 	// context.eval(R"xxx(
-	// 	// import { StringName } from 'src/js_godot/variant/string_name';
-	// 	// import { GDString } from 'src/js_godot/variant/gdstring';
+	// 	// import { StringName } from 'variant/string_name';
+	// 	// import { GDString } from 'variant/gdstring';
 	// 	// let str = new StringName('123');
 	// 	// GD.print(str);
 	// 	// GD.print(new GDString('123'));
@@ -87,26 +84,30 @@ void init_quickjs() {
 	register_internal_api();
 	js_init_module(context.ctx);
 	JS_AddIntrinsicOperators(context.ctx);
-	JS_SetModuleLoaderFunc(runtime.rt, NULL, module_loader, (void *)"D:/Godot/Gype");
+	JS_SetModuleLoaderFunc(runtime.rt, NULL, module_loader, NULL);
 	JSValue ret = context.eval(R"xxx(
-		import { Variant } from 'src/js_godot/variant/variant';
-		import { GD, Math, Random } from 'src/js_godot/variant/utility_functions';
-		import { Node } from 'src/js_godot/classes/node';
-		import { ClassDB } from 'src/js_godot/classes/class_db';
-		import { GodotObject } from 'src/js_godot/classes/godot_object';
-		{
-			Variant._init_bindings();
-			globalThis.GD = new GD();
-			globalThis.Math = new Math();
-			globalThis.Random = new Random();
-			// Node._init_bindings();
-			// ClassDB._init_bindings();
-			// globalThis.ClassDB = new ClassDB();
-			// GodotObject._init_bindings();
-		}
+		import { Variant } from "@js_godot/variant/variant";
+		import { ClassDB } from "@js_godot/classes/class_db";
+		Variant._init_bindings();
 	)xxx",
-			"<eval>", JS_EVAL_TYPE_MODULE);
+			"<input>", JS_EVAL_TYPE_MODULE);
+	if (JS_IsException(ret)) {
+		JSValue exp = JS_GetException(context.ctx);
+		JSValue message = JS_GetPropertyStr(context.ctx, exp, "message");
+		const char *message_str = JS_ToCString(context.ctx, message);
+		printf("%s\n", message_str);
+	}
 	JS_FreeValue(context.ctx, ret);
+}
+
+void init_language() {
+	GDREGISTER_CLASS(JavaScriptLoader);
+	GDREGISTER_CLASS(JavaScriptSaver);
+	GDREGISTER_CLASS(JavaScriptLanguage);
+	GDREGISTER_CLASS(JavaScript);
+	ResourceSaver::get_singleton()->add_resource_format_saver(JavaScriptSaver::get_singleton());
+	ResourceLoader::get_singleton()->add_resource_format_loader(JavaScriptLoader::get_singleton());
+	Engine::get_singleton()->register_script_language(JavaScriptLanguage::get_singleton());
 }
 
 extern "C" {

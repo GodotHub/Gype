@@ -1,5 +1,5 @@
-import { ScriptExtension } from "src/js_godot/classes/script_extension";
-import { TypeScriptInstance } from "src/js_godot/classes/typescript_instance";
+import { ScriptExtension } from "@js_godot/classes/script_extension";
+import { TypeScriptInstance } from "@js_godot/classes/typescript_instance";
 
 export class TypeScript extends ScriptExtension {
   constructor() {
