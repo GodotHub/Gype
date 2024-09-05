@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -70,9 +70,10 @@ export class RDPipelineSpecializationConstant extends RefCounted{
       );
     }
   }
+  
   set_value(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_value,
+      RDPipelineSpecializationConstant._bindings.method_set_value,
       this._owner,
       _value
     );
@@ -80,7 +81,7 @@ export class RDPipelineSpecializationConstant extends RefCounted{
   }
   get_value() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_value,
+      RDPipelineSpecializationConstant._bindings.method_get_value,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -90,7 +91,7 @@ export class RDPipelineSpecializationConstant extends RefCounted{
   }
   set_constant_id(_constant_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_constant_id,
+      RDPipelineSpecializationConstant._bindings.method_set_constant_id,
       this._owner,
       _constant_id
     );
@@ -98,7 +99,7 @@ export class RDPipelineSpecializationConstant extends RefCounted{
   }
   get_constant_id() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_constant_id,
+      RDPipelineSpecializationConstant._bindings.method_get_constant_id,
       this._owner,
 			Variant.Type.INT,
       

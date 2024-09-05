@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { Vector3 } from '@js_godot/variant/vector3'
 import { VisualInstance3D } from '@js_godot/classes/visual_instance3d'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -91,9 +91,10 @@ export class FogVolume extends VisualInstance3D{
       );
     }
   }
+  
   set_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_size,
+      FogVolume._bindings.method_set_size,
       this._owner,
       _size
     );
@@ -101,7 +102,7 @@ export class FogVolume extends VisualInstance3D{
   }
   get_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_size,
+      FogVolume._bindings.method_get_size,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -111,7 +112,7 @@ export class FogVolume extends VisualInstance3D{
   }
   set_shape(_shape) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shape,
+      FogVolume._bindings.method_set_shape,
       this._owner,
       _shape
     );
@@ -119,7 +120,7 @@ export class FogVolume extends VisualInstance3D{
   }
   get_shape() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_shape,
+      FogVolume._bindings.method_get_shape,
       this._owner,
 			Variant.INT,
       
@@ -128,7 +129,7 @@ export class FogVolume extends VisualInstance3D{
   }
   set_material(_material) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_material,
+      FogVolume._bindings.method_set_material,
       this._owner,
       _material
     );
@@ -136,7 +137,7 @@ export class FogVolume extends VisualInstance3D{
   }
   get_material() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_material,
+      FogVolume._bindings.method_get_material,
       this._owner,
 			Variant.INT,
       

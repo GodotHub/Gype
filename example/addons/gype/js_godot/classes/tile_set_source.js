@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
+import { StringName } from '@js_godot/variant/string_name'
 import { Vector2i } from '@js_godot/variant/vector2i'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -91,9 +91,10 @@ export class TileSetSource extends Resource{
       );
     }
   }
+  
   get_tiles_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tiles_count,
+      TileSetSource._bindings.method_get_tiles_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -102,7 +103,7 @@ export class TileSetSource extends Resource{
   }
   get_tile_id(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tile_id,
+      TileSetSource._bindings.method_get_tile_id,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -112,7 +113,7 @@ export class TileSetSource extends Resource{
   }
   has_tile(_atlas_coords) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_tile,
+      TileSetSource._bindings.method_has_tile,
       this._owner,
 			Variant.Type.BOOL,
       _atlas_coords
@@ -121,7 +122,7 @@ export class TileSetSource extends Resource{
   }
   get_alternative_tiles_count(_atlas_coords) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_alternative_tiles_count,
+      TileSetSource._bindings.method_get_alternative_tiles_count,
       this._owner,
 			Variant.Type.INT,
       _atlas_coords
@@ -130,7 +131,7 @@ export class TileSetSource extends Resource{
   }
   get_alternative_tile_id(_atlas_coords, _index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_alternative_tile_id,
+      TileSetSource._bindings.method_get_alternative_tile_id,
       this._owner,
 			Variant.Type.INT,
       _atlas_coords, _index
@@ -139,7 +140,7 @@ export class TileSetSource extends Resource{
   }
   has_alternative_tile(_atlas_coords, _alternative_tile) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_alternative_tile,
+      TileSetSource._bindings.method_has_alternative_tile,
       this._owner,
 			Variant.Type.BOOL,
       _atlas_coords, _alternative_tile

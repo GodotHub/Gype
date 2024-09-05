@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
 import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
 import {
   call_utility_ret,
@@ -61,9 +61,10 @@ export class HMACContext extends RefCounted{
       );
     }
   }
+  
   start(_hash_type, _key) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_start,
+      HMACContext._bindings.method_start,
       this._owner,
 			Variant.INT,
       _hash_type, _key
@@ -72,7 +73,7 @@ export class HMACContext extends RefCounted{
   }
   update(_data) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_update,
+      HMACContext._bindings.method_update,
       this._owner,
 			Variant.INT,
       _data
@@ -81,7 +82,7 @@ export class HMACContext extends RefCounted{
   }
   finish() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_finish,
+      HMACContext._bindings.method_finish,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     

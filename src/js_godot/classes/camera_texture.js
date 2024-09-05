@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { Texture2D } from '@js_godot/classes/texture2d'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -90,9 +90,10 @@ export class CameraTexture extends Texture2D{
       );
     }
   }
+  
   set_camera_feed_id(_feed_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_camera_feed_id,
+      CameraTexture._bindings.method_set_camera_feed_id,
       this._owner,
       _feed_id
     );
@@ -100,7 +101,7 @@ export class CameraTexture extends Texture2D{
   }
   get_camera_feed_id() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_camera_feed_id,
+      CameraTexture._bindings.method_get_camera_feed_id,
       this._owner,
 			Variant.Type.INT,
       
@@ -109,7 +110,7 @@ export class CameraTexture extends Texture2D{
   }
   set_which_feed(_which_feed) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_which_feed,
+      CameraTexture._bindings.method_set_which_feed,
       this._owner,
       _which_feed
     );
@@ -117,7 +118,7 @@ export class CameraTexture extends Texture2D{
   }
   get_which_feed() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_which_feed,
+      CameraTexture._bindings.method_get_which_feed,
       this._owner,
 			Variant.INT,
       
@@ -126,7 +127,7 @@ export class CameraTexture extends Texture2D{
   }
   set_camera_active(_active) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_camera_active,
+      CameraTexture._bindings.method_set_camera_active,
       this._owner,
       _active
     );
@@ -134,7 +135,7 @@ export class CameraTexture extends Texture2D{
   }
   get_camera_active() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_camera_active,
+      CameraTexture._bindings.method_get_camera_active,
       this._owner,
 			Variant.Type.BOOL,
       

@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { MultiplayerPeer } from '@js_godot/classes/multiplayer_peer'
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
+import { MultiplayerPeer } from '@js_godot/classes/multiplayer_peer'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -101,9 +101,10 @@ export class ENetMultiplayerPeer extends MultiplayerPeer{
       );
     }
   }
+  
   create_server(_port, _max_clients, _max_channels, _in_bandwidth, _out_bandwidth) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_server,
+      ENetMultiplayerPeer._bindings.method_create_server,
       this._owner,
 			Variant.INT,
       _port, _max_clients, _max_channels, _in_bandwidth, _out_bandwidth
@@ -112,7 +113,7 @@ export class ENetMultiplayerPeer extends MultiplayerPeer{
   }
   create_client(_address, _port, _channel_count, _in_bandwidth, _out_bandwidth, _local_port) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_client,
+      ENetMultiplayerPeer._bindings.method_create_client,
       this._owner,
 			Variant.INT,
       _address, _port, _channel_count, _in_bandwidth, _out_bandwidth, _local_port
@@ -121,7 +122,7 @@ export class ENetMultiplayerPeer extends MultiplayerPeer{
   }
   create_mesh(_unique_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_mesh,
+      ENetMultiplayerPeer._bindings.method_create_mesh,
       this._owner,
 			Variant.INT,
       _unique_id
@@ -130,7 +131,7 @@ export class ENetMultiplayerPeer extends MultiplayerPeer{
   }
   add_mesh_peer(_peer_id, _host) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_add_mesh_peer,
+      ENetMultiplayerPeer._bindings.method_add_mesh_peer,
       this._owner,
 			Variant.INT,
       _peer_id, _host
@@ -139,7 +140,7 @@ export class ENetMultiplayerPeer extends MultiplayerPeer{
   }
   set_bind_ip(_ip) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bind_ip,
+      ENetMultiplayerPeer._bindings.method_set_bind_ip,
       this._owner,
       _ip
     );
@@ -147,7 +148,7 @@ export class ENetMultiplayerPeer extends MultiplayerPeer{
   }
   get_host() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_host,
+      ENetMultiplayerPeer._bindings.method_get_host,
       this._owner,
 			Variant.INT,
       
@@ -156,7 +157,7 @@ export class ENetMultiplayerPeer extends MultiplayerPeer{
   }
   get_peer(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_peer,
+      ENetMultiplayerPeer._bindings.method_get_peer,
       this._owner,
 			Variant.INT,
       _id

@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
+import { Vector2 } from '@js_godot/variant/vector2'
 import { Resource } from '@js_godot/classes/resource'
 import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
-import { Vector2 } from '@js_godot/variant/vector2'
+import { Variant } from '@js_godot/variant/variant'
 import { Transform2D } from '@js_godot/variant/transform2d'
 import {
   call_utility_ret,
@@ -183,9 +183,10 @@ export class InputEvent extends Resource{
       );
     }
   }
+  
   set_device(_device) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_device,
+      InputEvent._bindings.method_set_device,
       this._owner,
       _device
     );
@@ -193,7 +194,7 @@ export class InputEvent extends Resource{
   }
   get_device() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_device,
+      InputEvent._bindings.method_get_device,
       this._owner,
 			Variant.Type.INT,
       
@@ -202,7 +203,7 @@ export class InputEvent extends Resource{
   }
   is_action(_action, _exact_match) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_action,
+      InputEvent._bindings.method_is_action,
       this._owner,
 			Variant.Type.BOOL,
       _action, _exact_match
@@ -211,7 +212,7 @@ export class InputEvent extends Resource{
   }
   is_action_pressed(_action, _allow_echo, _exact_match) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_action_pressed,
+      InputEvent._bindings.method_is_action_pressed,
       this._owner,
 			Variant.Type.BOOL,
       _action, _allow_echo, _exact_match
@@ -220,7 +221,7 @@ export class InputEvent extends Resource{
   }
   is_action_released(_action, _exact_match) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_action_released,
+      InputEvent._bindings.method_is_action_released,
       this._owner,
 			Variant.Type.BOOL,
       _action, _exact_match
@@ -229,7 +230,7 @@ export class InputEvent extends Resource{
   }
   get_action_strength(_action, _exact_match) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_action_strength,
+      InputEvent._bindings.method_get_action_strength,
       this._owner,
 			Variant.Type.FLOAT,
       _action, _exact_match
@@ -238,7 +239,7 @@ export class InputEvent extends Resource{
   }
   is_canceled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_canceled,
+      InputEvent._bindings.method_is_canceled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -247,7 +248,7 @@ export class InputEvent extends Resource{
   }
   is_pressed() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_pressed,
+      InputEvent._bindings.method_is_pressed,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -256,7 +257,7 @@ export class InputEvent extends Resource{
   }
   is_released() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_released,
+      InputEvent._bindings.method_is_released,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -265,7 +266,7 @@ export class InputEvent extends Resource{
   }
   is_echo() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_echo,
+      InputEvent._bindings.method_is_echo,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -274,7 +275,7 @@ export class InputEvent extends Resource{
   }
   as_text() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_as_text,
+      InputEvent._bindings.method_as_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -284,7 +285,7 @@ export class InputEvent extends Resource{
   }
   is_match(_event, _exact_match) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_match,
+      InputEvent._bindings.method_is_match,
       this._owner,
 			Variant.Type.BOOL,
       _event, _exact_match
@@ -293,7 +294,7 @@ export class InputEvent extends Resource{
   }
   is_action_type() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_action_type,
+      InputEvent._bindings.method_is_action_type,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -302,7 +303,7 @@ export class InputEvent extends Resource{
   }
   accumulate(_with_event) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_accumulate,
+      InputEvent._bindings.method_accumulate,
       this._owner,
 			Variant.Type.BOOL,
       _with_event
@@ -311,7 +312,7 @@ export class InputEvent extends Resource{
   }
   xformed_by(_xform, _local_ofs) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_xformed_by,
+      InputEvent._bindings.method_xformed_by,
       this._owner,
 			Variant.INT,
       _xform, _local_ofs

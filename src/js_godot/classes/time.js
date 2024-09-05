@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { Dictionary } from '@js_godot/variant/dictionary'
 import { Variant } from '@js_godot/variant/variant'
-import { GodotObject } from '@js_godot/classes/godot_object'
 import { StringName } from '@js_godot/variant/string_name'
+import { GodotObject } from '@js_godot/classes/godot_object'
+import { Dictionary } from '@js_godot/variant/dictionary'
 import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
@@ -241,9 +241,10 @@ class _MethodBindings {
       );
     }
   }
+  
   get_datetime_dict_from_unix_time(_unix_time_val) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_datetime_dict_from_unix_time,
+      _Time._bindings.method_get_datetime_dict_from_unix_time,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -253,7 +254,7 @@ class _MethodBindings {
   }
   get_date_dict_from_unix_time(_unix_time_val) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_date_dict_from_unix_time,
+      _Time._bindings.method_get_date_dict_from_unix_time,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -263,7 +264,7 @@ class _MethodBindings {
   }
   get_time_dict_from_unix_time(_unix_time_val) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_time_dict_from_unix_time,
+      _Time._bindings.method_get_time_dict_from_unix_time,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -273,7 +274,7 @@ class _MethodBindings {
   }
   get_datetime_string_from_unix_time(_unix_time_val, _use_space) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_datetime_string_from_unix_time,
+      _Time._bindings.method_get_datetime_string_from_unix_time,
       this._owner,
 			Variant.Type.STRING,
     
@@ -283,7 +284,7 @@ class _MethodBindings {
   }
   get_date_string_from_unix_time(_unix_time_val) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_date_string_from_unix_time,
+      _Time._bindings.method_get_date_string_from_unix_time,
       this._owner,
 			Variant.Type.STRING,
     
@@ -293,7 +294,7 @@ class _MethodBindings {
   }
   get_time_string_from_unix_time(_unix_time_val) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_time_string_from_unix_time,
+      _Time._bindings.method_get_time_string_from_unix_time,
       this._owner,
 			Variant.Type.STRING,
     
@@ -303,7 +304,7 @@ class _MethodBindings {
   }
   get_datetime_dict_from_datetime_string(_datetime, _weekday) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_datetime_dict_from_datetime_string,
+      _Time._bindings.method_get_datetime_dict_from_datetime_string,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -313,7 +314,7 @@ class _MethodBindings {
   }
   get_datetime_string_from_datetime_dict(_datetime, _use_space) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_datetime_string_from_datetime_dict,
+      _Time._bindings.method_get_datetime_string_from_datetime_dict,
       this._owner,
 			Variant.Type.STRING,
     
@@ -323,7 +324,7 @@ class _MethodBindings {
   }
   get_unix_time_from_datetime_dict(_datetime) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_unix_time_from_datetime_dict,
+      _Time._bindings.method_get_unix_time_from_datetime_dict,
       this._owner,
 			Variant.Type.INT,
       _datetime
@@ -332,7 +333,7 @@ class _MethodBindings {
   }
   get_unix_time_from_datetime_string(_datetime) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_unix_time_from_datetime_string,
+      _Time._bindings.method_get_unix_time_from_datetime_string,
       this._owner,
 			Variant.Type.INT,
       _datetime
@@ -341,7 +342,7 @@ class _MethodBindings {
   }
   get_offset_string_from_offset_minutes(_offset_minutes) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_offset_string_from_offset_minutes,
+      _Time._bindings.method_get_offset_string_from_offset_minutes,
       this._owner,
 			Variant.Type.STRING,
     
@@ -351,7 +352,7 @@ class _MethodBindings {
   }
   get_datetime_dict_from_system(_utc) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_datetime_dict_from_system,
+      _Time._bindings.method_get_datetime_dict_from_system,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -361,7 +362,7 @@ class _MethodBindings {
   }
   get_date_dict_from_system(_utc) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_date_dict_from_system,
+      _Time._bindings.method_get_date_dict_from_system,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -371,7 +372,7 @@ class _MethodBindings {
   }
   get_time_dict_from_system(_utc) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_time_dict_from_system,
+      _Time._bindings.method_get_time_dict_from_system,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -381,7 +382,7 @@ class _MethodBindings {
   }
   get_datetime_string_from_system(_utc, _use_space) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_datetime_string_from_system,
+      _Time._bindings.method_get_datetime_string_from_system,
       this._owner,
 			Variant.Type.STRING,
     
@@ -391,7 +392,7 @@ class _MethodBindings {
   }
   get_date_string_from_system(_utc) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_date_string_from_system,
+      _Time._bindings.method_get_date_string_from_system,
       this._owner,
 			Variant.Type.STRING,
     
@@ -401,7 +402,7 @@ class _MethodBindings {
   }
   get_time_string_from_system(_utc) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_time_string_from_system,
+      _Time._bindings.method_get_time_string_from_system,
       this._owner,
 			Variant.Type.STRING,
     
@@ -411,7 +412,7 @@ class _MethodBindings {
   }
   get_time_zone_from_system() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_time_zone_from_system,
+      _Time._bindings.method_get_time_zone_from_system,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -421,7 +422,7 @@ class _MethodBindings {
   }
   get_unix_time_from_system() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_unix_time_from_system,
+      _Time._bindings.method_get_unix_time_from_system,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -430,7 +431,7 @@ class _MethodBindings {
   }
   get_ticks_msec() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ticks_msec,
+      _Time._bindings.method_get_ticks_msec,
       this._owner,
 			Variant.Type.INT,
       
@@ -439,7 +440,7 @@ class _MethodBindings {
   }
   get_ticks_usec() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ticks_usec,
+      _Time._bindings.method_get_ticks_usec,
       this._owner,
 			Variant.Type.INT,
       
@@ -476,4 +477,17 @@ class _MethodBindings {
     this._init_bindings();
   }
 }
-export const Time = new _Time();
+export const Time = (function () {
+  let _instance;
+  function create_instance() {
+    return new _Time();
+  }
+  return {
+    instance: function () {
+      if (!_instance) {
+        _instance = create_instance();
+      }
+      return _instance;
+    },
+  };
+})();

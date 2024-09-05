@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { Joint2D } from '@js_godot/classes/joint2d'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -150,9 +150,10 @@ export class PinJoint2D extends Joint2D{
       );
     }
   }
+  
   set_softness(_softness) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_softness,
+      PinJoint2D._bindings.method_set_softness,
       this._owner,
       _softness
     );
@@ -160,7 +161,7 @@ export class PinJoint2D extends Joint2D{
   }
   get_softness() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_softness,
+      PinJoint2D._bindings.method_get_softness,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -169,7 +170,7 @@ export class PinJoint2D extends Joint2D{
   }
   set_angular_limit_lower(_angular_limit_lower) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_angular_limit_lower,
+      PinJoint2D._bindings.method_set_angular_limit_lower,
       this._owner,
       _angular_limit_lower
     );
@@ -177,7 +178,7 @@ export class PinJoint2D extends Joint2D{
   }
   get_angular_limit_lower() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_angular_limit_lower,
+      PinJoint2D._bindings.method_get_angular_limit_lower,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -186,7 +187,7 @@ export class PinJoint2D extends Joint2D{
   }
   set_angular_limit_upper(_angular_limit_upper) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_angular_limit_upper,
+      PinJoint2D._bindings.method_set_angular_limit_upper,
       this._owner,
       _angular_limit_upper
     );
@@ -194,7 +195,7 @@ export class PinJoint2D extends Joint2D{
   }
   get_angular_limit_upper() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_angular_limit_upper,
+      PinJoint2D._bindings.method_get_angular_limit_upper,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -203,7 +204,7 @@ export class PinJoint2D extends Joint2D{
   }
   set_motor_target_velocity(_motor_target_velocity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_motor_target_velocity,
+      PinJoint2D._bindings.method_set_motor_target_velocity,
       this._owner,
       _motor_target_velocity
     );
@@ -211,7 +212,7 @@ export class PinJoint2D extends Joint2D{
   }
   get_motor_target_velocity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_motor_target_velocity,
+      PinJoint2D._bindings.method_get_motor_target_velocity,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -220,7 +221,7 @@ export class PinJoint2D extends Joint2D{
   }
   set_motor_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_motor_enabled,
+      PinJoint2D._bindings.method_set_motor_enabled,
       this._owner,
       _enabled
     );
@@ -228,7 +229,7 @@ export class PinJoint2D extends Joint2D{
   }
   is_motor_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_motor_enabled,
+      PinJoint2D._bindings.method_is_motor_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -237,7 +238,7 @@ export class PinJoint2D extends Joint2D{
   }
   set_angular_limit_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_angular_limit_enabled,
+      PinJoint2D._bindings.method_set_angular_limit_enabled,
       this._owner,
       _enabled
     );
@@ -245,7 +246,7 @@ export class PinJoint2D extends Joint2D{
   }
   is_angular_limit_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_angular_limit_enabled,
+      PinJoint2D._bindings.method_is_angular_limit_enabled,
       this._owner,
 			Variant.Type.BOOL,
       

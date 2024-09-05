@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
-import { Vector2 } from '@js_godot/variant/vector2'
 import { RID } from '@js_godot/variant/rid'
+import { Variant } from '@js_godot/variant/variant'
 import { Node } from '@js_godot/classes/node'
 import { Transform2D } from '@js_godot/variant/transform2d'
+import { StringName } from '@js_godot/variant/string_name'
+import { Vector2 } from '@js_godot/variant/vector2'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -253,9 +253,10 @@ export class CanvasLayer extends Node{
       );
     }
   }
+  
   set_layer(_layer) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_layer,
+      CanvasLayer._bindings.method_set_layer,
       this._owner,
       _layer
     );
@@ -263,7 +264,7 @@ export class CanvasLayer extends Node{
   }
   get_layer() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_layer,
+      CanvasLayer._bindings.method_get_layer,
       this._owner,
 			Variant.Type.INT,
       
@@ -272,7 +273,7 @@ export class CanvasLayer extends Node{
   }
   set_visible(_visible) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_visible,
+      CanvasLayer._bindings.method_set_visible,
       this._owner,
       _visible
     );
@@ -280,7 +281,7 @@ export class CanvasLayer extends Node{
   }
   is_visible() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_visible,
+      CanvasLayer._bindings.method_is_visible,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -289,7 +290,7 @@ export class CanvasLayer extends Node{
   }
   show() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_show,
+      CanvasLayer._bindings.method_show,
       this._owner,
       
     );
@@ -297,7 +298,7 @@ export class CanvasLayer extends Node{
   }
   hide() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_hide,
+      CanvasLayer._bindings.method_hide,
       this._owner,
       
     );
@@ -305,7 +306,7 @@ export class CanvasLayer extends Node{
   }
   set_transform(_transform) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_transform,
+      CanvasLayer._bindings.method_set_transform,
       this._owner,
       _transform
     );
@@ -313,7 +314,7 @@ export class CanvasLayer extends Node{
   }
   get_transform() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_transform,
+      CanvasLayer._bindings.method_get_transform,
       this._owner,
 			Variant.Type.TRANSFORM2D,
     
@@ -323,7 +324,7 @@ export class CanvasLayer extends Node{
   }
   get_final_transform() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_final_transform,
+      CanvasLayer._bindings.method_get_final_transform,
       this._owner,
 			Variant.Type.TRANSFORM2D,
     
@@ -333,7 +334,7 @@ export class CanvasLayer extends Node{
   }
   set_offset(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_offset,
+      CanvasLayer._bindings.method_set_offset,
       this._owner,
       _offset
     );
@@ -341,7 +342,7 @@ export class CanvasLayer extends Node{
   }
   get_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_offset,
+      CanvasLayer._bindings.method_get_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -351,7 +352,7 @@ export class CanvasLayer extends Node{
   }
   set_rotation(_radians) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_rotation,
+      CanvasLayer._bindings.method_set_rotation,
       this._owner,
       _radians
     );
@@ -359,7 +360,7 @@ export class CanvasLayer extends Node{
   }
   get_rotation() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rotation,
+      CanvasLayer._bindings.method_get_rotation,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -368,7 +369,7 @@ export class CanvasLayer extends Node{
   }
   set_scale(_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_scale,
+      CanvasLayer._bindings.method_set_scale,
       this._owner,
       _scale
     );
@@ -376,7 +377,7 @@ export class CanvasLayer extends Node{
   }
   get_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_scale,
+      CanvasLayer._bindings.method_get_scale,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -386,7 +387,7 @@ export class CanvasLayer extends Node{
   }
   set_follow_viewport(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_follow_viewport,
+      CanvasLayer._bindings.method_set_follow_viewport,
       this._owner,
       _enable
     );
@@ -394,7 +395,7 @@ export class CanvasLayer extends Node{
   }
   is_following_viewport() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_following_viewport,
+      CanvasLayer._bindings.method_is_following_viewport,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -403,7 +404,7 @@ export class CanvasLayer extends Node{
   }
   set_follow_viewport_scale(_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_follow_viewport_scale,
+      CanvasLayer._bindings.method_set_follow_viewport_scale,
       this._owner,
       _scale
     );
@@ -411,7 +412,7 @@ export class CanvasLayer extends Node{
   }
   get_follow_viewport_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_follow_viewport_scale,
+      CanvasLayer._bindings.method_get_follow_viewport_scale,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -420,7 +421,7 @@ export class CanvasLayer extends Node{
   }
   set_custom_viewport(_viewport) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_custom_viewport,
+      CanvasLayer._bindings.method_set_custom_viewport,
       this._owner,
       _viewport
     );
@@ -428,7 +429,7 @@ export class CanvasLayer extends Node{
   }
   get_custom_viewport() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_custom_viewport,
+      CanvasLayer._bindings.method_get_custom_viewport,
       this._owner,
 			Variant.INT,
       
@@ -437,7 +438,7 @@ export class CanvasLayer extends Node{
   }
   get_canvas() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_canvas,
+      CanvasLayer._bindings.method_get_canvas,
       this._owner,
 			Variant.Type.RID,
     

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -450,9 +450,10 @@ export class RDPipelineDepthStencilState extends RefCounted{
       );
     }
   }
+  
   set_enable_depth_test(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_enable_depth_test,
+      RDPipelineDepthStencilState._bindings.method_set_enable_depth_test,
       this._owner,
       _p_member
     );
@@ -460,7 +461,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   get_enable_depth_test() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_enable_depth_test,
+      RDPipelineDepthStencilState._bindings.method_get_enable_depth_test,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -469,7 +470,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   set_enable_depth_write(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_enable_depth_write,
+      RDPipelineDepthStencilState._bindings.method_set_enable_depth_write,
       this._owner,
       _p_member
     );
@@ -477,7 +478,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   get_enable_depth_write() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_enable_depth_write,
+      RDPipelineDepthStencilState._bindings.method_get_enable_depth_write,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -486,7 +487,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   set_depth_compare_operator(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_depth_compare_operator,
+      RDPipelineDepthStencilState._bindings.method_set_depth_compare_operator,
       this._owner,
       _p_member
     );
@@ -494,7 +495,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   get_depth_compare_operator() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_depth_compare_operator,
+      RDPipelineDepthStencilState._bindings.method_get_depth_compare_operator,
       this._owner,
 			Variant.INT,
       
@@ -503,7 +504,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   set_enable_depth_range(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_enable_depth_range,
+      RDPipelineDepthStencilState._bindings.method_set_enable_depth_range,
       this._owner,
       _p_member
     );
@@ -511,7 +512,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   get_enable_depth_range() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_enable_depth_range,
+      RDPipelineDepthStencilState._bindings.method_get_enable_depth_range,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -520,7 +521,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   set_depth_range_min(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_depth_range_min,
+      RDPipelineDepthStencilState._bindings.method_set_depth_range_min,
       this._owner,
       _p_member
     );
@@ -528,7 +529,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   get_depth_range_min() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_depth_range_min,
+      RDPipelineDepthStencilState._bindings.method_get_depth_range_min,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -537,7 +538,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   set_depth_range_max(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_depth_range_max,
+      RDPipelineDepthStencilState._bindings.method_set_depth_range_max,
       this._owner,
       _p_member
     );
@@ -545,7 +546,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   get_depth_range_max() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_depth_range_max,
+      RDPipelineDepthStencilState._bindings.method_get_depth_range_max,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -554,7 +555,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   set_enable_stencil(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_enable_stencil,
+      RDPipelineDepthStencilState._bindings.method_set_enable_stencil,
       this._owner,
       _p_member
     );
@@ -562,7 +563,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   get_enable_stencil() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_enable_stencil,
+      RDPipelineDepthStencilState._bindings.method_get_enable_stencil,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -571,7 +572,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   set_front_op_fail(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_front_op_fail,
+      RDPipelineDepthStencilState._bindings.method_set_front_op_fail,
       this._owner,
       _p_member
     );
@@ -579,7 +580,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   get_front_op_fail() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_front_op_fail,
+      RDPipelineDepthStencilState._bindings.method_get_front_op_fail,
       this._owner,
 			Variant.INT,
       
@@ -588,7 +589,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   set_front_op_pass(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_front_op_pass,
+      RDPipelineDepthStencilState._bindings.method_set_front_op_pass,
       this._owner,
       _p_member
     );
@@ -596,7 +597,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   get_front_op_pass() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_front_op_pass,
+      RDPipelineDepthStencilState._bindings.method_get_front_op_pass,
       this._owner,
 			Variant.INT,
       
@@ -605,7 +606,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   set_front_op_depth_fail(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_front_op_depth_fail,
+      RDPipelineDepthStencilState._bindings.method_set_front_op_depth_fail,
       this._owner,
       _p_member
     );
@@ -613,7 +614,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   get_front_op_depth_fail() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_front_op_depth_fail,
+      RDPipelineDepthStencilState._bindings.method_get_front_op_depth_fail,
       this._owner,
 			Variant.INT,
       
@@ -622,7 +623,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   set_front_op_compare(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_front_op_compare,
+      RDPipelineDepthStencilState._bindings.method_set_front_op_compare,
       this._owner,
       _p_member
     );
@@ -630,7 +631,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   get_front_op_compare() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_front_op_compare,
+      RDPipelineDepthStencilState._bindings.method_get_front_op_compare,
       this._owner,
 			Variant.INT,
       
@@ -639,7 +640,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   set_front_op_compare_mask(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_front_op_compare_mask,
+      RDPipelineDepthStencilState._bindings.method_set_front_op_compare_mask,
       this._owner,
       _p_member
     );
@@ -647,7 +648,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   get_front_op_compare_mask() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_front_op_compare_mask,
+      RDPipelineDepthStencilState._bindings.method_get_front_op_compare_mask,
       this._owner,
 			Variant.Type.INT,
       
@@ -656,7 +657,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   set_front_op_write_mask(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_front_op_write_mask,
+      RDPipelineDepthStencilState._bindings.method_set_front_op_write_mask,
       this._owner,
       _p_member
     );
@@ -664,7 +665,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   get_front_op_write_mask() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_front_op_write_mask,
+      RDPipelineDepthStencilState._bindings.method_get_front_op_write_mask,
       this._owner,
 			Variant.Type.INT,
       
@@ -673,7 +674,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   set_front_op_reference(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_front_op_reference,
+      RDPipelineDepthStencilState._bindings.method_set_front_op_reference,
       this._owner,
       _p_member
     );
@@ -681,7 +682,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   get_front_op_reference() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_front_op_reference,
+      RDPipelineDepthStencilState._bindings.method_get_front_op_reference,
       this._owner,
 			Variant.Type.INT,
       
@@ -690,7 +691,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   set_back_op_fail(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_back_op_fail,
+      RDPipelineDepthStencilState._bindings.method_set_back_op_fail,
       this._owner,
       _p_member
     );
@@ -698,7 +699,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   get_back_op_fail() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_back_op_fail,
+      RDPipelineDepthStencilState._bindings.method_get_back_op_fail,
       this._owner,
 			Variant.INT,
       
@@ -707,7 +708,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   set_back_op_pass(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_back_op_pass,
+      RDPipelineDepthStencilState._bindings.method_set_back_op_pass,
       this._owner,
       _p_member
     );
@@ -715,7 +716,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   get_back_op_pass() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_back_op_pass,
+      RDPipelineDepthStencilState._bindings.method_get_back_op_pass,
       this._owner,
 			Variant.INT,
       
@@ -724,7 +725,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   set_back_op_depth_fail(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_back_op_depth_fail,
+      RDPipelineDepthStencilState._bindings.method_set_back_op_depth_fail,
       this._owner,
       _p_member
     );
@@ -732,7 +733,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   get_back_op_depth_fail() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_back_op_depth_fail,
+      RDPipelineDepthStencilState._bindings.method_get_back_op_depth_fail,
       this._owner,
 			Variant.INT,
       
@@ -741,7 +742,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   set_back_op_compare(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_back_op_compare,
+      RDPipelineDepthStencilState._bindings.method_set_back_op_compare,
       this._owner,
       _p_member
     );
@@ -749,7 +750,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   get_back_op_compare() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_back_op_compare,
+      RDPipelineDepthStencilState._bindings.method_get_back_op_compare,
       this._owner,
 			Variant.INT,
       
@@ -758,7 +759,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   set_back_op_compare_mask(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_back_op_compare_mask,
+      RDPipelineDepthStencilState._bindings.method_set_back_op_compare_mask,
       this._owner,
       _p_member
     );
@@ -766,7 +767,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   get_back_op_compare_mask() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_back_op_compare_mask,
+      RDPipelineDepthStencilState._bindings.method_get_back_op_compare_mask,
       this._owner,
 			Variant.Type.INT,
       
@@ -775,7 +776,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   set_back_op_write_mask(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_back_op_write_mask,
+      RDPipelineDepthStencilState._bindings.method_set_back_op_write_mask,
       this._owner,
       _p_member
     );
@@ -783,7 +784,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   get_back_op_write_mask() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_back_op_write_mask,
+      RDPipelineDepthStencilState._bindings.method_get_back_op_write_mask,
       this._owner,
 			Variant.Type.INT,
       
@@ -792,7 +793,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   set_back_op_reference(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_back_op_reference,
+      RDPipelineDepthStencilState._bindings.method_set_back_op_reference,
       this._owner,
       _p_member
     );
@@ -800,7 +801,7 @@ export class RDPipelineDepthStencilState extends RefCounted{
   }
   get_back_op_reference() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_back_op_reference,
+      RDPipelineDepthStencilState._bindings.method_get_back_op_reference,
       this._owner,
 			Variant.Type.INT,
       

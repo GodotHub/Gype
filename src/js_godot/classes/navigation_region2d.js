@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { Node2D } from '@js_godot/classes/node2d'
-import { Variant } from '@js_godot/variant/variant'
 import { RID } from '@js_godot/variant/rid'
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
@@ -231,9 +231,10 @@ export class NavigationRegion2D extends Node2D{
       );
     }
   }
+  
   get_rid() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rid,
+      NavigationRegion2D._bindings.method_get_rid,
       this._owner,
 			Variant.Type.RID,
     
@@ -243,7 +244,7 @@ export class NavigationRegion2D extends Node2D{
   }
   set_navigation_polygon(_navigation_polygon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_navigation_polygon,
+      NavigationRegion2D._bindings.method_set_navigation_polygon,
       this._owner,
       _navigation_polygon
     );
@@ -251,7 +252,7 @@ export class NavigationRegion2D extends Node2D{
   }
   get_navigation_polygon() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_navigation_polygon,
+      NavigationRegion2D._bindings.method_get_navigation_polygon,
       this._owner,
 			Variant.INT,
       
@@ -260,7 +261,7 @@ export class NavigationRegion2D extends Node2D{
   }
   set_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_enabled,
+      NavigationRegion2D._bindings.method_set_enabled,
       this._owner,
       _enabled
     );
@@ -268,7 +269,7 @@ export class NavigationRegion2D extends Node2D{
   }
   is_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_enabled,
+      NavigationRegion2D._bindings.method_is_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -277,7 +278,7 @@ export class NavigationRegion2D extends Node2D{
   }
   set_navigation_map(_navigation_map) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_navigation_map,
+      NavigationRegion2D._bindings.method_set_navigation_map,
       this._owner,
       _navigation_map
     );
@@ -285,7 +286,7 @@ export class NavigationRegion2D extends Node2D{
   }
   get_navigation_map() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_navigation_map,
+      NavigationRegion2D._bindings.method_get_navigation_map,
       this._owner,
 			Variant.Type.RID,
     
@@ -295,7 +296,7 @@ export class NavigationRegion2D extends Node2D{
   }
   set_use_edge_connections(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_edge_connections,
+      NavigationRegion2D._bindings.method_set_use_edge_connections,
       this._owner,
       _enabled
     );
@@ -303,7 +304,7 @@ export class NavigationRegion2D extends Node2D{
   }
   get_use_edge_connections() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_use_edge_connections,
+      NavigationRegion2D._bindings.method_get_use_edge_connections,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -312,7 +313,7 @@ export class NavigationRegion2D extends Node2D{
   }
   set_navigation_layers(_navigation_layers) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_navigation_layers,
+      NavigationRegion2D._bindings.method_set_navigation_layers,
       this._owner,
       _navigation_layers
     );
@@ -320,7 +321,7 @@ export class NavigationRegion2D extends Node2D{
   }
   get_navigation_layers() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_navigation_layers,
+      NavigationRegion2D._bindings.method_get_navigation_layers,
       this._owner,
 			Variant.Type.INT,
       
@@ -329,7 +330,7 @@ export class NavigationRegion2D extends Node2D{
   }
   set_navigation_layer_value(_layer_number, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_navigation_layer_value,
+      NavigationRegion2D._bindings.method_set_navigation_layer_value,
       this._owner,
       _layer_number, _value
     );
@@ -337,7 +338,7 @@ export class NavigationRegion2D extends Node2D{
   }
   get_navigation_layer_value(_layer_number) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_navigation_layer_value,
+      NavigationRegion2D._bindings.method_get_navigation_layer_value,
       this._owner,
 			Variant.Type.BOOL,
       _layer_number
@@ -346,7 +347,7 @@ export class NavigationRegion2D extends Node2D{
   }
   get_region_rid() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_region_rid,
+      NavigationRegion2D._bindings.method_get_region_rid,
       this._owner,
 			Variant.Type.RID,
     
@@ -356,7 +357,7 @@ export class NavigationRegion2D extends Node2D{
   }
   set_enter_cost(_enter_cost) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_enter_cost,
+      NavigationRegion2D._bindings.method_set_enter_cost,
       this._owner,
       _enter_cost
     );
@@ -364,7 +365,7 @@ export class NavigationRegion2D extends Node2D{
   }
   get_enter_cost() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_enter_cost,
+      NavigationRegion2D._bindings.method_get_enter_cost,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -373,7 +374,7 @@ export class NavigationRegion2D extends Node2D{
   }
   set_travel_cost(_travel_cost) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_travel_cost,
+      NavigationRegion2D._bindings.method_set_travel_cost,
       this._owner,
       _travel_cost
     );
@@ -381,7 +382,7 @@ export class NavigationRegion2D extends Node2D{
   }
   get_travel_cost() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_travel_cost,
+      NavigationRegion2D._bindings.method_get_travel_cost,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -390,7 +391,7 @@ export class NavigationRegion2D extends Node2D{
   }
   bake_navigation_polygon(_on_thread) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_bake_navigation_polygon,
+      NavigationRegion2D._bindings.method_bake_navigation_polygon,
       this._owner,
       _on_thread
     );
@@ -398,7 +399,7 @@ export class NavigationRegion2D extends Node2D{
   }
   is_baking() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_baking,
+      NavigationRegion2D._bindings.method_is_baking,
       this._owner,
 			Variant.Type.BOOL,
       

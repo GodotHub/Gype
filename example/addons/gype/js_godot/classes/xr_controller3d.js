@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { XRNode3D } from '@js_godot/classes/xr_node3d'
+import { StringName } from '@js_godot/variant/string_name'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { XRNode3D } from '@js_godot/classes/xr_node3d'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -81,9 +81,10 @@ export class XRController3D extends XRNode3D{
       );
     }
   }
+  
   is_button_pressed(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_button_pressed,
+      XRController3D._bindings.method_is_button_pressed,
       this._owner,
 			Variant.Type.BOOL,
       _name
@@ -92,7 +93,7 @@ export class XRController3D extends XRNode3D{
   }
   get_input(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_input,
+      XRController3D._bindings.method_get_input,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -102,7 +103,7 @@ export class XRController3D extends XRNode3D{
   }
   get_float(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_float,
+      XRController3D._bindings.method_get_float,
       this._owner,
 			Variant.Type.FLOAT,
       _name
@@ -111,7 +112,7 @@ export class XRController3D extends XRNode3D{
   }
   get_vector2(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vector2,
+      XRController3D._bindings.method_get_vector2,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -121,7 +122,7 @@ export class XRController3D extends XRNode3D{
   }
   get_tracker_hand() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tracker_hand,
+      XRController3D._bindings.method_get_tracker_hand,
       this._owner,
 			Variant.INT,
       

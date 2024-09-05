@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { TextureLayeredRD } from '@js_godot/classes/texture_layered_rd'
 import {
   call_utility_ret,
@@ -30,6 +30,7 @@ export class Texture2DArrayRD extends TextureLayeredRD{
     }
     this.#initialized = true;
   }
+  
   
 
 

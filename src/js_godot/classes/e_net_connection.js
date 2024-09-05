@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
+import { GDArray } from '@js_godot/variant/gd_array'
+import { RefCounted } from '@js_godot/classes/ref_counted'
 import { Variant } from '@js_godot/variant/variant'
 import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
 import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
-import { RefCounted } from '@js_godot/classes/ref_counted'
-import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -213,9 +213,10 @@ export class ENetConnection extends RefCounted{
       );
     }
   }
+  
   create_host_bound(_bind_address, _bind_port, _max_peers, _max_channels, _in_bandwidth, _out_bandwidth) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_host_bound,
+      ENetConnection._bindings.method_create_host_bound,
       this._owner,
 			Variant.INT,
       _bind_address, _bind_port, _max_peers, _max_channels, _in_bandwidth, _out_bandwidth
@@ -224,7 +225,7 @@ export class ENetConnection extends RefCounted{
   }
   create_host(_max_peers, _max_channels, _in_bandwidth, _out_bandwidth) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_host,
+      ENetConnection._bindings.method_create_host,
       this._owner,
 			Variant.INT,
       _max_peers, _max_channels, _in_bandwidth, _out_bandwidth
@@ -233,7 +234,7 @@ export class ENetConnection extends RefCounted{
   }
   destroy() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_destroy,
+      ENetConnection._bindings.method_destroy,
       this._owner,
       
     );
@@ -241,7 +242,7 @@ export class ENetConnection extends RefCounted{
   }
   connect_to_host(_address, _port, _channels, _data) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_connect_to_host,
+      ENetConnection._bindings.method_connect_to_host,
       this._owner,
 			Variant.INT,
       _address, _port, _channels, _data
@@ -250,7 +251,7 @@ export class ENetConnection extends RefCounted{
   }
   service(_timeout) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_service,
+      ENetConnection._bindings.method_service,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -260,7 +261,7 @@ export class ENetConnection extends RefCounted{
   }
   flush() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_flush,
+      ENetConnection._bindings.method_flush,
       this._owner,
       
     );
@@ -268,7 +269,7 @@ export class ENetConnection extends RefCounted{
   }
   bandwidth_limit(_in_bandwidth, _out_bandwidth) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_bandwidth_limit,
+      ENetConnection._bindings.method_bandwidth_limit,
       this._owner,
       _in_bandwidth, _out_bandwidth
     );
@@ -276,7 +277,7 @@ export class ENetConnection extends RefCounted{
   }
   channel_limit(_limit) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_channel_limit,
+      ENetConnection._bindings.method_channel_limit,
       this._owner,
       _limit
     );
@@ -284,7 +285,7 @@ export class ENetConnection extends RefCounted{
   }
   broadcast(_channel, _packet, _flags) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_broadcast,
+      ENetConnection._bindings.method_broadcast,
       this._owner,
       _channel, _packet, _flags
     );
@@ -292,7 +293,7 @@ export class ENetConnection extends RefCounted{
   }
   compress(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_compress,
+      ENetConnection._bindings.method_compress,
       this._owner,
       _mode
     );
@@ -300,7 +301,7 @@ export class ENetConnection extends RefCounted{
   }
   dtls_server_setup(_server_options) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_dtls_server_setup,
+      ENetConnection._bindings.method_dtls_server_setup,
       this._owner,
 			Variant.INT,
       _server_options
@@ -309,7 +310,7 @@ export class ENetConnection extends RefCounted{
   }
   dtls_client_setup(_hostname, _client_options) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_dtls_client_setup,
+      ENetConnection._bindings.method_dtls_client_setup,
       this._owner,
 			Variant.INT,
       _hostname, _client_options
@@ -318,7 +319,7 @@ export class ENetConnection extends RefCounted{
   }
   refuse_new_connections(_refuse) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_refuse_new_connections,
+      ENetConnection._bindings.method_refuse_new_connections,
       this._owner,
       _refuse
     );
@@ -326,7 +327,7 @@ export class ENetConnection extends RefCounted{
   }
   pop_statistic(_statistic) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_pop_statistic,
+      ENetConnection._bindings.method_pop_statistic,
       this._owner,
 			Variant.Type.FLOAT,
       _statistic
@@ -335,7 +336,7 @@ export class ENetConnection extends RefCounted{
   }
   get_max_channels() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_max_channels,
+      ENetConnection._bindings.method_get_max_channels,
       this._owner,
 			Variant.Type.INT,
       
@@ -344,7 +345,7 @@ export class ENetConnection extends RefCounted{
   }
   get_local_port() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_local_port,
+      ENetConnection._bindings.method_get_local_port,
       this._owner,
 			Variant.Type.INT,
       
@@ -353,7 +354,7 @@ export class ENetConnection extends RefCounted{
   }
   get_peers() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_peers,
+      ENetConnection._bindings.method_get_peers,
       this._owner,
 			Variant.INT,
       
@@ -362,7 +363,7 @@ export class ENetConnection extends RefCounted{
   }
   socket_send(_destination_address, _destination_port, _packet) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_socket_send,
+      ENetConnection._bindings.method_socket_send,
       this._owner,
       _destination_address, _destination_port, _packet
     );

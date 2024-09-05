@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { Node2D } from '@js_godot/classes/node2d'
+import { StringName } from '@js_godot/variant/string_name'
 import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
 import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -131,9 +131,10 @@ export class CollisionPolygon2D extends Node2D{
       );
     }
   }
+  
   set_polygon(_polygon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_polygon,
+      CollisionPolygon2D._bindings.method_set_polygon,
       this._owner,
       _polygon
     );
@@ -141,7 +142,7 @@ export class CollisionPolygon2D extends Node2D{
   }
   get_polygon() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_polygon,
+      CollisionPolygon2D._bindings.method_get_polygon,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -151,7 +152,7 @@ export class CollisionPolygon2D extends Node2D{
   }
   set_build_mode(_build_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_build_mode,
+      CollisionPolygon2D._bindings.method_set_build_mode,
       this._owner,
       _build_mode
     );
@@ -159,7 +160,7 @@ export class CollisionPolygon2D extends Node2D{
   }
   get_build_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_build_mode,
+      CollisionPolygon2D._bindings.method_get_build_mode,
       this._owner,
 			Variant.INT,
       
@@ -168,7 +169,7 @@ export class CollisionPolygon2D extends Node2D{
   }
   set_disabled(_disabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_disabled,
+      CollisionPolygon2D._bindings.method_set_disabled,
       this._owner,
       _disabled
     );
@@ -176,7 +177,7 @@ export class CollisionPolygon2D extends Node2D{
   }
   is_disabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_disabled,
+      CollisionPolygon2D._bindings.method_is_disabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -185,7 +186,7 @@ export class CollisionPolygon2D extends Node2D{
   }
   set_one_way_collision(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_one_way_collision,
+      CollisionPolygon2D._bindings.method_set_one_way_collision,
       this._owner,
       _enabled
     );
@@ -193,7 +194,7 @@ export class CollisionPolygon2D extends Node2D{
   }
   is_one_way_collision_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_one_way_collision_enabled,
+      CollisionPolygon2D._bindings.method_is_one_way_collision_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -202,7 +203,7 @@ export class CollisionPolygon2D extends Node2D{
   }
   set_one_way_collision_margin(_margin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_one_way_collision_margin,
+      CollisionPolygon2D._bindings.method_set_one_way_collision_margin,
       this._owner,
       _margin
     );
@@ -210,7 +211,7 @@ export class CollisionPolygon2D extends Node2D{
   }
   get_one_way_collision_margin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_one_way_collision_margin,
+      CollisionPolygon2D._bindings.method_get_one_way_collision_margin,
       this._owner,
 			Variant.Type.FLOAT,
       

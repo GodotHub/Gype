@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Dictionary } from '@js_godot/variant/dictionary'
 import { Resource } from '@js_godot/classes/resource'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
+import { Variant } from '@js_godot/variant/variant'
 import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { StringName } from '@js_godot/variant/string_name'
+import { Dictionary } from '@js_godot/variant/dictionary'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -193,9 +193,10 @@ export class EditorSettings extends Resource{
       );
     }
   }
+  
   has_setting(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_setting,
+      EditorSettings._bindings.method_has_setting,
       this._owner,
 			Variant.Type.BOOL,
       _name
@@ -204,7 +205,7 @@ export class EditorSettings extends Resource{
   }
   set_setting(_name, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_setting,
+      EditorSettings._bindings.method_set_setting,
       this._owner,
       _name, _value
     );
@@ -212,7 +213,7 @@ export class EditorSettings extends Resource{
   }
   get_setting(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_setting,
+      EditorSettings._bindings.method_get_setting,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -222,7 +223,7 @@ export class EditorSettings extends Resource{
   }
   erase(_property) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_erase,
+      EditorSettings._bindings.method_erase,
       this._owner,
       _property
     );
@@ -230,7 +231,7 @@ export class EditorSettings extends Resource{
   }
   set_initial_value(_name, _value, _update_current) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_initial_value,
+      EditorSettings._bindings.method_set_initial_value,
       this._owner,
       _name, _value, _update_current
     );
@@ -238,7 +239,7 @@ export class EditorSettings extends Resource{
   }
   add_property_info(_info) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_property_info,
+      EditorSettings._bindings.method_add_property_info,
       this._owner,
       _info
     );
@@ -246,7 +247,7 @@ export class EditorSettings extends Resource{
   }
   set_project_metadata(_section, _key, _data) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_project_metadata,
+      EditorSettings._bindings.method_set_project_metadata,
       this._owner,
       _section, _key, _data
     );
@@ -254,7 +255,7 @@ export class EditorSettings extends Resource{
   }
   get_project_metadata(_section, _key, _default) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_project_metadata,
+      EditorSettings._bindings.method_get_project_metadata,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -264,7 +265,7 @@ export class EditorSettings extends Resource{
   }
   set_favorites(_dirs) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_favorites,
+      EditorSettings._bindings.method_set_favorites,
       this._owner,
       _dirs
     );
@@ -272,7 +273,7 @@ export class EditorSettings extends Resource{
   }
   get_favorites() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_favorites,
+      EditorSettings._bindings.method_get_favorites,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -282,7 +283,7 @@ export class EditorSettings extends Resource{
   }
   set_recent_dirs(_dirs) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_recent_dirs,
+      EditorSettings._bindings.method_set_recent_dirs,
       this._owner,
       _dirs
     );
@@ -290,7 +291,7 @@ export class EditorSettings extends Resource{
   }
   get_recent_dirs() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_recent_dirs,
+      EditorSettings._bindings.method_get_recent_dirs,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -300,7 +301,7 @@ export class EditorSettings extends Resource{
   }
   set_builtin_action_override(_name, _actions_list) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_builtin_action_override,
+      EditorSettings._bindings.method_set_builtin_action_override,
       this._owner,
       _name, _actions_list
     );
@@ -308,7 +309,7 @@ export class EditorSettings extends Resource{
   }
   check_changed_settings_in_group(_setting_prefix) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_check_changed_settings_in_group,
+      EditorSettings._bindings.method_check_changed_settings_in_group,
       this._owner,
 			Variant.Type.BOOL,
       _setting_prefix
@@ -317,7 +318,7 @@ export class EditorSettings extends Resource{
   }
   get_changed_settings() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_changed_settings,
+      EditorSettings._bindings.method_get_changed_settings,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -327,7 +328,7 @@ export class EditorSettings extends Resource{
   }
   mark_setting_changed(_setting) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_mark_setting_changed,
+      EditorSettings._bindings.method_mark_setting_changed,
       this._owner,
       _setting
     );

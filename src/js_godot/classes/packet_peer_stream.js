@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { PacketPeer } from '@js_godot/classes/packet_peer'
 import {
   call_utility_ret,
@@ -90,9 +90,10 @@ export class PacketPeerStream extends PacketPeer{
       );
     }
   }
+  
   set_stream_peer(_peer) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_stream_peer,
+      PacketPeerStream._bindings.method_set_stream_peer,
       this._owner,
       _peer
     );
@@ -100,7 +101,7 @@ export class PacketPeerStream extends PacketPeer{
   }
   get_stream_peer() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_stream_peer,
+      PacketPeerStream._bindings.method_get_stream_peer,
       this._owner,
 			Variant.INT,
       
@@ -109,7 +110,7 @@ export class PacketPeerStream extends PacketPeer{
   }
   set_input_buffer_max_size(_max_size_bytes) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_input_buffer_max_size,
+      PacketPeerStream._bindings.method_set_input_buffer_max_size,
       this._owner,
       _max_size_bytes
     );
@@ -117,7 +118,7 @@ export class PacketPeerStream extends PacketPeer{
   }
   set_output_buffer_max_size(_max_size_bytes) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_output_buffer_max_size,
+      PacketPeerStream._bindings.method_set_output_buffer_max_size,
       this._owner,
       _max_size_bytes
     );
@@ -125,7 +126,7 @@ export class PacketPeerStream extends PacketPeer{
   }
   get_input_buffer_max_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_input_buffer_max_size,
+      PacketPeerStream._bindings.method_get_input_buffer_max_size,
       this._owner,
 			Variant.Type.INT,
       
@@ -134,7 +135,7 @@ export class PacketPeerStream extends PacketPeer{
   }
   get_output_buffer_max_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_output_buffer_max_size,
+      PacketPeerStream._bindings.method_get_output_buffer_max_size,
       this._owner,
 			Variant.Type.INT,
       

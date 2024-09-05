@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { Node2D } from '@js_godot/classes/node2d'
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -50,9 +50,10 @@ export class Marker2D extends Node2D{
       );
     }
   }
+  
   set_gizmo_extents(_extents) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_gizmo_extents,
+      Marker2D._bindings.method_set_gizmo_extents,
       this._owner,
       _extents
     );
@@ -60,7 +61,7 @@ export class Marker2D extends Node2D{
   }
   get_gizmo_extents() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_gizmo_extents,
+      Marker2D._bindings.method_get_gizmo_extents,
       this._owner,
 			Variant.Type.FLOAT,
       

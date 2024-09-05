@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { CameraAttributes } from '@js_godot/classes/camera_attributes'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -200,9 +200,10 @@ export class CameraAttributesPhysical extends CameraAttributes{
       );
     }
   }
+  
   set_aperture(_aperture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_aperture,
+      CameraAttributesPhysical._bindings.method_set_aperture,
       this._owner,
       _aperture
     );
@@ -210,7 +211,7 @@ export class CameraAttributesPhysical extends CameraAttributes{
   }
   get_aperture() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_aperture,
+      CameraAttributesPhysical._bindings.method_get_aperture,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -219,7 +220,7 @@ export class CameraAttributesPhysical extends CameraAttributes{
   }
   set_shutter_speed(_shutter_speed) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shutter_speed,
+      CameraAttributesPhysical._bindings.method_set_shutter_speed,
       this._owner,
       _shutter_speed
     );
@@ -227,7 +228,7 @@ export class CameraAttributesPhysical extends CameraAttributes{
   }
   get_shutter_speed() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_shutter_speed,
+      CameraAttributesPhysical._bindings.method_get_shutter_speed,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -236,7 +237,7 @@ export class CameraAttributesPhysical extends CameraAttributes{
   }
   set_focal_length(_focal_length) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_focal_length,
+      CameraAttributesPhysical._bindings.method_set_focal_length,
       this._owner,
       _focal_length
     );
@@ -244,7 +245,7 @@ export class CameraAttributesPhysical extends CameraAttributes{
   }
   get_focal_length() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_focal_length,
+      CameraAttributesPhysical._bindings.method_get_focal_length,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -253,7 +254,7 @@ export class CameraAttributesPhysical extends CameraAttributes{
   }
   set_focus_distance(_focus_distance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_focus_distance,
+      CameraAttributesPhysical._bindings.method_set_focus_distance,
       this._owner,
       _focus_distance
     );
@@ -261,7 +262,7 @@ export class CameraAttributesPhysical extends CameraAttributes{
   }
   get_focus_distance() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_focus_distance,
+      CameraAttributesPhysical._bindings.method_get_focus_distance,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -270,7 +271,7 @@ export class CameraAttributesPhysical extends CameraAttributes{
   }
   set_near(_near) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_near,
+      CameraAttributesPhysical._bindings.method_set_near,
       this._owner,
       _near
     );
@@ -278,7 +279,7 @@ export class CameraAttributesPhysical extends CameraAttributes{
   }
   get_near() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_near,
+      CameraAttributesPhysical._bindings.method_get_near,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -287,7 +288,7 @@ export class CameraAttributesPhysical extends CameraAttributes{
   }
   set_far(_far) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_far,
+      CameraAttributesPhysical._bindings.method_set_far,
       this._owner,
       _far
     );
@@ -295,7 +296,7 @@ export class CameraAttributesPhysical extends CameraAttributes{
   }
   get_far() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_far,
+      CameraAttributesPhysical._bindings.method_get_far,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -304,7 +305,7 @@ export class CameraAttributesPhysical extends CameraAttributes{
   }
   get_fov() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fov,
+      CameraAttributesPhysical._bindings.method_get_fov,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -313,7 +314,7 @@ export class CameraAttributesPhysical extends CameraAttributes{
   }
   set_auto_exposure_max_exposure_value(_exposure_value_max) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_auto_exposure_max_exposure_value,
+      CameraAttributesPhysical._bindings.method_set_auto_exposure_max_exposure_value,
       this._owner,
       _exposure_value_max
     );
@@ -321,7 +322,7 @@ export class CameraAttributesPhysical extends CameraAttributes{
   }
   get_auto_exposure_max_exposure_value() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_auto_exposure_max_exposure_value,
+      CameraAttributesPhysical._bindings.method_get_auto_exposure_max_exposure_value,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -330,7 +331,7 @@ export class CameraAttributesPhysical extends CameraAttributes{
   }
   set_auto_exposure_min_exposure_value(_exposure_value_min) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_auto_exposure_min_exposure_value,
+      CameraAttributesPhysical._bindings.method_set_auto_exposure_min_exposure_value,
       this._owner,
       _exposure_value_min
     );
@@ -338,7 +339,7 @@ export class CameraAttributesPhysical extends CameraAttributes{
   }
   get_auto_exposure_min_exposure_value() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_auto_exposure_min_exposure_value,
+      CameraAttributesPhysical._bindings.method_get_auto_exposure_min_exposure_value,
       this._owner,
 			Variant.Type.FLOAT,
       

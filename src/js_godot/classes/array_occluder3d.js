@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { PackedVector3Array } from '@js_godot/variant/packed_vector3_array'
-import { StringName } from '@js_godot/variant/string_name'
 import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
+import { PackedVector3Array } from '@js_godot/variant/packed_vector3_array'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { Occluder3D } from '@js_godot/classes/occluder3d'
 import {
   call_utility_ret,
@@ -62,9 +62,10 @@ export class ArrayOccluder3D extends Occluder3D{
       );
     }
   }
+  
   set_arrays(_vertices, _indices) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_arrays,
+      ArrayOccluder3D._bindings.method_set_arrays,
       this._owner,
       _vertices, _indices
     );
@@ -72,7 +73,7 @@ export class ArrayOccluder3D extends Occluder3D{
   }
   set_vertices(_vertices) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vertices,
+      ArrayOccluder3D._bindings.method_set_vertices,
       this._owner,
       _vertices
     );
@@ -80,7 +81,7 @@ export class ArrayOccluder3D extends Occluder3D{
   }
   set_indices(_indices) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_indices,
+      ArrayOccluder3D._bindings.method_set_indices,
       this._owner,
       _indices
     );

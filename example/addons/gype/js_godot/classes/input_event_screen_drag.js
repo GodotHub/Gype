@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { InputEventFromWindow } from '@js_godot/classes/input_event_from_window'
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { Variant } from '@js_godot/variant/variant'
+import { InputEventFromWindow } from '@js_godot/classes/input_event_from_window'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -211,9 +211,10 @@ export class InputEventScreenDrag extends InputEventFromWindow{
       );
     }
   }
+  
   set_index(_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_index,
+      InputEventScreenDrag._bindings.method_set_index,
       this._owner,
       _index
     );
@@ -221,7 +222,7 @@ export class InputEventScreenDrag extends InputEventFromWindow{
   }
   get_index() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_index,
+      InputEventScreenDrag._bindings.method_get_index,
       this._owner,
 			Variant.Type.INT,
       
@@ -230,7 +231,7 @@ export class InputEventScreenDrag extends InputEventFromWindow{
   }
   set_tilt(_tilt) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tilt,
+      InputEventScreenDrag._bindings.method_set_tilt,
       this._owner,
       _tilt
     );
@@ -238,7 +239,7 @@ export class InputEventScreenDrag extends InputEventFromWindow{
   }
   get_tilt() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tilt,
+      InputEventScreenDrag._bindings.method_get_tilt,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -248,7 +249,7 @@ export class InputEventScreenDrag extends InputEventFromWindow{
   }
   set_pressure(_pressure) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_pressure,
+      InputEventScreenDrag._bindings.method_set_pressure,
       this._owner,
       _pressure
     );
@@ -256,7 +257,7 @@ export class InputEventScreenDrag extends InputEventFromWindow{
   }
   get_pressure() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_pressure,
+      InputEventScreenDrag._bindings.method_get_pressure,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -265,7 +266,7 @@ export class InputEventScreenDrag extends InputEventFromWindow{
   }
   set_pen_inverted(_pen_inverted) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_pen_inverted,
+      InputEventScreenDrag._bindings.method_set_pen_inverted,
       this._owner,
       _pen_inverted
     );
@@ -273,7 +274,7 @@ export class InputEventScreenDrag extends InputEventFromWindow{
   }
   get_pen_inverted() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_pen_inverted,
+      InputEventScreenDrag._bindings.method_get_pen_inverted,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -282,7 +283,7 @@ export class InputEventScreenDrag extends InputEventFromWindow{
   }
   set_position(_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_position,
+      InputEventScreenDrag._bindings.method_set_position,
       this._owner,
       _position
     );
@@ -290,7 +291,7 @@ export class InputEventScreenDrag extends InputEventFromWindow{
   }
   get_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_position,
+      InputEventScreenDrag._bindings.method_get_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -300,7 +301,7 @@ export class InputEventScreenDrag extends InputEventFromWindow{
   }
   set_relative(_relative) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_relative,
+      InputEventScreenDrag._bindings.method_set_relative,
       this._owner,
       _relative
     );
@@ -308,7 +309,7 @@ export class InputEventScreenDrag extends InputEventFromWindow{
   }
   get_relative() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_relative,
+      InputEventScreenDrag._bindings.method_get_relative,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -318,7 +319,7 @@ export class InputEventScreenDrag extends InputEventFromWindow{
   }
   set_screen_relative(_relative) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_screen_relative,
+      InputEventScreenDrag._bindings.method_set_screen_relative,
       this._owner,
       _relative
     );
@@ -326,7 +327,7 @@ export class InputEventScreenDrag extends InputEventFromWindow{
   }
   get_screen_relative() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_screen_relative,
+      InputEventScreenDrag._bindings.method_get_screen_relative,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -336,7 +337,7 @@ export class InputEventScreenDrag extends InputEventFromWindow{
   }
   set_velocity(_velocity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_velocity,
+      InputEventScreenDrag._bindings.method_set_velocity,
       this._owner,
       _velocity
     );
@@ -344,7 +345,7 @@ export class InputEventScreenDrag extends InputEventFromWindow{
   }
   get_velocity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_velocity,
+      InputEventScreenDrag._bindings.method_get_velocity,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -354,7 +355,7 @@ export class InputEventScreenDrag extends InputEventFromWindow{
   }
   set_screen_velocity(_velocity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_screen_velocity,
+      InputEventScreenDrag._bindings.method_set_screen_velocity,
       this._owner,
       _velocity
     );
@@ -362,7 +363,7 @@ export class InputEventScreenDrag extends InputEventFromWindow{
   }
   get_screen_velocity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_screen_velocity,
+      InputEventScreenDrag._bindings.method_get_screen_velocity,
       this._owner,
 			Variant.Type.VECTOR2,
     

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { VisualShaderNode } from '@js_godot/classes/visual_shader_node'
 import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { VisualShaderNode } from '@js_godot/classes/visual_shader_node'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -50,9 +50,10 @@ export class VisualShaderNodeParticleEmit extends VisualShaderNode{
       );
     }
   }
+  
   set_flags(_flags) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_flags,
+      VisualShaderNodeParticleEmit._bindings.method_set_flags,
       this._owner,
       _flags
     );
@@ -60,7 +61,7 @@ export class VisualShaderNodeParticleEmit extends VisualShaderNode{
   }
   get_flags() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_flags,
+      VisualShaderNodeParticleEmit._bindings.method_get_flags,
       this._owner,
 			Variant.INT,
       

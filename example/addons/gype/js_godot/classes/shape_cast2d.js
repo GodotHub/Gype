@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Node2D } from '@js_godot/classes/node2d'
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { StringName } from '@js_godot/variant/string_name'
 import { RID } from '@js_godot/variant/rid'
+import { Variant } from '@js_godot/variant/variant'
+import { Node2D } from '@js_godot/classes/node2d'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -382,9 +382,10 @@ export class ShapeCast2D extends Node2D{
       );
     }
   }
+  
   set_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_enabled,
+      ShapeCast2D._bindings.method_set_enabled,
       this._owner,
       _enabled
     );
@@ -392,7 +393,7 @@ export class ShapeCast2D extends Node2D{
   }
   is_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_enabled,
+      ShapeCast2D._bindings.method_is_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -401,7 +402,7 @@ export class ShapeCast2D extends Node2D{
   }
   set_shape(_shape) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shape,
+      ShapeCast2D._bindings.method_set_shape,
       this._owner,
       _shape
     );
@@ -409,7 +410,7 @@ export class ShapeCast2D extends Node2D{
   }
   get_shape() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_shape,
+      ShapeCast2D._bindings.method_get_shape,
       this._owner,
 			Variant.INT,
       
@@ -418,7 +419,7 @@ export class ShapeCast2D extends Node2D{
   }
   set_target_position(_local_point) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_target_position,
+      ShapeCast2D._bindings.method_set_target_position,
       this._owner,
       _local_point
     );
@@ -426,7 +427,7 @@ export class ShapeCast2D extends Node2D{
   }
   get_target_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_target_position,
+      ShapeCast2D._bindings.method_get_target_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -436,7 +437,7 @@ export class ShapeCast2D extends Node2D{
   }
   set_margin(_margin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_margin,
+      ShapeCast2D._bindings.method_set_margin,
       this._owner,
       _margin
     );
@@ -444,7 +445,7 @@ export class ShapeCast2D extends Node2D{
   }
   get_margin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_margin,
+      ShapeCast2D._bindings.method_get_margin,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -453,7 +454,7 @@ export class ShapeCast2D extends Node2D{
   }
   set_max_results(_max_results) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_max_results,
+      ShapeCast2D._bindings.method_set_max_results,
       this._owner,
       _max_results
     );
@@ -461,7 +462,7 @@ export class ShapeCast2D extends Node2D{
   }
   get_max_results() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_max_results,
+      ShapeCast2D._bindings.method_get_max_results,
       this._owner,
 			Variant.Type.INT,
       
@@ -470,7 +471,7 @@ export class ShapeCast2D extends Node2D{
   }
   is_colliding() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_colliding,
+      ShapeCast2D._bindings.method_is_colliding,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -479,7 +480,7 @@ export class ShapeCast2D extends Node2D{
   }
   get_collision_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_count,
+      ShapeCast2D._bindings.method_get_collision_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -488,7 +489,7 @@ export class ShapeCast2D extends Node2D{
   }
   force_shapecast_update() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_force_shapecast_update,
+      ShapeCast2D._bindings.method_force_shapecast_update,
       this._owner,
       
     );
@@ -496,7 +497,7 @@ export class ShapeCast2D extends Node2D{
   }
   get_collider(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collider,
+      ShapeCast2D._bindings.method_get_collider,
       this._owner,
 			Variant.INT,
       _index
@@ -505,7 +506,7 @@ export class ShapeCast2D extends Node2D{
   }
   get_collider_rid(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collider_rid,
+      ShapeCast2D._bindings.method_get_collider_rid,
       this._owner,
 			Variant.Type.RID,
     
@@ -515,7 +516,7 @@ export class ShapeCast2D extends Node2D{
   }
   get_collider_shape(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collider_shape,
+      ShapeCast2D._bindings.method_get_collider_shape,
       this._owner,
 			Variant.Type.INT,
       _index
@@ -524,7 +525,7 @@ export class ShapeCast2D extends Node2D{
   }
   get_collision_point(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_point,
+      ShapeCast2D._bindings.method_get_collision_point,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -534,7 +535,7 @@ export class ShapeCast2D extends Node2D{
   }
   get_collision_normal(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_normal,
+      ShapeCast2D._bindings.method_get_collision_normal,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -544,7 +545,7 @@ export class ShapeCast2D extends Node2D{
   }
   get_closest_collision_safe_fraction() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_closest_collision_safe_fraction,
+      ShapeCast2D._bindings.method_get_closest_collision_safe_fraction,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -553,7 +554,7 @@ export class ShapeCast2D extends Node2D{
   }
   get_closest_collision_unsafe_fraction() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_closest_collision_unsafe_fraction,
+      ShapeCast2D._bindings.method_get_closest_collision_unsafe_fraction,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -562,7 +563,7 @@ export class ShapeCast2D extends Node2D{
   }
   add_exception_rid(_rid) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_exception_rid,
+      ShapeCast2D._bindings.method_add_exception_rid,
       this._owner,
       _rid
     );
@@ -570,7 +571,7 @@ export class ShapeCast2D extends Node2D{
   }
   add_exception(_node) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_exception,
+      ShapeCast2D._bindings.method_add_exception,
       this._owner,
       _node
     );
@@ -578,7 +579,7 @@ export class ShapeCast2D extends Node2D{
   }
   remove_exception_rid(_rid) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_exception_rid,
+      ShapeCast2D._bindings.method_remove_exception_rid,
       this._owner,
       _rid
     );
@@ -586,7 +587,7 @@ export class ShapeCast2D extends Node2D{
   }
   remove_exception(_node) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_exception,
+      ShapeCast2D._bindings.method_remove_exception,
       this._owner,
       _node
     );
@@ -594,7 +595,7 @@ export class ShapeCast2D extends Node2D{
   }
   clear_exceptions() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_exceptions,
+      ShapeCast2D._bindings.method_clear_exceptions,
       this._owner,
       
     );
@@ -602,7 +603,7 @@ export class ShapeCast2D extends Node2D{
   }
   set_collision_mask(_mask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_mask,
+      ShapeCast2D._bindings.method_set_collision_mask,
       this._owner,
       _mask
     );
@@ -610,7 +611,7 @@ export class ShapeCast2D extends Node2D{
   }
   get_collision_mask() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_mask,
+      ShapeCast2D._bindings.method_get_collision_mask,
       this._owner,
 			Variant.Type.INT,
       
@@ -619,7 +620,7 @@ export class ShapeCast2D extends Node2D{
   }
   set_collision_mask_value(_layer_number, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_mask_value,
+      ShapeCast2D._bindings.method_set_collision_mask_value,
       this._owner,
       _layer_number, _value
     );
@@ -627,7 +628,7 @@ export class ShapeCast2D extends Node2D{
   }
   get_collision_mask_value(_layer_number) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_mask_value,
+      ShapeCast2D._bindings.method_get_collision_mask_value,
       this._owner,
 			Variant.Type.BOOL,
       _layer_number
@@ -636,7 +637,7 @@ export class ShapeCast2D extends Node2D{
   }
   set_exclude_parent_body(_mask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_exclude_parent_body,
+      ShapeCast2D._bindings.method_set_exclude_parent_body,
       this._owner,
       _mask
     );
@@ -644,7 +645,7 @@ export class ShapeCast2D extends Node2D{
   }
   get_exclude_parent_body() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_exclude_parent_body,
+      ShapeCast2D._bindings.method_get_exclude_parent_body,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -653,7 +654,7 @@ export class ShapeCast2D extends Node2D{
   }
   set_collide_with_areas(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collide_with_areas,
+      ShapeCast2D._bindings.method_set_collide_with_areas,
       this._owner,
       _enable
     );
@@ -661,7 +662,7 @@ export class ShapeCast2D extends Node2D{
   }
   is_collide_with_areas_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_collide_with_areas_enabled,
+      ShapeCast2D._bindings.method_is_collide_with_areas_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -670,7 +671,7 @@ export class ShapeCast2D extends Node2D{
   }
   set_collide_with_bodies(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collide_with_bodies,
+      ShapeCast2D._bindings.method_set_collide_with_bodies,
       this._owner,
       _enable
     );
@@ -678,7 +679,7 @@ export class ShapeCast2D extends Node2D{
   }
   is_collide_with_bodies_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_collide_with_bodies_enabled,
+      ShapeCast2D._bindings.method_is_collide_with_bodies_enabled,
       this._owner,
 			Variant.Type.BOOL,
       

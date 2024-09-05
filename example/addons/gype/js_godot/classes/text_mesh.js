@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
+import { Vector2 } from '@js_godot/variant/vector2'
 import { PrimitiveMesh } from '@js_godot/classes/primitive_mesh'
 import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
-import { Vector2 } from '@js_godot/variant/vector2'
+import { Variant } from '@js_godot/variant/variant'
 import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
@@ -393,9 +393,10 @@ export class TextMesh extends PrimitiveMesh{
       );
     }
   }
+  
   set_horizontal_alignment(_alignment) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_horizontal_alignment,
+      TextMesh._bindings.method_set_horizontal_alignment,
       this._owner,
       _alignment
     );
@@ -403,7 +404,7 @@ export class TextMesh extends PrimitiveMesh{
   }
   get_horizontal_alignment() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_horizontal_alignment,
+      TextMesh._bindings.method_get_horizontal_alignment,
       this._owner,
 			Variant.INT,
       
@@ -412,7 +413,7 @@ export class TextMesh extends PrimitiveMesh{
   }
   set_vertical_alignment(_alignment) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vertical_alignment,
+      TextMesh._bindings.method_set_vertical_alignment,
       this._owner,
       _alignment
     );
@@ -420,7 +421,7 @@ export class TextMesh extends PrimitiveMesh{
   }
   get_vertical_alignment() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vertical_alignment,
+      TextMesh._bindings.method_get_vertical_alignment,
       this._owner,
 			Variant.INT,
       
@@ -429,7 +430,7 @@ export class TextMesh extends PrimitiveMesh{
   }
   set_text(_text) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_text,
+      TextMesh._bindings.method_set_text,
       this._owner,
       _text
     );
@@ -437,7 +438,7 @@ export class TextMesh extends PrimitiveMesh{
   }
   get_text() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_text,
+      TextMesh._bindings.method_get_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -447,7 +448,7 @@ export class TextMesh extends PrimitiveMesh{
   }
   set_font(_font) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_font,
+      TextMesh._bindings.method_set_font,
       this._owner,
       _font
     );
@@ -455,7 +456,7 @@ export class TextMesh extends PrimitiveMesh{
   }
   get_font() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_font,
+      TextMesh._bindings.method_get_font,
       this._owner,
 			Variant.INT,
       
@@ -464,7 +465,7 @@ export class TextMesh extends PrimitiveMesh{
   }
   set_font_size(_font_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_font_size,
+      TextMesh._bindings.method_set_font_size,
       this._owner,
       _font_size
     );
@@ -472,7 +473,7 @@ export class TextMesh extends PrimitiveMesh{
   }
   get_font_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_font_size,
+      TextMesh._bindings.method_get_font_size,
       this._owner,
 			Variant.Type.INT,
       
@@ -481,7 +482,7 @@ export class TextMesh extends PrimitiveMesh{
   }
   set_line_spacing(_line_spacing) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_line_spacing,
+      TextMesh._bindings.method_set_line_spacing,
       this._owner,
       _line_spacing
     );
@@ -489,7 +490,7 @@ export class TextMesh extends PrimitiveMesh{
   }
   get_line_spacing() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_spacing,
+      TextMesh._bindings.method_get_line_spacing,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -498,7 +499,7 @@ export class TextMesh extends PrimitiveMesh{
   }
   set_autowrap_mode(_autowrap_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_autowrap_mode,
+      TextMesh._bindings.method_set_autowrap_mode,
       this._owner,
       _autowrap_mode
     );
@@ -506,7 +507,7 @@ export class TextMesh extends PrimitiveMesh{
   }
   get_autowrap_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_autowrap_mode,
+      TextMesh._bindings.method_get_autowrap_mode,
       this._owner,
 			Variant.INT,
       
@@ -515,7 +516,7 @@ export class TextMesh extends PrimitiveMesh{
   }
   set_justification_flags(_justification_flags) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_justification_flags,
+      TextMesh._bindings.method_set_justification_flags,
       this._owner,
       _justification_flags
     );
@@ -523,7 +524,7 @@ export class TextMesh extends PrimitiveMesh{
   }
   get_justification_flags() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_justification_flags,
+      TextMesh._bindings.method_get_justification_flags,
       this._owner,
 			Variant.INT,
       
@@ -532,7 +533,7 @@ export class TextMesh extends PrimitiveMesh{
   }
   set_depth(_depth) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_depth,
+      TextMesh._bindings.method_set_depth,
       this._owner,
       _depth
     );
@@ -540,7 +541,7 @@ export class TextMesh extends PrimitiveMesh{
   }
   get_depth() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_depth,
+      TextMesh._bindings.method_get_depth,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -549,7 +550,7 @@ export class TextMesh extends PrimitiveMesh{
   }
   set_width(_width) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_width,
+      TextMesh._bindings.method_set_width,
       this._owner,
       _width
     );
@@ -557,7 +558,7 @@ export class TextMesh extends PrimitiveMesh{
   }
   get_width() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_width,
+      TextMesh._bindings.method_get_width,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -566,7 +567,7 @@ export class TextMesh extends PrimitiveMesh{
   }
   set_pixel_size(_pixel_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_pixel_size,
+      TextMesh._bindings.method_set_pixel_size,
       this._owner,
       _pixel_size
     );
@@ -574,7 +575,7 @@ export class TextMesh extends PrimitiveMesh{
   }
   get_pixel_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_pixel_size,
+      TextMesh._bindings.method_get_pixel_size,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -583,7 +584,7 @@ export class TextMesh extends PrimitiveMesh{
   }
   set_offset(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_offset,
+      TextMesh._bindings.method_set_offset,
       this._owner,
       _offset
     );
@@ -591,7 +592,7 @@ export class TextMesh extends PrimitiveMesh{
   }
   get_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_offset,
+      TextMesh._bindings.method_get_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -601,7 +602,7 @@ export class TextMesh extends PrimitiveMesh{
   }
   set_curve_step(_curve_step) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_curve_step,
+      TextMesh._bindings.method_set_curve_step,
       this._owner,
       _curve_step
     );
@@ -609,7 +610,7 @@ export class TextMesh extends PrimitiveMesh{
   }
   get_curve_step() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_curve_step,
+      TextMesh._bindings.method_get_curve_step,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -618,7 +619,7 @@ export class TextMesh extends PrimitiveMesh{
   }
   set_text_direction(_direction) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_text_direction,
+      TextMesh._bindings.method_set_text_direction,
       this._owner,
       _direction
     );
@@ -626,7 +627,7 @@ export class TextMesh extends PrimitiveMesh{
   }
   get_text_direction() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_text_direction,
+      TextMesh._bindings.method_get_text_direction,
       this._owner,
 			Variant.INT,
       
@@ -635,7 +636,7 @@ export class TextMesh extends PrimitiveMesh{
   }
   set_language(_language) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_language,
+      TextMesh._bindings.method_set_language,
       this._owner,
       _language
     );
@@ -643,7 +644,7 @@ export class TextMesh extends PrimitiveMesh{
   }
   get_language() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_language,
+      TextMesh._bindings.method_get_language,
       this._owner,
 			Variant.Type.STRING,
     
@@ -653,7 +654,7 @@ export class TextMesh extends PrimitiveMesh{
   }
   set_structured_text_bidi_override(_parser) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_structured_text_bidi_override,
+      TextMesh._bindings.method_set_structured_text_bidi_override,
       this._owner,
       _parser
     );
@@ -661,7 +662,7 @@ export class TextMesh extends PrimitiveMesh{
   }
   get_structured_text_bidi_override() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_structured_text_bidi_override,
+      TextMesh._bindings.method_get_structured_text_bidi_override,
       this._owner,
 			Variant.INT,
       
@@ -670,7 +671,7 @@ export class TextMesh extends PrimitiveMesh{
   }
   set_structured_text_bidi_override_options(_args) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_structured_text_bidi_override_options,
+      TextMesh._bindings.method_set_structured_text_bidi_override_options,
       this._owner,
       _args
     );
@@ -678,7 +679,7 @@ export class TextMesh extends PrimitiveMesh{
   }
   get_structured_text_bidi_override_options() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_structured_text_bidi_override_options,
+      TextMesh._bindings.method_get_structured_text_bidi_override_options,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -688,7 +689,7 @@ export class TextMesh extends PrimitiveMesh{
   }
   set_uppercase(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_uppercase,
+      TextMesh._bindings.method_set_uppercase,
       this._owner,
       _enable
     );
@@ -696,7 +697,7 @@ export class TextMesh extends PrimitiveMesh{
   }
   is_uppercase() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_uppercase,
+      TextMesh._bindings.method_is_uppercase,
       this._owner,
 			Variant.Type.BOOL,
       

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { Node2D } from '@js_godot/classes/node2d'
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -170,9 +170,10 @@ export class PathFollow2D extends Node2D{
       );
     }
   }
+  
   set_progress(_progress) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_progress,
+      PathFollow2D._bindings.method_set_progress,
       this._owner,
       _progress
     );
@@ -180,7 +181,7 @@ export class PathFollow2D extends Node2D{
   }
   get_progress() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_progress,
+      PathFollow2D._bindings.method_get_progress,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -189,7 +190,7 @@ export class PathFollow2D extends Node2D{
   }
   set_h_offset(_h_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_h_offset,
+      PathFollow2D._bindings.method_set_h_offset,
       this._owner,
       _h_offset
     );
@@ -197,7 +198,7 @@ export class PathFollow2D extends Node2D{
   }
   get_h_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_h_offset,
+      PathFollow2D._bindings.method_get_h_offset,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -206,7 +207,7 @@ export class PathFollow2D extends Node2D{
   }
   set_v_offset(_v_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_v_offset,
+      PathFollow2D._bindings.method_set_v_offset,
       this._owner,
       _v_offset
     );
@@ -214,7 +215,7 @@ export class PathFollow2D extends Node2D{
   }
   get_v_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_v_offset,
+      PathFollow2D._bindings.method_get_v_offset,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -223,7 +224,7 @@ export class PathFollow2D extends Node2D{
   }
   set_progress_ratio(_ratio) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_progress_ratio,
+      PathFollow2D._bindings.method_set_progress_ratio,
       this._owner,
       _ratio
     );
@@ -231,7 +232,7 @@ export class PathFollow2D extends Node2D{
   }
   get_progress_ratio() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_progress_ratio,
+      PathFollow2D._bindings.method_get_progress_ratio,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -240,7 +241,7 @@ export class PathFollow2D extends Node2D{
   }
   set_rotates(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_rotates,
+      PathFollow2D._bindings.method_set_rotates,
       this._owner,
       _enabled
     );
@@ -248,7 +249,7 @@ export class PathFollow2D extends Node2D{
   }
   is_rotating() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_rotating,
+      PathFollow2D._bindings.method_is_rotating,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -257,7 +258,7 @@ export class PathFollow2D extends Node2D{
   }
   set_cubic_interpolation(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cubic_interpolation,
+      PathFollow2D._bindings.method_set_cubic_interpolation,
       this._owner,
       _enabled
     );
@@ -265,7 +266,7 @@ export class PathFollow2D extends Node2D{
   }
   get_cubic_interpolation() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cubic_interpolation,
+      PathFollow2D._bindings.method_get_cubic_interpolation,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -274,7 +275,7 @@ export class PathFollow2D extends Node2D{
   }
   set_loop(_loop) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_loop,
+      PathFollow2D._bindings.method_set_loop,
       this._owner,
       _loop
     );
@@ -282,7 +283,7 @@ export class PathFollow2D extends Node2D{
   }
   has_loop() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_loop,
+      PathFollow2D._bindings.method_has_loop,
       this._owner,
 			Variant.Type.BOOL,
       

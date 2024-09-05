@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { VisualShaderNodeFrame } from '@js_godot/classes/visual_shader_node_frame'
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
+import { VisualShaderNodeFrame } from '@js_godot/classes/visual_shader_node_frame'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -51,9 +51,10 @@ export class VisualShaderNodeComment extends VisualShaderNodeFrame{
       );
     }
   }
+  
   set_description(_description) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_description,
+      VisualShaderNodeComment._bindings.method_set_description,
       this._owner,
       _description
     );
@@ -61,7 +62,7 @@ export class VisualShaderNodeComment extends VisualShaderNodeFrame{
   }
   get_description() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_description,
+      VisualShaderNodeComment._bindings.method_get_description,
       this._owner,
 			Variant.Type.STRING,
     

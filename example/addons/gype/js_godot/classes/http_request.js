@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { Node } from '@js_godot/classes/node'
+import { StringName } from '@js_godot/variant/string_name'
 import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { GDString } from '@js_godot/variant/gd_string'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -263,9 +263,10 @@ export class HTTPRequest extends Node{
       );
     }
   }
+  
   request(_url, _custom_headers, _method, _request_data) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_request,
+      HTTPRequest._bindings.method_request,
       this._owner,
 			Variant.INT,
       _url, _custom_headers, _method, _request_data
@@ -274,7 +275,7 @@ export class HTTPRequest extends Node{
   }
   request_raw(_url, _custom_headers, _method, _request_data_raw) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_request_raw,
+      HTTPRequest._bindings.method_request_raw,
       this._owner,
 			Variant.INT,
       _url, _custom_headers, _method, _request_data_raw
@@ -283,7 +284,7 @@ export class HTTPRequest extends Node{
   }
   cancel_request() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_cancel_request,
+      HTTPRequest._bindings.method_cancel_request,
       this._owner,
       
     );
@@ -291,7 +292,7 @@ export class HTTPRequest extends Node{
   }
   set_tls_options(_client_options) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tls_options,
+      HTTPRequest._bindings.method_set_tls_options,
       this._owner,
       _client_options
     );
@@ -299,7 +300,7 @@ export class HTTPRequest extends Node{
   }
   get_http_client_status() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_http_client_status,
+      HTTPRequest._bindings.method_get_http_client_status,
       this._owner,
 			Variant.INT,
       
@@ -308,7 +309,7 @@ export class HTTPRequest extends Node{
   }
   set_use_threads(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_threads,
+      HTTPRequest._bindings.method_set_use_threads,
       this._owner,
       _enable
     );
@@ -316,7 +317,7 @@ export class HTTPRequest extends Node{
   }
   is_using_threads() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_using_threads,
+      HTTPRequest._bindings.method_is_using_threads,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -325,7 +326,7 @@ export class HTTPRequest extends Node{
   }
   set_accept_gzip(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_accept_gzip,
+      HTTPRequest._bindings.method_set_accept_gzip,
       this._owner,
       _enable
     );
@@ -333,7 +334,7 @@ export class HTTPRequest extends Node{
   }
   is_accepting_gzip() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_accepting_gzip,
+      HTTPRequest._bindings.method_is_accepting_gzip,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -342,7 +343,7 @@ export class HTTPRequest extends Node{
   }
   set_body_size_limit(_bytes) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_body_size_limit,
+      HTTPRequest._bindings.method_set_body_size_limit,
       this._owner,
       _bytes
     );
@@ -350,7 +351,7 @@ export class HTTPRequest extends Node{
   }
   get_body_size_limit() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_body_size_limit,
+      HTTPRequest._bindings.method_get_body_size_limit,
       this._owner,
 			Variant.Type.INT,
       
@@ -359,7 +360,7 @@ export class HTTPRequest extends Node{
   }
   set_max_redirects(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_max_redirects,
+      HTTPRequest._bindings.method_set_max_redirects,
       this._owner,
       _amount
     );
@@ -367,7 +368,7 @@ export class HTTPRequest extends Node{
   }
   get_max_redirects() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_max_redirects,
+      HTTPRequest._bindings.method_get_max_redirects,
       this._owner,
 			Variant.Type.INT,
       
@@ -376,7 +377,7 @@ export class HTTPRequest extends Node{
   }
   set_download_file(_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_download_file,
+      HTTPRequest._bindings.method_set_download_file,
       this._owner,
       _path
     );
@@ -384,7 +385,7 @@ export class HTTPRequest extends Node{
   }
   get_download_file() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_download_file,
+      HTTPRequest._bindings.method_get_download_file,
       this._owner,
 			Variant.Type.STRING,
     
@@ -394,7 +395,7 @@ export class HTTPRequest extends Node{
   }
   get_downloaded_bytes() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_downloaded_bytes,
+      HTTPRequest._bindings.method_get_downloaded_bytes,
       this._owner,
 			Variant.Type.INT,
       
@@ -403,7 +404,7 @@ export class HTTPRequest extends Node{
   }
   get_body_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_body_size,
+      HTTPRequest._bindings.method_get_body_size,
       this._owner,
 			Variant.Type.INT,
       
@@ -412,7 +413,7 @@ export class HTTPRequest extends Node{
   }
   set_timeout(_timeout) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_timeout,
+      HTTPRequest._bindings.method_set_timeout,
       this._owner,
       _timeout
     );
@@ -420,7 +421,7 @@ export class HTTPRequest extends Node{
   }
   get_timeout() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_timeout,
+      HTTPRequest._bindings.method_get_timeout,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -429,7 +430,7 @@ export class HTTPRequest extends Node{
   }
   set_download_chunk_size(_chunk_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_download_chunk_size,
+      HTTPRequest._bindings.method_set_download_chunk_size,
       this._owner,
       _chunk_size
     );
@@ -437,7 +438,7 @@ export class HTTPRequest extends Node{
   }
   get_download_chunk_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_download_chunk_size,
+      HTTPRequest._bindings.method_get_download_chunk_size,
       this._owner,
 			Variant.Type.INT,
       
@@ -446,7 +447,7 @@ export class HTTPRequest extends Node{
   }
   set_http_proxy(_host, _port) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_http_proxy,
+      HTTPRequest._bindings.method_set_http_proxy,
       this._owner,
       _host, _port
     );
@@ -454,7 +455,7 @@ export class HTTPRequest extends Node{
   }
   set_https_proxy(_host, _port) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_https_proxy,
+      HTTPRequest._bindings.method_set_https_proxy,
       this._owner,
       _host, _port
     );

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { PrimitiveMesh } from '@js_godot/classes/primitive_mesh'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -170,9 +170,10 @@ export class CylinderMesh extends PrimitiveMesh{
       );
     }
   }
+  
   set_top_radius(_radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_top_radius,
+      CylinderMesh._bindings.method_set_top_radius,
       this._owner,
       _radius
     );
@@ -180,7 +181,7 @@ export class CylinderMesh extends PrimitiveMesh{
   }
   get_top_radius() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_top_radius,
+      CylinderMesh._bindings.method_get_top_radius,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -189,7 +190,7 @@ export class CylinderMesh extends PrimitiveMesh{
   }
   set_bottom_radius(_radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bottom_radius,
+      CylinderMesh._bindings.method_set_bottom_radius,
       this._owner,
       _radius
     );
@@ -197,7 +198,7 @@ export class CylinderMesh extends PrimitiveMesh{
   }
   get_bottom_radius() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bottom_radius,
+      CylinderMesh._bindings.method_get_bottom_radius,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -206,7 +207,7 @@ export class CylinderMesh extends PrimitiveMesh{
   }
   set_height(_height) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_height,
+      CylinderMesh._bindings.method_set_height,
       this._owner,
       _height
     );
@@ -214,7 +215,7 @@ export class CylinderMesh extends PrimitiveMesh{
   }
   get_height() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_height,
+      CylinderMesh._bindings.method_get_height,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -223,7 +224,7 @@ export class CylinderMesh extends PrimitiveMesh{
   }
   set_radial_segments(_segments) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_radial_segments,
+      CylinderMesh._bindings.method_set_radial_segments,
       this._owner,
       _segments
     );
@@ -231,7 +232,7 @@ export class CylinderMesh extends PrimitiveMesh{
   }
   get_radial_segments() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_radial_segments,
+      CylinderMesh._bindings.method_get_radial_segments,
       this._owner,
 			Variant.Type.INT,
       
@@ -240,7 +241,7 @@ export class CylinderMesh extends PrimitiveMesh{
   }
   set_rings(_rings) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_rings,
+      CylinderMesh._bindings.method_set_rings,
       this._owner,
       _rings
     );
@@ -248,7 +249,7 @@ export class CylinderMesh extends PrimitiveMesh{
   }
   get_rings() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rings,
+      CylinderMesh._bindings.method_get_rings,
       this._owner,
 			Variant.Type.INT,
       
@@ -257,7 +258,7 @@ export class CylinderMesh extends PrimitiveMesh{
   }
   set_cap_top(_cap_top) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cap_top,
+      CylinderMesh._bindings.method_set_cap_top,
       this._owner,
       _cap_top
     );
@@ -265,7 +266,7 @@ export class CylinderMesh extends PrimitiveMesh{
   }
   is_cap_top() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_cap_top,
+      CylinderMesh._bindings.method_is_cap_top,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -274,7 +275,7 @@ export class CylinderMesh extends PrimitiveMesh{
   }
   set_cap_bottom(_cap_bottom) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cap_bottom,
+      CylinderMesh._bindings.method_set_cap_bottom,
       this._owner,
       _cap_bottom
     );
@@ -282,7 +283,7 @@ export class CylinderMesh extends PrimitiveMesh{
   }
   is_cap_bottom() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_cap_bottom,
+      CylinderMesh._bindings.method_is_cap_bottom,
       this._owner,
 			Variant.Type.BOOL,
       

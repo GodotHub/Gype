@@ -101,7 +101,7 @@ void register_internal_api() {
 				GDExtensionConstStringNamePtr arg2 = qjs::get_typed_array_buf(context.ctx, p_methodname);
 				return godot::internal::gdextension_interface_classdb_get_method_bind(arg1, arg2, p_hash);
 			})
-			.function("object_method_bind_ptrcall", [](Pointer p_method_bind, Pointer p_instance, GDExtensionVariantType type, qjs::rest<JSValue> args) {
+			.function("object_method_bind_ptrcall", [](Pointer p_method_bind, Pointer p_instance, GDExtensionVariantType type, std::vector<JSValue> args) {
 				void *r_ret = qjs::malloc_variant(context.ctx, type);
 				std::vector<void *> void_ptr = qjs::get_args(context.ctx, args);
 				void **p_args = void_ptr.data();
@@ -117,5 +117,8 @@ void register_internal_api() {
 			})
 			.function("object_set_instance_binding", [](GDExtensionObjectPtr p_o, JSValue p_binding) {
 				godot::internal::gdextension_interface_object_set_instance_binding(p_o, godot::internal::token, &p_binding, &godot::internal::callbacks);
+			})
+			.function("variant_get_type", [](JSValue p_self) -> GDExtensionVariantType {
+				return godot::internal::gdextension_interface_variant_get_type(qjs::get_typed_array_buf(context.ctx, p_self));
 			});
 }

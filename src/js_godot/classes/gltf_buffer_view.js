@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
+import { StringName } from '@js_godot/variant/string_name'
 import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
 import {
   call_utility_ret,
@@ -161,9 +161,10 @@ export class GLTFBufferView extends Resource{
       );
     }
   }
+  
   load_buffer_view_data(_state) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_load_buffer_view_data,
+      GLTFBufferView._bindings.method_load_buffer_view_data,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -173,7 +174,7 @@ export class GLTFBufferView extends Resource{
   }
   get_buffer() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_buffer,
+      GLTFBufferView._bindings.method_get_buffer,
       this._owner,
 			Variant.Type.INT,
       
@@ -182,7 +183,7 @@ export class GLTFBufferView extends Resource{
   }
   set_buffer(_buffer) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_buffer,
+      GLTFBufferView._bindings.method_set_buffer,
       this._owner,
       _buffer
     );
@@ -190,7 +191,7 @@ export class GLTFBufferView extends Resource{
   }
   get_byte_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_byte_offset,
+      GLTFBufferView._bindings.method_get_byte_offset,
       this._owner,
 			Variant.Type.INT,
       
@@ -199,7 +200,7 @@ export class GLTFBufferView extends Resource{
   }
   set_byte_offset(_byte_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_byte_offset,
+      GLTFBufferView._bindings.method_set_byte_offset,
       this._owner,
       _byte_offset
     );
@@ -207,7 +208,7 @@ export class GLTFBufferView extends Resource{
   }
   get_byte_length() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_byte_length,
+      GLTFBufferView._bindings.method_get_byte_length,
       this._owner,
 			Variant.Type.INT,
       
@@ -216,7 +217,7 @@ export class GLTFBufferView extends Resource{
   }
   set_byte_length(_byte_length) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_byte_length,
+      GLTFBufferView._bindings.method_set_byte_length,
       this._owner,
       _byte_length
     );
@@ -224,7 +225,7 @@ export class GLTFBufferView extends Resource{
   }
   get_byte_stride() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_byte_stride,
+      GLTFBufferView._bindings.method_get_byte_stride,
       this._owner,
 			Variant.Type.INT,
       
@@ -233,7 +234,7 @@ export class GLTFBufferView extends Resource{
   }
   set_byte_stride(_byte_stride) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_byte_stride,
+      GLTFBufferView._bindings.method_set_byte_stride,
       this._owner,
       _byte_stride
     );
@@ -241,7 +242,7 @@ export class GLTFBufferView extends Resource{
   }
   get_indices() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_indices,
+      GLTFBufferView._bindings.method_get_indices,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -250,7 +251,7 @@ export class GLTFBufferView extends Resource{
   }
   set_indices(_indices) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_indices,
+      GLTFBufferView._bindings.method_set_indices,
       this._owner,
       _indices
     );
@@ -258,7 +259,7 @@ export class GLTFBufferView extends Resource{
   }
   get_vertex_attributes() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vertex_attributes,
+      GLTFBufferView._bindings.method_get_vertex_attributes,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -267,7 +268,7 @@ export class GLTFBufferView extends Resource{
   }
   set_vertex_attributes(_is_attributes) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vertex_attributes,
+      GLTFBufferView._bindings.method_set_vertex_attributes,
       this._owner,
       _is_attributes
     );

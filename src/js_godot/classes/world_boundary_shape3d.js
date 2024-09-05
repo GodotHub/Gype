@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { Plane } from '@js_godot/variant/plane'
-import { Shape3D } from '@js_godot/classes/shape3d'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Plane } from '@js_godot/variant/plane'
+import { Shape3D } from '@js_godot/classes/shape3d'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -51,9 +51,10 @@ export class WorldBoundaryShape3D extends Shape3D{
       );
     }
   }
+  
   set_plane(_plane) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_plane,
+      WorldBoundaryShape3D._bindings.method_set_plane,
       this._owner,
       _plane
     );
@@ -61,7 +62,7 @@ export class WorldBoundaryShape3D extends Shape3D{
   }
   get_plane() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_plane,
+      WorldBoundaryShape3D._bindings.method_get_plane,
       this._owner,
 			Variant.Type.PLANE,
     

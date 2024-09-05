@@ -1,21 +1,21 @@
 import * as internal from '__internal__';
-import { Dictionary } from '@js_godot/variant/dictionary'
-import { Variant } from '@js_godot/variant/variant'
-import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
-import { TextServer } from '@js_godot/classes/text_server'
 import { Vector2i } from '@js_godot/variant/vector2i'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
-import { Color } from '@js_godot/variant/color'
-import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
-import { RID } from '@js_godot/variant/rid'
-import { Vector2 } from '@js_godot/variant/vector2'
-import { PackedFloat32Array } from '@js_godot/variant/packed_float32_array'
-import { Rect2 } from '@js_godot/variant/rect2'
-import { Transform2D } from '@js_godot/variant/transform2d'
-import { PackedStringArray } from '@js_godot/variant/packed_string_array'
 import { GDArray } from '@js_godot/variant/gd_array'
+import { RID } from '@js_godot/variant/rid'
+import { PackedFloat32Array } from '@js_godot/variant/packed_float32_array'
+import { Color } from '@js_godot/variant/color'
+import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
+import { Variant } from '@js_godot/variant/variant'
+import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { Transform2D } from '@js_godot/variant/transform2d'
+import { Vector2 } from '@js_godot/variant/vector2'
+import { StringName } from '@js_godot/variant/string_name'
+import { Rect2 } from '@js_godot/variant/rect2'
+import { TextServer } from '@js_godot/classes/text_server'
+import { Dictionary } from '@js_godot/variant/dictionary'
+import { GDString } from '@js_godot/variant/gd_string'
+import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -44,6 +44,7 @@ export class TextServerExtension extends TextServer{
     }
     this.#initialized = true;
   }
+  
   _has_feature(_feature) {
   }
   _get_name() {

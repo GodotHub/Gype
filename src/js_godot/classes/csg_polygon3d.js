@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
+import { CSGPrimitive3D } from '@js_godot/classes/csg_primitive3d'
+import { NodePath } from '@js_godot/variant/node_path'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
-import { CSGPrimitive3D } from '@js_godot/classes/csg_primitive3d'
-import { NodePath } from '@js_godot/variant/node_path'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -352,9 +352,10 @@ export class CSGPolygon3D extends CSGPrimitive3D{
       );
     }
   }
+  
   set_polygon(_polygon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_polygon,
+      CSGPolygon3D._bindings.method_set_polygon,
       this._owner,
       _polygon
     );
@@ -362,7 +363,7 @@ export class CSGPolygon3D extends CSGPrimitive3D{
   }
   get_polygon() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_polygon,
+      CSGPolygon3D._bindings.method_get_polygon,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -372,7 +373,7 @@ export class CSGPolygon3D extends CSGPrimitive3D{
   }
   set_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mode,
+      CSGPolygon3D._bindings.method_set_mode,
       this._owner,
       _mode
     );
@@ -380,7 +381,7 @@ export class CSGPolygon3D extends CSGPrimitive3D{
   }
   get_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mode,
+      CSGPolygon3D._bindings.method_get_mode,
       this._owner,
 			Variant.INT,
       
@@ -389,7 +390,7 @@ export class CSGPolygon3D extends CSGPrimitive3D{
   }
   set_depth(_depth) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_depth,
+      CSGPolygon3D._bindings.method_set_depth,
       this._owner,
       _depth
     );
@@ -397,7 +398,7 @@ export class CSGPolygon3D extends CSGPrimitive3D{
   }
   get_depth() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_depth,
+      CSGPolygon3D._bindings.method_get_depth,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -406,7 +407,7 @@ export class CSGPolygon3D extends CSGPrimitive3D{
   }
   set_spin_degrees(_degrees) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_spin_degrees,
+      CSGPolygon3D._bindings.method_set_spin_degrees,
       this._owner,
       _degrees
     );
@@ -414,7 +415,7 @@ export class CSGPolygon3D extends CSGPrimitive3D{
   }
   get_spin_degrees() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_spin_degrees,
+      CSGPolygon3D._bindings.method_get_spin_degrees,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -423,7 +424,7 @@ export class CSGPolygon3D extends CSGPrimitive3D{
   }
   set_spin_sides(_spin_sides) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_spin_sides,
+      CSGPolygon3D._bindings.method_set_spin_sides,
       this._owner,
       _spin_sides
     );
@@ -431,7 +432,7 @@ export class CSGPolygon3D extends CSGPrimitive3D{
   }
   get_spin_sides() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_spin_sides,
+      CSGPolygon3D._bindings.method_get_spin_sides,
       this._owner,
 			Variant.Type.INT,
       
@@ -440,7 +441,7 @@ export class CSGPolygon3D extends CSGPrimitive3D{
   }
   set_path_node(_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_path_node,
+      CSGPolygon3D._bindings.method_set_path_node,
       this._owner,
       _path
     );
@@ -448,7 +449,7 @@ export class CSGPolygon3D extends CSGPrimitive3D{
   }
   get_path_node() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_path_node,
+      CSGPolygon3D._bindings.method_get_path_node,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -458,7 +459,7 @@ export class CSGPolygon3D extends CSGPrimitive3D{
   }
   set_path_interval_type(_interval_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_path_interval_type,
+      CSGPolygon3D._bindings.method_set_path_interval_type,
       this._owner,
       _interval_type
     );
@@ -466,7 +467,7 @@ export class CSGPolygon3D extends CSGPrimitive3D{
   }
   get_path_interval_type() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_path_interval_type,
+      CSGPolygon3D._bindings.method_get_path_interval_type,
       this._owner,
 			Variant.INT,
       
@@ -475,7 +476,7 @@ export class CSGPolygon3D extends CSGPrimitive3D{
   }
   set_path_interval(_interval) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_path_interval,
+      CSGPolygon3D._bindings.method_set_path_interval,
       this._owner,
       _interval
     );
@@ -483,7 +484,7 @@ export class CSGPolygon3D extends CSGPrimitive3D{
   }
   get_path_interval() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_path_interval,
+      CSGPolygon3D._bindings.method_get_path_interval,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -492,7 +493,7 @@ export class CSGPolygon3D extends CSGPrimitive3D{
   }
   set_path_simplify_angle(_degrees) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_path_simplify_angle,
+      CSGPolygon3D._bindings.method_set_path_simplify_angle,
       this._owner,
       _degrees
     );
@@ -500,7 +501,7 @@ export class CSGPolygon3D extends CSGPrimitive3D{
   }
   get_path_simplify_angle() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_path_simplify_angle,
+      CSGPolygon3D._bindings.method_get_path_simplify_angle,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -509,7 +510,7 @@ export class CSGPolygon3D extends CSGPrimitive3D{
   }
   set_path_rotation(_path_rotation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_path_rotation,
+      CSGPolygon3D._bindings.method_set_path_rotation,
       this._owner,
       _path_rotation
     );
@@ -517,7 +518,7 @@ export class CSGPolygon3D extends CSGPrimitive3D{
   }
   get_path_rotation() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_path_rotation,
+      CSGPolygon3D._bindings.method_get_path_rotation,
       this._owner,
 			Variant.INT,
       
@@ -526,7 +527,7 @@ export class CSGPolygon3D extends CSGPrimitive3D{
   }
   set_path_local(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_path_local,
+      CSGPolygon3D._bindings.method_set_path_local,
       this._owner,
       _enable
     );
@@ -534,7 +535,7 @@ export class CSGPolygon3D extends CSGPrimitive3D{
   }
   is_path_local() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_path_local,
+      CSGPolygon3D._bindings.method_is_path_local,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -543,7 +544,7 @@ export class CSGPolygon3D extends CSGPrimitive3D{
   }
   set_path_continuous_u(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_path_continuous_u,
+      CSGPolygon3D._bindings.method_set_path_continuous_u,
       this._owner,
       _enable
     );
@@ -551,7 +552,7 @@ export class CSGPolygon3D extends CSGPrimitive3D{
   }
   is_path_continuous_u() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_path_continuous_u,
+      CSGPolygon3D._bindings.method_is_path_continuous_u,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -560,7 +561,7 @@ export class CSGPolygon3D extends CSGPrimitive3D{
   }
   set_path_u_distance(_distance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_path_u_distance,
+      CSGPolygon3D._bindings.method_set_path_u_distance,
       this._owner,
       _distance
     );
@@ -568,7 +569,7 @@ export class CSGPolygon3D extends CSGPrimitive3D{
   }
   get_path_u_distance() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_path_u_distance,
+      CSGPolygon3D._bindings.method_get_path_u_distance,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -577,7 +578,7 @@ export class CSGPolygon3D extends CSGPrimitive3D{
   }
   set_path_joined(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_path_joined,
+      CSGPolygon3D._bindings.method_set_path_joined,
       this._owner,
       _enable
     );
@@ -585,7 +586,7 @@ export class CSGPolygon3D extends CSGPrimitive3D{
   }
   is_path_joined() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_path_joined,
+      CSGPolygon3D._bindings.method_is_path_joined,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -594,7 +595,7 @@ export class CSGPolygon3D extends CSGPrimitive3D{
   }
   set_material(_material) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_material,
+      CSGPolygon3D._bindings.method_set_material,
       this._owner,
       _material
     );
@@ -602,7 +603,7 @@ export class CSGPolygon3D extends CSGPrimitive3D{
   }
   get_material() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_material,
+      CSGPolygon3D._bindings.method_get_material,
       this._owner,
 			Variant.INT,
       
@@ -611,7 +612,7 @@ export class CSGPolygon3D extends CSGPrimitive3D{
   }
   set_smooth_faces(_smooth_faces) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_smooth_faces,
+      CSGPolygon3D._bindings.method_set_smooth_faces,
       this._owner,
       _smooth_faces
     );
@@ -619,7 +620,7 @@ export class CSGPolygon3D extends CSGPrimitive3D{
   }
   get_smooth_faces() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_smooth_faces,
+      CSGPolygon3D._bindings.method_get_smooth_faces,
       this._owner,
 			Variant.Type.BOOL,
       

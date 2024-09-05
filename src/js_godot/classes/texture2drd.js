@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { RID } from '@js_godot/variant/rid'
 import { Texture2D } from '@js_godot/classes/texture2d'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -51,9 +51,10 @@ export class Texture2DRD extends Texture2D{
       );
     }
   }
+  
   set_texture_rd_rid(_texture_rd_rid) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture_rd_rid,
+      Texture2DRD._bindings.method_set_texture_rd_rid,
       this._owner,
       _texture_rd_rid
     );
@@ -61,7 +62,7 @@ export class Texture2DRD extends Texture2D{
   }
   get_texture_rd_rid() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_rd_rid,
+      Texture2DRD._bindings.method_get_texture_rd_rid,
       this._owner,
 			Variant.Type.RID,
     

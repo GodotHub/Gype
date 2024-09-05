@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { AudioEffect } from '@js_godot/classes/audio_effect'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -50,9 +50,10 @@ export class AudioEffectPanner extends AudioEffect{
       );
     }
   }
+  
   set_pan(_cpanume) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_pan,
+      AudioEffectPanner._bindings.method_set_pan,
       this._owner,
       _cpanume
     );
@@ -60,7 +61,7 @@ export class AudioEffectPanner extends AudioEffect{
   }
   get_pan() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_pan,
+      AudioEffectPanner._bindings.method_get_pan,
       this._owner,
 			Variant.Type.FLOAT,
       

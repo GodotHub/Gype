@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { VisualShaderNodeConstant } from '@js_godot/classes/visual_shader_node_constant'
 import {
   call_utility_ret,
@@ -50,9 +50,10 @@ export class VisualShaderNodeFloatConstant extends VisualShaderNodeConstant{
       );
     }
   }
+  
   set_constant(_constant) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_constant,
+      VisualShaderNodeFloatConstant._bindings.method_set_constant,
       this._owner,
       _constant
     );
@@ -60,7 +61,7 @@ export class VisualShaderNodeFloatConstant extends VisualShaderNodeConstant{
   }
   get_constant() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_constant,
+      VisualShaderNodeFloatConstant._bindings.method_get_constant,
       this._owner,
 			Variant.Type.FLOAT,
       

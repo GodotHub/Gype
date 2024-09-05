@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
+import { PacketPeer } from '@js_godot/classes/packet_peer'
 import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
-import { PacketPeer } from '@js_godot/classes/packet_peer'
 import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { GDString } from '@js_godot/variant/gd_string'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -293,9 +293,10 @@ export class WebSocketPeer extends PacketPeer{
       );
     }
   }
+  
   connect_to_url(_url, _tls_client_options) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_connect_to_url,
+      WebSocketPeer._bindings.method_connect_to_url,
       this._owner,
 			Variant.INT,
       _url, _tls_client_options
@@ -304,7 +305,7 @@ export class WebSocketPeer extends PacketPeer{
   }
   accept_stream(_stream) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_accept_stream,
+      WebSocketPeer._bindings.method_accept_stream,
       this._owner,
 			Variant.INT,
       _stream
@@ -313,7 +314,7 @@ export class WebSocketPeer extends PacketPeer{
   }
   send(_message, _write_mode) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_send,
+      WebSocketPeer._bindings.method_send,
       this._owner,
 			Variant.INT,
       _message, _write_mode
@@ -322,7 +323,7 @@ export class WebSocketPeer extends PacketPeer{
   }
   send_text(_message) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_send_text,
+      WebSocketPeer._bindings.method_send_text,
       this._owner,
 			Variant.INT,
       _message
@@ -331,7 +332,7 @@ export class WebSocketPeer extends PacketPeer{
   }
   was_string_packet() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_was_string_packet,
+      WebSocketPeer._bindings.method_was_string_packet,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -340,7 +341,7 @@ export class WebSocketPeer extends PacketPeer{
   }
   poll() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_poll,
+      WebSocketPeer._bindings.method_poll,
       this._owner,
       
     );
@@ -348,7 +349,7 @@ export class WebSocketPeer extends PacketPeer{
   }
   close(_code, _reason) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_close,
+      WebSocketPeer._bindings.method_close,
       this._owner,
       _code, _reason
     );
@@ -356,7 +357,7 @@ export class WebSocketPeer extends PacketPeer{
   }
   get_connected_host() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_connected_host,
+      WebSocketPeer._bindings.method_get_connected_host,
       this._owner,
 			Variant.Type.STRING,
     
@@ -366,7 +367,7 @@ export class WebSocketPeer extends PacketPeer{
   }
   get_connected_port() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_connected_port,
+      WebSocketPeer._bindings.method_get_connected_port,
       this._owner,
 			Variant.Type.INT,
       
@@ -375,7 +376,7 @@ export class WebSocketPeer extends PacketPeer{
   }
   get_selected_protocol() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_selected_protocol,
+      WebSocketPeer._bindings.method_get_selected_protocol,
       this._owner,
 			Variant.Type.STRING,
     
@@ -385,7 +386,7 @@ export class WebSocketPeer extends PacketPeer{
   }
   get_requested_url() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_requested_url,
+      WebSocketPeer._bindings.method_get_requested_url,
       this._owner,
 			Variant.Type.STRING,
     
@@ -395,7 +396,7 @@ export class WebSocketPeer extends PacketPeer{
   }
   set_no_delay(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_no_delay,
+      WebSocketPeer._bindings.method_set_no_delay,
       this._owner,
       _enabled
     );
@@ -403,7 +404,7 @@ export class WebSocketPeer extends PacketPeer{
   }
   get_current_outbound_buffered_amount() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_current_outbound_buffered_amount,
+      WebSocketPeer._bindings.method_get_current_outbound_buffered_amount,
       this._owner,
 			Variant.Type.INT,
       
@@ -412,7 +413,7 @@ export class WebSocketPeer extends PacketPeer{
   }
   get_ready_state() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ready_state,
+      WebSocketPeer._bindings.method_get_ready_state,
       this._owner,
 			Variant.INT,
       
@@ -421,7 +422,7 @@ export class WebSocketPeer extends PacketPeer{
   }
   get_close_code() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_close_code,
+      WebSocketPeer._bindings.method_get_close_code,
       this._owner,
 			Variant.Type.INT,
       
@@ -430,7 +431,7 @@ export class WebSocketPeer extends PacketPeer{
   }
   get_close_reason() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_close_reason,
+      WebSocketPeer._bindings.method_get_close_reason,
       this._owner,
 			Variant.Type.STRING,
     
@@ -440,7 +441,7 @@ export class WebSocketPeer extends PacketPeer{
   }
   get_supported_protocols() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_supported_protocols,
+      WebSocketPeer._bindings.method_get_supported_protocols,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -450,7 +451,7 @@ export class WebSocketPeer extends PacketPeer{
   }
   set_supported_protocols(_protocols) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_supported_protocols,
+      WebSocketPeer._bindings.method_set_supported_protocols,
       this._owner,
       _protocols
     );
@@ -458,7 +459,7 @@ export class WebSocketPeer extends PacketPeer{
   }
   get_handshake_headers() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_handshake_headers,
+      WebSocketPeer._bindings.method_get_handshake_headers,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -468,7 +469,7 @@ export class WebSocketPeer extends PacketPeer{
   }
   set_handshake_headers(_protocols) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_handshake_headers,
+      WebSocketPeer._bindings.method_set_handshake_headers,
       this._owner,
       _protocols
     );
@@ -476,7 +477,7 @@ export class WebSocketPeer extends PacketPeer{
   }
   get_inbound_buffer_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_inbound_buffer_size,
+      WebSocketPeer._bindings.method_get_inbound_buffer_size,
       this._owner,
 			Variant.Type.INT,
       
@@ -485,7 +486,7 @@ export class WebSocketPeer extends PacketPeer{
   }
   set_inbound_buffer_size(_buffer_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_inbound_buffer_size,
+      WebSocketPeer._bindings.method_set_inbound_buffer_size,
       this._owner,
       _buffer_size
     );
@@ -493,7 +494,7 @@ export class WebSocketPeer extends PacketPeer{
   }
   get_outbound_buffer_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_outbound_buffer_size,
+      WebSocketPeer._bindings.method_get_outbound_buffer_size,
       this._owner,
 			Variant.Type.INT,
       
@@ -502,7 +503,7 @@ export class WebSocketPeer extends PacketPeer{
   }
   set_outbound_buffer_size(_buffer_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_outbound_buffer_size,
+      WebSocketPeer._bindings.method_set_outbound_buffer_size,
       this._owner,
       _buffer_size
     );
@@ -510,7 +511,7 @@ export class WebSocketPeer extends PacketPeer{
   }
   set_max_queued_packets(_buffer_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_max_queued_packets,
+      WebSocketPeer._bindings.method_set_max_queued_packets,
       this._owner,
       _buffer_size
     );
@@ -518,7 +519,7 @@ export class WebSocketPeer extends PacketPeer{
   }
   get_max_queued_packets() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_max_queued_packets,
+      WebSocketPeer._bindings.method_get_max_queued_packets,
       this._owner,
 			Variant.Type.INT,
       

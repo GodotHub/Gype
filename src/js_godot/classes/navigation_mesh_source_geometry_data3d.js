@@ -1,12 +1,12 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
+import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
+import { GDArray } from '@js_godot/variant/gd_array'
+import { PackedVector3Array } from '@js_godot/variant/packed_vector3_array'
+import { PackedFloat32Array } from '@js_godot/variant/packed_float32_array'
 import { Transform3D } from '@js_godot/variant/transform3d'
 import { Resource } from '@js_godot/classes/resource'
-import { PackedVector3Array } from '@js_godot/variant/packed_vector3_array'
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
-import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
-import { PackedFloat32Array } from '@js_godot/variant/packed_float32_array'
-import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -185,9 +185,10 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
       );
     }
   }
+  
   set_vertices(_vertices) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vertices,
+      NavigationMeshSourceGeometryData3D._bindings.method_set_vertices,
       this._owner,
       _vertices
     );
@@ -195,7 +196,7 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
   }
   get_vertices() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vertices,
+      NavigationMeshSourceGeometryData3D._bindings.method_get_vertices,
       this._owner,
 			Variant.Type.PACKED_FLOAT32_ARRAY,
     
@@ -205,7 +206,7 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
   }
   set_indices(_indices) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_indices,
+      NavigationMeshSourceGeometryData3D._bindings.method_set_indices,
       this._owner,
       _indices
     );
@@ -213,7 +214,7 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
   }
   get_indices() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_indices,
+      NavigationMeshSourceGeometryData3D._bindings.method_get_indices,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -223,7 +224,7 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
   }
   append_arrays(_vertices, _indices) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_append_arrays,
+      NavigationMeshSourceGeometryData3D._bindings.method_append_arrays,
       this._owner,
       _vertices, _indices
     );
@@ -231,7 +232,7 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
   }
   clear() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear,
+      NavigationMeshSourceGeometryData3D._bindings.method_clear,
       this._owner,
       
     );
@@ -239,7 +240,7 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
   }
   has_data() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_data,
+      NavigationMeshSourceGeometryData3D._bindings.method_has_data,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -248,7 +249,7 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
   }
   add_mesh(_mesh, _xform) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_mesh,
+      NavigationMeshSourceGeometryData3D._bindings.method_add_mesh,
       this._owner,
       _mesh, _xform
     );
@@ -256,7 +257,7 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
   }
   add_mesh_array(_mesh_array, _xform) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_mesh_array,
+      NavigationMeshSourceGeometryData3D._bindings.method_add_mesh_array,
       this._owner,
       _mesh_array, _xform
     );
@@ -264,7 +265,7 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
   }
   add_faces(_faces, _xform) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_faces,
+      NavigationMeshSourceGeometryData3D._bindings.method_add_faces,
       this._owner,
       _faces, _xform
     );
@@ -272,7 +273,7 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
   }
   merge(_other_geometry) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_merge,
+      NavigationMeshSourceGeometryData3D._bindings.method_merge,
       this._owner,
       _other_geometry
     );
@@ -280,7 +281,7 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
   }
   add_projected_obstruction(_vertices, _elevation, _height, _carve) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_projected_obstruction,
+      NavigationMeshSourceGeometryData3D._bindings.method_add_projected_obstruction,
       this._owner,
       _vertices, _elevation, _height, _carve
     );
@@ -288,7 +289,7 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
   }
   clear_projected_obstructions() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_projected_obstructions,
+      NavigationMeshSourceGeometryData3D._bindings.method_clear_projected_obstructions,
       this._owner,
       
     );
@@ -296,7 +297,7 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
   }
   set_projected_obstructions(_projected_obstructions) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_projected_obstructions,
+      NavigationMeshSourceGeometryData3D._bindings.method_set_projected_obstructions,
       this._owner,
       _projected_obstructions
     );
@@ -304,7 +305,7 @@ export class NavigationMeshSourceGeometryData3D extends Resource{
   }
   get_projected_obstructions() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_projected_obstructions,
+      NavigationMeshSourceGeometryData3D._bindings.method_get_projected_obstructions,
       this._owner,
 			Variant.Type.ARRAY,
     

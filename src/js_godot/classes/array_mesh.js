@@ -1,13 +1,13 @@
 import * as internal from '__internal__';
-import { Dictionary } from '@js_godot/variant/dictionary'
+import { GDArray } from '@js_godot/variant/gd_array'
 import { Transform3D } from '@js_godot/variant/transform3d'
-import { Mesh } from '@js_godot/classes/mesh'
+import { AABB } from '@js_godot/variant/aabb'
 import { Variant } from '@js_godot/variant/variant'
+import { Mesh } from '@js_godot/classes/mesh'
 import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
 import { StringName } from '@js_godot/variant/string_name'
-import { AABB } from '@js_godot/variant/aabb'
+import { Dictionary } from '@js_godot/variant/dictionary'
 import { GDString } from '@js_godot/variant/gd_string'
-import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -286,9 +286,10 @@ export class ArrayMesh extends Mesh{
       );
     }
   }
+  
   add_blend_shape(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_blend_shape,
+      ArrayMesh._bindings.method_add_blend_shape,
       this._owner,
       _name
     );
@@ -296,7 +297,7 @@ export class ArrayMesh extends Mesh{
   }
   get_blend_shape_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_blend_shape_count,
+      ArrayMesh._bindings.method_get_blend_shape_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -305,7 +306,7 @@ export class ArrayMesh extends Mesh{
   }
   get_blend_shape_name(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_blend_shape_name,
+      ArrayMesh._bindings.method_get_blend_shape_name,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -315,7 +316,7 @@ export class ArrayMesh extends Mesh{
   }
   set_blend_shape_name(_index, _name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_blend_shape_name,
+      ArrayMesh._bindings.method_set_blend_shape_name,
       this._owner,
       _index, _name
     );
@@ -323,7 +324,7 @@ export class ArrayMesh extends Mesh{
   }
   clear_blend_shapes() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_blend_shapes,
+      ArrayMesh._bindings.method_clear_blend_shapes,
       this._owner,
       
     );
@@ -331,7 +332,7 @@ export class ArrayMesh extends Mesh{
   }
   set_blend_shape_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_blend_shape_mode,
+      ArrayMesh._bindings.method_set_blend_shape_mode,
       this._owner,
       _mode
     );
@@ -339,7 +340,7 @@ export class ArrayMesh extends Mesh{
   }
   get_blend_shape_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_blend_shape_mode,
+      ArrayMesh._bindings.method_get_blend_shape_mode,
       this._owner,
 			Variant.INT,
       
@@ -348,7 +349,7 @@ export class ArrayMesh extends Mesh{
   }
   add_surface_from_arrays(_primitive, _arrays, _blend_shapes, _lods, _flags) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_surface_from_arrays,
+      ArrayMesh._bindings.method_add_surface_from_arrays,
       this._owner,
       _primitive, _arrays, _blend_shapes, _lods, _flags
     );
@@ -356,7 +357,7 @@ export class ArrayMesh extends Mesh{
   }
   clear_surfaces() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_surfaces,
+      ArrayMesh._bindings.method_clear_surfaces,
       this._owner,
       
     );
@@ -364,7 +365,7 @@ export class ArrayMesh extends Mesh{
   }
   surface_update_vertex_region(_surf_idx, _offset, _data) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_surface_update_vertex_region,
+      ArrayMesh._bindings.method_surface_update_vertex_region,
       this._owner,
       _surf_idx, _offset, _data
     );
@@ -372,7 +373,7 @@ export class ArrayMesh extends Mesh{
   }
   surface_update_attribute_region(_surf_idx, _offset, _data) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_surface_update_attribute_region,
+      ArrayMesh._bindings.method_surface_update_attribute_region,
       this._owner,
       _surf_idx, _offset, _data
     );
@@ -380,7 +381,7 @@ export class ArrayMesh extends Mesh{
   }
   surface_update_skin_region(_surf_idx, _offset, _data) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_surface_update_skin_region,
+      ArrayMesh._bindings.method_surface_update_skin_region,
       this._owner,
       _surf_idx, _offset, _data
     );
@@ -388,7 +389,7 @@ export class ArrayMesh extends Mesh{
   }
   surface_get_array_len(_surf_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_surface_get_array_len,
+      ArrayMesh._bindings.method_surface_get_array_len,
       this._owner,
 			Variant.Type.INT,
       _surf_idx
@@ -397,7 +398,7 @@ export class ArrayMesh extends Mesh{
   }
   surface_get_array_index_len(_surf_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_surface_get_array_index_len,
+      ArrayMesh._bindings.method_surface_get_array_index_len,
       this._owner,
 			Variant.Type.INT,
       _surf_idx
@@ -406,7 +407,7 @@ export class ArrayMesh extends Mesh{
   }
   surface_get_format(_surf_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_surface_get_format,
+      ArrayMesh._bindings.method_surface_get_format,
       this._owner,
 			Variant.INT,
       _surf_idx
@@ -415,7 +416,7 @@ export class ArrayMesh extends Mesh{
   }
   surface_get_primitive_type(_surf_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_surface_get_primitive_type,
+      ArrayMesh._bindings.method_surface_get_primitive_type,
       this._owner,
 			Variant.INT,
       _surf_idx
@@ -424,7 +425,7 @@ export class ArrayMesh extends Mesh{
   }
   surface_find_by_name(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_surface_find_by_name,
+      ArrayMesh._bindings.method_surface_find_by_name,
       this._owner,
 			Variant.Type.INT,
       _name
@@ -433,7 +434,7 @@ export class ArrayMesh extends Mesh{
   }
   surface_set_name(_surf_idx, _name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_surface_set_name,
+      ArrayMesh._bindings.method_surface_set_name,
       this._owner,
       _surf_idx, _name
     );
@@ -441,7 +442,7 @@ export class ArrayMesh extends Mesh{
   }
   surface_get_name(_surf_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_surface_get_name,
+      ArrayMesh._bindings.method_surface_get_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -451,7 +452,7 @@ export class ArrayMesh extends Mesh{
   }
   regen_normal_maps() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_regen_normal_maps,
+      ArrayMesh._bindings.method_regen_normal_maps,
       this._owner,
       
     );
@@ -459,7 +460,7 @@ export class ArrayMesh extends Mesh{
   }
   lightmap_unwrap(_transform, _texel_size) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_lightmap_unwrap,
+      ArrayMesh._bindings.method_lightmap_unwrap,
       this._owner,
 			Variant.INT,
       _transform, _texel_size
@@ -468,7 +469,7 @@ export class ArrayMesh extends Mesh{
   }
   set_custom_aabb(_aabb) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_custom_aabb,
+      ArrayMesh._bindings.method_set_custom_aabb,
       this._owner,
       _aabb
     );
@@ -476,7 +477,7 @@ export class ArrayMesh extends Mesh{
   }
   get_custom_aabb() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_custom_aabb,
+      ArrayMesh._bindings.method_get_custom_aabb,
       this._owner,
 			Variant.Type.AABB,
     
@@ -486,7 +487,7 @@ export class ArrayMesh extends Mesh{
   }
   set_shadow_mesh(_mesh) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shadow_mesh,
+      ArrayMesh._bindings.method_set_shadow_mesh,
       this._owner,
       _mesh
     );
@@ -494,7 +495,7 @@ export class ArrayMesh extends Mesh{
   }
   get_shadow_mesh() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_shadow_mesh,
+      ArrayMesh._bindings.method_get_shadow_mesh,
       this._owner,
 			Variant.INT,
       

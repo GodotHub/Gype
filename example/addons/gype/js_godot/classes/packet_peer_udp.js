@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { GDString } from '@js_godot/variant/gd_string'
+import { StringName } from '@js_godot/variant/string_name'
 import { PacketPeer } from '@js_godot/classes/packet_peer'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -161,9 +161,10 @@ export class PacketPeerUDP extends PacketPeer{
       );
     }
   }
+  
   bind(_port, _bind_address, _recv_buf_size) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_bind,
+      PacketPeerUDP._bindings.method_bind,
       this._owner,
 			Variant.INT,
       _port, _bind_address, _recv_buf_size
@@ -172,7 +173,7 @@ export class PacketPeerUDP extends PacketPeer{
   }
   close() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_close,
+      PacketPeerUDP._bindings.method_close,
       this._owner,
       
     );
@@ -180,7 +181,7 @@ export class PacketPeerUDP extends PacketPeer{
   }
   wait() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_wait,
+      PacketPeerUDP._bindings.method_wait,
       this._owner,
 			Variant.INT,
       
@@ -189,7 +190,7 @@ export class PacketPeerUDP extends PacketPeer{
   }
   is_bound() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_bound,
+      PacketPeerUDP._bindings.method_is_bound,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -198,7 +199,7 @@ export class PacketPeerUDP extends PacketPeer{
   }
   connect_to_host(_host, _port) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_connect_to_host,
+      PacketPeerUDP._bindings.method_connect_to_host,
       this._owner,
 			Variant.INT,
       _host, _port
@@ -207,7 +208,7 @@ export class PacketPeerUDP extends PacketPeer{
   }
   is_socket_connected() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_socket_connected,
+      PacketPeerUDP._bindings.method_is_socket_connected,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -216,7 +217,7 @@ export class PacketPeerUDP extends PacketPeer{
   }
   get_packet_ip() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_packet_ip,
+      PacketPeerUDP._bindings.method_get_packet_ip,
       this._owner,
 			Variant.Type.STRING,
     
@@ -226,7 +227,7 @@ export class PacketPeerUDP extends PacketPeer{
   }
   get_packet_port() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_packet_port,
+      PacketPeerUDP._bindings.method_get_packet_port,
       this._owner,
 			Variant.Type.INT,
       
@@ -235,7 +236,7 @@ export class PacketPeerUDP extends PacketPeer{
   }
   get_local_port() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_local_port,
+      PacketPeerUDP._bindings.method_get_local_port,
       this._owner,
 			Variant.Type.INT,
       
@@ -244,7 +245,7 @@ export class PacketPeerUDP extends PacketPeer{
   }
   set_dest_address(_host, _port) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_set_dest_address,
+      PacketPeerUDP._bindings.method_set_dest_address,
       this._owner,
 			Variant.INT,
       _host, _port
@@ -253,7 +254,7 @@ export class PacketPeerUDP extends PacketPeer{
   }
   set_broadcast_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_broadcast_enabled,
+      PacketPeerUDP._bindings.method_set_broadcast_enabled,
       this._owner,
       _enabled
     );
@@ -261,7 +262,7 @@ export class PacketPeerUDP extends PacketPeer{
   }
   join_multicast_group(_multicast_address, _interface_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_join_multicast_group,
+      PacketPeerUDP._bindings.method_join_multicast_group,
       this._owner,
 			Variant.INT,
       _multicast_address, _interface_name
@@ -270,7 +271,7 @@ export class PacketPeerUDP extends PacketPeer{
   }
   leave_multicast_group(_multicast_address, _interface_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_leave_multicast_group,
+      PacketPeerUDP._bindings.method_leave_multicast_group,
       this._owner,
 			Variant.INT,
       _multicast_address, _interface_name

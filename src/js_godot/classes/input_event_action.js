@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { InputEvent } from '@js_godot/classes/input_event'
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { InputEvent } from '@js_godot/classes/input_event'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -100,9 +100,10 @@ export class InputEventAction extends InputEvent{
       );
     }
   }
+  
   set_action(_action) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_action,
+      InputEventAction._bindings.method_set_action,
       this._owner,
       _action
     );
@@ -110,7 +111,7 @@ export class InputEventAction extends InputEvent{
   }
   get_action() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_action,
+      InputEventAction._bindings.method_get_action,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -120,7 +121,7 @@ export class InputEventAction extends InputEvent{
   }
   set_pressed(_pressed) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_pressed,
+      InputEventAction._bindings.method_set_pressed,
       this._owner,
       _pressed
     );
@@ -128,7 +129,7 @@ export class InputEventAction extends InputEvent{
   }
   set_strength(_strength) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_strength,
+      InputEventAction._bindings.method_set_strength,
       this._owner,
       _strength
     );
@@ -136,7 +137,7 @@ export class InputEventAction extends InputEvent{
   }
   get_strength() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_strength,
+      InputEventAction._bindings.method_get_strength,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -145,7 +146,7 @@ export class InputEventAction extends InputEvent{
   }
   set_event_index(_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_event_index,
+      InputEventAction._bindings.method_set_event_index,
       this._owner,
       _index
     );
@@ -153,7 +154,7 @@ export class InputEventAction extends InputEvent{
   }
   get_event_index() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_event_index,
+      InputEventAction._bindings.method_get_event_index,
       this._owner,
 			Variant.Type.INT,
       

@@ -31,6 +31,7 @@ export class VisualShaderNodeTexture2DArrayParameter extends VisualShaderNodeTex
     this.#initialized = true;
   }
   
+  
 
 
   static {

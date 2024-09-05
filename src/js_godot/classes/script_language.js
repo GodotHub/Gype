@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { GodotObject } from '@js_godot/classes/godot_object'
 import {
   call_utility_ret,
@@ -30,6 +30,7 @@ export class ScriptLanguage extends GodotObject{
     }
     this.#initialized = true;
   }
+  
   
 
   static ScriptNameCasing = {

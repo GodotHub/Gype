@@ -1,12 +1,12 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
+import { Vector2 } from '@js_godot/variant/vector2'
 import { Resource } from '@js_godot/classes/resource'
+import { RID } from '@js_godot/variant/rid'
 import { StringName } from '@js_godot/variant/string_name'
 import { Color } from '@js_godot/variant/color'
-import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
-import { Vector2 } from '@js_godot/variant/vector2'
-import { RID } from '@js_godot/variant/rid'
+import { Variant } from '@js_godot/variant/variant'
 import { Rect2 } from '@js_godot/variant/rect2'
+import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
 import { Transform2D } from '@js_godot/variant/transform2d'
 import {
   call_utility_ret,
@@ -116,9 +116,10 @@ export class Shape2D extends Resource{
       );
     }
   }
+  
   set_custom_solver_bias(_bias) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_custom_solver_bias,
+      Shape2D._bindings.method_set_custom_solver_bias,
       this._owner,
       _bias
     );
@@ -126,7 +127,7 @@ export class Shape2D extends Resource{
   }
   get_custom_solver_bias() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_custom_solver_bias,
+      Shape2D._bindings.method_get_custom_solver_bias,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -135,7 +136,7 @@ export class Shape2D extends Resource{
   }
   collide(_local_xform, _with_shape, _shape_xform) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_collide,
+      Shape2D._bindings.method_collide,
       this._owner,
 			Variant.Type.BOOL,
       _local_xform, _with_shape, _shape_xform
@@ -144,7 +145,7 @@ export class Shape2D extends Resource{
   }
   collide_with_motion(_local_xform, _local_motion, _with_shape, _shape_xform, _shape_motion) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_collide_with_motion,
+      Shape2D._bindings.method_collide_with_motion,
       this._owner,
 			Variant.Type.BOOL,
       _local_xform, _local_motion, _with_shape, _shape_xform, _shape_motion
@@ -153,7 +154,7 @@ export class Shape2D extends Resource{
   }
   collide_and_get_contacts(_local_xform, _with_shape, _shape_xform) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_collide_and_get_contacts,
+      Shape2D._bindings.method_collide_and_get_contacts,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -163,7 +164,7 @@ export class Shape2D extends Resource{
   }
   collide_with_motion_and_get_contacts(_local_xform, _local_motion, _with_shape, _shape_xform, _shape_motion) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_collide_with_motion_and_get_contacts,
+      Shape2D._bindings.method_collide_with_motion_and_get_contacts,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -173,7 +174,7 @@ export class Shape2D extends Resource{
   }
   draw(_canvas_item, _color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_draw,
+      Shape2D._bindings.method_draw,
       this._owner,
       _canvas_item, _color
     );
@@ -181,7 +182,7 @@ export class Shape2D extends Resource{
   }
   get_rect() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rect,
+      Shape2D._bindings.method_get_rect,
       this._owner,
 			Variant.Type.RECT2,
     

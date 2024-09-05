@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { ImageTextureLayered } from '@js_godot/classes/image_texture_layered'
+import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
@@ -40,9 +40,10 @@ export class Texture2DArray extends ImageTextureLayered{
       );
     }
   }
+  
   create_placeholder() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_placeholder,
+      Texture2DArray._bindings.method_create_placeholder,
       this._owner,
 			Variant.INT,
       

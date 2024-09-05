@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { StringName } from '@js_godot/variant/string_name'
 import { RID } from '@js_godot/variant/rid'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -162,9 +162,10 @@ export class PhysicsTestMotionResult2D extends RefCounted{
       );
     }
   }
+  
   get_travel() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_travel,
+      PhysicsTestMotionResult2D._bindings.method_get_travel,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -174,7 +175,7 @@ export class PhysicsTestMotionResult2D extends RefCounted{
   }
   get_remainder() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_remainder,
+      PhysicsTestMotionResult2D._bindings.method_get_remainder,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -184,7 +185,7 @@ export class PhysicsTestMotionResult2D extends RefCounted{
   }
   get_collision_point() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_point,
+      PhysicsTestMotionResult2D._bindings.method_get_collision_point,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -194,7 +195,7 @@ export class PhysicsTestMotionResult2D extends RefCounted{
   }
   get_collision_normal() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_normal,
+      PhysicsTestMotionResult2D._bindings.method_get_collision_normal,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -204,7 +205,7 @@ export class PhysicsTestMotionResult2D extends RefCounted{
   }
   get_collider_velocity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collider_velocity,
+      PhysicsTestMotionResult2D._bindings.method_get_collider_velocity,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -214,7 +215,7 @@ export class PhysicsTestMotionResult2D extends RefCounted{
   }
   get_collider_id() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collider_id,
+      PhysicsTestMotionResult2D._bindings.method_get_collider_id,
       this._owner,
 			Variant.Type.INT,
       
@@ -223,7 +224,7 @@ export class PhysicsTestMotionResult2D extends RefCounted{
   }
   get_collider_rid() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collider_rid,
+      PhysicsTestMotionResult2D._bindings.method_get_collider_rid,
       this._owner,
 			Variant.Type.RID,
     
@@ -233,7 +234,7 @@ export class PhysicsTestMotionResult2D extends RefCounted{
   }
   get_collider() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collider,
+      PhysicsTestMotionResult2D._bindings.method_get_collider,
       this._owner,
 			Variant.INT,
       
@@ -242,7 +243,7 @@ export class PhysicsTestMotionResult2D extends RefCounted{
   }
   get_collider_shape() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collider_shape,
+      PhysicsTestMotionResult2D._bindings.method_get_collider_shape,
       this._owner,
 			Variant.Type.INT,
       
@@ -251,7 +252,7 @@ export class PhysicsTestMotionResult2D extends RefCounted{
   }
   get_collision_local_shape() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_local_shape,
+      PhysicsTestMotionResult2D._bindings.method_get_collision_local_shape,
       this._owner,
 			Variant.Type.INT,
       
@@ -260,7 +261,7 @@ export class PhysicsTestMotionResult2D extends RefCounted{
   }
   get_collision_depth() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_depth,
+      PhysicsTestMotionResult2D._bindings.method_get_collision_depth,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -269,7 +270,7 @@ export class PhysicsTestMotionResult2D extends RefCounted{
   }
   get_collision_safe_fraction() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_safe_fraction,
+      PhysicsTestMotionResult2D._bindings.method_get_collision_safe_fraction,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -278,7 +279,7 @@ export class PhysicsTestMotionResult2D extends RefCounted{
   }
   get_collision_unsafe_fraction() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_unsafe_fraction,
+      PhysicsTestMotionResult2D._bindings.method_get_collision_unsafe_fraction,
       this._owner,
 			Variant.Type.FLOAT,
       

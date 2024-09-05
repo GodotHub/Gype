@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { VBoxContainer } from '@js_godot/classes/v_box_container'
 import { StringName } from '@js_godot/variant/string_name'
-import { Color } from '@js_godot/variant/color'
+import { VBoxContainer } from '@js_godot/classes/v_box_container'
 import { PackedColorArray } from '@js_godot/variant/packed_color_array'
+import { Color } from '@js_godot/variant/color'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -312,9 +312,10 @@ export class ColorPicker extends VBoxContainer{
       );
     }
   }
+  
   set_pick_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_pick_color,
+      ColorPicker._bindings.method_set_pick_color,
       this._owner,
       _color
     );
@@ -322,7 +323,7 @@ export class ColorPicker extends VBoxContainer{
   }
   get_pick_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_pick_color,
+      ColorPicker._bindings.method_get_pick_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -332,7 +333,7 @@ export class ColorPicker extends VBoxContainer{
   }
   set_deferred_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_deferred_mode,
+      ColorPicker._bindings.method_set_deferred_mode,
       this._owner,
       _mode
     );
@@ -340,7 +341,7 @@ export class ColorPicker extends VBoxContainer{
   }
   is_deferred_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_deferred_mode,
+      ColorPicker._bindings.method_is_deferred_mode,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -349,7 +350,7 @@ export class ColorPicker extends VBoxContainer{
   }
   set_color_mode(_color_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_color_mode,
+      ColorPicker._bindings.method_set_color_mode,
       this._owner,
       _color_mode
     );
@@ -357,7 +358,7 @@ export class ColorPicker extends VBoxContainer{
   }
   get_color_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_color_mode,
+      ColorPicker._bindings.method_get_color_mode,
       this._owner,
 			Variant.INT,
       
@@ -366,7 +367,7 @@ export class ColorPicker extends VBoxContainer{
   }
   set_edit_alpha(_show) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_edit_alpha,
+      ColorPicker._bindings.method_set_edit_alpha,
       this._owner,
       _show
     );
@@ -374,7 +375,7 @@ export class ColorPicker extends VBoxContainer{
   }
   is_editing_alpha() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_editing_alpha,
+      ColorPicker._bindings.method_is_editing_alpha,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -383,7 +384,7 @@ export class ColorPicker extends VBoxContainer{
   }
   set_can_add_swatches(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_can_add_swatches,
+      ColorPicker._bindings.method_set_can_add_swatches,
       this._owner,
       _enabled
     );
@@ -391,7 +392,7 @@ export class ColorPicker extends VBoxContainer{
   }
   are_swatches_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_are_swatches_enabled,
+      ColorPicker._bindings.method_are_swatches_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -400,7 +401,7 @@ export class ColorPicker extends VBoxContainer{
   }
   set_presets_visible(_visible) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_presets_visible,
+      ColorPicker._bindings.method_set_presets_visible,
       this._owner,
       _visible
     );
@@ -408,7 +409,7 @@ export class ColorPicker extends VBoxContainer{
   }
   are_presets_visible() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_are_presets_visible,
+      ColorPicker._bindings.method_are_presets_visible,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -417,7 +418,7 @@ export class ColorPicker extends VBoxContainer{
   }
   set_modes_visible(_visible) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_modes_visible,
+      ColorPicker._bindings.method_set_modes_visible,
       this._owner,
       _visible
     );
@@ -425,7 +426,7 @@ export class ColorPicker extends VBoxContainer{
   }
   are_modes_visible() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_are_modes_visible,
+      ColorPicker._bindings.method_are_modes_visible,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -434,7 +435,7 @@ export class ColorPicker extends VBoxContainer{
   }
   set_sampler_visible(_visible) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sampler_visible,
+      ColorPicker._bindings.method_set_sampler_visible,
       this._owner,
       _visible
     );
@@ -442,7 +443,7 @@ export class ColorPicker extends VBoxContainer{
   }
   is_sampler_visible() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_sampler_visible,
+      ColorPicker._bindings.method_is_sampler_visible,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -451,7 +452,7 @@ export class ColorPicker extends VBoxContainer{
   }
   set_sliders_visible(_visible) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sliders_visible,
+      ColorPicker._bindings.method_set_sliders_visible,
       this._owner,
       _visible
     );
@@ -459,7 +460,7 @@ export class ColorPicker extends VBoxContainer{
   }
   are_sliders_visible() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_are_sliders_visible,
+      ColorPicker._bindings.method_are_sliders_visible,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -468,7 +469,7 @@ export class ColorPicker extends VBoxContainer{
   }
   set_hex_visible(_visible) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_hex_visible,
+      ColorPicker._bindings.method_set_hex_visible,
       this._owner,
       _visible
     );
@@ -476,7 +477,7 @@ export class ColorPicker extends VBoxContainer{
   }
   is_hex_visible() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_hex_visible,
+      ColorPicker._bindings.method_is_hex_visible,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -485,7 +486,7 @@ export class ColorPicker extends VBoxContainer{
   }
   add_preset(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_preset,
+      ColorPicker._bindings.method_add_preset,
       this._owner,
       _color
     );
@@ -493,7 +494,7 @@ export class ColorPicker extends VBoxContainer{
   }
   erase_preset(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_erase_preset,
+      ColorPicker._bindings.method_erase_preset,
       this._owner,
       _color
     );
@@ -501,7 +502,7 @@ export class ColorPicker extends VBoxContainer{
   }
   get_presets() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_presets,
+      ColorPicker._bindings.method_get_presets,
       this._owner,
 			Variant.Type.PACKED_COLOR_ARRAY,
     
@@ -511,7 +512,7 @@ export class ColorPicker extends VBoxContainer{
   }
   add_recent_preset(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_recent_preset,
+      ColorPicker._bindings.method_add_recent_preset,
       this._owner,
       _color
     );
@@ -519,7 +520,7 @@ export class ColorPicker extends VBoxContainer{
   }
   erase_recent_preset(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_erase_recent_preset,
+      ColorPicker._bindings.method_erase_recent_preset,
       this._owner,
       _color
     );
@@ -527,7 +528,7 @@ export class ColorPicker extends VBoxContainer{
   }
   get_recent_presets() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_recent_presets,
+      ColorPicker._bindings.method_get_recent_presets,
       this._owner,
 			Variant.Type.PACKED_COLOR_ARRAY,
     
@@ -537,7 +538,7 @@ export class ColorPicker extends VBoxContainer{
   }
   set_picker_shape(_shape) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_picker_shape,
+      ColorPicker._bindings.method_set_picker_shape,
       this._owner,
       _shape
     );
@@ -545,7 +546,7 @@ export class ColorPicker extends VBoxContainer{
   }
   get_picker_shape() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_picker_shape,
+      ColorPicker._bindings.method_get_picker_shape,
       this._owner,
 			Variant.INT,
       

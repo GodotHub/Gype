@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Resource } from '@js_godot/classes/resource'
-import { Vector3 } from '@js_godot/variant/vector3'
-import { StringName } from '@js_godot/variant/string_name'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { Resource } from '@js_godot/classes/resource'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
+import { Vector3 } from '@js_godot/variant/vector3'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -122,9 +122,10 @@ export class Noise extends Resource{
       );
     }
   }
+  
   get_noise_1d(_x) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_noise_1d,
+      Noise._bindings.method_get_noise_1d,
       this._owner,
 			Variant.Type.FLOAT,
       _x
@@ -133,7 +134,7 @@ export class Noise extends Resource{
   }
   get_noise_2d(_x, _y) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_noise_2d,
+      Noise._bindings.method_get_noise_2d,
       this._owner,
 			Variant.Type.FLOAT,
       _x, _y
@@ -142,7 +143,7 @@ export class Noise extends Resource{
   }
   get_noise_2dv(_v) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_noise_2dv,
+      Noise._bindings.method_get_noise_2dv,
       this._owner,
 			Variant.Type.FLOAT,
       _v
@@ -151,7 +152,7 @@ export class Noise extends Resource{
   }
   get_noise_3d(_x, _y, _z) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_noise_3d,
+      Noise._bindings.method_get_noise_3d,
       this._owner,
 			Variant.Type.FLOAT,
       _x, _y, _z
@@ -160,7 +161,7 @@ export class Noise extends Resource{
   }
   get_noise_3dv(_v) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_noise_3dv,
+      Noise._bindings.method_get_noise_3dv,
       this._owner,
 			Variant.Type.FLOAT,
       _v
@@ -169,7 +170,7 @@ export class Noise extends Resource{
   }
   get_image(_width, _height, _invert, _in_3d_space, _normalize) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_image,
+      Noise._bindings.method_get_image,
       this._owner,
 			Variant.INT,
       _width, _height, _invert, _in_3d_space, _normalize
@@ -178,7 +179,7 @@ export class Noise extends Resource{
   }
   get_seamless_image(_width, _height, _invert, _in_3d_space, _skirt, _normalize) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_seamless_image,
+      Noise._bindings.method_get_seamless_image,
       this._owner,
 			Variant.INT,
       _width, _height, _invert, _in_3d_space, _skirt, _normalize
@@ -187,7 +188,7 @@ export class Noise extends Resource{
   }
   get_image_3d(_width, _height, _depth, _invert, _normalize) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_image_3d,
+      Noise._bindings.method_get_image_3d,
       this._owner,
 			Variant.INT,
       _width, _height, _depth, _invert, _normalize
@@ -196,7 +197,7 @@ export class Noise extends Resource{
   }
   get_seamless_image_3d(_width, _height, _depth, _invert, _skirt, _normalize) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_seamless_image_3d,
+      Noise._bindings.method_get_seamless_image_3d,
       this._owner,
 			Variant.INT,
       _width, _height, _depth, _invert, _skirt, _normalize

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { AudioEffect } from '@js_godot/classes/audio_effect'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -130,9 +130,10 @@ export class AudioEffectDistortion extends AudioEffect{
       );
     }
   }
+  
   set_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mode,
+      AudioEffectDistortion._bindings.method_set_mode,
       this._owner,
       _mode
     );
@@ -140,7 +141,7 @@ export class AudioEffectDistortion extends AudioEffect{
   }
   get_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mode,
+      AudioEffectDistortion._bindings.method_get_mode,
       this._owner,
 			Variant.INT,
       
@@ -149,7 +150,7 @@ export class AudioEffectDistortion extends AudioEffect{
   }
   set_pre_gain(_pre_gain) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_pre_gain,
+      AudioEffectDistortion._bindings.method_set_pre_gain,
       this._owner,
       _pre_gain
     );
@@ -157,7 +158,7 @@ export class AudioEffectDistortion extends AudioEffect{
   }
   get_pre_gain() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_pre_gain,
+      AudioEffectDistortion._bindings.method_get_pre_gain,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -166,7 +167,7 @@ export class AudioEffectDistortion extends AudioEffect{
   }
   set_keep_hf_hz(_keep_hf_hz) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_keep_hf_hz,
+      AudioEffectDistortion._bindings.method_set_keep_hf_hz,
       this._owner,
       _keep_hf_hz
     );
@@ -174,7 +175,7 @@ export class AudioEffectDistortion extends AudioEffect{
   }
   get_keep_hf_hz() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_keep_hf_hz,
+      AudioEffectDistortion._bindings.method_get_keep_hf_hz,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -183,7 +184,7 @@ export class AudioEffectDistortion extends AudioEffect{
   }
   set_drive(_drive) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_drive,
+      AudioEffectDistortion._bindings.method_set_drive,
       this._owner,
       _drive
     );
@@ -191,7 +192,7 @@ export class AudioEffectDistortion extends AudioEffect{
   }
   get_drive() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_drive,
+      AudioEffectDistortion._bindings.method_get_drive,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -200,7 +201,7 @@ export class AudioEffectDistortion extends AudioEffect{
   }
   set_post_gain(_post_gain) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_post_gain,
+      AudioEffectDistortion._bindings.method_set_post_gain,
       this._owner,
       _post_gain
     );
@@ -208,7 +209,7 @@ export class AudioEffectDistortion extends AudioEffect{
   }
   get_post_gain() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_post_gain,
+      AudioEffectDistortion._bindings.method_get_post_gain,
       this._owner,
 			Variant.Type.FLOAT,
       

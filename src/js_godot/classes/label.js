@@ -1,11 +1,11 @@
 import * as internal from '__internal__';
-import { Control } from '@js_godot/classes/control'
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
-import { PackedFloat32Array } from '@js_godot/variant/packed_float32_array'
-import { Rect2 } from '@js_godot/variant/rect2'
 import { GDArray } from '@js_godot/variant/gd_array'
+import { PackedFloat32Array } from '@js_godot/variant/packed_float32_array'
+import { Variant } from '@js_godot/variant/variant'
+import { GDString } from '@js_godot/variant/gd_string'
+import { StringName } from '@js_godot/variant/string_name'
+import { Rect2 } from '@js_godot/variant/rect2'
+import { Control } from '@js_godot/classes/control'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -484,9 +484,10 @@ export class Label extends Control{
       );
     }
   }
+  
   set_horizontal_alignment(_alignment) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_horizontal_alignment,
+      Label._bindings.method_set_horizontal_alignment,
       this._owner,
       _alignment
     );
@@ -494,7 +495,7 @@ export class Label extends Control{
   }
   get_horizontal_alignment() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_horizontal_alignment,
+      Label._bindings.method_get_horizontal_alignment,
       this._owner,
 			Variant.INT,
       
@@ -503,7 +504,7 @@ export class Label extends Control{
   }
   set_vertical_alignment(_alignment) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vertical_alignment,
+      Label._bindings.method_set_vertical_alignment,
       this._owner,
       _alignment
     );
@@ -511,7 +512,7 @@ export class Label extends Control{
   }
   get_vertical_alignment() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vertical_alignment,
+      Label._bindings.method_get_vertical_alignment,
       this._owner,
 			Variant.INT,
       
@@ -520,7 +521,7 @@ export class Label extends Control{
   }
   set_text(_text) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_text,
+      Label._bindings.method_set_text,
       this._owner,
       _text
     );
@@ -528,7 +529,7 @@ export class Label extends Control{
   }
   get_text() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_text,
+      Label._bindings.method_get_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -538,7 +539,7 @@ export class Label extends Control{
   }
   set_label_settings(_settings) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_label_settings,
+      Label._bindings.method_set_label_settings,
       this._owner,
       _settings
     );
@@ -546,7 +547,7 @@ export class Label extends Control{
   }
   get_label_settings() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_label_settings,
+      Label._bindings.method_get_label_settings,
       this._owner,
 			Variant.INT,
       
@@ -555,7 +556,7 @@ export class Label extends Control{
   }
   set_text_direction(_direction) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_text_direction,
+      Label._bindings.method_set_text_direction,
       this._owner,
       _direction
     );
@@ -563,7 +564,7 @@ export class Label extends Control{
   }
   get_text_direction() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_text_direction,
+      Label._bindings.method_get_text_direction,
       this._owner,
 			Variant.INT,
       
@@ -572,7 +573,7 @@ export class Label extends Control{
   }
   set_language(_language) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_language,
+      Label._bindings.method_set_language,
       this._owner,
       _language
     );
@@ -580,7 +581,7 @@ export class Label extends Control{
   }
   get_language() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_language,
+      Label._bindings.method_get_language,
       this._owner,
 			Variant.Type.STRING,
     
@@ -590,7 +591,7 @@ export class Label extends Control{
   }
   set_autowrap_mode(_autowrap_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_autowrap_mode,
+      Label._bindings.method_set_autowrap_mode,
       this._owner,
       _autowrap_mode
     );
@@ -598,7 +599,7 @@ export class Label extends Control{
   }
   get_autowrap_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_autowrap_mode,
+      Label._bindings.method_get_autowrap_mode,
       this._owner,
 			Variant.INT,
       
@@ -607,7 +608,7 @@ export class Label extends Control{
   }
   set_justification_flags(_justification_flags) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_justification_flags,
+      Label._bindings.method_set_justification_flags,
       this._owner,
       _justification_flags
     );
@@ -615,7 +616,7 @@ export class Label extends Control{
   }
   get_justification_flags() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_justification_flags,
+      Label._bindings.method_get_justification_flags,
       this._owner,
 			Variant.INT,
       
@@ -624,7 +625,7 @@ export class Label extends Control{
   }
   set_clip_text(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_clip_text,
+      Label._bindings.method_set_clip_text,
       this._owner,
       _enable
     );
@@ -632,7 +633,7 @@ export class Label extends Control{
   }
   is_clipping_text() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_clipping_text,
+      Label._bindings.method_is_clipping_text,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -641,7 +642,7 @@ export class Label extends Control{
   }
   set_tab_stops(_tab_stops) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tab_stops,
+      Label._bindings.method_set_tab_stops,
       this._owner,
       _tab_stops
     );
@@ -649,7 +650,7 @@ export class Label extends Control{
   }
   get_tab_stops() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tab_stops,
+      Label._bindings.method_get_tab_stops,
       this._owner,
 			Variant.Type.PACKED_FLOAT32_ARRAY,
     
@@ -659,7 +660,7 @@ export class Label extends Control{
   }
   set_text_overrun_behavior(_overrun_behavior) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_text_overrun_behavior,
+      Label._bindings.method_set_text_overrun_behavior,
       this._owner,
       _overrun_behavior
     );
@@ -667,7 +668,7 @@ export class Label extends Control{
   }
   get_text_overrun_behavior() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_text_overrun_behavior,
+      Label._bindings.method_get_text_overrun_behavior,
       this._owner,
 			Variant.INT,
       
@@ -676,7 +677,7 @@ export class Label extends Control{
   }
   set_ellipsis_char(_char) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ellipsis_char,
+      Label._bindings.method_set_ellipsis_char,
       this._owner,
       _char
     );
@@ -684,7 +685,7 @@ export class Label extends Control{
   }
   get_ellipsis_char() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ellipsis_char,
+      Label._bindings.method_get_ellipsis_char,
       this._owner,
 			Variant.Type.STRING,
     
@@ -694,7 +695,7 @@ export class Label extends Control{
   }
   set_uppercase(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_uppercase,
+      Label._bindings.method_set_uppercase,
       this._owner,
       _enable
     );
@@ -702,7 +703,7 @@ export class Label extends Control{
   }
   is_uppercase() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_uppercase,
+      Label._bindings.method_is_uppercase,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -711,7 +712,7 @@ export class Label extends Control{
   }
   get_line_height(_line) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_height,
+      Label._bindings.method_get_line_height,
       this._owner,
 			Variant.Type.INT,
       _line
@@ -720,7 +721,7 @@ export class Label extends Control{
   }
   get_line_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_count,
+      Label._bindings.method_get_line_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -729,7 +730,7 @@ export class Label extends Control{
   }
   get_visible_line_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_visible_line_count,
+      Label._bindings.method_get_visible_line_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -738,7 +739,7 @@ export class Label extends Control{
   }
   get_total_character_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_total_character_count,
+      Label._bindings.method_get_total_character_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -747,7 +748,7 @@ export class Label extends Control{
   }
   set_visible_characters(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_visible_characters,
+      Label._bindings.method_set_visible_characters,
       this._owner,
       _amount
     );
@@ -755,7 +756,7 @@ export class Label extends Control{
   }
   get_visible_characters() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_visible_characters,
+      Label._bindings.method_get_visible_characters,
       this._owner,
 			Variant.Type.INT,
       
@@ -764,7 +765,7 @@ export class Label extends Control{
   }
   get_visible_characters_behavior() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_visible_characters_behavior,
+      Label._bindings.method_get_visible_characters_behavior,
       this._owner,
 			Variant.INT,
       
@@ -773,7 +774,7 @@ export class Label extends Control{
   }
   set_visible_characters_behavior(_behavior) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_visible_characters_behavior,
+      Label._bindings.method_set_visible_characters_behavior,
       this._owner,
       _behavior
     );
@@ -781,7 +782,7 @@ export class Label extends Control{
   }
   set_visible_ratio(_ratio) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_visible_ratio,
+      Label._bindings.method_set_visible_ratio,
       this._owner,
       _ratio
     );
@@ -789,7 +790,7 @@ export class Label extends Control{
   }
   get_visible_ratio() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_visible_ratio,
+      Label._bindings.method_get_visible_ratio,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -798,7 +799,7 @@ export class Label extends Control{
   }
   set_lines_skipped(_lines_skipped) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_lines_skipped,
+      Label._bindings.method_set_lines_skipped,
       this._owner,
       _lines_skipped
     );
@@ -806,7 +807,7 @@ export class Label extends Control{
   }
   get_lines_skipped() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_lines_skipped,
+      Label._bindings.method_get_lines_skipped,
       this._owner,
 			Variant.Type.INT,
       
@@ -815,7 +816,7 @@ export class Label extends Control{
   }
   set_max_lines_visible(_lines_visible) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_max_lines_visible,
+      Label._bindings.method_set_max_lines_visible,
       this._owner,
       _lines_visible
     );
@@ -823,7 +824,7 @@ export class Label extends Control{
   }
   get_max_lines_visible() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_max_lines_visible,
+      Label._bindings.method_get_max_lines_visible,
       this._owner,
 			Variant.Type.INT,
       
@@ -832,7 +833,7 @@ export class Label extends Control{
   }
   set_structured_text_bidi_override(_parser) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_structured_text_bidi_override,
+      Label._bindings.method_set_structured_text_bidi_override,
       this._owner,
       _parser
     );
@@ -840,7 +841,7 @@ export class Label extends Control{
   }
   get_structured_text_bidi_override() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_structured_text_bidi_override,
+      Label._bindings.method_get_structured_text_bidi_override,
       this._owner,
 			Variant.INT,
       
@@ -849,7 +850,7 @@ export class Label extends Control{
   }
   set_structured_text_bidi_override_options(_args) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_structured_text_bidi_override_options,
+      Label._bindings.method_set_structured_text_bidi_override_options,
       this._owner,
       _args
     );
@@ -857,7 +858,7 @@ export class Label extends Control{
   }
   get_structured_text_bidi_override_options() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_structured_text_bidi_override_options,
+      Label._bindings.method_get_structured_text_bidi_override_options,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -867,7 +868,7 @@ export class Label extends Control{
   }
   get_character_bounds(_pos) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_character_bounds,
+      Label._bindings.method_get_character_bounds,
       this._owner,
 			Variant.Type.RECT2,
     

@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
-import { Vector2 } from '@js_godot/variant/vector2'
 import { AnimationRootNode } from '@js_godot/classes/animation_root_node'
+import { Vector2 } from '@js_godot/variant/vector2'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -281,9 +281,10 @@ export class AnimationNodeStateMachine extends AnimationRootNode{
       );
     }
   }
+  
   add_node(_name, _node, _position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_node,
+      AnimationNodeStateMachine._bindings.method_add_node,
       this._owner,
       _name, _node, _position
     );
@@ -291,7 +292,7 @@ export class AnimationNodeStateMachine extends AnimationRootNode{
   }
   replace_node(_name, _node) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_replace_node,
+      AnimationNodeStateMachine._bindings.method_replace_node,
       this._owner,
       _name, _node
     );
@@ -299,7 +300,7 @@ export class AnimationNodeStateMachine extends AnimationRootNode{
   }
   get_node(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_node,
+      AnimationNodeStateMachine._bindings.method_get_node,
       this._owner,
 			Variant.INT,
       _name
@@ -308,7 +309,7 @@ export class AnimationNodeStateMachine extends AnimationRootNode{
   }
   remove_node(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_node,
+      AnimationNodeStateMachine._bindings.method_remove_node,
       this._owner,
       _name
     );
@@ -316,7 +317,7 @@ export class AnimationNodeStateMachine extends AnimationRootNode{
   }
   rename_node(_name, _new_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_rename_node,
+      AnimationNodeStateMachine._bindings.method_rename_node,
       this._owner,
       _name, _new_name
     );
@@ -324,7 +325,7 @@ export class AnimationNodeStateMachine extends AnimationRootNode{
   }
   has_node(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_node,
+      AnimationNodeStateMachine._bindings.method_has_node,
       this._owner,
 			Variant.Type.BOOL,
       _name
@@ -333,7 +334,7 @@ export class AnimationNodeStateMachine extends AnimationRootNode{
   }
   get_node_name(_node) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_node_name,
+      AnimationNodeStateMachine._bindings.method_get_node_name,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -343,7 +344,7 @@ export class AnimationNodeStateMachine extends AnimationRootNode{
   }
   set_node_position(_name, _position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_node_position,
+      AnimationNodeStateMachine._bindings.method_set_node_position,
       this._owner,
       _name, _position
     );
@@ -351,7 +352,7 @@ export class AnimationNodeStateMachine extends AnimationRootNode{
   }
   get_node_position(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_node_position,
+      AnimationNodeStateMachine._bindings.method_get_node_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -361,7 +362,7 @@ export class AnimationNodeStateMachine extends AnimationRootNode{
   }
   has_transition(_from, _to) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_transition,
+      AnimationNodeStateMachine._bindings.method_has_transition,
       this._owner,
 			Variant.Type.BOOL,
       _from, _to
@@ -370,7 +371,7 @@ export class AnimationNodeStateMachine extends AnimationRootNode{
   }
   add_transition(_from, _to, _transition) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_transition,
+      AnimationNodeStateMachine._bindings.method_add_transition,
       this._owner,
       _from, _to, _transition
     );
@@ -378,7 +379,7 @@ export class AnimationNodeStateMachine extends AnimationRootNode{
   }
   get_transition(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_transition,
+      AnimationNodeStateMachine._bindings.method_get_transition,
       this._owner,
 			Variant.INT,
       _idx
@@ -387,7 +388,7 @@ export class AnimationNodeStateMachine extends AnimationRootNode{
   }
   get_transition_from(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_transition_from,
+      AnimationNodeStateMachine._bindings.method_get_transition_from,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -397,7 +398,7 @@ export class AnimationNodeStateMachine extends AnimationRootNode{
   }
   get_transition_to(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_transition_to,
+      AnimationNodeStateMachine._bindings.method_get_transition_to,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -407,7 +408,7 @@ export class AnimationNodeStateMachine extends AnimationRootNode{
   }
   get_transition_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_transition_count,
+      AnimationNodeStateMachine._bindings.method_get_transition_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -416,7 +417,7 @@ export class AnimationNodeStateMachine extends AnimationRootNode{
   }
   remove_transition_by_index(_idx) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_transition_by_index,
+      AnimationNodeStateMachine._bindings.method_remove_transition_by_index,
       this._owner,
       _idx
     );
@@ -424,7 +425,7 @@ export class AnimationNodeStateMachine extends AnimationRootNode{
   }
   remove_transition(_from, _to) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_transition,
+      AnimationNodeStateMachine._bindings.method_remove_transition,
       this._owner,
       _from, _to
     );
@@ -432,7 +433,7 @@ export class AnimationNodeStateMachine extends AnimationRootNode{
   }
   set_graph_offset(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_graph_offset,
+      AnimationNodeStateMachine._bindings.method_set_graph_offset,
       this._owner,
       _offset
     );
@@ -440,7 +441,7 @@ export class AnimationNodeStateMachine extends AnimationRootNode{
   }
   get_graph_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_graph_offset,
+      AnimationNodeStateMachine._bindings.method_get_graph_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -450,7 +451,7 @@ export class AnimationNodeStateMachine extends AnimationRootNode{
   }
   set_state_machine_type(_state_machine_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_state_machine_type,
+      AnimationNodeStateMachine._bindings.method_set_state_machine_type,
       this._owner,
       _state_machine_type
     );
@@ -458,7 +459,7 @@ export class AnimationNodeStateMachine extends AnimationRootNode{
   }
   get_state_machine_type() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_state_machine_type,
+      AnimationNodeStateMachine._bindings.method_get_state_machine_type,
       this._owner,
 			Variant.INT,
       
@@ -467,7 +468,7 @@ export class AnimationNodeStateMachine extends AnimationRootNode{
   }
   set_allow_transition_to_self(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_allow_transition_to_self,
+      AnimationNodeStateMachine._bindings.method_set_allow_transition_to_self,
       this._owner,
       _enable
     );
@@ -475,7 +476,7 @@ export class AnimationNodeStateMachine extends AnimationRootNode{
   }
   is_allow_transition_to_self() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_allow_transition_to_self,
+      AnimationNodeStateMachine._bindings.method_is_allow_transition_to_self,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -484,7 +485,7 @@ export class AnimationNodeStateMachine extends AnimationRootNode{
   }
   set_reset_ends(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_reset_ends,
+      AnimationNodeStateMachine._bindings.method_set_reset_ends,
       this._owner,
       _enable
     );
@@ -492,7 +493,7 @@ export class AnimationNodeStateMachine extends AnimationRootNode{
   }
   are_ends_reset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_are_ends_reset,
+      AnimationNodeStateMachine._bindings.method_are_ends_reset,
       this._owner,
 			Variant.Type.BOOL,
       

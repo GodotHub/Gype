@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { BaseMaterial3D } from '@js_godot/classes/base_material3d'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -30,6 +30,7 @@ export class StandardMaterial3D extends BaseMaterial3D{
     }
     this.#initialized = true;
   }
+  
   
 
 

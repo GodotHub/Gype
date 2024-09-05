@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { GDString } from '@js_godot/variant/gd_string'
+import { StringName } from '@js_godot/variant/string_name'
 import { StreamPeer } from '@js_godot/classes/stream_peer'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -91,9 +91,10 @@ export class StreamPeerTLS extends StreamPeer{
       );
     }
   }
+  
   poll() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_poll,
+      StreamPeerTLS._bindings.method_poll,
       this._owner,
       
     );
@@ -101,7 +102,7 @@ export class StreamPeerTLS extends StreamPeer{
   }
   accept_stream(_stream, _server_options) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_accept_stream,
+      StreamPeerTLS._bindings.method_accept_stream,
       this._owner,
 			Variant.INT,
       _stream, _server_options
@@ -110,7 +111,7 @@ export class StreamPeerTLS extends StreamPeer{
   }
   connect_to_stream(_stream, _common_name, _client_options) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_connect_to_stream,
+      StreamPeerTLS._bindings.method_connect_to_stream,
       this._owner,
 			Variant.INT,
       _stream, _common_name, _client_options
@@ -119,7 +120,7 @@ export class StreamPeerTLS extends StreamPeer{
   }
   get_status() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_status,
+      StreamPeerTLS._bindings.method_get_status,
       this._owner,
 			Variant.INT,
       
@@ -128,7 +129,7 @@ export class StreamPeerTLS extends StreamPeer{
   }
   get_stream() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_stream,
+      StreamPeerTLS._bindings.method_get_stream,
       this._owner,
 			Variant.INT,
       
@@ -137,7 +138,7 @@ export class StreamPeerTLS extends StreamPeer{
   }
   disconnect_from_stream() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_disconnect_from_stream,
+      StreamPeerTLS._bindings.method_disconnect_from_stream,
       this._owner,
       
     );

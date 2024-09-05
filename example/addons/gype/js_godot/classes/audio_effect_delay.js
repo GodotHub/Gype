@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { AudioEffect } from '@js_godot/classes/audio_effect'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -290,9 +290,10 @@ export class AudioEffectDelay extends AudioEffect{
       );
     }
   }
+  
   set_dry(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_dry,
+      AudioEffectDelay._bindings.method_set_dry,
       this._owner,
       _amount
     );
@@ -300,7 +301,7 @@ export class AudioEffectDelay extends AudioEffect{
   }
   get_dry() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_dry,
+      AudioEffectDelay._bindings.method_get_dry,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -309,7 +310,7 @@ export class AudioEffectDelay extends AudioEffect{
   }
   set_tap1_active(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tap1_active,
+      AudioEffectDelay._bindings.method_set_tap1_active,
       this._owner,
       _amount
     );
@@ -317,7 +318,7 @@ export class AudioEffectDelay extends AudioEffect{
   }
   is_tap1_active() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_tap1_active,
+      AudioEffectDelay._bindings.method_is_tap1_active,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -326,7 +327,7 @@ export class AudioEffectDelay extends AudioEffect{
   }
   set_tap1_delay_ms(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tap1_delay_ms,
+      AudioEffectDelay._bindings.method_set_tap1_delay_ms,
       this._owner,
       _amount
     );
@@ -334,7 +335,7 @@ export class AudioEffectDelay extends AudioEffect{
   }
   get_tap1_delay_ms() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tap1_delay_ms,
+      AudioEffectDelay._bindings.method_get_tap1_delay_ms,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -343,7 +344,7 @@ export class AudioEffectDelay extends AudioEffect{
   }
   set_tap1_level_db(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tap1_level_db,
+      AudioEffectDelay._bindings.method_set_tap1_level_db,
       this._owner,
       _amount
     );
@@ -351,7 +352,7 @@ export class AudioEffectDelay extends AudioEffect{
   }
   get_tap1_level_db() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tap1_level_db,
+      AudioEffectDelay._bindings.method_get_tap1_level_db,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -360,7 +361,7 @@ export class AudioEffectDelay extends AudioEffect{
   }
   set_tap1_pan(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tap1_pan,
+      AudioEffectDelay._bindings.method_set_tap1_pan,
       this._owner,
       _amount
     );
@@ -368,7 +369,7 @@ export class AudioEffectDelay extends AudioEffect{
   }
   get_tap1_pan() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tap1_pan,
+      AudioEffectDelay._bindings.method_get_tap1_pan,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -377,7 +378,7 @@ export class AudioEffectDelay extends AudioEffect{
   }
   set_tap2_active(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tap2_active,
+      AudioEffectDelay._bindings.method_set_tap2_active,
       this._owner,
       _amount
     );
@@ -385,7 +386,7 @@ export class AudioEffectDelay extends AudioEffect{
   }
   is_tap2_active() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_tap2_active,
+      AudioEffectDelay._bindings.method_is_tap2_active,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -394,7 +395,7 @@ export class AudioEffectDelay extends AudioEffect{
   }
   set_tap2_delay_ms(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tap2_delay_ms,
+      AudioEffectDelay._bindings.method_set_tap2_delay_ms,
       this._owner,
       _amount
     );
@@ -402,7 +403,7 @@ export class AudioEffectDelay extends AudioEffect{
   }
   get_tap2_delay_ms() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tap2_delay_ms,
+      AudioEffectDelay._bindings.method_get_tap2_delay_ms,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -411,7 +412,7 @@ export class AudioEffectDelay extends AudioEffect{
   }
   set_tap2_level_db(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tap2_level_db,
+      AudioEffectDelay._bindings.method_set_tap2_level_db,
       this._owner,
       _amount
     );
@@ -419,7 +420,7 @@ export class AudioEffectDelay extends AudioEffect{
   }
   get_tap2_level_db() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tap2_level_db,
+      AudioEffectDelay._bindings.method_get_tap2_level_db,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -428,7 +429,7 @@ export class AudioEffectDelay extends AudioEffect{
   }
   set_tap2_pan(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tap2_pan,
+      AudioEffectDelay._bindings.method_set_tap2_pan,
       this._owner,
       _amount
     );
@@ -436,7 +437,7 @@ export class AudioEffectDelay extends AudioEffect{
   }
   get_tap2_pan() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tap2_pan,
+      AudioEffectDelay._bindings.method_get_tap2_pan,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -445,7 +446,7 @@ export class AudioEffectDelay extends AudioEffect{
   }
   set_feedback_active(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_feedback_active,
+      AudioEffectDelay._bindings.method_set_feedback_active,
       this._owner,
       _amount
     );
@@ -453,7 +454,7 @@ export class AudioEffectDelay extends AudioEffect{
   }
   is_feedback_active() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_feedback_active,
+      AudioEffectDelay._bindings.method_is_feedback_active,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -462,7 +463,7 @@ export class AudioEffectDelay extends AudioEffect{
   }
   set_feedback_delay_ms(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_feedback_delay_ms,
+      AudioEffectDelay._bindings.method_set_feedback_delay_ms,
       this._owner,
       _amount
     );
@@ -470,7 +471,7 @@ export class AudioEffectDelay extends AudioEffect{
   }
   get_feedback_delay_ms() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_feedback_delay_ms,
+      AudioEffectDelay._bindings.method_get_feedback_delay_ms,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -479,7 +480,7 @@ export class AudioEffectDelay extends AudioEffect{
   }
   set_feedback_level_db(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_feedback_level_db,
+      AudioEffectDelay._bindings.method_set_feedback_level_db,
       this._owner,
       _amount
     );
@@ -487,7 +488,7 @@ export class AudioEffectDelay extends AudioEffect{
   }
   get_feedback_level_db() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_feedback_level_db,
+      AudioEffectDelay._bindings.method_get_feedback_level_db,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -496,7 +497,7 @@ export class AudioEffectDelay extends AudioEffect{
   }
   set_feedback_lowpass(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_feedback_lowpass,
+      AudioEffectDelay._bindings.method_set_feedback_lowpass,
       this._owner,
       _amount
     );
@@ -504,7 +505,7 @@ export class AudioEffectDelay extends AudioEffect{
   }
   get_feedback_lowpass() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_feedback_lowpass,
+      AudioEffectDelay._bindings.method_get_feedback_lowpass,
       this._owner,
 			Variant.Type.FLOAT,
       

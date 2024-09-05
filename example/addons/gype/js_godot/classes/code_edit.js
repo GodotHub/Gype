@@ -1,12 +1,12 @@
 import * as internal from '__internal__';
-import { Dictionary } from '@js_godot/variant/dictionary'
-import { Variant } from '@js_godot/variant/variant'
 import { TextEdit } from '@js_godot/classes/text_edit'
+import { Vector2 } from '@js_godot/variant/vector2'
+import { Dictionary } from '@js_godot/variant/dictionary'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
 import { Color } from '@js_godot/variant/color'
-import { Vector2 } from '@js_godot/variant/vector2'
+import { GDString } from '@js_godot/variant/gd_string'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -1125,6 +1125,7 @@ export class CodeEdit extends TextEdit{
       );
     }
   }
+  
   _confirm_code_completion(_replace) {
   }
   _request_code_completion(_force) {
@@ -1133,7 +1134,7 @@ export class CodeEdit extends TextEdit{
   }
   set_indent_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_indent_size,
+      CodeEdit._bindings.method_set_indent_size,
       this._owner,
       _size
     );
@@ -1141,7 +1142,7 @@ export class CodeEdit extends TextEdit{
   }
   get_indent_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_indent_size,
+      CodeEdit._bindings.method_get_indent_size,
       this._owner,
 			Variant.Type.INT,
       
@@ -1150,7 +1151,7 @@ export class CodeEdit extends TextEdit{
   }
   set_indent_using_spaces(_use_spaces) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_indent_using_spaces,
+      CodeEdit._bindings.method_set_indent_using_spaces,
       this._owner,
       _use_spaces
     );
@@ -1158,7 +1159,7 @@ export class CodeEdit extends TextEdit{
   }
   is_indent_using_spaces() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_indent_using_spaces,
+      CodeEdit._bindings.method_is_indent_using_spaces,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1167,7 +1168,7 @@ export class CodeEdit extends TextEdit{
   }
   set_auto_indent_enabled(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_auto_indent_enabled,
+      CodeEdit._bindings.method_set_auto_indent_enabled,
       this._owner,
       _enable
     );
@@ -1175,7 +1176,7 @@ export class CodeEdit extends TextEdit{
   }
   is_auto_indent_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_auto_indent_enabled,
+      CodeEdit._bindings.method_is_auto_indent_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1184,7 +1185,7 @@ export class CodeEdit extends TextEdit{
   }
   set_auto_indent_prefixes(_prefixes) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_auto_indent_prefixes,
+      CodeEdit._bindings.method_set_auto_indent_prefixes,
       this._owner,
       _prefixes
     );
@@ -1192,7 +1193,7 @@ export class CodeEdit extends TextEdit{
   }
   get_auto_indent_prefixes() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_auto_indent_prefixes,
+      CodeEdit._bindings.method_get_auto_indent_prefixes,
       this._owner,
 			Variant.INT,
       
@@ -1201,7 +1202,7 @@ export class CodeEdit extends TextEdit{
   }
   do_indent() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_do_indent,
+      CodeEdit._bindings.method_do_indent,
       this._owner,
       
     );
@@ -1209,7 +1210,7 @@ export class CodeEdit extends TextEdit{
   }
   indent_lines() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_indent_lines,
+      CodeEdit._bindings.method_indent_lines,
       this._owner,
       
     );
@@ -1217,7 +1218,7 @@ export class CodeEdit extends TextEdit{
   }
   unindent_lines() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_unindent_lines,
+      CodeEdit._bindings.method_unindent_lines,
       this._owner,
       
     );
@@ -1225,7 +1226,7 @@ export class CodeEdit extends TextEdit{
   }
   convert_indent(_from_line, _to_line) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_convert_indent,
+      CodeEdit._bindings.method_convert_indent,
       this._owner,
       _from_line, _to_line
     );
@@ -1233,7 +1234,7 @@ export class CodeEdit extends TextEdit{
   }
   set_auto_brace_completion_enabled(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_auto_brace_completion_enabled,
+      CodeEdit._bindings.method_set_auto_brace_completion_enabled,
       this._owner,
       _enable
     );
@@ -1241,7 +1242,7 @@ export class CodeEdit extends TextEdit{
   }
   is_auto_brace_completion_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_auto_brace_completion_enabled,
+      CodeEdit._bindings.method_is_auto_brace_completion_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1250,7 +1251,7 @@ export class CodeEdit extends TextEdit{
   }
   set_highlight_matching_braces_enabled(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_highlight_matching_braces_enabled,
+      CodeEdit._bindings.method_set_highlight_matching_braces_enabled,
       this._owner,
       _enable
     );
@@ -1258,7 +1259,7 @@ export class CodeEdit extends TextEdit{
   }
   is_highlight_matching_braces_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_highlight_matching_braces_enabled,
+      CodeEdit._bindings.method_is_highlight_matching_braces_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1267,7 +1268,7 @@ export class CodeEdit extends TextEdit{
   }
   add_auto_brace_completion_pair(_start_key, _end_key) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_auto_brace_completion_pair,
+      CodeEdit._bindings.method_add_auto_brace_completion_pair,
       this._owner,
       _start_key, _end_key
     );
@@ -1275,7 +1276,7 @@ export class CodeEdit extends TextEdit{
   }
   set_auto_brace_completion_pairs(_pairs) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_auto_brace_completion_pairs,
+      CodeEdit._bindings.method_set_auto_brace_completion_pairs,
       this._owner,
       _pairs
     );
@@ -1283,7 +1284,7 @@ export class CodeEdit extends TextEdit{
   }
   get_auto_brace_completion_pairs() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_auto_brace_completion_pairs,
+      CodeEdit._bindings.method_get_auto_brace_completion_pairs,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -1293,7 +1294,7 @@ export class CodeEdit extends TextEdit{
   }
   has_auto_brace_completion_open_key(_open_key) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_auto_brace_completion_open_key,
+      CodeEdit._bindings.method_has_auto_brace_completion_open_key,
       this._owner,
 			Variant.Type.BOOL,
       _open_key
@@ -1302,7 +1303,7 @@ export class CodeEdit extends TextEdit{
   }
   has_auto_brace_completion_close_key(_close_key) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_auto_brace_completion_close_key,
+      CodeEdit._bindings.method_has_auto_brace_completion_close_key,
       this._owner,
 			Variant.Type.BOOL,
       _close_key
@@ -1311,7 +1312,7 @@ export class CodeEdit extends TextEdit{
   }
   get_auto_brace_completion_close_key(_open_key) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_auto_brace_completion_close_key,
+      CodeEdit._bindings.method_get_auto_brace_completion_close_key,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1321,7 +1322,7 @@ export class CodeEdit extends TextEdit{
   }
   set_draw_breakpoints_gutter(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_draw_breakpoints_gutter,
+      CodeEdit._bindings.method_set_draw_breakpoints_gutter,
       this._owner,
       _enable
     );
@@ -1329,7 +1330,7 @@ export class CodeEdit extends TextEdit{
   }
   is_drawing_breakpoints_gutter() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_drawing_breakpoints_gutter,
+      CodeEdit._bindings.method_is_drawing_breakpoints_gutter,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1338,7 +1339,7 @@ export class CodeEdit extends TextEdit{
   }
   set_draw_bookmarks_gutter(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_draw_bookmarks_gutter,
+      CodeEdit._bindings.method_set_draw_bookmarks_gutter,
       this._owner,
       _enable
     );
@@ -1346,7 +1347,7 @@ export class CodeEdit extends TextEdit{
   }
   is_drawing_bookmarks_gutter() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_drawing_bookmarks_gutter,
+      CodeEdit._bindings.method_is_drawing_bookmarks_gutter,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1355,7 +1356,7 @@ export class CodeEdit extends TextEdit{
   }
   set_draw_executing_lines_gutter(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_draw_executing_lines_gutter,
+      CodeEdit._bindings.method_set_draw_executing_lines_gutter,
       this._owner,
       _enable
     );
@@ -1363,7 +1364,7 @@ export class CodeEdit extends TextEdit{
   }
   is_drawing_executing_lines_gutter() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_drawing_executing_lines_gutter,
+      CodeEdit._bindings.method_is_drawing_executing_lines_gutter,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1372,7 +1373,7 @@ export class CodeEdit extends TextEdit{
   }
   set_line_as_breakpoint(_line, _breakpointed) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_line_as_breakpoint,
+      CodeEdit._bindings.method_set_line_as_breakpoint,
       this._owner,
       _line, _breakpointed
     );
@@ -1380,7 +1381,7 @@ export class CodeEdit extends TextEdit{
   }
   is_line_breakpointed(_line) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_line_breakpointed,
+      CodeEdit._bindings.method_is_line_breakpointed,
       this._owner,
 			Variant.Type.BOOL,
       _line
@@ -1389,7 +1390,7 @@ export class CodeEdit extends TextEdit{
   }
   clear_breakpointed_lines() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_breakpointed_lines,
+      CodeEdit._bindings.method_clear_breakpointed_lines,
       this._owner,
       
     );
@@ -1397,7 +1398,7 @@ export class CodeEdit extends TextEdit{
   }
   get_breakpointed_lines() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_breakpointed_lines,
+      CodeEdit._bindings.method_get_breakpointed_lines,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -1407,7 +1408,7 @@ export class CodeEdit extends TextEdit{
   }
   set_line_as_bookmarked(_line, _bookmarked) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_line_as_bookmarked,
+      CodeEdit._bindings.method_set_line_as_bookmarked,
       this._owner,
       _line, _bookmarked
     );
@@ -1415,7 +1416,7 @@ export class CodeEdit extends TextEdit{
   }
   is_line_bookmarked(_line) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_line_bookmarked,
+      CodeEdit._bindings.method_is_line_bookmarked,
       this._owner,
 			Variant.Type.BOOL,
       _line
@@ -1424,7 +1425,7 @@ export class CodeEdit extends TextEdit{
   }
   clear_bookmarked_lines() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_bookmarked_lines,
+      CodeEdit._bindings.method_clear_bookmarked_lines,
       this._owner,
       
     );
@@ -1432,7 +1433,7 @@ export class CodeEdit extends TextEdit{
   }
   get_bookmarked_lines() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bookmarked_lines,
+      CodeEdit._bindings.method_get_bookmarked_lines,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -1442,7 +1443,7 @@ export class CodeEdit extends TextEdit{
   }
   set_line_as_executing(_line, _executing) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_line_as_executing,
+      CodeEdit._bindings.method_set_line_as_executing,
       this._owner,
       _line, _executing
     );
@@ -1450,7 +1451,7 @@ export class CodeEdit extends TextEdit{
   }
   is_line_executing(_line) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_line_executing,
+      CodeEdit._bindings.method_is_line_executing,
       this._owner,
 			Variant.Type.BOOL,
       _line
@@ -1459,7 +1460,7 @@ export class CodeEdit extends TextEdit{
   }
   clear_executing_lines() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_executing_lines,
+      CodeEdit._bindings.method_clear_executing_lines,
       this._owner,
       
     );
@@ -1467,7 +1468,7 @@ export class CodeEdit extends TextEdit{
   }
   get_executing_lines() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_executing_lines,
+      CodeEdit._bindings.method_get_executing_lines,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -1477,7 +1478,7 @@ export class CodeEdit extends TextEdit{
   }
   set_draw_line_numbers(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_draw_line_numbers,
+      CodeEdit._bindings.method_set_draw_line_numbers,
       this._owner,
       _enable
     );
@@ -1485,7 +1486,7 @@ export class CodeEdit extends TextEdit{
   }
   is_draw_line_numbers_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_draw_line_numbers_enabled,
+      CodeEdit._bindings.method_is_draw_line_numbers_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1494,7 +1495,7 @@ export class CodeEdit extends TextEdit{
   }
   set_line_numbers_zero_padded(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_line_numbers_zero_padded,
+      CodeEdit._bindings.method_set_line_numbers_zero_padded,
       this._owner,
       _enable
     );
@@ -1502,7 +1503,7 @@ export class CodeEdit extends TextEdit{
   }
   is_line_numbers_zero_padded() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_line_numbers_zero_padded,
+      CodeEdit._bindings.method_is_line_numbers_zero_padded,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1511,7 +1512,7 @@ export class CodeEdit extends TextEdit{
   }
   set_draw_fold_gutter(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_draw_fold_gutter,
+      CodeEdit._bindings.method_set_draw_fold_gutter,
       this._owner,
       _enable
     );
@@ -1519,7 +1520,7 @@ export class CodeEdit extends TextEdit{
   }
   is_drawing_fold_gutter() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_drawing_fold_gutter,
+      CodeEdit._bindings.method_is_drawing_fold_gutter,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1528,7 +1529,7 @@ export class CodeEdit extends TextEdit{
   }
   set_line_folding_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_line_folding_enabled,
+      CodeEdit._bindings.method_set_line_folding_enabled,
       this._owner,
       _enabled
     );
@@ -1536,7 +1537,7 @@ export class CodeEdit extends TextEdit{
   }
   is_line_folding_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_line_folding_enabled,
+      CodeEdit._bindings.method_is_line_folding_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1545,7 +1546,7 @@ export class CodeEdit extends TextEdit{
   }
   can_fold_line(_line) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_can_fold_line,
+      CodeEdit._bindings.method_can_fold_line,
       this._owner,
 			Variant.Type.BOOL,
       _line
@@ -1554,7 +1555,7 @@ export class CodeEdit extends TextEdit{
   }
   fold_line(_line) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_fold_line,
+      CodeEdit._bindings.method_fold_line,
       this._owner,
       _line
     );
@@ -1562,7 +1563,7 @@ export class CodeEdit extends TextEdit{
   }
   unfold_line(_line) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_unfold_line,
+      CodeEdit._bindings.method_unfold_line,
       this._owner,
       _line
     );
@@ -1570,7 +1571,7 @@ export class CodeEdit extends TextEdit{
   }
   fold_all_lines() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_fold_all_lines,
+      CodeEdit._bindings.method_fold_all_lines,
       this._owner,
       
     );
@@ -1578,7 +1579,7 @@ export class CodeEdit extends TextEdit{
   }
   unfold_all_lines() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_unfold_all_lines,
+      CodeEdit._bindings.method_unfold_all_lines,
       this._owner,
       
     );
@@ -1586,7 +1587,7 @@ export class CodeEdit extends TextEdit{
   }
   toggle_foldable_line(_line) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_toggle_foldable_line,
+      CodeEdit._bindings.method_toggle_foldable_line,
       this._owner,
       _line
     );
@@ -1594,7 +1595,7 @@ export class CodeEdit extends TextEdit{
   }
   toggle_foldable_lines_at_carets() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_toggle_foldable_lines_at_carets,
+      CodeEdit._bindings.method_toggle_foldable_lines_at_carets,
       this._owner,
       
     );
@@ -1602,7 +1603,7 @@ export class CodeEdit extends TextEdit{
   }
   is_line_folded(_line) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_line_folded,
+      CodeEdit._bindings.method_is_line_folded,
       this._owner,
 			Variant.Type.BOOL,
       _line
@@ -1611,7 +1612,7 @@ export class CodeEdit extends TextEdit{
   }
   get_folded_lines() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_folded_lines,
+      CodeEdit._bindings.method_get_folded_lines,
       this._owner,
 			Variant.INT,
       
@@ -1620,7 +1621,7 @@ export class CodeEdit extends TextEdit{
   }
   create_code_region() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_create_code_region,
+      CodeEdit._bindings.method_create_code_region,
       this._owner,
       
     );
@@ -1628,7 +1629,7 @@ export class CodeEdit extends TextEdit{
   }
   get_code_region_start_tag() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_code_region_start_tag,
+      CodeEdit._bindings.method_get_code_region_start_tag,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1638,7 +1639,7 @@ export class CodeEdit extends TextEdit{
   }
   get_code_region_end_tag() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_code_region_end_tag,
+      CodeEdit._bindings.method_get_code_region_end_tag,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1648,7 +1649,7 @@ export class CodeEdit extends TextEdit{
   }
   set_code_region_tags(_start, _end) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_code_region_tags,
+      CodeEdit._bindings.method_set_code_region_tags,
       this._owner,
       _start, _end
     );
@@ -1656,7 +1657,7 @@ export class CodeEdit extends TextEdit{
   }
   is_line_code_region_start(_line) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_line_code_region_start,
+      CodeEdit._bindings.method_is_line_code_region_start,
       this._owner,
 			Variant.Type.BOOL,
       _line
@@ -1665,7 +1666,7 @@ export class CodeEdit extends TextEdit{
   }
   is_line_code_region_end(_line) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_line_code_region_end,
+      CodeEdit._bindings.method_is_line_code_region_end,
       this._owner,
 			Variant.Type.BOOL,
       _line
@@ -1674,7 +1675,7 @@ export class CodeEdit extends TextEdit{
   }
   add_string_delimiter(_start_key, _end_key, _line_only) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_string_delimiter,
+      CodeEdit._bindings.method_add_string_delimiter,
       this._owner,
       _start_key, _end_key, _line_only
     );
@@ -1682,7 +1683,7 @@ export class CodeEdit extends TextEdit{
   }
   remove_string_delimiter(_start_key) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_string_delimiter,
+      CodeEdit._bindings.method_remove_string_delimiter,
       this._owner,
       _start_key
     );
@@ -1690,7 +1691,7 @@ export class CodeEdit extends TextEdit{
   }
   has_string_delimiter(_start_key) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_string_delimiter,
+      CodeEdit._bindings.method_has_string_delimiter,
       this._owner,
 			Variant.Type.BOOL,
       _start_key
@@ -1699,7 +1700,7 @@ export class CodeEdit extends TextEdit{
   }
   set_string_delimiters(_string_delimiters) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_string_delimiters,
+      CodeEdit._bindings.method_set_string_delimiters,
       this._owner,
       _string_delimiters
     );
@@ -1707,7 +1708,7 @@ export class CodeEdit extends TextEdit{
   }
   clear_string_delimiters() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_string_delimiters,
+      CodeEdit._bindings.method_clear_string_delimiters,
       this._owner,
       
     );
@@ -1715,7 +1716,7 @@ export class CodeEdit extends TextEdit{
   }
   get_string_delimiters() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_string_delimiters,
+      CodeEdit._bindings.method_get_string_delimiters,
       this._owner,
 			Variant.INT,
       
@@ -1724,7 +1725,7 @@ export class CodeEdit extends TextEdit{
   }
   is_in_string(_line, _column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_in_string,
+      CodeEdit._bindings.method_is_in_string,
       this._owner,
 			Variant.Type.INT,
       _line, _column
@@ -1733,7 +1734,7 @@ export class CodeEdit extends TextEdit{
   }
   add_comment_delimiter(_start_key, _end_key, _line_only) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_comment_delimiter,
+      CodeEdit._bindings.method_add_comment_delimiter,
       this._owner,
       _start_key, _end_key, _line_only
     );
@@ -1741,7 +1742,7 @@ export class CodeEdit extends TextEdit{
   }
   remove_comment_delimiter(_start_key) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_comment_delimiter,
+      CodeEdit._bindings.method_remove_comment_delimiter,
       this._owner,
       _start_key
     );
@@ -1749,7 +1750,7 @@ export class CodeEdit extends TextEdit{
   }
   has_comment_delimiter(_start_key) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_comment_delimiter,
+      CodeEdit._bindings.method_has_comment_delimiter,
       this._owner,
 			Variant.Type.BOOL,
       _start_key
@@ -1758,7 +1759,7 @@ export class CodeEdit extends TextEdit{
   }
   set_comment_delimiters(_comment_delimiters) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_comment_delimiters,
+      CodeEdit._bindings.method_set_comment_delimiters,
       this._owner,
       _comment_delimiters
     );
@@ -1766,7 +1767,7 @@ export class CodeEdit extends TextEdit{
   }
   clear_comment_delimiters() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_comment_delimiters,
+      CodeEdit._bindings.method_clear_comment_delimiters,
       this._owner,
       
     );
@@ -1774,7 +1775,7 @@ export class CodeEdit extends TextEdit{
   }
   get_comment_delimiters() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_comment_delimiters,
+      CodeEdit._bindings.method_get_comment_delimiters,
       this._owner,
 			Variant.INT,
       
@@ -1783,7 +1784,7 @@ export class CodeEdit extends TextEdit{
   }
   is_in_comment(_line, _column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_in_comment,
+      CodeEdit._bindings.method_is_in_comment,
       this._owner,
 			Variant.Type.INT,
       _line, _column
@@ -1792,7 +1793,7 @@ export class CodeEdit extends TextEdit{
   }
   get_delimiter_start_key(_delimiter_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_delimiter_start_key,
+      CodeEdit._bindings.method_get_delimiter_start_key,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1802,7 +1803,7 @@ export class CodeEdit extends TextEdit{
   }
   get_delimiter_end_key(_delimiter_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_delimiter_end_key,
+      CodeEdit._bindings.method_get_delimiter_end_key,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1812,7 +1813,7 @@ export class CodeEdit extends TextEdit{
   }
   get_delimiter_start_position(_line, _column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_delimiter_start_position,
+      CodeEdit._bindings.method_get_delimiter_start_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1822,7 +1823,7 @@ export class CodeEdit extends TextEdit{
   }
   get_delimiter_end_position(_line, _column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_delimiter_end_position,
+      CodeEdit._bindings.method_get_delimiter_end_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1832,7 +1833,7 @@ export class CodeEdit extends TextEdit{
   }
   set_code_hint(_code_hint) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_code_hint,
+      CodeEdit._bindings.method_set_code_hint,
       this._owner,
       _code_hint
     );
@@ -1840,7 +1841,7 @@ export class CodeEdit extends TextEdit{
   }
   set_code_hint_draw_below(_draw_below) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_code_hint_draw_below,
+      CodeEdit._bindings.method_set_code_hint_draw_below,
       this._owner,
       _draw_below
     );
@@ -1848,7 +1849,7 @@ export class CodeEdit extends TextEdit{
   }
   get_text_for_code_completion() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_text_for_code_completion,
+      CodeEdit._bindings.method_get_text_for_code_completion,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1858,7 +1859,7 @@ export class CodeEdit extends TextEdit{
   }
   request_code_completion(_force) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_request_code_completion,
+      CodeEdit._bindings.method_request_code_completion,
       this._owner,
       _force
     );
@@ -1866,7 +1867,7 @@ export class CodeEdit extends TextEdit{
   }
   add_code_completion_option(_type, _display_text, _insert_text, _text_color, _icon, _value, _location) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_code_completion_option,
+      CodeEdit._bindings.method_add_code_completion_option,
       this._owner,
       _type, _display_text, _insert_text, _text_color, _icon, _value, _location
     );
@@ -1874,7 +1875,7 @@ export class CodeEdit extends TextEdit{
   }
   update_code_completion_options(_force) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_update_code_completion_options,
+      CodeEdit._bindings.method_update_code_completion_options,
       this._owner,
       _force
     );
@@ -1882,7 +1883,7 @@ export class CodeEdit extends TextEdit{
   }
   get_code_completion_options() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_code_completion_options,
+      CodeEdit._bindings.method_get_code_completion_options,
       this._owner,
 			Variant.INT,
       
@@ -1891,7 +1892,7 @@ export class CodeEdit extends TextEdit{
   }
   get_code_completion_option(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_code_completion_option,
+      CodeEdit._bindings.method_get_code_completion_option,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -1901,7 +1902,7 @@ export class CodeEdit extends TextEdit{
   }
   get_code_completion_selected_index() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_code_completion_selected_index,
+      CodeEdit._bindings.method_get_code_completion_selected_index,
       this._owner,
 			Variant.Type.INT,
       
@@ -1910,7 +1911,7 @@ export class CodeEdit extends TextEdit{
   }
   set_code_completion_selected_index(_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_code_completion_selected_index,
+      CodeEdit._bindings.method_set_code_completion_selected_index,
       this._owner,
       _index
     );
@@ -1918,7 +1919,7 @@ export class CodeEdit extends TextEdit{
   }
   confirm_code_completion(_replace) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_confirm_code_completion,
+      CodeEdit._bindings.method_confirm_code_completion,
       this._owner,
       _replace
     );
@@ -1926,7 +1927,7 @@ export class CodeEdit extends TextEdit{
   }
   cancel_code_completion() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_cancel_code_completion,
+      CodeEdit._bindings.method_cancel_code_completion,
       this._owner,
       
     );
@@ -1934,7 +1935,7 @@ export class CodeEdit extends TextEdit{
   }
   set_code_completion_enabled(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_code_completion_enabled,
+      CodeEdit._bindings.method_set_code_completion_enabled,
       this._owner,
       _enable
     );
@@ -1942,7 +1943,7 @@ export class CodeEdit extends TextEdit{
   }
   is_code_completion_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_code_completion_enabled,
+      CodeEdit._bindings.method_is_code_completion_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1951,7 +1952,7 @@ export class CodeEdit extends TextEdit{
   }
   set_code_completion_prefixes(_prefixes) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_code_completion_prefixes,
+      CodeEdit._bindings.method_set_code_completion_prefixes,
       this._owner,
       _prefixes
     );
@@ -1959,7 +1960,7 @@ export class CodeEdit extends TextEdit{
   }
   get_code_completion_prefixes() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_code_completion_prefixes,
+      CodeEdit._bindings.method_get_code_completion_prefixes,
       this._owner,
 			Variant.INT,
       
@@ -1968,7 +1969,7 @@ export class CodeEdit extends TextEdit{
   }
   set_line_length_guidelines(_guideline_columns) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_line_length_guidelines,
+      CodeEdit._bindings.method_set_line_length_guidelines,
       this._owner,
       _guideline_columns
     );
@@ -1976,7 +1977,7 @@ export class CodeEdit extends TextEdit{
   }
   get_line_length_guidelines() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_length_guidelines,
+      CodeEdit._bindings.method_get_line_length_guidelines,
       this._owner,
 			Variant.INT,
       
@@ -1985,7 +1986,7 @@ export class CodeEdit extends TextEdit{
   }
   set_symbol_lookup_on_click_enabled(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_symbol_lookup_on_click_enabled,
+      CodeEdit._bindings.method_set_symbol_lookup_on_click_enabled,
       this._owner,
       _enable
     );
@@ -1993,7 +1994,7 @@ export class CodeEdit extends TextEdit{
   }
   is_symbol_lookup_on_click_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_symbol_lookup_on_click_enabled,
+      CodeEdit._bindings.method_is_symbol_lookup_on_click_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2002,7 +2003,7 @@ export class CodeEdit extends TextEdit{
   }
   get_text_for_symbol_lookup() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_text_for_symbol_lookup,
+      CodeEdit._bindings.method_get_text_for_symbol_lookup,
       this._owner,
 			Variant.Type.STRING,
     
@@ -2012,7 +2013,7 @@ export class CodeEdit extends TextEdit{
   }
   get_text_with_cursor_char(_line, _column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_text_with_cursor_char,
+      CodeEdit._bindings.method_get_text_with_cursor_char,
       this._owner,
 			Variant.Type.STRING,
     
@@ -2022,7 +2023,7 @@ export class CodeEdit extends TextEdit{
   }
   set_symbol_lookup_word_as_valid(_valid) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_symbol_lookup_word_as_valid,
+      CodeEdit._bindings.method_set_symbol_lookup_word_as_valid,
       this._owner,
       _valid
     );
@@ -2030,7 +2031,7 @@ export class CodeEdit extends TextEdit{
   }
   move_lines_up() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_move_lines_up,
+      CodeEdit._bindings.method_move_lines_up,
       this._owner,
       
     );
@@ -2038,7 +2039,7 @@ export class CodeEdit extends TextEdit{
   }
   move_lines_down() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_move_lines_down,
+      CodeEdit._bindings.method_move_lines_down,
       this._owner,
       
     );
@@ -2046,7 +2047,7 @@ export class CodeEdit extends TextEdit{
   }
   delete_lines() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_delete_lines,
+      CodeEdit._bindings.method_delete_lines,
       this._owner,
       
     );
@@ -2054,7 +2055,7 @@ export class CodeEdit extends TextEdit{
   }
   duplicate_selection() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_duplicate_selection,
+      CodeEdit._bindings.method_duplicate_selection,
       this._owner,
       
     );
@@ -2062,7 +2063,7 @@ export class CodeEdit extends TextEdit{
   }
   duplicate_lines() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_duplicate_lines,
+      CodeEdit._bindings.method_duplicate_lines,
       this._owner,
       
     );

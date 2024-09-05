@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { PackedInt64Array } from '@js_godot/variant/packed_int64_array'
 import { StringName } from '@js_godot/variant/string_name'
 import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
-import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { Variant } from '@js_godot/variant/variant'
+import { PackedInt64Array } from '@js_godot/variant/packed_int64_array'
+import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -123,9 +123,10 @@ export class NavigationPathQueryResult2D extends RefCounted{
       );
     }
   }
+  
   set_path(_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_path,
+      NavigationPathQueryResult2D._bindings.method_set_path,
       this._owner,
       _path
     );
@@ -133,7 +134,7 @@ export class NavigationPathQueryResult2D extends RefCounted{
   }
   get_path() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_path,
+      NavigationPathQueryResult2D._bindings.method_get_path,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -143,7 +144,7 @@ export class NavigationPathQueryResult2D extends RefCounted{
   }
   set_path_types(_path_types) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_path_types,
+      NavigationPathQueryResult2D._bindings.method_set_path_types,
       this._owner,
       _path_types
     );
@@ -151,7 +152,7 @@ export class NavigationPathQueryResult2D extends RefCounted{
   }
   get_path_types() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_path_types,
+      NavigationPathQueryResult2D._bindings.method_get_path_types,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -161,7 +162,7 @@ export class NavigationPathQueryResult2D extends RefCounted{
   }
   set_path_rids(_path_rids) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_path_rids,
+      NavigationPathQueryResult2D._bindings.method_set_path_rids,
       this._owner,
       _path_rids
     );
@@ -169,7 +170,7 @@ export class NavigationPathQueryResult2D extends RefCounted{
   }
   get_path_rids() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_path_rids,
+      NavigationPathQueryResult2D._bindings.method_get_path_rids,
       this._owner,
 			Variant.INT,
       
@@ -178,7 +179,7 @@ export class NavigationPathQueryResult2D extends RefCounted{
   }
   set_path_owner_ids(_path_owner_ids) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_path_owner_ids,
+      NavigationPathQueryResult2D._bindings.method_set_path_owner_ids,
       this._owner,
       _path_owner_ids
     );
@@ -186,7 +187,7 @@ export class NavigationPathQueryResult2D extends RefCounted{
   }
   get_path_owner_ids() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_path_owner_ids,
+      NavigationPathQueryResult2D._bindings.method_get_path_owner_ids,
       this._owner,
 			Variant.Type.PACKED_INT64_ARRAY,
     
@@ -196,7 +197,7 @@ export class NavigationPathQueryResult2D extends RefCounted{
   }
   reset() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_reset,
+      NavigationPathQueryResult2D._bindings.method_reset,
       this._owner,
       
     );

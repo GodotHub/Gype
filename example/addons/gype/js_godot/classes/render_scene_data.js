@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Transform3D } from '@js_godot/variant/transform3d'
-import { GodotObject } from '@js_godot/classes/godot_object'
-import { Vector3 } from '@js_godot/variant/vector3'
-import { StringName } from '@js_godot/variant/string_name'
 import { RID } from '@js_godot/variant/rid'
+import { StringName } from '@js_godot/variant/string_name'
+import { GodotObject } from '@js_godot/classes/godot_object'
+import { Transform3D } from '@js_godot/variant/transform3d'
+import { Variant } from '@js_godot/variant/variant'
+import { Vector3 } from '@js_godot/variant/vector3'
 import { Projection } from '@js_godot/variant/projection'
 import {
   call_utility_ret,
@@ -94,9 +94,10 @@ export class RenderSceneData extends GodotObject{
       );
     }
   }
+  
   get_cam_transform() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cam_transform,
+      RenderSceneData._bindings.method_get_cam_transform,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -106,7 +107,7 @@ export class RenderSceneData extends GodotObject{
   }
   get_cam_projection() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cam_projection,
+      RenderSceneData._bindings.method_get_cam_projection,
       this._owner,
 			Variant.Type.PROJECTION,
     
@@ -116,7 +117,7 @@ export class RenderSceneData extends GodotObject{
   }
   get_view_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_view_count,
+      RenderSceneData._bindings.method_get_view_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -125,7 +126,7 @@ export class RenderSceneData extends GodotObject{
   }
   get_view_eye_offset(_view) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_view_eye_offset,
+      RenderSceneData._bindings.method_get_view_eye_offset,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -135,7 +136,7 @@ export class RenderSceneData extends GodotObject{
   }
   get_view_projection(_view) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_view_projection,
+      RenderSceneData._bindings.method_get_view_projection,
       this._owner,
 			Variant.Type.PROJECTION,
     
@@ -145,7 +146,7 @@ export class RenderSceneData extends GodotObject{
   }
   get_uniform_buffer() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_uniform_buffer,
+      RenderSceneData._bindings.method_get_uniform_buffer,
       this._owner,
 			Variant.Type.RID,
     

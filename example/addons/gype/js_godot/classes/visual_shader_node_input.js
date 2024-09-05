@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
-import { GDString } from '@js_godot/variant/gd_string'
 import { VisualShaderNode } from '@js_godot/classes/visual_shader_node'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -61,9 +61,10 @@ export class VisualShaderNodeInput extends VisualShaderNode{
       );
     }
   }
+  
   set_input_name(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_input_name,
+      VisualShaderNodeInput._bindings.method_set_input_name,
       this._owner,
       _name
     );
@@ -71,7 +72,7 @@ export class VisualShaderNodeInput extends VisualShaderNode{
   }
   get_input_name() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_input_name,
+      VisualShaderNodeInput._bindings.method_get_input_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -81,7 +82,7 @@ export class VisualShaderNodeInput extends VisualShaderNode{
   }
   get_input_real_name() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_input_real_name,
+      VisualShaderNodeInput._bindings.method_get_input_real_name,
       this._owner,
 			Variant.Type.STRING,
     

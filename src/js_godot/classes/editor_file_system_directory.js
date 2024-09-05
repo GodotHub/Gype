@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { GodotObject } from '@js_godot/classes/godot_object'
+import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
+import { GodotObject } from '@js_godot/classes/godot_object'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -171,9 +171,10 @@ export class EditorFileSystemDirectory extends GodotObject{
       );
     }
   }
+  
   get_subdir_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_subdir_count,
+      EditorFileSystemDirectory._bindings.method_get_subdir_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -182,7 +183,7 @@ export class EditorFileSystemDirectory extends GodotObject{
   }
   get_subdir(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_subdir,
+      EditorFileSystemDirectory._bindings.method_get_subdir,
       this._owner,
 			Variant.INT,
       _idx
@@ -191,7 +192,7 @@ export class EditorFileSystemDirectory extends GodotObject{
   }
   get_file_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_file_count,
+      EditorFileSystemDirectory._bindings.method_get_file_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -200,7 +201,7 @@ export class EditorFileSystemDirectory extends GodotObject{
   }
   get_file(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_file,
+      EditorFileSystemDirectory._bindings.method_get_file,
       this._owner,
 			Variant.Type.STRING,
     
@@ -210,7 +211,7 @@ export class EditorFileSystemDirectory extends GodotObject{
   }
   get_file_path(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_file_path,
+      EditorFileSystemDirectory._bindings.method_get_file_path,
       this._owner,
 			Variant.Type.STRING,
     
@@ -220,7 +221,7 @@ export class EditorFileSystemDirectory extends GodotObject{
   }
   get_file_type(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_file_type,
+      EditorFileSystemDirectory._bindings.method_get_file_type,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -230,7 +231,7 @@ export class EditorFileSystemDirectory extends GodotObject{
   }
   get_file_script_class_name(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_file_script_class_name,
+      EditorFileSystemDirectory._bindings.method_get_file_script_class_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -240,7 +241,7 @@ export class EditorFileSystemDirectory extends GodotObject{
   }
   get_file_script_class_extends(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_file_script_class_extends,
+      EditorFileSystemDirectory._bindings.method_get_file_script_class_extends,
       this._owner,
 			Variant.Type.STRING,
     
@@ -250,7 +251,7 @@ export class EditorFileSystemDirectory extends GodotObject{
   }
   get_file_import_is_valid(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_file_import_is_valid,
+      EditorFileSystemDirectory._bindings.method_get_file_import_is_valid,
       this._owner,
 			Variant.Type.BOOL,
       _idx
@@ -259,7 +260,7 @@ export class EditorFileSystemDirectory extends GodotObject{
   }
   get_name() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_name,
+      EditorFileSystemDirectory._bindings.method_get_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -269,7 +270,7 @@ export class EditorFileSystemDirectory extends GodotObject{
   }
   get_path() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_path,
+      EditorFileSystemDirectory._bindings.method_get_path,
       this._owner,
 			Variant.Type.STRING,
     
@@ -279,7 +280,7 @@ export class EditorFileSystemDirectory extends GodotObject{
   }
   get_parent() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_parent,
+      EditorFileSystemDirectory._bindings.method_get_parent,
       this._owner,
 			Variant.INT,
       
@@ -288,7 +289,7 @@ export class EditorFileSystemDirectory extends GodotObject{
   }
   find_file_index(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_find_file_index,
+      EditorFileSystemDirectory._bindings.method_find_file_index,
       this._owner,
 			Variant.Type.INT,
       _name
@@ -297,7 +298,7 @@ export class EditorFileSystemDirectory extends GodotObject{
   }
   find_dir_index(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_find_dir_index,
+      EditorFileSystemDirectory._bindings.method_find_dir_index,
       this._owner,
 			Variant.Type.INT,
       _name

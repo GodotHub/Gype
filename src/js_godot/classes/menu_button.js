@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { Button } from '@js_godot/classes/button'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -100,9 +100,10 @@ export class MenuButton extends Button{
       );
     }
   }
+  
   get_popup() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_popup,
+      MenuButton._bindings.method_get_popup,
       this._owner,
 			Variant.INT,
       
@@ -111,7 +112,7 @@ export class MenuButton extends Button{
   }
   show_popup() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_show_popup,
+      MenuButton._bindings.method_show_popup,
       this._owner,
       
     );
@@ -119,7 +120,7 @@ export class MenuButton extends Button{
   }
   set_switch_on_hover(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_switch_on_hover,
+      MenuButton._bindings.method_set_switch_on_hover,
       this._owner,
       _enable
     );
@@ -127,7 +128,7 @@ export class MenuButton extends Button{
   }
   is_switch_on_hover() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_switch_on_hover,
+      MenuButton._bindings.method_is_switch_on_hover,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -136,7 +137,7 @@ export class MenuButton extends Button{
   }
   set_disable_shortcuts(_disabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_disable_shortcuts,
+      MenuButton._bindings.method_set_disable_shortcuts,
       this._owner,
       _disabled
     );
@@ -144,7 +145,7 @@ export class MenuButton extends Button{
   }
   set_item_count(_count) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_count,
+      MenuButton._bindings.method_set_item_count,
       this._owner,
       _count
     );
@@ -152,7 +153,7 @@ export class MenuButton extends Button{
   }
   get_item_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_count,
+      MenuButton._bindings.method_get_item_count,
       this._owner,
 			Variant.Type.INT,
       

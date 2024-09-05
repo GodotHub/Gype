@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
-import { Node3D } from '@js_godot/classes/node3d'
 import { NodePath } from '@js_godot/variant/node_path'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { Node3D } from '@js_godot/classes/node3d'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -231,9 +231,10 @@ export class ImporterMeshInstance3D extends Node3D{
       );
     }
   }
+  
   set_mesh(_mesh) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mesh,
+      ImporterMeshInstance3D._bindings.method_set_mesh,
       this._owner,
       _mesh
     );
@@ -241,7 +242,7 @@ export class ImporterMeshInstance3D extends Node3D{
   }
   get_mesh() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mesh,
+      ImporterMeshInstance3D._bindings.method_get_mesh,
       this._owner,
 			Variant.INT,
       
@@ -250,7 +251,7 @@ export class ImporterMeshInstance3D extends Node3D{
   }
   set_skin(_skin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_skin,
+      ImporterMeshInstance3D._bindings.method_set_skin,
       this._owner,
       _skin
     );
@@ -258,7 +259,7 @@ export class ImporterMeshInstance3D extends Node3D{
   }
   get_skin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_skin,
+      ImporterMeshInstance3D._bindings.method_get_skin,
       this._owner,
 			Variant.INT,
       
@@ -267,7 +268,7 @@ export class ImporterMeshInstance3D extends Node3D{
   }
   set_skeleton_path(_skeleton_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_skeleton_path,
+      ImporterMeshInstance3D._bindings.method_set_skeleton_path,
       this._owner,
       _skeleton_path
     );
@@ -275,7 +276,7 @@ export class ImporterMeshInstance3D extends Node3D{
   }
   get_skeleton_path() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_skeleton_path,
+      ImporterMeshInstance3D._bindings.method_get_skeleton_path,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -285,7 +286,7 @@ export class ImporterMeshInstance3D extends Node3D{
   }
   set_layer_mask(_layer_mask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_layer_mask,
+      ImporterMeshInstance3D._bindings.method_set_layer_mask,
       this._owner,
       _layer_mask
     );
@@ -293,7 +294,7 @@ export class ImporterMeshInstance3D extends Node3D{
   }
   get_layer_mask() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_layer_mask,
+      ImporterMeshInstance3D._bindings.method_get_layer_mask,
       this._owner,
 			Variant.Type.INT,
       
@@ -302,7 +303,7 @@ export class ImporterMeshInstance3D extends Node3D{
   }
   set_cast_shadows_setting(_shadow_casting_setting) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cast_shadows_setting,
+      ImporterMeshInstance3D._bindings.method_set_cast_shadows_setting,
       this._owner,
       _shadow_casting_setting
     );
@@ -310,7 +311,7 @@ export class ImporterMeshInstance3D extends Node3D{
   }
   get_cast_shadows_setting() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cast_shadows_setting,
+      ImporterMeshInstance3D._bindings.method_get_cast_shadows_setting,
       this._owner,
 			Variant.INT,
       
@@ -319,7 +320,7 @@ export class ImporterMeshInstance3D extends Node3D{
   }
   set_visibility_range_end_margin(_distance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_visibility_range_end_margin,
+      ImporterMeshInstance3D._bindings.method_set_visibility_range_end_margin,
       this._owner,
       _distance
     );
@@ -327,7 +328,7 @@ export class ImporterMeshInstance3D extends Node3D{
   }
   get_visibility_range_end_margin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_visibility_range_end_margin,
+      ImporterMeshInstance3D._bindings.method_get_visibility_range_end_margin,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -336,7 +337,7 @@ export class ImporterMeshInstance3D extends Node3D{
   }
   set_visibility_range_end(_distance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_visibility_range_end,
+      ImporterMeshInstance3D._bindings.method_set_visibility_range_end,
       this._owner,
       _distance
     );
@@ -344,7 +345,7 @@ export class ImporterMeshInstance3D extends Node3D{
   }
   get_visibility_range_end() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_visibility_range_end,
+      ImporterMeshInstance3D._bindings.method_get_visibility_range_end,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -353,7 +354,7 @@ export class ImporterMeshInstance3D extends Node3D{
   }
   set_visibility_range_begin_margin(_distance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_visibility_range_begin_margin,
+      ImporterMeshInstance3D._bindings.method_set_visibility_range_begin_margin,
       this._owner,
       _distance
     );
@@ -361,7 +362,7 @@ export class ImporterMeshInstance3D extends Node3D{
   }
   get_visibility_range_begin_margin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_visibility_range_begin_margin,
+      ImporterMeshInstance3D._bindings.method_get_visibility_range_begin_margin,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -370,7 +371,7 @@ export class ImporterMeshInstance3D extends Node3D{
   }
   set_visibility_range_begin(_distance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_visibility_range_begin,
+      ImporterMeshInstance3D._bindings.method_set_visibility_range_begin,
       this._owner,
       _distance
     );
@@ -378,7 +379,7 @@ export class ImporterMeshInstance3D extends Node3D{
   }
   get_visibility_range_begin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_visibility_range_begin,
+      ImporterMeshInstance3D._bindings.method_get_visibility_range_begin,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -387,7 +388,7 @@ export class ImporterMeshInstance3D extends Node3D{
   }
   set_visibility_range_fade_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_visibility_range_fade_mode,
+      ImporterMeshInstance3D._bindings.method_set_visibility_range_fade_mode,
       this._owner,
       _mode
     );
@@ -395,7 +396,7 @@ export class ImporterMeshInstance3D extends Node3D{
   }
   get_visibility_range_fade_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_visibility_range_fade_mode,
+      ImporterMeshInstance3D._bindings.method_get_visibility_range_fade_mode,
       this._owner,
 			Variant.INT,
       

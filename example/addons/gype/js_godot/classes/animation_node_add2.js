@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { AnimationNodeSync } from '@js_godot/classes/animation_node_sync'
+import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
@@ -30,6 +30,7 @@ export class AnimationNodeAdd2 extends AnimationNodeSync{
     }
     this.#initialized = true;
   }
+  
   
 
 

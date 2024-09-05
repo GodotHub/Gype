@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { Joint3D } from '@js_godot/classes/joint3d'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -150,9 +150,10 @@ export class Generic6DOFJoint3D extends Joint3D{
       );
     }
   }
+  
   set_param_x(_param, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_param_x,
+      Generic6DOFJoint3D._bindings.method_set_param_x,
       this._owner,
       _param, _value
     );
@@ -160,7 +161,7 @@ export class Generic6DOFJoint3D extends Joint3D{
   }
   get_param_x(_param) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_param_x,
+      Generic6DOFJoint3D._bindings.method_get_param_x,
       this._owner,
 			Variant.Type.FLOAT,
       _param
@@ -169,7 +170,7 @@ export class Generic6DOFJoint3D extends Joint3D{
   }
   set_param_y(_param, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_param_y,
+      Generic6DOFJoint3D._bindings.method_set_param_y,
       this._owner,
       _param, _value
     );
@@ -177,7 +178,7 @@ export class Generic6DOFJoint3D extends Joint3D{
   }
   get_param_y(_param) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_param_y,
+      Generic6DOFJoint3D._bindings.method_get_param_y,
       this._owner,
 			Variant.Type.FLOAT,
       _param
@@ -186,7 +187,7 @@ export class Generic6DOFJoint3D extends Joint3D{
   }
   set_param_z(_param, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_param_z,
+      Generic6DOFJoint3D._bindings.method_set_param_z,
       this._owner,
       _param, _value
     );
@@ -194,7 +195,7 @@ export class Generic6DOFJoint3D extends Joint3D{
   }
   get_param_z(_param) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_param_z,
+      Generic6DOFJoint3D._bindings.method_get_param_z,
       this._owner,
 			Variant.Type.FLOAT,
       _param
@@ -203,7 +204,7 @@ export class Generic6DOFJoint3D extends Joint3D{
   }
   set_flag_x(_flag, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_flag_x,
+      Generic6DOFJoint3D._bindings.method_set_flag_x,
       this._owner,
       _flag, _value
     );
@@ -211,7 +212,7 @@ export class Generic6DOFJoint3D extends Joint3D{
   }
   get_flag_x(_flag) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_flag_x,
+      Generic6DOFJoint3D._bindings.method_get_flag_x,
       this._owner,
 			Variant.Type.BOOL,
       _flag
@@ -220,7 +221,7 @@ export class Generic6DOFJoint3D extends Joint3D{
   }
   set_flag_y(_flag, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_flag_y,
+      Generic6DOFJoint3D._bindings.method_set_flag_y,
       this._owner,
       _flag, _value
     );
@@ -228,7 +229,7 @@ export class Generic6DOFJoint3D extends Joint3D{
   }
   get_flag_y(_flag) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_flag_y,
+      Generic6DOFJoint3D._bindings.method_get_flag_y,
       this._owner,
 			Variant.Type.BOOL,
       _flag
@@ -237,7 +238,7 @@ export class Generic6DOFJoint3D extends Joint3D{
   }
   set_flag_z(_flag, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_flag_z,
+      Generic6DOFJoint3D._bindings.method_set_flag_z,
       this._owner,
       _flag, _value
     );
@@ -245,7 +246,7 @@ export class Generic6DOFJoint3D extends Joint3D{
   }
   get_flag_z(_flag) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_flag_z,
+      Generic6DOFJoint3D._bindings.method_get_flag_z,
       this._owner,
 			Variant.Type.BOOL,
       _flag

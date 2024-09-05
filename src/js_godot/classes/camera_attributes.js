@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -130,9 +130,10 @@ export class CameraAttributes extends Resource{
       );
     }
   }
+  
   set_exposure_multiplier(_multiplier) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_exposure_multiplier,
+      CameraAttributes._bindings.method_set_exposure_multiplier,
       this._owner,
       _multiplier
     );
@@ -140,7 +141,7 @@ export class CameraAttributes extends Resource{
   }
   get_exposure_multiplier() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_exposure_multiplier,
+      CameraAttributes._bindings.method_get_exposure_multiplier,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -149,7 +150,7 @@ export class CameraAttributes extends Resource{
   }
   set_exposure_sensitivity(_sensitivity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_exposure_sensitivity,
+      CameraAttributes._bindings.method_set_exposure_sensitivity,
       this._owner,
       _sensitivity
     );
@@ -157,7 +158,7 @@ export class CameraAttributes extends Resource{
   }
   get_exposure_sensitivity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_exposure_sensitivity,
+      CameraAttributes._bindings.method_get_exposure_sensitivity,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -166,7 +167,7 @@ export class CameraAttributes extends Resource{
   }
   set_auto_exposure_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_auto_exposure_enabled,
+      CameraAttributes._bindings.method_set_auto_exposure_enabled,
       this._owner,
       _enabled
     );
@@ -174,7 +175,7 @@ export class CameraAttributes extends Resource{
   }
   is_auto_exposure_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_auto_exposure_enabled,
+      CameraAttributes._bindings.method_is_auto_exposure_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -183,7 +184,7 @@ export class CameraAttributes extends Resource{
   }
   set_auto_exposure_speed(_exposure_speed) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_auto_exposure_speed,
+      CameraAttributes._bindings.method_set_auto_exposure_speed,
       this._owner,
       _exposure_speed
     );
@@ -191,7 +192,7 @@ export class CameraAttributes extends Resource{
   }
   get_auto_exposure_speed() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_auto_exposure_speed,
+      CameraAttributes._bindings.method_get_auto_exposure_speed,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -200,7 +201,7 @@ export class CameraAttributes extends Resource{
   }
   set_auto_exposure_scale(_exposure_grey) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_auto_exposure_scale,
+      CameraAttributes._bindings.method_set_auto_exposure_scale,
       this._owner,
       _exposure_grey
     );
@@ -208,7 +209,7 @@ export class CameraAttributes extends Resource{
   }
   get_auto_exposure_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_auto_exposure_scale,
+      CameraAttributes._bindings.method_get_auto_exposure_scale,
       this._owner,
 			Variant.Type.FLOAT,
       

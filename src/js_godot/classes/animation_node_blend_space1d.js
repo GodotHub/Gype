@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
-import { GDString } from '@js_godot/variant/gd_string'
 import { AnimationRootNode } from '@js_godot/classes/animation_root_node'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -221,9 +221,10 @@ export class AnimationNodeBlendSpace1D extends AnimationRootNode{
       );
     }
   }
+  
   add_blend_point(_node, _pos, _at_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_blend_point,
+      AnimationNodeBlendSpace1D._bindings.method_add_blend_point,
       this._owner,
       _node, _pos, _at_index
     );
@@ -231,7 +232,7 @@ export class AnimationNodeBlendSpace1D extends AnimationRootNode{
   }
   set_blend_point_position(_point, _pos) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_blend_point_position,
+      AnimationNodeBlendSpace1D._bindings.method_set_blend_point_position,
       this._owner,
       _point, _pos
     );
@@ -239,7 +240,7 @@ export class AnimationNodeBlendSpace1D extends AnimationRootNode{
   }
   get_blend_point_position(_point) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_blend_point_position,
+      AnimationNodeBlendSpace1D._bindings.method_get_blend_point_position,
       this._owner,
 			Variant.Type.FLOAT,
       _point
@@ -248,7 +249,7 @@ export class AnimationNodeBlendSpace1D extends AnimationRootNode{
   }
   set_blend_point_node(_point, _node) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_blend_point_node,
+      AnimationNodeBlendSpace1D._bindings.method_set_blend_point_node,
       this._owner,
       _point, _node
     );
@@ -256,7 +257,7 @@ export class AnimationNodeBlendSpace1D extends AnimationRootNode{
   }
   get_blend_point_node(_point) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_blend_point_node,
+      AnimationNodeBlendSpace1D._bindings.method_get_blend_point_node,
       this._owner,
 			Variant.INT,
       _point
@@ -265,7 +266,7 @@ export class AnimationNodeBlendSpace1D extends AnimationRootNode{
   }
   remove_blend_point(_point) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_blend_point,
+      AnimationNodeBlendSpace1D._bindings.method_remove_blend_point,
       this._owner,
       _point
     );
@@ -273,7 +274,7 @@ export class AnimationNodeBlendSpace1D extends AnimationRootNode{
   }
   get_blend_point_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_blend_point_count,
+      AnimationNodeBlendSpace1D._bindings.method_get_blend_point_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -282,7 +283,7 @@ export class AnimationNodeBlendSpace1D extends AnimationRootNode{
   }
   set_min_space(_min_space) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_min_space,
+      AnimationNodeBlendSpace1D._bindings.method_set_min_space,
       this._owner,
       _min_space
     );
@@ -290,7 +291,7 @@ export class AnimationNodeBlendSpace1D extends AnimationRootNode{
   }
   get_min_space() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_min_space,
+      AnimationNodeBlendSpace1D._bindings.method_get_min_space,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -299,7 +300,7 @@ export class AnimationNodeBlendSpace1D extends AnimationRootNode{
   }
   set_max_space(_max_space) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_max_space,
+      AnimationNodeBlendSpace1D._bindings.method_set_max_space,
       this._owner,
       _max_space
     );
@@ -307,7 +308,7 @@ export class AnimationNodeBlendSpace1D extends AnimationRootNode{
   }
   get_max_space() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_max_space,
+      AnimationNodeBlendSpace1D._bindings.method_get_max_space,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -316,7 +317,7 @@ export class AnimationNodeBlendSpace1D extends AnimationRootNode{
   }
   set_snap(_snap) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_snap,
+      AnimationNodeBlendSpace1D._bindings.method_set_snap,
       this._owner,
       _snap
     );
@@ -324,7 +325,7 @@ export class AnimationNodeBlendSpace1D extends AnimationRootNode{
   }
   get_snap() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_snap,
+      AnimationNodeBlendSpace1D._bindings.method_get_snap,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -333,7 +334,7 @@ export class AnimationNodeBlendSpace1D extends AnimationRootNode{
   }
   set_value_label(_text) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_value_label,
+      AnimationNodeBlendSpace1D._bindings.method_set_value_label,
       this._owner,
       _text
     );
@@ -341,7 +342,7 @@ export class AnimationNodeBlendSpace1D extends AnimationRootNode{
   }
   get_value_label() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_value_label,
+      AnimationNodeBlendSpace1D._bindings.method_get_value_label,
       this._owner,
 			Variant.Type.STRING,
     
@@ -351,7 +352,7 @@ export class AnimationNodeBlendSpace1D extends AnimationRootNode{
   }
   set_blend_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_blend_mode,
+      AnimationNodeBlendSpace1D._bindings.method_set_blend_mode,
       this._owner,
       _mode
     );
@@ -359,7 +360,7 @@ export class AnimationNodeBlendSpace1D extends AnimationRootNode{
   }
   get_blend_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_blend_mode,
+      AnimationNodeBlendSpace1D._bindings.method_get_blend_mode,
       this._owner,
 			Variant.INT,
       
@@ -368,7 +369,7 @@ export class AnimationNodeBlendSpace1D extends AnimationRootNode{
   }
   set_use_sync(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_sync,
+      AnimationNodeBlendSpace1D._bindings.method_set_use_sync,
       this._owner,
       _enable
     );
@@ -376,7 +377,7 @@ export class AnimationNodeBlendSpace1D extends AnimationRootNode{
   }
   is_using_sync() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_using_sync,
+      AnimationNodeBlendSpace1D._bindings.method_is_using_sync,
       this._owner,
 			Variant.Type.BOOL,
       

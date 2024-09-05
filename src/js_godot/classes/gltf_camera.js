@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { Dictionary } from '@js_godot/variant/dictionary'
 import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
 import { StringName } from '@js_godot/variant/string_name'
+import { Dictionary } from '@js_godot/variant/dictionary'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -171,9 +171,10 @@ export class GLTFCamera extends Resource{
       );
     }
   }
+  
   from_node(_camera_node) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_from_node,
+      GLTFCamera._bindings.method_from_node,
       this._owner,
 			Variant.INT,
       _camera_node
@@ -182,7 +183,7 @@ export class GLTFCamera extends Resource{
   }
   to_node() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_to_node,
+      GLTFCamera._bindings.method_to_node,
       this._owner,
 			Variant.INT,
       
@@ -191,7 +192,7 @@ export class GLTFCamera extends Resource{
   }
   from_dictionary(_dictionary) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_from_dictionary,
+      GLTFCamera._bindings.method_from_dictionary,
       this._owner,
 			Variant.INT,
       _dictionary
@@ -200,7 +201,7 @@ export class GLTFCamera extends Resource{
   }
   to_dictionary() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_to_dictionary,
+      GLTFCamera._bindings.method_to_dictionary,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -210,7 +211,7 @@ export class GLTFCamera extends Resource{
   }
   get_perspective() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_perspective,
+      GLTFCamera._bindings.method_get_perspective,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -219,7 +220,7 @@ export class GLTFCamera extends Resource{
   }
   set_perspective(_perspective) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_perspective,
+      GLTFCamera._bindings.method_set_perspective,
       this._owner,
       _perspective
     );
@@ -227,7 +228,7 @@ export class GLTFCamera extends Resource{
   }
   get_fov() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fov,
+      GLTFCamera._bindings.method_get_fov,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -236,7 +237,7 @@ export class GLTFCamera extends Resource{
   }
   set_fov(_fov) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fov,
+      GLTFCamera._bindings.method_set_fov,
       this._owner,
       _fov
     );
@@ -244,7 +245,7 @@ export class GLTFCamera extends Resource{
   }
   get_size_mag() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_size_mag,
+      GLTFCamera._bindings.method_get_size_mag,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -253,7 +254,7 @@ export class GLTFCamera extends Resource{
   }
   set_size_mag(_size_mag) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_size_mag,
+      GLTFCamera._bindings.method_set_size_mag,
       this._owner,
       _size_mag
     );
@@ -261,7 +262,7 @@ export class GLTFCamera extends Resource{
   }
   get_depth_far() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_depth_far,
+      GLTFCamera._bindings.method_get_depth_far,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -270,7 +271,7 @@ export class GLTFCamera extends Resource{
   }
   set_depth_far(_zdepth_far) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_depth_far,
+      GLTFCamera._bindings.method_set_depth_far,
       this._owner,
       _zdepth_far
     );
@@ -278,7 +279,7 @@ export class GLTFCamera extends Resource{
   }
   get_depth_near() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_depth_near,
+      GLTFCamera._bindings.method_get_depth_near,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -287,7 +288,7 @@ export class GLTFCamera extends Resource{
   }
   set_depth_near(_zdepth_near) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_depth_near,
+      GLTFCamera._bindings.method_set_depth_near,
       this._owner,
       _zdepth_near
     );

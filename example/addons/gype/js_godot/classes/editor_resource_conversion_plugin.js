@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
+import { RefCounted } from '@js_godot/classes/ref_counted'
 import { Variant } from '@js_godot/variant/variant'
 import { GDString } from '@js_godot/variant/gd_string'
-import { RefCounted } from '@js_godot/classes/ref_counted'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -31,6 +31,7 @@ export class EditorResourceConversionPlugin extends RefCounted{
     }
     this.#initialized = true;
   }
+  
   _converts_to() {
   }
   _handles(_resource) {

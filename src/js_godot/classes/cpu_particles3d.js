@@ -1,12 +1,12 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Vector3 } from '@js_godot/variant/vector3'
+import { PackedColorArray } from '@js_godot/variant/packed_color_array'
 import { PackedVector3Array } from '@js_godot/variant/packed_vector3_array'
-import { StringName } from '@js_godot/variant/string_name'
 import { AABB } from '@js_godot/variant/aabb'
 import { Color } from '@js_godot/variant/color'
-import { PackedColorArray } from '@js_godot/variant/packed_color_array'
+import { Variant } from '@js_godot/variant/variant'
 import { GeometryInstance3D } from '@js_godot/classes/geometry_instance3d'
+import { StringName } from '@js_godot/variant/string_name'
+import { Vector3 } from '@js_godot/variant/vector3'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -855,9 +855,10 @@ export class CPUParticles3D extends GeometryInstance3D{
       );
     }
   }
+  
   set_emitting(_emitting) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_emitting,
+      CPUParticles3D._bindings.method_set_emitting,
       this._owner,
       _emitting
     );
@@ -865,7 +866,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_amount(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_amount,
+      CPUParticles3D._bindings.method_set_amount,
       this._owner,
       _amount
     );
@@ -873,7 +874,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_lifetime(_secs) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_lifetime,
+      CPUParticles3D._bindings.method_set_lifetime,
       this._owner,
       _secs
     );
@@ -881,7 +882,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_one_shot(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_one_shot,
+      CPUParticles3D._bindings.method_set_one_shot,
       this._owner,
       _enable
     );
@@ -889,7 +890,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_pre_process_time(_secs) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_pre_process_time,
+      CPUParticles3D._bindings.method_set_pre_process_time,
       this._owner,
       _secs
     );
@@ -897,7 +898,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_explosiveness_ratio(_ratio) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_explosiveness_ratio,
+      CPUParticles3D._bindings.method_set_explosiveness_ratio,
       this._owner,
       _ratio
     );
@@ -905,7 +906,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_randomness_ratio(_ratio) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_randomness_ratio,
+      CPUParticles3D._bindings.method_set_randomness_ratio,
       this._owner,
       _ratio
     );
@@ -913,7 +914,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_visibility_aabb(_aabb) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_visibility_aabb,
+      CPUParticles3D._bindings.method_set_visibility_aabb,
       this._owner,
       _aabb
     );
@@ -921,7 +922,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_lifetime_randomness(_random) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_lifetime_randomness,
+      CPUParticles3D._bindings.method_set_lifetime_randomness,
       this._owner,
       _random
     );
@@ -929,7 +930,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_use_local_coordinates(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_local_coordinates,
+      CPUParticles3D._bindings.method_set_use_local_coordinates,
       this._owner,
       _enable
     );
@@ -937,7 +938,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_fixed_fps(_fps) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fixed_fps,
+      CPUParticles3D._bindings.method_set_fixed_fps,
       this._owner,
       _fps
     );
@@ -945,7 +946,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_fractional_delta(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fractional_delta,
+      CPUParticles3D._bindings.method_set_fractional_delta,
       this._owner,
       _enable
     );
@@ -953,7 +954,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_speed_scale(_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_speed_scale,
+      CPUParticles3D._bindings.method_set_speed_scale,
       this._owner,
       _scale
     );
@@ -961,7 +962,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   is_emitting() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_emitting,
+      CPUParticles3D._bindings.method_is_emitting,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -970,7 +971,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_amount() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_amount,
+      CPUParticles3D._bindings.method_get_amount,
       this._owner,
 			Variant.Type.INT,
       
@@ -979,7 +980,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_lifetime() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_lifetime,
+      CPUParticles3D._bindings.method_get_lifetime,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -988,7 +989,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_one_shot() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_one_shot,
+      CPUParticles3D._bindings.method_get_one_shot,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -997,7 +998,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_pre_process_time() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_pre_process_time,
+      CPUParticles3D._bindings.method_get_pre_process_time,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1006,7 +1007,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_explosiveness_ratio() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_explosiveness_ratio,
+      CPUParticles3D._bindings.method_get_explosiveness_ratio,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1015,7 +1016,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_randomness_ratio() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_randomness_ratio,
+      CPUParticles3D._bindings.method_get_randomness_ratio,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1024,7 +1025,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_visibility_aabb() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_visibility_aabb,
+      CPUParticles3D._bindings.method_get_visibility_aabb,
       this._owner,
 			Variant.Type.AABB,
     
@@ -1034,7 +1035,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_lifetime_randomness() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_lifetime_randomness,
+      CPUParticles3D._bindings.method_get_lifetime_randomness,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1043,7 +1044,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_use_local_coordinates() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_use_local_coordinates,
+      CPUParticles3D._bindings.method_get_use_local_coordinates,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1052,7 +1053,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_fixed_fps() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fixed_fps,
+      CPUParticles3D._bindings.method_get_fixed_fps,
       this._owner,
 			Variant.Type.INT,
       
@@ -1061,7 +1062,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_fractional_delta() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fractional_delta,
+      CPUParticles3D._bindings.method_get_fractional_delta,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1070,7 +1071,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_speed_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_speed_scale,
+      CPUParticles3D._bindings.method_get_speed_scale,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1079,7 +1080,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_draw_order(_order) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_draw_order,
+      CPUParticles3D._bindings.method_set_draw_order,
       this._owner,
       _order
     );
@@ -1087,7 +1088,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_draw_order() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_draw_order,
+      CPUParticles3D._bindings.method_get_draw_order,
       this._owner,
 			Variant.INT,
       
@@ -1096,7 +1097,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_mesh(_mesh) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mesh,
+      CPUParticles3D._bindings.method_set_mesh,
       this._owner,
       _mesh
     );
@@ -1104,7 +1105,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_mesh() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mesh,
+      CPUParticles3D._bindings.method_get_mesh,
       this._owner,
 			Variant.INT,
       
@@ -1113,7 +1114,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   restart() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_restart,
+      CPUParticles3D._bindings.method_restart,
       this._owner,
       
     );
@@ -1121,7 +1122,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_direction(_direction) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_direction,
+      CPUParticles3D._bindings.method_set_direction,
       this._owner,
       _direction
     );
@@ -1129,7 +1130,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_direction() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_direction,
+      CPUParticles3D._bindings.method_get_direction,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -1139,7 +1140,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_spread(_degrees) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_spread,
+      CPUParticles3D._bindings.method_set_spread,
       this._owner,
       _degrees
     );
@@ -1147,7 +1148,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_spread() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_spread,
+      CPUParticles3D._bindings.method_get_spread,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1156,7 +1157,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_flatness(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_flatness,
+      CPUParticles3D._bindings.method_set_flatness,
       this._owner,
       _amount
     );
@@ -1164,7 +1165,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_flatness() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_flatness,
+      CPUParticles3D._bindings.method_get_flatness,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1173,7 +1174,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_param_min(_param, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_param_min,
+      CPUParticles3D._bindings.method_set_param_min,
       this._owner,
       _param, _value
     );
@@ -1181,7 +1182,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_param_min(_param) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_param_min,
+      CPUParticles3D._bindings.method_get_param_min,
       this._owner,
 			Variant.Type.FLOAT,
       _param
@@ -1190,7 +1191,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_param_max(_param, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_param_max,
+      CPUParticles3D._bindings.method_set_param_max,
       this._owner,
       _param, _value
     );
@@ -1198,7 +1199,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_param_max(_param) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_param_max,
+      CPUParticles3D._bindings.method_get_param_max,
       this._owner,
 			Variant.Type.FLOAT,
       _param
@@ -1207,7 +1208,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_param_curve(_param, _curve) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_param_curve,
+      CPUParticles3D._bindings.method_set_param_curve,
       this._owner,
       _param, _curve
     );
@@ -1215,7 +1216,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_param_curve(_param) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_param_curve,
+      CPUParticles3D._bindings.method_get_param_curve,
       this._owner,
 			Variant.INT,
       _param
@@ -1224,7 +1225,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_color,
+      CPUParticles3D._bindings.method_set_color,
       this._owner,
       _color
     );
@@ -1232,7 +1233,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_color,
+      CPUParticles3D._bindings.method_get_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -1242,7 +1243,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_color_ramp(_ramp) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_color_ramp,
+      CPUParticles3D._bindings.method_set_color_ramp,
       this._owner,
       _ramp
     );
@@ -1250,7 +1251,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_color_ramp() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_color_ramp,
+      CPUParticles3D._bindings.method_get_color_ramp,
       this._owner,
 			Variant.INT,
       
@@ -1259,7 +1260,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_color_initial_ramp(_ramp) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_color_initial_ramp,
+      CPUParticles3D._bindings.method_set_color_initial_ramp,
       this._owner,
       _ramp
     );
@@ -1267,7 +1268,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_color_initial_ramp() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_color_initial_ramp,
+      CPUParticles3D._bindings.method_get_color_initial_ramp,
       this._owner,
 			Variant.INT,
       
@@ -1276,7 +1277,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_particle_flag(_particle_flag, _enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_particle_flag,
+      CPUParticles3D._bindings.method_set_particle_flag,
       this._owner,
       _particle_flag, _enable
     );
@@ -1284,7 +1285,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_particle_flag(_particle_flag) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_particle_flag,
+      CPUParticles3D._bindings.method_get_particle_flag,
       this._owner,
 			Variant.Type.BOOL,
       _particle_flag
@@ -1293,7 +1294,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_emission_shape(_shape) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_emission_shape,
+      CPUParticles3D._bindings.method_set_emission_shape,
       this._owner,
       _shape
     );
@@ -1301,7 +1302,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_emission_shape() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_emission_shape,
+      CPUParticles3D._bindings.method_get_emission_shape,
       this._owner,
 			Variant.INT,
       
@@ -1310,7 +1311,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_emission_sphere_radius(_radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_emission_sphere_radius,
+      CPUParticles3D._bindings.method_set_emission_sphere_radius,
       this._owner,
       _radius
     );
@@ -1318,7 +1319,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_emission_sphere_radius() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_emission_sphere_radius,
+      CPUParticles3D._bindings.method_get_emission_sphere_radius,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1327,7 +1328,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_emission_box_extents(_extents) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_emission_box_extents,
+      CPUParticles3D._bindings.method_set_emission_box_extents,
       this._owner,
       _extents
     );
@@ -1335,7 +1336,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_emission_box_extents() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_emission_box_extents,
+      CPUParticles3D._bindings.method_get_emission_box_extents,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -1345,7 +1346,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_emission_points(_array) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_emission_points,
+      CPUParticles3D._bindings.method_set_emission_points,
       this._owner,
       _array
     );
@@ -1353,7 +1354,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_emission_points() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_emission_points,
+      CPUParticles3D._bindings.method_get_emission_points,
       this._owner,
 			Variant.Type.PACKED_VECTOR3_ARRAY,
     
@@ -1363,7 +1364,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_emission_normals(_array) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_emission_normals,
+      CPUParticles3D._bindings.method_set_emission_normals,
       this._owner,
       _array
     );
@@ -1371,7 +1372,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_emission_normals() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_emission_normals,
+      CPUParticles3D._bindings.method_get_emission_normals,
       this._owner,
 			Variant.Type.PACKED_VECTOR3_ARRAY,
     
@@ -1381,7 +1382,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_emission_colors(_array) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_emission_colors,
+      CPUParticles3D._bindings.method_set_emission_colors,
       this._owner,
       _array
     );
@@ -1389,7 +1390,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_emission_colors() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_emission_colors,
+      CPUParticles3D._bindings.method_get_emission_colors,
       this._owner,
 			Variant.Type.PACKED_COLOR_ARRAY,
     
@@ -1399,7 +1400,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_emission_ring_axis(_axis) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_emission_ring_axis,
+      CPUParticles3D._bindings.method_set_emission_ring_axis,
       this._owner,
       _axis
     );
@@ -1407,7 +1408,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_emission_ring_axis() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_emission_ring_axis,
+      CPUParticles3D._bindings.method_get_emission_ring_axis,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -1417,7 +1418,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_emission_ring_height(_height) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_emission_ring_height,
+      CPUParticles3D._bindings.method_set_emission_ring_height,
       this._owner,
       _height
     );
@@ -1425,7 +1426,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_emission_ring_height() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_emission_ring_height,
+      CPUParticles3D._bindings.method_get_emission_ring_height,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1434,7 +1435,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_emission_ring_radius(_radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_emission_ring_radius,
+      CPUParticles3D._bindings.method_set_emission_ring_radius,
       this._owner,
       _radius
     );
@@ -1442,7 +1443,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_emission_ring_radius() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_emission_ring_radius,
+      CPUParticles3D._bindings.method_get_emission_ring_radius,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1451,7 +1452,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_emission_ring_inner_radius(_inner_radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_emission_ring_inner_radius,
+      CPUParticles3D._bindings.method_set_emission_ring_inner_radius,
       this._owner,
       _inner_radius
     );
@@ -1459,7 +1460,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_emission_ring_inner_radius() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_emission_ring_inner_radius,
+      CPUParticles3D._bindings.method_get_emission_ring_inner_radius,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1468,7 +1469,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_gravity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_gravity,
+      CPUParticles3D._bindings.method_get_gravity,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -1478,7 +1479,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_gravity(_accel_vec) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_gravity,
+      CPUParticles3D._bindings.method_set_gravity,
       this._owner,
       _accel_vec
     );
@@ -1486,7 +1487,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_split_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_split_scale,
+      CPUParticles3D._bindings.method_get_split_scale,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1495,7 +1496,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_split_scale(_split_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_split_scale,
+      CPUParticles3D._bindings.method_set_split_scale,
       this._owner,
       _split_scale
     );
@@ -1503,7 +1504,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_scale_curve_x() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_scale_curve_x,
+      CPUParticles3D._bindings.method_get_scale_curve_x,
       this._owner,
 			Variant.INT,
       
@@ -1512,7 +1513,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_scale_curve_x(_scale_curve) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_scale_curve_x,
+      CPUParticles3D._bindings.method_set_scale_curve_x,
       this._owner,
       _scale_curve
     );
@@ -1520,7 +1521,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_scale_curve_y() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_scale_curve_y,
+      CPUParticles3D._bindings.method_get_scale_curve_y,
       this._owner,
 			Variant.INT,
       
@@ -1529,7 +1530,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_scale_curve_y(_scale_curve) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_scale_curve_y,
+      CPUParticles3D._bindings.method_set_scale_curve_y,
       this._owner,
       _scale_curve
     );
@@ -1537,7 +1538,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   get_scale_curve_z() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_scale_curve_z,
+      CPUParticles3D._bindings.method_get_scale_curve_z,
       this._owner,
 			Variant.INT,
       
@@ -1546,7 +1547,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   set_scale_curve_z(_scale_curve) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_scale_curve_z,
+      CPUParticles3D._bindings.method_set_scale_curve_z,
       this._owner,
       _scale_curve
     );
@@ -1554,7 +1555,7 @@ export class CPUParticles3D extends GeometryInstance3D{
   }
   convert_from_particles(_particles) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_convert_from_particles,
+      CPUParticles3D._bindings.method_convert_from_particles,
       this._owner,
       _particles
     );

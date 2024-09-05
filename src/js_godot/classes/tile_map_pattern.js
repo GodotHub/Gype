@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
+import { Vector2i } from '@js_godot/variant/vector2i'
 import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
-import { Vector2i } from '@js_godot/variant/vector2i'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -131,9 +131,10 @@ export class TileMapPattern extends Resource{
       );
     }
   }
+  
   set_cell(_coords, _source_id, _atlas_coords, _alternative_tile) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cell,
+      TileMapPattern._bindings.method_set_cell,
       this._owner,
       _coords, _source_id, _atlas_coords, _alternative_tile
     );
@@ -141,7 +142,7 @@ export class TileMapPattern extends Resource{
   }
   has_cell(_coords) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_cell,
+      TileMapPattern._bindings.method_has_cell,
       this._owner,
 			Variant.Type.BOOL,
       _coords
@@ -150,7 +151,7 @@ export class TileMapPattern extends Resource{
   }
   remove_cell(_coords, _update_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_cell,
+      TileMapPattern._bindings.method_remove_cell,
       this._owner,
       _coords, _update_size
     );
@@ -158,7 +159,7 @@ export class TileMapPattern extends Resource{
   }
   get_cell_source_id(_coords) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cell_source_id,
+      TileMapPattern._bindings.method_get_cell_source_id,
       this._owner,
 			Variant.Type.INT,
       _coords
@@ -167,7 +168,7 @@ export class TileMapPattern extends Resource{
   }
   get_cell_atlas_coords(_coords) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cell_atlas_coords,
+      TileMapPattern._bindings.method_get_cell_atlas_coords,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -177,7 +178,7 @@ export class TileMapPattern extends Resource{
   }
   get_cell_alternative_tile(_coords) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cell_alternative_tile,
+      TileMapPattern._bindings.method_get_cell_alternative_tile,
       this._owner,
 			Variant.Type.INT,
       _coords
@@ -186,7 +187,7 @@ export class TileMapPattern extends Resource{
   }
   get_used_cells() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_used_cells,
+      TileMapPattern._bindings.method_get_used_cells,
       this._owner,
 			Variant.INT,
       
@@ -195,7 +196,7 @@ export class TileMapPattern extends Resource{
   }
   get_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_size,
+      TileMapPattern._bindings.method_get_size,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -205,7 +206,7 @@ export class TileMapPattern extends Resource{
   }
   set_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_size,
+      TileMapPattern._bindings.method_set_size,
       this._owner,
       _size
     );
@@ -213,7 +214,7 @@ export class TileMapPattern extends Resource{
   }
   is_empty() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_empty,
+      TileMapPattern._bindings.method_is_empty,
       this._owner,
 			Variant.Type.BOOL,
       

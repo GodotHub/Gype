@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { VisualInstance3D } from '@js_godot/classes/visual_instance3d'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -50,9 +50,10 @@ export class GPUParticlesCollision3D extends VisualInstance3D{
       );
     }
   }
+  
   set_cull_mask(_mask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cull_mask,
+      GPUParticlesCollision3D._bindings.method_set_cull_mask,
       this._owner,
       _mask
     );
@@ -60,7 +61,7 @@ export class GPUParticlesCollision3D extends VisualInstance3D{
   }
   get_cull_mask() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cull_mask,
+      GPUParticlesCollision3D._bindings.method_get_cull_mask,
       this._owner,
 			Variant.Type.INT,
       

@@ -50,9 +50,10 @@ export class VisualShaderNodeCurveTexture extends VisualShaderNodeResizableBase{
       );
     }
   }
+  
   set_texture(_texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture,
+      VisualShaderNodeCurveTexture._bindings.method_set_texture,
       this._owner,
       _texture
     );
@@ -60,7 +61,7 @@ export class VisualShaderNodeCurveTexture extends VisualShaderNodeResizableBase{
   }
   get_texture() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture,
+      VisualShaderNodeCurveTexture._bindings.method_get_texture,
       this._owner,
 			Variant.INT,
       

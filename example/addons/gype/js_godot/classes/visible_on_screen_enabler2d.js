@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { VisibleOnScreenNotifier2D } from '@js_godot/classes/visible_on_screen_notifier2d'
 import { NodePath } from '@js_godot/variant/node_path'
 import {
@@ -71,9 +71,10 @@ export class VisibleOnScreenEnabler2D extends VisibleOnScreenNotifier2D{
       );
     }
   }
+  
   set_enable_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_enable_mode,
+      VisibleOnScreenEnabler2D._bindings.method_set_enable_mode,
       this._owner,
       _mode
     );
@@ -81,7 +82,7 @@ export class VisibleOnScreenEnabler2D extends VisibleOnScreenNotifier2D{
   }
   get_enable_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_enable_mode,
+      VisibleOnScreenEnabler2D._bindings.method_get_enable_mode,
       this._owner,
 			Variant.INT,
       
@@ -90,7 +91,7 @@ export class VisibleOnScreenEnabler2D extends VisibleOnScreenNotifier2D{
   }
   set_enable_node_path(_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_enable_node_path,
+      VisibleOnScreenEnabler2D._bindings.method_set_enable_node_path,
       this._owner,
       _path
     );
@@ -98,7 +99,7 @@ export class VisibleOnScreenEnabler2D extends VisibleOnScreenNotifier2D{
   }
   get_enable_node_path() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_enable_node_path,
+      VisibleOnScreenEnabler2D._bindings.method_get_enable_node_path,
       this._owner,
 			Variant.Type.NODE_PATH,
     

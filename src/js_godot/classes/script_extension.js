@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
-import { Dictionary } from '@js_godot/variant/dictionary'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { Script } from '@js_godot/classes/script'
+import { StringName } from '@js_godot/variant/string_name'
+import { Dictionary } from '@js_godot/variant/dictionary'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -32,6 +32,7 @@ export class ScriptExtension extends Script{
     }
     this.#initialized = true;
   }
+  
   _editor_can_reload_from_file() {
   }
   _placeholder_erased(_placeholder) {

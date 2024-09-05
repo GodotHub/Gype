@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { StringName } from '@js_godot/variant/string_name'
 import { VisualShaderNodeResizableBase } from '@js_godot/classes/visual_shader_node_resizable_base'
 import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -50,9 +50,10 @@ export class VisualShaderNodeCurveTexture extends VisualShaderNodeResizableBase{
       );
     }
   }
+  
   set_texture(_texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture,
+      VisualShaderNodeCurveTexture._bindings.method_set_texture,
       this._owner,
       _texture
     );
@@ -60,7 +61,7 @@ export class VisualShaderNodeCurveTexture extends VisualShaderNodeResizableBase{
   }
   get_texture() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture,
+      VisualShaderNodeCurveTexture._bindings.method_get_texture,
       this._owner,
 			Variant.INT,
       

@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
+import { VisualShaderNodeConstant } from '@js_godot/classes/visual_shader_node_constant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Transform3D } from '@js_godot/variant/transform3d'
 import { Variant } from '@js_godot/variant/variant'
-import { VisualShaderNodeConstant } from '@js_godot/classes/visual_shader_node_constant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -51,9 +51,10 @@ export class VisualShaderNodeTransformConstant extends VisualShaderNodeConstant{
       );
     }
   }
+  
   set_constant(_constant) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_constant,
+      VisualShaderNodeTransformConstant._bindings.method_set_constant,
       this._owner,
       _constant
     );
@@ -61,7 +62,7 @@ export class VisualShaderNodeTransformConstant extends VisualShaderNodeConstant{
   }
   get_constant() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_constant,
+      VisualShaderNodeTransformConstant._bindings.method_get_constant,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     

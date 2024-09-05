@@ -31,6 +31,7 @@ export class JNISingleton extends GodotObject{
     this.#initialized = true;
   }
   
+  
 
 
   static {

@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
-import { Vector2 } from '@js_godot/variant/vector2'
 import { Texture2D } from '@js_godot/classes/texture2d'
+import { Vector2 } from '@js_godot/variant/vector2'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -171,9 +171,10 @@ export class GradientTexture2D extends Texture2D{
       );
     }
   }
+  
   set_gradient(_gradient) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_gradient,
+      GradientTexture2D._bindings.method_set_gradient,
       this._owner,
       _gradient
     );
@@ -181,7 +182,7 @@ export class GradientTexture2D extends Texture2D{
   }
   get_gradient() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_gradient,
+      GradientTexture2D._bindings.method_get_gradient,
       this._owner,
 			Variant.INT,
       
@@ -190,7 +191,7 @@ export class GradientTexture2D extends Texture2D{
   }
   set_width(_width) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_width,
+      GradientTexture2D._bindings.method_set_width,
       this._owner,
       _width
     );
@@ -198,7 +199,7 @@ export class GradientTexture2D extends Texture2D{
   }
   set_height(_height) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_height,
+      GradientTexture2D._bindings.method_set_height,
       this._owner,
       _height
     );
@@ -206,7 +207,7 @@ export class GradientTexture2D extends Texture2D{
   }
   set_use_hdr(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_hdr,
+      GradientTexture2D._bindings.method_set_use_hdr,
       this._owner,
       _enabled
     );
@@ -214,7 +215,7 @@ export class GradientTexture2D extends Texture2D{
   }
   is_using_hdr() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_using_hdr,
+      GradientTexture2D._bindings.method_is_using_hdr,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -223,7 +224,7 @@ export class GradientTexture2D extends Texture2D{
   }
   set_fill(_fill) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fill,
+      GradientTexture2D._bindings.method_set_fill,
       this._owner,
       _fill
     );
@@ -231,7 +232,7 @@ export class GradientTexture2D extends Texture2D{
   }
   get_fill() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fill,
+      GradientTexture2D._bindings.method_get_fill,
       this._owner,
 			Variant.INT,
       
@@ -240,7 +241,7 @@ export class GradientTexture2D extends Texture2D{
   }
   set_fill_from(_fill_from) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fill_from,
+      GradientTexture2D._bindings.method_set_fill_from,
       this._owner,
       _fill_from
     );
@@ -248,7 +249,7 @@ export class GradientTexture2D extends Texture2D{
   }
   get_fill_from() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fill_from,
+      GradientTexture2D._bindings.method_get_fill_from,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -258,7 +259,7 @@ export class GradientTexture2D extends Texture2D{
   }
   set_fill_to(_fill_to) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fill_to,
+      GradientTexture2D._bindings.method_set_fill_to,
       this._owner,
       _fill_to
     );
@@ -266,7 +267,7 @@ export class GradientTexture2D extends Texture2D{
   }
   get_fill_to() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fill_to,
+      GradientTexture2D._bindings.method_get_fill_to,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -276,7 +277,7 @@ export class GradientTexture2D extends Texture2D{
   }
   set_repeat(_repeat) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_repeat,
+      GradientTexture2D._bindings.method_set_repeat,
       this._owner,
       _repeat
     );
@@ -284,7 +285,7 @@ export class GradientTexture2D extends Texture2D{
   }
   get_repeat() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_repeat,
+      GradientTexture2D._bindings.method_get_repeat,
       this._owner,
 			Variant.INT,
       

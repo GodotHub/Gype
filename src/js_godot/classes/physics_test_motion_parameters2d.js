@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
+import { RefCounted } from '@js_godot/classes/ref_counted'
 import { Variant } from '@js_godot/variant/variant'
+import { Transform2D } from '@js_godot/variant/transform2d'
 import { StringName } from '@js_godot/variant/string_name'
 import { Vector2 } from '@js_godot/variant/vector2'
-import { RefCounted } from '@js_godot/classes/ref_counted'
-import { Transform2D } from '@js_godot/variant/transform2d'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -172,9 +172,10 @@ export class PhysicsTestMotionParameters2D extends RefCounted{
       );
     }
   }
+  
   get_from() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_from,
+      PhysicsTestMotionParameters2D._bindings.method_get_from,
       this._owner,
 			Variant.Type.TRANSFORM2D,
     
@@ -184,7 +185,7 @@ export class PhysicsTestMotionParameters2D extends RefCounted{
   }
   set_from(_from) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_from,
+      PhysicsTestMotionParameters2D._bindings.method_set_from,
       this._owner,
       _from
     );
@@ -192,7 +193,7 @@ export class PhysicsTestMotionParameters2D extends RefCounted{
   }
   get_motion() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_motion,
+      PhysicsTestMotionParameters2D._bindings.method_get_motion,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -202,7 +203,7 @@ export class PhysicsTestMotionParameters2D extends RefCounted{
   }
   set_motion(_motion) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_motion,
+      PhysicsTestMotionParameters2D._bindings.method_set_motion,
       this._owner,
       _motion
     );
@@ -210,7 +211,7 @@ export class PhysicsTestMotionParameters2D extends RefCounted{
   }
   get_margin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_margin,
+      PhysicsTestMotionParameters2D._bindings.method_get_margin,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -219,7 +220,7 @@ export class PhysicsTestMotionParameters2D extends RefCounted{
   }
   set_margin(_margin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_margin,
+      PhysicsTestMotionParameters2D._bindings.method_set_margin,
       this._owner,
       _margin
     );
@@ -227,7 +228,7 @@ export class PhysicsTestMotionParameters2D extends RefCounted{
   }
   is_collide_separation_ray_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_collide_separation_ray_enabled,
+      PhysicsTestMotionParameters2D._bindings.method_is_collide_separation_ray_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -236,7 +237,7 @@ export class PhysicsTestMotionParameters2D extends RefCounted{
   }
   set_collide_separation_ray_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collide_separation_ray_enabled,
+      PhysicsTestMotionParameters2D._bindings.method_set_collide_separation_ray_enabled,
       this._owner,
       _enabled
     );
@@ -244,7 +245,7 @@ export class PhysicsTestMotionParameters2D extends RefCounted{
   }
   get_exclude_bodies() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_exclude_bodies,
+      PhysicsTestMotionParameters2D._bindings.method_get_exclude_bodies,
       this._owner,
 			Variant.INT,
       
@@ -253,7 +254,7 @@ export class PhysicsTestMotionParameters2D extends RefCounted{
   }
   set_exclude_bodies(_exclude_list) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_exclude_bodies,
+      PhysicsTestMotionParameters2D._bindings.method_set_exclude_bodies,
       this._owner,
       _exclude_list
     );
@@ -261,7 +262,7 @@ export class PhysicsTestMotionParameters2D extends RefCounted{
   }
   get_exclude_objects() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_exclude_objects,
+      PhysicsTestMotionParameters2D._bindings.method_get_exclude_objects,
       this._owner,
 			Variant.INT,
       
@@ -270,7 +271,7 @@ export class PhysicsTestMotionParameters2D extends RefCounted{
   }
   set_exclude_objects(_exclude_list) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_exclude_objects,
+      PhysicsTestMotionParameters2D._bindings.method_set_exclude_objects,
       this._owner,
       _exclude_list
     );
@@ -278,7 +279,7 @@ export class PhysicsTestMotionParameters2D extends RefCounted{
   }
   is_recovery_as_collision_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_recovery_as_collision_enabled,
+      PhysicsTestMotionParameters2D._bindings.method_is_recovery_as_collision_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -287,7 +288,7 @@ export class PhysicsTestMotionParameters2D extends RefCounted{
   }
   set_recovery_as_collision_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_recovery_as_collision_enabled,
+      PhysicsTestMotionParameters2D._bindings.method_set_recovery_as_collision_enabled,
       this._owner,
       _enabled
     );

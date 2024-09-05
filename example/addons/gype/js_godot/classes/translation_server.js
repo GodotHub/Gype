@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { GodotObject } from '@js_godot/classes/godot_object'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { GodotObject } from '@js_godot/classes/godot_object'
+import { Variant } from '@js_godot/variant/variant'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -261,9 +261,10 @@ class _MethodBindings {
       );
     }
   }
+  
   set_locale(_locale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_locale,
+      _TranslationServer._bindings.method_set_locale,
       this._owner,
       _locale
     );
@@ -271,7 +272,7 @@ class _MethodBindings {
   }
   get_locale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_locale,
+      _TranslationServer._bindings.method_get_locale,
       this._owner,
 			Variant.Type.STRING,
     
@@ -281,7 +282,7 @@ class _MethodBindings {
   }
   get_tool_locale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tool_locale,
+      _TranslationServer._bindings.method_get_tool_locale,
       this._owner,
 			Variant.Type.STRING,
     
@@ -291,7 +292,7 @@ class _MethodBindings {
   }
   compare_locales(_locale_a, _locale_b) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_compare_locales,
+      _TranslationServer._bindings.method_compare_locales,
       this._owner,
 			Variant.Type.INT,
       _locale_a, _locale_b
@@ -300,7 +301,7 @@ class _MethodBindings {
   }
   standardize_locale(_locale) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_standardize_locale,
+      _TranslationServer._bindings.method_standardize_locale,
       this._owner,
 			Variant.Type.STRING,
     
@@ -310,7 +311,7 @@ class _MethodBindings {
   }
   get_all_languages() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_all_languages,
+      _TranslationServer._bindings.method_get_all_languages,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -320,7 +321,7 @@ class _MethodBindings {
   }
   get_language_name(_language) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_language_name,
+      _TranslationServer._bindings.method_get_language_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -330,7 +331,7 @@ class _MethodBindings {
   }
   get_all_scripts() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_all_scripts,
+      _TranslationServer._bindings.method_get_all_scripts,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -340,7 +341,7 @@ class _MethodBindings {
   }
   get_script_name(_script) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_script_name,
+      _TranslationServer._bindings.method_get_script_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -350,7 +351,7 @@ class _MethodBindings {
   }
   get_all_countries() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_all_countries,
+      _TranslationServer._bindings.method_get_all_countries,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -360,7 +361,7 @@ class _MethodBindings {
   }
   get_country_name(_country) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_country_name,
+      _TranslationServer._bindings.method_get_country_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -370,7 +371,7 @@ class _MethodBindings {
   }
   get_locale_name(_locale) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_locale_name,
+      _TranslationServer._bindings.method_get_locale_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -380,7 +381,7 @@ class _MethodBindings {
   }
   translate(_message, _context) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_translate,
+      _TranslationServer._bindings.method_translate,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -390,7 +391,7 @@ class _MethodBindings {
   }
   translate_plural(_message, _plural_message, _n, _context) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_translate_plural,
+      _TranslationServer._bindings.method_translate_plural,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -400,7 +401,7 @@ class _MethodBindings {
   }
   add_translation(_translation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_translation,
+      _TranslationServer._bindings.method_add_translation,
       this._owner,
       _translation
     );
@@ -408,7 +409,7 @@ class _MethodBindings {
   }
   remove_translation(_translation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_translation,
+      _TranslationServer._bindings.method_remove_translation,
       this._owner,
       _translation
     );
@@ -416,7 +417,7 @@ class _MethodBindings {
   }
   get_translation_object(_locale) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_translation_object,
+      _TranslationServer._bindings.method_get_translation_object,
       this._owner,
 			Variant.INT,
       _locale
@@ -425,7 +426,7 @@ class _MethodBindings {
   }
   clear() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear,
+      _TranslationServer._bindings.method_clear,
       this._owner,
       
     );
@@ -433,7 +434,7 @@ class _MethodBindings {
   }
   get_loaded_locales() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_loaded_locales,
+      _TranslationServer._bindings.method_get_loaded_locales,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -443,7 +444,7 @@ class _MethodBindings {
   }
   is_pseudolocalization_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_pseudolocalization_enabled,
+      _TranslationServer._bindings.method_is_pseudolocalization_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -452,7 +453,7 @@ class _MethodBindings {
   }
   set_pseudolocalization_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_pseudolocalization_enabled,
+      _TranslationServer._bindings.method_set_pseudolocalization_enabled,
       this._owner,
       _enabled
     );
@@ -460,7 +461,7 @@ class _MethodBindings {
   }
   reload_pseudolocalization() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_reload_pseudolocalization,
+      _TranslationServer._bindings.method_reload_pseudolocalization,
       this._owner,
       
     );
@@ -468,7 +469,7 @@ class _MethodBindings {
   }
   pseudolocalize(_message) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_pseudolocalize,
+      _TranslationServer._bindings.method_pseudolocalize,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -489,4 +490,17 @@ set pseudolocalization_enabled (new_value) {
     this._init_bindings();
   }
 }
-export const TranslationServer = new _TranslationServer();
+export const TranslationServer = (function () {
+  let _instance;
+  function create_instance() {
+    return new _TranslationServer();
+  }
+  return {
+    instance: function () {
+      if (!_instance) {
+        _instance = create_instance();
+      }
+      return _instance;
+    },
+  };
+})();

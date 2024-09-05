@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
-import { Rect2 } from '@js_godot/variant/rect2'
-import { Color } from '@js_godot/variant/color'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { StringName } from '@js_godot/variant/string_name'
+import { Color } from '@js_godot/variant/color'
+import { Variant } from '@js_godot/variant/variant'
+import { Rect2 } from '@js_godot/variant/rect2'
 import { GeometryInstance3D } from '@js_godot/classes/geometry_instance3d'
 import {
   call_utility_ret,
@@ -373,9 +373,10 @@ export class SpriteBase3D extends GeometryInstance3D{
       );
     }
   }
+  
   set_centered(_centered) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_centered,
+      SpriteBase3D._bindings.method_set_centered,
       this._owner,
       _centered
     );
@@ -383,7 +384,7 @@ export class SpriteBase3D extends GeometryInstance3D{
   }
   is_centered() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_centered,
+      SpriteBase3D._bindings.method_is_centered,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -392,7 +393,7 @@ export class SpriteBase3D extends GeometryInstance3D{
   }
   set_offset(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_offset,
+      SpriteBase3D._bindings.method_set_offset,
       this._owner,
       _offset
     );
@@ -400,7 +401,7 @@ export class SpriteBase3D extends GeometryInstance3D{
   }
   get_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_offset,
+      SpriteBase3D._bindings.method_get_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -410,7 +411,7 @@ export class SpriteBase3D extends GeometryInstance3D{
   }
   set_flip_h(_flip_h) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_flip_h,
+      SpriteBase3D._bindings.method_set_flip_h,
       this._owner,
       _flip_h
     );
@@ -418,7 +419,7 @@ export class SpriteBase3D extends GeometryInstance3D{
   }
   is_flipped_h() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_flipped_h,
+      SpriteBase3D._bindings.method_is_flipped_h,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -427,7 +428,7 @@ export class SpriteBase3D extends GeometryInstance3D{
   }
   set_flip_v(_flip_v) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_flip_v,
+      SpriteBase3D._bindings.method_set_flip_v,
       this._owner,
       _flip_v
     );
@@ -435,7 +436,7 @@ export class SpriteBase3D extends GeometryInstance3D{
   }
   is_flipped_v() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_flipped_v,
+      SpriteBase3D._bindings.method_is_flipped_v,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -444,7 +445,7 @@ export class SpriteBase3D extends GeometryInstance3D{
   }
   set_modulate(_modulate) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_modulate,
+      SpriteBase3D._bindings.method_set_modulate,
       this._owner,
       _modulate
     );
@@ -452,7 +453,7 @@ export class SpriteBase3D extends GeometryInstance3D{
   }
   get_modulate() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_modulate,
+      SpriteBase3D._bindings.method_get_modulate,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -462,7 +463,7 @@ export class SpriteBase3D extends GeometryInstance3D{
   }
   set_render_priority(_priority) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_render_priority,
+      SpriteBase3D._bindings.method_set_render_priority,
       this._owner,
       _priority
     );
@@ -470,7 +471,7 @@ export class SpriteBase3D extends GeometryInstance3D{
   }
   get_render_priority() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_render_priority,
+      SpriteBase3D._bindings.method_get_render_priority,
       this._owner,
 			Variant.Type.INT,
       
@@ -479,7 +480,7 @@ export class SpriteBase3D extends GeometryInstance3D{
   }
   set_pixel_size(_pixel_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_pixel_size,
+      SpriteBase3D._bindings.method_set_pixel_size,
       this._owner,
       _pixel_size
     );
@@ -487,7 +488,7 @@ export class SpriteBase3D extends GeometryInstance3D{
   }
   get_pixel_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_pixel_size,
+      SpriteBase3D._bindings.method_get_pixel_size,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -496,7 +497,7 @@ export class SpriteBase3D extends GeometryInstance3D{
   }
   set_axis(_axis) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_axis,
+      SpriteBase3D._bindings.method_set_axis,
       this._owner,
       _axis
     );
@@ -504,7 +505,7 @@ export class SpriteBase3D extends GeometryInstance3D{
   }
   get_axis() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_axis,
+      SpriteBase3D._bindings.method_get_axis,
       this._owner,
 			Variant.INT,
       
@@ -513,7 +514,7 @@ export class SpriteBase3D extends GeometryInstance3D{
   }
   set_draw_flag(_flag, _enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_draw_flag,
+      SpriteBase3D._bindings.method_set_draw_flag,
       this._owner,
       _flag, _enabled
     );
@@ -521,7 +522,7 @@ export class SpriteBase3D extends GeometryInstance3D{
   }
   get_draw_flag(_flag) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_draw_flag,
+      SpriteBase3D._bindings.method_get_draw_flag,
       this._owner,
 			Variant.Type.BOOL,
       _flag
@@ -530,7 +531,7 @@ export class SpriteBase3D extends GeometryInstance3D{
   }
   set_alpha_cut_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_alpha_cut_mode,
+      SpriteBase3D._bindings.method_set_alpha_cut_mode,
       this._owner,
       _mode
     );
@@ -538,7 +539,7 @@ export class SpriteBase3D extends GeometryInstance3D{
   }
   get_alpha_cut_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_alpha_cut_mode,
+      SpriteBase3D._bindings.method_get_alpha_cut_mode,
       this._owner,
 			Variant.INT,
       
@@ -547,7 +548,7 @@ export class SpriteBase3D extends GeometryInstance3D{
   }
   set_alpha_scissor_threshold(_threshold) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_alpha_scissor_threshold,
+      SpriteBase3D._bindings.method_set_alpha_scissor_threshold,
       this._owner,
       _threshold
     );
@@ -555,7 +556,7 @@ export class SpriteBase3D extends GeometryInstance3D{
   }
   get_alpha_scissor_threshold() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_alpha_scissor_threshold,
+      SpriteBase3D._bindings.method_get_alpha_scissor_threshold,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -564,7 +565,7 @@ export class SpriteBase3D extends GeometryInstance3D{
   }
   set_alpha_hash_scale(_threshold) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_alpha_hash_scale,
+      SpriteBase3D._bindings.method_set_alpha_hash_scale,
       this._owner,
       _threshold
     );
@@ -572,7 +573,7 @@ export class SpriteBase3D extends GeometryInstance3D{
   }
   get_alpha_hash_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_alpha_hash_scale,
+      SpriteBase3D._bindings.method_get_alpha_hash_scale,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -581,7 +582,7 @@ export class SpriteBase3D extends GeometryInstance3D{
   }
   set_alpha_antialiasing(_alpha_aa) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_alpha_antialiasing,
+      SpriteBase3D._bindings.method_set_alpha_antialiasing,
       this._owner,
       _alpha_aa
     );
@@ -589,7 +590,7 @@ export class SpriteBase3D extends GeometryInstance3D{
   }
   get_alpha_antialiasing() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_alpha_antialiasing,
+      SpriteBase3D._bindings.method_get_alpha_antialiasing,
       this._owner,
 			Variant.INT,
       
@@ -598,7 +599,7 @@ export class SpriteBase3D extends GeometryInstance3D{
   }
   set_alpha_antialiasing_edge(_edge) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_alpha_antialiasing_edge,
+      SpriteBase3D._bindings.method_set_alpha_antialiasing_edge,
       this._owner,
       _edge
     );
@@ -606,7 +607,7 @@ export class SpriteBase3D extends GeometryInstance3D{
   }
   get_alpha_antialiasing_edge() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_alpha_antialiasing_edge,
+      SpriteBase3D._bindings.method_get_alpha_antialiasing_edge,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -615,7 +616,7 @@ export class SpriteBase3D extends GeometryInstance3D{
   }
   set_billboard_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_billboard_mode,
+      SpriteBase3D._bindings.method_set_billboard_mode,
       this._owner,
       _mode
     );
@@ -623,7 +624,7 @@ export class SpriteBase3D extends GeometryInstance3D{
   }
   get_billboard_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_billboard_mode,
+      SpriteBase3D._bindings.method_get_billboard_mode,
       this._owner,
 			Variant.INT,
       
@@ -632,7 +633,7 @@ export class SpriteBase3D extends GeometryInstance3D{
   }
   set_texture_filter(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture_filter,
+      SpriteBase3D._bindings.method_set_texture_filter,
       this._owner,
       _mode
     );
@@ -640,7 +641,7 @@ export class SpriteBase3D extends GeometryInstance3D{
   }
   get_texture_filter() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_filter,
+      SpriteBase3D._bindings.method_get_texture_filter,
       this._owner,
 			Variant.INT,
       
@@ -649,7 +650,7 @@ export class SpriteBase3D extends GeometryInstance3D{
   }
   get_item_rect() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_rect,
+      SpriteBase3D._bindings.method_get_item_rect,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -659,7 +660,7 @@ export class SpriteBase3D extends GeometryInstance3D{
   }
   generate_triangle_mesh() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_generate_triangle_mesh,
+      SpriteBase3D._bindings.method_generate_triangle_mesh,
       this._owner,
 			Variant.INT,
       

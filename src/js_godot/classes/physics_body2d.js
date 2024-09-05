@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
+import { Transform2D } from '@js_godot/variant/transform2d'
 import { StringName } from '@js_godot/variant/string_name'
 import { Vector2 } from '@js_godot/variant/vector2'
-import { Transform2D } from '@js_godot/variant/transform2d'
 import { CollisionObject2D } from '@js_godot/classes/collision_object2d'
 import {
   call_utility_ret,
@@ -92,9 +92,10 @@ export class PhysicsBody2D extends CollisionObject2D{
       );
     }
   }
+  
   move_and_collide(_motion, _test_only, _safe_margin, _recovery_as_collision) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_move_and_collide,
+      PhysicsBody2D._bindings.method_move_and_collide,
       this._owner,
 			Variant.INT,
       _motion, _test_only, _safe_margin, _recovery_as_collision
@@ -103,7 +104,7 @@ export class PhysicsBody2D extends CollisionObject2D{
   }
   test_move(_from, _motion, _collision, _safe_margin, _recovery_as_collision) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_test_move,
+      PhysicsBody2D._bindings.method_test_move,
       this._owner,
 			Variant.Type.BOOL,
       _from, _motion, _collision, _safe_margin, _recovery_as_collision
@@ -112,7 +113,7 @@ export class PhysicsBody2D extends CollisionObject2D{
   }
   get_gravity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_gravity,
+      PhysicsBody2D._bindings.method_get_gravity,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -122,7 +123,7 @@ export class PhysicsBody2D extends CollisionObject2D{
   }
   get_collision_exceptions() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_exceptions,
+      PhysicsBody2D._bindings.method_get_collision_exceptions,
       this._owner,
 			Variant.INT,
       
@@ -131,7 +132,7 @@ export class PhysicsBody2D extends CollisionObject2D{
   }
   add_collision_exception_with(_body) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_collision_exception_with,
+      PhysicsBody2D._bindings.method_add_collision_exception_with,
       this._owner,
       _body
     );
@@ -139,7 +140,7 @@ export class PhysicsBody2D extends CollisionObject2D{
   }
   remove_collision_exception_with(_body) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_collision_exception_with,
+      PhysicsBody2D._bindings.method_remove_collision_exception_with,
       this._owner,
       _body
     );

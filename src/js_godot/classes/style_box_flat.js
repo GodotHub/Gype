@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StyleBox } from '@js_godot/classes/style_box'
-import { StringName } from '@js_godot/variant/string_name'
 import { Color } from '@js_godot/variant/color'
+import { Variant } from '@js_godot/variant/variant'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { StringName } from '@js_godot/variant/string_name'
+import { StyleBox } from '@js_godot/classes/style_box'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -352,9 +352,10 @@ export class StyleBoxFlat extends StyleBox{
       );
     }
   }
+  
   set_bg_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bg_color,
+      StyleBoxFlat._bindings.method_set_bg_color,
       this._owner,
       _color
     );
@@ -362,7 +363,7 @@ export class StyleBoxFlat extends StyleBox{
   }
   get_bg_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bg_color,
+      StyleBoxFlat._bindings.method_get_bg_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -372,7 +373,7 @@ export class StyleBoxFlat extends StyleBox{
   }
   set_border_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_border_color,
+      StyleBoxFlat._bindings.method_set_border_color,
       this._owner,
       _color
     );
@@ -380,7 +381,7 @@ export class StyleBoxFlat extends StyleBox{
   }
   get_border_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_border_color,
+      StyleBoxFlat._bindings.method_get_border_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -390,7 +391,7 @@ export class StyleBoxFlat extends StyleBox{
   }
   set_border_width_all(_width) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_border_width_all,
+      StyleBoxFlat._bindings.method_set_border_width_all,
       this._owner,
       _width
     );
@@ -398,7 +399,7 @@ export class StyleBoxFlat extends StyleBox{
   }
   get_border_width_min() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_border_width_min,
+      StyleBoxFlat._bindings.method_get_border_width_min,
       this._owner,
 			Variant.Type.INT,
       
@@ -407,7 +408,7 @@ export class StyleBoxFlat extends StyleBox{
   }
   set_border_width(_margin, _width) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_border_width,
+      StyleBoxFlat._bindings.method_set_border_width,
       this._owner,
       _margin, _width
     );
@@ -415,7 +416,7 @@ export class StyleBoxFlat extends StyleBox{
   }
   get_border_width(_margin) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_border_width,
+      StyleBoxFlat._bindings.method_get_border_width,
       this._owner,
 			Variant.Type.INT,
       _margin
@@ -424,7 +425,7 @@ export class StyleBoxFlat extends StyleBox{
   }
   set_border_blend(_blend) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_border_blend,
+      StyleBoxFlat._bindings.method_set_border_blend,
       this._owner,
       _blend
     );
@@ -432,7 +433,7 @@ export class StyleBoxFlat extends StyleBox{
   }
   get_border_blend() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_border_blend,
+      StyleBoxFlat._bindings.method_get_border_blend,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -441,7 +442,7 @@ export class StyleBoxFlat extends StyleBox{
   }
   set_corner_radius_all(_radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_corner_radius_all,
+      StyleBoxFlat._bindings.method_set_corner_radius_all,
       this._owner,
       _radius
     );
@@ -449,7 +450,7 @@ export class StyleBoxFlat extends StyleBox{
   }
   set_corner_radius(_corner, _radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_corner_radius,
+      StyleBoxFlat._bindings.method_set_corner_radius,
       this._owner,
       _corner, _radius
     );
@@ -457,7 +458,7 @@ export class StyleBoxFlat extends StyleBox{
   }
   get_corner_radius(_corner) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_corner_radius,
+      StyleBoxFlat._bindings.method_get_corner_radius,
       this._owner,
 			Variant.Type.INT,
       _corner
@@ -466,7 +467,7 @@ export class StyleBoxFlat extends StyleBox{
   }
   set_expand_margin(_margin, _size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_expand_margin,
+      StyleBoxFlat._bindings.method_set_expand_margin,
       this._owner,
       _margin, _size
     );
@@ -474,7 +475,7 @@ export class StyleBoxFlat extends StyleBox{
   }
   set_expand_margin_all(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_expand_margin_all,
+      StyleBoxFlat._bindings.method_set_expand_margin_all,
       this._owner,
       _size
     );
@@ -482,7 +483,7 @@ export class StyleBoxFlat extends StyleBox{
   }
   get_expand_margin(_margin) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_expand_margin,
+      StyleBoxFlat._bindings.method_get_expand_margin,
       this._owner,
 			Variant.Type.FLOAT,
       _margin
@@ -491,7 +492,7 @@ export class StyleBoxFlat extends StyleBox{
   }
   set_draw_center(_draw_center) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_draw_center,
+      StyleBoxFlat._bindings.method_set_draw_center,
       this._owner,
       _draw_center
     );
@@ -499,7 +500,7 @@ export class StyleBoxFlat extends StyleBox{
   }
   is_draw_center_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_draw_center_enabled,
+      StyleBoxFlat._bindings.method_is_draw_center_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -508,7 +509,7 @@ export class StyleBoxFlat extends StyleBox{
   }
   set_skew(_skew) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_skew,
+      StyleBoxFlat._bindings.method_set_skew,
       this._owner,
       _skew
     );
@@ -516,7 +517,7 @@ export class StyleBoxFlat extends StyleBox{
   }
   get_skew() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_skew,
+      StyleBoxFlat._bindings.method_get_skew,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -526,7 +527,7 @@ export class StyleBoxFlat extends StyleBox{
   }
   set_shadow_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shadow_color,
+      StyleBoxFlat._bindings.method_set_shadow_color,
       this._owner,
       _color
     );
@@ -534,7 +535,7 @@ export class StyleBoxFlat extends StyleBox{
   }
   get_shadow_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_shadow_color,
+      StyleBoxFlat._bindings.method_get_shadow_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -544,7 +545,7 @@ export class StyleBoxFlat extends StyleBox{
   }
   set_shadow_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shadow_size,
+      StyleBoxFlat._bindings.method_set_shadow_size,
       this._owner,
       _size
     );
@@ -552,7 +553,7 @@ export class StyleBoxFlat extends StyleBox{
   }
   get_shadow_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_shadow_size,
+      StyleBoxFlat._bindings.method_get_shadow_size,
       this._owner,
 			Variant.Type.INT,
       
@@ -561,7 +562,7 @@ export class StyleBoxFlat extends StyleBox{
   }
   set_shadow_offset(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shadow_offset,
+      StyleBoxFlat._bindings.method_set_shadow_offset,
       this._owner,
       _offset
     );
@@ -569,7 +570,7 @@ export class StyleBoxFlat extends StyleBox{
   }
   get_shadow_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_shadow_offset,
+      StyleBoxFlat._bindings.method_get_shadow_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -579,7 +580,7 @@ export class StyleBoxFlat extends StyleBox{
   }
   set_anti_aliased(_anti_aliased) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_anti_aliased,
+      StyleBoxFlat._bindings.method_set_anti_aliased,
       this._owner,
       _anti_aliased
     );
@@ -587,7 +588,7 @@ export class StyleBoxFlat extends StyleBox{
   }
   is_anti_aliased() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_anti_aliased,
+      StyleBoxFlat._bindings.method_is_anti_aliased,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -596,7 +597,7 @@ export class StyleBoxFlat extends StyleBox{
   }
   set_aa_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_aa_size,
+      StyleBoxFlat._bindings.method_set_aa_size,
       this._owner,
       _size
     );
@@ -604,7 +605,7 @@ export class StyleBoxFlat extends StyleBox{
   }
   get_aa_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_aa_size,
+      StyleBoxFlat._bindings.method_get_aa_size,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -613,7 +614,7 @@ export class StyleBoxFlat extends StyleBox{
   }
   set_corner_detail(_detail) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_corner_detail,
+      StyleBoxFlat._bindings.method_set_corner_detail,
       this._owner,
       _detail
     );
@@ -621,7 +622,7 @@ export class StyleBoxFlat extends StyleBox{
   }
   get_corner_detail() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_corner_detail,
+      StyleBoxFlat._bindings.method_get_corner_detail,
       this._owner,
 			Variant.Type.INT,
       

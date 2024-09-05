@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { VisualShaderNodeParameter } from '@js_godot/classes/visual_shader_node_parameter'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -130,9 +130,10 @@ export class VisualShaderNodeTextureParameter extends VisualShaderNodeParameter{
       );
     }
   }
+  
   set_texture_type(_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture_type,
+      VisualShaderNodeTextureParameter._bindings.method_set_texture_type,
       this._owner,
       _type
     );
@@ -140,7 +141,7 @@ export class VisualShaderNodeTextureParameter extends VisualShaderNodeParameter{
   }
   get_texture_type() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_type,
+      VisualShaderNodeTextureParameter._bindings.method_get_texture_type,
       this._owner,
 			Variant.INT,
       
@@ -149,7 +150,7 @@ export class VisualShaderNodeTextureParameter extends VisualShaderNodeParameter{
   }
   set_color_default(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_color_default,
+      VisualShaderNodeTextureParameter._bindings.method_set_color_default,
       this._owner,
       _color
     );
@@ -157,7 +158,7 @@ export class VisualShaderNodeTextureParameter extends VisualShaderNodeParameter{
   }
   get_color_default() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_color_default,
+      VisualShaderNodeTextureParameter._bindings.method_get_color_default,
       this._owner,
 			Variant.INT,
       
@@ -166,7 +167,7 @@ export class VisualShaderNodeTextureParameter extends VisualShaderNodeParameter{
   }
   set_texture_filter(_filter) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture_filter,
+      VisualShaderNodeTextureParameter._bindings.method_set_texture_filter,
       this._owner,
       _filter
     );
@@ -174,7 +175,7 @@ export class VisualShaderNodeTextureParameter extends VisualShaderNodeParameter{
   }
   get_texture_filter() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_filter,
+      VisualShaderNodeTextureParameter._bindings.method_get_texture_filter,
       this._owner,
 			Variant.INT,
       
@@ -183,7 +184,7 @@ export class VisualShaderNodeTextureParameter extends VisualShaderNodeParameter{
   }
   set_texture_repeat(_repeat) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture_repeat,
+      VisualShaderNodeTextureParameter._bindings.method_set_texture_repeat,
       this._owner,
       _repeat
     );
@@ -191,7 +192,7 @@ export class VisualShaderNodeTextureParameter extends VisualShaderNodeParameter{
   }
   get_texture_repeat() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_repeat,
+      VisualShaderNodeTextureParameter._bindings.method_get_texture_repeat,
       this._owner,
 			Variant.INT,
       
@@ -200,7 +201,7 @@ export class VisualShaderNodeTextureParameter extends VisualShaderNodeParameter{
   }
   set_texture_source(_source) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture_source,
+      VisualShaderNodeTextureParameter._bindings.method_set_texture_source,
       this._owner,
       _source
     );
@@ -208,7 +209,7 @@ export class VisualShaderNodeTextureParameter extends VisualShaderNodeParameter{
   }
   get_texture_source() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_source,
+      VisualShaderNodeTextureParameter._bindings.method_get_texture_source,
       this._owner,
 			Variant.INT,
       

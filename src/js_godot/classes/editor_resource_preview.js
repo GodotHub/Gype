@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { Node } from '@js_godot/classes/node'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
@@ -81,9 +81,10 @@ export class EditorResourcePreview extends Node{
       );
     }
   }
+  
   queue_resource_preview(_path, _receiver, _receiver_func, _userdata) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_queue_resource_preview,
+      EditorResourcePreview._bindings.method_queue_resource_preview,
       this._owner,
       _path, _receiver, _receiver_func, _userdata
     );
@@ -91,7 +92,7 @@ export class EditorResourcePreview extends Node{
   }
   queue_edited_resource_preview(_resource, _receiver, _receiver_func, _userdata) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_queue_edited_resource_preview,
+      EditorResourcePreview._bindings.method_queue_edited_resource_preview,
       this._owner,
       _resource, _receiver, _receiver_func, _userdata
     );
@@ -99,7 +100,7 @@ export class EditorResourcePreview extends Node{
   }
   add_preview_generator(_generator) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_preview_generator,
+      EditorResourcePreview._bindings.method_add_preview_generator,
       this._owner,
       _generator
     );
@@ -107,7 +108,7 @@ export class EditorResourcePreview extends Node{
   }
   remove_preview_generator(_generator) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_preview_generator,
+      EditorResourcePreview._bindings.method_remove_preview_generator,
       this._owner,
       _generator
     );
@@ -115,7 +116,7 @@ export class EditorResourcePreview extends Node{
   }
   check_for_invalidation(_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_check_for_invalidation,
+      EditorResourcePreview._bindings.method_check_for_invalidation,
       this._owner,
       _path
     );

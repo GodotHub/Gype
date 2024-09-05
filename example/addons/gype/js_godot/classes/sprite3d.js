@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Vector2i } from '@js_godot/variant/vector2i'
 import { StringName } from '@js_godot/variant/string_name'
 import { SpriteBase3D } from '@js_godot/classes/sprite_base3d'
+import { Variant } from '@js_godot/variant/variant'
 import { Rect2 } from '@js_godot/variant/rect2'
+import { Vector2i } from '@js_godot/variant/vector2i'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -172,9 +172,10 @@ export class Sprite3D extends SpriteBase3D{
       );
     }
   }
+  
   set_texture(_texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture,
+      Sprite3D._bindings.method_set_texture,
       this._owner,
       _texture
     );
@@ -182,7 +183,7 @@ export class Sprite3D extends SpriteBase3D{
   }
   get_texture() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture,
+      Sprite3D._bindings.method_get_texture,
       this._owner,
 			Variant.INT,
       
@@ -191,7 +192,7 @@ export class Sprite3D extends SpriteBase3D{
   }
   set_region_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_region_enabled,
+      Sprite3D._bindings.method_set_region_enabled,
       this._owner,
       _enabled
     );
@@ -199,7 +200,7 @@ export class Sprite3D extends SpriteBase3D{
   }
   is_region_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_region_enabled,
+      Sprite3D._bindings.method_is_region_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -208,7 +209,7 @@ export class Sprite3D extends SpriteBase3D{
   }
   set_region_rect(_rect) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_region_rect,
+      Sprite3D._bindings.method_set_region_rect,
       this._owner,
       _rect
     );
@@ -216,7 +217,7 @@ export class Sprite3D extends SpriteBase3D{
   }
   get_region_rect() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_region_rect,
+      Sprite3D._bindings.method_get_region_rect,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -226,7 +227,7 @@ export class Sprite3D extends SpriteBase3D{
   }
   set_frame(_frame) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_frame,
+      Sprite3D._bindings.method_set_frame,
       this._owner,
       _frame
     );
@@ -234,7 +235,7 @@ export class Sprite3D extends SpriteBase3D{
   }
   get_frame() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_frame,
+      Sprite3D._bindings.method_get_frame,
       this._owner,
 			Variant.Type.INT,
       
@@ -243,7 +244,7 @@ export class Sprite3D extends SpriteBase3D{
   }
   set_frame_coords(_coords) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_frame_coords,
+      Sprite3D._bindings.method_set_frame_coords,
       this._owner,
       _coords
     );
@@ -251,7 +252,7 @@ export class Sprite3D extends SpriteBase3D{
   }
   get_frame_coords() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_frame_coords,
+      Sprite3D._bindings.method_get_frame_coords,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -261,7 +262,7 @@ export class Sprite3D extends SpriteBase3D{
   }
   set_vframes(_vframes) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vframes,
+      Sprite3D._bindings.method_set_vframes,
       this._owner,
       _vframes
     );
@@ -269,7 +270,7 @@ export class Sprite3D extends SpriteBase3D{
   }
   get_vframes() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vframes,
+      Sprite3D._bindings.method_get_vframes,
       this._owner,
 			Variant.Type.INT,
       
@@ -278,7 +279,7 @@ export class Sprite3D extends SpriteBase3D{
   }
   set_hframes(_hframes) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_hframes,
+      Sprite3D._bindings.method_set_hframes,
       this._owner,
       _hframes
     );
@@ -286,7 +287,7 @@ export class Sprite3D extends SpriteBase3D{
   }
   get_hframes() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_hframes,
+      Sprite3D._bindings.method_get_hframes,
       this._owner,
 			Variant.Type.INT,
       

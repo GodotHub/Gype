@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { GDString } from '@js_godot/variant/gd_string'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -91,9 +91,10 @@ export class TCPServer extends RefCounted{
       );
     }
   }
+  
   listen(_port, _bind_address) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_listen,
+      TCPServer._bindings.method_listen,
       this._owner,
 			Variant.INT,
       _port, _bind_address
@@ -102,7 +103,7 @@ export class TCPServer extends RefCounted{
   }
   is_connection_available() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_connection_available,
+      TCPServer._bindings.method_is_connection_available,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -111,7 +112,7 @@ export class TCPServer extends RefCounted{
   }
   is_listening() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_listening,
+      TCPServer._bindings.method_is_listening,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -120,7 +121,7 @@ export class TCPServer extends RefCounted{
   }
   get_local_port() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_local_port,
+      TCPServer._bindings.method_get_local_port,
       this._owner,
 			Variant.Type.INT,
       
@@ -129,7 +130,7 @@ export class TCPServer extends RefCounted{
   }
   take_connection() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_take_connection,
+      TCPServer._bindings.method_take_connection,
       this._owner,
 			Variant.INT,
       
@@ -138,7 +139,7 @@ export class TCPServer extends RefCounted{
   }
   stop() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_stop,
+      TCPServer._bindings.method_stop,
       this._owner,
       
     );

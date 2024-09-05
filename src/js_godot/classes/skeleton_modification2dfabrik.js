@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
+import { NodePath } from '@js_godot/variant/node_path'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Vector2 } from '@js_godot/variant/vector2'
 import { SkeletonModification2D } from '@js_godot/classes/skeleton_modification2d'
-import { NodePath } from '@js_godot/variant/node_path'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -152,9 +152,10 @@ export class SkeletonModification2DFABRIK extends SkeletonModification2D{
       );
     }
   }
+  
   set_target_node(_target_nodepath) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_target_node,
+      SkeletonModification2DFABRIK._bindings.method_set_target_node,
       this._owner,
       _target_nodepath
     );
@@ -162,7 +163,7 @@ export class SkeletonModification2DFABRIK extends SkeletonModification2D{
   }
   get_target_node() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_target_node,
+      SkeletonModification2DFABRIK._bindings.method_get_target_node,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -172,7 +173,7 @@ export class SkeletonModification2DFABRIK extends SkeletonModification2D{
   }
   set_fabrik_data_chain_length(_length) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fabrik_data_chain_length,
+      SkeletonModification2DFABRIK._bindings.method_set_fabrik_data_chain_length,
       this._owner,
       _length
     );
@@ -180,7 +181,7 @@ export class SkeletonModification2DFABRIK extends SkeletonModification2D{
   }
   get_fabrik_data_chain_length() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fabrik_data_chain_length,
+      SkeletonModification2DFABRIK._bindings.method_get_fabrik_data_chain_length,
       this._owner,
 			Variant.Type.INT,
       
@@ -189,7 +190,7 @@ export class SkeletonModification2DFABRIK extends SkeletonModification2D{
   }
   set_fabrik_joint_bone2d_node(_joint_idx, _bone2d_nodepath) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fabrik_joint_bone2d_node,
+      SkeletonModification2DFABRIK._bindings.method_set_fabrik_joint_bone2d_node,
       this._owner,
       _joint_idx, _bone2d_nodepath
     );
@@ -197,7 +198,7 @@ export class SkeletonModification2DFABRIK extends SkeletonModification2D{
   }
   get_fabrik_joint_bone2d_node(_joint_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fabrik_joint_bone2d_node,
+      SkeletonModification2DFABRIK._bindings.method_get_fabrik_joint_bone2d_node,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -207,7 +208,7 @@ export class SkeletonModification2DFABRIK extends SkeletonModification2D{
   }
   set_fabrik_joint_bone_index(_joint_idx, _bone_idx) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fabrik_joint_bone_index,
+      SkeletonModification2DFABRIK._bindings.method_set_fabrik_joint_bone_index,
       this._owner,
       _joint_idx, _bone_idx
     );
@@ -215,7 +216,7 @@ export class SkeletonModification2DFABRIK extends SkeletonModification2D{
   }
   get_fabrik_joint_bone_index(_joint_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fabrik_joint_bone_index,
+      SkeletonModification2DFABRIK._bindings.method_get_fabrik_joint_bone_index,
       this._owner,
 			Variant.Type.INT,
       _joint_idx
@@ -224,7 +225,7 @@ export class SkeletonModification2DFABRIK extends SkeletonModification2D{
   }
   set_fabrik_joint_magnet_position(_joint_idx, _magnet_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fabrik_joint_magnet_position,
+      SkeletonModification2DFABRIK._bindings.method_set_fabrik_joint_magnet_position,
       this._owner,
       _joint_idx, _magnet_position
     );
@@ -232,7 +233,7 @@ export class SkeletonModification2DFABRIK extends SkeletonModification2D{
   }
   get_fabrik_joint_magnet_position(_joint_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fabrik_joint_magnet_position,
+      SkeletonModification2DFABRIK._bindings.method_get_fabrik_joint_magnet_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -242,7 +243,7 @@ export class SkeletonModification2DFABRIK extends SkeletonModification2D{
   }
   set_fabrik_joint_use_target_rotation(_joint_idx, _use_target_rotation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fabrik_joint_use_target_rotation,
+      SkeletonModification2DFABRIK._bindings.method_set_fabrik_joint_use_target_rotation,
       this._owner,
       _joint_idx, _use_target_rotation
     );
@@ -250,7 +251,7 @@ export class SkeletonModification2DFABRIK extends SkeletonModification2D{
   }
   get_fabrik_joint_use_target_rotation(_joint_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fabrik_joint_use_target_rotation,
+      SkeletonModification2DFABRIK._bindings.method_get_fabrik_joint_use_target_rotation,
       this._owner,
 			Variant.Type.BOOL,
       _joint_idx

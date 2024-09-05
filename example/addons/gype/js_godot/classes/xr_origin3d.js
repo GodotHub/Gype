@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { Node3D } from '@js_godot/classes/node3d'
 import {
   call_utility_ret,
@@ -70,9 +70,10 @@ export class XROrigin3D extends Node3D{
       );
     }
   }
+  
   set_world_scale(_world_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_world_scale,
+      XROrigin3D._bindings.method_set_world_scale,
       this._owner,
       _world_scale
     );
@@ -80,7 +81,7 @@ export class XROrigin3D extends Node3D{
   }
   get_world_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_world_scale,
+      XROrigin3D._bindings.method_get_world_scale,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -89,7 +90,7 @@ export class XROrigin3D extends Node3D{
   }
   set_current(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_current,
+      XROrigin3D._bindings.method_set_current,
       this._owner,
       _enabled
     );
@@ -97,7 +98,7 @@ export class XROrigin3D extends Node3D{
   }
   is_current() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_current,
+      XROrigin3D._bindings.method_is_current,
       this._owner,
 			Variant.Type.BOOL,
       

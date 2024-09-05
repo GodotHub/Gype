@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -290,9 +290,10 @@ export class MeshConvexDecompositionSettings extends RefCounted{
       );
     }
   }
+  
   set_max_concavity(_max_concavity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_max_concavity,
+      MeshConvexDecompositionSettings._bindings.method_set_max_concavity,
       this._owner,
       _max_concavity
     );
@@ -300,7 +301,7 @@ export class MeshConvexDecompositionSettings extends RefCounted{
   }
   get_max_concavity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_max_concavity,
+      MeshConvexDecompositionSettings._bindings.method_get_max_concavity,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -309,7 +310,7 @@ export class MeshConvexDecompositionSettings extends RefCounted{
   }
   set_symmetry_planes_clipping_bias(_symmetry_planes_clipping_bias) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_symmetry_planes_clipping_bias,
+      MeshConvexDecompositionSettings._bindings.method_set_symmetry_planes_clipping_bias,
       this._owner,
       _symmetry_planes_clipping_bias
     );
@@ -317,7 +318,7 @@ export class MeshConvexDecompositionSettings extends RefCounted{
   }
   get_symmetry_planes_clipping_bias() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_symmetry_planes_clipping_bias,
+      MeshConvexDecompositionSettings._bindings.method_get_symmetry_planes_clipping_bias,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -326,7 +327,7 @@ export class MeshConvexDecompositionSettings extends RefCounted{
   }
   set_revolution_axes_clipping_bias(_revolution_axes_clipping_bias) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_revolution_axes_clipping_bias,
+      MeshConvexDecompositionSettings._bindings.method_set_revolution_axes_clipping_bias,
       this._owner,
       _revolution_axes_clipping_bias
     );
@@ -334,7 +335,7 @@ export class MeshConvexDecompositionSettings extends RefCounted{
   }
   get_revolution_axes_clipping_bias() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_revolution_axes_clipping_bias,
+      MeshConvexDecompositionSettings._bindings.method_get_revolution_axes_clipping_bias,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -343,7 +344,7 @@ export class MeshConvexDecompositionSettings extends RefCounted{
   }
   set_min_volume_per_convex_hull(_min_volume_per_convex_hull) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_min_volume_per_convex_hull,
+      MeshConvexDecompositionSettings._bindings.method_set_min_volume_per_convex_hull,
       this._owner,
       _min_volume_per_convex_hull
     );
@@ -351,7 +352,7 @@ export class MeshConvexDecompositionSettings extends RefCounted{
   }
   get_min_volume_per_convex_hull() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_min_volume_per_convex_hull,
+      MeshConvexDecompositionSettings._bindings.method_get_min_volume_per_convex_hull,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -360,7 +361,7 @@ export class MeshConvexDecompositionSettings extends RefCounted{
   }
   set_resolution(_min_volume_per_convex_hull) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_resolution,
+      MeshConvexDecompositionSettings._bindings.method_set_resolution,
       this._owner,
       _min_volume_per_convex_hull
     );
@@ -368,7 +369,7 @@ export class MeshConvexDecompositionSettings extends RefCounted{
   }
   get_resolution() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_resolution,
+      MeshConvexDecompositionSettings._bindings.method_get_resolution,
       this._owner,
 			Variant.Type.INT,
       
@@ -377,7 +378,7 @@ export class MeshConvexDecompositionSettings extends RefCounted{
   }
   set_max_num_vertices_per_convex_hull(_max_num_vertices_per_convex_hull) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_max_num_vertices_per_convex_hull,
+      MeshConvexDecompositionSettings._bindings.method_set_max_num_vertices_per_convex_hull,
       this._owner,
       _max_num_vertices_per_convex_hull
     );
@@ -385,7 +386,7 @@ export class MeshConvexDecompositionSettings extends RefCounted{
   }
   get_max_num_vertices_per_convex_hull() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_max_num_vertices_per_convex_hull,
+      MeshConvexDecompositionSettings._bindings.method_get_max_num_vertices_per_convex_hull,
       this._owner,
 			Variant.Type.INT,
       
@@ -394,7 +395,7 @@ export class MeshConvexDecompositionSettings extends RefCounted{
   }
   set_plane_downsampling(_plane_downsampling) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_plane_downsampling,
+      MeshConvexDecompositionSettings._bindings.method_set_plane_downsampling,
       this._owner,
       _plane_downsampling
     );
@@ -402,7 +403,7 @@ export class MeshConvexDecompositionSettings extends RefCounted{
   }
   get_plane_downsampling() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_plane_downsampling,
+      MeshConvexDecompositionSettings._bindings.method_get_plane_downsampling,
       this._owner,
 			Variant.Type.INT,
       
@@ -411,7 +412,7 @@ export class MeshConvexDecompositionSettings extends RefCounted{
   }
   set_convex_hull_downsampling(_convex_hull_downsampling) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_convex_hull_downsampling,
+      MeshConvexDecompositionSettings._bindings.method_set_convex_hull_downsampling,
       this._owner,
       _convex_hull_downsampling
     );
@@ -419,7 +420,7 @@ export class MeshConvexDecompositionSettings extends RefCounted{
   }
   get_convex_hull_downsampling() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_convex_hull_downsampling,
+      MeshConvexDecompositionSettings._bindings.method_get_convex_hull_downsampling,
       this._owner,
 			Variant.Type.INT,
       
@@ -428,7 +429,7 @@ export class MeshConvexDecompositionSettings extends RefCounted{
   }
   set_normalize_mesh(_normalize_mesh) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_normalize_mesh,
+      MeshConvexDecompositionSettings._bindings.method_set_normalize_mesh,
       this._owner,
       _normalize_mesh
     );
@@ -436,7 +437,7 @@ export class MeshConvexDecompositionSettings extends RefCounted{
   }
   get_normalize_mesh() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_normalize_mesh,
+      MeshConvexDecompositionSettings._bindings.method_get_normalize_mesh,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -445,7 +446,7 @@ export class MeshConvexDecompositionSettings extends RefCounted{
   }
   set_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mode,
+      MeshConvexDecompositionSettings._bindings.method_set_mode,
       this._owner,
       _mode
     );
@@ -453,7 +454,7 @@ export class MeshConvexDecompositionSettings extends RefCounted{
   }
   get_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mode,
+      MeshConvexDecompositionSettings._bindings.method_get_mode,
       this._owner,
 			Variant.INT,
       
@@ -462,7 +463,7 @@ export class MeshConvexDecompositionSettings extends RefCounted{
   }
   set_convex_hull_approximation(_convex_hull_approximation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_convex_hull_approximation,
+      MeshConvexDecompositionSettings._bindings.method_set_convex_hull_approximation,
       this._owner,
       _convex_hull_approximation
     );
@@ -470,7 +471,7 @@ export class MeshConvexDecompositionSettings extends RefCounted{
   }
   get_convex_hull_approximation() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_convex_hull_approximation,
+      MeshConvexDecompositionSettings._bindings.method_get_convex_hull_approximation,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -479,7 +480,7 @@ export class MeshConvexDecompositionSettings extends RefCounted{
   }
   set_max_convex_hulls(_max_convex_hulls) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_max_convex_hulls,
+      MeshConvexDecompositionSettings._bindings.method_set_max_convex_hulls,
       this._owner,
       _max_convex_hulls
     );
@@ -487,7 +488,7 @@ export class MeshConvexDecompositionSettings extends RefCounted{
   }
   get_max_convex_hulls() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_max_convex_hulls,
+      MeshConvexDecompositionSettings._bindings.method_get_max_convex_hulls,
       this._owner,
 			Variant.Type.INT,
       
@@ -496,7 +497,7 @@ export class MeshConvexDecompositionSettings extends RefCounted{
   }
   set_project_hull_vertices(_project_hull_vertices) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_project_hull_vertices,
+      MeshConvexDecompositionSettings._bindings.method_set_project_hull_vertices,
       this._owner,
       _project_hull_vertices
     );
@@ -504,7 +505,7 @@ export class MeshConvexDecompositionSettings extends RefCounted{
   }
   get_project_hull_vertices() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_project_hull_vertices,
+      MeshConvexDecompositionSettings._bindings.method_get_project_hull_vertices,
       this._owner,
 			Variant.Type.BOOL,
       

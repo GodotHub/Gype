@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
-import { Vector2 } from '@js_godot/variant/vector2'
 import { Texture2D } from '@js_godot/classes/texture2d'
+import { Vector2 } from '@js_godot/variant/vector2'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -91,9 +91,10 @@ export class MeshTexture extends Texture2D{
       );
     }
   }
+  
   set_mesh(_mesh) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mesh,
+      MeshTexture._bindings.method_set_mesh,
       this._owner,
       _mesh
     );
@@ -101,7 +102,7 @@ export class MeshTexture extends Texture2D{
   }
   get_mesh() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mesh,
+      MeshTexture._bindings.method_get_mesh,
       this._owner,
 			Variant.INT,
       
@@ -110,7 +111,7 @@ export class MeshTexture extends Texture2D{
   }
   set_image_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_image_size,
+      MeshTexture._bindings.method_set_image_size,
       this._owner,
       _size
     );
@@ -118,7 +119,7 @@ export class MeshTexture extends Texture2D{
   }
   get_image_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_image_size,
+      MeshTexture._bindings.method_get_image_size,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -128,7 +129,7 @@ export class MeshTexture extends Texture2D{
   }
   set_base_texture(_texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_base_texture,
+      MeshTexture._bindings.method_set_base_texture,
       this._owner,
       _texture
     );
@@ -136,7 +137,7 @@ export class MeshTexture extends Texture2D{
   }
   get_base_texture() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_base_texture,
+      MeshTexture._bindings.method_get_base_texture,
       this._owner,
 			Variant.INT,
       

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
 import {
   call_utility_ret,
@@ -111,9 +111,10 @@ export class PacketPeer extends RefCounted{
       );
     }
   }
+  
   get_var(_allow_objects) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_var,
+      PacketPeer._bindings.method_get_var,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -123,7 +124,7 @@ export class PacketPeer extends RefCounted{
   }
   put_var(_var, _full_objects) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_put_var,
+      PacketPeer._bindings.method_put_var,
       this._owner,
 			Variant.INT,
       _var, _full_objects
@@ -132,7 +133,7 @@ export class PacketPeer extends RefCounted{
   }
   get_packet() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_packet,
+      PacketPeer._bindings.method_get_packet,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -142,7 +143,7 @@ export class PacketPeer extends RefCounted{
   }
   put_packet(_buffer) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_put_packet,
+      PacketPeer._bindings.method_put_packet,
       this._owner,
 			Variant.INT,
       _buffer
@@ -151,7 +152,7 @@ export class PacketPeer extends RefCounted{
   }
   get_packet_error() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_packet_error,
+      PacketPeer._bindings.method_get_packet_error,
       this._owner,
 			Variant.INT,
       
@@ -160,7 +161,7 @@ export class PacketPeer extends RefCounted{
   }
   get_available_packet_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_available_packet_count,
+      PacketPeer._bindings.method_get_available_packet_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -169,7 +170,7 @@ export class PacketPeer extends RefCounted{
   }
   get_encode_buffer_max_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_encode_buffer_max_size,
+      PacketPeer._bindings.method_get_encode_buffer_max_size,
       this._owner,
 			Variant.Type.INT,
       
@@ -178,7 +179,7 @@ export class PacketPeer extends RefCounted{
   }
   set_encode_buffer_max_size(_max_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_encode_buffer_max_size,
+      PacketPeer._bindings.method_set_encode_buffer_max_size,
       this._owner,
       _max_size
     );

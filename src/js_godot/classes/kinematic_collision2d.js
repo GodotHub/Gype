@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
+import { RID } from '@js_godot/variant/rid'
+import { RefCounted } from '@js_godot/classes/ref_counted'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Vector2 } from '@js_godot/variant/vector2'
-import { RID } from '@js_godot/variant/rid'
-import { RefCounted } from '@js_godot/classes/ref_counted'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -162,9 +162,10 @@ export class KinematicCollision2D extends RefCounted{
       );
     }
   }
+  
   get_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_position,
+      KinematicCollision2D._bindings.method_get_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -174,7 +175,7 @@ export class KinematicCollision2D extends RefCounted{
   }
   get_normal() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_normal,
+      KinematicCollision2D._bindings.method_get_normal,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -184,7 +185,7 @@ export class KinematicCollision2D extends RefCounted{
   }
   get_travel() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_travel,
+      KinematicCollision2D._bindings.method_get_travel,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -194,7 +195,7 @@ export class KinematicCollision2D extends RefCounted{
   }
   get_remainder() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_remainder,
+      KinematicCollision2D._bindings.method_get_remainder,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -204,7 +205,7 @@ export class KinematicCollision2D extends RefCounted{
   }
   get_angle(_up_direction) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_angle,
+      KinematicCollision2D._bindings.method_get_angle,
       this._owner,
 			Variant.Type.FLOAT,
       _up_direction
@@ -213,7 +214,7 @@ export class KinematicCollision2D extends RefCounted{
   }
   get_depth() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_depth,
+      KinematicCollision2D._bindings.method_get_depth,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -222,7 +223,7 @@ export class KinematicCollision2D extends RefCounted{
   }
   get_local_shape() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_local_shape,
+      KinematicCollision2D._bindings.method_get_local_shape,
       this._owner,
 			Variant.INT,
       
@@ -231,7 +232,7 @@ export class KinematicCollision2D extends RefCounted{
   }
   get_collider() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collider,
+      KinematicCollision2D._bindings.method_get_collider,
       this._owner,
 			Variant.INT,
       
@@ -240,7 +241,7 @@ export class KinematicCollision2D extends RefCounted{
   }
   get_collider_id() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collider_id,
+      KinematicCollision2D._bindings.method_get_collider_id,
       this._owner,
 			Variant.Type.INT,
       
@@ -249,7 +250,7 @@ export class KinematicCollision2D extends RefCounted{
   }
   get_collider_rid() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collider_rid,
+      KinematicCollision2D._bindings.method_get_collider_rid,
       this._owner,
 			Variant.Type.RID,
     
@@ -259,7 +260,7 @@ export class KinematicCollision2D extends RefCounted{
   }
   get_collider_shape() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collider_shape,
+      KinematicCollision2D._bindings.method_get_collider_shape,
       this._owner,
 			Variant.INT,
       
@@ -268,7 +269,7 @@ export class KinematicCollision2D extends RefCounted{
   }
   get_collider_shape_index() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collider_shape_index,
+      KinematicCollision2D._bindings.method_get_collider_shape_index,
       this._owner,
 			Variant.Type.INT,
       
@@ -277,7 +278,7 @@ export class KinematicCollision2D extends RefCounted{
   }
   get_collider_velocity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collider_velocity,
+      KinematicCollision2D._bindings.method_get_collider_velocity,
       this._owner,
 			Variant.Type.VECTOR2,
     

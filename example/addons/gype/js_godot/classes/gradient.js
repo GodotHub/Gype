@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
+import { PackedFloat32Array } from '@js_godot/variant/packed_float32_array'
 import { Resource } from '@js_godot/classes/resource'
 import { StringName } from '@js_godot/variant/string_name'
-import { Color } from '@js_godot/variant/color'
-import { PackedFloat32Array } from '@js_godot/variant/packed_float32_array'
 import { PackedColorArray } from '@js_godot/variant/packed_color_array'
+import { Color } from '@js_godot/variant/color'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -203,9 +203,10 @@ export class Gradient extends Resource{
       );
     }
   }
+  
   add_point(_offset, _color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_point,
+      Gradient._bindings.method_add_point,
       this._owner,
       _offset, _color
     );
@@ -213,7 +214,7 @@ export class Gradient extends Resource{
   }
   remove_point(_point) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_point,
+      Gradient._bindings.method_remove_point,
       this._owner,
       _point
     );
@@ -221,7 +222,7 @@ export class Gradient extends Resource{
   }
   set_offset(_point, _offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_offset,
+      Gradient._bindings.method_set_offset,
       this._owner,
       _point, _offset
     );
@@ -229,7 +230,7 @@ export class Gradient extends Resource{
   }
   get_offset(_point) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_offset,
+      Gradient._bindings.method_get_offset,
       this._owner,
 			Variant.Type.FLOAT,
       _point
@@ -238,7 +239,7 @@ export class Gradient extends Resource{
   }
   reverse() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_reverse,
+      Gradient._bindings.method_reverse,
       this._owner,
       
     );
@@ -246,7 +247,7 @@ export class Gradient extends Resource{
   }
   set_color(_point, _color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_color,
+      Gradient._bindings.method_set_color,
       this._owner,
       _point, _color
     );
@@ -254,7 +255,7 @@ export class Gradient extends Resource{
   }
   get_color(_point) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_color,
+      Gradient._bindings.method_get_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -264,7 +265,7 @@ export class Gradient extends Resource{
   }
   sample(_offset) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_sample,
+      Gradient._bindings.method_sample,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -274,7 +275,7 @@ export class Gradient extends Resource{
   }
   get_point_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_point_count,
+      Gradient._bindings.method_get_point_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -283,7 +284,7 @@ export class Gradient extends Resource{
   }
   set_offsets(_offsets) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_offsets,
+      Gradient._bindings.method_set_offsets,
       this._owner,
       _offsets
     );
@@ -291,7 +292,7 @@ export class Gradient extends Resource{
   }
   get_offsets() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_offsets,
+      Gradient._bindings.method_get_offsets,
       this._owner,
 			Variant.Type.PACKED_FLOAT32_ARRAY,
     
@@ -301,7 +302,7 @@ export class Gradient extends Resource{
   }
   set_colors(_colors) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_colors,
+      Gradient._bindings.method_set_colors,
       this._owner,
       _colors
     );
@@ -309,7 +310,7 @@ export class Gradient extends Resource{
   }
   get_colors() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_colors,
+      Gradient._bindings.method_get_colors,
       this._owner,
 			Variant.Type.PACKED_COLOR_ARRAY,
     
@@ -319,7 +320,7 @@ export class Gradient extends Resource{
   }
   set_interpolation_mode(_interpolation_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_interpolation_mode,
+      Gradient._bindings.method_set_interpolation_mode,
       this._owner,
       _interpolation_mode
     );
@@ -327,7 +328,7 @@ export class Gradient extends Resource{
   }
   get_interpolation_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_interpolation_mode,
+      Gradient._bindings.method_get_interpolation_mode,
       this._owner,
 			Variant.INT,
       
@@ -336,7 +337,7 @@ export class Gradient extends Resource{
   }
   set_interpolation_color_space(_interpolation_color_space) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_interpolation_color_space,
+      Gradient._bindings.method_set_interpolation_color_space,
       this._owner,
       _interpolation_color_space
     );
@@ -344,7 +345,7 @@ export class Gradient extends Resource{
   }
   get_interpolation_color_space() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_interpolation_color_space,
+      Gradient._bindings.method_get_interpolation_color_space,
       this._owner,
 			Variant.INT,
       

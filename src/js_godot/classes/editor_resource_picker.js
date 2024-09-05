@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
-import { HBoxContainer } from '@js_godot/classes/h_box_container'
 import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { StringName } from '@js_godot/variant/string_name'
+import { HBoxContainer } from '@js_godot/classes/h_box_container'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -132,13 +132,14 @@ export class EditorResourcePicker extends HBoxContainer{
       );
     }
   }
+  
   _set_create_options(_menu_node) {
   }
   _handle_menu_selected(_id) {
   }
   set_base_type(_base_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_base_type,
+      EditorResourcePicker._bindings.method_set_base_type,
       this._owner,
       _base_type
     );
@@ -146,7 +147,7 @@ export class EditorResourcePicker extends HBoxContainer{
   }
   get_base_type() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_base_type,
+      EditorResourcePicker._bindings.method_get_base_type,
       this._owner,
 			Variant.Type.STRING,
     
@@ -156,7 +157,7 @@ export class EditorResourcePicker extends HBoxContainer{
   }
   get_allowed_types() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_allowed_types,
+      EditorResourcePicker._bindings.method_get_allowed_types,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -166,7 +167,7 @@ export class EditorResourcePicker extends HBoxContainer{
   }
   set_edited_resource(_resource) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_edited_resource,
+      EditorResourcePicker._bindings.method_set_edited_resource,
       this._owner,
       _resource
     );
@@ -174,7 +175,7 @@ export class EditorResourcePicker extends HBoxContainer{
   }
   get_edited_resource() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_edited_resource,
+      EditorResourcePicker._bindings.method_get_edited_resource,
       this._owner,
 			Variant.INT,
       
@@ -183,7 +184,7 @@ export class EditorResourcePicker extends HBoxContainer{
   }
   set_toggle_mode(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_toggle_mode,
+      EditorResourcePicker._bindings.method_set_toggle_mode,
       this._owner,
       _enable
     );
@@ -191,7 +192,7 @@ export class EditorResourcePicker extends HBoxContainer{
   }
   is_toggle_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_toggle_mode,
+      EditorResourcePicker._bindings.method_is_toggle_mode,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -200,7 +201,7 @@ export class EditorResourcePicker extends HBoxContainer{
   }
   set_toggle_pressed(_pressed) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_toggle_pressed,
+      EditorResourcePicker._bindings.method_set_toggle_pressed,
       this._owner,
       _pressed
     );
@@ -208,7 +209,7 @@ export class EditorResourcePicker extends HBoxContainer{
   }
   set_editable(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_editable,
+      EditorResourcePicker._bindings.method_set_editable,
       this._owner,
       _enable
     );
@@ -216,7 +217,7 @@ export class EditorResourcePicker extends HBoxContainer{
   }
   is_editable() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_editable,
+      EditorResourcePicker._bindings.method_is_editable,
       this._owner,
 			Variant.Type.BOOL,
       

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { Control } from '@js_godot/classes/control'
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -260,13 +260,14 @@ export class BaseButton extends Control{
       );
     }
   }
+  
   _pressed() {
   }
   _toggled(_toggled_on) {
   }
   set_pressed(_pressed) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_pressed,
+      BaseButton._bindings.method_set_pressed,
       this._owner,
       _pressed
     );
@@ -274,7 +275,7 @@ export class BaseButton extends Control{
   }
   is_pressed() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_pressed,
+      BaseButton._bindings.method_is_pressed,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -283,7 +284,7 @@ export class BaseButton extends Control{
   }
   set_pressed_no_signal(_pressed) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_pressed_no_signal,
+      BaseButton._bindings.method_set_pressed_no_signal,
       this._owner,
       _pressed
     );
@@ -291,7 +292,7 @@ export class BaseButton extends Control{
   }
   is_hovered() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_hovered,
+      BaseButton._bindings.method_is_hovered,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -300,7 +301,7 @@ export class BaseButton extends Control{
   }
   set_toggle_mode(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_toggle_mode,
+      BaseButton._bindings.method_set_toggle_mode,
       this._owner,
       _enabled
     );
@@ -308,7 +309,7 @@ export class BaseButton extends Control{
   }
   is_toggle_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_toggle_mode,
+      BaseButton._bindings.method_is_toggle_mode,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -317,7 +318,7 @@ export class BaseButton extends Control{
   }
   set_shortcut_in_tooltip(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shortcut_in_tooltip,
+      BaseButton._bindings.method_set_shortcut_in_tooltip,
       this._owner,
       _enabled
     );
@@ -325,7 +326,7 @@ export class BaseButton extends Control{
   }
   is_shortcut_in_tooltip_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_shortcut_in_tooltip_enabled,
+      BaseButton._bindings.method_is_shortcut_in_tooltip_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -334,7 +335,7 @@ export class BaseButton extends Control{
   }
   set_disabled(_disabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_disabled,
+      BaseButton._bindings.method_set_disabled,
       this._owner,
       _disabled
     );
@@ -342,7 +343,7 @@ export class BaseButton extends Control{
   }
   is_disabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_disabled,
+      BaseButton._bindings.method_is_disabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -351,7 +352,7 @@ export class BaseButton extends Control{
   }
   set_action_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_action_mode,
+      BaseButton._bindings.method_set_action_mode,
       this._owner,
       _mode
     );
@@ -359,7 +360,7 @@ export class BaseButton extends Control{
   }
   get_action_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_action_mode,
+      BaseButton._bindings.method_get_action_mode,
       this._owner,
 			Variant.INT,
       
@@ -368,7 +369,7 @@ export class BaseButton extends Control{
   }
   set_button_mask(_mask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_button_mask,
+      BaseButton._bindings.method_set_button_mask,
       this._owner,
       _mask
     );
@@ -376,7 +377,7 @@ export class BaseButton extends Control{
   }
   get_button_mask() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_button_mask,
+      BaseButton._bindings.method_get_button_mask,
       this._owner,
 			Variant.INT,
       
@@ -385,7 +386,7 @@ export class BaseButton extends Control{
   }
   get_draw_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_draw_mode,
+      BaseButton._bindings.method_get_draw_mode,
       this._owner,
 			Variant.INT,
       
@@ -394,7 +395,7 @@ export class BaseButton extends Control{
   }
   set_keep_pressed_outside(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_keep_pressed_outside,
+      BaseButton._bindings.method_set_keep_pressed_outside,
       this._owner,
       _enabled
     );
@@ -402,7 +403,7 @@ export class BaseButton extends Control{
   }
   is_keep_pressed_outside() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_keep_pressed_outside,
+      BaseButton._bindings.method_is_keep_pressed_outside,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -411,7 +412,7 @@ export class BaseButton extends Control{
   }
   set_shortcut_feedback(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shortcut_feedback,
+      BaseButton._bindings.method_set_shortcut_feedback,
       this._owner,
       _enabled
     );
@@ -419,7 +420,7 @@ export class BaseButton extends Control{
   }
   is_shortcut_feedback() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_shortcut_feedback,
+      BaseButton._bindings.method_is_shortcut_feedback,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -428,7 +429,7 @@ export class BaseButton extends Control{
   }
   set_shortcut(_shortcut) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shortcut,
+      BaseButton._bindings.method_set_shortcut,
       this._owner,
       _shortcut
     );
@@ -436,7 +437,7 @@ export class BaseButton extends Control{
   }
   get_shortcut() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_shortcut,
+      BaseButton._bindings.method_get_shortcut,
       this._owner,
 			Variant.INT,
       
@@ -445,7 +446,7 @@ export class BaseButton extends Control{
   }
   set_button_group(_button_group) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_button_group,
+      BaseButton._bindings.method_set_button_group,
       this._owner,
       _button_group
     );
@@ -453,7 +454,7 @@ export class BaseButton extends Control{
   }
   get_button_group() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_button_group,
+      BaseButton._bindings.method_get_button_group,
       this._owner,
 			Variant.INT,
       

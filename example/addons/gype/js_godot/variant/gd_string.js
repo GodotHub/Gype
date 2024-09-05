@@ -4,12 +4,12 @@ import {
   _call_builtin_method_ptr_ret,
   _call_builtin_method_ptr_no_ret
 } from '@js_godot/core/builtin_ptrcall'
-import { Variant } from '@js_godot/variant/variant'
 import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
 import { StringName } from '@js_godot/variant/string_name'
-import { PackedFloat64Array } from '@js_godot/variant/packed_float64_array'
 import { PackedStringArray } from '@js_godot/variant/packed_string_array'
 import { NodePath } from '@js_godot/variant/node_path'
+import { PackedFloat64Array } from '@js_godot/variant/packed_float64_array'
+import { Variant } from '@js_godot/variant/variant'
 
 class _MethodBindings {
   from_variant_constructor

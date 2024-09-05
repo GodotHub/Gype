@@ -1,11 +1,11 @@
 import * as internal from '__internal__';
 import { Dictionary } from '@js_godot/variant/dictionary'
-import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
 import { StringName } from '@js_godot/variant/string_name'
+import { NodePath } from '@js_godot/variant/node_path'
+import { Variant } from '@js_godot/variant/variant'
 import { GDString } from '@js_godot/variant/gd_string'
 import { GDArray } from '@js_godot/variant/gd_array'
-import { NodePath } from '@js_godot/variant/node_path'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -184,6 +184,7 @@ export class AnimationNode extends Resource{
       );
     }
   }
+  
   _get_child_nodes() {
   }
   _get_parameter_list() {
@@ -202,7 +203,7 @@ export class AnimationNode extends Resource{
   }
   add_input(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_add_input,
+      AnimationNode._bindings.method_add_input,
       this._owner,
 			Variant.Type.BOOL,
       _name
@@ -211,7 +212,7 @@ export class AnimationNode extends Resource{
   }
   remove_input(_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_input,
+      AnimationNode._bindings.method_remove_input,
       this._owner,
       _index
     );
@@ -219,7 +220,7 @@ export class AnimationNode extends Resource{
   }
   set_input_name(_input, _name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_set_input_name,
+      AnimationNode._bindings.method_set_input_name,
       this._owner,
 			Variant.Type.BOOL,
       _input, _name
@@ -228,7 +229,7 @@ export class AnimationNode extends Resource{
   }
   get_input_name(_input) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_input_name,
+      AnimationNode._bindings.method_get_input_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -238,7 +239,7 @@ export class AnimationNode extends Resource{
   }
   get_input_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_input_count,
+      AnimationNode._bindings.method_get_input_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -247,7 +248,7 @@ export class AnimationNode extends Resource{
   }
   find_input(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_find_input,
+      AnimationNode._bindings.method_find_input,
       this._owner,
 			Variant.Type.INT,
       _name
@@ -256,7 +257,7 @@ export class AnimationNode extends Resource{
   }
   set_filter_path(_path, _enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_filter_path,
+      AnimationNode._bindings.method_set_filter_path,
       this._owner,
       _path, _enable
     );
@@ -264,7 +265,7 @@ export class AnimationNode extends Resource{
   }
   is_path_filtered(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_path_filtered,
+      AnimationNode._bindings.method_is_path_filtered,
       this._owner,
 			Variant.Type.BOOL,
       _path
@@ -273,7 +274,7 @@ export class AnimationNode extends Resource{
   }
   set_filter_enabled(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_filter_enabled,
+      AnimationNode._bindings.method_set_filter_enabled,
       this._owner,
       _enable
     );
@@ -281,7 +282,7 @@ export class AnimationNode extends Resource{
   }
   is_filter_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_filter_enabled,
+      AnimationNode._bindings.method_is_filter_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -290,7 +291,7 @@ export class AnimationNode extends Resource{
   }
   blend_animation(_animation, _time, _delta, _seeked, _is_external_seeking, _blend, _looped_flag) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_blend_animation,
+      AnimationNode._bindings.method_blend_animation,
       this._owner,
       _animation, _time, _delta, _seeked, _is_external_seeking, _blend, _looped_flag
     );
@@ -298,7 +299,7 @@ export class AnimationNode extends Resource{
   }
   blend_node(_name, _node, _time, _seek, _is_external_seeking, _blend, _filter, _sync, _test_only) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_blend_node,
+      AnimationNode._bindings.method_blend_node,
       this._owner,
 			Variant.Type.FLOAT,
       _name, _node, _time, _seek, _is_external_seeking, _blend, _filter, _sync, _test_only
@@ -307,7 +308,7 @@ export class AnimationNode extends Resource{
   }
   blend_input(_input_index, _time, _seek, _is_external_seeking, _blend, _filter, _sync, _test_only) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_blend_input,
+      AnimationNode._bindings.method_blend_input,
       this._owner,
 			Variant.Type.FLOAT,
       _input_index, _time, _seek, _is_external_seeking, _blend, _filter, _sync, _test_only
@@ -316,7 +317,7 @@ export class AnimationNode extends Resource{
   }
   set_parameter(_name, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_parameter,
+      AnimationNode._bindings.method_set_parameter,
       this._owner,
       _name, _value
     );
@@ -324,7 +325,7 @@ export class AnimationNode extends Resource{
   }
   get_parameter(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_parameter,
+      AnimationNode._bindings.method_get_parameter,
       this._owner,
 			Variant.Type.VARIANT,
     

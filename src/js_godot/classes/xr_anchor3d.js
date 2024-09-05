@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
-import { XRNode3D } from '@js_godot/classes/xr_node3d'
-import { Vector3 } from '@js_godot/variant/vector3'
 import { StringName } from '@js_godot/variant/string_name'
 import { Plane } from '@js_godot/variant/plane'
+import { XRNode3D } from '@js_godot/classes/xr_node3d'
+import { Vector3 } from '@js_godot/variant/vector3'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -52,9 +52,10 @@ export class XRAnchor3D extends XRNode3D{
       );
     }
   }
+  
   get_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_size,
+      XRAnchor3D._bindings.method_get_size,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -64,7 +65,7 @@ export class XRAnchor3D extends XRNode3D{
   }
   get_plane() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_plane,
+      XRAnchor3D._bindings.method_get_plane,
       this._owner,
 			Variant.Type.PLANE,
     

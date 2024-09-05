@@ -1,12 +1,12 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Transform3D } from '@js_godot/variant/transform3d'
-import { Resource } from '@js_godot/classes/resource'
-import { Vector3 } from '@js_godot/variant/vector3'
 import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
-import { StringName } from '@js_godot/variant/string_name'
+import { Resource } from '@js_godot/classes/resource'
 import { AABB } from '@js_godot/variant/aabb'
+import { StringName } from '@js_godot/variant/string_name'
 import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
+import { Transform3D } from '@js_godot/variant/transform3d'
+import { Variant } from '@js_godot/variant/variant'
+import { Vector3 } from '@js_godot/variant/vector3'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -245,9 +245,10 @@ export class VoxelGIData extends Resource{
       );
     }
   }
+  
   allocate(_to_cell_xform, _aabb, _octree_size, _octree_cells, _data_cells, _distance_field, _level_counts) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_allocate,
+      VoxelGIData._bindings.method_allocate,
       this._owner,
       _to_cell_xform, _aabb, _octree_size, _octree_cells, _data_cells, _distance_field, _level_counts
     );
@@ -255,7 +256,7 @@ export class VoxelGIData extends Resource{
   }
   get_bounds() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bounds,
+      VoxelGIData._bindings.method_get_bounds,
       this._owner,
 			Variant.Type.AABB,
     
@@ -265,7 +266,7 @@ export class VoxelGIData extends Resource{
   }
   get_octree_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_octree_size,
+      VoxelGIData._bindings.method_get_octree_size,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -275,7 +276,7 @@ export class VoxelGIData extends Resource{
   }
   get_to_cell_xform() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_to_cell_xform,
+      VoxelGIData._bindings.method_get_to_cell_xform,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -285,7 +286,7 @@ export class VoxelGIData extends Resource{
   }
   get_octree_cells() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_octree_cells,
+      VoxelGIData._bindings.method_get_octree_cells,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -295,7 +296,7 @@ export class VoxelGIData extends Resource{
   }
   get_data_cells() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_data_cells,
+      VoxelGIData._bindings.method_get_data_cells,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -305,7 +306,7 @@ export class VoxelGIData extends Resource{
   }
   get_level_counts() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_level_counts,
+      VoxelGIData._bindings.method_get_level_counts,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -315,7 +316,7 @@ export class VoxelGIData extends Resource{
   }
   set_dynamic_range(_dynamic_range) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_dynamic_range,
+      VoxelGIData._bindings.method_set_dynamic_range,
       this._owner,
       _dynamic_range
     );
@@ -323,7 +324,7 @@ export class VoxelGIData extends Resource{
   }
   get_dynamic_range() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_dynamic_range,
+      VoxelGIData._bindings.method_get_dynamic_range,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -332,7 +333,7 @@ export class VoxelGIData extends Resource{
   }
   set_energy(_energy) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_energy,
+      VoxelGIData._bindings.method_set_energy,
       this._owner,
       _energy
     );
@@ -340,7 +341,7 @@ export class VoxelGIData extends Resource{
   }
   get_energy() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_energy,
+      VoxelGIData._bindings.method_get_energy,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -349,7 +350,7 @@ export class VoxelGIData extends Resource{
   }
   set_bias(_bias) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bias,
+      VoxelGIData._bindings.method_set_bias,
       this._owner,
       _bias
     );
@@ -357,7 +358,7 @@ export class VoxelGIData extends Resource{
   }
   get_bias() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bias,
+      VoxelGIData._bindings.method_get_bias,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -366,7 +367,7 @@ export class VoxelGIData extends Resource{
   }
   set_normal_bias(_bias) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_normal_bias,
+      VoxelGIData._bindings.method_set_normal_bias,
       this._owner,
       _bias
     );
@@ -374,7 +375,7 @@ export class VoxelGIData extends Resource{
   }
   get_normal_bias() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_normal_bias,
+      VoxelGIData._bindings.method_get_normal_bias,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -383,7 +384,7 @@ export class VoxelGIData extends Resource{
   }
   set_propagation(_propagation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_propagation,
+      VoxelGIData._bindings.method_set_propagation,
       this._owner,
       _propagation
     );
@@ -391,7 +392,7 @@ export class VoxelGIData extends Resource{
   }
   get_propagation() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_propagation,
+      VoxelGIData._bindings.method_get_propagation,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -400,7 +401,7 @@ export class VoxelGIData extends Resource{
   }
   set_interior(_interior) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_interior,
+      VoxelGIData._bindings.method_set_interior,
       this._owner,
       _interior
     );
@@ -408,7 +409,7 @@ export class VoxelGIData extends Resource{
   }
   is_interior() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_interior,
+      VoxelGIData._bindings.method_is_interior,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -417,7 +418,7 @@ export class VoxelGIData extends Resource{
   }
   set_use_two_bounces(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_two_bounces,
+      VoxelGIData._bindings.method_set_use_two_bounces,
       this._owner,
       _enable
     );
@@ -425,7 +426,7 @@ export class VoxelGIData extends Resource{
   }
   is_using_two_bounces() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_using_two_bounces,
+      VoxelGIData._bindings.method_is_using_two_bounces,
       this._owner,
 			Variant.Type.BOOL,
       

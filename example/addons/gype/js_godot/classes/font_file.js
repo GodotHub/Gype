@@ -1,16 +1,16 @@
 import * as internal from '__internal__';
-import { Dictionary } from '@js_godot/variant/dictionary'
-import { Variant } from '@js_godot/variant/variant'
-import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
-import { Vector2i } from '@js_godot/variant/vector2i'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
-import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
-import { Font } from '@js_godot/classes/font'
 import { Vector2 } from '@js_godot/variant/vector2'
-import { Rect2 } from '@js_godot/variant/rect2'
-import { Transform2D } from '@js_godot/variant/transform2d'
+import { Dictionary } from '@js_godot/variant/dictionary'
+import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
+import { StringName } from '@js_godot/variant/string_name'
 import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
+import { GDString } from '@js_godot/variant/gd_string'
+import { Rect2 } from '@js_godot/variant/rect2'
+import { Variant } from '@js_godot/variant/variant'
+import { Font } from '@js_godot/classes/font'
+import { Vector2i } from '@js_godot/variant/vector2i'
+import { Transform2D } from '@js_godot/variant/transform2d'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -1059,9 +1059,10 @@ export class FontFile extends Font{
       );
     }
   }
+  
   load_bitmap_font(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_load_bitmap_font,
+      FontFile._bindings.method_load_bitmap_font,
       this._owner,
 			Variant.INT,
       _path
@@ -1070,7 +1071,7 @@ export class FontFile extends Font{
   }
   load_dynamic_font(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_load_dynamic_font,
+      FontFile._bindings.method_load_dynamic_font,
       this._owner,
 			Variant.INT,
       _path
@@ -1079,7 +1080,7 @@ export class FontFile extends Font{
   }
   set_data(_data) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_data,
+      FontFile._bindings.method_set_data,
       this._owner,
       _data
     );
@@ -1087,7 +1088,7 @@ export class FontFile extends Font{
   }
   get_data() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_data,
+      FontFile._bindings.method_get_data,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -1097,7 +1098,7 @@ export class FontFile extends Font{
   }
   set_font_name(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_font_name,
+      FontFile._bindings.method_set_font_name,
       this._owner,
       _name
     );
@@ -1105,7 +1106,7 @@ export class FontFile extends Font{
   }
   set_font_style_name(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_font_style_name,
+      FontFile._bindings.method_set_font_style_name,
       this._owner,
       _name
     );
@@ -1113,7 +1114,7 @@ export class FontFile extends Font{
   }
   set_font_style(_style) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_font_style,
+      FontFile._bindings.method_set_font_style,
       this._owner,
       _style
     );
@@ -1121,7 +1122,7 @@ export class FontFile extends Font{
   }
   set_font_weight(_weight) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_font_weight,
+      FontFile._bindings.method_set_font_weight,
       this._owner,
       _weight
     );
@@ -1129,7 +1130,7 @@ export class FontFile extends Font{
   }
   set_font_stretch(_stretch) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_font_stretch,
+      FontFile._bindings.method_set_font_stretch,
       this._owner,
       _stretch
     );
@@ -1137,7 +1138,7 @@ export class FontFile extends Font{
   }
   set_antialiasing(_antialiasing) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_antialiasing,
+      FontFile._bindings.method_set_antialiasing,
       this._owner,
       _antialiasing
     );
@@ -1145,7 +1146,7 @@ export class FontFile extends Font{
   }
   get_antialiasing() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_antialiasing,
+      FontFile._bindings.method_get_antialiasing,
       this._owner,
 			Variant.INT,
       
@@ -1154,7 +1155,7 @@ export class FontFile extends Font{
   }
   set_disable_embedded_bitmaps(_disable_embedded_bitmaps) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_disable_embedded_bitmaps,
+      FontFile._bindings.method_set_disable_embedded_bitmaps,
       this._owner,
       _disable_embedded_bitmaps
     );
@@ -1162,7 +1163,7 @@ export class FontFile extends Font{
   }
   get_disable_embedded_bitmaps() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_disable_embedded_bitmaps,
+      FontFile._bindings.method_get_disable_embedded_bitmaps,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1171,7 +1172,7 @@ export class FontFile extends Font{
   }
   set_generate_mipmaps(_generate_mipmaps) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_generate_mipmaps,
+      FontFile._bindings.method_set_generate_mipmaps,
       this._owner,
       _generate_mipmaps
     );
@@ -1179,7 +1180,7 @@ export class FontFile extends Font{
   }
   get_generate_mipmaps() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_generate_mipmaps,
+      FontFile._bindings.method_get_generate_mipmaps,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1188,7 +1189,7 @@ export class FontFile extends Font{
   }
   set_multichannel_signed_distance_field(_msdf) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_multichannel_signed_distance_field,
+      FontFile._bindings.method_set_multichannel_signed_distance_field,
       this._owner,
       _msdf
     );
@@ -1196,7 +1197,7 @@ export class FontFile extends Font{
   }
   is_multichannel_signed_distance_field() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_multichannel_signed_distance_field,
+      FontFile._bindings.method_is_multichannel_signed_distance_field,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1205,7 +1206,7 @@ export class FontFile extends Font{
   }
   set_msdf_pixel_range(_msdf_pixel_range) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_msdf_pixel_range,
+      FontFile._bindings.method_set_msdf_pixel_range,
       this._owner,
       _msdf_pixel_range
     );
@@ -1213,7 +1214,7 @@ export class FontFile extends Font{
   }
   get_msdf_pixel_range() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_msdf_pixel_range,
+      FontFile._bindings.method_get_msdf_pixel_range,
       this._owner,
 			Variant.Type.INT,
       
@@ -1222,7 +1223,7 @@ export class FontFile extends Font{
   }
   set_msdf_size(_msdf_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_msdf_size,
+      FontFile._bindings.method_set_msdf_size,
       this._owner,
       _msdf_size
     );
@@ -1230,7 +1231,7 @@ export class FontFile extends Font{
   }
   get_msdf_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_msdf_size,
+      FontFile._bindings.method_get_msdf_size,
       this._owner,
 			Variant.Type.INT,
       
@@ -1239,7 +1240,7 @@ export class FontFile extends Font{
   }
   set_fixed_size(_fixed_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fixed_size,
+      FontFile._bindings.method_set_fixed_size,
       this._owner,
       _fixed_size
     );
@@ -1247,7 +1248,7 @@ export class FontFile extends Font{
   }
   get_fixed_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fixed_size,
+      FontFile._bindings.method_get_fixed_size,
       this._owner,
 			Variant.Type.INT,
       
@@ -1256,7 +1257,7 @@ export class FontFile extends Font{
   }
   set_fixed_size_scale_mode(_fixed_size_scale_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fixed_size_scale_mode,
+      FontFile._bindings.method_set_fixed_size_scale_mode,
       this._owner,
       _fixed_size_scale_mode
     );
@@ -1264,7 +1265,7 @@ export class FontFile extends Font{
   }
   get_fixed_size_scale_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fixed_size_scale_mode,
+      FontFile._bindings.method_get_fixed_size_scale_mode,
       this._owner,
 			Variant.INT,
       
@@ -1273,7 +1274,7 @@ export class FontFile extends Font{
   }
   set_allow_system_fallback(_allow_system_fallback) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_allow_system_fallback,
+      FontFile._bindings.method_set_allow_system_fallback,
       this._owner,
       _allow_system_fallback
     );
@@ -1281,7 +1282,7 @@ export class FontFile extends Font{
   }
   is_allow_system_fallback() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_allow_system_fallback,
+      FontFile._bindings.method_is_allow_system_fallback,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1290,7 +1291,7 @@ export class FontFile extends Font{
   }
   set_force_autohinter(_force_autohinter) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_force_autohinter,
+      FontFile._bindings.method_set_force_autohinter,
       this._owner,
       _force_autohinter
     );
@@ -1298,7 +1299,7 @@ export class FontFile extends Font{
   }
   is_force_autohinter() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_force_autohinter,
+      FontFile._bindings.method_is_force_autohinter,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1307,7 +1308,7 @@ export class FontFile extends Font{
   }
   set_hinting(_hinting) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_hinting,
+      FontFile._bindings.method_set_hinting,
       this._owner,
       _hinting
     );
@@ -1315,7 +1316,7 @@ export class FontFile extends Font{
   }
   get_hinting() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_hinting,
+      FontFile._bindings.method_get_hinting,
       this._owner,
 			Variant.INT,
       
@@ -1324,7 +1325,7 @@ export class FontFile extends Font{
   }
   set_subpixel_positioning(_subpixel_positioning) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_subpixel_positioning,
+      FontFile._bindings.method_set_subpixel_positioning,
       this._owner,
       _subpixel_positioning
     );
@@ -1332,7 +1333,7 @@ export class FontFile extends Font{
   }
   get_subpixel_positioning() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_subpixel_positioning,
+      FontFile._bindings.method_get_subpixel_positioning,
       this._owner,
 			Variant.INT,
       
@@ -1341,7 +1342,7 @@ export class FontFile extends Font{
   }
   set_oversampling(_oversampling) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_oversampling,
+      FontFile._bindings.method_set_oversampling,
       this._owner,
       _oversampling
     );
@@ -1349,7 +1350,7 @@ export class FontFile extends Font{
   }
   get_oversampling() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_oversampling,
+      FontFile._bindings.method_get_oversampling,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1358,7 +1359,7 @@ export class FontFile extends Font{
   }
   get_cache_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cache_count,
+      FontFile._bindings.method_get_cache_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -1367,7 +1368,7 @@ export class FontFile extends Font{
   }
   clear_cache() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_cache,
+      FontFile._bindings.method_clear_cache,
       this._owner,
       
     );
@@ -1375,7 +1376,7 @@ export class FontFile extends Font{
   }
   remove_cache(_cache_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_cache,
+      FontFile._bindings.method_remove_cache,
       this._owner,
       _cache_index
     );
@@ -1383,7 +1384,7 @@ export class FontFile extends Font{
   }
   get_size_cache_list(_cache_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_size_cache_list,
+      FontFile._bindings.method_get_size_cache_list,
       this._owner,
 			Variant.INT,
       _cache_index
@@ -1392,7 +1393,7 @@ export class FontFile extends Font{
   }
   clear_size_cache(_cache_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_size_cache,
+      FontFile._bindings.method_clear_size_cache,
       this._owner,
       _cache_index
     );
@@ -1400,7 +1401,7 @@ export class FontFile extends Font{
   }
   remove_size_cache(_cache_index, _size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_size_cache,
+      FontFile._bindings.method_remove_size_cache,
       this._owner,
       _cache_index, _size
     );
@@ -1408,7 +1409,7 @@ export class FontFile extends Font{
   }
   set_variation_coordinates(_cache_index, _variation_coordinates) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_variation_coordinates,
+      FontFile._bindings.method_set_variation_coordinates,
       this._owner,
       _cache_index, _variation_coordinates
     );
@@ -1416,7 +1417,7 @@ export class FontFile extends Font{
   }
   get_variation_coordinates(_cache_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_variation_coordinates,
+      FontFile._bindings.method_get_variation_coordinates,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -1426,7 +1427,7 @@ export class FontFile extends Font{
   }
   set_embolden(_cache_index, _strength) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_embolden,
+      FontFile._bindings.method_set_embolden,
       this._owner,
       _cache_index, _strength
     );
@@ -1434,7 +1435,7 @@ export class FontFile extends Font{
   }
   get_embolden(_cache_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_embolden,
+      FontFile._bindings.method_get_embolden,
       this._owner,
 			Variant.Type.FLOAT,
       _cache_index
@@ -1443,7 +1444,7 @@ export class FontFile extends Font{
   }
   set_transform(_cache_index, _transform) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_transform,
+      FontFile._bindings.method_set_transform,
       this._owner,
       _cache_index, _transform
     );
@@ -1451,7 +1452,7 @@ export class FontFile extends Font{
   }
   get_transform(_cache_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_transform,
+      FontFile._bindings.method_get_transform,
       this._owner,
 			Variant.Type.TRANSFORM2D,
     
@@ -1461,7 +1462,7 @@ export class FontFile extends Font{
   }
   set_extra_spacing(_cache_index, _spacing, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_extra_spacing,
+      FontFile._bindings.method_set_extra_spacing,
       this._owner,
       _cache_index, _spacing, _value
     );
@@ -1469,7 +1470,7 @@ export class FontFile extends Font{
   }
   get_extra_spacing(_cache_index, _spacing) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_extra_spacing,
+      FontFile._bindings.method_get_extra_spacing,
       this._owner,
 			Variant.Type.INT,
       _cache_index, _spacing
@@ -1478,7 +1479,7 @@ export class FontFile extends Font{
   }
   set_extra_baseline_offset(_cache_index, _baseline_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_extra_baseline_offset,
+      FontFile._bindings.method_set_extra_baseline_offset,
       this._owner,
       _cache_index, _baseline_offset
     );
@@ -1486,7 +1487,7 @@ export class FontFile extends Font{
   }
   get_extra_baseline_offset(_cache_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_extra_baseline_offset,
+      FontFile._bindings.method_get_extra_baseline_offset,
       this._owner,
 			Variant.Type.FLOAT,
       _cache_index
@@ -1495,7 +1496,7 @@ export class FontFile extends Font{
   }
   set_face_index(_cache_index, _face_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_face_index,
+      FontFile._bindings.method_set_face_index,
       this._owner,
       _cache_index, _face_index
     );
@@ -1503,7 +1504,7 @@ export class FontFile extends Font{
   }
   get_face_index(_cache_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_face_index,
+      FontFile._bindings.method_get_face_index,
       this._owner,
 			Variant.Type.INT,
       _cache_index
@@ -1512,7 +1513,7 @@ export class FontFile extends Font{
   }
   set_cache_ascent(_cache_index, _size, _ascent) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cache_ascent,
+      FontFile._bindings.method_set_cache_ascent,
       this._owner,
       _cache_index, _size, _ascent
     );
@@ -1520,7 +1521,7 @@ export class FontFile extends Font{
   }
   get_cache_ascent(_cache_index, _size) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cache_ascent,
+      FontFile._bindings.method_get_cache_ascent,
       this._owner,
 			Variant.Type.FLOAT,
       _cache_index, _size
@@ -1529,7 +1530,7 @@ export class FontFile extends Font{
   }
   set_cache_descent(_cache_index, _size, _descent) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cache_descent,
+      FontFile._bindings.method_set_cache_descent,
       this._owner,
       _cache_index, _size, _descent
     );
@@ -1537,7 +1538,7 @@ export class FontFile extends Font{
   }
   get_cache_descent(_cache_index, _size) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cache_descent,
+      FontFile._bindings.method_get_cache_descent,
       this._owner,
 			Variant.Type.FLOAT,
       _cache_index, _size
@@ -1546,7 +1547,7 @@ export class FontFile extends Font{
   }
   set_cache_underline_position(_cache_index, _size, _underline_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cache_underline_position,
+      FontFile._bindings.method_set_cache_underline_position,
       this._owner,
       _cache_index, _size, _underline_position
     );
@@ -1554,7 +1555,7 @@ export class FontFile extends Font{
   }
   get_cache_underline_position(_cache_index, _size) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cache_underline_position,
+      FontFile._bindings.method_get_cache_underline_position,
       this._owner,
 			Variant.Type.FLOAT,
       _cache_index, _size
@@ -1563,7 +1564,7 @@ export class FontFile extends Font{
   }
   set_cache_underline_thickness(_cache_index, _size, _underline_thickness) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cache_underline_thickness,
+      FontFile._bindings.method_set_cache_underline_thickness,
       this._owner,
       _cache_index, _size, _underline_thickness
     );
@@ -1571,7 +1572,7 @@ export class FontFile extends Font{
   }
   get_cache_underline_thickness(_cache_index, _size) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cache_underline_thickness,
+      FontFile._bindings.method_get_cache_underline_thickness,
       this._owner,
 			Variant.Type.FLOAT,
       _cache_index, _size
@@ -1580,7 +1581,7 @@ export class FontFile extends Font{
   }
   set_cache_scale(_cache_index, _size, _scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cache_scale,
+      FontFile._bindings.method_set_cache_scale,
       this._owner,
       _cache_index, _size, _scale
     );
@@ -1588,7 +1589,7 @@ export class FontFile extends Font{
   }
   get_cache_scale(_cache_index, _size) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cache_scale,
+      FontFile._bindings.method_get_cache_scale,
       this._owner,
 			Variant.Type.FLOAT,
       _cache_index, _size
@@ -1597,7 +1598,7 @@ export class FontFile extends Font{
   }
   get_texture_count(_cache_index, _size) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_count,
+      FontFile._bindings.method_get_texture_count,
       this._owner,
 			Variant.Type.INT,
       _cache_index, _size
@@ -1606,7 +1607,7 @@ export class FontFile extends Font{
   }
   clear_textures(_cache_index, _size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_textures,
+      FontFile._bindings.method_clear_textures,
       this._owner,
       _cache_index, _size
     );
@@ -1614,7 +1615,7 @@ export class FontFile extends Font{
   }
   remove_texture(_cache_index, _size, _texture_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_texture,
+      FontFile._bindings.method_remove_texture,
       this._owner,
       _cache_index, _size, _texture_index
     );
@@ -1622,7 +1623,7 @@ export class FontFile extends Font{
   }
   set_texture_image(_cache_index, _size, _texture_index, _image) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture_image,
+      FontFile._bindings.method_set_texture_image,
       this._owner,
       _cache_index, _size, _texture_index, _image
     );
@@ -1630,7 +1631,7 @@ export class FontFile extends Font{
   }
   get_texture_image(_cache_index, _size, _texture_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_image,
+      FontFile._bindings.method_get_texture_image,
       this._owner,
 			Variant.INT,
       _cache_index, _size, _texture_index
@@ -1639,7 +1640,7 @@ export class FontFile extends Font{
   }
   set_texture_offsets(_cache_index, _size, _texture_index, _offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture_offsets,
+      FontFile._bindings.method_set_texture_offsets,
       this._owner,
       _cache_index, _size, _texture_index, _offset
     );
@@ -1647,7 +1648,7 @@ export class FontFile extends Font{
   }
   get_texture_offsets(_cache_index, _size, _texture_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_offsets,
+      FontFile._bindings.method_get_texture_offsets,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -1657,7 +1658,7 @@ export class FontFile extends Font{
   }
   get_glyph_list(_cache_index, _size) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_glyph_list,
+      FontFile._bindings.method_get_glyph_list,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -1667,7 +1668,7 @@ export class FontFile extends Font{
   }
   clear_glyphs(_cache_index, _size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_glyphs,
+      FontFile._bindings.method_clear_glyphs,
       this._owner,
       _cache_index, _size
     );
@@ -1675,7 +1676,7 @@ export class FontFile extends Font{
   }
   remove_glyph(_cache_index, _size, _glyph) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_glyph,
+      FontFile._bindings.method_remove_glyph,
       this._owner,
       _cache_index, _size, _glyph
     );
@@ -1683,7 +1684,7 @@ export class FontFile extends Font{
   }
   set_glyph_advance(_cache_index, _size, _glyph, _advance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_glyph_advance,
+      FontFile._bindings.method_set_glyph_advance,
       this._owner,
       _cache_index, _size, _glyph, _advance
     );
@@ -1691,7 +1692,7 @@ export class FontFile extends Font{
   }
   get_glyph_advance(_cache_index, _size, _glyph) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_glyph_advance,
+      FontFile._bindings.method_get_glyph_advance,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1701,7 +1702,7 @@ export class FontFile extends Font{
   }
   set_glyph_offset(_cache_index, _size, _glyph, _offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_glyph_offset,
+      FontFile._bindings.method_set_glyph_offset,
       this._owner,
       _cache_index, _size, _glyph, _offset
     );
@@ -1709,7 +1710,7 @@ export class FontFile extends Font{
   }
   get_glyph_offset(_cache_index, _size, _glyph) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_glyph_offset,
+      FontFile._bindings.method_get_glyph_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1719,7 +1720,7 @@ export class FontFile extends Font{
   }
   set_glyph_size(_cache_index, _size, _glyph, _gl_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_glyph_size,
+      FontFile._bindings.method_set_glyph_size,
       this._owner,
       _cache_index, _size, _glyph, _gl_size
     );
@@ -1727,7 +1728,7 @@ export class FontFile extends Font{
   }
   get_glyph_size(_cache_index, _size, _glyph) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_glyph_size,
+      FontFile._bindings.method_get_glyph_size,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1737,7 +1738,7 @@ export class FontFile extends Font{
   }
   set_glyph_uv_rect(_cache_index, _size, _glyph, _uv_rect) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_glyph_uv_rect,
+      FontFile._bindings.method_set_glyph_uv_rect,
       this._owner,
       _cache_index, _size, _glyph, _uv_rect
     );
@@ -1745,7 +1746,7 @@ export class FontFile extends Font{
   }
   get_glyph_uv_rect(_cache_index, _size, _glyph) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_glyph_uv_rect,
+      FontFile._bindings.method_get_glyph_uv_rect,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -1755,7 +1756,7 @@ export class FontFile extends Font{
   }
   set_glyph_texture_idx(_cache_index, _size, _glyph, _texture_idx) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_glyph_texture_idx,
+      FontFile._bindings.method_set_glyph_texture_idx,
       this._owner,
       _cache_index, _size, _glyph, _texture_idx
     );
@@ -1763,7 +1764,7 @@ export class FontFile extends Font{
   }
   get_glyph_texture_idx(_cache_index, _size, _glyph) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_glyph_texture_idx,
+      FontFile._bindings.method_get_glyph_texture_idx,
       this._owner,
 			Variant.Type.INT,
       _cache_index, _size, _glyph
@@ -1772,7 +1773,7 @@ export class FontFile extends Font{
   }
   get_kerning_list(_cache_index, _size) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_kerning_list,
+      FontFile._bindings.method_get_kerning_list,
       this._owner,
 			Variant.INT,
       _cache_index, _size
@@ -1781,7 +1782,7 @@ export class FontFile extends Font{
   }
   clear_kerning_map(_cache_index, _size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_kerning_map,
+      FontFile._bindings.method_clear_kerning_map,
       this._owner,
       _cache_index, _size
     );
@@ -1789,7 +1790,7 @@ export class FontFile extends Font{
   }
   remove_kerning(_cache_index, _size, _glyph_pair) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_kerning,
+      FontFile._bindings.method_remove_kerning,
       this._owner,
       _cache_index, _size, _glyph_pair
     );
@@ -1797,7 +1798,7 @@ export class FontFile extends Font{
   }
   set_kerning(_cache_index, _size, _glyph_pair, _kerning) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_kerning,
+      FontFile._bindings.method_set_kerning,
       this._owner,
       _cache_index, _size, _glyph_pair, _kerning
     );
@@ -1805,7 +1806,7 @@ export class FontFile extends Font{
   }
   get_kerning(_cache_index, _size, _glyph_pair) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_kerning,
+      FontFile._bindings.method_get_kerning,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1815,7 +1816,7 @@ export class FontFile extends Font{
   }
   render_range(_cache_index, _size, _start, _end) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_render_range,
+      FontFile._bindings.method_render_range,
       this._owner,
       _cache_index, _size, _start, _end
     );
@@ -1823,7 +1824,7 @@ export class FontFile extends Font{
   }
   render_glyph(_cache_index, _size, _index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_render_glyph,
+      FontFile._bindings.method_render_glyph,
       this._owner,
       _cache_index, _size, _index
     );
@@ -1831,7 +1832,7 @@ export class FontFile extends Font{
   }
   set_language_support_override(_language, _supported) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_language_support_override,
+      FontFile._bindings.method_set_language_support_override,
       this._owner,
       _language, _supported
     );
@@ -1839,7 +1840,7 @@ export class FontFile extends Font{
   }
   get_language_support_override(_language) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_language_support_override,
+      FontFile._bindings.method_get_language_support_override,
       this._owner,
 			Variant.Type.BOOL,
       _language
@@ -1848,7 +1849,7 @@ export class FontFile extends Font{
   }
   remove_language_support_override(_language) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_language_support_override,
+      FontFile._bindings.method_remove_language_support_override,
       this._owner,
       _language
     );
@@ -1856,7 +1857,7 @@ export class FontFile extends Font{
   }
   get_language_support_overrides() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_language_support_overrides,
+      FontFile._bindings.method_get_language_support_overrides,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -1866,7 +1867,7 @@ export class FontFile extends Font{
   }
   set_script_support_override(_script, _supported) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_script_support_override,
+      FontFile._bindings.method_set_script_support_override,
       this._owner,
       _script, _supported
     );
@@ -1874,7 +1875,7 @@ export class FontFile extends Font{
   }
   get_script_support_override(_script) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_script_support_override,
+      FontFile._bindings.method_get_script_support_override,
       this._owner,
 			Variant.Type.BOOL,
       _script
@@ -1883,7 +1884,7 @@ export class FontFile extends Font{
   }
   remove_script_support_override(_script) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_script_support_override,
+      FontFile._bindings.method_remove_script_support_override,
       this._owner,
       _script
     );
@@ -1891,7 +1892,7 @@ export class FontFile extends Font{
   }
   get_script_support_overrides() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_script_support_overrides,
+      FontFile._bindings.method_get_script_support_overrides,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -1901,7 +1902,7 @@ export class FontFile extends Font{
   }
   set_opentype_feature_overrides(_overrides) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_opentype_feature_overrides,
+      FontFile._bindings.method_set_opentype_feature_overrides,
       this._owner,
       _overrides
     );
@@ -1909,7 +1910,7 @@ export class FontFile extends Font{
   }
   get_opentype_feature_overrides() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_opentype_feature_overrides,
+      FontFile._bindings.method_get_opentype_feature_overrides,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -1919,7 +1920,7 @@ export class FontFile extends Font{
   }
   get_glyph_index(_size, _char, _variation_selector) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_glyph_index,
+      FontFile._bindings.method_get_glyph_index,
       this._owner,
 			Variant.Type.INT,
       _size, _char, _variation_selector
@@ -1928,7 +1929,7 @@ export class FontFile extends Font{
   }
   get_char_from_glyph_index(_size, _glyph_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_char_from_glyph_index,
+      FontFile._bindings.method_get_char_from_glyph_index,
       this._owner,
 			Variant.Type.INT,
       _size, _glyph_index

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { Joint2D } from '@js_godot/classes/joint2d'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -110,9 +110,10 @@ export class DampedSpringJoint2D extends Joint2D{
       );
     }
   }
+  
   set_length(_length) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_length,
+      DampedSpringJoint2D._bindings.method_set_length,
       this._owner,
       _length
     );
@@ -120,7 +121,7 @@ export class DampedSpringJoint2D extends Joint2D{
   }
   get_length() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_length,
+      DampedSpringJoint2D._bindings.method_get_length,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -129,7 +130,7 @@ export class DampedSpringJoint2D extends Joint2D{
   }
   set_rest_length(_rest_length) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_rest_length,
+      DampedSpringJoint2D._bindings.method_set_rest_length,
       this._owner,
       _rest_length
     );
@@ -137,7 +138,7 @@ export class DampedSpringJoint2D extends Joint2D{
   }
   get_rest_length() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rest_length,
+      DampedSpringJoint2D._bindings.method_get_rest_length,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -146,7 +147,7 @@ export class DampedSpringJoint2D extends Joint2D{
   }
   set_stiffness(_stiffness) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_stiffness,
+      DampedSpringJoint2D._bindings.method_set_stiffness,
       this._owner,
       _stiffness
     );
@@ -154,7 +155,7 @@ export class DampedSpringJoint2D extends Joint2D{
   }
   get_stiffness() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_stiffness,
+      DampedSpringJoint2D._bindings.method_get_stiffness,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -163,7 +164,7 @@ export class DampedSpringJoint2D extends Joint2D{
   }
   set_damping(_damping) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_damping,
+      DampedSpringJoint2D._bindings.method_set_damping,
       this._owner,
       _damping
     );
@@ -171,7 +172,7 @@ export class DampedSpringJoint2D extends Joint2D{
   }
   get_damping() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_damping,
+      DampedSpringJoint2D._bindings.method_get_damping,
       this._owner,
 			Variant.Type.FLOAT,
       

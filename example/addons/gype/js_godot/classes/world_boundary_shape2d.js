@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { Shape2D } from '@js_godot/classes/shape2d'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -71,9 +71,10 @@ export class WorldBoundaryShape2D extends Shape2D{
       );
     }
   }
+  
   set_normal(_normal) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_normal,
+      WorldBoundaryShape2D._bindings.method_set_normal,
       this._owner,
       _normal
     );
@@ -81,7 +82,7 @@ export class WorldBoundaryShape2D extends Shape2D{
   }
   get_normal() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_normal,
+      WorldBoundaryShape2D._bindings.method_get_normal,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -91,7 +92,7 @@ export class WorldBoundaryShape2D extends Shape2D{
   }
   set_distance(_distance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_distance,
+      WorldBoundaryShape2D._bindings.method_set_distance,
       this._owner,
       _distance
     );
@@ -99,7 +100,7 @@ export class WorldBoundaryShape2D extends Shape2D{
   }
   get_distance() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_distance,
+      WorldBoundaryShape2D._bindings.method_get_distance,
       this._owner,
 			Variant.Type.FLOAT,
       

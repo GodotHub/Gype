@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
-import { Vector2 } from '@js_godot/variant/vector2'
 import { InputEventWithModifiers } from '@js_godot/classes/input_event_with_modifiers'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { Vector2 } from '@js_godot/variant/vector2'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -51,9 +51,10 @@ export class InputEventGesture extends InputEventWithModifiers{
       );
     }
   }
+  
   set_position(_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_position,
+      InputEventGesture._bindings.method_set_position,
       this._owner,
       _position
     );
@@ -61,7 +62,7 @@ export class InputEventGesture extends InputEventWithModifiers{
   }
   get_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_position,
+      InputEventGesture._bindings.method_get_position,
       this._owner,
 			Variant.Type.VECTOR2,
     

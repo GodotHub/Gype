@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
+import { RID } from '@js_godot/variant/rid'
 import { Variant } from '@js_godot/variant/variant'
 import { GodotObject } from '@js_godot/classes/godot_object'
-import { RID } from '@js_godot/variant/rid'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -71,9 +71,10 @@ export class RenderData extends GodotObject{
       );
     }
   }
+  
   get_render_scene_buffers() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_render_scene_buffers,
+      RenderData._bindings.method_get_render_scene_buffers,
       this._owner,
 			Variant.INT,
       
@@ -82,7 +83,7 @@ export class RenderData extends GodotObject{
   }
   get_render_scene_data() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_render_scene_data,
+      RenderData._bindings.method_get_render_scene_data,
       this._owner,
 			Variant.INT,
       
@@ -91,7 +92,7 @@ export class RenderData extends GodotObject{
   }
   get_environment() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_environment,
+      RenderData._bindings.method_get_environment,
       this._owner,
 			Variant.Type.RID,
     
@@ -101,7 +102,7 @@ export class RenderData extends GodotObject{
   }
   get_camera_attributes() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_camera_attributes,
+      RenderData._bindings.method_get_camera_attributes,
       this._owner,
 			Variant.Type.RID,
     

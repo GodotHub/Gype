@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { StaticBody2D } from '@js_godot/classes/static_body2d'
 import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { StaticBody2D } from '@js_godot/classes/static_body2d'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -50,9 +50,10 @@ export class AnimatableBody2D extends StaticBody2D{
       );
     }
   }
+  
   set_sync_to_physics(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sync_to_physics,
+      AnimatableBody2D._bindings.method_set_sync_to_physics,
       this._owner,
       _enable
     );
@@ -60,7 +61,7 @@ export class AnimatableBody2D extends StaticBody2D{
   }
   is_sync_to_physics_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_sync_to_physics_enabled,
+      AnimatableBody2D._bindings.method_is_sync_to_physics_enabled,
       this._owner,
 			Variant.Type.BOOL,
       

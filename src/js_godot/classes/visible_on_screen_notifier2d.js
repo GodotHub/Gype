@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { Node2D } from '@js_godot/classes/node2d'
 import { Variant } from '@js_godot/variant/variant'
-import { Rect2 } from '@js_godot/variant/rect2'
 import { StringName } from '@js_godot/variant/string_name'
+import { Rect2 } from '@js_godot/variant/rect2'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -61,9 +61,10 @@ export class VisibleOnScreenNotifier2D extends Node2D{
       );
     }
   }
+  
   set_rect(_rect) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_rect,
+      VisibleOnScreenNotifier2D._bindings.method_set_rect,
       this._owner,
       _rect
     );
@@ -71,7 +72,7 @@ export class VisibleOnScreenNotifier2D extends Node2D{
   }
   get_rect() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rect,
+      VisibleOnScreenNotifier2D._bindings.method_get_rect,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -81,7 +82,7 @@ export class VisibleOnScreenNotifier2D extends Node2D{
   }
   is_on_screen() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_on_screen,
+      VisibleOnScreenNotifier2D._bindings.method_is_on_screen,
       this._owner,
 			Variant.Type.BOOL,
       

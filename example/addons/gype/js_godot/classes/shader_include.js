@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
@@ -51,9 +51,10 @@ export class ShaderInclude extends Resource{
       );
     }
   }
+  
   set_code(_code) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_code,
+      ShaderInclude._bindings.method_set_code,
       this._owner,
       _code
     );
@@ -61,7 +62,7 @@ export class ShaderInclude extends Resource{
   }
   get_code() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_code,
+      ShaderInclude._bindings.method_get_code,
       this._owner,
 			Variant.Type.STRING,
     

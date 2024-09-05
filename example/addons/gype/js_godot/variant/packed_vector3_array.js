@@ -5,8 +5,8 @@ import {
   _call_builtin_method_ptr_no_ret
 } from '@js_godot/core/builtin_ptrcall'
 import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
-import { Vector3 } from '@js_godot/variant/vector3'
 import { StringName } from '@js_godot/variant/string_name'
+import { Vector3 } from '@js_godot/variant/vector3'
 import { GDArray } from '@js_godot/variant/gd_array'
 
 class _MethodBindings {

@@ -71,9 +71,10 @@ export class VisualShaderNodeVec4Parameter extends VisualShaderNodeParameter{
       );
     }
   }
+  
   set_default_value_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_default_value_enabled,
+      VisualShaderNodeVec4Parameter._bindings.method_set_default_value_enabled,
       this._owner,
       _enabled
     );
@@ -81,7 +82,7 @@ export class VisualShaderNodeVec4Parameter extends VisualShaderNodeParameter{
   }
   is_default_value_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_default_value_enabled,
+      VisualShaderNodeVec4Parameter._bindings.method_is_default_value_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -90,7 +91,7 @@ export class VisualShaderNodeVec4Parameter extends VisualShaderNodeParameter{
   }
   set_default_value(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_default_value,
+      VisualShaderNodeVec4Parameter._bindings.method_set_default_value,
       this._owner,
       _value
     );
@@ -98,7 +99,7 @@ export class VisualShaderNodeVec4Parameter extends VisualShaderNodeParameter{
   }
   get_default_value() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_default_value,
+      VisualShaderNodeVec4Parameter._bindings.method_get_default_value,
       this._owner,
 			Variant.Type.VECTOR4,
     

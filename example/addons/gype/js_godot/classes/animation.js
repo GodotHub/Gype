@@ -1,12 +1,12 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Resource } from '@js_godot/classes/resource'
-import { Vector3 } from '@js_godot/variant/vector3'
-import { StringName } from '@js_godot/variant/string_name'
-import { Quaternion } from '@js_godot/variant/quaternion'
 import { Vector2 } from '@js_godot/variant/vector2'
-import { GDArray } from '@js_godot/variant/gd_array'
+import { Resource } from '@js_godot/classes/resource'
+import { StringName } from '@js_godot/variant/string_name'
 import { NodePath } from '@js_godot/variant/node_path'
+import { Quaternion } from '@js_godot/variant/quaternion'
+import { Variant } from '@js_godot/variant/variant'
+import { Vector3 } from '@js_godot/variant/vector3'
+import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -775,9 +775,10 @@ export class Animation extends Resource{
       );
     }
   }
+  
   add_track(_type, _at_position) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_add_track,
+      Animation._bindings.method_add_track,
       this._owner,
 			Variant.Type.INT,
       _type, _at_position
@@ -786,7 +787,7 @@ export class Animation extends Resource{
   }
   remove_track(_track_idx) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_track,
+      Animation._bindings.method_remove_track,
       this._owner,
       _track_idx
     );
@@ -794,7 +795,7 @@ export class Animation extends Resource{
   }
   get_track_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_track_count,
+      Animation._bindings.method_get_track_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -803,7 +804,7 @@ export class Animation extends Resource{
   }
   track_get_type(_track_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_track_get_type,
+      Animation._bindings.method_track_get_type,
       this._owner,
 			Variant.INT,
       _track_idx
@@ -812,7 +813,7 @@ export class Animation extends Resource{
   }
   track_get_path(_track_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_track_get_path,
+      Animation._bindings.method_track_get_path,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -822,7 +823,7 @@ export class Animation extends Resource{
   }
   track_set_path(_track_idx, _path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_track_set_path,
+      Animation._bindings.method_track_set_path,
       this._owner,
       _track_idx, _path
     );
@@ -830,7 +831,7 @@ export class Animation extends Resource{
   }
   find_track(_path, _type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_find_track,
+      Animation._bindings.method_find_track,
       this._owner,
 			Variant.Type.INT,
       _path, _type
@@ -839,7 +840,7 @@ export class Animation extends Resource{
   }
   track_move_up(_track_idx) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_track_move_up,
+      Animation._bindings.method_track_move_up,
       this._owner,
       _track_idx
     );
@@ -847,7 +848,7 @@ export class Animation extends Resource{
   }
   track_move_down(_track_idx) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_track_move_down,
+      Animation._bindings.method_track_move_down,
       this._owner,
       _track_idx
     );
@@ -855,7 +856,7 @@ export class Animation extends Resource{
   }
   track_move_to(_track_idx, _to_idx) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_track_move_to,
+      Animation._bindings.method_track_move_to,
       this._owner,
       _track_idx, _to_idx
     );
@@ -863,7 +864,7 @@ export class Animation extends Resource{
   }
   track_swap(_track_idx, _with_idx) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_track_swap,
+      Animation._bindings.method_track_swap,
       this._owner,
       _track_idx, _with_idx
     );
@@ -871,7 +872,7 @@ export class Animation extends Resource{
   }
   track_set_imported(_track_idx, _imported) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_track_set_imported,
+      Animation._bindings.method_track_set_imported,
       this._owner,
       _track_idx, _imported
     );
@@ -879,7 +880,7 @@ export class Animation extends Resource{
   }
   track_is_imported(_track_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_track_is_imported,
+      Animation._bindings.method_track_is_imported,
       this._owner,
 			Variant.Type.BOOL,
       _track_idx
@@ -888,7 +889,7 @@ export class Animation extends Resource{
   }
   track_set_enabled(_track_idx, _enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_track_set_enabled,
+      Animation._bindings.method_track_set_enabled,
       this._owner,
       _track_idx, _enabled
     );
@@ -896,7 +897,7 @@ export class Animation extends Resource{
   }
   track_is_enabled(_track_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_track_is_enabled,
+      Animation._bindings.method_track_is_enabled,
       this._owner,
 			Variant.Type.BOOL,
       _track_idx
@@ -905,7 +906,7 @@ export class Animation extends Resource{
   }
   position_track_insert_key(_track_idx, _time, _position) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_position_track_insert_key,
+      Animation._bindings.method_position_track_insert_key,
       this._owner,
 			Variant.Type.INT,
       _track_idx, _time, _position
@@ -914,7 +915,7 @@ export class Animation extends Resource{
   }
   rotation_track_insert_key(_track_idx, _time, _rotation) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_rotation_track_insert_key,
+      Animation._bindings.method_rotation_track_insert_key,
       this._owner,
 			Variant.Type.INT,
       _track_idx, _time, _rotation
@@ -923,7 +924,7 @@ export class Animation extends Resource{
   }
   scale_track_insert_key(_track_idx, _time, _scale) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_scale_track_insert_key,
+      Animation._bindings.method_scale_track_insert_key,
       this._owner,
 			Variant.Type.INT,
       _track_idx, _time, _scale
@@ -932,7 +933,7 @@ export class Animation extends Resource{
   }
   blend_shape_track_insert_key(_track_idx, _time, _amount) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_blend_shape_track_insert_key,
+      Animation._bindings.method_blend_shape_track_insert_key,
       this._owner,
 			Variant.Type.INT,
       _track_idx, _time, _amount
@@ -941,7 +942,7 @@ export class Animation extends Resource{
   }
   position_track_interpolate(_track_idx, _time_sec, _backward) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_position_track_interpolate,
+      Animation._bindings.method_position_track_interpolate,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -951,7 +952,7 @@ export class Animation extends Resource{
   }
   rotation_track_interpolate(_track_idx, _time_sec, _backward) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_rotation_track_interpolate,
+      Animation._bindings.method_rotation_track_interpolate,
       this._owner,
 			Variant.Type.QUATERNION,
     
@@ -961,7 +962,7 @@ export class Animation extends Resource{
   }
   scale_track_interpolate(_track_idx, _time_sec, _backward) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_scale_track_interpolate,
+      Animation._bindings.method_scale_track_interpolate,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -971,7 +972,7 @@ export class Animation extends Resource{
   }
   blend_shape_track_interpolate(_track_idx, _time_sec, _backward) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_blend_shape_track_interpolate,
+      Animation._bindings.method_blend_shape_track_interpolate,
       this._owner,
 			Variant.Type.FLOAT,
       _track_idx, _time_sec, _backward
@@ -980,7 +981,7 @@ export class Animation extends Resource{
   }
   track_insert_key(_track_idx, _time, _key, _transition) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_track_insert_key,
+      Animation._bindings.method_track_insert_key,
       this._owner,
 			Variant.Type.INT,
       _track_idx, _time, _key, _transition
@@ -989,7 +990,7 @@ export class Animation extends Resource{
   }
   track_remove_key(_track_idx, _key_idx) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_track_remove_key,
+      Animation._bindings.method_track_remove_key,
       this._owner,
       _track_idx, _key_idx
     );
@@ -997,7 +998,7 @@ export class Animation extends Resource{
   }
   track_remove_key_at_time(_track_idx, _time) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_track_remove_key_at_time,
+      Animation._bindings.method_track_remove_key_at_time,
       this._owner,
       _track_idx, _time
     );
@@ -1005,7 +1006,7 @@ export class Animation extends Resource{
   }
   track_set_key_value(_track_idx, _key, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_track_set_key_value,
+      Animation._bindings.method_track_set_key_value,
       this._owner,
       _track_idx, _key, _value
     );
@@ -1013,7 +1014,7 @@ export class Animation extends Resource{
   }
   track_set_key_transition(_track_idx, _key_idx, _transition) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_track_set_key_transition,
+      Animation._bindings.method_track_set_key_transition,
       this._owner,
       _track_idx, _key_idx, _transition
     );
@@ -1021,7 +1022,7 @@ export class Animation extends Resource{
   }
   track_set_key_time(_track_idx, _key_idx, _time) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_track_set_key_time,
+      Animation._bindings.method_track_set_key_time,
       this._owner,
       _track_idx, _key_idx, _time
     );
@@ -1029,7 +1030,7 @@ export class Animation extends Resource{
   }
   track_get_key_transition(_track_idx, _key_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_track_get_key_transition,
+      Animation._bindings.method_track_get_key_transition,
       this._owner,
 			Variant.Type.FLOAT,
       _track_idx, _key_idx
@@ -1038,7 +1039,7 @@ export class Animation extends Resource{
   }
   track_get_key_count(_track_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_track_get_key_count,
+      Animation._bindings.method_track_get_key_count,
       this._owner,
 			Variant.Type.INT,
       _track_idx
@@ -1047,7 +1048,7 @@ export class Animation extends Resource{
   }
   track_get_key_value(_track_idx, _key_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_track_get_key_value,
+      Animation._bindings.method_track_get_key_value,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -1057,7 +1058,7 @@ export class Animation extends Resource{
   }
   track_get_key_time(_track_idx, _key_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_track_get_key_time,
+      Animation._bindings.method_track_get_key_time,
       this._owner,
 			Variant.Type.FLOAT,
       _track_idx, _key_idx
@@ -1066,7 +1067,7 @@ export class Animation extends Resource{
   }
   track_find_key(_track_idx, _time, _find_mode, _limit, _backward) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_track_find_key,
+      Animation._bindings.method_track_find_key,
       this._owner,
 			Variant.Type.INT,
       _track_idx, _time, _find_mode, _limit, _backward
@@ -1075,7 +1076,7 @@ export class Animation extends Resource{
   }
   track_set_interpolation_type(_track_idx, _interpolation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_track_set_interpolation_type,
+      Animation._bindings.method_track_set_interpolation_type,
       this._owner,
       _track_idx, _interpolation
     );
@@ -1083,7 +1084,7 @@ export class Animation extends Resource{
   }
   track_get_interpolation_type(_track_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_track_get_interpolation_type,
+      Animation._bindings.method_track_get_interpolation_type,
       this._owner,
 			Variant.INT,
       _track_idx
@@ -1092,7 +1093,7 @@ export class Animation extends Resource{
   }
   track_set_interpolation_loop_wrap(_track_idx, _interpolation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_track_set_interpolation_loop_wrap,
+      Animation._bindings.method_track_set_interpolation_loop_wrap,
       this._owner,
       _track_idx, _interpolation
     );
@@ -1100,7 +1101,7 @@ export class Animation extends Resource{
   }
   track_get_interpolation_loop_wrap(_track_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_track_get_interpolation_loop_wrap,
+      Animation._bindings.method_track_get_interpolation_loop_wrap,
       this._owner,
 			Variant.Type.BOOL,
       _track_idx
@@ -1109,7 +1110,7 @@ export class Animation extends Resource{
   }
   track_is_compressed(_track_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_track_is_compressed,
+      Animation._bindings.method_track_is_compressed,
       this._owner,
 			Variant.Type.BOOL,
       _track_idx
@@ -1118,7 +1119,7 @@ export class Animation extends Resource{
   }
   value_track_set_update_mode(_track_idx, _mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_value_track_set_update_mode,
+      Animation._bindings.method_value_track_set_update_mode,
       this._owner,
       _track_idx, _mode
     );
@@ -1126,7 +1127,7 @@ export class Animation extends Resource{
   }
   value_track_get_update_mode(_track_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_value_track_get_update_mode,
+      Animation._bindings.method_value_track_get_update_mode,
       this._owner,
 			Variant.INT,
       _track_idx
@@ -1135,7 +1136,7 @@ export class Animation extends Resource{
   }
   value_track_interpolate(_track_idx, _time_sec, _backward) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_value_track_interpolate,
+      Animation._bindings.method_value_track_interpolate,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -1145,7 +1146,7 @@ export class Animation extends Resource{
   }
   method_track_get_name(_track_idx, _key_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_method_track_get_name,
+      Animation._bindings.method_method_track_get_name,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -1155,7 +1156,7 @@ export class Animation extends Resource{
   }
   method_track_get_params(_track_idx, _key_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_method_track_get_params,
+      Animation._bindings.method_method_track_get_params,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -1165,7 +1166,7 @@ export class Animation extends Resource{
   }
   bezier_track_insert_key(_track_idx, _time, _value, _in_handle, _out_handle) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_bezier_track_insert_key,
+      Animation._bindings.method_bezier_track_insert_key,
       this._owner,
 			Variant.Type.INT,
       _track_idx, _time, _value, _in_handle, _out_handle
@@ -1174,7 +1175,7 @@ export class Animation extends Resource{
   }
   bezier_track_set_key_value(_track_idx, _key_idx, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_bezier_track_set_key_value,
+      Animation._bindings.method_bezier_track_set_key_value,
       this._owner,
       _track_idx, _key_idx, _value
     );
@@ -1182,7 +1183,7 @@ export class Animation extends Resource{
   }
   bezier_track_set_key_in_handle(_track_idx, _key_idx, _in_handle, _balanced_value_time_ratio) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_bezier_track_set_key_in_handle,
+      Animation._bindings.method_bezier_track_set_key_in_handle,
       this._owner,
       _track_idx, _key_idx, _in_handle, _balanced_value_time_ratio
     );
@@ -1190,7 +1191,7 @@ export class Animation extends Resource{
   }
   bezier_track_set_key_out_handle(_track_idx, _key_idx, _out_handle, _balanced_value_time_ratio) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_bezier_track_set_key_out_handle,
+      Animation._bindings.method_bezier_track_set_key_out_handle,
       this._owner,
       _track_idx, _key_idx, _out_handle, _balanced_value_time_ratio
     );
@@ -1198,7 +1199,7 @@ export class Animation extends Resource{
   }
   bezier_track_get_key_value(_track_idx, _key_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_bezier_track_get_key_value,
+      Animation._bindings.method_bezier_track_get_key_value,
       this._owner,
 			Variant.Type.FLOAT,
       _track_idx, _key_idx
@@ -1207,7 +1208,7 @@ export class Animation extends Resource{
   }
   bezier_track_get_key_in_handle(_track_idx, _key_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_bezier_track_get_key_in_handle,
+      Animation._bindings.method_bezier_track_get_key_in_handle,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1217,7 +1218,7 @@ export class Animation extends Resource{
   }
   bezier_track_get_key_out_handle(_track_idx, _key_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_bezier_track_get_key_out_handle,
+      Animation._bindings.method_bezier_track_get_key_out_handle,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1227,7 +1228,7 @@ export class Animation extends Resource{
   }
   bezier_track_interpolate(_track_idx, _time) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_bezier_track_interpolate,
+      Animation._bindings.method_bezier_track_interpolate,
       this._owner,
 			Variant.Type.FLOAT,
       _track_idx, _time
@@ -1236,7 +1237,7 @@ export class Animation extends Resource{
   }
   audio_track_insert_key(_track_idx, _time, _stream, _start_offset, _end_offset) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_audio_track_insert_key,
+      Animation._bindings.method_audio_track_insert_key,
       this._owner,
 			Variant.Type.INT,
       _track_idx, _time, _stream, _start_offset, _end_offset
@@ -1245,7 +1246,7 @@ export class Animation extends Resource{
   }
   audio_track_set_key_stream(_track_idx, _key_idx, _stream) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_audio_track_set_key_stream,
+      Animation._bindings.method_audio_track_set_key_stream,
       this._owner,
       _track_idx, _key_idx, _stream
     );
@@ -1253,7 +1254,7 @@ export class Animation extends Resource{
   }
   audio_track_set_key_start_offset(_track_idx, _key_idx, _offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_audio_track_set_key_start_offset,
+      Animation._bindings.method_audio_track_set_key_start_offset,
       this._owner,
       _track_idx, _key_idx, _offset
     );
@@ -1261,7 +1262,7 @@ export class Animation extends Resource{
   }
   audio_track_set_key_end_offset(_track_idx, _key_idx, _offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_audio_track_set_key_end_offset,
+      Animation._bindings.method_audio_track_set_key_end_offset,
       this._owner,
       _track_idx, _key_idx, _offset
     );
@@ -1269,7 +1270,7 @@ export class Animation extends Resource{
   }
   audio_track_get_key_stream(_track_idx, _key_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_audio_track_get_key_stream,
+      Animation._bindings.method_audio_track_get_key_stream,
       this._owner,
 			Variant.INT,
       _track_idx, _key_idx
@@ -1278,7 +1279,7 @@ export class Animation extends Resource{
   }
   audio_track_get_key_start_offset(_track_idx, _key_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_audio_track_get_key_start_offset,
+      Animation._bindings.method_audio_track_get_key_start_offset,
       this._owner,
 			Variant.Type.FLOAT,
       _track_idx, _key_idx
@@ -1287,7 +1288,7 @@ export class Animation extends Resource{
   }
   audio_track_get_key_end_offset(_track_idx, _key_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_audio_track_get_key_end_offset,
+      Animation._bindings.method_audio_track_get_key_end_offset,
       this._owner,
 			Variant.Type.FLOAT,
       _track_idx, _key_idx
@@ -1296,7 +1297,7 @@ export class Animation extends Resource{
   }
   audio_track_set_use_blend(_track_idx, _enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_audio_track_set_use_blend,
+      Animation._bindings.method_audio_track_set_use_blend,
       this._owner,
       _track_idx, _enable
     );
@@ -1304,7 +1305,7 @@ export class Animation extends Resource{
   }
   audio_track_is_use_blend(_track_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_audio_track_is_use_blend,
+      Animation._bindings.method_audio_track_is_use_blend,
       this._owner,
 			Variant.Type.BOOL,
       _track_idx
@@ -1313,7 +1314,7 @@ export class Animation extends Resource{
   }
   animation_track_insert_key(_track_idx, _time, _animation) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_animation_track_insert_key,
+      Animation._bindings.method_animation_track_insert_key,
       this._owner,
 			Variant.Type.INT,
       _track_idx, _time, _animation
@@ -1322,7 +1323,7 @@ export class Animation extends Resource{
   }
   animation_track_set_key_animation(_track_idx, _key_idx, _animation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_animation_track_set_key_animation,
+      Animation._bindings.method_animation_track_set_key_animation,
       this._owner,
       _track_idx, _key_idx, _animation
     );
@@ -1330,7 +1331,7 @@ export class Animation extends Resource{
   }
   animation_track_get_key_animation(_track_idx, _key_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_animation_track_get_key_animation,
+      Animation._bindings.method_animation_track_get_key_animation,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -1340,7 +1341,7 @@ export class Animation extends Resource{
   }
   set_length(_time_sec) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_length,
+      Animation._bindings.method_set_length,
       this._owner,
       _time_sec
     );
@@ -1348,7 +1349,7 @@ export class Animation extends Resource{
   }
   get_length() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_length,
+      Animation._bindings.method_get_length,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1357,7 +1358,7 @@ export class Animation extends Resource{
   }
   set_loop_mode(_loop_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_loop_mode,
+      Animation._bindings.method_set_loop_mode,
       this._owner,
       _loop_mode
     );
@@ -1365,7 +1366,7 @@ export class Animation extends Resource{
   }
   get_loop_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_loop_mode,
+      Animation._bindings.method_get_loop_mode,
       this._owner,
 			Variant.INT,
       
@@ -1374,7 +1375,7 @@ export class Animation extends Resource{
   }
   set_step(_size_sec) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_step,
+      Animation._bindings.method_set_step,
       this._owner,
       _size_sec
     );
@@ -1382,7 +1383,7 @@ export class Animation extends Resource{
   }
   get_step() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_step,
+      Animation._bindings.method_get_step,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1391,7 +1392,7 @@ export class Animation extends Resource{
   }
   clear() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear,
+      Animation._bindings.method_clear,
       this._owner,
       
     );
@@ -1399,7 +1400,7 @@ export class Animation extends Resource{
   }
   copy_track(_track_idx, _to_animation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_copy_track,
+      Animation._bindings.method_copy_track,
       this._owner,
       _track_idx, _to_animation
     );
@@ -1407,7 +1408,7 @@ export class Animation extends Resource{
   }
   compress(_page_size, _fps, _split_tolerance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_compress,
+      Animation._bindings.method_compress,
       this._owner,
       _page_size, _fps, _split_tolerance
     );
@@ -1415,7 +1416,7 @@ export class Animation extends Resource{
   }
   is_capture_included() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_capture_included,
+      Animation._bindings.method_is_capture_included,
       this._owner,
 			Variant.Type.BOOL,
       

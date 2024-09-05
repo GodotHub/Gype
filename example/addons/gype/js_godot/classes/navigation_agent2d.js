@@ -1,11 +1,11 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
+import { Vector2 } from '@js_godot/variant/vector2'
+import { Node } from '@js_godot/classes/node'
+import { RID } from '@js_godot/variant/rid'
 import { StringName } from '@js_godot/variant/string_name'
 import { Color } from '@js_godot/variant/color'
+import { Variant } from '@js_godot/variant/variant'
 import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
-import { Vector2 } from '@js_godot/variant/vector2'
-import { RID } from '@js_godot/variant/rid'
-import { Node } from '@js_godot/classes/node'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -744,9 +744,10 @@ export class NavigationAgent2D extends Node{
       );
     }
   }
+  
   get_rid() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rid,
+      NavigationAgent2D._bindings.method_get_rid,
       this._owner,
 			Variant.Type.RID,
     
@@ -756,7 +757,7 @@ export class NavigationAgent2D extends Node{
   }
   set_avoidance_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_avoidance_enabled,
+      NavigationAgent2D._bindings.method_set_avoidance_enabled,
       this._owner,
       _enabled
     );
@@ -764,7 +765,7 @@ export class NavigationAgent2D extends Node{
   }
   get_avoidance_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_avoidance_enabled,
+      NavigationAgent2D._bindings.method_get_avoidance_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -773,7 +774,7 @@ export class NavigationAgent2D extends Node{
   }
   set_path_desired_distance(_desired_distance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_path_desired_distance,
+      NavigationAgent2D._bindings.method_set_path_desired_distance,
       this._owner,
       _desired_distance
     );
@@ -781,7 +782,7 @@ export class NavigationAgent2D extends Node{
   }
   get_path_desired_distance() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_path_desired_distance,
+      NavigationAgent2D._bindings.method_get_path_desired_distance,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -790,7 +791,7 @@ export class NavigationAgent2D extends Node{
   }
   set_target_desired_distance(_desired_distance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_target_desired_distance,
+      NavigationAgent2D._bindings.method_set_target_desired_distance,
       this._owner,
       _desired_distance
     );
@@ -798,7 +799,7 @@ export class NavigationAgent2D extends Node{
   }
   get_target_desired_distance() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_target_desired_distance,
+      NavigationAgent2D._bindings.method_get_target_desired_distance,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -807,7 +808,7 @@ export class NavigationAgent2D extends Node{
   }
   set_radius(_radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_radius,
+      NavigationAgent2D._bindings.method_set_radius,
       this._owner,
       _radius
     );
@@ -815,7 +816,7 @@ export class NavigationAgent2D extends Node{
   }
   get_radius() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_radius,
+      NavigationAgent2D._bindings.method_get_radius,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -824,7 +825,7 @@ export class NavigationAgent2D extends Node{
   }
   set_neighbor_distance(_neighbor_distance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_neighbor_distance,
+      NavigationAgent2D._bindings.method_set_neighbor_distance,
       this._owner,
       _neighbor_distance
     );
@@ -832,7 +833,7 @@ export class NavigationAgent2D extends Node{
   }
   get_neighbor_distance() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_neighbor_distance,
+      NavigationAgent2D._bindings.method_get_neighbor_distance,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -841,7 +842,7 @@ export class NavigationAgent2D extends Node{
   }
   set_max_neighbors(_max_neighbors) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_max_neighbors,
+      NavigationAgent2D._bindings.method_set_max_neighbors,
       this._owner,
       _max_neighbors
     );
@@ -849,7 +850,7 @@ export class NavigationAgent2D extends Node{
   }
   get_max_neighbors() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_max_neighbors,
+      NavigationAgent2D._bindings.method_get_max_neighbors,
       this._owner,
 			Variant.Type.INT,
       
@@ -858,7 +859,7 @@ export class NavigationAgent2D extends Node{
   }
   set_time_horizon_agents(_time_horizon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_time_horizon_agents,
+      NavigationAgent2D._bindings.method_set_time_horizon_agents,
       this._owner,
       _time_horizon
     );
@@ -866,7 +867,7 @@ export class NavigationAgent2D extends Node{
   }
   get_time_horizon_agents() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_time_horizon_agents,
+      NavigationAgent2D._bindings.method_get_time_horizon_agents,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -875,7 +876,7 @@ export class NavigationAgent2D extends Node{
   }
   set_time_horizon_obstacles(_time_horizon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_time_horizon_obstacles,
+      NavigationAgent2D._bindings.method_set_time_horizon_obstacles,
       this._owner,
       _time_horizon
     );
@@ -883,7 +884,7 @@ export class NavigationAgent2D extends Node{
   }
   get_time_horizon_obstacles() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_time_horizon_obstacles,
+      NavigationAgent2D._bindings.method_get_time_horizon_obstacles,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -892,7 +893,7 @@ export class NavigationAgent2D extends Node{
   }
   set_max_speed(_max_speed) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_max_speed,
+      NavigationAgent2D._bindings.method_set_max_speed,
       this._owner,
       _max_speed
     );
@@ -900,7 +901,7 @@ export class NavigationAgent2D extends Node{
   }
   get_max_speed() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_max_speed,
+      NavigationAgent2D._bindings.method_get_max_speed,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -909,7 +910,7 @@ export class NavigationAgent2D extends Node{
   }
   set_path_max_distance(_max_speed) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_path_max_distance,
+      NavigationAgent2D._bindings.method_set_path_max_distance,
       this._owner,
       _max_speed
     );
@@ -917,7 +918,7 @@ export class NavigationAgent2D extends Node{
   }
   get_path_max_distance() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_path_max_distance,
+      NavigationAgent2D._bindings.method_get_path_max_distance,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -926,7 +927,7 @@ export class NavigationAgent2D extends Node{
   }
   set_navigation_layers(_navigation_layers) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_navigation_layers,
+      NavigationAgent2D._bindings.method_set_navigation_layers,
       this._owner,
       _navigation_layers
     );
@@ -934,7 +935,7 @@ export class NavigationAgent2D extends Node{
   }
   get_navigation_layers() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_navigation_layers,
+      NavigationAgent2D._bindings.method_get_navigation_layers,
       this._owner,
 			Variant.Type.INT,
       
@@ -943,7 +944,7 @@ export class NavigationAgent2D extends Node{
   }
   set_navigation_layer_value(_layer_number, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_navigation_layer_value,
+      NavigationAgent2D._bindings.method_set_navigation_layer_value,
       this._owner,
       _layer_number, _value
     );
@@ -951,7 +952,7 @@ export class NavigationAgent2D extends Node{
   }
   get_navigation_layer_value(_layer_number) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_navigation_layer_value,
+      NavigationAgent2D._bindings.method_get_navigation_layer_value,
       this._owner,
 			Variant.Type.BOOL,
       _layer_number
@@ -960,7 +961,7 @@ export class NavigationAgent2D extends Node{
   }
   set_pathfinding_algorithm(_pathfinding_algorithm) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_pathfinding_algorithm,
+      NavigationAgent2D._bindings.method_set_pathfinding_algorithm,
       this._owner,
       _pathfinding_algorithm
     );
@@ -968,7 +969,7 @@ export class NavigationAgent2D extends Node{
   }
   get_pathfinding_algorithm() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_pathfinding_algorithm,
+      NavigationAgent2D._bindings.method_get_pathfinding_algorithm,
       this._owner,
 			Variant.INT,
       
@@ -977,7 +978,7 @@ export class NavigationAgent2D extends Node{
   }
   set_path_postprocessing(_path_postprocessing) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_path_postprocessing,
+      NavigationAgent2D._bindings.method_set_path_postprocessing,
       this._owner,
       _path_postprocessing
     );
@@ -985,7 +986,7 @@ export class NavigationAgent2D extends Node{
   }
   get_path_postprocessing() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_path_postprocessing,
+      NavigationAgent2D._bindings.method_get_path_postprocessing,
       this._owner,
 			Variant.INT,
       
@@ -994,7 +995,7 @@ export class NavigationAgent2D extends Node{
   }
   set_path_metadata_flags(_flags) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_path_metadata_flags,
+      NavigationAgent2D._bindings.method_set_path_metadata_flags,
       this._owner,
       _flags
     );
@@ -1002,7 +1003,7 @@ export class NavigationAgent2D extends Node{
   }
   get_path_metadata_flags() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_path_metadata_flags,
+      NavigationAgent2D._bindings.method_get_path_metadata_flags,
       this._owner,
 			Variant.INT,
       
@@ -1011,7 +1012,7 @@ export class NavigationAgent2D extends Node{
   }
   set_navigation_map(_navigation_map) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_navigation_map,
+      NavigationAgent2D._bindings.method_set_navigation_map,
       this._owner,
       _navigation_map
     );
@@ -1019,7 +1020,7 @@ export class NavigationAgent2D extends Node{
   }
   get_navigation_map() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_navigation_map,
+      NavigationAgent2D._bindings.method_get_navigation_map,
       this._owner,
 			Variant.Type.RID,
     
@@ -1029,7 +1030,7 @@ export class NavigationAgent2D extends Node{
   }
   set_target_position(_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_target_position,
+      NavigationAgent2D._bindings.method_set_target_position,
       this._owner,
       _position
     );
@@ -1037,7 +1038,7 @@ export class NavigationAgent2D extends Node{
   }
   get_target_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_target_position,
+      NavigationAgent2D._bindings.method_get_target_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1047,7 +1048,7 @@ export class NavigationAgent2D extends Node{
   }
   set_simplify_path(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_simplify_path,
+      NavigationAgent2D._bindings.method_set_simplify_path,
       this._owner,
       _enabled
     );
@@ -1055,7 +1056,7 @@ export class NavigationAgent2D extends Node{
   }
   get_simplify_path() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_simplify_path,
+      NavigationAgent2D._bindings.method_get_simplify_path,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1064,7 +1065,7 @@ export class NavigationAgent2D extends Node{
   }
   set_simplify_epsilon(_epsilon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_simplify_epsilon,
+      NavigationAgent2D._bindings.method_set_simplify_epsilon,
       this._owner,
       _epsilon
     );
@@ -1072,7 +1073,7 @@ export class NavigationAgent2D extends Node{
   }
   get_simplify_epsilon() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_simplify_epsilon,
+      NavigationAgent2D._bindings.method_get_simplify_epsilon,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1081,7 +1082,7 @@ export class NavigationAgent2D extends Node{
   }
   get_next_path_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_next_path_position,
+      NavigationAgent2D._bindings.method_get_next_path_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1091,7 +1092,7 @@ export class NavigationAgent2D extends Node{
   }
   set_velocity_forced(_velocity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_velocity_forced,
+      NavigationAgent2D._bindings.method_set_velocity_forced,
       this._owner,
       _velocity
     );
@@ -1099,7 +1100,7 @@ export class NavigationAgent2D extends Node{
   }
   set_velocity(_velocity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_velocity,
+      NavigationAgent2D._bindings.method_set_velocity,
       this._owner,
       _velocity
     );
@@ -1107,7 +1108,7 @@ export class NavigationAgent2D extends Node{
   }
   get_velocity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_velocity,
+      NavigationAgent2D._bindings.method_get_velocity,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1117,7 +1118,7 @@ export class NavigationAgent2D extends Node{
   }
   distance_to_target() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_distance_to_target,
+      NavigationAgent2D._bindings.method_distance_to_target,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1126,7 +1127,7 @@ export class NavigationAgent2D extends Node{
   }
   get_current_navigation_result() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_current_navigation_result,
+      NavigationAgent2D._bindings.method_get_current_navigation_result,
       this._owner,
 			Variant.INT,
       
@@ -1135,7 +1136,7 @@ export class NavigationAgent2D extends Node{
   }
   get_current_navigation_path() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_current_navigation_path,
+      NavigationAgent2D._bindings.method_get_current_navigation_path,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -1145,7 +1146,7 @@ export class NavigationAgent2D extends Node{
   }
   get_current_navigation_path_index() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_current_navigation_path_index,
+      NavigationAgent2D._bindings.method_get_current_navigation_path_index,
       this._owner,
 			Variant.Type.INT,
       
@@ -1154,7 +1155,7 @@ export class NavigationAgent2D extends Node{
   }
   is_target_reached() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_target_reached,
+      NavigationAgent2D._bindings.method_is_target_reached,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1163,7 +1164,7 @@ export class NavigationAgent2D extends Node{
   }
   is_target_reachable() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_target_reachable,
+      NavigationAgent2D._bindings.method_is_target_reachable,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1172,7 +1173,7 @@ export class NavigationAgent2D extends Node{
   }
   is_navigation_finished() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_navigation_finished,
+      NavigationAgent2D._bindings.method_is_navigation_finished,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1181,7 +1182,7 @@ export class NavigationAgent2D extends Node{
   }
   get_final_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_final_position,
+      NavigationAgent2D._bindings.method_get_final_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1191,7 +1192,7 @@ export class NavigationAgent2D extends Node{
   }
   set_avoidance_layers(_layers) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_avoidance_layers,
+      NavigationAgent2D._bindings.method_set_avoidance_layers,
       this._owner,
       _layers
     );
@@ -1199,7 +1200,7 @@ export class NavigationAgent2D extends Node{
   }
   get_avoidance_layers() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_avoidance_layers,
+      NavigationAgent2D._bindings.method_get_avoidance_layers,
       this._owner,
 			Variant.Type.INT,
       
@@ -1208,7 +1209,7 @@ export class NavigationAgent2D extends Node{
   }
   set_avoidance_mask(_mask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_avoidance_mask,
+      NavigationAgent2D._bindings.method_set_avoidance_mask,
       this._owner,
       _mask
     );
@@ -1216,7 +1217,7 @@ export class NavigationAgent2D extends Node{
   }
   get_avoidance_mask() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_avoidance_mask,
+      NavigationAgent2D._bindings.method_get_avoidance_mask,
       this._owner,
 			Variant.Type.INT,
       
@@ -1225,7 +1226,7 @@ export class NavigationAgent2D extends Node{
   }
   set_avoidance_layer_value(_layer_number, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_avoidance_layer_value,
+      NavigationAgent2D._bindings.method_set_avoidance_layer_value,
       this._owner,
       _layer_number, _value
     );
@@ -1233,7 +1234,7 @@ export class NavigationAgent2D extends Node{
   }
   get_avoidance_layer_value(_layer_number) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_avoidance_layer_value,
+      NavigationAgent2D._bindings.method_get_avoidance_layer_value,
       this._owner,
 			Variant.Type.BOOL,
       _layer_number
@@ -1242,7 +1243,7 @@ export class NavigationAgent2D extends Node{
   }
   set_avoidance_mask_value(_mask_number, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_avoidance_mask_value,
+      NavigationAgent2D._bindings.method_set_avoidance_mask_value,
       this._owner,
       _mask_number, _value
     );
@@ -1250,7 +1251,7 @@ export class NavigationAgent2D extends Node{
   }
   get_avoidance_mask_value(_mask_number) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_avoidance_mask_value,
+      NavigationAgent2D._bindings.method_get_avoidance_mask_value,
       this._owner,
 			Variant.Type.BOOL,
       _mask_number
@@ -1259,7 +1260,7 @@ export class NavigationAgent2D extends Node{
   }
   set_avoidance_priority(_priority) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_avoidance_priority,
+      NavigationAgent2D._bindings.method_set_avoidance_priority,
       this._owner,
       _priority
     );
@@ -1267,7 +1268,7 @@ export class NavigationAgent2D extends Node{
   }
   get_avoidance_priority() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_avoidance_priority,
+      NavigationAgent2D._bindings.method_get_avoidance_priority,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1276,7 +1277,7 @@ export class NavigationAgent2D extends Node{
   }
   set_debug_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_debug_enabled,
+      NavigationAgent2D._bindings.method_set_debug_enabled,
       this._owner,
       _enabled
     );
@@ -1284,7 +1285,7 @@ export class NavigationAgent2D extends Node{
   }
   get_debug_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_debug_enabled,
+      NavigationAgent2D._bindings.method_get_debug_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1293,7 +1294,7 @@ export class NavigationAgent2D extends Node{
   }
   set_debug_use_custom(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_debug_use_custom,
+      NavigationAgent2D._bindings.method_set_debug_use_custom,
       this._owner,
       _enabled
     );
@@ -1301,7 +1302,7 @@ export class NavigationAgent2D extends Node{
   }
   get_debug_use_custom() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_debug_use_custom,
+      NavigationAgent2D._bindings.method_get_debug_use_custom,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1310,7 +1311,7 @@ export class NavigationAgent2D extends Node{
   }
   set_debug_path_custom_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_debug_path_custom_color,
+      NavigationAgent2D._bindings.method_set_debug_path_custom_color,
       this._owner,
       _color
     );
@@ -1318,7 +1319,7 @@ export class NavigationAgent2D extends Node{
   }
   get_debug_path_custom_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_debug_path_custom_color,
+      NavigationAgent2D._bindings.method_get_debug_path_custom_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -1328,7 +1329,7 @@ export class NavigationAgent2D extends Node{
   }
   set_debug_path_custom_point_size(_point_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_debug_path_custom_point_size,
+      NavigationAgent2D._bindings.method_set_debug_path_custom_point_size,
       this._owner,
       _point_size
     );
@@ -1336,7 +1337,7 @@ export class NavigationAgent2D extends Node{
   }
   get_debug_path_custom_point_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_debug_path_custom_point_size,
+      NavigationAgent2D._bindings.method_get_debug_path_custom_point_size,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1345,7 +1346,7 @@ export class NavigationAgent2D extends Node{
   }
   set_debug_path_custom_line_width(_line_width) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_debug_path_custom_line_width,
+      NavigationAgent2D._bindings.method_set_debug_path_custom_line_width,
       this._owner,
       _line_width
     );
@@ -1353,7 +1354,7 @@ export class NavigationAgent2D extends Node{
   }
   get_debug_path_custom_line_width() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_debug_path_custom_line_width,
+      NavigationAgent2D._bindings.method_get_debug_path_custom_line_width,
       this._owner,
 			Variant.Type.FLOAT,
       

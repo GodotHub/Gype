@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Dictionary } from '@js_godot/variant/dictionary'
-import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
-import { Vector3 } from '@js_godot/variant/vector3'
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Vector3 } from '@js_godot/variant/vector3'
+import { Dictionary } from '@js_godot/variant/dictionary'
 import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
@@ -233,9 +233,10 @@ export class GLTFPhysicsShape extends Resource{
       );
     }
   }
+  
   from_node(_shape_node) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_from_node,
+      GLTFPhysicsShape._bindings.method_from_node,
       this._owner,
 			Variant.INT,
       _shape_node
@@ -244,7 +245,7 @@ export class GLTFPhysicsShape extends Resource{
   }
   to_node(_cache_shapes) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_to_node,
+      GLTFPhysicsShape._bindings.method_to_node,
       this._owner,
 			Variant.INT,
       _cache_shapes
@@ -253,7 +254,7 @@ export class GLTFPhysicsShape extends Resource{
   }
   from_resource(_shape_resource) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_from_resource,
+      GLTFPhysicsShape._bindings.method_from_resource,
       this._owner,
 			Variant.INT,
       _shape_resource
@@ -262,7 +263,7 @@ export class GLTFPhysicsShape extends Resource{
   }
   to_resource(_cache_shapes) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_to_resource,
+      GLTFPhysicsShape._bindings.method_to_resource,
       this._owner,
 			Variant.INT,
       _cache_shapes
@@ -271,7 +272,7 @@ export class GLTFPhysicsShape extends Resource{
   }
   from_dictionary(_dictionary) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_from_dictionary,
+      GLTFPhysicsShape._bindings.method_from_dictionary,
       this._owner,
 			Variant.INT,
       _dictionary
@@ -280,7 +281,7 @@ export class GLTFPhysicsShape extends Resource{
   }
   to_dictionary() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_to_dictionary,
+      GLTFPhysicsShape._bindings.method_to_dictionary,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -290,7 +291,7 @@ export class GLTFPhysicsShape extends Resource{
   }
   get_shape_type() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_shape_type,
+      GLTFPhysicsShape._bindings.method_get_shape_type,
       this._owner,
 			Variant.Type.STRING,
     
@@ -300,7 +301,7 @@ export class GLTFPhysicsShape extends Resource{
   }
   set_shape_type(_shape_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shape_type,
+      GLTFPhysicsShape._bindings.method_set_shape_type,
       this._owner,
       _shape_type
     );
@@ -308,7 +309,7 @@ export class GLTFPhysicsShape extends Resource{
   }
   get_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_size,
+      GLTFPhysicsShape._bindings.method_get_size,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -318,7 +319,7 @@ export class GLTFPhysicsShape extends Resource{
   }
   set_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_size,
+      GLTFPhysicsShape._bindings.method_set_size,
       this._owner,
       _size
     );
@@ -326,7 +327,7 @@ export class GLTFPhysicsShape extends Resource{
   }
   get_radius() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_radius,
+      GLTFPhysicsShape._bindings.method_get_radius,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -335,7 +336,7 @@ export class GLTFPhysicsShape extends Resource{
   }
   set_radius(_radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_radius,
+      GLTFPhysicsShape._bindings.method_set_radius,
       this._owner,
       _radius
     );
@@ -343,7 +344,7 @@ export class GLTFPhysicsShape extends Resource{
   }
   get_height() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_height,
+      GLTFPhysicsShape._bindings.method_get_height,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -352,7 +353,7 @@ export class GLTFPhysicsShape extends Resource{
   }
   set_height(_height) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_height,
+      GLTFPhysicsShape._bindings.method_set_height,
       this._owner,
       _height
     );
@@ -360,7 +361,7 @@ export class GLTFPhysicsShape extends Resource{
   }
   get_is_trigger() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_is_trigger,
+      GLTFPhysicsShape._bindings.method_get_is_trigger,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -369,7 +370,7 @@ export class GLTFPhysicsShape extends Resource{
   }
   set_is_trigger(_is_trigger) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_is_trigger,
+      GLTFPhysicsShape._bindings.method_set_is_trigger,
       this._owner,
       _is_trigger
     );
@@ -377,7 +378,7 @@ export class GLTFPhysicsShape extends Resource{
   }
   get_mesh_index() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mesh_index,
+      GLTFPhysicsShape._bindings.method_get_mesh_index,
       this._owner,
 			Variant.Type.INT,
       
@@ -386,7 +387,7 @@ export class GLTFPhysicsShape extends Resource{
   }
   set_mesh_index(_mesh_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mesh_index,
+      GLTFPhysicsShape._bindings.method_set_mesh_index,
       this._owner,
       _mesh_index
     );
@@ -394,7 +395,7 @@ export class GLTFPhysicsShape extends Resource{
   }
   get_importer_mesh() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_importer_mesh,
+      GLTFPhysicsShape._bindings.method_get_importer_mesh,
       this._owner,
 			Variant.INT,
       
@@ -403,7 +404,7 @@ export class GLTFPhysicsShape extends Resource{
   }
   set_importer_mesh(_importer_mesh) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_importer_mesh,
+      GLTFPhysicsShape._bindings.method_set_importer_mesh,
       this._owner,
       _importer_mesh
     );

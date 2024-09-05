@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { InputEventGesture } from '@js_godot/classes/input_event_gesture'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -50,9 +50,10 @@ export class InputEventMagnifyGesture extends InputEventGesture{
       );
     }
   }
+  
   set_factor(_factor) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_factor,
+      InputEventMagnifyGesture._bindings.method_set_factor,
       this._owner,
       _factor
     );
@@ -60,7 +61,7 @@ export class InputEventMagnifyGesture extends InputEventGesture{
   }
   get_factor() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_factor,
+      InputEventMagnifyGesture._bindings.method_get_factor,
       this._owner,
 			Variant.Type.FLOAT,
       

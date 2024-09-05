@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
-import { Rect2i } from '@js_godot/variant/rect2i'
-import { Vector2i } from '@js_godot/variant/vector2i'
 import { StringName } from '@js_godot/variant/string_name'
+import { Rect2i } from '@js_godot/variant/rect2i'
+import { Variant } from '@js_godot/variant/variant'
+import { Vector2i } from '@js_godot/variant/vector2i'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -162,9 +162,10 @@ export class BitMap extends Resource{
       );
     }
   }
+  
   create(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_create,
+      BitMap._bindings.method_create,
       this._owner,
       _size
     );
@@ -172,7 +173,7 @@ export class BitMap extends Resource{
   }
   create_from_image_alpha(_image, _threshold) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_create_from_image_alpha,
+      BitMap._bindings.method_create_from_image_alpha,
       this._owner,
       _image, _threshold
     );
@@ -180,7 +181,7 @@ export class BitMap extends Resource{
   }
   set_bitv(_position, _bit) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bitv,
+      BitMap._bindings.method_set_bitv,
       this._owner,
       _position, _bit
     );
@@ -188,7 +189,7 @@ export class BitMap extends Resource{
   }
   set_bit(_x, _y, _bit) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bit,
+      BitMap._bindings.method_set_bit,
       this._owner,
       _x, _y, _bit
     );
@@ -196,7 +197,7 @@ export class BitMap extends Resource{
   }
   get_bitv(_position) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bitv,
+      BitMap._bindings.method_get_bitv,
       this._owner,
 			Variant.Type.BOOL,
       _position
@@ -205,7 +206,7 @@ export class BitMap extends Resource{
   }
   get_bit(_x, _y) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bit,
+      BitMap._bindings.method_get_bit,
       this._owner,
 			Variant.Type.BOOL,
       _x, _y
@@ -214,7 +215,7 @@ export class BitMap extends Resource{
   }
   set_bit_rect(_rect, _bit) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bit_rect,
+      BitMap._bindings.method_set_bit_rect,
       this._owner,
       _rect, _bit
     );
@@ -222,7 +223,7 @@ export class BitMap extends Resource{
   }
   get_true_bit_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_true_bit_count,
+      BitMap._bindings.method_get_true_bit_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -231,7 +232,7 @@ export class BitMap extends Resource{
   }
   get_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_size,
+      BitMap._bindings.method_get_size,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -241,7 +242,7 @@ export class BitMap extends Resource{
   }
   resize(_new_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_resize,
+      BitMap._bindings.method_resize,
       this._owner,
       _new_size
     );
@@ -249,7 +250,7 @@ export class BitMap extends Resource{
   }
   grow_mask(_pixels, _rect) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_grow_mask,
+      BitMap._bindings.method_grow_mask,
       this._owner,
       _pixels, _rect
     );
@@ -257,7 +258,7 @@ export class BitMap extends Resource{
   }
   convert_to_image() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_convert_to_image,
+      BitMap._bindings.method_convert_to_image,
       this._owner,
 			Variant.INT,
       
@@ -266,7 +267,7 @@ export class BitMap extends Resource{
   }
   opaque_to_polygons(_rect, _epsilon) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_opaque_to_polygons,
+      BitMap._bindings.method_opaque_to_polygons,
       this._owner,
 			Variant.INT,
       _rect, _epsilon

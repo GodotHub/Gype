@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Vector3 } from '@js_godot/variant/vector3'
+import { MeshInstance3D } from '@js_godot/classes/mesh_instance3d'
 import { StringName } from '@js_godot/variant/string_name'
 import { RID } from '@js_godot/variant/rid'
-import { MeshInstance3D } from '@js_godot/classes/mesh_instance3d'
 import { NodePath } from '@js_godot/variant/node_path'
+import { Variant } from '@js_godot/variant/variant'
+import { Vector3 } from '@js_godot/variant/vector3'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -363,9 +363,10 @@ export class SoftBody3D extends MeshInstance3D{
       );
     }
   }
+  
   get_physics_rid() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_physics_rid,
+      SoftBody3D._bindings.method_get_physics_rid,
       this._owner,
 			Variant.Type.RID,
     
@@ -375,7 +376,7 @@ export class SoftBody3D extends MeshInstance3D{
   }
   set_collision_mask(_collision_mask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_mask,
+      SoftBody3D._bindings.method_set_collision_mask,
       this._owner,
       _collision_mask
     );
@@ -383,7 +384,7 @@ export class SoftBody3D extends MeshInstance3D{
   }
   get_collision_mask() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_mask,
+      SoftBody3D._bindings.method_get_collision_mask,
       this._owner,
 			Variant.Type.INT,
       
@@ -392,7 +393,7 @@ export class SoftBody3D extends MeshInstance3D{
   }
   set_collision_layer(_collision_layer) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_layer,
+      SoftBody3D._bindings.method_set_collision_layer,
       this._owner,
       _collision_layer
     );
@@ -400,7 +401,7 @@ export class SoftBody3D extends MeshInstance3D{
   }
   get_collision_layer() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_layer,
+      SoftBody3D._bindings.method_get_collision_layer,
       this._owner,
 			Variant.Type.INT,
       
@@ -409,7 +410,7 @@ export class SoftBody3D extends MeshInstance3D{
   }
   set_collision_mask_value(_layer_number, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_mask_value,
+      SoftBody3D._bindings.method_set_collision_mask_value,
       this._owner,
       _layer_number, _value
     );
@@ -417,7 +418,7 @@ export class SoftBody3D extends MeshInstance3D{
   }
   get_collision_mask_value(_layer_number) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_mask_value,
+      SoftBody3D._bindings.method_get_collision_mask_value,
       this._owner,
 			Variant.Type.BOOL,
       _layer_number
@@ -426,7 +427,7 @@ export class SoftBody3D extends MeshInstance3D{
   }
   set_collision_layer_value(_layer_number, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_layer_value,
+      SoftBody3D._bindings.method_set_collision_layer_value,
       this._owner,
       _layer_number, _value
     );
@@ -434,7 +435,7 @@ export class SoftBody3D extends MeshInstance3D{
   }
   get_collision_layer_value(_layer_number) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_layer_value,
+      SoftBody3D._bindings.method_get_collision_layer_value,
       this._owner,
 			Variant.Type.BOOL,
       _layer_number
@@ -443,7 +444,7 @@ export class SoftBody3D extends MeshInstance3D{
   }
   set_parent_collision_ignore(_parent_collision_ignore) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_parent_collision_ignore,
+      SoftBody3D._bindings.method_set_parent_collision_ignore,
       this._owner,
       _parent_collision_ignore
     );
@@ -451,7 +452,7 @@ export class SoftBody3D extends MeshInstance3D{
   }
   get_parent_collision_ignore() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_parent_collision_ignore,
+      SoftBody3D._bindings.method_get_parent_collision_ignore,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -461,7 +462,7 @@ export class SoftBody3D extends MeshInstance3D{
   }
   set_disable_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_disable_mode,
+      SoftBody3D._bindings.method_set_disable_mode,
       this._owner,
       _mode
     );
@@ -469,7 +470,7 @@ export class SoftBody3D extends MeshInstance3D{
   }
   get_disable_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_disable_mode,
+      SoftBody3D._bindings.method_get_disable_mode,
       this._owner,
 			Variant.INT,
       
@@ -478,7 +479,7 @@ export class SoftBody3D extends MeshInstance3D{
   }
   get_collision_exceptions() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_exceptions,
+      SoftBody3D._bindings.method_get_collision_exceptions,
       this._owner,
 			Variant.INT,
       
@@ -487,7 +488,7 @@ export class SoftBody3D extends MeshInstance3D{
   }
   add_collision_exception_with(_body) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_collision_exception_with,
+      SoftBody3D._bindings.method_add_collision_exception_with,
       this._owner,
       _body
     );
@@ -495,7 +496,7 @@ export class SoftBody3D extends MeshInstance3D{
   }
   remove_collision_exception_with(_body) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_collision_exception_with,
+      SoftBody3D._bindings.method_remove_collision_exception_with,
       this._owner,
       _body
     );
@@ -503,7 +504,7 @@ export class SoftBody3D extends MeshInstance3D{
   }
   set_simulation_precision(_simulation_precision) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_simulation_precision,
+      SoftBody3D._bindings.method_set_simulation_precision,
       this._owner,
       _simulation_precision
     );
@@ -511,7 +512,7 @@ export class SoftBody3D extends MeshInstance3D{
   }
   get_simulation_precision() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_simulation_precision,
+      SoftBody3D._bindings.method_get_simulation_precision,
       this._owner,
 			Variant.Type.INT,
       
@@ -520,7 +521,7 @@ export class SoftBody3D extends MeshInstance3D{
   }
   set_total_mass(_mass) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_total_mass,
+      SoftBody3D._bindings.method_set_total_mass,
       this._owner,
       _mass
     );
@@ -528,7 +529,7 @@ export class SoftBody3D extends MeshInstance3D{
   }
   get_total_mass() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_total_mass,
+      SoftBody3D._bindings.method_get_total_mass,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -537,7 +538,7 @@ export class SoftBody3D extends MeshInstance3D{
   }
   set_linear_stiffness(_linear_stiffness) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_linear_stiffness,
+      SoftBody3D._bindings.method_set_linear_stiffness,
       this._owner,
       _linear_stiffness
     );
@@ -545,7 +546,7 @@ export class SoftBody3D extends MeshInstance3D{
   }
   get_linear_stiffness() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_linear_stiffness,
+      SoftBody3D._bindings.method_get_linear_stiffness,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -554,7 +555,7 @@ export class SoftBody3D extends MeshInstance3D{
   }
   set_pressure_coefficient(_pressure_coefficient) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_pressure_coefficient,
+      SoftBody3D._bindings.method_set_pressure_coefficient,
       this._owner,
       _pressure_coefficient
     );
@@ -562,7 +563,7 @@ export class SoftBody3D extends MeshInstance3D{
   }
   get_pressure_coefficient() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_pressure_coefficient,
+      SoftBody3D._bindings.method_get_pressure_coefficient,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -571,7 +572,7 @@ export class SoftBody3D extends MeshInstance3D{
   }
   set_damping_coefficient(_damping_coefficient) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_damping_coefficient,
+      SoftBody3D._bindings.method_set_damping_coefficient,
       this._owner,
       _damping_coefficient
     );
@@ -579,7 +580,7 @@ export class SoftBody3D extends MeshInstance3D{
   }
   get_damping_coefficient() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_damping_coefficient,
+      SoftBody3D._bindings.method_get_damping_coefficient,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -588,7 +589,7 @@ export class SoftBody3D extends MeshInstance3D{
   }
   set_drag_coefficient(_drag_coefficient) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_drag_coefficient,
+      SoftBody3D._bindings.method_set_drag_coefficient,
       this._owner,
       _drag_coefficient
     );
@@ -596,7 +597,7 @@ export class SoftBody3D extends MeshInstance3D{
   }
   get_drag_coefficient() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_drag_coefficient,
+      SoftBody3D._bindings.method_get_drag_coefficient,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -605,7 +606,7 @@ export class SoftBody3D extends MeshInstance3D{
   }
   get_point_transform(_point_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_point_transform,
+      SoftBody3D._bindings.method_get_point_transform,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -615,7 +616,7 @@ export class SoftBody3D extends MeshInstance3D{
   }
   set_point_pinned(_point_index, _pinned, _attachment_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_point_pinned,
+      SoftBody3D._bindings.method_set_point_pinned,
       this._owner,
       _point_index, _pinned, _attachment_path
     );
@@ -623,7 +624,7 @@ export class SoftBody3D extends MeshInstance3D{
   }
   is_point_pinned(_point_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_point_pinned,
+      SoftBody3D._bindings.method_is_point_pinned,
       this._owner,
 			Variant.Type.BOOL,
       _point_index
@@ -632,7 +633,7 @@ export class SoftBody3D extends MeshInstance3D{
   }
   set_ray_pickable(_ray_pickable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ray_pickable,
+      SoftBody3D._bindings.method_set_ray_pickable,
       this._owner,
       _ray_pickable
     );
@@ -640,7 +641,7 @@ export class SoftBody3D extends MeshInstance3D{
   }
   is_ray_pickable() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_ray_pickable,
+      SoftBody3D._bindings.method_is_ray_pickable,
       this._owner,
 			Variant.Type.BOOL,
       

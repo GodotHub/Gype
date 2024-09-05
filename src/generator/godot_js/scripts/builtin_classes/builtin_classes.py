@@ -15,6 +15,14 @@ def __render__(env, template_name, dependcies, index):
     with open('%s\\variant\\%s.js' % (js_generated_dir, file_name), mode='w') as f:
         f.write(content)
 
+def __render_variant__(env, template_name):
+    template = env.get_template(template_name)
+    content = template.render({'gde_json': gde_json, 
+                               'precision': __precision__})
+    file_name = camel_to_snake('variant')
+    with open('%s\\variant\\%s.js' % (js_generated_dir, file_name), mode='w') as f:
+        f.write(content)
+
 def dependcies_collect(clazz):
     depencies = set()
     for ctor in clazz.get('constructors', []):
@@ -54,3 +62,4 @@ def render_builtin_classes(precision):
 
     for i in range(4, 38):
         __render__(env, 'builtin_classes.jinja2', dependcies_collect(gde_json['builtin_classes'][i]), i)
+    __render_variant__(env, 'variant.jinja2')

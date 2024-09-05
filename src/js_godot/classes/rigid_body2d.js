@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { Vector2 } from '@js_godot/variant/vector2'
 import { PhysicsBody2D } from '@js_godot/classes/physics_body2d'
+import { StringName } from '@js_godot/variant/string_name'
+import { Vector2 } from '@js_godot/variant/vector2'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -611,11 +611,12 @@ export class RigidBody2D extends PhysicsBody2D{
       );
     }
   }
+  
   _integrate_forces(_state) {
   }
   set_mass(_mass) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mass,
+      RigidBody2D._bindings.method_set_mass,
       this._owner,
       _mass
     );
@@ -623,7 +624,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   get_mass() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mass,
+      RigidBody2D._bindings.method_get_mass,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -632,7 +633,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   get_inertia() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_inertia,
+      RigidBody2D._bindings.method_get_inertia,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -641,7 +642,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   set_inertia(_inertia) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_inertia,
+      RigidBody2D._bindings.method_set_inertia,
       this._owner,
       _inertia
     );
@@ -649,7 +650,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   set_center_of_mass_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_center_of_mass_mode,
+      RigidBody2D._bindings.method_set_center_of_mass_mode,
       this._owner,
       _mode
     );
@@ -657,7 +658,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   get_center_of_mass_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_center_of_mass_mode,
+      RigidBody2D._bindings.method_get_center_of_mass_mode,
       this._owner,
 			Variant.INT,
       
@@ -666,7 +667,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   set_center_of_mass(_center_of_mass) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_center_of_mass,
+      RigidBody2D._bindings.method_set_center_of_mass,
       this._owner,
       _center_of_mass
     );
@@ -674,7 +675,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   get_center_of_mass() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_center_of_mass,
+      RigidBody2D._bindings.method_get_center_of_mass,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -684,7 +685,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   set_physics_material_override(_physics_material_override) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_physics_material_override,
+      RigidBody2D._bindings.method_set_physics_material_override,
       this._owner,
       _physics_material_override
     );
@@ -692,7 +693,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   get_physics_material_override() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_physics_material_override,
+      RigidBody2D._bindings.method_get_physics_material_override,
       this._owner,
 			Variant.INT,
       
@@ -701,7 +702,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   set_gravity_scale(_gravity_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_gravity_scale,
+      RigidBody2D._bindings.method_set_gravity_scale,
       this._owner,
       _gravity_scale
     );
@@ -709,7 +710,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   get_gravity_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_gravity_scale,
+      RigidBody2D._bindings.method_get_gravity_scale,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -718,7 +719,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   set_linear_damp_mode(_linear_damp_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_linear_damp_mode,
+      RigidBody2D._bindings.method_set_linear_damp_mode,
       this._owner,
       _linear_damp_mode
     );
@@ -726,7 +727,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   get_linear_damp_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_linear_damp_mode,
+      RigidBody2D._bindings.method_get_linear_damp_mode,
       this._owner,
 			Variant.INT,
       
@@ -735,7 +736,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   set_angular_damp_mode(_angular_damp_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_angular_damp_mode,
+      RigidBody2D._bindings.method_set_angular_damp_mode,
       this._owner,
       _angular_damp_mode
     );
@@ -743,7 +744,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   get_angular_damp_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_angular_damp_mode,
+      RigidBody2D._bindings.method_get_angular_damp_mode,
       this._owner,
 			Variant.INT,
       
@@ -752,7 +753,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   set_linear_damp(_linear_damp) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_linear_damp,
+      RigidBody2D._bindings.method_set_linear_damp,
       this._owner,
       _linear_damp
     );
@@ -760,7 +761,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   get_linear_damp() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_linear_damp,
+      RigidBody2D._bindings.method_get_linear_damp,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -769,7 +770,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   set_angular_damp(_angular_damp) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_angular_damp,
+      RigidBody2D._bindings.method_set_angular_damp,
       this._owner,
       _angular_damp
     );
@@ -777,7 +778,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   get_angular_damp() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_angular_damp,
+      RigidBody2D._bindings.method_get_angular_damp,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -786,7 +787,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   set_linear_velocity(_linear_velocity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_linear_velocity,
+      RigidBody2D._bindings.method_set_linear_velocity,
       this._owner,
       _linear_velocity
     );
@@ -794,7 +795,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   get_linear_velocity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_linear_velocity,
+      RigidBody2D._bindings.method_get_linear_velocity,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -804,7 +805,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   set_angular_velocity(_angular_velocity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_angular_velocity,
+      RigidBody2D._bindings.method_set_angular_velocity,
       this._owner,
       _angular_velocity
     );
@@ -812,7 +813,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   get_angular_velocity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_angular_velocity,
+      RigidBody2D._bindings.method_get_angular_velocity,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -821,7 +822,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   set_max_contacts_reported(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_max_contacts_reported,
+      RigidBody2D._bindings.method_set_max_contacts_reported,
       this._owner,
       _amount
     );
@@ -829,7 +830,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   get_max_contacts_reported() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_max_contacts_reported,
+      RigidBody2D._bindings.method_get_max_contacts_reported,
       this._owner,
 			Variant.Type.INT,
       
@@ -838,7 +839,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   get_contact_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_contact_count,
+      RigidBody2D._bindings.method_get_contact_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -847,7 +848,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   set_use_custom_integrator(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_custom_integrator,
+      RigidBody2D._bindings.method_set_use_custom_integrator,
       this._owner,
       _enable
     );
@@ -855,7 +856,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   is_using_custom_integrator() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_using_custom_integrator,
+      RigidBody2D._bindings.method_is_using_custom_integrator,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -864,7 +865,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   set_contact_monitor(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_contact_monitor,
+      RigidBody2D._bindings.method_set_contact_monitor,
       this._owner,
       _enabled
     );
@@ -872,7 +873,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   is_contact_monitor_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_contact_monitor_enabled,
+      RigidBody2D._bindings.method_is_contact_monitor_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -881,7 +882,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   set_continuous_collision_detection_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_continuous_collision_detection_mode,
+      RigidBody2D._bindings.method_set_continuous_collision_detection_mode,
       this._owner,
       _mode
     );
@@ -889,7 +890,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   get_continuous_collision_detection_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_continuous_collision_detection_mode,
+      RigidBody2D._bindings.method_get_continuous_collision_detection_mode,
       this._owner,
 			Variant.INT,
       
@@ -898,7 +899,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   set_axis_velocity(_axis_velocity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_axis_velocity,
+      RigidBody2D._bindings.method_set_axis_velocity,
       this._owner,
       _axis_velocity
     );
@@ -906,7 +907,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   apply_central_impulse(_impulse) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_apply_central_impulse,
+      RigidBody2D._bindings.method_apply_central_impulse,
       this._owner,
       _impulse
     );
@@ -914,7 +915,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   apply_impulse(_impulse, _position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_apply_impulse,
+      RigidBody2D._bindings.method_apply_impulse,
       this._owner,
       _impulse, _position
     );
@@ -922,7 +923,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   apply_torque_impulse(_torque) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_apply_torque_impulse,
+      RigidBody2D._bindings.method_apply_torque_impulse,
       this._owner,
       _torque
     );
@@ -930,7 +931,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   apply_central_force(_force) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_apply_central_force,
+      RigidBody2D._bindings.method_apply_central_force,
       this._owner,
       _force
     );
@@ -938,7 +939,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   apply_force(_force, _position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_apply_force,
+      RigidBody2D._bindings.method_apply_force,
       this._owner,
       _force, _position
     );
@@ -946,7 +947,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   apply_torque(_torque) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_apply_torque,
+      RigidBody2D._bindings.method_apply_torque,
       this._owner,
       _torque
     );
@@ -954,7 +955,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   add_constant_central_force(_force) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_constant_central_force,
+      RigidBody2D._bindings.method_add_constant_central_force,
       this._owner,
       _force
     );
@@ -962,7 +963,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   add_constant_force(_force, _position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_constant_force,
+      RigidBody2D._bindings.method_add_constant_force,
       this._owner,
       _force, _position
     );
@@ -970,7 +971,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   add_constant_torque(_torque) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_constant_torque,
+      RigidBody2D._bindings.method_add_constant_torque,
       this._owner,
       _torque
     );
@@ -978,7 +979,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   set_constant_force(_force) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_constant_force,
+      RigidBody2D._bindings.method_set_constant_force,
       this._owner,
       _force
     );
@@ -986,7 +987,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   get_constant_force() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_constant_force,
+      RigidBody2D._bindings.method_get_constant_force,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -996,7 +997,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   set_constant_torque(_torque) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_constant_torque,
+      RigidBody2D._bindings.method_set_constant_torque,
       this._owner,
       _torque
     );
@@ -1004,7 +1005,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   get_constant_torque() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_constant_torque,
+      RigidBody2D._bindings.method_get_constant_torque,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1013,7 +1014,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   set_sleeping(_sleeping) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sleeping,
+      RigidBody2D._bindings.method_set_sleeping,
       this._owner,
       _sleeping
     );
@@ -1021,7 +1022,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   is_sleeping() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_sleeping,
+      RigidBody2D._bindings.method_is_sleeping,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1030,7 +1031,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   set_can_sleep(_able_to_sleep) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_can_sleep,
+      RigidBody2D._bindings.method_set_can_sleep,
       this._owner,
       _able_to_sleep
     );
@@ -1038,7 +1039,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   is_able_to_sleep() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_able_to_sleep,
+      RigidBody2D._bindings.method_is_able_to_sleep,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1047,7 +1048,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   set_lock_rotation_enabled(_lock_rotation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_lock_rotation_enabled,
+      RigidBody2D._bindings.method_set_lock_rotation_enabled,
       this._owner,
       _lock_rotation
     );
@@ -1055,7 +1056,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   is_lock_rotation_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_lock_rotation_enabled,
+      RigidBody2D._bindings.method_is_lock_rotation_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1064,7 +1065,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   set_freeze_enabled(_freeze_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_freeze_enabled,
+      RigidBody2D._bindings.method_set_freeze_enabled,
       this._owner,
       _freeze_mode
     );
@@ -1072,7 +1073,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   is_freeze_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_freeze_enabled,
+      RigidBody2D._bindings.method_is_freeze_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1081,7 +1082,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   set_freeze_mode(_freeze_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_freeze_mode,
+      RigidBody2D._bindings.method_set_freeze_mode,
       this._owner,
       _freeze_mode
     );
@@ -1089,7 +1090,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   get_freeze_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_freeze_mode,
+      RigidBody2D._bindings.method_get_freeze_mode,
       this._owner,
 			Variant.INT,
       
@@ -1098,7 +1099,7 @@ export class RigidBody2D extends PhysicsBody2D{
   }
   get_colliding_bodies() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_colliding_bodies,
+      RigidBody2D._bindings.method_get_colliding_bodies,
       this._owner,
 			Variant.INT,
       

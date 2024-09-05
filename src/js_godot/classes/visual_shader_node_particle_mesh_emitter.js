@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { VisualShaderNodeParticleEmitter } from '@js_godot/classes/visual_shader_node_particle_emitter'
-import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -90,9 +90,10 @@ export class VisualShaderNodeParticleMeshEmitter extends VisualShaderNodeParticl
       );
     }
   }
+  
   set_mesh(_mesh) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mesh,
+      VisualShaderNodeParticleMeshEmitter._bindings.method_set_mesh,
       this._owner,
       _mesh
     );
@@ -100,7 +101,7 @@ export class VisualShaderNodeParticleMeshEmitter extends VisualShaderNodeParticl
   }
   get_mesh() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mesh,
+      VisualShaderNodeParticleMeshEmitter._bindings.method_get_mesh,
       this._owner,
 			Variant.INT,
       
@@ -109,7 +110,7 @@ export class VisualShaderNodeParticleMeshEmitter extends VisualShaderNodeParticl
   }
   set_use_all_surfaces(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_all_surfaces,
+      VisualShaderNodeParticleMeshEmitter._bindings.method_set_use_all_surfaces,
       this._owner,
       _enabled
     );
@@ -117,7 +118,7 @@ export class VisualShaderNodeParticleMeshEmitter extends VisualShaderNodeParticl
   }
   is_use_all_surfaces() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_use_all_surfaces,
+      VisualShaderNodeParticleMeshEmitter._bindings.method_is_use_all_surfaces,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -126,7 +127,7 @@ export class VisualShaderNodeParticleMeshEmitter extends VisualShaderNodeParticl
   }
   set_surface_index(_surface_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_surface_index,
+      VisualShaderNodeParticleMeshEmitter._bindings.method_set_surface_index,
       this._owner,
       _surface_index
     );
@@ -134,7 +135,7 @@ export class VisualShaderNodeParticleMeshEmitter extends VisualShaderNodeParticl
   }
   get_surface_index() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_surface_index,
+      VisualShaderNodeParticleMeshEmitter._bindings.method_get_surface_index,
       this._owner,
 			Variant.Type.INT,
       

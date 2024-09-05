@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { RigidBody2D } from '@js_godot/classes/rigid_body2d'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { RigidBody2D } from '@js_godot/classes/rigid_body2d'
 import { NodePath } from '@js_godot/variant/node_path'
 import {
   call_utility_ret,
@@ -151,9 +151,10 @@ export class PhysicalBone2D extends RigidBody2D{
       );
     }
   }
+  
   get_joint() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_joint,
+      PhysicalBone2D._bindings.method_get_joint,
       this._owner,
 			Variant.INT,
       
@@ -162,7 +163,7 @@ export class PhysicalBone2D extends RigidBody2D{
   }
   get_auto_configure_joint() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_auto_configure_joint,
+      PhysicalBone2D._bindings.method_get_auto_configure_joint,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -171,7 +172,7 @@ export class PhysicalBone2D extends RigidBody2D{
   }
   set_auto_configure_joint(_auto_configure_joint) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_auto_configure_joint,
+      PhysicalBone2D._bindings.method_set_auto_configure_joint,
       this._owner,
       _auto_configure_joint
     );
@@ -179,7 +180,7 @@ export class PhysicalBone2D extends RigidBody2D{
   }
   set_simulate_physics(_simulate_physics) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_simulate_physics,
+      PhysicalBone2D._bindings.method_set_simulate_physics,
       this._owner,
       _simulate_physics
     );
@@ -187,7 +188,7 @@ export class PhysicalBone2D extends RigidBody2D{
   }
   get_simulate_physics() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_simulate_physics,
+      PhysicalBone2D._bindings.method_get_simulate_physics,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -196,7 +197,7 @@ export class PhysicalBone2D extends RigidBody2D{
   }
   is_simulating_physics() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_simulating_physics,
+      PhysicalBone2D._bindings.method_is_simulating_physics,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -205,7 +206,7 @@ export class PhysicalBone2D extends RigidBody2D{
   }
   set_bone2d_nodepath(_nodepath) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bone2d_nodepath,
+      PhysicalBone2D._bindings.method_set_bone2d_nodepath,
       this._owner,
       _nodepath
     );
@@ -213,7 +214,7 @@ export class PhysicalBone2D extends RigidBody2D{
   }
   get_bone2d_nodepath() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bone2d_nodepath,
+      PhysicalBone2D._bindings.method_get_bone2d_nodepath,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -223,7 +224,7 @@ export class PhysicalBone2D extends RigidBody2D{
   }
   set_bone2d_index(_bone_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bone2d_index,
+      PhysicalBone2D._bindings.method_set_bone2d_index,
       this._owner,
       _bone_index
     );
@@ -231,7 +232,7 @@ export class PhysicalBone2D extends RigidBody2D{
   }
   get_bone2d_index() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bone2d_index,
+      PhysicalBone2D._bindings.method_get_bone2d_index,
       this._owner,
 			Variant.Type.INT,
       
@@ -240,7 +241,7 @@ export class PhysicalBone2D extends RigidBody2D{
   }
   set_follow_bone_when_simulating(_follow_bone) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_follow_bone_when_simulating,
+      PhysicalBone2D._bindings.method_set_follow_bone_when_simulating,
       this._owner,
       _follow_bone
     );
@@ -248,7 +249,7 @@ export class PhysicalBone2D extends RigidBody2D{
   }
   get_follow_bone_when_simulating() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_follow_bone_when_simulating,
+      PhysicalBone2D._bindings.method_get_follow_bone_when_simulating,
       this._owner,
 			Variant.Type.BOOL,
       

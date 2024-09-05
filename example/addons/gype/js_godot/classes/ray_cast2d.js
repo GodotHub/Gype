@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Node2D } from '@js_godot/classes/node2d'
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { StringName } from '@js_godot/variant/string_name'
 import { RID } from '@js_godot/variant/rid'
+import { Variant } from '@js_godot/variant/variant'
+import { Node2D } from '@js_godot/classes/node2d'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -312,9 +312,10 @@ export class RayCast2D extends Node2D{
       );
     }
   }
+  
   set_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_enabled,
+      RayCast2D._bindings.method_set_enabled,
       this._owner,
       _enabled
     );
@@ -322,7 +323,7 @@ export class RayCast2D extends Node2D{
   }
   is_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_enabled,
+      RayCast2D._bindings.method_is_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -331,7 +332,7 @@ export class RayCast2D extends Node2D{
   }
   set_target_position(_local_point) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_target_position,
+      RayCast2D._bindings.method_set_target_position,
       this._owner,
       _local_point
     );
@@ -339,7 +340,7 @@ export class RayCast2D extends Node2D{
   }
   get_target_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_target_position,
+      RayCast2D._bindings.method_get_target_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -349,7 +350,7 @@ export class RayCast2D extends Node2D{
   }
   is_colliding() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_colliding,
+      RayCast2D._bindings.method_is_colliding,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -358,7 +359,7 @@ export class RayCast2D extends Node2D{
   }
   force_raycast_update() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_force_raycast_update,
+      RayCast2D._bindings.method_force_raycast_update,
       this._owner,
       
     );
@@ -366,7 +367,7 @@ export class RayCast2D extends Node2D{
   }
   get_collider() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collider,
+      RayCast2D._bindings.method_get_collider,
       this._owner,
 			Variant.INT,
       
@@ -375,7 +376,7 @@ export class RayCast2D extends Node2D{
   }
   get_collider_rid() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collider_rid,
+      RayCast2D._bindings.method_get_collider_rid,
       this._owner,
 			Variant.Type.RID,
     
@@ -385,7 +386,7 @@ export class RayCast2D extends Node2D{
   }
   get_collider_shape() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collider_shape,
+      RayCast2D._bindings.method_get_collider_shape,
       this._owner,
 			Variant.Type.INT,
       
@@ -394,7 +395,7 @@ export class RayCast2D extends Node2D{
   }
   get_collision_point() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_point,
+      RayCast2D._bindings.method_get_collision_point,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -404,7 +405,7 @@ export class RayCast2D extends Node2D{
   }
   get_collision_normal() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_normal,
+      RayCast2D._bindings.method_get_collision_normal,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -414,7 +415,7 @@ export class RayCast2D extends Node2D{
   }
   add_exception_rid(_rid) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_exception_rid,
+      RayCast2D._bindings.method_add_exception_rid,
       this._owner,
       _rid
     );
@@ -422,7 +423,7 @@ export class RayCast2D extends Node2D{
   }
   add_exception(_node) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_exception,
+      RayCast2D._bindings.method_add_exception,
       this._owner,
       _node
     );
@@ -430,7 +431,7 @@ export class RayCast2D extends Node2D{
   }
   remove_exception_rid(_rid) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_exception_rid,
+      RayCast2D._bindings.method_remove_exception_rid,
       this._owner,
       _rid
     );
@@ -438,7 +439,7 @@ export class RayCast2D extends Node2D{
   }
   remove_exception(_node) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_exception,
+      RayCast2D._bindings.method_remove_exception,
       this._owner,
       _node
     );
@@ -446,7 +447,7 @@ export class RayCast2D extends Node2D{
   }
   clear_exceptions() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_exceptions,
+      RayCast2D._bindings.method_clear_exceptions,
       this._owner,
       
     );
@@ -454,7 +455,7 @@ export class RayCast2D extends Node2D{
   }
   set_collision_mask(_mask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_mask,
+      RayCast2D._bindings.method_set_collision_mask,
       this._owner,
       _mask
     );
@@ -462,7 +463,7 @@ export class RayCast2D extends Node2D{
   }
   get_collision_mask() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_mask,
+      RayCast2D._bindings.method_get_collision_mask,
       this._owner,
 			Variant.Type.INT,
       
@@ -471,7 +472,7 @@ export class RayCast2D extends Node2D{
   }
   set_collision_mask_value(_layer_number, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_mask_value,
+      RayCast2D._bindings.method_set_collision_mask_value,
       this._owner,
       _layer_number, _value
     );
@@ -479,7 +480,7 @@ export class RayCast2D extends Node2D{
   }
   get_collision_mask_value(_layer_number) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_mask_value,
+      RayCast2D._bindings.method_get_collision_mask_value,
       this._owner,
 			Variant.Type.BOOL,
       _layer_number
@@ -488,7 +489,7 @@ export class RayCast2D extends Node2D{
   }
   set_exclude_parent_body(_mask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_exclude_parent_body,
+      RayCast2D._bindings.method_set_exclude_parent_body,
       this._owner,
       _mask
     );
@@ -496,7 +497,7 @@ export class RayCast2D extends Node2D{
   }
   get_exclude_parent_body() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_exclude_parent_body,
+      RayCast2D._bindings.method_get_exclude_parent_body,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -505,7 +506,7 @@ export class RayCast2D extends Node2D{
   }
   set_collide_with_areas(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collide_with_areas,
+      RayCast2D._bindings.method_set_collide_with_areas,
       this._owner,
       _enable
     );
@@ -513,7 +514,7 @@ export class RayCast2D extends Node2D{
   }
   is_collide_with_areas_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_collide_with_areas_enabled,
+      RayCast2D._bindings.method_is_collide_with_areas_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -522,7 +523,7 @@ export class RayCast2D extends Node2D{
   }
   set_collide_with_bodies(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collide_with_bodies,
+      RayCast2D._bindings.method_set_collide_with_bodies,
       this._owner,
       _enable
     );
@@ -530,7 +531,7 @@ export class RayCast2D extends Node2D{
   }
   is_collide_with_bodies_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_collide_with_bodies_enabled,
+      RayCast2D._bindings.method_is_collide_with_bodies_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -539,7 +540,7 @@ export class RayCast2D extends Node2D{
   }
   set_hit_from_inside(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_hit_from_inside,
+      RayCast2D._bindings.method_set_hit_from_inside,
       this._owner,
       _enable
     );
@@ -547,7 +548,7 @@ export class RayCast2D extends Node2D{
   }
   is_hit_from_inside_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_hit_from_inside_enabled,
+      RayCast2D._bindings.method_is_hit_from_inside_enabled,
       this._owner,
 			Variant.Type.BOOL,
       

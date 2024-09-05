@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -50,6 +50,7 @@ export class AudioStreamPlayback extends RefCounted{
       );
     }
   }
+  
   _start(_from_pos) {
   }
   _stop() {
@@ -72,7 +73,7 @@ export class AudioStreamPlayback extends RefCounted{
   }
   set_sample_playback(_playback_sample) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sample_playback,
+      AudioStreamPlayback._bindings.method_set_sample_playback,
       this._owner,
       _playback_sample
     );
@@ -80,7 +81,7 @@ export class AudioStreamPlayback extends RefCounted{
   }
   get_sample_playback() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sample_playback,
+      AudioStreamPlayback._bindings.method_get_sample_playback,
       this._owner,
 			Variant.INT,
       

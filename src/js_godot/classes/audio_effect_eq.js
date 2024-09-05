@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { AudioEffect } from '@js_godot/classes/audio_effect'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -60,9 +60,10 @@ export class AudioEffectEQ extends AudioEffect{
       );
     }
   }
+  
   set_band_gain_db(_band_idx, _volume_db) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_band_gain_db,
+      AudioEffectEQ._bindings.method_set_band_gain_db,
       this._owner,
       _band_idx, _volume_db
     );
@@ -70,7 +71,7 @@ export class AudioEffectEQ extends AudioEffect{
   }
   get_band_gain_db(_band_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_band_gain_db,
+      AudioEffectEQ._bindings.method_get_band_gain_db,
       this._owner,
 			Variant.Type.FLOAT,
       _band_idx
@@ -79,7 +80,7 @@ export class AudioEffectEQ extends AudioEffect{
   }
   get_band_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_band_count,
+      AudioEffectEQ._bindings.method_get_band_count,
       this._owner,
 			Variant.Type.INT,
       

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { AnimationRootNode } from '@js_godot/classes/animation_root_node'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -170,9 +170,10 @@ export class AnimationNodeAnimation extends AnimationRootNode{
       );
     }
   }
+  
   set_animation(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_animation,
+      AnimationNodeAnimation._bindings.method_set_animation,
       this._owner,
       _name
     );
@@ -180,7 +181,7 @@ export class AnimationNodeAnimation extends AnimationRootNode{
   }
   get_animation() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_animation,
+      AnimationNodeAnimation._bindings.method_get_animation,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -190,7 +191,7 @@ export class AnimationNodeAnimation extends AnimationRootNode{
   }
   set_play_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_play_mode,
+      AnimationNodeAnimation._bindings.method_set_play_mode,
       this._owner,
       _mode
     );
@@ -198,7 +199,7 @@ export class AnimationNodeAnimation extends AnimationRootNode{
   }
   get_play_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_play_mode,
+      AnimationNodeAnimation._bindings.method_get_play_mode,
       this._owner,
 			Variant.INT,
       
@@ -207,7 +208,7 @@ export class AnimationNodeAnimation extends AnimationRootNode{
   }
   set_use_custom_timeline(_use_custom_timeline) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_custom_timeline,
+      AnimationNodeAnimation._bindings.method_set_use_custom_timeline,
       this._owner,
       _use_custom_timeline
     );
@@ -215,7 +216,7 @@ export class AnimationNodeAnimation extends AnimationRootNode{
   }
   is_using_custom_timeline() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_using_custom_timeline,
+      AnimationNodeAnimation._bindings.method_is_using_custom_timeline,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -224,7 +225,7 @@ export class AnimationNodeAnimation extends AnimationRootNode{
   }
   set_timeline_length(_timeline_length) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_timeline_length,
+      AnimationNodeAnimation._bindings.method_set_timeline_length,
       this._owner,
       _timeline_length
     );
@@ -232,7 +233,7 @@ export class AnimationNodeAnimation extends AnimationRootNode{
   }
   get_timeline_length() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_timeline_length,
+      AnimationNodeAnimation._bindings.method_get_timeline_length,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -241,7 +242,7 @@ export class AnimationNodeAnimation extends AnimationRootNode{
   }
   set_stretch_time_scale(_stretch_time_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_stretch_time_scale,
+      AnimationNodeAnimation._bindings.method_set_stretch_time_scale,
       this._owner,
       _stretch_time_scale
     );
@@ -249,7 +250,7 @@ export class AnimationNodeAnimation extends AnimationRootNode{
   }
   is_stretching_time_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_stretching_time_scale,
+      AnimationNodeAnimation._bindings.method_is_stretching_time_scale,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -258,7 +259,7 @@ export class AnimationNodeAnimation extends AnimationRootNode{
   }
   set_start_offset(_start_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_start_offset,
+      AnimationNodeAnimation._bindings.method_set_start_offset,
       this._owner,
       _start_offset
     );
@@ -266,7 +267,7 @@ export class AnimationNodeAnimation extends AnimationRootNode{
   }
   get_start_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_start_offset,
+      AnimationNodeAnimation._bindings.method_get_start_offset,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -275,7 +276,7 @@ export class AnimationNodeAnimation extends AnimationRootNode{
   }
   set_loop_mode(_loop_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_loop_mode,
+      AnimationNodeAnimation._bindings.method_set_loop_mode,
       this._owner,
       _loop_mode
     );
@@ -283,7 +284,7 @@ export class AnimationNodeAnimation extends AnimationRootNode{
   }
   get_loop_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_loop_mode,
+      AnimationNodeAnimation._bindings.method_get_loop_mode,
       this._owner,
 			Variant.INT,
       

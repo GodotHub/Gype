@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { VBoxContainer } from '@js_godot/classes/v_box_container'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -50,9 +50,10 @@ export class ScriptEditorBase extends VBoxContainer{
       );
     }
   }
+  
   get_base_editor() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_base_editor,
+      ScriptEditorBase._bindings.method_get_base_editor,
       this._owner,
 			Variant.INT,
       
@@ -61,7 +62,7 @@ export class ScriptEditorBase extends VBoxContainer{
   }
   add_syntax_highlighter(_highlighter) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_syntax_highlighter,
+      ScriptEditorBase._bindings.method_add_syntax_highlighter,
       this._owner,
       _highlighter
     );

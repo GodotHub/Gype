@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { VisualShaderNode } from '@js_godot/classes/visual_shader_node'
 import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { VisualShaderNode } from '@js_godot/classes/visual_shader_node'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -50,9 +50,10 @@ export class VisualShaderNodeParticleEmitter extends VisualShaderNode{
       );
     }
   }
+  
   set_mode_2d(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mode_2d,
+      VisualShaderNodeParticleEmitter._bindings.method_set_mode_2d,
       this._owner,
       _enabled
     );
@@ -60,7 +61,7 @@ export class VisualShaderNodeParticleEmitter extends VisualShaderNode{
   }
   is_mode_2d() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_mode_2d,
+      VisualShaderNodeParticleEmitter._bindings.method_is_mode_2d,
       this._owner,
 			Variant.Type.BOOL,
       

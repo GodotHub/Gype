@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { Texture3D } from '@js_godot/classes/texture3d'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -180,9 +180,10 @@ export class NoiseTexture3D extends Texture3D{
       );
     }
   }
+  
   set_width(_width) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_width,
+      NoiseTexture3D._bindings.method_set_width,
       this._owner,
       _width
     );
@@ -190,7 +191,7 @@ export class NoiseTexture3D extends Texture3D{
   }
   set_height(_height) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_height,
+      NoiseTexture3D._bindings.method_set_height,
       this._owner,
       _height
     );
@@ -198,7 +199,7 @@ export class NoiseTexture3D extends Texture3D{
   }
   set_depth(_depth) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_depth,
+      NoiseTexture3D._bindings.method_set_depth,
       this._owner,
       _depth
     );
@@ -206,7 +207,7 @@ export class NoiseTexture3D extends Texture3D{
   }
   set_invert(_invert) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_invert,
+      NoiseTexture3D._bindings.method_set_invert,
       this._owner,
       _invert
     );
@@ -214,7 +215,7 @@ export class NoiseTexture3D extends Texture3D{
   }
   get_invert() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_invert,
+      NoiseTexture3D._bindings.method_get_invert,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -223,7 +224,7 @@ export class NoiseTexture3D extends Texture3D{
   }
   set_seamless(_seamless) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_seamless,
+      NoiseTexture3D._bindings.method_set_seamless,
       this._owner,
       _seamless
     );
@@ -231,7 +232,7 @@ export class NoiseTexture3D extends Texture3D{
   }
   get_seamless() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_seamless,
+      NoiseTexture3D._bindings.method_get_seamless,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -240,7 +241,7 @@ export class NoiseTexture3D extends Texture3D{
   }
   set_seamless_blend_skirt(_seamless_blend_skirt) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_seamless_blend_skirt,
+      NoiseTexture3D._bindings.method_set_seamless_blend_skirt,
       this._owner,
       _seamless_blend_skirt
     );
@@ -248,7 +249,7 @@ export class NoiseTexture3D extends Texture3D{
   }
   get_seamless_blend_skirt() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_seamless_blend_skirt,
+      NoiseTexture3D._bindings.method_get_seamless_blend_skirt,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -257,7 +258,7 @@ export class NoiseTexture3D extends Texture3D{
   }
   set_normalize(_normalize) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_normalize,
+      NoiseTexture3D._bindings.method_set_normalize,
       this._owner,
       _normalize
     );
@@ -265,7 +266,7 @@ export class NoiseTexture3D extends Texture3D{
   }
   is_normalized() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_normalized,
+      NoiseTexture3D._bindings.method_is_normalized,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -274,7 +275,7 @@ export class NoiseTexture3D extends Texture3D{
   }
   set_color_ramp(_gradient) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_color_ramp,
+      NoiseTexture3D._bindings.method_set_color_ramp,
       this._owner,
       _gradient
     );
@@ -282,7 +283,7 @@ export class NoiseTexture3D extends Texture3D{
   }
   get_color_ramp() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_color_ramp,
+      NoiseTexture3D._bindings.method_get_color_ramp,
       this._owner,
 			Variant.INT,
       
@@ -291,7 +292,7 @@ export class NoiseTexture3D extends Texture3D{
   }
   set_noise(_noise) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_noise,
+      NoiseTexture3D._bindings.method_set_noise,
       this._owner,
       _noise
     );
@@ -299,7 +300,7 @@ export class NoiseTexture3D extends Texture3D{
   }
   get_noise() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_noise,
+      NoiseTexture3D._bindings.method_get_noise,
       this._owner,
 			Variant.INT,
       

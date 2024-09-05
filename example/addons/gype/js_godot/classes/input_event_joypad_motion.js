@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { InputEvent } from '@js_godot/classes/input_event'
 import { StringName } from '@js_godot/variant/string_name'
+import { InputEvent } from '@js_godot/classes/input_event'
 import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
@@ -70,9 +70,10 @@ export class InputEventJoypadMotion extends InputEvent{
       );
     }
   }
+  
   set_axis(_axis) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_axis,
+      InputEventJoypadMotion._bindings.method_set_axis,
       this._owner,
       _axis
     );
@@ -80,7 +81,7 @@ export class InputEventJoypadMotion extends InputEvent{
   }
   get_axis() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_axis,
+      InputEventJoypadMotion._bindings.method_get_axis,
       this._owner,
 			Variant.INT,
       
@@ -89,7 +90,7 @@ export class InputEventJoypadMotion extends InputEvent{
   }
   set_axis_value(_axis_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_axis_value,
+      InputEventJoypadMotion._bindings.method_set_axis_value,
       this._owner,
       _axis_value
     );
@@ -97,7 +98,7 @@ export class InputEventJoypadMotion extends InputEvent{
   }
   get_axis_value() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_axis_value,
+      InputEventJoypadMotion._bindings.method_get_axis_value,
       this._owner,
 			Variant.Type.FLOAT,
       

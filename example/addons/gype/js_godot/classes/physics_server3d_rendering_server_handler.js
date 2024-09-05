@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { GodotObject } from '@js_godot/classes/godot_object'
-import { Vector3 } from '@js_godot/variant/vector3'
 import { StringName } from '@js_godot/variant/string_name'
 import { AABB } from '@js_godot/variant/aabb'
+import { GodotObject } from '@js_godot/classes/godot_object'
+import { Variant } from '@js_godot/variant/variant'
+import { Vector3 } from '@js_godot/variant/vector3'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -62,6 +62,7 @@ export class PhysicsServer3DRenderingServerHandler extends GodotObject{
       );
     }
   }
+  
   _set_vertex(_vertex_id, _vertex) {
   }
   _set_normal(_vertex_id, _normal) {
@@ -70,7 +71,7 @@ export class PhysicsServer3DRenderingServerHandler extends GodotObject{
   }
   set_vertex(_vertex_id, _vertex) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vertex,
+      PhysicsServer3DRenderingServerHandler._bindings.method_set_vertex,
       this._owner,
       _vertex_id, _vertex
     );
@@ -78,7 +79,7 @@ export class PhysicsServer3DRenderingServerHandler extends GodotObject{
   }
   set_normal(_vertex_id, _normal) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_normal,
+      PhysicsServer3DRenderingServerHandler._bindings.method_set_normal,
       this._owner,
       _vertex_id, _normal
     );
@@ -86,7 +87,7 @@ export class PhysicsServer3DRenderingServerHandler extends GodotObject{
   }
   set_aabb(_aabb) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_aabb,
+      PhysicsServer3DRenderingServerHandler._bindings.method_set_aabb,
       this._owner,
       _aabb
     );

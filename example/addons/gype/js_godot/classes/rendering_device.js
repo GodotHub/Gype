@@ -1,16 +1,16 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { PackedInt64Array } from '@js_godot/variant/packed_int64_array'
-import { GodotObject } from '@js_godot/classes/godot_object'
-import { Vector3 } from '@js_godot/variant/vector3'
 import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
+import { RID } from '@js_godot/variant/rid'
 import { Vector2i } from '@js_godot/variant/vector2i'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
-import { Color } from '@js_godot/variant/color'
-import { RID } from '@js_godot/variant/rid'
+import { GodotObject } from '@js_godot/classes/godot_object'
 import { PackedColorArray } from '@js_godot/variant/packed_color_array'
+import { Color } from '@js_godot/variant/color'
+import { GDString } from '@js_godot/variant/gd_string'
 import { Rect2 } from '@js_godot/variant/rect2'
+import { Variant } from '@js_godot/variant/variant'
+import { PackedInt64Array } from '@js_godot/variant/packed_int64_array'
+import { Vector3 } from '@js_godot/variant/vector3'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -1019,9 +1019,10 @@ export class RenderingDevice extends GodotObject{
       );
     }
   }
+  
   texture_create(_format, _view, _data) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_texture_create,
+      RenderingDevice._bindings.method_texture_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1031,7 +1032,7 @@ export class RenderingDevice extends GodotObject{
   }
   texture_create_shared(_view, _with_texture) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_texture_create_shared,
+      RenderingDevice._bindings.method_texture_create_shared,
       this._owner,
 			Variant.Type.RID,
     
@@ -1041,7 +1042,7 @@ export class RenderingDevice extends GodotObject{
   }
   texture_create_shared_from_slice(_view, _with_texture, _layer, _mipmap, _mipmaps, _slice_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_texture_create_shared_from_slice,
+      RenderingDevice._bindings.method_texture_create_shared_from_slice,
       this._owner,
 			Variant.Type.RID,
     
@@ -1051,7 +1052,7 @@ export class RenderingDevice extends GodotObject{
   }
   texture_create_from_extension(_type, _format, _samples, _usage_flags, _image, _width, _height, _depth, _layers) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_texture_create_from_extension,
+      RenderingDevice._bindings.method_texture_create_from_extension,
       this._owner,
 			Variant.Type.RID,
     
@@ -1061,7 +1062,7 @@ export class RenderingDevice extends GodotObject{
   }
   texture_update(_texture, _layer, _data) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_texture_update,
+      RenderingDevice._bindings.method_texture_update,
       this._owner,
 			Variant.INT,
       _texture, _layer, _data
@@ -1070,7 +1071,7 @@ export class RenderingDevice extends GodotObject{
   }
   texture_get_data(_texture, _layer) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_texture_get_data,
+      RenderingDevice._bindings.method_texture_get_data,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -1080,7 +1081,7 @@ export class RenderingDevice extends GodotObject{
   }
   texture_is_format_supported_for_usage(_format, _usage_flags) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_texture_is_format_supported_for_usage,
+      RenderingDevice._bindings.method_texture_is_format_supported_for_usage,
       this._owner,
 			Variant.Type.BOOL,
       _format, _usage_flags
@@ -1089,7 +1090,7 @@ export class RenderingDevice extends GodotObject{
   }
   texture_is_shared(_texture) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_texture_is_shared,
+      RenderingDevice._bindings.method_texture_is_shared,
       this._owner,
 			Variant.Type.BOOL,
       _texture
@@ -1098,7 +1099,7 @@ export class RenderingDevice extends GodotObject{
   }
   texture_is_valid(_texture) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_texture_is_valid,
+      RenderingDevice._bindings.method_texture_is_valid,
       this._owner,
 			Variant.Type.BOOL,
       _texture
@@ -1107,7 +1108,7 @@ export class RenderingDevice extends GodotObject{
   }
   texture_copy(_from_texture, _to_texture, _from_pos, _to_pos, _size, _src_mipmap, _dst_mipmap, _src_layer, _dst_layer) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_texture_copy,
+      RenderingDevice._bindings.method_texture_copy,
       this._owner,
 			Variant.INT,
       _from_texture, _to_texture, _from_pos, _to_pos, _size, _src_mipmap, _dst_mipmap, _src_layer, _dst_layer
@@ -1116,7 +1117,7 @@ export class RenderingDevice extends GodotObject{
   }
   texture_clear(_texture, _color, _base_mipmap, _mipmap_count, _base_layer, _layer_count) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_texture_clear,
+      RenderingDevice._bindings.method_texture_clear,
       this._owner,
 			Variant.INT,
       _texture, _color, _base_mipmap, _mipmap_count, _base_layer, _layer_count
@@ -1125,7 +1126,7 @@ export class RenderingDevice extends GodotObject{
   }
   texture_resolve_multisample(_from_texture, _to_texture) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_texture_resolve_multisample,
+      RenderingDevice._bindings.method_texture_resolve_multisample,
       this._owner,
 			Variant.INT,
       _from_texture, _to_texture
@@ -1134,7 +1135,7 @@ export class RenderingDevice extends GodotObject{
   }
   texture_get_format(_texture) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_texture_get_format,
+      RenderingDevice._bindings.method_texture_get_format,
       this._owner,
 			Variant.INT,
       _texture
@@ -1143,7 +1144,7 @@ export class RenderingDevice extends GodotObject{
   }
   texture_get_native_handle(_texture) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_texture_get_native_handle,
+      RenderingDevice._bindings.method_texture_get_native_handle,
       this._owner,
 			Variant.Type.INT,
       _texture
@@ -1152,7 +1153,7 @@ export class RenderingDevice extends GodotObject{
   }
   framebuffer_format_create(_attachments, _view_count) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_framebuffer_format_create,
+      RenderingDevice._bindings.method_framebuffer_format_create,
       this._owner,
 			Variant.Type.INT,
       _attachments, _view_count
@@ -1161,7 +1162,7 @@ export class RenderingDevice extends GodotObject{
   }
   framebuffer_format_create_multipass(_attachments, _passes, _view_count) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_framebuffer_format_create_multipass,
+      RenderingDevice._bindings.method_framebuffer_format_create_multipass,
       this._owner,
 			Variant.Type.INT,
       _attachments, _passes, _view_count
@@ -1170,7 +1171,7 @@ export class RenderingDevice extends GodotObject{
   }
   framebuffer_format_create_empty(_samples) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_framebuffer_format_create_empty,
+      RenderingDevice._bindings.method_framebuffer_format_create_empty,
       this._owner,
 			Variant.Type.INT,
       _samples
@@ -1179,7 +1180,7 @@ export class RenderingDevice extends GodotObject{
   }
   framebuffer_format_get_texture_samples(_format, _render_pass) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_framebuffer_format_get_texture_samples,
+      RenderingDevice._bindings.method_framebuffer_format_get_texture_samples,
       this._owner,
 			Variant.INT,
       _format, _render_pass
@@ -1188,7 +1189,7 @@ export class RenderingDevice extends GodotObject{
   }
   framebuffer_create(_textures, _validate_with_format, _view_count) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_framebuffer_create,
+      RenderingDevice._bindings.method_framebuffer_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1198,7 +1199,7 @@ export class RenderingDevice extends GodotObject{
   }
   framebuffer_create_multipass(_textures, _passes, _validate_with_format, _view_count) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_framebuffer_create_multipass,
+      RenderingDevice._bindings.method_framebuffer_create_multipass,
       this._owner,
 			Variant.Type.RID,
     
@@ -1208,7 +1209,7 @@ export class RenderingDevice extends GodotObject{
   }
   framebuffer_create_empty(_size, _samples, _validate_with_format) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_framebuffer_create_empty,
+      RenderingDevice._bindings.method_framebuffer_create_empty,
       this._owner,
 			Variant.Type.RID,
     
@@ -1218,7 +1219,7 @@ export class RenderingDevice extends GodotObject{
   }
   framebuffer_get_format(_framebuffer) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_framebuffer_get_format,
+      RenderingDevice._bindings.method_framebuffer_get_format,
       this._owner,
 			Variant.Type.INT,
       _framebuffer
@@ -1227,7 +1228,7 @@ export class RenderingDevice extends GodotObject{
   }
   framebuffer_is_valid(_framebuffer) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_framebuffer_is_valid,
+      RenderingDevice._bindings.method_framebuffer_is_valid,
       this._owner,
 			Variant.Type.BOOL,
       _framebuffer
@@ -1236,7 +1237,7 @@ export class RenderingDevice extends GodotObject{
   }
   sampler_create(_state) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_sampler_create,
+      RenderingDevice._bindings.method_sampler_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1246,7 +1247,7 @@ export class RenderingDevice extends GodotObject{
   }
   sampler_is_format_supported_for_filter(_format, _sampler_filter) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_sampler_is_format_supported_for_filter,
+      RenderingDevice._bindings.method_sampler_is_format_supported_for_filter,
       this._owner,
 			Variant.Type.BOOL,
       _format, _sampler_filter
@@ -1255,7 +1256,7 @@ export class RenderingDevice extends GodotObject{
   }
   vertex_buffer_create(_size_bytes, _data, _use_as_storage) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_vertex_buffer_create,
+      RenderingDevice._bindings.method_vertex_buffer_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1265,7 +1266,7 @@ export class RenderingDevice extends GodotObject{
   }
   vertex_format_create(_vertex_descriptions) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_vertex_format_create,
+      RenderingDevice._bindings.method_vertex_format_create,
       this._owner,
 			Variant.Type.INT,
       _vertex_descriptions
@@ -1274,7 +1275,7 @@ export class RenderingDevice extends GodotObject{
   }
   vertex_array_create(_vertex_count, _vertex_format, _src_buffers, _offsets) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_vertex_array_create,
+      RenderingDevice._bindings.method_vertex_array_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1284,7 +1285,7 @@ export class RenderingDevice extends GodotObject{
   }
   index_buffer_create(_size_indices, _format, _data, _use_restart_indices) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_index_buffer_create,
+      RenderingDevice._bindings.method_index_buffer_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1294,7 +1295,7 @@ export class RenderingDevice extends GodotObject{
   }
   index_array_create(_index_buffer, _index_offset, _index_count) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_index_array_create,
+      RenderingDevice._bindings.method_index_array_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1304,7 +1305,7 @@ export class RenderingDevice extends GodotObject{
   }
   shader_compile_spirv_from_source(_shader_source, _allow_cache) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shader_compile_spirv_from_source,
+      RenderingDevice._bindings.method_shader_compile_spirv_from_source,
       this._owner,
 			Variant.INT,
       _shader_source, _allow_cache
@@ -1313,7 +1314,7 @@ export class RenderingDevice extends GodotObject{
   }
   shader_compile_binary_from_spirv(_spirv_data, _name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shader_compile_binary_from_spirv,
+      RenderingDevice._bindings.method_shader_compile_binary_from_spirv,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -1323,7 +1324,7 @@ export class RenderingDevice extends GodotObject{
   }
   shader_create_from_spirv(_spirv_data, _name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shader_create_from_spirv,
+      RenderingDevice._bindings.method_shader_create_from_spirv,
       this._owner,
 			Variant.Type.RID,
     
@@ -1333,7 +1334,7 @@ export class RenderingDevice extends GodotObject{
   }
   shader_create_from_bytecode(_binary_data, _placeholder_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shader_create_from_bytecode,
+      RenderingDevice._bindings.method_shader_create_from_bytecode,
       this._owner,
 			Variant.Type.RID,
     
@@ -1343,7 +1344,7 @@ export class RenderingDevice extends GodotObject{
   }
   shader_create_placeholder() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shader_create_placeholder,
+      RenderingDevice._bindings.method_shader_create_placeholder,
       this._owner,
 			Variant.Type.RID,
     
@@ -1353,7 +1354,7 @@ export class RenderingDevice extends GodotObject{
   }
   shader_get_vertex_input_attribute_mask(_shader) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shader_get_vertex_input_attribute_mask,
+      RenderingDevice._bindings.method_shader_get_vertex_input_attribute_mask,
       this._owner,
 			Variant.Type.INT,
       _shader
@@ -1362,7 +1363,7 @@ export class RenderingDevice extends GodotObject{
   }
   uniform_buffer_create(_size_bytes, _data) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_uniform_buffer_create,
+      RenderingDevice._bindings.method_uniform_buffer_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1372,7 +1373,7 @@ export class RenderingDevice extends GodotObject{
   }
   storage_buffer_create(_size_bytes, _data, _usage) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_storage_buffer_create,
+      RenderingDevice._bindings.method_storage_buffer_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1382,7 +1383,7 @@ export class RenderingDevice extends GodotObject{
   }
   texture_buffer_create(_size_bytes, _format, _data) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_texture_buffer_create,
+      RenderingDevice._bindings.method_texture_buffer_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1392,7 +1393,7 @@ export class RenderingDevice extends GodotObject{
   }
   uniform_set_create(_uniforms, _shader, _shader_set) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_uniform_set_create,
+      RenderingDevice._bindings.method_uniform_set_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1402,7 +1403,7 @@ export class RenderingDevice extends GodotObject{
   }
   uniform_set_is_valid(_uniform_set) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_uniform_set_is_valid,
+      RenderingDevice._bindings.method_uniform_set_is_valid,
       this._owner,
 			Variant.Type.BOOL,
       _uniform_set
@@ -1411,7 +1412,7 @@ export class RenderingDevice extends GodotObject{
   }
   buffer_copy(_src_buffer, _dst_buffer, _src_offset, _dst_offset, _size) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_buffer_copy,
+      RenderingDevice._bindings.method_buffer_copy,
       this._owner,
 			Variant.INT,
       _src_buffer, _dst_buffer, _src_offset, _dst_offset, _size
@@ -1420,7 +1421,7 @@ export class RenderingDevice extends GodotObject{
   }
   buffer_update(_buffer, _offset, _size_bytes, _data) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_buffer_update,
+      RenderingDevice._bindings.method_buffer_update,
       this._owner,
 			Variant.INT,
       _buffer, _offset, _size_bytes, _data
@@ -1429,7 +1430,7 @@ export class RenderingDevice extends GodotObject{
   }
   buffer_clear(_buffer, _offset, _size_bytes) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_buffer_clear,
+      RenderingDevice._bindings.method_buffer_clear,
       this._owner,
 			Variant.INT,
       _buffer, _offset, _size_bytes
@@ -1438,7 +1439,7 @@ export class RenderingDevice extends GodotObject{
   }
   buffer_get_data(_buffer, _offset_bytes, _size_bytes) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_buffer_get_data,
+      RenderingDevice._bindings.method_buffer_get_data,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -1448,7 +1449,7 @@ export class RenderingDevice extends GodotObject{
   }
   render_pipeline_create(_shader, _framebuffer_format, _vertex_format, _primitive, _rasterization_state, _multisample_state, _stencil_state, _color_blend_state, _dynamic_state_flags, _for_render_pass, _specialization_constants) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_render_pipeline_create,
+      RenderingDevice._bindings.method_render_pipeline_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1458,7 +1459,7 @@ export class RenderingDevice extends GodotObject{
   }
   render_pipeline_is_valid(_render_pipeline) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_render_pipeline_is_valid,
+      RenderingDevice._bindings.method_render_pipeline_is_valid,
       this._owner,
 			Variant.Type.BOOL,
       _render_pipeline
@@ -1467,7 +1468,7 @@ export class RenderingDevice extends GodotObject{
   }
   compute_pipeline_create(_shader, _specialization_constants) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_compute_pipeline_create,
+      RenderingDevice._bindings.method_compute_pipeline_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1477,7 +1478,7 @@ export class RenderingDevice extends GodotObject{
   }
   compute_pipeline_is_valid(_compute_pipeline) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_compute_pipeline_is_valid,
+      RenderingDevice._bindings.method_compute_pipeline_is_valid,
       this._owner,
 			Variant.Type.BOOL,
       _compute_pipeline
@@ -1486,7 +1487,7 @@ export class RenderingDevice extends GodotObject{
   }
   screen_get_width(_screen) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_screen_get_width,
+      RenderingDevice._bindings.method_screen_get_width,
       this._owner,
 			Variant.Type.INT,
       _screen
@@ -1495,7 +1496,7 @@ export class RenderingDevice extends GodotObject{
   }
   screen_get_height(_screen) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_screen_get_height,
+      RenderingDevice._bindings.method_screen_get_height,
       this._owner,
 			Variant.Type.INT,
       _screen
@@ -1504,7 +1505,7 @@ export class RenderingDevice extends GodotObject{
   }
   screen_get_framebuffer_format(_screen) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_screen_get_framebuffer_format,
+      RenderingDevice._bindings.method_screen_get_framebuffer_format,
       this._owner,
 			Variant.Type.INT,
       _screen
@@ -1513,7 +1514,7 @@ export class RenderingDevice extends GodotObject{
   }
   draw_list_begin_for_screen(_screen, _clear_color) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_draw_list_begin_for_screen,
+      RenderingDevice._bindings.method_draw_list_begin_for_screen,
       this._owner,
 			Variant.Type.INT,
       _screen, _clear_color
@@ -1522,7 +1523,7 @@ export class RenderingDevice extends GodotObject{
   }
   draw_list_begin(_framebuffer, _initial_color_action, _final_color_action, _initial_depth_action, _final_depth_action, _clear_color_values, _clear_depth, _clear_stencil, _region) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_draw_list_begin,
+      RenderingDevice._bindings.method_draw_list_begin,
       this._owner,
 			Variant.Type.INT,
       _framebuffer, _initial_color_action, _final_color_action, _initial_depth_action, _final_depth_action, _clear_color_values, _clear_depth, _clear_stencil, _region
@@ -1531,7 +1532,7 @@ export class RenderingDevice extends GodotObject{
   }
   draw_list_begin_split(_framebuffer, _splits, _initial_color_action, _final_color_action, _initial_depth_action, _final_depth_action, _clear_color_values, _clear_depth, _clear_stencil, _region, _storage_textures) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_draw_list_begin_split,
+      RenderingDevice._bindings.method_draw_list_begin_split,
       this._owner,
 			Variant.Type.PACKED_INT64_ARRAY,
     
@@ -1541,7 +1542,7 @@ export class RenderingDevice extends GodotObject{
   }
   draw_list_set_blend_constants(_draw_list, _color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_draw_list_set_blend_constants,
+      RenderingDevice._bindings.method_draw_list_set_blend_constants,
       this._owner,
       _draw_list, _color
     );
@@ -1549,7 +1550,7 @@ export class RenderingDevice extends GodotObject{
   }
   draw_list_bind_render_pipeline(_draw_list, _render_pipeline) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_draw_list_bind_render_pipeline,
+      RenderingDevice._bindings.method_draw_list_bind_render_pipeline,
       this._owner,
       _draw_list, _render_pipeline
     );
@@ -1557,7 +1558,7 @@ export class RenderingDevice extends GodotObject{
   }
   draw_list_bind_uniform_set(_draw_list, _uniform_set, _set_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_draw_list_bind_uniform_set,
+      RenderingDevice._bindings.method_draw_list_bind_uniform_set,
       this._owner,
       _draw_list, _uniform_set, _set_index
     );
@@ -1565,7 +1566,7 @@ export class RenderingDevice extends GodotObject{
   }
   draw_list_bind_vertex_array(_draw_list, _vertex_array) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_draw_list_bind_vertex_array,
+      RenderingDevice._bindings.method_draw_list_bind_vertex_array,
       this._owner,
       _draw_list, _vertex_array
     );
@@ -1573,7 +1574,7 @@ export class RenderingDevice extends GodotObject{
   }
   draw_list_bind_index_array(_draw_list, _index_array) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_draw_list_bind_index_array,
+      RenderingDevice._bindings.method_draw_list_bind_index_array,
       this._owner,
       _draw_list, _index_array
     );
@@ -1581,7 +1582,7 @@ export class RenderingDevice extends GodotObject{
   }
   draw_list_set_push_constant(_draw_list, _buffer, _size_bytes) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_draw_list_set_push_constant,
+      RenderingDevice._bindings.method_draw_list_set_push_constant,
       this._owner,
       _draw_list, _buffer, _size_bytes
     );
@@ -1589,7 +1590,7 @@ export class RenderingDevice extends GodotObject{
   }
   draw_list_draw(_draw_list, _use_indices, _instances, _procedural_vertex_count) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_draw_list_draw,
+      RenderingDevice._bindings.method_draw_list_draw,
       this._owner,
       _draw_list, _use_indices, _instances, _procedural_vertex_count
     );
@@ -1597,7 +1598,7 @@ export class RenderingDevice extends GodotObject{
   }
   draw_list_enable_scissor(_draw_list, _rect) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_draw_list_enable_scissor,
+      RenderingDevice._bindings.method_draw_list_enable_scissor,
       this._owner,
       _draw_list, _rect
     );
@@ -1605,7 +1606,7 @@ export class RenderingDevice extends GodotObject{
   }
   draw_list_disable_scissor(_draw_list) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_draw_list_disable_scissor,
+      RenderingDevice._bindings.method_draw_list_disable_scissor,
       this._owner,
       _draw_list
     );
@@ -1613,7 +1614,7 @@ export class RenderingDevice extends GodotObject{
   }
   draw_list_switch_to_next_pass() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_draw_list_switch_to_next_pass,
+      RenderingDevice._bindings.method_draw_list_switch_to_next_pass,
       this._owner,
 			Variant.Type.INT,
       
@@ -1622,7 +1623,7 @@ export class RenderingDevice extends GodotObject{
   }
   draw_list_switch_to_next_pass_split(_splits) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_draw_list_switch_to_next_pass_split,
+      RenderingDevice._bindings.method_draw_list_switch_to_next_pass_split,
       this._owner,
 			Variant.Type.PACKED_INT64_ARRAY,
     
@@ -1632,7 +1633,7 @@ export class RenderingDevice extends GodotObject{
   }
   draw_list_end() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_draw_list_end,
+      RenderingDevice._bindings.method_draw_list_end,
       this._owner,
       
     );
@@ -1640,7 +1641,7 @@ export class RenderingDevice extends GodotObject{
   }
   compute_list_begin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_compute_list_begin,
+      RenderingDevice._bindings.method_compute_list_begin,
       this._owner,
 			Variant.Type.INT,
       
@@ -1649,7 +1650,7 @@ export class RenderingDevice extends GodotObject{
   }
   compute_list_bind_compute_pipeline(_compute_list, _compute_pipeline) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_compute_list_bind_compute_pipeline,
+      RenderingDevice._bindings.method_compute_list_bind_compute_pipeline,
       this._owner,
       _compute_list, _compute_pipeline
     );
@@ -1657,7 +1658,7 @@ export class RenderingDevice extends GodotObject{
   }
   compute_list_set_push_constant(_compute_list, _buffer, _size_bytes) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_compute_list_set_push_constant,
+      RenderingDevice._bindings.method_compute_list_set_push_constant,
       this._owner,
       _compute_list, _buffer, _size_bytes
     );
@@ -1665,7 +1666,7 @@ export class RenderingDevice extends GodotObject{
   }
   compute_list_bind_uniform_set(_compute_list, _uniform_set, _set_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_compute_list_bind_uniform_set,
+      RenderingDevice._bindings.method_compute_list_bind_uniform_set,
       this._owner,
       _compute_list, _uniform_set, _set_index
     );
@@ -1673,7 +1674,7 @@ export class RenderingDevice extends GodotObject{
   }
   compute_list_dispatch(_compute_list, _x_groups, _y_groups, _z_groups) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_compute_list_dispatch,
+      RenderingDevice._bindings.method_compute_list_dispatch,
       this._owner,
       _compute_list, _x_groups, _y_groups, _z_groups
     );
@@ -1681,7 +1682,7 @@ export class RenderingDevice extends GodotObject{
   }
   compute_list_dispatch_indirect(_compute_list, _buffer, _offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_compute_list_dispatch_indirect,
+      RenderingDevice._bindings.method_compute_list_dispatch_indirect,
       this._owner,
       _compute_list, _buffer, _offset
     );
@@ -1689,7 +1690,7 @@ export class RenderingDevice extends GodotObject{
   }
   compute_list_add_barrier(_compute_list) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_compute_list_add_barrier,
+      RenderingDevice._bindings.method_compute_list_add_barrier,
       this._owner,
       _compute_list
     );
@@ -1697,7 +1698,7 @@ export class RenderingDevice extends GodotObject{
   }
   compute_list_end() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_compute_list_end,
+      RenderingDevice._bindings.method_compute_list_end,
       this._owner,
       
     );
@@ -1705,7 +1706,7 @@ export class RenderingDevice extends GodotObject{
   }
   free_rid(_rid) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_free_rid,
+      RenderingDevice._bindings.method_free_rid,
       this._owner,
       _rid
     );
@@ -1713,7 +1714,7 @@ export class RenderingDevice extends GodotObject{
   }
   capture_timestamp(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_capture_timestamp,
+      RenderingDevice._bindings.method_capture_timestamp,
       this._owner,
       _name
     );
@@ -1721,7 +1722,7 @@ export class RenderingDevice extends GodotObject{
   }
   get_captured_timestamps_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_captured_timestamps_count,
+      RenderingDevice._bindings.method_get_captured_timestamps_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -1730,7 +1731,7 @@ export class RenderingDevice extends GodotObject{
   }
   get_captured_timestamps_frame() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_captured_timestamps_frame,
+      RenderingDevice._bindings.method_get_captured_timestamps_frame,
       this._owner,
 			Variant.Type.INT,
       
@@ -1739,7 +1740,7 @@ export class RenderingDevice extends GodotObject{
   }
   get_captured_timestamp_gpu_time(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_captured_timestamp_gpu_time,
+      RenderingDevice._bindings.method_get_captured_timestamp_gpu_time,
       this._owner,
 			Variant.Type.INT,
       _index
@@ -1748,7 +1749,7 @@ export class RenderingDevice extends GodotObject{
   }
   get_captured_timestamp_cpu_time(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_captured_timestamp_cpu_time,
+      RenderingDevice._bindings.method_get_captured_timestamp_cpu_time,
       this._owner,
 			Variant.Type.INT,
       _index
@@ -1757,7 +1758,7 @@ export class RenderingDevice extends GodotObject{
   }
   get_captured_timestamp_name(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_captured_timestamp_name,
+      RenderingDevice._bindings.method_get_captured_timestamp_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1767,7 +1768,7 @@ export class RenderingDevice extends GodotObject{
   }
   limit_get(_limit) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_limit_get,
+      RenderingDevice._bindings.method_limit_get,
       this._owner,
 			Variant.Type.INT,
       _limit
@@ -1776,7 +1777,7 @@ export class RenderingDevice extends GodotObject{
   }
   get_frame_delay() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_frame_delay,
+      RenderingDevice._bindings.method_get_frame_delay,
       this._owner,
 			Variant.Type.INT,
       
@@ -1785,7 +1786,7 @@ export class RenderingDevice extends GodotObject{
   }
   submit() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_submit,
+      RenderingDevice._bindings.method_submit,
       this._owner,
       
     );
@@ -1793,7 +1794,7 @@ export class RenderingDevice extends GodotObject{
   }
   sync() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_sync,
+      RenderingDevice._bindings.method_sync,
       this._owner,
       
     );
@@ -1801,7 +1802,7 @@ export class RenderingDevice extends GodotObject{
   }
   barrier(_from, _to) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_barrier,
+      RenderingDevice._bindings.method_barrier,
       this._owner,
       _from, _to
     );
@@ -1809,7 +1810,7 @@ export class RenderingDevice extends GodotObject{
   }
   full_barrier() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_full_barrier,
+      RenderingDevice._bindings.method_full_barrier,
       this._owner,
       
     );
@@ -1817,7 +1818,7 @@ export class RenderingDevice extends GodotObject{
   }
   create_local_device() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_local_device,
+      RenderingDevice._bindings.method_create_local_device,
       this._owner,
 			Variant.INT,
       
@@ -1826,7 +1827,7 @@ export class RenderingDevice extends GodotObject{
   }
   set_resource_name(_id, _name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_resource_name,
+      RenderingDevice._bindings.method_set_resource_name,
       this._owner,
       _id, _name
     );
@@ -1834,7 +1835,7 @@ export class RenderingDevice extends GodotObject{
   }
   draw_command_begin_label(_name, _color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_draw_command_begin_label,
+      RenderingDevice._bindings.method_draw_command_begin_label,
       this._owner,
       _name, _color
     );
@@ -1842,7 +1843,7 @@ export class RenderingDevice extends GodotObject{
   }
   draw_command_insert_label(_name, _color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_draw_command_insert_label,
+      RenderingDevice._bindings.method_draw_command_insert_label,
       this._owner,
       _name, _color
     );
@@ -1850,7 +1851,7 @@ export class RenderingDevice extends GodotObject{
   }
   draw_command_end_label() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_draw_command_end_label,
+      RenderingDevice._bindings.method_draw_command_end_label,
       this._owner,
       
     );
@@ -1858,7 +1859,7 @@ export class RenderingDevice extends GodotObject{
   }
   get_device_vendor_name() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_device_vendor_name,
+      RenderingDevice._bindings.method_get_device_vendor_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1868,7 +1869,7 @@ export class RenderingDevice extends GodotObject{
   }
   get_device_name() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_device_name,
+      RenderingDevice._bindings.method_get_device_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1878,7 +1879,7 @@ export class RenderingDevice extends GodotObject{
   }
   get_device_pipeline_cache_uuid() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_device_pipeline_cache_uuid,
+      RenderingDevice._bindings.method_get_device_pipeline_cache_uuid,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1888,7 +1889,7 @@ export class RenderingDevice extends GodotObject{
   }
   get_memory_usage(_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_memory_usage,
+      RenderingDevice._bindings.method_get_memory_usage,
       this._owner,
 			Variant.Type.INT,
       _type
@@ -1897,7 +1898,7 @@ export class RenderingDevice extends GodotObject{
   }
   get_driver_resource(_resource, _rid, _index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_driver_resource,
+      RenderingDevice._bindings.method_get_driver_resource,
       this._owner,
 			Variant.Type.INT,
       _resource, _rid, _index

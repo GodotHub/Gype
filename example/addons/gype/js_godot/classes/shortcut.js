@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { GDString } from '@js_godot/variant/gd_string'
 import { GDArray } from '@js_godot/variant/gd_array'
 import {
@@ -82,9 +82,10 @@ export class Shortcut extends Resource{
       );
     }
   }
+  
   set_events(_events) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_events,
+      Shortcut._bindings.method_set_events,
       this._owner,
       _events
     );
@@ -92,7 +93,7 @@ export class Shortcut extends Resource{
   }
   get_events() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_events,
+      Shortcut._bindings.method_get_events,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -102,7 +103,7 @@ export class Shortcut extends Resource{
   }
   has_valid_event() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_valid_event,
+      Shortcut._bindings.method_has_valid_event,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -111,7 +112,7 @@ export class Shortcut extends Resource{
   }
   matches_event(_event) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_matches_event,
+      Shortcut._bindings.method_matches_event,
       this._owner,
 			Variant.Type.BOOL,
       _event
@@ -120,7 +121,7 @@ export class Shortcut extends Resource{
   }
   get_as_text() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_as_text,
+      Shortcut._bindings.method_get_as_text,
       this._owner,
 			Variant.Type.STRING,
     

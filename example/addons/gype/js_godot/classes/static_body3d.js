@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
-import { Vector3 } from '@js_godot/variant/vector3'
 import { PhysicsBody3D } from '@js_godot/classes/physics_body3d'
+import { Vector3 } from '@js_godot/variant/vector3'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -91,9 +91,10 @@ export class StaticBody3D extends PhysicsBody3D{
       );
     }
   }
+  
   set_constant_linear_velocity(_vel) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_constant_linear_velocity,
+      StaticBody3D._bindings.method_set_constant_linear_velocity,
       this._owner,
       _vel
     );
@@ -101,7 +102,7 @@ export class StaticBody3D extends PhysicsBody3D{
   }
   set_constant_angular_velocity(_vel) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_constant_angular_velocity,
+      StaticBody3D._bindings.method_set_constant_angular_velocity,
       this._owner,
       _vel
     );
@@ -109,7 +110,7 @@ export class StaticBody3D extends PhysicsBody3D{
   }
   get_constant_linear_velocity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_constant_linear_velocity,
+      StaticBody3D._bindings.method_get_constant_linear_velocity,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -119,7 +120,7 @@ export class StaticBody3D extends PhysicsBody3D{
   }
   get_constant_angular_velocity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_constant_angular_velocity,
+      StaticBody3D._bindings.method_get_constant_angular_velocity,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -129,7 +130,7 @@ export class StaticBody3D extends PhysicsBody3D{
   }
   set_physics_material_override(_physics_material_override) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_physics_material_override,
+      StaticBody3D._bindings.method_set_physics_material_override,
       this._owner,
       _physics_material_override
     );
@@ -137,7 +138,7 @@ export class StaticBody3D extends PhysicsBody3D{
   }
   get_physics_material_override() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_physics_material_override,
+      StaticBody3D._bindings.method_get_physics_material_override,
       this._owner,
 			Variant.INT,
       

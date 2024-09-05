@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { Texture2D } from '@js_godot/classes/texture2d'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -170,9 +170,10 @@ export class AnimatedTexture extends Texture2D{
       );
     }
   }
+  
   set_frames(_frames) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_frames,
+      AnimatedTexture._bindings.method_set_frames,
       this._owner,
       _frames
     );
@@ -180,7 +181,7 @@ export class AnimatedTexture extends Texture2D{
   }
   get_frames() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_frames,
+      AnimatedTexture._bindings.method_get_frames,
       this._owner,
 			Variant.Type.INT,
       
@@ -189,7 +190,7 @@ export class AnimatedTexture extends Texture2D{
   }
   set_current_frame(_frame) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_current_frame,
+      AnimatedTexture._bindings.method_set_current_frame,
       this._owner,
       _frame
     );
@@ -197,7 +198,7 @@ export class AnimatedTexture extends Texture2D{
   }
   get_current_frame() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_current_frame,
+      AnimatedTexture._bindings.method_get_current_frame,
       this._owner,
 			Variant.Type.INT,
       
@@ -206,7 +207,7 @@ export class AnimatedTexture extends Texture2D{
   }
   set_pause(_pause) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_pause,
+      AnimatedTexture._bindings.method_set_pause,
       this._owner,
       _pause
     );
@@ -214,7 +215,7 @@ export class AnimatedTexture extends Texture2D{
   }
   get_pause() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_pause,
+      AnimatedTexture._bindings.method_get_pause,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -223,7 +224,7 @@ export class AnimatedTexture extends Texture2D{
   }
   set_one_shot(_one_shot) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_one_shot,
+      AnimatedTexture._bindings.method_set_one_shot,
       this._owner,
       _one_shot
     );
@@ -231,7 +232,7 @@ export class AnimatedTexture extends Texture2D{
   }
   get_one_shot() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_one_shot,
+      AnimatedTexture._bindings.method_get_one_shot,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -240,7 +241,7 @@ export class AnimatedTexture extends Texture2D{
   }
   set_speed_scale(_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_speed_scale,
+      AnimatedTexture._bindings.method_set_speed_scale,
       this._owner,
       _scale
     );
@@ -248,7 +249,7 @@ export class AnimatedTexture extends Texture2D{
   }
   get_speed_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_speed_scale,
+      AnimatedTexture._bindings.method_get_speed_scale,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -257,7 +258,7 @@ export class AnimatedTexture extends Texture2D{
   }
   set_frame_texture(_frame, _texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_frame_texture,
+      AnimatedTexture._bindings.method_set_frame_texture,
       this._owner,
       _frame, _texture
     );
@@ -265,7 +266,7 @@ export class AnimatedTexture extends Texture2D{
   }
   get_frame_texture(_frame) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_frame_texture,
+      AnimatedTexture._bindings.method_get_frame_texture,
       this._owner,
 			Variant.INT,
       _frame
@@ -274,7 +275,7 @@ export class AnimatedTexture extends Texture2D{
   }
   set_frame_duration(_frame, _duration) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_frame_duration,
+      AnimatedTexture._bindings.method_set_frame_duration,
       this._owner,
       _frame, _duration
     );
@@ -282,7 +283,7 @@ export class AnimatedTexture extends Texture2D{
   }
   get_frame_duration(_frame) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_frame_duration,
+      AnimatedTexture._bindings.method_get_frame_duration,
       this._owner,
 			Variant.Type.FLOAT,
       _frame

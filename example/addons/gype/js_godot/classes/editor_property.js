@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
+import { Container } from '@js_godot/classes/container'
 import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { GDString } from '@js_godot/variant/gd_string'
-import { Container } from '@js_godot/classes/container'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -231,13 +231,14 @@ export class EditorProperty extends Container{
       );
     }
   }
+  
   _update_property() {
   }
   _set_read_only(_read_only) {
   }
   set_label(_text) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_label,
+      EditorProperty._bindings.method_set_label,
       this._owner,
       _text
     );
@@ -245,7 +246,7 @@ export class EditorProperty extends Container{
   }
   get_label() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_label,
+      EditorProperty._bindings.method_get_label,
       this._owner,
 			Variant.Type.STRING,
     
@@ -255,7 +256,7 @@ export class EditorProperty extends Container{
   }
   set_read_only(_read_only) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_read_only,
+      EditorProperty._bindings.method_set_read_only,
       this._owner,
       _read_only
     );
@@ -263,7 +264,7 @@ export class EditorProperty extends Container{
   }
   is_read_only() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_read_only,
+      EditorProperty._bindings.method_is_read_only,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -272,7 +273,7 @@ export class EditorProperty extends Container{
   }
   set_checkable(_checkable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_checkable,
+      EditorProperty._bindings.method_set_checkable,
       this._owner,
       _checkable
     );
@@ -280,7 +281,7 @@ export class EditorProperty extends Container{
   }
   is_checkable() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_checkable,
+      EditorProperty._bindings.method_is_checkable,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -289,7 +290,7 @@ export class EditorProperty extends Container{
   }
   set_checked(_checked) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_checked,
+      EditorProperty._bindings.method_set_checked,
       this._owner,
       _checked
     );
@@ -297,7 +298,7 @@ export class EditorProperty extends Container{
   }
   is_checked() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_checked,
+      EditorProperty._bindings.method_is_checked,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -306,7 +307,7 @@ export class EditorProperty extends Container{
   }
   set_draw_warning(_draw_warning) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_draw_warning,
+      EditorProperty._bindings.method_set_draw_warning,
       this._owner,
       _draw_warning
     );
@@ -314,7 +315,7 @@ export class EditorProperty extends Container{
   }
   is_draw_warning() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_draw_warning,
+      EditorProperty._bindings.method_is_draw_warning,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -323,7 +324,7 @@ export class EditorProperty extends Container{
   }
   set_keying(_keying) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_keying,
+      EditorProperty._bindings.method_set_keying,
       this._owner,
       _keying
     );
@@ -331,7 +332,7 @@ export class EditorProperty extends Container{
   }
   is_keying() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_keying,
+      EditorProperty._bindings.method_is_keying,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -340,7 +341,7 @@ export class EditorProperty extends Container{
   }
   set_deletable(_deletable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_deletable,
+      EditorProperty._bindings.method_set_deletable,
       this._owner,
       _deletable
     );
@@ -348,7 +349,7 @@ export class EditorProperty extends Container{
   }
   is_deletable() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_deletable,
+      EditorProperty._bindings.method_is_deletable,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -357,7 +358,7 @@ export class EditorProperty extends Container{
   }
   get_edited_property() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_edited_property,
+      EditorProperty._bindings.method_get_edited_property,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -367,7 +368,7 @@ export class EditorProperty extends Container{
   }
   get_edited_object() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_edited_object,
+      EditorProperty._bindings.method_get_edited_object,
       this._owner,
 			Variant.INT,
       
@@ -376,7 +377,7 @@ export class EditorProperty extends Container{
   }
   update_property() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_update_property,
+      EditorProperty._bindings.method_update_property,
       this._owner,
       
     );
@@ -384,7 +385,7 @@ export class EditorProperty extends Container{
   }
   add_focusable(_control) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_focusable,
+      EditorProperty._bindings.method_add_focusable,
       this._owner,
       _control
     );
@@ -392,7 +393,7 @@ export class EditorProperty extends Container{
   }
   set_bottom_editor(_editor) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bottom_editor,
+      EditorProperty._bindings.method_set_bottom_editor,
       this._owner,
       _editor
     );
@@ -400,7 +401,7 @@ export class EditorProperty extends Container{
   }
   emit_changed(_property, _value, _field, _changing) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_emit_changed,
+      EditorProperty._bindings.method_emit_changed,
       this._owner,
       _property, _value, _field, _changing
     );

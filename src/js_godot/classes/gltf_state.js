@@ -1,11 +1,11 @@
 import * as internal from '__internal__';
-import { Dictionary } from '@js_godot/variant/dictionary'
-import { Variant } from '@js_godot/variant/variant'
+import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
 import { StringName } from '@js_godot/variant/string_name'
+import { Dictionary } from '@js_godot/variant/dictionary'
 import { GDString } from '@js_godot/variant/gd_string'
-import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -714,9 +714,10 @@ export class GLTFState extends Resource{
       );
     }
   }
+  
   add_used_extension(_extension_name, _required) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_used_extension,
+      GLTFState._bindings.method_add_used_extension,
       this._owner,
       _extension_name, _required
     );
@@ -724,7 +725,7 @@ export class GLTFState extends Resource{
   }
   append_data_to_buffers(_data, _deduplication) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_append_data_to_buffers,
+      GLTFState._bindings.method_append_data_to_buffers,
       this._owner,
 			Variant.Type.INT,
       _data, _deduplication
@@ -733,7 +734,7 @@ export class GLTFState extends Resource{
   }
   get_json() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_json,
+      GLTFState._bindings.method_get_json,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -743,7 +744,7 @@ export class GLTFState extends Resource{
   }
   set_json(_json) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_json,
+      GLTFState._bindings.method_set_json,
       this._owner,
       _json
     );
@@ -751,7 +752,7 @@ export class GLTFState extends Resource{
   }
   get_major_version() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_major_version,
+      GLTFState._bindings.method_get_major_version,
       this._owner,
 			Variant.Type.INT,
       
@@ -760,7 +761,7 @@ export class GLTFState extends Resource{
   }
   set_major_version(_major_version) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_major_version,
+      GLTFState._bindings.method_set_major_version,
       this._owner,
       _major_version
     );
@@ -768,7 +769,7 @@ export class GLTFState extends Resource{
   }
   get_minor_version() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_minor_version,
+      GLTFState._bindings.method_get_minor_version,
       this._owner,
 			Variant.Type.INT,
       
@@ -777,7 +778,7 @@ export class GLTFState extends Resource{
   }
   set_minor_version(_minor_version) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_minor_version,
+      GLTFState._bindings.method_set_minor_version,
       this._owner,
       _minor_version
     );
@@ -785,7 +786,7 @@ export class GLTFState extends Resource{
   }
   get_copyright() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_copyright,
+      GLTFState._bindings.method_get_copyright,
       this._owner,
 			Variant.Type.STRING,
     
@@ -795,7 +796,7 @@ export class GLTFState extends Resource{
   }
   set_copyright(_copyright) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_copyright,
+      GLTFState._bindings.method_set_copyright,
       this._owner,
       _copyright
     );
@@ -803,7 +804,7 @@ export class GLTFState extends Resource{
   }
   get_glb_data() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_glb_data,
+      GLTFState._bindings.method_get_glb_data,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -813,7 +814,7 @@ export class GLTFState extends Resource{
   }
   set_glb_data(_glb_data) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_glb_data,
+      GLTFState._bindings.method_set_glb_data,
       this._owner,
       _glb_data
     );
@@ -821,7 +822,7 @@ export class GLTFState extends Resource{
   }
   get_use_named_skin_binds() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_use_named_skin_binds,
+      GLTFState._bindings.method_get_use_named_skin_binds,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -830,7 +831,7 @@ export class GLTFState extends Resource{
   }
   set_use_named_skin_binds(_use_named_skin_binds) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_named_skin_binds,
+      GLTFState._bindings.method_set_use_named_skin_binds,
       this._owner,
       _use_named_skin_binds
     );
@@ -838,7 +839,7 @@ export class GLTFState extends Resource{
   }
   get_nodes() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_nodes,
+      GLTFState._bindings.method_get_nodes,
       this._owner,
 			Variant.INT,
       
@@ -847,7 +848,7 @@ export class GLTFState extends Resource{
   }
   set_nodes(_nodes) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_nodes,
+      GLTFState._bindings.method_set_nodes,
       this._owner,
       _nodes
     );
@@ -855,7 +856,7 @@ export class GLTFState extends Resource{
   }
   get_buffers() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_buffers,
+      GLTFState._bindings.method_get_buffers,
       this._owner,
 			Variant.INT,
       
@@ -864,7 +865,7 @@ export class GLTFState extends Resource{
   }
   set_buffers(_buffers) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_buffers,
+      GLTFState._bindings.method_set_buffers,
       this._owner,
       _buffers
     );
@@ -872,7 +873,7 @@ export class GLTFState extends Resource{
   }
   get_buffer_views() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_buffer_views,
+      GLTFState._bindings.method_get_buffer_views,
       this._owner,
 			Variant.INT,
       
@@ -881,7 +882,7 @@ export class GLTFState extends Resource{
   }
   set_buffer_views(_buffer_views) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_buffer_views,
+      GLTFState._bindings.method_set_buffer_views,
       this._owner,
       _buffer_views
     );
@@ -889,7 +890,7 @@ export class GLTFState extends Resource{
   }
   get_accessors() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_accessors,
+      GLTFState._bindings.method_get_accessors,
       this._owner,
 			Variant.INT,
       
@@ -898,7 +899,7 @@ export class GLTFState extends Resource{
   }
   set_accessors(_accessors) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_accessors,
+      GLTFState._bindings.method_set_accessors,
       this._owner,
       _accessors
     );
@@ -906,7 +907,7 @@ export class GLTFState extends Resource{
   }
   get_meshes() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_meshes,
+      GLTFState._bindings.method_get_meshes,
       this._owner,
 			Variant.INT,
       
@@ -915,7 +916,7 @@ export class GLTFState extends Resource{
   }
   set_meshes(_meshes) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_meshes,
+      GLTFState._bindings.method_set_meshes,
       this._owner,
       _meshes
     );
@@ -923,7 +924,7 @@ export class GLTFState extends Resource{
   }
   get_animation_players_count(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_animation_players_count,
+      GLTFState._bindings.method_get_animation_players_count,
       this._owner,
 			Variant.Type.INT,
       _idx
@@ -932,7 +933,7 @@ export class GLTFState extends Resource{
   }
   get_animation_player(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_animation_player,
+      GLTFState._bindings.method_get_animation_player,
       this._owner,
 			Variant.INT,
       _idx
@@ -941,7 +942,7 @@ export class GLTFState extends Resource{
   }
   get_materials() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_materials,
+      GLTFState._bindings.method_get_materials,
       this._owner,
 			Variant.INT,
       
@@ -950,7 +951,7 @@ export class GLTFState extends Resource{
   }
   set_materials(_materials) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_materials,
+      GLTFState._bindings.method_set_materials,
       this._owner,
       _materials
     );
@@ -958,7 +959,7 @@ export class GLTFState extends Resource{
   }
   get_scene_name() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_scene_name,
+      GLTFState._bindings.method_get_scene_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -968,7 +969,7 @@ export class GLTFState extends Resource{
   }
   set_scene_name(_scene_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_scene_name,
+      GLTFState._bindings.method_set_scene_name,
       this._owner,
       _scene_name
     );
@@ -976,7 +977,7 @@ export class GLTFState extends Resource{
   }
   get_base_path() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_base_path,
+      GLTFState._bindings.method_get_base_path,
       this._owner,
 			Variant.Type.STRING,
     
@@ -986,7 +987,7 @@ export class GLTFState extends Resource{
   }
   set_base_path(_base_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_base_path,
+      GLTFState._bindings.method_set_base_path,
       this._owner,
       _base_path
     );
@@ -994,7 +995,7 @@ export class GLTFState extends Resource{
   }
   get_filename() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_filename,
+      GLTFState._bindings.method_get_filename,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1004,7 +1005,7 @@ export class GLTFState extends Resource{
   }
   set_filename(_filename) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_filename,
+      GLTFState._bindings.method_set_filename,
       this._owner,
       _filename
     );
@@ -1012,7 +1013,7 @@ export class GLTFState extends Resource{
   }
   get_root_nodes() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_root_nodes,
+      GLTFState._bindings.method_get_root_nodes,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -1022,7 +1023,7 @@ export class GLTFState extends Resource{
   }
   set_root_nodes(_root_nodes) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_root_nodes,
+      GLTFState._bindings.method_set_root_nodes,
       this._owner,
       _root_nodes
     );
@@ -1030,7 +1031,7 @@ export class GLTFState extends Resource{
   }
   get_textures() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_textures,
+      GLTFState._bindings.method_get_textures,
       this._owner,
 			Variant.INT,
       
@@ -1039,7 +1040,7 @@ export class GLTFState extends Resource{
   }
   set_textures(_textures) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_textures,
+      GLTFState._bindings.method_set_textures,
       this._owner,
       _textures
     );
@@ -1047,7 +1048,7 @@ export class GLTFState extends Resource{
   }
   get_texture_samplers() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_samplers,
+      GLTFState._bindings.method_get_texture_samplers,
       this._owner,
 			Variant.INT,
       
@@ -1056,7 +1057,7 @@ export class GLTFState extends Resource{
   }
   set_texture_samplers(_texture_samplers) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture_samplers,
+      GLTFState._bindings.method_set_texture_samplers,
       this._owner,
       _texture_samplers
     );
@@ -1064,7 +1065,7 @@ export class GLTFState extends Resource{
   }
   get_images() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_images,
+      GLTFState._bindings.method_get_images,
       this._owner,
 			Variant.INT,
       
@@ -1073,7 +1074,7 @@ export class GLTFState extends Resource{
   }
   set_images(_images) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_images,
+      GLTFState._bindings.method_set_images,
       this._owner,
       _images
     );
@@ -1081,7 +1082,7 @@ export class GLTFState extends Resource{
   }
   get_skins() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_skins,
+      GLTFState._bindings.method_get_skins,
       this._owner,
 			Variant.INT,
       
@@ -1090,7 +1091,7 @@ export class GLTFState extends Resource{
   }
   set_skins(_skins) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_skins,
+      GLTFState._bindings.method_set_skins,
       this._owner,
       _skins
     );
@@ -1098,7 +1099,7 @@ export class GLTFState extends Resource{
   }
   get_cameras() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cameras,
+      GLTFState._bindings.method_get_cameras,
       this._owner,
 			Variant.INT,
       
@@ -1107,7 +1108,7 @@ export class GLTFState extends Resource{
   }
   set_cameras(_cameras) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cameras,
+      GLTFState._bindings.method_set_cameras,
       this._owner,
       _cameras
     );
@@ -1115,7 +1116,7 @@ export class GLTFState extends Resource{
   }
   get_lights() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_lights,
+      GLTFState._bindings.method_get_lights,
       this._owner,
 			Variant.INT,
       
@@ -1124,7 +1125,7 @@ export class GLTFState extends Resource{
   }
   set_lights(_lights) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_lights,
+      GLTFState._bindings.method_set_lights,
       this._owner,
       _lights
     );
@@ -1132,7 +1133,7 @@ export class GLTFState extends Resource{
   }
   get_unique_names() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_unique_names,
+      GLTFState._bindings.method_get_unique_names,
       this._owner,
 			Variant.INT,
       
@@ -1141,7 +1142,7 @@ export class GLTFState extends Resource{
   }
   set_unique_names(_unique_names) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_unique_names,
+      GLTFState._bindings.method_set_unique_names,
       this._owner,
       _unique_names
     );
@@ -1149,7 +1150,7 @@ export class GLTFState extends Resource{
   }
   get_unique_animation_names() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_unique_animation_names,
+      GLTFState._bindings.method_get_unique_animation_names,
       this._owner,
 			Variant.INT,
       
@@ -1158,7 +1159,7 @@ export class GLTFState extends Resource{
   }
   set_unique_animation_names(_unique_animation_names) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_unique_animation_names,
+      GLTFState._bindings.method_set_unique_animation_names,
       this._owner,
       _unique_animation_names
     );
@@ -1166,7 +1167,7 @@ export class GLTFState extends Resource{
   }
   get_skeletons() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_skeletons,
+      GLTFState._bindings.method_get_skeletons,
       this._owner,
 			Variant.INT,
       
@@ -1175,7 +1176,7 @@ export class GLTFState extends Resource{
   }
   set_skeletons(_skeletons) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_skeletons,
+      GLTFState._bindings.method_set_skeletons,
       this._owner,
       _skeletons
     );
@@ -1183,7 +1184,7 @@ export class GLTFState extends Resource{
   }
   get_create_animations() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_create_animations,
+      GLTFState._bindings.method_get_create_animations,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1192,7 +1193,7 @@ export class GLTFState extends Resource{
   }
   set_create_animations(_create_animations) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_create_animations,
+      GLTFState._bindings.method_set_create_animations,
       this._owner,
       _create_animations
     );
@@ -1200,7 +1201,7 @@ export class GLTFState extends Resource{
   }
   get_import_as_skeleton_bones() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_import_as_skeleton_bones,
+      GLTFState._bindings.method_get_import_as_skeleton_bones,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1209,7 +1210,7 @@ export class GLTFState extends Resource{
   }
   set_import_as_skeleton_bones(_import_as_skeleton_bones) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_import_as_skeleton_bones,
+      GLTFState._bindings.method_set_import_as_skeleton_bones,
       this._owner,
       _import_as_skeleton_bones
     );
@@ -1217,7 +1218,7 @@ export class GLTFState extends Resource{
   }
   get_animations() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_animations,
+      GLTFState._bindings.method_get_animations,
       this._owner,
 			Variant.INT,
       
@@ -1226,7 +1227,7 @@ export class GLTFState extends Resource{
   }
   set_animations(_animations) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_animations,
+      GLTFState._bindings.method_set_animations,
       this._owner,
       _animations
     );
@@ -1234,7 +1235,7 @@ export class GLTFState extends Resource{
   }
   get_scene_node(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_scene_node,
+      GLTFState._bindings.method_get_scene_node,
       this._owner,
 			Variant.INT,
       _idx
@@ -1243,7 +1244,7 @@ export class GLTFState extends Resource{
   }
   get_node_index(_scene_node) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_node_index,
+      GLTFState._bindings.method_get_node_index,
       this._owner,
 			Variant.Type.INT,
       _scene_node
@@ -1252,7 +1253,7 @@ export class GLTFState extends Resource{
   }
   get_additional_data(_extension_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_additional_data,
+      GLTFState._bindings.method_get_additional_data,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -1262,7 +1263,7 @@ export class GLTFState extends Resource{
   }
   set_additional_data(_extension_name, _additional_data) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_additional_data,
+      GLTFState._bindings.method_set_additional_data,
       this._owner,
       _extension_name, _additional_data
     );
@@ -1270,7 +1271,7 @@ export class GLTFState extends Resource{
   }
   get_handle_binary_image() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_handle_binary_image,
+      GLTFState._bindings.method_get_handle_binary_image,
       this._owner,
 			Variant.Type.INT,
       
@@ -1279,7 +1280,7 @@ export class GLTFState extends Resource{
   }
   set_handle_binary_image(_method) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_handle_binary_image,
+      GLTFState._bindings.method_set_handle_binary_image,
       this._owner,
       _method
     );
@@ -1287,7 +1288,7 @@ export class GLTFState extends Resource{
   }
   set_bake_fps(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bake_fps,
+      GLTFState._bindings.method_set_bake_fps,
       this._owner,
       _value
     );
@@ -1295,7 +1296,7 @@ export class GLTFState extends Resource{
   }
   get_bake_fps() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bake_fps,
+      GLTFState._bindings.method_get_bake_fps,
       this._owner,
 			Variant.Type.FLOAT,
       

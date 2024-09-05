@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
 import { Dictionary } from '@js_godot/variant/dictionary'
-import { Transform3D } from '@js_godot/variant/transform3d'
-import { GodotObject } from '@js_godot/classes/godot_object'
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { GodotObject } from '@js_godot/classes/godot_object'
+import { Transform3D } from '@js_godot/variant/transform3d'
 import { GDString } from '@js_godot/variant/gd_string'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -232,9 +232,10 @@ class _MethodBindings {
       );
     }
   }
+  
   get_world_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_world_scale,
+      _XRServer._bindings.method_get_world_scale,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -243,7 +244,7 @@ class _MethodBindings {
   }
   set_world_scale(_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_world_scale,
+      _XRServer._bindings.method_set_world_scale,
       this._owner,
       _scale
     );
@@ -251,7 +252,7 @@ class _MethodBindings {
   }
   get_world_origin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_world_origin,
+      _XRServer._bindings.method_get_world_origin,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -261,7 +262,7 @@ class _MethodBindings {
   }
   set_world_origin(_world_origin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_world_origin,
+      _XRServer._bindings.method_set_world_origin,
       this._owner,
       _world_origin
     );
@@ -269,7 +270,7 @@ class _MethodBindings {
   }
   get_reference_frame() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_reference_frame,
+      _XRServer._bindings.method_get_reference_frame,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -279,7 +280,7 @@ class _MethodBindings {
   }
   clear_reference_frame() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_reference_frame,
+      _XRServer._bindings.method_clear_reference_frame,
       this._owner,
       
     );
@@ -287,7 +288,7 @@ class _MethodBindings {
   }
   center_on_hmd(_rotation_mode, _keep_height) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_center_on_hmd,
+      _XRServer._bindings.method_center_on_hmd,
       this._owner,
       _rotation_mode, _keep_height
     );
@@ -295,7 +296,7 @@ class _MethodBindings {
   }
   get_hmd_transform() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_hmd_transform,
+      _XRServer._bindings.method_get_hmd_transform,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -305,7 +306,7 @@ class _MethodBindings {
   }
   add_interface(_interface) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_interface,
+      _XRServer._bindings.method_add_interface,
       this._owner,
       _interface
     );
@@ -313,7 +314,7 @@ class _MethodBindings {
   }
   get_interface_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_interface_count,
+      _XRServer._bindings.method_get_interface_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -322,7 +323,7 @@ class _MethodBindings {
   }
   remove_interface(_interface) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_interface,
+      _XRServer._bindings.method_remove_interface,
       this._owner,
       _interface
     );
@@ -330,7 +331,7 @@ class _MethodBindings {
   }
   get_interface(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_interface,
+      _XRServer._bindings.method_get_interface,
       this._owner,
 			Variant.INT,
       _idx
@@ -339,7 +340,7 @@ class _MethodBindings {
   }
   get_interfaces() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_interfaces,
+      _XRServer._bindings.method_get_interfaces,
       this._owner,
 			Variant.INT,
       
@@ -348,7 +349,7 @@ class _MethodBindings {
   }
   find_interface(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_find_interface,
+      _XRServer._bindings.method_find_interface,
       this._owner,
 			Variant.INT,
       _name
@@ -357,7 +358,7 @@ class _MethodBindings {
   }
   add_tracker(_tracker) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_tracker,
+      _XRServer._bindings.method_add_tracker,
       this._owner,
       _tracker
     );
@@ -365,7 +366,7 @@ class _MethodBindings {
   }
   remove_tracker(_tracker) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_tracker,
+      _XRServer._bindings.method_remove_tracker,
       this._owner,
       _tracker
     );
@@ -373,7 +374,7 @@ class _MethodBindings {
   }
   get_trackers(_tracker_types) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_trackers,
+      _XRServer._bindings.method_get_trackers,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -383,7 +384,7 @@ class _MethodBindings {
   }
   get_tracker(_tracker_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tracker,
+      _XRServer._bindings.method_get_tracker,
       this._owner,
 			Variant.INT,
       _tracker_name
@@ -392,7 +393,7 @@ class _MethodBindings {
   }
   get_primary_interface() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_primary_interface,
+      _XRServer._bindings.method_get_primary_interface,
       this._owner,
 			Variant.INT,
       
@@ -401,7 +402,7 @@ class _MethodBindings {
   }
   set_primary_interface(_interface) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_primary_interface,
+      _XRServer._bindings.method_set_primary_interface,
       this._owner,
       _interface
     );
@@ -449,4 +450,17 @@ set primary_interface (new_value) {
     this._init_bindings();
   }
 }
-export const XRServer = new _XRServer();
+export const XRServer = (function () {
+  let _instance;
+  function create_instance() {
+    return new _XRServer();
+  }
+  return {
+    instance: function () {
+      if (!_instance) {
+        _instance = create_instance();
+      }
+      return _instance;
+    },
+  };
+})();

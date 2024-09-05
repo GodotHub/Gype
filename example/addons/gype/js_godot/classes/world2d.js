@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
+import { StringName } from '@js_godot/variant/string_name'
 import { RID } from '@js_godot/variant/rid'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -71,9 +71,10 @@ export class World2D extends Resource{
       );
     }
   }
+  
   get_canvas() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_canvas,
+      World2D._bindings.method_get_canvas,
       this._owner,
 			Variant.Type.RID,
     
@@ -83,7 +84,7 @@ export class World2D extends Resource{
   }
   get_space() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_space,
+      World2D._bindings.method_get_space,
       this._owner,
 			Variant.Type.RID,
     
@@ -93,7 +94,7 @@ export class World2D extends Resource{
   }
   get_navigation_map() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_navigation_map,
+      World2D._bindings.method_get_navigation_map,
       this._owner,
 			Variant.Type.RID,
     
@@ -103,7 +104,7 @@ export class World2D extends Resource{
   }
   get_direct_space_state() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_direct_space_state,
+      World2D._bindings.method_get_direct_space_state,
       this._owner,
 			Variant.INT,
       

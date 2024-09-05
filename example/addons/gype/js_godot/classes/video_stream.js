@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
@@ -51,11 +51,12 @@ export class VideoStream extends Resource{
       );
     }
   }
+  
   _instantiate_playback() {
   }
   set_file(_file) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_file,
+      VideoStream._bindings.method_set_file,
       this._owner,
       _file
     );
@@ -63,7 +64,7 @@ export class VideoStream extends Resource{
   }
   get_file() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_file,
+      VideoStream._bindings.method_get_file,
       this._owner,
 			Variant.Type.STRING,
     

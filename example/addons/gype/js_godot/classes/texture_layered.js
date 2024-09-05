@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { Texture } from '@js_godot/classes/texture'
 import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { Texture } from '@js_godot/classes/texture'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -100,6 +100,7 @@ export class TextureLayered extends Texture{
       );
     }
   }
+  
   _get_format() {
   }
   _get_layered_type() {
@@ -116,7 +117,7 @@ export class TextureLayered extends Texture{
   }
   get_format() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_format,
+      TextureLayered._bindings.method_get_format,
       this._owner,
 			Variant.INT,
       
@@ -125,7 +126,7 @@ export class TextureLayered extends Texture{
   }
   get_layered_type() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_layered_type,
+      TextureLayered._bindings.method_get_layered_type,
       this._owner,
 			Variant.INT,
       
@@ -134,7 +135,7 @@ export class TextureLayered extends Texture{
   }
   get_width() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_width,
+      TextureLayered._bindings.method_get_width,
       this._owner,
 			Variant.Type.INT,
       
@@ -143,7 +144,7 @@ export class TextureLayered extends Texture{
   }
   get_height() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_height,
+      TextureLayered._bindings.method_get_height,
       this._owner,
 			Variant.Type.INT,
       
@@ -152,7 +153,7 @@ export class TextureLayered extends Texture{
   }
   get_layers() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_layers,
+      TextureLayered._bindings.method_get_layers,
       this._owner,
 			Variant.Type.INT,
       
@@ -161,7 +162,7 @@ export class TextureLayered extends Texture{
   }
   has_mipmaps() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_mipmaps,
+      TextureLayered._bindings.method_has_mipmaps,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -170,7 +171,7 @@ export class TextureLayered extends Texture{
   }
   get_layer_data(_layer) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_layer_data,
+      TextureLayered._bindings.method_get_layer_data,
       this._owner,
 			Variant.INT,
       _layer

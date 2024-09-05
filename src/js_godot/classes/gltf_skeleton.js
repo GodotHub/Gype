@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Dictionary } from '@js_godot/variant/dictionary'
-import { Variant } from '@js_godot/variant/variant'
-import { Resource } from '@js_godot/classes/resource'
-import { StringName } from '@js_godot/variant/string_name'
 import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
+import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { Dictionary } from '@js_godot/variant/dictionary'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -142,9 +142,10 @@ export class GLTFSkeleton extends Resource{
       );
     }
   }
+  
   get_joints() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_joints,
+      GLTFSkeleton._bindings.method_get_joints,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -154,7 +155,7 @@ export class GLTFSkeleton extends Resource{
   }
   set_joints(_joints) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_joints,
+      GLTFSkeleton._bindings.method_set_joints,
       this._owner,
       _joints
     );
@@ -162,7 +163,7 @@ export class GLTFSkeleton extends Resource{
   }
   get_roots() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_roots,
+      GLTFSkeleton._bindings.method_get_roots,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -172,7 +173,7 @@ export class GLTFSkeleton extends Resource{
   }
   set_roots(_roots) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_roots,
+      GLTFSkeleton._bindings.method_set_roots,
       this._owner,
       _roots
     );
@@ -180,7 +181,7 @@ export class GLTFSkeleton extends Resource{
   }
   get_godot_skeleton() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_godot_skeleton,
+      GLTFSkeleton._bindings.method_get_godot_skeleton,
       this._owner,
 			Variant.INT,
       
@@ -189,7 +190,7 @@ export class GLTFSkeleton extends Resource{
   }
   get_unique_names() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_unique_names,
+      GLTFSkeleton._bindings.method_get_unique_names,
       this._owner,
 			Variant.INT,
       
@@ -198,7 +199,7 @@ export class GLTFSkeleton extends Resource{
   }
   set_unique_names(_unique_names) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_unique_names,
+      GLTFSkeleton._bindings.method_set_unique_names,
       this._owner,
       _unique_names
     );
@@ -206,7 +207,7 @@ export class GLTFSkeleton extends Resource{
   }
   get_godot_bone_node() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_godot_bone_node,
+      GLTFSkeleton._bindings.method_get_godot_bone_node,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -216,7 +217,7 @@ export class GLTFSkeleton extends Resource{
   }
   set_godot_bone_node(_godot_bone_node) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_godot_bone_node,
+      GLTFSkeleton._bindings.method_set_godot_bone_node,
       this._owner,
       _godot_bone_node
     );
@@ -224,7 +225,7 @@ export class GLTFSkeleton extends Resource{
   }
   get_bone_attachment_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bone_attachment_count,
+      GLTFSkeleton._bindings.method_get_bone_attachment_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -233,7 +234,7 @@ export class GLTFSkeleton extends Resource{
   }
   get_bone_attachment(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bone_attachment,
+      GLTFSkeleton._bindings.method_get_bone_attachment,
       this._owner,
 			Variant.INT,
       _idx

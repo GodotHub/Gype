@@ -1,11 +1,11 @@
 import * as internal from '__internal__';
 import { Dictionary } from '@js_godot/variant/dictionary'
-import { Variant } from '@js_godot/variant/variant'
-import { Resource } from '@js_godot/classes/resource'
 import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
+import { Resource } from '@js_godot/classes/resource'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { GDString } from '@js_godot/variant/gd_string'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -34,6 +34,7 @@ export class GLTFDocumentExtension extends Resource{
     }
     this.#initialized = true;
   }
+  
   _import_preflight(_state, _extensions) {
   }
   _get_supported_extensions() {

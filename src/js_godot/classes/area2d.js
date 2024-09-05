@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { Vector2 } from '@js_godot/variant/vector2'
 import { CollisionObject2D } from '@js_godot/classes/collision_object2d'
 import {
@@ -391,9 +391,10 @@ export class Area2D extends CollisionObject2D{
       );
     }
   }
+  
   set_gravity_space_override_mode(_space_override_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_gravity_space_override_mode,
+      Area2D._bindings.method_set_gravity_space_override_mode,
       this._owner,
       _space_override_mode
     );
@@ -401,7 +402,7 @@ export class Area2D extends CollisionObject2D{
   }
   get_gravity_space_override_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_gravity_space_override_mode,
+      Area2D._bindings.method_get_gravity_space_override_mode,
       this._owner,
 			Variant.INT,
       
@@ -410,7 +411,7 @@ export class Area2D extends CollisionObject2D{
   }
   set_gravity_is_point(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_gravity_is_point,
+      Area2D._bindings.method_set_gravity_is_point,
       this._owner,
       _enable
     );
@@ -418,7 +419,7 @@ export class Area2D extends CollisionObject2D{
   }
   is_gravity_a_point() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_gravity_a_point,
+      Area2D._bindings.method_is_gravity_a_point,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -427,7 +428,7 @@ export class Area2D extends CollisionObject2D{
   }
   set_gravity_point_unit_distance(_distance_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_gravity_point_unit_distance,
+      Area2D._bindings.method_set_gravity_point_unit_distance,
       this._owner,
       _distance_scale
     );
@@ -435,7 +436,7 @@ export class Area2D extends CollisionObject2D{
   }
   get_gravity_point_unit_distance() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_gravity_point_unit_distance,
+      Area2D._bindings.method_get_gravity_point_unit_distance,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -444,7 +445,7 @@ export class Area2D extends CollisionObject2D{
   }
   set_gravity_point_center(_center) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_gravity_point_center,
+      Area2D._bindings.method_set_gravity_point_center,
       this._owner,
       _center
     );
@@ -452,7 +453,7 @@ export class Area2D extends CollisionObject2D{
   }
   get_gravity_point_center() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_gravity_point_center,
+      Area2D._bindings.method_get_gravity_point_center,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -462,7 +463,7 @@ export class Area2D extends CollisionObject2D{
   }
   set_gravity_direction(_direction) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_gravity_direction,
+      Area2D._bindings.method_set_gravity_direction,
       this._owner,
       _direction
     );
@@ -470,7 +471,7 @@ export class Area2D extends CollisionObject2D{
   }
   get_gravity_direction() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_gravity_direction,
+      Area2D._bindings.method_get_gravity_direction,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -480,7 +481,7 @@ export class Area2D extends CollisionObject2D{
   }
   set_gravity(_gravity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_gravity,
+      Area2D._bindings.method_set_gravity,
       this._owner,
       _gravity
     );
@@ -488,7 +489,7 @@ export class Area2D extends CollisionObject2D{
   }
   get_gravity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_gravity,
+      Area2D._bindings.method_get_gravity,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -497,7 +498,7 @@ export class Area2D extends CollisionObject2D{
   }
   set_linear_damp_space_override_mode(_space_override_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_linear_damp_space_override_mode,
+      Area2D._bindings.method_set_linear_damp_space_override_mode,
       this._owner,
       _space_override_mode
     );
@@ -505,7 +506,7 @@ export class Area2D extends CollisionObject2D{
   }
   get_linear_damp_space_override_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_linear_damp_space_override_mode,
+      Area2D._bindings.method_get_linear_damp_space_override_mode,
       this._owner,
 			Variant.INT,
       
@@ -514,7 +515,7 @@ export class Area2D extends CollisionObject2D{
   }
   set_angular_damp_space_override_mode(_space_override_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_angular_damp_space_override_mode,
+      Area2D._bindings.method_set_angular_damp_space_override_mode,
       this._owner,
       _space_override_mode
     );
@@ -522,7 +523,7 @@ export class Area2D extends CollisionObject2D{
   }
   get_angular_damp_space_override_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_angular_damp_space_override_mode,
+      Area2D._bindings.method_get_angular_damp_space_override_mode,
       this._owner,
 			Variant.INT,
       
@@ -531,7 +532,7 @@ export class Area2D extends CollisionObject2D{
   }
   set_linear_damp(_linear_damp) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_linear_damp,
+      Area2D._bindings.method_set_linear_damp,
       this._owner,
       _linear_damp
     );
@@ -539,7 +540,7 @@ export class Area2D extends CollisionObject2D{
   }
   get_linear_damp() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_linear_damp,
+      Area2D._bindings.method_get_linear_damp,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -548,7 +549,7 @@ export class Area2D extends CollisionObject2D{
   }
   set_angular_damp(_angular_damp) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_angular_damp,
+      Area2D._bindings.method_set_angular_damp,
       this._owner,
       _angular_damp
     );
@@ -556,7 +557,7 @@ export class Area2D extends CollisionObject2D{
   }
   get_angular_damp() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_angular_damp,
+      Area2D._bindings.method_get_angular_damp,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -565,7 +566,7 @@ export class Area2D extends CollisionObject2D{
   }
   set_priority(_priority) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_priority,
+      Area2D._bindings.method_set_priority,
       this._owner,
       _priority
     );
@@ -573,7 +574,7 @@ export class Area2D extends CollisionObject2D{
   }
   get_priority() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_priority,
+      Area2D._bindings.method_get_priority,
       this._owner,
 			Variant.Type.INT,
       
@@ -582,7 +583,7 @@ export class Area2D extends CollisionObject2D{
   }
   set_monitoring(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_monitoring,
+      Area2D._bindings.method_set_monitoring,
       this._owner,
       _enable
     );
@@ -590,7 +591,7 @@ export class Area2D extends CollisionObject2D{
   }
   is_monitoring() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_monitoring,
+      Area2D._bindings.method_is_monitoring,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -599,7 +600,7 @@ export class Area2D extends CollisionObject2D{
   }
   set_monitorable(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_monitorable,
+      Area2D._bindings.method_set_monitorable,
       this._owner,
       _enable
     );
@@ -607,7 +608,7 @@ export class Area2D extends CollisionObject2D{
   }
   is_monitorable() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_monitorable,
+      Area2D._bindings.method_is_monitorable,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -616,7 +617,7 @@ export class Area2D extends CollisionObject2D{
   }
   get_overlapping_bodies() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_overlapping_bodies,
+      Area2D._bindings.method_get_overlapping_bodies,
       this._owner,
 			Variant.INT,
       
@@ -625,7 +626,7 @@ export class Area2D extends CollisionObject2D{
   }
   get_overlapping_areas() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_overlapping_areas,
+      Area2D._bindings.method_get_overlapping_areas,
       this._owner,
 			Variant.INT,
       
@@ -634,7 +635,7 @@ export class Area2D extends CollisionObject2D{
   }
   has_overlapping_bodies() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_overlapping_bodies,
+      Area2D._bindings.method_has_overlapping_bodies,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -643,7 +644,7 @@ export class Area2D extends CollisionObject2D{
   }
   has_overlapping_areas() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_overlapping_areas,
+      Area2D._bindings.method_has_overlapping_areas,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -652,7 +653,7 @@ export class Area2D extends CollisionObject2D{
   }
   overlaps_body(_body) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_overlaps_body,
+      Area2D._bindings.method_overlaps_body,
       this._owner,
 			Variant.Type.BOOL,
       _body
@@ -661,7 +662,7 @@ export class Area2D extends CollisionObject2D{
   }
   overlaps_area(_area) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_overlaps_area,
+      Area2D._bindings.method_overlaps_area,
       this._owner,
 			Variant.Type.BOOL,
       _area
@@ -670,7 +671,7 @@ export class Area2D extends CollisionObject2D{
   }
   set_audio_bus_name(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_audio_bus_name,
+      Area2D._bindings.method_set_audio_bus_name,
       this._owner,
       _name
     );
@@ -678,7 +679,7 @@ export class Area2D extends CollisionObject2D{
   }
   get_audio_bus_name() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_audio_bus_name,
+      Area2D._bindings.method_get_audio_bus_name,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -688,7 +689,7 @@ export class Area2D extends CollisionObject2D{
   }
   set_audio_bus_override(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_audio_bus_override,
+      Area2D._bindings.method_set_audio_bus_override,
       this._owner,
       _enable
     );
@@ -696,7 +697,7 @@ export class Area2D extends CollisionObject2D{
   }
   is_overriding_audio_bus() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_overriding_audio_bus,
+      Area2D._bindings.method_is_overriding_audio_bus,
       this._owner,
 			Variant.Type.BOOL,
       

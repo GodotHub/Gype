@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { CSGPrimitive3D } from '@js_godot/classes/csg_primitive3d'
-import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -70,9 +70,10 @@ export class CSGMesh3D extends CSGPrimitive3D{
       );
     }
   }
+  
   set_mesh(_mesh) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mesh,
+      CSGMesh3D._bindings.method_set_mesh,
       this._owner,
       _mesh
     );
@@ -80,7 +81,7 @@ export class CSGMesh3D extends CSGPrimitive3D{
   }
   get_mesh() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mesh,
+      CSGMesh3D._bindings.method_get_mesh,
       this._owner,
 			Variant.INT,
       
@@ -89,7 +90,7 @@ export class CSGMesh3D extends CSGPrimitive3D{
   }
   set_material(_material) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_material,
+      CSGMesh3D._bindings.method_set_material,
       this._owner,
       _material
     );
@@ -97,7 +98,7 @@ export class CSGMesh3D extends CSGPrimitive3D{
   }
   get_material() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_material,
+      CSGMesh3D._bindings.method_get_material,
       this._owner,
 			Variant.INT,
       

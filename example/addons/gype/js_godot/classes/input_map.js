@@ -159,9 +159,10 @@ class _MethodBindings {
       );
     }
   }
+  
   has_action(_action) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_action,
+      _InputMap._bindings.method_has_action,
       this._owner,
 			Variant.Type.BOOL,
       _action
@@ -170,7 +171,7 @@ class _MethodBindings {
   }
   get_actions() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_actions,
+      _InputMap._bindings.method_get_actions,
       this._owner,
 			Variant.INT,
       
@@ -179,7 +180,7 @@ class _MethodBindings {
   }
   add_action(_action, _deadzone) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_action,
+      _InputMap._bindings.method_add_action,
       this._owner,
       _action, _deadzone
     );
@@ -187,7 +188,7 @@ class _MethodBindings {
   }
   erase_action(_action) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_erase_action,
+      _InputMap._bindings.method_erase_action,
       this._owner,
       _action
     );
@@ -195,7 +196,7 @@ class _MethodBindings {
   }
   action_set_deadzone(_action, _deadzone) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_action_set_deadzone,
+      _InputMap._bindings.method_action_set_deadzone,
       this._owner,
       _action, _deadzone
     );
@@ -203,7 +204,7 @@ class _MethodBindings {
   }
   action_get_deadzone(_action) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_action_get_deadzone,
+      _InputMap._bindings.method_action_get_deadzone,
       this._owner,
 			Variant.Type.FLOAT,
       _action
@@ -212,7 +213,7 @@ class _MethodBindings {
   }
   action_add_event(_action, _event) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_action_add_event,
+      _InputMap._bindings.method_action_add_event,
       this._owner,
       _action, _event
     );
@@ -220,7 +221,7 @@ class _MethodBindings {
   }
   action_has_event(_action, _event) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_action_has_event,
+      _InputMap._bindings.method_action_has_event,
       this._owner,
 			Variant.Type.BOOL,
       _action, _event
@@ -229,7 +230,7 @@ class _MethodBindings {
   }
   action_erase_event(_action, _event) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_action_erase_event,
+      _InputMap._bindings.method_action_erase_event,
       this._owner,
       _action, _event
     );
@@ -237,7 +238,7 @@ class _MethodBindings {
   }
   action_erase_events(_action) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_action_erase_events,
+      _InputMap._bindings.method_action_erase_events,
       this._owner,
       _action
     );
@@ -245,7 +246,7 @@ class _MethodBindings {
   }
   action_get_events(_action) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_action_get_events,
+      _InputMap._bindings.method_action_get_events,
       this._owner,
 			Variant.INT,
       _action
@@ -254,7 +255,7 @@ class _MethodBindings {
   }
   event_is_action(_event, _action, _exact_match) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_event_is_action,
+      _InputMap._bindings.method_event_is_action,
       this._owner,
 			Variant.Type.BOOL,
       _event, _action, _exact_match
@@ -263,7 +264,7 @@ class _MethodBindings {
   }
   load_from_project_settings() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_load_from_project_settings,
+      _InputMap._bindings.method_load_from_project_settings,
       this._owner,
       
     );
@@ -276,4 +277,17 @@ class _MethodBindings {
     this._init_bindings();
   }
 }
-export const InputMap = new _InputMap();
+export const InputMap = (function () {
+  let _instance;
+  function create_instance() {
+    return new _InputMap();
+  }
+  return {
+    instance: function () {
+      if (!_instance) {
+        _instance = create_instance();
+      }
+      return _instance;
+    },
+  };
+})();

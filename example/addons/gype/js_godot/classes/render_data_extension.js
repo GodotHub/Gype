@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { RID } from '@js_godot/variant/rid'
 import { RenderData } from '@js_godot/classes/render_data'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -31,6 +31,7 @@ export class RenderDataExtension extends RenderData{
     }
     this.#initialized = true;
   }
+  
   _get_render_scene_buffers() {
   }
   _get_render_scene_data() {

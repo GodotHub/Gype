@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
+import { RefCounted } from '@js_godot/classes/ref_counted'
 import { Variant } from '@js_godot/variant/variant'
 import { GDString } from '@js_godot/variant/gd_string'
-import { RefCounted } from '@js_godot/classes/ref_counted'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -91,9 +91,10 @@ export class XRTracker extends RefCounted{
       );
     }
   }
+  
   get_tracker_type() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tracker_type,
+      XRTracker._bindings.method_get_tracker_type,
       this._owner,
 			Variant.INT,
       
@@ -102,7 +103,7 @@ export class XRTracker extends RefCounted{
   }
   set_tracker_type(_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tracker_type,
+      XRTracker._bindings.method_set_tracker_type,
       this._owner,
       _type
     );
@@ -110,7 +111,7 @@ export class XRTracker extends RefCounted{
   }
   get_tracker_name() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tracker_name,
+      XRTracker._bindings.method_get_tracker_name,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -120,7 +121,7 @@ export class XRTracker extends RefCounted{
   }
   set_tracker_name(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tracker_name,
+      XRTracker._bindings.method_set_tracker_name,
       this._owner,
       _name
     );
@@ -128,7 +129,7 @@ export class XRTracker extends RefCounted{
   }
   get_tracker_desc() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tracker_desc,
+      XRTracker._bindings.method_get_tracker_desc,
       this._owner,
 			Variant.Type.STRING,
     
@@ -138,7 +139,7 @@ export class XRTracker extends RefCounted{
   }
   set_tracker_desc(_description) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tracker_desc,
+      XRTracker._bindings.method_set_tracker_desc,
       this._owner,
       _description
     );

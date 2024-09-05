@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { GDString } from '@js_godot/variant/gd_string'
+import { StringName } from '@js_godot/variant/string_name'
 import { BaseButton } from '@js_godot/classes/base_button'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -271,9 +271,10 @@ export class Button extends BaseButton{
       );
     }
   }
+  
   set_text(_text) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_text,
+      Button._bindings.method_set_text,
       this._owner,
       _text
     );
@@ -281,7 +282,7 @@ export class Button extends BaseButton{
   }
   get_text() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_text,
+      Button._bindings.method_get_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -291,7 +292,7 @@ export class Button extends BaseButton{
   }
   set_text_overrun_behavior(_overrun_behavior) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_text_overrun_behavior,
+      Button._bindings.method_set_text_overrun_behavior,
       this._owner,
       _overrun_behavior
     );
@@ -299,7 +300,7 @@ export class Button extends BaseButton{
   }
   get_text_overrun_behavior() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_text_overrun_behavior,
+      Button._bindings.method_get_text_overrun_behavior,
       this._owner,
 			Variant.INT,
       
@@ -308,7 +309,7 @@ export class Button extends BaseButton{
   }
   set_autowrap_mode(_autowrap_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_autowrap_mode,
+      Button._bindings.method_set_autowrap_mode,
       this._owner,
       _autowrap_mode
     );
@@ -316,7 +317,7 @@ export class Button extends BaseButton{
   }
   get_autowrap_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_autowrap_mode,
+      Button._bindings.method_get_autowrap_mode,
       this._owner,
 			Variant.INT,
       
@@ -325,7 +326,7 @@ export class Button extends BaseButton{
   }
   set_text_direction(_direction) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_text_direction,
+      Button._bindings.method_set_text_direction,
       this._owner,
       _direction
     );
@@ -333,7 +334,7 @@ export class Button extends BaseButton{
   }
   get_text_direction() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_text_direction,
+      Button._bindings.method_get_text_direction,
       this._owner,
 			Variant.INT,
       
@@ -342,7 +343,7 @@ export class Button extends BaseButton{
   }
   set_language(_language) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_language,
+      Button._bindings.method_set_language,
       this._owner,
       _language
     );
@@ -350,7 +351,7 @@ export class Button extends BaseButton{
   }
   get_language() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_language,
+      Button._bindings.method_get_language,
       this._owner,
 			Variant.Type.STRING,
     
@@ -360,7 +361,7 @@ export class Button extends BaseButton{
   }
   set_button_icon(_texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_button_icon,
+      Button._bindings.method_set_button_icon,
       this._owner,
       _texture
     );
@@ -368,7 +369,7 @@ export class Button extends BaseButton{
   }
   get_button_icon() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_button_icon,
+      Button._bindings.method_get_button_icon,
       this._owner,
 			Variant.INT,
       
@@ -377,7 +378,7 @@ export class Button extends BaseButton{
   }
   set_flat(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_flat,
+      Button._bindings.method_set_flat,
       this._owner,
       _enabled
     );
@@ -385,7 +386,7 @@ export class Button extends BaseButton{
   }
   is_flat() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_flat,
+      Button._bindings.method_is_flat,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -394,7 +395,7 @@ export class Button extends BaseButton{
   }
   set_clip_text(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_clip_text,
+      Button._bindings.method_set_clip_text,
       this._owner,
       _enabled
     );
@@ -402,7 +403,7 @@ export class Button extends BaseButton{
   }
   get_clip_text() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_clip_text,
+      Button._bindings.method_get_clip_text,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -411,7 +412,7 @@ export class Button extends BaseButton{
   }
   set_text_alignment(_alignment) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_text_alignment,
+      Button._bindings.method_set_text_alignment,
       this._owner,
       _alignment
     );
@@ -419,7 +420,7 @@ export class Button extends BaseButton{
   }
   get_text_alignment() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_text_alignment,
+      Button._bindings.method_get_text_alignment,
       this._owner,
 			Variant.INT,
       
@@ -428,7 +429,7 @@ export class Button extends BaseButton{
   }
   set_icon_alignment(_icon_alignment) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_icon_alignment,
+      Button._bindings.method_set_icon_alignment,
       this._owner,
       _icon_alignment
     );
@@ -436,7 +437,7 @@ export class Button extends BaseButton{
   }
   get_icon_alignment() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_icon_alignment,
+      Button._bindings.method_get_icon_alignment,
       this._owner,
 			Variant.INT,
       
@@ -445,7 +446,7 @@ export class Button extends BaseButton{
   }
   set_vertical_icon_alignment(_vertical_icon_alignment) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vertical_icon_alignment,
+      Button._bindings.method_set_vertical_icon_alignment,
       this._owner,
       _vertical_icon_alignment
     );
@@ -453,7 +454,7 @@ export class Button extends BaseButton{
   }
   get_vertical_icon_alignment() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vertical_icon_alignment,
+      Button._bindings.method_get_vertical_icon_alignment,
       this._owner,
 			Variant.INT,
       
@@ -462,7 +463,7 @@ export class Button extends BaseButton{
   }
   set_expand_icon(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_expand_icon,
+      Button._bindings.method_set_expand_icon,
       this._owner,
       _enabled
     );
@@ -470,7 +471,7 @@ export class Button extends BaseButton{
   }
   is_expand_icon() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_expand_icon,
+      Button._bindings.method_is_expand_icon,
       this._owner,
 			Variant.Type.BOOL,
       

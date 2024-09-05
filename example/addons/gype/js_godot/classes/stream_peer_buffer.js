@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
+import { StringName } from '@js_godot/variant/string_name'
 import { StreamPeer } from '@js_godot/classes/stream_peer'
+import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -111,9 +111,10 @@ export class StreamPeerBuffer extends StreamPeer{
       );
     }
   }
+  
   seek(_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_seek,
+      StreamPeerBuffer._bindings.method_seek,
       this._owner,
       _position
     );
@@ -121,7 +122,7 @@ export class StreamPeerBuffer extends StreamPeer{
   }
   get_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_size,
+      StreamPeerBuffer._bindings.method_get_size,
       this._owner,
 			Variant.Type.INT,
       
@@ -130,7 +131,7 @@ export class StreamPeerBuffer extends StreamPeer{
   }
   get_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_position,
+      StreamPeerBuffer._bindings.method_get_position,
       this._owner,
 			Variant.Type.INT,
       
@@ -139,7 +140,7 @@ export class StreamPeerBuffer extends StreamPeer{
   }
   resize(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_resize,
+      StreamPeerBuffer._bindings.method_resize,
       this._owner,
       _size
     );
@@ -147,7 +148,7 @@ export class StreamPeerBuffer extends StreamPeer{
   }
   set_data_array(_data) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_data_array,
+      StreamPeerBuffer._bindings.method_set_data_array,
       this._owner,
       _data
     );
@@ -155,7 +156,7 @@ export class StreamPeerBuffer extends StreamPeer{
   }
   get_data_array() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_data_array,
+      StreamPeerBuffer._bindings.method_get_data_array,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -165,7 +166,7 @@ export class StreamPeerBuffer extends StreamPeer{
   }
   clear() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear,
+      StreamPeerBuffer._bindings.method_clear,
       this._owner,
       
     );
@@ -173,7 +174,7 @@ export class StreamPeerBuffer extends StreamPeer{
   }
   duplicate() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_duplicate,
+      StreamPeerBuffer._bindings.method_duplicate,
       this._owner,
 			Variant.INT,
       

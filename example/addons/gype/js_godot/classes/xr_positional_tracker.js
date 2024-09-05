@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Transform3D } from '@js_godot/variant/transform3d'
-import { XRTracker } from '@js_godot/classes/xr_tracker'
-import { Vector3 } from '@js_godot/variant/vector3'
 import { StringName } from '@js_godot/variant/string_name'
+import { Transform3D } from '@js_godot/variant/transform3d'
 import { GDString } from '@js_godot/variant/gd_string'
+import { Variant } from '@js_godot/variant/variant'
+import { Vector3 } from '@js_godot/variant/vector3'
+import { XRTracker } from '@js_godot/classes/xr_tracker'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -133,9 +133,10 @@ export class XRPositionalTracker extends XRTracker{
       );
     }
   }
+  
   get_tracker_profile() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tracker_profile,
+      XRPositionalTracker._bindings.method_get_tracker_profile,
       this._owner,
 			Variant.Type.STRING,
     
@@ -145,7 +146,7 @@ export class XRPositionalTracker extends XRTracker{
   }
   set_tracker_profile(_profile) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tracker_profile,
+      XRPositionalTracker._bindings.method_set_tracker_profile,
       this._owner,
       _profile
     );
@@ -153,7 +154,7 @@ export class XRPositionalTracker extends XRTracker{
   }
   get_tracker_hand() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tracker_hand,
+      XRPositionalTracker._bindings.method_get_tracker_hand,
       this._owner,
 			Variant.INT,
       
@@ -162,7 +163,7 @@ export class XRPositionalTracker extends XRTracker{
   }
   set_tracker_hand(_hand) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tracker_hand,
+      XRPositionalTracker._bindings.method_set_tracker_hand,
       this._owner,
       _hand
     );
@@ -170,7 +171,7 @@ export class XRPositionalTracker extends XRTracker{
   }
   has_pose(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_pose,
+      XRPositionalTracker._bindings.method_has_pose,
       this._owner,
 			Variant.Type.BOOL,
       _name
@@ -179,7 +180,7 @@ export class XRPositionalTracker extends XRTracker{
   }
   get_pose(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_pose,
+      XRPositionalTracker._bindings.method_get_pose,
       this._owner,
 			Variant.INT,
       _name
@@ -188,7 +189,7 @@ export class XRPositionalTracker extends XRTracker{
   }
   invalidate_pose(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_invalidate_pose,
+      XRPositionalTracker._bindings.method_invalidate_pose,
       this._owner,
       _name
     );
@@ -196,7 +197,7 @@ export class XRPositionalTracker extends XRTracker{
   }
   set_pose(_name, _transform, _linear_velocity, _angular_velocity, _tracking_confidence) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_pose,
+      XRPositionalTracker._bindings.method_set_pose,
       this._owner,
       _name, _transform, _linear_velocity, _angular_velocity, _tracking_confidence
     );
@@ -204,7 +205,7 @@ export class XRPositionalTracker extends XRTracker{
   }
   get_input(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_input,
+      XRPositionalTracker._bindings.method_get_input,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -214,7 +215,7 @@ export class XRPositionalTracker extends XRTracker{
   }
   set_input(_name, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_input,
+      XRPositionalTracker._bindings.method_set_input,
       this._owner,
       _name, _value
     );

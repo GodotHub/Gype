@@ -38,6 +38,7 @@ import { RID } from "@js_godot/variant/rid";
 import { Signal } from "@js_godot/variant/signal";
 import { Transform2D } from "@js_godot/variant/transform2d";
 import { Transform3D } from "@js_godot/variant/transform3d";
+import { PackedColorArray } from "@js_godot/variant/packed_color_array";
 
 export class Variant {
   static from_type_constructor = [];
@@ -55,8 +56,168 @@ export class Variant {
         this.opaque,
         value.opaque
       );
+    } else if (value instanceof Vector2) {
+      Variant.from_type_constructor[Variant.Type.VECTOR2](
+        this.opaque,
+        value.opaque
+      );
+    } else if (value instanceof Vector2i) {
+      Variant.from_type_constructor[Variant.Type.VECTOR2I](
+        this.opaque,
+        value.opaque
+      );
+    } else if (value instanceof Rect2) {
+      Variant.from_type_constructor[Variant.Type.RECT2](
+        this.opaque,
+        value.opaque
+      );
+    } else if (value instanceof Rect2i) {
+      Variant.from_type_constructor[Variant.Type.RECT2I](
+        this.opaque,
+        value.opaque
+      );
+    } else if (value instanceof Vector3) {
+      Variant.from_type_constructor[Variant.Type.VECTOR3](
+        this.opaque,
+        value.opaque
+      );
+    } else if (value instanceof Vector3i) {
+      Variant.from_type_constructor[Variant.Type.VECTOR3I](
+        this.opaque,
+        value.opaque
+      );
+    } else if (value instanceof Transform2D) {
+      Variant.from_type_constructor[Variant.Type.TRANSFORM2D](
+        this.opaque,
+        value.opaque
+      );
+    } else if (value instanceof Vector4) {
+      Variant.from_type_constructor[Variant.Type.VECTOR4](
+        this.opaque,
+        value.opaque
+      );
+    } else if (value instanceof Vector4i) {
+      Variant.from_type_constructor[Variant.Type.VECTOR4I](
+        this.opaque,
+        value.opaque
+      );
+    } else if (value instanceof Plane) {
+      Variant.from_type_constructor[Variant.Type.PLANE](
+        this.opaque,
+        value.opaque
+      );
+    } else if (value instanceof Quaternion) {
+      Variant.from_type_constructor[Variant.Type.QUATERNION](
+        this.opaque,
+        value.opaque
+      );
+    } else if (value instanceof AABB) {
+      Variant.from_type_constructor[Variant.Type.AABB](
+        this.opaque,
+        value.opaque
+      );
+    } else if (value instanceof Basis) {
+      Variant.from_type_constructor[Variant.Type.BASIS](
+        this.opaque,
+        value.opaque
+      );
+    } else if (value instanceof Transform3D) {
+      Variant.from_type_constructor[Variant.Type.TRANSFORM3D](
+        this.opaque,
+        value.opaque
+      );
+    } else if (value instanceof Projection) {
+      Variant.from_type_constructor[Variant.Type.PROJECTION](
+        this.opaque,
+        value.opaque
+      );
+    } else if (value instanceof Color) {
+      Variant.from_type_constructor[Variant.Type.COLOR](
+        this.opaque,
+        value.opaque
+      );
     } else if (value instanceof StringName) {
       Variant.from_type_constructor[Variant.Type.STRING_NAME](
+        this.opaque,
+        value.opaque
+      );
+    } else if (value instanceof NodePath) {
+      Variant.from_type_constructor[Variant.Type.NODE_PATH](
+        this.opaque,
+        value.opaque
+      );
+    } else if (value instanceof RID) {
+      Variant.from_type_constructor[Variant.Type.RID](
+        this.opaque,
+        value.opaque
+      );
+    } else if (value instanceof Callable) {
+      Variant.from_type_constructor[Variant.Type.CALLABLE](
+        this.opaque,
+        value.opaque
+      );
+    } else if (value instanceof Signal) {
+      Variant.from_type_constructor[Variant.Type.SIGNAL](
+        this.opaque,
+        value.opaque
+      );
+    } else if (value instanceof Dictionary) {
+      Variant.from_type_constructor[Variant.Type.DICTIONARY](
+        this.opaque,
+        value.opaque
+      );
+    } else if (value instanceof GDArray) {
+      Variant.from_type_constructor[Variant.Type.ARRAY](
+        this.opaque,
+        value.opaque
+      );
+    } else if (value instanceof PackedByteArray) {
+      Variant.from_type_constructor[Variant.Type.PACKED_BYTE_ARRAY](
+        this.opaque,
+        value.opaque
+      );
+    } else if (value instanceof PackedInt32Array) {
+      Variant.from_type_constructor[Variant.Type.PACKED_INT32_ARRAY](
+        this.opaque,
+        value.opaque
+      );
+    } else if (value instanceof PackedInt64Array) {
+      Variant.from_type_constructor[Variant.Type.PACKED_INT64_ARRAY](
+        this.opaque,
+        value.opaque
+      );
+    } else if (value instanceof PackedFloat32Array) {
+      Variant.from_type_constructor[Variant.Type.PACKED_FLOAT32_ARRAY](
+        this.opaque,
+        value.opaque
+      );
+    } else if (value instanceof PackedFloat64Array) {
+      Variant.from_type_constructor[Variant.Type.PACKED_FLOAT64_ARRAY](
+        this.opaque,
+        value.opaque
+      );
+    } else if (value instanceof PackedStringArray) {
+      Variant.from_type_constructor[Variant.Type.PACKED_STRING_ARRAY](
+        this.opaque,
+        value.opaque
+      );
+    } else if (value instanceof PackedVector2Array) {
+      Variant.from_type_constructor[Variant.Type.PACKED_VECTOR2_ARRAY](
+        this.opaque,
+        value.opaque
+      );
+    } else if (value instanceof PackedVector3Array) {
+      Variant.from_type_constructor[Variant.Type.PACKED_VECTOR3_ARRAY](
+        this.opaque,
+        value.opaque
+      );
+    } else if (value instanceof PackedColorArray) {
+      Variant.from_type_constructor[Variant.Type.PACKED_COLOR_ARRAY](
+        this.opaque,
+        value.opaque
+      );
+    } else if (value instanceof PackedVector4Array) {
+      Variant.from_type_constructor[Variant.Type.PACKED_VECTOR4_ARRAY](
         this.opaque,
         value.opaque
       );

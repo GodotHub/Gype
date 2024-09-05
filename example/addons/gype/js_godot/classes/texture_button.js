@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { BaseButton } from '@js_godot/classes/base_button'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -230,9 +230,10 @@ export class TextureButton extends BaseButton{
       );
     }
   }
+  
   set_texture_normal(_texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture_normal,
+      TextureButton._bindings.method_set_texture_normal,
       this._owner,
       _texture
     );
@@ -240,7 +241,7 @@ export class TextureButton extends BaseButton{
   }
   set_texture_pressed(_texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture_pressed,
+      TextureButton._bindings.method_set_texture_pressed,
       this._owner,
       _texture
     );
@@ -248,7 +249,7 @@ export class TextureButton extends BaseButton{
   }
   set_texture_hover(_texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture_hover,
+      TextureButton._bindings.method_set_texture_hover,
       this._owner,
       _texture
     );
@@ -256,7 +257,7 @@ export class TextureButton extends BaseButton{
   }
   set_texture_disabled(_texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture_disabled,
+      TextureButton._bindings.method_set_texture_disabled,
       this._owner,
       _texture
     );
@@ -264,7 +265,7 @@ export class TextureButton extends BaseButton{
   }
   set_texture_focused(_texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture_focused,
+      TextureButton._bindings.method_set_texture_focused,
       this._owner,
       _texture
     );
@@ -272,7 +273,7 @@ export class TextureButton extends BaseButton{
   }
   set_click_mask(_mask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_click_mask,
+      TextureButton._bindings.method_set_click_mask,
       this._owner,
       _mask
     );
@@ -280,7 +281,7 @@ export class TextureButton extends BaseButton{
   }
   set_ignore_texture_size(_ignore) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ignore_texture_size,
+      TextureButton._bindings.method_set_ignore_texture_size,
       this._owner,
       _ignore
     );
@@ -288,7 +289,7 @@ export class TextureButton extends BaseButton{
   }
   set_stretch_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_stretch_mode,
+      TextureButton._bindings.method_set_stretch_mode,
       this._owner,
       _mode
     );
@@ -296,7 +297,7 @@ export class TextureButton extends BaseButton{
   }
   set_flip_h(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_flip_h,
+      TextureButton._bindings.method_set_flip_h,
       this._owner,
       _enable
     );
@@ -304,7 +305,7 @@ export class TextureButton extends BaseButton{
   }
   is_flipped_h() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_flipped_h,
+      TextureButton._bindings.method_is_flipped_h,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -313,7 +314,7 @@ export class TextureButton extends BaseButton{
   }
   set_flip_v(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_flip_v,
+      TextureButton._bindings.method_set_flip_v,
       this._owner,
       _enable
     );
@@ -321,7 +322,7 @@ export class TextureButton extends BaseButton{
   }
   is_flipped_v() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_flipped_v,
+      TextureButton._bindings.method_is_flipped_v,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -330,7 +331,7 @@ export class TextureButton extends BaseButton{
   }
   get_texture_normal() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_normal,
+      TextureButton._bindings.method_get_texture_normal,
       this._owner,
 			Variant.INT,
       
@@ -339,7 +340,7 @@ export class TextureButton extends BaseButton{
   }
   get_texture_pressed() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_pressed,
+      TextureButton._bindings.method_get_texture_pressed,
       this._owner,
 			Variant.INT,
       
@@ -348,7 +349,7 @@ export class TextureButton extends BaseButton{
   }
   get_texture_hover() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_hover,
+      TextureButton._bindings.method_get_texture_hover,
       this._owner,
 			Variant.INT,
       
@@ -357,7 +358,7 @@ export class TextureButton extends BaseButton{
   }
   get_texture_disabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_disabled,
+      TextureButton._bindings.method_get_texture_disabled,
       this._owner,
 			Variant.INT,
       
@@ -366,7 +367,7 @@ export class TextureButton extends BaseButton{
   }
   get_texture_focused() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_focused,
+      TextureButton._bindings.method_get_texture_focused,
       this._owner,
 			Variant.INT,
       
@@ -375,7 +376,7 @@ export class TextureButton extends BaseButton{
   }
   get_click_mask() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_click_mask,
+      TextureButton._bindings.method_get_click_mask,
       this._owner,
 			Variant.INT,
       
@@ -384,7 +385,7 @@ export class TextureButton extends BaseButton{
   }
   get_ignore_texture_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ignore_texture_size,
+      TextureButton._bindings.method_get_ignore_texture_size,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -393,7 +394,7 @@ export class TextureButton extends BaseButton{
   }
   get_stretch_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_stretch_mode,
+      TextureButton._bindings.method_get_stretch_mode,
       this._owner,
 			Variant.INT,
       

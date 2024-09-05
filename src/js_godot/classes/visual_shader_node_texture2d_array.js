@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { VisualShaderNodeSample3D } from '@js_godot/classes/visual_shader_node_sample3d'
-import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -50,9 +50,10 @@ export class VisualShaderNodeTexture2DArray extends VisualShaderNodeSample3D{
       );
     }
   }
+  
   set_texture_array(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture_array,
+      VisualShaderNodeTexture2DArray._bindings.method_set_texture_array,
       this._owner,
       _value
     );
@@ -60,7 +61,7 @@ export class VisualShaderNodeTexture2DArray extends VisualShaderNodeSample3D{
   }
   get_texture_array() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_array,
+      VisualShaderNodeTexture2DArray._bindings.method_get_texture_array,
       this._owner,
 			Variant.INT,
       

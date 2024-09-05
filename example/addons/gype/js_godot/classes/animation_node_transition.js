@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { AnimationNodeSync } from '@js_godot/classes/animation_node_sync'
+import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
@@ -160,9 +160,10 @@ export class AnimationNodeTransition extends AnimationNodeSync{
       );
     }
   }
+  
   set_input_count(_input_count) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_input_count,
+      AnimationNodeTransition._bindings.method_set_input_count,
       this._owner,
       _input_count
     );
@@ -170,7 +171,7 @@ export class AnimationNodeTransition extends AnimationNodeSync{
   }
   set_input_as_auto_advance(_input, _enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_input_as_auto_advance,
+      AnimationNodeTransition._bindings.method_set_input_as_auto_advance,
       this._owner,
       _input, _enable
     );
@@ -178,7 +179,7 @@ export class AnimationNodeTransition extends AnimationNodeSync{
   }
   is_input_set_as_auto_advance(_input) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_input_set_as_auto_advance,
+      AnimationNodeTransition._bindings.method_is_input_set_as_auto_advance,
       this._owner,
 			Variant.Type.BOOL,
       _input
@@ -187,7 +188,7 @@ export class AnimationNodeTransition extends AnimationNodeSync{
   }
   set_input_break_loop_at_end(_input, _enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_input_break_loop_at_end,
+      AnimationNodeTransition._bindings.method_set_input_break_loop_at_end,
       this._owner,
       _input, _enable
     );
@@ -195,7 +196,7 @@ export class AnimationNodeTransition extends AnimationNodeSync{
   }
   is_input_loop_broken_at_end(_input) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_input_loop_broken_at_end,
+      AnimationNodeTransition._bindings.method_is_input_loop_broken_at_end,
       this._owner,
 			Variant.Type.BOOL,
       _input
@@ -204,7 +205,7 @@ export class AnimationNodeTransition extends AnimationNodeSync{
   }
   set_input_reset(_input, _enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_input_reset,
+      AnimationNodeTransition._bindings.method_set_input_reset,
       this._owner,
       _input, _enable
     );
@@ -212,7 +213,7 @@ export class AnimationNodeTransition extends AnimationNodeSync{
   }
   is_input_reset(_input) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_input_reset,
+      AnimationNodeTransition._bindings.method_is_input_reset,
       this._owner,
 			Variant.Type.BOOL,
       _input
@@ -221,7 +222,7 @@ export class AnimationNodeTransition extends AnimationNodeSync{
   }
   set_xfade_time(_time) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_xfade_time,
+      AnimationNodeTransition._bindings.method_set_xfade_time,
       this._owner,
       _time
     );
@@ -229,7 +230,7 @@ export class AnimationNodeTransition extends AnimationNodeSync{
   }
   get_xfade_time() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_xfade_time,
+      AnimationNodeTransition._bindings.method_get_xfade_time,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -238,7 +239,7 @@ export class AnimationNodeTransition extends AnimationNodeSync{
   }
   set_xfade_curve(_curve) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_xfade_curve,
+      AnimationNodeTransition._bindings.method_set_xfade_curve,
       this._owner,
       _curve
     );
@@ -246,7 +247,7 @@ export class AnimationNodeTransition extends AnimationNodeSync{
   }
   get_xfade_curve() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_xfade_curve,
+      AnimationNodeTransition._bindings.method_get_xfade_curve,
       this._owner,
 			Variant.INT,
       
@@ -255,7 +256,7 @@ export class AnimationNodeTransition extends AnimationNodeSync{
   }
   set_allow_transition_to_self(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_allow_transition_to_self,
+      AnimationNodeTransition._bindings.method_set_allow_transition_to_self,
       this._owner,
       _enable
     );
@@ -263,7 +264,7 @@ export class AnimationNodeTransition extends AnimationNodeSync{
   }
   is_allow_transition_to_self() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_allow_transition_to_self,
+      AnimationNodeTransition._bindings.method_is_allow_transition_to_self,
       this._owner,
 			Variant.Type.BOOL,
       

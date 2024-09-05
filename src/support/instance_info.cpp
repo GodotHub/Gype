@@ -10,14 +10,12 @@ using namespace godot;
 
 GDExtensionBool set_func(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionConstVariantPtr p_value) {
 	JavaScriptInstance *instance = reinterpret_cast<JavaScriptInstance *>(p_instance);
-	instance->set(p_name, p_value);
-	return true;
+	return instance->set(p_name, p_value);
 }
 
 GDExtensionBool get_func(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret) {
 	JavaScriptInstance *instance = reinterpret_cast<JavaScriptInstance *>(p_instance);
-	instance->get(p_name, r_ret);
-	return true;
+	return instance->get(p_name, r_ret);
 }
 
 std::string to_char(GDExtensionConstStringNamePtr p_name) {

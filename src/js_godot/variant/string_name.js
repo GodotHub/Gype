@@ -4,9 +4,9 @@ import {
   _call_builtin_method_ptr_ret,
   _call_builtin_method_ptr_no_ret
 } from '@js_godot/core/builtin_ptrcall'
+import { PackedFloat64Array } from '@js_godot/variant/packed_float64_array'
 import { Variant } from '@js_godot/variant/variant'
 import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
-import { PackedFloat64Array } from '@js_godot/variant/packed_float64_array'
 import { PackedStringArray } from '@js_godot/variant/packed_string_array'
 import { GDString } from '@js_godot/variant/gd_string'
 

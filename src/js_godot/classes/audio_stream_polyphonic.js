@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { AudioStream } from '@js_godot/classes/audio_stream'
 import {
   call_utility_ret,
@@ -50,9 +50,10 @@ export class AudioStreamPolyphonic extends AudioStream{
       );
     }
   }
+  
   set_polyphony(_voices) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_polyphony,
+      AudioStreamPolyphonic._bindings.method_set_polyphony,
       this._owner,
       _voices
     );
@@ -60,7 +61,7 @@ export class AudioStreamPolyphonic extends AudioStream{
   }
   get_polyphony() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_polyphony,
+      AudioStreamPolyphonic._bindings.method_get_polyphony,
       this._owner,
 			Variant.Type.INT,
       

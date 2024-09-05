@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { AudioStream } from '@js_godot/classes/audio_stream'
+import { Variant } from '@js_godot/variant/variant'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -182,9 +182,10 @@ export class AudioStreamWAV extends AudioStream{
       );
     }
   }
+  
   set_data(_data) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_data,
+      AudioStreamWAV._bindings.method_set_data,
       this._owner,
       _data
     );
@@ -192,7 +193,7 @@ export class AudioStreamWAV extends AudioStream{
   }
   get_data() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_data,
+      AudioStreamWAV._bindings.method_get_data,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -202,7 +203,7 @@ export class AudioStreamWAV extends AudioStream{
   }
   set_format(_format) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_format,
+      AudioStreamWAV._bindings.method_set_format,
       this._owner,
       _format
     );
@@ -210,7 +211,7 @@ export class AudioStreamWAV extends AudioStream{
   }
   get_format() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_format,
+      AudioStreamWAV._bindings.method_get_format,
       this._owner,
 			Variant.INT,
       
@@ -219,7 +220,7 @@ export class AudioStreamWAV extends AudioStream{
   }
   set_loop_mode(_loop_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_loop_mode,
+      AudioStreamWAV._bindings.method_set_loop_mode,
       this._owner,
       _loop_mode
     );
@@ -227,7 +228,7 @@ export class AudioStreamWAV extends AudioStream{
   }
   get_loop_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_loop_mode,
+      AudioStreamWAV._bindings.method_get_loop_mode,
       this._owner,
 			Variant.INT,
       
@@ -236,7 +237,7 @@ export class AudioStreamWAV extends AudioStream{
   }
   set_loop_begin(_loop_begin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_loop_begin,
+      AudioStreamWAV._bindings.method_set_loop_begin,
       this._owner,
       _loop_begin
     );
@@ -244,7 +245,7 @@ export class AudioStreamWAV extends AudioStream{
   }
   get_loop_begin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_loop_begin,
+      AudioStreamWAV._bindings.method_get_loop_begin,
       this._owner,
 			Variant.Type.INT,
       
@@ -253,7 +254,7 @@ export class AudioStreamWAV extends AudioStream{
   }
   set_loop_end(_loop_end) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_loop_end,
+      AudioStreamWAV._bindings.method_set_loop_end,
       this._owner,
       _loop_end
     );
@@ -261,7 +262,7 @@ export class AudioStreamWAV extends AudioStream{
   }
   get_loop_end() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_loop_end,
+      AudioStreamWAV._bindings.method_get_loop_end,
       this._owner,
 			Variant.Type.INT,
       
@@ -270,7 +271,7 @@ export class AudioStreamWAV extends AudioStream{
   }
   set_mix_rate(_mix_rate) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mix_rate,
+      AudioStreamWAV._bindings.method_set_mix_rate,
       this._owner,
       _mix_rate
     );
@@ -278,7 +279,7 @@ export class AudioStreamWAV extends AudioStream{
   }
   get_mix_rate() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mix_rate,
+      AudioStreamWAV._bindings.method_get_mix_rate,
       this._owner,
 			Variant.Type.INT,
       
@@ -287,7 +288,7 @@ export class AudioStreamWAV extends AudioStream{
   }
   set_stereo(_stereo) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_stereo,
+      AudioStreamWAV._bindings.method_set_stereo,
       this._owner,
       _stereo
     );
@@ -295,7 +296,7 @@ export class AudioStreamWAV extends AudioStream{
   }
   is_stereo() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_stereo,
+      AudioStreamWAV._bindings.method_is_stereo,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -304,7 +305,7 @@ export class AudioStreamWAV extends AudioStream{
   }
   save_to_wav(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_save_to_wav,
+      AudioStreamWAV._bindings.method_save_to_wav,
       this._owner,
 			Variant.INT,
       _path

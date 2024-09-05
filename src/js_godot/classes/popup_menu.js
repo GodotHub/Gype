@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
+import { Color } from '@js_godot/variant/color'
 import { Variant } from '@js_godot/variant/variant'
+import { Popup } from '@js_godot/classes/popup'
 import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
-import { Color } from '@js_godot/variant/color'
-import { Popup } from '@js_godot/classes/popup'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -902,9 +902,10 @@ export class PopupMenu extends Popup{
       );
     }
   }
+  
   activate_item_by_event(_event, _for_global_only) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_activate_item_by_event,
+      PopupMenu._bindings.method_activate_item_by_event,
       this._owner,
 			Variant.Type.BOOL,
       _event, _for_global_only
@@ -913,7 +914,7 @@ export class PopupMenu extends Popup{
   }
   set_prefer_native_menu(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_prefer_native_menu,
+      PopupMenu._bindings.method_set_prefer_native_menu,
       this._owner,
       _enabled
     );
@@ -921,7 +922,7 @@ export class PopupMenu extends Popup{
   }
   is_prefer_native_menu() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_prefer_native_menu,
+      PopupMenu._bindings.method_is_prefer_native_menu,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -930,7 +931,7 @@ export class PopupMenu extends Popup{
   }
   is_native_menu() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_native_menu,
+      PopupMenu._bindings.method_is_native_menu,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -939,7 +940,7 @@ export class PopupMenu extends Popup{
   }
   add_item(_label, _id, _accel) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_item,
+      PopupMenu._bindings.method_add_item,
       this._owner,
       _label, _id, _accel
     );
@@ -947,7 +948,7 @@ export class PopupMenu extends Popup{
   }
   add_icon_item(_texture, _label, _id, _accel) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_icon_item,
+      PopupMenu._bindings.method_add_icon_item,
       this._owner,
       _texture, _label, _id, _accel
     );
@@ -955,7 +956,7 @@ export class PopupMenu extends Popup{
   }
   add_check_item(_label, _id, _accel) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_check_item,
+      PopupMenu._bindings.method_add_check_item,
       this._owner,
       _label, _id, _accel
     );
@@ -963,7 +964,7 @@ export class PopupMenu extends Popup{
   }
   add_icon_check_item(_texture, _label, _id, _accel) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_icon_check_item,
+      PopupMenu._bindings.method_add_icon_check_item,
       this._owner,
       _texture, _label, _id, _accel
     );
@@ -971,7 +972,7 @@ export class PopupMenu extends Popup{
   }
   add_radio_check_item(_label, _id, _accel) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_radio_check_item,
+      PopupMenu._bindings.method_add_radio_check_item,
       this._owner,
       _label, _id, _accel
     );
@@ -979,7 +980,7 @@ export class PopupMenu extends Popup{
   }
   add_icon_radio_check_item(_texture, _label, _id, _accel) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_icon_radio_check_item,
+      PopupMenu._bindings.method_add_icon_radio_check_item,
       this._owner,
       _texture, _label, _id, _accel
     );
@@ -987,7 +988,7 @@ export class PopupMenu extends Popup{
   }
   add_multistate_item(_label, _max_states, _default_state, _id, _accel) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_multistate_item,
+      PopupMenu._bindings.method_add_multistate_item,
       this._owner,
       _label, _max_states, _default_state, _id, _accel
     );
@@ -995,7 +996,7 @@ export class PopupMenu extends Popup{
   }
   add_shortcut(_shortcut, _id, _global, _allow_echo) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_shortcut,
+      PopupMenu._bindings.method_add_shortcut,
       this._owner,
       _shortcut, _id, _global, _allow_echo
     );
@@ -1003,7 +1004,7 @@ export class PopupMenu extends Popup{
   }
   add_icon_shortcut(_texture, _shortcut, _id, _global, _allow_echo) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_icon_shortcut,
+      PopupMenu._bindings.method_add_icon_shortcut,
       this._owner,
       _texture, _shortcut, _id, _global, _allow_echo
     );
@@ -1011,7 +1012,7 @@ export class PopupMenu extends Popup{
   }
   add_check_shortcut(_shortcut, _id, _global) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_check_shortcut,
+      PopupMenu._bindings.method_add_check_shortcut,
       this._owner,
       _shortcut, _id, _global
     );
@@ -1019,7 +1020,7 @@ export class PopupMenu extends Popup{
   }
   add_icon_check_shortcut(_texture, _shortcut, _id, _global) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_icon_check_shortcut,
+      PopupMenu._bindings.method_add_icon_check_shortcut,
       this._owner,
       _texture, _shortcut, _id, _global
     );
@@ -1027,7 +1028,7 @@ export class PopupMenu extends Popup{
   }
   add_radio_check_shortcut(_shortcut, _id, _global) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_radio_check_shortcut,
+      PopupMenu._bindings.method_add_radio_check_shortcut,
       this._owner,
       _shortcut, _id, _global
     );
@@ -1035,7 +1036,7 @@ export class PopupMenu extends Popup{
   }
   add_icon_radio_check_shortcut(_texture, _shortcut, _id, _global) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_icon_radio_check_shortcut,
+      PopupMenu._bindings.method_add_icon_radio_check_shortcut,
       this._owner,
       _texture, _shortcut, _id, _global
     );
@@ -1043,7 +1044,7 @@ export class PopupMenu extends Popup{
   }
   add_submenu_item(_label, _submenu, _id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_submenu_item,
+      PopupMenu._bindings.method_add_submenu_item,
       this._owner,
       _label, _submenu, _id
     );
@@ -1051,7 +1052,7 @@ export class PopupMenu extends Popup{
   }
   add_submenu_node_item(_label, _submenu, _id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_submenu_node_item,
+      PopupMenu._bindings.method_add_submenu_node_item,
       this._owner,
       _label, _submenu, _id
     );
@@ -1059,7 +1060,7 @@ export class PopupMenu extends Popup{
   }
   set_item_text(_index, _text) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_text,
+      PopupMenu._bindings.method_set_item_text,
       this._owner,
       _index, _text
     );
@@ -1067,7 +1068,7 @@ export class PopupMenu extends Popup{
   }
   set_item_text_direction(_index, _direction) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_text_direction,
+      PopupMenu._bindings.method_set_item_text_direction,
       this._owner,
       _index, _direction
     );
@@ -1075,7 +1076,7 @@ export class PopupMenu extends Popup{
   }
   set_item_language(_index, _language) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_language,
+      PopupMenu._bindings.method_set_item_language,
       this._owner,
       _index, _language
     );
@@ -1083,7 +1084,7 @@ export class PopupMenu extends Popup{
   }
   set_item_icon(_index, _icon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_icon,
+      PopupMenu._bindings.method_set_item_icon,
       this._owner,
       _index, _icon
     );
@@ -1091,7 +1092,7 @@ export class PopupMenu extends Popup{
   }
   set_item_icon_max_width(_index, _width) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_icon_max_width,
+      PopupMenu._bindings.method_set_item_icon_max_width,
       this._owner,
       _index, _width
     );
@@ -1099,7 +1100,7 @@ export class PopupMenu extends Popup{
   }
   set_item_icon_modulate(_index, _modulate) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_icon_modulate,
+      PopupMenu._bindings.method_set_item_icon_modulate,
       this._owner,
       _index, _modulate
     );
@@ -1107,7 +1108,7 @@ export class PopupMenu extends Popup{
   }
   set_item_checked(_index, _checked) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_checked,
+      PopupMenu._bindings.method_set_item_checked,
       this._owner,
       _index, _checked
     );
@@ -1115,7 +1116,7 @@ export class PopupMenu extends Popup{
   }
   set_item_id(_index, _id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_id,
+      PopupMenu._bindings.method_set_item_id,
       this._owner,
       _index, _id
     );
@@ -1123,7 +1124,7 @@ export class PopupMenu extends Popup{
   }
   set_item_accelerator(_index, _accel) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_accelerator,
+      PopupMenu._bindings.method_set_item_accelerator,
       this._owner,
       _index, _accel
     );
@@ -1131,7 +1132,7 @@ export class PopupMenu extends Popup{
   }
   set_item_metadata(_index, _metadata) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_metadata,
+      PopupMenu._bindings.method_set_item_metadata,
       this._owner,
       _index, _metadata
     );
@@ -1139,7 +1140,7 @@ export class PopupMenu extends Popup{
   }
   set_item_disabled(_index, _disabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_disabled,
+      PopupMenu._bindings.method_set_item_disabled,
       this._owner,
       _index, _disabled
     );
@@ -1147,7 +1148,7 @@ export class PopupMenu extends Popup{
   }
   set_item_submenu(_index, _submenu) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_submenu,
+      PopupMenu._bindings.method_set_item_submenu,
       this._owner,
       _index, _submenu
     );
@@ -1155,7 +1156,7 @@ export class PopupMenu extends Popup{
   }
   set_item_submenu_node(_index, _submenu) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_submenu_node,
+      PopupMenu._bindings.method_set_item_submenu_node,
       this._owner,
       _index, _submenu
     );
@@ -1163,7 +1164,7 @@ export class PopupMenu extends Popup{
   }
   set_item_as_separator(_index, _enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_as_separator,
+      PopupMenu._bindings.method_set_item_as_separator,
       this._owner,
       _index, _enable
     );
@@ -1171,7 +1172,7 @@ export class PopupMenu extends Popup{
   }
   set_item_as_checkable(_index, _enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_as_checkable,
+      PopupMenu._bindings.method_set_item_as_checkable,
       this._owner,
       _index, _enable
     );
@@ -1179,7 +1180,7 @@ export class PopupMenu extends Popup{
   }
   set_item_as_radio_checkable(_index, _enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_as_radio_checkable,
+      PopupMenu._bindings.method_set_item_as_radio_checkable,
       this._owner,
       _index, _enable
     );
@@ -1187,7 +1188,7 @@ export class PopupMenu extends Popup{
   }
   set_item_tooltip(_index, _tooltip) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_tooltip,
+      PopupMenu._bindings.method_set_item_tooltip,
       this._owner,
       _index, _tooltip
     );
@@ -1195,7 +1196,7 @@ export class PopupMenu extends Popup{
   }
   set_item_shortcut(_index, _shortcut, _global) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_shortcut,
+      PopupMenu._bindings.method_set_item_shortcut,
       this._owner,
       _index, _shortcut, _global
     );
@@ -1203,7 +1204,7 @@ export class PopupMenu extends Popup{
   }
   set_item_indent(_index, _indent) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_indent,
+      PopupMenu._bindings.method_set_item_indent,
       this._owner,
       _index, _indent
     );
@@ -1211,7 +1212,7 @@ export class PopupMenu extends Popup{
   }
   set_item_multistate(_index, _state) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_multistate,
+      PopupMenu._bindings.method_set_item_multistate,
       this._owner,
       _index, _state
     );
@@ -1219,7 +1220,7 @@ export class PopupMenu extends Popup{
   }
   set_item_multistate_max(_index, _max_states) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_multistate_max,
+      PopupMenu._bindings.method_set_item_multistate_max,
       this._owner,
       _index, _max_states
     );
@@ -1227,7 +1228,7 @@ export class PopupMenu extends Popup{
   }
   set_item_shortcut_disabled(_index, _disabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_shortcut_disabled,
+      PopupMenu._bindings.method_set_item_shortcut_disabled,
       this._owner,
       _index, _disabled
     );
@@ -1235,7 +1236,7 @@ export class PopupMenu extends Popup{
   }
   toggle_item_checked(_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_toggle_item_checked,
+      PopupMenu._bindings.method_toggle_item_checked,
       this._owner,
       _index
     );
@@ -1243,7 +1244,7 @@ export class PopupMenu extends Popup{
   }
   toggle_item_multistate(_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_toggle_item_multistate,
+      PopupMenu._bindings.method_toggle_item_multistate,
       this._owner,
       _index
     );
@@ -1251,7 +1252,7 @@ export class PopupMenu extends Popup{
   }
   get_item_text(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_text,
+      PopupMenu._bindings.method_get_item_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1261,7 +1262,7 @@ export class PopupMenu extends Popup{
   }
   get_item_text_direction(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_text_direction,
+      PopupMenu._bindings.method_get_item_text_direction,
       this._owner,
 			Variant.INT,
       _index
@@ -1270,7 +1271,7 @@ export class PopupMenu extends Popup{
   }
   get_item_language(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_language,
+      PopupMenu._bindings.method_get_item_language,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1280,7 +1281,7 @@ export class PopupMenu extends Popup{
   }
   get_item_icon(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_icon,
+      PopupMenu._bindings.method_get_item_icon,
       this._owner,
 			Variant.INT,
       _index
@@ -1289,7 +1290,7 @@ export class PopupMenu extends Popup{
   }
   get_item_icon_max_width(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_icon_max_width,
+      PopupMenu._bindings.method_get_item_icon_max_width,
       this._owner,
 			Variant.Type.INT,
       _index
@@ -1298,7 +1299,7 @@ export class PopupMenu extends Popup{
   }
   get_item_icon_modulate(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_icon_modulate,
+      PopupMenu._bindings.method_get_item_icon_modulate,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -1308,7 +1309,7 @@ export class PopupMenu extends Popup{
   }
   is_item_checked(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_item_checked,
+      PopupMenu._bindings.method_is_item_checked,
       this._owner,
 			Variant.Type.BOOL,
       _index
@@ -1317,7 +1318,7 @@ export class PopupMenu extends Popup{
   }
   get_item_id(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_id,
+      PopupMenu._bindings.method_get_item_id,
       this._owner,
 			Variant.Type.INT,
       _index
@@ -1326,7 +1327,7 @@ export class PopupMenu extends Popup{
   }
   get_item_index(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_index,
+      PopupMenu._bindings.method_get_item_index,
       this._owner,
 			Variant.Type.INT,
       _id
@@ -1335,7 +1336,7 @@ export class PopupMenu extends Popup{
   }
   get_item_accelerator(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_accelerator,
+      PopupMenu._bindings.method_get_item_accelerator,
       this._owner,
 			Variant.INT,
       _index
@@ -1344,7 +1345,7 @@ export class PopupMenu extends Popup{
   }
   get_item_metadata(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_metadata,
+      PopupMenu._bindings.method_get_item_metadata,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -1354,7 +1355,7 @@ export class PopupMenu extends Popup{
   }
   is_item_disabled(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_item_disabled,
+      PopupMenu._bindings.method_is_item_disabled,
       this._owner,
 			Variant.Type.BOOL,
       _index
@@ -1363,7 +1364,7 @@ export class PopupMenu extends Popup{
   }
   get_item_submenu(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_submenu,
+      PopupMenu._bindings.method_get_item_submenu,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1373,7 +1374,7 @@ export class PopupMenu extends Popup{
   }
   get_item_submenu_node(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_submenu_node,
+      PopupMenu._bindings.method_get_item_submenu_node,
       this._owner,
 			Variant.INT,
       _index
@@ -1382,7 +1383,7 @@ export class PopupMenu extends Popup{
   }
   is_item_separator(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_item_separator,
+      PopupMenu._bindings.method_is_item_separator,
       this._owner,
 			Variant.Type.BOOL,
       _index
@@ -1391,7 +1392,7 @@ export class PopupMenu extends Popup{
   }
   is_item_checkable(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_item_checkable,
+      PopupMenu._bindings.method_is_item_checkable,
       this._owner,
 			Variant.Type.BOOL,
       _index
@@ -1400,7 +1401,7 @@ export class PopupMenu extends Popup{
   }
   is_item_radio_checkable(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_item_radio_checkable,
+      PopupMenu._bindings.method_is_item_radio_checkable,
       this._owner,
 			Variant.Type.BOOL,
       _index
@@ -1409,7 +1410,7 @@ export class PopupMenu extends Popup{
   }
   is_item_shortcut_disabled(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_item_shortcut_disabled,
+      PopupMenu._bindings.method_is_item_shortcut_disabled,
       this._owner,
 			Variant.Type.BOOL,
       _index
@@ -1418,7 +1419,7 @@ export class PopupMenu extends Popup{
   }
   get_item_tooltip(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_tooltip,
+      PopupMenu._bindings.method_get_item_tooltip,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1428,7 +1429,7 @@ export class PopupMenu extends Popup{
   }
   get_item_shortcut(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_shortcut,
+      PopupMenu._bindings.method_get_item_shortcut,
       this._owner,
 			Variant.INT,
       _index
@@ -1437,7 +1438,7 @@ export class PopupMenu extends Popup{
   }
   get_item_indent(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_indent,
+      PopupMenu._bindings.method_get_item_indent,
       this._owner,
 			Variant.Type.INT,
       _index
@@ -1446,7 +1447,7 @@ export class PopupMenu extends Popup{
   }
   get_item_multistate_max(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_multistate_max,
+      PopupMenu._bindings.method_get_item_multistate_max,
       this._owner,
 			Variant.Type.INT,
       _index
@@ -1455,7 +1456,7 @@ export class PopupMenu extends Popup{
   }
   get_item_multistate(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_multistate,
+      PopupMenu._bindings.method_get_item_multistate,
       this._owner,
 			Variant.Type.INT,
       _index
@@ -1464,7 +1465,7 @@ export class PopupMenu extends Popup{
   }
   set_focused_item(_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_focused_item,
+      PopupMenu._bindings.method_set_focused_item,
       this._owner,
       _index
     );
@@ -1472,7 +1473,7 @@ export class PopupMenu extends Popup{
   }
   get_focused_item() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_focused_item,
+      PopupMenu._bindings.method_get_focused_item,
       this._owner,
 			Variant.Type.INT,
       
@@ -1481,7 +1482,7 @@ export class PopupMenu extends Popup{
   }
   set_item_count(_count) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_count,
+      PopupMenu._bindings.method_set_item_count,
       this._owner,
       _count
     );
@@ -1489,7 +1490,7 @@ export class PopupMenu extends Popup{
   }
   get_item_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_count,
+      PopupMenu._bindings.method_get_item_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -1498,7 +1499,7 @@ export class PopupMenu extends Popup{
   }
   scroll_to_item(_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_scroll_to_item,
+      PopupMenu._bindings.method_scroll_to_item,
       this._owner,
       _index
     );
@@ -1506,7 +1507,7 @@ export class PopupMenu extends Popup{
   }
   remove_item(_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_item,
+      PopupMenu._bindings.method_remove_item,
       this._owner,
       _index
     );
@@ -1514,7 +1515,7 @@ export class PopupMenu extends Popup{
   }
   add_separator(_label, _id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_separator,
+      PopupMenu._bindings.method_add_separator,
       this._owner,
       _label, _id
     );
@@ -1522,7 +1523,7 @@ export class PopupMenu extends Popup{
   }
   clear(_free_submenus) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear,
+      PopupMenu._bindings.method_clear,
       this._owner,
       _free_submenus
     );
@@ -1530,7 +1531,7 @@ export class PopupMenu extends Popup{
   }
   set_hide_on_item_selection(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_hide_on_item_selection,
+      PopupMenu._bindings.method_set_hide_on_item_selection,
       this._owner,
       _enable
     );
@@ -1538,7 +1539,7 @@ export class PopupMenu extends Popup{
   }
   is_hide_on_item_selection() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_hide_on_item_selection,
+      PopupMenu._bindings.method_is_hide_on_item_selection,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1547,7 +1548,7 @@ export class PopupMenu extends Popup{
   }
   set_hide_on_checkable_item_selection(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_hide_on_checkable_item_selection,
+      PopupMenu._bindings.method_set_hide_on_checkable_item_selection,
       this._owner,
       _enable
     );
@@ -1555,7 +1556,7 @@ export class PopupMenu extends Popup{
   }
   is_hide_on_checkable_item_selection() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_hide_on_checkable_item_selection,
+      PopupMenu._bindings.method_is_hide_on_checkable_item_selection,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1564,7 +1565,7 @@ export class PopupMenu extends Popup{
   }
   set_hide_on_state_item_selection(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_hide_on_state_item_selection,
+      PopupMenu._bindings.method_set_hide_on_state_item_selection,
       this._owner,
       _enable
     );
@@ -1572,7 +1573,7 @@ export class PopupMenu extends Popup{
   }
   is_hide_on_state_item_selection() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_hide_on_state_item_selection,
+      PopupMenu._bindings.method_is_hide_on_state_item_selection,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1581,7 +1582,7 @@ export class PopupMenu extends Popup{
   }
   set_submenu_popup_delay(_seconds) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_submenu_popup_delay,
+      PopupMenu._bindings.method_set_submenu_popup_delay,
       this._owner,
       _seconds
     );
@@ -1589,7 +1590,7 @@ export class PopupMenu extends Popup{
   }
   get_submenu_popup_delay() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_submenu_popup_delay,
+      PopupMenu._bindings.method_get_submenu_popup_delay,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1598,7 +1599,7 @@ export class PopupMenu extends Popup{
   }
   set_allow_search(_allow) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_allow_search,
+      PopupMenu._bindings.method_set_allow_search,
       this._owner,
       _allow
     );
@@ -1606,7 +1607,7 @@ export class PopupMenu extends Popup{
   }
   get_allow_search() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_allow_search,
+      PopupMenu._bindings.method_get_allow_search,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1615,7 +1616,7 @@ export class PopupMenu extends Popup{
   }
   is_system_menu() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_system_menu,
+      PopupMenu._bindings.method_is_system_menu,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1624,7 +1625,7 @@ export class PopupMenu extends Popup{
   }
   set_system_menu(_system_menu_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_system_menu,
+      PopupMenu._bindings.method_set_system_menu,
       this._owner,
       _system_menu_id
     );
@@ -1632,7 +1633,7 @@ export class PopupMenu extends Popup{
   }
   get_system_menu() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_system_menu,
+      PopupMenu._bindings.method_get_system_menu,
       this._owner,
 			Variant.INT,
       

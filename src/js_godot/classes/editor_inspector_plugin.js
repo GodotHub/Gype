@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
+import { RefCounted } from '@js_godot/classes/ref_counted'
 import { Variant } from '@js_godot/variant/variant'
+import { PackedStringArray } from '@js_godot/variant/packed_string_array'
 import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
-import { RefCounted } from '@js_godot/classes/ref_counted'
-import { PackedStringArray } from '@js_godot/variant/packed_string_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -62,6 +62,7 @@ export class EditorInspectorPlugin extends RefCounted{
       );
     }
   }
+  
   _can_handle(_object) {
   }
   _parse_begin(_object) {
@@ -76,7 +77,7 @@ export class EditorInspectorPlugin extends RefCounted{
   }
   add_custom_control(_control) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_custom_control,
+      EditorInspectorPlugin._bindings.method_add_custom_control,
       this._owner,
       _control
     );
@@ -84,7 +85,7 @@ export class EditorInspectorPlugin extends RefCounted{
   }
   add_property_editor(_property, _editor, _add_to_end, _label) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_property_editor,
+      EditorInspectorPlugin._bindings.method_add_property_editor,
       this._owner,
       _property, _editor, _add_to_end, _label
     );
@@ -92,7 +93,7 @@ export class EditorInspectorPlugin extends RefCounted{
   }
   add_property_editor_for_multiple_properties(_label, _properties, _editor) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_property_editor_for_multiple_properties,
+      EditorInspectorPlugin._bindings.method_add_property_editor_for_multiple_properties,
       this._owner,
       _label, _properties, _editor
     );

@@ -1,15 +1,15 @@
 import * as internal from '__internal__';
 import { Control } from '@js_godot/classes/control'
-import { Callable } from '@js_godot/variant/callable'
-import { Variant } from '@js_godot/variant/variant'
-import { Rect2i } from '@js_godot/variant/rect2i'
-import { Vector2i } from '@js_godot/variant/vector2i'
+import { Vector2 } from '@js_godot/variant/vector2'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
+import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { Rect2i } from '@js_godot/variant/rect2i'
 import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
 import { Color } from '@js_godot/variant/color'
-import { Vector2 } from '@js_godot/variant/vector2'
-import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { Callable } from '@js_godot/variant/callable'
+import { GDString } from '@js_godot/variant/gd_string'
+import { Variant } from '@js_godot/variant/variant'
+import { Vector2i } from '@js_godot/variant/vector2i'
 import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
@@ -2369,6 +2369,7 @@ export class TextEdit extends Control{
       );
     }
   }
+  
   _handle_unicode_input(_unicode_char, _caret_index) {
   }
   _backspace(_caret_index) {
@@ -2383,7 +2384,7 @@ export class TextEdit extends Control{
   }
   has_ime_text() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_ime_text,
+      TextEdit._bindings.method_has_ime_text,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2392,7 +2393,7 @@ export class TextEdit extends Control{
   }
   cancel_ime() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_cancel_ime,
+      TextEdit._bindings.method_cancel_ime,
       this._owner,
       
     );
@@ -2400,7 +2401,7 @@ export class TextEdit extends Control{
   }
   apply_ime() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_apply_ime,
+      TextEdit._bindings.method_apply_ime,
       this._owner,
       
     );
@@ -2408,7 +2409,7 @@ export class TextEdit extends Control{
   }
   set_editable(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_editable,
+      TextEdit._bindings.method_set_editable,
       this._owner,
       _enabled
     );
@@ -2416,7 +2417,7 @@ export class TextEdit extends Control{
   }
   is_editable() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_editable,
+      TextEdit._bindings.method_is_editable,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2425,7 +2426,7 @@ export class TextEdit extends Control{
   }
   set_text_direction(_direction) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_text_direction,
+      TextEdit._bindings.method_set_text_direction,
       this._owner,
       _direction
     );
@@ -2433,7 +2434,7 @@ export class TextEdit extends Control{
   }
   get_text_direction() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_text_direction,
+      TextEdit._bindings.method_get_text_direction,
       this._owner,
 			Variant.INT,
       
@@ -2442,7 +2443,7 @@ export class TextEdit extends Control{
   }
   set_language(_language) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_language,
+      TextEdit._bindings.method_set_language,
       this._owner,
       _language
     );
@@ -2450,7 +2451,7 @@ export class TextEdit extends Control{
   }
   get_language() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_language,
+      TextEdit._bindings.method_get_language,
       this._owner,
 			Variant.Type.STRING,
     
@@ -2460,7 +2461,7 @@ export class TextEdit extends Control{
   }
   set_structured_text_bidi_override(_parser) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_structured_text_bidi_override,
+      TextEdit._bindings.method_set_structured_text_bidi_override,
       this._owner,
       _parser
     );
@@ -2468,7 +2469,7 @@ export class TextEdit extends Control{
   }
   get_structured_text_bidi_override() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_structured_text_bidi_override,
+      TextEdit._bindings.method_get_structured_text_bidi_override,
       this._owner,
 			Variant.INT,
       
@@ -2477,7 +2478,7 @@ export class TextEdit extends Control{
   }
   set_structured_text_bidi_override_options(_args) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_structured_text_bidi_override_options,
+      TextEdit._bindings.method_set_structured_text_bidi_override_options,
       this._owner,
       _args
     );
@@ -2485,7 +2486,7 @@ export class TextEdit extends Control{
   }
   get_structured_text_bidi_override_options() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_structured_text_bidi_override_options,
+      TextEdit._bindings.method_get_structured_text_bidi_override_options,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -2495,7 +2496,7 @@ export class TextEdit extends Control{
   }
   set_tab_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tab_size,
+      TextEdit._bindings.method_set_tab_size,
       this._owner,
       _size
     );
@@ -2503,7 +2504,7 @@ export class TextEdit extends Control{
   }
   get_tab_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tab_size,
+      TextEdit._bindings.method_get_tab_size,
       this._owner,
 			Variant.Type.INT,
       
@@ -2512,7 +2513,7 @@ export class TextEdit extends Control{
   }
   set_indent_wrapped_lines(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_indent_wrapped_lines,
+      TextEdit._bindings.method_set_indent_wrapped_lines,
       this._owner,
       _enabled
     );
@@ -2520,7 +2521,7 @@ export class TextEdit extends Control{
   }
   is_indent_wrapped_lines() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_indent_wrapped_lines,
+      TextEdit._bindings.method_is_indent_wrapped_lines,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2529,7 +2530,7 @@ export class TextEdit extends Control{
   }
   set_overtype_mode_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_overtype_mode_enabled,
+      TextEdit._bindings.method_set_overtype_mode_enabled,
       this._owner,
       _enabled
     );
@@ -2537,7 +2538,7 @@ export class TextEdit extends Control{
   }
   is_overtype_mode_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_overtype_mode_enabled,
+      TextEdit._bindings.method_is_overtype_mode_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2546,7 +2547,7 @@ export class TextEdit extends Control{
   }
   set_context_menu_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_context_menu_enabled,
+      TextEdit._bindings.method_set_context_menu_enabled,
       this._owner,
       _enabled
     );
@@ -2554,7 +2555,7 @@ export class TextEdit extends Control{
   }
   is_context_menu_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_context_menu_enabled,
+      TextEdit._bindings.method_is_context_menu_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2563,7 +2564,7 @@ export class TextEdit extends Control{
   }
   set_shortcut_keys_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shortcut_keys_enabled,
+      TextEdit._bindings.method_set_shortcut_keys_enabled,
       this._owner,
       _enabled
     );
@@ -2571,7 +2572,7 @@ export class TextEdit extends Control{
   }
   is_shortcut_keys_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_shortcut_keys_enabled,
+      TextEdit._bindings.method_is_shortcut_keys_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2580,7 +2581,7 @@ export class TextEdit extends Control{
   }
   set_virtual_keyboard_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_virtual_keyboard_enabled,
+      TextEdit._bindings.method_set_virtual_keyboard_enabled,
       this._owner,
       _enabled
     );
@@ -2588,7 +2589,7 @@ export class TextEdit extends Control{
   }
   is_virtual_keyboard_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_virtual_keyboard_enabled,
+      TextEdit._bindings.method_is_virtual_keyboard_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2597,7 +2598,7 @@ export class TextEdit extends Control{
   }
   set_middle_mouse_paste_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_middle_mouse_paste_enabled,
+      TextEdit._bindings.method_set_middle_mouse_paste_enabled,
       this._owner,
       _enabled
     );
@@ -2605,7 +2606,7 @@ export class TextEdit extends Control{
   }
   is_middle_mouse_paste_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_middle_mouse_paste_enabled,
+      TextEdit._bindings.method_is_middle_mouse_paste_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2614,7 +2615,7 @@ export class TextEdit extends Control{
   }
   clear() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear,
+      TextEdit._bindings.method_clear,
       this._owner,
       
     );
@@ -2622,7 +2623,7 @@ export class TextEdit extends Control{
   }
   set_text(_text) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_text,
+      TextEdit._bindings.method_set_text,
       this._owner,
       _text
     );
@@ -2630,7 +2631,7 @@ export class TextEdit extends Control{
   }
   get_text() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_text,
+      TextEdit._bindings.method_get_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -2640,7 +2641,7 @@ export class TextEdit extends Control{
   }
   get_line_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_count,
+      TextEdit._bindings.method_get_line_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -2649,7 +2650,7 @@ export class TextEdit extends Control{
   }
   set_placeholder(_text) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_placeholder,
+      TextEdit._bindings.method_set_placeholder,
       this._owner,
       _text
     );
@@ -2657,7 +2658,7 @@ export class TextEdit extends Control{
   }
   get_placeholder() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_placeholder,
+      TextEdit._bindings.method_get_placeholder,
       this._owner,
 			Variant.Type.STRING,
     
@@ -2667,7 +2668,7 @@ export class TextEdit extends Control{
   }
   set_line(_line, _new_text) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_line,
+      TextEdit._bindings.method_set_line,
       this._owner,
       _line, _new_text
     );
@@ -2675,7 +2676,7 @@ export class TextEdit extends Control{
   }
   get_line(_line) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line,
+      TextEdit._bindings.method_get_line,
       this._owner,
 			Variant.Type.STRING,
     
@@ -2685,7 +2686,7 @@ export class TextEdit extends Control{
   }
   get_line_width(_line, _wrap_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_width,
+      TextEdit._bindings.method_get_line_width,
       this._owner,
 			Variant.Type.INT,
       _line, _wrap_index
@@ -2694,7 +2695,7 @@ export class TextEdit extends Control{
   }
   get_line_height() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_height,
+      TextEdit._bindings.method_get_line_height,
       this._owner,
 			Variant.Type.INT,
       
@@ -2703,7 +2704,7 @@ export class TextEdit extends Control{
   }
   get_indent_level(_line) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_indent_level,
+      TextEdit._bindings.method_get_indent_level,
       this._owner,
 			Variant.Type.INT,
       _line
@@ -2712,7 +2713,7 @@ export class TextEdit extends Control{
   }
   get_first_non_whitespace_column(_line) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_first_non_whitespace_column,
+      TextEdit._bindings.method_get_first_non_whitespace_column,
       this._owner,
 			Variant.Type.INT,
       _line
@@ -2721,7 +2722,7 @@ export class TextEdit extends Control{
   }
   swap_lines(_from_line, _to_line) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_swap_lines,
+      TextEdit._bindings.method_swap_lines,
       this._owner,
       _from_line, _to_line
     );
@@ -2729,7 +2730,7 @@ export class TextEdit extends Control{
   }
   insert_line_at(_line, _text) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_insert_line_at,
+      TextEdit._bindings.method_insert_line_at,
       this._owner,
       _line, _text
     );
@@ -2737,7 +2738,7 @@ export class TextEdit extends Control{
   }
   remove_line_at(_line, _move_carets_down) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_line_at,
+      TextEdit._bindings.method_remove_line_at,
       this._owner,
       _line, _move_carets_down
     );
@@ -2745,7 +2746,7 @@ export class TextEdit extends Control{
   }
   insert_text_at_caret(_text, _caret_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_insert_text_at_caret,
+      TextEdit._bindings.method_insert_text_at_caret,
       this._owner,
       _text, _caret_index
     );
@@ -2753,7 +2754,7 @@ export class TextEdit extends Control{
   }
   insert_text(_text, _line, _column, _before_selection_begin, _before_selection_end) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_insert_text,
+      TextEdit._bindings.method_insert_text,
       this._owner,
       _text, _line, _column, _before_selection_begin, _before_selection_end
     );
@@ -2761,7 +2762,7 @@ export class TextEdit extends Control{
   }
   remove_text(_from_line, _from_column, _to_line, _to_column) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_text,
+      TextEdit._bindings.method_remove_text,
       this._owner,
       _from_line, _from_column, _to_line, _to_column
     );
@@ -2769,7 +2770,7 @@ export class TextEdit extends Control{
   }
   get_last_unhidden_line() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_last_unhidden_line,
+      TextEdit._bindings.method_get_last_unhidden_line,
       this._owner,
 			Variant.Type.INT,
       
@@ -2778,7 +2779,7 @@ export class TextEdit extends Control{
   }
   get_next_visible_line_offset_from(_line, _visible_amount) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_next_visible_line_offset_from,
+      TextEdit._bindings.method_get_next_visible_line_offset_from,
       this._owner,
 			Variant.Type.INT,
       _line, _visible_amount
@@ -2787,7 +2788,7 @@ export class TextEdit extends Control{
   }
   get_next_visible_line_index_offset_from(_line, _wrap_index, _visible_amount) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_next_visible_line_index_offset_from,
+      TextEdit._bindings.method_get_next_visible_line_index_offset_from,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -2797,7 +2798,7 @@ export class TextEdit extends Control{
   }
   backspace(_caret_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_backspace,
+      TextEdit._bindings.method_backspace,
       this._owner,
       _caret_index
     );
@@ -2805,7 +2806,7 @@ export class TextEdit extends Control{
   }
   cut(_caret_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_cut,
+      TextEdit._bindings.method_cut,
       this._owner,
       _caret_index
     );
@@ -2813,7 +2814,7 @@ export class TextEdit extends Control{
   }
   copy(_caret_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_copy,
+      TextEdit._bindings.method_copy,
       this._owner,
       _caret_index
     );
@@ -2821,7 +2822,7 @@ export class TextEdit extends Control{
   }
   paste(_caret_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_paste,
+      TextEdit._bindings.method_paste,
       this._owner,
       _caret_index
     );
@@ -2829,7 +2830,7 @@ export class TextEdit extends Control{
   }
   paste_primary_clipboard(_caret_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_paste_primary_clipboard,
+      TextEdit._bindings.method_paste_primary_clipboard,
       this._owner,
       _caret_index
     );
@@ -2837,7 +2838,7 @@ export class TextEdit extends Control{
   }
   start_action(_action) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_start_action,
+      TextEdit._bindings.method_start_action,
       this._owner,
       _action
     );
@@ -2845,7 +2846,7 @@ export class TextEdit extends Control{
   }
   end_action() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_end_action,
+      TextEdit._bindings.method_end_action,
       this._owner,
       
     );
@@ -2853,7 +2854,7 @@ export class TextEdit extends Control{
   }
   begin_complex_operation() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_begin_complex_operation,
+      TextEdit._bindings.method_begin_complex_operation,
       this._owner,
       
     );
@@ -2861,7 +2862,7 @@ export class TextEdit extends Control{
   }
   end_complex_operation() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_end_complex_operation,
+      TextEdit._bindings.method_end_complex_operation,
       this._owner,
       
     );
@@ -2869,7 +2870,7 @@ export class TextEdit extends Control{
   }
   has_undo() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_undo,
+      TextEdit._bindings.method_has_undo,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2878,7 +2879,7 @@ export class TextEdit extends Control{
   }
   has_redo() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_redo,
+      TextEdit._bindings.method_has_redo,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2887,7 +2888,7 @@ export class TextEdit extends Control{
   }
   undo() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_undo,
+      TextEdit._bindings.method_undo,
       this._owner,
       
     );
@@ -2895,7 +2896,7 @@ export class TextEdit extends Control{
   }
   redo() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_redo,
+      TextEdit._bindings.method_redo,
       this._owner,
       
     );
@@ -2903,7 +2904,7 @@ export class TextEdit extends Control{
   }
   clear_undo_history() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_undo_history,
+      TextEdit._bindings.method_clear_undo_history,
       this._owner,
       
     );
@@ -2911,7 +2912,7 @@ export class TextEdit extends Control{
   }
   tag_saved_version() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_tag_saved_version,
+      TextEdit._bindings.method_tag_saved_version,
       this._owner,
       
     );
@@ -2919,7 +2920,7 @@ export class TextEdit extends Control{
   }
   get_version() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_version,
+      TextEdit._bindings.method_get_version,
       this._owner,
 			Variant.Type.INT,
       
@@ -2928,7 +2929,7 @@ export class TextEdit extends Control{
   }
   get_saved_version() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_saved_version,
+      TextEdit._bindings.method_get_saved_version,
       this._owner,
 			Variant.Type.INT,
       
@@ -2937,7 +2938,7 @@ export class TextEdit extends Control{
   }
   set_search_text(_search_text) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_search_text,
+      TextEdit._bindings.method_set_search_text,
       this._owner,
       _search_text
     );
@@ -2945,7 +2946,7 @@ export class TextEdit extends Control{
   }
   set_search_flags(_flags) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_search_flags,
+      TextEdit._bindings.method_set_search_flags,
       this._owner,
       _flags
     );
@@ -2953,7 +2954,7 @@ export class TextEdit extends Control{
   }
   search(_text, _flags, _from_line, _from_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_search,
+      TextEdit._bindings.method_search,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -2963,7 +2964,7 @@ export class TextEdit extends Control{
   }
   set_tooltip_request_func(_callback) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tooltip_request_func,
+      TextEdit._bindings.method_set_tooltip_request_func,
       this._owner,
       _callback
     );
@@ -2971,7 +2972,7 @@ export class TextEdit extends Control{
   }
   get_local_mouse_pos() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_local_mouse_pos,
+      TextEdit._bindings.method_get_local_mouse_pos,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -2981,7 +2982,7 @@ export class TextEdit extends Control{
   }
   get_word_at_pos(_position) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_word_at_pos,
+      TextEdit._bindings.method_get_word_at_pos,
       this._owner,
 			Variant.Type.STRING,
     
@@ -2991,7 +2992,7 @@ export class TextEdit extends Control{
   }
   get_line_column_at_pos(_position, _allow_out_of_bounds) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_column_at_pos,
+      TextEdit._bindings.method_get_line_column_at_pos,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -3001,7 +3002,7 @@ export class TextEdit extends Control{
   }
   get_pos_at_line_column(_line, _column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_pos_at_line_column,
+      TextEdit._bindings.method_get_pos_at_line_column,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -3011,7 +3012,7 @@ export class TextEdit extends Control{
   }
   get_rect_at_line_column(_line, _column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rect_at_line_column,
+      TextEdit._bindings.method_get_rect_at_line_column,
       this._owner,
 			Variant.Type.RECT2I,
     
@@ -3021,7 +3022,7 @@ export class TextEdit extends Control{
   }
   get_minimap_line_at_pos(_position) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_minimap_line_at_pos,
+      TextEdit._bindings.method_get_minimap_line_at_pos,
       this._owner,
 			Variant.Type.INT,
       _position
@@ -3030,7 +3031,7 @@ export class TextEdit extends Control{
   }
   is_dragging_cursor() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_dragging_cursor,
+      TextEdit._bindings.method_is_dragging_cursor,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -3039,7 +3040,7 @@ export class TextEdit extends Control{
   }
   is_mouse_over_selection(_edges, _caret_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_mouse_over_selection,
+      TextEdit._bindings.method_is_mouse_over_selection,
       this._owner,
 			Variant.Type.BOOL,
       _edges, _caret_index
@@ -3048,7 +3049,7 @@ export class TextEdit extends Control{
   }
   set_caret_type(_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_caret_type,
+      TextEdit._bindings.method_set_caret_type,
       this._owner,
       _type
     );
@@ -3056,7 +3057,7 @@ export class TextEdit extends Control{
   }
   get_caret_type() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_caret_type,
+      TextEdit._bindings.method_get_caret_type,
       this._owner,
 			Variant.INT,
       
@@ -3065,7 +3066,7 @@ export class TextEdit extends Control{
   }
   set_caret_blink_enabled(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_caret_blink_enabled,
+      TextEdit._bindings.method_set_caret_blink_enabled,
       this._owner,
       _enable
     );
@@ -3073,7 +3074,7 @@ export class TextEdit extends Control{
   }
   is_caret_blink_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_caret_blink_enabled,
+      TextEdit._bindings.method_is_caret_blink_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -3082,7 +3083,7 @@ export class TextEdit extends Control{
   }
   set_caret_blink_interval(_interval) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_caret_blink_interval,
+      TextEdit._bindings.method_set_caret_blink_interval,
       this._owner,
       _interval
     );
@@ -3090,7 +3091,7 @@ export class TextEdit extends Control{
   }
   get_caret_blink_interval() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_caret_blink_interval,
+      TextEdit._bindings.method_get_caret_blink_interval,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -3099,7 +3100,7 @@ export class TextEdit extends Control{
   }
   set_draw_caret_when_editable_disabled(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_draw_caret_when_editable_disabled,
+      TextEdit._bindings.method_set_draw_caret_when_editable_disabled,
       this._owner,
       _enable
     );
@@ -3107,7 +3108,7 @@ export class TextEdit extends Control{
   }
   is_drawing_caret_when_editable_disabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_drawing_caret_when_editable_disabled,
+      TextEdit._bindings.method_is_drawing_caret_when_editable_disabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -3116,7 +3117,7 @@ export class TextEdit extends Control{
   }
   set_move_caret_on_right_click_enabled(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_move_caret_on_right_click_enabled,
+      TextEdit._bindings.method_set_move_caret_on_right_click_enabled,
       this._owner,
       _enable
     );
@@ -3124,7 +3125,7 @@ export class TextEdit extends Control{
   }
   is_move_caret_on_right_click_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_move_caret_on_right_click_enabled,
+      TextEdit._bindings.method_is_move_caret_on_right_click_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -3133,7 +3134,7 @@ export class TextEdit extends Control{
   }
   set_caret_mid_grapheme_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_caret_mid_grapheme_enabled,
+      TextEdit._bindings.method_set_caret_mid_grapheme_enabled,
       this._owner,
       _enabled
     );
@@ -3141,7 +3142,7 @@ export class TextEdit extends Control{
   }
   is_caret_mid_grapheme_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_caret_mid_grapheme_enabled,
+      TextEdit._bindings.method_is_caret_mid_grapheme_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -3150,7 +3151,7 @@ export class TextEdit extends Control{
   }
   set_multiple_carets_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_multiple_carets_enabled,
+      TextEdit._bindings.method_set_multiple_carets_enabled,
       this._owner,
       _enabled
     );
@@ -3158,7 +3159,7 @@ export class TextEdit extends Control{
   }
   is_multiple_carets_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_multiple_carets_enabled,
+      TextEdit._bindings.method_is_multiple_carets_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -3167,7 +3168,7 @@ export class TextEdit extends Control{
   }
   add_caret(_line, _column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_add_caret,
+      TextEdit._bindings.method_add_caret,
       this._owner,
 			Variant.Type.INT,
       _line, _column
@@ -3176,7 +3177,7 @@ export class TextEdit extends Control{
   }
   remove_caret(_caret) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_caret,
+      TextEdit._bindings.method_remove_caret,
       this._owner,
       _caret
     );
@@ -3184,7 +3185,7 @@ export class TextEdit extends Control{
   }
   remove_secondary_carets() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_secondary_carets,
+      TextEdit._bindings.method_remove_secondary_carets,
       this._owner,
       
     );
@@ -3192,7 +3193,7 @@ export class TextEdit extends Control{
   }
   get_caret_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_caret_count,
+      TextEdit._bindings.method_get_caret_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -3201,7 +3202,7 @@ export class TextEdit extends Control{
   }
   add_caret_at_carets(_below) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_caret_at_carets,
+      TextEdit._bindings.method_add_caret_at_carets,
       this._owner,
       _below
     );
@@ -3209,7 +3210,7 @@ export class TextEdit extends Control{
   }
   get_sorted_carets(_include_ignored_carets) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sorted_carets,
+      TextEdit._bindings.method_get_sorted_carets,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -3219,7 +3220,7 @@ export class TextEdit extends Control{
   }
   collapse_carets(_from_line, _from_column, _to_line, _to_column, _inclusive) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_collapse_carets,
+      TextEdit._bindings.method_collapse_carets,
       this._owner,
       _from_line, _from_column, _to_line, _to_column, _inclusive
     );
@@ -3227,7 +3228,7 @@ export class TextEdit extends Control{
   }
   merge_overlapping_carets() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_merge_overlapping_carets,
+      TextEdit._bindings.method_merge_overlapping_carets,
       this._owner,
       
     );
@@ -3235,7 +3236,7 @@ export class TextEdit extends Control{
   }
   begin_multicaret_edit() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_begin_multicaret_edit,
+      TextEdit._bindings.method_begin_multicaret_edit,
       this._owner,
       
     );
@@ -3243,7 +3244,7 @@ export class TextEdit extends Control{
   }
   end_multicaret_edit() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_end_multicaret_edit,
+      TextEdit._bindings.method_end_multicaret_edit,
       this._owner,
       
     );
@@ -3251,7 +3252,7 @@ export class TextEdit extends Control{
   }
   is_in_mulitcaret_edit() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_in_mulitcaret_edit,
+      TextEdit._bindings.method_is_in_mulitcaret_edit,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -3260,7 +3261,7 @@ export class TextEdit extends Control{
   }
   multicaret_edit_ignore_caret(_caret_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_multicaret_edit_ignore_caret,
+      TextEdit._bindings.method_multicaret_edit_ignore_caret,
       this._owner,
 			Variant.Type.BOOL,
       _caret_index
@@ -3269,7 +3270,7 @@ export class TextEdit extends Control{
   }
   is_caret_visible(_caret_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_caret_visible,
+      TextEdit._bindings.method_is_caret_visible,
       this._owner,
 			Variant.Type.BOOL,
       _caret_index
@@ -3278,7 +3279,7 @@ export class TextEdit extends Control{
   }
   get_caret_draw_pos(_caret_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_caret_draw_pos,
+      TextEdit._bindings.method_get_caret_draw_pos,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -3288,7 +3289,7 @@ export class TextEdit extends Control{
   }
   set_caret_line(_line, _adjust_viewport, _can_be_hidden, _wrap_index, _caret_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_caret_line,
+      TextEdit._bindings.method_set_caret_line,
       this._owner,
       _line, _adjust_viewport, _can_be_hidden, _wrap_index, _caret_index
     );
@@ -3296,7 +3297,7 @@ export class TextEdit extends Control{
   }
   get_caret_line(_caret_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_caret_line,
+      TextEdit._bindings.method_get_caret_line,
       this._owner,
 			Variant.Type.INT,
       _caret_index
@@ -3305,7 +3306,7 @@ export class TextEdit extends Control{
   }
   set_caret_column(_column, _adjust_viewport, _caret_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_caret_column,
+      TextEdit._bindings.method_set_caret_column,
       this._owner,
       _column, _adjust_viewport, _caret_index
     );
@@ -3313,7 +3314,7 @@ export class TextEdit extends Control{
   }
   get_caret_column(_caret_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_caret_column,
+      TextEdit._bindings.method_get_caret_column,
       this._owner,
 			Variant.Type.INT,
       _caret_index
@@ -3322,7 +3323,7 @@ export class TextEdit extends Control{
   }
   get_caret_wrap_index(_caret_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_caret_wrap_index,
+      TextEdit._bindings.method_get_caret_wrap_index,
       this._owner,
 			Variant.Type.INT,
       _caret_index
@@ -3331,7 +3332,7 @@ export class TextEdit extends Control{
   }
   get_word_under_caret(_caret_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_word_under_caret,
+      TextEdit._bindings.method_get_word_under_caret,
       this._owner,
 			Variant.Type.STRING,
     
@@ -3341,7 +3342,7 @@ export class TextEdit extends Control{
   }
   set_use_default_word_separators(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_default_word_separators,
+      TextEdit._bindings.method_set_use_default_word_separators,
       this._owner,
       _enabled
     );
@@ -3349,7 +3350,7 @@ export class TextEdit extends Control{
   }
   is_default_word_separators_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_default_word_separators_enabled,
+      TextEdit._bindings.method_is_default_word_separators_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -3358,7 +3359,7 @@ export class TextEdit extends Control{
   }
   set_use_custom_word_separators(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_custom_word_separators,
+      TextEdit._bindings.method_set_use_custom_word_separators,
       this._owner,
       _enabled
     );
@@ -3366,7 +3367,7 @@ export class TextEdit extends Control{
   }
   is_custom_word_separators_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_custom_word_separators_enabled,
+      TextEdit._bindings.method_is_custom_word_separators_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -3375,7 +3376,7 @@ export class TextEdit extends Control{
   }
   set_custom_word_separators(_custom_word_separators) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_custom_word_separators,
+      TextEdit._bindings.method_set_custom_word_separators,
       this._owner,
       _custom_word_separators
     );
@@ -3383,7 +3384,7 @@ export class TextEdit extends Control{
   }
   get_custom_word_separators() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_custom_word_separators,
+      TextEdit._bindings.method_get_custom_word_separators,
       this._owner,
 			Variant.Type.STRING,
     
@@ -3393,7 +3394,7 @@ export class TextEdit extends Control{
   }
   set_selecting_enabled(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_selecting_enabled,
+      TextEdit._bindings.method_set_selecting_enabled,
       this._owner,
       _enable
     );
@@ -3401,7 +3402,7 @@ export class TextEdit extends Control{
   }
   is_selecting_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_selecting_enabled,
+      TextEdit._bindings.method_is_selecting_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -3410,7 +3411,7 @@ export class TextEdit extends Control{
   }
   set_deselect_on_focus_loss_enabled(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_deselect_on_focus_loss_enabled,
+      TextEdit._bindings.method_set_deselect_on_focus_loss_enabled,
       this._owner,
       _enable
     );
@@ -3418,7 +3419,7 @@ export class TextEdit extends Control{
   }
   is_deselect_on_focus_loss_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_deselect_on_focus_loss_enabled,
+      TextEdit._bindings.method_is_deselect_on_focus_loss_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -3427,7 +3428,7 @@ export class TextEdit extends Control{
   }
   set_drag_and_drop_selection_enabled(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_drag_and_drop_selection_enabled,
+      TextEdit._bindings.method_set_drag_and_drop_selection_enabled,
       this._owner,
       _enable
     );
@@ -3435,7 +3436,7 @@ export class TextEdit extends Control{
   }
   is_drag_and_drop_selection_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_drag_and_drop_selection_enabled,
+      TextEdit._bindings.method_is_drag_and_drop_selection_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -3444,7 +3445,7 @@ export class TextEdit extends Control{
   }
   set_selection_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_selection_mode,
+      TextEdit._bindings.method_set_selection_mode,
       this._owner,
       _mode
     );
@@ -3452,7 +3453,7 @@ export class TextEdit extends Control{
   }
   get_selection_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_selection_mode,
+      TextEdit._bindings.method_get_selection_mode,
       this._owner,
 			Variant.INT,
       
@@ -3461,7 +3462,7 @@ export class TextEdit extends Control{
   }
   select_all() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_select_all,
+      TextEdit._bindings.method_select_all,
       this._owner,
       
     );
@@ -3469,7 +3470,7 @@ export class TextEdit extends Control{
   }
   select_word_under_caret(_caret_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_select_word_under_caret,
+      TextEdit._bindings.method_select_word_under_caret,
       this._owner,
       _caret_index
     );
@@ -3477,7 +3478,7 @@ export class TextEdit extends Control{
   }
   add_selection_for_next_occurrence() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_selection_for_next_occurrence,
+      TextEdit._bindings.method_add_selection_for_next_occurrence,
       this._owner,
       
     );
@@ -3485,7 +3486,7 @@ export class TextEdit extends Control{
   }
   skip_selection_for_next_occurrence() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_skip_selection_for_next_occurrence,
+      TextEdit._bindings.method_skip_selection_for_next_occurrence,
       this._owner,
       
     );
@@ -3493,7 +3494,7 @@ export class TextEdit extends Control{
   }
   select(_origin_line, _origin_column, _caret_line, _caret_column, _caret_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_select,
+      TextEdit._bindings.method_select,
       this._owner,
       _origin_line, _origin_column, _caret_line, _caret_column, _caret_index
     );
@@ -3501,7 +3502,7 @@ export class TextEdit extends Control{
   }
   has_selection(_caret_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_selection,
+      TextEdit._bindings.method_has_selection,
       this._owner,
 			Variant.Type.BOOL,
       _caret_index
@@ -3510,7 +3511,7 @@ export class TextEdit extends Control{
   }
   get_selected_text(_caret_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_selected_text,
+      TextEdit._bindings.method_get_selected_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -3520,7 +3521,7 @@ export class TextEdit extends Control{
   }
   get_selection_at_line_column(_line, _column, _include_edges, _only_selections) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_selection_at_line_column,
+      TextEdit._bindings.method_get_selection_at_line_column,
       this._owner,
 			Variant.Type.INT,
       _line, _column, _include_edges, _only_selections
@@ -3529,7 +3530,7 @@ export class TextEdit extends Control{
   }
   get_line_ranges_from_carets(_only_selections, _merge_adjacent) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_ranges_from_carets,
+      TextEdit._bindings.method_get_line_ranges_from_carets,
       this._owner,
 			Variant.INT,
       _only_selections, _merge_adjacent
@@ -3538,7 +3539,7 @@ export class TextEdit extends Control{
   }
   get_selection_origin_line(_caret_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_selection_origin_line,
+      TextEdit._bindings.method_get_selection_origin_line,
       this._owner,
 			Variant.Type.INT,
       _caret_index
@@ -3547,7 +3548,7 @@ export class TextEdit extends Control{
   }
   get_selection_origin_column(_caret_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_selection_origin_column,
+      TextEdit._bindings.method_get_selection_origin_column,
       this._owner,
 			Variant.Type.INT,
       _caret_index
@@ -3556,7 +3557,7 @@ export class TextEdit extends Control{
   }
   set_selection_origin_line(_line, _can_be_hidden, _wrap_index, _caret_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_selection_origin_line,
+      TextEdit._bindings.method_set_selection_origin_line,
       this._owner,
       _line, _can_be_hidden, _wrap_index, _caret_index
     );
@@ -3564,7 +3565,7 @@ export class TextEdit extends Control{
   }
   set_selection_origin_column(_column, _caret_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_selection_origin_column,
+      TextEdit._bindings.method_set_selection_origin_column,
       this._owner,
       _column, _caret_index
     );
@@ -3572,7 +3573,7 @@ export class TextEdit extends Control{
   }
   get_selection_from_line(_caret_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_selection_from_line,
+      TextEdit._bindings.method_get_selection_from_line,
       this._owner,
 			Variant.Type.INT,
       _caret_index
@@ -3581,7 +3582,7 @@ export class TextEdit extends Control{
   }
   get_selection_from_column(_caret_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_selection_from_column,
+      TextEdit._bindings.method_get_selection_from_column,
       this._owner,
 			Variant.Type.INT,
       _caret_index
@@ -3590,7 +3591,7 @@ export class TextEdit extends Control{
   }
   get_selection_to_line(_caret_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_selection_to_line,
+      TextEdit._bindings.method_get_selection_to_line,
       this._owner,
 			Variant.Type.INT,
       _caret_index
@@ -3599,7 +3600,7 @@ export class TextEdit extends Control{
   }
   get_selection_to_column(_caret_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_selection_to_column,
+      TextEdit._bindings.method_get_selection_to_column,
       this._owner,
 			Variant.Type.INT,
       _caret_index
@@ -3608,7 +3609,7 @@ export class TextEdit extends Control{
   }
   is_caret_after_selection_origin(_caret_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_caret_after_selection_origin,
+      TextEdit._bindings.method_is_caret_after_selection_origin,
       this._owner,
 			Variant.Type.BOOL,
       _caret_index
@@ -3617,7 +3618,7 @@ export class TextEdit extends Control{
   }
   deselect(_caret_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_deselect,
+      TextEdit._bindings.method_deselect,
       this._owner,
       _caret_index
     );
@@ -3625,7 +3626,7 @@ export class TextEdit extends Control{
   }
   delete_selection(_caret_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_delete_selection,
+      TextEdit._bindings.method_delete_selection,
       this._owner,
       _caret_index
     );
@@ -3633,7 +3634,7 @@ export class TextEdit extends Control{
   }
   set_line_wrapping_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_line_wrapping_mode,
+      TextEdit._bindings.method_set_line_wrapping_mode,
       this._owner,
       _mode
     );
@@ -3641,7 +3642,7 @@ export class TextEdit extends Control{
   }
   get_line_wrapping_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_wrapping_mode,
+      TextEdit._bindings.method_get_line_wrapping_mode,
       this._owner,
 			Variant.INT,
       
@@ -3650,7 +3651,7 @@ export class TextEdit extends Control{
   }
   set_autowrap_mode(_autowrap_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_autowrap_mode,
+      TextEdit._bindings.method_set_autowrap_mode,
       this._owner,
       _autowrap_mode
     );
@@ -3658,7 +3659,7 @@ export class TextEdit extends Control{
   }
   get_autowrap_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_autowrap_mode,
+      TextEdit._bindings.method_get_autowrap_mode,
       this._owner,
 			Variant.INT,
       
@@ -3667,7 +3668,7 @@ export class TextEdit extends Control{
   }
   is_line_wrapped(_line) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_line_wrapped,
+      TextEdit._bindings.method_is_line_wrapped,
       this._owner,
 			Variant.Type.BOOL,
       _line
@@ -3676,7 +3677,7 @@ export class TextEdit extends Control{
   }
   get_line_wrap_count(_line) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_wrap_count,
+      TextEdit._bindings.method_get_line_wrap_count,
       this._owner,
 			Variant.Type.INT,
       _line
@@ -3685,7 +3686,7 @@ export class TextEdit extends Control{
   }
   get_line_wrap_index_at_column(_line, _column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_wrap_index_at_column,
+      TextEdit._bindings.method_get_line_wrap_index_at_column,
       this._owner,
 			Variant.Type.INT,
       _line, _column
@@ -3694,7 +3695,7 @@ export class TextEdit extends Control{
   }
   get_line_wrapped_text(_line) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_wrapped_text,
+      TextEdit._bindings.method_get_line_wrapped_text,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -3704,7 +3705,7 @@ export class TextEdit extends Control{
   }
   set_smooth_scroll_enabled(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_smooth_scroll_enabled,
+      TextEdit._bindings.method_set_smooth_scroll_enabled,
       this._owner,
       _enable
     );
@@ -3712,7 +3713,7 @@ export class TextEdit extends Control{
   }
   is_smooth_scroll_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_smooth_scroll_enabled,
+      TextEdit._bindings.method_is_smooth_scroll_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -3721,7 +3722,7 @@ export class TextEdit extends Control{
   }
   get_v_scroll_bar() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_v_scroll_bar,
+      TextEdit._bindings.method_get_v_scroll_bar,
       this._owner,
 			Variant.INT,
       
@@ -3730,7 +3731,7 @@ export class TextEdit extends Control{
   }
   get_h_scroll_bar() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_h_scroll_bar,
+      TextEdit._bindings.method_get_h_scroll_bar,
       this._owner,
 			Variant.INT,
       
@@ -3739,7 +3740,7 @@ export class TextEdit extends Control{
   }
   set_v_scroll(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_v_scroll,
+      TextEdit._bindings.method_set_v_scroll,
       this._owner,
       _value
     );
@@ -3747,7 +3748,7 @@ export class TextEdit extends Control{
   }
   get_v_scroll() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_v_scroll,
+      TextEdit._bindings.method_get_v_scroll,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -3756,7 +3757,7 @@ export class TextEdit extends Control{
   }
   set_h_scroll(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_h_scroll,
+      TextEdit._bindings.method_set_h_scroll,
       this._owner,
       _value
     );
@@ -3764,7 +3765,7 @@ export class TextEdit extends Control{
   }
   get_h_scroll() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_h_scroll,
+      TextEdit._bindings.method_get_h_scroll,
       this._owner,
 			Variant.Type.INT,
       
@@ -3773,7 +3774,7 @@ export class TextEdit extends Control{
   }
   set_scroll_past_end_of_file_enabled(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_scroll_past_end_of_file_enabled,
+      TextEdit._bindings.method_set_scroll_past_end_of_file_enabled,
       this._owner,
       _enable
     );
@@ -3781,7 +3782,7 @@ export class TextEdit extends Control{
   }
   is_scroll_past_end_of_file_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_scroll_past_end_of_file_enabled,
+      TextEdit._bindings.method_is_scroll_past_end_of_file_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -3790,7 +3791,7 @@ export class TextEdit extends Control{
   }
   set_v_scroll_speed(_speed) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_v_scroll_speed,
+      TextEdit._bindings.method_set_v_scroll_speed,
       this._owner,
       _speed
     );
@@ -3798,7 +3799,7 @@ export class TextEdit extends Control{
   }
   get_v_scroll_speed() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_v_scroll_speed,
+      TextEdit._bindings.method_get_v_scroll_speed,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -3807,7 +3808,7 @@ export class TextEdit extends Control{
   }
   set_fit_content_height_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fit_content_height_enabled,
+      TextEdit._bindings.method_set_fit_content_height_enabled,
       this._owner,
       _enabled
     );
@@ -3815,7 +3816,7 @@ export class TextEdit extends Control{
   }
   is_fit_content_height_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_fit_content_height_enabled,
+      TextEdit._bindings.method_is_fit_content_height_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -3824,7 +3825,7 @@ export class TextEdit extends Control{
   }
   get_scroll_pos_for_line(_line, _wrap_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_scroll_pos_for_line,
+      TextEdit._bindings.method_get_scroll_pos_for_line,
       this._owner,
 			Variant.Type.FLOAT,
       _line, _wrap_index
@@ -3833,7 +3834,7 @@ export class TextEdit extends Control{
   }
   set_line_as_first_visible(_line, _wrap_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_line_as_first_visible,
+      TextEdit._bindings.method_set_line_as_first_visible,
       this._owner,
       _line, _wrap_index
     );
@@ -3841,7 +3842,7 @@ export class TextEdit extends Control{
   }
   get_first_visible_line() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_first_visible_line,
+      TextEdit._bindings.method_get_first_visible_line,
       this._owner,
 			Variant.Type.INT,
       
@@ -3850,7 +3851,7 @@ export class TextEdit extends Control{
   }
   set_line_as_center_visible(_line, _wrap_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_line_as_center_visible,
+      TextEdit._bindings.method_set_line_as_center_visible,
       this._owner,
       _line, _wrap_index
     );
@@ -3858,7 +3859,7 @@ export class TextEdit extends Control{
   }
   set_line_as_last_visible(_line, _wrap_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_line_as_last_visible,
+      TextEdit._bindings.method_set_line_as_last_visible,
       this._owner,
       _line, _wrap_index
     );
@@ -3866,7 +3867,7 @@ export class TextEdit extends Control{
   }
   get_last_full_visible_line() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_last_full_visible_line,
+      TextEdit._bindings.method_get_last_full_visible_line,
       this._owner,
 			Variant.Type.INT,
       
@@ -3875,7 +3876,7 @@ export class TextEdit extends Control{
   }
   get_last_full_visible_line_wrap_index() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_last_full_visible_line_wrap_index,
+      TextEdit._bindings.method_get_last_full_visible_line_wrap_index,
       this._owner,
 			Variant.Type.INT,
       
@@ -3884,7 +3885,7 @@ export class TextEdit extends Control{
   }
   get_visible_line_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_visible_line_count,
+      TextEdit._bindings.method_get_visible_line_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -3893,7 +3894,7 @@ export class TextEdit extends Control{
   }
   get_visible_line_count_in_range(_from_line, _to_line) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_visible_line_count_in_range,
+      TextEdit._bindings.method_get_visible_line_count_in_range,
       this._owner,
 			Variant.Type.INT,
       _from_line, _to_line
@@ -3902,7 +3903,7 @@ export class TextEdit extends Control{
   }
   get_total_visible_line_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_total_visible_line_count,
+      TextEdit._bindings.method_get_total_visible_line_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -3911,7 +3912,7 @@ export class TextEdit extends Control{
   }
   adjust_viewport_to_caret(_caret_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_adjust_viewport_to_caret,
+      TextEdit._bindings.method_adjust_viewport_to_caret,
       this._owner,
       _caret_index
     );
@@ -3919,7 +3920,7 @@ export class TextEdit extends Control{
   }
   center_viewport_to_caret(_caret_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_center_viewport_to_caret,
+      TextEdit._bindings.method_center_viewport_to_caret,
       this._owner,
       _caret_index
     );
@@ -3927,7 +3928,7 @@ export class TextEdit extends Control{
   }
   set_draw_minimap(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_draw_minimap,
+      TextEdit._bindings.method_set_draw_minimap,
       this._owner,
       _enabled
     );
@@ -3935,7 +3936,7 @@ export class TextEdit extends Control{
   }
   is_drawing_minimap() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_drawing_minimap,
+      TextEdit._bindings.method_is_drawing_minimap,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -3944,7 +3945,7 @@ export class TextEdit extends Control{
   }
   set_minimap_width(_width) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_minimap_width,
+      TextEdit._bindings.method_set_minimap_width,
       this._owner,
       _width
     );
@@ -3952,7 +3953,7 @@ export class TextEdit extends Control{
   }
   get_minimap_width() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_minimap_width,
+      TextEdit._bindings.method_get_minimap_width,
       this._owner,
 			Variant.Type.INT,
       
@@ -3961,7 +3962,7 @@ export class TextEdit extends Control{
   }
   get_minimap_visible_lines() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_minimap_visible_lines,
+      TextEdit._bindings.method_get_minimap_visible_lines,
       this._owner,
 			Variant.Type.INT,
       
@@ -3970,7 +3971,7 @@ export class TextEdit extends Control{
   }
   add_gutter(_at) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_gutter,
+      TextEdit._bindings.method_add_gutter,
       this._owner,
       _at
     );
@@ -3978,7 +3979,7 @@ export class TextEdit extends Control{
   }
   remove_gutter(_gutter) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_gutter,
+      TextEdit._bindings.method_remove_gutter,
       this._owner,
       _gutter
     );
@@ -3986,7 +3987,7 @@ export class TextEdit extends Control{
   }
   get_gutter_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_gutter_count,
+      TextEdit._bindings.method_get_gutter_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -3995,7 +3996,7 @@ export class TextEdit extends Control{
   }
   set_gutter_name(_gutter, _name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_gutter_name,
+      TextEdit._bindings.method_set_gutter_name,
       this._owner,
       _gutter, _name
     );
@@ -4003,7 +4004,7 @@ export class TextEdit extends Control{
   }
   get_gutter_name(_gutter) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_gutter_name,
+      TextEdit._bindings.method_get_gutter_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -4013,7 +4014,7 @@ export class TextEdit extends Control{
   }
   set_gutter_type(_gutter, _type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_gutter_type,
+      TextEdit._bindings.method_set_gutter_type,
       this._owner,
       _gutter, _type
     );
@@ -4021,7 +4022,7 @@ export class TextEdit extends Control{
   }
   get_gutter_type(_gutter) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_gutter_type,
+      TextEdit._bindings.method_get_gutter_type,
       this._owner,
 			Variant.INT,
       _gutter
@@ -4030,7 +4031,7 @@ export class TextEdit extends Control{
   }
   set_gutter_width(_gutter, _width) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_gutter_width,
+      TextEdit._bindings.method_set_gutter_width,
       this._owner,
       _gutter, _width
     );
@@ -4038,7 +4039,7 @@ export class TextEdit extends Control{
   }
   get_gutter_width(_gutter) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_gutter_width,
+      TextEdit._bindings.method_get_gutter_width,
       this._owner,
 			Variant.Type.INT,
       _gutter
@@ -4047,7 +4048,7 @@ export class TextEdit extends Control{
   }
   set_gutter_draw(_gutter, _draw) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_gutter_draw,
+      TextEdit._bindings.method_set_gutter_draw,
       this._owner,
       _gutter, _draw
     );
@@ -4055,7 +4056,7 @@ export class TextEdit extends Control{
   }
   is_gutter_drawn(_gutter) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_gutter_drawn,
+      TextEdit._bindings.method_is_gutter_drawn,
       this._owner,
 			Variant.Type.BOOL,
       _gutter
@@ -4064,7 +4065,7 @@ export class TextEdit extends Control{
   }
   set_gutter_clickable(_gutter, _clickable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_gutter_clickable,
+      TextEdit._bindings.method_set_gutter_clickable,
       this._owner,
       _gutter, _clickable
     );
@@ -4072,7 +4073,7 @@ export class TextEdit extends Control{
   }
   is_gutter_clickable(_gutter) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_gutter_clickable,
+      TextEdit._bindings.method_is_gutter_clickable,
       this._owner,
 			Variant.Type.BOOL,
       _gutter
@@ -4081,7 +4082,7 @@ export class TextEdit extends Control{
   }
   set_gutter_overwritable(_gutter, _overwritable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_gutter_overwritable,
+      TextEdit._bindings.method_set_gutter_overwritable,
       this._owner,
       _gutter, _overwritable
     );
@@ -4089,7 +4090,7 @@ export class TextEdit extends Control{
   }
   is_gutter_overwritable(_gutter) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_gutter_overwritable,
+      TextEdit._bindings.method_is_gutter_overwritable,
       this._owner,
 			Variant.Type.BOOL,
       _gutter
@@ -4098,7 +4099,7 @@ export class TextEdit extends Control{
   }
   merge_gutters(_from_line, _to_line) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_merge_gutters,
+      TextEdit._bindings.method_merge_gutters,
       this._owner,
       _from_line, _to_line
     );
@@ -4106,7 +4107,7 @@ export class TextEdit extends Control{
   }
   set_gutter_custom_draw(_column, _draw_callback) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_gutter_custom_draw,
+      TextEdit._bindings.method_set_gutter_custom_draw,
       this._owner,
       _column, _draw_callback
     );
@@ -4114,7 +4115,7 @@ export class TextEdit extends Control{
   }
   get_total_gutter_width() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_total_gutter_width,
+      TextEdit._bindings.method_get_total_gutter_width,
       this._owner,
 			Variant.Type.INT,
       
@@ -4123,7 +4124,7 @@ export class TextEdit extends Control{
   }
   set_line_gutter_metadata(_line, _gutter, _metadata) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_line_gutter_metadata,
+      TextEdit._bindings.method_set_line_gutter_metadata,
       this._owner,
       _line, _gutter, _metadata
     );
@@ -4131,7 +4132,7 @@ export class TextEdit extends Control{
   }
   get_line_gutter_metadata(_line, _gutter) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_gutter_metadata,
+      TextEdit._bindings.method_get_line_gutter_metadata,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -4141,7 +4142,7 @@ export class TextEdit extends Control{
   }
   set_line_gutter_text(_line, _gutter, _text) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_line_gutter_text,
+      TextEdit._bindings.method_set_line_gutter_text,
       this._owner,
       _line, _gutter, _text
     );
@@ -4149,7 +4150,7 @@ export class TextEdit extends Control{
   }
   get_line_gutter_text(_line, _gutter) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_gutter_text,
+      TextEdit._bindings.method_get_line_gutter_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -4159,7 +4160,7 @@ export class TextEdit extends Control{
   }
   set_line_gutter_icon(_line, _gutter, _icon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_line_gutter_icon,
+      TextEdit._bindings.method_set_line_gutter_icon,
       this._owner,
       _line, _gutter, _icon
     );
@@ -4167,7 +4168,7 @@ export class TextEdit extends Control{
   }
   get_line_gutter_icon(_line, _gutter) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_gutter_icon,
+      TextEdit._bindings.method_get_line_gutter_icon,
       this._owner,
 			Variant.INT,
       _line, _gutter
@@ -4176,7 +4177,7 @@ export class TextEdit extends Control{
   }
   set_line_gutter_item_color(_line, _gutter, _color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_line_gutter_item_color,
+      TextEdit._bindings.method_set_line_gutter_item_color,
       this._owner,
       _line, _gutter, _color
     );
@@ -4184,7 +4185,7 @@ export class TextEdit extends Control{
   }
   get_line_gutter_item_color(_line, _gutter) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_gutter_item_color,
+      TextEdit._bindings.method_get_line_gutter_item_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -4194,7 +4195,7 @@ export class TextEdit extends Control{
   }
   set_line_gutter_clickable(_line, _gutter, _clickable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_line_gutter_clickable,
+      TextEdit._bindings.method_set_line_gutter_clickable,
       this._owner,
       _line, _gutter, _clickable
     );
@@ -4202,7 +4203,7 @@ export class TextEdit extends Control{
   }
   is_line_gutter_clickable(_line, _gutter) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_line_gutter_clickable,
+      TextEdit._bindings.method_is_line_gutter_clickable,
       this._owner,
 			Variant.Type.BOOL,
       _line, _gutter
@@ -4211,7 +4212,7 @@ export class TextEdit extends Control{
   }
   set_line_background_color(_line, _color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_line_background_color,
+      TextEdit._bindings.method_set_line_background_color,
       this._owner,
       _line, _color
     );
@@ -4219,7 +4220,7 @@ export class TextEdit extends Control{
   }
   get_line_background_color(_line) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_background_color,
+      TextEdit._bindings.method_get_line_background_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -4229,7 +4230,7 @@ export class TextEdit extends Control{
   }
   set_syntax_highlighter(_syntax_highlighter) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_syntax_highlighter,
+      TextEdit._bindings.method_set_syntax_highlighter,
       this._owner,
       _syntax_highlighter
     );
@@ -4237,7 +4238,7 @@ export class TextEdit extends Control{
   }
   get_syntax_highlighter() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_syntax_highlighter,
+      TextEdit._bindings.method_get_syntax_highlighter,
       this._owner,
 			Variant.INT,
       
@@ -4246,7 +4247,7 @@ export class TextEdit extends Control{
   }
   set_highlight_current_line(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_highlight_current_line,
+      TextEdit._bindings.method_set_highlight_current_line,
       this._owner,
       _enabled
     );
@@ -4254,7 +4255,7 @@ export class TextEdit extends Control{
   }
   is_highlight_current_line_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_highlight_current_line_enabled,
+      TextEdit._bindings.method_is_highlight_current_line_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -4263,7 +4264,7 @@ export class TextEdit extends Control{
   }
   set_highlight_all_occurrences(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_highlight_all_occurrences,
+      TextEdit._bindings.method_set_highlight_all_occurrences,
       this._owner,
       _enabled
     );
@@ -4271,7 +4272,7 @@ export class TextEdit extends Control{
   }
   is_highlight_all_occurrences_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_highlight_all_occurrences_enabled,
+      TextEdit._bindings.method_is_highlight_all_occurrences_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -4280,7 +4281,7 @@ export class TextEdit extends Control{
   }
   get_draw_control_chars() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_draw_control_chars,
+      TextEdit._bindings.method_get_draw_control_chars,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -4289,7 +4290,7 @@ export class TextEdit extends Control{
   }
   set_draw_control_chars(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_draw_control_chars,
+      TextEdit._bindings.method_set_draw_control_chars,
       this._owner,
       _enabled
     );
@@ -4297,7 +4298,7 @@ export class TextEdit extends Control{
   }
   set_draw_tabs(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_draw_tabs,
+      TextEdit._bindings.method_set_draw_tabs,
       this._owner,
       _enabled
     );
@@ -4305,7 +4306,7 @@ export class TextEdit extends Control{
   }
   is_drawing_tabs() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_drawing_tabs,
+      TextEdit._bindings.method_is_drawing_tabs,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -4314,7 +4315,7 @@ export class TextEdit extends Control{
   }
   set_draw_spaces(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_draw_spaces,
+      TextEdit._bindings.method_set_draw_spaces,
       this._owner,
       _enabled
     );
@@ -4322,7 +4323,7 @@ export class TextEdit extends Control{
   }
   is_drawing_spaces() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_drawing_spaces,
+      TextEdit._bindings.method_is_drawing_spaces,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -4331,7 +4332,7 @@ export class TextEdit extends Control{
   }
   get_menu() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_menu,
+      TextEdit._bindings.method_get_menu,
       this._owner,
 			Variant.INT,
       
@@ -4340,7 +4341,7 @@ export class TextEdit extends Control{
   }
   is_menu_visible() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_menu_visible,
+      TextEdit._bindings.method_is_menu_visible,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -4349,7 +4350,7 @@ export class TextEdit extends Control{
   }
   menu_option(_option) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_menu_option,
+      TextEdit._bindings.method_menu_option,
       this._owner,
       _option
     );
@@ -4357,7 +4358,7 @@ export class TextEdit extends Control{
   }
   adjust_carets_after_edit(_caret, _from_line, _from_col, _to_line, _to_col) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_adjust_carets_after_edit,
+      TextEdit._bindings.method_adjust_carets_after_edit,
       this._owner,
       _caret, _from_line, _from_col, _to_line, _to_col
     );
@@ -4365,7 +4366,7 @@ export class TextEdit extends Control{
   }
   get_caret_index_edit_order() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_caret_index_edit_order,
+      TextEdit._bindings.method_get_caret_index_edit_order,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -4375,7 +4376,7 @@ export class TextEdit extends Control{
   }
   get_selection_line(_caret_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_selection_line,
+      TextEdit._bindings.method_get_selection_line,
       this._owner,
 			Variant.Type.INT,
       _caret_index
@@ -4384,7 +4385,7 @@ export class TextEdit extends Control{
   }
   get_selection_column(_caret_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_selection_column,
+      TextEdit._bindings.method_get_selection_column,
       this._owner,
 			Variant.Type.INT,
       _caret_index

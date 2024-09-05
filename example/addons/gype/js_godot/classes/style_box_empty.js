@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StyleBox } from '@js_godot/classes/style_box'
 import { StringName } from '@js_godot/variant/string_name'
+import { StyleBox } from '@js_godot/classes/style_box'
 import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
@@ -30,6 +30,7 @@ export class StyleBoxEmpty extends StyleBox{
     }
     this.#initialized = true;
   }
+  
   
 
 

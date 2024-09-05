@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { InputEventGesture } from '@js_godot/classes/input_event_gesture'
-import { Vector2 } from '@js_godot/variant/vector2'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { Vector2 } from '@js_godot/variant/vector2'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -51,9 +51,10 @@ export class InputEventPanGesture extends InputEventGesture{
       );
     }
   }
+  
   set_delta(_delta) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_delta,
+      InputEventPanGesture._bindings.method_set_delta,
       this._owner,
       _delta
     );
@@ -61,7 +62,7 @@ export class InputEventPanGesture extends InputEventGesture{
   }
   get_delta() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_delta,
+      InputEventPanGesture._bindings.method_get_delta,
       this._owner,
 			Variant.Type.VECTOR2,
     

@@ -31,6 +31,7 @@ export class VisualShaderNodeParticleRingEmitter extends VisualShaderNodeParticl
     this.#initialized = true;
   }
   
+  
 
 
   static {

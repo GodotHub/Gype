@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { Vector2 } from '@js_godot/variant/vector2'
 import { Container } from '@js_godot/classes/container'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -522,9 +522,10 @@ export class TabContainer extends Container{
       );
     }
   }
+  
   get_tab_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tab_count,
+      TabContainer._bindings.method_get_tab_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -533,7 +534,7 @@ export class TabContainer extends Container{
   }
   set_current_tab(_tab_idx) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_current_tab,
+      TabContainer._bindings.method_set_current_tab,
       this._owner,
       _tab_idx
     );
@@ -541,7 +542,7 @@ export class TabContainer extends Container{
   }
   get_current_tab() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_current_tab,
+      TabContainer._bindings.method_get_current_tab,
       this._owner,
 			Variant.Type.INT,
       
@@ -550,7 +551,7 @@ export class TabContainer extends Container{
   }
   get_previous_tab() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_previous_tab,
+      TabContainer._bindings.method_get_previous_tab,
       this._owner,
 			Variant.Type.INT,
       
@@ -559,7 +560,7 @@ export class TabContainer extends Container{
   }
   select_previous_available() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_select_previous_available,
+      TabContainer._bindings.method_select_previous_available,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -568,7 +569,7 @@ export class TabContainer extends Container{
   }
   select_next_available() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_select_next_available,
+      TabContainer._bindings.method_select_next_available,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -577,7 +578,7 @@ export class TabContainer extends Container{
   }
   get_current_tab_control() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_current_tab_control,
+      TabContainer._bindings.method_get_current_tab_control,
       this._owner,
 			Variant.INT,
       
@@ -586,7 +587,7 @@ export class TabContainer extends Container{
   }
   get_tab_bar() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tab_bar,
+      TabContainer._bindings.method_get_tab_bar,
       this._owner,
 			Variant.INT,
       
@@ -595,7 +596,7 @@ export class TabContainer extends Container{
   }
   get_tab_control(_tab_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tab_control,
+      TabContainer._bindings.method_get_tab_control,
       this._owner,
 			Variant.INT,
       _tab_idx
@@ -604,7 +605,7 @@ export class TabContainer extends Container{
   }
   set_tab_alignment(_alignment) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tab_alignment,
+      TabContainer._bindings.method_set_tab_alignment,
       this._owner,
       _alignment
     );
@@ -612,7 +613,7 @@ export class TabContainer extends Container{
   }
   get_tab_alignment() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tab_alignment,
+      TabContainer._bindings.method_get_tab_alignment,
       this._owner,
 			Variant.INT,
       
@@ -621,7 +622,7 @@ export class TabContainer extends Container{
   }
   set_tabs_position(_tabs_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tabs_position,
+      TabContainer._bindings.method_set_tabs_position,
       this._owner,
       _tabs_position
     );
@@ -629,7 +630,7 @@ export class TabContainer extends Container{
   }
   get_tabs_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tabs_position,
+      TabContainer._bindings.method_get_tabs_position,
       this._owner,
 			Variant.INT,
       
@@ -638,7 +639,7 @@ export class TabContainer extends Container{
   }
   set_clip_tabs(_clip_tabs) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_clip_tabs,
+      TabContainer._bindings.method_set_clip_tabs,
       this._owner,
       _clip_tabs
     );
@@ -646,7 +647,7 @@ export class TabContainer extends Container{
   }
   get_clip_tabs() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_clip_tabs,
+      TabContainer._bindings.method_get_clip_tabs,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -655,7 +656,7 @@ export class TabContainer extends Container{
   }
   set_tabs_visible(_visible) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tabs_visible,
+      TabContainer._bindings.method_set_tabs_visible,
       this._owner,
       _visible
     );
@@ -663,7 +664,7 @@ export class TabContainer extends Container{
   }
   are_tabs_visible() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_are_tabs_visible,
+      TabContainer._bindings.method_are_tabs_visible,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -672,7 +673,7 @@ export class TabContainer extends Container{
   }
   set_all_tabs_in_front(_is_front) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_all_tabs_in_front,
+      TabContainer._bindings.method_set_all_tabs_in_front,
       this._owner,
       _is_front
     );
@@ -680,7 +681,7 @@ export class TabContainer extends Container{
   }
   is_all_tabs_in_front() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_all_tabs_in_front,
+      TabContainer._bindings.method_is_all_tabs_in_front,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -689,7 +690,7 @@ export class TabContainer extends Container{
   }
   set_tab_title(_tab_idx, _title) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tab_title,
+      TabContainer._bindings.method_set_tab_title,
       this._owner,
       _tab_idx, _title
     );
@@ -697,7 +698,7 @@ export class TabContainer extends Container{
   }
   get_tab_title(_tab_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tab_title,
+      TabContainer._bindings.method_get_tab_title,
       this._owner,
 			Variant.Type.STRING,
     
@@ -707,7 +708,7 @@ export class TabContainer extends Container{
   }
   set_tab_tooltip(_tab_idx, _tooltip) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tab_tooltip,
+      TabContainer._bindings.method_set_tab_tooltip,
       this._owner,
       _tab_idx, _tooltip
     );
@@ -715,7 +716,7 @@ export class TabContainer extends Container{
   }
   get_tab_tooltip(_tab_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tab_tooltip,
+      TabContainer._bindings.method_get_tab_tooltip,
       this._owner,
 			Variant.Type.STRING,
     
@@ -725,7 +726,7 @@ export class TabContainer extends Container{
   }
   set_tab_icon(_tab_idx, _icon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tab_icon,
+      TabContainer._bindings.method_set_tab_icon,
       this._owner,
       _tab_idx, _icon
     );
@@ -733,7 +734,7 @@ export class TabContainer extends Container{
   }
   get_tab_icon(_tab_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tab_icon,
+      TabContainer._bindings.method_get_tab_icon,
       this._owner,
 			Variant.INT,
       _tab_idx
@@ -742,7 +743,7 @@ export class TabContainer extends Container{
   }
   set_tab_icon_max_width(_tab_idx, _width) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tab_icon_max_width,
+      TabContainer._bindings.method_set_tab_icon_max_width,
       this._owner,
       _tab_idx, _width
     );
@@ -750,7 +751,7 @@ export class TabContainer extends Container{
   }
   get_tab_icon_max_width(_tab_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tab_icon_max_width,
+      TabContainer._bindings.method_get_tab_icon_max_width,
       this._owner,
 			Variant.Type.INT,
       _tab_idx
@@ -759,7 +760,7 @@ export class TabContainer extends Container{
   }
   set_tab_disabled(_tab_idx, _disabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tab_disabled,
+      TabContainer._bindings.method_set_tab_disabled,
       this._owner,
       _tab_idx, _disabled
     );
@@ -767,7 +768,7 @@ export class TabContainer extends Container{
   }
   is_tab_disabled(_tab_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_tab_disabled,
+      TabContainer._bindings.method_is_tab_disabled,
       this._owner,
 			Variant.Type.BOOL,
       _tab_idx
@@ -776,7 +777,7 @@ export class TabContainer extends Container{
   }
   set_tab_hidden(_tab_idx, _hidden) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tab_hidden,
+      TabContainer._bindings.method_set_tab_hidden,
       this._owner,
       _tab_idx, _hidden
     );
@@ -784,7 +785,7 @@ export class TabContainer extends Container{
   }
   is_tab_hidden(_tab_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_tab_hidden,
+      TabContainer._bindings.method_is_tab_hidden,
       this._owner,
 			Variant.Type.BOOL,
       _tab_idx
@@ -793,7 +794,7 @@ export class TabContainer extends Container{
   }
   set_tab_metadata(_tab_idx, _metadata) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tab_metadata,
+      TabContainer._bindings.method_set_tab_metadata,
       this._owner,
       _tab_idx, _metadata
     );
@@ -801,7 +802,7 @@ export class TabContainer extends Container{
   }
   get_tab_metadata(_tab_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tab_metadata,
+      TabContainer._bindings.method_get_tab_metadata,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -811,7 +812,7 @@ export class TabContainer extends Container{
   }
   set_tab_button_icon(_tab_idx, _icon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tab_button_icon,
+      TabContainer._bindings.method_set_tab_button_icon,
       this._owner,
       _tab_idx, _icon
     );
@@ -819,7 +820,7 @@ export class TabContainer extends Container{
   }
   get_tab_button_icon(_tab_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tab_button_icon,
+      TabContainer._bindings.method_get_tab_button_icon,
       this._owner,
 			Variant.INT,
       _tab_idx
@@ -828,7 +829,7 @@ export class TabContainer extends Container{
   }
   get_tab_idx_at_point(_point) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tab_idx_at_point,
+      TabContainer._bindings.method_get_tab_idx_at_point,
       this._owner,
 			Variant.Type.INT,
       _point
@@ -837,7 +838,7 @@ export class TabContainer extends Container{
   }
   get_tab_idx_from_control(_control) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tab_idx_from_control,
+      TabContainer._bindings.method_get_tab_idx_from_control,
       this._owner,
 			Variant.Type.INT,
       _control
@@ -846,7 +847,7 @@ export class TabContainer extends Container{
   }
   set_popup(_popup) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_popup,
+      TabContainer._bindings.method_set_popup,
       this._owner,
       _popup
     );
@@ -854,7 +855,7 @@ export class TabContainer extends Container{
   }
   get_popup() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_popup,
+      TabContainer._bindings.method_get_popup,
       this._owner,
 			Variant.INT,
       
@@ -863,7 +864,7 @@ export class TabContainer extends Container{
   }
   set_drag_to_rearrange_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_drag_to_rearrange_enabled,
+      TabContainer._bindings.method_set_drag_to_rearrange_enabled,
       this._owner,
       _enabled
     );
@@ -871,7 +872,7 @@ export class TabContainer extends Container{
   }
   get_drag_to_rearrange_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_drag_to_rearrange_enabled,
+      TabContainer._bindings.method_get_drag_to_rearrange_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -880,7 +881,7 @@ export class TabContainer extends Container{
   }
   set_tabs_rearrange_group(_group_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tabs_rearrange_group,
+      TabContainer._bindings.method_set_tabs_rearrange_group,
       this._owner,
       _group_id
     );
@@ -888,7 +889,7 @@ export class TabContainer extends Container{
   }
   get_tabs_rearrange_group() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tabs_rearrange_group,
+      TabContainer._bindings.method_get_tabs_rearrange_group,
       this._owner,
 			Variant.Type.INT,
       
@@ -897,7 +898,7 @@ export class TabContainer extends Container{
   }
   set_use_hidden_tabs_for_min_size(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_hidden_tabs_for_min_size,
+      TabContainer._bindings.method_set_use_hidden_tabs_for_min_size,
       this._owner,
       _enabled
     );
@@ -905,7 +906,7 @@ export class TabContainer extends Container{
   }
   get_use_hidden_tabs_for_min_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_use_hidden_tabs_for_min_size,
+      TabContainer._bindings.method_get_use_hidden_tabs_for_min_size,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -914,7 +915,7 @@ export class TabContainer extends Container{
   }
   set_tab_focus_mode(_focus_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tab_focus_mode,
+      TabContainer._bindings.method_set_tab_focus_mode,
       this._owner,
       _focus_mode
     );
@@ -922,7 +923,7 @@ export class TabContainer extends Container{
   }
   get_tab_focus_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tab_focus_mode,
+      TabContainer._bindings.method_get_tab_focus_mode,
       this._owner,
 			Variant.INT,
       
@@ -931,7 +932,7 @@ export class TabContainer extends Container{
   }
   set_deselect_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_deselect_enabled,
+      TabContainer._bindings.method_set_deselect_enabled,
       this._owner,
       _enabled
     );
@@ -939,7 +940,7 @@ export class TabContainer extends Container{
   }
   get_deselect_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_deselect_enabled,
+      TabContainer._bindings.method_get_deselect_enabled,
       this._owner,
 			Variant.Type.BOOL,
       

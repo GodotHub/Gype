@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { Shape2D } from '@js_godot/classes/shape2d'
+import { StringName } from '@js_godot/variant/string_name'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { Shape2D } from '@js_godot/classes/shape2d'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -51,9 +51,10 @@ export class RectangleShape2D extends Shape2D{
       );
     }
   }
+  
   set_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_size,
+      RectangleShape2D._bindings.method_set_size,
       this._owner,
       _size
     );
@@ -61,7 +62,7 @@ export class RectangleShape2D extends Shape2D{
   }
   get_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_size,
+      RectangleShape2D._bindings.method_get_size,
       this._owner,
 			Variant.Type.VECTOR2,
     

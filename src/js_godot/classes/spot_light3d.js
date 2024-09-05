@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { Light3D } from '@js_godot/classes/light3d'
 import {
   call_utility_ret,
@@ -30,6 +30,7 @@ export class SpotLight3D extends Light3D{
     }
     this.#initialized = true;
   }
+  
   
 get spot_range () {
   return this.get_param();

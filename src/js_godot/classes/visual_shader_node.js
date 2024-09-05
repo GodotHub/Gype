@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Resource } from '@js_godot/classes/resource'
-import { StringName } from '@js_godot/variant/string_name'
 import { GDArray } from '@js_godot/variant/gd_array'
+import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -141,9 +141,10 @@ export class VisualShaderNode extends Resource{
       );
     }
   }
+  
   get_default_input_port(_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_default_input_port,
+      VisualShaderNode._bindings.method_get_default_input_port,
       this._owner,
 			Variant.Type.INT,
       _type
@@ -152,7 +153,7 @@ export class VisualShaderNode extends Resource{
   }
   set_output_port_for_preview(_port) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_output_port_for_preview,
+      VisualShaderNode._bindings.method_set_output_port_for_preview,
       this._owner,
       _port
     );
@@ -160,7 +161,7 @@ export class VisualShaderNode extends Resource{
   }
   get_output_port_for_preview() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_output_port_for_preview,
+      VisualShaderNode._bindings.method_get_output_port_for_preview,
       this._owner,
 			Variant.Type.INT,
       
@@ -169,7 +170,7 @@ export class VisualShaderNode extends Resource{
   }
   set_input_port_default_value(_port, _value, _prev_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_input_port_default_value,
+      VisualShaderNode._bindings.method_set_input_port_default_value,
       this._owner,
       _port, _value, _prev_value
     );
@@ -177,7 +178,7 @@ export class VisualShaderNode extends Resource{
   }
   get_input_port_default_value(_port) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_input_port_default_value,
+      VisualShaderNode._bindings.method_get_input_port_default_value,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -187,7 +188,7 @@ export class VisualShaderNode extends Resource{
   }
   remove_input_port_default_value(_port) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_input_port_default_value,
+      VisualShaderNode._bindings.method_remove_input_port_default_value,
       this._owner,
       _port
     );
@@ -195,7 +196,7 @@ export class VisualShaderNode extends Resource{
   }
   clear_default_input_values() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_default_input_values,
+      VisualShaderNode._bindings.method_clear_default_input_values,
       this._owner,
       
     );
@@ -203,7 +204,7 @@ export class VisualShaderNode extends Resource{
   }
   set_default_input_values(_values) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_default_input_values,
+      VisualShaderNode._bindings.method_set_default_input_values,
       this._owner,
       _values
     );
@@ -211,7 +212,7 @@ export class VisualShaderNode extends Resource{
   }
   get_default_input_values() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_default_input_values,
+      VisualShaderNode._bindings.method_get_default_input_values,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -221,7 +222,7 @@ export class VisualShaderNode extends Resource{
   }
   set_frame(_frame) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_frame,
+      VisualShaderNode._bindings.method_set_frame,
       this._owner,
       _frame
     );
@@ -229,7 +230,7 @@ export class VisualShaderNode extends Resource{
   }
   get_frame() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_frame,
+      VisualShaderNode._bindings.method_get_frame,
       this._owner,
 			Variant.Type.INT,
       

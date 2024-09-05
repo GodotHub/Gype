@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
+import { PackedStringArray } from '@js_godot/variant/packed_string_array'
 import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
-import { PackedStringArray } from '@js_godot/variant/packed_string_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -132,13 +132,14 @@ export class Translation extends Resource{
       );
     }
   }
+  
   _get_plural_message(_src_message, _src_plural_message, _n, _context) {
   }
   _get_message(_src_message, _context) {
   }
   set_locale(_locale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_locale,
+      Translation._bindings.method_set_locale,
       this._owner,
       _locale
     );
@@ -146,7 +147,7 @@ export class Translation extends Resource{
   }
   get_locale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_locale,
+      Translation._bindings.method_get_locale,
       this._owner,
 			Variant.Type.STRING,
     
@@ -156,7 +157,7 @@ export class Translation extends Resource{
   }
   add_message(_src_message, _xlated_message, _context) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_message,
+      Translation._bindings.method_add_message,
       this._owner,
       _src_message, _xlated_message, _context
     );
@@ -164,7 +165,7 @@ export class Translation extends Resource{
   }
   add_plural_message(_src_message, _xlated_messages, _context) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_plural_message,
+      Translation._bindings.method_add_plural_message,
       this._owner,
       _src_message, _xlated_messages, _context
     );
@@ -172,7 +173,7 @@ export class Translation extends Resource{
   }
   get_message(_src_message, _context) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_message,
+      Translation._bindings.method_get_message,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -182,7 +183,7 @@ export class Translation extends Resource{
   }
   get_plural_message(_src_message, _src_plural_message, _n, _context) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_plural_message,
+      Translation._bindings.method_get_plural_message,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -192,7 +193,7 @@ export class Translation extends Resource{
   }
   erase_message(_src_message, _context) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_erase_message,
+      Translation._bindings.method_erase_message,
       this._owner,
       _src_message, _context
     );
@@ -200,7 +201,7 @@ export class Translation extends Resource{
   }
   get_message_list() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_message_list,
+      Translation._bindings.method_get_message_list,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -210,7 +211,7 @@ export class Translation extends Resource{
   }
   get_translated_message_list() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_translated_message_list,
+      Translation._bindings.method_get_translated_message_list,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -220,7 +221,7 @@ export class Translation extends Resource{
   }
   get_message_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_message_count,
+      Translation._bindings.method_get_message_count,
       this._owner,
 			Variant.Type.INT,
       

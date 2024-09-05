@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { AudioEffect } from '@js_godot/classes/audio_effect'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -90,9 +90,10 @@ export class AudioEffectPitchShift extends AudioEffect{
       );
     }
   }
+  
   set_pitch_scale(_rate) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_pitch_scale,
+      AudioEffectPitchShift._bindings.method_set_pitch_scale,
       this._owner,
       _rate
     );
@@ -100,7 +101,7 @@ export class AudioEffectPitchShift extends AudioEffect{
   }
   get_pitch_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_pitch_scale,
+      AudioEffectPitchShift._bindings.method_get_pitch_scale,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -109,7 +110,7 @@ export class AudioEffectPitchShift extends AudioEffect{
   }
   set_oversampling(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_oversampling,
+      AudioEffectPitchShift._bindings.method_set_oversampling,
       this._owner,
       _amount
     );
@@ -117,7 +118,7 @@ export class AudioEffectPitchShift extends AudioEffect{
   }
   get_oversampling() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_oversampling,
+      AudioEffectPitchShift._bindings.method_get_oversampling,
       this._owner,
 			Variant.Type.INT,
       
@@ -126,7 +127,7 @@ export class AudioEffectPitchShift extends AudioEffect{
   }
   set_fft_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fft_size,
+      AudioEffectPitchShift._bindings.method_set_fft_size,
       this._owner,
       _size
     );
@@ -134,7 +135,7 @@ export class AudioEffectPitchShift extends AudioEffect{
   }
   get_fft_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fft_size,
+      AudioEffectPitchShift._bindings.method_get_fft_size,
       this._owner,
 			Variant.INT,
       

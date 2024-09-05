@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
 import { WebRTCDataChannel } from '@js_godot/classes/web_rtc_data_channel'
 import {
@@ -31,6 +31,7 @@ export class WebRTCDataChannelExtension extends WebRTCDataChannel{
     }
     this.#initialized = true;
   }
+  
   _get_packet(_r_buffer, _r_buffer_size) {
   }
   _put_packet(_p_buffer, _p_buffer_size) {

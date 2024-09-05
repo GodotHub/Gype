@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -260,9 +260,10 @@ export class RDPipelineColorBlendStateAttachment extends RefCounted{
       );
     }
   }
+  
   set_as_mix() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_as_mix,
+      RDPipelineColorBlendStateAttachment._bindings.method_set_as_mix,
       this._owner,
       
     );
@@ -270,7 +271,7 @@ export class RDPipelineColorBlendStateAttachment extends RefCounted{
   }
   set_enable_blend(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_enable_blend,
+      RDPipelineColorBlendStateAttachment._bindings.method_set_enable_blend,
       this._owner,
       _p_member
     );
@@ -278,7 +279,7 @@ export class RDPipelineColorBlendStateAttachment extends RefCounted{
   }
   get_enable_blend() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_enable_blend,
+      RDPipelineColorBlendStateAttachment._bindings.method_get_enable_blend,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -287,7 +288,7 @@ export class RDPipelineColorBlendStateAttachment extends RefCounted{
   }
   set_src_color_blend_factor(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_src_color_blend_factor,
+      RDPipelineColorBlendStateAttachment._bindings.method_set_src_color_blend_factor,
       this._owner,
       _p_member
     );
@@ -295,7 +296,7 @@ export class RDPipelineColorBlendStateAttachment extends RefCounted{
   }
   get_src_color_blend_factor() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_src_color_blend_factor,
+      RDPipelineColorBlendStateAttachment._bindings.method_get_src_color_blend_factor,
       this._owner,
 			Variant.INT,
       
@@ -304,7 +305,7 @@ export class RDPipelineColorBlendStateAttachment extends RefCounted{
   }
   set_dst_color_blend_factor(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_dst_color_blend_factor,
+      RDPipelineColorBlendStateAttachment._bindings.method_set_dst_color_blend_factor,
       this._owner,
       _p_member
     );
@@ -312,7 +313,7 @@ export class RDPipelineColorBlendStateAttachment extends RefCounted{
   }
   get_dst_color_blend_factor() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_dst_color_blend_factor,
+      RDPipelineColorBlendStateAttachment._bindings.method_get_dst_color_blend_factor,
       this._owner,
 			Variant.INT,
       
@@ -321,7 +322,7 @@ export class RDPipelineColorBlendStateAttachment extends RefCounted{
   }
   set_color_blend_op(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_color_blend_op,
+      RDPipelineColorBlendStateAttachment._bindings.method_set_color_blend_op,
       this._owner,
       _p_member
     );
@@ -329,7 +330,7 @@ export class RDPipelineColorBlendStateAttachment extends RefCounted{
   }
   get_color_blend_op() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_color_blend_op,
+      RDPipelineColorBlendStateAttachment._bindings.method_get_color_blend_op,
       this._owner,
 			Variant.INT,
       
@@ -338,7 +339,7 @@ export class RDPipelineColorBlendStateAttachment extends RefCounted{
   }
   set_src_alpha_blend_factor(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_src_alpha_blend_factor,
+      RDPipelineColorBlendStateAttachment._bindings.method_set_src_alpha_blend_factor,
       this._owner,
       _p_member
     );
@@ -346,7 +347,7 @@ export class RDPipelineColorBlendStateAttachment extends RefCounted{
   }
   get_src_alpha_blend_factor() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_src_alpha_blend_factor,
+      RDPipelineColorBlendStateAttachment._bindings.method_get_src_alpha_blend_factor,
       this._owner,
 			Variant.INT,
       
@@ -355,7 +356,7 @@ export class RDPipelineColorBlendStateAttachment extends RefCounted{
   }
   set_dst_alpha_blend_factor(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_dst_alpha_blend_factor,
+      RDPipelineColorBlendStateAttachment._bindings.method_set_dst_alpha_blend_factor,
       this._owner,
       _p_member
     );
@@ -363,7 +364,7 @@ export class RDPipelineColorBlendStateAttachment extends RefCounted{
   }
   get_dst_alpha_blend_factor() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_dst_alpha_blend_factor,
+      RDPipelineColorBlendStateAttachment._bindings.method_get_dst_alpha_blend_factor,
       this._owner,
 			Variant.INT,
       
@@ -372,7 +373,7 @@ export class RDPipelineColorBlendStateAttachment extends RefCounted{
   }
   set_alpha_blend_op(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_alpha_blend_op,
+      RDPipelineColorBlendStateAttachment._bindings.method_set_alpha_blend_op,
       this._owner,
       _p_member
     );
@@ -380,7 +381,7 @@ export class RDPipelineColorBlendStateAttachment extends RefCounted{
   }
   get_alpha_blend_op() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_alpha_blend_op,
+      RDPipelineColorBlendStateAttachment._bindings.method_get_alpha_blend_op,
       this._owner,
 			Variant.INT,
       
@@ -389,7 +390,7 @@ export class RDPipelineColorBlendStateAttachment extends RefCounted{
   }
   set_write_r(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_write_r,
+      RDPipelineColorBlendStateAttachment._bindings.method_set_write_r,
       this._owner,
       _p_member
     );
@@ -397,7 +398,7 @@ export class RDPipelineColorBlendStateAttachment extends RefCounted{
   }
   get_write_r() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_write_r,
+      RDPipelineColorBlendStateAttachment._bindings.method_get_write_r,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -406,7 +407,7 @@ export class RDPipelineColorBlendStateAttachment extends RefCounted{
   }
   set_write_g(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_write_g,
+      RDPipelineColorBlendStateAttachment._bindings.method_set_write_g,
       this._owner,
       _p_member
     );
@@ -414,7 +415,7 @@ export class RDPipelineColorBlendStateAttachment extends RefCounted{
   }
   get_write_g() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_write_g,
+      RDPipelineColorBlendStateAttachment._bindings.method_get_write_g,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -423,7 +424,7 @@ export class RDPipelineColorBlendStateAttachment extends RefCounted{
   }
   set_write_b(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_write_b,
+      RDPipelineColorBlendStateAttachment._bindings.method_set_write_b,
       this._owner,
       _p_member
     );
@@ -431,7 +432,7 @@ export class RDPipelineColorBlendStateAttachment extends RefCounted{
   }
   get_write_b() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_write_b,
+      RDPipelineColorBlendStateAttachment._bindings.method_get_write_b,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -440,7 +441,7 @@ export class RDPipelineColorBlendStateAttachment extends RefCounted{
   }
   set_write_a(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_write_a,
+      RDPipelineColorBlendStateAttachment._bindings.method_set_write_a,
       this._owner,
       _p_member
     );
@@ -448,7 +449,7 @@ export class RDPipelineColorBlendStateAttachment extends RefCounted{
   }
   get_write_a() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_write_a,
+      RDPipelineColorBlendStateAttachment._bindings.method_get_write_a,
       this._owner,
 			Variant.Type.BOOL,
       

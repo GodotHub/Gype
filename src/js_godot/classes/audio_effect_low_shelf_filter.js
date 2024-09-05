@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { AudioEffectFilter } from '@js_godot/classes/audio_effect_filter'
-import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -30,6 +30,7 @@ export class AudioEffectLowShelfFilter extends AudioEffectFilter{
     }
     this.#initialized = true;
   }
+  
   
 
 

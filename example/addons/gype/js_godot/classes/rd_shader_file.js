@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
@@ -81,9 +81,10 @@ export class RDShaderFile extends Resource{
       );
     }
   }
+  
   set_bytecode(_bytecode, _version) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bytecode,
+      RDShaderFile._bindings.method_set_bytecode,
       this._owner,
       _bytecode, _version
     );
@@ -91,7 +92,7 @@ export class RDShaderFile extends Resource{
   }
   get_spirv(_version) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_spirv,
+      RDShaderFile._bindings.method_get_spirv,
       this._owner,
 			Variant.INT,
       _version
@@ -100,7 +101,7 @@ export class RDShaderFile extends Resource{
   }
   get_version_list() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_version_list,
+      RDShaderFile._bindings.method_get_version_list,
       this._owner,
 			Variant.INT,
       
@@ -109,7 +110,7 @@ export class RDShaderFile extends Resource{
   }
   set_base_error(_error) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_base_error,
+      RDShaderFile._bindings.method_set_base_error,
       this._owner,
       _error
     );
@@ -117,7 +118,7 @@ export class RDShaderFile extends Resource{
   }
   get_base_error() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_base_error,
+      RDShaderFile._bindings.method_get_base_error,
       this._owner,
 			Variant.Type.STRING,
     

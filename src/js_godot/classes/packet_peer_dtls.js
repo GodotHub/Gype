@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
 import { PacketPeer } from '@js_godot/classes/packet_peer'
 import {
@@ -71,9 +71,10 @@ export class PacketPeerDTLS extends PacketPeer{
       );
     }
   }
+  
   poll() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_poll,
+      PacketPeerDTLS._bindings.method_poll,
       this._owner,
       
     );
@@ -81,7 +82,7 @@ export class PacketPeerDTLS extends PacketPeer{
   }
   connect_to_peer(_packet_peer, _hostname, _client_options) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_connect_to_peer,
+      PacketPeerDTLS._bindings.method_connect_to_peer,
       this._owner,
 			Variant.INT,
       _packet_peer, _hostname, _client_options
@@ -90,7 +91,7 @@ export class PacketPeerDTLS extends PacketPeer{
   }
   get_status() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_status,
+      PacketPeerDTLS._bindings.method_get_status,
       this._owner,
 			Variant.INT,
       
@@ -99,7 +100,7 @@ export class PacketPeerDTLS extends PacketPeer{
   }
   disconnect_from_peer() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_disconnect_from_peer,
+      PacketPeerDTLS._bindings.method_disconnect_from_peer,
       this._owner,
       
     );

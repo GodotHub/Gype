@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { ScrollBar } from '@js_godot/classes/scroll_bar'
 import {
   call_utility_ret,
@@ -30,6 +30,7 @@ export class VScrollBar extends ScrollBar{
     }
     this.#initialized = true;
   }
+  
   
 
 

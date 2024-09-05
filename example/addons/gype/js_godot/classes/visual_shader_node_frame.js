@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { VisualShaderNodeResizableBase } from '@js_godot/classes/visual_shader_node_resizable_base'
 import { StringName } from '@js_godot/variant/string_name'
 import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
-import { GDString } from '@js_godot/variant/gd_string'
 import { Color } from '@js_godot/variant/color'
+import { GDString } from '@js_godot/variant/gd_string'
+import { Variant } from '@js_godot/variant/variant'
+import { VisualShaderNodeResizableBase } from '@js_godot/classes/visual_shader_node_resizable_base'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -153,9 +153,10 @@ export class VisualShaderNodeFrame extends VisualShaderNodeResizableBase{
       );
     }
   }
+  
   set_title(_title) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_title,
+      VisualShaderNodeFrame._bindings.method_set_title,
       this._owner,
       _title
     );
@@ -163,7 +164,7 @@ export class VisualShaderNodeFrame extends VisualShaderNodeResizableBase{
   }
   get_title() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_title,
+      VisualShaderNodeFrame._bindings.method_get_title,
       this._owner,
 			Variant.Type.STRING,
     
@@ -173,7 +174,7 @@ export class VisualShaderNodeFrame extends VisualShaderNodeResizableBase{
   }
   set_tint_color_enabled(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tint_color_enabled,
+      VisualShaderNodeFrame._bindings.method_set_tint_color_enabled,
       this._owner,
       _enable
     );
@@ -181,7 +182,7 @@ export class VisualShaderNodeFrame extends VisualShaderNodeResizableBase{
   }
   is_tint_color_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_tint_color_enabled,
+      VisualShaderNodeFrame._bindings.method_is_tint_color_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -190,7 +191,7 @@ export class VisualShaderNodeFrame extends VisualShaderNodeResizableBase{
   }
   set_tint_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tint_color,
+      VisualShaderNodeFrame._bindings.method_set_tint_color,
       this._owner,
       _color
     );
@@ -198,7 +199,7 @@ export class VisualShaderNodeFrame extends VisualShaderNodeResizableBase{
   }
   get_tint_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tint_color,
+      VisualShaderNodeFrame._bindings.method_get_tint_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -208,7 +209,7 @@ export class VisualShaderNodeFrame extends VisualShaderNodeResizableBase{
   }
   set_autoshrink_enabled(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_autoshrink_enabled,
+      VisualShaderNodeFrame._bindings.method_set_autoshrink_enabled,
       this._owner,
       _enable
     );
@@ -216,7 +217,7 @@ export class VisualShaderNodeFrame extends VisualShaderNodeResizableBase{
   }
   is_autoshrink_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_autoshrink_enabled,
+      VisualShaderNodeFrame._bindings.method_is_autoshrink_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -225,7 +226,7 @@ export class VisualShaderNodeFrame extends VisualShaderNodeResizableBase{
   }
   add_attached_node(_node) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_attached_node,
+      VisualShaderNodeFrame._bindings.method_add_attached_node,
       this._owner,
       _node
     );
@@ -233,7 +234,7 @@ export class VisualShaderNodeFrame extends VisualShaderNodeResizableBase{
   }
   remove_attached_node(_node) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_attached_node,
+      VisualShaderNodeFrame._bindings.method_remove_attached_node,
       this._owner,
       _node
     );
@@ -241,7 +242,7 @@ export class VisualShaderNodeFrame extends VisualShaderNodeResizableBase{
   }
   set_attached_nodes(_attached_nodes) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_attached_nodes,
+      VisualShaderNodeFrame._bindings.method_set_attached_nodes,
       this._owner,
       _attached_nodes
     );
@@ -249,7 +250,7 @@ export class VisualShaderNodeFrame extends VisualShaderNodeResizableBase{
   }
   get_attached_nodes() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_attached_nodes,
+      VisualShaderNodeFrame._bindings.method_get_attached_nodes,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     

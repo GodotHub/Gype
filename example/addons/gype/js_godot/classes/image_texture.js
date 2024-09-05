@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
-import { Texture2D } from '@js_godot/classes/texture2d'
 import { Vector2i } from '@js_godot/variant/vector2i'
+import { Texture2D } from '@js_godot/classes/texture2d'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -81,9 +81,10 @@ export class ImageTexture extends Texture2D{
       );
     }
   }
+  
   create_from_image(_image) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_from_image,
+      ImageTexture._bindings.method_create_from_image,
       this._owner,
 			Variant.INT,
       _image
@@ -92,7 +93,7 @@ export class ImageTexture extends Texture2D{
   }
   get_format() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_format,
+      ImageTexture._bindings.method_get_format,
       this._owner,
 			Variant.INT,
       
@@ -101,7 +102,7 @@ export class ImageTexture extends Texture2D{
   }
   set_image(_image) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_image,
+      ImageTexture._bindings.method_set_image,
       this._owner,
       _image
     );
@@ -109,7 +110,7 @@ export class ImageTexture extends Texture2D{
   }
   update(_image) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_update,
+      ImageTexture._bindings.method_update,
       this._owner,
       _image
     );
@@ -117,7 +118,7 @@ export class ImageTexture extends Texture2D{
   }
   set_size_override(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_size_override,
+      ImageTexture._bindings.method_set_size_override,
       this._owner,
       _size
     );

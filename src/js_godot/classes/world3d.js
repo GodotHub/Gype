@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
+import { RID } from '@js_godot/variant/rid'
 import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
-import { RID } from '@js_godot/variant/rid'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -131,9 +131,10 @@ export class World3D extends Resource{
       );
     }
   }
+  
   get_space() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_space,
+      World3D._bindings.method_get_space,
       this._owner,
 			Variant.Type.RID,
     
@@ -143,7 +144,7 @@ export class World3D extends Resource{
   }
   get_navigation_map() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_navigation_map,
+      World3D._bindings.method_get_navigation_map,
       this._owner,
 			Variant.Type.RID,
     
@@ -153,7 +154,7 @@ export class World3D extends Resource{
   }
   get_scenario() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_scenario,
+      World3D._bindings.method_get_scenario,
       this._owner,
 			Variant.Type.RID,
     
@@ -163,7 +164,7 @@ export class World3D extends Resource{
   }
   set_environment(_env) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_environment,
+      World3D._bindings.method_set_environment,
       this._owner,
       _env
     );
@@ -171,7 +172,7 @@ export class World3D extends Resource{
   }
   get_environment() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_environment,
+      World3D._bindings.method_get_environment,
       this._owner,
 			Variant.INT,
       
@@ -180,7 +181,7 @@ export class World3D extends Resource{
   }
   set_fallback_environment(_env) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fallback_environment,
+      World3D._bindings.method_set_fallback_environment,
       this._owner,
       _env
     );
@@ -188,7 +189,7 @@ export class World3D extends Resource{
   }
   get_fallback_environment() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fallback_environment,
+      World3D._bindings.method_get_fallback_environment,
       this._owner,
 			Variant.INT,
       
@@ -197,7 +198,7 @@ export class World3D extends Resource{
   }
   set_camera_attributes(_attributes) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_camera_attributes,
+      World3D._bindings.method_set_camera_attributes,
       this._owner,
       _attributes
     );
@@ -205,7 +206,7 @@ export class World3D extends Resource{
   }
   get_camera_attributes() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_camera_attributes,
+      World3D._bindings.method_get_camera_attributes,
       this._owner,
 			Variant.INT,
       
@@ -214,7 +215,7 @@ export class World3D extends Resource{
   }
   get_direct_space_state() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_direct_space_state,
+      World3D._bindings.method_get_direct_space_state,
       this._owner,
 			Variant.INT,
       

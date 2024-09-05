@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
 import { Dictionary } from '@js_godot/variant/dictionary'
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { PackedStringArray } from '@js_godot/variant/packed_string_array'
 import { GDString } from '@js_godot/variant/gd_string'
 import { ConfirmationDialog } from '@js_godot/classes/confirmation_dialog'
-import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -383,9 +383,10 @@ export class EditorFileDialog extends ConfirmationDialog{
       );
     }
   }
+  
   clear_filters() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_filters,
+      EditorFileDialog._bindings.method_clear_filters,
       this._owner,
       
     );
@@ -393,7 +394,7 @@ export class EditorFileDialog extends ConfirmationDialog{
   }
   add_filter(_filter, _description) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_filter,
+      EditorFileDialog._bindings.method_add_filter,
       this._owner,
       _filter, _description
     );
@@ -401,7 +402,7 @@ export class EditorFileDialog extends ConfirmationDialog{
   }
   set_filters(_filters) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_filters,
+      EditorFileDialog._bindings.method_set_filters,
       this._owner,
       _filters
     );
@@ -409,7 +410,7 @@ export class EditorFileDialog extends ConfirmationDialog{
   }
   get_filters() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_filters,
+      EditorFileDialog._bindings.method_get_filters,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -419,7 +420,7 @@ export class EditorFileDialog extends ConfirmationDialog{
   }
   get_option_name(_option) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_option_name,
+      EditorFileDialog._bindings.method_get_option_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -429,7 +430,7 @@ export class EditorFileDialog extends ConfirmationDialog{
   }
   get_option_values(_option) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_option_values,
+      EditorFileDialog._bindings.method_get_option_values,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -439,7 +440,7 @@ export class EditorFileDialog extends ConfirmationDialog{
   }
   get_option_default(_option) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_option_default,
+      EditorFileDialog._bindings.method_get_option_default,
       this._owner,
 			Variant.Type.INT,
       _option
@@ -448,7 +449,7 @@ export class EditorFileDialog extends ConfirmationDialog{
   }
   set_option_name(_option, _name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_option_name,
+      EditorFileDialog._bindings.method_set_option_name,
       this._owner,
       _option, _name
     );
@@ -456,7 +457,7 @@ export class EditorFileDialog extends ConfirmationDialog{
   }
   set_option_values(_option, _values) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_option_values,
+      EditorFileDialog._bindings.method_set_option_values,
       this._owner,
       _option, _values
     );
@@ -464,7 +465,7 @@ export class EditorFileDialog extends ConfirmationDialog{
   }
   set_option_default(_option, _default_value_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_option_default,
+      EditorFileDialog._bindings.method_set_option_default,
       this._owner,
       _option, _default_value_index
     );
@@ -472,7 +473,7 @@ export class EditorFileDialog extends ConfirmationDialog{
   }
   set_option_count(_count) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_option_count,
+      EditorFileDialog._bindings.method_set_option_count,
       this._owner,
       _count
     );
@@ -480,7 +481,7 @@ export class EditorFileDialog extends ConfirmationDialog{
   }
   get_option_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_option_count,
+      EditorFileDialog._bindings.method_get_option_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -489,7 +490,7 @@ export class EditorFileDialog extends ConfirmationDialog{
   }
   add_option(_name, _values, _default_value_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_option,
+      EditorFileDialog._bindings.method_add_option,
       this._owner,
       _name, _values, _default_value_index
     );
@@ -497,7 +498,7 @@ export class EditorFileDialog extends ConfirmationDialog{
   }
   get_selected_options() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_selected_options,
+      EditorFileDialog._bindings.method_get_selected_options,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -507,7 +508,7 @@ export class EditorFileDialog extends ConfirmationDialog{
   }
   get_current_dir() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_current_dir,
+      EditorFileDialog._bindings.method_get_current_dir,
       this._owner,
 			Variant.Type.STRING,
     
@@ -517,7 +518,7 @@ export class EditorFileDialog extends ConfirmationDialog{
   }
   get_current_file() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_current_file,
+      EditorFileDialog._bindings.method_get_current_file,
       this._owner,
 			Variant.Type.STRING,
     
@@ -527,7 +528,7 @@ export class EditorFileDialog extends ConfirmationDialog{
   }
   get_current_path() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_current_path,
+      EditorFileDialog._bindings.method_get_current_path,
       this._owner,
 			Variant.Type.STRING,
     
@@ -537,7 +538,7 @@ export class EditorFileDialog extends ConfirmationDialog{
   }
   set_current_dir(_dir) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_current_dir,
+      EditorFileDialog._bindings.method_set_current_dir,
       this._owner,
       _dir
     );
@@ -545,7 +546,7 @@ export class EditorFileDialog extends ConfirmationDialog{
   }
   set_current_file(_file) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_current_file,
+      EditorFileDialog._bindings.method_set_current_file,
       this._owner,
       _file
     );
@@ -553,7 +554,7 @@ export class EditorFileDialog extends ConfirmationDialog{
   }
   set_current_path(_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_current_path,
+      EditorFileDialog._bindings.method_set_current_path,
       this._owner,
       _path
     );
@@ -561,7 +562,7 @@ export class EditorFileDialog extends ConfirmationDialog{
   }
   set_file_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_file_mode,
+      EditorFileDialog._bindings.method_set_file_mode,
       this._owner,
       _mode
     );
@@ -569,7 +570,7 @@ export class EditorFileDialog extends ConfirmationDialog{
   }
   get_file_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_file_mode,
+      EditorFileDialog._bindings.method_get_file_mode,
       this._owner,
 			Variant.INT,
       
@@ -578,7 +579,7 @@ export class EditorFileDialog extends ConfirmationDialog{
   }
   get_vbox() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vbox,
+      EditorFileDialog._bindings.method_get_vbox,
       this._owner,
 			Variant.INT,
       
@@ -587,7 +588,7 @@ export class EditorFileDialog extends ConfirmationDialog{
   }
   get_line_edit() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_edit,
+      EditorFileDialog._bindings.method_get_line_edit,
       this._owner,
 			Variant.INT,
       
@@ -596,7 +597,7 @@ export class EditorFileDialog extends ConfirmationDialog{
   }
   set_access(_access) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_access,
+      EditorFileDialog._bindings.method_set_access,
       this._owner,
       _access
     );
@@ -604,7 +605,7 @@ export class EditorFileDialog extends ConfirmationDialog{
   }
   get_access() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_access,
+      EditorFileDialog._bindings.method_get_access,
       this._owner,
 			Variant.INT,
       
@@ -613,7 +614,7 @@ export class EditorFileDialog extends ConfirmationDialog{
   }
   set_show_hidden_files(_show) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_show_hidden_files,
+      EditorFileDialog._bindings.method_set_show_hidden_files,
       this._owner,
       _show
     );
@@ -621,7 +622,7 @@ export class EditorFileDialog extends ConfirmationDialog{
   }
   is_showing_hidden_files() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_showing_hidden_files,
+      EditorFileDialog._bindings.method_is_showing_hidden_files,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -630,7 +631,7 @@ export class EditorFileDialog extends ConfirmationDialog{
   }
   set_display_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_display_mode,
+      EditorFileDialog._bindings.method_set_display_mode,
       this._owner,
       _mode
     );
@@ -638,7 +639,7 @@ export class EditorFileDialog extends ConfirmationDialog{
   }
   get_display_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_display_mode,
+      EditorFileDialog._bindings.method_get_display_mode,
       this._owner,
 			Variant.INT,
       
@@ -647,7 +648,7 @@ export class EditorFileDialog extends ConfirmationDialog{
   }
   set_disable_overwrite_warning(_disable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_disable_overwrite_warning,
+      EditorFileDialog._bindings.method_set_disable_overwrite_warning,
       this._owner,
       _disable
     );
@@ -655,7 +656,7 @@ export class EditorFileDialog extends ConfirmationDialog{
   }
   is_overwrite_warning_disabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_overwrite_warning_disabled,
+      EditorFileDialog._bindings.method_is_overwrite_warning_disabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -664,7 +665,7 @@ export class EditorFileDialog extends ConfirmationDialog{
   }
   add_side_menu(_menu, _title) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_side_menu,
+      EditorFileDialog._bindings.method_add_side_menu,
       this._owner,
       _menu, _title
     );
@@ -672,7 +673,7 @@ export class EditorFileDialog extends ConfirmationDialog{
   }
   popup_file_dialog() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_popup_file_dialog,
+      EditorFileDialog._bindings.method_popup_file_dialog,
       this._owner,
       
     );
@@ -680,7 +681,7 @@ export class EditorFileDialog extends ConfirmationDialog{
   }
   invalidate() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_invalidate,
+      EditorFileDialog._bindings.method_invalidate,
       this._owner,
       
     );

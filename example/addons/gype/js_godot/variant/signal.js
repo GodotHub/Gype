@@ -5,8 +5,8 @@ import {
   _call_builtin_method_ptr_no_ret
 } from '@js_godot/core/builtin_ptrcall'
 import { StringName } from '@js_godot/variant/string_name'
-import { Callable } from '@js_godot/variant/callable'
 import { GDArray } from '@js_godot/variant/gd_array'
+import { Callable } from '@js_godot/variant/callable'
 
 class _MethodBindings {
   from_variant_constructor

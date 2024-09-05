@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { AABB } from '@js_godot/variant/aabb'
 import { VisualInstance3D } from '@js_godot/classes/visual_instance3d'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -351,9 +351,10 @@ export class GeometryInstance3D extends VisualInstance3D{
       );
     }
   }
+  
   set_material_override(_material) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_material_override,
+      GeometryInstance3D._bindings.method_set_material_override,
       this._owner,
       _material
     );
@@ -361,7 +362,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   }
   get_material_override() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_material_override,
+      GeometryInstance3D._bindings.method_get_material_override,
       this._owner,
 			Variant.INT,
       
@@ -370,7 +371,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   }
   set_material_overlay(_material) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_material_overlay,
+      GeometryInstance3D._bindings.method_set_material_overlay,
       this._owner,
       _material
     );
@@ -378,7 +379,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   }
   get_material_overlay() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_material_overlay,
+      GeometryInstance3D._bindings.method_get_material_overlay,
       this._owner,
 			Variant.INT,
       
@@ -387,7 +388,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   }
   set_cast_shadows_setting(_shadow_casting_setting) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cast_shadows_setting,
+      GeometryInstance3D._bindings.method_set_cast_shadows_setting,
       this._owner,
       _shadow_casting_setting
     );
@@ -395,7 +396,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   }
   get_cast_shadows_setting() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cast_shadows_setting,
+      GeometryInstance3D._bindings.method_get_cast_shadows_setting,
       this._owner,
 			Variant.INT,
       
@@ -404,7 +405,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   }
   set_lod_bias(_bias) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_lod_bias,
+      GeometryInstance3D._bindings.method_set_lod_bias,
       this._owner,
       _bias
     );
@@ -412,7 +413,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   }
   get_lod_bias() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_lod_bias,
+      GeometryInstance3D._bindings.method_get_lod_bias,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -421,7 +422,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   }
   set_transparency(_transparency) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_transparency,
+      GeometryInstance3D._bindings.method_set_transparency,
       this._owner,
       _transparency
     );
@@ -429,7 +430,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   }
   get_transparency() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_transparency,
+      GeometryInstance3D._bindings.method_get_transparency,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -438,7 +439,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   }
   set_visibility_range_end_margin(_distance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_visibility_range_end_margin,
+      GeometryInstance3D._bindings.method_set_visibility_range_end_margin,
       this._owner,
       _distance
     );
@@ -446,7 +447,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   }
   get_visibility_range_end_margin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_visibility_range_end_margin,
+      GeometryInstance3D._bindings.method_get_visibility_range_end_margin,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -455,7 +456,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   }
   set_visibility_range_end(_distance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_visibility_range_end,
+      GeometryInstance3D._bindings.method_set_visibility_range_end,
       this._owner,
       _distance
     );
@@ -463,7 +464,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   }
   get_visibility_range_end() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_visibility_range_end,
+      GeometryInstance3D._bindings.method_get_visibility_range_end,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -472,7 +473,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   }
   set_visibility_range_begin_margin(_distance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_visibility_range_begin_margin,
+      GeometryInstance3D._bindings.method_set_visibility_range_begin_margin,
       this._owner,
       _distance
     );
@@ -480,7 +481,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   }
   get_visibility_range_begin_margin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_visibility_range_begin_margin,
+      GeometryInstance3D._bindings.method_get_visibility_range_begin_margin,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -489,7 +490,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   }
   set_visibility_range_begin(_distance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_visibility_range_begin,
+      GeometryInstance3D._bindings.method_set_visibility_range_begin,
       this._owner,
       _distance
     );
@@ -497,7 +498,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   }
   get_visibility_range_begin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_visibility_range_begin,
+      GeometryInstance3D._bindings.method_get_visibility_range_begin,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -506,7 +507,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   }
   set_visibility_range_fade_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_visibility_range_fade_mode,
+      GeometryInstance3D._bindings.method_set_visibility_range_fade_mode,
       this._owner,
       _mode
     );
@@ -514,7 +515,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   }
   get_visibility_range_fade_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_visibility_range_fade_mode,
+      GeometryInstance3D._bindings.method_get_visibility_range_fade_mode,
       this._owner,
 			Variant.INT,
       
@@ -523,7 +524,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   }
   set_instance_shader_parameter(_name, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_instance_shader_parameter,
+      GeometryInstance3D._bindings.method_set_instance_shader_parameter,
       this._owner,
       _name, _value
     );
@@ -531,7 +532,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   }
   get_instance_shader_parameter(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_instance_shader_parameter,
+      GeometryInstance3D._bindings.method_get_instance_shader_parameter,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -541,7 +542,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   }
   set_extra_cull_margin(_margin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_extra_cull_margin,
+      GeometryInstance3D._bindings.method_set_extra_cull_margin,
       this._owner,
       _margin
     );
@@ -549,7 +550,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   }
   get_extra_cull_margin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_extra_cull_margin,
+      GeometryInstance3D._bindings.method_get_extra_cull_margin,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -558,7 +559,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   }
   set_lightmap_scale(_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_lightmap_scale,
+      GeometryInstance3D._bindings.method_set_lightmap_scale,
       this._owner,
       _scale
     );
@@ -566,7 +567,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   }
   get_lightmap_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_lightmap_scale,
+      GeometryInstance3D._bindings.method_get_lightmap_scale,
       this._owner,
 			Variant.INT,
       
@@ -575,7 +576,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   }
   set_gi_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_gi_mode,
+      GeometryInstance3D._bindings.method_set_gi_mode,
       this._owner,
       _mode
     );
@@ -583,7 +584,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   }
   get_gi_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_gi_mode,
+      GeometryInstance3D._bindings.method_get_gi_mode,
       this._owner,
 			Variant.INT,
       
@@ -592,7 +593,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   }
   set_ignore_occlusion_culling(_ignore_culling) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ignore_occlusion_culling,
+      GeometryInstance3D._bindings.method_set_ignore_occlusion_culling,
       this._owner,
       _ignore_culling
     );
@@ -600,7 +601,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   }
   is_ignoring_occlusion_culling() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_ignoring_occlusion_culling,
+      GeometryInstance3D._bindings.method_is_ignoring_occlusion_culling,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -609,7 +610,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   }
   set_custom_aabb(_aabb) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_custom_aabb,
+      GeometryInstance3D._bindings.method_set_custom_aabb,
       this._owner,
       _aabb
     );
@@ -617,7 +618,7 @@ export class GeometryInstance3D extends VisualInstance3D{
   }
   get_custom_aabb() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_custom_aabb,
+      GeometryInstance3D._bindings.method_get_custom_aabb,
       this._owner,
 			Variant.Type.AABB,
     

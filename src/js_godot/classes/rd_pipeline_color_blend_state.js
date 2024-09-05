@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { Color } from '@js_godot/variant/color'
 import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
+import { Color } from '@js_godot/variant/color'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -111,9 +111,10 @@ export class RDPipelineColorBlendState extends RefCounted{
       );
     }
   }
+  
   set_enable_logic_op(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_enable_logic_op,
+      RDPipelineColorBlendState._bindings.method_set_enable_logic_op,
       this._owner,
       _p_member
     );
@@ -121,7 +122,7 @@ export class RDPipelineColorBlendState extends RefCounted{
   }
   get_enable_logic_op() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_enable_logic_op,
+      RDPipelineColorBlendState._bindings.method_get_enable_logic_op,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -130,7 +131,7 @@ export class RDPipelineColorBlendState extends RefCounted{
   }
   set_logic_op(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_logic_op,
+      RDPipelineColorBlendState._bindings.method_set_logic_op,
       this._owner,
       _p_member
     );
@@ -138,7 +139,7 @@ export class RDPipelineColorBlendState extends RefCounted{
   }
   get_logic_op() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_logic_op,
+      RDPipelineColorBlendState._bindings.method_get_logic_op,
       this._owner,
 			Variant.INT,
       
@@ -147,7 +148,7 @@ export class RDPipelineColorBlendState extends RefCounted{
   }
   set_blend_constant(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_blend_constant,
+      RDPipelineColorBlendState._bindings.method_set_blend_constant,
       this._owner,
       _p_member
     );
@@ -155,7 +156,7 @@ export class RDPipelineColorBlendState extends RefCounted{
   }
   get_blend_constant() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_blend_constant,
+      RDPipelineColorBlendState._bindings.method_get_blend_constant,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -165,7 +166,7 @@ export class RDPipelineColorBlendState extends RefCounted{
   }
   set_attachments(_attachments) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_attachments,
+      RDPipelineColorBlendState._bindings.method_set_attachments,
       this._owner,
       _attachments
     );
@@ -173,7 +174,7 @@ export class RDPipelineColorBlendState extends RefCounted{
   }
   get_attachments() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_attachments,
+      RDPipelineColorBlendState._bindings.method_get_attachments,
       this._owner,
 			Variant.INT,
       

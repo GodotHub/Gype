@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { Texture2D } from '@js_godot/classes/texture2d'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -80,9 +80,10 @@ export class GradientTexture1D extends Texture2D{
       );
     }
   }
+  
   set_gradient(_gradient) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_gradient,
+      GradientTexture1D._bindings.method_set_gradient,
       this._owner,
       _gradient
     );
@@ -90,7 +91,7 @@ export class GradientTexture1D extends Texture2D{
   }
   get_gradient() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_gradient,
+      GradientTexture1D._bindings.method_get_gradient,
       this._owner,
 			Variant.INT,
       
@@ -99,7 +100,7 @@ export class GradientTexture1D extends Texture2D{
   }
   set_width(_width) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_width,
+      GradientTexture1D._bindings.method_set_width,
       this._owner,
       _width
     );
@@ -107,7 +108,7 @@ export class GradientTexture1D extends Texture2D{
   }
   set_use_hdr(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_hdr,
+      GradientTexture1D._bindings.method_set_use_hdr,
       this._owner,
       _enabled
     );
@@ -115,7 +116,7 @@ export class GradientTexture1D extends Texture2D{
   }
   is_using_hdr() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_using_hdr,
+      GradientTexture1D._bindings.method_is_using_hdr,
       this._owner,
 			Variant.Type.BOOL,
       

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -330,9 +330,10 @@ export class RDSamplerState extends RefCounted{
       );
     }
   }
+  
   set_mag_filter(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mag_filter,
+      RDSamplerState._bindings.method_set_mag_filter,
       this._owner,
       _p_member
     );
@@ -340,7 +341,7 @@ export class RDSamplerState extends RefCounted{
   }
   get_mag_filter() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mag_filter,
+      RDSamplerState._bindings.method_get_mag_filter,
       this._owner,
 			Variant.INT,
       
@@ -349,7 +350,7 @@ export class RDSamplerState extends RefCounted{
   }
   set_min_filter(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_min_filter,
+      RDSamplerState._bindings.method_set_min_filter,
       this._owner,
       _p_member
     );
@@ -357,7 +358,7 @@ export class RDSamplerState extends RefCounted{
   }
   get_min_filter() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_min_filter,
+      RDSamplerState._bindings.method_get_min_filter,
       this._owner,
 			Variant.INT,
       
@@ -366,7 +367,7 @@ export class RDSamplerState extends RefCounted{
   }
   set_mip_filter(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mip_filter,
+      RDSamplerState._bindings.method_set_mip_filter,
       this._owner,
       _p_member
     );
@@ -374,7 +375,7 @@ export class RDSamplerState extends RefCounted{
   }
   get_mip_filter() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mip_filter,
+      RDSamplerState._bindings.method_get_mip_filter,
       this._owner,
 			Variant.INT,
       
@@ -383,7 +384,7 @@ export class RDSamplerState extends RefCounted{
   }
   set_repeat_u(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_repeat_u,
+      RDSamplerState._bindings.method_set_repeat_u,
       this._owner,
       _p_member
     );
@@ -391,7 +392,7 @@ export class RDSamplerState extends RefCounted{
   }
   get_repeat_u() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_repeat_u,
+      RDSamplerState._bindings.method_get_repeat_u,
       this._owner,
 			Variant.INT,
       
@@ -400,7 +401,7 @@ export class RDSamplerState extends RefCounted{
   }
   set_repeat_v(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_repeat_v,
+      RDSamplerState._bindings.method_set_repeat_v,
       this._owner,
       _p_member
     );
@@ -408,7 +409,7 @@ export class RDSamplerState extends RefCounted{
   }
   get_repeat_v() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_repeat_v,
+      RDSamplerState._bindings.method_get_repeat_v,
       this._owner,
 			Variant.INT,
       
@@ -417,7 +418,7 @@ export class RDSamplerState extends RefCounted{
   }
   set_repeat_w(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_repeat_w,
+      RDSamplerState._bindings.method_set_repeat_w,
       this._owner,
       _p_member
     );
@@ -425,7 +426,7 @@ export class RDSamplerState extends RefCounted{
   }
   get_repeat_w() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_repeat_w,
+      RDSamplerState._bindings.method_get_repeat_w,
       this._owner,
 			Variant.INT,
       
@@ -434,7 +435,7 @@ export class RDSamplerState extends RefCounted{
   }
   set_lod_bias(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_lod_bias,
+      RDSamplerState._bindings.method_set_lod_bias,
       this._owner,
       _p_member
     );
@@ -442,7 +443,7 @@ export class RDSamplerState extends RefCounted{
   }
   get_lod_bias() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_lod_bias,
+      RDSamplerState._bindings.method_get_lod_bias,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -451,7 +452,7 @@ export class RDSamplerState extends RefCounted{
   }
   set_use_anisotropy(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_anisotropy,
+      RDSamplerState._bindings.method_set_use_anisotropy,
       this._owner,
       _p_member
     );
@@ -459,7 +460,7 @@ export class RDSamplerState extends RefCounted{
   }
   get_use_anisotropy() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_use_anisotropy,
+      RDSamplerState._bindings.method_get_use_anisotropy,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -468,7 +469,7 @@ export class RDSamplerState extends RefCounted{
   }
   set_anisotropy_max(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_anisotropy_max,
+      RDSamplerState._bindings.method_set_anisotropy_max,
       this._owner,
       _p_member
     );
@@ -476,7 +477,7 @@ export class RDSamplerState extends RefCounted{
   }
   get_anisotropy_max() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_anisotropy_max,
+      RDSamplerState._bindings.method_get_anisotropy_max,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -485,7 +486,7 @@ export class RDSamplerState extends RefCounted{
   }
   set_enable_compare(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_enable_compare,
+      RDSamplerState._bindings.method_set_enable_compare,
       this._owner,
       _p_member
     );
@@ -493,7 +494,7 @@ export class RDSamplerState extends RefCounted{
   }
   get_enable_compare() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_enable_compare,
+      RDSamplerState._bindings.method_get_enable_compare,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -502,7 +503,7 @@ export class RDSamplerState extends RefCounted{
   }
   set_compare_op(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_compare_op,
+      RDSamplerState._bindings.method_set_compare_op,
       this._owner,
       _p_member
     );
@@ -510,7 +511,7 @@ export class RDSamplerState extends RefCounted{
   }
   get_compare_op() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_compare_op,
+      RDSamplerState._bindings.method_get_compare_op,
       this._owner,
 			Variant.INT,
       
@@ -519,7 +520,7 @@ export class RDSamplerState extends RefCounted{
   }
   set_min_lod(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_min_lod,
+      RDSamplerState._bindings.method_set_min_lod,
       this._owner,
       _p_member
     );
@@ -527,7 +528,7 @@ export class RDSamplerState extends RefCounted{
   }
   get_min_lod() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_min_lod,
+      RDSamplerState._bindings.method_get_min_lod,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -536,7 +537,7 @@ export class RDSamplerState extends RefCounted{
   }
   set_max_lod(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_max_lod,
+      RDSamplerState._bindings.method_set_max_lod,
       this._owner,
       _p_member
     );
@@ -544,7 +545,7 @@ export class RDSamplerState extends RefCounted{
   }
   get_max_lod() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_max_lod,
+      RDSamplerState._bindings.method_get_max_lod,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -553,7 +554,7 @@ export class RDSamplerState extends RefCounted{
   }
   set_border_color(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_border_color,
+      RDSamplerState._bindings.method_set_border_color,
       this._owner,
       _p_member
     );
@@ -561,7 +562,7 @@ export class RDSamplerState extends RefCounted{
   }
   get_border_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_border_color,
+      RDSamplerState._bindings.method_get_border_color,
       this._owner,
 			Variant.INT,
       
@@ -570,7 +571,7 @@ export class RDSamplerState extends RefCounted{
   }
   set_unnormalized_uvw(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_unnormalized_uvw,
+      RDSamplerState._bindings.method_set_unnormalized_uvw,
       this._owner,
       _p_member
     );
@@ -578,7 +579,7 @@ export class RDSamplerState extends RefCounted{
   }
   get_unnormalized_uvw() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_unnormalized_uvw,
+      RDSamplerState._bindings.method_get_unnormalized_uvw,
       this._owner,
 			Variant.Type.BOOL,
       

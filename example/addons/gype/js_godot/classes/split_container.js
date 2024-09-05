@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { Container } from '@js_godot/classes/container'
 import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { Container } from '@js_godot/classes/container'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -120,9 +120,10 @@ export class SplitContainer extends Container{
       );
     }
   }
+  
   set_split_offset(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_split_offset,
+      SplitContainer._bindings.method_set_split_offset,
       this._owner,
       _offset
     );
@@ -130,7 +131,7 @@ export class SplitContainer extends Container{
   }
   get_split_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_split_offset,
+      SplitContainer._bindings.method_get_split_offset,
       this._owner,
 			Variant.Type.INT,
       
@@ -139,7 +140,7 @@ export class SplitContainer extends Container{
   }
   clamp_split_offset() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clamp_split_offset,
+      SplitContainer._bindings.method_clamp_split_offset,
       this._owner,
       
     );
@@ -147,7 +148,7 @@ export class SplitContainer extends Container{
   }
   set_collapsed(_collapsed) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collapsed,
+      SplitContainer._bindings.method_set_collapsed,
       this._owner,
       _collapsed
     );
@@ -155,7 +156,7 @@ export class SplitContainer extends Container{
   }
   is_collapsed() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_collapsed,
+      SplitContainer._bindings.method_is_collapsed,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -164,7 +165,7 @@ export class SplitContainer extends Container{
   }
   set_dragger_visibility(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_dragger_visibility,
+      SplitContainer._bindings.method_set_dragger_visibility,
       this._owner,
       _mode
     );
@@ -172,7 +173,7 @@ export class SplitContainer extends Container{
   }
   get_dragger_visibility() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_dragger_visibility,
+      SplitContainer._bindings.method_get_dragger_visibility,
       this._owner,
 			Variant.INT,
       
@@ -181,7 +182,7 @@ export class SplitContainer extends Container{
   }
   set_vertical(_vertical) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vertical,
+      SplitContainer._bindings.method_set_vertical,
       this._owner,
       _vertical
     );
@@ -189,7 +190,7 @@ export class SplitContainer extends Container{
   }
   is_vertical() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_vertical,
+      SplitContainer._bindings.method_is_vertical,
       this._owner,
 			Variant.Type.BOOL,
       

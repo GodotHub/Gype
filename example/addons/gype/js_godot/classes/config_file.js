@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
-import { RefCounted } from '@js_godot/classes/ref_counted'
 import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { RefCounted } from '@js_godot/classes/ref_counted'
+import { Variant } from '@js_godot/variant/variant'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -203,9 +203,10 @@ export class ConfigFile extends RefCounted{
       );
     }
   }
+  
   set_value(_section, _key, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_value,
+      ConfigFile._bindings.method_set_value,
       this._owner,
       _section, _key, _value
     );
@@ -213,7 +214,7 @@ export class ConfigFile extends RefCounted{
   }
   get_value(_section, _key, _default) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_value,
+      ConfigFile._bindings.method_get_value,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -223,7 +224,7 @@ export class ConfigFile extends RefCounted{
   }
   has_section(_section) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_section,
+      ConfigFile._bindings.method_has_section,
       this._owner,
 			Variant.Type.BOOL,
       _section
@@ -232,7 +233,7 @@ export class ConfigFile extends RefCounted{
   }
   has_section_key(_section, _key) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_section_key,
+      ConfigFile._bindings.method_has_section_key,
       this._owner,
 			Variant.Type.BOOL,
       _section, _key
@@ -241,7 +242,7 @@ export class ConfigFile extends RefCounted{
   }
   get_sections() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sections,
+      ConfigFile._bindings.method_get_sections,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -251,7 +252,7 @@ export class ConfigFile extends RefCounted{
   }
   get_section_keys(_section) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_section_keys,
+      ConfigFile._bindings.method_get_section_keys,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -261,7 +262,7 @@ export class ConfigFile extends RefCounted{
   }
   erase_section(_section) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_erase_section,
+      ConfigFile._bindings.method_erase_section,
       this._owner,
       _section
     );
@@ -269,7 +270,7 @@ export class ConfigFile extends RefCounted{
   }
   erase_section_key(_section, _key) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_erase_section_key,
+      ConfigFile._bindings.method_erase_section_key,
       this._owner,
       _section, _key
     );
@@ -277,7 +278,7 @@ export class ConfigFile extends RefCounted{
   }
   load(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_load,
+      ConfigFile._bindings.method_load,
       this._owner,
 			Variant.INT,
       _path
@@ -286,7 +287,7 @@ export class ConfigFile extends RefCounted{
   }
   parse(_data) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_parse,
+      ConfigFile._bindings.method_parse,
       this._owner,
 			Variant.INT,
       _data
@@ -295,7 +296,7 @@ export class ConfigFile extends RefCounted{
   }
   save(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_save,
+      ConfigFile._bindings.method_save,
       this._owner,
 			Variant.INT,
       _path
@@ -304,7 +305,7 @@ export class ConfigFile extends RefCounted{
   }
   encode_to_text() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_encode_to_text,
+      ConfigFile._bindings.method_encode_to_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -314,7 +315,7 @@ export class ConfigFile extends RefCounted{
   }
   load_encrypted(_path, _key) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_load_encrypted,
+      ConfigFile._bindings.method_load_encrypted,
       this._owner,
 			Variant.INT,
       _path, _key
@@ -323,7 +324,7 @@ export class ConfigFile extends RefCounted{
   }
   load_encrypted_pass(_path, _password) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_load_encrypted_pass,
+      ConfigFile._bindings.method_load_encrypted_pass,
       this._owner,
 			Variant.INT,
       _path, _password
@@ -332,7 +333,7 @@ export class ConfigFile extends RefCounted{
   }
   save_encrypted(_path, _key) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_save_encrypted,
+      ConfigFile._bindings.method_save_encrypted,
       this._owner,
 			Variant.INT,
       _path, _key
@@ -341,7 +342,7 @@ export class ConfigFile extends RefCounted{
   }
   save_encrypted_pass(_path, _password) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_save_encrypted_pass,
+      ConfigFile._bindings.method_save_encrypted_pass,
       this._owner,
 			Variant.INT,
       _path, _password
@@ -350,7 +351,7 @@ export class ConfigFile extends RefCounted{
   }
   clear() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear,
+      ConfigFile._bindings.method_clear,
       this._owner,
       
     );

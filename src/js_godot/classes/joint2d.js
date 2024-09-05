@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Node2D } from '@js_godot/classes/node2d'
+import { NodePath } from '@js_godot/variant/node_path'
+import { RID } from '@js_godot/variant/rid'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
-import { RID } from '@js_godot/variant/rid'
-import { NodePath } from '@js_godot/variant/node_path'
+import { Node2D } from '@js_godot/classes/node2d'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -122,9 +122,10 @@ export class Joint2D extends Node2D{
       );
     }
   }
+  
   set_node_a(_node) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_node_a,
+      Joint2D._bindings.method_set_node_a,
       this._owner,
       _node
     );
@@ -132,7 +133,7 @@ export class Joint2D extends Node2D{
   }
   get_node_a() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_node_a,
+      Joint2D._bindings.method_get_node_a,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -142,7 +143,7 @@ export class Joint2D extends Node2D{
   }
   set_node_b(_node) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_node_b,
+      Joint2D._bindings.method_set_node_b,
       this._owner,
       _node
     );
@@ -150,7 +151,7 @@ export class Joint2D extends Node2D{
   }
   get_node_b() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_node_b,
+      Joint2D._bindings.method_get_node_b,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -160,7 +161,7 @@ export class Joint2D extends Node2D{
   }
   set_bias(_bias) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bias,
+      Joint2D._bindings.method_set_bias,
       this._owner,
       _bias
     );
@@ -168,7 +169,7 @@ export class Joint2D extends Node2D{
   }
   get_bias() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bias,
+      Joint2D._bindings.method_get_bias,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -177,7 +178,7 @@ export class Joint2D extends Node2D{
   }
   set_exclude_nodes_from_collision(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_exclude_nodes_from_collision,
+      Joint2D._bindings.method_set_exclude_nodes_from_collision,
       this._owner,
       _enable
     );
@@ -185,7 +186,7 @@ export class Joint2D extends Node2D{
   }
   get_exclude_nodes_from_collision() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_exclude_nodes_from_collision,
+      Joint2D._bindings.method_get_exclude_nodes_from_collision,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -194,7 +195,7 @@ export class Joint2D extends Node2D{
   }
   get_rid() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rid,
+      Joint2D._bindings.method_get_rid,
       this._owner,
 			Variant.Type.RID,
     

@@ -1,11 +1,11 @@
 import * as internal from '__internal__';
-import { Callable } from '@js_godot/variant/callable'
-import { Variant } from '@js_godot/variant/variant'
+import { MultiplayerAPI } from '@js_godot/classes/multiplayer_api'
 import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
 import { StringName } from '@js_godot/variant/string_name'
-import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
-import { MultiplayerAPI } from '@js_godot/classes/multiplayer_api'
 import { NodePath } from '@js_godot/variant/node_path'
+import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
+import { Callable } from '@js_godot/variant/callable'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -254,9 +254,10 @@ export class SceneMultiplayer extends MultiplayerAPI{
       );
     }
   }
+  
   set_root_path(_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_root_path,
+      SceneMultiplayer._bindings.method_set_root_path,
       this._owner,
       _path
     );
@@ -264,7 +265,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   }
   get_root_path() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_root_path,
+      SceneMultiplayer._bindings.method_get_root_path,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -274,7 +275,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   }
   clear() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear,
+      SceneMultiplayer._bindings.method_clear,
       this._owner,
       
     );
@@ -282,7 +283,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   }
   disconnect_peer(_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_disconnect_peer,
+      SceneMultiplayer._bindings.method_disconnect_peer,
       this._owner,
       _id
     );
@@ -290,7 +291,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   }
   get_authenticating_peers() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_authenticating_peers,
+      SceneMultiplayer._bindings.method_get_authenticating_peers,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -300,7 +301,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   }
   send_auth(_id, _data) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_send_auth,
+      SceneMultiplayer._bindings.method_send_auth,
       this._owner,
 			Variant.INT,
       _id, _data
@@ -309,7 +310,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   }
   complete_auth(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_complete_auth,
+      SceneMultiplayer._bindings.method_complete_auth,
       this._owner,
 			Variant.INT,
       _id
@@ -318,7 +319,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   }
   set_auth_callback(_callback) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_auth_callback,
+      SceneMultiplayer._bindings.method_set_auth_callback,
       this._owner,
       _callback
     );
@@ -326,7 +327,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   }
   get_auth_callback() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_auth_callback,
+      SceneMultiplayer._bindings.method_get_auth_callback,
       this._owner,
 			Variant.Type.CALLABLE,
     
@@ -336,7 +337,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   }
   set_auth_timeout(_timeout) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_auth_timeout,
+      SceneMultiplayer._bindings.method_set_auth_timeout,
       this._owner,
       _timeout
     );
@@ -344,7 +345,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   }
   get_auth_timeout() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_auth_timeout,
+      SceneMultiplayer._bindings.method_get_auth_timeout,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -353,7 +354,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   }
   set_refuse_new_connections(_refuse) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_refuse_new_connections,
+      SceneMultiplayer._bindings.method_set_refuse_new_connections,
       this._owner,
       _refuse
     );
@@ -361,7 +362,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   }
   is_refusing_new_connections() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_refusing_new_connections,
+      SceneMultiplayer._bindings.method_is_refusing_new_connections,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -370,7 +371,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   }
   set_allow_object_decoding(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_allow_object_decoding,
+      SceneMultiplayer._bindings.method_set_allow_object_decoding,
       this._owner,
       _enable
     );
@@ -378,7 +379,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   }
   is_object_decoding_allowed() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_object_decoding_allowed,
+      SceneMultiplayer._bindings.method_is_object_decoding_allowed,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -387,7 +388,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   }
   set_server_relay_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_server_relay_enabled,
+      SceneMultiplayer._bindings.method_set_server_relay_enabled,
       this._owner,
       _enabled
     );
@@ -395,7 +396,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   }
   is_server_relay_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_server_relay_enabled,
+      SceneMultiplayer._bindings.method_is_server_relay_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -404,7 +405,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   }
   send_bytes(_bytes, _id, _mode, _channel) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_send_bytes,
+      SceneMultiplayer._bindings.method_send_bytes,
       this._owner,
 			Variant.INT,
       _bytes, _id, _mode, _channel
@@ -413,7 +414,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   }
   get_max_sync_packet_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_max_sync_packet_size,
+      SceneMultiplayer._bindings.method_get_max_sync_packet_size,
       this._owner,
 			Variant.Type.INT,
       
@@ -422,7 +423,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   }
   set_max_sync_packet_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_max_sync_packet_size,
+      SceneMultiplayer._bindings.method_set_max_sync_packet_size,
       this._owner,
       _size
     );
@@ -430,7 +431,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   }
   get_max_delta_packet_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_max_delta_packet_size,
+      SceneMultiplayer._bindings.method_get_max_delta_packet_size,
       this._owner,
 			Variant.Type.INT,
       
@@ -439,7 +440,7 @@ export class SceneMultiplayer extends MultiplayerAPI{
   }
   set_max_delta_packet_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_max_delta_packet_size,
+      SceneMultiplayer._bindings.method_set_max_delta_packet_size,
       this._owner,
       _size
     );

@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
+import { RID } from '@js_godot/variant/rid'
 import { Variant } from '@js_godot/variant/variant'
 import { GodotObject } from '@js_godot/classes/godot_object'
-import { RID } from '@js_godot/variant/rid'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -41,9 +41,10 @@ export class UniformSetCacheRD extends GodotObject{
       );
     }
   }
+  
   get_cache(_shader, _set, _uniforms) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cache,
+      UniformSetCacheRD._bindings.method_get_cache,
       this._owner,
 			Variant.Type.RID,
     

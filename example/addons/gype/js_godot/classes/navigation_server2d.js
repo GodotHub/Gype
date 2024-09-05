@@ -1,11 +1,11 @@
 import * as internal from '__internal__';
-import { Callable } from '@js_godot/variant/callable'
-import { Variant } from '@js_godot/variant/variant'
-import { GodotObject } from '@js_godot/classes/godot_object'
-import { StringName } from '@js_godot/variant/string_name'
-import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
 import { Vector2 } from '@js_godot/variant/vector2'
 import { RID } from '@js_godot/variant/rid'
+import { StringName } from '@js_godot/variant/string_name'
+import { GodotObject } from '@js_godot/classes/godot_object'
+import { Callable } from '@js_godot/variant/callable'
+import { Variant } from '@js_godot/variant/variant'
+import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
 import { Transform2D } from '@js_godot/variant/transform2d'
 import {
   call_utility_ret,
@@ -1284,9 +1284,10 @@ class _MethodBindings {
       );
     }
   }
+  
   get_maps() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_maps,
+      _NavigationServer2D._bindings.method_get_maps,
       this._owner,
 			Variant.INT,
       
@@ -1295,7 +1296,7 @@ class _MethodBindings {
   }
   map_create() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_map_create,
+      _NavigationServer2D._bindings.method_map_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1305,7 +1306,7 @@ class _MethodBindings {
   }
   map_set_active(_map, _active) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_map_set_active,
+      _NavigationServer2D._bindings.method_map_set_active,
       this._owner,
       _map, _active
     );
@@ -1313,7 +1314,7 @@ class _MethodBindings {
   }
   map_is_active(_map) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_map_is_active,
+      _NavigationServer2D._bindings.method_map_is_active,
       this._owner,
 			Variant.Type.BOOL,
       _map
@@ -1322,7 +1323,7 @@ class _MethodBindings {
   }
   map_set_cell_size(_map, _cell_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_map_set_cell_size,
+      _NavigationServer2D._bindings.method_map_set_cell_size,
       this._owner,
       _map, _cell_size
     );
@@ -1330,7 +1331,7 @@ class _MethodBindings {
   }
   map_get_cell_size(_map) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_map_get_cell_size,
+      _NavigationServer2D._bindings.method_map_get_cell_size,
       this._owner,
 			Variant.Type.FLOAT,
       _map
@@ -1339,7 +1340,7 @@ class _MethodBindings {
   }
   map_set_use_edge_connections(_map, _enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_map_set_use_edge_connections,
+      _NavigationServer2D._bindings.method_map_set_use_edge_connections,
       this._owner,
       _map, _enabled
     );
@@ -1347,7 +1348,7 @@ class _MethodBindings {
   }
   map_get_use_edge_connections(_map) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_map_get_use_edge_connections,
+      _NavigationServer2D._bindings.method_map_get_use_edge_connections,
       this._owner,
 			Variant.Type.BOOL,
       _map
@@ -1356,7 +1357,7 @@ class _MethodBindings {
   }
   map_set_edge_connection_margin(_map, _margin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_map_set_edge_connection_margin,
+      _NavigationServer2D._bindings.method_map_set_edge_connection_margin,
       this._owner,
       _map, _margin
     );
@@ -1364,7 +1365,7 @@ class _MethodBindings {
   }
   map_get_edge_connection_margin(_map) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_map_get_edge_connection_margin,
+      _NavigationServer2D._bindings.method_map_get_edge_connection_margin,
       this._owner,
 			Variant.Type.FLOAT,
       _map
@@ -1373,7 +1374,7 @@ class _MethodBindings {
   }
   map_set_link_connection_radius(_map, _radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_map_set_link_connection_radius,
+      _NavigationServer2D._bindings.method_map_set_link_connection_radius,
       this._owner,
       _map, _radius
     );
@@ -1381,7 +1382,7 @@ class _MethodBindings {
   }
   map_get_link_connection_radius(_map) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_map_get_link_connection_radius,
+      _NavigationServer2D._bindings.method_map_get_link_connection_radius,
       this._owner,
 			Variant.Type.FLOAT,
       _map
@@ -1390,7 +1391,7 @@ class _MethodBindings {
   }
   map_get_path(_map, _origin, _destination, _optimize, _navigation_layers) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_map_get_path,
+      _NavigationServer2D._bindings.method_map_get_path,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -1400,7 +1401,7 @@ class _MethodBindings {
   }
   map_get_closest_point(_map, _to_point) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_map_get_closest_point,
+      _NavigationServer2D._bindings.method_map_get_closest_point,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1410,7 +1411,7 @@ class _MethodBindings {
   }
   map_get_closest_point_owner(_map, _to_point) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_map_get_closest_point_owner,
+      _NavigationServer2D._bindings.method_map_get_closest_point_owner,
       this._owner,
 			Variant.Type.RID,
     
@@ -1420,7 +1421,7 @@ class _MethodBindings {
   }
   map_get_links(_map) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_map_get_links,
+      _NavigationServer2D._bindings.method_map_get_links,
       this._owner,
 			Variant.INT,
       _map
@@ -1429,7 +1430,7 @@ class _MethodBindings {
   }
   map_get_regions(_map) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_map_get_regions,
+      _NavigationServer2D._bindings.method_map_get_regions,
       this._owner,
 			Variant.INT,
       _map
@@ -1438,7 +1439,7 @@ class _MethodBindings {
   }
   map_get_agents(_map) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_map_get_agents,
+      _NavigationServer2D._bindings.method_map_get_agents,
       this._owner,
 			Variant.INT,
       _map
@@ -1447,7 +1448,7 @@ class _MethodBindings {
   }
   map_get_obstacles(_map) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_map_get_obstacles,
+      _NavigationServer2D._bindings.method_map_get_obstacles,
       this._owner,
 			Variant.INT,
       _map
@@ -1456,7 +1457,7 @@ class _MethodBindings {
   }
   map_force_update(_map) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_map_force_update,
+      _NavigationServer2D._bindings.method_map_force_update,
       this._owner,
       _map
     );
@@ -1464,7 +1465,7 @@ class _MethodBindings {
   }
   map_get_iteration_id(_map) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_map_get_iteration_id,
+      _NavigationServer2D._bindings.method_map_get_iteration_id,
       this._owner,
 			Variant.Type.INT,
       _map
@@ -1473,7 +1474,7 @@ class _MethodBindings {
   }
   map_get_random_point(_map, _navigation_layers, _uniformly) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_map_get_random_point,
+      _NavigationServer2D._bindings.method_map_get_random_point,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1483,7 +1484,7 @@ class _MethodBindings {
   }
   query_path(_parameters, _result) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_query_path,
+      _NavigationServer2D._bindings.method_query_path,
       this._owner,
       _parameters, _result
     );
@@ -1491,7 +1492,7 @@ class _MethodBindings {
   }
   region_create() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_region_create,
+      _NavigationServer2D._bindings.method_region_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1501,7 +1502,7 @@ class _MethodBindings {
   }
   region_set_enabled(_region, _enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_region_set_enabled,
+      _NavigationServer2D._bindings.method_region_set_enabled,
       this._owner,
       _region, _enabled
     );
@@ -1509,7 +1510,7 @@ class _MethodBindings {
   }
   region_get_enabled(_region) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_region_get_enabled,
+      _NavigationServer2D._bindings.method_region_get_enabled,
       this._owner,
 			Variant.Type.BOOL,
       _region
@@ -1518,7 +1519,7 @@ class _MethodBindings {
   }
   region_set_use_edge_connections(_region, _enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_region_set_use_edge_connections,
+      _NavigationServer2D._bindings.method_region_set_use_edge_connections,
       this._owner,
       _region, _enabled
     );
@@ -1526,7 +1527,7 @@ class _MethodBindings {
   }
   region_get_use_edge_connections(_region) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_region_get_use_edge_connections,
+      _NavigationServer2D._bindings.method_region_get_use_edge_connections,
       this._owner,
 			Variant.Type.BOOL,
       _region
@@ -1535,7 +1536,7 @@ class _MethodBindings {
   }
   region_set_enter_cost(_region, _enter_cost) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_region_set_enter_cost,
+      _NavigationServer2D._bindings.method_region_set_enter_cost,
       this._owner,
       _region, _enter_cost
     );
@@ -1543,7 +1544,7 @@ class _MethodBindings {
   }
   region_get_enter_cost(_region) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_region_get_enter_cost,
+      _NavigationServer2D._bindings.method_region_get_enter_cost,
       this._owner,
 			Variant.Type.FLOAT,
       _region
@@ -1552,7 +1553,7 @@ class _MethodBindings {
   }
   region_set_travel_cost(_region, _travel_cost) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_region_set_travel_cost,
+      _NavigationServer2D._bindings.method_region_set_travel_cost,
       this._owner,
       _region, _travel_cost
     );
@@ -1560,7 +1561,7 @@ class _MethodBindings {
   }
   region_get_travel_cost(_region) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_region_get_travel_cost,
+      _NavigationServer2D._bindings.method_region_get_travel_cost,
       this._owner,
 			Variant.Type.FLOAT,
       _region
@@ -1569,7 +1570,7 @@ class _MethodBindings {
   }
   region_set_owner_id(_region, _owner_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_region_set_owner_id,
+      _NavigationServer2D._bindings.method_region_set_owner_id,
       this._owner,
       _region, _owner_id
     );
@@ -1577,7 +1578,7 @@ class _MethodBindings {
   }
   region_get_owner_id(_region) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_region_get_owner_id,
+      _NavigationServer2D._bindings.method_region_get_owner_id,
       this._owner,
 			Variant.Type.INT,
       _region
@@ -1586,7 +1587,7 @@ class _MethodBindings {
   }
   region_owns_point(_region, _point) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_region_owns_point,
+      _NavigationServer2D._bindings.method_region_owns_point,
       this._owner,
 			Variant.Type.BOOL,
       _region, _point
@@ -1595,7 +1596,7 @@ class _MethodBindings {
   }
   region_set_map(_region, _map) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_region_set_map,
+      _NavigationServer2D._bindings.method_region_set_map,
       this._owner,
       _region, _map
     );
@@ -1603,7 +1604,7 @@ class _MethodBindings {
   }
   region_get_map(_region) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_region_get_map,
+      _NavigationServer2D._bindings.method_region_get_map,
       this._owner,
 			Variant.Type.RID,
     
@@ -1613,7 +1614,7 @@ class _MethodBindings {
   }
   region_set_navigation_layers(_region, _navigation_layers) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_region_set_navigation_layers,
+      _NavigationServer2D._bindings.method_region_set_navigation_layers,
       this._owner,
       _region, _navigation_layers
     );
@@ -1621,7 +1622,7 @@ class _MethodBindings {
   }
   region_get_navigation_layers(_region) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_region_get_navigation_layers,
+      _NavigationServer2D._bindings.method_region_get_navigation_layers,
       this._owner,
 			Variant.Type.INT,
       _region
@@ -1630,7 +1631,7 @@ class _MethodBindings {
   }
   region_set_transform(_region, _transform) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_region_set_transform,
+      _NavigationServer2D._bindings.method_region_set_transform,
       this._owner,
       _region, _transform
     );
@@ -1638,7 +1639,7 @@ class _MethodBindings {
   }
   region_get_transform(_region) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_region_get_transform,
+      _NavigationServer2D._bindings.method_region_get_transform,
       this._owner,
 			Variant.Type.TRANSFORM2D,
     
@@ -1648,7 +1649,7 @@ class _MethodBindings {
   }
   region_set_navigation_polygon(_region, _navigation_polygon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_region_set_navigation_polygon,
+      _NavigationServer2D._bindings.method_region_set_navigation_polygon,
       this._owner,
       _region, _navigation_polygon
     );
@@ -1656,7 +1657,7 @@ class _MethodBindings {
   }
   region_get_connections_count(_region) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_region_get_connections_count,
+      _NavigationServer2D._bindings.method_region_get_connections_count,
       this._owner,
 			Variant.Type.INT,
       _region
@@ -1665,7 +1666,7 @@ class _MethodBindings {
   }
   region_get_connection_pathway_start(_region, _connection) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_region_get_connection_pathway_start,
+      _NavigationServer2D._bindings.method_region_get_connection_pathway_start,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1675,7 +1676,7 @@ class _MethodBindings {
   }
   region_get_connection_pathway_end(_region, _connection) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_region_get_connection_pathway_end,
+      _NavigationServer2D._bindings.method_region_get_connection_pathway_end,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1685,7 +1686,7 @@ class _MethodBindings {
   }
   region_get_random_point(_region, _navigation_layers, _uniformly) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_region_get_random_point,
+      _NavigationServer2D._bindings.method_region_get_random_point,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1695,7 +1696,7 @@ class _MethodBindings {
   }
   link_create() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_link_create,
+      _NavigationServer2D._bindings.method_link_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1705,7 +1706,7 @@ class _MethodBindings {
   }
   link_set_map(_link, _map) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_link_set_map,
+      _NavigationServer2D._bindings.method_link_set_map,
       this._owner,
       _link, _map
     );
@@ -1713,7 +1714,7 @@ class _MethodBindings {
   }
   link_get_map(_link) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_link_get_map,
+      _NavigationServer2D._bindings.method_link_get_map,
       this._owner,
 			Variant.Type.RID,
     
@@ -1723,7 +1724,7 @@ class _MethodBindings {
   }
   link_set_enabled(_link, _enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_link_set_enabled,
+      _NavigationServer2D._bindings.method_link_set_enabled,
       this._owner,
       _link, _enabled
     );
@@ -1731,7 +1732,7 @@ class _MethodBindings {
   }
   link_get_enabled(_link) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_link_get_enabled,
+      _NavigationServer2D._bindings.method_link_get_enabled,
       this._owner,
 			Variant.Type.BOOL,
       _link
@@ -1740,7 +1741,7 @@ class _MethodBindings {
   }
   link_set_bidirectional(_link, _bidirectional) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_link_set_bidirectional,
+      _NavigationServer2D._bindings.method_link_set_bidirectional,
       this._owner,
       _link, _bidirectional
     );
@@ -1748,7 +1749,7 @@ class _MethodBindings {
   }
   link_is_bidirectional(_link) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_link_is_bidirectional,
+      _NavigationServer2D._bindings.method_link_is_bidirectional,
       this._owner,
 			Variant.Type.BOOL,
       _link
@@ -1757,7 +1758,7 @@ class _MethodBindings {
   }
   link_set_navigation_layers(_link, _navigation_layers) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_link_set_navigation_layers,
+      _NavigationServer2D._bindings.method_link_set_navigation_layers,
       this._owner,
       _link, _navigation_layers
     );
@@ -1765,7 +1766,7 @@ class _MethodBindings {
   }
   link_get_navigation_layers(_link) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_link_get_navigation_layers,
+      _NavigationServer2D._bindings.method_link_get_navigation_layers,
       this._owner,
 			Variant.Type.INT,
       _link
@@ -1774,7 +1775,7 @@ class _MethodBindings {
   }
   link_set_start_position(_link, _position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_link_set_start_position,
+      _NavigationServer2D._bindings.method_link_set_start_position,
       this._owner,
       _link, _position
     );
@@ -1782,7 +1783,7 @@ class _MethodBindings {
   }
   link_get_start_position(_link) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_link_get_start_position,
+      _NavigationServer2D._bindings.method_link_get_start_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1792,7 +1793,7 @@ class _MethodBindings {
   }
   link_set_end_position(_link, _position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_link_set_end_position,
+      _NavigationServer2D._bindings.method_link_set_end_position,
       this._owner,
       _link, _position
     );
@@ -1800,7 +1801,7 @@ class _MethodBindings {
   }
   link_get_end_position(_link) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_link_get_end_position,
+      _NavigationServer2D._bindings.method_link_get_end_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1810,7 +1811,7 @@ class _MethodBindings {
   }
   link_set_enter_cost(_link, _enter_cost) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_link_set_enter_cost,
+      _NavigationServer2D._bindings.method_link_set_enter_cost,
       this._owner,
       _link, _enter_cost
     );
@@ -1818,7 +1819,7 @@ class _MethodBindings {
   }
   link_get_enter_cost(_link) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_link_get_enter_cost,
+      _NavigationServer2D._bindings.method_link_get_enter_cost,
       this._owner,
 			Variant.Type.FLOAT,
       _link
@@ -1827,7 +1828,7 @@ class _MethodBindings {
   }
   link_set_travel_cost(_link, _travel_cost) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_link_set_travel_cost,
+      _NavigationServer2D._bindings.method_link_set_travel_cost,
       this._owner,
       _link, _travel_cost
     );
@@ -1835,7 +1836,7 @@ class _MethodBindings {
   }
   link_get_travel_cost(_link) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_link_get_travel_cost,
+      _NavigationServer2D._bindings.method_link_get_travel_cost,
       this._owner,
 			Variant.Type.FLOAT,
       _link
@@ -1844,7 +1845,7 @@ class _MethodBindings {
   }
   link_set_owner_id(_link, _owner_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_link_set_owner_id,
+      _NavigationServer2D._bindings.method_link_set_owner_id,
       this._owner,
       _link, _owner_id
     );
@@ -1852,7 +1853,7 @@ class _MethodBindings {
   }
   link_get_owner_id(_link) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_link_get_owner_id,
+      _NavigationServer2D._bindings.method_link_get_owner_id,
       this._owner,
 			Variant.Type.INT,
       _link
@@ -1861,7 +1862,7 @@ class _MethodBindings {
   }
   agent_create() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_agent_create,
+      _NavigationServer2D._bindings.method_agent_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1871,7 +1872,7 @@ class _MethodBindings {
   }
   agent_set_avoidance_enabled(_agent, _enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_agent_set_avoidance_enabled,
+      _NavigationServer2D._bindings.method_agent_set_avoidance_enabled,
       this._owner,
       _agent, _enabled
     );
@@ -1879,7 +1880,7 @@ class _MethodBindings {
   }
   agent_get_avoidance_enabled(_agent) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_agent_get_avoidance_enabled,
+      _NavigationServer2D._bindings.method_agent_get_avoidance_enabled,
       this._owner,
 			Variant.Type.BOOL,
       _agent
@@ -1888,7 +1889,7 @@ class _MethodBindings {
   }
   agent_set_map(_agent, _map) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_agent_set_map,
+      _NavigationServer2D._bindings.method_agent_set_map,
       this._owner,
       _agent, _map
     );
@@ -1896,7 +1897,7 @@ class _MethodBindings {
   }
   agent_get_map(_agent) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_agent_get_map,
+      _NavigationServer2D._bindings.method_agent_get_map,
       this._owner,
 			Variant.Type.RID,
     
@@ -1906,7 +1907,7 @@ class _MethodBindings {
   }
   agent_set_paused(_agent, _paused) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_agent_set_paused,
+      _NavigationServer2D._bindings.method_agent_set_paused,
       this._owner,
       _agent, _paused
     );
@@ -1914,7 +1915,7 @@ class _MethodBindings {
   }
   agent_get_paused(_agent) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_agent_get_paused,
+      _NavigationServer2D._bindings.method_agent_get_paused,
       this._owner,
 			Variant.Type.BOOL,
       _agent
@@ -1923,7 +1924,7 @@ class _MethodBindings {
   }
   agent_set_neighbor_distance(_agent, _distance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_agent_set_neighbor_distance,
+      _NavigationServer2D._bindings.method_agent_set_neighbor_distance,
       this._owner,
       _agent, _distance
     );
@@ -1931,7 +1932,7 @@ class _MethodBindings {
   }
   agent_get_neighbor_distance(_agent) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_agent_get_neighbor_distance,
+      _NavigationServer2D._bindings.method_agent_get_neighbor_distance,
       this._owner,
 			Variant.Type.FLOAT,
       _agent
@@ -1940,7 +1941,7 @@ class _MethodBindings {
   }
   agent_set_max_neighbors(_agent, _count) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_agent_set_max_neighbors,
+      _NavigationServer2D._bindings.method_agent_set_max_neighbors,
       this._owner,
       _agent, _count
     );
@@ -1948,7 +1949,7 @@ class _MethodBindings {
   }
   agent_get_max_neighbors(_agent) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_agent_get_max_neighbors,
+      _NavigationServer2D._bindings.method_agent_get_max_neighbors,
       this._owner,
 			Variant.Type.INT,
       _agent
@@ -1957,7 +1958,7 @@ class _MethodBindings {
   }
   agent_set_time_horizon_agents(_agent, _time_horizon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_agent_set_time_horizon_agents,
+      _NavigationServer2D._bindings.method_agent_set_time_horizon_agents,
       this._owner,
       _agent, _time_horizon
     );
@@ -1965,7 +1966,7 @@ class _MethodBindings {
   }
   agent_get_time_horizon_agents(_agent) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_agent_get_time_horizon_agents,
+      _NavigationServer2D._bindings.method_agent_get_time_horizon_agents,
       this._owner,
 			Variant.Type.FLOAT,
       _agent
@@ -1974,7 +1975,7 @@ class _MethodBindings {
   }
   agent_set_time_horizon_obstacles(_agent, _time_horizon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_agent_set_time_horizon_obstacles,
+      _NavigationServer2D._bindings.method_agent_set_time_horizon_obstacles,
       this._owner,
       _agent, _time_horizon
     );
@@ -1982,7 +1983,7 @@ class _MethodBindings {
   }
   agent_get_time_horizon_obstacles(_agent) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_agent_get_time_horizon_obstacles,
+      _NavigationServer2D._bindings.method_agent_get_time_horizon_obstacles,
       this._owner,
 			Variant.Type.FLOAT,
       _agent
@@ -1991,7 +1992,7 @@ class _MethodBindings {
   }
   agent_set_radius(_agent, _radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_agent_set_radius,
+      _NavigationServer2D._bindings.method_agent_set_radius,
       this._owner,
       _agent, _radius
     );
@@ -1999,7 +2000,7 @@ class _MethodBindings {
   }
   agent_get_radius(_agent) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_agent_get_radius,
+      _NavigationServer2D._bindings.method_agent_get_radius,
       this._owner,
 			Variant.Type.FLOAT,
       _agent
@@ -2008,7 +2009,7 @@ class _MethodBindings {
   }
   agent_set_max_speed(_agent, _max_speed) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_agent_set_max_speed,
+      _NavigationServer2D._bindings.method_agent_set_max_speed,
       this._owner,
       _agent, _max_speed
     );
@@ -2016,7 +2017,7 @@ class _MethodBindings {
   }
   agent_get_max_speed(_agent) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_agent_get_max_speed,
+      _NavigationServer2D._bindings.method_agent_get_max_speed,
       this._owner,
 			Variant.Type.FLOAT,
       _agent
@@ -2025,7 +2026,7 @@ class _MethodBindings {
   }
   agent_set_velocity_forced(_agent, _velocity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_agent_set_velocity_forced,
+      _NavigationServer2D._bindings.method_agent_set_velocity_forced,
       this._owner,
       _agent, _velocity
     );
@@ -2033,7 +2034,7 @@ class _MethodBindings {
   }
   agent_set_velocity(_agent, _velocity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_agent_set_velocity,
+      _NavigationServer2D._bindings.method_agent_set_velocity,
       this._owner,
       _agent, _velocity
     );
@@ -2041,7 +2042,7 @@ class _MethodBindings {
   }
   agent_get_velocity(_agent) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_agent_get_velocity,
+      _NavigationServer2D._bindings.method_agent_get_velocity,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -2051,7 +2052,7 @@ class _MethodBindings {
   }
   agent_set_position(_agent, _position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_agent_set_position,
+      _NavigationServer2D._bindings.method_agent_set_position,
       this._owner,
       _agent, _position
     );
@@ -2059,7 +2060,7 @@ class _MethodBindings {
   }
   agent_get_position(_agent) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_agent_get_position,
+      _NavigationServer2D._bindings.method_agent_get_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -2069,7 +2070,7 @@ class _MethodBindings {
   }
   agent_is_map_changed(_agent) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_agent_is_map_changed,
+      _NavigationServer2D._bindings.method_agent_is_map_changed,
       this._owner,
 			Variant.Type.BOOL,
       _agent
@@ -2078,7 +2079,7 @@ class _MethodBindings {
   }
   agent_set_avoidance_callback(_agent, _callback) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_agent_set_avoidance_callback,
+      _NavigationServer2D._bindings.method_agent_set_avoidance_callback,
       this._owner,
       _agent, _callback
     );
@@ -2086,7 +2087,7 @@ class _MethodBindings {
   }
   agent_has_avoidance_callback(_agent) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_agent_has_avoidance_callback,
+      _NavigationServer2D._bindings.method_agent_has_avoidance_callback,
       this._owner,
 			Variant.Type.BOOL,
       _agent
@@ -2095,7 +2096,7 @@ class _MethodBindings {
   }
   agent_set_avoidance_layers(_agent, _layers) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_agent_set_avoidance_layers,
+      _NavigationServer2D._bindings.method_agent_set_avoidance_layers,
       this._owner,
       _agent, _layers
     );
@@ -2103,7 +2104,7 @@ class _MethodBindings {
   }
   agent_get_avoidance_layers(_agent) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_agent_get_avoidance_layers,
+      _NavigationServer2D._bindings.method_agent_get_avoidance_layers,
       this._owner,
 			Variant.Type.INT,
       _agent
@@ -2112,7 +2113,7 @@ class _MethodBindings {
   }
   agent_set_avoidance_mask(_agent, _mask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_agent_set_avoidance_mask,
+      _NavigationServer2D._bindings.method_agent_set_avoidance_mask,
       this._owner,
       _agent, _mask
     );
@@ -2120,7 +2121,7 @@ class _MethodBindings {
   }
   agent_get_avoidance_mask(_agent) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_agent_get_avoidance_mask,
+      _NavigationServer2D._bindings.method_agent_get_avoidance_mask,
       this._owner,
 			Variant.Type.INT,
       _agent
@@ -2129,7 +2130,7 @@ class _MethodBindings {
   }
   agent_set_avoidance_priority(_agent, _priority) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_agent_set_avoidance_priority,
+      _NavigationServer2D._bindings.method_agent_set_avoidance_priority,
       this._owner,
       _agent, _priority
     );
@@ -2137,7 +2138,7 @@ class _MethodBindings {
   }
   agent_get_avoidance_priority(_agent) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_agent_get_avoidance_priority,
+      _NavigationServer2D._bindings.method_agent_get_avoidance_priority,
       this._owner,
 			Variant.Type.FLOAT,
       _agent
@@ -2146,7 +2147,7 @@ class _MethodBindings {
   }
   obstacle_create() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_obstacle_create,
+      _NavigationServer2D._bindings.method_obstacle_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -2156,7 +2157,7 @@ class _MethodBindings {
   }
   obstacle_set_avoidance_enabled(_obstacle, _enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_obstacle_set_avoidance_enabled,
+      _NavigationServer2D._bindings.method_obstacle_set_avoidance_enabled,
       this._owner,
       _obstacle, _enabled
     );
@@ -2164,7 +2165,7 @@ class _MethodBindings {
   }
   obstacle_get_avoidance_enabled(_obstacle) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_obstacle_get_avoidance_enabled,
+      _NavigationServer2D._bindings.method_obstacle_get_avoidance_enabled,
       this._owner,
 			Variant.Type.BOOL,
       _obstacle
@@ -2173,7 +2174,7 @@ class _MethodBindings {
   }
   obstacle_set_map(_obstacle, _map) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_obstacle_set_map,
+      _NavigationServer2D._bindings.method_obstacle_set_map,
       this._owner,
       _obstacle, _map
     );
@@ -2181,7 +2182,7 @@ class _MethodBindings {
   }
   obstacle_get_map(_obstacle) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_obstacle_get_map,
+      _NavigationServer2D._bindings.method_obstacle_get_map,
       this._owner,
 			Variant.Type.RID,
     
@@ -2191,7 +2192,7 @@ class _MethodBindings {
   }
   obstacle_set_paused(_obstacle, _paused) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_obstacle_set_paused,
+      _NavigationServer2D._bindings.method_obstacle_set_paused,
       this._owner,
       _obstacle, _paused
     );
@@ -2199,7 +2200,7 @@ class _MethodBindings {
   }
   obstacle_get_paused(_obstacle) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_obstacle_get_paused,
+      _NavigationServer2D._bindings.method_obstacle_get_paused,
       this._owner,
 			Variant.Type.BOOL,
       _obstacle
@@ -2208,7 +2209,7 @@ class _MethodBindings {
   }
   obstacle_set_radius(_obstacle, _radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_obstacle_set_radius,
+      _NavigationServer2D._bindings.method_obstacle_set_radius,
       this._owner,
       _obstacle, _radius
     );
@@ -2216,7 +2217,7 @@ class _MethodBindings {
   }
   obstacle_get_radius(_obstacle) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_obstacle_get_radius,
+      _NavigationServer2D._bindings.method_obstacle_get_radius,
       this._owner,
 			Variant.Type.FLOAT,
       _obstacle
@@ -2225,7 +2226,7 @@ class _MethodBindings {
   }
   obstacle_set_velocity(_obstacle, _velocity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_obstacle_set_velocity,
+      _NavigationServer2D._bindings.method_obstacle_set_velocity,
       this._owner,
       _obstacle, _velocity
     );
@@ -2233,7 +2234,7 @@ class _MethodBindings {
   }
   obstacle_get_velocity(_obstacle) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_obstacle_get_velocity,
+      _NavigationServer2D._bindings.method_obstacle_get_velocity,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -2243,7 +2244,7 @@ class _MethodBindings {
   }
   obstacle_set_position(_obstacle, _position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_obstacle_set_position,
+      _NavigationServer2D._bindings.method_obstacle_set_position,
       this._owner,
       _obstacle, _position
     );
@@ -2251,7 +2252,7 @@ class _MethodBindings {
   }
   obstacle_get_position(_obstacle) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_obstacle_get_position,
+      _NavigationServer2D._bindings.method_obstacle_get_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -2261,7 +2262,7 @@ class _MethodBindings {
   }
   obstacle_set_vertices(_obstacle, _vertices) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_obstacle_set_vertices,
+      _NavigationServer2D._bindings.method_obstacle_set_vertices,
       this._owner,
       _obstacle, _vertices
     );
@@ -2269,7 +2270,7 @@ class _MethodBindings {
   }
   obstacle_get_vertices(_obstacle) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_obstacle_get_vertices,
+      _NavigationServer2D._bindings.method_obstacle_get_vertices,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -2279,7 +2280,7 @@ class _MethodBindings {
   }
   obstacle_set_avoidance_layers(_obstacle, _layers) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_obstacle_set_avoidance_layers,
+      _NavigationServer2D._bindings.method_obstacle_set_avoidance_layers,
       this._owner,
       _obstacle, _layers
     );
@@ -2287,7 +2288,7 @@ class _MethodBindings {
   }
   obstacle_get_avoidance_layers(_obstacle) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_obstacle_get_avoidance_layers,
+      _NavigationServer2D._bindings.method_obstacle_get_avoidance_layers,
       this._owner,
 			Variant.Type.INT,
       _obstacle
@@ -2296,7 +2297,7 @@ class _MethodBindings {
   }
   parse_source_geometry_data(_navigation_polygon, _source_geometry_data, _root_node, _callback) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_parse_source_geometry_data,
+      _NavigationServer2D._bindings.method_parse_source_geometry_data,
       this._owner,
       _navigation_polygon, _source_geometry_data, _root_node, _callback
     );
@@ -2304,7 +2305,7 @@ class _MethodBindings {
   }
   bake_from_source_geometry_data(_navigation_polygon, _source_geometry_data, _callback) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_bake_from_source_geometry_data,
+      _NavigationServer2D._bindings.method_bake_from_source_geometry_data,
       this._owner,
       _navigation_polygon, _source_geometry_data, _callback
     );
@@ -2312,7 +2313,7 @@ class _MethodBindings {
   }
   bake_from_source_geometry_data_async(_navigation_polygon, _source_geometry_data, _callback) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_bake_from_source_geometry_data_async,
+      _NavigationServer2D._bindings.method_bake_from_source_geometry_data_async,
       this._owner,
       _navigation_polygon, _source_geometry_data, _callback
     );
@@ -2320,7 +2321,7 @@ class _MethodBindings {
   }
   is_baking_navigation_polygon(_navigation_polygon) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_baking_navigation_polygon,
+      _NavigationServer2D._bindings.method_is_baking_navigation_polygon,
       this._owner,
 			Variant.Type.BOOL,
       _navigation_polygon
@@ -2329,7 +2330,7 @@ class _MethodBindings {
   }
   source_geometry_parser_create() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_source_geometry_parser_create,
+      _NavigationServer2D._bindings.method_source_geometry_parser_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -2339,7 +2340,7 @@ class _MethodBindings {
   }
   source_geometry_parser_set_callback(_parser, _callback) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_source_geometry_parser_set_callback,
+      _NavigationServer2D._bindings.method_source_geometry_parser_set_callback,
       this._owner,
       _parser, _callback
     );
@@ -2347,7 +2348,7 @@ class _MethodBindings {
   }
   simplify_path(_path, _epsilon) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_simplify_path,
+      _NavigationServer2D._bindings.method_simplify_path,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -2357,7 +2358,7 @@ class _MethodBindings {
   }
   free_rid(_rid) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_free_rid,
+      _NavigationServer2D._bindings.method_free_rid,
       this._owner,
       _rid
     );
@@ -2365,7 +2366,7 @@ class _MethodBindings {
   }
   set_debug_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_debug_enabled,
+      _NavigationServer2D._bindings.method_set_debug_enabled,
       this._owner,
       _enabled
     );
@@ -2373,7 +2374,7 @@ class _MethodBindings {
   }
   get_debug_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_debug_enabled,
+      _NavigationServer2D._bindings.method_get_debug_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2387,4 +2388,17 @@ class _MethodBindings {
     this._init_bindings();
   }
 }
-export const NavigationServer2D = new _NavigationServer2D();
+export const NavigationServer2D = (function () {
+  let _instance;
+  function create_instance() {
+    return new _NavigationServer2D();
+  }
+  return {
+    instance: function () {
+      if (!_instance) {
+        _instance = create_instance();
+      }
+      return _instance;
+    },
+  };
+})();

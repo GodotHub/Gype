@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { Vector3 } from '@js_godot/variant/vector3'
 import { GPUParticlesAttractor3D } from '@js_godot/classes/gpu_particles_attractor3d'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -71,9 +71,10 @@ export class GPUParticlesAttractorVectorField3D extends GPUParticlesAttractor3D{
       );
     }
   }
+  
   set_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_size,
+      GPUParticlesAttractorVectorField3D._bindings.method_set_size,
       this._owner,
       _size
     );
@@ -81,7 +82,7 @@ export class GPUParticlesAttractorVectorField3D extends GPUParticlesAttractor3D{
   }
   get_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_size,
+      GPUParticlesAttractorVectorField3D._bindings.method_get_size,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -91,7 +92,7 @@ export class GPUParticlesAttractorVectorField3D extends GPUParticlesAttractor3D{
   }
   set_texture(_texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture,
+      GPUParticlesAttractorVectorField3D._bindings.method_set_texture,
       this._owner,
       _texture
     );
@@ -99,7 +100,7 @@ export class GPUParticlesAttractorVectorField3D extends GPUParticlesAttractor3D{
   }
   get_texture() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture,
+      GPUParticlesAttractorVectorField3D._bindings.method_get_texture,
       this._owner,
 			Variant.INT,
       

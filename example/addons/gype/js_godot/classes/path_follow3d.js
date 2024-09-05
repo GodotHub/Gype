@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Transform3D } from '@js_godot/variant/transform3d'
 import { Node3D } from '@js_godot/classes/node3d'
-import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -221,9 +221,10 @@ export class PathFollow3D extends Node3D{
       );
     }
   }
+  
   set_progress(_progress) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_progress,
+      PathFollow3D._bindings.method_set_progress,
       this._owner,
       _progress
     );
@@ -231,7 +232,7 @@ export class PathFollow3D extends Node3D{
   }
   get_progress() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_progress,
+      PathFollow3D._bindings.method_get_progress,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -240,7 +241,7 @@ export class PathFollow3D extends Node3D{
   }
   set_h_offset(_h_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_h_offset,
+      PathFollow3D._bindings.method_set_h_offset,
       this._owner,
       _h_offset
     );
@@ -248,7 +249,7 @@ export class PathFollow3D extends Node3D{
   }
   get_h_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_h_offset,
+      PathFollow3D._bindings.method_get_h_offset,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -257,7 +258,7 @@ export class PathFollow3D extends Node3D{
   }
   set_v_offset(_v_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_v_offset,
+      PathFollow3D._bindings.method_set_v_offset,
       this._owner,
       _v_offset
     );
@@ -265,7 +266,7 @@ export class PathFollow3D extends Node3D{
   }
   get_v_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_v_offset,
+      PathFollow3D._bindings.method_get_v_offset,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -274,7 +275,7 @@ export class PathFollow3D extends Node3D{
   }
   set_progress_ratio(_ratio) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_progress_ratio,
+      PathFollow3D._bindings.method_set_progress_ratio,
       this._owner,
       _ratio
     );
@@ -282,7 +283,7 @@ export class PathFollow3D extends Node3D{
   }
   get_progress_ratio() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_progress_ratio,
+      PathFollow3D._bindings.method_get_progress_ratio,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -291,7 +292,7 @@ export class PathFollow3D extends Node3D{
   }
   set_rotation_mode(_rotation_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_rotation_mode,
+      PathFollow3D._bindings.method_set_rotation_mode,
       this._owner,
       _rotation_mode
     );
@@ -299,7 +300,7 @@ export class PathFollow3D extends Node3D{
   }
   get_rotation_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rotation_mode,
+      PathFollow3D._bindings.method_get_rotation_mode,
       this._owner,
 			Variant.INT,
       
@@ -308,7 +309,7 @@ export class PathFollow3D extends Node3D{
   }
   set_cubic_interpolation(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cubic_interpolation,
+      PathFollow3D._bindings.method_set_cubic_interpolation,
       this._owner,
       _enabled
     );
@@ -316,7 +317,7 @@ export class PathFollow3D extends Node3D{
   }
   get_cubic_interpolation() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cubic_interpolation,
+      PathFollow3D._bindings.method_get_cubic_interpolation,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -325,7 +326,7 @@ export class PathFollow3D extends Node3D{
   }
   set_use_model_front(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_model_front,
+      PathFollow3D._bindings.method_set_use_model_front,
       this._owner,
       _enabled
     );
@@ -333,7 +334,7 @@ export class PathFollow3D extends Node3D{
   }
   is_using_model_front() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_using_model_front,
+      PathFollow3D._bindings.method_is_using_model_front,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -342,7 +343,7 @@ export class PathFollow3D extends Node3D{
   }
   set_loop(_loop) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_loop,
+      PathFollow3D._bindings.method_set_loop,
       this._owner,
       _loop
     );
@@ -350,7 +351,7 @@ export class PathFollow3D extends Node3D{
   }
   has_loop() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_loop,
+      PathFollow3D._bindings.method_has_loop,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -359,7 +360,7 @@ export class PathFollow3D extends Node3D{
   }
   set_tilt_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tilt_enabled,
+      PathFollow3D._bindings.method_set_tilt_enabled,
       this._owner,
       _enabled
     );
@@ -367,7 +368,7 @@ export class PathFollow3D extends Node3D{
   }
   is_tilt_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_tilt_enabled,
+      PathFollow3D._bindings.method_is_tilt_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -376,7 +377,7 @@ export class PathFollow3D extends Node3D{
   }
   correct_posture(_transform, _rotation_mode) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_correct_posture,
+      PathFollow3D._bindings.method_correct_posture,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     

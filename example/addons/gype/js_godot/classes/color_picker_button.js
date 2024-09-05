@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
+import { StringName } from '@js_godot/variant/string_name'
+import { Button } from '@js_godot/classes/button'
 import { Color } from '@js_godot/variant/color'
 import { Variant } from '@js_godot/variant/variant'
-import { Button } from '@js_godot/classes/button'
-import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -91,9 +91,10 @@ export class ColorPickerButton extends Button{
       );
     }
   }
+  
   set_pick_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_pick_color,
+      ColorPickerButton._bindings.method_set_pick_color,
       this._owner,
       _color
     );
@@ -101,7 +102,7 @@ export class ColorPickerButton extends Button{
   }
   get_pick_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_pick_color,
+      ColorPickerButton._bindings.method_get_pick_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -111,7 +112,7 @@ export class ColorPickerButton extends Button{
   }
   get_picker() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_picker,
+      ColorPickerButton._bindings.method_get_picker,
       this._owner,
 			Variant.INT,
       
@@ -120,7 +121,7 @@ export class ColorPickerButton extends Button{
   }
   get_popup() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_popup,
+      ColorPickerButton._bindings.method_get_popup,
       this._owner,
 			Variant.INT,
       
@@ -129,7 +130,7 @@ export class ColorPickerButton extends Button{
   }
   set_edit_alpha(_show) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_edit_alpha,
+      ColorPickerButton._bindings.method_set_edit_alpha,
       this._owner,
       _show
     );
@@ -137,7 +138,7 @@ export class ColorPickerButton extends Button{
   }
   is_editing_alpha() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_editing_alpha,
+      ColorPickerButton._bindings.method_is_editing_alpha,
       this._owner,
 			Variant.Type.BOOL,
       

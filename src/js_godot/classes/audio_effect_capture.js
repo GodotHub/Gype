@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
+import { AudioEffect } from '@js_godot/classes/audio_effect'
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
-import { Variant } from '@js_godot/variant/variant'
-import { AudioEffect } from '@js_godot/classes/audio_effect'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -121,9 +121,10 @@ export class AudioEffectCapture extends AudioEffect{
       );
     }
   }
+  
   can_get_buffer(_frames) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_can_get_buffer,
+      AudioEffectCapture._bindings.method_can_get_buffer,
       this._owner,
 			Variant.Type.BOOL,
       _frames
@@ -132,7 +133,7 @@ export class AudioEffectCapture extends AudioEffect{
   }
   get_buffer(_frames) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_buffer,
+      AudioEffectCapture._bindings.method_get_buffer,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -142,7 +143,7 @@ export class AudioEffectCapture extends AudioEffect{
   }
   clear_buffer() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_buffer,
+      AudioEffectCapture._bindings.method_clear_buffer,
       this._owner,
       
     );
@@ -150,7 +151,7 @@ export class AudioEffectCapture extends AudioEffect{
   }
   set_buffer_length(_buffer_length_seconds) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_buffer_length,
+      AudioEffectCapture._bindings.method_set_buffer_length,
       this._owner,
       _buffer_length_seconds
     );
@@ -158,7 +159,7 @@ export class AudioEffectCapture extends AudioEffect{
   }
   get_buffer_length() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_buffer_length,
+      AudioEffectCapture._bindings.method_get_buffer_length,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -167,7 +168,7 @@ export class AudioEffectCapture extends AudioEffect{
   }
   get_frames_available() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_frames_available,
+      AudioEffectCapture._bindings.method_get_frames_available,
       this._owner,
 			Variant.Type.INT,
       
@@ -176,7 +177,7 @@ export class AudioEffectCapture extends AudioEffect{
   }
   get_discarded_frames() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_discarded_frames,
+      AudioEffectCapture._bindings.method_get_discarded_frames,
       this._owner,
 			Variant.Type.INT,
       
@@ -185,7 +186,7 @@ export class AudioEffectCapture extends AudioEffect{
   }
   get_buffer_length_frames() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_buffer_length_frames,
+      AudioEffectCapture._bindings.method_get_buffer_length_frames,
       this._owner,
 			Variant.Type.INT,
       
@@ -194,7 +195,7 @@ export class AudioEffectCapture extends AudioEffect{
   }
   get_pushed_frames() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_pushed_frames,
+      AudioEffectCapture._bindings.method_get_pushed_frames,
       this._owner,
 			Variant.Type.INT,
       

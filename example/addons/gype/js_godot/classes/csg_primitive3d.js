@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { CSGShape3D } from '@js_godot/classes/csg_shape3d'
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -50,9 +50,10 @@ export class CSGPrimitive3D extends CSGShape3D{
       );
     }
   }
+  
   set_flip_faces(_flip_faces) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_flip_faces,
+      CSGPrimitive3D._bindings.method_set_flip_faces,
       this._owner,
       _flip_faces
     );
@@ -60,7 +61,7 @@ export class CSGPrimitive3D extends CSGShape3D{
   }
   get_flip_faces() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_flip_faces,
+      CSGPrimitive3D._bindings.method_get_flip_faces,
       this._owner,
 			Variant.Type.BOOL,
       

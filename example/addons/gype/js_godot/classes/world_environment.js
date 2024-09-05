@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { Node } from '@js_godot/classes/node'
 import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { Node } from '@js_godot/classes/node'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -90,9 +90,10 @@ export class WorldEnvironment extends Node{
       );
     }
   }
+  
   set_environment(_env) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_environment,
+      WorldEnvironment._bindings.method_set_environment,
       this._owner,
       _env
     );
@@ -100,7 +101,7 @@ export class WorldEnvironment extends Node{
   }
   get_environment() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_environment,
+      WorldEnvironment._bindings.method_get_environment,
       this._owner,
 			Variant.INT,
       
@@ -109,7 +110,7 @@ export class WorldEnvironment extends Node{
   }
   set_camera_attributes(_camera_attributes) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_camera_attributes,
+      WorldEnvironment._bindings.method_set_camera_attributes,
       this._owner,
       _camera_attributes
     );
@@ -117,7 +118,7 @@ export class WorldEnvironment extends Node{
   }
   get_camera_attributes() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_camera_attributes,
+      WorldEnvironment._bindings.method_get_camera_attributes,
       this._owner,
 			Variant.INT,
       
@@ -126,7 +127,7 @@ export class WorldEnvironment extends Node{
   }
   set_compositor(_compositor) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_compositor,
+      WorldEnvironment._bindings.method_set_compositor,
       this._owner,
       _compositor
     );
@@ -134,7 +135,7 @@ export class WorldEnvironment extends Node{
   }
   get_compositor() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_compositor,
+      WorldEnvironment._bindings.method_get_compositor,
       this._owner,
 			Variant.INT,
       

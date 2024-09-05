@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { VisualShaderNodeTextureParameter } from '@js_godot/classes/visual_shader_node_texture_parameter'
 import { Variant } from '@js_godot/variant/variant'
+import { VisualShaderNodeTextureParameter } from '@js_godot/classes/visual_shader_node_texture_parameter'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -30,6 +30,7 @@ export class VisualShaderNodeTextureParameterTriplanar extends VisualShaderNodeT
     }
     this.#initialized = true;
   }
+  
   
 
 

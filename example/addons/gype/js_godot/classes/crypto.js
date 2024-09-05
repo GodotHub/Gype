@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { Variant } from '@js_godot/variant/variant'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -122,9 +122,10 @@ export class Crypto extends RefCounted{
       );
     }
   }
+  
   generate_random_bytes(_size) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_generate_random_bytes,
+      Crypto._bindings.method_generate_random_bytes,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -134,7 +135,7 @@ export class Crypto extends RefCounted{
   }
   generate_rsa(_size) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_generate_rsa,
+      Crypto._bindings.method_generate_rsa,
       this._owner,
 			Variant.INT,
       _size
@@ -143,7 +144,7 @@ export class Crypto extends RefCounted{
   }
   generate_self_signed_certificate(_key, _issuer_name, _not_before, _not_after) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_generate_self_signed_certificate,
+      Crypto._bindings.method_generate_self_signed_certificate,
       this._owner,
 			Variant.INT,
       _key, _issuer_name, _not_before, _not_after
@@ -152,7 +153,7 @@ export class Crypto extends RefCounted{
   }
   sign(_hash_type, _hash, _key) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_sign,
+      Crypto._bindings.method_sign,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -162,7 +163,7 @@ export class Crypto extends RefCounted{
   }
   verify(_hash_type, _hash, _signature, _key) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_verify,
+      Crypto._bindings.method_verify,
       this._owner,
 			Variant.Type.BOOL,
       _hash_type, _hash, _signature, _key
@@ -171,7 +172,7 @@ export class Crypto extends RefCounted{
   }
   encrypt(_key, _plaintext) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_encrypt,
+      Crypto._bindings.method_encrypt,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -181,7 +182,7 @@ export class Crypto extends RefCounted{
   }
   decrypt(_key, _ciphertext) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_decrypt,
+      Crypto._bindings.method_decrypt,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -191,7 +192,7 @@ export class Crypto extends RefCounted{
   }
   hmac_digest(_hash_type, _key, _msg) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_hmac_digest,
+      Crypto._bindings.method_hmac_digest,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -201,7 +202,7 @@ export class Crypto extends RefCounted{
   }
   constant_time_compare(_trusted, _received) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_constant_time_compare,
+      Crypto._bindings.method_constant_time_compare,
       this._owner,
 			Variant.Type.BOOL,
       _trusted, _received

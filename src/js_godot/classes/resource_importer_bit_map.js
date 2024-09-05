@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { ResourceImporter } from '@js_godot/classes/resource_importer'
 import { Variant } from '@js_godot/variant/variant'
+import { ResourceImporter } from '@js_godot/classes/resource_importer'
 import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
@@ -30,6 +30,7 @@ export class ResourceImporterBitMap extends ResourceImporter{
     }
     this.#initialized = true;
   }
+  
   
 
 

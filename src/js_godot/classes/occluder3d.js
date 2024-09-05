@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Resource } from '@js_godot/classes/resource'
-import { PackedVector3Array } from '@js_godot/variant/packed_vector3_array'
-import { StringName } from '@js_godot/variant/string_name'
 import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
+import { PackedVector3Array } from '@js_godot/variant/packed_vector3_array'
+import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -52,9 +52,10 @@ export class Occluder3D extends Resource{
       );
     }
   }
+  
   get_vertices() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vertices,
+      Occluder3D._bindings.method_get_vertices,
       this._owner,
 			Variant.Type.PACKED_VECTOR3_ARRAY,
     
@@ -64,7 +65,7 @@ export class Occluder3D extends Resource{
   }
   get_indices() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_indices,
+      Occluder3D._bindings.method_get_indices,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     

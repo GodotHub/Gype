@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { Material } from '@js_godot/classes/material'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Color } from '@js_godot/variant/color'
+import { Material } from '@js_godot/classes/material'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -151,9 +151,10 @@ export class FogMaterial extends Material{
       );
     }
   }
+  
   set_density(_density) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_density,
+      FogMaterial._bindings.method_set_density,
       this._owner,
       _density
     );
@@ -161,7 +162,7 @@ export class FogMaterial extends Material{
   }
   get_density() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_density,
+      FogMaterial._bindings.method_get_density,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -170,7 +171,7 @@ export class FogMaterial extends Material{
   }
   set_albedo(_albedo) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_albedo,
+      FogMaterial._bindings.method_set_albedo,
       this._owner,
       _albedo
     );
@@ -178,7 +179,7 @@ export class FogMaterial extends Material{
   }
   get_albedo() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_albedo,
+      FogMaterial._bindings.method_get_albedo,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -188,7 +189,7 @@ export class FogMaterial extends Material{
   }
   set_emission(_emission) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_emission,
+      FogMaterial._bindings.method_set_emission,
       this._owner,
       _emission
     );
@@ -196,7 +197,7 @@ export class FogMaterial extends Material{
   }
   get_emission() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_emission,
+      FogMaterial._bindings.method_get_emission,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -206,7 +207,7 @@ export class FogMaterial extends Material{
   }
   set_height_falloff(_height_falloff) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_height_falloff,
+      FogMaterial._bindings.method_set_height_falloff,
       this._owner,
       _height_falloff
     );
@@ -214,7 +215,7 @@ export class FogMaterial extends Material{
   }
   get_height_falloff() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_height_falloff,
+      FogMaterial._bindings.method_get_height_falloff,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -223,7 +224,7 @@ export class FogMaterial extends Material{
   }
   set_edge_fade(_edge_fade) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_edge_fade,
+      FogMaterial._bindings.method_set_edge_fade,
       this._owner,
       _edge_fade
     );
@@ -231,7 +232,7 @@ export class FogMaterial extends Material{
   }
   get_edge_fade() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_edge_fade,
+      FogMaterial._bindings.method_get_edge_fade,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -240,7 +241,7 @@ export class FogMaterial extends Material{
   }
   set_density_texture(_density_texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_density_texture,
+      FogMaterial._bindings.method_set_density_texture,
       this._owner,
       _density_texture
     );
@@ -248,7 +249,7 @@ export class FogMaterial extends Material{
   }
   get_density_texture() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_density_texture,
+      FogMaterial._bindings.method_get_density_texture,
       this._owner,
 			Variant.INT,
       

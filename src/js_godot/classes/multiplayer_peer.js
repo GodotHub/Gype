@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { PacketPeer } from '@js_godot/classes/packet_peer'
 import {
   call_utility_ret,
@@ -200,9 +200,10 @@ export class MultiplayerPeer extends PacketPeer{
       );
     }
   }
+  
   set_transfer_channel(_channel) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_transfer_channel,
+      MultiplayerPeer._bindings.method_set_transfer_channel,
       this._owner,
       _channel
     );
@@ -210,7 +211,7 @@ export class MultiplayerPeer extends PacketPeer{
   }
   get_transfer_channel() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_transfer_channel,
+      MultiplayerPeer._bindings.method_get_transfer_channel,
       this._owner,
 			Variant.Type.INT,
       
@@ -219,7 +220,7 @@ export class MultiplayerPeer extends PacketPeer{
   }
   set_transfer_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_transfer_mode,
+      MultiplayerPeer._bindings.method_set_transfer_mode,
       this._owner,
       _mode
     );
@@ -227,7 +228,7 @@ export class MultiplayerPeer extends PacketPeer{
   }
   get_transfer_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_transfer_mode,
+      MultiplayerPeer._bindings.method_get_transfer_mode,
       this._owner,
 			Variant.INT,
       
@@ -236,7 +237,7 @@ export class MultiplayerPeer extends PacketPeer{
   }
   set_target_peer(_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_target_peer,
+      MultiplayerPeer._bindings.method_set_target_peer,
       this._owner,
       _id
     );
@@ -244,7 +245,7 @@ export class MultiplayerPeer extends PacketPeer{
   }
   get_packet_peer() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_packet_peer,
+      MultiplayerPeer._bindings.method_get_packet_peer,
       this._owner,
 			Variant.Type.INT,
       
@@ -253,7 +254,7 @@ export class MultiplayerPeer extends PacketPeer{
   }
   get_packet_channel() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_packet_channel,
+      MultiplayerPeer._bindings.method_get_packet_channel,
       this._owner,
 			Variant.Type.INT,
       
@@ -262,7 +263,7 @@ export class MultiplayerPeer extends PacketPeer{
   }
   get_packet_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_packet_mode,
+      MultiplayerPeer._bindings.method_get_packet_mode,
       this._owner,
 			Variant.INT,
       
@@ -271,7 +272,7 @@ export class MultiplayerPeer extends PacketPeer{
   }
   poll() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_poll,
+      MultiplayerPeer._bindings.method_poll,
       this._owner,
       
     );
@@ -279,7 +280,7 @@ export class MultiplayerPeer extends PacketPeer{
   }
   close() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_close,
+      MultiplayerPeer._bindings.method_close,
       this._owner,
       
     );
@@ -287,7 +288,7 @@ export class MultiplayerPeer extends PacketPeer{
   }
   disconnect_peer(_peer, _force) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_disconnect_peer,
+      MultiplayerPeer._bindings.method_disconnect_peer,
       this._owner,
       _peer, _force
     );
@@ -295,7 +296,7 @@ export class MultiplayerPeer extends PacketPeer{
   }
   get_connection_status() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_connection_status,
+      MultiplayerPeer._bindings.method_get_connection_status,
       this._owner,
 			Variant.INT,
       
@@ -304,7 +305,7 @@ export class MultiplayerPeer extends PacketPeer{
   }
   get_unique_id() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_unique_id,
+      MultiplayerPeer._bindings.method_get_unique_id,
       this._owner,
 			Variant.Type.INT,
       
@@ -313,7 +314,7 @@ export class MultiplayerPeer extends PacketPeer{
   }
   generate_unique_id() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_generate_unique_id,
+      MultiplayerPeer._bindings.method_generate_unique_id,
       this._owner,
 			Variant.Type.INT,
       
@@ -322,7 +323,7 @@ export class MultiplayerPeer extends PacketPeer{
   }
   set_refuse_new_connections(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_refuse_new_connections,
+      MultiplayerPeer._bindings.method_set_refuse_new_connections,
       this._owner,
       _enable
     );
@@ -330,7 +331,7 @@ export class MultiplayerPeer extends PacketPeer{
   }
   is_refusing_new_connections() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_refusing_new_connections,
+      MultiplayerPeer._bindings.method_is_refusing_new_connections,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -339,7 +340,7 @@ export class MultiplayerPeer extends PacketPeer{
   }
   is_server_relay_supported() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_server_relay_supported,
+      MultiplayerPeer._bindings.method_is_server_relay_supported,
       this._owner,
 			Variant.Type.BOOL,
       

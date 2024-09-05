@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
+import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -131,9 +131,10 @@ export class RDFramebufferPass extends RefCounted{
       );
     }
   }
+  
   set_color_attachments(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_color_attachments,
+      RDFramebufferPass._bindings.method_set_color_attachments,
       this._owner,
       _p_member
     );
@@ -141,7 +142,7 @@ export class RDFramebufferPass extends RefCounted{
   }
   get_color_attachments() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_color_attachments,
+      RDFramebufferPass._bindings.method_get_color_attachments,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -151,7 +152,7 @@ export class RDFramebufferPass extends RefCounted{
   }
   set_input_attachments(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_input_attachments,
+      RDFramebufferPass._bindings.method_set_input_attachments,
       this._owner,
       _p_member
     );
@@ -159,7 +160,7 @@ export class RDFramebufferPass extends RefCounted{
   }
   get_input_attachments() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_input_attachments,
+      RDFramebufferPass._bindings.method_get_input_attachments,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -169,7 +170,7 @@ export class RDFramebufferPass extends RefCounted{
   }
   set_resolve_attachments(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_resolve_attachments,
+      RDFramebufferPass._bindings.method_set_resolve_attachments,
       this._owner,
       _p_member
     );
@@ -177,7 +178,7 @@ export class RDFramebufferPass extends RefCounted{
   }
   get_resolve_attachments() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_resolve_attachments,
+      RDFramebufferPass._bindings.method_get_resolve_attachments,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -187,7 +188,7 @@ export class RDFramebufferPass extends RefCounted{
   }
   set_preserve_attachments(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_preserve_attachments,
+      RDFramebufferPass._bindings.method_set_preserve_attachments,
       this._owner,
       _p_member
     );
@@ -195,7 +196,7 @@ export class RDFramebufferPass extends RefCounted{
   }
   get_preserve_attachments() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_preserve_attachments,
+      RDFramebufferPass._bindings.method_get_preserve_attachments,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -205,7 +206,7 @@ export class RDFramebufferPass extends RefCounted{
   }
   set_depth_attachment(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_depth_attachment,
+      RDFramebufferPass._bindings.method_set_depth_attachment,
       this._owner,
       _p_member
     );
@@ -213,7 +214,7 @@ export class RDFramebufferPass extends RefCounted{
   }
   get_depth_attachment() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_depth_attachment,
+      RDFramebufferPass._bindings.method_get_depth_attachment,
       this._owner,
 			Variant.Type.INT,
       

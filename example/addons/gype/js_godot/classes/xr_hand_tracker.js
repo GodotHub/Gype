@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Transform3D } from '@js_godot/variant/transform3d'
-import { Vector3 } from '@js_godot/variant/vector3'
 import { StringName } from '@js_godot/variant/string_name'
+import { Transform3D } from '@js_godot/variant/transform3d'
+import { Variant } from '@js_godot/variant/variant'
 import { XRPositionalTracker } from '@js_godot/classes/xr_positional_tracker'
+import { Vector3 } from '@js_godot/variant/vector3'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -172,9 +172,10 @@ export class XRHandTracker extends XRPositionalTracker{
       );
     }
   }
+  
   set_has_tracking_data(_has_data) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_has_tracking_data,
+      XRHandTracker._bindings.method_set_has_tracking_data,
       this._owner,
       _has_data
     );
@@ -182,7 +183,7 @@ export class XRHandTracker extends XRPositionalTracker{
   }
   get_has_tracking_data() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_has_tracking_data,
+      XRHandTracker._bindings.method_get_has_tracking_data,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -191,7 +192,7 @@ export class XRHandTracker extends XRPositionalTracker{
   }
   set_hand_tracking_source(_source) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_hand_tracking_source,
+      XRHandTracker._bindings.method_set_hand_tracking_source,
       this._owner,
       _source
     );
@@ -199,7 +200,7 @@ export class XRHandTracker extends XRPositionalTracker{
   }
   get_hand_tracking_source() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_hand_tracking_source,
+      XRHandTracker._bindings.method_get_hand_tracking_source,
       this._owner,
 			Variant.INT,
       
@@ -208,7 +209,7 @@ export class XRHandTracker extends XRPositionalTracker{
   }
   set_hand_joint_flags(_joint, _flags) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_hand_joint_flags,
+      XRHandTracker._bindings.method_set_hand_joint_flags,
       this._owner,
       _joint, _flags
     );
@@ -216,7 +217,7 @@ export class XRHandTracker extends XRPositionalTracker{
   }
   get_hand_joint_flags(_joint) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_hand_joint_flags,
+      XRHandTracker._bindings.method_get_hand_joint_flags,
       this._owner,
 			Variant.INT,
       _joint
@@ -225,7 +226,7 @@ export class XRHandTracker extends XRPositionalTracker{
   }
   set_hand_joint_transform(_joint, _transform) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_hand_joint_transform,
+      XRHandTracker._bindings.method_set_hand_joint_transform,
       this._owner,
       _joint, _transform
     );
@@ -233,7 +234,7 @@ export class XRHandTracker extends XRPositionalTracker{
   }
   get_hand_joint_transform(_joint) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_hand_joint_transform,
+      XRHandTracker._bindings.method_get_hand_joint_transform,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -243,7 +244,7 @@ export class XRHandTracker extends XRPositionalTracker{
   }
   set_hand_joint_radius(_joint, _radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_hand_joint_radius,
+      XRHandTracker._bindings.method_set_hand_joint_radius,
       this._owner,
       _joint, _radius
     );
@@ -251,7 +252,7 @@ export class XRHandTracker extends XRPositionalTracker{
   }
   get_hand_joint_radius(_joint) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_hand_joint_radius,
+      XRHandTracker._bindings.method_get_hand_joint_radius,
       this._owner,
 			Variant.Type.FLOAT,
       _joint
@@ -260,7 +261,7 @@ export class XRHandTracker extends XRPositionalTracker{
   }
   set_hand_joint_linear_velocity(_joint, _linear_velocity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_hand_joint_linear_velocity,
+      XRHandTracker._bindings.method_set_hand_joint_linear_velocity,
       this._owner,
       _joint, _linear_velocity
     );
@@ -268,7 +269,7 @@ export class XRHandTracker extends XRPositionalTracker{
   }
   get_hand_joint_linear_velocity(_joint) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_hand_joint_linear_velocity,
+      XRHandTracker._bindings.method_get_hand_joint_linear_velocity,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -278,7 +279,7 @@ export class XRHandTracker extends XRPositionalTracker{
   }
   set_hand_joint_angular_velocity(_joint, _angular_velocity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_hand_joint_angular_velocity,
+      XRHandTracker._bindings.method_set_hand_joint_angular_velocity,
       this._owner,
       _joint, _angular_velocity
     );
@@ -286,7 +287,7 @@ export class XRHandTracker extends XRPositionalTracker{
   }
   get_hand_joint_angular_velocity(_joint) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_hand_joint_angular_velocity,
+      XRHandTracker._bindings.method_get_hand_joint_angular_velocity,
       this._owner,
 			Variant.Type.VECTOR3,
     

@@ -1,11 +1,11 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { GodotObject } from '@js_godot/classes/godot_object'
-import { Vector3 } from '@js_godot/variant/vector3'
-import { PackedVector3Array } from '@js_godot/variant/packed_vector3_array'
 import { StringName } from '@js_godot/variant/string_name'
-import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
+import { PackedVector3Array } from '@js_godot/variant/packed_vector3_array'
+import { GodotObject } from '@js_godot/classes/godot_object'
 import { Plane } from '@js_godot/variant/plane'
+import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
+import { Variant } from '@js_godot/variant/variant'
+import { Vector3 } from '@js_godot/variant/vector3'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -183,9 +183,10 @@ class _MethodBindings {
       );
     }
   }
+  
   compute_convex_mesh_points(_planes) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_compute_convex_mesh_points,
+      _Geometry3D._bindings.method_compute_convex_mesh_points,
       this._owner,
 			Variant.Type.PACKED_VECTOR3_ARRAY,
     
@@ -195,7 +196,7 @@ class _MethodBindings {
   }
   build_box_planes(_extents) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_build_box_planes,
+      _Geometry3D._bindings.method_build_box_planes,
       this._owner,
 			Variant.INT,
       _extents
@@ -204,7 +205,7 @@ class _MethodBindings {
   }
   build_cylinder_planes(_radius, _height, _sides, _axis) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_build_cylinder_planes,
+      _Geometry3D._bindings.method_build_cylinder_planes,
       this._owner,
 			Variant.INT,
       _radius, _height, _sides, _axis
@@ -213,7 +214,7 @@ class _MethodBindings {
   }
   build_capsule_planes(_radius, _height, _sides, _lats, _axis) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_build_capsule_planes,
+      _Geometry3D._bindings.method_build_capsule_planes,
       this._owner,
 			Variant.INT,
       _radius, _height, _sides, _lats, _axis
@@ -222,7 +223,7 @@ class _MethodBindings {
   }
   get_closest_points_between_segments(_p1, _p2, _q1, _q2) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_closest_points_between_segments,
+      _Geometry3D._bindings.method_get_closest_points_between_segments,
       this._owner,
 			Variant.Type.PACKED_VECTOR3_ARRAY,
     
@@ -232,7 +233,7 @@ class _MethodBindings {
   }
   get_closest_point_to_segment(_point, _s1, _s2) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_closest_point_to_segment,
+      _Geometry3D._bindings.method_get_closest_point_to_segment,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -242,7 +243,7 @@ class _MethodBindings {
   }
   get_closest_point_to_segment_uncapped(_point, _s1, _s2) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_closest_point_to_segment_uncapped,
+      _Geometry3D._bindings.method_get_closest_point_to_segment_uncapped,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -252,7 +253,7 @@ class _MethodBindings {
   }
   get_triangle_barycentric_coords(_point, _a, _b, _c) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_triangle_barycentric_coords,
+      _Geometry3D._bindings.method_get_triangle_barycentric_coords,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -262,7 +263,7 @@ class _MethodBindings {
   }
   ray_intersects_triangle(_from, _dir, _a, _b, _c) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_ray_intersects_triangle,
+      _Geometry3D._bindings.method_ray_intersects_triangle,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -272,7 +273,7 @@ class _MethodBindings {
   }
   segment_intersects_triangle(_from, _to, _a, _b, _c) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_segment_intersects_triangle,
+      _Geometry3D._bindings.method_segment_intersects_triangle,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -282,7 +283,7 @@ class _MethodBindings {
   }
   segment_intersects_sphere(_from, _to, _sphere_position, _sphere_radius) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_segment_intersects_sphere,
+      _Geometry3D._bindings.method_segment_intersects_sphere,
       this._owner,
 			Variant.Type.PACKED_VECTOR3_ARRAY,
     
@@ -292,7 +293,7 @@ class _MethodBindings {
   }
   segment_intersects_cylinder(_from, _to, _height, _radius) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_segment_intersects_cylinder,
+      _Geometry3D._bindings.method_segment_intersects_cylinder,
       this._owner,
 			Variant.Type.PACKED_VECTOR3_ARRAY,
     
@@ -302,7 +303,7 @@ class _MethodBindings {
   }
   segment_intersects_convex(_from, _to, _planes) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_segment_intersects_convex,
+      _Geometry3D._bindings.method_segment_intersects_convex,
       this._owner,
 			Variant.Type.PACKED_VECTOR3_ARRAY,
     
@@ -312,7 +313,7 @@ class _MethodBindings {
   }
   clip_polygon(_points, _plane) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_clip_polygon,
+      _Geometry3D._bindings.method_clip_polygon,
       this._owner,
 			Variant.Type.PACKED_VECTOR3_ARRAY,
     
@@ -322,7 +323,7 @@ class _MethodBindings {
   }
   tetrahedralize_delaunay(_points) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_tetrahedralize_delaunay,
+      _Geometry3D._bindings.method_tetrahedralize_delaunay,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -337,4 +338,17 @@ class _MethodBindings {
     this._init_bindings();
   }
 }
-export const Geometry3D = new _Geometry3D();
+export const Geometry3D = (function () {
+  let _instance;
+  function create_instance() {
+    return new _Geometry3D();
+  }
+  return {
+    instance: function () {
+      if (!_instance) {
+        _instance = create_instance();
+      }
+      return _instance;
+    },
+  };
+})();

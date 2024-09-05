@@ -70,9 +70,10 @@ export class MeshInstance2D extends Node2D{
       );
     }
   }
+  
   set_mesh(_mesh) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mesh,
+      MeshInstance2D._bindings.method_set_mesh,
       this._owner,
       _mesh
     );
@@ -80,7 +81,7 @@ export class MeshInstance2D extends Node2D{
   }
   get_mesh() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mesh,
+      MeshInstance2D._bindings.method_get_mesh,
       this._owner,
 			Variant.INT,
       
@@ -89,7 +90,7 @@ export class MeshInstance2D extends Node2D{
   }
   set_texture(_texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture,
+      MeshInstance2D._bindings.method_set_texture,
       this._owner,
       _texture
     );
@@ -97,7 +98,7 @@ export class MeshInstance2D extends Node2D{
   }
   get_texture() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture,
+      MeshInstance2D._bindings.method_get_texture,
       this._owner,
 			Variant.INT,
       

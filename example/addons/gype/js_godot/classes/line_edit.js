@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { Control } from '@js_godot/classes/control'
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { GDString } from '@js_godot/variant/gd_string'
 import { GDArray } from '@js_godot/variant/gd_array'
 import {
@@ -782,9 +782,10 @@ export class LineEdit extends Control{
       );
     }
   }
+  
   set_horizontal_alignment(_alignment) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_horizontal_alignment,
+      LineEdit._bindings.method_set_horizontal_alignment,
       this._owner,
       _alignment
     );
@@ -792,7 +793,7 @@ export class LineEdit extends Control{
   }
   get_horizontal_alignment() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_horizontal_alignment,
+      LineEdit._bindings.method_get_horizontal_alignment,
       this._owner,
 			Variant.INT,
       
@@ -801,7 +802,7 @@ export class LineEdit extends Control{
   }
   clear() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear,
+      LineEdit._bindings.method_clear,
       this._owner,
       
     );
@@ -809,7 +810,7 @@ export class LineEdit extends Control{
   }
   select(_from, _to) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_select,
+      LineEdit._bindings.method_select,
       this._owner,
       _from, _to
     );
@@ -817,7 +818,7 @@ export class LineEdit extends Control{
   }
   select_all() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_select_all,
+      LineEdit._bindings.method_select_all,
       this._owner,
       
     );
@@ -825,7 +826,7 @@ export class LineEdit extends Control{
   }
   deselect() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_deselect,
+      LineEdit._bindings.method_deselect,
       this._owner,
       
     );
@@ -833,7 +834,7 @@ export class LineEdit extends Control{
   }
   has_selection() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_selection,
+      LineEdit._bindings.method_has_selection,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -842,7 +843,7 @@ export class LineEdit extends Control{
   }
   get_selected_text() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_selected_text,
+      LineEdit._bindings.method_get_selected_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -852,7 +853,7 @@ export class LineEdit extends Control{
   }
   get_selection_from_column() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_selection_from_column,
+      LineEdit._bindings.method_get_selection_from_column,
       this._owner,
 			Variant.Type.INT,
       
@@ -861,7 +862,7 @@ export class LineEdit extends Control{
   }
   get_selection_to_column() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_selection_to_column,
+      LineEdit._bindings.method_get_selection_to_column,
       this._owner,
 			Variant.Type.INT,
       
@@ -870,7 +871,7 @@ export class LineEdit extends Control{
   }
   set_text(_text) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_text,
+      LineEdit._bindings.method_set_text,
       this._owner,
       _text
     );
@@ -878,7 +879,7 @@ export class LineEdit extends Control{
   }
   get_text() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_text,
+      LineEdit._bindings.method_get_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -888,7 +889,7 @@ export class LineEdit extends Control{
   }
   get_draw_control_chars() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_draw_control_chars,
+      LineEdit._bindings.method_get_draw_control_chars,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -897,7 +898,7 @@ export class LineEdit extends Control{
   }
   set_draw_control_chars(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_draw_control_chars,
+      LineEdit._bindings.method_set_draw_control_chars,
       this._owner,
       _enable
     );
@@ -905,7 +906,7 @@ export class LineEdit extends Control{
   }
   set_text_direction(_direction) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_text_direction,
+      LineEdit._bindings.method_set_text_direction,
       this._owner,
       _direction
     );
@@ -913,7 +914,7 @@ export class LineEdit extends Control{
   }
   get_text_direction() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_text_direction,
+      LineEdit._bindings.method_get_text_direction,
       this._owner,
 			Variant.INT,
       
@@ -922,7 +923,7 @@ export class LineEdit extends Control{
   }
   set_language(_language) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_language,
+      LineEdit._bindings.method_set_language,
       this._owner,
       _language
     );
@@ -930,7 +931,7 @@ export class LineEdit extends Control{
   }
   get_language() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_language,
+      LineEdit._bindings.method_get_language,
       this._owner,
 			Variant.Type.STRING,
     
@@ -940,7 +941,7 @@ export class LineEdit extends Control{
   }
   set_structured_text_bidi_override(_parser) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_structured_text_bidi_override,
+      LineEdit._bindings.method_set_structured_text_bidi_override,
       this._owner,
       _parser
     );
@@ -948,7 +949,7 @@ export class LineEdit extends Control{
   }
   get_structured_text_bidi_override() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_structured_text_bidi_override,
+      LineEdit._bindings.method_get_structured_text_bidi_override,
       this._owner,
 			Variant.INT,
       
@@ -957,7 +958,7 @@ export class LineEdit extends Control{
   }
   set_structured_text_bidi_override_options(_args) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_structured_text_bidi_override_options,
+      LineEdit._bindings.method_set_structured_text_bidi_override_options,
       this._owner,
       _args
     );
@@ -965,7 +966,7 @@ export class LineEdit extends Control{
   }
   get_structured_text_bidi_override_options() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_structured_text_bidi_override_options,
+      LineEdit._bindings.method_get_structured_text_bidi_override_options,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -975,7 +976,7 @@ export class LineEdit extends Control{
   }
   set_placeholder(_text) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_placeholder,
+      LineEdit._bindings.method_set_placeholder,
       this._owner,
       _text
     );
@@ -983,7 +984,7 @@ export class LineEdit extends Control{
   }
   get_placeholder() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_placeholder,
+      LineEdit._bindings.method_get_placeholder,
       this._owner,
 			Variant.Type.STRING,
     
@@ -993,7 +994,7 @@ export class LineEdit extends Control{
   }
   set_caret_column(_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_caret_column,
+      LineEdit._bindings.method_set_caret_column,
       this._owner,
       _position
     );
@@ -1001,7 +1002,7 @@ export class LineEdit extends Control{
   }
   get_caret_column() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_caret_column,
+      LineEdit._bindings.method_get_caret_column,
       this._owner,
 			Variant.Type.INT,
       
@@ -1010,7 +1011,7 @@ export class LineEdit extends Control{
   }
   get_scroll_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_scroll_offset,
+      LineEdit._bindings.method_get_scroll_offset,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1019,7 +1020,7 @@ export class LineEdit extends Control{
   }
   set_expand_to_text_length_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_expand_to_text_length_enabled,
+      LineEdit._bindings.method_set_expand_to_text_length_enabled,
       this._owner,
       _enabled
     );
@@ -1027,7 +1028,7 @@ export class LineEdit extends Control{
   }
   is_expand_to_text_length_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_expand_to_text_length_enabled,
+      LineEdit._bindings.method_is_expand_to_text_length_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1036,7 +1037,7 @@ export class LineEdit extends Control{
   }
   set_caret_blink_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_caret_blink_enabled,
+      LineEdit._bindings.method_set_caret_blink_enabled,
       this._owner,
       _enabled
     );
@@ -1044,7 +1045,7 @@ export class LineEdit extends Control{
   }
   is_caret_blink_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_caret_blink_enabled,
+      LineEdit._bindings.method_is_caret_blink_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1053,7 +1054,7 @@ export class LineEdit extends Control{
   }
   set_caret_mid_grapheme_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_caret_mid_grapheme_enabled,
+      LineEdit._bindings.method_set_caret_mid_grapheme_enabled,
       this._owner,
       _enabled
     );
@@ -1061,7 +1062,7 @@ export class LineEdit extends Control{
   }
   is_caret_mid_grapheme_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_caret_mid_grapheme_enabled,
+      LineEdit._bindings.method_is_caret_mid_grapheme_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1070,7 +1071,7 @@ export class LineEdit extends Control{
   }
   set_caret_force_displayed(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_caret_force_displayed,
+      LineEdit._bindings.method_set_caret_force_displayed,
       this._owner,
       _enabled
     );
@@ -1078,7 +1079,7 @@ export class LineEdit extends Control{
   }
   is_caret_force_displayed() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_caret_force_displayed,
+      LineEdit._bindings.method_is_caret_force_displayed,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1087,7 +1088,7 @@ export class LineEdit extends Control{
   }
   set_caret_blink_interval(_interval) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_caret_blink_interval,
+      LineEdit._bindings.method_set_caret_blink_interval,
       this._owner,
       _interval
     );
@@ -1095,7 +1096,7 @@ export class LineEdit extends Control{
   }
   get_caret_blink_interval() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_caret_blink_interval,
+      LineEdit._bindings.method_get_caret_blink_interval,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1104,7 +1105,7 @@ export class LineEdit extends Control{
   }
   set_max_length(_chars) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_max_length,
+      LineEdit._bindings.method_set_max_length,
       this._owner,
       _chars
     );
@@ -1112,7 +1113,7 @@ export class LineEdit extends Control{
   }
   get_max_length() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_max_length,
+      LineEdit._bindings.method_get_max_length,
       this._owner,
 			Variant.Type.INT,
       
@@ -1121,7 +1122,7 @@ export class LineEdit extends Control{
   }
   insert_text_at_caret(_text) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_insert_text_at_caret,
+      LineEdit._bindings.method_insert_text_at_caret,
       this._owner,
       _text
     );
@@ -1129,7 +1130,7 @@ export class LineEdit extends Control{
   }
   delete_char_at_caret() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_delete_char_at_caret,
+      LineEdit._bindings.method_delete_char_at_caret,
       this._owner,
       
     );
@@ -1137,7 +1138,7 @@ export class LineEdit extends Control{
   }
   delete_text(_from_column, _to_column) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_delete_text,
+      LineEdit._bindings.method_delete_text,
       this._owner,
       _from_column, _to_column
     );
@@ -1145,7 +1146,7 @@ export class LineEdit extends Control{
   }
   set_editable(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_editable,
+      LineEdit._bindings.method_set_editable,
       this._owner,
       _enabled
     );
@@ -1153,7 +1154,7 @@ export class LineEdit extends Control{
   }
   is_editable() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_editable,
+      LineEdit._bindings.method_is_editable,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1162,7 +1163,7 @@ export class LineEdit extends Control{
   }
   set_secret(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_secret,
+      LineEdit._bindings.method_set_secret,
       this._owner,
       _enabled
     );
@@ -1170,7 +1171,7 @@ export class LineEdit extends Control{
   }
   is_secret() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_secret,
+      LineEdit._bindings.method_is_secret,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1179,7 +1180,7 @@ export class LineEdit extends Control{
   }
   set_secret_character(_character) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_secret_character,
+      LineEdit._bindings.method_set_secret_character,
       this._owner,
       _character
     );
@@ -1187,7 +1188,7 @@ export class LineEdit extends Control{
   }
   get_secret_character() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_secret_character,
+      LineEdit._bindings.method_get_secret_character,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1197,7 +1198,7 @@ export class LineEdit extends Control{
   }
   menu_option(_option) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_menu_option,
+      LineEdit._bindings.method_menu_option,
       this._owner,
       _option
     );
@@ -1205,7 +1206,7 @@ export class LineEdit extends Control{
   }
   get_menu() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_menu,
+      LineEdit._bindings.method_get_menu,
       this._owner,
 			Variant.INT,
       
@@ -1214,7 +1215,7 @@ export class LineEdit extends Control{
   }
   is_menu_visible() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_menu_visible,
+      LineEdit._bindings.method_is_menu_visible,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1223,7 +1224,7 @@ export class LineEdit extends Control{
   }
   set_context_menu_enabled(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_context_menu_enabled,
+      LineEdit._bindings.method_set_context_menu_enabled,
       this._owner,
       _enable
     );
@@ -1231,7 +1232,7 @@ export class LineEdit extends Control{
   }
   is_context_menu_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_context_menu_enabled,
+      LineEdit._bindings.method_is_context_menu_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1240,7 +1241,7 @@ export class LineEdit extends Control{
   }
   set_virtual_keyboard_enabled(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_virtual_keyboard_enabled,
+      LineEdit._bindings.method_set_virtual_keyboard_enabled,
       this._owner,
       _enable
     );
@@ -1248,7 +1249,7 @@ export class LineEdit extends Control{
   }
   is_virtual_keyboard_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_virtual_keyboard_enabled,
+      LineEdit._bindings.method_is_virtual_keyboard_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1257,7 +1258,7 @@ export class LineEdit extends Control{
   }
   set_virtual_keyboard_type(_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_virtual_keyboard_type,
+      LineEdit._bindings.method_set_virtual_keyboard_type,
       this._owner,
       _type
     );
@@ -1265,7 +1266,7 @@ export class LineEdit extends Control{
   }
   get_virtual_keyboard_type() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_virtual_keyboard_type,
+      LineEdit._bindings.method_get_virtual_keyboard_type,
       this._owner,
 			Variant.INT,
       
@@ -1274,7 +1275,7 @@ export class LineEdit extends Control{
   }
   set_clear_button_enabled(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_clear_button_enabled,
+      LineEdit._bindings.method_set_clear_button_enabled,
       this._owner,
       _enable
     );
@@ -1282,7 +1283,7 @@ export class LineEdit extends Control{
   }
   is_clear_button_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_clear_button_enabled,
+      LineEdit._bindings.method_is_clear_button_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1291,7 +1292,7 @@ export class LineEdit extends Control{
   }
   set_shortcut_keys_enabled(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shortcut_keys_enabled,
+      LineEdit._bindings.method_set_shortcut_keys_enabled,
       this._owner,
       _enable
     );
@@ -1299,7 +1300,7 @@ export class LineEdit extends Control{
   }
   is_shortcut_keys_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_shortcut_keys_enabled,
+      LineEdit._bindings.method_is_shortcut_keys_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1308,7 +1309,7 @@ export class LineEdit extends Control{
   }
   set_middle_mouse_paste_enabled(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_middle_mouse_paste_enabled,
+      LineEdit._bindings.method_set_middle_mouse_paste_enabled,
       this._owner,
       _enable
     );
@@ -1316,7 +1317,7 @@ export class LineEdit extends Control{
   }
   is_middle_mouse_paste_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_middle_mouse_paste_enabled,
+      LineEdit._bindings.method_is_middle_mouse_paste_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1325,7 +1326,7 @@ export class LineEdit extends Control{
   }
   set_selecting_enabled(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_selecting_enabled,
+      LineEdit._bindings.method_set_selecting_enabled,
       this._owner,
       _enable
     );
@@ -1333,7 +1334,7 @@ export class LineEdit extends Control{
   }
   is_selecting_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_selecting_enabled,
+      LineEdit._bindings.method_is_selecting_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1342,7 +1343,7 @@ export class LineEdit extends Control{
   }
   set_deselect_on_focus_loss_enabled(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_deselect_on_focus_loss_enabled,
+      LineEdit._bindings.method_set_deselect_on_focus_loss_enabled,
       this._owner,
       _enable
     );
@@ -1350,7 +1351,7 @@ export class LineEdit extends Control{
   }
   is_deselect_on_focus_loss_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_deselect_on_focus_loss_enabled,
+      LineEdit._bindings.method_is_deselect_on_focus_loss_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1359,7 +1360,7 @@ export class LineEdit extends Control{
   }
   set_drag_and_drop_selection_enabled(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_drag_and_drop_selection_enabled,
+      LineEdit._bindings.method_set_drag_and_drop_selection_enabled,
       this._owner,
       _enable
     );
@@ -1367,7 +1368,7 @@ export class LineEdit extends Control{
   }
   is_drag_and_drop_selection_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_drag_and_drop_selection_enabled,
+      LineEdit._bindings.method_is_drag_and_drop_selection_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1376,7 +1377,7 @@ export class LineEdit extends Control{
   }
   set_right_icon(_icon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_right_icon,
+      LineEdit._bindings.method_set_right_icon,
       this._owner,
       _icon
     );
@@ -1384,7 +1385,7 @@ export class LineEdit extends Control{
   }
   get_right_icon() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_right_icon,
+      LineEdit._bindings.method_get_right_icon,
       this._owner,
 			Variant.INT,
       
@@ -1393,7 +1394,7 @@ export class LineEdit extends Control{
   }
   set_flat(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_flat,
+      LineEdit._bindings.method_set_flat,
       this._owner,
       _enabled
     );
@@ -1401,7 +1402,7 @@ export class LineEdit extends Control{
   }
   is_flat() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_flat,
+      LineEdit._bindings.method_is_flat,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1410,7 +1411,7 @@ export class LineEdit extends Control{
   }
   set_select_all_on_focus(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_select_all_on_focus,
+      LineEdit._bindings.method_set_select_all_on_focus,
       this._owner,
       _enabled
     );
@@ -1418,7 +1419,7 @@ export class LineEdit extends Control{
   }
   is_select_all_on_focus() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_select_all_on_focus,
+      LineEdit._bindings.method_is_select_all_on_focus,
       this._owner,
 			Variant.Type.BOOL,
       

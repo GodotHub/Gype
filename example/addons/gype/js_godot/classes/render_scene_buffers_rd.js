@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Vector2i } from '@js_godot/variant/vector2i'
 import { StringName } from '@js_godot/variant/string_name'
 import { RID } from '@js_godot/variant/rid'
 import { RenderSceneBuffers } from '@js_godot/classes/render_scene_buffers'
+import { Variant } from '@js_godot/variant/variant'
+import { Vector2i } from '@js_godot/variant/vector2i'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -302,9 +302,10 @@ export class RenderSceneBuffersRD extends RenderSceneBuffers{
       );
     }
   }
+  
   has_texture(_context, _name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_texture,
+      RenderSceneBuffersRD._bindings.method_has_texture,
       this._owner,
 			Variant.Type.BOOL,
       _context, _name
@@ -313,7 +314,7 @@ export class RenderSceneBuffersRD extends RenderSceneBuffers{
   }
   create_texture(_context, _name, _data_format, _usage_bits, _texture_samples, _size, _layers, _mipmaps, _unique) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_texture,
+      RenderSceneBuffersRD._bindings.method_create_texture,
       this._owner,
 			Variant.Type.RID,
     
@@ -323,7 +324,7 @@ export class RenderSceneBuffersRD extends RenderSceneBuffers{
   }
   create_texture_from_format(_context, _name, _format, _view, _unique) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_texture_from_format,
+      RenderSceneBuffersRD._bindings.method_create_texture_from_format,
       this._owner,
 			Variant.Type.RID,
     
@@ -333,7 +334,7 @@ export class RenderSceneBuffersRD extends RenderSceneBuffers{
   }
   create_texture_view(_context, _name, _view_name, _view) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_texture_view,
+      RenderSceneBuffersRD._bindings.method_create_texture_view,
       this._owner,
 			Variant.Type.RID,
     
@@ -343,7 +344,7 @@ export class RenderSceneBuffersRD extends RenderSceneBuffers{
   }
   get_texture(_context, _name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture,
+      RenderSceneBuffersRD._bindings.method_get_texture,
       this._owner,
 			Variant.Type.RID,
     
@@ -353,7 +354,7 @@ export class RenderSceneBuffersRD extends RenderSceneBuffers{
   }
   get_texture_format(_context, _name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_format,
+      RenderSceneBuffersRD._bindings.method_get_texture_format,
       this._owner,
 			Variant.INT,
       _context, _name
@@ -362,7 +363,7 @@ export class RenderSceneBuffersRD extends RenderSceneBuffers{
   }
   get_texture_slice(_context, _name, _layer, _mipmap, _layers, _mipmaps) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_slice,
+      RenderSceneBuffersRD._bindings.method_get_texture_slice,
       this._owner,
 			Variant.Type.RID,
     
@@ -372,7 +373,7 @@ export class RenderSceneBuffersRD extends RenderSceneBuffers{
   }
   get_texture_slice_view(_context, _name, _layer, _mipmap, _layers, _mipmaps, _view) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_slice_view,
+      RenderSceneBuffersRD._bindings.method_get_texture_slice_view,
       this._owner,
 			Variant.Type.RID,
     
@@ -382,7 +383,7 @@ export class RenderSceneBuffersRD extends RenderSceneBuffers{
   }
   get_texture_slice_size(_context, _name, _mipmap) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_slice_size,
+      RenderSceneBuffersRD._bindings.method_get_texture_slice_size,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -392,7 +393,7 @@ export class RenderSceneBuffersRD extends RenderSceneBuffers{
   }
   clear_context(_context) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_context,
+      RenderSceneBuffersRD._bindings.method_clear_context,
       this._owner,
       _context
     );
@@ -400,7 +401,7 @@ export class RenderSceneBuffersRD extends RenderSceneBuffers{
   }
   get_color_texture(_msaa) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_color_texture,
+      RenderSceneBuffersRD._bindings.method_get_color_texture,
       this._owner,
 			Variant.Type.RID,
     
@@ -410,7 +411,7 @@ export class RenderSceneBuffersRD extends RenderSceneBuffers{
   }
   get_color_layer(_layer, _msaa) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_color_layer,
+      RenderSceneBuffersRD._bindings.method_get_color_layer,
       this._owner,
 			Variant.Type.RID,
     
@@ -420,7 +421,7 @@ export class RenderSceneBuffersRD extends RenderSceneBuffers{
   }
   get_depth_texture(_msaa) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_depth_texture,
+      RenderSceneBuffersRD._bindings.method_get_depth_texture,
       this._owner,
 			Variant.Type.RID,
     
@@ -430,7 +431,7 @@ export class RenderSceneBuffersRD extends RenderSceneBuffers{
   }
   get_depth_layer(_layer, _msaa) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_depth_layer,
+      RenderSceneBuffersRD._bindings.method_get_depth_layer,
       this._owner,
 			Variant.Type.RID,
     
@@ -440,7 +441,7 @@ export class RenderSceneBuffersRD extends RenderSceneBuffers{
   }
   get_velocity_texture(_msaa) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_velocity_texture,
+      RenderSceneBuffersRD._bindings.method_get_velocity_texture,
       this._owner,
 			Variant.Type.RID,
     
@@ -450,7 +451,7 @@ export class RenderSceneBuffersRD extends RenderSceneBuffers{
   }
   get_velocity_layer(_layer, _msaa) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_velocity_layer,
+      RenderSceneBuffersRD._bindings.method_get_velocity_layer,
       this._owner,
 			Variant.Type.RID,
     
@@ -460,7 +461,7 @@ export class RenderSceneBuffersRD extends RenderSceneBuffers{
   }
   get_render_target() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_render_target,
+      RenderSceneBuffersRD._bindings.method_get_render_target,
       this._owner,
 			Variant.Type.RID,
     
@@ -470,7 +471,7 @@ export class RenderSceneBuffersRD extends RenderSceneBuffers{
   }
   get_view_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_view_count,
+      RenderSceneBuffersRD._bindings.method_get_view_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -479,7 +480,7 @@ export class RenderSceneBuffersRD extends RenderSceneBuffers{
   }
   get_internal_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_internal_size,
+      RenderSceneBuffersRD._bindings.method_get_internal_size,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -489,7 +490,7 @@ export class RenderSceneBuffersRD extends RenderSceneBuffers{
   }
   get_target_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_target_size,
+      RenderSceneBuffersRD._bindings.method_get_target_size,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -499,7 +500,7 @@ export class RenderSceneBuffersRD extends RenderSceneBuffers{
   }
   get_scaling_3d_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_scaling_3d_mode,
+      RenderSceneBuffersRD._bindings.method_get_scaling_3d_mode,
       this._owner,
 			Variant.INT,
       
@@ -508,7 +509,7 @@ export class RenderSceneBuffersRD extends RenderSceneBuffers{
   }
   get_fsr_sharpness() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fsr_sharpness,
+      RenderSceneBuffersRD._bindings.method_get_fsr_sharpness,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -517,7 +518,7 @@ export class RenderSceneBuffersRD extends RenderSceneBuffers{
   }
   get_msaa_3d() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_msaa_3d,
+      RenderSceneBuffersRD._bindings.method_get_msaa_3d,
       this._owner,
 			Variant.INT,
       
@@ -526,7 +527,7 @@ export class RenderSceneBuffersRD extends RenderSceneBuffers{
   }
   get_texture_samples() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_samples,
+      RenderSceneBuffersRD._bindings.method_get_texture_samples,
       this._owner,
 			Variant.INT,
       
@@ -535,7 +536,7 @@ export class RenderSceneBuffersRD extends RenderSceneBuffers{
   }
   get_screen_space_aa() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_screen_space_aa,
+      RenderSceneBuffersRD._bindings.method_get_screen_space_aa,
       this._owner,
 			Variant.INT,
       
@@ -544,7 +545,7 @@ export class RenderSceneBuffersRD extends RenderSceneBuffers{
   }
   get_use_taa() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_use_taa,
+      RenderSceneBuffersRD._bindings.method_get_use_taa,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -553,7 +554,7 @@ export class RenderSceneBuffersRD extends RenderSceneBuffers{
   }
   get_use_debanding() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_use_debanding,
+      RenderSceneBuffersRD._bindings.method_get_use_debanding,
       this._owner,
 			Variant.Type.BOOL,
       

@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { InputEvent } from '@js_godot/classes/input_event'
 import { StringName } from '@js_godot/variant/string_name'
+import { InputEvent } from '@js_godot/classes/input_event'
 import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
@@ -80,9 +80,10 @@ export class InputEventJoypadButton extends InputEvent{
       );
     }
   }
+  
   set_button_index(_button_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_button_index,
+      InputEventJoypadButton._bindings.method_set_button_index,
       this._owner,
       _button_index
     );
@@ -90,7 +91,7 @@ export class InputEventJoypadButton extends InputEvent{
   }
   get_button_index() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_button_index,
+      InputEventJoypadButton._bindings.method_get_button_index,
       this._owner,
 			Variant.INT,
       
@@ -99,7 +100,7 @@ export class InputEventJoypadButton extends InputEvent{
   }
   set_pressure(_pressure) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_pressure,
+      InputEventJoypadButton._bindings.method_set_pressure,
       this._owner,
       _pressure
     );
@@ -107,7 +108,7 @@ export class InputEventJoypadButton extends InputEvent{
   }
   get_pressure() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_pressure,
+      InputEventJoypadButton._bindings.method_get_pressure,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -116,7 +117,7 @@ export class InputEventJoypadButton extends InputEvent{
   }
   set_pressed(_pressed) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_pressed,
+      InputEventJoypadButton._bindings.method_set_pressed,
       this._owner,
       _pressed
     );

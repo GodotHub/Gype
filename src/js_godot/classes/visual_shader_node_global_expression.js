@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { VisualShaderNodeExpression } from '@js_godot/classes/visual_shader_node_expression'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -30,6 +30,7 @@ export class VisualShaderNodeGlobalExpression extends VisualShaderNodeExpression
     }
     this.#initialized = true;
   }
+  
   
 
 

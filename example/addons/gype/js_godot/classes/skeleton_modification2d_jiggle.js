@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { Vector2 } from '@js_godot/variant/vector2'
-import { SkeletonModification2D } from '@js_godot/classes/skeleton_modification2d'
+import { StringName } from '@js_godot/variant/string_name'
 import { NodePath } from '@js_godot/variant/node_path'
+import { SkeletonModification2D } from '@js_godot/classes/skeleton_modification2d'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -372,9 +372,10 @@ export class SkeletonModification2DJiggle extends SkeletonModification2D{
       );
     }
   }
+  
   set_target_node(_target_nodepath) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_target_node,
+      SkeletonModification2DJiggle._bindings.method_set_target_node,
       this._owner,
       _target_nodepath
     );
@@ -382,7 +383,7 @@ export class SkeletonModification2DJiggle extends SkeletonModification2D{
   }
   get_target_node() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_target_node,
+      SkeletonModification2DJiggle._bindings.method_get_target_node,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -392,7 +393,7 @@ export class SkeletonModification2DJiggle extends SkeletonModification2D{
   }
   set_jiggle_data_chain_length(_length) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_jiggle_data_chain_length,
+      SkeletonModification2DJiggle._bindings.method_set_jiggle_data_chain_length,
       this._owner,
       _length
     );
@@ -400,7 +401,7 @@ export class SkeletonModification2DJiggle extends SkeletonModification2D{
   }
   get_jiggle_data_chain_length() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_jiggle_data_chain_length,
+      SkeletonModification2DJiggle._bindings.method_get_jiggle_data_chain_length,
       this._owner,
 			Variant.Type.INT,
       
@@ -409,7 +410,7 @@ export class SkeletonModification2DJiggle extends SkeletonModification2D{
   }
   set_stiffness(_stiffness) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_stiffness,
+      SkeletonModification2DJiggle._bindings.method_set_stiffness,
       this._owner,
       _stiffness
     );
@@ -417,7 +418,7 @@ export class SkeletonModification2DJiggle extends SkeletonModification2D{
   }
   get_stiffness() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_stiffness,
+      SkeletonModification2DJiggle._bindings.method_get_stiffness,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -426,7 +427,7 @@ export class SkeletonModification2DJiggle extends SkeletonModification2D{
   }
   set_mass(_mass) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mass,
+      SkeletonModification2DJiggle._bindings.method_set_mass,
       this._owner,
       _mass
     );
@@ -434,7 +435,7 @@ export class SkeletonModification2DJiggle extends SkeletonModification2D{
   }
   get_mass() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mass,
+      SkeletonModification2DJiggle._bindings.method_get_mass,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -443,7 +444,7 @@ export class SkeletonModification2DJiggle extends SkeletonModification2D{
   }
   set_damping(_damping) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_damping,
+      SkeletonModification2DJiggle._bindings.method_set_damping,
       this._owner,
       _damping
     );
@@ -451,7 +452,7 @@ export class SkeletonModification2DJiggle extends SkeletonModification2D{
   }
   get_damping() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_damping,
+      SkeletonModification2DJiggle._bindings.method_get_damping,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -460,7 +461,7 @@ export class SkeletonModification2DJiggle extends SkeletonModification2D{
   }
   set_use_gravity(_use_gravity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_gravity,
+      SkeletonModification2DJiggle._bindings.method_set_use_gravity,
       this._owner,
       _use_gravity
     );
@@ -468,7 +469,7 @@ export class SkeletonModification2DJiggle extends SkeletonModification2D{
   }
   get_use_gravity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_use_gravity,
+      SkeletonModification2DJiggle._bindings.method_get_use_gravity,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -477,7 +478,7 @@ export class SkeletonModification2DJiggle extends SkeletonModification2D{
   }
   set_gravity(_gravity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_gravity,
+      SkeletonModification2DJiggle._bindings.method_set_gravity,
       this._owner,
       _gravity
     );
@@ -485,7 +486,7 @@ export class SkeletonModification2DJiggle extends SkeletonModification2D{
   }
   get_gravity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_gravity,
+      SkeletonModification2DJiggle._bindings.method_get_gravity,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -495,7 +496,7 @@ export class SkeletonModification2DJiggle extends SkeletonModification2D{
   }
   set_use_colliders(_use_colliders) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_colliders,
+      SkeletonModification2DJiggle._bindings.method_set_use_colliders,
       this._owner,
       _use_colliders
     );
@@ -503,7 +504,7 @@ export class SkeletonModification2DJiggle extends SkeletonModification2D{
   }
   get_use_colliders() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_use_colliders,
+      SkeletonModification2DJiggle._bindings.method_get_use_colliders,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -512,7 +513,7 @@ export class SkeletonModification2DJiggle extends SkeletonModification2D{
   }
   set_collision_mask(_collision_mask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_mask,
+      SkeletonModification2DJiggle._bindings.method_set_collision_mask,
       this._owner,
       _collision_mask
     );
@@ -520,7 +521,7 @@ export class SkeletonModification2DJiggle extends SkeletonModification2D{
   }
   get_collision_mask() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_mask,
+      SkeletonModification2DJiggle._bindings.method_get_collision_mask,
       this._owner,
 			Variant.Type.INT,
       
@@ -529,7 +530,7 @@ export class SkeletonModification2DJiggle extends SkeletonModification2D{
   }
   set_jiggle_joint_bone2d_node(_joint_idx, _bone2d_node) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_jiggle_joint_bone2d_node,
+      SkeletonModification2DJiggle._bindings.method_set_jiggle_joint_bone2d_node,
       this._owner,
       _joint_idx, _bone2d_node
     );
@@ -537,7 +538,7 @@ export class SkeletonModification2DJiggle extends SkeletonModification2D{
   }
   get_jiggle_joint_bone2d_node(_joint_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_jiggle_joint_bone2d_node,
+      SkeletonModification2DJiggle._bindings.method_get_jiggle_joint_bone2d_node,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -547,7 +548,7 @@ export class SkeletonModification2DJiggle extends SkeletonModification2D{
   }
   set_jiggle_joint_bone_index(_joint_idx, _bone_idx) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_jiggle_joint_bone_index,
+      SkeletonModification2DJiggle._bindings.method_set_jiggle_joint_bone_index,
       this._owner,
       _joint_idx, _bone_idx
     );
@@ -555,7 +556,7 @@ export class SkeletonModification2DJiggle extends SkeletonModification2D{
   }
   get_jiggle_joint_bone_index(_joint_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_jiggle_joint_bone_index,
+      SkeletonModification2DJiggle._bindings.method_get_jiggle_joint_bone_index,
       this._owner,
 			Variant.Type.INT,
       _joint_idx
@@ -564,7 +565,7 @@ export class SkeletonModification2DJiggle extends SkeletonModification2D{
   }
   set_jiggle_joint_override(_joint_idx, _override) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_jiggle_joint_override,
+      SkeletonModification2DJiggle._bindings.method_set_jiggle_joint_override,
       this._owner,
       _joint_idx, _override
     );
@@ -572,7 +573,7 @@ export class SkeletonModification2DJiggle extends SkeletonModification2D{
   }
   get_jiggle_joint_override(_joint_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_jiggle_joint_override,
+      SkeletonModification2DJiggle._bindings.method_get_jiggle_joint_override,
       this._owner,
 			Variant.Type.BOOL,
       _joint_idx
@@ -581,7 +582,7 @@ export class SkeletonModification2DJiggle extends SkeletonModification2D{
   }
   set_jiggle_joint_stiffness(_joint_idx, _stiffness) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_jiggle_joint_stiffness,
+      SkeletonModification2DJiggle._bindings.method_set_jiggle_joint_stiffness,
       this._owner,
       _joint_idx, _stiffness
     );
@@ -589,7 +590,7 @@ export class SkeletonModification2DJiggle extends SkeletonModification2D{
   }
   get_jiggle_joint_stiffness(_joint_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_jiggle_joint_stiffness,
+      SkeletonModification2DJiggle._bindings.method_get_jiggle_joint_stiffness,
       this._owner,
 			Variant.Type.FLOAT,
       _joint_idx
@@ -598,7 +599,7 @@ export class SkeletonModification2DJiggle extends SkeletonModification2D{
   }
   set_jiggle_joint_mass(_joint_idx, _mass) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_jiggle_joint_mass,
+      SkeletonModification2DJiggle._bindings.method_set_jiggle_joint_mass,
       this._owner,
       _joint_idx, _mass
     );
@@ -606,7 +607,7 @@ export class SkeletonModification2DJiggle extends SkeletonModification2D{
   }
   get_jiggle_joint_mass(_joint_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_jiggle_joint_mass,
+      SkeletonModification2DJiggle._bindings.method_get_jiggle_joint_mass,
       this._owner,
 			Variant.Type.FLOAT,
       _joint_idx
@@ -615,7 +616,7 @@ export class SkeletonModification2DJiggle extends SkeletonModification2D{
   }
   set_jiggle_joint_damping(_joint_idx, _damping) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_jiggle_joint_damping,
+      SkeletonModification2DJiggle._bindings.method_set_jiggle_joint_damping,
       this._owner,
       _joint_idx, _damping
     );
@@ -623,7 +624,7 @@ export class SkeletonModification2DJiggle extends SkeletonModification2D{
   }
   get_jiggle_joint_damping(_joint_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_jiggle_joint_damping,
+      SkeletonModification2DJiggle._bindings.method_get_jiggle_joint_damping,
       this._owner,
 			Variant.Type.FLOAT,
       _joint_idx
@@ -632,7 +633,7 @@ export class SkeletonModification2DJiggle extends SkeletonModification2D{
   }
   set_jiggle_joint_use_gravity(_joint_idx, _use_gravity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_jiggle_joint_use_gravity,
+      SkeletonModification2DJiggle._bindings.method_set_jiggle_joint_use_gravity,
       this._owner,
       _joint_idx, _use_gravity
     );
@@ -640,7 +641,7 @@ export class SkeletonModification2DJiggle extends SkeletonModification2D{
   }
   get_jiggle_joint_use_gravity(_joint_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_jiggle_joint_use_gravity,
+      SkeletonModification2DJiggle._bindings.method_get_jiggle_joint_use_gravity,
       this._owner,
 			Variant.Type.BOOL,
       _joint_idx
@@ -649,7 +650,7 @@ export class SkeletonModification2DJiggle extends SkeletonModification2D{
   }
   set_jiggle_joint_gravity(_joint_idx, _gravity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_jiggle_joint_gravity,
+      SkeletonModification2DJiggle._bindings.method_set_jiggle_joint_gravity,
       this._owner,
       _joint_idx, _gravity
     );
@@ -657,7 +658,7 @@ export class SkeletonModification2DJiggle extends SkeletonModification2D{
   }
   get_jiggle_joint_gravity(_joint_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_jiggle_joint_gravity,
+      SkeletonModification2DJiggle._bindings.method_get_jiggle_joint_gravity,
       this._owner,
 			Variant.Type.VECTOR2,
     

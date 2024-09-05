@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { GodotObject } from '@js_godot/classes/godot_object'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { GodotObject } from '@js_godot/classes/godot_object'
+import { GDString } from '@js_godot/variant/gd_string'
+import { Variant } from '@js_godot/variant/variant'
 import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
@@ -152,9 +152,10 @@ class _MethodBindings {
       );
     }
   }
+  
   load_threaded_request(_path, _type_hint, _use_sub_threads, _cache_mode) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_load_threaded_request,
+      _ResourceLoader._bindings.method_load_threaded_request,
       this._owner,
 			Variant.INT,
       _path, _type_hint, _use_sub_threads, _cache_mode
@@ -163,7 +164,7 @@ class _MethodBindings {
   }
   load_threaded_get_status(_path, _progress) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_load_threaded_get_status,
+      _ResourceLoader._bindings.method_load_threaded_get_status,
       this._owner,
 			Variant.INT,
       _path, _progress
@@ -172,7 +173,7 @@ class _MethodBindings {
   }
   load_threaded_get(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_load_threaded_get,
+      _ResourceLoader._bindings.method_load_threaded_get,
       this._owner,
 			Variant.INT,
       _path
@@ -181,7 +182,7 @@ class _MethodBindings {
   }
   load(_path, _type_hint, _cache_mode) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_load,
+      _ResourceLoader._bindings.method_load,
       this._owner,
 			Variant.INT,
       _path, _type_hint, _cache_mode
@@ -190,7 +191,7 @@ class _MethodBindings {
   }
   get_recognized_extensions_for_type(_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_recognized_extensions_for_type,
+      _ResourceLoader._bindings.method_get_recognized_extensions_for_type,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -200,7 +201,7 @@ class _MethodBindings {
   }
   add_resource_format_loader(_format_loader, _at_front) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_resource_format_loader,
+      _ResourceLoader._bindings.method_add_resource_format_loader,
       this._owner,
       _format_loader, _at_front
     );
@@ -208,7 +209,7 @@ class _MethodBindings {
   }
   remove_resource_format_loader(_format_loader) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_resource_format_loader,
+      _ResourceLoader._bindings.method_remove_resource_format_loader,
       this._owner,
       _format_loader
     );
@@ -216,7 +217,7 @@ class _MethodBindings {
   }
   set_abort_on_missing_resources(_abort) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_abort_on_missing_resources,
+      _ResourceLoader._bindings.method_set_abort_on_missing_resources,
       this._owner,
       _abort
     );
@@ -224,7 +225,7 @@ class _MethodBindings {
   }
   get_dependencies(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_dependencies,
+      _ResourceLoader._bindings.method_get_dependencies,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -234,7 +235,7 @@ class _MethodBindings {
   }
   has_cached(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_cached,
+      _ResourceLoader._bindings.method_has_cached,
       this._owner,
 			Variant.Type.BOOL,
       _path
@@ -243,7 +244,7 @@ class _MethodBindings {
   }
   exists(_path, _type_hint) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_exists,
+      _ResourceLoader._bindings.method_exists,
       this._owner,
 			Variant.Type.BOOL,
       _path, _type_hint
@@ -252,7 +253,7 @@ class _MethodBindings {
   }
   get_resource_uid(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_resource_uid,
+      _ResourceLoader._bindings.method_get_resource_uid,
       this._owner,
 			Variant.Type.INT,
       _path
@@ -279,4 +280,17 @@ class _MethodBindings {
     this._init_bindings();
   }
 }
-export const ResourceLoader = new _ResourceLoader();
+export const ResourceLoader = (function () {
+  let _instance;
+  function create_instance() {
+    return new _ResourceLoader();
+  }
+  return {
+    instance: function () {
+      if (!_instance) {
+        _instance = create_instance();
+      }
+      return _instance;
+    },
+  };
+})();

@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { Control } from '@js_godot/classes/control'
 import { Variant } from '@js_godot/variant/variant'
-import { Rect2 } from '@js_godot/variant/rect2'
 import { StringName } from '@js_godot/variant/string_name'
+import { Control } from '@js_godot/classes/control'
+import { Rect2 } from '@js_godot/variant/rect2'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -151,9 +151,10 @@ export class NinePatchRect extends Control{
       );
     }
   }
+  
   set_texture(_texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture,
+      NinePatchRect._bindings.method_set_texture,
       this._owner,
       _texture
     );
@@ -161,7 +162,7 @@ export class NinePatchRect extends Control{
   }
   get_texture() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture,
+      NinePatchRect._bindings.method_get_texture,
       this._owner,
 			Variant.INT,
       
@@ -170,7 +171,7 @@ export class NinePatchRect extends Control{
   }
   set_patch_margin(_margin, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_patch_margin,
+      NinePatchRect._bindings.method_set_patch_margin,
       this._owner,
       _margin, _value
     );
@@ -178,7 +179,7 @@ export class NinePatchRect extends Control{
   }
   get_patch_margin(_margin) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_patch_margin,
+      NinePatchRect._bindings.method_get_patch_margin,
       this._owner,
 			Variant.Type.INT,
       _margin
@@ -187,7 +188,7 @@ export class NinePatchRect extends Control{
   }
   set_region_rect(_rect) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_region_rect,
+      NinePatchRect._bindings.method_set_region_rect,
       this._owner,
       _rect
     );
@@ -195,7 +196,7 @@ export class NinePatchRect extends Control{
   }
   get_region_rect() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_region_rect,
+      NinePatchRect._bindings.method_get_region_rect,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -205,7 +206,7 @@ export class NinePatchRect extends Control{
   }
   set_draw_center(_draw_center) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_draw_center,
+      NinePatchRect._bindings.method_set_draw_center,
       this._owner,
       _draw_center
     );
@@ -213,7 +214,7 @@ export class NinePatchRect extends Control{
   }
   is_draw_center_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_draw_center_enabled,
+      NinePatchRect._bindings.method_is_draw_center_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -222,7 +223,7 @@ export class NinePatchRect extends Control{
   }
   set_h_axis_stretch_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_h_axis_stretch_mode,
+      NinePatchRect._bindings.method_set_h_axis_stretch_mode,
       this._owner,
       _mode
     );
@@ -230,7 +231,7 @@ export class NinePatchRect extends Control{
   }
   get_h_axis_stretch_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_h_axis_stretch_mode,
+      NinePatchRect._bindings.method_get_h_axis_stretch_mode,
       this._owner,
 			Variant.INT,
       
@@ -239,7 +240,7 @@ export class NinePatchRect extends Control{
   }
   set_v_axis_stretch_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_v_axis_stretch_mode,
+      NinePatchRect._bindings.method_set_v_axis_stretch_mode,
       this._owner,
       _mode
     );
@@ -247,7 +248,7 @@ export class NinePatchRect extends Control{
   }
   get_v_axis_stretch_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_v_axis_stretch_mode,
+      NinePatchRect._bindings.method_get_v_axis_stretch_mode,
       this._owner,
 			Variant.INT,
       

@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
-import { Node3D } from '@js_godot/classes/node3d'
 import { RID } from '@js_godot/variant/rid'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { Node3D } from '@js_godot/classes/node3d'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -231,9 +231,10 @@ export class NavigationRegion3D extends Node3D{
       );
     }
   }
+  
   get_rid() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rid,
+      NavigationRegion3D._bindings.method_get_rid,
       this._owner,
 			Variant.Type.RID,
     
@@ -243,7 +244,7 @@ export class NavigationRegion3D extends Node3D{
   }
   set_navigation_mesh(_navigation_mesh) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_navigation_mesh,
+      NavigationRegion3D._bindings.method_set_navigation_mesh,
       this._owner,
       _navigation_mesh
     );
@@ -251,7 +252,7 @@ export class NavigationRegion3D extends Node3D{
   }
   get_navigation_mesh() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_navigation_mesh,
+      NavigationRegion3D._bindings.method_get_navigation_mesh,
       this._owner,
 			Variant.INT,
       
@@ -260,7 +261,7 @@ export class NavigationRegion3D extends Node3D{
   }
   set_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_enabled,
+      NavigationRegion3D._bindings.method_set_enabled,
       this._owner,
       _enabled
     );
@@ -268,7 +269,7 @@ export class NavigationRegion3D extends Node3D{
   }
   is_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_enabled,
+      NavigationRegion3D._bindings.method_is_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -277,7 +278,7 @@ export class NavigationRegion3D extends Node3D{
   }
   set_navigation_map(_navigation_map) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_navigation_map,
+      NavigationRegion3D._bindings.method_set_navigation_map,
       this._owner,
       _navigation_map
     );
@@ -285,7 +286,7 @@ export class NavigationRegion3D extends Node3D{
   }
   get_navigation_map() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_navigation_map,
+      NavigationRegion3D._bindings.method_get_navigation_map,
       this._owner,
 			Variant.Type.RID,
     
@@ -295,7 +296,7 @@ export class NavigationRegion3D extends Node3D{
   }
   set_use_edge_connections(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_edge_connections,
+      NavigationRegion3D._bindings.method_set_use_edge_connections,
       this._owner,
       _enabled
     );
@@ -303,7 +304,7 @@ export class NavigationRegion3D extends Node3D{
   }
   get_use_edge_connections() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_use_edge_connections,
+      NavigationRegion3D._bindings.method_get_use_edge_connections,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -312,7 +313,7 @@ export class NavigationRegion3D extends Node3D{
   }
   set_navigation_layers(_navigation_layers) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_navigation_layers,
+      NavigationRegion3D._bindings.method_set_navigation_layers,
       this._owner,
       _navigation_layers
     );
@@ -320,7 +321,7 @@ export class NavigationRegion3D extends Node3D{
   }
   get_navigation_layers() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_navigation_layers,
+      NavigationRegion3D._bindings.method_get_navigation_layers,
       this._owner,
 			Variant.Type.INT,
       
@@ -329,7 +330,7 @@ export class NavigationRegion3D extends Node3D{
   }
   set_navigation_layer_value(_layer_number, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_navigation_layer_value,
+      NavigationRegion3D._bindings.method_set_navigation_layer_value,
       this._owner,
       _layer_number, _value
     );
@@ -337,7 +338,7 @@ export class NavigationRegion3D extends Node3D{
   }
   get_navigation_layer_value(_layer_number) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_navigation_layer_value,
+      NavigationRegion3D._bindings.method_get_navigation_layer_value,
       this._owner,
 			Variant.Type.BOOL,
       _layer_number
@@ -346,7 +347,7 @@ export class NavigationRegion3D extends Node3D{
   }
   get_region_rid() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_region_rid,
+      NavigationRegion3D._bindings.method_get_region_rid,
       this._owner,
 			Variant.Type.RID,
     
@@ -356,7 +357,7 @@ export class NavigationRegion3D extends Node3D{
   }
   set_enter_cost(_enter_cost) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_enter_cost,
+      NavigationRegion3D._bindings.method_set_enter_cost,
       this._owner,
       _enter_cost
     );
@@ -364,7 +365,7 @@ export class NavigationRegion3D extends Node3D{
   }
   get_enter_cost() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_enter_cost,
+      NavigationRegion3D._bindings.method_get_enter_cost,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -373,7 +374,7 @@ export class NavigationRegion3D extends Node3D{
   }
   set_travel_cost(_travel_cost) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_travel_cost,
+      NavigationRegion3D._bindings.method_set_travel_cost,
       this._owner,
       _travel_cost
     );
@@ -381,7 +382,7 @@ export class NavigationRegion3D extends Node3D{
   }
   get_travel_cost() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_travel_cost,
+      NavigationRegion3D._bindings.method_get_travel_cost,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -390,7 +391,7 @@ export class NavigationRegion3D extends Node3D{
   }
   bake_navigation_mesh(_on_thread) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_bake_navigation_mesh,
+      NavigationRegion3D._bindings.method_bake_navigation_mesh,
       this._owner,
       _on_thread
     );
@@ -398,7 +399,7 @@ export class NavigationRegion3D extends Node3D{
   }
   is_baking() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_baking,
+      NavigationRegion3D._bindings.method_is_baking,
       this._owner,
 			Variant.Type.BOOL,
       

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { AudioEffect } from '@js_godot/classes/audio_effect'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -50,9 +50,10 @@ export class AudioEffectAmplify extends AudioEffect{
       );
     }
   }
+  
   set_volume_db(_volume) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_volume_db,
+      AudioEffectAmplify._bindings.method_set_volume_db,
       this._owner,
       _volume
     );
@@ -60,7 +61,7 @@ export class AudioEffectAmplify extends AudioEffect{
   }
   get_volume_db() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_volume_db,
+      AudioEffectAmplify._bindings.method_get_volume_db,
       this._owner,
 			Variant.Type.FLOAT,
       

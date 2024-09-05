@@ -1,20 +1,20 @@
 import * as internal from '__internal__';
-import { Callable } from '@js_godot/variant/callable'
-import { Variant } from '@js_godot/variant/variant'
-import { GodotObject } from '@js_godot/classes/godot_object'
-import { Dictionary } from '@js_godot/variant/dictionary'
-import { Rect2i } from '@js_godot/variant/rect2i'
 import { Vector2i } from '@js_godot/variant/vector2i'
-import { Vector3i } from '@js_godot/variant/vector3i'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
-import { Color } from '@js_godot/variant/color'
-import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
-import { Vector2 } from '@js_godot/variant/vector2'
 import { RID } from '@js_godot/variant/rid'
-import { Rect2 } from '@js_godot/variant/rect2'
+import { Variant } from '@js_godot/variant/variant'
+import { Color } from '@js_godot/variant/color'
+import { Rect2i } from '@js_godot/variant/rect2i'
+import { Vector3i } from '@js_godot/variant/vector3i'
 import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { Callable } from '@js_godot/variant/callable'
+import { Vector2 } from '@js_godot/variant/vector2'
+import { GodotObject } from '@js_godot/classes/godot_object'
+import { Rect2 } from '@js_godot/variant/rect2'
+import { StringName } from '@js_godot/variant/string_name'
+import { Dictionary } from '@js_godot/variant/dictionary'
+import { GDString } from '@js_godot/variant/gd_string'
+import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -1882,9 +1882,10 @@ class _MethodBindings {
       );
     }
   }
+  
   has_feature(_feature) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_feature,
+      _DisplayServer._bindings.method_has_feature,
       this._owner,
 			Variant.Type.BOOL,
       _feature
@@ -1893,7 +1894,7 @@ class _MethodBindings {
   }
   get_name() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_name,
+      _DisplayServer._bindings.method_get_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1903,7 +1904,7 @@ class _MethodBindings {
   }
   help_set_search_callbacks(_search_callback, _action_callback) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_help_set_search_callbacks,
+      _DisplayServer._bindings.method_help_set_search_callbacks,
       this._owner,
       _search_callback, _action_callback
     );
@@ -1911,7 +1912,7 @@ class _MethodBindings {
   }
   global_menu_set_popup_callbacks(_menu_root, _open_callback, _close_callback) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_global_menu_set_popup_callbacks,
+      _DisplayServer._bindings.method_global_menu_set_popup_callbacks,
       this._owner,
       _menu_root, _open_callback, _close_callback
     );
@@ -1919,7 +1920,7 @@ class _MethodBindings {
   }
   global_menu_add_submenu_item(_menu_root, _label, _submenu, _index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_global_menu_add_submenu_item,
+      _DisplayServer._bindings.method_global_menu_add_submenu_item,
       this._owner,
 			Variant.Type.INT,
       _menu_root, _label, _submenu, _index
@@ -1928,7 +1929,7 @@ class _MethodBindings {
   }
   global_menu_add_item(_menu_root, _label, _callback, _key_callback, _tag, _accelerator, _index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_global_menu_add_item,
+      _DisplayServer._bindings.method_global_menu_add_item,
       this._owner,
 			Variant.Type.INT,
       _menu_root, _label, _callback, _key_callback, _tag, _accelerator, _index
@@ -1937,7 +1938,7 @@ class _MethodBindings {
   }
   global_menu_add_check_item(_menu_root, _label, _callback, _key_callback, _tag, _accelerator, _index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_global_menu_add_check_item,
+      _DisplayServer._bindings.method_global_menu_add_check_item,
       this._owner,
 			Variant.Type.INT,
       _menu_root, _label, _callback, _key_callback, _tag, _accelerator, _index
@@ -1946,7 +1947,7 @@ class _MethodBindings {
   }
   global_menu_add_icon_item(_menu_root, _icon, _label, _callback, _key_callback, _tag, _accelerator, _index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_global_menu_add_icon_item,
+      _DisplayServer._bindings.method_global_menu_add_icon_item,
       this._owner,
 			Variant.Type.INT,
       _menu_root, _icon, _label, _callback, _key_callback, _tag, _accelerator, _index
@@ -1955,7 +1956,7 @@ class _MethodBindings {
   }
   global_menu_add_icon_check_item(_menu_root, _icon, _label, _callback, _key_callback, _tag, _accelerator, _index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_global_menu_add_icon_check_item,
+      _DisplayServer._bindings.method_global_menu_add_icon_check_item,
       this._owner,
 			Variant.Type.INT,
       _menu_root, _icon, _label, _callback, _key_callback, _tag, _accelerator, _index
@@ -1964,7 +1965,7 @@ class _MethodBindings {
   }
   global_menu_add_radio_check_item(_menu_root, _label, _callback, _key_callback, _tag, _accelerator, _index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_global_menu_add_radio_check_item,
+      _DisplayServer._bindings.method_global_menu_add_radio_check_item,
       this._owner,
 			Variant.Type.INT,
       _menu_root, _label, _callback, _key_callback, _tag, _accelerator, _index
@@ -1973,7 +1974,7 @@ class _MethodBindings {
   }
   global_menu_add_icon_radio_check_item(_menu_root, _icon, _label, _callback, _key_callback, _tag, _accelerator, _index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_global_menu_add_icon_radio_check_item,
+      _DisplayServer._bindings.method_global_menu_add_icon_radio_check_item,
       this._owner,
 			Variant.Type.INT,
       _menu_root, _icon, _label, _callback, _key_callback, _tag, _accelerator, _index
@@ -1982,7 +1983,7 @@ class _MethodBindings {
   }
   global_menu_add_multistate_item(_menu_root, _label, _max_states, _default_state, _callback, _key_callback, _tag, _accelerator, _index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_global_menu_add_multistate_item,
+      _DisplayServer._bindings.method_global_menu_add_multistate_item,
       this._owner,
 			Variant.Type.INT,
       _menu_root, _label, _max_states, _default_state, _callback, _key_callback, _tag, _accelerator, _index
@@ -1991,7 +1992,7 @@ class _MethodBindings {
   }
   global_menu_add_separator(_menu_root, _index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_global_menu_add_separator,
+      _DisplayServer._bindings.method_global_menu_add_separator,
       this._owner,
 			Variant.Type.INT,
       _menu_root, _index
@@ -2000,7 +2001,7 @@ class _MethodBindings {
   }
   global_menu_get_item_index_from_text(_menu_root, _text) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_global_menu_get_item_index_from_text,
+      _DisplayServer._bindings.method_global_menu_get_item_index_from_text,
       this._owner,
 			Variant.Type.INT,
       _menu_root, _text
@@ -2009,7 +2010,7 @@ class _MethodBindings {
   }
   global_menu_get_item_index_from_tag(_menu_root, _tag) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_global_menu_get_item_index_from_tag,
+      _DisplayServer._bindings.method_global_menu_get_item_index_from_tag,
       this._owner,
 			Variant.Type.INT,
       _menu_root, _tag
@@ -2018,7 +2019,7 @@ class _MethodBindings {
   }
   global_menu_is_item_checked(_menu_root, _idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_global_menu_is_item_checked,
+      _DisplayServer._bindings.method_global_menu_is_item_checked,
       this._owner,
 			Variant.Type.BOOL,
       _menu_root, _idx
@@ -2027,7 +2028,7 @@ class _MethodBindings {
   }
   global_menu_is_item_checkable(_menu_root, _idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_global_menu_is_item_checkable,
+      _DisplayServer._bindings.method_global_menu_is_item_checkable,
       this._owner,
 			Variant.Type.BOOL,
       _menu_root, _idx
@@ -2036,7 +2037,7 @@ class _MethodBindings {
   }
   global_menu_is_item_radio_checkable(_menu_root, _idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_global_menu_is_item_radio_checkable,
+      _DisplayServer._bindings.method_global_menu_is_item_radio_checkable,
       this._owner,
 			Variant.Type.BOOL,
       _menu_root, _idx
@@ -2045,7 +2046,7 @@ class _MethodBindings {
   }
   global_menu_get_item_callback(_menu_root, _idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_global_menu_get_item_callback,
+      _DisplayServer._bindings.method_global_menu_get_item_callback,
       this._owner,
 			Variant.Type.CALLABLE,
     
@@ -2055,7 +2056,7 @@ class _MethodBindings {
   }
   global_menu_get_item_key_callback(_menu_root, _idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_global_menu_get_item_key_callback,
+      _DisplayServer._bindings.method_global_menu_get_item_key_callback,
       this._owner,
 			Variant.Type.CALLABLE,
     
@@ -2065,7 +2066,7 @@ class _MethodBindings {
   }
   global_menu_get_item_tag(_menu_root, _idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_global_menu_get_item_tag,
+      _DisplayServer._bindings.method_global_menu_get_item_tag,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -2075,7 +2076,7 @@ class _MethodBindings {
   }
   global_menu_get_item_text(_menu_root, _idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_global_menu_get_item_text,
+      _DisplayServer._bindings.method_global_menu_get_item_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -2085,7 +2086,7 @@ class _MethodBindings {
   }
   global_menu_get_item_submenu(_menu_root, _idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_global_menu_get_item_submenu,
+      _DisplayServer._bindings.method_global_menu_get_item_submenu,
       this._owner,
 			Variant.Type.STRING,
     
@@ -2095,7 +2096,7 @@ class _MethodBindings {
   }
   global_menu_get_item_accelerator(_menu_root, _idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_global_menu_get_item_accelerator,
+      _DisplayServer._bindings.method_global_menu_get_item_accelerator,
       this._owner,
 			Variant.INT,
       _menu_root, _idx
@@ -2104,7 +2105,7 @@ class _MethodBindings {
   }
   global_menu_is_item_disabled(_menu_root, _idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_global_menu_is_item_disabled,
+      _DisplayServer._bindings.method_global_menu_is_item_disabled,
       this._owner,
 			Variant.Type.BOOL,
       _menu_root, _idx
@@ -2113,7 +2114,7 @@ class _MethodBindings {
   }
   global_menu_is_item_hidden(_menu_root, _idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_global_menu_is_item_hidden,
+      _DisplayServer._bindings.method_global_menu_is_item_hidden,
       this._owner,
 			Variant.Type.BOOL,
       _menu_root, _idx
@@ -2122,7 +2123,7 @@ class _MethodBindings {
   }
   global_menu_get_item_tooltip(_menu_root, _idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_global_menu_get_item_tooltip,
+      _DisplayServer._bindings.method_global_menu_get_item_tooltip,
       this._owner,
 			Variant.Type.STRING,
     
@@ -2132,7 +2133,7 @@ class _MethodBindings {
   }
   global_menu_get_item_state(_menu_root, _idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_global_menu_get_item_state,
+      _DisplayServer._bindings.method_global_menu_get_item_state,
       this._owner,
 			Variant.Type.INT,
       _menu_root, _idx
@@ -2141,7 +2142,7 @@ class _MethodBindings {
   }
   global_menu_get_item_max_states(_menu_root, _idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_global_menu_get_item_max_states,
+      _DisplayServer._bindings.method_global_menu_get_item_max_states,
       this._owner,
 			Variant.Type.INT,
       _menu_root, _idx
@@ -2150,7 +2151,7 @@ class _MethodBindings {
   }
   global_menu_get_item_icon(_menu_root, _idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_global_menu_get_item_icon,
+      _DisplayServer._bindings.method_global_menu_get_item_icon,
       this._owner,
 			Variant.INT,
       _menu_root, _idx
@@ -2159,7 +2160,7 @@ class _MethodBindings {
   }
   global_menu_get_item_indentation_level(_menu_root, _idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_global_menu_get_item_indentation_level,
+      _DisplayServer._bindings.method_global_menu_get_item_indentation_level,
       this._owner,
 			Variant.Type.INT,
       _menu_root, _idx
@@ -2168,7 +2169,7 @@ class _MethodBindings {
   }
   global_menu_set_item_checked(_menu_root, _idx, _checked) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_global_menu_set_item_checked,
+      _DisplayServer._bindings.method_global_menu_set_item_checked,
       this._owner,
       _menu_root, _idx, _checked
     );
@@ -2176,7 +2177,7 @@ class _MethodBindings {
   }
   global_menu_set_item_checkable(_menu_root, _idx, _checkable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_global_menu_set_item_checkable,
+      _DisplayServer._bindings.method_global_menu_set_item_checkable,
       this._owner,
       _menu_root, _idx, _checkable
     );
@@ -2184,7 +2185,7 @@ class _MethodBindings {
   }
   global_menu_set_item_radio_checkable(_menu_root, _idx, _checkable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_global_menu_set_item_radio_checkable,
+      _DisplayServer._bindings.method_global_menu_set_item_radio_checkable,
       this._owner,
       _menu_root, _idx, _checkable
     );
@@ -2192,7 +2193,7 @@ class _MethodBindings {
   }
   global_menu_set_item_callback(_menu_root, _idx, _callback) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_global_menu_set_item_callback,
+      _DisplayServer._bindings.method_global_menu_set_item_callback,
       this._owner,
       _menu_root, _idx, _callback
     );
@@ -2200,7 +2201,7 @@ class _MethodBindings {
   }
   global_menu_set_item_hover_callbacks(_menu_root, _idx, _callback) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_global_menu_set_item_hover_callbacks,
+      _DisplayServer._bindings.method_global_menu_set_item_hover_callbacks,
       this._owner,
       _menu_root, _idx, _callback
     );
@@ -2208,7 +2209,7 @@ class _MethodBindings {
   }
   global_menu_set_item_key_callback(_menu_root, _idx, _key_callback) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_global_menu_set_item_key_callback,
+      _DisplayServer._bindings.method_global_menu_set_item_key_callback,
       this._owner,
       _menu_root, _idx, _key_callback
     );
@@ -2216,7 +2217,7 @@ class _MethodBindings {
   }
   global_menu_set_item_tag(_menu_root, _idx, _tag) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_global_menu_set_item_tag,
+      _DisplayServer._bindings.method_global_menu_set_item_tag,
       this._owner,
       _menu_root, _idx, _tag
     );
@@ -2224,7 +2225,7 @@ class _MethodBindings {
   }
   global_menu_set_item_text(_menu_root, _idx, _text) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_global_menu_set_item_text,
+      _DisplayServer._bindings.method_global_menu_set_item_text,
       this._owner,
       _menu_root, _idx, _text
     );
@@ -2232,7 +2233,7 @@ class _MethodBindings {
   }
   global_menu_set_item_submenu(_menu_root, _idx, _submenu) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_global_menu_set_item_submenu,
+      _DisplayServer._bindings.method_global_menu_set_item_submenu,
       this._owner,
       _menu_root, _idx, _submenu
     );
@@ -2240,7 +2241,7 @@ class _MethodBindings {
   }
   global_menu_set_item_accelerator(_menu_root, _idx, _keycode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_global_menu_set_item_accelerator,
+      _DisplayServer._bindings.method_global_menu_set_item_accelerator,
       this._owner,
       _menu_root, _idx, _keycode
     );
@@ -2248,7 +2249,7 @@ class _MethodBindings {
   }
   global_menu_set_item_disabled(_menu_root, _idx, _disabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_global_menu_set_item_disabled,
+      _DisplayServer._bindings.method_global_menu_set_item_disabled,
       this._owner,
       _menu_root, _idx, _disabled
     );
@@ -2256,7 +2257,7 @@ class _MethodBindings {
   }
   global_menu_set_item_hidden(_menu_root, _idx, _hidden) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_global_menu_set_item_hidden,
+      _DisplayServer._bindings.method_global_menu_set_item_hidden,
       this._owner,
       _menu_root, _idx, _hidden
     );
@@ -2264,7 +2265,7 @@ class _MethodBindings {
   }
   global_menu_set_item_tooltip(_menu_root, _idx, _tooltip) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_global_menu_set_item_tooltip,
+      _DisplayServer._bindings.method_global_menu_set_item_tooltip,
       this._owner,
       _menu_root, _idx, _tooltip
     );
@@ -2272,7 +2273,7 @@ class _MethodBindings {
   }
   global_menu_set_item_state(_menu_root, _idx, _state) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_global_menu_set_item_state,
+      _DisplayServer._bindings.method_global_menu_set_item_state,
       this._owner,
       _menu_root, _idx, _state
     );
@@ -2280,7 +2281,7 @@ class _MethodBindings {
   }
   global_menu_set_item_max_states(_menu_root, _idx, _max_states) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_global_menu_set_item_max_states,
+      _DisplayServer._bindings.method_global_menu_set_item_max_states,
       this._owner,
       _menu_root, _idx, _max_states
     );
@@ -2288,7 +2289,7 @@ class _MethodBindings {
   }
   global_menu_set_item_icon(_menu_root, _idx, _icon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_global_menu_set_item_icon,
+      _DisplayServer._bindings.method_global_menu_set_item_icon,
       this._owner,
       _menu_root, _idx, _icon
     );
@@ -2296,7 +2297,7 @@ class _MethodBindings {
   }
   global_menu_set_item_indentation_level(_menu_root, _idx, _level) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_global_menu_set_item_indentation_level,
+      _DisplayServer._bindings.method_global_menu_set_item_indentation_level,
       this._owner,
       _menu_root, _idx, _level
     );
@@ -2304,7 +2305,7 @@ class _MethodBindings {
   }
   global_menu_get_item_count(_menu_root) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_global_menu_get_item_count,
+      _DisplayServer._bindings.method_global_menu_get_item_count,
       this._owner,
 			Variant.Type.INT,
       _menu_root
@@ -2313,7 +2314,7 @@ class _MethodBindings {
   }
   global_menu_remove_item(_menu_root, _idx) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_global_menu_remove_item,
+      _DisplayServer._bindings.method_global_menu_remove_item,
       this._owner,
       _menu_root, _idx
     );
@@ -2321,7 +2322,7 @@ class _MethodBindings {
   }
   global_menu_clear(_menu_root) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_global_menu_clear,
+      _DisplayServer._bindings.method_global_menu_clear,
       this._owner,
       _menu_root
     );
@@ -2329,7 +2330,7 @@ class _MethodBindings {
   }
   global_menu_get_system_menu_roots() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_global_menu_get_system_menu_roots,
+      _DisplayServer._bindings.method_global_menu_get_system_menu_roots,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -2339,7 +2340,7 @@ class _MethodBindings {
   }
   tts_is_speaking() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_tts_is_speaking,
+      _DisplayServer._bindings.method_tts_is_speaking,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2348,7 +2349,7 @@ class _MethodBindings {
   }
   tts_is_paused() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_tts_is_paused,
+      _DisplayServer._bindings.method_tts_is_paused,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2357,7 +2358,7 @@ class _MethodBindings {
   }
   tts_get_voices() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_tts_get_voices,
+      _DisplayServer._bindings.method_tts_get_voices,
       this._owner,
 			Variant.INT,
       
@@ -2366,7 +2367,7 @@ class _MethodBindings {
   }
   tts_get_voices_for_language(_language) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_tts_get_voices_for_language,
+      _DisplayServer._bindings.method_tts_get_voices_for_language,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -2376,7 +2377,7 @@ class _MethodBindings {
   }
   tts_speak(_text, _voice, _volume, _pitch, _rate, _utterance_id, _interrupt) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_tts_speak,
+      _DisplayServer._bindings.method_tts_speak,
       this._owner,
       _text, _voice, _volume, _pitch, _rate, _utterance_id, _interrupt
     );
@@ -2384,7 +2385,7 @@ class _MethodBindings {
   }
   tts_pause() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_tts_pause,
+      _DisplayServer._bindings.method_tts_pause,
       this._owner,
       
     );
@@ -2392,7 +2393,7 @@ class _MethodBindings {
   }
   tts_resume() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_tts_resume,
+      _DisplayServer._bindings.method_tts_resume,
       this._owner,
       
     );
@@ -2400,7 +2401,7 @@ class _MethodBindings {
   }
   tts_stop() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_tts_stop,
+      _DisplayServer._bindings.method_tts_stop,
       this._owner,
       
     );
@@ -2408,7 +2409,7 @@ class _MethodBindings {
   }
   tts_set_utterance_callback(_event, _callable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_tts_set_utterance_callback,
+      _DisplayServer._bindings.method_tts_set_utterance_callback,
       this._owner,
       _event, _callable
     );
@@ -2416,7 +2417,7 @@ class _MethodBindings {
   }
   is_dark_mode_supported() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_dark_mode_supported,
+      _DisplayServer._bindings.method_is_dark_mode_supported,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2425,7 +2426,7 @@ class _MethodBindings {
   }
   is_dark_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_dark_mode,
+      _DisplayServer._bindings.method_is_dark_mode,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2434,7 +2435,7 @@ class _MethodBindings {
   }
   get_accent_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_accent_color,
+      _DisplayServer._bindings.method_get_accent_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -2444,7 +2445,7 @@ class _MethodBindings {
   }
   get_base_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_base_color,
+      _DisplayServer._bindings.method_get_base_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -2454,7 +2455,7 @@ class _MethodBindings {
   }
   set_system_theme_change_callback(_callable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_system_theme_change_callback,
+      _DisplayServer._bindings.method_set_system_theme_change_callback,
       this._owner,
       _callable
     );
@@ -2462,7 +2463,7 @@ class _MethodBindings {
   }
   mouse_set_mode(_mouse_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_mouse_set_mode,
+      _DisplayServer._bindings.method_mouse_set_mode,
       this._owner,
       _mouse_mode
     );
@@ -2470,7 +2471,7 @@ class _MethodBindings {
   }
   mouse_get_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_mouse_get_mode,
+      _DisplayServer._bindings.method_mouse_get_mode,
       this._owner,
 			Variant.INT,
       
@@ -2479,7 +2480,7 @@ class _MethodBindings {
   }
   warp_mouse(_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_warp_mouse,
+      _DisplayServer._bindings.method_warp_mouse,
       this._owner,
       _position
     );
@@ -2487,7 +2488,7 @@ class _MethodBindings {
   }
   mouse_get_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_mouse_get_position,
+      _DisplayServer._bindings.method_mouse_get_position,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -2497,7 +2498,7 @@ class _MethodBindings {
   }
   mouse_get_button_state() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_mouse_get_button_state,
+      _DisplayServer._bindings.method_mouse_get_button_state,
       this._owner,
 			Variant.INT,
       
@@ -2506,7 +2507,7 @@ class _MethodBindings {
   }
   clipboard_set(_clipboard) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clipboard_set,
+      _DisplayServer._bindings.method_clipboard_set,
       this._owner,
       _clipboard
     );
@@ -2514,7 +2515,7 @@ class _MethodBindings {
   }
   clipboard_get() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_clipboard_get,
+      _DisplayServer._bindings.method_clipboard_get,
       this._owner,
 			Variant.Type.STRING,
     
@@ -2524,7 +2525,7 @@ class _MethodBindings {
   }
   clipboard_get_image() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_clipboard_get_image,
+      _DisplayServer._bindings.method_clipboard_get_image,
       this._owner,
 			Variant.INT,
       
@@ -2533,7 +2534,7 @@ class _MethodBindings {
   }
   clipboard_has() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_clipboard_has,
+      _DisplayServer._bindings.method_clipboard_has,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2542,7 +2543,7 @@ class _MethodBindings {
   }
   clipboard_has_image() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_clipboard_has_image,
+      _DisplayServer._bindings.method_clipboard_has_image,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2551,7 +2552,7 @@ class _MethodBindings {
   }
   clipboard_set_primary(_clipboard_primary) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clipboard_set_primary,
+      _DisplayServer._bindings.method_clipboard_set_primary,
       this._owner,
       _clipboard_primary
     );
@@ -2559,7 +2560,7 @@ class _MethodBindings {
   }
   clipboard_get_primary() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_clipboard_get_primary,
+      _DisplayServer._bindings.method_clipboard_get_primary,
       this._owner,
 			Variant.Type.STRING,
     
@@ -2569,7 +2570,7 @@ class _MethodBindings {
   }
   get_display_cutouts() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_display_cutouts,
+      _DisplayServer._bindings.method_get_display_cutouts,
       this._owner,
 			Variant.INT,
       
@@ -2578,7 +2579,7 @@ class _MethodBindings {
   }
   get_display_safe_area() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_display_safe_area,
+      _DisplayServer._bindings.method_get_display_safe_area,
       this._owner,
 			Variant.Type.RECT2I,
     
@@ -2588,7 +2589,7 @@ class _MethodBindings {
   }
   get_screen_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_screen_count,
+      _DisplayServer._bindings.method_get_screen_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -2597,7 +2598,7 @@ class _MethodBindings {
   }
   get_primary_screen() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_primary_screen,
+      _DisplayServer._bindings.method_get_primary_screen,
       this._owner,
 			Variant.Type.INT,
       
@@ -2606,7 +2607,7 @@ class _MethodBindings {
   }
   get_keyboard_focus_screen() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_keyboard_focus_screen,
+      _DisplayServer._bindings.method_get_keyboard_focus_screen,
       this._owner,
 			Variant.Type.INT,
       
@@ -2615,7 +2616,7 @@ class _MethodBindings {
   }
   get_screen_from_rect(_rect) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_screen_from_rect,
+      _DisplayServer._bindings.method_get_screen_from_rect,
       this._owner,
 			Variant.Type.INT,
       _rect
@@ -2624,7 +2625,7 @@ class _MethodBindings {
   }
   screen_get_position(_screen) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_screen_get_position,
+      _DisplayServer._bindings.method_screen_get_position,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -2634,7 +2635,7 @@ class _MethodBindings {
   }
   screen_get_size(_screen) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_screen_get_size,
+      _DisplayServer._bindings.method_screen_get_size,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -2644,7 +2645,7 @@ class _MethodBindings {
   }
   screen_get_usable_rect(_screen) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_screen_get_usable_rect,
+      _DisplayServer._bindings.method_screen_get_usable_rect,
       this._owner,
 			Variant.Type.RECT2I,
     
@@ -2654,7 +2655,7 @@ class _MethodBindings {
   }
   screen_get_dpi(_screen) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_screen_get_dpi,
+      _DisplayServer._bindings.method_screen_get_dpi,
       this._owner,
 			Variant.Type.INT,
       _screen
@@ -2663,7 +2664,7 @@ class _MethodBindings {
   }
   screen_get_scale(_screen) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_screen_get_scale,
+      _DisplayServer._bindings.method_screen_get_scale,
       this._owner,
 			Variant.Type.FLOAT,
       _screen
@@ -2672,7 +2673,7 @@ class _MethodBindings {
   }
   is_touchscreen_available() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_touchscreen_available,
+      _DisplayServer._bindings.method_is_touchscreen_available,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2681,7 +2682,7 @@ class _MethodBindings {
   }
   screen_get_max_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_screen_get_max_scale,
+      _DisplayServer._bindings.method_screen_get_max_scale,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2690,7 +2691,7 @@ class _MethodBindings {
   }
   screen_get_refresh_rate(_screen) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_screen_get_refresh_rate,
+      _DisplayServer._bindings.method_screen_get_refresh_rate,
       this._owner,
 			Variant.Type.FLOAT,
       _screen
@@ -2699,7 +2700,7 @@ class _MethodBindings {
   }
   screen_get_pixel(_position) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_screen_get_pixel,
+      _DisplayServer._bindings.method_screen_get_pixel,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -2709,7 +2710,7 @@ class _MethodBindings {
   }
   screen_get_image(_screen) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_screen_get_image,
+      _DisplayServer._bindings.method_screen_get_image,
       this._owner,
 			Variant.INT,
       _screen
@@ -2718,7 +2719,7 @@ class _MethodBindings {
   }
   screen_set_orientation(_orientation, _screen) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_screen_set_orientation,
+      _DisplayServer._bindings.method_screen_set_orientation,
       this._owner,
       _orientation, _screen
     );
@@ -2726,7 +2727,7 @@ class _MethodBindings {
   }
   screen_get_orientation(_screen) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_screen_get_orientation,
+      _DisplayServer._bindings.method_screen_get_orientation,
       this._owner,
 			Variant.INT,
       _screen
@@ -2735,7 +2736,7 @@ class _MethodBindings {
   }
   screen_set_keep_on(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_screen_set_keep_on,
+      _DisplayServer._bindings.method_screen_set_keep_on,
       this._owner,
       _enable
     );
@@ -2743,7 +2744,7 @@ class _MethodBindings {
   }
   screen_is_kept_on() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_screen_is_kept_on,
+      _DisplayServer._bindings.method_screen_is_kept_on,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2752,7 +2753,7 @@ class _MethodBindings {
   }
   get_window_list() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_window_list,
+      _DisplayServer._bindings.method_get_window_list,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -2762,7 +2763,7 @@ class _MethodBindings {
   }
   get_window_at_screen_position(_position) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_window_at_screen_position,
+      _DisplayServer._bindings.method_get_window_at_screen_position,
       this._owner,
 			Variant.Type.INT,
       _position
@@ -2771,7 +2772,7 @@ class _MethodBindings {
   }
   window_get_native_handle(_handle_type, _window_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_window_get_native_handle,
+      _DisplayServer._bindings.method_window_get_native_handle,
       this._owner,
 			Variant.Type.INT,
       _handle_type, _window_id
@@ -2780,7 +2781,7 @@ class _MethodBindings {
   }
   window_get_active_popup() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_window_get_active_popup,
+      _DisplayServer._bindings.method_window_get_active_popup,
       this._owner,
 			Variant.Type.INT,
       
@@ -2789,7 +2790,7 @@ class _MethodBindings {
   }
   window_set_popup_safe_rect(_window, _rect) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_window_set_popup_safe_rect,
+      _DisplayServer._bindings.method_window_set_popup_safe_rect,
       this._owner,
       _window, _rect
     );
@@ -2797,7 +2798,7 @@ class _MethodBindings {
   }
   window_get_popup_safe_rect(_window) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_window_get_popup_safe_rect,
+      _DisplayServer._bindings.method_window_get_popup_safe_rect,
       this._owner,
 			Variant.Type.RECT2I,
     
@@ -2807,7 +2808,7 @@ class _MethodBindings {
   }
   window_set_title(_title, _window_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_window_set_title,
+      _DisplayServer._bindings.method_window_set_title,
       this._owner,
       _title, _window_id
     );
@@ -2815,7 +2816,7 @@ class _MethodBindings {
   }
   window_get_title_size(_title, _window_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_window_get_title_size,
+      _DisplayServer._bindings.method_window_get_title_size,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -2825,7 +2826,7 @@ class _MethodBindings {
   }
   window_set_mouse_passthrough(_region, _window_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_window_set_mouse_passthrough,
+      _DisplayServer._bindings.method_window_set_mouse_passthrough,
       this._owner,
       _region, _window_id
     );
@@ -2833,7 +2834,7 @@ class _MethodBindings {
   }
   window_get_current_screen(_window_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_window_get_current_screen,
+      _DisplayServer._bindings.method_window_get_current_screen,
       this._owner,
 			Variant.Type.INT,
       _window_id
@@ -2842,7 +2843,7 @@ class _MethodBindings {
   }
   window_set_current_screen(_screen, _window_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_window_set_current_screen,
+      _DisplayServer._bindings.method_window_set_current_screen,
       this._owner,
       _screen, _window_id
     );
@@ -2850,7 +2851,7 @@ class _MethodBindings {
   }
   window_get_position(_window_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_window_get_position,
+      _DisplayServer._bindings.method_window_get_position,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -2860,7 +2861,7 @@ class _MethodBindings {
   }
   window_get_position_with_decorations(_window_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_window_get_position_with_decorations,
+      _DisplayServer._bindings.method_window_get_position_with_decorations,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -2870,7 +2871,7 @@ class _MethodBindings {
   }
   window_set_position(_position, _window_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_window_set_position,
+      _DisplayServer._bindings.method_window_set_position,
       this._owner,
       _position, _window_id
     );
@@ -2878,7 +2879,7 @@ class _MethodBindings {
   }
   window_get_size(_window_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_window_get_size,
+      _DisplayServer._bindings.method_window_get_size,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -2888,7 +2889,7 @@ class _MethodBindings {
   }
   window_set_size(_size, _window_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_window_set_size,
+      _DisplayServer._bindings.method_window_set_size,
       this._owner,
       _size, _window_id
     );
@@ -2896,7 +2897,7 @@ class _MethodBindings {
   }
   window_set_rect_changed_callback(_callback, _window_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_window_set_rect_changed_callback,
+      _DisplayServer._bindings.method_window_set_rect_changed_callback,
       this._owner,
       _callback, _window_id
     );
@@ -2904,7 +2905,7 @@ class _MethodBindings {
   }
   window_set_window_event_callback(_callback, _window_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_window_set_window_event_callback,
+      _DisplayServer._bindings.method_window_set_window_event_callback,
       this._owner,
       _callback, _window_id
     );
@@ -2912,7 +2913,7 @@ class _MethodBindings {
   }
   window_set_input_event_callback(_callback, _window_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_window_set_input_event_callback,
+      _DisplayServer._bindings.method_window_set_input_event_callback,
       this._owner,
       _callback, _window_id
     );
@@ -2920,7 +2921,7 @@ class _MethodBindings {
   }
   window_set_input_text_callback(_callback, _window_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_window_set_input_text_callback,
+      _DisplayServer._bindings.method_window_set_input_text_callback,
       this._owner,
       _callback, _window_id
     );
@@ -2928,7 +2929,7 @@ class _MethodBindings {
   }
   window_set_drop_files_callback(_callback, _window_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_window_set_drop_files_callback,
+      _DisplayServer._bindings.method_window_set_drop_files_callback,
       this._owner,
       _callback, _window_id
     );
@@ -2936,7 +2937,7 @@ class _MethodBindings {
   }
   window_get_attached_instance_id(_window_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_window_get_attached_instance_id,
+      _DisplayServer._bindings.method_window_get_attached_instance_id,
       this._owner,
 			Variant.Type.INT,
       _window_id
@@ -2945,7 +2946,7 @@ class _MethodBindings {
   }
   window_get_max_size(_window_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_window_get_max_size,
+      _DisplayServer._bindings.method_window_get_max_size,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -2955,7 +2956,7 @@ class _MethodBindings {
   }
   window_set_max_size(_max_size, _window_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_window_set_max_size,
+      _DisplayServer._bindings.method_window_set_max_size,
       this._owner,
       _max_size, _window_id
     );
@@ -2963,7 +2964,7 @@ class _MethodBindings {
   }
   window_get_min_size(_window_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_window_get_min_size,
+      _DisplayServer._bindings.method_window_get_min_size,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -2973,7 +2974,7 @@ class _MethodBindings {
   }
   window_set_min_size(_min_size, _window_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_window_set_min_size,
+      _DisplayServer._bindings.method_window_set_min_size,
       this._owner,
       _min_size, _window_id
     );
@@ -2981,7 +2982,7 @@ class _MethodBindings {
   }
   window_get_size_with_decorations(_window_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_window_get_size_with_decorations,
+      _DisplayServer._bindings.method_window_get_size_with_decorations,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -2991,7 +2992,7 @@ class _MethodBindings {
   }
   window_get_mode(_window_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_window_get_mode,
+      _DisplayServer._bindings.method_window_get_mode,
       this._owner,
 			Variant.INT,
       _window_id
@@ -3000,7 +3001,7 @@ class _MethodBindings {
   }
   window_set_mode(_mode, _window_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_window_set_mode,
+      _DisplayServer._bindings.method_window_set_mode,
       this._owner,
       _mode, _window_id
     );
@@ -3008,7 +3009,7 @@ class _MethodBindings {
   }
   window_set_flag(_flag, _enabled, _window_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_window_set_flag,
+      _DisplayServer._bindings.method_window_set_flag,
       this._owner,
       _flag, _enabled, _window_id
     );
@@ -3016,7 +3017,7 @@ class _MethodBindings {
   }
   window_get_flag(_flag, _window_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_window_get_flag,
+      _DisplayServer._bindings.method_window_get_flag,
       this._owner,
 			Variant.Type.BOOL,
       _flag, _window_id
@@ -3025,7 +3026,7 @@ class _MethodBindings {
   }
   window_set_window_buttons_offset(_offset, _window_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_window_set_window_buttons_offset,
+      _DisplayServer._bindings.method_window_set_window_buttons_offset,
       this._owner,
       _offset, _window_id
     );
@@ -3033,7 +3034,7 @@ class _MethodBindings {
   }
   window_get_safe_title_margins(_window_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_window_get_safe_title_margins,
+      _DisplayServer._bindings.method_window_get_safe_title_margins,
       this._owner,
 			Variant.Type.VECTOR3I,
     
@@ -3043,7 +3044,7 @@ class _MethodBindings {
   }
   window_request_attention(_window_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_window_request_attention,
+      _DisplayServer._bindings.method_window_request_attention,
       this._owner,
       _window_id
     );
@@ -3051,7 +3052,7 @@ class _MethodBindings {
   }
   window_move_to_foreground(_window_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_window_move_to_foreground,
+      _DisplayServer._bindings.method_window_move_to_foreground,
       this._owner,
       _window_id
     );
@@ -3059,7 +3060,7 @@ class _MethodBindings {
   }
   window_is_focused(_window_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_window_is_focused,
+      _DisplayServer._bindings.method_window_is_focused,
       this._owner,
 			Variant.Type.BOOL,
       _window_id
@@ -3068,7 +3069,7 @@ class _MethodBindings {
   }
   window_can_draw(_window_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_window_can_draw,
+      _DisplayServer._bindings.method_window_can_draw,
       this._owner,
 			Variant.Type.BOOL,
       _window_id
@@ -3077,7 +3078,7 @@ class _MethodBindings {
   }
   window_set_transient(_window_id, _parent_window_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_window_set_transient,
+      _DisplayServer._bindings.method_window_set_transient,
       this._owner,
       _window_id, _parent_window_id
     );
@@ -3085,7 +3086,7 @@ class _MethodBindings {
   }
   window_set_exclusive(_window_id, _exclusive) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_window_set_exclusive,
+      _DisplayServer._bindings.method_window_set_exclusive,
       this._owner,
       _window_id, _exclusive
     );
@@ -3093,7 +3094,7 @@ class _MethodBindings {
   }
   window_set_ime_active(_active, _window_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_window_set_ime_active,
+      _DisplayServer._bindings.method_window_set_ime_active,
       this._owner,
       _active, _window_id
     );
@@ -3101,7 +3102,7 @@ class _MethodBindings {
   }
   window_set_ime_position(_position, _window_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_window_set_ime_position,
+      _DisplayServer._bindings.method_window_set_ime_position,
       this._owner,
       _position, _window_id
     );
@@ -3109,7 +3110,7 @@ class _MethodBindings {
   }
   window_set_vsync_mode(_vsync_mode, _window_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_window_set_vsync_mode,
+      _DisplayServer._bindings.method_window_set_vsync_mode,
       this._owner,
       _vsync_mode, _window_id
     );
@@ -3117,7 +3118,7 @@ class _MethodBindings {
   }
   window_get_vsync_mode(_window_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_window_get_vsync_mode,
+      _DisplayServer._bindings.method_window_get_vsync_mode,
       this._owner,
 			Variant.INT,
       _window_id
@@ -3126,7 +3127,7 @@ class _MethodBindings {
   }
   window_is_maximize_allowed(_window_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_window_is_maximize_allowed,
+      _DisplayServer._bindings.method_window_is_maximize_allowed,
       this._owner,
 			Variant.Type.BOOL,
       _window_id
@@ -3135,7 +3136,7 @@ class _MethodBindings {
   }
   window_maximize_on_title_dbl_click() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_window_maximize_on_title_dbl_click,
+      _DisplayServer._bindings.method_window_maximize_on_title_dbl_click,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -3144,7 +3145,7 @@ class _MethodBindings {
   }
   window_minimize_on_title_dbl_click() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_window_minimize_on_title_dbl_click,
+      _DisplayServer._bindings.method_window_minimize_on_title_dbl_click,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -3153,7 +3154,7 @@ class _MethodBindings {
   }
   ime_get_selection() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_ime_get_selection,
+      _DisplayServer._bindings.method_ime_get_selection,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -3163,7 +3164,7 @@ class _MethodBindings {
   }
   ime_get_text() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_ime_get_text,
+      _DisplayServer._bindings.method_ime_get_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -3173,7 +3174,7 @@ class _MethodBindings {
   }
   virtual_keyboard_show(_existing_text, _position, _type, _max_length, _cursor_start, _cursor_end) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_virtual_keyboard_show,
+      _DisplayServer._bindings.method_virtual_keyboard_show,
       this._owner,
       _existing_text, _position, _type, _max_length, _cursor_start, _cursor_end
     );
@@ -3181,7 +3182,7 @@ class _MethodBindings {
   }
   virtual_keyboard_hide() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_virtual_keyboard_hide,
+      _DisplayServer._bindings.method_virtual_keyboard_hide,
       this._owner,
       
     );
@@ -3189,7 +3190,7 @@ class _MethodBindings {
   }
   virtual_keyboard_get_height() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_virtual_keyboard_get_height,
+      _DisplayServer._bindings.method_virtual_keyboard_get_height,
       this._owner,
 			Variant.Type.INT,
       
@@ -3198,7 +3199,7 @@ class _MethodBindings {
   }
   cursor_set_shape(_shape) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_cursor_set_shape,
+      _DisplayServer._bindings.method_cursor_set_shape,
       this._owner,
       _shape
     );
@@ -3206,7 +3207,7 @@ class _MethodBindings {
   }
   cursor_get_shape() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_cursor_get_shape,
+      _DisplayServer._bindings.method_cursor_get_shape,
       this._owner,
 			Variant.INT,
       
@@ -3215,7 +3216,7 @@ class _MethodBindings {
   }
   cursor_set_custom_image(_cursor, _shape, _hotspot) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_cursor_set_custom_image,
+      _DisplayServer._bindings.method_cursor_set_custom_image,
       this._owner,
       _cursor, _shape, _hotspot
     );
@@ -3223,7 +3224,7 @@ class _MethodBindings {
   }
   get_swap_cancel_ok() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_swap_cancel_ok,
+      _DisplayServer._bindings.method_get_swap_cancel_ok,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -3232,7 +3233,7 @@ class _MethodBindings {
   }
   enable_for_stealing_focus(_process_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_enable_for_stealing_focus,
+      _DisplayServer._bindings.method_enable_for_stealing_focus,
       this._owner,
       _process_id
     );
@@ -3240,7 +3241,7 @@ class _MethodBindings {
   }
   dialog_show(_title, _description, _buttons, _callback) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_dialog_show,
+      _DisplayServer._bindings.method_dialog_show,
       this._owner,
 			Variant.INT,
       _title, _description, _buttons, _callback
@@ -3249,7 +3250,7 @@ class _MethodBindings {
   }
   dialog_input_text(_title, _description, _existing_text, _callback) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_dialog_input_text,
+      _DisplayServer._bindings.method_dialog_input_text,
       this._owner,
 			Variant.INT,
       _title, _description, _existing_text, _callback
@@ -3258,7 +3259,7 @@ class _MethodBindings {
   }
   file_dialog_show(_title, _current_directory, _filename, _show_hidden, _mode, _filters, _callback) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_file_dialog_show,
+      _DisplayServer._bindings.method_file_dialog_show,
       this._owner,
 			Variant.INT,
       _title, _current_directory, _filename, _show_hidden, _mode, _filters, _callback
@@ -3267,7 +3268,7 @@ class _MethodBindings {
   }
   file_dialog_with_options_show(_title, _current_directory, _root, _filename, _show_hidden, _mode, _filters, _options, _callback) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_file_dialog_with_options_show,
+      _DisplayServer._bindings.method_file_dialog_with_options_show,
       this._owner,
 			Variant.INT,
       _title, _current_directory, _root, _filename, _show_hidden, _mode, _filters, _options, _callback
@@ -3276,7 +3277,7 @@ class _MethodBindings {
   }
   keyboard_get_layout_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_keyboard_get_layout_count,
+      _DisplayServer._bindings.method_keyboard_get_layout_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -3285,7 +3286,7 @@ class _MethodBindings {
   }
   keyboard_get_current_layout() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_keyboard_get_current_layout,
+      _DisplayServer._bindings.method_keyboard_get_current_layout,
       this._owner,
 			Variant.Type.INT,
       
@@ -3294,7 +3295,7 @@ class _MethodBindings {
   }
   keyboard_set_current_layout(_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_keyboard_set_current_layout,
+      _DisplayServer._bindings.method_keyboard_set_current_layout,
       this._owner,
       _index
     );
@@ -3302,7 +3303,7 @@ class _MethodBindings {
   }
   keyboard_get_layout_language(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_keyboard_get_layout_language,
+      _DisplayServer._bindings.method_keyboard_get_layout_language,
       this._owner,
 			Variant.Type.STRING,
     
@@ -3312,7 +3313,7 @@ class _MethodBindings {
   }
   keyboard_get_layout_name(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_keyboard_get_layout_name,
+      _DisplayServer._bindings.method_keyboard_get_layout_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -3322,7 +3323,7 @@ class _MethodBindings {
   }
   keyboard_get_keycode_from_physical(_keycode) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_keyboard_get_keycode_from_physical,
+      _DisplayServer._bindings.method_keyboard_get_keycode_from_physical,
       this._owner,
 			Variant.INT,
       _keycode
@@ -3331,7 +3332,7 @@ class _MethodBindings {
   }
   keyboard_get_label_from_physical(_keycode) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_keyboard_get_label_from_physical,
+      _DisplayServer._bindings.method_keyboard_get_label_from_physical,
       this._owner,
 			Variant.INT,
       _keycode
@@ -3340,7 +3341,7 @@ class _MethodBindings {
   }
   process_events() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_process_events,
+      _DisplayServer._bindings.method_process_events,
       this._owner,
       
     );
@@ -3348,7 +3349,7 @@ class _MethodBindings {
   }
   force_process_and_drop_events() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_force_process_and_drop_events,
+      _DisplayServer._bindings.method_force_process_and_drop_events,
       this._owner,
       
     );
@@ -3356,7 +3357,7 @@ class _MethodBindings {
   }
   set_native_icon(_filename) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_native_icon,
+      _DisplayServer._bindings.method_set_native_icon,
       this._owner,
       _filename
     );
@@ -3364,7 +3365,7 @@ class _MethodBindings {
   }
   set_icon(_image) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_icon,
+      _DisplayServer._bindings.method_set_icon,
       this._owner,
       _image
     );
@@ -3372,7 +3373,7 @@ class _MethodBindings {
   }
   create_status_indicator(_icon, _tooltip, _callback) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_status_indicator,
+      _DisplayServer._bindings.method_create_status_indicator,
       this._owner,
 			Variant.Type.INT,
       _icon, _tooltip, _callback
@@ -3381,7 +3382,7 @@ class _MethodBindings {
   }
   status_indicator_set_icon(_id, _icon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_status_indicator_set_icon,
+      _DisplayServer._bindings.method_status_indicator_set_icon,
       this._owner,
       _id, _icon
     );
@@ -3389,7 +3390,7 @@ class _MethodBindings {
   }
   status_indicator_set_tooltip(_id, _tooltip) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_status_indicator_set_tooltip,
+      _DisplayServer._bindings.method_status_indicator_set_tooltip,
       this._owner,
       _id, _tooltip
     );
@@ -3397,7 +3398,7 @@ class _MethodBindings {
   }
   status_indicator_set_menu(_id, _menu_rid) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_status_indicator_set_menu,
+      _DisplayServer._bindings.method_status_indicator_set_menu,
       this._owner,
       _id, _menu_rid
     );
@@ -3405,7 +3406,7 @@ class _MethodBindings {
   }
   status_indicator_set_callback(_id, _callback) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_status_indicator_set_callback,
+      _DisplayServer._bindings.method_status_indicator_set_callback,
       this._owner,
       _id, _callback
     );
@@ -3413,7 +3414,7 @@ class _MethodBindings {
   }
   status_indicator_get_rect(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_status_indicator_get_rect,
+      _DisplayServer._bindings.method_status_indicator_get_rect,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -3423,7 +3424,7 @@ class _MethodBindings {
   }
   delete_status_indicator(_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_delete_status_indicator,
+      _DisplayServer._bindings.method_delete_status_indicator,
       this._owner,
       _id
     );
@@ -3431,7 +3432,7 @@ class _MethodBindings {
   }
   tablet_get_driver_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_tablet_get_driver_count,
+      _DisplayServer._bindings.method_tablet_get_driver_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -3440,7 +3441,7 @@ class _MethodBindings {
   }
   tablet_get_driver_name(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_tablet_get_driver_name,
+      _DisplayServer._bindings.method_tablet_get_driver_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -3450,7 +3451,7 @@ class _MethodBindings {
   }
   tablet_get_current_driver() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_tablet_get_current_driver,
+      _DisplayServer._bindings.method_tablet_get_current_driver,
       this._owner,
 			Variant.Type.STRING,
     
@@ -3460,7 +3461,7 @@ class _MethodBindings {
   }
   tablet_set_current_driver(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_tablet_set_current_driver,
+      _DisplayServer._bindings.method_tablet_set_current_driver,
       this._owner,
       _name
     );
@@ -3468,7 +3469,7 @@ class _MethodBindings {
   }
   is_window_transparency_available() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_window_transparency_available,
+      _DisplayServer._bindings.method_is_window_transparency_available,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -3477,7 +3478,7 @@ class _MethodBindings {
   }
   register_additional_output(_object) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_register_additional_output,
+      _DisplayServer._bindings.method_register_additional_output,
       this._owner,
       _object
     );
@@ -3485,7 +3486,7 @@ class _MethodBindings {
   }
   unregister_additional_output(_object) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_unregister_additional_output,
+      _DisplayServer._bindings.method_unregister_additional_output,
       this._owner,
       _object
     );
@@ -3493,7 +3494,7 @@ class _MethodBindings {
   }
   has_additional_outputs() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_additional_outputs,
+      _DisplayServer._bindings.method_has_additional_outputs,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -3633,4 +3634,17 @@ class _MethodBindings {
     this._init_bindings();
   }
 }
-export const DisplayServer = new _DisplayServer();
+export const DisplayServer = (function () {
+  let _instance;
+  function create_instance() {
+    return new _DisplayServer();
+  }
+  return {
+    instance: function () {
+      if (!_instance) {
+        _instance = create_instance();
+      }
+      return _instance;
+    },
+  };
+})();

@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { AudioEffectEQ } from '@js_godot/classes/audio_effect_eq'
 import {
   call_utility_ret,
@@ -30,6 +30,7 @@ export class AudioEffectEQ6 extends AudioEffectEQ{
     }
     this.#initialized = true;
   }
+  
   
 
 

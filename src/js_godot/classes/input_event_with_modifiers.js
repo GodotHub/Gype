@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { InputEventFromWindow } from '@js_godot/classes/input_event_from_window'
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -150,9 +150,10 @@ export class InputEventWithModifiers extends InputEventFromWindow{
       );
     }
   }
+  
   set_command_or_control_autoremap(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_command_or_control_autoremap,
+      InputEventWithModifiers._bindings.method_set_command_or_control_autoremap,
       this._owner,
       _enable
     );
@@ -160,7 +161,7 @@ export class InputEventWithModifiers extends InputEventFromWindow{
   }
   is_command_or_control_autoremap() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_command_or_control_autoremap,
+      InputEventWithModifiers._bindings.method_is_command_or_control_autoremap,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -169,7 +170,7 @@ export class InputEventWithModifiers extends InputEventFromWindow{
   }
   is_command_or_control_pressed() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_command_or_control_pressed,
+      InputEventWithModifiers._bindings.method_is_command_or_control_pressed,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -178,7 +179,7 @@ export class InputEventWithModifiers extends InputEventFromWindow{
   }
   set_alt_pressed(_pressed) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_alt_pressed,
+      InputEventWithModifiers._bindings.method_set_alt_pressed,
       this._owner,
       _pressed
     );
@@ -186,7 +187,7 @@ export class InputEventWithModifiers extends InputEventFromWindow{
   }
   is_alt_pressed() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_alt_pressed,
+      InputEventWithModifiers._bindings.method_is_alt_pressed,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -195,7 +196,7 @@ export class InputEventWithModifiers extends InputEventFromWindow{
   }
   set_shift_pressed(_pressed) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shift_pressed,
+      InputEventWithModifiers._bindings.method_set_shift_pressed,
       this._owner,
       _pressed
     );
@@ -203,7 +204,7 @@ export class InputEventWithModifiers extends InputEventFromWindow{
   }
   is_shift_pressed() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_shift_pressed,
+      InputEventWithModifiers._bindings.method_is_shift_pressed,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -212,7 +213,7 @@ export class InputEventWithModifiers extends InputEventFromWindow{
   }
   set_ctrl_pressed(_pressed) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ctrl_pressed,
+      InputEventWithModifiers._bindings.method_set_ctrl_pressed,
       this._owner,
       _pressed
     );
@@ -220,7 +221,7 @@ export class InputEventWithModifiers extends InputEventFromWindow{
   }
   is_ctrl_pressed() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_ctrl_pressed,
+      InputEventWithModifiers._bindings.method_is_ctrl_pressed,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -229,7 +230,7 @@ export class InputEventWithModifiers extends InputEventFromWindow{
   }
   set_meta_pressed(_pressed) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_meta_pressed,
+      InputEventWithModifiers._bindings.method_set_meta_pressed,
       this._owner,
       _pressed
     );
@@ -237,7 +238,7 @@ export class InputEventWithModifiers extends InputEventFromWindow{
   }
   is_meta_pressed() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_meta_pressed,
+      InputEventWithModifiers._bindings.method_is_meta_pressed,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -246,7 +247,7 @@ export class InputEventWithModifiers extends InputEventFromWindow{
   }
   get_modifiers_mask() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_modifiers_mask,
+      InputEventWithModifiers._bindings.method_get_modifiers_mask,
       this._owner,
 			Variant.INT,
       

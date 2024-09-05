@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
+import { StringName } from '@js_godot/variant/string_name'
+import { GodotObject } from '@js_godot/classes/godot_object'
 import { Variant } from '@js_godot/variant/variant'
 import { Callable } from '@js_godot/variant/callable'
-import { GodotObject } from '@js_godot/classes/godot_object'
-import { StringName } from '@js_godot/variant/string_name'
 import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
@@ -101,9 +101,10 @@ class _MethodBindings {
       );
     }
   }
+  
   get_monitor(_monitor) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_monitor,
+      _Performance._bindings.method_get_monitor,
       this._owner,
 			Variant.Type.FLOAT,
       _monitor
@@ -112,7 +113,7 @@ class _MethodBindings {
   }
   add_custom_monitor(_id, _callable, _arguments) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_custom_monitor,
+      _Performance._bindings.method_add_custom_monitor,
       this._owner,
       _id, _callable, _arguments
     );
@@ -120,7 +121,7 @@ class _MethodBindings {
   }
   remove_custom_monitor(_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_custom_monitor,
+      _Performance._bindings.method_remove_custom_monitor,
       this._owner,
       _id
     );
@@ -128,7 +129,7 @@ class _MethodBindings {
   }
   has_custom_monitor(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_custom_monitor,
+      _Performance._bindings.method_has_custom_monitor,
       this._owner,
 			Variant.Type.BOOL,
       _id
@@ -137,7 +138,7 @@ class _MethodBindings {
   }
   get_custom_monitor(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_custom_monitor,
+      _Performance._bindings.method_get_custom_monitor,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -147,7 +148,7 @@ class _MethodBindings {
   }
   get_monitor_modification_time() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_monitor_modification_time,
+      _Performance._bindings.method_get_monitor_modification_time,
       this._owner,
 			Variant.Type.INT,
       
@@ -156,7 +157,7 @@ class _MethodBindings {
   }
   get_custom_monitor_names() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_custom_monitor_names,
+      _Performance._bindings.method_get_custom_monitor_names,
       this._owner,
 			Variant.INT,
       
@@ -206,4 +207,17 @@ class _MethodBindings {
     this._init_bindings();
   }
 }
-export const Performance = new _Performance();
+export const Performance = (function () {
+  let _instance;
+  function create_instance() {
+    return new _Performance();
+  }
+  return {
+    instance: function () {
+      if (!_instance) {
+        _instance = create_instance();
+      }
+      return _instance;
+    },
+  };
+})();

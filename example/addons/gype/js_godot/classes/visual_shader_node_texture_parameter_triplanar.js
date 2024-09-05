@@ -31,6 +31,7 @@ export class VisualShaderNodeTextureParameterTriplanar extends VisualShaderNodeT
     this.#initialized = true;
   }
   
+  
 
 
   static {

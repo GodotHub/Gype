@@ -1,5 +1,3 @@
-namespace test{
-    export class Test {
+export class Test {
         
-    }
 }

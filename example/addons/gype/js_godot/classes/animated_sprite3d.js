@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { SpriteBase3D } from '@js_godot/classes/sprite_base3d'
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
+import { SpriteBase3D } from '@js_godot/classes/sprite_base3d'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -221,9 +221,10 @@ export class AnimatedSprite3D extends SpriteBase3D{
       );
     }
   }
+  
   set_sprite_frames(_sprite_frames) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sprite_frames,
+      AnimatedSprite3D._bindings.method_set_sprite_frames,
       this._owner,
       _sprite_frames
     );
@@ -231,7 +232,7 @@ export class AnimatedSprite3D extends SpriteBase3D{
   }
   get_sprite_frames() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sprite_frames,
+      AnimatedSprite3D._bindings.method_get_sprite_frames,
       this._owner,
 			Variant.INT,
       
@@ -240,7 +241,7 @@ export class AnimatedSprite3D extends SpriteBase3D{
   }
   set_animation(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_animation,
+      AnimatedSprite3D._bindings.method_set_animation,
       this._owner,
       _name
     );
@@ -248,7 +249,7 @@ export class AnimatedSprite3D extends SpriteBase3D{
   }
   get_animation() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_animation,
+      AnimatedSprite3D._bindings.method_get_animation,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -258,7 +259,7 @@ export class AnimatedSprite3D extends SpriteBase3D{
   }
   set_autoplay(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_autoplay,
+      AnimatedSprite3D._bindings.method_set_autoplay,
       this._owner,
       _name
     );
@@ -266,7 +267,7 @@ export class AnimatedSprite3D extends SpriteBase3D{
   }
   get_autoplay() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_autoplay,
+      AnimatedSprite3D._bindings.method_get_autoplay,
       this._owner,
 			Variant.Type.STRING,
     
@@ -276,7 +277,7 @@ export class AnimatedSprite3D extends SpriteBase3D{
   }
   is_playing() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_playing,
+      AnimatedSprite3D._bindings.method_is_playing,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -285,7 +286,7 @@ export class AnimatedSprite3D extends SpriteBase3D{
   }
   play(_name, _custom_speed, _from_end) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_play,
+      AnimatedSprite3D._bindings.method_play,
       this._owner,
       _name, _custom_speed, _from_end
     );
@@ -293,7 +294,7 @@ export class AnimatedSprite3D extends SpriteBase3D{
   }
   play_backwards(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_play_backwards,
+      AnimatedSprite3D._bindings.method_play_backwards,
       this._owner,
       _name
     );
@@ -301,7 +302,7 @@ export class AnimatedSprite3D extends SpriteBase3D{
   }
   pause() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_pause,
+      AnimatedSprite3D._bindings.method_pause,
       this._owner,
       
     );
@@ -309,7 +310,7 @@ export class AnimatedSprite3D extends SpriteBase3D{
   }
   stop() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_stop,
+      AnimatedSprite3D._bindings.method_stop,
       this._owner,
       
     );
@@ -317,7 +318,7 @@ export class AnimatedSprite3D extends SpriteBase3D{
   }
   set_frame(_frame) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_frame,
+      AnimatedSprite3D._bindings.method_set_frame,
       this._owner,
       _frame
     );
@@ -325,7 +326,7 @@ export class AnimatedSprite3D extends SpriteBase3D{
   }
   get_frame() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_frame,
+      AnimatedSprite3D._bindings.method_get_frame,
       this._owner,
 			Variant.Type.INT,
       
@@ -334,7 +335,7 @@ export class AnimatedSprite3D extends SpriteBase3D{
   }
   set_frame_progress(_progress) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_frame_progress,
+      AnimatedSprite3D._bindings.method_set_frame_progress,
       this._owner,
       _progress
     );
@@ -342,7 +343,7 @@ export class AnimatedSprite3D extends SpriteBase3D{
   }
   get_frame_progress() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_frame_progress,
+      AnimatedSprite3D._bindings.method_get_frame_progress,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -351,7 +352,7 @@ export class AnimatedSprite3D extends SpriteBase3D{
   }
   set_frame_and_progress(_frame, _progress) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_frame_and_progress,
+      AnimatedSprite3D._bindings.method_set_frame_and_progress,
       this._owner,
       _frame, _progress
     );
@@ -359,7 +360,7 @@ export class AnimatedSprite3D extends SpriteBase3D{
   }
   set_speed_scale(_speed_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_speed_scale,
+      AnimatedSprite3D._bindings.method_set_speed_scale,
       this._owner,
       _speed_scale
     );
@@ -367,7 +368,7 @@ export class AnimatedSprite3D extends SpriteBase3D{
   }
   get_speed_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_speed_scale,
+      AnimatedSprite3D._bindings.method_get_speed_scale,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -376,7 +377,7 @@ export class AnimatedSprite3D extends SpriteBase3D{
   }
   get_playing_speed() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_playing_speed,
+      AnimatedSprite3D._bindings.method_get_playing_speed,
       this._owner,
 			Variant.Type.FLOAT,
       

@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { PrimitiveMesh } from '@js_godot/classes/primitive_mesh'
-import { Vector3 } from '@js_godot/variant/vector3'
-import { StringName } from '@js_godot/variant/string_name'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { PrimitiveMesh } from '@js_godot/classes/primitive_mesh'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
+import { Vector3 } from '@js_godot/variant/vector3'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -132,9 +132,10 @@ export class PlaneMesh extends PrimitiveMesh{
       );
     }
   }
+  
   set_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_size,
+      PlaneMesh._bindings.method_set_size,
       this._owner,
       _size
     );
@@ -142,7 +143,7 @@ export class PlaneMesh extends PrimitiveMesh{
   }
   get_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_size,
+      PlaneMesh._bindings.method_get_size,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -152,7 +153,7 @@ export class PlaneMesh extends PrimitiveMesh{
   }
   set_subdivide_width(_subdivide) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_subdivide_width,
+      PlaneMesh._bindings.method_set_subdivide_width,
       this._owner,
       _subdivide
     );
@@ -160,7 +161,7 @@ export class PlaneMesh extends PrimitiveMesh{
   }
   get_subdivide_width() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_subdivide_width,
+      PlaneMesh._bindings.method_get_subdivide_width,
       this._owner,
 			Variant.Type.INT,
       
@@ -169,7 +170,7 @@ export class PlaneMesh extends PrimitiveMesh{
   }
   set_subdivide_depth(_subdivide) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_subdivide_depth,
+      PlaneMesh._bindings.method_set_subdivide_depth,
       this._owner,
       _subdivide
     );
@@ -177,7 +178,7 @@ export class PlaneMesh extends PrimitiveMesh{
   }
   get_subdivide_depth() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_subdivide_depth,
+      PlaneMesh._bindings.method_get_subdivide_depth,
       this._owner,
 			Variant.Type.INT,
       
@@ -186,7 +187,7 @@ export class PlaneMesh extends PrimitiveMesh{
   }
   set_center_offset(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_center_offset,
+      PlaneMesh._bindings.method_set_center_offset,
       this._owner,
       _offset
     );
@@ -194,7 +195,7 @@ export class PlaneMesh extends PrimitiveMesh{
   }
   get_center_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_center_offset,
+      PlaneMesh._bindings.method_get_center_offset,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -204,7 +205,7 @@ export class PlaneMesh extends PrimitiveMesh{
   }
   set_orientation(_orientation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_orientation,
+      PlaneMesh._bindings.method_set_orientation,
       this._owner,
       _orientation
     );
@@ -212,7 +213,7 @@ export class PlaneMesh extends PrimitiveMesh{
   }
   get_orientation() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_orientation,
+      PlaneMesh._bindings.method_get_orientation,
       this._owner,
 			Variant.INT,
       

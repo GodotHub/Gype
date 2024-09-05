@@ -1,13 +1,13 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
+import { RID } from '@js_godot/variant/rid'
+import { AABB } from '@js_godot/variant/aabb'
+import { StringName } from '@js_godot/variant/string_name'
+import { PackedVector3Array } from '@js_godot/variant/packed_vector3_array'
 import { Transform3D } from '@js_godot/variant/transform3d'
+import { Variant } from '@js_godot/variant/variant'
 import { Callable } from '@js_godot/variant/callable'
 import { Vector3 } from '@js_godot/variant/vector3'
-import { PackedVector3Array } from '@js_godot/variant/packed_vector3_array'
-import { StringName } from '@js_godot/variant/string_name'
-import { AABB } from '@js_godot/variant/aabb'
 import { PhysicsServer3D } from '@js_godot/classes/physics_server3d'
-import { RID } from '@js_godot/variant/rid'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -56,6 +56,7 @@ export class PhysicsServer3DExtension extends PhysicsServer3D{
       );
     }
   }
+  
   _world_boundary_shape_create() {
   }
   _separation_ray_shape_create() {
@@ -434,7 +435,7 @@ export class PhysicsServer3DExtension extends PhysicsServer3D{
   }
   body_test_motion_is_excluding_body(_body) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_body_test_motion_is_excluding_body,
+      PhysicsServer3DExtension._bindings.method_body_test_motion_is_excluding_body,
       this._owner,
 			Variant.Type.BOOL,
       _body
@@ -443,7 +444,7 @@ export class PhysicsServer3DExtension extends PhysicsServer3D{
   }
   body_test_motion_is_excluding_object(_object) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_body_test_motion_is_excluding_object,
+      PhysicsServer3DExtension._bindings.method_body_test_motion_is_excluding_object,
       this._owner,
 			Variant.Type.BOOL,
       _object

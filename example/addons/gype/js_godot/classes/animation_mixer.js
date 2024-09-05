@@ -1,11 +1,11 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Vector3 } from '@js_godot/variant/vector3'
-import { StringName } from '@js_godot/variant/string_name'
-import { Quaternion } from '@js_godot/variant/quaternion'
 import { Node } from '@js_godot/classes/node'
+import { StringName } from '@js_godot/variant/string_name'
 import { PackedStringArray } from '@js_godot/variant/packed_string_array'
 import { NodePath } from '@js_godot/variant/node_path'
+import { Quaternion } from '@js_godot/variant/quaternion'
+import { Variant } from '@js_godot/variant/variant'
+import { Vector3 } from '@js_godot/variant/vector3'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -414,11 +414,12 @@ export class AnimationMixer extends Node{
       );
     }
   }
+  
   _post_process_key_value(_animation, _track, _value, _object_id, _object_sub_idx) {
   }
   add_animation_library(_name, _library) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_add_animation_library,
+      AnimationMixer._bindings.method_add_animation_library,
       this._owner,
 			Variant.INT,
       _name, _library
@@ -427,7 +428,7 @@ export class AnimationMixer extends Node{
   }
   remove_animation_library(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_animation_library,
+      AnimationMixer._bindings.method_remove_animation_library,
       this._owner,
       _name
     );
@@ -435,7 +436,7 @@ export class AnimationMixer extends Node{
   }
   rename_animation_library(_name, _newname) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_rename_animation_library,
+      AnimationMixer._bindings.method_rename_animation_library,
       this._owner,
       _name, _newname
     );
@@ -443,7 +444,7 @@ export class AnimationMixer extends Node{
   }
   has_animation_library(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_animation_library,
+      AnimationMixer._bindings.method_has_animation_library,
       this._owner,
 			Variant.Type.BOOL,
       _name
@@ -452,7 +453,7 @@ export class AnimationMixer extends Node{
   }
   get_animation_library(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_animation_library,
+      AnimationMixer._bindings.method_get_animation_library,
       this._owner,
 			Variant.INT,
       _name
@@ -461,7 +462,7 @@ export class AnimationMixer extends Node{
   }
   get_animation_library_list() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_animation_library_list,
+      AnimationMixer._bindings.method_get_animation_library_list,
       this._owner,
 			Variant.INT,
       
@@ -470,7 +471,7 @@ export class AnimationMixer extends Node{
   }
   has_animation(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_animation,
+      AnimationMixer._bindings.method_has_animation,
       this._owner,
 			Variant.Type.BOOL,
       _name
@@ -479,7 +480,7 @@ export class AnimationMixer extends Node{
   }
   get_animation(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_animation,
+      AnimationMixer._bindings.method_get_animation,
       this._owner,
 			Variant.INT,
       _name
@@ -488,7 +489,7 @@ export class AnimationMixer extends Node{
   }
   get_animation_list() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_animation_list,
+      AnimationMixer._bindings.method_get_animation_list,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -498,7 +499,7 @@ export class AnimationMixer extends Node{
   }
   set_active(_active) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_active,
+      AnimationMixer._bindings.method_set_active,
       this._owner,
       _active
     );
@@ -506,7 +507,7 @@ export class AnimationMixer extends Node{
   }
   is_active() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_active,
+      AnimationMixer._bindings.method_is_active,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -515,7 +516,7 @@ export class AnimationMixer extends Node{
   }
   set_deterministic(_deterministic) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_deterministic,
+      AnimationMixer._bindings.method_set_deterministic,
       this._owner,
       _deterministic
     );
@@ -523,7 +524,7 @@ export class AnimationMixer extends Node{
   }
   is_deterministic() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_deterministic,
+      AnimationMixer._bindings.method_is_deterministic,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -532,7 +533,7 @@ export class AnimationMixer extends Node{
   }
   set_root_node(_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_root_node,
+      AnimationMixer._bindings.method_set_root_node,
       this._owner,
       _path
     );
@@ -540,7 +541,7 @@ export class AnimationMixer extends Node{
   }
   get_root_node() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_root_node,
+      AnimationMixer._bindings.method_get_root_node,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -550,7 +551,7 @@ export class AnimationMixer extends Node{
   }
   set_callback_mode_process(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_callback_mode_process,
+      AnimationMixer._bindings.method_set_callback_mode_process,
       this._owner,
       _mode
     );
@@ -558,7 +559,7 @@ export class AnimationMixer extends Node{
   }
   get_callback_mode_process() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_callback_mode_process,
+      AnimationMixer._bindings.method_get_callback_mode_process,
       this._owner,
 			Variant.INT,
       
@@ -567,7 +568,7 @@ export class AnimationMixer extends Node{
   }
   set_callback_mode_method(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_callback_mode_method,
+      AnimationMixer._bindings.method_set_callback_mode_method,
       this._owner,
       _mode
     );
@@ -575,7 +576,7 @@ export class AnimationMixer extends Node{
   }
   get_callback_mode_method() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_callback_mode_method,
+      AnimationMixer._bindings.method_get_callback_mode_method,
       this._owner,
 			Variant.INT,
       
@@ -584,7 +585,7 @@ export class AnimationMixer extends Node{
   }
   set_callback_mode_discrete(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_callback_mode_discrete,
+      AnimationMixer._bindings.method_set_callback_mode_discrete,
       this._owner,
       _mode
     );
@@ -592,7 +593,7 @@ export class AnimationMixer extends Node{
   }
   get_callback_mode_discrete() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_callback_mode_discrete,
+      AnimationMixer._bindings.method_get_callback_mode_discrete,
       this._owner,
 			Variant.INT,
       
@@ -601,7 +602,7 @@ export class AnimationMixer extends Node{
   }
   set_audio_max_polyphony(_max_polyphony) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_audio_max_polyphony,
+      AnimationMixer._bindings.method_set_audio_max_polyphony,
       this._owner,
       _max_polyphony
     );
@@ -609,7 +610,7 @@ export class AnimationMixer extends Node{
   }
   get_audio_max_polyphony() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_audio_max_polyphony,
+      AnimationMixer._bindings.method_get_audio_max_polyphony,
       this._owner,
 			Variant.Type.INT,
       
@@ -618,7 +619,7 @@ export class AnimationMixer extends Node{
   }
   set_root_motion_track(_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_root_motion_track,
+      AnimationMixer._bindings.method_set_root_motion_track,
       this._owner,
       _path
     );
@@ -626,7 +627,7 @@ export class AnimationMixer extends Node{
   }
   get_root_motion_track() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_root_motion_track,
+      AnimationMixer._bindings.method_get_root_motion_track,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -636,7 +637,7 @@ export class AnimationMixer extends Node{
   }
   get_root_motion_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_root_motion_position,
+      AnimationMixer._bindings.method_get_root_motion_position,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -646,7 +647,7 @@ export class AnimationMixer extends Node{
   }
   get_root_motion_rotation() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_root_motion_rotation,
+      AnimationMixer._bindings.method_get_root_motion_rotation,
       this._owner,
 			Variant.Type.QUATERNION,
     
@@ -656,7 +657,7 @@ export class AnimationMixer extends Node{
   }
   get_root_motion_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_root_motion_scale,
+      AnimationMixer._bindings.method_get_root_motion_scale,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -666,7 +667,7 @@ export class AnimationMixer extends Node{
   }
   get_root_motion_position_accumulator() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_root_motion_position_accumulator,
+      AnimationMixer._bindings.method_get_root_motion_position_accumulator,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -676,7 +677,7 @@ export class AnimationMixer extends Node{
   }
   get_root_motion_rotation_accumulator() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_root_motion_rotation_accumulator,
+      AnimationMixer._bindings.method_get_root_motion_rotation_accumulator,
       this._owner,
 			Variant.Type.QUATERNION,
     
@@ -686,7 +687,7 @@ export class AnimationMixer extends Node{
   }
   get_root_motion_scale_accumulator() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_root_motion_scale_accumulator,
+      AnimationMixer._bindings.method_get_root_motion_scale_accumulator,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -696,7 +697,7 @@ export class AnimationMixer extends Node{
   }
   clear_caches() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_caches,
+      AnimationMixer._bindings.method_clear_caches,
       this._owner,
       
     );
@@ -704,7 +705,7 @@ export class AnimationMixer extends Node{
   }
   advance(_delta) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_advance,
+      AnimationMixer._bindings.method_advance,
       this._owner,
       _delta
     );
@@ -712,7 +713,7 @@ export class AnimationMixer extends Node{
   }
   capture(_name, _duration, _trans_type, _ease_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_capture,
+      AnimationMixer._bindings.method_capture,
       this._owner,
       _name, _duration, _trans_type, _ease_type
     );
@@ -720,7 +721,7 @@ export class AnimationMixer extends Node{
   }
   set_reset_on_save_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_reset_on_save_enabled,
+      AnimationMixer._bindings.method_set_reset_on_save_enabled,
       this._owner,
       _enabled
     );
@@ -728,7 +729,7 @@ export class AnimationMixer extends Node{
   }
   is_reset_on_save_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_reset_on_save_enabled,
+      AnimationMixer._bindings.method_is_reset_on_save_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -737,7 +738,7 @@ export class AnimationMixer extends Node{
   }
   find_animation(_animation) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_find_animation,
+      AnimationMixer._bindings.method_find_animation,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -747,7 +748,7 @@ export class AnimationMixer extends Node{
   }
   find_animation_library(_animation) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_find_animation_library,
+      AnimationMixer._bindings.method_find_animation_library,
       this._owner,
 			Variant.Type.STRING_NAME,
     

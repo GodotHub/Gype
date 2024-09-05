@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { Texture2D } from '@js_godot/classes/texture2d'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -100,9 +100,10 @@ export class CurveXYZTexture extends Texture2D{
       );
     }
   }
+  
   set_width(_width) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_width,
+      CurveXYZTexture._bindings.method_set_width,
       this._owner,
       _width
     );
@@ -110,7 +111,7 @@ export class CurveXYZTexture extends Texture2D{
   }
   set_curve_x(_curve) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_curve_x,
+      CurveXYZTexture._bindings.method_set_curve_x,
       this._owner,
       _curve
     );
@@ -118,7 +119,7 @@ export class CurveXYZTexture extends Texture2D{
   }
   get_curve_x() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_curve_x,
+      CurveXYZTexture._bindings.method_get_curve_x,
       this._owner,
 			Variant.INT,
       
@@ -127,7 +128,7 @@ export class CurveXYZTexture extends Texture2D{
   }
   set_curve_y(_curve) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_curve_y,
+      CurveXYZTexture._bindings.method_set_curve_y,
       this._owner,
       _curve
     );
@@ -135,7 +136,7 @@ export class CurveXYZTexture extends Texture2D{
   }
   get_curve_y() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_curve_y,
+      CurveXYZTexture._bindings.method_get_curve_y,
       this._owner,
 			Variant.INT,
       
@@ -144,7 +145,7 @@ export class CurveXYZTexture extends Texture2D{
   }
   set_curve_z(_curve) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_curve_z,
+      CurveXYZTexture._bindings.method_set_curve_z,
       this._owner,
       _curve
     );
@@ -152,7 +153,7 @@ export class CurveXYZTexture extends Texture2D{
   }
   get_curve_z() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_curve_z,
+      CurveXYZTexture._bindings.method_get_curve_z,
       this._owner,
 			Variant.INT,
       

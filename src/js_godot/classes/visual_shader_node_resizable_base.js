@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { Vector2 } from '@js_godot/variant/vector2'
 import { VisualShaderNode } from '@js_godot/classes/visual_shader_node'
 import {
@@ -51,9 +51,10 @@ export class VisualShaderNodeResizableBase extends VisualShaderNode{
       );
     }
   }
+  
   set_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_size,
+      VisualShaderNodeResizableBase._bindings.method_set_size,
       this._owner,
       _size
     );
@@ -61,7 +62,7 @@ export class VisualShaderNodeResizableBase extends VisualShaderNode{
   }
   get_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_size,
+      VisualShaderNodeResizableBase._bindings.method_get_size,
       this._owner,
 			Variant.Type.VECTOR2,
     

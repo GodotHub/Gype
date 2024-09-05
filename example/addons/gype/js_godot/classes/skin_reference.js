@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
-import { RID } from '@js_godot/variant/rid'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { RID } from '@js_godot/variant/rid'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -51,9 +51,10 @@ export class SkinReference extends RefCounted{
       );
     }
   }
+  
   get_skeleton() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_skeleton,
+      SkinReference._bindings.method_get_skeleton,
       this._owner,
 			Variant.Type.RID,
     
@@ -63,7 +64,7 @@ export class SkinReference extends RefCounted{
   }
   get_skin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_skin,
+      SkinReference._bindings.method_get_skin,
       this._owner,
 			Variant.INT,
       

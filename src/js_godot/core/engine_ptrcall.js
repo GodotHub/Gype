@@ -16,7 +16,12 @@ export function call_utility_no_ret(method, ...args) {
 }
 
 export function _call_native_mb_ret(mb, instance, type, ...args) {
-  let data = object_method_bind_ptrcall(mb, instance, type, args);
+  let data = object_method_bind_ptrcall(
+    mb,
+    instance,
+    type,
+    convert_vars(...args)
+  );
   switch (type) {
     case Variant.Type.INT:
     case Variant.Type.FLOAT:
@@ -38,5 +43,5 @@ export function _call_native_mb_ret(mb, instance, type, ...args) {
 }
 
 export function _call_native_mb_no_ret(mb, instance, ...args) {
-  object_method_bind_ptrcall(mb, instance, ...args);
+  object_method_bind_ptrcall(mb, instance, 0, convert_vars(...args));
 }

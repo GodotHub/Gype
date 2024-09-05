@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
+import { RID } from '@js_godot/variant/rid'
 import { Transform3D } from '@js_godot/variant/transform3d'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { GodotObject } from '@js_godot/classes/godot_object'
 import { Vector3 } from '@js_godot/variant/vector3'
-import { StringName } from '@js_godot/variant/string_name'
-import { RID } from '@js_godot/variant/rid'
 import { Basis } from '@js_godot/variant/basis'
 import {
   call_utility_ret,
@@ -494,9 +494,10 @@ export class PhysicsDirectBodyState3D extends GodotObject{
       );
     }
   }
+  
   get_total_gravity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_total_gravity,
+      PhysicsDirectBodyState3D._bindings.method_get_total_gravity,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -506,7 +507,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   get_total_linear_damp() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_total_linear_damp,
+      PhysicsDirectBodyState3D._bindings.method_get_total_linear_damp,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -515,7 +516,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   get_total_angular_damp() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_total_angular_damp,
+      PhysicsDirectBodyState3D._bindings.method_get_total_angular_damp,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -524,7 +525,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   get_center_of_mass() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_center_of_mass,
+      PhysicsDirectBodyState3D._bindings.method_get_center_of_mass,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -534,7 +535,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   get_center_of_mass_local() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_center_of_mass_local,
+      PhysicsDirectBodyState3D._bindings.method_get_center_of_mass_local,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -544,7 +545,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   get_principal_inertia_axes() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_principal_inertia_axes,
+      PhysicsDirectBodyState3D._bindings.method_get_principal_inertia_axes,
       this._owner,
 			Variant.Type.BASIS,
     
@@ -554,7 +555,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   get_inverse_mass() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_inverse_mass,
+      PhysicsDirectBodyState3D._bindings.method_get_inverse_mass,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -563,7 +564,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   get_inverse_inertia() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_inverse_inertia,
+      PhysicsDirectBodyState3D._bindings.method_get_inverse_inertia,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -573,7 +574,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   get_inverse_inertia_tensor() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_inverse_inertia_tensor,
+      PhysicsDirectBodyState3D._bindings.method_get_inverse_inertia_tensor,
       this._owner,
 			Variant.Type.BASIS,
     
@@ -583,7 +584,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   set_linear_velocity(_velocity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_linear_velocity,
+      PhysicsDirectBodyState3D._bindings.method_set_linear_velocity,
       this._owner,
       _velocity
     );
@@ -591,7 +592,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   get_linear_velocity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_linear_velocity,
+      PhysicsDirectBodyState3D._bindings.method_get_linear_velocity,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -601,7 +602,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   set_angular_velocity(_velocity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_angular_velocity,
+      PhysicsDirectBodyState3D._bindings.method_set_angular_velocity,
       this._owner,
       _velocity
     );
@@ -609,7 +610,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   get_angular_velocity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_angular_velocity,
+      PhysicsDirectBodyState3D._bindings.method_get_angular_velocity,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -619,7 +620,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   set_transform(_transform) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_transform,
+      PhysicsDirectBodyState3D._bindings.method_set_transform,
       this._owner,
       _transform
     );
@@ -627,7 +628,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   get_transform() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_transform,
+      PhysicsDirectBodyState3D._bindings.method_get_transform,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -637,7 +638,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   get_velocity_at_local_position(_local_position) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_velocity_at_local_position,
+      PhysicsDirectBodyState3D._bindings.method_get_velocity_at_local_position,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -647,7 +648,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   apply_central_impulse(_impulse) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_apply_central_impulse,
+      PhysicsDirectBodyState3D._bindings.method_apply_central_impulse,
       this._owner,
       _impulse
     );
@@ -655,7 +656,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   apply_impulse(_impulse, _position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_apply_impulse,
+      PhysicsDirectBodyState3D._bindings.method_apply_impulse,
       this._owner,
       _impulse, _position
     );
@@ -663,7 +664,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   apply_torque_impulse(_impulse) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_apply_torque_impulse,
+      PhysicsDirectBodyState3D._bindings.method_apply_torque_impulse,
       this._owner,
       _impulse
     );
@@ -671,7 +672,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   apply_central_force(_force) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_apply_central_force,
+      PhysicsDirectBodyState3D._bindings.method_apply_central_force,
       this._owner,
       _force
     );
@@ -679,7 +680,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   apply_force(_force, _position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_apply_force,
+      PhysicsDirectBodyState3D._bindings.method_apply_force,
       this._owner,
       _force, _position
     );
@@ -687,7 +688,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   apply_torque(_torque) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_apply_torque,
+      PhysicsDirectBodyState3D._bindings.method_apply_torque,
       this._owner,
       _torque
     );
@@ -695,7 +696,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   add_constant_central_force(_force) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_constant_central_force,
+      PhysicsDirectBodyState3D._bindings.method_add_constant_central_force,
       this._owner,
       _force
     );
@@ -703,7 +704,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   add_constant_force(_force, _position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_constant_force,
+      PhysicsDirectBodyState3D._bindings.method_add_constant_force,
       this._owner,
       _force, _position
     );
@@ -711,7 +712,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   add_constant_torque(_torque) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_constant_torque,
+      PhysicsDirectBodyState3D._bindings.method_add_constant_torque,
       this._owner,
       _torque
     );
@@ -719,7 +720,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   set_constant_force(_force) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_constant_force,
+      PhysicsDirectBodyState3D._bindings.method_set_constant_force,
       this._owner,
       _force
     );
@@ -727,7 +728,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   get_constant_force() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_constant_force,
+      PhysicsDirectBodyState3D._bindings.method_get_constant_force,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -737,7 +738,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   set_constant_torque(_torque) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_constant_torque,
+      PhysicsDirectBodyState3D._bindings.method_set_constant_torque,
       this._owner,
       _torque
     );
@@ -745,7 +746,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   get_constant_torque() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_constant_torque,
+      PhysicsDirectBodyState3D._bindings.method_get_constant_torque,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -755,7 +756,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   set_sleep_state(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sleep_state,
+      PhysicsDirectBodyState3D._bindings.method_set_sleep_state,
       this._owner,
       _enabled
     );
@@ -763,7 +764,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   is_sleeping() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_sleeping,
+      PhysicsDirectBodyState3D._bindings.method_is_sleeping,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -772,7 +773,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   get_contact_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_contact_count,
+      PhysicsDirectBodyState3D._bindings.method_get_contact_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -781,7 +782,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   get_contact_local_position(_contact_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_contact_local_position,
+      PhysicsDirectBodyState3D._bindings.method_get_contact_local_position,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -791,7 +792,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   get_contact_local_normal(_contact_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_contact_local_normal,
+      PhysicsDirectBodyState3D._bindings.method_get_contact_local_normal,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -801,7 +802,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   get_contact_impulse(_contact_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_contact_impulse,
+      PhysicsDirectBodyState3D._bindings.method_get_contact_impulse,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -811,7 +812,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   get_contact_local_shape(_contact_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_contact_local_shape,
+      PhysicsDirectBodyState3D._bindings.method_get_contact_local_shape,
       this._owner,
 			Variant.Type.INT,
       _contact_idx
@@ -820,7 +821,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   get_contact_local_velocity_at_position(_contact_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_contact_local_velocity_at_position,
+      PhysicsDirectBodyState3D._bindings.method_get_contact_local_velocity_at_position,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -830,7 +831,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   get_contact_collider(_contact_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_contact_collider,
+      PhysicsDirectBodyState3D._bindings.method_get_contact_collider,
       this._owner,
 			Variant.Type.RID,
     
@@ -840,7 +841,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   get_contact_collider_position(_contact_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_contact_collider_position,
+      PhysicsDirectBodyState3D._bindings.method_get_contact_collider_position,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -850,7 +851,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   get_contact_collider_id(_contact_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_contact_collider_id,
+      PhysicsDirectBodyState3D._bindings.method_get_contact_collider_id,
       this._owner,
 			Variant.Type.INT,
       _contact_idx
@@ -859,7 +860,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   get_contact_collider_object(_contact_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_contact_collider_object,
+      PhysicsDirectBodyState3D._bindings.method_get_contact_collider_object,
       this._owner,
 			Variant.INT,
       _contact_idx
@@ -868,7 +869,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   get_contact_collider_shape(_contact_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_contact_collider_shape,
+      PhysicsDirectBodyState3D._bindings.method_get_contact_collider_shape,
       this._owner,
 			Variant.Type.INT,
       _contact_idx
@@ -877,7 +878,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   get_contact_collider_velocity_at_position(_contact_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_contact_collider_velocity_at_position,
+      PhysicsDirectBodyState3D._bindings.method_get_contact_collider_velocity_at_position,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -887,7 +888,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   get_step() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_step,
+      PhysicsDirectBodyState3D._bindings.method_get_step,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -896,7 +897,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   integrate_forces() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_integrate_forces,
+      PhysicsDirectBodyState3D._bindings.method_integrate_forces,
       this._owner,
       
     );
@@ -904,7 +905,7 @@ export class PhysicsDirectBodyState3D extends GodotObject{
   }
   get_space_state() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_space_state,
+      PhysicsDirectBodyState3D._bindings.method_get_space_state,
       this._owner,
 			Variant.INT,
       

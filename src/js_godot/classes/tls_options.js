@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { GDString } from '@js_godot/variant/gd_string'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -121,9 +121,10 @@ export class TLSOptions extends RefCounted{
       );
     }
   }
+  
   client(_trusted_chain, _common_name_override) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_client,
+      TLSOptions._bindings.method_client,
       this._owner,
 			Variant.INT,
       _trusted_chain, _common_name_override
@@ -132,7 +133,7 @@ export class TLSOptions extends RefCounted{
   }
   client_unsafe(_trusted_chain) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_client_unsafe,
+      TLSOptions._bindings.method_client_unsafe,
       this._owner,
 			Variant.INT,
       _trusted_chain
@@ -141,7 +142,7 @@ export class TLSOptions extends RefCounted{
   }
   server(_key, _certificate) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_server,
+      TLSOptions._bindings.method_server,
       this._owner,
 			Variant.INT,
       _key, _certificate
@@ -150,7 +151,7 @@ export class TLSOptions extends RefCounted{
   }
   is_server() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_server,
+      TLSOptions._bindings.method_is_server,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -159,7 +160,7 @@ export class TLSOptions extends RefCounted{
   }
   is_unsafe_client() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_unsafe_client,
+      TLSOptions._bindings.method_is_unsafe_client,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -168,7 +169,7 @@ export class TLSOptions extends RefCounted{
   }
   get_common_name_override() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_common_name_override,
+      TLSOptions._bindings.method_get_common_name_override,
       this._owner,
 			Variant.Type.STRING,
     
@@ -178,7 +179,7 @@ export class TLSOptions extends RefCounted{
   }
   get_trusted_ca_chain() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_trusted_ca_chain,
+      TLSOptions._bindings.method_get_trusted_ca_chain,
       this._owner,
 			Variant.INT,
       
@@ -187,7 +188,7 @@ export class TLSOptions extends RefCounted{
   }
   get_private_key() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_private_key,
+      TLSOptions._bindings.method_get_private_key,
       this._owner,
 			Variant.INT,
       
@@ -196,7 +197,7 @@ export class TLSOptions extends RefCounted{
   }
   get_own_certificate() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_own_certificate,
+      TLSOptions._bindings.method_get_own_certificate,
       this._owner,
 			Variant.INT,
       

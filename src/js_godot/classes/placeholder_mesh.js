@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { AABB } from '@js_godot/variant/aabb'
-import { Mesh } from '@js_godot/classes/mesh'
 import { Variant } from '@js_godot/variant/variant'
+import { AABB } from '@js_godot/variant/aabb'
+import { StringName } from '@js_godot/variant/string_name'
+import { Mesh } from '@js_godot/classes/mesh'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -41,9 +41,10 @@ export class PlaceholderMesh extends Mesh{
       );
     }
   }
+  
   set_aabb(_aabb) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_aabb,
+      PlaceholderMesh._bindings.method_set_aabb,
       this._owner,
       _aabb
     );

@@ -30,6 +30,7 @@ class _MethodBindings {
 {%- set class_name = to_js_type(clazz['name']) -%}
 {%- endif -%}
 
+
 {{singleton_class_name(clazz, singletons)}} {{ 'extends ' + to_js_type(clazz['inherits']) if to_js_type(clazz['inherits']) else ''}}{
 
   static _bindings = new _MethodBindings();
@@ -62,13 +63,13 @@ class _MethodBindings {
       {%- endif %}
     {%- endfor %}
   }
-  
+  {% set clazz_name = to_js_type(clazz['name']) %}
   {%- from 'utils/utils.jinja2' import conn_args, type_enum %}
   {%- for method in methods %}
   {{method['name']}}({{-conn_args(method['arguments'])-}}) {
     {%- if not method['is_virtual'] %}
     return _call_native_mb{{-'' if method['return_value'] else '_no'-}}_ret(
-      ClassDB._bindings.method_{{method['name']}},
+      {{ '_'+clazz_name if clazz_name in singletons else clazz_name}}._bindings.method_{{method['name']}},
       this._owner,
       {%- if method['return_value'] -%}
       {{-type_enum(method['return_value'], '\t\t\t')-}}
@@ -95,5 +96,18 @@ class _MethodBindings {
 }
 
 {%- if clazz['name'] in singletons %}
-export const {{to_js_type(clazz['name'])}} = new _{{clazz['name']}}();
+export const {{to_js_type(clazz['name'])}} = (function () {
+  let _instance;
+  function create_instance() {
+    return new _{{to_js_type(clazz['name'])}}();
+  }
+  return {
+    instance: function () {
+      if (!_instance) {
+        _instance = create_instance();
+      }
+      return _instance;
+    },
+  };
+})();
 {%- endif %}

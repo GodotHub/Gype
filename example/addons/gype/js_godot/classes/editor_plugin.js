@@ -1,11 +1,11 @@
 import * as internal from '__internal__';
 import { Dictionary } from '@js_godot/variant/dictionary'
+import { Node } from '@js_godot/classes/node'
+import { StringName } from '@js_godot/variant/string_name'
+import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { GDString } from '@js_godot/variant/gd_string'
 import { Callable } from '@js_godot/variant/callable'
 import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
-import { Node } from '@js_godot/classes/node'
-import { PackedStringArray } from '@js_godot/variant/packed_string_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -484,6 +484,7 @@ export class EditorPlugin extends Node{
       );
     }
   }
+  
   _forward_canvas_gui_input(_event) {
   }
   _forward_canvas_draw_over_viewport(_viewport_control) {
@@ -534,7 +535,7 @@ export class EditorPlugin extends Node{
   }
   add_control_to_container(_container, _control) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_control_to_container,
+      EditorPlugin._bindings.method_add_control_to_container,
       this._owner,
       _container, _control
     );
@@ -542,7 +543,7 @@ export class EditorPlugin extends Node{
   }
   add_control_to_bottom_panel(_control, _title, _shortcut) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_add_control_to_bottom_panel,
+      EditorPlugin._bindings.method_add_control_to_bottom_panel,
       this._owner,
 			Variant.INT,
       _control, _title, _shortcut
@@ -551,7 +552,7 @@ export class EditorPlugin extends Node{
   }
   add_control_to_dock(_slot, _control, _shortcut) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_control_to_dock,
+      EditorPlugin._bindings.method_add_control_to_dock,
       this._owner,
       _slot, _control, _shortcut
     );
@@ -559,7 +560,7 @@ export class EditorPlugin extends Node{
   }
   remove_control_from_docks(_control) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_control_from_docks,
+      EditorPlugin._bindings.method_remove_control_from_docks,
       this._owner,
       _control
     );
@@ -567,7 +568,7 @@ export class EditorPlugin extends Node{
   }
   remove_control_from_bottom_panel(_control) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_control_from_bottom_panel,
+      EditorPlugin._bindings.method_remove_control_from_bottom_panel,
       this._owner,
       _control
     );
@@ -575,7 +576,7 @@ export class EditorPlugin extends Node{
   }
   remove_control_from_container(_container, _control) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_control_from_container,
+      EditorPlugin._bindings.method_remove_control_from_container,
       this._owner,
       _container, _control
     );
@@ -583,7 +584,7 @@ export class EditorPlugin extends Node{
   }
   set_dock_tab_icon(_control, _icon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_dock_tab_icon,
+      EditorPlugin._bindings.method_set_dock_tab_icon,
       this._owner,
       _control, _icon
     );
@@ -591,7 +592,7 @@ export class EditorPlugin extends Node{
   }
   add_tool_menu_item(_name, _callable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_tool_menu_item,
+      EditorPlugin._bindings.method_add_tool_menu_item,
       this._owner,
       _name, _callable
     );
@@ -599,7 +600,7 @@ export class EditorPlugin extends Node{
   }
   add_tool_submenu_item(_name, _submenu) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_tool_submenu_item,
+      EditorPlugin._bindings.method_add_tool_submenu_item,
       this._owner,
       _name, _submenu
     );
@@ -607,7 +608,7 @@ export class EditorPlugin extends Node{
   }
   remove_tool_menu_item(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_tool_menu_item,
+      EditorPlugin._bindings.method_remove_tool_menu_item,
       this._owner,
       _name
     );
@@ -615,7 +616,7 @@ export class EditorPlugin extends Node{
   }
   get_export_as_menu() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_export_as_menu,
+      EditorPlugin._bindings.method_get_export_as_menu,
       this._owner,
 			Variant.INT,
       
@@ -624,7 +625,7 @@ export class EditorPlugin extends Node{
   }
   add_custom_type(_type, _base, _script, _icon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_custom_type,
+      EditorPlugin._bindings.method_add_custom_type,
       this._owner,
       _type, _base, _script, _icon
     );
@@ -632,7 +633,7 @@ export class EditorPlugin extends Node{
   }
   remove_custom_type(_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_custom_type,
+      EditorPlugin._bindings.method_remove_custom_type,
       this._owner,
       _type
     );
@@ -640,7 +641,7 @@ export class EditorPlugin extends Node{
   }
   add_autoload_singleton(_name, _path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_autoload_singleton,
+      EditorPlugin._bindings.method_add_autoload_singleton,
       this._owner,
       _name, _path
     );
@@ -648,7 +649,7 @@ export class EditorPlugin extends Node{
   }
   remove_autoload_singleton(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_autoload_singleton,
+      EditorPlugin._bindings.method_remove_autoload_singleton,
       this._owner,
       _name
     );
@@ -656,7 +657,7 @@ export class EditorPlugin extends Node{
   }
   update_overlays() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_update_overlays,
+      EditorPlugin._bindings.method_update_overlays,
       this._owner,
 			Variant.Type.INT,
       
@@ -665,7 +666,7 @@ export class EditorPlugin extends Node{
   }
   make_bottom_panel_item_visible(_item) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_make_bottom_panel_item_visible,
+      EditorPlugin._bindings.method_make_bottom_panel_item_visible,
       this._owner,
       _item
     );
@@ -673,7 +674,7 @@ export class EditorPlugin extends Node{
   }
   hide_bottom_panel() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_hide_bottom_panel,
+      EditorPlugin._bindings.method_hide_bottom_panel,
       this._owner,
       
     );
@@ -681,7 +682,7 @@ export class EditorPlugin extends Node{
   }
   get_undo_redo() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_undo_redo,
+      EditorPlugin._bindings.method_get_undo_redo,
       this._owner,
 			Variant.INT,
       
@@ -690,7 +691,7 @@ export class EditorPlugin extends Node{
   }
   add_undo_redo_inspector_hook_callback(_callable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_undo_redo_inspector_hook_callback,
+      EditorPlugin._bindings.method_add_undo_redo_inspector_hook_callback,
       this._owner,
       _callable
     );
@@ -698,7 +699,7 @@ export class EditorPlugin extends Node{
   }
   remove_undo_redo_inspector_hook_callback(_callable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_undo_redo_inspector_hook_callback,
+      EditorPlugin._bindings.method_remove_undo_redo_inspector_hook_callback,
       this._owner,
       _callable
     );
@@ -706,7 +707,7 @@ export class EditorPlugin extends Node{
   }
   queue_save_layout() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_queue_save_layout,
+      EditorPlugin._bindings.method_queue_save_layout,
       this._owner,
       
     );
@@ -714,7 +715,7 @@ export class EditorPlugin extends Node{
   }
   add_translation_parser_plugin(_parser) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_translation_parser_plugin,
+      EditorPlugin._bindings.method_add_translation_parser_plugin,
       this._owner,
       _parser
     );
@@ -722,7 +723,7 @@ export class EditorPlugin extends Node{
   }
   remove_translation_parser_plugin(_parser) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_translation_parser_plugin,
+      EditorPlugin._bindings.method_remove_translation_parser_plugin,
       this._owner,
       _parser
     );
@@ -730,7 +731,7 @@ export class EditorPlugin extends Node{
   }
   add_import_plugin(_importer, _first_priority) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_import_plugin,
+      EditorPlugin._bindings.method_add_import_plugin,
       this._owner,
       _importer, _first_priority
     );
@@ -738,7 +739,7 @@ export class EditorPlugin extends Node{
   }
   remove_import_plugin(_importer) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_import_plugin,
+      EditorPlugin._bindings.method_remove_import_plugin,
       this._owner,
       _importer
     );
@@ -746,7 +747,7 @@ export class EditorPlugin extends Node{
   }
   add_scene_format_importer_plugin(_scene_format_importer, _first_priority) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_scene_format_importer_plugin,
+      EditorPlugin._bindings.method_add_scene_format_importer_plugin,
       this._owner,
       _scene_format_importer, _first_priority
     );
@@ -754,7 +755,7 @@ export class EditorPlugin extends Node{
   }
   remove_scene_format_importer_plugin(_scene_format_importer) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_scene_format_importer_plugin,
+      EditorPlugin._bindings.method_remove_scene_format_importer_plugin,
       this._owner,
       _scene_format_importer
     );
@@ -762,7 +763,7 @@ export class EditorPlugin extends Node{
   }
   add_scene_post_import_plugin(_scene_import_plugin, _first_priority) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_scene_post_import_plugin,
+      EditorPlugin._bindings.method_add_scene_post_import_plugin,
       this._owner,
       _scene_import_plugin, _first_priority
     );
@@ -770,7 +771,7 @@ export class EditorPlugin extends Node{
   }
   remove_scene_post_import_plugin(_scene_import_plugin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_scene_post_import_plugin,
+      EditorPlugin._bindings.method_remove_scene_post_import_plugin,
       this._owner,
       _scene_import_plugin
     );
@@ -778,7 +779,7 @@ export class EditorPlugin extends Node{
   }
   add_export_plugin(_plugin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_export_plugin,
+      EditorPlugin._bindings.method_add_export_plugin,
       this._owner,
       _plugin
     );
@@ -786,7 +787,7 @@ export class EditorPlugin extends Node{
   }
   remove_export_plugin(_plugin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_export_plugin,
+      EditorPlugin._bindings.method_remove_export_plugin,
       this._owner,
       _plugin
     );
@@ -794,7 +795,7 @@ export class EditorPlugin extends Node{
   }
   add_node_3d_gizmo_plugin(_plugin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_node_3d_gizmo_plugin,
+      EditorPlugin._bindings.method_add_node_3d_gizmo_plugin,
       this._owner,
       _plugin
     );
@@ -802,7 +803,7 @@ export class EditorPlugin extends Node{
   }
   remove_node_3d_gizmo_plugin(_plugin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_node_3d_gizmo_plugin,
+      EditorPlugin._bindings.method_remove_node_3d_gizmo_plugin,
       this._owner,
       _plugin
     );
@@ -810,7 +811,7 @@ export class EditorPlugin extends Node{
   }
   add_inspector_plugin(_plugin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_inspector_plugin,
+      EditorPlugin._bindings.method_add_inspector_plugin,
       this._owner,
       _plugin
     );
@@ -818,7 +819,7 @@ export class EditorPlugin extends Node{
   }
   remove_inspector_plugin(_plugin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_inspector_plugin,
+      EditorPlugin._bindings.method_remove_inspector_plugin,
       this._owner,
       _plugin
     );
@@ -826,7 +827,7 @@ export class EditorPlugin extends Node{
   }
   add_resource_conversion_plugin(_plugin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_resource_conversion_plugin,
+      EditorPlugin._bindings.method_add_resource_conversion_plugin,
       this._owner,
       _plugin
     );
@@ -834,7 +835,7 @@ export class EditorPlugin extends Node{
   }
   remove_resource_conversion_plugin(_plugin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_resource_conversion_plugin,
+      EditorPlugin._bindings.method_remove_resource_conversion_plugin,
       this._owner,
       _plugin
     );
@@ -842,7 +843,7 @@ export class EditorPlugin extends Node{
   }
   set_input_event_forwarding_always_enabled() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_input_event_forwarding_always_enabled,
+      EditorPlugin._bindings.method_set_input_event_forwarding_always_enabled,
       this._owner,
       
     );
@@ -850,7 +851,7 @@ export class EditorPlugin extends Node{
   }
   set_force_draw_over_forwarding_enabled() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_force_draw_over_forwarding_enabled,
+      EditorPlugin._bindings.method_set_force_draw_over_forwarding_enabled,
       this._owner,
       
     );
@@ -858,7 +859,7 @@ export class EditorPlugin extends Node{
   }
   get_editor_interface() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_editor_interface,
+      EditorPlugin._bindings.method_get_editor_interface,
       this._owner,
 			Variant.INT,
       
@@ -867,7 +868,7 @@ export class EditorPlugin extends Node{
   }
   get_script_create_dialog() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_script_create_dialog,
+      EditorPlugin._bindings.method_get_script_create_dialog,
       this._owner,
 			Variant.INT,
       
@@ -876,7 +877,7 @@ export class EditorPlugin extends Node{
   }
   add_debugger_plugin(_script) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_debugger_plugin,
+      EditorPlugin._bindings.method_add_debugger_plugin,
       this._owner,
       _script
     );
@@ -884,7 +885,7 @@ export class EditorPlugin extends Node{
   }
   remove_debugger_plugin(_script) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_debugger_plugin,
+      EditorPlugin._bindings.method_remove_debugger_plugin,
       this._owner,
       _script
     );
@@ -892,7 +893,7 @@ export class EditorPlugin extends Node{
   }
   get_plugin_version() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_plugin_version,
+      EditorPlugin._bindings.method_get_plugin_version,
       this._owner,
 			Variant.Type.STRING,
     

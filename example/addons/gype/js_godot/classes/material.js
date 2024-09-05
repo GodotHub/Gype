@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
+import { StringName } from '@js_godot/variant/string_name'
 import { RID } from '@js_godot/variant/rid'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -91,6 +91,7 @@ export class Material extends Resource{
       );
     }
   }
+  
   _get_shader_rid() {
   }
   _get_shader_mode() {
@@ -101,7 +102,7 @@ export class Material extends Resource{
   }
   set_next_pass(_next_pass) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_next_pass,
+      Material._bindings.method_set_next_pass,
       this._owner,
       _next_pass
     );
@@ -109,7 +110,7 @@ export class Material extends Resource{
   }
   get_next_pass() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_next_pass,
+      Material._bindings.method_get_next_pass,
       this._owner,
 			Variant.INT,
       
@@ -118,7 +119,7 @@ export class Material extends Resource{
   }
   set_render_priority(_priority) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_render_priority,
+      Material._bindings.method_set_render_priority,
       this._owner,
       _priority
     );
@@ -126,7 +127,7 @@ export class Material extends Resource{
   }
   get_render_priority() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_render_priority,
+      Material._bindings.method_get_render_priority,
       this._owner,
 			Variant.Type.INT,
       
@@ -135,7 +136,7 @@ export class Material extends Resource{
   }
   inspect_native_shader_code() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_inspect_native_shader_code,
+      Material._bindings.method_inspect_native_shader_code,
       this._owner,
       
     );
@@ -143,7 +144,7 @@ export class Material extends Resource{
   }
   create_placeholder() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_placeholder,
+      Material._bindings.method_create_placeholder,
       this._owner,
 			Variant.INT,
       

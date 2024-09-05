@@ -1,12 +1,12 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { GodotObject } from '@js_godot/classes/godot_object'
 import { Vector2i } from '@js_godot/variant/vector2i'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { Color } from '@js_godot/variant/color'
-import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
+import { Variant } from '@js_godot/variant/variant'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { StringName } from '@js_godot/variant/string_name'
+import { GodotObject } from '@js_godot/classes/godot_object'
+import { GDString } from '@js_godot/variant/gd_string'
+import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -505,9 +505,10 @@ export class TileData extends GodotObject{
       );
     }
   }
+  
   set_flip_h(_flip_h) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_flip_h,
+      TileData._bindings.method_set_flip_h,
       this._owner,
       _flip_h
     );
@@ -515,7 +516,7 @@ export class TileData extends GodotObject{
   }
   get_flip_h() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_flip_h,
+      TileData._bindings.method_get_flip_h,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -524,7 +525,7 @@ export class TileData extends GodotObject{
   }
   set_flip_v(_flip_v) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_flip_v,
+      TileData._bindings.method_set_flip_v,
       this._owner,
       _flip_v
     );
@@ -532,7 +533,7 @@ export class TileData extends GodotObject{
   }
   get_flip_v() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_flip_v,
+      TileData._bindings.method_get_flip_v,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -541,7 +542,7 @@ export class TileData extends GodotObject{
   }
   set_transpose(_transpose) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_transpose,
+      TileData._bindings.method_set_transpose,
       this._owner,
       _transpose
     );
@@ -549,7 +550,7 @@ export class TileData extends GodotObject{
   }
   get_transpose() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_transpose,
+      TileData._bindings.method_get_transpose,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -558,7 +559,7 @@ export class TileData extends GodotObject{
   }
   set_material(_material) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_material,
+      TileData._bindings.method_set_material,
       this._owner,
       _material
     );
@@ -566,7 +567,7 @@ export class TileData extends GodotObject{
   }
   get_material() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_material,
+      TileData._bindings.method_get_material,
       this._owner,
 			Variant.INT,
       
@@ -575,7 +576,7 @@ export class TileData extends GodotObject{
   }
   set_texture_origin(_texture_origin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture_origin,
+      TileData._bindings.method_set_texture_origin,
       this._owner,
       _texture_origin
     );
@@ -583,7 +584,7 @@ export class TileData extends GodotObject{
   }
   get_texture_origin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_origin,
+      TileData._bindings.method_get_texture_origin,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -593,7 +594,7 @@ export class TileData extends GodotObject{
   }
   set_modulate(_modulate) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_modulate,
+      TileData._bindings.method_set_modulate,
       this._owner,
       _modulate
     );
@@ -601,7 +602,7 @@ export class TileData extends GodotObject{
   }
   get_modulate() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_modulate,
+      TileData._bindings.method_get_modulate,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -611,7 +612,7 @@ export class TileData extends GodotObject{
   }
   set_z_index(_z_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_z_index,
+      TileData._bindings.method_set_z_index,
       this._owner,
       _z_index
     );
@@ -619,7 +620,7 @@ export class TileData extends GodotObject{
   }
   get_z_index() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_z_index,
+      TileData._bindings.method_get_z_index,
       this._owner,
 			Variant.Type.INT,
       
@@ -628,7 +629,7 @@ export class TileData extends GodotObject{
   }
   set_y_sort_origin(_y_sort_origin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_y_sort_origin,
+      TileData._bindings.method_set_y_sort_origin,
       this._owner,
       _y_sort_origin
     );
@@ -636,7 +637,7 @@ export class TileData extends GodotObject{
   }
   get_y_sort_origin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_y_sort_origin,
+      TileData._bindings.method_get_y_sort_origin,
       this._owner,
 			Variant.Type.INT,
       
@@ -645,7 +646,7 @@ export class TileData extends GodotObject{
   }
   set_occluder(_layer_id, _occluder_polygon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_occluder,
+      TileData._bindings.method_set_occluder,
       this._owner,
       _layer_id, _occluder_polygon
     );
@@ -653,7 +654,7 @@ export class TileData extends GodotObject{
   }
   get_occluder(_layer_id, _flip_h, _flip_v, _transpose) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_occluder,
+      TileData._bindings.method_get_occluder,
       this._owner,
 			Variant.INT,
       _layer_id, _flip_h, _flip_v, _transpose
@@ -662,7 +663,7 @@ export class TileData extends GodotObject{
   }
   set_constant_linear_velocity(_layer_id, _velocity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_constant_linear_velocity,
+      TileData._bindings.method_set_constant_linear_velocity,
       this._owner,
       _layer_id, _velocity
     );
@@ -670,7 +671,7 @@ export class TileData extends GodotObject{
   }
   get_constant_linear_velocity(_layer_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_constant_linear_velocity,
+      TileData._bindings.method_get_constant_linear_velocity,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -680,7 +681,7 @@ export class TileData extends GodotObject{
   }
   set_constant_angular_velocity(_layer_id, _velocity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_constant_angular_velocity,
+      TileData._bindings.method_set_constant_angular_velocity,
       this._owner,
       _layer_id, _velocity
     );
@@ -688,7 +689,7 @@ export class TileData extends GodotObject{
   }
   get_constant_angular_velocity(_layer_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_constant_angular_velocity,
+      TileData._bindings.method_get_constant_angular_velocity,
       this._owner,
 			Variant.Type.FLOAT,
       _layer_id
@@ -697,7 +698,7 @@ export class TileData extends GodotObject{
   }
   set_collision_polygons_count(_layer_id, _polygons_count) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_polygons_count,
+      TileData._bindings.method_set_collision_polygons_count,
       this._owner,
       _layer_id, _polygons_count
     );
@@ -705,7 +706,7 @@ export class TileData extends GodotObject{
   }
   get_collision_polygons_count(_layer_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_polygons_count,
+      TileData._bindings.method_get_collision_polygons_count,
       this._owner,
 			Variant.Type.INT,
       _layer_id
@@ -714,7 +715,7 @@ export class TileData extends GodotObject{
   }
   add_collision_polygon(_layer_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_collision_polygon,
+      TileData._bindings.method_add_collision_polygon,
       this._owner,
       _layer_id
     );
@@ -722,7 +723,7 @@ export class TileData extends GodotObject{
   }
   remove_collision_polygon(_layer_id, _polygon_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_collision_polygon,
+      TileData._bindings.method_remove_collision_polygon,
       this._owner,
       _layer_id, _polygon_index
     );
@@ -730,7 +731,7 @@ export class TileData extends GodotObject{
   }
   set_collision_polygon_points(_layer_id, _polygon_index, _polygon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_polygon_points,
+      TileData._bindings.method_set_collision_polygon_points,
       this._owner,
       _layer_id, _polygon_index, _polygon
     );
@@ -738,7 +739,7 @@ export class TileData extends GodotObject{
   }
   get_collision_polygon_points(_layer_id, _polygon_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_polygon_points,
+      TileData._bindings.method_get_collision_polygon_points,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -748,7 +749,7 @@ export class TileData extends GodotObject{
   }
   set_collision_polygon_one_way(_layer_id, _polygon_index, _one_way) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_polygon_one_way,
+      TileData._bindings.method_set_collision_polygon_one_way,
       this._owner,
       _layer_id, _polygon_index, _one_way
     );
@@ -756,7 +757,7 @@ export class TileData extends GodotObject{
   }
   is_collision_polygon_one_way(_layer_id, _polygon_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_collision_polygon_one_way,
+      TileData._bindings.method_is_collision_polygon_one_way,
       this._owner,
 			Variant.Type.BOOL,
       _layer_id, _polygon_index
@@ -765,7 +766,7 @@ export class TileData extends GodotObject{
   }
   set_collision_polygon_one_way_margin(_layer_id, _polygon_index, _one_way_margin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_polygon_one_way_margin,
+      TileData._bindings.method_set_collision_polygon_one_way_margin,
       this._owner,
       _layer_id, _polygon_index, _one_way_margin
     );
@@ -773,7 +774,7 @@ export class TileData extends GodotObject{
   }
   get_collision_polygon_one_way_margin(_layer_id, _polygon_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_polygon_one_way_margin,
+      TileData._bindings.method_get_collision_polygon_one_way_margin,
       this._owner,
 			Variant.Type.FLOAT,
       _layer_id, _polygon_index
@@ -782,7 +783,7 @@ export class TileData extends GodotObject{
   }
   set_terrain_set(_terrain_set) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_terrain_set,
+      TileData._bindings.method_set_terrain_set,
       this._owner,
       _terrain_set
     );
@@ -790,7 +791,7 @@ export class TileData extends GodotObject{
   }
   get_terrain_set() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_terrain_set,
+      TileData._bindings.method_get_terrain_set,
       this._owner,
 			Variant.Type.INT,
       
@@ -799,7 +800,7 @@ export class TileData extends GodotObject{
   }
   set_terrain(_terrain) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_terrain,
+      TileData._bindings.method_set_terrain,
       this._owner,
       _terrain
     );
@@ -807,7 +808,7 @@ export class TileData extends GodotObject{
   }
   get_terrain() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_terrain,
+      TileData._bindings.method_get_terrain,
       this._owner,
 			Variant.Type.INT,
       
@@ -816,7 +817,7 @@ export class TileData extends GodotObject{
   }
   set_terrain_peering_bit(_peering_bit, _terrain) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_terrain_peering_bit,
+      TileData._bindings.method_set_terrain_peering_bit,
       this._owner,
       _peering_bit, _terrain
     );
@@ -824,7 +825,7 @@ export class TileData extends GodotObject{
   }
   get_terrain_peering_bit(_peering_bit) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_terrain_peering_bit,
+      TileData._bindings.method_get_terrain_peering_bit,
       this._owner,
 			Variant.Type.INT,
       _peering_bit
@@ -833,7 +834,7 @@ export class TileData extends GodotObject{
   }
   is_valid_terrain_peering_bit(_peering_bit) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_valid_terrain_peering_bit,
+      TileData._bindings.method_is_valid_terrain_peering_bit,
       this._owner,
 			Variant.Type.BOOL,
       _peering_bit
@@ -842,7 +843,7 @@ export class TileData extends GodotObject{
   }
   set_navigation_polygon(_layer_id, _navigation_polygon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_navigation_polygon,
+      TileData._bindings.method_set_navigation_polygon,
       this._owner,
       _layer_id, _navigation_polygon
     );
@@ -850,7 +851,7 @@ export class TileData extends GodotObject{
   }
   get_navigation_polygon(_layer_id, _flip_h, _flip_v, _transpose) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_navigation_polygon,
+      TileData._bindings.method_get_navigation_polygon,
       this._owner,
 			Variant.INT,
       _layer_id, _flip_h, _flip_v, _transpose
@@ -859,7 +860,7 @@ export class TileData extends GodotObject{
   }
   set_probability(_probability) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_probability,
+      TileData._bindings.method_set_probability,
       this._owner,
       _probability
     );
@@ -867,7 +868,7 @@ export class TileData extends GodotObject{
   }
   get_probability() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_probability,
+      TileData._bindings.method_get_probability,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -876,7 +877,7 @@ export class TileData extends GodotObject{
   }
   set_custom_data(_layer_name, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_custom_data,
+      TileData._bindings.method_set_custom_data,
       this._owner,
       _layer_name, _value
     );
@@ -884,7 +885,7 @@ export class TileData extends GodotObject{
   }
   get_custom_data(_layer_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_custom_data,
+      TileData._bindings.method_get_custom_data,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -894,7 +895,7 @@ export class TileData extends GodotObject{
   }
   set_custom_data_by_layer_id(_layer_id, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_custom_data_by_layer_id,
+      TileData._bindings.method_set_custom_data_by_layer_id,
       this._owner,
       _layer_id, _value
     );
@@ -902,7 +903,7 @@ export class TileData extends GodotObject{
   }
   get_custom_data_by_layer_id(_layer_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_custom_data_by_layer_id,
+      TileData._bindings.method_get_custom_data_by_layer_id,
       this._owner,
 			Variant.Type.VARIANT,
     

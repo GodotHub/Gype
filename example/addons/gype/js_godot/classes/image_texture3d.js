@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { Texture3D } from '@js_godot/classes/texture3d'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -50,9 +50,10 @@ export class ImageTexture3D extends Texture3D{
       );
     }
   }
+  
   create(_format, _width, _height, _depth, _use_mipmaps, _data) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create,
+      ImageTexture3D._bindings.method_create,
       this._owner,
 			Variant.INT,
       _format, _width, _height, _depth, _use_mipmaps, _data
@@ -61,7 +62,7 @@ export class ImageTexture3D extends Texture3D{
   }
   update(_data) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_update,
+      ImageTexture3D._bindings.method_update,
       this._owner,
       _data
     );

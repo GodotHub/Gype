@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { SkeletonModifier3D } from '@js_godot/classes/skeleton_modifier3d'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -70,9 +70,10 @@ export class XRHandModifier3D extends SkeletonModifier3D{
       );
     }
   }
+  
   set_hand_tracker(_tracker_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_hand_tracker,
+      XRHandModifier3D._bindings.method_set_hand_tracker,
       this._owner,
       _tracker_name
     );
@@ -80,7 +81,7 @@ export class XRHandModifier3D extends SkeletonModifier3D{
   }
   get_hand_tracker() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_hand_tracker,
+      XRHandModifier3D._bindings.method_get_hand_tracker,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -90,7 +91,7 @@ export class XRHandModifier3D extends SkeletonModifier3D{
   }
   set_bone_update(_bone_update) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bone_update,
+      XRHandModifier3D._bindings.method_set_bone_update,
       this._owner,
       _bone_update
     );
@@ -98,7 +99,7 @@ export class XRHandModifier3D extends SkeletonModifier3D{
   }
   get_bone_update() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bone_update,
+      XRHandModifier3D._bindings.method_get_bone_update,
       this._owner,
 			Variant.INT,
       

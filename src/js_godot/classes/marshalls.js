@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
-import { GodotObject } from '@js_godot/classes/godot_object'
 import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
 import { StringName } from '@js_godot/variant/string_name'
+import { GodotObject } from '@js_godot/classes/godot_object'
 import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
@@ -91,9 +91,10 @@ class _MethodBindings {
       );
     }
   }
+  
   variant_to_base64(_variant, _full_objects) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_variant_to_base64,
+      _Marshalls._bindings.method_variant_to_base64,
       this._owner,
 			Variant.Type.STRING,
     
@@ -103,7 +104,7 @@ class _MethodBindings {
   }
   base64_to_variant(_base64_str, _allow_objects) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_base64_to_variant,
+      _Marshalls._bindings.method_base64_to_variant,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -113,7 +114,7 @@ class _MethodBindings {
   }
   raw_to_base64(_array) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_raw_to_base64,
+      _Marshalls._bindings.method_raw_to_base64,
       this._owner,
 			Variant.Type.STRING,
     
@@ -123,7 +124,7 @@ class _MethodBindings {
   }
   base64_to_raw(_base64_str) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_base64_to_raw,
+      _Marshalls._bindings.method_base64_to_raw,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -133,7 +134,7 @@ class _MethodBindings {
   }
   utf8_to_base64(_utf8_str) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_utf8_to_base64,
+      _Marshalls._bindings.method_utf8_to_base64,
       this._owner,
 			Variant.Type.STRING,
     
@@ -143,7 +144,7 @@ class _MethodBindings {
   }
   base64_to_utf8(_base64_str) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_base64_to_utf8,
+      _Marshalls._bindings.method_base64_to_utf8,
       this._owner,
 			Variant.Type.STRING,
     
@@ -158,4 +159,17 @@ class _MethodBindings {
     this._init_bindings();
   }
 }
-export const Marshalls = new _Marshalls();
+export const Marshalls = (function () {
+  let _instance;
+  function create_instance() {
+    return new _Marshalls();
+  }
+  return {
+    instance: function () {
+      if (!_instance) {
+        _instance = create_instance();
+      }
+      return _instance;
+    },
+  };
+})();

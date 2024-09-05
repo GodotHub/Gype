@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { GodotObject } from '@js_godot/classes/godot_object'
+import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
+import { GodotObject } from '@js_godot/classes/godot_object'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -71,9 +71,10 @@ export class OpenXRInteractionProfileMetadata extends GodotObject{
       );
     }
   }
+  
   register_profile_rename(_old_name, _new_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_register_profile_rename,
+      OpenXRInteractionProfileMetadata._bindings.method_register_profile_rename,
       this._owner,
       _old_name, _new_name
     );
@@ -81,7 +82,7 @@ export class OpenXRInteractionProfileMetadata extends GodotObject{
   }
   register_top_level_path(_display_name, _openxr_path, _openxr_extension_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_register_top_level_path,
+      OpenXRInteractionProfileMetadata._bindings.method_register_top_level_path,
       this._owner,
       _display_name, _openxr_path, _openxr_extension_name
     );
@@ -89,7 +90,7 @@ export class OpenXRInteractionProfileMetadata extends GodotObject{
   }
   register_interaction_profile(_display_name, _openxr_path, _openxr_extension_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_register_interaction_profile,
+      OpenXRInteractionProfileMetadata._bindings.method_register_interaction_profile,
       this._owner,
       _display_name, _openxr_path, _openxr_extension_name
     );
@@ -97,7 +98,7 @@ export class OpenXRInteractionProfileMetadata extends GodotObject{
   }
   register_io_path(_interaction_profile, _display_name, _toplevel_path, _openxr_path, _openxr_extension_name, _action_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_register_io_path,
+      OpenXRInteractionProfileMetadata._bindings.method_register_io_path,
       this._owner,
       _interaction_profile, _display_name, _toplevel_path, _openxr_path, _openxr_extension_name, _action_type
     );

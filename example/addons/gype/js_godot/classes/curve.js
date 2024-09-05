@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
+import { StringName } from '@js_godot/variant/string_name'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -291,9 +291,10 @@ export class Curve extends Resource{
       );
     }
   }
+  
   get_point_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_point_count,
+      Curve._bindings.method_get_point_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -302,7 +303,7 @@ export class Curve extends Resource{
   }
   set_point_count(_count) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_point_count,
+      Curve._bindings.method_set_point_count,
       this._owner,
       _count
     );
@@ -310,7 +311,7 @@ export class Curve extends Resource{
   }
   add_point(_position, _left_tangent, _right_tangent, _left_mode, _right_mode) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_add_point,
+      Curve._bindings.method_add_point,
       this._owner,
 			Variant.Type.INT,
       _position, _left_tangent, _right_tangent, _left_mode, _right_mode
@@ -319,7 +320,7 @@ export class Curve extends Resource{
   }
   remove_point(_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_point,
+      Curve._bindings.method_remove_point,
       this._owner,
       _index
     );
@@ -327,7 +328,7 @@ export class Curve extends Resource{
   }
   clear_points() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_points,
+      Curve._bindings.method_clear_points,
       this._owner,
       
     );
@@ -335,7 +336,7 @@ export class Curve extends Resource{
   }
   get_point_position(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_point_position,
+      Curve._bindings.method_get_point_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -345,7 +346,7 @@ export class Curve extends Resource{
   }
   set_point_value(_index, _y) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_point_value,
+      Curve._bindings.method_set_point_value,
       this._owner,
       _index, _y
     );
@@ -353,7 +354,7 @@ export class Curve extends Resource{
   }
   set_point_offset(_index, _offset) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_set_point_offset,
+      Curve._bindings.method_set_point_offset,
       this._owner,
 			Variant.Type.INT,
       _index, _offset
@@ -362,7 +363,7 @@ export class Curve extends Resource{
   }
   sample(_offset) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_sample,
+      Curve._bindings.method_sample,
       this._owner,
 			Variant.Type.FLOAT,
       _offset
@@ -371,7 +372,7 @@ export class Curve extends Resource{
   }
   sample_baked(_offset) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_sample_baked,
+      Curve._bindings.method_sample_baked,
       this._owner,
 			Variant.Type.FLOAT,
       _offset
@@ -380,7 +381,7 @@ export class Curve extends Resource{
   }
   get_point_left_tangent(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_point_left_tangent,
+      Curve._bindings.method_get_point_left_tangent,
       this._owner,
 			Variant.Type.FLOAT,
       _index
@@ -389,7 +390,7 @@ export class Curve extends Resource{
   }
   get_point_right_tangent(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_point_right_tangent,
+      Curve._bindings.method_get_point_right_tangent,
       this._owner,
 			Variant.Type.FLOAT,
       _index
@@ -398,7 +399,7 @@ export class Curve extends Resource{
   }
   get_point_left_mode(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_point_left_mode,
+      Curve._bindings.method_get_point_left_mode,
       this._owner,
 			Variant.INT,
       _index
@@ -407,7 +408,7 @@ export class Curve extends Resource{
   }
   get_point_right_mode(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_point_right_mode,
+      Curve._bindings.method_get_point_right_mode,
       this._owner,
 			Variant.INT,
       _index
@@ -416,7 +417,7 @@ export class Curve extends Resource{
   }
   set_point_left_tangent(_index, _tangent) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_point_left_tangent,
+      Curve._bindings.method_set_point_left_tangent,
       this._owner,
       _index, _tangent
     );
@@ -424,7 +425,7 @@ export class Curve extends Resource{
   }
   set_point_right_tangent(_index, _tangent) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_point_right_tangent,
+      Curve._bindings.method_set_point_right_tangent,
       this._owner,
       _index, _tangent
     );
@@ -432,7 +433,7 @@ export class Curve extends Resource{
   }
   set_point_left_mode(_index, _mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_point_left_mode,
+      Curve._bindings.method_set_point_left_mode,
       this._owner,
       _index, _mode
     );
@@ -440,7 +441,7 @@ export class Curve extends Resource{
   }
   set_point_right_mode(_index, _mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_point_right_mode,
+      Curve._bindings.method_set_point_right_mode,
       this._owner,
       _index, _mode
     );
@@ -448,7 +449,7 @@ export class Curve extends Resource{
   }
   get_min_value() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_min_value,
+      Curve._bindings.method_get_min_value,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -457,7 +458,7 @@ export class Curve extends Resource{
   }
   set_min_value(_min) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_min_value,
+      Curve._bindings.method_set_min_value,
       this._owner,
       _min
     );
@@ -465,7 +466,7 @@ export class Curve extends Resource{
   }
   get_max_value() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_max_value,
+      Curve._bindings.method_get_max_value,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -474,7 +475,7 @@ export class Curve extends Resource{
   }
   set_max_value(_max) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_max_value,
+      Curve._bindings.method_set_max_value,
       this._owner,
       _max
     );
@@ -482,7 +483,7 @@ export class Curve extends Resource{
   }
   clean_dupes() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clean_dupes,
+      Curve._bindings.method_clean_dupes,
       this._owner,
       
     );
@@ -490,7 +491,7 @@ export class Curve extends Resource{
   }
   bake() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_bake,
+      Curve._bindings.method_bake,
       this._owner,
       
     );
@@ -498,7 +499,7 @@ export class Curve extends Resource{
   }
   get_bake_resolution() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bake_resolution,
+      Curve._bindings.method_get_bake_resolution,
       this._owner,
 			Variant.Type.INT,
       
@@ -507,7 +508,7 @@ export class Curve extends Resource{
   }
   set_bake_resolution(_resolution) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bake_resolution,
+      Curve._bindings.method_set_bake_resolution,
       this._owner,
       _resolution
     );

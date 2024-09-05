@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { StringName } from '@js_godot/variant/string_name'
 import { Material } from '@js_godot/classes/material'
 import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -90,9 +90,10 @@ export class PanoramaSkyMaterial extends Material{
       );
     }
   }
+  
   set_panorama(_texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_panorama,
+      PanoramaSkyMaterial._bindings.method_set_panorama,
       this._owner,
       _texture
     );
@@ -100,7 +101,7 @@ export class PanoramaSkyMaterial extends Material{
   }
   get_panorama() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_panorama,
+      PanoramaSkyMaterial._bindings.method_get_panorama,
       this._owner,
 			Variant.INT,
       
@@ -109,7 +110,7 @@ export class PanoramaSkyMaterial extends Material{
   }
   set_filtering_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_filtering_enabled,
+      PanoramaSkyMaterial._bindings.method_set_filtering_enabled,
       this._owner,
       _enabled
     );
@@ -117,7 +118,7 @@ export class PanoramaSkyMaterial extends Material{
   }
   is_filtering_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_filtering_enabled,
+      PanoramaSkyMaterial._bindings.method_is_filtering_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -126,7 +127,7 @@ export class PanoramaSkyMaterial extends Material{
   }
   set_energy_multiplier(_multiplier) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_energy_multiplier,
+      PanoramaSkyMaterial._bindings.method_set_energy_multiplier,
       this._owner,
       _multiplier
     );
@@ -134,7 +135,7 @@ export class PanoramaSkyMaterial extends Material{
   }
   get_energy_multiplier() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_energy_multiplier,
+      PanoramaSkyMaterial._bindings.method_get_energy_multiplier,
       this._owner,
 			Variant.Type.FLOAT,
       

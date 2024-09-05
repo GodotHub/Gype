@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
-import { Rect2 } from '@js_godot/variant/rect2'
-import { Node } from '@js_godot/classes/node'
 import { NodePath } from '@js_godot/variant/node_path'
+import { Variant } from '@js_godot/variant/variant'
+import { Node } from '@js_godot/classes/node'
+import { StringName } from '@js_godot/variant/string_name'
+import { Rect2 } from '@js_godot/variant/rect2'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -123,9 +123,10 @@ export class StatusIndicator extends Node{
       );
     }
   }
+  
   set_tooltip(_tooltip) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tooltip,
+      StatusIndicator._bindings.method_set_tooltip,
       this._owner,
       _tooltip
     );
@@ -133,7 +134,7 @@ export class StatusIndicator extends Node{
   }
   get_tooltip() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tooltip,
+      StatusIndicator._bindings.method_get_tooltip,
       this._owner,
 			Variant.Type.STRING,
     
@@ -143,7 +144,7 @@ export class StatusIndicator extends Node{
   }
   set_icon(_texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_icon,
+      StatusIndicator._bindings.method_set_icon,
       this._owner,
       _texture
     );
@@ -151,7 +152,7 @@ export class StatusIndicator extends Node{
   }
   get_icon() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_icon,
+      StatusIndicator._bindings.method_get_icon,
       this._owner,
 			Variant.INT,
       
@@ -160,7 +161,7 @@ export class StatusIndicator extends Node{
   }
   set_visible(_visible) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_visible,
+      StatusIndicator._bindings.method_set_visible,
       this._owner,
       _visible
     );
@@ -168,7 +169,7 @@ export class StatusIndicator extends Node{
   }
   is_visible() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_visible,
+      StatusIndicator._bindings.method_is_visible,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -177,7 +178,7 @@ export class StatusIndicator extends Node{
   }
   set_menu(_menu) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_menu,
+      StatusIndicator._bindings.method_set_menu,
       this._owner,
       _menu
     );
@@ -185,7 +186,7 @@ export class StatusIndicator extends Node{
   }
   get_menu() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_menu,
+      StatusIndicator._bindings.method_get_menu,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -195,7 +196,7 @@ export class StatusIndicator extends Node{
   }
   get_rect() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rect,
+      StatusIndicator._bindings.method_get_rect,
       this._owner,
 			Variant.Type.RECT2,
     

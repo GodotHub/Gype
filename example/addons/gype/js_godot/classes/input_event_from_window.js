@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { InputEvent } from '@js_godot/classes/input_event'
 import { StringName } from '@js_godot/variant/string_name'
+import { InputEvent } from '@js_godot/classes/input_event'
 import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
@@ -50,9 +50,10 @@ export class InputEventFromWindow extends InputEvent{
       );
     }
   }
+  
   set_window_id(_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_window_id,
+      InputEventFromWindow._bindings.method_set_window_id,
       this._owner,
       _id
     );
@@ -60,7 +61,7 @@ export class InputEventFromWindow extends InputEvent{
   }
   get_window_id() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_window_id,
+      InputEventFromWindow._bindings.method_get_window_id,
       this._owner,
 			Variant.Type.INT,
       

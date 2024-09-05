@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
 import { Dictionary } from '@js_godot/variant/dictionary'
-import { Variant } from '@js_godot/variant/variant'
-import { GodotObject } from '@js_godot/classes/godot_object'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { GodotObject } from '@js_godot/classes/godot_object'
+import { GDString } from '@js_godot/variant/gd_string'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -402,9 +402,10 @@ class _MethodBindings {
       );
     }
   }
+  
   set_physics_ticks_per_second(_physics_ticks_per_second) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_physics_ticks_per_second,
+      _Engine._bindings.method_set_physics_ticks_per_second,
       this._owner,
       _physics_ticks_per_second
     );
@@ -412,7 +413,7 @@ class _MethodBindings {
   }
   get_physics_ticks_per_second() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_physics_ticks_per_second,
+      _Engine._bindings.method_get_physics_ticks_per_second,
       this._owner,
 			Variant.Type.INT,
       
@@ -421,7 +422,7 @@ class _MethodBindings {
   }
   set_max_physics_steps_per_frame(_max_physics_steps) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_max_physics_steps_per_frame,
+      _Engine._bindings.method_set_max_physics_steps_per_frame,
       this._owner,
       _max_physics_steps
     );
@@ -429,7 +430,7 @@ class _MethodBindings {
   }
   get_max_physics_steps_per_frame() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_max_physics_steps_per_frame,
+      _Engine._bindings.method_get_max_physics_steps_per_frame,
       this._owner,
 			Variant.Type.INT,
       
@@ -438,7 +439,7 @@ class _MethodBindings {
   }
   set_physics_jitter_fix(_physics_jitter_fix) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_physics_jitter_fix,
+      _Engine._bindings.method_set_physics_jitter_fix,
       this._owner,
       _physics_jitter_fix
     );
@@ -446,7 +447,7 @@ class _MethodBindings {
   }
   get_physics_jitter_fix() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_physics_jitter_fix,
+      _Engine._bindings.method_get_physics_jitter_fix,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -455,7 +456,7 @@ class _MethodBindings {
   }
   get_physics_interpolation_fraction() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_physics_interpolation_fraction,
+      _Engine._bindings.method_get_physics_interpolation_fraction,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -464,7 +465,7 @@ class _MethodBindings {
   }
   set_max_fps(_max_fps) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_max_fps,
+      _Engine._bindings.method_set_max_fps,
       this._owner,
       _max_fps
     );
@@ -472,7 +473,7 @@ class _MethodBindings {
   }
   get_max_fps() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_max_fps,
+      _Engine._bindings.method_get_max_fps,
       this._owner,
 			Variant.Type.INT,
       
@@ -481,7 +482,7 @@ class _MethodBindings {
   }
   set_time_scale(_time_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_time_scale,
+      _Engine._bindings.method_set_time_scale,
       this._owner,
       _time_scale
     );
@@ -489,7 +490,7 @@ class _MethodBindings {
   }
   get_time_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_time_scale,
+      _Engine._bindings.method_get_time_scale,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -498,7 +499,7 @@ class _MethodBindings {
   }
   get_frames_drawn() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_frames_drawn,
+      _Engine._bindings.method_get_frames_drawn,
       this._owner,
 			Variant.Type.INT,
       
@@ -507,7 +508,7 @@ class _MethodBindings {
   }
   get_frames_per_second() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_frames_per_second,
+      _Engine._bindings.method_get_frames_per_second,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -516,7 +517,7 @@ class _MethodBindings {
   }
   get_physics_frames() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_physics_frames,
+      _Engine._bindings.method_get_physics_frames,
       this._owner,
 			Variant.Type.INT,
       
@@ -525,7 +526,7 @@ class _MethodBindings {
   }
   get_process_frames() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_process_frames,
+      _Engine._bindings.method_get_process_frames,
       this._owner,
 			Variant.Type.INT,
       
@@ -534,7 +535,7 @@ class _MethodBindings {
   }
   get_main_loop() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_main_loop,
+      _Engine._bindings.method_get_main_loop,
       this._owner,
 			Variant.INT,
       
@@ -543,7 +544,7 @@ class _MethodBindings {
   }
   get_version_info() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_version_info,
+      _Engine._bindings.method_get_version_info,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -553,7 +554,7 @@ class _MethodBindings {
   }
   get_author_info() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_author_info,
+      _Engine._bindings.method_get_author_info,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -563,7 +564,7 @@ class _MethodBindings {
   }
   get_copyright_info() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_copyright_info,
+      _Engine._bindings.method_get_copyright_info,
       this._owner,
 			Variant.INT,
       
@@ -572,7 +573,7 @@ class _MethodBindings {
   }
   get_donor_info() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_donor_info,
+      _Engine._bindings.method_get_donor_info,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -582,7 +583,7 @@ class _MethodBindings {
   }
   get_license_info() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_license_info,
+      _Engine._bindings.method_get_license_info,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -592,7 +593,7 @@ class _MethodBindings {
   }
   get_license_text() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_license_text,
+      _Engine._bindings.method_get_license_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -602,7 +603,7 @@ class _MethodBindings {
   }
   get_architecture_name() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_architecture_name,
+      _Engine._bindings.method_get_architecture_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -612,7 +613,7 @@ class _MethodBindings {
   }
   is_in_physics_frame() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_in_physics_frame,
+      _Engine._bindings.method_is_in_physics_frame,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -621,7 +622,7 @@ class _MethodBindings {
   }
   has_singleton(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_singleton,
+      _Engine._bindings.method_has_singleton,
       this._owner,
 			Variant.Type.BOOL,
       _name
@@ -630,7 +631,7 @@ class _MethodBindings {
   }
   get_singleton(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_singleton,
+      _Engine._bindings.method_get_singleton,
       this._owner,
 			Variant.INT,
       _name
@@ -639,7 +640,7 @@ class _MethodBindings {
   }
   register_singleton(_name, _instance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_register_singleton,
+      _Engine._bindings.method_register_singleton,
       this._owner,
       _name, _instance
     );
@@ -647,7 +648,7 @@ class _MethodBindings {
   }
   unregister_singleton(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_unregister_singleton,
+      _Engine._bindings.method_unregister_singleton,
       this._owner,
       _name
     );
@@ -655,7 +656,7 @@ class _MethodBindings {
   }
   get_singleton_list() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_singleton_list,
+      _Engine._bindings.method_get_singleton_list,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -665,7 +666,7 @@ class _MethodBindings {
   }
   register_script_language(_language) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_register_script_language,
+      _Engine._bindings.method_register_script_language,
       this._owner,
 			Variant.INT,
       _language
@@ -674,7 +675,7 @@ class _MethodBindings {
   }
   unregister_script_language(_language) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_unregister_script_language,
+      _Engine._bindings.method_unregister_script_language,
       this._owner,
 			Variant.INT,
       _language
@@ -683,7 +684,7 @@ class _MethodBindings {
   }
   get_script_language_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_script_language_count,
+      _Engine._bindings.method_get_script_language_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -692,7 +693,7 @@ class _MethodBindings {
   }
   get_script_language(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_script_language,
+      _Engine._bindings.method_get_script_language,
       this._owner,
 			Variant.INT,
       _index
@@ -701,7 +702,7 @@ class _MethodBindings {
   }
   is_editor_hint() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_editor_hint,
+      _Engine._bindings.method_is_editor_hint,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -710,7 +711,7 @@ class _MethodBindings {
   }
   get_write_movie_path() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_write_movie_path,
+      _Engine._bindings.method_get_write_movie_path,
       this._owner,
 			Variant.Type.STRING,
     
@@ -720,7 +721,7 @@ class _MethodBindings {
   }
   set_print_error_messages(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_print_error_messages,
+      _Engine._bindings.method_set_print_error_messages,
       this._owner,
       _enabled
     );
@@ -728,7 +729,7 @@ class _MethodBindings {
   }
   is_printing_error_messages() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_printing_error_messages,
+      _Engine._bindings.method_is_printing_error_messages,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -778,4 +779,17 @@ set physics_jitter_fix (new_value) {
     this._init_bindings();
   }
 }
-export const Engine = new _Engine();
+export const Engine = (function () {
+  let _instance;
+  function create_instance() {
+    return new _Engine();
+  }
+  return {
+    instance: function () {
+      if (!_instance) {
+        _instance = create_instance();
+      }
+      return _instance;
+    },
+  };
+})();

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
-import { Variant } from '@js_godot/variant/variant'
 import { VBoxContainer } from '@js_godot/classes/v_box_container'
 import {
   call_utility_ret,
@@ -61,9 +61,10 @@ export class FileSystemDock extends VBoxContainer{
       );
     }
   }
+  
   navigate_to_path(_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_navigate_to_path,
+      FileSystemDock._bindings.method_navigate_to_path,
       this._owner,
       _path
     );
@@ -71,7 +72,7 @@ export class FileSystemDock extends VBoxContainer{
   }
   add_resource_tooltip_plugin(_plugin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_resource_tooltip_plugin,
+      FileSystemDock._bindings.method_add_resource_tooltip_plugin,
       this._owner,
       _plugin
     );
@@ -79,7 +80,7 @@ export class FileSystemDock extends VBoxContainer{
   }
   remove_resource_tooltip_plugin(_plugin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_resource_tooltip_plugin,
+      FileSystemDock._bindings.method_remove_resource_tooltip_plugin,
       this._owner,
       _plugin
     );

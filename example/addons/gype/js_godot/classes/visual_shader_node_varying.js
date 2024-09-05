@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
-import { GDString } from '@js_godot/variant/gd_string'
 import { VisualShaderNode } from '@js_godot/classes/visual_shader_node'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -71,9 +71,10 @@ export class VisualShaderNodeVarying extends VisualShaderNode{
       );
     }
   }
+  
   set_varying_name(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_varying_name,
+      VisualShaderNodeVarying._bindings.method_set_varying_name,
       this._owner,
       _name
     );
@@ -81,7 +82,7 @@ export class VisualShaderNodeVarying extends VisualShaderNode{
   }
   get_varying_name() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_varying_name,
+      VisualShaderNodeVarying._bindings.method_get_varying_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -91,7 +92,7 @@ export class VisualShaderNodeVarying extends VisualShaderNode{
   }
   set_varying_type(_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_varying_type,
+      VisualShaderNodeVarying._bindings.method_set_varying_type,
       this._owner,
       _type
     );
@@ -99,7 +100,7 @@ export class VisualShaderNodeVarying extends VisualShaderNode{
   }
   get_varying_type() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_varying_type,
+      VisualShaderNodeVarying._bindings.method_get_varying_type,
       this._owner,
 			Variant.INT,
       

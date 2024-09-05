@@ -1,11 +1,11 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Resource } from '@js_godot/classes/resource'
-import { Vector3 } from '@js_godot/variant/vector3'
-import { PackedVector3Array } from '@js_godot/variant/packed_vector3_array'
-import { StringName } from '@js_godot/variant/string_name'
-import { AABB } from '@js_godot/variant/aabb'
 import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
+import { PackedVector3Array } from '@js_godot/variant/packed_vector3_array'
+import { AABB } from '@js_godot/variant/aabb'
+import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { Vector3 } from '@js_godot/variant/vector3'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -614,9 +614,10 @@ export class NavigationMesh extends Resource{
       );
     }
   }
+  
   set_sample_partition_type(_sample_partition_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sample_partition_type,
+      NavigationMesh._bindings.method_set_sample_partition_type,
       this._owner,
       _sample_partition_type
     );
@@ -624,7 +625,7 @@ export class NavigationMesh extends Resource{
   }
   get_sample_partition_type() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sample_partition_type,
+      NavigationMesh._bindings.method_get_sample_partition_type,
       this._owner,
 			Variant.INT,
       
@@ -633,7 +634,7 @@ export class NavigationMesh extends Resource{
   }
   set_parsed_geometry_type(_geometry_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_parsed_geometry_type,
+      NavigationMesh._bindings.method_set_parsed_geometry_type,
       this._owner,
       _geometry_type
     );
@@ -641,7 +642,7 @@ export class NavigationMesh extends Resource{
   }
   get_parsed_geometry_type() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_parsed_geometry_type,
+      NavigationMesh._bindings.method_get_parsed_geometry_type,
       this._owner,
 			Variant.INT,
       
@@ -650,7 +651,7 @@ export class NavigationMesh extends Resource{
   }
   set_collision_mask(_mask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_mask,
+      NavigationMesh._bindings.method_set_collision_mask,
       this._owner,
       _mask
     );
@@ -658,7 +659,7 @@ export class NavigationMesh extends Resource{
   }
   get_collision_mask() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_mask,
+      NavigationMesh._bindings.method_get_collision_mask,
       this._owner,
 			Variant.Type.INT,
       
@@ -667,7 +668,7 @@ export class NavigationMesh extends Resource{
   }
   set_collision_mask_value(_layer_number, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_mask_value,
+      NavigationMesh._bindings.method_set_collision_mask_value,
       this._owner,
       _layer_number, _value
     );
@@ -675,7 +676,7 @@ export class NavigationMesh extends Resource{
   }
   get_collision_mask_value(_layer_number) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_mask_value,
+      NavigationMesh._bindings.method_get_collision_mask_value,
       this._owner,
 			Variant.Type.BOOL,
       _layer_number
@@ -684,7 +685,7 @@ export class NavigationMesh extends Resource{
   }
   set_source_geometry_mode(_mask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_source_geometry_mode,
+      NavigationMesh._bindings.method_set_source_geometry_mode,
       this._owner,
       _mask
     );
@@ -692,7 +693,7 @@ export class NavigationMesh extends Resource{
   }
   get_source_geometry_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_source_geometry_mode,
+      NavigationMesh._bindings.method_get_source_geometry_mode,
       this._owner,
 			Variant.INT,
       
@@ -701,7 +702,7 @@ export class NavigationMesh extends Resource{
   }
   set_source_group_name(_mask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_source_group_name,
+      NavigationMesh._bindings.method_set_source_group_name,
       this._owner,
       _mask
     );
@@ -709,7 +710,7 @@ export class NavigationMesh extends Resource{
   }
   get_source_group_name() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_source_group_name,
+      NavigationMesh._bindings.method_get_source_group_name,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -719,7 +720,7 @@ export class NavigationMesh extends Resource{
   }
   set_cell_size(_cell_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cell_size,
+      NavigationMesh._bindings.method_set_cell_size,
       this._owner,
       _cell_size
     );
@@ -727,7 +728,7 @@ export class NavigationMesh extends Resource{
   }
   get_cell_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cell_size,
+      NavigationMesh._bindings.method_get_cell_size,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -736,7 +737,7 @@ export class NavigationMesh extends Resource{
   }
   set_cell_height(_cell_height) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cell_height,
+      NavigationMesh._bindings.method_set_cell_height,
       this._owner,
       _cell_height
     );
@@ -744,7 +745,7 @@ export class NavigationMesh extends Resource{
   }
   get_cell_height() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cell_height,
+      NavigationMesh._bindings.method_get_cell_height,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -753,7 +754,7 @@ export class NavigationMesh extends Resource{
   }
   set_border_size(_border_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_border_size,
+      NavigationMesh._bindings.method_set_border_size,
       this._owner,
       _border_size
     );
@@ -761,7 +762,7 @@ export class NavigationMesh extends Resource{
   }
   get_border_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_border_size,
+      NavigationMesh._bindings.method_get_border_size,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -770,7 +771,7 @@ export class NavigationMesh extends Resource{
   }
   set_agent_height(_agent_height) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_agent_height,
+      NavigationMesh._bindings.method_set_agent_height,
       this._owner,
       _agent_height
     );
@@ -778,7 +779,7 @@ export class NavigationMesh extends Resource{
   }
   get_agent_height() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_agent_height,
+      NavigationMesh._bindings.method_get_agent_height,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -787,7 +788,7 @@ export class NavigationMesh extends Resource{
   }
   set_agent_radius(_agent_radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_agent_radius,
+      NavigationMesh._bindings.method_set_agent_radius,
       this._owner,
       _agent_radius
     );
@@ -795,7 +796,7 @@ export class NavigationMesh extends Resource{
   }
   get_agent_radius() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_agent_radius,
+      NavigationMesh._bindings.method_get_agent_radius,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -804,7 +805,7 @@ export class NavigationMesh extends Resource{
   }
   set_agent_max_climb(_agent_max_climb) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_agent_max_climb,
+      NavigationMesh._bindings.method_set_agent_max_climb,
       this._owner,
       _agent_max_climb
     );
@@ -812,7 +813,7 @@ export class NavigationMesh extends Resource{
   }
   get_agent_max_climb() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_agent_max_climb,
+      NavigationMesh._bindings.method_get_agent_max_climb,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -821,7 +822,7 @@ export class NavigationMesh extends Resource{
   }
   set_agent_max_slope(_agent_max_slope) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_agent_max_slope,
+      NavigationMesh._bindings.method_set_agent_max_slope,
       this._owner,
       _agent_max_slope
     );
@@ -829,7 +830,7 @@ export class NavigationMesh extends Resource{
   }
   get_agent_max_slope() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_agent_max_slope,
+      NavigationMesh._bindings.method_get_agent_max_slope,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -838,7 +839,7 @@ export class NavigationMesh extends Resource{
   }
   set_region_min_size(_region_min_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_region_min_size,
+      NavigationMesh._bindings.method_set_region_min_size,
       this._owner,
       _region_min_size
     );
@@ -846,7 +847,7 @@ export class NavigationMesh extends Resource{
   }
   get_region_min_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_region_min_size,
+      NavigationMesh._bindings.method_get_region_min_size,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -855,7 +856,7 @@ export class NavigationMesh extends Resource{
   }
   set_region_merge_size(_region_merge_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_region_merge_size,
+      NavigationMesh._bindings.method_set_region_merge_size,
       this._owner,
       _region_merge_size
     );
@@ -863,7 +864,7 @@ export class NavigationMesh extends Resource{
   }
   get_region_merge_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_region_merge_size,
+      NavigationMesh._bindings.method_get_region_merge_size,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -872,7 +873,7 @@ export class NavigationMesh extends Resource{
   }
   set_edge_max_length(_edge_max_length) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_edge_max_length,
+      NavigationMesh._bindings.method_set_edge_max_length,
       this._owner,
       _edge_max_length
     );
@@ -880,7 +881,7 @@ export class NavigationMesh extends Resource{
   }
   get_edge_max_length() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_edge_max_length,
+      NavigationMesh._bindings.method_get_edge_max_length,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -889,7 +890,7 @@ export class NavigationMesh extends Resource{
   }
   set_edge_max_error(_edge_max_error) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_edge_max_error,
+      NavigationMesh._bindings.method_set_edge_max_error,
       this._owner,
       _edge_max_error
     );
@@ -897,7 +898,7 @@ export class NavigationMesh extends Resource{
   }
   get_edge_max_error() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_edge_max_error,
+      NavigationMesh._bindings.method_get_edge_max_error,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -906,7 +907,7 @@ export class NavigationMesh extends Resource{
   }
   set_vertices_per_polygon(_vertices_per_polygon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vertices_per_polygon,
+      NavigationMesh._bindings.method_set_vertices_per_polygon,
       this._owner,
       _vertices_per_polygon
     );
@@ -914,7 +915,7 @@ export class NavigationMesh extends Resource{
   }
   get_vertices_per_polygon() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vertices_per_polygon,
+      NavigationMesh._bindings.method_get_vertices_per_polygon,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -923,7 +924,7 @@ export class NavigationMesh extends Resource{
   }
   set_detail_sample_distance(_detail_sample_dist) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_detail_sample_distance,
+      NavigationMesh._bindings.method_set_detail_sample_distance,
       this._owner,
       _detail_sample_dist
     );
@@ -931,7 +932,7 @@ export class NavigationMesh extends Resource{
   }
   get_detail_sample_distance() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_detail_sample_distance,
+      NavigationMesh._bindings.method_get_detail_sample_distance,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -940,7 +941,7 @@ export class NavigationMesh extends Resource{
   }
   set_detail_sample_max_error(_detail_sample_max_error) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_detail_sample_max_error,
+      NavigationMesh._bindings.method_set_detail_sample_max_error,
       this._owner,
       _detail_sample_max_error
     );
@@ -948,7 +949,7 @@ export class NavigationMesh extends Resource{
   }
   get_detail_sample_max_error() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_detail_sample_max_error,
+      NavigationMesh._bindings.method_get_detail_sample_max_error,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -957,7 +958,7 @@ export class NavigationMesh extends Resource{
   }
   set_filter_low_hanging_obstacles(_filter_low_hanging_obstacles) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_filter_low_hanging_obstacles,
+      NavigationMesh._bindings.method_set_filter_low_hanging_obstacles,
       this._owner,
       _filter_low_hanging_obstacles
     );
@@ -965,7 +966,7 @@ export class NavigationMesh extends Resource{
   }
   get_filter_low_hanging_obstacles() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_filter_low_hanging_obstacles,
+      NavigationMesh._bindings.method_get_filter_low_hanging_obstacles,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -974,7 +975,7 @@ export class NavigationMesh extends Resource{
   }
   set_filter_ledge_spans(_filter_ledge_spans) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_filter_ledge_spans,
+      NavigationMesh._bindings.method_set_filter_ledge_spans,
       this._owner,
       _filter_ledge_spans
     );
@@ -982,7 +983,7 @@ export class NavigationMesh extends Resource{
   }
   get_filter_ledge_spans() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_filter_ledge_spans,
+      NavigationMesh._bindings.method_get_filter_ledge_spans,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -991,7 +992,7 @@ export class NavigationMesh extends Resource{
   }
   set_filter_walkable_low_height_spans(_filter_walkable_low_height_spans) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_filter_walkable_low_height_spans,
+      NavigationMesh._bindings.method_set_filter_walkable_low_height_spans,
       this._owner,
       _filter_walkable_low_height_spans
     );
@@ -999,7 +1000,7 @@ export class NavigationMesh extends Resource{
   }
   get_filter_walkable_low_height_spans() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_filter_walkable_low_height_spans,
+      NavigationMesh._bindings.method_get_filter_walkable_low_height_spans,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1008,7 +1009,7 @@ export class NavigationMesh extends Resource{
   }
   set_filter_baking_aabb(_baking_aabb) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_filter_baking_aabb,
+      NavigationMesh._bindings.method_set_filter_baking_aabb,
       this._owner,
       _baking_aabb
     );
@@ -1016,7 +1017,7 @@ export class NavigationMesh extends Resource{
   }
   get_filter_baking_aabb() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_filter_baking_aabb,
+      NavigationMesh._bindings.method_get_filter_baking_aabb,
       this._owner,
 			Variant.Type.AABB,
     
@@ -1026,7 +1027,7 @@ export class NavigationMesh extends Resource{
   }
   set_filter_baking_aabb_offset(_baking_aabb_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_filter_baking_aabb_offset,
+      NavigationMesh._bindings.method_set_filter_baking_aabb_offset,
       this._owner,
       _baking_aabb_offset
     );
@@ -1034,7 +1035,7 @@ export class NavigationMesh extends Resource{
   }
   get_filter_baking_aabb_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_filter_baking_aabb_offset,
+      NavigationMesh._bindings.method_get_filter_baking_aabb_offset,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -1044,7 +1045,7 @@ export class NavigationMesh extends Resource{
   }
   set_vertices(_vertices) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vertices,
+      NavigationMesh._bindings.method_set_vertices,
       this._owner,
       _vertices
     );
@@ -1052,7 +1053,7 @@ export class NavigationMesh extends Resource{
   }
   get_vertices() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vertices,
+      NavigationMesh._bindings.method_get_vertices,
       this._owner,
 			Variant.Type.PACKED_VECTOR3_ARRAY,
     
@@ -1062,7 +1063,7 @@ export class NavigationMesh extends Resource{
   }
   add_polygon(_polygon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_polygon,
+      NavigationMesh._bindings.method_add_polygon,
       this._owner,
       _polygon
     );
@@ -1070,7 +1071,7 @@ export class NavigationMesh extends Resource{
   }
   get_polygon_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_polygon_count,
+      NavigationMesh._bindings.method_get_polygon_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -1079,7 +1080,7 @@ export class NavigationMesh extends Resource{
   }
   get_polygon(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_polygon,
+      NavigationMesh._bindings.method_get_polygon,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -1089,7 +1090,7 @@ export class NavigationMesh extends Resource{
   }
   clear_polygons() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_polygons,
+      NavigationMesh._bindings.method_clear_polygons,
       this._owner,
       
     );
@@ -1097,7 +1098,7 @@ export class NavigationMesh extends Resource{
   }
   create_from_mesh(_mesh) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_create_from_mesh,
+      NavigationMesh._bindings.method_create_from_mesh,
       this._owner,
       _mesh
     );
@@ -1105,7 +1106,7 @@ export class NavigationMesh extends Resource{
   }
   clear() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear,
+      NavigationMesh._bindings.method_clear,
       this._owner,
       
     );

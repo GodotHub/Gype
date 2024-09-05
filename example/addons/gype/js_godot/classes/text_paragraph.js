@@ -1,13 +1,13 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Vector2i } from '@js_godot/variant/vector2i'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
-import { Color } from '@js_godot/variant/color'
 import { Vector2 } from '@js_godot/variant/vector2'
 import { PackedFloat32Array } from '@js_godot/variant/packed_float32_array'
-import { RefCounted } from '@js_godot/classes/ref_counted'
 import { RID } from '@js_godot/variant/rid'
+import { StringName } from '@js_godot/variant/string_name'
+import { RefCounted } from '@js_godot/classes/ref_counted'
+import { Color } from '@js_godot/variant/color'
+import { Variant } from '@js_godot/variant/variant'
+import { GDString } from '@js_godot/variant/gd_string'
+import { Vector2i } from '@js_godot/variant/vector2i'
 import { Rect2 } from '@js_godot/variant/rect2'
 import { GDArray } from '@js_godot/variant/gd_array'
 import {
@@ -598,9 +598,10 @@ export class TextParagraph extends RefCounted{
       );
     }
   }
+  
   clear() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear,
+      TextParagraph._bindings.method_clear,
       this._owner,
       
     );
@@ -608,7 +609,7 @@ export class TextParagraph extends RefCounted{
   }
   set_direction(_direction) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_direction,
+      TextParagraph._bindings.method_set_direction,
       this._owner,
       _direction
     );
@@ -616,7 +617,7 @@ export class TextParagraph extends RefCounted{
   }
   get_direction() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_direction,
+      TextParagraph._bindings.method_get_direction,
       this._owner,
 			Variant.INT,
       
@@ -625,7 +626,7 @@ export class TextParagraph extends RefCounted{
   }
   set_custom_punctuation(_custom_punctuation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_custom_punctuation,
+      TextParagraph._bindings.method_set_custom_punctuation,
       this._owner,
       _custom_punctuation
     );
@@ -633,7 +634,7 @@ export class TextParagraph extends RefCounted{
   }
   get_custom_punctuation() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_custom_punctuation,
+      TextParagraph._bindings.method_get_custom_punctuation,
       this._owner,
 			Variant.Type.STRING,
     
@@ -643,7 +644,7 @@ export class TextParagraph extends RefCounted{
   }
   set_orientation(_orientation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_orientation,
+      TextParagraph._bindings.method_set_orientation,
       this._owner,
       _orientation
     );
@@ -651,7 +652,7 @@ export class TextParagraph extends RefCounted{
   }
   get_orientation() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_orientation,
+      TextParagraph._bindings.method_get_orientation,
       this._owner,
 			Variant.INT,
       
@@ -660,7 +661,7 @@ export class TextParagraph extends RefCounted{
   }
   set_preserve_invalid(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_preserve_invalid,
+      TextParagraph._bindings.method_set_preserve_invalid,
       this._owner,
       _enabled
     );
@@ -668,7 +669,7 @@ export class TextParagraph extends RefCounted{
   }
   get_preserve_invalid() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_preserve_invalid,
+      TextParagraph._bindings.method_get_preserve_invalid,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -677,7 +678,7 @@ export class TextParagraph extends RefCounted{
   }
   set_preserve_control(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_preserve_control,
+      TextParagraph._bindings.method_set_preserve_control,
       this._owner,
       _enabled
     );
@@ -685,7 +686,7 @@ export class TextParagraph extends RefCounted{
   }
   get_preserve_control() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_preserve_control,
+      TextParagraph._bindings.method_get_preserve_control,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -694,7 +695,7 @@ export class TextParagraph extends RefCounted{
   }
   set_bidi_override(_override) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bidi_override,
+      TextParagraph._bindings.method_set_bidi_override,
       this._owner,
       _override
     );
@@ -702,7 +703,7 @@ export class TextParagraph extends RefCounted{
   }
   set_dropcap(_text, _font, _font_size, _dropcap_margins, _language) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_set_dropcap,
+      TextParagraph._bindings.method_set_dropcap,
       this._owner,
 			Variant.Type.BOOL,
       _text, _font, _font_size, _dropcap_margins, _language
@@ -711,7 +712,7 @@ export class TextParagraph extends RefCounted{
   }
   clear_dropcap() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_dropcap,
+      TextParagraph._bindings.method_clear_dropcap,
       this._owner,
       
     );
@@ -719,7 +720,7 @@ export class TextParagraph extends RefCounted{
   }
   add_string(_text, _font, _font_size, _language, _meta) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_add_string,
+      TextParagraph._bindings.method_add_string,
       this._owner,
 			Variant.Type.BOOL,
       _text, _font, _font_size, _language, _meta
@@ -728,7 +729,7 @@ export class TextParagraph extends RefCounted{
   }
   add_object(_key, _size, _inline_align, _length, _baseline) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_add_object,
+      TextParagraph._bindings.method_add_object,
       this._owner,
 			Variant.Type.BOOL,
       _key, _size, _inline_align, _length, _baseline
@@ -737,7 +738,7 @@ export class TextParagraph extends RefCounted{
   }
   resize_object(_key, _size, _inline_align, _baseline) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_resize_object,
+      TextParagraph._bindings.method_resize_object,
       this._owner,
 			Variant.Type.BOOL,
       _key, _size, _inline_align, _baseline
@@ -746,7 +747,7 @@ export class TextParagraph extends RefCounted{
   }
   set_alignment(_alignment) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_alignment,
+      TextParagraph._bindings.method_set_alignment,
       this._owner,
       _alignment
     );
@@ -754,7 +755,7 @@ export class TextParagraph extends RefCounted{
   }
   get_alignment() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_alignment,
+      TextParagraph._bindings.method_get_alignment,
       this._owner,
 			Variant.INT,
       
@@ -763,7 +764,7 @@ export class TextParagraph extends RefCounted{
   }
   tab_align(_tab_stops) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_tab_align,
+      TextParagraph._bindings.method_tab_align,
       this._owner,
       _tab_stops
     );
@@ -771,7 +772,7 @@ export class TextParagraph extends RefCounted{
   }
   set_break_flags(_flags) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_break_flags,
+      TextParagraph._bindings.method_set_break_flags,
       this._owner,
       _flags
     );
@@ -779,7 +780,7 @@ export class TextParagraph extends RefCounted{
   }
   get_break_flags() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_break_flags,
+      TextParagraph._bindings.method_get_break_flags,
       this._owner,
 			Variant.INT,
       
@@ -788,7 +789,7 @@ export class TextParagraph extends RefCounted{
   }
   set_justification_flags(_flags) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_justification_flags,
+      TextParagraph._bindings.method_set_justification_flags,
       this._owner,
       _flags
     );
@@ -796,7 +797,7 @@ export class TextParagraph extends RefCounted{
   }
   get_justification_flags() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_justification_flags,
+      TextParagraph._bindings.method_get_justification_flags,
       this._owner,
 			Variant.INT,
       
@@ -805,7 +806,7 @@ export class TextParagraph extends RefCounted{
   }
   set_text_overrun_behavior(_overrun_behavior) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_text_overrun_behavior,
+      TextParagraph._bindings.method_set_text_overrun_behavior,
       this._owner,
       _overrun_behavior
     );
@@ -813,7 +814,7 @@ export class TextParagraph extends RefCounted{
   }
   get_text_overrun_behavior() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_text_overrun_behavior,
+      TextParagraph._bindings.method_get_text_overrun_behavior,
       this._owner,
 			Variant.INT,
       
@@ -822,7 +823,7 @@ export class TextParagraph extends RefCounted{
   }
   set_ellipsis_char(_char) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ellipsis_char,
+      TextParagraph._bindings.method_set_ellipsis_char,
       this._owner,
       _char
     );
@@ -830,7 +831,7 @@ export class TextParagraph extends RefCounted{
   }
   get_ellipsis_char() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ellipsis_char,
+      TextParagraph._bindings.method_get_ellipsis_char,
       this._owner,
 			Variant.Type.STRING,
     
@@ -840,7 +841,7 @@ export class TextParagraph extends RefCounted{
   }
   set_width(_width) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_width,
+      TextParagraph._bindings.method_set_width,
       this._owner,
       _width
     );
@@ -848,7 +849,7 @@ export class TextParagraph extends RefCounted{
   }
   get_width() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_width,
+      TextParagraph._bindings.method_get_width,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -857,7 +858,7 @@ export class TextParagraph extends RefCounted{
   }
   get_non_wrapped_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_non_wrapped_size,
+      TextParagraph._bindings.method_get_non_wrapped_size,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -867,7 +868,7 @@ export class TextParagraph extends RefCounted{
   }
   get_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_size,
+      TextParagraph._bindings.method_get_size,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -877,7 +878,7 @@ export class TextParagraph extends RefCounted{
   }
   get_rid() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rid,
+      TextParagraph._bindings.method_get_rid,
       this._owner,
 			Variant.Type.RID,
     
@@ -887,7 +888,7 @@ export class TextParagraph extends RefCounted{
   }
   get_line_rid(_line) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_rid,
+      TextParagraph._bindings.method_get_line_rid,
       this._owner,
 			Variant.Type.RID,
     
@@ -897,7 +898,7 @@ export class TextParagraph extends RefCounted{
   }
   get_dropcap_rid() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_dropcap_rid,
+      TextParagraph._bindings.method_get_dropcap_rid,
       this._owner,
 			Variant.Type.RID,
     
@@ -907,7 +908,7 @@ export class TextParagraph extends RefCounted{
   }
   get_line_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_count,
+      TextParagraph._bindings.method_get_line_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -916,7 +917,7 @@ export class TextParagraph extends RefCounted{
   }
   set_max_lines_visible(_max_lines_visible) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_max_lines_visible,
+      TextParagraph._bindings.method_set_max_lines_visible,
       this._owner,
       _max_lines_visible
     );
@@ -924,7 +925,7 @@ export class TextParagraph extends RefCounted{
   }
   get_max_lines_visible() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_max_lines_visible,
+      TextParagraph._bindings.method_get_max_lines_visible,
       this._owner,
 			Variant.Type.INT,
       
@@ -933,7 +934,7 @@ export class TextParagraph extends RefCounted{
   }
   get_line_objects(_line) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_objects,
+      TextParagraph._bindings.method_get_line_objects,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -943,7 +944,7 @@ export class TextParagraph extends RefCounted{
   }
   get_line_object_rect(_line, _key) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_object_rect,
+      TextParagraph._bindings.method_get_line_object_rect,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -953,7 +954,7 @@ export class TextParagraph extends RefCounted{
   }
   get_line_size(_line) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_size,
+      TextParagraph._bindings.method_get_line_size,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -963,7 +964,7 @@ export class TextParagraph extends RefCounted{
   }
   get_line_range(_line) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_range,
+      TextParagraph._bindings.method_get_line_range,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -973,7 +974,7 @@ export class TextParagraph extends RefCounted{
   }
   get_line_ascent(_line) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_ascent,
+      TextParagraph._bindings.method_get_line_ascent,
       this._owner,
 			Variant.Type.FLOAT,
       _line
@@ -982,7 +983,7 @@ export class TextParagraph extends RefCounted{
   }
   get_line_descent(_line) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_descent,
+      TextParagraph._bindings.method_get_line_descent,
       this._owner,
 			Variant.Type.FLOAT,
       _line
@@ -991,7 +992,7 @@ export class TextParagraph extends RefCounted{
   }
   get_line_width(_line) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_width,
+      TextParagraph._bindings.method_get_line_width,
       this._owner,
 			Variant.Type.FLOAT,
       _line
@@ -1000,7 +1001,7 @@ export class TextParagraph extends RefCounted{
   }
   get_line_underline_position(_line) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_underline_position,
+      TextParagraph._bindings.method_get_line_underline_position,
       this._owner,
 			Variant.Type.FLOAT,
       _line
@@ -1009,7 +1010,7 @@ export class TextParagraph extends RefCounted{
   }
   get_line_underline_thickness(_line) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_underline_thickness,
+      TextParagraph._bindings.method_get_line_underline_thickness,
       this._owner,
 			Variant.Type.FLOAT,
       _line
@@ -1018,7 +1019,7 @@ export class TextParagraph extends RefCounted{
   }
   get_dropcap_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_dropcap_size,
+      TextParagraph._bindings.method_get_dropcap_size,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1028,7 +1029,7 @@ export class TextParagraph extends RefCounted{
   }
   get_dropcap_lines() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_dropcap_lines,
+      TextParagraph._bindings.method_get_dropcap_lines,
       this._owner,
 			Variant.Type.INT,
       
@@ -1037,7 +1038,7 @@ export class TextParagraph extends RefCounted{
   }
   draw(_canvas, _pos, _color, _dc_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_draw,
+      TextParagraph._bindings.method_draw,
       this._owner,
       _canvas, _pos, _color, _dc_color
     );
@@ -1045,7 +1046,7 @@ export class TextParagraph extends RefCounted{
   }
   draw_outline(_canvas, _pos, _outline_size, _color, _dc_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_draw_outline,
+      TextParagraph._bindings.method_draw_outline,
       this._owner,
       _canvas, _pos, _outline_size, _color, _dc_color
     );
@@ -1053,7 +1054,7 @@ export class TextParagraph extends RefCounted{
   }
   draw_line(_canvas, _pos, _line, _color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_draw_line,
+      TextParagraph._bindings.method_draw_line,
       this._owner,
       _canvas, _pos, _line, _color
     );
@@ -1061,7 +1062,7 @@ export class TextParagraph extends RefCounted{
   }
   draw_line_outline(_canvas, _pos, _line, _outline_size, _color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_draw_line_outline,
+      TextParagraph._bindings.method_draw_line_outline,
       this._owner,
       _canvas, _pos, _line, _outline_size, _color
     );
@@ -1069,7 +1070,7 @@ export class TextParagraph extends RefCounted{
   }
   draw_dropcap(_canvas, _pos, _color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_draw_dropcap,
+      TextParagraph._bindings.method_draw_dropcap,
       this._owner,
       _canvas, _pos, _color
     );
@@ -1077,7 +1078,7 @@ export class TextParagraph extends RefCounted{
   }
   draw_dropcap_outline(_canvas, _pos, _outline_size, _color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_draw_dropcap_outline,
+      TextParagraph._bindings.method_draw_dropcap_outline,
       this._owner,
       _canvas, _pos, _outline_size, _color
     );
@@ -1085,7 +1086,7 @@ export class TextParagraph extends RefCounted{
   }
   hit_test(_coords) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_hit_test,
+      TextParagraph._bindings.method_hit_test,
       this._owner,
 			Variant.Type.INT,
       _coords

@@ -61,9 +61,10 @@ export class ConvexPolygonShape2D extends Shape2D{
       );
     }
   }
+  
   set_point_cloud(_point_cloud) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_point_cloud,
+      ConvexPolygonShape2D._bindings.method_set_point_cloud,
       this._owner,
       _point_cloud
     );
@@ -71,7 +72,7 @@ export class ConvexPolygonShape2D extends Shape2D{
   }
   set_points(_points) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_points,
+      ConvexPolygonShape2D._bindings.method_set_points,
       this._owner,
       _points
     );
@@ -79,7 +80,7 @@ export class ConvexPolygonShape2D extends Shape2D{
   }
   get_points() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_points,
+      ConvexPolygonShape2D._bindings.method_get_points,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     

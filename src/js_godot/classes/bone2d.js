@@ -141,9 +141,10 @@ export class Bone2D extends Node2D{
       );
     }
   }
+  
   set_rest(_rest) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_rest,
+      Bone2D._bindings.method_set_rest,
       this._owner,
       _rest
     );
@@ -151,7 +152,7 @@ export class Bone2D extends Node2D{
   }
   get_rest() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rest,
+      Bone2D._bindings.method_get_rest,
       this._owner,
 			Variant.Type.TRANSFORM2D,
     
@@ -161,7 +162,7 @@ export class Bone2D extends Node2D{
   }
   apply_rest() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_apply_rest,
+      Bone2D._bindings.method_apply_rest,
       this._owner,
       
     );
@@ -169,7 +170,7 @@ export class Bone2D extends Node2D{
   }
   get_skeleton_rest() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_skeleton_rest,
+      Bone2D._bindings.method_get_skeleton_rest,
       this._owner,
 			Variant.Type.TRANSFORM2D,
     
@@ -179,7 +180,7 @@ export class Bone2D extends Node2D{
   }
   get_index_in_skeleton() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_index_in_skeleton,
+      Bone2D._bindings.method_get_index_in_skeleton,
       this._owner,
 			Variant.Type.INT,
       
@@ -188,7 +189,7 @@ export class Bone2D extends Node2D{
   }
   set_autocalculate_length_and_angle(_auto_calculate) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_autocalculate_length_and_angle,
+      Bone2D._bindings.method_set_autocalculate_length_and_angle,
       this._owner,
       _auto_calculate
     );
@@ -196,7 +197,7 @@ export class Bone2D extends Node2D{
   }
   get_autocalculate_length_and_angle() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_autocalculate_length_and_angle,
+      Bone2D._bindings.method_get_autocalculate_length_and_angle,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -205,7 +206,7 @@ export class Bone2D extends Node2D{
   }
   set_length(_length) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_length,
+      Bone2D._bindings.method_set_length,
       this._owner,
       _length
     );
@@ -213,7 +214,7 @@ export class Bone2D extends Node2D{
   }
   get_length() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_length,
+      Bone2D._bindings.method_get_length,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -222,7 +223,7 @@ export class Bone2D extends Node2D{
   }
   set_bone_angle(_angle) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bone_angle,
+      Bone2D._bindings.method_set_bone_angle,
       this._owner,
       _angle
     );
@@ -230,7 +231,7 @@ export class Bone2D extends Node2D{
   }
   get_bone_angle() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bone_angle,
+      Bone2D._bindings.method_get_bone_angle,
       this._owner,
 			Variant.Type.FLOAT,
       

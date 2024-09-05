@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
+import { PackedStringArray } from '@js_godot/variant/packed_string_array'
 import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
-import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -201,9 +201,10 @@ export class SpriteFrames extends Resource{
       );
     }
   }
+  
   add_animation(_anim) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_animation,
+      SpriteFrames._bindings.method_add_animation,
       this._owner,
       _anim
     );
@@ -211,7 +212,7 @@ export class SpriteFrames extends Resource{
   }
   has_animation(_anim) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_animation,
+      SpriteFrames._bindings.method_has_animation,
       this._owner,
 			Variant.Type.BOOL,
       _anim
@@ -220,7 +221,7 @@ export class SpriteFrames extends Resource{
   }
   remove_animation(_anim) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_animation,
+      SpriteFrames._bindings.method_remove_animation,
       this._owner,
       _anim
     );
@@ -228,7 +229,7 @@ export class SpriteFrames extends Resource{
   }
   rename_animation(_anim, _newname) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_rename_animation,
+      SpriteFrames._bindings.method_rename_animation,
       this._owner,
       _anim, _newname
     );
@@ -236,7 +237,7 @@ export class SpriteFrames extends Resource{
   }
   get_animation_names() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_animation_names,
+      SpriteFrames._bindings.method_get_animation_names,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -246,7 +247,7 @@ export class SpriteFrames extends Resource{
   }
   set_animation_speed(_anim, _fps) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_animation_speed,
+      SpriteFrames._bindings.method_set_animation_speed,
       this._owner,
       _anim, _fps
     );
@@ -254,7 +255,7 @@ export class SpriteFrames extends Resource{
   }
   get_animation_speed(_anim) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_animation_speed,
+      SpriteFrames._bindings.method_get_animation_speed,
       this._owner,
 			Variant.Type.FLOAT,
       _anim
@@ -263,7 +264,7 @@ export class SpriteFrames extends Resource{
   }
   set_animation_loop(_anim, _loop) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_animation_loop,
+      SpriteFrames._bindings.method_set_animation_loop,
       this._owner,
       _anim, _loop
     );
@@ -271,7 +272,7 @@ export class SpriteFrames extends Resource{
   }
   get_animation_loop(_anim) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_animation_loop,
+      SpriteFrames._bindings.method_get_animation_loop,
       this._owner,
 			Variant.Type.BOOL,
       _anim
@@ -280,7 +281,7 @@ export class SpriteFrames extends Resource{
   }
   add_frame(_anim, _texture, _duration, _at_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_frame,
+      SpriteFrames._bindings.method_add_frame,
       this._owner,
       _anim, _texture, _duration, _at_position
     );
@@ -288,7 +289,7 @@ export class SpriteFrames extends Resource{
   }
   set_frame(_anim, _idx, _texture, _duration) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_frame,
+      SpriteFrames._bindings.method_set_frame,
       this._owner,
       _anim, _idx, _texture, _duration
     );
@@ -296,7 +297,7 @@ export class SpriteFrames extends Resource{
   }
   remove_frame(_anim, _idx) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_frame,
+      SpriteFrames._bindings.method_remove_frame,
       this._owner,
       _anim, _idx
     );
@@ -304,7 +305,7 @@ export class SpriteFrames extends Resource{
   }
   get_frame_count(_anim) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_frame_count,
+      SpriteFrames._bindings.method_get_frame_count,
       this._owner,
 			Variant.Type.INT,
       _anim
@@ -313,7 +314,7 @@ export class SpriteFrames extends Resource{
   }
   get_frame_texture(_anim, _idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_frame_texture,
+      SpriteFrames._bindings.method_get_frame_texture,
       this._owner,
 			Variant.INT,
       _anim, _idx
@@ -322,7 +323,7 @@ export class SpriteFrames extends Resource{
   }
   get_frame_duration(_anim, _idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_frame_duration,
+      SpriteFrames._bindings.method_get_frame_duration,
       this._owner,
 			Variant.Type.FLOAT,
       _anim, _idx
@@ -331,7 +332,7 @@ export class SpriteFrames extends Resource{
   }
   clear(_anim) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear,
+      SpriteFrames._bindings.method_clear,
       this._owner,
       _anim
     );
@@ -339,7 +340,7 @@ export class SpriteFrames extends Resource{
   }
   clear_all() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_all,
+      SpriteFrames._bindings.method_clear_all,
       this._owner,
       
     );

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { StreamPeer } from '@js_godot/classes/stream_peer'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -30,6 +30,7 @@ export class StreamPeerExtension extends StreamPeer{
     }
     this.#initialized = true;
   }
+  
   _get_data(_r_buffer, _r_bytes, _r_received) {
   }
   _get_partial_data(_r_buffer, _r_bytes, _r_received) {

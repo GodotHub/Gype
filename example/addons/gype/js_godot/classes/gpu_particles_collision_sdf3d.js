@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
-import { Vector3 } from '@js_godot/variant/vector3'
 import { GPUParticlesCollision3D } from '@js_godot/classes/gpu_particles_collision3d'
+import { StringName } from '@js_godot/variant/string_name'
+import { Vector3 } from '@js_godot/variant/vector3'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -151,9 +151,10 @@ export class GPUParticlesCollisionSDF3D extends GPUParticlesCollision3D{
       );
     }
   }
+  
   set_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_size,
+      GPUParticlesCollisionSDF3D._bindings.method_set_size,
       this._owner,
       _size
     );
@@ -161,7 +162,7 @@ export class GPUParticlesCollisionSDF3D extends GPUParticlesCollision3D{
   }
   get_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_size,
+      GPUParticlesCollisionSDF3D._bindings.method_get_size,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -171,7 +172,7 @@ export class GPUParticlesCollisionSDF3D extends GPUParticlesCollision3D{
   }
   set_resolution(_resolution) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_resolution,
+      GPUParticlesCollisionSDF3D._bindings.method_set_resolution,
       this._owner,
       _resolution
     );
@@ -179,7 +180,7 @@ export class GPUParticlesCollisionSDF3D extends GPUParticlesCollision3D{
   }
   get_resolution() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_resolution,
+      GPUParticlesCollisionSDF3D._bindings.method_get_resolution,
       this._owner,
 			Variant.INT,
       
@@ -188,7 +189,7 @@ export class GPUParticlesCollisionSDF3D extends GPUParticlesCollision3D{
   }
   set_texture(_texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture,
+      GPUParticlesCollisionSDF3D._bindings.method_set_texture,
       this._owner,
       _texture
     );
@@ -196,7 +197,7 @@ export class GPUParticlesCollisionSDF3D extends GPUParticlesCollision3D{
   }
   get_texture() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture,
+      GPUParticlesCollisionSDF3D._bindings.method_get_texture,
       this._owner,
 			Variant.INT,
       
@@ -205,7 +206,7 @@ export class GPUParticlesCollisionSDF3D extends GPUParticlesCollision3D{
   }
   set_thickness(_thickness) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_thickness,
+      GPUParticlesCollisionSDF3D._bindings.method_set_thickness,
       this._owner,
       _thickness
     );
@@ -213,7 +214,7 @@ export class GPUParticlesCollisionSDF3D extends GPUParticlesCollision3D{
   }
   get_thickness() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_thickness,
+      GPUParticlesCollisionSDF3D._bindings.method_get_thickness,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -222,7 +223,7 @@ export class GPUParticlesCollisionSDF3D extends GPUParticlesCollision3D{
   }
   set_bake_mask(_mask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bake_mask,
+      GPUParticlesCollisionSDF3D._bindings.method_set_bake_mask,
       this._owner,
       _mask
     );
@@ -230,7 +231,7 @@ export class GPUParticlesCollisionSDF3D extends GPUParticlesCollision3D{
   }
   get_bake_mask() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bake_mask,
+      GPUParticlesCollisionSDF3D._bindings.method_get_bake_mask,
       this._owner,
 			Variant.Type.INT,
       
@@ -239,7 +240,7 @@ export class GPUParticlesCollisionSDF3D extends GPUParticlesCollision3D{
   }
   set_bake_mask_value(_layer_number, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bake_mask_value,
+      GPUParticlesCollisionSDF3D._bindings.method_set_bake_mask_value,
       this._owner,
       _layer_number, _value
     );
@@ -247,7 +248,7 @@ export class GPUParticlesCollisionSDF3D extends GPUParticlesCollision3D{
   }
   get_bake_mask_value(_layer_number) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bake_mask_value,
+      GPUParticlesCollisionSDF3D._bindings.method_get_bake_mask_value,
       this._owner,
 			Variant.Type.BOOL,
       _layer_number

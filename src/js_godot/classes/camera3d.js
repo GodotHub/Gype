@@ -1,12 +1,12 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Transform3D } from '@js_godot/variant/transform3d'
-import { Vector3 } from '@js_godot/variant/vector3'
-import { StringName } from '@js_godot/variant/string_name'
-import { Node3D } from '@js_godot/classes/node3d'
-import { Vector2 } from '@js_godot/variant/vector2'
 import { RID } from '@js_godot/variant/rid'
+import { Transform3D } from '@js_godot/variant/transform3d'
+import { Node3D } from '@js_godot/classes/node3d'
+import { Variant } from '@js_godot/variant/variant'
+import { Vector2 } from '@js_godot/variant/vector2'
+import { StringName } from '@js_godot/variant/string_name'
 import { Projection } from '@js_godot/variant/projection'
+import { Vector3 } from '@js_godot/variant/vector3'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -525,9 +525,10 @@ export class Camera3D extends Node3D{
       );
     }
   }
+  
   project_ray_normal(_screen_point) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_project_ray_normal,
+      Camera3D._bindings.method_project_ray_normal,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -537,7 +538,7 @@ export class Camera3D extends Node3D{
   }
   project_local_ray_normal(_screen_point) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_project_local_ray_normal,
+      Camera3D._bindings.method_project_local_ray_normal,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -547,7 +548,7 @@ export class Camera3D extends Node3D{
   }
   project_ray_origin(_screen_point) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_project_ray_origin,
+      Camera3D._bindings.method_project_ray_origin,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -557,7 +558,7 @@ export class Camera3D extends Node3D{
   }
   unproject_position(_world_point) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_unproject_position,
+      Camera3D._bindings.method_unproject_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -567,7 +568,7 @@ export class Camera3D extends Node3D{
   }
   is_position_behind(_world_point) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_position_behind,
+      Camera3D._bindings.method_is_position_behind,
       this._owner,
 			Variant.Type.BOOL,
       _world_point
@@ -576,7 +577,7 @@ export class Camera3D extends Node3D{
   }
   project_position(_screen_point, _z_depth) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_project_position,
+      Camera3D._bindings.method_project_position,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -586,7 +587,7 @@ export class Camera3D extends Node3D{
   }
   set_perspective(_fov, _z_near, _z_far) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_perspective,
+      Camera3D._bindings.method_set_perspective,
       this._owner,
       _fov, _z_near, _z_far
     );
@@ -594,7 +595,7 @@ export class Camera3D extends Node3D{
   }
   set_orthogonal(_size, _z_near, _z_far) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_orthogonal,
+      Camera3D._bindings.method_set_orthogonal,
       this._owner,
       _size, _z_near, _z_far
     );
@@ -602,7 +603,7 @@ export class Camera3D extends Node3D{
   }
   set_frustum(_size, _offset, _z_near, _z_far) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_frustum,
+      Camera3D._bindings.method_set_frustum,
       this._owner,
       _size, _offset, _z_near, _z_far
     );
@@ -610,7 +611,7 @@ export class Camera3D extends Node3D{
   }
   make_current() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_make_current,
+      Camera3D._bindings.method_make_current,
       this._owner,
       
     );
@@ -618,7 +619,7 @@ export class Camera3D extends Node3D{
   }
   clear_current(_enable_next) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_current,
+      Camera3D._bindings.method_clear_current,
       this._owner,
       _enable_next
     );
@@ -626,7 +627,7 @@ export class Camera3D extends Node3D{
   }
   set_current(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_current,
+      Camera3D._bindings.method_set_current,
       this._owner,
       _enabled
     );
@@ -634,7 +635,7 @@ export class Camera3D extends Node3D{
   }
   is_current() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_current,
+      Camera3D._bindings.method_is_current,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -643,7 +644,7 @@ export class Camera3D extends Node3D{
   }
   get_camera_transform() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_camera_transform,
+      Camera3D._bindings.method_get_camera_transform,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -653,7 +654,7 @@ export class Camera3D extends Node3D{
   }
   get_camera_projection() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_camera_projection,
+      Camera3D._bindings.method_get_camera_projection,
       this._owner,
 			Variant.Type.PROJECTION,
     
@@ -663,7 +664,7 @@ export class Camera3D extends Node3D{
   }
   get_fov() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fov,
+      Camera3D._bindings.method_get_fov,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -672,7 +673,7 @@ export class Camera3D extends Node3D{
   }
   get_frustum_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_frustum_offset,
+      Camera3D._bindings.method_get_frustum_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -682,7 +683,7 @@ export class Camera3D extends Node3D{
   }
   get_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_size,
+      Camera3D._bindings.method_get_size,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -691,7 +692,7 @@ export class Camera3D extends Node3D{
   }
   get_far() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_far,
+      Camera3D._bindings.method_get_far,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -700,7 +701,7 @@ export class Camera3D extends Node3D{
   }
   get_near() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_near,
+      Camera3D._bindings.method_get_near,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -709,7 +710,7 @@ export class Camera3D extends Node3D{
   }
   set_fov(_fov) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fov,
+      Camera3D._bindings.method_set_fov,
       this._owner,
       _fov
     );
@@ -717,7 +718,7 @@ export class Camera3D extends Node3D{
   }
   set_frustum_offset(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_frustum_offset,
+      Camera3D._bindings.method_set_frustum_offset,
       this._owner,
       _offset
     );
@@ -725,7 +726,7 @@ export class Camera3D extends Node3D{
   }
   set_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_size,
+      Camera3D._bindings.method_set_size,
       this._owner,
       _size
     );
@@ -733,7 +734,7 @@ export class Camera3D extends Node3D{
   }
   set_far(_far) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_far,
+      Camera3D._bindings.method_set_far,
       this._owner,
       _far
     );
@@ -741,7 +742,7 @@ export class Camera3D extends Node3D{
   }
   set_near(_near) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_near,
+      Camera3D._bindings.method_set_near,
       this._owner,
       _near
     );
@@ -749,7 +750,7 @@ export class Camera3D extends Node3D{
   }
   get_projection() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_projection,
+      Camera3D._bindings.method_get_projection,
       this._owner,
 			Variant.INT,
       
@@ -758,7 +759,7 @@ export class Camera3D extends Node3D{
   }
   set_projection(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_projection,
+      Camera3D._bindings.method_set_projection,
       this._owner,
       _mode
     );
@@ -766,7 +767,7 @@ export class Camera3D extends Node3D{
   }
   set_h_offset(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_h_offset,
+      Camera3D._bindings.method_set_h_offset,
       this._owner,
       _offset
     );
@@ -774,7 +775,7 @@ export class Camera3D extends Node3D{
   }
   get_h_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_h_offset,
+      Camera3D._bindings.method_get_h_offset,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -783,7 +784,7 @@ export class Camera3D extends Node3D{
   }
   set_v_offset(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_v_offset,
+      Camera3D._bindings.method_set_v_offset,
       this._owner,
       _offset
     );
@@ -791,7 +792,7 @@ export class Camera3D extends Node3D{
   }
   get_v_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_v_offset,
+      Camera3D._bindings.method_get_v_offset,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -800,7 +801,7 @@ export class Camera3D extends Node3D{
   }
   set_cull_mask(_mask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cull_mask,
+      Camera3D._bindings.method_set_cull_mask,
       this._owner,
       _mask
     );
@@ -808,7 +809,7 @@ export class Camera3D extends Node3D{
   }
   get_cull_mask() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cull_mask,
+      Camera3D._bindings.method_get_cull_mask,
       this._owner,
 			Variant.Type.INT,
       
@@ -817,7 +818,7 @@ export class Camera3D extends Node3D{
   }
   set_environment(_env) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_environment,
+      Camera3D._bindings.method_set_environment,
       this._owner,
       _env
     );
@@ -825,7 +826,7 @@ export class Camera3D extends Node3D{
   }
   get_environment() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_environment,
+      Camera3D._bindings.method_get_environment,
       this._owner,
 			Variant.INT,
       
@@ -834,7 +835,7 @@ export class Camera3D extends Node3D{
   }
   set_attributes(_env) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_attributes,
+      Camera3D._bindings.method_set_attributes,
       this._owner,
       _env
     );
@@ -842,7 +843,7 @@ export class Camera3D extends Node3D{
   }
   get_attributes() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_attributes,
+      Camera3D._bindings.method_get_attributes,
       this._owner,
 			Variant.INT,
       
@@ -851,7 +852,7 @@ export class Camera3D extends Node3D{
   }
   set_compositor(_compositor) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_compositor,
+      Camera3D._bindings.method_set_compositor,
       this._owner,
       _compositor
     );
@@ -859,7 +860,7 @@ export class Camera3D extends Node3D{
   }
   get_compositor() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_compositor,
+      Camera3D._bindings.method_get_compositor,
       this._owner,
 			Variant.INT,
       
@@ -868,7 +869,7 @@ export class Camera3D extends Node3D{
   }
   set_keep_aspect_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_keep_aspect_mode,
+      Camera3D._bindings.method_set_keep_aspect_mode,
       this._owner,
       _mode
     );
@@ -876,7 +877,7 @@ export class Camera3D extends Node3D{
   }
   get_keep_aspect_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_keep_aspect_mode,
+      Camera3D._bindings.method_get_keep_aspect_mode,
       this._owner,
 			Variant.INT,
       
@@ -885,7 +886,7 @@ export class Camera3D extends Node3D{
   }
   set_doppler_tracking(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_doppler_tracking,
+      Camera3D._bindings.method_set_doppler_tracking,
       this._owner,
       _mode
     );
@@ -893,7 +894,7 @@ export class Camera3D extends Node3D{
   }
   get_doppler_tracking() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_doppler_tracking,
+      Camera3D._bindings.method_get_doppler_tracking,
       this._owner,
 			Variant.INT,
       
@@ -902,7 +903,7 @@ export class Camera3D extends Node3D{
   }
   get_frustum() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_frustum,
+      Camera3D._bindings.method_get_frustum,
       this._owner,
 			Variant.INT,
       
@@ -911,7 +912,7 @@ export class Camera3D extends Node3D{
   }
   is_position_in_frustum(_world_point) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_position_in_frustum,
+      Camera3D._bindings.method_is_position_in_frustum,
       this._owner,
 			Variant.Type.BOOL,
       _world_point
@@ -920,7 +921,7 @@ export class Camera3D extends Node3D{
   }
   get_camera_rid() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_camera_rid,
+      Camera3D._bindings.method_get_camera_rid,
       this._owner,
 			Variant.Type.RID,
     
@@ -930,7 +931,7 @@ export class Camera3D extends Node3D{
   }
   get_pyramid_shape_rid() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_pyramid_shape_rid,
+      Camera3D._bindings.method_get_pyramid_shape_rid,
       this._owner,
 			Variant.Type.RID,
     
@@ -940,7 +941,7 @@ export class Camera3D extends Node3D{
   }
   set_cull_mask_value(_layer_number, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cull_mask_value,
+      Camera3D._bindings.method_set_cull_mask_value,
       this._owner,
       _layer_number, _value
     );
@@ -948,7 +949,7 @@ export class Camera3D extends Node3D{
   }
   get_cull_mask_value(_layer_number) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cull_mask_value,
+      Camera3D._bindings.method_get_cull_mask_value,
       this._owner,
 			Variant.Type.BOOL,
       _layer_number

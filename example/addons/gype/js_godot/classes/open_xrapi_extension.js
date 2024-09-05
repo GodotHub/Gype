@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Transform3D } from '@js_godot/variant/transform3d'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { Transform3D } from '@js_godot/variant/transform3d'
+import { GDString } from '@js_godot/variant/gd_string'
+import { Variant } from '@js_godot/variant/variant'
 import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
@@ -233,9 +233,10 @@ export class OpenXRAPIExtension extends RefCounted{
       );
     }
   }
+  
   get_instance() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_instance,
+      OpenXRAPIExtension._bindings.method_get_instance,
       this._owner,
 			Variant.Type.INT,
       
@@ -244,7 +245,7 @@ export class OpenXRAPIExtension extends RefCounted{
   }
   get_system_id() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_system_id,
+      OpenXRAPIExtension._bindings.method_get_system_id,
       this._owner,
 			Variant.Type.INT,
       
@@ -253,7 +254,7 @@ export class OpenXRAPIExtension extends RefCounted{
   }
   get_session() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_session,
+      OpenXRAPIExtension._bindings.method_get_session,
       this._owner,
 			Variant.Type.INT,
       
@@ -262,7 +263,7 @@ export class OpenXRAPIExtension extends RefCounted{
   }
   transform_from_pose(_pose) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_transform_from_pose,
+      OpenXRAPIExtension._bindings.method_transform_from_pose,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -272,7 +273,7 @@ export class OpenXRAPIExtension extends RefCounted{
   }
   xr_result(_result, _format, _args) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_xr_result,
+      OpenXRAPIExtension._bindings.method_xr_result,
       this._owner,
 			Variant.Type.BOOL,
       _result, _format, _args
@@ -281,7 +282,7 @@ export class OpenXRAPIExtension extends RefCounted{
   }
   openxr_is_enabled(_check_run_in_editor) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_openxr_is_enabled,
+      OpenXRAPIExtension._bindings.method_openxr_is_enabled,
       this._owner,
 			Variant.Type.BOOL,
       _check_run_in_editor
@@ -290,7 +291,7 @@ export class OpenXRAPIExtension extends RefCounted{
   }
   get_instance_proc_addr(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_instance_proc_addr,
+      OpenXRAPIExtension._bindings.method_get_instance_proc_addr,
       this._owner,
 			Variant.Type.INT,
       _name
@@ -299,7 +300,7 @@ export class OpenXRAPIExtension extends RefCounted{
   }
   get_error_string(_result) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_error_string,
+      OpenXRAPIExtension._bindings.method_get_error_string,
       this._owner,
 			Variant.Type.STRING,
     
@@ -309,7 +310,7 @@ export class OpenXRAPIExtension extends RefCounted{
   }
   get_swapchain_format_name(_swapchain_format) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_swapchain_format_name,
+      OpenXRAPIExtension._bindings.method_get_swapchain_format_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -319,7 +320,7 @@ export class OpenXRAPIExtension extends RefCounted{
   }
   is_initialized() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_initialized,
+      OpenXRAPIExtension._bindings.method_is_initialized,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -328,7 +329,7 @@ export class OpenXRAPIExtension extends RefCounted{
   }
   is_running() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_running,
+      OpenXRAPIExtension._bindings.method_is_running,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -337,7 +338,7 @@ export class OpenXRAPIExtension extends RefCounted{
   }
   get_play_space() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_play_space,
+      OpenXRAPIExtension._bindings.method_get_play_space,
       this._owner,
 			Variant.Type.INT,
       
@@ -346,7 +347,7 @@ export class OpenXRAPIExtension extends RefCounted{
   }
   get_predicted_display_time() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_predicted_display_time,
+      OpenXRAPIExtension._bindings.method_get_predicted_display_time,
       this._owner,
 			Variant.Type.INT,
       
@@ -355,7 +356,7 @@ export class OpenXRAPIExtension extends RefCounted{
   }
   get_next_frame_time() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_next_frame_time,
+      OpenXRAPIExtension._bindings.method_get_next_frame_time,
       this._owner,
 			Variant.Type.INT,
       
@@ -364,7 +365,7 @@ export class OpenXRAPIExtension extends RefCounted{
   }
   can_render() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_can_render,
+      OpenXRAPIExtension._bindings.method_can_render,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -373,7 +374,7 @@ export class OpenXRAPIExtension extends RefCounted{
   }
   get_hand_tracker(_hand_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_hand_tracker,
+      OpenXRAPIExtension._bindings.method_get_hand_tracker,
       this._owner,
 			Variant.Type.INT,
       _hand_index
@@ -382,7 +383,7 @@ export class OpenXRAPIExtension extends RefCounted{
   }
   register_composition_layer_provider(_extension) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_register_composition_layer_provider,
+      OpenXRAPIExtension._bindings.method_register_composition_layer_provider,
       this._owner,
       _extension
     );
@@ -390,7 +391,7 @@ export class OpenXRAPIExtension extends RefCounted{
   }
   unregister_composition_layer_provider(_extension) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_unregister_composition_layer_provider,
+      OpenXRAPIExtension._bindings.method_unregister_composition_layer_provider,
       this._owner,
       _extension
     );
@@ -398,7 +399,7 @@ export class OpenXRAPIExtension extends RefCounted{
   }
   set_emulate_environment_blend_mode_alpha_blend(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_emulate_environment_blend_mode_alpha_blend,
+      OpenXRAPIExtension._bindings.method_set_emulate_environment_blend_mode_alpha_blend,
       this._owner,
       _enabled
     );
@@ -406,7 +407,7 @@ export class OpenXRAPIExtension extends RefCounted{
   }
   is_environment_blend_mode_alpha_supported() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_environment_blend_mode_alpha_supported,
+      OpenXRAPIExtension._bindings.method_is_environment_blend_mode_alpha_supported,
       this._owner,
 			Variant.INT,
       

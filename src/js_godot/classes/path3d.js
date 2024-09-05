@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { Node3D } from '@js_godot/classes/node3d'
 import {
   call_utility_ret,
@@ -50,9 +50,10 @@ export class Path3D extends Node3D{
       );
     }
   }
+  
   set_curve(_curve) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_curve,
+      Path3D._bindings.method_set_curve,
       this._owner,
       _curve
     );
@@ -60,7 +61,7 @@ export class Path3D extends Node3D{
   }
   get_curve() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_curve,
+      Path3D._bindings.method_get_curve,
       this._owner,
 			Variant.INT,
       

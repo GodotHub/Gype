@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Vector3 } from '@js_godot/variant/vector3'
-import { StringName } from '@js_godot/variant/string_name'
-import { Node3D } from '@js_godot/classes/node3d'
 import { RID } from '@js_godot/variant/rid'
+import { Variant } from '@js_godot/variant/variant'
+import { Node3D } from '@js_godot/classes/node3d'
+import { StringName } from '@js_godot/variant/string_name'
+import { Vector3 } from '@js_godot/variant/vector3'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -242,9 +242,10 @@ export class NavigationLink3D extends Node3D{
       );
     }
   }
+  
   get_rid() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rid,
+      NavigationLink3D._bindings.method_get_rid,
       this._owner,
 			Variant.Type.RID,
     
@@ -254,7 +255,7 @@ export class NavigationLink3D extends Node3D{
   }
   set_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_enabled,
+      NavigationLink3D._bindings.method_set_enabled,
       this._owner,
       _enabled
     );
@@ -262,7 +263,7 @@ export class NavigationLink3D extends Node3D{
   }
   is_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_enabled,
+      NavigationLink3D._bindings.method_is_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -271,7 +272,7 @@ export class NavigationLink3D extends Node3D{
   }
   set_bidirectional(_bidirectional) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bidirectional,
+      NavigationLink3D._bindings.method_set_bidirectional,
       this._owner,
       _bidirectional
     );
@@ -279,7 +280,7 @@ export class NavigationLink3D extends Node3D{
   }
   is_bidirectional() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_bidirectional,
+      NavigationLink3D._bindings.method_is_bidirectional,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -288,7 +289,7 @@ export class NavigationLink3D extends Node3D{
   }
   set_navigation_layers(_navigation_layers) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_navigation_layers,
+      NavigationLink3D._bindings.method_set_navigation_layers,
       this._owner,
       _navigation_layers
     );
@@ -296,7 +297,7 @@ export class NavigationLink3D extends Node3D{
   }
   get_navigation_layers() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_navigation_layers,
+      NavigationLink3D._bindings.method_get_navigation_layers,
       this._owner,
 			Variant.Type.INT,
       
@@ -305,7 +306,7 @@ export class NavigationLink3D extends Node3D{
   }
   set_navigation_layer_value(_layer_number, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_navigation_layer_value,
+      NavigationLink3D._bindings.method_set_navigation_layer_value,
       this._owner,
       _layer_number, _value
     );
@@ -313,7 +314,7 @@ export class NavigationLink3D extends Node3D{
   }
   get_navigation_layer_value(_layer_number) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_navigation_layer_value,
+      NavigationLink3D._bindings.method_get_navigation_layer_value,
       this._owner,
 			Variant.Type.BOOL,
       _layer_number
@@ -322,7 +323,7 @@ export class NavigationLink3D extends Node3D{
   }
   set_start_position(_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_start_position,
+      NavigationLink3D._bindings.method_set_start_position,
       this._owner,
       _position
     );
@@ -330,7 +331,7 @@ export class NavigationLink3D extends Node3D{
   }
   get_start_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_start_position,
+      NavigationLink3D._bindings.method_get_start_position,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -340,7 +341,7 @@ export class NavigationLink3D extends Node3D{
   }
   set_end_position(_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_end_position,
+      NavigationLink3D._bindings.method_set_end_position,
       this._owner,
       _position
     );
@@ -348,7 +349,7 @@ export class NavigationLink3D extends Node3D{
   }
   get_end_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_end_position,
+      NavigationLink3D._bindings.method_get_end_position,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -358,7 +359,7 @@ export class NavigationLink3D extends Node3D{
   }
   set_global_start_position(_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_global_start_position,
+      NavigationLink3D._bindings.method_set_global_start_position,
       this._owner,
       _position
     );
@@ -366,7 +367,7 @@ export class NavigationLink3D extends Node3D{
   }
   get_global_start_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_global_start_position,
+      NavigationLink3D._bindings.method_get_global_start_position,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -376,7 +377,7 @@ export class NavigationLink3D extends Node3D{
   }
   set_global_end_position(_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_global_end_position,
+      NavigationLink3D._bindings.method_set_global_end_position,
       this._owner,
       _position
     );
@@ -384,7 +385,7 @@ export class NavigationLink3D extends Node3D{
   }
   get_global_end_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_global_end_position,
+      NavigationLink3D._bindings.method_get_global_end_position,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -394,7 +395,7 @@ export class NavigationLink3D extends Node3D{
   }
   set_enter_cost(_enter_cost) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_enter_cost,
+      NavigationLink3D._bindings.method_set_enter_cost,
       this._owner,
       _enter_cost
     );
@@ -402,7 +403,7 @@ export class NavigationLink3D extends Node3D{
   }
   get_enter_cost() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_enter_cost,
+      NavigationLink3D._bindings.method_get_enter_cost,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -411,7 +412,7 @@ export class NavigationLink3D extends Node3D{
   }
   set_travel_cost(_travel_cost) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_travel_cost,
+      NavigationLink3D._bindings.method_set_travel_cost,
       this._owner,
       _travel_cost
     );
@@ -419,7 +420,7 @@ export class NavigationLink3D extends Node3D{
   }
   get_travel_cost() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_travel_cost,
+      NavigationLink3D._bindings.method_get_travel_cost,
       this._owner,
 			Variant.Type.FLOAT,
       

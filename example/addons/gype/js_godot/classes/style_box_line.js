@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StyleBox } from '@js_godot/classes/style_box'
 import { Color } from '@js_godot/variant/color'
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { StyleBox } from '@js_godot/classes/style_box'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -131,9 +131,10 @@ export class StyleBoxLine extends StyleBox{
       );
     }
   }
+  
   set_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_color,
+      StyleBoxLine._bindings.method_set_color,
       this._owner,
       _color
     );
@@ -141,7 +142,7 @@ export class StyleBoxLine extends StyleBox{
   }
   get_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_color,
+      StyleBoxLine._bindings.method_get_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -151,7 +152,7 @@ export class StyleBoxLine extends StyleBox{
   }
   set_thickness(_thickness) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_thickness,
+      StyleBoxLine._bindings.method_set_thickness,
       this._owner,
       _thickness
     );
@@ -159,7 +160,7 @@ export class StyleBoxLine extends StyleBox{
   }
   get_thickness() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_thickness,
+      StyleBoxLine._bindings.method_get_thickness,
       this._owner,
 			Variant.Type.INT,
       
@@ -168,7 +169,7 @@ export class StyleBoxLine extends StyleBox{
   }
   set_grow_begin(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_grow_begin,
+      StyleBoxLine._bindings.method_set_grow_begin,
       this._owner,
       _offset
     );
@@ -176,7 +177,7 @@ export class StyleBoxLine extends StyleBox{
   }
   get_grow_begin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_grow_begin,
+      StyleBoxLine._bindings.method_get_grow_begin,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -185,7 +186,7 @@ export class StyleBoxLine extends StyleBox{
   }
   set_grow_end(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_grow_end,
+      StyleBoxLine._bindings.method_set_grow_end,
       this._owner,
       _offset
     );
@@ -193,7 +194,7 @@ export class StyleBoxLine extends StyleBox{
   }
   get_grow_end() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_grow_end,
+      StyleBoxLine._bindings.method_get_grow_end,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -202,7 +203,7 @@ export class StyleBoxLine extends StyleBox{
   }
   set_vertical(_vertical) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vertical,
+      StyleBoxLine._bindings.method_set_vertical,
       this._owner,
       _vertical
     );
@@ -210,7 +211,7 @@ export class StyleBoxLine extends StyleBox{
   }
   is_vertical() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_vertical,
+      StyleBoxLine._bindings.method_is_vertical,
       this._owner,
 			Variant.Type.BOOL,
       

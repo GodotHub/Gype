@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
+import { GDArray } from '@js_godot/variant/gd_array'
+import { RefCounted } from '@js_godot/classes/ref_counted'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
-import { RefCounted } from '@js_godot/classes/ref_counted'
-import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -52,6 +52,7 @@ export class EditorDebuggerPlugin extends RefCounted{
       );
     }
   }
+  
   _setup_session(_session_id) {
   }
   _has_capture(_capture) {
@@ -66,7 +67,7 @@ export class EditorDebuggerPlugin extends RefCounted{
   }
   get_session(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_session,
+      EditorDebuggerPlugin._bindings.method_get_session,
       this._owner,
 			Variant.INT,
       _id
@@ -75,7 +76,7 @@ export class EditorDebuggerPlugin extends RefCounted{
   }
   get_sessions() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sessions,
+      EditorDebuggerPlugin._bindings.method_get_sessions,
       this._owner,
 			Variant.Type.ARRAY,
     

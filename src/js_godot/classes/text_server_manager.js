@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { GodotObject } from '@js_godot/classes/godot_object'
+import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
+import { GodotObject } from '@js_godot/classes/godot_object'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -110,9 +110,10 @@ class _MethodBindings {
       );
     }
   }
+  
   add_interface(_interface) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_interface,
+      _TextServerManager._bindings.method_add_interface,
       this._owner,
       _interface
     );
@@ -120,7 +121,7 @@ class _MethodBindings {
   }
   get_interface_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_interface_count,
+      _TextServerManager._bindings.method_get_interface_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -129,7 +130,7 @@ class _MethodBindings {
   }
   remove_interface(_interface) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_interface,
+      _TextServerManager._bindings.method_remove_interface,
       this._owner,
       _interface
     );
@@ -137,7 +138,7 @@ class _MethodBindings {
   }
   get_interface(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_interface,
+      _TextServerManager._bindings.method_get_interface,
       this._owner,
 			Variant.INT,
       _idx
@@ -146,7 +147,7 @@ class _MethodBindings {
   }
   get_interfaces() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_interfaces,
+      _TextServerManager._bindings.method_get_interfaces,
       this._owner,
 			Variant.INT,
       
@@ -155,7 +156,7 @@ class _MethodBindings {
   }
   find_interface(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_find_interface,
+      _TextServerManager._bindings.method_find_interface,
       this._owner,
 			Variant.INT,
       _name
@@ -164,7 +165,7 @@ class _MethodBindings {
   }
   set_primary_interface(_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_primary_interface,
+      _TextServerManager._bindings.method_set_primary_interface,
       this._owner,
       _index
     );
@@ -172,7 +173,7 @@ class _MethodBindings {
   }
   get_primary_interface() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_primary_interface,
+      _TextServerManager._bindings.method_get_primary_interface,
       this._owner,
 			Variant.INT,
       
@@ -186,4 +187,17 @@ class _MethodBindings {
     this._init_bindings();
   }
 }
-export const TextServerManager = new _TextServerManager();
+export const TextServerManager = (function () {
+  let _instance;
+  function create_instance() {
+    return new _TextServerManager();
+  }
+  return {
+    instance: function () {
+      if (!_instance) {
+        _instance = create_instance();
+      }
+      return _instance;
+    },
+  };
+})();

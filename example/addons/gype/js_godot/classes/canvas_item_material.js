@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { StringName } from '@js_godot/variant/string_name'
 import { Material } from '@js_godot/classes/material'
 import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -150,9 +150,10 @@ export class CanvasItemMaterial extends Material{
       );
     }
   }
+  
   set_blend_mode(_blend_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_blend_mode,
+      CanvasItemMaterial._bindings.method_set_blend_mode,
       this._owner,
       _blend_mode
     );
@@ -160,7 +161,7 @@ export class CanvasItemMaterial extends Material{
   }
   get_blend_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_blend_mode,
+      CanvasItemMaterial._bindings.method_get_blend_mode,
       this._owner,
 			Variant.INT,
       
@@ -169,7 +170,7 @@ export class CanvasItemMaterial extends Material{
   }
   set_light_mode(_light_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_light_mode,
+      CanvasItemMaterial._bindings.method_set_light_mode,
       this._owner,
       _light_mode
     );
@@ -177,7 +178,7 @@ export class CanvasItemMaterial extends Material{
   }
   get_light_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_light_mode,
+      CanvasItemMaterial._bindings.method_get_light_mode,
       this._owner,
 			Variant.INT,
       
@@ -186,7 +187,7 @@ export class CanvasItemMaterial extends Material{
   }
   set_particles_animation(_particles_anim) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_particles_animation,
+      CanvasItemMaterial._bindings.method_set_particles_animation,
       this._owner,
       _particles_anim
     );
@@ -194,7 +195,7 @@ export class CanvasItemMaterial extends Material{
   }
   get_particles_animation() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_particles_animation,
+      CanvasItemMaterial._bindings.method_get_particles_animation,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -203,7 +204,7 @@ export class CanvasItemMaterial extends Material{
   }
   set_particles_anim_h_frames(_frames) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_particles_anim_h_frames,
+      CanvasItemMaterial._bindings.method_set_particles_anim_h_frames,
       this._owner,
       _frames
     );
@@ -211,7 +212,7 @@ export class CanvasItemMaterial extends Material{
   }
   get_particles_anim_h_frames() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_particles_anim_h_frames,
+      CanvasItemMaterial._bindings.method_get_particles_anim_h_frames,
       this._owner,
 			Variant.Type.INT,
       
@@ -220,7 +221,7 @@ export class CanvasItemMaterial extends Material{
   }
   set_particles_anim_v_frames(_frames) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_particles_anim_v_frames,
+      CanvasItemMaterial._bindings.method_set_particles_anim_v_frames,
       this._owner,
       _frames
     );
@@ -228,7 +229,7 @@ export class CanvasItemMaterial extends Material{
   }
   get_particles_anim_v_frames() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_particles_anim_v_frames,
+      CanvasItemMaterial._bindings.method_get_particles_anim_v_frames,
       this._owner,
 			Variant.Type.INT,
       
@@ -237,7 +238,7 @@ export class CanvasItemMaterial extends Material{
   }
   set_particles_anim_loop(_loop) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_particles_anim_loop,
+      CanvasItemMaterial._bindings.method_set_particles_anim_loop,
       this._owner,
       _loop
     );
@@ -245,7 +246,7 @@ export class CanvasItemMaterial extends Material{
   }
   get_particles_anim_loop() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_particles_anim_loop,
+      CanvasItemMaterial._bindings.method_get_particles_anim_loop,
       this._owner,
 			Variant.Type.BOOL,
       

@@ -31,6 +31,7 @@ export class ScriptLanguage extends GodotObject{
     this.#initialized = true;
   }
   
+  
 
   static ScriptNameCasing = {
     SCRIPT_NAME_CASING_AUTO: 0,

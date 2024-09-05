@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { GDString } from '@js_godot/variant/gd_string'
 import { BaseButton } from '@js_godot/classes/base_button'
 import { GDArray } from '@js_godot/variant/gd_array'
@@ -172,9 +172,10 @@ export class LinkButton extends BaseButton{
       );
     }
   }
+  
   set_text(_text) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_text,
+      LinkButton._bindings.method_set_text,
       this._owner,
       _text
     );
@@ -182,7 +183,7 @@ export class LinkButton extends BaseButton{
   }
   get_text() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_text,
+      LinkButton._bindings.method_get_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -192,7 +193,7 @@ export class LinkButton extends BaseButton{
   }
   set_text_direction(_direction) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_text_direction,
+      LinkButton._bindings.method_set_text_direction,
       this._owner,
       _direction
     );
@@ -200,7 +201,7 @@ export class LinkButton extends BaseButton{
   }
   get_text_direction() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_text_direction,
+      LinkButton._bindings.method_get_text_direction,
       this._owner,
 			Variant.INT,
       
@@ -209,7 +210,7 @@ export class LinkButton extends BaseButton{
   }
   set_language(_language) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_language,
+      LinkButton._bindings.method_set_language,
       this._owner,
       _language
     );
@@ -217,7 +218,7 @@ export class LinkButton extends BaseButton{
   }
   get_language() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_language,
+      LinkButton._bindings.method_get_language,
       this._owner,
 			Variant.Type.STRING,
     
@@ -227,7 +228,7 @@ export class LinkButton extends BaseButton{
   }
   set_uri(_uri) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_uri,
+      LinkButton._bindings.method_set_uri,
       this._owner,
       _uri
     );
@@ -235,7 +236,7 @@ export class LinkButton extends BaseButton{
   }
   get_uri() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_uri,
+      LinkButton._bindings.method_get_uri,
       this._owner,
 			Variant.Type.STRING,
     
@@ -245,7 +246,7 @@ export class LinkButton extends BaseButton{
   }
   set_underline_mode(_underline_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_underline_mode,
+      LinkButton._bindings.method_set_underline_mode,
       this._owner,
       _underline_mode
     );
@@ -253,7 +254,7 @@ export class LinkButton extends BaseButton{
   }
   get_underline_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_underline_mode,
+      LinkButton._bindings.method_get_underline_mode,
       this._owner,
 			Variant.INT,
       
@@ -262,7 +263,7 @@ export class LinkButton extends BaseButton{
   }
   set_structured_text_bidi_override(_parser) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_structured_text_bidi_override,
+      LinkButton._bindings.method_set_structured_text_bidi_override,
       this._owner,
       _parser
     );
@@ -270,7 +271,7 @@ export class LinkButton extends BaseButton{
   }
   get_structured_text_bidi_override() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_structured_text_bidi_override,
+      LinkButton._bindings.method_get_structured_text_bidi_override,
       this._owner,
 			Variant.INT,
       
@@ -279,7 +280,7 @@ export class LinkButton extends BaseButton{
   }
   set_structured_text_bidi_override_options(_args) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_structured_text_bidi_override_options,
+      LinkButton._bindings.method_set_structured_text_bidi_override_options,
       this._owner,
       _args
     );
@@ -287,7 +288,7 @@ export class LinkButton extends BaseButton{
   }
   get_structured_text_bidi_override_options() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_structured_text_bidi_override_options,
+      LinkButton._bindings.method_get_structured_text_bidi_override_options,
       this._owner,
 			Variant.Type.ARRAY,
     

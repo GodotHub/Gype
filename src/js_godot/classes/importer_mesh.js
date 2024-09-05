@@ -1,12 +1,12 @@
 import * as internal from '__internal__';
-import { Dictionary } from '@js_godot/variant/dictionary'
-import { Variant } from '@js_godot/variant/variant'
-import { Resource } from '@js_godot/classes/resource'
 import { Vector2i } from '@js_godot/variant/vector2i'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
 import { GDArray } from '@js_godot/variant/gd_array'
+import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { Dictionary } from '@js_godot/variant/dictionary'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -265,9 +265,10 @@ export class ImporterMesh extends Resource{
       );
     }
   }
+  
   add_blend_shape(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_blend_shape,
+      ImporterMesh._bindings.method_add_blend_shape,
       this._owner,
       _name
     );
@@ -275,7 +276,7 @@ export class ImporterMesh extends Resource{
   }
   get_blend_shape_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_blend_shape_count,
+      ImporterMesh._bindings.method_get_blend_shape_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -284,7 +285,7 @@ export class ImporterMesh extends Resource{
   }
   get_blend_shape_name(_blend_shape_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_blend_shape_name,
+      ImporterMesh._bindings.method_get_blend_shape_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -294,7 +295,7 @@ export class ImporterMesh extends Resource{
   }
   set_blend_shape_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_blend_shape_mode,
+      ImporterMesh._bindings.method_set_blend_shape_mode,
       this._owner,
       _mode
     );
@@ -302,7 +303,7 @@ export class ImporterMesh extends Resource{
   }
   get_blend_shape_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_blend_shape_mode,
+      ImporterMesh._bindings.method_get_blend_shape_mode,
       this._owner,
 			Variant.INT,
       
@@ -311,7 +312,7 @@ export class ImporterMesh extends Resource{
   }
   add_surface(_primitive, _arrays, _blend_shapes, _lods, _material, _name, _flags) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_surface,
+      ImporterMesh._bindings.method_add_surface,
       this._owner,
       _primitive, _arrays, _blend_shapes, _lods, _material, _name, _flags
     );
@@ -319,7 +320,7 @@ export class ImporterMesh extends Resource{
   }
   get_surface_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_surface_count,
+      ImporterMesh._bindings.method_get_surface_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -328,7 +329,7 @@ export class ImporterMesh extends Resource{
   }
   get_surface_primitive_type(_surface_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_surface_primitive_type,
+      ImporterMesh._bindings.method_get_surface_primitive_type,
       this._owner,
 			Variant.INT,
       _surface_idx
@@ -337,7 +338,7 @@ export class ImporterMesh extends Resource{
   }
   get_surface_name(_surface_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_surface_name,
+      ImporterMesh._bindings.method_get_surface_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -347,7 +348,7 @@ export class ImporterMesh extends Resource{
   }
   get_surface_arrays(_surface_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_surface_arrays,
+      ImporterMesh._bindings.method_get_surface_arrays,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -357,7 +358,7 @@ export class ImporterMesh extends Resource{
   }
   get_surface_blend_shape_arrays(_surface_idx, _blend_shape_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_surface_blend_shape_arrays,
+      ImporterMesh._bindings.method_get_surface_blend_shape_arrays,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -367,7 +368,7 @@ export class ImporterMesh extends Resource{
   }
   get_surface_lod_count(_surface_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_surface_lod_count,
+      ImporterMesh._bindings.method_get_surface_lod_count,
       this._owner,
 			Variant.Type.INT,
       _surface_idx
@@ -376,7 +377,7 @@ export class ImporterMesh extends Resource{
   }
   get_surface_lod_size(_surface_idx, _lod_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_surface_lod_size,
+      ImporterMesh._bindings.method_get_surface_lod_size,
       this._owner,
 			Variant.Type.FLOAT,
       _surface_idx, _lod_idx
@@ -385,7 +386,7 @@ export class ImporterMesh extends Resource{
   }
   get_surface_lod_indices(_surface_idx, _lod_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_surface_lod_indices,
+      ImporterMesh._bindings.method_get_surface_lod_indices,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -395,7 +396,7 @@ export class ImporterMesh extends Resource{
   }
   get_surface_material(_surface_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_surface_material,
+      ImporterMesh._bindings.method_get_surface_material,
       this._owner,
 			Variant.INT,
       _surface_idx
@@ -404,7 +405,7 @@ export class ImporterMesh extends Resource{
   }
   get_surface_format(_surface_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_surface_format,
+      ImporterMesh._bindings.method_get_surface_format,
       this._owner,
 			Variant.Type.INT,
       _surface_idx
@@ -413,7 +414,7 @@ export class ImporterMesh extends Resource{
   }
   set_surface_name(_surface_idx, _name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_surface_name,
+      ImporterMesh._bindings.method_set_surface_name,
       this._owner,
       _surface_idx, _name
     );
@@ -421,7 +422,7 @@ export class ImporterMesh extends Resource{
   }
   set_surface_material(_surface_idx, _material) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_surface_material,
+      ImporterMesh._bindings.method_set_surface_material,
       this._owner,
       _surface_idx, _material
     );
@@ -429,7 +430,7 @@ export class ImporterMesh extends Resource{
   }
   generate_lods(_normal_merge_angle, _normal_split_angle, _bone_transform_array) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_generate_lods,
+      ImporterMesh._bindings.method_generate_lods,
       this._owner,
       _normal_merge_angle, _normal_split_angle, _bone_transform_array
     );
@@ -437,7 +438,7 @@ export class ImporterMesh extends Resource{
   }
   get_mesh(_base_mesh) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mesh,
+      ImporterMesh._bindings.method_get_mesh,
       this._owner,
 			Variant.INT,
       _base_mesh
@@ -446,7 +447,7 @@ export class ImporterMesh extends Resource{
   }
   clear() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear,
+      ImporterMesh._bindings.method_clear,
       this._owner,
       
     );
@@ -454,7 +455,7 @@ export class ImporterMesh extends Resource{
   }
   set_lightmap_size_hint(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_lightmap_size_hint,
+      ImporterMesh._bindings.method_set_lightmap_size_hint,
       this._owner,
       _size
     );
@@ -462,7 +463,7 @@ export class ImporterMesh extends Resource{
   }
   get_lightmap_size_hint() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_lightmap_size_hint,
+      ImporterMesh._bindings.method_get_lightmap_size_hint,
       this._owner,
 			Variant.Type.VECTOR2I,
     

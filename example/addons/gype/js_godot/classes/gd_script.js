@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { Script } from '@js_godot/classes/script'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -40,9 +40,10 @@ export class GDScript extends Script{
       );
     }
   }
+  
   new() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_new,
+      GDScript._bindings.method_new,
       this._owner,
 			Variant.Type.VARIANT,
     

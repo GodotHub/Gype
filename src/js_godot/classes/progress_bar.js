@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Range } from '@js_godot/classes/range'
-import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -110,9 +110,10 @@ export class ProgressBar extends Range{
       );
     }
   }
+  
   set_fill_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fill_mode,
+      ProgressBar._bindings.method_set_fill_mode,
       this._owner,
       _mode
     );
@@ -120,7 +121,7 @@ export class ProgressBar extends Range{
   }
   get_fill_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fill_mode,
+      ProgressBar._bindings.method_get_fill_mode,
       this._owner,
 			Variant.Type.INT,
       
@@ -129,7 +130,7 @@ export class ProgressBar extends Range{
   }
   set_show_percentage(_visible) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_show_percentage,
+      ProgressBar._bindings.method_set_show_percentage,
       this._owner,
       _visible
     );
@@ -137,7 +138,7 @@ export class ProgressBar extends Range{
   }
   is_percentage_shown() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_percentage_shown,
+      ProgressBar._bindings.method_is_percentage_shown,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -146,7 +147,7 @@ export class ProgressBar extends Range{
   }
   set_indeterminate(_indeterminate) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_indeterminate,
+      ProgressBar._bindings.method_set_indeterminate,
       this._owner,
       _indeterminate
     );
@@ -154,7 +155,7 @@ export class ProgressBar extends Range{
   }
   is_indeterminate() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_indeterminate,
+      ProgressBar._bindings.method_is_indeterminate,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -163,7 +164,7 @@ export class ProgressBar extends Range{
   }
   set_editor_preview_indeterminate(_preview_indeterminate) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_editor_preview_indeterminate,
+      ProgressBar._bindings.method_set_editor_preview_indeterminate,
       this._owner,
       _preview_indeterminate
     );
@@ -171,7 +172,7 @@ export class ProgressBar extends Range{
   }
   is_editor_preview_indeterminate_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_editor_preview_indeterminate_enabled,
+      ProgressBar._bindings.method_is_editor_preview_indeterminate_enabled,
       this._owner,
 			Variant.Type.BOOL,
       

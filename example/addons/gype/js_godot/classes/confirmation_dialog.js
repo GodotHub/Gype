@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { AcceptDialog } from '@js_godot/classes/accept_dialog'
 import { Variant } from '@js_godot/variant/variant'
-import { GDString } from '@js_godot/variant/gd_string'
 import { StringName } from '@js_godot/variant/string_name'
+import { AcceptDialog } from '@js_godot/classes/accept_dialog'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -61,9 +61,10 @@ export class ConfirmationDialog extends AcceptDialog{
       );
     }
   }
+  
   get_cancel_button() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cancel_button,
+      ConfirmationDialog._bindings.method_get_cancel_button,
       this._owner,
 			Variant.INT,
       
@@ -72,7 +73,7 @@ export class ConfirmationDialog extends AcceptDialog{
   }
   set_cancel_button_text(_text) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cancel_button_text,
+      ConfirmationDialog._bindings.method_set_cancel_button_text,
       this._owner,
       _text
     );
@@ -80,7 +81,7 @@ export class ConfirmationDialog extends AcceptDialog{
   }
   get_cancel_button_text() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cancel_button_text,
+      ConfirmationDialog._bindings.method_get_cancel_button_text,
       this._owner,
 			Variant.Type.STRING,
     

@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
+import { Color } from '@js_godot/variant/color'
+import { StringName } from '@js_godot/variant/string_name'
 import { Material } from '@js_godot/classes/material'
 import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
-import { Color } from '@js_godot/variant/color'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -311,9 +311,10 @@ export class ProceduralSkyMaterial extends Material{
       );
     }
   }
+  
   set_sky_top_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sky_top_color,
+      ProceduralSkyMaterial._bindings.method_set_sky_top_color,
       this._owner,
       _color
     );
@@ -321,7 +322,7 @@ export class ProceduralSkyMaterial extends Material{
   }
   get_sky_top_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sky_top_color,
+      ProceduralSkyMaterial._bindings.method_get_sky_top_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -331,7 +332,7 @@ export class ProceduralSkyMaterial extends Material{
   }
   set_sky_horizon_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sky_horizon_color,
+      ProceduralSkyMaterial._bindings.method_set_sky_horizon_color,
       this._owner,
       _color
     );
@@ -339,7 +340,7 @@ export class ProceduralSkyMaterial extends Material{
   }
   get_sky_horizon_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sky_horizon_color,
+      ProceduralSkyMaterial._bindings.method_get_sky_horizon_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -349,7 +350,7 @@ export class ProceduralSkyMaterial extends Material{
   }
   set_sky_curve(_curve) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sky_curve,
+      ProceduralSkyMaterial._bindings.method_set_sky_curve,
       this._owner,
       _curve
     );
@@ -357,7 +358,7 @@ export class ProceduralSkyMaterial extends Material{
   }
   get_sky_curve() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sky_curve,
+      ProceduralSkyMaterial._bindings.method_get_sky_curve,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -366,7 +367,7 @@ export class ProceduralSkyMaterial extends Material{
   }
   set_sky_energy_multiplier(_multiplier) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sky_energy_multiplier,
+      ProceduralSkyMaterial._bindings.method_set_sky_energy_multiplier,
       this._owner,
       _multiplier
     );
@@ -374,7 +375,7 @@ export class ProceduralSkyMaterial extends Material{
   }
   get_sky_energy_multiplier() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sky_energy_multiplier,
+      ProceduralSkyMaterial._bindings.method_get_sky_energy_multiplier,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -383,7 +384,7 @@ export class ProceduralSkyMaterial extends Material{
   }
   set_sky_cover(_sky_cover) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sky_cover,
+      ProceduralSkyMaterial._bindings.method_set_sky_cover,
       this._owner,
       _sky_cover
     );
@@ -391,7 +392,7 @@ export class ProceduralSkyMaterial extends Material{
   }
   get_sky_cover() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sky_cover,
+      ProceduralSkyMaterial._bindings.method_get_sky_cover,
       this._owner,
 			Variant.INT,
       
@@ -400,7 +401,7 @@ export class ProceduralSkyMaterial extends Material{
   }
   set_sky_cover_modulate(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sky_cover_modulate,
+      ProceduralSkyMaterial._bindings.method_set_sky_cover_modulate,
       this._owner,
       _color
     );
@@ -408,7 +409,7 @@ export class ProceduralSkyMaterial extends Material{
   }
   get_sky_cover_modulate() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sky_cover_modulate,
+      ProceduralSkyMaterial._bindings.method_get_sky_cover_modulate,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -418,7 +419,7 @@ export class ProceduralSkyMaterial extends Material{
   }
   set_ground_bottom_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ground_bottom_color,
+      ProceduralSkyMaterial._bindings.method_set_ground_bottom_color,
       this._owner,
       _color
     );
@@ -426,7 +427,7 @@ export class ProceduralSkyMaterial extends Material{
   }
   get_ground_bottom_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ground_bottom_color,
+      ProceduralSkyMaterial._bindings.method_get_ground_bottom_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -436,7 +437,7 @@ export class ProceduralSkyMaterial extends Material{
   }
   set_ground_horizon_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ground_horizon_color,
+      ProceduralSkyMaterial._bindings.method_set_ground_horizon_color,
       this._owner,
       _color
     );
@@ -444,7 +445,7 @@ export class ProceduralSkyMaterial extends Material{
   }
   get_ground_horizon_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ground_horizon_color,
+      ProceduralSkyMaterial._bindings.method_get_ground_horizon_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -454,7 +455,7 @@ export class ProceduralSkyMaterial extends Material{
   }
   set_ground_curve(_curve) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ground_curve,
+      ProceduralSkyMaterial._bindings.method_set_ground_curve,
       this._owner,
       _curve
     );
@@ -462,7 +463,7 @@ export class ProceduralSkyMaterial extends Material{
   }
   get_ground_curve() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ground_curve,
+      ProceduralSkyMaterial._bindings.method_get_ground_curve,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -471,7 +472,7 @@ export class ProceduralSkyMaterial extends Material{
   }
   set_ground_energy_multiplier(_energy) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ground_energy_multiplier,
+      ProceduralSkyMaterial._bindings.method_set_ground_energy_multiplier,
       this._owner,
       _energy
     );
@@ -479,7 +480,7 @@ export class ProceduralSkyMaterial extends Material{
   }
   get_ground_energy_multiplier() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ground_energy_multiplier,
+      ProceduralSkyMaterial._bindings.method_get_ground_energy_multiplier,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -488,7 +489,7 @@ export class ProceduralSkyMaterial extends Material{
   }
   set_sun_angle_max(_degrees) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sun_angle_max,
+      ProceduralSkyMaterial._bindings.method_set_sun_angle_max,
       this._owner,
       _degrees
     );
@@ -496,7 +497,7 @@ export class ProceduralSkyMaterial extends Material{
   }
   get_sun_angle_max() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sun_angle_max,
+      ProceduralSkyMaterial._bindings.method_get_sun_angle_max,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -505,7 +506,7 @@ export class ProceduralSkyMaterial extends Material{
   }
   set_sun_curve(_curve) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sun_curve,
+      ProceduralSkyMaterial._bindings.method_set_sun_curve,
       this._owner,
       _curve
     );
@@ -513,7 +514,7 @@ export class ProceduralSkyMaterial extends Material{
   }
   get_sun_curve() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sun_curve,
+      ProceduralSkyMaterial._bindings.method_get_sun_curve,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -522,7 +523,7 @@ export class ProceduralSkyMaterial extends Material{
   }
   set_use_debanding(_use_debanding) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_debanding,
+      ProceduralSkyMaterial._bindings.method_set_use_debanding,
       this._owner,
       _use_debanding
     );
@@ -530,7 +531,7 @@ export class ProceduralSkyMaterial extends Material{
   }
   get_use_debanding() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_use_debanding,
+      ProceduralSkyMaterial._bindings.method_get_use_debanding,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -539,7 +540,7 @@ export class ProceduralSkyMaterial extends Material{
   }
   set_energy_multiplier(_multiplier) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_energy_multiplier,
+      ProceduralSkyMaterial._bindings.method_set_energy_multiplier,
       this._owner,
       _multiplier
     );
@@ -547,7 +548,7 @@ export class ProceduralSkyMaterial extends Material{
   }
   get_energy_multiplier() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_energy_multiplier,
+      ProceduralSkyMaterial._bindings.method_get_energy_multiplier,
       this._owner,
 			Variant.Type.FLOAT,
       

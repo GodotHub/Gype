@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
-import { Texture } from '@js_godot/classes/texture'
-import { Color } from '@js_godot/variant/color'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { Texture } from '@js_godot/classes/texture'
 import { RID } from '@js_godot/variant/rid'
+import { StringName } from '@js_godot/variant/string_name'
+import { Color } from '@js_godot/variant/color'
+import { Variant } from '@js_godot/variant/variant'
 import { Rect2 } from '@js_godot/variant/rect2'
 import {
   call_utility_ret,
@@ -124,6 +124,7 @@ export class Texture2D extends Texture{
       );
     }
   }
+  
   _get_width() {
   }
   _get_height() {
@@ -140,7 +141,7 @@ export class Texture2D extends Texture{
   }
   get_width() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_width,
+      Texture2D._bindings.method_get_width,
       this._owner,
 			Variant.Type.INT,
       
@@ -149,7 +150,7 @@ export class Texture2D extends Texture{
   }
   get_height() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_height,
+      Texture2D._bindings.method_get_height,
       this._owner,
 			Variant.Type.INT,
       
@@ -158,7 +159,7 @@ export class Texture2D extends Texture{
   }
   get_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_size,
+      Texture2D._bindings.method_get_size,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -168,7 +169,7 @@ export class Texture2D extends Texture{
   }
   has_alpha() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_alpha,
+      Texture2D._bindings.method_has_alpha,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -177,7 +178,7 @@ export class Texture2D extends Texture{
   }
   draw(_canvas_item, _position, _modulate, _transpose) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_draw,
+      Texture2D._bindings.method_draw,
       this._owner,
       _canvas_item, _position, _modulate, _transpose
     );
@@ -185,7 +186,7 @@ export class Texture2D extends Texture{
   }
   draw_rect(_canvas_item, _rect, _tile, _modulate, _transpose) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_draw_rect,
+      Texture2D._bindings.method_draw_rect,
       this._owner,
       _canvas_item, _rect, _tile, _modulate, _transpose
     );
@@ -193,7 +194,7 @@ export class Texture2D extends Texture{
   }
   draw_rect_region(_canvas_item, _rect, _src_rect, _modulate, _transpose, _clip_uv) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_draw_rect_region,
+      Texture2D._bindings.method_draw_rect_region,
       this._owner,
       _canvas_item, _rect, _src_rect, _modulate, _transpose, _clip_uv
     );
@@ -201,7 +202,7 @@ export class Texture2D extends Texture{
   }
   get_image() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_image,
+      Texture2D._bindings.method_get_image,
       this._owner,
 			Variant.INT,
       
@@ -210,7 +211,7 @@ export class Texture2D extends Texture{
   }
   create_placeholder() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_placeholder,
+      Texture2D._bindings.method_create_placeholder,
       this._owner,
 			Variant.INT,
       

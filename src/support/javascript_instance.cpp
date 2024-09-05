@@ -65,8 +65,11 @@ JavaScriptInstance::JavaScriptInstance(Object *p_godot_object, const JavaScript 
 	}
 }
 
-#define SET_JS_PROPERTY_WITH_MSG(prop_name, var)                                                                                      \
-	ERR_FAIL_COND_V_EDMSG(JS_SetPropertyStr(context.ctx, js_instance, prop_name, var), false, "Error setting js_instance property."); \
+#define SET_JS_PROPERTY_WITH_MSG(prop_name, var)                            \
+	if (JS_SetPropertyStr(context.ctx, js_instance, prop_name, var) <= 0) { \
+		qjs::print_exception(context.ctx);                                  \
+		ERR_FAIL_V_EDMSG(false, "Error setting js_instance property.");     \
+	}                                                                       \
 	return true;
 
 #define SETTER_JS_PROPERTY_WITH_MSG(js_setter, var)                                                                                              \
@@ -114,36 +117,15 @@ GDExtensionBool JavaScriptInstance::set(GDExtensionConstStringNamePtr p_name, GD
 	const StringName *name = reinterpret_cast<const StringName *>(p_name);
 	JSValue js_instance = binding.get_instance();
 	std::string prop_name = name->to_ascii_buffer().get_string_from_ascii().ascii().get_data();
-	std::string getter_name = "get_" + prop_name;
-	std::string setter_name = "set_" + prop_name;
-	JSValue prop = JS_GetPropertyStr(context.ctx, js_instance, getter_name.c_str());
-	if (JS_IsFunction(context.ctx, prop)) { // is godot property
-		JSValue gd_setter = JS_GetPropertyStr(context.ctx, js_instance, setter_name.c_str());
-		if (JS_IsFunction(context.ctx, gd_setter)) {
-			Variant *p_variant_cp = memnew(Variant);
-			godot::internal::gdextension_interface_variant_new_copy(p_variant_cp, p_variant);
-			Variant::Type type = p_variant_cp->get_type();
-			JSValue var = get_jsvalue_from_type(type, p_variant_cp);
-			SETTER_GD_PROPERTY_WITH_MSG(gd_setter, var);
-		}
+	JSValue prop = JS_GetPropertyStr(context.ctx, js_instance, prop_name.c_str());
+	if (!JS_IsUndefined(prop)) {
+		Variant *p_variant_cp = memnew(Variant);
+		godot::internal::gdextension_interface_variant_new_copy(p_variant_cp->_native_ptr(), reinterpret_cast<const Variant *>(p_variant)->_native_ptr());
+		Variant::Type type = p_variant_cp->get_type();
+		JSValue var = get_jsvalue_from_type(type, p_variant_cp);
+		SET_JS_PROPERTY_WITH_MSG(prop_name.c_str(), var);
 	} else {
-		JSValue js_setter = JS_GetPropertyStr(context.ctx, js_instance, setter_name.c_str());
-		JSValue js_prop = JS_GetPropertyStr(context.ctx, js_instance, prop_name.c_str());
-		if (JS_IsFunction(context.ctx, js_setter)) {
-			Variant *p_variant_cp = memnew(Variant);
-			godot::internal::gdextension_interface_variant_new_copy(p_variant_cp, p_variant);
-			Variant::Type type = p_variant_cp->get_type();
-			JSValue var = get_jsvalue_from_type(type, p_variant_cp);
-			SETTER_JS_PROPERTY_WITH_MSG(js_setter, var);
-		} else if (!JS_IsUndefined(js_prop)) {
-			Variant *p_variant_cp = memnew(Variant);
-			godot::internal::gdextension_interface_variant_new_copy(p_variant_cp, p_variant);
-			Variant::Type type = p_variant_cp->get_type();
-			JSValue var = get_jsvalue_from_type(type, p_variant_cp);
-			SET_JS_PROPERTY_WITH_MSG(prop_name.c_str(), var);
-		} else {
-			return false;
-		}
+		return false;
 	}
 }
 
@@ -153,7 +135,7 @@ GDExtensionBool JavaScriptInstance::get(GDExtensionConstStringNamePtr p_name, GD
 	std::string prop_name = name->to_ascii_buffer().get_string_from_ascii().ascii().get_data();
 	JSValue prop = JS_GetPropertyStr(context.ctx, js_instance, prop_name.c_str());
 	JSAtom opaque_atom = JS_NewAtom(context.ctx, "opaque");
-	if (!JS_IsUndefined(prop)) {
+	if (!qjs::is_exception(context.ctx, prop) && !JS_IsUndefined(prop)) {
 		Variant src = qjs::to_gd_value(context.ctx, prop);
 		godot::internal::gdextension_interface_variant_new_copy(r_ret, src._native_ptr());
 		return true;

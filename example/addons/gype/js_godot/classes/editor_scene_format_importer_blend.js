@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { EditorSceneFormatImporter } from '@js_godot/classes/editor_scene_format_importer'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -30,6 +30,7 @@ export class EditorSceneFormatImporterBlend extends EditorSceneFormatImporter{
     }
     this.#initialized = true;
   }
+  
   
 
 

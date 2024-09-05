@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
+import { StringName } from '@js_godot/variant/string_name'
+import { GodotObject } from '@js_godot/classes/godot_object'
+import { GDString } from '@js_godot/variant/gd_string'
 import { Callable } from '@js_godot/variant/callable'
 import { Variant } from '@js_godot/variant/variant'
-import { GodotObject } from '@js_godot/classes/godot_object'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
@@ -262,9 +262,10 @@ class _MethodBindings {
       );
     }
   }
+  
   is_active() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_active,
+      _EngineDebugger._bindings.method_is_active,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -273,7 +274,7 @@ class _MethodBindings {
   }
   register_profiler(_name, _profiler) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_register_profiler,
+      _EngineDebugger._bindings.method_register_profiler,
       this._owner,
       _name, _profiler
     );
@@ -281,7 +282,7 @@ class _MethodBindings {
   }
   unregister_profiler(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_unregister_profiler,
+      _EngineDebugger._bindings.method_unregister_profiler,
       this._owner,
       _name
     );
@@ -289,7 +290,7 @@ class _MethodBindings {
   }
   is_profiling(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_profiling,
+      _EngineDebugger._bindings.method_is_profiling,
       this._owner,
 			Variant.Type.BOOL,
       _name
@@ -298,7 +299,7 @@ class _MethodBindings {
   }
   has_profiler(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_profiler,
+      _EngineDebugger._bindings.method_has_profiler,
       this._owner,
 			Variant.Type.BOOL,
       _name
@@ -307,7 +308,7 @@ class _MethodBindings {
   }
   profiler_add_frame_data(_name, _data) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_profiler_add_frame_data,
+      _EngineDebugger._bindings.method_profiler_add_frame_data,
       this._owner,
       _name, _data
     );
@@ -315,7 +316,7 @@ class _MethodBindings {
   }
   profiler_enable(_name, _enable, _arguments) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_profiler_enable,
+      _EngineDebugger._bindings.method_profiler_enable,
       this._owner,
       _name, _enable, _arguments
     );
@@ -323,7 +324,7 @@ class _MethodBindings {
   }
   register_message_capture(_name, _callable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_register_message_capture,
+      _EngineDebugger._bindings.method_register_message_capture,
       this._owner,
       _name, _callable
     );
@@ -331,7 +332,7 @@ class _MethodBindings {
   }
   unregister_message_capture(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_unregister_message_capture,
+      _EngineDebugger._bindings.method_unregister_message_capture,
       this._owner,
       _name
     );
@@ -339,7 +340,7 @@ class _MethodBindings {
   }
   has_capture(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_capture,
+      _EngineDebugger._bindings.method_has_capture,
       this._owner,
 			Variant.Type.BOOL,
       _name
@@ -348,7 +349,7 @@ class _MethodBindings {
   }
   line_poll() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_line_poll,
+      _EngineDebugger._bindings.method_line_poll,
       this._owner,
       
     );
@@ -356,7 +357,7 @@ class _MethodBindings {
   }
   send_message(_message, _data) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_send_message,
+      _EngineDebugger._bindings.method_send_message,
       this._owner,
       _message, _data
     );
@@ -364,7 +365,7 @@ class _MethodBindings {
   }
   debug(_can_continue, _is_error_breakpoint) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_debug,
+      _EngineDebugger._bindings.method_debug,
       this._owner,
       _can_continue, _is_error_breakpoint
     );
@@ -372,7 +373,7 @@ class _MethodBindings {
   }
   script_debug(_language, _can_continue, _is_error_breakpoint) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_script_debug,
+      _EngineDebugger._bindings.method_script_debug,
       this._owner,
       _language, _can_continue, _is_error_breakpoint
     );
@@ -380,7 +381,7 @@ class _MethodBindings {
   }
   set_lines_left(_lines) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_lines_left,
+      _EngineDebugger._bindings.method_set_lines_left,
       this._owner,
       _lines
     );
@@ -388,7 +389,7 @@ class _MethodBindings {
   }
   get_lines_left() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_lines_left,
+      _EngineDebugger._bindings.method_get_lines_left,
       this._owner,
 			Variant.Type.INT,
       
@@ -397,7 +398,7 @@ class _MethodBindings {
   }
   set_depth(_depth) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_depth,
+      _EngineDebugger._bindings.method_set_depth,
       this._owner,
       _depth
     );
@@ -405,7 +406,7 @@ class _MethodBindings {
   }
   get_depth() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_depth,
+      _EngineDebugger._bindings.method_get_depth,
       this._owner,
 			Variant.Type.INT,
       
@@ -414,7 +415,7 @@ class _MethodBindings {
   }
   is_breakpoint(_line, _source) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_breakpoint,
+      _EngineDebugger._bindings.method_is_breakpoint,
       this._owner,
 			Variant.Type.BOOL,
       _line, _source
@@ -423,7 +424,7 @@ class _MethodBindings {
   }
   is_skipping_breakpoints() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_skipping_breakpoints,
+      _EngineDebugger._bindings.method_is_skipping_breakpoints,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -432,7 +433,7 @@ class _MethodBindings {
   }
   insert_breakpoint(_line, _source) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_insert_breakpoint,
+      _EngineDebugger._bindings.method_insert_breakpoint,
       this._owner,
       _line, _source
     );
@@ -440,7 +441,7 @@ class _MethodBindings {
   }
   remove_breakpoint(_line, _source) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_breakpoint,
+      _EngineDebugger._bindings.method_remove_breakpoint,
       this._owner,
       _line, _source
     );
@@ -448,7 +449,7 @@ class _MethodBindings {
   }
   clear_breakpoints() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_breakpoints,
+      _EngineDebugger._bindings.method_clear_breakpoints,
       this._owner,
       
     );
@@ -461,4 +462,17 @@ class _MethodBindings {
     this._init_bindings();
   }
 }
-export const EngineDebugger = new _EngineDebugger();
+export const EngineDebugger = (function () {
+  let _instance;
+  function create_instance() {
+    return new _EngineDebugger();
+  }
+  return {
+    instance: function () {
+      if (!_instance) {
+        _instance = create_instance();
+      }
+      return _instance;
+    },
+  };
+})();

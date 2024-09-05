@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
-import { Control } from '@js_godot/classes/control'
 import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { StringName } from '@js_godot/variant/string_name'
 import { Rect2 } from '@js_godot/variant/rect2'
+import { Control } from '@js_godot/classes/control'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -643,9 +643,10 @@ export class Tree extends Control{
       );
     }
   }
+  
   clear() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear,
+      Tree._bindings.method_clear,
       this._owner,
       
     );
@@ -653,7 +654,7 @@ export class Tree extends Control{
   }
   create_item(_parent, _index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_item,
+      Tree._bindings.method_create_item,
       this._owner,
 			Variant.INT,
       _parent, _index
@@ -662,7 +663,7 @@ export class Tree extends Control{
   }
   get_root() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_root,
+      Tree._bindings.method_get_root,
       this._owner,
 			Variant.INT,
       
@@ -671,7 +672,7 @@ export class Tree extends Control{
   }
   set_column_custom_minimum_width(_column, _min_width) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_column_custom_minimum_width,
+      Tree._bindings.method_set_column_custom_minimum_width,
       this._owner,
       _column, _min_width
     );
@@ -679,7 +680,7 @@ export class Tree extends Control{
   }
   set_column_expand(_column, _expand) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_column_expand,
+      Tree._bindings.method_set_column_expand,
       this._owner,
       _column, _expand
     );
@@ -687,7 +688,7 @@ export class Tree extends Control{
   }
   set_column_expand_ratio(_column, _ratio) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_column_expand_ratio,
+      Tree._bindings.method_set_column_expand_ratio,
       this._owner,
       _column, _ratio
     );
@@ -695,7 +696,7 @@ export class Tree extends Control{
   }
   set_column_clip_content(_column, _enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_column_clip_content,
+      Tree._bindings.method_set_column_clip_content,
       this._owner,
       _column, _enable
     );
@@ -703,7 +704,7 @@ export class Tree extends Control{
   }
   is_column_expanding(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_column_expanding,
+      Tree._bindings.method_is_column_expanding,
       this._owner,
 			Variant.Type.BOOL,
       _column
@@ -712,7 +713,7 @@ export class Tree extends Control{
   }
   is_column_clipping_content(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_column_clipping_content,
+      Tree._bindings.method_is_column_clipping_content,
       this._owner,
 			Variant.Type.BOOL,
       _column
@@ -721,7 +722,7 @@ export class Tree extends Control{
   }
   get_column_expand_ratio(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_column_expand_ratio,
+      Tree._bindings.method_get_column_expand_ratio,
       this._owner,
 			Variant.Type.INT,
       _column
@@ -730,7 +731,7 @@ export class Tree extends Control{
   }
   get_column_width(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_column_width,
+      Tree._bindings.method_get_column_width,
       this._owner,
 			Variant.Type.INT,
       _column
@@ -739,7 +740,7 @@ export class Tree extends Control{
   }
   set_hide_root(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_hide_root,
+      Tree._bindings.method_set_hide_root,
       this._owner,
       _enable
     );
@@ -747,7 +748,7 @@ export class Tree extends Control{
   }
   is_root_hidden() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_root_hidden,
+      Tree._bindings.method_is_root_hidden,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -756,7 +757,7 @@ export class Tree extends Control{
   }
   get_next_selected(_from) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_next_selected,
+      Tree._bindings.method_get_next_selected,
       this._owner,
 			Variant.INT,
       _from
@@ -765,7 +766,7 @@ export class Tree extends Control{
   }
   get_selected() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_selected,
+      Tree._bindings.method_get_selected,
       this._owner,
 			Variant.INT,
       
@@ -774,7 +775,7 @@ export class Tree extends Control{
   }
   set_selected(_item, _column) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_selected,
+      Tree._bindings.method_set_selected,
       this._owner,
       _item, _column
     );
@@ -782,7 +783,7 @@ export class Tree extends Control{
   }
   get_selected_column() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_selected_column,
+      Tree._bindings.method_get_selected_column,
       this._owner,
 			Variant.Type.INT,
       
@@ -791,7 +792,7 @@ export class Tree extends Control{
   }
   get_pressed_button() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_pressed_button,
+      Tree._bindings.method_get_pressed_button,
       this._owner,
 			Variant.Type.INT,
       
@@ -800,7 +801,7 @@ export class Tree extends Control{
   }
   set_select_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_select_mode,
+      Tree._bindings.method_set_select_mode,
       this._owner,
       _mode
     );
@@ -808,7 +809,7 @@ export class Tree extends Control{
   }
   get_select_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_select_mode,
+      Tree._bindings.method_get_select_mode,
       this._owner,
 			Variant.INT,
       
@@ -817,7 +818,7 @@ export class Tree extends Control{
   }
   deselect_all() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_deselect_all,
+      Tree._bindings.method_deselect_all,
       this._owner,
       
     );
@@ -825,7 +826,7 @@ export class Tree extends Control{
   }
   set_columns(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_columns,
+      Tree._bindings.method_set_columns,
       this._owner,
       _amount
     );
@@ -833,7 +834,7 @@ export class Tree extends Control{
   }
   get_columns() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_columns,
+      Tree._bindings.method_get_columns,
       this._owner,
 			Variant.Type.INT,
       
@@ -842,7 +843,7 @@ export class Tree extends Control{
   }
   get_edited() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_edited,
+      Tree._bindings.method_get_edited,
       this._owner,
 			Variant.INT,
       
@@ -851,7 +852,7 @@ export class Tree extends Control{
   }
   get_edited_column() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_edited_column,
+      Tree._bindings.method_get_edited_column,
       this._owner,
 			Variant.Type.INT,
       
@@ -860,7 +861,7 @@ export class Tree extends Control{
   }
   edit_selected(_force_edit) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_edit_selected,
+      Tree._bindings.method_edit_selected,
       this._owner,
 			Variant.Type.BOOL,
       _force_edit
@@ -869,7 +870,7 @@ export class Tree extends Control{
   }
   get_custom_popup_rect() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_custom_popup_rect,
+      Tree._bindings.method_get_custom_popup_rect,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -879,7 +880,7 @@ export class Tree extends Control{
   }
   get_item_area_rect(_item, _column, _button_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_area_rect,
+      Tree._bindings.method_get_item_area_rect,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -889,7 +890,7 @@ export class Tree extends Control{
   }
   get_item_at_position(_position) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_at_position,
+      Tree._bindings.method_get_item_at_position,
       this._owner,
 			Variant.INT,
       _position
@@ -898,7 +899,7 @@ export class Tree extends Control{
   }
   get_column_at_position(_position) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_column_at_position,
+      Tree._bindings.method_get_column_at_position,
       this._owner,
 			Variant.Type.INT,
       _position
@@ -907,7 +908,7 @@ export class Tree extends Control{
   }
   get_drop_section_at_position(_position) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_drop_section_at_position,
+      Tree._bindings.method_get_drop_section_at_position,
       this._owner,
 			Variant.Type.INT,
       _position
@@ -916,7 +917,7 @@ export class Tree extends Control{
   }
   get_button_id_at_position(_position) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_button_id_at_position,
+      Tree._bindings.method_get_button_id_at_position,
       this._owner,
 			Variant.Type.INT,
       _position
@@ -925,7 +926,7 @@ export class Tree extends Control{
   }
   ensure_cursor_is_visible() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_ensure_cursor_is_visible,
+      Tree._bindings.method_ensure_cursor_is_visible,
       this._owner,
       
     );
@@ -933,7 +934,7 @@ export class Tree extends Control{
   }
   set_column_titles_visible(_visible) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_column_titles_visible,
+      Tree._bindings.method_set_column_titles_visible,
       this._owner,
       _visible
     );
@@ -941,7 +942,7 @@ export class Tree extends Control{
   }
   are_column_titles_visible() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_are_column_titles_visible,
+      Tree._bindings.method_are_column_titles_visible,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -950,7 +951,7 @@ export class Tree extends Control{
   }
   set_column_title(_column, _title) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_column_title,
+      Tree._bindings.method_set_column_title,
       this._owner,
       _column, _title
     );
@@ -958,7 +959,7 @@ export class Tree extends Control{
   }
   get_column_title(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_column_title,
+      Tree._bindings.method_get_column_title,
       this._owner,
 			Variant.Type.STRING,
     
@@ -968,7 +969,7 @@ export class Tree extends Control{
   }
   set_column_title_alignment(_column, _title_alignment) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_column_title_alignment,
+      Tree._bindings.method_set_column_title_alignment,
       this._owner,
       _column, _title_alignment
     );
@@ -976,7 +977,7 @@ export class Tree extends Control{
   }
   get_column_title_alignment(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_column_title_alignment,
+      Tree._bindings.method_get_column_title_alignment,
       this._owner,
 			Variant.INT,
       _column
@@ -985,7 +986,7 @@ export class Tree extends Control{
   }
   set_column_title_direction(_column, _direction) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_column_title_direction,
+      Tree._bindings.method_set_column_title_direction,
       this._owner,
       _column, _direction
     );
@@ -993,7 +994,7 @@ export class Tree extends Control{
   }
   get_column_title_direction(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_column_title_direction,
+      Tree._bindings.method_get_column_title_direction,
       this._owner,
 			Variant.INT,
       _column
@@ -1002,7 +1003,7 @@ export class Tree extends Control{
   }
   set_column_title_language(_column, _language) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_column_title_language,
+      Tree._bindings.method_set_column_title_language,
       this._owner,
       _column, _language
     );
@@ -1010,7 +1011,7 @@ export class Tree extends Control{
   }
   get_column_title_language(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_column_title_language,
+      Tree._bindings.method_get_column_title_language,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1020,7 +1021,7 @@ export class Tree extends Control{
   }
   get_scroll() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_scroll,
+      Tree._bindings.method_get_scroll,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1030,7 +1031,7 @@ export class Tree extends Control{
   }
   scroll_to_item(_item, _center_on_item) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_scroll_to_item,
+      Tree._bindings.method_scroll_to_item,
       this._owner,
       _item, _center_on_item
     );
@@ -1038,7 +1039,7 @@ export class Tree extends Control{
   }
   set_h_scroll_enabled(_h_scroll) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_h_scroll_enabled,
+      Tree._bindings.method_set_h_scroll_enabled,
       this._owner,
       _h_scroll
     );
@@ -1046,7 +1047,7 @@ export class Tree extends Control{
   }
   is_h_scroll_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_h_scroll_enabled,
+      Tree._bindings.method_is_h_scroll_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1055,7 +1056,7 @@ export class Tree extends Control{
   }
   set_v_scroll_enabled(_h_scroll) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_v_scroll_enabled,
+      Tree._bindings.method_set_v_scroll_enabled,
       this._owner,
       _h_scroll
     );
@@ -1063,7 +1064,7 @@ export class Tree extends Control{
   }
   is_v_scroll_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_v_scroll_enabled,
+      Tree._bindings.method_is_v_scroll_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1072,7 +1073,7 @@ export class Tree extends Control{
   }
   set_hide_folding(_hide) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_hide_folding,
+      Tree._bindings.method_set_hide_folding,
       this._owner,
       _hide
     );
@@ -1080,7 +1081,7 @@ export class Tree extends Control{
   }
   is_folding_hidden() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_folding_hidden,
+      Tree._bindings.method_is_folding_hidden,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1089,7 +1090,7 @@ export class Tree extends Control{
   }
   set_enable_recursive_folding(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_enable_recursive_folding,
+      Tree._bindings.method_set_enable_recursive_folding,
       this._owner,
       _enable
     );
@@ -1097,7 +1098,7 @@ export class Tree extends Control{
   }
   is_recursive_folding_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_recursive_folding_enabled,
+      Tree._bindings.method_is_recursive_folding_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1106,7 +1107,7 @@ export class Tree extends Control{
   }
   set_drop_mode_flags(_flags) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_drop_mode_flags,
+      Tree._bindings.method_set_drop_mode_flags,
       this._owner,
       _flags
     );
@@ -1114,7 +1115,7 @@ export class Tree extends Control{
   }
   get_drop_mode_flags() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_drop_mode_flags,
+      Tree._bindings.method_get_drop_mode_flags,
       this._owner,
 			Variant.Type.INT,
       
@@ -1123,7 +1124,7 @@ export class Tree extends Control{
   }
   set_allow_rmb_select(_allow) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_allow_rmb_select,
+      Tree._bindings.method_set_allow_rmb_select,
       this._owner,
       _allow
     );
@@ -1131,7 +1132,7 @@ export class Tree extends Control{
   }
   get_allow_rmb_select() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_allow_rmb_select,
+      Tree._bindings.method_get_allow_rmb_select,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1140,7 +1141,7 @@ export class Tree extends Control{
   }
   set_allow_reselect(_allow) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_allow_reselect,
+      Tree._bindings.method_set_allow_reselect,
       this._owner,
       _allow
     );
@@ -1148,7 +1149,7 @@ export class Tree extends Control{
   }
   get_allow_reselect() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_allow_reselect,
+      Tree._bindings.method_get_allow_reselect,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1157,7 +1158,7 @@ export class Tree extends Control{
   }
   set_allow_search(_allow) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_allow_search,
+      Tree._bindings.method_set_allow_search,
       this._owner,
       _allow
     );
@@ -1165,7 +1166,7 @@ export class Tree extends Control{
   }
   get_allow_search() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_allow_search,
+      Tree._bindings.method_get_allow_search,
       this._owner,
 			Variant.Type.BOOL,
       

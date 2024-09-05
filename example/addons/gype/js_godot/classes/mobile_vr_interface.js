@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { XRInterface } from '@js_godot/classes/xr_interface'
 import { StringName } from '@js_godot/variant/string_name'
+import { XRInterface } from '@js_godot/classes/xr_interface'
 import { Variant } from '@js_godot/variant/variant'
 import { Rect2 } from '@js_godot/variant/rect2'
 import {
@@ -231,9 +231,10 @@ export class MobileVRInterface extends XRInterface{
       );
     }
   }
+  
   set_eye_height(_eye_height) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_eye_height,
+      MobileVRInterface._bindings.method_set_eye_height,
       this._owner,
       _eye_height
     );
@@ -241,7 +242,7 @@ export class MobileVRInterface extends XRInterface{
   }
   get_eye_height() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_eye_height,
+      MobileVRInterface._bindings.method_get_eye_height,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -250,7 +251,7 @@ export class MobileVRInterface extends XRInterface{
   }
   set_iod(_iod) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_iod,
+      MobileVRInterface._bindings.method_set_iod,
       this._owner,
       _iod
     );
@@ -258,7 +259,7 @@ export class MobileVRInterface extends XRInterface{
   }
   get_iod() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_iod,
+      MobileVRInterface._bindings.method_get_iod,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -267,7 +268,7 @@ export class MobileVRInterface extends XRInterface{
   }
   set_display_width(_display_width) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_display_width,
+      MobileVRInterface._bindings.method_set_display_width,
       this._owner,
       _display_width
     );
@@ -275,7 +276,7 @@ export class MobileVRInterface extends XRInterface{
   }
   get_display_width() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_display_width,
+      MobileVRInterface._bindings.method_get_display_width,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -284,7 +285,7 @@ export class MobileVRInterface extends XRInterface{
   }
   set_display_to_lens(_display_to_lens) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_display_to_lens,
+      MobileVRInterface._bindings.method_set_display_to_lens,
       this._owner,
       _display_to_lens
     );
@@ -292,7 +293,7 @@ export class MobileVRInterface extends XRInterface{
   }
   get_display_to_lens() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_display_to_lens,
+      MobileVRInterface._bindings.method_get_display_to_lens,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -301,7 +302,7 @@ export class MobileVRInterface extends XRInterface{
   }
   set_offset_rect(_offset_rect) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_offset_rect,
+      MobileVRInterface._bindings.method_set_offset_rect,
       this._owner,
       _offset_rect
     );
@@ -309,7 +310,7 @@ export class MobileVRInterface extends XRInterface{
   }
   get_offset_rect() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_offset_rect,
+      MobileVRInterface._bindings.method_get_offset_rect,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -319,7 +320,7 @@ export class MobileVRInterface extends XRInterface{
   }
   set_oversample(_oversample) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_oversample,
+      MobileVRInterface._bindings.method_set_oversample,
       this._owner,
       _oversample
     );
@@ -327,7 +328,7 @@ export class MobileVRInterface extends XRInterface{
   }
   get_oversample() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_oversample,
+      MobileVRInterface._bindings.method_get_oversample,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -336,7 +337,7 @@ export class MobileVRInterface extends XRInterface{
   }
   set_k1(_k) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_k1,
+      MobileVRInterface._bindings.method_set_k1,
       this._owner,
       _k
     );
@@ -344,7 +345,7 @@ export class MobileVRInterface extends XRInterface{
   }
   get_k1() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_k1,
+      MobileVRInterface._bindings.method_get_k1,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -353,7 +354,7 @@ export class MobileVRInterface extends XRInterface{
   }
   set_k2(_k) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_k2,
+      MobileVRInterface._bindings.method_set_k2,
       this._owner,
       _k
     );
@@ -361,7 +362,7 @@ export class MobileVRInterface extends XRInterface{
   }
   get_k2() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_k2,
+      MobileVRInterface._bindings.method_get_k2,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -370,7 +371,7 @@ export class MobileVRInterface extends XRInterface{
   }
   get_vrs_min_radius() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vrs_min_radius,
+      MobileVRInterface._bindings.method_get_vrs_min_radius,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -379,7 +380,7 @@ export class MobileVRInterface extends XRInterface{
   }
   set_vrs_min_radius(_radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vrs_min_radius,
+      MobileVRInterface._bindings.method_set_vrs_min_radius,
       this._owner,
       _radius
     );
@@ -387,7 +388,7 @@ export class MobileVRInterface extends XRInterface{
   }
   get_vrs_strength() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vrs_strength,
+      MobileVRInterface._bindings.method_get_vrs_strength,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -396,7 +397,7 @@ export class MobileVRInterface extends XRInterface{
   }
   set_vrs_strength(_strength) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vrs_strength,
+      MobileVRInterface._bindings.method_set_vrs_strength,
       this._owner,
       _strength
     );

@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { AudioStreamPlayback } from '@js_godot/classes/audio_stream_playback'
 import {
   call_utility_ret,
@@ -50,9 +50,10 @@ export class AudioStreamPlaybackInteractive extends AudioStreamPlayback{
       );
     }
   }
+  
   switch_to_clip_by_name(_clip_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_switch_to_clip_by_name,
+      AudioStreamPlaybackInteractive._bindings.method_switch_to_clip_by_name,
       this._owner,
       _clip_name
     );
@@ -60,7 +61,7 @@ export class AudioStreamPlaybackInteractive extends AudioStreamPlayback{
   }
   switch_to_clip(_clip_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_switch_to_clip,
+      AudioStreamPlaybackInteractive._bindings.method_switch_to_clip,
       this._owner,
       _clip_index
     );

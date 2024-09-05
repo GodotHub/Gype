@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
-import { Node2D } from '@js_godot/classes/node2d'
+import { RID } from '@js_godot/variant/rid'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
-import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
-import { RID } from '@js_godot/variant/rid'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { Node2D } from '@js_godot/classes/node2d'
+import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -223,9 +223,10 @@ export class NavigationObstacle2D extends Node2D{
       );
     }
   }
+  
   get_rid() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rid,
+      NavigationObstacle2D._bindings.method_get_rid,
       this._owner,
 			Variant.Type.RID,
     
@@ -235,7 +236,7 @@ export class NavigationObstacle2D extends Node2D{
   }
   set_avoidance_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_avoidance_enabled,
+      NavigationObstacle2D._bindings.method_set_avoidance_enabled,
       this._owner,
       _enabled
     );
@@ -243,7 +244,7 @@ export class NavigationObstacle2D extends Node2D{
   }
   get_avoidance_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_avoidance_enabled,
+      NavigationObstacle2D._bindings.method_get_avoidance_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -252,7 +253,7 @@ export class NavigationObstacle2D extends Node2D{
   }
   set_navigation_map(_navigation_map) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_navigation_map,
+      NavigationObstacle2D._bindings.method_set_navigation_map,
       this._owner,
       _navigation_map
     );
@@ -260,7 +261,7 @@ export class NavigationObstacle2D extends Node2D{
   }
   get_navigation_map() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_navigation_map,
+      NavigationObstacle2D._bindings.method_get_navigation_map,
       this._owner,
 			Variant.Type.RID,
     
@@ -270,7 +271,7 @@ export class NavigationObstacle2D extends Node2D{
   }
   set_radius(_radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_radius,
+      NavigationObstacle2D._bindings.method_set_radius,
       this._owner,
       _radius
     );
@@ -278,7 +279,7 @@ export class NavigationObstacle2D extends Node2D{
   }
   get_radius() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_radius,
+      NavigationObstacle2D._bindings.method_get_radius,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -287,7 +288,7 @@ export class NavigationObstacle2D extends Node2D{
   }
   set_velocity(_velocity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_velocity,
+      NavigationObstacle2D._bindings.method_set_velocity,
       this._owner,
       _velocity
     );
@@ -295,7 +296,7 @@ export class NavigationObstacle2D extends Node2D{
   }
   get_velocity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_velocity,
+      NavigationObstacle2D._bindings.method_get_velocity,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -305,7 +306,7 @@ export class NavigationObstacle2D extends Node2D{
   }
   set_vertices(_vertices) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vertices,
+      NavigationObstacle2D._bindings.method_set_vertices,
       this._owner,
       _vertices
     );
@@ -313,7 +314,7 @@ export class NavigationObstacle2D extends Node2D{
   }
   get_vertices() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vertices,
+      NavigationObstacle2D._bindings.method_get_vertices,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -323,7 +324,7 @@ export class NavigationObstacle2D extends Node2D{
   }
   set_avoidance_layers(_layers) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_avoidance_layers,
+      NavigationObstacle2D._bindings.method_set_avoidance_layers,
       this._owner,
       _layers
     );
@@ -331,7 +332,7 @@ export class NavigationObstacle2D extends Node2D{
   }
   get_avoidance_layers() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_avoidance_layers,
+      NavigationObstacle2D._bindings.method_get_avoidance_layers,
       this._owner,
 			Variant.Type.INT,
       
@@ -340,7 +341,7 @@ export class NavigationObstacle2D extends Node2D{
   }
   set_avoidance_layer_value(_layer_number, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_avoidance_layer_value,
+      NavigationObstacle2D._bindings.method_set_avoidance_layer_value,
       this._owner,
       _layer_number, _value
     );
@@ -348,7 +349,7 @@ export class NavigationObstacle2D extends Node2D{
   }
   get_avoidance_layer_value(_layer_number) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_avoidance_layer_value,
+      NavigationObstacle2D._bindings.method_get_avoidance_layer_value,
       this._owner,
 			Variant.Type.BOOL,
       _layer_number
@@ -357,7 +358,7 @@ export class NavigationObstacle2D extends Node2D{
   }
   set_affect_navigation_mesh(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_affect_navigation_mesh,
+      NavigationObstacle2D._bindings.method_set_affect_navigation_mesh,
       this._owner,
       _enabled
     );
@@ -365,7 +366,7 @@ export class NavigationObstacle2D extends Node2D{
   }
   get_affect_navigation_mesh() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_affect_navigation_mesh,
+      NavigationObstacle2D._bindings.method_get_affect_navigation_mesh,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -374,7 +375,7 @@ export class NavigationObstacle2D extends Node2D{
   }
   set_carve_navigation_mesh(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_carve_navigation_mesh,
+      NavigationObstacle2D._bindings.method_set_carve_navigation_mesh,
       this._owner,
       _enabled
     );
@@ -382,7 +383,7 @@ export class NavigationObstacle2D extends Node2D{
   }
   get_carve_navigation_mesh() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_carve_navigation_mesh,
+      NavigationObstacle2D._bindings.method_get_carve_navigation_mesh,
       this._owner,
 			Variant.Type.BOOL,
       

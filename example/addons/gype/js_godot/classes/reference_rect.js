@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { Control } from '@js_godot/classes/control'
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Color } from '@js_godot/variant/color'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -91,9 +91,10 @@ export class ReferenceRect extends Control{
       );
     }
   }
+  
   get_border_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_border_color,
+      ReferenceRect._bindings.method_get_border_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -103,7 +104,7 @@ export class ReferenceRect extends Control{
   }
   set_border_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_border_color,
+      ReferenceRect._bindings.method_set_border_color,
       this._owner,
       _color
     );
@@ -111,7 +112,7 @@ export class ReferenceRect extends Control{
   }
   get_border_width() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_border_width,
+      ReferenceRect._bindings.method_get_border_width,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -120,7 +121,7 @@ export class ReferenceRect extends Control{
   }
   set_border_width(_width) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_border_width,
+      ReferenceRect._bindings.method_set_border_width,
       this._owner,
       _width
     );
@@ -128,7 +129,7 @@ export class ReferenceRect extends Control{
   }
   get_editor_only() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_editor_only,
+      ReferenceRect._bindings.method_get_editor_only,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -137,7 +138,7 @@ export class ReferenceRect extends Control{
   }
   set_editor_only(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_editor_only,
+      ReferenceRect._bindings.method_set_editor_only,
       this._owner,
       _enabled
     );

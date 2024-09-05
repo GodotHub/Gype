@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { AudioEffect } from '@js_godot/classes/audio_effect'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -90,9 +90,10 @@ export class AudioEffectSpectrumAnalyzer extends AudioEffect{
       );
     }
   }
+  
   set_buffer_length(_seconds) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_buffer_length,
+      AudioEffectSpectrumAnalyzer._bindings.method_set_buffer_length,
       this._owner,
       _seconds
     );
@@ -100,7 +101,7 @@ export class AudioEffectSpectrumAnalyzer extends AudioEffect{
   }
   get_buffer_length() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_buffer_length,
+      AudioEffectSpectrumAnalyzer._bindings.method_get_buffer_length,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -109,7 +110,7 @@ export class AudioEffectSpectrumAnalyzer extends AudioEffect{
   }
   set_tap_back_pos(_seconds) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tap_back_pos,
+      AudioEffectSpectrumAnalyzer._bindings.method_set_tap_back_pos,
       this._owner,
       _seconds
     );
@@ -117,7 +118,7 @@ export class AudioEffectSpectrumAnalyzer extends AudioEffect{
   }
   get_tap_back_pos() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tap_back_pos,
+      AudioEffectSpectrumAnalyzer._bindings.method_get_tap_back_pos,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -126,7 +127,7 @@ export class AudioEffectSpectrumAnalyzer extends AudioEffect{
   }
   set_fft_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fft_size,
+      AudioEffectSpectrumAnalyzer._bindings.method_set_fft_size,
       this._owner,
       _size
     );
@@ -134,7 +135,7 @@ export class AudioEffectSpectrumAnalyzer extends AudioEffect{
   }
   get_fft_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fft_size,
+      AudioEffectSpectrumAnalyzer._bindings.method_get_fft_size,
       this._owner,
 			Variant.INT,
       

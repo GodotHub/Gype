@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
+import { GDArray } from '@js_godot/variant/gd_array'
+import { RefCounted } from '@js_godot/classes/ref_counted'
 import { Variant } from '@js_godot/variant/variant'
 import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
 import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
-import { RefCounted } from '@js_godot/classes/ref_counted'
-import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -363,9 +363,10 @@ export class StreamPeer extends RefCounted{
       );
     }
   }
+  
   put_data(_data) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_put_data,
+      StreamPeer._bindings.method_put_data,
       this._owner,
 			Variant.INT,
       _data
@@ -374,7 +375,7 @@ export class StreamPeer extends RefCounted{
   }
   put_partial_data(_data) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_put_partial_data,
+      StreamPeer._bindings.method_put_partial_data,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -384,7 +385,7 @@ export class StreamPeer extends RefCounted{
   }
   get_data(_bytes) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_data,
+      StreamPeer._bindings.method_get_data,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -394,7 +395,7 @@ export class StreamPeer extends RefCounted{
   }
   get_partial_data(_bytes) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_partial_data,
+      StreamPeer._bindings.method_get_partial_data,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -404,7 +405,7 @@ export class StreamPeer extends RefCounted{
   }
   get_available_bytes() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_available_bytes,
+      StreamPeer._bindings.method_get_available_bytes,
       this._owner,
 			Variant.Type.INT,
       
@@ -413,7 +414,7 @@ export class StreamPeer extends RefCounted{
   }
   set_big_endian(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_big_endian,
+      StreamPeer._bindings.method_set_big_endian,
       this._owner,
       _enable
     );
@@ -421,7 +422,7 @@ export class StreamPeer extends RefCounted{
   }
   is_big_endian_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_big_endian_enabled,
+      StreamPeer._bindings.method_is_big_endian_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -430,7 +431,7 @@ export class StreamPeer extends RefCounted{
   }
   put_8(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_put_8,
+      StreamPeer._bindings.method_put_8,
       this._owner,
       _value
     );
@@ -438,7 +439,7 @@ export class StreamPeer extends RefCounted{
   }
   put_u8(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_put_u8,
+      StreamPeer._bindings.method_put_u8,
       this._owner,
       _value
     );
@@ -446,7 +447,7 @@ export class StreamPeer extends RefCounted{
   }
   put_16(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_put_16,
+      StreamPeer._bindings.method_put_16,
       this._owner,
       _value
     );
@@ -454,7 +455,7 @@ export class StreamPeer extends RefCounted{
   }
   put_u16(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_put_u16,
+      StreamPeer._bindings.method_put_u16,
       this._owner,
       _value
     );
@@ -462,7 +463,7 @@ export class StreamPeer extends RefCounted{
   }
   put_32(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_put_32,
+      StreamPeer._bindings.method_put_32,
       this._owner,
       _value
     );
@@ -470,7 +471,7 @@ export class StreamPeer extends RefCounted{
   }
   put_u32(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_put_u32,
+      StreamPeer._bindings.method_put_u32,
       this._owner,
       _value
     );
@@ -478,7 +479,7 @@ export class StreamPeer extends RefCounted{
   }
   put_64(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_put_64,
+      StreamPeer._bindings.method_put_64,
       this._owner,
       _value
     );
@@ -486,7 +487,7 @@ export class StreamPeer extends RefCounted{
   }
   put_u64(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_put_u64,
+      StreamPeer._bindings.method_put_u64,
       this._owner,
       _value
     );
@@ -494,7 +495,7 @@ export class StreamPeer extends RefCounted{
   }
   put_float(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_put_float,
+      StreamPeer._bindings.method_put_float,
       this._owner,
       _value
     );
@@ -502,7 +503,7 @@ export class StreamPeer extends RefCounted{
   }
   put_double(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_put_double,
+      StreamPeer._bindings.method_put_double,
       this._owner,
       _value
     );
@@ -510,7 +511,7 @@ export class StreamPeer extends RefCounted{
   }
   put_string(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_put_string,
+      StreamPeer._bindings.method_put_string,
       this._owner,
       _value
     );
@@ -518,7 +519,7 @@ export class StreamPeer extends RefCounted{
   }
   put_utf8_string(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_put_utf8_string,
+      StreamPeer._bindings.method_put_utf8_string,
       this._owner,
       _value
     );
@@ -526,7 +527,7 @@ export class StreamPeer extends RefCounted{
   }
   put_var(_value, _full_objects) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_put_var,
+      StreamPeer._bindings.method_put_var,
       this._owner,
       _value, _full_objects
     );
@@ -534,7 +535,7 @@ export class StreamPeer extends RefCounted{
   }
   get_8() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_8,
+      StreamPeer._bindings.method_get_8,
       this._owner,
 			Variant.Type.INT,
       
@@ -543,7 +544,7 @@ export class StreamPeer extends RefCounted{
   }
   get_u8() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_u8,
+      StreamPeer._bindings.method_get_u8,
       this._owner,
 			Variant.Type.INT,
       
@@ -552,7 +553,7 @@ export class StreamPeer extends RefCounted{
   }
   get_16() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_16,
+      StreamPeer._bindings.method_get_16,
       this._owner,
 			Variant.Type.INT,
       
@@ -561,7 +562,7 @@ export class StreamPeer extends RefCounted{
   }
   get_u16() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_u16,
+      StreamPeer._bindings.method_get_u16,
       this._owner,
 			Variant.Type.INT,
       
@@ -570,7 +571,7 @@ export class StreamPeer extends RefCounted{
   }
   get_32() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_32,
+      StreamPeer._bindings.method_get_32,
       this._owner,
 			Variant.Type.INT,
       
@@ -579,7 +580,7 @@ export class StreamPeer extends RefCounted{
   }
   get_u32() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_u32,
+      StreamPeer._bindings.method_get_u32,
       this._owner,
 			Variant.Type.INT,
       
@@ -588,7 +589,7 @@ export class StreamPeer extends RefCounted{
   }
   get_64() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_64,
+      StreamPeer._bindings.method_get_64,
       this._owner,
 			Variant.Type.INT,
       
@@ -597,7 +598,7 @@ export class StreamPeer extends RefCounted{
   }
   get_u64() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_u64,
+      StreamPeer._bindings.method_get_u64,
       this._owner,
 			Variant.Type.INT,
       
@@ -606,7 +607,7 @@ export class StreamPeer extends RefCounted{
   }
   get_float() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_float,
+      StreamPeer._bindings.method_get_float,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -615,7 +616,7 @@ export class StreamPeer extends RefCounted{
   }
   get_double() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_double,
+      StreamPeer._bindings.method_get_double,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -624,7 +625,7 @@ export class StreamPeer extends RefCounted{
   }
   get_string(_bytes) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_string,
+      StreamPeer._bindings.method_get_string,
       this._owner,
 			Variant.Type.STRING,
     
@@ -634,7 +635,7 @@ export class StreamPeer extends RefCounted{
   }
   get_utf8_string(_bytes) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_utf8_string,
+      StreamPeer._bindings.method_get_utf8_string,
       this._owner,
 			Variant.Type.STRING,
     
@@ -644,7 +645,7 @@ export class StreamPeer extends RefCounted{
   }
   get_var(_allow_objects) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_var,
+      StreamPeer._bindings.method_get_var,
       this._owner,
 			Variant.Type.VARIANT,
     

@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { GodotObject } from '@js_godot/classes/godot_object'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { GodotObject } from '@js_godot/classes/godot_object'
+import { GDString } from '@js_godot/variant/gd_string'
+import { Variant } from '@js_godot/variant/variant'
 import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
@@ -132,9 +132,10 @@ class _MethodBindings {
       );
     }
   }
+  
   resolve_hostname(_host, _ip_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_resolve_hostname,
+      _IP._bindings.method_resolve_hostname,
       this._owner,
 			Variant.Type.STRING,
     
@@ -144,7 +145,7 @@ class _MethodBindings {
   }
   resolve_hostname_addresses(_host, _ip_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_resolve_hostname_addresses,
+      _IP._bindings.method_resolve_hostname_addresses,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -154,7 +155,7 @@ class _MethodBindings {
   }
   resolve_hostname_queue_item(_host, _ip_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_resolve_hostname_queue_item,
+      _IP._bindings.method_resolve_hostname_queue_item,
       this._owner,
 			Variant.Type.INT,
       _host, _ip_type
@@ -163,7 +164,7 @@ class _MethodBindings {
   }
   get_resolve_item_status(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_resolve_item_status,
+      _IP._bindings.method_get_resolve_item_status,
       this._owner,
 			Variant.INT,
       _id
@@ -172,7 +173,7 @@ class _MethodBindings {
   }
   get_resolve_item_address(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_resolve_item_address,
+      _IP._bindings.method_get_resolve_item_address,
       this._owner,
 			Variant.Type.STRING,
     
@@ -182,7 +183,7 @@ class _MethodBindings {
   }
   get_resolve_item_addresses(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_resolve_item_addresses,
+      _IP._bindings.method_get_resolve_item_addresses,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -192,7 +193,7 @@ class _MethodBindings {
   }
   erase_resolve_item(_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_erase_resolve_item,
+      _IP._bindings.method_erase_resolve_item,
       this._owner,
       _id
     );
@@ -200,7 +201,7 @@ class _MethodBindings {
   }
   get_local_addresses() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_local_addresses,
+      _IP._bindings.method_get_local_addresses,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -210,7 +211,7 @@ class _MethodBindings {
   }
   get_local_interfaces() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_local_interfaces,
+      _IP._bindings.method_get_local_interfaces,
       this._owner,
 			Variant.INT,
       
@@ -219,7 +220,7 @@ class _MethodBindings {
   }
   clear_cache(_hostname) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_cache,
+      _IP._bindings.method_clear_cache,
       this._owner,
       _hostname
     );
@@ -244,4 +245,17 @@ class _MethodBindings {
     this._init_bindings();
   }
 }
-export const IP = new _IP();
+export const IP = (function () {
+  let _instance;
+  function create_instance() {
+    return new _IP();
+  }
+  return {
+    instance: function () {
+      if (!_instance) {
+        _instance = create_instance();
+      }
+      return _instance;
+    },
+  };
+})();

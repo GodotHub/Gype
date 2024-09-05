@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
+import { NodePath } from '@js_godot/variant/node_path'
 import { Variant } from '@js_godot/variant/variant'
 import { SkeletonModification2D } from '@js_godot/classes/skeleton_modification2d'
-import { NodePath } from '@js_godot/variant/node_path'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -191,9 +191,10 @@ export class SkeletonModification2DLookAt extends SkeletonModification2D{
       );
     }
   }
+  
   set_bone2d_node(_bone2d_nodepath) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bone2d_node,
+      SkeletonModification2DLookAt._bindings.method_set_bone2d_node,
       this._owner,
       _bone2d_nodepath
     );
@@ -201,7 +202,7 @@ export class SkeletonModification2DLookAt extends SkeletonModification2D{
   }
   get_bone2d_node() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bone2d_node,
+      SkeletonModification2DLookAt._bindings.method_get_bone2d_node,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -211,7 +212,7 @@ export class SkeletonModification2DLookAt extends SkeletonModification2D{
   }
   set_bone_index(_bone_idx) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bone_index,
+      SkeletonModification2DLookAt._bindings.method_set_bone_index,
       this._owner,
       _bone_idx
     );
@@ -219,7 +220,7 @@ export class SkeletonModification2DLookAt extends SkeletonModification2D{
   }
   get_bone_index() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bone_index,
+      SkeletonModification2DLookAt._bindings.method_get_bone_index,
       this._owner,
 			Variant.Type.INT,
       
@@ -228,7 +229,7 @@ export class SkeletonModification2DLookAt extends SkeletonModification2D{
   }
   set_target_node(_target_nodepath) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_target_node,
+      SkeletonModification2DLookAt._bindings.method_set_target_node,
       this._owner,
       _target_nodepath
     );
@@ -236,7 +237,7 @@ export class SkeletonModification2DLookAt extends SkeletonModification2D{
   }
   get_target_node() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_target_node,
+      SkeletonModification2DLookAt._bindings.method_get_target_node,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -246,7 +247,7 @@ export class SkeletonModification2DLookAt extends SkeletonModification2D{
   }
   set_additional_rotation(_rotation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_additional_rotation,
+      SkeletonModification2DLookAt._bindings.method_set_additional_rotation,
       this._owner,
       _rotation
     );
@@ -254,7 +255,7 @@ export class SkeletonModification2DLookAt extends SkeletonModification2D{
   }
   get_additional_rotation() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_additional_rotation,
+      SkeletonModification2DLookAt._bindings.method_get_additional_rotation,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -263,7 +264,7 @@ export class SkeletonModification2DLookAt extends SkeletonModification2D{
   }
   set_enable_constraint(_enable_constraint) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_enable_constraint,
+      SkeletonModification2DLookAt._bindings.method_set_enable_constraint,
       this._owner,
       _enable_constraint
     );
@@ -271,7 +272,7 @@ export class SkeletonModification2DLookAt extends SkeletonModification2D{
   }
   get_enable_constraint() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_enable_constraint,
+      SkeletonModification2DLookAt._bindings.method_get_enable_constraint,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -280,7 +281,7 @@ export class SkeletonModification2DLookAt extends SkeletonModification2D{
   }
   set_constraint_angle_min(_angle_min) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_constraint_angle_min,
+      SkeletonModification2DLookAt._bindings.method_set_constraint_angle_min,
       this._owner,
       _angle_min
     );
@@ -288,7 +289,7 @@ export class SkeletonModification2DLookAt extends SkeletonModification2D{
   }
   get_constraint_angle_min() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_constraint_angle_min,
+      SkeletonModification2DLookAt._bindings.method_get_constraint_angle_min,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -297,7 +298,7 @@ export class SkeletonModification2DLookAt extends SkeletonModification2D{
   }
   set_constraint_angle_max(_angle_max) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_constraint_angle_max,
+      SkeletonModification2DLookAt._bindings.method_set_constraint_angle_max,
       this._owner,
       _angle_max
     );
@@ -305,7 +306,7 @@ export class SkeletonModification2DLookAt extends SkeletonModification2D{
   }
   get_constraint_angle_max() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_constraint_angle_max,
+      SkeletonModification2DLookAt._bindings.method_get_constraint_angle_max,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -314,7 +315,7 @@ export class SkeletonModification2DLookAt extends SkeletonModification2D{
   }
   set_constraint_angle_invert(_invert) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_constraint_angle_invert,
+      SkeletonModification2DLookAt._bindings.method_set_constraint_angle_invert,
       this._owner,
       _invert
     );
@@ -322,7 +323,7 @@ export class SkeletonModification2DLookAt extends SkeletonModification2D{
   }
   get_constraint_angle_invert() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_constraint_angle_invert,
+      SkeletonModification2DLookAt._bindings.method_get_constraint_angle_invert,
       this._owner,
 			Variant.Type.BOOL,
       

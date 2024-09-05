@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { GodotObject } from '@js_godot/classes/godot_object'
 import { Vector2i } from '@js_godot/variant/vector2i'
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { GodotObject } from '@js_godot/classes/godot_object'
 import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
@@ -42,6 +42,7 @@ export class MovieWriter extends GodotObject{
       );
     }
   }
+  
   _get_audio_mix_rate() {
   }
   _get_audio_speaker_mode() {
@@ -56,7 +57,7 @@ export class MovieWriter extends GodotObject{
   }
   add_writer(_writer) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_writer,
+      MovieWriter._bindings.method_add_writer,
       this._owner,
       _writer
     );

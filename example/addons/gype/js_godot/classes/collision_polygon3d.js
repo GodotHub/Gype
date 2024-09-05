@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
 import { Node3D } from '@js_godot/classes/node3d'
-import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -111,9 +111,10 @@ export class CollisionPolygon3D extends Node3D{
       );
     }
   }
+  
   set_depth(_depth) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_depth,
+      CollisionPolygon3D._bindings.method_set_depth,
       this._owner,
       _depth
     );
@@ -121,7 +122,7 @@ export class CollisionPolygon3D extends Node3D{
   }
   get_depth() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_depth,
+      CollisionPolygon3D._bindings.method_get_depth,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -130,7 +131,7 @@ export class CollisionPolygon3D extends Node3D{
   }
   set_polygon(_polygon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_polygon,
+      CollisionPolygon3D._bindings.method_set_polygon,
       this._owner,
       _polygon
     );
@@ -138,7 +139,7 @@ export class CollisionPolygon3D extends Node3D{
   }
   get_polygon() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_polygon,
+      CollisionPolygon3D._bindings.method_get_polygon,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -148,7 +149,7 @@ export class CollisionPolygon3D extends Node3D{
   }
   set_disabled(_disabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_disabled,
+      CollisionPolygon3D._bindings.method_set_disabled,
       this._owner,
       _disabled
     );
@@ -156,7 +157,7 @@ export class CollisionPolygon3D extends Node3D{
   }
   is_disabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_disabled,
+      CollisionPolygon3D._bindings.method_is_disabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -165,7 +166,7 @@ export class CollisionPolygon3D extends Node3D{
   }
   set_margin(_margin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_margin,
+      CollisionPolygon3D._bindings.method_set_margin,
       this._owner,
       _margin
     );
@@ -173,7 +174,7 @@ export class CollisionPolygon3D extends Node3D{
   }
   get_margin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_margin,
+      CollisionPolygon3D._bindings.method_get_margin,
       this._owner,
 			Variant.Type.FLOAT,
       

@@ -1,12 +1,12 @@
 import * as internal from '__internal__';
-import { Dictionary } from '@js_godot/variant/dictionary'
-import { Variant } from '@js_godot/variant/variant'
-import { Resource } from '@js_godot/classes/resource'
 import { Vector2i } from '@js_godot/variant/vector2i'
-import { PackedVector3Array } from '@js_godot/variant/packed_vector3_array'
-import { StringName } from '@js_godot/variant/string_name'
-import { AABB } from '@js_godot/variant/aabb'
 import { GDArray } from '@js_godot/variant/gd_array'
+import { PackedVector3Array } from '@js_godot/variant/packed_vector3_array'
+import { Resource } from '@js_godot/classes/resource'
+import { AABB } from '@js_godot/variant/aabb'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { Dictionary } from '@js_godot/variant/dictionary'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -175,6 +175,7 @@ export class Mesh extends Resource{
       );
     }
   }
+  
   _get_surface_count() {
   }
   _surface_get_array_len(_index) {
@@ -205,7 +206,7 @@ export class Mesh extends Resource{
   }
   set_lightmap_size_hint(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_lightmap_size_hint,
+      Mesh._bindings.method_set_lightmap_size_hint,
       this._owner,
       _size
     );
@@ -213,7 +214,7 @@ export class Mesh extends Resource{
   }
   get_lightmap_size_hint() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_lightmap_size_hint,
+      Mesh._bindings.method_get_lightmap_size_hint,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -223,7 +224,7 @@ export class Mesh extends Resource{
   }
   get_aabb() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_aabb,
+      Mesh._bindings.method_get_aabb,
       this._owner,
 			Variant.Type.AABB,
     
@@ -233,7 +234,7 @@ export class Mesh extends Resource{
   }
   get_faces() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_faces,
+      Mesh._bindings.method_get_faces,
       this._owner,
 			Variant.Type.PACKED_VECTOR3_ARRAY,
     
@@ -243,7 +244,7 @@ export class Mesh extends Resource{
   }
   get_surface_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_surface_count,
+      Mesh._bindings.method_get_surface_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -252,7 +253,7 @@ export class Mesh extends Resource{
   }
   surface_get_arrays(_surf_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_surface_get_arrays,
+      Mesh._bindings.method_surface_get_arrays,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -262,7 +263,7 @@ export class Mesh extends Resource{
   }
   surface_get_blend_shape_arrays(_surf_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_surface_get_blend_shape_arrays,
+      Mesh._bindings.method_surface_get_blend_shape_arrays,
       this._owner,
 			Variant.INT,
       _surf_idx
@@ -271,7 +272,7 @@ export class Mesh extends Resource{
   }
   surface_set_material(_surf_idx, _material) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_surface_set_material,
+      Mesh._bindings.method_surface_set_material,
       this._owner,
       _surf_idx, _material
     );
@@ -279,7 +280,7 @@ export class Mesh extends Resource{
   }
   surface_get_material(_surf_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_surface_get_material,
+      Mesh._bindings.method_surface_get_material,
       this._owner,
 			Variant.INT,
       _surf_idx
@@ -288,7 +289,7 @@ export class Mesh extends Resource{
   }
   create_placeholder() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_placeholder,
+      Mesh._bindings.method_create_placeholder,
       this._owner,
 			Variant.INT,
       
@@ -297,7 +298,7 @@ export class Mesh extends Resource{
   }
   create_trimesh_shape() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_trimesh_shape,
+      Mesh._bindings.method_create_trimesh_shape,
       this._owner,
 			Variant.INT,
       
@@ -306,7 +307,7 @@ export class Mesh extends Resource{
   }
   create_convex_shape(_clean, _simplify) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_convex_shape,
+      Mesh._bindings.method_create_convex_shape,
       this._owner,
 			Variant.INT,
       _clean, _simplify
@@ -315,7 +316,7 @@ export class Mesh extends Resource{
   }
   create_outline(_margin) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_outline,
+      Mesh._bindings.method_create_outline,
       this._owner,
 			Variant.INT,
       _margin
@@ -324,7 +325,7 @@ export class Mesh extends Resource{
   }
   generate_triangle_mesh() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_generate_triangle_mesh,
+      Mesh._bindings.method_generate_triangle_mesh,
       this._owner,
 			Variant.INT,
       

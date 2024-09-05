@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { Joint2D } from '@js_godot/classes/joint2d'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -70,9 +70,10 @@ export class GrooveJoint2D extends Joint2D{
       );
     }
   }
+  
   set_length(_length) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_length,
+      GrooveJoint2D._bindings.method_set_length,
       this._owner,
       _length
     );
@@ -80,7 +81,7 @@ export class GrooveJoint2D extends Joint2D{
   }
   get_length() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_length,
+      GrooveJoint2D._bindings.method_get_length,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -89,7 +90,7 @@ export class GrooveJoint2D extends Joint2D{
   }
   set_initial_offset(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_initial_offset,
+      GrooveJoint2D._bindings.method_set_initial_offset,
       this._owner,
       _offset
     );
@@ -97,7 +98,7 @@ export class GrooveJoint2D extends Joint2D{
   }
   get_initial_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_initial_offset,
+      GrooveJoint2D._bindings.method_get_initial_offset,
       this._owner,
 			Variant.Type.FLOAT,
       

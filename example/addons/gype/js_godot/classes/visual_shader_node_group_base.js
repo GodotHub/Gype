@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { VisualShaderNodeResizableBase } from '@js_godot/classes/visual_shader_node_resizable_base'
 import { Variant } from '@js_godot/variant/variant'
-import { GDString } from '@js_godot/variant/gd_string'
 import { StringName } from '@js_godot/variant/string_name'
+import { VisualShaderNodeResizableBase } from '@js_godot/classes/visual_shader_node_resizable_base'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -241,9 +241,10 @@ export class VisualShaderNodeGroupBase extends VisualShaderNodeResizableBase{
       );
     }
   }
+  
   set_inputs(_inputs) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_inputs,
+      VisualShaderNodeGroupBase._bindings.method_set_inputs,
       this._owner,
       _inputs
     );
@@ -251,7 +252,7 @@ export class VisualShaderNodeGroupBase extends VisualShaderNodeResizableBase{
   }
   get_inputs() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_inputs,
+      VisualShaderNodeGroupBase._bindings.method_get_inputs,
       this._owner,
 			Variant.Type.STRING,
     
@@ -261,7 +262,7 @@ export class VisualShaderNodeGroupBase extends VisualShaderNodeResizableBase{
   }
   set_outputs(_outputs) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_outputs,
+      VisualShaderNodeGroupBase._bindings.method_set_outputs,
       this._owner,
       _outputs
     );
@@ -269,7 +270,7 @@ export class VisualShaderNodeGroupBase extends VisualShaderNodeResizableBase{
   }
   get_outputs() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_outputs,
+      VisualShaderNodeGroupBase._bindings.method_get_outputs,
       this._owner,
 			Variant.Type.STRING,
     
@@ -279,7 +280,7 @@ export class VisualShaderNodeGroupBase extends VisualShaderNodeResizableBase{
   }
   is_valid_port_name(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_valid_port_name,
+      VisualShaderNodeGroupBase._bindings.method_is_valid_port_name,
       this._owner,
 			Variant.Type.BOOL,
       _name
@@ -288,7 +289,7 @@ export class VisualShaderNodeGroupBase extends VisualShaderNodeResizableBase{
   }
   add_input_port(_id, _type, _name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_input_port,
+      VisualShaderNodeGroupBase._bindings.method_add_input_port,
       this._owner,
       _id, _type, _name
     );
@@ -296,7 +297,7 @@ export class VisualShaderNodeGroupBase extends VisualShaderNodeResizableBase{
   }
   remove_input_port(_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_input_port,
+      VisualShaderNodeGroupBase._bindings.method_remove_input_port,
       this._owner,
       _id
     );
@@ -304,7 +305,7 @@ export class VisualShaderNodeGroupBase extends VisualShaderNodeResizableBase{
   }
   get_input_port_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_input_port_count,
+      VisualShaderNodeGroupBase._bindings.method_get_input_port_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -313,7 +314,7 @@ export class VisualShaderNodeGroupBase extends VisualShaderNodeResizableBase{
   }
   has_input_port(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_input_port,
+      VisualShaderNodeGroupBase._bindings.method_has_input_port,
       this._owner,
 			Variant.Type.BOOL,
       _id
@@ -322,7 +323,7 @@ export class VisualShaderNodeGroupBase extends VisualShaderNodeResizableBase{
   }
   clear_input_ports() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_input_ports,
+      VisualShaderNodeGroupBase._bindings.method_clear_input_ports,
       this._owner,
       
     );
@@ -330,7 +331,7 @@ export class VisualShaderNodeGroupBase extends VisualShaderNodeResizableBase{
   }
   add_output_port(_id, _type, _name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_output_port,
+      VisualShaderNodeGroupBase._bindings.method_add_output_port,
       this._owner,
       _id, _type, _name
     );
@@ -338,7 +339,7 @@ export class VisualShaderNodeGroupBase extends VisualShaderNodeResizableBase{
   }
   remove_output_port(_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_output_port,
+      VisualShaderNodeGroupBase._bindings.method_remove_output_port,
       this._owner,
       _id
     );
@@ -346,7 +347,7 @@ export class VisualShaderNodeGroupBase extends VisualShaderNodeResizableBase{
   }
   get_output_port_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_output_port_count,
+      VisualShaderNodeGroupBase._bindings.method_get_output_port_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -355,7 +356,7 @@ export class VisualShaderNodeGroupBase extends VisualShaderNodeResizableBase{
   }
   has_output_port(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_output_port,
+      VisualShaderNodeGroupBase._bindings.method_has_output_port,
       this._owner,
 			Variant.Type.BOOL,
       _id
@@ -364,7 +365,7 @@ export class VisualShaderNodeGroupBase extends VisualShaderNodeResizableBase{
   }
   clear_output_ports() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_output_ports,
+      VisualShaderNodeGroupBase._bindings.method_clear_output_ports,
       this._owner,
       
     );
@@ -372,7 +373,7 @@ export class VisualShaderNodeGroupBase extends VisualShaderNodeResizableBase{
   }
   set_input_port_name(_id, _name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_input_port_name,
+      VisualShaderNodeGroupBase._bindings.method_set_input_port_name,
       this._owner,
       _id, _name
     );
@@ -380,7 +381,7 @@ export class VisualShaderNodeGroupBase extends VisualShaderNodeResizableBase{
   }
   set_input_port_type(_id, _type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_input_port_type,
+      VisualShaderNodeGroupBase._bindings.method_set_input_port_type,
       this._owner,
       _id, _type
     );
@@ -388,7 +389,7 @@ export class VisualShaderNodeGroupBase extends VisualShaderNodeResizableBase{
   }
   set_output_port_name(_id, _name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_output_port_name,
+      VisualShaderNodeGroupBase._bindings.method_set_output_port_name,
       this._owner,
       _id, _name
     );
@@ -396,7 +397,7 @@ export class VisualShaderNodeGroupBase extends VisualShaderNodeResizableBase{
   }
   set_output_port_type(_id, _type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_output_port_type,
+      VisualShaderNodeGroupBase._bindings.method_set_output_port_type,
       this._owner,
       _id, _type
     );
@@ -404,7 +405,7 @@ export class VisualShaderNodeGroupBase extends VisualShaderNodeResizableBase{
   }
   get_free_input_port_id() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_free_input_port_id,
+      VisualShaderNodeGroupBase._bindings.method_get_free_input_port_id,
       this._owner,
 			Variant.Type.INT,
       
@@ -413,7 +414,7 @@ export class VisualShaderNodeGroupBase extends VisualShaderNodeResizableBase{
   }
   get_free_output_port_id() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_free_output_port_id,
+      VisualShaderNodeGroupBase._bindings.method_get_free_output_port_id,
       this._owner,
 			Variant.Type.INT,
       

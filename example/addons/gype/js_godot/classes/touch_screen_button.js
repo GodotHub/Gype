@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { Node2D } from '@js_godot/classes/node2d'
 import { Variant } from '@js_godot/variant/variant'
-import { GDString } from '@js_godot/variant/gd_string'
 import { StringName } from '@js_godot/variant/string_name'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -221,9 +221,10 @@ export class TouchScreenButton extends Node2D{
       );
     }
   }
+  
   set_texture_normal(_texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture_normal,
+      TouchScreenButton._bindings.method_set_texture_normal,
       this._owner,
       _texture
     );
@@ -231,7 +232,7 @@ export class TouchScreenButton extends Node2D{
   }
   get_texture_normal() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_normal,
+      TouchScreenButton._bindings.method_get_texture_normal,
       this._owner,
 			Variant.INT,
       
@@ -240,7 +241,7 @@ export class TouchScreenButton extends Node2D{
   }
   set_texture_pressed(_texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture_pressed,
+      TouchScreenButton._bindings.method_set_texture_pressed,
       this._owner,
       _texture
     );
@@ -248,7 +249,7 @@ export class TouchScreenButton extends Node2D{
   }
   get_texture_pressed() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_pressed,
+      TouchScreenButton._bindings.method_get_texture_pressed,
       this._owner,
 			Variant.INT,
       
@@ -257,7 +258,7 @@ export class TouchScreenButton extends Node2D{
   }
   set_bitmask(_bitmask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bitmask,
+      TouchScreenButton._bindings.method_set_bitmask,
       this._owner,
       _bitmask
     );
@@ -265,7 +266,7 @@ export class TouchScreenButton extends Node2D{
   }
   get_bitmask() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bitmask,
+      TouchScreenButton._bindings.method_get_bitmask,
       this._owner,
 			Variant.INT,
       
@@ -274,7 +275,7 @@ export class TouchScreenButton extends Node2D{
   }
   set_shape(_shape) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shape,
+      TouchScreenButton._bindings.method_set_shape,
       this._owner,
       _shape
     );
@@ -282,7 +283,7 @@ export class TouchScreenButton extends Node2D{
   }
   get_shape() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_shape,
+      TouchScreenButton._bindings.method_get_shape,
       this._owner,
 			Variant.INT,
       
@@ -291,7 +292,7 @@ export class TouchScreenButton extends Node2D{
   }
   set_shape_centered(_bool) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shape_centered,
+      TouchScreenButton._bindings.method_set_shape_centered,
       this._owner,
       _bool
     );
@@ -299,7 +300,7 @@ export class TouchScreenButton extends Node2D{
   }
   is_shape_centered() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_shape_centered,
+      TouchScreenButton._bindings.method_is_shape_centered,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -308,7 +309,7 @@ export class TouchScreenButton extends Node2D{
   }
   set_shape_visible(_bool) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shape_visible,
+      TouchScreenButton._bindings.method_set_shape_visible,
       this._owner,
       _bool
     );
@@ -316,7 +317,7 @@ export class TouchScreenButton extends Node2D{
   }
   is_shape_visible() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_shape_visible,
+      TouchScreenButton._bindings.method_is_shape_visible,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -325,7 +326,7 @@ export class TouchScreenButton extends Node2D{
   }
   set_action(_action) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_action,
+      TouchScreenButton._bindings.method_set_action,
       this._owner,
       _action
     );
@@ -333,7 +334,7 @@ export class TouchScreenButton extends Node2D{
   }
   get_action() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_action,
+      TouchScreenButton._bindings.method_get_action,
       this._owner,
 			Variant.Type.STRING,
     
@@ -343,7 +344,7 @@ export class TouchScreenButton extends Node2D{
   }
   set_visibility_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_visibility_mode,
+      TouchScreenButton._bindings.method_set_visibility_mode,
       this._owner,
       _mode
     );
@@ -351,7 +352,7 @@ export class TouchScreenButton extends Node2D{
   }
   get_visibility_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_visibility_mode,
+      TouchScreenButton._bindings.method_get_visibility_mode,
       this._owner,
 			Variant.INT,
       
@@ -360,7 +361,7 @@ export class TouchScreenButton extends Node2D{
   }
   set_passby_press(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_passby_press,
+      TouchScreenButton._bindings.method_set_passby_press,
       this._owner,
       _enabled
     );
@@ -368,7 +369,7 @@ export class TouchScreenButton extends Node2D{
   }
   is_passby_press_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_passby_press_enabled,
+      TouchScreenButton._bindings.method_is_passby_press_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -377,7 +378,7 @@ export class TouchScreenButton extends Node2D{
   }
   is_pressed() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_pressed,
+      TouchScreenButton._bindings.method_is_pressed,
       this._owner,
 			Variant.Type.BOOL,
       

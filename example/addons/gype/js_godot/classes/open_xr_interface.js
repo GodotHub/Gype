@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
+import { XRInterface } from '@js_godot/classes/xr_interface'
+import { StringName } from '@js_godot/variant/string_name'
+import { Quaternion } from '@js_godot/variant/quaternion'
+import { GDString } from '@js_godot/variant/gd_string'
 import { Variant } from '@js_godot/variant/variant'
 import { Vector3 } from '@js_godot/variant/vector3'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
-import { Quaternion } from '@js_godot/variant/quaternion'
-import { XRInterface } from '@js_godot/classes/xr_interface'
 import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
@@ -324,9 +324,10 @@ export class OpenXRInterface extends XRInterface{
       );
     }
   }
+  
   get_display_refresh_rate() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_display_refresh_rate,
+      OpenXRInterface._bindings.method_get_display_refresh_rate,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -335,7 +336,7 @@ export class OpenXRInterface extends XRInterface{
   }
   set_display_refresh_rate(_refresh_rate) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_display_refresh_rate,
+      OpenXRInterface._bindings.method_set_display_refresh_rate,
       this._owner,
       _refresh_rate
     );
@@ -343,7 +344,7 @@ export class OpenXRInterface extends XRInterface{
   }
   get_render_target_size_multiplier() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_render_target_size_multiplier,
+      OpenXRInterface._bindings.method_get_render_target_size_multiplier,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -352,7 +353,7 @@ export class OpenXRInterface extends XRInterface{
   }
   set_render_target_size_multiplier(_multiplier) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_render_target_size_multiplier,
+      OpenXRInterface._bindings.method_set_render_target_size_multiplier,
       this._owner,
       _multiplier
     );
@@ -360,7 +361,7 @@ export class OpenXRInterface extends XRInterface{
   }
   is_foveation_supported() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_foveation_supported,
+      OpenXRInterface._bindings.method_is_foveation_supported,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -369,7 +370,7 @@ export class OpenXRInterface extends XRInterface{
   }
   get_foveation_level() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_foveation_level,
+      OpenXRInterface._bindings.method_get_foveation_level,
       this._owner,
 			Variant.Type.INT,
       
@@ -378,7 +379,7 @@ export class OpenXRInterface extends XRInterface{
   }
   set_foveation_level(_foveation_level) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_foveation_level,
+      OpenXRInterface._bindings.method_set_foveation_level,
       this._owner,
       _foveation_level
     );
@@ -386,7 +387,7 @@ export class OpenXRInterface extends XRInterface{
   }
   get_foveation_dynamic() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_foveation_dynamic,
+      OpenXRInterface._bindings.method_get_foveation_dynamic,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -395,7 +396,7 @@ export class OpenXRInterface extends XRInterface{
   }
   set_foveation_dynamic(_foveation_dynamic) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_foveation_dynamic,
+      OpenXRInterface._bindings.method_set_foveation_dynamic,
       this._owner,
       _foveation_dynamic
     );
@@ -403,7 +404,7 @@ export class OpenXRInterface extends XRInterface{
   }
   is_action_set_active(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_action_set_active,
+      OpenXRInterface._bindings.method_is_action_set_active,
       this._owner,
 			Variant.Type.BOOL,
       _name
@@ -412,7 +413,7 @@ export class OpenXRInterface extends XRInterface{
   }
   set_action_set_active(_name, _active) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_action_set_active,
+      OpenXRInterface._bindings.method_set_action_set_active,
       this._owner,
       _name, _active
     );
@@ -420,7 +421,7 @@ export class OpenXRInterface extends XRInterface{
   }
   get_action_sets() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_action_sets,
+      OpenXRInterface._bindings.method_get_action_sets,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -430,7 +431,7 @@ export class OpenXRInterface extends XRInterface{
   }
   get_available_display_refresh_rates() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_available_display_refresh_rates,
+      OpenXRInterface._bindings.method_get_available_display_refresh_rates,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -440,7 +441,7 @@ export class OpenXRInterface extends XRInterface{
   }
   set_motion_range(_hand, _motion_range) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_motion_range,
+      OpenXRInterface._bindings.method_set_motion_range,
       this._owner,
       _hand, _motion_range
     );
@@ -448,7 +449,7 @@ export class OpenXRInterface extends XRInterface{
   }
   get_motion_range(_hand) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_motion_range,
+      OpenXRInterface._bindings.method_get_motion_range,
       this._owner,
 			Variant.INT,
       _hand
@@ -457,7 +458,7 @@ export class OpenXRInterface extends XRInterface{
   }
   get_hand_tracking_source(_hand) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_hand_tracking_source,
+      OpenXRInterface._bindings.method_get_hand_tracking_source,
       this._owner,
 			Variant.INT,
       _hand
@@ -466,7 +467,7 @@ export class OpenXRInterface extends XRInterface{
   }
   get_hand_joint_flags(_hand, _joint) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_hand_joint_flags,
+      OpenXRInterface._bindings.method_get_hand_joint_flags,
       this._owner,
 			Variant.INT,
       _hand, _joint
@@ -475,7 +476,7 @@ export class OpenXRInterface extends XRInterface{
   }
   get_hand_joint_rotation(_hand, _joint) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_hand_joint_rotation,
+      OpenXRInterface._bindings.method_get_hand_joint_rotation,
       this._owner,
 			Variant.Type.QUATERNION,
     
@@ -485,7 +486,7 @@ export class OpenXRInterface extends XRInterface{
   }
   get_hand_joint_position(_hand, _joint) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_hand_joint_position,
+      OpenXRInterface._bindings.method_get_hand_joint_position,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -495,7 +496,7 @@ export class OpenXRInterface extends XRInterface{
   }
   get_hand_joint_radius(_hand, _joint) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_hand_joint_radius,
+      OpenXRInterface._bindings.method_get_hand_joint_radius,
       this._owner,
 			Variant.Type.FLOAT,
       _hand, _joint
@@ -504,7 +505,7 @@ export class OpenXRInterface extends XRInterface{
   }
   get_hand_joint_linear_velocity(_hand, _joint) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_hand_joint_linear_velocity,
+      OpenXRInterface._bindings.method_get_hand_joint_linear_velocity,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -514,7 +515,7 @@ export class OpenXRInterface extends XRInterface{
   }
   get_hand_joint_angular_velocity(_hand, _joint) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_hand_joint_angular_velocity,
+      OpenXRInterface._bindings.method_get_hand_joint_angular_velocity,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -524,7 +525,7 @@ export class OpenXRInterface extends XRInterface{
   }
   is_hand_tracking_supported() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_hand_tracking_supported,
+      OpenXRInterface._bindings.method_is_hand_tracking_supported,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -533,7 +534,7 @@ export class OpenXRInterface extends XRInterface{
   }
   is_hand_interaction_supported() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_hand_interaction_supported,
+      OpenXRInterface._bindings.method_is_hand_interaction_supported,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -542,7 +543,7 @@ export class OpenXRInterface extends XRInterface{
   }
   is_eye_gaze_interaction_supported() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_eye_gaze_interaction_supported,
+      OpenXRInterface._bindings.method_is_eye_gaze_interaction_supported,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -551,7 +552,7 @@ export class OpenXRInterface extends XRInterface{
   }
   get_vrs_min_radius() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vrs_min_radius,
+      OpenXRInterface._bindings.method_get_vrs_min_radius,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -560,7 +561,7 @@ export class OpenXRInterface extends XRInterface{
   }
   set_vrs_min_radius(_radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vrs_min_radius,
+      OpenXRInterface._bindings.method_set_vrs_min_radius,
       this._owner,
       _radius
     );
@@ -568,7 +569,7 @@ export class OpenXRInterface extends XRInterface{
   }
   get_vrs_strength() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vrs_strength,
+      OpenXRInterface._bindings.method_get_vrs_strength,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -577,7 +578,7 @@ export class OpenXRInterface extends XRInterface{
   }
   set_vrs_strength(_strength) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vrs_strength,
+      OpenXRInterface._bindings.method_set_vrs_strength,
       this._owner,
       _strength
     );

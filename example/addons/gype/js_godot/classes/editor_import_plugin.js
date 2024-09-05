@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
 import { Dictionary } from '@js_godot/variant/dictionary'
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
-import { ResourceImporter } from '@js_godot/classes/resource_importer'
 import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { ResourceImporter } from '@js_godot/classes/resource_importer'
+import { GDString } from '@js_godot/variant/gd_string'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -43,6 +43,7 @@ export class EditorImportPlugin extends ResourceImporter{
       );
     }
   }
+  
   _get_importer_name() {
   }
   _get_visible_name() {
@@ -71,7 +72,7 @@ export class EditorImportPlugin extends ResourceImporter{
   }
   append_import_external_resource(_path, _custom_options, _custom_importer, _generator_parameters) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_append_import_external_resource,
+      EditorImportPlugin._bindings.method_append_import_external_resource,
       this._owner,
 			Variant.INT,
       _path, _custom_options, _custom_importer, _generator_parameters

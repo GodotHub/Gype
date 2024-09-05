@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -130,9 +130,10 @@ export class AnimationNodeStateMachinePlayback extends Resource{
       );
     }
   }
+  
   travel(_to_node, _reset_on_teleport) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_travel,
+      AnimationNodeStateMachinePlayback._bindings.method_travel,
       this._owner,
       _to_node, _reset_on_teleport
     );
@@ -140,7 +141,7 @@ export class AnimationNodeStateMachinePlayback extends Resource{
   }
   start(_node, _reset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_start,
+      AnimationNodeStateMachinePlayback._bindings.method_start,
       this._owner,
       _node, _reset
     );
@@ -148,7 +149,7 @@ export class AnimationNodeStateMachinePlayback extends Resource{
   }
   next() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_next,
+      AnimationNodeStateMachinePlayback._bindings.method_next,
       this._owner,
       
     );
@@ -156,7 +157,7 @@ export class AnimationNodeStateMachinePlayback extends Resource{
   }
   stop() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_stop,
+      AnimationNodeStateMachinePlayback._bindings.method_stop,
       this._owner,
       
     );
@@ -164,7 +165,7 @@ export class AnimationNodeStateMachinePlayback extends Resource{
   }
   is_playing() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_playing,
+      AnimationNodeStateMachinePlayback._bindings.method_is_playing,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -173,7 +174,7 @@ export class AnimationNodeStateMachinePlayback extends Resource{
   }
   get_current_node() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_current_node,
+      AnimationNodeStateMachinePlayback._bindings.method_get_current_node,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -183,7 +184,7 @@ export class AnimationNodeStateMachinePlayback extends Resource{
   }
   get_current_play_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_current_play_position,
+      AnimationNodeStateMachinePlayback._bindings.method_get_current_play_position,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -192,7 +193,7 @@ export class AnimationNodeStateMachinePlayback extends Resource{
   }
   get_current_length() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_current_length,
+      AnimationNodeStateMachinePlayback._bindings.method_get_current_length,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -201,7 +202,7 @@ export class AnimationNodeStateMachinePlayback extends Resource{
   }
   get_fading_from_node() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fading_from_node,
+      AnimationNodeStateMachinePlayback._bindings.method_get_fading_from_node,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -211,7 +212,7 @@ export class AnimationNodeStateMachinePlayback extends Resource{
   }
   get_travel_path() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_travel_path,
+      AnimationNodeStateMachinePlayback._bindings.method_get_travel_path,
       this._owner,
 			Variant.INT,
       

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { MultiplayerPeer } from '@js_godot/classes/multiplayer_peer'
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { MultiplayerPeer } from '@js_godot/classes/multiplayer_peer'
 import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
 import {
   call_utility_ret,
@@ -31,6 +31,7 @@ export class MultiplayerPeerExtension extends MultiplayerPeer{
     }
     this.#initialized = true;
   }
+  
   _get_packet(_r_buffer, _r_buffer_size) {
   }
   _put_packet(_p_buffer, _p_buffer_size) {

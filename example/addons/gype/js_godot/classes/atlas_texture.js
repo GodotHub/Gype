@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
+import { Texture2D } from '@js_godot/classes/texture2d'
 import { Variant } from '@js_godot/variant/variant'
 import { Rect2 } from '@js_godot/variant/rect2'
-import { Texture2D } from '@js_godot/classes/texture2d'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -111,9 +111,10 @@ export class AtlasTexture extends Texture2D{
       );
     }
   }
+  
   set_atlas(_atlas) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_atlas,
+      AtlasTexture._bindings.method_set_atlas,
       this._owner,
       _atlas
     );
@@ -121,7 +122,7 @@ export class AtlasTexture extends Texture2D{
   }
   get_atlas() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_atlas,
+      AtlasTexture._bindings.method_get_atlas,
       this._owner,
 			Variant.INT,
       
@@ -130,7 +131,7 @@ export class AtlasTexture extends Texture2D{
   }
   set_region(_region) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_region,
+      AtlasTexture._bindings.method_set_region,
       this._owner,
       _region
     );
@@ -138,7 +139,7 @@ export class AtlasTexture extends Texture2D{
   }
   get_region() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_region,
+      AtlasTexture._bindings.method_get_region,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -148,7 +149,7 @@ export class AtlasTexture extends Texture2D{
   }
   set_margin(_margin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_margin,
+      AtlasTexture._bindings.method_set_margin,
       this._owner,
       _margin
     );
@@ -156,7 +157,7 @@ export class AtlasTexture extends Texture2D{
   }
   get_margin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_margin,
+      AtlasTexture._bindings.method_get_margin,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -166,7 +167,7 @@ export class AtlasTexture extends Texture2D{
   }
   set_filter_clip(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_filter_clip,
+      AtlasTexture._bindings.method_set_filter_clip,
       this._owner,
       _enable
     );
@@ -174,7 +175,7 @@ export class AtlasTexture extends Texture2D{
   }
   has_filter_clip() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_filter_clip,
+      AtlasTexture._bindings.method_has_filter_clip,
       this._owner,
 			Variant.Type.BOOL,
       

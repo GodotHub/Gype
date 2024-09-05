@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { Container } from '@js_godot/classes/container'
 import {
   call_utility_ret,
@@ -120,9 +120,10 @@ export class FlowContainer extends Container{
       );
     }
   }
+  
   get_line_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_count,
+      FlowContainer._bindings.method_get_line_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -131,7 +132,7 @@ export class FlowContainer extends Container{
   }
   set_alignment(_alignment) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_alignment,
+      FlowContainer._bindings.method_set_alignment,
       this._owner,
       _alignment
     );
@@ -139,7 +140,7 @@ export class FlowContainer extends Container{
   }
   get_alignment() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_alignment,
+      FlowContainer._bindings.method_get_alignment,
       this._owner,
 			Variant.INT,
       
@@ -148,7 +149,7 @@ export class FlowContainer extends Container{
   }
   set_last_wrap_alignment(_last_wrap_alignment) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_last_wrap_alignment,
+      FlowContainer._bindings.method_set_last_wrap_alignment,
       this._owner,
       _last_wrap_alignment
     );
@@ -156,7 +157,7 @@ export class FlowContainer extends Container{
   }
   get_last_wrap_alignment() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_last_wrap_alignment,
+      FlowContainer._bindings.method_get_last_wrap_alignment,
       this._owner,
 			Variant.INT,
       
@@ -165,7 +166,7 @@ export class FlowContainer extends Container{
   }
   set_vertical(_vertical) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vertical,
+      FlowContainer._bindings.method_set_vertical,
       this._owner,
       _vertical
     );
@@ -173,7 +174,7 @@ export class FlowContainer extends Container{
   }
   is_vertical() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_vertical,
+      FlowContainer._bindings.method_is_vertical,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -182,7 +183,7 @@ export class FlowContainer extends Container{
   }
   set_reverse_fill(_reverse_fill) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_reverse_fill,
+      FlowContainer._bindings.method_set_reverse_fill,
       this._owner,
       _reverse_fill
     );
@@ -190,7 +191,7 @@ export class FlowContainer extends Container{
   }
   is_reverse_fill() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_reverse_fill,
+      FlowContainer._bindings.method_is_reverse_fill,
       this._owner,
 			Variant.Type.BOOL,
       

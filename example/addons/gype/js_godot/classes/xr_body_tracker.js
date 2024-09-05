@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
+import { XRPositionalTracker } from '@js_godot/classes/xr_positional_tracker'
 import { Transform3D } from '@js_godot/variant/transform3d'
 import { Variant } from '@js_godot/variant/variant'
-import { XRPositionalTracker } from '@js_godot/classes/xr_positional_tracker'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -111,9 +111,10 @@ export class XRBodyTracker extends XRPositionalTracker{
       );
     }
   }
+  
   set_has_tracking_data(_has_data) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_has_tracking_data,
+      XRBodyTracker._bindings.method_set_has_tracking_data,
       this._owner,
       _has_data
     );
@@ -121,7 +122,7 @@ export class XRBodyTracker extends XRPositionalTracker{
   }
   get_has_tracking_data() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_has_tracking_data,
+      XRBodyTracker._bindings.method_get_has_tracking_data,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -130,7 +131,7 @@ export class XRBodyTracker extends XRPositionalTracker{
   }
   set_body_flags(_flags) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_body_flags,
+      XRBodyTracker._bindings.method_set_body_flags,
       this._owner,
       _flags
     );
@@ -138,7 +139,7 @@ export class XRBodyTracker extends XRPositionalTracker{
   }
   get_body_flags() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_body_flags,
+      XRBodyTracker._bindings.method_get_body_flags,
       this._owner,
 			Variant.INT,
       
@@ -147,7 +148,7 @@ export class XRBodyTracker extends XRPositionalTracker{
   }
   set_joint_flags(_joint, _flags) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_joint_flags,
+      XRBodyTracker._bindings.method_set_joint_flags,
       this._owner,
       _joint, _flags
     );
@@ -155,7 +156,7 @@ export class XRBodyTracker extends XRPositionalTracker{
   }
   get_joint_flags(_joint) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_joint_flags,
+      XRBodyTracker._bindings.method_get_joint_flags,
       this._owner,
 			Variant.INT,
       _joint
@@ -164,7 +165,7 @@ export class XRBodyTracker extends XRPositionalTracker{
   }
   set_joint_transform(_joint, _transform) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_joint_transform,
+      XRBodyTracker._bindings.method_set_joint_transform,
       this._owner,
       _joint, _transform
     );
@@ -172,7 +173,7 @@ export class XRBodyTracker extends XRPositionalTracker{
   }
   get_joint_transform(_joint) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_joint_transform,
+      XRBodyTracker._bindings.method_get_joint_transform,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     

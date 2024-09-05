@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { AudioStream } from '@js_godot/classes/audio_stream'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -70,9 +70,10 @@ export class AudioStreamGenerator extends AudioStream{
       );
     }
   }
+  
   set_mix_rate(_hz) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mix_rate,
+      AudioStreamGenerator._bindings.method_set_mix_rate,
       this._owner,
       _hz
     );
@@ -80,7 +81,7 @@ export class AudioStreamGenerator extends AudioStream{
   }
   get_mix_rate() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mix_rate,
+      AudioStreamGenerator._bindings.method_get_mix_rate,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -89,7 +90,7 @@ export class AudioStreamGenerator extends AudioStream{
   }
   set_buffer_length(_seconds) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_buffer_length,
+      AudioStreamGenerator._bindings.method_set_buffer_length,
       this._owner,
       _seconds
     );
@@ -97,7 +98,7 @@ export class AudioStreamGenerator extends AudioStream{
   }
   get_buffer_length() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_buffer_length,
+      AudioStreamGenerator._bindings.method_get_buffer_length,
       this._owner,
 			Variant.Type.FLOAT,
       

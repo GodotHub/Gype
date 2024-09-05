@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { GeometryInstance3D } from '@js_godot/classes/geometry_instance3d'
+import { Variant } from '@js_godot/variant/variant'
 import { NodePath } from '@js_godot/variant/node_path'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -231,9 +231,10 @@ export class MeshInstance3D extends GeometryInstance3D{
       );
     }
   }
+  
   set_mesh(_mesh) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mesh,
+      MeshInstance3D._bindings.method_set_mesh,
       this._owner,
       _mesh
     );
@@ -241,7 +242,7 @@ export class MeshInstance3D extends GeometryInstance3D{
   }
   get_mesh() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mesh,
+      MeshInstance3D._bindings.method_get_mesh,
       this._owner,
 			Variant.INT,
       
@@ -250,7 +251,7 @@ export class MeshInstance3D extends GeometryInstance3D{
   }
   set_skeleton_path(_skeleton_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_skeleton_path,
+      MeshInstance3D._bindings.method_set_skeleton_path,
       this._owner,
       _skeleton_path
     );
@@ -258,7 +259,7 @@ export class MeshInstance3D extends GeometryInstance3D{
   }
   get_skeleton_path() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_skeleton_path,
+      MeshInstance3D._bindings.method_get_skeleton_path,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -268,7 +269,7 @@ export class MeshInstance3D extends GeometryInstance3D{
   }
   set_skin(_skin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_skin,
+      MeshInstance3D._bindings.method_set_skin,
       this._owner,
       _skin
     );
@@ -276,7 +277,7 @@ export class MeshInstance3D extends GeometryInstance3D{
   }
   get_skin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_skin,
+      MeshInstance3D._bindings.method_get_skin,
       this._owner,
 			Variant.INT,
       
@@ -285,7 +286,7 @@ export class MeshInstance3D extends GeometryInstance3D{
   }
   get_skin_reference() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_skin_reference,
+      MeshInstance3D._bindings.method_get_skin_reference,
       this._owner,
 			Variant.INT,
       
@@ -294,7 +295,7 @@ export class MeshInstance3D extends GeometryInstance3D{
   }
   get_surface_override_material_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_surface_override_material_count,
+      MeshInstance3D._bindings.method_get_surface_override_material_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -303,7 +304,7 @@ export class MeshInstance3D extends GeometryInstance3D{
   }
   set_surface_override_material(_surface, _material) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_surface_override_material,
+      MeshInstance3D._bindings.method_set_surface_override_material,
       this._owner,
       _surface, _material
     );
@@ -311,7 +312,7 @@ export class MeshInstance3D extends GeometryInstance3D{
   }
   get_surface_override_material(_surface) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_surface_override_material,
+      MeshInstance3D._bindings.method_get_surface_override_material,
       this._owner,
 			Variant.INT,
       _surface
@@ -320,7 +321,7 @@ export class MeshInstance3D extends GeometryInstance3D{
   }
   get_active_material(_surface) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_active_material,
+      MeshInstance3D._bindings.method_get_active_material,
       this._owner,
 			Variant.INT,
       _surface
@@ -329,7 +330,7 @@ export class MeshInstance3D extends GeometryInstance3D{
   }
   create_trimesh_collision() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_create_trimesh_collision,
+      MeshInstance3D._bindings.method_create_trimesh_collision,
       this._owner,
       
     );
@@ -337,7 +338,7 @@ export class MeshInstance3D extends GeometryInstance3D{
   }
   create_convex_collision(_clean, _simplify) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_create_convex_collision,
+      MeshInstance3D._bindings.method_create_convex_collision,
       this._owner,
       _clean, _simplify
     );
@@ -345,7 +346,7 @@ export class MeshInstance3D extends GeometryInstance3D{
   }
   create_multiple_convex_collisions(_settings) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_create_multiple_convex_collisions,
+      MeshInstance3D._bindings.method_create_multiple_convex_collisions,
       this._owner,
       _settings
     );
@@ -353,7 +354,7 @@ export class MeshInstance3D extends GeometryInstance3D{
   }
   get_blend_shape_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_blend_shape_count,
+      MeshInstance3D._bindings.method_get_blend_shape_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -362,7 +363,7 @@ export class MeshInstance3D extends GeometryInstance3D{
   }
   find_blend_shape_by_name(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_find_blend_shape_by_name,
+      MeshInstance3D._bindings.method_find_blend_shape_by_name,
       this._owner,
 			Variant.Type.INT,
       _name
@@ -371,7 +372,7 @@ export class MeshInstance3D extends GeometryInstance3D{
   }
   get_blend_shape_value(_blend_shape_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_blend_shape_value,
+      MeshInstance3D._bindings.method_get_blend_shape_value,
       this._owner,
 			Variant.Type.FLOAT,
       _blend_shape_idx
@@ -380,7 +381,7 @@ export class MeshInstance3D extends GeometryInstance3D{
   }
   set_blend_shape_value(_blend_shape_idx, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_blend_shape_value,
+      MeshInstance3D._bindings.method_set_blend_shape_value,
       this._owner,
       _blend_shape_idx, _value
     );
@@ -388,7 +389,7 @@ export class MeshInstance3D extends GeometryInstance3D{
   }
   create_debug_tangents() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_create_debug_tangents,
+      MeshInstance3D._bindings.method_create_debug_tangents,
       this._owner,
       
     );
@@ -396,7 +397,7 @@ export class MeshInstance3D extends GeometryInstance3D{
   }
   bake_mesh_from_current_blend_shape_mix(_existing) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_bake_mesh_from_current_blend_shape_mix,
+      MeshInstance3D._bindings.method_bake_mesh_from_current_blend_shape_mix,
       this._owner,
 			Variant.INT,
       _existing

@@ -1,11 +1,11 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Vector3 } from '@js_godot/variant/vector3'
-import { Vector3i } from '@js_godot/variant/vector3i'
-import { StringName } from '@js_godot/variant/string_name'
 import { Node3D } from '@js_godot/classes/node3d'
 import { RID } from '@js_godot/variant/rid'
+import { StringName } from '@js_godot/variant/string_name'
+import { Vector3i } from '@js_godot/variant/vector3i'
+import { Variant } from '@js_godot/variant/variant'
 import { Basis } from '@js_godot/variant/basis'
+import { Vector3 } from '@js_godot/variant/vector3'
 import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
@@ -505,9 +505,10 @@ export class GridMap extends Node3D{
       );
     }
   }
+  
   set_collision_layer(_layer) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_layer,
+      GridMap._bindings.method_set_collision_layer,
       this._owner,
       _layer
     );
@@ -515,7 +516,7 @@ export class GridMap extends Node3D{
   }
   get_collision_layer() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_layer,
+      GridMap._bindings.method_get_collision_layer,
       this._owner,
 			Variant.Type.INT,
       
@@ -524,7 +525,7 @@ export class GridMap extends Node3D{
   }
   set_collision_mask(_mask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_mask,
+      GridMap._bindings.method_set_collision_mask,
       this._owner,
       _mask
     );
@@ -532,7 +533,7 @@ export class GridMap extends Node3D{
   }
   get_collision_mask() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_mask,
+      GridMap._bindings.method_get_collision_mask,
       this._owner,
 			Variant.Type.INT,
       
@@ -541,7 +542,7 @@ export class GridMap extends Node3D{
   }
   set_collision_mask_value(_layer_number, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_mask_value,
+      GridMap._bindings.method_set_collision_mask_value,
       this._owner,
       _layer_number, _value
     );
@@ -549,7 +550,7 @@ export class GridMap extends Node3D{
   }
   get_collision_mask_value(_layer_number) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_mask_value,
+      GridMap._bindings.method_get_collision_mask_value,
       this._owner,
 			Variant.Type.BOOL,
       _layer_number
@@ -558,7 +559,7 @@ export class GridMap extends Node3D{
   }
   set_collision_layer_value(_layer_number, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_layer_value,
+      GridMap._bindings.method_set_collision_layer_value,
       this._owner,
       _layer_number, _value
     );
@@ -566,7 +567,7 @@ export class GridMap extends Node3D{
   }
   get_collision_layer_value(_layer_number) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_layer_value,
+      GridMap._bindings.method_get_collision_layer_value,
       this._owner,
 			Variant.Type.BOOL,
       _layer_number
@@ -575,7 +576,7 @@ export class GridMap extends Node3D{
   }
   set_collision_priority(_priority) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_priority,
+      GridMap._bindings.method_set_collision_priority,
       this._owner,
       _priority
     );
@@ -583,7 +584,7 @@ export class GridMap extends Node3D{
   }
   get_collision_priority() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_priority,
+      GridMap._bindings.method_get_collision_priority,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -592,7 +593,7 @@ export class GridMap extends Node3D{
   }
   set_physics_material(_material) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_physics_material,
+      GridMap._bindings.method_set_physics_material,
       this._owner,
       _material
     );
@@ -600,7 +601,7 @@ export class GridMap extends Node3D{
   }
   get_physics_material() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_physics_material,
+      GridMap._bindings.method_get_physics_material,
       this._owner,
 			Variant.INT,
       
@@ -609,7 +610,7 @@ export class GridMap extends Node3D{
   }
   set_bake_navigation(_bake_navigation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bake_navigation,
+      GridMap._bindings.method_set_bake_navigation,
       this._owner,
       _bake_navigation
     );
@@ -617,7 +618,7 @@ export class GridMap extends Node3D{
   }
   is_baking_navigation() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_baking_navigation,
+      GridMap._bindings.method_is_baking_navigation,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -626,7 +627,7 @@ export class GridMap extends Node3D{
   }
   set_navigation_map(_navigation_map) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_navigation_map,
+      GridMap._bindings.method_set_navigation_map,
       this._owner,
       _navigation_map
     );
@@ -634,7 +635,7 @@ export class GridMap extends Node3D{
   }
   get_navigation_map() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_navigation_map,
+      GridMap._bindings.method_get_navigation_map,
       this._owner,
 			Variant.Type.RID,
     
@@ -644,7 +645,7 @@ export class GridMap extends Node3D{
   }
   set_mesh_library(_mesh_library) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mesh_library,
+      GridMap._bindings.method_set_mesh_library,
       this._owner,
       _mesh_library
     );
@@ -652,7 +653,7 @@ export class GridMap extends Node3D{
   }
   get_mesh_library() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mesh_library,
+      GridMap._bindings.method_get_mesh_library,
       this._owner,
 			Variant.INT,
       
@@ -661,7 +662,7 @@ export class GridMap extends Node3D{
   }
   set_cell_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cell_size,
+      GridMap._bindings.method_set_cell_size,
       this._owner,
       _size
     );
@@ -669,7 +670,7 @@ export class GridMap extends Node3D{
   }
   get_cell_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cell_size,
+      GridMap._bindings.method_get_cell_size,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -679,7 +680,7 @@ export class GridMap extends Node3D{
   }
   set_cell_scale(_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cell_scale,
+      GridMap._bindings.method_set_cell_scale,
       this._owner,
       _scale
     );
@@ -687,7 +688,7 @@ export class GridMap extends Node3D{
   }
   get_cell_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cell_scale,
+      GridMap._bindings.method_get_cell_scale,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -696,7 +697,7 @@ export class GridMap extends Node3D{
   }
   set_octant_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_octant_size,
+      GridMap._bindings.method_set_octant_size,
       this._owner,
       _size
     );
@@ -704,7 +705,7 @@ export class GridMap extends Node3D{
   }
   get_octant_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_octant_size,
+      GridMap._bindings.method_get_octant_size,
       this._owner,
 			Variant.Type.INT,
       
@@ -713,7 +714,7 @@ export class GridMap extends Node3D{
   }
   set_cell_item(_position, _item, _orientation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cell_item,
+      GridMap._bindings.method_set_cell_item,
       this._owner,
       _position, _item, _orientation
     );
@@ -721,7 +722,7 @@ export class GridMap extends Node3D{
   }
   get_cell_item(_position) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cell_item,
+      GridMap._bindings.method_get_cell_item,
       this._owner,
 			Variant.Type.INT,
       _position
@@ -730,7 +731,7 @@ export class GridMap extends Node3D{
   }
   get_cell_item_orientation(_position) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cell_item_orientation,
+      GridMap._bindings.method_get_cell_item_orientation,
       this._owner,
 			Variant.Type.INT,
       _position
@@ -739,7 +740,7 @@ export class GridMap extends Node3D{
   }
   get_cell_item_basis(_position) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cell_item_basis,
+      GridMap._bindings.method_get_cell_item_basis,
       this._owner,
 			Variant.Type.BASIS,
     
@@ -749,7 +750,7 @@ export class GridMap extends Node3D{
   }
   get_basis_with_orthogonal_index(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_basis_with_orthogonal_index,
+      GridMap._bindings.method_get_basis_with_orthogonal_index,
       this._owner,
 			Variant.Type.BASIS,
     
@@ -759,7 +760,7 @@ export class GridMap extends Node3D{
   }
   get_orthogonal_index_from_basis(_basis) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_orthogonal_index_from_basis,
+      GridMap._bindings.method_get_orthogonal_index_from_basis,
       this._owner,
 			Variant.Type.INT,
       _basis
@@ -768,7 +769,7 @@ export class GridMap extends Node3D{
   }
   local_to_map(_local_position) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_local_to_map,
+      GridMap._bindings.method_local_to_map,
       this._owner,
 			Variant.Type.VECTOR3I,
     
@@ -778,7 +779,7 @@ export class GridMap extends Node3D{
   }
   map_to_local(_map_position) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_map_to_local,
+      GridMap._bindings.method_map_to_local,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -788,7 +789,7 @@ export class GridMap extends Node3D{
   }
   resource_changed(_resource) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_resource_changed,
+      GridMap._bindings.method_resource_changed,
       this._owner,
       _resource
     );
@@ -796,7 +797,7 @@ export class GridMap extends Node3D{
   }
   set_center_x(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_center_x,
+      GridMap._bindings.method_set_center_x,
       this._owner,
       _enable
     );
@@ -804,7 +805,7 @@ export class GridMap extends Node3D{
   }
   get_center_x() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_center_x,
+      GridMap._bindings.method_get_center_x,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -813,7 +814,7 @@ export class GridMap extends Node3D{
   }
   set_center_y(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_center_y,
+      GridMap._bindings.method_set_center_y,
       this._owner,
       _enable
     );
@@ -821,7 +822,7 @@ export class GridMap extends Node3D{
   }
   get_center_y() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_center_y,
+      GridMap._bindings.method_get_center_y,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -830,7 +831,7 @@ export class GridMap extends Node3D{
   }
   set_center_z(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_center_z,
+      GridMap._bindings.method_set_center_z,
       this._owner,
       _enable
     );
@@ -838,7 +839,7 @@ export class GridMap extends Node3D{
   }
   get_center_z() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_center_z,
+      GridMap._bindings.method_get_center_z,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -847,7 +848,7 @@ export class GridMap extends Node3D{
   }
   clear() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear,
+      GridMap._bindings.method_clear,
       this._owner,
       
     );
@@ -855,7 +856,7 @@ export class GridMap extends Node3D{
   }
   get_used_cells() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_used_cells,
+      GridMap._bindings.method_get_used_cells,
       this._owner,
 			Variant.INT,
       
@@ -864,7 +865,7 @@ export class GridMap extends Node3D{
   }
   get_used_cells_by_item(_item) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_used_cells_by_item,
+      GridMap._bindings.method_get_used_cells_by_item,
       this._owner,
 			Variant.INT,
       _item
@@ -873,7 +874,7 @@ export class GridMap extends Node3D{
   }
   get_meshes() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_meshes,
+      GridMap._bindings.method_get_meshes,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -883,7 +884,7 @@ export class GridMap extends Node3D{
   }
   get_bake_meshes() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bake_meshes,
+      GridMap._bindings.method_get_bake_meshes,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -893,7 +894,7 @@ export class GridMap extends Node3D{
   }
   get_bake_mesh_instance(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bake_mesh_instance,
+      GridMap._bindings.method_get_bake_mesh_instance,
       this._owner,
 			Variant.Type.RID,
     
@@ -903,7 +904,7 @@ export class GridMap extends Node3D{
   }
   clear_baked_meshes() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_baked_meshes,
+      GridMap._bindings.method_clear_baked_meshes,
       this._owner,
       
     );
@@ -911,7 +912,7 @@ export class GridMap extends Node3D{
   }
   make_baked_meshes(_gen_lightmap_uv, _lightmap_uv_texel_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_make_baked_meshes,
+      GridMap._bindings.method_make_baked_meshes,
       this._owner,
       _gen_lightmap_uv, _lightmap_uv_texel_size
     );

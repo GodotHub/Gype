@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
-import { Color } from '@js_godot/variant/color'
 import { GraphElement } from '@js_godot/classes/graph_element'
+import { Color } from '@js_godot/variant/color'
+import { Variant } from '@js_godot/variant/variant'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -162,9 +162,10 @@ export class GraphFrame extends GraphElement{
       );
     }
   }
+  
   set_title(_title) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_title,
+      GraphFrame._bindings.method_set_title,
       this._owner,
       _title
     );
@@ -172,7 +173,7 @@ export class GraphFrame extends GraphElement{
   }
   get_title() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_title,
+      GraphFrame._bindings.method_get_title,
       this._owner,
 			Variant.Type.STRING,
     
@@ -182,7 +183,7 @@ export class GraphFrame extends GraphElement{
   }
   get_titlebar_hbox() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_titlebar_hbox,
+      GraphFrame._bindings.method_get_titlebar_hbox,
       this._owner,
 			Variant.INT,
       
@@ -191,7 +192,7 @@ export class GraphFrame extends GraphElement{
   }
   set_autoshrink_enabled(_shrink) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_autoshrink_enabled,
+      GraphFrame._bindings.method_set_autoshrink_enabled,
       this._owner,
       _shrink
     );
@@ -199,7 +200,7 @@ export class GraphFrame extends GraphElement{
   }
   is_autoshrink_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_autoshrink_enabled,
+      GraphFrame._bindings.method_is_autoshrink_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -208,7 +209,7 @@ export class GraphFrame extends GraphElement{
   }
   set_autoshrink_margin(_autoshrink_margin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_autoshrink_margin,
+      GraphFrame._bindings.method_set_autoshrink_margin,
       this._owner,
       _autoshrink_margin
     );
@@ -216,7 +217,7 @@ export class GraphFrame extends GraphElement{
   }
   get_autoshrink_margin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_autoshrink_margin,
+      GraphFrame._bindings.method_get_autoshrink_margin,
       this._owner,
 			Variant.Type.INT,
       
@@ -225,7 +226,7 @@ export class GraphFrame extends GraphElement{
   }
   set_drag_margin(_drag_margin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_drag_margin,
+      GraphFrame._bindings.method_set_drag_margin,
       this._owner,
       _drag_margin
     );
@@ -233,7 +234,7 @@ export class GraphFrame extends GraphElement{
   }
   get_drag_margin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_drag_margin,
+      GraphFrame._bindings.method_get_drag_margin,
       this._owner,
 			Variant.Type.INT,
       
@@ -242,7 +243,7 @@ export class GraphFrame extends GraphElement{
   }
   set_tint_color_enabled(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tint_color_enabled,
+      GraphFrame._bindings.method_set_tint_color_enabled,
       this._owner,
       _enable
     );
@@ -250,7 +251,7 @@ export class GraphFrame extends GraphElement{
   }
   is_tint_color_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_tint_color_enabled,
+      GraphFrame._bindings.method_is_tint_color_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -259,7 +260,7 @@ export class GraphFrame extends GraphElement{
   }
   set_tint_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tint_color,
+      GraphFrame._bindings.method_set_tint_color,
       this._owner,
       _color
     );
@@ -267,7 +268,7 @@ export class GraphFrame extends GraphElement{
   }
   get_tint_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tint_color,
+      GraphFrame._bindings.method_get_tint_color,
       this._owner,
 			Variant.Type.COLOR,
     

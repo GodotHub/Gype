@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
+import { Node3D } from '@js_godot/classes/node3d'
+import { StringName } from '@js_godot/variant/string_name'
+import { RID } from '@js_godot/variant/rid'
+import { Color } from '@js_godot/variant/color'
 import { Variant } from '@js_godot/variant/variant'
 import { Vector3 } from '@js_godot/variant/vector3'
-import { StringName } from '@js_godot/variant/string_name'
-import { Node3D } from '@js_godot/classes/node3d'
-import { Color } from '@js_godot/variant/color'
-import { RID } from '@js_godot/variant/rid'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -383,9 +383,10 @@ export class RayCast3D extends Node3D{
       );
     }
   }
+  
   set_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_enabled,
+      RayCast3D._bindings.method_set_enabled,
       this._owner,
       _enabled
     );
@@ -393,7 +394,7 @@ export class RayCast3D extends Node3D{
   }
   is_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_enabled,
+      RayCast3D._bindings.method_is_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -402,7 +403,7 @@ export class RayCast3D extends Node3D{
   }
   set_target_position(_local_point) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_target_position,
+      RayCast3D._bindings.method_set_target_position,
       this._owner,
       _local_point
     );
@@ -410,7 +411,7 @@ export class RayCast3D extends Node3D{
   }
   get_target_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_target_position,
+      RayCast3D._bindings.method_get_target_position,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -420,7 +421,7 @@ export class RayCast3D extends Node3D{
   }
   is_colliding() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_colliding,
+      RayCast3D._bindings.method_is_colliding,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -429,7 +430,7 @@ export class RayCast3D extends Node3D{
   }
   force_raycast_update() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_force_raycast_update,
+      RayCast3D._bindings.method_force_raycast_update,
       this._owner,
       
     );
@@ -437,7 +438,7 @@ export class RayCast3D extends Node3D{
   }
   get_collider() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collider,
+      RayCast3D._bindings.method_get_collider,
       this._owner,
 			Variant.INT,
       
@@ -446,7 +447,7 @@ export class RayCast3D extends Node3D{
   }
   get_collider_rid() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collider_rid,
+      RayCast3D._bindings.method_get_collider_rid,
       this._owner,
 			Variant.Type.RID,
     
@@ -456,7 +457,7 @@ export class RayCast3D extends Node3D{
   }
   get_collider_shape() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collider_shape,
+      RayCast3D._bindings.method_get_collider_shape,
       this._owner,
 			Variant.Type.INT,
       
@@ -465,7 +466,7 @@ export class RayCast3D extends Node3D{
   }
   get_collision_point() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_point,
+      RayCast3D._bindings.method_get_collision_point,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -475,7 +476,7 @@ export class RayCast3D extends Node3D{
   }
   get_collision_normal() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_normal,
+      RayCast3D._bindings.method_get_collision_normal,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -485,7 +486,7 @@ export class RayCast3D extends Node3D{
   }
   get_collision_face_index() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_face_index,
+      RayCast3D._bindings.method_get_collision_face_index,
       this._owner,
 			Variant.Type.INT,
       
@@ -494,7 +495,7 @@ export class RayCast3D extends Node3D{
   }
   add_exception_rid(_rid) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_exception_rid,
+      RayCast3D._bindings.method_add_exception_rid,
       this._owner,
       _rid
     );
@@ -502,7 +503,7 @@ export class RayCast3D extends Node3D{
   }
   add_exception(_node) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_exception,
+      RayCast3D._bindings.method_add_exception,
       this._owner,
       _node
     );
@@ -510,7 +511,7 @@ export class RayCast3D extends Node3D{
   }
   remove_exception_rid(_rid) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_exception_rid,
+      RayCast3D._bindings.method_remove_exception_rid,
       this._owner,
       _rid
     );
@@ -518,7 +519,7 @@ export class RayCast3D extends Node3D{
   }
   remove_exception(_node) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_exception,
+      RayCast3D._bindings.method_remove_exception,
       this._owner,
       _node
     );
@@ -526,7 +527,7 @@ export class RayCast3D extends Node3D{
   }
   clear_exceptions() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_exceptions,
+      RayCast3D._bindings.method_clear_exceptions,
       this._owner,
       
     );
@@ -534,7 +535,7 @@ export class RayCast3D extends Node3D{
   }
   set_collision_mask(_mask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_mask,
+      RayCast3D._bindings.method_set_collision_mask,
       this._owner,
       _mask
     );
@@ -542,7 +543,7 @@ export class RayCast3D extends Node3D{
   }
   get_collision_mask() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_mask,
+      RayCast3D._bindings.method_get_collision_mask,
       this._owner,
 			Variant.Type.INT,
       
@@ -551,7 +552,7 @@ export class RayCast3D extends Node3D{
   }
   set_collision_mask_value(_layer_number, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_mask_value,
+      RayCast3D._bindings.method_set_collision_mask_value,
       this._owner,
       _layer_number, _value
     );
@@ -559,7 +560,7 @@ export class RayCast3D extends Node3D{
   }
   get_collision_mask_value(_layer_number) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_mask_value,
+      RayCast3D._bindings.method_get_collision_mask_value,
       this._owner,
 			Variant.Type.BOOL,
       _layer_number
@@ -568,7 +569,7 @@ export class RayCast3D extends Node3D{
   }
   set_exclude_parent_body(_mask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_exclude_parent_body,
+      RayCast3D._bindings.method_set_exclude_parent_body,
       this._owner,
       _mask
     );
@@ -576,7 +577,7 @@ export class RayCast3D extends Node3D{
   }
   get_exclude_parent_body() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_exclude_parent_body,
+      RayCast3D._bindings.method_get_exclude_parent_body,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -585,7 +586,7 @@ export class RayCast3D extends Node3D{
   }
   set_collide_with_areas(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collide_with_areas,
+      RayCast3D._bindings.method_set_collide_with_areas,
       this._owner,
       _enable
     );
@@ -593,7 +594,7 @@ export class RayCast3D extends Node3D{
   }
   is_collide_with_areas_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_collide_with_areas_enabled,
+      RayCast3D._bindings.method_is_collide_with_areas_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -602,7 +603,7 @@ export class RayCast3D extends Node3D{
   }
   set_collide_with_bodies(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collide_with_bodies,
+      RayCast3D._bindings.method_set_collide_with_bodies,
       this._owner,
       _enable
     );
@@ -610,7 +611,7 @@ export class RayCast3D extends Node3D{
   }
   is_collide_with_bodies_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_collide_with_bodies_enabled,
+      RayCast3D._bindings.method_is_collide_with_bodies_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -619,7 +620,7 @@ export class RayCast3D extends Node3D{
   }
   set_hit_from_inside(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_hit_from_inside,
+      RayCast3D._bindings.method_set_hit_from_inside,
       this._owner,
       _enable
     );
@@ -627,7 +628,7 @@ export class RayCast3D extends Node3D{
   }
   is_hit_from_inside_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_hit_from_inside_enabled,
+      RayCast3D._bindings.method_is_hit_from_inside_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -636,7 +637,7 @@ export class RayCast3D extends Node3D{
   }
   set_hit_back_faces(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_hit_back_faces,
+      RayCast3D._bindings.method_set_hit_back_faces,
       this._owner,
       _enable
     );
@@ -644,7 +645,7 @@ export class RayCast3D extends Node3D{
   }
   is_hit_back_faces_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_hit_back_faces_enabled,
+      RayCast3D._bindings.method_is_hit_back_faces_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -653,7 +654,7 @@ export class RayCast3D extends Node3D{
   }
   set_debug_shape_custom_color(_debug_shape_custom_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_debug_shape_custom_color,
+      RayCast3D._bindings.method_set_debug_shape_custom_color,
       this._owner,
       _debug_shape_custom_color
     );
@@ -661,7 +662,7 @@ export class RayCast3D extends Node3D{
   }
   get_debug_shape_custom_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_debug_shape_custom_color,
+      RayCast3D._bindings.method_get_debug_shape_custom_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -671,7 +672,7 @@ export class RayCast3D extends Node3D{
   }
   set_debug_shape_thickness(_debug_shape_thickness) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_debug_shape_thickness,
+      RayCast3D._bindings.method_set_debug_shape_thickness,
       this._owner,
       _debug_shape_thickness
     );
@@ -679,7 +680,7 @@ export class RayCast3D extends Node3D{
   }
   get_debug_shape_thickness() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_debug_shape_thickness,
+      RayCast3D._bindings.method_get_debug_shape_thickness,
       this._owner,
 			Variant.Type.INT,
       

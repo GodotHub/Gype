@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { Dictionary } from '@js_godot/variant/dictionary'
 import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
 import { StringName } from '@js_godot/variant/string_name'
+import { Dictionary } from '@js_godot/variant/dictionary'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -71,6 +71,7 @@ export class SyntaxHighlighter extends Resource{
       );
     }
   }
+  
   _get_line_syntax_highlighting(_line) {
   }
   _clear_highlighting_cache() {
@@ -79,7 +80,7 @@ export class SyntaxHighlighter extends Resource{
   }
   get_line_syntax_highlighting(_line) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_syntax_highlighting,
+      SyntaxHighlighter._bindings.method_get_line_syntax_highlighting,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -89,7 +90,7 @@ export class SyntaxHighlighter extends Resource{
   }
   update_cache() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_update_cache,
+      SyntaxHighlighter._bindings.method_update_cache,
       this._owner,
       
     );
@@ -97,7 +98,7 @@ export class SyntaxHighlighter extends Resource{
   }
   clear_highlighting_cache() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_highlighting_cache,
+      SyntaxHighlighter._bindings.method_clear_highlighting_cache,
       this._owner,
       
     );
@@ -105,7 +106,7 @@ export class SyntaxHighlighter extends Resource{
   }
   get_text_edit() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_text_edit,
+      SyntaxHighlighter._bindings.method_get_text_edit,
       this._owner,
 			Variant.INT,
       

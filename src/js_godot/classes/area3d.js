@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Vector3 } from '@js_godot/variant/vector3'
-import { StringName } from '@js_godot/variant/string_name'
-import { CollisionObject3D } from '@js_godot/classes/collision_object3d'
 import { NodePath } from '@js_godot/variant/node_path'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { Vector3 } from '@js_godot/variant/vector3'
+import { CollisionObject3D } from '@js_godot/classes/collision_object3d'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -532,9 +532,10 @@ export class Area3D extends CollisionObject3D{
       );
     }
   }
+  
   set_gravity_space_override_mode(_space_override_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_gravity_space_override_mode,
+      Area3D._bindings.method_set_gravity_space_override_mode,
       this._owner,
       _space_override_mode
     );
@@ -542,7 +543,7 @@ export class Area3D extends CollisionObject3D{
   }
   get_gravity_space_override_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_gravity_space_override_mode,
+      Area3D._bindings.method_get_gravity_space_override_mode,
       this._owner,
 			Variant.INT,
       
@@ -551,7 +552,7 @@ export class Area3D extends CollisionObject3D{
   }
   set_gravity_is_point(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_gravity_is_point,
+      Area3D._bindings.method_set_gravity_is_point,
       this._owner,
       _enable
     );
@@ -559,7 +560,7 @@ export class Area3D extends CollisionObject3D{
   }
   is_gravity_a_point() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_gravity_a_point,
+      Area3D._bindings.method_is_gravity_a_point,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -568,7 +569,7 @@ export class Area3D extends CollisionObject3D{
   }
   set_gravity_point_unit_distance(_distance_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_gravity_point_unit_distance,
+      Area3D._bindings.method_set_gravity_point_unit_distance,
       this._owner,
       _distance_scale
     );
@@ -576,7 +577,7 @@ export class Area3D extends CollisionObject3D{
   }
   get_gravity_point_unit_distance() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_gravity_point_unit_distance,
+      Area3D._bindings.method_get_gravity_point_unit_distance,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -585,7 +586,7 @@ export class Area3D extends CollisionObject3D{
   }
   set_gravity_point_center(_center) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_gravity_point_center,
+      Area3D._bindings.method_set_gravity_point_center,
       this._owner,
       _center
     );
@@ -593,7 +594,7 @@ export class Area3D extends CollisionObject3D{
   }
   get_gravity_point_center() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_gravity_point_center,
+      Area3D._bindings.method_get_gravity_point_center,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -603,7 +604,7 @@ export class Area3D extends CollisionObject3D{
   }
   set_gravity_direction(_direction) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_gravity_direction,
+      Area3D._bindings.method_set_gravity_direction,
       this._owner,
       _direction
     );
@@ -611,7 +612,7 @@ export class Area3D extends CollisionObject3D{
   }
   get_gravity_direction() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_gravity_direction,
+      Area3D._bindings.method_get_gravity_direction,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -621,7 +622,7 @@ export class Area3D extends CollisionObject3D{
   }
   set_gravity(_gravity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_gravity,
+      Area3D._bindings.method_set_gravity,
       this._owner,
       _gravity
     );
@@ -629,7 +630,7 @@ export class Area3D extends CollisionObject3D{
   }
   get_gravity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_gravity,
+      Area3D._bindings.method_get_gravity,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -638,7 +639,7 @@ export class Area3D extends CollisionObject3D{
   }
   set_linear_damp_space_override_mode(_space_override_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_linear_damp_space_override_mode,
+      Area3D._bindings.method_set_linear_damp_space_override_mode,
       this._owner,
       _space_override_mode
     );
@@ -646,7 +647,7 @@ export class Area3D extends CollisionObject3D{
   }
   get_linear_damp_space_override_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_linear_damp_space_override_mode,
+      Area3D._bindings.method_get_linear_damp_space_override_mode,
       this._owner,
 			Variant.INT,
       
@@ -655,7 +656,7 @@ export class Area3D extends CollisionObject3D{
   }
   set_angular_damp_space_override_mode(_space_override_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_angular_damp_space_override_mode,
+      Area3D._bindings.method_set_angular_damp_space_override_mode,
       this._owner,
       _space_override_mode
     );
@@ -663,7 +664,7 @@ export class Area3D extends CollisionObject3D{
   }
   get_angular_damp_space_override_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_angular_damp_space_override_mode,
+      Area3D._bindings.method_get_angular_damp_space_override_mode,
       this._owner,
 			Variant.INT,
       
@@ -672,7 +673,7 @@ export class Area3D extends CollisionObject3D{
   }
   set_angular_damp(_angular_damp) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_angular_damp,
+      Area3D._bindings.method_set_angular_damp,
       this._owner,
       _angular_damp
     );
@@ -680,7 +681,7 @@ export class Area3D extends CollisionObject3D{
   }
   get_angular_damp() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_angular_damp,
+      Area3D._bindings.method_get_angular_damp,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -689,7 +690,7 @@ export class Area3D extends CollisionObject3D{
   }
   set_linear_damp(_linear_damp) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_linear_damp,
+      Area3D._bindings.method_set_linear_damp,
       this._owner,
       _linear_damp
     );
@@ -697,7 +698,7 @@ export class Area3D extends CollisionObject3D{
   }
   get_linear_damp() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_linear_damp,
+      Area3D._bindings.method_get_linear_damp,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -706,7 +707,7 @@ export class Area3D extends CollisionObject3D{
   }
   set_priority(_priority) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_priority,
+      Area3D._bindings.method_set_priority,
       this._owner,
       _priority
     );
@@ -714,7 +715,7 @@ export class Area3D extends CollisionObject3D{
   }
   get_priority() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_priority,
+      Area3D._bindings.method_get_priority,
       this._owner,
 			Variant.Type.INT,
       
@@ -723,7 +724,7 @@ export class Area3D extends CollisionObject3D{
   }
   set_wind_force_magnitude(_wind_force_magnitude) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_wind_force_magnitude,
+      Area3D._bindings.method_set_wind_force_magnitude,
       this._owner,
       _wind_force_magnitude
     );
@@ -731,7 +732,7 @@ export class Area3D extends CollisionObject3D{
   }
   get_wind_force_magnitude() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_wind_force_magnitude,
+      Area3D._bindings.method_get_wind_force_magnitude,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -740,7 +741,7 @@ export class Area3D extends CollisionObject3D{
   }
   set_wind_attenuation_factor(_wind_attenuation_factor) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_wind_attenuation_factor,
+      Area3D._bindings.method_set_wind_attenuation_factor,
       this._owner,
       _wind_attenuation_factor
     );
@@ -748,7 +749,7 @@ export class Area3D extends CollisionObject3D{
   }
   get_wind_attenuation_factor() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_wind_attenuation_factor,
+      Area3D._bindings.method_get_wind_attenuation_factor,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -757,7 +758,7 @@ export class Area3D extends CollisionObject3D{
   }
   set_wind_source_path(_wind_source_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_wind_source_path,
+      Area3D._bindings.method_set_wind_source_path,
       this._owner,
       _wind_source_path
     );
@@ -765,7 +766,7 @@ export class Area3D extends CollisionObject3D{
   }
   get_wind_source_path() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_wind_source_path,
+      Area3D._bindings.method_get_wind_source_path,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -775,7 +776,7 @@ export class Area3D extends CollisionObject3D{
   }
   set_monitorable(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_monitorable,
+      Area3D._bindings.method_set_monitorable,
       this._owner,
       _enable
     );
@@ -783,7 +784,7 @@ export class Area3D extends CollisionObject3D{
   }
   is_monitorable() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_monitorable,
+      Area3D._bindings.method_is_monitorable,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -792,7 +793,7 @@ export class Area3D extends CollisionObject3D{
   }
   set_monitoring(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_monitoring,
+      Area3D._bindings.method_set_monitoring,
       this._owner,
       _enable
     );
@@ -800,7 +801,7 @@ export class Area3D extends CollisionObject3D{
   }
   is_monitoring() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_monitoring,
+      Area3D._bindings.method_is_monitoring,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -809,7 +810,7 @@ export class Area3D extends CollisionObject3D{
   }
   get_overlapping_bodies() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_overlapping_bodies,
+      Area3D._bindings.method_get_overlapping_bodies,
       this._owner,
 			Variant.INT,
       
@@ -818,7 +819,7 @@ export class Area3D extends CollisionObject3D{
   }
   get_overlapping_areas() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_overlapping_areas,
+      Area3D._bindings.method_get_overlapping_areas,
       this._owner,
 			Variant.INT,
       
@@ -827,7 +828,7 @@ export class Area3D extends CollisionObject3D{
   }
   has_overlapping_bodies() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_overlapping_bodies,
+      Area3D._bindings.method_has_overlapping_bodies,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -836,7 +837,7 @@ export class Area3D extends CollisionObject3D{
   }
   has_overlapping_areas() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_overlapping_areas,
+      Area3D._bindings.method_has_overlapping_areas,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -845,7 +846,7 @@ export class Area3D extends CollisionObject3D{
   }
   overlaps_body(_body) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_overlaps_body,
+      Area3D._bindings.method_overlaps_body,
       this._owner,
 			Variant.Type.BOOL,
       _body
@@ -854,7 +855,7 @@ export class Area3D extends CollisionObject3D{
   }
   overlaps_area(_area) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_overlaps_area,
+      Area3D._bindings.method_overlaps_area,
       this._owner,
 			Variant.Type.BOOL,
       _area
@@ -863,7 +864,7 @@ export class Area3D extends CollisionObject3D{
   }
   set_audio_bus_override(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_audio_bus_override,
+      Area3D._bindings.method_set_audio_bus_override,
       this._owner,
       _enable
     );
@@ -871,7 +872,7 @@ export class Area3D extends CollisionObject3D{
   }
   is_overriding_audio_bus() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_overriding_audio_bus,
+      Area3D._bindings.method_is_overriding_audio_bus,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -880,7 +881,7 @@ export class Area3D extends CollisionObject3D{
   }
   set_audio_bus_name(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_audio_bus_name,
+      Area3D._bindings.method_set_audio_bus_name,
       this._owner,
       _name
     );
@@ -888,7 +889,7 @@ export class Area3D extends CollisionObject3D{
   }
   get_audio_bus_name() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_audio_bus_name,
+      Area3D._bindings.method_get_audio_bus_name,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -898,7 +899,7 @@ export class Area3D extends CollisionObject3D{
   }
   set_use_reverb_bus(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_reverb_bus,
+      Area3D._bindings.method_set_use_reverb_bus,
       this._owner,
       _enable
     );
@@ -906,7 +907,7 @@ export class Area3D extends CollisionObject3D{
   }
   is_using_reverb_bus() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_using_reverb_bus,
+      Area3D._bindings.method_is_using_reverb_bus,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -915,7 +916,7 @@ export class Area3D extends CollisionObject3D{
   }
   set_reverb_bus_name(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_reverb_bus_name,
+      Area3D._bindings.method_set_reverb_bus_name,
       this._owner,
       _name
     );
@@ -923,7 +924,7 @@ export class Area3D extends CollisionObject3D{
   }
   get_reverb_bus_name() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_reverb_bus_name,
+      Area3D._bindings.method_get_reverb_bus_name,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -933,7 +934,7 @@ export class Area3D extends CollisionObject3D{
   }
   set_reverb_amount(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_reverb_amount,
+      Area3D._bindings.method_set_reverb_amount,
       this._owner,
       _amount
     );
@@ -941,7 +942,7 @@ export class Area3D extends CollisionObject3D{
   }
   get_reverb_amount() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_reverb_amount,
+      Area3D._bindings.method_get_reverb_amount,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -950,7 +951,7 @@ export class Area3D extends CollisionObject3D{
   }
   set_reverb_uniformity(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_reverb_uniformity,
+      Area3D._bindings.method_set_reverb_uniformity,
       this._owner,
       _amount
     );
@@ -958,7 +959,7 @@ export class Area3D extends CollisionObject3D{
   }
   get_reverb_uniformity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_reverb_uniformity,
+      Area3D._bindings.method_get_reverb_uniformity,
       this._owner,
 			Variant.Type.FLOAT,
       

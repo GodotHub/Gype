@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
+import { NodePath } from '@js_godot/variant/node_path'
+import { RefCounted } from '@js_godot/classes/ref_counted'
 import { Variant } from '@js_godot/variant/variant'
 import { Callable } from '@js_godot/variant/callable'
 import { StringName } from '@js_godot/variant/string_name'
-import { RefCounted } from '@js_godot/classes/ref_counted'
-import { NodePath } from '@js_godot/variant/node_path'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -272,9 +272,10 @@ export class Tween extends RefCounted{
       );
     }
   }
+  
   tween_property(_object, _property, _final_val, _duration) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_tween_property,
+      Tween._bindings.method_tween_property,
       this._owner,
 			Variant.INT,
       _object, _property, _final_val, _duration
@@ -283,7 +284,7 @@ export class Tween extends RefCounted{
   }
   tween_interval(_time) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_tween_interval,
+      Tween._bindings.method_tween_interval,
       this._owner,
 			Variant.INT,
       _time
@@ -292,7 +293,7 @@ export class Tween extends RefCounted{
   }
   tween_callback(_callback) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_tween_callback,
+      Tween._bindings.method_tween_callback,
       this._owner,
 			Variant.INT,
       _callback
@@ -301,7 +302,7 @@ export class Tween extends RefCounted{
   }
   tween_method(_method, _from, _to, _duration) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_tween_method,
+      Tween._bindings.method_tween_method,
       this._owner,
 			Variant.INT,
       _method, _from, _to, _duration
@@ -310,7 +311,7 @@ export class Tween extends RefCounted{
   }
   custom_step(_delta) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_custom_step,
+      Tween._bindings.method_custom_step,
       this._owner,
 			Variant.Type.BOOL,
       _delta
@@ -319,7 +320,7 @@ export class Tween extends RefCounted{
   }
   stop() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_stop,
+      Tween._bindings.method_stop,
       this._owner,
       
     );
@@ -327,7 +328,7 @@ export class Tween extends RefCounted{
   }
   pause() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_pause,
+      Tween._bindings.method_pause,
       this._owner,
       
     );
@@ -335,7 +336,7 @@ export class Tween extends RefCounted{
   }
   play() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_play,
+      Tween._bindings.method_play,
       this._owner,
       
     );
@@ -343,7 +344,7 @@ export class Tween extends RefCounted{
   }
   kill() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_kill,
+      Tween._bindings.method_kill,
       this._owner,
       
     );
@@ -351,7 +352,7 @@ export class Tween extends RefCounted{
   }
   get_total_elapsed_time() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_total_elapsed_time,
+      Tween._bindings.method_get_total_elapsed_time,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -360,7 +361,7 @@ export class Tween extends RefCounted{
   }
   is_running() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_running,
+      Tween._bindings.method_is_running,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -369,7 +370,7 @@ export class Tween extends RefCounted{
   }
   is_valid() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_valid,
+      Tween._bindings.method_is_valid,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -378,7 +379,7 @@ export class Tween extends RefCounted{
   }
   bind_node(_node) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_bind_node,
+      Tween._bindings.method_bind_node,
       this._owner,
 			Variant.INT,
       _node
@@ -387,7 +388,7 @@ export class Tween extends RefCounted{
   }
   set_process_mode(_mode) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_set_process_mode,
+      Tween._bindings.method_set_process_mode,
       this._owner,
 			Variant.INT,
       _mode
@@ -396,7 +397,7 @@ export class Tween extends RefCounted{
   }
   set_pause_mode(_mode) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_set_pause_mode,
+      Tween._bindings.method_set_pause_mode,
       this._owner,
 			Variant.INT,
       _mode
@@ -405,7 +406,7 @@ export class Tween extends RefCounted{
   }
   set_parallel(_parallel) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_set_parallel,
+      Tween._bindings.method_set_parallel,
       this._owner,
 			Variant.INT,
       _parallel
@@ -414,7 +415,7 @@ export class Tween extends RefCounted{
   }
   set_loops(_loops) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_set_loops,
+      Tween._bindings.method_set_loops,
       this._owner,
 			Variant.INT,
       _loops
@@ -423,7 +424,7 @@ export class Tween extends RefCounted{
   }
   get_loops_left() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_loops_left,
+      Tween._bindings.method_get_loops_left,
       this._owner,
 			Variant.Type.INT,
       
@@ -432,7 +433,7 @@ export class Tween extends RefCounted{
   }
   set_speed_scale(_speed) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_set_speed_scale,
+      Tween._bindings.method_set_speed_scale,
       this._owner,
 			Variant.INT,
       _speed
@@ -441,7 +442,7 @@ export class Tween extends RefCounted{
   }
   set_trans(_trans) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_set_trans,
+      Tween._bindings.method_set_trans,
       this._owner,
 			Variant.INT,
       _trans
@@ -450,7 +451,7 @@ export class Tween extends RefCounted{
   }
   set_ease(_ease) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_set_ease,
+      Tween._bindings.method_set_ease,
       this._owner,
 			Variant.INT,
       _ease
@@ -459,7 +460,7 @@ export class Tween extends RefCounted{
   }
   parallel() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_parallel,
+      Tween._bindings.method_parallel,
       this._owner,
 			Variant.INT,
       
@@ -468,7 +469,7 @@ export class Tween extends RefCounted{
   }
   chain() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_chain,
+      Tween._bindings.method_chain,
       this._owner,
 			Variant.INT,
       
@@ -477,7 +478,7 @@ export class Tween extends RefCounted{
   }
   interpolate_value(_initial_value, _delta_value, _elapsed_time, _duration, _trans_type, _ease_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_interpolate_value,
+      Tween._bindings.method_interpolate_value,
       this._owner,
 			Variant.Type.VARIANT,
     

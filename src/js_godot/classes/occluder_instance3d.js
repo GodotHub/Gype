@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { VisualInstance3D } from '@js_godot/classes/visual_instance3d'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -110,9 +110,10 @@ export class OccluderInstance3D extends VisualInstance3D{
       );
     }
   }
+  
   set_bake_mask(_mask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bake_mask,
+      OccluderInstance3D._bindings.method_set_bake_mask,
       this._owner,
       _mask
     );
@@ -120,7 +121,7 @@ export class OccluderInstance3D extends VisualInstance3D{
   }
   get_bake_mask() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bake_mask,
+      OccluderInstance3D._bindings.method_get_bake_mask,
       this._owner,
 			Variant.Type.INT,
       
@@ -129,7 +130,7 @@ export class OccluderInstance3D extends VisualInstance3D{
   }
   set_bake_mask_value(_layer_number, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bake_mask_value,
+      OccluderInstance3D._bindings.method_set_bake_mask_value,
       this._owner,
       _layer_number, _value
     );
@@ -137,7 +138,7 @@ export class OccluderInstance3D extends VisualInstance3D{
   }
   get_bake_mask_value(_layer_number) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bake_mask_value,
+      OccluderInstance3D._bindings.method_get_bake_mask_value,
       this._owner,
 			Variant.Type.BOOL,
       _layer_number
@@ -146,7 +147,7 @@ export class OccluderInstance3D extends VisualInstance3D{
   }
   set_bake_simplification_distance(_simplification_distance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bake_simplification_distance,
+      OccluderInstance3D._bindings.method_set_bake_simplification_distance,
       this._owner,
       _simplification_distance
     );
@@ -154,7 +155,7 @@ export class OccluderInstance3D extends VisualInstance3D{
   }
   get_bake_simplification_distance() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bake_simplification_distance,
+      OccluderInstance3D._bindings.method_get_bake_simplification_distance,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -163,7 +164,7 @@ export class OccluderInstance3D extends VisualInstance3D{
   }
   set_occluder(_occluder) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_occluder,
+      OccluderInstance3D._bindings.method_set_occluder,
       this._owner,
       _occluder
     );
@@ -171,7 +172,7 @@ export class OccluderInstance3D extends VisualInstance3D{
   }
   get_occluder() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_occluder,
+      OccluderInstance3D._bindings.method_get_occluder,
       this._owner,
 			Variant.INT,
       

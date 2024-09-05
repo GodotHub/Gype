@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { GDString } from '@js_godot/variant/gd_string'
+import { StringName } from '@js_godot/variant/string_name'
 import { PanelContainer } from '@js_godot/classes/panel_container'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -121,9 +121,10 @@ export class ScriptEditor extends PanelContainer{
       );
     }
   }
+  
   get_current_editor() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_current_editor,
+      ScriptEditor._bindings.method_get_current_editor,
       this._owner,
 			Variant.INT,
       
@@ -132,7 +133,7 @@ export class ScriptEditor extends PanelContainer{
   }
   get_open_script_editors() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_open_script_editors,
+      ScriptEditor._bindings.method_get_open_script_editors,
       this._owner,
 			Variant.INT,
       
@@ -141,7 +142,7 @@ export class ScriptEditor extends PanelContainer{
   }
   register_syntax_highlighter(_syntax_highlighter) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_register_syntax_highlighter,
+      ScriptEditor._bindings.method_register_syntax_highlighter,
       this._owner,
       _syntax_highlighter
     );
@@ -149,7 +150,7 @@ export class ScriptEditor extends PanelContainer{
   }
   unregister_syntax_highlighter(_syntax_highlighter) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_unregister_syntax_highlighter,
+      ScriptEditor._bindings.method_unregister_syntax_highlighter,
       this._owner,
       _syntax_highlighter
     );
@@ -157,7 +158,7 @@ export class ScriptEditor extends PanelContainer{
   }
   goto_line(_line_number) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_goto_line,
+      ScriptEditor._bindings.method_goto_line,
       this._owner,
       _line_number
     );
@@ -165,7 +166,7 @@ export class ScriptEditor extends PanelContainer{
   }
   get_current_script() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_current_script,
+      ScriptEditor._bindings.method_get_current_script,
       this._owner,
 			Variant.INT,
       
@@ -174,7 +175,7 @@ export class ScriptEditor extends PanelContainer{
   }
   get_open_scripts() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_open_scripts,
+      ScriptEditor._bindings.method_get_open_scripts,
       this._owner,
 			Variant.INT,
       
@@ -183,7 +184,7 @@ export class ScriptEditor extends PanelContainer{
   }
   open_script_create_dialog(_base_name, _base_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_open_script_create_dialog,
+      ScriptEditor._bindings.method_open_script_create_dialog,
       this._owner,
       _base_name, _base_path
     );
@@ -191,7 +192,7 @@ export class ScriptEditor extends PanelContainer{
   }
   goto_help(_topic) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_goto_help,
+      ScriptEditor._bindings.method_goto_help,
       this._owner,
       _topic
     );

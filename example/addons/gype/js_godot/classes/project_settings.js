@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { Dictionary } from '@js_godot/variant/dictionary'
-import { GodotObject } from '@js_godot/classes/godot_object'
 import { StringName } from '@js_godot/variant/string_name'
+import { GodotObject } from '@js_godot/classes/godot_object'
+import { Variant } from '@js_godot/variant/variant'
 import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
@@ -211,9 +211,10 @@ class _MethodBindings {
       );
     }
   }
+  
   has_setting(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_setting,
+      _ProjectSettings._bindings.method_has_setting,
       this._owner,
 			Variant.Type.BOOL,
       _name
@@ -222,7 +223,7 @@ class _MethodBindings {
   }
   set_setting(_name, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_setting,
+      _ProjectSettings._bindings.method_set_setting,
       this._owner,
       _name, _value
     );
@@ -230,7 +231,7 @@ class _MethodBindings {
   }
   get_setting(_name, _default_value) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_setting,
+      _ProjectSettings._bindings.method_get_setting,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -240,7 +241,7 @@ class _MethodBindings {
   }
   get_setting_with_override(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_setting_with_override,
+      _ProjectSettings._bindings.method_get_setting_with_override,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -250,7 +251,7 @@ class _MethodBindings {
   }
   get_global_class_list() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_global_class_list,
+      _ProjectSettings._bindings.method_get_global_class_list,
       this._owner,
 			Variant.INT,
       
@@ -259,7 +260,7 @@ class _MethodBindings {
   }
   set_order(_name, _position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_order,
+      _ProjectSettings._bindings.method_set_order,
       this._owner,
       _name, _position
     );
@@ -267,7 +268,7 @@ class _MethodBindings {
   }
   get_order(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_order,
+      _ProjectSettings._bindings.method_get_order,
       this._owner,
 			Variant.Type.INT,
       _name
@@ -276,7 +277,7 @@ class _MethodBindings {
   }
   set_initial_value(_name, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_initial_value,
+      _ProjectSettings._bindings.method_set_initial_value,
       this._owner,
       _name, _value
     );
@@ -284,7 +285,7 @@ class _MethodBindings {
   }
   set_as_basic(_name, _basic) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_as_basic,
+      _ProjectSettings._bindings.method_set_as_basic,
       this._owner,
       _name, _basic
     );
@@ -292,7 +293,7 @@ class _MethodBindings {
   }
   set_as_internal(_name, _internal) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_as_internal,
+      _ProjectSettings._bindings.method_set_as_internal,
       this._owner,
       _name, _internal
     );
@@ -300,7 +301,7 @@ class _MethodBindings {
   }
   add_property_info(_hint) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_property_info,
+      _ProjectSettings._bindings.method_add_property_info,
       this._owner,
       _hint
     );
@@ -308,7 +309,7 @@ class _MethodBindings {
   }
   set_restart_if_changed(_name, _restart) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_restart_if_changed,
+      _ProjectSettings._bindings.method_set_restart_if_changed,
       this._owner,
       _name, _restart
     );
@@ -316,7 +317,7 @@ class _MethodBindings {
   }
   clear(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear,
+      _ProjectSettings._bindings.method_clear,
       this._owner,
       _name
     );
@@ -324,7 +325,7 @@ class _MethodBindings {
   }
   localize_path(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_localize_path,
+      _ProjectSettings._bindings.method_localize_path,
       this._owner,
 			Variant.Type.STRING,
     
@@ -334,7 +335,7 @@ class _MethodBindings {
   }
   globalize_path(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_globalize_path,
+      _ProjectSettings._bindings.method_globalize_path,
       this._owner,
 			Variant.Type.STRING,
     
@@ -344,7 +345,7 @@ class _MethodBindings {
   }
   save() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_save,
+      _ProjectSettings._bindings.method_save,
       this._owner,
 			Variant.INT,
       
@@ -353,7 +354,7 @@ class _MethodBindings {
   }
   load_resource_pack(_pack, _replace_files, _offset) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_load_resource_pack,
+      _ProjectSettings._bindings.method_load_resource_pack,
       this._owner,
 			Variant.Type.BOOL,
       _pack, _replace_files, _offset
@@ -362,7 +363,7 @@ class _MethodBindings {
   }
   save_custom(_file) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_save_custom,
+      _ProjectSettings._bindings.method_save_custom,
       this._owner,
 			Variant.INT,
       _file
@@ -376,4 +377,17 @@ class _MethodBindings {
     this._init_bindings();
   }
 }
-export const ProjectSettings = new _ProjectSettings();
+export const ProjectSettings = (function () {
+  let _instance;
+  function create_instance() {
+    return new _ProjectSettings();
+  }
+  return {
+    instance: function () {
+      if (!_instance) {
+        _instance = create_instance();
+      }
+      return _instance;
+    },
+  };
+})();

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { AnimationNodeSync } from '@js_godot/classes/animation_node_sync'
 import { Variant } from '@js_godot/variant/variant'
+import { AnimationNodeSync } from '@js_godot/classes/animation_node_sync'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -210,9 +210,10 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
       );
     }
   }
+  
   set_fadein_time(_time) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fadein_time,
+      AnimationNodeOneShot._bindings.method_set_fadein_time,
       this._owner,
       _time
     );
@@ -220,7 +221,7 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
   }
   get_fadein_time() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fadein_time,
+      AnimationNodeOneShot._bindings.method_get_fadein_time,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -229,7 +230,7 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
   }
   set_fadein_curve(_curve) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fadein_curve,
+      AnimationNodeOneShot._bindings.method_set_fadein_curve,
       this._owner,
       _curve
     );
@@ -237,7 +238,7 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
   }
   get_fadein_curve() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fadein_curve,
+      AnimationNodeOneShot._bindings.method_get_fadein_curve,
       this._owner,
 			Variant.INT,
       
@@ -246,7 +247,7 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
   }
   set_fadeout_time(_time) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fadeout_time,
+      AnimationNodeOneShot._bindings.method_set_fadeout_time,
       this._owner,
       _time
     );
@@ -254,7 +255,7 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
   }
   get_fadeout_time() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fadeout_time,
+      AnimationNodeOneShot._bindings.method_get_fadeout_time,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -263,7 +264,7 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
   }
   set_fadeout_curve(_curve) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fadeout_curve,
+      AnimationNodeOneShot._bindings.method_set_fadeout_curve,
       this._owner,
       _curve
     );
@@ -271,7 +272,7 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
   }
   get_fadeout_curve() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fadeout_curve,
+      AnimationNodeOneShot._bindings.method_get_fadeout_curve,
       this._owner,
 			Variant.INT,
       
@@ -280,7 +281,7 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
   }
   set_break_loop_at_end(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_break_loop_at_end,
+      AnimationNodeOneShot._bindings.method_set_break_loop_at_end,
       this._owner,
       _enable
     );
@@ -288,7 +289,7 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
   }
   is_loop_broken_at_end() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_loop_broken_at_end,
+      AnimationNodeOneShot._bindings.method_is_loop_broken_at_end,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -297,7 +298,7 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
   }
   set_autorestart(_active) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_autorestart,
+      AnimationNodeOneShot._bindings.method_set_autorestart,
       this._owner,
       _active
     );
@@ -305,7 +306,7 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
   }
   has_autorestart() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_autorestart,
+      AnimationNodeOneShot._bindings.method_has_autorestart,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -314,7 +315,7 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
   }
   set_autorestart_delay(_time) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_autorestart_delay,
+      AnimationNodeOneShot._bindings.method_set_autorestart_delay,
       this._owner,
       _time
     );
@@ -322,7 +323,7 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
   }
   get_autorestart_delay() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_autorestart_delay,
+      AnimationNodeOneShot._bindings.method_get_autorestart_delay,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -331,7 +332,7 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
   }
   set_autorestart_random_delay(_time) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_autorestart_random_delay,
+      AnimationNodeOneShot._bindings.method_set_autorestart_random_delay,
       this._owner,
       _time
     );
@@ -339,7 +340,7 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
   }
   get_autorestart_random_delay() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_autorestart_random_delay,
+      AnimationNodeOneShot._bindings.method_get_autorestart_random_delay,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -348,7 +349,7 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
   }
   set_mix_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mix_mode,
+      AnimationNodeOneShot._bindings.method_set_mix_mode,
       this._owner,
       _mode
     );
@@ -356,7 +357,7 @@ export class AnimationNodeOneShot extends AnimationNodeSync{
   }
   get_mix_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mix_mode,
+      AnimationNodeOneShot._bindings.method_get_mix_mode,
       this._owner,
 			Variant.INT,
       

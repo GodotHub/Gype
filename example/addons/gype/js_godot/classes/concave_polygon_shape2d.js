@@ -51,9 +51,10 @@ export class ConcavePolygonShape2D extends Shape2D{
       );
     }
   }
+  
   set_segments(_segments) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_segments,
+      ConcavePolygonShape2D._bindings.method_set_segments,
       this._owner,
       _segments
     );
@@ -61,7 +62,7 @@ export class ConcavePolygonShape2D extends Shape2D{
   }
   get_segments() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_segments,
+      ConcavePolygonShape2D._bindings.method_get_segments,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     

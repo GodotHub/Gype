@@ -1,13 +1,13 @@
 import * as internal from '__internal__';
-import { Dictionary } from '@js_godot/variant/dictionary'
-import { Variant } from '@js_godot/variant/variant'
-import { Resource } from '@js_godot/classes/resource'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
-import { Color } from '@js_godot/variant/color'
 import { RID } from '@js_godot/variant/rid'
-import { Vector2 } from '@js_godot/variant/vector2'
+import { Resource } from '@js_godot/classes/resource'
+import { Color } from '@js_godot/variant/color'
+import { Variant } from '@js_godot/variant/variant'
 import { Transform2D } from '@js_godot/variant/transform2d'
+import { Vector2 } from '@js_godot/variant/vector2'
+import { StringName } from '@js_godot/variant/string_name'
+import { Dictionary } from '@js_godot/variant/dictionary'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -376,9 +376,10 @@ export class Font extends Resource{
       );
     }
   }
+  
   set_fallbacks(_fallbacks) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fallbacks,
+      Font._bindings.method_set_fallbacks,
       this._owner,
       _fallbacks
     );
@@ -386,7 +387,7 @@ export class Font extends Resource{
   }
   get_fallbacks() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fallbacks,
+      Font._bindings.method_get_fallbacks,
       this._owner,
 			Variant.INT,
       
@@ -395,7 +396,7 @@ export class Font extends Resource{
   }
   find_variation(_variation_coordinates, _face_index, _strength, _transform, _spacing_top, _spacing_bottom, _spacing_space, _spacing_glyph, _baseline_offset) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_find_variation,
+      Font._bindings.method_find_variation,
       this._owner,
 			Variant.Type.RID,
     
@@ -405,7 +406,7 @@ export class Font extends Resource{
   }
   get_rids() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rids,
+      Font._bindings.method_get_rids,
       this._owner,
 			Variant.INT,
       
@@ -414,7 +415,7 @@ export class Font extends Resource{
   }
   get_height(_font_size) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_height,
+      Font._bindings.method_get_height,
       this._owner,
 			Variant.Type.FLOAT,
       _font_size
@@ -423,7 +424,7 @@ export class Font extends Resource{
   }
   get_ascent(_font_size) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ascent,
+      Font._bindings.method_get_ascent,
       this._owner,
 			Variant.Type.FLOAT,
       _font_size
@@ -432,7 +433,7 @@ export class Font extends Resource{
   }
   get_descent(_font_size) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_descent,
+      Font._bindings.method_get_descent,
       this._owner,
 			Variant.Type.FLOAT,
       _font_size
@@ -441,7 +442,7 @@ export class Font extends Resource{
   }
   get_underline_position(_font_size) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_underline_position,
+      Font._bindings.method_get_underline_position,
       this._owner,
 			Variant.Type.FLOAT,
       _font_size
@@ -450,7 +451,7 @@ export class Font extends Resource{
   }
   get_underline_thickness(_font_size) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_underline_thickness,
+      Font._bindings.method_get_underline_thickness,
       this._owner,
 			Variant.Type.FLOAT,
       _font_size
@@ -459,7 +460,7 @@ export class Font extends Resource{
   }
   get_font_name() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_font_name,
+      Font._bindings.method_get_font_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -469,7 +470,7 @@ export class Font extends Resource{
   }
   get_font_style_name() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_font_style_name,
+      Font._bindings.method_get_font_style_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -479,7 +480,7 @@ export class Font extends Resource{
   }
   get_ot_name_strings() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ot_name_strings,
+      Font._bindings.method_get_ot_name_strings,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -489,7 +490,7 @@ export class Font extends Resource{
   }
   get_font_style() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_font_style,
+      Font._bindings.method_get_font_style,
       this._owner,
 			Variant.INT,
       
@@ -498,7 +499,7 @@ export class Font extends Resource{
   }
   get_font_weight() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_font_weight,
+      Font._bindings.method_get_font_weight,
       this._owner,
 			Variant.Type.INT,
       
@@ -507,7 +508,7 @@ export class Font extends Resource{
   }
   get_font_stretch() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_font_stretch,
+      Font._bindings.method_get_font_stretch,
       this._owner,
 			Variant.Type.INT,
       
@@ -516,7 +517,7 @@ export class Font extends Resource{
   }
   get_spacing(_spacing) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_spacing,
+      Font._bindings.method_get_spacing,
       this._owner,
 			Variant.Type.INT,
       _spacing
@@ -525,7 +526,7 @@ export class Font extends Resource{
   }
   get_opentype_features() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_opentype_features,
+      Font._bindings.method_get_opentype_features,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -535,7 +536,7 @@ export class Font extends Resource{
   }
   set_cache_capacity(_single_line, _multi_line) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cache_capacity,
+      Font._bindings.method_set_cache_capacity,
       this._owner,
       _single_line, _multi_line
     );
@@ -543,7 +544,7 @@ export class Font extends Resource{
   }
   get_string_size(_text, _alignment, _width, _font_size, _justification_flags, _direction, _orientation) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_string_size,
+      Font._bindings.method_get_string_size,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -553,7 +554,7 @@ export class Font extends Resource{
   }
   get_multiline_string_size(_text, _alignment, _width, _font_size, _max_lines, _brk_flags, _justification_flags, _direction, _orientation) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_multiline_string_size,
+      Font._bindings.method_get_multiline_string_size,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -563,7 +564,7 @@ export class Font extends Resource{
   }
   draw_string(_canvas_item, _pos, _text, _alignment, _width, _font_size, _modulate, _justification_flags, _direction, _orientation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_draw_string,
+      Font._bindings.method_draw_string,
       this._owner,
       _canvas_item, _pos, _text, _alignment, _width, _font_size, _modulate, _justification_flags, _direction, _orientation
     );
@@ -571,7 +572,7 @@ export class Font extends Resource{
   }
   draw_multiline_string(_canvas_item, _pos, _text, _alignment, _width, _font_size, _max_lines, _modulate, _brk_flags, _justification_flags, _direction, _orientation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_draw_multiline_string,
+      Font._bindings.method_draw_multiline_string,
       this._owner,
       _canvas_item, _pos, _text, _alignment, _width, _font_size, _max_lines, _modulate, _brk_flags, _justification_flags, _direction, _orientation
     );
@@ -579,7 +580,7 @@ export class Font extends Resource{
   }
   draw_string_outline(_canvas_item, _pos, _text, _alignment, _width, _font_size, _size, _modulate, _justification_flags, _direction, _orientation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_draw_string_outline,
+      Font._bindings.method_draw_string_outline,
       this._owner,
       _canvas_item, _pos, _text, _alignment, _width, _font_size, _size, _modulate, _justification_flags, _direction, _orientation
     );
@@ -587,7 +588,7 @@ export class Font extends Resource{
   }
   draw_multiline_string_outline(_canvas_item, _pos, _text, _alignment, _width, _font_size, _max_lines, _size, _modulate, _brk_flags, _justification_flags, _direction, _orientation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_draw_multiline_string_outline,
+      Font._bindings.method_draw_multiline_string_outline,
       this._owner,
       _canvas_item, _pos, _text, _alignment, _width, _font_size, _max_lines, _size, _modulate, _brk_flags, _justification_flags, _direction, _orientation
     );
@@ -595,7 +596,7 @@ export class Font extends Resource{
   }
   get_char_size(_char, _font_size) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_char_size,
+      Font._bindings.method_get_char_size,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -605,7 +606,7 @@ export class Font extends Resource{
   }
   draw_char(_canvas_item, _pos, _char, _font_size, _modulate) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_draw_char,
+      Font._bindings.method_draw_char,
       this._owner,
 			Variant.Type.FLOAT,
       _canvas_item, _pos, _char, _font_size, _modulate
@@ -614,7 +615,7 @@ export class Font extends Resource{
   }
   draw_char_outline(_canvas_item, _pos, _char, _font_size, _size, _modulate) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_draw_char_outline,
+      Font._bindings.method_draw_char_outline,
       this._owner,
 			Variant.Type.FLOAT,
       _canvas_item, _pos, _char, _font_size, _size, _modulate
@@ -623,7 +624,7 @@ export class Font extends Resource{
   }
   has_char(_char) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_char,
+      Font._bindings.method_has_char,
       this._owner,
 			Variant.Type.BOOL,
       _char
@@ -632,7 +633,7 @@ export class Font extends Resource{
   }
   get_supported_chars() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_supported_chars,
+      Font._bindings.method_get_supported_chars,
       this._owner,
 			Variant.Type.STRING,
     
@@ -642,7 +643,7 @@ export class Font extends Resource{
   }
   is_language_supported(_language) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_language_supported,
+      Font._bindings.method_is_language_supported,
       this._owner,
 			Variant.Type.BOOL,
       _language
@@ -651,7 +652,7 @@ export class Font extends Resource{
   }
   is_script_supported(_script) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_script_supported,
+      Font._bindings.method_is_script_supported,
       this._owner,
 			Variant.Type.BOOL,
       _script
@@ -660,7 +661,7 @@ export class Font extends Resource{
   }
   get_supported_feature_list() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_supported_feature_list,
+      Font._bindings.method_get_supported_feature_list,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -670,7 +671,7 @@ export class Font extends Resource{
   }
   get_supported_variation_list() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_supported_variation_list,
+      Font._bindings.method_get_supported_variation_list,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -680,7 +681,7 @@ export class Font extends Resource{
   }
   get_face_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_face_count,
+      Font._bindings.method_get_face_count,
       this._owner,
 			Variant.Type.INT,
       

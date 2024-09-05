@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { Container } from '@js_godot/classes/container'
 import {
   call_utility_ret,
@@ -50,9 +50,10 @@ export class CenterContainer extends Container{
       );
     }
   }
+  
   set_use_top_left(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_top_left,
+      CenterContainer._bindings.method_set_use_top_left,
       this._owner,
       _enable
     );
@@ -60,7 +61,7 @@ export class CenterContainer extends Container{
   }
   is_using_top_left() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_using_top_left,
+      CenterContainer._bindings.method_is_using_top_left,
       this._owner,
 			Variant.Type.BOOL,
       

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { Vector3 } from '@js_godot/variant/vector3'
+import { StringName } from '@js_godot/variant/string_name'
 import { GPUParticlesCollision3D } from '@js_godot/classes/gpu_particles_collision3d'
 import {
   call_utility_ret,
@@ -51,9 +51,10 @@ export class GPUParticlesCollisionBox3D extends GPUParticlesCollision3D{
       );
     }
   }
+  
   set_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_size,
+      GPUParticlesCollisionBox3D._bindings.method_set_size,
       this._owner,
       _size
     );
@@ -61,7 +62,7 @@ export class GPUParticlesCollisionBox3D extends GPUParticlesCollision3D{
   }
   get_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_size,
+      GPUParticlesCollisionBox3D._bindings.method_get_size,
       this._owner,
 			Variant.Type.VECTOR3,
     

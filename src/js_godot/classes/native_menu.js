@@ -1,12 +1,12 @@
 import * as internal from '__internal__';
-import { Callable } from '@js_godot/variant/callable'
-import { Variant } from '@js_godot/variant/variant'
-import { GodotObject } from '@js_godot/classes/godot_object'
 import { Vector2i } from '@js_godot/variant/vector2i'
+import { RID } from '@js_godot/variant/rid'
+import { Variant } from '@js_godot/variant/variant'
+import { Vector2 } from '@js_godot/variant/vector2'
+import { Callable } from '@js_godot/variant/callable'
+import { GodotObject } from '@js_godot/classes/godot_object'
 import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
-import { Vector2 } from '@js_godot/variant/vector2'
-import { RID } from '@js_godot/variant/rid'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -694,9 +694,10 @@ class _MethodBindings {
       );
     }
   }
+  
   has_feature(_feature) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_feature,
+      _NativeMenu._bindings.method_has_feature,
       this._owner,
 			Variant.Type.BOOL,
       _feature
@@ -705,7 +706,7 @@ class _MethodBindings {
   }
   has_system_menu(_menu_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_system_menu,
+      _NativeMenu._bindings.method_has_system_menu,
       this._owner,
 			Variant.Type.BOOL,
       _menu_id
@@ -714,7 +715,7 @@ class _MethodBindings {
   }
   get_system_menu(_menu_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_system_menu,
+      _NativeMenu._bindings.method_get_system_menu,
       this._owner,
 			Variant.Type.RID,
     
@@ -724,7 +725,7 @@ class _MethodBindings {
   }
   get_system_menu_name(_menu_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_system_menu_name,
+      _NativeMenu._bindings.method_get_system_menu_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -734,7 +735,7 @@ class _MethodBindings {
   }
   create_menu() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_menu,
+      _NativeMenu._bindings.method_create_menu,
       this._owner,
 			Variant.Type.RID,
     
@@ -744,7 +745,7 @@ class _MethodBindings {
   }
   has_menu(_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_menu,
+      _NativeMenu._bindings.method_has_menu,
       this._owner,
 			Variant.Type.BOOL,
       _rid
@@ -753,7 +754,7 @@ class _MethodBindings {
   }
   free_menu(_rid) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_free_menu,
+      _NativeMenu._bindings.method_free_menu,
       this._owner,
       _rid
     );
@@ -761,7 +762,7 @@ class _MethodBindings {
   }
   get_size(_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_size,
+      _NativeMenu._bindings.method_get_size,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -771,7 +772,7 @@ class _MethodBindings {
   }
   popup(_rid, _position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_popup,
+      _NativeMenu._bindings.method_popup,
       this._owner,
       _rid, _position
     );
@@ -779,7 +780,7 @@ class _MethodBindings {
   }
   set_interface_direction(_rid, _is_rtl) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_interface_direction,
+      _NativeMenu._bindings.method_set_interface_direction,
       this._owner,
       _rid, _is_rtl
     );
@@ -787,7 +788,7 @@ class _MethodBindings {
   }
   set_popup_open_callback(_rid, _callback) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_popup_open_callback,
+      _NativeMenu._bindings.method_set_popup_open_callback,
       this._owner,
       _rid, _callback
     );
@@ -795,7 +796,7 @@ class _MethodBindings {
   }
   get_popup_open_callback(_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_popup_open_callback,
+      _NativeMenu._bindings.method_get_popup_open_callback,
       this._owner,
 			Variant.Type.CALLABLE,
     
@@ -805,7 +806,7 @@ class _MethodBindings {
   }
   set_popup_close_callback(_rid, _callback) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_popup_close_callback,
+      _NativeMenu._bindings.method_set_popup_close_callback,
       this._owner,
       _rid, _callback
     );
@@ -813,7 +814,7 @@ class _MethodBindings {
   }
   get_popup_close_callback(_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_popup_close_callback,
+      _NativeMenu._bindings.method_get_popup_close_callback,
       this._owner,
 			Variant.Type.CALLABLE,
     
@@ -823,7 +824,7 @@ class _MethodBindings {
   }
   set_minimum_width(_rid, _width) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_minimum_width,
+      _NativeMenu._bindings.method_set_minimum_width,
       this._owner,
       _rid, _width
     );
@@ -831,7 +832,7 @@ class _MethodBindings {
   }
   get_minimum_width(_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_minimum_width,
+      _NativeMenu._bindings.method_get_minimum_width,
       this._owner,
 			Variant.Type.FLOAT,
       _rid
@@ -840,7 +841,7 @@ class _MethodBindings {
   }
   is_opened(_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_opened,
+      _NativeMenu._bindings.method_is_opened,
       this._owner,
 			Variant.Type.BOOL,
       _rid
@@ -849,7 +850,7 @@ class _MethodBindings {
   }
   add_submenu_item(_rid, _label, _submenu_rid, _tag, _index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_add_submenu_item,
+      _NativeMenu._bindings.method_add_submenu_item,
       this._owner,
 			Variant.Type.INT,
       _rid, _label, _submenu_rid, _tag, _index
@@ -858,7 +859,7 @@ class _MethodBindings {
   }
   add_item(_rid, _label, _callback, _key_callback, _tag, _accelerator, _index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_add_item,
+      _NativeMenu._bindings.method_add_item,
       this._owner,
 			Variant.Type.INT,
       _rid, _label, _callback, _key_callback, _tag, _accelerator, _index
@@ -867,7 +868,7 @@ class _MethodBindings {
   }
   add_check_item(_rid, _label, _callback, _key_callback, _tag, _accelerator, _index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_add_check_item,
+      _NativeMenu._bindings.method_add_check_item,
       this._owner,
 			Variant.Type.INT,
       _rid, _label, _callback, _key_callback, _tag, _accelerator, _index
@@ -876,7 +877,7 @@ class _MethodBindings {
   }
   add_icon_item(_rid, _icon, _label, _callback, _key_callback, _tag, _accelerator, _index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_add_icon_item,
+      _NativeMenu._bindings.method_add_icon_item,
       this._owner,
 			Variant.Type.INT,
       _rid, _icon, _label, _callback, _key_callback, _tag, _accelerator, _index
@@ -885,7 +886,7 @@ class _MethodBindings {
   }
   add_icon_check_item(_rid, _icon, _label, _callback, _key_callback, _tag, _accelerator, _index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_add_icon_check_item,
+      _NativeMenu._bindings.method_add_icon_check_item,
       this._owner,
 			Variant.Type.INT,
       _rid, _icon, _label, _callback, _key_callback, _tag, _accelerator, _index
@@ -894,7 +895,7 @@ class _MethodBindings {
   }
   add_radio_check_item(_rid, _label, _callback, _key_callback, _tag, _accelerator, _index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_add_radio_check_item,
+      _NativeMenu._bindings.method_add_radio_check_item,
       this._owner,
 			Variant.Type.INT,
       _rid, _label, _callback, _key_callback, _tag, _accelerator, _index
@@ -903,7 +904,7 @@ class _MethodBindings {
   }
   add_icon_radio_check_item(_rid, _icon, _label, _callback, _key_callback, _tag, _accelerator, _index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_add_icon_radio_check_item,
+      _NativeMenu._bindings.method_add_icon_radio_check_item,
       this._owner,
 			Variant.Type.INT,
       _rid, _icon, _label, _callback, _key_callback, _tag, _accelerator, _index
@@ -912,7 +913,7 @@ class _MethodBindings {
   }
   add_multistate_item(_rid, _label, _max_states, _default_state, _callback, _key_callback, _tag, _accelerator, _index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_add_multistate_item,
+      _NativeMenu._bindings.method_add_multistate_item,
       this._owner,
 			Variant.Type.INT,
       _rid, _label, _max_states, _default_state, _callback, _key_callback, _tag, _accelerator, _index
@@ -921,7 +922,7 @@ class _MethodBindings {
   }
   add_separator(_rid, _index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_add_separator,
+      _NativeMenu._bindings.method_add_separator,
       this._owner,
 			Variant.Type.INT,
       _rid, _index
@@ -930,7 +931,7 @@ class _MethodBindings {
   }
   find_item_index_with_text(_rid, _text) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_find_item_index_with_text,
+      _NativeMenu._bindings.method_find_item_index_with_text,
       this._owner,
 			Variant.Type.INT,
       _rid, _text
@@ -939,7 +940,7 @@ class _MethodBindings {
   }
   find_item_index_with_tag(_rid, _tag) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_find_item_index_with_tag,
+      _NativeMenu._bindings.method_find_item_index_with_tag,
       this._owner,
 			Variant.Type.INT,
       _rid, _tag
@@ -948,7 +949,7 @@ class _MethodBindings {
   }
   find_item_index_with_submenu(_rid, _submenu_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_find_item_index_with_submenu,
+      _NativeMenu._bindings.method_find_item_index_with_submenu,
       this._owner,
 			Variant.Type.INT,
       _rid, _submenu_rid
@@ -957,7 +958,7 @@ class _MethodBindings {
   }
   is_item_checked(_rid, _idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_item_checked,
+      _NativeMenu._bindings.method_is_item_checked,
       this._owner,
 			Variant.Type.BOOL,
       _rid, _idx
@@ -966,7 +967,7 @@ class _MethodBindings {
   }
   is_item_checkable(_rid, _idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_item_checkable,
+      _NativeMenu._bindings.method_is_item_checkable,
       this._owner,
 			Variant.Type.BOOL,
       _rid, _idx
@@ -975,7 +976,7 @@ class _MethodBindings {
   }
   is_item_radio_checkable(_rid, _idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_item_radio_checkable,
+      _NativeMenu._bindings.method_is_item_radio_checkable,
       this._owner,
 			Variant.Type.BOOL,
       _rid, _idx
@@ -984,7 +985,7 @@ class _MethodBindings {
   }
   get_item_callback(_rid, _idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_callback,
+      _NativeMenu._bindings.method_get_item_callback,
       this._owner,
 			Variant.Type.CALLABLE,
     
@@ -994,7 +995,7 @@ class _MethodBindings {
   }
   get_item_key_callback(_rid, _idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_key_callback,
+      _NativeMenu._bindings.method_get_item_key_callback,
       this._owner,
 			Variant.Type.CALLABLE,
     
@@ -1004,7 +1005,7 @@ class _MethodBindings {
   }
   get_item_tag(_rid, _idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_tag,
+      _NativeMenu._bindings.method_get_item_tag,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -1014,7 +1015,7 @@ class _MethodBindings {
   }
   get_item_text(_rid, _idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_text,
+      _NativeMenu._bindings.method_get_item_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1024,7 +1025,7 @@ class _MethodBindings {
   }
   get_item_submenu(_rid, _idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_submenu,
+      _NativeMenu._bindings.method_get_item_submenu,
       this._owner,
 			Variant.Type.RID,
     
@@ -1034,7 +1035,7 @@ class _MethodBindings {
   }
   get_item_accelerator(_rid, _idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_accelerator,
+      _NativeMenu._bindings.method_get_item_accelerator,
       this._owner,
 			Variant.INT,
       _rid, _idx
@@ -1043,7 +1044,7 @@ class _MethodBindings {
   }
   is_item_disabled(_rid, _idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_item_disabled,
+      _NativeMenu._bindings.method_is_item_disabled,
       this._owner,
 			Variant.Type.BOOL,
       _rid, _idx
@@ -1052,7 +1053,7 @@ class _MethodBindings {
   }
   is_item_hidden(_rid, _idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_item_hidden,
+      _NativeMenu._bindings.method_is_item_hidden,
       this._owner,
 			Variant.Type.BOOL,
       _rid, _idx
@@ -1061,7 +1062,7 @@ class _MethodBindings {
   }
   get_item_tooltip(_rid, _idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_tooltip,
+      _NativeMenu._bindings.method_get_item_tooltip,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1071,7 +1072,7 @@ class _MethodBindings {
   }
   get_item_state(_rid, _idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_state,
+      _NativeMenu._bindings.method_get_item_state,
       this._owner,
 			Variant.Type.INT,
       _rid, _idx
@@ -1080,7 +1081,7 @@ class _MethodBindings {
   }
   get_item_max_states(_rid, _idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_max_states,
+      _NativeMenu._bindings.method_get_item_max_states,
       this._owner,
 			Variant.Type.INT,
       _rid, _idx
@@ -1089,7 +1090,7 @@ class _MethodBindings {
   }
   get_item_icon(_rid, _idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_icon,
+      _NativeMenu._bindings.method_get_item_icon,
       this._owner,
 			Variant.INT,
       _rid, _idx
@@ -1098,7 +1099,7 @@ class _MethodBindings {
   }
   get_item_indentation_level(_rid, _idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_indentation_level,
+      _NativeMenu._bindings.method_get_item_indentation_level,
       this._owner,
 			Variant.Type.INT,
       _rid, _idx
@@ -1107,7 +1108,7 @@ class _MethodBindings {
   }
   set_item_checked(_rid, _idx, _checked) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_checked,
+      _NativeMenu._bindings.method_set_item_checked,
       this._owner,
       _rid, _idx, _checked
     );
@@ -1115,7 +1116,7 @@ class _MethodBindings {
   }
   set_item_checkable(_rid, _idx, _checkable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_checkable,
+      _NativeMenu._bindings.method_set_item_checkable,
       this._owner,
       _rid, _idx, _checkable
     );
@@ -1123,7 +1124,7 @@ class _MethodBindings {
   }
   set_item_radio_checkable(_rid, _idx, _checkable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_radio_checkable,
+      _NativeMenu._bindings.method_set_item_radio_checkable,
       this._owner,
       _rid, _idx, _checkable
     );
@@ -1131,7 +1132,7 @@ class _MethodBindings {
   }
   set_item_callback(_rid, _idx, _callback) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_callback,
+      _NativeMenu._bindings.method_set_item_callback,
       this._owner,
       _rid, _idx, _callback
     );
@@ -1139,7 +1140,7 @@ class _MethodBindings {
   }
   set_item_hover_callbacks(_rid, _idx, _callback) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_hover_callbacks,
+      _NativeMenu._bindings.method_set_item_hover_callbacks,
       this._owner,
       _rid, _idx, _callback
     );
@@ -1147,7 +1148,7 @@ class _MethodBindings {
   }
   set_item_key_callback(_rid, _idx, _key_callback) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_key_callback,
+      _NativeMenu._bindings.method_set_item_key_callback,
       this._owner,
       _rid, _idx, _key_callback
     );
@@ -1155,7 +1156,7 @@ class _MethodBindings {
   }
   set_item_tag(_rid, _idx, _tag) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_tag,
+      _NativeMenu._bindings.method_set_item_tag,
       this._owner,
       _rid, _idx, _tag
     );
@@ -1163,7 +1164,7 @@ class _MethodBindings {
   }
   set_item_text(_rid, _idx, _text) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_text,
+      _NativeMenu._bindings.method_set_item_text,
       this._owner,
       _rid, _idx, _text
     );
@@ -1171,7 +1172,7 @@ class _MethodBindings {
   }
   set_item_submenu(_rid, _idx, _submenu_rid) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_submenu,
+      _NativeMenu._bindings.method_set_item_submenu,
       this._owner,
       _rid, _idx, _submenu_rid
     );
@@ -1179,7 +1180,7 @@ class _MethodBindings {
   }
   set_item_accelerator(_rid, _idx, _keycode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_accelerator,
+      _NativeMenu._bindings.method_set_item_accelerator,
       this._owner,
       _rid, _idx, _keycode
     );
@@ -1187,7 +1188,7 @@ class _MethodBindings {
   }
   set_item_disabled(_rid, _idx, _disabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_disabled,
+      _NativeMenu._bindings.method_set_item_disabled,
       this._owner,
       _rid, _idx, _disabled
     );
@@ -1195,7 +1196,7 @@ class _MethodBindings {
   }
   set_item_hidden(_rid, _idx, _hidden) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_hidden,
+      _NativeMenu._bindings.method_set_item_hidden,
       this._owner,
       _rid, _idx, _hidden
     );
@@ -1203,7 +1204,7 @@ class _MethodBindings {
   }
   set_item_tooltip(_rid, _idx, _tooltip) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_tooltip,
+      _NativeMenu._bindings.method_set_item_tooltip,
       this._owner,
       _rid, _idx, _tooltip
     );
@@ -1211,7 +1212,7 @@ class _MethodBindings {
   }
   set_item_state(_rid, _idx, _state) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_state,
+      _NativeMenu._bindings.method_set_item_state,
       this._owner,
       _rid, _idx, _state
     );
@@ -1219,7 +1220,7 @@ class _MethodBindings {
   }
   set_item_max_states(_rid, _idx, _max_states) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_max_states,
+      _NativeMenu._bindings.method_set_item_max_states,
       this._owner,
       _rid, _idx, _max_states
     );
@@ -1227,7 +1228,7 @@ class _MethodBindings {
   }
   set_item_icon(_rid, _idx, _icon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_icon,
+      _NativeMenu._bindings.method_set_item_icon,
       this._owner,
       _rid, _idx, _icon
     );
@@ -1235,7 +1236,7 @@ class _MethodBindings {
   }
   set_item_indentation_level(_rid, _idx, _level) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_indentation_level,
+      _NativeMenu._bindings.method_set_item_indentation_level,
       this._owner,
       _rid, _idx, _level
     );
@@ -1243,7 +1244,7 @@ class _MethodBindings {
   }
   get_item_count(_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_count,
+      _NativeMenu._bindings.method_get_item_count,
       this._owner,
 			Variant.Type.INT,
       _rid
@@ -1252,7 +1253,7 @@ class _MethodBindings {
   }
   is_system_menu(_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_system_menu,
+      _NativeMenu._bindings.method_is_system_menu,
       this._owner,
 			Variant.Type.BOOL,
       _rid
@@ -1261,7 +1262,7 @@ class _MethodBindings {
   }
   remove_item(_rid, _idx) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_item,
+      _NativeMenu._bindings.method_remove_item,
       this._owner,
       _rid, _idx
     );
@@ -1269,7 +1270,7 @@ class _MethodBindings {
   }
   clear(_rid) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear,
+      _NativeMenu._bindings.method_clear,
       this._owner,
       _rid
     );
@@ -1297,4 +1298,17 @@ class _MethodBindings {
     this._init_bindings();
   }
 }
-export const NativeMenu = new _NativeMenu();
+export const NativeMenu = (function () {
+  let _instance;
+  function create_instance() {
+    return new _NativeMenu();
+  }
+  return {
+    instance: function () {
+      if (!_instance) {
+        _instance = create_instance();
+      }
+      return _instance;
+    },
+  };
+})();

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { Light2D } from '@js_godot/classes/light2d'
 import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { Light2D } from '@js_godot/classes/light2d'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -50,9 +50,10 @@ export class DirectionalLight2D extends Light2D{
       );
     }
   }
+  
   set_max_distance(_pixels) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_max_distance,
+      DirectionalLight2D._bindings.method_set_max_distance,
       this._owner,
       _pixels
     );
@@ -60,7 +61,7 @@ export class DirectionalLight2D extends Light2D{
   }
   get_max_distance() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_max_distance,
+      DirectionalLight2D._bindings.method_get_max_distance,
       this._owner,
 			Variant.Type.FLOAT,
       

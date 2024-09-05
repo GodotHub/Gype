@@ -31,6 +31,7 @@ export class AudioEffectBandPassFilter extends AudioEffectFilter{
     this.#initialized = true;
   }
   
+  
 
 
   static {

@@ -19,13 +19,13 @@ export function convert_args(...args) {
   return args;
 }
 
-export function convert_vars(...vars) {
+export function convert_vars(vars) {
   for (let index = 0; index < vars.length; index++) {
     const element = vars[index];
-    let variant = new Variant(vars[index]);
-    if (!element instanceof Variant) {
-      vars[index] = variant.opaque;
+    if (element instanceof Variant) {
+      vars[index] = element.opaque;
     } else {
+      let variant = new Variant(element);
       vars[index] = variant.opaque;
     }
   }

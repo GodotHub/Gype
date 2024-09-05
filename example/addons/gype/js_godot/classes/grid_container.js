@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { Container } from '@js_godot/classes/container'
 import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { Container } from '@js_godot/classes/container'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -50,9 +50,10 @@ export class GridContainer extends Container{
       );
     }
   }
+  
   set_columns(_columns) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_columns,
+      GridContainer._bindings.method_set_columns,
       this._owner,
       _columns
     );
@@ -60,7 +61,7 @@ export class GridContainer extends Container{
   }
   get_columns() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_columns,
+      GridContainer._bindings.method_get_columns,
       this._owner,
 			Variant.Type.INT,
       

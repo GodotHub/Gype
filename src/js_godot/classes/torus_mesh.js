@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { PrimitiveMesh } from '@js_godot/classes/primitive_mesh'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -110,9 +110,10 @@ export class TorusMesh extends PrimitiveMesh{
       );
     }
   }
+  
   set_inner_radius(_radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_inner_radius,
+      TorusMesh._bindings.method_set_inner_radius,
       this._owner,
       _radius
     );
@@ -120,7 +121,7 @@ export class TorusMesh extends PrimitiveMesh{
   }
   get_inner_radius() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_inner_radius,
+      TorusMesh._bindings.method_get_inner_radius,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -129,7 +130,7 @@ export class TorusMesh extends PrimitiveMesh{
   }
   set_outer_radius(_radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_outer_radius,
+      TorusMesh._bindings.method_set_outer_radius,
       this._owner,
       _radius
     );
@@ -137,7 +138,7 @@ export class TorusMesh extends PrimitiveMesh{
   }
   get_outer_radius() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_outer_radius,
+      TorusMesh._bindings.method_get_outer_radius,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -146,7 +147,7 @@ export class TorusMesh extends PrimitiveMesh{
   }
   set_rings(_rings) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_rings,
+      TorusMesh._bindings.method_set_rings,
       this._owner,
       _rings
     );
@@ -154,7 +155,7 @@ export class TorusMesh extends PrimitiveMesh{
   }
   get_rings() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rings,
+      TorusMesh._bindings.method_get_rings,
       this._owner,
 			Variant.Type.INT,
       
@@ -163,7 +164,7 @@ export class TorusMesh extends PrimitiveMesh{
   }
   set_ring_segments(_rings) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ring_segments,
+      TorusMesh._bindings.method_set_ring_segments,
       this._owner,
       _rings
     );
@@ -171,7 +172,7 @@ export class TorusMesh extends PrimitiveMesh{
   }
   get_ring_segments() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ring_segments,
+      TorusMesh._bindings.method_get_ring_segments,
       this._owner,
 			Variant.Type.INT,
       

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { Tweener } from '@js_godot/classes/tweener'
 import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { Tweener } from '@js_godot/classes/tweener'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -60,9 +60,10 @@ export class MethodTweener extends Tweener{
       );
     }
   }
+  
   set_delay(_delay) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_set_delay,
+      MethodTweener._bindings.method_set_delay,
       this._owner,
 			Variant.INT,
       _delay
@@ -71,7 +72,7 @@ export class MethodTweener extends Tweener{
   }
   set_trans(_trans) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_set_trans,
+      MethodTweener._bindings.method_set_trans,
       this._owner,
 			Variant.INT,
       _trans
@@ -80,7 +81,7 @@ export class MethodTweener extends Tweener{
   }
   set_ease(_ease) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_set_ease,
+      MethodTweener._bindings.method_set_ease,
       this._owner,
 			Variant.INT,
       _ease

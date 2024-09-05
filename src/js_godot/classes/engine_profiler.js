@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
 import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
@@ -31,6 +31,7 @@ export class EngineProfiler extends RefCounted{
     }
     this.#initialized = true;
   }
+  
   _toggle(_enable, _options) {
   }
   _add_frame(_data) {

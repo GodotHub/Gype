@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
-import { Dictionary } from '@js_godot/variant/dictionary'
-import { Variant } from '@js_godot/variant/variant'
 import { SyntaxHighlighter } from '@js_godot/classes/syntax_highlighter'
+import { Dictionary } from '@js_godot/variant/dictionary'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { Color } from '@js_godot/variant/color'
+import { GDString } from '@js_godot/variant/gd_string'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -313,9 +313,10 @@ export class CodeHighlighter extends SyntaxHighlighter{
       );
     }
   }
+  
   add_keyword_color(_keyword, _color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_keyword_color,
+      CodeHighlighter._bindings.method_add_keyword_color,
       this._owner,
       _keyword, _color
     );
@@ -323,7 +324,7 @@ export class CodeHighlighter extends SyntaxHighlighter{
   }
   remove_keyword_color(_keyword) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_keyword_color,
+      CodeHighlighter._bindings.method_remove_keyword_color,
       this._owner,
       _keyword
     );
@@ -331,7 +332,7 @@ export class CodeHighlighter extends SyntaxHighlighter{
   }
   has_keyword_color(_keyword) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_keyword_color,
+      CodeHighlighter._bindings.method_has_keyword_color,
       this._owner,
 			Variant.Type.BOOL,
       _keyword
@@ -340,7 +341,7 @@ export class CodeHighlighter extends SyntaxHighlighter{
   }
   get_keyword_color(_keyword) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_keyword_color,
+      CodeHighlighter._bindings.method_get_keyword_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -350,7 +351,7 @@ export class CodeHighlighter extends SyntaxHighlighter{
   }
   set_keyword_colors(_keywords) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_keyword_colors,
+      CodeHighlighter._bindings.method_set_keyword_colors,
       this._owner,
       _keywords
     );
@@ -358,7 +359,7 @@ export class CodeHighlighter extends SyntaxHighlighter{
   }
   clear_keyword_colors() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_keyword_colors,
+      CodeHighlighter._bindings.method_clear_keyword_colors,
       this._owner,
       
     );
@@ -366,7 +367,7 @@ export class CodeHighlighter extends SyntaxHighlighter{
   }
   get_keyword_colors() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_keyword_colors,
+      CodeHighlighter._bindings.method_get_keyword_colors,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -376,7 +377,7 @@ export class CodeHighlighter extends SyntaxHighlighter{
   }
   add_member_keyword_color(_member_keyword, _color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_member_keyword_color,
+      CodeHighlighter._bindings.method_add_member_keyword_color,
       this._owner,
       _member_keyword, _color
     );
@@ -384,7 +385,7 @@ export class CodeHighlighter extends SyntaxHighlighter{
   }
   remove_member_keyword_color(_member_keyword) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_member_keyword_color,
+      CodeHighlighter._bindings.method_remove_member_keyword_color,
       this._owner,
       _member_keyword
     );
@@ -392,7 +393,7 @@ export class CodeHighlighter extends SyntaxHighlighter{
   }
   has_member_keyword_color(_member_keyword) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_member_keyword_color,
+      CodeHighlighter._bindings.method_has_member_keyword_color,
       this._owner,
 			Variant.Type.BOOL,
       _member_keyword
@@ -401,7 +402,7 @@ export class CodeHighlighter extends SyntaxHighlighter{
   }
   get_member_keyword_color(_member_keyword) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_member_keyword_color,
+      CodeHighlighter._bindings.method_get_member_keyword_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -411,7 +412,7 @@ export class CodeHighlighter extends SyntaxHighlighter{
   }
   set_member_keyword_colors(_member_keyword) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_member_keyword_colors,
+      CodeHighlighter._bindings.method_set_member_keyword_colors,
       this._owner,
       _member_keyword
     );
@@ -419,7 +420,7 @@ export class CodeHighlighter extends SyntaxHighlighter{
   }
   clear_member_keyword_colors() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_member_keyword_colors,
+      CodeHighlighter._bindings.method_clear_member_keyword_colors,
       this._owner,
       
     );
@@ -427,7 +428,7 @@ export class CodeHighlighter extends SyntaxHighlighter{
   }
   get_member_keyword_colors() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_member_keyword_colors,
+      CodeHighlighter._bindings.method_get_member_keyword_colors,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -437,7 +438,7 @@ export class CodeHighlighter extends SyntaxHighlighter{
   }
   add_color_region(_start_key, _end_key, _color, _line_only) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_color_region,
+      CodeHighlighter._bindings.method_add_color_region,
       this._owner,
       _start_key, _end_key, _color, _line_only
     );
@@ -445,7 +446,7 @@ export class CodeHighlighter extends SyntaxHighlighter{
   }
   remove_color_region(_start_key) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_color_region,
+      CodeHighlighter._bindings.method_remove_color_region,
       this._owner,
       _start_key
     );
@@ -453,7 +454,7 @@ export class CodeHighlighter extends SyntaxHighlighter{
   }
   has_color_region(_start_key) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_color_region,
+      CodeHighlighter._bindings.method_has_color_region,
       this._owner,
 			Variant.Type.BOOL,
       _start_key
@@ -462,7 +463,7 @@ export class CodeHighlighter extends SyntaxHighlighter{
   }
   set_color_regions(_color_regions) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_color_regions,
+      CodeHighlighter._bindings.method_set_color_regions,
       this._owner,
       _color_regions
     );
@@ -470,7 +471,7 @@ export class CodeHighlighter extends SyntaxHighlighter{
   }
   clear_color_regions() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_color_regions,
+      CodeHighlighter._bindings.method_clear_color_regions,
       this._owner,
       
     );
@@ -478,7 +479,7 @@ export class CodeHighlighter extends SyntaxHighlighter{
   }
   get_color_regions() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_color_regions,
+      CodeHighlighter._bindings.method_get_color_regions,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -488,7 +489,7 @@ export class CodeHighlighter extends SyntaxHighlighter{
   }
   set_function_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_function_color,
+      CodeHighlighter._bindings.method_set_function_color,
       this._owner,
       _color
     );
@@ -496,7 +497,7 @@ export class CodeHighlighter extends SyntaxHighlighter{
   }
   get_function_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_function_color,
+      CodeHighlighter._bindings.method_get_function_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -506,7 +507,7 @@ export class CodeHighlighter extends SyntaxHighlighter{
   }
   set_number_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_number_color,
+      CodeHighlighter._bindings.method_set_number_color,
       this._owner,
       _color
     );
@@ -514,7 +515,7 @@ export class CodeHighlighter extends SyntaxHighlighter{
   }
   get_number_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_number_color,
+      CodeHighlighter._bindings.method_get_number_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -524,7 +525,7 @@ export class CodeHighlighter extends SyntaxHighlighter{
   }
   set_symbol_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_symbol_color,
+      CodeHighlighter._bindings.method_set_symbol_color,
       this._owner,
       _color
     );
@@ -532,7 +533,7 @@ export class CodeHighlighter extends SyntaxHighlighter{
   }
   get_symbol_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_symbol_color,
+      CodeHighlighter._bindings.method_get_symbol_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -542,7 +543,7 @@ export class CodeHighlighter extends SyntaxHighlighter{
   }
   set_member_variable_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_member_variable_color,
+      CodeHighlighter._bindings.method_set_member_variable_color,
       this._owner,
       _color
     );
@@ -550,7 +551,7 @@ export class CodeHighlighter extends SyntaxHighlighter{
   }
   get_member_variable_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_member_variable_color,
+      CodeHighlighter._bindings.method_get_member_variable_color,
       this._owner,
 			Variant.Type.COLOR,
     

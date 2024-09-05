@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Range } from '@js_godot/classes/range'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
+import { Range } from '@js_godot/classes/range'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -131,9 +131,10 @@ export class EditorSpinSlider extends Range{
       );
     }
   }
+  
   set_label(_label) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_label,
+      EditorSpinSlider._bindings.method_set_label,
       this._owner,
       _label
     );
@@ -141,7 +142,7 @@ export class EditorSpinSlider extends Range{
   }
   get_label() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_label,
+      EditorSpinSlider._bindings.method_get_label,
       this._owner,
 			Variant.Type.STRING,
     
@@ -151,7 +152,7 @@ export class EditorSpinSlider extends Range{
   }
   set_suffix(_suffix) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_suffix,
+      EditorSpinSlider._bindings.method_set_suffix,
       this._owner,
       _suffix
     );
@@ -159,7 +160,7 @@ export class EditorSpinSlider extends Range{
   }
   get_suffix() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_suffix,
+      EditorSpinSlider._bindings.method_get_suffix,
       this._owner,
 			Variant.Type.STRING,
     
@@ -169,7 +170,7 @@ export class EditorSpinSlider extends Range{
   }
   set_read_only(_read_only) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_read_only,
+      EditorSpinSlider._bindings.method_set_read_only,
       this._owner,
       _read_only
     );
@@ -177,7 +178,7 @@ export class EditorSpinSlider extends Range{
   }
   is_read_only() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_read_only,
+      EditorSpinSlider._bindings.method_is_read_only,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -186,7 +187,7 @@ export class EditorSpinSlider extends Range{
   }
   set_flat(_flat) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_flat,
+      EditorSpinSlider._bindings.method_set_flat,
       this._owner,
       _flat
     );
@@ -194,7 +195,7 @@ export class EditorSpinSlider extends Range{
   }
   is_flat() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_flat,
+      EditorSpinSlider._bindings.method_is_flat,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -203,7 +204,7 @@ export class EditorSpinSlider extends Range{
   }
   set_hide_slider(_hide_slider) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_hide_slider,
+      EditorSpinSlider._bindings.method_set_hide_slider,
       this._owner,
       _hide_slider
     );
@@ -211,7 +212,7 @@ export class EditorSpinSlider extends Range{
   }
   is_hiding_slider() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_hiding_slider,
+      EditorSpinSlider._bindings.method_is_hiding_slider,
       this._owner,
 			Variant.Type.BOOL,
       

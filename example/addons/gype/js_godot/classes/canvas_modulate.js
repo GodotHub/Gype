@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { Node2D } from '@js_godot/classes/node2d'
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Color } from '@js_godot/variant/color'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -51,9 +51,10 @@ export class CanvasModulate extends Node2D{
       );
     }
   }
+  
   set_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_color,
+      CanvasModulate._bindings.method_set_color,
       this._owner,
       _color
     );
@@ -61,7 +62,7 @@ export class CanvasModulate extends Node2D{
   }
   get_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_color,
+      CanvasModulate._bindings.method_get_color,
       this._owner,
 			Variant.Type.COLOR,
     

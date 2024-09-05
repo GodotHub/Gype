@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { Dictionary } from '@js_godot/variant/dictionary'
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { Font } from '@js_godot/classes/font'
 import { Transform2D } from '@js_godot/variant/transform2d'
 import {
@@ -172,9 +172,10 @@ export class FontVariation extends Font{
       );
     }
   }
+  
   set_base_font(_font) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_base_font,
+      FontVariation._bindings.method_set_base_font,
       this._owner,
       _font
     );
@@ -182,7 +183,7 @@ export class FontVariation extends Font{
   }
   get_base_font() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_base_font,
+      FontVariation._bindings.method_get_base_font,
       this._owner,
 			Variant.INT,
       
@@ -191,7 +192,7 @@ export class FontVariation extends Font{
   }
   set_variation_opentype(_coords) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_variation_opentype,
+      FontVariation._bindings.method_set_variation_opentype,
       this._owner,
       _coords
     );
@@ -199,7 +200,7 @@ export class FontVariation extends Font{
   }
   get_variation_opentype() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_variation_opentype,
+      FontVariation._bindings.method_get_variation_opentype,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -209,7 +210,7 @@ export class FontVariation extends Font{
   }
   set_variation_embolden(_strength) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_variation_embolden,
+      FontVariation._bindings.method_set_variation_embolden,
       this._owner,
       _strength
     );
@@ -217,7 +218,7 @@ export class FontVariation extends Font{
   }
   get_variation_embolden() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_variation_embolden,
+      FontVariation._bindings.method_get_variation_embolden,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -226,7 +227,7 @@ export class FontVariation extends Font{
   }
   set_variation_face_index(_face_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_variation_face_index,
+      FontVariation._bindings.method_set_variation_face_index,
       this._owner,
       _face_index
     );
@@ -234,7 +235,7 @@ export class FontVariation extends Font{
   }
   get_variation_face_index() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_variation_face_index,
+      FontVariation._bindings.method_get_variation_face_index,
       this._owner,
 			Variant.Type.INT,
       
@@ -243,7 +244,7 @@ export class FontVariation extends Font{
   }
   set_variation_transform(_transform) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_variation_transform,
+      FontVariation._bindings.method_set_variation_transform,
       this._owner,
       _transform
     );
@@ -251,7 +252,7 @@ export class FontVariation extends Font{
   }
   get_variation_transform() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_variation_transform,
+      FontVariation._bindings.method_get_variation_transform,
       this._owner,
 			Variant.Type.TRANSFORM2D,
     
@@ -261,7 +262,7 @@ export class FontVariation extends Font{
   }
   set_opentype_features(_features) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_opentype_features,
+      FontVariation._bindings.method_set_opentype_features,
       this._owner,
       _features
     );
@@ -269,7 +270,7 @@ export class FontVariation extends Font{
   }
   set_spacing(_spacing, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_spacing,
+      FontVariation._bindings.method_set_spacing,
       this._owner,
       _spacing, _value
     );
@@ -277,7 +278,7 @@ export class FontVariation extends Font{
   }
   set_baseline_offset(_baseline_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_baseline_offset,
+      FontVariation._bindings.method_set_baseline_offset,
       this._owner,
       _baseline_offset
     );
@@ -285,7 +286,7 @@ export class FontVariation extends Font{
   }
   get_baseline_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_baseline_offset,
+      FontVariation._bindings.method_get_baseline_offset,
       this._owner,
 			Variant.Type.FLOAT,
       

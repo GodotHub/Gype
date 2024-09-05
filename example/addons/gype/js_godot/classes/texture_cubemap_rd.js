@@ -31,6 +31,7 @@ export class TextureCubemapRD extends TextureLayeredRD{
     this.#initialized = true;
   }
   
+  
 
 
   static {

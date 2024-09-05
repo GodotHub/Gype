@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Transform3D } from '@js_godot/variant/transform3d'
-import { Vector3 } from '@js_godot/variant/vector3'
-import { StringName } from '@js_godot/variant/string_name'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { Transform3D } from '@js_godot/variant/transform3d'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { Vector3 } from '@js_godot/variant/vector3'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -192,9 +192,10 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
       );
     }
   }
+  
   get_from() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_from,
+      PhysicsTestMotionParameters3D._bindings.method_get_from,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -204,7 +205,7 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
   }
   set_from(_from) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_from,
+      PhysicsTestMotionParameters3D._bindings.method_set_from,
       this._owner,
       _from
     );
@@ -212,7 +213,7 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
   }
   get_motion() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_motion,
+      PhysicsTestMotionParameters3D._bindings.method_get_motion,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -222,7 +223,7 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
   }
   set_motion(_motion) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_motion,
+      PhysicsTestMotionParameters3D._bindings.method_set_motion,
       this._owner,
       _motion
     );
@@ -230,7 +231,7 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
   }
   get_margin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_margin,
+      PhysicsTestMotionParameters3D._bindings.method_get_margin,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -239,7 +240,7 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
   }
   set_margin(_margin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_margin,
+      PhysicsTestMotionParameters3D._bindings.method_set_margin,
       this._owner,
       _margin
     );
@@ -247,7 +248,7 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
   }
   get_max_collisions() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_max_collisions,
+      PhysicsTestMotionParameters3D._bindings.method_get_max_collisions,
       this._owner,
 			Variant.Type.INT,
       
@@ -256,7 +257,7 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
   }
   set_max_collisions(_max_collisions) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_max_collisions,
+      PhysicsTestMotionParameters3D._bindings.method_set_max_collisions,
       this._owner,
       _max_collisions
     );
@@ -264,7 +265,7 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
   }
   is_collide_separation_ray_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_collide_separation_ray_enabled,
+      PhysicsTestMotionParameters3D._bindings.method_is_collide_separation_ray_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -273,7 +274,7 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
   }
   set_collide_separation_ray_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collide_separation_ray_enabled,
+      PhysicsTestMotionParameters3D._bindings.method_set_collide_separation_ray_enabled,
       this._owner,
       _enabled
     );
@@ -281,7 +282,7 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
   }
   get_exclude_bodies() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_exclude_bodies,
+      PhysicsTestMotionParameters3D._bindings.method_get_exclude_bodies,
       this._owner,
 			Variant.INT,
       
@@ -290,7 +291,7 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
   }
   set_exclude_bodies(_exclude_list) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_exclude_bodies,
+      PhysicsTestMotionParameters3D._bindings.method_set_exclude_bodies,
       this._owner,
       _exclude_list
     );
@@ -298,7 +299,7 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
   }
   get_exclude_objects() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_exclude_objects,
+      PhysicsTestMotionParameters3D._bindings.method_get_exclude_objects,
       this._owner,
 			Variant.INT,
       
@@ -307,7 +308,7 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
   }
   set_exclude_objects(_exclude_list) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_exclude_objects,
+      PhysicsTestMotionParameters3D._bindings.method_set_exclude_objects,
       this._owner,
       _exclude_list
     );
@@ -315,7 +316,7 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
   }
   is_recovery_as_collision_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_recovery_as_collision_enabled,
+      PhysicsTestMotionParameters3D._bindings.method_is_recovery_as_collision_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -324,7 +325,7 @@ export class PhysicsTestMotionParameters3D extends RefCounted{
   }
   set_recovery_as_collision_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_recovery_as_collision_enabled,
+      PhysicsTestMotionParameters3D._bindings.method_set_recovery_as_collision_enabled,
       this._owner,
       _enabled
     );

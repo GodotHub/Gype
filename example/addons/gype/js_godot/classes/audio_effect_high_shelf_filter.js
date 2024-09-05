@@ -31,6 +31,7 @@ export class AudioEffectHighShelfFilter extends AudioEffectFilter{
     this.#initialized = true;
   }
   
+  
 
 
   static {

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -50,9 +50,10 @@ export class EncodedObjectAsID extends RefCounted{
       );
     }
   }
+  
   set_object_id(_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_object_id,
+      EncodedObjectAsID._bindings.method_set_object_id,
       this._owner,
       _id
     );
@@ -60,7 +61,7 @@ export class EncodedObjectAsID extends RefCounted{
   }
   get_object_id() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_object_id,
+      EncodedObjectAsID._bindings.method_get_object_id,
       this._owner,
 			Variant.Type.INT,
       

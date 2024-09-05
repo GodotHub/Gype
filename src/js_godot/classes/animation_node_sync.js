@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { AnimationNode } from '@js_godot/classes/animation_node'
 import {
   call_utility_ret,
@@ -50,9 +50,10 @@ export class AnimationNodeSync extends AnimationNode{
       );
     }
   }
+  
   set_use_sync(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_sync,
+      AnimationNodeSync._bindings.method_set_use_sync,
       this._owner,
       _enable
     );
@@ -60,7 +61,7 @@ export class AnimationNodeSync extends AnimationNode{
   }
   is_using_sync() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_using_sync,
+      AnimationNodeSync._bindings.method_is_using_sync,
       this._owner,
 			Variant.Type.BOOL,
       

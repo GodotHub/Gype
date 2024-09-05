@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
 import { Shape2D } from '@js_godot/classes/shape2d'
-import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -61,9 +61,10 @@ export class ConvexPolygonShape2D extends Shape2D{
       );
     }
   }
+  
   set_point_cloud(_point_cloud) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_point_cloud,
+      ConvexPolygonShape2D._bindings.method_set_point_cloud,
       this._owner,
       _point_cloud
     );
@@ -71,7 +72,7 @@ export class ConvexPolygonShape2D extends Shape2D{
   }
   set_points(_points) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_points,
+      ConvexPolygonShape2D._bindings.method_set_points,
       this._owner,
       _points
     );
@@ -79,7 +80,7 @@ export class ConvexPolygonShape2D extends Shape2D{
   }
   get_points() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_points,
+      ConvexPolygonShape2D._bindings.method_get_points,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     

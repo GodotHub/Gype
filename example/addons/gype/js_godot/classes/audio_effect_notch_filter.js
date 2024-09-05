@@ -31,6 +31,7 @@ export class AudioEffectNotchFilter extends AudioEffectFilter{
     this.#initialized = true;
   }
   
+  
 
 
   static {

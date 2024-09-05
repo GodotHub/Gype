@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
 import { StringName } from '@js_godot/variant/string_name'
-import { Rect2 } from '@js_godot/variant/rect2'
 import { NodePath } from '@js_godot/variant/node_path'
+import { Variant } from '@js_godot/variant/variant'
+import { Rect2 } from '@js_godot/variant/rect2'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -132,9 +132,10 @@ export class LightmapGIData extends Resource{
       );
     }
   }
+  
   set_lightmap_textures(_light_textures) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_lightmap_textures,
+      LightmapGIData._bindings.method_set_lightmap_textures,
       this._owner,
       _light_textures
     );
@@ -142,7 +143,7 @@ export class LightmapGIData extends Resource{
   }
   get_lightmap_textures() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_lightmap_textures,
+      LightmapGIData._bindings.method_get_lightmap_textures,
       this._owner,
 			Variant.INT,
       
@@ -151,7 +152,7 @@ export class LightmapGIData extends Resource{
   }
   set_uses_spherical_harmonics(_uses_spherical_harmonics) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_uses_spherical_harmonics,
+      LightmapGIData._bindings.method_set_uses_spherical_harmonics,
       this._owner,
       _uses_spherical_harmonics
     );
@@ -159,7 +160,7 @@ export class LightmapGIData extends Resource{
   }
   is_using_spherical_harmonics() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_using_spherical_harmonics,
+      LightmapGIData._bindings.method_is_using_spherical_harmonics,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -168,7 +169,7 @@ export class LightmapGIData extends Resource{
   }
   add_user(_path, _uv_scale, _slice_index, _sub_instance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_user,
+      LightmapGIData._bindings.method_add_user,
       this._owner,
       _path, _uv_scale, _slice_index, _sub_instance
     );
@@ -176,7 +177,7 @@ export class LightmapGIData extends Resource{
   }
   get_user_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_user_count,
+      LightmapGIData._bindings.method_get_user_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -185,7 +186,7 @@ export class LightmapGIData extends Resource{
   }
   get_user_path(_user_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_user_path,
+      LightmapGIData._bindings.method_get_user_path,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -195,7 +196,7 @@ export class LightmapGIData extends Resource{
   }
   clear_users() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_users,
+      LightmapGIData._bindings.method_clear_users,
       this._owner,
       
     );
@@ -203,7 +204,7 @@ export class LightmapGIData extends Resource{
   }
   set_light_texture(_light_texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_light_texture,
+      LightmapGIData._bindings.method_set_light_texture,
       this._owner,
       _light_texture
     );
@@ -211,7 +212,7 @@ export class LightmapGIData extends Resource{
   }
   get_light_texture() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_light_texture,
+      LightmapGIData._bindings.method_get_light_texture,
       this._owner,
 			Variant.INT,
       

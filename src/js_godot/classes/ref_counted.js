@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { GodotObject } from '@js_godot/classes/godot_object'
 import {
   call_utility_ret,
@@ -70,9 +70,10 @@ export class RefCounted extends GodotObject{
       );
     }
   }
+  
   init_ref() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_init_ref,
+      RefCounted._bindings.method_init_ref,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -81,7 +82,7 @@ export class RefCounted extends GodotObject{
   }
   reference() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_reference,
+      RefCounted._bindings.method_reference,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -90,7 +91,7 @@ export class RefCounted extends GodotObject{
   }
   unreference() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_unreference,
+      RefCounted._bindings.method_unreference,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -99,7 +100,7 @@ export class RefCounted extends GodotObject{
   }
   get_reference_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_reference_count,
+      RefCounted._bindings.method_get_reference_count,
       this._owner,
 			Variant.Type.INT,
       

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { Vector3 } from '@js_godot/variant/vector3'
+import { StringName } from '@js_godot/variant/string_name'
 import { GPUParticlesCollision3D } from '@js_godot/classes/gpu_particles_collision3d'
 import {
   call_utility_ret,
@@ -111,9 +111,10 @@ export class GPUParticlesCollisionHeightField3D extends GPUParticlesCollision3D{
       );
     }
   }
+  
   set_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_size,
+      GPUParticlesCollisionHeightField3D._bindings.method_set_size,
       this._owner,
       _size
     );
@@ -121,7 +122,7 @@ export class GPUParticlesCollisionHeightField3D extends GPUParticlesCollision3D{
   }
   get_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_size,
+      GPUParticlesCollisionHeightField3D._bindings.method_get_size,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -131,7 +132,7 @@ export class GPUParticlesCollisionHeightField3D extends GPUParticlesCollision3D{
   }
   set_resolution(_resolution) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_resolution,
+      GPUParticlesCollisionHeightField3D._bindings.method_set_resolution,
       this._owner,
       _resolution
     );
@@ -139,7 +140,7 @@ export class GPUParticlesCollisionHeightField3D extends GPUParticlesCollision3D{
   }
   get_resolution() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_resolution,
+      GPUParticlesCollisionHeightField3D._bindings.method_get_resolution,
       this._owner,
 			Variant.INT,
       
@@ -148,7 +149,7 @@ export class GPUParticlesCollisionHeightField3D extends GPUParticlesCollision3D{
   }
   set_update_mode(_update_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_update_mode,
+      GPUParticlesCollisionHeightField3D._bindings.method_set_update_mode,
       this._owner,
       _update_mode
     );
@@ -156,7 +157,7 @@ export class GPUParticlesCollisionHeightField3D extends GPUParticlesCollision3D{
   }
   get_update_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_update_mode,
+      GPUParticlesCollisionHeightField3D._bindings.method_get_update_mode,
       this._owner,
 			Variant.INT,
       
@@ -165,7 +166,7 @@ export class GPUParticlesCollisionHeightField3D extends GPUParticlesCollision3D{
   }
   set_follow_camera_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_follow_camera_enabled,
+      GPUParticlesCollisionHeightField3D._bindings.method_set_follow_camera_enabled,
       this._owner,
       _enabled
     );
@@ -173,7 +174,7 @@ export class GPUParticlesCollisionHeightField3D extends GPUParticlesCollision3D{
   }
   is_follow_camera_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_follow_camera_enabled,
+      GPUParticlesCollisionHeightField3D._bindings.method_is_follow_camera_enabled,
       this._owner,
 			Variant.Type.BOOL,
       

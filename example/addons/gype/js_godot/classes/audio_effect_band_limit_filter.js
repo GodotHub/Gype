@@ -31,6 +31,7 @@ export class AudioEffectBandLimitFilter extends AudioEffectFilter{
     this.#initialized = true;
   }
   
+  
 
 
   static {

@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { Node2D } from '@js_godot/classes/node2d'
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Color } from '@js_godot/variant/color'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -131,9 +131,10 @@ export class CollisionShape2D extends Node2D{
       );
     }
   }
+  
   set_shape(_shape) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shape,
+      CollisionShape2D._bindings.method_set_shape,
       this._owner,
       _shape
     );
@@ -141,7 +142,7 @@ export class CollisionShape2D extends Node2D{
   }
   get_shape() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_shape,
+      CollisionShape2D._bindings.method_get_shape,
       this._owner,
 			Variant.INT,
       
@@ -150,7 +151,7 @@ export class CollisionShape2D extends Node2D{
   }
   set_disabled(_disabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_disabled,
+      CollisionShape2D._bindings.method_set_disabled,
       this._owner,
       _disabled
     );
@@ -158,7 +159,7 @@ export class CollisionShape2D extends Node2D{
   }
   is_disabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_disabled,
+      CollisionShape2D._bindings.method_is_disabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -167,7 +168,7 @@ export class CollisionShape2D extends Node2D{
   }
   set_one_way_collision(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_one_way_collision,
+      CollisionShape2D._bindings.method_set_one_way_collision,
       this._owner,
       _enabled
     );
@@ -175,7 +176,7 @@ export class CollisionShape2D extends Node2D{
   }
   is_one_way_collision_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_one_way_collision_enabled,
+      CollisionShape2D._bindings.method_is_one_way_collision_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -184,7 +185,7 @@ export class CollisionShape2D extends Node2D{
   }
   set_one_way_collision_margin(_margin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_one_way_collision_margin,
+      CollisionShape2D._bindings.method_set_one_way_collision_margin,
       this._owner,
       _margin
     );
@@ -192,7 +193,7 @@ export class CollisionShape2D extends Node2D{
   }
   get_one_way_collision_margin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_one_way_collision_margin,
+      CollisionShape2D._bindings.method_get_one_way_collision_margin,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -201,7 +202,7 @@ export class CollisionShape2D extends Node2D{
   }
   set_debug_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_debug_color,
+      CollisionShape2D._bindings.method_set_debug_color,
       this._owner,
       _color
     );
@@ -209,7 +210,7 @@ export class CollisionShape2D extends Node2D{
   }
   get_debug_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_debug_color,
+      CollisionShape2D._bindings.method_get_debug_color,
       this._owner,
 			Variant.Type.COLOR,
     

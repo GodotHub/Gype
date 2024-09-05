@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { AudioEffect } from '@js_godot/classes/audio_effect'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -80,9 +80,10 @@ export class AudioEffectRecord extends AudioEffect{
       );
     }
   }
+  
   set_recording_active(_record) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_recording_active,
+      AudioEffectRecord._bindings.method_set_recording_active,
       this._owner,
       _record
     );
@@ -90,7 +91,7 @@ export class AudioEffectRecord extends AudioEffect{
   }
   is_recording_active() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_recording_active,
+      AudioEffectRecord._bindings.method_is_recording_active,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -99,7 +100,7 @@ export class AudioEffectRecord extends AudioEffect{
   }
   set_format(_format) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_format,
+      AudioEffectRecord._bindings.method_set_format,
       this._owner,
       _format
     );
@@ -107,7 +108,7 @@ export class AudioEffectRecord extends AudioEffect{
   }
   get_format() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_format,
+      AudioEffectRecord._bindings.method_get_format,
       this._owner,
 			Variant.INT,
       
@@ -116,7 +117,7 @@ export class AudioEffectRecord extends AudioEffect{
   }
   get_recording() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_recording,
+      AudioEffectRecord._bindings.method_get_recording,
       this._owner,
 			Variant.INT,
       

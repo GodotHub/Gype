@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { CanvasItem } from '@js_godot/classes/canvas_item'
-import { Vector2 } from '@js_godot/variant/vector2'
+import { Variant } from '@js_godot/variant/variant'
 import { Transform2D } from '@js_godot/variant/transform2d'
+import { StringName } from '@js_godot/variant/string_name'
+import { Vector2 } from '@js_godot/variant/vector2'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -362,9 +362,10 @@ export class Node2D extends CanvasItem{
       );
     }
   }
+  
   set_position(_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_position,
+      Node2D._bindings.method_set_position,
       this._owner,
       _position
     );
@@ -372,7 +373,7 @@ export class Node2D extends CanvasItem{
   }
   set_rotation(_radians) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_rotation,
+      Node2D._bindings.method_set_rotation,
       this._owner,
       _radians
     );
@@ -380,7 +381,7 @@ export class Node2D extends CanvasItem{
   }
   set_rotation_degrees(_degrees) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_rotation_degrees,
+      Node2D._bindings.method_set_rotation_degrees,
       this._owner,
       _degrees
     );
@@ -388,7 +389,7 @@ export class Node2D extends CanvasItem{
   }
   set_skew(_radians) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_skew,
+      Node2D._bindings.method_set_skew,
       this._owner,
       _radians
     );
@@ -396,7 +397,7 @@ export class Node2D extends CanvasItem{
   }
   set_scale(_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_scale,
+      Node2D._bindings.method_set_scale,
       this._owner,
       _scale
     );
@@ -404,7 +405,7 @@ export class Node2D extends CanvasItem{
   }
   get_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_position,
+      Node2D._bindings.method_get_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -414,7 +415,7 @@ export class Node2D extends CanvasItem{
   }
   get_rotation() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rotation,
+      Node2D._bindings.method_get_rotation,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -423,7 +424,7 @@ export class Node2D extends CanvasItem{
   }
   get_rotation_degrees() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rotation_degrees,
+      Node2D._bindings.method_get_rotation_degrees,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -432,7 +433,7 @@ export class Node2D extends CanvasItem{
   }
   get_skew() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_skew,
+      Node2D._bindings.method_get_skew,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -441,7 +442,7 @@ export class Node2D extends CanvasItem{
   }
   get_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_scale,
+      Node2D._bindings.method_get_scale,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -451,7 +452,7 @@ export class Node2D extends CanvasItem{
   }
   rotate(_radians) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_rotate,
+      Node2D._bindings.method_rotate,
       this._owner,
       _radians
     );
@@ -459,7 +460,7 @@ export class Node2D extends CanvasItem{
   }
   move_local_x(_delta, _scaled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_move_local_x,
+      Node2D._bindings.method_move_local_x,
       this._owner,
       _delta, _scaled
     );
@@ -467,7 +468,7 @@ export class Node2D extends CanvasItem{
   }
   move_local_y(_delta, _scaled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_move_local_y,
+      Node2D._bindings.method_move_local_y,
       this._owner,
       _delta, _scaled
     );
@@ -475,7 +476,7 @@ export class Node2D extends CanvasItem{
   }
   translate(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_translate,
+      Node2D._bindings.method_translate,
       this._owner,
       _offset
     );
@@ -483,7 +484,7 @@ export class Node2D extends CanvasItem{
   }
   global_translate(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_global_translate,
+      Node2D._bindings.method_global_translate,
       this._owner,
       _offset
     );
@@ -491,7 +492,7 @@ export class Node2D extends CanvasItem{
   }
   apply_scale(_ratio) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_apply_scale,
+      Node2D._bindings.method_apply_scale,
       this._owner,
       _ratio
     );
@@ -499,7 +500,7 @@ export class Node2D extends CanvasItem{
   }
   set_global_position(_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_global_position,
+      Node2D._bindings.method_set_global_position,
       this._owner,
       _position
     );
@@ -507,7 +508,7 @@ export class Node2D extends CanvasItem{
   }
   get_global_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_global_position,
+      Node2D._bindings.method_get_global_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -517,7 +518,7 @@ export class Node2D extends CanvasItem{
   }
   set_global_rotation(_radians) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_global_rotation,
+      Node2D._bindings.method_set_global_rotation,
       this._owner,
       _radians
     );
@@ -525,7 +526,7 @@ export class Node2D extends CanvasItem{
   }
   set_global_rotation_degrees(_degrees) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_global_rotation_degrees,
+      Node2D._bindings.method_set_global_rotation_degrees,
       this._owner,
       _degrees
     );
@@ -533,7 +534,7 @@ export class Node2D extends CanvasItem{
   }
   get_global_rotation() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_global_rotation,
+      Node2D._bindings.method_get_global_rotation,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -542,7 +543,7 @@ export class Node2D extends CanvasItem{
   }
   get_global_rotation_degrees() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_global_rotation_degrees,
+      Node2D._bindings.method_get_global_rotation_degrees,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -551,7 +552,7 @@ export class Node2D extends CanvasItem{
   }
   set_global_skew(_radians) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_global_skew,
+      Node2D._bindings.method_set_global_skew,
       this._owner,
       _radians
     );
@@ -559,7 +560,7 @@ export class Node2D extends CanvasItem{
   }
   get_global_skew() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_global_skew,
+      Node2D._bindings.method_get_global_skew,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -568,7 +569,7 @@ export class Node2D extends CanvasItem{
   }
   set_global_scale(_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_global_scale,
+      Node2D._bindings.method_set_global_scale,
       this._owner,
       _scale
     );
@@ -576,7 +577,7 @@ export class Node2D extends CanvasItem{
   }
   get_global_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_global_scale,
+      Node2D._bindings.method_get_global_scale,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -586,7 +587,7 @@ export class Node2D extends CanvasItem{
   }
   set_transform(_xform) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_transform,
+      Node2D._bindings.method_set_transform,
       this._owner,
       _xform
     );
@@ -594,7 +595,7 @@ export class Node2D extends CanvasItem{
   }
   set_global_transform(_xform) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_global_transform,
+      Node2D._bindings.method_set_global_transform,
       this._owner,
       _xform
     );
@@ -602,7 +603,7 @@ export class Node2D extends CanvasItem{
   }
   look_at(_point) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_look_at,
+      Node2D._bindings.method_look_at,
       this._owner,
       _point
     );
@@ -610,7 +611,7 @@ export class Node2D extends CanvasItem{
   }
   get_angle_to(_point) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_angle_to,
+      Node2D._bindings.method_get_angle_to,
       this._owner,
 			Variant.Type.FLOAT,
       _point
@@ -619,7 +620,7 @@ export class Node2D extends CanvasItem{
   }
   to_local(_global_point) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_to_local,
+      Node2D._bindings.method_to_local,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -629,7 +630,7 @@ export class Node2D extends CanvasItem{
   }
   to_global(_local_point) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_to_global,
+      Node2D._bindings.method_to_global,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -639,7 +640,7 @@ export class Node2D extends CanvasItem{
   }
   get_relative_transform_to_parent(_parent) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_relative_transform_to_parent,
+      Node2D._bindings.method_get_relative_transform_to_parent,
       this._owner,
 			Variant.Type.TRANSFORM2D,
     

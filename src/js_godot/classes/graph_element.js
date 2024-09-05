@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { Vector2 } from '@js_godot/variant/vector2'
 import { Container } from '@js_godot/classes/container'
 import {
@@ -131,9 +131,10 @@ export class GraphElement extends Container{
       );
     }
   }
+  
   set_resizable(_resizable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_resizable,
+      GraphElement._bindings.method_set_resizable,
       this._owner,
       _resizable
     );
@@ -141,7 +142,7 @@ export class GraphElement extends Container{
   }
   is_resizable() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_resizable,
+      GraphElement._bindings.method_is_resizable,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -150,7 +151,7 @@ export class GraphElement extends Container{
   }
   set_draggable(_draggable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_draggable,
+      GraphElement._bindings.method_set_draggable,
       this._owner,
       _draggable
     );
@@ -158,7 +159,7 @@ export class GraphElement extends Container{
   }
   is_draggable() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_draggable,
+      GraphElement._bindings.method_is_draggable,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -167,7 +168,7 @@ export class GraphElement extends Container{
   }
   set_selectable(_selectable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_selectable,
+      GraphElement._bindings.method_set_selectable,
       this._owner,
       _selectable
     );
@@ -175,7 +176,7 @@ export class GraphElement extends Container{
   }
   is_selectable() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_selectable,
+      GraphElement._bindings.method_is_selectable,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -184,7 +185,7 @@ export class GraphElement extends Container{
   }
   set_selected(_selected) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_selected,
+      GraphElement._bindings.method_set_selected,
       this._owner,
       _selected
     );
@@ -192,7 +193,7 @@ export class GraphElement extends Container{
   }
   is_selected() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_selected,
+      GraphElement._bindings.method_is_selected,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -201,7 +202,7 @@ export class GraphElement extends Container{
   }
   set_position_offset(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_position_offset,
+      GraphElement._bindings.method_set_position_offset,
       this._owner,
       _offset
     );
@@ -209,7 +210,7 @@ export class GraphElement extends Container{
   }
   get_position_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_position_offset,
+      GraphElement._bindings.method_get_position_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     

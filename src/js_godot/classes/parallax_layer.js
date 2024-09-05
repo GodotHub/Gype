@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { Node2D } from '@js_godot/classes/node2d'
 import { Variant } from '@js_godot/variant/variant'
-import { Vector2 } from '@js_godot/variant/vector2'
 import { StringName } from '@js_godot/variant/string_name'
+import { Vector2 } from '@js_godot/variant/vector2'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -91,9 +91,10 @@ export class ParallaxLayer extends Node2D{
       );
     }
   }
+  
   set_motion_scale(_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_motion_scale,
+      ParallaxLayer._bindings.method_set_motion_scale,
       this._owner,
       _scale
     );
@@ -101,7 +102,7 @@ export class ParallaxLayer extends Node2D{
   }
   get_motion_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_motion_scale,
+      ParallaxLayer._bindings.method_get_motion_scale,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -111,7 +112,7 @@ export class ParallaxLayer extends Node2D{
   }
   set_motion_offset(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_motion_offset,
+      ParallaxLayer._bindings.method_set_motion_offset,
       this._owner,
       _offset
     );
@@ -119,7 +120,7 @@ export class ParallaxLayer extends Node2D{
   }
   get_motion_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_motion_offset,
+      ParallaxLayer._bindings.method_get_motion_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -129,7 +130,7 @@ export class ParallaxLayer extends Node2D{
   }
   set_mirroring(_mirror) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mirroring,
+      ParallaxLayer._bindings.method_set_mirroring,
       this._owner,
       _mirror
     );
@@ -137,7 +138,7 @@ export class ParallaxLayer extends Node2D{
   }
   get_mirroring() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mirroring,
+      ParallaxLayer._bindings.method_get_mirroring,
       this._owner,
 			Variant.Type.VECTOR2,
     

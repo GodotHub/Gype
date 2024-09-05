@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { Node } from '@js_godot/classes/node'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
@@ -91,9 +91,10 @@ export class MissingNode extends Node{
       );
     }
   }
+  
   set_original_class(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_original_class,
+      MissingNode._bindings.method_set_original_class,
       this._owner,
       _name
     );
@@ -101,7 +102,7 @@ export class MissingNode extends Node{
   }
   get_original_class() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_original_class,
+      MissingNode._bindings.method_get_original_class,
       this._owner,
 			Variant.Type.STRING,
     
@@ -111,7 +112,7 @@ export class MissingNode extends Node{
   }
   set_original_scene(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_original_scene,
+      MissingNode._bindings.method_set_original_scene,
       this._owner,
       _name
     );
@@ -119,7 +120,7 @@ export class MissingNode extends Node{
   }
   get_original_scene() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_original_scene,
+      MissingNode._bindings.method_get_original_scene,
       this._owner,
 			Variant.Type.STRING,
     
@@ -129,7 +130,7 @@ export class MissingNode extends Node{
   }
   set_recording_properties(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_recording_properties,
+      MissingNode._bindings.method_set_recording_properties,
       this._owner,
       _enable
     );
@@ -137,7 +138,7 @@ export class MissingNode extends Node{
   }
   is_recording_properties() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_recording_properties,
+      MissingNode._bindings.method_is_recording_properties,
       this._owner,
 			Variant.Type.BOOL,
       
