@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Transform3D } from '@js_godot/variant/transform3d'
-import { Vector3 } from '@js_godot/variant/vector3'
 import { StringName } from '@js_godot/variant/string_name'
-import { PhysicsDirectSpaceState3D } from '@js_godot/classes/physics_direct_space_state3d'
 import { RID } from '@js_godot/variant/rid'
+import { PhysicsDirectSpaceState3D } from '@js_godot/classes/physics_direct_space_state3d'
+import { Transform3D } from '@js_godot/variant/transform3d'
+import { Variant } from '@js_godot/variant/variant'
+import { Vector3 } from '@js_godot/variant/vector3'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -43,6 +43,7 @@ export class PhysicsDirectSpaceState3DExtension extends PhysicsDirectSpaceState3
       );
     }
   }
+  
   _intersect_ray(_from, _to, _collision_mask, _collide_with_bodies, _collide_with_areas, _hit_from_inside, _hit_back_faces, _pick_ray, _result) {
   }
   _intersect_point(_position, _collision_mask, _collide_with_bodies, _collide_with_areas, _results, _max_results) {
@@ -59,7 +60,7 @@ export class PhysicsDirectSpaceState3DExtension extends PhysicsDirectSpaceState3
   }
   is_body_excluded_from_query(_body) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_body_excluded_from_query,
+      PhysicsDirectSpaceState3DExtension._bindings.method_is_body_excluded_from_query,
       this._owner,
 			Variant.Type.BOOL,
       _body

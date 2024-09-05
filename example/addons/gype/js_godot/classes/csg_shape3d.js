@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { GeometryInstance3D } from '@js_godot/classes/geometry_instance3d'
 import { GDArray } from '@js_godot/variant/gd_array'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -231,9 +231,10 @@ export class CSGShape3D extends GeometryInstance3D{
       );
     }
   }
+  
   is_root_shape() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_root_shape,
+      CSGShape3D._bindings.method_is_root_shape,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -242,7 +243,7 @@ export class CSGShape3D extends GeometryInstance3D{
   }
   set_operation(_operation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_operation,
+      CSGShape3D._bindings.method_set_operation,
       this._owner,
       _operation
     );
@@ -250,7 +251,7 @@ export class CSGShape3D extends GeometryInstance3D{
   }
   get_operation() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_operation,
+      CSGShape3D._bindings.method_get_operation,
       this._owner,
 			Variant.INT,
       
@@ -259,7 +260,7 @@ export class CSGShape3D extends GeometryInstance3D{
   }
   set_snap(_snap) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_snap,
+      CSGShape3D._bindings.method_set_snap,
       this._owner,
       _snap
     );
@@ -267,7 +268,7 @@ export class CSGShape3D extends GeometryInstance3D{
   }
   get_snap() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_snap,
+      CSGShape3D._bindings.method_get_snap,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -276,7 +277,7 @@ export class CSGShape3D extends GeometryInstance3D{
   }
   set_use_collision(_operation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_collision,
+      CSGShape3D._bindings.method_set_use_collision,
       this._owner,
       _operation
     );
@@ -284,7 +285,7 @@ export class CSGShape3D extends GeometryInstance3D{
   }
   is_using_collision() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_using_collision,
+      CSGShape3D._bindings.method_is_using_collision,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -293,7 +294,7 @@ export class CSGShape3D extends GeometryInstance3D{
   }
   set_collision_layer(_layer) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_layer,
+      CSGShape3D._bindings.method_set_collision_layer,
       this._owner,
       _layer
     );
@@ -301,7 +302,7 @@ export class CSGShape3D extends GeometryInstance3D{
   }
   get_collision_layer() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_layer,
+      CSGShape3D._bindings.method_get_collision_layer,
       this._owner,
 			Variant.Type.INT,
       
@@ -310,7 +311,7 @@ export class CSGShape3D extends GeometryInstance3D{
   }
   set_collision_mask(_mask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_mask,
+      CSGShape3D._bindings.method_set_collision_mask,
       this._owner,
       _mask
     );
@@ -318,7 +319,7 @@ export class CSGShape3D extends GeometryInstance3D{
   }
   get_collision_mask() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_mask,
+      CSGShape3D._bindings.method_get_collision_mask,
       this._owner,
 			Variant.Type.INT,
       
@@ -327,7 +328,7 @@ export class CSGShape3D extends GeometryInstance3D{
   }
   set_collision_mask_value(_layer_number, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_mask_value,
+      CSGShape3D._bindings.method_set_collision_mask_value,
       this._owner,
       _layer_number, _value
     );
@@ -335,7 +336,7 @@ export class CSGShape3D extends GeometryInstance3D{
   }
   get_collision_mask_value(_layer_number) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_mask_value,
+      CSGShape3D._bindings.method_get_collision_mask_value,
       this._owner,
 			Variant.Type.BOOL,
       _layer_number
@@ -344,7 +345,7 @@ export class CSGShape3D extends GeometryInstance3D{
   }
   set_collision_layer_value(_layer_number, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_layer_value,
+      CSGShape3D._bindings.method_set_collision_layer_value,
       this._owner,
       _layer_number, _value
     );
@@ -352,7 +353,7 @@ export class CSGShape3D extends GeometryInstance3D{
   }
   get_collision_layer_value(_layer_number) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_layer_value,
+      CSGShape3D._bindings.method_get_collision_layer_value,
       this._owner,
 			Variant.Type.BOOL,
       _layer_number
@@ -361,7 +362,7 @@ export class CSGShape3D extends GeometryInstance3D{
   }
   set_collision_priority(_priority) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_priority,
+      CSGShape3D._bindings.method_set_collision_priority,
       this._owner,
       _priority
     );
@@ -369,7 +370,7 @@ export class CSGShape3D extends GeometryInstance3D{
   }
   get_collision_priority() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_priority,
+      CSGShape3D._bindings.method_get_collision_priority,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -378,7 +379,7 @@ export class CSGShape3D extends GeometryInstance3D{
   }
   set_calculate_tangents(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_calculate_tangents,
+      CSGShape3D._bindings.method_set_calculate_tangents,
       this._owner,
       _enabled
     );
@@ -386,7 +387,7 @@ export class CSGShape3D extends GeometryInstance3D{
   }
   is_calculating_tangents() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_calculating_tangents,
+      CSGShape3D._bindings.method_is_calculating_tangents,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -395,7 +396,7 @@ export class CSGShape3D extends GeometryInstance3D{
   }
   get_meshes() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_meshes,
+      CSGShape3D._bindings.method_get_meshes,
       this._owner,
 			Variant.Type.ARRAY,
     

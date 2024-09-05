@@ -141,9 +141,10 @@ export class RemoteTransform2D extends Node2D{
       );
     }
   }
+  
   set_remote_node(_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_remote_node,
+      RemoteTransform2D._bindings.method_set_remote_node,
       this._owner,
       _path
     );
@@ -151,7 +152,7 @@ export class RemoteTransform2D extends Node2D{
   }
   get_remote_node() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_remote_node,
+      RemoteTransform2D._bindings.method_get_remote_node,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -161,7 +162,7 @@ export class RemoteTransform2D extends Node2D{
   }
   force_update_cache() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_force_update_cache,
+      RemoteTransform2D._bindings.method_force_update_cache,
       this._owner,
       
     );
@@ -169,7 +170,7 @@ export class RemoteTransform2D extends Node2D{
   }
   set_use_global_coordinates(_use_global_coordinates) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_global_coordinates,
+      RemoteTransform2D._bindings.method_set_use_global_coordinates,
       this._owner,
       _use_global_coordinates
     );
@@ -177,7 +178,7 @@ export class RemoteTransform2D extends Node2D{
   }
   get_use_global_coordinates() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_use_global_coordinates,
+      RemoteTransform2D._bindings.method_get_use_global_coordinates,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -186,7 +187,7 @@ export class RemoteTransform2D extends Node2D{
   }
   set_update_position(_update_remote_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_update_position,
+      RemoteTransform2D._bindings.method_set_update_position,
       this._owner,
       _update_remote_position
     );
@@ -194,7 +195,7 @@ export class RemoteTransform2D extends Node2D{
   }
   get_update_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_update_position,
+      RemoteTransform2D._bindings.method_get_update_position,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -203,7 +204,7 @@ export class RemoteTransform2D extends Node2D{
   }
   set_update_rotation(_update_remote_rotation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_update_rotation,
+      RemoteTransform2D._bindings.method_set_update_rotation,
       this._owner,
       _update_remote_rotation
     );
@@ -211,7 +212,7 @@ export class RemoteTransform2D extends Node2D{
   }
   get_update_rotation() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_update_rotation,
+      RemoteTransform2D._bindings.method_get_update_rotation,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -220,7 +221,7 @@ export class RemoteTransform2D extends Node2D{
   }
   set_update_scale(_update_remote_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_update_scale,
+      RemoteTransform2D._bindings.method_set_update_scale,
       this._owner,
       _update_remote_scale
     );
@@ -228,7 +229,7 @@ export class RemoteTransform2D extends Node2D{
   }
   get_update_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_update_scale,
+      RemoteTransform2D._bindings.method_get_update_scale,
       this._owner,
 			Variant.Type.BOOL,
       

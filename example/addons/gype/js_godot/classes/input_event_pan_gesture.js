@@ -51,9 +51,10 @@ export class InputEventPanGesture extends InputEventGesture{
       );
     }
   }
+  
   set_delta(_delta) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_delta,
+      InputEventPanGesture._bindings.method_set_delta,
       this._owner,
       _delta
     );
@@ -61,7 +62,7 @@ export class InputEventPanGesture extends InputEventGesture{
   }
   get_delta() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_delta,
+      InputEventPanGesture._bindings.method_get_delta,
       this._owner,
 			Variant.Type.VECTOR2,
     

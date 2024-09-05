@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
-import { Vector2 } from '@js_godot/variant/vector2'
 import { Texture2D } from '@js_godot/classes/texture2d'
+import { Vector2 } from '@js_godot/variant/vector2'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -41,9 +41,10 @@ export class PlaceholderTexture2D extends Texture2D{
       );
     }
   }
+  
   set_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_size,
+      PlaceholderTexture2D._bindings.method_set_size,
       this._owner,
       _size
     );

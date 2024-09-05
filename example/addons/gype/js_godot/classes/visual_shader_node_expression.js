@@ -51,9 +51,10 @@ export class VisualShaderNodeExpression extends VisualShaderNodeGroupBase{
       );
     }
   }
+  
   set_expression(_expression) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_expression,
+      VisualShaderNodeExpression._bindings.method_set_expression,
       this._owner,
       _expression
     );
@@ -61,7 +62,7 @@ export class VisualShaderNodeExpression extends VisualShaderNodeGroupBase{
   }
   get_expression() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_expression,
+      VisualShaderNodeExpression._bindings.method_get_expression,
       this._owner,
 			Variant.Type.STRING,
     

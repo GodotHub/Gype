@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StyleBox } from '@js_godot/classes/style_box'
 import { StringName } from '@js_godot/variant/string_name'
+import { StyleBox } from '@js_godot/classes/style_box'
 import { Color } from '@js_godot/variant/color'
+import { Variant } from '@js_godot/variant/variant'
 import { Rect2 } from '@js_godot/variant/rect2'
 import {
   call_utility_ret,
@@ -212,9 +212,10 @@ export class StyleBoxTexture extends StyleBox{
       );
     }
   }
+  
   set_texture(_texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture,
+      StyleBoxTexture._bindings.method_set_texture,
       this._owner,
       _texture
     );
@@ -222,7 +223,7 @@ export class StyleBoxTexture extends StyleBox{
   }
   get_texture() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture,
+      StyleBoxTexture._bindings.method_get_texture,
       this._owner,
 			Variant.INT,
       
@@ -231,7 +232,7 @@ export class StyleBoxTexture extends StyleBox{
   }
   set_texture_margin(_margin, _size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture_margin,
+      StyleBoxTexture._bindings.method_set_texture_margin,
       this._owner,
       _margin, _size
     );
@@ -239,7 +240,7 @@ export class StyleBoxTexture extends StyleBox{
   }
   set_texture_margin_all(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture_margin_all,
+      StyleBoxTexture._bindings.method_set_texture_margin_all,
       this._owner,
       _size
     );
@@ -247,7 +248,7 @@ export class StyleBoxTexture extends StyleBox{
   }
   get_texture_margin(_margin) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_margin,
+      StyleBoxTexture._bindings.method_get_texture_margin,
       this._owner,
 			Variant.Type.FLOAT,
       _margin
@@ -256,7 +257,7 @@ export class StyleBoxTexture extends StyleBox{
   }
   set_expand_margin(_margin, _size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_expand_margin,
+      StyleBoxTexture._bindings.method_set_expand_margin,
       this._owner,
       _margin, _size
     );
@@ -264,7 +265,7 @@ export class StyleBoxTexture extends StyleBox{
   }
   set_expand_margin_all(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_expand_margin_all,
+      StyleBoxTexture._bindings.method_set_expand_margin_all,
       this._owner,
       _size
     );
@@ -272,7 +273,7 @@ export class StyleBoxTexture extends StyleBox{
   }
   get_expand_margin(_margin) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_expand_margin,
+      StyleBoxTexture._bindings.method_get_expand_margin,
       this._owner,
 			Variant.Type.FLOAT,
       _margin
@@ -281,7 +282,7 @@ export class StyleBoxTexture extends StyleBox{
   }
   set_region_rect(_region) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_region_rect,
+      StyleBoxTexture._bindings.method_set_region_rect,
       this._owner,
       _region
     );
@@ -289,7 +290,7 @@ export class StyleBoxTexture extends StyleBox{
   }
   get_region_rect() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_region_rect,
+      StyleBoxTexture._bindings.method_get_region_rect,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -299,7 +300,7 @@ export class StyleBoxTexture extends StyleBox{
   }
   set_draw_center(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_draw_center,
+      StyleBoxTexture._bindings.method_set_draw_center,
       this._owner,
       _enable
     );
@@ -307,7 +308,7 @@ export class StyleBoxTexture extends StyleBox{
   }
   is_draw_center_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_draw_center_enabled,
+      StyleBoxTexture._bindings.method_is_draw_center_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -316,7 +317,7 @@ export class StyleBoxTexture extends StyleBox{
   }
   set_modulate(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_modulate,
+      StyleBoxTexture._bindings.method_set_modulate,
       this._owner,
       _color
     );
@@ -324,7 +325,7 @@ export class StyleBoxTexture extends StyleBox{
   }
   get_modulate() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_modulate,
+      StyleBoxTexture._bindings.method_get_modulate,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -334,7 +335,7 @@ export class StyleBoxTexture extends StyleBox{
   }
   set_h_axis_stretch_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_h_axis_stretch_mode,
+      StyleBoxTexture._bindings.method_set_h_axis_stretch_mode,
       this._owner,
       _mode
     );
@@ -342,7 +343,7 @@ export class StyleBoxTexture extends StyleBox{
   }
   get_h_axis_stretch_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_h_axis_stretch_mode,
+      StyleBoxTexture._bindings.method_get_h_axis_stretch_mode,
       this._owner,
 			Variant.INT,
       
@@ -351,7 +352,7 @@ export class StyleBoxTexture extends StyleBox{
   }
   set_v_axis_stretch_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_v_axis_stretch_mode,
+      StyleBoxTexture._bindings.method_set_v_axis_stretch_mode,
       this._owner,
       _mode
     );
@@ -359,7 +360,7 @@ export class StyleBoxTexture extends StyleBox{
   }
   get_v_axis_stretch_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_v_axis_stretch_mode,
+      StyleBoxTexture._bindings.method_get_v_axis_stretch_mode,
       this._owner,
 			Variant.INT,
       

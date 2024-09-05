@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { Node3D } from '@js_godot/classes/node3d'
 import {
   call_utility_ret,
@@ -80,11 +80,12 @@ export class SkeletonModifier3D extends Node3D{
       );
     }
   }
+  
   _process_modification() {
   }
   get_skeleton() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_skeleton,
+      SkeletonModifier3D._bindings.method_get_skeleton,
       this._owner,
 			Variant.INT,
       
@@ -93,7 +94,7 @@ export class SkeletonModifier3D extends Node3D{
   }
   set_active(_active) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_active,
+      SkeletonModifier3D._bindings.method_set_active,
       this._owner,
       _active
     );
@@ -101,7 +102,7 @@ export class SkeletonModifier3D extends Node3D{
   }
   is_active() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_active,
+      SkeletonModifier3D._bindings.method_is_active,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -110,7 +111,7 @@ export class SkeletonModifier3D extends Node3D{
   }
   set_influence(_influence) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_influence,
+      SkeletonModifier3D._bindings.method_set_influence,
       this._owner,
       _influence
     );
@@ -118,7 +119,7 @@ export class SkeletonModifier3D extends Node3D{
   }
   get_influence() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_influence,
+      SkeletonModifier3D._bindings.method_get_influence,
       this._owner,
 			Variant.Type.FLOAT,
       

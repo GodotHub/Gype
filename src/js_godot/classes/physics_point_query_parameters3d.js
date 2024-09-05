@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
+import { Vector3 } from '@js_godot/variant/vector3'
 import { Variant } from '@js_godot/variant/variant'
 import { RefCounted } from '@js_godot/classes/ref_counted'
-import { Vector3 } from '@js_godot/variant/vector3'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -131,9 +131,10 @@ export class PhysicsPointQueryParameters3D extends RefCounted{
       );
     }
   }
+  
   set_position(_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_position,
+      PhysicsPointQueryParameters3D._bindings.method_set_position,
       this._owner,
       _position
     );
@@ -141,7 +142,7 @@ export class PhysicsPointQueryParameters3D extends RefCounted{
   }
   get_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_position,
+      PhysicsPointQueryParameters3D._bindings.method_get_position,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -151,7 +152,7 @@ export class PhysicsPointQueryParameters3D extends RefCounted{
   }
   set_collision_mask(_collision_mask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_mask,
+      PhysicsPointQueryParameters3D._bindings.method_set_collision_mask,
       this._owner,
       _collision_mask
     );
@@ -159,7 +160,7 @@ export class PhysicsPointQueryParameters3D extends RefCounted{
   }
   get_collision_mask() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_mask,
+      PhysicsPointQueryParameters3D._bindings.method_get_collision_mask,
       this._owner,
 			Variant.Type.INT,
       
@@ -168,7 +169,7 @@ export class PhysicsPointQueryParameters3D extends RefCounted{
   }
   set_exclude(_exclude) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_exclude,
+      PhysicsPointQueryParameters3D._bindings.method_set_exclude,
       this._owner,
       _exclude
     );
@@ -176,7 +177,7 @@ export class PhysicsPointQueryParameters3D extends RefCounted{
   }
   get_exclude() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_exclude,
+      PhysicsPointQueryParameters3D._bindings.method_get_exclude,
       this._owner,
 			Variant.INT,
       
@@ -185,7 +186,7 @@ export class PhysicsPointQueryParameters3D extends RefCounted{
   }
   set_collide_with_bodies(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collide_with_bodies,
+      PhysicsPointQueryParameters3D._bindings.method_set_collide_with_bodies,
       this._owner,
       _enable
     );
@@ -193,7 +194,7 @@ export class PhysicsPointQueryParameters3D extends RefCounted{
   }
   is_collide_with_bodies_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_collide_with_bodies_enabled,
+      PhysicsPointQueryParameters3D._bindings.method_is_collide_with_bodies_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -202,7 +203,7 @@ export class PhysicsPointQueryParameters3D extends RefCounted{
   }
   set_collide_with_areas(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collide_with_areas,
+      PhysicsPointQueryParameters3D._bindings.method_set_collide_with_areas,
       this._owner,
       _enable
     );
@@ -210,7 +211,7 @@ export class PhysicsPointQueryParameters3D extends RefCounted{
   }
   is_collide_with_areas_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_collide_with_areas_enabled,
+      PhysicsPointQueryParameters3D._bindings.method_is_collide_with_areas_enabled,
       this._owner,
 			Variant.Type.BOOL,
       

@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
+import { RID } from '@js_godot/variant/rid'
+import { RefCounted } from '@js_godot/classes/ref_counted'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
-import { RID } from '@js_godot/variant/rid'
-import { RefCounted } from '@js_godot/classes/ref_counted'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -182,11 +182,12 @@ export class Resource extends RefCounted{
       );
     }
   }
+  
   _setup_local_to_scene() {
   }
   set_path(_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_path,
+      Resource._bindings.method_set_path,
       this._owner,
       _path
     );
@@ -194,7 +195,7 @@ export class Resource extends RefCounted{
   }
   take_over_path(_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_take_over_path,
+      Resource._bindings.method_take_over_path,
       this._owner,
       _path
     );
@@ -202,7 +203,7 @@ export class Resource extends RefCounted{
   }
   get_path() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_path,
+      Resource._bindings.method_get_path,
       this._owner,
 			Variant.Type.STRING,
     
@@ -212,7 +213,7 @@ export class Resource extends RefCounted{
   }
   set_name(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_name,
+      Resource._bindings.method_set_name,
       this._owner,
       _name
     );
@@ -220,7 +221,7 @@ export class Resource extends RefCounted{
   }
   get_name() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_name,
+      Resource._bindings.method_get_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -230,7 +231,7 @@ export class Resource extends RefCounted{
   }
   get_rid() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rid,
+      Resource._bindings.method_get_rid,
       this._owner,
 			Variant.Type.RID,
     
@@ -240,7 +241,7 @@ export class Resource extends RefCounted{
   }
   set_local_to_scene(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_local_to_scene,
+      Resource._bindings.method_set_local_to_scene,
       this._owner,
       _enable
     );
@@ -248,7 +249,7 @@ export class Resource extends RefCounted{
   }
   is_local_to_scene() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_local_to_scene,
+      Resource._bindings.method_is_local_to_scene,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -257,7 +258,7 @@ export class Resource extends RefCounted{
   }
   get_local_scene() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_local_scene,
+      Resource._bindings.method_get_local_scene,
       this._owner,
 			Variant.INT,
       
@@ -266,7 +267,7 @@ export class Resource extends RefCounted{
   }
   setup_local_to_scene() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_setup_local_to_scene,
+      Resource._bindings.method_setup_local_to_scene,
       this._owner,
       
     );
@@ -274,7 +275,7 @@ export class Resource extends RefCounted{
   }
   generate_scene_unique_id() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_generate_scene_unique_id,
+      Resource._bindings.method_generate_scene_unique_id,
       this._owner,
 			Variant.Type.STRING,
     
@@ -284,7 +285,7 @@ export class Resource extends RefCounted{
   }
   set_scene_unique_id(_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_scene_unique_id,
+      Resource._bindings.method_set_scene_unique_id,
       this._owner,
       _id
     );
@@ -292,7 +293,7 @@ export class Resource extends RefCounted{
   }
   get_scene_unique_id() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_scene_unique_id,
+      Resource._bindings.method_get_scene_unique_id,
       this._owner,
 			Variant.Type.STRING,
     
@@ -302,7 +303,7 @@ export class Resource extends RefCounted{
   }
   emit_changed() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_emit_changed,
+      Resource._bindings.method_emit_changed,
       this._owner,
       
     );
@@ -310,7 +311,7 @@ export class Resource extends RefCounted{
   }
   duplicate(_subresources) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_duplicate,
+      Resource._bindings.method_duplicate,
       this._owner,
 			Variant.INT,
       _subresources

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { CSGPrimitive3D } from '@js_godot/classes/csg_primitive3d'
-import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -130,9 +130,10 @@ export class CSGSphere3D extends CSGPrimitive3D{
       );
     }
   }
+  
   set_radius(_radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_radius,
+      CSGSphere3D._bindings.method_set_radius,
       this._owner,
       _radius
     );
@@ -140,7 +141,7 @@ export class CSGSphere3D extends CSGPrimitive3D{
   }
   get_radius() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_radius,
+      CSGSphere3D._bindings.method_get_radius,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -149,7 +150,7 @@ export class CSGSphere3D extends CSGPrimitive3D{
   }
   set_radial_segments(_radial_segments) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_radial_segments,
+      CSGSphere3D._bindings.method_set_radial_segments,
       this._owner,
       _radial_segments
     );
@@ -157,7 +158,7 @@ export class CSGSphere3D extends CSGPrimitive3D{
   }
   get_radial_segments() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_radial_segments,
+      CSGSphere3D._bindings.method_get_radial_segments,
       this._owner,
 			Variant.Type.INT,
       
@@ -166,7 +167,7 @@ export class CSGSphere3D extends CSGPrimitive3D{
   }
   set_rings(_rings) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_rings,
+      CSGSphere3D._bindings.method_set_rings,
       this._owner,
       _rings
     );
@@ -174,7 +175,7 @@ export class CSGSphere3D extends CSGPrimitive3D{
   }
   get_rings() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rings,
+      CSGSphere3D._bindings.method_get_rings,
       this._owner,
 			Variant.Type.INT,
       
@@ -183,7 +184,7 @@ export class CSGSphere3D extends CSGPrimitive3D{
   }
   set_smooth_faces(_smooth_faces) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_smooth_faces,
+      CSGSphere3D._bindings.method_set_smooth_faces,
       this._owner,
       _smooth_faces
     );
@@ -191,7 +192,7 @@ export class CSGSphere3D extends CSGPrimitive3D{
   }
   get_smooth_faces() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_smooth_faces,
+      CSGSphere3D._bindings.method_get_smooth_faces,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -200,7 +201,7 @@ export class CSGSphere3D extends CSGPrimitive3D{
   }
   set_material(_material) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_material,
+      CSGSphere3D._bindings.method_set_material,
       this._owner,
       _material
     );
@@ -208,7 +209,7 @@ export class CSGSphere3D extends CSGPrimitive3D{
   }
   get_material() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_material,
+      CSGSphere3D._bindings.method_get_material,
       this._owner,
 			Variant.INT,
       

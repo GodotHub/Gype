@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
+import { NodePath } from '@js_godot/variant/node_path'
 import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
-import { NodePath } from '@js_godot/variant/node_path'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -161,9 +161,10 @@ export class SceneReplicationConfig extends Resource{
       );
     }
   }
+  
   get_properties() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_properties,
+      SceneReplicationConfig._bindings.method_get_properties,
       this._owner,
 			Variant.INT,
       
@@ -172,7 +173,7 @@ export class SceneReplicationConfig extends Resource{
   }
   add_property(_path, _index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_property,
+      SceneReplicationConfig._bindings.method_add_property,
       this._owner,
       _path, _index
     );
@@ -180,7 +181,7 @@ export class SceneReplicationConfig extends Resource{
   }
   has_property(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_property,
+      SceneReplicationConfig._bindings.method_has_property,
       this._owner,
 			Variant.Type.BOOL,
       _path
@@ -189,7 +190,7 @@ export class SceneReplicationConfig extends Resource{
   }
   remove_property(_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_property,
+      SceneReplicationConfig._bindings.method_remove_property,
       this._owner,
       _path
     );
@@ -197,7 +198,7 @@ export class SceneReplicationConfig extends Resource{
   }
   property_get_index(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_property_get_index,
+      SceneReplicationConfig._bindings.method_property_get_index,
       this._owner,
 			Variant.Type.INT,
       _path
@@ -206,7 +207,7 @@ export class SceneReplicationConfig extends Resource{
   }
   property_get_spawn(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_property_get_spawn,
+      SceneReplicationConfig._bindings.method_property_get_spawn,
       this._owner,
 			Variant.Type.BOOL,
       _path
@@ -215,7 +216,7 @@ export class SceneReplicationConfig extends Resource{
   }
   property_set_spawn(_path, _enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_property_set_spawn,
+      SceneReplicationConfig._bindings.method_property_set_spawn,
       this._owner,
       _path, _enabled
     );
@@ -223,7 +224,7 @@ export class SceneReplicationConfig extends Resource{
   }
   property_get_replication_mode(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_property_get_replication_mode,
+      SceneReplicationConfig._bindings.method_property_get_replication_mode,
       this._owner,
 			Variant.INT,
       _path
@@ -232,7 +233,7 @@ export class SceneReplicationConfig extends Resource{
   }
   property_set_replication_mode(_path, _mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_property_set_replication_mode,
+      SceneReplicationConfig._bindings.method_property_set_replication_mode,
       this._owner,
       _path, _mode
     );
@@ -240,7 +241,7 @@ export class SceneReplicationConfig extends Resource{
   }
   property_get_sync(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_property_get_sync,
+      SceneReplicationConfig._bindings.method_property_get_sync,
       this._owner,
 			Variant.Type.BOOL,
       _path
@@ -249,7 +250,7 @@ export class SceneReplicationConfig extends Resource{
   }
   property_set_sync(_path, _enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_property_set_sync,
+      SceneReplicationConfig._bindings.method_property_set_sync,
       this._owner,
       _path, _enabled
     );
@@ -257,7 +258,7 @@ export class SceneReplicationConfig extends Resource{
   }
   property_get_watch(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_property_get_watch,
+      SceneReplicationConfig._bindings.method_property_get_watch,
       this._owner,
 			Variant.Type.BOOL,
       _path
@@ -266,7 +267,7 @@ export class SceneReplicationConfig extends Resource{
   }
   property_set_watch(_path, _enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_property_set_watch,
+      SceneReplicationConfig._bindings.method_property_set_watch,
       this._owner,
       _path, _enabled
     );

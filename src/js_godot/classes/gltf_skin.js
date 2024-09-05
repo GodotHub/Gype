@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Dictionary } from '@js_godot/variant/dictionary'
-import { Variant } from '@js_godot/variant/variant'
-import { Resource } from '@js_godot/classes/resource'
-import { StringName } from '@js_godot/variant/string_name'
 import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
+import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { Dictionary } from '@js_godot/variant/dictionary'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -232,9 +232,10 @@ export class GLTFSkin extends Resource{
       );
     }
   }
+  
   get_skin_root() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_skin_root,
+      GLTFSkin._bindings.method_get_skin_root,
       this._owner,
 			Variant.Type.INT,
       
@@ -243,7 +244,7 @@ export class GLTFSkin extends Resource{
   }
   set_skin_root(_skin_root) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_skin_root,
+      GLTFSkin._bindings.method_set_skin_root,
       this._owner,
       _skin_root
     );
@@ -251,7 +252,7 @@ export class GLTFSkin extends Resource{
   }
   get_joints_original() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_joints_original,
+      GLTFSkin._bindings.method_get_joints_original,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -261,7 +262,7 @@ export class GLTFSkin extends Resource{
   }
   set_joints_original(_joints_original) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_joints_original,
+      GLTFSkin._bindings.method_set_joints_original,
       this._owner,
       _joints_original
     );
@@ -269,7 +270,7 @@ export class GLTFSkin extends Resource{
   }
   get_inverse_binds() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_inverse_binds,
+      GLTFSkin._bindings.method_get_inverse_binds,
       this._owner,
 			Variant.INT,
       
@@ -278,7 +279,7 @@ export class GLTFSkin extends Resource{
   }
   set_inverse_binds(_inverse_binds) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_inverse_binds,
+      GLTFSkin._bindings.method_set_inverse_binds,
       this._owner,
       _inverse_binds
     );
@@ -286,7 +287,7 @@ export class GLTFSkin extends Resource{
   }
   get_joints() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_joints,
+      GLTFSkin._bindings.method_get_joints,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -296,7 +297,7 @@ export class GLTFSkin extends Resource{
   }
   set_joints(_joints) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_joints,
+      GLTFSkin._bindings.method_set_joints,
       this._owner,
       _joints
     );
@@ -304,7 +305,7 @@ export class GLTFSkin extends Resource{
   }
   get_non_joints() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_non_joints,
+      GLTFSkin._bindings.method_get_non_joints,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -314,7 +315,7 @@ export class GLTFSkin extends Resource{
   }
   set_non_joints(_non_joints) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_non_joints,
+      GLTFSkin._bindings.method_set_non_joints,
       this._owner,
       _non_joints
     );
@@ -322,7 +323,7 @@ export class GLTFSkin extends Resource{
   }
   get_roots() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_roots,
+      GLTFSkin._bindings.method_get_roots,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -332,7 +333,7 @@ export class GLTFSkin extends Resource{
   }
   set_roots(_roots) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_roots,
+      GLTFSkin._bindings.method_set_roots,
       this._owner,
       _roots
     );
@@ -340,7 +341,7 @@ export class GLTFSkin extends Resource{
   }
   get_skeleton() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_skeleton,
+      GLTFSkin._bindings.method_get_skeleton,
       this._owner,
 			Variant.Type.INT,
       
@@ -349,7 +350,7 @@ export class GLTFSkin extends Resource{
   }
   set_skeleton(_skeleton) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_skeleton,
+      GLTFSkin._bindings.method_set_skeleton,
       this._owner,
       _skeleton
     );
@@ -357,7 +358,7 @@ export class GLTFSkin extends Resource{
   }
   get_joint_i_to_bone_i() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_joint_i_to_bone_i,
+      GLTFSkin._bindings.method_get_joint_i_to_bone_i,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -367,7 +368,7 @@ export class GLTFSkin extends Resource{
   }
   set_joint_i_to_bone_i(_joint_i_to_bone_i) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_joint_i_to_bone_i,
+      GLTFSkin._bindings.method_set_joint_i_to_bone_i,
       this._owner,
       _joint_i_to_bone_i
     );
@@ -375,7 +376,7 @@ export class GLTFSkin extends Resource{
   }
   get_joint_i_to_name() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_joint_i_to_name,
+      GLTFSkin._bindings.method_get_joint_i_to_name,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -385,7 +386,7 @@ export class GLTFSkin extends Resource{
   }
   set_joint_i_to_name(_joint_i_to_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_joint_i_to_name,
+      GLTFSkin._bindings.method_set_joint_i_to_name,
       this._owner,
       _joint_i_to_name
     );
@@ -393,7 +394,7 @@ export class GLTFSkin extends Resource{
   }
   get_godot_skin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_godot_skin,
+      GLTFSkin._bindings.method_get_godot_skin,
       this._owner,
 			Variant.INT,
       
@@ -402,7 +403,7 @@ export class GLTFSkin extends Resource{
   }
   set_godot_skin(_godot_skin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_godot_skin,
+      GLTFSkin._bindings.method_set_godot_skin,
       this._owner,
       _godot_skin
     );

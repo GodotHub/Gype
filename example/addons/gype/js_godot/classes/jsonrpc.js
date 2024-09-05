@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { Dictionary } from '@js_godot/variant/dictionary'
-import { GodotObject } from '@js_godot/classes/godot_object'
 import { StringName } from '@js_godot/variant/string_name'
+import { GodotObject } from '@js_godot/classes/godot_object'
+import { Variant } from '@js_godot/variant/variant'
 import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
@@ -102,9 +102,10 @@ export class JSONRPC extends GodotObject{
       );
     }
   }
+  
   set_scope(_scope, _target) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_scope,
+      JSONRPC._bindings.method_set_scope,
       this._owner,
       _scope, _target
     );
@@ -112,7 +113,7 @@ export class JSONRPC extends GodotObject{
   }
   process_action(_action, _recurse) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_process_action,
+      JSONRPC._bindings.method_process_action,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -122,7 +123,7 @@ export class JSONRPC extends GodotObject{
   }
   process_string(_action) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_process_string,
+      JSONRPC._bindings.method_process_string,
       this._owner,
 			Variant.Type.STRING,
     
@@ -132,7 +133,7 @@ export class JSONRPC extends GodotObject{
   }
   make_request(_method, _params, _id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_make_request,
+      JSONRPC._bindings.method_make_request,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -142,7 +143,7 @@ export class JSONRPC extends GodotObject{
   }
   make_response(_result, _id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_make_response,
+      JSONRPC._bindings.method_make_response,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -152,7 +153,7 @@ export class JSONRPC extends GodotObject{
   }
   make_notification(_method, _params) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_make_notification,
+      JSONRPC._bindings.method_make_notification,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -162,7 +163,7 @@ export class JSONRPC extends GodotObject{
   }
   make_response_error(_code, _message, _id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_make_response_error,
+      JSONRPC._bindings.method_make_response_error,
       this._owner,
 			Variant.Type.DICTIONARY,
     

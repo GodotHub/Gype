@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { MultiplayerPeer } from '@js_godot/classes/multiplayer_peer'
 import { Dictionary } from '@js_godot/variant/dictionary'
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { MultiplayerPeer } from '@js_godot/classes/multiplayer_peer'
+import { Variant } from '@js_godot/variant/variant'
 import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
@@ -112,9 +112,10 @@ export class WebRTCMultiplayerPeer extends MultiplayerPeer{
       );
     }
   }
+  
   create_server(_channels_config) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_server,
+      WebRTCMultiplayerPeer._bindings.method_create_server,
       this._owner,
 			Variant.INT,
       _channels_config
@@ -123,7 +124,7 @@ export class WebRTCMultiplayerPeer extends MultiplayerPeer{
   }
   create_client(_peer_id, _channels_config) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_client,
+      WebRTCMultiplayerPeer._bindings.method_create_client,
       this._owner,
 			Variant.INT,
       _peer_id, _channels_config
@@ -132,7 +133,7 @@ export class WebRTCMultiplayerPeer extends MultiplayerPeer{
   }
   create_mesh(_peer_id, _channels_config) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_mesh,
+      WebRTCMultiplayerPeer._bindings.method_create_mesh,
       this._owner,
 			Variant.INT,
       _peer_id, _channels_config
@@ -141,7 +142,7 @@ export class WebRTCMultiplayerPeer extends MultiplayerPeer{
   }
   add_peer(_peer, _peer_id, _unreliable_lifetime) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_add_peer,
+      WebRTCMultiplayerPeer._bindings.method_add_peer,
       this._owner,
 			Variant.INT,
       _peer, _peer_id, _unreliable_lifetime
@@ -150,7 +151,7 @@ export class WebRTCMultiplayerPeer extends MultiplayerPeer{
   }
   remove_peer(_peer_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_peer,
+      WebRTCMultiplayerPeer._bindings.method_remove_peer,
       this._owner,
       _peer_id
     );
@@ -158,7 +159,7 @@ export class WebRTCMultiplayerPeer extends MultiplayerPeer{
   }
   has_peer(_peer_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_peer,
+      WebRTCMultiplayerPeer._bindings.method_has_peer,
       this._owner,
 			Variant.Type.BOOL,
       _peer_id
@@ -167,7 +168,7 @@ export class WebRTCMultiplayerPeer extends MultiplayerPeer{
   }
   get_peer(_peer_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_peer,
+      WebRTCMultiplayerPeer._bindings.method_get_peer,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -177,7 +178,7 @@ export class WebRTCMultiplayerPeer extends MultiplayerPeer{
   }
   get_peers() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_peers,
+      WebRTCMultiplayerPeer._bindings.method_get_peers,
       this._owner,
 			Variant.Type.DICTIONARY,
     

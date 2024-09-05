@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { Node } from '@js_godot/classes/node'
+import { StringName } from '@js_godot/variant/string_name'
 import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -91,9 +91,10 @@ export class ResourcePreloader extends Node{
       );
     }
   }
+  
   add_resource(_name, _resource) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_resource,
+      ResourcePreloader._bindings.method_add_resource,
       this._owner,
       _name, _resource
     );
@@ -101,7 +102,7 @@ export class ResourcePreloader extends Node{
   }
   remove_resource(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_resource,
+      ResourcePreloader._bindings.method_remove_resource,
       this._owner,
       _name
     );
@@ -109,7 +110,7 @@ export class ResourcePreloader extends Node{
   }
   rename_resource(_name, _newname) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_rename_resource,
+      ResourcePreloader._bindings.method_rename_resource,
       this._owner,
       _name, _newname
     );
@@ -117,7 +118,7 @@ export class ResourcePreloader extends Node{
   }
   has_resource(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_resource,
+      ResourcePreloader._bindings.method_has_resource,
       this._owner,
 			Variant.Type.BOOL,
       _name
@@ -126,7 +127,7 @@ export class ResourcePreloader extends Node{
   }
   get_resource(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_resource,
+      ResourcePreloader._bindings.method_get_resource,
       this._owner,
 			Variant.INT,
       _name
@@ -135,7 +136,7 @@ export class ResourcePreloader extends Node{
   }
   get_resource_list() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_resource_list,
+      ResourcePreloader._bindings.method_get_resource_list,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     

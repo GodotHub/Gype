@@ -149,9 +149,10 @@ class _MethodBindings {
       );
     }
   }
+  
   get_default_theme() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_default_theme,
+      _ThemeDB._bindings.method_get_default_theme,
       this._owner,
 			Variant.INT,
       
@@ -160,7 +161,7 @@ class _MethodBindings {
   }
   get_project_theme() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_project_theme,
+      _ThemeDB._bindings.method_get_project_theme,
       this._owner,
 			Variant.INT,
       
@@ -169,7 +170,7 @@ class _MethodBindings {
   }
   set_fallback_base_scale(_base_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fallback_base_scale,
+      _ThemeDB._bindings.method_set_fallback_base_scale,
       this._owner,
       _base_scale
     );
@@ -177,7 +178,7 @@ class _MethodBindings {
   }
   get_fallback_base_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fallback_base_scale,
+      _ThemeDB._bindings.method_get_fallback_base_scale,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -186,7 +187,7 @@ class _MethodBindings {
   }
   set_fallback_font(_font) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fallback_font,
+      _ThemeDB._bindings.method_set_fallback_font,
       this._owner,
       _font
     );
@@ -194,7 +195,7 @@ class _MethodBindings {
   }
   get_fallback_font() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fallback_font,
+      _ThemeDB._bindings.method_get_fallback_font,
       this._owner,
 			Variant.INT,
       
@@ -203,7 +204,7 @@ class _MethodBindings {
   }
   set_fallback_font_size(_font_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fallback_font_size,
+      _ThemeDB._bindings.method_set_fallback_font_size,
       this._owner,
       _font_size
     );
@@ -211,7 +212,7 @@ class _MethodBindings {
   }
   get_fallback_font_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fallback_font_size,
+      _ThemeDB._bindings.method_get_fallback_font_size,
       this._owner,
 			Variant.Type.INT,
       
@@ -220,7 +221,7 @@ class _MethodBindings {
   }
   set_fallback_icon(_icon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fallback_icon,
+      _ThemeDB._bindings.method_set_fallback_icon,
       this._owner,
       _icon
     );
@@ -228,7 +229,7 @@ class _MethodBindings {
   }
   get_fallback_icon() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fallback_icon,
+      _ThemeDB._bindings.method_get_fallback_icon,
       this._owner,
 			Variant.INT,
       
@@ -237,7 +238,7 @@ class _MethodBindings {
   }
   set_fallback_stylebox(_stylebox) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fallback_stylebox,
+      _ThemeDB._bindings.method_set_fallback_stylebox,
       this._owner,
       _stylebox
     );
@@ -245,7 +246,7 @@ class _MethodBindings {
   }
   get_fallback_stylebox() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fallback_stylebox,
+      _ThemeDB._bindings.method_get_fallback_stylebox,
       this._owner,
 			Variant.INT,
       
@@ -289,4 +290,17 @@ set fallback_stylebox (new_value) {
     this._init_bindings();
   }
 }
-export const ThemeDB = new _ThemeDB();
+export const ThemeDB = (function () {
+  let _instance;
+  function create_instance() {
+    return new _ThemeDB();
+  }
+  return {
+    instance: function () {
+      if (!_instance) {
+        _instance = create_instance();
+      }
+      return _instance;
+    },
+  };
+})();

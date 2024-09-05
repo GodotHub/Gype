@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { GeometryInstance3D } from '@js_godot/classes/geometry_instance3d'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -50,9 +50,10 @@ export class MultiMeshInstance3D extends GeometryInstance3D{
       );
     }
   }
+  
   set_multimesh(_multimesh) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_multimesh,
+      MultiMeshInstance3D._bindings.method_set_multimesh,
       this._owner,
       _multimesh
     );
@@ -60,7 +61,7 @@ export class MultiMeshInstance3D extends GeometryInstance3D{
   }
   get_multimesh() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_multimesh,
+      MultiMeshInstance3D._bindings.method_get_multimesh,
       this._owner,
 			Variant.INT,
       

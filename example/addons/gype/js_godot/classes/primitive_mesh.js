@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Mesh } from '@js_godot/classes/mesh'
 import { StringName } from '@js_godot/variant/string_name'
 import { AABB } from '@js_godot/variant/aabb'
+import { Variant } from '@js_godot/variant/variant'
+import { Mesh } from '@js_godot/classes/mesh'
 import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
@@ -152,11 +152,12 @@ export class PrimitiveMesh extends Mesh{
       );
     }
   }
+  
   _create_mesh_array() {
   }
   set_material(_material) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_material,
+      PrimitiveMesh._bindings.method_set_material,
       this._owner,
       _material
     );
@@ -164,7 +165,7 @@ export class PrimitiveMesh extends Mesh{
   }
   get_material() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_material,
+      PrimitiveMesh._bindings.method_get_material,
       this._owner,
 			Variant.INT,
       
@@ -173,7 +174,7 @@ export class PrimitiveMesh extends Mesh{
   }
   get_mesh_arrays() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mesh_arrays,
+      PrimitiveMesh._bindings.method_get_mesh_arrays,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -183,7 +184,7 @@ export class PrimitiveMesh extends Mesh{
   }
   set_custom_aabb(_aabb) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_custom_aabb,
+      PrimitiveMesh._bindings.method_set_custom_aabb,
       this._owner,
       _aabb
     );
@@ -191,7 +192,7 @@ export class PrimitiveMesh extends Mesh{
   }
   get_custom_aabb() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_custom_aabb,
+      PrimitiveMesh._bindings.method_get_custom_aabb,
       this._owner,
 			Variant.Type.AABB,
     
@@ -201,7 +202,7 @@ export class PrimitiveMesh extends Mesh{
   }
   set_flip_faces(_flip_faces) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_flip_faces,
+      PrimitiveMesh._bindings.method_set_flip_faces,
       this._owner,
       _flip_faces
     );
@@ -209,7 +210,7 @@ export class PrimitiveMesh extends Mesh{
   }
   get_flip_faces() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_flip_faces,
+      PrimitiveMesh._bindings.method_get_flip_faces,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -218,7 +219,7 @@ export class PrimitiveMesh extends Mesh{
   }
   set_add_uv2(_add_uv2) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_add_uv2,
+      PrimitiveMesh._bindings.method_set_add_uv2,
       this._owner,
       _add_uv2
     );
@@ -226,7 +227,7 @@ export class PrimitiveMesh extends Mesh{
   }
   get_add_uv2() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_add_uv2,
+      PrimitiveMesh._bindings.method_get_add_uv2,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -235,7 +236,7 @@ export class PrimitiveMesh extends Mesh{
   }
   set_uv2_padding(_uv2_padding) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_uv2_padding,
+      PrimitiveMesh._bindings.method_set_uv2_padding,
       this._owner,
       _uv2_padding
     );
@@ -243,7 +244,7 @@ export class PrimitiveMesh extends Mesh{
   }
   get_uv2_padding() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_uv2_padding,
+      PrimitiveMesh._bindings.method_get_uv2_padding,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -252,7 +253,7 @@ export class PrimitiveMesh extends Mesh{
   }
   request_update() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_request_update,
+      PrimitiveMesh._bindings.method_request_update,
       this._owner,
       
     );

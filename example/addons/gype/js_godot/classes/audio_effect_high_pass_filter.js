@@ -31,6 +31,7 @@ export class AudioEffectHighPassFilter extends AudioEffectFilter{
     this.#initialized = true;
   }
   
+  
 
 
   static {

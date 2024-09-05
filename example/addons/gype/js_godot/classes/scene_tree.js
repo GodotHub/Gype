@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { NodePath } from '@js_godot/variant/node_path'
+import { Variant } from '@js_godot/variant/variant'
 import { GDString } from '@js_godot/variant/gd_string'
 import { MainLoop } from '@js_godot/classes/main_loop'
-import { NodePath } from '@js_godot/variant/node_path'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -472,9 +472,10 @@ export class SceneTree extends MainLoop{
       );
     }
   }
+  
   get_root() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_root,
+      SceneTree._bindings.method_get_root,
       this._owner,
 			Variant.INT,
       
@@ -483,7 +484,7 @@ export class SceneTree extends MainLoop{
   }
   has_group(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_group,
+      SceneTree._bindings.method_has_group,
       this._owner,
 			Variant.Type.BOOL,
       _name
@@ -492,7 +493,7 @@ export class SceneTree extends MainLoop{
   }
   is_auto_accept_quit() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_auto_accept_quit,
+      SceneTree._bindings.method_is_auto_accept_quit,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -501,7 +502,7 @@ export class SceneTree extends MainLoop{
   }
   set_auto_accept_quit(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_auto_accept_quit,
+      SceneTree._bindings.method_set_auto_accept_quit,
       this._owner,
       _enabled
     );
@@ -509,7 +510,7 @@ export class SceneTree extends MainLoop{
   }
   is_quit_on_go_back() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_quit_on_go_back,
+      SceneTree._bindings.method_is_quit_on_go_back,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -518,7 +519,7 @@ export class SceneTree extends MainLoop{
   }
   set_quit_on_go_back(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_quit_on_go_back,
+      SceneTree._bindings.method_set_quit_on_go_back,
       this._owner,
       _enabled
     );
@@ -526,7 +527,7 @@ export class SceneTree extends MainLoop{
   }
   set_debug_collisions_hint(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_debug_collisions_hint,
+      SceneTree._bindings.method_set_debug_collisions_hint,
       this._owner,
       _enable
     );
@@ -534,7 +535,7 @@ export class SceneTree extends MainLoop{
   }
   is_debugging_collisions_hint() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_debugging_collisions_hint,
+      SceneTree._bindings.method_is_debugging_collisions_hint,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -543,7 +544,7 @@ export class SceneTree extends MainLoop{
   }
   set_debug_paths_hint(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_debug_paths_hint,
+      SceneTree._bindings.method_set_debug_paths_hint,
       this._owner,
       _enable
     );
@@ -551,7 +552,7 @@ export class SceneTree extends MainLoop{
   }
   is_debugging_paths_hint() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_debugging_paths_hint,
+      SceneTree._bindings.method_is_debugging_paths_hint,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -560,7 +561,7 @@ export class SceneTree extends MainLoop{
   }
   set_debug_navigation_hint(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_debug_navigation_hint,
+      SceneTree._bindings.method_set_debug_navigation_hint,
       this._owner,
       _enable
     );
@@ -568,7 +569,7 @@ export class SceneTree extends MainLoop{
   }
   is_debugging_navigation_hint() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_debugging_navigation_hint,
+      SceneTree._bindings.method_is_debugging_navigation_hint,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -577,7 +578,7 @@ export class SceneTree extends MainLoop{
   }
   set_edited_scene_root(_scene) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_edited_scene_root,
+      SceneTree._bindings.method_set_edited_scene_root,
       this._owner,
       _scene
     );
@@ -585,7 +586,7 @@ export class SceneTree extends MainLoop{
   }
   get_edited_scene_root() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_edited_scene_root,
+      SceneTree._bindings.method_get_edited_scene_root,
       this._owner,
 			Variant.INT,
       
@@ -594,7 +595,7 @@ export class SceneTree extends MainLoop{
   }
   set_pause(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_pause,
+      SceneTree._bindings.method_set_pause,
       this._owner,
       _enable
     );
@@ -602,7 +603,7 @@ export class SceneTree extends MainLoop{
   }
   is_paused() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_paused,
+      SceneTree._bindings.method_is_paused,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -611,7 +612,7 @@ export class SceneTree extends MainLoop{
   }
   create_timer(_time_sec, _process_always, _process_in_physics, _ignore_time_scale) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_timer,
+      SceneTree._bindings.method_create_timer,
       this._owner,
 			Variant.INT,
       _time_sec, _process_always, _process_in_physics, _ignore_time_scale
@@ -620,7 +621,7 @@ export class SceneTree extends MainLoop{
   }
   create_tween() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_tween,
+      SceneTree._bindings.method_create_tween,
       this._owner,
 			Variant.INT,
       
@@ -629,7 +630,7 @@ export class SceneTree extends MainLoop{
   }
   get_processed_tweens() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_processed_tweens,
+      SceneTree._bindings.method_get_processed_tweens,
       this._owner,
 			Variant.INT,
       
@@ -638,7 +639,7 @@ export class SceneTree extends MainLoop{
   }
   get_node_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_node_count,
+      SceneTree._bindings.method_get_node_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -647,7 +648,7 @@ export class SceneTree extends MainLoop{
   }
   get_frame() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_frame,
+      SceneTree._bindings.method_get_frame,
       this._owner,
 			Variant.Type.INT,
       
@@ -656,7 +657,7 @@ export class SceneTree extends MainLoop{
   }
   quit(_exit_code) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_quit,
+      SceneTree._bindings.method_quit,
       this._owner,
       _exit_code
     );
@@ -664,7 +665,7 @@ export class SceneTree extends MainLoop{
   }
   set_physics_interpolation_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_physics_interpolation_enabled,
+      SceneTree._bindings.method_set_physics_interpolation_enabled,
       this._owner,
       _enabled
     );
@@ -672,7 +673,7 @@ export class SceneTree extends MainLoop{
   }
   is_physics_interpolation_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_physics_interpolation_enabled,
+      SceneTree._bindings.method_is_physics_interpolation_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -681,7 +682,7 @@ export class SceneTree extends MainLoop{
   }
   queue_delete(_obj) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_queue_delete,
+      SceneTree._bindings.method_queue_delete,
       this._owner,
       _obj
     );
@@ -689,7 +690,7 @@ export class SceneTree extends MainLoop{
   }
   call_group_flags(_flags, _group, _method) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_call_group_flags,
+      SceneTree._bindings.method_call_group_flags,
       this._owner,
       _flags, _group, _method
     );
@@ -697,7 +698,7 @@ export class SceneTree extends MainLoop{
   }
   notify_group_flags(_call_flags, _group, _notification) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_notify_group_flags,
+      SceneTree._bindings.method_notify_group_flags,
       this._owner,
       _call_flags, _group, _notification
     );
@@ -705,7 +706,7 @@ export class SceneTree extends MainLoop{
   }
   set_group_flags(_call_flags, _group, _property, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_group_flags,
+      SceneTree._bindings.method_set_group_flags,
       this._owner,
       _call_flags, _group, _property, _value
     );
@@ -713,7 +714,7 @@ export class SceneTree extends MainLoop{
   }
   call_group(_group, _method) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_call_group,
+      SceneTree._bindings.method_call_group,
       this._owner,
       _group, _method
     );
@@ -721,7 +722,7 @@ export class SceneTree extends MainLoop{
   }
   notify_group(_group, _notification) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_notify_group,
+      SceneTree._bindings.method_notify_group,
       this._owner,
       _group, _notification
     );
@@ -729,7 +730,7 @@ export class SceneTree extends MainLoop{
   }
   set_group(_group, _property, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_group,
+      SceneTree._bindings.method_set_group,
       this._owner,
       _group, _property, _value
     );
@@ -737,7 +738,7 @@ export class SceneTree extends MainLoop{
   }
   get_nodes_in_group(_group) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_nodes_in_group,
+      SceneTree._bindings.method_get_nodes_in_group,
       this._owner,
 			Variant.INT,
       _group
@@ -746,7 +747,7 @@ export class SceneTree extends MainLoop{
   }
   get_first_node_in_group(_group) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_first_node_in_group,
+      SceneTree._bindings.method_get_first_node_in_group,
       this._owner,
 			Variant.INT,
       _group
@@ -755,7 +756,7 @@ export class SceneTree extends MainLoop{
   }
   get_node_count_in_group(_group) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_node_count_in_group,
+      SceneTree._bindings.method_get_node_count_in_group,
       this._owner,
 			Variant.Type.INT,
       _group
@@ -764,7 +765,7 @@ export class SceneTree extends MainLoop{
   }
   set_current_scene(_child_node) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_current_scene,
+      SceneTree._bindings.method_set_current_scene,
       this._owner,
       _child_node
     );
@@ -772,7 +773,7 @@ export class SceneTree extends MainLoop{
   }
   get_current_scene() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_current_scene,
+      SceneTree._bindings.method_get_current_scene,
       this._owner,
 			Variant.INT,
       
@@ -781,7 +782,7 @@ export class SceneTree extends MainLoop{
   }
   change_scene_to_file(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_change_scene_to_file,
+      SceneTree._bindings.method_change_scene_to_file,
       this._owner,
 			Variant.INT,
       _path
@@ -790,7 +791,7 @@ export class SceneTree extends MainLoop{
   }
   change_scene_to_packed(_packed_scene) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_change_scene_to_packed,
+      SceneTree._bindings.method_change_scene_to_packed,
       this._owner,
 			Variant.INT,
       _packed_scene
@@ -799,7 +800,7 @@ export class SceneTree extends MainLoop{
   }
   reload_current_scene() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_reload_current_scene,
+      SceneTree._bindings.method_reload_current_scene,
       this._owner,
 			Variant.INT,
       
@@ -808,7 +809,7 @@ export class SceneTree extends MainLoop{
   }
   unload_current_scene() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_unload_current_scene,
+      SceneTree._bindings.method_unload_current_scene,
       this._owner,
       
     );
@@ -816,7 +817,7 @@ export class SceneTree extends MainLoop{
   }
   set_multiplayer(_multiplayer, _root_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_multiplayer,
+      SceneTree._bindings.method_set_multiplayer,
       this._owner,
       _multiplayer, _root_path
     );
@@ -824,7 +825,7 @@ export class SceneTree extends MainLoop{
   }
   get_multiplayer(_for_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_multiplayer,
+      SceneTree._bindings.method_get_multiplayer,
       this._owner,
 			Variant.INT,
       _for_path
@@ -833,7 +834,7 @@ export class SceneTree extends MainLoop{
   }
   set_multiplayer_poll_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_multiplayer_poll_enabled,
+      SceneTree._bindings.method_set_multiplayer_poll_enabled,
       this._owner,
       _enabled
     );
@@ -841,7 +842,7 @@ export class SceneTree extends MainLoop{
   }
   is_multiplayer_poll_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_multiplayer_poll_enabled,
+      SceneTree._bindings.method_is_multiplayer_poll_enabled,
       this._owner,
 			Variant.Type.BOOL,
       

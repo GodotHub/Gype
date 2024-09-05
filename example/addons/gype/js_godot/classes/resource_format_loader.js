@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
 import { Dictionary } from '@js_godot/variant/dictionary'
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
-import { RefCounted } from '@js_godot/classes/ref_counted'
 import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { RefCounted } from '@js_godot/classes/ref_counted'
+import { GDString } from '@js_godot/variant/gd_string'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -33,6 +33,7 @@ export class ResourceFormatLoader extends RefCounted{
     }
     this.#initialized = true;
   }
+  
   _get_recognized_extensions() {
   }
   _recognize_path(_path, _type) {

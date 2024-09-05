@@ -60,9 +60,10 @@ export class AudioListener2D extends Node2D{
       );
     }
   }
+  
   make_current() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_make_current,
+      AudioListener2D._bindings.method_make_current,
       this._owner,
       
     );
@@ -70,7 +71,7 @@ export class AudioListener2D extends Node2D{
   }
   clear_current() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_current,
+      AudioListener2D._bindings.method_clear_current,
       this._owner,
       
     );
@@ -78,7 +79,7 @@ export class AudioListener2D extends Node2D{
   }
   is_current() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_current,
+      AudioListener2D._bindings.method_is_current,
       this._owner,
 			Variant.Type.BOOL,
       

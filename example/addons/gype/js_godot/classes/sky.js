@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { Resource } from '@js_godot/classes/resource'
 import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { Resource } from '@js_godot/classes/resource'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -90,9 +90,10 @@ export class Sky extends Resource{
       );
     }
   }
+  
   set_radiance_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_radiance_size,
+      Sky._bindings.method_set_radiance_size,
       this._owner,
       _size
     );
@@ -100,7 +101,7 @@ export class Sky extends Resource{
   }
   get_radiance_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_radiance_size,
+      Sky._bindings.method_get_radiance_size,
       this._owner,
 			Variant.INT,
       
@@ -109,7 +110,7 @@ export class Sky extends Resource{
   }
   set_process_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_process_mode,
+      Sky._bindings.method_set_process_mode,
       this._owner,
       _mode
     );
@@ -117,7 +118,7 @@ export class Sky extends Resource{
   }
   get_process_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_process_mode,
+      Sky._bindings.method_get_process_mode,
       this._owner,
 			Variant.INT,
       
@@ -126,7 +127,7 @@ export class Sky extends Resource{
   }
   set_material(_material) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_material,
+      Sky._bindings.method_set_material,
       this._owner,
       _material
     );
@@ -134,7 +135,7 @@ export class Sky extends Resource{
   }
   get_material() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_material,
+      Sky._bindings.method_get_material,
       this._owner,
 			Variant.INT,
       

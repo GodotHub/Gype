@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { GodotObject } from '@js_godot/classes/godot_object'
+import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
+import { GodotObject } from '@js_godot/classes/godot_object'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -91,9 +91,10 @@ export class EditorPaths extends GodotObject{
       );
     }
   }
+  
   get_data_dir() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_data_dir,
+      EditorPaths._bindings.method_get_data_dir,
       this._owner,
 			Variant.Type.STRING,
     
@@ -103,7 +104,7 @@ export class EditorPaths extends GodotObject{
   }
   get_config_dir() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_config_dir,
+      EditorPaths._bindings.method_get_config_dir,
       this._owner,
 			Variant.Type.STRING,
     
@@ -113,7 +114,7 @@ export class EditorPaths extends GodotObject{
   }
   get_cache_dir() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cache_dir,
+      EditorPaths._bindings.method_get_cache_dir,
       this._owner,
 			Variant.Type.STRING,
     
@@ -123,7 +124,7 @@ export class EditorPaths extends GodotObject{
   }
   is_self_contained() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_self_contained,
+      EditorPaths._bindings.method_is_self_contained,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -132,7 +133,7 @@ export class EditorPaths extends GodotObject{
   }
   get_self_contained_file() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_self_contained_file,
+      EditorPaths._bindings.method_get_self_contained_file,
       this._owner,
 			Variant.Type.STRING,
     
@@ -142,7 +143,7 @@ export class EditorPaths extends GodotObject{
   }
   get_project_settings_dir() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_project_settings_dir,
+      EditorPaths._bindings.method_get_project_settings_dir,
       this._owner,
 			Variant.Type.STRING,
     

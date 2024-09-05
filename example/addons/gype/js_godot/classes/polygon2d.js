@@ -1,14 +1,14 @@
 import * as internal from '__internal__';
-import { Node2D } from '@js_godot/classes/node2d'
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
-import { Color } from '@js_godot/variant/color'
-import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
 import { Vector2 } from '@js_godot/variant/vector2'
 import { PackedFloat32Array } from '@js_godot/variant/packed_float32_array'
-import { PackedColorArray } from '@js_godot/variant/packed_color_array'
-import { GDArray } from '@js_godot/variant/gd_array'
+import { StringName } from '@js_godot/variant/string_name'
 import { NodePath } from '@js_godot/variant/node_path'
+import { PackedColorArray } from '@js_godot/variant/packed_color_array'
+import { Color } from '@js_godot/variant/color'
+import { Variant } from '@js_godot/variant/variant'
+import { Node2D } from '@js_godot/classes/node2d'
+import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
+import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -417,9 +417,10 @@ export class Polygon2D extends Node2D{
       );
     }
   }
+  
   set_polygon(_polygon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_polygon,
+      Polygon2D._bindings.method_set_polygon,
       this._owner,
       _polygon
     );
@@ -427,7 +428,7 @@ export class Polygon2D extends Node2D{
   }
   get_polygon() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_polygon,
+      Polygon2D._bindings.method_get_polygon,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -437,7 +438,7 @@ export class Polygon2D extends Node2D{
   }
   set_uv(_uv) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_uv,
+      Polygon2D._bindings.method_set_uv,
       this._owner,
       _uv
     );
@@ -445,7 +446,7 @@ export class Polygon2D extends Node2D{
   }
   get_uv() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_uv,
+      Polygon2D._bindings.method_get_uv,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -455,7 +456,7 @@ export class Polygon2D extends Node2D{
   }
   set_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_color,
+      Polygon2D._bindings.method_set_color,
       this._owner,
       _color
     );
@@ -463,7 +464,7 @@ export class Polygon2D extends Node2D{
   }
   get_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_color,
+      Polygon2D._bindings.method_get_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -473,7 +474,7 @@ export class Polygon2D extends Node2D{
   }
   set_polygons(_polygons) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_polygons,
+      Polygon2D._bindings.method_set_polygons,
       this._owner,
       _polygons
     );
@@ -481,7 +482,7 @@ export class Polygon2D extends Node2D{
   }
   get_polygons() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_polygons,
+      Polygon2D._bindings.method_get_polygons,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -491,7 +492,7 @@ export class Polygon2D extends Node2D{
   }
   set_vertex_colors(_vertex_colors) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vertex_colors,
+      Polygon2D._bindings.method_set_vertex_colors,
       this._owner,
       _vertex_colors
     );
@@ -499,7 +500,7 @@ export class Polygon2D extends Node2D{
   }
   get_vertex_colors() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vertex_colors,
+      Polygon2D._bindings.method_get_vertex_colors,
       this._owner,
 			Variant.Type.PACKED_COLOR_ARRAY,
     
@@ -509,7 +510,7 @@ export class Polygon2D extends Node2D{
   }
   set_texture(_texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture,
+      Polygon2D._bindings.method_set_texture,
       this._owner,
       _texture
     );
@@ -517,7 +518,7 @@ export class Polygon2D extends Node2D{
   }
   get_texture() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture,
+      Polygon2D._bindings.method_get_texture,
       this._owner,
 			Variant.INT,
       
@@ -526,7 +527,7 @@ export class Polygon2D extends Node2D{
   }
   set_texture_offset(_texture_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture_offset,
+      Polygon2D._bindings.method_set_texture_offset,
       this._owner,
       _texture_offset
     );
@@ -534,7 +535,7 @@ export class Polygon2D extends Node2D{
   }
   get_texture_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_offset,
+      Polygon2D._bindings.method_get_texture_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -544,7 +545,7 @@ export class Polygon2D extends Node2D{
   }
   set_texture_rotation(_texture_rotation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture_rotation,
+      Polygon2D._bindings.method_set_texture_rotation,
       this._owner,
       _texture_rotation
     );
@@ -552,7 +553,7 @@ export class Polygon2D extends Node2D{
   }
   get_texture_rotation() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_rotation,
+      Polygon2D._bindings.method_get_texture_rotation,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -561,7 +562,7 @@ export class Polygon2D extends Node2D{
   }
   set_texture_scale(_texture_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture_scale,
+      Polygon2D._bindings.method_set_texture_scale,
       this._owner,
       _texture_scale
     );
@@ -569,7 +570,7 @@ export class Polygon2D extends Node2D{
   }
   get_texture_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_scale,
+      Polygon2D._bindings.method_get_texture_scale,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -579,7 +580,7 @@ export class Polygon2D extends Node2D{
   }
   set_invert_enabled(_invert) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_invert_enabled,
+      Polygon2D._bindings.method_set_invert_enabled,
       this._owner,
       _invert
     );
@@ -587,7 +588,7 @@ export class Polygon2D extends Node2D{
   }
   get_invert_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_invert_enabled,
+      Polygon2D._bindings.method_get_invert_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -596,7 +597,7 @@ export class Polygon2D extends Node2D{
   }
   set_antialiased(_antialiased) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_antialiased,
+      Polygon2D._bindings.method_set_antialiased,
       this._owner,
       _antialiased
     );
@@ -604,7 +605,7 @@ export class Polygon2D extends Node2D{
   }
   get_antialiased() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_antialiased,
+      Polygon2D._bindings.method_get_antialiased,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -613,7 +614,7 @@ export class Polygon2D extends Node2D{
   }
   set_invert_border(_invert_border) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_invert_border,
+      Polygon2D._bindings.method_set_invert_border,
       this._owner,
       _invert_border
     );
@@ -621,7 +622,7 @@ export class Polygon2D extends Node2D{
   }
   get_invert_border() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_invert_border,
+      Polygon2D._bindings.method_get_invert_border,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -630,7 +631,7 @@ export class Polygon2D extends Node2D{
   }
   set_offset(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_offset,
+      Polygon2D._bindings.method_set_offset,
       this._owner,
       _offset
     );
@@ -638,7 +639,7 @@ export class Polygon2D extends Node2D{
   }
   get_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_offset,
+      Polygon2D._bindings.method_get_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -648,7 +649,7 @@ export class Polygon2D extends Node2D{
   }
   add_bone(_path, _weights) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_bone,
+      Polygon2D._bindings.method_add_bone,
       this._owner,
       _path, _weights
     );
@@ -656,7 +657,7 @@ export class Polygon2D extends Node2D{
   }
   get_bone_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bone_count,
+      Polygon2D._bindings.method_get_bone_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -665,7 +666,7 @@ export class Polygon2D extends Node2D{
   }
   get_bone_path(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bone_path,
+      Polygon2D._bindings.method_get_bone_path,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -675,7 +676,7 @@ export class Polygon2D extends Node2D{
   }
   get_bone_weights(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bone_weights,
+      Polygon2D._bindings.method_get_bone_weights,
       this._owner,
 			Variant.Type.PACKED_FLOAT32_ARRAY,
     
@@ -685,7 +686,7 @@ export class Polygon2D extends Node2D{
   }
   erase_bone(_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_erase_bone,
+      Polygon2D._bindings.method_erase_bone,
       this._owner,
       _index
     );
@@ -693,7 +694,7 @@ export class Polygon2D extends Node2D{
   }
   clear_bones() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_bones,
+      Polygon2D._bindings.method_clear_bones,
       this._owner,
       
     );
@@ -701,7 +702,7 @@ export class Polygon2D extends Node2D{
   }
   set_bone_path(_index, _path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bone_path,
+      Polygon2D._bindings.method_set_bone_path,
       this._owner,
       _index, _path
     );
@@ -709,7 +710,7 @@ export class Polygon2D extends Node2D{
   }
   set_bone_weights(_index, _weights) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bone_weights,
+      Polygon2D._bindings.method_set_bone_weights,
       this._owner,
       _index, _weights
     );
@@ -717,7 +718,7 @@ export class Polygon2D extends Node2D{
   }
   set_skeleton(_skeleton) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_skeleton,
+      Polygon2D._bindings.method_set_skeleton,
       this._owner,
       _skeleton
     );
@@ -725,7 +726,7 @@ export class Polygon2D extends Node2D{
   }
   get_skeleton() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_skeleton,
+      Polygon2D._bindings.method_get_skeleton,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -735,7 +736,7 @@ export class Polygon2D extends Node2D{
   }
   set_internal_vertex_count(_internal_vertex_count) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_internal_vertex_count,
+      Polygon2D._bindings.method_set_internal_vertex_count,
       this._owner,
       _internal_vertex_count
     );
@@ -743,7 +744,7 @@ export class Polygon2D extends Node2D{
   }
   get_internal_vertex_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_internal_vertex_count,
+      Polygon2D._bindings.method_get_internal_vertex_count,
       this._owner,
 			Variant.Type.INT,
       

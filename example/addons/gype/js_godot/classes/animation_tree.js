@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { AnimationMixer } from '@js_godot/classes/animation_mixer'
+import { Variant } from '@js_godot/variant/variant'
 import { NodePath } from '@js_godot/variant/node_path'
 import {
   call_utility_ret,
@@ -111,9 +111,10 @@ export class AnimationTree extends AnimationMixer{
       );
     }
   }
+  
   set_tree_root(_animation_node) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tree_root,
+      AnimationTree._bindings.method_set_tree_root,
       this._owner,
       _animation_node
     );
@@ -121,7 +122,7 @@ export class AnimationTree extends AnimationMixer{
   }
   get_tree_root() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tree_root,
+      AnimationTree._bindings.method_get_tree_root,
       this._owner,
 			Variant.INT,
       
@@ -130,7 +131,7 @@ export class AnimationTree extends AnimationMixer{
   }
   set_advance_expression_base_node(_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_advance_expression_base_node,
+      AnimationTree._bindings.method_set_advance_expression_base_node,
       this._owner,
       _path
     );
@@ -138,7 +139,7 @@ export class AnimationTree extends AnimationMixer{
   }
   get_advance_expression_base_node() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_advance_expression_base_node,
+      AnimationTree._bindings.method_get_advance_expression_base_node,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -148,7 +149,7 @@ export class AnimationTree extends AnimationMixer{
   }
   set_animation_player(_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_animation_player,
+      AnimationTree._bindings.method_set_animation_player,
       this._owner,
       _path
     );
@@ -156,7 +157,7 @@ export class AnimationTree extends AnimationMixer{
   }
   get_animation_player() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_animation_player,
+      AnimationTree._bindings.method_get_animation_player,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -166,7 +167,7 @@ export class AnimationTree extends AnimationMixer{
   }
   set_process_callback(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_process_callback,
+      AnimationTree._bindings.method_set_process_callback,
       this._owner,
       _mode
     );
@@ -174,7 +175,7 @@ export class AnimationTree extends AnimationMixer{
   }
   get_process_callback() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_process_callback,
+      AnimationTree._bindings.method_get_process_callback,
       this._owner,
 			Variant.INT,
       

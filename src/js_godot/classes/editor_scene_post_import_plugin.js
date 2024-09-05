@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { GDString } from '@js_godot/variant/gd_string'
 import { RefCounted } from '@js_godot/classes/ref_counted'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -61,6 +61,7 @@ export class EditorScenePostImportPlugin extends RefCounted{
       );
     }
   }
+  
   _get_internal_import_options(_category) {
   }
   _get_internal_option_visibility(_category, _for_animation, _option) {
@@ -79,7 +80,7 @@ export class EditorScenePostImportPlugin extends RefCounted{
   }
   get_option_value(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_option_value,
+      EditorScenePostImportPlugin._bindings.method_get_option_value,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -89,7 +90,7 @@ export class EditorScenePostImportPlugin extends RefCounted{
   }
   add_import_option(_name, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_import_option,
+      EditorScenePostImportPlugin._bindings.method_add_import_option,
       this._owner,
       _name, _value
     );
@@ -97,7 +98,7 @@ export class EditorScenePostImportPlugin extends RefCounted{
   }
   add_import_option_advanced(_type, _name, _default_value, _hint, _hint_string, _usage_flags) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_import_option_advanced,
+      EditorScenePostImportPlugin._bindings.method_add_import_option_advanced,
       this._owner,
       _type, _name, _default_value, _hint, _hint_string, _usage_flags
     );

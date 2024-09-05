@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { Vector2i } from '@js_godot/variant/vector2i'
-import { StringName } from '@js_godot/variant/string_name'
 import { RID } from '@js_godot/variant/rid'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -212,9 +212,10 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
       );
     }
   }
+  
   get_render_target() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_render_target,
+      RenderSceneBuffersConfiguration._bindings.method_get_render_target,
       this._owner,
 			Variant.Type.RID,
     
@@ -224,7 +225,7 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
   }
   set_render_target(_render_target) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_render_target,
+      RenderSceneBuffersConfiguration._bindings.method_set_render_target,
       this._owner,
       _render_target
     );
@@ -232,7 +233,7 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
   }
   get_internal_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_internal_size,
+      RenderSceneBuffersConfiguration._bindings.method_get_internal_size,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -242,7 +243,7 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
   }
   set_internal_size(_internal_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_internal_size,
+      RenderSceneBuffersConfiguration._bindings.method_set_internal_size,
       this._owner,
       _internal_size
     );
@@ -250,7 +251,7 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
   }
   get_target_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_target_size,
+      RenderSceneBuffersConfiguration._bindings.method_get_target_size,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -260,7 +261,7 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
   }
   set_target_size(_target_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_target_size,
+      RenderSceneBuffersConfiguration._bindings.method_set_target_size,
       this._owner,
       _target_size
     );
@@ -268,7 +269,7 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
   }
   get_view_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_view_count,
+      RenderSceneBuffersConfiguration._bindings.method_get_view_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -277,7 +278,7 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
   }
   set_view_count(_view_count) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_view_count,
+      RenderSceneBuffersConfiguration._bindings.method_set_view_count,
       this._owner,
       _view_count
     );
@@ -285,7 +286,7 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
   }
   get_scaling_3d_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_scaling_3d_mode,
+      RenderSceneBuffersConfiguration._bindings.method_get_scaling_3d_mode,
       this._owner,
 			Variant.INT,
       
@@ -294,7 +295,7 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
   }
   set_scaling_3d_mode(_scaling_3d_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_scaling_3d_mode,
+      RenderSceneBuffersConfiguration._bindings.method_set_scaling_3d_mode,
       this._owner,
       _scaling_3d_mode
     );
@@ -302,7 +303,7 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
   }
   get_msaa_3d() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_msaa_3d,
+      RenderSceneBuffersConfiguration._bindings.method_get_msaa_3d,
       this._owner,
 			Variant.INT,
       
@@ -311,7 +312,7 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
   }
   set_msaa_3d(_msaa_3d) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_msaa_3d,
+      RenderSceneBuffersConfiguration._bindings.method_set_msaa_3d,
       this._owner,
       _msaa_3d
     );
@@ -319,7 +320,7 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
   }
   get_screen_space_aa() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_screen_space_aa,
+      RenderSceneBuffersConfiguration._bindings.method_get_screen_space_aa,
       this._owner,
 			Variant.INT,
       
@@ -328,7 +329,7 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
   }
   set_screen_space_aa(_screen_space_aa) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_screen_space_aa,
+      RenderSceneBuffersConfiguration._bindings.method_set_screen_space_aa,
       this._owner,
       _screen_space_aa
     );
@@ -336,7 +337,7 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
   }
   get_fsr_sharpness() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fsr_sharpness,
+      RenderSceneBuffersConfiguration._bindings.method_get_fsr_sharpness,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -345,7 +346,7 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
   }
   set_fsr_sharpness(_fsr_sharpness) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fsr_sharpness,
+      RenderSceneBuffersConfiguration._bindings.method_set_fsr_sharpness,
       this._owner,
       _fsr_sharpness
     );
@@ -353,7 +354,7 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
   }
   get_texture_mipmap_bias() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_mipmap_bias,
+      RenderSceneBuffersConfiguration._bindings.method_get_texture_mipmap_bias,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -362,7 +363,7 @@ export class RenderSceneBuffersConfiguration extends RefCounted{
   }
   set_texture_mipmap_bias(_texture_mipmap_bias) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture_mipmap_bias,
+      RenderSceneBuffersConfiguration._bindings.method_set_texture_mipmap_bias,
       this._owner,
       _texture_mipmap_bias
     );

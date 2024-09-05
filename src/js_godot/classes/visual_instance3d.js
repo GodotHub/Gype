@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
-import { AABB } from '@js_godot/variant/aabb'
-import { Node3D } from '@js_godot/classes/node3d'
 import { RID } from '@js_godot/variant/rid'
+import { AABB } from '@js_godot/variant/aabb'
+import { Variant } from '@js_godot/variant/variant'
+import { Node3D } from '@js_godot/classes/node3d'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -152,11 +152,12 @@ export class VisualInstance3D extends Node3D{
       );
     }
   }
+  
   _get_aabb() {
   }
   set_base(_base) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_base,
+      VisualInstance3D._bindings.method_set_base,
       this._owner,
       _base
     );
@@ -164,7 +165,7 @@ export class VisualInstance3D extends Node3D{
   }
   get_base() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_base,
+      VisualInstance3D._bindings.method_get_base,
       this._owner,
 			Variant.Type.RID,
     
@@ -174,7 +175,7 @@ export class VisualInstance3D extends Node3D{
   }
   get_instance() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_instance,
+      VisualInstance3D._bindings.method_get_instance,
       this._owner,
 			Variant.Type.RID,
     
@@ -184,7 +185,7 @@ export class VisualInstance3D extends Node3D{
   }
   set_layer_mask(_mask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_layer_mask,
+      VisualInstance3D._bindings.method_set_layer_mask,
       this._owner,
       _mask
     );
@@ -192,7 +193,7 @@ export class VisualInstance3D extends Node3D{
   }
   get_layer_mask() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_layer_mask,
+      VisualInstance3D._bindings.method_get_layer_mask,
       this._owner,
 			Variant.Type.INT,
       
@@ -201,7 +202,7 @@ export class VisualInstance3D extends Node3D{
   }
   set_layer_mask_value(_layer_number, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_layer_mask_value,
+      VisualInstance3D._bindings.method_set_layer_mask_value,
       this._owner,
       _layer_number, _value
     );
@@ -209,7 +210,7 @@ export class VisualInstance3D extends Node3D{
   }
   get_layer_mask_value(_layer_number) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_layer_mask_value,
+      VisualInstance3D._bindings.method_get_layer_mask_value,
       this._owner,
 			Variant.Type.BOOL,
       _layer_number
@@ -218,7 +219,7 @@ export class VisualInstance3D extends Node3D{
   }
   set_sorting_offset(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sorting_offset,
+      VisualInstance3D._bindings.method_set_sorting_offset,
       this._owner,
       _offset
     );
@@ -226,7 +227,7 @@ export class VisualInstance3D extends Node3D{
   }
   get_sorting_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sorting_offset,
+      VisualInstance3D._bindings.method_get_sorting_offset,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -235,7 +236,7 @@ export class VisualInstance3D extends Node3D{
   }
   set_sorting_use_aabb_center(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sorting_use_aabb_center,
+      VisualInstance3D._bindings.method_set_sorting_use_aabb_center,
       this._owner,
       _enabled
     );
@@ -243,7 +244,7 @@ export class VisualInstance3D extends Node3D{
   }
   is_sorting_use_aabb_center() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_sorting_use_aabb_center,
+      VisualInstance3D._bindings.method_is_sorting_use_aabb_center,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -252,7 +253,7 @@ export class VisualInstance3D extends Node3D{
   }
   get_aabb() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_aabb,
+      VisualInstance3D._bindings.method_get_aabb,
       this._owner,
 			Variant.Type.AABB,
     

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { Resource } from '@js_godot/classes/resource'
 import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { Resource } from '@js_godot/classes/resource'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -70,9 +70,10 @@ export class ButtonGroup extends Resource{
       );
     }
   }
+  
   get_pressed_button() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_pressed_button,
+      ButtonGroup._bindings.method_get_pressed_button,
       this._owner,
 			Variant.INT,
       
@@ -81,7 +82,7 @@ export class ButtonGroup extends Resource{
   }
   get_buttons() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_buttons,
+      ButtonGroup._bindings.method_get_buttons,
       this._owner,
 			Variant.INT,
       
@@ -90,7 +91,7 @@ export class ButtonGroup extends Resource{
   }
   set_allow_unpress(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_allow_unpress,
+      ButtonGroup._bindings.method_set_allow_unpress,
       this._owner,
       _enabled
     );
@@ -98,7 +99,7 @@ export class ButtonGroup extends Resource{
   }
   is_allow_unpress() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_allow_unpress,
+      ButtonGroup._bindings.method_is_allow_unpress,
       this._owner,
 			Variant.Type.BOOL,
       

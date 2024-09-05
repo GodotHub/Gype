@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { AudioEffect } from '@js_godot/classes/audio_effect'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -190,9 +190,10 @@ export class AudioEffectReverb extends AudioEffect{
       );
     }
   }
+  
   set_predelay_msec(_msec) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_predelay_msec,
+      AudioEffectReverb._bindings.method_set_predelay_msec,
       this._owner,
       _msec
     );
@@ -200,7 +201,7 @@ export class AudioEffectReverb extends AudioEffect{
   }
   get_predelay_msec() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_predelay_msec,
+      AudioEffectReverb._bindings.method_get_predelay_msec,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -209,7 +210,7 @@ export class AudioEffectReverb extends AudioEffect{
   }
   set_predelay_feedback(_feedback) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_predelay_feedback,
+      AudioEffectReverb._bindings.method_set_predelay_feedback,
       this._owner,
       _feedback
     );
@@ -217,7 +218,7 @@ export class AudioEffectReverb extends AudioEffect{
   }
   get_predelay_feedback() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_predelay_feedback,
+      AudioEffectReverb._bindings.method_get_predelay_feedback,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -226,7 +227,7 @@ export class AudioEffectReverb extends AudioEffect{
   }
   set_room_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_room_size,
+      AudioEffectReverb._bindings.method_set_room_size,
       this._owner,
       _size
     );
@@ -234,7 +235,7 @@ export class AudioEffectReverb extends AudioEffect{
   }
   get_room_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_room_size,
+      AudioEffectReverb._bindings.method_get_room_size,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -243,7 +244,7 @@ export class AudioEffectReverb extends AudioEffect{
   }
   set_damping(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_damping,
+      AudioEffectReverb._bindings.method_set_damping,
       this._owner,
       _amount
     );
@@ -251,7 +252,7 @@ export class AudioEffectReverb extends AudioEffect{
   }
   get_damping() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_damping,
+      AudioEffectReverb._bindings.method_get_damping,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -260,7 +261,7 @@ export class AudioEffectReverb extends AudioEffect{
   }
   set_spread(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_spread,
+      AudioEffectReverb._bindings.method_set_spread,
       this._owner,
       _amount
     );
@@ -268,7 +269,7 @@ export class AudioEffectReverb extends AudioEffect{
   }
   get_spread() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_spread,
+      AudioEffectReverb._bindings.method_get_spread,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -277,7 +278,7 @@ export class AudioEffectReverb extends AudioEffect{
   }
   set_dry(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_dry,
+      AudioEffectReverb._bindings.method_set_dry,
       this._owner,
       _amount
     );
@@ -285,7 +286,7 @@ export class AudioEffectReverb extends AudioEffect{
   }
   get_dry() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_dry,
+      AudioEffectReverb._bindings.method_get_dry,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -294,7 +295,7 @@ export class AudioEffectReverb extends AudioEffect{
   }
   set_wet(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_wet,
+      AudioEffectReverb._bindings.method_set_wet,
       this._owner,
       _amount
     );
@@ -302,7 +303,7 @@ export class AudioEffectReverb extends AudioEffect{
   }
   get_wet() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_wet,
+      AudioEffectReverb._bindings.method_get_wet,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -311,7 +312,7 @@ export class AudioEffectReverb extends AudioEffect{
   }
   set_hpf(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_hpf,
+      AudioEffectReverb._bindings.method_set_hpf,
       this._owner,
       _amount
     );
@@ -319,7 +320,7 @@ export class AudioEffectReverb extends AudioEffect{
   }
   get_hpf() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_hpf,
+      AudioEffectReverb._bindings.method_get_hpf,
       this._owner,
 			Variant.Type.FLOAT,
       

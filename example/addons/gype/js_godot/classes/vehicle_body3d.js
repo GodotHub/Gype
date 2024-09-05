@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { RigidBody3D } from '@js_godot/classes/rigid_body3d'
 import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { RigidBody3D } from '@js_godot/classes/rigid_body3d'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -90,9 +90,10 @@ export class VehicleBody3D extends RigidBody3D{
       );
     }
   }
+  
   set_engine_force(_engine_force) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_engine_force,
+      VehicleBody3D._bindings.method_set_engine_force,
       this._owner,
       _engine_force
     );
@@ -100,7 +101,7 @@ export class VehicleBody3D extends RigidBody3D{
   }
   get_engine_force() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_engine_force,
+      VehicleBody3D._bindings.method_get_engine_force,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -109,7 +110,7 @@ export class VehicleBody3D extends RigidBody3D{
   }
   set_brake(_brake) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_brake,
+      VehicleBody3D._bindings.method_set_brake,
       this._owner,
       _brake
     );
@@ -117,7 +118,7 @@ export class VehicleBody3D extends RigidBody3D{
   }
   get_brake() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_brake,
+      VehicleBody3D._bindings.method_get_brake,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -126,7 +127,7 @@ export class VehicleBody3D extends RigidBody3D{
   }
   set_steering(_steering) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_steering,
+      VehicleBody3D._bindings.method_set_steering,
       this._owner,
       _steering
     );
@@ -134,7 +135,7 @@ export class VehicleBody3D extends RigidBody3D{
   }
   get_steering() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_steering,
+      VehicleBody3D._bindings.method_get_steering,
       this._owner,
 			Variant.Type.FLOAT,
       

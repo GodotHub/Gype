@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { GDString } from '@js_godot/variant/gd_string'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -41,11 +41,12 @@ export class EditorScenePostImport extends RefCounted{
       );
     }
   }
+  
   _post_import(_scene) {
   }
   get_source_file() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_source_file,
+      EditorScenePostImport._bindings.method_get_source_file,
       this._owner,
 			Variant.Type.STRING,
     

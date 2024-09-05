@@ -1,11 +1,11 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
+import { Vector2 } from '@js_godot/variant/vector2'
+import { Node } from '@js_godot/classes/node'
+import { RID } from '@js_godot/variant/rid'
 import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
 import { Rect2 } from '@js_godot/variant/rect2'
-import { RID } from '@js_godot/variant/rid'
-import { Vector2 } from '@js_godot/variant/vector2'
-import { Node } from '@js_godot/classes/node'
+import { Variant } from '@js_godot/variant/variant'
 import { Transform2D } from '@js_godot/variant/transform2d'
 import {
   call_utility_ret,
@@ -1165,9 +1165,10 @@ export class Viewport extends Node{
       );
     }
   }
+  
   set_world_2d(_world_2d) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_world_2d,
+      Viewport._bindings.method_set_world_2d,
       this._owner,
       _world_2d
     );
@@ -1175,7 +1176,7 @@ export class Viewport extends Node{
   }
   get_world_2d() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_world_2d,
+      Viewport._bindings.method_get_world_2d,
       this._owner,
 			Variant.INT,
       
@@ -1184,7 +1185,7 @@ export class Viewport extends Node{
   }
   find_world_2d() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_find_world_2d,
+      Viewport._bindings.method_find_world_2d,
       this._owner,
 			Variant.INT,
       
@@ -1193,7 +1194,7 @@ export class Viewport extends Node{
   }
   set_canvas_transform(_xform) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_canvas_transform,
+      Viewport._bindings.method_set_canvas_transform,
       this._owner,
       _xform
     );
@@ -1201,7 +1202,7 @@ export class Viewport extends Node{
   }
   get_canvas_transform() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_canvas_transform,
+      Viewport._bindings.method_get_canvas_transform,
       this._owner,
 			Variant.Type.TRANSFORM2D,
     
@@ -1211,7 +1212,7 @@ export class Viewport extends Node{
   }
   set_global_canvas_transform(_xform) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_global_canvas_transform,
+      Viewport._bindings.method_set_global_canvas_transform,
       this._owner,
       _xform
     );
@@ -1219,7 +1220,7 @@ export class Viewport extends Node{
   }
   get_global_canvas_transform() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_global_canvas_transform,
+      Viewport._bindings.method_get_global_canvas_transform,
       this._owner,
 			Variant.Type.TRANSFORM2D,
     
@@ -1229,7 +1230,7 @@ export class Viewport extends Node{
   }
   get_final_transform() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_final_transform,
+      Viewport._bindings.method_get_final_transform,
       this._owner,
 			Variant.Type.TRANSFORM2D,
     
@@ -1239,7 +1240,7 @@ export class Viewport extends Node{
   }
   get_screen_transform() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_screen_transform,
+      Viewport._bindings.method_get_screen_transform,
       this._owner,
 			Variant.Type.TRANSFORM2D,
     
@@ -1249,7 +1250,7 @@ export class Viewport extends Node{
   }
   get_visible_rect() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_visible_rect,
+      Viewport._bindings.method_get_visible_rect,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -1259,7 +1260,7 @@ export class Viewport extends Node{
   }
   set_transparent_background(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_transparent_background,
+      Viewport._bindings.method_set_transparent_background,
       this._owner,
       _enable
     );
@@ -1267,7 +1268,7 @@ export class Viewport extends Node{
   }
   has_transparent_background() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_transparent_background,
+      Viewport._bindings.method_has_transparent_background,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1276,7 +1277,7 @@ export class Viewport extends Node{
   }
   set_use_hdr_2d(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_hdr_2d,
+      Viewport._bindings.method_set_use_hdr_2d,
       this._owner,
       _enable
     );
@@ -1284,7 +1285,7 @@ export class Viewport extends Node{
   }
   is_using_hdr_2d() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_using_hdr_2d,
+      Viewport._bindings.method_is_using_hdr_2d,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1293,7 +1294,7 @@ export class Viewport extends Node{
   }
   set_msaa_2d(_msaa) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_msaa_2d,
+      Viewport._bindings.method_set_msaa_2d,
       this._owner,
       _msaa
     );
@@ -1301,7 +1302,7 @@ export class Viewport extends Node{
   }
   get_msaa_2d() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_msaa_2d,
+      Viewport._bindings.method_get_msaa_2d,
       this._owner,
 			Variant.INT,
       
@@ -1310,7 +1311,7 @@ export class Viewport extends Node{
   }
   set_msaa_3d(_msaa) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_msaa_3d,
+      Viewport._bindings.method_set_msaa_3d,
       this._owner,
       _msaa
     );
@@ -1318,7 +1319,7 @@ export class Viewport extends Node{
   }
   get_msaa_3d() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_msaa_3d,
+      Viewport._bindings.method_get_msaa_3d,
       this._owner,
 			Variant.INT,
       
@@ -1327,7 +1328,7 @@ export class Viewport extends Node{
   }
   set_screen_space_aa(_screen_space_aa) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_screen_space_aa,
+      Viewport._bindings.method_set_screen_space_aa,
       this._owner,
       _screen_space_aa
     );
@@ -1335,7 +1336,7 @@ export class Viewport extends Node{
   }
   get_screen_space_aa() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_screen_space_aa,
+      Viewport._bindings.method_get_screen_space_aa,
       this._owner,
 			Variant.INT,
       
@@ -1344,7 +1345,7 @@ export class Viewport extends Node{
   }
   set_use_taa(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_taa,
+      Viewport._bindings.method_set_use_taa,
       this._owner,
       _enable
     );
@@ -1352,7 +1353,7 @@ export class Viewport extends Node{
   }
   is_using_taa() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_using_taa,
+      Viewport._bindings.method_is_using_taa,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1361,7 +1362,7 @@ export class Viewport extends Node{
   }
   set_use_debanding(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_debanding,
+      Viewport._bindings.method_set_use_debanding,
       this._owner,
       _enable
     );
@@ -1369,7 +1370,7 @@ export class Viewport extends Node{
   }
   is_using_debanding() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_using_debanding,
+      Viewport._bindings.method_is_using_debanding,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1378,7 +1379,7 @@ export class Viewport extends Node{
   }
   set_use_occlusion_culling(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_occlusion_culling,
+      Viewport._bindings.method_set_use_occlusion_culling,
       this._owner,
       _enable
     );
@@ -1386,7 +1387,7 @@ export class Viewport extends Node{
   }
   is_using_occlusion_culling() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_using_occlusion_culling,
+      Viewport._bindings.method_is_using_occlusion_culling,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1395,7 +1396,7 @@ export class Viewport extends Node{
   }
   set_debug_draw(_debug_draw) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_debug_draw,
+      Viewport._bindings.method_set_debug_draw,
       this._owner,
       _debug_draw
     );
@@ -1403,7 +1404,7 @@ export class Viewport extends Node{
   }
   get_debug_draw() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_debug_draw,
+      Viewport._bindings.method_get_debug_draw,
       this._owner,
 			Variant.INT,
       
@@ -1412,7 +1413,7 @@ export class Viewport extends Node{
   }
   get_render_info(_type, _info) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_render_info,
+      Viewport._bindings.method_get_render_info,
       this._owner,
 			Variant.Type.INT,
       _type, _info
@@ -1421,7 +1422,7 @@ export class Viewport extends Node{
   }
   get_texture() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture,
+      Viewport._bindings.method_get_texture,
       this._owner,
 			Variant.INT,
       
@@ -1430,7 +1431,7 @@ export class Viewport extends Node{
   }
   set_physics_object_picking(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_physics_object_picking,
+      Viewport._bindings.method_set_physics_object_picking,
       this._owner,
       _enable
     );
@@ -1438,7 +1439,7 @@ export class Viewport extends Node{
   }
   get_physics_object_picking() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_physics_object_picking,
+      Viewport._bindings.method_get_physics_object_picking,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1447,7 +1448,7 @@ export class Viewport extends Node{
   }
   set_physics_object_picking_sort(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_physics_object_picking_sort,
+      Viewport._bindings.method_set_physics_object_picking_sort,
       this._owner,
       _enable
     );
@@ -1455,7 +1456,7 @@ export class Viewport extends Node{
   }
   get_physics_object_picking_sort() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_physics_object_picking_sort,
+      Viewport._bindings.method_get_physics_object_picking_sort,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1464,7 +1465,7 @@ export class Viewport extends Node{
   }
   set_physics_object_picking_first_only(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_physics_object_picking_first_only,
+      Viewport._bindings.method_set_physics_object_picking_first_only,
       this._owner,
       _enable
     );
@@ -1472,7 +1473,7 @@ export class Viewport extends Node{
   }
   get_physics_object_picking_first_only() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_physics_object_picking_first_only,
+      Viewport._bindings.method_get_physics_object_picking_first_only,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1481,7 +1482,7 @@ export class Viewport extends Node{
   }
   get_viewport_rid() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_viewport_rid,
+      Viewport._bindings.method_get_viewport_rid,
       this._owner,
 			Variant.Type.RID,
     
@@ -1491,7 +1492,7 @@ export class Viewport extends Node{
   }
   push_text_input(_text) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_push_text_input,
+      Viewport._bindings.method_push_text_input,
       this._owner,
       _text
     );
@@ -1499,7 +1500,7 @@ export class Viewport extends Node{
   }
   push_input(_event, _in_local_coords) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_push_input,
+      Viewport._bindings.method_push_input,
       this._owner,
       _event, _in_local_coords
     );
@@ -1507,7 +1508,7 @@ export class Viewport extends Node{
   }
   push_unhandled_input(_event, _in_local_coords) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_push_unhandled_input,
+      Viewport._bindings.method_push_unhandled_input,
       this._owner,
       _event, _in_local_coords
     );
@@ -1515,7 +1516,7 @@ export class Viewport extends Node{
   }
   get_mouse_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mouse_position,
+      Viewport._bindings.method_get_mouse_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1525,7 +1526,7 @@ export class Viewport extends Node{
   }
   warp_mouse(_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_warp_mouse,
+      Viewport._bindings.method_warp_mouse,
       this._owner,
       _position
     );
@@ -1533,7 +1534,7 @@ export class Viewport extends Node{
   }
   update_mouse_cursor_state() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_update_mouse_cursor_state,
+      Viewport._bindings.method_update_mouse_cursor_state,
       this._owner,
       
     );
@@ -1541,7 +1542,7 @@ export class Viewport extends Node{
   }
   gui_get_drag_data() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_gui_get_drag_data,
+      Viewport._bindings.method_gui_get_drag_data,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -1551,7 +1552,7 @@ export class Viewport extends Node{
   }
   gui_is_dragging() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_gui_is_dragging,
+      Viewport._bindings.method_gui_is_dragging,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1560,7 +1561,7 @@ export class Viewport extends Node{
   }
   gui_is_drag_successful() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_gui_is_drag_successful,
+      Viewport._bindings.method_gui_is_drag_successful,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1569,7 +1570,7 @@ export class Viewport extends Node{
   }
   gui_release_focus() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_gui_release_focus,
+      Viewport._bindings.method_gui_release_focus,
       this._owner,
       
     );
@@ -1577,7 +1578,7 @@ export class Viewport extends Node{
   }
   gui_get_focus_owner() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_gui_get_focus_owner,
+      Viewport._bindings.method_gui_get_focus_owner,
       this._owner,
 			Variant.INT,
       
@@ -1586,7 +1587,7 @@ export class Viewport extends Node{
   }
   gui_get_hovered_control() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_gui_get_hovered_control,
+      Viewport._bindings.method_gui_get_hovered_control,
       this._owner,
 			Variant.INT,
       
@@ -1595,7 +1596,7 @@ export class Viewport extends Node{
   }
   set_disable_input(_disable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_disable_input,
+      Viewport._bindings.method_set_disable_input,
       this._owner,
       _disable
     );
@@ -1603,7 +1604,7 @@ export class Viewport extends Node{
   }
   is_input_disabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_input_disabled,
+      Viewport._bindings.method_is_input_disabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1612,7 +1613,7 @@ export class Viewport extends Node{
   }
   set_positional_shadow_atlas_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_positional_shadow_atlas_size,
+      Viewport._bindings.method_set_positional_shadow_atlas_size,
       this._owner,
       _size
     );
@@ -1620,7 +1621,7 @@ export class Viewport extends Node{
   }
   get_positional_shadow_atlas_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_positional_shadow_atlas_size,
+      Viewport._bindings.method_get_positional_shadow_atlas_size,
       this._owner,
 			Variant.Type.INT,
       
@@ -1629,7 +1630,7 @@ export class Viewport extends Node{
   }
   set_positional_shadow_atlas_16_bits(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_positional_shadow_atlas_16_bits,
+      Viewport._bindings.method_set_positional_shadow_atlas_16_bits,
       this._owner,
       _enable
     );
@@ -1637,7 +1638,7 @@ export class Viewport extends Node{
   }
   get_positional_shadow_atlas_16_bits() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_positional_shadow_atlas_16_bits,
+      Viewport._bindings.method_get_positional_shadow_atlas_16_bits,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1646,7 +1647,7 @@ export class Viewport extends Node{
   }
   set_snap_controls_to_pixels(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_snap_controls_to_pixels,
+      Viewport._bindings.method_set_snap_controls_to_pixels,
       this._owner,
       _enabled
     );
@@ -1654,7 +1655,7 @@ export class Viewport extends Node{
   }
   is_snap_controls_to_pixels_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_snap_controls_to_pixels_enabled,
+      Viewport._bindings.method_is_snap_controls_to_pixels_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1663,7 +1664,7 @@ export class Viewport extends Node{
   }
   set_snap_2d_transforms_to_pixel(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_snap_2d_transforms_to_pixel,
+      Viewport._bindings.method_set_snap_2d_transforms_to_pixel,
       this._owner,
       _enabled
     );
@@ -1671,7 +1672,7 @@ export class Viewport extends Node{
   }
   is_snap_2d_transforms_to_pixel_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_snap_2d_transforms_to_pixel_enabled,
+      Viewport._bindings.method_is_snap_2d_transforms_to_pixel_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1680,7 +1681,7 @@ export class Viewport extends Node{
   }
   set_snap_2d_vertices_to_pixel(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_snap_2d_vertices_to_pixel,
+      Viewport._bindings.method_set_snap_2d_vertices_to_pixel,
       this._owner,
       _enabled
     );
@@ -1688,7 +1689,7 @@ export class Viewport extends Node{
   }
   is_snap_2d_vertices_to_pixel_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_snap_2d_vertices_to_pixel_enabled,
+      Viewport._bindings.method_is_snap_2d_vertices_to_pixel_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1697,7 +1698,7 @@ export class Viewport extends Node{
   }
   set_positional_shadow_atlas_quadrant_subdiv(_quadrant, _subdiv) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_positional_shadow_atlas_quadrant_subdiv,
+      Viewport._bindings.method_set_positional_shadow_atlas_quadrant_subdiv,
       this._owner,
       _quadrant, _subdiv
     );
@@ -1705,7 +1706,7 @@ export class Viewport extends Node{
   }
   get_positional_shadow_atlas_quadrant_subdiv(_quadrant) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_positional_shadow_atlas_quadrant_subdiv,
+      Viewport._bindings.method_get_positional_shadow_atlas_quadrant_subdiv,
       this._owner,
 			Variant.INT,
       _quadrant
@@ -1714,7 +1715,7 @@ export class Viewport extends Node{
   }
   set_input_as_handled() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_input_as_handled,
+      Viewport._bindings.method_set_input_as_handled,
       this._owner,
       
     );
@@ -1722,7 +1723,7 @@ export class Viewport extends Node{
   }
   is_input_handled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_input_handled,
+      Viewport._bindings.method_is_input_handled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1731,7 +1732,7 @@ export class Viewport extends Node{
   }
   set_handle_input_locally(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_handle_input_locally,
+      Viewport._bindings.method_set_handle_input_locally,
       this._owner,
       _enable
     );
@@ -1739,7 +1740,7 @@ export class Viewport extends Node{
   }
   is_handling_input_locally() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_handling_input_locally,
+      Viewport._bindings.method_is_handling_input_locally,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1748,7 +1749,7 @@ export class Viewport extends Node{
   }
   set_default_canvas_item_texture_filter(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_default_canvas_item_texture_filter,
+      Viewport._bindings.method_set_default_canvas_item_texture_filter,
       this._owner,
       _mode
     );
@@ -1756,7 +1757,7 @@ export class Viewport extends Node{
   }
   get_default_canvas_item_texture_filter() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_default_canvas_item_texture_filter,
+      Viewport._bindings.method_get_default_canvas_item_texture_filter,
       this._owner,
 			Variant.INT,
       
@@ -1765,7 +1766,7 @@ export class Viewport extends Node{
   }
   set_embedding_subwindows(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_embedding_subwindows,
+      Viewport._bindings.method_set_embedding_subwindows,
       this._owner,
       _enable
     );
@@ -1773,7 +1774,7 @@ export class Viewport extends Node{
   }
   is_embedding_subwindows() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_embedding_subwindows,
+      Viewport._bindings.method_is_embedding_subwindows,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1782,7 +1783,7 @@ export class Viewport extends Node{
   }
   get_embedded_subwindows() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_embedded_subwindows,
+      Viewport._bindings.method_get_embedded_subwindows,
       this._owner,
 			Variant.INT,
       
@@ -1791,7 +1792,7 @@ export class Viewport extends Node{
   }
   set_canvas_cull_mask(_mask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_canvas_cull_mask,
+      Viewport._bindings.method_set_canvas_cull_mask,
       this._owner,
       _mask
     );
@@ -1799,7 +1800,7 @@ export class Viewport extends Node{
   }
   get_canvas_cull_mask() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_canvas_cull_mask,
+      Viewport._bindings.method_get_canvas_cull_mask,
       this._owner,
 			Variant.Type.INT,
       
@@ -1808,7 +1809,7 @@ export class Viewport extends Node{
   }
   set_canvas_cull_mask_bit(_layer, _enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_canvas_cull_mask_bit,
+      Viewport._bindings.method_set_canvas_cull_mask_bit,
       this._owner,
       _layer, _enable
     );
@@ -1816,7 +1817,7 @@ export class Viewport extends Node{
   }
   get_canvas_cull_mask_bit(_layer) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_canvas_cull_mask_bit,
+      Viewport._bindings.method_get_canvas_cull_mask_bit,
       this._owner,
 			Variant.Type.BOOL,
       _layer
@@ -1825,7 +1826,7 @@ export class Viewport extends Node{
   }
   set_default_canvas_item_texture_repeat(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_default_canvas_item_texture_repeat,
+      Viewport._bindings.method_set_default_canvas_item_texture_repeat,
       this._owner,
       _mode
     );
@@ -1833,7 +1834,7 @@ export class Viewport extends Node{
   }
   get_default_canvas_item_texture_repeat() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_default_canvas_item_texture_repeat,
+      Viewport._bindings.method_get_default_canvas_item_texture_repeat,
       this._owner,
 			Variant.INT,
       
@@ -1842,7 +1843,7 @@ export class Viewport extends Node{
   }
   set_sdf_oversize(_oversize) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sdf_oversize,
+      Viewport._bindings.method_set_sdf_oversize,
       this._owner,
       _oversize
     );
@@ -1850,7 +1851,7 @@ export class Viewport extends Node{
   }
   get_sdf_oversize() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sdf_oversize,
+      Viewport._bindings.method_get_sdf_oversize,
       this._owner,
 			Variant.INT,
       
@@ -1859,7 +1860,7 @@ export class Viewport extends Node{
   }
   set_sdf_scale(_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sdf_scale,
+      Viewport._bindings.method_set_sdf_scale,
       this._owner,
       _scale
     );
@@ -1867,7 +1868,7 @@ export class Viewport extends Node{
   }
   get_sdf_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sdf_scale,
+      Viewport._bindings.method_get_sdf_scale,
       this._owner,
 			Variant.INT,
       
@@ -1876,7 +1877,7 @@ export class Viewport extends Node{
   }
   set_mesh_lod_threshold(_pixels) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mesh_lod_threshold,
+      Viewport._bindings.method_set_mesh_lod_threshold,
       this._owner,
       _pixels
     );
@@ -1884,7 +1885,7 @@ export class Viewport extends Node{
   }
   get_mesh_lod_threshold() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mesh_lod_threshold,
+      Viewport._bindings.method_get_mesh_lod_threshold,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1893,7 +1894,7 @@ export class Viewport extends Node{
   }
   set_as_audio_listener_2d(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_as_audio_listener_2d,
+      Viewport._bindings.method_set_as_audio_listener_2d,
       this._owner,
       _enable
     );
@@ -1901,7 +1902,7 @@ export class Viewport extends Node{
   }
   is_audio_listener_2d() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_audio_listener_2d,
+      Viewport._bindings.method_is_audio_listener_2d,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1910,7 +1911,7 @@ export class Viewport extends Node{
   }
   get_camera_2d() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_camera_2d,
+      Viewport._bindings.method_get_camera_2d,
       this._owner,
 			Variant.INT,
       
@@ -1919,7 +1920,7 @@ export class Viewport extends Node{
   }
   set_world_3d(_world_3d) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_world_3d,
+      Viewport._bindings.method_set_world_3d,
       this._owner,
       _world_3d
     );
@@ -1927,7 +1928,7 @@ export class Viewport extends Node{
   }
   get_world_3d() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_world_3d,
+      Viewport._bindings.method_get_world_3d,
       this._owner,
 			Variant.INT,
       
@@ -1936,7 +1937,7 @@ export class Viewport extends Node{
   }
   find_world_3d() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_find_world_3d,
+      Viewport._bindings.method_find_world_3d,
       this._owner,
 			Variant.INT,
       
@@ -1945,7 +1946,7 @@ export class Viewport extends Node{
   }
   set_use_own_world_3d(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_own_world_3d,
+      Viewport._bindings.method_set_use_own_world_3d,
       this._owner,
       _enable
     );
@@ -1953,7 +1954,7 @@ export class Viewport extends Node{
   }
   is_using_own_world_3d() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_using_own_world_3d,
+      Viewport._bindings.method_is_using_own_world_3d,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1962,7 +1963,7 @@ export class Viewport extends Node{
   }
   get_camera_3d() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_camera_3d,
+      Viewport._bindings.method_get_camera_3d,
       this._owner,
 			Variant.INT,
       
@@ -1971,7 +1972,7 @@ export class Viewport extends Node{
   }
   set_as_audio_listener_3d(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_as_audio_listener_3d,
+      Viewport._bindings.method_set_as_audio_listener_3d,
       this._owner,
       _enable
     );
@@ -1979,7 +1980,7 @@ export class Viewport extends Node{
   }
   is_audio_listener_3d() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_audio_listener_3d,
+      Viewport._bindings.method_is_audio_listener_3d,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1988,7 +1989,7 @@ export class Viewport extends Node{
   }
   set_disable_3d(_disable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_disable_3d,
+      Viewport._bindings.method_set_disable_3d,
       this._owner,
       _disable
     );
@@ -1996,7 +1997,7 @@ export class Viewport extends Node{
   }
   is_3d_disabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_3d_disabled,
+      Viewport._bindings.method_is_3d_disabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2005,7 +2006,7 @@ export class Viewport extends Node{
   }
   set_use_xr(_use) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_xr,
+      Viewport._bindings.method_set_use_xr,
       this._owner,
       _use
     );
@@ -2013,7 +2014,7 @@ export class Viewport extends Node{
   }
   is_using_xr() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_using_xr,
+      Viewport._bindings.method_is_using_xr,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2022,7 +2023,7 @@ export class Viewport extends Node{
   }
   set_scaling_3d_mode(_scaling_3d_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_scaling_3d_mode,
+      Viewport._bindings.method_set_scaling_3d_mode,
       this._owner,
       _scaling_3d_mode
     );
@@ -2030,7 +2031,7 @@ export class Viewport extends Node{
   }
   get_scaling_3d_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_scaling_3d_mode,
+      Viewport._bindings.method_get_scaling_3d_mode,
       this._owner,
 			Variant.INT,
       
@@ -2039,7 +2040,7 @@ export class Viewport extends Node{
   }
   set_scaling_3d_scale(_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_scaling_3d_scale,
+      Viewport._bindings.method_set_scaling_3d_scale,
       this._owner,
       _scale
     );
@@ -2047,7 +2048,7 @@ export class Viewport extends Node{
   }
   get_scaling_3d_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_scaling_3d_scale,
+      Viewport._bindings.method_get_scaling_3d_scale,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2056,7 +2057,7 @@ export class Viewport extends Node{
   }
   set_fsr_sharpness(_fsr_sharpness) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fsr_sharpness,
+      Viewport._bindings.method_set_fsr_sharpness,
       this._owner,
       _fsr_sharpness
     );
@@ -2064,7 +2065,7 @@ export class Viewport extends Node{
   }
   get_fsr_sharpness() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fsr_sharpness,
+      Viewport._bindings.method_get_fsr_sharpness,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2073,7 +2074,7 @@ export class Viewport extends Node{
   }
   set_texture_mipmap_bias(_texture_mipmap_bias) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture_mipmap_bias,
+      Viewport._bindings.method_set_texture_mipmap_bias,
       this._owner,
       _texture_mipmap_bias
     );
@@ -2081,7 +2082,7 @@ export class Viewport extends Node{
   }
   get_texture_mipmap_bias() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_mipmap_bias,
+      Viewport._bindings.method_get_texture_mipmap_bias,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2090,7 +2091,7 @@ export class Viewport extends Node{
   }
   set_vrs_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vrs_mode,
+      Viewport._bindings.method_set_vrs_mode,
       this._owner,
       _mode
     );
@@ -2098,7 +2099,7 @@ export class Viewport extends Node{
   }
   get_vrs_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vrs_mode,
+      Viewport._bindings.method_get_vrs_mode,
       this._owner,
 			Variant.INT,
       
@@ -2107,7 +2108,7 @@ export class Viewport extends Node{
   }
   set_vrs_update_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vrs_update_mode,
+      Viewport._bindings.method_set_vrs_update_mode,
       this._owner,
       _mode
     );
@@ -2115,7 +2116,7 @@ export class Viewport extends Node{
   }
   get_vrs_update_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vrs_update_mode,
+      Viewport._bindings.method_get_vrs_update_mode,
       this._owner,
 			Variant.INT,
       
@@ -2124,7 +2125,7 @@ export class Viewport extends Node{
   }
   set_vrs_texture(_texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vrs_texture,
+      Viewport._bindings.method_set_vrs_texture,
       this._owner,
       _texture
     );
@@ -2132,7 +2133,7 @@ export class Viewport extends Node{
   }
   get_vrs_texture() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vrs_texture,
+      Viewport._bindings.method_get_vrs_texture,
       this._owner,
 			Variant.INT,
       

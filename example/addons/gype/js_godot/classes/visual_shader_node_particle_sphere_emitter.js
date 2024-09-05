@@ -31,6 +31,7 @@ export class VisualShaderNodeParticleSphereEmitter extends VisualShaderNodeParti
     this.#initialized = true;
   }
   
+  
 
 
   static {

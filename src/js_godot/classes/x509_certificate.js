@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
 import { GDString } from '@js_godot/variant/gd_string'
 import {
@@ -71,9 +71,10 @@ export class X509Certificate extends Resource{
       );
     }
   }
+  
   save(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_save,
+      X509Certificate._bindings.method_save,
       this._owner,
 			Variant.INT,
       _path
@@ -82,7 +83,7 @@ export class X509Certificate extends Resource{
   }
   load(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_load,
+      X509Certificate._bindings.method_load,
       this._owner,
 			Variant.INT,
       _path
@@ -91,7 +92,7 @@ export class X509Certificate extends Resource{
   }
   save_to_string() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_save_to_string,
+      X509Certificate._bindings.method_save_to_string,
       this._owner,
 			Variant.Type.STRING,
     
@@ -101,7 +102,7 @@ export class X509Certificate extends Resource{
   }
   load_from_string(_string) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_load_from_string,
+      X509Certificate._bindings.method_load_from_string,
       this._owner,
 			Variant.INT,
       _string

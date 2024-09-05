@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { GLTFState } from '@js_godot/classes/gltf_state'
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { GLTFState } from '@js_godot/classes/gltf_state'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -50,9 +50,10 @@ export class FBXState extends GLTFState{
       );
     }
   }
+  
   get_allow_geometry_helper_nodes() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_allow_geometry_helper_nodes,
+      FBXState._bindings.method_get_allow_geometry_helper_nodes,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -61,7 +62,7 @@ export class FBXState extends GLTFState{
   }
   set_allow_geometry_helper_nodes(_allow) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_allow_geometry_helper_nodes,
+      FBXState._bindings.method_set_allow_geometry_helper_nodes,
       this._owner,
       _allow
     );

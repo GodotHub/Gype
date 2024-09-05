@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { AudioEffect } from '@js_godot/classes/audio_effect'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -170,9 +170,10 @@ export class AudioEffectCompressor extends AudioEffect{
       );
     }
   }
+  
   set_threshold(_threshold) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_threshold,
+      AudioEffectCompressor._bindings.method_set_threshold,
       this._owner,
       _threshold
     );
@@ -180,7 +181,7 @@ export class AudioEffectCompressor extends AudioEffect{
   }
   get_threshold() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_threshold,
+      AudioEffectCompressor._bindings.method_get_threshold,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -189,7 +190,7 @@ export class AudioEffectCompressor extends AudioEffect{
   }
   set_ratio(_ratio) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ratio,
+      AudioEffectCompressor._bindings.method_set_ratio,
       this._owner,
       _ratio
     );
@@ -197,7 +198,7 @@ export class AudioEffectCompressor extends AudioEffect{
   }
   get_ratio() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ratio,
+      AudioEffectCompressor._bindings.method_get_ratio,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -206,7 +207,7 @@ export class AudioEffectCompressor extends AudioEffect{
   }
   set_gain(_gain) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_gain,
+      AudioEffectCompressor._bindings.method_set_gain,
       this._owner,
       _gain
     );
@@ -214,7 +215,7 @@ export class AudioEffectCompressor extends AudioEffect{
   }
   get_gain() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_gain,
+      AudioEffectCompressor._bindings.method_get_gain,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -223,7 +224,7 @@ export class AudioEffectCompressor extends AudioEffect{
   }
   set_attack_us(_attack_us) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_attack_us,
+      AudioEffectCompressor._bindings.method_set_attack_us,
       this._owner,
       _attack_us
     );
@@ -231,7 +232,7 @@ export class AudioEffectCompressor extends AudioEffect{
   }
   get_attack_us() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_attack_us,
+      AudioEffectCompressor._bindings.method_get_attack_us,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -240,7 +241,7 @@ export class AudioEffectCompressor extends AudioEffect{
   }
   set_release_ms(_release_ms) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_release_ms,
+      AudioEffectCompressor._bindings.method_set_release_ms,
       this._owner,
       _release_ms
     );
@@ -248,7 +249,7 @@ export class AudioEffectCompressor extends AudioEffect{
   }
   get_release_ms() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_release_ms,
+      AudioEffectCompressor._bindings.method_get_release_ms,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -257,7 +258,7 @@ export class AudioEffectCompressor extends AudioEffect{
   }
   set_mix(_mix) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mix,
+      AudioEffectCompressor._bindings.method_set_mix,
       this._owner,
       _mix
     );
@@ -265,7 +266,7 @@ export class AudioEffectCompressor extends AudioEffect{
   }
   get_mix() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mix,
+      AudioEffectCompressor._bindings.method_get_mix,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -274,7 +275,7 @@ export class AudioEffectCompressor extends AudioEffect{
   }
   set_sidechain(_sidechain) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sidechain,
+      AudioEffectCompressor._bindings.method_set_sidechain,
       this._owner,
       _sidechain
     );
@@ -282,7 +283,7 @@ export class AudioEffectCompressor extends AudioEffect{
   }
   get_sidechain() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sidechain,
+      AudioEffectCompressor._bindings.method_get_sidechain,
       this._owner,
 			Variant.Type.STRING_NAME,
     

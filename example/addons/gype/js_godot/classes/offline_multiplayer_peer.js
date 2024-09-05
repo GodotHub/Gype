@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { MultiplayerPeer } from '@js_godot/classes/multiplayer_peer'
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { MultiplayerPeer } from '@js_godot/classes/multiplayer_peer'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -30,6 +30,7 @@ export class OfflineMultiplayerPeer extends MultiplayerPeer{
     }
     this.#initialized = true;
   }
+  
   
 
 

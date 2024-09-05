@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Vector3 } from '@js_godot/variant/vector3'
+import { Vector2 } from '@js_godot/variant/vector2'
 import { StringName } from '@js_godot/variant/string_name'
 import { Material } from '@js_godot/classes/material'
 import { Color } from '@js_godot/variant/color'
-import { Vector2 } from '@js_godot/variant/vector2'
+import { Variant } from '@js_godot/variant/variant'
+import { Vector3 } from '@js_godot/variant/vector3'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -953,9 +953,10 @@ export class ParticleProcessMaterial extends Material{
       );
     }
   }
+  
   set_direction(_degrees) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_direction,
+      ParticleProcessMaterial._bindings.method_set_direction,
       this._owner,
       _degrees
     );
@@ -963,7 +964,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_direction() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_direction,
+      ParticleProcessMaterial._bindings.method_get_direction,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -973,7 +974,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_inherit_velocity_ratio(_ratio) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_inherit_velocity_ratio,
+      ParticleProcessMaterial._bindings.method_set_inherit_velocity_ratio,
       this._owner,
       _ratio
     );
@@ -981,7 +982,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_inherit_velocity_ratio() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_inherit_velocity_ratio,
+      ParticleProcessMaterial._bindings.method_get_inherit_velocity_ratio,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -990,7 +991,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_spread(_degrees) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_spread,
+      ParticleProcessMaterial._bindings.method_set_spread,
       this._owner,
       _degrees
     );
@@ -998,7 +999,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_spread() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_spread,
+      ParticleProcessMaterial._bindings.method_get_spread,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1007,7 +1008,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_flatness(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_flatness,
+      ParticleProcessMaterial._bindings.method_set_flatness,
       this._owner,
       _amount
     );
@@ -1015,7 +1016,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_flatness() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_flatness,
+      ParticleProcessMaterial._bindings.method_get_flatness,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1024,7 +1025,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_param(_param, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_param,
+      ParticleProcessMaterial._bindings.method_set_param,
       this._owner,
       _param, _value
     );
@@ -1032,7 +1033,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_param(_param) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_param,
+      ParticleProcessMaterial._bindings.method_get_param,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1042,7 +1043,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_param_min(_param, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_param_min,
+      ParticleProcessMaterial._bindings.method_set_param_min,
       this._owner,
       _param, _value
     );
@@ -1050,7 +1051,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_param_min(_param) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_param_min,
+      ParticleProcessMaterial._bindings.method_get_param_min,
       this._owner,
 			Variant.Type.FLOAT,
       _param
@@ -1059,7 +1060,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_param_max(_param, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_param_max,
+      ParticleProcessMaterial._bindings.method_set_param_max,
       this._owner,
       _param, _value
     );
@@ -1067,7 +1068,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_param_max(_param) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_param_max,
+      ParticleProcessMaterial._bindings.method_get_param_max,
       this._owner,
 			Variant.Type.FLOAT,
       _param
@@ -1076,7 +1077,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_param_texture(_param, _texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_param_texture,
+      ParticleProcessMaterial._bindings.method_set_param_texture,
       this._owner,
       _param, _texture
     );
@@ -1084,7 +1085,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_param_texture(_param) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_param_texture,
+      ParticleProcessMaterial._bindings.method_get_param_texture,
       this._owner,
 			Variant.INT,
       _param
@@ -1093,7 +1094,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_color,
+      ParticleProcessMaterial._bindings.method_set_color,
       this._owner,
       _color
     );
@@ -1101,7 +1102,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_color,
+      ParticleProcessMaterial._bindings.method_get_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -1111,7 +1112,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_color_ramp(_ramp) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_color_ramp,
+      ParticleProcessMaterial._bindings.method_set_color_ramp,
       this._owner,
       _ramp
     );
@@ -1119,7 +1120,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_color_ramp() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_color_ramp,
+      ParticleProcessMaterial._bindings.method_get_color_ramp,
       this._owner,
 			Variant.INT,
       
@@ -1128,7 +1129,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_alpha_curve(_curve) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_alpha_curve,
+      ParticleProcessMaterial._bindings.method_set_alpha_curve,
       this._owner,
       _curve
     );
@@ -1136,7 +1137,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_alpha_curve() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_alpha_curve,
+      ParticleProcessMaterial._bindings.method_get_alpha_curve,
       this._owner,
 			Variant.INT,
       
@@ -1145,7 +1146,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_emission_curve(_curve) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_emission_curve,
+      ParticleProcessMaterial._bindings.method_set_emission_curve,
       this._owner,
       _curve
     );
@@ -1153,7 +1154,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_emission_curve() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_emission_curve,
+      ParticleProcessMaterial._bindings.method_get_emission_curve,
       this._owner,
 			Variant.INT,
       
@@ -1162,7 +1163,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_color_initial_ramp(_ramp) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_color_initial_ramp,
+      ParticleProcessMaterial._bindings.method_set_color_initial_ramp,
       this._owner,
       _ramp
     );
@@ -1170,7 +1171,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_color_initial_ramp() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_color_initial_ramp,
+      ParticleProcessMaterial._bindings.method_get_color_initial_ramp,
       this._owner,
 			Variant.INT,
       
@@ -1179,7 +1180,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_velocity_limit_curve(_curve) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_velocity_limit_curve,
+      ParticleProcessMaterial._bindings.method_set_velocity_limit_curve,
       this._owner,
       _curve
     );
@@ -1187,7 +1188,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_velocity_limit_curve() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_velocity_limit_curve,
+      ParticleProcessMaterial._bindings.method_get_velocity_limit_curve,
       this._owner,
 			Variant.INT,
       
@@ -1196,7 +1197,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_particle_flag(_particle_flag, _enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_particle_flag,
+      ParticleProcessMaterial._bindings.method_set_particle_flag,
       this._owner,
       _particle_flag, _enable
     );
@@ -1204,7 +1205,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_particle_flag(_particle_flag) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_particle_flag,
+      ParticleProcessMaterial._bindings.method_get_particle_flag,
       this._owner,
 			Variant.Type.BOOL,
       _particle_flag
@@ -1213,7 +1214,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_velocity_pivot(_pivot) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_velocity_pivot,
+      ParticleProcessMaterial._bindings.method_set_velocity_pivot,
       this._owner,
       _pivot
     );
@@ -1221,7 +1222,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_velocity_pivot() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_velocity_pivot,
+      ParticleProcessMaterial._bindings.method_get_velocity_pivot,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -1231,7 +1232,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_emission_shape(_shape) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_emission_shape,
+      ParticleProcessMaterial._bindings.method_set_emission_shape,
       this._owner,
       _shape
     );
@@ -1239,7 +1240,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_emission_shape() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_emission_shape,
+      ParticleProcessMaterial._bindings.method_get_emission_shape,
       this._owner,
 			Variant.INT,
       
@@ -1248,7 +1249,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_emission_sphere_radius(_radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_emission_sphere_radius,
+      ParticleProcessMaterial._bindings.method_set_emission_sphere_radius,
       this._owner,
       _radius
     );
@@ -1256,7 +1257,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_emission_sphere_radius() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_emission_sphere_radius,
+      ParticleProcessMaterial._bindings.method_get_emission_sphere_radius,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1265,7 +1266,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_emission_box_extents(_extents) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_emission_box_extents,
+      ParticleProcessMaterial._bindings.method_set_emission_box_extents,
       this._owner,
       _extents
     );
@@ -1273,7 +1274,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_emission_box_extents() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_emission_box_extents,
+      ParticleProcessMaterial._bindings.method_get_emission_box_extents,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -1283,7 +1284,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_emission_point_texture(_texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_emission_point_texture,
+      ParticleProcessMaterial._bindings.method_set_emission_point_texture,
       this._owner,
       _texture
     );
@@ -1291,7 +1292,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_emission_point_texture() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_emission_point_texture,
+      ParticleProcessMaterial._bindings.method_get_emission_point_texture,
       this._owner,
 			Variant.INT,
       
@@ -1300,7 +1301,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_emission_normal_texture(_texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_emission_normal_texture,
+      ParticleProcessMaterial._bindings.method_set_emission_normal_texture,
       this._owner,
       _texture
     );
@@ -1308,7 +1309,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_emission_normal_texture() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_emission_normal_texture,
+      ParticleProcessMaterial._bindings.method_get_emission_normal_texture,
       this._owner,
 			Variant.INT,
       
@@ -1317,7 +1318,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_emission_color_texture(_texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_emission_color_texture,
+      ParticleProcessMaterial._bindings.method_set_emission_color_texture,
       this._owner,
       _texture
     );
@@ -1325,7 +1326,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_emission_color_texture() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_emission_color_texture,
+      ParticleProcessMaterial._bindings.method_get_emission_color_texture,
       this._owner,
 			Variant.INT,
       
@@ -1334,7 +1335,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_emission_point_count(_point_count) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_emission_point_count,
+      ParticleProcessMaterial._bindings.method_set_emission_point_count,
       this._owner,
       _point_count
     );
@@ -1342,7 +1343,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_emission_point_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_emission_point_count,
+      ParticleProcessMaterial._bindings.method_get_emission_point_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -1351,7 +1352,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_emission_ring_axis(_axis) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_emission_ring_axis,
+      ParticleProcessMaterial._bindings.method_set_emission_ring_axis,
       this._owner,
       _axis
     );
@@ -1359,7 +1360,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_emission_ring_axis() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_emission_ring_axis,
+      ParticleProcessMaterial._bindings.method_get_emission_ring_axis,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -1369,7 +1370,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_emission_ring_height(_height) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_emission_ring_height,
+      ParticleProcessMaterial._bindings.method_set_emission_ring_height,
       this._owner,
       _height
     );
@@ -1377,7 +1378,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_emission_ring_height() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_emission_ring_height,
+      ParticleProcessMaterial._bindings.method_get_emission_ring_height,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1386,7 +1387,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_emission_ring_radius(_radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_emission_ring_radius,
+      ParticleProcessMaterial._bindings.method_set_emission_ring_radius,
       this._owner,
       _radius
     );
@@ -1394,7 +1395,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_emission_ring_radius() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_emission_ring_radius,
+      ParticleProcessMaterial._bindings.method_get_emission_ring_radius,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1403,7 +1404,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_emission_ring_inner_radius(_inner_radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_emission_ring_inner_radius,
+      ParticleProcessMaterial._bindings.method_set_emission_ring_inner_radius,
       this._owner,
       _inner_radius
     );
@@ -1411,7 +1412,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_emission_ring_inner_radius() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_emission_ring_inner_radius,
+      ParticleProcessMaterial._bindings.method_get_emission_ring_inner_radius,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1420,7 +1421,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_emission_shape_offset(_emission_shape_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_emission_shape_offset,
+      ParticleProcessMaterial._bindings.method_set_emission_shape_offset,
       this._owner,
       _emission_shape_offset
     );
@@ -1428,7 +1429,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_emission_shape_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_emission_shape_offset,
+      ParticleProcessMaterial._bindings.method_get_emission_shape_offset,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -1438,7 +1439,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_emission_shape_scale(_emission_shape_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_emission_shape_scale,
+      ParticleProcessMaterial._bindings.method_set_emission_shape_scale,
       this._owner,
       _emission_shape_scale
     );
@@ -1446,7 +1447,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_emission_shape_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_emission_shape_scale,
+      ParticleProcessMaterial._bindings.method_get_emission_shape_scale,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -1456,7 +1457,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_turbulence_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_turbulence_enabled,
+      ParticleProcessMaterial._bindings.method_get_turbulence_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1465,7 +1466,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_turbulence_enabled(_turbulence_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_turbulence_enabled,
+      ParticleProcessMaterial._bindings.method_set_turbulence_enabled,
       this._owner,
       _turbulence_enabled
     );
@@ -1473,7 +1474,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_turbulence_noise_strength() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_turbulence_noise_strength,
+      ParticleProcessMaterial._bindings.method_get_turbulence_noise_strength,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1482,7 +1483,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_turbulence_noise_strength(_turbulence_noise_strength) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_turbulence_noise_strength,
+      ParticleProcessMaterial._bindings.method_set_turbulence_noise_strength,
       this._owner,
       _turbulence_noise_strength
     );
@@ -1490,7 +1491,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_turbulence_noise_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_turbulence_noise_scale,
+      ParticleProcessMaterial._bindings.method_get_turbulence_noise_scale,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1499,7 +1500,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_turbulence_noise_scale(_turbulence_noise_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_turbulence_noise_scale,
+      ParticleProcessMaterial._bindings.method_set_turbulence_noise_scale,
       this._owner,
       _turbulence_noise_scale
     );
@@ -1507,7 +1508,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_turbulence_noise_speed_random() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_turbulence_noise_speed_random,
+      ParticleProcessMaterial._bindings.method_get_turbulence_noise_speed_random,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1516,7 +1517,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_turbulence_noise_speed_random(_turbulence_noise_speed_random) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_turbulence_noise_speed_random,
+      ParticleProcessMaterial._bindings.method_set_turbulence_noise_speed_random,
       this._owner,
       _turbulence_noise_speed_random
     );
@@ -1524,7 +1525,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_turbulence_noise_speed() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_turbulence_noise_speed,
+      ParticleProcessMaterial._bindings.method_get_turbulence_noise_speed,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -1534,7 +1535,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_turbulence_noise_speed(_turbulence_noise_speed) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_turbulence_noise_speed,
+      ParticleProcessMaterial._bindings.method_set_turbulence_noise_speed,
       this._owner,
       _turbulence_noise_speed
     );
@@ -1542,7 +1543,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_gravity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_gravity,
+      ParticleProcessMaterial._bindings.method_get_gravity,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -1552,7 +1553,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_gravity(_accel_vec) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_gravity,
+      ParticleProcessMaterial._bindings.method_set_gravity,
       this._owner,
       _accel_vec
     );
@@ -1560,7 +1561,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_lifetime_randomness(_randomness) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_lifetime_randomness,
+      ParticleProcessMaterial._bindings.method_set_lifetime_randomness,
       this._owner,
       _randomness
     );
@@ -1568,7 +1569,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_lifetime_randomness() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_lifetime_randomness,
+      ParticleProcessMaterial._bindings.method_get_lifetime_randomness,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1577,7 +1578,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_sub_emitter_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sub_emitter_mode,
+      ParticleProcessMaterial._bindings.method_get_sub_emitter_mode,
       this._owner,
 			Variant.INT,
       
@@ -1586,7 +1587,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_sub_emitter_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sub_emitter_mode,
+      ParticleProcessMaterial._bindings.method_set_sub_emitter_mode,
       this._owner,
       _mode
     );
@@ -1594,7 +1595,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_sub_emitter_frequency() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sub_emitter_frequency,
+      ParticleProcessMaterial._bindings.method_get_sub_emitter_frequency,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1603,7 +1604,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_sub_emitter_frequency(_hz) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sub_emitter_frequency,
+      ParticleProcessMaterial._bindings.method_set_sub_emitter_frequency,
       this._owner,
       _hz
     );
@@ -1611,7 +1612,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_sub_emitter_amount_at_end() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sub_emitter_amount_at_end,
+      ParticleProcessMaterial._bindings.method_get_sub_emitter_amount_at_end,
       this._owner,
 			Variant.Type.INT,
       
@@ -1620,7 +1621,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_sub_emitter_amount_at_end(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sub_emitter_amount_at_end,
+      ParticleProcessMaterial._bindings.method_set_sub_emitter_amount_at_end,
       this._owner,
       _amount
     );
@@ -1628,7 +1629,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_sub_emitter_amount_at_collision() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sub_emitter_amount_at_collision,
+      ParticleProcessMaterial._bindings.method_get_sub_emitter_amount_at_collision,
       this._owner,
 			Variant.Type.INT,
       
@@ -1637,7 +1638,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_sub_emitter_amount_at_collision(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sub_emitter_amount_at_collision,
+      ParticleProcessMaterial._bindings.method_set_sub_emitter_amount_at_collision,
       this._owner,
       _amount
     );
@@ -1645,7 +1646,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_sub_emitter_keep_velocity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sub_emitter_keep_velocity,
+      ParticleProcessMaterial._bindings.method_get_sub_emitter_keep_velocity,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1654,7 +1655,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_sub_emitter_keep_velocity(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sub_emitter_keep_velocity,
+      ParticleProcessMaterial._bindings.method_set_sub_emitter_keep_velocity,
       this._owner,
       _enable
     );
@@ -1662,7 +1663,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_attractor_interaction_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_attractor_interaction_enabled,
+      ParticleProcessMaterial._bindings.method_set_attractor_interaction_enabled,
       this._owner,
       _enabled
     );
@@ -1670,7 +1671,7 @@ export class ParticleProcessMaterial extends Material{
   }
   is_attractor_interaction_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_attractor_interaction_enabled,
+      ParticleProcessMaterial._bindings.method_is_attractor_interaction_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1679,7 +1680,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_collision_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_mode,
+      ParticleProcessMaterial._bindings.method_set_collision_mode,
       this._owner,
       _mode
     );
@@ -1687,7 +1688,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_collision_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_mode,
+      ParticleProcessMaterial._bindings.method_get_collision_mode,
       this._owner,
 			Variant.INT,
       
@@ -1696,7 +1697,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_collision_use_scale(_radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_use_scale,
+      ParticleProcessMaterial._bindings.method_set_collision_use_scale,
       this._owner,
       _radius
     );
@@ -1704,7 +1705,7 @@ export class ParticleProcessMaterial extends Material{
   }
   is_collision_using_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_collision_using_scale,
+      ParticleProcessMaterial._bindings.method_is_collision_using_scale,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1713,7 +1714,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_collision_friction(_friction) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_friction,
+      ParticleProcessMaterial._bindings.method_set_collision_friction,
       this._owner,
       _friction
     );
@@ -1721,7 +1722,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_collision_friction() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_friction,
+      ParticleProcessMaterial._bindings.method_get_collision_friction,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1730,7 +1731,7 @@ export class ParticleProcessMaterial extends Material{
   }
   set_collision_bounce(_bounce) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_bounce,
+      ParticleProcessMaterial._bindings.method_set_collision_bounce,
       this._owner,
       _bounce
     );
@@ -1738,7 +1739,7 @@ export class ParticleProcessMaterial extends Material{
   }
   get_collision_bounce() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_bounce,
+      ParticleProcessMaterial._bindings.method_get_collision_bounce,
       this._owner,
 			Variant.Type.FLOAT,
       

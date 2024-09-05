@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { Dictionary } from '@js_godot/variant/dictionary'
 import { Resource } from '@js_godot/classes/resource'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
@@ -202,9 +202,10 @@ export class Script extends Resource{
       );
     }
   }
+  
   can_instantiate() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_can_instantiate,
+      Script._bindings.method_can_instantiate,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -213,7 +214,7 @@ export class Script extends Resource{
   }
   instance_has(_base_object) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_instance_has,
+      Script._bindings.method_instance_has,
       this._owner,
 			Variant.Type.BOOL,
       _base_object
@@ -222,7 +223,7 @@ export class Script extends Resource{
   }
   has_source_code() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_source_code,
+      Script._bindings.method_has_source_code,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -231,7 +232,7 @@ export class Script extends Resource{
   }
   get_source_code() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_source_code,
+      Script._bindings.method_get_source_code,
       this._owner,
 			Variant.Type.STRING,
     
@@ -241,7 +242,7 @@ export class Script extends Resource{
   }
   set_source_code(_source) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_source_code,
+      Script._bindings.method_set_source_code,
       this._owner,
       _source
     );
@@ -249,7 +250,7 @@ export class Script extends Resource{
   }
   reload(_keep_state) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_reload,
+      Script._bindings.method_reload,
       this._owner,
 			Variant.INT,
       _keep_state
@@ -258,7 +259,7 @@ export class Script extends Resource{
   }
   get_base_script() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_base_script,
+      Script._bindings.method_get_base_script,
       this._owner,
 			Variant.INT,
       
@@ -267,7 +268,7 @@ export class Script extends Resource{
   }
   get_instance_base_type() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_instance_base_type,
+      Script._bindings.method_get_instance_base_type,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -277,7 +278,7 @@ export class Script extends Resource{
   }
   get_global_name() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_global_name,
+      Script._bindings.method_get_global_name,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -287,7 +288,7 @@ export class Script extends Resource{
   }
   has_script_signal(_signal_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_script_signal,
+      Script._bindings.method_has_script_signal,
       this._owner,
 			Variant.Type.BOOL,
       _signal_name
@@ -296,7 +297,7 @@ export class Script extends Resource{
   }
   get_script_property_list() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_script_property_list,
+      Script._bindings.method_get_script_property_list,
       this._owner,
 			Variant.INT,
       
@@ -305,7 +306,7 @@ export class Script extends Resource{
   }
   get_script_method_list() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_script_method_list,
+      Script._bindings.method_get_script_method_list,
       this._owner,
 			Variant.INT,
       
@@ -314,7 +315,7 @@ export class Script extends Resource{
   }
   get_script_signal_list() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_script_signal_list,
+      Script._bindings.method_get_script_signal_list,
       this._owner,
 			Variant.INT,
       
@@ -323,7 +324,7 @@ export class Script extends Resource{
   }
   get_script_constant_map() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_script_constant_map,
+      Script._bindings.method_get_script_constant_map,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -333,7 +334,7 @@ export class Script extends Resource{
   }
   get_property_default_value(_property) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_property_default_value,
+      Script._bindings.method_get_property_default_value,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -343,7 +344,7 @@ export class Script extends Resource{
   }
   is_tool() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_tool,
+      Script._bindings.method_is_tool,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -352,7 +353,7 @@ export class Script extends Resource{
   }
   is_abstract() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_abstract,
+      Script._bindings.method_is_abstract,
       this._owner,
 			Variant.Type.BOOL,
       

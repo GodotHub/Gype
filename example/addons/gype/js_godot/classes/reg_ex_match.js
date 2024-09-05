@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
 import { Dictionary } from '@js_godot/variant/dictionary'
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
-import { RefCounted } from '@js_godot/classes/ref_counted'
 import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { RefCounted } from '@js_godot/classes/ref_counted'
+import { Variant } from '@js_godot/variant/variant'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -103,9 +103,10 @@ export class RegExMatch extends RefCounted{
       );
     }
   }
+  
   get_subject() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_subject,
+      RegExMatch._bindings.method_get_subject,
       this._owner,
 			Variant.Type.STRING,
     
@@ -115,7 +116,7 @@ export class RegExMatch extends RefCounted{
   }
   get_group_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_group_count,
+      RegExMatch._bindings.method_get_group_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -124,7 +125,7 @@ export class RegExMatch extends RefCounted{
   }
   get_names() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_names,
+      RegExMatch._bindings.method_get_names,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -134,7 +135,7 @@ export class RegExMatch extends RefCounted{
   }
   get_strings() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_strings,
+      RegExMatch._bindings.method_get_strings,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -144,7 +145,7 @@ export class RegExMatch extends RefCounted{
   }
   get_string(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_string,
+      RegExMatch._bindings.method_get_string,
       this._owner,
 			Variant.Type.STRING,
     
@@ -154,7 +155,7 @@ export class RegExMatch extends RefCounted{
   }
   get_start(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_start,
+      RegExMatch._bindings.method_get_start,
       this._owner,
 			Variant.Type.INT,
       _name
@@ -163,7 +164,7 @@ export class RegExMatch extends RefCounted{
   }
   get_end(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_end,
+      RegExMatch._bindings.method_get_end,
       this._owner,
 			Variant.Type.INT,
       _name

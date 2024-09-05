@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
 import { Control } from '@js_godot/classes/control'
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
+import { GDString } from '@js_godot/variant/gd_string'
 import { Rect2 } from '@js_godot/variant/rect2'
 import {
   call_utility_ret,
@@ -593,9 +593,10 @@ export class TabBar extends Control{
       );
     }
   }
+  
   set_tab_count(_count) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tab_count,
+      TabBar._bindings.method_set_tab_count,
       this._owner,
       _count
     );
@@ -603,7 +604,7 @@ export class TabBar extends Control{
   }
   get_tab_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tab_count,
+      TabBar._bindings.method_get_tab_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -612,7 +613,7 @@ export class TabBar extends Control{
   }
   set_current_tab(_tab_idx) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_current_tab,
+      TabBar._bindings.method_set_current_tab,
       this._owner,
       _tab_idx
     );
@@ -620,7 +621,7 @@ export class TabBar extends Control{
   }
   get_current_tab() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_current_tab,
+      TabBar._bindings.method_get_current_tab,
       this._owner,
 			Variant.Type.INT,
       
@@ -629,7 +630,7 @@ export class TabBar extends Control{
   }
   get_previous_tab() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_previous_tab,
+      TabBar._bindings.method_get_previous_tab,
       this._owner,
 			Variant.Type.INT,
       
@@ -638,7 +639,7 @@ export class TabBar extends Control{
   }
   select_previous_available() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_select_previous_available,
+      TabBar._bindings.method_select_previous_available,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -647,7 +648,7 @@ export class TabBar extends Control{
   }
   select_next_available() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_select_next_available,
+      TabBar._bindings.method_select_next_available,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -656,7 +657,7 @@ export class TabBar extends Control{
   }
   set_tab_title(_tab_idx, _title) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tab_title,
+      TabBar._bindings.method_set_tab_title,
       this._owner,
       _tab_idx, _title
     );
@@ -664,7 +665,7 @@ export class TabBar extends Control{
   }
   get_tab_title(_tab_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tab_title,
+      TabBar._bindings.method_get_tab_title,
       this._owner,
 			Variant.Type.STRING,
     
@@ -674,7 +675,7 @@ export class TabBar extends Control{
   }
   set_tab_tooltip(_tab_idx, _tooltip) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tab_tooltip,
+      TabBar._bindings.method_set_tab_tooltip,
       this._owner,
       _tab_idx, _tooltip
     );
@@ -682,7 +683,7 @@ export class TabBar extends Control{
   }
   get_tab_tooltip(_tab_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tab_tooltip,
+      TabBar._bindings.method_get_tab_tooltip,
       this._owner,
 			Variant.Type.STRING,
     
@@ -692,7 +693,7 @@ export class TabBar extends Control{
   }
   set_tab_text_direction(_tab_idx, _direction) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tab_text_direction,
+      TabBar._bindings.method_set_tab_text_direction,
       this._owner,
       _tab_idx, _direction
     );
@@ -700,7 +701,7 @@ export class TabBar extends Control{
   }
   get_tab_text_direction(_tab_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tab_text_direction,
+      TabBar._bindings.method_get_tab_text_direction,
       this._owner,
 			Variant.INT,
       _tab_idx
@@ -709,7 +710,7 @@ export class TabBar extends Control{
   }
   set_tab_language(_tab_idx, _language) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tab_language,
+      TabBar._bindings.method_set_tab_language,
       this._owner,
       _tab_idx, _language
     );
@@ -717,7 +718,7 @@ export class TabBar extends Control{
   }
   get_tab_language(_tab_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tab_language,
+      TabBar._bindings.method_get_tab_language,
       this._owner,
 			Variant.Type.STRING,
     
@@ -727,7 +728,7 @@ export class TabBar extends Control{
   }
   set_tab_icon(_tab_idx, _icon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tab_icon,
+      TabBar._bindings.method_set_tab_icon,
       this._owner,
       _tab_idx, _icon
     );
@@ -735,7 +736,7 @@ export class TabBar extends Control{
   }
   get_tab_icon(_tab_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tab_icon,
+      TabBar._bindings.method_get_tab_icon,
       this._owner,
 			Variant.INT,
       _tab_idx
@@ -744,7 +745,7 @@ export class TabBar extends Control{
   }
   set_tab_icon_max_width(_tab_idx, _width) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tab_icon_max_width,
+      TabBar._bindings.method_set_tab_icon_max_width,
       this._owner,
       _tab_idx, _width
     );
@@ -752,7 +753,7 @@ export class TabBar extends Control{
   }
   get_tab_icon_max_width(_tab_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tab_icon_max_width,
+      TabBar._bindings.method_get_tab_icon_max_width,
       this._owner,
 			Variant.Type.INT,
       _tab_idx
@@ -761,7 +762,7 @@ export class TabBar extends Control{
   }
   set_tab_button_icon(_tab_idx, _icon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tab_button_icon,
+      TabBar._bindings.method_set_tab_button_icon,
       this._owner,
       _tab_idx, _icon
     );
@@ -769,7 +770,7 @@ export class TabBar extends Control{
   }
   get_tab_button_icon(_tab_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tab_button_icon,
+      TabBar._bindings.method_get_tab_button_icon,
       this._owner,
 			Variant.INT,
       _tab_idx
@@ -778,7 +779,7 @@ export class TabBar extends Control{
   }
   set_tab_disabled(_tab_idx, _disabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tab_disabled,
+      TabBar._bindings.method_set_tab_disabled,
       this._owner,
       _tab_idx, _disabled
     );
@@ -786,7 +787,7 @@ export class TabBar extends Control{
   }
   is_tab_disabled(_tab_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_tab_disabled,
+      TabBar._bindings.method_is_tab_disabled,
       this._owner,
 			Variant.Type.BOOL,
       _tab_idx
@@ -795,7 +796,7 @@ export class TabBar extends Control{
   }
   set_tab_hidden(_tab_idx, _hidden) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tab_hidden,
+      TabBar._bindings.method_set_tab_hidden,
       this._owner,
       _tab_idx, _hidden
     );
@@ -803,7 +804,7 @@ export class TabBar extends Control{
   }
   is_tab_hidden(_tab_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_tab_hidden,
+      TabBar._bindings.method_is_tab_hidden,
       this._owner,
 			Variant.Type.BOOL,
       _tab_idx
@@ -812,7 +813,7 @@ export class TabBar extends Control{
   }
   set_tab_metadata(_tab_idx, _metadata) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tab_metadata,
+      TabBar._bindings.method_set_tab_metadata,
       this._owner,
       _tab_idx, _metadata
     );
@@ -820,7 +821,7 @@ export class TabBar extends Control{
   }
   get_tab_metadata(_tab_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tab_metadata,
+      TabBar._bindings.method_get_tab_metadata,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -830,7 +831,7 @@ export class TabBar extends Control{
   }
   remove_tab(_tab_idx) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_tab,
+      TabBar._bindings.method_remove_tab,
       this._owner,
       _tab_idx
     );
@@ -838,7 +839,7 @@ export class TabBar extends Control{
   }
   add_tab(_title, _icon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_tab,
+      TabBar._bindings.method_add_tab,
       this._owner,
       _title, _icon
     );
@@ -846,7 +847,7 @@ export class TabBar extends Control{
   }
   get_tab_idx_at_point(_point) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tab_idx_at_point,
+      TabBar._bindings.method_get_tab_idx_at_point,
       this._owner,
 			Variant.Type.INT,
       _point
@@ -855,7 +856,7 @@ export class TabBar extends Control{
   }
   set_tab_alignment(_alignment) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tab_alignment,
+      TabBar._bindings.method_set_tab_alignment,
       this._owner,
       _alignment
     );
@@ -863,7 +864,7 @@ export class TabBar extends Control{
   }
   get_tab_alignment() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tab_alignment,
+      TabBar._bindings.method_get_tab_alignment,
       this._owner,
 			Variant.INT,
       
@@ -872,7 +873,7 @@ export class TabBar extends Control{
   }
   set_clip_tabs(_clip_tabs) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_clip_tabs,
+      TabBar._bindings.method_set_clip_tabs,
       this._owner,
       _clip_tabs
     );
@@ -880,7 +881,7 @@ export class TabBar extends Control{
   }
   get_clip_tabs() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_clip_tabs,
+      TabBar._bindings.method_get_clip_tabs,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -889,7 +890,7 @@ export class TabBar extends Control{
   }
   get_tab_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tab_offset,
+      TabBar._bindings.method_get_tab_offset,
       this._owner,
 			Variant.Type.INT,
       
@@ -898,7 +899,7 @@ export class TabBar extends Control{
   }
   get_offset_buttons_visible() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_offset_buttons_visible,
+      TabBar._bindings.method_get_offset_buttons_visible,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -907,7 +908,7 @@ export class TabBar extends Control{
   }
   ensure_tab_visible(_idx) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_ensure_tab_visible,
+      TabBar._bindings.method_ensure_tab_visible,
       this._owner,
       _idx
     );
@@ -915,7 +916,7 @@ export class TabBar extends Control{
   }
   get_tab_rect(_tab_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tab_rect,
+      TabBar._bindings.method_get_tab_rect,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -925,7 +926,7 @@ export class TabBar extends Control{
   }
   move_tab(_from, _to) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_move_tab,
+      TabBar._bindings.method_move_tab,
       this._owner,
       _from, _to
     );
@@ -933,7 +934,7 @@ export class TabBar extends Control{
   }
   set_tab_close_display_policy(_policy) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tab_close_display_policy,
+      TabBar._bindings.method_set_tab_close_display_policy,
       this._owner,
       _policy
     );
@@ -941,7 +942,7 @@ export class TabBar extends Control{
   }
   get_tab_close_display_policy() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tab_close_display_policy,
+      TabBar._bindings.method_get_tab_close_display_policy,
       this._owner,
 			Variant.INT,
       
@@ -950,7 +951,7 @@ export class TabBar extends Control{
   }
   set_max_tab_width(_width) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_max_tab_width,
+      TabBar._bindings.method_set_max_tab_width,
       this._owner,
       _width
     );
@@ -958,7 +959,7 @@ export class TabBar extends Control{
   }
   get_max_tab_width() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_max_tab_width,
+      TabBar._bindings.method_get_max_tab_width,
       this._owner,
 			Variant.Type.INT,
       
@@ -967,7 +968,7 @@ export class TabBar extends Control{
   }
   set_scrolling_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_scrolling_enabled,
+      TabBar._bindings.method_set_scrolling_enabled,
       this._owner,
       _enabled
     );
@@ -975,7 +976,7 @@ export class TabBar extends Control{
   }
   get_scrolling_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_scrolling_enabled,
+      TabBar._bindings.method_get_scrolling_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -984,7 +985,7 @@ export class TabBar extends Control{
   }
   set_drag_to_rearrange_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_drag_to_rearrange_enabled,
+      TabBar._bindings.method_set_drag_to_rearrange_enabled,
       this._owner,
       _enabled
     );
@@ -992,7 +993,7 @@ export class TabBar extends Control{
   }
   get_drag_to_rearrange_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_drag_to_rearrange_enabled,
+      TabBar._bindings.method_get_drag_to_rearrange_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1001,7 +1002,7 @@ export class TabBar extends Control{
   }
   set_tabs_rearrange_group(_group_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tabs_rearrange_group,
+      TabBar._bindings.method_set_tabs_rearrange_group,
       this._owner,
       _group_id
     );
@@ -1009,7 +1010,7 @@ export class TabBar extends Control{
   }
   get_tabs_rearrange_group() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tabs_rearrange_group,
+      TabBar._bindings.method_get_tabs_rearrange_group,
       this._owner,
 			Variant.Type.INT,
       
@@ -1018,7 +1019,7 @@ export class TabBar extends Control{
   }
   set_scroll_to_selected(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_scroll_to_selected,
+      TabBar._bindings.method_set_scroll_to_selected,
       this._owner,
       _enabled
     );
@@ -1026,7 +1027,7 @@ export class TabBar extends Control{
   }
   get_scroll_to_selected() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_scroll_to_selected,
+      TabBar._bindings.method_get_scroll_to_selected,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1035,7 +1036,7 @@ export class TabBar extends Control{
   }
   set_select_with_rmb(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_select_with_rmb,
+      TabBar._bindings.method_set_select_with_rmb,
       this._owner,
       _enabled
     );
@@ -1043,7 +1044,7 @@ export class TabBar extends Control{
   }
   get_select_with_rmb() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_select_with_rmb,
+      TabBar._bindings.method_get_select_with_rmb,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1052,7 +1053,7 @@ export class TabBar extends Control{
   }
   set_deselect_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_deselect_enabled,
+      TabBar._bindings.method_set_deselect_enabled,
       this._owner,
       _enabled
     );
@@ -1060,7 +1061,7 @@ export class TabBar extends Control{
   }
   get_deselect_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_deselect_enabled,
+      TabBar._bindings.method_get_deselect_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1069,7 +1070,7 @@ export class TabBar extends Control{
   }
   clear_tabs() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_tabs,
+      TabBar._bindings.method_clear_tabs,
       this._owner,
       
     );

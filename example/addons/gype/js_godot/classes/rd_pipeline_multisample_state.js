@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -150,9 +150,10 @@ export class RDPipelineMultisampleState extends RefCounted{
       );
     }
   }
+  
   set_sample_count(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sample_count,
+      RDPipelineMultisampleState._bindings.method_set_sample_count,
       this._owner,
       _p_member
     );
@@ -160,7 +161,7 @@ export class RDPipelineMultisampleState extends RefCounted{
   }
   get_sample_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sample_count,
+      RDPipelineMultisampleState._bindings.method_get_sample_count,
       this._owner,
 			Variant.INT,
       
@@ -169,7 +170,7 @@ export class RDPipelineMultisampleState extends RefCounted{
   }
   set_enable_sample_shading(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_enable_sample_shading,
+      RDPipelineMultisampleState._bindings.method_set_enable_sample_shading,
       this._owner,
       _p_member
     );
@@ -177,7 +178,7 @@ export class RDPipelineMultisampleState extends RefCounted{
   }
   get_enable_sample_shading() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_enable_sample_shading,
+      RDPipelineMultisampleState._bindings.method_get_enable_sample_shading,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -186,7 +187,7 @@ export class RDPipelineMultisampleState extends RefCounted{
   }
   set_min_sample_shading(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_min_sample_shading,
+      RDPipelineMultisampleState._bindings.method_set_min_sample_shading,
       this._owner,
       _p_member
     );
@@ -194,7 +195,7 @@ export class RDPipelineMultisampleState extends RefCounted{
   }
   get_min_sample_shading() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_min_sample_shading,
+      RDPipelineMultisampleState._bindings.method_get_min_sample_shading,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -203,7 +204,7 @@ export class RDPipelineMultisampleState extends RefCounted{
   }
   set_enable_alpha_to_coverage(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_enable_alpha_to_coverage,
+      RDPipelineMultisampleState._bindings.method_set_enable_alpha_to_coverage,
       this._owner,
       _p_member
     );
@@ -211,7 +212,7 @@ export class RDPipelineMultisampleState extends RefCounted{
   }
   get_enable_alpha_to_coverage() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_enable_alpha_to_coverage,
+      RDPipelineMultisampleState._bindings.method_get_enable_alpha_to_coverage,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -220,7 +221,7 @@ export class RDPipelineMultisampleState extends RefCounted{
   }
   set_enable_alpha_to_one(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_enable_alpha_to_one,
+      RDPipelineMultisampleState._bindings.method_set_enable_alpha_to_one,
       this._owner,
       _p_member
     );
@@ -228,7 +229,7 @@ export class RDPipelineMultisampleState extends RefCounted{
   }
   get_enable_alpha_to_one() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_enable_alpha_to_one,
+      RDPipelineMultisampleState._bindings.method_get_enable_alpha_to_one,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -237,7 +238,7 @@ export class RDPipelineMultisampleState extends RefCounted{
   }
   set_sample_masks(_masks) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sample_masks,
+      RDPipelineMultisampleState._bindings.method_set_sample_masks,
       this._owner,
       _masks
     );
@@ -245,7 +246,7 @@ export class RDPipelineMultisampleState extends RefCounted{
   }
   get_sample_masks() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sample_masks,
+      RDPipelineMultisampleState._bindings.method_get_sample_masks,
       this._owner,
 			Variant.INT,
       

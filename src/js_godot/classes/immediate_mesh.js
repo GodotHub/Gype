@@ -1,11 +1,11 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Mesh } from '@js_godot/classes/mesh'
-import { Vector3 } from '@js_godot/variant/vector3'
-import { StringName } from '@js_godot/variant/string_name'
 import { Color } from '@js_godot/variant/color'
+import { Mesh } from '@js_godot/classes/mesh'
+import { Variant } from '@js_godot/variant/variant'
 import { Vector2 } from '@js_godot/variant/vector2'
 import { Plane } from '@js_godot/variant/plane'
+import { StringName } from '@js_godot/variant/string_name'
+import { Vector3 } from '@js_godot/variant/vector3'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -134,9 +134,10 @@ export class ImmediateMesh extends Mesh{
       );
     }
   }
+  
   surface_begin(_primitive, _material) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_surface_begin,
+      ImmediateMesh._bindings.method_surface_begin,
       this._owner,
       _primitive, _material
     );
@@ -144,7 +145,7 @@ export class ImmediateMesh extends Mesh{
   }
   surface_set_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_surface_set_color,
+      ImmediateMesh._bindings.method_surface_set_color,
       this._owner,
       _color
     );
@@ -152,7 +153,7 @@ export class ImmediateMesh extends Mesh{
   }
   surface_set_normal(_normal) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_surface_set_normal,
+      ImmediateMesh._bindings.method_surface_set_normal,
       this._owner,
       _normal
     );
@@ -160,7 +161,7 @@ export class ImmediateMesh extends Mesh{
   }
   surface_set_tangent(_tangent) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_surface_set_tangent,
+      ImmediateMesh._bindings.method_surface_set_tangent,
       this._owner,
       _tangent
     );
@@ -168,7 +169,7 @@ export class ImmediateMesh extends Mesh{
   }
   surface_set_uv(_uv) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_surface_set_uv,
+      ImmediateMesh._bindings.method_surface_set_uv,
       this._owner,
       _uv
     );
@@ -176,7 +177,7 @@ export class ImmediateMesh extends Mesh{
   }
   surface_set_uv2(_uv2) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_surface_set_uv2,
+      ImmediateMesh._bindings.method_surface_set_uv2,
       this._owner,
       _uv2
     );
@@ -184,7 +185,7 @@ export class ImmediateMesh extends Mesh{
   }
   surface_add_vertex(_vertex) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_surface_add_vertex,
+      ImmediateMesh._bindings.method_surface_add_vertex,
       this._owner,
       _vertex
     );
@@ -192,7 +193,7 @@ export class ImmediateMesh extends Mesh{
   }
   surface_add_vertex_2d(_vertex) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_surface_add_vertex_2d,
+      ImmediateMesh._bindings.method_surface_add_vertex_2d,
       this._owner,
       _vertex
     );
@@ -200,7 +201,7 @@ export class ImmediateMesh extends Mesh{
   }
   surface_end() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_surface_end,
+      ImmediateMesh._bindings.method_surface_end,
       this._owner,
       
     );
@@ -208,7 +209,7 @@ export class ImmediateMesh extends Mesh{
   }
   clear_surfaces() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_surfaces,
+      ImmediateMesh._bindings.method_clear_surfaces,
       this._owner,
       
     );

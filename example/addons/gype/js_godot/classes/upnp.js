@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
+import { RefCounted } from '@js_godot/classes/ref_counted'
 import { Variant } from '@js_godot/variant/variant'
 import { GDString } from '@js_godot/variant/gd_string'
-import { RefCounted } from '@js_godot/classes/ref_counted'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -201,9 +201,10 @@ export class UPNP extends RefCounted{
       );
     }
   }
+  
   get_device_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_device_count,
+      UPNP._bindings.method_get_device_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -212,7 +213,7 @@ export class UPNP extends RefCounted{
   }
   get_device(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_device,
+      UPNP._bindings.method_get_device,
       this._owner,
 			Variant.INT,
       _index
@@ -221,7 +222,7 @@ export class UPNP extends RefCounted{
   }
   add_device(_device) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_device,
+      UPNP._bindings.method_add_device,
       this._owner,
       _device
     );
@@ -229,7 +230,7 @@ export class UPNP extends RefCounted{
   }
   set_device(_index, _device) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_device,
+      UPNP._bindings.method_set_device,
       this._owner,
       _index, _device
     );
@@ -237,7 +238,7 @@ export class UPNP extends RefCounted{
   }
   remove_device(_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_device,
+      UPNP._bindings.method_remove_device,
       this._owner,
       _index
     );
@@ -245,7 +246,7 @@ export class UPNP extends RefCounted{
   }
   clear_devices() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_devices,
+      UPNP._bindings.method_clear_devices,
       this._owner,
       
     );
@@ -253,7 +254,7 @@ export class UPNP extends RefCounted{
   }
   get_gateway() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_gateway,
+      UPNP._bindings.method_get_gateway,
       this._owner,
 			Variant.INT,
       
@@ -262,7 +263,7 @@ export class UPNP extends RefCounted{
   }
   discover(_timeout, _ttl, _device_filter) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_discover,
+      UPNP._bindings.method_discover,
       this._owner,
 			Variant.Type.INT,
       _timeout, _ttl, _device_filter
@@ -271,7 +272,7 @@ export class UPNP extends RefCounted{
   }
   query_external_address() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_query_external_address,
+      UPNP._bindings.method_query_external_address,
       this._owner,
 			Variant.Type.STRING,
     
@@ -281,7 +282,7 @@ export class UPNP extends RefCounted{
   }
   add_port_mapping(_port, _port_internal, _desc, _proto, _duration) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_add_port_mapping,
+      UPNP._bindings.method_add_port_mapping,
       this._owner,
 			Variant.Type.INT,
       _port, _port_internal, _desc, _proto, _duration
@@ -290,7 +291,7 @@ export class UPNP extends RefCounted{
   }
   delete_port_mapping(_port, _proto) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_delete_port_mapping,
+      UPNP._bindings.method_delete_port_mapping,
       this._owner,
 			Variant.Type.INT,
       _port, _proto
@@ -299,7 +300,7 @@ export class UPNP extends RefCounted{
   }
   set_discover_multicast_if(_m_if) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_discover_multicast_if,
+      UPNP._bindings.method_set_discover_multicast_if,
       this._owner,
       _m_if
     );
@@ -307,7 +308,7 @@ export class UPNP extends RefCounted{
   }
   get_discover_multicast_if() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_discover_multicast_if,
+      UPNP._bindings.method_get_discover_multicast_if,
       this._owner,
 			Variant.Type.STRING,
     
@@ -317,7 +318,7 @@ export class UPNP extends RefCounted{
   }
   set_discover_local_port(_port) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_discover_local_port,
+      UPNP._bindings.method_set_discover_local_port,
       this._owner,
       _port
     );
@@ -325,7 +326,7 @@ export class UPNP extends RefCounted{
   }
   get_discover_local_port() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_discover_local_port,
+      UPNP._bindings.method_get_discover_local_port,
       this._owner,
 			Variant.Type.INT,
       
@@ -334,7 +335,7 @@ export class UPNP extends RefCounted{
   }
   set_discover_ipv6(_ipv6) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_discover_ipv6,
+      UPNP._bindings.method_set_discover_ipv6,
       this._owner,
       _ipv6
     );
@@ -342,7 +343,7 @@ export class UPNP extends RefCounted{
   }
   is_discover_ipv6() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_discover_ipv6,
+      UPNP._bindings.method_is_discover_ipv6,
       this._owner,
 			Variant.Type.BOOL,
       

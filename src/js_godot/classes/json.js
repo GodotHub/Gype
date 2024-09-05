@@ -111,9 +111,10 @@ export class JSON extends Resource{
       );
     }
   }
+  
   stringify(_data, _indent, _sort_keys, _full_precision) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_stringify,
+      JSON._bindings.method_stringify,
       this._owner,
 			Variant.Type.STRING,
     
@@ -123,7 +124,7 @@ export class JSON extends Resource{
   }
   parse_string(_json_string) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_parse_string,
+      JSON._bindings.method_parse_string,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -133,7 +134,7 @@ export class JSON extends Resource{
   }
   parse(_json_text, _keep_text) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_parse,
+      JSON._bindings.method_parse,
       this._owner,
 			Variant.INT,
       _json_text, _keep_text
@@ -142,7 +143,7 @@ export class JSON extends Resource{
   }
   get_data() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_data,
+      JSON._bindings.method_get_data,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -152,7 +153,7 @@ export class JSON extends Resource{
   }
   set_data(_data) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_data,
+      JSON._bindings.method_set_data,
       this._owner,
       _data
     );
@@ -160,7 +161,7 @@ export class JSON extends Resource{
   }
   get_parsed_text() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_parsed_text,
+      JSON._bindings.method_get_parsed_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -170,7 +171,7 @@ export class JSON extends Resource{
   }
   get_error_line() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_error_line,
+      JSON._bindings.method_get_error_line,
       this._owner,
 			Variant.Type.INT,
       
@@ -179,7 +180,7 @@ export class JSON extends Resource{
   }
   get_error_message() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_error_message,
+      JSON._bindings.method_get_error_message,
       this._owner,
 			Variant.Type.STRING,
     

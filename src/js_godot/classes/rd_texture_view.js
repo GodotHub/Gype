@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -130,9 +130,10 @@ export class RDTextureView extends RefCounted{
       );
     }
   }
+  
   set_format_override(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_format_override,
+      RDTextureView._bindings.method_set_format_override,
       this._owner,
       _p_member
     );
@@ -140,7 +141,7 @@ export class RDTextureView extends RefCounted{
   }
   get_format_override() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_format_override,
+      RDTextureView._bindings.method_get_format_override,
       this._owner,
 			Variant.INT,
       
@@ -149,7 +150,7 @@ export class RDTextureView extends RefCounted{
   }
   set_swizzle_r(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_swizzle_r,
+      RDTextureView._bindings.method_set_swizzle_r,
       this._owner,
       _p_member
     );
@@ -157,7 +158,7 @@ export class RDTextureView extends RefCounted{
   }
   get_swizzle_r() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_swizzle_r,
+      RDTextureView._bindings.method_get_swizzle_r,
       this._owner,
 			Variant.INT,
       
@@ -166,7 +167,7 @@ export class RDTextureView extends RefCounted{
   }
   set_swizzle_g(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_swizzle_g,
+      RDTextureView._bindings.method_set_swizzle_g,
       this._owner,
       _p_member
     );
@@ -174,7 +175,7 @@ export class RDTextureView extends RefCounted{
   }
   get_swizzle_g() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_swizzle_g,
+      RDTextureView._bindings.method_get_swizzle_g,
       this._owner,
 			Variant.INT,
       
@@ -183,7 +184,7 @@ export class RDTextureView extends RefCounted{
   }
   set_swizzle_b(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_swizzle_b,
+      RDTextureView._bindings.method_set_swizzle_b,
       this._owner,
       _p_member
     );
@@ -191,7 +192,7 @@ export class RDTextureView extends RefCounted{
   }
   get_swizzle_b() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_swizzle_b,
+      RDTextureView._bindings.method_get_swizzle_b,
       this._owner,
 			Variant.INT,
       
@@ -200,7 +201,7 @@ export class RDTextureView extends RefCounted{
   }
   set_swizzle_a(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_swizzle_a,
+      RDTextureView._bindings.method_set_swizzle_a,
       this._owner,
       _p_member
     );
@@ -208,7 +209,7 @@ export class RDTextureView extends RefCounted{
   }
   get_swizzle_a() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_swizzle_a,
+      RDTextureView._bindings.method_get_swizzle_a,
       this._owner,
 			Variant.INT,
       

@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { CSGPrimitive3D } from '@js_godot/classes/csg_primitive3d'
+import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
@@ -150,9 +150,10 @@ export class CSGCylinder3D extends CSGPrimitive3D{
       );
     }
   }
+  
   set_radius(_radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_radius,
+      CSGCylinder3D._bindings.method_set_radius,
       this._owner,
       _radius
     );
@@ -160,7 +161,7 @@ export class CSGCylinder3D extends CSGPrimitive3D{
   }
   get_radius() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_radius,
+      CSGCylinder3D._bindings.method_get_radius,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -169,7 +170,7 @@ export class CSGCylinder3D extends CSGPrimitive3D{
   }
   set_height(_height) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_height,
+      CSGCylinder3D._bindings.method_set_height,
       this._owner,
       _height
     );
@@ -177,7 +178,7 @@ export class CSGCylinder3D extends CSGPrimitive3D{
   }
   get_height() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_height,
+      CSGCylinder3D._bindings.method_get_height,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -186,7 +187,7 @@ export class CSGCylinder3D extends CSGPrimitive3D{
   }
   set_sides(_sides) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sides,
+      CSGCylinder3D._bindings.method_set_sides,
       this._owner,
       _sides
     );
@@ -194,7 +195,7 @@ export class CSGCylinder3D extends CSGPrimitive3D{
   }
   get_sides() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sides,
+      CSGCylinder3D._bindings.method_get_sides,
       this._owner,
 			Variant.Type.INT,
       
@@ -203,7 +204,7 @@ export class CSGCylinder3D extends CSGPrimitive3D{
   }
   set_cone(_cone) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cone,
+      CSGCylinder3D._bindings.method_set_cone,
       this._owner,
       _cone
     );
@@ -211,7 +212,7 @@ export class CSGCylinder3D extends CSGPrimitive3D{
   }
   is_cone() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_cone,
+      CSGCylinder3D._bindings.method_is_cone,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -220,7 +221,7 @@ export class CSGCylinder3D extends CSGPrimitive3D{
   }
   set_material(_material) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_material,
+      CSGCylinder3D._bindings.method_set_material,
       this._owner,
       _material
     );
@@ -228,7 +229,7 @@ export class CSGCylinder3D extends CSGPrimitive3D{
   }
   get_material() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_material,
+      CSGCylinder3D._bindings.method_get_material,
       this._owner,
 			Variant.INT,
       
@@ -237,7 +238,7 @@ export class CSGCylinder3D extends CSGPrimitive3D{
   }
   set_smooth_faces(_smooth_faces) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_smooth_faces,
+      CSGCylinder3D._bindings.method_set_smooth_faces,
       this._owner,
       _smooth_faces
     );
@@ -245,7 +246,7 @@ export class CSGCylinder3D extends CSGPrimitive3D{
   }
   get_smooth_faces() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_smooth_faces,
+      CSGCylinder3D._bindings.method_get_smooth_faces,
       this._owner,
 			Variant.Type.BOOL,
       

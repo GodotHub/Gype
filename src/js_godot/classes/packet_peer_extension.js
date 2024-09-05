@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { PacketPeer } from '@js_godot/classes/packet_peer'
 import {
   call_utility_ret,
@@ -30,6 +30,7 @@ export class PacketPeerExtension extends PacketPeer{
     }
     this.#initialized = true;
   }
+  
   _get_packet(_r_buffer, _r_buffer_size) {
   }
   _put_packet(_p_buffer, _p_buffer_size) {

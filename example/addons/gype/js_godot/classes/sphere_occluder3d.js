@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { Occluder3D } from '@js_godot/classes/occluder3d'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -50,9 +50,10 @@ export class SphereOccluder3D extends Occluder3D{
       );
     }
   }
+  
   set_radius(_radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_radius,
+      SphereOccluder3D._bindings.method_set_radius,
       this._owner,
       _radius
     );
@@ -60,7 +61,7 @@ export class SphereOccluder3D extends Occluder3D{
   }
   get_radius() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_radius,
+      SphereOccluder3D._bindings.method_get_radius,
       this._owner,
 			Variant.Type.FLOAT,
       

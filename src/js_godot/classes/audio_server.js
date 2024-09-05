@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
-import { GodotObject } from '@js_godot/classes/godot_object'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { StringName } from '@js_godot/variant/string_name'
+import { GodotObject } from '@js_godot/classes/godot_object'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -521,9 +521,10 @@ class _MethodBindings {
       );
     }
   }
+  
   set_bus_count(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bus_count,
+      _AudioServer._bindings.method_set_bus_count,
       this._owner,
       _amount
     );
@@ -531,7 +532,7 @@ class _MethodBindings {
   }
   get_bus_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bus_count,
+      _AudioServer._bindings.method_get_bus_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -540,7 +541,7 @@ class _MethodBindings {
   }
   remove_bus(_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_bus,
+      _AudioServer._bindings.method_remove_bus,
       this._owner,
       _index
     );
@@ -548,7 +549,7 @@ class _MethodBindings {
   }
   add_bus(_at_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_bus,
+      _AudioServer._bindings.method_add_bus,
       this._owner,
       _at_position
     );
@@ -556,7 +557,7 @@ class _MethodBindings {
   }
   move_bus(_index, _to_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_move_bus,
+      _AudioServer._bindings.method_move_bus,
       this._owner,
       _index, _to_index
     );
@@ -564,7 +565,7 @@ class _MethodBindings {
   }
   set_bus_name(_bus_idx, _name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bus_name,
+      _AudioServer._bindings.method_set_bus_name,
       this._owner,
       _bus_idx, _name
     );
@@ -572,7 +573,7 @@ class _MethodBindings {
   }
   get_bus_name(_bus_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bus_name,
+      _AudioServer._bindings.method_get_bus_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -582,7 +583,7 @@ class _MethodBindings {
   }
   get_bus_index(_bus_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bus_index,
+      _AudioServer._bindings.method_get_bus_index,
       this._owner,
 			Variant.Type.INT,
       _bus_name
@@ -591,7 +592,7 @@ class _MethodBindings {
   }
   get_bus_channels(_bus_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bus_channels,
+      _AudioServer._bindings.method_get_bus_channels,
       this._owner,
 			Variant.Type.INT,
       _bus_idx
@@ -600,7 +601,7 @@ class _MethodBindings {
   }
   set_bus_volume_db(_bus_idx, _volume_db) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bus_volume_db,
+      _AudioServer._bindings.method_set_bus_volume_db,
       this._owner,
       _bus_idx, _volume_db
     );
@@ -608,7 +609,7 @@ class _MethodBindings {
   }
   get_bus_volume_db(_bus_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bus_volume_db,
+      _AudioServer._bindings.method_get_bus_volume_db,
       this._owner,
 			Variant.Type.FLOAT,
       _bus_idx
@@ -617,7 +618,7 @@ class _MethodBindings {
   }
   set_bus_send(_bus_idx, _send) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bus_send,
+      _AudioServer._bindings.method_set_bus_send,
       this._owner,
       _bus_idx, _send
     );
@@ -625,7 +626,7 @@ class _MethodBindings {
   }
   get_bus_send(_bus_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bus_send,
+      _AudioServer._bindings.method_get_bus_send,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -635,7 +636,7 @@ class _MethodBindings {
   }
   set_bus_solo(_bus_idx, _enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bus_solo,
+      _AudioServer._bindings.method_set_bus_solo,
       this._owner,
       _bus_idx, _enable
     );
@@ -643,7 +644,7 @@ class _MethodBindings {
   }
   is_bus_solo(_bus_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_bus_solo,
+      _AudioServer._bindings.method_is_bus_solo,
       this._owner,
 			Variant.Type.BOOL,
       _bus_idx
@@ -652,7 +653,7 @@ class _MethodBindings {
   }
   set_bus_mute(_bus_idx, _enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bus_mute,
+      _AudioServer._bindings.method_set_bus_mute,
       this._owner,
       _bus_idx, _enable
     );
@@ -660,7 +661,7 @@ class _MethodBindings {
   }
   is_bus_mute(_bus_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_bus_mute,
+      _AudioServer._bindings.method_is_bus_mute,
       this._owner,
 			Variant.Type.BOOL,
       _bus_idx
@@ -669,7 +670,7 @@ class _MethodBindings {
   }
   set_bus_bypass_effects(_bus_idx, _enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bus_bypass_effects,
+      _AudioServer._bindings.method_set_bus_bypass_effects,
       this._owner,
       _bus_idx, _enable
     );
@@ -677,7 +678,7 @@ class _MethodBindings {
   }
   is_bus_bypassing_effects(_bus_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_bus_bypassing_effects,
+      _AudioServer._bindings.method_is_bus_bypassing_effects,
       this._owner,
 			Variant.Type.BOOL,
       _bus_idx
@@ -686,7 +687,7 @@ class _MethodBindings {
   }
   add_bus_effect(_bus_idx, _effect, _at_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_bus_effect,
+      _AudioServer._bindings.method_add_bus_effect,
       this._owner,
       _bus_idx, _effect, _at_position
     );
@@ -694,7 +695,7 @@ class _MethodBindings {
   }
   remove_bus_effect(_bus_idx, _effect_idx) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_bus_effect,
+      _AudioServer._bindings.method_remove_bus_effect,
       this._owner,
       _bus_idx, _effect_idx
     );
@@ -702,7 +703,7 @@ class _MethodBindings {
   }
   get_bus_effect_count(_bus_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bus_effect_count,
+      _AudioServer._bindings.method_get_bus_effect_count,
       this._owner,
 			Variant.Type.INT,
       _bus_idx
@@ -711,7 +712,7 @@ class _MethodBindings {
   }
   get_bus_effect(_bus_idx, _effect_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bus_effect,
+      _AudioServer._bindings.method_get_bus_effect,
       this._owner,
 			Variant.INT,
       _bus_idx, _effect_idx
@@ -720,7 +721,7 @@ class _MethodBindings {
   }
   get_bus_effect_instance(_bus_idx, _effect_idx, _channel) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bus_effect_instance,
+      _AudioServer._bindings.method_get_bus_effect_instance,
       this._owner,
 			Variant.INT,
       _bus_idx, _effect_idx, _channel
@@ -729,7 +730,7 @@ class _MethodBindings {
   }
   swap_bus_effects(_bus_idx, _effect_idx, _by_effect_idx) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_swap_bus_effects,
+      _AudioServer._bindings.method_swap_bus_effects,
       this._owner,
       _bus_idx, _effect_idx, _by_effect_idx
     );
@@ -737,7 +738,7 @@ class _MethodBindings {
   }
   set_bus_effect_enabled(_bus_idx, _effect_idx, _enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bus_effect_enabled,
+      _AudioServer._bindings.method_set_bus_effect_enabled,
       this._owner,
       _bus_idx, _effect_idx, _enabled
     );
@@ -745,7 +746,7 @@ class _MethodBindings {
   }
   is_bus_effect_enabled(_bus_idx, _effect_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_bus_effect_enabled,
+      _AudioServer._bindings.method_is_bus_effect_enabled,
       this._owner,
 			Variant.Type.BOOL,
       _bus_idx, _effect_idx
@@ -754,7 +755,7 @@ class _MethodBindings {
   }
   get_bus_peak_volume_left_db(_bus_idx, _channel) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bus_peak_volume_left_db,
+      _AudioServer._bindings.method_get_bus_peak_volume_left_db,
       this._owner,
 			Variant.Type.FLOAT,
       _bus_idx, _channel
@@ -763,7 +764,7 @@ class _MethodBindings {
   }
   get_bus_peak_volume_right_db(_bus_idx, _channel) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bus_peak_volume_right_db,
+      _AudioServer._bindings.method_get_bus_peak_volume_right_db,
       this._owner,
 			Variant.Type.FLOAT,
       _bus_idx, _channel
@@ -772,7 +773,7 @@ class _MethodBindings {
   }
   set_playback_speed_scale(_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_playback_speed_scale,
+      _AudioServer._bindings.method_set_playback_speed_scale,
       this._owner,
       _scale
     );
@@ -780,7 +781,7 @@ class _MethodBindings {
   }
   get_playback_speed_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_playback_speed_scale,
+      _AudioServer._bindings.method_get_playback_speed_scale,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -789,7 +790,7 @@ class _MethodBindings {
   }
   lock() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_lock,
+      _AudioServer._bindings.method_lock,
       this._owner,
       
     );
@@ -797,7 +798,7 @@ class _MethodBindings {
   }
   unlock() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_unlock,
+      _AudioServer._bindings.method_unlock,
       this._owner,
       
     );
@@ -805,7 +806,7 @@ class _MethodBindings {
   }
   get_speaker_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_speaker_mode,
+      _AudioServer._bindings.method_get_speaker_mode,
       this._owner,
 			Variant.INT,
       
@@ -814,7 +815,7 @@ class _MethodBindings {
   }
   get_mix_rate() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mix_rate,
+      _AudioServer._bindings.method_get_mix_rate,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -823,7 +824,7 @@ class _MethodBindings {
   }
   get_output_device_list() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_output_device_list,
+      _AudioServer._bindings.method_get_output_device_list,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -833,7 +834,7 @@ class _MethodBindings {
   }
   get_output_device() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_output_device,
+      _AudioServer._bindings.method_get_output_device,
       this._owner,
 			Variant.Type.STRING,
     
@@ -843,7 +844,7 @@ class _MethodBindings {
   }
   set_output_device(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_output_device,
+      _AudioServer._bindings.method_set_output_device,
       this._owner,
       _name
     );
@@ -851,7 +852,7 @@ class _MethodBindings {
   }
   get_time_to_next_mix() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_time_to_next_mix,
+      _AudioServer._bindings.method_get_time_to_next_mix,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -860,7 +861,7 @@ class _MethodBindings {
   }
   get_time_since_last_mix() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_time_since_last_mix,
+      _AudioServer._bindings.method_get_time_since_last_mix,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -869,7 +870,7 @@ class _MethodBindings {
   }
   get_output_latency() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_output_latency,
+      _AudioServer._bindings.method_get_output_latency,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -878,7 +879,7 @@ class _MethodBindings {
   }
   get_input_device_list() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_input_device_list,
+      _AudioServer._bindings.method_get_input_device_list,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -888,7 +889,7 @@ class _MethodBindings {
   }
   get_input_device() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_input_device,
+      _AudioServer._bindings.method_get_input_device,
       this._owner,
 			Variant.Type.STRING,
     
@@ -898,7 +899,7 @@ class _MethodBindings {
   }
   set_input_device(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_input_device,
+      _AudioServer._bindings.method_set_input_device,
       this._owner,
       _name
     );
@@ -906,7 +907,7 @@ class _MethodBindings {
   }
   set_bus_layout(_bus_layout) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bus_layout,
+      _AudioServer._bindings.method_set_bus_layout,
       this._owner,
       _bus_layout
     );
@@ -914,7 +915,7 @@ class _MethodBindings {
   }
   generate_bus_layout() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_generate_bus_layout,
+      _AudioServer._bindings.method_generate_bus_layout,
       this._owner,
 			Variant.INT,
       
@@ -923,7 +924,7 @@ class _MethodBindings {
   }
   set_enable_tagging_used_audio_streams(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_enable_tagging_used_audio_streams,
+      _AudioServer._bindings.method_set_enable_tagging_used_audio_streams,
       this._owner,
       _enable
     );
@@ -931,7 +932,7 @@ class _MethodBindings {
   }
   is_stream_registered_as_sample(_stream) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_stream_registered_as_sample,
+      _AudioServer._bindings.method_is_stream_registered_as_sample,
       this._owner,
 			Variant.Type.BOOL,
       _stream
@@ -940,7 +941,7 @@ class _MethodBindings {
   }
   register_stream_as_sample(_stream) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_register_stream_as_sample,
+      _AudioServer._bindings.method_register_stream_as_sample,
       this._owner,
       _stream
     );
@@ -989,4 +990,17 @@ set playback_speed_scale (new_value) {
     this._init_bindings();
   }
 }
-export const AudioServer = new _AudioServer();
+export const AudioServer = (function () {
+  let _instance;
+  function create_instance() {
+    return new _AudioServer();
+  }
+  return {
+    instance: function () {
+      if (!_instance) {
+        _instance = create_instance();
+      }
+      return _instance;
+    },
+  };
+})();

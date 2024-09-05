@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Callable } from '@js_godot/variant/callable'
+import { ConfirmationDialog } from '@js_godot/classes/confirmation_dialog'
 import { Variant } from '@js_godot/variant/variant'
+import { Callable } from '@js_godot/variant/callable'
 import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
-import { ConfirmationDialog } from '@js_godot/classes/confirmation_dialog'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -52,9 +52,10 @@ export class EditorCommandPalette extends ConfirmationDialog{
       );
     }
   }
+  
   add_command(_command_name, _key_name, _binded_callable, _shortcut_text) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_command,
+      EditorCommandPalette._bindings.method_add_command,
       this._owner,
       _command_name, _key_name, _binded_callable, _shortcut_text
     );
@@ -62,7 +63,7 @@ export class EditorCommandPalette extends ConfirmationDialog{
   }
   remove_command(_key_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_command,
+      EditorCommandPalette._bindings.method_remove_command,
       this._owner,
       _key_name
     );

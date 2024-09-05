@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { Node3D } from '@js_godot/classes/node3d'
 import {
   call_utility_ret,
@@ -90,9 +90,10 @@ export class CollisionShape3D extends Node3D{
       );
     }
   }
+  
   resource_changed(_resource) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_resource_changed,
+      CollisionShape3D._bindings.method_resource_changed,
       this._owner,
       _resource
     );
@@ -100,7 +101,7 @@ export class CollisionShape3D extends Node3D{
   }
   set_shape(_shape) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shape,
+      CollisionShape3D._bindings.method_set_shape,
       this._owner,
       _shape
     );
@@ -108,7 +109,7 @@ export class CollisionShape3D extends Node3D{
   }
   get_shape() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_shape,
+      CollisionShape3D._bindings.method_get_shape,
       this._owner,
 			Variant.INT,
       
@@ -117,7 +118,7 @@ export class CollisionShape3D extends Node3D{
   }
   set_disabled(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_disabled,
+      CollisionShape3D._bindings.method_set_disabled,
       this._owner,
       _enable
     );
@@ -125,7 +126,7 @@ export class CollisionShape3D extends Node3D{
   }
   is_disabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_disabled,
+      CollisionShape3D._bindings.method_is_disabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -134,7 +135,7 @@ export class CollisionShape3D extends Node3D{
   }
   make_convex_from_siblings() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_make_convex_from_siblings,
+      CollisionShape3D._bindings.method_make_convex_from_siblings,
       this._owner,
       
     );

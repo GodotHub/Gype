@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
+import { XRTracker } from '@js_godot/classes/xr_tracker'
 import { Variant } from '@js_godot/variant/variant'
 import { PackedFloat32Array } from '@js_godot/variant/packed_float32_array'
-import { XRTracker } from '@js_godot/classes/xr_tracker'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -71,9 +71,10 @@ export class XRFaceTracker extends XRTracker{
       );
     }
   }
+  
   get_blend_shape(_blend_shape) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_blend_shape,
+      XRFaceTracker._bindings.method_get_blend_shape,
       this._owner,
 			Variant.Type.FLOAT,
       _blend_shape
@@ -82,7 +83,7 @@ export class XRFaceTracker extends XRTracker{
   }
   set_blend_shape(_blend_shape, _weight) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_blend_shape,
+      XRFaceTracker._bindings.method_set_blend_shape,
       this._owner,
       _blend_shape, _weight
     );
@@ -90,7 +91,7 @@ export class XRFaceTracker extends XRTracker{
   }
   get_blend_shapes() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_blend_shapes,
+      XRFaceTracker._bindings.method_get_blend_shapes,
       this._owner,
 			Variant.Type.PACKED_FLOAT32_ARRAY,
     
@@ -100,7 +101,7 @@ export class XRFaceTracker extends XRTracker{
   }
   set_blend_shapes(_weights) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_blend_shapes,
+      XRFaceTracker._bindings.method_set_blend_shapes,
       this._owner,
       _weights
     );

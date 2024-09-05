@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { PackedVector3Array } from '@js_godot/variant/packed_vector3_array'
+import { StringName } from '@js_godot/variant/string_name'
 import { Shape3D } from '@js_godot/classes/shape3d'
 import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -51,9 +51,10 @@ export class ConvexPolygonShape3D extends Shape3D{
       );
     }
   }
+  
   set_points(_points) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_points,
+      ConvexPolygonShape3D._bindings.method_set_points,
       this._owner,
       _points
     );
@@ -61,7 +62,7 @@ export class ConvexPolygonShape3D extends Shape3D{
   }
   get_points() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_points,
+      ConvexPolygonShape3D._bindings.method_get_points,
       this._owner,
 			Variant.Type.PACKED_VECTOR3_ARRAY,
     

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { Node2D } from '@js_godot/classes/node2d'
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -90,9 +90,10 @@ export class CanvasGroup extends Node2D{
       );
     }
   }
+  
   set_fit_margin(_fit_margin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fit_margin,
+      CanvasGroup._bindings.method_set_fit_margin,
       this._owner,
       _fit_margin
     );
@@ -100,7 +101,7 @@ export class CanvasGroup extends Node2D{
   }
   get_fit_margin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fit_margin,
+      CanvasGroup._bindings.method_get_fit_margin,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -109,7 +110,7 @@ export class CanvasGroup extends Node2D{
   }
   set_clear_margin(_clear_margin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_clear_margin,
+      CanvasGroup._bindings.method_set_clear_margin,
       this._owner,
       _clear_margin
     );
@@ -117,7 +118,7 @@ export class CanvasGroup extends Node2D{
   }
   get_clear_margin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_clear_margin,
+      CanvasGroup._bindings.method_get_clear_margin,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -126,7 +127,7 @@ export class CanvasGroup extends Node2D{
   }
   set_use_mipmaps(_use_mipmaps) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_mipmaps,
+      CanvasGroup._bindings.method_set_use_mipmaps,
       this._owner,
       _use_mipmaps
     );
@@ -134,7 +135,7 @@ export class CanvasGroup extends Node2D{
   }
   is_using_mipmaps() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_using_mipmaps,
+      CanvasGroup._bindings.method_is_using_mipmaps,
       this._owner,
 			Variant.Type.BOOL,
       

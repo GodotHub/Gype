@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
+import { NodePath } from '@js_godot/variant/node_path'
 import { Variant } from '@js_godot/variant/variant'
 import { SkeletonModification2D } from '@js_godot/classes/skeleton_modification2d'
-import { NodePath } from '@js_godot/variant/node_path'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -101,9 +101,10 @@ export class SkeletonModification2DPhysicalBones extends SkeletonModification2D{
       );
     }
   }
+  
   set_physical_bone_chain_length(_length) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_physical_bone_chain_length,
+      SkeletonModification2DPhysicalBones._bindings.method_set_physical_bone_chain_length,
       this._owner,
       _length
     );
@@ -111,7 +112,7 @@ export class SkeletonModification2DPhysicalBones extends SkeletonModification2D{
   }
   get_physical_bone_chain_length() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_physical_bone_chain_length,
+      SkeletonModification2DPhysicalBones._bindings.method_get_physical_bone_chain_length,
       this._owner,
 			Variant.Type.INT,
       
@@ -120,7 +121,7 @@ export class SkeletonModification2DPhysicalBones extends SkeletonModification2D{
   }
   set_physical_bone_node(_joint_idx, _physicalbone2d_node) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_physical_bone_node,
+      SkeletonModification2DPhysicalBones._bindings.method_set_physical_bone_node,
       this._owner,
       _joint_idx, _physicalbone2d_node
     );
@@ -128,7 +129,7 @@ export class SkeletonModification2DPhysicalBones extends SkeletonModification2D{
   }
   get_physical_bone_node(_joint_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_physical_bone_node,
+      SkeletonModification2DPhysicalBones._bindings.method_get_physical_bone_node,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -138,7 +139,7 @@ export class SkeletonModification2DPhysicalBones extends SkeletonModification2D{
   }
   fetch_physical_bones() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_fetch_physical_bones,
+      SkeletonModification2DPhysicalBones._bindings.method_fetch_physical_bones,
       this._owner,
       
     );
@@ -146,7 +147,7 @@ export class SkeletonModification2DPhysicalBones extends SkeletonModification2D{
   }
   start_simulation(_bones) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_start_simulation,
+      SkeletonModification2DPhysicalBones._bindings.method_start_simulation,
       this._owner,
       _bones
     );
@@ -154,7 +155,7 @@ export class SkeletonModification2DPhysicalBones extends SkeletonModification2D{
   }
   stop_simulation(_bones) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_stop_simulation,
+      SkeletonModification2DPhysicalBones._bindings.method_stop_simulation,
       this._owner,
       _bones
     );

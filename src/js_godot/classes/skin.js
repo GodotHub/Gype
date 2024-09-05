@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { Transform3D } from '@js_godot/variant/transform3d'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
 import {
@@ -142,9 +142,10 @@ export class Skin extends Resource{
       );
     }
   }
+  
   set_bind_count(_bind_count) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bind_count,
+      Skin._bindings.method_set_bind_count,
       this._owner,
       _bind_count
     );
@@ -152,7 +153,7 @@ export class Skin extends Resource{
   }
   get_bind_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bind_count,
+      Skin._bindings.method_get_bind_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -161,7 +162,7 @@ export class Skin extends Resource{
   }
   add_bind(_bone, _pose) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_bind,
+      Skin._bindings.method_add_bind,
       this._owner,
       _bone, _pose
     );
@@ -169,7 +170,7 @@ export class Skin extends Resource{
   }
   add_named_bind(_name, _pose) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_named_bind,
+      Skin._bindings.method_add_named_bind,
       this._owner,
       _name, _pose
     );
@@ -177,7 +178,7 @@ export class Skin extends Resource{
   }
   set_bind_pose(_bind_index, _pose) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bind_pose,
+      Skin._bindings.method_set_bind_pose,
       this._owner,
       _bind_index, _pose
     );
@@ -185,7 +186,7 @@ export class Skin extends Resource{
   }
   get_bind_pose(_bind_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bind_pose,
+      Skin._bindings.method_get_bind_pose,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -195,7 +196,7 @@ export class Skin extends Resource{
   }
   set_bind_name(_bind_index, _name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bind_name,
+      Skin._bindings.method_set_bind_name,
       this._owner,
       _bind_index, _name
     );
@@ -203,7 +204,7 @@ export class Skin extends Resource{
   }
   get_bind_name(_bind_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bind_name,
+      Skin._bindings.method_get_bind_name,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -213,7 +214,7 @@ export class Skin extends Resource{
   }
   set_bind_bone(_bind_index, _bone) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bind_bone,
+      Skin._bindings.method_set_bind_bone,
       this._owner,
       _bind_index, _bone
     );
@@ -221,7 +222,7 @@ export class Skin extends Resource{
   }
   get_bind_bone(_bind_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bind_bone,
+      Skin._bindings.method_get_bind_bone,
       this._owner,
 			Variant.Type.INT,
       _bind_index
@@ -230,7 +231,7 @@ export class Skin extends Resource{
   }
   clear_binds() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_binds,
+      Skin._bindings.method_clear_binds,
       this._owner,
       
     );

@@ -1,12 +1,12 @@
 import * as internal from '__internal__';
-import { Node2D } from '@js_godot/classes/node2d'
-import { Variant } from '@js_godot/variant/variant'
-import { Rect2i } from '@js_godot/variant/rect2i'
-import { Vector2i } from '@js_godot/variant/vector2i'
-import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
-import { StringName } from '@js_godot/variant/string_name'
-import { RID } from '@js_godot/variant/rid'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
+import { RID } from '@js_godot/variant/rid'
+import { StringName } from '@js_godot/variant/string_name'
+import { Rect2i } from '@js_godot/variant/rect2i'
+import { Variant } from '@js_godot/variant/variant'
+import { Node2D } from '@js_godot/classes/node2d'
+import { Vector2i } from '@js_godot/variant/vector2i'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -515,13 +515,14 @@ export class TileMapLayer extends Node2D{
       );
     }
   }
+  
   _use_tile_data_runtime_update(_coords) {
   }
   _tile_data_runtime_update(_coords, _tile_data) {
   }
   set_cell(_coords, _source_id, _atlas_coords, _alternative_tile) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cell,
+      TileMapLayer._bindings.method_set_cell,
       this._owner,
       _coords, _source_id, _atlas_coords, _alternative_tile
     );
@@ -529,7 +530,7 @@ export class TileMapLayer extends Node2D{
   }
   erase_cell(_coords) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_erase_cell,
+      TileMapLayer._bindings.method_erase_cell,
       this._owner,
       _coords
     );
@@ -537,7 +538,7 @@ export class TileMapLayer extends Node2D{
   }
   fix_invalid_tiles() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_fix_invalid_tiles,
+      TileMapLayer._bindings.method_fix_invalid_tiles,
       this._owner,
       
     );
@@ -545,7 +546,7 @@ export class TileMapLayer extends Node2D{
   }
   clear() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear,
+      TileMapLayer._bindings.method_clear,
       this._owner,
       
     );
@@ -553,7 +554,7 @@ export class TileMapLayer extends Node2D{
   }
   get_cell_source_id(_coords) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cell_source_id,
+      TileMapLayer._bindings.method_get_cell_source_id,
       this._owner,
 			Variant.Type.INT,
       _coords
@@ -562,7 +563,7 @@ export class TileMapLayer extends Node2D{
   }
   get_cell_atlas_coords(_coords) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cell_atlas_coords,
+      TileMapLayer._bindings.method_get_cell_atlas_coords,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -572,7 +573,7 @@ export class TileMapLayer extends Node2D{
   }
   get_cell_alternative_tile(_coords) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cell_alternative_tile,
+      TileMapLayer._bindings.method_get_cell_alternative_tile,
       this._owner,
 			Variant.Type.INT,
       _coords
@@ -581,7 +582,7 @@ export class TileMapLayer extends Node2D{
   }
   get_cell_tile_data(_coords) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cell_tile_data,
+      TileMapLayer._bindings.method_get_cell_tile_data,
       this._owner,
 			Variant.INT,
       _coords
@@ -590,7 +591,7 @@ export class TileMapLayer extends Node2D{
   }
   get_used_cells() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_used_cells,
+      TileMapLayer._bindings.method_get_used_cells,
       this._owner,
 			Variant.INT,
       
@@ -599,7 +600,7 @@ export class TileMapLayer extends Node2D{
   }
   get_used_cells_by_id(_source_id, _atlas_coords, _alternative_tile) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_used_cells_by_id,
+      TileMapLayer._bindings.method_get_used_cells_by_id,
       this._owner,
 			Variant.INT,
       _source_id, _atlas_coords, _alternative_tile
@@ -608,7 +609,7 @@ export class TileMapLayer extends Node2D{
   }
   get_used_rect() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_used_rect,
+      TileMapLayer._bindings.method_get_used_rect,
       this._owner,
 			Variant.Type.RECT2I,
     
@@ -618,7 +619,7 @@ export class TileMapLayer extends Node2D{
   }
   get_pattern(_coords_array) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_pattern,
+      TileMapLayer._bindings.method_get_pattern,
       this._owner,
 			Variant.INT,
       _coords_array
@@ -627,7 +628,7 @@ export class TileMapLayer extends Node2D{
   }
   set_pattern(_position, _pattern) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_pattern,
+      TileMapLayer._bindings.method_set_pattern,
       this._owner,
       _position, _pattern
     );
@@ -635,7 +636,7 @@ export class TileMapLayer extends Node2D{
   }
   set_cells_terrain_connect(_cells, _terrain_set, _terrain, _ignore_empty_terrains) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cells_terrain_connect,
+      TileMapLayer._bindings.method_set_cells_terrain_connect,
       this._owner,
       _cells, _terrain_set, _terrain, _ignore_empty_terrains
     );
@@ -643,7 +644,7 @@ export class TileMapLayer extends Node2D{
   }
   set_cells_terrain_path(_path, _terrain_set, _terrain, _ignore_empty_terrains) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cells_terrain_path,
+      TileMapLayer._bindings.method_set_cells_terrain_path,
       this._owner,
       _path, _terrain_set, _terrain, _ignore_empty_terrains
     );
@@ -651,7 +652,7 @@ export class TileMapLayer extends Node2D{
   }
   has_body_rid(_body) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_body_rid,
+      TileMapLayer._bindings.method_has_body_rid,
       this._owner,
 			Variant.Type.BOOL,
       _body
@@ -660,7 +661,7 @@ export class TileMapLayer extends Node2D{
   }
   get_coords_for_body_rid(_body) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_coords_for_body_rid,
+      TileMapLayer._bindings.method_get_coords_for_body_rid,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -670,7 +671,7 @@ export class TileMapLayer extends Node2D{
   }
   update_internals() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_update_internals,
+      TileMapLayer._bindings.method_update_internals,
       this._owner,
       
     );
@@ -678,7 +679,7 @@ export class TileMapLayer extends Node2D{
   }
   notify_runtime_tile_data_update() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_notify_runtime_tile_data_update,
+      TileMapLayer._bindings.method_notify_runtime_tile_data_update,
       this._owner,
       
     );
@@ -686,7 +687,7 @@ export class TileMapLayer extends Node2D{
   }
   map_pattern(_position_in_tilemap, _coords_in_pattern, _pattern) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_map_pattern,
+      TileMapLayer._bindings.method_map_pattern,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -696,7 +697,7 @@ export class TileMapLayer extends Node2D{
   }
   get_surrounding_cells(_coords) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_surrounding_cells,
+      TileMapLayer._bindings.method_get_surrounding_cells,
       this._owner,
 			Variant.INT,
       _coords
@@ -705,7 +706,7 @@ export class TileMapLayer extends Node2D{
   }
   get_neighbor_cell(_coords, _neighbor) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_neighbor_cell,
+      TileMapLayer._bindings.method_get_neighbor_cell,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -715,7 +716,7 @@ export class TileMapLayer extends Node2D{
   }
   map_to_local(_map_position) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_map_to_local,
+      TileMapLayer._bindings.method_map_to_local,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -725,7 +726,7 @@ export class TileMapLayer extends Node2D{
   }
   local_to_map(_local_position) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_local_to_map,
+      TileMapLayer._bindings.method_local_to_map,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -735,7 +736,7 @@ export class TileMapLayer extends Node2D{
   }
   set_tile_map_data_from_array(_tile_map_layer_data) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tile_map_data_from_array,
+      TileMapLayer._bindings.method_set_tile_map_data_from_array,
       this._owner,
       _tile_map_layer_data
     );
@@ -743,7 +744,7 @@ export class TileMapLayer extends Node2D{
   }
   get_tile_map_data_as_array() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tile_map_data_as_array,
+      TileMapLayer._bindings.method_get_tile_map_data_as_array,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -753,7 +754,7 @@ export class TileMapLayer extends Node2D{
   }
   set_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_enabled,
+      TileMapLayer._bindings.method_set_enabled,
       this._owner,
       _enabled
     );
@@ -761,7 +762,7 @@ export class TileMapLayer extends Node2D{
   }
   is_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_enabled,
+      TileMapLayer._bindings.method_is_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -770,7 +771,7 @@ export class TileMapLayer extends Node2D{
   }
   set_tile_set(_tile_set) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tile_set,
+      TileMapLayer._bindings.method_set_tile_set,
       this._owner,
       _tile_set
     );
@@ -778,7 +779,7 @@ export class TileMapLayer extends Node2D{
   }
   get_tile_set() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tile_set,
+      TileMapLayer._bindings.method_get_tile_set,
       this._owner,
 			Variant.INT,
       
@@ -787,7 +788,7 @@ export class TileMapLayer extends Node2D{
   }
   set_y_sort_origin(_y_sort_origin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_y_sort_origin,
+      TileMapLayer._bindings.method_set_y_sort_origin,
       this._owner,
       _y_sort_origin
     );
@@ -795,7 +796,7 @@ export class TileMapLayer extends Node2D{
   }
   get_y_sort_origin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_y_sort_origin,
+      TileMapLayer._bindings.method_get_y_sort_origin,
       this._owner,
 			Variant.Type.INT,
       
@@ -804,7 +805,7 @@ export class TileMapLayer extends Node2D{
   }
   set_x_draw_order_reversed(_x_draw_order_reversed) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_x_draw_order_reversed,
+      TileMapLayer._bindings.method_set_x_draw_order_reversed,
       this._owner,
       _x_draw_order_reversed
     );
@@ -812,7 +813,7 @@ export class TileMapLayer extends Node2D{
   }
   is_x_draw_order_reversed() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_x_draw_order_reversed,
+      TileMapLayer._bindings.method_is_x_draw_order_reversed,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -821,7 +822,7 @@ export class TileMapLayer extends Node2D{
   }
   set_rendering_quadrant_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_rendering_quadrant_size,
+      TileMapLayer._bindings.method_set_rendering_quadrant_size,
       this._owner,
       _size
     );
@@ -829,7 +830,7 @@ export class TileMapLayer extends Node2D{
   }
   get_rendering_quadrant_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rendering_quadrant_size,
+      TileMapLayer._bindings.method_get_rendering_quadrant_size,
       this._owner,
 			Variant.Type.INT,
       
@@ -838,7 +839,7 @@ export class TileMapLayer extends Node2D{
   }
   set_collision_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_enabled,
+      TileMapLayer._bindings.method_set_collision_enabled,
       this._owner,
       _enabled
     );
@@ -846,7 +847,7 @@ export class TileMapLayer extends Node2D{
   }
   is_collision_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_collision_enabled,
+      TileMapLayer._bindings.method_is_collision_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -855,7 +856,7 @@ export class TileMapLayer extends Node2D{
   }
   set_use_kinematic_bodies(_use_kinematic_bodies) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_kinematic_bodies,
+      TileMapLayer._bindings.method_set_use_kinematic_bodies,
       this._owner,
       _use_kinematic_bodies
     );
@@ -863,7 +864,7 @@ export class TileMapLayer extends Node2D{
   }
   is_using_kinematic_bodies() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_using_kinematic_bodies,
+      TileMapLayer._bindings.method_is_using_kinematic_bodies,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -872,7 +873,7 @@ export class TileMapLayer extends Node2D{
   }
   set_collision_visibility_mode(_visibility_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_visibility_mode,
+      TileMapLayer._bindings.method_set_collision_visibility_mode,
       this._owner,
       _visibility_mode
     );
@@ -880,7 +881,7 @@ export class TileMapLayer extends Node2D{
   }
   get_collision_visibility_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_visibility_mode,
+      TileMapLayer._bindings.method_get_collision_visibility_mode,
       this._owner,
 			Variant.INT,
       
@@ -889,7 +890,7 @@ export class TileMapLayer extends Node2D{
   }
   set_navigation_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_navigation_enabled,
+      TileMapLayer._bindings.method_set_navigation_enabled,
       this._owner,
       _enabled
     );
@@ -897,7 +898,7 @@ export class TileMapLayer extends Node2D{
   }
   is_navigation_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_navigation_enabled,
+      TileMapLayer._bindings.method_is_navigation_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -906,7 +907,7 @@ export class TileMapLayer extends Node2D{
   }
   set_navigation_map(_map) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_navigation_map,
+      TileMapLayer._bindings.method_set_navigation_map,
       this._owner,
       _map
     );
@@ -914,7 +915,7 @@ export class TileMapLayer extends Node2D{
   }
   get_navigation_map() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_navigation_map,
+      TileMapLayer._bindings.method_get_navigation_map,
       this._owner,
 			Variant.Type.RID,
     
@@ -924,7 +925,7 @@ export class TileMapLayer extends Node2D{
   }
   set_navigation_visibility_mode(_show_navigation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_navigation_visibility_mode,
+      TileMapLayer._bindings.method_set_navigation_visibility_mode,
       this._owner,
       _show_navigation
     );
@@ -932,7 +933,7 @@ export class TileMapLayer extends Node2D{
   }
   get_navigation_visibility_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_navigation_visibility_mode,
+      TileMapLayer._bindings.method_get_navigation_visibility_mode,
       this._owner,
 			Variant.INT,
       

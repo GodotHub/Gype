@@ -1,11 +1,11 @@
 import * as internal from '__internal__';
-import { Dictionary } from '@js_godot/variant/dictionary'
-import { Variant } from '@js_godot/variant/variant'
-import { GodotObject } from '@js_godot/classes/godot_object'
-import { Vector3 } from '@js_godot/variant/vector3'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { Dictionary } from '@js_godot/variant/dictionary'
+import { StringName } from '@js_godot/variant/string_name'
+import { GodotObject } from '@js_godot/classes/godot_object'
+import { GDString } from '@js_godot/variant/gd_string'
+import { Variant } from '@js_godot/variant/variant'
+import { Vector3 } from '@js_godot/variant/vector3'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -573,9 +573,10 @@ class _MethodBindings {
       );
     }
   }
+  
   is_anything_pressed() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_anything_pressed,
+      _Input._bindings.method_is_anything_pressed,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -584,7 +585,7 @@ class _MethodBindings {
   }
   is_key_pressed(_keycode) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_key_pressed,
+      _Input._bindings.method_is_key_pressed,
       this._owner,
 			Variant.Type.BOOL,
       _keycode
@@ -593,7 +594,7 @@ class _MethodBindings {
   }
   is_physical_key_pressed(_keycode) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_physical_key_pressed,
+      _Input._bindings.method_is_physical_key_pressed,
       this._owner,
 			Variant.Type.BOOL,
       _keycode
@@ -602,7 +603,7 @@ class _MethodBindings {
   }
   is_key_label_pressed(_keycode) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_key_label_pressed,
+      _Input._bindings.method_is_key_label_pressed,
       this._owner,
 			Variant.Type.BOOL,
       _keycode
@@ -611,7 +612,7 @@ class _MethodBindings {
   }
   is_mouse_button_pressed(_button) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_mouse_button_pressed,
+      _Input._bindings.method_is_mouse_button_pressed,
       this._owner,
 			Variant.Type.BOOL,
       _button
@@ -620,7 +621,7 @@ class _MethodBindings {
   }
   is_joy_button_pressed(_device, _button) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_joy_button_pressed,
+      _Input._bindings.method_is_joy_button_pressed,
       this._owner,
 			Variant.Type.BOOL,
       _device, _button
@@ -629,7 +630,7 @@ class _MethodBindings {
   }
   is_action_pressed(_action, _exact_match) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_action_pressed,
+      _Input._bindings.method_is_action_pressed,
       this._owner,
 			Variant.Type.BOOL,
       _action, _exact_match
@@ -638,7 +639,7 @@ class _MethodBindings {
   }
   is_action_just_pressed(_action, _exact_match) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_action_just_pressed,
+      _Input._bindings.method_is_action_just_pressed,
       this._owner,
 			Variant.Type.BOOL,
       _action, _exact_match
@@ -647,7 +648,7 @@ class _MethodBindings {
   }
   is_action_just_released(_action, _exact_match) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_action_just_released,
+      _Input._bindings.method_is_action_just_released,
       this._owner,
 			Variant.Type.BOOL,
       _action, _exact_match
@@ -656,7 +657,7 @@ class _MethodBindings {
   }
   get_action_strength(_action, _exact_match) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_action_strength,
+      _Input._bindings.method_get_action_strength,
       this._owner,
 			Variant.Type.FLOAT,
       _action, _exact_match
@@ -665,7 +666,7 @@ class _MethodBindings {
   }
   get_action_raw_strength(_action, _exact_match) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_action_raw_strength,
+      _Input._bindings.method_get_action_raw_strength,
       this._owner,
 			Variant.Type.FLOAT,
       _action, _exact_match
@@ -674,7 +675,7 @@ class _MethodBindings {
   }
   get_axis(_negative_action, _positive_action) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_axis,
+      _Input._bindings.method_get_axis,
       this._owner,
 			Variant.Type.FLOAT,
       _negative_action, _positive_action
@@ -683,7 +684,7 @@ class _MethodBindings {
   }
   get_vector(_negative_x, _positive_x, _negative_y, _positive_y, _deadzone) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vector,
+      _Input._bindings.method_get_vector,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -693,7 +694,7 @@ class _MethodBindings {
   }
   add_joy_mapping(_mapping, _update_existing) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_joy_mapping,
+      _Input._bindings.method_add_joy_mapping,
       this._owner,
       _mapping, _update_existing
     );
@@ -701,7 +702,7 @@ class _MethodBindings {
   }
   remove_joy_mapping(_guid) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_joy_mapping,
+      _Input._bindings.method_remove_joy_mapping,
       this._owner,
       _guid
     );
@@ -709,7 +710,7 @@ class _MethodBindings {
   }
   is_joy_known(_device) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_joy_known,
+      _Input._bindings.method_is_joy_known,
       this._owner,
 			Variant.Type.BOOL,
       _device
@@ -718,7 +719,7 @@ class _MethodBindings {
   }
   get_joy_axis(_device, _axis) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_joy_axis,
+      _Input._bindings.method_get_joy_axis,
       this._owner,
 			Variant.Type.FLOAT,
       _device, _axis
@@ -727,7 +728,7 @@ class _MethodBindings {
   }
   get_joy_name(_device) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_joy_name,
+      _Input._bindings.method_get_joy_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -737,7 +738,7 @@ class _MethodBindings {
   }
   get_joy_guid(_device) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_joy_guid,
+      _Input._bindings.method_get_joy_guid,
       this._owner,
 			Variant.Type.STRING,
     
@@ -747,7 +748,7 @@ class _MethodBindings {
   }
   get_joy_info(_device) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_joy_info,
+      _Input._bindings.method_get_joy_info,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -757,7 +758,7 @@ class _MethodBindings {
   }
   should_ignore_device(_vendor_id, _product_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_should_ignore_device,
+      _Input._bindings.method_should_ignore_device,
       this._owner,
 			Variant.Type.BOOL,
       _vendor_id, _product_id
@@ -766,7 +767,7 @@ class _MethodBindings {
   }
   get_connected_joypads() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_connected_joypads,
+      _Input._bindings.method_get_connected_joypads,
       this._owner,
 			Variant.INT,
       
@@ -775,7 +776,7 @@ class _MethodBindings {
   }
   get_joy_vibration_strength(_device) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_joy_vibration_strength,
+      _Input._bindings.method_get_joy_vibration_strength,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -785,7 +786,7 @@ class _MethodBindings {
   }
   get_joy_vibration_duration(_device) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_joy_vibration_duration,
+      _Input._bindings.method_get_joy_vibration_duration,
       this._owner,
 			Variant.Type.FLOAT,
       _device
@@ -794,7 +795,7 @@ class _MethodBindings {
   }
   start_joy_vibration(_device, _weak_magnitude, _strong_magnitude, _duration) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_start_joy_vibration,
+      _Input._bindings.method_start_joy_vibration,
       this._owner,
       _device, _weak_magnitude, _strong_magnitude, _duration
     );
@@ -802,7 +803,7 @@ class _MethodBindings {
   }
   stop_joy_vibration(_device) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_stop_joy_vibration,
+      _Input._bindings.method_stop_joy_vibration,
       this._owner,
       _device
     );
@@ -810,7 +811,7 @@ class _MethodBindings {
   }
   vibrate_handheld(_duration_ms, _amplitude) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_vibrate_handheld,
+      _Input._bindings.method_vibrate_handheld,
       this._owner,
       _duration_ms, _amplitude
     );
@@ -818,7 +819,7 @@ class _MethodBindings {
   }
   get_gravity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_gravity,
+      _Input._bindings.method_get_gravity,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -828,7 +829,7 @@ class _MethodBindings {
   }
   get_accelerometer() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_accelerometer,
+      _Input._bindings.method_get_accelerometer,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -838,7 +839,7 @@ class _MethodBindings {
   }
   get_magnetometer() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_magnetometer,
+      _Input._bindings.method_get_magnetometer,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -848,7 +849,7 @@ class _MethodBindings {
   }
   get_gyroscope() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_gyroscope,
+      _Input._bindings.method_get_gyroscope,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -858,7 +859,7 @@ class _MethodBindings {
   }
   set_gravity(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_gravity,
+      _Input._bindings.method_set_gravity,
       this._owner,
       _value
     );
@@ -866,7 +867,7 @@ class _MethodBindings {
   }
   set_accelerometer(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_accelerometer,
+      _Input._bindings.method_set_accelerometer,
       this._owner,
       _value
     );
@@ -874,7 +875,7 @@ class _MethodBindings {
   }
   set_magnetometer(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_magnetometer,
+      _Input._bindings.method_set_magnetometer,
       this._owner,
       _value
     );
@@ -882,7 +883,7 @@ class _MethodBindings {
   }
   set_gyroscope(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_gyroscope,
+      _Input._bindings.method_set_gyroscope,
       this._owner,
       _value
     );
@@ -890,7 +891,7 @@ class _MethodBindings {
   }
   get_last_mouse_velocity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_last_mouse_velocity,
+      _Input._bindings.method_get_last_mouse_velocity,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -900,7 +901,7 @@ class _MethodBindings {
   }
   get_last_mouse_screen_velocity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_last_mouse_screen_velocity,
+      _Input._bindings.method_get_last_mouse_screen_velocity,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -910,7 +911,7 @@ class _MethodBindings {
   }
   get_mouse_button_mask() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mouse_button_mask,
+      _Input._bindings.method_get_mouse_button_mask,
       this._owner,
 			Variant.INT,
       
@@ -919,7 +920,7 @@ class _MethodBindings {
   }
   set_mouse_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mouse_mode,
+      _Input._bindings.method_set_mouse_mode,
       this._owner,
       _mode
     );
@@ -927,7 +928,7 @@ class _MethodBindings {
   }
   get_mouse_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mouse_mode,
+      _Input._bindings.method_get_mouse_mode,
       this._owner,
 			Variant.INT,
       
@@ -936,7 +937,7 @@ class _MethodBindings {
   }
   warp_mouse(_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_warp_mouse,
+      _Input._bindings.method_warp_mouse,
       this._owner,
       _position
     );
@@ -944,7 +945,7 @@ class _MethodBindings {
   }
   action_press(_action, _strength) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_action_press,
+      _Input._bindings.method_action_press,
       this._owner,
       _action, _strength
     );
@@ -952,7 +953,7 @@ class _MethodBindings {
   }
   action_release(_action) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_action_release,
+      _Input._bindings.method_action_release,
       this._owner,
       _action
     );
@@ -960,7 +961,7 @@ class _MethodBindings {
   }
   set_default_cursor_shape(_shape) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_default_cursor_shape,
+      _Input._bindings.method_set_default_cursor_shape,
       this._owner,
       _shape
     );
@@ -968,7 +969,7 @@ class _MethodBindings {
   }
   get_current_cursor_shape() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_current_cursor_shape,
+      _Input._bindings.method_get_current_cursor_shape,
       this._owner,
 			Variant.INT,
       
@@ -977,7 +978,7 @@ class _MethodBindings {
   }
   set_custom_mouse_cursor(_image, _shape, _hotspot) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_custom_mouse_cursor,
+      _Input._bindings.method_set_custom_mouse_cursor,
       this._owner,
       _image, _shape, _hotspot
     );
@@ -985,7 +986,7 @@ class _MethodBindings {
   }
   parse_input_event(_event) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_parse_input_event,
+      _Input._bindings.method_parse_input_event,
       this._owner,
       _event
     );
@@ -993,7 +994,7 @@ class _MethodBindings {
   }
   set_use_accumulated_input(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_accumulated_input,
+      _Input._bindings.method_set_use_accumulated_input,
       this._owner,
       _enable
     );
@@ -1001,7 +1002,7 @@ class _MethodBindings {
   }
   is_using_accumulated_input() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_using_accumulated_input,
+      _Input._bindings.method_is_using_accumulated_input,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1010,7 +1011,7 @@ class _MethodBindings {
   }
   flush_buffered_events() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_flush_buffered_events,
+      _Input._bindings.method_flush_buffered_events,
       this._owner,
       
     );
@@ -1018,7 +1019,7 @@ class _MethodBindings {
   }
   set_emulate_mouse_from_touch(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_emulate_mouse_from_touch,
+      _Input._bindings.method_set_emulate_mouse_from_touch,
       this._owner,
       _enable
     );
@@ -1026,7 +1027,7 @@ class _MethodBindings {
   }
   is_emulating_mouse_from_touch() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_emulating_mouse_from_touch,
+      _Input._bindings.method_is_emulating_mouse_from_touch,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1035,7 +1036,7 @@ class _MethodBindings {
   }
   set_emulate_touch_from_mouse(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_emulate_touch_from_mouse,
+      _Input._bindings.method_set_emulate_touch_from_mouse,
       this._owner,
       _enable
     );
@@ -1043,7 +1044,7 @@ class _MethodBindings {
   }
   is_emulating_touch_from_mouse() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_emulating_touch_from_mouse,
+      _Input._bindings.method_is_emulating_touch_from_mouse,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1107,4 +1108,17 @@ set emulate_touch_from_mouse (new_value) {
     this._init_bindings();
   }
 }
-export const Input = new _Input();
+export const Input = (function () {
+  let _instance;
+  function create_instance() {
+    return new _Input();
+  }
+  return {
+    instance: function () {
+      if (!_instance) {
+        _instance = create_instance();
+      }
+      return _instance;
+    },
+  };
+})();

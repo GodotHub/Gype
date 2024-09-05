@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Transform3D } from '@js_godot/variant/transform3d'
-import { Vector3 } from '@js_godot/variant/vector3'
-import { StringName } from '@js_godot/variant/string_name'
-import { SkeletonModifier3D } from '@js_godot/classes/skeleton_modifier3d'
 import { NodePath } from '@js_godot/variant/node_path'
+import { Transform3D } from '@js_godot/variant/transform3d'
+import { SkeletonModifier3D } from '@js_godot/classes/skeleton_modifier3d'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { Vector3 } from '@js_godot/variant/vector3'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -273,9 +273,10 @@ export class SkeletonIK3D extends SkeletonModifier3D{
       );
     }
   }
+  
   set_root_bone(_root_bone) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_root_bone,
+      SkeletonIK3D._bindings.method_set_root_bone,
       this._owner,
       _root_bone
     );
@@ -283,7 +284,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   }
   get_root_bone() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_root_bone,
+      SkeletonIK3D._bindings.method_get_root_bone,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -293,7 +294,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   }
   set_tip_bone(_tip_bone) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tip_bone,
+      SkeletonIK3D._bindings.method_set_tip_bone,
       this._owner,
       _tip_bone
     );
@@ -301,7 +302,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   }
   get_tip_bone() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tip_bone,
+      SkeletonIK3D._bindings.method_get_tip_bone,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -311,7 +312,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   }
   set_target_transform(_target) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_target_transform,
+      SkeletonIK3D._bindings.method_set_target_transform,
       this._owner,
       _target
     );
@@ -319,7 +320,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   }
   get_target_transform() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_target_transform,
+      SkeletonIK3D._bindings.method_get_target_transform,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -329,7 +330,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   }
   set_target_node(_node) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_target_node,
+      SkeletonIK3D._bindings.method_set_target_node,
       this._owner,
       _node
     );
@@ -337,7 +338,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   }
   get_target_node() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_target_node,
+      SkeletonIK3D._bindings.method_get_target_node,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -347,7 +348,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   }
   set_override_tip_basis(_override) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_override_tip_basis,
+      SkeletonIK3D._bindings.method_set_override_tip_basis,
       this._owner,
       _override
     );
@@ -355,7 +356,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   }
   is_override_tip_basis() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_override_tip_basis,
+      SkeletonIK3D._bindings.method_is_override_tip_basis,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -364,7 +365,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   }
   set_use_magnet(_use) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_magnet,
+      SkeletonIK3D._bindings.method_set_use_magnet,
       this._owner,
       _use
     );
@@ -372,7 +373,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   }
   is_using_magnet() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_using_magnet,
+      SkeletonIK3D._bindings.method_is_using_magnet,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -381,7 +382,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   }
   set_magnet_position(_local_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_magnet_position,
+      SkeletonIK3D._bindings.method_set_magnet_position,
       this._owner,
       _local_position
     );
@@ -389,7 +390,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   }
   get_magnet_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_magnet_position,
+      SkeletonIK3D._bindings.method_get_magnet_position,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -399,7 +400,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   }
   get_parent_skeleton() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_parent_skeleton,
+      SkeletonIK3D._bindings.method_get_parent_skeleton,
       this._owner,
 			Variant.INT,
       
@@ -408,7 +409,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   }
   is_running() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_running,
+      SkeletonIK3D._bindings.method_is_running,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -417,7 +418,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   }
   set_min_distance(_min_distance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_min_distance,
+      SkeletonIK3D._bindings.method_set_min_distance,
       this._owner,
       _min_distance
     );
@@ -425,7 +426,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   }
   get_min_distance() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_min_distance,
+      SkeletonIK3D._bindings.method_get_min_distance,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -434,7 +435,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   }
   set_max_iterations(_iterations) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_max_iterations,
+      SkeletonIK3D._bindings.method_set_max_iterations,
       this._owner,
       _iterations
     );
@@ -442,7 +443,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   }
   get_max_iterations() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_max_iterations,
+      SkeletonIK3D._bindings.method_get_max_iterations,
       this._owner,
 			Variant.Type.INT,
       
@@ -451,7 +452,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   }
   start(_one_time) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_start,
+      SkeletonIK3D._bindings.method_start,
       this._owner,
       _one_time
     );
@@ -459,7 +460,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   }
   stop() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_stop,
+      SkeletonIK3D._bindings.method_stop,
       this._owner,
       
     );
@@ -467,7 +468,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   }
   set_interpolation(_interpolation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_interpolation,
+      SkeletonIK3D._bindings.method_set_interpolation,
       this._owner,
       _interpolation
     );
@@ -475,7 +476,7 @@ export class SkeletonIK3D extends SkeletonModifier3D{
   }
   get_interpolation() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_interpolation,
+      SkeletonIK3D._bindings.method_get_interpolation,
       this._owner,
 			Variant.Type.FLOAT,
       

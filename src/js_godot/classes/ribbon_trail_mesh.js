@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { PrimitiveMesh } from '@js_godot/classes/primitive_mesh'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -150,9 +150,10 @@ export class RibbonTrailMesh extends PrimitiveMesh{
       );
     }
   }
+  
   set_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_size,
+      RibbonTrailMesh._bindings.method_set_size,
       this._owner,
       _size
     );
@@ -160,7 +161,7 @@ export class RibbonTrailMesh extends PrimitiveMesh{
   }
   get_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_size,
+      RibbonTrailMesh._bindings.method_get_size,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -169,7 +170,7 @@ export class RibbonTrailMesh extends PrimitiveMesh{
   }
   set_sections(_sections) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sections,
+      RibbonTrailMesh._bindings.method_set_sections,
       this._owner,
       _sections
     );
@@ -177,7 +178,7 @@ export class RibbonTrailMesh extends PrimitiveMesh{
   }
   get_sections() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sections,
+      RibbonTrailMesh._bindings.method_get_sections,
       this._owner,
 			Variant.Type.INT,
       
@@ -186,7 +187,7 @@ export class RibbonTrailMesh extends PrimitiveMesh{
   }
   set_section_length(_section_length) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_section_length,
+      RibbonTrailMesh._bindings.method_set_section_length,
       this._owner,
       _section_length
     );
@@ -194,7 +195,7 @@ export class RibbonTrailMesh extends PrimitiveMesh{
   }
   get_section_length() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_section_length,
+      RibbonTrailMesh._bindings.method_get_section_length,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -203,7 +204,7 @@ export class RibbonTrailMesh extends PrimitiveMesh{
   }
   set_section_segments(_section_segments) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_section_segments,
+      RibbonTrailMesh._bindings.method_set_section_segments,
       this._owner,
       _section_segments
     );
@@ -211,7 +212,7 @@ export class RibbonTrailMesh extends PrimitiveMesh{
   }
   get_section_segments() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_section_segments,
+      RibbonTrailMesh._bindings.method_get_section_segments,
       this._owner,
 			Variant.Type.INT,
       
@@ -220,7 +221,7 @@ export class RibbonTrailMesh extends PrimitiveMesh{
   }
   set_curve(_curve) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_curve,
+      RibbonTrailMesh._bindings.method_set_curve,
       this._owner,
       _curve
     );
@@ -228,7 +229,7 @@ export class RibbonTrailMesh extends PrimitiveMesh{
   }
   get_curve() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_curve,
+      RibbonTrailMesh._bindings.method_get_curve,
       this._owner,
 			Variant.INT,
       
@@ -237,7 +238,7 @@ export class RibbonTrailMesh extends PrimitiveMesh{
   }
   set_shape(_shape) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shape,
+      RibbonTrailMesh._bindings.method_set_shape,
       this._owner,
       _shape
     );
@@ -245,7 +246,7 @@ export class RibbonTrailMesh extends PrimitiveMesh{
   }
   get_shape() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_shape,
+      RibbonTrailMesh._bindings.method_get_shape,
       this._owner,
 			Variant.INT,
       

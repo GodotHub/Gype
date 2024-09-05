@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { InputEvent } from '@js_godot/classes/input_event'
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { InputEvent } from '@js_godot/classes/input_event'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -190,9 +190,10 @@ export class InputEventMIDI extends InputEvent{
       );
     }
   }
+  
   set_channel(_channel) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_channel,
+      InputEventMIDI._bindings.method_set_channel,
       this._owner,
       _channel
     );
@@ -200,7 +201,7 @@ export class InputEventMIDI extends InputEvent{
   }
   get_channel() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_channel,
+      InputEventMIDI._bindings.method_get_channel,
       this._owner,
 			Variant.Type.INT,
       
@@ -209,7 +210,7 @@ export class InputEventMIDI extends InputEvent{
   }
   set_message(_message) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_message,
+      InputEventMIDI._bindings.method_set_message,
       this._owner,
       _message
     );
@@ -217,7 +218,7 @@ export class InputEventMIDI extends InputEvent{
   }
   get_message() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_message,
+      InputEventMIDI._bindings.method_get_message,
       this._owner,
 			Variant.INT,
       
@@ -226,7 +227,7 @@ export class InputEventMIDI extends InputEvent{
   }
   set_pitch(_pitch) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_pitch,
+      InputEventMIDI._bindings.method_set_pitch,
       this._owner,
       _pitch
     );
@@ -234,7 +235,7 @@ export class InputEventMIDI extends InputEvent{
   }
   get_pitch() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_pitch,
+      InputEventMIDI._bindings.method_get_pitch,
       this._owner,
 			Variant.Type.INT,
       
@@ -243,7 +244,7 @@ export class InputEventMIDI extends InputEvent{
   }
   set_velocity(_velocity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_velocity,
+      InputEventMIDI._bindings.method_set_velocity,
       this._owner,
       _velocity
     );
@@ -251,7 +252,7 @@ export class InputEventMIDI extends InputEvent{
   }
   get_velocity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_velocity,
+      InputEventMIDI._bindings.method_get_velocity,
       this._owner,
 			Variant.Type.INT,
       
@@ -260,7 +261,7 @@ export class InputEventMIDI extends InputEvent{
   }
   set_instrument(_instrument) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_instrument,
+      InputEventMIDI._bindings.method_set_instrument,
       this._owner,
       _instrument
     );
@@ -268,7 +269,7 @@ export class InputEventMIDI extends InputEvent{
   }
   get_instrument() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_instrument,
+      InputEventMIDI._bindings.method_get_instrument,
       this._owner,
 			Variant.Type.INT,
       
@@ -277,7 +278,7 @@ export class InputEventMIDI extends InputEvent{
   }
   set_pressure(_pressure) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_pressure,
+      InputEventMIDI._bindings.method_set_pressure,
       this._owner,
       _pressure
     );
@@ -285,7 +286,7 @@ export class InputEventMIDI extends InputEvent{
   }
   get_pressure() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_pressure,
+      InputEventMIDI._bindings.method_get_pressure,
       this._owner,
 			Variant.Type.INT,
       
@@ -294,7 +295,7 @@ export class InputEventMIDI extends InputEvent{
   }
   set_controller_number(_controller_number) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_controller_number,
+      InputEventMIDI._bindings.method_set_controller_number,
       this._owner,
       _controller_number
     );
@@ -302,7 +303,7 @@ export class InputEventMIDI extends InputEvent{
   }
   get_controller_number() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_controller_number,
+      InputEventMIDI._bindings.method_get_controller_number,
       this._owner,
 			Variant.Type.INT,
       
@@ -311,7 +312,7 @@ export class InputEventMIDI extends InputEvent{
   }
   set_controller_value(_controller_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_controller_value,
+      InputEventMIDI._bindings.method_set_controller_value,
       this._owner,
       _controller_value
     );
@@ -319,7 +320,7 @@ export class InputEventMIDI extends InputEvent{
   }
   get_controller_value() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_controller_value,
+      InputEventMIDI._bindings.method_get_controller_value,
       this._owner,
 			Variant.Type.INT,
       

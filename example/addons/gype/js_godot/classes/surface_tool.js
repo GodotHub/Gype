@@ -1,19 +1,19 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Transform3D } from '@js_godot/variant/transform3d'
-import { Vector3 } from '@js_godot/variant/vector3'
-import { PackedVector3Array } from '@js_godot/variant/packed_vector3_array'
-import { StringName } from '@js_godot/variant/string_name'
-import { AABB } from '@js_godot/variant/aabb'
-import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
-import { GDString } from '@js_godot/variant/gd_string'
-import { Color } from '@js_godot/variant/color'
-import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
 import { Vector2 } from '@js_godot/variant/vector2'
 import { PackedFloat32Array } from '@js_godot/variant/packed_float32_array'
-import { RefCounted } from '@js_godot/classes/ref_counted'
-import { PackedColorArray } from '@js_godot/variant/packed_color_array'
+import { AABB } from '@js_godot/variant/aabb'
+import { StringName } from '@js_godot/variant/string_name'
+import { PackedVector3Array } from '@js_godot/variant/packed_vector3_array'
 import { Plane } from '@js_godot/variant/plane'
+import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
+import { RefCounted } from '@js_godot/classes/ref_counted'
+import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
+import { PackedColorArray } from '@js_godot/variant/packed_color_array'
+import { Color } from '@js_godot/variant/color'
+import { GDString } from '@js_godot/variant/gd_string'
+import { Transform3D } from '@js_godot/variant/transform3d'
+import { Variant } from '@js_godot/variant/variant'
+import { Vector3 } from '@js_godot/variant/vector3'
 import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
@@ -373,9 +373,10 @@ export class SurfaceTool extends RefCounted{
       );
     }
   }
+  
   set_skin_weight_count(_count) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_skin_weight_count,
+      SurfaceTool._bindings.method_set_skin_weight_count,
       this._owner,
       _count
     );
@@ -383,7 +384,7 @@ export class SurfaceTool extends RefCounted{
   }
   get_skin_weight_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_skin_weight_count,
+      SurfaceTool._bindings.method_get_skin_weight_count,
       this._owner,
 			Variant.INT,
       
@@ -392,7 +393,7 @@ export class SurfaceTool extends RefCounted{
   }
   set_custom_format(_channel_index, _format) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_custom_format,
+      SurfaceTool._bindings.method_set_custom_format,
       this._owner,
       _channel_index, _format
     );
@@ -400,7 +401,7 @@ export class SurfaceTool extends RefCounted{
   }
   get_custom_format(_channel_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_custom_format,
+      SurfaceTool._bindings.method_get_custom_format,
       this._owner,
 			Variant.INT,
       _channel_index
@@ -409,7 +410,7 @@ export class SurfaceTool extends RefCounted{
   }
   begin(_primitive) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_begin,
+      SurfaceTool._bindings.method_begin,
       this._owner,
       _primitive
     );
@@ -417,7 +418,7 @@ export class SurfaceTool extends RefCounted{
   }
   add_vertex(_vertex) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_vertex,
+      SurfaceTool._bindings.method_add_vertex,
       this._owner,
       _vertex
     );
@@ -425,7 +426,7 @@ export class SurfaceTool extends RefCounted{
   }
   set_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_color,
+      SurfaceTool._bindings.method_set_color,
       this._owner,
       _color
     );
@@ -433,7 +434,7 @@ export class SurfaceTool extends RefCounted{
   }
   set_normal(_normal) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_normal,
+      SurfaceTool._bindings.method_set_normal,
       this._owner,
       _normal
     );
@@ -441,7 +442,7 @@ export class SurfaceTool extends RefCounted{
   }
   set_tangent(_tangent) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tangent,
+      SurfaceTool._bindings.method_set_tangent,
       this._owner,
       _tangent
     );
@@ -449,7 +450,7 @@ export class SurfaceTool extends RefCounted{
   }
   set_uv(_uv) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_uv,
+      SurfaceTool._bindings.method_set_uv,
       this._owner,
       _uv
     );
@@ -457,7 +458,7 @@ export class SurfaceTool extends RefCounted{
   }
   set_uv2(_uv2) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_uv2,
+      SurfaceTool._bindings.method_set_uv2,
       this._owner,
       _uv2
     );
@@ -465,7 +466,7 @@ export class SurfaceTool extends RefCounted{
   }
   set_bones(_bones) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bones,
+      SurfaceTool._bindings.method_set_bones,
       this._owner,
       _bones
     );
@@ -473,7 +474,7 @@ export class SurfaceTool extends RefCounted{
   }
   set_weights(_weights) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_weights,
+      SurfaceTool._bindings.method_set_weights,
       this._owner,
       _weights
     );
@@ -481,7 +482,7 @@ export class SurfaceTool extends RefCounted{
   }
   set_custom(_channel_index, _custom_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_custom,
+      SurfaceTool._bindings.method_set_custom,
       this._owner,
       _channel_index, _custom_color
     );
@@ -489,7 +490,7 @@ export class SurfaceTool extends RefCounted{
   }
   set_smooth_group(_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_smooth_group,
+      SurfaceTool._bindings.method_set_smooth_group,
       this._owner,
       _index
     );
@@ -497,7 +498,7 @@ export class SurfaceTool extends RefCounted{
   }
   add_triangle_fan(_vertices, _uvs, _colors, _uv2s, _normals, _tangents) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_triangle_fan,
+      SurfaceTool._bindings.method_add_triangle_fan,
       this._owner,
       _vertices, _uvs, _colors, _uv2s, _normals, _tangents
     );
@@ -505,7 +506,7 @@ export class SurfaceTool extends RefCounted{
   }
   add_index(_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_index,
+      SurfaceTool._bindings.method_add_index,
       this._owner,
       _index
     );
@@ -513,7 +514,7 @@ export class SurfaceTool extends RefCounted{
   }
   index() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_index,
+      SurfaceTool._bindings.method_index,
       this._owner,
       
     );
@@ -521,7 +522,7 @@ export class SurfaceTool extends RefCounted{
   }
   deindex() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_deindex,
+      SurfaceTool._bindings.method_deindex,
       this._owner,
       
     );
@@ -529,7 +530,7 @@ export class SurfaceTool extends RefCounted{
   }
   generate_normals(_flip) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_generate_normals,
+      SurfaceTool._bindings.method_generate_normals,
       this._owner,
       _flip
     );
@@ -537,7 +538,7 @@ export class SurfaceTool extends RefCounted{
   }
   generate_tangents() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_generate_tangents,
+      SurfaceTool._bindings.method_generate_tangents,
       this._owner,
       
     );
@@ -545,7 +546,7 @@ export class SurfaceTool extends RefCounted{
   }
   optimize_indices_for_cache() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_optimize_indices_for_cache,
+      SurfaceTool._bindings.method_optimize_indices_for_cache,
       this._owner,
       
     );
@@ -553,7 +554,7 @@ export class SurfaceTool extends RefCounted{
   }
   get_aabb() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_aabb,
+      SurfaceTool._bindings.method_get_aabb,
       this._owner,
 			Variant.Type.AABB,
     
@@ -563,7 +564,7 @@ export class SurfaceTool extends RefCounted{
   }
   generate_lod(_nd_threshold, _target_index_count) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_generate_lod,
+      SurfaceTool._bindings.method_generate_lod,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -573,7 +574,7 @@ export class SurfaceTool extends RefCounted{
   }
   set_material(_material) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_material,
+      SurfaceTool._bindings.method_set_material,
       this._owner,
       _material
     );
@@ -581,7 +582,7 @@ export class SurfaceTool extends RefCounted{
   }
   get_primitive_type() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_primitive_type,
+      SurfaceTool._bindings.method_get_primitive_type,
       this._owner,
 			Variant.INT,
       
@@ -590,7 +591,7 @@ export class SurfaceTool extends RefCounted{
   }
   clear() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear,
+      SurfaceTool._bindings.method_clear,
       this._owner,
       
     );
@@ -598,7 +599,7 @@ export class SurfaceTool extends RefCounted{
   }
   create_from(_existing, _surface) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_create_from,
+      SurfaceTool._bindings.method_create_from,
       this._owner,
       _existing, _surface
     );
@@ -606,7 +607,7 @@ export class SurfaceTool extends RefCounted{
   }
   create_from_arrays(_arrays, _primitive_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_create_from_arrays,
+      SurfaceTool._bindings.method_create_from_arrays,
       this._owner,
       _arrays, _primitive_type
     );
@@ -614,7 +615,7 @@ export class SurfaceTool extends RefCounted{
   }
   create_from_blend_shape(_existing, _surface, _blend_shape) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_create_from_blend_shape,
+      SurfaceTool._bindings.method_create_from_blend_shape,
       this._owner,
       _existing, _surface, _blend_shape
     );
@@ -622,7 +623,7 @@ export class SurfaceTool extends RefCounted{
   }
   append_from(_existing, _surface, _transform) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_append_from,
+      SurfaceTool._bindings.method_append_from,
       this._owner,
       _existing, _surface, _transform
     );
@@ -630,7 +631,7 @@ export class SurfaceTool extends RefCounted{
   }
   commit(_existing, _flags) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_commit,
+      SurfaceTool._bindings.method_commit,
       this._owner,
 			Variant.INT,
       _existing, _flags
@@ -639,7 +640,7 @@ export class SurfaceTool extends RefCounted{
   }
   commit_to_arrays() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_commit_to_arrays,
+      SurfaceTool._bindings.method_commit_to_arrays,
       this._owner,
 			Variant.Type.ARRAY,
     

@@ -1,12 +1,12 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
+import { NodePath } from '@js_godot/variant/node_path'
 import { Transform3D } from '@js_godot/variant/transform3d'
-import { Vector3 } from '@js_godot/variant/vector3'
+import { Variant } from '@js_godot/variant/variant'
+import { Node } from '@js_godot/classes/node'
 import { StringName } from '@js_godot/variant/string_name'
 import { Quaternion } from '@js_godot/variant/quaternion'
+import { Vector3 } from '@js_godot/variant/vector3'
 import { Basis } from '@js_godot/variant/basis'
-import { Node } from '@js_godot/classes/node'
-import { NodePath } from '@js_godot/variant/node_path'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -735,9 +735,10 @@ export class Node3D extends Node{
       );
     }
   }
+  
   set_transform(_local) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_transform,
+      Node3D._bindings.method_set_transform,
       this._owner,
       _local
     );
@@ -745,7 +746,7 @@ export class Node3D extends Node{
   }
   get_transform() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_transform,
+      Node3D._bindings.method_get_transform,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -755,7 +756,7 @@ export class Node3D extends Node{
   }
   set_position(_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_position,
+      Node3D._bindings.method_set_position,
       this._owner,
       _position
     );
@@ -763,7 +764,7 @@ export class Node3D extends Node{
   }
   get_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_position,
+      Node3D._bindings.method_get_position,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -773,7 +774,7 @@ export class Node3D extends Node{
   }
   set_rotation(_euler_radians) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_rotation,
+      Node3D._bindings.method_set_rotation,
       this._owner,
       _euler_radians
     );
@@ -781,7 +782,7 @@ export class Node3D extends Node{
   }
   get_rotation() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rotation,
+      Node3D._bindings.method_get_rotation,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -791,7 +792,7 @@ export class Node3D extends Node{
   }
   set_rotation_degrees(_euler_degrees) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_rotation_degrees,
+      Node3D._bindings.method_set_rotation_degrees,
       this._owner,
       _euler_degrees
     );
@@ -799,7 +800,7 @@ export class Node3D extends Node{
   }
   get_rotation_degrees() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rotation_degrees,
+      Node3D._bindings.method_get_rotation_degrees,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -809,7 +810,7 @@ export class Node3D extends Node{
   }
   set_rotation_order(_order) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_rotation_order,
+      Node3D._bindings.method_set_rotation_order,
       this._owner,
       _order
     );
@@ -817,7 +818,7 @@ export class Node3D extends Node{
   }
   get_rotation_order() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rotation_order,
+      Node3D._bindings.method_get_rotation_order,
       this._owner,
 			Variant.INT,
       
@@ -826,7 +827,7 @@ export class Node3D extends Node{
   }
   set_rotation_edit_mode(_edit_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_rotation_edit_mode,
+      Node3D._bindings.method_set_rotation_edit_mode,
       this._owner,
       _edit_mode
     );
@@ -834,7 +835,7 @@ export class Node3D extends Node{
   }
   get_rotation_edit_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rotation_edit_mode,
+      Node3D._bindings.method_get_rotation_edit_mode,
       this._owner,
 			Variant.INT,
       
@@ -843,7 +844,7 @@ export class Node3D extends Node{
   }
   set_scale(_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_scale,
+      Node3D._bindings.method_set_scale,
       this._owner,
       _scale
     );
@@ -851,7 +852,7 @@ export class Node3D extends Node{
   }
   get_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_scale,
+      Node3D._bindings.method_get_scale,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -861,7 +862,7 @@ export class Node3D extends Node{
   }
   set_quaternion(_quaternion) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_quaternion,
+      Node3D._bindings.method_set_quaternion,
       this._owner,
       _quaternion
     );
@@ -869,7 +870,7 @@ export class Node3D extends Node{
   }
   get_quaternion() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_quaternion,
+      Node3D._bindings.method_get_quaternion,
       this._owner,
 			Variant.Type.QUATERNION,
     
@@ -879,7 +880,7 @@ export class Node3D extends Node{
   }
   set_basis(_basis) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_basis,
+      Node3D._bindings.method_set_basis,
       this._owner,
       _basis
     );
@@ -887,7 +888,7 @@ export class Node3D extends Node{
   }
   get_basis() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_basis,
+      Node3D._bindings.method_get_basis,
       this._owner,
 			Variant.Type.BASIS,
     
@@ -897,7 +898,7 @@ export class Node3D extends Node{
   }
   set_global_transform(_global) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_global_transform,
+      Node3D._bindings.method_set_global_transform,
       this._owner,
       _global
     );
@@ -905,7 +906,7 @@ export class Node3D extends Node{
   }
   get_global_transform() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_global_transform,
+      Node3D._bindings.method_get_global_transform,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -915,7 +916,7 @@ export class Node3D extends Node{
   }
   set_global_position(_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_global_position,
+      Node3D._bindings.method_set_global_position,
       this._owner,
       _position
     );
@@ -923,7 +924,7 @@ export class Node3D extends Node{
   }
   get_global_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_global_position,
+      Node3D._bindings.method_get_global_position,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -933,7 +934,7 @@ export class Node3D extends Node{
   }
   set_global_basis(_basis) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_global_basis,
+      Node3D._bindings.method_set_global_basis,
       this._owner,
       _basis
     );
@@ -941,7 +942,7 @@ export class Node3D extends Node{
   }
   get_global_basis() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_global_basis,
+      Node3D._bindings.method_get_global_basis,
       this._owner,
 			Variant.Type.BASIS,
     
@@ -951,7 +952,7 @@ export class Node3D extends Node{
   }
   set_global_rotation(_euler_radians) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_global_rotation,
+      Node3D._bindings.method_set_global_rotation,
       this._owner,
       _euler_radians
     );
@@ -959,7 +960,7 @@ export class Node3D extends Node{
   }
   get_global_rotation() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_global_rotation,
+      Node3D._bindings.method_get_global_rotation,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -969,7 +970,7 @@ export class Node3D extends Node{
   }
   set_global_rotation_degrees(_euler_degrees) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_global_rotation_degrees,
+      Node3D._bindings.method_set_global_rotation_degrees,
       this._owner,
       _euler_degrees
     );
@@ -977,7 +978,7 @@ export class Node3D extends Node{
   }
   get_global_rotation_degrees() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_global_rotation_degrees,
+      Node3D._bindings.method_get_global_rotation_degrees,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -987,7 +988,7 @@ export class Node3D extends Node{
   }
   get_parent_node_3d() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_parent_node_3d,
+      Node3D._bindings.method_get_parent_node_3d,
       this._owner,
 			Variant.INT,
       
@@ -996,7 +997,7 @@ export class Node3D extends Node{
   }
   set_ignore_transform_notification(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ignore_transform_notification,
+      Node3D._bindings.method_set_ignore_transform_notification,
       this._owner,
       _enabled
     );
@@ -1004,7 +1005,7 @@ export class Node3D extends Node{
   }
   set_as_top_level(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_as_top_level,
+      Node3D._bindings.method_set_as_top_level,
       this._owner,
       _enable
     );
@@ -1012,7 +1013,7 @@ export class Node3D extends Node{
   }
   is_set_as_top_level() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_set_as_top_level,
+      Node3D._bindings.method_is_set_as_top_level,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1021,7 +1022,7 @@ export class Node3D extends Node{
   }
   set_disable_scale(_disable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_disable_scale,
+      Node3D._bindings.method_set_disable_scale,
       this._owner,
       _disable
     );
@@ -1029,7 +1030,7 @@ export class Node3D extends Node{
   }
   is_scale_disabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_scale_disabled,
+      Node3D._bindings.method_is_scale_disabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1038,7 +1039,7 @@ export class Node3D extends Node{
   }
   get_world_3d() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_world_3d,
+      Node3D._bindings.method_get_world_3d,
       this._owner,
 			Variant.INT,
       
@@ -1047,7 +1048,7 @@ export class Node3D extends Node{
   }
   force_update_transform() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_force_update_transform,
+      Node3D._bindings.method_force_update_transform,
       this._owner,
       
     );
@@ -1055,7 +1056,7 @@ export class Node3D extends Node{
   }
   set_visibility_parent(_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_visibility_parent,
+      Node3D._bindings.method_set_visibility_parent,
       this._owner,
       _path
     );
@@ -1063,7 +1064,7 @@ export class Node3D extends Node{
   }
   get_visibility_parent() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_visibility_parent,
+      Node3D._bindings.method_get_visibility_parent,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -1073,7 +1074,7 @@ export class Node3D extends Node{
   }
   update_gizmos() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_update_gizmos,
+      Node3D._bindings.method_update_gizmos,
       this._owner,
       
     );
@@ -1081,7 +1082,7 @@ export class Node3D extends Node{
   }
   add_gizmo(_gizmo) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_gizmo,
+      Node3D._bindings.method_add_gizmo,
       this._owner,
       _gizmo
     );
@@ -1089,7 +1090,7 @@ export class Node3D extends Node{
   }
   get_gizmos() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_gizmos,
+      Node3D._bindings.method_get_gizmos,
       this._owner,
 			Variant.INT,
       
@@ -1098,7 +1099,7 @@ export class Node3D extends Node{
   }
   clear_gizmos() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_gizmos,
+      Node3D._bindings.method_clear_gizmos,
       this._owner,
       
     );
@@ -1106,7 +1107,7 @@ export class Node3D extends Node{
   }
   set_subgizmo_selection(_gizmo, _id, _transform) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_subgizmo_selection,
+      Node3D._bindings.method_set_subgizmo_selection,
       this._owner,
       _gizmo, _id, _transform
     );
@@ -1114,7 +1115,7 @@ export class Node3D extends Node{
   }
   clear_subgizmo_selection() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_subgizmo_selection,
+      Node3D._bindings.method_clear_subgizmo_selection,
       this._owner,
       
     );
@@ -1122,7 +1123,7 @@ export class Node3D extends Node{
   }
   set_visible(_visible) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_visible,
+      Node3D._bindings.method_set_visible,
       this._owner,
       _visible
     );
@@ -1130,7 +1131,7 @@ export class Node3D extends Node{
   }
   is_visible() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_visible,
+      Node3D._bindings.method_is_visible,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1139,7 +1140,7 @@ export class Node3D extends Node{
   }
   is_visible_in_tree() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_visible_in_tree,
+      Node3D._bindings.method_is_visible_in_tree,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1148,7 +1149,7 @@ export class Node3D extends Node{
   }
   show() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_show,
+      Node3D._bindings.method_show,
       this._owner,
       
     );
@@ -1156,7 +1157,7 @@ export class Node3D extends Node{
   }
   hide() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_hide,
+      Node3D._bindings.method_hide,
       this._owner,
       
     );
@@ -1164,7 +1165,7 @@ export class Node3D extends Node{
   }
   set_notify_local_transform(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_notify_local_transform,
+      Node3D._bindings.method_set_notify_local_transform,
       this._owner,
       _enable
     );
@@ -1172,7 +1173,7 @@ export class Node3D extends Node{
   }
   is_local_transform_notification_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_local_transform_notification_enabled,
+      Node3D._bindings.method_is_local_transform_notification_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1181,7 +1182,7 @@ export class Node3D extends Node{
   }
   set_notify_transform(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_notify_transform,
+      Node3D._bindings.method_set_notify_transform,
       this._owner,
       _enable
     );
@@ -1189,7 +1190,7 @@ export class Node3D extends Node{
   }
   is_transform_notification_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_transform_notification_enabled,
+      Node3D._bindings.method_is_transform_notification_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1198,7 +1199,7 @@ export class Node3D extends Node{
   }
   rotate(_axis, _angle) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_rotate,
+      Node3D._bindings.method_rotate,
       this._owner,
       _axis, _angle
     );
@@ -1206,7 +1207,7 @@ export class Node3D extends Node{
   }
   global_rotate(_axis, _angle) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_global_rotate,
+      Node3D._bindings.method_global_rotate,
       this._owner,
       _axis, _angle
     );
@@ -1214,7 +1215,7 @@ export class Node3D extends Node{
   }
   global_scale(_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_global_scale,
+      Node3D._bindings.method_global_scale,
       this._owner,
       _scale
     );
@@ -1222,7 +1223,7 @@ export class Node3D extends Node{
   }
   global_translate(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_global_translate,
+      Node3D._bindings.method_global_translate,
       this._owner,
       _offset
     );
@@ -1230,7 +1231,7 @@ export class Node3D extends Node{
   }
   rotate_object_local(_axis, _angle) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_rotate_object_local,
+      Node3D._bindings.method_rotate_object_local,
       this._owner,
       _axis, _angle
     );
@@ -1238,7 +1239,7 @@ export class Node3D extends Node{
   }
   scale_object_local(_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_scale_object_local,
+      Node3D._bindings.method_scale_object_local,
       this._owner,
       _scale
     );
@@ -1246,7 +1247,7 @@ export class Node3D extends Node{
   }
   translate_object_local(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_translate_object_local,
+      Node3D._bindings.method_translate_object_local,
       this._owner,
       _offset
     );
@@ -1254,7 +1255,7 @@ export class Node3D extends Node{
   }
   rotate_x(_angle) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_rotate_x,
+      Node3D._bindings.method_rotate_x,
       this._owner,
       _angle
     );
@@ -1262,7 +1263,7 @@ export class Node3D extends Node{
   }
   rotate_y(_angle) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_rotate_y,
+      Node3D._bindings.method_rotate_y,
       this._owner,
       _angle
     );
@@ -1270,7 +1271,7 @@ export class Node3D extends Node{
   }
   rotate_z(_angle) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_rotate_z,
+      Node3D._bindings.method_rotate_z,
       this._owner,
       _angle
     );
@@ -1278,7 +1279,7 @@ export class Node3D extends Node{
   }
   translate(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_translate,
+      Node3D._bindings.method_translate,
       this._owner,
       _offset
     );
@@ -1286,7 +1287,7 @@ export class Node3D extends Node{
   }
   orthonormalize() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_orthonormalize,
+      Node3D._bindings.method_orthonormalize,
       this._owner,
       
     );
@@ -1294,7 +1295,7 @@ export class Node3D extends Node{
   }
   set_identity() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_identity,
+      Node3D._bindings.method_set_identity,
       this._owner,
       
     );
@@ -1302,7 +1303,7 @@ export class Node3D extends Node{
   }
   look_at(_target, _up, _use_model_front) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_look_at,
+      Node3D._bindings.method_look_at,
       this._owner,
       _target, _up, _use_model_front
     );
@@ -1310,7 +1311,7 @@ export class Node3D extends Node{
   }
   look_at_from_position(_position, _target, _up, _use_model_front) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_look_at_from_position,
+      Node3D._bindings.method_look_at_from_position,
       this._owner,
       _position, _target, _up, _use_model_front
     );
@@ -1318,7 +1319,7 @@ export class Node3D extends Node{
   }
   to_local(_global_point) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_to_local,
+      Node3D._bindings.method_to_local,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -1328,7 +1329,7 @@ export class Node3D extends Node{
   }
   to_global(_local_point) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_to_global,
+      Node3D._bindings.method_to_global,
       this._owner,
 			Variant.Type.VECTOR3,
     

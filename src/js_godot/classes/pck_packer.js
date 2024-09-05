@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { GDString } from '@js_godot/variant/gd_string'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -61,9 +61,10 @@ export class PCKPacker extends RefCounted{
       );
     }
   }
+  
   pck_start(_pck_name, _alignment, _key, _encrypt_directory) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_pck_start,
+      PCKPacker._bindings.method_pck_start,
       this._owner,
 			Variant.INT,
       _pck_name, _alignment, _key, _encrypt_directory
@@ -72,7 +73,7 @@ export class PCKPacker extends RefCounted{
   }
   add_file(_pck_path, _source_path, _encrypt) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_add_file,
+      PCKPacker._bindings.method_add_file,
       this._owner,
 			Variant.INT,
       _pck_path, _source_path, _encrypt
@@ -81,7 +82,7 @@ export class PCKPacker extends RefCounted{
   }
   flush(_verbose) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_flush,
+      PCKPacker._bindings.method_flush,
       this._owner,
 			Variant.INT,
       _verbose

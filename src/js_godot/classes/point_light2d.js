@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
-import { Vector2 } from '@js_godot/variant/vector2'
 import { Light2D } from '@js_godot/classes/light2d'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { Vector2 } from '@js_godot/variant/vector2'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -91,9 +91,10 @@ export class PointLight2D extends Light2D{
       );
     }
   }
+  
   set_texture(_texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture,
+      PointLight2D._bindings.method_set_texture,
       this._owner,
       _texture
     );
@@ -101,7 +102,7 @@ export class PointLight2D extends Light2D{
   }
   get_texture() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture,
+      PointLight2D._bindings.method_get_texture,
       this._owner,
 			Variant.INT,
       
@@ -110,7 +111,7 @@ export class PointLight2D extends Light2D{
   }
   set_texture_offset(_texture_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture_offset,
+      PointLight2D._bindings.method_set_texture_offset,
       this._owner,
       _texture_offset
     );
@@ -118,7 +119,7 @@ export class PointLight2D extends Light2D{
   }
   get_texture_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_offset,
+      PointLight2D._bindings.method_get_texture_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -128,7 +129,7 @@ export class PointLight2D extends Light2D{
   }
   set_texture_scale(_texture_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture_scale,
+      PointLight2D._bindings.method_set_texture_scale,
       this._owner,
       _texture_scale
     );
@@ -136,7 +137,7 @@ export class PointLight2D extends Light2D{
   }
   get_texture_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_scale,
+      PointLight2D._bindings.method_get_texture_scale,
       this._owner,
 			Variant.Type.FLOAT,
       

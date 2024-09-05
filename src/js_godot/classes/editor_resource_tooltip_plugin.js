@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Dictionary } from '@js_godot/variant/dictionary'
+import { RefCounted } from '@js_godot/classes/ref_counted'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Dictionary } from '@js_godot/variant/dictionary'
 import { GDString } from '@js_godot/variant/gd_string'
-import { RefCounted } from '@js_godot/classes/ref_counted'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -42,13 +42,14 @@ export class EditorResourceTooltipPlugin extends RefCounted{
       );
     }
   }
+  
   _handles(_type) {
   }
   _make_tooltip_for_path(_path, _metadata, _base) {
   }
   request_thumbnail(_path, _control) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_request_thumbnail,
+      EditorResourceTooltipPlugin._bindings.method_request_thumbnail,
       this._owner,
       _path, _control
     );

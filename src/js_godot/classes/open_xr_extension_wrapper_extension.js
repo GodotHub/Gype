@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Dictionary } from '@js_godot/variant/dictionary'
 import { Variant } from '@js_godot/variant/variant'
-import { GodotObject } from '@js_godot/classes/godot_object'
-import { StringName } from '@js_godot/variant/string_name'
 import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { StringName } from '@js_godot/variant/string_name'
+import { GodotObject } from '@js_godot/classes/godot_object'
+import { Dictionary } from '@js_godot/variant/dictionary'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -52,6 +52,7 @@ export class OpenXRExtensionWrapperExtension extends GodotObject{
       );
     }
   }
+  
   _get_requested_extensions() {
   }
   _set_system_properties_and_get_next_pointer(_next_pointer) {
@@ -118,7 +119,7 @@ export class OpenXRExtensionWrapperExtension extends GodotObject{
   }
   get_openxr_api() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_openxr_api,
+      OpenXRExtensionWrapperExtension._bindings.method_get_openxr_api,
       this._owner,
 			Variant.INT,
       
@@ -127,7 +128,7 @@ export class OpenXRExtensionWrapperExtension extends GodotObject{
   }
   register_extension_wrapper() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_register_extension_wrapper,
+      OpenXRExtensionWrapperExtension._bindings.method_register_extension_wrapper,
       this._owner,
       
     );

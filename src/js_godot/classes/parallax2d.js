@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { Node2D } from '@js_godot/classes/node2d'
 import { Variant } from '@js_godot/variant/variant'
-import { Vector2 } from '@js_godot/variant/vector2'
 import { StringName } from '@js_godot/variant/string_name'
+import { Vector2 } from '@js_godot/variant/vector2'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -231,9 +231,10 @@ export class Parallax2D extends Node2D{
       );
     }
   }
+  
   set_scroll_scale(_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_scroll_scale,
+      Parallax2D._bindings.method_set_scroll_scale,
       this._owner,
       _scale
     );
@@ -241,7 +242,7 @@ export class Parallax2D extends Node2D{
   }
   get_scroll_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_scroll_scale,
+      Parallax2D._bindings.method_get_scroll_scale,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -251,7 +252,7 @@ export class Parallax2D extends Node2D{
   }
   set_repeat_size(_repeat_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_repeat_size,
+      Parallax2D._bindings.method_set_repeat_size,
       this._owner,
       _repeat_size
     );
@@ -259,7 +260,7 @@ export class Parallax2D extends Node2D{
   }
   get_repeat_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_repeat_size,
+      Parallax2D._bindings.method_get_repeat_size,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -269,7 +270,7 @@ export class Parallax2D extends Node2D{
   }
   set_repeat_times(_repeat_times) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_repeat_times,
+      Parallax2D._bindings.method_set_repeat_times,
       this._owner,
       _repeat_times
     );
@@ -277,7 +278,7 @@ export class Parallax2D extends Node2D{
   }
   get_repeat_times() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_repeat_times,
+      Parallax2D._bindings.method_get_repeat_times,
       this._owner,
 			Variant.Type.INT,
       
@@ -286,7 +287,7 @@ export class Parallax2D extends Node2D{
   }
   set_autoscroll(_autoscroll) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_autoscroll,
+      Parallax2D._bindings.method_set_autoscroll,
       this._owner,
       _autoscroll
     );
@@ -294,7 +295,7 @@ export class Parallax2D extends Node2D{
   }
   get_autoscroll() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_autoscroll,
+      Parallax2D._bindings.method_get_autoscroll,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -304,7 +305,7 @@ export class Parallax2D extends Node2D{
   }
   set_scroll_offset(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_scroll_offset,
+      Parallax2D._bindings.method_set_scroll_offset,
       this._owner,
       _offset
     );
@@ -312,7 +313,7 @@ export class Parallax2D extends Node2D{
   }
   get_scroll_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_scroll_offset,
+      Parallax2D._bindings.method_get_scroll_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -322,7 +323,7 @@ export class Parallax2D extends Node2D{
   }
   set_screen_offset(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_screen_offset,
+      Parallax2D._bindings.method_set_screen_offset,
       this._owner,
       _offset
     );
@@ -330,7 +331,7 @@ export class Parallax2D extends Node2D{
   }
   get_screen_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_screen_offset,
+      Parallax2D._bindings.method_get_screen_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -340,7 +341,7 @@ export class Parallax2D extends Node2D{
   }
   set_limit_begin(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_limit_begin,
+      Parallax2D._bindings.method_set_limit_begin,
       this._owner,
       _offset
     );
@@ -348,7 +349,7 @@ export class Parallax2D extends Node2D{
   }
   get_limit_begin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_limit_begin,
+      Parallax2D._bindings.method_get_limit_begin,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -358,7 +359,7 @@ export class Parallax2D extends Node2D{
   }
   set_limit_end(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_limit_end,
+      Parallax2D._bindings.method_set_limit_end,
       this._owner,
       _offset
     );
@@ -366,7 +367,7 @@ export class Parallax2D extends Node2D{
   }
   get_limit_end() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_limit_end,
+      Parallax2D._bindings.method_get_limit_end,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -376,7 +377,7 @@ export class Parallax2D extends Node2D{
   }
   set_follow_viewport(_follow) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_follow_viewport,
+      Parallax2D._bindings.method_set_follow_viewport,
       this._owner,
       _follow
     );
@@ -384,7 +385,7 @@ export class Parallax2D extends Node2D{
   }
   get_follow_viewport() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_follow_viewport,
+      Parallax2D._bindings.method_get_follow_viewport,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -393,7 +394,7 @@ export class Parallax2D extends Node2D{
   }
   set_ignore_camera_scroll(_ignore) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ignore_camera_scroll,
+      Parallax2D._bindings.method_set_ignore_camera_scroll,
       this._owner,
       _ignore
     );
@@ -401,7 +402,7 @@ export class Parallax2D extends Node2D{
   }
   is_ignore_camera_scroll() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_ignore_camera_scroll,
+      Parallax2D._bindings.method_is_ignore_camera_scroll,
       this._owner,
 			Variant.Type.BOOL,
       

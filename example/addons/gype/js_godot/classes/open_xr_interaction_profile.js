@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { GDString } from '@js_godot/variant/gd_string'
 import { GDArray } from '@js_godot/variant/gd_array'
 import {
@@ -92,9 +92,10 @@ export class OpenXRInteractionProfile extends Resource{
       );
     }
   }
+  
   set_interaction_profile_path(_interaction_profile_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_interaction_profile_path,
+      OpenXRInteractionProfile._bindings.method_set_interaction_profile_path,
       this._owner,
       _interaction_profile_path
     );
@@ -102,7 +103,7 @@ export class OpenXRInteractionProfile extends Resource{
   }
   get_interaction_profile_path() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_interaction_profile_path,
+      OpenXRInteractionProfile._bindings.method_get_interaction_profile_path,
       this._owner,
 			Variant.Type.STRING,
     
@@ -112,7 +113,7 @@ export class OpenXRInteractionProfile extends Resource{
   }
   get_binding_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_binding_count,
+      OpenXRInteractionProfile._bindings.method_get_binding_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -121,7 +122,7 @@ export class OpenXRInteractionProfile extends Resource{
   }
   get_binding(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_binding,
+      OpenXRInteractionProfile._bindings.method_get_binding,
       this._owner,
 			Variant.INT,
       _index
@@ -130,7 +131,7 @@ export class OpenXRInteractionProfile extends Resource{
   }
   set_bindings(_bindings) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bindings,
+      OpenXRInteractionProfile._bindings.method_set_bindings,
       this._owner,
       _bindings
     );
@@ -138,7 +139,7 @@ export class OpenXRInteractionProfile extends Resource{
   }
   get_bindings() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bindings,
+      OpenXRInteractionProfile._bindings.method_get_bindings,
       this._owner,
 			Variant.Type.ARRAY,
     

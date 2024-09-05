@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { Texture } from '@js_godot/classes/texture'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -100,6 +100,7 @@ export class Texture3D extends Texture{
       );
     }
   }
+  
   _get_format() {
   }
   _get_width() {
@@ -114,7 +115,7 @@ export class Texture3D extends Texture{
   }
   get_format() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_format,
+      Texture3D._bindings.method_get_format,
       this._owner,
 			Variant.INT,
       
@@ -123,7 +124,7 @@ export class Texture3D extends Texture{
   }
   get_width() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_width,
+      Texture3D._bindings.method_get_width,
       this._owner,
 			Variant.Type.INT,
       
@@ -132,7 +133,7 @@ export class Texture3D extends Texture{
   }
   get_height() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_height,
+      Texture3D._bindings.method_get_height,
       this._owner,
 			Variant.Type.INT,
       
@@ -141,7 +142,7 @@ export class Texture3D extends Texture{
   }
   get_depth() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_depth,
+      Texture3D._bindings.method_get_depth,
       this._owner,
 			Variant.Type.INT,
       
@@ -150,7 +151,7 @@ export class Texture3D extends Texture{
   }
   has_mipmaps() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_mipmaps,
+      Texture3D._bindings.method_has_mipmaps,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -159,7 +160,7 @@ export class Texture3D extends Texture{
   }
   get_data() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_data,
+      Texture3D._bindings.method_get_data,
       this._owner,
 			Variant.INT,
       
@@ -168,7 +169,7 @@ export class Texture3D extends Texture{
   }
   create_placeholder() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_placeholder,
+      Texture3D._bindings.method_create_placeholder,
       this._owner,
 			Variant.INT,
       

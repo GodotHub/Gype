@@ -1,13 +1,13 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Rect2i } from '@js_godot/variant/rect2i'
+import { Vector2 } from '@js_godot/variant/vector2'
 import { Vector2i } from '@js_godot/variant/vector2i'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
-import { Color } from '@js_godot/variant/color'
-import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
-import { Vector2 } from '@js_godot/variant/vector2'
 import { Viewport } from '@js_godot/classes/viewport'
+import { Rect2i } from '@js_godot/variant/rect2i'
+import { Color } from '@js_godot/variant/color'
+import { GDString } from '@js_godot/variant/gd_string'
+import { Variant } from '@js_godot/variant/variant'
+import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -1226,11 +1226,12 @@ export class Window extends Viewport{
       );
     }
   }
+  
   _get_contents_minimum_size() {
   }
   set_title(_title) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_title,
+      Window._bindings.method_set_title,
       this._owner,
       _title
     );
@@ -1238,7 +1239,7 @@ export class Window extends Viewport{
   }
   get_title() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_title,
+      Window._bindings.method_get_title,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1248,7 +1249,7 @@ export class Window extends Viewport{
   }
   get_window_id() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_window_id,
+      Window._bindings.method_get_window_id,
       this._owner,
 			Variant.Type.INT,
       
@@ -1257,7 +1258,7 @@ export class Window extends Viewport{
   }
   set_initial_position(_initial_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_initial_position,
+      Window._bindings.method_set_initial_position,
       this._owner,
       _initial_position
     );
@@ -1265,7 +1266,7 @@ export class Window extends Viewport{
   }
   get_initial_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_initial_position,
+      Window._bindings.method_get_initial_position,
       this._owner,
 			Variant.INT,
       
@@ -1274,7 +1275,7 @@ export class Window extends Viewport{
   }
   set_current_screen(_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_current_screen,
+      Window._bindings.method_set_current_screen,
       this._owner,
       _index
     );
@@ -1282,7 +1283,7 @@ export class Window extends Viewport{
   }
   get_current_screen() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_current_screen,
+      Window._bindings.method_get_current_screen,
       this._owner,
 			Variant.Type.INT,
       
@@ -1291,7 +1292,7 @@ export class Window extends Viewport{
   }
   set_position(_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_position,
+      Window._bindings.method_set_position,
       this._owner,
       _position
     );
@@ -1299,7 +1300,7 @@ export class Window extends Viewport{
   }
   get_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_position,
+      Window._bindings.method_get_position,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -1309,7 +1310,7 @@ export class Window extends Viewport{
   }
   move_to_center() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_move_to_center,
+      Window._bindings.method_move_to_center,
       this._owner,
       
     );
@@ -1317,7 +1318,7 @@ export class Window extends Viewport{
   }
   set_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_size,
+      Window._bindings.method_set_size,
       this._owner,
       _size
     );
@@ -1325,7 +1326,7 @@ export class Window extends Viewport{
   }
   get_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_size,
+      Window._bindings.method_get_size,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -1335,7 +1336,7 @@ export class Window extends Viewport{
   }
   reset_size() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_reset_size,
+      Window._bindings.method_reset_size,
       this._owner,
       
     );
@@ -1343,7 +1344,7 @@ export class Window extends Viewport{
   }
   get_position_with_decorations() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_position_with_decorations,
+      Window._bindings.method_get_position_with_decorations,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -1353,7 +1354,7 @@ export class Window extends Viewport{
   }
   get_size_with_decorations() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_size_with_decorations,
+      Window._bindings.method_get_size_with_decorations,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -1363,7 +1364,7 @@ export class Window extends Viewport{
   }
   set_max_size(_max_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_max_size,
+      Window._bindings.method_set_max_size,
       this._owner,
       _max_size
     );
@@ -1371,7 +1372,7 @@ export class Window extends Viewport{
   }
   get_max_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_max_size,
+      Window._bindings.method_get_max_size,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -1381,7 +1382,7 @@ export class Window extends Viewport{
   }
   set_min_size(_min_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_min_size,
+      Window._bindings.method_set_min_size,
       this._owner,
       _min_size
     );
@@ -1389,7 +1390,7 @@ export class Window extends Viewport{
   }
   get_min_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_min_size,
+      Window._bindings.method_get_min_size,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -1399,7 +1400,7 @@ export class Window extends Viewport{
   }
   set_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mode,
+      Window._bindings.method_set_mode,
       this._owner,
       _mode
     );
@@ -1407,7 +1408,7 @@ export class Window extends Viewport{
   }
   get_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mode,
+      Window._bindings.method_get_mode,
       this._owner,
 			Variant.INT,
       
@@ -1416,7 +1417,7 @@ export class Window extends Viewport{
   }
   set_flag(_flag, _enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_flag,
+      Window._bindings.method_set_flag,
       this._owner,
       _flag, _enabled
     );
@@ -1424,7 +1425,7 @@ export class Window extends Viewport{
   }
   get_flag(_flag) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_flag,
+      Window._bindings.method_get_flag,
       this._owner,
 			Variant.Type.BOOL,
       _flag
@@ -1433,7 +1434,7 @@ export class Window extends Viewport{
   }
   is_maximize_allowed() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_maximize_allowed,
+      Window._bindings.method_is_maximize_allowed,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1442,7 +1443,7 @@ export class Window extends Viewport{
   }
   request_attention() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_request_attention,
+      Window._bindings.method_request_attention,
       this._owner,
       
     );
@@ -1450,7 +1451,7 @@ export class Window extends Viewport{
   }
   move_to_foreground() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_move_to_foreground,
+      Window._bindings.method_move_to_foreground,
       this._owner,
       
     );
@@ -1458,7 +1459,7 @@ export class Window extends Viewport{
   }
   set_visible(_visible) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_visible,
+      Window._bindings.method_set_visible,
       this._owner,
       _visible
     );
@@ -1466,7 +1467,7 @@ export class Window extends Viewport{
   }
   is_visible() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_visible,
+      Window._bindings.method_is_visible,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1475,7 +1476,7 @@ export class Window extends Viewport{
   }
   hide() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_hide,
+      Window._bindings.method_hide,
       this._owner,
       
     );
@@ -1483,7 +1484,7 @@ export class Window extends Viewport{
   }
   show() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_show,
+      Window._bindings.method_show,
       this._owner,
       
     );
@@ -1491,7 +1492,7 @@ export class Window extends Viewport{
   }
   set_transient(_transient) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_transient,
+      Window._bindings.method_set_transient,
       this._owner,
       _transient
     );
@@ -1499,7 +1500,7 @@ export class Window extends Viewport{
   }
   is_transient() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_transient,
+      Window._bindings.method_is_transient,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1508,7 +1509,7 @@ export class Window extends Viewport{
   }
   set_transient_to_focused(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_transient_to_focused,
+      Window._bindings.method_set_transient_to_focused,
       this._owner,
       _enable
     );
@@ -1516,7 +1517,7 @@ export class Window extends Viewport{
   }
   is_transient_to_focused() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_transient_to_focused,
+      Window._bindings.method_is_transient_to_focused,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1525,7 +1526,7 @@ export class Window extends Viewport{
   }
   set_exclusive(_exclusive) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_exclusive,
+      Window._bindings.method_set_exclusive,
       this._owner,
       _exclusive
     );
@@ -1533,7 +1534,7 @@ export class Window extends Viewport{
   }
   is_exclusive() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_exclusive,
+      Window._bindings.method_is_exclusive,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1542,7 +1543,7 @@ export class Window extends Viewport{
   }
   set_unparent_when_invisible(_unparent) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_unparent_when_invisible,
+      Window._bindings.method_set_unparent_when_invisible,
       this._owner,
       _unparent
     );
@@ -1550,7 +1551,7 @@ export class Window extends Viewport{
   }
   can_draw() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_can_draw,
+      Window._bindings.method_can_draw,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1559,7 +1560,7 @@ export class Window extends Viewport{
   }
   has_focus() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_focus,
+      Window._bindings.method_has_focus,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1568,7 +1569,7 @@ export class Window extends Viewport{
   }
   grab_focus() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_grab_focus,
+      Window._bindings.method_grab_focus,
       this._owner,
       
     );
@@ -1576,7 +1577,7 @@ export class Window extends Viewport{
   }
   set_ime_active(_active) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ime_active,
+      Window._bindings.method_set_ime_active,
       this._owner,
       _active
     );
@@ -1584,7 +1585,7 @@ export class Window extends Viewport{
   }
   set_ime_position(_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ime_position,
+      Window._bindings.method_set_ime_position,
       this._owner,
       _position
     );
@@ -1592,7 +1593,7 @@ export class Window extends Viewport{
   }
   is_embedded() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_embedded,
+      Window._bindings.method_is_embedded,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1601,7 +1602,7 @@ export class Window extends Viewport{
   }
   get_contents_minimum_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_contents_minimum_size,
+      Window._bindings.method_get_contents_minimum_size,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1611,7 +1612,7 @@ export class Window extends Viewport{
   }
   set_force_native(_force_native) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_force_native,
+      Window._bindings.method_set_force_native,
       this._owner,
       _force_native
     );
@@ -1619,7 +1620,7 @@ export class Window extends Viewport{
   }
   get_force_native() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_force_native,
+      Window._bindings.method_get_force_native,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1628,7 +1629,7 @@ export class Window extends Viewport{
   }
   set_content_scale_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_content_scale_size,
+      Window._bindings.method_set_content_scale_size,
       this._owner,
       _size
     );
@@ -1636,7 +1637,7 @@ export class Window extends Viewport{
   }
   get_content_scale_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_content_scale_size,
+      Window._bindings.method_get_content_scale_size,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -1646,7 +1647,7 @@ export class Window extends Viewport{
   }
   set_content_scale_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_content_scale_mode,
+      Window._bindings.method_set_content_scale_mode,
       this._owner,
       _mode
     );
@@ -1654,7 +1655,7 @@ export class Window extends Viewport{
   }
   get_content_scale_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_content_scale_mode,
+      Window._bindings.method_get_content_scale_mode,
       this._owner,
 			Variant.INT,
       
@@ -1663,7 +1664,7 @@ export class Window extends Viewport{
   }
   set_content_scale_aspect(_aspect) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_content_scale_aspect,
+      Window._bindings.method_set_content_scale_aspect,
       this._owner,
       _aspect
     );
@@ -1671,7 +1672,7 @@ export class Window extends Viewport{
   }
   get_content_scale_aspect() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_content_scale_aspect,
+      Window._bindings.method_get_content_scale_aspect,
       this._owner,
 			Variant.INT,
       
@@ -1680,7 +1681,7 @@ export class Window extends Viewport{
   }
   set_content_scale_stretch(_stretch) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_content_scale_stretch,
+      Window._bindings.method_set_content_scale_stretch,
       this._owner,
       _stretch
     );
@@ -1688,7 +1689,7 @@ export class Window extends Viewport{
   }
   get_content_scale_stretch() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_content_scale_stretch,
+      Window._bindings.method_get_content_scale_stretch,
       this._owner,
 			Variant.INT,
       
@@ -1697,7 +1698,7 @@ export class Window extends Viewport{
   }
   set_keep_title_visible(_title_visible) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_keep_title_visible,
+      Window._bindings.method_set_keep_title_visible,
       this._owner,
       _title_visible
     );
@@ -1705,7 +1706,7 @@ export class Window extends Viewport{
   }
   get_keep_title_visible() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_keep_title_visible,
+      Window._bindings.method_get_keep_title_visible,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1714,7 +1715,7 @@ export class Window extends Viewport{
   }
   set_content_scale_factor(_factor) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_content_scale_factor,
+      Window._bindings.method_set_content_scale_factor,
       this._owner,
       _factor
     );
@@ -1722,7 +1723,7 @@ export class Window extends Viewport{
   }
   get_content_scale_factor() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_content_scale_factor,
+      Window._bindings.method_get_content_scale_factor,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1731,7 +1732,7 @@ export class Window extends Viewport{
   }
   set_use_font_oversampling(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_font_oversampling,
+      Window._bindings.method_set_use_font_oversampling,
       this._owner,
       _enable
     );
@@ -1739,7 +1740,7 @@ export class Window extends Viewport{
   }
   is_using_font_oversampling() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_using_font_oversampling,
+      Window._bindings.method_is_using_font_oversampling,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1748,7 +1749,7 @@ export class Window extends Viewport{
   }
   set_mouse_passthrough_polygon(_polygon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mouse_passthrough_polygon,
+      Window._bindings.method_set_mouse_passthrough_polygon,
       this._owner,
       _polygon
     );
@@ -1756,7 +1757,7 @@ export class Window extends Viewport{
   }
   get_mouse_passthrough_polygon() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mouse_passthrough_polygon,
+      Window._bindings.method_get_mouse_passthrough_polygon,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -1766,7 +1767,7 @@ export class Window extends Viewport{
   }
   set_wrap_controls(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_wrap_controls,
+      Window._bindings.method_set_wrap_controls,
       this._owner,
       _enable
     );
@@ -1774,7 +1775,7 @@ export class Window extends Viewport{
   }
   is_wrapping_controls() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_wrapping_controls,
+      Window._bindings.method_is_wrapping_controls,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1783,7 +1784,7 @@ export class Window extends Viewport{
   }
   child_controls_changed() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_child_controls_changed,
+      Window._bindings.method_child_controls_changed,
       this._owner,
       
     );
@@ -1791,7 +1792,7 @@ export class Window extends Viewport{
   }
   set_theme(_theme) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_theme,
+      Window._bindings.method_set_theme,
       this._owner,
       _theme
     );
@@ -1799,7 +1800,7 @@ export class Window extends Viewport{
   }
   get_theme() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_theme,
+      Window._bindings.method_get_theme,
       this._owner,
 			Variant.INT,
       
@@ -1808,7 +1809,7 @@ export class Window extends Viewport{
   }
   set_theme_type_variation(_theme_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_theme_type_variation,
+      Window._bindings.method_set_theme_type_variation,
       this._owner,
       _theme_type
     );
@@ -1816,7 +1817,7 @@ export class Window extends Viewport{
   }
   get_theme_type_variation() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_theme_type_variation,
+      Window._bindings.method_get_theme_type_variation,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -1826,7 +1827,7 @@ export class Window extends Viewport{
   }
   begin_bulk_theme_override() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_begin_bulk_theme_override,
+      Window._bindings.method_begin_bulk_theme_override,
       this._owner,
       
     );
@@ -1834,7 +1835,7 @@ export class Window extends Viewport{
   }
   end_bulk_theme_override() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_end_bulk_theme_override,
+      Window._bindings.method_end_bulk_theme_override,
       this._owner,
       
     );
@@ -1842,7 +1843,7 @@ export class Window extends Viewport{
   }
   add_theme_icon_override(_name, _texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_theme_icon_override,
+      Window._bindings.method_add_theme_icon_override,
       this._owner,
       _name, _texture
     );
@@ -1850,7 +1851,7 @@ export class Window extends Viewport{
   }
   add_theme_stylebox_override(_name, _stylebox) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_theme_stylebox_override,
+      Window._bindings.method_add_theme_stylebox_override,
       this._owner,
       _name, _stylebox
     );
@@ -1858,7 +1859,7 @@ export class Window extends Viewport{
   }
   add_theme_font_override(_name, _font) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_theme_font_override,
+      Window._bindings.method_add_theme_font_override,
       this._owner,
       _name, _font
     );
@@ -1866,7 +1867,7 @@ export class Window extends Viewport{
   }
   add_theme_font_size_override(_name, _font_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_theme_font_size_override,
+      Window._bindings.method_add_theme_font_size_override,
       this._owner,
       _name, _font_size
     );
@@ -1874,7 +1875,7 @@ export class Window extends Viewport{
   }
   add_theme_color_override(_name, _color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_theme_color_override,
+      Window._bindings.method_add_theme_color_override,
       this._owner,
       _name, _color
     );
@@ -1882,7 +1883,7 @@ export class Window extends Viewport{
   }
   add_theme_constant_override(_name, _constant) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_theme_constant_override,
+      Window._bindings.method_add_theme_constant_override,
       this._owner,
       _name, _constant
     );
@@ -1890,7 +1891,7 @@ export class Window extends Viewport{
   }
   remove_theme_icon_override(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_theme_icon_override,
+      Window._bindings.method_remove_theme_icon_override,
       this._owner,
       _name
     );
@@ -1898,7 +1899,7 @@ export class Window extends Viewport{
   }
   remove_theme_stylebox_override(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_theme_stylebox_override,
+      Window._bindings.method_remove_theme_stylebox_override,
       this._owner,
       _name
     );
@@ -1906,7 +1907,7 @@ export class Window extends Viewport{
   }
   remove_theme_font_override(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_theme_font_override,
+      Window._bindings.method_remove_theme_font_override,
       this._owner,
       _name
     );
@@ -1914,7 +1915,7 @@ export class Window extends Viewport{
   }
   remove_theme_font_size_override(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_theme_font_size_override,
+      Window._bindings.method_remove_theme_font_size_override,
       this._owner,
       _name
     );
@@ -1922,7 +1923,7 @@ export class Window extends Viewport{
   }
   remove_theme_color_override(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_theme_color_override,
+      Window._bindings.method_remove_theme_color_override,
       this._owner,
       _name
     );
@@ -1930,7 +1931,7 @@ export class Window extends Viewport{
   }
   remove_theme_constant_override(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_theme_constant_override,
+      Window._bindings.method_remove_theme_constant_override,
       this._owner,
       _name
     );
@@ -1938,7 +1939,7 @@ export class Window extends Viewport{
   }
   get_theme_icon(_name, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_theme_icon,
+      Window._bindings.method_get_theme_icon,
       this._owner,
 			Variant.INT,
       _name, _theme_type
@@ -1947,7 +1948,7 @@ export class Window extends Viewport{
   }
   get_theme_stylebox(_name, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_theme_stylebox,
+      Window._bindings.method_get_theme_stylebox,
       this._owner,
 			Variant.INT,
       _name, _theme_type
@@ -1956,7 +1957,7 @@ export class Window extends Viewport{
   }
   get_theme_font(_name, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_theme_font,
+      Window._bindings.method_get_theme_font,
       this._owner,
 			Variant.INT,
       _name, _theme_type
@@ -1965,7 +1966,7 @@ export class Window extends Viewport{
   }
   get_theme_font_size(_name, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_theme_font_size,
+      Window._bindings.method_get_theme_font_size,
       this._owner,
 			Variant.Type.INT,
       _name, _theme_type
@@ -1974,7 +1975,7 @@ export class Window extends Viewport{
   }
   get_theme_color(_name, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_theme_color,
+      Window._bindings.method_get_theme_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -1984,7 +1985,7 @@ export class Window extends Viewport{
   }
   get_theme_constant(_name, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_theme_constant,
+      Window._bindings.method_get_theme_constant,
       this._owner,
 			Variant.Type.INT,
       _name, _theme_type
@@ -1993,7 +1994,7 @@ export class Window extends Viewport{
   }
   has_theme_icon_override(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_theme_icon_override,
+      Window._bindings.method_has_theme_icon_override,
       this._owner,
 			Variant.Type.BOOL,
       _name
@@ -2002,7 +2003,7 @@ export class Window extends Viewport{
   }
   has_theme_stylebox_override(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_theme_stylebox_override,
+      Window._bindings.method_has_theme_stylebox_override,
       this._owner,
 			Variant.Type.BOOL,
       _name
@@ -2011,7 +2012,7 @@ export class Window extends Viewport{
   }
   has_theme_font_override(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_theme_font_override,
+      Window._bindings.method_has_theme_font_override,
       this._owner,
 			Variant.Type.BOOL,
       _name
@@ -2020,7 +2021,7 @@ export class Window extends Viewport{
   }
   has_theme_font_size_override(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_theme_font_size_override,
+      Window._bindings.method_has_theme_font_size_override,
       this._owner,
 			Variant.Type.BOOL,
       _name
@@ -2029,7 +2030,7 @@ export class Window extends Viewport{
   }
   has_theme_color_override(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_theme_color_override,
+      Window._bindings.method_has_theme_color_override,
       this._owner,
 			Variant.Type.BOOL,
       _name
@@ -2038,7 +2039,7 @@ export class Window extends Viewport{
   }
   has_theme_constant_override(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_theme_constant_override,
+      Window._bindings.method_has_theme_constant_override,
       this._owner,
 			Variant.Type.BOOL,
       _name
@@ -2047,7 +2048,7 @@ export class Window extends Viewport{
   }
   has_theme_icon(_name, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_theme_icon,
+      Window._bindings.method_has_theme_icon,
       this._owner,
 			Variant.Type.BOOL,
       _name, _theme_type
@@ -2056,7 +2057,7 @@ export class Window extends Viewport{
   }
   has_theme_stylebox(_name, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_theme_stylebox,
+      Window._bindings.method_has_theme_stylebox,
       this._owner,
 			Variant.Type.BOOL,
       _name, _theme_type
@@ -2065,7 +2066,7 @@ export class Window extends Viewport{
   }
   has_theme_font(_name, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_theme_font,
+      Window._bindings.method_has_theme_font,
       this._owner,
 			Variant.Type.BOOL,
       _name, _theme_type
@@ -2074,7 +2075,7 @@ export class Window extends Viewport{
   }
   has_theme_font_size(_name, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_theme_font_size,
+      Window._bindings.method_has_theme_font_size,
       this._owner,
 			Variant.Type.BOOL,
       _name, _theme_type
@@ -2083,7 +2084,7 @@ export class Window extends Viewport{
   }
   has_theme_color(_name, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_theme_color,
+      Window._bindings.method_has_theme_color,
       this._owner,
 			Variant.Type.BOOL,
       _name, _theme_type
@@ -2092,7 +2093,7 @@ export class Window extends Viewport{
   }
   has_theme_constant(_name, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_theme_constant,
+      Window._bindings.method_has_theme_constant,
       this._owner,
 			Variant.Type.BOOL,
       _name, _theme_type
@@ -2101,7 +2102,7 @@ export class Window extends Viewport{
   }
   get_theme_default_base_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_theme_default_base_scale,
+      Window._bindings.method_get_theme_default_base_scale,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2110,7 +2111,7 @@ export class Window extends Viewport{
   }
   get_theme_default_font() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_theme_default_font,
+      Window._bindings.method_get_theme_default_font,
       this._owner,
 			Variant.INT,
       
@@ -2119,7 +2120,7 @@ export class Window extends Viewport{
   }
   get_theme_default_font_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_theme_default_font_size,
+      Window._bindings.method_get_theme_default_font_size,
       this._owner,
 			Variant.Type.INT,
       
@@ -2128,7 +2129,7 @@ export class Window extends Viewport{
   }
   set_layout_direction(_direction) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_layout_direction,
+      Window._bindings.method_set_layout_direction,
       this._owner,
       _direction
     );
@@ -2136,7 +2137,7 @@ export class Window extends Viewport{
   }
   get_layout_direction() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_layout_direction,
+      Window._bindings.method_get_layout_direction,
       this._owner,
 			Variant.INT,
       
@@ -2145,7 +2146,7 @@ export class Window extends Viewport{
   }
   is_layout_rtl() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_layout_rtl,
+      Window._bindings.method_is_layout_rtl,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2154,7 +2155,7 @@ export class Window extends Viewport{
   }
   set_auto_translate(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_auto_translate,
+      Window._bindings.method_set_auto_translate,
       this._owner,
       _enable
     );
@@ -2162,7 +2163,7 @@ export class Window extends Viewport{
   }
   is_auto_translating() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_auto_translating,
+      Window._bindings.method_is_auto_translating,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2171,7 +2172,7 @@ export class Window extends Viewport{
   }
   popup(_rect) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_popup,
+      Window._bindings.method_popup,
       this._owner,
       _rect
     );
@@ -2179,7 +2180,7 @@ export class Window extends Viewport{
   }
   popup_on_parent(_parent_rect) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_popup_on_parent,
+      Window._bindings.method_popup_on_parent,
       this._owner,
       _parent_rect
     );
@@ -2187,7 +2188,7 @@ export class Window extends Viewport{
   }
   popup_centered(_minsize) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_popup_centered,
+      Window._bindings.method_popup_centered,
       this._owner,
       _minsize
     );
@@ -2195,7 +2196,7 @@ export class Window extends Viewport{
   }
   popup_centered_ratio(_ratio) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_popup_centered_ratio,
+      Window._bindings.method_popup_centered_ratio,
       this._owner,
       _ratio
     );
@@ -2203,7 +2204,7 @@ export class Window extends Viewport{
   }
   popup_centered_clamped(_minsize, _fallback_ratio) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_popup_centered_clamped,
+      Window._bindings.method_popup_centered_clamped,
       this._owner,
       _minsize, _fallback_ratio
     );
@@ -2211,7 +2212,7 @@ export class Window extends Viewport{
   }
   popup_exclusive(_from_node, _rect) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_popup_exclusive,
+      Window._bindings.method_popup_exclusive,
       this._owner,
       _from_node, _rect
     );
@@ -2219,7 +2220,7 @@ export class Window extends Viewport{
   }
   popup_exclusive_on_parent(_from_node, _parent_rect) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_popup_exclusive_on_parent,
+      Window._bindings.method_popup_exclusive_on_parent,
       this._owner,
       _from_node, _parent_rect
     );
@@ -2227,7 +2228,7 @@ export class Window extends Viewport{
   }
   popup_exclusive_centered(_from_node, _minsize) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_popup_exclusive_centered,
+      Window._bindings.method_popup_exclusive_centered,
       this._owner,
       _from_node, _minsize
     );
@@ -2235,7 +2236,7 @@ export class Window extends Viewport{
   }
   popup_exclusive_centered_ratio(_from_node, _ratio) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_popup_exclusive_centered_ratio,
+      Window._bindings.method_popup_exclusive_centered_ratio,
       this._owner,
       _from_node, _ratio
     );
@@ -2243,7 +2244,7 @@ export class Window extends Viewport{
   }
   popup_exclusive_centered_clamped(_from_node, _minsize, _fallback_ratio) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_popup_exclusive_centered_clamped,
+      Window._bindings.method_popup_exclusive_centered_clamped,
       this._owner,
       _from_node, _minsize, _fallback_ratio
     );

@@ -1,11 +1,11 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
+import { PackedVector3Array } from '@js_godot/variant/packed_vector3_array'
+import { PackedFloat32Array } from '@js_godot/variant/packed_float32_array'
 import { Transform3D } from '@js_godot/variant/transform3d'
 import { Resource } from '@js_godot/classes/resource'
-import { Vector3 } from '@js_godot/variant/vector3'
-import { PackedVector3Array } from '@js_godot/variant/packed_vector3_array'
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
-import { PackedFloat32Array } from '@js_godot/variant/packed_float32_array'
+import { Vector3 } from '@js_godot/variant/vector3'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -334,9 +334,10 @@ export class Curve3D extends Resource{
       );
     }
   }
+  
   get_point_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_point_count,
+      Curve3D._bindings.method_get_point_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -345,7 +346,7 @@ export class Curve3D extends Resource{
   }
   set_point_count(_count) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_point_count,
+      Curve3D._bindings.method_set_point_count,
       this._owner,
       _count
     );
@@ -353,7 +354,7 @@ export class Curve3D extends Resource{
   }
   add_point(_position, _in, _out, _index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_point,
+      Curve3D._bindings.method_add_point,
       this._owner,
       _position, _in, _out, _index
     );
@@ -361,7 +362,7 @@ export class Curve3D extends Resource{
   }
   set_point_position(_idx, _position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_point_position,
+      Curve3D._bindings.method_set_point_position,
       this._owner,
       _idx, _position
     );
@@ -369,7 +370,7 @@ export class Curve3D extends Resource{
   }
   get_point_position(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_point_position,
+      Curve3D._bindings.method_get_point_position,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -379,7 +380,7 @@ export class Curve3D extends Resource{
   }
   set_point_tilt(_idx, _tilt) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_point_tilt,
+      Curve3D._bindings.method_set_point_tilt,
       this._owner,
       _idx, _tilt
     );
@@ -387,7 +388,7 @@ export class Curve3D extends Resource{
   }
   get_point_tilt(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_point_tilt,
+      Curve3D._bindings.method_get_point_tilt,
       this._owner,
 			Variant.Type.FLOAT,
       _idx
@@ -396,7 +397,7 @@ export class Curve3D extends Resource{
   }
   set_point_in(_idx, _position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_point_in,
+      Curve3D._bindings.method_set_point_in,
       this._owner,
       _idx, _position
     );
@@ -404,7 +405,7 @@ export class Curve3D extends Resource{
   }
   get_point_in(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_point_in,
+      Curve3D._bindings.method_get_point_in,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -414,7 +415,7 @@ export class Curve3D extends Resource{
   }
   set_point_out(_idx, _position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_point_out,
+      Curve3D._bindings.method_set_point_out,
       this._owner,
       _idx, _position
     );
@@ -422,7 +423,7 @@ export class Curve3D extends Resource{
   }
   get_point_out(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_point_out,
+      Curve3D._bindings.method_get_point_out,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -432,7 +433,7 @@ export class Curve3D extends Resource{
   }
   remove_point(_idx) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_point,
+      Curve3D._bindings.method_remove_point,
       this._owner,
       _idx
     );
@@ -440,7 +441,7 @@ export class Curve3D extends Resource{
   }
   clear_points() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_points,
+      Curve3D._bindings.method_clear_points,
       this._owner,
       
     );
@@ -448,7 +449,7 @@ export class Curve3D extends Resource{
   }
   sample(_idx, _t) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_sample,
+      Curve3D._bindings.method_sample,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -458,7 +459,7 @@ export class Curve3D extends Resource{
   }
   samplef(_fofs) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_samplef,
+      Curve3D._bindings.method_samplef,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -468,7 +469,7 @@ export class Curve3D extends Resource{
   }
   set_bake_interval(_distance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bake_interval,
+      Curve3D._bindings.method_set_bake_interval,
       this._owner,
       _distance
     );
@@ -476,7 +477,7 @@ export class Curve3D extends Resource{
   }
   get_bake_interval() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bake_interval,
+      Curve3D._bindings.method_get_bake_interval,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -485,7 +486,7 @@ export class Curve3D extends Resource{
   }
   set_up_vector_enabled(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_up_vector_enabled,
+      Curve3D._bindings.method_set_up_vector_enabled,
       this._owner,
       _enable
     );
@@ -493,7 +494,7 @@ export class Curve3D extends Resource{
   }
   is_up_vector_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_up_vector_enabled,
+      Curve3D._bindings.method_is_up_vector_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -502,7 +503,7 @@ export class Curve3D extends Resource{
   }
   get_baked_length() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_baked_length,
+      Curve3D._bindings.method_get_baked_length,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -511,7 +512,7 @@ export class Curve3D extends Resource{
   }
   sample_baked(_offset, _cubic) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_sample_baked,
+      Curve3D._bindings.method_sample_baked,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -521,7 +522,7 @@ export class Curve3D extends Resource{
   }
   sample_baked_with_rotation(_offset, _cubic, _apply_tilt) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_sample_baked_with_rotation,
+      Curve3D._bindings.method_sample_baked_with_rotation,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -531,7 +532,7 @@ export class Curve3D extends Resource{
   }
   sample_baked_up_vector(_offset, _apply_tilt) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_sample_baked_up_vector,
+      Curve3D._bindings.method_sample_baked_up_vector,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -541,7 +542,7 @@ export class Curve3D extends Resource{
   }
   get_baked_points() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_baked_points,
+      Curve3D._bindings.method_get_baked_points,
       this._owner,
 			Variant.Type.PACKED_VECTOR3_ARRAY,
     
@@ -551,7 +552,7 @@ export class Curve3D extends Resource{
   }
   get_baked_tilts() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_baked_tilts,
+      Curve3D._bindings.method_get_baked_tilts,
       this._owner,
 			Variant.Type.PACKED_FLOAT32_ARRAY,
     
@@ -561,7 +562,7 @@ export class Curve3D extends Resource{
   }
   get_baked_up_vectors() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_baked_up_vectors,
+      Curve3D._bindings.method_get_baked_up_vectors,
       this._owner,
 			Variant.Type.PACKED_VECTOR3_ARRAY,
     
@@ -571,7 +572,7 @@ export class Curve3D extends Resource{
   }
   get_closest_point(_to_point) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_closest_point,
+      Curve3D._bindings.method_get_closest_point,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -581,7 +582,7 @@ export class Curve3D extends Resource{
   }
   get_closest_offset(_to_point) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_closest_offset,
+      Curve3D._bindings.method_get_closest_offset,
       this._owner,
 			Variant.Type.FLOAT,
       _to_point
@@ -590,7 +591,7 @@ export class Curve3D extends Resource{
   }
   tessellate(_max_stages, _tolerance_degrees) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_tessellate,
+      Curve3D._bindings.method_tessellate,
       this._owner,
 			Variant.Type.PACKED_VECTOR3_ARRAY,
     
@@ -600,7 +601,7 @@ export class Curve3D extends Resource{
   }
   tessellate_even_length(_max_stages, _tolerance_length) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_tessellate_even_length,
+      Curve3D._bindings.method_tessellate_even_length,
       this._owner,
 			Variant.Type.PACKED_VECTOR3_ARRAY,
     

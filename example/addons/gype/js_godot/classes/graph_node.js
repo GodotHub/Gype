@@ -1,11 +1,11 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Vector2i } from '@js_godot/variant/vector2i'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
-import { Color } from '@js_godot/variant/color'
 import { Vector2 } from '@js_godot/variant/vector2'
 import { GraphElement } from '@js_godot/classes/graph_element'
+import { StringName } from '@js_godot/variant/string_name'
+import { Color } from '@js_godot/variant/color'
+import { GDString } from '@js_godot/variant/gd_string'
+import { Variant } from '@js_godot/variant/variant'
+import { Vector2i } from '@js_godot/variant/vector2i'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -394,11 +394,12 @@ export class GraphNode extends GraphElement{
       );
     }
   }
+  
   _draw_port(_slot_index, _position, _left, _color) {
   }
   set_title(_title) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_title,
+      GraphNode._bindings.method_set_title,
       this._owner,
       _title
     );
@@ -406,7 +407,7 @@ export class GraphNode extends GraphElement{
   }
   get_title() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_title,
+      GraphNode._bindings.method_get_title,
       this._owner,
 			Variant.Type.STRING,
     
@@ -416,7 +417,7 @@ export class GraphNode extends GraphElement{
   }
   get_titlebar_hbox() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_titlebar_hbox,
+      GraphNode._bindings.method_get_titlebar_hbox,
       this._owner,
 			Variant.INT,
       
@@ -425,7 +426,7 @@ export class GraphNode extends GraphElement{
   }
   set_slot(_slot_index, _enable_left_port, _type_left, _color_left, _enable_right_port, _type_right, _color_right, _custom_icon_left, _custom_icon_right, _draw_stylebox) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_slot,
+      GraphNode._bindings.method_set_slot,
       this._owner,
       _slot_index, _enable_left_port, _type_left, _color_left, _enable_right_port, _type_right, _color_right, _custom_icon_left, _custom_icon_right, _draw_stylebox
     );
@@ -433,7 +434,7 @@ export class GraphNode extends GraphElement{
   }
   clear_slot(_slot_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_slot,
+      GraphNode._bindings.method_clear_slot,
       this._owner,
       _slot_index
     );
@@ -441,7 +442,7 @@ export class GraphNode extends GraphElement{
   }
   clear_all_slots() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_all_slots,
+      GraphNode._bindings.method_clear_all_slots,
       this._owner,
       
     );
@@ -449,7 +450,7 @@ export class GraphNode extends GraphElement{
   }
   is_slot_enabled_left(_slot_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_slot_enabled_left,
+      GraphNode._bindings.method_is_slot_enabled_left,
       this._owner,
 			Variant.Type.BOOL,
       _slot_index
@@ -458,7 +459,7 @@ export class GraphNode extends GraphElement{
   }
   set_slot_enabled_left(_slot_index, _enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_slot_enabled_left,
+      GraphNode._bindings.method_set_slot_enabled_left,
       this._owner,
       _slot_index, _enable
     );
@@ -466,7 +467,7 @@ export class GraphNode extends GraphElement{
   }
   set_slot_type_left(_slot_index, _type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_slot_type_left,
+      GraphNode._bindings.method_set_slot_type_left,
       this._owner,
       _slot_index, _type
     );
@@ -474,7 +475,7 @@ export class GraphNode extends GraphElement{
   }
   get_slot_type_left(_slot_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_slot_type_left,
+      GraphNode._bindings.method_get_slot_type_left,
       this._owner,
 			Variant.Type.INT,
       _slot_index
@@ -483,7 +484,7 @@ export class GraphNode extends GraphElement{
   }
   set_slot_color_left(_slot_index, _color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_slot_color_left,
+      GraphNode._bindings.method_set_slot_color_left,
       this._owner,
       _slot_index, _color
     );
@@ -491,7 +492,7 @@ export class GraphNode extends GraphElement{
   }
   get_slot_color_left(_slot_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_slot_color_left,
+      GraphNode._bindings.method_get_slot_color_left,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -501,7 +502,7 @@ export class GraphNode extends GraphElement{
   }
   set_slot_custom_icon_left(_slot_index, _custom_icon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_slot_custom_icon_left,
+      GraphNode._bindings.method_set_slot_custom_icon_left,
       this._owner,
       _slot_index, _custom_icon
     );
@@ -509,7 +510,7 @@ export class GraphNode extends GraphElement{
   }
   get_slot_custom_icon_left(_slot_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_slot_custom_icon_left,
+      GraphNode._bindings.method_get_slot_custom_icon_left,
       this._owner,
 			Variant.INT,
       _slot_index
@@ -518,7 +519,7 @@ export class GraphNode extends GraphElement{
   }
   is_slot_enabled_right(_slot_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_slot_enabled_right,
+      GraphNode._bindings.method_is_slot_enabled_right,
       this._owner,
 			Variant.Type.BOOL,
       _slot_index
@@ -527,7 +528,7 @@ export class GraphNode extends GraphElement{
   }
   set_slot_enabled_right(_slot_index, _enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_slot_enabled_right,
+      GraphNode._bindings.method_set_slot_enabled_right,
       this._owner,
       _slot_index, _enable
     );
@@ -535,7 +536,7 @@ export class GraphNode extends GraphElement{
   }
   set_slot_type_right(_slot_index, _type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_slot_type_right,
+      GraphNode._bindings.method_set_slot_type_right,
       this._owner,
       _slot_index, _type
     );
@@ -543,7 +544,7 @@ export class GraphNode extends GraphElement{
   }
   get_slot_type_right(_slot_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_slot_type_right,
+      GraphNode._bindings.method_get_slot_type_right,
       this._owner,
 			Variant.Type.INT,
       _slot_index
@@ -552,7 +553,7 @@ export class GraphNode extends GraphElement{
   }
   set_slot_color_right(_slot_index, _color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_slot_color_right,
+      GraphNode._bindings.method_set_slot_color_right,
       this._owner,
       _slot_index, _color
     );
@@ -560,7 +561,7 @@ export class GraphNode extends GraphElement{
   }
   get_slot_color_right(_slot_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_slot_color_right,
+      GraphNode._bindings.method_get_slot_color_right,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -570,7 +571,7 @@ export class GraphNode extends GraphElement{
   }
   set_slot_custom_icon_right(_slot_index, _custom_icon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_slot_custom_icon_right,
+      GraphNode._bindings.method_set_slot_custom_icon_right,
       this._owner,
       _slot_index, _custom_icon
     );
@@ -578,7 +579,7 @@ export class GraphNode extends GraphElement{
   }
   get_slot_custom_icon_right(_slot_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_slot_custom_icon_right,
+      GraphNode._bindings.method_get_slot_custom_icon_right,
       this._owner,
 			Variant.INT,
       _slot_index
@@ -587,7 +588,7 @@ export class GraphNode extends GraphElement{
   }
   is_slot_draw_stylebox(_slot_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_slot_draw_stylebox,
+      GraphNode._bindings.method_is_slot_draw_stylebox,
       this._owner,
 			Variant.Type.BOOL,
       _slot_index
@@ -596,7 +597,7 @@ export class GraphNode extends GraphElement{
   }
   set_slot_draw_stylebox(_slot_index, _enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_slot_draw_stylebox,
+      GraphNode._bindings.method_set_slot_draw_stylebox,
       this._owner,
       _slot_index, _enable
     );
@@ -604,7 +605,7 @@ export class GraphNode extends GraphElement{
   }
   set_ignore_invalid_connection_type(_ignore) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ignore_invalid_connection_type,
+      GraphNode._bindings.method_set_ignore_invalid_connection_type,
       this._owner,
       _ignore
     );
@@ -612,7 +613,7 @@ export class GraphNode extends GraphElement{
   }
   is_ignoring_valid_connection_type() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_ignoring_valid_connection_type,
+      GraphNode._bindings.method_is_ignoring_valid_connection_type,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -621,7 +622,7 @@ export class GraphNode extends GraphElement{
   }
   get_input_port_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_input_port_count,
+      GraphNode._bindings.method_get_input_port_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -630,7 +631,7 @@ export class GraphNode extends GraphElement{
   }
   get_input_port_position(_port_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_input_port_position,
+      GraphNode._bindings.method_get_input_port_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -640,7 +641,7 @@ export class GraphNode extends GraphElement{
   }
   get_input_port_type(_port_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_input_port_type,
+      GraphNode._bindings.method_get_input_port_type,
       this._owner,
 			Variant.Type.INT,
       _port_idx
@@ -649,7 +650,7 @@ export class GraphNode extends GraphElement{
   }
   get_input_port_color(_port_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_input_port_color,
+      GraphNode._bindings.method_get_input_port_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -659,7 +660,7 @@ export class GraphNode extends GraphElement{
   }
   get_input_port_slot(_port_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_input_port_slot,
+      GraphNode._bindings.method_get_input_port_slot,
       this._owner,
 			Variant.Type.INT,
       _port_idx
@@ -668,7 +669,7 @@ export class GraphNode extends GraphElement{
   }
   get_output_port_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_output_port_count,
+      GraphNode._bindings.method_get_output_port_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -677,7 +678,7 @@ export class GraphNode extends GraphElement{
   }
   get_output_port_position(_port_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_output_port_position,
+      GraphNode._bindings.method_get_output_port_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -687,7 +688,7 @@ export class GraphNode extends GraphElement{
   }
   get_output_port_type(_port_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_output_port_type,
+      GraphNode._bindings.method_get_output_port_type,
       this._owner,
 			Variant.Type.INT,
       _port_idx
@@ -696,7 +697,7 @@ export class GraphNode extends GraphElement{
   }
   get_output_port_color(_port_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_output_port_color,
+      GraphNode._bindings.method_get_output_port_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -706,7 +707,7 @@ export class GraphNode extends GraphElement{
   }
   get_output_port_slot(_port_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_output_port_slot,
+      GraphNode._bindings.method_get_output_port_slot,
       this._owner,
 			Variant.Type.INT,
       _port_idx

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { Light3D } from '@js_godot/classes/light3d'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -50,9 +50,10 @@ export class OmniLight3D extends Light3D{
       );
     }
   }
+  
   set_shadow_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shadow_mode,
+      OmniLight3D._bindings.method_set_shadow_mode,
       this._owner,
       _mode
     );
@@ -60,7 +61,7 @@ export class OmniLight3D extends Light3D{
   }
   get_shadow_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_shadow_mode,
+      OmniLight3D._bindings.method_get_shadow_mode,
       this._owner,
 			Variant.INT,
       

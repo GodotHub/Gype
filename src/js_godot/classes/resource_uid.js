@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { GodotObject } from '@js_godot/classes/godot_object'
+import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
+import { GodotObject } from '@js_godot/classes/godot_object'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -110,9 +110,10 @@ class _MethodBindings {
       );
     }
   }
+  
   id_to_text(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_id_to_text,
+      _ResourceUID._bindings.method_id_to_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -122,7 +123,7 @@ class _MethodBindings {
   }
   text_to_id(_text_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_text_to_id,
+      _ResourceUID._bindings.method_text_to_id,
       this._owner,
 			Variant.Type.INT,
       _text_id
@@ -131,7 +132,7 @@ class _MethodBindings {
   }
   create_id() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_id,
+      _ResourceUID._bindings.method_create_id,
       this._owner,
 			Variant.Type.INT,
       
@@ -140,7 +141,7 @@ class _MethodBindings {
   }
   has_id(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_id,
+      _ResourceUID._bindings.method_has_id,
       this._owner,
 			Variant.Type.BOOL,
       _id
@@ -149,7 +150,7 @@ class _MethodBindings {
   }
   add_id(_id, _path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_id,
+      _ResourceUID._bindings.method_add_id,
       this._owner,
       _id, _path
     );
@@ -157,7 +158,7 @@ class _MethodBindings {
   }
   set_id(_id, _path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_id,
+      _ResourceUID._bindings.method_set_id,
       this._owner,
       _id, _path
     );
@@ -165,7 +166,7 @@ class _MethodBindings {
   }
   get_id_path(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_id_path,
+      _ResourceUID._bindings.method_get_id_path,
       this._owner,
 			Variant.Type.STRING,
     
@@ -175,7 +176,7 @@ class _MethodBindings {
   }
   remove_id(_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_id,
+      _ResourceUID._bindings.method_remove_id,
       this._owner,
       _id
     );
@@ -188,4 +189,17 @@ class _MethodBindings {
     this._init_bindings();
   }
 }
-export const ResourceUID = new _ResourceUID();
+export const ResourceUID = (function () {
+  let _instance;
+  function create_instance() {
+    return new _ResourceUID();
+  }
+  return {
+    instance: function () {
+      if (!_instance) {
+        _instance = create_instance();
+      }
+      return _instance;
+    },
+  };
+})();

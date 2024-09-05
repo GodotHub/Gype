@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { PrimitiveMesh } from '@js_godot/classes/primitive_mesh'
 import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { PrimitiveMesh } from '@js_godot/classes/primitive_mesh'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -110,9 +110,10 @@ export class CapsuleMesh extends PrimitiveMesh{
       );
     }
   }
+  
   set_radius(_radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_radius,
+      CapsuleMesh._bindings.method_set_radius,
       this._owner,
       _radius
     );
@@ -120,7 +121,7 @@ export class CapsuleMesh extends PrimitiveMesh{
   }
   get_radius() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_radius,
+      CapsuleMesh._bindings.method_get_radius,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -129,7 +130,7 @@ export class CapsuleMesh extends PrimitiveMesh{
   }
   set_height(_height) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_height,
+      CapsuleMesh._bindings.method_set_height,
       this._owner,
       _height
     );
@@ -137,7 +138,7 @@ export class CapsuleMesh extends PrimitiveMesh{
   }
   get_height() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_height,
+      CapsuleMesh._bindings.method_get_height,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -146,7 +147,7 @@ export class CapsuleMesh extends PrimitiveMesh{
   }
   set_radial_segments(_segments) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_radial_segments,
+      CapsuleMesh._bindings.method_set_radial_segments,
       this._owner,
       _segments
     );
@@ -154,7 +155,7 @@ export class CapsuleMesh extends PrimitiveMesh{
   }
   get_radial_segments() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_radial_segments,
+      CapsuleMesh._bindings.method_get_radial_segments,
       this._owner,
 			Variant.Type.INT,
       
@@ -163,7 +164,7 @@ export class CapsuleMesh extends PrimitiveMesh{
   }
   set_rings(_rings) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_rings,
+      CapsuleMesh._bindings.method_set_rings,
       this._owner,
       _rings
     );
@@ -171,7 +172,7 @@ export class CapsuleMesh extends PrimitiveMesh{
   }
   get_rings() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rings,
+      CapsuleMesh._bindings.method_get_rings,
       this._owner,
 			Variant.Type.INT,
       

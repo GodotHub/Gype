@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { Resource } from '@js_godot/classes/resource'
 import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { Resource } from '@js_godot/classes/resource'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -80,9 +80,10 @@ export class BoneMap extends Resource{
       );
     }
   }
+  
   get_profile() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_profile,
+      BoneMap._bindings.method_get_profile,
       this._owner,
 			Variant.INT,
       
@@ -91,7 +92,7 @@ export class BoneMap extends Resource{
   }
   set_profile(_profile) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_profile,
+      BoneMap._bindings.method_set_profile,
       this._owner,
       _profile
     );
@@ -99,7 +100,7 @@ export class BoneMap extends Resource{
   }
   get_skeleton_bone_name(_profile_bone_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_skeleton_bone_name,
+      BoneMap._bindings.method_get_skeleton_bone_name,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -109,7 +110,7 @@ export class BoneMap extends Resource{
   }
   set_skeleton_bone_name(_profile_bone_name, _skeleton_bone_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_skeleton_bone_name,
+      BoneMap._bindings.method_set_skeleton_bone_name,
       this._owner,
       _profile_bone_name, _skeleton_bone_name
     );
@@ -117,7 +118,7 @@ export class BoneMap extends Resource{
   }
   find_profile_bone_name(_skeleton_bone_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_find_profile_bone_name,
+      BoneMap._bindings.method_find_profile_bone_name,
       this._owner,
 			Variant.Type.STRING_NAME,
     

@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
+import { GDArray } from '@js_godot/variant/gd_array'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
-import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -182,9 +182,10 @@ export class OpenXRActionMap extends Resource{
       );
     }
   }
+  
   set_action_sets(_action_sets) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_action_sets,
+      OpenXRActionMap._bindings.method_set_action_sets,
       this._owner,
       _action_sets
     );
@@ -192,7 +193,7 @@ export class OpenXRActionMap extends Resource{
   }
   get_action_sets() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_action_sets,
+      OpenXRActionMap._bindings.method_get_action_sets,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -202,7 +203,7 @@ export class OpenXRActionMap extends Resource{
   }
   get_action_set_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_action_set_count,
+      OpenXRActionMap._bindings.method_get_action_set_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -211,7 +212,7 @@ export class OpenXRActionMap extends Resource{
   }
   find_action_set(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_find_action_set,
+      OpenXRActionMap._bindings.method_find_action_set,
       this._owner,
 			Variant.INT,
       _name
@@ -220,7 +221,7 @@ export class OpenXRActionMap extends Resource{
   }
   get_action_set(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_action_set,
+      OpenXRActionMap._bindings.method_get_action_set,
       this._owner,
 			Variant.INT,
       _idx
@@ -229,7 +230,7 @@ export class OpenXRActionMap extends Resource{
   }
   add_action_set(_action_set) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_action_set,
+      OpenXRActionMap._bindings.method_add_action_set,
       this._owner,
       _action_set
     );
@@ -237,7 +238,7 @@ export class OpenXRActionMap extends Resource{
   }
   remove_action_set(_action_set) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_action_set,
+      OpenXRActionMap._bindings.method_remove_action_set,
       this._owner,
       _action_set
     );
@@ -245,7 +246,7 @@ export class OpenXRActionMap extends Resource{
   }
   set_interaction_profiles(_interaction_profiles) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_interaction_profiles,
+      OpenXRActionMap._bindings.method_set_interaction_profiles,
       this._owner,
       _interaction_profiles
     );
@@ -253,7 +254,7 @@ export class OpenXRActionMap extends Resource{
   }
   get_interaction_profiles() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_interaction_profiles,
+      OpenXRActionMap._bindings.method_get_interaction_profiles,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -263,7 +264,7 @@ export class OpenXRActionMap extends Resource{
   }
   get_interaction_profile_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_interaction_profile_count,
+      OpenXRActionMap._bindings.method_get_interaction_profile_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -272,7 +273,7 @@ export class OpenXRActionMap extends Resource{
   }
   find_interaction_profile(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_find_interaction_profile,
+      OpenXRActionMap._bindings.method_find_interaction_profile,
       this._owner,
 			Variant.INT,
       _name
@@ -281,7 +282,7 @@ export class OpenXRActionMap extends Resource{
   }
   get_interaction_profile(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_interaction_profile,
+      OpenXRActionMap._bindings.method_get_interaction_profile,
       this._owner,
 			Variant.INT,
       _idx
@@ -290,7 +291,7 @@ export class OpenXRActionMap extends Resource{
   }
   add_interaction_profile(_interaction_profile) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_interaction_profile,
+      OpenXRActionMap._bindings.method_add_interaction_profile,
       this._owner,
       _interaction_profile
     );
@@ -298,7 +299,7 @@ export class OpenXRActionMap extends Resource{
   }
   remove_interaction_profile(_interaction_profile) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_interaction_profile,
+      OpenXRActionMap._bindings.method_remove_interaction_profile,
       this._owner,
       _interaction_profile
     );
@@ -306,7 +307,7 @@ export class OpenXRActionMap extends Resource{
   }
   create_default_action_sets() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_create_default_action_sets,
+      OpenXRActionMap._bindings.method_create_default_action_sets,
       this._owner,
       
     );

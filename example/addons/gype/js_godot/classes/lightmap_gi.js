@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { Color } from '@js_godot/variant/color'
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { VisualInstance3D } from '@js_godot/classes/visual_instance3d'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -411,9 +411,10 @@ export class LightmapGI extends VisualInstance3D{
       );
     }
   }
+  
   set_light_data(_data) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_light_data,
+      LightmapGI._bindings.method_set_light_data,
       this._owner,
       _data
     );
@@ -421,7 +422,7 @@ export class LightmapGI extends VisualInstance3D{
   }
   get_light_data() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_light_data,
+      LightmapGI._bindings.method_get_light_data,
       this._owner,
 			Variant.INT,
       
@@ -430,7 +431,7 @@ export class LightmapGI extends VisualInstance3D{
   }
   set_bake_quality(_bake_quality) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bake_quality,
+      LightmapGI._bindings.method_set_bake_quality,
       this._owner,
       _bake_quality
     );
@@ -438,7 +439,7 @@ export class LightmapGI extends VisualInstance3D{
   }
   get_bake_quality() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bake_quality,
+      LightmapGI._bindings.method_get_bake_quality,
       this._owner,
 			Variant.INT,
       
@@ -447,7 +448,7 @@ export class LightmapGI extends VisualInstance3D{
   }
   set_bounces(_bounces) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bounces,
+      LightmapGI._bindings.method_set_bounces,
       this._owner,
       _bounces
     );
@@ -455,7 +456,7 @@ export class LightmapGI extends VisualInstance3D{
   }
   get_bounces() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bounces,
+      LightmapGI._bindings.method_get_bounces,
       this._owner,
 			Variant.Type.INT,
       
@@ -464,7 +465,7 @@ export class LightmapGI extends VisualInstance3D{
   }
   set_bounce_indirect_energy(_bounce_indirect_energy) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bounce_indirect_energy,
+      LightmapGI._bindings.method_set_bounce_indirect_energy,
       this._owner,
       _bounce_indirect_energy
     );
@@ -472,7 +473,7 @@ export class LightmapGI extends VisualInstance3D{
   }
   get_bounce_indirect_energy() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bounce_indirect_energy,
+      LightmapGI._bindings.method_get_bounce_indirect_energy,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -481,7 +482,7 @@ export class LightmapGI extends VisualInstance3D{
   }
   set_generate_probes(_subdivision) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_generate_probes,
+      LightmapGI._bindings.method_set_generate_probes,
       this._owner,
       _subdivision
     );
@@ -489,7 +490,7 @@ export class LightmapGI extends VisualInstance3D{
   }
   get_generate_probes() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_generate_probes,
+      LightmapGI._bindings.method_get_generate_probes,
       this._owner,
 			Variant.INT,
       
@@ -498,7 +499,7 @@ export class LightmapGI extends VisualInstance3D{
   }
   set_bias(_bias) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bias,
+      LightmapGI._bindings.method_set_bias,
       this._owner,
       _bias
     );
@@ -506,7 +507,7 @@ export class LightmapGI extends VisualInstance3D{
   }
   get_bias() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bias,
+      LightmapGI._bindings.method_get_bias,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -515,7 +516,7 @@ export class LightmapGI extends VisualInstance3D{
   }
   set_environment_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_environment_mode,
+      LightmapGI._bindings.method_set_environment_mode,
       this._owner,
       _mode
     );
@@ -523,7 +524,7 @@ export class LightmapGI extends VisualInstance3D{
   }
   get_environment_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_environment_mode,
+      LightmapGI._bindings.method_get_environment_mode,
       this._owner,
 			Variant.INT,
       
@@ -532,7 +533,7 @@ export class LightmapGI extends VisualInstance3D{
   }
   set_environment_custom_sky(_sky) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_environment_custom_sky,
+      LightmapGI._bindings.method_set_environment_custom_sky,
       this._owner,
       _sky
     );
@@ -540,7 +541,7 @@ export class LightmapGI extends VisualInstance3D{
   }
   get_environment_custom_sky() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_environment_custom_sky,
+      LightmapGI._bindings.method_get_environment_custom_sky,
       this._owner,
 			Variant.INT,
       
@@ -549,7 +550,7 @@ export class LightmapGI extends VisualInstance3D{
   }
   set_environment_custom_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_environment_custom_color,
+      LightmapGI._bindings.method_set_environment_custom_color,
       this._owner,
       _color
     );
@@ -557,7 +558,7 @@ export class LightmapGI extends VisualInstance3D{
   }
   get_environment_custom_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_environment_custom_color,
+      LightmapGI._bindings.method_get_environment_custom_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -567,7 +568,7 @@ export class LightmapGI extends VisualInstance3D{
   }
   set_environment_custom_energy(_energy) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_environment_custom_energy,
+      LightmapGI._bindings.method_set_environment_custom_energy,
       this._owner,
       _energy
     );
@@ -575,7 +576,7 @@ export class LightmapGI extends VisualInstance3D{
   }
   get_environment_custom_energy() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_environment_custom_energy,
+      LightmapGI._bindings.method_get_environment_custom_energy,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -584,7 +585,7 @@ export class LightmapGI extends VisualInstance3D{
   }
   set_texel_scale(_texel_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texel_scale,
+      LightmapGI._bindings.method_set_texel_scale,
       this._owner,
       _texel_scale
     );
@@ -592,7 +593,7 @@ export class LightmapGI extends VisualInstance3D{
   }
   get_texel_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texel_scale,
+      LightmapGI._bindings.method_get_texel_scale,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -601,7 +602,7 @@ export class LightmapGI extends VisualInstance3D{
   }
   set_max_texture_size(_max_texture_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_max_texture_size,
+      LightmapGI._bindings.method_set_max_texture_size,
       this._owner,
       _max_texture_size
     );
@@ -609,7 +610,7 @@ export class LightmapGI extends VisualInstance3D{
   }
   get_max_texture_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_max_texture_size,
+      LightmapGI._bindings.method_get_max_texture_size,
       this._owner,
 			Variant.Type.INT,
       
@@ -618,7 +619,7 @@ export class LightmapGI extends VisualInstance3D{
   }
   set_use_denoiser(_use_denoiser) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_denoiser,
+      LightmapGI._bindings.method_set_use_denoiser,
       this._owner,
       _use_denoiser
     );
@@ -626,7 +627,7 @@ export class LightmapGI extends VisualInstance3D{
   }
   is_using_denoiser() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_using_denoiser,
+      LightmapGI._bindings.method_is_using_denoiser,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -635,7 +636,7 @@ export class LightmapGI extends VisualInstance3D{
   }
   set_denoiser_strength(_denoiser_strength) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_denoiser_strength,
+      LightmapGI._bindings.method_set_denoiser_strength,
       this._owner,
       _denoiser_strength
     );
@@ -643,7 +644,7 @@ export class LightmapGI extends VisualInstance3D{
   }
   get_denoiser_strength() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_denoiser_strength,
+      LightmapGI._bindings.method_get_denoiser_strength,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -652,7 +653,7 @@ export class LightmapGI extends VisualInstance3D{
   }
   set_denoiser_range(_denoiser_range) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_denoiser_range,
+      LightmapGI._bindings.method_set_denoiser_range,
       this._owner,
       _denoiser_range
     );
@@ -660,7 +661,7 @@ export class LightmapGI extends VisualInstance3D{
   }
   get_denoiser_range() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_denoiser_range,
+      LightmapGI._bindings.method_get_denoiser_range,
       this._owner,
 			Variant.Type.INT,
       
@@ -669,7 +670,7 @@ export class LightmapGI extends VisualInstance3D{
   }
   set_interior(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_interior,
+      LightmapGI._bindings.method_set_interior,
       this._owner,
       _enable
     );
@@ -677,7 +678,7 @@ export class LightmapGI extends VisualInstance3D{
   }
   is_interior() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_interior,
+      LightmapGI._bindings.method_is_interior,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -686,7 +687,7 @@ export class LightmapGI extends VisualInstance3D{
   }
   set_directional(_directional) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_directional,
+      LightmapGI._bindings.method_set_directional,
       this._owner,
       _directional
     );
@@ -694,7 +695,7 @@ export class LightmapGI extends VisualInstance3D{
   }
   is_directional() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_directional,
+      LightmapGI._bindings.method_is_directional,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -703,7 +704,7 @@ export class LightmapGI extends VisualInstance3D{
   }
   set_use_texture_for_bounces(_use_texture_for_bounces) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_texture_for_bounces,
+      LightmapGI._bindings.method_set_use_texture_for_bounces,
       this._owner,
       _use_texture_for_bounces
     );
@@ -711,7 +712,7 @@ export class LightmapGI extends VisualInstance3D{
   }
   is_using_texture_for_bounces() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_using_texture_for_bounces,
+      LightmapGI._bindings.method_is_using_texture_for_bounces,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -720,7 +721,7 @@ export class LightmapGI extends VisualInstance3D{
   }
   set_camera_attributes(_camera_attributes) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_camera_attributes,
+      LightmapGI._bindings.method_set_camera_attributes,
       this._owner,
       _camera_attributes
     );
@@ -728,7 +729,7 @@ export class LightmapGI extends VisualInstance3D{
   }
   get_camera_attributes() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_camera_attributes,
+      LightmapGI._bindings.method_get_camera_attributes,
       this._owner,
 			Variant.INT,
       

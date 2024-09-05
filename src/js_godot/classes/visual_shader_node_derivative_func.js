@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { VisualShaderNode } from '@js_godot/classes/visual_shader_node'
 import {
   call_utility_ret,
@@ -90,9 +90,10 @@ export class VisualShaderNodeDerivativeFunc extends VisualShaderNode{
       );
     }
   }
+  
   set_op_type(_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_op_type,
+      VisualShaderNodeDerivativeFunc._bindings.method_set_op_type,
       this._owner,
       _type
     );
@@ -100,7 +101,7 @@ export class VisualShaderNodeDerivativeFunc extends VisualShaderNode{
   }
   get_op_type() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_op_type,
+      VisualShaderNodeDerivativeFunc._bindings.method_get_op_type,
       this._owner,
 			Variant.INT,
       
@@ -109,7 +110,7 @@ export class VisualShaderNodeDerivativeFunc extends VisualShaderNode{
   }
   set_function(_func) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_function,
+      VisualShaderNodeDerivativeFunc._bindings.method_set_function,
       this._owner,
       _func
     );
@@ -117,7 +118,7 @@ export class VisualShaderNodeDerivativeFunc extends VisualShaderNode{
   }
   get_function() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_function,
+      VisualShaderNodeDerivativeFunc._bindings.method_get_function,
       this._owner,
 			Variant.INT,
       
@@ -126,7 +127,7 @@ export class VisualShaderNodeDerivativeFunc extends VisualShaderNode{
   }
   set_precision(_precision) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_precision,
+      VisualShaderNodeDerivativeFunc._bindings.method_set_precision,
       this._owner,
       _precision
     );
@@ -134,7 +135,7 @@ export class VisualShaderNodeDerivativeFunc extends VisualShaderNode{
   }
   get_precision() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_precision,
+      VisualShaderNodeDerivativeFunc._bindings.method_get_precision,
       this._owner,
 			Variant.INT,
       

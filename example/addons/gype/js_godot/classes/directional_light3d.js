@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { Light3D } from '@js_godot/classes/light3d'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -90,9 +90,10 @@ export class DirectionalLight3D extends Light3D{
       );
     }
   }
+  
   set_shadow_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shadow_mode,
+      DirectionalLight3D._bindings.method_set_shadow_mode,
       this._owner,
       _mode
     );
@@ -100,7 +101,7 @@ export class DirectionalLight3D extends Light3D{
   }
   get_shadow_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_shadow_mode,
+      DirectionalLight3D._bindings.method_get_shadow_mode,
       this._owner,
 			Variant.INT,
       
@@ -109,7 +110,7 @@ export class DirectionalLight3D extends Light3D{
   }
   set_blend_splits(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_blend_splits,
+      DirectionalLight3D._bindings.method_set_blend_splits,
       this._owner,
       _enabled
     );
@@ -117,7 +118,7 @@ export class DirectionalLight3D extends Light3D{
   }
   is_blend_splits_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_blend_splits_enabled,
+      DirectionalLight3D._bindings.method_is_blend_splits_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -126,7 +127,7 @@ export class DirectionalLight3D extends Light3D{
   }
   set_sky_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sky_mode,
+      DirectionalLight3D._bindings.method_set_sky_mode,
       this._owner,
       _mode
     );
@@ -134,7 +135,7 @@ export class DirectionalLight3D extends Light3D{
   }
   get_sky_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sky_mode,
+      DirectionalLight3D._bindings.method_get_sky_mode,
       this._owner,
 			Variant.INT,
       

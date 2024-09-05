@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
+import { Vector3 } from '@js_godot/variant/vector3'
 import { Variant } from '@js_godot/variant/variant'
 import { RefCounted } from '@js_godot/classes/ref_counted'
-import { Vector3 } from '@js_godot/variant/vector3'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -201,9 +201,10 @@ export class PhysicsRayQueryParameters3D extends RefCounted{
       );
     }
   }
+  
   create(_from, _to, _collision_mask, _exclude) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create,
+      PhysicsRayQueryParameters3D._bindings.method_create,
       this._owner,
 			Variant.INT,
       _from, _to, _collision_mask, _exclude
@@ -212,7 +213,7 @@ export class PhysicsRayQueryParameters3D extends RefCounted{
   }
   set_from(_from) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_from,
+      PhysicsRayQueryParameters3D._bindings.method_set_from,
       this._owner,
       _from
     );
@@ -220,7 +221,7 @@ export class PhysicsRayQueryParameters3D extends RefCounted{
   }
   get_from() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_from,
+      PhysicsRayQueryParameters3D._bindings.method_get_from,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -230,7 +231,7 @@ export class PhysicsRayQueryParameters3D extends RefCounted{
   }
   set_to(_to) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_to,
+      PhysicsRayQueryParameters3D._bindings.method_set_to,
       this._owner,
       _to
     );
@@ -238,7 +239,7 @@ export class PhysicsRayQueryParameters3D extends RefCounted{
   }
   get_to() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_to,
+      PhysicsRayQueryParameters3D._bindings.method_get_to,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -248,7 +249,7 @@ export class PhysicsRayQueryParameters3D extends RefCounted{
   }
   set_collision_mask(_collision_mask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_mask,
+      PhysicsRayQueryParameters3D._bindings.method_set_collision_mask,
       this._owner,
       _collision_mask
     );
@@ -256,7 +257,7 @@ export class PhysicsRayQueryParameters3D extends RefCounted{
   }
   get_collision_mask() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_mask,
+      PhysicsRayQueryParameters3D._bindings.method_get_collision_mask,
       this._owner,
 			Variant.Type.INT,
       
@@ -265,7 +266,7 @@ export class PhysicsRayQueryParameters3D extends RefCounted{
   }
   set_exclude(_exclude) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_exclude,
+      PhysicsRayQueryParameters3D._bindings.method_set_exclude,
       this._owner,
       _exclude
     );
@@ -273,7 +274,7 @@ export class PhysicsRayQueryParameters3D extends RefCounted{
   }
   get_exclude() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_exclude,
+      PhysicsRayQueryParameters3D._bindings.method_get_exclude,
       this._owner,
 			Variant.INT,
       
@@ -282,7 +283,7 @@ export class PhysicsRayQueryParameters3D extends RefCounted{
   }
   set_collide_with_bodies(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collide_with_bodies,
+      PhysicsRayQueryParameters3D._bindings.method_set_collide_with_bodies,
       this._owner,
       _enable
     );
@@ -290,7 +291,7 @@ export class PhysicsRayQueryParameters3D extends RefCounted{
   }
   is_collide_with_bodies_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_collide_with_bodies_enabled,
+      PhysicsRayQueryParameters3D._bindings.method_is_collide_with_bodies_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -299,7 +300,7 @@ export class PhysicsRayQueryParameters3D extends RefCounted{
   }
   set_collide_with_areas(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collide_with_areas,
+      PhysicsRayQueryParameters3D._bindings.method_set_collide_with_areas,
       this._owner,
       _enable
     );
@@ -307,7 +308,7 @@ export class PhysicsRayQueryParameters3D extends RefCounted{
   }
   is_collide_with_areas_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_collide_with_areas_enabled,
+      PhysicsRayQueryParameters3D._bindings.method_is_collide_with_areas_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -316,7 +317,7 @@ export class PhysicsRayQueryParameters3D extends RefCounted{
   }
   set_hit_from_inside(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_hit_from_inside,
+      PhysicsRayQueryParameters3D._bindings.method_set_hit_from_inside,
       this._owner,
       _enable
     );
@@ -324,7 +325,7 @@ export class PhysicsRayQueryParameters3D extends RefCounted{
   }
   is_hit_from_inside_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_hit_from_inside_enabled,
+      PhysicsRayQueryParameters3D._bindings.method_is_hit_from_inside_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -333,7 +334,7 @@ export class PhysicsRayQueryParameters3D extends RefCounted{
   }
   set_hit_back_faces(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_hit_back_faces,
+      PhysicsRayQueryParameters3D._bindings.method_set_hit_back_faces,
       this._owner,
       _enable
     );
@@ -341,7 +342,7 @@ export class PhysicsRayQueryParameters3D extends RefCounted{
   }
   is_hit_back_faces_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_hit_back_faces_enabled,
+      PhysicsRayQueryParameters3D._bindings.method_is_hit_back_faces_enabled,
       this._owner,
 			Variant.Type.BOOL,
       

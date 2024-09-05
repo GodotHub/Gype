@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { StringName } from '@js_godot/variant/string_name'
 import { Shape3D } from '@js_godot/classes/shape3d'
 import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -50,9 +50,10 @@ export class SphereShape3D extends Shape3D{
       );
     }
   }
+  
   set_radius(_radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_radius,
+      SphereShape3D._bindings.method_set_radius,
       this._owner,
       _radius
     );
@@ -60,7 +61,7 @@ export class SphereShape3D extends Shape3D{
   }
   get_radius() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_radius,
+      SphereShape3D._bindings.method_get_radius,
       this._owner,
 			Variant.Type.FLOAT,
       

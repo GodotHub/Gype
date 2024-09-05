@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
-import { PhysicsDirectBodyState2D } from '@js_godot/classes/physics_direct_body_state2d'
 import { Vector2 } from '@js_godot/variant/vector2'
 import { RID } from '@js_godot/variant/rid'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
+import { PhysicsDirectBodyState2D } from '@js_godot/classes/physics_direct_body_state2d'
 import { Transform2D } from '@js_godot/variant/transform2d'
 import {
   call_utility_ret,
@@ -33,6 +33,7 @@ export class PhysicsDirectBodyState2DExtension extends PhysicsDirectBodyState2D{
     }
     this.#initialized = true;
   }
+  
   _get_total_gravity() {
   }
   _get_total_linear_damp() {

@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
+import { RefCounted } from '@js_godot/classes/ref_counted'
 import { Variant } from '@js_godot/variant/variant'
+import { Transform2D } from '@js_godot/variant/transform2d'
 import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
-import { RefCounted } from '@js_godot/classes/ref_counted'
-import { Transform2D } from '@js_godot/variant/transform2d'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -112,9 +112,10 @@ export class CameraFeed extends RefCounted{
       );
     }
   }
+  
   get_id() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_id,
+      CameraFeed._bindings.method_get_id,
       this._owner,
 			Variant.Type.INT,
       
@@ -123,7 +124,7 @@ export class CameraFeed extends RefCounted{
   }
   is_active() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_active,
+      CameraFeed._bindings.method_is_active,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -132,7 +133,7 @@ export class CameraFeed extends RefCounted{
   }
   set_active(_active) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_active,
+      CameraFeed._bindings.method_set_active,
       this._owner,
       _active
     );
@@ -140,7 +141,7 @@ export class CameraFeed extends RefCounted{
   }
   get_name() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_name,
+      CameraFeed._bindings.method_get_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -150,7 +151,7 @@ export class CameraFeed extends RefCounted{
   }
   get_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_position,
+      CameraFeed._bindings.method_get_position,
       this._owner,
 			Variant.INT,
       
@@ -159,7 +160,7 @@ export class CameraFeed extends RefCounted{
   }
   get_transform() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_transform,
+      CameraFeed._bindings.method_get_transform,
       this._owner,
 			Variant.Type.TRANSFORM2D,
     
@@ -169,7 +170,7 @@ export class CameraFeed extends RefCounted{
   }
   set_transform(_transform) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_transform,
+      CameraFeed._bindings.method_set_transform,
       this._owner,
       _transform
     );
@@ -177,7 +178,7 @@ export class CameraFeed extends RefCounted{
   }
   get_datatype() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_datatype,
+      CameraFeed._bindings.method_get_datatype,
       this._owner,
 			Variant.INT,
       

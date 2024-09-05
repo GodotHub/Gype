@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
+import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
@@ -211,9 +211,10 @@ export class AnimationNodeStateMachineTransition extends Resource{
       );
     }
   }
+  
   set_switch_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_switch_mode,
+      AnimationNodeStateMachineTransition._bindings.method_set_switch_mode,
       this._owner,
       _mode
     );
@@ -221,7 +222,7 @@ export class AnimationNodeStateMachineTransition extends Resource{
   }
   get_switch_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_switch_mode,
+      AnimationNodeStateMachineTransition._bindings.method_get_switch_mode,
       this._owner,
 			Variant.INT,
       
@@ -230,7 +231,7 @@ export class AnimationNodeStateMachineTransition extends Resource{
   }
   set_advance_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_advance_mode,
+      AnimationNodeStateMachineTransition._bindings.method_set_advance_mode,
       this._owner,
       _mode
     );
@@ -238,7 +239,7 @@ export class AnimationNodeStateMachineTransition extends Resource{
   }
   get_advance_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_advance_mode,
+      AnimationNodeStateMachineTransition._bindings.method_get_advance_mode,
       this._owner,
 			Variant.INT,
       
@@ -247,7 +248,7 @@ export class AnimationNodeStateMachineTransition extends Resource{
   }
   set_advance_condition(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_advance_condition,
+      AnimationNodeStateMachineTransition._bindings.method_set_advance_condition,
       this._owner,
       _name
     );
@@ -255,7 +256,7 @@ export class AnimationNodeStateMachineTransition extends Resource{
   }
   get_advance_condition() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_advance_condition,
+      AnimationNodeStateMachineTransition._bindings.method_get_advance_condition,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -265,7 +266,7 @@ export class AnimationNodeStateMachineTransition extends Resource{
   }
   set_xfade_time(_secs) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_xfade_time,
+      AnimationNodeStateMachineTransition._bindings.method_set_xfade_time,
       this._owner,
       _secs
     );
@@ -273,7 +274,7 @@ export class AnimationNodeStateMachineTransition extends Resource{
   }
   get_xfade_time() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_xfade_time,
+      AnimationNodeStateMachineTransition._bindings.method_get_xfade_time,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -282,7 +283,7 @@ export class AnimationNodeStateMachineTransition extends Resource{
   }
   set_xfade_curve(_curve) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_xfade_curve,
+      AnimationNodeStateMachineTransition._bindings.method_set_xfade_curve,
       this._owner,
       _curve
     );
@@ -290,7 +291,7 @@ export class AnimationNodeStateMachineTransition extends Resource{
   }
   get_xfade_curve() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_xfade_curve,
+      AnimationNodeStateMachineTransition._bindings.method_get_xfade_curve,
       this._owner,
 			Variant.INT,
       
@@ -299,7 +300,7 @@ export class AnimationNodeStateMachineTransition extends Resource{
   }
   set_break_loop_at_end(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_break_loop_at_end,
+      AnimationNodeStateMachineTransition._bindings.method_set_break_loop_at_end,
       this._owner,
       _enable
     );
@@ -307,7 +308,7 @@ export class AnimationNodeStateMachineTransition extends Resource{
   }
   is_loop_broken_at_end() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_loop_broken_at_end,
+      AnimationNodeStateMachineTransition._bindings.method_is_loop_broken_at_end,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -316,7 +317,7 @@ export class AnimationNodeStateMachineTransition extends Resource{
   }
   set_reset(_reset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_reset,
+      AnimationNodeStateMachineTransition._bindings.method_set_reset,
       this._owner,
       _reset
     );
@@ -324,7 +325,7 @@ export class AnimationNodeStateMachineTransition extends Resource{
   }
   is_reset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_reset,
+      AnimationNodeStateMachineTransition._bindings.method_is_reset,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -333,7 +334,7 @@ export class AnimationNodeStateMachineTransition extends Resource{
   }
   set_priority(_priority) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_priority,
+      AnimationNodeStateMachineTransition._bindings.method_set_priority,
       this._owner,
       _priority
     );
@@ -341,7 +342,7 @@ export class AnimationNodeStateMachineTransition extends Resource{
   }
   get_priority() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_priority,
+      AnimationNodeStateMachineTransition._bindings.method_get_priority,
       this._owner,
 			Variant.Type.INT,
       
@@ -350,7 +351,7 @@ export class AnimationNodeStateMachineTransition extends Resource{
   }
   set_advance_expression(_text) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_advance_expression,
+      AnimationNodeStateMachineTransition._bindings.method_set_advance_expression,
       this._owner,
       _text
     );
@@ -358,7 +359,7 @@ export class AnimationNodeStateMachineTransition extends Resource{
   }
   get_advance_expression() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_advance_expression,
+      AnimationNodeStateMachineTransition._bindings.method_get_advance_expression,
       this._owner,
 			Variant.Type.STRING,
     

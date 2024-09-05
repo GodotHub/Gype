@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
-import { Dictionary } from '@js_godot/variant/dictionary'
-import { Variant } from '@js_godot/variant/variant'
 import { Vector2i } from '@js_godot/variant/vector2i'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { Dictionary } from '@js_godot/variant/dictionary'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -33,6 +33,7 @@ export class EditorResourcePreviewGenerator extends RefCounted{
     }
     this.#initialized = true;
   }
+  
   _handles(_type) {
   }
   _generate(_resource, _size, _metadata) {

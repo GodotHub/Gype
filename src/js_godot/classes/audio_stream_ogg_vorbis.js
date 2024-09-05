@@ -2,8 +2,8 @@ import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
 import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { AudioStream } from '@js_godot/classes/audio_stream'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -172,9 +172,10 @@ export class AudioStreamOggVorbis extends AudioStream{
       );
     }
   }
+  
   load_from_buffer(_buffer) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_load_from_buffer,
+      AudioStreamOggVorbis._bindings.method_load_from_buffer,
       this._owner,
 			Variant.INT,
       _buffer
@@ -183,7 +184,7 @@ export class AudioStreamOggVorbis extends AudioStream{
   }
   load_from_file(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_load_from_file,
+      AudioStreamOggVorbis._bindings.method_load_from_file,
       this._owner,
 			Variant.INT,
       _path
@@ -192,7 +193,7 @@ export class AudioStreamOggVorbis extends AudioStream{
   }
   set_packet_sequence(_packet_sequence) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_packet_sequence,
+      AudioStreamOggVorbis._bindings.method_set_packet_sequence,
       this._owner,
       _packet_sequence
     );
@@ -200,7 +201,7 @@ export class AudioStreamOggVorbis extends AudioStream{
   }
   get_packet_sequence() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_packet_sequence,
+      AudioStreamOggVorbis._bindings.method_get_packet_sequence,
       this._owner,
 			Variant.INT,
       
@@ -209,7 +210,7 @@ export class AudioStreamOggVorbis extends AudioStream{
   }
   set_loop(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_loop,
+      AudioStreamOggVorbis._bindings.method_set_loop,
       this._owner,
       _enable
     );
@@ -217,7 +218,7 @@ export class AudioStreamOggVorbis extends AudioStream{
   }
   has_loop() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_loop,
+      AudioStreamOggVorbis._bindings.method_has_loop,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -226,7 +227,7 @@ export class AudioStreamOggVorbis extends AudioStream{
   }
   set_loop_offset(_seconds) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_loop_offset,
+      AudioStreamOggVorbis._bindings.method_set_loop_offset,
       this._owner,
       _seconds
     );
@@ -234,7 +235,7 @@ export class AudioStreamOggVorbis extends AudioStream{
   }
   get_loop_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_loop_offset,
+      AudioStreamOggVorbis._bindings.method_get_loop_offset,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -243,7 +244,7 @@ export class AudioStreamOggVorbis extends AudioStream{
   }
   set_bpm(_bpm) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bpm,
+      AudioStreamOggVorbis._bindings.method_set_bpm,
       this._owner,
       _bpm
     );
@@ -251,7 +252,7 @@ export class AudioStreamOggVorbis extends AudioStream{
   }
   get_bpm() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bpm,
+      AudioStreamOggVorbis._bindings.method_get_bpm,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -260,7 +261,7 @@ export class AudioStreamOggVorbis extends AudioStream{
   }
   set_beat_count(_count) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_beat_count,
+      AudioStreamOggVorbis._bindings.method_set_beat_count,
       this._owner,
       _count
     );
@@ -268,7 +269,7 @@ export class AudioStreamOggVorbis extends AudioStream{
   }
   get_beat_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_beat_count,
+      AudioStreamOggVorbis._bindings.method_get_beat_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -277,7 +278,7 @@ export class AudioStreamOggVorbis extends AudioStream{
   }
   set_bar_beats(_count) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bar_beats,
+      AudioStreamOggVorbis._bindings.method_set_bar_beats,
       this._owner,
       _count
     );
@@ -285,7 +286,7 @@ export class AudioStreamOggVorbis extends AudioStream{
   }
   get_bar_beats() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bar_beats,
+      AudioStreamOggVorbis._bindings.method_get_bar_beats,
       this._owner,
 			Variant.Type.INT,
       

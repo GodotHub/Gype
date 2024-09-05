@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -40,9 +40,10 @@ export class WeakRef extends RefCounted{
       );
     }
   }
+  
   get_ref() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ref,
+      WeakRef._bindings.method_get_ref,
       this._owner,
 			Variant.Type.VARIANT,
     

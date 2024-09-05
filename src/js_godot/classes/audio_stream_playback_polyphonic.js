@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { AudioStreamPlayback } from '@js_godot/classes/audio_stream_playback'
 import {
   call_utility_ret,
@@ -80,9 +80,10 @@ export class AudioStreamPlaybackPolyphonic extends AudioStreamPlayback{
       );
     }
   }
+  
   play_stream(_stream, _from_offset, _volume_db, _pitch_scale, _playback_type, _bus) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_play_stream,
+      AudioStreamPlaybackPolyphonic._bindings.method_play_stream,
       this._owner,
 			Variant.Type.INT,
       _stream, _from_offset, _volume_db, _pitch_scale, _playback_type, _bus
@@ -91,7 +92,7 @@ export class AudioStreamPlaybackPolyphonic extends AudioStreamPlayback{
   }
   set_stream_volume(_stream, _volume_db) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_stream_volume,
+      AudioStreamPlaybackPolyphonic._bindings.method_set_stream_volume,
       this._owner,
       _stream, _volume_db
     );
@@ -99,7 +100,7 @@ export class AudioStreamPlaybackPolyphonic extends AudioStreamPlayback{
   }
   set_stream_pitch_scale(_stream, _pitch_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_stream_pitch_scale,
+      AudioStreamPlaybackPolyphonic._bindings.method_set_stream_pitch_scale,
       this._owner,
       _stream, _pitch_scale
     );
@@ -107,7 +108,7 @@ export class AudioStreamPlaybackPolyphonic extends AudioStreamPlayback{
   }
   is_stream_playing(_stream) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_stream_playing,
+      AudioStreamPlaybackPolyphonic._bindings.method_is_stream_playing,
       this._owner,
 			Variant.Type.BOOL,
       _stream
@@ -116,7 +117,7 @@ export class AudioStreamPlaybackPolyphonic extends AudioStreamPlayback{
   }
   stop_stream(_stream) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_stop_stream,
+      AudioStreamPlaybackPolyphonic._bindings.method_stop_stream,
       this._owner,
       _stream
     );

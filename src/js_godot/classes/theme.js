@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
+import { Color } from '@js_godot/variant/color'
+import { Variant } from '@js_godot/variant/variant'
+import { PackedStringArray } from '@js_godot/variant/packed_string_array'
 import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
-import { Color } from '@js_godot/variant/color'
-import { PackedStringArray } from '@js_godot/variant/packed_string_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -713,9 +713,10 @@ export class Theme extends Resource{
       );
     }
   }
+  
   set_icon(_name, _theme_type, _texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_icon,
+      Theme._bindings.method_set_icon,
       this._owner,
       _name, _theme_type, _texture
     );
@@ -723,7 +724,7 @@ export class Theme extends Resource{
   }
   get_icon(_name, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_icon,
+      Theme._bindings.method_get_icon,
       this._owner,
 			Variant.INT,
       _name, _theme_type
@@ -732,7 +733,7 @@ export class Theme extends Resource{
   }
   has_icon(_name, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_icon,
+      Theme._bindings.method_has_icon,
       this._owner,
 			Variant.Type.BOOL,
       _name, _theme_type
@@ -741,7 +742,7 @@ export class Theme extends Resource{
   }
   rename_icon(_old_name, _name, _theme_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_rename_icon,
+      Theme._bindings.method_rename_icon,
       this._owner,
       _old_name, _name, _theme_type
     );
@@ -749,7 +750,7 @@ export class Theme extends Resource{
   }
   clear_icon(_name, _theme_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_icon,
+      Theme._bindings.method_clear_icon,
       this._owner,
       _name, _theme_type
     );
@@ -757,7 +758,7 @@ export class Theme extends Resource{
   }
   get_icon_list(_theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_icon_list,
+      Theme._bindings.method_get_icon_list,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -767,7 +768,7 @@ export class Theme extends Resource{
   }
   get_icon_type_list() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_icon_type_list,
+      Theme._bindings.method_get_icon_type_list,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -777,7 +778,7 @@ export class Theme extends Resource{
   }
   set_stylebox(_name, _theme_type, _texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_stylebox,
+      Theme._bindings.method_set_stylebox,
       this._owner,
       _name, _theme_type, _texture
     );
@@ -785,7 +786,7 @@ export class Theme extends Resource{
   }
   get_stylebox(_name, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_stylebox,
+      Theme._bindings.method_get_stylebox,
       this._owner,
 			Variant.INT,
       _name, _theme_type
@@ -794,7 +795,7 @@ export class Theme extends Resource{
   }
   has_stylebox(_name, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_stylebox,
+      Theme._bindings.method_has_stylebox,
       this._owner,
 			Variant.Type.BOOL,
       _name, _theme_type
@@ -803,7 +804,7 @@ export class Theme extends Resource{
   }
   rename_stylebox(_old_name, _name, _theme_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_rename_stylebox,
+      Theme._bindings.method_rename_stylebox,
       this._owner,
       _old_name, _name, _theme_type
     );
@@ -811,7 +812,7 @@ export class Theme extends Resource{
   }
   clear_stylebox(_name, _theme_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_stylebox,
+      Theme._bindings.method_clear_stylebox,
       this._owner,
       _name, _theme_type
     );
@@ -819,7 +820,7 @@ export class Theme extends Resource{
   }
   get_stylebox_list(_theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_stylebox_list,
+      Theme._bindings.method_get_stylebox_list,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -829,7 +830,7 @@ export class Theme extends Resource{
   }
   get_stylebox_type_list() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_stylebox_type_list,
+      Theme._bindings.method_get_stylebox_type_list,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -839,7 +840,7 @@ export class Theme extends Resource{
   }
   set_font(_name, _theme_type, _font) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_font,
+      Theme._bindings.method_set_font,
       this._owner,
       _name, _theme_type, _font
     );
@@ -847,7 +848,7 @@ export class Theme extends Resource{
   }
   get_font(_name, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_font,
+      Theme._bindings.method_get_font,
       this._owner,
 			Variant.INT,
       _name, _theme_type
@@ -856,7 +857,7 @@ export class Theme extends Resource{
   }
   has_font(_name, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_font,
+      Theme._bindings.method_has_font,
       this._owner,
 			Variant.Type.BOOL,
       _name, _theme_type
@@ -865,7 +866,7 @@ export class Theme extends Resource{
   }
   rename_font(_old_name, _name, _theme_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_rename_font,
+      Theme._bindings.method_rename_font,
       this._owner,
       _old_name, _name, _theme_type
     );
@@ -873,7 +874,7 @@ export class Theme extends Resource{
   }
   clear_font(_name, _theme_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_font,
+      Theme._bindings.method_clear_font,
       this._owner,
       _name, _theme_type
     );
@@ -881,7 +882,7 @@ export class Theme extends Resource{
   }
   get_font_list(_theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_font_list,
+      Theme._bindings.method_get_font_list,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -891,7 +892,7 @@ export class Theme extends Resource{
   }
   get_font_type_list() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_font_type_list,
+      Theme._bindings.method_get_font_type_list,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -901,7 +902,7 @@ export class Theme extends Resource{
   }
   set_font_size(_name, _theme_type, _font_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_font_size,
+      Theme._bindings.method_set_font_size,
       this._owner,
       _name, _theme_type, _font_size
     );
@@ -909,7 +910,7 @@ export class Theme extends Resource{
   }
   get_font_size(_name, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_font_size,
+      Theme._bindings.method_get_font_size,
       this._owner,
 			Variant.Type.INT,
       _name, _theme_type
@@ -918,7 +919,7 @@ export class Theme extends Resource{
   }
   has_font_size(_name, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_font_size,
+      Theme._bindings.method_has_font_size,
       this._owner,
 			Variant.Type.BOOL,
       _name, _theme_type
@@ -927,7 +928,7 @@ export class Theme extends Resource{
   }
   rename_font_size(_old_name, _name, _theme_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_rename_font_size,
+      Theme._bindings.method_rename_font_size,
       this._owner,
       _old_name, _name, _theme_type
     );
@@ -935,7 +936,7 @@ export class Theme extends Resource{
   }
   clear_font_size(_name, _theme_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_font_size,
+      Theme._bindings.method_clear_font_size,
       this._owner,
       _name, _theme_type
     );
@@ -943,7 +944,7 @@ export class Theme extends Resource{
   }
   get_font_size_list(_theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_font_size_list,
+      Theme._bindings.method_get_font_size_list,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -953,7 +954,7 @@ export class Theme extends Resource{
   }
   get_font_size_type_list() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_font_size_type_list,
+      Theme._bindings.method_get_font_size_type_list,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -963,7 +964,7 @@ export class Theme extends Resource{
   }
   set_color(_name, _theme_type, _color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_color,
+      Theme._bindings.method_set_color,
       this._owner,
       _name, _theme_type, _color
     );
@@ -971,7 +972,7 @@ export class Theme extends Resource{
   }
   get_color(_name, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_color,
+      Theme._bindings.method_get_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -981,7 +982,7 @@ export class Theme extends Resource{
   }
   has_color(_name, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_color,
+      Theme._bindings.method_has_color,
       this._owner,
 			Variant.Type.BOOL,
       _name, _theme_type
@@ -990,7 +991,7 @@ export class Theme extends Resource{
   }
   rename_color(_old_name, _name, _theme_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_rename_color,
+      Theme._bindings.method_rename_color,
       this._owner,
       _old_name, _name, _theme_type
     );
@@ -998,7 +999,7 @@ export class Theme extends Resource{
   }
   clear_color(_name, _theme_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_color,
+      Theme._bindings.method_clear_color,
       this._owner,
       _name, _theme_type
     );
@@ -1006,7 +1007,7 @@ export class Theme extends Resource{
   }
   get_color_list(_theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_color_list,
+      Theme._bindings.method_get_color_list,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -1016,7 +1017,7 @@ export class Theme extends Resource{
   }
   get_color_type_list() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_color_type_list,
+      Theme._bindings.method_get_color_type_list,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -1026,7 +1027,7 @@ export class Theme extends Resource{
   }
   set_constant(_name, _theme_type, _constant) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_constant,
+      Theme._bindings.method_set_constant,
       this._owner,
       _name, _theme_type, _constant
     );
@@ -1034,7 +1035,7 @@ export class Theme extends Resource{
   }
   get_constant(_name, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_constant,
+      Theme._bindings.method_get_constant,
       this._owner,
 			Variant.Type.INT,
       _name, _theme_type
@@ -1043,7 +1044,7 @@ export class Theme extends Resource{
   }
   has_constant(_name, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_constant,
+      Theme._bindings.method_has_constant,
       this._owner,
 			Variant.Type.BOOL,
       _name, _theme_type
@@ -1052,7 +1053,7 @@ export class Theme extends Resource{
   }
   rename_constant(_old_name, _name, _theme_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_rename_constant,
+      Theme._bindings.method_rename_constant,
       this._owner,
       _old_name, _name, _theme_type
     );
@@ -1060,7 +1061,7 @@ export class Theme extends Resource{
   }
   clear_constant(_name, _theme_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_constant,
+      Theme._bindings.method_clear_constant,
       this._owner,
       _name, _theme_type
     );
@@ -1068,7 +1069,7 @@ export class Theme extends Resource{
   }
   get_constant_list(_theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_constant_list,
+      Theme._bindings.method_get_constant_list,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -1078,7 +1079,7 @@ export class Theme extends Resource{
   }
   get_constant_type_list() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_constant_type_list,
+      Theme._bindings.method_get_constant_type_list,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -1088,7 +1089,7 @@ export class Theme extends Resource{
   }
   set_default_base_scale(_base_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_default_base_scale,
+      Theme._bindings.method_set_default_base_scale,
       this._owner,
       _base_scale
     );
@@ -1096,7 +1097,7 @@ export class Theme extends Resource{
   }
   get_default_base_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_default_base_scale,
+      Theme._bindings.method_get_default_base_scale,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1105,7 +1106,7 @@ export class Theme extends Resource{
   }
   has_default_base_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_default_base_scale,
+      Theme._bindings.method_has_default_base_scale,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1114,7 +1115,7 @@ export class Theme extends Resource{
   }
   set_default_font(_font) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_default_font,
+      Theme._bindings.method_set_default_font,
       this._owner,
       _font
     );
@@ -1122,7 +1123,7 @@ export class Theme extends Resource{
   }
   get_default_font() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_default_font,
+      Theme._bindings.method_get_default_font,
       this._owner,
 			Variant.INT,
       
@@ -1131,7 +1132,7 @@ export class Theme extends Resource{
   }
   has_default_font() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_default_font,
+      Theme._bindings.method_has_default_font,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1140,7 +1141,7 @@ export class Theme extends Resource{
   }
   set_default_font_size(_font_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_default_font_size,
+      Theme._bindings.method_set_default_font_size,
       this._owner,
       _font_size
     );
@@ -1148,7 +1149,7 @@ export class Theme extends Resource{
   }
   get_default_font_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_default_font_size,
+      Theme._bindings.method_get_default_font_size,
       this._owner,
 			Variant.Type.INT,
       
@@ -1157,7 +1158,7 @@ export class Theme extends Resource{
   }
   has_default_font_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_default_font_size,
+      Theme._bindings.method_has_default_font_size,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1166,7 +1167,7 @@ export class Theme extends Resource{
   }
   set_theme_item(_data_type, _name, _theme_type, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_theme_item,
+      Theme._bindings.method_set_theme_item,
       this._owner,
       _data_type, _name, _theme_type, _value
     );
@@ -1174,7 +1175,7 @@ export class Theme extends Resource{
   }
   get_theme_item(_data_type, _name, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_theme_item,
+      Theme._bindings.method_get_theme_item,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -1184,7 +1185,7 @@ export class Theme extends Resource{
   }
   has_theme_item(_data_type, _name, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_theme_item,
+      Theme._bindings.method_has_theme_item,
       this._owner,
 			Variant.Type.BOOL,
       _data_type, _name, _theme_type
@@ -1193,7 +1194,7 @@ export class Theme extends Resource{
   }
   rename_theme_item(_data_type, _old_name, _name, _theme_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_rename_theme_item,
+      Theme._bindings.method_rename_theme_item,
       this._owner,
       _data_type, _old_name, _name, _theme_type
     );
@@ -1201,7 +1202,7 @@ export class Theme extends Resource{
   }
   clear_theme_item(_data_type, _name, _theme_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_theme_item,
+      Theme._bindings.method_clear_theme_item,
       this._owner,
       _data_type, _name, _theme_type
     );
@@ -1209,7 +1210,7 @@ export class Theme extends Resource{
   }
   get_theme_item_list(_data_type, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_theme_item_list,
+      Theme._bindings.method_get_theme_item_list,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -1219,7 +1220,7 @@ export class Theme extends Resource{
   }
   get_theme_item_type_list(_data_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_theme_item_type_list,
+      Theme._bindings.method_get_theme_item_type_list,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -1229,7 +1230,7 @@ export class Theme extends Resource{
   }
   set_type_variation(_theme_type, _base_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_type_variation,
+      Theme._bindings.method_set_type_variation,
       this._owner,
       _theme_type, _base_type
     );
@@ -1237,7 +1238,7 @@ export class Theme extends Resource{
   }
   is_type_variation(_theme_type, _base_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_type_variation,
+      Theme._bindings.method_is_type_variation,
       this._owner,
 			Variant.Type.BOOL,
       _theme_type, _base_type
@@ -1246,7 +1247,7 @@ export class Theme extends Resource{
   }
   clear_type_variation(_theme_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_type_variation,
+      Theme._bindings.method_clear_type_variation,
       this._owner,
       _theme_type
     );
@@ -1254,7 +1255,7 @@ export class Theme extends Resource{
   }
   get_type_variation_base(_theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_type_variation_base,
+      Theme._bindings.method_get_type_variation_base,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -1264,7 +1265,7 @@ export class Theme extends Resource{
   }
   get_type_variation_list(_base_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_type_variation_list,
+      Theme._bindings.method_get_type_variation_list,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -1274,7 +1275,7 @@ export class Theme extends Resource{
   }
   add_type(_theme_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_type,
+      Theme._bindings.method_add_type,
       this._owner,
       _theme_type
     );
@@ -1282,7 +1283,7 @@ export class Theme extends Resource{
   }
   remove_type(_theme_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_type,
+      Theme._bindings.method_remove_type,
       this._owner,
       _theme_type
     );
@@ -1290,7 +1291,7 @@ export class Theme extends Resource{
   }
   get_type_list() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_type_list,
+      Theme._bindings.method_get_type_list,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -1300,7 +1301,7 @@ export class Theme extends Resource{
   }
   merge_with(_other) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_merge_with,
+      Theme._bindings.method_merge_with,
       this._owner,
       _other
     );
@@ -1308,7 +1309,7 @@ export class Theme extends Resource{
   }
   clear() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear,
+      Theme._bindings.method_clear,
       this._owner,
       
     );

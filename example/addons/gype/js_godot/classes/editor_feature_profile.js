@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
+import { RefCounted } from '@js_godot/classes/ref_counted'
 import { Variant } from '@js_godot/variant/variant'
 import { GDString } from '@js_godot/variant/gd_string'
-import { RefCounted } from '@js_godot/classes/ref_counted'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -141,9 +141,10 @@ export class EditorFeatureProfile extends RefCounted{
       );
     }
   }
+  
   set_disable_class(_class_name, _disable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_disable_class,
+      EditorFeatureProfile._bindings.method_set_disable_class,
       this._owner,
       _class_name, _disable
     );
@@ -151,7 +152,7 @@ export class EditorFeatureProfile extends RefCounted{
   }
   is_class_disabled(_class_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_class_disabled,
+      EditorFeatureProfile._bindings.method_is_class_disabled,
       this._owner,
 			Variant.Type.BOOL,
       _class_name
@@ -160,7 +161,7 @@ export class EditorFeatureProfile extends RefCounted{
   }
   set_disable_class_editor(_class_name, _disable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_disable_class_editor,
+      EditorFeatureProfile._bindings.method_set_disable_class_editor,
       this._owner,
       _class_name, _disable
     );
@@ -168,7 +169,7 @@ export class EditorFeatureProfile extends RefCounted{
   }
   is_class_editor_disabled(_class_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_class_editor_disabled,
+      EditorFeatureProfile._bindings.method_is_class_editor_disabled,
       this._owner,
 			Variant.Type.BOOL,
       _class_name
@@ -177,7 +178,7 @@ export class EditorFeatureProfile extends RefCounted{
   }
   set_disable_class_property(_class_name, _property, _disable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_disable_class_property,
+      EditorFeatureProfile._bindings.method_set_disable_class_property,
       this._owner,
       _class_name, _property, _disable
     );
@@ -185,7 +186,7 @@ export class EditorFeatureProfile extends RefCounted{
   }
   is_class_property_disabled(_class_name, _property) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_class_property_disabled,
+      EditorFeatureProfile._bindings.method_is_class_property_disabled,
       this._owner,
 			Variant.Type.BOOL,
       _class_name, _property
@@ -194,7 +195,7 @@ export class EditorFeatureProfile extends RefCounted{
   }
   set_disable_feature(_feature, _disable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_disable_feature,
+      EditorFeatureProfile._bindings.method_set_disable_feature,
       this._owner,
       _feature, _disable
     );
@@ -202,7 +203,7 @@ export class EditorFeatureProfile extends RefCounted{
   }
   is_feature_disabled(_feature) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_feature_disabled,
+      EditorFeatureProfile._bindings.method_is_feature_disabled,
       this._owner,
 			Variant.Type.BOOL,
       _feature
@@ -211,7 +212,7 @@ export class EditorFeatureProfile extends RefCounted{
   }
   get_feature_name(_feature) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_feature_name,
+      EditorFeatureProfile._bindings.method_get_feature_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -221,7 +222,7 @@ export class EditorFeatureProfile extends RefCounted{
   }
   save_to_file(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_save_to_file,
+      EditorFeatureProfile._bindings.method_save_to_file,
       this._owner,
 			Variant.INT,
       _path
@@ -230,7 +231,7 @@ export class EditorFeatureProfile extends RefCounted{
   }
   load_from_file(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_load_from_file,
+      EditorFeatureProfile._bindings.method_load_from_file,
       this._owner,
 			Variant.INT,
       _path

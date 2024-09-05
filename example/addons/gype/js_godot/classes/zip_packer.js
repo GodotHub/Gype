@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { Variant } from '@js_godot/variant/variant'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -82,9 +82,10 @@ export class ZIPPacker extends RefCounted{
       );
     }
   }
+  
   open(_path, _append) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_open,
+      ZIPPacker._bindings.method_open,
       this._owner,
 			Variant.INT,
       _path, _append
@@ -93,7 +94,7 @@ export class ZIPPacker extends RefCounted{
   }
   start_file(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_start_file,
+      ZIPPacker._bindings.method_start_file,
       this._owner,
 			Variant.INT,
       _path
@@ -102,7 +103,7 @@ export class ZIPPacker extends RefCounted{
   }
   write_file(_data) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_write_file,
+      ZIPPacker._bindings.method_write_file,
       this._owner,
 			Variant.INT,
       _data
@@ -111,7 +112,7 @@ export class ZIPPacker extends RefCounted{
   }
   close_file() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_close_file,
+      ZIPPacker._bindings.method_close_file,
       this._owner,
 			Variant.INT,
       
@@ -120,7 +121,7 @@ export class ZIPPacker extends RefCounted{
   }
   close() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_close,
+      ZIPPacker._bindings.method_close,
       this._owner,
 			Variant.INT,
       

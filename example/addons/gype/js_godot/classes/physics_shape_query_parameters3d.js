@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Transform3D } from '@js_godot/variant/transform3d'
-import { Vector3 } from '@js_godot/variant/vector3'
-import { StringName } from '@js_godot/variant/string_name'
 import { RID } from '@js_godot/variant/rid'
+import { StringName } from '@js_godot/variant/string_name'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { Transform3D } from '@js_godot/variant/transform3d'
+import { Variant } from '@js_godot/variant/variant'
+import { Vector3 } from '@js_godot/variant/vector3'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -213,9 +213,10 @@ export class PhysicsShapeQueryParameters3D extends RefCounted{
       );
     }
   }
+  
   set_shape(_shape) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shape,
+      PhysicsShapeQueryParameters3D._bindings.method_set_shape,
       this._owner,
       _shape
     );
@@ -223,7 +224,7 @@ export class PhysicsShapeQueryParameters3D extends RefCounted{
   }
   get_shape() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_shape,
+      PhysicsShapeQueryParameters3D._bindings.method_get_shape,
       this._owner,
 			Variant.INT,
       
@@ -232,7 +233,7 @@ export class PhysicsShapeQueryParameters3D extends RefCounted{
   }
   set_shape_rid(_shape) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shape_rid,
+      PhysicsShapeQueryParameters3D._bindings.method_set_shape_rid,
       this._owner,
       _shape
     );
@@ -240,7 +241,7 @@ export class PhysicsShapeQueryParameters3D extends RefCounted{
   }
   get_shape_rid() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_shape_rid,
+      PhysicsShapeQueryParameters3D._bindings.method_get_shape_rid,
       this._owner,
 			Variant.Type.RID,
     
@@ -250,7 +251,7 @@ export class PhysicsShapeQueryParameters3D extends RefCounted{
   }
   set_transform(_transform) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_transform,
+      PhysicsShapeQueryParameters3D._bindings.method_set_transform,
       this._owner,
       _transform
     );
@@ -258,7 +259,7 @@ export class PhysicsShapeQueryParameters3D extends RefCounted{
   }
   get_transform() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_transform,
+      PhysicsShapeQueryParameters3D._bindings.method_get_transform,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -268,7 +269,7 @@ export class PhysicsShapeQueryParameters3D extends RefCounted{
   }
   set_motion(_motion) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_motion,
+      PhysicsShapeQueryParameters3D._bindings.method_set_motion,
       this._owner,
       _motion
     );
@@ -276,7 +277,7 @@ export class PhysicsShapeQueryParameters3D extends RefCounted{
   }
   get_motion() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_motion,
+      PhysicsShapeQueryParameters3D._bindings.method_get_motion,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -286,7 +287,7 @@ export class PhysicsShapeQueryParameters3D extends RefCounted{
   }
   set_margin(_margin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_margin,
+      PhysicsShapeQueryParameters3D._bindings.method_set_margin,
       this._owner,
       _margin
     );
@@ -294,7 +295,7 @@ export class PhysicsShapeQueryParameters3D extends RefCounted{
   }
   get_margin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_margin,
+      PhysicsShapeQueryParameters3D._bindings.method_get_margin,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -303,7 +304,7 @@ export class PhysicsShapeQueryParameters3D extends RefCounted{
   }
   set_collision_mask(_collision_mask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_mask,
+      PhysicsShapeQueryParameters3D._bindings.method_set_collision_mask,
       this._owner,
       _collision_mask
     );
@@ -311,7 +312,7 @@ export class PhysicsShapeQueryParameters3D extends RefCounted{
   }
   get_collision_mask() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_mask,
+      PhysicsShapeQueryParameters3D._bindings.method_get_collision_mask,
       this._owner,
 			Variant.Type.INT,
       
@@ -320,7 +321,7 @@ export class PhysicsShapeQueryParameters3D extends RefCounted{
   }
   set_exclude(_exclude) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_exclude,
+      PhysicsShapeQueryParameters3D._bindings.method_set_exclude,
       this._owner,
       _exclude
     );
@@ -328,7 +329,7 @@ export class PhysicsShapeQueryParameters3D extends RefCounted{
   }
   get_exclude() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_exclude,
+      PhysicsShapeQueryParameters3D._bindings.method_get_exclude,
       this._owner,
 			Variant.INT,
       
@@ -337,7 +338,7 @@ export class PhysicsShapeQueryParameters3D extends RefCounted{
   }
   set_collide_with_bodies(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collide_with_bodies,
+      PhysicsShapeQueryParameters3D._bindings.method_set_collide_with_bodies,
       this._owner,
       _enable
     );
@@ -345,7 +346,7 @@ export class PhysicsShapeQueryParameters3D extends RefCounted{
   }
   is_collide_with_bodies_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_collide_with_bodies_enabled,
+      PhysicsShapeQueryParameters3D._bindings.method_is_collide_with_bodies_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -354,7 +355,7 @@ export class PhysicsShapeQueryParameters3D extends RefCounted{
   }
   set_collide_with_areas(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collide_with_areas,
+      PhysicsShapeQueryParameters3D._bindings.method_set_collide_with_areas,
       this._owner,
       _enable
     );
@@ -362,7 +363,7 @@ export class PhysicsShapeQueryParameters3D extends RefCounted{
   }
   is_collide_with_areas_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_collide_with_areas_enabled,
+      PhysicsShapeQueryParameters3D._bindings.method_is_collide_with_areas_enabled,
       this._owner,
 			Variant.Type.BOOL,
       

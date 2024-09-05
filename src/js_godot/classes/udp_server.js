@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { GDString } from '@js_godot/variant/gd_string'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -121,9 +121,10 @@ export class UDPServer extends RefCounted{
       );
     }
   }
+  
   listen(_port, _bind_address) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_listen,
+      UDPServer._bindings.method_listen,
       this._owner,
 			Variant.INT,
       _port, _bind_address
@@ -132,7 +133,7 @@ export class UDPServer extends RefCounted{
   }
   poll() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_poll,
+      UDPServer._bindings.method_poll,
       this._owner,
 			Variant.INT,
       
@@ -141,7 +142,7 @@ export class UDPServer extends RefCounted{
   }
   is_connection_available() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_connection_available,
+      UDPServer._bindings.method_is_connection_available,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -150,7 +151,7 @@ export class UDPServer extends RefCounted{
   }
   get_local_port() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_local_port,
+      UDPServer._bindings.method_get_local_port,
       this._owner,
 			Variant.Type.INT,
       
@@ -159,7 +160,7 @@ export class UDPServer extends RefCounted{
   }
   is_listening() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_listening,
+      UDPServer._bindings.method_is_listening,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -168,7 +169,7 @@ export class UDPServer extends RefCounted{
   }
   take_connection() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_take_connection,
+      UDPServer._bindings.method_take_connection,
       this._owner,
 			Variant.INT,
       
@@ -177,7 +178,7 @@ export class UDPServer extends RefCounted{
   }
   stop() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_stop,
+      UDPServer._bindings.method_stop,
       this._owner,
       
     );
@@ -185,7 +186,7 @@ export class UDPServer extends RefCounted{
   }
   set_max_pending_connections(_max_pending_connections) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_max_pending_connections,
+      UDPServer._bindings.method_set_max_pending_connections,
       this._owner,
       _max_pending_connections
     );
@@ -193,7 +194,7 @@ export class UDPServer extends RefCounted{
   }
   get_max_pending_connections() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_max_pending_connections,
+      UDPServer._bindings.method_get_max_pending_connections,
       this._owner,
 			Variant.Type.INT,
       

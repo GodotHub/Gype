@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
+import { Node } from '@js_godot/classes/node'
+import { StringName } from '@js_godot/variant/string_name'
+import { NodePath } from '@js_godot/variant/node_path'
 import { Callable } from '@js_godot/variant/callable'
 import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
-import { Node } from '@js_godot/classes/node'
-import { NodePath } from '@js_godot/variant/node_path'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -202,9 +202,10 @@ export class MultiplayerSynchronizer extends Node{
       );
     }
   }
+  
   set_root_path(_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_root_path,
+      MultiplayerSynchronizer._bindings.method_set_root_path,
       this._owner,
       _path
     );
@@ -212,7 +213,7 @@ export class MultiplayerSynchronizer extends Node{
   }
   get_root_path() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_root_path,
+      MultiplayerSynchronizer._bindings.method_get_root_path,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -222,7 +223,7 @@ export class MultiplayerSynchronizer extends Node{
   }
   set_replication_interval(_milliseconds) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_replication_interval,
+      MultiplayerSynchronizer._bindings.method_set_replication_interval,
       this._owner,
       _milliseconds
     );
@@ -230,7 +231,7 @@ export class MultiplayerSynchronizer extends Node{
   }
   get_replication_interval() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_replication_interval,
+      MultiplayerSynchronizer._bindings.method_get_replication_interval,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -239,7 +240,7 @@ export class MultiplayerSynchronizer extends Node{
   }
   set_delta_interval(_milliseconds) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_delta_interval,
+      MultiplayerSynchronizer._bindings.method_set_delta_interval,
       this._owner,
       _milliseconds
     );
@@ -247,7 +248,7 @@ export class MultiplayerSynchronizer extends Node{
   }
   get_delta_interval() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_delta_interval,
+      MultiplayerSynchronizer._bindings.method_get_delta_interval,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -256,7 +257,7 @@ export class MultiplayerSynchronizer extends Node{
   }
   set_replication_config(_config) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_replication_config,
+      MultiplayerSynchronizer._bindings.method_set_replication_config,
       this._owner,
       _config
     );
@@ -264,7 +265,7 @@ export class MultiplayerSynchronizer extends Node{
   }
   get_replication_config() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_replication_config,
+      MultiplayerSynchronizer._bindings.method_get_replication_config,
       this._owner,
 			Variant.INT,
       
@@ -273,7 +274,7 @@ export class MultiplayerSynchronizer extends Node{
   }
   set_visibility_update_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_visibility_update_mode,
+      MultiplayerSynchronizer._bindings.method_set_visibility_update_mode,
       this._owner,
       _mode
     );
@@ -281,7 +282,7 @@ export class MultiplayerSynchronizer extends Node{
   }
   get_visibility_update_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_visibility_update_mode,
+      MultiplayerSynchronizer._bindings.method_get_visibility_update_mode,
       this._owner,
 			Variant.INT,
       
@@ -290,7 +291,7 @@ export class MultiplayerSynchronizer extends Node{
   }
   update_visibility(_for_peer) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_update_visibility,
+      MultiplayerSynchronizer._bindings.method_update_visibility,
       this._owner,
       _for_peer
     );
@@ -298,7 +299,7 @@ export class MultiplayerSynchronizer extends Node{
   }
   set_visibility_public(_visible) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_visibility_public,
+      MultiplayerSynchronizer._bindings.method_set_visibility_public,
       this._owner,
       _visible
     );
@@ -306,7 +307,7 @@ export class MultiplayerSynchronizer extends Node{
   }
   is_visibility_public() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_visibility_public,
+      MultiplayerSynchronizer._bindings.method_is_visibility_public,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -315,7 +316,7 @@ export class MultiplayerSynchronizer extends Node{
   }
   add_visibility_filter(_filter) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_visibility_filter,
+      MultiplayerSynchronizer._bindings.method_add_visibility_filter,
       this._owner,
       _filter
     );
@@ -323,7 +324,7 @@ export class MultiplayerSynchronizer extends Node{
   }
   remove_visibility_filter(_filter) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_visibility_filter,
+      MultiplayerSynchronizer._bindings.method_remove_visibility_filter,
       this._owner,
       _filter
     );
@@ -331,7 +332,7 @@ export class MultiplayerSynchronizer extends Node{
   }
   set_visibility_for(_peer, _visible) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_visibility_for,
+      MultiplayerSynchronizer._bindings.method_set_visibility_for,
       this._owner,
       _peer, _visible
     );
@@ -339,7 +340,7 @@ export class MultiplayerSynchronizer extends Node{
   }
   get_visibility_for(_peer) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_visibility_for,
+      MultiplayerSynchronizer._bindings.method_get_visibility_for,
       this._owner,
 			Variant.Type.BOOL,
       _peer

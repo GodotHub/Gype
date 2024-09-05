@@ -4,9 +4,9 @@ import {
   _call_builtin_method_ptr_ret,
   _call_builtin_method_ptr_no_ret
 } from '@js_godot/core/builtin_ptrcall'
-import { Vector3 } from '@js_godot/variant/vector3'
 import { StringName } from '@js_godot/variant/string_name'
 import { Basis } from '@js_godot/variant/basis'
+import { Vector3 } from '@js_godot/variant/vector3'
 import { Projection } from '@js_godot/variant/projection'
 
 class _MethodBindings {

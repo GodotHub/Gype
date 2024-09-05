@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { Container } from '@js_godot/classes/container'
 import {
   call_utility_ret,
@@ -70,11 +70,12 @@ export class SubViewportContainer extends Container{
       );
     }
   }
+  
   _propagate_input_event(_event) {
   }
   set_stretch(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_stretch,
+      SubViewportContainer._bindings.method_set_stretch,
       this._owner,
       _enable
     );
@@ -82,7 +83,7 @@ export class SubViewportContainer extends Container{
   }
   is_stretch_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_stretch_enabled,
+      SubViewportContainer._bindings.method_is_stretch_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -91,7 +92,7 @@ export class SubViewportContainer extends Container{
   }
   set_stretch_shrink(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_stretch_shrink,
+      SubViewportContainer._bindings.method_set_stretch_shrink,
       this._owner,
       _amount
     );
@@ -99,7 +100,7 @@ export class SubViewportContainer extends Container{
   }
   get_stretch_shrink() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_stretch_shrink,
+      SubViewportContainer._bindings.method_get_stretch_shrink,
       this._owner,
 			Variant.Type.INT,
       

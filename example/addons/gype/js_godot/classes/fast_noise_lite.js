@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
-import { Noise } from '@js_godot/classes/noise'
 import { Vector3 } from '@js_godot/variant/vector3'
+import { StringName } from '@js_godot/variant/string_name'
+import { Noise } from '@js_godot/classes/noise'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -451,9 +451,10 @@ export class FastNoiseLite extends Noise{
       );
     }
   }
+  
   set_noise_type(_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_noise_type,
+      FastNoiseLite._bindings.method_set_noise_type,
       this._owner,
       _type
     );
@@ -461,7 +462,7 @@ export class FastNoiseLite extends Noise{
   }
   get_noise_type() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_noise_type,
+      FastNoiseLite._bindings.method_get_noise_type,
       this._owner,
 			Variant.INT,
       
@@ -470,7 +471,7 @@ export class FastNoiseLite extends Noise{
   }
   set_seed(_seed) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_seed,
+      FastNoiseLite._bindings.method_set_seed,
       this._owner,
       _seed
     );
@@ -478,7 +479,7 @@ export class FastNoiseLite extends Noise{
   }
   get_seed() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_seed,
+      FastNoiseLite._bindings.method_get_seed,
       this._owner,
 			Variant.Type.INT,
       
@@ -487,7 +488,7 @@ export class FastNoiseLite extends Noise{
   }
   set_frequency(_freq) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_frequency,
+      FastNoiseLite._bindings.method_set_frequency,
       this._owner,
       _freq
     );
@@ -495,7 +496,7 @@ export class FastNoiseLite extends Noise{
   }
   get_frequency() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_frequency,
+      FastNoiseLite._bindings.method_get_frequency,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -504,7 +505,7 @@ export class FastNoiseLite extends Noise{
   }
   set_offset(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_offset,
+      FastNoiseLite._bindings.method_set_offset,
       this._owner,
       _offset
     );
@@ -512,7 +513,7 @@ export class FastNoiseLite extends Noise{
   }
   get_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_offset,
+      FastNoiseLite._bindings.method_get_offset,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -522,7 +523,7 @@ export class FastNoiseLite extends Noise{
   }
   set_fractal_type(_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fractal_type,
+      FastNoiseLite._bindings.method_set_fractal_type,
       this._owner,
       _type
     );
@@ -530,7 +531,7 @@ export class FastNoiseLite extends Noise{
   }
   get_fractal_type() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fractal_type,
+      FastNoiseLite._bindings.method_get_fractal_type,
       this._owner,
 			Variant.INT,
       
@@ -539,7 +540,7 @@ export class FastNoiseLite extends Noise{
   }
   set_fractal_octaves(_octave_count) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fractal_octaves,
+      FastNoiseLite._bindings.method_set_fractal_octaves,
       this._owner,
       _octave_count
     );
@@ -547,7 +548,7 @@ export class FastNoiseLite extends Noise{
   }
   get_fractal_octaves() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fractal_octaves,
+      FastNoiseLite._bindings.method_get_fractal_octaves,
       this._owner,
 			Variant.Type.INT,
       
@@ -556,7 +557,7 @@ export class FastNoiseLite extends Noise{
   }
   set_fractal_lacunarity(_lacunarity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fractal_lacunarity,
+      FastNoiseLite._bindings.method_set_fractal_lacunarity,
       this._owner,
       _lacunarity
     );
@@ -564,7 +565,7 @@ export class FastNoiseLite extends Noise{
   }
   get_fractal_lacunarity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fractal_lacunarity,
+      FastNoiseLite._bindings.method_get_fractal_lacunarity,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -573,7 +574,7 @@ export class FastNoiseLite extends Noise{
   }
   set_fractal_gain(_gain) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fractal_gain,
+      FastNoiseLite._bindings.method_set_fractal_gain,
       this._owner,
       _gain
     );
@@ -581,7 +582,7 @@ export class FastNoiseLite extends Noise{
   }
   get_fractal_gain() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fractal_gain,
+      FastNoiseLite._bindings.method_get_fractal_gain,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -590,7 +591,7 @@ export class FastNoiseLite extends Noise{
   }
   set_fractal_weighted_strength(_weighted_strength) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fractal_weighted_strength,
+      FastNoiseLite._bindings.method_set_fractal_weighted_strength,
       this._owner,
       _weighted_strength
     );
@@ -598,7 +599,7 @@ export class FastNoiseLite extends Noise{
   }
   get_fractal_weighted_strength() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fractal_weighted_strength,
+      FastNoiseLite._bindings.method_get_fractal_weighted_strength,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -607,7 +608,7 @@ export class FastNoiseLite extends Noise{
   }
   set_fractal_ping_pong_strength(_ping_pong_strength) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fractal_ping_pong_strength,
+      FastNoiseLite._bindings.method_set_fractal_ping_pong_strength,
       this._owner,
       _ping_pong_strength
     );
@@ -615,7 +616,7 @@ export class FastNoiseLite extends Noise{
   }
   get_fractal_ping_pong_strength() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fractal_ping_pong_strength,
+      FastNoiseLite._bindings.method_get_fractal_ping_pong_strength,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -624,7 +625,7 @@ export class FastNoiseLite extends Noise{
   }
   set_cellular_distance_function(_func) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cellular_distance_function,
+      FastNoiseLite._bindings.method_set_cellular_distance_function,
       this._owner,
       _func
     );
@@ -632,7 +633,7 @@ export class FastNoiseLite extends Noise{
   }
   get_cellular_distance_function() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cellular_distance_function,
+      FastNoiseLite._bindings.method_get_cellular_distance_function,
       this._owner,
 			Variant.INT,
       
@@ -641,7 +642,7 @@ export class FastNoiseLite extends Noise{
   }
   set_cellular_jitter(_jitter) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cellular_jitter,
+      FastNoiseLite._bindings.method_set_cellular_jitter,
       this._owner,
       _jitter
     );
@@ -649,7 +650,7 @@ export class FastNoiseLite extends Noise{
   }
   get_cellular_jitter() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cellular_jitter,
+      FastNoiseLite._bindings.method_get_cellular_jitter,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -658,7 +659,7 @@ export class FastNoiseLite extends Noise{
   }
   set_cellular_return_type(_ret) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cellular_return_type,
+      FastNoiseLite._bindings.method_set_cellular_return_type,
       this._owner,
       _ret
     );
@@ -666,7 +667,7 @@ export class FastNoiseLite extends Noise{
   }
   get_cellular_return_type() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cellular_return_type,
+      FastNoiseLite._bindings.method_get_cellular_return_type,
       this._owner,
 			Variant.INT,
       
@@ -675,7 +676,7 @@ export class FastNoiseLite extends Noise{
   }
   set_domain_warp_enabled(_domain_warp_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_domain_warp_enabled,
+      FastNoiseLite._bindings.method_set_domain_warp_enabled,
       this._owner,
       _domain_warp_enabled
     );
@@ -683,7 +684,7 @@ export class FastNoiseLite extends Noise{
   }
   is_domain_warp_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_domain_warp_enabled,
+      FastNoiseLite._bindings.method_is_domain_warp_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -692,7 +693,7 @@ export class FastNoiseLite extends Noise{
   }
   set_domain_warp_type(_domain_warp_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_domain_warp_type,
+      FastNoiseLite._bindings.method_set_domain_warp_type,
       this._owner,
       _domain_warp_type
     );
@@ -700,7 +701,7 @@ export class FastNoiseLite extends Noise{
   }
   get_domain_warp_type() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_domain_warp_type,
+      FastNoiseLite._bindings.method_get_domain_warp_type,
       this._owner,
 			Variant.INT,
       
@@ -709,7 +710,7 @@ export class FastNoiseLite extends Noise{
   }
   set_domain_warp_amplitude(_domain_warp_amplitude) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_domain_warp_amplitude,
+      FastNoiseLite._bindings.method_set_domain_warp_amplitude,
       this._owner,
       _domain_warp_amplitude
     );
@@ -717,7 +718,7 @@ export class FastNoiseLite extends Noise{
   }
   get_domain_warp_amplitude() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_domain_warp_amplitude,
+      FastNoiseLite._bindings.method_get_domain_warp_amplitude,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -726,7 +727,7 @@ export class FastNoiseLite extends Noise{
   }
   set_domain_warp_frequency(_domain_warp_frequency) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_domain_warp_frequency,
+      FastNoiseLite._bindings.method_set_domain_warp_frequency,
       this._owner,
       _domain_warp_frequency
     );
@@ -734,7 +735,7 @@ export class FastNoiseLite extends Noise{
   }
   get_domain_warp_frequency() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_domain_warp_frequency,
+      FastNoiseLite._bindings.method_get_domain_warp_frequency,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -743,7 +744,7 @@ export class FastNoiseLite extends Noise{
   }
   set_domain_warp_fractal_type(_domain_warp_fractal_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_domain_warp_fractal_type,
+      FastNoiseLite._bindings.method_set_domain_warp_fractal_type,
       this._owner,
       _domain_warp_fractal_type
     );
@@ -751,7 +752,7 @@ export class FastNoiseLite extends Noise{
   }
   get_domain_warp_fractal_type() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_domain_warp_fractal_type,
+      FastNoiseLite._bindings.method_get_domain_warp_fractal_type,
       this._owner,
 			Variant.INT,
       
@@ -760,7 +761,7 @@ export class FastNoiseLite extends Noise{
   }
   set_domain_warp_fractal_octaves(_domain_warp_octave_count) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_domain_warp_fractal_octaves,
+      FastNoiseLite._bindings.method_set_domain_warp_fractal_octaves,
       this._owner,
       _domain_warp_octave_count
     );
@@ -768,7 +769,7 @@ export class FastNoiseLite extends Noise{
   }
   get_domain_warp_fractal_octaves() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_domain_warp_fractal_octaves,
+      FastNoiseLite._bindings.method_get_domain_warp_fractal_octaves,
       this._owner,
 			Variant.Type.INT,
       
@@ -777,7 +778,7 @@ export class FastNoiseLite extends Noise{
   }
   set_domain_warp_fractal_lacunarity(_domain_warp_lacunarity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_domain_warp_fractal_lacunarity,
+      FastNoiseLite._bindings.method_set_domain_warp_fractal_lacunarity,
       this._owner,
       _domain_warp_lacunarity
     );
@@ -785,7 +786,7 @@ export class FastNoiseLite extends Noise{
   }
   get_domain_warp_fractal_lacunarity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_domain_warp_fractal_lacunarity,
+      FastNoiseLite._bindings.method_get_domain_warp_fractal_lacunarity,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -794,7 +795,7 @@ export class FastNoiseLite extends Noise{
   }
   set_domain_warp_fractal_gain(_domain_warp_gain) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_domain_warp_fractal_gain,
+      FastNoiseLite._bindings.method_set_domain_warp_fractal_gain,
       this._owner,
       _domain_warp_gain
     );
@@ -802,7 +803,7 @@ export class FastNoiseLite extends Noise{
   }
   get_domain_warp_fractal_gain() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_domain_warp_fractal_gain,
+      FastNoiseLite._bindings.method_get_domain_warp_fractal_gain,
       this._owner,
 			Variant.Type.FLOAT,
       

@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { GDString } from '@js_godot/variant/gd_string'
+import { StringName } from '@js_godot/variant/string_name'
 import { StreamPeer } from '@js_godot/classes/stream_peer'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -121,9 +121,10 @@ export class StreamPeerTCP extends StreamPeer{
       );
     }
   }
+  
   bind(_port, _host) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_bind,
+      StreamPeerTCP._bindings.method_bind,
       this._owner,
 			Variant.INT,
       _port, _host
@@ -132,7 +133,7 @@ export class StreamPeerTCP extends StreamPeer{
   }
   connect_to_host(_host, _port) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_connect_to_host,
+      StreamPeerTCP._bindings.method_connect_to_host,
       this._owner,
 			Variant.INT,
       _host, _port
@@ -141,7 +142,7 @@ export class StreamPeerTCP extends StreamPeer{
   }
   poll() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_poll,
+      StreamPeerTCP._bindings.method_poll,
       this._owner,
 			Variant.INT,
       
@@ -150,7 +151,7 @@ export class StreamPeerTCP extends StreamPeer{
   }
   get_status() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_status,
+      StreamPeerTCP._bindings.method_get_status,
       this._owner,
 			Variant.INT,
       
@@ -159,7 +160,7 @@ export class StreamPeerTCP extends StreamPeer{
   }
   get_connected_host() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_connected_host,
+      StreamPeerTCP._bindings.method_get_connected_host,
       this._owner,
 			Variant.Type.STRING,
     
@@ -169,7 +170,7 @@ export class StreamPeerTCP extends StreamPeer{
   }
   get_connected_port() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_connected_port,
+      StreamPeerTCP._bindings.method_get_connected_port,
       this._owner,
 			Variant.Type.INT,
       
@@ -178,7 +179,7 @@ export class StreamPeerTCP extends StreamPeer{
   }
   get_local_port() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_local_port,
+      StreamPeerTCP._bindings.method_get_local_port,
       this._owner,
 			Variant.Type.INT,
       
@@ -187,7 +188,7 @@ export class StreamPeerTCP extends StreamPeer{
   }
   disconnect_from_host() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_disconnect_from_host,
+      StreamPeerTCP._bindings.method_disconnect_from_host,
       this._owner,
       
     );
@@ -195,7 +196,7 @@ export class StreamPeerTCP extends StreamPeer{
   }
   set_no_delay(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_no_delay,
+      StreamPeerTCP._bindings.method_set_no_delay,
       this._owner,
       _enabled
     );

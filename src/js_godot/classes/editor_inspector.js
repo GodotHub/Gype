@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { ScrollContainer } from '@js_godot/classes/scroll_container'
 import { Variant } from '@js_godot/variant/variant'
-import { GDString } from '@js_godot/variant/gd_string'
 import { StringName } from '@js_godot/variant/string_name'
+import { ScrollContainer } from '@js_godot/classes/scroll_container'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -51,9 +51,10 @@ export class EditorInspector extends ScrollContainer{
       );
     }
   }
+  
   get_selected_path() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_selected_path,
+      EditorInspector._bindings.method_get_selected_path,
       this._owner,
 			Variant.Type.STRING,
     
@@ -63,7 +64,7 @@ export class EditorInspector extends ScrollContainer{
   }
   get_edited_object() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_edited_object,
+      EditorInspector._bindings.method_get_edited_object,
       this._owner,
 			Variant.INT,
       

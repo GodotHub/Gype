@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { AudioEffect } from '@js_godot/classes/audio_effect'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -210,9 +210,10 @@ export class AudioEffectChorus extends AudioEffect{
       );
     }
   }
+  
   set_voice_count(_voices) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_voice_count,
+      AudioEffectChorus._bindings.method_set_voice_count,
       this._owner,
       _voices
     );
@@ -220,7 +221,7 @@ export class AudioEffectChorus extends AudioEffect{
   }
   get_voice_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_voice_count,
+      AudioEffectChorus._bindings.method_get_voice_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -229,7 +230,7 @@ export class AudioEffectChorus extends AudioEffect{
   }
   set_voice_delay_ms(_voice_idx, _delay_ms) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_voice_delay_ms,
+      AudioEffectChorus._bindings.method_set_voice_delay_ms,
       this._owner,
       _voice_idx, _delay_ms
     );
@@ -237,7 +238,7 @@ export class AudioEffectChorus extends AudioEffect{
   }
   get_voice_delay_ms(_voice_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_voice_delay_ms,
+      AudioEffectChorus._bindings.method_get_voice_delay_ms,
       this._owner,
 			Variant.Type.FLOAT,
       _voice_idx
@@ -246,7 +247,7 @@ export class AudioEffectChorus extends AudioEffect{
   }
   set_voice_rate_hz(_voice_idx, _rate_hz) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_voice_rate_hz,
+      AudioEffectChorus._bindings.method_set_voice_rate_hz,
       this._owner,
       _voice_idx, _rate_hz
     );
@@ -254,7 +255,7 @@ export class AudioEffectChorus extends AudioEffect{
   }
   get_voice_rate_hz(_voice_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_voice_rate_hz,
+      AudioEffectChorus._bindings.method_get_voice_rate_hz,
       this._owner,
 			Variant.Type.FLOAT,
       _voice_idx
@@ -263,7 +264,7 @@ export class AudioEffectChorus extends AudioEffect{
   }
   set_voice_depth_ms(_voice_idx, _depth_ms) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_voice_depth_ms,
+      AudioEffectChorus._bindings.method_set_voice_depth_ms,
       this._owner,
       _voice_idx, _depth_ms
     );
@@ -271,7 +272,7 @@ export class AudioEffectChorus extends AudioEffect{
   }
   get_voice_depth_ms(_voice_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_voice_depth_ms,
+      AudioEffectChorus._bindings.method_get_voice_depth_ms,
       this._owner,
 			Variant.Type.FLOAT,
       _voice_idx
@@ -280,7 +281,7 @@ export class AudioEffectChorus extends AudioEffect{
   }
   set_voice_level_db(_voice_idx, _level_db) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_voice_level_db,
+      AudioEffectChorus._bindings.method_set_voice_level_db,
       this._owner,
       _voice_idx, _level_db
     );
@@ -288,7 +289,7 @@ export class AudioEffectChorus extends AudioEffect{
   }
   get_voice_level_db(_voice_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_voice_level_db,
+      AudioEffectChorus._bindings.method_get_voice_level_db,
       this._owner,
 			Variant.Type.FLOAT,
       _voice_idx
@@ -297,7 +298,7 @@ export class AudioEffectChorus extends AudioEffect{
   }
   set_voice_cutoff_hz(_voice_idx, _cutoff_hz) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_voice_cutoff_hz,
+      AudioEffectChorus._bindings.method_set_voice_cutoff_hz,
       this._owner,
       _voice_idx, _cutoff_hz
     );
@@ -305,7 +306,7 @@ export class AudioEffectChorus extends AudioEffect{
   }
   get_voice_cutoff_hz(_voice_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_voice_cutoff_hz,
+      AudioEffectChorus._bindings.method_get_voice_cutoff_hz,
       this._owner,
 			Variant.Type.FLOAT,
       _voice_idx
@@ -314,7 +315,7 @@ export class AudioEffectChorus extends AudioEffect{
   }
   set_voice_pan(_voice_idx, _pan) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_voice_pan,
+      AudioEffectChorus._bindings.method_set_voice_pan,
       this._owner,
       _voice_idx, _pan
     );
@@ -322,7 +323,7 @@ export class AudioEffectChorus extends AudioEffect{
   }
   get_voice_pan(_voice_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_voice_pan,
+      AudioEffectChorus._bindings.method_get_voice_pan,
       this._owner,
 			Variant.Type.FLOAT,
       _voice_idx
@@ -331,7 +332,7 @@ export class AudioEffectChorus extends AudioEffect{
   }
   set_wet(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_wet,
+      AudioEffectChorus._bindings.method_set_wet,
       this._owner,
       _amount
     );
@@ -339,7 +340,7 @@ export class AudioEffectChorus extends AudioEffect{
   }
   get_wet() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_wet,
+      AudioEffectChorus._bindings.method_get_wet,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -348,7 +349,7 @@ export class AudioEffectChorus extends AudioEffect{
   }
   set_dry(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_dry,
+      AudioEffectChorus._bindings.method_set_dry,
       this._owner,
       _amount
     );
@@ -356,7 +357,7 @@ export class AudioEffectChorus extends AudioEffect{
   }
   get_dry() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_dry,
+      AudioEffectChorus._bindings.method_get_dry,
       this._owner,
 			Variant.Type.FLOAT,
       

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Resource } from '@js_godot/classes/resource'
 import { StringName } from '@js_godot/variant/string_name'
+import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -50,9 +50,10 @@ export class PackedDataContainer extends Resource{
       );
     }
   }
+  
   pack(_value) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_pack,
+      PackedDataContainer._bindings.method_pack,
       this._owner,
 			Variant.INT,
       _value
@@ -61,7 +62,7 @@ export class PackedDataContainer extends Resource{
   }
   size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_size,
+      PackedDataContainer._bindings.method_size,
       this._owner,
 			Variant.Type.INT,
       

@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Callable } from '@js_godot/variant/callable'
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { Variant } from '@js_godot/variant/variant'
+import { GDString } from '@js_godot/variant/gd_string'
+import { Callable } from '@js_godot/variant/callable'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -92,9 +92,10 @@ export class Thread extends RefCounted{
       );
     }
   }
+  
   start(_callable, _priority) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_start,
+      Thread._bindings.method_start,
       this._owner,
 			Variant.INT,
       _callable, _priority
@@ -103,7 +104,7 @@ export class Thread extends RefCounted{
   }
   get_id() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_id,
+      Thread._bindings.method_get_id,
       this._owner,
 			Variant.Type.STRING,
     
@@ -113,7 +114,7 @@ export class Thread extends RefCounted{
   }
   is_started() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_started,
+      Thread._bindings.method_is_started,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -122,7 +123,7 @@ export class Thread extends RefCounted{
   }
   is_alive() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_alive,
+      Thread._bindings.method_is_alive,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -131,7 +132,7 @@ export class Thread extends RefCounted{
   }
   wait_to_finish() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_wait_to_finish,
+      Thread._bindings.method_wait_to_finish,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -141,7 +142,7 @@ export class Thread extends RefCounted{
   }
   set_thread_safety_checks_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_thread_safety_checks_enabled,
+      Thread._bindings.method_set_thread_safety_checks_enabled,
       this._owner,
       _enabled
     );

@@ -4,8 +4,8 @@ import {
   _call_builtin_method_ptr_ret,
   _call_builtin_method_ptr_no_ret
 } from '@js_godot/core/builtin_ptrcall'
-import { StringName } from '@js_godot/variant/string_name'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { StringName } from '@js_godot/variant/string_name'
 
 class _MethodBindings {
   from_variant_constructor

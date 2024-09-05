@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
 import { AABB } from '@js_godot/variant/aabb'
-import { Variant } from '@js_godot/variant/variant'
 import { VisualInstance3D } from '@js_godot/classes/visual_instance3d'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -51,9 +51,10 @@ export class VisibleOnScreenNotifier3D extends VisualInstance3D{
       );
     }
   }
+  
   set_aabb(_rect) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_aabb,
+      VisibleOnScreenNotifier3D._bindings.method_set_aabb,
       this._owner,
       _rect
     );
@@ -61,7 +62,7 @@ export class VisibleOnScreenNotifier3D extends VisualInstance3D{
   }
   is_on_screen() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_on_screen,
+      VisibleOnScreenNotifier3D._bindings.method_is_on_screen,
       this._owner,
 			Variant.Type.BOOL,
       

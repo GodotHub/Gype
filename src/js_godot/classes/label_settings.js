@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
-import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { Color } from '@js_godot/variant/color'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -212,9 +212,10 @@ export class LabelSettings extends Resource{
       );
     }
   }
+  
   set_line_spacing(_spacing) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_line_spacing,
+      LabelSettings._bindings.method_set_line_spacing,
       this._owner,
       _spacing
     );
@@ -222,7 +223,7 @@ export class LabelSettings extends Resource{
   }
   get_line_spacing() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_spacing,
+      LabelSettings._bindings.method_get_line_spacing,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -231,7 +232,7 @@ export class LabelSettings extends Resource{
   }
   set_font(_font) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_font,
+      LabelSettings._bindings.method_set_font,
       this._owner,
       _font
     );
@@ -239,7 +240,7 @@ export class LabelSettings extends Resource{
   }
   get_font() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_font,
+      LabelSettings._bindings.method_get_font,
       this._owner,
 			Variant.INT,
       
@@ -248,7 +249,7 @@ export class LabelSettings extends Resource{
   }
   set_font_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_font_size,
+      LabelSettings._bindings.method_set_font_size,
       this._owner,
       _size
     );
@@ -256,7 +257,7 @@ export class LabelSettings extends Resource{
   }
   get_font_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_font_size,
+      LabelSettings._bindings.method_get_font_size,
       this._owner,
 			Variant.Type.INT,
       
@@ -265,7 +266,7 @@ export class LabelSettings extends Resource{
   }
   set_font_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_font_color,
+      LabelSettings._bindings.method_set_font_color,
       this._owner,
       _color
     );
@@ -273,7 +274,7 @@ export class LabelSettings extends Resource{
   }
   get_font_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_font_color,
+      LabelSettings._bindings.method_get_font_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -283,7 +284,7 @@ export class LabelSettings extends Resource{
   }
   set_outline_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_outline_size,
+      LabelSettings._bindings.method_set_outline_size,
       this._owner,
       _size
     );
@@ -291,7 +292,7 @@ export class LabelSettings extends Resource{
   }
   get_outline_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_outline_size,
+      LabelSettings._bindings.method_get_outline_size,
       this._owner,
 			Variant.Type.INT,
       
@@ -300,7 +301,7 @@ export class LabelSettings extends Resource{
   }
   set_outline_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_outline_color,
+      LabelSettings._bindings.method_set_outline_color,
       this._owner,
       _color
     );
@@ -308,7 +309,7 @@ export class LabelSettings extends Resource{
   }
   get_outline_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_outline_color,
+      LabelSettings._bindings.method_get_outline_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -318,7 +319,7 @@ export class LabelSettings extends Resource{
   }
   set_shadow_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shadow_size,
+      LabelSettings._bindings.method_set_shadow_size,
       this._owner,
       _size
     );
@@ -326,7 +327,7 @@ export class LabelSettings extends Resource{
   }
   get_shadow_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_shadow_size,
+      LabelSettings._bindings.method_get_shadow_size,
       this._owner,
 			Variant.Type.INT,
       
@@ -335,7 +336,7 @@ export class LabelSettings extends Resource{
   }
   set_shadow_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shadow_color,
+      LabelSettings._bindings.method_set_shadow_color,
       this._owner,
       _color
     );
@@ -343,7 +344,7 @@ export class LabelSettings extends Resource{
   }
   get_shadow_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_shadow_color,
+      LabelSettings._bindings.method_get_shadow_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -353,7 +354,7 @@ export class LabelSettings extends Resource{
   }
   set_shadow_offset(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shadow_offset,
+      LabelSettings._bindings.method_set_shadow_offset,
       this._owner,
       _offset
     );
@@ -361,7 +362,7 @@ export class LabelSettings extends Resource{
   }
   get_shadow_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_shadow_offset,
+      LabelSettings._bindings.method_get_shadow_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     

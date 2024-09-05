@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { AudioEffect } from '@js_godot/classes/audio_effect'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -130,9 +130,10 @@ export class AudioEffectPhaser extends AudioEffect{
       );
     }
   }
+  
   set_range_min_hz(_hz) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_range_min_hz,
+      AudioEffectPhaser._bindings.method_set_range_min_hz,
       this._owner,
       _hz
     );
@@ -140,7 +141,7 @@ export class AudioEffectPhaser extends AudioEffect{
   }
   get_range_min_hz() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_range_min_hz,
+      AudioEffectPhaser._bindings.method_get_range_min_hz,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -149,7 +150,7 @@ export class AudioEffectPhaser extends AudioEffect{
   }
   set_range_max_hz(_hz) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_range_max_hz,
+      AudioEffectPhaser._bindings.method_set_range_max_hz,
       this._owner,
       _hz
     );
@@ -157,7 +158,7 @@ export class AudioEffectPhaser extends AudioEffect{
   }
   get_range_max_hz() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_range_max_hz,
+      AudioEffectPhaser._bindings.method_get_range_max_hz,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -166,7 +167,7 @@ export class AudioEffectPhaser extends AudioEffect{
   }
   set_rate_hz(_hz) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_rate_hz,
+      AudioEffectPhaser._bindings.method_set_rate_hz,
       this._owner,
       _hz
     );
@@ -174,7 +175,7 @@ export class AudioEffectPhaser extends AudioEffect{
   }
   get_rate_hz() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rate_hz,
+      AudioEffectPhaser._bindings.method_get_rate_hz,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -183,7 +184,7 @@ export class AudioEffectPhaser extends AudioEffect{
   }
   set_feedback(_fbk) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_feedback,
+      AudioEffectPhaser._bindings.method_set_feedback,
       this._owner,
       _fbk
     );
@@ -191,7 +192,7 @@ export class AudioEffectPhaser extends AudioEffect{
   }
   get_feedback() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_feedback,
+      AudioEffectPhaser._bindings.method_get_feedback,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -200,7 +201,7 @@ export class AudioEffectPhaser extends AudioEffect{
   }
   set_depth(_depth) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_depth,
+      AudioEffectPhaser._bindings.method_set_depth,
       this._owner,
       _depth
     );
@@ -208,7 +209,7 @@ export class AudioEffectPhaser extends AudioEffect{
   }
   get_depth() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_depth,
+      AudioEffectPhaser._bindings.method_get_depth,
       this._owner,
 			Variant.Type.FLOAT,
       

@@ -1,15 +1,15 @@
 import * as internal from '__internal__';
-import { Control } from '@js_godot/classes/control'
-import { Variant } from '@js_godot/variant/variant'
-import { Dictionary } from '@js_godot/variant/dictionary'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
-import { Color } from '@js_godot/variant/color'
-import { PackedFloat32Array } from '@js_godot/variant/packed_float32_array'
-import { Vector2 } from '@js_godot/variant/vector2'
-import { Rect2 } from '@js_godot/variant/rect2'
-import { PackedStringArray } from '@js_godot/variant/packed_string_array'
 import { GDArray } from '@js_godot/variant/gd_array'
+import { PackedFloat32Array } from '@js_godot/variant/packed_float32_array'
+import { Color } from '@js_godot/variant/color'
+import { Variant } from '@js_godot/variant/variant'
+import { GDString } from '@js_godot/variant/gd_string'
+import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { Vector2 } from '@js_godot/variant/vector2'
+import { StringName } from '@js_godot/variant/string_name'
+import { Rect2 } from '@js_godot/variant/rect2'
+import { Dictionary } from '@js_godot/variant/dictionary'
+import { Control } from '@js_godot/classes/control'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -1208,9 +1208,10 @@ export class RichTextLabel extends Control{
       );
     }
   }
+  
   get_parsed_text() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_parsed_text,
+      RichTextLabel._bindings.method_get_parsed_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1220,7 +1221,7 @@ export class RichTextLabel extends Control{
   }
   add_text(_text) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_text,
+      RichTextLabel._bindings.method_add_text,
       this._owner,
       _text
     );
@@ -1228,7 +1229,7 @@ export class RichTextLabel extends Control{
   }
   set_text(_text) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_text,
+      RichTextLabel._bindings.method_set_text,
       this._owner,
       _text
     );
@@ -1236,7 +1237,7 @@ export class RichTextLabel extends Control{
   }
   add_image(_image, _width, _height, _color, _inline_align, _region, _key, _pad, _tooltip, _size_in_percent) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_image,
+      RichTextLabel._bindings.method_add_image,
       this._owner,
       _image, _width, _height, _color, _inline_align, _region, _key, _pad, _tooltip, _size_in_percent
     );
@@ -1244,7 +1245,7 @@ export class RichTextLabel extends Control{
   }
   update_image(_key, _mask, _image, _width, _height, _color, _inline_align, _region, _pad, _tooltip, _size_in_percent) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_update_image,
+      RichTextLabel._bindings.method_update_image,
       this._owner,
       _key, _mask, _image, _width, _height, _color, _inline_align, _region, _pad, _tooltip, _size_in_percent
     );
@@ -1252,7 +1253,7 @@ export class RichTextLabel extends Control{
   }
   newline() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_newline,
+      RichTextLabel._bindings.method_newline,
       this._owner,
       
     );
@@ -1260,7 +1261,7 @@ export class RichTextLabel extends Control{
   }
   remove_paragraph(_paragraph, _no_invalidate) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_remove_paragraph,
+      RichTextLabel._bindings.method_remove_paragraph,
       this._owner,
 			Variant.Type.BOOL,
       _paragraph, _no_invalidate
@@ -1269,7 +1270,7 @@ export class RichTextLabel extends Control{
   }
   invalidate_paragraph(_paragraph) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_invalidate_paragraph,
+      RichTextLabel._bindings.method_invalidate_paragraph,
       this._owner,
 			Variant.Type.BOOL,
       _paragraph
@@ -1278,7 +1279,7 @@ export class RichTextLabel extends Control{
   }
   push_font(_font, _font_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_push_font,
+      RichTextLabel._bindings.method_push_font,
       this._owner,
       _font, _font_size
     );
@@ -1286,7 +1287,7 @@ export class RichTextLabel extends Control{
   }
   push_font_size(_font_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_push_font_size,
+      RichTextLabel._bindings.method_push_font_size,
       this._owner,
       _font_size
     );
@@ -1294,7 +1295,7 @@ export class RichTextLabel extends Control{
   }
   push_normal() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_push_normal,
+      RichTextLabel._bindings.method_push_normal,
       this._owner,
       
     );
@@ -1302,7 +1303,7 @@ export class RichTextLabel extends Control{
   }
   push_bold() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_push_bold,
+      RichTextLabel._bindings.method_push_bold,
       this._owner,
       
     );
@@ -1310,7 +1311,7 @@ export class RichTextLabel extends Control{
   }
   push_bold_italics() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_push_bold_italics,
+      RichTextLabel._bindings.method_push_bold_italics,
       this._owner,
       
     );
@@ -1318,7 +1319,7 @@ export class RichTextLabel extends Control{
   }
   push_italics() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_push_italics,
+      RichTextLabel._bindings.method_push_italics,
       this._owner,
       
     );
@@ -1326,7 +1327,7 @@ export class RichTextLabel extends Control{
   }
   push_mono() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_push_mono,
+      RichTextLabel._bindings.method_push_mono,
       this._owner,
       
     );
@@ -1334,7 +1335,7 @@ export class RichTextLabel extends Control{
   }
   push_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_push_color,
+      RichTextLabel._bindings.method_push_color,
       this._owner,
       _color
     );
@@ -1342,7 +1343,7 @@ export class RichTextLabel extends Control{
   }
   push_outline_size(_outline_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_push_outline_size,
+      RichTextLabel._bindings.method_push_outline_size,
       this._owner,
       _outline_size
     );
@@ -1350,7 +1351,7 @@ export class RichTextLabel extends Control{
   }
   push_outline_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_push_outline_color,
+      RichTextLabel._bindings.method_push_outline_color,
       this._owner,
       _color
     );
@@ -1358,7 +1359,7 @@ export class RichTextLabel extends Control{
   }
   push_paragraph(_alignment, _base_direction, _language, _st_parser, _justification_flags, _tab_stops) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_push_paragraph,
+      RichTextLabel._bindings.method_push_paragraph,
       this._owner,
       _alignment, _base_direction, _language, _st_parser, _justification_flags, _tab_stops
     );
@@ -1366,7 +1367,7 @@ export class RichTextLabel extends Control{
   }
   push_indent(_level) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_push_indent,
+      RichTextLabel._bindings.method_push_indent,
       this._owner,
       _level
     );
@@ -1374,7 +1375,7 @@ export class RichTextLabel extends Control{
   }
   push_list(_level, _type, _capitalize, _bullet) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_push_list,
+      RichTextLabel._bindings.method_push_list,
       this._owner,
       _level, _type, _capitalize, _bullet
     );
@@ -1382,7 +1383,7 @@ export class RichTextLabel extends Control{
   }
   push_meta(_data, _underline_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_push_meta,
+      RichTextLabel._bindings.method_push_meta,
       this._owner,
       _data, _underline_mode
     );
@@ -1390,7 +1391,7 @@ export class RichTextLabel extends Control{
   }
   push_hint(_description) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_push_hint,
+      RichTextLabel._bindings.method_push_hint,
       this._owner,
       _description
     );
@@ -1398,7 +1399,7 @@ export class RichTextLabel extends Control{
   }
   push_language(_language) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_push_language,
+      RichTextLabel._bindings.method_push_language,
       this._owner,
       _language
     );
@@ -1406,7 +1407,7 @@ export class RichTextLabel extends Control{
   }
   push_underline() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_push_underline,
+      RichTextLabel._bindings.method_push_underline,
       this._owner,
       
     );
@@ -1414,7 +1415,7 @@ export class RichTextLabel extends Control{
   }
   push_strikethrough() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_push_strikethrough,
+      RichTextLabel._bindings.method_push_strikethrough,
       this._owner,
       
     );
@@ -1422,7 +1423,7 @@ export class RichTextLabel extends Control{
   }
   push_table(_columns, _inline_align, _align_to_row) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_push_table,
+      RichTextLabel._bindings.method_push_table,
       this._owner,
       _columns, _inline_align, _align_to_row
     );
@@ -1430,7 +1431,7 @@ export class RichTextLabel extends Control{
   }
   push_dropcap(_string, _font, _size, _dropcap_margins, _color, _outline_size, _outline_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_push_dropcap,
+      RichTextLabel._bindings.method_push_dropcap,
       this._owner,
       _string, _font, _size, _dropcap_margins, _color, _outline_size, _outline_color
     );
@@ -1438,7 +1439,7 @@ export class RichTextLabel extends Control{
   }
   set_table_column_expand(_column, _expand, _ratio) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_table_column_expand,
+      RichTextLabel._bindings.method_set_table_column_expand,
       this._owner,
       _column, _expand, _ratio
     );
@@ -1446,7 +1447,7 @@ export class RichTextLabel extends Control{
   }
   set_cell_row_background_color(_odd_row_bg, _even_row_bg) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cell_row_background_color,
+      RichTextLabel._bindings.method_set_cell_row_background_color,
       this._owner,
       _odd_row_bg, _even_row_bg
     );
@@ -1454,7 +1455,7 @@ export class RichTextLabel extends Control{
   }
   set_cell_border_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cell_border_color,
+      RichTextLabel._bindings.method_set_cell_border_color,
       this._owner,
       _color
     );
@@ -1462,7 +1463,7 @@ export class RichTextLabel extends Control{
   }
   set_cell_size_override(_min_size, _max_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cell_size_override,
+      RichTextLabel._bindings.method_set_cell_size_override,
       this._owner,
       _min_size, _max_size
     );
@@ -1470,7 +1471,7 @@ export class RichTextLabel extends Control{
   }
   set_cell_padding(_padding) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cell_padding,
+      RichTextLabel._bindings.method_set_cell_padding,
       this._owner,
       _padding
     );
@@ -1478,7 +1479,7 @@ export class RichTextLabel extends Control{
   }
   push_cell() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_push_cell,
+      RichTextLabel._bindings.method_push_cell,
       this._owner,
       
     );
@@ -1486,7 +1487,7 @@ export class RichTextLabel extends Control{
   }
   push_fgcolor(_fgcolor) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_push_fgcolor,
+      RichTextLabel._bindings.method_push_fgcolor,
       this._owner,
       _fgcolor
     );
@@ -1494,7 +1495,7 @@ export class RichTextLabel extends Control{
   }
   push_bgcolor(_bgcolor) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_push_bgcolor,
+      RichTextLabel._bindings.method_push_bgcolor,
       this._owner,
       _bgcolor
     );
@@ -1502,7 +1503,7 @@ export class RichTextLabel extends Control{
   }
   push_customfx(_effect, _env) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_push_customfx,
+      RichTextLabel._bindings.method_push_customfx,
       this._owner,
       _effect, _env
     );
@@ -1510,7 +1511,7 @@ export class RichTextLabel extends Control{
   }
   push_context() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_push_context,
+      RichTextLabel._bindings.method_push_context,
       this._owner,
       
     );
@@ -1518,7 +1519,7 @@ export class RichTextLabel extends Control{
   }
   pop_context() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_pop_context,
+      RichTextLabel._bindings.method_pop_context,
       this._owner,
       
     );
@@ -1526,7 +1527,7 @@ export class RichTextLabel extends Control{
   }
   pop() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_pop,
+      RichTextLabel._bindings.method_pop,
       this._owner,
       
     );
@@ -1534,7 +1535,7 @@ export class RichTextLabel extends Control{
   }
   pop_all() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_pop_all,
+      RichTextLabel._bindings.method_pop_all,
       this._owner,
       
     );
@@ -1542,7 +1543,7 @@ export class RichTextLabel extends Control{
   }
   clear() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear,
+      RichTextLabel._bindings.method_clear,
       this._owner,
       
     );
@@ -1550,7 +1551,7 @@ export class RichTextLabel extends Control{
   }
   set_structured_text_bidi_override(_parser) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_structured_text_bidi_override,
+      RichTextLabel._bindings.method_set_structured_text_bidi_override,
       this._owner,
       _parser
     );
@@ -1558,7 +1559,7 @@ export class RichTextLabel extends Control{
   }
   get_structured_text_bidi_override() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_structured_text_bidi_override,
+      RichTextLabel._bindings.method_get_structured_text_bidi_override,
       this._owner,
 			Variant.INT,
       
@@ -1567,7 +1568,7 @@ export class RichTextLabel extends Control{
   }
   set_structured_text_bidi_override_options(_args) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_structured_text_bidi_override_options,
+      RichTextLabel._bindings.method_set_structured_text_bidi_override_options,
       this._owner,
       _args
     );
@@ -1575,7 +1576,7 @@ export class RichTextLabel extends Control{
   }
   get_structured_text_bidi_override_options() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_structured_text_bidi_override_options,
+      RichTextLabel._bindings.method_get_structured_text_bidi_override_options,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -1585,7 +1586,7 @@ export class RichTextLabel extends Control{
   }
   set_text_direction(_direction) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_text_direction,
+      RichTextLabel._bindings.method_set_text_direction,
       this._owner,
       _direction
     );
@@ -1593,7 +1594,7 @@ export class RichTextLabel extends Control{
   }
   get_text_direction() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_text_direction,
+      RichTextLabel._bindings.method_get_text_direction,
       this._owner,
 			Variant.INT,
       
@@ -1602,7 +1603,7 @@ export class RichTextLabel extends Control{
   }
   set_language(_language) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_language,
+      RichTextLabel._bindings.method_set_language,
       this._owner,
       _language
     );
@@ -1610,7 +1611,7 @@ export class RichTextLabel extends Control{
   }
   get_language() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_language,
+      RichTextLabel._bindings.method_get_language,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1620,7 +1621,7 @@ export class RichTextLabel extends Control{
   }
   set_autowrap_mode(_autowrap_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_autowrap_mode,
+      RichTextLabel._bindings.method_set_autowrap_mode,
       this._owner,
       _autowrap_mode
     );
@@ -1628,7 +1629,7 @@ export class RichTextLabel extends Control{
   }
   get_autowrap_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_autowrap_mode,
+      RichTextLabel._bindings.method_get_autowrap_mode,
       this._owner,
 			Variant.INT,
       
@@ -1637,7 +1638,7 @@ export class RichTextLabel extends Control{
   }
   set_meta_underline(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_meta_underline,
+      RichTextLabel._bindings.method_set_meta_underline,
       this._owner,
       _enable
     );
@@ -1645,7 +1646,7 @@ export class RichTextLabel extends Control{
   }
   is_meta_underlined() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_meta_underlined,
+      RichTextLabel._bindings.method_is_meta_underlined,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1654,7 +1655,7 @@ export class RichTextLabel extends Control{
   }
   set_hint_underline(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_hint_underline,
+      RichTextLabel._bindings.method_set_hint_underline,
       this._owner,
       _enable
     );
@@ -1662,7 +1663,7 @@ export class RichTextLabel extends Control{
   }
   is_hint_underlined() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_hint_underlined,
+      RichTextLabel._bindings.method_is_hint_underlined,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1671,7 +1672,7 @@ export class RichTextLabel extends Control{
   }
   set_scroll_active(_active) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_scroll_active,
+      RichTextLabel._bindings.method_set_scroll_active,
       this._owner,
       _active
     );
@@ -1679,7 +1680,7 @@ export class RichTextLabel extends Control{
   }
   is_scroll_active() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_scroll_active,
+      RichTextLabel._bindings.method_is_scroll_active,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1688,7 +1689,7 @@ export class RichTextLabel extends Control{
   }
   set_scroll_follow(_follow) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_scroll_follow,
+      RichTextLabel._bindings.method_set_scroll_follow,
       this._owner,
       _follow
     );
@@ -1696,7 +1697,7 @@ export class RichTextLabel extends Control{
   }
   is_scroll_following() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_scroll_following,
+      RichTextLabel._bindings.method_is_scroll_following,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1705,7 +1706,7 @@ export class RichTextLabel extends Control{
   }
   get_v_scroll_bar() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_v_scroll_bar,
+      RichTextLabel._bindings.method_get_v_scroll_bar,
       this._owner,
 			Variant.INT,
       
@@ -1714,7 +1715,7 @@ export class RichTextLabel extends Control{
   }
   scroll_to_line(_line) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_scroll_to_line,
+      RichTextLabel._bindings.method_scroll_to_line,
       this._owner,
       _line
     );
@@ -1722,7 +1723,7 @@ export class RichTextLabel extends Control{
   }
   scroll_to_paragraph(_paragraph) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_scroll_to_paragraph,
+      RichTextLabel._bindings.method_scroll_to_paragraph,
       this._owner,
       _paragraph
     );
@@ -1730,7 +1731,7 @@ export class RichTextLabel extends Control{
   }
   scroll_to_selection() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_scroll_to_selection,
+      RichTextLabel._bindings.method_scroll_to_selection,
       this._owner,
       
     );
@@ -1738,7 +1739,7 @@ export class RichTextLabel extends Control{
   }
   set_tab_size(_spaces) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tab_size,
+      RichTextLabel._bindings.method_set_tab_size,
       this._owner,
       _spaces
     );
@@ -1746,7 +1747,7 @@ export class RichTextLabel extends Control{
   }
   get_tab_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tab_size,
+      RichTextLabel._bindings.method_get_tab_size,
       this._owner,
 			Variant.Type.INT,
       
@@ -1755,7 +1756,7 @@ export class RichTextLabel extends Control{
   }
   set_fit_content(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fit_content,
+      RichTextLabel._bindings.method_set_fit_content,
       this._owner,
       _enabled
     );
@@ -1763,7 +1764,7 @@ export class RichTextLabel extends Control{
   }
   is_fit_content_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_fit_content_enabled,
+      RichTextLabel._bindings.method_is_fit_content_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1772,7 +1773,7 @@ export class RichTextLabel extends Control{
   }
   set_selection_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_selection_enabled,
+      RichTextLabel._bindings.method_set_selection_enabled,
       this._owner,
       _enabled
     );
@@ -1780,7 +1781,7 @@ export class RichTextLabel extends Control{
   }
   is_selection_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_selection_enabled,
+      RichTextLabel._bindings.method_is_selection_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1789,7 +1790,7 @@ export class RichTextLabel extends Control{
   }
   set_context_menu_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_context_menu_enabled,
+      RichTextLabel._bindings.method_set_context_menu_enabled,
       this._owner,
       _enabled
     );
@@ -1797,7 +1798,7 @@ export class RichTextLabel extends Control{
   }
   is_context_menu_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_context_menu_enabled,
+      RichTextLabel._bindings.method_is_context_menu_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1806,7 +1807,7 @@ export class RichTextLabel extends Control{
   }
   set_shortcut_keys_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shortcut_keys_enabled,
+      RichTextLabel._bindings.method_set_shortcut_keys_enabled,
       this._owner,
       _enabled
     );
@@ -1814,7 +1815,7 @@ export class RichTextLabel extends Control{
   }
   is_shortcut_keys_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_shortcut_keys_enabled,
+      RichTextLabel._bindings.method_is_shortcut_keys_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1823,7 +1824,7 @@ export class RichTextLabel extends Control{
   }
   set_deselect_on_focus_loss_enabled(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_deselect_on_focus_loss_enabled,
+      RichTextLabel._bindings.method_set_deselect_on_focus_loss_enabled,
       this._owner,
       _enable
     );
@@ -1831,7 +1832,7 @@ export class RichTextLabel extends Control{
   }
   is_deselect_on_focus_loss_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_deselect_on_focus_loss_enabled,
+      RichTextLabel._bindings.method_is_deselect_on_focus_loss_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1840,7 +1841,7 @@ export class RichTextLabel extends Control{
   }
   set_drag_and_drop_selection_enabled(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_drag_and_drop_selection_enabled,
+      RichTextLabel._bindings.method_set_drag_and_drop_selection_enabled,
       this._owner,
       _enable
     );
@@ -1848,7 +1849,7 @@ export class RichTextLabel extends Control{
   }
   is_drag_and_drop_selection_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_drag_and_drop_selection_enabled,
+      RichTextLabel._bindings.method_is_drag_and_drop_selection_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1857,7 +1858,7 @@ export class RichTextLabel extends Control{
   }
   get_selection_from() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_selection_from,
+      RichTextLabel._bindings.method_get_selection_from,
       this._owner,
 			Variant.Type.INT,
       
@@ -1866,7 +1867,7 @@ export class RichTextLabel extends Control{
   }
   get_selection_to() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_selection_to,
+      RichTextLabel._bindings.method_get_selection_to,
       this._owner,
 			Variant.Type.INT,
       
@@ -1875,7 +1876,7 @@ export class RichTextLabel extends Control{
   }
   select_all() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_select_all,
+      RichTextLabel._bindings.method_select_all,
       this._owner,
       
     );
@@ -1883,7 +1884,7 @@ export class RichTextLabel extends Control{
   }
   get_selected_text() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_selected_text,
+      RichTextLabel._bindings.method_get_selected_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1893,7 +1894,7 @@ export class RichTextLabel extends Control{
   }
   deselect() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_deselect,
+      RichTextLabel._bindings.method_deselect,
       this._owner,
       
     );
@@ -1901,7 +1902,7 @@ export class RichTextLabel extends Control{
   }
   parse_bbcode(_bbcode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_parse_bbcode,
+      RichTextLabel._bindings.method_parse_bbcode,
       this._owner,
       _bbcode
     );
@@ -1909,7 +1910,7 @@ export class RichTextLabel extends Control{
   }
   append_text(_bbcode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_append_text,
+      RichTextLabel._bindings.method_append_text,
       this._owner,
       _bbcode
     );
@@ -1917,7 +1918,7 @@ export class RichTextLabel extends Control{
   }
   get_text() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_text,
+      RichTextLabel._bindings.method_get_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1927,7 +1928,7 @@ export class RichTextLabel extends Control{
   }
   is_ready() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_ready,
+      RichTextLabel._bindings.method_is_ready,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1936,7 +1937,7 @@ export class RichTextLabel extends Control{
   }
   set_threaded(_threaded) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_threaded,
+      RichTextLabel._bindings.method_set_threaded,
       this._owner,
       _threaded
     );
@@ -1944,7 +1945,7 @@ export class RichTextLabel extends Control{
   }
   is_threaded() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_threaded,
+      RichTextLabel._bindings.method_is_threaded,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1953,7 +1954,7 @@ export class RichTextLabel extends Control{
   }
   set_progress_bar_delay(_delay_ms) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_progress_bar_delay,
+      RichTextLabel._bindings.method_set_progress_bar_delay,
       this._owner,
       _delay_ms
     );
@@ -1961,7 +1962,7 @@ export class RichTextLabel extends Control{
   }
   get_progress_bar_delay() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_progress_bar_delay,
+      RichTextLabel._bindings.method_get_progress_bar_delay,
       this._owner,
 			Variant.Type.INT,
       
@@ -1970,7 +1971,7 @@ export class RichTextLabel extends Control{
   }
   set_visible_characters(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_visible_characters,
+      RichTextLabel._bindings.method_set_visible_characters,
       this._owner,
       _amount
     );
@@ -1978,7 +1979,7 @@ export class RichTextLabel extends Control{
   }
   get_visible_characters() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_visible_characters,
+      RichTextLabel._bindings.method_get_visible_characters,
       this._owner,
 			Variant.Type.INT,
       
@@ -1987,7 +1988,7 @@ export class RichTextLabel extends Control{
   }
   get_visible_characters_behavior() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_visible_characters_behavior,
+      RichTextLabel._bindings.method_get_visible_characters_behavior,
       this._owner,
 			Variant.INT,
       
@@ -1996,7 +1997,7 @@ export class RichTextLabel extends Control{
   }
   set_visible_characters_behavior(_behavior) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_visible_characters_behavior,
+      RichTextLabel._bindings.method_set_visible_characters_behavior,
       this._owner,
       _behavior
     );
@@ -2004,7 +2005,7 @@ export class RichTextLabel extends Control{
   }
   set_visible_ratio(_ratio) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_visible_ratio,
+      RichTextLabel._bindings.method_set_visible_ratio,
       this._owner,
       _ratio
     );
@@ -2012,7 +2013,7 @@ export class RichTextLabel extends Control{
   }
   get_visible_ratio() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_visible_ratio,
+      RichTextLabel._bindings.method_get_visible_ratio,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2021,7 +2022,7 @@ export class RichTextLabel extends Control{
   }
   get_character_line(_character) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_character_line,
+      RichTextLabel._bindings.method_get_character_line,
       this._owner,
 			Variant.Type.INT,
       _character
@@ -2030,7 +2031,7 @@ export class RichTextLabel extends Control{
   }
   get_character_paragraph(_character) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_character_paragraph,
+      RichTextLabel._bindings.method_get_character_paragraph,
       this._owner,
 			Variant.Type.INT,
       _character
@@ -2039,7 +2040,7 @@ export class RichTextLabel extends Control{
   }
   get_total_character_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_total_character_count,
+      RichTextLabel._bindings.method_get_total_character_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -2048,7 +2049,7 @@ export class RichTextLabel extends Control{
   }
   set_use_bbcode(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_bbcode,
+      RichTextLabel._bindings.method_set_use_bbcode,
       this._owner,
       _enable
     );
@@ -2056,7 +2057,7 @@ export class RichTextLabel extends Control{
   }
   is_using_bbcode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_using_bbcode,
+      RichTextLabel._bindings.method_is_using_bbcode,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2065,7 +2066,7 @@ export class RichTextLabel extends Control{
   }
   get_line_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_count,
+      RichTextLabel._bindings.method_get_line_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -2074,7 +2075,7 @@ export class RichTextLabel extends Control{
   }
   get_visible_line_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_visible_line_count,
+      RichTextLabel._bindings.method_get_visible_line_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -2083,7 +2084,7 @@ export class RichTextLabel extends Control{
   }
   get_paragraph_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_paragraph_count,
+      RichTextLabel._bindings.method_get_paragraph_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -2092,7 +2093,7 @@ export class RichTextLabel extends Control{
   }
   get_visible_paragraph_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_visible_paragraph_count,
+      RichTextLabel._bindings.method_get_visible_paragraph_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -2101,7 +2102,7 @@ export class RichTextLabel extends Control{
   }
   get_content_height() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_content_height,
+      RichTextLabel._bindings.method_get_content_height,
       this._owner,
 			Variant.Type.INT,
       
@@ -2110,7 +2111,7 @@ export class RichTextLabel extends Control{
   }
   get_content_width() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_content_width,
+      RichTextLabel._bindings.method_get_content_width,
       this._owner,
 			Variant.Type.INT,
       
@@ -2119,7 +2120,7 @@ export class RichTextLabel extends Control{
   }
   get_line_offset(_line) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_offset,
+      RichTextLabel._bindings.method_get_line_offset,
       this._owner,
 			Variant.Type.FLOAT,
       _line
@@ -2128,7 +2129,7 @@ export class RichTextLabel extends Control{
   }
   get_paragraph_offset(_paragraph) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_paragraph_offset,
+      RichTextLabel._bindings.method_get_paragraph_offset,
       this._owner,
 			Variant.Type.FLOAT,
       _paragraph
@@ -2137,7 +2138,7 @@ export class RichTextLabel extends Control{
   }
   parse_expressions_for_values(_expressions) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_parse_expressions_for_values,
+      RichTextLabel._bindings.method_parse_expressions_for_values,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -2147,7 +2148,7 @@ export class RichTextLabel extends Control{
   }
   set_effects(_effects) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_effects,
+      RichTextLabel._bindings.method_set_effects,
       this._owner,
       _effects
     );
@@ -2155,7 +2156,7 @@ export class RichTextLabel extends Control{
   }
   get_effects() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_effects,
+      RichTextLabel._bindings.method_get_effects,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -2165,7 +2166,7 @@ export class RichTextLabel extends Control{
   }
   install_effect(_effect) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_install_effect,
+      RichTextLabel._bindings.method_install_effect,
       this._owner,
       _effect
     );
@@ -2173,7 +2174,7 @@ export class RichTextLabel extends Control{
   }
   get_menu() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_menu,
+      RichTextLabel._bindings.method_get_menu,
       this._owner,
 			Variant.INT,
       
@@ -2182,7 +2183,7 @@ export class RichTextLabel extends Control{
   }
   is_menu_visible() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_menu_visible,
+      RichTextLabel._bindings.method_is_menu_visible,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2191,7 +2192,7 @@ export class RichTextLabel extends Control{
   }
   menu_option(_option) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_menu_option,
+      RichTextLabel._bindings.method_menu_option,
       this._owner,
       _option
     );

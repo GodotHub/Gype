@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { XRInterface } from '@js_godot/classes/xr_interface'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
+import { GDString } from '@js_godot/variant/gd_string'
 import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
@@ -212,9 +212,10 @@ export class WebXRInterface extends XRInterface{
       );
     }
   }
+  
   is_session_supported(_session_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_is_session_supported,
+      WebXRInterface._bindings.method_is_session_supported,
       this._owner,
       _session_mode
     );
@@ -222,7 +223,7 @@ export class WebXRInterface extends XRInterface{
   }
   set_session_mode(_session_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_session_mode,
+      WebXRInterface._bindings.method_set_session_mode,
       this._owner,
       _session_mode
     );
@@ -230,7 +231,7 @@ export class WebXRInterface extends XRInterface{
   }
   get_session_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_session_mode,
+      WebXRInterface._bindings.method_get_session_mode,
       this._owner,
 			Variant.Type.STRING,
     
@@ -240,7 +241,7 @@ export class WebXRInterface extends XRInterface{
   }
   set_required_features(_required_features) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_required_features,
+      WebXRInterface._bindings.method_set_required_features,
       this._owner,
       _required_features
     );
@@ -248,7 +249,7 @@ export class WebXRInterface extends XRInterface{
   }
   get_required_features() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_required_features,
+      WebXRInterface._bindings.method_get_required_features,
       this._owner,
 			Variant.Type.STRING,
     
@@ -258,7 +259,7 @@ export class WebXRInterface extends XRInterface{
   }
   set_optional_features(_optional_features) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_optional_features,
+      WebXRInterface._bindings.method_set_optional_features,
       this._owner,
       _optional_features
     );
@@ -266,7 +267,7 @@ export class WebXRInterface extends XRInterface{
   }
   get_optional_features() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_optional_features,
+      WebXRInterface._bindings.method_get_optional_features,
       this._owner,
 			Variant.Type.STRING,
     
@@ -276,7 +277,7 @@ export class WebXRInterface extends XRInterface{
   }
   get_reference_space_type() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_reference_space_type,
+      WebXRInterface._bindings.method_get_reference_space_type,
       this._owner,
 			Variant.Type.STRING,
     
@@ -286,7 +287,7 @@ export class WebXRInterface extends XRInterface{
   }
   get_enabled_features() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_enabled_features,
+      WebXRInterface._bindings.method_get_enabled_features,
       this._owner,
 			Variant.Type.STRING,
     
@@ -296,7 +297,7 @@ export class WebXRInterface extends XRInterface{
   }
   set_requested_reference_space_types(_requested_reference_space_types) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_requested_reference_space_types,
+      WebXRInterface._bindings.method_set_requested_reference_space_types,
       this._owner,
       _requested_reference_space_types
     );
@@ -304,7 +305,7 @@ export class WebXRInterface extends XRInterface{
   }
   get_requested_reference_space_types() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_requested_reference_space_types,
+      WebXRInterface._bindings.method_get_requested_reference_space_types,
       this._owner,
 			Variant.Type.STRING,
     
@@ -314,7 +315,7 @@ export class WebXRInterface extends XRInterface{
   }
   is_input_source_active(_input_source_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_input_source_active,
+      WebXRInterface._bindings.method_is_input_source_active,
       this._owner,
 			Variant.Type.BOOL,
       _input_source_id
@@ -323,7 +324,7 @@ export class WebXRInterface extends XRInterface{
   }
   get_input_source_tracker(_input_source_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_input_source_tracker,
+      WebXRInterface._bindings.method_get_input_source_tracker,
       this._owner,
 			Variant.INT,
       _input_source_id
@@ -332,7 +333,7 @@ export class WebXRInterface extends XRInterface{
   }
   get_input_source_target_ray_mode(_input_source_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_input_source_target_ray_mode,
+      WebXRInterface._bindings.method_get_input_source_target_ray_mode,
       this._owner,
 			Variant.INT,
       _input_source_id
@@ -341,7 +342,7 @@ export class WebXRInterface extends XRInterface{
   }
   get_visibility_state() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_visibility_state,
+      WebXRInterface._bindings.method_get_visibility_state,
       this._owner,
 			Variant.Type.STRING,
     
@@ -351,7 +352,7 @@ export class WebXRInterface extends XRInterface{
   }
   get_display_refresh_rate() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_display_refresh_rate,
+      WebXRInterface._bindings.method_get_display_refresh_rate,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -360,7 +361,7 @@ export class WebXRInterface extends XRInterface{
   }
   set_display_refresh_rate(_refresh_rate) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_display_refresh_rate,
+      WebXRInterface._bindings.method_set_display_refresh_rate,
       this._owner,
       _refresh_rate
     );
@@ -368,7 +369,7 @@ export class WebXRInterface extends XRInterface{
   }
   get_available_display_refresh_rates() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_available_display_refresh_rates,
+      WebXRInterface._bindings.method_get_available_display_refresh_rates,
       this._owner,
 			Variant.Type.ARRAY,
     

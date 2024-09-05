@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { Dictionary } from '@js_godot/variant/dictionary'
 import { Variant } from '@js_godot/variant/variant'
 import { WebRTCPeerConnection } from '@js_godot/classes/web_rtc_peer_connection'
 import { StringName } from '@js_godot/variant/string_name'
+import { Dictionary } from '@js_godot/variant/dictionary'
 import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
@@ -32,6 +32,7 @@ export class WebRTCPeerConnectionExtension extends WebRTCPeerConnection{
     }
     this.#initialized = true;
   }
+  
   _get_connection_state() {
   }
   _get_gathering_state() {

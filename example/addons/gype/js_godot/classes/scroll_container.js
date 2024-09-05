@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { Container } from '@js_godot/classes/container'
 import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { Container } from '@js_godot/classes/container'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -220,9 +220,10 @@ export class ScrollContainer extends Container{
       );
     }
   }
+  
   set_h_scroll(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_h_scroll,
+      ScrollContainer._bindings.method_set_h_scroll,
       this._owner,
       _value
     );
@@ -230,7 +231,7 @@ export class ScrollContainer extends Container{
   }
   get_h_scroll() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_h_scroll,
+      ScrollContainer._bindings.method_get_h_scroll,
       this._owner,
 			Variant.Type.INT,
       
@@ -239,7 +240,7 @@ export class ScrollContainer extends Container{
   }
   set_v_scroll(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_v_scroll,
+      ScrollContainer._bindings.method_set_v_scroll,
       this._owner,
       _value
     );
@@ -247,7 +248,7 @@ export class ScrollContainer extends Container{
   }
   get_v_scroll() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_v_scroll,
+      ScrollContainer._bindings.method_get_v_scroll,
       this._owner,
 			Variant.Type.INT,
       
@@ -256,7 +257,7 @@ export class ScrollContainer extends Container{
   }
   set_horizontal_custom_step(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_horizontal_custom_step,
+      ScrollContainer._bindings.method_set_horizontal_custom_step,
       this._owner,
       _value
     );
@@ -264,7 +265,7 @@ export class ScrollContainer extends Container{
   }
   get_horizontal_custom_step() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_horizontal_custom_step,
+      ScrollContainer._bindings.method_get_horizontal_custom_step,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -273,7 +274,7 @@ export class ScrollContainer extends Container{
   }
   set_vertical_custom_step(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vertical_custom_step,
+      ScrollContainer._bindings.method_set_vertical_custom_step,
       this._owner,
       _value
     );
@@ -281,7 +282,7 @@ export class ScrollContainer extends Container{
   }
   get_vertical_custom_step() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vertical_custom_step,
+      ScrollContainer._bindings.method_get_vertical_custom_step,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -290,7 +291,7 @@ export class ScrollContainer extends Container{
   }
   set_horizontal_scroll_mode(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_horizontal_scroll_mode,
+      ScrollContainer._bindings.method_set_horizontal_scroll_mode,
       this._owner,
       _enable
     );
@@ -298,7 +299,7 @@ export class ScrollContainer extends Container{
   }
   get_horizontal_scroll_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_horizontal_scroll_mode,
+      ScrollContainer._bindings.method_get_horizontal_scroll_mode,
       this._owner,
 			Variant.INT,
       
@@ -307,7 +308,7 @@ export class ScrollContainer extends Container{
   }
   set_vertical_scroll_mode(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vertical_scroll_mode,
+      ScrollContainer._bindings.method_set_vertical_scroll_mode,
       this._owner,
       _enable
     );
@@ -315,7 +316,7 @@ export class ScrollContainer extends Container{
   }
   get_vertical_scroll_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vertical_scroll_mode,
+      ScrollContainer._bindings.method_get_vertical_scroll_mode,
       this._owner,
 			Variant.INT,
       
@@ -324,7 +325,7 @@ export class ScrollContainer extends Container{
   }
   set_deadzone(_deadzone) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_deadzone,
+      ScrollContainer._bindings.method_set_deadzone,
       this._owner,
       _deadzone
     );
@@ -332,7 +333,7 @@ export class ScrollContainer extends Container{
   }
   get_deadzone() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_deadzone,
+      ScrollContainer._bindings.method_get_deadzone,
       this._owner,
 			Variant.Type.INT,
       
@@ -341,7 +342,7 @@ export class ScrollContainer extends Container{
   }
   set_follow_focus(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_follow_focus,
+      ScrollContainer._bindings.method_set_follow_focus,
       this._owner,
       _enabled
     );
@@ -349,7 +350,7 @@ export class ScrollContainer extends Container{
   }
   is_following_focus() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_following_focus,
+      ScrollContainer._bindings.method_is_following_focus,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -358,7 +359,7 @@ export class ScrollContainer extends Container{
   }
   get_h_scroll_bar() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_h_scroll_bar,
+      ScrollContainer._bindings.method_get_h_scroll_bar,
       this._owner,
 			Variant.INT,
       
@@ -367,7 +368,7 @@ export class ScrollContainer extends Container{
   }
   get_v_scroll_bar() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_v_scroll_bar,
+      ScrollContainer._bindings.method_get_v_scroll_bar,
       this._owner,
 			Variant.INT,
       
@@ -376,7 +377,7 @@ export class ScrollContainer extends Container{
   }
   ensure_control_visible(_control) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_ensure_control_visible,
+      ScrollContainer._bindings.method_ensure_control_visible,
       this._owner,
       _control
     );

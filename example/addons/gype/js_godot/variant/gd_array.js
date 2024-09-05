@@ -4,19 +4,19 @@ import {
   _call_builtin_method_ptr_ret,
   _call_builtin_method_ptr_no_ret
 } from '@js_godot/core/builtin_ptrcall'
-import { Variant } from '@js_godot/variant/variant'
-import { PackedInt64Array } from '@js_godot/variant/packed_int64_array'
-import { Callable } from '@js_godot/variant/callable'
 import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
-import { PackedVector3Array } from '@js_godot/variant/packed_vector3_array'
-import { StringName } from '@js_godot/variant/string_name'
-import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
-import { PackedVector4Array } from '@js_godot/variant/packed_vector4_array'
-import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
 import { PackedFloat32Array } from '@js_godot/variant/packed_float32_array'
-import { PackedColorArray } from '@js_godot/variant/packed_color_array'
-import { PackedFloat64Array } from '@js_godot/variant/packed_float64_array'
+import { StringName } from '@js_godot/variant/string_name'
 import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { PackedVector3Array } from '@js_godot/variant/packed_vector3_array'
+import { PackedColorArray } from '@js_godot/variant/packed_color_array'
+import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
+import { PackedFloat64Array } from '@js_godot/variant/packed_float64_array'
+import { Variant } from '@js_godot/variant/variant'
+import { Callable } from '@js_godot/variant/callable'
+import { PackedVector4Array } from '@js_godot/variant/packed_vector4_array'
+import { PackedInt64Array } from '@js_godot/variant/packed_int64_array'
+import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
 
 class _MethodBindings {
   from_variant_constructor

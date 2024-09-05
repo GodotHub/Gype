@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { GodotObject } from '@js_godot/classes/godot_object'
-import { StringName } from '@js_godot/variant/string_name'
-import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { StringName } from '@js_godot/variant/string_name'
 import { RID } from '@js_godot/variant/rid'
+import { GodotObject } from '@js_godot/classes/godot_object'
+import { Variant } from '@js_godot/variant/variant'
+import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -83,9 +83,10 @@ export class XRVRS extends GodotObject{
       );
     }
   }
+  
   get_vrs_min_radius() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vrs_min_radius,
+      XRVRS._bindings.method_get_vrs_min_radius,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -94,7 +95,7 @@ export class XRVRS extends GodotObject{
   }
   set_vrs_min_radius(_radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vrs_min_radius,
+      XRVRS._bindings.method_set_vrs_min_radius,
       this._owner,
       _radius
     );
@@ -102,7 +103,7 @@ export class XRVRS extends GodotObject{
   }
   get_vrs_strength() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vrs_strength,
+      XRVRS._bindings.method_get_vrs_strength,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -111,7 +112,7 @@ export class XRVRS extends GodotObject{
   }
   set_vrs_strength(_strength) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vrs_strength,
+      XRVRS._bindings.method_set_vrs_strength,
       this._owner,
       _strength
     );
@@ -119,7 +120,7 @@ export class XRVRS extends GodotObject{
   }
   make_vrs_texture(_target_size, _eye_foci) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_make_vrs_texture,
+      XRVRS._bindings.method_make_vrs_texture,
       this._owner,
 			Variant.Type.RID,
     

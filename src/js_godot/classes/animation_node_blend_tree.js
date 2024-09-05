@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
+import { AnimationRootNode } from '@js_godot/classes/animation_root_node'
 import { Variant } from '@js_godot/variant/variant'
 import { Vector2 } from '@js_godot/variant/vector2'
-import { AnimationRootNode } from '@js_godot/classes/animation_root_node'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -141,9 +141,10 @@ export class AnimationNodeBlendTree extends AnimationRootNode{
       );
     }
   }
+  
   add_node(_name, _node, _position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_node,
+      AnimationNodeBlendTree._bindings.method_add_node,
       this._owner,
       _name, _node, _position
     );
@@ -151,7 +152,7 @@ export class AnimationNodeBlendTree extends AnimationRootNode{
   }
   get_node(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_node,
+      AnimationNodeBlendTree._bindings.method_get_node,
       this._owner,
 			Variant.INT,
       _name
@@ -160,7 +161,7 @@ export class AnimationNodeBlendTree extends AnimationRootNode{
   }
   remove_node(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_node,
+      AnimationNodeBlendTree._bindings.method_remove_node,
       this._owner,
       _name
     );
@@ -168,7 +169,7 @@ export class AnimationNodeBlendTree extends AnimationRootNode{
   }
   rename_node(_name, _new_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_rename_node,
+      AnimationNodeBlendTree._bindings.method_rename_node,
       this._owner,
       _name, _new_name
     );
@@ -176,7 +177,7 @@ export class AnimationNodeBlendTree extends AnimationRootNode{
   }
   has_node(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_node,
+      AnimationNodeBlendTree._bindings.method_has_node,
       this._owner,
 			Variant.Type.BOOL,
       _name
@@ -185,7 +186,7 @@ export class AnimationNodeBlendTree extends AnimationRootNode{
   }
   connect_node(_input_node, _input_index, _output_node) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_connect_node,
+      AnimationNodeBlendTree._bindings.method_connect_node,
       this._owner,
       _input_node, _input_index, _output_node
     );
@@ -193,7 +194,7 @@ export class AnimationNodeBlendTree extends AnimationRootNode{
   }
   disconnect_node(_input_node, _input_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_disconnect_node,
+      AnimationNodeBlendTree._bindings.method_disconnect_node,
       this._owner,
       _input_node, _input_index
     );
@@ -201,7 +202,7 @@ export class AnimationNodeBlendTree extends AnimationRootNode{
   }
   set_node_position(_name, _position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_node_position,
+      AnimationNodeBlendTree._bindings.method_set_node_position,
       this._owner,
       _name, _position
     );
@@ -209,7 +210,7 @@ export class AnimationNodeBlendTree extends AnimationRootNode{
   }
   get_node_position(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_node_position,
+      AnimationNodeBlendTree._bindings.method_get_node_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -219,7 +220,7 @@ export class AnimationNodeBlendTree extends AnimationRootNode{
   }
   set_graph_offset(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_graph_offset,
+      AnimationNodeBlendTree._bindings.method_set_graph_offset,
       this._owner,
       _offset
     );
@@ -227,7 +228,7 @@ export class AnimationNodeBlendTree extends AnimationRootNode{
   }
   get_graph_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_graph_offset,
+      AnimationNodeBlendTree._bindings.method_get_graph_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     

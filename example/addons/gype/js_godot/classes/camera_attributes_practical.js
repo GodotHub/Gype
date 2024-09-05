@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { CameraAttributes } from '@js_godot/classes/camera_attributes'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -210,9 +210,10 @@ export class CameraAttributesPractical extends CameraAttributes{
       );
     }
   }
+  
   set_dof_blur_far_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_dof_blur_far_enabled,
+      CameraAttributesPractical._bindings.method_set_dof_blur_far_enabled,
       this._owner,
       _enabled
     );
@@ -220,7 +221,7 @@ export class CameraAttributesPractical extends CameraAttributes{
   }
   is_dof_blur_far_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_dof_blur_far_enabled,
+      CameraAttributesPractical._bindings.method_is_dof_blur_far_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -229,7 +230,7 @@ export class CameraAttributesPractical extends CameraAttributes{
   }
   set_dof_blur_far_distance(_distance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_dof_blur_far_distance,
+      CameraAttributesPractical._bindings.method_set_dof_blur_far_distance,
       this._owner,
       _distance
     );
@@ -237,7 +238,7 @@ export class CameraAttributesPractical extends CameraAttributes{
   }
   get_dof_blur_far_distance() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_dof_blur_far_distance,
+      CameraAttributesPractical._bindings.method_get_dof_blur_far_distance,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -246,7 +247,7 @@ export class CameraAttributesPractical extends CameraAttributes{
   }
   set_dof_blur_far_transition(_distance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_dof_blur_far_transition,
+      CameraAttributesPractical._bindings.method_set_dof_blur_far_transition,
       this._owner,
       _distance
     );
@@ -254,7 +255,7 @@ export class CameraAttributesPractical extends CameraAttributes{
   }
   get_dof_blur_far_transition() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_dof_blur_far_transition,
+      CameraAttributesPractical._bindings.method_get_dof_blur_far_transition,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -263,7 +264,7 @@ export class CameraAttributesPractical extends CameraAttributes{
   }
   set_dof_blur_near_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_dof_blur_near_enabled,
+      CameraAttributesPractical._bindings.method_set_dof_blur_near_enabled,
       this._owner,
       _enabled
     );
@@ -271,7 +272,7 @@ export class CameraAttributesPractical extends CameraAttributes{
   }
   is_dof_blur_near_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_dof_blur_near_enabled,
+      CameraAttributesPractical._bindings.method_is_dof_blur_near_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -280,7 +281,7 @@ export class CameraAttributesPractical extends CameraAttributes{
   }
   set_dof_blur_near_distance(_distance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_dof_blur_near_distance,
+      CameraAttributesPractical._bindings.method_set_dof_blur_near_distance,
       this._owner,
       _distance
     );
@@ -288,7 +289,7 @@ export class CameraAttributesPractical extends CameraAttributes{
   }
   get_dof_blur_near_distance() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_dof_blur_near_distance,
+      CameraAttributesPractical._bindings.method_get_dof_blur_near_distance,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -297,7 +298,7 @@ export class CameraAttributesPractical extends CameraAttributes{
   }
   set_dof_blur_near_transition(_distance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_dof_blur_near_transition,
+      CameraAttributesPractical._bindings.method_set_dof_blur_near_transition,
       this._owner,
       _distance
     );
@@ -305,7 +306,7 @@ export class CameraAttributesPractical extends CameraAttributes{
   }
   get_dof_blur_near_transition() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_dof_blur_near_transition,
+      CameraAttributesPractical._bindings.method_get_dof_blur_near_transition,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -314,7 +315,7 @@ export class CameraAttributesPractical extends CameraAttributes{
   }
   set_dof_blur_amount(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_dof_blur_amount,
+      CameraAttributesPractical._bindings.method_set_dof_blur_amount,
       this._owner,
       _amount
     );
@@ -322,7 +323,7 @@ export class CameraAttributesPractical extends CameraAttributes{
   }
   get_dof_blur_amount() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_dof_blur_amount,
+      CameraAttributesPractical._bindings.method_get_dof_blur_amount,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -331,7 +332,7 @@ export class CameraAttributesPractical extends CameraAttributes{
   }
   set_auto_exposure_max_sensitivity(_max_sensitivity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_auto_exposure_max_sensitivity,
+      CameraAttributesPractical._bindings.method_set_auto_exposure_max_sensitivity,
       this._owner,
       _max_sensitivity
     );
@@ -339,7 +340,7 @@ export class CameraAttributesPractical extends CameraAttributes{
   }
   get_auto_exposure_max_sensitivity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_auto_exposure_max_sensitivity,
+      CameraAttributesPractical._bindings.method_get_auto_exposure_max_sensitivity,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -348,7 +349,7 @@ export class CameraAttributesPractical extends CameraAttributes{
   }
   set_auto_exposure_min_sensitivity(_min_sensitivity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_auto_exposure_min_sensitivity,
+      CameraAttributesPractical._bindings.method_set_auto_exposure_min_sensitivity,
       this._owner,
       _min_sensitivity
     );
@@ -356,7 +357,7 @@ export class CameraAttributesPractical extends CameraAttributes{
   }
   get_auto_exposure_min_sensitivity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_auto_exposure_min_sensitivity,
+      CameraAttributesPractical._bindings.method_get_auto_exposure_min_sensitivity,
       this._owner,
 			Variant.Type.FLOAT,
       

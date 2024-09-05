@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
 import { Variant } from '@js_godot/variant/variant'
 import { Occluder3D } from '@js_godot/classes/occluder3d'
+import { StringName } from '@js_godot/variant/string_name'
+import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -51,9 +51,10 @@ export class PolygonOccluder3D extends Occluder3D{
       );
     }
   }
+  
   set_polygon(_polygon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_polygon,
+      PolygonOccluder3D._bindings.method_set_polygon,
       this._owner,
       _polygon
     );
@@ -61,7 +62,7 @@ export class PolygonOccluder3D extends Occluder3D{
   }
   get_polygon() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_polygon,
+      PolygonOccluder3D._bindings.method_get_polygon,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     

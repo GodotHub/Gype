@@ -30,6 +30,7 @@ export class RenderSceneBuffersExtension extends RenderSceneBuffers{
     }
     this.#initialized = true;
   }
+  
   _configure(_config) {
   }
   _set_fsr_sharpness(_fsr_sharpness) {

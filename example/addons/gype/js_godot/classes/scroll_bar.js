@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Range } from '@js_godot/classes/range'
+import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
@@ -50,9 +50,10 @@ export class ScrollBar extends Range{
       );
     }
   }
+  
   set_custom_step(_step) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_custom_step,
+      ScrollBar._bindings.method_set_custom_step,
       this._owner,
       _step
     );
@@ -60,7 +61,7 @@ export class ScrollBar extends Range{
   }
   get_custom_step() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_custom_step,
+      ScrollBar._bindings.method_get_custom_step,
       this._owner,
 			Variant.Type.FLOAT,
       

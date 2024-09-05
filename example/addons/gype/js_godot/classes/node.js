@@ -1,11 +1,11 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { GodotObject } from '@js_godot/classes/godot_object'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { PackedStringArray } from '@js_godot/variant/packed_string_array'
-import { GDArray } from '@js_godot/variant/gd_array'
 import { NodePath } from '@js_godot/variant/node_path'
+import { GodotObject } from '@js_godot/classes/godot_object'
+import { GDString } from '@js_godot/variant/gd_string'
+import { Variant } from '@js_godot/variant/variant'
+import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -1184,6 +1184,7 @@ export class Node extends GodotObject{
       );
     }
   }
+  
   _process(_delta) {
   }
   _physics_process(_delta) {
@@ -1206,7 +1207,7 @@ export class Node extends GodotObject{
   }
   print_orphan_nodes() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_print_orphan_nodes,
+      Node._bindings.method_print_orphan_nodes,
       this._owner,
       
     );
@@ -1214,7 +1215,7 @@ export class Node extends GodotObject{
   }
   add_sibling(_sibling, _force_readable_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_sibling,
+      Node._bindings.method_add_sibling,
       this._owner,
       _sibling, _force_readable_name
     );
@@ -1222,7 +1223,7 @@ export class Node extends GodotObject{
   }
   set_name(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_name,
+      Node._bindings.method_set_name,
       this._owner,
       _name
     );
@@ -1230,7 +1231,7 @@ export class Node extends GodotObject{
   }
   get_name() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_name,
+      Node._bindings.method_get_name,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -1240,7 +1241,7 @@ export class Node extends GodotObject{
   }
   add_child(_node, _force_readable_name, _internal) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_child,
+      Node._bindings.method_add_child,
       this._owner,
       _node, _force_readable_name, _internal
     );
@@ -1248,7 +1249,7 @@ export class Node extends GodotObject{
   }
   remove_child(_node) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_child,
+      Node._bindings.method_remove_child,
       this._owner,
       _node
     );
@@ -1256,7 +1257,7 @@ export class Node extends GodotObject{
   }
   reparent(_new_parent, _keep_global_transform) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_reparent,
+      Node._bindings.method_reparent,
       this._owner,
       _new_parent, _keep_global_transform
     );
@@ -1264,7 +1265,7 @@ export class Node extends GodotObject{
   }
   get_child_count(_include_internal) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_child_count,
+      Node._bindings.method_get_child_count,
       this._owner,
 			Variant.Type.INT,
       _include_internal
@@ -1273,7 +1274,7 @@ export class Node extends GodotObject{
   }
   get_children(_include_internal) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_children,
+      Node._bindings.method_get_children,
       this._owner,
 			Variant.INT,
       _include_internal
@@ -1282,7 +1283,7 @@ export class Node extends GodotObject{
   }
   get_child(_idx, _include_internal) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_child,
+      Node._bindings.method_get_child,
       this._owner,
 			Variant.INT,
       _idx, _include_internal
@@ -1291,7 +1292,7 @@ export class Node extends GodotObject{
   }
   has_node(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_node,
+      Node._bindings.method_has_node,
       this._owner,
 			Variant.Type.BOOL,
       _path
@@ -1300,7 +1301,7 @@ export class Node extends GodotObject{
   }
   get_node(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_node,
+      Node._bindings.method_get_node,
       this._owner,
 			Variant.INT,
       _path
@@ -1309,7 +1310,7 @@ export class Node extends GodotObject{
   }
   get_node_or_null(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_node_or_null,
+      Node._bindings.method_get_node_or_null,
       this._owner,
 			Variant.INT,
       _path
@@ -1318,7 +1319,7 @@ export class Node extends GodotObject{
   }
   get_parent() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_parent,
+      Node._bindings.method_get_parent,
       this._owner,
 			Variant.INT,
       
@@ -1327,7 +1328,7 @@ export class Node extends GodotObject{
   }
   find_child(_pattern, _recursive, _owned) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_find_child,
+      Node._bindings.method_find_child,
       this._owner,
 			Variant.INT,
       _pattern, _recursive, _owned
@@ -1336,7 +1337,7 @@ export class Node extends GodotObject{
   }
   find_children(_pattern, _type, _recursive, _owned) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_find_children,
+      Node._bindings.method_find_children,
       this._owner,
 			Variant.INT,
       _pattern, _type, _recursive, _owned
@@ -1345,7 +1346,7 @@ export class Node extends GodotObject{
   }
   find_parent(_pattern) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_find_parent,
+      Node._bindings.method_find_parent,
       this._owner,
 			Variant.INT,
       _pattern
@@ -1354,7 +1355,7 @@ export class Node extends GodotObject{
   }
   has_node_and_resource(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_node_and_resource,
+      Node._bindings.method_has_node_and_resource,
       this._owner,
 			Variant.Type.BOOL,
       _path
@@ -1363,7 +1364,7 @@ export class Node extends GodotObject{
   }
   get_node_and_resource(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_node_and_resource,
+      Node._bindings.method_get_node_and_resource,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -1373,7 +1374,7 @@ export class Node extends GodotObject{
   }
   is_inside_tree() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_inside_tree,
+      Node._bindings.method_is_inside_tree,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1382,7 +1383,7 @@ export class Node extends GodotObject{
   }
   is_part_of_edited_scene() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_part_of_edited_scene,
+      Node._bindings.method_is_part_of_edited_scene,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1391,7 +1392,7 @@ export class Node extends GodotObject{
   }
   is_ancestor_of(_node) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_ancestor_of,
+      Node._bindings.method_is_ancestor_of,
       this._owner,
 			Variant.Type.BOOL,
       _node
@@ -1400,7 +1401,7 @@ export class Node extends GodotObject{
   }
   is_greater_than(_node) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_greater_than,
+      Node._bindings.method_is_greater_than,
       this._owner,
 			Variant.Type.BOOL,
       _node
@@ -1409,7 +1410,7 @@ export class Node extends GodotObject{
   }
   get_path() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_path,
+      Node._bindings.method_get_path,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -1419,7 +1420,7 @@ export class Node extends GodotObject{
   }
   get_path_to(_node, _use_unique_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_path_to,
+      Node._bindings.method_get_path_to,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -1429,7 +1430,7 @@ export class Node extends GodotObject{
   }
   add_to_group(_group, _persistent) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_to_group,
+      Node._bindings.method_add_to_group,
       this._owner,
       _group, _persistent
     );
@@ -1437,7 +1438,7 @@ export class Node extends GodotObject{
   }
   remove_from_group(_group) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_from_group,
+      Node._bindings.method_remove_from_group,
       this._owner,
       _group
     );
@@ -1445,7 +1446,7 @@ export class Node extends GodotObject{
   }
   is_in_group(_group) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_in_group,
+      Node._bindings.method_is_in_group,
       this._owner,
 			Variant.Type.BOOL,
       _group
@@ -1454,7 +1455,7 @@ export class Node extends GodotObject{
   }
   move_child(_child_node, _to_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_move_child,
+      Node._bindings.method_move_child,
       this._owner,
       _child_node, _to_index
     );
@@ -1462,7 +1463,7 @@ export class Node extends GodotObject{
   }
   get_groups() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_groups,
+      Node._bindings.method_get_groups,
       this._owner,
 			Variant.INT,
       
@@ -1471,7 +1472,7 @@ export class Node extends GodotObject{
   }
   set_owner(_owner) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_owner,
+      Node._bindings.method_set_owner,
       this._owner,
       _owner
     );
@@ -1479,7 +1480,7 @@ export class Node extends GodotObject{
   }
   get_owner() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_owner,
+      Node._bindings.method_get_owner,
       this._owner,
 			Variant.INT,
       
@@ -1488,7 +1489,7 @@ export class Node extends GodotObject{
   }
   get_index(_include_internal) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_index,
+      Node._bindings.method_get_index,
       this._owner,
 			Variant.Type.INT,
       _include_internal
@@ -1497,7 +1498,7 @@ export class Node extends GodotObject{
   }
   print_tree() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_print_tree,
+      Node._bindings.method_print_tree,
       this._owner,
       
     );
@@ -1505,7 +1506,7 @@ export class Node extends GodotObject{
   }
   print_tree_pretty() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_print_tree_pretty,
+      Node._bindings.method_print_tree_pretty,
       this._owner,
       
     );
@@ -1513,7 +1514,7 @@ export class Node extends GodotObject{
   }
   get_tree_string() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tree_string,
+      Node._bindings.method_get_tree_string,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1523,7 +1524,7 @@ export class Node extends GodotObject{
   }
   get_tree_string_pretty() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tree_string_pretty,
+      Node._bindings.method_get_tree_string_pretty,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1533,7 +1534,7 @@ export class Node extends GodotObject{
   }
   set_scene_file_path(_scene_file_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_scene_file_path,
+      Node._bindings.method_set_scene_file_path,
       this._owner,
       _scene_file_path
     );
@@ -1541,7 +1542,7 @@ export class Node extends GodotObject{
   }
   get_scene_file_path() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_scene_file_path,
+      Node._bindings.method_get_scene_file_path,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1551,7 +1552,7 @@ export class Node extends GodotObject{
   }
   propagate_notification(_what) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_propagate_notification,
+      Node._bindings.method_propagate_notification,
       this._owner,
       _what
     );
@@ -1559,7 +1560,7 @@ export class Node extends GodotObject{
   }
   propagate_call(_method, _args, _parent_first) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_propagate_call,
+      Node._bindings.method_propagate_call,
       this._owner,
       _method, _args, _parent_first
     );
@@ -1567,7 +1568,7 @@ export class Node extends GodotObject{
   }
   set_physics_process(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_physics_process,
+      Node._bindings.method_set_physics_process,
       this._owner,
       _enable
     );
@@ -1575,7 +1576,7 @@ export class Node extends GodotObject{
   }
   get_physics_process_delta_time() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_physics_process_delta_time,
+      Node._bindings.method_get_physics_process_delta_time,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1584,7 +1585,7 @@ export class Node extends GodotObject{
   }
   is_physics_processing() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_physics_processing,
+      Node._bindings.method_is_physics_processing,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1593,7 +1594,7 @@ export class Node extends GodotObject{
   }
   get_process_delta_time() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_process_delta_time,
+      Node._bindings.method_get_process_delta_time,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1602,7 +1603,7 @@ export class Node extends GodotObject{
   }
   set_process(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_process,
+      Node._bindings.method_set_process,
       this._owner,
       _enable
     );
@@ -1610,7 +1611,7 @@ export class Node extends GodotObject{
   }
   set_process_priority(_priority) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_process_priority,
+      Node._bindings.method_set_process_priority,
       this._owner,
       _priority
     );
@@ -1618,7 +1619,7 @@ export class Node extends GodotObject{
   }
   get_process_priority() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_process_priority,
+      Node._bindings.method_get_process_priority,
       this._owner,
 			Variant.Type.INT,
       
@@ -1627,7 +1628,7 @@ export class Node extends GodotObject{
   }
   set_physics_process_priority(_priority) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_physics_process_priority,
+      Node._bindings.method_set_physics_process_priority,
       this._owner,
       _priority
     );
@@ -1635,7 +1636,7 @@ export class Node extends GodotObject{
   }
   get_physics_process_priority() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_physics_process_priority,
+      Node._bindings.method_get_physics_process_priority,
       this._owner,
 			Variant.Type.INT,
       
@@ -1644,7 +1645,7 @@ export class Node extends GodotObject{
   }
   is_processing() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_processing,
+      Node._bindings.method_is_processing,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1653,7 +1654,7 @@ export class Node extends GodotObject{
   }
   set_process_input(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_process_input,
+      Node._bindings.method_set_process_input,
       this._owner,
       _enable
     );
@@ -1661,7 +1662,7 @@ export class Node extends GodotObject{
   }
   is_processing_input() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_processing_input,
+      Node._bindings.method_is_processing_input,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1670,7 +1671,7 @@ export class Node extends GodotObject{
   }
   set_process_shortcut_input(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_process_shortcut_input,
+      Node._bindings.method_set_process_shortcut_input,
       this._owner,
       _enable
     );
@@ -1678,7 +1679,7 @@ export class Node extends GodotObject{
   }
   is_processing_shortcut_input() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_processing_shortcut_input,
+      Node._bindings.method_is_processing_shortcut_input,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1687,7 +1688,7 @@ export class Node extends GodotObject{
   }
   set_process_unhandled_input(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_process_unhandled_input,
+      Node._bindings.method_set_process_unhandled_input,
       this._owner,
       _enable
     );
@@ -1695,7 +1696,7 @@ export class Node extends GodotObject{
   }
   is_processing_unhandled_input() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_processing_unhandled_input,
+      Node._bindings.method_is_processing_unhandled_input,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1704,7 +1705,7 @@ export class Node extends GodotObject{
   }
   set_process_unhandled_key_input(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_process_unhandled_key_input,
+      Node._bindings.method_set_process_unhandled_key_input,
       this._owner,
       _enable
     );
@@ -1712,7 +1713,7 @@ export class Node extends GodotObject{
   }
   is_processing_unhandled_key_input() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_processing_unhandled_key_input,
+      Node._bindings.method_is_processing_unhandled_key_input,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1721,7 +1722,7 @@ export class Node extends GodotObject{
   }
   set_process_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_process_mode,
+      Node._bindings.method_set_process_mode,
       this._owner,
       _mode
     );
@@ -1729,7 +1730,7 @@ export class Node extends GodotObject{
   }
   get_process_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_process_mode,
+      Node._bindings.method_get_process_mode,
       this._owner,
 			Variant.INT,
       
@@ -1738,7 +1739,7 @@ export class Node extends GodotObject{
   }
   can_process() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_can_process,
+      Node._bindings.method_can_process,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1747,7 +1748,7 @@ export class Node extends GodotObject{
   }
   set_process_thread_group(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_process_thread_group,
+      Node._bindings.method_set_process_thread_group,
       this._owner,
       _mode
     );
@@ -1755,7 +1756,7 @@ export class Node extends GodotObject{
   }
   get_process_thread_group() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_process_thread_group,
+      Node._bindings.method_get_process_thread_group,
       this._owner,
 			Variant.INT,
       
@@ -1764,7 +1765,7 @@ export class Node extends GodotObject{
   }
   set_process_thread_messages(_flags) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_process_thread_messages,
+      Node._bindings.method_set_process_thread_messages,
       this._owner,
       _flags
     );
@@ -1772,7 +1773,7 @@ export class Node extends GodotObject{
   }
   get_process_thread_messages() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_process_thread_messages,
+      Node._bindings.method_get_process_thread_messages,
       this._owner,
 			Variant.INT,
       
@@ -1781,7 +1782,7 @@ export class Node extends GodotObject{
   }
   set_process_thread_group_order(_order) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_process_thread_group_order,
+      Node._bindings.method_set_process_thread_group_order,
       this._owner,
       _order
     );
@@ -1789,7 +1790,7 @@ export class Node extends GodotObject{
   }
   get_process_thread_group_order() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_process_thread_group_order,
+      Node._bindings.method_get_process_thread_group_order,
       this._owner,
 			Variant.Type.INT,
       
@@ -1798,7 +1799,7 @@ export class Node extends GodotObject{
   }
   set_display_folded(_fold) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_display_folded,
+      Node._bindings.method_set_display_folded,
       this._owner,
       _fold
     );
@@ -1806,7 +1807,7 @@ export class Node extends GodotObject{
   }
   is_displayed_folded() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_displayed_folded,
+      Node._bindings.method_is_displayed_folded,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1815,7 +1816,7 @@ export class Node extends GodotObject{
   }
   set_process_internal(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_process_internal,
+      Node._bindings.method_set_process_internal,
       this._owner,
       _enable
     );
@@ -1823,7 +1824,7 @@ export class Node extends GodotObject{
   }
   is_processing_internal() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_processing_internal,
+      Node._bindings.method_is_processing_internal,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1832,7 +1833,7 @@ export class Node extends GodotObject{
   }
   set_physics_process_internal(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_physics_process_internal,
+      Node._bindings.method_set_physics_process_internal,
       this._owner,
       _enable
     );
@@ -1840,7 +1841,7 @@ export class Node extends GodotObject{
   }
   is_physics_processing_internal() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_physics_processing_internal,
+      Node._bindings.method_is_physics_processing_internal,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1849,7 +1850,7 @@ export class Node extends GodotObject{
   }
   set_physics_interpolation_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_physics_interpolation_mode,
+      Node._bindings.method_set_physics_interpolation_mode,
       this._owner,
       _mode
     );
@@ -1857,7 +1858,7 @@ export class Node extends GodotObject{
   }
   get_physics_interpolation_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_physics_interpolation_mode,
+      Node._bindings.method_get_physics_interpolation_mode,
       this._owner,
 			Variant.INT,
       
@@ -1866,7 +1867,7 @@ export class Node extends GodotObject{
   }
   is_physics_interpolated() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_physics_interpolated,
+      Node._bindings.method_is_physics_interpolated,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1875,7 +1876,7 @@ export class Node extends GodotObject{
   }
   is_physics_interpolated_and_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_physics_interpolated_and_enabled,
+      Node._bindings.method_is_physics_interpolated_and_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1884,7 +1885,7 @@ export class Node extends GodotObject{
   }
   reset_physics_interpolation() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_reset_physics_interpolation,
+      Node._bindings.method_reset_physics_interpolation,
       this._owner,
       
     );
@@ -1892,7 +1893,7 @@ export class Node extends GodotObject{
   }
   set_auto_translate_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_auto_translate_mode,
+      Node._bindings.method_set_auto_translate_mode,
       this._owner,
       _mode
     );
@@ -1900,7 +1901,7 @@ export class Node extends GodotObject{
   }
   get_auto_translate_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_auto_translate_mode,
+      Node._bindings.method_get_auto_translate_mode,
       this._owner,
 			Variant.INT,
       
@@ -1909,7 +1910,7 @@ export class Node extends GodotObject{
   }
   get_window() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_window,
+      Node._bindings.method_get_window,
       this._owner,
 			Variant.INT,
       
@@ -1918,7 +1919,7 @@ export class Node extends GodotObject{
   }
   get_last_exclusive_window() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_last_exclusive_window,
+      Node._bindings.method_get_last_exclusive_window,
       this._owner,
 			Variant.INT,
       
@@ -1927,7 +1928,7 @@ export class Node extends GodotObject{
   }
   get_tree() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tree,
+      Node._bindings.method_get_tree,
       this._owner,
 			Variant.INT,
       
@@ -1936,7 +1937,7 @@ export class Node extends GodotObject{
   }
   create_tween() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_tween,
+      Node._bindings.method_create_tween,
       this._owner,
 			Variant.INT,
       
@@ -1945,7 +1946,7 @@ export class Node extends GodotObject{
   }
   duplicate(_flags) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_duplicate,
+      Node._bindings.method_duplicate,
       this._owner,
 			Variant.INT,
       _flags
@@ -1954,7 +1955,7 @@ export class Node extends GodotObject{
   }
   replace_by(_node, _keep_groups) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_replace_by,
+      Node._bindings.method_replace_by,
       this._owner,
       _node, _keep_groups
     );
@@ -1962,7 +1963,7 @@ export class Node extends GodotObject{
   }
   set_scene_instance_load_placeholder(_load_placeholder) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_scene_instance_load_placeholder,
+      Node._bindings.method_set_scene_instance_load_placeholder,
       this._owner,
       _load_placeholder
     );
@@ -1970,7 +1971,7 @@ export class Node extends GodotObject{
   }
   get_scene_instance_load_placeholder() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_scene_instance_load_placeholder,
+      Node._bindings.method_get_scene_instance_load_placeholder,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1979,7 +1980,7 @@ export class Node extends GodotObject{
   }
   set_editable_instance(_node, _is_editable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_editable_instance,
+      Node._bindings.method_set_editable_instance,
       this._owner,
       _node, _is_editable
     );
@@ -1987,7 +1988,7 @@ export class Node extends GodotObject{
   }
   is_editable_instance(_node) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_editable_instance,
+      Node._bindings.method_is_editable_instance,
       this._owner,
 			Variant.Type.BOOL,
       _node
@@ -1996,7 +1997,7 @@ export class Node extends GodotObject{
   }
   get_viewport() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_viewport,
+      Node._bindings.method_get_viewport,
       this._owner,
 			Variant.INT,
       
@@ -2005,7 +2006,7 @@ export class Node extends GodotObject{
   }
   queue_free() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_queue_free,
+      Node._bindings.method_queue_free,
       this._owner,
       
     );
@@ -2013,7 +2014,7 @@ export class Node extends GodotObject{
   }
   request_ready() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_request_ready,
+      Node._bindings.method_request_ready,
       this._owner,
       
     );
@@ -2021,7 +2022,7 @@ export class Node extends GodotObject{
   }
   is_node_ready() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_node_ready,
+      Node._bindings.method_is_node_ready,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2030,7 +2031,7 @@ export class Node extends GodotObject{
   }
   set_multiplayer_authority(_id, _recursive) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_multiplayer_authority,
+      Node._bindings.method_set_multiplayer_authority,
       this._owner,
       _id, _recursive
     );
@@ -2038,7 +2039,7 @@ export class Node extends GodotObject{
   }
   get_multiplayer_authority() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_multiplayer_authority,
+      Node._bindings.method_get_multiplayer_authority,
       this._owner,
 			Variant.Type.INT,
       
@@ -2047,7 +2048,7 @@ export class Node extends GodotObject{
   }
   is_multiplayer_authority() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_multiplayer_authority,
+      Node._bindings.method_is_multiplayer_authority,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2056,7 +2057,7 @@ export class Node extends GodotObject{
   }
   get_multiplayer() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_multiplayer,
+      Node._bindings.method_get_multiplayer,
       this._owner,
 			Variant.INT,
       
@@ -2065,7 +2066,7 @@ export class Node extends GodotObject{
   }
   rpc_config(_method, _config) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_rpc_config,
+      Node._bindings.method_rpc_config,
       this._owner,
       _method, _config
     );
@@ -2073,7 +2074,7 @@ export class Node extends GodotObject{
   }
   set_editor_description(_editor_description) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_editor_description,
+      Node._bindings.method_set_editor_description,
       this._owner,
       _editor_description
     );
@@ -2081,7 +2082,7 @@ export class Node extends GodotObject{
   }
   get_editor_description() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_editor_description,
+      Node._bindings.method_get_editor_description,
       this._owner,
 			Variant.Type.STRING,
     
@@ -2091,7 +2092,7 @@ export class Node extends GodotObject{
   }
   set_unique_name_in_owner(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_unique_name_in_owner,
+      Node._bindings.method_set_unique_name_in_owner,
       this._owner,
       _enable
     );
@@ -2099,7 +2100,7 @@ export class Node extends GodotObject{
   }
   is_unique_name_in_owner() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_unique_name_in_owner,
+      Node._bindings.method_is_unique_name_in_owner,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2108,7 +2109,7 @@ export class Node extends GodotObject{
   }
   atr(_message, _context) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_atr,
+      Node._bindings.method_atr,
       this._owner,
 			Variant.Type.STRING,
     
@@ -2118,7 +2119,7 @@ export class Node extends GodotObject{
   }
   atr_n(_message, _plural_message, _n, _context) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_atr_n,
+      Node._bindings.method_atr_n,
       this._owner,
 			Variant.Type.STRING,
     
@@ -2128,7 +2129,7 @@ export class Node extends GodotObject{
   }
   rpc(_method) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_rpc,
+      Node._bindings.method_rpc,
       this._owner,
 			Variant.INT,
       _method
@@ -2137,7 +2138,7 @@ export class Node extends GodotObject{
   }
   rpc_id(_peer_id, _method) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_rpc_id,
+      Node._bindings.method_rpc_id,
       this._owner,
 			Variant.INT,
       _peer_id, _method
@@ -2146,7 +2147,7 @@ export class Node extends GodotObject{
   }
   update_configuration_warnings() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_update_configuration_warnings,
+      Node._bindings.method_update_configuration_warnings,
       this._owner,
       
     );
@@ -2154,7 +2155,7 @@ export class Node extends GodotObject{
   }
   call_deferred_thread_group(_method) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_call_deferred_thread_group,
+      Node._bindings.method_call_deferred_thread_group,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -2164,7 +2165,7 @@ export class Node extends GodotObject{
   }
   set_deferred_thread_group(_property, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_deferred_thread_group,
+      Node._bindings.method_set_deferred_thread_group,
       this._owner,
       _property, _value
     );
@@ -2172,7 +2173,7 @@ export class Node extends GodotObject{
   }
   notify_deferred_thread_group(_what) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_notify_deferred_thread_group,
+      Node._bindings.method_notify_deferred_thread_group,
       this._owner,
       _what
     );
@@ -2180,7 +2181,7 @@ export class Node extends GodotObject{
   }
   call_thread_safe(_method) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_call_thread_safe,
+      Node._bindings.method_call_thread_safe,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -2190,7 +2191,7 @@ export class Node extends GodotObject{
   }
   set_thread_safe(_property, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_thread_safe,
+      Node._bindings.method_set_thread_safe,
       this._owner,
       _property, _value
     );
@@ -2198,7 +2199,7 @@ export class Node extends GodotObject{
   }
   notify_thread_safe(_what) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_notify_thread_safe,
+      Node._bindings.method_notify_thread_safe,
       this._owner,
       _what
     );

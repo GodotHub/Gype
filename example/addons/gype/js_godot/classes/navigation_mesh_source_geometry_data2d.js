@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
 import { GDArray } from '@js_godot/variant/gd_array'
 import {
@@ -182,9 +182,10 @@ export class NavigationMeshSourceGeometryData2D extends Resource{
       );
     }
   }
+  
   clear() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear,
+      NavigationMeshSourceGeometryData2D._bindings.method_clear,
       this._owner,
       
     );
@@ -192,7 +193,7 @@ export class NavigationMeshSourceGeometryData2D extends Resource{
   }
   has_data() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_data,
+      NavigationMeshSourceGeometryData2D._bindings.method_has_data,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -201,7 +202,7 @@ export class NavigationMeshSourceGeometryData2D extends Resource{
   }
   set_traversable_outlines(_traversable_outlines) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_traversable_outlines,
+      NavigationMeshSourceGeometryData2D._bindings.method_set_traversable_outlines,
       this._owner,
       _traversable_outlines
     );
@@ -209,7 +210,7 @@ export class NavigationMeshSourceGeometryData2D extends Resource{
   }
   get_traversable_outlines() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_traversable_outlines,
+      NavigationMeshSourceGeometryData2D._bindings.method_get_traversable_outlines,
       this._owner,
 			Variant.INT,
       
@@ -218,7 +219,7 @@ export class NavigationMeshSourceGeometryData2D extends Resource{
   }
   set_obstruction_outlines(_obstruction_outlines) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_obstruction_outlines,
+      NavigationMeshSourceGeometryData2D._bindings.method_set_obstruction_outlines,
       this._owner,
       _obstruction_outlines
     );
@@ -226,7 +227,7 @@ export class NavigationMeshSourceGeometryData2D extends Resource{
   }
   get_obstruction_outlines() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_obstruction_outlines,
+      NavigationMeshSourceGeometryData2D._bindings.method_get_obstruction_outlines,
       this._owner,
 			Variant.INT,
       
@@ -235,7 +236,7 @@ export class NavigationMeshSourceGeometryData2D extends Resource{
   }
   append_traversable_outlines(_traversable_outlines) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_append_traversable_outlines,
+      NavigationMeshSourceGeometryData2D._bindings.method_append_traversable_outlines,
       this._owner,
       _traversable_outlines
     );
@@ -243,7 +244,7 @@ export class NavigationMeshSourceGeometryData2D extends Resource{
   }
   append_obstruction_outlines(_obstruction_outlines) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_append_obstruction_outlines,
+      NavigationMeshSourceGeometryData2D._bindings.method_append_obstruction_outlines,
       this._owner,
       _obstruction_outlines
     );
@@ -251,7 +252,7 @@ export class NavigationMeshSourceGeometryData2D extends Resource{
   }
   add_traversable_outline(_shape_outline) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_traversable_outline,
+      NavigationMeshSourceGeometryData2D._bindings.method_add_traversable_outline,
       this._owner,
       _shape_outline
     );
@@ -259,7 +260,7 @@ export class NavigationMeshSourceGeometryData2D extends Resource{
   }
   add_obstruction_outline(_shape_outline) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_obstruction_outline,
+      NavigationMeshSourceGeometryData2D._bindings.method_add_obstruction_outline,
       this._owner,
       _shape_outline
     );
@@ -267,7 +268,7 @@ export class NavigationMeshSourceGeometryData2D extends Resource{
   }
   merge(_other_geometry) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_merge,
+      NavigationMeshSourceGeometryData2D._bindings.method_merge,
       this._owner,
       _other_geometry
     );
@@ -275,7 +276,7 @@ export class NavigationMeshSourceGeometryData2D extends Resource{
   }
   add_projected_obstruction(_vertices, _carve) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_projected_obstruction,
+      NavigationMeshSourceGeometryData2D._bindings.method_add_projected_obstruction,
       this._owner,
       _vertices, _carve
     );
@@ -283,7 +284,7 @@ export class NavigationMeshSourceGeometryData2D extends Resource{
   }
   clear_projected_obstructions() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_projected_obstructions,
+      NavigationMeshSourceGeometryData2D._bindings.method_clear_projected_obstructions,
       this._owner,
       
     );
@@ -291,7 +292,7 @@ export class NavigationMeshSourceGeometryData2D extends Resource{
   }
   set_projected_obstructions(_projected_obstructions) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_projected_obstructions,
+      NavigationMeshSourceGeometryData2D._bindings.method_set_projected_obstructions,
       this._owner,
       _projected_obstructions
     );
@@ -299,7 +300,7 @@ export class NavigationMeshSourceGeometryData2D extends Resource{
   }
   get_projected_obstructions() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_projected_obstructions,
+      NavigationMeshSourceGeometryData2D._bindings.method_get_projected_obstructions,
       this._owner,
 			Variant.Type.ARRAY,
     

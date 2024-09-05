@@ -351,9 +351,10 @@ export class Light2D extends Node2D{
       );
     }
   }
+  
   set_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_enabled,
+      Light2D._bindings.method_set_enabled,
       this._owner,
       _enabled
     );
@@ -361,7 +362,7 @@ export class Light2D extends Node2D{
   }
   is_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_enabled,
+      Light2D._bindings.method_is_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -370,7 +371,7 @@ export class Light2D extends Node2D{
   }
   set_editor_only(_editor_only) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_editor_only,
+      Light2D._bindings.method_set_editor_only,
       this._owner,
       _editor_only
     );
@@ -378,7 +379,7 @@ export class Light2D extends Node2D{
   }
   is_editor_only() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_editor_only,
+      Light2D._bindings.method_is_editor_only,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -387,7 +388,7 @@ export class Light2D extends Node2D{
   }
   set_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_color,
+      Light2D._bindings.method_set_color,
       this._owner,
       _color
     );
@@ -395,7 +396,7 @@ export class Light2D extends Node2D{
   }
   get_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_color,
+      Light2D._bindings.method_get_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -405,7 +406,7 @@ export class Light2D extends Node2D{
   }
   set_energy(_energy) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_energy,
+      Light2D._bindings.method_set_energy,
       this._owner,
       _energy
     );
@@ -413,7 +414,7 @@ export class Light2D extends Node2D{
   }
   get_energy() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_energy,
+      Light2D._bindings.method_get_energy,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -422,7 +423,7 @@ export class Light2D extends Node2D{
   }
   set_z_range_min(_z) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_z_range_min,
+      Light2D._bindings.method_set_z_range_min,
       this._owner,
       _z
     );
@@ -430,7 +431,7 @@ export class Light2D extends Node2D{
   }
   get_z_range_min() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_z_range_min,
+      Light2D._bindings.method_get_z_range_min,
       this._owner,
 			Variant.Type.INT,
       
@@ -439,7 +440,7 @@ export class Light2D extends Node2D{
   }
   set_z_range_max(_z) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_z_range_max,
+      Light2D._bindings.method_set_z_range_max,
       this._owner,
       _z
     );
@@ -447,7 +448,7 @@ export class Light2D extends Node2D{
   }
   get_z_range_max() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_z_range_max,
+      Light2D._bindings.method_get_z_range_max,
       this._owner,
 			Variant.Type.INT,
       
@@ -456,7 +457,7 @@ export class Light2D extends Node2D{
   }
   set_layer_range_min(_layer) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_layer_range_min,
+      Light2D._bindings.method_set_layer_range_min,
       this._owner,
       _layer
     );
@@ -464,7 +465,7 @@ export class Light2D extends Node2D{
   }
   get_layer_range_min() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_layer_range_min,
+      Light2D._bindings.method_get_layer_range_min,
       this._owner,
 			Variant.Type.INT,
       
@@ -473,7 +474,7 @@ export class Light2D extends Node2D{
   }
   set_layer_range_max(_layer) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_layer_range_max,
+      Light2D._bindings.method_set_layer_range_max,
       this._owner,
       _layer
     );
@@ -481,7 +482,7 @@ export class Light2D extends Node2D{
   }
   get_layer_range_max() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_layer_range_max,
+      Light2D._bindings.method_get_layer_range_max,
       this._owner,
 			Variant.Type.INT,
       
@@ -490,7 +491,7 @@ export class Light2D extends Node2D{
   }
   set_item_cull_mask(_item_cull_mask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_cull_mask,
+      Light2D._bindings.method_set_item_cull_mask,
       this._owner,
       _item_cull_mask
     );
@@ -498,7 +499,7 @@ export class Light2D extends Node2D{
   }
   get_item_cull_mask() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_cull_mask,
+      Light2D._bindings.method_get_item_cull_mask,
       this._owner,
 			Variant.Type.INT,
       
@@ -507,7 +508,7 @@ export class Light2D extends Node2D{
   }
   set_item_shadow_cull_mask(_item_shadow_cull_mask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_shadow_cull_mask,
+      Light2D._bindings.method_set_item_shadow_cull_mask,
       this._owner,
       _item_shadow_cull_mask
     );
@@ -515,7 +516,7 @@ export class Light2D extends Node2D{
   }
   get_item_shadow_cull_mask() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_shadow_cull_mask,
+      Light2D._bindings.method_get_item_shadow_cull_mask,
       this._owner,
 			Variant.Type.INT,
       
@@ -524,7 +525,7 @@ export class Light2D extends Node2D{
   }
   set_shadow_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shadow_enabled,
+      Light2D._bindings.method_set_shadow_enabled,
       this._owner,
       _enabled
     );
@@ -532,7 +533,7 @@ export class Light2D extends Node2D{
   }
   is_shadow_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_shadow_enabled,
+      Light2D._bindings.method_is_shadow_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -541,7 +542,7 @@ export class Light2D extends Node2D{
   }
   set_shadow_smooth(_smooth) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shadow_smooth,
+      Light2D._bindings.method_set_shadow_smooth,
       this._owner,
       _smooth
     );
@@ -549,7 +550,7 @@ export class Light2D extends Node2D{
   }
   get_shadow_smooth() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_shadow_smooth,
+      Light2D._bindings.method_get_shadow_smooth,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -558,7 +559,7 @@ export class Light2D extends Node2D{
   }
   set_shadow_filter(_filter) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shadow_filter,
+      Light2D._bindings.method_set_shadow_filter,
       this._owner,
       _filter
     );
@@ -566,7 +567,7 @@ export class Light2D extends Node2D{
   }
   get_shadow_filter() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_shadow_filter,
+      Light2D._bindings.method_get_shadow_filter,
       this._owner,
 			Variant.INT,
       
@@ -575,7 +576,7 @@ export class Light2D extends Node2D{
   }
   set_shadow_color(_shadow_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shadow_color,
+      Light2D._bindings.method_set_shadow_color,
       this._owner,
       _shadow_color
     );
@@ -583,7 +584,7 @@ export class Light2D extends Node2D{
   }
   get_shadow_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_shadow_color,
+      Light2D._bindings.method_get_shadow_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -593,7 +594,7 @@ export class Light2D extends Node2D{
   }
   set_blend_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_blend_mode,
+      Light2D._bindings.method_set_blend_mode,
       this._owner,
       _mode
     );
@@ -601,7 +602,7 @@ export class Light2D extends Node2D{
   }
   get_blend_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_blend_mode,
+      Light2D._bindings.method_get_blend_mode,
       this._owner,
 			Variant.INT,
       
@@ -610,7 +611,7 @@ export class Light2D extends Node2D{
   }
   set_height(_height) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_height,
+      Light2D._bindings.method_set_height,
       this._owner,
       _height
     );
@@ -618,7 +619,7 @@ export class Light2D extends Node2D{
   }
   get_height() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_height,
+      Light2D._bindings.method_get_height,
       this._owner,
 			Variant.Type.FLOAT,
       

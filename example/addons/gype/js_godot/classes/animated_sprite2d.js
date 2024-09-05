@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Node2D } from '@js_godot/classes/node2d'
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
+import { GDString } from '@js_godot/variant/gd_string'
+import { Node2D } from '@js_godot/classes/node2d'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -302,9 +302,10 @@ export class AnimatedSprite2D extends Node2D{
       );
     }
   }
+  
   set_sprite_frames(_sprite_frames) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sprite_frames,
+      AnimatedSprite2D._bindings.method_set_sprite_frames,
       this._owner,
       _sprite_frames
     );
@@ -312,7 +313,7 @@ export class AnimatedSprite2D extends Node2D{
   }
   get_sprite_frames() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sprite_frames,
+      AnimatedSprite2D._bindings.method_get_sprite_frames,
       this._owner,
 			Variant.INT,
       
@@ -321,7 +322,7 @@ export class AnimatedSprite2D extends Node2D{
   }
   set_animation(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_animation,
+      AnimatedSprite2D._bindings.method_set_animation,
       this._owner,
       _name
     );
@@ -329,7 +330,7 @@ export class AnimatedSprite2D extends Node2D{
   }
   get_animation() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_animation,
+      AnimatedSprite2D._bindings.method_get_animation,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -339,7 +340,7 @@ export class AnimatedSprite2D extends Node2D{
   }
   set_autoplay(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_autoplay,
+      AnimatedSprite2D._bindings.method_set_autoplay,
       this._owner,
       _name
     );
@@ -347,7 +348,7 @@ export class AnimatedSprite2D extends Node2D{
   }
   get_autoplay() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_autoplay,
+      AnimatedSprite2D._bindings.method_get_autoplay,
       this._owner,
 			Variant.Type.STRING,
     
@@ -357,7 +358,7 @@ export class AnimatedSprite2D extends Node2D{
   }
   is_playing() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_playing,
+      AnimatedSprite2D._bindings.method_is_playing,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -366,7 +367,7 @@ export class AnimatedSprite2D extends Node2D{
   }
   play(_name, _custom_speed, _from_end) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_play,
+      AnimatedSprite2D._bindings.method_play,
       this._owner,
       _name, _custom_speed, _from_end
     );
@@ -374,7 +375,7 @@ export class AnimatedSprite2D extends Node2D{
   }
   play_backwards(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_play_backwards,
+      AnimatedSprite2D._bindings.method_play_backwards,
       this._owner,
       _name
     );
@@ -382,7 +383,7 @@ export class AnimatedSprite2D extends Node2D{
   }
   pause() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_pause,
+      AnimatedSprite2D._bindings.method_pause,
       this._owner,
       
     );
@@ -390,7 +391,7 @@ export class AnimatedSprite2D extends Node2D{
   }
   stop() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_stop,
+      AnimatedSprite2D._bindings.method_stop,
       this._owner,
       
     );
@@ -398,7 +399,7 @@ export class AnimatedSprite2D extends Node2D{
   }
   set_centered(_centered) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_centered,
+      AnimatedSprite2D._bindings.method_set_centered,
       this._owner,
       _centered
     );
@@ -406,7 +407,7 @@ export class AnimatedSprite2D extends Node2D{
   }
   is_centered() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_centered,
+      AnimatedSprite2D._bindings.method_is_centered,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -415,7 +416,7 @@ export class AnimatedSprite2D extends Node2D{
   }
   set_offset(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_offset,
+      AnimatedSprite2D._bindings.method_set_offset,
       this._owner,
       _offset
     );
@@ -423,7 +424,7 @@ export class AnimatedSprite2D extends Node2D{
   }
   get_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_offset,
+      AnimatedSprite2D._bindings.method_get_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -433,7 +434,7 @@ export class AnimatedSprite2D extends Node2D{
   }
   set_flip_h(_flip_h) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_flip_h,
+      AnimatedSprite2D._bindings.method_set_flip_h,
       this._owner,
       _flip_h
     );
@@ -441,7 +442,7 @@ export class AnimatedSprite2D extends Node2D{
   }
   is_flipped_h() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_flipped_h,
+      AnimatedSprite2D._bindings.method_is_flipped_h,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -450,7 +451,7 @@ export class AnimatedSprite2D extends Node2D{
   }
   set_flip_v(_flip_v) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_flip_v,
+      AnimatedSprite2D._bindings.method_set_flip_v,
       this._owner,
       _flip_v
     );
@@ -458,7 +459,7 @@ export class AnimatedSprite2D extends Node2D{
   }
   is_flipped_v() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_flipped_v,
+      AnimatedSprite2D._bindings.method_is_flipped_v,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -467,7 +468,7 @@ export class AnimatedSprite2D extends Node2D{
   }
   set_frame(_frame) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_frame,
+      AnimatedSprite2D._bindings.method_set_frame,
       this._owner,
       _frame
     );
@@ -475,7 +476,7 @@ export class AnimatedSprite2D extends Node2D{
   }
   get_frame() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_frame,
+      AnimatedSprite2D._bindings.method_get_frame,
       this._owner,
 			Variant.Type.INT,
       
@@ -484,7 +485,7 @@ export class AnimatedSprite2D extends Node2D{
   }
   set_frame_progress(_progress) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_frame_progress,
+      AnimatedSprite2D._bindings.method_set_frame_progress,
       this._owner,
       _progress
     );
@@ -492,7 +493,7 @@ export class AnimatedSprite2D extends Node2D{
   }
   get_frame_progress() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_frame_progress,
+      AnimatedSprite2D._bindings.method_get_frame_progress,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -501,7 +502,7 @@ export class AnimatedSprite2D extends Node2D{
   }
   set_frame_and_progress(_frame, _progress) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_frame_and_progress,
+      AnimatedSprite2D._bindings.method_set_frame_and_progress,
       this._owner,
       _frame, _progress
     );
@@ -509,7 +510,7 @@ export class AnimatedSprite2D extends Node2D{
   }
   set_speed_scale(_speed_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_speed_scale,
+      AnimatedSprite2D._bindings.method_set_speed_scale,
       this._owner,
       _speed_scale
     );
@@ -517,7 +518,7 @@ export class AnimatedSprite2D extends Node2D{
   }
   get_speed_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_speed_scale,
+      AnimatedSprite2D._bindings.method_get_speed_scale,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -526,7 +527,7 @@ export class AnimatedSprite2D extends Node2D{
   }
   get_playing_speed() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_playing_speed,
+      AnimatedSprite2D._bindings.method_get_playing_speed,
       this._owner,
 			Variant.Type.FLOAT,
       

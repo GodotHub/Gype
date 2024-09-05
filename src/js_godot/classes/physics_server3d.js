@@ -1,12 +1,12 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Transform3D } from '@js_godot/variant/transform3d'
-import { GodotObject } from '@js_godot/classes/godot_object'
-import { Callable } from '@js_godot/variant/callable'
-import { Vector3 } from '@js_godot/variant/vector3'
-import { StringName } from '@js_godot/variant/string_name'
-import { AABB } from '@js_godot/variant/aabb'
 import { RID } from '@js_godot/variant/rid'
+import { Transform3D } from '@js_godot/variant/transform3d'
+import { AABB } from '@js_godot/variant/aabb'
+import { Variant } from '@js_godot/variant/variant'
+import { Callable } from '@js_godot/variant/callable'
+import { StringName } from '@js_godot/variant/string_name'
+import { GodotObject } from '@js_godot/classes/godot_object'
+import { Vector3 } from '@js_godot/variant/vector3'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -1724,9 +1724,10 @@ class _MethodBindings {
       );
     }
   }
+  
   world_boundary_shape_create() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_world_boundary_shape_create,
+      _PhysicsServer3D._bindings.method_world_boundary_shape_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1736,7 +1737,7 @@ class _MethodBindings {
   }
   separation_ray_shape_create() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_separation_ray_shape_create,
+      _PhysicsServer3D._bindings.method_separation_ray_shape_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1746,7 +1747,7 @@ class _MethodBindings {
   }
   sphere_shape_create() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_sphere_shape_create,
+      _PhysicsServer3D._bindings.method_sphere_shape_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1756,7 +1757,7 @@ class _MethodBindings {
   }
   box_shape_create() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_box_shape_create,
+      _PhysicsServer3D._bindings.method_box_shape_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1766,7 +1767,7 @@ class _MethodBindings {
   }
   capsule_shape_create() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_capsule_shape_create,
+      _PhysicsServer3D._bindings.method_capsule_shape_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1776,7 +1777,7 @@ class _MethodBindings {
   }
   cylinder_shape_create() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_cylinder_shape_create,
+      _PhysicsServer3D._bindings.method_cylinder_shape_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1786,7 +1787,7 @@ class _MethodBindings {
   }
   convex_polygon_shape_create() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_convex_polygon_shape_create,
+      _PhysicsServer3D._bindings.method_convex_polygon_shape_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1796,7 +1797,7 @@ class _MethodBindings {
   }
   concave_polygon_shape_create() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_concave_polygon_shape_create,
+      _PhysicsServer3D._bindings.method_concave_polygon_shape_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1806,7 +1807,7 @@ class _MethodBindings {
   }
   heightmap_shape_create() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_heightmap_shape_create,
+      _PhysicsServer3D._bindings.method_heightmap_shape_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1816,7 +1817,7 @@ class _MethodBindings {
   }
   custom_shape_create() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_custom_shape_create,
+      _PhysicsServer3D._bindings.method_custom_shape_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1826,7 +1827,7 @@ class _MethodBindings {
   }
   shape_set_data(_shape, _data) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_shape_set_data,
+      _PhysicsServer3D._bindings.method_shape_set_data,
       this._owner,
       _shape, _data
     );
@@ -1834,7 +1835,7 @@ class _MethodBindings {
   }
   shape_set_margin(_shape, _margin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_shape_set_margin,
+      _PhysicsServer3D._bindings.method_shape_set_margin,
       this._owner,
       _shape, _margin
     );
@@ -1842,7 +1843,7 @@ class _MethodBindings {
   }
   shape_get_type(_shape) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shape_get_type,
+      _PhysicsServer3D._bindings.method_shape_get_type,
       this._owner,
 			Variant.INT,
       _shape
@@ -1851,7 +1852,7 @@ class _MethodBindings {
   }
   shape_get_data(_shape) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shape_get_data,
+      _PhysicsServer3D._bindings.method_shape_get_data,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -1861,7 +1862,7 @@ class _MethodBindings {
   }
   shape_get_margin(_shape) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shape_get_margin,
+      _PhysicsServer3D._bindings.method_shape_get_margin,
       this._owner,
 			Variant.Type.FLOAT,
       _shape
@@ -1870,7 +1871,7 @@ class _MethodBindings {
   }
   space_create() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_space_create,
+      _PhysicsServer3D._bindings.method_space_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1880,7 +1881,7 @@ class _MethodBindings {
   }
   space_set_active(_space, _active) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_space_set_active,
+      _PhysicsServer3D._bindings.method_space_set_active,
       this._owner,
       _space, _active
     );
@@ -1888,7 +1889,7 @@ class _MethodBindings {
   }
   space_is_active(_space) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_space_is_active,
+      _PhysicsServer3D._bindings.method_space_is_active,
       this._owner,
 			Variant.Type.BOOL,
       _space
@@ -1897,7 +1898,7 @@ class _MethodBindings {
   }
   space_set_param(_space, _param, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_space_set_param,
+      _PhysicsServer3D._bindings.method_space_set_param,
       this._owner,
       _space, _param, _value
     );
@@ -1905,7 +1906,7 @@ class _MethodBindings {
   }
   space_get_param(_space, _param) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_space_get_param,
+      _PhysicsServer3D._bindings.method_space_get_param,
       this._owner,
 			Variant.Type.FLOAT,
       _space, _param
@@ -1914,7 +1915,7 @@ class _MethodBindings {
   }
   space_get_direct_state(_space) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_space_get_direct_state,
+      _PhysicsServer3D._bindings.method_space_get_direct_state,
       this._owner,
 			Variant.INT,
       _space
@@ -1923,7 +1924,7 @@ class _MethodBindings {
   }
   area_create() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_area_create,
+      _PhysicsServer3D._bindings.method_area_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1933,7 +1934,7 @@ class _MethodBindings {
   }
   area_set_space(_area, _space) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_area_set_space,
+      _PhysicsServer3D._bindings.method_area_set_space,
       this._owner,
       _area, _space
     );
@@ -1941,7 +1942,7 @@ class _MethodBindings {
   }
   area_get_space(_area) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_area_get_space,
+      _PhysicsServer3D._bindings.method_area_get_space,
       this._owner,
 			Variant.Type.RID,
     
@@ -1951,7 +1952,7 @@ class _MethodBindings {
   }
   area_add_shape(_area, _shape, _transform, _disabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_area_add_shape,
+      _PhysicsServer3D._bindings.method_area_add_shape,
       this._owner,
       _area, _shape, _transform, _disabled
     );
@@ -1959,7 +1960,7 @@ class _MethodBindings {
   }
   area_set_shape(_area, _shape_idx, _shape) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_area_set_shape,
+      _PhysicsServer3D._bindings.method_area_set_shape,
       this._owner,
       _area, _shape_idx, _shape
     );
@@ -1967,7 +1968,7 @@ class _MethodBindings {
   }
   area_set_shape_transform(_area, _shape_idx, _transform) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_area_set_shape_transform,
+      _PhysicsServer3D._bindings.method_area_set_shape_transform,
       this._owner,
       _area, _shape_idx, _transform
     );
@@ -1975,7 +1976,7 @@ class _MethodBindings {
   }
   area_set_shape_disabled(_area, _shape_idx, _disabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_area_set_shape_disabled,
+      _PhysicsServer3D._bindings.method_area_set_shape_disabled,
       this._owner,
       _area, _shape_idx, _disabled
     );
@@ -1983,7 +1984,7 @@ class _MethodBindings {
   }
   area_get_shape_count(_area) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_area_get_shape_count,
+      _PhysicsServer3D._bindings.method_area_get_shape_count,
       this._owner,
 			Variant.Type.INT,
       _area
@@ -1992,7 +1993,7 @@ class _MethodBindings {
   }
   area_get_shape(_area, _shape_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_area_get_shape,
+      _PhysicsServer3D._bindings.method_area_get_shape,
       this._owner,
 			Variant.Type.RID,
     
@@ -2002,7 +2003,7 @@ class _MethodBindings {
   }
   area_get_shape_transform(_area, _shape_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_area_get_shape_transform,
+      _PhysicsServer3D._bindings.method_area_get_shape_transform,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -2012,7 +2013,7 @@ class _MethodBindings {
   }
   area_remove_shape(_area, _shape_idx) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_area_remove_shape,
+      _PhysicsServer3D._bindings.method_area_remove_shape,
       this._owner,
       _area, _shape_idx
     );
@@ -2020,7 +2021,7 @@ class _MethodBindings {
   }
   area_clear_shapes(_area) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_area_clear_shapes,
+      _PhysicsServer3D._bindings.method_area_clear_shapes,
       this._owner,
       _area
     );
@@ -2028,7 +2029,7 @@ class _MethodBindings {
   }
   area_set_collision_layer(_area, _layer) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_area_set_collision_layer,
+      _PhysicsServer3D._bindings.method_area_set_collision_layer,
       this._owner,
       _area, _layer
     );
@@ -2036,7 +2037,7 @@ class _MethodBindings {
   }
   area_get_collision_layer(_area) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_area_get_collision_layer,
+      _PhysicsServer3D._bindings.method_area_get_collision_layer,
       this._owner,
 			Variant.Type.INT,
       _area
@@ -2045,7 +2046,7 @@ class _MethodBindings {
   }
   area_set_collision_mask(_area, _mask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_area_set_collision_mask,
+      _PhysicsServer3D._bindings.method_area_set_collision_mask,
       this._owner,
       _area, _mask
     );
@@ -2053,7 +2054,7 @@ class _MethodBindings {
   }
   area_get_collision_mask(_area) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_area_get_collision_mask,
+      _PhysicsServer3D._bindings.method_area_get_collision_mask,
       this._owner,
 			Variant.Type.INT,
       _area
@@ -2062,7 +2063,7 @@ class _MethodBindings {
   }
   area_set_param(_area, _param, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_area_set_param,
+      _PhysicsServer3D._bindings.method_area_set_param,
       this._owner,
       _area, _param, _value
     );
@@ -2070,7 +2071,7 @@ class _MethodBindings {
   }
   area_set_transform(_area, _transform) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_area_set_transform,
+      _PhysicsServer3D._bindings.method_area_set_transform,
       this._owner,
       _area, _transform
     );
@@ -2078,7 +2079,7 @@ class _MethodBindings {
   }
   area_get_param(_area, _param) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_area_get_param,
+      _PhysicsServer3D._bindings.method_area_get_param,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -2088,7 +2089,7 @@ class _MethodBindings {
   }
   area_get_transform(_area) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_area_get_transform,
+      _PhysicsServer3D._bindings.method_area_get_transform,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -2098,7 +2099,7 @@ class _MethodBindings {
   }
   area_attach_object_instance_id(_area, _id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_area_attach_object_instance_id,
+      _PhysicsServer3D._bindings.method_area_attach_object_instance_id,
       this._owner,
       _area, _id
     );
@@ -2106,7 +2107,7 @@ class _MethodBindings {
   }
   area_get_object_instance_id(_area) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_area_get_object_instance_id,
+      _PhysicsServer3D._bindings.method_area_get_object_instance_id,
       this._owner,
 			Variant.Type.INT,
       _area
@@ -2115,7 +2116,7 @@ class _MethodBindings {
   }
   area_set_monitor_callback(_area, _callback) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_area_set_monitor_callback,
+      _PhysicsServer3D._bindings.method_area_set_monitor_callback,
       this._owner,
       _area, _callback
     );
@@ -2123,7 +2124,7 @@ class _MethodBindings {
   }
   area_set_area_monitor_callback(_area, _callback) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_area_set_area_monitor_callback,
+      _PhysicsServer3D._bindings.method_area_set_area_monitor_callback,
       this._owner,
       _area, _callback
     );
@@ -2131,7 +2132,7 @@ class _MethodBindings {
   }
   area_set_monitorable(_area, _monitorable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_area_set_monitorable,
+      _PhysicsServer3D._bindings.method_area_set_monitorable,
       this._owner,
       _area, _monitorable
     );
@@ -2139,7 +2140,7 @@ class _MethodBindings {
   }
   area_set_ray_pickable(_area, _enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_area_set_ray_pickable,
+      _PhysicsServer3D._bindings.method_area_set_ray_pickable,
       this._owner,
       _area, _enable
     );
@@ -2147,7 +2148,7 @@ class _MethodBindings {
   }
   body_create() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_body_create,
+      _PhysicsServer3D._bindings.method_body_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -2157,7 +2158,7 @@ class _MethodBindings {
   }
   body_set_space(_body, _space) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_body_set_space,
+      _PhysicsServer3D._bindings.method_body_set_space,
       this._owner,
       _body, _space
     );
@@ -2165,7 +2166,7 @@ class _MethodBindings {
   }
   body_get_space(_body) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_body_get_space,
+      _PhysicsServer3D._bindings.method_body_get_space,
       this._owner,
 			Variant.Type.RID,
     
@@ -2175,7 +2176,7 @@ class _MethodBindings {
   }
   body_set_mode(_body, _mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_body_set_mode,
+      _PhysicsServer3D._bindings.method_body_set_mode,
       this._owner,
       _body, _mode
     );
@@ -2183,7 +2184,7 @@ class _MethodBindings {
   }
   body_get_mode(_body) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_body_get_mode,
+      _PhysicsServer3D._bindings.method_body_get_mode,
       this._owner,
 			Variant.INT,
       _body
@@ -2192,7 +2193,7 @@ class _MethodBindings {
   }
   body_set_collision_layer(_body, _layer) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_body_set_collision_layer,
+      _PhysicsServer3D._bindings.method_body_set_collision_layer,
       this._owner,
       _body, _layer
     );
@@ -2200,7 +2201,7 @@ class _MethodBindings {
   }
   body_get_collision_layer(_body) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_body_get_collision_layer,
+      _PhysicsServer3D._bindings.method_body_get_collision_layer,
       this._owner,
 			Variant.Type.INT,
       _body
@@ -2209,7 +2210,7 @@ class _MethodBindings {
   }
   body_set_collision_mask(_body, _mask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_body_set_collision_mask,
+      _PhysicsServer3D._bindings.method_body_set_collision_mask,
       this._owner,
       _body, _mask
     );
@@ -2217,7 +2218,7 @@ class _MethodBindings {
   }
   body_get_collision_mask(_body) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_body_get_collision_mask,
+      _PhysicsServer3D._bindings.method_body_get_collision_mask,
       this._owner,
 			Variant.Type.INT,
       _body
@@ -2226,7 +2227,7 @@ class _MethodBindings {
   }
   body_set_collision_priority(_body, _priority) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_body_set_collision_priority,
+      _PhysicsServer3D._bindings.method_body_set_collision_priority,
       this._owner,
       _body, _priority
     );
@@ -2234,7 +2235,7 @@ class _MethodBindings {
   }
   body_get_collision_priority(_body) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_body_get_collision_priority,
+      _PhysicsServer3D._bindings.method_body_get_collision_priority,
       this._owner,
 			Variant.Type.FLOAT,
       _body
@@ -2243,7 +2244,7 @@ class _MethodBindings {
   }
   body_add_shape(_body, _shape, _transform, _disabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_body_add_shape,
+      _PhysicsServer3D._bindings.method_body_add_shape,
       this._owner,
       _body, _shape, _transform, _disabled
     );
@@ -2251,7 +2252,7 @@ class _MethodBindings {
   }
   body_set_shape(_body, _shape_idx, _shape) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_body_set_shape,
+      _PhysicsServer3D._bindings.method_body_set_shape,
       this._owner,
       _body, _shape_idx, _shape
     );
@@ -2259,7 +2260,7 @@ class _MethodBindings {
   }
   body_set_shape_transform(_body, _shape_idx, _transform) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_body_set_shape_transform,
+      _PhysicsServer3D._bindings.method_body_set_shape_transform,
       this._owner,
       _body, _shape_idx, _transform
     );
@@ -2267,7 +2268,7 @@ class _MethodBindings {
   }
   body_set_shape_disabled(_body, _shape_idx, _disabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_body_set_shape_disabled,
+      _PhysicsServer3D._bindings.method_body_set_shape_disabled,
       this._owner,
       _body, _shape_idx, _disabled
     );
@@ -2275,7 +2276,7 @@ class _MethodBindings {
   }
   body_get_shape_count(_body) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_body_get_shape_count,
+      _PhysicsServer3D._bindings.method_body_get_shape_count,
       this._owner,
 			Variant.Type.INT,
       _body
@@ -2284,7 +2285,7 @@ class _MethodBindings {
   }
   body_get_shape(_body, _shape_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_body_get_shape,
+      _PhysicsServer3D._bindings.method_body_get_shape,
       this._owner,
 			Variant.Type.RID,
     
@@ -2294,7 +2295,7 @@ class _MethodBindings {
   }
   body_get_shape_transform(_body, _shape_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_body_get_shape_transform,
+      _PhysicsServer3D._bindings.method_body_get_shape_transform,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -2304,7 +2305,7 @@ class _MethodBindings {
   }
   body_remove_shape(_body, _shape_idx) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_body_remove_shape,
+      _PhysicsServer3D._bindings.method_body_remove_shape,
       this._owner,
       _body, _shape_idx
     );
@@ -2312,7 +2313,7 @@ class _MethodBindings {
   }
   body_clear_shapes(_body) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_body_clear_shapes,
+      _PhysicsServer3D._bindings.method_body_clear_shapes,
       this._owner,
       _body
     );
@@ -2320,7 +2321,7 @@ class _MethodBindings {
   }
   body_attach_object_instance_id(_body, _id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_body_attach_object_instance_id,
+      _PhysicsServer3D._bindings.method_body_attach_object_instance_id,
       this._owner,
       _body, _id
     );
@@ -2328,7 +2329,7 @@ class _MethodBindings {
   }
   body_get_object_instance_id(_body) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_body_get_object_instance_id,
+      _PhysicsServer3D._bindings.method_body_get_object_instance_id,
       this._owner,
 			Variant.Type.INT,
       _body
@@ -2337,7 +2338,7 @@ class _MethodBindings {
   }
   body_set_enable_continuous_collision_detection(_body, _enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_body_set_enable_continuous_collision_detection,
+      _PhysicsServer3D._bindings.method_body_set_enable_continuous_collision_detection,
       this._owner,
       _body, _enable
     );
@@ -2345,7 +2346,7 @@ class _MethodBindings {
   }
   body_is_continuous_collision_detection_enabled(_body) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_body_is_continuous_collision_detection_enabled,
+      _PhysicsServer3D._bindings.method_body_is_continuous_collision_detection_enabled,
       this._owner,
 			Variant.Type.BOOL,
       _body
@@ -2354,7 +2355,7 @@ class _MethodBindings {
   }
   body_set_param(_body, _param, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_body_set_param,
+      _PhysicsServer3D._bindings.method_body_set_param,
       this._owner,
       _body, _param, _value
     );
@@ -2362,7 +2363,7 @@ class _MethodBindings {
   }
   body_get_param(_body, _param) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_body_get_param,
+      _PhysicsServer3D._bindings.method_body_get_param,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -2372,7 +2373,7 @@ class _MethodBindings {
   }
   body_reset_mass_properties(_body) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_body_reset_mass_properties,
+      _PhysicsServer3D._bindings.method_body_reset_mass_properties,
       this._owner,
       _body
     );
@@ -2380,7 +2381,7 @@ class _MethodBindings {
   }
   body_set_state(_body, _state, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_body_set_state,
+      _PhysicsServer3D._bindings.method_body_set_state,
       this._owner,
       _body, _state, _value
     );
@@ -2388,7 +2389,7 @@ class _MethodBindings {
   }
   body_get_state(_body, _state) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_body_get_state,
+      _PhysicsServer3D._bindings.method_body_get_state,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -2398,7 +2399,7 @@ class _MethodBindings {
   }
   body_apply_central_impulse(_body, _impulse) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_body_apply_central_impulse,
+      _PhysicsServer3D._bindings.method_body_apply_central_impulse,
       this._owner,
       _body, _impulse
     );
@@ -2406,7 +2407,7 @@ class _MethodBindings {
   }
   body_apply_impulse(_body, _impulse, _position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_body_apply_impulse,
+      _PhysicsServer3D._bindings.method_body_apply_impulse,
       this._owner,
       _body, _impulse, _position
     );
@@ -2414,7 +2415,7 @@ class _MethodBindings {
   }
   body_apply_torque_impulse(_body, _impulse) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_body_apply_torque_impulse,
+      _PhysicsServer3D._bindings.method_body_apply_torque_impulse,
       this._owner,
       _body, _impulse
     );
@@ -2422,7 +2423,7 @@ class _MethodBindings {
   }
   body_apply_central_force(_body, _force) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_body_apply_central_force,
+      _PhysicsServer3D._bindings.method_body_apply_central_force,
       this._owner,
       _body, _force
     );
@@ -2430,7 +2431,7 @@ class _MethodBindings {
   }
   body_apply_force(_body, _force, _position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_body_apply_force,
+      _PhysicsServer3D._bindings.method_body_apply_force,
       this._owner,
       _body, _force, _position
     );
@@ -2438,7 +2439,7 @@ class _MethodBindings {
   }
   body_apply_torque(_body, _torque) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_body_apply_torque,
+      _PhysicsServer3D._bindings.method_body_apply_torque,
       this._owner,
       _body, _torque
     );
@@ -2446,7 +2447,7 @@ class _MethodBindings {
   }
   body_add_constant_central_force(_body, _force) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_body_add_constant_central_force,
+      _PhysicsServer3D._bindings.method_body_add_constant_central_force,
       this._owner,
       _body, _force
     );
@@ -2454,7 +2455,7 @@ class _MethodBindings {
   }
   body_add_constant_force(_body, _force, _position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_body_add_constant_force,
+      _PhysicsServer3D._bindings.method_body_add_constant_force,
       this._owner,
       _body, _force, _position
     );
@@ -2462,7 +2463,7 @@ class _MethodBindings {
   }
   body_add_constant_torque(_body, _torque) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_body_add_constant_torque,
+      _PhysicsServer3D._bindings.method_body_add_constant_torque,
       this._owner,
       _body, _torque
     );
@@ -2470,7 +2471,7 @@ class _MethodBindings {
   }
   body_set_constant_force(_body, _force) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_body_set_constant_force,
+      _PhysicsServer3D._bindings.method_body_set_constant_force,
       this._owner,
       _body, _force
     );
@@ -2478,7 +2479,7 @@ class _MethodBindings {
   }
   body_get_constant_force(_body) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_body_get_constant_force,
+      _PhysicsServer3D._bindings.method_body_get_constant_force,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -2488,7 +2489,7 @@ class _MethodBindings {
   }
   body_set_constant_torque(_body, _torque) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_body_set_constant_torque,
+      _PhysicsServer3D._bindings.method_body_set_constant_torque,
       this._owner,
       _body, _torque
     );
@@ -2496,7 +2497,7 @@ class _MethodBindings {
   }
   body_get_constant_torque(_body) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_body_get_constant_torque,
+      _PhysicsServer3D._bindings.method_body_get_constant_torque,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -2506,7 +2507,7 @@ class _MethodBindings {
   }
   body_set_axis_velocity(_body, _axis_velocity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_body_set_axis_velocity,
+      _PhysicsServer3D._bindings.method_body_set_axis_velocity,
       this._owner,
       _body, _axis_velocity
     );
@@ -2514,7 +2515,7 @@ class _MethodBindings {
   }
   body_set_axis_lock(_body, _axis, _lock) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_body_set_axis_lock,
+      _PhysicsServer3D._bindings.method_body_set_axis_lock,
       this._owner,
       _body, _axis, _lock
     );
@@ -2522,7 +2523,7 @@ class _MethodBindings {
   }
   body_is_axis_locked(_body, _axis) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_body_is_axis_locked,
+      _PhysicsServer3D._bindings.method_body_is_axis_locked,
       this._owner,
 			Variant.Type.BOOL,
       _body, _axis
@@ -2531,7 +2532,7 @@ class _MethodBindings {
   }
   body_add_collision_exception(_body, _excepted_body) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_body_add_collision_exception,
+      _PhysicsServer3D._bindings.method_body_add_collision_exception,
       this._owner,
       _body, _excepted_body
     );
@@ -2539,7 +2540,7 @@ class _MethodBindings {
   }
   body_remove_collision_exception(_body, _excepted_body) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_body_remove_collision_exception,
+      _PhysicsServer3D._bindings.method_body_remove_collision_exception,
       this._owner,
       _body, _excepted_body
     );
@@ -2547,7 +2548,7 @@ class _MethodBindings {
   }
   body_set_max_contacts_reported(_body, _amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_body_set_max_contacts_reported,
+      _PhysicsServer3D._bindings.method_body_set_max_contacts_reported,
       this._owner,
       _body, _amount
     );
@@ -2555,7 +2556,7 @@ class _MethodBindings {
   }
   body_get_max_contacts_reported(_body) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_body_get_max_contacts_reported,
+      _PhysicsServer3D._bindings.method_body_get_max_contacts_reported,
       this._owner,
 			Variant.Type.INT,
       _body
@@ -2564,7 +2565,7 @@ class _MethodBindings {
   }
   body_set_omit_force_integration(_body, _enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_body_set_omit_force_integration,
+      _PhysicsServer3D._bindings.method_body_set_omit_force_integration,
       this._owner,
       _body, _enable
     );
@@ -2572,7 +2573,7 @@ class _MethodBindings {
   }
   body_is_omitting_force_integration(_body) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_body_is_omitting_force_integration,
+      _PhysicsServer3D._bindings.method_body_is_omitting_force_integration,
       this._owner,
 			Variant.Type.BOOL,
       _body
@@ -2581,7 +2582,7 @@ class _MethodBindings {
   }
   body_set_state_sync_callback(_body, _callable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_body_set_state_sync_callback,
+      _PhysicsServer3D._bindings.method_body_set_state_sync_callback,
       this._owner,
       _body, _callable
     );
@@ -2589,7 +2590,7 @@ class _MethodBindings {
   }
   body_set_force_integration_callback(_body, _callable, _userdata) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_body_set_force_integration_callback,
+      _PhysicsServer3D._bindings.method_body_set_force_integration_callback,
       this._owner,
       _body, _callable, _userdata
     );
@@ -2597,7 +2598,7 @@ class _MethodBindings {
   }
   body_set_ray_pickable(_body, _enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_body_set_ray_pickable,
+      _PhysicsServer3D._bindings.method_body_set_ray_pickable,
       this._owner,
       _body, _enable
     );
@@ -2605,7 +2606,7 @@ class _MethodBindings {
   }
   body_test_motion(_body, _parameters, _result) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_body_test_motion,
+      _PhysicsServer3D._bindings.method_body_test_motion,
       this._owner,
 			Variant.Type.BOOL,
       _body, _parameters, _result
@@ -2614,7 +2615,7 @@ class _MethodBindings {
   }
   body_get_direct_state(_body) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_body_get_direct_state,
+      _PhysicsServer3D._bindings.method_body_get_direct_state,
       this._owner,
 			Variant.INT,
       _body
@@ -2623,7 +2624,7 @@ class _MethodBindings {
   }
   soft_body_create() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_soft_body_create,
+      _PhysicsServer3D._bindings.method_soft_body_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -2633,7 +2634,7 @@ class _MethodBindings {
   }
   soft_body_update_rendering_server(_body, _rendering_server_handler) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_soft_body_update_rendering_server,
+      _PhysicsServer3D._bindings.method_soft_body_update_rendering_server,
       this._owner,
       _body, _rendering_server_handler
     );
@@ -2641,7 +2642,7 @@ class _MethodBindings {
   }
   soft_body_set_space(_body, _space) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_soft_body_set_space,
+      _PhysicsServer3D._bindings.method_soft_body_set_space,
       this._owner,
       _body, _space
     );
@@ -2649,7 +2650,7 @@ class _MethodBindings {
   }
   soft_body_get_space(_body) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_soft_body_get_space,
+      _PhysicsServer3D._bindings.method_soft_body_get_space,
       this._owner,
 			Variant.Type.RID,
     
@@ -2659,7 +2660,7 @@ class _MethodBindings {
   }
   soft_body_set_mesh(_body, _mesh) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_soft_body_set_mesh,
+      _PhysicsServer3D._bindings.method_soft_body_set_mesh,
       this._owner,
       _body, _mesh
     );
@@ -2667,7 +2668,7 @@ class _MethodBindings {
   }
   soft_body_get_bounds(_body) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_soft_body_get_bounds,
+      _PhysicsServer3D._bindings.method_soft_body_get_bounds,
       this._owner,
 			Variant.Type.AABB,
     
@@ -2677,7 +2678,7 @@ class _MethodBindings {
   }
   soft_body_set_collision_layer(_body, _layer) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_soft_body_set_collision_layer,
+      _PhysicsServer3D._bindings.method_soft_body_set_collision_layer,
       this._owner,
       _body, _layer
     );
@@ -2685,7 +2686,7 @@ class _MethodBindings {
   }
   soft_body_get_collision_layer(_body) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_soft_body_get_collision_layer,
+      _PhysicsServer3D._bindings.method_soft_body_get_collision_layer,
       this._owner,
 			Variant.Type.INT,
       _body
@@ -2694,7 +2695,7 @@ class _MethodBindings {
   }
   soft_body_set_collision_mask(_body, _mask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_soft_body_set_collision_mask,
+      _PhysicsServer3D._bindings.method_soft_body_set_collision_mask,
       this._owner,
       _body, _mask
     );
@@ -2702,7 +2703,7 @@ class _MethodBindings {
   }
   soft_body_get_collision_mask(_body) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_soft_body_get_collision_mask,
+      _PhysicsServer3D._bindings.method_soft_body_get_collision_mask,
       this._owner,
 			Variant.Type.INT,
       _body
@@ -2711,7 +2712,7 @@ class _MethodBindings {
   }
   soft_body_add_collision_exception(_body, _body_b) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_soft_body_add_collision_exception,
+      _PhysicsServer3D._bindings.method_soft_body_add_collision_exception,
       this._owner,
       _body, _body_b
     );
@@ -2719,7 +2720,7 @@ class _MethodBindings {
   }
   soft_body_remove_collision_exception(_body, _body_b) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_soft_body_remove_collision_exception,
+      _PhysicsServer3D._bindings.method_soft_body_remove_collision_exception,
       this._owner,
       _body, _body_b
     );
@@ -2727,7 +2728,7 @@ class _MethodBindings {
   }
   soft_body_set_state(_body, _state, _variant) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_soft_body_set_state,
+      _PhysicsServer3D._bindings.method_soft_body_set_state,
       this._owner,
       _body, _state, _variant
     );
@@ -2735,7 +2736,7 @@ class _MethodBindings {
   }
   soft_body_get_state(_body, _state) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_soft_body_get_state,
+      _PhysicsServer3D._bindings.method_soft_body_get_state,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -2745,7 +2746,7 @@ class _MethodBindings {
   }
   soft_body_set_transform(_body, _transform) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_soft_body_set_transform,
+      _PhysicsServer3D._bindings.method_soft_body_set_transform,
       this._owner,
       _body, _transform
     );
@@ -2753,7 +2754,7 @@ class _MethodBindings {
   }
   soft_body_set_ray_pickable(_body, _enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_soft_body_set_ray_pickable,
+      _PhysicsServer3D._bindings.method_soft_body_set_ray_pickable,
       this._owner,
       _body, _enable
     );
@@ -2761,7 +2762,7 @@ class _MethodBindings {
   }
   soft_body_set_simulation_precision(_body, _simulation_precision) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_soft_body_set_simulation_precision,
+      _PhysicsServer3D._bindings.method_soft_body_set_simulation_precision,
       this._owner,
       _body, _simulation_precision
     );
@@ -2769,7 +2770,7 @@ class _MethodBindings {
   }
   soft_body_get_simulation_precision(_body) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_soft_body_get_simulation_precision,
+      _PhysicsServer3D._bindings.method_soft_body_get_simulation_precision,
       this._owner,
 			Variant.Type.INT,
       _body
@@ -2778,7 +2779,7 @@ class _MethodBindings {
   }
   soft_body_set_total_mass(_body, _total_mass) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_soft_body_set_total_mass,
+      _PhysicsServer3D._bindings.method_soft_body_set_total_mass,
       this._owner,
       _body, _total_mass
     );
@@ -2786,7 +2787,7 @@ class _MethodBindings {
   }
   soft_body_get_total_mass(_body) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_soft_body_get_total_mass,
+      _PhysicsServer3D._bindings.method_soft_body_get_total_mass,
       this._owner,
 			Variant.Type.FLOAT,
       _body
@@ -2795,7 +2796,7 @@ class _MethodBindings {
   }
   soft_body_set_linear_stiffness(_body, _stiffness) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_soft_body_set_linear_stiffness,
+      _PhysicsServer3D._bindings.method_soft_body_set_linear_stiffness,
       this._owner,
       _body, _stiffness
     );
@@ -2803,7 +2804,7 @@ class _MethodBindings {
   }
   soft_body_get_linear_stiffness(_body) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_soft_body_get_linear_stiffness,
+      _PhysicsServer3D._bindings.method_soft_body_get_linear_stiffness,
       this._owner,
 			Variant.Type.FLOAT,
       _body
@@ -2812,7 +2813,7 @@ class _MethodBindings {
   }
   soft_body_set_pressure_coefficient(_body, _pressure_coefficient) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_soft_body_set_pressure_coefficient,
+      _PhysicsServer3D._bindings.method_soft_body_set_pressure_coefficient,
       this._owner,
       _body, _pressure_coefficient
     );
@@ -2820,7 +2821,7 @@ class _MethodBindings {
   }
   soft_body_get_pressure_coefficient(_body) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_soft_body_get_pressure_coefficient,
+      _PhysicsServer3D._bindings.method_soft_body_get_pressure_coefficient,
       this._owner,
 			Variant.Type.FLOAT,
       _body
@@ -2829,7 +2830,7 @@ class _MethodBindings {
   }
   soft_body_set_damping_coefficient(_body, _damping_coefficient) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_soft_body_set_damping_coefficient,
+      _PhysicsServer3D._bindings.method_soft_body_set_damping_coefficient,
       this._owner,
       _body, _damping_coefficient
     );
@@ -2837,7 +2838,7 @@ class _MethodBindings {
   }
   soft_body_get_damping_coefficient(_body) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_soft_body_get_damping_coefficient,
+      _PhysicsServer3D._bindings.method_soft_body_get_damping_coefficient,
       this._owner,
 			Variant.Type.FLOAT,
       _body
@@ -2846,7 +2847,7 @@ class _MethodBindings {
   }
   soft_body_set_drag_coefficient(_body, _drag_coefficient) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_soft_body_set_drag_coefficient,
+      _PhysicsServer3D._bindings.method_soft_body_set_drag_coefficient,
       this._owner,
       _body, _drag_coefficient
     );
@@ -2854,7 +2855,7 @@ class _MethodBindings {
   }
   soft_body_get_drag_coefficient(_body) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_soft_body_get_drag_coefficient,
+      _PhysicsServer3D._bindings.method_soft_body_get_drag_coefficient,
       this._owner,
 			Variant.Type.FLOAT,
       _body
@@ -2863,7 +2864,7 @@ class _MethodBindings {
   }
   soft_body_move_point(_body, _point_index, _global_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_soft_body_move_point,
+      _PhysicsServer3D._bindings.method_soft_body_move_point,
       this._owner,
       _body, _point_index, _global_position
     );
@@ -2871,7 +2872,7 @@ class _MethodBindings {
   }
   soft_body_get_point_global_position(_body, _point_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_soft_body_get_point_global_position,
+      _PhysicsServer3D._bindings.method_soft_body_get_point_global_position,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -2881,7 +2882,7 @@ class _MethodBindings {
   }
   soft_body_remove_all_pinned_points(_body) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_soft_body_remove_all_pinned_points,
+      _PhysicsServer3D._bindings.method_soft_body_remove_all_pinned_points,
       this._owner,
       _body
     );
@@ -2889,7 +2890,7 @@ class _MethodBindings {
   }
   soft_body_pin_point(_body, _point_index, _pin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_soft_body_pin_point,
+      _PhysicsServer3D._bindings.method_soft_body_pin_point,
       this._owner,
       _body, _point_index, _pin
     );
@@ -2897,7 +2898,7 @@ class _MethodBindings {
   }
   soft_body_is_point_pinned(_body, _point_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_soft_body_is_point_pinned,
+      _PhysicsServer3D._bindings.method_soft_body_is_point_pinned,
       this._owner,
 			Variant.Type.BOOL,
       _body, _point_index
@@ -2906,7 +2907,7 @@ class _MethodBindings {
   }
   joint_create() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_joint_create,
+      _PhysicsServer3D._bindings.method_joint_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -2916,7 +2917,7 @@ class _MethodBindings {
   }
   joint_clear(_joint) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_joint_clear,
+      _PhysicsServer3D._bindings.method_joint_clear,
       this._owner,
       _joint
     );
@@ -2924,7 +2925,7 @@ class _MethodBindings {
   }
   joint_make_pin(_joint, _body_A, _local_A, _body_B, _local_B) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_joint_make_pin,
+      _PhysicsServer3D._bindings.method_joint_make_pin,
       this._owner,
       _joint, _body_A, _local_A, _body_B, _local_B
     );
@@ -2932,7 +2933,7 @@ class _MethodBindings {
   }
   pin_joint_set_param(_joint, _param, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_pin_joint_set_param,
+      _PhysicsServer3D._bindings.method_pin_joint_set_param,
       this._owner,
       _joint, _param, _value
     );
@@ -2940,7 +2941,7 @@ class _MethodBindings {
   }
   pin_joint_get_param(_joint, _param) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_pin_joint_get_param,
+      _PhysicsServer3D._bindings.method_pin_joint_get_param,
       this._owner,
 			Variant.Type.FLOAT,
       _joint, _param
@@ -2949,7 +2950,7 @@ class _MethodBindings {
   }
   pin_joint_set_local_a(_joint, _local_A) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_pin_joint_set_local_a,
+      _PhysicsServer3D._bindings.method_pin_joint_set_local_a,
       this._owner,
       _joint, _local_A
     );
@@ -2957,7 +2958,7 @@ class _MethodBindings {
   }
   pin_joint_get_local_a(_joint) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_pin_joint_get_local_a,
+      _PhysicsServer3D._bindings.method_pin_joint_get_local_a,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -2967,7 +2968,7 @@ class _MethodBindings {
   }
   pin_joint_set_local_b(_joint, _local_B) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_pin_joint_set_local_b,
+      _PhysicsServer3D._bindings.method_pin_joint_set_local_b,
       this._owner,
       _joint, _local_B
     );
@@ -2975,7 +2976,7 @@ class _MethodBindings {
   }
   pin_joint_get_local_b(_joint) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_pin_joint_get_local_b,
+      _PhysicsServer3D._bindings.method_pin_joint_get_local_b,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -2985,7 +2986,7 @@ class _MethodBindings {
   }
   joint_make_hinge(_joint, _body_A, _hinge_A, _body_B, _hinge_B) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_joint_make_hinge,
+      _PhysicsServer3D._bindings.method_joint_make_hinge,
       this._owner,
       _joint, _body_A, _hinge_A, _body_B, _hinge_B
     );
@@ -2993,7 +2994,7 @@ class _MethodBindings {
   }
   hinge_joint_set_param(_joint, _param, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_hinge_joint_set_param,
+      _PhysicsServer3D._bindings.method_hinge_joint_set_param,
       this._owner,
       _joint, _param, _value
     );
@@ -3001,7 +3002,7 @@ class _MethodBindings {
   }
   hinge_joint_get_param(_joint, _param) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_hinge_joint_get_param,
+      _PhysicsServer3D._bindings.method_hinge_joint_get_param,
       this._owner,
 			Variant.Type.FLOAT,
       _joint, _param
@@ -3010,7 +3011,7 @@ class _MethodBindings {
   }
   hinge_joint_set_flag(_joint, _flag, _enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_hinge_joint_set_flag,
+      _PhysicsServer3D._bindings.method_hinge_joint_set_flag,
       this._owner,
       _joint, _flag, _enabled
     );
@@ -3018,7 +3019,7 @@ class _MethodBindings {
   }
   hinge_joint_get_flag(_joint, _flag) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_hinge_joint_get_flag,
+      _PhysicsServer3D._bindings.method_hinge_joint_get_flag,
       this._owner,
 			Variant.Type.BOOL,
       _joint, _flag
@@ -3027,7 +3028,7 @@ class _MethodBindings {
   }
   joint_make_slider(_joint, _body_A, _local_ref_A, _body_B, _local_ref_B) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_joint_make_slider,
+      _PhysicsServer3D._bindings.method_joint_make_slider,
       this._owner,
       _joint, _body_A, _local_ref_A, _body_B, _local_ref_B
     );
@@ -3035,7 +3036,7 @@ class _MethodBindings {
   }
   slider_joint_set_param(_joint, _param, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_slider_joint_set_param,
+      _PhysicsServer3D._bindings.method_slider_joint_set_param,
       this._owner,
       _joint, _param, _value
     );
@@ -3043,7 +3044,7 @@ class _MethodBindings {
   }
   slider_joint_get_param(_joint, _param) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_slider_joint_get_param,
+      _PhysicsServer3D._bindings.method_slider_joint_get_param,
       this._owner,
 			Variant.Type.FLOAT,
       _joint, _param
@@ -3052,7 +3053,7 @@ class _MethodBindings {
   }
   joint_make_cone_twist(_joint, _body_A, _local_ref_A, _body_B, _local_ref_B) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_joint_make_cone_twist,
+      _PhysicsServer3D._bindings.method_joint_make_cone_twist,
       this._owner,
       _joint, _body_A, _local_ref_A, _body_B, _local_ref_B
     );
@@ -3060,7 +3061,7 @@ class _MethodBindings {
   }
   cone_twist_joint_set_param(_joint, _param, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_cone_twist_joint_set_param,
+      _PhysicsServer3D._bindings.method_cone_twist_joint_set_param,
       this._owner,
       _joint, _param, _value
     );
@@ -3068,7 +3069,7 @@ class _MethodBindings {
   }
   cone_twist_joint_get_param(_joint, _param) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_cone_twist_joint_get_param,
+      _PhysicsServer3D._bindings.method_cone_twist_joint_get_param,
       this._owner,
 			Variant.Type.FLOAT,
       _joint, _param
@@ -3077,7 +3078,7 @@ class _MethodBindings {
   }
   joint_get_type(_joint) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_joint_get_type,
+      _PhysicsServer3D._bindings.method_joint_get_type,
       this._owner,
 			Variant.INT,
       _joint
@@ -3086,7 +3087,7 @@ class _MethodBindings {
   }
   joint_set_solver_priority(_joint, _priority) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_joint_set_solver_priority,
+      _PhysicsServer3D._bindings.method_joint_set_solver_priority,
       this._owner,
       _joint, _priority
     );
@@ -3094,7 +3095,7 @@ class _MethodBindings {
   }
   joint_get_solver_priority(_joint) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_joint_get_solver_priority,
+      _PhysicsServer3D._bindings.method_joint_get_solver_priority,
       this._owner,
 			Variant.Type.INT,
       _joint
@@ -3103,7 +3104,7 @@ class _MethodBindings {
   }
   joint_disable_collisions_between_bodies(_joint, _disable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_joint_disable_collisions_between_bodies,
+      _PhysicsServer3D._bindings.method_joint_disable_collisions_between_bodies,
       this._owner,
       _joint, _disable
     );
@@ -3111,7 +3112,7 @@ class _MethodBindings {
   }
   joint_is_disabled_collisions_between_bodies(_joint) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_joint_is_disabled_collisions_between_bodies,
+      _PhysicsServer3D._bindings.method_joint_is_disabled_collisions_between_bodies,
       this._owner,
 			Variant.Type.BOOL,
       _joint
@@ -3120,7 +3121,7 @@ class _MethodBindings {
   }
   joint_make_generic_6dof(_joint, _body_A, _local_ref_A, _body_B, _local_ref_B) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_joint_make_generic_6dof,
+      _PhysicsServer3D._bindings.method_joint_make_generic_6dof,
       this._owner,
       _joint, _body_A, _local_ref_A, _body_B, _local_ref_B
     );
@@ -3128,7 +3129,7 @@ class _MethodBindings {
   }
   generic_6dof_joint_set_param(_joint, _axis, _param, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_generic_6dof_joint_set_param,
+      _PhysicsServer3D._bindings.method_generic_6dof_joint_set_param,
       this._owner,
       _joint, _axis, _param, _value
     );
@@ -3136,7 +3137,7 @@ class _MethodBindings {
   }
   generic_6dof_joint_get_param(_joint, _axis, _param) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_generic_6dof_joint_get_param,
+      _PhysicsServer3D._bindings.method_generic_6dof_joint_get_param,
       this._owner,
 			Variant.Type.FLOAT,
       _joint, _axis, _param
@@ -3145,7 +3146,7 @@ class _MethodBindings {
   }
   generic_6dof_joint_set_flag(_joint, _axis, _flag, _enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_generic_6dof_joint_set_flag,
+      _PhysicsServer3D._bindings.method_generic_6dof_joint_set_flag,
       this._owner,
       _joint, _axis, _flag, _enable
     );
@@ -3153,7 +3154,7 @@ class _MethodBindings {
   }
   generic_6dof_joint_get_flag(_joint, _axis, _flag) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_generic_6dof_joint_get_flag,
+      _PhysicsServer3D._bindings.method_generic_6dof_joint_get_flag,
       this._owner,
 			Variant.Type.BOOL,
       _joint, _axis, _flag
@@ -3162,7 +3163,7 @@ class _MethodBindings {
   }
   free_rid(_rid) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_free_rid,
+      _PhysicsServer3D._bindings.method_free_rid,
       this._owner,
       _rid
     );
@@ -3170,7 +3171,7 @@ class _MethodBindings {
   }
   set_active(_active) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_active,
+      _PhysicsServer3D._bindings.method_set_active,
       this._owner,
       _active
     );
@@ -3178,7 +3179,7 @@ class _MethodBindings {
   }
   get_process_info(_process_info) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_process_info,
+      _PhysicsServer3D._bindings.method_get_process_info,
       this._owner,
 			Variant.Type.INT,
       _process_info
@@ -3378,4 +3379,17 @@ class _MethodBindings {
     this._init_bindings();
   }
 }
-export const PhysicsServer3D = new _PhysicsServer3D();
+export const PhysicsServer3D = (function () {
+  let _instance;
+  function create_instance() {
+    return new _PhysicsServer3D();
+  }
+  return {
+    instance: function () {
+      if (!_instance) {
+        _instance = create_instance();
+      }
+      return _instance;
+    },
+  };
+})();

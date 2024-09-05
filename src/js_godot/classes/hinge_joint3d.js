@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { Joint3D } from '@js_godot/classes/joint3d'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -70,9 +70,10 @@ export class HingeJoint3D extends Joint3D{
       );
     }
   }
+  
   set_param(_param, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_param,
+      HingeJoint3D._bindings.method_set_param,
       this._owner,
       _param, _value
     );
@@ -80,7 +81,7 @@ export class HingeJoint3D extends Joint3D{
   }
   get_param(_param) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_param,
+      HingeJoint3D._bindings.method_get_param,
       this._owner,
 			Variant.Type.FLOAT,
       _param
@@ -89,7 +90,7 @@ export class HingeJoint3D extends Joint3D{
   }
   set_flag(_flag, _enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_flag,
+      HingeJoint3D._bindings.method_set_flag,
       this._owner,
       _flag, _enabled
     );
@@ -97,7 +98,7 @@ export class HingeJoint3D extends Joint3D{
   }
   get_flag(_flag) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_flag,
+      HingeJoint3D._bindings.method_get_flag,
       this._owner,
 			Variant.Type.BOOL,
       _flag

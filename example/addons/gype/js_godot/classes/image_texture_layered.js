@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { TextureLayered } from '@js_godot/classes/texture_layered'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -50,9 +50,10 @@ export class ImageTextureLayered extends TextureLayered{
       );
     }
   }
+  
   create_from_images(_images) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_from_images,
+      ImageTextureLayered._bindings.method_create_from_images,
       this._owner,
 			Variant.INT,
       _images
@@ -61,7 +62,7 @@ export class ImageTextureLayered extends TextureLayered{
   }
   update_layer(_image, _layer) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_update_layer,
+      ImageTextureLayered._bindings.method_update_layer,
       this._owner,
       _image, _layer
     );

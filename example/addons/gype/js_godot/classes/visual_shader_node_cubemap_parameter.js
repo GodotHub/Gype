@@ -31,6 +31,7 @@ export class VisualShaderNodeCubemapParameter extends VisualShaderNodeTexturePar
     this.#initialized = true;
   }
   
+  
 
 
   static {

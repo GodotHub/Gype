@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
-import { GDString } from '@js_godot/variant/gd_string'
 import { Window } from '@js_godot/classes/window'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -191,9 +191,10 @@ export class AcceptDialog extends Window{
       );
     }
   }
+  
   get_ok_button() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ok_button,
+      AcceptDialog._bindings.method_get_ok_button,
       this._owner,
 			Variant.INT,
       
@@ -202,7 +203,7 @@ export class AcceptDialog extends Window{
   }
   get_label() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_label,
+      AcceptDialog._bindings.method_get_label,
       this._owner,
 			Variant.INT,
       
@@ -211,7 +212,7 @@ export class AcceptDialog extends Window{
   }
   set_hide_on_ok(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_hide_on_ok,
+      AcceptDialog._bindings.method_set_hide_on_ok,
       this._owner,
       _enabled
     );
@@ -219,7 +220,7 @@ export class AcceptDialog extends Window{
   }
   get_hide_on_ok() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_hide_on_ok,
+      AcceptDialog._bindings.method_get_hide_on_ok,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -228,7 +229,7 @@ export class AcceptDialog extends Window{
   }
   set_close_on_escape(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_close_on_escape,
+      AcceptDialog._bindings.method_set_close_on_escape,
       this._owner,
       _enabled
     );
@@ -236,7 +237,7 @@ export class AcceptDialog extends Window{
   }
   get_close_on_escape() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_close_on_escape,
+      AcceptDialog._bindings.method_get_close_on_escape,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -245,7 +246,7 @@ export class AcceptDialog extends Window{
   }
   add_button(_text, _right, _action) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_add_button,
+      AcceptDialog._bindings.method_add_button,
       this._owner,
 			Variant.INT,
       _text, _right, _action
@@ -254,7 +255,7 @@ export class AcceptDialog extends Window{
   }
   add_cancel_button(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_add_cancel_button,
+      AcceptDialog._bindings.method_add_cancel_button,
       this._owner,
 			Variant.INT,
       _name
@@ -263,7 +264,7 @@ export class AcceptDialog extends Window{
   }
   remove_button(_button) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_button,
+      AcceptDialog._bindings.method_remove_button,
       this._owner,
       _button
     );
@@ -271,7 +272,7 @@ export class AcceptDialog extends Window{
   }
   register_text_enter(_line_edit) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_register_text_enter,
+      AcceptDialog._bindings.method_register_text_enter,
       this._owner,
       _line_edit
     );
@@ -279,7 +280,7 @@ export class AcceptDialog extends Window{
   }
   set_text(_text) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_text,
+      AcceptDialog._bindings.method_set_text,
       this._owner,
       _text
     );
@@ -287,7 +288,7 @@ export class AcceptDialog extends Window{
   }
   get_text() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_text,
+      AcceptDialog._bindings.method_get_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -297,7 +298,7 @@ export class AcceptDialog extends Window{
   }
   set_autowrap(_autowrap) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_autowrap,
+      AcceptDialog._bindings.method_set_autowrap,
       this._owner,
       _autowrap
     );
@@ -305,7 +306,7 @@ export class AcceptDialog extends Window{
   }
   has_autowrap() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_autowrap,
+      AcceptDialog._bindings.method_has_autowrap,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -314,7 +315,7 @@ export class AcceptDialog extends Window{
   }
   set_ok_button_text(_text) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ok_button_text,
+      AcceptDialog._bindings.method_set_ok_button_text,
       this._owner,
       _text
     );
@@ -322,7 +323,7 @@ export class AcceptDialog extends Window{
   }
   get_ok_button_text() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ok_button_text,
+      AcceptDialog._bindings.method_get_ok_button_text,
       this._owner,
 			Variant.Type.STRING,
     

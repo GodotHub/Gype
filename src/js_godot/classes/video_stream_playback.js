@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
+import { PackedFloat32Array } from '@js_godot/variant/packed_float32_array'
 import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
-import { PackedFloat32Array } from '@js_godot/variant/packed_float32_array'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -41,6 +41,7 @@ export class VideoStreamPlayback extends Resource{
       );
     }
   }
+  
   _stop() {
   }
   _play() {
@@ -69,7 +70,7 @@ export class VideoStreamPlayback extends Resource{
   }
   mix_audio(_num_frames, _buffer, _offset) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_mix_audio,
+      VideoStreamPlayback._bindings.method_mix_audio,
       this._owner,
 			Variant.Type.INT,
       _num_frames, _buffer, _offset

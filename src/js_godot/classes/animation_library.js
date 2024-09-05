@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -90,9 +90,10 @@ export class AnimationLibrary extends Resource{
       );
     }
   }
+  
   add_animation(_name, _animation) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_add_animation,
+      AnimationLibrary._bindings.method_add_animation,
       this._owner,
 			Variant.INT,
       _name, _animation
@@ -101,7 +102,7 @@ export class AnimationLibrary extends Resource{
   }
   remove_animation(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_animation,
+      AnimationLibrary._bindings.method_remove_animation,
       this._owner,
       _name
     );
@@ -109,7 +110,7 @@ export class AnimationLibrary extends Resource{
   }
   rename_animation(_name, _newname) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_rename_animation,
+      AnimationLibrary._bindings.method_rename_animation,
       this._owner,
       _name, _newname
     );
@@ -117,7 +118,7 @@ export class AnimationLibrary extends Resource{
   }
   has_animation(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_animation,
+      AnimationLibrary._bindings.method_has_animation,
       this._owner,
 			Variant.Type.BOOL,
       _name
@@ -126,7 +127,7 @@ export class AnimationLibrary extends Resource{
   }
   get_animation(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_animation,
+      AnimationLibrary._bindings.method_get_animation,
       this._owner,
 			Variant.INT,
       _name
@@ -135,7 +136,7 @@ export class AnimationLibrary extends Resource{
   }
   get_animation_list() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_animation_list,
+      AnimationLibrary._bindings.method_get_animation_list,
       this._owner,
 			Variant.INT,
       

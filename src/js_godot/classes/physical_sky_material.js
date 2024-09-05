@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { Material } from '@js_godot/classes/material'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Color } from '@js_godot/variant/color'
+import { Material } from '@js_godot/classes/material'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -251,9 +251,10 @@ export class PhysicalSkyMaterial extends Material{
       );
     }
   }
+  
   set_rayleigh_coefficient(_rayleigh) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_rayleigh_coefficient,
+      PhysicalSkyMaterial._bindings.method_set_rayleigh_coefficient,
       this._owner,
       _rayleigh
     );
@@ -261,7 +262,7 @@ export class PhysicalSkyMaterial extends Material{
   }
   get_rayleigh_coefficient() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rayleigh_coefficient,
+      PhysicalSkyMaterial._bindings.method_get_rayleigh_coefficient,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -270,7 +271,7 @@ export class PhysicalSkyMaterial extends Material{
   }
   set_rayleigh_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_rayleigh_color,
+      PhysicalSkyMaterial._bindings.method_set_rayleigh_color,
       this._owner,
       _color
     );
@@ -278,7 +279,7 @@ export class PhysicalSkyMaterial extends Material{
   }
   get_rayleigh_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rayleigh_color,
+      PhysicalSkyMaterial._bindings.method_get_rayleigh_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -288,7 +289,7 @@ export class PhysicalSkyMaterial extends Material{
   }
   set_mie_coefficient(_mie) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mie_coefficient,
+      PhysicalSkyMaterial._bindings.method_set_mie_coefficient,
       this._owner,
       _mie
     );
@@ -296,7 +297,7 @@ export class PhysicalSkyMaterial extends Material{
   }
   get_mie_coefficient() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mie_coefficient,
+      PhysicalSkyMaterial._bindings.method_get_mie_coefficient,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -305,7 +306,7 @@ export class PhysicalSkyMaterial extends Material{
   }
   set_mie_eccentricity(_eccentricity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mie_eccentricity,
+      PhysicalSkyMaterial._bindings.method_set_mie_eccentricity,
       this._owner,
       _eccentricity
     );
@@ -313,7 +314,7 @@ export class PhysicalSkyMaterial extends Material{
   }
   get_mie_eccentricity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mie_eccentricity,
+      PhysicalSkyMaterial._bindings.method_get_mie_eccentricity,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -322,7 +323,7 @@ export class PhysicalSkyMaterial extends Material{
   }
   set_mie_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mie_color,
+      PhysicalSkyMaterial._bindings.method_set_mie_color,
       this._owner,
       _color
     );
@@ -330,7 +331,7 @@ export class PhysicalSkyMaterial extends Material{
   }
   get_mie_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mie_color,
+      PhysicalSkyMaterial._bindings.method_get_mie_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -340,7 +341,7 @@ export class PhysicalSkyMaterial extends Material{
   }
   set_turbidity(_turbidity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_turbidity,
+      PhysicalSkyMaterial._bindings.method_set_turbidity,
       this._owner,
       _turbidity
     );
@@ -348,7 +349,7 @@ export class PhysicalSkyMaterial extends Material{
   }
   get_turbidity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_turbidity,
+      PhysicalSkyMaterial._bindings.method_get_turbidity,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -357,7 +358,7 @@ export class PhysicalSkyMaterial extends Material{
   }
   set_sun_disk_scale(_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sun_disk_scale,
+      PhysicalSkyMaterial._bindings.method_set_sun_disk_scale,
       this._owner,
       _scale
     );
@@ -365,7 +366,7 @@ export class PhysicalSkyMaterial extends Material{
   }
   get_sun_disk_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sun_disk_scale,
+      PhysicalSkyMaterial._bindings.method_get_sun_disk_scale,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -374,7 +375,7 @@ export class PhysicalSkyMaterial extends Material{
   }
   set_ground_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ground_color,
+      PhysicalSkyMaterial._bindings.method_set_ground_color,
       this._owner,
       _color
     );
@@ -382,7 +383,7 @@ export class PhysicalSkyMaterial extends Material{
   }
   get_ground_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ground_color,
+      PhysicalSkyMaterial._bindings.method_get_ground_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -392,7 +393,7 @@ export class PhysicalSkyMaterial extends Material{
   }
   set_energy_multiplier(_multiplier) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_energy_multiplier,
+      PhysicalSkyMaterial._bindings.method_set_energy_multiplier,
       this._owner,
       _multiplier
     );
@@ -400,7 +401,7 @@ export class PhysicalSkyMaterial extends Material{
   }
   get_energy_multiplier() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_energy_multiplier,
+      PhysicalSkyMaterial._bindings.method_get_energy_multiplier,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -409,7 +410,7 @@ export class PhysicalSkyMaterial extends Material{
   }
   set_use_debanding(_use_debanding) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_debanding,
+      PhysicalSkyMaterial._bindings.method_set_use_debanding,
       this._owner,
       _use_debanding
     );
@@ -417,7 +418,7 @@ export class PhysicalSkyMaterial extends Material{
   }
   get_use_debanding() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_use_debanding,
+      PhysicalSkyMaterial._bindings.method_get_use_debanding,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -426,7 +427,7 @@ export class PhysicalSkyMaterial extends Material{
   }
   set_night_sky(_night_sky) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_night_sky,
+      PhysicalSkyMaterial._bindings.method_set_night_sky,
       this._owner,
       _night_sky
     );
@@ -434,7 +435,7 @@ export class PhysicalSkyMaterial extends Material{
   }
   get_night_sky() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_night_sky,
+      PhysicalSkyMaterial._bindings.method_get_night_sky,
       this._owner,
 			Variant.INT,
       

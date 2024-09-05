@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
-import { GodotObject } from '@js_godot/classes/godot_object'
 import { RID } from '@js_godot/variant/rid'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { GodotObject } from '@js_godot/classes/godot_object'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -41,9 +41,10 @@ export class FramebufferCacheRD extends GodotObject{
       );
     }
   }
+  
   get_cache_multipass(_textures, _passes, _views) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cache_multipass,
+      FramebufferCacheRD._bindings.method_get_cache_multipass,
       this._owner,
 			Variant.Type.RID,
     

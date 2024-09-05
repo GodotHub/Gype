@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { AudioEffect } from '@js_godot/classes/audio_effect'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -90,9 +90,10 @@ export class AudioEffectStereoEnhance extends AudioEffect{
       );
     }
   }
+  
   set_pan_pullout(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_pan_pullout,
+      AudioEffectStereoEnhance._bindings.method_set_pan_pullout,
       this._owner,
       _amount
     );
@@ -100,7 +101,7 @@ export class AudioEffectStereoEnhance extends AudioEffect{
   }
   get_pan_pullout() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_pan_pullout,
+      AudioEffectStereoEnhance._bindings.method_get_pan_pullout,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -109,7 +110,7 @@ export class AudioEffectStereoEnhance extends AudioEffect{
   }
   set_time_pullout(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_time_pullout,
+      AudioEffectStereoEnhance._bindings.method_set_time_pullout,
       this._owner,
       _amount
     );
@@ -117,7 +118,7 @@ export class AudioEffectStereoEnhance extends AudioEffect{
   }
   get_time_pullout() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_time_pullout,
+      AudioEffectStereoEnhance._bindings.method_get_time_pullout,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -126,7 +127,7 @@ export class AudioEffectStereoEnhance extends AudioEffect{
   }
   set_surround(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_surround,
+      AudioEffectStereoEnhance._bindings.method_set_surround,
       this._owner,
       _amount
     );
@@ -134,7 +135,7 @@ export class AudioEffectStereoEnhance extends AudioEffect{
   }
   get_surround() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_surround,
+      AudioEffectStereoEnhance._bindings.method_get_surround,
       this._owner,
 			Variant.Type.FLOAT,
       

@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { Color } from '@js_godot/variant/color'
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { VisualInstance3D } from '@js_godot/classes/visual_instance3d'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -321,9 +321,10 @@ export class Light3D extends VisualInstance3D{
       );
     }
   }
+  
   set_editor_only(_editor_only) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_editor_only,
+      Light3D._bindings.method_set_editor_only,
       this._owner,
       _editor_only
     );
@@ -331,7 +332,7 @@ export class Light3D extends VisualInstance3D{
   }
   is_editor_only() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_editor_only,
+      Light3D._bindings.method_is_editor_only,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -340,7 +341,7 @@ export class Light3D extends VisualInstance3D{
   }
   set_param(_param, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_param,
+      Light3D._bindings.method_set_param,
       this._owner,
       _param, _value
     );
@@ -348,7 +349,7 @@ export class Light3D extends VisualInstance3D{
   }
   get_param(_param) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_param,
+      Light3D._bindings.method_get_param,
       this._owner,
 			Variant.Type.FLOAT,
       _param
@@ -357,7 +358,7 @@ export class Light3D extends VisualInstance3D{
   }
   set_shadow(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shadow,
+      Light3D._bindings.method_set_shadow,
       this._owner,
       _enabled
     );
@@ -365,7 +366,7 @@ export class Light3D extends VisualInstance3D{
   }
   has_shadow() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_shadow,
+      Light3D._bindings.method_has_shadow,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -374,7 +375,7 @@ export class Light3D extends VisualInstance3D{
   }
   set_negative(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_negative,
+      Light3D._bindings.method_set_negative,
       this._owner,
       _enabled
     );
@@ -382,7 +383,7 @@ export class Light3D extends VisualInstance3D{
   }
   is_negative() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_negative,
+      Light3D._bindings.method_is_negative,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -391,7 +392,7 @@ export class Light3D extends VisualInstance3D{
   }
   set_cull_mask(_cull_mask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cull_mask,
+      Light3D._bindings.method_set_cull_mask,
       this._owner,
       _cull_mask
     );
@@ -399,7 +400,7 @@ export class Light3D extends VisualInstance3D{
   }
   get_cull_mask() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cull_mask,
+      Light3D._bindings.method_get_cull_mask,
       this._owner,
 			Variant.Type.INT,
       
@@ -408,7 +409,7 @@ export class Light3D extends VisualInstance3D{
   }
   set_enable_distance_fade(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_enable_distance_fade,
+      Light3D._bindings.method_set_enable_distance_fade,
       this._owner,
       _enable
     );
@@ -416,7 +417,7 @@ export class Light3D extends VisualInstance3D{
   }
   is_distance_fade_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_distance_fade_enabled,
+      Light3D._bindings.method_is_distance_fade_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -425,7 +426,7 @@ export class Light3D extends VisualInstance3D{
   }
   set_distance_fade_begin(_distance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_distance_fade_begin,
+      Light3D._bindings.method_set_distance_fade_begin,
       this._owner,
       _distance
     );
@@ -433,7 +434,7 @@ export class Light3D extends VisualInstance3D{
   }
   get_distance_fade_begin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_distance_fade_begin,
+      Light3D._bindings.method_get_distance_fade_begin,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -442,7 +443,7 @@ export class Light3D extends VisualInstance3D{
   }
   set_distance_fade_shadow(_distance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_distance_fade_shadow,
+      Light3D._bindings.method_set_distance_fade_shadow,
       this._owner,
       _distance
     );
@@ -450,7 +451,7 @@ export class Light3D extends VisualInstance3D{
   }
   get_distance_fade_shadow() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_distance_fade_shadow,
+      Light3D._bindings.method_get_distance_fade_shadow,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -459,7 +460,7 @@ export class Light3D extends VisualInstance3D{
   }
   set_distance_fade_length(_distance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_distance_fade_length,
+      Light3D._bindings.method_set_distance_fade_length,
       this._owner,
       _distance
     );
@@ -467,7 +468,7 @@ export class Light3D extends VisualInstance3D{
   }
   get_distance_fade_length() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_distance_fade_length,
+      Light3D._bindings.method_get_distance_fade_length,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -476,7 +477,7 @@ export class Light3D extends VisualInstance3D{
   }
   set_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_color,
+      Light3D._bindings.method_set_color,
       this._owner,
       _color
     );
@@ -484,7 +485,7 @@ export class Light3D extends VisualInstance3D{
   }
   get_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_color,
+      Light3D._bindings.method_get_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -494,7 +495,7 @@ export class Light3D extends VisualInstance3D{
   }
   set_shadow_reverse_cull_face(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shadow_reverse_cull_face,
+      Light3D._bindings.method_set_shadow_reverse_cull_face,
       this._owner,
       _enable
     );
@@ -502,7 +503,7 @@ export class Light3D extends VisualInstance3D{
   }
   get_shadow_reverse_cull_face() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_shadow_reverse_cull_face,
+      Light3D._bindings.method_get_shadow_reverse_cull_face,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -511,7 +512,7 @@ export class Light3D extends VisualInstance3D{
   }
   set_bake_mode(_bake_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bake_mode,
+      Light3D._bindings.method_set_bake_mode,
       this._owner,
       _bake_mode
     );
@@ -519,7 +520,7 @@ export class Light3D extends VisualInstance3D{
   }
   get_bake_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bake_mode,
+      Light3D._bindings.method_get_bake_mode,
       this._owner,
 			Variant.INT,
       
@@ -528,7 +529,7 @@ export class Light3D extends VisualInstance3D{
   }
   set_projector(_projector) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_projector,
+      Light3D._bindings.method_set_projector,
       this._owner,
       _projector
     );
@@ -536,7 +537,7 @@ export class Light3D extends VisualInstance3D{
   }
   get_projector() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_projector,
+      Light3D._bindings.method_get_projector,
       this._owner,
 			Variant.INT,
       
@@ -545,7 +546,7 @@ export class Light3D extends VisualInstance3D{
   }
   set_temperature(_temperature) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_temperature,
+      Light3D._bindings.method_set_temperature,
       this._owner,
       _temperature
     );
@@ -553,7 +554,7 @@ export class Light3D extends VisualInstance3D{
   }
   get_temperature() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_temperature,
+      Light3D._bindings.method_get_temperature,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -562,7 +563,7 @@ export class Light3D extends VisualInstance3D{
   }
   get_correlated_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_correlated_color,
+      Light3D._bindings.method_get_correlated_color,
       this._owner,
 			Variant.Type.COLOR,
     

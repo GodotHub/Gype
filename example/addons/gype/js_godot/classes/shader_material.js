@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { StringName } from '@js_godot/variant/string_name'
 import { Material } from '@js_godot/classes/material'
 import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -70,9 +70,10 @@ export class ShaderMaterial extends Material{
       );
     }
   }
+  
   set_shader(_shader) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shader,
+      ShaderMaterial._bindings.method_set_shader,
       this._owner,
       _shader
     );
@@ -80,7 +81,7 @@ export class ShaderMaterial extends Material{
   }
   get_shader() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_shader,
+      ShaderMaterial._bindings.method_get_shader,
       this._owner,
 			Variant.INT,
       
@@ -89,7 +90,7 @@ export class ShaderMaterial extends Material{
   }
   set_shader_parameter(_param, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shader_parameter,
+      ShaderMaterial._bindings.method_set_shader_parameter,
       this._owner,
       _param, _value
     );
@@ -97,7 +98,7 @@ export class ShaderMaterial extends Material{
   }
   get_shader_parameter(_param) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_shader_parameter,
+      ShaderMaterial._bindings.method_get_shader_parameter,
       this._owner,
 			Variant.Type.VARIANT,
     

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { VisualShaderNodeVectorBase } from '@js_godot/classes/visual_shader_node_vector_base'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -30,6 +30,7 @@ export class VisualShaderNodeVectorRefract extends VisualShaderNodeVectorBase{
     }
     this.#initialized = true;
   }
+  
   
 
 

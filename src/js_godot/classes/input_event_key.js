@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
-import { GDString } from '@js_godot/variant/gd_string'
 import { InputEventWithModifiers } from '@js_godot/classes/input_event_with_modifiers'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -221,9 +221,10 @@ export class InputEventKey extends InputEventWithModifiers{
       );
     }
   }
+  
   set_pressed(_pressed) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_pressed,
+      InputEventKey._bindings.method_set_pressed,
       this._owner,
       _pressed
     );
@@ -231,7 +232,7 @@ export class InputEventKey extends InputEventWithModifiers{
   }
   set_keycode(_keycode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_keycode,
+      InputEventKey._bindings.method_set_keycode,
       this._owner,
       _keycode
     );
@@ -239,7 +240,7 @@ export class InputEventKey extends InputEventWithModifiers{
   }
   get_keycode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_keycode,
+      InputEventKey._bindings.method_get_keycode,
       this._owner,
 			Variant.INT,
       
@@ -248,7 +249,7 @@ export class InputEventKey extends InputEventWithModifiers{
   }
   set_physical_keycode(_physical_keycode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_physical_keycode,
+      InputEventKey._bindings.method_set_physical_keycode,
       this._owner,
       _physical_keycode
     );
@@ -256,7 +257,7 @@ export class InputEventKey extends InputEventWithModifiers{
   }
   get_physical_keycode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_physical_keycode,
+      InputEventKey._bindings.method_get_physical_keycode,
       this._owner,
 			Variant.INT,
       
@@ -265,7 +266,7 @@ export class InputEventKey extends InputEventWithModifiers{
   }
   set_key_label(_key_label) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_key_label,
+      InputEventKey._bindings.method_set_key_label,
       this._owner,
       _key_label
     );
@@ -273,7 +274,7 @@ export class InputEventKey extends InputEventWithModifiers{
   }
   get_key_label() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_key_label,
+      InputEventKey._bindings.method_get_key_label,
       this._owner,
 			Variant.INT,
       
@@ -282,7 +283,7 @@ export class InputEventKey extends InputEventWithModifiers{
   }
   set_unicode(_unicode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_unicode,
+      InputEventKey._bindings.method_set_unicode,
       this._owner,
       _unicode
     );
@@ -290,7 +291,7 @@ export class InputEventKey extends InputEventWithModifiers{
   }
   get_unicode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_unicode,
+      InputEventKey._bindings.method_get_unicode,
       this._owner,
 			Variant.Type.INT,
       
@@ -299,7 +300,7 @@ export class InputEventKey extends InputEventWithModifiers{
   }
   set_location(_location) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_location,
+      InputEventKey._bindings.method_set_location,
       this._owner,
       _location
     );
@@ -307,7 +308,7 @@ export class InputEventKey extends InputEventWithModifiers{
   }
   get_location() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_location,
+      InputEventKey._bindings.method_get_location,
       this._owner,
 			Variant.INT,
       
@@ -316,7 +317,7 @@ export class InputEventKey extends InputEventWithModifiers{
   }
   set_echo(_echo) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_echo,
+      InputEventKey._bindings.method_set_echo,
       this._owner,
       _echo
     );
@@ -324,7 +325,7 @@ export class InputEventKey extends InputEventWithModifiers{
   }
   get_keycode_with_modifiers() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_keycode_with_modifiers,
+      InputEventKey._bindings.method_get_keycode_with_modifiers,
       this._owner,
 			Variant.INT,
       
@@ -333,7 +334,7 @@ export class InputEventKey extends InputEventWithModifiers{
   }
   get_physical_keycode_with_modifiers() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_physical_keycode_with_modifiers,
+      InputEventKey._bindings.method_get_physical_keycode_with_modifiers,
       this._owner,
 			Variant.INT,
       
@@ -342,7 +343,7 @@ export class InputEventKey extends InputEventWithModifiers{
   }
   get_key_label_with_modifiers() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_key_label_with_modifiers,
+      InputEventKey._bindings.method_get_key_label_with_modifiers,
       this._owner,
 			Variant.INT,
       
@@ -351,7 +352,7 @@ export class InputEventKey extends InputEventWithModifiers{
   }
   as_text_keycode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_as_text_keycode,
+      InputEventKey._bindings.method_as_text_keycode,
       this._owner,
 			Variant.Type.STRING,
     
@@ -361,7 +362,7 @@ export class InputEventKey extends InputEventWithModifiers{
   }
   as_text_physical_keycode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_as_text_physical_keycode,
+      InputEventKey._bindings.method_as_text_physical_keycode,
       this._owner,
 			Variant.Type.STRING,
     
@@ -371,7 +372,7 @@ export class InputEventKey extends InputEventWithModifiers{
   }
   as_text_key_label() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_as_text_key_label,
+      InputEventKey._bindings.method_as_text_key_label,
       this._owner,
 			Variant.Type.STRING,
     
@@ -381,7 +382,7 @@ export class InputEventKey extends InputEventWithModifiers{
   }
   as_text_location() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_as_text_location,
+      InputEventKey._bindings.method_as_text_location,
       this._owner,
 			Variant.Type.STRING,
     

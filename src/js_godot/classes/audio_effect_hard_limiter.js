@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { AudioEffect } from '@js_godot/classes/audio_effect'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -90,9 +90,10 @@ export class AudioEffectHardLimiter extends AudioEffect{
       );
     }
   }
+  
   set_ceiling_db(_ceiling) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ceiling_db,
+      AudioEffectHardLimiter._bindings.method_set_ceiling_db,
       this._owner,
       _ceiling
     );
@@ -100,7 +101,7 @@ export class AudioEffectHardLimiter extends AudioEffect{
   }
   get_ceiling_db() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ceiling_db,
+      AudioEffectHardLimiter._bindings.method_get_ceiling_db,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -109,7 +110,7 @@ export class AudioEffectHardLimiter extends AudioEffect{
   }
   set_pre_gain_db(_p_pre_gain) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_pre_gain_db,
+      AudioEffectHardLimiter._bindings.method_set_pre_gain_db,
       this._owner,
       _p_pre_gain
     );
@@ -117,7 +118,7 @@ export class AudioEffectHardLimiter extends AudioEffect{
   }
   get_pre_gain_db() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_pre_gain_db,
+      AudioEffectHardLimiter._bindings.method_get_pre_gain_db,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -126,7 +127,7 @@ export class AudioEffectHardLimiter extends AudioEffect{
   }
   set_release(_p_release) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_release,
+      AudioEffectHardLimiter._bindings.method_set_release,
       this._owner,
       _p_release
     );
@@ -134,7 +135,7 @@ export class AudioEffectHardLimiter extends AudioEffect{
   }
   get_release() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_release,
+      AudioEffectHardLimiter._bindings.method_get_release,
       this._owner,
 			Variant.Type.FLOAT,
       

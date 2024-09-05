@@ -70,9 +70,10 @@ export class MultiMeshInstance2D extends Node2D{
       );
     }
   }
+  
   set_multimesh(_multimesh) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_multimesh,
+      MultiMeshInstance2D._bindings.method_set_multimesh,
       this._owner,
       _multimesh
     );
@@ -80,7 +81,7 @@ export class MultiMeshInstance2D extends Node2D{
   }
   get_multimesh() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_multimesh,
+      MultiMeshInstance2D._bindings.method_get_multimesh,
       this._owner,
 			Variant.INT,
       
@@ -89,7 +90,7 @@ export class MultiMeshInstance2D extends Node2D{
   }
   set_texture(_texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture,
+      MultiMeshInstance2D._bindings.method_set_texture,
       this._owner,
       _texture
     );
@@ -97,7 +98,7 @@ export class MultiMeshInstance2D extends Node2D{
   }
   get_texture() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture,
+      MultiMeshInstance2D._bindings.method_get_texture,
       this._owner,
 			Variant.INT,
       

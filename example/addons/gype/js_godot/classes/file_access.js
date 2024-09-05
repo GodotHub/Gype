@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
-import { RefCounted } from '@js_godot/classes/ref_counted'
 import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { RefCounted } from '@js_godot/classes/ref_counted'
+import { Variant } from '@js_godot/variant/variant'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -603,9 +603,10 @@ export class FileAccess extends RefCounted{
       );
     }
   }
+  
   open(_path, _flags) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_open,
+      FileAccess._bindings.method_open,
       this._owner,
 			Variant.INT,
       _path, _flags
@@ -614,7 +615,7 @@ export class FileAccess extends RefCounted{
   }
   open_encrypted(_path, _mode_flags, _key) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_open_encrypted,
+      FileAccess._bindings.method_open_encrypted,
       this._owner,
 			Variant.INT,
       _path, _mode_flags, _key
@@ -623,7 +624,7 @@ export class FileAccess extends RefCounted{
   }
   open_encrypted_with_pass(_path, _mode_flags, _pass) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_open_encrypted_with_pass,
+      FileAccess._bindings.method_open_encrypted_with_pass,
       this._owner,
 			Variant.INT,
       _path, _mode_flags, _pass
@@ -632,7 +633,7 @@ export class FileAccess extends RefCounted{
   }
   open_compressed(_path, _mode_flags, _compression_mode) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_open_compressed,
+      FileAccess._bindings.method_open_compressed,
       this._owner,
 			Variant.INT,
       _path, _mode_flags, _compression_mode
@@ -641,7 +642,7 @@ export class FileAccess extends RefCounted{
   }
   get_open_error() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_open_error,
+      FileAccess._bindings.method_get_open_error,
       this._owner,
 			Variant.INT,
       
@@ -650,7 +651,7 @@ export class FileAccess extends RefCounted{
   }
   get_file_as_bytes(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_file_as_bytes,
+      FileAccess._bindings.method_get_file_as_bytes,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -660,7 +661,7 @@ export class FileAccess extends RefCounted{
   }
   get_file_as_string(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_file_as_string,
+      FileAccess._bindings.method_get_file_as_string,
       this._owner,
 			Variant.Type.STRING,
     
@@ -670,7 +671,7 @@ export class FileAccess extends RefCounted{
   }
   resize(_length) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_resize,
+      FileAccess._bindings.method_resize,
       this._owner,
 			Variant.INT,
       _length
@@ -679,7 +680,7 @@ export class FileAccess extends RefCounted{
   }
   flush() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_flush,
+      FileAccess._bindings.method_flush,
       this._owner,
       
     );
@@ -687,7 +688,7 @@ export class FileAccess extends RefCounted{
   }
   get_path() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_path,
+      FileAccess._bindings.method_get_path,
       this._owner,
 			Variant.Type.STRING,
     
@@ -697,7 +698,7 @@ export class FileAccess extends RefCounted{
   }
   get_path_absolute() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_path_absolute,
+      FileAccess._bindings.method_get_path_absolute,
       this._owner,
 			Variant.Type.STRING,
     
@@ -707,7 +708,7 @@ export class FileAccess extends RefCounted{
   }
   is_open() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_open,
+      FileAccess._bindings.method_is_open,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -716,7 +717,7 @@ export class FileAccess extends RefCounted{
   }
   seek(_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_seek,
+      FileAccess._bindings.method_seek,
       this._owner,
       _position
     );
@@ -724,7 +725,7 @@ export class FileAccess extends RefCounted{
   }
   seek_end(_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_seek_end,
+      FileAccess._bindings.method_seek_end,
       this._owner,
       _position
     );
@@ -732,7 +733,7 @@ export class FileAccess extends RefCounted{
   }
   get_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_position,
+      FileAccess._bindings.method_get_position,
       this._owner,
 			Variant.Type.INT,
       
@@ -741,7 +742,7 @@ export class FileAccess extends RefCounted{
   }
   get_length() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_length,
+      FileAccess._bindings.method_get_length,
       this._owner,
 			Variant.Type.INT,
       
@@ -750,7 +751,7 @@ export class FileAccess extends RefCounted{
   }
   eof_reached() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_eof_reached,
+      FileAccess._bindings.method_eof_reached,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -759,7 +760,7 @@ export class FileAccess extends RefCounted{
   }
   get_8() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_8,
+      FileAccess._bindings.method_get_8,
       this._owner,
 			Variant.Type.INT,
       
@@ -768,7 +769,7 @@ export class FileAccess extends RefCounted{
   }
   get_16() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_16,
+      FileAccess._bindings.method_get_16,
       this._owner,
 			Variant.Type.INT,
       
@@ -777,7 +778,7 @@ export class FileAccess extends RefCounted{
   }
   get_32() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_32,
+      FileAccess._bindings.method_get_32,
       this._owner,
 			Variant.Type.INT,
       
@@ -786,7 +787,7 @@ export class FileAccess extends RefCounted{
   }
   get_64() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_64,
+      FileAccess._bindings.method_get_64,
       this._owner,
 			Variant.Type.INT,
       
@@ -795,7 +796,7 @@ export class FileAccess extends RefCounted{
   }
   get_float() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_float,
+      FileAccess._bindings.method_get_float,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -804,7 +805,7 @@ export class FileAccess extends RefCounted{
   }
   get_double() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_double,
+      FileAccess._bindings.method_get_double,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -813,7 +814,7 @@ export class FileAccess extends RefCounted{
   }
   get_real() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_real,
+      FileAccess._bindings.method_get_real,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -822,7 +823,7 @@ export class FileAccess extends RefCounted{
   }
   get_buffer(_length) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_buffer,
+      FileAccess._bindings.method_get_buffer,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -832,7 +833,7 @@ export class FileAccess extends RefCounted{
   }
   get_line() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line,
+      FileAccess._bindings.method_get_line,
       this._owner,
 			Variant.Type.STRING,
     
@@ -842,7 +843,7 @@ export class FileAccess extends RefCounted{
   }
   get_csv_line(_delim) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_csv_line,
+      FileAccess._bindings.method_get_csv_line,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -852,7 +853,7 @@ export class FileAccess extends RefCounted{
   }
   get_as_text(_skip_cr) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_as_text,
+      FileAccess._bindings.method_get_as_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -862,7 +863,7 @@ export class FileAccess extends RefCounted{
   }
   get_md5(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_md5,
+      FileAccess._bindings.method_get_md5,
       this._owner,
 			Variant.Type.STRING,
     
@@ -872,7 +873,7 @@ export class FileAccess extends RefCounted{
   }
   get_sha256(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sha256,
+      FileAccess._bindings.method_get_sha256,
       this._owner,
 			Variant.Type.STRING,
     
@@ -882,7 +883,7 @@ export class FileAccess extends RefCounted{
   }
   is_big_endian() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_big_endian,
+      FileAccess._bindings.method_is_big_endian,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -891,7 +892,7 @@ export class FileAccess extends RefCounted{
   }
   set_big_endian(_big_endian) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_big_endian,
+      FileAccess._bindings.method_set_big_endian,
       this._owner,
       _big_endian
     );
@@ -899,7 +900,7 @@ export class FileAccess extends RefCounted{
   }
   get_error() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_error,
+      FileAccess._bindings.method_get_error,
       this._owner,
 			Variant.INT,
       
@@ -908,7 +909,7 @@ export class FileAccess extends RefCounted{
   }
   get_var(_allow_objects) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_var,
+      FileAccess._bindings.method_get_var,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -918,7 +919,7 @@ export class FileAccess extends RefCounted{
   }
   store_8(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_store_8,
+      FileAccess._bindings.method_store_8,
       this._owner,
       _value
     );
@@ -926,7 +927,7 @@ export class FileAccess extends RefCounted{
   }
   store_16(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_store_16,
+      FileAccess._bindings.method_store_16,
       this._owner,
       _value
     );
@@ -934,7 +935,7 @@ export class FileAccess extends RefCounted{
   }
   store_32(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_store_32,
+      FileAccess._bindings.method_store_32,
       this._owner,
       _value
     );
@@ -942,7 +943,7 @@ export class FileAccess extends RefCounted{
   }
   store_64(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_store_64,
+      FileAccess._bindings.method_store_64,
       this._owner,
       _value
     );
@@ -950,7 +951,7 @@ export class FileAccess extends RefCounted{
   }
   store_float(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_store_float,
+      FileAccess._bindings.method_store_float,
       this._owner,
       _value
     );
@@ -958,7 +959,7 @@ export class FileAccess extends RefCounted{
   }
   store_double(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_store_double,
+      FileAccess._bindings.method_store_double,
       this._owner,
       _value
     );
@@ -966,7 +967,7 @@ export class FileAccess extends RefCounted{
   }
   store_real(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_store_real,
+      FileAccess._bindings.method_store_real,
       this._owner,
       _value
     );
@@ -974,7 +975,7 @@ export class FileAccess extends RefCounted{
   }
   store_buffer(_buffer) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_store_buffer,
+      FileAccess._bindings.method_store_buffer,
       this._owner,
       _buffer
     );
@@ -982,7 +983,7 @@ export class FileAccess extends RefCounted{
   }
   store_line(_line) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_store_line,
+      FileAccess._bindings.method_store_line,
       this._owner,
       _line
     );
@@ -990,7 +991,7 @@ export class FileAccess extends RefCounted{
   }
   store_csv_line(_values, _delim) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_store_csv_line,
+      FileAccess._bindings.method_store_csv_line,
       this._owner,
       _values, _delim
     );
@@ -998,7 +999,7 @@ export class FileAccess extends RefCounted{
   }
   store_string(_string) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_store_string,
+      FileAccess._bindings.method_store_string,
       this._owner,
       _string
     );
@@ -1006,7 +1007,7 @@ export class FileAccess extends RefCounted{
   }
   store_var(_value, _full_objects) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_store_var,
+      FileAccess._bindings.method_store_var,
       this._owner,
       _value, _full_objects
     );
@@ -1014,7 +1015,7 @@ export class FileAccess extends RefCounted{
   }
   store_pascal_string(_string) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_store_pascal_string,
+      FileAccess._bindings.method_store_pascal_string,
       this._owner,
       _string
     );
@@ -1022,7 +1023,7 @@ export class FileAccess extends RefCounted{
   }
   get_pascal_string() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_pascal_string,
+      FileAccess._bindings.method_get_pascal_string,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1032,7 +1033,7 @@ export class FileAccess extends RefCounted{
   }
   close() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_close,
+      FileAccess._bindings.method_close,
       this._owner,
       
     );
@@ -1040,7 +1041,7 @@ export class FileAccess extends RefCounted{
   }
   file_exists(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_file_exists,
+      FileAccess._bindings.method_file_exists,
       this._owner,
 			Variant.Type.BOOL,
       _path
@@ -1049,7 +1050,7 @@ export class FileAccess extends RefCounted{
   }
   get_modified_time(_file) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_modified_time,
+      FileAccess._bindings.method_get_modified_time,
       this._owner,
 			Variant.Type.INT,
       _file
@@ -1058,7 +1059,7 @@ export class FileAccess extends RefCounted{
   }
   get_unix_permissions(_file) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_unix_permissions,
+      FileAccess._bindings.method_get_unix_permissions,
       this._owner,
 			Variant.INT,
       _file
@@ -1067,7 +1068,7 @@ export class FileAccess extends RefCounted{
   }
   set_unix_permissions(_file, _permissions) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_set_unix_permissions,
+      FileAccess._bindings.method_set_unix_permissions,
       this._owner,
 			Variant.INT,
       _file, _permissions
@@ -1076,7 +1077,7 @@ export class FileAccess extends RefCounted{
   }
   get_hidden_attribute(_file) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_hidden_attribute,
+      FileAccess._bindings.method_get_hidden_attribute,
       this._owner,
 			Variant.Type.BOOL,
       _file
@@ -1085,7 +1086,7 @@ export class FileAccess extends RefCounted{
   }
   set_hidden_attribute(_file, _hidden) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_set_hidden_attribute,
+      FileAccess._bindings.method_set_hidden_attribute,
       this._owner,
 			Variant.INT,
       _file, _hidden
@@ -1094,7 +1095,7 @@ export class FileAccess extends RefCounted{
   }
   set_read_only_attribute(_file, _ro) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_set_read_only_attribute,
+      FileAccess._bindings.method_set_read_only_attribute,
       this._owner,
 			Variant.INT,
       _file, _ro
@@ -1103,7 +1104,7 @@ export class FileAccess extends RefCounted{
   }
   get_read_only_attribute(_file) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_read_only_attribute,
+      FileAccess._bindings.method_get_read_only_attribute,
       this._owner,
 			Variant.Type.BOOL,
       _file

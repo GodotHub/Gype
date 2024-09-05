@@ -1,11 +1,11 @@
 import * as internal from '__internal__';
+import { GDArray } from '@js_godot/variant/gd_array'
+import { Color } from '@js_godot/variant/color'
 import { Variant } from '@js_godot/variant/variant'
+import { GeometryInstance3D } from '@js_godot/classes/geometry_instance3d'
+import { Vector2 } from '@js_godot/variant/vector2'
 import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
-import { Color } from '@js_godot/variant/color'
-import { Vector2 } from '@js_godot/variant/vector2'
-import { GeometryInstance3D } from '@js_godot/classes/geometry_instance3d'
-import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -624,9 +624,10 @@ export class Label3D extends GeometryInstance3D{
       );
     }
   }
+  
   set_horizontal_alignment(_alignment) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_horizontal_alignment,
+      Label3D._bindings.method_set_horizontal_alignment,
       this._owner,
       _alignment
     );
@@ -634,7 +635,7 @@ export class Label3D extends GeometryInstance3D{
   }
   get_horizontal_alignment() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_horizontal_alignment,
+      Label3D._bindings.method_get_horizontal_alignment,
       this._owner,
 			Variant.INT,
       
@@ -643,7 +644,7 @@ export class Label3D extends GeometryInstance3D{
   }
   set_vertical_alignment(_alignment) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vertical_alignment,
+      Label3D._bindings.method_set_vertical_alignment,
       this._owner,
       _alignment
     );
@@ -651,7 +652,7 @@ export class Label3D extends GeometryInstance3D{
   }
   get_vertical_alignment() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vertical_alignment,
+      Label3D._bindings.method_get_vertical_alignment,
       this._owner,
 			Variant.INT,
       
@@ -660,7 +661,7 @@ export class Label3D extends GeometryInstance3D{
   }
   set_modulate(_modulate) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_modulate,
+      Label3D._bindings.method_set_modulate,
       this._owner,
       _modulate
     );
@@ -668,7 +669,7 @@ export class Label3D extends GeometryInstance3D{
   }
   get_modulate() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_modulate,
+      Label3D._bindings.method_get_modulate,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -678,7 +679,7 @@ export class Label3D extends GeometryInstance3D{
   }
   set_outline_modulate(_modulate) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_outline_modulate,
+      Label3D._bindings.method_set_outline_modulate,
       this._owner,
       _modulate
     );
@@ -686,7 +687,7 @@ export class Label3D extends GeometryInstance3D{
   }
   get_outline_modulate() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_outline_modulate,
+      Label3D._bindings.method_get_outline_modulate,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -696,7 +697,7 @@ export class Label3D extends GeometryInstance3D{
   }
   set_text(_text) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_text,
+      Label3D._bindings.method_set_text,
       this._owner,
       _text
     );
@@ -704,7 +705,7 @@ export class Label3D extends GeometryInstance3D{
   }
   get_text() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_text,
+      Label3D._bindings.method_get_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -714,7 +715,7 @@ export class Label3D extends GeometryInstance3D{
   }
   set_text_direction(_direction) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_text_direction,
+      Label3D._bindings.method_set_text_direction,
       this._owner,
       _direction
     );
@@ -722,7 +723,7 @@ export class Label3D extends GeometryInstance3D{
   }
   get_text_direction() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_text_direction,
+      Label3D._bindings.method_get_text_direction,
       this._owner,
 			Variant.INT,
       
@@ -731,7 +732,7 @@ export class Label3D extends GeometryInstance3D{
   }
   set_language(_language) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_language,
+      Label3D._bindings.method_set_language,
       this._owner,
       _language
     );
@@ -739,7 +740,7 @@ export class Label3D extends GeometryInstance3D{
   }
   get_language() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_language,
+      Label3D._bindings.method_get_language,
       this._owner,
 			Variant.Type.STRING,
     
@@ -749,7 +750,7 @@ export class Label3D extends GeometryInstance3D{
   }
   set_structured_text_bidi_override(_parser) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_structured_text_bidi_override,
+      Label3D._bindings.method_set_structured_text_bidi_override,
       this._owner,
       _parser
     );
@@ -757,7 +758,7 @@ export class Label3D extends GeometryInstance3D{
   }
   get_structured_text_bidi_override() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_structured_text_bidi_override,
+      Label3D._bindings.method_get_structured_text_bidi_override,
       this._owner,
 			Variant.INT,
       
@@ -766,7 +767,7 @@ export class Label3D extends GeometryInstance3D{
   }
   set_structured_text_bidi_override_options(_args) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_structured_text_bidi_override_options,
+      Label3D._bindings.method_set_structured_text_bidi_override_options,
       this._owner,
       _args
     );
@@ -774,7 +775,7 @@ export class Label3D extends GeometryInstance3D{
   }
   get_structured_text_bidi_override_options() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_structured_text_bidi_override_options,
+      Label3D._bindings.method_get_structured_text_bidi_override_options,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -784,7 +785,7 @@ export class Label3D extends GeometryInstance3D{
   }
   set_uppercase(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_uppercase,
+      Label3D._bindings.method_set_uppercase,
       this._owner,
       _enable
     );
@@ -792,7 +793,7 @@ export class Label3D extends GeometryInstance3D{
   }
   is_uppercase() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_uppercase,
+      Label3D._bindings.method_is_uppercase,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -801,7 +802,7 @@ export class Label3D extends GeometryInstance3D{
   }
   set_render_priority(_priority) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_render_priority,
+      Label3D._bindings.method_set_render_priority,
       this._owner,
       _priority
     );
@@ -809,7 +810,7 @@ export class Label3D extends GeometryInstance3D{
   }
   get_render_priority() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_render_priority,
+      Label3D._bindings.method_get_render_priority,
       this._owner,
 			Variant.Type.INT,
       
@@ -818,7 +819,7 @@ export class Label3D extends GeometryInstance3D{
   }
   set_outline_render_priority(_priority) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_outline_render_priority,
+      Label3D._bindings.method_set_outline_render_priority,
       this._owner,
       _priority
     );
@@ -826,7 +827,7 @@ export class Label3D extends GeometryInstance3D{
   }
   get_outline_render_priority() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_outline_render_priority,
+      Label3D._bindings.method_get_outline_render_priority,
       this._owner,
 			Variant.Type.INT,
       
@@ -835,7 +836,7 @@ export class Label3D extends GeometryInstance3D{
   }
   set_font(_font) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_font,
+      Label3D._bindings.method_set_font,
       this._owner,
       _font
     );
@@ -843,7 +844,7 @@ export class Label3D extends GeometryInstance3D{
   }
   get_font() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_font,
+      Label3D._bindings.method_get_font,
       this._owner,
 			Variant.INT,
       
@@ -852,7 +853,7 @@ export class Label3D extends GeometryInstance3D{
   }
   set_font_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_font_size,
+      Label3D._bindings.method_set_font_size,
       this._owner,
       _size
     );
@@ -860,7 +861,7 @@ export class Label3D extends GeometryInstance3D{
   }
   get_font_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_font_size,
+      Label3D._bindings.method_get_font_size,
       this._owner,
 			Variant.Type.INT,
       
@@ -869,7 +870,7 @@ export class Label3D extends GeometryInstance3D{
   }
   set_outline_size(_outline_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_outline_size,
+      Label3D._bindings.method_set_outline_size,
       this._owner,
       _outline_size
     );
@@ -877,7 +878,7 @@ export class Label3D extends GeometryInstance3D{
   }
   get_outline_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_outline_size,
+      Label3D._bindings.method_get_outline_size,
       this._owner,
 			Variant.Type.INT,
       
@@ -886,7 +887,7 @@ export class Label3D extends GeometryInstance3D{
   }
   set_line_spacing(_line_spacing) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_line_spacing,
+      Label3D._bindings.method_set_line_spacing,
       this._owner,
       _line_spacing
     );
@@ -894,7 +895,7 @@ export class Label3D extends GeometryInstance3D{
   }
   get_line_spacing() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_spacing,
+      Label3D._bindings.method_get_line_spacing,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -903,7 +904,7 @@ export class Label3D extends GeometryInstance3D{
   }
   set_autowrap_mode(_autowrap_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_autowrap_mode,
+      Label3D._bindings.method_set_autowrap_mode,
       this._owner,
       _autowrap_mode
     );
@@ -911,7 +912,7 @@ export class Label3D extends GeometryInstance3D{
   }
   get_autowrap_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_autowrap_mode,
+      Label3D._bindings.method_get_autowrap_mode,
       this._owner,
 			Variant.INT,
       
@@ -920,7 +921,7 @@ export class Label3D extends GeometryInstance3D{
   }
   set_justification_flags(_justification_flags) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_justification_flags,
+      Label3D._bindings.method_set_justification_flags,
       this._owner,
       _justification_flags
     );
@@ -928,7 +929,7 @@ export class Label3D extends GeometryInstance3D{
   }
   get_justification_flags() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_justification_flags,
+      Label3D._bindings.method_get_justification_flags,
       this._owner,
 			Variant.INT,
       
@@ -937,7 +938,7 @@ export class Label3D extends GeometryInstance3D{
   }
   set_width(_width) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_width,
+      Label3D._bindings.method_set_width,
       this._owner,
       _width
     );
@@ -945,7 +946,7 @@ export class Label3D extends GeometryInstance3D{
   }
   get_width() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_width,
+      Label3D._bindings.method_get_width,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -954,7 +955,7 @@ export class Label3D extends GeometryInstance3D{
   }
   set_pixel_size(_pixel_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_pixel_size,
+      Label3D._bindings.method_set_pixel_size,
       this._owner,
       _pixel_size
     );
@@ -962,7 +963,7 @@ export class Label3D extends GeometryInstance3D{
   }
   get_pixel_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_pixel_size,
+      Label3D._bindings.method_get_pixel_size,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -971,7 +972,7 @@ export class Label3D extends GeometryInstance3D{
   }
   set_offset(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_offset,
+      Label3D._bindings.method_set_offset,
       this._owner,
       _offset
     );
@@ -979,7 +980,7 @@ export class Label3D extends GeometryInstance3D{
   }
   get_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_offset,
+      Label3D._bindings.method_get_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -989,7 +990,7 @@ export class Label3D extends GeometryInstance3D{
   }
   set_draw_flag(_flag, _enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_draw_flag,
+      Label3D._bindings.method_set_draw_flag,
       this._owner,
       _flag, _enabled
     );
@@ -997,7 +998,7 @@ export class Label3D extends GeometryInstance3D{
   }
   get_draw_flag(_flag) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_draw_flag,
+      Label3D._bindings.method_get_draw_flag,
       this._owner,
 			Variant.Type.BOOL,
       _flag
@@ -1006,7 +1007,7 @@ export class Label3D extends GeometryInstance3D{
   }
   set_billboard_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_billboard_mode,
+      Label3D._bindings.method_set_billboard_mode,
       this._owner,
       _mode
     );
@@ -1014,7 +1015,7 @@ export class Label3D extends GeometryInstance3D{
   }
   get_billboard_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_billboard_mode,
+      Label3D._bindings.method_get_billboard_mode,
       this._owner,
 			Variant.INT,
       
@@ -1023,7 +1024,7 @@ export class Label3D extends GeometryInstance3D{
   }
   set_alpha_cut_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_alpha_cut_mode,
+      Label3D._bindings.method_set_alpha_cut_mode,
       this._owner,
       _mode
     );
@@ -1031,7 +1032,7 @@ export class Label3D extends GeometryInstance3D{
   }
   get_alpha_cut_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_alpha_cut_mode,
+      Label3D._bindings.method_get_alpha_cut_mode,
       this._owner,
 			Variant.INT,
       
@@ -1040,7 +1041,7 @@ export class Label3D extends GeometryInstance3D{
   }
   set_alpha_scissor_threshold(_threshold) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_alpha_scissor_threshold,
+      Label3D._bindings.method_set_alpha_scissor_threshold,
       this._owner,
       _threshold
     );
@@ -1048,7 +1049,7 @@ export class Label3D extends GeometryInstance3D{
   }
   get_alpha_scissor_threshold() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_alpha_scissor_threshold,
+      Label3D._bindings.method_get_alpha_scissor_threshold,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1057,7 +1058,7 @@ export class Label3D extends GeometryInstance3D{
   }
   set_alpha_hash_scale(_threshold) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_alpha_hash_scale,
+      Label3D._bindings.method_set_alpha_hash_scale,
       this._owner,
       _threshold
     );
@@ -1065,7 +1066,7 @@ export class Label3D extends GeometryInstance3D{
   }
   get_alpha_hash_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_alpha_hash_scale,
+      Label3D._bindings.method_get_alpha_hash_scale,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1074,7 +1075,7 @@ export class Label3D extends GeometryInstance3D{
   }
   set_alpha_antialiasing(_alpha_aa) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_alpha_antialiasing,
+      Label3D._bindings.method_set_alpha_antialiasing,
       this._owner,
       _alpha_aa
     );
@@ -1082,7 +1083,7 @@ export class Label3D extends GeometryInstance3D{
   }
   get_alpha_antialiasing() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_alpha_antialiasing,
+      Label3D._bindings.method_get_alpha_antialiasing,
       this._owner,
 			Variant.INT,
       
@@ -1091,7 +1092,7 @@ export class Label3D extends GeometryInstance3D{
   }
   set_alpha_antialiasing_edge(_edge) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_alpha_antialiasing_edge,
+      Label3D._bindings.method_set_alpha_antialiasing_edge,
       this._owner,
       _edge
     );
@@ -1099,7 +1100,7 @@ export class Label3D extends GeometryInstance3D{
   }
   get_alpha_antialiasing_edge() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_alpha_antialiasing_edge,
+      Label3D._bindings.method_get_alpha_antialiasing_edge,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1108,7 +1109,7 @@ export class Label3D extends GeometryInstance3D{
   }
   set_texture_filter(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture_filter,
+      Label3D._bindings.method_set_texture_filter,
       this._owner,
       _mode
     );
@@ -1116,7 +1117,7 @@ export class Label3D extends GeometryInstance3D{
   }
   get_texture_filter() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_filter,
+      Label3D._bindings.method_get_texture_filter,
       this._owner,
 			Variant.INT,
       
@@ -1125,7 +1126,7 @@ export class Label3D extends GeometryInstance3D{
   }
   generate_triangle_mesh() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_generate_triangle_mesh,
+      Label3D._bindings.method_generate_triangle_mesh,
       this._owner,
 			Variant.INT,
       

@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { Container } from '@js_godot/classes/container'
 import {
   call_utility_ret,
@@ -110,9 +110,10 @@ export class AspectRatioContainer extends Container{
       );
     }
   }
+  
   set_ratio(_ratio) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ratio,
+      AspectRatioContainer._bindings.method_set_ratio,
       this._owner,
       _ratio
     );
@@ -120,7 +121,7 @@ export class AspectRatioContainer extends Container{
   }
   get_ratio() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ratio,
+      AspectRatioContainer._bindings.method_get_ratio,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -129,7 +130,7 @@ export class AspectRatioContainer extends Container{
   }
   set_stretch_mode(_stretch_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_stretch_mode,
+      AspectRatioContainer._bindings.method_set_stretch_mode,
       this._owner,
       _stretch_mode
     );
@@ -137,7 +138,7 @@ export class AspectRatioContainer extends Container{
   }
   get_stretch_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_stretch_mode,
+      AspectRatioContainer._bindings.method_get_stretch_mode,
       this._owner,
 			Variant.INT,
       
@@ -146,7 +147,7 @@ export class AspectRatioContainer extends Container{
   }
   set_alignment_horizontal(_alignment_horizontal) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_alignment_horizontal,
+      AspectRatioContainer._bindings.method_set_alignment_horizontal,
       this._owner,
       _alignment_horizontal
     );
@@ -154,7 +155,7 @@ export class AspectRatioContainer extends Container{
   }
   get_alignment_horizontal() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_alignment_horizontal,
+      AspectRatioContainer._bindings.method_get_alignment_horizontal,
       this._owner,
 			Variant.INT,
       
@@ -163,7 +164,7 @@ export class AspectRatioContainer extends Container{
   }
   set_alignment_vertical(_alignment_vertical) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_alignment_vertical,
+      AspectRatioContainer._bindings.method_set_alignment_vertical,
       this._owner,
       _alignment_vertical
     );
@@ -171,7 +172,7 @@ export class AspectRatioContainer extends Container{
   }
   get_alignment_vertical() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_alignment_vertical,
+      AspectRatioContainer._bindings.method_get_alignment_vertical,
       this._owner,
 			Variant.INT,
       

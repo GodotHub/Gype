@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { Texture3D } from '@js_godot/classes/texture3d'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -51,9 +51,10 @@ export class CompressedTexture3D extends Texture3D{
       );
     }
   }
+  
   load(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_load,
+      CompressedTexture3D._bindings.method_load,
       this._owner,
 			Variant.INT,
       _path
@@ -62,7 +63,7 @@ export class CompressedTexture3D extends Texture3D{
   }
   get_load_path() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_load_path,
+      CompressedTexture3D._bindings.method_get_load_path,
       this._owner,
 			Variant.Type.STRING,
     

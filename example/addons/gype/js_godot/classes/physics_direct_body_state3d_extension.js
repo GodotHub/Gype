@@ -1,11 +1,11 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Transform3D } from '@js_godot/variant/transform3d'
-import { Vector3 } from '@js_godot/variant/vector3'
-import { StringName } from '@js_godot/variant/string_name'
 import { RID } from '@js_godot/variant/rid'
-import { Basis } from '@js_godot/variant/basis'
+import { StringName } from '@js_godot/variant/string_name'
+import { Transform3D } from '@js_godot/variant/transform3d'
+import { Variant } from '@js_godot/variant/variant'
 import { PhysicsDirectBodyState3D } from '@js_godot/classes/physics_direct_body_state3d'
+import { Basis } from '@js_godot/variant/basis'
+import { Vector3 } from '@js_godot/variant/vector3'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -34,6 +34,7 @@ export class PhysicsDirectBodyState3DExtension extends PhysicsDirectBodyState3D{
     }
     this.#initialized = true;
   }
+  
   _get_total_gravity() {
   }
   _get_total_linear_damp() {

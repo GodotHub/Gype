@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { Tweener } from '@js_godot/classes/tweener'
 import {
   call_utility_ret,
@@ -30,6 +30,7 @@ export class IntervalTweener extends Tweener{
     }
     this.#initialized = true;
   }
+  
   
 
 

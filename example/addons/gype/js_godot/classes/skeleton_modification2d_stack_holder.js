@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { SkeletonModification2D } from '@js_godot/classes/skeleton_modification2d'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -50,9 +50,10 @@ export class SkeletonModification2DStackHolder extends SkeletonModification2D{
       );
     }
   }
+  
   set_held_modification_stack(_held_modification_stack) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_held_modification_stack,
+      SkeletonModification2DStackHolder._bindings.method_set_held_modification_stack,
       this._owner,
       _held_modification_stack
     );
@@ -60,7 +61,7 @@ export class SkeletonModification2DStackHolder extends SkeletonModification2D{
   }
   get_held_modification_stack() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_held_modification_stack,
+      SkeletonModification2DStackHolder._bindings.method_get_held_modification_stack,
       this._owner,
 			Variant.INT,
       

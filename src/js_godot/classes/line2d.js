@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
-import { Node2D } from '@js_godot/classes/node2d'
+import { Color } from '@js_godot/variant/color'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
-import { Color } from '@js_godot/variant/color'
-import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { Node2D } from '@js_godot/classes/node2d'
+import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -373,9 +373,10 @@ export class Line2D extends Node2D{
       );
     }
   }
+  
   set_points(_points) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_points,
+      Line2D._bindings.method_set_points,
       this._owner,
       _points
     );
@@ -383,7 +384,7 @@ export class Line2D extends Node2D{
   }
   get_points() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_points,
+      Line2D._bindings.method_get_points,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -393,7 +394,7 @@ export class Line2D extends Node2D{
   }
   set_point_position(_index, _position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_point_position,
+      Line2D._bindings.method_set_point_position,
       this._owner,
       _index, _position
     );
@@ -401,7 +402,7 @@ export class Line2D extends Node2D{
   }
   get_point_position(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_point_position,
+      Line2D._bindings.method_get_point_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -411,7 +412,7 @@ export class Line2D extends Node2D{
   }
   get_point_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_point_count,
+      Line2D._bindings.method_get_point_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -420,7 +421,7 @@ export class Line2D extends Node2D{
   }
   add_point(_position, _index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_point,
+      Line2D._bindings.method_add_point,
       this._owner,
       _position, _index
     );
@@ -428,7 +429,7 @@ export class Line2D extends Node2D{
   }
   remove_point(_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_point,
+      Line2D._bindings.method_remove_point,
       this._owner,
       _index
     );
@@ -436,7 +437,7 @@ export class Line2D extends Node2D{
   }
   clear_points() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_points,
+      Line2D._bindings.method_clear_points,
       this._owner,
       
     );
@@ -444,7 +445,7 @@ export class Line2D extends Node2D{
   }
   set_closed(_closed) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_closed,
+      Line2D._bindings.method_set_closed,
       this._owner,
       _closed
     );
@@ -452,7 +453,7 @@ export class Line2D extends Node2D{
   }
   is_closed() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_closed,
+      Line2D._bindings.method_is_closed,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -461,7 +462,7 @@ export class Line2D extends Node2D{
   }
   set_width(_width) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_width,
+      Line2D._bindings.method_set_width,
       this._owner,
       _width
     );
@@ -469,7 +470,7 @@ export class Line2D extends Node2D{
   }
   get_width() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_width,
+      Line2D._bindings.method_get_width,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -478,7 +479,7 @@ export class Line2D extends Node2D{
   }
   set_curve(_curve) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_curve,
+      Line2D._bindings.method_set_curve,
       this._owner,
       _curve
     );
@@ -486,7 +487,7 @@ export class Line2D extends Node2D{
   }
   get_curve() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_curve,
+      Line2D._bindings.method_get_curve,
       this._owner,
 			Variant.INT,
       
@@ -495,7 +496,7 @@ export class Line2D extends Node2D{
   }
   set_default_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_default_color,
+      Line2D._bindings.method_set_default_color,
       this._owner,
       _color
     );
@@ -503,7 +504,7 @@ export class Line2D extends Node2D{
   }
   get_default_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_default_color,
+      Line2D._bindings.method_get_default_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -513,7 +514,7 @@ export class Line2D extends Node2D{
   }
   set_gradient(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_gradient,
+      Line2D._bindings.method_set_gradient,
       this._owner,
       _color
     );
@@ -521,7 +522,7 @@ export class Line2D extends Node2D{
   }
   get_gradient() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_gradient,
+      Line2D._bindings.method_get_gradient,
       this._owner,
 			Variant.INT,
       
@@ -530,7 +531,7 @@ export class Line2D extends Node2D{
   }
   set_texture(_texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture,
+      Line2D._bindings.method_set_texture,
       this._owner,
       _texture
     );
@@ -538,7 +539,7 @@ export class Line2D extends Node2D{
   }
   get_texture() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture,
+      Line2D._bindings.method_get_texture,
       this._owner,
 			Variant.INT,
       
@@ -547,7 +548,7 @@ export class Line2D extends Node2D{
   }
   set_texture_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture_mode,
+      Line2D._bindings.method_set_texture_mode,
       this._owner,
       _mode
     );
@@ -555,7 +556,7 @@ export class Line2D extends Node2D{
   }
   get_texture_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_mode,
+      Line2D._bindings.method_get_texture_mode,
       this._owner,
 			Variant.INT,
       
@@ -564,7 +565,7 @@ export class Line2D extends Node2D{
   }
   set_joint_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_joint_mode,
+      Line2D._bindings.method_set_joint_mode,
       this._owner,
       _mode
     );
@@ -572,7 +573,7 @@ export class Line2D extends Node2D{
   }
   get_joint_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_joint_mode,
+      Line2D._bindings.method_get_joint_mode,
       this._owner,
 			Variant.INT,
       
@@ -581,7 +582,7 @@ export class Line2D extends Node2D{
   }
   set_begin_cap_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_begin_cap_mode,
+      Line2D._bindings.method_set_begin_cap_mode,
       this._owner,
       _mode
     );
@@ -589,7 +590,7 @@ export class Line2D extends Node2D{
   }
   get_begin_cap_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_begin_cap_mode,
+      Line2D._bindings.method_get_begin_cap_mode,
       this._owner,
 			Variant.INT,
       
@@ -598,7 +599,7 @@ export class Line2D extends Node2D{
   }
   set_end_cap_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_end_cap_mode,
+      Line2D._bindings.method_set_end_cap_mode,
       this._owner,
       _mode
     );
@@ -606,7 +607,7 @@ export class Line2D extends Node2D{
   }
   get_end_cap_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_end_cap_mode,
+      Line2D._bindings.method_get_end_cap_mode,
       this._owner,
 			Variant.INT,
       
@@ -615,7 +616,7 @@ export class Line2D extends Node2D{
   }
   set_sharp_limit(_limit) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sharp_limit,
+      Line2D._bindings.method_set_sharp_limit,
       this._owner,
       _limit
     );
@@ -623,7 +624,7 @@ export class Line2D extends Node2D{
   }
   get_sharp_limit() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sharp_limit,
+      Line2D._bindings.method_get_sharp_limit,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -632,7 +633,7 @@ export class Line2D extends Node2D{
   }
   set_round_precision(_precision) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_round_precision,
+      Line2D._bindings.method_set_round_precision,
       this._owner,
       _precision
     );
@@ -640,7 +641,7 @@ export class Line2D extends Node2D{
   }
   get_round_precision() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_round_precision,
+      Line2D._bindings.method_get_round_precision,
       this._owner,
 			Variant.Type.INT,
       
@@ -649,7 +650,7 @@ export class Line2D extends Node2D{
   }
   set_antialiased(_antialiased) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_antialiased,
+      Line2D._bindings.method_set_antialiased,
       this._owner,
       _antialiased
     );
@@ -657,7 +658,7 @@ export class Line2D extends Node2D{
   }
   get_antialiased() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_antialiased,
+      Line2D._bindings.method_get_antialiased,
       this._owner,
 			Variant.Type.BOOL,
       

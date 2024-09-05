@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Control } from '@js_godot/classes/control'
+import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
-import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
 import { Rect2 } from '@js_godot/variant/rect2'
+import { Control } from '@js_godot/classes/control'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -52,13 +52,14 @@ export class Container extends Control{
       );
     }
   }
+  
   _get_allowed_size_flags_horizontal() {
   }
   _get_allowed_size_flags_vertical() {
   }
   queue_sort() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_queue_sort,
+      Container._bindings.method_queue_sort,
       this._owner,
       
     );
@@ -66,7 +67,7 @@ export class Container extends Control{
   }
   fit_child_in_rect(_child, _rect) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_fit_child_in_rect,
+      Container._bindings.method_fit_child_in_rect,
       this._owner,
       _child, _rect
     );

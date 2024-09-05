@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Transform3D } from '@js_godot/variant/transform3d'
+import { Vector2 } from '@js_godot/variant/vector2'
 import { Resource } from '@js_godot/classes/resource'
 import { StringName } from '@js_godot/variant/string_name'
-import { Vector2 } from '@js_godot/variant/vector2'
+import { Transform3D } from '@js_godot/variant/transform3d'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -322,9 +322,10 @@ export class SkeletonProfile extends Resource{
       );
     }
   }
+  
   set_root_bone(_bone_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_root_bone,
+      SkeletonProfile._bindings.method_set_root_bone,
       this._owner,
       _bone_name
     );
@@ -332,7 +333,7 @@ export class SkeletonProfile extends Resource{
   }
   get_root_bone() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_root_bone,
+      SkeletonProfile._bindings.method_get_root_bone,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -342,7 +343,7 @@ export class SkeletonProfile extends Resource{
   }
   set_scale_base_bone(_bone_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_scale_base_bone,
+      SkeletonProfile._bindings.method_set_scale_base_bone,
       this._owner,
       _bone_name
     );
@@ -350,7 +351,7 @@ export class SkeletonProfile extends Resource{
   }
   get_scale_base_bone() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_scale_base_bone,
+      SkeletonProfile._bindings.method_get_scale_base_bone,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -360,7 +361,7 @@ export class SkeletonProfile extends Resource{
   }
   set_group_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_group_size,
+      SkeletonProfile._bindings.method_set_group_size,
       this._owner,
       _size
     );
@@ -368,7 +369,7 @@ export class SkeletonProfile extends Resource{
   }
   get_group_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_group_size,
+      SkeletonProfile._bindings.method_get_group_size,
       this._owner,
 			Variant.Type.INT,
       
@@ -377,7 +378,7 @@ export class SkeletonProfile extends Resource{
   }
   get_group_name(_group_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_group_name,
+      SkeletonProfile._bindings.method_get_group_name,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -387,7 +388,7 @@ export class SkeletonProfile extends Resource{
   }
   set_group_name(_group_idx, _group_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_group_name,
+      SkeletonProfile._bindings.method_set_group_name,
       this._owner,
       _group_idx, _group_name
     );
@@ -395,7 +396,7 @@ export class SkeletonProfile extends Resource{
   }
   get_texture(_group_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture,
+      SkeletonProfile._bindings.method_get_texture,
       this._owner,
 			Variant.INT,
       _group_idx
@@ -404,7 +405,7 @@ export class SkeletonProfile extends Resource{
   }
   set_texture(_group_idx, _texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture,
+      SkeletonProfile._bindings.method_set_texture,
       this._owner,
       _group_idx, _texture
     );
@@ -412,7 +413,7 @@ export class SkeletonProfile extends Resource{
   }
   set_bone_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bone_size,
+      SkeletonProfile._bindings.method_set_bone_size,
       this._owner,
       _size
     );
@@ -420,7 +421,7 @@ export class SkeletonProfile extends Resource{
   }
   get_bone_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bone_size,
+      SkeletonProfile._bindings.method_get_bone_size,
       this._owner,
 			Variant.Type.INT,
       
@@ -429,7 +430,7 @@ export class SkeletonProfile extends Resource{
   }
   find_bone(_bone_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_find_bone,
+      SkeletonProfile._bindings.method_find_bone,
       this._owner,
 			Variant.Type.INT,
       _bone_name
@@ -438,7 +439,7 @@ export class SkeletonProfile extends Resource{
   }
   get_bone_name(_bone_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bone_name,
+      SkeletonProfile._bindings.method_get_bone_name,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -448,7 +449,7 @@ export class SkeletonProfile extends Resource{
   }
   set_bone_name(_bone_idx, _bone_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bone_name,
+      SkeletonProfile._bindings.method_set_bone_name,
       this._owner,
       _bone_idx, _bone_name
     );
@@ -456,7 +457,7 @@ export class SkeletonProfile extends Resource{
   }
   get_bone_parent(_bone_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bone_parent,
+      SkeletonProfile._bindings.method_get_bone_parent,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -466,7 +467,7 @@ export class SkeletonProfile extends Resource{
   }
   set_bone_parent(_bone_idx, _bone_parent) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bone_parent,
+      SkeletonProfile._bindings.method_set_bone_parent,
       this._owner,
       _bone_idx, _bone_parent
     );
@@ -474,7 +475,7 @@ export class SkeletonProfile extends Resource{
   }
   get_tail_direction(_bone_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tail_direction,
+      SkeletonProfile._bindings.method_get_tail_direction,
       this._owner,
 			Variant.INT,
       _bone_idx
@@ -483,7 +484,7 @@ export class SkeletonProfile extends Resource{
   }
   set_tail_direction(_bone_idx, _tail_direction) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tail_direction,
+      SkeletonProfile._bindings.method_set_tail_direction,
       this._owner,
       _bone_idx, _tail_direction
     );
@@ -491,7 +492,7 @@ export class SkeletonProfile extends Resource{
   }
   get_bone_tail(_bone_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bone_tail,
+      SkeletonProfile._bindings.method_get_bone_tail,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -501,7 +502,7 @@ export class SkeletonProfile extends Resource{
   }
   set_bone_tail(_bone_idx, _bone_tail) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bone_tail,
+      SkeletonProfile._bindings.method_set_bone_tail,
       this._owner,
       _bone_idx, _bone_tail
     );
@@ -509,7 +510,7 @@ export class SkeletonProfile extends Resource{
   }
   get_reference_pose(_bone_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_reference_pose,
+      SkeletonProfile._bindings.method_get_reference_pose,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -519,7 +520,7 @@ export class SkeletonProfile extends Resource{
   }
   set_reference_pose(_bone_idx, _bone_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_reference_pose,
+      SkeletonProfile._bindings.method_set_reference_pose,
       this._owner,
       _bone_idx, _bone_name
     );
@@ -527,7 +528,7 @@ export class SkeletonProfile extends Resource{
   }
   get_handle_offset(_bone_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_handle_offset,
+      SkeletonProfile._bindings.method_get_handle_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -537,7 +538,7 @@ export class SkeletonProfile extends Resource{
   }
   set_handle_offset(_bone_idx, _handle_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_handle_offset,
+      SkeletonProfile._bindings.method_set_handle_offset,
       this._owner,
       _bone_idx, _handle_offset
     );
@@ -545,7 +546,7 @@ export class SkeletonProfile extends Resource{
   }
   get_group(_bone_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_group,
+      SkeletonProfile._bindings.method_get_group,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -555,7 +556,7 @@ export class SkeletonProfile extends Resource{
   }
   set_group(_bone_idx, _group) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_group,
+      SkeletonProfile._bindings.method_set_group,
       this._owner,
       _bone_idx, _group
     );
@@ -563,7 +564,7 @@ export class SkeletonProfile extends Resource{
   }
   is_required(_bone_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_required,
+      SkeletonProfile._bindings.method_is_required,
       this._owner,
 			Variant.Type.BOOL,
       _bone_idx
@@ -572,7 +573,7 @@ export class SkeletonProfile extends Resource{
   }
   set_required(_bone_idx, _required) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_required,
+      SkeletonProfile._bindings.method_set_required,
       this._owner,
       _bone_idx, _required
     );

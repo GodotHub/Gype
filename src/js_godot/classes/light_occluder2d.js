@@ -90,9 +90,10 @@ export class LightOccluder2D extends Node2D{
       );
     }
   }
+  
   set_occluder_polygon(_polygon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_occluder_polygon,
+      LightOccluder2D._bindings.method_set_occluder_polygon,
       this._owner,
       _polygon
     );
@@ -100,7 +101,7 @@ export class LightOccluder2D extends Node2D{
   }
   get_occluder_polygon() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_occluder_polygon,
+      LightOccluder2D._bindings.method_get_occluder_polygon,
       this._owner,
 			Variant.INT,
       
@@ -109,7 +110,7 @@ export class LightOccluder2D extends Node2D{
   }
   set_occluder_light_mask(_mask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_occluder_light_mask,
+      LightOccluder2D._bindings.method_set_occluder_light_mask,
       this._owner,
       _mask
     );
@@ -117,7 +118,7 @@ export class LightOccluder2D extends Node2D{
   }
   get_occluder_light_mask() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_occluder_light_mask,
+      LightOccluder2D._bindings.method_get_occluder_light_mask,
       this._owner,
 			Variant.Type.INT,
       
@@ -126,7 +127,7 @@ export class LightOccluder2D extends Node2D{
   }
   set_as_sdf_collision(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_as_sdf_collision,
+      LightOccluder2D._bindings.method_set_as_sdf_collision,
       this._owner,
       _enable
     );
@@ -134,7 +135,7 @@ export class LightOccluder2D extends Node2D{
   }
   is_set_as_sdf_collision() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_set_as_sdf_collision,
+      LightOccluder2D._bindings.method_is_set_as_sdf_collision,
       this._owner,
 			Variant.Type.BOOL,
       

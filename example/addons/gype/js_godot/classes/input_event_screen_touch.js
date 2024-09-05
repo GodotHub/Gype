@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { InputEventFromWindow } from '@js_godot/classes/input_event_from_window'
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { Variant } from '@js_godot/variant/variant'
+import { InputEventFromWindow } from '@js_godot/classes/input_event_from_window'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -111,9 +111,10 @@ export class InputEventScreenTouch extends InputEventFromWindow{
       );
     }
   }
+  
   set_index(_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_index,
+      InputEventScreenTouch._bindings.method_set_index,
       this._owner,
       _index
     );
@@ -121,7 +122,7 @@ export class InputEventScreenTouch extends InputEventFromWindow{
   }
   get_index() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_index,
+      InputEventScreenTouch._bindings.method_get_index,
       this._owner,
 			Variant.Type.INT,
       
@@ -130,7 +131,7 @@ export class InputEventScreenTouch extends InputEventFromWindow{
   }
   set_position(_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_position,
+      InputEventScreenTouch._bindings.method_set_position,
       this._owner,
       _position
     );
@@ -138,7 +139,7 @@ export class InputEventScreenTouch extends InputEventFromWindow{
   }
   get_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_position,
+      InputEventScreenTouch._bindings.method_get_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -148,7 +149,7 @@ export class InputEventScreenTouch extends InputEventFromWindow{
   }
   set_pressed(_pressed) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_pressed,
+      InputEventScreenTouch._bindings.method_set_pressed,
       this._owner,
       _pressed
     );
@@ -156,7 +157,7 @@ export class InputEventScreenTouch extends InputEventFromWindow{
   }
   set_canceled(_canceled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_canceled,
+      InputEventScreenTouch._bindings.method_set_canceled,
       this._owner,
       _canceled
     );
@@ -164,7 +165,7 @@ export class InputEventScreenTouch extends InputEventFromWindow{
   }
   set_double_tap(_double_tap) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_double_tap,
+      InputEventScreenTouch._bindings.method_set_double_tap,
       this._owner,
       _double_tap
     );
@@ -172,7 +173,7 @@ export class InputEventScreenTouch extends InputEventFromWindow{
   }
   is_double_tap() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_double_tap,
+      InputEventScreenTouch._bindings.method_is_double_tap,
       this._owner,
 			Variant.Type.BOOL,
       

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -50,9 +50,10 @@ export class Compositor extends Resource{
       );
     }
   }
+  
   set_compositor_effects(_compositor_effects) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_compositor_effects,
+      Compositor._bindings.method_set_compositor_effects,
       this._owner,
       _compositor_effects
     );
@@ -60,7 +61,7 @@ export class Compositor extends Resource{
   }
   get_compositor_effects() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_compositor_effects,
+      Compositor._bindings.method_get_compositor_effects,
       this._owner,
 			Variant.INT,
       

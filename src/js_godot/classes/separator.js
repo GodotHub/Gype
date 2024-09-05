@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { Control } from '@js_godot/classes/control'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Control } from '@js_godot/classes/control'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -30,6 +30,7 @@ export class Separator extends Control{
     }
     this.#initialized = true;
   }
+  
   
 
 

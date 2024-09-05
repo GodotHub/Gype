@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { VisualShaderNodeVarying } from '@js_godot/classes/visual_shader_node_varying'
 import {
   call_utility_ret,
@@ -30,6 +30,7 @@ export class VisualShaderNodeVaryingGetter extends VisualShaderNodeVarying{
     }
     this.#initialized = true;
   }
+  
   
 
 

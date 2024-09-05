@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { Variant } from '@js_godot/variant/variant'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -112,9 +112,10 @@ export class OpenXRIPBinding extends Resource{
       );
     }
   }
+  
   set_action(_action) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_action,
+      OpenXRIPBinding._bindings.method_set_action,
       this._owner,
       _action
     );
@@ -122,7 +123,7 @@ export class OpenXRIPBinding extends Resource{
   }
   get_action() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_action,
+      OpenXRIPBinding._bindings.method_get_action,
       this._owner,
 			Variant.INT,
       
@@ -131,7 +132,7 @@ export class OpenXRIPBinding extends Resource{
   }
   get_path_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_path_count,
+      OpenXRIPBinding._bindings.method_get_path_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -140,7 +141,7 @@ export class OpenXRIPBinding extends Resource{
   }
   set_paths(_paths) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_paths,
+      OpenXRIPBinding._bindings.method_set_paths,
       this._owner,
       _paths
     );
@@ -148,7 +149,7 @@ export class OpenXRIPBinding extends Resource{
   }
   get_paths() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_paths,
+      OpenXRIPBinding._bindings.method_get_paths,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -158,7 +159,7 @@ export class OpenXRIPBinding extends Resource{
   }
   has_path(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_path,
+      OpenXRIPBinding._bindings.method_has_path,
       this._owner,
 			Variant.Type.BOOL,
       _path
@@ -167,7 +168,7 @@ export class OpenXRIPBinding extends Resource{
   }
   add_path(_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_path,
+      OpenXRIPBinding._bindings.method_add_path,
       this._owner,
       _path
     );
@@ -175,7 +176,7 @@ export class OpenXRIPBinding extends Resource{
   }
   remove_path(_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_path,
+      OpenXRIPBinding._bindings.method_remove_path,
       this._owner,
       _path
     );

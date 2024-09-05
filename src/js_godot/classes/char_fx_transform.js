@@ -1,13 +1,13 @@
 import * as internal from '__internal__';
-import { Dictionary } from '@js_godot/variant/dictionary'
-import { Variant } from '@js_godot/variant/variant'
 import { Vector2i } from '@js_godot/variant/vector2i'
-import { StringName } from '@js_godot/variant/string_name'
-import { Color } from '@js_godot/variant/color'
-import { Vector2 } from '@js_godot/variant/vector2'
 import { RID } from '@js_godot/variant/rid'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { Color } from '@js_godot/variant/color'
+import { Variant } from '@js_godot/variant/variant'
 import { Transform2D } from '@js_godot/variant/transform2d'
+import { Vector2 } from '@js_godot/variant/vector2'
+import { StringName } from '@js_godot/variant/string_name'
+import { Dictionary } from '@js_godot/variant/dictionary'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -296,9 +296,10 @@ export class CharFXTransform extends RefCounted{
       );
     }
   }
+  
   get_transform() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_transform,
+      CharFXTransform._bindings.method_get_transform,
       this._owner,
 			Variant.Type.TRANSFORM2D,
     
@@ -308,7 +309,7 @@ export class CharFXTransform extends RefCounted{
   }
   set_transform(_transform) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_transform,
+      CharFXTransform._bindings.method_set_transform,
       this._owner,
       _transform
     );
@@ -316,7 +317,7 @@ export class CharFXTransform extends RefCounted{
   }
   get_range() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_range,
+      CharFXTransform._bindings.method_get_range,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -326,7 +327,7 @@ export class CharFXTransform extends RefCounted{
   }
   set_range(_range) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_range,
+      CharFXTransform._bindings.method_set_range,
       this._owner,
       _range
     );
@@ -334,7 +335,7 @@ export class CharFXTransform extends RefCounted{
   }
   get_elapsed_time() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_elapsed_time,
+      CharFXTransform._bindings.method_get_elapsed_time,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -343,7 +344,7 @@ export class CharFXTransform extends RefCounted{
   }
   set_elapsed_time(_time) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_elapsed_time,
+      CharFXTransform._bindings.method_set_elapsed_time,
       this._owner,
       _time
     );
@@ -351,7 +352,7 @@ export class CharFXTransform extends RefCounted{
   }
   is_visible() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_visible,
+      CharFXTransform._bindings.method_is_visible,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -360,7 +361,7 @@ export class CharFXTransform extends RefCounted{
   }
   set_visibility(_visibility) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_visibility,
+      CharFXTransform._bindings.method_set_visibility,
       this._owner,
       _visibility
     );
@@ -368,7 +369,7 @@ export class CharFXTransform extends RefCounted{
   }
   is_outline() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_outline,
+      CharFXTransform._bindings.method_is_outline,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -377,7 +378,7 @@ export class CharFXTransform extends RefCounted{
   }
   set_outline(_outline) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_outline,
+      CharFXTransform._bindings.method_set_outline,
       this._owner,
       _outline
     );
@@ -385,7 +386,7 @@ export class CharFXTransform extends RefCounted{
   }
   get_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_offset,
+      CharFXTransform._bindings.method_get_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -395,7 +396,7 @@ export class CharFXTransform extends RefCounted{
   }
   set_offset(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_offset,
+      CharFXTransform._bindings.method_set_offset,
       this._owner,
       _offset
     );
@@ -403,7 +404,7 @@ export class CharFXTransform extends RefCounted{
   }
   get_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_color,
+      CharFXTransform._bindings.method_get_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -413,7 +414,7 @@ export class CharFXTransform extends RefCounted{
   }
   set_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_color,
+      CharFXTransform._bindings.method_set_color,
       this._owner,
       _color
     );
@@ -421,7 +422,7 @@ export class CharFXTransform extends RefCounted{
   }
   get_environment() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_environment,
+      CharFXTransform._bindings.method_get_environment,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -431,7 +432,7 @@ export class CharFXTransform extends RefCounted{
   }
   set_environment(_environment) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_environment,
+      CharFXTransform._bindings.method_set_environment,
       this._owner,
       _environment
     );
@@ -439,7 +440,7 @@ export class CharFXTransform extends RefCounted{
   }
   get_glyph_index() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_glyph_index,
+      CharFXTransform._bindings.method_get_glyph_index,
       this._owner,
 			Variant.Type.INT,
       
@@ -448,7 +449,7 @@ export class CharFXTransform extends RefCounted{
   }
   set_glyph_index(_glyph_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_glyph_index,
+      CharFXTransform._bindings.method_set_glyph_index,
       this._owner,
       _glyph_index
     );
@@ -456,7 +457,7 @@ export class CharFXTransform extends RefCounted{
   }
   get_relative_index() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_relative_index,
+      CharFXTransform._bindings.method_get_relative_index,
       this._owner,
 			Variant.Type.INT,
       
@@ -465,7 +466,7 @@ export class CharFXTransform extends RefCounted{
   }
   set_relative_index(_relative_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_relative_index,
+      CharFXTransform._bindings.method_set_relative_index,
       this._owner,
       _relative_index
     );
@@ -473,7 +474,7 @@ export class CharFXTransform extends RefCounted{
   }
   get_glyph_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_glyph_count,
+      CharFXTransform._bindings.method_get_glyph_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -482,7 +483,7 @@ export class CharFXTransform extends RefCounted{
   }
   set_glyph_count(_glyph_count) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_glyph_count,
+      CharFXTransform._bindings.method_set_glyph_count,
       this._owner,
       _glyph_count
     );
@@ -490,7 +491,7 @@ export class CharFXTransform extends RefCounted{
   }
   get_glyph_flags() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_glyph_flags,
+      CharFXTransform._bindings.method_get_glyph_flags,
       this._owner,
 			Variant.Type.INT,
       
@@ -499,7 +500,7 @@ export class CharFXTransform extends RefCounted{
   }
   set_glyph_flags(_glyph_flags) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_glyph_flags,
+      CharFXTransform._bindings.method_set_glyph_flags,
       this._owner,
       _glyph_flags
     );
@@ -507,7 +508,7 @@ export class CharFXTransform extends RefCounted{
   }
   get_font() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_font,
+      CharFXTransform._bindings.method_get_font,
       this._owner,
 			Variant.Type.RID,
     
@@ -517,7 +518,7 @@ export class CharFXTransform extends RefCounted{
   }
   set_font(_font) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_font,
+      CharFXTransform._bindings.method_set_font,
       this._owner,
       _font
     );

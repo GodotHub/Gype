@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
+import { Vector2 } from '@js_godot/variant/vector2'
 import { StringName } from '@js_godot/variant/string_name'
 import { RID } from '@js_godot/variant/rid'
-import { Vector2 } from '@js_godot/variant/vector2'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -212,9 +212,10 @@ export class NavigationPathQueryParameters2D extends RefCounted{
       );
     }
   }
+  
   set_pathfinding_algorithm(_pathfinding_algorithm) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_pathfinding_algorithm,
+      NavigationPathQueryParameters2D._bindings.method_set_pathfinding_algorithm,
       this._owner,
       _pathfinding_algorithm
     );
@@ -222,7 +223,7 @@ export class NavigationPathQueryParameters2D extends RefCounted{
   }
   get_pathfinding_algorithm() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_pathfinding_algorithm,
+      NavigationPathQueryParameters2D._bindings.method_get_pathfinding_algorithm,
       this._owner,
 			Variant.INT,
       
@@ -231,7 +232,7 @@ export class NavigationPathQueryParameters2D extends RefCounted{
   }
   set_path_postprocessing(_path_postprocessing) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_path_postprocessing,
+      NavigationPathQueryParameters2D._bindings.method_set_path_postprocessing,
       this._owner,
       _path_postprocessing
     );
@@ -239,7 +240,7 @@ export class NavigationPathQueryParameters2D extends RefCounted{
   }
   get_path_postprocessing() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_path_postprocessing,
+      NavigationPathQueryParameters2D._bindings.method_get_path_postprocessing,
       this._owner,
 			Variant.INT,
       
@@ -248,7 +249,7 @@ export class NavigationPathQueryParameters2D extends RefCounted{
   }
   set_map(_map) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_map,
+      NavigationPathQueryParameters2D._bindings.method_set_map,
       this._owner,
       _map
     );
@@ -256,7 +257,7 @@ export class NavigationPathQueryParameters2D extends RefCounted{
   }
   get_map() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_map,
+      NavigationPathQueryParameters2D._bindings.method_get_map,
       this._owner,
 			Variant.Type.RID,
     
@@ -266,7 +267,7 @@ export class NavigationPathQueryParameters2D extends RefCounted{
   }
   set_start_position(_start_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_start_position,
+      NavigationPathQueryParameters2D._bindings.method_set_start_position,
       this._owner,
       _start_position
     );
@@ -274,7 +275,7 @@ export class NavigationPathQueryParameters2D extends RefCounted{
   }
   get_start_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_start_position,
+      NavigationPathQueryParameters2D._bindings.method_get_start_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -284,7 +285,7 @@ export class NavigationPathQueryParameters2D extends RefCounted{
   }
   set_target_position(_target_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_target_position,
+      NavigationPathQueryParameters2D._bindings.method_set_target_position,
       this._owner,
       _target_position
     );
@@ -292,7 +293,7 @@ export class NavigationPathQueryParameters2D extends RefCounted{
   }
   get_target_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_target_position,
+      NavigationPathQueryParameters2D._bindings.method_get_target_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -302,7 +303,7 @@ export class NavigationPathQueryParameters2D extends RefCounted{
   }
   set_navigation_layers(_navigation_layers) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_navigation_layers,
+      NavigationPathQueryParameters2D._bindings.method_set_navigation_layers,
       this._owner,
       _navigation_layers
     );
@@ -310,7 +311,7 @@ export class NavigationPathQueryParameters2D extends RefCounted{
   }
   get_navigation_layers() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_navigation_layers,
+      NavigationPathQueryParameters2D._bindings.method_get_navigation_layers,
       this._owner,
 			Variant.Type.INT,
       
@@ -319,7 +320,7 @@ export class NavigationPathQueryParameters2D extends RefCounted{
   }
   set_metadata_flags(_flags) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_metadata_flags,
+      NavigationPathQueryParameters2D._bindings.method_set_metadata_flags,
       this._owner,
       _flags
     );
@@ -327,7 +328,7 @@ export class NavigationPathQueryParameters2D extends RefCounted{
   }
   get_metadata_flags() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_metadata_flags,
+      NavigationPathQueryParameters2D._bindings.method_get_metadata_flags,
       this._owner,
 			Variant.INT,
       
@@ -336,7 +337,7 @@ export class NavigationPathQueryParameters2D extends RefCounted{
   }
   set_simplify_path(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_simplify_path,
+      NavigationPathQueryParameters2D._bindings.method_set_simplify_path,
       this._owner,
       _enabled
     );
@@ -344,7 +345,7 @@ export class NavigationPathQueryParameters2D extends RefCounted{
   }
   get_simplify_path() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_simplify_path,
+      NavigationPathQueryParameters2D._bindings.method_get_simplify_path,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -353,7 +354,7 @@ export class NavigationPathQueryParameters2D extends RefCounted{
   }
   set_simplify_epsilon(_epsilon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_simplify_epsilon,
+      NavigationPathQueryParameters2D._bindings.method_set_simplify_epsilon,
       this._owner,
       _epsilon
     );
@@ -361,7 +362,7 @@ export class NavigationPathQueryParameters2D extends RefCounted{
   }
   get_simplify_epsilon() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_simplify_epsilon,
+      NavigationPathQueryParameters2D._bindings.method_get_simplify_epsilon,
       this._owner,
 			Variant.Type.FLOAT,
       

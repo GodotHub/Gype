@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { Node2D } from '@js_godot/classes/node2d'
 import { Variant } from '@js_godot/variant/variant'
-import { Rect2 } from '@js_godot/variant/rect2'
 import { StringName } from '@js_godot/variant/string_name'
+import { Rect2 } from '@js_godot/variant/rect2'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -71,9 +71,10 @@ export class BackBufferCopy extends Node2D{
       );
     }
   }
+  
   set_rect(_rect) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_rect,
+      BackBufferCopy._bindings.method_set_rect,
       this._owner,
       _rect
     );
@@ -81,7 +82,7 @@ export class BackBufferCopy extends Node2D{
   }
   get_rect() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rect,
+      BackBufferCopy._bindings.method_get_rect,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -91,7 +92,7 @@ export class BackBufferCopy extends Node2D{
   }
   set_copy_mode(_copy_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_copy_mode,
+      BackBufferCopy._bindings.method_set_copy_mode,
       this._owner,
       _copy_mode
     );
@@ -99,7 +100,7 @@ export class BackBufferCopy extends Node2D{
   }
   get_copy_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_copy_mode,
+      BackBufferCopy._bindings.method_get_copy_mode,
       this._owner,
 			Variant.INT,
       

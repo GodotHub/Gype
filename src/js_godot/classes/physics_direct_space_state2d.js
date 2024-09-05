@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Dictionary } from '@js_godot/variant/dictionary'
-import { Variant } from '@js_godot/variant/variant'
-import { GodotObject } from '@js_godot/classes/godot_object'
-import { StringName } from '@js_godot/variant/string_name'
 import { PackedFloat32Array } from '@js_godot/variant/packed_float32_array'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { GodotObject } from '@js_godot/classes/godot_object'
+import { Dictionary } from '@js_godot/variant/dictionary'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -92,9 +92,10 @@ export class PhysicsDirectSpaceState2D extends GodotObject{
       );
     }
   }
+  
   intersect_point(_parameters, _max_results) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_intersect_point,
+      PhysicsDirectSpaceState2D._bindings.method_intersect_point,
       this._owner,
 			Variant.INT,
       _parameters, _max_results
@@ -103,7 +104,7 @@ export class PhysicsDirectSpaceState2D extends GodotObject{
   }
   intersect_ray(_parameters) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_intersect_ray,
+      PhysicsDirectSpaceState2D._bindings.method_intersect_ray,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -113,7 +114,7 @@ export class PhysicsDirectSpaceState2D extends GodotObject{
   }
   intersect_shape(_parameters, _max_results) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_intersect_shape,
+      PhysicsDirectSpaceState2D._bindings.method_intersect_shape,
       this._owner,
 			Variant.INT,
       _parameters, _max_results
@@ -122,7 +123,7 @@ export class PhysicsDirectSpaceState2D extends GodotObject{
   }
   cast_motion(_parameters) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_cast_motion,
+      PhysicsDirectSpaceState2D._bindings.method_cast_motion,
       this._owner,
 			Variant.Type.PACKED_FLOAT32_ARRAY,
     
@@ -132,7 +133,7 @@ export class PhysicsDirectSpaceState2D extends GodotObject{
   }
   collide_shape(_parameters, _max_results) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_collide_shape,
+      PhysicsDirectSpaceState2D._bindings.method_collide_shape,
       this._owner,
 			Variant.INT,
       _parameters, _max_results
@@ -141,7 +142,7 @@ export class PhysicsDirectSpaceState2D extends GodotObject{
   }
   get_rest_info(_parameters) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rest_info,
+      PhysicsDirectSpaceState2D._bindings.method_get_rest_info,
       this._owner,
 			Variant.Type.DICTIONARY,
     

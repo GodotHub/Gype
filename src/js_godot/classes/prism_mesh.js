@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { PrimitiveMesh } from '@js_godot/classes/primitive_mesh'
 import { Vector3 } from '@js_godot/variant/vector3'
+import { PrimitiveMesh } from '@js_godot/classes/primitive_mesh'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -131,9 +131,10 @@ export class PrismMesh extends PrimitiveMesh{
       );
     }
   }
+  
   set_left_to_right(_left_to_right) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_left_to_right,
+      PrismMesh._bindings.method_set_left_to_right,
       this._owner,
       _left_to_right
     );
@@ -141,7 +142,7 @@ export class PrismMesh extends PrimitiveMesh{
   }
   get_left_to_right() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_left_to_right,
+      PrismMesh._bindings.method_get_left_to_right,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -150,7 +151,7 @@ export class PrismMesh extends PrimitiveMesh{
   }
   set_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_size,
+      PrismMesh._bindings.method_set_size,
       this._owner,
       _size
     );
@@ -158,7 +159,7 @@ export class PrismMesh extends PrimitiveMesh{
   }
   get_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_size,
+      PrismMesh._bindings.method_get_size,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -168,7 +169,7 @@ export class PrismMesh extends PrimitiveMesh{
   }
   set_subdivide_width(_segments) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_subdivide_width,
+      PrismMesh._bindings.method_set_subdivide_width,
       this._owner,
       _segments
     );
@@ -176,7 +177,7 @@ export class PrismMesh extends PrimitiveMesh{
   }
   get_subdivide_width() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_subdivide_width,
+      PrismMesh._bindings.method_get_subdivide_width,
       this._owner,
 			Variant.Type.INT,
       
@@ -185,7 +186,7 @@ export class PrismMesh extends PrimitiveMesh{
   }
   set_subdivide_height(_segments) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_subdivide_height,
+      PrismMesh._bindings.method_set_subdivide_height,
       this._owner,
       _segments
     );
@@ -193,7 +194,7 @@ export class PrismMesh extends PrimitiveMesh{
   }
   get_subdivide_height() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_subdivide_height,
+      PrismMesh._bindings.method_get_subdivide_height,
       this._owner,
 			Variant.Type.INT,
       
@@ -202,7 +203,7 @@ export class PrismMesh extends PrimitiveMesh{
   }
   set_subdivide_depth(_segments) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_subdivide_depth,
+      PrismMesh._bindings.method_set_subdivide_depth,
       this._owner,
       _segments
     );
@@ -210,7 +211,7 @@ export class PrismMesh extends PrimitiveMesh{
   }
   get_subdivide_depth() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_subdivide_depth,
+      PrismMesh._bindings.method_get_subdivide_depth,
       this._owner,
 			Variant.Type.INT,
       

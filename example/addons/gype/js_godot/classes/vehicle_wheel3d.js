@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { Node3D } from '@js_godot/classes/node3d'
 import {
   call_utility_ret,
@@ -350,9 +350,10 @@ export class VehicleWheel3D extends Node3D{
       );
     }
   }
+  
   set_radius(_length) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_radius,
+      VehicleWheel3D._bindings.method_set_radius,
       this._owner,
       _length
     );
@@ -360,7 +361,7 @@ export class VehicleWheel3D extends Node3D{
   }
   get_radius() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_radius,
+      VehicleWheel3D._bindings.method_get_radius,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -369,7 +370,7 @@ export class VehicleWheel3D extends Node3D{
   }
   set_suspension_rest_length(_length) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_suspension_rest_length,
+      VehicleWheel3D._bindings.method_set_suspension_rest_length,
       this._owner,
       _length
     );
@@ -377,7 +378,7 @@ export class VehicleWheel3D extends Node3D{
   }
   get_suspension_rest_length() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_suspension_rest_length,
+      VehicleWheel3D._bindings.method_get_suspension_rest_length,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -386,7 +387,7 @@ export class VehicleWheel3D extends Node3D{
   }
   set_suspension_travel(_length) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_suspension_travel,
+      VehicleWheel3D._bindings.method_set_suspension_travel,
       this._owner,
       _length
     );
@@ -394,7 +395,7 @@ export class VehicleWheel3D extends Node3D{
   }
   get_suspension_travel() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_suspension_travel,
+      VehicleWheel3D._bindings.method_get_suspension_travel,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -403,7 +404,7 @@ export class VehicleWheel3D extends Node3D{
   }
   set_suspension_stiffness(_length) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_suspension_stiffness,
+      VehicleWheel3D._bindings.method_set_suspension_stiffness,
       this._owner,
       _length
     );
@@ -411,7 +412,7 @@ export class VehicleWheel3D extends Node3D{
   }
   get_suspension_stiffness() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_suspension_stiffness,
+      VehicleWheel3D._bindings.method_get_suspension_stiffness,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -420,7 +421,7 @@ export class VehicleWheel3D extends Node3D{
   }
   set_suspension_max_force(_length) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_suspension_max_force,
+      VehicleWheel3D._bindings.method_set_suspension_max_force,
       this._owner,
       _length
     );
@@ -428,7 +429,7 @@ export class VehicleWheel3D extends Node3D{
   }
   get_suspension_max_force() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_suspension_max_force,
+      VehicleWheel3D._bindings.method_get_suspension_max_force,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -437,7 +438,7 @@ export class VehicleWheel3D extends Node3D{
   }
   set_damping_compression(_length) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_damping_compression,
+      VehicleWheel3D._bindings.method_set_damping_compression,
       this._owner,
       _length
     );
@@ -445,7 +446,7 @@ export class VehicleWheel3D extends Node3D{
   }
   get_damping_compression() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_damping_compression,
+      VehicleWheel3D._bindings.method_get_damping_compression,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -454,7 +455,7 @@ export class VehicleWheel3D extends Node3D{
   }
   set_damping_relaxation(_length) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_damping_relaxation,
+      VehicleWheel3D._bindings.method_set_damping_relaxation,
       this._owner,
       _length
     );
@@ -462,7 +463,7 @@ export class VehicleWheel3D extends Node3D{
   }
   get_damping_relaxation() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_damping_relaxation,
+      VehicleWheel3D._bindings.method_get_damping_relaxation,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -471,7 +472,7 @@ export class VehicleWheel3D extends Node3D{
   }
   set_use_as_traction(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_as_traction,
+      VehicleWheel3D._bindings.method_set_use_as_traction,
       this._owner,
       _enable
     );
@@ -479,7 +480,7 @@ export class VehicleWheel3D extends Node3D{
   }
   is_used_as_traction() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_used_as_traction,
+      VehicleWheel3D._bindings.method_is_used_as_traction,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -488,7 +489,7 @@ export class VehicleWheel3D extends Node3D{
   }
   set_use_as_steering(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_as_steering,
+      VehicleWheel3D._bindings.method_set_use_as_steering,
       this._owner,
       _enable
     );
@@ -496,7 +497,7 @@ export class VehicleWheel3D extends Node3D{
   }
   is_used_as_steering() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_used_as_steering,
+      VehicleWheel3D._bindings.method_is_used_as_steering,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -505,7 +506,7 @@ export class VehicleWheel3D extends Node3D{
   }
   set_friction_slip(_length) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_friction_slip,
+      VehicleWheel3D._bindings.method_set_friction_slip,
       this._owner,
       _length
     );
@@ -513,7 +514,7 @@ export class VehicleWheel3D extends Node3D{
   }
   get_friction_slip() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_friction_slip,
+      VehicleWheel3D._bindings.method_get_friction_slip,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -522,7 +523,7 @@ export class VehicleWheel3D extends Node3D{
   }
   is_in_contact() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_in_contact,
+      VehicleWheel3D._bindings.method_is_in_contact,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -531,7 +532,7 @@ export class VehicleWheel3D extends Node3D{
   }
   get_contact_body() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_contact_body,
+      VehicleWheel3D._bindings.method_get_contact_body,
       this._owner,
 			Variant.INT,
       
@@ -540,7 +541,7 @@ export class VehicleWheel3D extends Node3D{
   }
   set_roll_influence(_roll_influence) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_roll_influence,
+      VehicleWheel3D._bindings.method_set_roll_influence,
       this._owner,
       _roll_influence
     );
@@ -548,7 +549,7 @@ export class VehicleWheel3D extends Node3D{
   }
   get_roll_influence() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_roll_influence,
+      VehicleWheel3D._bindings.method_get_roll_influence,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -557,7 +558,7 @@ export class VehicleWheel3D extends Node3D{
   }
   get_skidinfo() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_skidinfo,
+      VehicleWheel3D._bindings.method_get_skidinfo,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -566,7 +567,7 @@ export class VehicleWheel3D extends Node3D{
   }
   get_rpm() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rpm,
+      VehicleWheel3D._bindings.method_get_rpm,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -575,7 +576,7 @@ export class VehicleWheel3D extends Node3D{
   }
   set_engine_force(_engine_force) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_engine_force,
+      VehicleWheel3D._bindings.method_set_engine_force,
       this._owner,
       _engine_force
     );
@@ -583,7 +584,7 @@ export class VehicleWheel3D extends Node3D{
   }
   get_engine_force() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_engine_force,
+      VehicleWheel3D._bindings.method_get_engine_force,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -592,7 +593,7 @@ export class VehicleWheel3D extends Node3D{
   }
   set_brake(_brake) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_brake,
+      VehicleWheel3D._bindings.method_set_brake,
       this._owner,
       _brake
     );
@@ -600,7 +601,7 @@ export class VehicleWheel3D extends Node3D{
   }
   get_brake() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_brake,
+      VehicleWheel3D._bindings.method_get_brake,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -609,7 +610,7 @@ export class VehicleWheel3D extends Node3D{
   }
   set_steering(_steering) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_steering,
+      VehicleWheel3D._bindings.method_set_steering,
       this._owner,
       _steering
     );
@@ -617,7 +618,7 @@ export class VehicleWheel3D extends Node3D{
   }
   get_steering() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_steering,
+      VehicleWheel3D._bindings.method_get_steering,
       this._owner,
 			Variant.Type.FLOAT,
       

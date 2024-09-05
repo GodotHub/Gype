@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { Vector3 } from '@js_godot/variant/vector3'
 import { VisualInstance3D } from '@js_godot/classes/visual_instance3d'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -131,9 +131,10 @@ export class VoxelGI extends VisualInstance3D{
       );
     }
   }
+  
   set_probe_data(_data) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_probe_data,
+      VoxelGI._bindings.method_set_probe_data,
       this._owner,
       _data
     );
@@ -141,7 +142,7 @@ export class VoxelGI extends VisualInstance3D{
   }
   get_probe_data() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_probe_data,
+      VoxelGI._bindings.method_get_probe_data,
       this._owner,
 			Variant.INT,
       
@@ -150,7 +151,7 @@ export class VoxelGI extends VisualInstance3D{
   }
   set_subdiv(_subdiv) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_subdiv,
+      VoxelGI._bindings.method_set_subdiv,
       this._owner,
       _subdiv
     );
@@ -158,7 +159,7 @@ export class VoxelGI extends VisualInstance3D{
   }
   get_subdiv() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_subdiv,
+      VoxelGI._bindings.method_get_subdiv,
       this._owner,
 			Variant.INT,
       
@@ -167,7 +168,7 @@ export class VoxelGI extends VisualInstance3D{
   }
   set_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_size,
+      VoxelGI._bindings.method_set_size,
       this._owner,
       _size
     );
@@ -175,7 +176,7 @@ export class VoxelGI extends VisualInstance3D{
   }
   get_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_size,
+      VoxelGI._bindings.method_get_size,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -185,7 +186,7 @@ export class VoxelGI extends VisualInstance3D{
   }
   set_camera_attributes(_camera_attributes) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_camera_attributes,
+      VoxelGI._bindings.method_set_camera_attributes,
       this._owner,
       _camera_attributes
     );
@@ -193,7 +194,7 @@ export class VoxelGI extends VisualInstance3D{
   }
   get_camera_attributes() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_camera_attributes,
+      VoxelGI._bindings.method_get_camera_attributes,
       this._owner,
 			Variant.INT,
       
@@ -202,7 +203,7 @@ export class VoxelGI extends VisualInstance3D{
   }
   bake(_from_node, _create_visual_debug) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_bake,
+      VoxelGI._bindings.method_bake,
       this._owner,
       _from_node, _create_visual_debug
     );
@@ -210,7 +211,7 @@ export class VoxelGI extends VisualInstance3D{
   }
   debug_bake() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_debug_bake,
+      VoxelGI._bindings.method_debug_bake,
       this._owner,
       
     );

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -90,9 +90,10 @@ export class RDAttachmentFormat extends RefCounted{
       );
     }
   }
+  
   set_format(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_format,
+      RDAttachmentFormat._bindings.method_set_format,
       this._owner,
       _p_member
     );
@@ -100,7 +101,7 @@ export class RDAttachmentFormat extends RefCounted{
   }
   get_format() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_format,
+      RDAttachmentFormat._bindings.method_get_format,
       this._owner,
 			Variant.INT,
       
@@ -109,7 +110,7 @@ export class RDAttachmentFormat extends RefCounted{
   }
   set_samples(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_samples,
+      RDAttachmentFormat._bindings.method_set_samples,
       this._owner,
       _p_member
     );
@@ -117,7 +118,7 @@ export class RDAttachmentFormat extends RefCounted{
   }
   get_samples() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_samples,
+      RDAttachmentFormat._bindings.method_get_samples,
       this._owner,
 			Variant.INT,
       
@@ -126,7 +127,7 @@ export class RDAttachmentFormat extends RefCounted{
   }
   set_usage_flags(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_usage_flags,
+      RDAttachmentFormat._bindings.method_set_usage_flags,
       this._owner,
       _p_member
     );
@@ -134,7 +135,7 @@ export class RDAttachmentFormat extends RefCounted{
   }
   get_usage_flags() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_usage_flags,
+      RDAttachmentFormat._bindings.method_get_usage_flags,
       this._owner,
 			Variant.Type.INT,
       

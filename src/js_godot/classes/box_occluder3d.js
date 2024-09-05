@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
+import { Vector3 } from '@js_godot/variant/vector3'
 import { Variant } from '@js_godot/variant/variant'
 import { Occluder3D } from '@js_godot/classes/occluder3d'
-import { Vector3 } from '@js_godot/variant/vector3'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -51,9 +51,10 @@ export class BoxOccluder3D extends Occluder3D{
       );
     }
   }
+  
   set_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_size,
+      BoxOccluder3D._bindings.method_set_size,
       this._owner,
       _size
     );
@@ -61,7 +62,7 @@ export class BoxOccluder3D extends Occluder3D{
   }
   get_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_size,
+      BoxOccluder3D._bindings.method_get_size,
       this._owner,
 			Variant.Type.VECTOR3,
     

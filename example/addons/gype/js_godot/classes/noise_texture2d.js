@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { Texture2D } from '@js_godot/classes/texture2d'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -250,9 +250,10 @@ export class NoiseTexture2D extends Texture2D{
       );
     }
   }
+  
   set_width(_width) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_width,
+      NoiseTexture2D._bindings.method_set_width,
       this._owner,
       _width
     );
@@ -260,7 +261,7 @@ export class NoiseTexture2D extends Texture2D{
   }
   set_height(_height) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_height,
+      NoiseTexture2D._bindings.method_set_height,
       this._owner,
       _height
     );
@@ -268,7 +269,7 @@ export class NoiseTexture2D extends Texture2D{
   }
   set_invert(_invert) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_invert,
+      NoiseTexture2D._bindings.method_set_invert,
       this._owner,
       _invert
     );
@@ -276,7 +277,7 @@ export class NoiseTexture2D extends Texture2D{
   }
   get_invert() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_invert,
+      NoiseTexture2D._bindings.method_get_invert,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -285,7 +286,7 @@ export class NoiseTexture2D extends Texture2D{
   }
   set_in_3d_space(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_in_3d_space,
+      NoiseTexture2D._bindings.method_set_in_3d_space,
       this._owner,
       _enable
     );
@@ -293,7 +294,7 @@ export class NoiseTexture2D extends Texture2D{
   }
   is_in_3d_space() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_in_3d_space,
+      NoiseTexture2D._bindings.method_is_in_3d_space,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -302,7 +303,7 @@ export class NoiseTexture2D extends Texture2D{
   }
   set_generate_mipmaps(_invert) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_generate_mipmaps,
+      NoiseTexture2D._bindings.method_set_generate_mipmaps,
       this._owner,
       _invert
     );
@@ -310,7 +311,7 @@ export class NoiseTexture2D extends Texture2D{
   }
   is_generating_mipmaps() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_generating_mipmaps,
+      NoiseTexture2D._bindings.method_is_generating_mipmaps,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -319,7 +320,7 @@ export class NoiseTexture2D extends Texture2D{
   }
   set_seamless(_seamless) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_seamless,
+      NoiseTexture2D._bindings.method_set_seamless,
       this._owner,
       _seamless
     );
@@ -327,7 +328,7 @@ export class NoiseTexture2D extends Texture2D{
   }
   get_seamless() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_seamless,
+      NoiseTexture2D._bindings.method_get_seamless,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -336,7 +337,7 @@ export class NoiseTexture2D extends Texture2D{
   }
   set_seamless_blend_skirt(_seamless_blend_skirt) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_seamless_blend_skirt,
+      NoiseTexture2D._bindings.method_set_seamless_blend_skirt,
       this._owner,
       _seamless_blend_skirt
     );
@@ -344,7 +345,7 @@ export class NoiseTexture2D extends Texture2D{
   }
   get_seamless_blend_skirt() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_seamless_blend_skirt,
+      NoiseTexture2D._bindings.method_get_seamless_blend_skirt,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -353,7 +354,7 @@ export class NoiseTexture2D extends Texture2D{
   }
   set_as_normal_map(_as_normal_map) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_as_normal_map,
+      NoiseTexture2D._bindings.method_set_as_normal_map,
       this._owner,
       _as_normal_map
     );
@@ -361,7 +362,7 @@ export class NoiseTexture2D extends Texture2D{
   }
   is_normal_map() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_normal_map,
+      NoiseTexture2D._bindings.method_is_normal_map,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -370,7 +371,7 @@ export class NoiseTexture2D extends Texture2D{
   }
   set_bump_strength(_bump_strength) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bump_strength,
+      NoiseTexture2D._bindings.method_set_bump_strength,
       this._owner,
       _bump_strength
     );
@@ -378,7 +379,7 @@ export class NoiseTexture2D extends Texture2D{
   }
   get_bump_strength() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bump_strength,
+      NoiseTexture2D._bindings.method_get_bump_strength,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -387,7 +388,7 @@ export class NoiseTexture2D extends Texture2D{
   }
   set_normalize(_normalize) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_normalize,
+      NoiseTexture2D._bindings.method_set_normalize,
       this._owner,
       _normalize
     );
@@ -395,7 +396,7 @@ export class NoiseTexture2D extends Texture2D{
   }
   is_normalized() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_normalized,
+      NoiseTexture2D._bindings.method_is_normalized,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -404,7 +405,7 @@ export class NoiseTexture2D extends Texture2D{
   }
   set_color_ramp(_gradient) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_color_ramp,
+      NoiseTexture2D._bindings.method_set_color_ramp,
       this._owner,
       _gradient
     );
@@ -412,7 +413,7 @@ export class NoiseTexture2D extends Texture2D{
   }
   get_color_ramp() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_color_ramp,
+      NoiseTexture2D._bindings.method_get_color_ramp,
       this._owner,
 			Variant.INT,
       
@@ -421,7 +422,7 @@ export class NoiseTexture2D extends Texture2D{
   }
   set_noise(_noise) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_noise,
+      NoiseTexture2D._bindings.method_set_noise,
       this._owner,
       _noise
     );
@@ -429,7 +430,7 @@ export class NoiseTexture2D extends Texture2D{
   }
   get_noise() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_noise,
+      NoiseTexture2D._bindings.method_get_noise,
       this._owner,
 			Variant.INT,
       

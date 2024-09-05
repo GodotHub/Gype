@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { AudioStream } from '@js_godot/classes/audio_stream'
 import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
 import {
@@ -151,9 +151,10 @@ export class AudioStreamMP3 extends AudioStream{
       );
     }
   }
+  
   set_data(_data) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_data,
+      AudioStreamMP3._bindings.method_set_data,
       this._owner,
       _data
     );
@@ -161,7 +162,7 @@ export class AudioStreamMP3 extends AudioStream{
   }
   get_data() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_data,
+      AudioStreamMP3._bindings.method_get_data,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -171,7 +172,7 @@ export class AudioStreamMP3 extends AudioStream{
   }
   set_loop(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_loop,
+      AudioStreamMP3._bindings.method_set_loop,
       this._owner,
       _enable
     );
@@ -179,7 +180,7 @@ export class AudioStreamMP3 extends AudioStream{
   }
   has_loop() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_loop,
+      AudioStreamMP3._bindings.method_has_loop,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -188,7 +189,7 @@ export class AudioStreamMP3 extends AudioStream{
   }
   set_loop_offset(_seconds) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_loop_offset,
+      AudioStreamMP3._bindings.method_set_loop_offset,
       this._owner,
       _seconds
     );
@@ -196,7 +197,7 @@ export class AudioStreamMP3 extends AudioStream{
   }
   get_loop_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_loop_offset,
+      AudioStreamMP3._bindings.method_get_loop_offset,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -205,7 +206,7 @@ export class AudioStreamMP3 extends AudioStream{
   }
   set_bpm(_bpm) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bpm,
+      AudioStreamMP3._bindings.method_set_bpm,
       this._owner,
       _bpm
     );
@@ -213,7 +214,7 @@ export class AudioStreamMP3 extends AudioStream{
   }
   get_bpm() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bpm,
+      AudioStreamMP3._bindings.method_get_bpm,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -222,7 +223,7 @@ export class AudioStreamMP3 extends AudioStream{
   }
   set_beat_count(_count) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_beat_count,
+      AudioStreamMP3._bindings.method_set_beat_count,
       this._owner,
       _count
     );
@@ -230,7 +231,7 @@ export class AudioStreamMP3 extends AudioStream{
   }
   get_beat_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_beat_count,
+      AudioStreamMP3._bindings.method_get_beat_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -239,7 +240,7 @@ export class AudioStreamMP3 extends AudioStream{
   }
   set_bar_beats(_count) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bar_beats,
+      AudioStreamMP3._bindings.method_set_bar_beats,
       this._owner,
       _count
     );
@@ -247,7 +248,7 @@ export class AudioStreamMP3 extends AudioStream{
   }
   get_bar_beats() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bar_beats,
+      AudioStreamMP3._bindings.method_get_bar_beats,
       this._owner,
 			Variant.Type.INT,
       

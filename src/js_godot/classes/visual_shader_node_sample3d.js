@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { VisualShaderNode } from '@js_godot/classes/visual_shader_node'
 import {
   call_utility_ret,
@@ -50,9 +50,10 @@ export class VisualShaderNodeSample3D extends VisualShaderNode{
       );
     }
   }
+  
   set_source(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_source,
+      VisualShaderNodeSample3D._bindings.method_set_source,
       this._owner,
       _value
     );
@@ -60,7 +61,7 @@ export class VisualShaderNodeSample3D extends VisualShaderNode{
   }
   get_source() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_source,
+      VisualShaderNodeSample3D._bindings.method_get_source,
       this._owner,
 			Variant.INT,
       

@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Rect2i } from '@js_godot/variant/rect2i'
-import { Vector2i } from '@js_godot/variant/vector2i'
-import { StringName } from '@js_godot/variant/string_name'
-import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
 import { TileSetSource } from '@js_godot/classes/tile_set_source'
+import { StringName } from '@js_godot/variant/string_name'
+import { Vector2i } from '@js_godot/variant/vector2i'
+import { Rect2i } from '@js_godot/variant/rect2i'
+import { Variant } from '@js_godot/variant/variant'
+import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -443,9 +443,10 @@ export class TileSetAtlasSource extends TileSetSource{
       );
     }
   }
+  
   set_texture(_texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture,
+      TileSetAtlasSource._bindings.method_set_texture,
       this._owner,
       _texture
     );
@@ -453,7 +454,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   get_texture() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture,
+      TileSetAtlasSource._bindings.method_get_texture,
       this._owner,
 			Variant.INT,
       
@@ -462,7 +463,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   set_margins(_margins) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_margins,
+      TileSetAtlasSource._bindings.method_set_margins,
       this._owner,
       _margins
     );
@@ -470,7 +471,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   get_margins() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_margins,
+      TileSetAtlasSource._bindings.method_get_margins,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -480,7 +481,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   set_separation(_separation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_separation,
+      TileSetAtlasSource._bindings.method_set_separation,
       this._owner,
       _separation
     );
@@ -488,7 +489,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   get_separation() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_separation,
+      TileSetAtlasSource._bindings.method_get_separation,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -498,7 +499,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   set_texture_region_size(_texture_region_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture_region_size,
+      TileSetAtlasSource._bindings.method_set_texture_region_size,
       this._owner,
       _texture_region_size
     );
@@ -506,7 +507,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   get_texture_region_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_region_size,
+      TileSetAtlasSource._bindings.method_get_texture_region_size,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -516,7 +517,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   set_use_texture_padding(_use_texture_padding) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_texture_padding,
+      TileSetAtlasSource._bindings.method_set_use_texture_padding,
       this._owner,
       _use_texture_padding
     );
@@ -524,7 +525,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   get_use_texture_padding() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_use_texture_padding,
+      TileSetAtlasSource._bindings.method_get_use_texture_padding,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -533,7 +534,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   create_tile(_atlas_coords, _size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_create_tile,
+      TileSetAtlasSource._bindings.method_create_tile,
       this._owner,
       _atlas_coords, _size
     );
@@ -541,7 +542,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   remove_tile(_atlas_coords) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_tile,
+      TileSetAtlasSource._bindings.method_remove_tile,
       this._owner,
       _atlas_coords
     );
@@ -549,7 +550,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   move_tile_in_atlas(_atlas_coords, _new_atlas_coords, _new_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_move_tile_in_atlas,
+      TileSetAtlasSource._bindings.method_move_tile_in_atlas,
       this._owner,
       _atlas_coords, _new_atlas_coords, _new_size
     );
@@ -557,7 +558,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   get_tile_size_in_atlas(_atlas_coords) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tile_size_in_atlas,
+      TileSetAtlasSource._bindings.method_get_tile_size_in_atlas,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -567,7 +568,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   has_room_for_tile(_atlas_coords, _size, _animation_columns, _animation_separation, _frames_count, _ignored_tile) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_room_for_tile,
+      TileSetAtlasSource._bindings.method_has_room_for_tile,
       this._owner,
 			Variant.Type.BOOL,
       _atlas_coords, _size, _animation_columns, _animation_separation, _frames_count, _ignored_tile
@@ -576,7 +577,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   get_tiles_to_be_removed_on_change(_texture, _margins, _separation, _texture_region_size) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tiles_to_be_removed_on_change,
+      TileSetAtlasSource._bindings.method_get_tiles_to_be_removed_on_change,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -586,7 +587,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   get_tile_at_coords(_atlas_coords) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tile_at_coords,
+      TileSetAtlasSource._bindings.method_get_tile_at_coords,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -596,7 +597,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   has_tiles_outside_texture() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_tiles_outside_texture,
+      TileSetAtlasSource._bindings.method_has_tiles_outside_texture,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -605,7 +606,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   clear_tiles_outside_texture() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_tiles_outside_texture,
+      TileSetAtlasSource._bindings.method_clear_tiles_outside_texture,
       this._owner,
       
     );
@@ -613,7 +614,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   set_tile_animation_columns(_atlas_coords, _frame_columns) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tile_animation_columns,
+      TileSetAtlasSource._bindings.method_set_tile_animation_columns,
       this._owner,
       _atlas_coords, _frame_columns
     );
@@ -621,7 +622,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   get_tile_animation_columns(_atlas_coords) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tile_animation_columns,
+      TileSetAtlasSource._bindings.method_get_tile_animation_columns,
       this._owner,
 			Variant.Type.INT,
       _atlas_coords
@@ -630,7 +631,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   set_tile_animation_separation(_atlas_coords, _separation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tile_animation_separation,
+      TileSetAtlasSource._bindings.method_set_tile_animation_separation,
       this._owner,
       _atlas_coords, _separation
     );
@@ -638,7 +639,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   get_tile_animation_separation(_atlas_coords) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tile_animation_separation,
+      TileSetAtlasSource._bindings.method_get_tile_animation_separation,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -648,7 +649,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   set_tile_animation_speed(_atlas_coords, _speed) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tile_animation_speed,
+      TileSetAtlasSource._bindings.method_set_tile_animation_speed,
       this._owner,
       _atlas_coords, _speed
     );
@@ -656,7 +657,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   get_tile_animation_speed(_atlas_coords) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tile_animation_speed,
+      TileSetAtlasSource._bindings.method_get_tile_animation_speed,
       this._owner,
 			Variant.Type.FLOAT,
       _atlas_coords
@@ -665,7 +666,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   set_tile_animation_mode(_atlas_coords, _mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tile_animation_mode,
+      TileSetAtlasSource._bindings.method_set_tile_animation_mode,
       this._owner,
       _atlas_coords, _mode
     );
@@ -673,7 +674,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   get_tile_animation_mode(_atlas_coords) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tile_animation_mode,
+      TileSetAtlasSource._bindings.method_get_tile_animation_mode,
       this._owner,
 			Variant.INT,
       _atlas_coords
@@ -682,7 +683,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   set_tile_animation_frames_count(_atlas_coords, _frames_count) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tile_animation_frames_count,
+      TileSetAtlasSource._bindings.method_set_tile_animation_frames_count,
       this._owner,
       _atlas_coords, _frames_count
     );
@@ -690,7 +691,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   get_tile_animation_frames_count(_atlas_coords) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tile_animation_frames_count,
+      TileSetAtlasSource._bindings.method_get_tile_animation_frames_count,
       this._owner,
 			Variant.Type.INT,
       _atlas_coords
@@ -699,7 +700,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   set_tile_animation_frame_duration(_atlas_coords, _frame_index, _duration) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tile_animation_frame_duration,
+      TileSetAtlasSource._bindings.method_set_tile_animation_frame_duration,
       this._owner,
       _atlas_coords, _frame_index, _duration
     );
@@ -707,7 +708,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   get_tile_animation_frame_duration(_atlas_coords, _frame_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tile_animation_frame_duration,
+      TileSetAtlasSource._bindings.method_get_tile_animation_frame_duration,
       this._owner,
 			Variant.Type.FLOAT,
       _atlas_coords, _frame_index
@@ -716,7 +717,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   get_tile_animation_total_duration(_atlas_coords) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tile_animation_total_duration,
+      TileSetAtlasSource._bindings.method_get_tile_animation_total_duration,
       this._owner,
 			Variant.Type.FLOAT,
       _atlas_coords
@@ -725,7 +726,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   create_alternative_tile(_atlas_coords, _alternative_id_override) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_alternative_tile,
+      TileSetAtlasSource._bindings.method_create_alternative_tile,
       this._owner,
 			Variant.Type.INT,
       _atlas_coords, _alternative_id_override
@@ -734,7 +735,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   remove_alternative_tile(_atlas_coords, _alternative_tile) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_alternative_tile,
+      TileSetAtlasSource._bindings.method_remove_alternative_tile,
       this._owner,
       _atlas_coords, _alternative_tile
     );
@@ -742,7 +743,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   set_alternative_tile_id(_atlas_coords, _alternative_tile, _new_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_alternative_tile_id,
+      TileSetAtlasSource._bindings.method_set_alternative_tile_id,
       this._owner,
       _atlas_coords, _alternative_tile, _new_id
     );
@@ -750,7 +751,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   get_next_alternative_tile_id(_atlas_coords) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_next_alternative_tile_id,
+      TileSetAtlasSource._bindings.method_get_next_alternative_tile_id,
       this._owner,
 			Variant.Type.INT,
       _atlas_coords
@@ -759,7 +760,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   get_tile_data(_atlas_coords, _alternative_tile) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tile_data,
+      TileSetAtlasSource._bindings.method_get_tile_data,
       this._owner,
 			Variant.INT,
       _atlas_coords, _alternative_tile
@@ -768,7 +769,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   get_atlas_grid_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_atlas_grid_size,
+      TileSetAtlasSource._bindings.method_get_atlas_grid_size,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -778,7 +779,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   get_tile_texture_region(_atlas_coords, _frame) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tile_texture_region,
+      TileSetAtlasSource._bindings.method_get_tile_texture_region,
       this._owner,
 			Variant.Type.RECT2I,
     
@@ -788,7 +789,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   get_runtime_texture() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_runtime_texture,
+      TileSetAtlasSource._bindings.method_get_runtime_texture,
       this._owner,
 			Variant.INT,
       
@@ -797,7 +798,7 @@ export class TileSetAtlasSource extends TileSetSource{
   }
   get_runtime_tile_texture_region(_atlas_coords, _frame) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_runtime_tile_texture_region,
+      TileSetAtlasSource._bindings.method_get_runtime_tile_texture_region,
       this._owner,
 			Variant.Type.RECT2I,
     

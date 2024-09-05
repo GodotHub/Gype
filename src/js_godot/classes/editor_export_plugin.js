@@ -1,11 +1,11 @@
 import * as internal from '__internal__';
-import { Dictionary } from '@js_godot/variant/dictionary'
+import { RefCounted } from '@js_godot/classes/ref_counted'
 import { Variant } from '@js_godot/variant/variant'
 import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
-import { RefCounted } from '@js_godot/classes/ref_counted'
 import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { StringName } from '@js_godot/variant/string_name'
+import { Dictionary } from '@js_godot/variant/dictionary'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -154,6 +154,7 @@ export class EditorExportPlugin extends RefCounted{
       );
     }
   }
+  
   _export_file(_path, _type, _features) {
   }
   _export_begin(_features, _is_debug, _path, _flags) {
@@ -202,7 +203,7 @@ export class EditorExportPlugin extends RefCounted{
   }
   add_shared_object(_path, _tags, _target) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_shared_object,
+      EditorExportPlugin._bindings.method_add_shared_object,
       this._owner,
       _path, _tags, _target
     );
@@ -210,7 +211,7 @@ export class EditorExportPlugin extends RefCounted{
   }
   add_ios_project_static_lib(_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_ios_project_static_lib,
+      EditorExportPlugin._bindings.method_add_ios_project_static_lib,
       this._owner,
       _path
     );
@@ -218,7 +219,7 @@ export class EditorExportPlugin extends RefCounted{
   }
   add_file(_path, _file, _remap) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_file,
+      EditorExportPlugin._bindings.method_add_file,
       this._owner,
       _path, _file, _remap
     );
@@ -226,7 +227,7 @@ export class EditorExportPlugin extends RefCounted{
   }
   add_ios_framework(_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_ios_framework,
+      EditorExportPlugin._bindings.method_add_ios_framework,
       this._owner,
       _path
     );
@@ -234,7 +235,7 @@ export class EditorExportPlugin extends RefCounted{
   }
   add_ios_embedded_framework(_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_ios_embedded_framework,
+      EditorExportPlugin._bindings.method_add_ios_embedded_framework,
       this._owner,
       _path
     );
@@ -242,7 +243,7 @@ export class EditorExportPlugin extends RefCounted{
   }
   add_ios_plist_content(_plist_content) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_ios_plist_content,
+      EditorExportPlugin._bindings.method_add_ios_plist_content,
       this._owner,
       _plist_content
     );
@@ -250,7 +251,7 @@ export class EditorExportPlugin extends RefCounted{
   }
   add_ios_linker_flags(_flags) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_ios_linker_flags,
+      EditorExportPlugin._bindings.method_add_ios_linker_flags,
       this._owner,
       _flags
     );
@@ -258,7 +259,7 @@ export class EditorExportPlugin extends RefCounted{
   }
   add_ios_bundle_file(_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_ios_bundle_file,
+      EditorExportPlugin._bindings.method_add_ios_bundle_file,
       this._owner,
       _path
     );
@@ -266,7 +267,7 @@ export class EditorExportPlugin extends RefCounted{
   }
   add_ios_cpp_code(_code) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_ios_cpp_code,
+      EditorExportPlugin._bindings.method_add_ios_cpp_code,
       this._owner,
       _code
     );
@@ -274,7 +275,7 @@ export class EditorExportPlugin extends RefCounted{
   }
   add_macos_plugin_file(_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_macos_plugin_file,
+      EditorExportPlugin._bindings.method_add_macos_plugin_file,
       this._owner,
       _path
     );
@@ -282,7 +283,7 @@ export class EditorExportPlugin extends RefCounted{
   }
   skip() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_skip,
+      EditorExportPlugin._bindings.method_skip,
       this._owner,
       
     );
@@ -290,7 +291,7 @@ export class EditorExportPlugin extends RefCounted{
   }
   get_option(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_option,
+      EditorExportPlugin._bindings.method_get_option,
       this._owner,
 			Variant.Type.VARIANT,
     

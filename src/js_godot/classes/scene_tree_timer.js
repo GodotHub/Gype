@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -50,9 +50,10 @@ export class SceneTreeTimer extends RefCounted{
       );
     }
   }
+  
   set_time_left(_time) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_time_left,
+      SceneTreeTimer._bindings.method_set_time_left,
       this._owner,
       _time
     );
@@ -60,7 +61,7 @@ export class SceneTreeTimer extends RefCounted{
   }
   get_time_left() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_time_left,
+      SceneTreeTimer._bindings.method_get_time_left,
       this._owner,
 			Variant.Type.FLOAT,
       

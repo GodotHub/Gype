@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { CanvasLayer } from '@js_godot/classes/canvas_layer'
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { CanvasLayer } from '@js_godot/classes/canvas_layer'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -151,9 +151,10 @@ export class ParallaxBackground extends CanvasLayer{
       );
     }
   }
+  
   set_scroll_offset(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_scroll_offset,
+      ParallaxBackground._bindings.method_set_scroll_offset,
       this._owner,
       _offset
     );
@@ -161,7 +162,7 @@ export class ParallaxBackground extends CanvasLayer{
   }
   get_scroll_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_scroll_offset,
+      ParallaxBackground._bindings.method_get_scroll_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -171,7 +172,7 @@ export class ParallaxBackground extends CanvasLayer{
   }
   set_scroll_base_offset(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_scroll_base_offset,
+      ParallaxBackground._bindings.method_set_scroll_base_offset,
       this._owner,
       _offset
     );
@@ -179,7 +180,7 @@ export class ParallaxBackground extends CanvasLayer{
   }
   get_scroll_base_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_scroll_base_offset,
+      ParallaxBackground._bindings.method_get_scroll_base_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -189,7 +190,7 @@ export class ParallaxBackground extends CanvasLayer{
   }
   set_scroll_base_scale(_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_scroll_base_scale,
+      ParallaxBackground._bindings.method_set_scroll_base_scale,
       this._owner,
       _scale
     );
@@ -197,7 +198,7 @@ export class ParallaxBackground extends CanvasLayer{
   }
   get_scroll_base_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_scroll_base_scale,
+      ParallaxBackground._bindings.method_get_scroll_base_scale,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -207,7 +208,7 @@ export class ParallaxBackground extends CanvasLayer{
   }
   set_limit_begin(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_limit_begin,
+      ParallaxBackground._bindings.method_set_limit_begin,
       this._owner,
       _offset
     );
@@ -215,7 +216,7 @@ export class ParallaxBackground extends CanvasLayer{
   }
   get_limit_begin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_limit_begin,
+      ParallaxBackground._bindings.method_get_limit_begin,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -225,7 +226,7 @@ export class ParallaxBackground extends CanvasLayer{
   }
   set_limit_end(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_limit_end,
+      ParallaxBackground._bindings.method_set_limit_end,
       this._owner,
       _offset
     );
@@ -233,7 +234,7 @@ export class ParallaxBackground extends CanvasLayer{
   }
   get_limit_end() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_limit_end,
+      ParallaxBackground._bindings.method_get_limit_end,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -243,7 +244,7 @@ export class ParallaxBackground extends CanvasLayer{
   }
   set_ignore_camera_zoom(_ignore) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ignore_camera_zoom,
+      ParallaxBackground._bindings.method_set_ignore_camera_zoom,
       this._owner,
       _ignore
     );
@@ -251,7 +252,7 @@ export class ParallaxBackground extends CanvasLayer{
   }
   is_ignore_camera_zoom() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_ignore_camera_zoom,
+      ParallaxBackground._bindings.method_is_ignore_camera_zoom,
       this._owner,
 			Variant.Type.BOOL,
       

@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Vector3 } from '@js_godot/variant/vector3'
 import { StringName } from '@js_godot/variant/string_name'
 import { Material } from '@js_godot/classes/material'
 import { Color } from '@js_godot/variant/color'
+import { Variant } from '@js_godot/variant/variant'
+import { Vector3 } from '@js_godot/variant/vector3'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -1392,9 +1392,10 @@ export class BaseMaterial3D extends Material{
       );
     }
   }
+  
   set_albedo(_albedo) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_albedo,
+      BaseMaterial3D._bindings.method_set_albedo,
       this._owner,
       _albedo
     );
@@ -1402,7 +1403,7 @@ export class BaseMaterial3D extends Material{
   }
   get_albedo() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_albedo,
+      BaseMaterial3D._bindings.method_get_albedo,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -1412,7 +1413,7 @@ export class BaseMaterial3D extends Material{
   }
   set_transparency(_transparency) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_transparency,
+      BaseMaterial3D._bindings.method_set_transparency,
       this._owner,
       _transparency
     );
@@ -1420,7 +1421,7 @@ export class BaseMaterial3D extends Material{
   }
   get_transparency() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_transparency,
+      BaseMaterial3D._bindings.method_get_transparency,
       this._owner,
 			Variant.INT,
       
@@ -1429,7 +1430,7 @@ export class BaseMaterial3D extends Material{
   }
   set_alpha_antialiasing(_alpha_aa) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_alpha_antialiasing,
+      BaseMaterial3D._bindings.method_set_alpha_antialiasing,
       this._owner,
       _alpha_aa
     );
@@ -1437,7 +1438,7 @@ export class BaseMaterial3D extends Material{
   }
   get_alpha_antialiasing() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_alpha_antialiasing,
+      BaseMaterial3D._bindings.method_get_alpha_antialiasing,
       this._owner,
 			Variant.INT,
       
@@ -1446,7 +1447,7 @@ export class BaseMaterial3D extends Material{
   }
   set_alpha_antialiasing_edge(_edge) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_alpha_antialiasing_edge,
+      BaseMaterial3D._bindings.method_set_alpha_antialiasing_edge,
       this._owner,
       _edge
     );
@@ -1454,7 +1455,7 @@ export class BaseMaterial3D extends Material{
   }
   get_alpha_antialiasing_edge() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_alpha_antialiasing_edge,
+      BaseMaterial3D._bindings.method_get_alpha_antialiasing_edge,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1463,7 +1464,7 @@ export class BaseMaterial3D extends Material{
   }
   set_shading_mode(_shading_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shading_mode,
+      BaseMaterial3D._bindings.method_set_shading_mode,
       this._owner,
       _shading_mode
     );
@@ -1471,7 +1472,7 @@ export class BaseMaterial3D extends Material{
   }
   get_shading_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_shading_mode,
+      BaseMaterial3D._bindings.method_get_shading_mode,
       this._owner,
 			Variant.INT,
       
@@ -1480,7 +1481,7 @@ export class BaseMaterial3D extends Material{
   }
   set_specular(_specular) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_specular,
+      BaseMaterial3D._bindings.method_set_specular,
       this._owner,
       _specular
     );
@@ -1488,7 +1489,7 @@ export class BaseMaterial3D extends Material{
   }
   get_specular() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_specular,
+      BaseMaterial3D._bindings.method_get_specular,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1497,7 +1498,7 @@ export class BaseMaterial3D extends Material{
   }
   set_metallic(_metallic) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_metallic,
+      BaseMaterial3D._bindings.method_set_metallic,
       this._owner,
       _metallic
     );
@@ -1505,7 +1506,7 @@ export class BaseMaterial3D extends Material{
   }
   get_metallic() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_metallic,
+      BaseMaterial3D._bindings.method_get_metallic,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1514,7 +1515,7 @@ export class BaseMaterial3D extends Material{
   }
   set_roughness(_roughness) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_roughness,
+      BaseMaterial3D._bindings.method_set_roughness,
       this._owner,
       _roughness
     );
@@ -1522,7 +1523,7 @@ export class BaseMaterial3D extends Material{
   }
   get_roughness() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_roughness,
+      BaseMaterial3D._bindings.method_get_roughness,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1531,7 +1532,7 @@ export class BaseMaterial3D extends Material{
   }
   set_emission(_emission) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_emission,
+      BaseMaterial3D._bindings.method_set_emission,
       this._owner,
       _emission
     );
@@ -1539,7 +1540,7 @@ export class BaseMaterial3D extends Material{
   }
   get_emission() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_emission,
+      BaseMaterial3D._bindings.method_get_emission,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -1549,7 +1550,7 @@ export class BaseMaterial3D extends Material{
   }
   set_emission_energy_multiplier(_emission_energy_multiplier) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_emission_energy_multiplier,
+      BaseMaterial3D._bindings.method_set_emission_energy_multiplier,
       this._owner,
       _emission_energy_multiplier
     );
@@ -1557,7 +1558,7 @@ export class BaseMaterial3D extends Material{
   }
   get_emission_energy_multiplier() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_emission_energy_multiplier,
+      BaseMaterial3D._bindings.method_get_emission_energy_multiplier,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1566,7 +1567,7 @@ export class BaseMaterial3D extends Material{
   }
   set_emission_intensity(_emission_energy_multiplier) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_emission_intensity,
+      BaseMaterial3D._bindings.method_set_emission_intensity,
       this._owner,
       _emission_energy_multiplier
     );
@@ -1574,7 +1575,7 @@ export class BaseMaterial3D extends Material{
   }
   get_emission_intensity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_emission_intensity,
+      BaseMaterial3D._bindings.method_get_emission_intensity,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1583,7 +1584,7 @@ export class BaseMaterial3D extends Material{
   }
   set_normal_scale(_normal_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_normal_scale,
+      BaseMaterial3D._bindings.method_set_normal_scale,
       this._owner,
       _normal_scale
     );
@@ -1591,7 +1592,7 @@ export class BaseMaterial3D extends Material{
   }
   get_normal_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_normal_scale,
+      BaseMaterial3D._bindings.method_get_normal_scale,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1600,7 +1601,7 @@ export class BaseMaterial3D extends Material{
   }
   set_rim(_rim) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_rim,
+      BaseMaterial3D._bindings.method_set_rim,
       this._owner,
       _rim
     );
@@ -1608,7 +1609,7 @@ export class BaseMaterial3D extends Material{
   }
   get_rim() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rim,
+      BaseMaterial3D._bindings.method_get_rim,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1617,7 +1618,7 @@ export class BaseMaterial3D extends Material{
   }
   set_rim_tint(_rim_tint) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_rim_tint,
+      BaseMaterial3D._bindings.method_set_rim_tint,
       this._owner,
       _rim_tint
     );
@@ -1625,7 +1626,7 @@ export class BaseMaterial3D extends Material{
   }
   get_rim_tint() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rim_tint,
+      BaseMaterial3D._bindings.method_get_rim_tint,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1634,7 +1635,7 @@ export class BaseMaterial3D extends Material{
   }
   set_clearcoat(_clearcoat) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_clearcoat,
+      BaseMaterial3D._bindings.method_set_clearcoat,
       this._owner,
       _clearcoat
     );
@@ -1642,7 +1643,7 @@ export class BaseMaterial3D extends Material{
   }
   get_clearcoat() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_clearcoat,
+      BaseMaterial3D._bindings.method_get_clearcoat,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1651,7 +1652,7 @@ export class BaseMaterial3D extends Material{
   }
   set_clearcoat_roughness(_clearcoat_roughness) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_clearcoat_roughness,
+      BaseMaterial3D._bindings.method_set_clearcoat_roughness,
       this._owner,
       _clearcoat_roughness
     );
@@ -1659,7 +1660,7 @@ export class BaseMaterial3D extends Material{
   }
   get_clearcoat_roughness() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_clearcoat_roughness,
+      BaseMaterial3D._bindings.method_get_clearcoat_roughness,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1668,7 +1669,7 @@ export class BaseMaterial3D extends Material{
   }
   set_anisotropy(_anisotropy) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_anisotropy,
+      BaseMaterial3D._bindings.method_set_anisotropy,
       this._owner,
       _anisotropy
     );
@@ -1676,7 +1677,7 @@ export class BaseMaterial3D extends Material{
   }
   get_anisotropy() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_anisotropy,
+      BaseMaterial3D._bindings.method_get_anisotropy,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1685,7 +1686,7 @@ export class BaseMaterial3D extends Material{
   }
   set_heightmap_scale(_heightmap_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_heightmap_scale,
+      BaseMaterial3D._bindings.method_set_heightmap_scale,
       this._owner,
       _heightmap_scale
     );
@@ -1693,7 +1694,7 @@ export class BaseMaterial3D extends Material{
   }
   get_heightmap_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_heightmap_scale,
+      BaseMaterial3D._bindings.method_get_heightmap_scale,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1702,7 +1703,7 @@ export class BaseMaterial3D extends Material{
   }
   set_subsurface_scattering_strength(_strength) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_subsurface_scattering_strength,
+      BaseMaterial3D._bindings.method_set_subsurface_scattering_strength,
       this._owner,
       _strength
     );
@@ -1710,7 +1711,7 @@ export class BaseMaterial3D extends Material{
   }
   get_subsurface_scattering_strength() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_subsurface_scattering_strength,
+      BaseMaterial3D._bindings.method_get_subsurface_scattering_strength,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1719,7 +1720,7 @@ export class BaseMaterial3D extends Material{
   }
   set_transmittance_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_transmittance_color,
+      BaseMaterial3D._bindings.method_set_transmittance_color,
       this._owner,
       _color
     );
@@ -1727,7 +1728,7 @@ export class BaseMaterial3D extends Material{
   }
   get_transmittance_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_transmittance_color,
+      BaseMaterial3D._bindings.method_get_transmittance_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -1737,7 +1738,7 @@ export class BaseMaterial3D extends Material{
   }
   set_transmittance_depth(_depth) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_transmittance_depth,
+      BaseMaterial3D._bindings.method_set_transmittance_depth,
       this._owner,
       _depth
     );
@@ -1745,7 +1746,7 @@ export class BaseMaterial3D extends Material{
   }
   get_transmittance_depth() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_transmittance_depth,
+      BaseMaterial3D._bindings.method_get_transmittance_depth,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1754,7 +1755,7 @@ export class BaseMaterial3D extends Material{
   }
   set_transmittance_boost(_boost) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_transmittance_boost,
+      BaseMaterial3D._bindings.method_set_transmittance_boost,
       this._owner,
       _boost
     );
@@ -1762,7 +1763,7 @@ export class BaseMaterial3D extends Material{
   }
   get_transmittance_boost() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_transmittance_boost,
+      BaseMaterial3D._bindings.method_get_transmittance_boost,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1771,7 +1772,7 @@ export class BaseMaterial3D extends Material{
   }
   set_backlight(_backlight) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_backlight,
+      BaseMaterial3D._bindings.method_set_backlight,
       this._owner,
       _backlight
     );
@@ -1779,7 +1780,7 @@ export class BaseMaterial3D extends Material{
   }
   get_backlight() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_backlight,
+      BaseMaterial3D._bindings.method_get_backlight,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -1789,7 +1790,7 @@ export class BaseMaterial3D extends Material{
   }
   set_refraction(_refraction) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_refraction,
+      BaseMaterial3D._bindings.method_set_refraction,
       this._owner,
       _refraction
     );
@@ -1797,7 +1798,7 @@ export class BaseMaterial3D extends Material{
   }
   get_refraction() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_refraction,
+      BaseMaterial3D._bindings.method_get_refraction,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1806,7 +1807,7 @@ export class BaseMaterial3D extends Material{
   }
   set_point_size(_point_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_point_size,
+      BaseMaterial3D._bindings.method_set_point_size,
       this._owner,
       _point_size
     );
@@ -1814,7 +1815,7 @@ export class BaseMaterial3D extends Material{
   }
   get_point_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_point_size,
+      BaseMaterial3D._bindings.method_get_point_size,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1823,7 +1824,7 @@ export class BaseMaterial3D extends Material{
   }
   set_detail_uv(_detail_uv) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_detail_uv,
+      BaseMaterial3D._bindings.method_set_detail_uv,
       this._owner,
       _detail_uv
     );
@@ -1831,7 +1832,7 @@ export class BaseMaterial3D extends Material{
   }
   get_detail_uv() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_detail_uv,
+      BaseMaterial3D._bindings.method_get_detail_uv,
       this._owner,
 			Variant.INT,
       
@@ -1840,7 +1841,7 @@ export class BaseMaterial3D extends Material{
   }
   set_blend_mode(_blend_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_blend_mode,
+      BaseMaterial3D._bindings.method_set_blend_mode,
       this._owner,
       _blend_mode
     );
@@ -1848,7 +1849,7 @@ export class BaseMaterial3D extends Material{
   }
   get_blend_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_blend_mode,
+      BaseMaterial3D._bindings.method_get_blend_mode,
       this._owner,
 			Variant.INT,
       
@@ -1857,7 +1858,7 @@ export class BaseMaterial3D extends Material{
   }
   set_depth_draw_mode(_depth_draw_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_depth_draw_mode,
+      BaseMaterial3D._bindings.method_set_depth_draw_mode,
       this._owner,
       _depth_draw_mode
     );
@@ -1865,7 +1866,7 @@ export class BaseMaterial3D extends Material{
   }
   get_depth_draw_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_depth_draw_mode,
+      BaseMaterial3D._bindings.method_get_depth_draw_mode,
       this._owner,
 			Variant.INT,
       
@@ -1874,7 +1875,7 @@ export class BaseMaterial3D extends Material{
   }
   set_cull_mode(_cull_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cull_mode,
+      BaseMaterial3D._bindings.method_set_cull_mode,
       this._owner,
       _cull_mode
     );
@@ -1882,7 +1883,7 @@ export class BaseMaterial3D extends Material{
   }
   get_cull_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cull_mode,
+      BaseMaterial3D._bindings.method_get_cull_mode,
       this._owner,
 			Variant.INT,
       
@@ -1891,7 +1892,7 @@ export class BaseMaterial3D extends Material{
   }
   set_diffuse_mode(_diffuse_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_diffuse_mode,
+      BaseMaterial3D._bindings.method_set_diffuse_mode,
       this._owner,
       _diffuse_mode
     );
@@ -1899,7 +1900,7 @@ export class BaseMaterial3D extends Material{
   }
   get_diffuse_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_diffuse_mode,
+      BaseMaterial3D._bindings.method_get_diffuse_mode,
       this._owner,
 			Variant.INT,
       
@@ -1908,7 +1909,7 @@ export class BaseMaterial3D extends Material{
   }
   set_specular_mode(_specular_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_specular_mode,
+      BaseMaterial3D._bindings.method_set_specular_mode,
       this._owner,
       _specular_mode
     );
@@ -1916,7 +1917,7 @@ export class BaseMaterial3D extends Material{
   }
   get_specular_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_specular_mode,
+      BaseMaterial3D._bindings.method_get_specular_mode,
       this._owner,
 			Variant.INT,
       
@@ -1925,7 +1926,7 @@ export class BaseMaterial3D extends Material{
   }
   set_flag(_flag, _enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_flag,
+      BaseMaterial3D._bindings.method_set_flag,
       this._owner,
       _flag, _enable
     );
@@ -1933,7 +1934,7 @@ export class BaseMaterial3D extends Material{
   }
   get_flag(_flag) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_flag,
+      BaseMaterial3D._bindings.method_get_flag,
       this._owner,
 			Variant.Type.BOOL,
       _flag
@@ -1942,7 +1943,7 @@ export class BaseMaterial3D extends Material{
   }
   set_texture_filter(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture_filter,
+      BaseMaterial3D._bindings.method_set_texture_filter,
       this._owner,
       _mode
     );
@@ -1950,7 +1951,7 @@ export class BaseMaterial3D extends Material{
   }
   get_texture_filter() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_filter,
+      BaseMaterial3D._bindings.method_get_texture_filter,
       this._owner,
 			Variant.INT,
       
@@ -1959,7 +1960,7 @@ export class BaseMaterial3D extends Material{
   }
   set_feature(_feature, _enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_feature,
+      BaseMaterial3D._bindings.method_set_feature,
       this._owner,
       _feature, _enable
     );
@@ -1967,7 +1968,7 @@ export class BaseMaterial3D extends Material{
   }
   get_feature(_feature) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_feature,
+      BaseMaterial3D._bindings.method_get_feature,
       this._owner,
 			Variant.Type.BOOL,
       _feature
@@ -1976,7 +1977,7 @@ export class BaseMaterial3D extends Material{
   }
   set_texture(_param, _texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture,
+      BaseMaterial3D._bindings.method_set_texture,
       this._owner,
       _param, _texture
     );
@@ -1984,7 +1985,7 @@ export class BaseMaterial3D extends Material{
   }
   get_texture(_param) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture,
+      BaseMaterial3D._bindings.method_get_texture,
       this._owner,
 			Variant.INT,
       _param
@@ -1993,7 +1994,7 @@ export class BaseMaterial3D extends Material{
   }
   set_detail_blend_mode(_detail_blend_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_detail_blend_mode,
+      BaseMaterial3D._bindings.method_set_detail_blend_mode,
       this._owner,
       _detail_blend_mode
     );
@@ -2001,7 +2002,7 @@ export class BaseMaterial3D extends Material{
   }
   get_detail_blend_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_detail_blend_mode,
+      BaseMaterial3D._bindings.method_get_detail_blend_mode,
       this._owner,
 			Variant.INT,
       
@@ -2010,7 +2011,7 @@ export class BaseMaterial3D extends Material{
   }
   set_uv1_scale(_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_uv1_scale,
+      BaseMaterial3D._bindings.method_set_uv1_scale,
       this._owner,
       _scale
     );
@@ -2018,7 +2019,7 @@ export class BaseMaterial3D extends Material{
   }
   get_uv1_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_uv1_scale,
+      BaseMaterial3D._bindings.method_get_uv1_scale,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -2028,7 +2029,7 @@ export class BaseMaterial3D extends Material{
   }
   set_uv1_offset(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_uv1_offset,
+      BaseMaterial3D._bindings.method_set_uv1_offset,
       this._owner,
       _offset
     );
@@ -2036,7 +2037,7 @@ export class BaseMaterial3D extends Material{
   }
   get_uv1_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_uv1_offset,
+      BaseMaterial3D._bindings.method_get_uv1_offset,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -2046,7 +2047,7 @@ export class BaseMaterial3D extends Material{
   }
   set_uv1_triplanar_blend_sharpness(_sharpness) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_uv1_triplanar_blend_sharpness,
+      BaseMaterial3D._bindings.method_set_uv1_triplanar_blend_sharpness,
       this._owner,
       _sharpness
     );
@@ -2054,7 +2055,7 @@ export class BaseMaterial3D extends Material{
   }
   get_uv1_triplanar_blend_sharpness() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_uv1_triplanar_blend_sharpness,
+      BaseMaterial3D._bindings.method_get_uv1_triplanar_blend_sharpness,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2063,7 +2064,7 @@ export class BaseMaterial3D extends Material{
   }
   set_uv2_scale(_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_uv2_scale,
+      BaseMaterial3D._bindings.method_set_uv2_scale,
       this._owner,
       _scale
     );
@@ -2071,7 +2072,7 @@ export class BaseMaterial3D extends Material{
   }
   get_uv2_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_uv2_scale,
+      BaseMaterial3D._bindings.method_get_uv2_scale,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -2081,7 +2082,7 @@ export class BaseMaterial3D extends Material{
   }
   set_uv2_offset(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_uv2_offset,
+      BaseMaterial3D._bindings.method_set_uv2_offset,
       this._owner,
       _offset
     );
@@ -2089,7 +2090,7 @@ export class BaseMaterial3D extends Material{
   }
   get_uv2_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_uv2_offset,
+      BaseMaterial3D._bindings.method_get_uv2_offset,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -2099,7 +2100,7 @@ export class BaseMaterial3D extends Material{
   }
   set_uv2_triplanar_blend_sharpness(_sharpness) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_uv2_triplanar_blend_sharpness,
+      BaseMaterial3D._bindings.method_set_uv2_triplanar_blend_sharpness,
       this._owner,
       _sharpness
     );
@@ -2107,7 +2108,7 @@ export class BaseMaterial3D extends Material{
   }
   get_uv2_triplanar_blend_sharpness() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_uv2_triplanar_blend_sharpness,
+      BaseMaterial3D._bindings.method_get_uv2_triplanar_blend_sharpness,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2116,7 +2117,7 @@ export class BaseMaterial3D extends Material{
   }
   set_billboard_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_billboard_mode,
+      BaseMaterial3D._bindings.method_set_billboard_mode,
       this._owner,
       _mode
     );
@@ -2124,7 +2125,7 @@ export class BaseMaterial3D extends Material{
   }
   get_billboard_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_billboard_mode,
+      BaseMaterial3D._bindings.method_get_billboard_mode,
       this._owner,
 			Variant.INT,
       
@@ -2133,7 +2134,7 @@ export class BaseMaterial3D extends Material{
   }
   set_particles_anim_h_frames(_frames) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_particles_anim_h_frames,
+      BaseMaterial3D._bindings.method_set_particles_anim_h_frames,
       this._owner,
       _frames
     );
@@ -2141,7 +2142,7 @@ export class BaseMaterial3D extends Material{
   }
   get_particles_anim_h_frames() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_particles_anim_h_frames,
+      BaseMaterial3D._bindings.method_get_particles_anim_h_frames,
       this._owner,
 			Variant.Type.INT,
       
@@ -2150,7 +2151,7 @@ export class BaseMaterial3D extends Material{
   }
   set_particles_anim_v_frames(_frames) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_particles_anim_v_frames,
+      BaseMaterial3D._bindings.method_set_particles_anim_v_frames,
       this._owner,
       _frames
     );
@@ -2158,7 +2159,7 @@ export class BaseMaterial3D extends Material{
   }
   get_particles_anim_v_frames() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_particles_anim_v_frames,
+      BaseMaterial3D._bindings.method_get_particles_anim_v_frames,
       this._owner,
 			Variant.Type.INT,
       
@@ -2167,7 +2168,7 @@ export class BaseMaterial3D extends Material{
   }
   set_particles_anim_loop(_loop) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_particles_anim_loop,
+      BaseMaterial3D._bindings.method_set_particles_anim_loop,
       this._owner,
       _loop
     );
@@ -2175,7 +2176,7 @@ export class BaseMaterial3D extends Material{
   }
   get_particles_anim_loop() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_particles_anim_loop,
+      BaseMaterial3D._bindings.method_get_particles_anim_loop,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2184,7 +2185,7 @@ export class BaseMaterial3D extends Material{
   }
   set_heightmap_deep_parallax(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_heightmap_deep_parallax,
+      BaseMaterial3D._bindings.method_set_heightmap_deep_parallax,
       this._owner,
       _enable
     );
@@ -2192,7 +2193,7 @@ export class BaseMaterial3D extends Material{
   }
   is_heightmap_deep_parallax_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_heightmap_deep_parallax_enabled,
+      BaseMaterial3D._bindings.method_is_heightmap_deep_parallax_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2201,7 +2202,7 @@ export class BaseMaterial3D extends Material{
   }
   set_heightmap_deep_parallax_min_layers(_layer) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_heightmap_deep_parallax_min_layers,
+      BaseMaterial3D._bindings.method_set_heightmap_deep_parallax_min_layers,
       this._owner,
       _layer
     );
@@ -2209,7 +2210,7 @@ export class BaseMaterial3D extends Material{
   }
   get_heightmap_deep_parallax_min_layers() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_heightmap_deep_parallax_min_layers,
+      BaseMaterial3D._bindings.method_get_heightmap_deep_parallax_min_layers,
       this._owner,
 			Variant.Type.INT,
       
@@ -2218,7 +2219,7 @@ export class BaseMaterial3D extends Material{
   }
   set_heightmap_deep_parallax_max_layers(_layer) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_heightmap_deep_parallax_max_layers,
+      BaseMaterial3D._bindings.method_set_heightmap_deep_parallax_max_layers,
       this._owner,
       _layer
     );
@@ -2226,7 +2227,7 @@ export class BaseMaterial3D extends Material{
   }
   get_heightmap_deep_parallax_max_layers() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_heightmap_deep_parallax_max_layers,
+      BaseMaterial3D._bindings.method_get_heightmap_deep_parallax_max_layers,
       this._owner,
 			Variant.Type.INT,
       
@@ -2235,7 +2236,7 @@ export class BaseMaterial3D extends Material{
   }
   set_heightmap_deep_parallax_flip_tangent(_flip) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_heightmap_deep_parallax_flip_tangent,
+      BaseMaterial3D._bindings.method_set_heightmap_deep_parallax_flip_tangent,
       this._owner,
       _flip
     );
@@ -2243,7 +2244,7 @@ export class BaseMaterial3D extends Material{
   }
   get_heightmap_deep_parallax_flip_tangent() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_heightmap_deep_parallax_flip_tangent,
+      BaseMaterial3D._bindings.method_get_heightmap_deep_parallax_flip_tangent,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2252,7 +2253,7 @@ export class BaseMaterial3D extends Material{
   }
   set_heightmap_deep_parallax_flip_binormal(_flip) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_heightmap_deep_parallax_flip_binormal,
+      BaseMaterial3D._bindings.method_set_heightmap_deep_parallax_flip_binormal,
       this._owner,
       _flip
     );
@@ -2260,7 +2261,7 @@ export class BaseMaterial3D extends Material{
   }
   get_heightmap_deep_parallax_flip_binormal() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_heightmap_deep_parallax_flip_binormal,
+      BaseMaterial3D._bindings.method_get_heightmap_deep_parallax_flip_binormal,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2269,7 +2270,7 @@ export class BaseMaterial3D extends Material{
   }
   set_grow(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_grow,
+      BaseMaterial3D._bindings.method_set_grow,
       this._owner,
       _amount
     );
@@ -2277,7 +2278,7 @@ export class BaseMaterial3D extends Material{
   }
   get_grow() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_grow,
+      BaseMaterial3D._bindings.method_get_grow,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2286,7 +2287,7 @@ export class BaseMaterial3D extends Material{
   }
   set_emission_operator(_operator) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_emission_operator,
+      BaseMaterial3D._bindings.method_set_emission_operator,
       this._owner,
       _operator
     );
@@ -2294,7 +2295,7 @@ export class BaseMaterial3D extends Material{
   }
   get_emission_operator() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_emission_operator,
+      BaseMaterial3D._bindings.method_get_emission_operator,
       this._owner,
 			Variant.INT,
       
@@ -2303,7 +2304,7 @@ export class BaseMaterial3D extends Material{
   }
   set_ao_light_affect(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ao_light_affect,
+      BaseMaterial3D._bindings.method_set_ao_light_affect,
       this._owner,
       _amount
     );
@@ -2311,7 +2312,7 @@ export class BaseMaterial3D extends Material{
   }
   get_ao_light_affect() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ao_light_affect,
+      BaseMaterial3D._bindings.method_get_ao_light_affect,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2320,7 +2321,7 @@ export class BaseMaterial3D extends Material{
   }
   set_alpha_scissor_threshold(_threshold) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_alpha_scissor_threshold,
+      BaseMaterial3D._bindings.method_set_alpha_scissor_threshold,
       this._owner,
       _threshold
     );
@@ -2328,7 +2329,7 @@ export class BaseMaterial3D extends Material{
   }
   get_alpha_scissor_threshold() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_alpha_scissor_threshold,
+      BaseMaterial3D._bindings.method_get_alpha_scissor_threshold,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2337,7 +2338,7 @@ export class BaseMaterial3D extends Material{
   }
   set_alpha_hash_scale(_threshold) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_alpha_hash_scale,
+      BaseMaterial3D._bindings.method_set_alpha_hash_scale,
       this._owner,
       _threshold
     );
@@ -2345,7 +2346,7 @@ export class BaseMaterial3D extends Material{
   }
   get_alpha_hash_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_alpha_hash_scale,
+      BaseMaterial3D._bindings.method_get_alpha_hash_scale,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2354,7 +2355,7 @@ export class BaseMaterial3D extends Material{
   }
   set_grow_enabled(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_grow_enabled,
+      BaseMaterial3D._bindings.method_set_grow_enabled,
       this._owner,
       _enable
     );
@@ -2362,7 +2363,7 @@ export class BaseMaterial3D extends Material{
   }
   is_grow_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_grow_enabled,
+      BaseMaterial3D._bindings.method_is_grow_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2371,7 +2372,7 @@ export class BaseMaterial3D extends Material{
   }
   set_metallic_texture_channel(_channel) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_metallic_texture_channel,
+      BaseMaterial3D._bindings.method_set_metallic_texture_channel,
       this._owner,
       _channel
     );
@@ -2379,7 +2380,7 @@ export class BaseMaterial3D extends Material{
   }
   get_metallic_texture_channel() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_metallic_texture_channel,
+      BaseMaterial3D._bindings.method_get_metallic_texture_channel,
       this._owner,
 			Variant.INT,
       
@@ -2388,7 +2389,7 @@ export class BaseMaterial3D extends Material{
   }
   set_roughness_texture_channel(_channel) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_roughness_texture_channel,
+      BaseMaterial3D._bindings.method_set_roughness_texture_channel,
       this._owner,
       _channel
     );
@@ -2396,7 +2397,7 @@ export class BaseMaterial3D extends Material{
   }
   get_roughness_texture_channel() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_roughness_texture_channel,
+      BaseMaterial3D._bindings.method_get_roughness_texture_channel,
       this._owner,
 			Variant.INT,
       
@@ -2405,7 +2406,7 @@ export class BaseMaterial3D extends Material{
   }
   set_ao_texture_channel(_channel) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ao_texture_channel,
+      BaseMaterial3D._bindings.method_set_ao_texture_channel,
       this._owner,
       _channel
     );
@@ -2413,7 +2414,7 @@ export class BaseMaterial3D extends Material{
   }
   get_ao_texture_channel() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ao_texture_channel,
+      BaseMaterial3D._bindings.method_get_ao_texture_channel,
       this._owner,
 			Variant.INT,
       
@@ -2422,7 +2423,7 @@ export class BaseMaterial3D extends Material{
   }
   set_refraction_texture_channel(_channel) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_refraction_texture_channel,
+      BaseMaterial3D._bindings.method_set_refraction_texture_channel,
       this._owner,
       _channel
     );
@@ -2430,7 +2431,7 @@ export class BaseMaterial3D extends Material{
   }
   get_refraction_texture_channel() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_refraction_texture_channel,
+      BaseMaterial3D._bindings.method_get_refraction_texture_channel,
       this._owner,
 			Variant.INT,
       
@@ -2439,7 +2440,7 @@ export class BaseMaterial3D extends Material{
   }
   set_proximity_fade_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_proximity_fade_enabled,
+      BaseMaterial3D._bindings.method_set_proximity_fade_enabled,
       this._owner,
       _enabled
     );
@@ -2447,7 +2448,7 @@ export class BaseMaterial3D extends Material{
   }
   is_proximity_fade_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_proximity_fade_enabled,
+      BaseMaterial3D._bindings.method_is_proximity_fade_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2456,7 +2457,7 @@ export class BaseMaterial3D extends Material{
   }
   set_proximity_fade_distance(_distance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_proximity_fade_distance,
+      BaseMaterial3D._bindings.method_set_proximity_fade_distance,
       this._owner,
       _distance
     );
@@ -2464,7 +2465,7 @@ export class BaseMaterial3D extends Material{
   }
   get_proximity_fade_distance() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_proximity_fade_distance,
+      BaseMaterial3D._bindings.method_get_proximity_fade_distance,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2473,7 +2474,7 @@ export class BaseMaterial3D extends Material{
   }
   set_msdf_pixel_range(_range) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_msdf_pixel_range,
+      BaseMaterial3D._bindings.method_set_msdf_pixel_range,
       this._owner,
       _range
     );
@@ -2481,7 +2482,7 @@ export class BaseMaterial3D extends Material{
   }
   get_msdf_pixel_range() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_msdf_pixel_range,
+      BaseMaterial3D._bindings.method_get_msdf_pixel_range,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2490,7 +2491,7 @@ export class BaseMaterial3D extends Material{
   }
   set_msdf_outline_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_msdf_outline_size,
+      BaseMaterial3D._bindings.method_set_msdf_outline_size,
       this._owner,
       _size
     );
@@ -2498,7 +2499,7 @@ export class BaseMaterial3D extends Material{
   }
   get_msdf_outline_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_msdf_outline_size,
+      BaseMaterial3D._bindings.method_get_msdf_outline_size,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2507,7 +2508,7 @@ export class BaseMaterial3D extends Material{
   }
   set_distance_fade(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_distance_fade,
+      BaseMaterial3D._bindings.method_set_distance_fade,
       this._owner,
       _mode
     );
@@ -2515,7 +2516,7 @@ export class BaseMaterial3D extends Material{
   }
   get_distance_fade() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_distance_fade,
+      BaseMaterial3D._bindings.method_get_distance_fade,
       this._owner,
 			Variant.INT,
       
@@ -2524,7 +2525,7 @@ export class BaseMaterial3D extends Material{
   }
   set_distance_fade_max_distance(_distance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_distance_fade_max_distance,
+      BaseMaterial3D._bindings.method_set_distance_fade_max_distance,
       this._owner,
       _distance
     );
@@ -2532,7 +2533,7 @@ export class BaseMaterial3D extends Material{
   }
   get_distance_fade_max_distance() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_distance_fade_max_distance,
+      BaseMaterial3D._bindings.method_get_distance_fade_max_distance,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2541,7 +2542,7 @@ export class BaseMaterial3D extends Material{
   }
   set_distance_fade_min_distance(_distance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_distance_fade_min_distance,
+      BaseMaterial3D._bindings.method_set_distance_fade_min_distance,
       this._owner,
       _distance
     );
@@ -2549,7 +2550,7 @@ export class BaseMaterial3D extends Material{
   }
   get_distance_fade_min_distance() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_distance_fade_min_distance,
+      BaseMaterial3D._bindings.method_get_distance_fade_min_distance,
       this._owner,
 			Variant.Type.FLOAT,
       

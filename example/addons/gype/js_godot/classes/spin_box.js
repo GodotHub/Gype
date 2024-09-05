@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Range } from '@js_godot/classes/range'
+import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { GDString } from '@js_godot/variant/gd_string'
 import {
@@ -191,9 +191,10 @@ export class SpinBox extends Range{
       );
     }
   }
+  
   set_horizontal_alignment(_alignment) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_horizontal_alignment,
+      SpinBox._bindings.method_set_horizontal_alignment,
       this._owner,
       _alignment
     );
@@ -201,7 +202,7 @@ export class SpinBox extends Range{
   }
   get_horizontal_alignment() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_horizontal_alignment,
+      SpinBox._bindings.method_get_horizontal_alignment,
       this._owner,
 			Variant.INT,
       
@@ -210,7 +211,7 @@ export class SpinBox extends Range{
   }
   set_suffix(_suffix) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_suffix,
+      SpinBox._bindings.method_set_suffix,
       this._owner,
       _suffix
     );
@@ -218,7 +219,7 @@ export class SpinBox extends Range{
   }
   get_suffix() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_suffix,
+      SpinBox._bindings.method_get_suffix,
       this._owner,
 			Variant.Type.STRING,
     
@@ -228,7 +229,7 @@ export class SpinBox extends Range{
   }
   set_prefix(_prefix) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_prefix,
+      SpinBox._bindings.method_set_prefix,
       this._owner,
       _prefix
     );
@@ -236,7 +237,7 @@ export class SpinBox extends Range{
   }
   get_prefix() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_prefix,
+      SpinBox._bindings.method_get_prefix,
       this._owner,
 			Variant.Type.STRING,
     
@@ -246,7 +247,7 @@ export class SpinBox extends Range{
   }
   set_editable(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_editable,
+      SpinBox._bindings.method_set_editable,
       this._owner,
       _enabled
     );
@@ -254,7 +255,7 @@ export class SpinBox extends Range{
   }
   set_custom_arrow_step(_arrow_step) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_custom_arrow_step,
+      SpinBox._bindings.method_set_custom_arrow_step,
       this._owner,
       _arrow_step
     );
@@ -262,7 +263,7 @@ export class SpinBox extends Range{
   }
   get_custom_arrow_step() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_custom_arrow_step,
+      SpinBox._bindings.method_get_custom_arrow_step,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -271,7 +272,7 @@ export class SpinBox extends Range{
   }
   is_editable() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_editable,
+      SpinBox._bindings.method_is_editable,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -280,7 +281,7 @@ export class SpinBox extends Range{
   }
   set_update_on_text_changed(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_update_on_text_changed,
+      SpinBox._bindings.method_set_update_on_text_changed,
       this._owner,
       _enabled
     );
@@ -288,7 +289,7 @@ export class SpinBox extends Range{
   }
   get_update_on_text_changed() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_update_on_text_changed,
+      SpinBox._bindings.method_get_update_on_text_changed,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -297,7 +298,7 @@ export class SpinBox extends Range{
   }
   set_select_all_on_focus(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_select_all_on_focus,
+      SpinBox._bindings.method_set_select_all_on_focus,
       this._owner,
       _enabled
     );
@@ -305,7 +306,7 @@ export class SpinBox extends Range{
   }
   is_select_all_on_focus() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_select_all_on_focus,
+      SpinBox._bindings.method_is_select_all_on_focus,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -314,7 +315,7 @@ export class SpinBox extends Range{
   }
   apply() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_apply,
+      SpinBox._bindings.method_apply,
       this._owner,
       
     );
@@ -322,7 +323,7 @@ export class SpinBox extends Range{
   }
   get_line_edit() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_edit,
+      SpinBox._bindings.method_get_line_edit,
       this._owner,
 			Variant.INT,
       

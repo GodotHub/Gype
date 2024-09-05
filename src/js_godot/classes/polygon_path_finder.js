@@ -1,11 +1,11 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Resource } from '@js_godot/classes/resource'
-import { StringName } from '@js_godot/variant/string_name'
 import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
-import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
+import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { StringName } from '@js_godot/variant/string_name'
 import { Rect2 } from '@js_godot/variant/rect2'
+import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -114,9 +114,10 @@ export class PolygonPathFinder extends Resource{
       );
     }
   }
+  
   setup(_points, _connections) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_setup,
+      PolygonPathFinder._bindings.method_setup,
       this._owner,
       _points, _connections
     );
@@ -124,7 +125,7 @@ export class PolygonPathFinder extends Resource{
   }
   find_path(_from, _to) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_find_path,
+      PolygonPathFinder._bindings.method_find_path,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -134,7 +135,7 @@ export class PolygonPathFinder extends Resource{
   }
   get_intersections(_from, _to) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_intersections,
+      PolygonPathFinder._bindings.method_get_intersections,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -144,7 +145,7 @@ export class PolygonPathFinder extends Resource{
   }
   get_closest_point(_point) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_closest_point,
+      PolygonPathFinder._bindings.method_get_closest_point,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -154,7 +155,7 @@ export class PolygonPathFinder extends Resource{
   }
   is_point_inside(_point) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_point_inside,
+      PolygonPathFinder._bindings.method_is_point_inside,
       this._owner,
 			Variant.Type.BOOL,
       _point
@@ -163,7 +164,7 @@ export class PolygonPathFinder extends Resource{
   }
   set_point_penalty(_idx, _penalty) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_point_penalty,
+      PolygonPathFinder._bindings.method_set_point_penalty,
       this._owner,
       _idx, _penalty
     );
@@ -171,7 +172,7 @@ export class PolygonPathFinder extends Resource{
   }
   get_point_penalty(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_point_penalty,
+      PolygonPathFinder._bindings.method_get_point_penalty,
       this._owner,
 			Variant.Type.FLOAT,
       _idx
@@ -180,7 +181,7 @@ export class PolygonPathFinder extends Resource{
   }
   get_bounds() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bounds,
+      PolygonPathFinder._bindings.method_get_bounds,
       this._owner,
 			Variant.Type.RECT2,
     

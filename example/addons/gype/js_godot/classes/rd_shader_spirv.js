@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Resource } from '@js_godot/classes/resource'
 import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
+import { Resource } from '@js_godot/classes/resource'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
@@ -72,9 +72,10 @@ export class RDShaderSPIRV extends Resource{
       );
     }
   }
+  
   set_stage_bytecode(_stage, _bytecode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_stage_bytecode,
+      RDShaderSPIRV._bindings.method_set_stage_bytecode,
       this._owner,
       _stage, _bytecode
     );
@@ -82,7 +83,7 @@ export class RDShaderSPIRV extends Resource{
   }
   get_stage_bytecode(_stage) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_stage_bytecode,
+      RDShaderSPIRV._bindings.method_get_stage_bytecode,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -92,7 +93,7 @@ export class RDShaderSPIRV extends Resource{
   }
   set_stage_compile_error(_stage, _compile_error) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_stage_compile_error,
+      RDShaderSPIRV._bindings.method_set_stage_compile_error,
       this._owner,
       _stage, _compile_error
     );
@@ -100,7 +101,7 @@ export class RDShaderSPIRV extends Resource{
   }
   get_stage_compile_error(_stage) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_stage_compile_error,
+      RDShaderSPIRV._bindings.method_get_stage_compile_error,
       this._owner,
 			Variant.Type.STRING,
     

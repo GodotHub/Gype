@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { Dictionary } from '@js_godot/variant/dictionary'
 import { Variant } from '@js_godot/variant/variant'
-import { GodotObject } from '@js_godot/classes/godot_object'
 import { StringName } from '@js_godot/variant/string_name'
+import { GodotObject } from '@js_godot/classes/godot_object'
+import { Dictionary } from '@js_godot/variant/dictionary'
 import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
@@ -112,6 +112,7 @@ export class EditorVCSInterface extends GodotObject{
       );
     }
   }
+  
   _initialize(_project_path) {
   }
   _set_credentials(_username, _password, _ssh_public_key_path, _ssh_private_key_path, _ssh_passphrase) {
@@ -160,7 +161,7 @@ export class EditorVCSInterface extends GodotObject{
   }
   create_diff_line(_new_line_no, _old_line_no, _content, _status) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_diff_line,
+      EditorVCSInterface._bindings.method_create_diff_line,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -170,7 +171,7 @@ export class EditorVCSInterface extends GodotObject{
   }
   create_diff_hunk(_old_start, _new_start, _old_lines, _new_lines) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_diff_hunk,
+      EditorVCSInterface._bindings.method_create_diff_hunk,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -180,7 +181,7 @@ export class EditorVCSInterface extends GodotObject{
   }
   create_diff_file(_new_file, _old_file) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_diff_file,
+      EditorVCSInterface._bindings.method_create_diff_file,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -190,7 +191,7 @@ export class EditorVCSInterface extends GodotObject{
   }
   create_commit(_msg, _author, _id, _unix_timestamp, _offset_minutes) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_commit,
+      EditorVCSInterface._bindings.method_create_commit,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -200,7 +201,7 @@ export class EditorVCSInterface extends GodotObject{
   }
   create_status_file(_file_path, _change_type, _area) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_status_file,
+      EditorVCSInterface._bindings.method_create_status_file,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -210,7 +211,7 @@ export class EditorVCSInterface extends GodotObject{
   }
   add_diff_hunks_into_diff_file(_diff_file, _diff_hunks) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_add_diff_hunks_into_diff_file,
+      EditorVCSInterface._bindings.method_add_diff_hunks_into_diff_file,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -220,7 +221,7 @@ export class EditorVCSInterface extends GodotObject{
   }
   add_line_diffs_into_diff_hunk(_diff_hunk, _line_diffs) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_add_line_diffs_into_diff_hunk,
+      EditorVCSInterface._bindings.method_add_line_diffs_into_diff_hunk,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -230,7 +231,7 @@ export class EditorVCSInterface extends GodotObject{
   }
   popup_error(_msg) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_popup_error,
+      EditorVCSInterface._bindings.method_popup_error,
       this._owner,
       _msg
     );

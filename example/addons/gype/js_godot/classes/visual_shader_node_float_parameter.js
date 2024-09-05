@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { VisualShaderNodeParameter } from '@js_godot/classes/visual_shader_node_parameter'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -150,9 +150,10 @@ export class VisualShaderNodeFloatParameter extends VisualShaderNodeParameter{
       );
     }
   }
+  
   set_hint(_hint) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_hint,
+      VisualShaderNodeFloatParameter._bindings.method_set_hint,
       this._owner,
       _hint
     );
@@ -160,7 +161,7 @@ export class VisualShaderNodeFloatParameter extends VisualShaderNodeParameter{
   }
   get_hint() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_hint,
+      VisualShaderNodeFloatParameter._bindings.method_get_hint,
       this._owner,
 			Variant.INT,
       
@@ -169,7 +170,7 @@ export class VisualShaderNodeFloatParameter extends VisualShaderNodeParameter{
   }
   set_min(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_min,
+      VisualShaderNodeFloatParameter._bindings.method_set_min,
       this._owner,
       _value
     );
@@ -177,7 +178,7 @@ export class VisualShaderNodeFloatParameter extends VisualShaderNodeParameter{
   }
   get_min() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_min,
+      VisualShaderNodeFloatParameter._bindings.method_get_min,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -186,7 +187,7 @@ export class VisualShaderNodeFloatParameter extends VisualShaderNodeParameter{
   }
   set_max(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_max,
+      VisualShaderNodeFloatParameter._bindings.method_set_max,
       this._owner,
       _value
     );
@@ -194,7 +195,7 @@ export class VisualShaderNodeFloatParameter extends VisualShaderNodeParameter{
   }
   get_max() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_max,
+      VisualShaderNodeFloatParameter._bindings.method_get_max,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -203,7 +204,7 @@ export class VisualShaderNodeFloatParameter extends VisualShaderNodeParameter{
   }
   set_step(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_step,
+      VisualShaderNodeFloatParameter._bindings.method_set_step,
       this._owner,
       _value
     );
@@ -211,7 +212,7 @@ export class VisualShaderNodeFloatParameter extends VisualShaderNodeParameter{
   }
   get_step() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_step,
+      VisualShaderNodeFloatParameter._bindings.method_get_step,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -220,7 +221,7 @@ export class VisualShaderNodeFloatParameter extends VisualShaderNodeParameter{
   }
   set_default_value_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_default_value_enabled,
+      VisualShaderNodeFloatParameter._bindings.method_set_default_value_enabled,
       this._owner,
       _enabled
     );
@@ -228,7 +229,7 @@ export class VisualShaderNodeFloatParameter extends VisualShaderNodeParameter{
   }
   is_default_value_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_default_value_enabled,
+      VisualShaderNodeFloatParameter._bindings.method_is_default_value_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -237,7 +238,7 @@ export class VisualShaderNodeFloatParameter extends VisualShaderNodeParameter{
   }
   set_default_value(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_default_value,
+      VisualShaderNodeFloatParameter._bindings.method_set_default_value,
       this._owner,
       _value
     );
@@ -245,7 +246,7 @@ export class VisualShaderNodeFloatParameter extends VisualShaderNodeParameter{
   }
   get_default_value() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_default_value,
+      VisualShaderNodeFloatParameter._bindings.method_get_default_value,
       this._owner,
 			Variant.Type.FLOAT,
       

@@ -1,12 +1,12 @@
 import * as internal from '__internal__';
-import { Dictionary } from '@js_godot/variant/dictionary'
-import { Variant } from '@js_godot/variant/variant'
-import { GodotObject } from '@js_godot/classes/godot_object'
-import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
-import { PackedStringArray } from '@js_godot/variant/packed_string_array'
 import { GDArray } from '@js_godot/variant/gd_array'
+import { Variant } from '@js_godot/variant/variant'
+import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
+import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { StringName } from '@js_godot/variant/string_name'
+import { GodotObject } from '@js_godot/classes/godot_object'
+import { Dictionary } from '@js_godot/variant/dictionary'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -774,9 +774,10 @@ class _MethodBindings {
       );
     }
   }
+  
   get_entropy(_size) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_entropy,
+      _OS._bindings.method_get_entropy,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -786,7 +787,7 @@ class _MethodBindings {
   }
   get_system_ca_certificates() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_system_ca_certificates,
+      _OS._bindings.method_get_system_ca_certificates,
       this._owner,
 			Variant.Type.STRING,
     
@@ -796,7 +797,7 @@ class _MethodBindings {
   }
   get_connected_midi_inputs() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_connected_midi_inputs,
+      _OS._bindings.method_get_connected_midi_inputs,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -806,7 +807,7 @@ class _MethodBindings {
   }
   open_midi_inputs() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_open_midi_inputs,
+      _OS._bindings.method_open_midi_inputs,
       this._owner,
       
     );
@@ -814,7 +815,7 @@ class _MethodBindings {
   }
   close_midi_inputs() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_close_midi_inputs,
+      _OS._bindings.method_close_midi_inputs,
       this._owner,
       
     );
@@ -822,7 +823,7 @@ class _MethodBindings {
   }
   alert(_text, _title) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_alert,
+      _OS._bindings.method_alert,
       this._owner,
       _text, _title
     );
@@ -830,7 +831,7 @@ class _MethodBindings {
   }
   crash(_message) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_crash,
+      _OS._bindings.method_crash,
       this._owner,
       _message
     );
@@ -838,7 +839,7 @@ class _MethodBindings {
   }
   set_low_processor_usage_mode(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_low_processor_usage_mode,
+      _OS._bindings.method_set_low_processor_usage_mode,
       this._owner,
       _enable
     );
@@ -846,7 +847,7 @@ class _MethodBindings {
   }
   is_in_low_processor_usage_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_in_low_processor_usage_mode,
+      _OS._bindings.method_is_in_low_processor_usage_mode,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -855,7 +856,7 @@ class _MethodBindings {
   }
   set_low_processor_usage_mode_sleep_usec(_usec) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_low_processor_usage_mode_sleep_usec,
+      _OS._bindings.method_set_low_processor_usage_mode_sleep_usec,
       this._owner,
       _usec
     );
@@ -863,7 +864,7 @@ class _MethodBindings {
   }
   get_low_processor_usage_mode_sleep_usec() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_low_processor_usage_mode_sleep_usec,
+      _OS._bindings.method_get_low_processor_usage_mode_sleep_usec,
       this._owner,
 			Variant.Type.INT,
       
@@ -872,7 +873,7 @@ class _MethodBindings {
   }
   set_delta_smoothing(_delta_smoothing_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_delta_smoothing,
+      _OS._bindings.method_set_delta_smoothing,
       this._owner,
       _delta_smoothing_enabled
     );
@@ -880,7 +881,7 @@ class _MethodBindings {
   }
   is_delta_smoothing_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_delta_smoothing_enabled,
+      _OS._bindings.method_is_delta_smoothing_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -889,7 +890,7 @@ class _MethodBindings {
   }
   get_processor_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_processor_count,
+      _OS._bindings.method_get_processor_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -898,7 +899,7 @@ class _MethodBindings {
   }
   get_processor_name() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_processor_name,
+      _OS._bindings.method_get_processor_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -908,7 +909,7 @@ class _MethodBindings {
   }
   get_system_fonts() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_system_fonts,
+      _OS._bindings.method_get_system_fonts,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -918,7 +919,7 @@ class _MethodBindings {
   }
   get_system_font_path(_font_name, _weight, _stretch, _italic) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_system_font_path,
+      _OS._bindings.method_get_system_font_path,
       this._owner,
 			Variant.Type.STRING,
     
@@ -928,7 +929,7 @@ class _MethodBindings {
   }
   get_system_font_path_for_text(_font_name, _text, _locale, _script, _weight, _stretch, _italic) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_system_font_path_for_text,
+      _OS._bindings.method_get_system_font_path_for_text,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -938,7 +939,7 @@ class _MethodBindings {
   }
   get_executable_path() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_executable_path,
+      _OS._bindings.method_get_executable_path,
       this._owner,
 			Variant.Type.STRING,
     
@@ -948,7 +949,7 @@ class _MethodBindings {
   }
   read_string_from_stdin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_read_string_from_stdin,
+      _OS._bindings.method_read_string_from_stdin,
       this._owner,
 			Variant.Type.STRING,
     
@@ -958,7 +959,7 @@ class _MethodBindings {
   }
   execute(_path, _arguments, _output, _read_stderr, _open_console) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_execute,
+      _OS._bindings.method_execute,
       this._owner,
 			Variant.Type.INT,
       _path, _arguments, _output, _read_stderr, _open_console
@@ -967,7 +968,7 @@ class _MethodBindings {
   }
   execute_with_pipe(_path, _arguments) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_execute_with_pipe,
+      _OS._bindings.method_execute_with_pipe,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -977,7 +978,7 @@ class _MethodBindings {
   }
   create_process(_path, _arguments, _open_console) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_process,
+      _OS._bindings.method_create_process,
       this._owner,
 			Variant.Type.INT,
       _path, _arguments, _open_console
@@ -986,7 +987,7 @@ class _MethodBindings {
   }
   create_instance(_arguments) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_instance,
+      _OS._bindings.method_create_instance,
       this._owner,
 			Variant.Type.INT,
       _arguments
@@ -995,7 +996,7 @@ class _MethodBindings {
   }
   kill(_pid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_kill,
+      _OS._bindings.method_kill,
       this._owner,
 			Variant.INT,
       _pid
@@ -1004,7 +1005,7 @@ class _MethodBindings {
   }
   shell_open(_uri) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shell_open,
+      _OS._bindings.method_shell_open,
       this._owner,
 			Variant.INT,
       _uri
@@ -1013,7 +1014,7 @@ class _MethodBindings {
   }
   shell_show_in_file_manager(_file_or_dir_path, _open_folder) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shell_show_in_file_manager,
+      _OS._bindings.method_shell_show_in_file_manager,
       this._owner,
 			Variant.INT,
       _file_or_dir_path, _open_folder
@@ -1022,7 +1023,7 @@ class _MethodBindings {
   }
   is_process_running(_pid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_process_running,
+      _OS._bindings.method_is_process_running,
       this._owner,
 			Variant.Type.BOOL,
       _pid
@@ -1031,7 +1032,7 @@ class _MethodBindings {
   }
   get_process_exit_code(_pid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_process_exit_code,
+      _OS._bindings.method_get_process_exit_code,
       this._owner,
 			Variant.Type.INT,
       _pid
@@ -1040,7 +1041,7 @@ class _MethodBindings {
   }
   get_process_id() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_process_id,
+      _OS._bindings.method_get_process_id,
       this._owner,
 			Variant.Type.INT,
       
@@ -1049,7 +1050,7 @@ class _MethodBindings {
   }
   has_environment(_variable) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_environment,
+      _OS._bindings.method_has_environment,
       this._owner,
 			Variant.Type.BOOL,
       _variable
@@ -1058,7 +1059,7 @@ class _MethodBindings {
   }
   get_environment(_variable) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_environment,
+      _OS._bindings.method_get_environment,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1068,7 +1069,7 @@ class _MethodBindings {
   }
   set_environment(_variable, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_environment,
+      _OS._bindings.method_set_environment,
       this._owner,
       _variable, _value
     );
@@ -1076,7 +1077,7 @@ class _MethodBindings {
   }
   unset_environment(_variable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_unset_environment,
+      _OS._bindings.method_unset_environment,
       this._owner,
       _variable
     );
@@ -1084,7 +1085,7 @@ class _MethodBindings {
   }
   get_name() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_name,
+      _OS._bindings.method_get_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1094,7 +1095,7 @@ class _MethodBindings {
   }
   get_distribution_name() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_distribution_name,
+      _OS._bindings.method_get_distribution_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1104,7 +1105,7 @@ class _MethodBindings {
   }
   get_version() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_version,
+      _OS._bindings.method_get_version,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1114,7 +1115,7 @@ class _MethodBindings {
   }
   get_cmdline_args() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cmdline_args,
+      _OS._bindings.method_get_cmdline_args,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -1124,7 +1125,7 @@ class _MethodBindings {
   }
   get_cmdline_user_args() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cmdline_user_args,
+      _OS._bindings.method_get_cmdline_user_args,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -1134,7 +1135,7 @@ class _MethodBindings {
   }
   get_video_adapter_driver_info() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_video_adapter_driver_info,
+      _OS._bindings.method_get_video_adapter_driver_info,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -1144,7 +1145,7 @@ class _MethodBindings {
   }
   set_restart_on_exit(_restart, _arguments) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_restart_on_exit,
+      _OS._bindings.method_set_restart_on_exit,
       this._owner,
       _restart, _arguments
     );
@@ -1152,7 +1153,7 @@ class _MethodBindings {
   }
   is_restart_on_exit_set() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_restart_on_exit_set,
+      _OS._bindings.method_is_restart_on_exit_set,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1161,7 +1162,7 @@ class _MethodBindings {
   }
   get_restart_on_exit_arguments() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_restart_on_exit_arguments,
+      _OS._bindings.method_get_restart_on_exit_arguments,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -1171,7 +1172,7 @@ class _MethodBindings {
   }
   delay_usec(_usec) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_delay_usec,
+      _OS._bindings.method_delay_usec,
       this._owner,
       _usec
     );
@@ -1179,7 +1180,7 @@ class _MethodBindings {
   }
   delay_msec(_msec) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_delay_msec,
+      _OS._bindings.method_delay_msec,
       this._owner,
       _msec
     );
@@ -1187,7 +1188,7 @@ class _MethodBindings {
   }
   get_locale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_locale,
+      _OS._bindings.method_get_locale,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1197,7 +1198,7 @@ class _MethodBindings {
   }
   get_locale_language() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_locale_language,
+      _OS._bindings.method_get_locale_language,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1207,7 +1208,7 @@ class _MethodBindings {
   }
   get_model_name() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_model_name,
+      _OS._bindings.method_get_model_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1217,7 +1218,7 @@ class _MethodBindings {
   }
   is_userfs_persistent() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_userfs_persistent,
+      _OS._bindings.method_is_userfs_persistent,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1226,7 +1227,7 @@ class _MethodBindings {
   }
   is_stdout_verbose() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_stdout_verbose,
+      _OS._bindings.method_is_stdout_verbose,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1235,7 +1236,7 @@ class _MethodBindings {
   }
   is_debug_build() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_debug_build,
+      _OS._bindings.method_is_debug_build,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1244,7 +1245,7 @@ class _MethodBindings {
   }
   get_static_memory_usage() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_static_memory_usage,
+      _OS._bindings.method_get_static_memory_usage,
       this._owner,
 			Variant.Type.INT,
       
@@ -1253,7 +1254,7 @@ class _MethodBindings {
   }
   get_static_memory_peak_usage() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_static_memory_peak_usage,
+      _OS._bindings.method_get_static_memory_peak_usage,
       this._owner,
 			Variant.Type.INT,
       
@@ -1262,7 +1263,7 @@ class _MethodBindings {
   }
   get_memory_info() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_memory_info,
+      _OS._bindings.method_get_memory_info,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -1272,7 +1273,7 @@ class _MethodBindings {
   }
   move_to_trash(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_move_to_trash,
+      _OS._bindings.method_move_to_trash,
       this._owner,
 			Variant.INT,
       _path
@@ -1281,7 +1282,7 @@ class _MethodBindings {
   }
   get_user_data_dir() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_user_data_dir,
+      _OS._bindings.method_get_user_data_dir,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1291,7 +1292,7 @@ class _MethodBindings {
   }
   get_system_dir(_dir, _shared_storage) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_system_dir,
+      _OS._bindings.method_get_system_dir,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1301,7 +1302,7 @@ class _MethodBindings {
   }
   get_config_dir() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_config_dir,
+      _OS._bindings.method_get_config_dir,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1311,7 +1312,7 @@ class _MethodBindings {
   }
   get_data_dir() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_data_dir,
+      _OS._bindings.method_get_data_dir,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1321,7 +1322,7 @@ class _MethodBindings {
   }
   get_cache_dir() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cache_dir,
+      _OS._bindings.method_get_cache_dir,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1331,7 +1332,7 @@ class _MethodBindings {
   }
   get_unique_id() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_unique_id,
+      _OS._bindings.method_get_unique_id,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1341,7 +1342,7 @@ class _MethodBindings {
   }
   get_keycode_string(_code) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_keycode_string,
+      _OS._bindings.method_get_keycode_string,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1351,7 +1352,7 @@ class _MethodBindings {
   }
   is_keycode_unicode(_code) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_keycode_unicode,
+      _OS._bindings.method_is_keycode_unicode,
       this._owner,
 			Variant.Type.BOOL,
       _code
@@ -1360,7 +1361,7 @@ class _MethodBindings {
   }
   find_keycode_from_string(_string) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_find_keycode_from_string,
+      _OS._bindings.method_find_keycode_from_string,
       this._owner,
 			Variant.INT,
       _string
@@ -1369,7 +1370,7 @@ class _MethodBindings {
   }
   set_use_file_access_save_and_swap(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_file_access_save_and_swap,
+      _OS._bindings.method_set_use_file_access_save_and_swap,
       this._owner,
       _enabled
     );
@@ -1377,7 +1378,7 @@ class _MethodBindings {
   }
   set_thread_name(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_set_thread_name,
+      _OS._bindings.method_set_thread_name,
       this._owner,
 			Variant.INT,
       _name
@@ -1386,7 +1387,7 @@ class _MethodBindings {
   }
   get_thread_caller_id() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_thread_caller_id,
+      _OS._bindings.method_get_thread_caller_id,
       this._owner,
 			Variant.Type.INT,
       
@@ -1395,7 +1396,7 @@ class _MethodBindings {
   }
   get_main_thread_id() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_main_thread_id,
+      _OS._bindings.method_get_main_thread_id,
       this._owner,
 			Variant.Type.INT,
       
@@ -1404,7 +1405,7 @@ class _MethodBindings {
   }
   has_feature(_tag_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_feature,
+      _OS._bindings.method_has_feature,
       this._owner,
 			Variant.Type.BOOL,
       _tag_name
@@ -1413,7 +1414,7 @@ class _MethodBindings {
   }
   is_sandboxed() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_sandboxed,
+      _OS._bindings.method_is_sandboxed,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1422,7 +1423,7 @@ class _MethodBindings {
   }
   request_permission(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_request_permission,
+      _OS._bindings.method_request_permission,
       this._owner,
 			Variant.Type.BOOL,
       _name
@@ -1431,7 +1432,7 @@ class _MethodBindings {
   }
   request_permissions() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_request_permissions,
+      _OS._bindings.method_request_permissions,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1440,7 +1441,7 @@ class _MethodBindings {
   }
   get_granted_permissions() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_granted_permissions,
+      _OS._bindings.method_get_granted_permissions,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -1450,7 +1451,7 @@ class _MethodBindings {
   }
   revoke_granted_permissions() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_revoke_granted_permissions,
+      _OS._bindings.method_revoke_granted_permissions,
       this._owner,
       
     );
@@ -1496,4 +1497,17 @@ set delta_smoothing (new_value) {
     this._init_bindings();
   }
 }
-export const OS = new _OS();
+export const OS = (function () {
+  let _instance;
+  function create_instance() {
+    return new _OS();
+  }
+  return {
+    instance: function () {
+      if (!_instance) {
+        _instance = create_instance();
+      }
+      return _instance;
+    },
+  };
+})();

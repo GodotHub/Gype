@@ -1,13 +1,13 @@
 import * as internal from '__internal__';
 import { Dictionary } from '@js_godot/variant/dictionary'
-import { Variant } from '@js_godot/variant/variant'
-import { Resource } from '@js_godot/classes/resource'
 import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
-import { Vector2i } from '@js_godot/variant/vector2i'
-import { Rect2i } from '@js_godot/variant/rect2i'
+import { Resource } from '@js_godot/classes/resource'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
+import { Rect2i } from '@js_godot/variant/rect2i'
 import { Color } from '@js_godot/variant/color'
+import { GDString } from '@js_godot/variant/gd_string'
+import { Variant } from '@js_godot/variant/variant'
+import { Vector2i } from '@js_godot/variant/vector2i'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -746,9 +746,10 @@ export class Image extends Resource{
       );
     }
   }
+  
   get_width() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_width,
+      Image._bindings.method_get_width,
       this._owner,
 			Variant.Type.INT,
       
@@ -757,7 +758,7 @@ export class Image extends Resource{
   }
   get_height() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_height,
+      Image._bindings.method_get_height,
       this._owner,
 			Variant.Type.INT,
       
@@ -766,7 +767,7 @@ export class Image extends Resource{
   }
   get_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_size,
+      Image._bindings.method_get_size,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -776,7 +777,7 @@ export class Image extends Resource{
   }
   has_mipmaps() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_mipmaps,
+      Image._bindings.method_has_mipmaps,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -785,7 +786,7 @@ export class Image extends Resource{
   }
   get_format() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_format,
+      Image._bindings.method_get_format,
       this._owner,
 			Variant.INT,
       
@@ -794,7 +795,7 @@ export class Image extends Resource{
   }
   get_data() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_data,
+      Image._bindings.method_get_data,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -804,7 +805,7 @@ export class Image extends Resource{
   }
   get_data_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_data_size,
+      Image._bindings.method_get_data_size,
       this._owner,
 			Variant.Type.INT,
       
@@ -813,7 +814,7 @@ export class Image extends Resource{
   }
   convert(_format) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_convert,
+      Image._bindings.method_convert,
       this._owner,
       _format
     );
@@ -821,7 +822,7 @@ export class Image extends Resource{
   }
   get_mipmap_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mipmap_count,
+      Image._bindings.method_get_mipmap_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -830,7 +831,7 @@ export class Image extends Resource{
   }
   get_mipmap_offset(_mipmap) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mipmap_offset,
+      Image._bindings.method_get_mipmap_offset,
       this._owner,
 			Variant.Type.INT,
       _mipmap
@@ -839,7 +840,7 @@ export class Image extends Resource{
   }
   resize_to_po2(_square, _interpolation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_resize_to_po2,
+      Image._bindings.method_resize_to_po2,
       this._owner,
       _square, _interpolation
     );
@@ -847,7 +848,7 @@ export class Image extends Resource{
   }
   resize(_width, _height, _interpolation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_resize,
+      Image._bindings.method_resize,
       this._owner,
       _width, _height, _interpolation
     );
@@ -855,7 +856,7 @@ export class Image extends Resource{
   }
   shrink_x2() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_shrink_x2,
+      Image._bindings.method_shrink_x2,
       this._owner,
       
     );
@@ -863,7 +864,7 @@ export class Image extends Resource{
   }
   crop(_width, _height) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_crop,
+      Image._bindings.method_crop,
       this._owner,
       _width, _height
     );
@@ -871,7 +872,7 @@ export class Image extends Resource{
   }
   flip_x() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_flip_x,
+      Image._bindings.method_flip_x,
       this._owner,
       
     );
@@ -879,7 +880,7 @@ export class Image extends Resource{
   }
   flip_y() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_flip_y,
+      Image._bindings.method_flip_y,
       this._owner,
       
     );
@@ -887,7 +888,7 @@ export class Image extends Resource{
   }
   generate_mipmaps(_renormalize) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_generate_mipmaps,
+      Image._bindings.method_generate_mipmaps,
       this._owner,
 			Variant.INT,
       _renormalize
@@ -896,7 +897,7 @@ export class Image extends Resource{
   }
   clear_mipmaps() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_mipmaps,
+      Image._bindings.method_clear_mipmaps,
       this._owner,
       
     );
@@ -904,7 +905,7 @@ export class Image extends Resource{
   }
   create(_width, _height, _use_mipmaps, _format) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create,
+      Image._bindings.method_create,
       this._owner,
 			Variant.INT,
       _width, _height, _use_mipmaps, _format
@@ -913,7 +914,7 @@ export class Image extends Resource{
   }
   create_empty(_width, _height, _use_mipmaps, _format) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_empty,
+      Image._bindings.method_create_empty,
       this._owner,
 			Variant.INT,
       _width, _height, _use_mipmaps, _format
@@ -922,7 +923,7 @@ export class Image extends Resource{
   }
   create_from_data(_width, _height, _use_mipmaps, _format, _data) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_from_data,
+      Image._bindings.method_create_from_data,
       this._owner,
 			Variant.INT,
       _width, _height, _use_mipmaps, _format, _data
@@ -931,7 +932,7 @@ export class Image extends Resource{
   }
   set_data(_width, _height, _use_mipmaps, _format, _data) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_data,
+      Image._bindings.method_set_data,
       this._owner,
       _width, _height, _use_mipmaps, _format, _data
     );
@@ -939,7 +940,7 @@ export class Image extends Resource{
   }
   is_empty() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_empty,
+      Image._bindings.method_is_empty,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -948,7 +949,7 @@ export class Image extends Resource{
   }
   load(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_load,
+      Image._bindings.method_load,
       this._owner,
 			Variant.INT,
       _path
@@ -957,7 +958,7 @@ export class Image extends Resource{
   }
   load_from_file(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_load_from_file,
+      Image._bindings.method_load_from_file,
       this._owner,
 			Variant.INT,
       _path
@@ -966,7 +967,7 @@ export class Image extends Resource{
   }
   save_png(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_save_png,
+      Image._bindings.method_save_png,
       this._owner,
 			Variant.INT,
       _path
@@ -975,7 +976,7 @@ export class Image extends Resource{
   }
   save_png_to_buffer() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_save_png_to_buffer,
+      Image._bindings.method_save_png_to_buffer,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -985,7 +986,7 @@ export class Image extends Resource{
   }
   save_jpg(_path, _quality) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_save_jpg,
+      Image._bindings.method_save_jpg,
       this._owner,
 			Variant.INT,
       _path, _quality
@@ -994,7 +995,7 @@ export class Image extends Resource{
   }
   save_jpg_to_buffer(_quality) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_save_jpg_to_buffer,
+      Image._bindings.method_save_jpg_to_buffer,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -1004,7 +1005,7 @@ export class Image extends Resource{
   }
   save_exr(_path, _grayscale) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_save_exr,
+      Image._bindings.method_save_exr,
       this._owner,
 			Variant.INT,
       _path, _grayscale
@@ -1013,7 +1014,7 @@ export class Image extends Resource{
   }
   save_exr_to_buffer(_grayscale) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_save_exr_to_buffer,
+      Image._bindings.method_save_exr_to_buffer,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -1023,7 +1024,7 @@ export class Image extends Resource{
   }
   save_webp(_path, _lossy, _quality) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_save_webp,
+      Image._bindings.method_save_webp,
       this._owner,
 			Variant.INT,
       _path, _lossy, _quality
@@ -1032,7 +1033,7 @@ export class Image extends Resource{
   }
   save_webp_to_buffer(_lossy, _quality) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_save_webp_to_buffer,
+      Image._bindings.method_save_webp_to_buffer,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -1042,7 +1043,7 @@ export class Image extends Resource{
   }
   detect_alpha() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_detect_alpha,
+      Image._bindings.method_detect_alpha,
       this._owner,
 			Variant.INT,
       
@@ -1051,7 +1052,7 @@ export class Image extends Resource{
   }
   is_invisible() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_invisible,
+      Image._bindings.method_is_invisible,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1060,7 +1061,7 @@ export class Image extends Resource{
   }
   detect_used_channels(_source) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_detect_used_channels,
+      Image._bindings.method_detect_used_channels,
       this._owner,
 			Variant.INT,
       _source
@@ -1069,7 +1070,7 @@ export class Image extends Resource{
   }
   compress(_mode, _source, _astc_format) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_compress,
+      Image._bindings.method_compress,
       this._owner,
 			Variant.INT,
       _mode, _source, _astc_format
@@ -1078,7 +1079,7 @@ export class Image extends Resource{
   }
   compress_from_channels(_mode, _channels, _astc_format) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_compress_from_channels,
+      Image._bindings.method_compress_from_channels,
       this._owner,
 			Variant.INT,
       _mode, _channels, _astc_format
@@ -1087,7 +1088,7 @@ export class Image extends Resource{
   }
   decompress() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_decompress,
+      Image._bindings.method_decompress,
       this._owner,
 			Variant.INT,
       
@@ -1096,7 +1097,7 @@ export class Image extends Resource{
   }
   is_compressed() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_compressed,
+      Image._bindings.method_is_compressed,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1105,7 +1106,7 @@ export class Image extends Resource{
   }
   rotate_90(_direction) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_rotate_90,
+      Image._bindings.method_rotate_90,
       this._owner,
       _direction
     );
@@ -1113,7 +1114,7 @@ export class Image extends Resource{
   }
   rotate_180() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_rotate_180,
+      Image._bindings.method_rotate_180,
       this._owner,
       
     );
@@ -1121,7 +1122,7 @@ export class Image extends Resource{
   }
   fix_alpha_edges() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_fix_alpha_edges,
+      Image._bindings.method_fix_alpha_edges,
       this._owner,
       
     );
@@ -1129,7 +1130,7 @@ export class Image extends Resource{
   }
   premultiply_alpha() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_premultiply_alpha,
+      Image._bindings.method_premultiply_alpha,
       this._owner,
       
     );
@@ -1137,7 +1138,7 @@ export class Image extends Resource{
   }
   srgb_to_linear() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_srgb_to_linear,
+      Image._bindings.method_srgb_to_linear,
       this._owner,
       
     );
@@ -1145,7 +1146,7 @@ export class Image extends Resource{
   }
   normal_map_to_xy() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_normal_map_to_xy,
+      Image._bindings.method_normal_map_to_xy,
       this._owner,
       
     );
@@ -1153,7 +1154,7 @@ export class Image extends Resource{
   }
   rgbe_to_srgb() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_rgbe_to_srgb,
+      Image._bindings.method_rgbe_to_srgb,
       this._owner,
 			Variant.INT,
       
@@ -1162,7 +1163,7 @@ export class Image extends Resource{
   }
   bump_map_to_normal_map(_bump_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_bump_map_to_normal_map,
+      Image._bindings.method_bump_map_to_normal_map,
       this._owner,
       _bump_scale
     );
@@ -1170,7 +1171,7 @@ export class Image extends Resource{
   }
   compute_image_metrics(_compared_image, _use_luma) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_compute_image_metrics,
+      Image._bindings.method_compute_image_metrics,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -1180,7 +1181,7 @@ export class Image extends Resource{
   }
   blit_rect(_src, _src_rect, _dst) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_blit_rect,
+      Image._bindings.method_blit_rect,
       this._owner,
       _src, _src_rect, _dst
     );
@@ -1188,7 +1189,7 @@ export class Image extends Resource{
   }
   blit_rect_mask(_src, _mask, _src_rect, _dst) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_blit_rect_mask,
+      Image._bindings.method_blit_rect_mask,
       this._owner,
       _src, _mask, _src_rect, _dst
     );
@@ -1196,7 +1197,7 @@ export class Image extends Resource{
   }
   blend_rect(_src, _src_rect, _dst) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_blend_rect,
+      Image._bindings.method_blend_rect,
       this._owner,
       _src, _src_rect, _dst
     );
@@ -1204,7 +1205,7 @@ export class Image extends Resource{
   }
   blend_rect_mask(_src, _mask, _src_rect, _dst) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_blend_rect_mask,
+      Image._bindings.method_blend_rect_mask,
       this._owner,
       _src, _mask, _src_rect, _dst
     );
@@ -1212,7 +1213,7 @@ export class Image extends Resource{
   }
   fill(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_fill,
+      Image._bindings.method_fill,
       this._owner,
       _color
     );
@@ -1220,7 +1221,7 @@ export class Image extends Resource{
   }
   fill_rect(_rect, _color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_fill_rect,
+      Image._bindings.method_fill_rect,
       this._owner,
       _rect, _color
     );
@@ -1228,7 +1229,7 @@ export class Image extends Resource{
   }
   get_used_rect() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_used_rect,
+      Image._bindings.method_get_used_rect,
       this._owner,
 			Variant.Type.RECT2I,
     
@@ -1238,7 +1239,7 @@ export class Image extends Resource{
   }
   get_region(_region) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_region,
+      Image._bindings.method_get_region,
       this._owner,
 			Variant.INT,
       _region
@@ -1247,7 +1248,7 @@ export class Image extends Resource{
   }
   copy_from(_src) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_copy_from,
+      Image._bindings.method_copy_from,
       this._owner,
       _src
     );
@@ -1255,7 +1256,7 @@ export class Image extends Resource{
   }
   get_pixelv(_point) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_pixelv,
+      Image._bindings.method_get_pixelv,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -1265,7 +1266,7 @@ export class Image extends Resource{
   }
   get_pixel(_x, _y) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_pixel,
+      Image._bindings.method_get_pixel,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -1275,7 +1276,7 @@ export class Image extends Resource{
   }
   set_pixelv(_point, _color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_pixelv,
+      Image._bindings.method_set_pixelv,
       this._owner,
       _point, _color
     );
@@ -1283,7 +1284,7 @@ export class Image extends Resource{
   }
   set_pixel(_x, _y, _color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_pixel,
+      Image._bindings.method_set_pixel,
       this._owner,
       _x, _y, _color
     );
@@ -1291,7 +1292,7 @@ export class Image extends Resource{
   }
   adjust_bcs(_brightness, _contrast, _saturation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_adjust_bcs,
+      Image._bindings.method_adjust_bcs,
       this._owner,
       _brightness, _contrast, _saturation
     );
@@ -1299,7 +1300,7 @@ export class Image extends Resource{
   }
   load_png_from_buffer(_buffer) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_load_png_from_buffer,
+      Image._bindings.method_load_png_from_buffer,
       this._owner,
 			Variant.INT,
       _buffer
@@ -1308,7 +1309,7 @@ export class Image extends Resource{
   }
   load_jpg_from_buffer(_buffer) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_load_jpg_from_buffer,
+      Image._bindings.method_load_jpg_from_buffer,
       this._owner,
 			Variant.INT,
       _buffer
@@ -1317,7 +1318,7 @@ export class Image extends Resource{
   }
   load_webp_from_buffer(_buffer) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_load_webp_from_buffer,
+      Image._bindings.method_load_webp_from_buffer,
       this._owner,
 			Variant.INT,
       _buffer
@@ -1326,7 +1327,7 @@ export class Image extends Resource{
   }
   load_tga_from_buffer(_buffer) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_load_tga_from_buffer,
+      Image._bindings.method_load_tga_from_buffer,
       this._owner,
 			Variant.INT,
       _buffer
@@ -1335,7 +1336,7 @@ export class Image extends Resource{
   }
   load_bmp_from_buffer(_buffer) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_load_bmp_from_buffer,
+      Image._bindings.method_load_bmp_from_buffer,
       this._owner,
 			Variant.INT,
       _buffer
@@ -1344,7 +1345,7 @@ export class Image extends Resource{
   }
   load_ktx_from_buffer(_buffer) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_load_ktx_from_buffer,
+      Image._bindings.method_load_ktx_from_buffer,
       this._owner,
 			Variant.INT,
       _buffer
@@ -1353,7 +1354,7 @@ export class Image extends Resource{
   }
   load_svg_from_buffer(_buffer, _scale) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_load_svg_from_buffer,
+      Image._bindings.method_load_svg_from_buffer,
       this._owner,
 			Variant.INT,
       _buffer, _scale
@@ -1362,7 +1363,7 @@ export class Image extends Resource{
   }
   load_svg_from_string(_svg_str, _scale) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_load_svg_from_string,
+      Image._bindings.method_load_svg_from_string,
       this._owner,
 			Variant.INT,
       _svg_str, _scale

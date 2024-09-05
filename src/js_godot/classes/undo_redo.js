@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { Callable } from '@js_godot/variant/callable'
 import { Variant } from '@js_godot/variant/variant'
-import { GodotObject } from '@js_godot/classes/godot_object'
+import { Callable } from '@js_godot/variant/callable'
 import { StringName } from '@js_godot/variant/string_name'
+import { GodotObject } from '@js_godot/classes/godot_object'
 import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
@@ -262,9 +262,10 @@ export class UndoRedo extends GodotObject{
       );
     }
   }
+  
   create_action(_name, _merge_mode, _backward_undo_ops) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_create_action,
+      UndoRedo._bindings.method_create_action,
       this._owner,
       _name, _merge_mode, _backward_undo_ops
     );
@@ -272,7 +273,7 @@ export class UndoRedo extends GodotObject{
   }
   commit_action(_execute) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_commit_action,
+      UndoRedo._bindings.method_commit_action,
       this._owner,
       _execute
     );
@@ -280,7 +281,7 @@ export class UndoRedo extends GodotObject{
   }
   is_committing_action() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_committing_action,
+      UndoRedo._bindings.method_is_committing_action,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -289,7 +290,7 @@ export class UndoRedo extends GodotObject{
   }
   add_do_method(_callable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_do_method,
+      UndoRedo._bindings.method_add_do_method,
       this._owner,
       _callable
     );
@@ -297,7 +298,7 @@ export class UndoRedo extends GodotObject{
   }
   add_undo_method(_callable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_undo_method,
+      UndoRedo._bindings.method_add_undo_method,
       this._owner,
       _callable
     );
@@ -305,7 +306,7 @@ export class UndoRedo extends GodotObject{
   }
   add_do_property(_object, _property, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_do_property,
+      UndoRedo._bindings.method_add_do_property,
       this._owner,
       _object, _property, _value
     );
@@ -313,7 +314,7 @@ export class UndoRedo extends GodotObject{
   }
   add_undo_property(_object, _property, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_undo_property,
+      UndoRedo._bindings.method_add_undo_property,
       this._owner,
       _object, _property, _value
     );
@@ -321,7 +322,7 @@ export class UndoRedo extends GodotObject{
   }
   add_do_reference(_object) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_do_reference,
+      UndoRedo._bindings.method_add_do_reference,
       this._owner,
       _object
     );
@@ -329,7 +330,7 @@ export class UndoRedo extends GodotObject{
   }
   add_undo_reference(_object) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_undo_reference,
+      UndoRedo._bindings.method_add_undo_reference,
       this._owner,
       _object
     );
@@ -337,7 +338,7 @@ export class UndoRedo extends GodotObject{
   }
   start_force_keep_in_merge_ends() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_start_force_keep_in_merge_ends,
+      UndoRedo._bindings.method_start_force_keep_in_merge_ends,
       this._owner,
       
     );
@@ -345,7 +346,7 @@ export class UndoRedo extends GodotObject{
   }
   end_force_keep_in_merge_ends() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_end_force_keep_in_merge_ends,
+      UndoRedo._bindings.method_end_force_keep_in_merge_ends,
       this._owner,
       
     );
@@ -353,7 +354,7 @@ export class UndoRedo extends GodotObject{
   }
   get_history_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_history_count,
+      UndoRedo._bindings.method_get_history_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -362,7 +363,7 @@ export class UndoRedo extends GodotObject{
   }
   get_current_action() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_current_action,
+      UndoRedo._bindings.method_get_current_action,
       this._owner,
 			Variant.Type.INT,
       
@@ -371,7 +372,7 @@ export class UndoRedo extends GodotObject{
   }
   get_action_name(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_action_name,
+      UndoRedo._bindings.method_get_action_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -381,7 +382,7 @@ export class UndoRedo extends GodotObject{
   }
   clear_history(_increase_version) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_history,
+      UndoRedo._bindings.method_clear_history,
       this._owner,
       _increase_version
     );
@@ -389,7 +390,7 @@ export class UndoRedo extends GodotObject{
   }
   get_current_action_name() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_current_action_name,
+      UndoRedo._bindings.method_get_current_action_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -399,7 +400,7 @@ export class UndoRedo extends GodotObject{
   }
   has_undo() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_undo,
+      UndoRedo._bindings.method_has_undo,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -408,7 +409,7 @@ export class UndoRedo extends GodotObject{
   }
   has_redo() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_redo,
+      UndoRedo._bindings.method_has_redo,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -417,7 +418,7 @@ export class UndoRedo extends GodotObject{
   }
   get_version() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_version,
+      UndoRedo._bindings.method_get_version,
       this._owner,
 			Variant.Type.INT,
       
@@ -426,7 +427,7 @@ export class UndoRedo extends GodotObject{
   }
   set_max_steps(_max_steps) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_max_steps,
+      UndoRedo._bindings.method_set_max_steps,
       this._owner,
       _max_steps
     );
@@ -434,7 +435,7 @@ export class UndoRedo extends GodotObject{
   }
   get_max_steps() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_max_steps,
+      UndoRedo._bindings.method_get_max_steps,
       this._owner,
 			Variant.Type.INT,
       
@@ -443,7 +444,7 @@ export class UndoRedo extends GodotObject{
   }
   redo() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_redo,
+      UndoRedo._bindings.method_redo,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -452,7 +453,7 @@ export class UndoRedo extends GodotObject{
   }
   undo() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_undo,
+      UndoRedo._bindings.method_undo,
       this._owner,
 			Variant.Type.BOOL,
       

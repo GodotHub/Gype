@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { Control } from '@js_godot/classes/control'
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -130,9 +130,10 @@ export class TextureRect extends Control{
       );
     }
   }
+  
   set_texture(_texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture,
+      TextureRect._bindings.method_set_texture,
       this._owner,
       _texture
     );
@@ -140,7 +141,7 @@ export class TextureRect extends Control{
   }
   get_texture() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture,
+      TextureRect._bindings.method_get_texture,
       this._owner,
 			Variant.INT,
       
@@ -149,7 +150,7 @@ export class TextureRect extends Control{
   }
   set_expand_mode(_expand_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_expand_mode,
+      TextureRect._bindings.method_set_expand_mode,
       this._owner,
       _expand_mode
     );
@@ -157,7 +158,7 @@ export class TextureRect extends Control{
   }
   get_expand_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_expand_mode,
+      TextureRect._bindings.method_get_expand_mode,
       this._owner,
 			Variant.INT,
       
@@ -166,7 +167,7 @@ export class TextureRect extends Control{
   }
   set_flip_h(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_flip_h,
+      TextureRect._bindings.method_set_flip_h,
       this._owner,
       _enable
     );
@@ -174,7 +175,7 @@ export class TextureRect extends Control{
   }
   is_flipped_h() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_flipped_h,
+      TextureRect._bindings.method_is_flipped_h,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -183,7 +184,7 @@ export class TextureRect extends Control{
   }
   set_flip_v(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_flip_v,
+      TextureRect._bindings.method_set_flip_v,
       this._owner,
       _enable
     );
@@ -191,7 +192,7 @@ export class TextureRect extends Control{
   }
   is_flipped_v() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_flipped_v,
+      TextureRect._bindings.method_is_flipped_v,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -200,7 +201,7 @@ export class TextureRect extends Control{
   }
   set_stretch_mode(_stretch_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_stretch_mode,
+      TextureRect._bindings.method_set_stretch_mode,
       this._owner,
       _stretch_mode
     );
@@ -208,7 +209,7 @@ export class TextureRect extends Control{
   }
   get_stretch_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_stretch_mode,
+      TextureRect._bindings.method_get_stretch_mode,
       this._owner,
 			Variant.INT,
       

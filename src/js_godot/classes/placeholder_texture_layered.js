@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
-import { TextureLayered } from '@js_godot/classes/texture_layered'
 import { Vector2i } from '@js_godot/variant/vector2i'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { TextureLayered } from '@js_godot/classes/texture_layered'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -61,9 +61,10 @@ export class PlaceholderTextureLayered extends TextureLayered{
       );
     }
   }
+  
   set_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_size,
+      PlaceholderTextureLayered._bindings.method_set_size,
       this._owner,
       _size
     );
@@ -71,7 +72,7 @@ export class PlaceholderTextureLayered extends TextureLayered{
   }
   get_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_size,
+      PlaceholderTextureLayered._bindings.method_get_size,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -81,7 +82,7 @@ export class PlaceholderTextureLayered extends TextureLayered{
   }
   set_layers(_layers) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_layers,
+      PlaceholderTextureLayered._bindings.method_set_layers,
       this._owner,
       _layers
     );

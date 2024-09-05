@@ -1,13 +1,13 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Vector3 } from '@js_godot/variant/vector3'
-import { StringName } from '@js_godot/variant/string_name'
-import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
-import { Color } from '@js_godot/variant/color'
 import { Vector2 } from '@js_godot/variant/vector2'
 import { PackedFloat32Array } from '@js_godot/variant/packed_float32_array'
-import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
 import { Plane } from '@js_godot/variant/plane'
+import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
+import { RefCounted } from '@js_godot/classes/ref_counted'
+import { Color } from '@js_godot/variant/color'
+import { Variant } from '@js_godot/variant/variant'
+import { Vector3 } from '@js_godot/variant/vector3'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -416,9 +416,10 @@ export class MeshDataTool extends RefCounted{
       );
     }
   }
+  
   clear() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear,
+      MeshDataTool._bindings.method_clear,
       this._owner,
       
     );
@@ -426,7 +427,7 @@ export class MeshDataTool extends RefCounted{
   }
   create_from_surface(_mesh, _surface) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_from_surface,
+      MeshDataTool._bindings.method_create_from_surface,
       this._owner,
 			Variant.INT,
       _mesh, _surface
@@ -435,7 +436,7 @@ export class MeshDataTool extends RefCounted{
   }
   commit_to_surface(_mesh, _compression_flags) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_commit_to_surface,
+      MeshDataTool._bindings.method_commit_to_surface,
       this._owner,
 			Variant.INT,
       _mesh, _compression_flags
@@ -444,7 +445,7 @@ export class MeshDataTool extends RefCounted{
   }
   get_format() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_format,
+      MeshDataTool._bindings.method_get_format,
       this._owner,
 			Variant.Type.INT,
       
@@ -453,7 +454,7 @@ export class MeshDataTool extends RefCounted{
   }
   get_vertex_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vertex_count,
+      MeshDataTool._bindings.method_get_vertex_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -462,7 +463,7 @@ export class MeshDataTool extends RefCounted{
   }
   get_edge_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_edge_count,
+      MeshDataTool._bindings.method_get_edge_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -471,7 +472,7 @@ export class MeshDataTool extends RefCounted{
   }
   get_face_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_face_count,
+      MeshDataTool._bindings.method_get_face_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -480,7 +481,7 @@ export class MeshDataTool extends RefCounted{
   }
   set_vertex(_idx, _vertex) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vertex,
+      MeshDataTool._bindings.method_set_vertex,
       this._owner,
       _idx, _vertex
     );
@@ -488,7 +489,7 @@ export class MeshDataTool extends RefCounted{
   }
   get_vertex(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vertex,
+      MeshDataTool._bindings.method_get_vertex,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -498,7 +499,7 @@ export class MeshDataTool extends RefCounted{
   }
   set_vertex_normal(_idx, _normal) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vertex_normal,
+      MeshDataTool._bindings.method_set_vertex_normal,
       this._owner,
       _idx, _normal
     );
@@ -506,7 +507,7 @@ export class MeshDataTool extends RefCounted{
   }
   get_vertex_normal(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vertex_normal,
+      MeshDataTool._bindings.method_get_vertex_normal,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -516,7 +517,7 @@ export class MeshDataTool extends RefCounted{
   }
   set_vertex_tangent(_idx, _tangent) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vertex_tangent,
+      MeshDataTool._bindings.method_set_vertex_tangent,
       this._owner,
       _idx, _tangent
     );
@@ -524,7 +525,7 @@ export class MeshDataTool extends RefCounted{
   }
   get_vertex_tangent(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vertex_tangent,
+      MeshDataTool._bindings.method_get_vertex_tangent,
       this._owner,
 			Variant.Type.PLANE,
     
@@ -534,7 +535,7 @@ export class MeshDataTool extends RefCounted{
   }
   set_vertex_uv(_idx, _uv) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vertex_uv,
+      MeshDataTool._bindings.method_set_vertex_uv,
       this._owner,
       _idx, _uv
     );
@@ -542,7 +543,7 @@ export class MeshDataTool extends RefCounted{
   }
   get_vertex_uv(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vertex_uv,
+      MeshDataTool._bindings.method_get_vertex_uv,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -552,7 +553,7 @@ export class MeshDataTool extends RefCounted{
   }
   set_vertex_uv2(_idx, _uv2) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vertex_uv2,
+      MeshDataTool._bindings.method_set_vertex_uv2,
       this._owner,
       _idx, _uv2
     );
@@ -560,7 +561,7 @@ export class MeshDataTool extends RefCounted{
   }
   get_vertex_uv2(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vertex_uv2,
+      MeshDataTool._bindings.method_get_vertex_uv2,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -570,7 +571,7 @@ export class MeshDataTool extends RefCounted{
   }
   set_vertex_color(_idx, _color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vertex_color,
+      MeshDataTool._bindings.method_set_vertex_color,
       this._owner,
       _idx, _color
     );
@@ -578,7 +579,7 @@ export class MeshDataTool extends RefCounted{
   }
   get_vertex_color(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vertex_color,
+      MeshDataTool._bindings.method_get_vertex_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -588,7 +589,7 @@ export class MeshDataTool extends RefCounted{
   }
   set_vertex_bones(_idx, _bones) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vertex_bones,
+      MeshDataTool._bindings.method_set_vertex_bones,
       this._owner,
       _idx, _bones
     );
@@ -596,7 +597,7 @@ export class MeshDataTool extends RefCounted{
   }
   get_vertex_bones(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vertex_bones,
+      MeshDataTool._bindings.method_get_vertex_bones,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -606,7 +607,7 @@ export class MeshDataTool extends RefCounted{
   }
   set_vertex_weights(_idx, _weights) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vertex_weights,
+      MeshDataTool._bindings.method_set_vertex_weights,
       this._owner,
       _idx, _weights
     );
@@ -614,7 +615,7 @@ export class MeshDataTool extends RefCounted{
   }
   get_vertex_weights(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vertex_weights,
+      MeshDataTool._bindings.method_get_vertex_weights,
       this._owner,
 			Variant.Type.PACKED_FLOAT32_ARRAY,
     
@@ -624,7 +625,7 @@ export class MeshDataTool extends RefCounted{
   }
   set_vertex_meta(_idx, _meta) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vertex_meta,
+      MeshDataTool._bindings.method_set_vertex_meta,
       this._owner,
       _idx, _meta
     );
@@ -632,7 +633,7 @@ export class MeshDataTool extends RefCounted{
   }
   get_vertex_meta(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vertex_meta,
+      MeshDataTool._bindings.method_get_vertex_meta,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -642,7 +643,7 @@ export class MeshDataTool extends RefCounted{
   }
   get_vertex_edges(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vertex_edges,
+      MeshDataTool._bindings.method_get_vertex_edges,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -652,7 +653,7 @@ export class MeshDataTool extends RefCounted{
   }
   get_vertex_faces(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vertex_faces,
+      MeshDataTool._bindings.method_get_vertex_faces,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -662,7 +663,7 @@ export class MeshDataTool extends RefCounted{
   }
   get_edge_vertex(_idx, _vertex) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_edge_vertex,
+      MeshDataTool._bindings.method_get_edge_vertex,
       this._owner,
 			Variant.Type.INT,
       _idx, _vertex
@@ -671,7 +672,7 @@ export class MeshDataTool extends RefCounted{
   }
   get_edge_faces(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_edge_faces,
+      MeshDataTool._bindings.method_get_edge_faces,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -681,7 +682,7 @@ export class MeshDataTool extends RefCounted{
   }
   set_edge_meta(_idx, _meta) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_edge_meta,
+      MeshDataTool._bindings.method_set_edge_meta,
       this._owner,
       _idx, _meta
     );
@@ -689,7 +690,7 @@ export class MeshDataTool extends RefCounted{
   }
   get_edge_meta(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_edge_meta,
+      MeshDataTool._bindings.method_get_edge_meta,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -699,7 +700,7 @@ export class MeshDataTool extends RefCounted{
   }
   get_face_vertex(_idx, _vertex) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_face_vertex,
+      MeshDataTool._bindings.method_get_face_vertex,
       this._owner,
 			Variant.Type.INT,
       _idx, _vertex
@@ -708,7 +709,7 @@ export class MeshDataTool extends RefCounted{
   }
   get_face_edge(_idx, _edge) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_face_edge,
+      MeshDataTool._bindings.method_get_face_edge,
       this._owner,
 			Variant.Type.INT,
       _idx, _edge
@@ -717,7 +718,7 @@ export class MeshDataTool extends RefCounted{
   }
   set_face_meta(_idx, _meta) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_face_meta,
+      MeshDataTool._bindings.method_set_face_meta,
       this._owner,
       _idx, _meta
     );
@@ -725,7 +726,7 @@ export class MeshDataTool extends RefCounted{
   }
   get_face_meta(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_face_meta,
+      MeshDataTool._bindings.method_get_face_meta,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -735,7 +736,7 @@ export class MeshDataTool extends RefCounted{
   }
   get_face_normal(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_face_normal,
+      MeshDataTool._bindings.method_get_face_normal,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -745,7 +746,7 @@ export class MeshDataTool extends RefCounted{
   }
   set_material(_material) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_material,
+      MeshDataTool._bindings.method_set_material,
       this._owner,
       _material
     );
@@ -753,7 +754,7 @@ export class MeshDataTool extends RefCounted{
   }
   get_material() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_material,
+      MeshDataTool._bindings.method_get_material,
       this._owner,
 			Variant.INT,
       

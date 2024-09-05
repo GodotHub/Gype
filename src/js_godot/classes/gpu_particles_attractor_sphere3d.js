@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { GPUParticlesAttractor3D } from '@js_godot/classes/gpu_particles_attractor3d'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -50,9 +50,10 @@ export class GPUParticlesAttractorSphere3D extends GPUParticlesAttractor3D{
       );
     }
   }
+  
   set_radius(_radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_radius,
+      GPUParticlesAttractorSphere3D._bindings.method_set_radius,
       this._owner,
       _radius
     );
@@ -60,7 +61,7 @@ export class GPUParticlesAttractorSphere3D extends GPUParticlesAttractor3D{
   }
   get_radius() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_radius,
+      GPUParticlesAttractorSphere3D._bindings.method_get_radius,
       this._owner,
 			Variant.Type.FLOAT,
       

@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { InputEvent } from '@js_godot/classes/input_event'
 import { StringName } from '@js_godot/variant/string_name'
+import { InputEvent } from '@js_godot/classes/input_event'
 import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
@@ -50,9 +50,10 @@ export class InputEventShortcut extends InputEvent{
       );
     }
   }
+  
   set_shortcut(_shortcut) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shortcut,
+      InputEventShortcut._bindings.method_set_shortcut,
       this._owner,
       _shortcut
     );
@@ -60,7 +61,7 @@ export class InputEventShortcut extends InputEvent{
   }
   get_shortcut() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_shortcut,
+      InputEventShortcut._bindings.method_get_shortcut,
       this._owner,
 			Variant.INT,
       

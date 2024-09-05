@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -230,9 +230,10 @@ export class RDTextureFormat extends RefCounted{
       );
     }
   }
+  
   set_format(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_format,
+      RDTextureFormat._bindings.method_set_format,
       this._owner,
       _p_member
     );
@@ -240,7 +241,7 @@ export class RDTextureFormat extends RefCounted{
   }
   get_format() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_format,
+      RDTextureFormat._bindings.method_get_format,
       this._owner,
 			Variant.INT,
       
@@ -249,7 +250,7 @@ export class RDTextureFormat extends RefCounted{
   }
   set_width(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_width,
+      RDTextureFormat._bindings.method_set_width,
       this._owner,
       _p_member
     );
@@ -257,7 +258,7 @@ export class RDTextureFormat extends RefCounted{
   }
   get_width() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_width,
+      RDTextureFormat._bindings.method_get_width,
       this._owner,
 			Variant.Type.INT,
       
@@ -266,7 +267,7 @@ export class RDTextureFormat extends RefCounted{
   }
   set_height(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_height,
+      RDTextureFormat._bindings.method_set_height,
       this._owner,
       _p_member
     );
@@ -274,7 +275,7 @@ export class RDTextureFormat extends RefCounted{
   }
   get_height() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_height,
+      RDTextureFormat._bindings.method_get_height,
       this._owner,
 			Variant.Type.INT,
       
@@ -283,7 +284,7 @@ export class RDTextureFormat extends RefCounted{
   }
   set_depth(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_depth,
+      RDTextureFormat._bindings.method_set_depth,
       this._owner,
       _p_member
     );
@@ -291,7 +292,7 @@ export class RDTextureFormat extends RefCounted{
   }
   get_depth() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_depth,
+      RDTextureFormat._bindings.method_get_depth,
       this._owner,
 			Variant.Type.INT,
       
@@ -300,7 +301,7 @@ export class RDTextureFormat extends RefCounted{
   }
   set_array_layers(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_array_layers,
+      RDTextureFormat._bindings.method_set_array_layers,
       this._owner,
       _p_member
     );
@@ -308,7 +309,7 @@ export class RDTextureFormat extends RefCounted{
   }
   get_array_layers() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_array_layers,
+      RDTextureFormat._bindings.method_get_array_layers,
       this._owner,
 			Variant.Type.INT,
       
@@ -317,7 +318,7 @@ export class RDTextureFormat extends RefCounted{
   }
   set_mipmaps(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mipmaps,
+      RDTextureFormat._bindings.method_set_mipmaps,
       this._owner,
       _p_member
     );
@@ -325,7 +326,7 @@ export class RDTextureFormat extends RefCounted{
   }
   get_mipmaps() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mipmaps,
+      RDTextureFormat._bindings.method_get_mipmaps,
       this._owner,
 			Variant.Type.INT,
       
@@ -334,7 +335,7 @@ export class RDTextureFormat extends RefCounted{
   }
   set_texture_type(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture_type,
+      RDTextureFormat._bindings.method_set_texture_type,
       this._owner,
       _p_member
     );
@@ -342,7 +343,7 @@ export class RDTextureFormat extends RefCounted{
   }
   get_texture_type() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_type,
+      RDTextureFormat._bindings.method_get_texture_type,
       this._owner,
 			Variant.INT,
       
@@ -351,7 +352,7 @@ export class RDTextureFormat extends RefCounted{
   }
   set_samples(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_samples,
+      RDTextureFormat._bindings.method_set_samples,
       this._owner,
       _p_member
     );
@@ -359,7 +360,7 @@ export class RDTextureFormat extends RefCounted{
   }
   get_samples() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_samples,
+      RDTextureFormat._bindings.method_get_samples,
       this._owner,
 			Variant.INT,
       
@@ -368,7 +369,7 @@ export class RDTextureFormat extends RefCounted{
   }
   set_usage_bits(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_usage_bits,
+      RDTextureFormat._bindings.method_set_usage_bits,
       this._owner,
       _p_member
     );
@@ -376,7 +377,7 @@ export class RDTextureFormat extends RefCounted{
   }
   get_usage_bits() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_usage_bits,
+      RDTextureFormat._bindings.method_get_usage_bits,
       this._owner,
 			Variant.INT,
       
@@ -385,7 +386,7 @@ export class RDTextureFormat extends RefCounted{
   }
   add_shareable_format(_format) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_shareable_format,
+      RDTextureFormat._bindings.method_add_shareable_format,
       this._owner,
       _format
     );
@@ -393,7 +394,7 @@ export class RDTextureFormat extends RefCounted{
   }
   remove_shareable_format(_format) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_shareable_format,
+      RDTextureFormat._bindings.method_remove_shareable_format,
       this._owner,
       _format
     );

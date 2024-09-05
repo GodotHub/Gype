@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
-import { ScriptLanguage } from '@js_godot/classes/script_language'
 import { Dictionary } from '@js_godot/variant/dictionary'
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { ScriptLanguage } from '@js_godot/classes/script_language'
+import { GDString } from '@js_godot/variant/gd_string'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -33,6 +33,7 @@ export class ScriptLanguageExtension extends ScriptLanguage{
     }
     this.#initialized = true;
   }
+  
   _get_name() {
   }
   _init() {

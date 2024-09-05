@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { AudioStream } from '@js_godot/classes/audio_stream'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -180,9 +180,10 @@ export class AudioStreamRandomizer extends AudioStream{
       );
     }
   }
+  
   add_stream(_index, _stream, _weight) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_stream,
+      AudioStreamRandomizer._bindings.method_add_stream,
       this._owner,
       _index, _stream, _weight
     );
@@ -190,7 +191,7 @@ export class AudioStreamRandomizer extends AudioStream{
   }
   move_stream(_index_from, _index_to) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_move_stream,
+      AudioStreamRandomizer._bindings.method_move_stream,
       this._owner,
       _index_from, _index_to
     );
@@ -198,7 +199,7 @@ export class AudioStreamRandomizer extends AudioStream{
   }
   remove_stream(_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_stream,
+      AudioStreamRandomizer._bindings.method_remove_stream,
       this._owner,
       _index
     );
@@ -206,7 +207,7 @@ export class AudioStreamRandomizer extends AudioStream{
   }
   set_stream(_index, _stream) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_stream,
+      AudioStreamRandomizer._bindings.method_set_stream,
       this._owner,
       _index, _stream
     );
@@ -214,7 +215,7 @@ export class AudioStreamRandomizer extends AudioStream{
   }
   get_stream(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_stream,
+      AudioStreamRandomizer._bindings.method_get_stream,
       this._owner,
 			Variant.INT,
       _index
@@ -223,7 +224,7 @@ export class AudioStreamRandomizer extends AudioStream{
   }
   set_stream_probability_weight(_index, _weight) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_stream_probability_weight,
+      AudioStreamRandomizer._bindings.method_set_stream_probability_weight,
       this._owner,
       _index, _weight
     );
@@ -231,7 +232,7 @@ export class AudioStreamRandomizer extends AudioStream{
   }
   get_stream_probability_weight(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_stream_probability_weight,
+      AudioStreamRandomizer._bindings.method_get_stream_probability_weight,
       this._owner,
 			Variant.Type.FLOAT,
       _index
@@ -240,7 +241,7 @@ export class AudioStreamRandomizer extends AudioStream{
   }
   set_streams_count(_count) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_streams_count,
+      AudioStreamRandomizer._bindings.method_set_streams_count,
       this._owner,
       _count
     );
@@ -248,7 +249,7 @@ export class AudioStreamRandomizer extends AudioStream{
   }
   get_streams_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_streams_count,
+      AudioStreamRandomizer._bindings.method_get_streams_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -257,7 +258,7 @@ export class AudioStreamRandomizer extends AudioStream{
   }
   set_random_pitch(_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_random_pitch,
+      AudioStreamRandomizer._bindings.method_set_random_pitch,
       this._owner,
       _scale
     );
@@ -265,7 +266,7 @@ export class AudioStreamRandomizer extends AudioStream{
   }
   get_random_pitch() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_random_pitch,
+      AudioStreamRandomizer._bindings.method_get_random_pitch,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -274,7 +275,7 @@ export class AudioStreamRandomizer extends AudioStream{
   }
   set_random_volume_offset_db(_db_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_random_volume_offset_db,
+      AudioStreamRandomizer._bindings.method_set_random_volume_offset_db,
       this._owner,
       _db_offset
     );
@@ -282,7 +283,7 @@ export class AudioStreamRandomizer extends AudioStream{
   }
   get_random_volume_offset_db() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_random_volume_offset_db,
+      AudioStreamRandomizer._bindings.method_get_random_volume_offset_db,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -291,7 +292,7 @@ export class AudioStreamRandomizer extends AudioStream{
   }
   set_playback_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_playback_mode,
+      AudioStreamRandomizer._bindings.method_set_playback_mode,
       this._owner,
       _mode
     );
@@ -299,7 +300,7 @@ export class AudioStreamRandomizer extends AudioStream{
   }
   get_playback_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_playback_mode,
+      AudioStreamRandomizer._bindings.method_get_playback_mode,
       this._owner,
 			Variant.INT,
       

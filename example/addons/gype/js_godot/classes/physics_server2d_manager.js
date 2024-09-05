@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
+import { StringName } from '@js_godot/variant/string_name'
+import { GodotObject } from '@js_godot/classes/godot_object'
 import { Callable } from '@js_godot/variant/callable'
 import { Variant } from '@js_godot/variant/variant'
-import { GodotObject } from '@js_godot/classes/godot_object'
-import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
@@ -51,9 +51,10 @@ class _MethodBindings {
       );
     }
   }
+  
   register_server(_name, _create_callback) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_register_server,
+      _PhysicsServer2DManager._bindings.method_register_server,
       this._owner,
       _name, _create_callback
     );
@@ -61,7 +62,7 @@ class _MethodBindings {
   }
   set_default_server(_name, _priority) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_default_server,
+      _PhysicsServer2DManager._bindings.method_set_default_server,
       this._owner,
       _name, _priority
     );
@@ -74,4 +75,17 @@ class _MethodBindings {
     this._init_bindings();
   }
 }
-export const PhysicsServer2DManager = new _PhysicsServer2DManager();
+export const PhysicsServer2DManager = (function () {
+  let _instance;
+  function create_instance() {
+    return new _PhysicsServer2DManager();
+  }
+  return {
+    instance: function () {
+      if (!_instance) {
+        _instance = create_instance();
+      }
+      return _instance;
+    },
+  };
+})();

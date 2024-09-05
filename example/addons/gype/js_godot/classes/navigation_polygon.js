@@ -1,11 +1,11 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
+import { Vector2 } from '@js_godot/variant/vector2'
 import { Resource } from '@js_godot/classes/resource'
 import { StringName } from '@js_godot/variant/string_name'
 import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
-import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
-import { Vector2 } from '@js_godot/variant/vector2'
+import { Variant } from '@js_godot/variant/variant'
 import { Rect2 } from '@js_godot/variant/rect2'
+import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -394,9 +394,10 @@ export class NavigationPolygon extends Resource{
       );
     }
   }
+  
   set_vertices(_vertices) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vertices,
+      NavigationPolygon._bindings.method_set_vertices,
       this._owner,
       _vertices
     );
@@ -404,7 +405,7 @@ export class NavigationPolygon extends Resource{
   }
   get_vertices() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vertices,
+      NavigationPolygon._bindings.method_get_vertices,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -414,7 +415,7 @@ export class NavigationPolygon extends Resource{
   }
   add_polygon(_polygon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_polygon,
+      NavigationPolygon._bindings.method_add_polygon,
       this._owner,
       _polygon
     );
@@ -422,7 +423,7 @@ export class NavigationPolygon extends Resource{
   }
   get_polygon_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_polygon_count,
+      NavigationPolygon._bindings.method_get_polygon_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -431,7 +432,7 @@ export class NavigationPolygon extends Resource{
   }
   get_polygon(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_polygon,
+      NavigationPolygon._bindings.method_get_polygon,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -441,7 +442,7 @@ export class NavigationPolygon extends Resource{
   }
   clear_polygons() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_polygons,
+      NavigationPolygon._bindings.method_clear_polygons,
       this._owner,
       
     );
@@ -449,7 +450,7 @@ export class NavigationPolygon extends Resource{
   }
   get_navigation_mesh() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_navigation_mesh,
+      NavigationPolygon._bindings.method_get_navigation_mesh,
       this._owner,
 			Variant.INT,
       
@@ -458,7 +459,7 @@ export class NavigationPolygon extends Resource{
   }
   add_outline(_outline) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_outline,
+      NavigationPolygon._bindings.method_add_outline,
       this._owner,
       _outline
     );
@@ -466,7 +467,7 @@ export class NavigationPolygon extends Resource{
   }
   add_outline_at_index(_outline, _index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_outline_at_index,
+      NavigationPolygon._bindings.method_add_outline_at_index,
       this._owner,
       _outline, _index
     );
@@ -474,7 +475,7 @@ export class NavigationPolygon extends Resource{
   }
   get_outline_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_outline_count,
+      NavigationPolygon._bindings.method_get_outline_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -483,7 +484,7 @@ export class NavigationPolygon extends Resource{
   }
   set_outline(_idx, _outline) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_outline,
+      NavigationPolygon._bindings.method_set_outline,
       this._owner,
       _idx, _outline
     );
@@ -491,7 +492,7 @@ export class NavigationPolygon extends Resource{
   }
   get_outline(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_outline,
+      NavigationPolygon._bindings.method_get_outline,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -501,7 +502,7 @@ export class NavigationPolygon extends Resource{
   }
   remove_outline(_idx) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_outline,
+      NavigationPolygon._bindings.method_remove_outline,
       this._owner,
       _idx
     );
@@ -509,7 +510,7 @@ export class NavigationPolygon extends Resource{
   }
   clear_outlines() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_outlines,
+      NavigationPolygon._bindings.method_clear_outlines,
       this._owner,
       
     );
@@ -517,7 +518,7 @@ export class NavigationPolygon extends Resource{
   }
   make_polygons_from_outlines() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_make_polygons_from_outlines,
+      NavigationPolygon._bindings.method_make_polygons_from_outlines,
       this._owner,
       
     );
@@ -525,7 +526,7 @@ export class NavigationPolygon extends Resource{
   }
   set_cell_size(_cell_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cell_size,
+      NavigationPolygon._bindings.method_set_cell_size,
       this._owner,
       _cell_size
     );
@@ -533,7 +534,7 @@ export class NavigationPolygon extends Resource{
   }
   get_cell_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cell_size,
+      NavigationPolygon._bindings.method_get_cell_size,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -542,7 +543,7 @@ export class NavigationPolygon extends Resource{
   }
   set_border_size(_border_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_border_size,
+      NavigationPolygon._bindings.method_set_border_size,
       this._owner,
       _border_size
     );
@@ -550,7 +551,7 @@ export class NavigationPolygon extends Resource{
   }
   get_border_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_border_size,
+      NavigationPolygon._bindings.method_get_border_size,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -559,7 +560,7 @@ export class NavigationPolygon extends Resource{
   }
   set_parsed_geometry_type(_geometry_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_parsed_geometry_type,
+      NavigationPolygon._bindings.method_set_parsed_geometry_type,
       this._owner,
       _geometry_type
     );
@@ -567,7 +568,7 @@ export class NavigationPolygon extends Resource{
   }
   get_parsed_geometry_type() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_parsed_geometry_type,
+      NavigationPolygon._bindings.method_get_parsed_geometry_type,
       this._owner,
 			Variant.INT,
       
@@ -576,7 +577,7 @@ export class NavigationPolygon extends Resource{
   }
   set_parsed_collision_mask(_mask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_parsed_collision_mask,
+      NavigationPolygon._bindings.method_set_parsed_collision_mask,
       this._owner,
       _mask
     );
@@ -584,7 +585,7 @@ export class NavigationPolygon extends Resource{
   }
   get_parsed_collision_mask() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_parsed_collision_mask,
+      NavigationPolygon._bindings.method_get_parsed_collision_mask,
       this._owner,
 			Variant.Type.INT,
       
@@ -593,7 +594,7 @@ export class NavigationPolygon extends Resource{
   }
   set_parsed_collision_mask_value(_layer_number, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_parsed_collision_mask_value,
+      NavigationPolygon._bindings.method_set_parsed_collision_mask_value,
       this._owner,
       _layer_number, _value
     );
@@ -601,7 +602,7 @@ export class NavigationPolygon extends Resource{
   }
   get_parsed_collision_mask_value(_layer_number) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_parsed_collision_mask_value,
+      NavigationPolygon._bindings.method_get_parsed_collision_mask_value,
       this._owner,
 			Variant.Type.BOOL,
       _layer_number
@@ -610,7 +611,7 @@ export class NavigationPolygon extends Resource{
   }
   set_source_geometry_mode(_geometry_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_source_geometry_mode,
+      NavigationPolygon._bindings.method_set_source_geometry_mode,
       this._owner,
       _geometry_mode
     );
@@ -618,7 +619,7 @@ export class NavigationPolygon extends Resource{
   }
   get_source_geometry_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_source_geometry_mode,
+      NavigationPolygon._bindings.method_get_source_geometry_mode,
       this._owner,
 			Variant.INT,
       
@@ -627,7 +628,7 @@ export class NavigationPolygon extends Resource{
   }
   set_source_geometry_group_name(_group_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_source_geometry_group_name,
+      NavigationPolygon._bindings.method_set_source_geometry_group_name,
       this._owner,
       _group_name
     );
@@ -635,7 +636,7 @@ export class NavigationPolygon extends Resource{
   }
   get_source_geometry_group_name() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_source_geometry_group_name,
+      NavigationPolygon._bindings.method_get_source_geometry_group_name,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -645,7 +646,7 @@ export class NavigationPolygon extends Resource{
   }
   set_agent_radius(_agent_radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_agent_radius,
+      NavigationPolygon._bindings.method_set_agent_radius,
       this._owner,
       _agent_radius
     );
@@ -653,7 +654,7 @@ export class NavigationPolygon extends Resource{
   }
   get_agent_radius() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_agent_radius,
+      NavigationPolygon._bindings.method_get_agent_radius,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -662,7 +663,7 @@ export class NavigationPolygon extends Resource{
   }
   set_baking_rect(_rect) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_baking_rect,
+      NavigationPolygon._bindings.method_set_baking_rect,
       this._owner,
       _rect
     );
@@ -670,7 +671,7 @@ export class NavigationPolygon extends Resource{
   }
   get_baking_rect() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_baking_rect,
+      NavigationPolygon._bindings.method_get_baking_rect,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -680,7 +681,7 @@ export class NavigationPolygon extends Resource{
   }
   set_baking_rect_offset(_rect_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_baking_rect_offset,
+      NavigationPolygon._bindings.method_set_baking_rect_offset,
       this._owner,
       _rect_offset
     );
@@ -688,7 +689,7 @@ export class NavigationPolygon extends Resource{
   }
   get_baking_rect_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_baking_rect_offset,
+      NavigationPolygon._bindings.method_get_baking_rect_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -698,7 +699,7 @@ export class NavigationPolygon extends Resource{
   }
   clear() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear,
+      NavigationPolygon._bindings.method_clear,
       this._owner,
       
     );

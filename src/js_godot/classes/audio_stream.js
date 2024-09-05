@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
 import { GDString } from '@js_godot/variant/gd_string'
 import {
@@ -91,6 +91,7 @@ export class AudioStream extends Resource{
       );
     }
   }
+  
   _instantiate_playback() {
   }
   _get_stream_name() {
@@ -107,7 +108,7 @@ export class AudioStream extends Resource{
   }
   get_length() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_length,
+      AudioStream._bindings.method_get_length,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -116,7 +117,7 @@ export class AudioStream extends Resource{
   }
   is_monophonic() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_monophonic,
+      AudioStream._bindings.method_is_monophonic,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -125,7 +126,7 @@ export class AudioStream extends Resource{
   }
   instantiate_playback() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_instantiate_playback,
+      AudioStream._bindings.method_instantiate_playback,
       this._owner,
 			Variant.INT,
       
@@ -134,7 +135,7 @@ export class AudioStream extends Resource{
   }
   can_be_sampled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_can_be_sampled,
+      AudioStream._bindings.method_can_be_sampled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -143,7 +144,7 @@ export class AudioStream extends Resource{
   }
   generate_sample() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_generate_sample,
+      AudioStream._bindings.method_generate_sample,
       this._owner,
 			Variant.INT,
       
@@ -152,7 +153,7 @@ export class AudioStream extends Resource{
   }
   is_meta_stream() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_meta_stream,
+      AudioStream._bindings.method_is_meta_stream,
       this._owner,
 			Variant.Type.BOOL,
       

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { RID } from '@js_godot/variant/rid'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { TextureLayered } from '@js_godot/classes/texture_layered'
 import {
   call_utility_ret,
@@ -51,9 +51,10 @@ export class TextureLayeredRD extends TextureLayered{
       );
     }
   }
+  
   set_texture_rd_rid(_texture_rd_rid) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture_rd_rid,
+      TextureLayeredRD._bindings.method_set_texture_rd_rid,
       this._owner,
       _texture_rd_rid
     );
@@ -61,7 +62,7 @@ export class TextureLayeredRD extends TextureLayered{
   }
   get_texture_rd_rid() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_rd_rid,
+      TextureLayeredRD._bindings.method_get_texture_rd_rid,
       this._owner,
 			Variant.Type.RID,
     

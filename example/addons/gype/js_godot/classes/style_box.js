@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
+import { Vector2 } from '@js_godot/variant/vector2'
 import { Resource } from '@js_godot/classes/resource'
 import { StringName } from '@js_godot/variant/string_name'
-import { Vector2 } from '@js_godot/variant/vector2'
 import { RID } from '@js_godot/variant/rid'
+import { Variant } from '@js_godot/variant/variant'
 import { Rect2 } from '@js_godot/variant/rect2'
 import {
   call_utility_ret,
@@ -123,6 +123,7 @@ export class StyleBox extends Resource{
       );
     }
   }
+  
   _draw(_to_canvas_item, _rect) {
   }
   _get_draw_rect(_rect) {
@@ -133,7 +134,7 @@ export class StyleBox extends Resource{
   }
   get_minimum_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_minimum_size,
+      StyleBox._bindings.method_get_minimum_size,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -143,7 +144,7 @@ export class StyleBox extends Resource{
   }
   set_content_margin(_margin, _offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_content_margin,
+      StyleBox._bindings.method_set_content_margin,
       this._owner,
       _margin, _offset
     );
@@ -151,7 +152,7 @@ export class StyleBox extends Resource{
   }
   set_content_margin_all(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_content_margin_all,
+      StyleBox._bindings.method_set_content_margin_all,
       this._owner,
       _offset
     );
@@ -159,7 +160,7 @@ export class StyleBox extends Resource{
   }
   get_content_margin(_margin) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_content_margin,
+      StyleBox._bindings.method_get_content_margin,
       this._owner,
 			Variant.Type.FLOAT,
       _margin
@@ -168,7 +169,7 @@ export class StyleBox extends Resource{
   }
   get_margin(_margin) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_margin,
+      StyleBox._bindings.method_get_margin,
       this._owner,
 			Variant.Type.FLOAT,
       _margin
@@ -177,7 +178,7 @@ export class StyleBox extends Resource{
   }
   get_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_offset,
+      StyleBox._bindings.method_get_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -187,7 +188,7 @@ export class StyleBox extends Resource{
   }
   draw(_canvas_item, _rect) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_draw,
+      StyleBox._bindings.method_draw,
       this._owner,
       _canvas_item, _rect
     );
@@ -195,7 +196,7 @@ export class StyleBox extends Resource{
   }
   get_current_item_drawn() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_current_item_drawn,
+      StyleBox._bindings.method_get_current_item_drawn,
       this._owner,
 			Variant.INT,
       
@@ -204,7 +205,7 @@ export class StyleBox extends Resource{
   }
   test_mask(_point, _rect) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_test_mask,
+      StyleBox._bindings.method_test_mask,
       this._owner,
 			Variant.Type.BOOL,
       _point, _rect

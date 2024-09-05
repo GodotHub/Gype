@@ -30,6 +30,7 @@ export class MainLoop extends GodotObject{
     }
     this.#initialized = true;
   }
+  
   _initialize() {
   }
   _physics_process(_delta) {

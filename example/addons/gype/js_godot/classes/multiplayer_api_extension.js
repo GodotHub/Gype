@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
+import { MultiplayerAPI } from '@js_godot/classes/multiplayer_api'
 import { StringName } from '@js_godot/variant/string_name'
 import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
-import { MultiplayerAPI } from '@js_godot/classes/multiplayer_api'
+import { Variant } from '@js_godot/variant/variant'
 import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
@@ -32,6 +32,7 @@ export class MultiplayerAPIExtension extends MultiplayerAPI{
     }
     this.#initialized = true;
   }
+  
   _poll() {
   }
   _set_multiplayer_peer(_multiplayer_peer) {

@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { AudioStreamPlayback } from '@js_godot/classes/audio_stream_playback'
 import {
   call_utility_ret,
@@ -40,13 +40,14 @@ export class AudioStreamPlaybackResampled extends AudioStreamPlayback{
       );
     }
   }
+  
   _mix_resampled(_dst_buffer, _frame_count) {
   }
   _get_stream_sampling_rate() {
   }
   begin_resample() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_begin_resample,
+      AudioStreamPlaybackResampled._bindings.method_begin_resample,
       this._owner,
       
     );

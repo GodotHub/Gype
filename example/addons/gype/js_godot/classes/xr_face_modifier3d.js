@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
-import { Node3D } from '@js_godot/classes/node3d'
 import { NodePath } from '@js_godot/variant/node_path'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { Node3D } from '@js_godot/classes/node3d'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -71,9 +71,10 @@ export class XRFaceModifier3D extends Node3D{
       );
     }
   }
+  
   set_face_tracker(_tracker_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_face_tracker,
+      XRFaceModifier3D._bindings.method_set_face_tracker,
       this._owner,
       _tracker_name
     );
@@ -81,7 +82,7 @@ export class XRFaceModifier3D extends Node3D{
   }
   get_face_tracker() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_face_tracker,
+      XRFaceModifier3D._bindings.method_get_face_tracker,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -91,7 +92,7 @@ export class XRFaceModifier3D extends Node3D{
   }
   set_target(_target) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_target,
+      XRFaceModifier3D._bindings.method_set_target,
       this._owner,
       _target
     );
@@ -99,7 +100,7 @@ export class XRFaceModifier3D extends Node3D{
   }
   get_target() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_target,
+      XRFaceModifier3D._bindings.method_get_target,
       this._owner,
 			Variant.Type.NODE_PATH,
     

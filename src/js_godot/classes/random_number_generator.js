@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { PackedFloat32Array } from '@js_godot/variant/packed_float32_array'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -141,9 +141,10 @@ export class RandomNumberGenerator extends RefCounted{
       );
     }
   }
+  
   set_seed(_seed) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_seed,
+      RandomNumberGenerator._bindings.method_set_seed,
       this._owner,
       _seed
     );
@@ -151,7 +152,7 @@ export class RandomNumberGenerator extends RefCounted{
   }
   get_seed() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_seed,
+      RandomNumberGenerator._bindings.method_get_seed,
       this._owner,
 			Variant.Type.INT,
       
@@ -160,7 +161,7 @@ export class RandomNumberGenerator extends RefCounted{
   }
   set_state(_state) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_state,
+      RandomNumberGenerator._bindings.method_set_state,
       this._owner,
       _state
     );
@@ -168,7 +169,7 @@ export class RandomNumberGenerator extends RefCounted{
   }
   get_state() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_state,
+      RandomNumberGenerator._bindings.method_get_state,
       this._owner,
 			Variant.Type.INT,
       
@@ -177,7 +178,7 @@ export class RandomNumberGenerator extends RefCounted{
   }
   randi() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_randi,
+      RandomNumberGenerator._bindings.method_randi,
       this._owner,
 			Variant.Type.INT,
       
@@ -186,7 +187,7 @@ export class RandomNumberGenerator extends RefCounted{
   }
   randf() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_randf,
+      RandomNumberGenerator._bindings.method_randf,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -195,7 +196,7 @@ export class RandomNumberGenerator extends RefCounted{
   }
   randfn(_mean, _deviation) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_randfn,
+      RandomNumberGenerator._bindings.method_randfn,
       this._owner,
 			Variant.Type.FLOAT,
       _mean, _deviation
@@ -204,7 +205,7 @@ export class RandomNumberGenerator extends RefCounted{
   }
   randf_range(_from, _to) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_randf_range,
+      RandomNumberGenerator._bindings.method_randf_range,
       this._owner,
 			Variant.Type.FLOAT,
       _from, _to
@@ -213,7 +214,7 @@ export class RandomNumberGenerator extends RefCounted{
   }
   randi_range(_from, _to) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_randi_range,
+      RandomNumberGenerator._bindings.method_randi_range,
       this._owner,
 			Variant.Type.INT,
       _from, _to
@@ -222,7 +223,7 @@ export class RandomNumberGenerator extends RefCounted{
   }
   rand_weighted(_weights) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_rand_weighted,
+      RandomNumberGenerator._bindings.method_rand_weighted,
       this._owner,
 			Variant.Type.INT,
       _weights
@@ -231,7 +232,7 @@ export class RandomNumberGenerator extends RefCounted{
   }
   randomize() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_randomize,
+      RandomNumberGenerator._bindings.method_randomize,
       this._owner,
       
     );

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { AudioEffect } from '@js_godot/classes/audio_effect'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -110,9 +110,10 @@ export class AudioEffectFilter extends AudioEffect{
       );
     }
   }
+  
   set_cutoff(_freq) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cutoff,
+      AudioEffectFilter._bindings.method_set_cutoff,
       this._owner,
       _freq
     );
@@ -120,7 +121,7 @@ export class AudioEffectFilter extends AudioEffect{
   }
   get_cutoff() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cutoff,
+      AudioEffectFilter._bindings.method_get_cutoff,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -129,7 +130,7 @@ export class AudioEffectFilter extends AudioEffect{
   }
   set_resonance(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_resonance,
+      AudioEffectFilter._bindings.method_set_resonance,
       this._owner,
       _amount
     );
@@ -137,7 +138,7 @@ export class AudioEffectFilter extends AudioEffect{
   }
   get_resonance() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_resonance,
+      AudioEffectFilter._bindings.method_get_resonance,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -146,7 +147,7 @@ export class AudioEffectFilter extends AudioEffect{
   }
   set_gain(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_gain,
+      AudioEffectFilter._bindings.method_set_gain,
       this._owner,
       _amount
     );
@@ -154,7 +155,7 @@ export class AudioEffectFilter extends AudioEffect{
   }
   get_gain() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_gain,
+      AudioEffectFilter._bindings.method_get_gain,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -163,7 +164,7 @@ export class AudioEffectFilter extends AudioEffect{
   }
   set_db(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_db,
+      AudioEffectFilter._bindings.method_set_db,
       this._owner,
       _amount
     );
@@ -171,7 +172,7 @@ export class AudioEffectFilter extends AudioEffect{
   }
   get_db() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_db,
+      AudioEffectFilter._bindings.method_get_db,
       this._owner,
 			Variant.INT,
       

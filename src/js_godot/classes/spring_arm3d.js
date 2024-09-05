@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
-import { Node3D } from '@js_godot/classes/node3d'
 import { RID } from '@js_godot/variant/rid'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { Node3D } from '@js_godot/classes/node3d'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -151,9 +151,10 @@ export class SpringArm3D extends Node3D{
       );
     }
   }
+  
   get_hit_length() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_hit_length,
+      SpringArm3D._bindings.method_get_hit_length,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -162,7 +163,7 @@ export class SpringArm3D extends Node3D{
   }
   set_length(_length) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_length,
+      SpringArm3D._bindings.method_set_length,
       this._owner,
       _length
     );
@@ -170,7 +171,7 @@ export class SpringArm3D extends Node3D{
   }
   get_length() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_length,
+      SpringArm3D._bindings.method_get_length,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -179,7 +180,7 @@ export class SpringArm3D extends Node3D{
   }
   set_shape(_shape) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shape,
+      SpringArm3D._bindings.method_set_shape,
       this._owner,
       _shape
     );
@@ -187,7 +188,7 @@ export class SpringArm3D extends Node3D{
   }
   get_shape() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_shape,
+      SpringArm3D._bindings.method_get_shape,
       this._owner,
 			Variant.INT,
       
@@ -196,7 +197,7 @@ export class SpringArm3D extends Node3D{
   }
   add_excluded_object(_RID) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_excluded_object,
+      SpringArm3D._bindings.method_add_excluded_object,
       this._owner,
       _RID
     );
@@ -204,7 +205,7 @@ export class SpringArm3D extends Node3D{
   }
   remove_excluded_object(_RID) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_remove_excluded_object,
+      SpringArm3D._bindings.method_remove_excluded_object,
       this._owner,
 			Variant.Type.BOOL,
       _RID
@@ -213,7 +214,7 @@ export class SpringArm3D extends Node3D{
   }
   clear_excluded_objects() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_excluded_objects,
+      SpringArm3D._bindings.method_clear_excluded_objects,
       this._owner,
       
     );
@@ -221,7 +222,7 @@ export class SpringArm3D extends Node3D{
   }
   set_collision_mask(_mask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_mask,
+      SpringArm3D._bindings.method_set_collision_mask,
       this._owner,
       _mask
     );
@@ -229,7 +230,7 @@ export class SpringArm3D extends Node3D{
   }
   get_collision_mask() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_mask,
+      SpringArm3D._bindings.method_get_collision_mask,
       this._owner,
 			Variant.Type.INT,
       
@@ -238,7 +239,7 @@ export class SpringArm3D extends Node3D{
   }
   set_margin(_margin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_margin,
+      SpringArm3D._bindings.method_set_margin,
       this._owner,
       _margin
     );
@@ -246,7 +247,7 @@ export class SpringArm3D extends Node3D{
   }
   get_margin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_margin,
+      SpringArm3D._bindings.method_get_margin,
       this._owner,
 			Variant.Type.FLOAT,
       

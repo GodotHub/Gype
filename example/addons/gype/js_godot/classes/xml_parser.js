@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { Variant } from '@js_godot/variant/variant'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -202,9 +202,10 @@ export class XMLParser extends RefCounted{
       );
     }
   }
+  
   read() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_read,
+      XMLParser._bindings.method_read,
       this._owner,
 			Variant.INT,
       
@@ -213,7 +214,7 @@ export class XMLParser extends RefCounted{
   }
   get_node_type() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_node_type,
+      XMLParser._bindings.method_get_node_type,
       this._owner,
 			Variant.INT,
       
@@ -222,7 +223,7 @@ export class XMLParser extends RefCounted{
   }
   get_node_name() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_node_name,
+      XMLParser._bindings.method_get_node_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -232,7 +233,7 @@ export class XMLParser extends RefCounted{
   }
   get_node_data() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_node_data,
+      XMLParser._bindings.method_get_node_data,
       this._owner,
 			Variant.Type.STRING,
     
@@ -242,7 +243,7 @@ export class XMLParser extends RefCounted{
   }
   get_node_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_node_offset,
+      XMLParser._bindings.method_get_node_offset,
       this._owner,
 			Variant.Type.INT,
       
@@ -251,7 +252,7 @@ export class XMLParser extends RefCounted{
   }
   get_attribute_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_attribute_count,
+      XMLParser._bindings.method_get_attribute_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -260,7 +261,7 @@ export class XMLParser extends RefCounted{
   }
   get_attribute_name(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_attribute_name,
+      XMLParser._bindings.method_get_attribute_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -270,7 +271,7 @@ export class XMLParser extends RefCounted{
   }
   get_attribute_value(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_attribute_value,
+      XMLParser._bindings.method_get_attribute_value,
       this._owner,
 			Variant.Type.STRING,
     
@@ -280,7 +281,7 @@ export class XMLParser extends RefCounted{
   }
   has_attribute(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_attribute,
+      XMLParser._bindings.method_has_attribute,
       this._owner,
 			Variant.Type.BOOL,
       _name
@@ -289,7 +290,7 @@ export class XMLParser extends RefCounted{
   }
   get_named_attribute_value(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_named_attribute_value,
+      XMLParser._bindings.method_get_named_attribute_value,
       this._owner,
 			Variant.Type.STRING,
     
@@ -299,7 +300,7 @@ export class XMLParser extends RefCounted{
   }
   get_named_attribute_value_safe(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_named_attribute_value_safe,
+      XMLParser._bindings.method_get_named_attribute_value_safe,
       this._owner,
 			Variant.Type.STRING,
     
@@ -309,7 +310,7 @@ export class XMLParser extends RefCounted{
   }
   is_empty() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_empty,
+      XMLParser._bindings.method_is_empty,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -318,7 +319,7 @@ export class XMLParser extends RefCounted{
   }
   get_current_line() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_current_line,
+      XMLParser._bindings.method_get_current_line,
       this._owner,
 			Variant.Type.INT,
       
@@ -327,7 +328,7 @@ export class XMLParser extends RefCounted{
   }
   skip_section() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_skip_section,
+      XMLParser._bindings.method_skip_section,
       this._owner,
       
     );
@@ -335,7 +336,7 @@ export class XMLParser extends RefCounted{
   }
   seek(_position) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_seek,
+      XMLParser._bindings.method_seek,
       this._owner,
 			Variant.INT,
       _position
@@ -344,7 +345,7 @@ export class XMLParser extends RefCounted{
   }
   open(_file) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_open,
+      XMLParser._bindings.method_open,
       this._owner,
 			Variant.INT,
       _file
@@ -353,7 +354,7 @@ export class XMLParser extends RefCounted{
   }
   open_buffer(_buffer) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_open_buffer,
+      XMLParser._bindings.method_open_buffer,
       this._owner,
 			Variant.INT,
       _buffer

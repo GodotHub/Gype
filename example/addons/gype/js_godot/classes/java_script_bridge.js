@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Callable } from '@js_godot/variant/callable'
-import { GodotObject } from '@js_godot/classes/godot_object'
 import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
 import { StringName } from '@js_godot/variant/string_name'
+import { GodotObject } from '@js_godot/classes/godot_object'
+import { Callable } from '@js_godot/variant/callable'
 import { GDString } from '@js_godot/variant/gd_string'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -112,9 +112,10 @@ class _MethodBindings {
       );
     }
   }
+  
   eval(_code, _use_global_execution_context) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_eval,
+      _JavaScriptBridge._bindings.method_eval,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -124,7 +125,7 @@ class _MethodBindings {
   }
   get_interface(_interface) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_interface,
+      _JavaScriptBridge._bindings.method_get_interface,
       this._owner,
 			Variant.INT,
       _interface
@@ -133,7 +134,7 @@ class _MethodBindings {
   }
   create_callback(_callable) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_callback,
+      _JavaScriptBridge._bindings.method_create_callback,
       this._owner,
 			Variant.INT,
       _callable
@@ -142,7 +143,7 @@ class _MethodBindings {
   }
   create_object(_object) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_object,
+      _JavaScriptBridge._bindings.method_create_object,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -152,7 +153,7 @@ class _MethodBindings {
   }
   download_buffer(_buffer, _name, _mime) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_download_buffer,
+      _JavaScriptBridge._bindings.method_download_buffer,
       this._owner,
       _buffer, _name, _mime
     );
@@ -160,7 +161,7 @@ class _MethodBindings {
   }
   pwa_needs_update() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_pwa_needs_update,
+      _JavaScriptBridge._bindings.method_pwa_needs_update,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -169,7 +170,7 @@ class _MethodBindings {
   }
   pwa_update() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_pwa_update,
+      _JavaScriptBridge._bindings.method_pwa_update,
       this._owner,
 			Variant.INT,
       
@@ -178,7 +179,7 @@ class _MethodBindings {
   }
   force_fs_sync() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_force_fs_sync,
+      _JavaScriptBridge._bindings.method_force_fs_sync,
       this._owner,
       
     );
@@ -191,4 +192,17 @@ class _MethodBindings {
     this._init_bindings();
   }
 }
-export const JavaScriptBridge = new _JavaScriptBridge();
+export const JavaScriptBridge = (function () {
+  let _instance;
+  function create_instance() {
+    return new _JavaScriptBridge();
+  }
+  return {
+    instance: function () {
+      if (!_instance) {
+        _instance = create_instance();
+      }
+      return _instance;
+    },
+  };
+})();

@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Vector3 } from '@js_godot/variant/vector3'
-import { StringName } from '@js_godot/variant/string_name'
 import { VisualInstance3D } from '@js_godot/classes/visual_instance3d'
+import { Variant } from '@js_godot/variant/variant'
 import { Color } from '@js_godot/variant/color'
+import { StringName } from '@js_godot/variant/string_name'
+import { Vector3 } from '@js_godot/variant/vector3'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -312,9 +312,10 @@ export class ReflectionProbe extends VisualInstance3D{
       );
     }
   }
+  
   set_intensity(_intensity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_intensity,
+      ReflectionProbe._bindings.method_set_intensity,
       this._owner,
       _intensity
     );
@@ -322,7 +323,7 @@ export class ReflectionProbe extends VisualInstance3D{
   }
   get_intensity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_intensity,
+      ReflectionProbe._bindings.method_get_intensity,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -331,7 +332,7 @@ export class ReflectionProbe extends VisualInstance3D{
   }
   set_ambient_mode(_ambient) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ambient_mode,
+      ReflectionProbe._bindings.method_set_ambient_mode,
       this._owner,
       _ambient
     );
@@ -339,7 +340,7 @@ export class ReflectionProbe extends VisualInstance3D{
   }
   get_ambient_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ambient_mode,
+      ReflectionProbe._bindings.method_get_ambient_mode,
       this._owner,
 			Variant.INT,
       
@@ -348,7 +349,7 @@ export class ReflectionProbe extends VisualInstance3D{
   }
   set_ambient_color(_ambient) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ambient_color,
+      ReflectionProbe._bindings.method_set_ambient_color,
       this._owner,
       _ambient
     );
@@ -356,7 +357,7 @@ export class ReflectionProbe extends VisualInstance3D{
   }
   get_ambient_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ambient_color,
+      ReflectionProbe._bindings.method_get_ambient_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -366,7 +367,7 @@ export class ReflectionProbe extends VisualInstance3D{
   }
   set_ambient_color_energy(_ambient_energy) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ambient_color_energy,
+      ReflectionProbe._bindings.method_set_ambient_color_energy,
       this._owner,
       _ambient_energy
     );
@@ -374,7 +375,7 @@ export class ReflectionProbe extends VisualInstance3D{
   }
   get_ambient_color_energy() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ambient_color_energy,
+      ReflectionProbe._bindings.method_get_ambient_color_energy,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -383,7 +384,7 @@ export class ReflectionProbe extends VisualInstance3D{
   }
   set_max_distance(_max_distance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_max_distance,
+      ReflectionProbe._bindings.method_set_max_distance,
       this._owner,
       _max_distance
     );
@@ -391,7 +392,7 @@ export class ReflectionProbe extends VisualInstance3D{
   }
   get_max_distance() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_max_distance,
+      ReflectionProbe._bindings.method_get_max_distance,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -400,7 +401,7 @@ export class ReflectionProbe extends VisualInstance3D{
   }
   set_mesh_lod_threshold(_ratio) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mesh_lod_threshold,
+      ReflectionProbe._bindings.method_set_mesh_lod_threshold,
       this._owner,
       _ratio
     );
@@ -408,7 +409,7 @@ export class ReflectionProbe extends VisualInstance3D{
   }
   get_mesh_lod_threshold() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mesh_lod_threshold,
+      ReflectionProbe._bindings.method_get_mesh_lod_threshold,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -417,7 +418,7 @@ export class ReflectionProbe extends VisualInstance3D{
   }
   set_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_size,
+      ReflectionProbe._bindings.method_set_size,
       this._owner,
       _size
     );
@@ -425,7 +426,7 @@ export class ReflectionProbe extends VisualInstance3D{
   }
   get_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_size,
+      ReflectionProbe._bindings.method_get_size,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -435,7 +436,7 @@ export class ReflectionProbe extends VisualInstance3D{
   }
   set_origin_offset(_origin_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_origin_offset,
+      ReflectionProbe._bindings.method_set_origin_offset,
       this._owner,
       _origin_offset
     );
@@ -443,7 +444,7 @@ export class ReflectionProbe extends VisualInstance3D{
   }
   get_origin_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_origin_offset,
+      ReflectionProbe._bindings.method_get_origin_offset,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -453,7 +454,7 @@ export class ReflectionProbe extends VisualInstance3D{
   }
   set_as_interior(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_as_interior,
+      ReflectionProbe._bindings.method_set_as_interior,
       this._owner,
       _enable
     );
@@ -461,7 +462,7 @@ export class ReflectionProbe extends VisualInstance3D{
   }
   is_set_as_interior() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_set_as_interior,
+      ReflectionProbe._bindings.method_is_set_as_interior,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -470,7 +471,7 @@ export class ReflectionProbe extends VisualInstance3D{
   }
   set_enable_box_projection(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_enable_box_projection,
+      ReflectionProbe._bindings.method_set_enable_box_projection,
       this._owner,
       _enable
     );
@@ -478,7 +479,7 @@ export class ReflectionProbe extends VisualInstance3D{
   }
   is_box_projection_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_box_projection_enabled,
+      ReflectionProbe._bindings.method_is_box_projection_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -487,7 +488,7 @@ export class ReflectionProbe extends VisualInstance3D{
   }
   set_enable_shadows(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_enable_shadows,
+      ReflectionProbe._bindings.method_set_enable_shadows,
       this._owner,
       _enable
     );
@@ -495,7 +496,7 @@ export class ReflectionProbe extends VisualInstance3D{
   }
   are_shadows_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_are_shadows_enabled,
+      ReflectionProbe._bindings.method_are_shadows_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -504,7 +505,7 @@ export class ReflectionProbe extends VisualInstance3D{
   }
   set_cull_mask(_layers) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cull_mask,
+      ReflectionProbe._bindings.method_set_cull_mask,
       this._owner,
       _layers
     );
@@ -512,7 +513,7 @@ export class ReflectionProbe extends VisualInstance3D{
   }
   get_cull_mask() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cull_mask,
+      ReflectionProbe._bindings.method_get_cull_mask,
       this._owner,
 			Variant.Type.INT,
       
@@ -521,7 +522,7 @@ export class ReflectionProbe extends VisualInstance3D{
   }
   set_reflection_mask(_layers) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_reflection_mask,
+      ReflectionProbe._bindings.method_set_reflection_mask,
       this._owner,
       _layers
     );
@@ -529,7 +530,7 @@ export class ReflectionProbe extends VisualInstance3D{
   }
   get_reflection_mask() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_reflection_mask,
+      ReflectionProbe._bindings.method_get_reflection_mask,
       this._owner,
 			Variant.Type.INT,
       
@@ -538,7 +539,7 @@ export class ReflectionProbe extends VisualInstance3D{
   }
   set_update_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_update_mode,
+      ReflectionProbe._bindings.method_set_update_mode,
       this._owner,
       _mode
     );
@@ -546,7 +547,7 @@ export class ReflectionProbe extends VisualInstance3D{
   }
   get_update_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_update_mode,
+      ReflectionProbe._bindings.method_get_update_mode,
       this._owner,
 			Variant.INT,
       

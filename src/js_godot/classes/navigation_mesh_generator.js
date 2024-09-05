@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { Callable } from '@js_godot/variant/callable'
 import { Variant } from '@js_godot/variant/variant'
-import { GodotObject } from '@js_godot/classes/godot_object'
 import { StringName } from '@js_godot/variant/string_name'
+import { Callable } from '@js_godot/variant/callable'
+import { GodotObject } from '@js_godot/classes/godot_object'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -70,9 +70,10 @@ class _MethodBindings {
       );
     }
   }
+  
   bake(_navigation_mesh, _root_node) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_bake,
+      _NavigationMeshGenerator._bindings.method_bake,
       this._owner,
       _navigation_mesh, _root_node
     );
@@ -80,7 +81,7 @@ class _MethodBindings {
   }
   clear(_navigation_mesh) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear,
+      _NavigationMeshGenerator._bindings.method_clear,
       this._owner,
       _navigation_mesh
     );
@@ -88,7 +89,7 @@ class _MethodBindings {
   }
   parse_source_geometry_data(_navigation_mesh, _source_geometry_data, _root_node, _callback) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_parse_source_geometry_data,
+      _NavigationMeshGenerator._bindings.method_parse_source_geometry_data,
       this._owner,
       _navigation_mesh, _source_geometry_data, _root_node, _callback
     );
@@ -96,7 +97,7 @@ class _MethodBindings {
   }
   bake_from_source_geometry_data(_navigation_mesh, _source_geometry_data, _callback) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_bake_from_source_geometry_data,
+      _NavigationMeshGenerator._bindings.method_bake_from_source_geometry_data,
       this._owner,
       _navigation_mesh, _source_geometry_data, _callback
     );
@@ -109,4 +110,17 @@ class _MethodBindings {
     this._init_bindings();
   }
 }
-export const NavigationMeshGenerator = new _NavigationMeshGenerator();
+export const NavigationMeshGenerator = (function () {
+  let _instance;
+  function create_instance() {
+    return new _NavigationMeshGenerator();
+  }
+  return {
+    instance: function () {
+      if (!_instance) {
+        _instance = create_instance();
+      }
+      return _instance;
+    },
+  };
+})();

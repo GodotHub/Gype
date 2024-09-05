@@ -50,9 +50,10 @@ export class InputEventMagnifyGesture extends InputEventGesture{
       );
     }
   }
+  
   set_factor(_factor) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_factor,
+      InputEventMagnifyGesture._bindings.method_set_factor,
       this._owner,
       _factor
     );
@@ -60,7 +61,7 @@ export class InputEventMagnifyGesture extends InputEventGesture{
   }
   get_factor() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_factor,
+      InputEventMagnifyGesture._bindings.method_get_factor,
       this._owner,
 			Variant.Type.FLOAT,
       

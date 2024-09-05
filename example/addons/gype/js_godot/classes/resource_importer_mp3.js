@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { StringName } from '@js_godot/variant/string_name'
 import { ResourceImporter } from '@js_godot/classes/resource_importer'
 import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -30,6 +30,7 @@ export class ResourceImporterMP3 extends ResourceImporter{
     }
     this.#initialized = true;
   }
+  
   
 
 

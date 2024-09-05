@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { CompressedTextureLayered } from '@js_godot/classes/compressed_texture_layered'
+import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
@@ -30,6 +30,7 @@ export class CompressedCubemap extends CompressedTextureLayered{
     }
     this.#initialized = true;
   }
+  
   
 
 

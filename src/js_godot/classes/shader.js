@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
+import { GDArray } from '@js_godot/variant/gd_array'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
-import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -92,9 +92,10 @@ export class Shader extends Resource{
       );
     }
   }
+  
   get_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mode,
+      Shader._bindings.method_get_mode,
       this._owner,
 			Variant.INT,
       
@@ -103,7 +104,7 @@ export class Shader extends Resource{
   }
   set_code(_code) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_code,
+      Shader._bindings.method_set_code,
       this._owner,
       _code
     );
@@ -111,7 +112,7 @@ export class Shader extends Resource{
   }
   get_code() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_code,
+      Shader._bindings.method_get_code,
       this._owner,
 			Variant.Type.STRING,
     
@@ -121,7 +122,7 @@ export class Shader extends Resource{
   }
   set_default_texture_parameter(_name, _texture, _index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_default_texture_parameter,
+      Shader._bindings.method_set_default_texture_parameter,
       this._owner,
       _name, _texture, _index
     );
@@ -129,7 +130,7 @@ export class Shader extends Resource{
   }
   get_default_texture_parameter(_name, _index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_default_texture_parameter,
+      Shader._bindings.method_get_default_texture_parameter,
       this._owner,
 			Variant.INT,
       _name, _index
@@ -138,7 +139,7 @@ export class Shader extends Resource{
   }
   get_shader_uniform_list(_get_groups) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_shader_uniform_list,
+      Shader._bindings.method_get_shader_uniform_list,
       this._owner,
 			Variant.Type.ARRAY,
     

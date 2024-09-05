@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -170,11 +170,12 @@ export class CompositorEffect extends Resource{
       );
     }
   }
+  
   _render_callback(_effect_callback_type, _render_data) {
   }
   set_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_enabled,
+      CompositorEffect._bindings.method_set_enabled,
       this._owner,
       _enabled
     );
@@ -182,7 +183,7 @@ export class CompositorEffect extends Resource{
   }
   get_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_enabled,
+      CompositorEffect._bindings.method_get_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -191,7 +192,7 @@ export class CompositorEffect extends Resource{
   }
   set_effect_callback_type(_effect_callback_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_effect_callback_type,
+      CompositorEffect._bindings.method_set_effect_callback_type,
       this._owner,
       _effect_callback_type
     );
@@ -199,7 +200,7 @@ export class CompositorEffect extends Resource{
   }
   get_effect_callback_type() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_effect_callback_type,
+      CompositorEffect._bindings.method_get_effect_callback_type,
       this._owner,
 			Variant.INT,
       
@@ -208,7 +209,7 @@ export class CompositorEffect extends Resource{
   }
   set_access_resolved_color(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_access_resolved_color,
+      CompositorEffect._bindings.method_set_access_resolved_color,
       this._owner,
       _enable
     );
@@ -216,7 +217,7 @@ export class CompositorEffect extends Resource{
   }
   get_access_resolved_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_access_resolved_color,
+      CompositorEffect._bindings.method_get_access_resolved_color,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -225,7 +226,7 @@ export class CompositorEffect extends Resource{
   }
   set_access_resolved_depth(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_access_resolved_depth,
+      CompositorEffect._bindings.method_set_access_resolved_depth,
       this._owner,
       _enable
     );
@@ -233,7 +234,7 @@ export class CompositorEffect extends Resource{
   }
   get_access_resolved_depth() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_access_resolved_depth,
+      CompositorEffect._bindings.method_get_access_resolved_depth,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -242,7 +243,7 @@ export class CompositorEffect extends Resource{
   }
   set_needs_motion_vectors(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_needs_motion_vectors,
+      CompositorEffect._bindings.method_set_needs_motion_vectors,
       this._owner,
       _enable
     );
@@ -250,7 +251,7 @@ export class CompositorEffect extends Resource{
   }
   get_needs_motion_vectors() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_needs_motion_vectors,
+      CompositorEffect._bindings.method_get_needs_motion_vectors,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -259,7 +260,7 @@ export class CompositorEffect extends Resource{
   }
   set_needs_normal_roughness(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_needs_normal_roughness,
+      CompositorEffect._bindings.method_set_needs_normal_roughness,
       this._owner,
       _enable
     );
@@ -267,7 +268,7 @@ export class CompositorEffect extends Resource{
   }
   get_needs_normal_roughness() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_needs_normal_roughness,
+      CompositorEffect._bindings.method_get_needs_normal_roughness,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -276,7 +277,7 @@ export class CompositorEffect extends Resource{
   }
   set_needs_separate_specular(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_needs_separate_specular,
+      CompositorEffect._bindings.method_set_needs_separate_specular,
       this._owner,
       _enable
     );
@@ -284,7 +285,7 @@ export class CompositorEffect extends Resource{
   }
   get_needs_separate_specular() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_needs_separate_specular,
+      CompositorEffect._bindings.method_get_needs_separate_specular,
       this._owner,
 			Variant.Type.BOOL,
       

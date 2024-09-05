@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -50,9 +50,10 @@ export class DTLSServer extends RefCounted{
       );
     }
   }
+  
   setup(_server_options) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_setup,
+      DTLSServer._bindings.method_setup,
       this._owner,
 			Variant.INT,
       _server_options
@@ -61,7 +62,7 @@ export class DTLSServer extends RefCounted{
   }
   take_connection(_udp_peer) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_take_connection,
+      DTLSServer._bindings.method_take_connection,
       this._owner,
 			Variant.INT,
       _udp_peer

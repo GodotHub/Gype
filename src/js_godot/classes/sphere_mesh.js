@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { PrimitiveMesh } from '@js_godot/classes/primitive_mesh'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -130,9 +130,10 @@ export class SphereMesh extends PrimitiveMesh{
       );
     }
   }
+  
   set_radius(_radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_radius,
+      SphereMesh._bindings.method_set_radius,
       this._owner,
       _radius
     );
@@ -140,7 +141,7 @@ export class SphereMesh extends PrimitiveMesh{
   }
   get_radius() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_radius,
+      SphereMesh._bindings.method_get_radius,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -149,7 +150,7 @@ export class SphereMesh extends PrimitiveMesh{
   }
   set_height(_height) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_height,
+      SphereMesh._bindings.method_set_height,
       this._owner,
       _height
     );
@@ -157,7 +158,7 @@ export class SphereMesh extends PrimitiveMesh{
   }
   get_height() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_height,
+      SphereMesh._bindings.method_get_height,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -166,7 +167,7 @@ export class SphereMesh extends PrimitiveMesh{
   }
   set_radial_segments(_radial_segments) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_radial_segments,
+      SphereMesh._bindings.method_set_radial_segments,
       this._owner,
       _radial_segments
     );
@@ -174,7 +175,7 @@ export class SphereMesh extends PrimitiveMesh{
   }
   get_radial_segments() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_radial_segments,
+      SphereMesh._bindings.method_get_radial_segments,
       this._owner,
 			Variant.Type.INT,
       
@@ -183,7 +184,7 @@ export class SphereMesh extends PrimitiveMesh{
   }
   set_rings(_rings) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_rings,
+      SphereMesh._bindings.method_set_rings,
       this._owner,
       _rings
     );
@@ -191,7 +192,7 @@ export class SphereMesh extends PrimitiveMesh{
   }
   get_rings() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rings,
+      SphereMesh._bindings.method_get_rings,
       this._owner,
 			Variant.Type.INT,
       
@@ -200,7 +201,7 @@ export class SphereMesh extends PrimitiveMesh{
   }
   set_is_hemisphere(_is_hemisphere) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_is_hemisphere,
+      SphereMesh._bindings.method_set_is_hemisphere,
       this._owner,
       _is_hemisphere
     );
@@ -208,7 +209,7 @@ export class SphereMesh extends PrimitiveMesh{
   }
   get_is_hemisphere() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_is_hemisphere,
+      SphereMesh._bindings.method_get_is_hemisphere,
       this._owner,
 			Variant.Type.BOOL,
       

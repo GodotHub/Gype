@@ -1,11 +1,11 @@
 import * as internal from '__internal__';
 import { Dictionary } from '@js_godot/variant/dictionary'
-import { Variant } from '@js_godot/variant/variant'
 import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
-import { RefCounted } from '@js_godot/classes/ref_counted'
 import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { RefCounted } from '@js_godot/classes/ref_counted'
+import { GDString } from '@js_godot/variant/gd_string'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -254,9 +254,10 @@ export class HTTPClient extends RefCounted{
       );
     }
   }
+  
   connect_to_host(_host, _port, _tls_options) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_connect_to_host,
+      HTTPClient._bindings.method_connect_to_host,
       this._owner,
 			Variant.INT,
       _host, _port, _tls_options
@@ -265,7 +266,7 @@ export class HTTPClient extends RefCounted{
   }
   set_connection(_connection) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_connection,
+      HTTPClient._bindings.method_set_connection,
       this._owner,
       _connection
     );
@@ -273,7 +274,7 @@ export class HTTPClient extends RefCounted{
   }
   get_connection() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_connection,
+      HTTPClient._bindings.method_get_connection,
       this._owner,
 			Variant.INT,
       
@@ -282,7 +283,7 @@ export class HTTPClient extends RefCounted{
   }
   request_raw(_method, _url, _headers, _body) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_request_raw,
+      HTTPClient._bindings.method_request_raw,
       this._owner,
 			Variant.INT,
       _method, _url, _headers, _body
@@ -291,7 +292,7 @@ export class HTTPClient extends RefCounted{
   }
   request(_method, _url, _headers, _body) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_request,
+      HTTPClient._bindings.method_request,
       this._owner,
 			Variant.INT,
       _method, _url, _headers, _body
@@ -300,7 +301,7 @@ export class HTTPClient extends RefCounted{
   }
   close() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_close,
+      HTTPClient._bindings.method_close,
       this._owner,
       
     );
@@ -308,7 +309,7 @@ export class HTTPClient extends RefCounted{
   }
   has_response() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_response,
+      HTTPClient._bindings.method_has_response,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -317,7 +318,7 @@ export class HTTPClient extends RefCounted{
   }
   is_response_chunked() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_response_chunked,
+      HTTPClient._bindings.method_is_response_chunked,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -326,7 +327,7 @@ export class HTTPClient extends RefCounted{
   }
   get_response_code() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_response_code,
+      HTTPClient._bindings.method_get_response_code,
       this._owner,
 			Variant.Type.INT,
       
@@ -335,7 +336,7 @@ export class HTTPClient extends RefCounted{
   }
   get_response_headers() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_response_headers,
+      HTTPClient._bindings.method_get_response_headers,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -345,7 +346,7 @@ export class HTTPClient extends RefCounted{
   }
   get_response_headers_as_dictionary() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_response_headers_as_dictionary,
+      HTTPClient._bindings.method_get_response_headers_as_dictionary,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -355,7 +356,7 @@ export class HTTPClient extends RefCounted{
   }
   get_response_body_length() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_response_body_length,
+      HTTPClient._bindings.method_get_response_body_length,
       this._owner,
 			Variant.Type.INT,
       
@@ -364,7 +365,7 @@ export class HTTPClient extends RefCounted{
   }
   read_response_body_chunk() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_read_response_body_chunk,
+      HTTPClient._bindings.method_read_response_body_chunk,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -374,7 +375,7 @@ export class HTTPClient extends RefCounted{
   }
   set_read_chunk_size(_bytes) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_read_chunk_size,
+      HTTPClient._bindings.method_set_read_chunk_size,
       this._owner,
       _bytes
     );
@@ -382,7 +383,7 @@ export class HTTPClient extends RefCounted{
   }
   get_read_chunk_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_read_chunk_size,
+      HTTPClient._bindings.method_get_read_chunk_size,
       this._owner,
 			Variant.Type.INT,
       
@@ -391,7 +392,7 @@ export class HTTPClient extends RefCounted{
   }
   set_blocking_mode(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_blocking_mode,
+      HTTPClient._bindings.method_set_blocking_mode,
       this._owner,
       _enabled
     );
@@ -399,7 +400,7 @@ export class HTTPClient extends RefCounted{
   }
   is_blocking_mode_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_blocking_mode_enabled,
+      HTTPClient._bindings.method_is_blocking_mode_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -408,7 +409,7 @@ export class HTTPClient extends RefCounted{
   }
   get_status() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_status,
+      HTTPClient._bindings.method_get_status,
       this._owner,
 			Variant.INT,
       
@@ -417,7 +418,7 @@ export class HTTPClient extends RefCounted{
   }
   poll() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_poll,
+      HTTPClient._bindings.method_poll,
       this._owner,
 			Variant.INT,
       
@@ -426,7 +427,7 @@ export class HTTPClient extends RefCounted{
   }
   set_http_proxy(_host, _port) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_http_proxy,
+      HTTPClient._bindings.method_set_http_proxy,
       this._owner,
       _host, _port
     );
@@ -434,7 +435,7 @@ export class HTTPClient extends RefCounted{
   }
   set_https_proxy(_host, _port) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_https_proxy,
+      HTTPClient._bindings.method_set_https_proxy,
       this._owner,
       _host, _port
     );
@@ -442,7 +443,7 @@ export class HTTPClient extends RefCounted{
   }
   query_string_from_dict(_fields) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_query_string_from_dict,
+      HTTPClient._bindings.method_query_string_from_dict,
       this._owner,
 			Variant.Type.STRING,
     

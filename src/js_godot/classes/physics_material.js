@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -110,9 +110,10 @@ export class PhysicsMaterial extends Resource{
       );
     }
   }
+  
   set_friction(_friction) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_friction,
+      PhysicsMaterial._bindings.method_set_friction,
       this._owner,
       _friction
     );
@@ -120,7 +121,7 @@ export class PhysicsMaterial extends Resource{
   }
   get_friction() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_friction,
+      PhysicsMaterial._bindings.method_get_friction,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -129,7 +130,7 @@ export class PhysicsMaterial extends Resource{
   }
   set_rough(_rough) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_rough,
+      PhysicsMaterial._bindings.method_set_rough,
       this._owner,
       _rough
     );
@@ -137,7 +138,7 @@ export class PhysicsMaterial extends Resource{
   }
   is_rough() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_rough,
+      PhysicsMaterial._bindings.method_is_rough,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -146,7 +147,7 @@ export class PhysicsMaterial extends Resource{
   }
   set_bounce(_bounce) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bounce,
+      PhysicsMaterial._bindings.method_set_bounce,
       this._owner,
       _bounce
     );
@@ -154,7 +155,7 @@ export class PhysicsMaterial extends Resource{
   }
   get_bounce() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bounce,
+      PhysicsMaterial._bindings.method_get_bounce,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -163,7 +164,7 @@ export class PhysicsMaterial extends Resource{
   }
   set_absorbent(_absorbent) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_absorbent,
+      PhysicsMaterial._bindings.method_set_absorbent,
       this._owner,
       _absorbent
     );
@@ -171,7 +172,7 @@ export class PhysicsMaterial extends Resource{
   }
   is_absorbent() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_absorbent,
+      PhysicsMaterial._bindings.method_is_absorbent,
       this._owner,
 			Variant.Type.BOOL,
       

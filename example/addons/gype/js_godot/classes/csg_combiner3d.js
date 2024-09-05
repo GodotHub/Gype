@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { CSGShape3D } from '@js_godot/classes/csg_shape3d'
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -30,6 +30,7 @@ export class CSGCombiner3D extends CSGShape3D{
     }
     this.#initialized = true;
   }
+  
   
 
 

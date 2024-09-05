@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Range } from '@js_godot/classes/range'
+import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
@@ -110,9 +110,10 @@ export class Slider extends Range{
       );
     }
   }
+  
   set_ticks(_count) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ticks,
+      Slider._bindings.method_set_ticks,
       this._owner,
       _count
     );
@@ -120,7 +121,7 @@ export class Slider extends Range{
   }
   get_ticks() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ticks,
+      Slider._bindings.method_get_ticks,
       this._owner,
 			Variant.Type.INT,
       
@@ -129,7 +130,7 @@ export class Slider extends Range{
   }
   get_ticks_on_borders() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ticks_on_borders,
+      Slider._bindings.method_get_ticks_on_borders,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -138,7 +139,7 @@ export class Slider extends Range{
   }
   set_ticks_on_borders(_ticks_on_border) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ticks_on_borders,
+      Slider._bindings.method_set_ticks_on_borders,
       this._owner,
       _ticks_on_border
     );
@@ -146,7 +147,7 @@ export class Slider extends Range{
   }
   set_editable(_editable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_editable,
+      Slider._bindings.method_set_editable,
       this._owner,
       _editable
     );
@@ -154,7 +155,7 @@ export class Slider extends Range{
   }
   is_editable() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_editable,
+      Slider._bindings.method_is_editable,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -163,7 +164,7 @@ export class Slider extends Range{
   }
   set_scrollable(_scrollable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_scrollable,
+      Slider._bindings.method_set_scrollable,
       this._owner,
       _scrollable
     );
@@ -171,7 +172,7 @@ export class Slider extends Range{
   }
   is_scrollable() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_scrollable,
+      Slider._bindings.method_is_scrollable,
       this._owner,
 			Variant.Type.BOOL,
       

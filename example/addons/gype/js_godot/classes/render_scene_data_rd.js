@@ -31,6 +31,7 @@ export class RenderSceneDataRD extends RenderSceneData{
     this.#initialized = true;
   }
   
+  
 
 
   static {

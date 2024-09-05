@@ -371,9 +371,10 @@ export class OptionButton extends Button{
       );
     }
   }
+  
   add_item(_label, _id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_item,
+      OptionButton._bindings.method_add_item,
       this._owner,
       _label, _id
     );
@@ -381,7 +382,7 @@ export class OptionButton extends Button{
   }
   add_icon_item(_texture, _label, _id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_icon_item,
+      OptionButton._bindings.method_add_icon_item,
       this._owner,
       _texture, _label, _id
     );
@@ -389,7 +390,7 @@ export class OptionButton extends Button{
   }
   set_item_text(_idx, _text) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_text,
+      OptionButton._bindings.method_set_item_text,
       this._owner,
       _idx, _text
     );
@@ -397,7 +398,7 @@ export class OptionButton extends Button{
   }
   set_item_icon(_idx, _texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_icon,
+      OptionButton._bindings.method_set_item_icon,
       this._owner,
       _idx, _texture
     );
@@ -405,7 +406,7 @@ export class OptionButton extends Button{
   }
   set_item_disabled(_idx, _disabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_disabled,
+      OptionButton._bindings.method_set_item_disabled,
       this._owner,
       _idx, _disabled
     );
@@ -413,7 +414,7 @@ export class OptionButton extends Button{
   }
   set_item_id(_idx, _id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_id,
+      OptionButton._bindings.method_set_item_id,
       this._owner,
       _idx, _id
     );
@@ -421,7 +422,7 @@ export class OptionButton extends Button{
   }
   set_item_metadata(_idx, _metadata) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_metadata,
+      OptionButton._bindings.method_set_item_metadata,
       this._owner,
       _idx, _metadata
     );
@@ -429,7 +430,7 @@ export class OptionButton extends Button{
   }
   set_item_tooltip(_idx, _tooltip) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_tooltip,
+      OptionButton._bindings.method_set_item_tooltip,
       this._owner,
       _idx, _tooltip
     );
@@ -437,7 +438,7 @@ export class OptionButton extends Button{
   }
   get_item_text(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_text,
+      OptionButton._bindings.method_get_item_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -447,7 +448,7 @@ export class OptionButton extends Button{
   }
   get_item_icon(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_icon,
+      OptionButton._bindings.method_get_item_icon,
       this._owner,
 			Variant.INT,
       _idx
@@ -456,7 +457,7 @@ export class OptionButton extends Button{
   }
   get_item_id(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_id,
+      OptionButton._bindings.method_get_item_id,
       this._owner,
 			Variant.Type.INT,
       _idx
@@ -465,7 +466,7 @@ export class OptionButton extends Button{
   }
   get_item_index(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_index,
+      OptionButton._bindings.method_get_item_index,
       this._owner,
 			Variant.Type.INT,
       _id
@@ -474,7 +475,7 @@ export class OptionButton extends Button{
   }
   get_item_metadata(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_metadata,
+      OptionButton._bindings.method_get_item_metadata,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -484,7 +485,7 @@ export class OptionButton extends Button{
   }
   get_item_tooltip(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_tooltip,
+      OptionButton._bindings.method_get_item_tooltip,
       this._owner,
 			Variant.Type.STRING,
     
@@ -494,7 +495,7 @@ export class OptionButton extends Button{
   }
   is_item_disabled(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_item_disabled,
+      OptionButton._bindings.method_is_item_disabled,
       this._owner,
 			Variant.Type.BOOL,
       _idx
@@ -503,7 +504,7 @@ export class OptionButton extends Button{
   }
   is_item_separator(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_item_separator,
+      OptionButton._bindings.method_is_item_separator,
       this._owner,
 			Variant.Type.BOOL,
       _idx
@@ -512,7 +513,7 @@ export class OptionButton extends Button{
   }
   add_separator(_text) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_separator,
+      OptionButton._bindings.method_add_separator,
       this._owner,
       _text
     );
@@ -520,7 +521,7 @@ export class OptionButton extends Button{
   }
   clear() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear,
+      OptionButton._bindings.method_clear,
       this._owner,
       
     );
@@ -528,7 +529,7 @@ export class OptionButton extends Button{
   }
   select(_idx) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_select,
+      OptionButton._bindings.method_select,
       this._owner,
       _idx
     );
@@ -536,7 +537,7 @@ export class OptionButton extends Button{
   }
   get_selected() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_selected,
+      OptionButton._bindings.method_get_selected,
       this._owner,
 			Variant.Type.INT,
       
@@ -545,7 +546,7 @@ export class OptionButton extends Button{
   }
   get_selected_id() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_selected_id,
+      OptionButton._bindings.method_get_selected_id,
       this._owner,
 			Variant.Type.INT,
       
@@ -554,7 +555,7 @@ export class OptionButton extends Button{
   }
   get_selected_metadata() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_selected_metadata,
+      OptionButton._bindings.method_get_selected_metadata,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -564,7 +565,7 @@ export class OptionButton extends Button{
   }
   remove_item(_idx) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_item,
+      OptionButton._bindings.method_remove_item,
       this._owner,
       _idx
     );
@@ -572,7 +573,7 @@ export class OptionButton extends Button{
   }
   get_popup() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_popup,
+      OptionButton._bindings.method_get_popup,
       this._owner,
 			Variant.INT,
       
@@ -581,7 +582,7 @@ export class OptionButton extends Button{
   }
   show_popup() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_show_popup,
+      OptionButton._bindings.method_show_popup,
       this._owner,
       
     );
@@ -589,7 +590,7 @@ export class OptionButton extends Button{
   }
   set_item_count(_count) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_count,
+      OptionButton._bindings.method_set_item_count,
       this._owner,
       _count
     );
@@ -597,7 +598,7 @@ export class OptionButton extends Button{
   }
   get_item_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_count,
+      OptionButton._bindings.method_get_item_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -606,7 +607,7 @@ export class OptionButton extends Button{
   }
   has_selectable_items() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_selectable_items,
+      OptionButton._bindings.method_has_selectable_items,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -615,7 +616,7 @@ export class OptionButton extends Button{
   }
   get_selectable_item(_from_last) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_selectable_item,
+      OptionButton._bindings.method_get_selectable_item,
       this._owner,
 			Variant.Type.INT,
       _from_last
@@ -624,7 +625,7 @@ export class OptionButton extends Button{
   }
   set_fit_to_longest_item(_fit) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fit_to_longest_item,
+      OptionButton._bindings.method_set_fit_to_longest_item,
       this._owner,
       _fit
     );
@@ -632,7 +633,7 @@ export class OptionButton extends Button{
   }
   is_fit_to_longest_item() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_fit_to_longest_item,
+      OptionButton._bindings.method_is_fit_to_longest_item,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -641,7 +642,7 @@ export class OptionButton extends Button{
   }
   set_allow_reselect(_allow) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_allow_reselect,
+      OptionButton._bindings.method_set_allow_reselect,
       this._owner,
       _allow
     );
@@ -649,7 +650,7 @@ export class OptionButton extends Button{
   }
   get_allow_reselect() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_allow_reselect,
+      OptionButton._bindings.method_get_allow_reselect,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -658,7 +659,7 @@ export class OptionButton extends Button{
   }
   set_disable_shortcuts(_disabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_disable_shortcuts,
+      OptionButton._bindings.method_set_disable_shortcuts,
       this._owner,
       _disabled
     );

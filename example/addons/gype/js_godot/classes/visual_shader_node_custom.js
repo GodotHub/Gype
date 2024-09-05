@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
-import { VisualShaderNode } from '@js_godot/classes/visual_shader_node'
 import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { VisualShaderNode } from '@js_godot/classes/visual_shader_node'
+import { Variant } from '@js_godot/variant/variant'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -42,6 +42,7 @@ export class VisualShaderNodeCustom extends VisualShaderNode{
       );
     }
   }
+  
   _get_name() {
   }
   _get_description() {
@@ -86,7 +87,7 @@ export class VisualShaderNodeCustom extends VisualShaderNode{
   }
   get_option_index(_option) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_option_index,
+      VisualShaderNodeCustom._bindings.method_get_option_index,
       this._owner,
 			Variant.Type.INT,
       _option

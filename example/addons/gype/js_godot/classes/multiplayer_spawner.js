@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Callable } from '@js_godot/variant/callable'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { Node } from '@js_godot/classes/node'
+import { StringName } from '@js_godot/variant/string_name'
 import { NodePath } from '@js_godot/variant/node_path'
+import { Variant } from '@js_godot/variant/variant'
+import { GDString } from '@js_godot/variant/gd_string'
+import { Callable } from '@js_godot/variant/callable'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -143,9 +143,10 @@ export class MultiplayerSpawner extends Node{
       );
     }
   }
+  
   add_spawnable_scene(_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_spawnable_scene,
+      MultiplayerSpawner._bindings.method_add_spawnable_scene,
       this._owner,
       _path
     );
@@ -153,7 +154,7 @@ export class MultiplayerSpawner extends Node{
   }
   get_spawnable_scene_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_spawnable_scene_count,
+      MultiplayerSpawner._bindings.method_get_spawnable_scene_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -162,7 +163,7 @@ export class MultiplayerSpawner extends Node{
   }
   get_spawnable_scene(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_spawnable_scene,
+      MultiplayerSpawner._bindings.method_get_spawnable_scene,
       this._owner,
 			Variant.Type.STRING,
     
@@ -172,7 +173,7 @@ export class MultiplayerSpawner extends Node{
   }
   clear_spawnable_scenes() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_spawnable_scenes,
+      MultiplayerSpawner._bindings.method_clear_spawnable_scenes,
       this._owner,
       
     );
@@ -180,7 +181,7 @@ export class MultiplayerSpawner extends Node{
   }
   spawn(_data) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_spawn,
+      MultiplayerSpawner._bindings.method_spawn,
       this._owner,
 			Variant.INT,
       _data
@@ -189,7 +190,7 @@ export class MultiplayerSpawner extends Node{
   }
   get_spawn_path() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_spawn_path,
+      MultiplayerSpawner._bindings.method_get_spawn_path,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -199,7 +200,7 @@ export class MultiplayerSpawner extends Node{
   }
   set_spawn_path(_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_spawn_path,
+      MultiplayerSpawner._bindings.method_set_spawn_path,
       this._owner,
       _path
     );
@@ -207,7 +208,7 @@ export class MultiplayerSpawner extends Node{
   }
   get_spawn_limit() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_spawn_limit,
+      MultiplayerSpawner._bindings.method_get_spawn_limit,
       this._owner,
 			Variant.Type.INT,
       
@@ -216,7 +217,7 @@ export class MultiplayerSpawner extends Node{
   }
   set_spawn_limit(_limit) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_spawn_limit,
+      MultiplayerSpawner._bindings.method_set_spawn_limit,
       this._owner,
       _limit
     );
@@ -224,7 +225,7 @@ export class MultiplayerSpawner extends Node{
   }
   get_spawn_function() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_spawn_function,
+      MultiplayerSpawner._bindings.method_get_spawn_function,
       this._owner,
 			Variant.Type.CALLABLE,
     
@@ -234,7 +235,7 @@ export class MultiplayerSpawner extends Node{
   }
   set_spawn_function(_spawn_function) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_spawn_function,
+      MultiplayerSpawner._bindings.method_set_spawn_function,
       this._owner,
       _spawn_function
     );

@@ -1,13 +1,13 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Transform3D } from '@js_godot/variant/transform3d'
-import { Vector3 } from '@js_godot/variant/vector3'
-import { StringName } from '@js_godot/variant/string_name'
-import { Node3D } from '@js_godot/classes/node3d'
-import { GDString } from '@js_godot/variant/gd_string'
 import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
-import { Quaternion } from '@js_godot/variant/quaternion'
 import { RID } from '@js_godot/variant/rid'
+import { Transform3D } from '@js_godot/variant/transform3d'
+import { Node3D } from '@js_godot/classes/node3d'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { Quaternion } from '@js_godot/variant/quaternion'
+import { Vector3 } from '@js_godot/variant/vector3'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -546,9 +546,10 @@ export class Skeleton3D extends Node3D{
       );
     }
   }
+  
   add_bone(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_add_bone,
+      Skeleton3D._bindings.method_add_bone,
       this._owner,
 			Variant.Type.INT,
       _name
@@ -557,7 +558,7 @@ export class Skeleton3D extends Node3D{
   }
   find_bone(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_find_bone,
+      Skeleton3D._bindings.method_find_bone,
       this._owner,
 			Variant.Type.INT,
       _name
@@ -566,7 +567,7 @@ export class Skeleton3D extends Node3D{
   }
   get_bone_name(_bone_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bone_name,
+      Skeleton3D._bindings.method_get_bone_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -576,7 +577,7 @@ export class Skeleton3D extends Node3D{
   }
   set_bone_name(_bone_idx, _name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bone_name,
+      Skeleton3D._bindings.method_set_bone_name,
       this._owner,
       _bone_idx, _name
     );
@@ -584,7 +585,7 @@ export class Skeleton3D extends Node3D{
   }
   get_concatenated_bone_names() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_concatenated_bone_names,
+      Skeleton3D._bindings.method_get_concatenated_bone_names,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -594,7 +595,7 @@ export class Skeleton3D extends Node3D{
   }
   get_bone_parent(_bone_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bone_parent,
+      Skeleton3D._bindings.method_get_bone_parent,
       this._owner,
 			Variant.Type.INT,
       _bone_idx
@@ -603,7 +604,7 @@ export class Skeleton3D extends Node3D{
   }
   set_bone_parent(_bone_idx, _parent_idx) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bone_parent,
+      Skeleton3D._bindings.method_set_bone_parent,
       this._owner,
       _bone_idx, _parent_idx
     );
@@ -611,7 +612,7 @@ export class Skeleton3D extends Node3D{
   }
   get_bone_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bone_count,
+      Skeleton3D._bindings.method_get_bone_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -620,7 +621,7 @@ export class Skeleton3D extends Node3D{
   }
   get_version() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_version,
+      Skeleton3D._bindings.method_get_version,
       this._owner,
 			Variant.Type.INT,
       
@@ -629,7 +630,7 @@ export class Skeleton3D extends Node3D{
   }
   unparent_bone_and_rest(_bone_idx) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_unparent_bone_and_rest,
+      Skeleton3D._bindings.method_unparent_bone_and_rest,
       this._owner,
       _bone_idx
     );
@@ -637,7 +638,7 @@ export class Skeleton3D extends Node3D{
   }
   get_bone_children(_bone_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bone_children,
+      Skeleton3D._bindings.method_get_bone_children,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -647,7 +648,7 @@ export class Skeleton3D extends Node3D{
   }
   get_parentless_bones() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_parentless_bones,
+      Skeleton3D._bindings.method_get_parentless_bones,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -657,7 +658,7 @@ export class Skeleton3D extends Node3D{
   }
   get_bone_rest(_bone_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bone_rest,
+      Skeleton3D._bindings.method_get_bone_rest,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -667,7 +668,7 @@ export class Skeleton3D extends Node3D{
   }
   set_bone_rest(_bone_idx, _rest) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bone_rest,
+      Skeleton3D._bindings.method_set_bone_rest,
       this._owner,
       _bone_idx, _rest
     );
@@ -675,7 +676,7 @@ export class Skeleton3D extends Node3D{
   }
   get_bone_global_rest(_bone_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bone_global_rest,
+      Skeleton3D._bindings.method_get_bone_global_rest,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -685,7 +686,7 @@ export class Skeleton3D extends Node3D{
   }
   create_skin_from_rest_transforms() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_skin_from_rest_transforms,
+      Skeleton3D._bindings.method_create_skin_from_rest_transforms,
       this._owner,
 			Variant.INT,
       
@@ -694,7 +695,7 @@ export class Skeleton3D extends Node3D{
   }
   register_skin(_skin) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_register_skin,
+      Skeleton3D._bindings.method_register_skin,
       this._owner,
 			Variant.INT,
       _skin
@@ -703,7 +704,7 @@ export class Skeleton3D extends Node3D{
   }
   localize_rests() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_localize_rests,
+      Skeleton3D._bindings.method_localize_rests,
       this._owner,
       
     );
@@ -711,7 +712,7 @@ export class Skeleton3D extends Node3D{
   }
   clear_bones() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_bones,
+      Skeleton3D._bindings.method_clear_bones,
       this._owner,
       
     );
@@ -719,7 +720,7 @@ export class Skeleton3D extends Node3D{
   }
   get_bone_pose(_bone_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bone_pose,
+      Skeleton3D._bindings.method_get_bone_pose,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -729,7 +730,7 @@ export class Skeleton3D extends Node3D{
   }
   set_bone_pose(_bone_idx, _pose) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bone_pose,
+      Skeleton3D._bindings.method_set_bone_pose,
       this._owner,
       _bone_idx, _pose
     );
@@ -737,7 +738,7 @@ export class Skeleton3D extends Node3D{
   }
   set_bone_pose_position(_bone_idx, _position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bone_pose_position,
+      Skeleton3D._bindings.method_set_bone_pose_position,
       this._owner,
       _bone_idx, _position
     );
@@ -745,7 +746,7 @@ export class Skeleton3D extends Node3D{
   }
   set_bone_pose_rotation(_bone_idx, _rotation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bone_pose_rotation,
+      Skeleton3D._bindings.method_set_bone_pose_rotation,
       this._owner,
       _bone_idx, _rotation
     );
@@ -753,7 +754,7 @@ export class Skeleton3D extends Node3D{
   }
   set_bone_pose_scale(_bone_idx, _scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bone_pose_scale,
+      Skeleton3D._bindings.method_set_bone_pose_scale,
       this._owner,
       _bone_idx, _scale
     );
@@ -761,7 +762,7 @@ export class Skeleton3D extends Node3D{
   }
   get_bone_pose_position(_bone_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bone_pose_position,
+      Skeleton3D._bindings.method_get_bone_pose_position,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -771,7 +772,7 @@ export class Skeleton3D extends Node3D{
   }
   get_bone_pose_rotation(_bone_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bone_pose_rotation,
+      Skeleton3D._bindings.method_get_bone_pose_rotation,
       this._owner,
 			Variant.Type.QUATERNION,
     
@@ -781,7 +782,7 @@ export class Skeleton3D extends Node3D{
   }
   get_bone_pose_scale(_bone_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bone_pose_scale,
+      Skeleton3D._bindings.method_get_bone_pose_scale,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -791,7 +792,7 @@ export class Skeleton3D extends Node3D{
   }
   reset_bone_pose(_bone_idx) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_reset_bone_pose,
+      Skeleton3D._bindings.method_reset_bone_pose,
       this._owner,
       _bone_idx
     );
@@ -799,7 +800,7 @@ export class Skeleton3D extends Node3D{
   }
   reset_bone_poses() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_reset_bone_poses,
+      Skeleton3D._bindings.method_reset_bone_poses,
       this._owner,
       
     );
@@ -807,7 +808,7 @@ export class Skeleton3D extends Node3D{
   }
   is_bone_enabled(_bone_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_bone_enabled,
+      Skeleton3D._bindings.method_is_bone_enabled,
       this._owner,
 			Variant.Type.BOOL,
       _bone_idx
@@ -816,7 +817,7 @@ export class Skeleton3D extends Node3D{
   }
   set_bone_enabled(_bone_idx, _enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bone_enabled,
+      Skeleton3D._bindings.method_set_bone_enabled,
       this._owner,
       _bone_idx, _enabled
     );
@@ -824,7 +825,7 @@ export class Skeleton3D extends Node3D{
   }
   get_bone_global_pose(_bone_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bone_global_pose,
+      Skeleton3D._bindings.method_get_bone_global_pose,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -834,7 +835,7 @@ export class Skeleton3D extends Node3D{
   }
   set_bone_global_pose(_bone_idx, _pose) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bone_global_pose,
+      Skeleton3D._bindings.method_set_bone_global_pose,
       this._owner,
       _bone_idx, _pose
     );
@@ -842,7 +843,7 @@ export class Skeleton3D extends Node3D{
   }
   force_update_all_bone_transforms() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_force_update_all_bone_transforms,
+      Skeleton3D._bindings.method_force_update_all_bone_transforms,
       this._owner,
       
     );
@@ -850,7 +851,7 @@ export class Skeleton3D extends Node3D{
   }
   force_update_bone_child_transform(_bone_idx) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_force_update_bone_child_transform,
+      Skeleton3D._bindings.method_force_update_bone_child_transform,
       this._owner,
       _bone_idx
     );
@@ -858,7 +859,7 @@ export class Skeleton3D extends Node3D{
   }
   set_motion_scale(_motion_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_motion_scale,
+      Skeleton3D._bindings.method_set_motion_scale,
       this._owner,
       _motion_scale
     );
@@ -866,7 +867,7 @@ export class Skeleton3D extends Node3D{
   }
   get_motion_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_motion_scale,
+      Skeleton3D._bindings.method_get_motion_scale,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -875,7 +876,7 @@ export class Skeleton3D extends Node3D{
   }
   set_show_rest_only(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_show_rest_only,
+      Skeleton3D._bindings.method_set_show_rest_only,
       this._owner,
       _enabled
     );
@@ -883,7 +884,7 @@ export class Skeleton3D extends Node3D{
   }
   is_show_rest_only() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_show_rest_only,
+      Skeleton3D._bindings.method_is_show_rest_only,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -892,7 +893,7 @@ export class Skeleton3D extends Node3D{
   }
   set_modifier_callback_mode_process(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_modifier_callback_mode_process,
+      Skeleton3D._bindings.method_set_modifier_callback_mode_process,
       this._owner,
       _mode
     );
@@ -900,7 +901,7 @@ export class Skeleton3D extends Node3D{
   }
   get_modifier_callback_mode_process() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_modifier_callback_mode_process,
+      Skeleton3D._bindings.method_get_modifier_callback_mode_process,
       this._owner,
 			Variant.INT,
       
@@ -909,7 +910,7 @@ export class Skeleton3D extends Node3D{
   }
   clear_bones_global_pose_override() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_bones_global_pose_override,
+      Skeleton3D._bindings.method_clear_bones_global_pose_override,
       this._owner,
       
     );
@@ -917,7 +918,7 @@ export class Skeleton3D extends Node3D{
   }
   set_bone_global_pose_override(_bone_idx, _pose, _amount, _persistent) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bone_global_pose_override,
+      Skeleton3D._bindings.method_set_bone_global_pose_override,
       this._owner,
       _bone_idx, _pose, _amount, _persistent
     );
@@ -925,7 +926,7 @@ export class Skeleton3D extends Node3D{
   }
   get_bone_global_pose_override(_bone_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bone_global_pose_override,
+      Skeleton3D._bindings.method_get_bone_global_pose_override,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -935,7 +936,7 @@ export class Skeleton3D extends Node3D{
   }
   get_bone_global_pose_no_override(_bone_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bone_global_pose_no_override,
+      Skeleton3D._bindings.method_get_bone_global_pose_no_override,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -945,7 +946,7 @@ export class Skeleton3D extends Node3D{
   }
   set_animate_physical_bones(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_animate_physical_bones,
+      Skeleton3D._bindings.method_set_animate_physical_bones,
       this._owner,
       _enabled
     );
@@ -953,7 +954,7 @@ export class Skeleton3D extends Node3D{
   }
   get_animate_physical_bones() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_animate_physical_bones,
+      Skeleton3D._bindings.method_get_animate_physical_bones,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -962,7 +963,7 @@ export class Skeleton3D extends Node3D{
   }
   physical_bones_stop_simulation() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_physical_bones_stop_simulation,
+      Skeleton3D._bindings.method_physical_bones_stop_simulation,
       this._owner,
       
     );
@@ -970,7 +971,7 @@ export class Skeleton3D extends Node3D{
   }
   physical_bones_start_simulation(_bones) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_physical_bones_start_simulation,
+      Skeleton3D._bindings.method_physical_bones_start_simulation,
       this._owner,
       _bones
     );
@@ -978,7 +979,7 @@ export class Skeleton3D extends Node3D{
   }
   physical_bones_add_collision_exception(_exception) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_physical_bones_add_collision_exception,
+      Skeleton3D._bindings.method_physical_bones_add_collision_exception,
       this._owner,
       _exception
     );
@@ -986,7 +987,7 @@ export class Skeleton3D extends Node3D{
   }
   physical_bones_remove_collision_exception(_exception) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_physical_bones_remove_collision_exception,
+      Skeleton3D._bindings.method_physical_bones_remove_collision_exception,
       this._owner,
       _exception
     );

@@ -1,14 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
-import { Color } from '@js_godot/variant/color'
-import { Vector2 } from '@js_godot/variant/vector2'
+import { GDArray } from '@js_godot/variant/gd_array'
 import { PackedFloat32Array } from '@js_godot/variant/packed_float32_array'
 import { RefCounted } from '@js_godot/classes/ref_counted'
 import { RID } from '@js_godot/variant/rid'
+import { Variant } from '@js_godot/variant/variant'
+import { Color } from '@js_godot/variant/color'
+import { Vector2 } from '@js_godot/variant/vector2'
+import { StringName } from '@js_godot/variant/string_name'
 import { Rect2 } from '@js_godot/variant/rect2'
-import { GDArray } from '@js_godot/variant/gd_array'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -397,9 +397,10 @@ export class TextLine extends RefCounted{
       );
     }
   }
+  
   clear() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear,
+      TextLine._bindings.method_clear,
       this._owner,
       
     );
@@ -407,7 +408,7 @@ export class TextLine extends RefCounted{
   }
   set_direction(_direction) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_direction,
+      TextLine._bindings.method_set_direction,
       this._owner,
       _direction
     );
@@ -415,7 +416,7 @@ export class TextLine extends RefCounted{
   }
   get_direction() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_direction,
+      TextLine._bindings.method_get_direction,
       this._owner,
 			Variant.INT,
       
@@ -424,7 +425,7 @@ export class TextLine extends RefCounted{
   }
   set_orientation(_orientation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_orientation,
+      TextLine._bindings.method_set_orientation,
       this._owner,
       _orientation
     );
@@ -432,7 +433,7 @@ export class TextLine extends RefCounted{
   }
   get_orientation() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_orientation,
+      TextLine._bindings.method_get_orientation,
       this._owner,
 			Variant.INT,
       
@@ -441,7 +442,7 @@ export class TextLine extends RefCounted{
   }
   set_preserve_invalid(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_preserve_invalid,
+      TextLine._bindings.method_set_preserve_invalid,
       this._owner,
       _enabled
     );
@@ -449,7 +450,7 @@ export class TextLine extends RefCounted{
   }
   get_preserve_invalid() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_preserve_invalid,
+      TextLine._bindings.method_get_preserve_invalid,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -458,7 +459,7 @@ export class TextLine extends RefCounted{
   }
   set_preserve_control(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_preserve_control,
+      TextLine._bindings.method_set_preserve_control,
       this._owner,
       _enabled
     );
@@ -466,7 +467,7 @@ export class TextLine extends RefCounted{
   }
   get_preserve_control() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_preserve_control,
+      TextLine._bindings.method_get_preserve_control,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -475,7 +476,7 @@ export class TextLine extends RefCounted{
   }
   set_bidi_override(_override) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bidi_override,
+      TextLine._bindings.method_set_bidi_override,
       this._owner,
       _override
     );
@@ -483,7 +484,7 @@ export class TextLine extends RefCounted{
   }
   add_string(_text, _font, _font_size, _language, _meta) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_add_string,
+      TextLine._bindings.method_add_string,
       this._owner,
 			Variant.Type.BOOL,
       _text, _font, _font_size, _language, _meta
@@ -492,7 +493,7 @@ export class TextLine extends RefCounted{
   }
   add_object(_key, _size, _inline_align, _length, _baseline) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_add_object,
+      TextLine._bindings.method_add_object,
       this._owner,
 			Variant.Type.BOOL,
       _key, _size, _inline_align, _length, _baseline
@@ -501,7 +502,7 @@ export class TextLine extends RefCounted{
   }
   resize_object(_key, _size, _inline_align, _baseline) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_resize_object,
+      TextLine._bindings.method_resize_object,
       this._owner,
 			Variant.Type.BOOL,
       _key, _size, _inline_align, _baseline
@@ -510,7 +511,7 @@ export class TextLine extends RefCounted{
   }
   set_width(_width) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_width,
+      TextLine._bindings.method_set_width,
       this._owner,
       _width
     );
@@ -518,7 +519,7 @@ export class TextLine extends RefCounted{
   }
   get_width() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_width,
+      TextLine._bindings.method_get_width,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -527,7 +528,7 @@ export class TextLine extends RefCounted{
   }
   set_horizontal_alignment(_alignment) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_horizontal_alignment,
+      TextLine._bindings.method_set_horizontal_alignment,
       this._owner,
       _alignment
     );
@@ -535,7 +536,7 @@ export class TextLine extends RefCounted{
   }
   get_horizontal_alignment() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_horizontal_alignment,
+      TextLine._bindings.method_get_horizontal_alignment,
       this._owner,
 			Variant.INT,
       
@@ -544,7 +545,7 @@ export class TextLine extends RefCounted{
   }
   tab_align(_tab_stops) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_tab_align,
+      TextLine._bindings.method_tab_align,
       this._owner,
       _tab_stops
     );
@@ -552,7 +553,7 @@ export class TextLine extends RefCounted{
   }
   set_flags(_flags) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_flags,
+      TextLine._bindings.method_set_flags,
       this._owner,
       _flags
     );
@@ -560,7 +561,7 @@ export class TextLine extends RefCounted{
   }
   get_flags() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_flags,
+      TextLine._bindings.method_get_flags,
       this._owner,
 			Variant.INT,
       
@@ -569,7 +570,7 @@ export class TextLine extends RefCounted{
   }
   set_text_overrun_behavior(_overrun_behavior) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_text_overrun_behavior,
+      TextLine._bindings.method_set_text_overrun_behavior,
       this._owner,
       _overrun_behavior
     );
@@ -577,7 +578,7 @@ export class TextLine extends RefCounted{
   }
   get_text_overrun_behavior() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_text_overrun_behavior,
+      TextLine._bindings.method_get_text_overrun_behavior,
       this._owner,
 			Variant.INT,
       
@@ -586,7 +587,7 @@ export class TextLine extends RefCounted{
   }
   set_ellipsis_char(_char) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ellipsis_char,
+      TextLine._bindings.method_set_ellipsis_char,
       this._owner,
       _char
     );
@@ -594,7 +595,7 @@ export class TextLine extends RefCounted{
   }
   get_ellipsis_char() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ellipsis_char,
+      TextLine._bindings.method_get_ellipsis_char,
       this._owner,
 			Variant.Type.STRING,
     
@@ -604,7 +605,7 @@ export class TextLine extends RefCounted{
   }
   get_objects() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_objects,
+      TextLine._bindings.method_get_objects,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -614,7 +615,7 @@ export class TextLine extends RefCounted{
   }
   get_object_rect(_key) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_object_rect,
+      TextLine._bindings.method_get_object_rect,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -624,7 +625,7 @@ export class TextLine extends RefCounted{
   }
   get_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_size,
+      TextLine._bindings.method_get_size,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -634,7 +635,7 @@ export class TextLine extends RefCounted{
   }
   get_rid() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rid,
+      TextLine._bindings.method_get_rid,
       this._owner,
 			Variant.Type.RID,
     
@@ -644,7 +645,7 @@ export class TextLine extends RefCounted{
   }
   get_line_ascent() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_ascent,
+      TextLine._bindings.method_get_line_ascent,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -653,7 +654,7 @@ export class TextLine extends RefCounted{
   }
   get_line_descent() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_descent,
+      TextLine._bindings.method_get_line_descent,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -662,7 +663,7 @@ export class TextLine extends RefCounted{
   }
   get_line_width() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_width,
+      TextLine._bindings.method_get_line_width,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -671,7 +672,7 @@ export class TextLine extends RefCounted{
   }
   get_line_underline_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_underline_position,
+      TextLine._bindings.method_get_line_underline_position,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -680,7 +681,7 @@ export class TextLine extends RefCounted{
   }
   get_line_underline_thickness() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_underline_thickness,
+      TextLine._bindings.method_get_line_underline_thickness,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -689,7 +690,7 @@ export class TextLine extends RefCounted{
   }
   draw(_canvas, _pos, _color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_draw,
+      TextLine._bindings.method_draw,
       this._owner,
       _canvas, _pos, _color
     );
@@ -697,7 +698,7 @@ export class TextLine extends RefCounted{
   }
   draw_outline(_canvas, _pos, _outline_size, _color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_draw_outline,
+      TextLine._bindings.method_draw_outline,
       this._owner,
       _canvas, _pos, _outline_size, _color
     );
@@ -705,7 +706,7 @@ export class TextLine extends RefCounted{
   }
   hit_test(_coords) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_hit_test,
+      TextLine._bindings.method_hit_test,
       this._owner,
 			Variant.Type.INT,
       _coords

@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { PackedInt64Array } from '@js_godot/variant/packed_int64_array'
 import { Resource } from '@js_godot/classes/resource'
-import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -101,9 +101,10 @@ export class OggPacketSequence extends Resource{
       );
     }
   }
+  
   set_packet_data(_packet_data) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_packet_data,
+      OggPacketSequence._bindings.method_set_packet_data,
       this._owner,
       _packet_data
     );
@@ -111,7 +112,7 @@ export class OggPacketSequence extends Resource{
   }
   get_packet_data() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_packet_data,
+      OggPacketSequence._bindings.method_get_packet_data,
       this._owner,
 			Variant.INT,
       
@@ -120,7 +121,7 @@ export class OggPacketSequence extends Resource{
   }
   set_packet_granule_positions(_granule_positions) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_packet_granule_positions,
+      OggPacketSequence._bindings.method_set_packet_granule_positions,
       this._owner,
       _granule_positions
     );
@@ -128,7 +129,7 @@ export class OggPacketSequence extends Resource{
   }
   get_packet_granule_positions() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_packet_granule_positions,
+      OggPacketSequence._bindings.method_get_packet_granule_positions,
       this._owner,
 			Variant.Type.PACKED_INT64_ARRAY,
     
@@ -138,7 +139,7 @@ export class OggPacketSequence extends Resource{
   }
   set_sampling_rate(_sampling_rate) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sampling_rate,
+      OggPacketSequence._bindings.method_set_sampling_rate,
       this._owner,
       _sampling_rate
     );
@@ -146,7 +147,7 @@ export class OggPacketSequence extends Resource{
   }
   get_sampling_rate() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sampling_rate,
+      OggPacketSequence._bindings.method_get_sampling_rate,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -155,7 +156,7 @@ export class OggPacketSequence extends Resource{
   }
   get_length() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_length,
+      OggPacketSequence._bindings.method_get_length,
       this._owner,
 			Variant.Type.FLOAT,
       

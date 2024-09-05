@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { Resource } from '@js_godot/classes/resource'
 import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { Resource } from '@js_godot/classes/resource'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -180,9 +180,10 @@ export class SkeletonModificationStack2D extends Resource{
       );
     }
   }
+  
   setup() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_setup,
+      SkeletonModificationStack2D._bindings.method_setup,
       this._owner,
       
     );
@@ -190,7 +191,7 @@ export class SkeletonModificationStack2D extends Resource{
   }
   execute(_delta, _execution_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_execute,
+      SkeletonModificationStack2D._bindings.method_execute,
       this._owner,
       _delta, _execution_mode
     );
@@ -198,7 +199,7 @@ export class SkeletonModificationStack2D extends Resource{
   }
   enable_all_modifications(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_enable_all_modifications,
+      SkeletonModificationStack2D._bindings.method_enable_all_modifications,
       this._owner,
       _enabled
     );
@@ -206,7 +207,7 @@ export class SkeletonModificationStack2D extends Resource{
   }
   get_modification(_mod_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_modification,
+      SkeletonModificationStack2D._bindings.method_get_modification,
       this._owner,
 			Variant.INT,
       _mod_idx
@@ -215,7 +216,7 @@ export class SkeletonModificationStack2D extends Resource{
   }
   add_modification(_modification) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_modification,
+      SkeletonModificationStack2D._bindings.method_add_modification,
       this._owner,
       _modification
     );
@@ -223,7 +224,7 @@ export class SkeletonModificationStack2D extends Resource{
   }
   delete_modification(_mod_idx) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_delete_modification,
+      SkeletonModificationStack2D._bindings.method_delete_modification,
       this._owner,
       _mod_idx
     );
@@ -231,7 +232,7 @@ export class SkeletonModificationStack2D extends Resource{
   }
   set_modification(_mod_idx, _modification) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_modification,
+      SkeletonModificationStack2D._bindings.method_set_modification,
       this._owner,
       _mod_idx, _modification
     );
@@ -239,7 +240,7 @@ export class SkeletonModificationStack2D extends Resource{
   }
   set_modification_count(_count) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_modification_count,
+      SkeletonModificationStack2D._bindings.method_set_modification_count,
       this._owner,
       _count
     );
@@ -247,7 +248,7 @@ export class SkeletonModificationStack2D extends Resource{
   }
   get_modification_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_modification_count,
+      SkeletonModificationStack2D._bindings.method_get_modification_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -256,7 +257,7 @@ export class SkeletonModificationStack2D extends Resource{
   }
   get_is_setup() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_is_setup,
+      SkeletonModificationStack2D._bindings.method_get_is_setup,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -265,7 +266,7 @@ export class SkeletonModificationStack2D extends Resource{
   }
   set_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_enabled,
+      SkeletonModificationStack2D._bindings.method_set_enabled,
       this._owner,
       _enabled
     );
@@ -273,7 +274,7 @@ export class SkeletonModificationStack2D extends Resource{
   }
   get_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_enabled,
+      SkeletonModificationStack2D._bindings.method_get_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -282,7 +283,7 @@ export class SkeletonModificationStack2D extends Resource{
   }
   set_strength(_strength) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_strength,
+      SkeletonModificationStack2D._bindings.method_set_strength,
       this._owner,
       _strength
     );
@@ -290,7 +291,7 @@ export class SkeletonModificationStack2D extends Resource{
   }
   get_strength() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_strength,
+      SkeletonModificationStack2D._bindings.method_get_strength,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -299,7 +300,7 @@ export class SkeletonModificationStack2D extends Resource{
   }
   get_skeleton() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_skeleton,
+      SkeletonModificationStack2D._bindings.method_get_skeleton,
       this._owner,
 			Variant.INT,
       

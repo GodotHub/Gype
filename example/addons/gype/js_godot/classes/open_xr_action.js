@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { Variant } from '@js_godot/variant/variant'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -92,9 +92,10 @@ export class OpenXRAction extends Resource{
       );
     }
   }
+  
   set_localized_name(_localized_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_localized_name,
+      OpenXRAction._bindings.method_set_localized_name,
       this._owner,
       _localized_name
     );
@@ -102,7 +103,7 @@ export class OpenXRAction extends Resource{
   }
   get_localized_name() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_localized_name,
+      OpenXRAction._bindings.method_get_localized_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -112,7 +113,7 @@ export class OpenXRAction extends Resource{
   }
   set_action_type(_action_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_action_type,
+      OpenXRAction._bindings.method_set_action_type,
       this._owner,
       _action_type
     );
@@ -120,7 +121,7 @@ export class OpenXRAction extends Resource{
   }
   get_action_type() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_action_type,
+      OpenXRAction._bindings.method_get_action_type,
       this._owner,
 			Variant.INT,
       
@@ -129,7 +130,7 @@ export class OpenXRAction extends Resource{
   }
   set_toplevel_paths(_toplevel_paths) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_toplevel_paths,
+      OpenXRAction._bindings.method_set_toplevel_paths,
       this._owner,
       _toplevel_paths
     );
@@ -137,7 +138,7 @@ export class OpenXRAction extends Resource{
   }
   get_toplevel_paths() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_toplevel_paths,
+      OpenXRAction._bindings.method_get_toplevel_paths,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     

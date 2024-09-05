@@ -1,14 +1,14 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Callable } from '@js_godot/variant/callable'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
+import { GDArray } from '@js_godot/variant/gd_array'
 import { CanvasItem } from '@js_godot/classes/canvas_item'
+import { NodePath } from '@js_godot/variant/node_path'
+import { Variant } from '@js_godot/variant/variant'
 import { Color } from '@js_godot/variant/color'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { StringName } from '@js_godot/variant/string_name'
 import { Rect2 } from '@js_godot/variant/rect2'
-import { GDArray } from '@js_godot/variant/gd_array'
-import { NodePath } from '@js_godot/variant/node_path'
+import { Callable } from '@js_godot/variant/callable'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -1317,6 +1317,7 @@ export class Control extends CanvasItem{
       );
     }
   }
+  
   _has_point(_point) {
   }
   _structured_text_parser(_args, _text) {
@@ -1337,7 +1338,7 @@ export class Control extends CanvasItem{
   }
   accept_event() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_accept_event,
+      Control._bindings.method_accept_event,
       this._owner,
       
     );
@@ -1345,7 +1346,7 @@ export class Control extends CanvasItem{
   }
   get_minimum_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_minimum_size,
+      Control._bindings.method_get_minimum_size,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1355,7 +1356,7 @@ export class Control extends CanvasItem{
   }
   get_combined_minimum_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_combined_minimum_size,
+      Control._bindings.method_get_combined_minimum_size,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1365,7 +1366,7 @@ export class Control extends CanvasItem{
   }
   set_anchors_preset(_preset, _keep_offsets) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_anchors_preset,
+      Control._bindings.method_set_anchors_preset,
       this._owner,
       _preset, _keep_offsets
     );
@@ -1373,7 +1374,7 @@ export class Control extends CanvasItem{
   }
   set_offsets_preset(_preset, _resize_mode, _margin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_offsets_preset,
+      Control._bindings.method_set_offsets_preset,
       this._owner,
       _preset, _resize_mode, _margin
     );
@@ -1381,7 +1382,7 @@ export class Control extends CanvasItem{
   }
   set_anchors_and_offsets_preset(_preset, _resize_mode, _margin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_anchors_and_offsets_preset,
+      Control._bindings.method_set_anchors_and_offsets_preset,
       this._owner,
       _preset, _resize_mode, _margin
     );
@@ -1389,7 +1390,7 @@ export class Control extends CanvasItem{
   }
   set_anchor(_side, _anchor, _keep_offset, _push_opposite_anchor) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_anchor,
+      Control._bindings.method_set_anchor,
       this._owner,
       _side, _anchor, _keep_offset, _push_opposite_anchor
     );
@@ -1397,7 +1398,7 @@ export class Control extends CanvasItem{
   }
   get_anchor(_side) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_anchor,
+      Control._bindings.method_get_anchor,
       this._owner,
 			Variant.Type.FLOAT,
       _side
@@ -1406,7 +1407,7 @@ export class Control extends CanvasItem{
   }
   set_offset(_side, _offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_offset,
+      Control._bindings.method_set_offset,
       this._owner,
       _side, _offset
     );
@@ -1414,7 +1415,7 @@ export class Control extends CanvasItem{
   }
   get_offset(_offset) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_offset,
+      Control._bindings.method_get_offset,
       this._owner,
 			Variant.Type.FLOAT,
       _offset
@@ -1423,7 +1424,7 @@ export class Control extends CanvasItem{
   }
   set_anchor_and_offset(_side, _anchor, _offset, _push_opposite_anchor) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_anchor_and_offset,
+      Control._bindings.method_set_anchor_and_offset,
       this._owner,
       _side, _anchor, _offset, _push_opposite_anchor
     );
@@ -1431,7 +1432,7 @@ export class Control extends CanvasItem{
   }
   set_begin(_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_begin,
+      Control._bindings.method_set_begin,
       this._owner,
       _position
     );
@@ -1439,7 +1440,7 @@ export class Control extends CanvasItem{
   }
   set_end(_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_end,
+      Control._bindings.method_set_end,
       this._owner,
       _position
     );
@@ -1447,7 +1448,7 @@ export class Control extends CanvasItem{
   }
   set_position(_position, _keep_offsets) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_position,
+      Control._bindings.method_set_position,
       this._owner,
       _position, _keep_offsets
     );
@@ -1455,7 +1456,7 @@ export class Control extends CanvasItem{
   }
   set_size(_size, _keep_offsets) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_size,
+      Control._bindings.method_set_size,
       this._owner,
       _size, _keep_offsets
     );
@@ -1463,7 +1464,7 @@ export class Control extends CanvasItem{
   }
   reset_size() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_reset_size,
+      Control._bindings.method_reset_size,
       this._owner,
       
     );
@@ -1471,7 +1472,7 @@ export class Control extends CanvasItem{
   }
   set_custom_minimum_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_custom_minimum_size,
+      Control._bindings.method_set_custom_minimum_size,
       this._owner,
       _size
     );
@@ -1479,7 +1480,7 @@ export class Control extends CanvasItem{
   }
   set_global_position(_position, _keep_offsets) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_global_position,
+      Control._bindings.method_set_global_position,
       this._owner,
       _position, _keep_offsets
     );
@@ -1487,7 +1488,7 @@ export class Control extends CanvasItem{
   }
   set_rotation(_radians) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_rotation,
+      Control._bindings.method_set_rotation,
       this._owner,
       _radians
     );
@@ -1495,7 +1496,7 @@ export class Control extends CanvasItem{
   }
   set_rotation_degrees(_degrees) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_rotation_degrees,
+      Control._bindings.method_set_rotation_degrees,
       this._owner,
       _degrees
     );
@@ -1503,7 +1504,7 @@ export class Control extends CanvasItem{
   }
   set_scale(_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_scale,
+      Control._bindings.method_set_scale,
       this._owner,
       _scale
     );
@@ -1511,7 +1512,7 @@ export class Control extends CanvasItem{
   }
   set_pivot_offset(_pivot_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_pivot_offset,
+      Control._bindings.method_set_pivot_offset,
       this._owner,
       _pivot_offset
     );
@@ -1519,7 +1520,7 @@ export class Control extends CanvasItem{
   }
   get_begin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_begin,
+      Control._bindings.method_get_begin,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1529,7 +1530,7 @@ export class Control extends CanvasItem{
   }
   get_end() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_end,
+      Control._bindings.method_get_end,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1539,7 +1540,7 @@ export class Control extends CanvasItem{
   }
   get_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_position,
+      Control._bindings.method_get_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1549,7 +1550,7 @@ export class Control extends CanvasItem{
   }
   get_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_size,
+      Control._bindings.method_get_size,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1559,7 +1560,7 @@ export class Control extends CanvasItem{
   }
   get_rotation() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rotation,
+      Control._bindings.method_get_rotation,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1568,7 +1569,7 @@ export class Control extends CanvasItem{
   }
   get_rotation_degrees() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rotation_degrees,
+      Control._bindings.method_get_rotation_degrees,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1577,7 +1578,7 @@ export class Control extends CanvasItem{
   }
   get_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_scale,
+      Control._bindings.method_get_scale,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1587,7 +1588,7 @@ export class Control extends CanvasItem{
   }
   get_pivot_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_pivot_offset,
+      Control._bindings.method_get_pivot_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1597,7 +1598,7 @@ export class Control extends CanvasItem{
   }
   get_custom_minimum_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_custom_minimum_size,
+      Control._bindings.method_get_custom_minimum_size,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1607,7 +1608,7 @@ export class Control extends CanvasItem{
   }
   get_parent_area_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_parent_area_size,
+      Control._bindings.method_get_parent_area_size,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1617,7 +1618,7 @@ export class Control extends CanvasItem{
   }
   get_global_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_global_position,
+      Control._bindings.method_get_global_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1627,7 +1628,7 @@ export class Control extends CanvasItem{
   }
   get_screen_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_screen_position,
+      Control._bindings.method_get_screen_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -1637,7 +1638,7 @@ export class Control extends CanvasItem{
   }
   get_rect() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rect,
+      Control._bindings.method_get_rect,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -1647,7 +1648,7 @@ export class Control extends CanvasItem{
   }
   get_global_rect() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_global_rect,
+      Control._bindings.method_get_global_rect,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -1657,7 +1658,7 @@ export class Control extends CanvasItem{
   }
   set_focus_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_focus_mode,
+      Control._bindings.method_set_focus_mode,
       this._owner,
       _mode
     );
@@ -1665,7 +1666,7 @@ export class Control extends CanvasItem{
   }
   get_focus_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_focus_mode,
+      Control._bindings.method_get_focus_mode,
       this._owner,
 			Variant.INT,
       
@@ -1674,7 +1675,7 @@ export class Control extends CanvasItem{
   }
   has_focus() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_focus,
+      Control._bindings.method_has_focus,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1683,7 +1684,7 @@ export class Control extends CanvasItem{
   }
   grab_focus() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_grab_focus,
+      Control._bindings.method_grab_focus,
       this._owner,
       
     );
@@ -1691,7 +1692,7 @@ export class Control extends CanvasItem{
   }
   release_focus() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_release_focus,
+      Control._bindings.method_release_focus,
       this._owner,
       
     );
@@ -1699,7 +1700,7 @@ export class Control extends CanvasItem{
   }
   find_prev_valid_focus() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_find_prev_valid_focus,
+      Control._bindings.method_find_prev_valid_focus,
       this._owner,
 			Variant.INT,
       
@@ -1708,7 +1709,7 @@ export class Control extends CanvasItem{
   }
   find_next_valid_focus() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_find_next_valid_focus,
+      Control._bindings.method_find_next_valid_focus,
       this._owner,
 			Variant.INT,
       
@@ -1717,7 +1718,7 @@ export class Control extends CanvasItem{
   }
   find_valid_focus_neighbor(_side) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_find_valid_focus_neighbor,
+      Control._bindings.method_find_valid_focus_neighbor,
       this._owner,
 			Variant.INT,
       _side
@@ -1726,7 +1727,7 @@ export class Control extends CanvasItem{
   }
   set_h_size_flags(_flags) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_h_size_flags,
+      Control._bindings.method_set_h_size_flags,
       this._owner,
       _flags
     );
@@ -1734,7 +1735,7 @@ export class Control extends CanvasItem{
   }
   get_h_size_flags() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_h_size_flags,
+      Control._bindings.method_get_h_size_flags,
       this._owner,
 			Variant.INT,
       
@@ -1743,7 +1744,7 @@ export class Control extends CanvasItem{
   }
   set_stretch_ratio(_ratio) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_stretch_ratio,
+      Control._bindings.method_set_stretch_ratio,
       this._owner,
       _ratio
     );
@@ -1751,7 +1752,7 @@ export class Control extends CanvasItem{
   }
   get_stretch_ratio() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_stretch_ratio,
+      Control._bindings.method_get_stretch_ratio,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1760,7 +1761,7 @@ export class Control extends CanvasItem{
   }
   set_v_size_flags(_flags) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_v_size_flags,
+      Control._bindings.method_set_v_size_flags,
       this._owner,
       _flags
     );
@@ -1768,7 +1769,7 @@ export class Control extends CanvasItem{
   }
   get_v_size_flags() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_v_size_flags,
+      Control._bindings.method_get_v_size_flags,
       this._owner,
 			Variant.INT,
       
@@ -1777,7 +1778,7 @@ export class Control extends CanvasItem{
   }
   set_theme(_theme) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_theme,
+      Control._bindings.method_set_theme,
       this._owner,
       _theme
     );
@@ -1785,7 +1786,7 @@ export class Control extends CanvasItem{
   }
   get_theme() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_theme,
+      Control._bindings.method_get_theme,
       this._owner,
 			Variant.INT,
       
@@ -1794,7 +1795,7 @@ export class Control extends CanvasItem{
   }
   set_theme_type_variation(_theme_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_theme_type_variation,
+      Control._bindings.method_set_theme_type_variation,
       this._owner,
       _theme_type
     );
@@ -1802,7 +1803,7 @@ export class Control extends CanvasItem{
   }
   get_theme_type_variation() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_theme_type_variation,
+      Control._bindings.method_get_theme_type_variation,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -1812,7 +1813,7 @@ export class Control extends CanvasItem{
   }
   begin_bulk_theme_override() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_begin_bulk_theme_override,
+      Control._bindings.method_begin_bulk_theme_override,
       this._owner,
       
     );
@@ -1820,7 +1821,7 @@ export class Control extends CanvasItem{
   }
   end_bulk_theme_override() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_end_bulk_theme_override,
+      Control._bindings.method_end_bulk_theme_override,
       this._owner,
       
     );
@@ -1828,7 +1829,7 @@ export class Control extends CanvasItem{
   }
   add_theme_icon_override(_name, _texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_theme_icon_override,
+      Control._bindings.method_add_theme_icon_override,
       this._owner,
       _name, _texture
     );
@@ -1836,7 +1837,7 @@ export class Control extends CanvasItem{
   }
   add_theme_stylebox_override(_name, _stylebox) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_theme_stylebox_override,
+      Control._bindings.method_add_theme_stylebox_override,
       this._owner,
       _name, _stylebox
     );
@@ -1844,7 +1845,7 @@ export class Control extends CanvasItem{
   }
   add_theme_font_override(_name, _font) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_theme_font_override,
+      Control._bindings.method_add_theme_font_override,
       this._owner,
       _name, _font
     );
@@ -1852,7 +1853,7 @@ export class Control extends CanvasItem{
   }
   add_theme_font_size_override(_name, _font_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_theme_font_size_override,
+      Control._bindings.method_add_theme_font_size_override,
       this._owner,
       _name, _font_size
     );
@@ -1860,7 +1861,7 @@ export class Control extends CanvasItem{
   }
   add_theme_color_override(_name, _color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_theme_color_override,
+      Control._bindings.method_add_theme_color_override,
       this._owner,
       _name, _color
     );
@@ -1868,7 +1869,7 @@ export class Control extends CanvasItem{
   }
   add_theme_constant_override(_name, _constant) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_theme_constant_override,
+      Control._bindings.method_add_theme_constant_override,
       this._owner,
       _name, _constant
     );
@@ -1876,7 +1877,7 @@ export class Control extends CanvasItem{
   }
   remove_theme_icon_override(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_theme_icon_override,
+      Control._bindings.method_remove_theme_icon_override,
       this._owner,
       _name
     );
@@ -1884,7 +1885,7 @@ export class Control extends CanvasItem{
   }
   remove_theme_stylebox_override(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_theme_stylebox_override,
+      Control._bindings.method_remove_theme_stylebox_override,
       this._owner,
       _name
     );
@@ -1892,7 +1893,7 @@ export class Control extends CanvasItem{
   }
   remove_theme_font_override(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_theme_font_override,
+      Control._bindings.method_remove_theme_font_override,
       this._owner,
       _name
     );
@@ -1900,7 +1901,7 @@ export class Control extends CanvasItem{
   }
   remove_theme_font_size_override(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_theme_font_size_override,
+      Control._bindings.method_remove_theme_font_size_override,
       this._owner,
       _name
     );
@@ -1908,7 +1909,7 @@ export class Control extends CanvasItem{
   }
   remove_theme_color_override(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_theme_color_override,
+      Control._bindings.method_remove_theme_color_override,
       this._owner,
       _name
     );
@@ -1916,7 +1917,7 @@ export class Control extends CanvasItem{
   }
   remove_theme_constant_override(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_theme_constant_override,
+      Control._bindings.method_remove_theme_constant_override,
       this._owner,
       _name
     );
@@ -1924,7 +1925,7 @@ export class Control extends CanvasItem{
   }
   get_theme_icon(_name, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_theme_icon,
+      Control._bindings.method_get_theme_icon,
       this._owner,
 			Variant.INT,
       _name, _theme_type
@@ -1933,7 +1934,7 @@ export class Control extends CanvasItem{
   }
   get_theme_stylebox(_name, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_theme_stylebox,
+      Control._bindings.method_get_theme_stylebox,
       this._owner,
 			Variant.INT,
       _name, _theme_type
@@ -1942,7 +1943,7 @@ export class Control extends CanvasItem{
   }
   get_theme_font(_name, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_theme_font,
+      Control._bindings.method_get_theme_font,
       this._owner,
 			Variant.INT,
       _name, _theme_type
@@ -1951,7 +1952,7 @@ export class Control extends CanvasItem{
   }
   get_theme_font_size(_name, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_theme_font_size,
+      Control._bindings.method_get_theme_font_size,
       this._owner,
 			Variant.Type.INT,
       _name, _theme_type
@@ -1960,7 +1961,7 @@ export class Control extends CanvasItem{
   }
   get_theme_color(_name, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_theme_color,
+      Control._bindings.method_get_theme_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -1970,7 +1971,7 @@ export class Control extends CanvasItem{
   }
   get_theme_constant(_name, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_theme_constant,
+      Control._bindings.method_get_theme_constant,
       this._owner,
 			Variant.Type.INT,
       _name, _theme_type
@@ -1979,7 +1980,7 @@ export class Control extends CanvasItem{
   }
   has_theme_icon_override(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_theme_icon_override,
+      Control._bindings.method_has_theme_icon_override,
       this._owner,
 			Variant.Type.BOOL,
       _name
@@ -1988,7 +1989,7 @@ export class Control extends CanvasItem{
   }
   has_theme_stylebox_override(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_theme_stylebox_override,
+      Control._bindings.method_has_theme_stylebox_override,
       this._owner,
 			Variant.Type.BOOL,
       _name
@@ -1997,7 +1998,7 @@ export class Control extends CanvasItem{
   }
   has_theme_font_override(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_theme_font_override,
+      Control._bindings.method_has_theme_font_override,
       this._owner,
 			Variant.Type.BOOL,
       _name
@@ -2006,7 +2007,7 @@ export class Control extends CanvasItem{
   }
   has_theme_font_size_override(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_theme_font_size_override,
+      Control._bindings.method_has_theme_font_size_override,
       this._owner,
 			Variant.Type.BOOL,
       _name
@@ -2015,7 +2016,7 @@ export class Control extends CanvasItem{
   }
   has_theme_color_override(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_theme_color_override,
+      Control._bindings.method_has_theme_color_override,
       this._owner,
 			Variant.Type.BOOL,
       _name
@@ -2024,7 +2025,7 @@ export class Control extends CanvasItem{
   }
   has_theme_constant_override(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_theme_constant_override,
+      Control._bindings.method_has_theme_constant_override,
       this._owner,
 			Variant.Type.BOOL,
       _name
@@ -2033,7 +2034,7 @@ export class Control extends CanvasItem{
   }
   has_theme_icon(_name, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_theme_icon,
+      Control._bindings.method_has_theme_icon,
       this._owner,
 			Variant.Type.BOOL,
       _name, _theme_type
@@ -2042,7 +2043,7 @@ export class Control extends CanvasItem{
   }
   has_theme_stylebox(_name, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_theme_stylebox,
+      Control._bindings.method_has_theme_stylebox,
       this._owner,
 			Variant.Type.BOOL,
       _name, _theme_type
@@ -2051,7 +2052,7 @@ export class Control extends CanvasItem{
   }
   has_theme_font(_name, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_theme_font,
+      Control._bindings.method_has_theme_font,
       this._owner,
 			Variant.Type.BOOL,
       _name, _theme_type
@@ -2060,7 +2061,7 @@ export class Control extends CanvasItem{
   }
   has_theme_font_size(_name, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_theme_font_size,
+      Control._bindings.method_has_theme_font_size,
       this._owner,
 			Variant.Type.BOOL,
       _name, _theme_type
@@ -2069,7 +2070,7 @@ export class Control extends CanvasItem{
   }
   has_theme_color(_name, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_theme_color,
+      Control._bindings.method_has_theme_color,
       this._owner,
 			Variant.Type.BOOL,
       _name, _theme_type
@@ -2078,7 +2079,7 @@ export class Control extends CanvasItem{
   }
   has_theme_constant(_name, _theme_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_theme_constant,
+      Control._bindings.method_has_theme_constant,
       this._owner,
 			Variant.Type.BOOL,
       _name, _theme_type
@@ -2087,7 +2088,7 @@ export class Control extends CanvasItem{
   }
   get_theme_default_base_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_theme_default_base_scale,
+      Control._bindings.method_get_theme_default_base_scale,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2096,7 +2097,7 @@ export class Control extends CanvasItem{
   }
   get_theme_default_font() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_theme_default_font,
+      Control._bindings.method_get_theme_default_font,
       this._owner,
 			Variant.INT,
       
@@ -2105,7 +2106,7 @@ export class Control extends CanvasItem{
   }
   get_theme_default_font_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_theme_default_font_size,
+      Control._bindings.method_get_theme_default_font_size,
       this._owner,
 			Variant.Type.INT,
       
@@ -2114,7 +2115,7 @@ export class Control extends CanvasItem{
   }
   get_parent_control() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_parent_control,
+      Control._bindings.method_get_parent_control,
       this._owner,
 			Variant.INT,
       
@@ -2123,7 +2124,7 @@ export class Control extends CanvasItem{
   }
   set_h_grow_direction(_direction) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_h_grow_direction,
+      Control._bindings.method_set_h_grow_direction,
       this._owner,
       _direction
     );
@@ -2131,7 +2132,7 @@ export class Control extends CanvasItem{
   }
   get_h_grow_direction() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_h_grow_direction,
+      Control._bindings.method_get_h_grow_direction,
       this._owner,
 			Variant.INT,
       
@@ -2140,7 +2141,7 @@ export class Control extends CanvasItem{
   }
   set_v_grow_direction(_direction) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_v_grow_direction,
+      Control._bindings.method_set_v_grow_direction,
       this._owner,
       _direction
     );
@@ -2148,7 +2149,7 @@ export class Control extends CanvasItem{
   }
   get_v_grow_direction() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_v_grow_direction,
+      Control._bindings.method_get_v_grow_direction,
       this._owner,
 			Variant.INT,
       
@@ -2157,7 +2158,7 @@ export class Control extends CanvasItem{
   }
   set_tooltip_text(_hint) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tooltip_text,
+      Control._bindings.method_set_tooltip_text,
       this._owner,
       _hint
     );
@@ -2165,7 +2166,7 @@ export class Control extends CanvasItem{
   }
   get_tooltip_text() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tooltip_text,
+      Control._bindings.method_get_tooltip_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -2175,7 +2176,7 @@ export class Control extends CanvasItem{
   }
   get_tooltip(_at_position) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tooltip,
+      Control._bindings.method_get_tooltip,
       this._owner,
 			Variant.Type.STRING,
     
@@ -2185,7 +2186,7 @@ export class Control extends CanvasItem{
   }
   set_default_cursor_shape(_shape) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_default_cursor_shape,
+      Control._bindings.method_set_default_cursor_shape,
       this._owner,
       _shape
     );
@@ -2193,7 +2194,7 @@ export class Control extends CanvasItem{
   }
   get_default_cursor_shape() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_default_cursor_shape,
+      Control._bindings.method_get_default_cursor_shape,
       this._owner,
 			Variant.INT,
       
@@ -2202,7 +2203,7 @@ export class Control extends CanvasItem{
   }
   get_cursor_shape(_position) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cursor_shape,
+      Control._bindings.method_get_cursor_shape,
       this._owner,
 			Variant.INT,
       _position
@@ -2211,7 +2212,7 @@ export class Control extends CanvasItem{
   }
   set_focus_neighbor(_side, _neighbor) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_focus_neighbor,
+      Control._bindings.method_set_focus_neighbor,
       this._owner,
       _side, _neighbor
     );
@@ -2219,7 +2220,7 @@ export class Control extends CanvasItem{
   }
   get_focus_neighbor(_side) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_focus_neighbor,
+      Control._bindings.method_get_focus_neighbor,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -2229,7 +2230,7 @@ export class Control extends CanvasItem{
   }
   set_focus_next(_next) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_focus_next,
+      Control._bindings.method_set_focus_next,
       this._owner,
       _next
     );
@@ -2237,7 +2238,7 @@ export class Control extends CanvasItem{
   }
   get_focus_next() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_focus_next,
+      Control._bindings.method_get_focus_next,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -2247,7 +2248,7 @@ export class Control extends CanvasItem{
   }
   set_focus_previous(_previous) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_focus_previous,
+      Control._bindings.method_set_focus_previous,
       this._owner,
       _previous
     );
@@ -2255,7 +2256,7 @@ export class Control extends CanvasItem{
   }
   get_focus_previous() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_focus_previous,
+      Control._bindings.method_get_focus_previous,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -2265,7 +2266,7 @@ export class Control extends CanvasItem{
   }
   force_drag(_data, _preview) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_force_drag,
+      Control._bindings.method_force_drag,
       this._owner,
       _data, _preview
     );
@@ -2273,7 +2274,7 @@ export class Control extends CanvasItem{
   }
   set_mouse_filter(_filter) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mouse_filter,
+      Control._bindings.method_set_mouse_filter,
       this._owner,
       _filter
     );
@@ -2281,7 +2282,7 @@ export class Control extends CanvasItem{
   }
   get_mouse_filter() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mouse_filter,
+      Control._bindings.method_get_mouse_filter,
       this._owner,
 			Variant.INT,
       
@@ -2290,7 +2291,7 @@ export class Control extends CanvasItem{
   }
   set_force_pass_scroll_events(_force_pass_scroll_events) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_force_pass_scroll_events,
+      Control._bindings.method_set_force_pass_scroll_events,
       this._owner,
       _force_pass_scroll_events
     );
@@ -2298,7 +2299,7 @@ export class Control extends CanvasItem{
   }
   is_force_pass_scroll_events() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_force_pass_scroll_events,
+      Control._bindings.method_is_force_pass_scroll_events,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2307,7 +2308,7 @@ export class Control extends CanvasItem{
   }
   set_clip_contents(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_clip_contents,
+      Control._bindings.method_set_clip_contents,
       this._owner,
       _enable
     );
@@ -2315,7 +2316,7 @@ export class Control extends CanvasItem{
   }
   is_clipping_contents() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_clipping_contents,
+      Control._bindings.method_is_clipping_contents,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2324,7 +2325,7 @@ export class Control extends CanvasItem{
   }
   grab_click_focus() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_grab_click_focus,
+      Control._bindings.method_grab_click_focus,
       this._owner,
       
     );
@@ -2332,7 +2333,7 @@ export class Control extends CanvasItem{
   }
   set_drag_forwarding(_drag_func, _can_drop_func, _drop_func) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_drag_forwarding,
+      Control._bindings.method_set_drag_forwarding,
       this._owner,
       _drag_func, _can_drop_func, _drop_func
     );
@@ -2340,7 +2341,7 @@ export class Control extends CanvasItem{
   }
   set_drag_preview(_control) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_drag_preview,
+      Control._bindings.method_set_drag_preview,
       this._owner,
       _control
     );
@@ -2348,7 +2349,7 @@ export class Control extends CanvasItem{
   }
   is_drag_successful() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_drag_successful,
+      Control._bindings.method_is_drag_successful,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2357,7 +2358,7 @@ export class Control extends CanvasItem{
   }
   warp_mouse(_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_warp_mouse,
+      Control._bindings.method_warp_mouse,
       this._owner,
       _position
     );
@@ -2365,7 +2366,7 @@ export class Control extends CanvasItem{
   }
   set_shortcut_context(_node) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shortcut_context,
+      Control._bindings.method_set_shortcut_context,
       this._owner,
       _node
     );
@@ -2373,7 +2374,7 @@ export class Control extends CanvasItem{
   }
   get_shortcut_context() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_shortcut_context,
+      Control._bindings.method_get_shortcut_context,
       this._owner,
 			Variant.INT,
       
@@ -2382,7 +2383,7 @@ export class Control extends CanvasItem{
   }
   update_minimum_size() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_update_minimum_size,
+      Control._bindings.method_update_minimum_size,
       this._owner,
       
     );
@@ -2390,7 +2391,7 @@ export class Control extends CanvasItem{
   }
   set_layout_direction(_direction) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_layout_direction,
+      Control._bindings.method_set_layout_direction,
       this._owner,
       _direction
     );
@@ -2398,7 +2399,7 @@ export class Control extends CanvasItem{
   }
   get_layout_direction() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_layout_direction,
+      Control._bindings.method_get_layout_direction,
       this._owner,
 			Variant.INT,
       
@@ -2407,7 +2408,7 @@ export class Control extends CanvasItem{
   }
   is_layout_rtl() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_layout_rtl,
+      Control._bindings.method_is_layout_rtl,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2416,7 +2417,7 @@ export class Control extends CanvasItem{
   }
   set_auto_translate(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_auto_translate,
+      Control._bindings.method_set_auto_translate,
       this._owner,
       _enable
     );
@@ -2424,7 +2425,7 @@ export class Control extends CanvasItem{
   }
   is_auto_translating() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_auto_translating,
+      Control._bindings.method_is_auto_translating,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2433,7 +2434,7 @@ export class Control extends CanvasItem{
   }
   set_localize_numeral_system(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_localize_numeral_system,
+      Control._bindings.method_set_localize_numeral_system,
       this._owner,
       _enable
     );
@@ -2441,7 +2442,7 @@ export class Control extends CanvasItem{
   }
   is_localizing_numeral_system() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_localizing_numeral_system,
+      Control._bindings.method_is_localizing_numeral_system,
       this._owner,
 			Variant.Type.BOOL,
       

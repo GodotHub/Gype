@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { Vector2 } from '@js_godot/variant/vector2'
 import { AudioEffectInstance } from '@js_godot/classes/audio_effect_instance'
+import { StringName } from '@js_godot/variant/string_name'
+import { Vector2 } from '@js_godot/variant/vector2'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -41,9 +41,10 @@ export class AudioEffectSpectrumAnalyzerInstance extends AudioEffectInstance{
       );
     }
   }
+  
   get_magnitude_for_frequency_range(_from_hz, _to_hz, _mode) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_magnitude_for_frequency_range,
+      AudioEffectSpectrumAnalyzerInstance._bindings.method_get_magnitude_for_frequency_range,
       this._owner,
 			Variant.Type.VECTOR2,
     

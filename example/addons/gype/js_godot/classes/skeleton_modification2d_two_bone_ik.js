@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { SkeletonModification2D } from '@js_godot/classes/skeleton_modification2d'
 import { NodePath } from '@js_godot/variant/node_path'
 import {
@@ -191,9 +191,10 @@ export class SkeletonModification2DTwoBoneIK extends SkeletonModification2D{
       );
     }
   }
+  
   set_target_node(_target_nodepath) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_target_node,
+      SkeletonModification2DTwoBoneIK._bindings.method_set_target_node,
       this._owner,
       _target_nodepath
     );
@@ -201,7 +202,7 @@ export class SkeletonModification2DTwoBoneIK extends SkeletonModification2D{
   }
   get_target_node() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_target_node,
+      SkeletonModification2DTwoBoneIK._bindings.method_get_target_node,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -211,7 +212,7 @@ export class SkeletonModification2DTwoBoneIK extends SkeletonModification2D{
   }
   set_target_minimum_distance(_minimum_distance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_target_minimum_distance,
+      SkeletonModification2DTwoBoneIK._bindings.method_set_target_minimum_distance,
       this._owner,
       _minimum_distance
     );
@@ -219,7 +220,7 @@ export class SkeletonModification2DTwoBoneIK extends SkeletonModification2D{
   }
   get_target_minimum_distance() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_target_minimum_distance,
+      SkeletonModification2DTwoBoneIK._bindings.method_get_target_minimum_distance,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -228,7 +229,7 @@ export class SkeletonModification2DTwoBoneIK extends SkeletonModification2D{
   }
   set_target_maximum_distance(_maximum_distance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_target_maximum_distance,
+      SkeletonModification2DTwoBoneIK._bindings.method_set_target_maximum_distance,
       this._owner,
       _maximum_distance
     );
@@ -236,7 +237,7 @@ export class SkeletonModification2DTwoBoneIK extends SkeletonModification2D{
   }
   get_target_maximum_distance() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_target_maximum_distance,
+      SkeletonModification2DTwoBoneIK._bindings.method_get_target_maximum_distance,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -245,7 +246,7 @@ export class SkeletonModification2DTwoBoneIK extends SkeletonModification2D{
   }
   set_flip_bend_direction(_flip_direction) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_flip_bend_direction,
+      SkeletonModification2DTwoBoneIK._bindings.method_set_flip_bend_direction,
       this._owner,
       _flip_direction
     );
@@ -253,7 +254,7 @@ export class SkeletonModification2DTwoBoneIK extends SkeletonModification2D{
   }
   get_flip_bend_direction() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_flip_bend_direction,
+      SkeletonModification2DTwoBoneIK._bindings.method_get_flip_bend_direction,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -262,7 +263,7 @@ export class SkeletonModification2DTwoBoneIK extends SkeletonModification2D{
   }
   set_joint_one_bone2d_node(_bone2d_node) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_joint_one_bone2d_node,
+      SkeletonModification2DTwoBoneIK._bindings.method_set_joint_one_bone2d_node,
       this._owner,
       _bone2d_node
     );
@@ -270,7 +271,7 @@ export class SkeletonModification2DTwoBoneIK extends SkeletonModification2D{
   }
   get_joint_one_bone2d_node() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_joint_one_bone2d_node,
+      SkeletonModification2DTwoBoneIK._bindings.method_get_joint_one_bone2d_node,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -280,7 +281,7 @@ export class SkeletonModification2DTwoBoneIK extends SkeletonModification2D{
   }
   set_joint_one_bone_idx(_bone_idx) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_joint_one_bone_idx,
+      SkeletonModification2DTwoBoneIK._bindings.method_set_joint_one_bone_idx,
       this._owner,
       _bone_idx
     );
@@ -288,7 +289,7 @@ export class SkeletonModification2DTwoBoneIK extends SkeletonModification2D{
   }
   get_joint_one_bone_idx() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_joint_one_bone_idx,
+      SkeletonModification2DTwoBoneIK._bindings.method_get_joint_one_bone_idx,
       this._owner,
 			Variant.Type.INT,
       
@@ -297,7 +298,7 @@ export class SkeletonModification2DTwoBoneIK extends SkeletonModification2D{
   }
   set_joint_two_bone2d_node(_bone2d_node) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_joint_two_bone2d_node,
+      SkeletonModification2DTwoBoneIK._bindings.method_set_joint_two_bone2d_node,
       this._owner,
       _bone2d_node
     );
@@ -305,7 +306,7 @@ export class SkeletonModification2DTwoBoneIK extends SkeletonModification2D{
   }
   get_joint_two_bone2d_node() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_joint_two_bone2d_node,
+      SkeletonModification2DTwoBoneIK._bindings.method_get_joint_two_bone2d_node,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -315,7 +316,7 @@ export class SkeletonModification2DTwoBoneIK extends SkeletonModification2D{
   }
   set_joint_two_bone_idx(_bone_idx) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_joint_two_bone_idx,
+      SkeletonModification2DTwoBoneIK._bindings.method_set_joint_two_bone_idx,
       this._owner,
       _bone_idx
     );
@@ -323,7 +324,7 @@ export class SkeletonModification2DTwoBoneIK extends SkeletonModification2D{
   }
   get_joint_two_bone_idx() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_joint_two_bone_idx,
+      SkeletonModification2DTwoBoneIK._bindings.method_get_joint_two_bone_idx,
       this._owner,
 			Variant.Type.INT,
       

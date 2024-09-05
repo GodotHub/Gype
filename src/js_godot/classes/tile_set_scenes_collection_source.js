@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { TileSetSource } from '@js_godot/classes/tile_set_source'
 import {
   call_utility_ret,
@@ -140,9 +140,10 @@ export class TileSetScenesCollectionSource extends TileSetSource{
       );
     }
   }
+  
   get_scene_tiles_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_scene_tiles_count,
+      TileSetScenesCollectionSource._bindings.method_get_scene_tiles_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -151,7 +152,7 @@ export class TileSetScenesCollectionSource extends TileSetSource{
   }
   get_scene_tile_id(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_scene_tile_id,
+      TileSetScenesCollectionSource._bindings.method_get_scene_tile_id,
       this._owner,
 			Variant.Type.INT,
       _index
@@ -160,7 +161,7 @@ export class TileSetScenesCollectionSource extends TileSetSource{
   }
   has_scene_tile_id(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_scene_tile_id,
+      TileSetScenesCollectionSource._bindings.method_has_scene_tile_id,
       this._owner,
 			Variant.Type.BOOL,
       _id
@@ -169,7 +170,7 @@ export class TileSetScenesCollectionSource extends TileSetSource{
   }
   create_scene_tile(_packed_scene, _id_override) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_scene_tile,
+      TileSetScenesCollectionSource._bindings.method_create_scene_tile,
       this._owner,
 			Variant.Type.INT,
       _packed_scene, _id_override
@@ -178,7 +179,7 @@ export class TileSetScenesCollectionSource extends TileSetSource{
   }
   set_scene_tile_id(_id, _new_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_scene_tile_id,
+      TileSetScenesCollectionSource._bindings.method_set_scene_tile_id,
       this._owner,
       _id, _new_id
     );
@@ -186,7 +187,7 @@ export class TileSetScenesCollectionSource extends TileSetSource{
   }
   set_scene_tile_scene(_id, _packed_scene) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_scene_tile_scene,
+      TileSetScenesCollectionSource._bindings.method_set_scene_tile_scene,
       this._owner,
       _id, _packed_scene
     );
@@ -194,7 +195,7 @@ export class TileSetScenesCollectionSource extends TileSetSource{
   }
   get_scene_tile_scene(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_scene_tile_scene,
+      TileSetScenesCollectionSource._bindings.method_get_scene_tile_scene,
       this._owner,
 			Variant.INT,
       _id
@@ -203,7 +204,7 @@ export class TileSetScenesCollectionSource extends TileSetSource{
   }
   set_scene_tile_display_placeholder(_id, _display_placeholder) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_scene_tile_display_placeholder,
+      TileSetScenesCollectionSource._bindings.method_set_scene_tile_display_placeholder,
       this._owner,
       _id, _display_placeholder
     );
@@ -211,7 +212,7 @@ export class TileSetScenesCollectionSource extends TileSetSource{
   }
   get_scene_tile_display_placeholder(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_scene_tile_display_placeholder,
+      TileSetScenesCollectionSource._bindings.method_get_scene_tile_display_placeholder,
       this._owner,
 			Variant.Type.BOOL,
       _id
@@ -220,7 +221,7 @@ export class TileSetScenesCollectionSource extends TileSetSource{
   }
   remove_scene_tile(_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_scene_tile,
+      TileSetScenesCollectionSource._bindings.method_remove_scene_tile,
       this._owner,
       _id
     );
@@ -228,7 +229,7 @@ export class TileSetScenesCollectionSource extends TileSetSource{
   }
   get_next_scene_tile_id() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_next_scene_tile_id,
+      TileSetScenesCollectionSource._bindings.method_get_next_scene_tile_id,
       this._owner,
 			Variant.Type.INT,
       

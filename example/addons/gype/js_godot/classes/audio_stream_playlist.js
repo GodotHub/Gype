@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { AudioStream } from '@js_godot/classes/audio_stream'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -140,9 +140,10 @@ export class AudioStreamPlaylist extends AudioStream{
       );
     }
   }
+  
   set_stream_count(_stream_count) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_stream_count,
+      AudioStreamPlaylist._bindings.method_set_stream_count,
       this._owner,
       _stream_count
     );
@@ -150,7 +151,7 @@ export class AudioStreamPlaylist extends AudioStream{
   }
   get_stream_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_stream_count,
+      AudioStreamPlaylist._bindings.method_get_stream_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -159,7 +160,7 @@ export class AudioStreamPlaylist extends AudioStream{
   }
   get_bpm() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bpm,
+      AudioStreamPlaylist._bindings.method_get_bpm,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -168,7 +169,7 @@ export class AudioStreamPlaylist extends AudioStream{
   }
   set_list_stream(_stream_index, _audio_stream) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_list_stream,
+      AudioStreamPlaylist._bindings.method_set_list_stream,
       this._owner,
       _stream_index, _audio_stream
     );
@@ -176,7 +177,7 @@ export class AudioStreamPlaylist extends AudioStream{
   }
   get_list_stream(_stream_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_list_stream,
+      AudioStreamPlaylist._bindings.method_get_list_stream,
       this._owner,
 			Variant.INT,
       _stream_index
@@ -185,7 +186,7 @@ export class AudioStreamPlaylist extends AudioStream{
   }
   set_shuffle(_shuffle) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_shuffle,
+      AudioStreamPlaylist._bindings.method_set_shuffle,
       this._owner,
       _shuffle
     );
@@ -193,7 +194,7 @@ export class AudioStreamPlaylist extends AudioStream{
   }
   get_shuffle() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_shuffle,
+      AudioStreamPlaylist._bindings.method_get_shuffle,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -202,7 +203,7 @@ export class AudioStreamPlaylist extends AudioStream{
   }
   set_fade_time(_dec) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fade_time,
+      AudioStreamPlaylist._bindings.method_set_fade_time,
       this._owner,
       _dec
     );
@@ -210,7 +211,7 @@ export class AudioStreamPlaylist extends AudioStream{
   }
   get_fade_time() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fade_time,
+      AudioStreamPlaylist._bindings.method_get_fade_time,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -219,7 +220,7 @@ export class AudioStreamPlaylist extends AudioStream{
   }
   set_loop(_loop) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_loop,
+      AudioStreamPlaylist._bindings.method_set_loop,
       this._owner,
       _loop
     );
@@ -227,7 +228,7 @@ export class AudioStreamPlaylist extends AudioStream{
   }
   has_loop() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_loop,
+      AudioStreamPlaylist._bindings.method_has_loop,
       this._owner,
 			Variant.Type.BOOL,
       

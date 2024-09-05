@@ -5,100 +5,6 @@ import {
 } from "@js_godot/core/engine_ptrcall";
 import { StringName } from "@js_godot/variant/string_name";
 import { variant_get_ptr_utility_function } from "__internal__";
-export class Random {
-  static #randomize_func;
-  static #randi_func;
-  static #randf_func;
-  static #randi_range_func;
-  static #randf_range_func;
-  static #randfn_func;
-  static #seed_func;
-  static #rand_from_seed_func;
-
-  static _init_bindings() {
-    this.#randomize_func = variant_get_ptr_utility_function(
-      new StringName("randomize").opaque,
-      1691721052
-    );
-    this.#randi_func = variant_get_ptr_utility_function(
-      new StringName("randi").opaque,
-      701202648
-    );
-    this.#randf_func = variant_get_ptr_utility_function(
-      new StringName("randf").opaque,
-      2086227845
-    );
-    this.#randi_range_func = variant_get_ptr_utility_function(
-      new StringName("randi_range").opaque,
-      3133453818
-    );
-    this.#randf_range_func = variant_get_ptr_utility_function(
-      new StringName("randf_range").opaque,
-      92296394
-    );
-    this.#randfn_func = variant_get_ptr_utility_function(
-      new StringName("randfn").opaque,
-      92296394
-    );
-    this.#seed_func = variant_get_ptr_utility_function(
-      new StringName("seed").opaque,
-      382931173
-    );
-    this.#rand_from_seed_func = variant_get_ptr_utility_function(
-      new StringName("rand_from_seed").opaque,
-      1391063685
-    );
-  }
-  static #randomize_internal() {
-    call_utility_no_ret(this.#randomize_func, );
-  }
-  static #randi_internal() {
-    return call_utility_ret(this.#randi_func, );
-  }
-  static #randf_internal() {
-    return call_utility_ret(this.#randf_func, );
-  }
-  static #randi_range_internal(from, to) {
-    return call_utility_ret(this.#randi_range_func, from, to);
-  }
-  static #randf_range_internal(from, to) {
-    return call_utility_ret(this.#randf_range_func, from, to);
-  }
-  static #randfn_internal(mean, deviation) {
-    return call_utility_ret(this.#randfn_func, mean, deviation);
-  }
-  static #seed_internal(base) {
-    call_utility_no_ret(this.#seed_func, base);
-  }
-  static #rand_from_seed_internal(seed) {
-    return call_utility_ret(this.#rand_from_seed_func, seed);
-  }
-  randomize() {
-    return Random.#randomize_internal();
-  }
-  randi() {
-    return Random.#randi_internal();
-  }
-  randf() {
-    return Random.#randf_internal();
-  }
-  randi_range(from, to) {
-    return Random.#randi_range_internal(from, to);
-  }
-  randf_range(from, to) {
-    return Random.#randf_range_internal(from, to);
-  }
-  randfn(mean, deviation) {
-    return Random.#randfn_internal(mean, deviation);
-  }
-  seed(base) {
-    return Random.#seed_internal(base);
-  }
-  rand_from_seed(seed) {
-    return Random.#rand_from_seed_internal(seed);
-  }
-}
-
 export class GD {
   static #weakref_func;
   static #typeof_func;
@@ -1274,5 +1180,99 @@ export class Math {
   }
   pingpong(value, length) {
     return Math.#pingpong_internal(value, length);
+  }
+}
+
+export class Random {
+  static #randomize_func;
+  static #randi_func;
+  static #randf_func;
+  static #randi_range_func;
+  static #randf_range_func;
+  static #randfn_func;
+  static #seed_func;
+  static #rand_from_seed_func;
+
+  static _init_bindings() {
+    this.#randomize_func = variant_get_ptr_utility_function(
+      new StringName("randomize").opaque,
+      1691721052
+    );
+    this.#randi_func = variant_get_ptr_utility_function(
+      new StringName("randi").opaque,
+      701202648
+    );
+    this.#randf_func = variant_get_ptr_utility_function(
+      new StringName("randf").opaque,
+      2086227845
+    );
+    this.#randi_range_func = variant_get_ptr_utility_function(
+      new StringName("randi_range").opaque,
+      3133453818
+    );
+    this.#randf_range_func = variant_get_ptr_utility_function(
+      new StringName("randf_range").opaque,
+      92296394
+    );
+    this.#randfn_func = variant_get_ptr_utility_function(
+      new StringName("randfn").opaque,
+      92296394
+    );
+    this.#seed_func = variant_get_ptr_utility_function(
+      new StringName("seed").opaque,
+      382931173
+    );
+    this.#rand_from_seed_func = variant_get_ptr_utility_function(
+      new StringName("rand_from_seed").opaque,
+      1391063685
+    );
+  }
+  static #randomize_internal() {
+    call_utility_no_ret(this.#randomize_func, );
+  }
+  static #randi_internal() {
+    return call_utility_ret(this.#randi_func, );
+  }
+  static #randf_internal() {
+    return call_utility_ret(this.#randf_func, );
+  }
+  static #randi_range_internal(from, to) {
+    return call_utility_ret(this.#randi_range_func, from, to);
+  }
+  static #randf_range_internal(from, to) {
+    return call_utility_ret(this.#randf_range_func, from, to);
+  }
+  static #randfn_internal(mean, deviation) {
+    return call_utility_ret(this.#randfn_func, mean, deviation);
+  }
+  static #seed_internal(base) {
+    call_utility_no_ret(this.#seed_func, base);
+  }
+  static #rand_from_seed_internal(seed) {
+    return call_utility_ret(this.#rand_from_seed_func, seed);
+  }
+  randomize() {
+    return Random.#randomize_internal();
+  }
+  randi() {
+    return Random.#randi_internal();
+  }
+  randf() {
+    return Random.#randf_internal();
+  }
+  randi_range(from, to) {
+    return Random.#randi_range_internal(from, to);
+  }
+  randf_range(from, to) {
+    return Random.#randf_range_internal(from, to);
+  }
+  randfn(mean, deviation) {
+    return Random.#randfn_internal(mean, deviation);
+  }
+  seed(base) {
+    return Random.#seed_internal(base);
+  }
+  rand_from_seed(seed) {
+    return Random.#rand_from_seed_internal(seed);
   }
 }

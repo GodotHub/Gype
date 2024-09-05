@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
-import { GodotObject } from '@js_godot/classes/godot_object'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { StringName } from '@js_godot/variant/string_name'
+import { GodotObject } from '@js_godot/classes/godot_object'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -71,9 +71,10 @@ class _MethodBindings {
       );
     }
   }
+  
   save(_resource, _path, _flags) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_save,
+      _ResourceSaver._bindings.method_save,
       this._owner,
 			Variant.INT,
       _resource, _path, _flags
@@ -82,7 +83,7 @@ class _MethodBindings {
   }
   get_recognized_extensions(_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_recognized_extensions,
+      _ResourceSaver._bindings.method_get_recognized_extensions,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -92,7 +93,7 @@ class _MethodBindings {
   }
   add_resource_format_saver(_format_saver, _at_front) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_resource_format_saver,
+      _ResourceSaver._bindings.method_add_resource_format_saver,
       this._owner,
       _format_saver, _at_front
     );
@@ -100,7 +101,7 @@ class _MethodBindings {
   }
   remove_resource_format_saver(_format_saver) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_resource_format_saver,
+      _ResourceSaver._bindings.method_remove_resource_format_saver,
       this._owner,
       _format_saver
     );
@@ -123,4 +124,17 @@ class _MethodBindings {
     this._init_bindings();
   }
 }
-export const ResourceSaver = new _ResourceSaver();
+export const ResourceSaver = (function () {
+  let _instance;
+  function create_instance() {
+    return new _ResourceSaver();
+  }
+  return {
+    instance: function () {
+      if (!_instance) {
+        _instance = create_instance();
+      }
+      return _instance;
+    },
+  };
+})();

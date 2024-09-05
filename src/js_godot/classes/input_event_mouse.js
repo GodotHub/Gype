@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
-import { Vector2 } from '@js_godot/variant/vector2'
 import { InputEventWithModifiers } from '@js_godot/classes/input_event_with_modifiers'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { Vector2 } from '@js_godot/variant/vector2'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -91,9 +91,10 @@ export class InputEventMouse extends InputEventWithModifiers{
       );
     }
   }
+  
   set_button_mask(_button_mask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_button_mask,
+      InputEventMouse._bindings.method_set_button_mask,
       this._owner,
       _button_mask
     );
@@ -101,7 +102,7 @@ export class InputEventMouse extends InputEventWithModifiers{
   }
   get_button_mask() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_button_mask,
+      InputEventMouse._bindings.method_get_button_mask,
       this._owner,
 			Variant.INT,
       
@@ -110,7 +111,7 @@ export class InputEventMouse extends InputEventWithModifiers{
   }
   set_position(_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_position,
+      InputEventMouse._bindings.method_set_position,
       this._owner,
       _position
     );
@@ -118,7 +119,7 @@ export class InputEventMouse extends InputEventWithModifiers{
   }
   get_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_position,
+      InputEventMouse._bindings.method_get_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -128,7 +129,7 @@ export class InputEventMouse extends InputEventWithModifiers{
   }
   set_global_position(_global_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_global_position,
+      InputEventMouse._bindings.method_set_global_position,
       this._owner,
       _global_position
     );
@@ -136,7 +137,7 @@ export class InputEventMouse extends InputEventWithModifiers{
   }
   get_global_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_global_position,
+      InputEventMouse._bindings.method_get_global_position,
       this._owner,
 			Variant.Type.VECTOR2,
     

@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
-import { Vector3 } from '@js_godot/variant/vector3'
-import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { Color } from '@js_godot/variant/color'
+import { StringName } from '@js_godot/variant/string_name'
+import { Vector3 } from '@js_godot/variant/vector3'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -1872,9 +1872,10 @@ export class Environment extends Resource{
       );
     }
   }
+  
   set_background(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_background,
+      Environment._bindings.method_set_background,
       this._owner,
       _mode
     );
@@ -1882,7 +1883,7 @@ export class Environment extends Resource{
   }
   get_background() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_background,
+      Environment._bindings.method_get_background,
       this._owner,
 			Variant.INT,
       
@@ -1891,7 +1892,7 @@ export class Environment extends Resource{
   }
   set_sky(_sky) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sky,
+      Environment._bindings.method_set_sky,
       this._owner,
       _sky
     );
@@ -1899,7 +1900,7 @@ export class Environment extends Resource{
   }
   get_sky() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sky,
+      Environment._bindings.method_get_sky,
       this._owner,
 			Variant.INT,
       
@@ -1908,7 +1909,7 @@ export class Environment extends Resource{
   }
   set_sky_custom_fov(_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sky_custom_fov,
+      Environment._bindings.method_set_sky_custom_fov,
       this._owner,
       _scale
     );
@@ -1916,7 +1917,7 @@ export class Environment extends Resource{
   }
   get_sky_custom_fov() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sky_custom_fov,
+      Environment._bindings.method_get_sky_custom_fov,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1925,7 +1926,7 @@ export class Environment extends Resource{
   }
   set_sky_rotation(_euler_radians) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sky_rotation,
+      Environment._bindings.method_set_sky_rotation,
       this._owner,
       _euler_radians
     );
@@ -1933,7 +1934,7 @@ export class Environment extends Resource{
   }
   get_sky_rotation() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sky_rotation,
+      Environment._bindings.method_get_sky_rotation,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -1943,7 +1944,7 @@ export class Environment extends Resource{
   }
   set_bg_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bg_color,
+      Environment._bindings.method_set_bg_color,
       this._owner,
       _color
     );
@@ -1951,7 +1952,7 @@ export class Environment extends Resource{
   }
   get_bg_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bg_color,
+      Environment._bindings.method_get_bg_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -1961,7 +1962,7 @@ export class Environment extends Resource{
   }
   set_bg_energy_multiplier(_energy) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bg_energy_multiplier,
+      Environment._bindings.method_set_bg_energy_multiplier,
       this._owner,
       _energy
     );
@@ -1969,7 +1970,7 @@ export class Environment extends Resource{
   }
   get_bg_energy_multiplier() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bg_energy_multiplier,
+      Environment._bindings.method_get_bg_energy_multiplier,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1978,7 +1979,7 @@ export class Environment extends Resource{
   }
   set_bg_intensity(_energy) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bg_intensity,
+      Environment._bindings.method_set_bg_intensity,
       this._owner,
       _energy
     );
@@ -1986,7 +1987,7 @@ export class Environment extends Resource{
   }
   get_bg_intensity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bg_intensity,
+      Environment._bindings.method_get_bg_intensity,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -1995,7 +1996,7 @@ export class Environment extends Resource{
   }
   set_canvas_max_layer(_layer) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_canvas_max_layer,
+      Environment._bindings.method_set_canvas_max_layer,
       this._owner,
       _layer
     );
@@ -2003,7 +2004,7 @@ export class Environment extends Resource{
   }
   get_canvas_max_layer() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_canvas_max_layer,
+      Environment._bindings.method_get_canvas_max_layer,
       this._owner,
 			Variant.Type.INT,
       
@@ -2012,7 +2013,7 @@ export class Environment extends Resource{
   }
   set_camera_feed_id(_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_camera_feed_id,
+      Environment._bindings.method_set_camera_feed_id,
       this._owner,
       _id
     );
@@ -2020,7 +2021,7 @@ export class Environment extends Resource{
   }
   get_camera_feed_id() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_camera_feed_id,
+      Environment._bindings.method_get_camera_feed_id,
       this._owner,
 			Variant.Type.INT,
       
@@ -2029,7 +2030,7 @@ export class Environment extends Resource{
   }
   set_ambient_light_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ambient_light_color,
+      Environment._bindings.method_set_ambient_light_color,
       this._owner,
       _color
     );
@@ -2037,7 +2038,7 @@ export class Environment extends Resource{
   }
   get_ambient_light_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ambient_light_color,
+      Environment._bindings.method_get_ambient_light_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -2047,7 +2048,7 @@ export class Environment extends Resource{
   }
   set_ambient_source(_source) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ambient_source,
+      Environment._bindings.method_set_ambient_source,
       this._owner,
       _source
     );
@@ -2055,7 +2056,7 @@ export class Environment extends Resource{
   }
   get_ambient_source() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ambient_source,
+      Environment._bindings.method_get_ambient_source,
       this._owner,
 			Variant.INT,
       
@@ -2064,7 +2065,7 @@ export class Environment extends Resource{
   }
   set_ambient_light_energy(_energy) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ambient_light_energy,
+      Environment._bindings.method_set_ambient_light_energy,
       this._owner,
       _energy
     );
@@ -2072,7 +2073,7 @@ export class Environment extends Resource{
   }
   get_ambient_light_energy() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ambient_light_energy,
+      Environment._bindings.method_get_ambient_light_energy,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2081,7 +2082,7 @@ export class Environment extends Resource{
   }
   set_ambient_light_sky_contribution(_ratio) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ambient_light_sky_contribution,
+      Environment._bindings.method_set_ambient_light_sky_contribution,
       this._owner,
       _ratio
     );
@@ -2089,7 +2090,7 @@ export class Environment extends Resource{
   }
   get_ambient_light_sky_contribution() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ambient_light_sky_contribution,
+      Environment._bindings.method_get_ambient_light_sky_contribution,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2098,7 +2099,7 @@ export class Environment extends Resource{
   }
   set_reflection_source(_source) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_reflection_source,
+      Environment._bindings.method_set_reflection_source,
       this._owner,
       _source
     );
@@ -2106,7 +2107,7 @@ export class Environment extends Resource{
   }
   get_reflection_source() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_reflection_source,
+      Environment._bindings.method_get_reflection_source,
       this._owner,
 			Variant.INT,
       
@@ -2115,7 +2116,7 @@ export class Environment extends Resource{
   }
   set_tonemapper(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tonemapper,
+      Environment._bindings.method_set_tonemapper,
       this._owner,
       _mode
     );
@@ -2123,7 +2124,7 @@ export class Environment extends Resource{
   }
   get_tonemapper() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tonemapper,
+      Environment._bindings.method_get_tonemapper,
       this._owner,
 			Variant.INT,
       
@@ -2132,7 +2133,7 @@ export class Environment extends Resource{
   }
   set_tonemap_exposure(_exposure) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tonemap_exposure,
+      Environment._bindings.method_set_tonemap_exposure,
       this._owner,
       _exposure
     );
@@ -2140,7 +2141,7 @@ export class Environment extends Resource{
   }
   get_tonemap_exposure() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tonemap_exposure,
+      Environment._bindings.method_get_tonemap_exposure,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2149,7 +2150,7 @@ export class Environment extends Resource{
   }
   set_tonemap_white(_white) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tonemap_white,
+      Environment._bindings.method_set_tonemap_white,
       this._owner,
       _white
     );
@@ -2157,7 +2158,7 @@ export class Environment extends Resource{
   }
   get_tonemap_white() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tonemap_white,
+      Environment._bindings.method_get_tonemap_white,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2166,7 +2167,7 @@ export class Environment extends Resource{
   }
   set_ssr_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ssr_enabled,
+      Environment._bindings.method_set_ssr_enabled,
       this._owner,
       _enabled
     );
@@ -2174,7 +2175,7 @@ export class Environment extends Resource{
   }
   is_ssr_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_ssr_enabled,
+      Environment._bindings.method_is_ssr_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2183,7 +2184,7 @@ export class Environment extends Resource{
   }
   set_ssr_max_steps(_max_steps) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ssr_max_steps,
+      Environment._bindings.method_set_ssr_max_steps,
       this._owner,
       _max_steps
     );
@@ -2191,7 +2192,7 @@ export class Environment extends Resource{
   }
   get_ssr_max_steps() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ssr_max_steps,
+      Environment._bindings.method_get_ssr_max_steps,
       this._owner,
 			Variant.Type.INT,
       
@@ -2200,7 +2201,7 @@ export class Environment extends Resource{
   }
   set_ssr_fade_in(_fade_in) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ssr_fade_in,
+      Environment._bindings.method_set_ssr_fade_in,
       this._owner,
       _fade_in
     );
@@ -2208,7 +2209,7 @@ export class Environment extends Resource{
   }
   get_ssr_fade_in() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ssr_fade_in,
+      Environment._bindings.method_get_ssr_fade_in,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2217,7 +2218,7 @@ export class Environment extends Resource{
   }
   set_ssr_fade_out(_fade_out) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ssr_fade_out,
+      Environment._bindings.method_set_ssr_fade_out,
       this._owner,
       _fade_out
     );
@@ -2225,7 +2226,7 @@ export class Environment extends Resource{
   }
   get_ssr_fade_out() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ssr_fade_out,
+      Environment._bindings.method_get_ssr_fade_out,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2234,7 +2235,7 @@ export class Environment extends Resource{
   }
   set_ssr_depth_tolerance(_depth_tolerance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ssr_depth_tolerance,
+      Environment._bindings.method_set_ssr_depth_tolerance,
       this._owner,
       _depth_tolerance
     );
@@ -2242,7 +2243,7 @@ export class Environment extends Resource{
   }
   get_ssr_depth_tolerance() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ssr_depth_tolerance,
+      Environment._bindings.method_get_ssr_depth_tolerance,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2251,7 +2252,7 @@ export class Environment extends Resource{
   }
   set_ssao_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ssao_enabled,
+      Environment._bindings.method_set_ssao_enabled,
       this._owner,
       _enabled
     );
@@ -2259,7 +2260,7 @@ export class Environment extends Resource{
   }
   is_ssao_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_ssao_enabled,
+      Environment._bindings.method_is_ssao_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2268,7 +2269,7 @@ export class Environment extends Resource{
   }
   set_ssao_radius(_radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ssao_radius,
+      Environment._bindings.method_set_ssao_radius,
       this._owner,
       _radius
     );
@@ -2276,7 +2277,7 @@ export class Environment extends Resource{
   }
   get_ssao_radius() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ssao_radius,
+      Environment._bindings.method_get_ssao_radius,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2285,7 +2286,7 @@ export class Environment extends Resource{
   }
   set_ssao_intensity(_intensity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ssao_intensity,
+      Environment._bindings.method_set_ssao_intensity,
       this._owner,
       _intensity
     );
@@ -2293,7 +2294,7 @@ export class Environment extends Resource{
   }
   get_ssao_intensity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ssao_intensity,
+      Environment._bindings.method_get_ssao_intensity,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2302,7 +2303,7 @@ export class Environment extends Resource{
   }
   set_ssao_power(_power) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ssao_power,
+      Environment._bindings.method_set_ssao_power,
       this._owner,
       _power
     );
@@ -2310,7 +2311,7 @@ export class Environment extends Resource{
   }
   get_ssao_power() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ssao_power,
+      Environment._bindings.method_get_ssao_power,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2319,7 +2320,7 @@ export class Environment extends Resource{
   }
   set_ssao_detail(_detail) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ssao_detail,
+      Environment._bindings.method_set_ssao_detail,
       this._owner,
       _detail
     );
@@ -2327,7 +2328,7 @@ export class Environment extends Resource{
   }
   get_ssao_detail() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ssao_detail,
+      Environment._bindings.method_get_ssao_detail,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2336,7 +2337,7 @@ export class Environment extends Resource{
   }
   set_ssao_horizon(_horizon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ssao_horizon,
+      Environment._bindings.method_set_ssao_horizon,
       this._owner,
       _horizon
     );
@@ -2344,7 +2345,7 @@ export class Environment extends Resource{
   }
   get_ssao_horizon() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ssao_horizon,
+      Environment._bindings.method_get_ssao_horizon,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2353,7 +2354,7 @@ export class Environment extends Resource{
   }
   set_ssao_sharpness(_sharpness) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ssao_sharpness,
+      Environment._bindings.method_set_ssao_sharpness,
       this._owner,
       _sharpness
     );
@@ -2361,7 +2362,7 @@ export class Environment extends Resource{
   }
   get_ssao_sharpness() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ssao_sharpness,
+      Environment._bindings.method_get_ssao_sharpness,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2370,7 +2371,7 @@ export class Environment extends Resource{
   }
   set_ssao_direct_light_affect(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ssao_direct_light_affect,
+      Environment._bindings.method_set_ssao_direct_light_affect,
       this._owner,
       _amount
     );
@@ -2378,7 +2379,7 @@ export class Environment extends Resource{
   }
   get_ssao_direct_light_affect() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ssao_direct_light_affect,
+      Environment._bindings.method_get_ssao_direct_light_affect,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2387,7 +2388,7 @@ export class Environment extends Resource{
   }
   set_ssao_ao_channel_affect(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ssao_ao_channel_affect,
+      Environment._bindings.method_set_ssao_ao_channel_affect,
       this._owner,
       _amount
     );
@@ -2395,7 +2396,7 @@ export class Environment extends Resource{
   }
   get_ssao_ao_channel_affect() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ssao_ao_channel_affect,
+      Environment._bindings.method_get_ssao_ao_channel_affect,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2404,7 +2405,7 @@ export class Environment extends Resource{
   }
   set_ssil_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ssil_enabled,
+      Environment._bindings.method_set_ssil_enabled,
       this._owner,
       _enabled
     );
@@ -2412,7 +2413,7 @@ export class Environment extends Resource{
   }
   is_ssil_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_ssil_enabled,
+      Environment._bindings.method_is_ssil_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2421,7 +2422,7 @@ export class Environment extends Resource{
   }
   set_ssil_radius(_radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ssil_radius,
+      Environment._bindings.method_set_ssil_radius,
       this._owner,
       _radius
     );
@@ -2429,7 +2430,7 @@ export class Environment extends Resource{
   }
   get_ssil_radius() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ssil_radius,
+      Environment._bindings.method_get_ssil_radius,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2438,7 +2439,7 @@ export class Environment extends Resource{
   }
   set_ssil_intensity(_intensity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ssil_intensity,
+      Environment._bindings.method_set_ssil_intensity,
       this._owner,
       _intensity
     );
@@ -2446,7 +2447,7 @@ export class Environment extends Resource{
   }
   get_ssil_intensity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ssil_intensity,
+      Environment._bindings.method_get_ssil_intensity,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2455,7 +2456,7 @@ export class Environment extends Resource{
   }
   set_ssil_sharpness(_sharpness) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ssil_sharpness,
+      Environment._bindings.method_set_ssil_sharpness,
       this._owner,
       _sharpness
     );
@@ -2463,7 +2464,7 @@ export class Environment extends Resource{
   }
   get_ssil_sharpness() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ssil_sharpness,
+      Environment._bindings.method_get_ssil_sharpness,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2472,7 +2473,7 @@ export class Environment extends Resource{
   }
   set_ssil_normal_rejection(_normal_rejection) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ssil_normal_rejection,
+      Environment._bindings.method_set_ssil_normal_rejection,
       this._owner,
       _normal_rejection
     );
@@ -2480,7 +2481,7 @@ export class Environment extends Resource{
   }
   get_ssil_normal_rejection() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ssil_normal_rejection,
+      Environment._bindings.method_get_ssil_normal_rejection,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2489,7 +2490,7 @@ export class Environment extends Resource{
   }
   set_sdfgi_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sdfgi_enabled,
+      Environment._bindings.method_set_sdfgi_enabled,
       this._owner,
       _enabled
     );
@@ -2497,7 +2498,7 @@ export class Environment extends Resource{
   }
   is_sdfgi_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_sdfgi_enabled,
+      Environment._bindings.method_is_sdfgi_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2506,7 +2507,7 @@ export class Environment extends Resource{
   }
   set_sdfgi_cascades(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sdfgi_cascades,
+      Environment._bindings.method_set_sdfgi_cascades,
       this._owner,
       _amount
     );
@@ -2514,7 +2515,7 @@ export class Environment extends Resource{
   }
   get_sdfgi_cascades() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sdfgi_cascades,
+      Environment._bindings.method_get_sdfgi_cascades,
       this._owner,
 			Variant.Type.INT,
       
@@ -2523,7 +2524,7 @@ export class Environment extends Resource{
   }
   set_sdfgi_min_cell_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sdfgi_min_cell_size,
+      Environment._bindings.method_set_sdfgi_min_cell_size,
       this._owner,
       _size
     );
@@ -2531,7 +2532,7 @@ export class Environment extends Resource{
   }
   get_sdfgi_min_cell_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sdfgi_min_cell_size,
+      Environment._bindings.method_get_sdfgi_min_cell_size,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2540,7 +2541,7 @@ export class Environment extends Resource{
   }
   set_sdfgi_max_distance(_distance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sdfgi_max_distance,
+      Environment._bindings.method_set_sdfgi_max_distance,
       this._owner,
       _distance
     );
@@ -2548,7 +2549,7 @@ export class Environment extends Resource{
   }
   get_sdfgi_max_distance() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sdfgi_max_distance,
+      Environment._bindings.method_get_sdfgi_max_distance,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2557,7 +2558,7 @@ export class Environment extends Resource{
   }
   set_sdfgi_cascade0_distance(_distance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sdfgi_cascade0_distance,
+      Environment._bindings.method_set_sdfgi_cascade0_distance,
       this._owner,
       _distance
     );
@@ -2565,7 +2566,7 @@ export class Environment extends Resource{
   }
   get_sdfgi_cascade0_distance() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sdfgi_cascade0_distance,
+      Environment._bindings.method_get_sdfgi_cascade0_distance,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2574,7 +2575,7 @@ export class Environment extends Resource{
   }
   set_sdfgi_y_scale(_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sdfgi_y_scale,
+      Environment._bindings.method_set_sdfgi_y_scale,
       this._owner,
       _scale
     );
@@ -2582,7 +2583,7 @@ export class Environment extends Resource{
   }
   get_sdfgi_y_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sdfgi_y_scale,
+      Environment._bindings.method_get_sdfgi_y_scale,
       this._owner,
 			Variant.INT,
       
@@ -2591,7 +2592,7 @@ export class Environment extends Resource{
   }
   set_sdfgi_use_occlusion(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sdfgi_use_occlusion,
+      Environment._bindings.method_set_sdfgi_use_occlusion,
       this._owner,
       _enable
     );
@@ -2599,7 +2600,7 @@ export class Environment extends Resource{
   }
   is_sdfgi_using_occlusion() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_sdfgi_using_occlusion,
+      Environment._bindings.method_is_sdfgi_using_occlusion,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2608,7 +2609,7 @@ export class Environment extends Resource{
   }
   set_sdfgi_bounce_feedback(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sdfgi_bounce_feedback,
+      Environment._bindings.method_set_sdfgi_bounce_feedback,
       this._owner,
       _amount
     );
@@ -2616,7 +2617,7 @@ export class Environment extends Resource{
   }
   get_sdfgi_bounce_feedback() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sdfgi_bounce_feedback,
+      Environment._bindings.method_get_sdfgi_bounce_feedback,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2625,7 +2626,7 @@ export class Environment extends Resource{
   }
   set_sdfgi_read_sky_light(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sdfgi_read_sky_light,
+      Environment._bindings.method_set_sdfgi_read_sky_light,
       this._owner,
       _enable
     );
@@ -2633,7 +2634,7 @@ export class Environment extends Resource{
   }
   is_sdfgi_reading_sky_light() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_sdfgi_reading_sky_light,
+      Environment._bindings.method_is_sdfgi_reading_sky_light,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2642,7 +2643,7 @@ export class Environment extends Resource{
   }
   set_sdfgi_energy(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sdfgi_energy,
+      Environment._bindings.method_set_sdfgi_energy,
       this._owner,
       _amount
     );
@@ -2650,7 +2651,7 @@ export class Environment extends Resource{
   }
   get_sdfgi_energy() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sdfgi_energy,
+      Environment._bindings.method_get_sdfgi_energy,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2659,7 +2660,7 @@ export class Environment extends Resource{
   }
   set_sdfgi_normal_bias(_bias) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sdfgi_normal_bias,
+      Environment._bindings.method_set_sdfgi_normal_bias,
       this._owner,
       _bias
     );
@@ -2667,7 +2668,7 @@ export class Environment extends Resource{
   }
   get_sdfgi_normal_bias() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sdfgi_normal_bias,
+      Environment._bindings.method_get_sdfgi_normal_bias,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2676,7 +2677,7 @@ export class Environment extends Resource{
   }
   set_sdfgi_probe_bias(_bias) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sdfgi_probe_bias,
+      Environment._bindings.method_set_sdfgi_probe_bias,
       this._owner,
       _bias
     );
@@ -2684,7 +2685,7 @@ export class Environment extends Resource{
   }
   get_sdfgi_probe_bias() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sdfgi_probe_bias,
+      Environment._bindings.method_get_sdfgi_probe_bias,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2693,7 +2694,7 @@ export class Environment extends Resource{
   }
   set_glow_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_glow_enabled,
+      Environment._bindings.method_set_glow_enabled,
       this._owner,
       _enabled
     );
@@ -2701,7 +2702,7 @@ export class Environment extends Resource{
   }
   is_glow_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_glow_enabled,
+      Environment._bindings.method_is_glow_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2710,7 +2711,7 @@ export class Environment extends Resource{
   }
   set_glow_level(_idx, _intensity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_glow_level,
+      Environment._bindings.method_set_glow_level,
       this._owner,
       _idx, _intensity
     );
@@ -2718,7 +2719,7 @@ export class Environment extends Resource{
   }
   get_glow_level(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_glow_level,
+      Environment._bindings.method_get_glow_level,
       this._owner,
 			Variant.Type.FLOAT,
       _idx
@@ -2727,7 +2728,7 @@ export class Environment extends Resource{
   }
   set_glow_normalized(_normalize) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_glow_normalized,
+      Environment._bindings.method_set_glow_normalized,
       this._owner,
       _normalize
     );
@@ -2735,7 +2736,7 @@ export class Environment extends Resource{
   }
   is_glow_normalized() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_glow_normalized,
+      Environment._bindings.method_is_glow_normalized,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2744,7 +2745,7 @@ export class Environment extends Resource{
   }
   set_glow_intensity(_intensity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_glow_intensity,
+      Environment._bindings.method_set_glow_intensity,
       this._owner,
       _intensity
     );
@@ -2752,7 +2753,7 @@ export class Environment extends Resource{
   }
   get_glow_intensity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_glow_intensity,
+      Environment._bindings.method_get_glow_intensity,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2761,7 +2762,7 @@ export class Environment extends Resource{
   }
   set_glow_strength(_strength) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_glow_strength,
+      Environment._bindings.method_set_glow_strength,
       this._owner,
       _strength
     );
@@ -2769,7 +2770,7 @@ export class Environment extends Resource{
   }
   get_glow_strength() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_glow_strength,
+      Environment._bindings.method_get_glow_strength,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2778,7 +2779,7 @@ export class Environment extends Resource{
   }
   set_glow_mix(_mix) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_glow_mix,
+      Environment._bindings.method_set_glow_mix,
       this._owner,
       _mix
     );
@@ -2786,7 +2787,7 @@ export class Environment extends Resource{
   }
   get_glow_mix() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_glow_mix,
+      Environment._bindings.method_get_glow_mix,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2795,7 +2796,7 @@ export class Environment extends Resource{
   }
   set_glow_bloom(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_glow_bloom,
+      Environment._bindings.method_set_glow_bloom,
       this._owner,
       _amount
     );
@@ -2803,7 +2804,7 @@ export class Environment extends Resource{
   }
   get_glow_bloom() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_glow_bloom,
+      Environment._bindings.method_get_glow_bloom,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2812,7 +2813,7 @@ export class Environment extends Resource{
   }
   set_glow_blend_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_glow_blend_mode,
+      Environment._bindings.method_set_glow_blend_mode,
       this._owner,
       _mode
     );
@@ -2820,7 +2821,7 @@ export class Environment extends Resource{
   }
   get_glow_blend_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_glow_blend_mode,
+      Environment._bindings.method_get_glow_blend_mode,
       this._owner,
 			Variant.INT,
       
@@ -2829,7 +2830,7 @@ export class Environment extends Resource{
   }
   set_glow_hdr_bleed_threshold(_threshold) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_glow_hdr_bleed_threshold,
+      Environment._bindings.method_set_glow_hdr_bleed_threshold,
       this._owner,
       _threshold
     );
@@ -2837,7 +2838,7 @@ export class Environment extends Resource{
   }
   get_glow_hdr_bleed_threshold() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_glow_hdr_bleed_threshold,
+      Environment._bindings.method_get_glow_hdr_bleed_threshold,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2846,7 +2847,7 @@ export class Environment extends Resource{
   }
   set_glow_hdr_bleed_scale(_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_glow_hdr_bleed_scale,
+      Environment._bindings.method_set_glow_hdr_bleed_scale,
       this._owner,
       _scale
     );
@@ -2854,7 +2855,7 @@ export class Environment extends Resource{
   }
   get_glow_hdr_bleed_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_glow_hdr_bleed_scale,
+      Environment._bindings.method_get_glow_hdr_bleed_scale,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2863,7 +2864,7 @@ export class Environment extends Resource{
   }
   set_glow_hdr_luminance_cap(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_glow_hdr_luminance_cap,
+      Environment._bindings.method_set_glow_hdr_luminance_cap,
       this._owner,
       _amount
     );
@@ -2871,7 +2872,7 @@ export class Environment extends Resource{
   }
   get_glow_hdr_luminance_cap() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_glow_hdr_luminance_cap,
+      Environment._bindings.method_get_glow_hdr_luminance_cap,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2880,7 +2881,7 @@ export class Environment extends Resource{
   }
   set_glow_map_strength(_strength) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_glow_map_strength,
+      Environment._bindings.method_set_glow_map_strength,
       this._owner,
       _strength
     );
@@ -2888,7 +2889,7 @@ export class Environment extends Resource{
   }
   get_glow_map_strength() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_glow_map_strength,
+      Environment._bindings.method_get_glow_map_strength,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2897,7 +2898,7 @@ export class Environment extends Resource{
   }
   set_glow_map(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_glow_map,
+      Environment._bindings.method_set_glow_map,
       this._owner,
       _mode
     );
@@ -2905,7 +2906,7 @@ export class Environment extends Resource{
   }
   get_glow_map() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_glow_map,
+      Environment._bindings.method_get_glow_map,
       this._owner,
 			Variant.INT,
       
@@ -2914,7 +2915,7 @@ export class Environment extends Resource{
   }
   set_fog_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fog_enabled,
+      Environment._bindings.method_set_fog_enabled,
       this._owner,
       _enabled
     );
@@ -2922,7 +2923,7 @@ export class Environment extends Resource{
   }
   is_fog_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_fog_enabled,
+      Environment._bindings.method_is_fog_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -2931,7 +2932,7 @@ export class Environment extends Resource{
   }
   set_fog_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fog_mode,
+      Environment._bindings.method_set_fog_mode,
       this._owner,
       _mode
     );
@@ -2939,7 +2940,7 @@ export class Environment extends Resource{
   }
   get_fog_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fog_mode,
+      Environment._bindings.method_get_fog_mode,
       this._owner,
 			Variant.INT,
       
@@ -2948,7 +2949,7 @@ export class Environment extends Resource{
   }
   set_fog_light_color(_light_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fog_light_color,
+      Environment._bindings.method_set_fog_light_color,
       this._owner,
       _light_color
     );
@@ -2956,7 +2957,7 @@ export class Environment extends Resource{
   }
   get_fog_light_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fog_light_color,
+      Environment._bindings.method_get_fog_light_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -2966,7 +2967,7 @@ export class Environment extends Resource{
   }
   set_fog_light_energy(_light_energy) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fog_light_energy,
+      Environment._bindings.method_set_fog_light_energy,
       this._owner,
       _light_energy
     );
@@ -2974,7 +2975,7 @@ export class Environment extends Resource{
   }
   get_fog_light_energy() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fog_light_energy,
+      Environment._bindings.method_get_fog_light_energy,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -2983,7 +2984,7 @@ export class Environment extends Resource{
   }
   set_fog_sun_scatter(_sun_scatter) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fog_sun_scatter,
+      Environment._bindings.method_set_fog_sun_scatter,
       this._owner,
       _sun_scatter
     );
@@ -2991,7 +2992,7 @@ export class Environment extends Resource{
   }
   get_fog_sun_scatter() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fog_sun_scatter,
+      Environment._bindings.method_get_fog_sun_scatter,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -3000,7 +3001,7 @@ export class Environment extends Resource{
   }
   set_fog_density(_density) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fog_density,
+      Environment._bindings.method_set_fog_density,
       this._owner,
       _density
     );
@@ -3008,7 +3009,7 @@ export class Environment extends Resource{
   }
   get_fog_density() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fog_density,
+      Environment._bindings.method_get_fog_density,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -3017,7 +3018,7 @@ export class Environment extends Resource{
   }
   set_fog_height(_height) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fog_height,
+      Environment._bindings.method_set_fog_height,
       this._owner,
       _height
     );
@@ -3025,7 +3026,7 @@ export class Environment extends Resource{
   }
   get_fog_height() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fog_height,
+      Environment._bindings.method_get_fog_height,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -3034,7 +3035,7 @@ export class Environment extends Resource{
   }
   set_fog_height_density(_height_density) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fog_height_density,
+      Environment._bindings.method_set_fog_height_density,
       this._owner,
       _height_density
     );
@@ -3042,7 +3043,7 @@ export class Environment extends Resource{
   }
   get_fog_height_density() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fog_height_density,
+      Environment._bindings.method_get_fog_height_density,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -3051,7 +3052,7 @@ export class Environment extends Resource{
   }
   set_fog_aerial_perspective(_aerial_perspective) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fog_aerial_perspective,
+      Environment._bindings.method_set_fog_aerial_perspective,
       this._owner,
       _aerial_perspective
     );
@@ -3059,7 +3060,7 @@ export class Environment extends Resource{
   }
   get_fog_aerial_perspective() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fog_aerial_perspective,
+      Environment._bindings.method_get_fog_aerial_perspective,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -3068,7 +3069,7 @@ export class Environment extends Resource{
   }
   set_fog_sky_affect(_sky_affect) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fog_sky_affect,
+      Environment._bindings.method_set_fog_sky_affect,
       this._owner,
       _sky_affect
     );
@@ -3076,7 +3077,7 @@ export class Environment extends Resource{
   }
   get_fog_sky_affect() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fog_sky_affect,
+      Environment._bindings.method_get_fog_sky_affect,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -3085,7 +3086,7 @@ export class Environment extends Resource{
   }
   set_fog_depth_curve(_curve) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fog_depth_curve,
+      Environment._bindings.method_set_fog_depth_curve,
       this._owner,
       _curve
     );
@@ -3093,7 +3094,7 @@ export class Environment extends Resource{
   }
   get_fog_depth_curve() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fog_depth_curve,
+      Environment._bindings.method_get_fog_depth_curve,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -3102,7 +3103,7 @@ export class Environment extends Resource{
   }
   set_fog_depth_begin(_begin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fog_depth_begin,
+      Environment._bindings.method_set_fog_depth_begin,
       this._owner,
       _begin
     );
@@ -3110,7 +3111,7 @@ export class Environment extends Resource{
   }
   get_fog_depth_begin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fog_depth_begin,
+      Environment._bindings.method_get_fog_depth_begin,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -3119,7 +3120,7 @@ export class Environment extends Resource{
   }
   set_fog_depth_end(_end) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fog_depth_end,
+      Environment._bindings.method_set_fog_depth_end,
       this._owner,
       _end
     );
@@ -3127,7 +3128,7 @@ export class Environment extends Resource{
   }
   get_fog_depth_end() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fog_depth_end,
+      Environment._bindings.method_get_fog_depth_end,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -3136,7 +3137,7 @@ export class Environment extends Resource{
   }
   set_volumetric_fog_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_volumetric_fog_enabled,
+      Environment._bindings.method_set_volumetric_fog_enabled,
       this._owner,
       _enabled
     );
@@ -3144,7 +3145,7 @@ export class Environment extends Resource{
   }
   is_volumetric_fog_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_volumetric_fog_enabled,
+      Environment._bindings.method_is_volumetric_fog_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -3153,7 +3154,7 @@ export class Environment extends Resource{
   }
   set_volumetric_fog_emission(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_volumetric_fog_emission,
+      Environment._bindings.method_set_volumetric_fog_emission,
       this._owner,
       _color
     );
@@ -3161,7 +3162,7 @@ export class Environment extends Resource{
   }
   get_volumetric_fog_emission() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_volumetric_fog_emission,
+      Environment._bindings.method_get_volumetric_fog_emission,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -3171,7 +3172,7 @@ export class Environment extends Resource{
   }
   set_volumetric_fog_albedo(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_volumetric_fog_albedo,
+      Environment._bindings.method_set_volumetric_fog_albedo,
       this._owner,
       _color
     );
@@ -3179,7 +3180,7 @@ export class Environment extends Resource{
   }
   get_volumetric_fog_albedo() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_volumetric_fog_albedo,
+      Environment._bindings.method_get_volumetric_fog_albedo,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -3189,7 +3190,7 @@ export class Environment extends Resource{
   }
   set_volumetric_fog_density(_density) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_volumetric_fog_density,
+      Environment._bindings.method_set_volumetric_fog_density,
       this._owner,
       _density
     );
@@ -3197,7 +3198,7 @@ export class Environment extends Resource{
   }
   get_volumetric_fog_density() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_volumetric_fog_density,
+      Environment._bindings.method_get_volumetric_fog_density,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -3206,7 +3207,7 @@ export class Environment extends Resource{
   }
   set_volumetric_fog_emission_energy(_begin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_volumetric_fog_emission_energy,
+      Environment._bindings.method_set_volumetric_fog_emission_energy,
       this._owner,
       _begin
     );
@@ -3214,7 +3215,7 @@ export class Environment extends Resource{
   }
   get_volumetric_fog_emission_energy() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_volumetric_fog_emission_energy,
+      Environment._bindings.method_get_volumetric_fog_emission_energy,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -3223,7 +3224,7 @@ export class Environment extends Resource{
   }
   set_volumetric_fog_anisotropy(_anisotropy) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_volumetric_fog_anisotropy,
+      Environment._bindings.method_set_volumetric_fog_anisotropy,
       this._owner,
       _anisotropy
     );
@@ -3231,7 +3232,7 @@ export class Environment extends Resource{
   }
   get_volumetric_fog_anisotropy() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_volumetric_fog_anisotropy,
+      Environment._bindings.method_get_volumetric_fog_anisotropy,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -3240,7 +3241,7 @@ export class Environment extends Resource{
   }
   set_volumetric_fog_length(_length) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_volumetric_fog_length,
+      Environment._bindings.method_set_volumetric_fog_length,
       this._owner,
       _length
     );
@@ -3248,7 +3249,7 @@ export class Environment extends Resource{
   }
   get_volumetric_fog_length() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_volumetric_fog_length,
+      Environment._bindings.method_get_volumetric_fog_length,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -3257,7 +3258,7 @@ export class Environment extends Resource{
   }
   set_volumetric_fog_detail_spread(_detail_spread) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_volumetric_fog_detail_spread,
+      Environment._bindings.method_set_volumetric_fog_detail_spread,
       this._owner,
       _detail_spread
     );
@@ -3265,7 +3266,7 @@ export class Environment extends Resource{
   }
   get_volumetric_fog_detail_spread() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_volumetric_fog_detail_spread,
+      Environment._bindings.method_get_volumetric_fog_detail_spread,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -3274,7 +3275,7 @@ export class Environment extends Resource{
   }
   set_volumetric_fog_gi_inject(_gi_inject) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_volumetric_fog_gi_inject,
+      Environment._bindings.method_set_volumetric_fog_gi_inject,
       this._owner,
       _gi_inject
     );
@@ -3282,7 +3283,7 @@ export class Environment extends Resource{
   }
   get_volumetric_fog_gi_inject() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_volumetric_fog_gi_inject,
+      Environment._bindings.method_get_volumetric_fog_gi_inject,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -3291,7 +3292,7 @@ export class Environment extends Resource{
   }
   set_volumetric_fog_ambient_inject(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_volumetric_fog_ambient_inject,
+      Environment._bindings.method_set_volumetric_fog_ambient_inject,
       this._owner,
       _enabled
     );
@@ -3299,7 +3300,7 @@ export class Environment extends Resource{
   }
   get_volumetric_fog_ambient_inject() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_volumetric_fog_ambient_inject,
+      Environment._bindings.method_get_volumetric_fog_ambient_inject,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -3308,7 +3309,7 @@ export class Environment extends Resource{
   }
   set_volumetric_fog_sky_affect(_sky_affect) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_volumetric_fog_sky_affect,
+      Environment._bindings.method_set_volumetric_fog_sky_affect,
       this._owner,
       _sky_affect
     );
@@ -3316,7 +3317,7 @@ export class Environment extends Resource{
   }
   get_volumetric_fog_sky_affect() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_volumetric_fog_sky_affect,
+      Environment._bindings.method_get_volumetric_fog_sky_affect,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -3325,7 +3326,7 @@ export class Environment extends Resource{
   }
   set_volumetric_fog_temporal_reprojection_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_volumetric_fog_temporal_reprojection_enabled,
+      Environment._bindings.method_set_volumetric_fog_temporal_reprojection_enabled,
       this._owner,
       _enabled
     );
@@ -3333,7 +3334,7 @@ export class Environment extends Resource{
   }
   is_volumetric_fog_temporal_reprojection_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_volumetric_fog_temporal_reprojection_enabled,
+      Environment._bindings.method_is_volumetric_fog_temporal_reprojection_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -3342,7 +3343,7 @@ export class Environment extends Resource{
   }
   set_volumetric_fog_temporal_reprojection_amount(_temporal_reprojection_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_volumetric_fog_temporal_reprojection_amount,
+      Environment._bindings.method_set_volumetric_fog_temporal_reprojection_amount,
       this._owner,
       _temporal_reprojection_amount
     );
@@ -3350,7 +3351,7 @@ export class Environment extends Resource{
   }
   get_volumetric_fog_temporal_reprojection_amount() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_volumetric_fog_temporal_reprojection_amount,
+      Environment._bindings.method_get_volumetric_fog_temporal_reprojection_amount,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -3359,7 +3360,7 @@ export class Environment extends Resource{
   }
   set_adjustment_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_adjustment_enabled,
+      Environment._bindings.method_set_adjustment_enabled,
       this._owner,
       _enabled
     );
@@ -3367,7 +3368,7 @@ export class Environment extends Resource{
   }
   is_adjustment_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_adjustment_enabled,
+      Environment._bindings.method_is_adjustment_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -3376,7 +3377,7 @@ export class Environment extends Resource{
   }
   set_adjustment_brightness(_brightness) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_adjustment_brightness,
+      Environment._bindings.method_set_adjustment_brightness,
       this._owner,
       _brightness
     );
@@ -3384,7 +3385,7 @@ export class Environment extends Resource{
   }
   get_adjustment_brightness() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_adjustment_brightness,
+      Environment._bindings.method_get_adjustment_brightness,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -3393,7 +3394,7 @@ export class Environment extends Resource{
   }
   set_adjustment_contrast(_contrast) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_adjustment_contrast,
+      Environment._bindings.method_set_adjustment_contrast,
       this._owner,
       _contrast
     );
@@ -3401,7 +3402,7 @@ export class Environment extends Resource{
   }
   get_adjustment_contrast() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_adjustment_contrast,
+      Environment._bindings.method_get_adjustment_contrast,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -3410,7 +3411,7 @@ export class Environment extends Resource{
   }
   set_adjustment_saturation(_saturation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_adjustment_saturation,
+      Environment._bindings.method_set_adjustment_saturation,
       this._owner,
       _saturation
     );
@@ -3418,7 +3419,7 @@ export class Environment extends Resource{
   }
   get_adjustment_saturation() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_adjustment_saturation,
+      Environment._bindings.method_get_adjustment_saturation,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -3427,7 +3428,7 @@ export class Environment extends Resource{
   }
   set_adjustment_color_correction(_color_correction) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_adjustment_color_correction,
+      Environment._bindings.method_set_adjustment_color_correction,
       this._owner,
       _color_correction
     );
@@ -3435,7 +3436,7 @@ export class Environment extends Resource{
   }
   get_adjustment_color_correction() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_adjustment_color_correction,
+      Environment._bindings.method_get_adjustment_color_correction,
       this._owner,
 			Variant.INT,
       

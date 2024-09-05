@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { GodotObject } from '@js_godot/classes/godot_object'
 import {
   call_utility_ret,
@@ -79,9 +79,10 @@ class _MethodBindings {
       );
     }
   }
+  
   get_feed(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_feed,
+      _CameraServer._bindings.method_get_feed,
       this._owner,
 			Variant.INT,
       _index
@@ -90,7 +91,7 @@ class _MethodBindings {
   }
   get_feed_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_feed_count,
+      _CameraServer._bindings.method_get_feed_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -99,7 +100,7 @@ class _MethodBindings {
   }
   feeds() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_feeds,
+      _CameraServer._bindings.method_feeds,
       this._owner,
 			Variant.INT,
       
@@ -108,7 +109,7 @@ class _MethodBindings {
   }
   add_feed(_feed) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_feed,
+      _CameraServer._bindings.method_add_feed,
       this._owner,
       _feed
     );
@@ -116,7 +117,7 @@ class _MethodBindings {
   }
   remove_feed(_feed) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_feed,
+      _CameraServer._bindings.method_remove_feed,
       this._owner,
       _feed
     );
@@ -135,4 +136,17 @@ class _MethodBindings {
     this._init_bindings();
   }
 }
-export const CameraServer = new _CameraServer();
+export const CameraServer = (function () {
+  let _instance;
+  function create_instance() {
+    return new _CameraServer();
+  }
+  return {
+    instance: function () {
+      if (!_instance) {
+        _instance = create_instance();
+      }
+      return _instance;
+    },
+  };
+})();

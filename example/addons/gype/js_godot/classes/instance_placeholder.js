@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
 import { Dictionary } from '@js_godot/variant/dictionary'
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { Node } from '@js_godot/classes/node'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -62,9 +62,10 @@ export class InstancePlaceholder extends Node{
       );
     }
   }
+  
   get_stored_values(_with_order) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_stored_values,
+      InstancePlaceholder._bindings.method_get_stored_values,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -74,7 +75,7 @@ export class InstancePlaceholder extends Node{
   }
   create_instance(_replace, _custom_scene) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_instance,
+      InstancePlaceholder._bindings.method_create_instance,
       this._owner,
 			Variant.INT,
       _replace, _custom_scene
@@ -83,7 +84,7 @@ export class InstancePlaceholder extends Node{
   }
   get_instance_path() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_instance_path,
+      InstancePlaceholder._bindings.method_get_instance_path,
       this._owner,
 			Variant.Type.STRING,
     

@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { PackedVector3Array } from '@js_godot/variant/packed_vector3_array'
+import { StringName } from '@js_godot/variant/string_name'
 import { Shape3D } from '@js_godot/classes/shape3d'
 import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -71,9 +71,10 @@ export class ConcavePolygonShape3D extends Shape3D{
       );
     }
   }
+  
   set_faces(_faces) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_faces,
+      ConcavePolygonShape3D._bindings.method_set_faces,
       this._owner,
       _faces
     );
@@ -81,7 +82,7 @@ export class ConcavePolygonShape3D extends Shape3D{
   }
   get_faces() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_faces,
+      ConcavePolygonShape3D._bindings.method_get_faces,
       this._owner,
 			Variant.Type.PACKED_VECTOR3_ARRAY,
     
@@ -91,7 +92,7 @@ export class ConcavePolygonShape3D extends Shape3D{
   }
   set_backface_collision_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_backface_collision_enabled,
+      ConcavePolygonShape3D._bindings.method_set_backface_collision_enabled,
       this._owner,
       _enabled
     );
@@ -99,7 +100,7 @@ export class ConcavePolygonShape3D extends Shape3D{
   }
   is_backface_collision_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_backface_collision_enabled,
+      ConcavePolygonShape3D._bindings.method_is_backface_collision_enabled,
       this._owner,
 			Variant.Type.BOOL,
       

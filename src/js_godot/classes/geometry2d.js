@@ -1,11 +1,11 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Dictionary } from '@js_godot/variant/dictionary'
-import { GodotObject } from '@js_godot/classes/godot_object'
-import { StringName } from '@js_godot/variant/string_name'
 import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
-import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
+import { Variant } from '@js_godot/variant/variant'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { StringName } from '@js_godot/variant/string_name'
+import { GodotObject } from '@js_godot/classes/godot_object'
+import { Dictionary } from '@js_godot/variant/dictionary'
+import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -263,9 +263,10 @@ class _MethodBindings {
       );
     }
   }
+  
   is_point_in_circle(_point, _circle_position, _circle_radius) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_point_in_circle,
+      _Geometry2D._bindings.method_is_point_in_circle,
       this._owner,
 			Variant.Type.BOOL,
       _point, _circle_position, _circle_radius
@@ -274,7 +275,7 @@ class _MethodBindings {
   }
   segment_intersects_circle(_segment_from, _segment_to, _circle_position, _circle_radius) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_segment_intersects_circle,
+      _Geometry2D._bindings.method_segment_intersects_circle,
       this._owner,
 			Variant.Type.FLOAT,
       _segment_from, _segment_to, _circle_position, _circle_radius
@@ -283,7 +284,7 @@ class _MethodBindings {
   }
   segment_intersects_segment(_from_a, _to_a, _from_b, _to_b) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_segment_intersects_segment,
+      _Geometry2D._bindings.method_segment_intersects_segment,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -293,7 +294,7 @@ class _MethodBindings {
   }
   line_intersects_line(_from_a, _dir_a, _from_b, _dir_b) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_line_intersects_line,
+      _Geometry2D._bindings.method_line_intersects_line,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -303,7 +304,7 @@ class _MethodBindings {
   }
   get_closest_points_between_segments(_p1, _q1, _p2, _q2) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_closest_points_between_segments,
+      _Geometry2D._bindings.method_get_closest_points_between_segments,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -313,7 +314,7 @@ class _MethodBindings {
   }
   get_closest_point_to_segment(_point, _s1, _s2) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_closest_point_to_segment,
+      _Geometry2D._bindings.method_get_closest_point_to_segment,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -323,7 +324,7 @@ class _MethodBindings {
   }
   get_closest_point_to_segment_uncapped(_point, _s1, _s2) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_closest_point_to_segment_uncapped,
+      _Geometry2D._bindings.method_get_closest_point_to_segment_uncapped,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -333,7 +334,7 @@ class _MethodBindings {
   }
   point_is_inside_triangle(_point, _a, _b, _c) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_point_is_inside_triangle,
+      _Geometry2D._bindings.method_point_is_inside_triangle,
       this._owner,
 			Variant.Type.BOOL,
       _point, _a, _b, _c
@@ -342,7 +343,7 @@ class _MethodBindings {
   }
   is_polygon_clockwise(_polygon) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_polygon_clockwise,
+      _Geometry2D._bindings.method_is_polygon_clockwise,
       this._owner,
 			Variant.Type.BOOL,
       _polygon
@@ -351,7 +352,7 @@ class _MethodBindings {
   }
   is_point_in_polygon(_point, _polygon) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_point_in_polygon,
+      _Geometry2D._bindings.method_is_point_in_polygon,
       this._owner,
 			Variant.Type.BOOL,
       _point, _polygon
@@ -360,7 +361,7 @@ class _MethodBindings {
   }
   triangulate_polygon(_polygon) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_triangulate_polygon,
+      _Geometry2D._bindings.method_triangulate_polygon,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -370,7 +371,7 @@ class _MethodBindings {
   }
   triangulate_delaunay(_points) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_triangulate_delaunay,
+      _Geometry2D._bindings.method_triangulate_delaunay,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -380,7 +381,7 @@ class _MethodBindings {
   }
   convex_hull(_points) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_convex_hull,
+      _Geometry2D._bindings.method_convex_hull,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -390,7 +391,7 @@ class _MethodBindings {
   }
   decompose_polygon_in_convex(_polygon) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_decompose_polygon_in_convex,
+      _Geometry2D._bindings.method_decompose_polygon_in_convex,
       this._owner,
 			Variant.INT,
       _polygon
@@ -399,7 +400,7 @@ class _MethodBindings {
   }
   merge_polygons(_polygon_a, _polygon_b) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_merge_polygons,
+      _Geometry2D._bindings.method_merge_polygons,
       this._owner,
 			Variant.INT,
       _polygon_a, _polygon_b
@@ -408,7 +409,7 @@ class _MethodBindings {
   }
   clip_polygons(_polygon_a, _polygon_b) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_clip_polygons,
+      _Geometry2D._bindings.method_clip_polygons,
       this._owner,
 			Variant.INT,
       _polygon_a, _polygon_b
@@ -417,7 +418,7 @@ class _MethodBindings {
   }
   intersect_polygons(_polygon_a, _polygon_b) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_intersect_polygons,
+      _Geometry2D._bindings.method_intersect_polygons,
       this._owner,
 			Variant.INT,
       _polygon_a, _polygon_b
@@ -426,7 +427,7 @@ class _MethodBindings {
   }
   exclude_polygons(_polygon_a, _polygon_b) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_exclude_polygons,
+      _Geometry2D._bindings.method_exclude_polygons,
       this._owner,
 			Variant.INT,
       _polygon_a, _polygon_b
@@ -435,7 +436,7 @@ class _MethodBindings {
   }
   clip_polyline_with_polygon(_polyline, _polygon) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_clip_polyline_with_polygon,
+      _Geometry2D._bindings.method_clip_polyline_with_polygon,
       this._owner,
 			Variant.INT,
       _polyline, _polygon
@@ -444,7 +445,7 @@ class _MethodBindings {
   }
   intersect_polyline_with_polygon(_polyline, _polygon) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_intersect_polyline_with_polygon,
+      _Geometry2D._bindings.method_intersect_polyline_with_polygon,
       this._owner,
 			Variant.INT,
       _polyline, _polygon
@@ -453,7 +454,7 @@ class _MethodBindings {
   }
   offset_polygon(_polygon, _delta, _join_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_offset_polygon,
+      _Geometry2D._bindings.method_offset_polygon,
       this._owner,
 			Variant.INT,
       _polygon, _delta, _join_type
@@ -462,7 +463,7 @@ class _MethodBindings {
   }
   offset_polyline(_polyline, _delta, _join_type, _end_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_offset_polyline,
+      _Geometry2D._bindings.method_offset_polyline,
       this._owner,
 			Variant.INT,
       _polyline, _delta, _join_type, _end_type
@@ -471,7 +472,7 @@ class _MethodBindings {
   }
   make_atlas(_sizes) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_make_atlas,
+      _Geometry2D._bindings.method_make_atlas,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -504,4 +505,17 @@ class _MethodBindings {
     this._init_bindings();
   }
 }
-export const Geometry2D = new _Geometry2D();
+export const Geometry2D = (function () {
+  let _instance;
+  function create_instance() {
+    return new _Geometry2D();
+  }
+  return {
+    instance: function () {
+      if (!_instance) {
+        _instance = create_instance();
+      }
+      return _instance;
+    },
+  };
+})();

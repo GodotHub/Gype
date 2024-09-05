@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { AudioEffect } from '@js_godot/classes/audio_effect'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -110,9 +110,10 @@ export class AudioEffectLimiter extends AudioEffect{
       );
     }
   }
+  
   set_ceiling_db(_ceiling) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ceiling_db,
+      AudioEffectLimiter._bindings.method_set_ceiling_db,
       this._owner,
       _ceiling
     );
@@ -120,7 +121,7 @@ export class AudioEffectLimiter extends AudioEffect{
   }
   get_ceiling_db() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ceiling_db,
+      AudioEffectLimiter._bindings.method_get_ceiling_db,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -129,7 +130,7 @@ export class AudioEffectLimiter extends AudioEffect{
   }
   set_threshold_db(_threshold) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_threshold_db,
+      AudioEffectLimiter._bindings.method_set_threshold_db,
       this._owner,
       _threshold
     );
@@ -137,7 +138,7 @@ export class AudioEffectLimiter extends AudioEffect{
   }
   get_threshold_db() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_threshold_db,
+      AudioEffectLimiter._bindings.method_get_threshold_db,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -146,7 +147,7 @@ export class AudioEffectLimiter extends AudioEffect{
   }
   set_soft_clip_db(_soft_clip) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_soft_clip_db,
+      AudioEffectLimiter._bindings.method_set_soft_clip_db,
       this._owner,
       _soft_clip
     );
@@ -154,7 +155,7 @@ export class AudioEffectLimiter extends AudioEffect{
   }
   get_soft_clip_db() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_soft_clip_db,
+      AudioEffectLimiter._bindings.method_get_soft_clip_db,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -163,7 +164,7 @@ export class AudioEffectLimiter extends AudioEffect{
   }
   set_soft_clip_ratio(_soft_clip) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_soft_clip_ratio,
+      AudioEffectLimiter._bindings.method_set_soft_clip_ratio,
       this._owner,
       _soft_clip
     );
@@ -171,7 +172,7 @@ export class AudioEffectLimiter extends AudioEffect{
   }
   get_soft_clip_ratio() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_soft_clip_ratio,
+      AudioEffectLimiter._bindings.method_get_soft_clip_ratio,
       this._owner,
 			Variant.Type.FLOAT,
       

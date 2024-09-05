@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { Node } from '@js_godot/classes/node'
 import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { StringName } from '@js_godot/variant/string_name'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -122,9 +122,10 @@ export class EditorFileSystem extends Node{
       );
     }
   }
+  
   get_filesystem() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_filesystem,
+      EditorFileSystem._bindings.method_get_filesystem,
       this._owner,
 			Variant.INT,
       
@@ -133,7 +134,7 @@ export class EditorFileSystem extends Node{
   }
   is_scanning() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_scanning,
+      EditorFileSystem._bindings.method_is_scanning,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -142,7 +143,7 @@ export class EditorFileSystem extends Node{
   }
   get_scanning_progress() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_scanning_progress,
+      EditorFileSystem._bindings.method_get_scanning_progress,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -151,7 +152,7 @@ export class EditorFileSystem extends Node{
   }
   scan() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_scan,
+      EditorFileSystem._bindings.method_scan,
       this._owner,
       
     );
@@ -159,7 +160,7 @@ export class EditorFileSystem extends Node{
   }
   scan_sources() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_scan_sources,
+      EditorFileSystem._bindings.method_scan_sources,
       this._owner,
       
     );
@@ -167,7 +168,7 @@ export class EditorFileSystem extends Node{
   }
   update_file(_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_update_file,
+      EditorFileSystem._bindings.method_update_file,
       this._owner,
       _path
     );
@@ -175,7 +176,7 @@ export class EditorFileSystem extends Node{
   }
   get_filesystem_path(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_filesystem_path,
+      EditorFileSystem._bindings.method_get_filesystem_path,
       this._owner,
 			Variant.INT,
       _path
@@ -184,7 +185,7 @@ export class EditorFileSystem extends Node{
   }
   get_file_type(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_file_type,
+      EditorFileSystem._bindings.method_get_file_type,
       this._owner,
 			Variant.Type.STRING,
     
@@ -194,7 +195,7 @@ export class EditorFileSystem extends Node{
   }
   reimport_files(_files) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_reimport_files,
+      EditorFileSystem._bindings.method_reimport_files,
       this._owner,
       _files
     );

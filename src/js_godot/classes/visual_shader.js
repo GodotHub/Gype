@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
+import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
+import { Shader } from '@js_godot/classes/shader'
 import { Variant } from '@js_godot/variant/variant'
+import { Vector2 } from '@js_godot/variant/vector2'
 import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
-import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
-import { Vector2 } from '@js_godot/variant/vector2'
-import { Shader } from '@js_godot/classes/shader'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -253,9 +253,10 @@ export class VisualShader extends Shader{
       );
     }
   }
+  
   set_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mode,
+      VisualShader._bindings.method_set_mode,
       this._owner,
       _mode
     );
@@ -263,7 +264,7 @@ export class VisualShader extends Shader{
   }
   add_node(_type, _node, _position, _id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_node,
+      VisualShader._bindings.method_add_node,
       this._owner,
       _type, _node, _position, _id
     );
@@ -271,7 +272,7 @@ export class VisualShader extends Shader{
   }
   get_node(_type, _id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_node,
+      VisualShader._bindings.method_get_node,
       this._owner,
 			Variant.INT,
       _type, _id
@@ -280,7 +281,7 @@ export class VisualShader extends Shader{
   }
   set_node_position(_type, _id, _position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_node_position,
+      VisualShader._bindings.method_set_node_position,
       this._owner,
       _type, _id, _position
     );
@@ -288,7 +289,7 @@ export class VisualShader extends Shader{
   }
   get_node_position(_type, _id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_node_position,
+      VisualShader._bindings.method_get_node_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -298,7 +299,7 @@ export class VisualShader extends Shader{
   }
   get_node_list(_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_node_list,
+      VisualShader._bindings.method_get_node_list,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -308,7 +309,7 @@ export class VisualShader extends Shader{
   }
   get_valid_node_id(_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_valid_node_id,
+      VisualShader._bindings.method_get_valid_node_id,
       this._owner,
 			Variant.Type.INT,
       _type
@@ -317,7 +318,7 @@ export class VisualShader extends Shader{
   }
   remove_node(_type, _id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_node,
+      VisualShader._bindings.method_remove_node,
       this._owner,
       _type, _id
     );
@@ -325,7 +326,7 @@ export class VisualShader extends Shader{
   }
   replace_node(_type, _id, _new_class) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_replace_node,
+      VisualShader._bindings.method_replace_node,
       this._owner,
       _type, _id, _new_class
     );
@@ -333,7 +334,7 @@ export class VisualShader extends Shader{
   }
   is_node_connection(_type, _from_node, _from_port, _to_node, _to_port) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_node_connection,
+      VisualShader._bindings.method_is_node_connection,
       this._owner,
 			Variant.Type.BOOL,
       _type, _from_node, _from_port, _to_node, _to_port
@@ -342,7 +343,7 @@ export class VisualShader extends Shader{
   }
   can_connect_nodes(_type, _from_node, _from_port, _to_node, _to_port) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_can_connect_nodes,
+      VisualShader._bindings.method_can_connect_nodes,
       this._owner,
 			Variant.Type.BOOL,
       _type, _from_node, _from_port, _to_node, _to_port
@@ -351,7 +352,7 @@ export class VisualShader extends Shader{
   }
   connect_nodes(_type, _from_node, _from_port, _to_node, _to_port) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_connect_nodes,
+      VisualShader._bindings.method_connect_nodes,
       this._owner,
 			Variant.INT,
       _type, _from_node, _from_port, _to_node, _to_port
@@ -360,7 +361,7 @@ export class VisualShader extends Shader{
   }
   disconnect_nodes(_type, _from_node, _from_port, _to_node, _to_port) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_disconnect_nodes,
+      VisualShader._bindings.method_disconnect_nodes,
       this._owner,
       _type, _from_node, _from_port, _to_node, _to_port
     );
@@ -368,7 +369,7 @@ export class VisualShader extends Shader{
   }
   connect_nodes_forced(_type, _from_node, _from_port, _to_node, _to_port) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_connect_nodes_forced,
+      VisualShader._bindings.method_connect_nodes_forced,
       this._owner,
       _type, _from_node, _from_port, _to_node, _to_port
     );
@@ -376,7 +377,7 @@ export class VisualShader extends Shader{
   }
   get_node_connections(_type) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_node_connections,
+      VisualShader._bindings.method_get_node_connections,
       this._owner,
 			Variant.INT,
       _type
@@ -385,7 +386,7 @@ export class VisualShader extends Shader{
   }
   set_graph_offset(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_graph_offset,
+      VisualShader._bindings.method_set_graph_offset,
       this._owner,
       _offset
     );
@@ -393,7 +394,7 @@ export class VisualShader extends Shader{
   }
   get_graph_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_graph_offset,
+      VisualShader._bindings.method_get_graph_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -403,7 +404,7 @@ export class VisualShader extends Shader{
   }
   attach_node_to_frame(_type, _id, _frame) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_attach_node_to_frame,
+      VisualShader._bindings.method_attach_node_to_frame,
       this._owner,
       _type, _id, _frame
     );
@@ -411,7 +412,7 @@ export class VisualShader extends Shader{
   }
   detach_node_from_frame(_type, _id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_detach_node_from_frame,
+      VisualShader._bindings.method_detach_node_from_frame,
       this._owner,
       _type, _id
     );
@@ -419,7 +420,7 @@ export class VisualShader extends Shader{
   }
   add_varying(_name, _mode, _type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_varying,
+      VisualShader._bindings.method_add_varying,
       this._owner,
       _name, _mode, _type
     );
@@ -427,7 +428,7 @@ export class VisualShader extends Shader{
   }
   remove_varying(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_varying,
+      VisualShader._bindings.method_remove_varying,
       this._owner,
       _name
     );
@@ -435,7 +436,7 @@ export class VisualShader extends Shader{
   }
   has_varying(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_varying,
+      VisualShader._bindings.method_has_varying,
       this._owner,
 			Variant.Type.BOOL,
       _name

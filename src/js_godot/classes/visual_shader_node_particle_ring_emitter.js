@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { VisualShaderNodeParticleEmitter } from '@js_godot/classes/visual_shader_node_particle_emitter'
-import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -30,6 +30,7 @@ export class VisualShaderNodeParticleRingEmitter extends VisualShaderNodeParticl
     }
     this.#initialized = true;
   }
+  
   
 
 

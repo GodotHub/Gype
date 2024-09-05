@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { StreamPeer } from '@js_godot/classes/stream_peer'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -70,9 +70,10 @@ export class StreamPeerGZIP extends StreamPeer{
       );
     }
   }
+  
   start_compression(_use_deflate, _buffer_size) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_start_compression,
+      StreamPeerGZIP._bindings.method_start_compression,
       this._owner,
 			Variant.INT,
       _use_deflate, _buffer_size
@@ -81,7 +82,7 @@ export class StreamPeerGZIP extends StreamPeer{
   }
   start_decompression(_use_deflate, _buffer_size) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_start_decompression,
+      StreamPeerGZIP._bindings.method_start_decompression,
       this._owner,
 			Variant.INT,
       _use_deflate, _buffer_size
@@ -90,7 +91,7 @@ export class StreamPeerGZIP extends StreamPeer{
   }
   finish() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_finish,
+      StreamPeerGZIP._bindings.method_finish,
       this._owner,
 			Variant.INT,
       
@@ -99,7 +100,7 @@ export class StreamPeerGZIP extends StreamPeer{
   }
   clear() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear,
+      StreamPeerGZIP._bindings.method_clear,
       this._owner,
       
     );

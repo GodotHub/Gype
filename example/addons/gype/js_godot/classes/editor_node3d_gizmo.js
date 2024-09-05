@@ -1,13 +1,13 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Transform3D } from '@js_godot/variant/transform3d'
-import { Node3DGizmo } from '@js_godot/classes/node3d_gizmo'
-import { PackedVector3Array } from '@js_godot/variant/packed_vector3_array'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
-import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
-import { Color } from '@js_godot/variant/color'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { StringName } from '@js_godot/variant/string_name'
+import { PackedVector3Array } from '@js_godot/variant/packed_vector3_array'
+import { Node3DGizmo } from '@js_godot/classes/node3d_gizmo'
+import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
+import { Transform3D } from '@js_godot/variant/transform3d'
+import { Variant } from '@js_godot/variant/variant'
+import { GDString } from '@js_godot/variant/gd_string'
+import { Color } from '@js_godot/variant/color'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -166,6 +166,7 @@ export class EditorNode3DGizmo extends Node3DGizmo{
       );
     }
   }
+  
   _redraw() {
   }
   _get_handle_name(_id, _secondary) {
@@ -192,7 +193,7 @@ export class EditorNode3DGizmo extends Node3DGizmo{
   }
   add_lines(_lines, _material, _billboard, _modulate) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_lines,
+      EditorNode3DGizmo._bindings.method_add_lines,
       this._owner,
       _lines, _material, _billboard, _modulate
     );
@@ -200,7 +201,7 @@ export class EditorNode3DGizmo extends Node3DGizmo{
   }
   add_mesh(_mesh, _material, _transform, _skeleton) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_mesh,
+      EditorNode3DGizmo._bindings.method_add_mesh,
       this._owner,
       _mesh, _material, _transform, _skeleton
     );
@@ -208,7 +209,7 @@ export class EditorNode3DGizmo extends Node3DGizmo{
   }
   add_collision_segments(_segments) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_collision_segments,
+      EditorNode3DGizmo._bindings.method_add_collision_segments,
       this._owner,
       _segments
     );
@@ -216,7 +217,7 @@ export class EditorNode3DGizmo extends Node3DGizmo{
   }
   add_collision_triangles(_triangles) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_collision_triangles,
+      EditorNode3DGizmo._bindings.method_add_collision_triangles,
       this._owner,
       _triangles
     );
@@ -224,7 +225,7 @@ export class EditorNode3DGizmo extends Node3DGizmo{
   }
   add_unscaled_billboard(_material, _default_scale, _modulate) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_unscaled_billboard,
+      EditorNode3DGizmo._bindings.method_add_unscaled_billboard,
       this._owner,
       _material, _default_scale, _modulate
     );
@@ -232,7 +233,7 @@ export class EditorNode3DGizmo extends Node3DGizmo{
   }
   add_handles(_handles, _material, _ids, _billboard, _secondary) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_handles,
+      EditorNode3DGizmo._bindings.method_add_handles,
       this._owner,
       _handles, _material, _ids, _billboard, _secondary
     );
@@ -240,7 +241,7 @@ export class EditorNode3DGizmo extends Node3DGizmo{
   }
   set_node_3d(_node) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_node_3d,
+      EditorNode3DGizmo._bindings.method_set_node_3d,
       this._owner,
       _node
     );
@@ -248,7 +249,7 @@ export class EditorNode3DGizmo extends Node3DGizmo{
   }
   get_node_3d() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_node_3d,
+      EditorNode3DGizmo._bindings.method_get_node_3d,
       this._owner,
 			Variant.INT,
       
@@ -257,7 +258,7 @@ export class EditorNode3DGizmo extends Node3DGizmo{
   }
   get_plugin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_plugin,
+      EditorNode3DGizmo._bindings.method_get_plugin,
       this._owner,
 			Variant.INT,
       
@@ -266,7 +267,7 @@ export class EditorNode3DGizmo extends Node3DGizmo{
   }
   clear() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear,
+      EditorNode3DGizmo._bindings.method_clear,
       this._owner,
       
     );
@@ -274,7 +275,7 @@ export class EditorNode3DGizmo extends Node3DGizmo{
   }
   set_hidden(_hidden) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_hidden,
+      EditorNode3DGizmo._bindings.method_set_hidden,
       this._owner,
       _hidden
     );
@@ -282,7 +283,7 @@ export class EditorNode3DGizmo extends Node3DGizmo{
   }
   is_subgizmo_selected(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_subgizmo_selected,
+      EditorNode3DGizmo._bindings.method_is_subgizmo_selected,
       this._owner,
 			Variant.Type.BOOL,
       _id
@@ -291,7 +292,7 @@ export class EditorNode3DGizmo extends Node3DGizmo{
   }
   get_subgizmo_selection() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_subgizmo_selection,
+      EditorNode3DGizmo._bindings.method_get_subgizmo_selection,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     

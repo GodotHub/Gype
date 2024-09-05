@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
-import { Node2D } from '@js_godot/classes/node2d'
-import { Variant } from '@js_godot/variant/variant'
 import { Vector2i } from '@js_godot/variant/vector2i'
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Vector2 } from '@js_godot/variant/vector2'
 import { Rect2 } from '@js_godot/variant/rect2'
+import { Node2D } from '@js_godot/classes/node2d'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -293,9 +293,10 @@ export class Sprite2D extends Node2D{
       );
     }
   }
+  
   set_texture(_texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture,
+      Sprite2D._bindings.method_set_texture,
       this._owner,
       _texture
     );
@@ -303,7 +304,7 @@ export class Sprite2D extends Node2D{
   }
   get_texture() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture,
+      Sprite2D._bindings.method_get_texture,
       this._owner,
 			Variant.INT,
       
@@ -312,7 +313,7 @@ export class Sprite2D extends Node2D{
   }
   set_centered(_centered) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_centered,
+      Sprite2D._bindings.method_set_centered,
       this._owner,
       _centered
     );
@@ -320,7 +321,7 @@ export class Sprite2D extends Node2D{
   }
   is_centered() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_centered,
+      Sprite2D._bindings.method_is_centered,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -329,7 +330,7 @@ export class Sprite2D extends Node2D{
   }
   set_offset(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_offset,
+      Sprite2D._bindings.method_set_offset,
       this._owner,
       _offset
     );
@@ -337,7 +338,7 @@ export class Sprite2D extends Node2D{
   }
   get_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_offset,
+      Sprite2D._bindings.method_get_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -347,7 +348,7 @@ export class Sprite2D extends Node2D{
   }
   set_flip_h(_flip_h) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_flip_h,
+      Sprite2D._bindings.method_set_flip_h,
       this._owner,
       _flip_h
     );
@@ -355,7 +356,7 @@ export class Sprite2D extends Node2D{
   }
   is_flipped_h() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_flipped_h,
+      Sprite2D._bindings.method_is_flipped_h,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -364,7 +365,7 @@ export class Sprite2D extends Node2D{
   }
   set_flip_v(_flip_v) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_flip_v,
+      Sprite2D._bindings.method_set_flip_v,
       this._owner,
       _flip_v
     );
@@ -372,7 +373,7 @@ export class Sprite2D extends Node2D{
   }
   is_flipped_v() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_flipped_v,
+      Sprite2D._bindings.method_is_flipped_v,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -381,7 +382,7 @@ export class Sprite2D extends Node2D{
   }
   set_region_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_region_enabled,
+      Sprite2D._bindings.method_set_region_enabled,
       this._owner,
       _enabled
     );
@@ -389,7 +390,7 @@ export class Sprite2D extends Node2D{
   }
   is_region_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_region_enabled,
+      Sprite2D._bindings.method_is_region_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -398,7 +399,7 @@ export class Sprite2D extends Node2D{
   }
   is_pixel_opaque(_pos) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_pixel_opaque,
+      Sprite2D._bindings.method_is_pixel_opaque,
       this._owner,
 			Variant.Type.BOOL,
       _pos
@@ -407,7 +408,7 @@ export class Sprite2D extends Node2D{
   }
   set_region_rect(_rect) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_region_rect,
+      Sprite2D._bindings.method_set_region_rect,
       this._owner,
       _rect
     );
@@ -415,7 +416,7 @@ export class Sprite2D extends Node2D{
   }
   get_region_rect() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_region_rect,
+      Sprite2D._bindings.method_get_region_rect,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -425,7 +426,7 @@ export class Sprite2D extends Node2D{
   }
   set_region_filter_clip_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_region_filter_clip_enabled,
+      Sprite2D._bindings.method_set_region_filter_clip_enabled,
       this._owner,
       _enabled
     );
@@ -433,7 +434,7 @@ export class Sprite2D extends Node2D{
   }
   is_region_filter_clip_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_region_filter_clip_enabled,
+      Sprite2D._bindings.method_is_region_filter_clip_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -442,7 +443,7 @@ export class Sprite2D extends Node2D{
   }
   set_frame(_frame) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_frame,
+      Sprite2D._bindings.method_set_frame,
       this._owner,
       _frame
     );
@@ -450,7 +451,7 @@ export class Sprite2D extends Node2D{
   }
   get_frame() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_frame,
+      Sprite2D._bindings.method_get_frame,
       this._owner,
 			Variant.Type.INT,
       
@@ -459,7 +460,7 @@ export class Sprite2D extends Node2D{
   }
   set_frame_coords(_coords) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_frame_coords,
+      Sprite2D._bindings.method_set_frame_coords,
       this._owner,
       _coords
     );
@@ -467,7 +468,7 @@ export class Sprite2D extends Node2D{
   }
   get_frame_coords() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_frame_coords,
+      Sprite2D._bindings.method_get_frame_coords,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -477,7 +478,7 @@ export class Sprite2D extends Node2D{
   }
   set_vframes(_vframes) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vframes,
+      Sprite2D._bindings.method_set_vframes,
       this._owner,
       _vframes
     );
@@ -485,7 +486,7 @@ export class Sprite2D extends Node2D{
   }
   get_vframes() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_vframes,
+      Sprite2D._bindings.method_get_vframes,
       this._owner,
 			Variant.Type.INT,
       
@@ -494,7 +495,7 @@ export class Sprite2D extends Node2D{
   }
   set_hframes(_hframes) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_hframes,
+      Sprite2D._bindings.method_set_hframes,
       this._owner,
       _hframes
     );
@@ -502,7 +503,7 @@ export class Sprite2D extends Node2D{
   }
   get_hframes() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_hframes,
+      Sprite2D._bindings.method_get_hframes,
       this._owner,
 			Variant.Type.INT,
       
@@ -511,7 +512,7 @@ export class Sprite2D extends Node2D{
   }
   get_rect() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rect,
+      Sprite2D._bindings.method_get_rect,
       this._owner,
 			Variant.Type.RECT2,
     

@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { Control } from '@js_godot/classes/control'
 import { Variant } from '@js_godot/variant/variant'
-import { GDString } from '@js_godot/variant/gd_string'
 import { StringName } from '@js_godot/variant/string_name'
+import { Control } from '@js_godot/classes/control'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -311,9 +311,10 @@ export class VideoStreamPlayer extends Control{
       );
     }
   }
+  
   set_stream(_stream) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_stream,
+      VideoStreamPlayer._bindings.method_set_stream,
       this._owner,
       _stream
     );
@@ -321,7 +322,7 @@ export class VideoStreamPlayer extends Control{
   }
   get_stream() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_stream,
+      VideoStreamPlayer._bindings.method_get_stream,
       this._owner,
 			Variant.INT,
       
@@ -330,7 +331,7 @@ export class VideoStreamPlayer extends Control{
   }
   play() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_play,
+      VideoStreamPlayer._bindings.method_play,
       this._owner,
       
     );
@@ -338,7 +339,7 @@ export class VideoStreamPlayer extends Control{
   }
   stop() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_stop,
+      VideoStreamPlayer._bindings.method_stop,
       this._owner,
       
     );
@@ -346,7 +347,7 @@ export class VideoStreamPlayer extends Control{
   }
   is_playing() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_playing,
+      VideoStreamPlayer._bindings.method_is_playing,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -355,7 +356,7 @@ export class VideoStreamPlayer extends Control{
   }
   set_paused(_paused) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_paused,
+      VideoStreamPlayer._bindings.method_set_paused,
       this._owner,
       _paused
     );
@@ -363,7 +364,7 @@ export class VideoStreamPlayer extends Control{
   }
   is_paused() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_paused,
+      VideoStreamPlayer._bindings.method_is_paused,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -372,7 +373,7 @@ export class VideoStreamPlayer extends Control{
   }
   set_loop(_loop) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_loop,
+      VideoStreamPlayer._bindings.method_set_loop,
       this._owner,
       _loop
     );
@@ -380,7 +381,7 @@ export class VideoStreamPlayer extends Control{
   }
   has_loop() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_loop,
+      VideoStreamPlayer._bindings.method_has_loop,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -389,7 +390,7 @@ export class VideoStreamPlayer extends Control{
   }
   set_volume(_volume) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_volume,
+      VideoStreamPlayer._bindings.method_set_volume,
       this._owner,
       _volume
     );
@@ -397,7 +398,7 @@ export class VideoStreamPlayer extends Control{
   }
   get_volume() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_volume,
+      VideoStreamPlayer._bindings.method_get_volume,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -406,7 +407,7 @@ export class VideoStreamPlayer extends Control{
   }
   set_volume_db(_db) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_volume_db,
+      VideoStreamPlayer._bindings.method_set_volume_db,
       this._owner,
       _db
     );
@@ -414,7 +415,7 @@ export class VideoStreamPlayer extends Control{
   }
   get_volume_db() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_volume_db,
+      VideoStreamPlayer._bindings.method_get_volume_db,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -423,7 +424,7 @@ export class VideoStreamPlayer extends Control{
   }
   set_audio_track(_track) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_audio_track,
+      VideoStreamPlayer._bindings.method_set_audio_track,
       this._owner,
       _track
     );
@@ -431,7 +432,7 @@ export class VideoStreamPlayer extends Control{
   }
   get_audio_track() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_audio_track,
+      VideoStreamPlayer._bindings.method_get_audio_track,
       this._owner,
 			Variant.Type.INT,
       
@@ -440,7 +441,7 @@ export class VideoStreamPlayer extends Control{
   }
   get_stream_name() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_stream_name,
+      VideoStreamPlayer._bindings.method_get_stream_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -450,7 +451,7 @@ export class VideoStreamPlayer extends Control{
   }
   get_stream_length() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_stream_length,
+      VideoStreamPlayer._bindings.method_get_stream_length,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -459,7 +460,7 @@ export class VideoStreamPlayer extends Control{
   }
   set_stream_position(_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_stream_position,
+      VideoStreamPlayer._bindings.method_set_stream_position,
       this._owner,
       _position
     );
@@ -467,7 +468,7 @@ export class VideoStreamPlayer extends Control{
   }
   get_stream_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_stream_position,
+      VideoStreamPlayer._bindings.method_get_stream_position,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -476,7 +477,7 @@ export class VideoStreamPlayer extends Control{
   }
   set_autoplay(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_autoplay,
+      VideoStreamPlayer._bindings.method_set_autoplay,
       this._owner,
       _enabled
     );
@@ -484,7 +485,7 @@ export class VideoStreamPlayer extends Control{
   }
   has_autoplay() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_autoplay,
+      VideoStreamPlayer._bindings.method_has_autoplay,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -493,7 +494,7 @@ export class VideoStreamPlayer extends Control{
   }
   set_expand(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_expand,
+      VideoStreamPlayer._bindings.method_set_expand,
       this._owner,
       _enable
     );
@@ -501,7 +502,7 @@ export class VideoStreamPlayer extends Control{
   }
   has_expand() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_expand,
+      VideoStreamPlayer._bindings.method_has_expand,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -510,7 +511,7 @@ export class VideoStreamPlayer extends Control{
   }
   set_buffering_msec(_msec) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_buffering_msec,
+      VideoStreamPlayer._bindings.method_set_buffering_msec,
       this._owner,
       _msec
     );
@@ -518,7 +519,7 @@ export class VideoStreamPlayer extends Control{
   }
   get_buffering_msec() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_buffering_msec,
+      VideoStreamPlayer._bindings.method_get_buffering_msec,
       this._owner,
 			Variant.Type.INT,
       
@@ -527,7 +528,7 @@ export class VideoStreamPlayer extends Control{
   }
   set_bus(_bus) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bus,
+      VideoStreamPlayer._bindings.method_set_bus,
       this._owner,
       _bus
     );
@@ -535,7 +536,7 @@ export class VideoStreamPlayer extends Control{
   }
   get_bus() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bus,
+      VideoStreamPlayer._bindings.method_get_bus,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -545,7 +546,7 @@ export class VideoStreamPlayer extends Control{
   }
   get_video_texture() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_video_texture,
+      VideoStreamPlayer._bindings.method_get_video_texture,
       this._owner,
 			Variant.INT,
       

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -60,9 +60,10 @@ export class Semaphore extends RefCounted{
       );
     }
   }
+  
   wait() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_wait,
+      Semaphore._bindings.method_wait,
       this._owner,
       
     );
@@ -70,7 +71,7 @@ export class Semaphore extends RefCounted{
   }
   try_wait() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_try_wait,
+      Semaphore._bindings.method_try_wait,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -79,7 +80,7 @@ export class Semaphore extends RefCounted{
   }
   post() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_post,
+      Semaphore._bindings.method_post,
       this._owner,
       
     );

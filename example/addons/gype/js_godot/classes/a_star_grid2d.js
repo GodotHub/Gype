@@ -1,11 +1,11 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Rect2i } from '@js_godot/variant/rect2i'
+import { Vector2 } from '@js_godot/variant/vector2'
 import { Vector2i } from '@js_godot/variant/vector2i'
 import { StringName } from '@js_godot/variant/string_name'
-import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
-import { Vector2 } from '@js_godot/variant/vector2'
+import { Rect2i } from '@js_godot/variant/rect2i'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { Variant } from '@js_godot/variant/variant'
+import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -354,13 +354,14 @@ export class AStarGrid2D extends RefCounted{
       );
     }
   }
+  
   _estimate_cost(_from_id, _to_id) {
   }
   _compute_cost(_from_id, _to_id) {
   }
   set_region(_region) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_region,
+      AStarGrid2D._bindings.method_set_region,
       this._owner,
       _region
     );
@@ -368,7 +369,7 @@ export class AStarGrid2D extends RefCounted{
   }
   get_region() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_region,
+      AStarGrid2D._bindings.method_get_region,
       this._owner,
 			Variant.Type.RECT2I,
     
@@ -378,7 +379,7 @@ export class AStarGrid2D extends RefCounted{
   }
   set_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_size,
+      AStarGrid2D._bindings.method_set_size,
       this._owner,
       _size
     );
@@ -386,7 +387,7 @@ export class AStarGrid2D extends RefCounted{
   }
   get_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_size,
+      AStarGrid2D._bindings.method_get_size,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -396,7 +397,7 @@ export class AStarGrid2D extends RefCounted{
   }
   set_offset(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_offset,
+      AStarGrid2D._bindings.method_set_offset,
       this._owner,
       _offset
     );
@@ -404,7 +405,7 @@ export class AStarGrid2D extends RefCounted{
   }
   get_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_offset,
+      AStarGrid2D._bindings.method_get_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -414,7 +415,7 @@ export class AStarGrid2D extends RefCounted{
   }
   set_cell_size(_cell_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cell_size,
+      AStarGrid2D._bindings.method_set_cell_size,
       this._owner,
       _cell_size
     );
@@ -422,7 +423,7 @@ export class AStarGrid2D extends RefCounted{
   }
   get_cell_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cell_size,
+      AStarGrid2D._bindings.method_get_cell_size,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -432,7 +433,7 @@ export class AStarGrid2D extends RefCounted{
   }
   set_cell_shape(_cell_shape) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cell_shape,
+      AStarGrid2D._bindings.method_set_cell_shape,
       this._owner,
       _cell_shape
     );
@@ -440,7 +441,7 @@ export class AStarGrid2D extends RefCounted{
   }
   get_cell_shape() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cell_shape,
+      AStarGrid2D._bindings.method_get_cell_shape,
       this._owner,
 			Variant.INT,
       
@@ -449,7 +450,7 @@ export class AStarGrid2D extends RefCounted{
   }
   is_in_bounds(_x, _y) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_in_bounds,
+      AStarGrid2D._bindings.method_is_in_bounds,
       this._owner,
 			Variant.Type.BOOL,
       _x, _y
@@ -458,7 +459,7 @@ export class AStarGrid2D extends RefCounted{
   }
   is_in_boundsv(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_in_boundsv,
+      AStarGrid2D._bindings.method_is_in_boundsv,
       this._owner,
 			Variant.Type.BOOL,
       _id
@@ -467,7 +468,7 @@ export class AStarGrid2D extends RefCounted{
   }
   is_dirty() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_dirty,
+      AStarGrid2D._bindings.method_is_dirty,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -476,7 +477,7 @@ export class AStarGrid2D extends RefCounted{
   }
   update() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_update,
+      AStarGrid2D._bindings.method_update,
       this._owner,
       
     );
@@ -484,7 +485,7 @@ export class AStarGrid2D extends RefCounted{
   }
   set_jumping_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_jumping_enabled,
+      AStarGrid2D._bindings.method_set_jumping_enabled,
       this._owner,
       _enabled
     );
@@ -492,7 +493,7 @@ export class AStarGrid2D extends RefCounted{
   }
   is_jumping_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_jumping_enabled,
+      AStarGrid2D._bindings.method_is_jumping_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -501,7 +502,7 @@ export class AStarGrid2D extends RefCounted{
   }
   set_diagonal_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_diagonal_mode,
+      AStarGrid2D._bindings.method_set_diagonal_mode,
       this._owner,
       _mode
     );
@@ -509,7 +510,7 @@ export class AStarGrid2D extends RefCounted{
   }
   get_diagonal_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_diagonal_mode,
+      AStarGrid2D._bindings.method_get_diagonal_mode,
       this._owner,
 			Variant.INT,
       
@@ -518,7 +519,7 @@ export class AStarGrid2D extends RefCounted{
   }
   set_default_compute_heuristic(_heuristic) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_default_compute_heuristic,
+      AStarGrid2D._bindings.method_set_default_compute_heuristic,
       this._owner,
       _heuristic
     );
@@ -526,7 +527,7 @@ export class AStarGrid2D extends RefCounted{
   }
   get_default_compute_heuristic() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_default_compute_heuristic,
+      AStarGrid2D._bindings.method_get_default_compute_heuristic,
       this._owner,
 			Variant.INT,
       
@@ -535,7 +536,7 @@ export class AStarGrid2D extends RefCounted{
   }
   set_default_estimate_heuristic(_heuristic) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_default_estimate_heuristic,
+      AStarGrid2D._bindings.method_set_default_estimate_heuristic,
       this._owner,
       _heuristic
     );
@@ -543,7 +544,7 @@ export class AStarGrid2D extends RefCounted{
   }
   get_default_estimate_heuristic() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_default_estimate_heuristic,
+      AStarGrid2D._bindings.method_get_default_estimate_heuristic,
       this._owner,
 			Variant.INT,
       
@@ -552,7 +553,7 @@ export class AStarGrid2D extends RefCounted{
   }
   set_point_solid(_id, _solid) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_point_solid,
+      AStarGrid2D._bindings.method_set_point_solid,
       this._owner,
       _id, _solid
     );
@@ -560,7 +561,7 @@ export class AStarGrid2D extends RefCounted{
   }
   is_point_solid(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_point_solid,
+      AStarGrid2D._bindings.method_is_point_solid,
       this._owner,
 			Variant.Type.BOOL,
       _id
@@ -569,7 +570,7 @@ export class AStarGrid2D extends RefCounted{
   }
   set_point_weight_scale(_id, _weight_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_point_weight_scale,
+      AStarGrid2D._bindings.method_set_point_weight_scale,
       this._owner,
       _id, _weight_scale
     );
@@ -577,7 +578,7 @@ export class AStarGrid2D extends RefCounted{
   }
   get_point_weight_scale(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_point_weight_scale,
+      AStarGrid2D._bindings.method_get_point_weight_scale,
       this._owner,
 			Variant.Type.FLOAT,
       _id
@@ -586,7 +587,7 @@ export class AStarGrid2D extends RefCounted{
   }
   fill_solid_region(_region, _solid) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_fill_solid_region,
+      AStarGrid2D._bindings.method_fill_solid_region,
       this._owner,
       _region, _solid
     );
@@ -594,7 +595,7 @@ export class AStarGrid2D extends RefCounted{
   }
   fill_weight_scale_region(_region, _weight_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_fill_weight_scale_region,
+      AStarGrid2D._bindings.method_fill_weight_scale_region,
       this._owner,
       _region, _weight_scale
     );
@@ -602,7 +603,7 @@ export class AStarGrid2D extends RefCounted{
   }
   clear() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear,
+      AStarGrid2D._bindings.method_clear,
       this._owner,
       
     );
@@ -610,7 +611,7 @@ export class AStarGrid2D extends RefCounted{
   }
   get_point_position(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_point_position,
+      AStarGrid2D._bindings.method_get_point_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -620,7 +621,7 @@ export class AStarGrid2D extends RefCounted{
   }
   get_point_path(_from_id, _to_id, _allow_partial_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_point_path,
+      AStarGrid2D._bindings.method_get_point_path,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -630,7 +631,7 @@ export class AStarGrid2D extends RefCounted{
   }
   get_id_path(_from_id, _to_id, _allow_partial_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_id_path,
+      AStarGrid2D._bindings.method_get_id_path,
       this._owner,
 			Variant.INT,
       _from_id, _to_id, _allow_partial_path

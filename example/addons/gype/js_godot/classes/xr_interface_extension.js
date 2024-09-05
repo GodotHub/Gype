@@ -1,17 +1,17 @@
 import * as internal from '__internal__';
-import { Dictionary } from '@js_godot/variant/dictionary'
-import { Transform3D } from '@js_godot/variant/transform3d'
-import { Variant } from '@js_godot/variant/variant'
-import { Rect2i } from '@js_godot/variant/rect2i'
-import { PackedVector3Array } from '@js_godot/variant/packed_vector3_array'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { XRInterface } from '@js_godot/classes/xr_interface'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { Dictionary } from '@js_godot/variant/dictionary'
+import { StringName } from '@js_godot/variant/string_name'
 import { RID } from '@js_godot/variant/rid'
-import { PackedFloat64Array } from '@js_godot/variant/packed_float64_array'
-import { Rect2 } from '@js_godot/variant/rect2'
 import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { PackedVector3Array } from '@js_godot/variant/packed_vector3_array'
+import { PackedFloat64Array } from '@js_godot/variant/packed_float64_array'
+import { Rect2i } from '@js_godot/variant/rect2i'
+import { Transform3D } from '@js_godot/variant/transform3d'
+import { GDString } from '@js_godot/variant/gd_string'
+import { Rect2 } from '@js_godot/variant/rect2'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -90,6 +90,7 @@ export class XRInterfaceExtension extends XRInterface{
       );
     }
   }
+  
   _get_name() {
   }
   _get_capabilities() {
@@ -154,7 +155,7 @@ export class XRInterfaceExtension extends XRInterface{
   }
   get_color_texture() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_color_texture,
+      XRInterfaceExtension._bindings.method_get_color_texture,
       this._owner,
 			Variant.Type.RID,
     
@@ -164,7 +165,7 @@ export class XRInterfaceExtension extends XRInterface{
   }
   get_depth_texture() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_depth_texture,
+      XRInterfaceExtension._bindings.method_get_depth_texture,
       this._owner,
 			Variant.Type.RID,
     
@@ -174,7 +175,7 @@ export class XRInterfaceExtension extends XRInterface{
   }
   get_velocity_texture() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_velocity_texture,
+      XRInterfaceExtension._bindings.method_get_velocity_texture,
       this._owner,
 			Variant.Type.RID,
     
@@ -184,7 +185,7 @@ export class XRInterfaceExtension extends XRInterface{
   }
   add_blit(_render_target, _src_rect, _dst_rect, _use_layer, _layer, _apply_lens_distortion, _eye_center, _k1, _k2, _upscale, _aspect_ratio) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_blit,
+      XRInterfaceExtension._bindings.method_add_blit,
       this._owner,
       _render_target, _src_rect, _dst_rect, _use_layer, _layer, _apply_lens_distortion, _eye_center, _k1, _k2, _upscale, _aspect_ratio
     );
@@ -192,7 +193,7 @@ export class XRInterfaceExtension extends XRInterface{
   }
   get_render_target_texture(_render_target) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_render_target_texture,
+      XRInterfaceExtension._bindings.method_get_render_target_texture,
       this._owner,
 			Variant.Type.RID,
     

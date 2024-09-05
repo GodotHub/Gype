@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
+import { Variant } from '@js_godot/variant/variant'
+import { Resource } from '@js_godot/classes/resource'
 import { StringName } from '@js_godot/variant/string_name'
 import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
-import { Resource } from '@js_godot/classes/resource'
-import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -91,9 +91,10 @@ export class OccluderPolygon2D extends Resource{
       );
     }
   }
+  
   set_closed(_closed) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_closed,
+      OccluderPolygon2D._bindings.method_set_closed,
       this._owner,
       _closed
     );
@@ -101,7 +102,7 @@ export class OccluderPolygon2D extends Resource{
   }
   is_closed() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_closed,
+      OccluderPolygon2D._bindings.method_is_closed,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -110,7 +111,7 @@ export class OccluderPolygon2D extends Resource{
   }
   set_cull_mode(_cull_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cull_mode,
+      OccluderPolygon2D._bindings.method_set_cull_mode,
       this._owner,
       _cull_mode
     );
@@ -118,7 +119,7 @@ export class OccluderPolygon2D extends Resource{
   }
   get_cull_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cull_mode,
+      OccluderPolygon2D._bindings.method_get_cull_mode,
       this._owner,
 			Variant.INT,
       
@@ -127,7 +128,7 @@ export class OccluderPolygon2D extends Resource{
   }
   set_polygon(_polygon) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_polygon,
+      OccluderPolygon2D._bindings.method_set_polygon,
       this._owner,
       _polygon
     );
@@ -135,7 +136,7 @@ export class OccluderPolygon2D extends Resource{
   }
   get_polygon() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_polygon,
+      OccluderPolygon2D._bindings.method_get_polygon,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     

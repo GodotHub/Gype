@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { Control } from '@js_godot/classes/control'
 import { Variant } from '@js_godot/variant/variant'
-import { GDString } from '@js_godot/variant/gd_string'
 import { StringName } from '@js_godot/variant/string_name'
+import { Control } from '@js_godot/classes/control'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -271,9 +271,10 @@ export class MenuBar extends Control{
       );
     }
   }
+  
   set_switch_on_hover(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_switch_on_hover,
+      MenuBar._bindings.method_set_switch_on_hover,
       this._owner,
       _enable
     );
@@ -281,7 +282,7 @@ export class MenuBar extends Control{
   }
   is_switch_on_hover() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_switch_on_hover,
+      MenuBar._bindings.method_is_switch_on_hover,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -290,7 +291,7 @@ export class MenuBar extends Control{
   }
   set_disable_shortcuts(_disabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_disable_shortcuts,
+      MenuBar._bindings.method_set_disable_shortcuts,
       this._owner,
       _disabled
     );
@@ -298,7 +299,7 @@ export class MenuBar extends Control{
   }
   set_prefer_global_menu(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_prefer_global_menu,
+      MenuBar._bindings.method_set_prefer_global_menu,
       this._owner,
       _enabled
     );
@@ -306,7 +307,7 @@ export class MenuBar extends Control{
   }
   is_prefer_global_menu() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_prefer_global_menu,
+      MenuBar._bindings.method_is_prefer_global_menu,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -315,7 +316,7 @@ export class MenuBar extends Control{
   }
   is_native_menu() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_native_menu,
+      MenuBar._bindings.method_is_native_menu,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -324,7 +325,7 @@ export class MenuBar extends Control{
   }
   get_menu_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_menu_count,
+      MenuBar._bindings.method_get_menu_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -333,7 +334,7 @@ export class MenuBar extends Control{
   }
   set_text_direction(_direction) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_text_direction,
+      MenuBar._bindings.method_set_text_direction,
       this._owner,
       _direction
     );
@@ -341,7 +342,7 @@ export class MenuBar extends Control{
   }
   get_text_direction() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_text_direction,
+      MenuBar._bindings.method_get_text_direction,
       this._owner,
 			Variant.INT,
       
@@ -350,7 +351,7 @@ export class MenuBar extends Control{
   }
   set_language(_language) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_language,
+      MenuBar._bindings.method_set_language,
       this._owner,
       _language
     );
@@ -358,7 +359,7 @@ export class MenuBar extends Control{
   }
   get_language() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_language,
+      MenuBar._bindings.method_get_language,
       this._owner,
 			Variant.Type.STRING,
     
@@ -368,7 +369,7 @@ export class MenuBar extends Control{
   }
   set_flat(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_flat,
+      MenuBar._bindings.method_set_flat,
       this._owner,
       _enabled
     );
@@ -376,7 +377,7 @@ export class MenuBar extends Control{
   }
   is_flat() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_flat,
+      MenuBar._bindings.method_is_flat,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -385,7 +386,7 @@ export class MenuBar extends Control{
   }
   set_start_index(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_start_index,
+      MenuBar._bindings.method_set_start_index,
       this._owner,
       _enabled
     );
@@ -393,7 +394,7 @@ export class MenuBar extends Control{
   }
   get_start_index() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_start_index,
+      MenuBar._bindings.method_get_start_index,
       this._owner,
 			Variant.Type.INT,
       
@@ -402,7 +403,7 @@ export class MenuBar extends Control{
   }
   set_menu_title(_menu, _title) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_menu_title,
+      MenuBar._bindings.method_set_menu_title,
       this._owner,
       _menu, _title
     );
@@ -410,7 +411,7 @@ export class MenuBar extends Control{
   }
   get_menu_title(_menu) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_menu_title,
+      MenuBar._bindings.method_get_menu_title,
       this._owner,
 			Variant.Type.STRING,
     
@@ -420,7 +421,7 @@ export class MenuBar extends Control{
   }
   set_menu_tooltip(_menu, _tooltip) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_menu_tooltip,
+      MenuBar._bindings.method_set_menu_tooltip,
       this._owner,
       _menu, _tooltip
     );
@@ -428,7 +429,7 @@ export class MenuBar extends Control{
   }
   get_menu_tooltip(_menu) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_menu_tooltip,
+      MenuBar._bindings.method_get_menu_tooltip,
       this._owner,
 			Variant.Type.STRING,
     
@@ -438,7 +439,7 @@ export class MenuBar extends Control{
   }
   set_menu_disabled(_menu, _disabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_menu_disabled,
+      MenuBar._bindings.method_set_menu_disabled,
       this._owner,
       _menu, _disabled
     );
@@ -446,7 +447,7 @@ export class MenuBar extends Control{
   }
   is_menu_disabled(_menu) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_menu_disabled,
+      MenuBar._bindings.method_is_menu_disabled,
       this._owner,
 			Variant.Type.BOOL,
       _menu
@@ -455,7 +456,7 @@ export class MenuBar extends Control{
   }
   set_menu_hidden(_menu, _hidden) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_menu_hidden,
+      MenuBar._bindings.method_set_menu_hidden,
       this._owner,
       _menu, _hidden
     );
@@ -463,7 +464,7 @@ export class MenuBar extends Control{
   }
   is_menu_hidden(_menu) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_menu_hidden,
+      MenuBar._bindings.method_is_menu_hidden,
       this._owner,
 			Variant.Type.BOOL,
       _menu
@@ -472,7 +473,7 @@ export class MenuBar extends Control{
   }
   get_menu_popup(_menu) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_menu_popup,
+      MenuBar._bindings.method_get_menu_popup,
       this._owner,
 			Variant.INT,
       _menu

@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
 import { GDString } from '@js_godot/variant/gd_string'
 import {
@@ -81,9 +81,10 @@ export class CryptoKey extends Resource{
       );
     }
   }
+  
   save(_path, _public_only) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_save,
+      CryptoKey._bindings.method_save,
       this._owner,
 			Variant.INT,
       _path, _public_only
@@ -92,7 +93,7 @@ export class CryptoKey extends Resource{
   }
   load(_path, _public_only) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_load,
+      CryptoKey._bindings.method_load,
       this._owner,
 			Variant.INT,
       _path, _public_only
@@ -101,7 +102,7 @@ export class CryptoKey extends Resource{
   }
   is_public_only() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_public_only,
+      CryptoKey._bindings.method_is_public_only,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -110,7 +111,7 @@ export class CryptoKey extends Resource{
   }
   save_to_string(_public_only) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_save_to_string,
+      CryptoKey._bindings.method_save_to_string,
       this._owner,
 			Variant.Type.STRING,
     
@@ -120,7 +121,7 @@ export class CryptoKey extends Resource{
   }
   load_from_string(_string_key, _public_only) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_load_from_string,
+      CryptoKey._bindings.method_load_from_string,
       this._owner,
 			Variant.INT,
       _string_key, _public_only

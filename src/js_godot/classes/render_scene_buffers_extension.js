@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { RenderSceneBuffers } from '@js_godot/classes/render_scene_buffers'
 import {
   call_utility_ret,
@@ -30,6 +30,7 @@ export class RenderSceneBuffersExtension extends RenderSceneBuffers{
     }
     this.#initialized = true;
   }
+  
   _configure(_config) {
   }
   _set_fsr_sharpness(_fsr_sharpness) {

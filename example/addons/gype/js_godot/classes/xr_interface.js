@@ -1,14 +1,14 @@
 import * as internal from '__internal__';
-import { Dictionary } from '@js_godot/variant/dictionary'
-import { Transform3D } from '@js_godot/variant/transform3d'
-import { Variant } from '@js_godot/variant/variant'
-import { PackedVector3Array } from '@js_godot/variant/packed_vector3_array'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { Dictionary } from '@js_godot/variant/dictionary'
+import { StringName } from '@js_godot/variant/string_name'
+import { PackedVector3Array } from '@js_godot/variant/packed_vector3_array'
 import { RefCounted } from '@js_godot/classes/ref_counted'
-import { Projection } from '@js_godot/variant/projection'
+import { Transform3D } from '@js_godot/variant/transform3d'
+import { GDString } from '@js_godot/variant/gd_string'
+import { Variant } from '@js_godot/variant/variant'
 import { GDArray } from '@js_godot/variant/gd_array'
+import { Projection } from '@js_godot/variant/projection'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -317,9 +317,10 @@ export class XRInterface extends RefCounted{
       );
     }
   }
+  
   get_name() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_name,
+      XRInterface._bindings.method_get_name,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -329,7 +330,7 @@ export class XRInterface extends RefCounted{
   }
   get_capabilities() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_capabilities,
+      XRInterface._bindings.method_get_capabilities,
       this._owner,
 			Variant.Type.INT,
       
@@ -338,7 +339,7 @@ export class XRInterface extends RefCounted{
   }
   is_primary() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_primary,
+      XRInterface._bindings.method_is_primary,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -347,7 +348,7 @@ export class XRInterface extends RefCounted{
   }
   set_primary(_primary) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_primary,
+      XRInterface._bindings.method_set_primary,
       this._owner,
       _primary
     );
@@ -355,7 +356,7 @@ export class XRInterface extends RefCounted{
   }
   is_initialized() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_initialized,
+      XRInterface._bindings.method_is_initialized,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -364,7 +365,7 @@ export class XRInterface extends RefCounted{
   }
   initialize() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_initialize,
+      XRInterface._bindings.method_initialize,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -373,7 +374,7 @@ export class XRInterface extends RefCounted{
   }
   uninitialize() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_uninitialize,
+      XRInterface._bindings.method_uninitialize,
       this._owner,
       
     );
@@ -381,7 +382,7 @@ export class XRInterface extends RefCounted{
   }
   get_system_info() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_system_info,
+      XRInterface._bindings.method_get_system_info,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -391,7 +392,7 @@ export class XRInterface extends RefCounted{
   }
   get_tracking_status() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tracking_status,
+      XRInterface._bindings.method_get_tracking_status,
       this._owner,
 			Variant.INT,
       
@@ -400,7 +401,7 @@ export class XRInterface extends RefCounted{
   }
   get_render_target_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_render_target_size,
+      XRInterface._bindings.method_get_render_target_size,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -410,7 +411,7 @@ export class XRInterface extends RefCounted{
   }
   get_view_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_view_count,
+      XRInterface._bindings.method_get_view_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -419,7 +420,7 @@ export class XRInterface extends RefCounted{
   }
   trigger_haptic_pulse(_action_name, _tracker_name, _frequency, _amplitude, _duration_sec, _delay_sec) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_trigger_haptic_pulse,
+      XRInterface._bindings.method_trigger_haptic_pulse,
       this._owner,
       _action_name, _tracker_name, _frequency, _amplitude, _duration_sec, _delay_sec
     );
@@ -427,7 +428,7 @@ export class XRInterface extends RefCounted{
   }
   supports_play_area_mode(_mode) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_supports_play_area_mode,
+      XRInterface._bindings.method_supports_play_area_mode,
       this._owner,
 			Variant.Type.BOOL,
       _mode
@@ -436,7 +437,7 @@ export class XRInterface extends RefCounted{
   }
   get_play_area_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_play_area_mode,
+      XRInterface._bindings.method_get_play_area_mode,
       this._owner,
 			Variant.INT,
       
@@ -445,7 +446,7 @@ export class XRInterface extends RefCounted{
   }
   set_play_area_mode(_mode) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_set_play_area_mode,
+      XRInterface._bindings.method_set_play_area_mode,
       this._owner,
 			Variant.Type.BOOL,
       _mode
@@ -454,7 +455,7 @@ export class XRInterface extends RefCounted{
   }
   get_play_area() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_play_area,
+      XRInterface._bindings.method_get_play_area,
       this._owner,
 			Variant.Type.PACKED_VECTOR3_ARRAY,
     
@@ -464,7 +465,7 @@ export class XRInterface extends RefCounted{
   }
   get_anchor_detection_is_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_anchor_detection_is_enabled,
+      XRInterface._bindings.method_get_anchor_detection_is_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -473,7 +474,7 @@ export class XRInterface extends RefCounted{
   }
   set_anchor_detection_is_enabled(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_anchor_detection_is_enabled,
+      XRInterface._bindings.method_set_anchor_detection_is_enabled,
       this._owner,
       _enable
     );
@@ -481,7 +482,7 @@ export class XRInterface extends RefCounted{
   }
   get_camera_feed_id() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_camera_feed_id,
+      XRInterface._bindings.method_get_camera_feed_id,
       this._owner,
 			Variant.Type.INT,
       
@@ -490,7 +491,7 @@ export class XRInterface extends RefCounted{
   }
   is_passthrough_supported() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_passthrough_supported,
+      XRInterface._bindings.method_is_passthrough_supported,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -499,7 +500,7 @@ export class XRInterface extends RefCounted{
   }
   is_passthrough_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_passthrough_enabled,
+      XRInterface._bindings.method_is_passthrough_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -508,7 +509,7 @@ export class XRInterface extends RefCounted{
   }
   start_passthrough() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_start_passthrough,
+      XRInterface._bindings.method_start_passthrough,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -517,7 +518,7 @@ export class XRInterface extends RefCounted{
   }
   stop_passthrough() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_stop_passthrough,
+      XRInterface._bindings.method_stop_passthrough,
       this._owner,
       
     );
@@ -525,7 +526,7 @@ export class XRInterface extends RefCounted{
   }
   get_transform_for_view(_view, _cam_transform) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_transform_for_view,
+      XRInterface._bindings.method_get_transform_for_view,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -535,7 +536,7 @@ export class XRInterface extends RefCounted{
   }
   get_projection_for_view(_view, _aspect, _near, _far) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_projection_for_view,
+      XRInterface._bindings.method_get_projection_for_view,
       this._owner,
 			Variant.Type.PROJECTION,
     
@@ -545,7 +546,7 @@ export class XRInterface extends RefCounted{
   }
   get_supported_environment_blend_modes() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_supported_environment_blend_modes,
+      XRInterface._bindings.method_get_supported_environment_blend_modes,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -555,7 +556,7 @@ export class XRInterface extends RefCounted{
   }
   set_environment_blend_mode(_mode) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_set_environment_blend_mode,
+      XRInterface._bindings.method_set_environment_blend_mode,
       this._owner,
 			Variant.Type.BOOL,
       _mode
@@ -564,7 +565,7 @@ export class XRInterface extends RefCounted{
   }
   get_environment_blend_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_environment_blend_mode,
+      XRInterface._bindings.method_get_environment_blend_mode,
       this._owner,
 			Variant.INT,
       

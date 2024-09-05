@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
 import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
@@ -172,9 +172,10 @@ export class GLTFDocument extends Resource{
       );
     }
   }
+  
   set_image_format(_image_format) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_image_format,
+      GLTFDocument._bindings.method_set_image_format,
       this._owner,
       _image_format
     );
@@ -182,7 +183,7 @@ export class GLTFDocument extends Resource{
   }
   get_image_format() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_image_format,
+      GLTFDocument._bindings.method_get_image_format,
       this._owner,
 			Variant.Type.STRING,
     
@@ -192,7 +193,7 @@ export class GLTFDocument extends Resource{
   }
   set_lossy_quality(_lossy_quality) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_lossy_quality,
+      GLTFDocument._bindings.method_set_lossy_quality,
       this._owner,
       _lossy_quality
     );
@@ -200,7 +201,7 @@ export class GLTFDocument extends Resource{
   }
   get_lossy_quality() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_lossy_quality,
+      GLTFDocument._bindings.method_get_lossy_quality,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -209,7 +210,7 @@ export class GLTFDocument extends Resource{
   }
   set_root_node_mode(_root_node_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_root_node_mode,
+      GLTFDocument._bindings.method_set_root_node_mode,
       this._owner,
       _root_node_mode
     );
@@ -217,7 +218,7 @@ export class GLTFDocument extends Resource{
   }
   get_root_node_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_root_node_mode,
+      GLTFDocument._bindings.method_get_root_node_mode,
       this._owner,
 			Variant.INT,
       
@@ -226,7 +227,7 @@ export class GLTFDocument extends Resource{
   }
   append_from_file(_path, _state, _flags, _base_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_append_from_file,
+      GLTFDocument._bindings.method_append_from_file,
       this._owner,
 			Variant.INT,
       _path, _state, _flags, _base_path
@@ -235,7 +236,7 @@ export class GLTFDocument extends Resource{
   }
   append_from_buffer(_bytes, _base_path, _state, _flags) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_append_from_buffer,
+      GLTFDocument._bindings.method_append_from_buffer,
       this._owner,
 			Variant.INT,
       _bytes, _base_path, _state, _flags
@@ -244,7 +245,7 @@ export class GLTFDocument extends Resource{
   }
   append_from_scene(_node, _state, _flags) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_append_from_scene,
+      GLTFDocument._bindings.method_append_from_scene,
       this._owner,
 			Variant.INT,
       _node, _state, _flags
@@ -253,7 +254,7 @@ export class GLTFDocument extends Resource{
   }
   generate_scene(_state, _bake_fps, _trimming, _remove_immutable_tracks) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_generate_scene,
+      GLTFDocument._bindings.method_generate_scene,
       this._owner,
 			Variant.INT,
       _state, _bake_fps, _trimming, _remove_immutable_tracks
@@ -262,7 +263,7 @@ export class GLTFDocument extends Resource{
   }
   generate_buffer(_state) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_generate_buffer,
+      GLTFDocument._bindings.method_generate_buffer,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -272,7 +273,7 @@ export class GLTFDocument extends Resource{
   }
   write_to_filesystem(_state, _path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_write_to_filesystem,
+      GLTFDocument._bindings.method_write_to_filesystem,
       this._owner,
 			Variant.INT,
       _state, _path
@@ -281,7 +282,7 @@ export class GLTFDocument extends Resource{
   }
   register_gltf_document_extension(_extension, _first_priority) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_register_gltf_document_extension,
+      GLTFDocument._bindings.method_register_gltf_document_extension,
       this._owner,
       _extension, _first_priority
     );
@@ -289,7 +290,7 @@ export class GLTFDocument extends Resource{
   }
   unregister_gltf_document_extension(_extension) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_unregister_gltf_document_extension,
+      GLTFDocument._bindings.method_unregister_gltf_document_extension,
       this._owner,
       _extension
     );

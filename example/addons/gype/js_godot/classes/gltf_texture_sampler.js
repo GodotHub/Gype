@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { Resource } from '@js_godot/classes/resource'
 import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { Resource } from '@js_godot/classes/resource'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -110,9 +110,10 @@ export class GLTFTextureSampler extends Resource{
       );
     }
   }
+  
   get_mag_filter() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mag_filter,
+      GLTFTextureSampler._bindings.method_get_mag_filter,
       this._owner,
 			Variant.Type.INT,
       
@@ -121,7 +122,7 @@ export class GLTFTextureSampler extends Resource{
   }
   set_mag_filter(_filter_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mag_filter,
+      GLTFTextureSampler._bindings.method_set_mag_filter,
       this._owner,
       _filter_mode
     );
@@ -129,7 +130,7 @@ export class GLTFTextureSampler extends Resource{
   }
   get_min_filter() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_min_filter,
+      GLTFTextureSampler._bindings.method_get_min_filter,
       this._owner,
 			Variant.Type.INT,
       
@@ -138,7 +139,7 @@ export class GLTFTextureSampler extends Resource{
   }
   set_min_filter(_filter_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_min_filter,
+      GLTFTextureSampler._bindings.method_set_min_filter,
       this._owner,
       _filter_mode
     );
@@ -146,7 +147,7 @@ export class GLTFTextureSampler extends Resource{
   }
   get_wrap_s() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_wrap_s,
+      GLTFTextureSampler._bindings.method_get_wrap_s,
       this._owner,
 			Variant.Type.INT,
       
@@ -155,7 +156,7 @@ export class GLTFTextureSampler extends Resource{
   }
   set_wrap_s(_wrap_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_wrap_s,
+      GLTFTextureSampler._bindings.method_set_wrap_s,
       this._owner,
       _wrap_mode
     );
@@ -163,7 +164,7 @@ export class GLTFTextureSampler extends Resource{
   }
   get_wrap_t() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_wrap_t,
+      GLTFTextureSampler._bindings.method_get_wrap_t,
       this._owner,
 			Variant.Type.INT,
       
@@ -172,7 +173,7 @@ export class GLTFTextureSampler extends Resource{
   }
   set_wrap_t(_wrap_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_wrap_t,
+      GLTFTextureSampler._bindings.method_set_wrap_t,
       this._owner,
       _wrap_mode
     );

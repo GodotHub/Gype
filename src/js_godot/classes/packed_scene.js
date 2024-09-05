@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -70,9 +70,10 @@ export class PackedScene extends Resource{
       );
     }
   }
+  
   pack(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_pack,
+      PackedScene._bindings.method_pack,
       this._owner,
 			Variant.INT,
       _path
@@ -81,7 +82,7 @@ export class PackedScene extends Resource{
   }
   instantiate(_edit_state) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_instantiate,
+      PackedScene._bindings.method_instantiate,
       this._owner,
 			Variant.INT,
       _edit_state
@@ -90,7 +91,7 @@ export class PackedScene extends Resource{
   }
   can_instantiate() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_can_instantiate,
+      PackedScene._bindings.method_can_instantiate,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -99,7 +100,7 @@ export class PackedScene extends Resource{
   }
   get_state() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_state,
+      PackedScene._bindings.method_get_state,
       this._owner,
 			Variant.INT,
       

@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
+import { StringName } from '@js_godot/variant/string_name'
 import { Shape3D } from '@js_godot/classes/shape3d'
 import { Variant } from '@js_godot/variant/variant'
 import { PackedFloat32Array } from '@js_godot/variant/packed_float32_array'
-import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -121,9 +121,10 @@ export class HeightMapShape3D extends Shape3D{
       );
     }
   }
+  
   set_map_width(_width) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_map_width,
+      HeightMapShape3D._bindings.method_set_map_width,
       this._owner,
       _width
     );
@@ -131,7 +132,7 @@ export class HeightMapShape3D extends Shape3D{
   }
   get_map_width() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_map_width,
+      HeightMapShape3D._bindings.method_get_map_width,
       this._owner,
 			Variant.Type.INT,
       
@@ -140,7 +141,7 @@ export class HeightMapShape3D extends Shape3D{
   }
   set_map_depth(_height) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_map_depth,
+      HeightMapShape3D._bindings.method_set_map_depth,
       this._owner,
       _height
     );
@@ -148,7 +149,7 @@ export class HeightMapShape3D extends Shape3D{
   }
   get_map_depth() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_map_depth,
+      HeightMapShape3D._bindings.method_get_map_depth,
       this._owner,
 			Variant.Type.INT,
       
@@ -157,7 +158,7 @@ export class HeightMapShape3D extends Shape3D{
   }
   set_map_data(_data) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_map_data,
+      HeightMapShape3D._bindings.method_set_map_data,
       this._owner,
       _data
     );
@@ -165,7 +166,7 @@ export class HeightMapShape3D extends Shape3D{
   }
   get_map_data() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_map_data,
+      HeightMapShape3D._bindings.method_get_map_data,
       this._owner,
 			Variant.Type.PACKED_FLOAT32_ARRAY,
     
@@ -175,7 +176,7 @@ export class HeightMapShape3D extends Shape3D{
   }
   get_min_height() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_min_height,
+      HeightMapShape3D._bindings.method_get_min_height,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -184,7 +185,7 @@ export class HeightMapShape3D extends Shape3D{
   }
   get_max_height() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_max_height,
+      HeightMapShape3D._bindings.method_get_max_height,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -193,7 +194,7 @@ export class HeightMapShape3D extends Shape3D{
   }
   update_map_data_from_image(_image, _height_min, _height_max) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_update_map_data_from_image,
+      HeightMapShape3D._bindings.method_update_map_data_from_image,
       this._owner,
       _image, _height_min, _height_max
     );

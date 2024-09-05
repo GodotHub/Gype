@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { Texture2D } from '@js_godot/classes/texture2d'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -80,9 +80,10 @@ export class CurveTexture extends Texture2D{
       );
     }
   }
+  
   set_width(_width) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_width,
+      CurveTexture._bindings.method_set_width,
       this._owner,
       _width
     );
@@ -90,7 +91,7 @@ export class CurveTexture extends Texture2D{
   }
   set_curve(_curve) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_curve,
+      CurveTexture._bindings.method_set_curve,
       this._owner,
       _curve
     );
@@ -98,7 +99,7 @@ export class CurveTexture extends Texture2D{
   }
   get_curve() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_curve,
+      CurveTexture._bindings.method_get_curve,
       this._owner,
 			Variant.INT,
       
@@ -107,7 +108,7 @@ export class CurveTexture extends Texture2D{
   }
   set_texture_mode(_texture_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture_mode,
+      CurveTexture._bindings.method_set_texture_mode,
       this._owner,
       _texture_mode
     );
@@ -115,7 +116,7 @@ export class CurveTexture extends Texture2D{
   }
   get_texture_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_mode,
+      CurveTexture._bindings.method_get_texture_mode,
       this._owner,
 			Variant.INT,
       

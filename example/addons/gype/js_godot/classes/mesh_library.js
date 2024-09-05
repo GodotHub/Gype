@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Transform3D } from '@js_godot/variant/transform3d'
 import { Resource } from '@js_godot/classes/resource'
 import { StringName } from '@js_godot/variant/string_name'
 import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
+import { Transform3D } from '@js_godot/variant/transform3d'
 import { GDString } from '@js_godot/variant/gd_string'
+import { Variant } from '@js_godot/variant/variant'
 import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
@@ -254,9 +254,10 @@ export class MeshLibrary extends Resource{
       );
     }
   }
+  
   create_item(_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_create_item,
+      MeshLibrary._bindings.method_create_item,
       this._owner,
       _id
     );
@@ -264,7 +265,7 @@ export class MeshLibrary extends Resource{
   }
   set_item_name(_id, _name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_name,
+      MeshLibrary._bindings.method_set_item_name,
       this._owner,
       _id, _name
     );
@@ -272,7 +273,7 @@ export class MeshLibrary extends Resource{
   }
   set_item_mesh(_id, _mesh) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_mesh,
+      MeshLibrary._bindings.method_set_item_mesh,
       this._owner,
       _id, _mesh
     );
@@ -280,7 +281,7 @@ export class MeshLibrary extends Resource{
   }
   set_item_mesh_transform(_id, _mesh_transform) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_mesh_transform,
+      MeshLibrary._bindings.method_set_item_mesh_transform,
       this._owner,
       _id, _mesh_transform
     );
@@ -288,7 +289,7 @@ export class MeshLibrary extends Resource{
   }
   set_item_navigation_mesh(_id, _navigation_mesh) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_navigation_mesh,
+      MeshLibrary._bindings.method_set_item_navigation_mesh,
       this._owner,
       _id, _navigation_mesh
     );
@@ -296,7 +297,7 @@ export class MeshLibrary extends Resource{
   }
   set_item_navigation_mesh_transform(_id, _navigation_mesh) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_navigation_mesh_transform,
+      MeshLibrary._bindings.method_set_item_navigation_mesh_transform,
       this._owner,
       _id, _navigation_mesh
     );
@@ -304,7 +305,7 @@ export class MeshLibrary extends Resource{
   }
   set_item_navigation_layers(_id, _navigation_layers) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_navigation_layers,
+      MeshLibrary._bindings.method_set_item_navigation_layers,
       this._owner,
       _id, _navigation_layers
     );
@@ -312,7 +313,7 @@ export class MeshLibrary extends Resource{
   }
   set_item_shapes(_id, _shapes) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_shapes,
+      MeshLibrary._bindings.method_set_item_shapes,
       this._owner,
       _id, _shapes
     );
@@ -320,7 +321,7 @@ export class MeshLibrary extends Resource{
   }
   set_item_preview(_id, _texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_item_preview,
+      MeshLibrary._bindings.method_set_item_preview,
       this._owner,
       _id, _texture
     );
@@ -328,7 +329,7 @@ export class MeshLibrary extends Resource{
   }
   get_item_name(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_name,
+      MeshLibrary._bindings.method_get_item_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -338,7 +339,7 @@ export class MeshLibrary extends Resource{
   }
   get_item_mesh(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_mesh,
+      MeshLibrary._bindings.method_get_item_mesh,
       this._owner,
 			Variant.INT,
       _id
@@ -347,7 +348,7 @@ export class MeshLibrary extends Resource{
   }
   get_item_mesh_transform(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_mesh_transform,
+      MeshLibrary._bindings.method_get_item_mesh_transform,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -357,7 +358,7 @@ export class MeshLibrary extends Resource{
   }
   get_item_navigation_mesh(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_navigation_mesh,
+      MeshLibrary._bindings.method_get_item_navigation_mesh,
       this._owner,
 			Variant.INT,
       _id
@@ -366,7 +367,7 @@ export class MeshLibrary extends Resource{
   }
   get_item_navigation_mesh_transform(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_navigation_mesh_transform,
+      MeshLibrary._bindings.method_get_item_navigation_mesh_transform,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -376,7 +377,7 @@ export class MeshLibrary extends Resource{
   }
   get_item_navigation_layers(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_navigation_layers,
+      MeshLibrary._bindings.method_get_item_navigation_layers,
       this._owner,
 			Variant.Type.INT,
       _id
@@ -385,7 +386,7 @@ export class MeshLibrary extends Resource{
   }
   get_item_shapes(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_shapes,
+      MeshLibrary._bindings.method_get_item_shapes,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -395,7 +396,7 @@ export class MeshLibrary extends Resource{
   }
   get_item_preview(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_preview,
+      MeshLibrary._bindings.method_get_item_preview,
       this._owner,
 			Variant.INT,
       _id
@@ -404,7 +405,7 @@ export class MeshLibrary extends Resource{
   }
   remove_item(_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_item,
+      MeshLibrary._bindings.method_remove_item,
       this._owner,
       _id
     );
@@ -412,7 +413,7 @@ export class MeshLibrary extends Resource{
   }
   find_item_by_name(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_find_item_by_name,
+      MeshLibrary._bindings.method_find_item_by_name,
       this._owner,
 			Variant.Type.INT,
       _name
@@ -421,7 +422,7 @@ export class MeshLibrary extends Resource{
   }
   clear() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear,
+      MeshLibrary._bindings.method_clear,
       this._owner,
       
     );
@@ -429,7 +430,7 @@ export class MeshLibrary extends Resource{
   }
   get_item_list() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_item_list,
+      MeshLibrary._bindings.method_get_item_list,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -439,7 +440,7 @@ export class MeshLibrary extends Resource{
   }
   get_last_unused_item_id() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_last_unused_item_id,
+      MeshLibrary._bindings.method_get_last_unused_item_id,
       this._owner,
 			Variant.Type.INT,
       

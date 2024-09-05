@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { PackedStringArray } from '@js_godot/variant/packed_string_array'
 import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -31,6 +31,7 @@ export class EditorFileSystemImportFormatSupportQuery extends RefCounted{
     }
     this.#initialized = true;
   }
+  
   _is_active() {
   }
   _get_file_extensions() {

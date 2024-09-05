@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { Shape2D } from '@js_godot/classes/shape2d'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -71,9 +71,10 @@ export class SegmentShape2D extends Shape2D{
       );
     }
   }
+  
   set_a(_a) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_a,
+      SegmentShape2D._bindings.method_set_a,
       this._owner,
       _a
     );
@@ -81,7 +82,7 @@ export class SegmentShape2D extends Shape2D{
   }
   get_a() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_a,
+      SegmentShape2D._bindings.method_get_a,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -91,7 +92,7 @@ export class SegmentShape2D extends Shape2D{
   }
   set_b(_b) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_b,
+      SegmentShape2D._bindings.method_set_b,
       this._owner,
       _b
     );
@@ -99,7 +100,7 @@ export class SegmentShape2D extends Shape2D{
   }
   get_b() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_b,
+      SegmentShape2D._bindings.method_get_b,
       this._owner,
 			Variant.Type.VECTOR2,
     

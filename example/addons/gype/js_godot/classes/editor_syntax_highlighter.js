@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { SyntaxHighlighter } from '@js_godot/classes/syntax_highlighter'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { Variant } from '@js_godot/variant/variant'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -32,6 +32,7 @@ export class EditorSyntaxHighlighter extends SyntaxHighlighter{
     }
     this.#initialized = true;
   }
+  
   _get_name() {
   }
   _get_supported_languages() {

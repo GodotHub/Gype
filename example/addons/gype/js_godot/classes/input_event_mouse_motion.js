@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { StringName } from '@js_godot/variant/string_name'
 import { InputEventMouse } from '@js_godot/classes/input_event_mouse'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -171,9 +171,10 @@ export class InputEventMouseMotion extends InputEventMouse{
       );
     }
   }
+  
   set_tilt(_tilt) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tilt,
+      InputEventMouseMotion._bindings.method_set_tilt,
       this._owner,
       _tilt
     );
@@ -181,7 +182,7 @@ export class InputEventMouseMotion extends InputEventMouse{
   }
   get_tilt() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tilt,
+      InputEventMouseMotion._bindings.method_get_tilt,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -191,7 +192,7 @@ export class InputEventMouseMotion extends InputEventMouse{
   }
   set_pressure(_pressure) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_pressure,
+      InputEventMouseMotion._bindings.method_set_pressure,
       this._owner,
       _pressure
     );
@@ -199,7 +200,7 @@ export class InputEventMouseMotion extends InputEventMouse{
   }
   get_pressure() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_pressure,
+      InputEventMouseMotion._bindings.method_get_pressure,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -208,7 +209,7 @@ export class InputEventMouseMotion extends InputEventMouse{
   }
   set_pen_inverted(_pen_inverted) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_pen_inverted,
+      InputEventMouseMotion._bindings.method_set_pen_inverted,
       this._owner,
       _pen_inverted
     );
@@ -216,7 +217,7 @@ export class InputEventMouseMotion extends InputEventMouse{
   }
   get_pen_inverted() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_pen_inverted,
+      InputEventMouseMotion._bindings.method_get_pen_inverted,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -225,7 +226,7 @@ export class InputEventMouseMotion extends InputEventMouse{
   }
   set_relative(_relative) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_relative,
+      InputEventMouseMotion._bindings.method_set_relative,
       this._owner,
       _relative
     );
@@ -233,7 +234,7 @@ export class InputEventMouseMotion extends InputEventMouse{
   }
   get_relative() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_relative,
+      InputEventMouseMotion._bindings.method_get_relative,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -243,7 +244,7 @@ export class InputEventMouseMotion extends InputEventMouse{
   }
   set_screen_relative(_relative) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_screen_relative,
+      InputEventMouseMotion._bindings.method_set_screen_relative,
       this._owner,
       _relative
     );
@@ -251,7 +252,7 @@ export class InputEventMouseMotion extends InputEventMouse{
   }
   get_screen_relative() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_screen_relative,
+      InputEventMouseMotion._bindings.method_get_screen_relative,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -261,7 +262,7 @@ export class InputEventMouseMotion extends InputEventMouse{
   }
   set_velocity(_velocity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_velocity,
+      InputEventMouseMotion._bindings.method_set_velocity,
       this._owner,
       _velocity
     );
@@ -269,7 +270,7 @@ export class InputEventMouseMotion extends InputEventMouse{
   }
   get_velocity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_velocity,
+      InputEventMouseMotion._bindings.method_get_velocity,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -279,7 +280,7 @@ export class InputEventMouseMotion extends InputEventMouse{
   }
   set_screen_velocity(_velocity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_screen_velocity,
+      InputEventMouseMotion._bindings.method_set_screen_velocity,
       this._owner,
       _velocity
     );
@@ -287,7 +288,7 @@ export class InputEventMouseMotion extends InputEventMouse{
   }
   get_screen_velocity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_screen_velocity,
+      InputEventMouseMotion._bindings.method_get_screen_velocity,
       this._owner,
 			Variant.Type.VECTOR2,
     

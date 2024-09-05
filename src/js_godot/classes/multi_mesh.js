@@ -1,12 +1,12 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
+import { PackedFloat32Array } from '@js_godot/variant/packed_float32_array'
 import { Transform3D } from '@js_godot/variant/transform3d'
 import { Resource } from '@js_godot/classes/resource'
-import { StringName } from '@js_godot/variant/string_name'
-import { AABB } from '@js_godot/variant/aabb'
 import { Color } from '@js_godot/variant/color'
-import { PackedFloat32Array } from '@js_godot/variant/packed_float32_array'
+import { AABB } from '@js_godot/variant/aabb'
+import { Variant } from '@js_godot/variant/variant'
 import { Transform2D } from '@js_godot/variant/transform2d'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -285,9 +285,10 @@ export class MultiMesh extends Resource{
       );
     }
   }
+  
   set_mesh(_mesh) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mesh,
+      MultiMesh._bindings.method_set_mesh,
       this._owner,
       _mesh
     );
@@ -295,7 +296,7 @@ export class MultiMesh extends Resource{
   }
   get_mesh() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mesh,
+      MultiMesh._bindings.method_get_mesh,
       this._owner,
 			Variant.INT,
       
@@ -304,7 +305,7 @@ export class MultiMesh extends Resource{
   }
   set_use_colors(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_colors,
+      MultiMesh._bindings.method_set_use_colors,
       this._owner,
       _enable
     );
@@ -312,7 +313,7 @@ export class MultiMesh extends Resource{
   }
   is_using_colors() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_using_colors,
+      MultiMesh._bindings.method_is_using_colors,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -321,7 +322,7 @@ export class MultiMesh extends Resource{
   }
   set_use_custom_data(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_custom_data,
+      MultiMesh._bindings.method_set_use_custom_data,
       this._owner,
       _enable
     );
@@ -329,7 +330,7 @@ export class MultiMesh extends Resource{
   }
   is_using_custom_data() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_using_custom_data,
+      MultiMesh._bindings.method_is_using_custom_data,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -338,7 +339,7 @@ export class MultiMesh extends Resource{
   }
   set_transform_format(_format) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_transform_format,
+      MultiMesh._bindings.method_set_transform_format,
       this._owner,
       _format
     );
@@ -346,7 +347,7 @@ export class MultiMesh extends Resource{
   }
   get_transform_format() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_transform_format,
+      MultiMesh._bindings.method_get_transform_format,
       this._owner,
 			Variant.INT,
       
@@ -355,7 +356,7 @@ export class MultiMesh extends Resource{
   }
   set_instance_count(_count) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_instance_count,
+      MultiMesh._bindings.method_set_instance_count,
       this._owner,
       _count
     );
@@ -363,7 +364,7 @@ export class MultiMesh extends Resource{
   }
   get_instance_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_instance_count,
+      MultiMesh._bindings.method_get_instance_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -372,7 +373,7 @@ export class MultiMesh extends Resource{
   }
   set_visible_instance_count(_count) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_visible_instance_count,
+      MultiMesh._bindings.method_set_visible_instance_count,
       this._owner,
       _count
     );
@@ -380,7 +381,7 @@ export class MultiMesh extends Resource{
   }
   get_visible_instance_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_visible_instance_count,
+      MultiMesh._bindings.method_get_visible_instance_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -389,7 +390,7 @@ export class MultiMesh extends Resource{
   }
   set_instance_transform(_instance, _transform) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_instance_transform,
+      MultiMesh._bindings.method_set_instance_transform,
       this._owner,
       _instance, _transform
     );
@@ -397,7 +398,7 @@ export class MultiMesh extends Resource{
   }
   set_instance_transform_2d(_instance, _transform) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_instance_transform_2d,
+      MultiMesh._bindings.method_set_instance_transform_2d,
       this._owner,
       _instance, _transform
     );
@@ -405,7 +406,7 @@ export class MultiMesh extends Resource{
   }
   get_instance_transform(_instance) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_instance_transform,
+      MultiMesh._bindings.method_get_instance_transform,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -415,7 +416,7 @@ export class MultiMesh extends Resource{
   }
   get_instance_transform_2d(_instance) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_instance_transform_2d,
+      MultiMesh._bindings.method_get_instance_transform_2d,
       this._owner,
 			Variant.Type.TRANSFORM2D,
     
@@ -425,7 +426,7 @@ export class MultiMesh extends Resource{
   }
   set_instance_color(_instance, _color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_instance_color,
+      MultiMesh._bindings.method_set_instance_color,
       this._owner,
       _instance, _color
     );
@@ -433,7 +434,7 @@ export class MultiMesh extends Resource{
   }
   get_instance_color(_instance) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_instance_color,
+      MultiMesh._bindings.method_get_instance_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -443,7 +444,7 @@ export class MultiMesh extends Resource{
   }
   set_instance_custom_data(_instance, _custom_data) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_instance_custom_data,
+      MultiMesh._bindings.method_set_instance_custom_data,
       this._owner,
       _instance, _custom_data
     );
@@ -451,7 +452,7 @@ export class MultiMesh extends Resource{
   }
   get_instance_custom_data(_instance) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_instance_custom_data,
+      MultiMesh._bindings.method_get_instance_custom_data,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -461,7 +462,7 @@ export class MultiMesh extends Resource{
   }
   set_custom_aabb(_aabb) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_custom_aabb,
+      MultiMesh._bindings.method_set_custom_aabb,
       this._owner,
       _aabb
     );
@@ -469,7 +470,7 @@ export class MultiMesh extends Resource{
   }
   get_custom_aabb() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_custom_aabb,
+      MultiMesh._bindings.method_get_custom_aabb,
       this._owner,
 			Variant.Type.AABB,
     
@@ -479,7 +480,7 @@ export class MultiMesh extends Resource{
   }
   get_aabb() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_aabb,
+      MultiMesh._bindings.method_get_aabb,
       this._owner,
 			Variant.Type.AABB,
     
@@ -489,7 +490,7 @@ export class MultiMesh extends Resource{
   }
   get_buffer() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_buffer,
+      MultiMesh._bindings.method_get_buffer,
       this._owner,
 			Variant.Type.PACKED_FLOAT32_ARRAY,
     
@@ -499,7 +500,7 @@ export class MultiMesh extends Resource{
   }
   set_buffer(_buffer) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_buffer,
+      MultiMesh._bindings.method_set_buffer,
       this._owner,
       _buffer
     );

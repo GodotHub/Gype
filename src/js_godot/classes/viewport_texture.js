@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { Texture2D } from '@js_godot/classes/texture2d'
+import { Variant } from '@js_godot/variant/variant'
 import { NodePath } from '@js_godot/variant/node_path'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -51,9 +51,10 @@ export class ViewportTexture extends Texture2D{
       );
     }
   }
+  
   set_viewport_path_in_scene(_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_viewport_path_in_scene,
+      ViewportTexture._bindings.method_set_viewport_path_in_scene,
       this._owner,
       _path
     );
@@ -61,7 +62,7 @@ export class ViewportTexture extends Texture2D{
   }
   get_viewport_path_in_scene() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_viewport_path_in_scene,
+      ViewportTexture._bindings.method_get_viewport_path_in_scene,
       this._owner,
 			Variant.Type.NODE_PATH,
     

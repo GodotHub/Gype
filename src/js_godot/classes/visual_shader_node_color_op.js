@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { VisualShaderNode } from '@js_godot/classes/visual_shader_node'
 import {
   call_utility_ret,
@@ -50,9 +50,10 @@ export class VisualShaderNodeColorOp extends VisualShaderNode{
       );
     }
   }
+  
   set_operator(_op) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_operator,
+      VisualShaderNodeColorOp._bindings.method_set_operator,
       this._owner,
       _op
     );
@@ -60,7 +61,7 @@ export class VisualShaderNodeColorOp extends VisualShaderNode{
   }
   get_operator() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_operator,
+      VisualShaderNodeColorOp._bindings.method_get_operator,
       this._owner,
 			Variant.INT,
       

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -130,6 +130,7 @@ export class SkeletonModification2D extends Resource{
       );
     }
   }
+  
   _execute(_delta) {
   }
   _setup_modification(_modification_stack) {
@@ -138,7 +139,7 @@ export class SkeletonModification2D extends Resource{
   }
   set_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_enabled,
+      SkeletonModification2D._bindings.method_set_enabled,
       this._owner,
       _enabled
     );
@@ -146,7 +147,7 @@ export class SkeletonModification2D extends Resource{
   }
   get_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_enabled,
+      SkeletonModification2D._bindings.method_get_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -155,7 +156,7 @@ export class SkeletonModification2D extends Resource{
   }
   get_modification_stack() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_modification_stack,
+      SkeletonModification2D._bindings.method_get_modification_stack,
       this._owner,
 			Variant.INT,
       
@@ -164,7 +165,7 @@ export class SkeletonModification2D extends Resource{
   }
   set_is_setup(_is_setup) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_is_setup,
+      SkeletonModification2D._bindings.method_set_is_setup,
       this._owner,
       _is_setup
     );
@@ -172,7 +173,7 @@ export class SkeletonModification2D extends Resource{
   }
   get_is_setup() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_is_setup,
+      SkeletonModification2D._bindings.method_get_is_setup,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -181,7 +182,7 @@ export class SkeletonModification2D extends Resource{
   }
   set_execution_mode(_execution_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_execution_mode,
+      SkeletonModification2D._bindings.method_set_execution_mode,
       this._owner,
       _execution_mode
     );
@@ -189,7 +190,7 @@ export class SkeletonModification2D extends Resource{
   }
   get_execution_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_execution_mode,
+      SkeletonModification2D._bindings.method_get_execution_mode,
       this._owner,
 			Variant.Type.INT,
       
@@ -198,7 +199,7 @@ export class SkeletonModification2D extends Resource{
   }
   clamp_angle(_angle, _min, _max, _invert) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_clamp_angle,
+      SkeletonModification2D._bindings.method_clamp_angle,
       this._owner,
 			Variant.Type.FLOAT,
       _angle, _min, _max, _invert
@@ -207,7 +208,7 @@ export class SkeletonModification2D extends Resource{
   }
   set_editor_draw_gizmo(_draw_gizmo) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_editor_draw_gizmo,
+      SkeletonModification2D._bindings.method_set_editor_draw_gizmo,
       this._owner,
       _draw_gizmo
     );
@@ -215,7 +216,7 @@ export class SkeletonModification2D extends Resource{
   }
   get_editor_draw_gizmo() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_editor_draw_gizmo,
+      SkeletonModification2D._bindings.method_get_editor_draw_gizmo,
       this._owner,
 			Variant.Type.BOOL,
       

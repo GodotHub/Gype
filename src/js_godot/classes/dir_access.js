@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
+import { RefCounted } from '@js_godot/classes/ref_counted'
 import { Variant } from '@js_godot/variant/variant'
+import { PackedStringArray } from '@js_godot/variant/packed_string_array'
 import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
-import { RefCounted } from '@js_godot/classes/ref_counted'
-import { PackedStringArray } from '@js_godot/variant/packed_string_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -402,9 +402,10 @@ export class DirAccess extends RefCounted{
       );
     }
   }
+  
   open(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_open,
+      DirAccess._bindings.method_open,
       this._owner,
 			Variant.INT,
       _path
@@ -413,7 +414,7 @@ export class DirAccess extends RefCounted{
   }
   get_open_error() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_open_error,
+      DirAccess._bindings.method_get_open_error,
       this._owner,
 			Variant.INT,
       
@@ -422,7 +423,7 @@ export class DirAccess extends RefCounted{
   }
   list_dir_begin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_list_dir_begin,
+      DirAccess._bindings.method_list_dir_begin,
       this._owner,
 			Variant.INT,
       
@@ -431,7 +432,7 @@ export class DirAccess extends RefCounted{
   }
   get_next() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_next,
+      DirAccess._bindings.method_get_next,
       this._owner,
 			Variant.Type.STRING,
     
@@ -441,7 +442,7 @@ export class DirAccess extends RefCounted{
   }
   current_is_dir() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_current_is_dir,
+      DirAccess._bindings.method_current_is_dir,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -450,7 +451,7 @@ export class DirAccess extends RefCounted{
   }
   list_dir_end() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_list_dir_end,
+      DirAccess._bindings.method_list_dir_end,
       this._owner,
       
     );
@@ -458,7 +459,7 @@ export class DirAccess extends RefCounted{
   }
   get_files() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_files,
+      DirAccess._bindings.method_get_files,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -468,7 +469,7 @@ export class DirAccess extends RefCounted{
   }
   get_files_at(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_files_at,
+      DirAccess._bindings.method_get_files_at,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -478,7 +479,7 @@ export class DirAccess extends RefCounted{
   }
   get_directories() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_directories,
+      DirAccess._bindings.method_get_directories,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -488,7 +489,7 @@ export class DirAccess extends RefCounted{
   }
   get_directories_at(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_directories_at,
+      DirAccess._bindings.method_get_directories_at,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -498,7 +499,7 @@ export class DirAccess extends RefCounted{
   }
   get_drive_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_drive_count,
+      DirAccess._bindings.method_get_drive_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -507,7 +508,7 @@ export class DirAccess extends RefCounted{
   }
   get_drive_name(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_drive_name,
+      DirAccess._bindings.method_get_drive_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -517,7 +518,7 @@ export class DirAccess extends RefCounted{
   }
   get_current_drive() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_current_drive,
+      DirAccess._bindings.method_get_current_drive,
       this._owner,
 			Variant.Type.INT,
       
@@ -526,7 +527,7 @@ export class DirAccess extends RefCounted{
   }
   change_dir(_to_dir) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_change_dir,
+      DirAccess._bindings.method_change_dir,
       this._owner,
 			Variant.INT,
       _to_dir
@@ -535,7 +536,7 @@ export class DirAccess extends RefCounted{
   }
   get_current_dir(_include_drive) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_current_dir,
+      DirAccess._bindings.method_get_current_dir,
       this._owner,
 			Variant.Type.STRING,
     
@@ -545,7 +546,7 @@ export class DirAccess extends RefCounted{
   }
   make_dir(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_make_dir,
+      DirAccess._bindings.method_make_dir,
       this._owner,
 			Variant.INT,
       _path
@@ -554,7 +555,7 @@ export class DirAccess extends RefCounted{
   }
   make_dir_absolute(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_make_dir_absolute,
+      DirAccess._bindings.method_make_dir_absolute,
       this._owner,
 			Variant.INT,
       _path
@@ -563,7 +564,7 @@ export class DirAccess extends RefCounted{
   }
   make_dir_recursive(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_make_dir_recursive,
+      DirAccess._bindings.method_make_dir_recursive,
       this._owner,
 			Variant.INT,
       _path
@@ -572,7 +573,7 @@ export class DirAccess extends RefCounted{
   }
   make_dir_recursive_absolute(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_make_dir_recursive_absolute,
+      DirAccess._bindings.method_make_dir_recursive_absolute,
       this._owner,
 			Variant.INT,
       _path
@@ -581,7 +582,7 @@ export class DirAccess extends RefCounted{
   }
   file_exists(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_file_exists,
+      DirAccess._bindings.method_file_exists,
       this._owner,
 			Variant.Type.BOOL,
       _path
@@ -590,7 +591,7 @@ export class DirAccess extends RefCounted{
   }
   dir_exists(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_dir_exists,
+      DirAccess._bindings.method_dir_exists,
       this._owner,
 			Variant.Type.BOOL,
       _path
@@ -599,7 +600,7 @@ export class DirAccess extends RefCounted{
   }
   dir_exists_absolute(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_dir_exists_absolute,
+      DirAccess._bindings.method_dir_exists_absolute,
       this._owner,
 			Variant.Type.BOOL,
       _path
@@ -608,7 +609,7 @@ export class DirAccess extends RefCounted{
   }
   get_space_left() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_space_left,
+      DirAccess._bindings.method_get_space_left,
       this._owner,
 			Variant.Type.INT,
       
@@ -617,7 +618,7 @@ export class DirAccess extends RefCounted{
   }
   copy(_from, _to, _chmod_flags) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_copy,
+      DirAccess._bindings.method_copy,
       this._owner,
 			Variant.INT,
       _from, _to, _chmod_flags
@@ -626,7 +627,7 @@ export class DirAccess extends RefCounted{
   }
   copy_absolute(_from, _to, _chmod_flags) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_copy_absolute,
+      DirAccess._bindings.method_copy_absolute,
       this._owner,
 			Variant.INT,
       _from, _to, _chmod_flags
@@ -635,7 +636,7 @@ export class DirAccess extends RefCounted{
   }
   rename(_from, _to) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_rename,
+      DirAccess._bindings.method_rename,
       this._owner,
 			Variant.INT,
       _from, _to
@@ -644,7 +645,7 @@ export class DirAccess extends RefCounted{
   }
   rename_absolute(_from, _to) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_rename_absolute,
+      DirAccess._bindings.method_rename_absolute,
       this._owner,
 			Variant.INT,
       _from, _to
@@ -653,7 +654,7 @@ export class DirAccess extends RefCounted{
   }
   remove(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_remove,
+      DirAccess._bindings.method_remove,
       this._owner,
 			Variant.INT,
       _path
@@ -662,7 +663,7 @@ export class DirAccess extends RefCounted{
   }
   remove_absolute(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_remove_absolute,
+      DirAccess._bindings.method_remove_absolute,
       this._owner,
 			Variant.INT,
       _path
@@ -671,7 +672,7 @@ export class DirAccess extends RefCounted{
   }
   is_link(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_link,
+      DirAccess._bindings.method_is_link,
       this._owner,
 			Variant.Type.BOOL,
       _path
@@ -680,7 +681,7 @@ export class DirAccess extends RefCounted{
   }
   read_link(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_read_link,
+      DirAccess._bindings.method_read_link,
       this._owner,
 			Variant.Type.STRING,
     
@@ -690,7 +691,7 @@ export class DirAccess extends RefCounted{
   }
   create_link(_source, _target) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_link,
+      DirAccess._bindings.method_create_link,
       this._owner,
 			Variant.INT,
       _source, _target
@@ -699,7 +700,7 @@ export class DirAccess extends RefCounted{
   }
   set_include_navigational(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_include_navigational,
+      DirAccess._bindings.method_set_include_navigational,
       this._owner,
       _enable
     );
@@ -707,7 +708,7 @@ export class DirAccess extends RefCounted{
   }
   get_include_navigational() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_include_navigational,
+      DirAccess._bindings.method_get_include_navigational,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -716,7 +717,7 @@ export class DirAccess extends RefCounted{
   }
   set_include_hidden(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_include_hidden,
+      DirAccess._bindings.method_set_include_hidden,
       this._owner,
       _enable
     );
@@ -724,7 +725,7 @@ export class DirAccess extends RefCounted{
   }
   get_include_hidden() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_include_hidden,
+      DirAccess._bindings.method_get_include_hidden,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -733,7 +734,7 @@ export class DirAccess extends RefCounted{
   }
   is_case_sensitive(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_case_sensitive,
+      DirAccess._bindings.method_is_case_sensitive,
       this._owner,
 			Variant.Type.BOOL,
       _path

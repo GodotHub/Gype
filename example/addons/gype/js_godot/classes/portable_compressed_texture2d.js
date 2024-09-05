@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
-import { Vector2 } from '@js_godot/variant/vector2'
 import { Texture2D } from '@js_godot/classes/texture2d'
+import { Vector2 } from '@js_godot/variant/vector2'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -121,9 +121,10 @@ export class PortableCompressedTexture2D extends Texture2D{
       );
     }
   }
+  
   create_from_image(_image, _compression_mode, _normal_map, _lossy_quality) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_create_from_image,
+      PortableCompressedTexture2D._bindings.method_create_from_image,
       this._owner,
       _image, _compression_mode, _normal_map, _lossy_quality
     );
@@ -131,7 +132,7 @@ export class PortableCompressedTexture2D extends Texture2D{
   }
   get_format() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_format,
+      PortableCompressedTexture2D._bindings.method_get_format,
       this._owner,
 			Variant.INT,
       
@@ -140,7 +141,7 @@ export class PortableCompressedTexture2D extends Texture2D{
   }
   get_compression_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_compression_mode,
+      PortableCompressedTexture2D._bindings.method_get_compression_mode,
       this._owner,
 			Variant.INT,
       
@@ -149,7 +150,7 @@ export class PortableCompressedTexture2D extends Texture2D{
   }
   set_size_override(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_size_override,
+      PortableCompressedTexture2D._bindings.method_set_size_override,
       this._owner,
       _size
     );
@@ -157,7 +158,7 @@ export class PortableCompressedTexture2D extends Texture2D{
   }
   get_size_override() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_size_override,
+      PortableCompressedTexture2D._bindings.method_get_size_override,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -167,7 +168,7 @@ export class PortableCompressedTexture2D extends Texture2D{
   }
   set_keep_compressed_buffer(_keep) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_keep_compressed_buffer,
+      PortableCompressedTexture2D._bindings.method_set_keep_compressed_buffer,
       this._owner,
       _keep
     );
@@ -175,7 +176,7 @@ export class PortableCompressedTexture2D extends Texture2D{
   }
   is_keeping_compressed_buffer() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_keeping_compressed_buffer,
+      PortableCompressedTexture2D._bindings.method_is_keeping_compressed_buffer,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -184,7 +185,7 @@ export class PortableCompressedTexture2D extends Texture2D{
   }
   set_keep_all_compressed_buffers(_keep) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_keep_all_compressed_buffers,
+      PortableCompressedTexture2D._bindings.method_set_keep_all_compressed_buffers,
       this._owner,
       _keep
     );
@@ -192,7 +193,7 @@ export class PortableCompressedTexture2D extends Texture2D{
   }
   is_keeping_all_compressed_buffers() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_keeping_all_compressed_buffers,
+      PortableCompressedTexture2D._bindings.method_is_keeping_all_compressed_buffers,
       this._owner,
 			Variant.Type.BOOL,
       

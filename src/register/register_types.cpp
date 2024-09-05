@@ -87,8 +87,12 @@ void init_quickjs() {
 	JS_SetModuleLoaderFunc(runtime.rt, NULL, module_loader, NULL);
 	JSValue ret = context.eval(R"xxx(
 		import { Variant } from "@js_godot/variant/variant";
-		import { ClassDB } from "@js_godot/classes/class_db";
 		Variant._init_bindings();
+	)xxx",
+			"<input>", JS_EVAL_TYPE_MODULE);
+	ret = context.eval(R"xxx(
+		import { GodotObject } from "@js_godot/classes/godot_object";
+		GodotObject._init_bindings();
 	)xxx",
 			"<input>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(ret)) {

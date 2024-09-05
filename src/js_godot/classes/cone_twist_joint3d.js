@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { Joint3D } from '@js_godot/classes/joint3d'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -50,9 +50,10 @@ export class ConeTwistJoint3D extends Joint3D{
       );
     }
   }
+  
   set_param(_param, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_param,
+      ConeTwistJoint3D._bindings.method_set_param,
       this._owner,
       _param, _value
     );
@@ -60,7 +61,7 @@ export class ConeTwistJoint3D extends Joint3D{
   }
   get_param(_param) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_param,
+      ConeTwistJoint3D._bindings.method_get_param,
       this._owner,
 			Variant.Type.FLOAT,
       _param

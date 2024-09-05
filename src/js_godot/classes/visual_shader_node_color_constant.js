@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { Color } from '@js_godot/variant/color'
 import { Variant } from '@js_godot/variant/variant'
-import { VisualShaderNodeConstant } from '@js_godot/classes/visual_shader_node_constant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Color } from '@js_godot/variant/color'
+import { VisualShaderNodeConstant } from '@js_godot/classes/visual_shader_node_constant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -51,9 +51,10 @@ export class VisualShaderNodeColorConstant extends VisualShaderNodeConstant{
       );
     }
   }
+  
   set_constant(_constant) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_constant,
+      VisualShaderNodeColorConstant._bindings.method_set_constant,
       this._owner,
       _constant
     );
@@ -61,7 +62,7 @@ export class VisualShaderNodeColorConstant extends VisualShaderNodeConstant{
   }
   get_constant() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_constant,
+      VisualShaderNodeColorConstant._bindings.method_get_constant,
       this._owner,
 			Variant.Type.COLOR,
     

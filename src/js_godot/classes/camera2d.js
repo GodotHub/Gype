@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { Node2D } from '@js_godot/classes/node2d'
 import { Variant } from '@js_godot/variant/variant'
-import { Vector2 } from '@js_godot/variant/vector2'
 import { StringName } from '@js_godot/variant/string_name'
+import { Vector2 } from '@js_godot/variant/vector2'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -521,9 +521,10 @@ export class Camera2D extends Node2D{
       );
     }
   }
+  
   set_offset(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_offset,
+      Camera2D._bindings.method_set_offset,
       this._owner,
       _offset
     );
@@ -531,7 +532,7 @@ export class Camera2D extends Node2D{
   }
   get_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_offset,
+      Camera2D._bindings.method_get_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -541,7 +542,7 @@ export class Camera2D extends Node2D{
   }
   set_anchor_mode(_anchor_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_anchor_mode,
+      Camera2D._bindings.method_set_anchor_mode,
       this._owner,
       _anchor_mode
     );
@@ -549,7 +550,7 @@ export class Camera2D extends Node2D{
   }
   get_anchor_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_anchor_mode,
+      Camera2D._bindings.method_get_anchor_mode,
       this._owner,
 			Variant.INT,
       
@@ -558,7 +559,7 @@ export class Camera2D extends Node2D{
   }
   set_ignore_rotation(_ignore) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ignore_rotation,
+      Camera2D._bindings.method_set_ignore_rotation,
       this._owner,
       _ignore
     );
@@ -566,7 +567,7 @@ export class Camera2D extends Node2D{
   }
   is_ignoring_rotation() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_ignoring_rotation,
+      Camera2D._bindings.method_is_ignoring_rotation,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -575,7 +576,7 @@ export class Camera2D extends Node2D{
   }
   set_process_callback(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_process_callback,
+      Camera2D._bindings.method_set_process_callback,
       this._owner,
       _mode
     );
@@ -583,7 +584,7 @@ export class Camera2D extends Node2D{
   }
   get_process_callback() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_process_callback,
+      Camera2D._bindings.method_get_process_callback,
       this._owner,
 			Variant.INT,
       
@@ -592,7 +593,7 @@ export class Camera2D extends Node2D{
   }
   set_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_enabled,
+      Camera2D._bindings.method_set_enabled,
       this._owner,
       _enabled
     );
@@ -600,7 +601,7 @@ export class Camera2D extends Node2D{
   }
   is_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_enabled,
+      Camera2D._bindings.method_is_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -609,7 +610,7 @@ export class Camera2D extends Node2D{
   }
   make_current() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_make_current,
+      Camera2D._bindings.method_make_current,
       this._owner,
       
     );
@@ -617,7 +618,7 @@ export class Camera2D extends Node2D{
   }
   is_current() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_current,
+      Camera2D._bindings.method_is_current,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -626,7 +627,7 @@ export class Camera2D extends Node2D{
   }
   set_limit(_margin, _limit) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_limit,
+      Camera2D._bindings.method_set_limit,
       this._owner,
       _margin, _limit
     );
@@ -634,7 +635,7 @@ export class Camera2D extends Node2D{
   }
   get_limit(_margin) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_limit,
+      Camera2D._bindings.method_get_limit,
       this._owner,
 			Variant.Type.INT,
       _margin
@@ -643,7 +644,7 @@ export class Camera2D extends Node2D{
   }
   set_limit_smoothing_enabled(_limit_smoothing_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_limit_smoothing_enabled,
+      Camera2D._bindings.method_set_limit_smoothing_enabled,
       this._owner,
       _limit_smoothing_enabled
     );
@@ -651,7 +652,7 @@ export class Camera2D extends Node2D{
   }
   is_limit_smoothing_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_limit_smoothing_enabled,
+      Camera2D._bindings.method_is_limit_smoothing_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -660,7 +661,7 @@ export class Camera2D extends Node2D{
   }
   set_drag_vertical_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_drag_vertical_enabled,
+      Camera2D._bindings.method_set_drag_vertical_enabled,
       this._owner,
       _enabled
     );
@@ -668,7 +669,7 @@ export class Camera2D extends Node2D{
   }
   is_drag_vertical_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_drag_vertical_enabled,
+      Camera2D._bindings.method_is_drag_vertical_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -677,7 +678,7 @@ export class Camera2D extends Node2D{
   }
   set_drag_horizontal_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_drag_horizontal_enabled,
+      Camera2D._bindings.method_set_drag_horizontal_enabled,
       this._owner,
       _enabled
     );
@@ -685,7 +686,7 @@ export class Camera2D extends Node2D{
   }
   is_drag_horizontal_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_drag_horizontal_enabled,
+      Camera2D._bindings.method_is_drag_horizontal_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -694,7 +695,7 @@ export class Camera2D extends Node2D{
   }
   set_drag_vertical_offset(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_drag_vertical_offset,
+      Camera2D._bindings.method_set_drag_vertical_offset,
       this._owner,
       _offset
     );
@@ -702,7 +703,7 @@ export class Camera2D extends Node2D{
   }
   get_drag_vertical_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_drag_vertical_offset,
+      Camera2D._bindings.method_get_drag_vertical_offset,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -711,7 +712,7 @@ export class Camera2D extends Node2D{
   }
   set_drag_horizontal_offset(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_drag_horizontal_offset,
+      Camera2D._bindings.method_set_drag_horizontal_offset,
       this._owner,
       _offset
     );
@@ -719,7 +720,7 @@ export class Camera2D extends Node2D{
   }
   get_drag_horizontal_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_drag_horizontal_offset,
+      Camera2D._bindings.method_get_drag_horizontal_offset,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -728,7 +729,7 @@ export class Camera2D extends Node2D{
   }
   set_drag_margin(_margin, _drag_margin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_drag_margin,
+      Camera2D._bindings.method_set_drag_margin,
       this._owner,
       _margin, _drag_margin
     );
@@ -736,7 +737,7 @@ export class Camera2D extends Node2D{
   }
   get_drag_margin(_margin) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_drag_margin,
+      Camera2D._bindings.method_get_drag_margin,
       this._owner,
 			Variant.Type.FLOAT,
       _margin
@@ -745,7 +746,7 @@ export class Camera2D extends Node2D{
   }
   get_target_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_target_position,
+      Camera2D._bindings.method_get_target_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -755,7 +756,7 @@ export class Camera2D extends Node2D{
   }
   get_screen_center_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_screen_center_position,
+      Camera2D._bindings.method_get_screen_center_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -765,7 +766,7 @@ export class Camera2D extends Node2D{
   }
   set_zoom(_zoom) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_zoom,
+      Camera2D._bindings.method_set_zoom,
       this._owner,
       _zoom
     );
@@ -773,7 +774,7 @@ export class Camera2D extends Node2D{
   }
   get_zoom() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_zoom,
+      Camera2D._bindings.method_get_zoom,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -783,7 +784,7 @@ export class Camera2D extends Node2D{
   }
   set_custom_viewport(_viewport) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_custom_viewport,
+      Camera2D._bindings.method_set_custom_viewport,
       this._owner,
       _viewport
     );
@@ -791,7 +792,7 @@ export class Camera2D extends Node2D{
   }
   get_custom_viewport() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_custom_viewport,
+      Camera2D._bindings.method_get_custom_viewport,
       this._owner,
 			Variant.INT,
       
@@ -800,7 +801,7 @@ export class Camera2D extends Node2D{
   }
   set_position_smoothing_speed(_position_smoothing_speed) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_position_smoothing_speed,
+      Camera2D._bindings.method_set_position_smoothing_speed,
       this._owner,
       _position_smoothing_speed
     );
@@ -808,7 +809,7 @@ export class Camera2D extends Node2D{
   }
   get_position_smoothing_speed() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_position_smoothing_speed,
+      Camera2D._bindings.method_get_position_smoothing_speed,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -817,7 +818,7 @@ export class Camera2D extends Node2D{
   }
   set_position_smoothing_enabled(_position_smoothing_speed) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_position_smoothing_enabled,
+      Camera2D._bindings.method_set_position_smoothing_enabled,
       this._owner,
       _position_smoothing_speed
     );
@@ -825,7 +826,7 @@ export class Camera2D extends Node2D{
   }
   is_position_smoothing_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_position_smoothing_enabled,
+      Camera2D._bindings.method_is_position_smoothing_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -834,7 +835,7 @@ export class Camera2D extends Node2D{
   }
   set_rotation_smoothing_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_rotation_smoothing_enabled,
+      Camera2D._bindings.method_set_rotation_smoothing_enabled,
       this._owner,
       _enabled
     );
@@ -842,7 +843,7 @@ export class Camera2D extends Node2D{
   }
   is_rotation_smoothing_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_rotation_smoothing_enabled,
+      Camera2D._bindings.method_is_rotation_smoothing_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -851,7 +852,7 @@ export class Camera2D extends Node2D{
   }
   set_rotation_smoothing_speed(_speed) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_rotation_smoothing_speed,
+      Camera2D._bindings.method_set_rotation_smoothing_speed,
       this._owner,
       _speed
     );
@@ -859,7 +860,7 @@ export class Camera2D extends Node2D{
   }
   get_rotation_smoothing_speed() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rotation_smoothing_speed,
+      Camera2D._bindings.method_get_rotation_smoothing_speed,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -868,7 +869,7 @@ export class Camera2D extends Node2D{
   }
   force_update_scroll() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_force_update_scroll,
+      Camera2D._bindings.method_force_update_scroll,
       this._owner,
       
     );
@@ -876,7 +877,7 @@ export class Camera2D extends Node2D{
   }
   reset_smoothing() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_reset_smoothing,
+      Camera2D._bindings.method_reset_smoothing,
       this._owner,
       
     );
@@ -884,7 +885,7 @@ export class Camera2D extends Node2D{
   }
   align() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_align,
+      Camera2D._bindings.method_align,
       this._owner,
       
     );
@@ -892,7 +893,7 @@ export class Camera2D extends Node2D{
   }
   set_screen_drawing_enabled(_screen_drawing_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_screen_drawing_enabled,
+      Camera2D._bindings.method_set_screen_drawing_enabled,
       this._owner,
       _screen_drawing_enabled
     );
@@ -900,7 +901,7 @@ export class Camera2D extends Node2D{
   }
   is_screen_drawing_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_screen_drawing_enabled,
+      Camera2D._bindings.method_is_screen_drawing_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -909,7 +910,7 @@ export class Camera2D extends Node2D{
   }
   set_limit_drawing_enabled(_limit_drawing_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_limit_drawing_enabled,
+      Camera2D._bindings.method_set_limit_drawing_enabled,
       this._owner,
       _limit_drawing_enabled
     );
@@ -917,7 +918,7 @@ export class Camera2D extends Node2D{
   }
   is_limit_drawing_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_limit_drawing_enabled,
+      Camera2D._bindings.method_is_limit_drawing_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -926,7 +927,7 @@ export class Camera2D extends Node2D{
   }
   set_margin_drawing_enabled(_margin_drawing_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_margin_drawing_enabled,
+      Camera2D._bindings.method_set_margin_drawing_enabled,
       this._owner,
       _margin_drawing_enabled
     );
@@ -934,7 +935,7 @@ export class Camera2D extends Node2D{
   }
   is_margin_drawing_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_margin_drawing_enabled,
+      Camera2D._bindings.method_is_margin_drawing_enabled,
       this._owner,
 			Variant.Type.BOOL,
       

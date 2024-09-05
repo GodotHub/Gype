@@ -31,6 +31,7 @@ export class VisualShaderNodeTexture2DParameter extends VisualShaderNodeTextureP
     this.#initialized = true;
   }
   
+  
 
 
   static {

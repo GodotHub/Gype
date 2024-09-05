@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { RID } from '@js_godot/variant/rid'
+import { Variant } from '@js_godot/variant/variant'
 import { SkeletonModifier3D } from '@js_godot/classes/skeleton_modifier3d'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -81,9 +81,10 @@ export class PhysicalBoneSimulator3D extends SkeletonModifier3D{
       );
     }
   }
+  
   is_simulating_physics() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_simulating_physics,
+      PhysicalBoneSimulator3D._bindings.method_is_simulating_physics,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -92,7 +93,7 @@ export class PhysicalBoneSimulator3D extends SkeletonModifier3D{
   }
   physical_bones_stop_simulation() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_physical_bones_stop_simulation,
+      PhysicalBoneSimulator3D._bindings.method_physical_bones_stop_simulation,
       this._owner,
       
     );
@@ -100,7 +101,7 @@ export class PhysicalBoneSimulator3D extends SkeletonModifier3D{
   }
   physical_bones_start_simulation(_bones) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_physical_bones_start_simulation,
+      PhysicalBoneSimulator3D._bindings.method_physical_bones_start_simulation,
       this._owner,
       _bones
     );
@@ -108,7 +109,7 @@ export class PhysicalBoneSimulator3D extends SkeletonModifier3D{
   }
   physical_bones_add_collision_exception(_exception) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_physical_bones_add_collision_exception,
+      PhysicalBoneSimulator3D._bindings.method_physical_bones_add_collision_exception,
       this._owner,
       _exception
     );
@@ -116,7 +117,7 @@ export class PhysicalBoneSimulator3D extends SkeletonModifier3D{
   }
   physical_bones_remove_collision_exception(_exception) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_physical_bones_remove_collision_exception,
+      PhysicalBoneSimulator3D._bindings.method_physical_bones_remove_collision_exception,
       this._owner,
       _exception
     );

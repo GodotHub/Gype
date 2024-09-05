@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { Shape2D } from '@js_godot/classes/shape2d'
 import {
   call_utility_ret,
@@ -70,9 +70,10 @@ export class CapsuleShape2D extends Shape2D{
       );
     }
   }
+  
   set_radius(_radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_radius,
+      CapsuleShape2D._bindings.method_set_radius,
       this._owner,
       _radius
     );
@@ -80,7 +81,7 @@ export class CapsuleShape2D extends Shape2D{
   }
   get_radius() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_radius,
+      CapsuleShape2D._bindings.method_get_radius,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -89,7 +90,7 @@ export class CapsuleShape2D extends Shape2D{
   }
   set_height(_height) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_height,
+      CapsuleShape2D._bindings.method_set_height,
       this._owner,
       _height
     );
@@ -97,7 +98,7 @@ export class CapsuleShape2D extends Shape2D{
   }
   get_height() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_height,
+      CapsuleShape2D._bindings.method_get_height,
       this._owner,
 			Variant.Type.FLOAT,
       

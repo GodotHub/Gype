@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { Control } from '@js_godot/classes/control'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Control } from '@js_godot/classes/control'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -260,11 +260,12 @@ export class Range extends Control{
       );
     }
   }
+  
   _value_changed(_new_value) {
   }
   get_value() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_value,
+      Range._bindings.method_get_value,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -273,7 +274,7 @@ export class Range extends Control{
   }
   get_min() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_min,
+      Range._bindings.method_get_min,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -282,7 +283,7 @@ export class Range extends Control{
   }
   get_max() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_max,
+      Range._bindings.method_get_max,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -291,7 +292,7 @@ export class Range extends Control{
   }
   get_step() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_step,
+      Range._bindings.method_get_step,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -300,7 +301,7 @@ export class Range extends Control{
   }
   get_page() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_page,
+      Range._bindings.method_get_page,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -309,7 +310,7 @@ export class Range extends Control{
   }
   get_as_ratio() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_as_ratio,
+      Range._bindings.method_get_as_ratio,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -318,7 +319,7 @@ export class Range extends Control{
   }
   set_value(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_value,
+      Range._bindings.method_set_value,
       this._owner,
       _value
     );
@@ -326,7 +327,7 @@ export class Range extends Control{
   }
   set_value_no_signal(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_value_no_signal,
+      Range._bindings.method_set_value_no_signal,
       this._owner,
       _value
     );
@@ -334,7 +335,7 @@ export class Range extends Control{
   }
   set_min(_minimum) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_min,
+      Range._bindings.method_set_min,
       this._owner,
       _minimum
     );
@@ -342,7 +343,7 @@ export class Range extends Control{
   }
   set_max(_maximum) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_max,
+      Range._bindings.method_set_max,
       this._owner,
       _maximum
     );
@@ -350,7 +351,7 @@ export class Range extends Control{
   }
   set_step(_step) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_step,
+      Range._bindings.method_set_step,
       this._owner,
       _step
     );
@@ -358,7 +359,7 @@ export class Range extends Control{
   }
   set_page(_pagesize) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_page,
+      Range._bindings.method_set_page,
       this._owner,
       _pagesize
     );
@@ -366,7 +367,7 @@ export class Range extends Control{
   }
   set_as_ratio(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_as_ratio,
+      Range._bindings.method_set_as_ratio,
       this._owner,
       _value
     );
@@ -374,7 +375,7 @@ export class Range extends Control{
   }
   set_use_rounded_values(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_rounded_values,
+      Range._bindings.method_set_use_rounded_values,
       this._owner,
       _enabled
     );
@@ -382,7 +383,7 @@ export class Range extends Control{
   }
   is_using_rounded_values() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_using_rounded_values,
+      Range._bindings.method_is_using_rounded_values,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -391,7 +392,7 @@ export class Range extends Control{
   }
   set_exp_ratio(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_exp_ratio,
+      Range._bindings.method_set_exp_ratio,
       this._owner,
       _enabled
     );
@@ -399,7 +400,7 @@ export class Range extends Control{
   }
   is_ratio_exp() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_ratio_exp,
+      Range._bindings.method_is_ratio_exp,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -408,7 +409,7 @@ export class Range extends Control{
   }
   set_allow_greater(_allow) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_allow_greater,
+      Range._bindings.method_set_allow_greater,
       this._owner,
       _allow
     );
@@ -416,7 +417,7 @@ export class Range extends Control{
   }
   is_greater_allowed() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_greater_allowed,
+      Range._bindings.method_is_greater_allowed,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -425,7 +426,7 @@ export class Range extends Control{
   }
   set_allow_lesser(_allow) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_allow_lesser,
+      Range._bindings.method_set_allow_lesser,
       this._owner,
       _allow
     );
@@ -433,7 +434,7 @@ export class Range extends Control{
   }
   is_lesser_allowed() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_lesser_allowed,
+      Range._bindings.method_is_lesser_allowed,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -442,7 +443,7 @@ export class Range extends Control{
   }
   share(_with) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_share,
+      Range._bindings.method_share,
       this._owner,
       _with
     );
@@ -450,7 +451,7 @@ export class Range extends Control{
   }
   unshare() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_unshare,
+      Range._bindings.method_unshare,
       this._owner,
       
     );

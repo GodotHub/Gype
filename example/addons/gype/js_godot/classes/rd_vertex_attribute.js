@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -130,9 +130,10 @@ export class RDVertexAttribute extends RefCounted{
       );
     }
   }
+  
   set_location(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_location,
+      RDVertexAttribute._bindings.method_set_location,
       this._owner,
       _p_member
     );
@@ -140,7 +141,7 @@ export class RDVertexAttribute extends RefCounted{
   }
   get_location() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_location,
+      RDVertexAttribute._bindings.method_get_location,
       this._owner,
 			Variant.Type.INT,
       
@@ -149,7 +150,7 @@ export class RDVertexAttribute extends RefCounted{
   }
   set_offset(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_offset,
+      RDVertexAttribute._bindings.method_set_offset,
       this._owner,
       _p_member
     );
@@ -157,7 +158,7 @@ export class RDVertexAttribute extends RefCounted{
   }
   get_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_offset,
+      RDVertexAttribute._bindings.method_get_offset,
       this._owner,
 			Variant.Type.INT,
       
@@ -166,7 +167,7 @@ export class RDVertexAttribute extends RefCounted{
   }
   set_format(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_format,
+      RDVertexAttribute._bindings.method_set_format,
       this._owner,
       _p_member
     );
@@ -174,7 +175,7 @@ export class RDVertexAttribute extends RefCounted{
   }
   get_format() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_format,
+      RDVertexAttribute._bindings.method_get_format,
       this._owner,
 			Variant.INT,
       
@@ -183,7 +184,7 @@ export class RDVertexAttribute extends RefCounted{
   }
   set_stride(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_stride,
+      RDVertexAttribute._bindings.method_set_stride,
       this._owner,
       _p_member
     );
@@ -191,7 +192,7 @@ export class RDVertexAttribute extends RefCounted{
   }
   get_stride() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_stride,
+      RDVertexAttribute._bindings.method_get_stride,
       this._owner,
 			Variant.Type.INT,
       
@@ -200,7 +201,7 @@ export class RDVertexAttribute extends RefCounted{
   }
   set_frequency(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_frequency,
+      RDVertexAttribute._bindings.method_set_frequency,
       this._owner,
       _p_member
     );
@@ -208,7 +209,7 @@ export class RDVertexAttribute extends RefCounted{
   }
   get_frequency() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_frequency,
+      RDVertexAttribute._bindings.method_get_frequency,
       this._owner,
 			Variant.INT,
       

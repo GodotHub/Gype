@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { AnimationMixer } from '@js_godot/classes/animation_mixer'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
+import { AnimationMixer } from '@js_godot/classes/animation_mixer'
 import { PackedStringArray } from '@js_godot/variant/packed_string_array'
 import { NodePath } from '@js_godot/variant/node_path'
+import { GDString } from '@js_godot/variant/gd_string'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -463,9 +463,10 @@ export class AnimationPlayer extends AnimationMixer{
       );
     }
   }
+  
   animation_set_next(_animation_from, _animation_to) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_animation_set_next,
+      AnimationPlayer._bindings.method_animation_set_next,
       this._owner,
       _animation_from, _animation_to
     );
@@ -473,7 +474,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   animation_get_next(_animation_from) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_animation_get_next,
+      AnimationPlayer._bindings.method_animation_get_next,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -483,7 +484,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   set_blend_time(_animation_from, _animation_to, _sec) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_blend_time,
+      AnimationPlayer._bindings.method_set_blend_time,
       this._owner,
       _animation_from, _animation_to, _sec
     );
@@ -491,7 +492,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   get_blend_time(_animation_from, _animation_to) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_blend_time,
+      AnimationPlayer._bindings.method_get_blend_time,
       this._owner,
 			Variant.Type.FLOAT,
       _animation_from, _animation_to
@@ -500,7 +501,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   set_default_blend_time(_sec) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_default_blend_time,
+      AnimationPlayer._bindings.method_set_default_blend_time,
       this._owner,
       _sec
     );
@@ -508,7 +509,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   get_default_blend_time() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_default_blend_time,
+      AnimationPlayer._bindings.method_get_default_blend_time,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -517,7 +518,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   set_auto_capture(_auto_capture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_auto_capture,
+      AnimationPlayer._bindings.method_set_auto_capture,
       this._owner,
       _auto_capture
     );
@@ -525,7 +526,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   is_auto_capture() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_auto_capture,
+      AnimationPlayer._bindings.method_is_auto_capture,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -534,7 +535,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   set_auto_capture_duration(_auto_capture_duration) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_auto_capture_duration,
+      AnimationPlayer._bindings.method_set_auto_capture_duration,
       this._owner,
       _auto_capture_duration
     );
@@ -542,7 +543,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   get_auto_capture_duration() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_auto_capture_duration,
+      AnimationPlayer._bindings.method_get_auto_capture_duration,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -551,7 +552,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   set_auto_capture_transition_type(_auto_capture_transition_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_auto_capture_transition_type,
+      AnimationPlayer._bindings.method_set_auto_capture_transition_type,
       this._owner,
       _auto_capture_transition_type
     );
@@ -559,7 +560,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   get_auto_capture_transition_type() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_auto_capture_transition_type,
+      AnimationPlayer._bindings.method_get_auto_capture_transition_type,
       this._owner,
 			Variant.INT,
       
@@ -568,7 +569,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   set_auto_capture_ease_type(_auto_capture_ease_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_auto_capture_ease_type,
+      AnimationPlayer._bindings.method_set_auto_capture_ease_type,
       this._owner,
       _auto_capture_ease_type
     );
@@ -576,7 +577,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   get_auto_capture_ease_type() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_auto_capture_ease_type,
+      AnimationPlayer._bindings.method_get_auto_capture_ease_type,
       this._owner,
 			Variant.INT,
       
@@ -585,7 +586,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   play(_name, _custom_blend, _custom_speed, _from_end) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_play,
+      AnimationPlayer._bindings.method_play,
       this._owner,
       _name, _custom_blend, _custom_speed, _from_end
     );
@@ -593,7 +594,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   play_backwards(_name, _custom_blend) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_play_backwards,
+      AnimationPlayer._bindings.method_play_backwards,
       this._owner,
       _name, _custom_blend
     );
@@ -601,7 +602,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   play_with_capture(_name, _duration, _custom_blend, _custom_speed, _from_end, _trans_type, _ease_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_play_with_capture,
+      AnimationPlayer._bindings.method_play_with_capture,
       this._owner,
       _name, _duration, _custom_blend, _custom_speed, _from_end, _trans_type, _ease_type
     );
@@ -609,7 +610,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   pause() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_pause,
+      AnimationPlayer._bindings.method_pause,
       this._owner,
       
     );
@@ -617,7 +618,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   stop(_keep_state) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_stop,
+      AnimationPlayer._bindings.method_stop,
       this._owner,
       _keep_state
     );
@@ -625,7 +626,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   is_playing() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_playing,
+      AnimationPlayer._bindings.method_is_playing,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -634,7 +635,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   set_current_animation(_animation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_current_animation,
+      AnimationPlayer._bindings.method_set_current_animation,
       this._owner,
       _animation
     );
@@ -642,7 +643,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   get_current_animation() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_current_animation,
+      AnimationPlayer._bindings.method_get_current_animation,
       this._owner,
 			Variant.Type.STRING,
     
@@ -652,7 +653,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   set_assigned_animation(_animation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_assigned_animation,
+      AnimationPlayer._bindings.method_set_assigned_animation,
       this._owner,
       _animation
     );
@@ -660,7 +661,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   get_assigned_animation() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_assigned_animation,
+      AnimationPlayer._bindings.method_get_assigned_animation,
       this._owner,
 			Variant.Type.STRING,
     
@@ -670,7 +671,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   queue(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_queue,
+      AnimationPlayer._bindings.method_queue,
       this._owner,
       _name
     );
@@ -678,7 +679,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   get_queue() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_queue,
+      AnimationPlayer._bindings.method_get_queue,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -688,7 +689,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   clear_queue() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_queue,
+      AnimationPlayer._bindings.method_clear_queue,
       this._owner,
       
     );
@@ -696,7 +697,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   set_speed_scale(_speed) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_speed_scale,
+      AnimationPlayer._bindings.method_set_speed_scale,
       this._owner,
       _speed
     );
@@ -704,7 +705,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   get_speed_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_speed_scale,
+      AnimationPlayer._bindings.method_get_speed_scale,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -713,7 +714,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   get_playing_speed() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_playing_speed,
+      AnimationPlayer._bindings.method_get_playing_speed,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -722,7 +723,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   set_autoplay(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_autoplay,
+      AnimationPlayer._bindings.method_set_autoplay,
       this._owner,
       _name
     );
@@ -730,7 +731,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   get_autoplay() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_autoplay,
+      AnimationPlayer._bindings.method_get_autoplay,
       this._owner,
 			Variant.Type.STRING,
     
@@ -740,7 +741,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   set_movie_quit_on_finish_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_movie_quit_on_finish_enabled,
+      AnimationPlayer._bindings.method_set_movie_quit_on_finish_enabled,
       this._owner,
       _enabled
     );
@@ -748,7 +749,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   is_movie_quit_on_finish_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_movie_quit_on_finish_enabled,
+      AnimationPlayer._bindings.method_is_movie_quit_on_finish_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -757,7 +758,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   get_current_animation_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_current_animation_position,
+      AnimationPlayer._bindings.method_get_current_animation_position,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -766,7 +767,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   get_current_animation_length() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_current_animation_length,
+      AnimationPlayer._bindings.method_get_current_animation_length,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -775,7 +776,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   seek(_seconds, _update, _update_only) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_seek,
+      AnimationPlayer._bindings.method_seek,
       this._owner,
       _seconds, _update, _update_only
     );
@@ -783,7 +784,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   set_process_callback(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_process_callback,
+      AnimationPlayer._bindings.method_set_process_callback,
       this._owner,
       _mode
     );
@@ -791,7 +792,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   get_process_callback() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_process_callback,
+      AnimationPlayer._bindings.method_get_process_callback,
       this._owner,
 			Variant.INT,
       
@@ -800,7 +801,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   set_method_call_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_method_call_mode,
+      AnimationPlayer._bindings.method_set_method_call_mode,
       this._owner,
       _mode
     );
@@ -808,7 +809,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   get_method_call_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_method_call_mode,
+      AnimationPlayer._bindings.method_get_method_call_mode,
       this._owner,
 			Variant.INT,
       
@@ -817,7 +818,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   set_root(_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_root,
+      AnimationPlayer._bindings.method_set_root,
       this._owner,
       _path
     );
@@ -825,7 +826,7 @@ export class AnimationPlayer extends AnimationMixer{
   }
   get_root() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_root,
+      AnimationPlayer._bindings.method_get_root,
       this._owner,
 			Variant.Type.NODE_PATH,
     

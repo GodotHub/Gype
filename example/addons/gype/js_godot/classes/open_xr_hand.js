@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
-import { Node3D } from '@js_godot/classes/node3d'
 import { NodePath } from '@js_godot/variant/node_path'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { Node3D } from '@js_godot/classes/node3d'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -131,9 +131,10 @@ export class OpenXRHand extends Node3D{
       );
     }
   }
+  
   set_hand(_hand) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_hand,
+      OpenXRHand._bindings.method_set_hand,
       this._owner,
       _hand
     );
@@ -141,7 +142,7 @@ export class OpenXRHand extends Node3D{
   }
   get_hand() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_hand,
+      OpenXRHand._bindings.method_get_hand,
       this._owner,
 			Variant.INT,
       
@@ -150,7 +151,7 @@ export class OpenXRHand extends Node3D{
   }
   set_hand_skeleton(_hand_skeleton) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_hand_skeleton,
+      OpenXRHand._bindings.method_set_hand_skeleton,
       this._owner,
       _hand_skeleton
     );
@@ -158,7 +159,7 @@ export class OpenXRHand extends Node3D{
   }
   get_hand_skeleton() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_hand_skeleton,
+      OpenXRHand._bindings.method_get_hand_skeleton,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -168,7 +169,7 @@ export class OpenXRHand extends Node3D{
   }
   set_motion_range(_motion_range) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_motion_range,
+      OpenXRHand._bindings.method_set_motion_range,
       this._owner,
       _motion_range
     );
@@ -176,7 +177,7 @@ export class OpenXRHand extends Node3D{
   }
   get_motion_range() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_motion_range,
+      OpenXRHand._bindings.method_get_motion_range,
       this._owner,
 			Variant.INT,
       
@@ -185,7 +186,7 @@ export class OpenXRHand extends Node3D{
   }
   set_skeleton_rig(_skeleton_rig) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_skeleton_rig,
+      OpenXRHand._bindings.method_set_skeleton_rig,
       this._owner,
       _skeleton_rig
     );
@@ -193,7 +194,7 @@ export class OpenXRHand extends Node3D{
   }
   get_skeleton_rig() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_skeleton_rig,
+      OpenXRHand._bindings.method_get_skeleton_rig,
       this._owner,
 			Variant.INT,
       
@@ -202,7 +203,7 @@ export class OpenXRHand extends Node3D{
   }
   set_bone_update(_bone_update) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bone_update,
+      OpenXRHand._bindings.method_set_bone_update,
       this._owner,
       _bone_update
     );
@@ -210,7 +211,7 @@ export class OpenXRHand extends Node3D{
   }
   get_bone_update() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bone_update,
+      OpenXRHand._bindings.method_get_bone_update,
       this._owner,
 			Variant.INT,
       

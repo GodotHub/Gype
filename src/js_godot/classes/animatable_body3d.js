@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StaticBody3D } from '@js_godot/classes/static_body3d'
 import { Variant } from '@js_godot/variant/variant'
+import { StaticBody3D } from '@js_godot/classes/static_body3d'
 import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
@@ -50,9 +50,10 @@ export class AnimatableBody3D extends StaticBody3D{
       );
     }
   }
+  
   set_sync_to_physics(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sync_to_physics,
+      AnimatableBody3D._bindings.method_set_sync_to_physics,
       this._owner,
       _enable
     );
@@ -60,7 +61,7 @@ export class AnimatableBody3D extends StaticBody3D{
   }
   is_sync_to_physics_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_sync_to_physics_enabled,
+      AnimatableBody3D._bindings.method_is_sync_to_physics_enabled,
       this._owner,
 			Variant.Type.BOOL,
       

@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { Transform3D } from '@js_godot/variant/transform3d'
-import { Vector3 } from '@js_godot/variant/vector3'
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { PhysicsBody3D } from '@js_godot/classes/physics_body3d'
+import { Vector3 } from '@js_godot/variant/vector3'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -402,11 +402,12 @@ export class PhysicalBone3D extends PhysicsBody3D{
       );
     }
   }
+  
   _integrate_forces(_state) {
   }
   apply_central_impulse(_impulse) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_apply_central_impulse,
+      PhysicalBone3D._bindings.method_apply_central_impulse,
       this._owner,
       _impulse
     );
@@ -414,7 +415,7 @@ export class PhysicalBone3D extends PhysicsBody3D{
   }
   apply_impulse(_impulse, _position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_apply_impulse,
+      PhysicalBone3D._bindings.method_apply_impulse,
       this._owner,
       _impulse, _position
     );
@@ -422,7 +423,7 @@ export class PhysicalBone3D extends PhysicsBody3D{
   }
   set_joint_type(_joint_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_joint_type,
+      PhysicalBone3D._bindings.method_set_joint_type,
       this._owner,
       _joint_type
     );
@@ -430,7 +431,7 @@ export class PhysicalBone3D extends PhysicsBody3D{
   }
   get_joint_type() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_joint_type,
+      PhysicalBone3D._bindings.method_get_joint_type,
       this._owner,
 			Variant.INT,
       
@@ -439,7 +440,7 @@ export class PhysicalBone3D extends PhysicsBody3D{
   }
   set_joint_offset(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_joint_offset,
+      PhysicalBone3D._bindings.method_set_joint_offset,
       this._owner,
       _offset
     );
@@ -447,7 +448,7 @@ export class PhysicalBone3D extends PhysicsBody3D{
   }
   get_joint_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_joint_offset,
+      PhysicalBone3D._bindings.method_get_joint_offset,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -457,7 +458,7 @@ export class PhysicalBone3D extends PhysicsBody3D{
   }
   set_joint_rotation(_euler) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_joint_rotation,
+      PhysicalBone3D._bindings.method_set_joint_rotation,
       this._owner,
       _euler
     );
@@ -465,7 +466,7 @@ export class PhysicalBone3D extends PhysicsBody3D{
   }
   get_joint_rotation() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_joint_rotation,
+      PhysicalBone3D._bindings.method_get_joint_rotation,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -475,7 +476,7 @@ export class PhysicalBone3D extends PhysicsBody3D{
   }
   set_body_offset(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_body_offset,
+      PhysicalBone3D._bindings.method_set_body_offset,
       this._owner,
       _offset
     );
@@ -483,7 +484,7 @@ export class PhysicalBone3D extends PhysicsBody3D{
   }
   get_body_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_body_offset,
+      PhysicalBone3D._bindings.method_get_body_offset,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -493,7 +494,7 @@ export class PhysicalBone3D extends PhysicsBody3D{
   }
   get_simulate_physics() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_simulate_physics,
+      PhysicalBone3D._bindings.method_get_simulate_physics,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -502,7 +503,7 @@ export class PhysicalBone3D extends PhysicsBody3D{
   }
   is_simulating_physics() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_simulating_physics,
+      PhysicalBone3D._bindings.method_is_simulating_physics,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -511,7 +512,7 @@ export class PhysicalBone3D extends PhysicsBody3D{
   }
   get_bone_id() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bone_id,
+      PhysicalBone3D._bindings.method_get_bone_id,
       this._owner,
 			Variant.Type.INT,
       
@@ -520,7 +521,7 @@ export class PhysicalBone3D extends PhysicsBody3D{
   }
   set_mass(_mass) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mass,
+      PhysicalBone3D._bindings.method_set_mass,
       this._owner,
       _mass
     );
@@ -528,7 +529,7 @@ export class PhysicalBone3D extends PhysicsBody3D{
   }
   get_mass() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mass,
+      PhysicalBone3D._bindings.method_get_mass,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -537,7 +538,7 @@ export class PhysicalBone3D extends PhysicsBody3D{
   }
   set_friction(_friction) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_friction,
+      PhysicalBone3D._bindings.method_set_friction,
       this._owner,
       _friction
     );
@@ -545,7 +546,7 @@ export class PhysicalBone3D extends PhysicsBody3D{
   }
   get_friction() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_friction,
+      PhysicalBone3D._bindings.method_get_friction,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -554,7 +555,7 @@ export class PhysicalBone3D extends PhysicsBody3D{
   }
   set_bounce(_bounce) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bounce,
+      PhysicalBone3D._bindings.method_set_bounce,
       this._owner,
       _bounce
     );
@@ -562,7 +563,7 @@ export class PhysicalBone3D extends PhysicsBody3D{
   }
   get_bounce() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bounce,
+      PhysicalBone3D._bindings.method_get_bounce,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -571,7 +572,7 @@ export class PhysicalBone3D extends PhysicsBody3D{
   }
   set_gravity_scale(_gravity_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_gravity_scale,
+      PhysicalBone3D._bindings.method_set_gravity_scale,
       this._owner,
       _gravity_scale
     );
@@ -579,7 +580,7 @@ export class PhysicalBone3D extends PhysicsBody3D{
   }
   get_gravity_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_gravity_scale,
+      PhysicalBone3D._bindings.method_get_gravity_scale,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -588,7 +589,7 @@ export class PhysicalBone3D extends PhysicsBody3D{
   }
   set_linear_damp_mode(_linear_damp_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_linear_damp_mode,
+      PhysicalBone3D._bindings.method_set_linear_damp_mode,
       this._owner,
       _linear_damp_mode
     );
@@ -596,7 +597,7 @@ export class PhysicalBone3D extends PhysicsBody3D{
   }
   get_linear_damp_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_linear_damp_mode,
+      PhysicalBone3D._bindings.method_get_linear_damp_mode,
       this._owner,
 			Variant.INT,
       
@@ -605,7 +606,7 @@ export class PhysicalBone3D extends PhysicsBody3D{
   }
   set_angular_damp_mode(_angular_damp_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_angular_damp_mode,
+      PhysicalBone3D._bindings.method_set_angular_damp_mode,
       this._owner,
       _angular_damp_mode
     );
@@ -613,7 +614,7 @@ export class PhysicalBone3D extends PhysicsBody3D{
   }
   get_angular_damp_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_angular_damp_mode,
+      PhysicalBone3D._bindings.method_get_angular_damp_mode,
       this._owner,
 			Variant.INT,
       
@@ -622,7 +623,7 @@ export class PhysicalBone3D extends PhysicsBody3D{
   }
   set_linear_damp(_linear_damp) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_linear_damp,
+      PhysicalBone3D._bindings.method_set_linear_damp,
       this._owner,
       _linear_damp
     );
@@ -630,7 +631,7 @@ export class PhysicalBone3D extends PhysicsBody3D{
   }
   get_linear_damp() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_linear_damp,
+      PhysicalBone3D._bindings.method_get_linear_damp,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -639,7 +640,7 @@ export class PhysicalBone3D extends PhysicsBody3D{
   }
   set_angular_damp(_angular_damp) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_angular_damp,
+      PhysicalBone3D._bindings.method_set_angular_damp,
       this._owner,
       _angular_damp
     );
@@ -647,7 +648,7 @@ export class PhysicalBone3D extends PhysicsBody3D{
   }
   get_angular_damp() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_angular_damp,
+      PhysicalBone3D._bindings.method_get_angular_damp,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -656,7 +657,7 @@ export class PhysicalBone3D extends PhysicsBody3D{
   }
   set_linear_velocity(_linear_velocity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_linear_velocity,
+      PhysicalBone3D._bindings.method_set_linear_velocity,
       this._owner,
       _linear_velocity
     );
@@ -664,7 +665,7 @@ export class PhysicalBone3D extends PhysicsBody3D{
   }
   get_linear_velocity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_linear_velocity,
+      PhysicalBone3D._bindings.method_get_linear_velocity,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -674,7 +675,7 @@ export class PhysicalBone3D extends PhysicsBody3D{
   }
   set_angular_velocity(_angular_velocity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_angular_velocity,
+      PhysicalBone3D._bindings.method_set_angular_velocity,
       this._owner,
       _angular_velocity
     );
@@ -682,7 +683,7 @@ export class PhysicalBone3D extends PhysicsBody3D{
   }
   get_angular_velocity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_angular_velocity,
+      PhysicalBone3D._bindings.method_get_angular_velocity,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -692,7 +693,7 @@ export class PhysicalBone3D extends PhysicsBody3D{
   }
   set_use_custom_integrator(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_custom_integrator,
+      PhysicalBone3D._bindings.method_set_use_custom_integrator,
       this._owner,
       _enable
     );
@@ -700,7 +701,7 @@ export class PhysicalBone3D extends PhysicsBody3D{
   }
   is_using_custom_integrator() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_using_custom_integrator,
+      PhysicalBone3D._bindings.method_is_using_custom_integrator,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -709,7 +710,7 @@ export class PhysicalBone3D extends PhysicsBody3D{
   }
   set_can_sleep(_able_to_sleep) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_can_sleep,
+      PhysicalBone3D._bindings.method_set_can_sleep,
       this._owner,
       _able_to_sleep
     );
@@ -717,7 +718,7 @@ export class PhysicalBone3D extends PhysicsBody3D{
   }
   is_able_to_sleep() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_able_to_sleep,
+      PhysicalBone3D._bindings.method_is_able_to_sleep,
       this._owner,
 			Variant.Type.BOOL,
       

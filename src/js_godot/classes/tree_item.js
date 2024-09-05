@@ -1,13 +1,13 @@
 import * as internal from '__internal__';
-import { Dictionary } from '@js_godot/variant/dictionary'
-import { Variant } from '@js_godot/variant/variant'
-import { GodotObject } from '@js_godot/classes/godot_object'
-import { Callable } from '@js_godot/variant/callable'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
-import { Color } from '@js_godot/variant/color'
-import { Rect2 } from '@js_godot/variant/rect2'
 import { GDArray } from '@js_godot/variant/gd_array'
+import { Color } from '@js_godot/variant/color'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { Callable } from '@js_godot/variant/callable'
+import { Rect2 } from '@js_godot/variant/rect2'
+import { GodotObject } from '@js_godot/classes/godot_object'
+import { Dictionary } from '@js_godot/variant/dictionary'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -1146,9 +1146,10 @@ export class TreeItem extends GodotObject{
       );
     }
   }
+  
   set_cell_mode(_column, _mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cell_mode,
+      TreeItem._bindings.method_set_cell_mode,
       this._owner,
       _column, _mode
     );
@@ -1156,7 +1157,7 @@ export class TreeItem extends GodotObject{
   }
   get_cell_mode(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cell_mode,
+      TreeItem._bindings.method_get_cell_mode,
       this._owner,
 			Variant.INT,
       _column
@@ -1165,7 +1166,7 @@ export class TreeItem extends GodotObject{
   }
   set_edit_multiline(_column, _multiline) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_edit_multiline,
+      TreeItem._bindings.method_set_edit_multiline,
       this._owner,
       _column, _multiline
     );
@@ -1173,7 +1174,7 @@ export class TreeItem extends GodotObject{
   }
   is_edit_multiline(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_edit_multiline,
+      TreeItem._bindings.method_is_edit_multiline,
       this._owner,
 			Variant.Type.BOOL,
       _column
@@ -1182,7 +1183,7 @@ export class TreeItem extends GodotObject{
   }
   set_checked(_column, _checked) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_checked,
+      TreeItem._bindings.method_set_checked,
       this._owner,
       _column, _checked
     );
@@ -1190,7 +1191,7 @@ export class TreeItem extends GodotObject{
   }
   set_indeterminate(_column, _indeterminate) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_indeterminate,
+      TreeItem._bindings.method_set_indeterminate,
       this._owner,
       _column, _indeterminate
     );
@@ -1198,7 +1199,7 @@ export class TreeItem extends GodotObject{
   }
   is_checked(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_checked,
+      TreeItem._bindings.method_is_checked,
       this._owner,
 			Variant.Type.BOOL,
       _column
@@ -1207,7 +1208,7 @@ export class TreeItem extends GodotObject{
   }
   is_indeterminate(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_indeterminate,
+      TreeItem._bindings.method_is_indeterminate,
       this._owner,
 			Variant.Type.BOOL,
       _column
@@ -1216,7 +1217,7 @@ export class TreeItem extends GodotObject{
   }
   propagate_check(_column, _emit_signal) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_propagate_check,
+      TreeItem._bindings.method_propagate_check,
       this._owner,
       _column, _emit_signal
     );
@@ -1224,7 +1225,7 @@ export class TreeItem extends GodotObject{
   }
   set_text(_column, _text) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_text,
+      TreeItem._bindings.method_set_text,
       this._owner,
       _column, _text
     );
@@ -1232,7 +1233,7 @@ export class TreeItem extends GodotObject{
   }
   get_text(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_text,
+      TreeItem._bindings.method_get_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1242,7 +1243,7 @@ export class TreeItem extends GodotObject{
   }
   set_text_direction(_column, _direction) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_text_direction,
+      TreeItem._bindings.method_set_text_direction,
       this._owner,
       _column, _direction
     );
@@ -1250,7 +1251,7 @@ export class TreeItem extends GodotObject{
   }
   get_text_direction(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_text_direction,
+      TreeItem._bindings.method_get_text_direction,
       this._owner,
 			Variant.INT,
       _column
@@ -1259,7 +1260,7 @@ export class TreeItem extends GodotObject{
   }
   set_autowrap_mode(_column, _autowrap_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_autowrap_mode,
+      TreeItem._bindings.method_set_autowrap_mode,
       this._owner,
       _column, _autowrap_mode
     );
@@ -1267,7 +1268,7 @@ export class TreeItem extends GodotObject{
   }
   get_autowrap_mode(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_autowrap_mode,
+      TreeItem._bindings.method_get_autowrap_mode,
       this._owner,
 			Variant.INT,
       _column
@@ -1276,7 +1277,7 @@ export class TreeItem extends GodotObject{
   }
   set_text_overrun_behavior(_column, _overrun_behavior) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_text_overrun_behavior,
+      TreeItem._bindings.method_set_text_overrun_behavior,
       this._owner,
       _column, _overrun_behavior
     );
@@ -1284,7 +1285,7 @@ export class TreeItem extends GodotObject{
   }
   get_text_overrun_behavior(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_text_overrun_behavior,
+      TreeItem._bindings.method_get_text_overrun_behavior,
       this._owner,
 			Variant.INT,
       _column
@@ -1293,7 +1294,7 @@ export class TreeItem extends GodotObject{
   }
   set_structured_text_bidi_override(_column, _parser) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_structured_text_bidi_override,
+      TreeItem._bindings.method_set_structured_text_bidi_override,
       this._owner,
       _column, _parser
     );
@@ -1301,7 +1302,7 @@ export class TreeItem extends GodotObject{
   }
   get_structured_text_bidi_override(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_structured_text_bidi_override,
+      TreeItem._bindings.method_get_structured_text_bidi_override,
       this._owner,
 			Variant.INT,
       _column
@@ -1310,7 +1311,7 @@ export class TreeItem extends GodotObject{
   }
   set_structured_text_bidi_override_options(_column, _args) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_structured_text_bidi_override_options,
+      TreeItem._bindings.method_set_structured_text_bidi_override_options,
       this._owner,
       _column, _args
     );
@@ -1318,7 +1319,7 @@ export class TreeItem extends GodotObject{
   }
   get_structured_text_bidi_override_options(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_structured_text_bidi_override_options,
+      TreeItem._bindings.method_get_structured_text_bidi_override_options,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -1328,7 +1329,7 @@ export class TreeItem extends GodotObject{
   }
   set_language(_column, _language) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_language,
+      TreeItem._bindings.method_set_language,
       this._owner,
       _column, _language
     );
@@ -1336,7 +1337,7 @@ export class TreeItem extends GodotObject{
   }
   get_language(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_language,
+      TreeItem._bindings.method_get_language,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1346,7 +1347,7 @@ export class TreeItem extends GodotObject{
   }
   set_suffix(_column, _text) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_suffix,
+      TreeItem._bindings.method_set_suffix,
       this._owner,
       _column, _text
     );
@@ -1354,7 +1355,7 @@ export class TreeItem extends GodotObject{
   }
   get_suffix(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_suffix,
+      TreeItem._bindings.method_get_suffix,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1364,7 +1365,7 @@ export class TreeItem extends GodotObject{
   }
   set_icon(_column, _texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_icon,
+      TreeItem._bindings.method_set_icon,
       this._owner,
       _column, _texture
     );
@@ -1372,7 +1373,7 @@ export class TreeItem extends GodotObject{
   }
   get_icon(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_icon,
+      TreeItem._bindings.method_get_icon,
       this._owner,
 			Variant.INT,
       _column
@@ -1381,7 +1382,7 @@ export class TreeItem extends GodotObject{
   }
   set_icon_region(_column, _region) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_icon_region,
+      TreeItem._bindings.method_set_icon_region,
       this._owner,
       _column, _region
     );
@@ -1389,7 +1390,7 @@ export class TreeItem extends GodotObject{
   }
   get_icon_region(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_icon_region,
+      TreeItem._bindings.method_get_icon_region,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -1399,7 +1400,7 @@ export class TreeItem extends GodotObject{
   }
   set_icon_max_width(_column, _width) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_icon_max_width,
+      TreeItem._bindings.method_set_icon_max_width,
       this._owner,
       _column, _width
     );
@@ -1407,7 +1408,7 @@ export class TreeItem extends GodotObject{
   }
   get_icon_max_width(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_icon_max_width,
+      TreeItem._bindings.method_get_icon_max_width,
       this._owner,
 			Variant.Type.INT,
       _column
@@ -1416,7 +1417,7 @@ export class TreeItem extends GodotObject{
   }
   set_icon_modulate(_column, _modulate) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_icon_modulate,
+      TreeItem._bindings.method_set_icon_modulate,
       this._owner,
       _column, _modulate
     );
@@ -1424,7 +1425,7 @@ export class TreeItem extends GodotObject{
   }
   get_icon_modulate(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_icon_modulate,
+      TreeItem._bindings.method_get_icon_modulate,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -1434,7 +1435,7 @@ export class TreeItem extends GodotObject{
   }
   set_range(_column, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_range,
+      TreeItem._bindings.method_set_range,
       this._owner,
       _column, _value
     );
@@ -1442,7 +1443,7 @@ export class TreeItem extends GodotObject{
   }
   get_range(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_range,
+      TreeItem._bindings.method_get_range,
       this._owner,
 			Variant.Type.FLOAT,
       _column
@@ -1451,7 +1452,7 @@ export class TreeItem extends GodotObject{
   }
   set_range_config(_column, _min, _max, _step, _expr) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_range_config,
+      TreeItem._bindings.method_set_range_config,
       this._owner,
       _column, _min, _max, _step, _expr
     );
@@ -1459,7 +1460,7 @@ export class TreeItem extends GodotObject{
   }
   get_range_config(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_range_config,
+      TreeItem._bindings.method_get_range_config,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -1469,7 +1470,7 @@ export class TreeItem extends GodotObject{
   }
   set_metadata(_column, _meta) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_metadata,
+      TreeItem._bindings.method_set_metadata,
       this._owner,
       _column, _meta
     );
@@ -1477,7 +1478,7 @@ export class TreeItem extends GodotObject{
   }
   get_metadata(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_metadata,
+      TreeItem._bindings.method_get_metadata,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -1487,7 +1488,7 @@ export class TreeItem extends GodotObject{
   }
   set_custom_draw(_column, _object, _callback) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_custom_draw,
+      TreeItem._bindings.method_set_custom_draw,
       this._owner,
       _column, _object, _callback
     );
@@ -1495,7 +1496,7 @@ export class TreeItem extends GodotObject{
   }
   set_custom_draw_callback(_column, _callback) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_custom_draw_callback,
+      TreeItem._bindings.method_set_custom_draw_callback,
       this._owner,
       _column, _callback
     );
@@ -1503,7 +1504,7 @@ export class TreeItem extends GodotObject{
   }
   get_custom_draw_callback(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_custom_draw_callback,
+      TreeItem._bindings.method_get_custom_draw_callback,
       this._owner,
 			Variant.Type.CALLABLE,
     
@@ -1513,7 +1514,7 @@ export class TreeItem extends GodotObject{
   }
   set_collapsed(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collapsed,
+      TreeItem._bindings.method_set_collapsed,
       this._owner,
       _enable
     );
@@ -1521,7 +1522,7 @@ export class TreeItem extends GodotObject{
   }
   is_collapsed() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_collapsed,
+      TreeItem._bindings.method_is_collapsed,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1530,7 +1531,7 @@ export class TreeItem extends GodotObject{
   }
   set_collapsed_recursive(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collapsed_recursive,
+      TreeItem._bindings.method_set_collapsed_recursive,
       this._owner,
       _enable
     );
@@ -1538,7 +1539,7 @@ export class TreeItem extends GodotObject{
   }
   is_any_collapsed(_only_visible) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_any_collapsed,
+      TreeItem._bindings.method_is_any_collapsed,
       this._owner,
 			Variant.Type.BOOL,
       _only_visible
@@ -1547,7 +1548,7 @@ export class TreeItem extends GodotObject{
   }
   set_visible(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_visible,
+      TreeItem._bindings.method_set_visible,
       this._owner,
       _enable
     );
@@ -1555,7 +1556,7 @@ export class TreeItem extends GodotObject{
   }
   is_visible() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_visible,
+      TreeItem._bindings.method_is_visible,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1564,7 +1565,7 @@ export class TreeItem extends GodotObject{
   }
   is_visible_in_tree() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_visible_in_tree,
+      TreeItem._bindings.method_is_visible_in_tree,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1573,7 +1574,7 @@ export class TreeItem extends GodotObject{
   }
   uncollapse_tree() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_uncollapse_tree,
+      TreeItem._bindings.method_uncollapse_tree,
       this._owner,
       
     );
@@ -1581,7 +1582,7 @@ export class TreeItem extends GodotObject{
   }
   set_custom_minimum_height(_height) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_custom_minimum_height,
+      TreeItem._bindings.method_set_custom_minimum_height,
       this._owner,
       _height
     );
@@ -1589,7 +1590,7 @@ export class TreeItem extends GodotObject{
   }
   get_custom_minimum_height() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_custom_minimum_height,
+      TreeItem._bindings.method_get_custom_minimum_height,
       this._owner,
 			Variant.Type.INT,
       
@@ -1598,7 +1599,7 @@ export class TreeItem extends GodotObject{
   }
   set_selectable(_column, _selectable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_selectable,
+      TreeItem._bindings.method_set_selectable,
       this._owner,
       _column, _selectable
     );
@@ -1606,7 +1607,7 @@ export class TreeItem extends GodotObject{
   }
   is_selectable(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_selectable,
+      TreeItem._bindings.method_is_selectable,
       this._owner,
 			Variant.Type.BOOL,
       _column
@@ -1615,7 +1616,7 @@ export class TreeItem extends GodotObject{
   }
   is_selected(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_selected,
+      TreeItem._bindings.method_is_selected,
       this._owner,
 			Variant.Type.BOOL,
       _column
@@ -1624,7 +1625,7 @@ export class TreeItem extends GodotObject{
   }
   select(_column) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_select,
+      TreeItem._bindings.method_select,
       this._owner,
       _column
     );
@@ -1632,7 +1633,7 @@ export class TreeItem extends GodotObject{
   }
   deselect(_column) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_deselect,
+      TreeItem._bindings.method_deselect,
       this._owner,
       _column
     );
@@ -1640,7 +1641,7 @@ export class TreeItem extends GodotObject{
   }
   set_editable(_column, _enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_editable,
+      TreeItem._bindings.method_set_editable,
       this._owner,
       _column, _enabled
     );
@@ -1648,7 +1649,7 @@ export class TreeItem extends GodotObject{
   }
   is_editable(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_editable,
+      TreeItem._bindings.method_is_editable,
       this._owner,
 			Variant.Type.BOOL,
       _column
@@ -1657,7 +1658,7 @@ export class TreeItem extends GodotObject{
   }
   set_custom_color(_column, _color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_custom_color,
+      TreeItem._bindings.method_set_custom_color,
       this._owner,
       _column, _color
     );
@@ -1665,7 +1666,7 @@ export class TreeItem extends GodotObject{
   }
   get_custom_color(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_custom_color,
+      TreeItem._bindings.method_get_custom_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -1675,7 +1676,7 @@ export class TreeItem extends GodotObject{
   }
   clear_custom_color(_column) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_custom_color,
+      TreeItem._bindings.method_clear_custom_color,
       this._owner,
       _column
     );
@@ -1683,7 +1684,7 @@ export class TreeItem extends GodotObject{
   }
   set_custom_font(_column, _font) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_custom_font,
+      TreeItem._bindings.method_set_custom_font,
       this._owner,
       _column, _font
     );
@@ -1691,7 +1692,7 @@ export class TreeItem extends GodotObject{
   }
   get_custom_font(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_custom_font,
+      TreeItem._bindings.method_get_custom_font,
       this._owner,
 			Variant.INT,
       _column
@@ -1700,7 +1701,7 @@ export class TreeItem extends GodotObject{
   }
   set_custom_font_size(_column, _font_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_custom_font_size,
+      TreeItem._bindings.method_set_custom_font_size,
       this._owner,
       _column, _font_size
     );
@@ -1708,7 +1709,7 @@ export class TreeItem extends GodotObject{
   }
   get_custom_font_size(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_custom_font_size,
+      TreeItem._bindings.method_get_custom_font_size,
       this._owner,
 			Variant.Type.INT,
       _column
@@ -1717,7 +1718,7 @@ export class TreeItem extends GodotObject{
   }
   set_custom_bg_color(_column, _color, _just_outline) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_custom_bg_color,
+      TreeItem._bindings.method_set_custom_bg_color,
       this._owner,
       _column, _color, _just_outline
     );
@@ -1725,7 +1726,7 @@ export class TreeItem extends GodotObject{
   }
   clear_custom_bg_color(_column) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_custom_bg_color,
+      TreeItem._bindings.method_clear_custom_bg_color,
       this._owner,
       _column
     );
@@ -1733,7 +1734,7 @@ export class TreeItem extends GodotObject{
   }
   get_custom_bg_color(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_custom_bg_color,
+      TreeItem._bindings.method_get_custom_bg_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -1743,7 +1744,7 @@ export class TreeItem extends GodotObject{
   }
   set_custom_as_button(_column, _enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_custom_as_button,
+      TreeItem._bindings.method_set_custom_as_button,
       this._owner,
       _column, _enable
     );
@@ -1751,7 +1752,7 @@ export class TreeItem extends GodotObject{
   }
   is_custom_set_as_button(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_custom_set_as_button,
+      TreeItem._bindings.method_is_custom_set_as_button,
       this._owner,
 			Variant.Type.BOOL,
       _column
@@ -1760,7 +1761,7 @@ export class TreeItem extends GodotObject{
   }
   add_button(_column, _button, _id, _disabled, _tooltip_text) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_button,
+      TreeItem._bindings.method_add_button,
       this._owner,
       _column, _button, _id, _disabled, _tooltip_text
     );
@@ -1768,7 +1769,7 @@ export class TreeItem extends GodotObject{
   }
   get_button_count(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_button_count,
+      TreeItem._bindings.method_get_button_count,
       this._owner,
 			Variant.Type.INT,
       _column
@@ -1777,7 +1778,7 @@ export class TreeItem extends GodotObject{
   }
   get_button_tooltip_text(_column, _button_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_button_tooltip_text,
+      TreeItem._bindings.method_get_button_tooltip_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1787,7 +1788,7 @@ export class TreeItem extends GodotObject{
   }
   get_button_id(_column, _button_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_button_id,
+      TreeItem._bindings.method_get_button_id,
       this._owner,
 			Variant.Type.INT,
       _column, _button_index
@@ -1796,7 +1797,7 @@ export class TreeItem extends GodotObject{
   }
   get_button_by_id(_column, _id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_button_by_id,
+      TreeItem._bindings.method_get_button_by_id,
       this._owner,
 			Variant.Type.INT,
       _column, _id
@@ -1805,7 +1806,7 @@ export class TreeItem extends GodotObject{
   }
   get_button_color(_column, _id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_button_color,
+      TreeItem._bindings.method_get_button_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -1815,7 +1816,7 @@ export class TreeItem extends GodotObject{
   }
   get_button(_column, _button_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_button,
+      TreeItem._bindings.method_get_button,
       this._owner,
 			Variant.INT,
       _column, _button_index
@@ -1824,7 +1825,7 @@ export class TreeItem extends GodotObject{
   }
   set_button_tooltip_text(_column, _button_index, _tooltip) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_button_tooltip_text,
+      TreeItem._bindings.method_set_button_tooltip_text,
       this._owner,
       _column, _button_index, _tooltip
     );
@@ -1832,7 +1833,7 @@ export class TreeItem extends GodotObject{
   }
   set_button(_column, _button_index, _button) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_button,
+      TreeItem._bindings.method_set_button,
       this._owner,
       _column, _button_index, _button
     );
@@ -1840,7 +1841,7 @@ export class TreeItem extends GodotObject{
   }
   erase_button(_column, _button_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_erase_button,
+      TreeItem._bindings.method_erase_button,
       this._owner,
       _column, _button_index
     );
@@ -1848,7 +1849,7 @@ export class TreeItem extends GodotObject{
   }
   set_button_disabled(_column, _button_index, _disabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_button_disabled,
+      TreeItem._bindings.method_set_button_disabled,
       this._owner,
       _column, _button_index, _disabled
     );
@@ -1856,7 +1857,7 @@ export class TreeItem extends GodotObject{
   }
   set_button_color(_column, _button_index, _color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_button_color,
+      TreeItem._bindings.method_set_button_color,
       this._owner,
       _column, _button_index, _color
     );
@@ -1864,7 +1865,7 @@ export class TreeItem extends GodotObject{
   }
   is_button_disabled(_column, _button_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_button_disabled,
+      TreeItem._bindings.method_is_button_disabled,
       this._owner,
 			Variant.Type.BOOL,
       _column, _button_index
@@ -1873,7 +1874,7 @@ export class TreeItem extends GodotObject{
   }
   set_tooltip_text(_column, _tooltip) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tooltip_text,
+      TreeItem._bindings.method_set_tooltip_text,
       this._owner,
       _column, _tooltip
     );
@@ -1881,7 +1882,7 @@ export class TreeItem extends GodotObject{
   }
   get_tooltip_text(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tooltip_text,
+      TreeItem._bindings.method_get_tooltip_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1891,7 +1892,7 @@ export class TreeItem extends GodotObject{
   }
   set_text_alignment(_column, _text_alignment) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_text_alignment,
+      TreeItem._bindings.method_set_text_alignment,
       this._owner,
       _column, _text_alignment
     );
@@ -1899,7 +1900,7 @@ export class TreeItem extends GodotObject{
   }
   get_text_alignment(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_text_alignment,
+      TreeItem._bindings.method_get_text_alignment,
       this._owner,
 			Variant.INT,
       _column
@@ -1908,7 +1909,7 @@ export class TreeItem extends GodotObject{
   }
   set_expand_right(_column, _enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_expand_right,
+      TreeItem._bindings.method_set_expand_right,
       this._owner,
       _column, _enable
     );
@@ -1916,7 +1917,7 @@ export class TreeItem extends GodotObject{
   }
   get_expand_right(_column) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_expand_right,
+      TreeItem._bindings.method_get_expand_right,
       this._owner,
 			Variant.Type.BOOL,
       _column
@@ -1925,7 +1926,7 @@ export class TreeItem extends GodotObject{
   }
   set_disable_folding(_disable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_disable_folding,
+      TreeItem._bindings.method_set_disable_folding,
       this._owner,
       _disable
     );
@@ -1933,7 +1934,7 @@ export class TreeItem extends GodotObject{
   }
   is_folding_disabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_folding_disabled,
+      TreeItem._bindings.method_is_folding_disabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1942,7 +1943,7 @@ export class TreeItem extends GodotObject{
   }
   create_child(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_child,
+      TreeItem._bindings.method_create_child,
       this._owner,
 			Variant.INT,
       _index
@@ -1951,7 +1952,7 @@ export class TreeItem extends GodotObject{
   }
   add_child(_child) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_child,
+      TreeItem._bindings.method_add_child,
       this._owner,
       _child
     );
@@ -1959,7 +1960,7 @@ export class TreeItem extends GodotObject{
   }
   remove_child(_child) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_child,
+      TreeItem._bindings.method_remove_child,
       this._owner,
       _child
     );
@@ -1967,7 +1968,7 @@ export class TreeItem extends GodotObject{
   }
   get_tree() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tree,
+      TreeItem._bindings.method_get_tree,
       this._owner,
 			Variant.INT,
       
@@ -1976,7 +1977,7 @@ export class TreeItem extends GodotObject{
   }
   get_next() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_next,
+      TreeItem._bindings.method_get_next,
       this._owner,
 			Variant.INT,
       
@@ -1985,7 +1986,7 @@ export class TreeItem extends GodotObject{
   }
   get_prev() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_prev,
+      TreeItem._bindings.method_get_prev,
       this._owner,
 			Variant.INT,
       
@@ -1994,7 +1995,7 @@ export class TreeItem extends GodotObject{
   }
   get_parent() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_parent,
+      TreeItem._bindings.method_get_parent,
       this._owner,
 			Variant.INT,
       
@@ -2003,7 +2004,7 @@ export class TreeItem extends GodotObject{
   }
   get_first_child() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_first_child,
+      TreeItem._bindings.method_get_first_child,
       this._owner,
 			Variant.INT,
       
@@ -2012,7 +2013,7 @@ export class TreeItem extends GodotObject{
   }
   get_next_in_tree(_wrap) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_next_in_tree,
+      TreeItem._bindings.method_get_next_in_tree,
       this._owner,
 			Variant.INT,
       _wrap
@@ -2021,7 +2022,7 @@ export class TreeItem extends GodotObject{
   }
   get_prev_in_tree(_wrap) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_prev_in_tree,
+      TreeItem._bindings.method_get_prev_in_tree,
       this._owner,
 			Variant.INT,
       _wrap
@@ -2030,7 +2031,7 @@ export class TreeItem extends GodotObject{
   }
   get_next_visible(_wrap) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_next_visible,
+      TreeItem._bindings.method_get_next_visible,
       this._owner,
 			Variant.INT,
       _wrap
@@ -2039,7 +2040,7 @@ export class TreeItem extends GodotObject{
   }
   get_prev_visible(_wrap) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_prev_visible,
+      TreeItem._bindings.method_get_prev_visible,
       this._owner,
 			Variant.INT,
       _wrap
@@ -2048,7 +2049,7 @@ export class TreeItem extends GodotObject{
   }
   get_child(_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_child,
+      TreeItem._bindings.method_get_child,
       this._owner,
 			Variant.INT,
       _index
@@ -2057,7 +2058,7 @@ export class TreeItem extends GodotObject{
   }
   get_child_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_child_count,
+      TreeItem._bindings.method_get_child_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -2066,7 +2067,7 @@ export class TreeItem extends GodotObject{
   }
   get_children() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_children,
+      TreeItem._bindings.method_get_children,
       this._owner,
 			Variant.INT,
       
@@ -2075,7 +2076,7 @@ export class TreeItem extends GodotObject{
   }
   get_index() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_index,
+      TreeItem._bindings.method_get_index,
       this._owner,
 			Variant.Type.INT,
       
@@ -2084,7 +2085,7 @@ export class TreeItem extends GodotObject{
   }
   move_before(_item) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_move_before,
+      TreeItem._bindings.method_move_before,
       this._owner,
       _item
     );
@@ -2092,7 +2093,7 @@ export class TreeItem extends GodotObject{
   }
   move_after(_item) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_move_after,
+      TreeItem._bindings.method_move_after,
       this._owner,
       _item
     );
@@ -2100,7 +2101,7 @@ export class TreeItem extends GodotObject{
   }
   call_recursive(_method) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_call_recursive,
+      TreeItem._bindings.method_call_recursive,
       this._owner,
       _method
     );

@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
+import { StringName } from '@js_godot/variant/string_name'
+import { PackedStringArray } from '@js_godot/variant/packed_string_array'
 import { MultiplayerPeer } from '@js_godot/classes/multiplayer_peer'
 import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
-import { PackedStringArray } from '@js_godot/variant/packed_string_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -202,9 +202,10 @@ export class WebSocketMultiplayerPeer extends MultiplayerPeer{
       );
     }
   }
+  
   create_client(_url, _tls_client_options) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_client,
+      WebSocketMultiplayerPeer._bindings.method_create_client,
       this._owner,
 			Variant.INT,
       _url, _tls_client_options
@@ -213,7 +214,7 @@ export class WebSocketMultiplayerPeer extends MultiplayerPeer{
   }
   create_server(_port, _bind_address, _tls_server_options) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_server,
+      WebSocketMultiplayerPeer._bindings.method_create_server,
       this._owner,
 			Variant.INT,
       _port, _bind_address, _tls_server_options
@@ -222,7 +223,7 @@ export class WebSocketMultiplayerPeer extends MultiplayerPeer{
   }
   get_peer(_peer_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_peer,
+      WebSocketMultiplayerPeer._bindings.method_get_peer,
       this._owner,
 			Variant.INT,
       _peer_id
@@ -231,7 +232,7 @@ export class WebSocketMultiplayerPeer extends MultiplayerPeer{
   }
   get_peer_address(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_peer_address,
+      WebSocketMultiplayerPeer._bindings.method_get_peer_address,
       this._owner,
 			Variant.Type.STRING,
     
@@ -241,7 +242,7 @@ export class WebSocketMultiplayerPeer extends MultiplayerPeer{
   }
   get_peer_port(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_peer_port,
+      WebSocketMultiplayerPeer._bindings.method_get_peer_port,
       this._owner,
 			Variant.Type.INT,
       _id
@@ -250,7 +251,7 @@ export class WebSocketMultiplayerPeer extends MultiplayerPeer{
   }
   get_supported_protocols() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_supported_protocols,
+      WebSocketMultiplayerPeer._bindings.method_get_supported_protocols,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -260,7 +261,7 @@ export class WebSocketMultiplayerPeer extends MultiplayerPeer{
   }
   set_supported_protocols(_protocols) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_supported_protocols,
+      WebSocketMultiplayerPeer._bindings.method_set_supported_protocols,
       this._owner,
       _protocols
     );
@@ -268,7 +269,7 @@ export class WebSocketMultiplayerPeer extends MultiplayerPeer{
   }
   get_handshake_headers() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_handshake_headers,
+      WebSocketMultiplayerPeer._bindings.method_get_handshake_headers,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -278,7 +279,7 @@ export class WebSocketMultiplayerPeer extends MultiplayerPeer{
   }
   set_handshake_headers(_protocols) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_handshake_headers,
+      WebSocketMultiplayerPeer._bindings.method_set_handshake_headers,
       this._owner,
       _protocols
     );
@@ -286,7 +287,7 @@ export class WebSocketMultiplayerPeer extends MultiplayerPeer{
   }
   get_inbound_buffer_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_inbound_buffer_size,
+      WebSocketMultiplayerPeer._bindings.method_get_inbound_buffer_size,
       this._owner,
 			Variant.Type.INT,
       
@@ -295,7 +296,7 @@ export class WebSocketMultiplayerPeer extends MultiplayerPeer{
   }
   set_inbound_buffer_size(_buffer_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_inbound_buffer_size,
+      WebSocketMultiplayerPeer._bindings.method_set_inbound_buffer_size,
       this._owner,
       _buffer_size
     );
@@ -303,7 +304,7 @@ export class WebSocketMultiplayerPeer extends MultiplayerPeer{
   }
   get_outbound_buffer_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_outbound_buffer_size,
+      WebSocketMultiplayerPeer._bindings.method_get_outbound_buffer_size,
       this._owner,
 			Variant.Type.INT,
       
@@ -312,7 +313,7 @@ export class WebSocketMultiplayerPeer extends MultiplayerPeer{
   }
   set_outbound_buffer_size(_buffer_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_outbound_buffer_size,
+      WebSocketMultiplayerPeer._bindings.method_set_outbound_buffer_size,
       this._owner,
       _buffer_size
     );
@@ -320,7 +321,7 @@ export class WebSocketMultiplayerPeer extends MultiplayerPeer{
   }
   get_handshake_timeout() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_handshake_timeout,
+      WebSocketMultiplayerPeer._bindings.method_get_handshake_timeout,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -329,7 +330,7 @@ export class WebSocketMultiplayerPeer extends MultiplayerPeer{
   }
   set_handshake_timeout(_timeout) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_handshake_timeout,
+      WebSocketMultiplayerPeer._bindings.method_set_handshake_timeout,
       this._owner,
       _timeout
     );
@@ -337,7 +338,7 @@ export class WebSocketMultiplayerPeer extends MultiplayerPeer{
   }
   set_max_queued_packets(_max_queued_packets) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_max_queued_packets,
+      WebSocketMultiplayerPeer._bindings.method_set_max_queued_packets,
       this._owner,
       _max_queued_packets
     );
@@ -345,7 +346,7 @@ export class WebSocketMultiplayerPeer extends MultiplayerPeer{
   }
   get_max_queued_packets() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_max_queued_packets,
+      WebSocketMultiplayerPeer._bindings.method_get_max_queued_packets,
       this._owner,
 			Variant.Type.INT,
       

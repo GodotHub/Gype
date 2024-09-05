@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { Dictionary } from '@js_godot/variant/dictionary'
-import { GodotObject } from '@js_godot/classes/godot_object'
 import { StringName } from '@js_godot/variant/string_name'
 import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { GodotObject } from '@js_godot/classes/godot_object'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -291,9 +291,10 @@ class _MethodBindings {
       );
     }
   }
+  
   get_class_list() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_class_list,
+      _ClassDB._bindings.method_get_class_list,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -303,7 +304,7 @@ class _MethodBindings {
   }
   get_inheriters_from_class(_class) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_inheriters_from_class,
+      _ClassDB._bindings.method_get_inheriters_from_class,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -313,7 +314,7 @@ class _MethodBindings {
   }
   get_parent_class(_class) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_parent_class,
+      _ClassDB._bindings.method_get_parent_class,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -323,7 +324,7 @@ class _MethodBindings {
   }
   class_exists(_class) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_class_exists,
+      _ClassDB._bindings.method_class_exists,
       this._owner,
 			Variant.Type.BOOL,
       _class
@@ -332,7 +333,7 @@ class _MethodBindings {
   }
   is_parent_class(_class, _inherits) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_parent_class,
+      _ClassDB._bindings.method_is_parent_class,
       this._owner,
 			Variant.Type.BOOL,
       _class, _inherits
@@ -341,7 +342,7 @@ class _MethodBindings {
   }
   can_instantiate(_class) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_can_instantiate,
+      _ClassDB._bindings.method_can_instantiate,
       this._owner,
 			Variant.Type.BOOL,
       _class
@@ -350,7 +351,7 @@ class _MethodBindings {
   }
   instantiate(_class) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_instantiate,
+      _ClassDB._bindings.method_instantiate,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -360,7 +361,7 @@ class _MethodBindings {
   }
   class_has_signal(_class, _signal) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_class_has_signal,
+      _ClassDB._bindings.method_class_has_signal,
       this._owner,
 			Variant.Type.BOOL,
       _class, _signal
@@ -369,7 +370,7 @@ class _MethodBindings {
   }
   class_get_signal(_class, _signal) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_class_get_signal,
+      _ClassDB._bindings.method_class_get_signal,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -379,7 +380,7 @@ class _MethodBindings {
   }
   class_get_signal_list(_class, _no_inheritance) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_class_get_signal_list,
+      _ClassDB._bindings.method_class_get_signal_list,
       this._owner,
 			Variant.INT,
       _class, _no_inheritance
@@ -388,7 +389,7 @@ class _MethodBindings {
   }
   class_get_property_list(_class, _no_inheritance) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_class_get_property_list,
+      _ClassDB._bindings.method_class_get_property_list,
       this._owner,
 			Variant.INT,
       _class, _no_inheritance
@@ -397,7 +398,7 @@ class _MethodBindings {
   }
   class_get_property(_object, _property) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_class_get_property,
+      _ClassDB._bindings.method_class_get_property,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -407,7 +408,7 @@ class _MethodBindings {
   }
   class_set_property(_object, _property, _value) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_class_set_property,
+      _ClassDB._bindings.method_class_set_property,
       this._owner,
 			Variant.INT,
       _object, _property, _value
@@ -416,7 +417,7 @@ class _MethodBindings {
   }
   class_get_property_default_value(_class, _property) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_class_get_property_default_value,
+      _ClassDB._bindings.method_class_get_property_default_value,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -426,7 +427,7 @@ class _MethodBindings {
   }
   class_has_method(_class, _method, _no_inheritance) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_class_has_method,
+      _ClassDB._bindings.method_class_has_method,
       this._owner,
 			Variant.Type.BOOL,
       _class, _method, _no_inheritance
@@ -435,7 +436,7 @@ class _MethodBindings {
   }
   class_get_method_argument_count(_class, _method, _no_inheritance) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_class_get_method_argument_count,
+      _ClassDB._bindings.method_class_get_method_argument_count,
       this._owner,
 			Variant.Type.INT,
       _class, _method, _no_inheritance
@@ -444,7 +445,7 @@ class _MethodBindings {
   }
   class_get_method_list(_class, _no_inheritance) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_class_get_method_list,
+      _ClassDB._bindings.method_class_get_method_list,
       this._owner,
 			Variant.INT,
       _class, _no_inheritance
@@ -453,7 +454,7 @@ class _MethodBindings {
   }
   class_get_integer_constant_list(_class, _no_inheritance) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_class_get_integer_constant_list,
+      _ClassDB._bindings.method_class_get_integer_constant_list,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -463,7 +464,7 @@ class _MethodBindings {
   }
   class_has_integer_constant(_class, _name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_class_has_integer_constant,
+      _ClassDB._bindings.method_class_has_integer_constant,
       this._owner,
 			Variant.Type.BOOL,
       _class, _name
@@ -472,7 +473,7 @@ class _MethodBindings {
   }
   class_get_integer_constant(_class, _name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_class_get_integer_constant,
+      _ClassDB._bindings.method_class_get_integer_constant,
       this._owner,
 			Variant.Type.INT,
       _class, _name
@@ -481,7 +482,7 @@ class _MethodBindings {
   }
   class_has_enum(_class, _name, _no_inheritance) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_class_has_enum,
+      _ClassDB._bindings.method_class_has_enum,
       this._owner,
 			Variant.Type.BOOL,
       _class, _name, _no_inheritance
@@ -490,7 +491,7 @@ class _MethodBindings {
   }
   class_get_enum_list(_class, _no_inheritance) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_class_get_enum_list,
+      _ClassDB._bindings.method_class_get_enum_list,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -500,7 +501,7 @@ class _MethodBindings {
   }
   class_get_enum_constants(_class, _enum, _no_inheritance) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_class_get_enum_constants,
+      _ClassDB._bindings.method_class_get_enum_constants,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -510,7 +511,7 @@ class _MethodBindings {
   }
   class_get_integer_constant_enum(_class, _name, _no_inheritance) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_class_get_integer_constant_enum,
+      _ClassDB._bindings.method_class_get_integer_constant_enum,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -520,7 +521,7 @@ class _MethodBindings {
   }
   is_class_enum_bitfield(_class, _enum, _no_inheritance) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_class_enum_bitfield,
+      _ClassDB._bindings.method_is_class_enum_bitfield,
       this._owner,
 			Variant.Type.BOOL,
       _class, _enum, _no_inheritance
@@ -529,7 +530,7 @@ class _MethodBindings {
   }
   is_class_enabled(_class) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_class_enabled,
+      _ClassDB._bindings.method_is_class_enabled,
       this._owner,
 			Variant.Type.BOOL,
       _class
@@ -543,4 +544,17 @@ class _MethodBindings {
     this._init_bindings();
   }
 }
-export const ClassDB = new _ClassDB();
+export const ClassDB = (function () {
+  let _instance;
+  function create_instance() {
+    return new _ClassDB();
+  }
+  return {
+    instance: function () {
+      if (!_instance) {
+        _instance = create_instance();
+      }
+      return _instance;
+    },
+  };
+})();

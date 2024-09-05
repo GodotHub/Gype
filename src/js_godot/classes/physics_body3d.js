@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { Transform3D } from '@js_godot/variant/transform3d'
-import { Vector3 } from '@js_godot/variant/vector3'
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Vector3 } from '@js_godot/variant/vector3'
 import { CollisionObject3D } from '@js_godot/classes/collision_object3d'
 import {
   call_utility_ret,
@@ -112,9 +112,10 @@ export class PhysicsBody3D extends CollisionObject3D{
       );
     }
   }
+  
   move_and_collide(_motion, _test_only, _safe_margin, _recovery_as_collision, _max_collisions) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_move_and_collide,
+      PhysicsBody3D._bindings.method_move_and_collide,
       this._owner,
 			Variant.INT,
       _motion, _test_only, _safe_margin, _recovery_as_collision, _max_collisions
@@ -123,7 +124,7 @@ export class PhysicsBody3D extends CollisionObject3D{
   }
   test_move(_from, _motion, _collision, _safe_margin, _recovery_as_collision, _max_collisions) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_test_move,
+      PhysicsBody3D._bindings.method_test_move,
       this._owner,
 			Variant.Type.BOOL,
       _from, _motion, _collision, _safe_margin, _recovery_as_collision, _max_collisions
@@ -132,7 +133,7 @@ export class PhysicsBody3D extends CollisionObject3D{
   }
   get_gravity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_gravity,
+      PhysicsBody3D._bindings.method_get_gravity,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -142,7 +143,7 @@ export class PhysicsBody3D extends CollisionObject3D{
   }
   set_axis_lock(_axis, _lock) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_axis_lock,
+      PhysicsBody3D._bindings.method_set_axis_lock,
       this._owner,
       _axis, _lock
     );
@@ -150,7 +151,7 @@ export class PhysicsBody3D extends CollisionObject3D{
   }
   get_axis_lock(_axis) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_axis_lock,
+      PhysicsBody3D._bindings.method_get_axis_lock,
       this._owner,
 			Variant.Type.BOOL,
       _axis
@@ -159,7 +160,7 @@ export class PhysicsBody3D extends CollisionObject3D{
   }
   get_collision_exceptions() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_exceptions,
+      PhysicsBody3D._bindings.method_get_collision_exceptions,
       this._owner,
 			Variant.INT,
       
@@ -168,7 +169,7 @@ export class PhysicsBody3D extends CollisionObject3D{
   }
   add_collision_exception_with(_body) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_collision_exception_with,
+      PhysicsBody3D._bindings.method_add_collision_exception_with,
       this._owner,
       _body
     );
@@ -176,7 +177,7 @@ export class PhysicsBody3D extends CollisionObject3D{
   }
   remove_collision_exception_with(_body) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_collision_exception_with,
+      PhysicsBody3D._bindings.method_remove_collision_exception_with,
       this._owner,
       _body
     );

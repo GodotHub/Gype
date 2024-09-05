@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
-import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
 import { AudioStream } from '@js_godot/classes/audio_stream'
+import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -261,9 +261,10 @@ export class AudioStreamInteractive extends AudioStream{
       );
     }
   }
+  
   set_clip_count(_clip_count) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_clip_count,
+      AudioStreamInteractive._bindings.method_set_clip_count,
       this._owner,
       _clip_count
     );
@@ -271,7 +272,7 @@ export class AudioStreamInteractive extends AudioStream{
   }
   get_clip_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_clip_count,
+      AudioStreamInteractive._bindings.method_get_clip_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -280,7 +281,7 @@ export class AudioStreamInteractive extends AudioStream{
   }
   set_initial_clip(_clip_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_initial_clip,
+      AudioStreamInteractive._bindings.method_set_initial_clip,
       this._owner,
       _clip_index
     );
@@ -288,7 +289,7 @@ export class AudioStreamInteractive extends AudioStream{
   }
   get_initial_clip() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_initial_clip,
+      AudioStreamInteractive._bindings.method_get_initial_clip,
       this._owner,
 			Variant.Type.INT,
       
@@ -297,7 +298,7 @@ export class AudioStreamInteractive extends AudioStream{
   }
   set_clip_name(_clip_index, _name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_clip_name,
+      AudioStreamInteractive._bindings.method_set_clip_name,
       this._owner,
       _clip_index, _name
     );
@@ -305,7 +306,7 @@ export class AudioStreamInteractive extends AudioStream{
   }
   get_clip_name(_clip_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_clip_name,
+      AudioStreamInteractive._bindings.method_get_clip_name,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -315,7 +316,7 @@ export class AudioStreamInteractive extends AudioStream{
   }
   set_clip_stream(_clip_index, _stream) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_clip_stream,
+      AudioStreamInteractive._bindings.method_set_clip_stream,
       this._owner,
       _clip_index, _stream
     );
@@ -323,7 +324,7 @@ export class AudioStreamInteractive extends AudioStream{
   }
   get_clip_stream(_clip_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_clip_stream,
+      AudioStreamInteractive._bindings.method_get_clip_stream,
       this._owner,
 			Variant.INT,
       _clip_index
@@ -332,7 +333,7 @@ export class AudioStreamInteractive extends AudioStream{
   }
   set_clip_auto_advance(_clip_index, _mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_clip_auto_advance,
+      AudioStreamInteractive._bindings.method_set_clip_auto_advance,
       this._owner,
       _clip_index, _mode
     );
@@ -340,7 +341,7 @@ export class AudioStreamInteractive extends AudioStream{
   }
   get_clip_auto_advance(_clip_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_clip_auto_advance,
+      AudioStreamInteractive._bindings.method_get_clip_auto_advance,
       this._owner,
 			Variant.INT,
       _clip_index
@@ -349,7 +350,7 @@ export class AudioStreamInteractive extends AudioStream{
   }
   set_clip_auto_advance_next_clip(_clip_index, _auto_advance_next_clip) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_clip_auto_advance_next_clip,
+      AudioStreamInteractive._bindings.method_set_clip_auto_advance_next_clip,
       this._owner,
       _clip_index, _auto_advance_next_clip
     );
@@ -357,7 +358,7 @@ export class AudioStreamInteractive extends AudioStream{
   }
   get_clip_auto_advance_next_clip(_clip_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_clip_auto_advance_next_clip,
+      AudioStreamInteractive._bindings.method_get_clip_auto_advance_next_clip,
       this._owner,
 			Variant.Type.INT,
       _clip_index
@@ -366,7 +367,7 @@ export class AudioStreamInteractive extends AudioStream{
   }
   add_transition(_from_clip, _to_clip, _from_time, _to_time, _fade_mode, _fade_beats, _use_filler_clip, _filler_clip, _hold_previous) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_transition,
+      AudioStreamInteractive._bindings.method_add_transition,
       this._owner,
       _from_clip, _to_clip, _from_time, _to_time, _fade_mode, _fade_beats, _use_filler_clip, _filler_clip, _hold_previous
     );
@@ -374,7 +375,7 @@ export class AudioStreamInteractive extends AudioStream{
   }
   has_transition(_from_clip, _to_clip) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_transition,
+      AudioStreamInteractive._bindings.method_has_transition,
       this._owner,
 			Variant.Type.BOOL,
       _from_clip, _to_clip
@@ -383,7 +384,7 @@ export class AudioStreamInteractive extends AudioStream{
   }
   erase_transition(_from_clip, _to_clip) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_erase_transition,
+      AudioStreamInteractive._bindings.method_erase_transition,
       this._owner,
       _from_clip, _to_clip
     );
@@ -391,7 +392,7 @@ export class AudioStreamInteractive extends AudioStream{
   }
   get_transition_list() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_transition_list,
+      AudioStreamInteractive._bindings.method_get_transition_list,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -401,7 +402,7 @@ export class AudioStreamInteractive extends AudioStream{
   }
   get_transition_from_time(_from_clip, _to_clip) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_transition_from_time,
+      AudioStreamInteractive._bindings.method_get_transition_from_time,
       this._owner,
 			Variant.INT,
       _from_clip, _to_clip
@@ -410,7 +411,7 @@ export class AudioStreamInteractive extends AudioStream{
   }
   get_transition_to_time(_from_clip, _to_clip) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_transition_to_time,
+      AudioStreamInteractive._bindings.method_get_transition_to_time,
       this._owner,
 			Variant.INT,
       _from_clip, _to_clip
@@ -419,7 +420,7 @@ export class AudioStreamInteractive extends AudioStream{
   }
   get_transition_fade_mode(_from_clip, _to_clip) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_transition_fade_mode,
+      AudioStreamInteractive._bindings.method_get_transition_fade_mode,
       this._owner,
 			Variant.INT,
       _from_clip, _to_clip
@@ -428,7 +429,7 @@ export class AudioStreamInteractive extends AudioStream{
   }
   get_transition_fade_beats(_from_clip, _to_clip) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_transition_fade_beats,
+      AudioStreamInteractive._bindings.method_get_transition_fade_beats,
       this._owner,
 			Variant.Type.FLOAT,
       _from_clip, _to_clip
@@ -437,7 +438,7 @@ export class AudioStreamInteractive extends AudioStream{
   }
   is_transition_using_filler_clip(_from_clip, _to_clip) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_transition_using_filler_clip,
+      AudioStreamInteractive._bindings.method_is_transition_using_filler_clip,
       this._owner,
 			Variant.Type.BOOL,
       _from_clip, _to_clip
@@ -446,7 +447,7 @@ export class AudioStreamInteractive extends AudioStream{
   }
   get_transition_filler_clip(_from_clip, _to_clip) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_transition_filler_clip,
+      AudioStreamInteractive._bindings.method_get_transition_filler_clip,
       this._owner,
 			Variant.Type.INT,
       _from_clip, _to_clip
@@ -455,7 +456,7 @@ export class AudioStreamInteractive extends AudioStream{
   }
   is_transition_holding_previous(_from_clip, _to_clip) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_transition_holding_previous,
+      AudioStreamInteractive._bindings.method_is_transition_holding_previous,
       this._owner,
 			Variant.Type.BOOL,
       _from_clip, _to_clip

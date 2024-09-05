@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { Container } from '@js_godot/classes/container'
 import {
   call_utility_ret,
@@ -80,9 +80,10 @@ export class BoxContainer extends Container{
       );
     }
   }
+  
   add_spacer(_begin) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_add_spacer,
+      BoxContainer._bindings.method_add_spacer,
       this._owner,
 			Variant.INT,
       _begin
@@ -91,7 +92,7 @@ export class BoxContainer extends Container{
   }
   set_alignment(_alignment) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_alignment,
+      BoxContainer._bindings.method_set_alignment,
       this._owner,
       _alignment
     );
@@ -99,7 +100,7 @@ export class BoxContainer extends Container{
   }
   get_alignment() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_alignment,
+      BoxContainer._bindings.method_get_alignment,
       this._owner,
 			Variant.INT,
       
@@ -108,7 +109,7 @@ export class BoxContainer extends Container{
   }
   set_vertical(_vertical) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_vertical,
+      BoxContainer._bindings.method_set_vertical,
       this._owner,
       _vertical
     );
@@ -116,7 +117,7 @@ export class BoxContainer extends Container{
   }
   is_vertical() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_vertical,
+      BoxContainer._bindings.method_is_vertical,
       this._owner,
 			Variant.Type.BOOL,
       

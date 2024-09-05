@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -60,9 +60,10 @@ export class Mutex extends RefCounted{
       );
     }
   }
+  
   lock() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_lock,
+      Mutex._bindings.method_lock,
       this._owner,
       
     );
@@ -70,7 +71,7 @@ export class Mutex extends RefCounted{
   }
   try_lock() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_try_lock,
+      Mutex._bindings.method_try_lock,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -79,7 +80,7 @@ export class Mutex extends RefCounted{
   }
   unlock() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_unlock,
+      Mutex._bindings.method_unlock,
       this._owner,
       
     );

@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { Color } from '@js_godot/variant/color'
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { VisualShaderNodeParameter } from '@js_godot/classes/visual_shader_node_parameter'
+import { Color } from '@js_godot/variant/color'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -71,9 +71,10 @@ export class VisualShaderNodeColorParameter extends VisualShaderNodeParameter{
       );
     }
   }
+  
   set_default_value_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_default_value_enabled,
+      VisualShaderNodeColorParameter._bindings.method_set_default_value_enabled,
       this._owner,
       _enabled
     );
@@ -81,7 +82,7 @@ export class VisualShaderNodeColorParameter extends VisualShaderNodeParameter{
   }
   is_default_value_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_default_value_enabled,
+      VisualShaderNodeColorParameter._bindings.method_is_default_value_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -90,7 +91,7 @@ export class VisualShaderNodeColorParameter extends VisualShaderNodeParameter{
   }
   set_default_value(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_default_value,
+      VisualShaderNodeColorParameter._bindings.method_set_default_value,
       this._owner,
       _value
     );
@@ -98,7 +99,7 @@ export class VisualShaderNodeColorParameter extends VisualShaderNodeParameter{
   }
   get_default_value() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_default_value,
+      VisualShaderNodeColorParameter._bindings.method_get_default_value,
       this._owner,
 			Variant.Type.COLOR,
     

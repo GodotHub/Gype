@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { PackedInt64Array } from '@js_godot/variant/packed_int64_array'
-import { StringName } from '@js_godot/variant/string_name'
-import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
-import { Vector2 } from '@js_godot/variant/vector2'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { Vector2 } from '@js_godot/variant/vector2'
+import { PackedInt64Array } from '@js_godot/variant/packed_int64_array'
+import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -263,13 +263,14 @@ export class AStar2D extends RefCounted{
       );
     }
   }
+  
   _estimate_cost(_from_id, _to_id) {
   }
   _compute_cost(_from_id, _to_id) {
   }
   get_available_point_id() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_available_point_id,
+      AStar2D._bindings.method_get_available_point_id,
       this._owner,
 			Variant.Type.INT,
       
@@ -278,7 +279,7 @@ export class AStar2D extends RefCounted{
   }
   add_point(_id, _position, _weight_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_point,
+      AStar2D._bindings.method_add_point,
       this._owner,
       _id, _position, _weight_scale
     );
@@ -286,7 +287,7 @@ export class AStar2D extends RefCounted{
   }
   get_point_position(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_point_position,
+      AStar2D._bindings.method_get_point_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -296,7 +297,7 @@ export class AStar2D extends RefCounted{
   }
   set_point_position(_id, _position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_point_position,
+      AStar2D._bindings.method_set_point_position,
       this._owner,
       _id, _position
     );
@@ -304,7 +305,7 @@ export class AStar2D extends RefCounted{
   }
   get_point_weight_scale(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_point_weight_scale,
+      AStar2D._bindings.method_get_point_weight_scale,
       this._owner,
 			Variant.Type.FLOAT,
       _id
@@ -313,7 +314,7 @@ export class AStar2D extends RefCounted{
   }
   set_point_weight_scale(_id, _weight_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_point_weight_scale,
+      AStar2D._bindings.method_set_point_weight_scale,
       this._owner,
       _id, _weight_scale
     );
@@ -321,7 +322,7 @@ export class AStar2D extends RefCounted{
   }
   remove_point(_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_point,
+      AStar2D._bindings.method_remove_point,
       this._owner,
       _id
     );
@@ -329,7 +330,7 @@ export class AStar2D extends RefCounted{
   }
   has_point(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_point,
+      AStar2D._bindings.method_has_point,
       this._owner,
 			Variant.Type.BOOL,
       _id
@@ -338,7 +339,7 @@ export class AStar2D extends RefCounted{
   }
   get_point_connections(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_point_connections,
+      AStar2D._bindings.method_get_point_connections,
       this._owner,
 			Variant.Type.PACKED_INT64_ARRAY,
     
@@ -348,7 +349,7 @@ export class AStar2D extends RefCounted{
   }
   get_point_ids() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_point_ids,
+      AStar2D._bindings.method_get_point_ids,
       this._owner,
 			Variant.Type.PACKED_INT64_ARRAY,
     
@@ -358,7 +359,7 @@ export class AStar2D extends RefCounted{
   }
   set_point_disabled(_id, _disabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_point_disabled,
+      AStar2D._bindings.method_set_point_disabled,
       this._owner,
       _id, _disabled
     );
@@ -366,7 +367,7 @@ export class AStar2D extends RefCounted{
   }
   is_point_disabled(_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_point_disabled,
+      AStar2D._bindings.method_is_point_disabled,
       this._owner,
 			Variant.Type.BOOL,
       _id
@@ -375,7 +376,7 @@ export class AStar2D extends RefCounted{
   }
   connect_points(_id, _to_id, _bidirectional) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_connect_points,
+      AStar2D._bindings.method_connect_points,
       this._owner,
       _id, _to_id, _bidirectional
     );
@@ -383,7 +384,7 @@ export class AStar2D extends RefCounted{
   }
   disconnect_points(_id, _to_id, _bidirectional) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_disconnect_points,
+      AStar2D._bindings.method_disconnect_points,
       this._owner,
       _id, _to_id, _bidirectional
     );
@@ -391,7 +392,7 @@ export class AStar2D extends RefCounted{
   }
   are_points_connected(_id, _to_id, _bidirectional) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_are_points_connected,
+      AStar2D._bindings.method_are_points_connected,
       this._owner,
 			Variant.Type.BOOL,
       _id, _to_id, _bidirectional
@@ -400,7 +401,7 @@ export class AStar2D extends RefCounted{
   }
   get_point_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_point_count,
+      AStar2D._bindings.method_get_point_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -409,7 +410,7 @@ export class AStar2D extends RefCounted{
   }
   get_point_capacity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_point_capacity,
+      AStar2D._bindings.method_get_point_capacity,
       this._owner,
 			Variant.Type.INT,
       
@@ -418,7 +419,7 @@ export class AStar2D extends RefCounted{
   }
   reserve_space(_num_nodes) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_reserve_space,
+      AStar2D._bindings.method_reserve_space,
       this._owner,
       _num_nodes
     );
@@ -426,7 +427,7 @@ export class AStar2D extends RefCounted{
   }
   clear() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear,
+      AStar2D._bindings.method_clear,
       this._owner,
       
     );
@@ -434,7 +435,7 @@ export class AStar2D extends RefCounted{
   }
   get_closest_point(_to_position, _include_disabled) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_closest_point,
+      AStar2D._bindings.method_get_closest_point,
       this._owner,
 			Variant.Type.INT,
       _to_position, _include_disabled
@@ -443,7 +444,7 @@ export class AStar2D extends RefCounted{
   }
   get_closest_position_in_segment(_to_position) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_closest_position_in_segment,
+      AStar2D._bindings.method_get_closest_position_in_segment,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -453,7 +454,7 @@ export class AStar2D extends RefCounted{
   }
   get_point_path(_from_id, _to_id, _allow_partial_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_point_path,
+      AStar2D._bindings.method_get_point_path,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -463,7 +464,7 @@ export class AStar2D extends RefCounted{
   }
   get_id_path(_from_id, _to_id, _allow_partial_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_id_path,
+      AStar2D._bindings.method_get_id_path,
       this._owner,
 			Variant.Type.PACKED_INT64_ARRAY,
     

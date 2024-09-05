@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { GodotObject } from '@js_godot/classes/godot_object'
 import {
   call_utility_ret,
@@ -80,9 +80,10 @@ export class EditorSelection extends GodotObject{
       );
     }
   }
+  
   clear() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear,
+      EditorSelection._bindings.method_clear,
       this._owner,
       
     );
@@ -90,7 +91,7 @@ export class EditorSelection extends GodotObject{
   }
   add_node(_node) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_node,
+      EditorSelection._bindings.method_add_node,
       this._owner,
       _node
     );
@@ -98,7 +99,7 @@ export class EditorSelection extends GodotObject{
   }
   remove_node(_node) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_node,
+      EditorSelection._bindings.method_remove_node,
       this._owner,
       _node
     );
@@ -106,7 +107,7 @@ export class EditorSelection extends GodotObject{
   }
   get_selected_nodes() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_selected_nodes,
+      EditorSelection._bindings.method_get_selected_nodes,
       this._owner,
 			Variant.INT,
       
@@ -115,7 +116,7 @@ export class EditorSelection extends GodotObject{
   }
   get_transformable_selected_nodes() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_transformable_selected_nodes,
+      EditorSelection._bindings.method_get_transformable_selected_nodes,
       this._owner,
 			Variant.INT,
       

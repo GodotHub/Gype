@@ -1,11 +1,11 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
-import { RefCounted } from '@js_godot/classes/ref_counted'
-import { PackedStringArray } from '@js_godot/variant/packed_string_array'
 import { GDArray } from '@js_godot/variant/gd_array'
 import { NodePath } from '@js_godot/variant/node_path'
+import { RefCounted } from '@js_godot/classes/ref_counted'
+import { Variant } from '@js_godot/variant/variant'
+import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { StringName } from '@js_godot/variant/string_name'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -244,9 +244,10 @@ export class SceneState extends RefCounted{
       );
     }
   }
+  
   get_node_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_node_count,
+      SceneState._bindings.method_get_node_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -255,7 +256,7 @@ export class SceneState extends RefCounted{
   }
   get_node_type(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_node_type,
+      SceneState._bindings.method_get_node_type,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -265,7 +266,7 @@ export class SceneState extends RefCounted{
   }
   get_node_name(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_node_name,
+      SceneState._bindings.method_get_node_name,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -275,7 +276,7 @@ export class SceneState extends RefCounted{
   }
   get_node_path(_idx, _for_parent) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_node_path,
+      SceneState._bindings.method_get_node_path,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -285,7 +286,7 @@ export class SceneState extends RefCounted{
   }
   get_node_owner_path(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_node_owner_path,
+      SceneState._bindings.method_get_node_owner_path,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -295,7 +296,7 @@ export class SceneState extends RefCounted{
   }
   is_node_instance_placeholder(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_node_instance_placeholder,
+      SceneState._bindings.method_is_node_instance_placeholder,
       this._owner,
 			Variant.Type.BOOL,
       _idx
@@ -304,7 +305,7 @@ export class SceneState extends RefCounted{
   }
   get_node_instance_placeholder(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_node_instance_placeholder,
+      SceneState._bindings.method_get_node_instance_placeholder,
       this._owner,
 			Variant.Type.STRING,
     
@@ -314,7 +315,7 @@ export class SceneState extends RefCounted{
   }
   get_node_instance(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_node_instance,
+      SceneState._bindings.method_get_node_instance,
       this._owner,
 			Variant.INT,
       _idx
@@ -323,7 +324,7 @@ export class SceneState extends RefCounted{
   }
   get_node_groups(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_node_groups,
+      SceneState._bindings.method_get_node_groups,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -333,7 +334,7 @@ export class SceneState extends RefCounted{
   }
   get_node_index(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_node_index,
+      SceneState._bindings.method_get_node_index,
       this._owner,
 			Variant.Type.INT,
       _idx
@@ -342,7 +343,7 @@ export class SceneState extends RefCounted{
   }
   get_node_property_count(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_node_property_count,
+      SceneState._bindings.method_get_node_property_count,
       this._owner,
 			Variant.Type.INT,
       _idx
@@ -351,7 +352,7 @@ export class SceneState extends RefCounted{
   }
   get_node_property_name(_idx, _prop_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_node_property_name,
+      SceneState._bindings.method_get_node_property_name,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -361,7 +362,7 @@ export class SceneState extends RefCounted{
   }
   get_node_property_value(_idx, _prop_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_node_property_value,
+      SceneState._bindings.method_get_node_property_value,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -371,7 +372,7 @@ export class SceneState extends RefCounted{
   }
   get_connection_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_connection_count,
+      SceneState._bindings.method_get_connection_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -380,7 +381,7 @@ export class SceneState extends RefCounted{
   }
   get_connection_source(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_connection_source,
+      SceneState._bindings.method_get_connection_source,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -390,7 +391,7 @@ export class SceneState extends RefCounted{
   }
   get_connection_signal(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_connection_signal,
+      SceneState._bindings.method_get_connection_signal,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -400,7 +401,7 @@ export class SceneState extends RefCounted{
   }
   get_connection_target(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_connection_target,
+      SceneState._bindings.method_get_connection_target,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -410,7 +411,7 @@ export class SceneState extends RefCounted{
   }
   get_connection_method(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_connection_method,
+      SceneState._bindings.method_get_connection_method,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -420,7 +421,7 @@ export class SceneState extends RefCounted{
   }
   get_connection_flags(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_connection_flags,
+      SceneState._bindings.method_get_connection_flags,
       this._owner,
 			Variant.Type.INT,
       _idx
@@ -429,7 +430,7 @@ export class SceneState extends RefCounted{
   }
   get_connection_binds(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_connection_binds,
+      SceneState._bindings.method_get_connection_binds,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -439,7 +440,7 @@ export class SceneState extends RefCounted{
   }
   get_connection_unbinds(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_connection_unbinds,
+      SceneState._bindings.method_get_connection_unbinds,
       this._owner,
 			Variant.Type.INT,
       _idx

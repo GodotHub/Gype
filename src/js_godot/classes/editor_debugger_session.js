@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
+import { GDArray } from '@js_godot/variant/gd_array'
+import { RefCounted } from '@js_godot/classes/ref_counted'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
-import { RefCounted } from '@js_godot/classes/ref_counted'
-import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -112,9 +112,10 @@ export class EditorDebuggerSession extends RefCounted{
       );
     }
   }
+  
   send_message(_message, _data) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_send_message,
+      EditorDebuggerSession._bindings.method_send_message,
       this._owner,
       _message, _data
     );
@@ -122,7 +123,7 @@ export class EditorDebuggerSession extends RefCounted{
   }
   toggle_profiler(_profiler, _enable, _data) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_toggle_profiler,
+      EditorDebuggerSession._bindings.method_toggle_profiler,
       this._owner,
       _profiler, _enable, _data
     );
@@ -130,7 +131,7 @@ export class EditorDebuggerSession extends RefCounted{
   }
   is_breaked() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_breaked,
+      EditorDebuggerSession._bindings.method_is_breaked,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -139,7 +140,7 @@ export class EditorDebuggerSession extends RefCounted{
   }
   is_debuggable() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_debuggable,
+      EditorDebuggerSession._bindings.method_is_debuggable,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -148,7 +149,7 @@ export class EditorDebuggerSession extends RefCounted{
   }
   is_active() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_active,
+      EditorDebuggerSession._bindings.method_is_active,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -157,7 +158,7 @@ export class EditorDebuggerSession extends RefCounted{
   }
   add_session_tab(_control) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_session_tab,
+      EditorDebuggerSession._bindings.method_add_session_tab,
       this._owner,
       _control
     );
@@ -165,7 +166,7 @@ export class EditorDebuggerSession extends RefCounted{
   }
   remove_session_tab(_control) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_session_tab,
+      EditorDebuggerSession._bindings.method_remove_session_tab,
       this._owner,
       _control
     );
@@ -173,7 +174,7 @@ export class EditorDebuggerSession extends RefCounted{
   }
   set_breakpoint(_path, _line, _enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_breakpoint,
+      EditorDebuggerSession._bindings.method_set_breakpoint,
       this._owner,
       _path, _line, _enabled
     );

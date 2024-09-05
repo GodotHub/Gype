@@ -1,12 +1,12 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
+import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
 import { Transform3D } from '@js_godot/variant/transform3d'
 import { Resource } from '@js_godot/classes/resource'
-import { Vector3 } from '@js_godot/variant/vector3'
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { Quaternion } from '@js_godot/variant/quaternion'
-import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
+import { Vector3 } from '@js_godot/variant/vector3'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -315,9 +315,10 @@ export class GLTFNode extends Resource{
       );
     }
   }
+  
   get_original_name() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_original_name,
+      GLTFNode._bindings.method_get_original_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -327,7 +328,7 @@ export class GLTFNode extends Resource{
   }
   set_original_name(_original_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_original_name,
+      GLTFNode._bindings.method_set_original_name,
       this._owner,
       _original_name
     );
@@ -335,7 +336,7 @@ export class GLTFNode extends Resource{
   }
   get_parent() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_parent,
+      GLTFNode._bindings.method_get_parent,
       this._owner,
 			Variant.Type.INT,
       
@@ -344,7 +345,7 @@ export class GLTFNode extends Resource{
   }
   set_parent(_parent) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_parent,
+      GLTFNode._bindings.method_set_parent,
       this._owner,
       _parent
     );
@@ -352,7 +353,7 @@ export class GLTFNode extends Resource{
   }
   get_height() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_height,
+      GLTFNode._bindings.method_get_height,
       this._owner,
 			Variant.Type.INT,
       
@@ -361,7 +362,7 @@ export class GLTFNode extends Resource{
   }
   set_height(_height) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_height,
+      GLTFNode._bindings.method_set_height,
       this._owner,
       _height
     );
@@ -369,7 +370,7 @@ export class GLTFNode extends Resource{
   }
   get_xform() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_xform,
+      GLTFNode._bindings.method_get_xform,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -379,7 +380,7 @@ export class GLTFNode extends Resource{
   }
   set_xform(_xform) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_xform,
+      GLTFNode._bindings.method_set_xform,
       this._owner,
       _xform
     );
@@ -387,7 +388,7 @@ export class GLTFNode extends Resource{
   }
   get_mesh() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mesh,
+      GLTFNode._bindings.method_get_mesh,
       this._owner,
 			Variant.Type.INT,
       
@@ -396,7 +397,7 @@ export class GLTFNode extends Resource{
   }
   set_mesh(_mesh) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mesh,
+      GLTFNode._bindings.method_set_mesh,
       this._owner,
       _mesh
     );
@@ -404,7 +405,7 @@ export class GLTFNode extends Resource{
   }
   get_camera() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_camera,
+      GLTFNode._bindings.method_get_camera,
       this._owner,
 			Variant.Type.INT,
       
@@ -413,7 +414,7 @@ export class GLTFNode extends Resource{
   }
   set_camera(_camera) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_camera,
+      GLTFNode._bindings.method_set_camera,
       this._owner,
       _camera
     );
@@ -421,7 +422,7 @@ export class GLTFNode extends Resource{
   }
   get_skin() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_skin,
+      GLTFNode._bindings.method_get_skin,
       this._owner,
 			Variant.Type.INT,
       
@@ -430,7 +431,7 @@ export class GLTFNode extends Resource{
   }
   set_skin(_skin) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_skin,
+      GLTFNode._bindings.method_set_skin,
       this._owner,
       _skin
     );
@@ -438,7 +439,7 @@ export class GLTFNode extends Resource{
   }
   get_skeleton() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_skeleton,
+      GLTFNode._bindings.method_get_skeleton,
       this._owner,
 			Variant.Type.INT,
       
@@ -447,7 +448,7 @@ export class GLTFNode extends Resource{
   }
   set_skeleton(_skeleton) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_skeleton,
+      GLTFNode._bindings.method_set_skeleton,
       this._owner,
       _skeleton
     );
@@ -455,7 +456,7 @@ export class GLTFNode extends Resource{
   }
   get_position() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_position,
+      GLTFNode._bindings.method_get_position,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -465,7 +466,7 @@ export class GLTFNode extends Resource{
   }
   set_position(_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_position,
+      GLTFNode._bindings.method_set_position,
       this._owner,
       _position
     );
@@ -473,7 +474,7 @@ export class GLTFNode extends Resource{
   }
   get_rotation() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rotation,
+      GLTFNode._bindings.method_get_rotation,
       this._owner,
 			Variant.Type.QUATERNION,
     
@@ -483,7 +484,7 @@ export class GLTFNode extends Resource{
   }
   set_rotation(_rotation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_rotation,
+      GLTFNode._bindings.method_set_rotation,
       this._owner,
       _rotation
     );
@@ -491,7 +492,7 @@ export class GLTFNode extends Resource{
   }
   get_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_scale,
+      GLTFNode._bindings.method_get_scale,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -501,7 +502,7 @@ export class GLTFNode extends Resource{
   }
   set_scale(_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_scale,
+      GLTFNode._bindings.method_set_scale,
       this._owner,
       _scale
     );
@@ -509,7 +510,7 @@ export class GLTFNode extends Resource{
   }
   get_children() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_children,
+      GLTFNode._bindings.method_get_children,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -519,7 +520,7 @@ export class GLTFNode extends Resource{
   }
   set_children(_children) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_children,
+      GLTFNode._bindings.method_set_children,
       this._owner,
       _children
     );
@@ -527,7 +528,7 @@ export class GLTFNode extends Resource{
   }
   get_light() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_light,
+      GLTFNode._bindings.method_get_light,
       this._owner,
 			Variant.Type.INT,
       
@@ -536,7 +537,7 @@ export class GLTFNode extends Resource{
   }
   set_light(_light) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_light,
+      GLTFNode._bindings.method_set_light,
       this._owner,
       _light
     );
@@ -544,7 +545,7 @@ export class GLTFNode extends Resource{
   }
   get_additional_data(_extension_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_additional_data,
+      GLTFNode._bindings.method_get_additional_data,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -554,7 +555,7 @@ export class GLTFNode extends Resource{
   }
   set_additional_data(_extension_name, _additional_data) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_additional_data,
+      GLTFNode._bindings.method_set_additional_data,
       this._owner,
       _extension_name, _additional_data
     );

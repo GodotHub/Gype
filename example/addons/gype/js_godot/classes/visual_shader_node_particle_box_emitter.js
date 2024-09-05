@@ -31,6 +31,7 @@ export class VisualShaderNodeParticleBoxEmitter extends VisualShaderNodeParticle
     this.#initialized = true;
   }
   
+  
 
 
   static {

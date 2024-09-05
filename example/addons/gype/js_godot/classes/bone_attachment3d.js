@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { Node3D } from '@js_godot/classes/node3d'
-import { GDString } from '@js_godot/variant/gd_string'
+import { StringName } from '@js_godot/variant/string_name'
 import { NodePath } from '@js_godot/variant/node_path'
+import { Variant } from '@js_godot/variant/variant'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -142,9 +142,10 @@ export class BoneAttachment3D extends Node3D{
       );
     }
   }
+  
   set_bone_name(_bone_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bone_name,
+      BoneAttachment3D._bindings.method_set_bone_name,
       this._owner,
       _bone_name
     );
@@ -152,7 +153,7 @@ export class BoneAttachment3D extends Node3D{
   }
   get_bone_name() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bone_name,
+      BoneAttachment3D._bindings.method_get_bone_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -162,7 +163,7 @@ export class BoneAttachment3D extends Node3D{
   }
   set_bone_idx(_bone_idx) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bone_idx,
+      BoneAttachment3D._bindings.method_set_bone_idx,
       this._owner,
       _bone_idx
     );
@@ -170,7 +171,7 @@ export class BoneAttachment3D extends Node3D{
   }
   get_bone_idx() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bone_idx,
+      BoneAttachment3D._bindings.method_get_bone_idx,
       this._owner,
 			Variant.Type.INT,
       
@@ -179,7 +180,7 @@ export class BoneAttachment3D extends Node3D{
   }
   on_skeleton_update() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_on_skeleton_update,
+      BoneAttachment3D._bindings.method_on_skeleton_update,
       this._owner,
       
     );
@@ -187,7 +188,7 @@ export class BoneAttachment3D extends Node3D{
   }
   set_override_pose(_override_pose) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_override_pose,
+      BoneAttachment3D._bindings.method_set_override_pose,
       this._owner,
       _override_pose
     );
@@ -195,7 +196,7 @@ export class BoneAttachment3D extends Node3D{
   }
   get_override_pose() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_override_pose,
+      BoneAttachment3D._bindings.method_get_override_pose,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -204,7 +205,7 @@ export class BoneAttachment3D extends Node3D{
   }
   set_use_external_skeleton(_use_external_skeleton) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_external_skeleton,
+      BoneAttachment3D._bindings.method_set_use_external_skeleton,
       this._owner,
       _use_external_skeleton
     );
@@ -212,7 +213,7 @@ export class BoneAttachment3D extends Node3D{
   }
   get_use_external_skeleton() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_use_external_skeleton,
+      BoneAttachment3D._bindings.method_get_use_external_skeleton,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -221,7 +222,7 @@ export class BoneAttachment3D extends Node3D{
   }
   set_external_skeleton(_external_skeleton) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_external_skeleton,
+      BoneAttachment3D._bindings.method_set_external_skeleton,
       this._owner,
       _external_skeleton
     );
@@ -229,7 +230,7 @@ export class BoneAttachment3D extends Node3D{
   }
   get_external_skeleton() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_external_skeleton,
+      BoneAttachment3D._bindings.method_get_external_skeleton,
       this._owner,
 			Variant.Type.NODE_PATH,
     

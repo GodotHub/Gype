@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { Vector2 } from '@js_godot/variant/vector2'
 import { RID } from '@js_godot/variant/rid'
-import { Transform2D } from '@js_godot/variant/transform2d'
+import { StringName } from '@js_godot/variant/string_name'
 import { PhysicsDirectSpaceState2D } from '@js_godot/classes/physics_direct_space_state2d'
+import { Variant } from '@js_godot/variant/variant'
+import { Transform2D } from '@js_godot/variant/transform2d'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -43,6 +43,7 @@ export class PhysicsDirectSpaceState2DExtension extends PhysicsDirectSpaceState2
       );
     }
   }
+  
   _intersect_ray(_from, _to, _collision_mask, _collide_with_bodies, _collide_with_areas, _hit_from_inside, _result) {
   }
   _intersect_point(_position, _canvas_instance_id, _collision_mask, _collide_with_bodies, _collide_with_areas, _results, _max_results) {
@@ -57,7 +58,7 @@ export class PhysicsDirectSpaceState2DExtension extends PhysicsDirectSpaceState2
   }
   is_body_excluded_from_query(_body) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_body_excluded_from_query,
+      PhysicsDirectSpaceState2DExtension._bindings.method_is_body_excluded_from_query,
       this._owner,
 			Variant.Type.BOOL,
       _body

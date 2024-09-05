@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
+import { ResourceImporter } from '@js_godot/classes/resource_importer'
 import { Variant } from '@js_godot/variant/variant'
 import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
 import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
-import { ResourceImporter } from '@js_godot/classes/resource_importer'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -52,9 +52,10 @@ export class ResourceImporterOggVorbis extends ResourceImporter{
       );
     }
   }
+  
   load_from_buffer(_buffer) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_load_from_buffer,
+      ResourceImporterOggVorbis._bindings.method_load_from_buffer,
       this._owner,
 			Variant.INT,
       _buffer
@@ -63,7 +64,7 @@ export class ResourceImporterOggVorbis extends ResourceImporter{
   }
   load_from_file(_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_load_from_file,
+      ResourceImporterOggVorbis._bindings.method_load_from_file,
       this._owner,
 			Variant.INT,
       _path

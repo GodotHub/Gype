@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
-import { PackedStringArray } from '@js_godot/variant/packed_string_array'
 import { ImageFormatLoader } from '@js_godot/classes/image_format_loader'
+import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -51,13 +51,14 @@ export class ImageFormatLoaderExtension extends ImageFormatLoader{
       );
     }
   }
+  
   _get_recognized_extensions() {
   }
   _load_image(_image, _fileaccess, _flags, _scale) {
   }
   add_format_loader() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_format_loader,
+      ImageFormatLoaderExtension._bindings.method_add_format_loader,
       this._owner,
       
     );
@@ -65,7 +66,7 @@ export class ImageFormatLoaderExtension extends ImageFormatLoader{
   }
   remove_format_loader() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_format_loader,
+      ImageFormatLoaderExtension._bindings.method_remove_format_loader,
       this._owner,
       
     );

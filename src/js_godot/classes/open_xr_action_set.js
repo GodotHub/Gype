@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
+import { GDArray } from '@js_godot/variant/gd_array'
 import { Resource } from '@js_godot/classes/resource'
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
-import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -122,9 +122,10 @@ export class OpenXRActionSet extends Resource{
       );
     }
   }
+  
   set_localized_name(_localized_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_localized_name,
+      OpenXRActionSet._bindings.method_set_localized_name,
       this._owner,
       _localized_name
     );
@@ -132,7 +133,7 @@ export class OpenXRActionSet extends Resource{
   }
   get_localized_name() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_localized_name,
+      OpenXRActionSet._bindings.method_get_localized_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -142,7 +143,7 @@ export class OpenXRActionSet extends Resource{
   }
   set_priority(_priority) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_priority,
+      OpenXRActionSet._bindings.method_set_priority,
       this._owner,
       _priority
     );
@@ -150,7 +151,7 @@ export class OpenXRActionSet extends Resource{
   }
   get_priority() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_priority,
+      OpenXRActionSet._bindings.method_get_priority,
       this._owner,
 			Variant.Type.INT,
       
@@ -159,7 +160,7 @@ export class OpenXRActionSet extends Resource{
   }
   get_action_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_action_count,
+      OpenXRActionSet._bindings.method_get_action_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -168,7 +169,7 @@ export class OpenXRActionSet extends Resource{
   }
   set_actions(_actions) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_actions,
+      OpenXRActionSet._bindings.method_set_actions,
       this._owner,
       _actions
     );
@@ -176,7 +177,7 @@ export class OpenXRActionSet extends Resource{
   }
   get_actions() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_actions,
+      OpenXRActionSet._bindings.method_get_actions,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -186,7 +187,7 @@ export class OpenXRActionSet extends Resource{
   }
   add_action(_action) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_action,
+      OpenXRActionSet._bindings.method_add_action,
       this._owner,
       _action
     );
@@ -194,7 +195,7 @@ export class OpenXRActionSet extends Resource{
   }
   remove_action(_action) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_action,
+      OpenXRActionSet._bindings.method_remove_action,
       this._owner,
       _action
     );

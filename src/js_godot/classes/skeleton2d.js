@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Node2D } from '@js_godot/classes/node2d'
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { RID } from '@js_godot/variant/rid'
+import { Variant } from '@js_godot/variant/variant'
 import { Transform2D } from '@js_godot/variant/transform2d'
+import { StringName } from '@js_godot/variant/string_name'
+import { Node2D } from '@js_godot/classes/node2d'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -112,9 +112,10 @@ export class Skeleton2D extends Node2D{
       );
     }
   }
+  
   get_bone_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bone_count,
+      Skeleton2D._bindings.method_get_bone_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -123,7 +124,7 @@ export class Skeleton2D extends Node2D{
   }
   get_bone(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bone,
+      Skeleton2D._bindings.method_get_bone,
       this._owner,
 			Variant.INT,
       _idx
@@ -132,7 +133,7 @@ export class Skeleton2D extends Node2D{
   }
   get_skeleton() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_skeleton,
+      Skeleton2D._bindings.method_get_skeleton,
       this._owner,
 			Variant.Type.RID,
     
@@ -142,7 +143,7 @@ export class Skeleton2D extends Node2D{
   }
   set_modification_stack(_modification_stack) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_modification_stack,
+      Skeleton2D._bindings.method_set_modification_stack,
       this._owner,
       _modification_stack
     );
@@ -150,7 +151,7 @@ export class Skeleton2D extends Node2D{
   }
   get_modification_stack() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_modification_stack,
+      Skeleton2D._bindings.method_get_modification_stack,
       this._owner,
 			Variant.INT,
       
@@ -159,7 +160,7 @@ export class Skeleton2D extends Node2D{
   }
   execute_modifications(_delta, _execution_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_execute_modifications,
+      Skeleton2D._bindings.method_execute_modifications,
       this._owner,
       _delta, _execution_mode
     );
@@ -167,7 +168,7 @@ export class Skeleton2D extends Node2D{
   }
   set_bone_local_pose_override(_bone_idx, _override_pose, _strength, _persistent) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bone_local_pose_override,
+      Skeleton2D._bindings.method_set_bone_local_pose_override,
       this._owner,
       _bone_idx, _override_pose, _strength, _persistent
     );
@@ -175,7 +176,7 @@ export class Skeleton2D extends Node2D{
   }
   get_bone_local_pose_override(_bone_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bone_local_pose_override,
+      Skeleton2D._bindings.method_get_bone_local_pose_override,
       this._owner,
 			Variant.Type.TRANSFORM2D,
     

@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { VisualShaderNode } from '@js_godot/classes/visual_shader_node'
 import {
   call_utility_ret,
@@ -90,9 +90,10 @@ export class VisualShaderNodeCubemap extends VisualShaderNode{
       );
     }
   }
+  
   set_source(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_source,
+      VisualShaderNodeCubemap._bindings.method_set_source,
       this._owner,
       _value
     );
@@ -100,7 +101,7 @@ export class VisualShaderNodeCubemap extends VisualShaderNode{
   }
   get_source() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_source,
+      VisualShaderNodeCubemap._bindings.method_get_source,
       this._owner,
 			Variant.INT,
       
@@ -109,7 +110,7 @@ export class VisualShaderNodeCubemap extends VisualShaderNode{
   }
   set_cube_map(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cube_map,
+      VisualShaderNodeCubemap._bindings.method_set_cube_map,
       this._owner,
       _value
     );
@@ -117,7 +118,7 @@ export class VisualShaderNodeCubemap extends VisualShaderNode{
   }
   get_cube_map() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cube_map,
+      VisualShaderNodeCubemap._bindings.method_get_cube_map,
       this._owner,
 			Variant.INT,
       
@@ -126,7 +127,7 @@ export class VisualShaderNodeCubemap extends VisualShaderNode{
   }
   set_texture_type(_value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture_type,
+      VisualShaderNodeCubemap._bindings.method_set_texture_type,
       this._owner,
       _value
     );
@@ -134,7 +135,7 @@ export class VisualShaderNodeCubemap extends VisualShaderNode{
   }
   get_texture_type() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_type,
+      VisualShaderNodeCubemap._bindings.method_get_texture_type,
       this._owner,
 			Variant.INT,
       

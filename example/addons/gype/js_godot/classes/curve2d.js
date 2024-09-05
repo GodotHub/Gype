@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
+import { Vector2 } from '@js_godot/variant/vector2'
 import { Resource } from '@js_godot/classes/resource'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
-import { Vector2 } from '@js_godot/variant/vector2'
 import { Transform2D } from '@js_godot/variant/transform2d'
 import {
   call_utility_ret,
@@ -263,9 +263,10 @@ export class Curve2D extends Resource{
       );
     }
   }
+  
   get_point_count() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_point_count,
+      Curve2D._bindings.method_get_point_count,
       this._owner,
 			Variant.Type.INT,
       
@@ -274,7 +275,7 @@ export class Curve2D extends Resource{
   }
   set_point_count(_count) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_point_count,
+      Curve2D._bindings.method_set_point_count,
       this._owner,
       _count
     );
@@ -282,7 +283,7 @@ export class Curve2D extends Resource{
   }
   add_point(_position, _in, _out, _index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_point,
+      Curve2D._bindings.method_add_point,
       this._owner,
       _position, _in, _out, _index
     );
@@ -290,7 +291,7 @@ export class Curve2D extends Resource{
   }
   set_point_position(_idx, _position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_point_position,
+      Curve2D._bindings.method_set_point_position,
       this._owner,
       _idx, _position
     );
@@ -298,7 +299,7 @@ export class Curve2D extends Resource{
   }
   get_point_position(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_point_position,
+      Curve2D._bindings.method_get_point_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -308,7 +309,7 @@ export class Curve2D extends Resource{
   }
   set_point_in(_idx, _position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_point_in,
+      Curve2D._bindings.method_set_point_in,
       this._owner,
       _idx, _position
     );
@@ -316,7 +317,7 @@ export class Curve2D extends Resource{
   }
   get_point_in(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_point_in,
+      Curve2D._bindings.method_get_point_in,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -326,7 +327,7 @@ export class Curve2D extends Resource{
   }
   set_point_out(_idx, _position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_point_out,
+      Curve2D._bindings.method_set_point_out,
       this._owner,
       _idx, _position
     );
@@ -334,7 +335,7 @@ export class Curve2D extends Resource{
   }
   get_point_out(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_point_out,
+      Curve2D._bindings.method_get_point_out,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -344,7 +345,7 @@ export class Curve2D extends Resource{
   }
   remove_point(_idx) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_point,
+      Curve2D._bindings.method_remove_point,
       this._owner,
       _idx
     );
@@ -352,7 +353,7 @@ export class Curve2D extends Resource{
   }
   clear_points() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_points,
+      Curve2D._bindings.method_clear_points,
       this._owner,
       
     );
@@ -360,7 +361,7 @@ export class Curve2D extends Resource{
   }
   sample(_idx, _t) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_sample,
+      Curve2D._bindings.method_sample,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -370,7 +371,7 @@ export class Curve2D extends Resource{
   }
   samplef(_fofs) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_samplef,
+      Curve2D._bindings.method_samplef,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -380,7 +381,7 @@ export class Curve2D extends Resource{
   }
   set_bake_interval(_distance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_bake_interval,
+      Curve2D._bindings.method_set_bake_interval,
       this._owner,
       _distance
     );
@@ -388,7 +389,7 @@ export class Curve2D extends Resource{
   }
   get_bake_interval() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_bake_interval,
+      Curve2D._bindings.method_get_bake_interval,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -397,7 +398,7 @@ export class Curve2D extends Resource{
   }
   get_baked_length() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_baked_length,
+      Curve2D._bindings.method_get_baked_length,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -406,7 +407,7 @@ export class Curve2D extends Resource{
   }
   sample_baked(_offset, _cubic) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_sample_baked,
+      Curve2D._bindings.method_sample_baked,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -416,7 +417,7 @@ export class Curve2D extends Resource{
   }
   sample_baked_with_rotation(_offset, _cubic) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_sample_baked_with_rotation,
+      Curve2D._bindings.method_sample_baked_with_rotation,
       this._owner,
 			Variant.Type.TRANSFORM2D,
     
@@ -426,7 +427,7 @@ export class Curve2D extends Resource{
   }
   get_baked_points() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_baked_points,
+      Curve2D._bindings.method_get_baked_points,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -436,7 +437,7 @@ export class Curve2D extends Resource{
   }
   get_closest_point(_to_point) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_closest_point,
+      Curve2D._bindings.method_get_closest_point,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -446,7 +447,7 @@ export class Curve2D extends Resource{
   }
   get_closest_offset(_to_point) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_closest_offset,
+      Curve2D._bindings.method_get_closest_offset,
       this._owner,
 			Variant.Type.FLOAT,
       _to_point
@@ -455,7 +456,7 @@ export class Curve2D extends Resource{
   }
   tessellate(_max_stages, _tolerance_degrees) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_tessellate,
+      Curve2D._bindings.method_tessellate,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -465,7 +466,7 @@ export class Curve2D extends Resource{
   }
   tessellate_even_length(_max_stages, _tolerance_length) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_tessellate_even_length,
+      Curve2D._bindings.method_tessellate_even_length,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     

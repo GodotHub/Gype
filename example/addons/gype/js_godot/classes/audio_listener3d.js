@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Transform3D } from '@js_godot/variant/transform3d'
 import { Node3D } from '@js_godot/classes/node3d'
-import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -71,9 +71,10 @@ export class AudioListener3D extends Node3D{
       );
     }
   }
+  
   make_current() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_make_current,
+      AudioListener3D._bindings.method_make_current,
       this._owner,
       
     );
@@ -81,7 +82,7 @@ export class AudioListener3D extends Node3D{
   }
   clear_current() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_current,
+      AudioListener3D._bindings.method_clear_current,
       this._owner,
       
     );
@@ -89,7 +90,7 @@ export class AudioListener3D extends Node3D{
   }
   is_current() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_current,
+      AudioListener3D._bindings.method_is_current,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -98,7 +99,7 @@ export class AudioListener3D extends Node3D{
   }
   get_listener_transform() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_listener_transform,
+      AudioListener3D._bindings.method_get_listener_transform,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     

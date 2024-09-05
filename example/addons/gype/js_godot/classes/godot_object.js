@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Callable } from '@js_godot/variant/callable'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
-import { GDArray } from '@js_godot/variant/gd_array'
 import { NodePath } from '@js_godot/variant/node_path'
+import { Variant } from '@js_godot/variant/variant'
+import { GDString } from '@js_godot/variant/gd_string'
+import { Callable } from '@js_godot/variant/callable'
+import { GDArray } from '@js_godot/variant/gd_array'
 import { Wrapped } from '@js_godot/classes/wrapped'
 import {
   call_utility_ret,
@@ -494,9 +494,10 @@ export class GodotObject extends Wrapped{
       );
     }
   }
+  
   get_class() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_class,
+      GodotObject._bindings.method_get_class,
       this._owner,
 			Variant.Type.STRING,
     
@@ -506,7 +507,7 @@ export class GodotObject extends Wrapped{
   }
   is_class(_class) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_class,
+      GodotObject._bindings.method_is_class,
       this._owner,
 			Variant.Type.BOOL,
       _class
@@ -515,7 +516,7 @@ export class GodotObject extends Wrapped{
   }
   set(_property, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set,
+      GodotObject._bindings.method_set,
       this._owner,
       _property, _value
     );
@@ -523,7 +524,7 @@ export class GodotObject extends Wrapped{
   }
   get(_property) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get,
+      GodotObject._bindings.method_get,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -533,7 +534,7 @@ export class GodotObject extends Wrapped{
   }
   set_indexed(_property_path, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_indexed,
+      GodotObject._bindings.method_set_indexed,
       this._owner,
       _property_path, _value
     );
@@ -541,7 +542,7 @@ export class GodotObject extends Wrapped{
   }
   get_indexed(_property_path) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_indexed,
+      GodotObject._bindings.method_get_indexed,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -551,7 +552,7 @@ export class GodotObject extends Wrapped{
   }
   get_property_list() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_property_list,
+      GodotObject._bindings.method_get_property_list,
       this._owner,
 			Variant.INT,
       
@@ -560,7 +561,7 @@ export class GodotObject extends Wrapped{
   }
   get_method_list() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_method_list,
+      GodotObject._bindings.method_get_method_list,
       this._owner,
 			Variant.INT,
       
@@ -569,7 +570,7 @@ export class GodotObject extends Wrapped{
   }
   property_can_revert(_property) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_property_can_revert,
+      GodotObject._bindings.method_property_can_revert,
       this._owner,
 			Variant.Type.BOOL,
       _property
@@ -578,7 +579,7 @@ export class GodotObject extends Wrapped{
   }
   property_get_revert(_property) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_property_get_revert,
+      GodotObject._bindings.method_property_get_revert,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -588,7 +589,7 @@ export class GodotObject extends Wrapped{
   }
   notification(_what, _reversed) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_notification,
+      GodotObject._bindings.method_notification,
       this._owner,
       _what, _reversed
     );
@@ -596,7 +597,7 @@ export class GodotObject extends Wrapped{
   }
   to_string() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_to_string,
+      GodotObject._bindings.method_to_string,
       this._owner,
 			Variant.Type.STRING,
     
@@ -606,7 +607,7 @@ export class GodotObject extends Wrapped{
   }
   get_instance_id() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_instance_id,
+      GodotObject._bindings.method_get_instance_id,
       this._owner,
 			Variant.Type.INT,
       
@@ -615,7 +616,7 @@ export class GodotObject extends Wrapped{
   }
   set_script(_script) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_script,
+      GodotObject._bindings.method_set_script,
       this._owner,
       _script
     );
@@ -623,7 +624,7 @@ export class GodotObject extends Wrapped{
   }
   get_script() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_script,
+      GodotObject._bindings.method_get_script,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -633,7 +634,7 @@ export class GodotObject extends Wrapped{
   }
   set_meta(_name, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_meta,
+      GodotObject._bindings.method_set_meta,
       this._owner,
       _name, _value
     );
@@ -641,7 +642,7 @@ export class GodotObject extends Wrapped{
   }
   remove_meta(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_meta,
+      GodotObject._bindings.method_remove_meta,
       this._owner,
       _name
     );
@@ -649,7 +650,7 @@ export class GodotObject extends Wrapped{
   }
   get_meta(_name, _default) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_meta,
+      GodotObject._bindings.method_get_meta,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -659,7 +660,7 @@ export class GodotObject extends Wrapped{
   }
   has_meta(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_meta,
+      GodotObject._bindings.method_has_meta,
       this._owner,
 			Variant.Type.BOOL,
       _name
@@ -668,7 +669,7 @@ export class GodotObject extends Wrapped{
   }
   get_meta_list() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_meta_list,
+      GodotObject._bindings.method_get_meta_list,
       this._owner,
 			Variant.INT,
       
@@ -677,7 +678,7 @@ export class GodotObject extends Wrapped{
   }
   add_user_signal(_signal, _arguments) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_user_signal,
+      GodotObject._bindings.method_add_user_signal,
       this._owner,
       _signal, _arguments
     );
@@ -685,7 +686,7 @@ export class GodotObject extends Wrapped{
   }
   has_user_signal(_signal) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_user_signal,
+      GodotObject._bindings.method_has_user_signal,
       this._owner,
 			Variant.Type.BOOL,
       _signal
@@ -694,7 +695,7 @@ export class GodotObject extends Wrapped{
   }
   remove_user_signal(_signal) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_user_signal,
+      GodotObject._bindings.method_remove_user_signal,
       this._owner,
       _signal
     );
@@ -702,7 +703,7 @@ export class GodotObject extends Wrapped{
   }
   emit_signal(_signal) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_emit_signal,
+      GodotObject._bindings.method_emit_signal,
       this._owner,
 			Variant.INT,
       _signal
@@ -711,7 +712,7 @@ export class GodotObject extends Wrapped{
   }
   call(_method) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_call,
+      GodotObject._bindings.method_call,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -721,7 +722,7 @@ export class GodotObject extends Wrapped{
   }
   call_deferred(_method) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_call_deferred,
+      GodotObject._bindings.method_call_deferred,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -731,7 +732,7 @@ export class GodotObject extends Wrapped{
   }
   set_deferred(_property, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_deferred,
+      GodotObject._bindings.method_set_deferred,
       this._owner,
       _property, _value
     );
@@ -739,7 +740,7 @@ export class GodotObject extends Wrapped{
   }
   callv(_method, _arg_array) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_callv,
+      GodotObject._bindings.method_callv,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -749,7 +750,7 @@ export class GodotObject extends Wrapped{
   }
   has_method(_method) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_method,
+      GodotObject._bindings.method_has_method,
       this._owner,
 			Variant.Type.BOOL,
       _method
@@ -758,7 +759,7 @@ export class GodotObject extends Wrapped{
   }
   get_method_argument_count(_method) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_method_argument_count,
+      GodotObject._bindings.method_get_method_argument_count,
       this._owner,
 			Variant.Type.INT,
       _method
@@ -767,7 +768,7 @@ export class GodotObject extends Wrapped{
   }
   has_signal(_signal) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_signal,
+      GodotObject._bindings.method_has_signal,
       this._owner,
 			Variant.Type.BOOL,
       _signal
@@ -776,7 +777,7 @@ export class GodotObject extends Wrapped{
   }
   get_signal_list() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_signal_list,
+      GodotObject._bindings.method_get_signal_list,
       this._owner,
 			Variant.INT,
       
@@ -785,7 +786,7 @@ export class GodotObject extends Wrapped{
   }
   get_signal_connection_list(_signal) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_signal_connection_list,
+      GodotObject._bindings.method_get_signal_connection_list,
       this._owner,
 			Variant.INT,
       _signal
@@ -794,7 +795,7 @@ export class GodotObject extends Wrapped{
   }
   get_incoming_connections() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_incoming_connections,
+      GodotObject._bindings.method_get_incoming_connections,
       this._owner,
 			Variant.INT,
       
@@ -803,7 +804,7 @@ export class GodotObject extends Wrapped{
   }
   connect(_signal, _callable, _flags) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_connect,
+      GodotObject._bindings.method_connect,
       this._owner,
 			Variant.INT,
       _signal, _callable, _flags
@@ -812,7 +813,7 @@ export class GodotObject extends Wrapped{
   }
   disconnect(_signal, _callable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_disconnect,
+      GodotObject._bindings.method_disconnect,
       this._owner,
       _signal, _callable
     );
@@ -820,7 +821,7 @@ export class GodotObject extends Wrapped{
   }
   is_connected(_signal, _callable) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_connected,
+      GodotObject._bindings.method_is_connected,
       this._owner,
 			Variant.Type.BOOL,
       _signal, _callable
@@ -829,7 +830,7 @@ export class GodotObject extends Wrapped{
   }
   set_block_signals(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_block_signals,
+      GodotObject._bindings.method_set_block_signals,
       this._owner,
       _enable
     );
@@ -837,7 +838,7 @@ export class GodotObject extends Wrapped{
   }
   is_blocking_signals() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_blocking_signals,
+      GodotObject._bindings.method_is_blocking_signals,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -846,7 +847,7 @@ export class GodotObject extends Wrapped{
   }
   notify_property_list_changed() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_notify_property_list_changed,
+      GodotObject._bindings.method_notify_property_list_changed,
       this._owner,
       
     );
@@ -854,7 +855,7 @@ export class GodotObject extends Wrapped{
   }
   set_message_translation(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_message_translation,
+      GodotObject._bindings.method_set_message_translation,
       this._owner,
       _enable
     );
@@ -862,7 +863,7 @@ export class GodotObject extends Wrapped{
   }
   can_translate_messages() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_can_translate_messages,
+      GodotObject._bindings.method_can_translate_messages,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -871,7 +872,7 @@ export class GodotObject extends Wrapped{
   }
   tr(_message, _context) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_tr,
+      GodotObject._bindings.method_tr,
       this._owner,
 			Variant.Type.STRING,
     
@@ -881,7 +882,7 @@ export class GodotObject extends Wrapped{
   }
   tr_n(_message, _plural_message, _n, _context) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_tr_n,
+      GodotObject._bindings.method_tr_n,
       this._owner,
 			Variant.Type.STRING,
     
@@ -891,7 +892,7 @@ export class GodotObject extends Wrapped{
   }
   is_queued_for_deletion() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_queued_for_deletion,
+      GodotObject._bindings.method_is_queued_for_deletion,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -900,7 +901,7 @@ export class GodotObject extends Wrapped{
   }
   cancel_free() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_cancel_free,
+      GodotObject._bindings.method_cancel_free,
       this._owner,
       
     );

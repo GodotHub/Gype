@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { OpenXRCompositionLayer } from '@js_godot/classes/open_xr_composition_layer'
 import { StringName } from '@js_godot/variant/string_name'
+import { OpenXRCompositionLayer } from '@js_godot/classes/open_xr_composition_layer'
 import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
@@ -110,9 +110,10 @@ export class OpenXRCompositionLayerCylinder extends OpenXRCompositionLayer{
       );
     }
   }
+  
   set_radius(_radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_radius,
+      OpenXRCompositionLayerCylinder._bindings.method_set_radius,
       this._owner,
       _radius
     );
@@ -120,7 +121,7 @@ export class OpenXRCompositionLayerCylinder extends OpenXRCompositionLayer{
   }
   get_radius() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_radius,
+      OpenXRCompositionLayerCylinder._bindings.method_get_radius,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -129,7 +130,7 @@ export class OpenXRCompositionLayerCylinder extends OpenXRCompositionLayer{
   }
   set_aspect_ratio(_aspect_ratio) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_aspect_ratio,
+      OpenXRCompositionLayerCylinder._bindings.method_set_aspect_ratio,
       this._owner,
       _aspect_ratio
     );
@@ -137,7 +138,7 @@ export class OpenXRCompositionLayerCylinder extends OpenXRCompositionLayer{
   }
   get_aspect_ratio() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_aspect_ratio,
+      OpenXRCompositionLayerCylinder._bindings.method_get_aspect_ratio,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -146,7 +147,7 @@ export class OpenXRCompositionLayerCylinder extends OpenXRCompositionLayer{
   }
   set_central_angle(_angle) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_central_angle,
+      OpenXRCompositionLayerCylinder._bindings.method_set_central_angle,
       this._owner,
       _angle
     );
@@ -154,7 +155,7 @@ export class OpenXRCompositionLayerCylinder extends OpenXRCompositionLayer{
   }
   get_central_angle() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_central_angle,
+      OpenXRCompositionLayerCylinder._bindings.method_get_central_angle,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -163,7 +164,7 @@ export class OpenXRCompositionLayerCylinder extends OpenXRCompositionLayer{
   }
   set_fallback_segments(_segments) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fallback_segments,
+      OpenXRCompositionLayerCylinder._bindings.method_set_fallback_segments,
       this._owner,
       _segments
     );
@@ -171,7 +172,7 @@ export class OpenXRCompositionLayerCylinder extends OpenXRCompositionLayer{
   }
   get_fallback_segments() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fallback_segments,
+      OpenXRCompositionLayerCylinder._bindings.method_get_fallback_segments,
       this._owner,
 			Variant.Type.INT,
       

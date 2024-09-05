@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { VisualShaderNode } from '@js_godot/classes/visual_shader_node'
 import {
   call_utility_ret,
@@ -70,9 +70,10 @@ export class VisualShaderNodeBillboard extends VisualShaderNode{
       );
     }
   }
+  
   set_billboard_type(_billboard_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_billboard_type,
+      VisualShaderNodeBillboard._bindings.method_set_billboard_type,
       this._owner,
       _billboard_type
     );
@@ -80,7 +81,7 @@ export class VisualShaderNodeBillboard extends VisualShaderNode{
   }
   get_billboard_type() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_billboard_type,
+      VisualShaderNodeBillboard._bindings.method_get_billboard_type,
       this._owner,
 			Variant.INT,
       
@@ -89,7 +90,7 @@ export class VisualShaderNodeBillboard extends VisualShaderNode{
   }
   set_keep_scale_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_keep_scale_enabled,
+      VisualShaderNodeBillboard._bindings.method_set_keep_scale_enabled,
       this._owner,
       _enabled
     );
@@ -97,7 +98,7 @@ export class VisualShaderNodeBillboard extends VisualShaderNode{
   }
   is_keep_scale_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_keep_scale_enabled,
+      VisualShaderNodeBillboard._bindings.method_is_keep_scale_enabled,
       this._owner,
 			Variant.Type.BOOL,
       

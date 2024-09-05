@@ -1,13 +1,13 @@
 import * as internal from '__internal__';
-import { Callable } from '@js_godot/variant/callable'
-import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { PackedStringArray } from '@js_godot/variant/packed_string_array'
 import { GodotObject } from '@js_godot/classes/godot_object'
 import { Rect2i } from '@js_godot/variant/rect2i'
-import { Vector2i } from '@js_godot/variant/vector2i'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
-import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { Callable } from '@js_godot/variant/callable'
+import { GDString } from '@js_godot/variant/gd_string'
+import { Variant } from '@js_godot/variant/variant'
+import { Vector2i } from '@js_godot/variant/vector2i'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -585,9 +585,10 @@ class _MethodBindings {
       );
     }
   }
+  
   restart_editor(_save) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_restart_editor,
+      _EditorInterface._bindings.method_restart_editor,
       this._owner,
       _save
     );
@@ -595,7 +596,7 @@ class _MethodBindings {
   }
   get_command_palette() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_command_palette,
+      _EditorInterface._bindings.method_get_command_palette,
       this._owner,
 			Variant.INT,
       
@@ -604,7 +605,7 @@ class _MethodBindings {
   }
   get_resource_filesystem() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_resource_filesystem,
+      _EditorInterface._bindings.method_get_resource_filesystem,
       this._owner,
 			Variant.INT,
       
@@ -613,7 +614,7 @@ class _MethodBindings {
   }
   get_editor_paths() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_editor_paths,
+      _EditorInterface._bindings.method_get_editor_paths,
       this._owner,
 			Variant.INT,
       
@@ -622,7 +623,7 @@ class _MethodBindings {
   }
   get_resource_previewer() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_resource_previewer,
+      _EditorInterface._bindings.method_get_resource_previewer,
       this._owner,
 			Variant.INT,
       
@@ -631,7 +632,7 @@ class _MethodBindings {
   }
   get_selection() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_selection,
+      _EditorInterface._bindings.method_get_selection,
       this._owner,
 			Variant.INT,
       
@@ -640,7 +641,7 @@ class _MethodBindings {
   }
   get_editor_settings() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_editor_settings,
+      _EditorInterface._bindings.method_get_editor_settings,
       this._owner,
 			Variant.INT,
       
@@ -649,7 +650,7 @@ class _MethodBindings {
   }
   make_mesh_previews(_meshes, _preview_size) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_make_mesh_previews,
+      _EditorInterface._bindings.method_make_mesh_previews,
       this._owner,
 			Variant.INT,
       _meshes, _preview_size
@@ -658,7 +659,7 @@ class _MethodBindings {
   }
   set_plugin_enabled(_plugin, _enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_plugin_enabled,
+      _EditorInterface._bindings.method_set_plugin_enabled,
       this._owner,
       _plugin, _enabled
     );
@@ -666,7 +667,7 @@ class _MethodBindings {
   }
   is_plugin_enabled(_plugin) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_plugin_enabled,
+      _EditorInterface._bindings.method_is_plugin_enabled,
       this._owner,
 			Variant.Type.BOOL,
       _plugin
@@ -675,7 +676,7 @@ class _MethodBindings {
   }
   get_editor_theme() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_editor_theme,
+      _EditorInterface._bindings.method_get_editor_theme,
       this._owner,
 			Variant.INT,
       
@@ -684,7 +685,7 @@ class _MethodBindings {
   }
   get_base_control() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_base_control,
+      _EditorInterface._bindings.method_get_base_control,
       this._owner,
 			Variant.INT,
       
@@ -693,7 +694,7 @@ class _MethodBindings {
   }
   get_editor_main_screen() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_editor_main_screen,
+      _EditorInterface._bindings.method_get_editor_main_screen,
       this._owner,
 			Variant.INT,
       
@@ -702,7 +703,7 @@ class _MethodBindings {
   }
   get_script_editor() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_script_editor,
+      _EditorInterface._bindings.method_get_script_editor,
       this._owner,
 			Variant.INT,
       
@@ -711,7 +712,7 @@ class _MethodBindings {
   }
   get_editor_viewport_2d() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_editor_viewport_2d,
+      _EditorInterface._bindings.method_get_editor_viewport_2d,
       this._owner,
 			Variant.INT,
       
@@ -720,7 +721,7 @@ class _MethodBindings {
   }
   get_editor_viewport_3d(_idx) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_editor_viewport_3d,
+      _EditorInterface._bindings.method_get_editor_viewport_3d,
       this._owner,
 			Variant.INT,
       _idx
@@ -729,7 +730,7 @@ class _MethodBindings {
   }
   set_main_screen_editor(_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_main_screen_editor,
+      _EditorInterface._bindings.method_set_main_screen_editor,
       this._owner,
       _name
     );
@@ -737,7 +738,7 @@ class _MethodBindings {
   }
   set_distraction_free_mode(_enter) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_distraction_free_mode,
+      _EditorInterface._bindings.method_set_distraction_free_mode,
       this._owner,
       _enter
     );
@@ -745,7 +746,7 @@ class _MethodBindings {
   }
   is_distraction_free_mode_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_distraction_free_mode_enabled,
+      _EditorInterface._bindings.method_is_distraction_free_mode_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -754,7 +755,7 @@ class _MethodBindings {
   }
   is_multi_window_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_multi_window_enabled,
+      _EditorInterface._bindings.method_is_multi_window_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -763,7 +764,7 @@ class _MethodBindings {
   }
   get_editor_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_editor_scale,
+      _EditorInterface._bindings.method_get_editor_scale,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -772,7 +773,7 @@ class _MethodBindings {
   }
   popup_dialog(_dialog, _rect) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_popup_dialog,
+      _EditorInterface._bindings.method_popup_dialog,
       this._owner,
       _dialog, _rect
     );
@@ -780,7 +781,7 @@ class _MethodBindings {
   }
   popup_dialog_centered(_dialog, _minsize) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_popup_dialog_centered,
+      _EditorInterface._bindings.method_popup_dialog_centered,
       this._owner,
       _dialog, _minsize
     );
@@ -788,7 +789,7 @@ class _MethodBindings {
   }
   popup_dialog_centered_ratio(_dialog, _ratio) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_popup_dialog_centered_ratio,
+      _EditorInterface._bindings.method_popup_dialog_centered_ratio,
       this._owner,
       _dialog, _ratio
     );
@@ -796,7 +797,7 @@ class _MethodBindings {
   }
   popup_dialog_centered_clamped(_dialog, _minsize, _fallback_ratio) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_popup_dialog_centered_clamped,
+      _EditorInterface._bindings.method_popup_dialog_centered_clamped,
       this._owner,
       _dialog, _minsize, _fallback_ratio
     );
@@ -804,7 +805,7 @@ class _MethodBindings {
   }
   get_current_feature_profile() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_current_feature_profile,
+      _EditorInterface._bindings.method_get_current_feature_profile,
       this._owner,
 			Variant.Type.STRING,
     
@@ -814,7 +815,7 @@ class _MethodBindings {
   }
   set_current_feature_profile(_profile_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_current_feature_profile,
+      _EditorInterface._bindings.method_set_current_feature_profile,
       this._owner,
       _profile_name
     );
@@ -822,7 +823,7 @@ class _MethodBindings {
   }
   popup_node_selector(_callback, _valid_types) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_popup_node_selector,
+      _EditorInterface._bindings.method_popup_node_selector,
       this._owner,
       _callback, _valid_types
     );
@@ -830,7 +831,7 @@ class _MethodBindings {
   }
   popup_property_selector(_object, _callback, _type_filter) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_popup_property_selector,
+      _EditorInterface._bindings.method_popup_property_selector,
       this._owner,
       _object, _callback, _type_filter
     );
@@ -838,7 +839,7 @@ class _MethodBindings {
   }
   get_file_system_dock() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_file_system_dock,
+      _EditorInterface._bindings.method_get_file_system_dock,
       this._owner,
 			Variant.INT,
       
@@ -847,7 +848,7 @@ class _MethodBindings {
   }
   select_file(_file) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_select_file,
+      _EditorInterface._bindings.method_select_file,
       this._owner,
       _file
     );
@@ -855,7 +856,7 @@ class _MethodBindings {
   }
   get_selected_paths() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_selected_paths,
+      _EditorInterface._bindings.method_get_selected_paths,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -865,7 +866,7 @@ class _MethodBindings {
   }
   get_current_path() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_current_path,
+      _EditorInterface._bindings.method_get_current_path,
       this._owner,
 			Variant.Type.STRING,
     
@@ -875,7 +876,7 @@ class _MethodBindings {
   }
   get_current_directory() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_current_directory,
+      _EditorInterface._bindings.method_get_current_directory,
       this._owner,
 			Variant.Type.STRING,
     
@@ -885,7 +886,7 @@ class _MethodBindings {
   }
   get_inspector() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_inspector,
+      _EditorInterface._bindings.method_get_inspector,
       this._owner,
 			Variant.INT,
       
@@ -894,7 +895,7 @@ class _MethodBindings {
   }
   inspect_object(_object, _for_property, _inspector_only) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_inspect_object,
+      _EditorInterface._bindings.method_inspect_object,
       this._owner,
       _object, _for_property, _inspector_only
     );
@@ -902,7 +903,7 @@ class _MethodBindings {
   }
   edit_resource(_resource) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_edit_resource,
+      _EditorInterface._bindings.method_edit_resource,
       this._owner,
       _resource
     );
@@ -910,7 +911,7 @@ class _MethodBindings {
   }
   edit_node(_node) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_edit_node,
+      _EditorInterface._bindings.method_edit_node,
       this._owner,
       _node
     );
@@ -918,7 +919,7 @@ class _MethodBindings {
   }
   edit_script(_script, _line, _column, _grab_focus) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_edit_script,
+      _EditorInterface._bindings.method_edit_script,
       this._owner,
       _script, _line, _column, _grab_focus
     );
@@ -926,7 +927,7 @@ class _MethodBindings {
   }
   open_scene_from_path(_scene_filepath) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_open_scene_from_path,
+      _EditorInterface._bindings.method_open_scene_from_path,
       this._owner,
       _scene_filepath
     );
@@ -934,7 +935,7 @@ class _MethodBindings {
   }
   reload_scene_from_path(_scene_filepath) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_reload_scene_from_path,
+      _EditorInterface._bindings.method_reload_scene_from_path,
       this._owner,
       _scene_filepath
     );
@@ -942,7 +943,7 @@ class _MethodBindings {
   }
   get_open_scenes() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_open_scenes,
+      _EditorInterface._bindings.method_get_open_scenes,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -952,7 +953,7 @@ class _MethodBindings {
   }
   get_edited_scene_root() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_edited_scene_root,
+      _EditorInterface._bindings.method_get_edited_scene_root,
       this._owner,
 			Variant.INT,
       
@@ -961,7 +962,7 @@ class _MethodBindings {
   }
   save_scene() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_save_scene,
+      _EditorInterface._bindings.method_save_scene,
       this._owner,
 			Variant.INT,
       
@@ -970,7 +971,7 @@ class _MethodBindings {
   }
   save_scene_as(_path, _with_preview) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_save_scene_as,
+      _EditorInterface._bindings.method_save_scene_as,
       this._owner,
       _path, _with_preview
     );
@@ -978,7 +979,7 @@ class _MethodBindings {
   }
   save_all_scenes() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_save_all_scenes,
+      _EditorInterface._bindings.method_save_all_scenes,
       this._owner,
       
     );
@@ -986,7 +987,7 @@ class _MethodBindings {
   }
   mark_scene_as_unsaved() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_mark_scene_as_unsaved,
+      _EditorInterface._bindings.method_mark_scene_as_unsaved,
       this._owner,
       
     );
@@ -994,7 +995,7 @@ class _MethodBindings {
   }
   play_main_scene() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_play_main_scene,
+      _EditorInterface._bindings.method_play_main_scene,
       this._owner,
       
     );
@@ -1002,7 +1003,7 @@ class _MethodBindings {
   }
   play_current_scene() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_play_current_scene,
+      _EditorInterface._bindings.method_play_current_scene,
       this._owner,
       
     );
@@ -1010,7 +1011,7 @@ class _MethodBindings {
   }
   play_custom_scene(_scene_filepath) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_play_custom_scene,
+      _EditorInterface._bindings.method_play_custom_scene,
       this._owner,
       _scene_filepath
     );
@@ -1018,7 +1019,7 @@ class _MethodBindings {
   }
   stop_playing_scene() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_stop_playing_scene,
+      _EditorInterface._bindings.method_stop_playing_scene,
       this._owner,
       
     );
@@ -1026,7 +1027,7 @@ class _MethodBindings {
   }
   is_playing_scene() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_playing_scene,
+      _EditorInterface._bindings.method_is_playing_scene,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1035,7 +1036,7 @@ class _MethodBindings {
   }
   get_playing_scene() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_playing_scene,
+      _EditorInterface._bindings.method_get_playing_scene,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1045,7 +1046,7 @@ class _MethodBindings {
   }
   set_movie_maker_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_movie_maker_enabled,
+      _EditorInterface._bindings.method_set_movie_maker_enabled,
       this._owner,
       _enabled
     );
@@ -1053,7 +1054,7 @@ class _MethodBindings {
   }
   is_movie_maker_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_movie_maker_enabled,
+      _EditorInterface._bindings.method_is_movie_maker_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -1079,4 +1080,17 @@ set movie_maker_enabled (new_value) {
     this._init_bindings();
   }
 }
-export const EditorInterface = new _EditorInterface();
+export const EditorInterface = (function () {
+  let _instance;
+  function create_instance() {
+    return new _EditorInterface();
+  }
+  return {
+    instance: function () {
+      if (!_instance) {
+        _instance = create_instance();
+      }
+      return _instance;
+    },
+  };
+})();

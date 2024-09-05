@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
+import { PackedFloat32Array } from '@js_godot/variant/packed_float32_array'
 import { Resource } from '@js_godot/classes/resource'
 import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import { GDString } from '@js_godot/variant/gd_string'
-import { PackedFloat32Array } from '@js_godot/variant/packed_float32_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -132,9 +132,10 @@ export class GLTFMesh extends Resource{
       );
     }
   }
+  
   get_original_name() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_original_name,
+      GLTFMesh._bindings.method_get_original_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -144,7 +145,7 @@ export class GLTFMesh extends Resource{
   }
   set_original_name(_original_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_original_name,
+      GLTFMesh._bindings.method_set_original_name,
       this._owner,
       _original_name
     );
@@ -152,7 +153,7 @@ export class GLTFMesh extends Resource{
   }
   get_mesh() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mesh,
+      GLTFMesh._bindings.method_get_mesh,
       this._owner,
 			Variant.INT,
       
@@ -161,7 +162,7 @@ export class GLTFMesh extends Resource{
   }
   set_mesh(_mesh) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mesh,
+      GLTFMesh._bindings.method_set_mesh,
       this._owner,
       _mesh
     );
@@ -169,7 +170,7 @@ export class GLTFMesh extends Resource{
   }
   get_blend_weights() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_blend_weights,
+      GLTFMesh._bindings.method_get_blend_weights,
       this._owner,
 			Variant.Type.PACKED_FLOAT32_ARRAY,
     
@@ -179,7 +180,7 @@ export class GLTFMesh extends Resource{
   }
   set_blend_weights(_blend_weights) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_blend_weights,
+      GLTFMesh._bindings.method_set_blend_weights,
       this._owner,
       _blend_weights
     );
@@ -187,7 +188,7 @@ export class GLTFMesh extends Resource{
   }
   get_instance_materials() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_instance_materials,
+      GLTFMesh._bindings.method_get_instance_materials,
       this._owner,
 			Variant.INT,
       
@@ -196,7 +197,7 @@ export class GLTFMesh extends Resource{
   }
   set_instance_materials(_instance_materials) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_instance_materials,
+      GLTFMesh._bindings.method_set_instance_materials,
       this._owner,
       _instance_materials
     );
@@ -204,7 +205,7 @@ export class GLTFMesh extends Resource{
   }
   get_additional_data(_extension_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_additional_data,
+      GLTFMesh._bindings.method_get_additional_data,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -214,7 +215,7 @@ export class GLTFMesh extends Resource{
   }
   set_additional_data(_extension_name, _additional_data) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_additional_data,
+      GLTFMesh._bindings.method_set_additional_data,
       this._owner,
       _extension_name, _additional_data
     );

@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { Shape2D } from '@js_godot/classes/shape2d'
 import {
   call_utility_ret,
@@ -70,9 +70,10 @@ export class SeparationRayShape2D extends Shape2D{
       );
     }
   }
+  
   set_length(_length) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_length,
+      SeparationRayShape2D._bindings.method_set_length,
       this._owner,
       _length
     );
@@ -80,7 +81,7 @@ export class SeparationRayShape2D extends Shape2D{
   }
   get_length() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_length,
+      SeparationRayShape2D._bindings.method_get_length,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -89,7 +90,7 @@ export class SeparationRayShape2D extends Shape2D{
   }
   set_slide_on_slope(_active) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_slide_on_slope,
+      SeparationRayShape2D._bindings.method_set_slide_on_slope,
       this._owner,
       _active
     );
@@ -97,7 +98,7 @@ export class SeparationRayShape2D extends Shape2D{
   }
   get_slide_on_slope() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_slide_on_slope,
+      SeparationRayShape2D._bindings.method_get_slide_on_slope,
       this._owner,
 			Variant.Type.BOOL,
       

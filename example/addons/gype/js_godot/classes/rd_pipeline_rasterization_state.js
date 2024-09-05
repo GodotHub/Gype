@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -250,9 +250,10 @@ export class RDPipelineRasterizationState extends RefCounted{
       );
     }
   }
+  
   set_enable_depth_clamp(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_enable_depth_clamp,
+      RDPipelineRasterizationState._bindings.method_set_enable_depth_clamp,
       this._owner,
       _p_member
     );
@@ -260,7 +261,7 @@ export class RDPipelineRasterizationState extends RefCounted{
   }
   get_enable_depth_clamp() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_enable_depth_clamp,
+      RDPipelineRasterizationState._bindings.method_get_enable_depth_clamp,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -269,7 +270,7 @@ export class RDPipelineRasterizationState extends RefCounted{
   }
   set_discard_primitives(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_discard_primitives,
+      RDPipelineRasterizationState._bindings.method_set_discard_primitives,
       this._owner,
       _p_member
     );
@@ -277,7 +278,7 @@ export class RDPipelineRasterizationState extends RefCounted{
   }
   get_discard_primitives() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_discard_primitives,
+      RDPipelineRasterizationState._bindings.method_get_discard_primitives,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -286,7 +287,7 @@ export class RDPipelineRasterizationState extends RefCounted{
   }
   set_wireframe(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_wireframe,
+      RDPipelineRasterizationState._bindings.method_set_wireframe,
       this._owner,
       _p_member
     );
@@ -294,7 +295,7 @@ export class RDPipelineRasterizationState extends RefCounted{
   }
   get_wireframe() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_wireframe,
+      RDPipelineRasterizationState._bindings.method_get_wireframe,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -303,7 +304,7 @@ export class RDPipelineRasterizationState extends RefCounted{
   }
   set_cull_mode(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_cull_mode,
+      RDPipelineRasterizationState._bindings.method_set_cull_mode,
       this._owner,
       _p_member
     );
@@ -311,7 +312,7 @@ export class RDPipelineRasterizationState extends RefCounted{
   }
   get_cull_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_cull_mode,
+      RDPipelineRasterizationState._bindings.method_get_cull_mode,
       this._owner,
 			Variant.INT,
       
@@ -320,7 +321,7 @@ export class RDPipelineRasterizationState extends RefCounted{
   }
   set_front_face(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_front_face,
+      RDPipelineRasterizationState._bindings.method_set_front_face,
       this._owner,
       _p_member
     );
@@ -328,7 +329,7 @@ export class RDPipelineRasterizationState extends RefCounted{
   }
   get_front_face() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_front_face,
+      RDPipelineRasterizationState._bindings.method_get_front_face,
       this._owner,
 			Variant.INT,
       
@@ -337,7 +338,7 @@ export class RDPipelineRasterizationState extends RefCounted{
   }
   set_depth_bias_enabled(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_depth_bias_enabled,
+      RDPipelineRasterizationState._bindings.method_set_depth_bias_enabled,
       this._owner,
       _p_member
     );
@@ -345,7 +346,7 @@ export class RDPipelineRasterizationState extends RefCounted{
   }
   get_depth_bias_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_depth_bias_enabled,
+      RDPipelineRasterizationState._bindings.method_get_depth_bias_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -354,7 +355,7 @@ export class RDPipelineRasterizationState extends RefCounted{
   }
   set_depth_bias_constant_factor(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_depth_bias_constant_factor,
+      RDPipelineRasterizationState._bindings.method_set_depth_bias_constant_factor,
       this._owner,
       _p_member
     );
@@ -362,7 +363,7 @@ export class RDPipelineRasterizationState extends RefCounted{
   }
   get_depth_bias_constant_factor() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_depth_bias_constant_factor,
+      RDPipelineRasterizationState._bindings.method_get_depth_bias_constant_factor,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -371,7 +372,7 @@ export class RDPipelineRasterizationState extends RefCounted{
   }
   set_depth_bias_clamp(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_depth_bias_clamp,
+      RDPipelineRasterizationState._bindings.method_set_depth_bias_clamp,
       this._owner,
       _p_member
     );
@@ -379,7 +380,7 @@ export class RDPipelineRasterizationState extends RefCounted{
   }
   get_depth_bias_clamp() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_depth_bias_clamp,
+      RDPipelineRasterizationState._bindings.method_get_depth_bias_clamp,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -388,7 +389,7 @@ export class RDPipelineRasterizationState extends RefCounted{
   }
   set_depth_bias_slope_factor(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_depth_bias_slope_factor,
+      RDPipelineRasterizationState._bindings.method_set_depth_bias_slope_factor,
       this._owner,
       _p_member
     );
@@ -396,7 +397,7 @@ export class RDPipelineRasterizationState extends RefCounted{
   }
   get_depth_bias_slope_factor() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_depth_bias_slope_factor,
+      RDPipelineRasterizationState._bindings.method_get_depth_bias_slope_factor,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -405,7 +406,7 @@ export class RDPipelineRasterizationState extends RefCounted{
   }
   set_line_width(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_line_width,
+      RDPipelineRasterizationState._bindings.method_set_line_width,
       this._owner,
       _p_member
     );
@@ -413,7 +414,7 @@ export class RDPipelineRasterizationState extends RefCounted{
   }
   get_line_width() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_line_width,
+      RDPipelineRasterizationState._bindings.method_get_line_width,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -422,7 +423,7 @@ export class RDPipelineRasterizationState extends RefCounted{
   }
   set_patch_control_points(_p_member) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_patch_control_points,
+      RDPipelineRasterizationState._bindings.method_set_patch_control_points,
       this._owner,
       _p_member
     );
@@ -430,7 +431,7 @@ export class RDPipelineRasterizationState extends RefCounted{
   }
   get_patch_control_points() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_patch_control_points,
+      RDPipelineRasterizationState._bindings.method_get_patch_control_points,
       this._owner,
 			Variant.Type.INT,
       

@@ -1,11 +1,11 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Transform3D } from '@js_godot/variant/transform3d'
-import { Vector3 } from '@js_godot/variant/vector3'
-import { StringName } from '@js_godot/variant/string_name'
-import { Node3D } from '@js_godot/classes/node3d'
 import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
 import { RID } from '@js_godot/variant/rid'
+import { Transform3D } from '@js_godot/variant/transform3d'
+import { Node3D } from '@js_godot/classes/node3d'
+import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { Vector3 } from '@js_godot/variant/vector3'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -354,6 +354,7 @@ export class CollisionObject3D extends Node3D{
       );
     }
   }
+  
   _input_event(_camera, _event, _event_position, _normal, _shape_idx) {
   }
   _mouse_enter() {
@@ -362,7 +363,7 @@ export class CollisionObject3D extends Node3D{
   }
   set_collision_layer(_layer) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_layer,
+      CollisionObject3D._bindings.method_set_collision_layer,
       this._owner,
       _layer
     );
@@ -370,7 +371,7 @@ export class CollisionObject3D extends Node3D{
   }
   get_collision_layer() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_layer,
+      CollisionObject3D._bindings.method_get_collision_layer,
       this._owner,
 			Variant.Type.INT,
       
@@ -379,7 +380,7 @@ export class CollisionObject3D extends Node3D{
   }
   set_collision_mask(_mask) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_mask,
+      CollisionObject3D._bindings.method_set_collision_mask,
       this._owner,
       _mask
     );
@@ -387,7 +388,7 @@ export class CollisionObject3D extends Node3D{
   }
   get_collision_mask() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_mask,
+      CollisionObject3D._bindings.method_get_collision_mask,
       this._owner,
 			Variant.Type.INT,
       
@@ -396,7 +397,7 @@ export class CollisionObject3D extends Node3D{
   }
   set_collision_layer_value(_layer_number, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_layer_value,
+      CollisionObject3D._bindings.method_set_collision_layer_value,
       this._owner,
       _layer_number, _value
     );
@@ -404,7 +405,7 @@ export class CollisionObject3D extends Node3D{
   }
   get_collision_layer_value(_layer_number) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_layer_value,
+      CollisionObject3D._bindings.method_get_collision_layer_value,
       this._owner,
 			Variant.Type.BOOL,
       _layer_number
@@ -413,7 +414,7 @@ export class CollisionObject3D extends Node3D{
   }
   set_collision_mask_value(_layer_number, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_mask_value,
+      CollisionObject3D._bindings.method_set_collision_mask_value,
       this._owner,
       _layer_number, _value
     );
@@ -421,7 +422,7 @@ export class CollisionObject3D extends Node3D{
   }
   get_collision_mask_value(_layer_number) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_mask_value,
+      CollisionObject3D._bindings.method_get_collision_mask_value,
       this._owner,
 			Variant.Type.BOOL,
       _layer_number
@@ -430,7 +431,7 @@ export class CollisionObject3D extends Node3D{
   }
   set_collision_priority(_priority) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_priority,
+      CollisionObject3D._bindings.method_set_collision_priority,
       this._owner,
       _priority
     );
@@ -438,7 +439,7 @@ export class CollisionObject3D extends Node3D{
   }
   get_collision_priority() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_priority,
+      CollisionObject3D._bindings.method_get_collision_priority,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -447,7 +448,7 @@ export class CollisionObject3D extends Node3D{
   }
   set_disable_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_disable_mode,
+      CollisionObject3D._bindings.method_set_disable_mode,
       this._owner,
       _mode
     );
@@ -455,7 +456,7 @@ export class CollisionObject3D extends Node3D{
   }
   get_disable_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_disable_mode,
+      CollisionObject3D._bindings.method_get_disable_mode,
       this._owner,
 			Variant.INT,
       
@@ -464,7 +465,7 @@ export class CollisionObject3D extends Node3D{
   }
   set_ray_pickable(_ray_pickable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ray_pickable,
+      CollisionObject3D._bindings.method_set_ray_pickable,
       this._owner,
       _ray_pickable
     );
@@ -472,7 +473,7 @@ export class CollisionObject3D extends Node3D{
   }
   is_ray_pickable() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_ray_pickable,
+      CollisionObject3D._bindings.method_is_ray_pickable,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -481,7 +482,7 @@ export class CollisionObject3D extends Node3D{
   }
   set_capture_input_on_drag(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_capture_input_on_drag,
+      CollisionObject3D._bindings.method_set_capture_input_on_drag,
       this._owner,
       _enable
     );
@@ -489,7 +490,7 @@ export class CollisionObject3D extends Node3D{
   }
   get_capture_input_on_drag() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_capture_input_on_drag,
+      CollisionObject3D._bindings.method_get_capture_input_on_drag,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -498,7 +499,7 @@ export class CollisionObject3D extends Node3D{
   }
   get_rid() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_rid,
+      CollisionObject3D._bindings.method_get_rid,
       this._owner,
 			Variant.Type.RID,
     
@@ -508,7 +509,7 @@ export class CollisionObject3D extends Node3D{
   }
   create_shape_owner(_owner) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_shape_owner,
+      CollisionObject3D._bindings.method_create_shape_owner,
       this._owner,
 			Variant.Type.INT,
       _owner
@@ -517,7 +518,7 @@ export class CollisionObject3D extends Node3D{
   }
   remove_shape_owner(_owner_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_remove_shape_owner,
+      CollisionObject3D._bindings.method_remove_shape_owner,
       this._owner,
       _owner_id
     );
@@ -525,7 +526,7 @@ export class CollisionObject3D extends Node3D{
   }
   get_shape_owners() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_shape_owners,
+      CollisionObject3D._bindings.method_get_shape_owners,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -535,7 +536,7 @@ export class CollisionObject3D extends Node3D{
   }
   shape_owner_set_transform(_owner_id, _transform) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_shape_owner_set_transform,
+      CollisionObject3D._bindings.method_shape_owner_set_transform,
       this._owner,
       _owner_id, _transform
     );
@@ -543,7 +544,7 @@ export class CollisionObject3D extends Node3D{
   }
   shape_owner_get_transform(_owner_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shape_owner_get_transform,
+      CollisionObject3D._bindings.method_shape_owner_get_transform,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -553,7 +554,7 @@ export class CollisionObject3D extends Node3D{
   }
   shape_owner_get_owner(_owner_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shape_owner_get_owner,
+      CollisionObject3D._bindings.method_shape_owner_get_owner,
       this._owner,
 			Variant.INT,
       _owner_id
@@ -562,7 +563,7 @@ export class CollisionObject3D extends Node3D{
   }
   shape_owner_set_disabled(_owner_id, _disabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_shape_owner_set_disabled,
+      CollisionObject3D._bindings.method_shape_owner_set_disabled,
       this._owner,
       _owner_id, _disabled
     );
@@ -570,7 +571,7 @@ export class CollisionObject3D extends Node3D{
   }
   is_shape_owner_disabled(_owner_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_shape_owner_disabled,
+      CollisionObject3D._bindings.method_is_shape_owner_disabled,
       this._owner,
 			Variant.Type.BOOL,
       _owner_id
@@ -579,7 +580,7 @@ export class CollisionObject3D extends Node3D{
   }
   shape_owner_add_shape(_owner_id, _shape) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_shape_owner_add_shape,
+      CollisionObject3D._bindings.method_shape_owner_add_shape,
       this._owner,
       _owner_id, _shape
     );
@@ -587,7 +588,7 @@ export class CollisionObject3D extends Node3D{
   }
   shape_owner_get_shape_count(_owner_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shape_owner_get_shape_count,
+      CollisionObject3D._bindings.method_shape_owner_get_shape_count,
       this._owner,
 			Variant.Type.INT,
       _owner_id
@@ -596,7 +597,7 @@ export class CollisionObject3D extends Node3D{
   }
   shape_owner_get_shape(_owner_id, _shape_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shape_owner_get_shape,
+      CollisionObject3D._bindings.method_shape_owner_get_shape,
       this._owner,
 			Variant.INT,
       _owner_id, _shape_id
@@ -605,7 +606,7 @@ export class CollisionObject3D extends Node3D{
   }
   shape_owner_get_shape_index(_owner_id, _shape_id) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shape_owner_get_shape_index,
+      CollisionObject3D._bindings.method_shape_owner_get_shape_index,
       this._owner,
 			Variant.Type.INT,
       _owner_id, _shape_id
@@ -614,7 +615,7 @@ export class CollisionObject3D extends Node3D{
   }
   shape_owner_remove_shape(_owner_id, _shape_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_shape_owner_remove_shape,
+      CollisionObject3D._bindings.method_shape_owner_remove_shape,
       this._owner,
       _owner_id, _shape_id
     );
@@ -622,7 +623,7 @@ export class CollisionObject3D extends Node3D{
   }
   shape_owner_clear_shapes(_owner_id) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_shape_owner_clear_shapes,
+      CollisionObject3D._bindings.method_shape_owner_clear_shapes,
       this._owner,
       _owner_id
     );
@@ -630,7 +631,7 @@ export class CollisionObject3D extends Node3D{
   }
   shape_find_owner(_shape_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shape_find_owner,
+      CollisionObject3D._bindings.method_shape_find_owner,
       this._owner,
 			Variant.Type.INT,
       _shape_index

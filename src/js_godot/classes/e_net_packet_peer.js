@@ -182,9 +182,10 @@ export class ENetPacketPeer extends PacketPeer{
       );
     }
   }
+  
   peer_disconnect(_data) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_peer_disconnect,
+      ENetPacketPeer._bindings.method_peer_disconnect,
       this._owner,
       _data
     );
@@ -192,7 +193,7 @@ export class ENetPacketPeer extends PacketPeer{
   }
   peer_disconnect_later(_data) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_peer_disconnect_later,
+      ENetPacketPeer._bindings.method_peer_disconnect_later,
       this._owner,
       _data
     );
@@ -200,7 +201,7 @@ export class ENetPacketPeer extends PacketPeer{
   }
   peer_disconnect_now(_data) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_peer_disconnect_now,
+      ENetPacketPeer._bindings.method_peer_disconnect_now,
       this._owner,
       _data
     );
@@ -208,7 +209,7 @@ export class ENetPacketPeer extends PacketPeer{
   }
   ping() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_ping,
+      ENetPacketPeer._bindings.method_ping,
       this._owner,
       
     );
@@ -216,7 +217,7 @@ export class ENetPacketPeer extends PacketPeer{
   }
   ping_interval(_ping_interval) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_ping_interval,
+      ENetPacketPeer._bindings.method_ping_interval,
       this._owner,
       _ping_interval
     );
@@ -224,7 +225,7 @@ export class ENetPacketPeer extends PacketPeer{
   }
   reset() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_reset,
+      ENetPacketPeer._bindings.method_reset,
       this._owner,
       
     );
@@ -232,7 +233,7 @@ export class ENetPacketPeer extends PacketPeer{
   }
   send(_channel, _packet, _flags) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_send,
+      ENetPacketPeer._bindings.method_send,
       this._owner,
 			Variant.INT,
       _channel, _packet, _flags
@@ -241,7 +242,7 @@ export class ENetPacketPeer extends PacketPeer{
   }
   throttle_configure(_interval, _acceleration, _deceleration) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_throttle_configure,
+      ENetPacketPeer._bindings.method_throttle_configure,
       this._owner,
       _interval, _acceleration, _deceleration
     );
@@ -249,7 +250,7 @@ export class ENetPacketPeer extends PacketPeer{
   }
   set_timeout(_timeout, _timeout_min, _timeout_max) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_timeout,
+      ENetPacketPeer._bindings.method_set_timeout,
       this._owner,
       _timeout, _timeout_min, _timeout_max
     );
@@ -257,7 +258,7 @@ export class ENetPacketPeer extends PacketPeer{
   }
   get_remote_address() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_remote_address,
+      ENetPacketPeer._bindings.method_get_remote_address,
       this._owner,
 			Variant.Type.STRING,
     
@@ -267,7 +268,7 @@ export class ENetPacketPeer extends PacketPeer{
   }
   get_remote_port() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_remote_port,
+      ENetPacketPeer._bindings.method_get_remote_port,
       this._owner,
 			Variant.Type.INT,
       
@@ -276,7 +277,7 @@ export class ENetPacketPeer extends PacketPeer{
   }
   get_statistic(_statistic) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_statistic,
+      ENetPacketPeer._bindings.method_get_statistic,
       this._owner,
 			Variant.Type.FLOAT,
       _statistic
@@ -285,7 +286,7 @@ export class ENetPacketPeer extends PacketPeer{
   }
   get_state() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_state,
+      ENetPacketPeer._bindings.method_get_state,
       this._owner,
 			Variant.INT,
       
@@ -294,7 +295,7 @@ export class ENetPacketPeer extends PacketPeer{
   }
   get_channels() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_channels,
+      ENetPacketPeer._bindings.method_get_channels,
       this._owner,
 			Variant.Type.INT,
       
@@ -303,7 +304,7 @@ export class ENetPacketPeer extends PacketPeer{
   }
   is_active() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_active,
+      ENetPacketPeer._bindings.method_is_active,
       this._owner,
 			Variant.Type.BOOL,
       

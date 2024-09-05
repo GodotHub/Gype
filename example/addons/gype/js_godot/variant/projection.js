@@ -4,12 +4,12 @@ import {
   _call_builtin_method_ptr_ret,
   _call_builtin_method_ptr_no_ret
 } from '@js_godot/core/builtin_ptrcall'
-import { Transform3D } from '@js_godot/variant/transform3d'
-import { StringName } from '@js_godot/variant/string_name'
-import { AABB } from '@js_godot/variant/aabb'
-import { Plane } from '@js_godot/variant/plane'
 import { Vector4 } from '@js_godot/variant/vector4'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { AABB } from '@js_godot/variant/aabb'
+import { StringName } from '@js_godot/variant/string_name'
+import { Plane } from '@js_godot/variant/plane'
+import { Transform3D } from '@js_godot/variant/transform3d'
 import { Rect2 } from '@js_godot/variant/rect2'
 
 class _MethodBindings {

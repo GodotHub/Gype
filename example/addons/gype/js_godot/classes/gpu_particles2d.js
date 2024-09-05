@@ -1,12 +1,12 @@
 import * as internal from '__internal__';
-import { Node2D } from '@js_godot/classes/node2d'
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
-import { Color } from '@js_godot/variant/color'
 import { Vector2 } from '@js_godot/variant/vector2'
-import { Rect2 } from '@js_godot/variant/rect2'
-import { Transform2D } from '@js_godot/variant/transform2d'
+import { StringName } from '@js_godot/variant/string_name'
 import { NodePath } from '@js_godot/variant/node_path'
+import { Color } from '@js_godot/variant/color'
+import { Variant } from '@js_godot/variant/variant'
+import { Rect2 } from '@js_godot/variant/rect2'
+import { Node2D } from '@js_godot/classes/node2d'
+import { Transform2D } from '@js_godot/variant/transform2d'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -555,9 +555,10 @@ export class GPUParticles2D extends Node2D{
       );
     }
   }
+  
   set_emitting(_emitting) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_emitting,
+      GPUParticles2D._bindings.method_set_emitting,
       this._owner,
       _emitting
     );
@@ -565,7 +566,7 @@ export class GPUParticles2D extends Node2D{
   }
   set_amount(_amount) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_amount,
+      GPUParticles2D._bindings.method_set_amount,
       this._owner,
       _amount
     );
@@ -573,7 +574,7 @@ export class GPUParticles2D extends Node2D{
   }
   set_lifetime(_secs) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_lifetime,
+      GPUParticles2D._bindings.method_set_lifetime,
       this._owner,
       _secs
     );
@@ -581,7 +582,7 @@ export class GPUParticles2D extends Node2D{
   }
   set_one_shot(_secs) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_one_shot,
+      GPUParticles2D._bindings.method_set_one_shot,
       this._owner,
       _secs
     );
@@ -589,7 +590,7 @@ export class GPUParticles2D extends Node2D{
   }
   set_pre_process_time(_secs) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_pre_process_time,
+      GPUParticles2D._bindings.method_set_pre_process_time,
       this._owner,
       _secs
     );
@@ -597,7 +598,7 @@ export class GPUParticles2D extends Node2D{
   }
   set_explosiveness_ratio(_ratio) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_explosiveness_ratio,
+      GPUParticles2D._bindings.method_set_explosiveness_ratio,
       this._owner,
       _ratio
     );
@@ -605,7 +606,7 @@ export class GPUParticles2D extends Node2D{
   }
   set_randomness_ratio(_ratio) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_randomness_ratio,
+      GPUParticles2D._bindings.method_set_randomness_ratio,
       this._owner,
       _ratio
     );
@@ -613,7 +614,7 @@ export class GPUParticles2D extends Node2D{
   }
   set_visibility_rect(_visibility_rect) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_visibility_rect,
+      GPUParticles2D._bindings.method_set_visibility_rect,
       this._owner,
       _visibility_rect
     );
@@ -621,7 +622,7 @@ export class GPUParticles2D extends Node2D{
   }
   set_use_local_coordinates(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_use_local_coordinates,
+      GPUParticles2D._bindings.method_set_use_local_coordinates,
       this._owner,
       _enable
     );
@@ -629,7 +630,7 @@ export class GPUParticles2D extends Node2D{
   }
   set_fixed_fps(_fps) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fixed_fps,
+      GPUParticles2D._bindings.method_set_fixed_fps,
       this._owner,
       _fps
     );
@@ -637,7 +638,7 @@ export class GPUParticles2D extends Node2D{
   }
   set_fractional_delta(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fractional_delta,
+      GPUParticles2D._bindings.method_set_fractional_delta,
       this._owner,
       _enable
     );
@@ -645,7 +646,7 @@ export class GPUParticles2D extends Node2D{
   }
   set_interpolate(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_interpolate,
+      GPUParticles2D._bindings.method_set_interpolate,
       this._owner,
       _enable
     );
@@ -653,7 +654,7 @@ export class GPUParticles2D extends Node2D{
   }
   set_process_material(_material) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_process_material,
+      GPUParticles2D._bindings.method_set_process_material,
       this._owner,
       _material
     );
@@ -661,7 +662,7 @@ export class GPUParticles2D extends Node2D{
   }
   set_speed_scale(_scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_speed_scale,
+      GPUParticles2D._bindings.method_set_speed_scale,
       this._owner,
       _scale
     );
@@ -669,7 +670,7 @@ export class GPUParticles2D extends Node2D{
   }
   set_collision_base_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_collision_base_size,
+      GPUParticles2D._bindings.method_set_collision_base_size,
       this._owner,
       _size
     );
@@ -677,7 +678,7 @@ export class GPUParticles2D extends Node2D{
   }
   set_interp_to_end(_interp) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_interp_to_end,
+      GPUParticles2D._bindings.method_set_interp_to_end,
       this._owner,
       _interp
     );
@@ -685,7 +686,7 @@ export class GPUParticles2D extends Node2D{
   }
   is_emitting() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_emitting,
+      GPUParticles2D._bindings.method_is_emitting,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -694,7 +695,7 @@ export class GPUParticles2D extends Node2D{
   }
   get_amount() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_amount,
+      GPUParticles2D._bindings.method_get_amount,
       this._owner,
 			Variant.Type.INT,
       
@@ -703,7 +704,7 @@ export class GPUParticles2D extends Node2D{
   }
   get_lifetime() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_lifetime,
+      GPUParticles2D._bindings.method_get_lifetime,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -712,7 +713,7 @@ export class GPUParticles2D extends Node2D{
   }
   get_one_shot() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_one_shot,
+      GPUParticles2D._bindings.method_get_one_shot,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -721,7 +722,7 @@ export class GPUParticles2D extends Node2D{
   }
   get_pre_process_time() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_pre_process_time,
+      GPUParticles2D._bindings.method_get_pre_process_time,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -730,7 +731,7 @@ export class GPUParticles2D extends Node2D{
   }
   get_explosiveness_ratio() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_explosiveness_ratio,
+      GPUParticles2D._bindings.method_get_explosiveness_ratio,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -739,7 +740,7 @@ export class GPUParticles2D extends Node2D{
   }
   get_randomness_ratio() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_randomness_ratio,
+      GPUParticles2D._bindings.method_get_randomness_ratio,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -748,7 +749,7 @@ export class GPUParticles2D extends Node2D{
   }
   get_visibility_rect() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_visibility_rect,
+      GPUParticles2D._bindings.method_get_visibility_rect,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -758,7 +759,7 @@ export class GPUParticles2D extends Node2D{
   }
   get_use_local_coordinates() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_use_local_coordinates,
+      GPUParticles2D._bindings.method_get_use_local_coordinates,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -767,7 +768,7 @@ export class GPUParticles2D extends Node2D{
   }
   get_fixed_fps() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fixed_fps,
+      GPUParticles2D._bindings.method_get_fixed_fps,
       this._owner,
 			Variant.Type.INT,
       
@@ -776,7 +777,7 @@ export class GPUParticles2D extends Node2D{
   }
   get_fractional_delta() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fractional_delta,
+      GPUParticles2D._bindings.method_get_fractional_delta,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -785,7 +786,7 @@ export class GPUParticles2D extends Node2D{
   }
   get_interpolate() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_interpolate,
+      GPUParticles2D._bindings.method_get_interpolate,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -794,7 +795,7 @@ export class GPUParticles2D extends Node2D{
   }
   get_process_material() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_process_material,
+      GPUParticles2D._bindings.method_get_process_material,
       this._owner,
 			Variant.INT,
       
@@ -803,7 +804,7 @@ export class GPUParticles2D extends Node2D{
   }
   get_speed_scale() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_speed_scale,
+      GPUParticles2D._bindings.method_get_speed_scale,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -812,7 +813,7 @@ export class GPUParticles2D extends Node2D{
   }
   get_collision_base_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_collision_base_size,
+      GPUParticles2D._bindings.method_get_collision_base_size,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -821,7 +822,7 @@ export class GPUParticles2D extends Node2D{
   }
   get_interp_to_end() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_interp_to_end,
+      GPUParticles2D._bindings.method_get_interp_to_end,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -830,7 +831,7 @@ export class GPUParticles2D extends Node2D{
   }
   set_draw_order(_order) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_draw_order,
+      GPUParticles2D._bindings.method_set_draw_order,
       this._owner,
       _order
     );
@@ -838,7 +839,7 @@ export class GPUParticles2D extends Node2D{
   }
   get_draw_order() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_draw_order,
+      GPUParticles2D._bindings.method_get_draw_order,
       this._owner,
 			Variant.INT,
       
@@ -847,7 +848,7 @@ export class GPUParticles2D extends Node2D{
   }
   set_texture(_texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture,
+      GPUParticles2D._bindings.method_set_texture,
       this._owner,
       _texture
     );
@@ -855,7 +856,7 @@ export class GPUParticles2D extends Node2D{
   }
   get_texture() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture,
+      GPUParticles2D._bindings.method_get_texture,
       this._owner,
 			Variant.INT,
       
@@ -864,7 +865,7 @@ export class GPUParticles2D extends Node2D{
   }
   capture_rect() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_capture_rect,
+      GPUParticles2D._bindings.method_capture_rect,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -874,7 +875,7 @@ export class GPUParticles2D extends Node2D{
   }
   restart() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_restart,
+      GPUParticles2D._bindings.method_restart,
       this._owner,
       
     );
@@ -882,7 +883,7 @@ export class GPUParticles2D extends Node2D{
   }
   set_sub_emitter(_path) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sub_emitter,
+      GPUParticles2D._bindings.method_set_sub_emitter,
       this._owner,
       _path
     );
@@ -890,7 +891,7 @@ export class GPUParticles2D extends Node2D{
   }
   get_sub_emitter() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sub_emitter,
+      GPUParticles2D._bindings.method_get_sub_emitter,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -900,7 +901,7 @@ export class GPUParticles2D extends Node2D{
   }
   emit_particle(_xform, _velocity, _color, _custom, _flags) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_emit_particle,
+      GPUParticles2D._bindings.method_emit_particle,
       this._owner,
       _xform, _velocity, _color, _custom, _flags
     );
@@ -908,7 +909,7 @@ export class GPUParticles2D extends Node2D{
   }
   set_trail_enabled(_enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_trail_enabled,
+      GPUParticles2D._bindings.method_set_trail_enabled,
       this._owner,
       _enabled
     );
@@ -916,7 +917,7 @@ export class GPUParticles2D extends Node2D{
   }
   set_trail_lifetime(_secs) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_trail_lifetime,
+      GPUParticles2D._bindings.method_set_trail_lifetime,
       this._owner,
       _secs
     );
@@ -924,7 +925,7 @@ export class GPUParticles2D extends Node2D{
   }
   is_trail_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_trail_enabled,
+      GPUParticles2D._bindings.method_is_trail_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -933,7 +934,7 @@ export class GPUParticles2D extends Node2D{
   }
   get_trail_lifetime() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_trail_lifetime,
+      GPUParticles2D._bindings.method_get_trail_lifetime,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -942,7 +943,7 @@ export class GPUParticles2D extends Node2D{
   }
   set_trail_sections(_sections) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_trail_sections,
+      GPUParticles2D._bindings.method_set_trail_sections,
       this._owner,
       _sections
     );
@@ -950,7 +951,7 @@ export class GPUParticles2D extends Node2D{
   }
   get_trail_sections() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_trail_sections,
+      GPUParticles2D._bindings.method_get_trail_sections,
       this._owner,
 			Variant.Type.INT,
       
@@ -959,7 +960,7 @@ export class GPUParticles2D extends Node2D{
   }
   set_trail_section_subdivisions(_subdivisions) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_trail_section_subdivisions,
+      GPUParticles2D._bindings.method_set_trail_section_subdivisions,
       this._owner,
       _subdivisions
     );
@@ -967,7 +968,7 @@ export class GPUParticles2D extends Node2D{
   }
   get_trail_section_subdivisions() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_trail_section_subdivisions,
+      GPUParticles2D._bindings.method_get_trail_section_subdivisions,
       this._owner,
 			Variant.Type.INT,
       
@@ -976,7 +977,7 @@ export class GPUParticles2D extends Node2D{
   }
   convert_from_particles(_particles) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_convert_from_particles,
+      GPUParticles2D._bindings.method_convert_from_particles,
       this._owner,
       _particles
     );
@@ -984,7 +985,7 @@ export class GPUParticles2D extends Node2D{
   }
   set_amount_ratio(_ratio) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_amount_ratio,
+      GPUParticles2D._bindings.method_set_amount_ratio,
       this._owner,
       _ratio
     );
@@ -992,7 +993,7 @@ export class GPUParticles2D extends Node2D{
   }
   get_amount_ratio() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_amount_ratio,
+      GPUParticles2D._bindings.method_get_amount_ratio,
       this._owner,
 			Variant.Type.FLOAT,
       

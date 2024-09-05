@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
 import { Dictionary } from '@js_godot/variant/dictionary'
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { Variant } from '@js_godot/variant/variant'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -152,9 +152,10 @@ export class WebRTCPeerConnection extends RefCounted{
       );
     }
   }
+  
   set_default_extension(_extension_class) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_default_extension,
+      WebRTCPeerConnection._bindings.method_set_default_extension,
       this._owner,
       _extension_class
     );
@@ -162,7 +163,7 @@ export class WebRTCPeerConnection extends RefCounted{
   }
   initialize(_configuration) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_initialize,
+      WebRTCPeerConnection._bindings.method_initialize,
       this._owner,
 			Variant.INT,
       _configuration
@@ -171,7 +172,7 @@ export class WebRTCPeerConnection extends RefCounted{
   }
   create_data_channel(_label, _options) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_data_channel,
+      WebRTCPeerConnection._bindings.method_create_data_channel,
       this._owner,
 			Variant.INT,
       _label, _options
@@ -180,7 +181,7 @@ export class WebRTCPeerConnection extends RefCounted{
   }
   create_offer() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_offer,
+      WebRTCPeerConnection._bindings.method_create_offer,
       this._owner,
 			Variant.INT,
       
@@ -189,7 +190,7 @@ export class WebRTCPeerConnection extends RefCounted{
   }
   set_local_description(_type, _sdp) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_set_local_description,
+      WebRTCPeerConnection._bindings.method_set_local_description,
       this._owner,
 			Variant.INT,
       _type, _sdp
@@ -198,7 +199,7 @@ export class WebRTCPeerConnection extends RefCounted{
   }
   set_remote_description(_type, _sdp) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_set_remote_description,
+      WebRTCPeerConnection._bindings.method_set_remote_description,
       this._owner,
 			Variant.INT,
       _type, _sdp
@@ -207,7 +208,7 @@ export class WebRTCPeerConnection extends RefCounted{
   }
   add_ice_candidate(_media, _index, _name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_add_ice_candidate,
+      WebRTCPeerConnection._bindings.method_add_ice_candidate,
       this._owner,
 			Variant.INT,
       _media, _index, _name
@@ -216,7 +217,7 @@ export class WebRTCPeerConnection extends RefCounted{
   }
   poll() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_poll,
+      WebRTCPeerConnection._bindings.method_poll,
       this._owner,
 			Variant.INT,
       
@@ -225,7 +226,7 @@ export class WebRTCPeerConnection extends RefCounted{
   }
   close() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_close,
+      WebRTCPeerConnection._bindings.method_close,
       this._owner,
       
     );
@@ -233,7 +234,7 @@ export class WebRTCPeerConnection extends RefCounted{
   }
   get_connection_state() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_connection_state,
+      WebRTCPeerConnection._bindings.method_get_connection_state,
       this._owner,
 			Variant.INT,
       
@@ -242,7 +243,7 @@ export class WebRTCPeerConnection extends RefCounted{
   }
   get_gathering_state() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_gathering_state,
+      WebRTCPeerConnection._bindings.method_get_gathering_state,
       this._owner,
 			Variant.INT,
       
@@ -251,7 +252,7 @@ export class WebRTCPeerConnection extends RefCounted{
   }
   get_signaling_state() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_signaling_state,
+      WebRTCPeerConnection._bindings.method_get_signaling_state,
       this._owner,
 			Variant.INT,
       

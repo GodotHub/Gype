@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { Node } from '@js_godot/classes/node'
 import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { Node } from '@js_godot/classes/node'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -170,9 +170,10 @@ export class Timer extends Node{
       );
     }
   }
+  
   set_wait_time(_time_sec) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_wait_time,
+      Timer._bindings.method_set_wait_time,
       this._owner,
       _time_sec
     );
@@ -180,7 +181,7 @@ export class Timer extends Node{
   }
   get_wait_time() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_wait_time,
+      Timer._bindings.method_get_wait_time,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -189,7 +190,7 @@ export class Timer extends Node{
   }
   set_one_shot(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_one_shot,
+      Timer._bindings.method_set_one_shot,
       this._owner,
       _enable
     );
@@ -197,7 +198,7 @@ export class Timer extends Node{
   }
   is_one_shot() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_one_shot,
+      Timer._bindings.method_is_one_shot,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -206,7 +207,7 @@ export class Timer extends Node{
   }
   set_autostart(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_autostart,
+      Timer._bindings.method_set_autostart,
       this._owner,
       _enable
     );
@@ -214,7 +215,7 @@ export class Timer extends Node{
   }
   has_autostart() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_autostart,
+      Timer._bindings.method_has_autostart,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -223,7 +224,7 @@ export class Timer extends Node{
   }
   start(_time_sec) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_start,
+      Timer._bindings.method_start,
       this._owner,
       _time_sec
     );
@@ -231,7 +232,7 @@ export class Timer extends Node{
   }
   stop() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_stop,
+      Timer._bindings.method_stop,
       this._owner,
       
     );
@@ -239,7 +240,7 @@ export class Timer extends Node{
   }
   set_paused(_paused) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_paused,
+      Timer._bindings.method_set_paused,
       this._owner,
       _paused
     );
@@ -247,7 +248,7 @@ export class Timer extends Node{
   }
   is_paused() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_paused,
+      Timer._bindings.method_is_paused,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -256,7 +257,7 @@ export class Timer extends Node{
   }
   is_stopped() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_stopped,
+      Timer._bindings.method_is_stopped,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -265,7 +266,7 @@ export class Timer extends Node{
   }
   get_time_left() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_time_left,
+      Timer._bindings.method_get_time_left,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -274,7 +275,7 @@ export class Timer extends Node{
   }
   set_timer_process_callback(_callback) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_timer_process_callback,
+      Timer._bindings.method_set_timer_process_callback,
       this._owner,
       _callback
     );
@@ -282,7 +283,7 @@ export class Timer extends Node{
   }
   get_timer_process_callback() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_timer_process_callback,
+      Timer._bindings.method_get_timer_process_callback,
       this._owner,
 			Variant.INT,
       

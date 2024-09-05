@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
-import { GDString } from '@js_godot/variant/gd_string'
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -91,9 +91,10 @@ export class GLTFAnimation extends Resource{
       );
     }
   }
+  
   get_original_name() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_original_name,
+      GLTFAnimation._bindings.method_get_original_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -103,7 +104,7 @@ export class GLTFAnimation extends Resource{
   }
   set_original_name(_original_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_original_name,
+      GLTFAnimation._bindings.method_set_original_name,
       this._owner,
       _original_name
     );
@@ -111,7 +112,7 @@ export class GLTFAnimation extends Resource{
   }
   get_loop() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_loop,
+      GLTFAnimation._bindings.method_get_loop,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -120,7 +121,7 @@ export class GLTFAnimation extends Resource{
   }
   set_loop(_loop) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_loop,
+      GLTFAnimation._bindings.method_set_loop,
       this._owner,
       _loop
     );
@@ -128,7 +129,7 @@ export class GLTFAnimation extends Resource{
   }
   get_additional_data(_extension_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_additional_data,
+      GLTFAnimation._bindings.method_get_additional_data,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -138,7 +139,7 @@ export class GLTFAnimation extends Resource{
   }
   set_additional_data(_extension_name, _additional_data) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_additional_data,
+      GLTFAnimation._bindings.method_set_additional_data,
       this._owner,
       _extension_name, _additional_data
     );

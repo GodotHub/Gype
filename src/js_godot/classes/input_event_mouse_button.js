@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { InputEventMouse } from '@js_godot/classes/input_event_mouse'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -110,9 +110,10 @@ export class InputEventMouseButton extends InputEventMouse{
       );
     }
   }
+  
   set_factor(_factor) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_factor,
+      InputEventMouseButton._bindings.method_set_factor,
       this._owner,
       _factor
     );
@@ -120,7 +121,7 @@ export class InputEventMouseButton extends InputEventMouse{
   }
   get_factor() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_factor,
+      InputEventMouseButton._bindings.method_get_factor,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -129,7 +130,7 @@ export class InputEventMouseButton extends InputEventMouse{
   }
   set_button_index(_button_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_button_index,
+      InputEventMouseButton._bindings.method_set_button_index,
       this._owner,
       _button_index
     );
@@ -137,7 +138,7 @@ export class InputEventMouseButton extends InputEventMouse{
   }
   get_button_index() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_button_index,
+      InputEventMouseButton._bindings.method_get_button_index,
       this._owner,
 			Variant.INT,
       
@@ -146,7 +147,7 @@ export class InputEventMouseButton extends InputEventMouse{
   }
   set_pressed(_pressed) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_pressed,
+      InputEventMouseButton._bindings.method_set_pressed,
       this._owner,
       _pressed
     );
@@ -154,7 +155,7 @@ export class InputEventMouseButton extends InputEventMouse{
   }
   set_canceled(_canceled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_canceled,
+      InputEventMouseButton._bindings.method_set_canceled,
       this._owner,
       _canceled
     );
@@ -162,7 +163,7 @@ export class InputEventMouseButton extends InputEventMouse{
   }
   set_double_click(_double_click) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_double_click,
+      InputEventMouseButton._bindings.method_set_double_click,
       this._owner,
       _double_click
     );
@@ -170,7 +171,7 @@ export class InputEventMouseButton extends InputEventMouse{
   }
   is_double_click() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_double_click,
+      InputEventMouseButton._bindings.method_is_double_click,
       this._owner,
 			Variant.Type.BOOL,
       

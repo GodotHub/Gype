@@ -1,12 +1,12 @@
 import * as internal from '__internal__';
 import { Dictionary } from '@js_godot/variant/dictionary'
-import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
-import { Vector3 } from '@js_godot/variant/vector3'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { Quaternion } from '@js_godot/variant/quaternion'
+import { GDString } from '@js_godot/variant/gd_string'
+import { Variant } from '@js_godot/variant/variant'
 import { Basis } from '@js_godot/variant/basis'
+import { Vector3 } from '@js_godot/variant/vector3'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -235,9 +235,10 @@ export class GLTFPhysicsBody extends Resource{
       );
     }
   }
+  
   from_node(_body_node) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_from_node,
+      GLTFPhysicsBody._bindings.method_from_node,
       this._owner,
 			Variant.INT,
       _body_node
@@ -246,7 +247,7 @@ export class GLTFPhysicsBody extends Resource{
   }
   to_node() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_to_node,
+      GLTFPhysicsBody._bindings.method_to_node,
       this._owner,
 			Variant.INT,
       
@@ -255,7 +256,7 @@ export class GLTFPhysicsBody extends Resource{
   }
   from_dictionary(_dictionary) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_from_dictionary,
+      GLTFPhysicsBody._bindings.method_from_dictionary,
       this._owner,
 			Variant.INT,
       _dictionary
@@ -264,7 +265,7 @@ export class GLTFPhysicsBody extends Resource{
   }
   to_dictionary() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_to_dictionary,
+      GLTFPhysicsBody._bindings.method_to_dictionary,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -274,7 +275,7 @@ export class GLTFPhysicsBody extends Resource{
   }
   get_body_type() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_body_type,
+      GLTFPhysicsBody._bindings.method_get_body_type,
       this._owner,
 			Variant.Type.STRING,
     
@@ -284,7 +285,7 @@ export class GLTFPhysicsBody extends Resource{
   }
   set_body_type(_body_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_body_type,
+      GLTFPhysicsBody._bindings.method_set_body_type,
       this._owner,
       _body_type
     );
@@ -292,7 +293,7 @@ export class GLTFPhysicsBody extends Resource{
   }
   get_mass() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_mass,
+      GLTFPhysicsBody._bindings.method_get_mass,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -301,7 +302,7 @@ export class GLTFPhysicsBody extends Resource{
   }
   set_mass(_mass) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_mass,
+      GLTFPhysicsBody._bindings.method_set_mass,
       this._owner,
       _mass
     );
@@ -309,7 +310,7 @@ export class GLTFPhysicsBody extends Resource{
   }
   get_linear_velocity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_linear_velocity,
+      GLTFPhysicsBody._bindings.method_get_linear_velocity,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -319,7 +320,7 @@ export class GLTFPhysicsBody extends Resource{
   }
   set_linear_velocity(_linear_velocity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_linear_velocity,
+      GLTFPhysicsBody._bindings.method_set_linear_velocity,
       this._owner,
       _linear_velocity
     );
@@ -327,7 +328,7 @@ export class GLTFPhysicsBody extends Resource{
   }
   get_angular_velocity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_angular_velocity,
+      GLTFPhysicsBody._bindings.method_get_angular_velocity,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -337,7 +338,7 @@ export class GLTFPhysicsBody extends Resource{
   }
   set_angular_velocity(_angular_velocity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_angular_velocity,
+      GLTFPhysicsBody._bindings.method_set_angular_velocity,
       this._owner,
       _angular_velocity
     );
@@ -345,7 +346,7 @@ export class GLTFPhysicsBody extends Resource{
   }
   get_center_of_mass() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_center_of_mass,
+      GLTFPhysicsBody._bindings.method_get_center_of_mass,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -355,7 +356,7 @@ export class GLTFPhysicsBody extends Resource{
   }
   set_center_of_mass(_center_of_mass) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_center_of_mass,
+      GLTFPhysicsBody._bindings.method_set_center_of_mass,
       this._owner,
       _center_of_mass
     );
@@ -363,7 +364,7 @@ export class GLTFPhysicsBody extends Resource{
   }
   get_inertia_diagonal() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_inertia_diagonal,
+      GLTFPhysicsBody._bindings.method_get_inertia_diagonal,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -373,7 +374,7 @@ export class GLTFPhysicsBody extends Resource{
   }
   set_inertia_diagonal(_inertia_diagonal) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_inertia_diagonal,
+      GLTFPhysicsBody._bindings.method_set_inertia_diagonal,
       this._owner,
       _inertia_diagonal
     );
@@ -381,7 +382,7 @@ export class GLTFPhysicsBody extends Resource{
   }
   get_inertia_orientation() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_inertia_orientation,
+      GLTFPhysicsBody._bindings.method_get_inertia_orientation,
       this._owner,
 			Variant.Type.QUATERNION,
     
@@ -391,7 +392,7 @@ export class GLTFPhysicsBody extends Resource{
   }
   set_inertia_orientation(_inertia_orientation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_inertia_orientation,
+      GLTFPhysicsBody._bindings.method_set_inertia_orientation,
       this._owner,
       _inertia_orientation
     );
@@ -399,7 +400,7 @@ export class GLTFPhysicsBody extends Resource{
   }
   get_inertia_tensor() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_inertia_tensor,
+      GLTFPhysicsBody._bindings.method_get_inertia_tensor,
       this._owner,
 			Variant.Type.BASIS,
     
@@ -409,7 +410,7 @@ export class GLTFPhysicsBody extends Resource{
   }
   set_inertia_tensor(_inertia_tensor) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_inertia_tensor,
+      GLTFPhysicsBody._bindings.method_set_inertia_tensor,
       this._owner,
       _inertia_tensor
     );

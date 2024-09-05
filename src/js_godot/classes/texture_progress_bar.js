@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
-import { Range } from '@js_godot/classes/range'
-import { StringName } from '@js_godot/variant/string_name'
 import { Color } from '@js_godot/variant/color'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { StringName } from '@js_godot/variant/string_name'
+import { Range } from '@js_godot/classes/range'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -292,9 +292,10 @@ export class TextureProgressBar extends Range{
       );
     }
   }
+  
   set_under_texture(_tex) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_under_texture,
+      TextureProgressBar._bindings.method_set_under_texture,
       this._owner,
       _tex
     );
@@ -302,7 +303,7 @@ export class TextureProgressBar extends Range{
   }
   get_under_texture() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_under_texture,
+      TextureProgressBar._bindings.method_get_under_texture,
       this._owner,
 			Variant.INT,
       
@@ -311,7 +312,7 @@ export class TextureProgressBar extends Range{
   }
   set_progress_texture(_tex) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_progress_texture,
+      TextureProgressBar._bindings.method_set_progress_texture,
       this._owner,
       _tex
     );
@@ -319,7 +320,7 @@ export class TextureProgressBar extends Range{
   }
   get_progress_texture() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_progress_texture,
+      TextureProgressBar._bindings.method_get_progress_texture,
       this._owner,
 			Variant.INT,
       
@@ -328,7 +329,7 @@ export class TextureProgressBar extends Range{
   }
   set_over_texture(_tex) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_over_texture,
+      TextureProgressBar._bindings.method_set_over_texture,
       this._owner,
       _tex
     );
@@ -336,7 +337,7 @@ export class TextureProgressBar extends Range{
   }
   get_over_texture() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_over_texture,
+      TextureProgressBar._bindings.method_get_over_texture,
       this._owner,
 			Variant.INT,
       
@@ -345,7 +346,7 @@ export class TextureProgressBar extends Range{
   }
   set_fill_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fill_mode,
+      TextureProgressBar._bindings.method_set_fill_mode,
       this._owner,
       _mode
     );
@@ -353,7 +354,7 @@ export class TextureProgressBar extends Range{
   }
   get_fill_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fill_mode,
+      TextureProgressBar._bindings.method_get_fill_mode,
       this._owner,
 			Variant.Type.INT,
       
@@ -362,7 +363,7 @@ export class TextureProgressBar extends Range{
   }
   set_tint_under(_tint) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tint_under,
+      TextureProgressBar._bindings.method_set_tint_under,
       this._owner,
       _tint
     );
@@ -370,7 +371,7 @@ export class TextureProgressBar extends Range{
   }
   get_tint_under() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tint_under,
+      TextureProgressBar._bindings.method_get_tint_under,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -380,7 +381,7 @@ export class TextureProgressBar extends Range{
   }
   set_tint_progress(_tint) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tint_progress,
+      TextureProgressBar._bindings.method_set_tint_progress,
       this._owner,
       _tint
     );
@@ -388,7 +389,7 @@ export class TextureProgressBar extends Range{
   }
   get_tint_progress() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tint_progress,
+      TextureProgressBar._bindings.method_get_tint_progress,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -398,7 +399,7 @@ export class TextureProgressBar extends Range{
   }
   set_tint_over(_tint) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tint_over,
+      TextureProgressBar._bindings.method_set_tint_over,
       this._owner,
       _tint
     );
@@ -406,7 +407,7 @@ export class TextureProgressBar extends Range{
   }
   get_tint_over() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tint_over,
+      TextureProgressBar._bindings.method_get_tint_over,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -416,7 +417,7 @@ export class TextureProgressBar extends Range{
   }
   set_texture_progress_offset(_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture_progress_offset,
+      TextureProgressBar._bindings.method_set_texture_progress_offset,
       this._owner,
       _offset
     );
@@ -424,7 +425,7 @@ export class TextureProgressBar extends Range{
   }
   get_texture_progress_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_progress_offset,
+      TextureProgressBar._bindings.method_get_texture_progress_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -434,7 +435,7 @@ export class TextureProgressBar extends Range{
   }
   set_radial_initial_angle(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_radial_initial_angle,
+      TextureProgressBar._bindings.method_set_radial_initial_angle,
       this._owner,
       _mode
     );
@@ -442,7 +443,7 @@ export class TextureProgressBar extends Range{
   }
   get_radial_initial_angle() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_radial_initial_angle,
+      TextureProgressBar._bindings.method_get_radial_initial_angle,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -451,7 +452,7 @@ export class TextureProgressBar extends Range{
   }
   set_radial_center_offset(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_radial_center_offset,
+      TextureProgressBar._bindings.method_set_radial_center_offset,
       this._owner,
       _mode
     );
@@ -459,7 +460,7 @@ export class TextureProgressBar extends Range{
   }
   get_radial_center_offset() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_radial_center_offset,
+      TextureProgressBar._bindings.method_get_radial_center_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -469,7 +470,7 @@ export class TextureProgressBar extends Range{
   }
   set_fill_degrees(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fill_degrees,
+      TextureProgressBar._bindings.method_set_fill_degrees,
       this._owner,
       _mode
     );
@@ -477,7 +478,7 @@ export class TextureProgressBar extends Range{
   }
   get_fill_degrees() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fill_degrees,
+      TextureProgressBar._bindings.method_get_fill_degrees,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -486,7 +487,7 @@ export class TextureProgressBar extends Range{
   }
   set_stretch_margin(_margin, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_stretch_margin,
+      TextureProgressBar._bindings.method_set_stretch_margin,
       this._owner,
       _margin, _value
     );
@@ -494,7 +495,7 @@ export class TextureProgressBar extends Range{
   }
   get_stretch_margin(_margin) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_stretch_margin,
+      TextureProgressBar._bindings.method_get_stretch_margin,
       this._owner,
 			Variant.Type.INT,
       _margin
@@ -503,7 +504,7 @@ export class TextureProgressBar extends Range{
   }
   set_nine_patch_stretch(_stretch) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_nine_patch_stretch,
+      TextureProgressBar._bindings.method_set_nine_patch_stretch,
       this._owner,
       _stretch
     );
@@ -511,7 +512,7 @@ export class TextureProgressBar extends Range{
   }
   get_nine_patch_stretch() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_nine_patch_stretch,
+      TextureProgressBar._bindings.method_get_nine_patch_stretch,
       this._owner,
 			Variant.Type.BOOL,
       

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { RefCounted } from '@js_godot/classes/ref_counted'
+import { StringName } from '@js_godot/variant/string_name'
 import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
 import {
   call_utility_ret,
@@ -71,9 +71,10 @@ export class AESContext extends RefCounted{
       );
     }
   }
+  
   start(_mode, _key, _iv) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_start,
+      AESContext._bindings.method_start,
       this._owner,
 			Variant.INT,
       _mode, _key, _iv
@@ -82,7 +83,7 @@ export class AESContext extends RefCounted{
   }
   update(_src) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_update,
+      AESContext._bindings.method_update,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -92,7 +93,7 @@ export class AESContext extends RefCounted{
   }
   get_iv_state() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_iv_state,
+      AESContext._bindings.method_get_iv_state,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -102,7 +103,7 @@ export class AESContext extends RefCounted{
   }
   finish() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_finish,
+      AESContext._bindings.method_finish,
       this._owner,
       
     );

@@ -1,21 +1,21 @@
 import * as internal from '__internal__';
-import { Dictionary } from '@js_godot/variant/dictionary'
-import { Variant } from '@js_godot/variant/variant'
-import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
-import { Vector2i } from '@js_godot/variant/vector2i'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
-import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
-import { Color } from '@js_godot/variant/color'
-import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
-import { RID } from '@js_godot/variant/rid'
 import { Vector2 } from '@js_godot/variant/vector2'
-import { RefCounted } from '@js_godot/classes/ref_counted'
+import { Dictionary } from '@js_godot/variant/dictionary'
+import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
 import { PackedFloat32Array } from '@js_godot/variant/packed_float32_array'
-import { Rect2 } from '@js_godot/variant/rect2'
-import { Transform2D } from '@js_godot/variant/transform2d'
+import { RID } from '@js_godot/variant/rid'
 import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { StringName } from '@js_godot/variant/string_name'
+import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
+import { RefCounted } from '@js_godot/classes/ref_counted'
 import { GDArray } from '@js_godot/variant/gd_array'
+import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
+import { Color } from '@js_godot/variant/color'
+import { GDString } from '@js_godot/variant/gd_string'
+import { Rect2 } from '@js_godot/variant/rect2'
+import { Variant } from '@js_godot/variant/variant'
+import { Vector2i } from '@js_godot/variant/vector2i'
+import { Transform2D } from '@js_godot/variant/transform2d'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -2174,9 +2174,10 @@ export class TextServer extends RefCounted{
       );
     }
   }
+  
   has_feature(_feature) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has_feature,
+      TextServer._bindings.method_has_feature,
       this._owner,
 			Variant.Type.BOOL,
       _feature
@@ -2185,7 +2186,7 @@ export class TextServer extends RefCounted{
   }
   get_name() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_name,
+      TextServer._bindings.method_get_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -2195,7 +2196,7 @@ export class TextServer extends RefCounted{
   }
   get_features() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_features,
+      TextServer._bindings.method_get_features,
       this._owner,
 			Variant.Type.INT,
       
@@ -2204,7 +2205,7 @@ export class TextServer extends RefCounted{
   }
   load_support_data(_filename) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_load_support_data,
+      TextServer._bindings.method_load_support_data,
       this._owner,
 			Variant.Type.BOOL,
       _filename
@@ -2213,7 +2214,7 @@ export class TextServer extends RefCounted{
   }
   get_support_data_filename() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_support_data_filename,
+      TextServer._bindings.method_get_support_data_filename,
       this._owner,
 			Variant.Type.STRING,
     
@@ -2223,7 +2224,7 @@ export class TextServer extends RefCounted{
   }
   get_support_data_info() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_support_data_info,
+      TextServer._bindings.method_get_support_data_info,
       this._owner,
 			Variant.Type.STRING,
     
@@ -2233,7 +2234,7 @@ export class TextServer extends RefCounted{
   }
   save_support_data(_filename) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_save_support_data,
+      TextServer._bindings.method_save_support_data,
       this._owner,
 			Variant.Type.BOOL,
       _filename
@@ -2242,7 +2243,7 @@ export class TextServer extends RefCounted{
   }
   is_locale_right_to_left(_locale) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_locale_right_to_left,
+      TextServer._bindings.method_is_locale_right_to_left,
       this._owner,
 			Variant.Type.BOOL,
       _locale
@@ -2251,7 +2252,7 @@ export class TextServer extends RefCounted{
   }
   name_to_tag(_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_name_to_tag,
+      TextServer._bindings.method_name_to_tag,
       this._owner,
 			Variant.Type.INT,
       _name
@@ -2260,7 +2261,7 @@ export class TextServer extends RefCounted{
   }
   tag_to_name(_tag) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_tag_to_name,
+      TextServer._bindings.method_tag_to_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -2270,7 +2271,7 @@ export class TextServer extends RefCounted{
   }
   has(_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_has,
+      TextServer._bindings.method_has,
       this._owner,
 			Variant.Type.BOOL,
       _rid
@@ -2279,7 +2280,7 @@ export class TextServer extends RefCounted{
   }
   free_rid(_rid) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_free_rid,
+      TextServer._bindings.method_free_rid,
       this._owner,
       _rid
     );
@@ -2287,7 +2288,7 @@ export class TextServer extends RefCounted{
   }
   create_font() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_font,
+      TextServer._bindings.method_create_font,
       this._owner,
 			Variant.Type.RID,
     
@@ -2297,7 +2298,7 @@ export class TextServer extends RefCounted{
   }
   create_font_linked_variation(_font_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_font_linked_variation,
+      TextServer._bindings.method_create_font_linked_variation,
       this._owner,
 			Variant.Type.RID,
     
@@ -2307,7 +2308,7 @@ export class TextServer extends RefCounted{
   }
   font_set_data(_font_rid, _data) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_data,
+      TextServer._bindings.method_font_set_data,
       this._owner,
       _font_rid, _data
     );
@@ -2315,7 +2316,7 @@ export class TextServer extends RefCounted{
   }
   font_set_face_index(_font_rid, _face_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_face_index,
+      TextServer._bindings.method_font_set_face_index,
       this._owner,
       _font_rid, _face_index
     );
@@ -2323,7 +2324,7 @@ export class TextServer extends RefCounted{
   }
   font_get_face_index(_font_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_face_index,
+      TextServer._bindings.method_font_get_face_index,
       this._owner,
 			Variant.Type.INT,
       _font_rid
@@ -2332,7 +2333,7 @@ export class TextServer extends RefCounted{
   }
   font_get_face_count(_font_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_face_count,
+      TextServer._bindings.method_font_get_face_count,
       this._owner,
 			Variant.Type.INT,
       _font_rid
@@ -2341,7 +2342,7 @@ export class TextServer extends RefCounted{
   }
   font_set_style(_font_rid, _style) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_style,
+      TextServer._bindings.method_font_set_style,
       this._owner,
       _font_rid, _style
     );
@@ -2349,7 +2350,7 @@ export class TextServer extends RefCounted{
   }
   font_get_style(_font_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_style,
+      TextServer._bindings.method_font_get_style,
       this._owner,
 			Variant.INT,
       _font_rid
@@ -2358,7 +2359,7 @@ export class TextServer extends RefCounted{
   }
   font_set_name(_font_rid, _name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_name,
+      TextServer._bindings.method_font_set_name,
       this._owner,
       _font_rid, _name
     );
@@ -2366,7 +2367,7 @@ export class TextServer extends RefCounted{
   }
   font_get_name(_font_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_name,
+      TextServer._bindings.method_font_get_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -2376,7 +2377,7 @@ export class TextServer extends RefCounted{
   }
   font_get_ot_name_strings(_font_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_ot_name_strings,
+      TextServer._bindings.method_font_get_ot_name_strings,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -2386,7 +2387,7 @@ export class TextServer extends RefCounted{
   }
   font_set_style_name(_font_rid, _name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_style_name,
+      TextServer._bindings.method_font_set_style_name,
       this._owner,
       _font_rid, _name
     );
@@ -2394,7 +2395,7 @@ export class TextServer extends RefCounted{
   }
   font_get_style_name(_font_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_style_name,
+      TextServer._bindings.method_font_get_style_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -2404,7 +2405,7 @@ export class TextServer extends RefCounted{
   }
   font_set_weight(_font_rid, _weight) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_weight,
+      TextServer._bindings.method_font_set_weight,
       this._owner,
       _font_rid, _weight
     );
@@ -2412,7 +2413,7 @@ export class TextServer extends RefCounted{
   }
   font_get_weight(_font_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_weight,
+      TextServer._bindings.method_font_get_weight,
       this._owner,
 			Variant.Type.INT,
       _font_rid
@@ -2421,7 +2422,7 @@ export class TextServer extends RefCounted{
   }
   font_set_stretch(_font_rid, _weight) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_stretch,
+      TextServer._bindings.method_font_set_stretch,
       this._owner,
       _font_rid, _weight
     );
@@ -2429,7 +2430,7 @@ export class TextServer extends RefCounted{
   }
   font_get_stretch(_font_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_stretch,
+      TextServer._bindings.method_font_get_stretch,
       this._owner,
 			Variant.Type.INT,
       _font_rid
@@ -2438,7 +2439,7 @@ export class TextServer extends RefCounted{
   }
   font_set_antialiasing(_font_rid, _antialiasing) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_antialiasing,
+      TextServer._bindings.method_font_set_antialiasing,
       this._owner,
       _font_rid, _antialiasing
     );
@@ -2446,7 +2447,7 @@ export class TextServer extends RefCounted{
   }
   font_get_antialiasing(_font_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_antialiasing,
+      TextServer._bindings.method_font_get_antialiasing,
       this._owner,
 			Variant.INT,
       _font_rid
@@ -2455,7 +2456,7 @@ export class TextServer extends RefCounted{
   }
   font_set_disable_embedded_bitmaps(_font_rid, _disable_embedded_bitmaps) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_disable_embedded_bitmaps,
+      TextServer._bindings.method_font_set_disable_embedded_bitmaps,
       this._owner,
       _font_rid, _disable_embedded_bitmaps
     );
@@ -2463,7 +2464,7 @@ export class TextServer extends RefCounted{
   }
   font_get_disable_embedded_bitmaps(_font_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_disable_embedded_bitmaps,
+      TextServer._bindings.method_font_get_disable_embedded_bitmaps,
       this._owner,
 			Variant.Type.BOOL,
       _font_rid
@@ -2472,7 +2473,7 @@ export class TextServer extends RefCounted{
   }
   font_set_generate_mipmaps(_font_rid, _generate_mipmaps) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_generate_mipmaps,
+      TextServer._bindings.method_font_set_generate_mipmaps,
       this._owner,
       _font_rid, _generate_mipmaps
     );
@@ -2480,7 +2481,7 @@ export class TextServer extends RefCounted{
   }
   font_get_generate_mipmaps(_font_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_generate_mipmaps,
+      TextServer._bindings.method_font_get_generate_mipmaps,
       this._owner,
 			Variant.Type.BOOL,
       _font_rid
@@ -2489,7 +2490,7 @@ export class TextServer extends RefCounted{
   }
   font_set_multichannel_signed_distance_field(_font_rid, _msdf) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_multichannel_signed_distance_field,
+      TextServer._bindings.method_font_set_multichannel_signed_distance_field,
       this._owner,
       _font_rid, _msdf
     );
@@ -2497,7 +2498,7 @@ export class TextServer extends RefCounted{
   }
   font_is_multichannel_signed_distance_field(_font_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_is_multichannel_signed_distance_field,
+      TextServer._bindings.method_font_is_multichannel_signed_distance_field,
       this._owner,
 			Variant.Type.BOOL,
       _font_rid
@@ -2506,7 +2507,7 @@ export class TextServer extends RefCounted{
   }
   font_set_msdf_pixel_range(_font_rid, _msdf_pixel_range) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_msdf_pixel_range,
+      TextServer._bindings.method_font_set_msdf_pixel_range,
       this._owner,
       _font_rid, _msdf_pixel_range
     );
@@ -2514,7 +2515,7 @@ export class TextServer extends RefCounted{
   }
   font_get_msdf_pixel_range(_font_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_msdf_pixel_range,
+      TextServer._bindings.method_font_get_msdf_pixel_range,
       this._owner,
 			Variant.Type.INT,
       _font_rid
@@ -2523,7 +2524,7 @@ export class TextServer extends RefCounted{
   }
   font_set_msdf_size(_font_rid, _msdf_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_msdf_size,
+      TextServer._bindings.method_font_set_msdf_size,
       this._owner,
       _font_rid, _msdf_size
     );
@@ -2531,7 +2532,7 @@ export class TextServer extends RefCounted{
   }
   font_get_msdf_size(_font_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_msdf_size,
+      TextServer._bindings.method_font_get_msdf_size,
       this._owner,
 			Variant.Type.INT,
       _font_rid
@@ -2540,7 +2541,7 @@ export class TextServer extends RefCounted{
   }
   font_set_fixed_size(_font_rid, _fixed_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_fixed_size,
+      TextServer._bindings.method_font_set_fixed_size,
       this._owner,
       _font_rid, _fixed_size
     );
@@ -2548,7 +2549,7 @@ export class TextServer extends RefCounted{
   }
   font_get_fixed_size(_font_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_fixed_size,
+      TextServer._bindings.method_font_get_fixed_size,
       this._owner,
 			Variant.Type.INT,
       _font_rid
@@ -2557,7 +2558,7 @@ export class TextServer extends RefCounted{
   }
   font_set_fixed_size_scale_mode(_font_rid, _fixed_size_scale_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_fixed_size_scale_mode,
+      TextServer._bindings.method_font_set_fixed_size_scale_mode,
       this._owner,
       _font_rid, _fixed_size_scale_mode
     );
@@ -2565,7 +2566,7 @@ export class TextServer extends RefCounted{
   }
   font_get_fixed_size_scale_mode(_font_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_fixed_size_scale_mode,
+      TextServer._bindings.method_font_get_fixed_size_scale_mode,
       this._owner,
 			Variant.INT,
       _font_rid
@@ -2574,7 +2575,7 @@ export class TextServer extends RefCounted{
   }
   font_set_allow_system_fallback(_font_rid, _allow_system_fallback) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_allow_system_fallback,
+      TextServer._bindings.method_font_set_allow_system_fallback,
       this._owner,
       _font_rid, _allow_system_fallback
     );
@@ -2582,7 +2583,7 @@ export class TextServer extends RefCounted{
   }
   font_is_allow_system_fallback(_font_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_is_allow_system_fallback,
+      TextServer._bindings.method_font_is_allow_system_fallback,
       this._owner,
 			Variant.Type.BOOL,
       _font_rid
@@ -2591,7 +2592,7 @@ export class TextServer extends RefCounted{
   }
   font_set_force_autohinter(_font_rid, _force_autohinter) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_force_autohinter,
+      TextServer._bindings.method_font_set_force_autohinter,
       this._owner,
       _font_rid, _force_autohinter
     );
@@ -2599,7 +2600,7 @@ export class TextServer extends RefCounted{
   }
   font_is_force_autohinter(_font_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_is_force_autohinter,
+      TextServer._bindings.method_font_is_force_autohinter,
       this._owner,
 			Variant.Type.BOOL,
       _font_rid
@@ -2608,7 +2609,7 @@ export class TextServer extends RefCounted{
   }
   font_set_hinting(_font_rid, _hinting) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_hinting,
+      TextServer._bindings.method_font_set_hinting,
       this._owner,
       _font_rid, _hinting
     );
@@ -2616,7 +2617,7 @@ export class TextServer extends RefCounted{
   }
   font_get_hinting(_font_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_hinting,
+      TextServer._bindings.method_font_get_hinting,
       this._owner,
 			Variant.INT,
       _font_rid
@@ -2625,7 +2626,7 @@ export class TextServer extends RefCounted{
   }
   font_set_subpixel_positioning(_font_rid, _subpixel_positioning) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_subpixel_positioning,
+      TextServer._bindings.method_font_set_subpixel_positioning,
       this._owner,
       _font_rid, _subpixel_positioning
     );
@@ -2633,7 +2634,7 @@ export class TextServer extends RefCounted{
   }
   font_get_subpixel_positioning(_font_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_subpixel_positioning,
+      TextServer._bindings.method_font_get_subpixel_positioning,
       this._owner,
 			Variant.INT,
       _font_rid
@@ -2642,7 +2643,7 @@ export class TextServer extends RefCounted{
   }
   font_set_embolden(_font_rid, _strength) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_embolden,
+      TextServer._bindings.method_font_set_embolden,
       this._owner,
       _font_rid, _strength
     );
@@ -2650,7 +2651,7 @@ export class TextServer extends RefCounted{
   }
   font_get_embolden(_font_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_embolden,
+      TextServer._bindings.method_font_get_embolden,
       this._owner,
 			Variant.Type.FLOAT,
       _font_rid
@@ -2659,7 +2660,7 @@ export class TextServer extends RefCounted{
   }
   font_set_spacing(_font_rid, _spacing, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_spacing,
+      TextServer._bindings.method_font_set_spacing,
       this._owner,
       _font_rid, _spacing, _value
     );
@@ -2667,7 +2668,7 @@ export class TextServer extends RefCounted{
   }
   font_get_spacing(_font_rid, _spacing) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_spacing,
+      TextServer._bindings.method_font_get_spacing,
       this._owner,
 			Variant.Type.INT,
       _font_rid, _spacing
@@ -2676,7 +2677,7 @@ export class TextServer extends RefCounted{
   }
   font_set_baseline_offset(_font_rid, _baseline_offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_baseline_offset,
+      TextServer._bindings.method_font_set_baseline_offset,
       this._owner,
       _font_rid, _baseline_offset
     );
@@ -2684,7 +2685,7 @@ export class TextServer extends RefCounted{
   }
   font_get_baseline_offset(_font_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_baseline_offset,
+      TextServer._bindings.method_font_get_baseline_offset,
       this._owner,
 			Variant.Type.FLOAT,
       _font_rid
@@ -2693,7 +2694,7 @@ export class TextServer extends RefCounted{
   }
   font_set_transform(_font_rid, _transform) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_transform,
+      TextServer._bindings.method_font_set_transform,
       this._owner,
       _font_rid, _transform
     );
@@ -2701,7 +2702,7 @@ export class TextServer extends RefCounted{
   }
   font_get_transform(_font_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_transform,
+      TextServer._bindings.method_font_get_transform,
       this._owner,
 			Variant.Type.TRANSFORM2D,
     
@@ -2711,7 +2712,7 @@ export class TextServer extends RefCounted{
   }
   font_set_variation_coordinates(_font_rid, _variation_coordinates) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_variation_coordinates,
+      TextServer._bindings.method_font_set_variation_coordinates,
       this._owner,
       _font_rid, _variation_coordinates
     );
@@ -2719,7 +2720,7 @@ export class TextServer extends RefCounted{
   }
   font_get_variation_coordinates(_font_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_variation_coordinates,
+      TextServer._bindings.method_font_get_variation_coordinates,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -2729,7 +2730,7 @@ export class TextServer extends RefCounted{
   }
   font_set_oversampling(_font_rid, _oversampling) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_oversampling,
+      TextServer._bindings.method_font_set_oversampling,
       this._owner,
       _font_rid, _oversampling
     );
@@ -2737,7 +2738,7 @@ export class TextServer extends RefCounted{
   }
   font_get_oversampling(_font_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_oversampling,
+      TextServer._bindings.method_font_get_oversampling,
       this._owner,
 			Variant.Type.FLOAT,
       _font_rid
@@ -2746,7 +2747,7 @@ export class TextServer extends RefCounted{
   }
   font_get_size_cache_list(_font_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_size_cache_list,
+      TextServer._bindings.method_font_get_size_cache_list,
       this._owner,
 			Variant.INT,
       _font_rid
@@ -2755,7 +2756,7 @@ export class TextServer extends RefCounted{
   }
   font_clear_size_cache(_font_rid) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_clear_size_cache,
+      TextServer._bindings.method_font_clear_size_cache,
       this._owner,
       _font_rid
     );
@@ -2763,7 +2764,7 @@ export class TextServer extends RefCounted{
   }
   font_remove_size_cache(_font_rid, _size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_remove_size_cache,
+      TextServer._bindings.method_font_remove_size_cache,
       this._owner,
       _font_rid, _size
     );
@@ -2771,7 +2772,7 @@ export class TextServer extends RefCounted{
   }
   font_set_ascent(_font_rid, _size, _ascent) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_ascent,
+      TextServer._bindings.method_font_set_ascent,
       this._owner,
       _font_rid, _size, _ascent
     );
@@ -2779,7 +2780,7 @@ export class TextServer extends RefCounted{
   }
   font_get_ascent(_font_rid, _size) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_ascent,
+      TextServer._bindings.method_font_get_ascent,
       this._owner,
 			Variant.Type.FLOAT,
       _font_rid, _size
@@ -2788,7 +2789,7 @@ export class TextServer extends RefCounted{
   }
   font_set_descent(_font_rid, _size, _descent) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_descent,
+      TextServer._bindings.method_font_set_descent,
       this._owner,
       _font_rid, _size, _descent
     );
@@ -2796,7 +2797,7 @@ export class TextServer extends RefCounted{
   }
   font_get_descent(_font_rid, _size) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_descent,
+      TextServer._bindings.method_font_get_descent,
       this._owner,
 			Variant.Type.FLOAT,
       _font_rid, _size
@@ -2805,7 +2806,7 @@ export class TextServer extends RefCounted{
   }
   font_set_underline_position(_font_rid, _size, _underline_position) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_underline_position,
+      TextServer._bindings.method_font_set_underline_position,
       this._owner,
       _font_rid, _size, _underline_position
     );
@@ -2813,7 +2814,7 @@ export class TextServer extends RefCounted{
   }
   font_get_underline_position(_font_rid, _size) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_underline_position,
+      TextServer._bindings.method_font_get_underline_position,
       this._owner,
 			Variant.Type.FLOAT,
       _font_rid, _size
@@ -2822,7 +2823,7 @@ export class TextServer extends RefCounted{
   }
   font_set_underline_thickness(_font_rid, _size, _underline_thickness) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_underline_thickness,
+      TextServer._bindings.method_font_set_underline_thickness,
       this._owner,
       _font_rid, _size, _underline_thickness
     );
@@ -2830,7 +2831,7 @@ export class TextServer extends RefCounted{
   }
   font_get_underline_thickness(_font_rid, _size) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_underline_thickness,
+      TextServer._bindings.method_font_get_underline_thickness,
       this._owner,
 			Variant.Type.FLOAT,
       _font_rid, _size
@@ -2839,7 +2840,7 @@ export class TextServer extends RefCounted{
   }
   font_set_scale(_font_rid, _size, _scale) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_scale,
+      TextServer._bindings.method_font_set_scale,
       this._owner,
       _font_rid, _size, _scale
     );
@@ -2847,7 +2848,7 @@ export class TextServer extends RefCounted{
   }
   font_get_scale(_font_rid, _size) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_scale,
+      TextServer._bindings.method_font_get_scale,
       this._owner,
 			Variant.Type.FLOAT,
       _font_rid, _size
@@ -2856,7 +2857,7 @@ export class TextServer extends RefCounted{
   }
   font_get_texture_count(_font_rid, _size) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_texture_count,
+      TextServer._bindings.method_font_get_texture_count,
       this._owner,
 			Variant.Type.INT,
       _font_rid, _size
@@ -2865,7 +2866,7 @@ export class TextServer extends RefCounted{
   }
   font_clear_textures(_font_rid, _size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_clear_textures,
+      TextServer._bindings.method_font_clear_textures,
       this._owner,
       _font_rid, _size
     );
@@ -2873,7 +2874,7 @@ export class TextServer extends RefCounted{
   }
   font_remove_texture(_font_rid, _size, _texture_index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_remove_texture,
+      TextServer._bindings.method_font_remove_texture,
       this._owner,
       _font_rid, _size, _texture_index
     );
@@ -2881,7 +2882,7 @@ export class TextServer extends RefCounted{
   }
   font_set_texture_image(_font_rid, _size, _texture_index, _image) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_texture_image,
+      TextServer._bindings.method_font_set_texture_image,
       this._owner,
       _font_rid, _size, _texture_index, _image
     );
@@ -2889,7 +2890,7 @@ export class TextServer extends RefCounted{
   }
   font_get_texture_image(_font_rid, _size, _texture_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_texture_image,
+      TextServer._bindings.method_font_get_texture_image,
       this._owner,
 			Variant.INT,
       _font_rid, _size, _texture_index
@@ -2898,7 +2899,7 @@ export class TextServer extends RefCounted{
   }
   font_set_texture_offsets(_font_rid, _size, _texture_index, _offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_texture_offsets,
+      TextServer._bindings.method_font_set_texture_offsets,
       this._owner,
       _font_rid, _size, _texture_index, _offset
     );
@@ -2906,7 +2907,7 @@ export class TextServer extends RefCounted{
   }
   font_get_texture_offsets(_font_rid, _size, _texture_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_texture_offsets,
+      TextServer._bindings.method_font_get_texture_offsets,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -2916,7 +2917,7 @@ export class TextServer extends RefCounted{
   }
   font_get_glyph_list(_font_rid, _size) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_glyph_list,
+      TextServer._bindings.method_font_get_glyph_list,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -2926,7 +2927,7 @@ export class TextServer extends RefCounted{
   }
   font_clear_glyphs(_font_rid, _size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_clear_glyphs,
+      TextServer._bindings.method_font_clear_glyphs,
       this._owner,
       _font_rid, _size
     );
@@ -2934,7 +2935,7 @@ export class TextServer extends RefCounted{
   }
   font_remove_glyph(_font_rid, _size, _glyph) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_remove_glyph,
+      TextServer._bindings.method_font_remove_glyph,
       this._owner,
       _font_rid, _size, _glyph
     );
@@ -2942,7 +2943,7 @@ export class TextServer extends RefCounted{
   }
   font_get_glyph_advance(_font_rid, _size, _glyph) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_glyph_advance,
+      TextServer._bindings.method_font_get_glyph_advance,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -2952,7 +2953,7 @@ export class TextServer extends RefCounted{
   }
   font_set_glyph_advance(_font_rid, _size, _glyph, _advance) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_glyph_advance,
+      TextServer._bindings.method_font_set_glyph_advance,
       this._owner,
       _font_rid, _size, _glyph, _advance
     );
@@ -2960,7 +2961,7 @@ export class TextServer extends RefCounted{
   }
   font_get_glyph_offset(_font_rid, _size, _glyph) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_glyph_offset,
+      TextServer._bindings.method_font_get_glyph_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -2970,7 +2971,7 @@ export class TextServer extends RefCounted{
   }
   font_set_glyph_offset(_font_rid, _size, _glyph, _offset) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_glyph_offset,
+      TextServer._bindings.method_font_set_glyph_offset,
       this._owner,
       _font_rid, _size, _glyph, _offset
     );
@@ -2978,7 +2979,7 @@ export class TextServer extends RefCounted{
   }
   font_get_glyph_size(_font_rid, _size, _glyph) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_glyph_size,
+      TextServer._bindings.method_font_get_glyph_size,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -2988,7 +2989,7 @@ export class TextServer extends RefCounted{
   }
   font_set_glyph_size(_font_rid, _size, _glyph, _gl_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_glyph_size,
+      TextServer._bindings.method_font_set_glyph_size,
       this._owner,
       _font_rid, _size, _glyph, _gl_size
     );
@@ -2996,7 +2997,7 @@ export class TextServer extends RefCounted{
   }
   font_get_glyph_uv_rect(_font_rid, _size, _glyph) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_glyph_uv_rect,
+      TextServer._bindings.method_font_get_glyph_uv_rect,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -3006,7 +3007,7 @@ export class TextServer extends RefCounted{
   }
   font_set_glyph_uv_rect(_font_rid, _size, _glyph, _uv_rect) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_glyph_uv_rect,
+      TextServer._bindings.method_font_set_glyph_uv_rect,
       this._owner,
       _font_rid, _size, _glyph, _uv_rect
     );
@@ -3014,7 +3015,7 @@ export class TextServer extends RefCounted{
   }
   font_get_glyph_texture_idx(_font_rid, _size, _glyph) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_glyph_texture_idx,
+      TextServer._bindings.method_font_get_glyph_texture_idx,
       this._owner,
 			Variant.Type.INT,
       _font_rid, _size, _glyph
@@ -3023,7 +3024,7 @@ export class TextServer extends RefCounted{
   }
   font_set_glyph_texture_idx(_font_rid, _size, _glyph, _texture_idx) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_glyph_texture_idx,
+      TextServer._bindings.method_font_set_glyph_texture_idx,
       this._owner,
       _font_rid, _size, _glyph, _texture_idx
     );
@@ -3031,7 +3032,7 @@ export class TextServer extends RefCounted{
   }
   font_get_glyph_texture_rid(_font_rid, _size, _glyph) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_glyph_texture_rid,
+      TextServer._bindings.method_font_get_glyph_texture_rid,
       this._owner,
 			Variant.Type.RID,
     
@@ -3041,7 +3042,7 @@ export class TextServer extends RefCounted{
   }
   font_get_glyph_texture_size(_font_rid, _size, _glyph) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_glyph_texture_size,
+      TextServer._bindings.method_font_get_glyph_texture_size,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -3051,7 +3052,7 @@ export class TextServer extends RefCounted{
   }
   font_get_glyph_contours(_font, _size, _index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_glyph_contours,
+      TextServer._bindings.method_font_get_glyph_contours,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -3061,7 +3062,7 @@ export class TextServer extends RefCounted{
   }
   font_get_kerning_list(_font_rid, _size) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_kerning_list,
+      TextServer._bindings.method_font_get_kerning_list,
       this._owner,
 			Variant.INT,
       _font_rid, _size
@@ -3070,7 +3071,7 @@ export class TextServer extends RefCounted{
   }
   font_clear_kerning_map(_font_rid, _size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_clear_kerning_map,
+      TextServer._bindings.method_font_clear_kerning_map,
       this._owner,
       _font_rid, _size
     );
@@ -3078,7 +3079,7 @@ export class TextServer extends RefCounted{
   }
   font_remove_kerning(_font_rid, _size, _glyph_pair) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_remove_kerning,
+      TextServer._bindings.method_font_remove_kerning,
       this._owner,
       _font_rid, _size, _glyph_pair
     );
@@ -3086,7 +3087,7 @@ export class TextServer extends RefCounted{
   }
   font_set_kerning(_font_rid, _size, _glyph_pair, _kerning) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_kerning,
+      TextServer._bindings.method_font_set_kerning,
       this._owner,
       _font_rid, _size, _glyph_pair, _kerning
     );
@@ -3094,7 +3095,7 @@ export class TextServer extends RefCounted{
   }
   font_get_kerning(_font_rid, _size, _glyph_pair) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_kerning,
+      TextServer._bindings.method_font_get_kerning,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -3104,7 +3105,7 @@ export class TextServer extends RefCounted{
   }
   font_get_glyph_index(_font_rid, _size, _char, _variation_selector) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_glyph_index,
+      TextServer._bindings.method_font_get_glyph_index,
       this._owner,
 			Variant.Type.INT,
       _font_rid, _size, _char, _variation_selector
@@ -3113,7 +3114,7 @@ export class TextServer extends RefCounted{
   }
   font_get_char_from_glyph_index(_font_rid, _size, _glyph_index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_char_from_glyph_index,
+      TextServer._bindings.method_font_get_char_from_glyph_index,
       this._owner,
 			Variant.Type.INT,
       _font_rid, _size, _glyph_index
@@ -3122,7 +3123,7 @@ export class TextServer extends RefCounted{
   }
   font_has_char(_font_rid, _char) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_has_char,
+      TextServer._bindings.method_font_has_char,
       this._owner,
 			Variant.Type.BOOL,
       _font_rid, _char
@@ -3131,7 +3132,7 @@ export class TextServer extends RefCounted{
   }
   font_get_supported_chars(_font_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_supported_chars,
+      TextServer._bindings.method_font_get_supported_chars,
       this._owner,
 			Variant.Type.STRING,
     
@@ -3141,7 +3142,7 @@ export class TextServer extends RefCounted{
   }
   font_render_range(_font_rid, _size, _start, _end) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_render_range,
+      TextServer._bindings.method_font_render_range,
       this._owner,
       _font_rid, _size, _start, _end
     );
@@ -3149,7 +3150,7 @@ export class TextServer extends RefCounted{
   }
   font_render_glyph(_font_rid, _size, _index) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_render_glyph,
+      TextServer._bindings.method_font_render_glyph,
       this._owner,
       _font_rid, _size, _index
     );
@@ -3157,7 +3158,7 @@ export class TextServer extends RefCounted{
   }
   font_draw_glyph(_font_rid, _canvas, _size, _pos, _index, _color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_draw_glyph,
+      TextServer._bindings.method_font_draw_glyph,
       this._owner,
       _font_rid, _canvas, _size, _pos, _index, _color
     );
@@ -3165,7 +3166,7 @@ export class TextServer extends RefCounted{
   }
   font_draw_glyph_outline(_font_rid, _canvas, _size, _outline_size, _pos, _index, _color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_draw_glyph_outline,
+      TextServer._bindings.method_font_draw_glyph_outline,
       this._owner,
       _font_rid, _canvas, _size, _outline_size, _pos, _index, _color
     );
@@ -3173,7 +3174,7 @@ export class TextServer extends RefCounted{
   }
   font_is_language_supported(_font_rid, _language) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_is_language_supported,
+      TextServer._bindings.method_font_is_language_supported,
       this._owner,
 			Variant.Type.BOOL,
       _font_rid, _language
@@ -3182,7 +3183,7 @@ export class TextServer extends RefCounted{
   }
   font_set_language_support_override(_font_rid, _language, _supported) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_language_support_override,
+      TextServer._bindings.method_font_set_language_support_override,
       this._owner,
       _font_rid, _language, _supported
     );
@@ -3190,7 +3191,7 @@ export class TextServer extends RefCounted{
   }
   font_get_language_support_override(_font_rid, _language) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_language_support_override,
+      TextServer._bindings.method_font_get_language_support_override,
       this._owner,
 			Variant.Type.BOOL,
       _font_rid, _language
@@ -3199,7 +3200,7 @@ export class TextServer extends RefCounted{
   }
   font_remove_language_support_override(_font_rid, _language) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_remove_language_support_override,
+      TextServer._bindings.method_font_remove_language_support_override,
       this._owner,
       _font_rid, _language
     );
@@ -3207,7 +3208,7 @@ export class TextServer extends RefCounted{
   }
   font_get_language_support_overrides(_font_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_language_support_overrides,
+      TextServer._bindings.method_font_get_language_support_overrides,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -3217,7 +3218,7 @@ export class TextServer extends RefCounted{
   }
   font_is_script_supported(_font_rid, _script) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_is_script_supported,
+      TextServer._bindings.method_font_is_script_supported,
       this._owner,
 			Variant.Type.BOOL,
       _font_rid, _script
@@ -3226,7 +3227,7 @@ export class TextServer extends RefCounted{
   }
   font_set_script_support_override(_font_rid, _script, _supported) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_script_support_override,
+      TextServer._bindings.method_font_set_script_support_override,
       this._owner,
       _font_rid, _script, _supported
     );
@@ -3234,7 +3235,7 @@ export class TextServer extends RefCounted{
   }
   font_get_script_support_override(_font_rid, _script) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_script_support_override,
+      TextServer._bindings.method_font_get_script_support_override,
       this._owner,
 			Variant.Type.BOOL,
       _font_rid, _script
@@ -3243,7 +3244,7 @@ export class TextServer extends RefCounted{
   }
   font_remove_script_support_override(_font_rid, _script) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_remove_script_support_override,
+      TextServer._bindings.method_font_remove_script_support_override,
       this._owner,
       _font_rid, _script
     );
@@ -3251,7 +3252,7 @@ export class TextServer extends RefCounted{
   }
   font_get_script_support_overrides(_font_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_script_support_overrides,
+      TextServer._bindings.method_font_get_script_support_overrides,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -3261,7 +3262,7 @@ export class TextServer extends RefCounted{
   }
   font_set_opentype_feature_overrides(_font_rid, _overrides) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_opentype_feature_overrides,
+      TextServer._bindings.method_font_set_opentype_feature_overrides,
       this._owner,
       _font_rid, _overrides
     );
@@ -3269,7 +3270,7 @@ export class TextServer extends RefCounted{
   }
   font_get_opentype_feature_overrides(_font_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_opentype_feature_overrides,
+      TextServer._bindings.method_font_get_opentype_feature_overrides,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -3279,7 +3280,7 @@ export class TextServer extends RefCounted{
   }
   font_supported_feature_list(_font_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_supported_feature_list,
+      TextServer._bindings.method_font_supported_feature_list,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -3289,7 +3290,7 @@ export class TextServer extends RefCounted{
   }
   font_supported_variation_list(_font_rid) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_supported_variation_list,
+      TextServer._bindings.method_font_supported_variation_list,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -3299,7 +3300,7 @@ export class TextServer extends RefCounted{
   }
   font_get_global_oversampling() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_font_get_global_oversampling,
+      TextServer._bindings.method_font_get_global_oversampling,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -3308,7 +3309,7 @@ export class TextServer extends RefCounted{
   }
   font_set_global_oversampling(_oversampling) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_font_set_global_oversampling,
+      TextServer._bindings.method_font_set_global_oversampling,
       this._owner,
       _oversampling
     );
@@ -3316,7 +3317,7 @@ export class TextServer extends RefCounted{
   }
   get_hex_code_box_size(_size, _index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_hex_code_box_size,
+      TextServer._bindings.method_get_hex_code_box_size,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -3326,7 +3327,7 @@ export class TextServer extends RefCounted{
   }
   draw_hex_code_box(_canvas, _size, _pos, _index, _color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_draw_hex_code_box,
+      TextServer._bindings.method_draw_hex_code_box,
       this._owner,
       _canvas, _size, _pos, _index, _color
     );
@@ -3334,7 +3335,7 @@ export class TextServer extends RefCounted{
   }
   create_shaped_text(_direction, _orientation) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_create_shaped_text,
+      TextServer._bindings.method_create_shaped_text,
       this._owner,
 			Variant.Type.RID,
     
@@ -3344,7 +3345,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_clear(_rid) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_shaped_text_clear,
+      TextServer._bindings.method_shaped_text_clear,
       this._owner,
       _rid
     );
@@ -3352,7 +3353,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_set_direction(_shaped, _direction) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_shaped_text_set_direction,
+      TextServer._bindings.method_shaped_text_set_direction,
       this._owner,
       _shaped, _direction
     );
@@ -3360,7 +3361,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_get_direction(_shaped) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_get_direction,
+      TextServer._bindings.method_shaped_text_get_direction,
       this._owner,
 			Variant.INT,
       _shaped
@@ -3369,7 +3370,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_get_inferred_direction(_shaped) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_get_inferred_direction,
+      TextServer._bindings.method_shaped_text_get_inferred_direction,
       this._owner,
 			Variant.INT,
       _shaped
@@ -3378,7 +3379,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_set_bidi_override(_shaped, _override) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_shaped_text_set_bidi_override,
+      TextServer._bindings.method_shaped_text_set_bidi_override,
       this._owner,
       _shaped, _override
     );
@@ -3386,7 +3387,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_set_custom_punctuation(_shaped, _punct) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_shaped_text_set_custom_punctuation,
+      TextServer._bindings.method_shaped_text_set_custom_punctuation,
       this._owner,
       _shaped, _punct
     );
@@ -3394,7 +3395,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_get_custom_punctuation(_shaped) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_get_custom_punctuation,
+      TextServer._bindings.method_shaped_text_get_custom_punctuation,
       this._owner,
 			Variant.Type.STRING,
     
@@ -3404,7 +3405,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_set_custom_ellipsis(_shaped, _char) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_shaped_text_set_custom_ellipsis,
+      TextServer._bindings.method_shaped_text_set_custom_ellipsis,
       this._owner,
       _shaped, _char
     );
@@ -3412,7 +3413,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_get_custom_ellipsis(_shaped) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_get_custom_ellipsis,
+      TextServer._bindings.method_shaped_text_get_custom_ellipsis,
       this._owner,
 			Variant.Type.INT,
       _shaped
@@ -3421,7 +3422,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_set_orientation(_shaped, _orientation) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_shaped_text_set_orientation,
+      TextServer._bindings.method_shaped_text_set_orientation,
       this._owner,
       _shaped, _orientation
     );
@@ -3429,7 +3430,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_get_orientation(_shaped) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_get_orientation,
+      TextServer._bindings.method_shaped_text_get_orientation,
       this._owner,
 			Variant.INT,
       _shaped
@@ -3438,7 +3439,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_set_preserve_invalid(_shaped, _enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_shaped_text_set_preserve_invalid,
+      TextServer._bindings.method_shaped_text_set_preserve_invalid,
       this._owner,
       _shaped, _enabled
     );
@@ -3446,7 +3447,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_get_preserve_invalid(_shaped) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_get_preserve_invalid,
+      TextServer._bindings.method_shaped_text_get_preserve_invalid,
       this._owner,
 			Variant.Type.BOOL,
       _shaped
@@ -3455,7 +3456,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_set_preserve_control(_shaped, _enabled) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_shaped_text_set_preserve_control,
+      TextServer._bindings.method_shaped_text_set_preserve_control,
       this._owner,
       _shaped, _enabled
     );
@@ -3463,7 +3464,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_get_preserve_control(_shaped) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_get_preserve_control,
+      TextServer._bindings.method_shaped_text_get_preserve_control,
       this._owner,
 			Variant.Type.BOOL,
       _shaped
@@ -3472,7 +3473,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_set_spacing(_shaped, _spacing, _value) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_shaped_text_set_spacing,
+      TextServer._bindings.method_shaped_text_set_spacing,
       this._owner,
       _shaped, _spacing, _value
     );
@@ -3480,7 +3481,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_get_spacing(_shaped, _spacing) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_get_spacing,
+      TextServer._bindings.method_shaped_text_get_spacing,
       this._owner,
 			Variant.Type.INT,
       _shaped, _spacing
@@ -3489,7 +3490,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_add_string(_shaped, _text, _fonts, _size, _opentype_features, _language, _meta) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_add_string,
+      TextServer._bindings.method_shaped_text_add_string,
       this._owner,
 			Variant.Type.BOOL,
       _shaped, _text, _fonts, _size, _opentype_features, _language, _meta
@@ -3498,7 +3499,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_add_object(_shaped, _key, _size, _inline_align, _length, _baseline) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_add_object,
+      TextServer._bindings.method_shaped_text_add_object,
       this._owner,
 			Variant.Type.BOOL,
       _shaped, _key, _size, _inline_align, _length, _baseline
@@ -3507,7 +3508,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_resize_object(_shaped, _key, _size, _inline_align, _baseline) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_resize_object,
+      TextServer._bindings.method_shaped_text_resize_object,
       this._owner,
 			Variant.Type.BOOL,
       _shaped, _key, _size, _inline_align, _baseline
@@ -3516,7 +3517,7 @@ export class TextServer extends RefCounted{
   }
   shaped_get_span_count(_shaped) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_get_span_count,
+      TextServer._bindings.method_shaped_get_span_count,
       this._owner,
 			Variant.Type.INT,
       _shaped
@@ -3525,7 +3526,7 @@ export class TextServer extends RefCounted{
   }
   shaped_get_span_meta(_shaped, _index) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_get_span_meta,
+      TextServer._bindings.method_shaped_get_span_meta,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -3535,7 +3536,7 @@ export class TextServer extends RefCounted{
   }
   shaped_set_span_update_font(_shaped, _index, _fonts, _size, _opentype_features) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_shaped_set_span_update_font,
+      TextServer._bindings.method_shaped_set_span_update_font,
       this._owner,
       _shaped, _index, _fonts, _size, _opentype_features
     );
@@ -3543,7 +3544,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_substr(_shaped, _start, _length) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_substr,
+      TextServer._bindings.method_shaped_text_substr,
       this._owner,
 			Variant.Type.RID,
     
@@ -3553,7 +3554,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_get_parent(_shaped) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_get_parent,
+      TextServer._bindings.method_shaped_text_get_parent,
       this._owner,
 			Variant.Type.RID,
     
@@ -3563,7 +3564,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_fit_to_width(_shaped, _width, _justification_flags) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_fit_to_width,
+      TextServer._bindings.method_shaped_text_fit_to_width,
       this._owner,
 			Variant.Type.FLOAT,
       _shaped, _width, _justification_flags
@@ -3572,7 +3573,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_tab_align(_shaped, _tab_stops) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_tab_align,
+      TextServer._bindings.method_shaped_text_tab_align,
       this._owner,
 			Variant.Type.FLOAT,
       _shaped, _tab_stops
@@ -3581,7 +3582,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_shape(_shaped) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_shape,
+      TextServer._bindings.method_shaped_text_shape,
       this._owner,
 			Variant.Type.BOOL,
       _shaped
@@ -3590,7 +3591,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_is_ready(_shaped) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_is_ready,
+      TextServer._bindings.method_shaped_text_is_ready,
       this._owner,
 			Variant.Type.BOOL,
       _shaped
@@ -3599,7 +3600,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_has_visible_chars(_shaped) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_has_visible_chars,
+      TextServer._bindings.method_shaped_text_has_visible_chars,
       this._owner,
 			Variant.Type.BOOL,
       _shaped
@@ -3608,7 +3609,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_get_glyphs(_shaped) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_get_glyphs,
+      TextServer._bindings.method_shaped_text_get_glyphs,
       this._owner,
 			Variant.INT,
       _shaped
@@ -3617,7 +3618,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_sort_logical(_shaped) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_sort_logical,
+      TextServer._bindings.method_shaped_text_sort_logical,
       this._owner,
 			Variant.INT,
       _shaped
@@ -3626,7 +3627,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_get_glyph_count(_shaped) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_get_glyph_count,
+      TextServer._bindings.method_shaped_text_get_glyph_count,
       this._owner,
 			Variant.Type.INT,
       _shaped
@@ -3635,7 +3636,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_get_range(_shaped) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_get_range,
+      TextServer._bindings.method_shaped_text_get_range,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -3645,7 +3646,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_get_line_breaks_adv(_shaped, _width, _start, _once, _break_flags) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_get_line_breaks_adv,
+      TextServer._bindings.method_shaped_text_get_line_breaks_adv,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -3655,7 +3656,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_get_line_breaks(_shaped, _width, _start, _break_flags) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_get_line_breaks,
+      TextServer._bindings.method_shaped_text_get_line_breaks,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -3665,7 +3666,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_get_word_breaks(_shaped, _grapheme_flags, _skip_grapheme_flags) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_get_word_breaks,
+      TextServer._bindings.method_shaped_text_get_word_breaks,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -3675,7 +3676,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_get_trim_pos(_shaped) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_get_trim_pos,
+      TextServer._bindings.method_shaped_text_get_trim_pos,
       this._owner,
 			Variant.Type.INT,
       _shaped
@@ -3684,7 +3685,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_get_ellipsis_pos(_shaped) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_get_ellipsis_pos,
+      TextServer._bindings.method_shaped_text_get_ellipsis_pos,
       this._owner,
 			Variant.Type.INT,
       _shaped
@@ -3693,7 +3694,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_get_ellipsis_glyphs(_shaped) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_get_ellipsis_glyphs,
+      TextServer._bindings.method_shaped_text_get_ellipsis_glyphs,
       this._owner,
 			Variant.INT,
       _shaped
@@ -3702,7 +3703,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_get_ellipsis_glyph_count(_shaped) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_get_ellipsis_glyph_count,
+      TextServer._bindings.method_shaped_text_get_ellipsis_glyph_count,
       this._owner,
 			Variant.Type.INT,
       _shaped
@@ -3711,7 +3712,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_overrun_trim_to_width(_shaped, _width, _overrun_trim_flags) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_shaped_text_overrun_trim_to_width,
+      TextServer._bindings.method_shaped_text_overrun_trim_to_width,
       this._owner,
       _shaped, _width, _overrun_trim_flags
     );
@@ -3719,7 +3720,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_get_objects(_shaped) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_get_objects,
+      TextServer._bindings.method_shaped_text_get_objects,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -3729,7 +3730,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_get_object_rect(_shaped, _key) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_get_object_rect,
+      TextServer._bindings.method_shaped_text_get_object_rect,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -3739,7 +3740,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_get_object_range(_shaped, _key) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_get_object_range,
+      TextServer._bindings.method_shaped_text_get_object_range,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -3749,7 +3750,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_get_object_glyph(_shaped, _key) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_get_object_glyph,
+      TextServer._bindings.method_shaped_text_get_object_glyph,
       this._owner,
 			Variant.Type.INT,
       _shaped, _key
@@ -3758,7 +3759,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_get_size(_shaped) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_get_size,
+      TextServer._bindings.method_shaped_text_get_size,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -3768,7 +3769,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_get_ascent(_shaped) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_get_ascent,
+      TextServer._bindings.method_shaped_text_get_ascent,
       this._owner,
 			Variant.Type.FLOAT,
       _shaped
@@ -3777,7 +3778,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_get_descent(_shaped) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_get_descent,
+      TextServer._bindings.method_shaped_text_get_descent,
       this._owner,
 			Variant.Type.FLOAT,
       _shaped
@@ -3786,7 +3787,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_get_width(_shaped) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_get_width,
+      TextServer._bindings.method_shaped_text_get_width,
       this._owner,
 			Variant.Type.FLOAT,
       _shaped
@@ -3795,7 +3796,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_get_underline_position(_shaped) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_get_underline_position,
+      TextServer._bindings.method_shaped_text_get_underline_position,
       this._owner,
 			Variant.Type.FLOAT,
       _shaped
@@ -3804,7 +3805,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_get_underline_thickness(_shaped) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_get_underline_thickness,
+      TextServer._bindings.method_shaped_text_get_underline_thickness,
       this._owner,
 			Variant.Type.FLOAT,
       _shaped
@@ -3813,7 +3814,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_get_carets(_shaped, _position) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_get_carets,
+      TextServer._bindings.method_shaped_text_get_carets,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -3823,7 +3824,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_get_selection(_shaped, _start, _end) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_get_selection,
+      TextServer._bindings.method_shaped_text_get_selection,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -3833,7 +3834,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_hit_test_grapheme(_shaped, _coords) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_hit_test_grapheme,
+      TextServer._bindings.method_shaped_text_hit_test_grapheme,
       this._owner,
 			Variant.Type.INT,
       _shaped, _coords
@@ -3842,7 +3843,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_hit_test_position(_shaped, _coords) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_hit_test_position,
+      TextServer._bindings.method_shaped_text_hit_test_position,
       this._owner,
 			Variant.Type.INT,
       _shaped, _coords
@@ -3851,7 +3852,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_get_grapheme_bounds(_shaped, _pos) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_get_grapheme_bounds,
+      TextServer._bindings.method_shaped_text_get_grapheme_bounds,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -3861,7 +3862,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_next_grapheme_pos(_shaped, _pos) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_next_grapheme_pos,
+      TextServer._bindings.method_shaped_text_next_grapheme_pos,
       this._owner,
 			Variant.Type.INT,
       _shaped, _pos
@@ -3870,7 +3871,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_prev_grapheme_pos(_shaped, _pos) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_prev_grapheme_pos,
+      TextServer._bindings.method_shaped_text_prev_grapheme_pos,
       this._owner,
 			Variant.Type.INT,
       _shaped, _pos
@@ -3879,7 +3880,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_get_character_breaks(_shaped) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_get_character_breaks,
+      TextServer._bindings.method_shaped_text_get_character_breaks,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -3889,7 +3890,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_next_character_pos(_shaped, _pos) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_next_character_pos,
+      TextServer._bindings.method_shaped_text_next_character_pos,
       this._owner,
 			Variant.Type.INT,
       _shaped, _pos
@@ -3898,7 +3899,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_prev_character_pos(_shaped, _pos) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_prev_character_pos,
+      TextServer._bindings.method_shaped_text_prev_character_pos,
       this._owner,
 			Variant.Type.INT,
       _shaped, _pos
@@ -3907,7 +3908,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_closest_character_pos(_shaped, _pos) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_closest_character_pos,
+      TextServer._bindings.method_shaped_text_closest_character_pos,
       this._owner,
 			Variant.Type.INT,
       _shaped, _pos
@@ -3916,7 +3917,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_draw(_shaped, _canvas, _pos, _clip_l, _clip_r, _color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_shaped_text_draw,
+      TextServer._bindings.method_shaped_text_draw,
       this._owner,
       _shaped, _canvas, _pos, _clip_l, _clip_r, _color
     );
@@ -3924,7 +3925,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_draw_outline(_shaped, _canvas, _pos, _clip_l, _clip_r, _outline_size, _color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_shaped_text_draw_outline,
+      TextServer._bindings.method_shaped_text_draw_outline,
       this._owner,
       _shaped, _canvas, _pos, _clip_l, _clip_r, _outline_size, _color
     );
@@ -3932,7 +3933,7 @@ export class TextServer extends RefCounted{
   }
   shaped_text_get_dominant_direction_in_range(_shaped, _start, _end) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_shaped_text_get_dominant_direction_in_range,
+      TextServer._bindings.method_shaped_text_get_dominant_direction_in_range,
       this._owner,
 			Variant.INT,
       _shaped, _start, _end
@@ -3941,7 +3942,7 @@ export class TextServer extends RefCounted{
   }
   format_number(_number, _language) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_format_number,
+      TextServer._bindings.method_format_number,
       this._owner,
 			Variant.Type.STRING,
     
@@ -3951,7 +3952,7 @@ export class TextServer extends RefCounted{
   }
   parse_number(_number, _language) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_parse_number,
+      TextServer._bindings.method_parse_number,
       this._owner,
 			Variant.Type.STRING,
     
@@ -3961,7 +3962,7 @@ export class TextServer extends RefCounted{
   }
   percent_sign(_language) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_percent_sign,
+      TextServer._bindings.method_percent_sign,
       this._owner,
 			Variant.Type.STRING,
     
@@ -3971,7 +3972,7 @@ export class TextServer extends RefCounted{
   }
   string_get_word_breaks(_string, _language, _chars_per_line) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_string_get_word_breaks,
+      TextServer._bindings.method_string_get_word_breaks,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -3981,7 +3982,7 @@ export class TextServer extends RefCounted{
   }
   string_get_character_breaks(_string, _language) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_string_get_character_breaks,
+      TextServer._bindings.method_string_get_character_breaks,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -3991,7 +3992,7 @@ export class TextServer extends RefCounted{
   }
   is_confusable(_string, _dict) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_confusable,
+      TextServer._bindings.method_is_confusable,
       this._owner,
 			Variant.Type.INT,
       _string, _dict
@@ -4000,7 +4001,7 @@ export class TextServer extends RefCounted{
   }
   spoof_check(_string) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_spoof_check,
+      TextServer._bindings.method_spoof_check,
       this._owner,
 			Variant.Type.BOOL,
       _string
@@ -4009,7 +4010,7 @@ export class TextServer extends RefCounted{
   }
   strip_diacritics(_string) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_strip_diacritics,
+      TextServer._bindings.method_strip_diacritics,
       this._owner,
 			Variant.Type.STRING,
     
@@ -4019,7 +4020,7 @@ export class TextServer extends RefCounted{
   }
   is_valid_identifier(_string) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_valid_identifier,
+      TextServer._bindings.method_is_valid_identifier,
       this._owner,
 			Variant.Type.BOOL,
       _string
@@ -4028,7 +4029,7 @@ export class TextServer extends RefCounted{
   }
   is_valid_letter(_unicode) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_valid_letter,
+      TextServer._bindings.method_is_valid_letter,
       this._owner,
 			Variant.Type.BOOL,
       _unicode
@@ -4037,7 +4038,7 @@ export class TextServer extends RefCounted{
   }
   string_to_upper(_string, _language) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_string_to_upper,
+      TextServer._bindings.method_string_to_upper,
       this._owner,
 			Variant.Type.STRING,
     
@@ -4047,7 +4048,7 @@ export class TextServer extends RefCounted{
   }
   string_to_lower(_string, _language) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_string_to_lower,
+      TextServer._bindings.method_string_to_lower,
       this._owner,
 			Variant.Type.STRING,
     
@@ -4057,7 +4058,7 @@ export class TextServer extends RefCounted{
   }
   string_to_title(_string, _language) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_string_to_title,
+      TextServer._bindings.method_string_to_title,
       this._owner,
 			Variant.Type.STRING,
     
@@ -4067,7 +4068,7 @@ export class TextServer extends RefCounted{
   }
   parse_structured_text(_parser_type, _args, _text) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_parse_structured_text,
+      TextServer._bindings.method_parse_structured_text,
       this._owner,
 			Variant.INT,
       _parser_type, _args, _text

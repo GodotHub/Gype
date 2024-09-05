@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { Color } from '@js_godot/variant/color'
 import { Variant } from '@js_godot/variant/variant'
-import { Resource } from '@js_godot/classes/resource'
 import { StringName } from '@js_godot/variant/string_name'
+import { Resource } from '@js_godot/classes/resource'
+import { Color } from '@js_godot/variant/color'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -131,9 +131,10 @@ export class GLTFSpecGloss extends Resource{
       );
     }
   }
+  
   get_diffuse_img() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_diffuse_img,
+      GLTFSpecGloss._bindings.method_get_diffuse_img,
       this._owner,
 			Variant.INT,
       
@@ -142,7 +143,7 @@ export class GLTFSpecGloss extends Resource{
   }
   set_diffuse_img(_diffuse_img) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_diffuse_img,
+      GLTFSpecGloss._bindings.method_set_diffuse_img,
       this._owner,
       _diffuse_img
     );
@@ -150,7 +151,7 @@ export class GLTFSpecGloss extends Resource{
   }
   get_diffuse_factor() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_diffuse_factor,
+      GLTFSpecGloss._bindings.method_get_diffuse_factor,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -160,7 +161,7 @@ export class GLTFSpecGloss extends Resource{
   }
   set_diffuse_factor(_diffuse_factor) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_diffuse_factor,
+      GLTFSpecGloss._bindings.method_set_diffuse_factor,
       this._owner,
       _diffuse_factor
     );
@@ -168,7 +169,7 @@ export class GLTFSpecGloss extends Resource{
   }
   get_gloss_factor() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_gloss_factor,
+      GLTFSpecGloss._bindings.method_get_gloss_factor,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -177,7 +178,7 @@ export class GLTFSpecGloss extends Resource{
   }
   set_gloss_factor(_gloss_factor) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_gloss_factor,
+      GLTFSpecGloss._bindings.method_set_gloss_factor,
       this._owner,
       _gloss_factor
     );
@@ -185,7 +186,7 @@ export class GLTFSpecGloss extends Resource{
   }
   get_specular_factor() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_specular_factor,
+      GLTFSpecGloss._bindings.method_get_specular_factor,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -195,7 +196,7 @@ export class GLTFSpecGloss extends Resource{
   }
   set_specular_factor(_specular_factor) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_specular_factor,
+      GLTFSpecGloss._bindings.method_set_specular_factor,
       this._owner,
       _specular_factor
     );
@@ -203,7 +204,7 @@ export class GLTFSpecGloss extends Resource{
   }
   get_spec_gloss_img() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_spec_gloss_img,
+      GLTFSpecGloss._bindings.method_get_spec_gloss_img,
       this._owner,
 			Variant.INT,
       
@@ -212,7 +213,7 @@ export class GLTFSpecGloss extends Resource{
   }
   set_spec_gloss_img(_spec_gloss_img) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_spec_gloss_img,
+      GLTFSpecGloss._bindings.method_set_spec_gloss_img,
       this._owner,
       _spec_gloss_img
     );

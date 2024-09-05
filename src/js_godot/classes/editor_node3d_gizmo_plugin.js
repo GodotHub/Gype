@@ -1,12 +1,12 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
+import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
 import { Transform3D } from '@js_godot/variant/transform3d'
 import { Resource } from '@js_godot/classes/resource'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
-import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
+import { Variant } from '@js_godot/variant/variant'
 import { Color } from '@js_godot/variant/color'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { StringName } from '@js_godot/variant/string_name'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -85,6 +85,7 @@ export class EditorNode3DGizmoPlugin extends Resource{
       );
     }
   }
+  
   _has_gizmo(_for_node_3d) {
   }
   _create_gizmo(_for_node_3d) {
@@ -123,7 +124,7 @@ export class EditorNode3DGizmoPlugin extends Resource{
   }
   create_material(_name, _color, _billboard, _on_top, _use_vertex_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_create_material,
+      EditorNode3DGizmoPlugin._bindings.method_create_material,
       this._owner,
       _name, _color, _billboard, _on_top, _use_vertex_color
     );
@@ -131,7 +132,7 @@ export class EditorNode3DGizmoPlugin extends Resource{
   }
   create_icon_material(_name, _texture, _on_top, _color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_create_icon_material,
+      EditorNode3DGizmoPlugin._bindings.method_create_icon_material,
       this._owner,
       _name, _texture, _on_top, _color
     );
@@ -139,7 +140,7 @@ export class EditorNode3DGizmoPlugin extends Resource{
   }
   create_handle_material(_name, _billboard, _texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_create_handle_material,
+      EditorNode3DGizmoPlugin._bindings.method_create_handle_material,
       this._owner,
       _name, _billboard, _texture
     );
@@ -147,7 +148,7 @@ export class EditorNode3DGizmoPlugin extends Resource{
   }
   add_material(_name, _material) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_add_material,
+      EditorNode3DGizmoPlugin._bindings.method_add_material,
       this._owner,
       _name, _material
     );
@@ -155,7 +156,7 @@ export class EditorNode3DGizmoPlugin extends Resource{
   }
   get_material(_name, _gizmo) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_material,
+      EditorNode3DGizmoPlugin._bindings.method_get_material,
       this._owner,
 			Variant.INT,
       _name, _gizmo

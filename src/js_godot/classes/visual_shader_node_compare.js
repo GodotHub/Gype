@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { VisualShaderNode } from '@js_godot/classes/visual_shader_node'
 import {
   call_utility_ret,
@@ -90,9 +90,10 @@ export class VisualShaderNodeCompare extends VisualShaderNode{
       );
     }
   }
+  
   set_comparison_type(_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_comparison_type,
+      VisualShaderNodeCompare._bindings.method_set_comparison_type,
       this._owner,
       _type
     );
@@ -100,7 +101,7 @@ export class VisualShaderNodeCompare extends VisualShaderNode{
   }
   get_comparison_type() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_comparison_type,
+      VisualShaderNodeCompare._bindings.method_get_comparison_type,
       this._owner,
 			Variant.INT,
       
@@ -109,7 +110,7 @@ export class VisualShaderNodeCompare extends VisualShaderNode{
   }
   set_function(_func) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_function,
+      VisualShaderNodeCompare._bindings.method_set_function,
       this._owner,
       _func
     );
@@ -117,7 +118,7 @@ export class VisualShaderNodeCompare extends VisualShaderNode{
   }
   get_function() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_function,
+      VisualShaderNodeCompare._bindings.method_get_function,
       this._owner,
 			Variant.INT,
       
@@ -126,7 +127,7 @@ export class VisualShaderNodeCompare extends VisualShaderNode{
   }
   set_condition(_condition) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_condition,
+      VisualShaderNodeCompare._bindings.method_set_condition,
       this._owner,
       _condition
     );
@@ -134,7 +135,7 @@ export class VisualShaderNodeCompare extends VisualShaderNode{
   }
   get_condition() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_condition,
+      VisualShaderNodeCompare._bindings.method_get_condition,
       this._owner,
 			Variant.INT,
       

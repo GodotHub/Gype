@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { Variant } from '@js_godot/variant/variant'
 import { OpenXRCompositionLayer } from '@js_godot/classes/open_xr_composition_layer'
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -130,9 +130,10 @@ export class OpenXRCompositionLayerEquirect extends OpenXRCompositionLayer{
       );
     }
   }
+  
   set_radius(_radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_radius,
+      OpenXRCompositionLayerEquirect._bindings.method_set_radius,
       this._owner,
       _radius
     );
@@ -140,7 +141,7 @@ export class OpenXRCompositionLayerEquirect extends OpenXRCompositionLayer{
   }
   get_radius() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_radius,
+      OpenXRCompositionLayerEquirect._bindings.method_get_radius,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -149,7 +150,7 @@ export class OpenXRCompositionLayerEquirect extends OpenXRCompositionLayer{
   }
   set_central_horizontal_angle(_angle) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_central_horizontal_angle,
+      OpenXRCompositionLayerEquirect._bindings.method_set_central_horizontal_angle,
       this._owner,
       _angle
     );
@@ -157,7 +158,7 @@ export class OpenXRCompositionLayerEquirect extends OpenXRCompositionLayer{
   }
   get_central_horizontal_angle() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_central_horizontal_angle,
+      OpenXRCompositionLayerEquirect._bindings.method_get_central_horizontal_angle,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -166,7 +167,7 @@ export class OpenXRCompositionLayerEquirect extends OpenXRCompositionLayer{
   }
   set_upper_vertical_angle(_angle) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_upper_vertical_angle,
+      OpenXRCompositionLayerEquirect._bindings.method_set_upper_vertical_angle,
       this._owner,
       _angle
     );
@@ -174,7 +175,7 @@ export class OpenXRCompositionLayerEquirect extends OpenXRCompositionLayer{
   }
   get_upper_vertical_angle() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_upper_vertical_angle,
+      OpenXRCompositionLayerEquirect._bindings.method_get_upper_vertical_angle,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -183,7 +184,7 @@ export class OpenXRCompositionLayerEquirect extends OpenXRCompositionLayer{
   }
   set_lower_vertical_angle(_angle) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_lower_vertical_angle,
+      OpenXRCompositionLayerEquirect._bindings.method_set_lower_vertical_angle,
       this._owner,
       _angle
     );
@@ -191,7 +192,7 @@ export class OpenXRCompositionLayerEquirect extends OpenXRCompositionLayer{
   }
   get_lower_vertical_angle() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_lower_vertical_angle,
+      OpenXRCompositionLayerEquirect._bindings.method_get_lower_vertical_angle,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -200,7 +201,7 @@ export class OpenXRCompositionLayerEquirect extends OpenXRCompositionLayer{
   }
   set_fallback_segments(_segments) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_fallback_segments,
+      OpenXRCompositionLayerEquirect._bindings.method_set_fallback_segments,
       this._owner,
       _segments
     );
@@ -208,7 +209,7 @@ export class OpenXRCompositionLayerEquirect extends OpenXRCompositionLayer{
   }
   get_fallback_segments() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_fallback_segments,
+      OpenXRCompositionLayerEquirect._bindings.method_get_fallback_segments,
       this._owner,
 			Variant.Type.INT,
       

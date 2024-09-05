@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { VideoStream } from '@js_godot/classes/video_stream'
 import {
   call_utility_ret,
@@ -30,6 +30,7 @@ export class VideoStreamTheora extends VideoStream{
     }
     this.#initialized = true;
   }
+  
   
 
 

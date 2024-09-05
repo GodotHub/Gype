@@ -1,10 +1,10 @@
 import * as internal from '__internal__';
 import { Dictionary } from '@js_godot/variant/dictionary'
-import { Variant } from '@js_godot/variant/variant'
 import { Resource } from '@js_godot/classes/resource'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { Color } from '@js_godot/variant/color'
+import { Variant } from '@js_godot/variant/variant'
+import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -213,9 +213,10 @@ export class GLTFLight extends Resource{
       );
     }
   }
+  
   from_node(_light_node) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_from_node,
+      GLTFLight._bindings.method_from_node,
       this._owner,
 			Variant.INT,
       _light_node
@@ -224,7 +225,7 @@ export class GLTFLight extends Resource{
   }
   to_node() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_to_node,
+      GLTFLight._bindings.method_to_node,
       this._owner,
 			Variant.INT,
       
@@ -233,7 +234,7 @@ export class GLTFLight extends Resource{
   }
   from_dictionary(_dictionary) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_from_dictionary,
+      GLTFLight._bindings.method_from_dictionary,
       this._owner,
 			Variant.INT,
       _dictionary
@@ -242,7 +243,7 @@ export class GLTFLight extends Resource{
   }
   to_dictionary() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_to_dictionary,
+      GLTFLight._bindings.method_to_dictionary,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -252,7 +253,7 @@ export class GLTFLight extends Resource{
   }
   get_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_color,
+      GLTFLight._bindings.method_get_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -262,7 +263,7 @@ export class GLTFLight extends Resource{
   }
   set_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_color,
+      GLTFLight._bindings.method_set_color,
       this._owner,
       _color
     );
@@ -270,7 +271,7 @@ export class GLTFLight extends Resource{
   }
   get_intensity() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_intensity,
+      GLTFLight._bindings.method_get_intensity,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -279,7 +280,7 @@ export class GLTFLight extends Resource{
   }
   set_intensity(_intensity) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_intensity,
+      GLTFLight._bindings.method_set_intensity,
       this._owner,
       _intensity
     );
@@ -287,7 +288,7 @@ export class GLTFLight extends Resource{
   }
   get_light_type() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_light_type,
+      GLTFLight._bindings.method_get_light_type,
       this._owner,
 			Variant.Type.STRING,
     
@@ -297,7 +298,7 @@ export class GLTFLight extends Resource{
   }
   set_light_type(_light_type) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_light_type,
+      GLTFLight._bindings.method_set_light_type,
       this._owner,
       _light_type
     );
@@ -305,7 +306,7 @@ export class GLTFLight extends Resource{
   }
   get_range() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_range,
+      GLTFLight._bindings.method_get_range,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -314,7 +315,7 @@ export class GLTFLight extends Resource{
   }
   set_range(_range) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_range,
+      GLTFLight._bindings.method_set_range,
       this._owner,
       _range
     );
@@ -322,7 +323,7 @@ export class GLTFLight extends Resource{
   }
   get_inner_cone_angle() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_inner_cone_angle,
+      GLTFLight._bindings.method_get_inner_cone_angle,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -331,7 +332,7 @@ export class GLTFLight extends Resource{
   }
   set_inner_cone_angle(_inner_cone_angle) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_inner_cone_angle,
+      GLTFLight._bindings.method_set_inner_cone_angle,
       this._owner,
       _inner_cone_angle
     );
@@ -339,7 +340,7 @@ export class GLTFLight extends Resource{
   }
   get_outer_cone_angle() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_outer_cone_angle,
+      GLTFLight._bindings.method_get_outer_cone_angle,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -348,7 +349,7 @@ export class GLTFLight extends Resource{
   }
   set_outer_cone_angle(_outer_cone_angle) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_outer_cone_angle,
+      GLTFLight._bindings.method_set_outer_cone_angle,
       this._owner,
       _outer_cone_angle
     );
@@ -356,7 +357,7 @@ export class GLTFLight extends Resource{
   }
   get_additional_data(_extension_name) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_additional_data,
+      GLTFLight._bindings.method_get_additional_data,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -366,7 +367,7 @@ export class GLTFLight extends Resource{
   }
   set_additional_data(_extension_name, _additional_data) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_additional_data,
+      GLTFLight._bindings.method_set_additional_data,
       this._owner,
       _extension_name, _additional_data
     );

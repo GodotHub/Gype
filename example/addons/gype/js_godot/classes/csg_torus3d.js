@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { CSGPrimitive3D } from '@js_godot/classes/csg_primitive3d'
+import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
@@ -150,9 +150,10 @@ export class CSGTorus3D extends CSGPrimitive3D{
       );
     }
   }
+  
   set_inner_radius(_radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_inner_radius,
+      CSGTorus3D._bindings.method_set_inner_radius,
       this._owner,
       _radius
     );
@@ -160,7 +161,7 @@ export class CSGTorus3D extends CSGPrimitive3D{
   }
   get_inner_radius() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_inner_radius,
+      CSGTorus3D._bindings.method_get_inner_radius,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -169,7 +170,7 @@ export class CSGTorus3D extends CSGPrimitive3D{
   }
   set_outer_radius(_radius) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_outer_radius,
+      CSGTorus3D._bindings.method_set_outer_radius,
       this._owner,
       _radius
     );
@@ -177,7 +178,7 @@ export class CSGTorus3D extends CSGPrimitive3D{
   }
   get_outer_radius() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_outer_radius,
+      CSGTorus3D._bindings.method_get_outer_radius,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -186,7 +187,7 @@ export class CSGTorus3D extends CSGPrimitive3D{
   }
   set_sides(_sides) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sides,
+      CSGTorus3D._bindings.method_set_sides,
       this._owner,
       _sides
     );
@@ -194,7 +195,7 @@ export class CSGTorus3D extends CSGPrimitive3D{
   }
   get_sides() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sides,
+      CSGTorus3D._bindings.method_get_sides,
       this._owner,
 			Variant.Type.INT,
       
@@ -203,7 +204,7 @@ export class CSGTorus3D extends CSGPrimitive3D{
   }
   set_ring_sides(_sides) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_ring_sides,
+      CSGTorus3D._bindings.method_set_ring_sides,
       this._owner,
       _sides
     );
@@ -211,7 +212,7 @@ export class CSGTorus3D extends CSGPrimitive3D{
   }
   get_ring_sides() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_ring_sides,
+      CSGTorus3D._bindings.method_get_ring_sides,
       this._owner,
 			Variant.Type.INT,
       
@@ -220,7 +221,7 @@ export class CSGTorus3D extends CSGPrimitive3D{
   }
   set_material(_material) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_material,
+      CSGTorus3D._bindings.method_set_material,
       this._owner,
       _material
     );
@@ -228,7 +229,7 @@ export class CSGTorus3D extends CSGPrimitive3D{
   }
   get_material() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_material,
+      CSGTorus3D._bindings.method_get_material,
       this._owner,
 			Variant.INT,
       
@@ -237,7 +238,7 @@ export class CSGTorus3D extends CSGPrimitive3D{
   }
   set_smooth_faces(_smooth_faces) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_smooth_faces,
+      CSGTorus3D._bindings.method_set_smooth_faces,
       this._owner,
       _smooth_faces
     );
@@ -245,7 +246,7 @@ export class CSGTorus3D extends CSGPrimitive3D{
   }
   get_smooth_faces() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_smooth_faces,
+      CSGTorus3D._bindings.method_get_smooth_faces,
       this._owner,
 			Variant.Type.BOOL,
       

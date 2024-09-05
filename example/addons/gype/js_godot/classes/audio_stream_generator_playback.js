@@ -1,9 +1,9 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
-import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { StringName } from '@js_godot/variant/string_name'
 import { AudioStreamPlaybackResampled } from '@js_godot/classes/audio_stream_playback_resampled'
+import { Variant } from '@js_godot/variant/variant'
+import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -92,9 +92,10 @@ export class AudioStreamGeneratorPlayback extends AudioStreamPlaybackResampled{
       );
     }
   }
+  
   push_frame(_frame) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_push_frame,
+      AudioStreamGeneratorPlayback._bindings.method_push_frame,
       this._owner,
 			Variant.Type.BOOL,
       _frame
@@ -103,7 +104,7 @@ export class AudioStreamGeneratorPlayback extends AudioStreamPlaybackResampled{
   }
   can_push_buffer(_amount) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_can_push_buffer,
+      AudioStreamGeneratorPlayback._bindings.method_can_push_buffer,
       this._owner,
 			Variant.Type.BOOL,
       _amount
@@ -112,7 +113,7 @@ export class AudioStreamGeneratorPlayback extends AudioStreamPlaybackResampled{
   }
   push_buffer(_frames) {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_push_buffer,
+      AudioStreamGeneratorPlayback._bindings.method_push_buffer,
       this._owner,
 			Variant.Type.BOOL,
       _frames
@@ -121,7 +122,7 @@ export class AudioStreamGeneratorPlayback extends AudioStreamPlaybackResampled{
   }
   get_frames_available() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_frames_available,
+      AudioStreamGeneratorPlayback._bindings.method_get_frames_available,
       this._owner,
 			Variant.Type.INT,
       
@@ -130,7 +131,7 @@ export class AudioStreamGeneratorPlayback extends AudioStreamPlaybackResampled{
   }
   get_skips() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_skips,
+      AudioStreamGeneratorPlayback._bindings.method_get_skips,
       this._owner,
 			Variant.Type.INT,
       
@@ -139,7 +140,7 @@ export class AudioStreamGeneratorPlayback extends AudioStreamPlaybackResampled{
   }
   clear_buffer() {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_clear_buffer,
+      AudioStreamGeneratorPlayback._bindings.method_clear_buffer,
       this._owner,
       
     );

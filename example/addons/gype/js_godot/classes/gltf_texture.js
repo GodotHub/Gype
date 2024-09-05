@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { Resource } from '@js_godot/classes/resource'
 import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { Resource } from '@js_godot/classes/resource'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -70,9 +70,10 @@ export class GLTFTexture extends Resource{
       );
     }
   }
+  
   get_src_image() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_src_image,
+      GLTFTexture._bindings.method_get_src_image,
       this._owner,
 			Variant.Type.INT,
       
@@ -81,7 +82,7 @@ export class GLTFTexture extends Resource{
   }
   set_src_image(_src_image) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_src_image,
+      GLTFTexture._bindings.method_set_src_image,
       this._owner,
       _src_image
     );
@@ -89,7 +90,7 @@ export class GLTFTexture extends Resource{
   }
   get_sampler() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_sampler,
+      GLTFTexture._bindings.method_get_sampler,
       this._owner,
 			Variant.Type.INT,
       
@@ -98,7 +99,7 @@ export class GLTFTexture extends Resource{
   }
   set_sampler(_sampler) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_sampler,
+      GLTFTexture._bindings.method_set_sampler,
       this._owner,
       _sampler
     );

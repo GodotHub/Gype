@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { Node3D } from '@js_godot/classes/node3d'
+import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
+import { Node3D } from '@js_godot/classes/node3d'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -131,9 +131,10 @@ export class XRNode3D extends Node3D{
       );
     }
   }
+  
   set_tracker(_tracker_name) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_tracker,
+      XRNode3D._bindings.method_set_tracker,
       this._owner,
       _tracker_name
     );
@@ -141,7 +142,7 @@ export class XRNode3D extends Node3D{
   }
   get_tracker() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_tracker,
+      XRNode3D._bindings.method_get_tracker,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -151,7 +152,7 @@ export class XRNode3D extends Node3D{
   }
   set_pose_name(_pose) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_pose_name,
+      XRNode3D._bindings.method_set_pose_name,
       this._owner,
       _pose
     );
@@ -159,7 +160,7 @@ export class XRNode3D extends Node3D{
   }
   get_pose_name() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_pose_name,
+      XRNode3D._bindings.method_get_pose_name,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -169,7 +170,7 @@ export class XRNode3D extends Node3D{
   }
   set_show_when_tracked(_show) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_show_when_tracked,
+      XRNode3D._bindings.method_set_show_when_tracked,
       this._owner,
       _show
     );
@@ -177,7 +178,7 @@ export class XRNode3D extends Node3D{
   }
   get_show_when_tracked() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_show_when_tracked,
+      XRNode3D._bindings.method_get_show_when_tracked,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -186,7 +187,7 @@ export class XRNode3D extends Node3D{
   }
   get_is_active() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_is_active,
+      XRNode3D._bindings.method_get_is_active,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -195,7 +196,7 @@ export class XRNode3D extends Node3D{
   }
   get_has_tracking_data() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_has_tracking_data,
+      XRNode3D._bindings.method_get_has_tracking_data,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -204,7 +205,7 @@ export class XRNode3D extends Node3D{
   }
   get_pose() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_pose,
+      XRNode3D._bindings.method_get_pose,
       this._owner,
 			Variant.INT,
       
@@ -213,7 +214,7 @@ export class XRNode3D extends Node3D{
   }
   trigger_haptic_pulse(_action_name, _frequency, _amplitude, _duration_sec, _delay_sec) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_trigger_haptic_pulse,
+      XRNode3D._bindings.method_trigger_haptic_pulse,
       this._owner,
       _action_name, _frequency, _amplitude, _duration_sec, _delay_sec
     );

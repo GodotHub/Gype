@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
+import { StringName } from '@js_godot/variant/string_name'
+import { Texture2D } from '@js_godot/classes/texture2d'
 import { Color } from '@js_godot/variant/color'
 import { Variant } from '@js_godot/variant/variant'
-import { Texture2D } from '@js_godot/classes/texture2d'
-import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -171,9 +171,10 @@ export class CanvasTexture extends Texture2D{
       );
     }
   }
+  
   set_diffuse_texture(_texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_diffuse_texture,
+      CanvasTexture._bindings.method_set_diffuse_texture,
       this._owner,
       _texture
     );
@@ -181,7 +182,7 @@ export class CanvasTexture extends Texture2D{
   }
   get_diffuse_texture() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_diffuse_texture,
+      CanvasTexture._bindings.method_get_diffuse_texture,
       this._owner,
 			Variant.INT,
       
@@ -190,7 +191,7 @@ export class CanvasTexture extends Texture2D{
   }
   set_normal_texture(_texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_normal_texture,
+      CanvasTexture._bindings.method_set_normal_texture,
       this._owner,
       _texture
     );
@@ -198,7 +199,7 @@ export class CanvasTexture extends Texture2D{
   }
   get_normal_texture() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_normal_texture,
+      CanvasTexture._bindings.method_get_normal_texture,
       this._owner,
 			Variant.INT,
       
@@ -207,7 +208,7 @@ export class CanvasTexture extends Texture2D{
   }
   set_specular_texture(_texture) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_specular_texture,
+      CanvasTexture._bindings.method_set_specular_texture,
       this._owner,
       _texture
     );
@@ -215,7 +216,7 @@ export class CanvasTexture extends Texture2D{
   }
   get_specular_texture() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_specular_texture,
+      CanvasTexture._bindings.method_get_specular_texture,
       this._owner,
 			Variant.INT,
       
@@ -224,7 +225,7 @@ export class CanvasTexture extends Texture2D{
   }
   set_specular_color(_color) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_specular_color,
+      CanvasTexture._bindings.method_set_specular_color,
       this._owner,
       _color
     );
@@ -232,7 +233,7 @@ export class CanvasTexture extends Texture2D{
   }
   get_specular_color() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_specular_color,
+      CanvasTexture._bindings.method_get_specular_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -242,7 +243,7 @@ export class CanvasTexture extends Texture2D{
   }
   set_specular_shininess(_shininess) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_specular_shininess,
+      CanvasTexture._bindings.method_set_specular_shininess,
       this._owner,
       _shininess
     );
@@ -250,7 +251,7 @@ export class CanvasTexture extends Texture2D{
   }
   get_specular_shininess() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_specular_shininess,
+      CanvasTexture._bindings.method_get_specular_shininess,
       this._owner,
 			Variant.Type.FLOAT,
       
@@ -259,7 +260,7 @@ export class CanvasTexture extends Texture2D{
   }
   set_texture_filter(_filter) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture_filter,
+      CanvasTexture._bindings.method_set_texture_filter,
       this._owner,
       _filter
     );
@@ -267,7 +268,7 @@ export class CanvasTexture extends Texture2D{
   }
   get_texture_filter() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_filter,
+      CanvasTexture._bindings.method_get_texture_filter,
       this._owner,
 			Variant.INT,
       
@@ -276,7 +277,7 @@ export class CanvasTexture extends Texture2D{
   }
   set_texture_repeat(_repeat) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_texture_repeat,
+      CanvasTexture._bindings.method_set_texture_repeat,
       this._owner,
       _repeat
     );
@@ -284,7 +285,7 @@ export class CanvasTexture extends Texture2D{
   }
   get_texture_repeat() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_texture_repeat,
+      CanvasTexture._bindings.method_get_texture_repeat,
       this._owner,
 			Variant.INT,
       

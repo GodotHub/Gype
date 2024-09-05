@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
 import { StringName } from '@js_godot/variant/string_name'
+import { Vector2i } from '@js_godot/variant/vector2i'
 import { Viewport } from '@js_godot/classes/viewport'
 import { Variant } from '@js_godot/variant/variant'
-import { Vector2i } from '@js_godot/variant/vector2i'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -131,9 +131,10 @@ export class SubViewport extends Viewport{
       );
     }
   }
+  
   set_size(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_size,
+      SubViewport._bindings.method_set_size,
       this._owner,
       _size
     );
@@ -141,7 +142,7 @@ export class SubViewport extends Viewport{
   }
   get_size() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_size,
+      SubViewport._bindings.method_get_size,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -151,7 +152,7 @@ export class SubViewport extends Viewport{
   }
   set_size_2d_override(_size) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_size_2d_override,
+      SubViewport._bindings.method_set_size_2d_override,
       this._owner,
       _size
     );
@@ -159,7 +160,7 @@ export class SubViewport extends Viewport{
   }
   get_size_2d_override() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_size_2d_override,
+      SubViewport._bindings.method_get_size_2d_override,
       this._owner,
 			Variant.Type.VECTOR2I,
     
@@ -169,7 +170,7 @@ export class SubViewport extends Viewport{
   }
   set_size_2d_override_stretch(_enable) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_size_2d_override_stretch,
+      SubViewport._bindings.method_set_size_2d_override_stretch,
       this._owner,
       _enable
     );
@@ -177,7 +178,7 @@ export class SubViewport extends Viewport{
   }
   is_size_2d_override_stretch_enabled() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_is_size_2d_override_stretch_enabled,
+      SubViewport._bindings.method_is_size_2d_override_stretch_enabled,
       this._owner,
 			Variant.Type.BOOL,
       
@@ -186,7 +187,7 @@ export class SubViewport extends Viewport{
   }
   set_update_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_update_mode,
+      SubViewport._bindings.method_set_update_mode,
       this._owner,
       _mode
     );
@@ -194,7 +195,7 @@ export class SubViewport extends Viewport{
   }
   get_update_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_update_mode,
+      SubViewport._bindings.method_get_update_mode,
       this._owner,
 			Variant.INT,
       
@@ -203,7 +204,7 @@ export class SubViewport extends Viewport{
   }
   set_clear_mode(_mode) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_clear_mode,
+      SubViewport._bindings.method_set_clear_mode,
       this._owner,
       _mode
     );
@@ -211,7 +212,7 @@ export class SubViewport extends Viewport{
   }
   get_clear_mode() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_clear_mode,
+      SubViewport._bindings.method_get_clear_mode,
       this._owner,
 			Variant.INT,
       

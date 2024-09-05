@@ -50,9 +50,10 @@ export class Marker2D extends Node2D{
       );
     }
   }
+  
   set_gizmo_extents(_extents) {
     return _call_native_mb_no_ret(
-      ClassDB._bindings.method_set_gizmo_extents,
+      Marker2D._bindings.method_set_gizmo_extents,
       this._owner,
       _extents
     );
@@ -60,7 +61,7 @@ export class Marker2D extends Node2D{
   }
   get_gizmo_extents() {
     return _call_native_mb_ret(
-      ClassDB._bindings.method_get_gizmo_extents,
+      Marker2D._bindings.method_get_gizmo_extents,
       this._owner,
 			Variant.Type.FLOAT,
       
