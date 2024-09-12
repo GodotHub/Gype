@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { StyleBox } from '@js_godot/classes/style_box'
 import { Variant } from '@js_godot/variant/variant'
+import { StyleBox } from '@js_godot/classes/style_box'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -13,7 +13,7 @@ class _MethodBindings {
 }
 export class StyleBoxEmpty extends StyleBox{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -23,18 +23,9 @@ export class StyleBoxEmpty extends StyleBox{
       super(godot_object);
     }
   }
+
   
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-  }
   
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

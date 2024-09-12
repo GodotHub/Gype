@@ -1,8 +1,7 @@
 import * as internal from '__internal__';
-import { InputEventGesture } from '@js_godot/classes/input_event_gesture'
 import { Variant } from '@js_godot/variant/variant'
+import { InputEventGesture } from '@js_godot/classes/input_event_gesture'
 import { StringName } from '@js_godot/variant/string_name'
-import { Vector2 } from '@js_godot/variant/vector2'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -16,7 +15,7 @@ class _MethodBindings {
 }
 export class InputEventPanGesture extends InputEventGesture{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -26,43 +25,44 @@ export class InputEventPanGesture extends InputEventGesture{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_delta() {
+    if (!this.#_bindings.method_set_delta) {
       let classname = new StringName("InputEventPanGesture");
       let methodname = new StringName("set_delta");
-      this._bindings.method_set_delta = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_delta = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         743155724
       );
     }
-    {
+  }
+  static init_method_get_delta() {
+    if (!this.#_bindings.method_get_delta) {
       let classname = new StringName("InputEventPanGesture");
       let methodname = new StringName("get_delta");
-      this._bindings.method_get_delta = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_delta = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3341600327
       );
     }
   }
+
+  
   
   set_delta(_delta) {
+    InputEventPanGesture.init_method_set_delta();
     return _call_native_mb_no_ret(
-      InputEventPanGesture._bindings.method_set_delta,
+      InputEventPanGesture.#_bindings.method_set_delta,
       this._owner,
       _delta
     );
     
   }
   get_delta() {
+    InputEventPanGesture.init_method_get_delta();
     return _call_native_mb_ret(
-      InputEventPanGesture._bindings.method_get_delta,
+      InputEventPanGesture.#_bindings.method_get_delta,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -78,8 +78,4 @@ set delta (new_value) {
   this.set_delta(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

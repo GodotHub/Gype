@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { Container } from '@js_godot/classes/container'
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { Container } from '@js_godot/classes/container'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -22,7 +22,7 @@ class _MethodBindings {
 }
 export class FlowContainer extends Container{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -32,168 +32,195 @@ export class FlowContainer extends Container{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_get_line_count() {
+    if (!this.#_bindings.method_get_line_count) {
       let classname = new StringName("FlowContainer");
       let methodname = new StringName("get_line_count");
-      this._bindings.method_get_line_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_line_count = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
-    {
+  }
+  static init_method_set_alignment() {
+    if (!this.#_bindings.method_set_alignment) {
       let classname = new StringName("FlowContainer");
       let methodname = new StringName("set_alignment");
-      this._bindings.method_set_alignment = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_alignment = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         575250951
       );
     }
-    {
+  }
+  static init_method_get_alignment() {
+    if (!this.#_bindings.method_get_alignment) {
       let classname = new StringName("FlowContainer");
       let methodname = new StringName("get_alignment");
-      this._bindings.method_get_alignment = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_alignment = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3749743559
       );
     }
-    {
+  }
+  static init_method_set_last_wrap_alignment() {
+    if (!this.#_bindings.method_set_last_wrap_alignment) {
       let classname = new StringName("FlowContainer");
       let methodname = new StringName("set_last_wrap_alignment");
-      this._bindings.method_set_last_wrap_alignment = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_last_wrap_alignment = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2899697495
       );
     }
-    {
+  }
+  static init_method_get_last_wrap_alignment() {
+    if (!this.#_bindings.method_get_last_wrap_alignment) {
       let classname = new StringName("FlowContainer");
       let methodname = new StringName("get_last_wrap_alignment");
-      this._bindings.method_get_last_wrap_alignment = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_last_wrap_alignment = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3743456014
       );
     }
-    {
+  }
+  static init_method_set_vertical() {
+    if (!this.#_bindings.method_set_vertical) {
       let classname = new StringName("FlowContainer");
       let methodname = new StringName("set_vertical");
-      this._bindings.method_set_vertical = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_vertical = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_is_vertical() {
+    if (!this.#_bindings.method_is_vertical) {
       let classname = new StringName("FlowContainer");
       let methodname = new StringName("is_vertical");
-      this._bindings.method_is_vertical = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("FlowContainer");
-      let methodname = new StringName("set_reverse_fill");
-      this._bindings.method_set_reverse_fill = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("FlowContainer");
-      let methodname = new StringName("is_reverse_fill");
-      this._bindings.method_is_reverse_fill = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_vertical = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
   }
+  static init_method_set_reverse_fill() {
+    if (!this.#_bindings.method_set_reverse_fill) {
+      let classname = new StringName("FlowContainer");
+      let methodname = new StringName("set_reverse_fill");
+      this.#_bindings.method_set_reverse_fill = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2586408642
+      );
+    }
+  }
+  static init_method_is_reverse_fill() {
+    if (!this.#_bindings.method_is_reverse_fill) {
+      let classname = new StringName("FlowContainer");
+      let methodname = new StringName("is_reverse_fill");
+      this.#_bindings.method_is_reverse_fill = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        36873697
+      );
+    }
+  }
+
+  
   
   get_line_count() {
+    FlowContainer.init_method_get_line_count();
     return _call_native_mb_ret(
-      FlowContainer._bindings.method_get_line_count,
+      FlowContainer.#_bindings.method_get_line_count,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_alignment(_alignment) {
+    FlowContainer.init_method_set_alignment();
     return _call_native_mb_no_ret(
-      FlowContainer._bindings.method_set_alignment,
+      FlowContainer.#_bindings.method_set_alignment,
       this._owner,
       _alignment
     );
     
   }
   get_alignment() {
+    FlowContainer.init_method_get_alignment();
     return _call_native_mb_ret(
-      FlowContainer._bindings.method_get_alignment,
+      FlowContainer.#_bindings.method_get_alignment,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_last_wrap_alignment(_last_wrap_alignment) {
+    FlowContainer.init_method_set_last_wrap_alignment();
     return _call_native_mb_no_ret(
-      FlowContainer._bindings.method_set_last_wrap_alignment,
+      FlowContainer.#_bindings.method_set_last_wrap_alignment,
       this._owner,
       _last_wrap_alignment
     );
     
   }
   get_last_wrap_alignment() {
+    FlowContainer.init_method_get_last_wrap_alignment();
     return _call_native_mb_ret(
-      FlowContainer._bindings.method_get_last_wrap_alignment,
+      FlowContainer.#_bindings.method_get_last_wrap_alignment,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_vertical(_vertical) {
+    FlowContainer.init_method_set_vertical();
     return _call_native_mb_no_ret(
-      FlowContainer._bindings.method_set_vertical,
+      FlowContainer.#_bindings.method_set_vertical,
       this._owner,
       _vertical
     );
     
   }
   is_vertical() {
+    FlowContainer.init_method_is_vertical();
     return _call_native_mb_ret(
-      FlowContainer._bindings.method_is_vertical,
+      FlowContainer.#_bindings.method_is_vertical,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_reverse_fill(_reverse_fill) {
+    FlowContainer.init_method_set_reverse_fill();
     return _call_native_mb_no_ret(
-      FlowContainer._bindings.method_set_reverse_fill,
+      FlowContainer.#_bindings.method_set_reverse_fill,
       this._owner,
       _reverse_fill
     );
     
   }
   is_reverse_fill() {
+    FlowContainer.init_method_is_reverse_fill();
     return _call_native_mb_ret(
-      FlowContainer._bindings.method_is_reverse_fill,
+      FlowContainer.#_bindings.method_is_reverse_fill,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
@@ -234,9 +261,5 @@ set reverse_fill (new_value) {
     LAST_WRAP_ALIGNMENT_BEGIN: 1,
     LAST_WRAP_ALIGNMENT_CENTER: 2,
     LAST_WRAP_ALIGNMENT_END: 3,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

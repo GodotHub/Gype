@@ -1,9 +1,7 @@
 import * as internal from '__internal__';
-import { Vector2 } from '@js_godot/variant/vector2'
-import { Resource } from '@js_godot/classes/resource'
-import { StringName } from '@js_godot/variant/string_name'
-import { Color } from '@js_godot/variant/color'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { Resource } from '@js_godot/classes/resource'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -33,7 +31,7 @@ class _MethodBindings {
 }
 export class LabelSettings extends Resource{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -43,238 +41,279 @@ export class LabelSettings extends Resource{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_line_spacing() {
+    if (!this.#_bindings.method_set_line_spacing) {
       let classname = new StringName("LabelSettings");
       let methodname = new StringName("set_line_spacing");
-      this._bindings.method_set_line_spacing = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_line_spacing = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_line_spacing() {
+    if (!this.#_bindings.method_get_line_spacing) {
       let classname = new StringName("LabelSettings");
       let methodname = new StringName("get_line_spacing");
-      this._bindings.method_get_line_spacing = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_line_spacing = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_set_font() {
+    if (!this.#_bindings.method_set_font) {
       let classname = new StringName("LabelSettings");
       let methodname = new StringName("set_font");
-      this._bindings.method_set_font = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_font = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1262170328
       );
     }
-    {
+  }
+  static init_method_get_font() {
+    if (!this.#_bindings.method_get_font) {
       let classname = new StringName("LabelSettings");
       let methodname = new StringName("get_font");
-      this._bindings.method_get_font = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_font = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3229501585
       );
     }
-    {
+  }
+  static init_method_set_font_size() {
+    if (!this.#_bindings.method_set_font_size) {
       let classname = new StringName("LabelSettings");
       let methodname = new StringName("set_font_size");
-      this._bindings.method_set_font_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_font_size = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1286410249
       );
     }
-    {
+  }
+  static init_method_get_font_size() {
+    if (!this.#_bindings.method_get_font_size) {
       let classname = new StringName("LabelSettings");
       let methodname = new StringName("get_font_size");
-      this._bindings.method_get_font_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_font_size = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
-    {
+  }
+  static init_method_set_font_color() {
+    if (!this.#_bindings.method_set_font_color) {
       let classname = new StringName("LabelSettings");
       let methodname = new StringName("set_font_color");
-      this._bindings.method_set_font_color = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_font_color = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2920490490
       );
     }
-    {
+  }
+  static init_method_get_font_color() {
+    if (!this.#_bindings.method_get_font_color) {
       let classname = new StringName("LabelSettings");
       let methodname = new StringName("get_font_color");
-      this._bindings.method_get_font_color = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_font_color = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3444240500
       );
     }
-    {
+  }
+  static init_method_set_outline_size() {
+    if (!this.#_bindings.method_set_outline_size) {
       let classname = new StringName("LabelSettings");
       let methodname = new StringName("set_outline_size");
-      this._bindings.method_set_outline_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_outline_size = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1286410249
       );
     }
-    {
+  }
+  static init_method_get_outline_size() {
+    if (!this.#_bindings.method_get_outline_size) {
       let classname = new StringName("LabelSettings");
       let methodname = new StringName("get_outline_size");
-      this._bindings.method_get_outline_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_outline_size = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
-    {
+  }
+  static init_method_set_outline_color() {
+    if (!this.#_bindings.method_set_outline_color) {
       let classname = new StringName("LabelSettings");
       let methodname = new StringName("set_outline_color");
-      this._bindings.method_set_outline_color = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_outline_color = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2920490490
       );
     }
-    {
+  }
+  static init_method_get_outline_color() {
+    if (!this.#_bindings.method_get_outline_color) {
       let classname = new StringName("LabelSettings");
       let methodname = new StringName("get_outline_color");
-      this._bindings.method_get_outline_color = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_outline_color = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3444240500
       );
     }
-    {
+  }
+  static init_method_set_shadow_size() {
+    if (!this.#_bindings.method_set_shadow_size) {
       let classname = new StringName("LabelSettings");
       let methodname = new StringName("set_shadow_size");
-      this._bindings.method_set_shadow_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_shadow_size = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1286410249
       );
     }
-    {
+  }
+  static init_method_get_shadow_size() {
+    if (!this.#_bindings.method_get_shadow_size) {
       let classname = new StringName("LabelSettings");
       let methodname = new StringName("get_shadow_size");
-      this._bindings.method_get_shadow_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_shadow_size = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
-    {
+  }
+  static init_method_set_shadow_color() {
+    if (!this.#_bindings.method_set_shadow_color) {
       let classname = new StringName("LabelSettings");
       let methodname = new StringName("set_shadow_color");
-      this._bindings.method_set_shadow_color = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_shadow_color = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2920490490
       );
     }
-    {
+  }
+  static init_method_get_shadow_color() {
+    if (!this.#_bindings.method_get_shadow_color) {
       let classname = new StringName("LabelSettings");
       let methodname = new StringName("get_shadow_color");
-      this._bindings.method_get_shadow_color = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_shadow_color = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3444240500
       );
     }
-    {
+  }
+  static init_method_set_shadow_offset() {
+    if (!this.#_bindings.method_set_shadow_offset) {
       let classname = new StringName("LabelSettings");
       let methodname = new StringName("set_shadow_offset");
-      this._bindings.method_set_shadow_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_shadow_offset = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         743155724
       );
     }
-    {
+  }
+  static init_method_get_shadow_offset() {
+    if (!this.#_bindings.method_get_shadow_offset) {
       let classname = new StringName("LabelSettings");
       let methodname = new StringName("get_shadow_offset");
-      this._bindings.method_get_shadow_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_shadow_offset = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3341600327
       );
     }
   }
+
+  
   
   set_line_spacing(_spacing) {
+    LabelSettings.init_method_set_line_spacing();
     return _call_native_mb_no_ret(
-      LabelSettings._bindings.method_set_line_spacing,
+      LabelSettings.#_bindings.method_set_line_spacing,
       this._owner,
       _spacing
     );
     
   }
   get_line_spacing() {
+    LabelSettings.init_method_get_line_spacing();
     return _call_native_mb_ret(
-      LabelSettings._bindings.method_get_line_spacing,
+      LabelSettings.#_bindings.method_get_line_spacing,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_font(_font) {
+    LabelSettings.init_method_set_font();
     return _call_native_mb_no_ret(
-      LabelSettings._bindings.method_set_font,
+      LabelSettings.#_bindings.method_set_font,
       this._owner,
       _font
     );
     
   }
   get_font() {
+    LabelSettings.init_method_get_font();
     return _call_native_mb_ret(
-      LabelSettings._bindings.method_get_font,
+      LabelSettings.#_bindings.method_get_font,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
   }
   set_font_size(_size) {
+    LabelSettings.init_method_set_font_size();
     return _call_native_mb_no_ret(
-      LabelSettings._bindings.method_set_font_size,
+      LabelSettings.#_bindings.method_set_font_size,
       this._owner,
       _size
     );
     
   }
   get_font_size() {
+    LabelSettings.init_method_get_font_size();
     return _call_native_mb_ret(
-      LabelSettings._bindings.method_get_font_size,
+      LabelSettings.#_bindings.method_get_font_size,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_font_color(_color) {
+    LabelSettings.init_method_set_font_color();
     return _call_native_mb_no_ret(
-      LabelSettings._bindings.method_set_font_color,
+      LabelSettings.#_bindings.method_set_font_color,
       this._owner,
       _color
     );
     
   }
   get_font_color() {
+    LabelSettings.init_method_get_font_color();
     return _call_native_mb_ret(
-      LabelSettings._bindings.method_get_font_color,
+      LabelSettings.#_bindings.method_get_font_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -283,33 +322,38 @@ export class LabelSettings extends Resource{
     
   }
   set_outline_size(_size) {
+    LabelSettings.init_method_set_outline_size();
     return _call_native_mb_no_ret(
-      LabelSettings._bindings.method_set_outline_size,
+      LabelSettings.#_bindings.method_set_outline_size,
       this._owner,
       _size
     );
     
   }
   get_outline_size() {
+    LabelSettings.init_method_get_outline_size();
     return _call_native_mb_ret(
-      LabelSettings._bindings.method_get_outline_size,
+      LabelSettings.#_bindings.method_get_outline_size,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_outline_color(_color) {
+    LabelSettings.init_method_set_outline_color();
     return _call_native_mb_no_ret(
-      LabelSettings._bindings.method_set_outline_color,
+      LabelSettings.#_bindings.method_set_outline_color,
       this._owner,
       _color
     );
     
   }
   get_outline_color() {
+    LabelSettings.init_method_get_outline_color();
     return _call_native_mb_ret(
-      LabelSettings._bindings.method_get_outline_color,
+      LabelSettings.#_bindings.method_get_outline_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -318,33 +362,38 @@ export class LabelSettings extends Resource{
     
   }
   set_shadow_size(_size) {
+    LabelSettings.init_method_set_shadow_size();
     return _call_native_mb_no_ret(
-      LabelSettings._bindings.method_set_shadow_size,
+      LabelSettings.#_bindings.method_set_shadow_size,
       this._owner,
       _size
     );
     
   }
   get_shadow_size() {
+    LabelSettings.init_method_get_shadow_size();
     return _call_native_mb_ret(
-      LabelSettings._bindings.method_get_shadow_size,
+      LabelSettings.#_bindings.method_get_shadow_size,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_shadow_color(_color) {
+    LabelSettings.init_method_set_shadow_color();
     return _call_native_mb_no_ret(
-      LabelSettings._bindings.method_set_shadow_color,
+      LabelSettings.#_bindings.method_set_shadow_color,
       this._owner,
       _color
     );
     
   }
   get_shadow_color() {
+    LabelSettings.init_method_get_shadow_color();
     return _call_native_mb_ret(
-      LabelSettings._bindings.method_get_shadow_color,
+      LabelSettings.#_bindings.method_get_shadow_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -353,16 +402,18 @@ export class LabelSettings extends Resource{
     
   }
   set_shadow_offset(_offset) {
+    LabelSettings.init_method_set_shadow_offset();
     return _call_native_mb_no_ret(
-      LabelSettings._bindings.method_set_shadow_offset,
+      LabelSettings.#_bindings.method_set_shadow_offset,
       this._owner,
       _offset
     );
     
   }
   get_shadow_offset() {
+    LabelSettings.init_method_get_shadow_offset();
     return _call_native_mb_ret(
-      LabelSettings._bindings.method_get_shadow_offset,
+      LabelSettings.#_bindings.method_get_shadow_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -426,8 +477,4 @@ set shadow_offset (new_value) {
   this.set_shadow_offset(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

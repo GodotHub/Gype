@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { RefCounted } from '@js_godot/classes/ref_counted'
-import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -15,7 +15,7 @@ class _MethodBindings {
 }
 export class DTLSServer extends RefCounted{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -25,54 +25,52 @@ export class DTLSServer extends RefCounted{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_setup() {
+    if (!this.#_bindings.method_setup) {
       let classname = new StringName("DTLSServer");
       let methodname = new StringName("setup");
-      this._bindings.method_setup = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_setup = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1262296096
       );
     }
-    {
+  }
+  static init_method_take_connection() {
+    if (!this.#_bindings.method_take_connection) {
       let classname = new StringName("DTLSServer");
       let methodname = new StringName("take_connection");
-      this._bindings.method_take_connection = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_take_connection = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3946580474
       );
     }
   }
+
+  
   
   setup(_server_options) {
+    DTLSServer.init_method_setup();
     return _call_native_mb_ret(
-      DTLSServer._bindings.method_setup,
+      DTLSServer.#_bindings.method_setup,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       _server_options
     );
     
   }
   take_connection(_udp_peer) {
+    DTLSServer.init_method_take_connection();
     return _call_native_mb_ret(
-      DTLSServer._bindings.method_take_connection,
+      DTLSServer.#_bindings.method_take_connection,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       _udp_peer
     );
     
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

@@ -1,12 +1,8 @@
 import * as internal from '__internal__';
-import { Vector2 } from '@js_godot/variant/vector2'
-import { Resource } from '@js_godot/classes/resource'
-import { StringName } from '@js_godot/variant/string_name'
-import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
-import { Transform3D } from '@js_godot/variant/transform3d'
 import { Variant } from '@js_godot/variant/variant'
-import { GDString } from '@js_godot/variant/gd_string'
-import { Color } from '@js_godot/variant/color'
+import { StringName } from '@js_godot/variant/string_name'
+import { GDArray } from '@js_godot/variant/gd_array'
+import { Resource } from '@js_godot/classes/resource'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -23,7 +19,7 @@ class _MethodBindings {
 }
 export class EditorNode3DGizmoPlugin extends Resource{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -33,58 +29,63 @@ export class EditorNode3DGizmoPlugin extends Resource{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_create_material() {
+    if (!this.#_bindings.method_create_material) {
       let classname = new StringName("EditorNode3DGizmoPlugin");
       let methodname = new StringName("create_material");
-      this._bindings.method_create_material = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_create_material = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3486012546
       );
     }
-    {
+  }
+  static init_method_create_icon_material() {
+    if (!this.#_bindings.method_create_icon_material) {
       let classname = new StringName("EditorNode3DGizmoPlugin");
       let methodname = new StringName("create_icon_material");
-      this._bindings.method_create_icon_material = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_create_icon_material = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3804976916
       );
     }
-    {
+  }
+  static init_method_create_handle_material() {
+    if (!this.#_bindings.method_create_handle_material) {
       let classname = new StringName("EditorNode3DGizmoPlugin");
       let methodname = new StringName("create_handle_material");
-      this._bindings.method_create_handle_material = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_create_handle_material = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2486475223
       );
     }
-    {
+  }
+  static init_method_add_material() {
+    if (!this.#_bindings.method_add_material) {
       let classname = new StringName("EditorNode3DGizmoPlugin");
       let methodname = new StringName("add_material");
-      this._bindings.method_add_material = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_add_material = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1374068695
       );
     }
-    {
+  }
+  static init_method_get_material() {
+    if (!this.#_bindings.method_get_material) {
       let classname = new StringName("EditorNode3DGizmoPlugin");
       let methodname = new StringName("get_material");
-      this._bindings.method_get_material = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_material = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         974464017
       );
     }
   }
+
+  
   
   _has_gizmo(_for_node_3d) {
   }
@@ -123,50 +124,51 @@ export class EditorNode3DGizmoPlugin extends Resource{
   _commit_subgizmos(_gizmo, _ids, _restores, _cancel) {
   }
   create_material(_name, _color, _billboard, _on_top, _use_vertex_color) {
+    EditorNode3DGizmoPlugin.init_method_create_material();
     return _call_native_mb_no_ret(
-      EditorNode3DGizmoPlugin._bindings.method_create_material,
+      EditorNode3DGizmoPlugin.#_bindings.method_create_material,
       this._owner,
       _name, _color, _billboard, _on_top, _use_vertex_color
     );
     
   }
   create_icon_material(_name, _texture, _on_top, _color) {
+    EditorNode3DGizmoPlugin.init_method_create_icon_material();
     return _call_native_mb_no_ret(
-      EditorNode3DGizmoPlugin._bindings.method_create_icon_material,
+      EditorNode3DGizmoPlugin.#_bindings.method_create_icon_material,
       this._owner,
       _name, _texture, _on_top, _color
     );
     
   }
   create_handle_material(_name, _billboard, _texture) {
+    EditorNode3DGizmoPlugin.init_method_create_handle_material();
     return _call_native_mb_no_ret(
-      EditorNode3DGizmoPlugin._bindings.method_create_handle_material,
+      EditorNode3DGizmoPlugin.#_bindings.method_create_handle_material,
       this._owner,
       _name, _billboard, _texture
     );
     
   }
   add_material(_name, _material) {
+    EditorNode3DGizmoPlugin.init_method_add_material();
     return _call_native_mb_no_ret(
-      EditorNode3DGizmoPlugin._bindings.method_add_material,
+      EditorNode3DGizmoPlugin.#_bindings.method_add_material,
       this._owner,
       _name, _material
     );
     
   }
   get_material(_name, _gizmo) {
+    EditorNode3DGizmoPlugin.init_method_get_material();
     return _call_native_mb_ret(
-      EditorNode3DGizmoPlugin._bindings.method_get_material,
+      EditorNode3DGizmoPlugin.#_bindings.method_get_material,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       _name, _gizmo
     );
     
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

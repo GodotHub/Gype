@@ -17,7 +17,7 @@ class _MethodBindings {
 }
 export class CSGMesh3D extends CSGPrimitive3D{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -27,80 +27,87 @@ export class CSGMesh3D extends CSGPrimitive3D{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_mesh() {
+    if (!this.#_bindings.method_set_mesh) {
       let classname = new StringName("CSGMesh3D");
       let methodname = new StringName("set_mesh");
-      this._bindings.method_set_mesh = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_mesh = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         194775623
       );
     }
-    {
+  }
+  static init_method_get_mesh() {
+    if (!this.#_bindings.method_get_mesh) {
       let classname = new StringName("CSGMesh3D");
       let methodname = new StringName("get_mesh");
-      this._bindings.method_get_mesh = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_mesh = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         4081188045
       );
     }
-    {
+  }
+  static init_method_set_material() {
+    if (!this.#_bindings.method_set_material) {
       let classname = new StringName("CSGMesh3D");
       let methodname = new StringName("set_material");
-      this._bindings.method_set_material = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_material = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2757459619
       );
     }
-    {
+  }
+  static init_method_get_material() {
+    if (!this.#_bindings.method_get_material) {
       let classname = new StringName("CSGMesh3D");
       let methodname = new StringName("get_material");
-      this._bindings.method_get_material = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_material = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         5934680
       );
     }
   }
+
+  
   
   set_mesh(_mesh) {
+    CSGMesh3D.init_method_set_mesh();
     return _call_native_mb_no_ret(
-      CSGMesh3D._bindings.method_set_mesh,
+      CSGMesh3D.#_bindings.method_set_mesh,
       this._owner,
       _mesh
     );
     
   }
   get_mesh() {
+    CSGMesh3D.init_method_get_mesh();
     return _call_native_mb_ret(
-      CSGMesh3D._bindings.method_get_mesh,
+      CSGMesh3D.#_bindings.method_get_mesh,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
   }
   set_material(_material) {
+    CSGMesh3D.init_method_set_material();
     return _call_native_mb_no_ret(
-      CSGMesh3D._bindings.method_set_material,
+      CSGMesh3D.#_bindings.method_set_material,
       this._owner,
       _material
     );
     
   }
   get_material() {
+    CSGMesh3D.init_method_get_material();
     return _call_native_mb_ret(
-      CSGMesh3D._bindings.method_get_material,
+      CSGMesh3D.#_bindings.method_get_material,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
@@ -119,8 +126,4 @@ set material (new_value) {
   this.set_material(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

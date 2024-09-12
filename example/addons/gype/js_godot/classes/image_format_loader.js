@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { RefCounted } from '@js_godot/classes/ref_counted'
-import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -13,7 +13,7 @@ class _MethodBindings {
 }
 export class ImageFormatLoader extends RefCounted{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -23,13 +23,8 @@ export class ImageFormatLoader extends RefCounted{
       super(godot_object);
     }
   }
+
   
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-  }
   
   
 
@@ -37,9 +32,5 @@ export class ImageFormatLoader extends RefCounted{
     FLAG_NONE: 0,
     FLAG_FORCE_LINEAR: 1,
     FLAG_CONVERT_COLORS: 2,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

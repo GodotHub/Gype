@@ -1,9 +1,7 @@
 import * as internal from '__internal__';
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { RefCounted } from '@js_godot/classes/ref_counted'
-import { Variant } from '@js_godot/variant/variant'
-import { GDString } from '@js_godot/variant/gd_string'
-import { Transform2D } from '@js_godot/variant/transform2d'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -23,7 +21,7 @@ class _MethodBindings {
 }
 export class CameraFeed extends RefCounted{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -33,115 +31,132 @@ export class CameraFeed extends RefCounted{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_get_id() {
+    if (!this.#_bindings.method_get_id) {
       let classname = new StringName("CameraFeed");
       let methodname = new StringName("get_id");
-      this._bindings.method_get_id = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_id = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
-    {
+  }
+  static init_method_is_active() {
+    if (!this.#_bindings.method_is_active) {
       let classname = new StringName("CameraFeed");
       let methodname = new StringName("is_active");
-      this._bindings.method_is_active = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_active = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_set_active() {
+    if (!this.#_bindings.method_set_active) {
       let classname = new StringName("CameraFeed");
       let methodname = new StringName("set_active");
-      this._bindings.method_set_active = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_active = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_get_name() {
+    if (!this.#_bindings.method_get_name) {
       let classname = new StringName("CameraFeed");
       let methodname = new StringName("get_name");
-      this._bindings.method_get_name = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_name = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         201670096
       );
     }
-    {
+  }
+  static init_method_get_position() {
+    if (!this.#_bindings.method_get_position) {
       let classname = new StringName("CameraFeed");
       let methodname = new StringName("get_position");
-      this._bindings.method_get_position = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_position = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2711679033
       );
     }
-    {
+  }
+  static init_method_get_transform() {
+    if (!this.#_bindings.method_get_transform) {
       let classname = new StringName("CameraFeed");
       let methodname = new StringName("get_transform");
-      this._bindings.method_get_transform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_transform = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3814499831
       );
     }
-    {
+  }
+  static init_method_set_transform() {
+    if (!this.#_bindings.method_set_transform) {
       let classname = new StringName("CameraFeed");
       let methodname = new StringName("set_transform");
-      this._bindings.method_set_transform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_transform = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2761652528
       );
     }
-    {
+  }
+  static init_method_get_datatype() {
+    if (!this.#_bindings.method_get_datatype) {
       let classname = new StringName("CameraFeed");
       let methodname = new StringName("get_datatype");
-      this._bindings.method_get_datatype = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_datatype = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1477782850
       );
     }
   }
+
+  
   
   get_id() {
+    CameraFeed.init_method_get_id();
     return _call_native_mb_ret(
-      CameraFeed._bindings.method_get_id,
+      CameraFeed.#_bindings.method_get_id,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   is_active() {
+    CameraFeed.init_method_is_active();
     return _call_native_mb_ret(
-      CameraFeed._bindings.method_is_active,
+      CameraFeed.#_bindings.method_is_active,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_active(_active) {
+    CameraFeed.init_method_set_active();
     return _call_native_mb_no_ret(
-      CameraFeed._bindings.method_set_active,
+      CameraFeed.#_bindings.method_set_active,
       this._owner,
       _active
     );
     
   }
   get_name() {
+    CameraFeed.init_method_get_name();
     return _call_native_mb_ret(
-      CameraFeed._bindings.method_get_name,
+      CameraFeed.#_bindings.method_get_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -150,17 +165,20 @@ export class CameraFeed extends RefCounted{
     
   }
   get_position() {
+    CameraFeed.init_method_get_position();
     return _call_native_mb_ret(
-      CameraFeed._bindings.method_get_position,
+      CameraFeed.#_bindings.method_get_position,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   get_transform() {
+    CameraFeed.init_method_get_transform();
     return _call_native_mb_ret(
-      CameraFeed._bindings.method_get_transform,
+      CameraFeed.#_bindings.method_get_transform,
       this._owner,
 			Variant.Type.TRANSFORM2D,
     
@@ -169,18 +187,21 @@ export class CameraFeed extends RefCounted{
     
   }
   set_transform(_transform) {
+    CameraFeed.init_method_set_transform();
     return _call_native_mb_no_ret(
-      CameraFeed._bindings.method_set_transform,
+      CameraFeed.#_bindings.method_set_transform,
       this._owner,
       _transform
     );
     
   }
   get_datatype() {
+    CameraFeed.init_method_get_datatype();
     return _call_native_mb_ret(
-      CameraFeed._bindings.method_get_datatype,
+      CameraFeed.#_bindings.method_get_datatype,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
@@ -209,9 +230,5 @@ set feed_transform (new_value) {
     FEED_UNSPECIFIED: 0,
     FEED_FRONT: 1,
     FEED_BACK: 2,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

@@ -1,8 +1,7 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
-import { AudioEffectInstance } from '@js_godot/classes/audio_effect_instance'
 import { StringName } from '@js_godot/variant/string_name'
-import { Vector2 } from '@js_godot/variant/vector2'
+import { AudioEffectInstance } from '@js_godot/classes/audio_effect_instance'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -15,7 +14,7 @@ class _MethodBindings {
 }
 export class AudioEffectSpectrumAnalyzerInstance extends AudioEffectInstance{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -25,26 +24,24 @@ export class AudioEffectSpectrumAnalyzerInstance extends AudioEffectInstance{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_get_magnitude_for_frequency_range() {
+    if (!this.#_bindings.method_get_magnitude_for_frequency_range) {
       let classname = new StringName("AudioEffectSpectrumAnalyzerInstance");
       let methodname = new StringName("get_magnitude_for_frequency_range");
-      this._bindings.method_get_magnitude_for_frequency_range = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_magnitude_for_frequency_range = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         797993915
       );
     }
   }
+
+  
   
   get_magnitude_for_frequency_range(_from_hz, _to_hz, _mode) {
+    AudioEffectSpectrumAnalyzerInstance.init_method_get_magnitude_for_frequency_range();
     return _call_native_mb_ret(
-      AudioEffectSpectrumAnalyzerInstance._bindings.method_get_magnitude_for_frequency_range,
+      AudioEffectSpectrumAnalyzerInstance.#_bindings.method_get_magnitude_for_frequency_range,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -57,9 +54,5 @@ export class AudioEffectSpectrumAnalyzerInstance extends AudioEffectInstance{
   static MagnitudeMode = {
     MAGNITUDE_AVERAGE: 0,
     MAGNITUDE_MAX: 1,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

@@ -16,7 +16,7 @@ class _MethodBindings {
 }
 export class MethodTweener extends Tweener{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -26,72 +26,72 @@ export class MethodTweener extends Tweener{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_delay() {
+    if (!this.#_bindings.method_set_delay) {
       let classname = new StringName("MethodTweener");
       let methodname = new StringName("set_delay");
-      this._bindings.method_set_delay = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_delay = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         266477812
       );
     }
-    {
+  }
+  static init_method_set_trans() {
+    if (!this.#_bindings.method_set_trans) {
       let classname = new StringName("MethodTweener");
       let methodname = new StringName("set_trans");
-      this._bindings.method_set_trans = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_trans = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3740975367
       );
     }
-    {
+  }
+  static init_method_set_ease() {
+    if (!this.#_bindings.method_set_ease) {
       let classname = new StringName("MethodTweener");
       let methodname = new StringName("set_ease");
-      this._bindings.method_set_ease = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_ease = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         315540545
       );
     }
   }
+
+  
   
   set_delay(_delay) {
+    MethodTweener.init_method_set_delay();
     return _call_native_mb_ret(
-      MethodTweener._bindings.method_set_delay,
+      MethodTweener.#_bindings.method_set_delay,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       _delay
     );
     
   }
   set_trans(_trans) {
+    MethodTweener.init_method_set_trans();
     return _call_native_mb_ret(
-      MethodTweener._bindings.method_set_trans,
+      MethodTweener.#_bindings.method_set_trans,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       _trans
     );
     
   }
   set_ease(_ease) {
+    MethodTweener.init_method_set_ease();
     return _call_native_mb_ret(
-      MethodTweener._bindings.method_set_ease,
+      MethodTweener.#_bindings.method_set_ease,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       _ease
     );
     
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

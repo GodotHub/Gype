@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Light3D } from '@js_godot/classes/light3d'
 import { Variant } from '@js_godot/variant/variant'
+import { Light3D } from '@js_godot/classes/light3d'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -19,7 +19,7 @@ class _MethodBindings {
 }
 export class DirectionalLight3D extends Light3D{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -29,115 +29,131 @@ export class DirectionalLight3D extends Light3D{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_shadow_mode() {
+    if (!this.#_bindings.method_set_shadow_mode) {
       let classname = new StringName("DirectionalLight3D");
       let methodname = new StringName("set_shadow_mode");
-      this._bindings.method_set_shadow_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_shadow_mode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1261211726
       );
     }
-    {
+  }
+  static init_method_get_shadow_mode() {
+    if (!this.#_bindings.method_get_shadow_mode) {
       let classname = new StringName("DirectionalLight3D");
       let methodname = new StringName("get_shadow_mode");
-      this._bindings.method_get_shadow_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_shadow_mode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2765228544
       );
     }
-    {
+  }
+  static init_method_set_blend_splits() {
+    if (!this.#_bindings.method_set_blend_splits) {
       let classname = new StringName("DirectionalLight3D");
       let methodname = new StringName("set_blend_splits");
-      this._bindings.method_set_blend_splits = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_blend_splits = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_is_blend_splits_enabled() {
+    if (!this.#_bindings.method_is_blend_splits_enabled) {
       let classname = new StringName("DirectionalLight3D");
       let methodname = new StringName("is_blend_splits_enabled");
-      this._bindings.method_is_blend_splits_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_blend_splits_enabled = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_set_sky_mode() {
+    if (!this.#_bindings.method_set_sky_mode) {
       let classname = new StringName("DirectionalLight3D");
       let methodname = new StringName("set_sky_mode");
-      this._bindings.method_set_sky_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_sky_mode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2691194817
       );
     }
-    {
+  }
+  static init_method_get_sky_mode() {
+    if (!this.#_bindings.method_get_sky_mode) {
       let classname = new StringName("DirectionalLight3D");
       let methodname = new StringName("get_sky_mode");
-      this._bindings.method_get_sky_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_sky_mode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3819982774
       );
     }
   }
+
+  
   
   set_shadow_mode(_mode) {
+    DirectionalLight3D.init_method_set_shadow_mode();
     return _call_native_mb_no_ret(
-      DirectionalLight3D._bindings.method_set_shadow_mode,
+      DirectionalLight3D.#_bindings.method_set_shadow_mode,
       this._owner,
       _mode
     );
     
   }
   get_shadow_mode() {
+    DirectionalLight3D.init_method_get_shadow_mode();
     return _call_native_mb_ret(
-      DirectionalLight3D._bindings.method_get_shadow_mode,
+      DirectionalLight3D.#_bindings.method_get_shadow_mode,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_blend_splits(_enabled) {
+    DirectionalLight3D.init_method_set_blend_splits();
     return _call_native_mb_no_ret(
-      DirectionalLight3D._bindings.method_set_blend_splits,
+      DirectionalLight3D.#_bindings.method_set_blend_splits,
       this._owner,
       _enabled
     );
     
   }
   is_blend_splits_enabled() {
+    DirectionalLight3D.init_method_is_blend_splits_enabled();
     return _call_native_mb_ret(
-      DirectionalLight3D._bindings.method_is_blend_splits_enabled,
+      DirectionalLight3D.#_bindings.method_is_blend_splits_enabled,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_sky_mode(_mode) {
+    DirectionalLight3D.init_method_set_sky_mode();
     return _call_native_mb_no_ret(
-      DirectionalLight3D._bindings.method_set_sky_mode,
+      DirectionalLight3D.#_bindings.method_set_sky_mode,
       this._owner,
       _mode
     );
     
   }
   get_sky_mode() {
+    DirectionalLight3D.init_method_get_sky_mode();
     return _call_native_mb_ret(
-      DirectionalLight3D._bindings.method_get_sky_mode,
+      DirectionalLight3D.#_bindings.method_get_sky_mode,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
@@ -207,9 +223,5 @@ set sky_mode (new_value) {
     SKY_MODE_LIGHT_AND_SKY: 0,
     SKY_MODE_LIGHT_ONLY: 1,
     SKY_MODE_SKY_ONLY: 2,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

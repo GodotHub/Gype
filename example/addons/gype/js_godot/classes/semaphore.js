@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { RefCounted } from '@js_godot/classes/ref_counted'
-import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -16,7 +16,7 @@ class _MethodBindings {
 }
 export class Semaphore extends RefCounted{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -26,61 +26,66 @@ export class Semaphore extends RefCounted{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_wait() {
+    if (!this.#_bindings.method_wait) {
       let classname = new StringName("Semaphore");
       let methodname = new StringName("wait");
-      this._bindings.method_wait = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3218959716
-      );
-    }
-    {
-      let classname = new StringName("Semaphore");
-      let methodname = new StringName("try_wait");
-      this._bindings.method_try_wait = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2240911060
-      );
-    }
-    {
-      let classname = new StringName("Semaphore");
-      let methodname = new StringName("post");
-      this._bindings.method_post = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_wait = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3218959716
       );
     }
   }
+  static init_method_try_wait() {
+    if (!this.#_bindings.method_try_wait) {
+      let classname = new StringName("Semaphore");
+      let methodname = new StringName("try_wait");
+      this.#_bindings.method_try_wait = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2240911060
+      );
+    }
+  }
+  static init_method_post() {
+    if (!this.#_bindings.method_post) {
+      let classname = new StringName("Semaphore");
+      let methodname = new StringName("post");
+      this.#_bindings.method_post = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3218959716
+      );
+    }
+  }
+
+  
   
   wait() {
+    Semaphore.init_method_wait();
     return _call_native_mb_no_ret(
-      Semaphore._bindings.method_wait,
+      Semaphore.#_bindings.method_wait,
       this._owner,
       
     );
     
   }
   try_wait() {
+    Semaphore.init_method_try_wait();
     return _call_native_mb_ret(
-      Semaphore._bindings.method_try_wait,
+      Semaphore.#_bindings.method_try_wait,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   post() {
+    Semaphore.init_method_post();
     return _call_native_mb_no_ret(
-      Semaphore._bindings.method_post,
+      Semaphore.#_bindings.method_post,
       this._owner,
       
     );
@@ -88,8 +93,4 @@ export class Semaphore extends RefCounted{
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

@@ -1,8 +1,7 @@
 import * as internal from '__internal__';
-import { Resource } from '@js_godot/classes/resource'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
-import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
+import { Resource } from '@js_godot/classes/resource'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -27,7 +26,7 @@ class _MethodBindings {
 }
 export class GLTFBufferView extends Resource{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -37,134 +36,156 @@ export class GLTFBufferView extends Resource{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_load_buffer_view_data() {
+    if (!this.#_bindings.method_load_buffer_view_data) {
       let classname = new StringName("GLTFBufferView");
       let methodname = new StringName("load_buffer_view_data");
-      this._bindings.method_load_buffer_view_data = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_load_buffer_view_data = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3945446907
       );
     }
-    {
+  }
+  static init_method_get_buffer() {
+    if (!this.#_bindings.method_get_buffer) {
       let classname = new StringName("GLTFBufferView");
       let methodname = new StringName("get_buffer");
-      this._bindings.method_get_buffer = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_buffer = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
-    {
+  }
+  static init_method_set_buffer() {
+    if (!this.#_bindings.method_set_buffer) {
       let classname = new StringName("GLTFBufferView");
       let methodname = new StringName("set_buffer");
-      this._bindings.method_set_buffer = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_buffer = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1286410249
       );
     }
-    {
+  }
+  static init_method_get_byte_offset() {
+    if (!this.#_bindings.method_get_byte_offset) {
       let classname = new StringName("GLTFBufferView");
       let methodname = new StringName("get_byte_offset");
-      this._bindings.method_get_byte_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_byte_offset = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
-    {
+  }
+  static init_method_set_byte_offset() {
+    if (!this.#_bindings.method_set_byte_offset) {
       let classname = new StringName("GLTFBufferView");
       let methodname = new StringName("set_byte_offset");
-      this._bindings.method_set_byte_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_byte_offset = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1286410249
       );
     }
-    {
+  }
+  static init_method_get_byte_length() {
+    if (!this.#_bindings.method_get_byte_length) {
       let classname = new StringName("GLTFBufferView");
       let methodname = new StringName("get_byte_length");
-      this._bindings.method_get_byte_length = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_byte_length = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
-    {
+  }
+  static init_method_set_byte_length() {
+    if (!this.#_bindings.method_set_byte_length) {
       let classname = new StringName("GLTFBufferView");
       let methodname = new StringName("set_byte_length");
-      this._bindings.method_set_byte_length = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_byte_length = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1286410249
       );
     }
-    {
+  }
+  static init_method_get_byte_stride() {
+    if (!this.#_bindings.method_get_byte_stride) {
       let classname = new StringName("GLTFBufferView");
       let methodname = new StringName("get_byte_stride");
-      this._bindings.method_get_byte_stride = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_byte_stride = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
-    {
+  }
+  static init_method_set_byte_stride() {
+    if (!this.#_bindings.method_set_byte_stride) {
       let classname = new StringName("GLTFBufferView");
       let methodname = new StringName("set_byte_stride");
-      this._bindings.method_set_byte_stride = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_byte_stride = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1286410249
       );
     }
-    {
+  }
+  static init_method_get_indices() {
+    if (!this.#_bindings.method_get_indices) {
       let classname = new StringName("GLTFBufferView");
       let methodname = new StringName("get_indices");
-      this._bindings.method_get_indices = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_indices = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_set_indices() {
+    if (!this.#_bindings.method_set_indices) {
       let classname = new StringName("GLTFBufferView");
       let methodname = new StringName("set_indices");
-      this._bindings.method_set_indices = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("GLTFBufferView");
-      let methodname = new StringName("get_vertex_attributes");
-      this._bindings.method_get_vertex_attributes = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("GLTFBufferView");
-      let methodname = new StringName("set_vertex_attributes");
-      this._bindings.method_set_vertex_attributes = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_indices = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
   }
+  static init_method_get_vertex_attributes() {
+    if (!this.#_bindings.method_get_vertex_attributes) {
+      let classname = new StringName("GLTFBufferView");
+      let methodname = new StringName("get_vertex_attributes");
+      this.#_bindings.method_get_vertex_attributes = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        36873697
+      );
+    }
+  }
+  static init_method_set_vertex_attributes() {
+    if (!this.#_bindings.method_set_vertex_attributes) {
+      let classname = new StringName("GLTFBufferView");
+      let methodname = new StringName("set_vertex_attributes");
+      this.#_bindings.method_set_vertex_attributes = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2586408642
+      );
+    }
+  }
+
+  
   
   load_buffer_view_data(_state) {
+    GLTFBufferView.init_method_load_buffer_view_data();
     return _call_native_mb_ret(
-      GLTFBufferView._bindings.method_load_buffer_view_data,
+      GLTFBufferView.#_bindings.method_load_buffer_view_data,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -173,102 +194,120 @@ export class GLTFBufferView extends Resource{
     
   }
   get_buffer() {
+    GLTFBufferView.init_method_get_buffer();
     return _call_native_mb_ret(
-      GLTFBufferView._bindings.method_get_buffer,
+      GLTFBufferView.#_bindings.method_get_buffer,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_buffer(_buffer) {
+    GLTFBufferView.init_method_set_buffer();
     return _call_native_mb_no_ret(
-      GLTFBufferView._bindings.method_set_buffer,
+      GLTFBufferView.#_bindings.method_set_buffer,
       this._owner,
       _buffer
     );
     
   }
   get_byte_offset() {
+    GLTFBufferView.init_method_get_byte_offset();
     return _call_native_mb_ret(
-      GLTFBufferView._bindings.method_get_byte_offset,
+      GLTFBufferView.#_bindings.method_get_byte_offset,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_byte_offset(_byte_offset) {
+    GLTFBufferView.init_method_set_byte_offset();
     return _call_native_mb_no_ret(
-      GLTFBufferView._bindings.method_set_byte_offset,
+      GLTFBufferView.#_bindings.method_set_byte_offset,
       this._owner,
       _byte_offset
     );
     
   }
   get_byte_length() {
+    GLTFBufferView.init_method_get_byte_length();
     return _call_native_mb_ret(
-      GLTFBufferView._bindings.method_get_byte_length,
+      GLTFBufferView.#_bindings.method_get_byte_length,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_byte_length(_byte_length) {
+    GLTFBufferView.init_method_set_byte_length();
     return _call_native_mb_no_ret(
-      GLTFBufferView._bindings.method_set_byte_length,
+      GLTFBufferView.#_bindings.method_set_byte_length,
       this._owner,
       _byte_length
     );
     
   }
   get_byte_stride() {
+    GLTFBufferView.init_method_get_byte_stride();
     return _call_native_mb_ret(
-      GLTFBufferView._bindings.method_get_byte_stride,
+      GLTFBufferView.#_bindings.method_get_byte_stride,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_byte_stride(_byte_stride) {
+    GLTFBufferView.init_method_set_byte_stride();
     return _call_native_mb_no_ret(
-      GLTFBufferView._bindings.method_set_byte_stride,
+      GLTFBufferView.#_bindings.method_set_byte_stride,
       this._owner,
       _byte_stride
     );
     
   }
   get_indices() {
+    GLTFBufferView.init_method_get_indices();
     return _call_native_mb_ret(
-      GLTFBufferView._bindings.method_get_indices,
+      GLTFBufferView.#_bindings.method_get_indices,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_indices(_indices) {
+    GLTFBufferView.init_method_set_indices();
     return _call_native_mb_no_ret(
-      GLTFBufferView._bindings.method_set_indices,
+      GLTFBufferView.#_bindings.method_set_indices,
       this._owner,
       _indices
     );
     
   }
   get_vertex_attributes() {
+    GLTFBufferView.init_method_get_vertex_attributes();
     return _call_native_mb_ret(
-      GLTFBufferView._bindings.method_get_vertex_attributes,
+      GLTFBufferView.#_bindings.method_get_vertex_attributes,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_vertex_attributes(_is_attributes) {
+    GLTFBufferView.init_method_set_vertex_attributes();
     return _call_native_mb_no_ret(
-      GLTFBufferView._bindings.method_set_vertex_attributes,
+      GLTFBufferView.#_bindings.method_set_vertex_attributes,
       this._owner,
       _is_attributes
     );
@@ -312,8 +351,4 @@ set vertex_attributes (new_value) {
   this.set_vertex_attributes(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

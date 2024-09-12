@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Light3D } from '@js_godot/classes/light3d'
 import { Variant } from '@js_godot/variant/variant'
+import { Light3D } from '@js_godot/classes/light3d'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -13,7 +13,7 @@ class _MethodBindings {
 }
 export class SpotLight3D extends Light3D{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -23,13 +23,8 @@ export class SpotLight3D extends Light3D{
       super(godot_object);
     }
   }
+
   
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-  }
   
   
 get spot_range () {
@@ -57,8 +52,4 @@ set spot_angle_attenuation (new_value) {
   this.set_param(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

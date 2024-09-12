@@ -1,9 +1,7 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
-import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
-import { StringName } from '@js_godot/variant/string_name'
 import { AudioStream } from '@js_godot/classes/audio_stream'
-import { GDString } from '@js_godot/variant/gd_string'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -29,7 +27,7 @@ class _MethodBindings {
 }
 export class AudioStreamOggVorbis extends AudioStream{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -39,256 +37,298 @@ export class AudioStreamOggVorbis extends AudioStream{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_load_from_buffer() {
+    if (!this.#_bindings.method_load_from_buffer) {
       let classname = new StringName("AudioStreamOggVorbis");
       let methodname = new StringName("load_from_buffer");
-      this._bindings.method_load_from_buffer = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_load_from_buffer = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         354904730
       );
     }
-    {
+  }
+  static init_method_load_from_file() {
+    if (!this.#_bindings.method_load_from_file) {
       let classname = new StringName("AudioStreamOggVorbis");
       let methodname = new StringName("load_from_file");
-      this._bindings.method_load_from_file = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_load_from_file = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         797568536
       );
     }
-    {
+  }
+  static init_method_set_packet_sequence() {
+    if (!this.#_bindings.method_set_packet_sequence) {
       let classname = new StringName("AudioStreamOggVorbis");
       let methodname = new StringName("set_packet_sequence");
-      this._bindings.method_set_packet_sequence = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_packet_sequence = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         438882457
       );
     }
-    {
+  }
+  static init_method_get_packet_sequence() {
+    if (!this.#_bindings.method_get_packet_sequence) {
       let classname = new StringName("AudioStreamOggVorbis");
       let methodname = new StringName("get_packet_sequence");
-      this._bindings.method_get_packet_sequence = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_packet_sequence = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2801636033
       );
     }
-    {
+  }
+  static init_method_set_loop() {
+    if (!this.#_bindings.method_set_loop) {
       let classname = new StringName("AudioStreamOggVorbis");
       let methodname = new StringName("set_loop");
-      this._bindings.method_set_loop = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_loop = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_has_loop() {
+    if (!this.#_bindings.method_has_loop) {
       let classname = new StringName("AudioStreamOggVorbis");
       let methodname = new StringName("has_loop");
-      this._bindings.method_has_loop = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_has_loop = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_set_loop_offset() {
+    if (!this.#_bindings.method_set_loop_offset) {
       let classname = new StringName("AudioStreamOggVorbis");
       let methodname = new StringName("set_loop_offset");
-      this._bindings.method_set_loop_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_loop_offset = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_loop_offset() {
+    if (!this.#_bindings.method_get_loop_offset) {
       let classname = new StringName("AudioStreamOggVorbis");
       let methodname = new StringName("get_loop_offset");
-      this._bindings.method_get_loop_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_loop_offset = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_set_bpm() {
+    if (!this.#_bindings.method_set_bpm) {
       let classname = new StringName("AudioStreamOggVorbis");
       let methodname = new StringName("set_bpm");
-      this._bindings.method_set_bpm = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_bpm = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_bpm() {
+    if (!this.#_bindings.method_get_bpm) {
       let classname = new StringName("AudioStreamOggVorbis");
       let methodname = new StringName("get_bpm");
-      this._bindings.method_get_bpm = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_bpm = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_set_beat_count() {
+    if (!this.#_bindings.method_set_beat_count) {
       let classname = new StringName("AudioStreamOggVorbis");
       let methodname = new StringName("set_beat_count");
-      this._bindings.method_set_beat_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_beat_count = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1286410249
       );
     }
-    {
+  }
+  static init_method_get_beat_count() {
+    if (!this.#_bindings.method_get_beat_count) {
       let classname = new StringName("AudioStreamOggVorbis");
       let methodname = new StringName("get_beat_count");
-      this._bindings.method_get_beat_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("AudioStreamOggVorbis");
-      let methodname = new StringName("set_bar_beats");
-      this._bindings.method_set_bar_beats = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("AudioStreamOggVorbis");
-      let methodname = new StringName("get_bar_beats");
-      this._bindings.method_get_bar_beats = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_beat_count = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
   }
+  static init_method_set_bar_beats() {
+    if (!this.#_bindings.method_set_bar_beats) {
+      let classname = new StringName("AudioStreamOggVorbis");
+      let methodname = new StringName("set_bar_beats");
+      this.#_bindings.method_set_bar_beats = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1286410249
+      );
+    }
+  }
+  static init_method_get_bar_beats() {
+    if (!this.#_bindings.method_get_bar_beats) {
+      let classname = new StringName("AudioStreamOggVorbis");
+      let methodname = new StringName("get_bar_beats");
+      this.#_bindings.method_get_bar_beats = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3905245786
+      );
+    }
+  }
+
+  
   
   load_from_buffer(_buffer) {
+    AudioStreamOggVorbis.init_method_load_from_buffer();
     return _call_native_mb_ret(
-      AudioStreamOggVorbis._bindings.method_load_from_buffer,
+      AudioStreamOggVorbis.#_bindings.method_load_from_buffer,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       _buffer
     );
     
   }
   load_from_file(_path) {
+    AudioStreamOggVorbis.init_method_load_from_file();
     return _call_native_mb_ret(
-      AudioStreamOggVorbis._bindings.method_load_from_file,
+      AudioStreamOggVorbis.#_bindings.method_load_from_file,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       _path
     );
     
   }
   set_packet_sequence(_packet_sequence) {
+    AudioStreamOggVorbis.init_method_set_packet_sequence();
     return _call_native_mb_no_ret(
-      AudioStreamOggVorbis._bindings.method_set_packet_sequence,
+      AudioStreamOggVorbis.#_bindings.method_set_packet_sequence,
       this._owner,
       _packet_sequence
     );
     
   }
   get_packet_sequence() {
+    AudioStreamOggVorbis.init_method_get_packet_sequence();
     return _call_native_mb_ret(
-      AudioStreamOggVorbis._bindings.method_get_packet_sequence,
+      AudioStreamOggVorbis.#_bindings.method_get_packet_sequence,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
   }
   set_loop(_enable) {
+    AudioStreamOggVorbis.init_method_set_loop();
     return _call_native_mb_no_ret(
-      AudioStreamOggVorbis._bindings.method_set_loop,
+      AudioStreamOggVorbis.#_bindings.method_set_loop,
       this._owner,
       _enable
     );
     
   }
   has_loop() {
+    AudioStreamOggVorbis.init_method_has_loop();
     return _call_native_mb_ret(
-      AudioStreamOggVorbis._bindings.method_has_loop,
+      AudioStreamOggVorbis.#_bindings.method_has_loop,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_loop_offset(_seconds) {
+    AudioStreamOggVorbis.init_method_set_loop_offset();
     return _call_native_mb_no_ret(
-      AudioStreamOggVorbis._bindings.method_set_loop_offset,
+      AudioStreamOggVorbis.#_bindings.method_set_loop_offset,
       this._owner,
       _seconds
     );
     
   }
   get_loop_offset() {
+    AudioStreamOggVorbis.init_method_get_loop_offset();
     return _call_native_mb_ret(
-      AudioStreamOggVorbis._bindings.method_get_loop_offset,
+      AudioStreamOggVorbis.#_bindings.method_get_loop_offset,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_bpm(_bpm) {
+    AudioStreamOggVorbis.init_method_set_bpm();
     return _call_native_mb_no_ret(
-      AudioStreamOggVorbis._bindings.method_set_bpm,
+      AudioStreamOggVorbis.#_bindings.method_set_bpm,
       this._owner,
       _bpm
     );
     
   }
   get_bpm() {
+    AudioStreamOggVorbis.init_method_get_bpm();
     return _call_native_mb_ret(
-      AudioStreamOggVorbis._bindings.method_get_bpm,
+      AudioStreamOggVorbis.#_bindings.method_get_bpm,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_beat_count(_count) {
+    AudioStreamOggVorbis.init_method_set_beat_count();
     return _call_native_mb_no_ret(
-      AudioStreamOggVorbis._bindings.method_set_beat_count,
+      AudioStreamOggVorbis.#_bindings.method_set_beat_count,
       this._owner,
       _count
     );
     
   }
   get_beat_count() {
+    AudioStreamOggVorbis.init_method_get_beat_count();
     return _call_native_mb_ret(
-      AudioStreamOggVorbis._bindings.method_get_beat_count,
+      AudioStreamOggVorbis.#_bindings.method_get_beat_count,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_bar_beats(_count) {
+    AudioStreamOggVorbis.init_method_set_bar_beats();
     return _call_native_mb_no_ret(
-      AudioStreamOggVorbis._bindings.method_set_bar_beats,
+      AudioStreamOggVorbis.#_bindings.method_set_bar_beats,
       this._owner,
       _count
     );
     
   }
   get_bar_beats() {
+    AudioStreamOggVorbis.init_method_get_bar_beats();
     return _call_native_mb_ret(
-      AudioStreamOggVorbis._bindings.method_get_bar_beats,
+      AudioStreamOggVorbis.#_bindings.method_get_bar_beats,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
@@ -331,8 +371,4 @@ set loop_offset (new_value) {
   this.set_loop_offset(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

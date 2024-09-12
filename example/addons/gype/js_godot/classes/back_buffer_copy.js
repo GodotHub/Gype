@@ -1,8 +1,7 @@
 import * as internal from '__internal__';
-import { Node2D } from '@js_godot/classes/node2d'
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { Rect2 } from '@js_godot/variant/rect2'
+import { StringName } from '@js_godot/variant/string_name'
+import { Node2D } from '@js_godot/classes/node2d'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -18,7 +17,7 @@ class _MethodBindings {
 }
 export class BackBufferCopy extends Node2D{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -28,61 +27,66 @@ export class BackBufferCopy extends Node2D{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_rect() {
+    if (!this.#_bindings.method_set_rect) {
       let classname = new StringName("BackBufferCopy");
       let methodname = new StringName("set_rect");
-      this._bindings.method_set_rect = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_rect = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2046264180
       );
     }
-    {
+  }
+  static init_method_get_rect() {
+    if (!this.#_bindings.method_get_rect) {
       let classname = new StringName("BackBufferCopy");
       let methodname = new StringName("get_rect");
-      this._bindings.method_get_rect = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_rect = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1639390495
       );
     }
-    {
+  }
+  static init_method_set_copy_mode() {
+    if (!this.#_bindings.method_set_copy_mode) {
       let classname = new StringName("BackBufferCopy");
       let methodname = new StringName("set_copy_mode");
-      this._bindings.method_set_copy_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_copy_mode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1713538590
       );
     }
-    {
+  }
+  static init_method_get_copy_mode() {
+    if (!this.#_bindings.method_get_copy_mode) {
       let classname = new StringName("BackBufferCopy");
       let methodname = new StringName("get_copy_mode");
-      this._bindings.method_get_copy_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_copy_mode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3271169440
       );
     }
   }
+
+  
   
   set_rect(_rect) {
+    BackBufferCopy.init_method_set_rect();
     return _call_native_mb_no_ret(
-      BackBufferCopy._bindings.method_set_rect,
+      BackBufferCopy.#_bindings.method_set_rect,
       this._owner,
       _rect
     );
     
   }
   get_rect() {
+    BackBufferCopy.init_method_get_rect();
     return _call_native_mb_ret(
-      BackBufferCopy._bindings.method_get_rect,
+      BackBufferCopy.#_bindings.method_get_rect,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -91,18 +95,21 @@ export class BackBufferCopy extends Node2D{
     
   }
   set_copy_mode(_copy_mode) {
+    BackBufferCopy.init_method_set_copy_mode();
     return _call_native_mb_no_ret(
-      BackBufferCopy._bindings.method_set_copy_mode,
+      BackBufferCopy.#_bindings.method_set_copy_mode,
       this._owner,
       _copy_mode
     );
     
   }
   get_copy_mode() {
+    BackBufferCopy.init_method_get_copy_mode();
     return _call_native_mb_ret(
-      BackBufferCopy._bindings.method_get_copy_mode,
+      BackBufferCopy.#_bindings.method_get_copy_mode,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
@@ -125,9 +132,5 @@ set rect (new_value) {
     COPY_MODE_DISABLED: 0,
     COPY_MODE_RECT: 1,
     COPY_MODE_VIEWPORT: 2,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

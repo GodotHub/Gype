@@ -1,8 +1,7 @@
 import * as internal from '__internal__';
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { XRPositionalTracker } from '@js_godot/classes/xr_positional_tracker'
-import { Transform3D } from '@js_godot/variant/transform3d'
-import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -22,7 +21,7 @@ class _MethodBindings {
 }
 export class XRBodyTracker extends XRPositionalTracker{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -32,148 +31,168 @@ export class XRBodyTracker extends XRPositionalTracker{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_has_tracking_data() {
+    if (!this.#_bindings.method_set_has_tracking_data) {
       let classname = new StringName("XRBodyTracker");
       let methodname = new StringName("set_has_tracking_data");
-      this._bindings.method_set_has_tracking_data = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_has_tracking_data = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_get_has_tracking_data() {
+    if (!this.#_bindings.method_get_has_tracking_data) {
       let classname = new StringName("XRBodyTracker");
       let methodname = new StringName("get_has_tracking_data");
-      this._bindings.method_get_has_tracking_data = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_has_tracking_data = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_set_body_flags() {
+    if (!this.#_bindings.method_set_body_flags) {
       let classname = new StringName("XRBodyTracker");
       let methodname = new StringName("set_body_flags");
-      this._bindings.method_set_body_flags = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_body_flags = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2103235750
       );
     }
-    {
+  }
+  static init_method_get_body_flags() {
+    if (!this.#_bindings.method_get_body_flags) {
       let classname = new StringName("XRBodyTracker");
       let methodname = new StringName("get_body_flags");
-      this._bindings.method_get_body_flags = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_body_flags = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3543166366
       );
     }
-    {
+  }
+  static init_method_set_joint_flags() {
+    if (!this.#_bindings.method_set_joint_flags) {
       let classname = new StringName("XRBodyTracker");
       let methodname = new StringName("set_joint_flags");
-      this._bindings.method_set_joint_flags = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_joint_flags = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         592144999
       );
     }
-    {
+  }
+  static init_method_get_joint_flags() {
+    if (!this.#_bindings.method_get_joint_flags) {
       let classname = new StringName("XRBodyTracker");
       let methodname = new StringName("get_joint_flags");
-      this._bindings.method_get_joint_flags = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_joint_flags = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1030162609
       );
     }
-    {
+  }
+  static init_method_set_joint_transform() {
+    if (!this.#_bindings.method_set_joint_transform) {
       let classname = new StringName("XRBodyTracker");
       let methodname = new StringName("set_joint_transform");
-      this._bindings.method_set_joint_transform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_joint_transform = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2635424328
       );
     }
-    {
+  }
+  static init_method_get_joint_transform() {
+    if (!this.#_bindings.method_get_joint_transform) {
       let classname = new StringName("XRBodyTracker");
       let methodname = new StringName("get_joint_transform");
-      this._bindings.method_get_joint_transform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_joint_transform = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3474811534
       );
     }
   }
+
+  
   
   set_has_tracking_data(_has_data) {
+    XRBodyTracker.init_method_set_has_tracking_data();
     return _call_native_mb_no_ret(
-      XRBodyTracker._bindings.method_set_has_tracking_data,
+      XRBodyTracker.#_bindings.method_set_has_tracking_data,
       this._owner,
       _has_data
     );
     
   }
   get_has_tracking_data() {
+    XRBodyTracker.init_method_get_has_tracking_data();
     return _call_native_mb_ret(
-      XRBodyTracker._bindings.method_get_has_tracking_data,
+      XRBodyTracker.#_bindings.method_get_has_tracking_data,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_body_flags(_flags) {
+    XRBodyTracker.init_method_set_body_flags();
     return _call_native_mb_no_ret(
-      XRBodyTracker._bindings.method_set_body_flags,
+      XRBodyTracker.#_bindings.method_set_body_flags,
       this._owner,
       _flags
     );
     
   }
   get_body_flags() {
+    XRBodyTracker.init_method_get_body_flags();
     return _call_native_mb_ret(
-      XRBodyTracker._bindings.method_get_body_flags,
+      XRBodyTracker.#_bindings.method_get_body_flags,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
   }
   set_joint_flags(_joint, _flags) {
+    XRBodyTracker.init_method_set_joint_flags();
     return _call_native_mb_no_ret(
-      XRBodyTracker._bindings.method_set_joint_flags,
+      XRBodyTracker.#_bindings.method_set_joint_flags,
       this._owner,
       _joint, _flags
     );
     
   }
   get_joint_flags(_joint) {
+    XRBodyTracker.init_method_get_joint_flags();
     return _call_native_mb_ret(
-      XRBodyTracker._bindings.method_get_joint_flags,
+      XRBodyTracker.#_bindings.method_get_joint_flags,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       _joint
     );
     
   }
   set_joint_transform(_joint, _transform) {
+    XRBodyTracker.init_method_set_joint_transform();
     return _call_native_mb_no_ret(
-      XRBodyTracker._bindings.method_set_joint_transform,
+      XRBodyTracker.#_bindings.method_set_joint_transform,
       this._owner,
       _joint, _transform
     );
     
   }
   get_joint_transform(_joint) {
+    XRBodyTracker.init_method_get_joint_transform();
     return _call_native_mb_ret(
-      XRBodyTracker._bindings.method_get_joint_transform,
+      XRBodyTracker.#_bindings.method_get_joint_transform,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -284,9 +303,5 @@ set body_flags (new_value) {
     JOINT_FLAG_ORIENTATION_TRACKED: 2,
     JOINT_FLAG_POSITION_VALID: 4,
     JOINT_FLAG_POSITION_TRACKED: 8,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

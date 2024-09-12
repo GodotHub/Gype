@@ -15,7 +15,7 @@ class _MethodBindings {
 }
 export class Path3D extends Node3D{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -25,45 +25,46 @@ export class Path3D extends Node3D{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_curve() {
+    if (!this.#_bindings.method_set_curve) {
       let classname = new StringName("Path3D");
       let methodname = new StringName("set_curve");
-      this._bindings.method_set_curve = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_curve = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         408955118
       );
     }
-    {
+  }
+  static init_method_get_curve() {
+    if (!this.#_bindings.method_get_curve) {
       let classname = new StringName("Path3D");
       let methodname = new StringName("get_curve");
-      this._bindings.method_get_curve = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_curve = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         4244715212
       );
     }
   }
+
+  
   
   set_curve(_curve) {
+    Path3D.init_method_set_curve();
     return _call_native_mb_no_ret(
-      Path3D._bindings.method_set_curve,
+      Path3D.#_bindings.method_set_curve,
       this._owner,
       _curve
     );
     
   }
   get_curve() {
+    Path3D.init_method_get_curve();
     return _call_native_mb_ret(
-      Path3D._bindings.method_get_curve,
+      Path3D.#_bindings.method_get_curve,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
@@ -76,8 +77,4 @@ set curve (new_value) {
   this.set_curve(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

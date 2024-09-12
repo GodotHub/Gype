@@ -1,7 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { PackedStringArray } from '@js_godot/variant/packed_string_array'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { ImageFormatLoader } from '@js_godot/classes/image_format_loader'
 import {
   call_utility_ret,
@@ -16,7 +15,7 @@ class _MethodBindings {
 }
 export class ImageFormatLoaderExtension extends ImageFormatLoader{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -26,47 +25,48 @@ export class ImageFormatLoaderExtension extends ImageFormatLoader{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_add_format_loader() {
+    if (!this.#_bindings.method_add_format_loader) {
       let classname = new StringName("ImageFormatLoaderExtension");
       let methodname = new StringName("add_format_loader");
-      this._bindings.method_add_format_loader = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3218959716
-      );
-    }
-    {
-      let classname = new StringName("ImageFormatLoaderExtension");
-      let methodname = new StringName("remove_format_loader");
-      this._bindings.method_remove_format_loader = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_add_format_loader = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3218959716
       );
     }
   }
+  static init_method_remove_format_loader() {
+    if (!this.#_bindings.method_remove_format_loader) {
+      let classname = new StringName("ImageFormatLoaderExtension");
+      let methodname = new StringName("remove_format_loader");
+      this.#_bindings.method_remove_format_loader = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3218959716
+      );
+    }
+  }
+
+  
   
   _get_recognized_extensions() {
   }
   _load_image(_image, _fileaccess, _flags, _scale) {
   }
   add_format_loader() {
+    ImageFormatLoaderExtension.init_method_add_format_loader();
     return _call_native_mb_no_ret(
-      ImageFormatLoaderExtension._bindings.method_add_format_loader,
+      ImageFormatLoaderExtension.#_bindings.method_add_format_loader,
       this._owner,
       
     );
     
   }
   remove_format_loader() {
+    ImageFormatLoaderExtension.init_method_remove_format_loader();
     return _call_native_mb_no_ret(
-      ImageFormatLoaderExtension._bindings.method_remove_format_loader,
+      ImageFormatLoaderExtension.#_bindings.method_remove_format_loader,
       this._owner,
       
     );
@@ -74,8 +74,4 @@ export class ImageFormatLoaderExtension extends ImageFormatLoader{
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

@@ -2,11 +2,13 @@ import * as internal from '__internal__'
 import {
   _call_builtin_constructor,
   _call_builtin_method_ptr_ret,
-  _call_builtin_method_ptr_no_ret
+  _call_builtin_method_ptr_no_ret,
+  _call_builtin_method_ptr_obj_ret,
 } from '@js_godot/core/builtin_ptrcall'
-import { StringName } from '@js_godot/variant/string_name'
 import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
+import { StringName } from '@js_godot/variant/string_name'
 import { GDArray } from '@js_godot/variant/gd_array'
+import { GodotObject } from "@js_godot/classes/godot_object";
 
 class _MethodBindings {
   from_variant_constructor
@@ -49,42 +51,46 @@ export class PackedFloat32Array {
   static #SIZE = 16
   opaque = new Uint8Array(PackedFloat32Array.#SIZE)
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
-  constructor (from) {
-    if (!from) {
-      _call_builtin_constructor(PackedFloat32Array._bindings.constructor_0, this)
-    }else if (from instanceof PackedFloat32Array) {
-      _call_builtin_constructor(PackedFloat32Array._bindings.constructor_1, this, [
+  constructor (value) {
+    if (!value) {
+      _call_builtin_constructor(PackedFloat32Array.#_bindings.constructor_0, this)
+    } else if (arguments.length == 1&& arguments[0] instanceof PackedFloat32Array) {
+      let from = arguments[0];
+      _call_builtin_constructor(PackedFloat32Array.#_bindings.constructor_1, this, [
         from
       ])
-    }else if (from instanceof GDArray) {
-      _call_builtin_constructor(PackedFloat32Array._bindings.constructor_2, this, [
+    } else if (arguments.length == 1&& arguments[0] instanceof GDArray) {
+      let from = arguments[0];
+      _call_builtin_constructor(PackedFloat32Array.#_bindings.constructor_2, this, [
         from
       ])
-    } else if (from.constructor.name === "Variant") {
-      PackedFloat32Array._bindings.from_variant_constructor(this.opaque, from.opaque)
+    } else if (value.constructor.name === "Variant") {
+      PackedFloat32Array.#_bindings.from_variant_constructor(this.opaque, value.opaque)
+    } else if (value instanceof Uint8Array) {
+      this.opaque = value;
     } 
   }
   
   static __init_bindings_constructors_destructor () {
-    this._bindings.from_variant_constructor = internal.get_variant_to_type_constructor(
+    this.#_bindings.from_variant_constructor = internal.get_variant_to_type_constructor(
       32
     )
-    this._bindings.constructor_0 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_0 = internal.variant_get_ptr_constructor(
       32,
       0
     )
-    this._bindings.constructor_1 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_1 = internal.variant_get_ptr_constructor(
       32,
       1
     )
-    this._bindings.constructor_2 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_2 = internal.variant_get_ptr_constructor(
       32,
       2
     )
-    this._bindings.destructor = internal.variant_get_ptr_destructor(
+    this.#_bindings.destructor = internal.variant_get_ptr_destructor(
       32
     )
   }
@@ -97,7 +103,7 @@ export class PackedFloat32Array {
     this.__init_bindings_constructors_destructor()
     {
       let _gde_name = new StringName('size')
-      this._bindings.method_size = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_size = internal.variant_get_ptr_builtin_method(
         32,
         _gde_name.opaque,
         3173160232
@@ -105,7 +111,7 @@ export class PackedFloat32Array {
     }
     {
       let _gde_name = new StringName('is_empty')
-      this._bindings.method_is_empty = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_empty = internal.variant_get_ptr_builtin_method(
         32,
         _gde_name.opaque,
         3918633141
@@ -113,7 +119,7 @@ export class PackedFloat32Array {
     }
     {
       let _gde_name = new StringName('set')
-      this._bindings.method_set = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_set = internal.variant_get_ptr_builtin_method(
         32,
         _gde_name.opaque,
         1113000516
@@ -121,7 +127,7 @@ export class PackedFloat32Array {
     }
     {
       let _gde_name = new StringName('push_back')
-      this._bindings.method_push_back = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_push_back = internal.variant_get_ptr_builtin_method(
         32,
         _gde_name.opaque,
         4094791666
@@ -129,7 +135,7 @@ export class PackedFloat32Array {
     }
     {
       let _gde_name = new StringName('append')
-      this._bindings.method_append = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_append = internal.variant_get_ptr_builtin_method(
         32,
         _gde_name.opaque,
         4094791666
@@ -137,7 +143,7 @@ export class PackedFloat32Array {
     }
     {
       let _gde_name = new StringName('append_array')
-      this._bindings.method_append_array = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_append_array = internal.variant_get_ptr_builtin_method(
         32,
         _gde_name.opaque,
         2981316639
@@ -145,7 +151,7 @@ export class PackedFloat32Array {
     }
     {
       let _gde_name = new StringName('remove_at')
-      this._bindings.method_remove_at = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_remove_at = internal.variant_get_ptr_builtin_method(
         32,
         _gde_name.opaque,
         2823966027
@@ -153,7 +159,7 @@ export class PackedFloat32Array {
     }
     {
       let _gde_name = new StringName('insert')
-      this._bindings.method_insert = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_insert = internal.variant_get_ptr_builtin_method(
         32,
         _gde_name.opaque,
         1379903876
@@ -161,7 +167,7 @@ export class PackedFloat32Array {
     }
     {
       let _gde_name = new StringName('fill')
-      this._bindings.method_fill = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_fill = internal.variant_get_ptr_builtin_method(
         32,
         _gde_name.opaque,
         833936903
@@ -169,7 +175,7 @@ export class PackedFloat32Array {
     }
     {
       let _gde_name = new StringName('resize')
-      this._bindings.method_resize = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_resize = internal.variant_get_ptr_builtin_method(
         32,
         _gde_name.opaque,
         848867239
@@ -177,7 +183,7 @@ export class PackedFloat32Array {
     }
     {
       let _gde_name = new StringName('clear')
-      this._bindings.method_clear = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_clear = internal.variant_get_ptr_builtin_method(
         32,
         _gde_name.opaque,
         3218959716
@@ -185,7 +191,7 @@ export class PackedFloat32Array {
     }
     {
       let _gde_name = new StringName('has')
-      this._bindings.method_has = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_has = internal.variant_get_ptr_builtin_method(
         32,
         _gde_name.opaque,
         1296369134
@@ -193,7 +199,7 @@ export class PackedFloat32Array {
     }
     {
       let _gde_name = new StringName('reverse')
-      this._bindings.method_reverse = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_reverse = internal.variant_get_ptr_builtin_method(
         32,
         _gde_name.opaque,
         3218959716
@@ -201,7 +207,7 @@ export class PackedFloat32Array {
     }
     {
       let _gde_name = new StringName('slice')
-      this._bindings.method_slice = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_slice = internal.variant_get_ptr_builtin_method(
         32,
         _gde_name.opaque,
         1418229160
@@ -209,7 +215,7 @@ export class PackedFloat32Array {
     }
     {
       let _gde_name = new StringName('to_byte_array')
-      this._bindings.method_to_byte_array = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_to_byte_array = internal.variant_get_ptr_builtin_method(
         32,
         _gde_name.opaque,
         247621236
@@ -217,7 +223,7 @@ export class PackedFloat32Array {
     }
     {
       let _gde_name = new StringName('sort')
-      this._bindings.method_sort = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_sort = internal.variant_get_ptr_builtin_method(
         32,
         _gde_name.opaque,
         3218959716
@@ -225,7 +231,7 @@ export class PackedFloat32Array {
     }
     {
       let _gde_name = new StringName('bsearch')
-      this._bindings.method_bsearch = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_bsearch = internal.variant_get_ptr_builtin_method(
         32,
         _gde_name.opaque,
         1188816338
@@ -233,7 +239,7 @@ export class PackedFloat32Array {
     }
     {
       let _gde_name = new StringName('duplicate')
-      this._bindings.method_duplicate = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_duplicate = internal.variant_get_ptr_builtin_method(
         32,
         _gde_name.opaque,
         831114784
@@ -241,7 +247,7 @@ export class PackedFloat32Array {
     }
     {
       let _gde_name = new StringName('find')
-      this._bindings.method_find = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_find = internal.variant_get_ptr_builtin_method(
         32,
         _gde_name.opaque,
         1343150241
@@ -249,7 +255,7 @@ export class PackedFloat32Array {
     }
     {
       let _gde_name = new StringName('rfind')
-      this._bindings.method_rfind = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_rfind = internal.variant_get_ptr_builtin_method(
         32,
         _gde_name.opaque,
         1343150241
@@ -257,7 +263,7 @@ export class PackedFloat32Array {
     }
     {
       let _gde_name = new StringName('count')
-      this._bindings.method_count = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_count = internal.variant_get_ptr_builtin_method(
         32,
         _gde_name.opaque,
         2859915090
@@ -269,7 +275,7 @@ export class PackedFloat32Array {
   size () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedFloat32Array._bindings.method_size,
+      PackedFloat32Array.#_bindings.method_size,
       this,
       2,
       []
@@ -279,7 +285,7 @@ export class PackedFloat32Array {
   is_empty () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedFloat32Array._bindings.method_is_empty,
+      PackedFloat32Array.#_bindings.method_is_empty,
       this,
       1,
       []
@@ -288,7 +294,7 @@ export class PackedFloat32Array {
   }
   set (_index, _value) {
     _call_builtin_method_ptr_no_ret(
-      PackedFloat32Array._bindings.method_set,
+      PackedFloat32Array.#_bindings.method_set,
       this,
       [_index, _value]
     )
@@ -296,7 +302,7 @@ export class PackedFloat32Array {
   push_back (_value) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedFloat32Array._bindings.method_push_back,
+      PackedFloat32Array.#_bindings.method_push_back,
       this,
       1,
       [_value]
@@ -306,7 +312,7 @@ export class PackedFloat32Array {
   append (_value) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedFloat32Array._bindings.method_append,
+      PackedFloat32Array.#_bindings.method_append,
       this,
       1,
       [_value]
@@ -315,14 +321,14 @@ export class PackedFloat32Array {
   }
   append_array (_array) {
     _call_builtin_method_ptr_no_ret(
-      PackedFloat32Array._bindings.method_append_array,
+      PackedFloat32Array.#_bindings.method_append_array,
       this,
       [_array]
     )
   }
   remove_at (_index) {
     _call_builtin_method_ptr_no_ret(
-      PackedFloat32Array._bindings.method_remove_at,
+      PackedFloat32Array.#_bindings.method_remove_at,
       this,
       [_index]
     )
@@ -330,7 +336,7 @@ export class PackedFloat32Array {
   insert (_at_index, _value) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedFloat32Array._bindings.method_insert,
+      PackedFloat32Array.#_bindings.method_insert,
       this,
       2,
       [_at_index, _value]
@@ -339,7 +345,7 @@ export class PackedFloat32Array {
   }
   fill (_value) {
     _call_builtin_method_ptr_no_ret(
-      PackedFloat32Array._bindings.method_fill,
+      PackedFloat32Array.#_bindings.method_fill,
       this,
       [_value]
     )
@@ -347,7 +353,7 @@ export class PackedFloat32Array {
   resize (_new_size) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedFloat32Array._bindings.method_resize,
+      PackedFloat32Array.#_bindings.method_resize,
       this,
       2,
       [_new_size]
@@ -356,7 +362,7 @@ export class PackedFloat32Array {
   }
   clear () {
     _call_builtin_method_ptr_no_ret(
-      PackedFloat32Array._bindings.method_clear,
+      PackedFloat32Array.#_bindings.method_clear,
       this,
       []
     )
@@ -364,7 +370,7 @@ export class PackedFloat32Array {
   has (_value) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedFloat32Array._bindings.method_has,
+      PackedFloat32Array.#_bindings.method_has,
       this,
       1,
       [_value]
@@ -373,7 +379,7 @@ export class PackedFloat32Array {
   }
   reverse () {
     _call_builtin_method_ptr_no_ret(
-      PackedFloat32Array._bindings.method_reverse,
+      PackedFloat32Array.#_bindings.method_reverse,
       this,
       []
     )
@@ -381,7 +387,7 @@ export class PackedFloat32Array {
   slice (_begin, _end) {
     let ret = new PackedFloat32Array()
     ret.opaque = _call_builtin_method_ptr_ret(
-      PackedFloat32Array._bindings.method_slice,
+      PackedFloat32Array.#_bindings.method_slice,
       this,
       32,
       [_begin, _end]
@@ -391,7 +397,7 @@ export class PackedFloat32Array {
   to_byte_array () {
     let ret = new PackedByteArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      PackedFloat32Array._bindings.method_to_byte_array,
+      PackedFloat32Array.#_bindings.method_to_byte_array,
       this,
       29,
       []
@@ -400,7 +406,7 @@ export class PackedFloat32Array {
   }
   sort () {
     _call_builtin_method_ptr_no_ret(
-      PackedFloat32Array._bindings.method_sort,
+      PackedFloat32Array.#_bindings.method_sort,
       this,
       []
     )
@@ -408,7 +414,7 @@ export class PackedFloat32Array {
   bsearch (_value, _before) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedFloat32Array._bindings.method_bsearch,
+      PackedFloat32Array.#_bindings.method_bsearch,
       this,
       2,
       [_value, _before]
@@ -418,7 +424,7 @@ export class PackedFloat32Array {
   duplicate () {
     let ret = new PackedFloat32Array()
     ret.opaque = _call_builtin_method_ptr_ret(
-      PackedFloat32Array._bindings.method_duplicate,
+      PackedFloat32Array.#_bindings.method_duplicate,
       this,
       32,
       []
@@ -428,7 +434,7 @@ export class PackedFloat32Array {
   find (_value, _from) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedFloat32Array._bindings.method_find,
+      PackedFloat32Array.#_bindings.method_find,
       this,
       2,
       [_value, _from]
@@ -438,7 +444,7 @@ export class PackedFloat32Array {
   rfind (_value, _from) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedFloat32Array._bindings.method_rfind,
+      PackedFloat32Array.#_bindings.method_rfind,
       this,
       2,
       [_value, _from]
@@ -448,7 +454,7 @@ export class PackedFloat32Array {
   count (_value) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedFloat32Array._bindings.method_count,
+      PackedFloat32Array.#_bindings.method_count,
       this,
       2,
       [_value]

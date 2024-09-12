@@ -4,7 +4,8 @@ import * as internal from '__internal__'
 import {
   _call_builtin_constructor,
   _call_builtin_method_ptr_ret,
-  _call_builtin_method_ptr_no_ret
+  _call_builtin_method_ptr_no_ret,
+  _call_builtin_method_ptr_obj_ret,
 } from '@js_godot/core/builtin_ptrcall'
 {%- for dependcy in dependcies %}
 import { {{to_js_type(dependcy)}} } from '{{ get_module_path(dependcy) }}'
@@ -12,6 +13,7 @@ import { {{to_js_type(dependcy)}} } from '{{ get_module_path(dependcy) }}'
   {%- set has_string_name = true -%}
 {%- endif -%}
 {%- endfor %}
+import { GodotObject } from "@js_godot/classes/godot_object";
 
 {%- from 'utils/utils.jinja2' import bindings_class %}
 {{bindings_class(clazz)}}
@@ -19,10 +21,10 @@ export class {{to_js_type(clazz['name'])}} {
   static #SIZE = {{size}}
   opaque = new Uint8Array({{to_js_type(clazz['name'])}}.#SIZE)
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
-  constructor (from) {
+  constructor (value) {
     {%- from 'utils/utils.jinja2' import base_ctor -%}
     {{-base_ctor(clazz)-}}
     {%- set path = camel_to_snake(to_js_type(clazz['name'])) + '.jinja2' -%}

@@ -1,9 +1,7 @@
 import * as internal from '__internal__';
-import { Vector2i } from '@js_godot/variant/vector2i'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { GodotObject } from '@js_godot/classes/godot_object'
-import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -16,7 +14,7 @@ class _MethodBindings {
 }
 export class MovieWriter extends GodotObject{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -26,22 +24,19 @@ export class MovieWriter extends GodotObject{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_add_writer() {
+    if (!this.#_bindings.method_add_writer) {
       let classname = new StringName("MovieWriter");
       let methodname = new StringName("add_writer");
-      this._bindings.method_add_writer = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_add_writer = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         4023702871
       );
     }
   }
+
+  
   
   _get_audio_mix_rate() {
   }
@@ -56,8 +51,9 @@ export class MovieWriter extends GodotObject{
   _write_end() {
   }
   add_writer(_writer) {
+    MovieWriter.init_method_add_writer();
     return _call_native_mb_no_ret(
-      MovieWriter._bindings.method_add_writer,
+      MovieWriter.#_bindings.method_add_writer,
       this._owner,
       _writer
     );
@@ -65,8 +61,4 @@ export class MovieWriter extends GodotObject{
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

@@ -2,10 +2,12 @@ import * as internal from '__internal__'
 import {
   _call_builtin_constructor,
   _call_builtin_method_ptr_ret,
-  _call_builtin_method_ptr_no_ret
+  _call_builtin_method_ptr_no_ret,
+  _call_builtin_method_ptr_obj_ret,
 } from '@js_godot/core/builtin_ptrcall'
-import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
+import { StringName } from '@js_godot/variant/string_name'
+import { GodotObject } from "@js_godot/classes/godot_object";
 
 class _MethodBindings {
   from_variant_constructor
@@ -37,46 +39,50 @@ export class NodePath {
   static #SIZE = 8
   opaque = new Uint8Array(NodePath.#SIZE)
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
-  constructor (from) {
-    if (!from) {
-      _call_builtin_constructor(NodePath._bindings.constructor_0, this)
-    }else if (from instanceof NodePath) {
-      _call_builtin_constructor(NodePath._bindings.constructor_1, this, [
+  constructor (value) {
+    if (!value) {
+      _call_builtin_constructor(NodePath.#_bindings.constructor_0, this)
+    } else if (arguments.length == 1&& arguments[0] instanceof NodePath) {
+      let from = arguments[0];
+      _call_builtin_constructor(NodePath.#_bindings.constructor_1, this, [
         from
       ])
-    }else if (from instanceof GDString) {
-      _call_builtin_constructor(NodePath._bindings.constructor_2, this, [
+    } else if (arguments.length == 1&& arguments[0] instanceof GDString) {
+      let from = arguments[0];
+      _call_builtin_constructor(NodePath.#_bindings.constructor_2, this, [
         from
       ])
-    } else if (from.constructor.name === "Variant") {
-      NodePath._bindings.from_variant_constructor(this.opaque, from.opaque)
-    } else if (typeof from == 'string') {
-      _call_builtin_constructor(NodePath._bindings.constructor_2, this, [
-        new GDString(from).opaque
+    } else if (value.constructor.name === "Variant") {
+      NodePath.#_bindings.from_variant_constructor(this.opaque, value.opaque)
+    } else if (value instanceof Uint8Array) {
+      this.opaque = value;
+    } else if (typeof value == 'string') {
+      _call_builtin_constructor(NodePath.#_bindings.constructor_2, this, [
+        new GDString(value).opaque
       ])
     } 
   }
   
   static __init_bindings_constructors_destructor () {
-    this._bindings.from_variant_constructor = internal.get_variant_to_type_constructor(
+    this.#_bindings.from_variant_constructor = internal.get_variant_to_type_constructor(
       22
     )
-    this._bindings.constructor_0 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_0 = internal.variant_get_ptr_constructor(
       22,
       0
     )
-    this._bindings.constructor_1 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_1 = internal.variant_get_ptr_constructor(
       22,
       1
     )
-    this._bindings.constructor_2 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_2 = internal.variant_get_ptr_constructor(
       22,
       2
     )
-    this._bindings.destructor = internal.variant_get_ptr_destructor(
+    this.#_bindings.destructor = internal.variant_get_ptr_destructor(
       22
     )
   }
@@ -89,7 +95,7 @@ export class NodePath {
     this.__init_bindings_constructors_destructor()
     {
       let _gde_name = new StringName('is_absolute')
-      this._bindings.method_is_absolute = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_absolute = internal.variant_get_ptr_builtin_method(
         22,
         _gde_name.opaque,
         3918633141
@@ -97,7 +103,7 @@ export class NodePath {
     }
     {
       let _gde_name = new StringName('get_name_count')
-      this._bindings.method_get_name_count = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_name_count = internal.variant_get_ptr_builtin_method(
         22,
         _gde_name.opaque,
         3173160232
@@ -105,7 +111,7 @@ export class NodePath {
     }
     {
       let _gde_name = new StringName('get_name')
-      this._bindings.method_get_name = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_name = internal.variant_get_ptr_builtin_method(
         22,
         _gde_name.opaque,
         2948586938
@@ -113,7 +119,7 @@ export class NodePath {
     }
     {
       let _gde_name = new StringName('get_subname_count')
-      this._bindings.method_get_subname_count = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_subname_count = internal.variant_get_ptr_builtin_method(
         22,
         _gde_name.opaque,
         3173160232
@@ -121,7 +127,7 @@ export class NodePath {
     }
     {
       let _gde_name = new StringName('hash')
-      this._bindings.method_hash = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_hash = internal.variant_get_ptr_builtin_method(
         22,
         _gde_name.opaque,
         3173160232
@@ -129,7 +135,7 @@ export class NodePath {
     }
     {
       let _gde_name = new StringName('get_subname')
-      this._bindings.method_get_subname = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_subname = internal.variant_get_ptr_builtin_method(
         22,
         _gde_name.opaque,
         2948586938
@@ -137,7 +143,7 @@ export class NodePath {
     }
     {
       let _gde_name = new StringName('get_concatenated_names')
-      this._bindings.method_get_concatenated_names = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_concatenated_names = internal.variant_get_ptr_builtin_method(
         22,
         _gde_name.opaque,
         1825232092
@@ -145,7 +151,7 @@ export class NodePath {
     }
     {
       let _gde_name = new StringName('get_concatenated_subnames')
-      this._bindings.method_get_concatenated_subnames = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_concatenated_subnames = internal.variant_get_ptr_builtin_method(
         22,
         _gde_name.opaque,
         1825232092
@@ -153,7 +159,7 @@ export class NodePath {
     }
     {
       let _gde_name = new StringName('slice')
-      this._bindings.method_slice = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_slice = internal.variant_get_ptr_builtin_method(
         22,
         _gde_name.opaque,
         421628484
@@ -161,7 +167,7 @@ export class NodePath {
     }
     {
       let _gde_name = new StringName('get_as_property_path')
-      this._bindings.method_get_as_property_path = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_as_property_path = internal.variant_get_ptr_builtin_method(
         22,
         _gde_name.opaque,
         1598598043
@@ -169,7 +175,7 @@ export class NodePath {
     }
     {
       let _gde_name = new StringName('is_empty')
-      this._bindings.method_is_empty = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_empty = internal.variant_get_ptr_builtin_method(
         22,
         _gde_name.opaque,
         3918633141
@@ -181,7 +187,7 @@ export class NodePath {
   is_absolute () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      NodePath._bindings.method_is_absolute,
+      NodePath.#_bindings.method_is_absolute,
       this,
       1,
       []
@@ -191,7 +197,7 @@ export class NodePath {
   get_name_count () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      NodePath._bindings.method_get_name_count,
+      NodePath.#_bindings.method_get_name_count,
       this,
       2,
       []
@@ -201,7 +207,7 @@ export class NodePath {
   get_name (_idx) {
     let ret = new StringName()
     ret.opaque = _call_builtin_method_ptr_ret(
-      NodePath._bindings.method_get_name,
+      NodePath.#_bindings.method_get_name,
       this,
       21,
       [_idx]
@@ -211,7 +217,7 @@ export class NodePath {
   get_subname_count () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      NodePath._bindings.method_get_subname_count,
+      NodePath.#_bindings.method_get_subname_count,
       this,
       2,
       []
@@ -221,7 +227,7 @@ export class NodePath {
   hash () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      NodePath._bindings.method_hash,
+      NodePath.#_bindings.method_hash,
       this,
       2,
       []
@@ -231,7 +237,7 @@ export class NodePath {
   get_subname (_idx) {
     let ret = new StringName()
     ret.opaque = _call_builtin_method_ptr_ret(
-      NodePath._bindings.method_get_subname,
+      NodePath.#_bindings.method_get_subname,
       this,
       21,
       [_idx]
@@ -241,7 +247,7 @@ export class NodePath {
   get_concatenated_names () {
     let ret = new StringName()
     ret.opaque = _call_builtin_method_ptr_ret(
-      NodePath._bindings.method_get_concatenated_names,
+      NodePath.#_bindings.method_get_concatenated_names,
       this,
       21,
       []
@@ -251,7 +257,7 @@ export class NodePath {
   get_concatenated_subnames () {
     let ret = new StringName()
     ret.opaque = _call_builtin_method_ptr_ret(
-      NodePath._bindings.method_get_concatenated_subnames,
+      NodePath.#_bindings.method_get_concatenated_subnames,
       this,
       21,
       []
@@ -261,7 +267,7 @@ export class NodePath {
   slice (_begin, _end) {
     let ret = new NodePath()
     ret.opaque = _call_builtin_method_ptr_ret(
-      NodePath._bindings.method_slice,
+      NodePath.#_bindings.method_slice,
       this,
       22,
       [_begin, _end]
@@ -271,7 +277,7 @@ export class NodePath {
   get_as_property_path () {
     let ret = new NodePath()
     ret.opaque = _call_builtin_method_ptr_ret(
-      NodePath._bindings.method_get_as_property_path,
+      NodePath.#_bindings.method_get_as_property_path,
       this,
       22,
       []
@@ -281,7 +287,7 @@ export class NodePath {
   is_empty () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      NodePath._bindings.method_is_empty,
+      NodePath.#_bindings.method_is_empty,
       this,
       1,
       []

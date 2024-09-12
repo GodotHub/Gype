@@ -15,7 +15,7 @@ class _MethodBindings {
 }
 export class ScrollBar extends Range{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -25,45 +25,47 @@ export class ScrollBar extends Range{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_custom_step() {
+    if (!this.#_bindings.method_set_custom_step) {
       let classname = new StringName("ScrollBar");
       let methodname = new StringName("set_custom_step");
-      this._bindings.method_set_custom_step = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_custom_step = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_custom_step() {
+    if (!this.#_bindings.method_get_custom_step) {
       let classname = new StringName("ScrollBar");
       let methodname = new StringName("get_custom_step");
-      this._bindings.method_get_custom_step = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_custom_step = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
   }
+
+  
   
   set_custom_step(_step) {
+    ScrollBar.init_method_set_custom_step();
     return _call_native_mb_no_ret(
-      ScrollBar._bindings.method_set_custom_step,
+      ScrollBar.#_bindings.method_set_custom_step,
       this._owner,
       _step
     );
     
   }
   get_custom_step() {
+    ScrollBar.init_method_get_custom_step();
     return _call_native_mb_ret(
-      ScrollBar._bindings.method_get_custom_step,
+      ScrollBar.#_bindings.method_get_custom_step,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
@@ -76,8 +78,4 @@ set custom_step (new_value) {
   this.set_custom_step(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

@@ -18,8 +18,39 @@ JavaScriptSaver *JavaScriptSaver::get_singleton() {
 	return singleton;
 }
 
+void JavaScriptSaver::update_cur_class(Ref<JavaScript> script) {
+	// std::string code = script->_get_source_code().ascii().get_data();
+	// JSValue ret = JS_Eval(context.ctx, code.c_str(), strlen(code.c_str()), "<input>", JS_EVAL_TYPE_MODULE | JS_EVAL_FLAG_COMPILE_ONLY);
+	// if (!qjs::is_exception(context.ctx, ret)) {
+	// 	JSModuleDef *md = (JSModuleDef *)JS_VALUE_GET_PTR(ret);
+	// 	ret = JS_EvalFunction(context.ctx, ret);
+	// 	JSValue ns = JS_GetModuleNamespace(context.ctx, md);
+	// 	JSPropertyEnum *ptab;
+	// 	uint32_t len;
+	// 	JS_GetOwnPropertyNames(context.ctx, &ptab, &len, ns, JS_GPN_STRING_MASK);
+	// 	if (len > 0) {
+	// 		for (uint32_t i = 0; i < len; i++) {
+	// 			JSAtom prop_atom = ptab[i].atom;
+	// 			JSValue el = JS_GetProperty(context.ctx, ns, prop_atom);
+	// 			ERR_FAIL_COND(qjs::is_exception(context.ctx, el));
+	// 			JSPropertyEnum *class_ptab;
+	// 			uint32_t class_len;
+	// 			JS_GetOwnPropertyNames(context.ctx, &class_ptab, &class_len, el, JS_GPN_SYMBOL_MASK);
+	// 			for (uint32_t j = 0; j < class_len; j++) {
+	// 				JSAtom symbol_atom = class_ptab[j].atom;
+	// 				const char *symbol_name = JS_AtomToCString(context.ctx, symbol_atom);
+	// 				if (strcmp(symbol_name, JavaScriptInstance::symbol_mask) == 0) {
+	// 					script->cur_class = el;
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// }
+}
+
 Error JavaScriptSaver::_save(const Ref<Resource> &p_resource, const String &p_path, uint32_t p_flags) {
 	Ref<JavaScript> script = p_resource;
+	update_cur_class(script);
 	Ref<FileAccess> file = FileAccess::open(p_path, FileAccess::ModeFlags::WRITE);
 	String source_code = script->_get_source_code();
 	if (source_code != "") {

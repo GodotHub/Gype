@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { RenderSceneBuffers } from '@js_godot/classes/render_scene_buffers'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -13,7 +13,7 @@ class _MethodBindings {
 }
 export class RenderSceneBuffersExtension extends RenderSceneBuffers{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -23,13 +23,8 @@ export class RenderSceneBuffersExtension extends RenderSceneBuffers{
       super(godot_object);
     }
   }
+
   
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-  }
   
   _configure(_config) {
   }
@@ -41,8 +36,4 @@ export class RenderSceneBuffersExtension extends RenderSceneBuffers{
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

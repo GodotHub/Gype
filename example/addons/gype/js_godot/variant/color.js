@@ -2,10 +2,12 @@ import * as internal from '__internal__'
 import {
   _call_builtin_constructor,
   _call_builtin_method_ptr_ret,
-  _call_builtin_method_ptr_no_ret
+  _call_builtin_method_ptr_no_ret,
+  _call_builtin_method_ptr_obj_ret,
 } from '@js_godot/core/builtin_ptrcall'
-import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
+import { StringName } from '@js_godot/variant/string_name'
+import { GodotObject } from "@js_godot/classes/godot_object";
 
 class _MethodBindings {
   from_variant_constructor
@@ -65,27 +67,28 @@ export class Color {
   static #SIZE = 16
   opaque = new Uint8Array(Color.#SIZE)
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
-  constructor (from) {
-    if (!from) {
-      _call_builtin_constructor(Color._bindings.constructor_0, this)
-    }else if (from instanceof Color) {
-      _call_builtin_constructor(Color._bindings.constructor_1, this, [
+  constructor (value) {
+    if (!value) {
+      _call_builtin_constructor(Color.#_bindings.constructor_0, this)
+    } else if (arguments.length == 1&& arguments[0] instanceof Color) {
+      let from = arguments[0];
+      _call_builtin_constructor(Color.#_bindings.constructor_1, this, [
         from
       ])
     } else if (arguments.length == 2&& arguments[0] instanceof Color&& typeof arguments[1] == "number") {
       let from = arguments[0];
       let alpha = arguments[1];
-      _call_builtin_constructor(Color._bindings.constructor_2, this, [
+      _call_builtin_constructor(Color.#_bindings.constructor_2, this, [
         from, alpha
       ])
     } else if (arguments.length == 3&& typeof arguments[0] == "number"&& typeof arguments[1] == "number"&& typeof arguments[2] == "number") {
       let r = arguments[0];
       let g = arguments[1];
       let b = arguments[2];
-      _call_builtin_constructor(Color._bindings.constructor_3, this, [
+      _call_builtin_constructor(Color.#_bindings.constructor_3, this, [
         r, g, b
       ])
     } else if (arguments.length == 4&& typeof arguments[0] == "number"&& typeof arguments[1] == "number"&& typeof arguments[2] == "number"&& typeof arguments[3] == "number") {
@@ -93,53 +96,56 @@ export class Color {
       let g = arguments[1];
       let b = arguments[2];
       let a = arguments[3];
-      _call_builtin_constructor(Color._bindings.constructor_4, this, [
+      _call_builtin_constructor(Color.#_bindings.constructor_4, this, [
         r, g, b, a
       ])
-    }else if (from instanceof GDString) {
-      _call_builtin_constructor(Color._bindings.constructor_5, this, [
+    } else if (arguments.length == 1&& arguments[0] instanceof GDString) {
+      let code = arguments[0];
+      _call_builtin_constructor(Color.#_bindings.constructor_5, this, [
         code
       ])
     } else if (arguments.length == 2&& arguments[0] instanceof GDString&& typeof arguments[1] == "number") {
       let code = arguments[0];
       let alpha = arguments[1];
-      _call_builtin_constructor(Color._bindings.constructor_6, this, [
+      _call_builtin_constructor(Color.#_bindings.constructor_6, this, [
         code, alpha
       ])
-    } else if (from.constructor.name === "Variant") {
-      Color._bindings.from_variant_constructor(this.opaque, from.opaque)
+    } else if (value.constructor.name === "Variant") {
+      Color.#_bindings.from_variant_constructor(this.opaque, value.opaque)
+    } else if (value instanceof Uint8Array) {
+      this.opaque = value;
     } 
   }
   
   static __init_bindings_constructors_destructor () {
-    this._bindings.from_variant_constructor = internal.get_variant_to_type_constructor(
+    this.#_bindings.from_variant_constructor = internal.get_variant_to_type_constructor(
       20
     )
-    this._bindings.constructor_0 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_0 = internal.variant_get_ptr_constructor(
       20,
       0
     )
-    this._bindings.constructor_1 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_1 = internal.variant_get_ptr_constructor(
       20,
       1
     )
-    this._bindings.constructor_2 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_2 = internal.variant_get_ptr_constructor(
       20,
       2
     )
-    this._bindings.constructor_3 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_3 = internal.variant_get_ptr_constructor(
       20,
       3
     )
-    this._bindings.constructor_4 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_4 = internal.variant_get_ptr_constructor(
       20,
       4
     )
-    this._bindings.constructor_5 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_5 = internal.variant_get_ptr_constructor(
       20,
       5
     )
-    this._bindings.constructor_6 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_6 = internal.variant_get_ptr_constructor(
       20,
       6
     )
@@ -153,7 +159,7 @@ export class Color {
     this.__init_bindings_constructors_destructor()
     {
       let _gde_name = new StringName('to_argb32')
-      this._bindings.method_to_argb32 = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_to_argb32 = internal.variant_get_ptr_builtin_method(
         20,
         _gde_name.opaque,
         3173160232
@@ -161,7 +167,7 @@ export class Color {
     }
     {
       let _gde_name = new StringName('to_abgr32')
-      this._bindings.method_to_abgr32 = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_to_abgr32 = internal.variant_get_ptr_builtin_method(
         20,
         _gde_name.opaque,
         3173160232
@@ -169,7 +175,7 @@ export class Color {
     }
     {
       let _gde_name = new StringName('to_rgba32')
-      this._bindings.method_to_rgba32 = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_to_rgba32 = internal.variant_get_ptr_builtin_method(
         20,
         _gde_name.opaque,
         3173160232
@@ -177,7 +183,7 @@ export class Color {
     }
     {
       let _gde_name = new StringName('to_argb64')
-      this._bindings.method_to_argb64 = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_to_argb64 = internal.variant_get_ptr_builtin_method(
         20,
         _gde_name.opaque,
         3173160232
@@ -185,7 +191,7 @@ export class Color {
     }
     {
       let _gde_name = new StringName('to_abgr64')
-      this._bindings.method_to_abgr64 = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_to_abgr64 = internal.variant_get_ptr_builtin_method(
         20,
         _gde_name.opaque,
         3173160232
@@ -193,7 +199,7 @@ export class Color {
     }
     {
       let _gde_name = new StringName('to_rgba64')
-      this._bindings.method_to_rgba64 = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_to_rgba64 = internal.variant_get_ptr_builtin_method(
         20,
         _gde_name.opaque,
         3173160232
@@ -201,7 +207,7 @@ export class Color {
     }
     {
       let _gde_name = new StringName('to_html')
-      this._bindings.method_to_html = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_to_html = internal.variant_get_ptr_builtin_method(
         20,
         _gde_name.opaque,
         3429816538
@@ -209,7 +215,7 @@ export class Color {
     }
     {
       let _gde_name = new StringName('clamp')
-      this._bindings.method_clamp = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_clamp = internal.variant_get_ptr_builtin_method(
         20,
         _gde_name.opaque,
         105651410
@@ -217,7 +223,7 @@ export class Color {
     }
     {
       let _gde_name = new StringName('inverted')
-      this._bindings.method_inverted = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_inverted = internal.variant_get_ptr_builtin_method(
         20,
         _gde_name.opaque,
         3334027602
@@ -225,7 +231,7 @@ export class Color {
     }
     {
       let _gde_name = new StringName('lerp')
-      this._bindings.method_lerp = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_lerp = internal.variant_get_ptr_builtin_method(
         20,
         _gde_name.opaque,
         402949615
@@ -233,7 +239,7 @@ export class Color {
     }
     {
       let _gde_name = new StringName('lightened')
-      this._bindings.method_lightened = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_lightened = internal.variant_get_ptr_builtin_method(
         20,
         _gde_name.opaque,
         1466039168
@@ -241,7 +247,7 @@ export class Color {
     }
     {
       let _gde_name = new StringName('darkened')
-      this._bindings.method_darkened = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_darkened = internal.variant_get_ptr_builtin_method(
         20,
         _gde_name.opaque,
         1466039168
@@ -249,7 +255,7 @@ export class Color {
     }
     {
       let _gde_name = new StringName('blend')
-      this._bindings.method_blend = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_blend = internal.variant_get_ptr_builtin_method(
         20,
         _gde_name.opaque,
         3803690977
@@ -257,7 +263,7 @@ export class Color {
     }
     {
       let _gde_name = new StringName('get_luminance')
-      this._bindings.method_get_luminance = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_luminance = internal.variant_get_ptr_builtin_method(
         20,
         _gde_name.opaque,
         466405837
@@ -265,7 +271,7 @@ export class Color {
     }
     {
       let _gde_name = new StringName('srgb_to_linear')
-      this._bindings.method_srgb_to_linear = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_srgb_to_linear = internal.variant_get_ptr_builtin_method(
         20,
         _gde_name.opaque,
         3334027602
@@ -273,7 +279,7 @@ export class Color {
     }
     {
       let _gde_name = new StringName('linear_to_srgb')
-      this._bindings.method_linear_to_srgb = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_linear_to_srgb = internal.variant_get_ptr_builtin_method(
         20,
         _gde_name.opaque,
         3334027602
@@ -281,7 +287,7 @@ export class Color {
     }
     {
       let _gde_name = new StringName('is_equal_approx')
-      this._bindings.method_is_equal_approx = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_equal_approx = internal.variant_get_ptr_builtin_method(
         20,
         _gde_name.opaque,
         3167426256
@@ -289,7 +295,7 @@ export class Color {
     }
     {
       let _gde_name = new StringName('hex')
-      this._bindings.method_hex = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_hex = internal.variant_get_ptr_builtin_method(
         20,
         _gde_name.opaque,
         351421375
@@ -297,7 +303,7 @@ export class Color {
     }
     {
       let _gde_name = new StringName('hex64')
-      this._bindings.method_hex64 = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_hex64 = internal.variant_get_ptr_builtin_method(
         20,
         _gde_name.opaque,
         351421375
@@ -305,7 +311,7 @@ export class Color {
     }
     {
       let _gde_name = new StringName('html')
-      this._bindings.method_html = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_html = internal.variant_get_ptr_builtin_method(
         20,
         _gde_name.opaque,
         2500054655
@@ -313,7 +319,7 @@ export class Color {
     }
     {
       let _gde_name = new StringName('html_is_valid')
-      this._bindings.method_html_is_valid = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_html_is_valid = internal.variant_get_ptr_builtin_method(
         20,
         _gde_name.opaque,
         2942997125
@@ -321,7 +327,7 @@ export class Color {
     }
     {
       let _gde_name = new StringName('from_string')
-      this._bindings.method_from_string = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_from_string = internal.variant_get_ptr_builtin_method(
         20,
         _gde_name.opaque,
         3755044230
@@ -329,7 +335,7 @@ export class Color {
     }
     {
       let _gde_name = new StringName('from_hsv')
-      this._bindings.method_from_hsv = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_from_hsv = internal.variant_get_ptr_builtin_method(
         20,
         _gde_name.opaque,
         1573799446
@@ -337,7 +343,7 @@ export class Color {
     }
     {
       let _gde_name = new StringName('from_ok_hsl')
-      this._bindings.method_from_ok_hsl = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_from_ok_hsl = internal.variant_get_ptr_builtin_method(
         20,
         _gde_name.opaque,
         1573799446
@@ -345,7 +351,7 @@ export class Color {
     }
     {
       let _gde_name = new StringName('from_rgbe9995')
-      this._bindings.method_from_rgbe9995 = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_from_rgbe9995 = internal.variant_get_ptr_builtin_method(
         20,
         _gde_name.opaque,
         351421375
@@ -357,7 +363,7 @@ export class Color {
   to_argb32 () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Color._bindings.method_to_argb32,
+      Color.#_bindings.method_to_argb32,
       this,
       2,
       []
@@ -367,7 +373,7 @@ export class Color {
   to_abgr32 () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Color._bindings.method_to_abgr32,
+      Color.#_bindings.method_to_abgr32,
       this,
       2,
       []
@@ -377,7 +383,7 @@ export class Color {
   to_rgba32 () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Color._bindings.method_to_rgba32,
+      Color.#_bindings.method_to_rgba32,
       this,
       2,
       []
@@ -387,7 +393,7 @@ export class Color {
   to_argb64 () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Color._bindings.method_to_argb64,
+      Color.#_bindings.method_to_argb64,
       this,
       2,
       []
@@ -397,7 +403,7 @@ export class Color {
   to_abgr64 () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Color._bindings.method_to_abgr64,
+      Color.#_bindings.method_to_abgr64,
       this,
       2,
       []
@@ -407,7 +413,7 @@ export class Color {
   to_rgba64 () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Color._bindings.method_to_rgba64,
+      Color.#_bindings.method_to_rgba64,
       this,
       2,
       []
@@ -417,7 +423,7 @@ export class Color {
   to_html (_with_alpha) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Color._bindings.method_to_html,
+      Color.#_bindings.method_to_html,
       this,
       4,
       [_with_alpha]
@@ -427,7 +433,7 @@ export class Color {
   clamp (_min, _max) {
     let ret = new Color()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Color._bindings.method_clamp,
+      Color.#_bindings.method_clamp,
       this,
       20,
       [_min, _max]
@@ -437,7 +443,7 @@ export class Color {
   inverted () {
     let ret = new Color()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Color._bindings.method_inverted,
+      Color.#_bindings.method_inverted,
       this,
       20,
       []
@@ -447,7 +453,7 @@ export class Color {
   lerp (_to, _weight) {
     let ret = new Color()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Color._bindings.method_lerp,
+      Color.#_bindings.method_lerp,
       this,
       20,
       [_to, _weight]
@@ -457,7 +463,7 @@ export class Color {
   lightened (_amount) {
     let ret = new Color()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Color._bindings.method_lightened,
+      Color.#_bindings.method_lightened,
       this,
       20,
       [_amount]
@@ -467,7 +473,7 @@ export class Color {
   darkened (_amount) {
     let ret = new Color()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Color._bindings.method_darkened,
+      Color.#_bindings.method_darkened,
       this,
       20,
       [_amount]
@@ -477,7 +483,7 @@ export class Color {
   blend (_over) {
     let ret = new Color()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Color._bindings.method_blend,
+      Color.#_bindings.method_blend,
       this,
       20,
       [_over]
@@ -487,7 +493,7 @@ export class Color {
   get_luminance () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Color._bindings.method_get_luminance,
+      Color.#_bindings.method_get_luminance,
       this,
       3,
       []
@@ -497,7 +503,7 @@ export class Color {
   srgb_to_linear () {
     let ret = new Color()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Color._bindings.method_srgb_to_linear,
+      Color.#_bindings.method_srgb_to_linear,
       this,
       20,
       []
@@ -507,7 +513,7 @@ export class Color {
   linear_to_srgb () {
     let ret = new Color()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Color._bindings.method_linear_to_srgb,
+      Color.#_bindings.method_linear_to_srgb,
       this,
       20,
       []
@@ -517,7 +523,7 @@ export class Color {
   is_equal_approx (_to) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Color._bindings.method_is_equal_approx,
+      Color.#_bindings.method_is_equal_approx,
       this,
       1,
       [_to]
@@ -527,7 +533,7 @@ export class Color {
   hex (_hex) {
     let ret = new Color()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Color._bindings.method_hex,
+      Color.#_bindings.method_hex,
       this,
       20,
       [_hex]
@@ -537,7 +543,7 @@ export class Color {
   hex64 (_hex) {
     let ret = new Color()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Color._bindings.method_hex64,
+      Color.#_bindings.method_hex64,
       this,
       20,
       [_hex]
@@ -547,7 +553,7 @@ export class Color {
   html (_rgba) {
     let ret = new Color()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Color._bindings.method_html,
+      Color.#_bindings.method_html,
       this,
       20,
       [_rgba]
@@ -557,7 +563,7 @@ export class Color {
   html_is_valid (_color) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Color._bindings.method_html_is_valid,
+      Color.#_bindings.method_html_is_valid,
       this,
       1,
       [_color]
@@ -567,7 +573,7 @@ export class Color {
   from_string (_str, _default) {
     let ret = new Color()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Color._bindings.method_from_string,
+      Color.#_bindings.method_from_string,
       this,
       20,
       [_str, _default]
@@ -577,7 +583,7 @@ export class Color {
   from_hsv (_h, _s, _v, _alpha) {
     let ret = new Color()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Color._bindings.method_from_hsv,
+      Color.#_bindings.method_from_hsv,
       this,
       20,
       [_h, _s, _v, _alpha]
@@ -587,7 +593,7 @@ export class Color {
   from_ok_hsl (_h, _s, _l, _alpha) {
     let ret = new Color()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Color._bindings.method_from_ok_hsl,
+      Color.#_bindings.method_from_ok_hsl,
       this,
       20,
       [_h, _s, _l, _alpha]
@@ -597,7 +603,7 @@ export class Color {
   from_rgbe9995 (_rgbe) {
     let ret = new Color()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Color._bindings.method_from_rgbe9995,
+      Color.#_bindings.method_from_rgbe9995,
       this,
       20,
       [_rgbe]

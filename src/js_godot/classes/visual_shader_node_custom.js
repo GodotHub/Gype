@@ -1,9 +1,8 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
-import { PackedStringArray } from '@js_godot/variant/packed_string_array'
-import { StringName } from '@js_godot/variant/string_name'
 import { VisualShaderNode } from '@js_godot/classes/visual_shader_node'
-import { GDString } from '@js_godot/variant/gd_string'
+import { GDArray } from '@js_godot/variant/gd_array'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -16,7 +15,7 @@ class _MethodBindings {
 }
 export class VisualShaderNodeCustom extends VisualShaderNode{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -26,22 +25,19 @@ export class VisualShaderNodeCustom extends VisualShaderNode{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_get_option_index() {
+    if (!this.#_bindings.method_get_option_index) {
       let classname = new StringName("VisualShaderNodeCustom");
       let methodname = new StringName("get_option_index");
-      this._bindings.method_get_option_index = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_option_index = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         923996154
       );
     }
   }
+
+  
   
   _get_name() {
   }
@@ -86,10 +82,12 @@ export class VisualShaderNodeCustom extends VisualShaderNode{
   _is_available(_mode, _type) {
   }
   get_option_index(_option) {
+    VisualShaderNodeCustom.init_method_get_option_index();
     return _call_native_mb_ret(
-      VisualShaderNodeCustom._bindings.method_get_option_index,
+      VisualShaderNodeCustom.#_bindings.method_get_option_index,
       this._owner,
 			Variant.Type.INT,
+    
       _option
     );
     
@@ -108,8 +106,4 @@ set properties (new_value) {
   this._set_properties(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

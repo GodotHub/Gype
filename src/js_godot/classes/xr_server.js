@@ -1,10 +1,8 @@
 import * as internal from '__internal__';
-import { Transform3D } from '@js_godot/variant/transform3d'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { GodotObject } from '@js_godot/classes/godot_object'
-import { Dictionary } from '@js_godot/variant/dictionary'
-import { GDString } from '@js_godot/variant/gd_string'
+import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -35,7 +33,7 @@ class _MethodBindings {
   method_set_primary_interface;
 }class _XRServer extends GodotObject{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -45,214 +43,253 @@ class _MethodBindings {
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_get_world_scale() {
+    if (!this.#_bindings.method_get_world_scale) {
       let classname = new StringName("XRServer");
       let methodname = new StringName("get_world_scale");
-      this._bindings.method_get_world_scale = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_world_scale = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_set_world_scale() {
+    if (!this.#_bindings.method_set_world_scale) {
       let classname = new StringName("XRServer");
       let methodname = new StringName("set_world_scale");
-      this._bindings.method_set_world_scale = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_world_scale = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_world_origin() {
+    if (!this.#_bindings.method_get_world_origin) {
       let classname = new StringName("XRServer");
       let methodname = new StringName("get_world_origin");
-      this._bindings.method_get_world_origin = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_world_origin = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3229777777
       );
     }
-    {
+  }
+  static init_method_set_world_origin() {
+    if (!this.#_bindings.method_set_world_origin) {
       let classname = new StringName("XRServer");
       let methodname = new StringName("set_world_origin");
-      this._bindings.method_set_world_origin = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_world_origin = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2952846383
       );
     }
-    {
+  }
+  static init_method_get_reference_frame() {
+    if (!this.#_bindings.method_get_reference_frame) {
       let classname = new StringName("XRServer");
       let methodname = new StringName("get_reference_frame");
-      this._bindings.method_get_reference_frame = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_reference_frame = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3229777777
       );
     }
-    {
+  }
+  static init_method_clear_reference_frame() {
+    if (!this.#_bindings.method_clear_reference_frame) {
       let classname = new StringName("XRServer");
       let methodname = new StringName("clear_reference_frame");
-      this._bindings.method_clear_reference_frame = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_clear_reference_frame = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3218959716
       );
     }
-    {
+  }
+  static init_method_center_on_hmd() {
+    if (!this.#_bindings.method_center_on_hmd) {
       let classname = new StringName("XRServer");
       let methodname = new StringName("center_on_hmd");
-      this._bindings.method_center_on_hmd = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_center_on_hmd = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1450904707
       );
     }
-    {
+  }
+  static init_method_get_hmd_transform() {
+    if (!this.#_bindings.method_get_hmd_transform) {
       let classname = new StringName("XRServer");
       let methodname = new StringName("get_hmd_transform");
-      this._bindings.method_get_hmd_transform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_hmd_transform = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         4183770049
       );
     }
-    {
+  }
+  static init_method_add_interface() {
+    if (!this.#_bindings.method_add_interface) {
       let classname = new StringName("XRServer");
       let methodname = new StringName("add_interface");
-      this._bindings.method_add_interface = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1898711491
-      );
-    }
-    {
-      let classname = new StringName("XRServer");
-      let methodname = new StringName("get_interface_count");
-      this._bindings.method_get_interface_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("XRServer");
-      let methodname = new StringName("remove_interface");
-      this._bindings.method_remove_interface = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1898711491
-      );
-    }
-    {
-      let classname = new StringName("XRServer");
-      let methodname = new StringName("get_interface");
-      this._bindings.method_get_interface = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4237347919
-      );
-    }
-    {
-      let classname = new StringName("XRServer");
-      let methodname = new StringName("get_interfaces");
-      this._bindings.method_get_interfaces = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3995934104
-      );
-    }
-    {
-      let classname = new StringName("XRServer");
-      let methodname = new StringName("find_interface");
-      this._bindings.method_find_interface = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1395192955
-      );
-    }
-    {
-      let classname = new StringName("XRServer");
-      let methodname = new StringName("add_tracker");
-      this._bindings.method_add_tracker = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        684804553
-      );
-    }
-    {
-      let classname = new StringName("XRServer");
-      let methodname = new StringName("remove_tracker");
-      this._bindings.method_remove_tracker = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        684804553
-      );
-    }
-    {
-      let classname = new StringName("XRServer");
-      let methodname = new StringName("get_trackers");
-      this._bindings.method_get_trackers = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3554694381
-      );
-    }
-    {
-      let classname = new StringName("XRServer");
-      let methodname = new StringName("get_tracker");
-      this._bindings.method_get_tracker = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        147382240
-      );
-    }
-    {
-      let classname = new StringName("XRServer");
-      let methodname = new StringName("get_primary_interface");
-      this._bindings.method_get_primary_interface = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2143545064
-      );
-    }
-    {
-      let classname = new StringName("XRServer");
-      let methodname = new StringName("set_primary_interface");
-      this._bindings.method_set_primary_interface = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_add_interface = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1898711491
       );
     }
   }
+  static init_method_get_interface_count() {
+    if (!this.#_bindings.method_get_interface_count) {
+      let classname = new StringName("XRServer");
+      let methodname = new StringName("get_interface_count");
+      this.#_bindings.method_get_interface_count = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3905245786
+      );
+    }
+  }
+  static init_method_remove_interface() {
+    if (!this.#_bindings.method_remove_interface) {
+      let classname = new StringName("XRServer");
+      let methodname = new StringName("remove_interface");
+      this.#_bindings.method_remove_interface = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1898711491
+      );
+    }
+  }
+  static init_method_get_interface() {
+    if (!this.#_bindings.method_get_interface) {
+      let classname = new StringName("XRServer");
+      let methodname = new StringName("get_interface");
+      this.#_bindings.method_get_interface = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        4237347919
+      );
+    }
+  }
+  static init_method_get_interfaces() {
+    if (!this.#_bindings.method_get_interfaces) {
+      let classname = new StringName("XRServer");
+      let methodname = new StringName("get_interfaces");
+      this.#_bindings.method_get_interfaces = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3995934104
+      );
+    }
+  }
+  static init_method_find_interface() {
+    if (!this.#_bindings.method_find_interface) {
+      let classname = new StringName("XRServer");
+      let methodname = new StringName("find_interface");
+      this.#_bindings.method_find_interface = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1395192955
+      );
+    }
+  }
+  static init_method_add_tracker() {
+    if (!this.#_bindings.method_add_tracker) {
+      let classname = new StringName("XRServer");
+      let methodname = new StringName("add_tracker");
+      this.#_bindings.method_add_tracker = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        684804553
+      );
+    }
+  }
+  static init_method_remove_tracker() {
+    if (!this.#_bindings.method_remove_tracker) {
+      let classname = new StringName("XRServer");
+      let methodname = new StringName("remove_tracker");
+      this.#_bindings.method_remove_tracker = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        684804553
+      );
+    }
+  }
+  static init_method_get_trackers() {
+    if (!this.#_bindings.method_get_trackers) {
+      let classname = new StringName("XRServer");
+      let methodname = new StringName("get_trackers");
+      this.#_bindings.method_get_trackers = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3554694381
+      );
+    }
+  }
+  static init_method_get_tracker() {
+    if (!this.#_bindings.method_get_tracker) {
+      let classname = new StringName("XRServer");
+      let methodname = new StringName("get_tracker");
+      this.#_bindings.method_get_tracker = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        147382240
+      );
+    }
+  }
+  static init_method_get_primary_interface() {
+    if (!this.#_bindings.method_get_primary_interface) {
+      let classname = new StringName("XRServer");
+      let methodname = new StringName("get_primary_interface");
+      this.#_bindings.method_get_primary_interface = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2143545064
+      );
+    }
+  }
+  static init_method_set_primary_interface() {
+    if (!this.#_bindings.method_set_primary_interface) {
+      let classname = new StringName("XRServer");
+      let methodname = new StringName("set_primary_interface");
+      this.#_bindings.method_set_primary_interface = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1898711491
+      );
+    }
+  }
+
+  
   
   get_world_scale() {
+    XRServer.init_method_get_world_scale();
     return _call_native_mb_ret(
-      _XRServer._bindings.method_get_world_scale,
+      _XRServer.#_bindings.method_get_world_scale,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_world_scale(_scale) {
+    XRServer.init_method_set_world_scale();
     return _call_native_mb_no_ret(
-      _XRServer._bindings.method_set_world_scale,
+      _XRServer.#_bindings.method_set_world_scale,
       this._owner,
       _scale
     );
     
   }
   get_world_origin() {
+    XRServer.init_method_get_world_origin();
     return _call_native_mb_ret(
-      _XRServer._bindings.method_get_world_origin,
+      _XRServer.#_bindings.method_get_world_origin,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -261,16 +298,18 @@ class _MethodBindings {
     
   }
   set_world_origin(_world_origin) {
+    XRServer.init_method_set_world_origin();
     return _call_native_mb_no_ret(
-      _XRServer._bindings.method_set_world_origin,
+      _XRServer.#_bindings.method_set_world_origin,
       this._owner,
       _world_origin
     );
     
   }
   get_reference_frame() {
+    XRServer.init_method_get_reference_frame();
     return _call_native_mb_ret(
-      _XRServer._bindings.method_get_reference_frame,
+      _XRServer.#_bindings.method_get_reference_frame,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -279,24 +318,27 @@ class _MethodBindings {
     
   }
   clear_reference_frame() {
+    XRServer.init_method_clear_reference_frame();
     return _call_native_mb_no_ret(
-      _XRServer._bindings.method_clear_reference_frame,
+      _XRServer.#_bindings.method_clear_reference_frame,
       this._owner,
       
     );
     
   }
   center_on_hmd(_rotation_mode, _keep_height) {
+    XRServer.init_method_center_on_hmd();
     return _call_native_mb_no_ret(
-      _XRServer._bindings.method_center_on_hmd,
+      _XRServer.#_bindings.method_center_on_hmd,
       this._owner,
       _rotation_mode, _keep_height
     );
     
   }
   get_hmd_transform() {
+    XRServer.init_method_get_hmd_transform();
     return _call_native_mb_ret(
-      _XRServer._bindings.method_get_hmd_transform,
+      _XRServer.#_bindings.method_get_hmd_transform,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -305,76 +347,86 @@ class _MethodBindings {
     
   }
   add_interface(_interface) {
+    XRServer.init_method_add_interface();
     return _call_native_mb_no_ret(
-      _XRServer._bindings.method_add_interface,
+      _XRServer.#_bindings.method_add_interface,
       this._owner,
       _interface
     );
     
   }
   get_interface_count() {
+    XRServer.init_method_get_interface_count();
     return _call_native_mb_ret(
-      _XRServer._bindings.method_get_interface_count,
+      _XRServer.#_bindings.method_get_interface_count,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   remove_interface(_interface) {
+    XRServer.init_method_remove_interface();
     return _call_native_mb_no_ret(
-      _XRServer._bindings.method_remove_interface,
+      _XRServer.#_bindings.method_remove_interface,
       this._owner,
       _interface
     );
     
   }
   get_interface(_idx) {
+    XRServer.init_method_get_interface();
     return _call_native_mb_ret(
-      _XRServer._bindings.method_get_interface,
+      _XRServer.#_bindings.method_get_interface,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       _idx
     );
     
   }
   get_interfaces() {
+    XRServer.init_method_get_interfaces();
     return _call_native_mb_ret(
-      _XRServer._bindings.method_get_interfaces,
+      _XRServer.#_bindings.method_get_interfaces,
       this._owner,
-			Variant.INT,
+			Variant.Type.ARRAY,
       
     );
     
   }
   find_interface(_name) {
+    XRServer.init_method_find_interface();
     return _call_native_mb_ret(
-      _XRServer._bindings.method_find_interface,
+      _XRServer.#_bindings.method_find_interface,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       _name
     );
     
   }
   add_tracker(_tracker) {
+    XRServer.init_method_add_tracker();
     return _call_native_mb_no_ret(
-      _XRServer._bindings.method_add_tracker,
+      _XRServer.#_bindings.method_add_tracker,
       this._owner,
       _tracker
     );
     
   }
   remove_tracker(_tracker) {
+    XRServer.init_method_remove_tracker();
     return _call_native_mb_no_ret(
-      _XRServer._bindings.method_remove_tracker,
+      _XRServer.#_bindings.method_remove_tracker,
       this._owner,
       _tracker
     );
     
   }
   get_trackers(_tracker_types) {
+    XRServer.init_method_get_trackers();
     return _call_native_mb_ret(
-      _XRServer._bindings.method_get_trackers,
+      _XRServer.#_bindings.method_get_trackers,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -383,26 +435,29 @@ class _MethodBindings {
     
   }
   get_tracker(_tracker_name) {
+    XRServer.init_method_get_tracker();
     return _call_native_mb_ret(
-      _XRServer._bindings.method_get_tracker,
+      _XRServer.#_bindings.method_get_tracker,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       _tracker_name
     );
     
   }
   get_primary_interface() {
+    XRServer.init_method_get_primary_interface();
     return _call_native_mb_ret(
-      _XRServer._bindings.method_get_primary_interface,
+      _XRServer.#_bindings.method_get_primary_interface,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
   }
   set_primary_interface(_interface) {
+    XRServer.init_method_set_primary_interface();
     return _call_native_mb_no_ret(
-      _XRServer._bindings.method_set_primary_interface,
+      _XRServer.#_bindings.method_set_primary_interface,
       this._owner,
       _interface
     );
@@ -444,10 +499,6 @@ set primary_interface (new_value) {
     RESET_FULL_ROTATION: 0,
     RESET_BUT_KEEP_TILT: 1,
     DONT_RESET_ROTATION: 2,
-  }
-
-  static {
-    this._init_bindings();
   }
 }
 export const XRServer = (function () {

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
-import { Resource } from '@js_godot/classes/resource'
 import { StringName } from '@js_godot/variant/string_name'
+import { Resource } from '@js_godot/classes/resource'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -19,7 +19,7 @@ class _MethodBindings {
 }
 export class Sky extends Resource{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -29,115 +29,130 @@ export class Sky extends Resource{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_radiance_size() {
+    if (!this.#_bindings.method_set_radiance_size) {
       let classname = new StringName("Sky");
       let methodname = new StringName("set_radiance_size");
-      this._bindings.method_set_radiance_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_radiance_size = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1512957179
       );
     }
-    {
+  }
+  static init_method_get_radiance_size() {
+    if (!this.#_bindings.method_get_radiance_size) {
       let classname = new StringName("Sky");
       let methodname = new StringName("get_radiance_size");
-      this._bindings.method_get_radiance_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_radiance_size = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2708733976
       );
     }
-    {
+  }
+  static init_method_set_process_mode() {
+    if (!this.#_bindings.method_set_process_mode) {
       let classname = new StringName("Sky");
       let methodname = new StringName("set_process_mode");
-      this._bindings.method_set_process_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_process_mode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         875986769
       );
     }
-    {
+  }
+  static init_method_get_process_mode() {
+    if (!this.#_bindings.method_get_process_mode) {
       let classname = new StringName("Sky");
       let methodname = new StringName("get_process_mode");
-      this._bindings.method_get_process_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_process_mode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         731245043
       );
     }
-    {
+  }
+  static init_method_set_material() {
+    if (!this.#_bindings.method_set_material) {
       let classname = new StringName("Sky");
       let methodname = new StringName("set_material");
-      this._bindings.method_set_material = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_material = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2757459619
       );
     }
-    {
+  }
+  static init_method_get_material() {
+    if (!this.#_bindings.method_get_material) {
       let classname = new StringName("Sky");
       let methodname = new StringName("get_material");
-      this._bindings.method_get_material = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_material = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         5934680
       );
     }
   }
+
+  
   
   set_radiance_size(_size) {
+    Sky.init_method_set_radiance_size();
     return _call_native_mb_no_ret(
-      Sky._bindings.method_set_radiance_size,
+      Sky.#_bindings.method_set_radiance_size,
       this._owner,
       _size
     );
     
   }
   get_radiance_size() {
+    Sky.init_method_get_radiance_size();
     return _call_native_mb_ret(
-      Sky._bindings.method_get_radiance_size,
+      Sky.#_bindings.method_get_radiance_size,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_process_mode(_mode) {
+    Sky.init_method_set_process_mode();
     return _call_native_mb_no_ret(
-      Sky._bindings.method_set_process_mode,
+      Sky.#_bindings.method_set_process_mode,
       this._owner,
       _mode
     );
     
   }
   get_process_mode() {
+    Sky.init_method_get_process_mode();
     return _call_native_mb_ret(
-      Sky._bindings.method_get_process_mode,
+      Sky.#_bindings.method_get_process_mode,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_material(_material) {
+    Sky.init_method_set_material();
     return _call_native_mb_no_ret(
-      Sky._bindings.method_set_material,
+      Sky.#_bindings.method_set_material,
       this._owner,
       _material
     );
     
   }
   get_material() {
+    Sky.init_method_get_material();
     return _call_native_mb_ret(
-      Sky._bindings.method_get_material,
+      Sky.#_bindings.method_get_material,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
@@ -177,9 +192,5 @@ set radiance_size (new_value) {
     PROCESS_MODE_QUALITY: 1,
     PROCESS_MODE_INCREMENTAL: 2,
     PROCESS_MODE_REALTIME: 3,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

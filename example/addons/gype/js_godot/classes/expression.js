@@ -1,10 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { PackedStringArray } from '@js_godot/variant/packed_string_array'
-import { RefCounted } from '@js_godot/classes/ref_counted'
 import { Variant } from '@js_godot/variant/variant'
-import { GDString } from '@js_godot/variant/gd_string'
-import { GDArray } from '@js_godot/variant/gd_array'
+import { StringName } from '@js_godot/variant/string_name'
+import { RefCounted } from '@js_godot/classes/ref_counted'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -20,7 +17,7 @@ class _MethodBindings {
 }
 export class Expression extends RefCounted{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -30,62 +27,68 @@ export class Expression extends RefCounted{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_parse() {
+    if (!this.#_bindings.method_parse) {
       let classname = new StringName("Expression");
       let methodname = new StringName("parse");
-      this._bindings.method_parse = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_parse = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3069722906
       );
     }
-    {
+  }
+  static init_method_execute() {
+    if (!this.#_bindings.method_execute) {
       let classname = new StringName("Expression");
       let methodname = new StringName("execute");
-      this._bindings.method_execute = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_execute = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3712471238
       );
     }
-    {
+  }
+  static init_method_has_execute_failed() {
+    if (!this.#_bindings.method_has_execute_failed) {
       let classname = new StringName("Expression");
       let methodname = new StringName("has_execute_failed");
-      this._bindings.method_has_execute_failed = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_has_execute_failed = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_get_error_text() {
+    if (!this.#_bindings.method_get_error_text) {
       let classname = new StringName("Expression");
       let methodname = new StringName("get_error_text");
-      this._bindings.method_get_error_text = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_error_text = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         201670096
       );
     }
   }
+
+  
   
   parse(_expression, _input_names) {
+    Expression.init_method_parse();
     return _call_native_mb_ret(
-      Expression._bindings.method_parse,
+      Expression.#_bindings.method_parse,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       _expression, _input_names
     );
     
   }
   execute(_inputs, _base_instance, _show_error, _const_calls_only) {
+    Expression.init_method_execute();
     return _call_native_mb_ret(
-      Expression._bindings.method_execute,
+      Expression.#_bindings.method_execute,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -94,17 +97,20 @@ export class Expression extends RefCounted{
     
   }
   has_execute_failed() {
+    Expression.init_method_has_execute_failed();
     return _call_native_mb_ret(
-      Expression._bindings.method_has_execute_failed,
+      Expression.#_bindings.method_has_execute_failed,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   get_error_text() {
+    Expression.init_method_get_error_text();
     return _call_native_mb_ret(
-      Expression._bindings.method_get_error_text,
+      Expression.#_bindings.method_get_error_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -114,8 +120,4 @@ export class Expression extends RefCounted{
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

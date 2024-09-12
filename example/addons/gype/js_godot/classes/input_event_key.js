@@ -1,7 +1,6 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { InputEventWithModifiers } from '@js_godot/classes/input_event_with_modifiers'
 import {
   call_utility_ret,
@@ -33,7 +32,7 @@ class _MethodBindings {
 }
 export class InputEventKey extends InputEventWithModifiers{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -43,316 +42,373 @@ export class InputEventKey extends InputEventWithModifiers{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_pressed() {
+    if (!this.#_bindings.method_set_pressed) {
       let classname = new StringName("InputEventKey");
       let methodname = new StringName("set_pressed");
-      this._bindings.method_set_pressed = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_pressed = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_set_keycode() {
+    if (!this.#_bindings.method_set_keycode) {
       let classname = new StringName("InputEventKey");
       let methodname = new StringName("set_keycode");
-      this._bindings.method_set_keycode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_keycode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         888074362
       );
     }
-    {
+  }
+  static init_method_get_keycode() {
+    if (!this.#_bindings.method_get_keycode) {
       let classname = new StringName("InputEventKey");
       let methodname = new StringName("get_keycode");
-      this._bindings.method_get_keycode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_keycode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1585896689
       );
     }
-    {
+  }
+  static init_method_set_physical_keycode() {
+    if (!this.#_bindings.method_set_physical_keycode) {
       let classname = new StringName("InputEventKey");
       let methodname = new StringName("set_physical_keycode");
-      this._bindings.method_set_physical_keycode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_physical_keycode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         888074362
       );
     }
-    {
+  }
+  static init_method_get_physical_keycode() {
+    if (!this.#_bindings.method_get_physical_keycode) {
       let classname = new StringName("InputEventKey");
       let methodname = new StringName("get_physical_keycode");
-      this._bindings.method_get_physical_keycode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_physical_keycode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1585896689
       );
     }
-    {
+  }
+  static init_method_set_key_label() {
+    if (!this.#_bindings.method_set_key_label) {
       let classname = new StringName("InputEventKey");
       let methodname = new StringName("set_key_label");
-      this._bindings.method_set_key_label = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_key_label = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         888074362
       );
     }
-    {
+  }
+  static init_method_get_key_label() {
+    if (!this.#_bindings.method_get_key_label) {
       let classname = new StringName("InputEventKey");
       let methodname = new StringName("get_key_label");
-      this._bindings.method_get_key_label = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_key_label = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1585896689
       );
     }
-    {
+  }
+  static init_method_set_unicode() {
+    if (!this.#_bindings.method_set_unicode) {
       let classname = new StringName("InputEventKey");
       let methodname = new StringName("set_unicode");
-      this._bindings.method_set_unicode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_unicode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1286410249
       );
     }
-    {
+  }
+  static init_method_get_unicode() {
+    if (!this.#_bindings.method_get_unicode) {
       let classname = new StringName("InputEventKey");
       let methodname = new StringName("get_unicode");
-      this._bindings.method_get_unicode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_unicode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
-    {
+  }
+  static init_method_set_location() {
+    if (!this.#_bindings.method_set_location) {
       let classname = new StringName("InputEventKey");
       let methodname = new StringName("set_location");
-      this._bindings.method_set_location = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_location = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         634453155
       );
     }
-    {
+  }
+  static init_method_get_location() {
+    if (!this.#_bindings.method_get_location) {
       let classname = new StringName("InputEventKey");
       let methodname = new StringName("get_location");
-      this._bindings.method_get_location = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_location = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         211810873
       );
     }
-    {
+  }
+  static init_method_set_echo() {
+    if (!this.#_bindings.method_set_echo) {
       let classname = new StringName("InputEventKey");
       let methodname = new StringName("set_echo");
-      this._bindings.method_set_echo = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_echo = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_get_keycode_with_modifiers() {
+    if (!this.#_bindings.method_get_keycode_with_modifiers) {
       let classname = new StringName("InputEventKey");
       let methodname = new StringName("get_keycode_with_modifiers");
-      this._bindings.method_get_keycode_with_modifiers = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_keycode_with_modifiers = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1585896689
       );
     }
-    {
+  }
+  static init_method_get_physical_keycode_with_modifiers() {
+    if (!this.#_bindings.method_get_physical_keycode_with_modifiers) {
       let classname = new StringName("InputEventKey");
       let methodname = new StringName("get_physical_keycode_with_modifiers");
-      this._bindings.method_get_physical_keycode_with_modifiers = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_physical_keycode_with_modifiers = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1585896689
       );
     }
-    {
+  }
+  static init_method_get_key_label_with_modifiers() {
+    if (!this.#_bindings.method_get_key_label_with_modifiers) {
       let classname = new StringName("InputEventKey");
       let methodname = new StringName("get_key_label_with_modifiers");
-      this._bindings.method_get_key_label_with_modifiers = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_key_label_with_modifiers = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1585896689
       );
     }
-    {
+  }
+  static init_method_as_text_keycode() {
+    if (!this.#_bindings.method_as_text_keycode) {
       let classname = new StringName("InputEventKey");
       let methodname = new StringName("as_text_keycode");
-      this._bindings.method_as_text_keycode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        201670096
-      );
-    }
-    {
-      let classname = new StringName("InputEventKey");
-      let methodname = new StringName("as_text_physical_keycode");
-      this._bindings.method_as_text_physical_keycode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        201670096
-      );
-    }
-    {
-      let classname = new StringName("InputEventKey");
-      let methodname = new StringName("as_text_key_label");
-      this._bindings.method_as_text_key_label = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        201670096
-      );
-    }
-    {
-      let classname = new StringName("InputEventKey");
-      let methodname = new StringName("as_text_location");
-      this._bindings.method_as_text_location = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_as_text_keycode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         201670096
       );
     }
   }
+  static init_method_as_text_physical_keycode() {
+    if (!this.#_bindings.method_as_text_physical_keycode) {
+      let classname = new StringName("InputEventKey");
+      let methodname = new StringName("as_text_physical_keycode");
+      this.#_bindings.method_as_text_physical_keycode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        201670096
+      );
+    }
+  }
+  static init_method_as_text_key_label() {
+    if (!this.#_bindings.method_as_text_key_label) {
+      let classname = new StringName("InputEventKey");
+      let methodname = new StringName("as_text_key_label");
+      this.#_bindings.method_as_text_key_label = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        201670096
+      );
+    }
+  }
+  static init_method_as_text_location() {
+    if (!this.#_bindings.method_as_text_location) {
+      let classname = new StringName("InputEventKey");
+      let methodname = new StringName("as_text_location");
+      this.#_bindings.method_as_text_location = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        201670096
+      );
+    }
+  }
+
+  
   
   set_pressed(_pressed) {
+    InputEventKey.init_method_set_pressed();
     return _call_native_mb_no_ret(
-      InputEventKey._bindings.method_set_pressed,
+      InputEventKey.#_bindings.method_set_pressed,
       this._owner,
       _pressed
     );
     
   }
   set_keycode(_keycode) {
+    InputEventKey.init_method_set_keycode();
     return _call_native_mb_no_ret(
-      InputEventKey._bindings.method_set_keycode,
+      InputEventKey.#_bindings.method_set_keycode,
       this._owner,
       _keycode
     );
     
   }
   get_keycode() {
+    InputEventKey.init_method_get_keycode();
     return _call_native_mb_ret(
-      InputEventKey._bindings.method_get_keycode,
+      InputEventKey.#_bindings.method_get_keycode,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_physical_keycode(_physical_keycode) {
+    InputEventKey.init_method_set_physical_keycode();
     return _call_native_mb_no_ret(
-      InputEventKey._bindings.method_set_physical_keycode,
+      InputEventKey.#_bindings.method_set_physical_keycode,
       this._owner,
       _physical_keycode
     );
     
   }
   get_physical_keycode() {
+    InputEventKey.init_method_get_physical_keycode();
     return _call_native_mb_ret(
-      InputEventKey._bindings.method_get_physical_keycode,
+      InputEventKey.#_bindings.method_get_physical_keycode,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_key_label(_key_label) {
+    InputEventKey.init_method_set_key_label();
     return _call_native_mb_no_ret(
-      InputEventKey._bindings.method_set_key_label,
+      InputEventKey.#_bindings.method_set_key_label,
       this._owner,
       _key_label
     );
     
   }
   get_key_label() {
+    InputEventKey.init_method_get_key_label();
     return _call_native_mb_ret(
-      InputEventKey._bindings.method_get_key_label,
+      InputEventKey.#_bindings.method_get_key_label,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_unicode(_unicode) {
+    InputEventKey.init_method_set_unicode();
     return _call_native_mb_no_ret(
-      InputEventKey._bindings.method_set_unicode,
+      InputEventKey.#_bindings.method_set_unicode,
       this._owner,
       _unicode
     );
     
   }
   get_unicode() {
+    InputEventKey.init_method_get_unicode();
     return _call_native_mb_ret(
-      InputEventKey._bindings.method_get_unicode,
+      InputEventKey.#_bindings.method_get_unicode,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_location(_location) {
+    InputEventKey.init_method_set_location();
     return _call_native_mb_no_ret(
-      InputEventKey._bindings.method_set_location,
+      InputEventKey.#_bindings.method_set_location,
       this._owner,
       _location
     );
     
   }
   get_location() {
+    InputEventKey.init_method_get_location();
     return _call_native_mb_ret(
-      InputEventKey._bindings.method_get_location,
+      InputEventKey.#_bindings.method_get_location,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_echo(_echo) {
+    InputEventKey.init_method_set_echo();
     return _call_native_mb_no_ret(
-      InputEventKey._bindings.method_set_echo,
+      InputEventKey.#_bindings.method_set_echo,
       this._owner,
       _echo
     );
     
   }
   get_keycode_with_modifiers() {
+    InputEventKey.init_method_get_keycode_with_modifiers();
     return _call_native_mb_ret(
-      InputEventKey._bindings.method_get_keycode_with_modifiers,
+      InputEventKey.#_bindings.method_get_keycode_with_modifiers,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   get_physical_keycode_with_modifiers() {
+    InputEventKey.init_method_get_physical_keycode_with_modifiers();
     return _call_native_mb_ret(
-      InputEventKey._bindings.method_get_physical_keycode_with_modifiers,
+      InputEventKey.#_bindings.method_get_physical_keycode_with_modifiers,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   get_key_label_with_modifiers() {
+    InputEventKey.init_method_get_key_label_with_modifiers();
     return _call_native_mb_ret(
-      InputEventKey._bindings.method_get_key_label_with_modifiers,
+      InputEventKey.#_bindings.method_get_key_label_with_modifiers,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   as_text_keycode() {
+    InputEventKey.init_method_as_text_keycode();
     return _call_native_mb_ret(
-      InputEventKey._bindings.method_as_text_keycode,
+      InputEventKey.#_bindings.method_as_text_keycode,
       this._owner,
 			Variant.Type.STRING,
     
@@ -361,8 +417,9 @@ export class InputEventKey extends InputEventWithModifiers{
     
   }
   as_text_physical_keycode() {
+    InputEventKey.init_method_as_text_physical_keycode();
     return _call_native_mb_ret(
-      InputEventKey._bindings.method_as_text_physical_keycode,
+      InputEventKey.#_bindings.method_as_text_physical_keycode,
       this._owner,
 			Variant.Type.STRING,
     
@@ -371,8 +428,9 @@ export class InputEventKey extends InputEventWithModifiers{
     
   }
   as_text_key_label() {
+    InputEventKey.init_method_as_text_key_label();
     return _call_native_mb_ret(
-      InputEventKey._bindings.method_as_text_key_label,
+      InputEventKey.#_bindings.method_as_text_key_label,
       this._owner,
 			Variant.Type.STRING,
     
@@ -381,8 +439,9 @@ export class InputEventKey extends InputEventWithModifiers{
     
   }
   as_text_location() {
+    InputEventKey.init_method_as_text_location();
     return _call_native_mb_ret(
-      InputEventKey._bindings.method_as_text_location,
+      InputEventKey.#_bindings.method_as_text_location,
       this._owner,
 			Variant.Type.STRING,
     
@@ -434,8 +493,4 @@ set echo (new_value) {
   this.set_echo(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

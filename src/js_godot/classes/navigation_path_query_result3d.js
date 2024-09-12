@@ -1,10 +1,8 @@
 import * as internal from '__internal__';
-import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
-import { PackedVector3Array } from '@js_godot/variant/packed_vector3_array'
-import { RefCounted } from '@js_godot/classes/ref_counted'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
-import { PackedInt64Array } from '@js_godot/variant/packed_int64_array'
+import { GDArray } from '@js_godot/variant/gd_array'
+import { RefCounted } from '@js_godot/classes/ref_counted'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -25,7 +23,7 @@ class _MethodBindings {
 }
 export class NavigationPathQueryResult3D extends RefCounted{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -35,106 +33,121 @@ export class NavigationPathQueryResult3D extends RefCounted{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_path() {
+    if (!this.#_bindings.method_set_path) {
       let classname = new StringName("NavigationPathQueryResult3D");
       let methodname = new StringName("set_path");
-      this._bindings.method_set_path = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_path = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         334873810
       );
     }
-    {
+  }
+  static init_method_get_path() {
+    if (!this.#_bindings.method_get_path) {
       let classname = new StringName("NavigationPathQueryResult3D");
       let methodname = new StringName("get_path");
-      this._bindings.method_get_path = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_path = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         497664490
       );
     }
-    {
+  }
+  static init_method_set_path_types() {
+    if (!this.#_bindings.method_set_path_types) {
       let classname = new StringName("NavigationPathQueryResult3D");
       let methodname = new StringName("set_path_types");
-      this._bindings.method_set_path_types = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_path_types = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3614634198
       );
     }
-    {
+  }
+  static init_method_get_path_types() {
+    if (!this.#_bindings.method_get_path_types) {
       let classname = new StringName("NavigationPathQueryResult3D");
       let methodname = new StringName("get_path_types");
-      this._bindings.method_get_path_types = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_path_types = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1930428628
       );
     }
-    {
+  }
+  static init_method_set_path_rids() {
+    if (!this.#_bindings.method_set_path_rids) {
       let classname = new StringName("NavigationPathQueryResult3D");
       let methodname = new StringName("set_path_rids");
-      this._bindings.method_set_path_rids = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_path_rids = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         381264803
       );
     }
-    {
+  }
+  static init_method_get_path_rids() {
+    if (!this.#_bindings.method_get_path_rids) {
       let classname = new StringName("NavigationPathQueryResult3D");
       let methodname = new StringName("get_path_rids");
-      this._bindings.method_get_path_rids = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_path_rids = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3995934104
       );
     }
-    {
+  }
+  static init_method_set_path_owner_ids() {
+    if (!this.#_bindings.method_set_path_owner_ids) {
       let classname = new StringName("NavigationPathQueryResult3D");
       let methodname = new StringName("set_path_owner_ids");
-      this._bindings.method_set_path_owner_ids = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_path_owner_ids = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3709968205
       );
     }
-    {
+  }
+  static init_method_get_path_owner_ids() {
+    if (!this.#_bindings.method_get_path_owner_ids) {
       let classname = new StringName("NavigationPathQueryResult3D");
       let methodname = new StringName("get_path_owner_ids");
-      this._bindings.method_get_path_owner_ids = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_path_owner_ids = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         235988956
       );
     }
-    {
+  }
+  static init_method_reset() {
+    if (!this.#_bindings.method_reset) {
       let classname = new StringName("NavigationPathQueryResult3D");
       let methodname = new StringName("reset");
-      this._bindings.method_reset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_reset = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3218959716
       );
     }
   }
+
+  
   
   set_path(_path) {
+    NavigationPathQueryResult3D.init_method_set_path();
     return _call_native_mb_no_ret(
-      NavigationPathQueryResult3D._bindings.method_set_path,
+      NavigationPathQueryResult3D.#_bindings.method_set_path,
       this._owner,
       _path
     );
     
   }
   get_path() {
+    NavigationPathQueryResult3D.init_method_get_path();
     return _call_native_mb_ret(
-      NavigationPathQueryResult3D._bindings.method_get_path,
+      NavigationPathQueryResult3D.#_bindings.method_get_path,
       this._owner,
 			Variant.Type.PACKED_VECTOR3_ARRAY,
     
@@ -143,16 +156,18 @@ export class NavigationPathQueryResult3D extends RefCounted{
     
   }
   set_path_types(_path_types) {
+    NavigationPathQueryResult3D.init_method_set_path_types();
     return _call_native_mb_no_ret(
-      NavigationPathQueryResult3D._bindings.method_set_path_types,
+      NavigationPathQueryResult3D.#_bindings.method_set_path_types,
       this._owner,
       _path_types
     );
     
   }
   get_path_types() {
+    NavigationPathQueryResult3D.init_method_get_path_types();
     return _call_native_mb_ret(
-      NavigationPathQueryResult3D._bindings.method_get_path_types,
+      NavigationPathQueryResult3D.#_bindings.method_get_path_types,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -161,33 +176,37 @@ export class NavigationPathQueryResult3D extends RefCounted{
     
   }
   set_path_rids(_path_rids) {
+    NavigationPathQueryResult3D.init_method_set_path_rids();
     return _call_native_mb_no_ret(
-      NavigationPathQueryResult3D._bindings.method_set_path_rids,
+      NavigationPathQueryResult3D.#_bindings.method_set_path_rids,
       this._owner,
       _path_rids
     );
     
   }
   get_path_rids() {
+    NavigationPathQueryResult3D.init_method_get_path_rids();
     return _call_native_mb_ret(
-      NavigationPathQueryResult3D._bindings.method_get_path_rids,
+      NavigationPathQueryResult3D.#_bindings.method_get_path_rids,
       this._owner,
-			Variant.INT,
+			Variant.Type.ARRAY,
       
     );
     
   }
   set_path_owner_ids(_path_owner_ids) {
+    NavigationPathQueryResult3D.init_method_set_path_owner_ids();
     return _call_native_mb_no_ret(
-      NavigationPathQueryResult3D._bindings.method_set_path_owner_ids,
+      NavigationPathQueryResult3D.#_bindings.method_set_path_owner_ids,
       this._owner,
       _path_owner_ids
     );
     
   }
   get_path_owner_ids() {
+    NavigationPathQueryResult3D.init_method_get_path_owner_ids();
     return _call_native_mb_ret(
-      NavigationPathQueryResult3D._bindings.method_get_path_owner_ids,
+      NavigationPathQueryResult3D.#_bindings.method_get_path_owner_ids,
       this._owner,
 			Variant.Type.PACKED_INT64_ARRAY,
     
@@ -196,8 +215,9 @@ export class NavigationPathQueryResult3D extends RefCounted{
     
   }
   reset() {
+    NavigationPathQueryResult3D.init_method_reset();
     return _call_native_mb_no_ret(
-      NavigationPathQueryResult3D._bindings.method_reset,
+      NavigationPathQueryResult3D.#_bindings.method_reset,
       this._owner,
       
     );
@@ -232,9 +252,5 @@ set path_owner_ids (new_value) {
   static PathSegmentType = {
     PATH_SEGMENT_TYPE_REGION: 0,
     PATH_SEGMENT_TYPE_LINK: 1,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

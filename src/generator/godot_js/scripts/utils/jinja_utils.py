@@ -27,12 +27,16 @@ def to_js_type(gd_type):
         return gd_type
     
 def to_gd_type(gd_type):
+    if not gd_type:
+        return None
     if gd_type == 'GDString':
         return 'String'
-    elif gd_type.find('typedarray') != -1:
+    elif gd_type.find('typedarray::') != -1:
         return 'Array'
     elif gd_type == 'GDArray':
         return 'Array'
+    elif gd_type.find('enum::'):
+        return 'int'
     else:
         return gd_type
 
@@ -171,8 +175,10 @@ def camel_to_snake(x):
     return re.sub(r'(?<=[a-z])[A-Z]|(?<!^)[A-Z](?=[a-z])', r'_\g<0>', x).lower()
 
 def get_module_path(class_name):
-    if to_gd_type(class_name) in variant_types():
+    if class_name in variant_types():
         return '@js_godot/variant/%s' % camel_to_snake(to_js_type(class_name))
+    elif class_name.find('typedarray::') != -1:
+        return '@js_godot/variant/gd_array'
     else:
         return '@js_godot/classes/%s' % camel_to_snake(to_js_type(class_name))
     

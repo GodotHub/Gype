@@ -1,6 +1,6 @@
 import * as internal from '__internal__';
-import { EditorResourcePicker } from '@js_godot/classes/editor_resource_picker'
 import { Variant } from '@js_godot/variant/variant'
+import { EditorResourcePicker } from '@js_godot/classes/editor_resource_picker'
 import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
@@ -15,7 +15,7 @@ class _MethodBindings {
 }
 export class EditorScriptPicker extends EditorResourcePicker{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -25,45 +25,46 @@ export class EditorScriptPicker extends EditorResourcePicker{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_script_owner() {
+    if (!this.#_bindings.method_set_script_owner) {
       let classname = new StringName("EditorScriptPicker");
       let methodname = new StringName("set_script_owner");
-      this._bindings.method_set_script_owner = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_script_owner = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1078189570
       );
     }
-    {
+  }
+  static init_method_get_script_owner() {
+    if (!this.#_bindings.method_get_script_owner) {
       let classname = new StringName("EditorScriptPicker");
       let methodname = new StringName("get_script_owner");
-      this._bindings.method_get_script_owner = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_script_owner = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3160264692
       );
     }
   }
+
+  
   
   set_script_owner(_owner_node) {
+    EditorScriptPicker.init_method_set_script_owner();
     return _call_native_mb_no_ret(
-      EditorScriptPicker._bindings.method_set_script_owner,
+      EditorScriptPicker.#_bindings.method_set_script_owner,
       this._owner,
       _owner_node
     );
     
   }
   get_script_owner() {
+    EditorScriptPicker.init_method_get_script_owner();
     return _call_native_mb_ret(
-      EditorScriptPicker._bindings.method_get_script_owner,
+      EditorScriptPicker.#_bindings.method_get_script_owner,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
@@ -76,8 +77,4 @@ set script_owner (new_value) {
   this.set_script_owner(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

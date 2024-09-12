@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { Variant } from '@js_godot/variant/variant'
 import { CSGShape3D } from '@js_godot/classes/csg_shape3d'
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -15,7 +15,7 @@ class _MethodBindings {
 }
 export class CSGPrimitive3D extends CSGShape3D{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -25,45 +25,47 @@ export class CSGPrimitive3D extends CSGShape3D{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_flip_faces() {
+    if (!this.#_bindings.method_set_flip_faces) {
       let classname = new StringName("CSGPrimitive3D");
       let methodname = new StringName("set_flip_faces");
-      this._bindings.method_set_flip_faces = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_flip_faces = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_get_flip_faces() {
+    if (!this.#_bindings.method_get_flip_faces) {
       let classname = new StringName("CSGPrimitive3D");
       let methodname = new StringName("get_flip_faces");
-      this._bindings.method_get_flip_faces = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_flip_faces = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2240911060
       );
     }
   }
+
+  
   
   set_flip_faces(_flip_faces) {
+    CSGPrimitive3D.init_method_set_flip_faces();
     return _call_native_mb_no_ret(
-      CSGPrimitive3D._bindings.method_set_flip_faces,
+      CSGPrimitive3D.#_bindings.method_set_flip_faces,
       this._owner,
       _flip_faces
     );
     
   }
   get_flip_faces() {
+    CSGPrimitive3D.init_method_get_flip_faces();
     return _call_native_mb_ret(
-      CSGPrimitive3D._bindings.method_get_flip_faces,
+      CSGPrimitive3D.#_bindings.method_get_flip_faces,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
@@ -76,8 +78,4 @@ set flip_faces (new_value) {
   this.set_flip_faces(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

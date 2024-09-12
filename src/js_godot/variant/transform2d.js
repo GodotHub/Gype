@@ -2,10 +2,12 @@ import * as internal from '__internal__'
 import {
   _call_builtin_constructor,
   _call_builtin_method_ptr_ret,
-  _call_builtin_method_ptr_no_ret
+  _call_builtin_method_ptr_no_ret,
+  _call_builtin_method_ptr_obj_ret,
 } from '@js_godot/core/builtin_ptrcall'
 import { StringName } from '@js_godot/variant/string_name'
 import { Vector2 } from '@js_godot/variant/vector2'
+import { GodotObject } from "@js_godot/classes/godot_object";
 
 class _MethodBindings {
   from_variant_constructor
@@ -56,20 +58,21 @@ export class Transform2D {
   static #SIZE = 24
   opaque = new Uint8Array(Transform2D.#SIZE)
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
-  constructor (from) {
-    if (!from) {
-      _call_builtin_constructor(Transform2D._bindings.constructor_0, this)
-    }else if (from instanceof Transform2D) {
-      _call_builtin_constructor(Transform2D._bindings.constructor_1, this, [
+  constructor (value) {
+    if (!value) {
+      _call_builtin_constructor(Transform2D.#_bindings.constructor_0, this)
+    } else if (arguments.length == 1&& arguments[0] instanceof Transform2D) {
+      let from = arguments[0];
+      _call_builtin_constructor(Transform2D.#_bindings.constructor_1, this, [
         from
       ])
     } else if (arguments.length == 2&& typeof arguments[0] == "number"&& arguments[1] instanceof Vector2) {
       let rotation = arguments[0];
       let position = arguments[1];
-      _call_builtin_constructor(Transform2D._bindings.constructor_2, this, [
+      _call_builtin_constructor(Transform2D.#_bindings.constructor_2, this, [
         rotation, position
       ])
     } else if (arguments.length == 4&& typeof arguments[0] == "number"&& arguments[1] instanceof Vector2&& typeof arguments[2] == "number"&& arguments[3] instanceof Vector2) {
@@ -77,42 +80,44 @@ export class Transform2D {
       let scale = arguments[1];
       let skew = arguments[2];
       let position = arguments[3];
-      _call_builtin_constructor(Transform2D._bindings.constructor_3, this, [
+      _call_builtin_constructor(Transform2D.#_bindings.constructor_3, this, [
         rotation, scale, skew, position
       ])
     } else if (arguments.length == 3&& arguments[0] instanceof Vector2&& arguments[1] instanceof Vector2&& arguments[2] instanceof Vector2) {
       let x_axis = arguments[0];
       let y_axis = arguments[1];
       let origin = arguments[2];
-      _call_builtin_constructor(Transform2D._bindings.constructor_4, this, [
+      _call_builtin_constructor(Transform2D.#_bindings.constructor_4, this, [
         x_axis, y_axis, origin
       ])
-    } else if (from.constructor.name === "Variant") {
-      Transform2D._bindings.from_variant_constructor(this.opaque, from.opaque)
+    } else if (value.constructor.name === "Variant") {
+      Transform2D.#_bindings.from_variant_constructor(this.opaque, value.opaque)
+    } else if (value instanceof Uint8Array) {
+      this.opaque = value;
     } 
   }
   
   static __init_bindings_constructors_destructor () {
-    this._bindings.from_variant_constructor = internal.get_variant_to_type_constructor(
+    this.#_bindings.from_variant_constructor = internal.get_variant_to_type_constructor(
       11
     )
-    this._bindings.constructor_0 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_0 = internal.variant_get_ptr_constructor(
       11,
       0
     )
-    this._bindings.constructor_1 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_1 = internal.variant_get_ptr_constructor(
       11,
       1
     )
-    this._bindings.constructor_2 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_2 = internal.variant_get_ptr_constructor(
       11,
       2
     )
-    this._bindings.constructor_3 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_3 = internal.variant_get_ptr_constructor(
       11,
       3
     )
-    this._bindings.constructor_4 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_4 = internal.variant_get_ptr_constructor(
       11,
       4
     )
@@ -126,7 +131,7 @@ export class Transform2D {
     this.__init_bindings_constructors_destructor()
     {
       let _gde_name = new StringName('inverse')
-      this._bindings.method_inverse = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_inverse = internal.variant_get_ptr_builtin_method(
         11,
         _gde_name.opaque,
         1420440541
@@ -134,7 +139,7 @@ export class Transform2D {
     }
     {
       let _gde_name = new StringName('affine_inverse')
-      this._bindings.method_affine_inverse = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_affine_inverse = internal.variant_get_ptr_builtin_method(
         11,
         _gde_name.opaque,
         1420440541
@@ -142,7 +147,7 @@ export class Transform2D {
     }
     {
       let _gde_name = new StringName('get_rotation')
-      this._bindings.method_get_rotation = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_rotation = internal.variant_get_ptr_builtin_method(
         11,
         _gde_name.opaque,
         466405837
@@ -150,7 +155,7 @@ export class Transform2D {
     }
     {
       let _gde_name = new StringName('get_origin')
-      this._bindings.method_get_origin = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_origin = internal.variant_get_ptr_builtin_method(
         11,
         _gde_name.opaque,
         2428350749
@@ -158,7 +163,7 @@ export class Transform2D {
     }
     {
       let _gde_name = new StringName('get_scale')
-      this._bindings.method_get_scale = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_scale = internal.variant_get_ptr_builtin_method(
         11,
         _gde_name.opaque,
         2428350749
@@ -166,7 +171,7 @@ export class Transform2D {
     }
     {
       let _gde_name = new StringName('get_skew')
-      this._bindings.method_get_skew = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_skew = internal.variant_get_ptr_builtin_method(
         11,
         _gde_name.opaque,
         466405837
@@ -174,7 +179,7 @@ export class Transform2D {
     }
     {
       let _gde_name = new StringName('orthonormalized')
-      this._bindings.method_orthonormalized = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_orthonormalized = internal.variant_get_ptr_builtin_method(
         11,
         _gde_name.opaque,
         1420440541
@@ -182,7 +187,7 @@ export class Transform2D {
     }
     {
       let _gde_name = new StringName('rotated')
-      this._bindings.method_rotated = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_rotated = internal.variant_get_ptr_builtin_method(
         11,
         _gde_name.opaque,
         729597514
@@ -190,7 +195,7 @@ export class Transform2D {
     }
     {
       let _gde_name = new StringName('rotated_local')
-      this._bindings.method_rotated_local = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_rotated_local = internal.variant_get_ptr_builtin_method(
         11,
         _gde_name.opaque,
         729597514
@@ -198,7 +203,7 @@ export class Transform2D {
     }
     {
       let _gde_name = new StringName('scaled')
-      this._bindings.method_scaled = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_scaled = internal.variant_get_ptr_builtin_method(
         11,
         _gde_name.opaque,
         1446323263
@@ -206,7 +211,7 @@ export class Transform2D {
     }
     {
       let _gde_name = new StringName('scaled_local')
-      this._bindings.method_scaled_local = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_scaled_local = internal.variant_get_ptr_builtin_method(
         11,
         _gde_name.opaque,
         1446323263
@@ -214,7 +219,7 @@ export class Transform2D {
     }
     {
       let _gde_name = new StringName('translated')
-      this._bindings.method_translated = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_translated = internal.variant_get_ptr_builtin_method(
         11,
         _gde_name.opaque,
         1446323263
@@ -222,7 +227,7 @@ export class Transform2D {
     }
     {
       let _gde_name = new StringName('translated_local')
-      this._bindings.method_translated_local = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_translated_local = internal.variant_get_ptr_builtin_method(
         11,
         _gde_name.opaque,
         1446323263
@@ -230,7 +235,7 @@ export class Transform2D {
     }
     {
       let _gde_name = new StringName('determinant')
-      this._bindings.method_determinant = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_determinant = internal.variant_get_ptr_builtin_method(
         11,
         _gde_name.opaque,
         466405837
@@ -238,7 +243,7 @@ export class Transform2D {
     }
     {
       let _gde_name = new StringName('basis_xform')
-      this._bindings.method_basis_xform = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_basis_xform = internal.variant_get_ptr_builtin_method(
         11,
         _gde_name.opaque,
         2026743667
@@ -246,7 +251,7 @@ export class Transform2D {
     }
     {
       let _gde_name = new StringName('basis_xform_inv')
-      this._bindings.method_basis_xform_inv = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_basis_xform_inv = internal.variant_get_ptr_builtin_method(
         11,
         _gde_name.opaque,
         2026743667
@@ -254,7 +259,7 @@ export class Transform2D {
     }
     {
       let _gde_name = new StringName('interpolate_with')
-      this._bindings.method_interpolate_with = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_interpolate_with = internal.variant_get_ptr_builtin_method(
         11,
         _gde_name.opaque,
         359399686
@@ -262,7 +267,7 @@ export class Transform2D {
     }
     {
       let _gde_name = new StringName('is_conformal')
-      this._bindings.method_is_conformal = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_conformal = internal.variant_get_ptr_builtin_method(
         11,
         _gde_name.opaque,
         3918633141
@@ -270,7 +275,7 @@ export class Transform2D {
     }
     {
       let _gde_name = new StringName('is_equal_approx')
-      this._bindings.method_is_equal_approx = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_equal_approx = internal.variant_get_ptr_builtin_method(
         11,
         _gde_name.opaque,
         3837431929
@@ -278,7 +283,7 @@ export class Transform2D {
     }
     {
       let _gde_name = new StringName('is_finite')
-      this._bindings.method_is_finite = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_finite = internal.variant_get_ptr_builtin_method(
         11,
         _gde_name.opaque,
         3918633141
@@ -286,7 +291,7 @@ export class Transform2D {
     }
     {
       let _gde_name = new StringName('looking_at')
-      this._bindings.method_looking_at = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_looking_at = internal.variant_get_ptr_builtin_method(
         11,
         _gde_name.opaque,
         1446323263
@@ -298,7 +303,7 @@ export class Transform2D {
   inverse () {
     let ret = new Transform2D()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Transform2D._bindings.method_inverse,
+      Transform2D.#_bindings.method_inverse,
       this,
       11,
       []
@@ -308,7 +313,7 @@ export class Transform2D {
   affine_inverse () {
     let ret = new Transform2D()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Transform2D._bindings.method_affine_inverse,
+      Transform2D.#_bindings.method_affine_inverse,
       this,
       11,
       []
@@ -318,7 +323,7 @@ export class Transform2D {
   get_rotation () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Transform2D._bindings.method_get_rotation,
+      Transform2D.#_bindings.method_get_rotation,
       this,
       3,
       []
@@ -328,7 +333,7 @@ export class Transform2D {
   get_origin () {
     let ret = new Vector2()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Transform2D._bindings.method_get_origin,
+      Transform2D.#_bindings.method_get_origin,
       this,
       5,
       []
@@ -338,7 +343,7 @@ export class Transform2D {
   get_scale () {
     let ret = new Vector2()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Transform2D._bindings.method_get_scale,
+      Transform2D.#_bindings.method_get_scale,
       this,
       5,
       []
@@ -348,7 +353,7 @@ export class Transform2D {
   get_skew () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Transform2D._bindings.method_get_skew,
+      Transform2D.#_bindings.method_get_skew,
       this,
       3,
       []
@@ -358,7 +363,7 @@ export class Transform2D {
   orthonormalized () {
     let ret = new Transform2D()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Transform2D._bindings.method_orthonormalized,
+      Transform2D.#_bindings.method_orthonormalized,
       this,
       11,
       []
@@ -368,7 +373,7 @@ export class Transform2D {
   rotated (_angle) {
     let ret = new Transform2D()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Transform2D._bindings.method_rotated,
+      Transform2D.#_bindings.method_rotated,
       this,
       11,
       [_angle]
@@ -378,7 +383,7 @@ export class Transform2D {
   rotated_local (_angle) {
     let ret = new Transform2D()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Transform2D._bindings.method_rotated_local,
+      Transform2D.#_bindings.method_rotated_local,
       this,
       11,
       [_angle]
@@ -388,7 +393,7 @@ export class Transform2D {
   scaled (_scale) {
     let ret = new Transform2D()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Transform2D._bindings.method_scaled,
+      Transform2D.#_bindings.method_scaled,
       this,
       11,
       [_scale]
@@ -398,7 +403,7 @@ export class Transform2D {
   scaled_local (_scale) {
     let ret = new Transform2D()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Transform2D._bindings.method_scaled_local,
+      Transform2D.#_bindings.method_scaled_local,
       this,
       11,
       [_scale]
@@ -408,7 +413,7 @@ export class Transform2D {
   translated (_offset) {
     let ret = new Transform2D()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Transform2D._bindings.method_translated,
+      Transform2D.#_bindings.method_translated,
       this,
       11,
       [_offset]
@@ -418,7 +423,7 @@ export class Transform2D {
   translated_local (_offset) {
     let ret = new Transform2D()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Transform2D._bindings.method_translated_local,
+      Transform2D.#_bindings.method_translated_local,
       this,
       11,
       [_offset]
@@ -428,7 +433,7 @@ export class Transform2D {
   determinant () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Transform2D._bindings.method_determinant,
+      Transform2D.#_bindings.method_determinant,
       this,
       3,
       []
@@ -438,7 +443,7 @@ export class Transform2D {
   basis_xform (_v) {
     let ret = new Vector2()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Transform2D._bindings.method_basis_xform,
+      Transform2D.#_bindings.method_basis_xform,
       this,
       5,
       [_v]
@@ -448,7 +453,7 @@ export class Transform2D {
   basis_xform_inv (_v) {
     let ret = new Vector2()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Transform2D._bindings.method_basis_xform_inv,
+      Transform2D.#_bindings.method_basis_xform_inv,
       this,
       5,
       [_v]
@@ -458,7 +463,7 @@ export class Transform2D {
   interpolate_with (_xform, _weight) {
     let ret = new Transform2D()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Transform2D._bindings.method_interpolate_with,
+      Transform2D.#_bindings.method_interpolate_with,
       this,
       11,
       [_xform, _weight]
@@ -468,7 +473,7 @@ export class Transform2D {
   is_conformal () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Transform2D._bindings.method_is_conformal,
+      Transform2D.#_bindings.method_is_conformal,
       this,
       1,
       []
@@ -478,7 +483,7 @@ export class Transform2D {
   is_equal_approx (_xform) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Transform2D._bindings.method_is_equal_approx,
+      Transform2D.#_bindings.method_is_equal_approx,
       this,
       1,
       [_xform]
@@ -488,7 +493,7 @@ export class Transform2D {
   is_finite () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Transform2D._bindings.method_is_finite,
+      Transform2D.#_bindings.method_is_finite,
       this,
       1,
       []
@@ -498,7 +503,7 @@ export class Transform2D {
   looking_at (_target) {
     let ret = new Transform2D()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Transform2D._bindings.method_looking_at,
+      Transform2D.#_bindings.method_looking_at,
       this,
       11,
       [_target]

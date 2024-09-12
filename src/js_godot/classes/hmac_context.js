@@ -1,8 +1,7 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
-import { RefCounted } from '@js_godot/classes/ref_counted'
 import { StringName } from '@js_godot/variant/string_name'
-import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
+import { RefCounted } from '@js_godot/classes/ref_counted'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -17,7 +16,7 @@ class _MethodBindings {
 }
 export class HMACContext extends RefCounted{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -27,62 +26,68 @@ export class HMACContext extends RefCounted{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_start() {
+    if (!this.#_bindings.method_start) {
       let classname = new StringName("HMACContext");
       let methodname = new StringName("start");
-      this._bindings.method_start = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_start = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3537364598
       );
     }
-    {
+  }
+  static init_method_update() {
+    if (!this.#_bindings.method_update) {
       let classname = new StringName("HMACContext");
       let methodname = new StringName("update");
-      this._bindings.method_update = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_update = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         680677267
       );
     }
-    {
+  }
+  static init_method_finish() {
+    if (!this.#_bindings.method_finish) {
       let classname = new StringName("HMACContext");
       let methodname = new StringName("finish");
-      this._bindings.method_finish = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_finish = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2115431945
       );
     }
   }
+
+  
   
   start(_hash_type, _key) {
+    HMACContext.init_method_start();
     return _call_native_mb_ret(
-      HMACContext._bindings.method_start,
+      HMACContext.#_bindings.method_start,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       _hash_type, _key
     );
     
   }
   update(_data) {
+    HMACContext.init_method_update();
     return _call_native_mb_ret(
-      HMACContext._bindings.method_update,
+      HMACContext.#_bindings.method_update,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       _data
     );
     
   }
   finish() {
+    HMACContext.init_method_finish();
     return _call_native_mb_ret(
-      HMACContext._bindings.method_finish,
+      HMACContext.#_bindings.method_finish,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -92,8 +97,4 @@ export class HMACContext extends RefCounted{
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

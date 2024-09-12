@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { RefCounted } from '@js_godot/classes/ref_counted'
-import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -23,7 +23,7 @@ class _MethodBindings {
 }
 export class RDVertexAttribute extends RefCounted{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -33,185 +33,215 @@ export class RDVertexAttribute extends RefCounted{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_location() {
+    if (!this.#_bindings.method_set_location) {
       let classname = new StringName("RDVertexAttribute");
       let methodname = new StringName("set_location");
-      this._bindings.method_set_location = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_location = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1286410249
       );
     }
-    {
+  }
+  static init_method_get_location() {
+    if (!this.#_bindings.method_get_location) {
       let classname = new StringName("RDVertexAttribute");
       let methodname = new StringName("get_location");
-      this._bindings.method_get_location = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_location = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
-    {
+  }
+  static init_method_set_offset() {
+    if (!this.#_bindings.method_set_offset) {
       let classname = new StringName("RDVertexAttribute");
       let methodname = new StringName("set_offset");
-      this._bindings.method_set_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_offset = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1286410249
       );
     }
-    {
+  }
+  static init_method_get_offset() {
+    if (!this.#_bindings.method_get_offset) {
       let classname = new StringName("RDVertexAttribute");
       let methodname = new StringName("get_offset");
-      this._bindings.method_get_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_offset = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
-    {
+  }
+  static init_method_set_format() {
+    if (!this.#_bindings.method_set_format) {
       let classname = new StringName("RDVertexAttribute");
       let methodname = new StringName("set_format");
-      this._bindings.method_set_format = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_format = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         565531219
       );
     }
-    {
+  }
+  static init_method_get_format() {
+    if (!this.#_bindings.method_get_format) {
       let classname = new StringName("RDVertexAttribute");
       let methodname = new StringName("get_format");
-      this._bindings.method_get_format = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_format = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2235804183
       );
     }
-    {
+  }
+  static init_method_set_stride() {
+    if (!this.#_bindings.method_set_stride) {
       let classname = new StringName("RDVertexAttribute");
       let methodname = new StringName("set_stride");
-      this._bindings.method_set_stride = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_stride = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1286410249
       );
     }
-    {
+  }
+  static init_method_get_stride() {
+    if (!this.#_bindings.method_get_stride) {
       let classname = new StringName("RDVertexAttribute");
       let methodname = new StringName("get_stride");
-      this._bindings.method_get_stride = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_stride = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
-    {
+  }
+  static init_method_set_frequency() {
+    if (!this.#_bindings.method_set_frequency) {
       let classname = new StringName("RDVertexAttribute");
       let methodname = new StringName("set_frequency");
-      this._bindings.method_set_frequency = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_frequency = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         522141836
       );
     }
-    {
+  }
+  static init_method_get_frequency() {
+    if (!this.#_bindings.method_get_frequency) {
       let classname = new StringName("RDVertexAttribute");
       let methodname = new StringName("get_frequency");
-      this._bindings.method_get_frequency = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_frequency = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         4154106413
       );
     }
   }
+
+  
   
   set_location(_p_member) {
+    RDVertexAttribute.init_method_set_location();
     return _call_native_mb_no_ret(
-      RDVertexAttribute._bindings.method_set_location,
+      RDVertexAttribute.#_bindings.method_set_location,
       this._owner,
       _p_member
     );
     
   }
   get_location() {
+    RDVertexAttribute.init_method_get_location();
     return _call_native_mb_ret(
-      RDVertexAttribute._bindings.method_get_location,
+      RDVertexAttribute.#_bindings.method_get_location,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_offset(_p_member) {
+    RDVertexAttribute.init_method_set_offset();
     return _call_native_mb_no_ret(
-      RDVertexAttribute._bindings.method_set_offset,
+      RDVertexAttribute.#_bindings.method_set_offset,
       this._owner,
       _p_member
     );
     
   }
   get_offset() {
+    RDVertexAttribute.init_method_get_offset();
     return _call_native_mb_ret(
-      RDVertexAttribute._bindings.method_get_offset,
+      RDVertexAttribute.#_bindings.method_get_offset,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_format(_p_member) {
+    RDVertexAttribute.init_method_set_format();
     return _call_native_mb_no_ret(
-      RDVertexAttribute._bindings.method_set_format,
+      RDVertexAttribute.#_bindings.method_set_format,
       this._owner,
       _p_member
     );
     
   }
   get_format() {
+    RDVertexAttribute.init_method_get_format();
     return _call_native_mb_ret(
-      RDVertexAttribute._bindings.method_get_format,
+      RDVertexAttribute.#_bindings.method_get_format,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_stride(_p_member) {
+    RDVertexAttribute.init_method_set_stride();
     return _call_native_mb_no_ret(
-      RDVertexAttribute._bindings.method_set_stride,
+      RDVertexAttribute.#_bindings.method_set_stride,
       this._owner,
       _p_member
     );
     
   }
   get_stride() {
+    RDVertexAttribute.init_method_get_stride();
     return _call_native_mb_ret(
-      RDVertexAttribute._bindings.method_get_stride,
+      RDVertexAttribute.#_bindings.method_get_stride,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_frequency(_p_member) {
+    RDVertexAttribute.init_method_set_frequency();
     return _call_native_mb_no_ret(
-      RDVertexAttribute._bindings.method_set_frequency,
+      RDVertexAttribute.#_bindings.method_set_frequency,
       this._owner,
       _p_member
     );
     
   }
   get_frequency() {
+    RDVertexAttribute.init_method_get_frequency();
     return _call_native_mb_ret(
-      RDVertexAttribute._bindings.method_get_frequency,
+      RDVertexAttribute.#_bindings.method_get_frequency,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
@@ -248,8 +278,4 @@ set frequency (new_value) {
   this.set_frequency(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

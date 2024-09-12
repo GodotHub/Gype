@@ -1,9 +1,7 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
-import { PackedStringArray } from '@js_godot/variant/packed_string_array'
 import { StringName } from '@js_godot/variant/string_name'
 import { GodotObject } from '@js_godot/classes/godot_object'
-import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -20,7 +18,7 @@ class _MethodBindings {
   method_get_extension;
 }class _GDExtensionManager extends GodotObject{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -30,107 +28,123 @@ class _MethodBindings {
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_load_extension() {
+    if (!this.#_bindings.method_load_extension) {
       let classname = new StringName("GDExtensionManager");
       let methodname = new StringName("load_extension");
-      this._bindings.method_load_extension = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_load_extension = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         4024158731
       );
     }
-    {
+  }
+  static init_method_reload_extension() {
+    if (!this.#_bindings.method_reload_extension) {
       let classname = new StringName("GDExtensionManager");
       let methodname = new StringName("reload_extension");
-      this._bindings.method_reload_extension = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_reload_extension = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         4024158731
       );
     }
-    {
+  }
+  static init_method_unload_extension() {
+    if (!this.#_bindings.method_unload_extension) {
       let classname = new StringName("GDExtensionManager");
       let methodname = new StringName("unload_extension");
-      this._bindings.method_unload_extension = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_unload_extension = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         4024158731
       );
     }
-    {
+  }
+  static init_method_is_extension_loaded() {
+    if (!this.#_bindings.method_is_extension_loaded) {
       let classname = new StringName("GDExtensionManager");
       let methodname = new StringName("is_extension_loaded");
-      this._bindings.method_is_extension_loaded = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_extension_loaded = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3927539163
       );
     }
-    {
+  }
+  static init_method_get_loaded_extensions() {
+    if (!this.#_bindings.method_get_loaded_extensions) {
       let classname = new StringName("GDExtensionManager");
       let methodname = new StringName("get_loaded_extensions");
-      this._bindings.method_get_loaded_extensions = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_loaded_extensions = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1139954409
       );
     }
-    {
+  }
+  static init_method_get_extension() {
+    if (!this.#_bindings.method_get_extension) {
       let classname = new StringName("GDExtensionManager");
       let methodname = new StringName("get_extension");
-      this._bindings.method_get_extension = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_extension = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         49743343
       );
     }
   }
+
+  
   
   load_extension(_path) {
+    GDExtensionManager.init_method_load_extension();
     return _call_native_mb_ret(
-      _GDExtensionManager._bindings.method_load_extension,
+      _GDExtensionManager.#_bindings.method_load_extension,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       _path
     );
     
   }
   reload_extension(_path) {
+    GDExtensionManager.init_method_reload_extension();
     return _call_native_mb_ret(
-      _GDExtensionManager._bindings.method_reload_extension,
+      _GDExtensionManager.#_bindings.method_reload_extension,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       _path
     );
     
   }
   unload_extension(_path) {
+    GDExtensionManager.init_method_unload_extension();
     return _call_native_mb_ret(
-      _GDExtensionManager._bindings.method_unload_extension,
+      _GDExtensionManager.#_bindings.method_unload_extension,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       _path
     );
     
   }
   is_extension_loaded(_path) {
+    GDExtensionManager.init_method_is_extension_loaded();
     return _call_native_mb_ret(
-      _GDExtensionManager._bindings.method_is_extension_loaded,
+      _GDExtensionManager.#_bindings.method_is_extension_loaded,
       this._owner,
 			Variant.Type.BOOL,
+    
       _path
     );
     
   }
   get_loaded_extensions() {
+    GDExtensionManager.init_method_get_loaded_extensions();
     return _call_native_mb_ret(
-      _GDExtensionManager._bindings.method_get_loaded_extensions,
+      _GDExtensionManager.#_bindings.method_get_loaded_extensions,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -139,10 +153,11 @@ class _MethodBindings {
     
   }
   get_extension(_path) {
+    GDExtensionManager.init_method_get_extension();
     return _call_native_mb_ret(
-      _GDExtensionManager._bindings.method_get_extension,
+      _GDExtensionManager.#_bindings.method_get_extension,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       _path
     );
     
@@ -155,10 +170,6 @@ class _MethodBindings {
     LOAD_STATUS_ALREADY_LOADED: 2,
     LOAD_STATUS_NOT_LOADED: 3,
     LOAD_STATUS_NEEDS_RESTART: 4,
-  }
-
-  static {
-    this._init_bindings();
   }
 }
 export const GDExtensionManager = (function () {

@@ -13,7 +13,7 @@ class _MethodBindings {
 }
 export class MainLoop extends GodotObject{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -23,13 +23,8 @@ export class MainLoop extends GodotObject{
       super(godot_object);
     }
   }
+
   
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-  }
   
   _initialize() {
   }
@@ -41,8 +36,4 @@ export class MainLoop extends GodotObject{
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

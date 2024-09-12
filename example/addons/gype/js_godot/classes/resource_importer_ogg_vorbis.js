@@ -1,9 +1,7 @@
 import * as internal from '__internal__';
-import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { ResourceImporter } from '@js_godot/classes/resource_importer'
-import { Variant } from '@js_godot/variant/variant'
-import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -17,7 +15,7 @@ class _MethodBindings {
 }
 export class ResourceImporterOggVorbis extends ResourceImporter{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -27,54 +25,51 @@ export class ResourceImporterOggVorbis extends ResourceImporter{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_load_from_buffer() {
+    if (!this.#_bindings.method_load_from_buffer) {
       let classname = new StringName("ResourceImporterOggVorbis");
       let methodname = new StringName("load_from_buffer");
-      this._bindings.method_load_from_buffer = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_load_from_buffer = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         354904730
       );
     }
-    {
+  }
+  static init_method_load_from_file() {
+    if (!this.#_bindings.method_load_from_file) {
       let classname = new StringName("ResourceImporterOggVorbis");
       let methodname = new StringName("load_from_file");
-      this._bindings.method_load_from_file = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_load_from_file = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         797568536
       );
     }
   }
+
+  
   
   load_from_buffer(_buffer) {
+    ResourceImporterOggVorbis.init_method_load_from_buffer();
     return _call_native_mb_ret(
-      ResourceImporterOggVorbis._bindings.method_load_from_buffer,
+      ResourceImporterOggVorbis.#_bindings.method_load_from_buffer,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       _buffer
     );
     
   }
   load_from_file(_path) {
+    ResourceImporterOggVorbis.init_method_load_from_file();
     return _call_native_mb_ret(
-      ResourceImporterOggVorbis._bindings.method_load_from_file,
+      ResourceImporterOggVorbis.#_bindings.method_load_from_file,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       _path
     );
     
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

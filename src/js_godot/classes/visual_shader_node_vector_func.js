@@ -15,7 +15,7 @@ class _MethodBindings {
 }
 export class VisualShaderNodeVectorFunc extends VisualShaderNodeVectorBase{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -25,45 +25,47 @@ export class VisualShaderNodeVectorFunc extends VisualShaderNodeVectorBase{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_function() {
+    if (!this.#_bindings.method_set_function) {
       let classname = new StringName("VisualShaderNodeVectorFunc");
       let methodname = new StringName("set_function");
-      this._bindings.method_set_function = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_function = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         629964457
       );
     }
-    {
+  }
+  static init_method_get_function() {
+    if (!this.#_bindings.method_get_function) {
       let classname = new StringName("VisualShaderNodeVectorFunc");
       let methodname = new StringName("get_function");
-      this._bindings.method_get_function = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_function = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         4047776843
       );
     }
   }
+
+  
   
   set_function(_func) {
+    VisualShaderNodeVectorFunc.init_method_set_function();
     return _call_native_mb_no_ret(
-      VisualShaderNodeVectorFunc._bindings.method_set_function,
+      VisualShaderNodeVectorFunc.#_bindings.method_set_function,
       this._owner,
       _func
     );
     
   }
   get_function() {
+    VisualShaderNodeVectorFunc.init_method_get_function();
     return _call_native_mb_ret(
-      VisualShaderNodeVectorFunc._bindings.method_get_function,
+      VisualShaderNodeVectorFunc.#_bindings.method_get_function,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
@@ -111,9 +113,5 @@ set function (new_value) {
     FUNC_TRUNC: 31,
     FUNC_ONEMINUS: 32,
     FUNC_MAX: 33,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

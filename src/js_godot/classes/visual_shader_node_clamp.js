@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { VisualShaderNode } from '@js_godot/classes/visual_shader_node'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -15,7 +15,7 @@ class _MethodBindings {
 }
 export class VisualShaderNodeClamp extends VisualShaderNode{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -25,45 +25,47 @@ export class VisualShaderNodeClamp extends VisualShaderNode{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_op_type() {
+    if (!this.#_bindings.method_set_op_type) {
       let classname = new StringName("VisualShaderNodeClamp");
       let methodname = new StringName("set_op_type");
-      this._bindings.method_set_op_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_op_type = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         405010749
       );
     }
-    {
+  }
+  static init_method_get_op_type() {
+    if (!this.#_bindings.method_get_op_type) {
       let classname = new StringName("VisualShaderNodeClamp");
       let methodname = new StringName("get_op_type");
-      this._bindings.method_get_op_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_op_type = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         233276050
       );
     }
   }
+
+  
   
   set_op_type(_op_type) {
+    VisualShaderNodeClamp.init_method_set_op_type();
     return _call_native_mb_no_ret(
-      VisualShaderNodeClamp._bindings.method_set_op_type,
+      VisualShaderNodeClamp.#_bindings.method_set_op_type,
       this._owner,
       _op_type
     );
     
   }
   get_op_type() {
+    VisualShaderNodeClamp.init_method_get_op_type();
     return _call_native_mb_ret(
-      VisualShaderNodeClamp._bindings.method_get_op_type,
+      VisualShaderNodeClamp.#_bindings.method_get_op_type,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
@@ -84,9 +86,5 @@ set op_type (new_value) {
     OP_TYPE_VECTOR_3D: 4,
     OP_TYPE_VECTOR_4D: 5,
     OP_TYPE_MAX: 6,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

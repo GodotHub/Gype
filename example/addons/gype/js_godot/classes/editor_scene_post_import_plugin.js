@@ -1,8 +1,7 @@
 import * as internal from '__internal__';
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { RefCounted } from '@js_godot/classes/ref_counted'
-import { GDString } from '@js_godot/variant/gd_string'
-import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -17,7 +16,7 @@ class _MethodBindings {
 }
 export class EditorScenePostImportPlugin extends RefCounted{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -27,40 +26,41 @@ export class EditorScenePostImportPlugin extends RefCounted{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_get_option_value() {
+    if (!this.#_bindings.method_get_option_value) {
       let classname = new StringName("EditorScenePostImportPlugin");
       let methodname = new StringName("get_option_value");
-      this._bindings.method_get_option_value = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_option_value = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2760726917
       );
     }
-    {
+  }
+  static init_method_add_import_option() {
+    if (!this.#_bindings.method_add_import_option) {
       let classname = new StringName("EditorScenePostImportPlugin");
       let methodname = new StringName("add_import_option");
-      this._bindings.method_add_import_option = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_add_import_option = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         402577236
       );
     }
-    {
+  }
+  static init_method_add_import_option_advanced() {
+    if (!this.#_bindings.method_add_import_option_advanced) {
       let classname = new StringName("EditorScenePostImportPlugin");
       let methodname = new StringName("add_import_option_advanced");
-      this._bindings.method_add_import_option_advanced = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_add_import_option_advanced = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3674075649
       );
     }
   }
+
+  
   
   _get_internal_import_options(_category) {
   }
@@ -79,8 +79,9 @@ export class EditorScenePostImportPlugin extends RefCounted{
   _post_process(_scene) {
   }
   get_option_value(_name) {
+    EditorScenePostImportPlugin.init_method_get_option_value();
     return _call_native_mb_ret(
-      EditorScenePostImportPlugin._bindings.method_get_option_value,
+      EditorScenePostImportPlugin.#_bindings.method_get_option_value,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -89,16 +90,18 @@ export class EditorScenePostImportPlugin extends RefCounted{
     
   }
   add_import_option(_name, _value) {
+    EditorScenePostImportPlugin.init_method_add_import_option();
     return _call_native_mb_no_ret(
-      EditorScenePostImportPlugin._bindings.method_add_import_option,
+      EditorScenePostImportPlugin.#_bindings.method_add_import_option,
       this._owner,
       _name, _value
     );
     
   }
   add_import_option_advanced(_type, _name, _default_value, _hint, _hint_string, _usage_flags) {
+    EditorScenePostImportPlugin.init_method_add_import_option_advanced();
     return _call_native_mb_no_ret(
-      EditorScenePostImportPlugin._bindings.method_add_import_option_advanced,
+      EditorScenePostImportPlugin.#_bindings.method_add_import_option_advanced,
       this._owner,
       _type, _name, _default_value, _hint, _hint_string, _usage_flags
     );
@@ -115,9 +118,5 @@ export class EditorScenePostImportPlugin extends RefCounted{
     INTERNAL_IMPORT_CATEGORY_ANIMATION_NODE: 5,
     INTERNAL_IMPORT_CATEGORY_SKELETON_3D_NODE: 6,
     INTERNAL_IMPORT_CATEGORY_MAX: 7,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

@@ -1,8 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { AudioStream } from '@js_godot/classes/audio_stream'
 import { Variant } from '@js_godot/variant/variant'
-import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
+import { AudioStream } from '@js_godot/classes/audio_stream'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -26,7 +25,7 @@ class _MethodBindings {
 }
 export class AudioStreamMP3 extends AudioStream{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -36,133 +35,154 @@ export class AudioStreamMP3 extends AudioStream{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_data() {
+    if (!this.#_bindings.method_set_data) {
       let classname = new StringName("AudioStreamMP3");
       let methodname = new StringName("set_data");
-      this._bindings.method_set_data = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_data = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2971499966
       );
     }
-    {
+  }
+  static init_method_get_data() {
+    if (!this.#_bindings.method_get_data) {
       let classname = new StringName("AudioStreamMP3");
       let methodname = new StringName("get_data");
-      this._bindings.method_get_data = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_data = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2362200018
       );
     }
-    {
+  }
+  static init_method_set_loop() {
+    if (!this.#_bindings.method_set_loop) {
       let classname = new StringName("AudioStreamMP3");
       let methodname = new StringName("set_loop");
-      this._bindings.method_set_loop = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_loop = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_has_loop() {
+    if (!this.#_bindings.method_has_loop) {
       let classname = new StringName("AudioStreamMP3");
       let methodname = new StringName("has_loop");
-      this._bindings.method_has_loop = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_has_loop = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_set_loop_offset() {
+    if (!this.#_bindings.method_set_loop_offset) {
       let classname = new StringName("AudioStreamMP3");
       let methodname = new StringName("set_loop_offset");
-      this._bindings.method_set_loop_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_loop_offset = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_loop_offset() {
+    if (!this.#_bindings.method_get_loop_offset) {
       let classname = new StringName("AudioStreamMP3");
       let methodname = new StringName("get_loop_offset");
-      this._bindings.method_get_loop_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_loop_offset = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_set_bpm() {
+    if (!this.#_bindings.method_set_bpm) {
       let classname = new StringName("AudioStreamMP3");
       let methodname = new StringName("set_bpm");
-      this._bindings.method_set_bpm = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_bpm = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_bpm() {
+    if (!this.#_bindings.method_get_bpm) {
       let classname = new StringName("AudioStreamMP3");
       let methodname = new StringName("get_bpm");
-      this._bindings.method_get_bpm = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_bpm = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_set_beat_count() {
+    if (!this.#_bindings.method_set_beat_count) {
       let classname = new StringName("AudioStreamMP3");
       let methodname = new StringName("set_beat_count");
-      this._bindings.method_set_beat_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_beat_count = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1286410249
       );
     }
-    {
+  }
+  static init_method_get_beat_count() {
+    if (!this.#_bindings.method_get_beat_count) {
       let classname = new StringName("AudioStreamMP3");
       let methodname = new StringName("get_beat_count");
-      this._bindings.method_get_beat_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("AudioStreamMP3");
-      let methodname = new StringName("set_bar_beats");
-      this._bindings.method_set_bar_beats = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("AudioStreamMP3");
-      let methodname = new StringName("get_bar_beats");
-      this._bindings.method_get_bar_beats = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_beat_count = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
   }
+  static init_method_set_bar_beats() {
+    if (!this.#_bindings.method_set_bar_beats) {
+      let classname = new StringName("AudioStreamMP3");
+      let methodname = new StringName("set_bar_beats");
+      this.#_bindings.method_set_bar_beats = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1286410249
+      );
+    }
+  }
+  static init_method_get_bar_beats() {
+    if (!this.#_bindings.method_get_bar_beats) {
+      let classname = new StringName("AudioStreamMP3");
+      let methodname = new StringName("get_bar_beats");
+      this.#_bindings.method_get_bar_beats = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3905245786
+      );
+    }
+  }
+
+  
   
   set_data(_data) {
+    AudioStreamMP3.init_method_set_data();
     return _call_native_mb_no_ret(
-      AudioStreamMP3._bindings.method_set_data,
+      AudioStreamMP3.#_bindings.method_set_data,
       this._owner,
       _data
     );
     
   }
   get_data() {
+    AudioStreamMP3.init_method_get_data();
     return _call_native_mb_ret(
-      AudioStreamMP3._bindings.method_get_data,
+      AudioStreamMP3.#_bindings.method_get_data,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -171,86 +191,101 @@ export class AudioStreamMP3 extends AudioStream{
     
   }
   set_loop(_enable) {
+    AudioStreamMP3.init_method_set_loop();
     return _call_native_mb_no_ret(
-      AudioStreamMP3._bindings.method_set_loop,
+      AudioStreamMP3.#_bindings.method_set_loop,
       this._owner,
       _enable
     );
     
   }
   has_loop() {
+    AudioStreamMP3.init_method_has_loop();
     return _call_native_mb_ret(
-      AudioStreamMP3._bindings.method_has_loop,
+      AudioStreamMP3.#_bindings.method_has_loop,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_loop_offset(_seconds) {
+    AudioStreamMP3.init_method_set_loop_offset();
     return _call_native_mb_no_ret(
-      AudioStreamMP3._bindings.method_set_loop_offset,
+      AudioStreamMP3.#_bindings.method_set_loop_offset,
       this._owner,
       _seconds
     );
     
   }
   get_loop_offset() {
+    AudioStreamMP3.init_method_get_loop_offset();
     return _call_native_mb_ret(
-      AudioStreamMP3._bindings.method_get_loop_offset,
+      AudioStreamMP3.#_bindings.method_get_loop_offset,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_bpm(_bpm) {
+    AudioStreamMP3.init_method_set_bpm();
     return _call_native_mb_no_ret(
-      AudioStreamMP3._bindings.method_set_bpm,
+      AudioStreamMP3.#_bindings.method_set_bpm,
       this._owner,
       _bpm
     );
     
   }
   get_bpm() {
+    AudioStreamMP3.init_method_get_bpm();
     return _call_native_mb_ret(
-      AudioStreamMP3._bindings.method_get_bpm,
+      AudioStreamMP3.#_bindings.method_get_bpm,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_beat_count(_count) {
+    AudioStreamMP3.init_method_set_beat_count();
     return _call_native_mb_no_ret(
-      AudioStreamMP3._bindings.method_set_beat_count,
+      AudioStreamMP3.#_bindings.method_set_beat_count,
       this._owner,
       _count
     );
     
   }
   get_beat_count() {
+    AudioStreamMP3.init_method_get_beat_count();
     return _call_native_mb_ret(
-      AudioStreamMP3._bindings.method_get_beat_count,
+      AudioStreamMP3.#_bindings.method_get_beat_count,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_bar_beats(_count) {
+    AudioStreamMP3.init_method_set_bar_beats();
     return _call_native_mb_no_ret(
-      AudioStreamMP3._bindings.method_set_bar_beats,
+      AudioStreamMP3.#_bindings.method_set_bar_beats,
       this._owner,
       _count
     );
     
   }
   get_bar_beats() {
+    AudioStreamMP3.init_method_get_bar_beats();
     return _call_native_mb_ret(
-      AudioStreamMP3._bindings.method_get_bar_beats,
+      AudioStreamMP3.#_bindings.method_get_bar_beats,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
@@ -293,8 +328,4 @@ set loop_offset (new_value) {
   this.set_loop_offset(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

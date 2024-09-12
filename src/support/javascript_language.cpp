@@ -1,5 +1,10 @@
 #include "support/javascript_language.hpp"
+#include "quickjs/str_utils.h"
 #include "support/javascript.hpp"
+#include <godot_cpp/classes/editor_interface.hpp>
+#include <godot_cpp/classes/resource_loader.hpp>
+#include <godot_cpp/classes/script_editor.hpp>
+#include <godot_cpp/variant/callable_method_pointer.hpp>
 
 using namespace godot;
 
@@ -52,7 +57,8 @@ PackedStringArray JavaScriptLanguage::_get_string_delimiters() const {
 }
 
 Ref<Script> JavaScriptLanguage::_make_template(const String &p_template, const String &p_class_name, const String &p_base_class_name) const {
-	return memnew(JavaScript);
+	Ref<JavaScript> script = memnew(JavaScript);
+	return script;
 }
 
 TypedArray<Dictionary> JavaScriptLanguage::_get_built_in_templates(const StringName &p_object) const {
@@ -60,7 +66,7 @@ TypedArray<Dictionary> JavaScriptLanguage::_get_built_in_templates(const StringN
 }
 
 bool JavaScriptLanguage::_is_using_templates() {
-	return false;
+	return true;
 }
 
 Dictionary JavaScriptLanguage::_validate(const String &p_script, const String &p_path, bool p_validate_functions, bool p_validate_errors, bool p_validate_warnings, bool p_validate_safe_lines) const {
@@ -74,15 +80,16 @@ String JavaScriptLanguage::_validate_path(const String &p_path) const {
 }
 
 Object *JavaScriptLanguage::_create_script() const {
-	return memnew(JavaScript);
+	JavaScript *script = memnew(JavaScript);
+	return script;
 }
 
 bool JavaScriptLanguage::_has_named_classes() const {
-	return false;
+	return true;
 }
 
 bool JavaScriptLanguage::_supports_builtin_mode() const {
-	return false;
+	return true;
 }
 
 bool JavaScriptLanguage::_supports_documentation() const {
@@ -114,7 +121,7 @@ bool JavaScriptLanguage::_overrides_external_editor() {
 }
 
 ScriptLanguage::ScriptNameCasing JavaScriptLanguage::_preferred_file_name_casing() const {
-	return ScriptLanguage::ScriptNameCasing();
+	return ScriptLanguage::SCRIPT_NAME_CASING_SNAKE_CASE;
 }
 
 Dictionary JavaScriptLanguage::_complete_code(const String &p_code, const String &p_path, Object *p_owner) const {
@@ -233,11 +240,93 @@ void JavaScriptLanguage::_frame() {
 }
 
 bool JavaScriptLanguage::_handles_global_class_type(const String &p_type) const {
-	return false;
+	return p_type == "JavaScript";
 }
 
 Dictionary JavaScriptLanguage::_get_global_class_name(const String &p_path) const {
-	return {};
+	Dictionary dict;
+	if (p_path.begins_with("res://dist")) {
+		dict["name"] = get_class_name(p_path);
+		dict["base_type"] = get_base_type(p_path);
+	}
+	return dict;
+}
+
+String godot::JavaScriptLanguage::get_base_type(const String &p_path) {
+	Ref<JavaScript> script = ResourceLoader::get_singleton()->load(p_path);
+	std::string script_code = script->_get_source_code().ascii().get_data();
+
+	JSValue ret = context.eval(script_code, "<input>", JS_EVAL_TYPE_MODULE | JS_EVAL_FLAG_COMPILE_ONLY);
+	if (!qjs::is_exception(context.ctx, ret)) {
+		JSModuleDef *md = (JSModuleDef *)JS_VALUE_GET_PTR(ret);
+		ret = JS_EvalFunction(context.ctx, ret);
+		JSValue ns = JS_GetModuleNamespace(context.ctx, md);
+		JSPropertyEnum *ptab;
+		uint32_t len;
+		if (JS_GetOwnPropertyNames(context.ctx, &ptab, &len, ns, JS_GPN_STRING_MASK) < 0) {
+			return "";
+		}
+		if (len > 0) {
+			for (uint32_t i = 0; i < len; i++) {
+				JSAtom prop_atom = ptab[i].atom;
+				JSValue el = JS_GetProperty(context.ctx, ns, prop_atom);
+				JSPropertyEnum *class_ptab;
+				uint32_t class_len;
+				if (JS_GetOwnPropertyNames(context.ctx, &class_ptab, &class_len, el, JS_GPN_SYMBOL_MASK) < 0) {
+					return "";
+				}
+				for (uint32_t j = 0; j < class_len; j++) {
+					JSAtom symbol_atom = class_ptab[j].atom;
+					const char *symbol_name = JS_AtomToCString(context.ctx, symbol_atom);
+					if (strcmp(symbol_name, JavaScriptInstance::symbol_mask) == 0) {
+						JSValue base_class = JS_GetPrototype(context.ctx, el);
+						JSValue js_base_class_name = JS_GetPropertyStr(context.ctx, base_class, "name");
+						const char *base_class_name = JS_ToCString(context.ctx, js_base_class_name);
+						return String(base_class_name);
+					}
+				}
+			}
+		}
+	}
+	return "";
+}
+
+String godot::JavaScriptLanguage::get_class_name(const String &p_path) {
+	Ref<JavaScript> script = ResourceLoader::get_singleton()->load(p_path);
+	std::string script_code = script->_get_source_code().ascii().get_data();
+
+	JSValue ret = context.eval(script_code, "<input>", JS_EVAL_TYPE_MODULE | JS_EVAL_FLAG_COMPILE_ONLY);
+	if (!qjs::is_exception(context.ctx, ret)) {
+		JSModuleDef *md = (JSModuleDef *)JS_VALUE_GET_PTR(ret);
+		ret = JS_EvalFunction(context.ctx, ret);
+		JSValue ns = JS_GetModuleNamespace(context.ctx, md);
+		JSPropertyEnum *ptab;
+		uint32_t len;
+		if (JS_GetOwnPropertyNames(context.ctx, &ptab, &len, ns, JS_GPN_STRING_MASK) < 0) {
+			return "";
+		}
+		if (len > 0) {
+			for (uint32_t i = 0; i < len; i++) {
+				JSAtom prop_atom = ptab[i].atom;
+				JSValue el = JS_GetProperty(context.ctx, ns, prop_atom);
+				JSPropertyEnum *class_ptab;
+				uint32_t class_len;
+				if (JS_GetOwnPropertyNames(context.ctx, &class_ptab, &class_len, el, JS_GPN_SYMBOL_MASK) < 0) {
+					return "";
+				}
+				for (uint32_t j = 0; j < class_len; j++) {
+					JSAtom symbol_atom = class_ptab[j].atom;
+					const char *symbol_name = JS_AtomToCString(context.ctx, symbol_atom);
+					if (strcmp(symbol_name, JavaScriptInstance::symbol_mask) == 0) {
+						JSValue js_class_name = JS_GetPropertyStr(context.ctx, el, "name");
+						const char *class_name = JS_ToCString(context.ctx, js_class_name);
+						return String(class_name);
+					}
+				}
+			}
+		}
+	}
+	return "";
 }
 
 JavaScriptLanguage::~JavaScriptLanguage() {

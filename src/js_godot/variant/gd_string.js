@@ -2,14 +2,16 @@ import * as internal from '__internal__'
 import {
   _call_builtin_constructor,
   _call_builtin_method_ptr_ret,
-  _call_builtin_method_ptr_no_ret
+  _call_builtin_method_ptr_no_ret,
+  _call_builtin_method_ptr_obj_ret,
 } from '@js_godot/core/builtin_ptrcall'
-import { PackedFloat64Array } from '@js_godot/variant/packed_float64_array'
 import { NodePath } from '@js_godot/variant/node_path'
-import { Variant } from '@js_godot/variant/variant'
-import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
-import { PackedStringArray } from '@js_godot/variant/packed_string_array'
 import { StringName } from '@js_godot/variant/string_name'
+import { PackedFloat64Array } from '@js_godot/variant/packed_float64_array'
+import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
+import { Variant } from '@js_godot/variant/variant'
+import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { GodotObject } from "@js_godot/classes/godot_object";
 
 class _MethodBindings {
   from_variant_constructor
@@ -188,54 +190,59 @@ export class GDString {
   static #SIZE = 8
   opaque = new Uint8Array(GDString.#SIZE)
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
-  constructor (from) {
-    if (!from) {
-      _call_builtin_constructor(GDString._bindings.constructor_0, this)
-    }else if (from instanceof GDString) {
-      _call_builtin_constructor(GDString._bindings.constructor_1, this, [
+  constructor (value) {
+    if (!value) {
+      _call_builtin_constructor(GDString.#_bindings.constructor_0, this)
+    } else if (arguments.length == 1&& arguments[0] instanceof GDString) {
+      let from = arguments[0];
+      _call_builtin_constructor(GDString.#_bindings.constructor_1, this, [
         from
       ])
-    }else if (from instanceof StringName) {
-      _call_builtin_constructor(GDString._bindings.constructor_2, this, [
+    } else if (arguments.length == 1&& arguments[0] instanceof StringName) {
+      let from = arguments[0];
+      _call_builtin_constructor(GDString.#_bindings.constructor_2, this, [
         from
       ])
-    }else if (from instanceof NodePath) {
-      _call_builtin_constructor(GDString._bindings.constructor_3, this, [
+    } else if (arguments.length == 1&& arguments[0] instanceof NodePath) {
+      let from = arguments[0];
+      _call_builtin_constructor(GDString.#_bindings.constructor_3, this, [
         from
       ])
-    } else if (from.constructor.name === "Variant") {
-      GDString._bindings.from_variant_constructor(this.opaque, from.opaque)
-    } else if (typeof from == 'string') {
-      internal.string_new_with_latin1_chars(this.opaque, from)
-    } else if (typeof from == 'number' || typeof from == "boolean") {
-      internal.string_new_with_latin1_chars(this.opaque, from.toString())
+    } else if (value.constructor.name === "Variant") {
+      GDString.#_bindings.from_variant_constructor(this.opaque, value.opaque)
+    } else if (value instanceof Uint8Array) {
+      this.opaque = value;
+    } else if (typeof value == 'string') {
+      internal.string_new_with_latin1_chars(this.opaque, value)
+    } else if (typeof value == 'number' || typeof value == "boolean") {
+      internal.string_new_with_latin1_chars(this.opaque, value.toString())
     }
   }
   
   static __init_bindings_constructors_destructor () {
-    this._bindings.from_variant_constructor = internal.get_variant_to_type_constructor(
+    this.#_bindings.from_variant_constructor = internal.get_variant_to_type_constructor(
       4
     )
-    this._bindings.constructor_0 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_0 = internal.variant_get_ptr_constructor(
       4,
       0
     )
-    this._bindings.constructor_1 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_1 = internal.variant_get_ptr_constructor(
       4,
       1
     )
-    this._bindings.constructor_2 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_2 = internal.variant_get_ptr_constructor(
       4,
       2
     )
-    this._bindings.constructor_3 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_3 = internal.variant_get_ptr_constructor(
       4,
       3
     )
-    this._bindings.destructor = internal.variant_get_ptr_destructor(
+    this.#_bindings.destructor = internal.variant_get_ptr_destructor(
       4
     )
   }
@@ -248,7 +255,7 @@ export class GDString {
     this.__init_bindings_constructors_destructor()
     {
       let _gde_name = new StringName('casecmp_to')
-      this._bindings.method_casecmp_to = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_casecmp_to = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         2920860731
@@ -256,7 +263,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('nocasecmp_to')
-      this._bindings.method_nocasecmp_to = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_nocasecmp_to = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         2920860731
@@ -264,7 +271,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('naturalcasecmp_to')
-      this._bindings.method_naturalcasecmp_to = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_naturalcasecmp_to = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         2920860731
@@ -272,7 +279,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('naturalnocasecmp_to')
-      this._bindings.method_naturalnocasecmp_to = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_naturalnocasecmp_to = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         2920860731
@@ -280,7 +287,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('filecasecmp_to')
-      this._bindings.method_filecasecmp_to = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_filecasecmp_to = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         2920860731
@@ -288,7 +295,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('filenocasecmp_to')
-      this._bindings.method_filenocasecmp_to = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_filenocasecmp_to = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         2920860731
@@ -296,7 +303,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('length')
-      this._bindings.method_length = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_length = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3173160232
@@ -304,7 +311,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('substr')
-      this._bindings.method_substr = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_substr = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         787537301
@@ -312,7 +319,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('get_slice')
-      this._bindings.method_get_slice = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_slice = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3535100402
@@ -320,7 +327,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('get_slicec')
-      this._bindings.method_get_slicec = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_slicec = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         787537301
@@ -328,7 +335,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('get_slice_count')
-      this._bindings.method_get_slice_count = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_slice_count = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         2920860731
@@ -336,7 +343,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('find')
-      this._bindings.method_find = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_find = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         1760645412
@@ -344,7 +351,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('findn')
-      this._bindings.method_findn = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_findn = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         1760645412
@@ -352,7 +359,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('count')
-      this._bindings.method_count = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_count = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         2343087891
@@ -360,7 +367,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('countn')
-      this._bindings.method_countn = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_countn = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         2343087891
@@ -368,7 +375,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('rfind')
-      this._bindings.method_rfind = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_rfind = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         1760645412
@@ -376,7 +383,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('rfindn')
-      this._bindings.method_rfindn = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_rfindn = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         1760645412
@@ -384,7 +391,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('match')
-      this._bindings.method_match = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_match = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         2566493496
@@ -392,7 +399,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('matchn')
-      this._bindings.method_matchn = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_matchn = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         2566493496
@@ -400,7 +407,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('begins_with')
-      this._bindings.method_begins_with = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_begins_with = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         2566493496
@@ -408,7 +415,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('ends_with')
-      this._bindings.method_ends_with = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_ends_with = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         2566493496
@@ -416,7 +423,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('is_subsequence_of')
-      this._bindings.method_is_subsequence_of = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_subsequence_of = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         2566493496
@@ -424,7 +431,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('is_subsequence_ofn')
-      this._bindings.method_is_subsequence_ofn = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_subsequence_ofn = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         2566493496
@@ -432,7 +439,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('bigrams')
-      this._bindings.method_bigrams = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_bigrams = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         747180633
@@ -440,7 +447,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('similarity')
-      this._bindings.method_similarity = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_similarity = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         2697460964
@@ -448,7 +455,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('format')
-      this._bindings.method_format = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_format = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3212199029
@@ -456,7 +463,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('replace')
-      this._bindings.method_replace = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_replace = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         1340436205
@@ -464,7 +471,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('replacen')
-      this._bindings.method_replacen = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_replacen = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         1340436205
@@ -472,7 +479,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('repeat')
-      this._bindings.method_repeat = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_repeat = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         2162347432
@@ -480,7 +487,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('reverse')
-      this._bindings.method_reverse = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_reverse = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3942272618
@@ -488,7 +495,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('insert')
-      this._bindings.method_insert = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_insert = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         248737229
@@ -496,7 +503,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('erase')
-      this._bindings.method_erase = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_erase = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         787537301
@@ -504,7 +511,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('capitalize')
-      this._bindings.method_capitalize = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_capitalize = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3942272618
@@ -512,7 +519,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('to_camel_case')
-      this._bindings.method_to_camel_case = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_to_camel_case = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3942272618
@@ -520,7 +527,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('to_pascal_case')
-      this._bindings.method_to_pascal_case = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_to_pascal_case = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3942272618
@@ -528,7 +535,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('to_snake_case')
-      this._bindings.method_to_snake_case = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_to_snake_case = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3942272618
@@ -536,7 +543,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('split')
-      this._bindings.method_split = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_split = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         1252735785
@@ -544,7 +551,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('rsplit')
-      this._bindings.method_rsplit = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_rsplit = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         1252735785
@@ -552,7 +559,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('split_floats')
-      this._bindings.method_split_floats = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_split_floats = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         2092079095
@@ -560,7 +567,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('join')
-      this._bindings.method_join = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_join = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3595973238
@@ -568,7 +575,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('to_upper')
-      this._bindings.method_to_upper = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_to_upper = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3942272618
@@ -576,7 +583,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('to_lower')
-      this._bindings.method_to_lower = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_to_lower = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3942272618
@@ -584,7 +591,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('left')
-      this._bindings.method_left = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_left = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         2162347432
@@ -592,7 +599,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('right')
-      this._bindings.method_right = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_right = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         2162347432
@@ -600,7 +607,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('strip_edges')
-      this._bindings.method_strip_edges = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_strip_edges = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         907855311
@@ -608,7 +615,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('strip_escapes')
-      this._bindings.method_strip_escapes = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_strip_escapes = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3942272618
@@ -616,7 +623,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('lstrip')
-      this._bindings.method_lstrip = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_lstrip = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3134094431
@@ -624,7 +631,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('rstrip')
-      this._bindings.method_rstrip = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_rstrip = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3134094431
@@ -632,7 +639,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('get_extension')
-      this._bindings.method_get_extension = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_extension = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3942272618
@@ -640,7 +647,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('get_basename')
-      this._bindings.method_get_basename = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_basename = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3942272618
@@ -648,7 +655,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('path_join')
-      this._bindings.method_path_join = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_path_join = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3134094431
@@ -656,7 +663,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('unicode_at')
-      this._bindings.method_unicode_at = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_unicode_at = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         4103005248
@@ -664,7 +671,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('indent')
-      this._bindings.method_indent = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_indent = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3134094431
@@ -672,7 +679,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('dedent')
-      this._bindings.method_dedent = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_dedent = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3942272618
@@ -680,7 +687,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('hash')
-      this._bindings.method_hash = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_hash = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3173160232
@@ -688,7 +695,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('md5_text')
-      this._bindings.method_md5_text = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_md5_text = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3942272618
@@ -696,7 +703,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('sha1_text')
-      this._bindings.method_sha1_text = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_sha1_text = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3942272618
@@ -704,7 +711,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('sha256_text')
-      this._bindings.method_sha256_text = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_sha256_text = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3942272618
@@ -712,7 +719,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('md5_buffer')
-      this._bindings.method_md5_buffer = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_md5_buffer = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         247621236
@@ -720,7 +727,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('sha1_buffer')
-      this._bindings.method_sha1_buffer = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_sha1_buffer = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         247621236
@@ -728,7 +735,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('sha256_buffer')
-      this._bindings.method_sha256_buffer = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_sha256_buffer = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         247621236
@@ -736,7 +743,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('is_empty')
-      this._bindings.method_is_empty = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_empty = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3918633141
@@ -744,7 +751,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('contains')
-      this._bindings.method_contains = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_contains = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         2566493496
@@ -752,7 +759,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('containsn')
-      this._bindings.method_containsn = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_containsn = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         2566493496
@@ -760,7 +767,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('is_absolute_path')
-      this._bindings.method_is_absolute_path = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_absolute_path = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3918633141
@@ -768,7 +775,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('is_relative_path')
-      this._bindings.method_is_relative_path = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_relative_path = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3918633141
@@ -776,7 +783,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('simplify_path')
-      this._bindings.method_simplify_path = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_simplify_path = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3942272618
@@ -784,7 +791,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('get_base_dir')
-      this._bindings.method_get_base_dir = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_base_dir = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3942272618
@@ -792,7 +799,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('get_file')
-      this._bindings.method_get_file = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_file = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3942272618
@@ -800,7 +807,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('xml_escape')
-      this._bindings.method_xml_escape = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_xml_escape = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3429816538
@@ -808,7 +815,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('xml_unescape')
-      this._bindings.method_xml_unescape = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_xml_unescape = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3942272618
@@ -816,7 +823,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('uri_encode')
-      this._bindings.method_uri_encode = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_uri_encode = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3942272618
@@ -824,7 +831,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('uri_decode')
-      this._bindings.method_uri_decode = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_uri_decode = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3942272618
@@ -832,7 +839,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('c_escape')
-      this._bindings.method_c_escape = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_c_escape = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3942272618
@@ -840,7 +847,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('c_unescape')
-      this._bindings.method_c_unescape = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_c_unescape = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3942272618
@@ -848,7 +855,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('json_escape')
-      this._bindings.method_json_escape = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_json_escape = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3942272618
@@ -856,7 +863,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('validate_node_name')
-      this._bindings.method_validate_node_name = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_validate_node_name = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3942272618
@@ -864,7 +871,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('validate_filename')
-      this._bindings.method_validate_filename = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_validate_filename = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3942272618
@@ -872,7 +879,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('is_valid_identifier')
-      this._bindings.method_is_valid_identifier = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_valid_identifier = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3918633141
@@ -880,7 +887,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('is_valid_int')
-      this._bindings.method_is_valid_int = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_valid_int = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3918633141
@@ -888,7 +895,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('is_valid_float')
-      this._bindings.method_is_valid_float = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_valid_float = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3918633141
@@ -896,7 +903,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('is_valid_hex_number')
-      this._bindings.method_is_valid_hex_number = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_valid_hex_number = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         593672999
@@ -904,7 +911,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('is_valid_html_color')
-      this._bindings.method_is_valid_html_color = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_valid_html_color = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3918633141
@@ -912,7 +919,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('is_valid_ip_address')
-      this._bindings.method_is_valid_ip_address = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_valid_ip_address = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3918633141
@@ -920,7 +927,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('is_valid_filename')
-      this._bindings.method_is_valid_filename = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_valid_filename = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3918633141
@@ -928,7 +935,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('to_int')
-      this._bindings.method_to_int = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_to_int = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3173160232
@@ -936,7 +943,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('to_float')
-      this._bindings.method_to_float = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_to_float = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         466405837
@@ -944,7 +951,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('hex_to_int')
-      this._bindings.method_hex_to_int = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_hex_to_int = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3173160232
@@ -952,7 +959,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('bin_to_int')
-      this._bindings.method_bin_to_int = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_bin_to_int = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3173160232
@@ -960,7 +967,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('lpad')
-      this._bindings.method_lpad = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_lpad = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         248737229
@@ -968,7 +975,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('rpad')
-      this._bindings.method_rpad = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_rpad = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         248737229
@@ -976,7 +983,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('pad_decimals')
-      this._bindings.method_pad_decimals = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_pad_decimals = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         2162347432
@@ -984,7 +991,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('pad_zeros')
-      this._bindings.method_pad_zeros = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_pad_zeros = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         2162347432
@@ -992,7 +999,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('trim_prefix')
-      this._bindings.method_trim_prefix = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_trim_prefix = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3134094431
@@ -1000,7 +1007,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('trim_suffix')
-      this._bindings.method_trim_suffix = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_trim_suffix = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         3134094431
@@ -1008,7 +1015,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('to_ascii_buffer')
-      this._bindings.method_to_ascii_buffer = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_to_ascii_buffer = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         247621236
@@ -1016,7 +1023,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('to_utf8_buffer')
-      this._bindings.method_to_utf8_buffer = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_to_utf8_buffer = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         247621236
@@ -1024,7 +1031,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('to_utf16_buffer')
-      this._bindings.method_to_utf16_buffer = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_to_utf16_buffer = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         247621236
@@ -1032,7 +1039,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('to_utf32_buffer')
-      this._bindings.method_to_utf32_buffer = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_to_utf32_buffer = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         247621236
@@ -1040,7 +1047,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('hex_decode')
-      this._bindings.method_hex_decode = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_hex_decode = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         247621236
@@ -1048,7 +1055,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('to_wchar_buffer')
-      this._bindings.method_to_wchar_buffer = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_to_wchar_buffer = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         247621236
@@ -1056,7 +1063,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('num_scientific')
-      this._bindings.method_num_scientific = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_num_scientific = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         2710373411
@@ -1064,7 +1071,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('num')
-      this._bindings.method_num = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_num = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         1555901022
@@ -1072,7 +1079,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('num_int64')
-      this._bindings.method_num_int64 = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_num_int64 = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         2111271071
@@ -1080,7 +1087,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('num_uint64')
-      this._bindings.method_num_uint64 = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_num_uint64 = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         2111271071
@@ -1088,7 +1095,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('chr')
-      this._bindings.method_chr = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_chr = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         897497541
@@ -1096,7 +1103,7 @@ export class GDString {
     }
     {
       let _gde_name = new StringName('humanize_size')
-      this._bindings.method_humanize_size = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_humanize_size = internal.variant_get_ptr_builtin_method(
         4,
         _gde_name.opaque,
         897497541
@@ -1108,7 +1115,7 @@ export class GDString {
   casecmp_to (_to) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_casecmp_to,
+      GDString.#_bindings.method_casecmp_to,
       this,
       2,
       [_to]
@@ -1118,7 +1125,7 @@ export class GDString {
   nocasecmp_to (_to) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_nocasecmp_to,
+      GDString.#_bindings.method_nocasecmp_to,
       this,
       2,
       [_to]
@@ -1128,7 +1135,7 @@ export class GDString {
   naturalcasecmp_to (_to) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_naturalcasecmp_to,
+      GDString.#_bindings.method_naturalcasecmp_to,
       this,
       2,
       [_to]
@@ -1138,7 +1145,7 @@ export class GDString {
   naturalnocasecmp_to (_to) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_naturalnocasecmp_to,
+      GDString.#_bindings.method_naturalnocasecmp_to,
       this,
       2,
       [_to]
@@ -1148,7 +1155,7 @@ export class GDString {
   filecasecmp_to (_to) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_filecasecmp_to,
+      GDString.#_bindings.method_filecasecmp_to,
       this,
       2,
       [_to]
@@ -1158,7 +1165,7 @@ export class GDString {
   filenocasecmp_to (_to) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_filenocasecmp_to,
+      GDString.#_bindings.method_filenocasecmp_to,
       this,
       2,
       [_to]
@@ -1168,7 +1175,7 @@ export class GDString {
   length () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_length,
+      GDString.#_bindings.method_length,
       this,
       2,
       []
@@ -1178,7 +1185,7 @@ export class GDString {
   substr (_from, _len) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_substr,
+      GDString.#_bindings.method_substr,
       this,
       4,
       [_from, _len]
@@ -1188,7 +1195,7 @@ export class GDString {
   get_slice (_delimiter, _slice) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_get_slice,
+      GDString.#_bindings.method_get_slice,
       this,
       4,
       [_delimiter, _slice]
@@ -1198,7 +1205,7 @@ export class GDString {
   get_slicec (_delimiter, _slice) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_get_slicec,
+      GDString.#_bindings.method_get_slicec,
       this,
       4,
       [_delimiter, _slice]
@@ -1208,7 +1215,7 @@ export class GDString {
   get_slice_count (_delimiter) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_get_slice_count,
+      GDString.#_bindings.method_get_slice_count,
       this,
       2,
       [_delimiter]
@@ -1218,7 +1225,7 @@ export class GDString {
   find (_what, _from) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_find,
+      GDString.#_bindings.method_find,
       this,
       2,
       [_what, _from]
@@ -1228,7 +1235,7 @@ export class GDString {
   findn (_what, _from) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_findn,
+      GDString.#_bindings.method_findn,
       this,
       2,
       [_what, _from]
@@ -1238,7 +1245,7 @@ export class GDString {
   count (_what, _from, _to) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_count,
+      GDString.#_bindings.method_count,
       this,
       2,
       [_what, _from, _to]
@@ -1248,7 +1255,7 @@ export class GDString {
   countn (_what, _from, _to) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_countn,
+      GDString.#_bindings.method_countn,
       this,
       2,
       [_what, _from, _to]
@@ -1258,7 +1265,7 @@ export class GDString {
   rfind (_what, _from) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_rfind,
+      GDString.#_bindings.method_rfind,
       this,
       2,
       [_what, _from]
@@ -1268,7 +1275,7 @@ export class GDString {
   rfindn (_what, _from) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_rfindn,
+      GDString.#_bindings.method_rfindn,
       this,
       2,
       [_what, _from]
@@ -1278,7 +1285,7 @@ export class GDString {
   match (_expr) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_match,
+      GDString.#_bindings.method_match,
       this,
       1,
       [_expr]
@@ -1288,7 +1295,7 @@ export class GDString {
   matchn (_expr) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_matchn,
+      GDString.#_bindings.method_matchn,
       this,
       1,
       [_expr]
@@ -1298,7 +1305,7 @@ export class GDString {
   begins_with (_text) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_begins_with,
+      GDString.#_bindings.method_begins_with,
       this,
       1,
       [_text]
@@ -1308,7 +1315,7 @@ export class GDString {
   ends_with (_text) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_ends_with,
+      GDString.#_bindings.method_ends_with,
       this,
       1,
       [_text]
@@ -1318,7 +1325,7 @@ export class GDString {
   is_subsequence_of (_text) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_is_subsequence_of,
+      GDString.#_bindings.method_is_subsequence_of,
       this,
       1,
       [_text]
@@ -1328,7 +1335,7 @@ export class GDString {
   is_subsequence_ofn (_text) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_is_subsequence_ofn,
+      GDString.#_bindings.method_is_subsequence_ofn,
       this,
       1,
       [_text]
@@ -1338,7 +1345,7 @@ export class GDString {
   bigrams () {
     let ret = new PackedStringArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_bigrams,
+      GDString.#_bindings.method_bigrams,
       this,
       34,
       []
@@ -1348,7 +1355,7 @@ export class GDString {
   similarity (_text) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_similarity,
+      GDString.#_bindings.method_similarity,
       this,
       3,
       [_text]
@@ -1358,7 +1365,7 @@ export class GDString {
   format (_values, _placeholder) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_format,
+      GDString.#_bindings.method_format,
       this,
       4,
       [_values, _placeholder]
@@ -1368,7 +1375,7 @@ export class GDString {
   replace (_what, _forwhat) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_replace,
+      GDString.#_bindings.method_replace,
       this,
       4,
       [_what, _forwhat]
@@ -1378,7 +1385,7 @@ export class GDString {
   replacen (_what, _forwhat) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_replacen,
+      GDString.#_bindings.method_replacen,
       this,
       4,
       [_what, _forwhat]
@@ -1388,7 +1395,7 @@ export class GDString {
   repeat (_count) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_repeat,
+      GDString.#_bindings.method_repeat,
       this,
       4,
       [_count]
@@ -1398,7 +1405,7 @@ export class GDString {
   reverse () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_reverse,
+      GDString.#_bindings.method_reverse,
       this,
       4,
       []
@@ -1408,7 +1415,7 @@ export class GDString {
   insert (_position, _what) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_insert,
+      GDString.#_bindings.method_insert,
       this,
       4,
       [_position, _what]
@@ -1418,7 +1425,7 @@ export class GDString {
   erase (_position, _chars) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_erase,
+      GDString.#_bindings.method_erase,
       this,
       4,
       [_position, _chars]
@@ -1428,7 +1435,7 @@ export class GDString {
   capitalize () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_capitalize,
+      GDString.#_bindings.method_capitalize,
       this,
       4,
       []
@@ -1438,7 +1445,7 @@ export class GDString {
   to_camel_case () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_to_camel_case,
+      GDString.#_bindings.method_to_camel_case,
       this,
       4,
       []
@@ -1448,7 +1455,7 @@ export class GDString {
   to_pascal_case () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_to_pascal_case,
+      GDString.#_bindings.method_to_pascal_case,
       this,
       4,
       []
@@ -1458,7 +1465,7 @@ export class GDString {
   to_snake_case () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_to_snake_case,
+      GDString.#_bindings.method_to_snake_case,
       this,
       4,
       []
@@ -1468,7 +1475,7 @@ export class GDString {
   split (_delimiter, _allow_empty, _maxsplit) {
     let ret = new PackedStringArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_split,
+      GDString.#_bindings.method_split,
       this,
       34,
       [_delimiter, _allow_empty, _maxsplit]
@@ -1478,7 +1485,7 @@ export class GDString {
   rsplit (_delimiter, _allow_empty, _maxsplit) {
     let ret = new PackedStringArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_rsplit,
+      GDString.#_bindings.method_rsplit,
       this,
       34,
       [_delimiter, _allow_empty, _maxsplit]
@@ -1488,7 +1495,7 @@ export class GDString {
   split_floats (_delimiter, _allow_empty) {
     let ret = new PackedFloat64Array()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_split_floats,
+      GDString.#_bindings.method_split_floats,
       this,
       33,
       [_delimiter, _allow_empty]
@@ -1498,7 +1505,7 @@ export class GDString {
   join (_parts) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_join,
+      GDString.#_bindings.method_join,
       this,
       4,
       [_parts]
@@ -1508,7 +1515,7 @@ export class GDString {
   to_upper () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_to_upper,
+      GDString.#_bindings.method_to_upper,
       this,
       4,
       []
@@ -1518,7 +1525,7 @@ export class GDString {
   to_lower () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_to_lower,
+      GDString.#_bindings.method_to_lower,
       this,
       4,
       []
@@ -1528,7 +1535,7 @@ export class GDString {
   left (_length) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_left,
+      GDString.#_bindings.method_left,
       this,
       4,
       [_length]
@@ -1538,7 +1545,7 @@ export class GDString {
   right (_length) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_right,
+      GDString.#_bindings.method_right,
       this,
       4,
       [_length]
@@ -1548,7 +1555,7 @@ export class GDString {
   strip_edges (_left, _right) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_strip_edges,
+      GDString.#_bindings.method_strip_edges,
       this,
       4,
       [_left, _right]
@@ -1558,7 +1565,7 @@ export class GDString {
   strip_escapes () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_strip_escapes,
+      GDString.#_bindings.method_strip_escapes,
       this,
       4,
       []
@@ -1568,7 +1575,7 @@ export class GDString {
   lstrip (_chars) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_lstrip,
+      GDString.#_bindings.method_lstrip,
       this,
       4,
       [_chars]
@@ -1578,7 +1585,7 @@ export class GDString {
   rstrip (_chars) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_rstrip,
+      GDString.#_bindings.method_rstrip,
       this,
       4,
       [_chars]
@@ -1588,7 +1595,7 @@ export class GDString {
   get_extension () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_get_extension,
+      GDString.#_bindings.method_get_extension,
       this,
       4,
       []
@@ -1598,7 +1605,7 @@ export class GDString {
   get_basename () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_get_basename,
+      GDString.#_bindings.method_get_basename,
       this,
       4,
       []
@@ -1608,7 +1615,7 @@ export class GDString {
   path_join (_file) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_path_join,
+      GDString.#_bindings.method_path_join,
       this,
       4,
       [_file]
@@ -1618,7 +1625,7 @@ export class GDString {
   unicode_at (_at) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_unicode_at,
+      GDString.#_bindings.method_unicode_at,
       this,
       2,
       [_at]
@@ -1628,7 +1635,7 @@ export class GDString {
   indent (_prefix) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_indent,
+      GDString.#_bindings.method_indent,
       this,
       4,
       [_prefix]
@@ -1638,7 +1645,7 @@ export class GDString {
   dedent () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_dedent,
+      GDString.#_bindings.method_dedent,
       this,
       4,
       []
@@ -1648,7 +1655,7 @@ export class GDString {
   hash () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_hash,
+      GDString.#_bindings.method_hash,
       this,
       2,
       []
@@ -1658,7 +1665,7 @@ export class GDString {
   md5_text () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_md5_text,
+      GDString.#_bindings.method_md5_text,
       this,
       4,
       []
@@ -1668,7 +1675,7 @@ export class GDString {
   sha1_text () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_sha1_text,
+      GDString.#_bindings.method_sha1_text,
       this,
       4,
       []
@@ -1678,7 +1685,7 @@ export class GDString {
   sha256_text () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_sha256_text,
+      GDString.#_bindings.method_sha256_text,
       this,
       4,
       []
@@ -1688,7 +1695,7 @@ export class GDString {
   md5_buffer () {
     let ret = new PackedByteArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_md5_buffer,
+      GDString.#_bindings.method_md5_buffer,
       this,
       29,
       []
@@ -1698,7 +1705,7 @@ export class GDString {
   sha1_buffer () {
     let ret = new PackedByteArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_sha1_buffer,
+      GDString.#_bindings.method_sha1_buffer,
       this,
       29,
       []
@@ -1708,7 +1715,7 @@ export class GDString {
   sha256_buffer () {
     let ret = new PackedByteArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_sha256_buffer,
+      GDString.#_bindings.method_sha256_buffer,
       this,
       29,
       []
@@ -1718,7 +1725,7 @@ export class GDString {
   is_empty () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_is_empty,
+      GDString.#_bindings.method_is_empty,
       this,
       1,
       []
@@ -1728,7 +1735,7 @@ export class GDString {
   contains (_what) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_contains,
+      GDString.#_bindings.method_contains,
       this,
       1,
       [_what]
@@ -1738,7 +1745,7 @@ export class GDString {
   containsn (_what) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_containsn,
+      GDString.#_bindings.method_containsn,
       this,
       1,
       [_what]
@@ -1748,7 +1755,7 @@ export class GDString {
   is_absolute_path () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_is_absolute_path,
+      GDString.#_bindings.method_is_absolute_path,
       this,
       1,
       []
@@ -1758,7 +1765,7 @@ export class GDString {
   is_relative_path () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_is_relative_path,
+      GDString.#_bindings.method_is_relative_path,
       this,
       1,
       []
@@ -1768,7 +1775,7 @@ export class GDString {
   simplify_path () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_simplify_path,
+      GDString.#_bindings.method_simplify_path,
       this,
       4,
       []
@@ -1778,7 +1785,7 @@ export class GDString {
   get_base_dir () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_get_base_dir,
+      GDString.#_bindings.method_get_base_dir,
       this,
       4,
       []
@@ -1788,7 +1795,7 @@ export class GDString {
   get_file () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_get_file,
+      GDString.#_bindings.method_get_file,
       this,
       4,
       []
@@ -1798,7 +1805,7 @@ export class GDString {
   xml_escape (_escape_quotes) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_xml_escape,
+      GDString.#_bindings.method_xml_escape,
       this,
       4,
       [_escape_quotes]
@@ -1808,7 +1815,7 @@ export class GDString {
   xml_unescape () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_xml_unescape,
+      GDString.#_bindings.method_xml_unescape,
       this,
       4,
       []
@@ -1818,7 +1825,7 @@ export class GDString {
   uri_encode () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_uri_encode,
+      GDString.#_bindings.method_uri_encode,
       this,
       4,
       []
@@ -1828,7 +1835,7 @@ export class GDString {
   uri_decode () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_uri_decode,
+      GDString.#_bindings.method_uri_decode,
       this,
       4,
       []
@@ -1838,7 +1845,7 @@ export class GDString {
   c_escape () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_c_escape,
+      GDString.#_bindings.method_c_escape,
       this,
       4,
       []
@@ -1848,7 +1855,7 @@ export class GDString {
   c_unescape () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_c_unescape,
+      GDString.#_bindings.method_c_unescape,
       this,
       4,
       []
@@ -1858,7 +1865,7 @@ export class GDString {
   json_escape () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_json_escape,
+      GDString.#_bindings.method_json_escape,
       this,
       4,
       []
@@ -1868,7 +1875,7 @@ export class GDString {
   validate_node_name () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_validate_node_name,
+      GDString.#_bindings.method_validate_node_name,
       this,
       4,
       []
@@ -1878,7 +1885,7 @@ export class GDString {
   validate_filename () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_validate_filename,
+      GDString.#_bindings.method_validate_filename,
       this,
       4,
       []
@@ -1888,7 +1895,7 @@ export class GDString {
   is_valid_identifier () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_is_valid_identifier,
+      GDString.#_bindings.method_is_valid_identifier,
       this,
       1,
       []
@@ -1898,7 +1905,7 @@ export class GDString {
   is_valid_int () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_is_valid_int,
+      GDString.#_bindings.method_is_valid_int,
       this,
       1,
       []
@@ -1908,7 +1915,7 @@ export class GDString {
   is_valid_float () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_is_valid_float,
+      GDString.#_bindings.method_is_valid_float,
       this,
       1,
       []
@@ -1918,7 +1925,7 @@ export class GDString {
   is_valid_hex_number (_with_prefix) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_is_valid_hex_number,
+      GDString.#_bindings.method_is_valid_hex_number,
       this,
       1,
       [_with_prefix]
@@ -1928,7 +1935,7 @@ export class GDString {
   is_valid_html_color () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_is_valid_html_color,
+      GDString.#_bindings.method_is_valid_html_color,
       this,
       1,
       []
@@ -1938,7 +1945,7 @@ export class GDString {
   is_valid_ip_address () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_is_valid_ip_address,
+      GDString.#_bindings.method_is_valid_ip_address,
       this,
       1,
       []
@@ -1948,7 +1955,7 @@ export class GDString {
   is_valid_filename () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_is_valid_filename,
+      GDString.#_bindings.method_is_valid_filename,
       this,
       1,
       []
@@ -1958,7 +1965,7 @@ export class GDString {
   to_int () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_to_int,
+      GDString.#_bindings.method_to_int,
       this,
       2,
       []
@@ -1968,7 +1975,7 @@ export class GDString {
   to_float () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_to_float,
+      GDString.#_bindings.method_to_float,
       this,
       3,
       []
@@ -1978,7 +1985,7 @@ export class GDString {
   hex_to_int () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_hex_to_int,
+      GDString.#_bindings.method_hex_to_int,
       this,
       2,
       []
@@ -1988,7 +1995,7 @@ export class GDString {
   bin_to_int () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_bin_to_int,
+      GDString.#_bindings.method_bin_to_int,
       this,
       2,
       []
@@ -1998,7 +2005,7 @@ export class GDString {
   lpad (_min_length, _character) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_lpad,
+      GDString.#_bindings.method_lpad,
       this,
       4,
       [_min_length, _character]
@@ -2008,7 +2015,7 @@ export class GDString {
   rpad (_min_length, _character) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_rpad,
+      GDString.#_bindings.method_rpad,
       this,
       4,
       [_min_length, _character]
@@ -2018,7 +2025,7 @@ export class GDString {
   pad_decimals (_digits) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_pad_decimals,
+      GDString.#_bindings.method_pad_decimals,
       this,
       4,
       [_digits]
@@ -2028,7 +2035,7 @@ export class GDString {
   pad_zeros (_digits) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_pad_zeros,
+      GDString.#_bindings.method_pad_zeros,
       this,
       4,
       [_digits]
@@ -2038,7 +2045,7 @@ export class GDString {
   trim_prefix (_prefix) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_trim_prefix,
+      GDString.#_bindings.method_trim_prefix,
       this,
       4,
       [_prefix]
@@ -2048,7 +2055,7 @@ export class GDString {
   trim_suffix (_suffix) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_trim_suffix,
+      GDString.#_bindings.method_trim_suffix,
       this,
       4,
       [_suffix]
@@ -2058,7 +2065,7 @@ export class GDString {
   to_ascii_buffer () {
     let ret = new PackedByteArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_to_ascii_buffer,
+      GDString.#_bindings.method_to_ascii_buffer,
       this,
       29,
       []
@@ -2068,7 +2075,7 @@ export class GDString {
   to_utf8_buffer () {
     let ret = new PackedByteArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_to_utf8_buffer,
+      GDString.#_bindings.method_to_utf8_buffer,
       this,
       29,
       []
@@ -2078,7 +2085,7 @@ export class GDString {
   to_utf16_buffer () {
     let ret = new PackedByteArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_to_utf16_buffer,
+      GDString.#_bindings.method_to_utf16_buffer,
       this,
       29,
       []
@@ -2088,7 +2095,7 @@ export class GDString {
   to_utf32_buffer () {
     let ret = new PackedByteArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_to_utf32_buffer,
+      GDString.#_bindings.method_to_utf32_buffer,
       this,
       29,
       []
@@ -2098,7 +2105,7 @@ export class GDString {
   hex_decode () {
     let ret = new PackedByteArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_hex_decode,
+      GDString.#_bindings.method_hex_decode,
       this,
       29,
       []
@@ -2108,7 +2115,7 @@ export class GDString {
   to_wchar_buffer () {
     let ret = new PackedByteArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_to_wchar_buffer,
+      GDString.#_bindings.method_to_wchar_buffer,
       this,
       29,
       []
@@ -2118,7 +2125,7 @@ export class GDString {
   num_scientific (_number) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_num_scientific,
+      GDString.#_bindings.method_num_scientific,
       this,
       4,
       [_number]
@@ -2128,7 +2135,7 @@ export class GDString {
   num (_number, _decimals) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_num,
+      GDString.#_bindings.method_num,
       this,
       4,
       [_number, _decimals]
@@ -2138,7 +2145,7 @@ export class GDString {
   num_int64 (_number, _base, _capitalize_hex) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_num_int64,
+      GDString.#_bindings.method_num_int64,
       this,
       4,
       [_number, _base, _capitalize_hex]
@@ -2148,7 +2155,7 @@ export class GDString {
   num_uint64 (_number, _base, _capitalize_hex) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_num_uint64,
+      GDString.#_bindings.method_num_uint64,
       this,
       4,
       [_number, _base, _capitalize_hex]
@@ -2158,7 +2165,7 @@ export class GDString {
   chr (_char) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_chr,
+      GDString.#_bindings.method_chr,
       this,
       4,
       [_char]
@@ -2168,7 +2175,7 @@ export class GDString {
   humanize_size (_size) {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDString._bindings.method_humanize_size,
+      GDString.#_bindings.method_humanize_size,
       this,
       4,
       [_size]

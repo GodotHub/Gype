@@ -1,6 +1,5 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
-import { Vector3 } from '@js_godot/variant/vector3'
 import { StringName } from '@js_godot/variant/string_name'
 import { VisualShaderNodeParameter } from '@js_godot/classes/visual_shader_node_parameter'
 import {
@@ -18,7 +17,7 @@ class _MethodBindings {
 }
 export class VisualShaderNodeVec3Parameter extends VisualShaderNodeParameter{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -28,78 +27,86 @@ export class VisualShaderNodeVec3Parameter extends VisualShaderNodeParameter{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_default_value_enabled() {
+    if (!this.#_bindings.method_set_default_value_enabled) {
       let classname = new StringName("VisualShaderNodeVec3Parameter");
       let methodname = new StringName("set_default_value_enabled");
-      this._bindings.method_set_default_value_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_default_value_enabled = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_is_default_value_enabled() {
+    if (!this.#_bindings.method_is_default_value_enabled) {
       let classname = new StringName("VisualShaderNodeVec3Parameter");
       let methodname = new StringName("is_default_value_enabled");
-      this._bindings.method_is_default_value_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_default_value_enabled = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_set_default_value() {
+    if (!this.#_bindings.method_set_default_value) {
       let classname = new StringName("VisualShaderNodeVec3Parameter");
       let methodname = new StringName("set_default_value");
-      this._bindings.method_set_default_value = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_default_value = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3460891852
       );
     }
-    {
+  }
+  static init_method_get_default_value() {
+    if (!this.#_bindings.method_get_default_value) {
       let classname = new StringName("VisualShaderNodeVec3Parameter");
       let methodname = new StringName("get_default_value");
-      this._bindings.method_get_default_value = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_default_value = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3360562783
       );
     }
   }
+
+  
   
   set_default_value_enabled(_enabled) {
+    VisualShaderNodeVec3Parameter.init_method_set_default_value_enabled();
     return _call_native_mb_no_ret(
-      VisualShaderNodeVec3Parameter._bindings.method_set_default_value_enabled,
+      VisualShaderNodeVec3Parameter.#_bindings.method_set_default_value_enabled,
       this._owner,
       _enabled
     );
     
   }
   is_default_value_enabled() {
+    VisualShaderNodeVec3Parameter.init_method_is_default_value_enabled();
     return _call_native_mb_ret(
-      VisualShaderNodeVec3Parameter._bindings.method_is_default_value_enabled,
+      VisualShaderNodeVec3Parameter.#_bindings.method_is_default_value_enabled,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_default_value(_value) {
+    VisualShaderNodeVec3Parameter.init_method_set_default_value();
     return _call_native_mb_no_ret(
-      VisualShaderNodeVec3Parameter._bindings.method_set_default_value,
+      VisualShaderNodeVec3Parameter.#_bindings.method_set_default_value,
       this._owner,
       _value
     );
     
   }
   get_default_value() {
+    VisualShaderNodeVec3Parameter.init_method_get_default_value();
     return _call_native_mb_ret(
-      VisualShaderNodeVec3Parameter._bindings.method_get_default_value,
+      VisualShaderNodeVec3Parameter.#_bindings.method_get_default_value,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -121,8 +128,4 @@ set default_value (new_value) {
   this.set_default_value(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

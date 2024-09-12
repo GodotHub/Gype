@@ -13,7 +13,7 @@ class _MethodBindings {
 }
 export class PacketPeerExtension extends PacketPeer{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -23,13 +23,8 @@ export class PacketPeerExtension extends PacketPeer{
       super(godot_object);
     }
   }
+
   
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-  }
   
   _get_packet(_r_buffer, _r_buffer_size) {
   }
@@ -41,8 +36,4 @@ export class PacketPeerExtension extends PacketPeer{
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

@@ -40,6 +40,7 @@ import { Signal } from "@js_godot/variant/signal";
 import { Transform2D } from "@js_godot/variant/transform2d";
 import { Transform3D } from "@js_godot/variant/transform3d";
 import { PackedColorArray } from "@js_godot/variant/packed_color_array";
+import { GodotObject } from "@js_godot/classes/godot_object";
 
 export class Variant {
   static from_type_constructor = [];
@@ -62,6 +63,12 @@ export class Variant {
       
     }{%- endif %} {% endfor %} else if (value instanceof Variant) {
       variant_new_copy(this.opaque, value.opaque);
+    }else if (value instanceof GodotObject) {
+      Variant.from_type_constructor[Variant.Type.OBJECT](
+        this.opaque, value._owner
+      );
+    } else if (value instanceof Uint8Array) {
+      this.opaque = value;
     } else {
       this.#primitive_constructor(value);
     }
@@ -214,9 +221,13 @@ export class Variant {
     PackedVector2Array._init_bindings();
     PackedVector3Array._init_bindings();
     PackedVector4Array._init_bindings();
+    PackedColorArray._init_bindings();
     GD._init_bindings();
     Math._init_bindings();
     Random._init_bindings();
+    globalThis.GD = new GD();
+    globalThis.Mathf = new Math();
+    globalThis.Random = new Random();
   }
 }
 

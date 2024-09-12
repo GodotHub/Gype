@@ -1,8 +1,7 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
-import { Resource } from '@js_godot/classes/resource'
 import { StringName } from '@js_godot/variant/string_name'
-import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
+import { Resource } from '@js_godot/classes/resource'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -20,7 +19,7 @@ class _MethodBindings {
 }
 export class OccluderPolygon2D extends Resource{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -30,113 +29,128 @@ export class OccluderPolygon2D extends Resource{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_closed() {
+    if (!this.#_bindings.method_set_closed) {
       let classname = new StringName("OccluderPolygon2D");
       let methodname = new StringName("set_closed");
-      this._bindings.method_set_closed = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_closed = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_is_closed() {
+    if (!this.#_bindings.method_is_closed) {
       let classname = new StringName("OccluderPolygon2D");
       let methodname = new StringName("is_closed");
-      this._bindings.method_is_closed = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_closed = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_set_cull_mode() {
+    if (!this.#_bindings.method_set_cull_mode) {
       let classname = new StringName("OccluderPolygon2D");
       let methodname = new StringName("set_cull_mode");
-      this._bindings.method_set_cull_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_cull_mode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3500863002
       );
     }
-    {
+  }
+  static init_method_get_cull_mode() {
+    if (!this.#_bindings.method_get_cull_mode) {
       let classname = new StringName("OccluderPolygon2D");
       let methodname = new StringName("get_cull_mode");
-      this._bindings.method_get_cull_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_cull_mode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         33931036
       );
     }
-    {
+  }
+  static init_method_set_polygon() {
+    if (!this.#_bindings.method_set_polygon) {
       let classname = new StringName("OccluderPolygon2D");
       let methodname = new StringName("set_polygon");
-      this._bindings.method_set_polygon = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_polygon = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1509147220
       );
     }
-    {
+  }
+  static init_method_get_polygon() {
+    if (!this.#_bindings.method_get_polygon) {
       let classname = new StringName("OccluderPolygon2D");
       let methodname = new StringName("get_polygon");
-      this._bindings.method_get_polygon = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_polygon = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2961356807
       );
     }
   }
+
+  
   
   set_closed(_closed) {
+    OccluderPolygon2D.init_method_set_closed();
     return _call_native_mb_no_ret(
-      OccluderPolygon2D._bindings.method_set_closed,
+      OccluderPolygon2D.#_bindings.method_set_closed,
       this._owner,
       _closed
     );
     
   }
   is_closed() {
+    OccluderPolygon2D.init_method_is_closed();
     return _call_native_mb_ret(
-      OccluderPolygon2D._bindings.method_is_closed,
+      OccluderPolygon2D.#_bindings.method_is_closed,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_cull_mode(_cull_mode) {
+    OccluderPolygon2D.init_method_set_cull_mode();
     return _call_native_mb_no_ret(
-      OccluderPolygon2D._bindings.method_set_cull_mode,
+      OccluderPolygon2D.#_bindings.method_set_cull_mode,
       this._owner,
       _cull_mode
     );
     
   }
   get_cull_mode() {
+    OccluderPolygon2D.init_method_get_cull_mode();
     return _call_native_mb_ret(
-      OccluderPolygon2D._bindings.method_get_cull_mode,
+      OccluderPolygon2D.#_bindings.method_get_cull_mode,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_polygon(_polygon) {
+    OccluderPolygon2D.init_method_set_polygon();
     return _call_native_mb_no_ret(
-      OccluderPolygon2D._bindings.method_set_polygon,
+      OccluderPolygon2D.#_bindings.method_set_polygon,
       this._owner,
       _polygon
     );
     
   }
   get_polygon() {
+    OccluderPolygon2D.init_method_get_polygon();
     return _call_native_mb_ret(
-      OccluderPolygon2D._bindings.method_get_polygon,
+      OccluderPolygon2D.#_bindings.method_get_polygon,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -168,9 +182,5 @@ set polygon (new_value) {
     CULL_DISABLED: 0,
     CULL_CLOCKWISE: 1,
     CULL_COUNTER_CLOCKWISE: 2,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

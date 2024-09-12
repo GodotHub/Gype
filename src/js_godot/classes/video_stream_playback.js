@@ -1,8 +1,7 @@
 import * as internal from '__internal__';
-import { PackedFloat32Array } from '@js_godot/variant/packed_float32_array'
 import { Variant } from '@js_godot/variant/variant'
-import { Resource } from '@js_godot/classes/resource'
 import { StringName } from '@js_godot/variant/string_name'
+import { Resource } from '@js_godot/classes/resource'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -15,7 +14,7 @@ class _MethodBindings {
 }
 export class VideoStreamPlayback extends Resource{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -25,22 +24,19 @@ export class VideoStreamPlayback extends Resource{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_mix_audio() {
+    if (!this.#_bindings.method_mix_audio) {
       let classname = new StringName("VideoStreamPlayback");
       let methodname = new StringName("mix_audio");
-      this._bindings.method_mix_audio = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_mix_audio = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         93876830
       );
     }
   }
+
+  
   
   _stop() {
   }
@@ -69,18 +65,16 @@ export class VideoStreamPlayback extends Resource{
   _get_mix_rate() {
   }
   mix_audio(_num_frames, _buffer, _offset) {
+    VideoStreamPlayback.init_method_mix_audio();
     return _call_native_mb_ret(
-      VideoStreamPlayback._bindings.method_mix_audio,
+      VideoStreamPlayback.#_bindings.method_mix_audio,
       this._owner,
 			Variant.Type.INT,
+    
       _num_frames, _buffer, _offset
     );
     
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

@@ -1,21 +1,8 @@
 import * as internal from '__internal__';
-import { Vector2 } from '@js_godot/variant/vector2'
-import { Dictionary } from '@js_godot/variant/dictionary'
-import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
-import { PackedFloat32Array } from '@js_godot/variant/packed_float32_array'
-import { RID } from '@js_godot/variant/rid'
-import { PackedStringArray } from '@js_godot/variant/packed_string_array'
-import { StringName } from '@js_godot/variant/string_name'
-import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
-import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
-import { GDArray } from '@js_godot/variant/gd_array'
-import { Color } from '@js_godot/variant/color'
-import { GDString } from '@js_godot/variant/gd_string'
-import { Rect2 } from '@js_godot/variant/rect2'
-import { TextServer } from '@js_godot/classes/text_server'
 import { Variant } from '@js_godot/variant/variant'
-import { Vector2i } from '@js_godot/variant/vector2i'
-import { Transform2D } from '@js_godot/variant/transform2d'
+import { StringName } from '@js_godot/variant/string_name'
+import { TextServer } from '@js_godot/classes/text_server'
+import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -27,7 +14,7 @@ class _MethodBindings {
 }
 export class TextServerExtension extends TextServer{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -37,13 +24,8 @@ export class TextServerExtension extends TextServer{
       super(godot_object);
     }
   }
+
   
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-  }
   
   _has_feature(_feature) {
   }
@@ -479,8 +461,4 @@ export class TextServerExtension extends TextServer{
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

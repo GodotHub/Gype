@@ -1,6 +1,5 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
-import { Transform3D } from '@js_godot/variant/transform3d'
 import { StringName } from '@js_godot/variant/string_name'
 import { Node3D } from '@js_godot/classes/node3d'
 import {
@@ -33,7 +32,7 @@ class _MethodBindings {
 }
 export class PathFollow3D extends Node3D{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -43,341 +42,402 @@ export class PathFollow3D extends Node3D{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_progress() {
+    if (!this.#_bindings.method_set_progress) {
       let classname = new StringName("PathFollow3D");
       let methodname = new StringName("set_progress");
-      this._bindings.method_set_progress = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_progress = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_progress() {
+    if (!this.#_bindings.method_get_progress) {
       let classname = new StringName("PathFollow3D");
       let methodname = new StringName("get_progress");
-      this._bindings.method_get_progress = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_progress = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_set_h_offset() {
+    if (!this.#_bindings.method_set_h_offset) {
       let classname = new StringName("PathFollow3D");
       let methodname = new StringName("set_h_offset");
-      this._bindings.method_set_h_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_h_offset = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_h_offset() {
+    if (!this.#_bindings.method_get_h_offset) {
       let classname = new StringName("PathFollow3D");
       let methodname = new StringName("get_h_offset");
-      this._bindings.method_get_h_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_h_offset = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_set_v_offset() {
+    if (!this.#_bindings.method_set_v_offset) {
       let classname = new StringName("PathFollow3D");
       let methodname = new StringName("set_v_offset");
-      this._bindings.method_set_v_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_v_offset = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_v_offset() {
+    if (!this.#_bindings.method_get_v_offset) {
       let classname = new StringName("PathFollow3D");
       let methodname = new StringName("get_v_offset");
-      this._bindings.method_get_v_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_v_offset = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_set_progress_ratio() {
+    if (!this.#_bindings.method_set_progress_ratio) {
       let classname = new StringName("PathFollow3D");
       let methodname = new StringName("set_progress_ratio");
-      this._bindings.method_set_progress_ratio = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_progress_ratio = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_progress_ratio() {
+    if (!this.#_bindings.method_get_progress_ratio) {
       let classname = new StringName("PathFollow3D");
       let methodname = new StringName("get_progress_ratio");
-      this._bindings.method_get_progress_ratio = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_progress_ratio = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_set_rotation_mode() {
+    if (!this.#_bindings.method_set_rotation_mode) {
       let classname = new StringName("PathFollow3D");
       let methodname = new StringName("set_rotation_mode");
-      this._bindings.method_set_rotation_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_rotation_mode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1640311967
       );
     }
-    {
+  }
+  static init_method_get_rotation_mode() {
+    if (!this.#_bindings.method_get_rotation_mode) {
       let classname = new StringName("PathFollow3D");
       let methodname = new StringName("get_rotation_mode");
-      this._bindings.method_get_rotation_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_rotation_mode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3814010545
       );
     }
-    {
+  }
+  static init_method_set_cubic_interpolation() {
+    if (!this.#_bindings.method_set_cubic_interpolation) {
       let classname = new StringName("PathFollow3D");
       let methodname = new StringName("set_cubic_interpolation");
-      this._bindings.method_set_cubic_interpolation = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_cubic_interpolation = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_get_cubic_interpolation() {
+    if (!this.#_bindings.method_get_cubic_interpolation) {
       let classname = new StringName("PathFollow3D");
       let methodname = new StringName("get_cubic_interpolation");
-      this._bindings.method_get_cubic_interpolation = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_cubic_interpolation = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_set_use_model_front() {
+    if (!this.#_bindings.method_set_use_model_front) {
       let classname = new StringName("PathFollow3D");
       let methodname = new StringName("set_use_model_front");
-      this._bindings.method_set_use_model_front = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_use_model_front = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_is_using_model_front() {
+    if (!this.#_bindings.method_is_using_model_front) {
       let classname = new StringName("PathFollow3D");
       let methodname = new StringName("is_using_model_front");
-      this._bindings.method_is_using_model_front = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_using_model_front = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_set_loop() {
+    if (!this.#_bindings.method_set_loop) {
       let classname = new StringName("PathFollow3D");
       let methodname = new StringName("set_loop");
-      this._bindings.method_set_loop = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_loop = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_has_loop() {
+    if (!this.#_bindings.method_has_loop) {
       let classname = new StringName("PathFollow3D");
       let methodname = new StringName("has_loop");
-      this._bindings.method_has_loop = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_has_loop = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_set_tilt_enabled() {
+    if (!this.#_bindings.method_set_tilt_enabled) {
       let classname = new StringName("PathFollow3D");
       let methodname = new StringName("set_tilt_enabled");
-      this._bindings.method_set_tilt_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_tilt_enabled = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_is_tilt_enabled() {
+    if (!this.#_bindings.method_is_tilt_enabled) {
       let classname = new StringName("PathFollow3D");
       let methodname = new StringName("is_tilt_enabled");
-      this._bindings.method_is_tilt_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_tilt_enabled = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_correct_posture() {
+    if (!this.#_bindings.method_correct_posture) {
       let classname = new StringName("PathFollow3D");
       let methodname = new StringName("correct_posture");
-      this._bindings.method_correct_posture = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_correct_posture = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2686588690
       );
     }
   }
+
+  
   
   set_progress(_progress) {
+    PathFollow3D.init_method_set_progress();
     return _call_native_mb_no_ret(
-      PathFollow3D._bindings.method_set_progress,
+      PathFollow3D.#_bindings.method_set_progress,
       this._owner,
       _progress
     );
     
   }
   get_progress() {
+    PathFollow3D.init_method_get_progress();
     return _call_native_mb_ret(
-      PathFollow3D._bindings.method_get_progress,
+      PathFollow3D.#_bindings.method_get_progress,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_h_offset(_h_offset) {
+    PathFollow3D.init_method_set_h_offset();
     return _call_native_mb_no_ret(
-      PathFollow3D._bindings.method_set_h_offset,
+      PathFollow3D.#_bindings.method_set_h_offset,
       this._owner,
       _h_offset
     );
     
   }
   get_h_offset() {
+    PathFollow3D.init_method_get_h_offset();
     return _call_native_mb_ret(
-      PathFollow3D._bindings.method_get_h_offset,
+      PathFollow3D.#_bindings.method_get_h_offset,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_v_offset(_v_offset) {
+    PathFollow3D.init_method_set_v_offset();
     return _call_native_mb_no_ret(
-      PathFollow3D._bindings.method_set_v_offset,
+      PathFollow3D.#_bindings.method_set_v_offset,
       this._owner,
       _v_offset
     );
     
   }
   get_v_offset() {
+    PathFollow3D.init_method_get_v_offset();
     return _call_native_mb_ret(
-      PathFollow3D._bindings.method_get_v_offset,
+      PathFollow3D.#_bindings.method_get_v_offset,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_progress_ratio(_ratio) {
+    PathFollow3D.init_method_set_progress_ratio();
     return _call_native_mb_no_ret(
-      PathFollow3D._bindings.method_set_progress_ratio,
+      PathFollow3D.#_bindings.method_set_progress_ratio,
       this._owner,
       _ratio
     );
     
   }
   get_progress_ratio() {
+    PathFollow3D.init_method_get_progress_ratio();
     return _call_native_mb_ret(
-      PathFollow3D._bindings.method_get_progress_ratio,
+      PathFollow3D.#_bindings.method_get_progress_ratio,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_rotation_mode(_rotation_mode) {
+    PathFollow3D.init_method_set_rotation_mode();
     return _call_native_mb_no_ret(
-      PathFollow3D._bindings.method_set_rotation_mode,
+      PathFollow3D.#_bindings.method_set_rotation_mode,
       this._owner,
       _rotation_mode
     );
     
   }
   get_rotation_mode() {
+    PathFollow3D.init_method_get_rotation_mode();
     return _call_native_mb_ret(
-      PathFollow3D._bindings.method_get_rotation_mode,
+      PathFollow3D.#_bindings.method_get_rotation_mode,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_cubic_interpolation(_enabled) {
+    PathFollow3D.init_method_set_cubic_interpolation();
     return _call_native_mb_no_ret(
-      PathFollow3D._bindings.method_set_cubic_interpolation,
+      PathFollow3D.#_bindings.method_set_cubic_interpolation,
       this._owner,
       _enabled
     );
     
   }
   get_cubic_interpolation() {
+    PathFollow3D.init_method_get_cubic_interpolation();
     return _call_native_mb_ret(
-      PathFollow3D._bindings.method_get_cubic_interpolation,
+      PathFollow3D.#_bindings.method_get_cubic_interpolation,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_use_model_front(_enabled) {
+    PathFollow3D.init_method_set_use_model_front();
     return _call_native_mb_no_ret(
-      PathFollow3D._bindings.method_set_use_model_front,
+      PathFollow3D.#_bindings.method_set_use_model_front,
       this._owner,
       _enabled
     );
     
   }
   is_using_model_front() {
+    PathFollow3D.init_method_is_using_model_front();
     return _call_native_mb_ret(
-      PathFollow3D._bindings.method_is_using_model_front,
+      PathFollow3D.#_bindings.method_is_using_model_front,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_loop(_loop) {
+    PathFollow3D.init_method_set_loop();
     return _call_native_mb_no_ret(
-      PathFollow3D._bindings.method_set_loop,
+      PathFollow3D.#_bindings.method_set_loop,
       this._owner,
       _loop
     );
     
   }
   has_loop() {
+    PathFollow3D.init_method_has_loop();
     return _call_native_mb_ret(
-      PathFollow3D._bindings.method_has_loop,
+      PathFollow3D.#_bindings.method_has_loop,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_tilt_enabled(_enabled) {
+    PathFollow3D.init_method_set_tilt_enabled();
     return _call_native_mb_no_ret(
-      PathFollow3D._bindings.method_set_tilt_enabled,
+      PathFollow3D.#_bindings.method_set_tilt_enabled,
       this._owner,
       _enabled
     );
     
   }
   is_tilt_enabled() {
+    PathFollow3D.init_method_is_tilt_enabled();
     return _call_native_mb_ret(
-      PathFollow3D._bindings.method_is_tilt_enabled,
+      PathFollow3D.#_bindings.method_is_tilt_enabled,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   correct_posture(_transform, _rotation_mode) {
+    PathFollow3D.init_method_correct_posture();
     return _call_native_mb_ret(
-      PathFollow3D._bindings.method_correct_posture,
+      PathFollow3D.#_bindings.method_correct_posture,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -447,9 +507,5 @@ set tilt_enabled (new_value) {
     ROTATION_XY: 2,
     ROTATION_XYZ: 3,
     ROTATION_ORIENTED: 4,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

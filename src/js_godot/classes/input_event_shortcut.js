@@ -15,7 +15,7 @@ class _MethodBindings {
 }
 export class InputEventShortcut extends InputEvent{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -25,45 +25,46 @@ export class InputEventShortcut extends InputEvent{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_shortcut() {
+    if (!this.#_bindings.method_set_shortcut) {
       let classname = new StringName("InputEventShortcut");
       let methodname = new StringName("set_shortcut");
-      this._bindings.method_set_shortcut = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_shortcut = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         857163497
       );
     }
-    {
+  }
+  static init_method_get_shortcut() {
+    if (!this.#_bindings.method_get_shortcut) {
       let classname = new StringName("InputEventShortcut");
       let methodname = new StringName("get_shortcut");
-      this._bindings.method_get_shortcut = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_shortcut = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3766804753
       );
     }
   }
+
+  
   
   set_shortcut(_shortcut) {
+    InputEventShortcut.init_method_set_shortcut();
     return _call_native_mb_no_ret(
-      InputEventShortcut._bindings.method_set_shortcut,
+      InputEventShortcut.#_bindings.method_set_shortcut,
       this._owner,
       _shortcut
     );
     
   }
   get_shortcut() {
+    InputEventShortcut.init_method_get_shortcut();
     return _call_native_mb_ret(
-      InputEventShortcut._bindings.method_get_shortcut,
+      InputEventShortcut.#_bindings.method_get_shortcut,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
@@ -76,8 +77,4 @@ set shortcut (new_value) {
   this.set_shortcut(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

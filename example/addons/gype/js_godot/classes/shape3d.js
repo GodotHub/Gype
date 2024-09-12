@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { Resource } from '@js_godot/classes/resource'
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { Resource } from '@js_godot/classes/resource'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -18,7 +18,7 @@ class _MethodBindings {
 }
 export class Shape3D extends Resource{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -28,98 +28,110 @@ export class Shape3D extends Resource{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_custom_solver_bias() {
+    if (!this.#_bindings.method_set_custom_solver_bias) {
       let classname = new StringName("Shape3D");
       let methodname = new StringName("set_custom_solver_bias");
-      this._bindings.method_set_custom_solver_bias = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_custom_solver_bias = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_custom_solver_bias() {
+    if (!this.#_bindings.method_get_custom_solver_bias) {
       let classname = new StringName("Shape3D");
       let methodname = new StringName("get_custom_solver_bias");
-      this._bindings.method_get_custom_solver_bias = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_custom_solver_bias = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_set_margin() {
+    if (!this.#_bindings.method_set_margin) {
       let classname = new StringName("Shape3D");
       let methodname = new StringName("set_margin");
-      this._bindings.method_set_margin = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_margin = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_margin() {
+    if (!this.#_bindings.method_get_margin) {
       let classname = new StringName("Shape3D");
       let methodname = new StringName("get_margin");
-      this._bindings.method_get_margin = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_margin = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_get_debug_mesh() {
+    if (!this.#_bindings.method_get_debug_mesh) {
       let classname = new StringName("Shape3D");
       let methodname = new StringName("get_debug_mesh");
-      this._bindings.method_get_debug_mesh = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_debug_mesh = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1605880883
       );
     }
   }
+
+  
   
   set_custom_solver_bias(_bias) {
+    Shape3D.init_method_set_custom_solver_bias();
     return _call_native_mb_no_ret(
-      Shape3D._bindings.method_set_custom_solver_bias,
+      Shape3D.#_bindings.method_set_custom_solver_bias,
       this._owner,
       _bias
     );
     
   }
   get_custom_solver_bias() {
+    Shape3D.init_method_get_custom_solver_bias();
     return _call_native_mb_ret(
-      Shape3D._bindings.method_get_custom_solver_bias,
+      Shape3D.#_bindings.method_get_custom_solver_bias,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_margin(_margin) {
+    Shape3D.init_method_set_margin();
     return _call_native_mb_no_ret(
-      Shape3D._bindings.method_set_margin,
+      Shape3D.#_bindings.method_set_margin,
       this._owner,
       _margin
     );
     
   }
   get_margin() {
+    Shape3D.init_method_get_margin();
     return _call_native_mb_ret(
-      Shape3D._bindings.method_get_margin,
+      Shape3D.#_bindings.method_get_margin,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   get_debug_mesh() {
+    Shape3D.init_method_get_debug_mesh();
     return _call_native_mb_ret(
-      Shape3D._bindings.method_get_debug_mesh,
+      Shape3D.#_bindings.method_get_debug_mesh,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
@@ -138,8 +150,4 @@ set margin (new_value) {
   this.set_margin(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

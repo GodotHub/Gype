@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { RID } from '@js_godot/variant/rid'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { GodotObject } from '@js_godot/classes/godot_object'
+import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -15,7 +15,7 @@ class _MethodBindings {
 }
 export class UniformSetCacheRD extends GodotObject{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -25,26 +25,24 @@ export class UniformSetCacheRD extends GodotObject{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_get_cache() {
+    if (!this.#_bindings.method_get_cache) {
       let classname = new StringName("UniformSetCacheRD");
       let methodname = new StringName("get_cache");
-      this._bindings.method_get_cache = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_cache = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         658571723
       );
     }
   }
+
+  
   
   get_cache(_shader, _set, _uniforms) {
+    UniformSetCacheRD.init_method_get_cache();
     return _call_native_mb_ret(
-      UniformSetCacheRD._bindings.method_get_cache,
+      UniformSetCacheRD.#_bindings.method_get_cache,
       this._owner,
 			Variant.Type.RID,
     
@@ -54,8 +52,4 @@ export class UniformSetCacheRD extends GodotObject{
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

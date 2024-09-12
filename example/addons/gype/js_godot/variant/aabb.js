@@ -2,12 +2,14 @@ import * as internal from '__internal__'
 import {
   _call_builtin_constructor,
   _call_builtin_method_ptr_ret,
-  _call_builtin_method_ptr_no_ret
+  _call_builtin_method_ptr_no_ret,
+  _call_builtin_method_ptr_obj_ret,
 } from '@js_godot/core/builtin_ptrcall'
+import { Vector3 } from '@js_godot/variant/vector3'
 import { StringName } from '@js_godot/variant/string_name'
 import { Plane } from '@js_godot/variant/plane'
 import { Variant } from '@js_godot/variant/variant'
-import { Vector3 } from '@js_godot/variant/vector3'
+import { GodotObject } from "@js_godot/classes/godot_object";
 
 class _MethodBindings {
   from_variant_constructor
@@ -53,40 +55,43 @@ export class AABB {
   static #SIZE = 24
   opaque = new Uint8Array(AABB.#SIZE)
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
-  constructor (from) {
-    if (!from) {
-      _call_builtin_constructor(AABB._bindings.constructor_0, this)
-    }else if (from instanceof AABB) {
-      _call_builtin_constructor(AABB._bindings.constructor_1, this, [
+  constructor (value) {
+    if (!value) {
+      _call_builtin_constructor(AABB.#_bindings.constructor_0, this)
+    } else if (arguments.length == 1&& arguments[0] instanceof AABB) {
+      let from = arguments[0];
+      _call_builtin_constructor(AABB.#_bindings.constructor_1, this, [
         from
       ])
     } else if (arguments.length == 2&& arguments[0] instanceof Vector3&& arguments[1] instanceof Vector3) {
       let position = arguments[0];
       let size = arguments[1];
-      _call_builtin_constructor(AABB._bindings.constructor_2, this, [
+      _call_builtin_constructor(AABB.#_bindings.constructor_2, this, [
         position, size
       ])
-    } else if (from.constructor.name === "Variant") {
-      AABB._bindings.from_variant_constructor(this.opaque, from.opaque)
+    } else if (value.constructor.name === "Variant") {
+      AABB.#_bindings.from_variant_constructor(this.opaque, value.opaque)
+    } else if (value instanceof Uint8Array) {
+      this.opaque = value;
     } 
   }
   
   static __init_bindings_constructors_destructor () {
-    this._bindings.from_variant_constructor = internal.get_variant_to_type_constructor(
+    this.#_bindings.from_variant_constructor = internal.get_variant_to_type_constructor(
       16
     )
-    this._bindings.constructor_0 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_0 = internal.variant_get_ptr_constructor(
       16,
       0
     )
-    this._bindings.constructor_1 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_1 = internal.variant_get_ptr_constructor(
       16,
       1
     )
-    this._bindings.constructor_2 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_2 = internal.variant_get_ptr_constructor(
       16,
       2
     )
@@ -100,7 +105,7 @@ export class AABB {
     this.__init_bindings_constructors_destructor()
     {
       let _gde_name = new StringName('abs')
-      this._bindings.method_abs = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_abs = internal.variant_get_ptr_builtin_method(
         16,
         _gde_name.opaque,
         1576868580
@@ -108,7 +113,7 @@ export class AABB {
     }
     {
       let _gde_name = new StringName('get_center')
-      this._bindings.method_get_center = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_center = internal.variant_get_ptr_builtin_method(
         16,
         _gde_name.opaque,
         1776574132
@@ -116,7 +121,7 @@ export class AABB {
     }
     {
       let _gde_name = new StringName('get_volume')
-      this._bindings.method_get_volume = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_volume = internal.variant_get_ptr_builtin_method(
         16,
         _gde_name.opaque,
         466405837
@@ -124,7 +129,7 @@ export class AABB {
     }
     {
       let _gde_name = new StringName('has_volume')
-      this._bindings.method_has_volume = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_has_volume = internal.variant_get_ptr_builtin_method(
         16,
         _gde_name.opaque,
         3918633141
@@ -132,7 +137,7 @@ export class AABB {
     }
     {
       let _gde_name = new StringName('has_surface')
-      this._bindings.method_has_surface = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_has_surface = internal.variant_get_ptr_builtin_method(
         16,
         _gde_name.opaque,
         3918633141
@@ -140,7 +145,7 @@ export class AABB {
     }
     {
       let _gde_name = new StringName('has_point')
-      this._bindings.method_has_point = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_has_point = internal.variant_get_ptr_builtin_method(
         16,
         _gde_name.opaque,
         1749054343
@@ -148,7 +153,7 @@ export class AABB {
     }
     {
       let _gde_name = new StringName('is_equal_approx')
-      this._bindings.method_is_equal_approx = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_equal_approx = internal.variant_get_ptr_builtin_method(
         16,
         _gde_name.opaque,
         299946684
@@ -156,7 +161,7 @@ export class AABB {
     }
     {
       let _gde_name = new StringName('is_finite')
-      this._bindings.method_is_finite = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_finite = internal.variant_get_ptr_builtin_method(
         16,
         _gde_name.opaque,
         3918633141
@@ -164,7 +169,7 @@ export class AABB {
     }
     {
       let _gde_name = new StringName('intersects')
-      this._bindings.method_intersects = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_intersects = internal.variant_get_ptr_builtin_method(
         16,
         _gde_name.opaque,
         299946684
@@ -172,7 +177,7 @@ export class AABB {
     }
     {
       let _gde_name = new StringName('encloses')
-      this._bindings.method_encloses = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_encloses = internal.variant_get_ptr_builtin_method(
         16,
         _gde_name.opaque,
         299946684
@@ -180,7 +185,7 @@ export class AABB {
     }
     {
       let _gde_name = new StringName('intersects_plane')
-      this._bindings.method_intersects_plane = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_intersects_plane = internal.variant_get_ptr_builtin_method(
         16,
         _gde_name.opaque,
         1150170233
@@ -188,7 +193,7 @@ export class AABB {
     }
     {
       let _gde_name = new StringName('intersection')
-      this._bindings.method_intersection = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_intersection = internal.variant_get_ptr_builtin_method(
         16,
         _gde_name.opaque,
         1271470306
@@ -196,7 +201,7 @@ export class AABB {
     }
     {
       let _gde_name = new StringName('merge')
-      this._bindings.method_merge = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_merge = internal.variant_get_ptr_builtin_method(
         16,
         _gde_name.opaque,
         1271470306
@@ -204,7 +209,7 @@ export class AABB {
     }
     {
       let _gde_name = new StringName('expand')
-      this._bindings.method_expand = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_expand = internal.variant_get_ptr_builtin_method(
         16,
         _gde_name.opaque,
         2851643018
@@ -212,7 +217,7 @@ export class AABB {
     }
     {
       let _gde_name = new StringName('grow')
-      this._bindings.method_grow = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_grow = internal.variant_get_ptr_builtin_method(
         16,
         _gde_name.opaque,
         239217291
@@ -220,7 +225,7 @@ export class AABB {
     }
     {
       let _gde_name = new StringName('get_support')
-      this._bindings.method_get_support = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_support = internal.variant_get_ptr_builtin_method(
         16,
         _gde_name.opaque,
         2923479887
@@ -228,7 +233,7 @@ export class AABB {
     }
     {
       let _gde_name = new StringName('get_longest_axis')
-      this._bindings.method_get_longest_axis = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_longest_axis = internal.variant_get_ptr_builtin_method(
         16,
         _gde_name.opaque,
         1776574132
@@ -236,7 +241,7 @@ export class AABB {
     }
     {
       let _gde_name = new StringName('get_longest_axis_index')
-      this._bindings.method_get_longest_axis_index = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_longest_axis_index = internal.variant_get_ptr_builtin_method(
         16,
         _gde_name.opaque,
         3173160232
@@ -244,7 +249,7 @@ export class AABB {
     }
     {
       let _gde_name = new StringName('get_longest_axis_size')
-      this._bindings.method_get_longest_axis_size = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_longest_axis_size = internal.variant_get_ptr_builtin_method(
         16,
         _gde_name.opaque,
         466405837
@@ -252,7 +257,7 @@ export class AABB {
     }
     {
       let _gde_name = new StringName('get_shortest_axis')
-      this._bindings.method_get_shortest_axis = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_shortest_axis = internal.variant_get_ptr_builtin_method(
         16,
         _gde_name.opaque,
         1776574132
@@ -260,7 +265,7 @@ export class AABB {
     }
     {
       let _gde_name = new StringName('get_shortest_axis_index')
-      this._bindings.method_get_shortest_axis_index = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_shortest_axis_index = internal.variant_get_ptr_builtin_method(
         16,
         _gde_name.opaque,
         3173160232
@@ -268,7 +273,7 @@ export class AABB {
     }
     {
       let _gde_name = new StringName('get_shortest_axis_size')
-      this._bindings.method_get_shortest_axis_size = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_shortest_axis_size = internal.variant_get_ptr_builtin_method(
         16,
         _gde_name.opaque,
         466405837
@@ -276,7 +281,7 @@ export class AABB {
     }
     {
       let _gde_name = new StringName('get_endpoint')
-      this._bindings.method_get_endpoint = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_endpoint = internal.variant_get_ptr_builtin_method(
         16,
         _gde_name.opaque,
         1394941017
@@ -284,7 +289,7 @@ export class AABB {
     }
     {
       let _gde_name = new StringName('intersects_segment')
-      this._bindings.method_intersects_segment = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_intersects_segment = internal.variant_get_ptr_builtin_method(
         16,
         _gde_name.opaque,
         2048133369
@@ -292,7 +297,7 @@ export class AABB {
     }
     {
       let _gde_name = new StringName('intersects_ray')
-      this._bindings.method_intersects_ray = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_intersects_ray = internal.variant_get_ptr_builtin_method(
         16,
         _gde_name.opaque,
         2048133369
@@ -304,7 +309,7 @@ export class AABB {
   abs () {
     let ret = new AABB()
     ret.opaque = _call_builtin_method_ptr_ret(
-      AABB._bindings.method_abs,
+      AABB.#_bindings.method_abs,
       this,
       16,
       []
@@ -314,7 +319,7 @@ export class AABB {
   get_center () {
     let ret = new Vector3()
     ret.opaque = _call_builtin_method_ptr_ret(
-      AABB._bindings.method_get_center,
+      AABB.#_bindings.method_get_center,
       this,
       9,
       []
@@ -324,7 +329,7 @@ export class AABB {
   get_volume () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      AABB._bindings.method_get_volume,
+      AABB.#_bindings.method_get_volume,
       this,
       3,
       []
@@ -334,7 +339,7 @@ export class AABB {
   has_volume () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      AABB._bindings.method_has_volume,
+      AABB.#_bindings.method_has_volume,
       this,
       1,
       []
@@ -344,7 +349,7 @@ export class AABB {
   has_surface () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      AABB._bindings.method_has_surface,
+      AABB.#_bindings.method_has_surface,
       this,
       1,
       []
@@ -354,7 +359,7 @@ export class AABB {
   has_point (_point) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      AABB._bindings.method_has_point,
+      AABB.#_bindings.method_has_point,
       this,
       1,
       [_point]
@@ -364,7 +369,7 @@ export class AABB {
   is_equal_approx (_aabb) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      AABB._bindings.method_is_equal_approx,
+      AABB.#_bindings.method_is_equal_approx,
       this,
       1,
       [_aabb]
@@ -374,7 +379,7 @@ export class AABB {
   is_finite () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      AABB._bindings.method_is_finite,
+      AABB.#_bindings.method_is_finite,
       this,
       1,
       []
@@ -384,7 +389,7 @@ export class AABB {
   intersects (_with) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      AABB._bindings.method_intersects,
+      AABB.#_bindings.method_intersects,
       this,
       1,
       [_with]
@@ -394,7 +399,7 @@ export class AABB {
   encloses (_with) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      AABB._bindings.method_encloses,
+      AABB.#_bindings.method_encloses,
       this,
       1,
       [_with]
@@ -404,7 +409,7 @@ export class AABB {
   intersects_plane (_plane) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      AABB._bindings.method_intersects_plane,
+      AABB.#_bindings.method_intersects_plane,
       this,
       1,
       [_plane]
@@ -414,7 +419,7 @@ export class AABB {
   intersection (_with) {
     let ret = new AABB()
     ret.opaque = _call_builtin_method_ptr_ret(
-      AABB._bindings.method_intersection,
+      AABB.#_bindings.method_intersection,
       this,
       16,
       [_with]
@@ -424,7 +429,7 @@ export class AABB {
   merge (_with) {
     let ret = new AABB()
     ret.opaque = _call_builtin_method_ptr_ret(
-      AABB._bindings.method_merge,
+      AABB.#_bindings.method_merge,
       this,
       16,
       [_with]
@@ -434,7 +439,7 @@ export class AABB {
   expand (_to_point) {
     let ret = new AABB()
     ret.opaque = _call_builtin_method_ptr_ret(
-      AABB._bindings.method_expand,
+      AABB.#_bindings.method_expand,
       this,
       16,
       [_to_point]
@@ -444,7 +449,7 @@ export class AABB {
   grow (_by) {
     let ret = new AABB()
     ret.opaque = _call_builtin_method_ptr_ret(
-      AABB._bindings.method_grow,
+      AABB.#_bindings.method_grow,
       this,
       16,
       [_by]
@@ -454,7 +459,7 @@ export class AABB {
   get_support (_dir) {
     let ret = new Vector3()
     ret.opaque = _call_builtin_method_ptr_ret(
-      AABB._bindings.method_get_support,
+      AABB.#_bindings.method_get_support,
       this,
       9,
       [_dir]
@@ -464,7 +469,7 @@ export class AABB {
   get_longest_axis () {
     let ret = new Vector3()
     ret.opaque = _call_builtin_method_ptr_ret(
-      AABB._bindings.method_get_longest_axis,
+      AABB.#_bindings.method_get_longest_axis,
       this,
       9,
       []
@@ -474,7 +479,7 @@ export class AABB {
   get_longest_axis_index () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      AABB._bindings.method_get_longest_axis_index,
+      AABB.#_bindings.method_get_longest_axis_index,
       this,
       2,
       []
@@ -484,7 +489,7 @@ export class AABB {
   get_longest_axis_size () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      AABB._bindings.method_get_longest_axis_size,
+      AABB.#_bindings.method_get_longest_axis_size,
       this,
       3,
       []
@@ -494,7 +499,7 @@ export class AABB {
   get_shortest_axis () {
     let ret = new Vector3()
     ret.opaque = _call_builtin_method_ptr_ret(
-      AABB._bindings.method_get_shortest_axis,
+      AABB.#_bindings.method_get_shortest_axis,
       this,
       9,
       []
@@ -504,7 +509,7 @@ export class AABB {
   get_shortest_axis_index () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      AABB._bindings.method_get_shortest_axis_index,
+      AABB.#_bindings.method_get_shortest_axis_index,
       this,
       2,
       []
@@ -514,7 +519,7 @@ export class AABB {
   get_shortest_axis_size () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      AABB._bindings.method_get_shortest_axis_size,
+      AABB.#_bindings.method_get_shortest_axis_size,
       this,
       3,
       []
@@ -524,7 +529,7 @@ export class AABB {
   get_endpoint (_idx) {
     let ret = new Vector3()
     ret.opaque = _call_builtin_method_ptr_ret(
-      AABB._bindings.method_get_endpoint,
+      AABB.#_bindings.method_get_endpoint,
       this,
       9,
       [_idx]
@@ -534,7 +539,7 @@ export class AABB {
   intersects_segment (_from, _to) {
     let ret = new Variant()
     ret.opaque = _call_builtin_method_ptr_ret(
-      AABB._bindings.method_intersects_segment,
+      AABB.#_bindings.method_intersects_segment,
       this,
       39,
       [_from, _to]
@@ -544,7 +549,7 @@ export class AABB {
   intersects_ray (_from, _dir) {
     let ret = new Variant()
     ret.opaque = _call_builtin_method_ptr_ret(
-      AABB._bindings.method_intersects_ray,
+      AABB.#_bindings.method_intersects_ray,
       this,
       39,
       [_from, _dir]

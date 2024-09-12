@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Light3D } from '@js_godot/classes/light3d'
 import { Variant } from '@js_godot/variant/variant'
+import { Light3D } from '@js_godot/classes/light3d'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -15,7 +15,7 @@ class _MethodBindings {
 }
 export class OmniLight3D extends Light3D{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -25,45 +25,47 @@ export class OmniLight3D extends Light3D{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_shadow_mode() {
+    if (!this.#_bindings.method_set_shadow_mode) {
       let classname = new StringName("OmniLight3D");
       let methodname = new StringName("set_shadow_mode");
-      this._bindings.method_set_shadow_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_shadow_mode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         121862228
       );
     }
-    {
+  }
+  static init_method_get_shadow_mode() {
+    if (!this.#_bindings.method_get_shadow_mode) {
       let classname = new StringName("OmniLight3D");
       let methodname = new StringName("get_shadow_mode");
-      this._bindings.method_get_shadow_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_shadow_mode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         4181586331
       );
     }
   }
+
+  
   
   set_shadow_mode(_mode) {
+    OmniLight3D.init_method_set_shadow_mode();
     return _call_native_mb_no_ret(
-      OmniLight3D._bindings.method_set_shadow_mode,
+      OmniLight3D.#_bindings.method_set_shadow_mode,
       this._owner,
       _mode
     );
     
   }
   get_shadow_mode() {
+    OmniLight3D.init_method_get_shadow_mode();
     return _call_native_mb_ret(
-      OmniLight3D._bindings.method_get_shadow_mode,
+      OmniLight3D.#_bindings.method_get_shadow_mode,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
@@ -91,9 +93,5 @@ set omni_shadow_mode (new_value) {
   static ShadowMode = {
     SHADOW_DUAL_PARABOLOID: 0,
     SHADOW_CUBE: 1,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

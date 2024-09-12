@@ -2,7 +2,6 @@ import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
-import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -18,7 +17,7 @@ class _MethodBindings {
 }
 export class X509Certificate extends Resource{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -28,71 +27,79 @@ export class X509Certificate extends Resource{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_save() {
+    if (!this.#_bindings.method_save) {
       let classname = new StringName("X509Certificate");
       let methodname = new StringName("save");
-      this._bindings.method_save = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        166001499
-      );
-    }
-    {
-      let classname = new StringName("X509Certificate");
-      let methodname = new StringName("load");
-      this._bindings.method_load = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        166001499
-      );
-    }
-    {
-      let classname = new StringName("X509Certificate");
-      let methodname = new StringName("save_to_string");
-      this._bindings.method_save_to_string = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2841200299
-      );
-    }
-    {
-      let classname = new StringName("X509Certificate");
-      let methodname = new StringName("load_from_string");
-      this._bindings.method_load_from_string = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_save = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         166001499
       );
     }
   }
+  static init_method_load() {
+    if (!this.#_bindings.method_load) {
+      let classname = new StringName("X509Certificate");
+      let methodname = new StringName("load");
+      this.#_bindings.method_load = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        166001499
+      );
+    }
+  }
+  static init_method_save_to_string() {
+    if (!this.#_bindings.method_save_to_string) {
+      let classname = new StringName("X509Certificate");
+      let methodname = new StringName("save_to_string");
+      this.#_bindings.method_save_to_string = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2841200299
+      );
+    }
+  }
+  static init_method_load_from_string() {
+    if (!this.#_bindings.method_load_from_string) {
+      let classname = new StringName("X509Certificate");
+      let methodname = new StringName("load_from_string");
+      this.#_bindings.method_load_from_string = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        166001499
+      );
+    }
+  }
+
+  
   
   save(_path) {
+    X509Certificate.init_method_save();
     return _call_native_mb_ret(
-      X509Certificate._bindings.method_save,
+      X509Certificate.#_bindings.method_save,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       _path
     );
     
   }
   load(_path) {
+    X509Certificate.init_method_load();
     return _call_native_mb_ret(
-      X509Certificate._bindings.method_load,
+      X509Certificate.#_bindings.method_load,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       _path
     );
     
   }
   save_to_string() {
+    X509Certificate.init_method_save_to_string();
     return _call_native_mb_ret(
-      X509Certificate._bindings.method_save_to_string,
+      X509Certificate.#_bindings.method_save_to_string,
       this._owner,
 			Variant.Type.STRING,
     
@@ -101,18 +108,16 @@ export class X509Certificate extends Resource{
     
   }
   load_from_string(_string) {
+    X509Certificate.init_method_load_from_string();
     return _call_native_mb_ret(
-      X509Certificate._bindings.method_load_from_string,
+      X509Certificate.#_bindings.method_load_from_string,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       _string
     );
     
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

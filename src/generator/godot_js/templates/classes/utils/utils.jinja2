@@ -14,11 +14,15 @@
   {%- if return_value %}
     {%- set type = return_value['type'] -%}
     {%- if type in variant_types() %}
-{{indent}}Variant.Type.{{ to_gd_type(camel_to_snake(type)) | upper }},
+{{indent}}Variant.Type.{{ camel_to_snake(type) | upper }},
     {% elif type in pod_types() %}
-{{indent}}Variant.Type.{{ to_gd_type(type) | upper }},
+{{indent}}Variant.Type.{{ type | upper }},
+    {% elif 'enum::' in type %}
+{{indent}}Variant.Type.INT,
+    {% elif 'typedarray::' in type %}
+{{indent}}Variant.Type.ARRAY,
     {%- else %}
-{{indent}}Variant.INT,
+{{indent}}Variant.Type.OBJECT,
     {%- endif %}
   {%- endif %}
 {%- endmacro %}

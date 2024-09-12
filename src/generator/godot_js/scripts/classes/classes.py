@@ -19,13 +19,15 @@ def dependencies_collect(clazz):
         dependencies.add(to_js_type(clazz['inherits']))
     for method in clazz.get('methods', []):
         _type = method.get('return_value', {}).get('type', None)
+        _type = to_gd_type(_type)
         if _type and is_variant(_type):
-            dependencies.add(to_gd_type(_type))
+            dependencies.add(_type)
         for arg in method.get('arguments', []):
             _type = arg.get('type', None)
+            _type = to_gd_type(_type)
             if _type and is_variant(_type):
-                dependencies.add(to_gd_type(_type))
-    dependencies.discard(to_js_type(clazz['name']))
+                dependencies.add(_type)
+    dependencies.discard(clazz['name'])
     dependencies.add('StringName')
     # if clazz['name'] != 'ClassDB':
     #     dependencies.add('ClassDB')

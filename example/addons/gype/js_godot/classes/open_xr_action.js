@@ -1,9 +1,7 @@
 import * as internal from '__internal__';
-import { Resource } from '@js_godot/classes/resource'
-import { StringName } from '@js_godot/variant/string_name'
-import { PackedStringArray } from '@js_godot/variant/packed_string_array'
 import { Variant } from '@js_godot/variant/variant'
-import { GDString } from '@js_godot/variant/gd_string'
+import { StringName } from '@js_godot/variant/string_name'
+import { Resource } from '@js_godot/classes/resource'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -21,7 +19,7 @@ class _MethodBindings {
 }
 export class OpenXRAction extends Resource{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -31,79 +29,88 @@ export class OpenXRAction extends Resource{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_localized_name() {
+    if (!this.#_bindings.method_set_localized_name) {
       let classname = new StringName("OpenXRAction");
       let methodname = new StringName("set_localized_name");
-      this._bindings.method_set_localized_name = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_localized_name = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         83702148
       );
     }
-    {
+  }
+  static init_method_get_localized_name() {
+    if (!this.#_bindings.method_get_localized_name) {
       let classname = new StringName("OpenXRAction");
       let methodname = new StringName("get_localized_name");
-      this._bindings.method_get_localized_name = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_localized_name = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         201670096
       );
     }
-    {
+  }
+  static init_method_set_action_type() {
+    if (!this.#_bindings.method_set_action_type) {
       let classname = new StringName("OpenXRAction");
       let methodname = new StringName("set_action_type");
-      this._bindings.method_set_action_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_action_type = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1675238366
       );
     }
-    {
+  }
+  static init_method_get_action_type() {
+    if (!this.#_bindings.method_get_action_type) {
       let classname = new StringName("OpenXRAction");
       let methodname = new StringName("get_action_type");
-      this._bindings.method_get_action_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_action_type = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3536542431
       );
     }
-    {
+  }
+  static init_method_set_toplevel_paths() {
+    if (!this.#_bindings.method_set_toplevel_paths) {
       let classname = new StringName("OpenXRAction");
       let methodname = new StringName("set_toplevel_paths");
-      this._bindings.method_set_toplevel_paths = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_toplevel_paths = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         4015028928
       );
     }
-    {
+  }
+  static init_method_get_toplevel_paths() {
+    if (!this.#_bindings.method_get_toplevel_paths) {
       let classname = new StringName("OpenXRAction");
       let methodname = new StringName("get_toplevel_paths");
-      this._bindings.method_get_toplevel_paths = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_toplevel_paths = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1139954409
       );
     }
   }
+
+  
   
   set_localized_name(_localized_name) {
+    OpenXRAction.init_method_set_localized_name();
     return _call_native_mb_no_ret(
-      OpenXRAction._bindings.method_set_localized_name,
+      OpenXRAction.#_bindings.method_set_localized_name,
       this._owner,
       _localized_name
     );
     
   }
   get_localized_name() {
+    OpenXRAction.init_method_get_localized_name();
     return _call_native_mb_ret(
-      OpenXRAction._bindings.method_get_localized_name,
+      OpenXRAction.#_bindings.method_get_localized_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -112,33 +119,38 @@ export class OpenXRAction extends Resource{
     
   }
   set_action_type(_action_type) {
+    OpenXRAction.init_method_set_action_type();
     return _call_native_mb_no_ret(
-      OpenXRAction._bindings.method_set_action_type,
+      OpenXRAction.#_bindings.method_set_action_type,
       this._owner,
       _action_type
     );
     
   }
   get_action_type() {
+    OpenXRAction.init_method_get_action_type();
     return _call_native_mb_ret(
-      OpenXRAction._bindings.method_get_action_type,
+      OpenXRAction.#_bindings.method_get_action_type,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_toplevel_paths(_toplevel_paths) {
+    OpenXRAction.init_method_set_toplevel_paths();
     return _call_native_mb_no_ret(
-      OpenXRAction._bindings.method_set_toplevel_paths,
+      OpenXRAction.#_bindings.method_set_toplevel_paths,
       this._owner,
       _toplevel_paths
     );
     
   }
   get_toplevel_paths() {
+    OpenXRAction.init_method_get_toplevel_paths();
     return _call_native_mb_ret(
-      OpenXRAction._bindings.method_get_toplevel_paths,
+      OpenXRAction.#_bindings.method_get_toplevel_paths,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -171,9 +183,5 @@ set toplevel_paths (new_value) {
     OPENXR_ACTION_FLOAT: 1,
     OPENXR_ACTION_VECTOR2: 2,
     OPENXR_ACTION_POSE: 3,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

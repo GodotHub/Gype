@@ -3,6 +3,7 @@
 #include <cctype>
 #include <cstring>
 #include <iostream>
+#include <regex>
 
 std::string underscoreToCamelCase(std::string input) {
 	std::string output;
@@ -25,17 +26,19 @@ std::string underscoreToCamelCase(std::string input) {
 }
 
 std::string camelToSnake(std::string input) {
-	std::string result;
-	for (size_t i = 0; i < input.size(); ++i) {
-		if (std::isupper(input[i])) {
-			if (i != 0) {
-				result += '_';
-			}
-			result += std::tolower(input[i]);
-		} else {
-			result += input[i];
-		}
+	std::string result = input;
+
+	// 处理连续的大写字母，例如 "HTTPRequestID" -> "HTTP_Request_ID"
+	result = std::regex_replace(result, std::regex("([A-Z]+)([A-Z][a-z]|[0-9])"), "$1_$2");
+
+	// 处理驼峰命名，例如 "camelCase" -> "camel_Case"
+	result = std::regex_replace(result, std::regex("([a-z0-9])([A-Z])"), "$1_$2");
+
+	// 转换为全小写
+	for (auto &c : result) {
+		c = std::tolower(c);
 	}
+
 	return result;
 }
 

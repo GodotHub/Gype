@@ -9,8 +9,7 @@ project(gype C CXX)
 
 add_subdirectory(godot-cpp)
 add_subdirectory(quickjs)
-# add_subdirectory(tree-sitter)
-
+add_subdirectory(tree-sitter)
 
 # 查找src目录和所有子目录中的.c和.cpp文件
 file(GLOB_RECURSE SOURCE
@@ -24,7 +23,7 @@ file(GLOB_RECURSE HEADERS
 add_library(gype SHARED ${SOURCE} ${TEST})
 
 target_link_libraries(gype PRIVATE quickjs)
-# target_link_libraries(gype PUBLIC tree-sitter)
+target_link_libraries(gype PRIVATE tree-sitter)
 
 target_include_directories(gype PUBLIC
 	${PROJECT_SOURCE_DIR}/include

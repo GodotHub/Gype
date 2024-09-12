@@ -1,11 +1,8 @@
 import * as internal from '__internal__';
-import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
-import { PackedVector3Array } from '@js_godot/variant/packed_vector3_array'
 import { Variant } from '@js_godot/variant/variant'
-import { Plane } from '@js_godot/variant/plane'
 import { StringName } from '@js_godot/variant/string_name'
 import { GodotObject } from '@js_godot/classes/godot_object'
-import { Vector3 } from '@js_godot/variant/vector3'
+import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -31,7 +28,7 @@ class _MethodBindings {
   method_tetrahedralize_delaunay;
 }class _Geometry3D extends GodotObject{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -41,152 +38,178 @@ class _MethodBindings {
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_compute_convex_mesh_points() {
+    if (!this.#_bindings.method_compute_convex_mesh_points) {
       let classname = new StringName("Geometry3D");
       let methodname = new StringName("compute_convex_mesh_points");
-      this._bindings.method_compute_convex_mesh_points = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_compute_convex_mesh_points = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1936902142
       );
     }
-    {
+  }
+  static init_method_build_box_planes() {
+    if (!this.#_bindings.method_build_box_planes) {
       let classname = new StringName("Geometry3D");
       let methodname = new StringName("build_box_planes");
-      this._bindings.method_build_box_planes = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_build_box_planes = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3622277145
       );
     }
-    {
+  }
+  static init_method_build_cylinder_planes() {
+    if (!this.#_bindings.method_build_cylinder_planes) {
       let classname = new StringName("Geometry3D");
       let methodname = new StringName("build_cylinder_planes");
-      this._bindings.method_build_cylinder_planes = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_build_cylinder_planes = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         449920067
       );
     }
-    {
+  }
+  static init_method_build_capsule_planes() {
+    if (!this.#_bindings.method_build_capsule_planes) {
       let classname = new StringName("Geometry3D");
       let methodname = new StringName("build_capsule_planes");
-      this._bindings.method_build_capsule_planes = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_build_capsule_planes = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2113592876
       );
     }
-    {
+  }
+  static init_method_get_closest_points_between_segments() {
+    if (!this.#_bindings.method_get_closest_points_between_segments) {
       let classname = new StringName("Geometry3D");
       let methodname = new StringName("get_closest_points_between_segments");
-      this._bindings.method_get_closest_points_between_segments = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_closest_points_between_segments = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1056373962
       );
     }
-    {
+  }
+  static init_method_get_closest_point_to_segment() {
+    if (!this.#_bindings.method_get_closest_point_to_segment) {
       let classname = new StringName("Geometry3D");
       let methodname = new StringName("get_closest_point_to_segment");
-      this._bindings.method_get_closest_point_to_segment = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_closest_point_to_segment = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2168193209
       );
     }
-    {
+  }
+  static init_method_get_closest_point_to_segment_uncapped() {
+    if (!this.#_bindings.method_get_closest_point_to_segment_uncapped) {
       let classname = new StringName("Geometry3D");
       let methodname = new StringName("get_closest_point_to_segment_uncapped");
-      this._bindings.method_get_closest_point_to_segment_uncapped = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_closest_point_to_segment_uncapped = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2168193209
       );
     }
-    {
+  }
+  static init_method_get_triangle_barycentric_coords() {
+    if (!this.#_bindings.method_get_triangle_barycentric_coords) {
       let classname = new StringName("Geometry3D");
       let methodname = new StringName("get_triangle_barycentric_coords");
-      this._bindings.method_get_triangle_barycentric_coords = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_triangle_barycentric_coords = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1362048029
       );
     }
-    {
+  }
+  static init_method_ray_intersects_triangle() {
+    if (!this.#_bindings.method_ray_intersects_triangle) {
       let classname = new StringName("Geometry3D");
       let methodname = new StringName("ray_intersects_triangle");
-      this._bindings.method_ray_intersects_triangle = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_ray_intersects_triangle = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1718655448
       );
     }
-    {
+  }
+  static init_method_segment_intersects_triangle() {
+    if (!this.#_bindings.method_segment_intersects_triangle) {
       let classname = new StringName("Geometry3D");
       let methodname = new StringName("segment_intersects_triangle");
-      this._bindings.method_segment_intersects_triangle = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_segment_intersects_triangle = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1718655448
       );
     }
-    {
+  }
+  static init_method_segment_intersects_sphere() {
+    if (!this.#_bindings.method_segment_intersects_sphere) {
       let classname = new StringName("Geometry3D");
       let methodname = new StringName("segment_intersects_sphere");
-      this._bindings.method_segment_intersects_sphere = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_segment_intersects_sphere = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         4080141172
       );
     }
-    {
+  }
+  static init_method_segment_intersects_cylinder() {
+    if (!this.#_bindings.method_segment_intersects_cylinder) {
       let classname = new StringName("Geometry3D");
       let methodname = new StringName("segment_intersects_cylinder");
-      this._bindings.method_segment_intersects_cylinder = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_segment_intersects_cylinder = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2361316491
       );
     }
-    {
+  }
+  static init_method_segment_intersects_convex() {
+    if (!this.#_bindings.method_segment_intersects_convex) {
       let classname = new StringName("Geometry3D");
       let methodname = new StringName("segment_intersects_convex");
-      this._bindings.method_segment_intersects_convex = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_segment_intersects_convex = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         537425332
       );
     }
-    {
+  }
+  static init_method_clip_polygon() {
+    if (!this.#_bindings.method_clip_polygon) {
       let classname = new StringName("Geometry3D");
       let methodname = new StringName("clip_polygon");
-      this._bindings.method_clip_polygon = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_clip_polygon = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2603188319
       );
     }
-    {
+  }
+  static init_method_tetrahedralize_delaunay() {
+    if (!this.#_bindings.method_tetrahedralize_delaunay) {
       let classname = new StringName("Geometry3D");
       let methodname = new StringName("tetrahedralize_delaunay");
-      this._bindings.method_tetrahedralize_delaunay = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_tetrahedralize_delaunay = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1230191221
       );
     }
   }
+
+  
   
   compute_convex_mesh_points(_planes) {
+    Geometry3D.init_method_compute_convex_mesh_points();
     return _call_native_mb_ret(
-      _Geometry3D._bindings.method_compute_convex_mesh_points,
+      _Geometry3D.#_bindings.method_compute_convex_mesh_points,
       this._owner,
 			Variant.Type.PACKED_VECTOR3_ARRAY,
     
@@ -195,35 +218,39 @@ class _MethodBindings {
     
   }
   build_box_planes(_extents) {
+    Geometry3D.init_method_build_box_planes();
     return _call_native_mb_ret(
-      _Geometry3D._bindings.method_build_box_planes,
+      _Geometry3D.#_bindings.method_build_box_planes,
       this._owner,
-			Variant.INT,
+			Variant.Type.ARRAY,
       _extents
     );
     
   }
   build_cylinder_planes(_radius, _height, _sides, _axis) {
+    Geometry3D.init_method_build_cylinder_planes();
     return _call_native_mb_ret(
-      _Geometry3D._bindings.method_build_cylinder_planes,
+      _Geometry3D.#_bindings.method_build_cylinder_planes,
       this._owner,
-			Variant.INT,
+			Variant.Type.ARRAY,
       _radius, _height, _sides, _axis
     );
     
   }
   build_capsule_planes(_radius, _height, _sides, _lats, _axis) {
+    Geometry3D.init_method_build_capsule_planes();
     return _call_native_mb_ret(
-      _Geometry3D._bindings.method_build_capsule_planes,
+      _Geometry3D.#_bindings.method_build_capsule_planes,
       this._owner,
-			Variant.INT,
+			Variant.Type.ARRAY,
       _radius, _height, _sides, _lats, _axis
     );
     
   }
   get_closest_points_between_segments(_p1, _p2, _q1, _q2) {
+    Geometry3D.init_method_get_closest_points_between_segments();
     return _call_native_mb_ret(
-      _Geometry3D._bindings.method_get_closest_points_between_segments,
+      _Geometry3D.#_bindings.method_get_closest_points_between_segments,
       this._owner,
 			Variant.Type.PACKED_VECTOR3_ARRAY,
     
@@ -232,8 +259,9 @@ class _MethodBindings {
     
   }
   get_closest_point_to_segment(_point, _s1, _s2) {
+    Geometry3D.init_method_get_closest_point_to_segment();
     return _call_native_mb_ret(
-      _Geometry3D._bindings.method_get_closest_point_to_segment,
+      _Geometry3D.#_bindings.method_get_closest_point_to_segment,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -242,8 +270,9 @@ class _MethodBindings {
     
   }
   get_closest_point_to_segment_uncapped(_point, _s1, _s2) {
+    Geometry3D.init_method_get_closest_point_to_segment_uncapped();
     return _call_native_mb_ret(
-      _Geometry3D._bindings.method_get_closest_point_to_segment_uncapped,
+      _Geometry3D.#_bindings.method_get_closest_point_to_segment_uncapped,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -252,8 +281,9 @@ class _MethodBindings {
     
   }
   get_triangle_barycentric_coords(_point, _a, _b, _c) {
+    Geometry3D.init_method_get_triangle_barycentric_coords();
     return _call_native_mb_ret(
-      _Geometry3D._bindings.method_get_triangle_barycentric_coords,
+      _Geometry3D.#_bindings.method_get_triangle_barycentric_coords,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -262,8 +292,9 @@ class _MethodBindings {
     
   }
   ray_intersects_triangle(_from, _dir, _a, _b, _c) {
+    Geometry3D.init_method_ray_intersects_triangle();
     return _call_native_mb_ret(
-      _Geometry3D._bindings.method_ray_intersects_triangle,
+      _Geometry3D.#_bindings.method_ray_intersects_triangle,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -272,8 +303,9 @@ class _MethodBindings {
     
   }
   segment_intersects_triangle(_from, _to, _a, _b, _c) {
+    Geometry3D.init_method_segment_intersects_triangle();
     return _call_native_mb_ret(
-      _Geometry3D._bindings.method_segment_intersects_triangle,
+      _Geometry3D.#_bindings.method_segment_intersects_triangle,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -282,8 +314,9 @@ class _MethodBindings {
     
   }
   segment_intersects_sphere(_from, _to, _sphere_position, _sphere_radius) {
+    Geometry3D.init_method_segment_intersects_sphere();
     return _call_native_mb_ret(
-      _Geometry3D._bindings.method_segment_intersects_sphere,
+      _Geometry3D.#_bindings.method_segment_intersects_sphere,
       this._owner,
 			Variant.Type.PACKED_VECTOR3_ARRAY,
     
@@ -292,8 +325,9 @@ class _MethodBindings {
     
   }
   segment_intersects_cylinder(_from, _to, _height, _radius) {
+    Geometry3D.init_method_segment_intersects_cylinder();
     return _call_native_mb_ret(
-      _Geometry3D._bindings.method_segment_intersects_cylinder,
+      _Geometry3D.#_bindings.method_segment_intersects_cylinder,
       this._owner,
 			Variant.Type.PACKED_VECTOR3_ARRAY,
     
@@ -302,8 +336,9 @@ class _MethodBindings {
     
   }
   segment_intersects_convex(_from, _to, _planes) {
+    Geometry3D.init_method_segment_intersects_convex();
     return _call_native_mb_ret(
-      _Geometry3D._bindings.method_segment_intersects_convex,
+      _Geometry3D.#_bindings.method_segment_intersects_convex,
       this._owner,
 			Variant.Type.PACKED_VECTOR3_ARRAY,
     
@@ -312,8 +347,9 @@ class _MethodBindings {
     
   }
   clip_polygon(_points, _plane) {
+    Geometry3D.init_method_clip_polygon();
     return _call_native_mb_ret(
-      _Geometry3D._bindings.method_clip_polygon,
+      _Geometry3D.#_bindings.method_clip_polygon,
       this._owner,
 			Variant.Type.PACKED_VECTOR3_ARRAY,
     
@@ -322,8 +358,9 @@ class _MethodBindings {
     
   }
   tetrahedralize_delaunay(_points) {
+    Geometry3D.init_method_tetrahedralize_delaunay();
     return _call_native_mb_ret(
-      _Geometry3D._bindings.method_tetrahedralize_delaunay,
+      _Geometry3D.#_bindings.method_tetrahedralize_delaunay,
       this._owner,
 			Variant.Type.PACKED_INT32_ARRAY,
     
@@ -333,10 +370,6 @@ class _MethodBindings {
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }
 export const Geometry3D = (function () {
   let _instance;

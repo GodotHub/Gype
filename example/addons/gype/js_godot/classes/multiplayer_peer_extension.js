@@ -1,8 +1,7 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { MultiplayerPeer } from '@js_godot/classes/multiplayer_peer'
-import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -14,7 +13,7 @@ class _MethodBindings {
 }
 export class MultiplayerPeerExtension extends MultiplayerPeer{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -24,13 +23,8 @@ export class MultiplayerPeerExtension extends MultiplayerPeer{
       super(godot_object);
     }
   }
+
   
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-  }
   
   _get_packet(_r_buffer, _r_buffer_size) {
   }
@@ -80,8 +74,4 @@ export class MultiplayerPeerExtension extends MultiplayerPeer{
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

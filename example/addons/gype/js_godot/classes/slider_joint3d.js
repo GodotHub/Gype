@@ -15,7 +15,7 @@ class _MethodBindings {
 }
 export class SliderJoint3D extends Joint3D{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -25,45 +25,47 @@ export class SliderJoint3D extends Joint3D{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_param() {
+    if (!this.#_bindings.method_set_param) {
       let classname = new StringName("SliderJoint3D");
       let methodname = new StringName("set_param");
-      this._bindings.method_set_param = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_param = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         918243683
       );
     }
-    {
+  }
+  static init_method_get_param() {
+    if (!this.#_bindings.method_get_param) {
       let classname = new StringName("SliderJoint3D");
       let methodname = new StringName("get_param");
-      this._bindings.method_get_param = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_param = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         959925627
       );
     }
   }
+
+  
   
   set_param(_param, _value) {
+    SliderJoint3D.init_method_set_param();
     return _call_native_mb_no_ret(
-      SliderJoint3D._bindings.method_set_param,
+      SliderJoint3D.#_bindings.method_set_param,
       this._owner,
       _param, _value
     );
     
   }
   get_param(_param) {
+    SliderJoint3D.init_method_get_param();
     return _call_native_mb_ret(
-      SliderJoint3D._bindings.method_get_param,
+      SliderJoint3D.#_bindings.method_get_param,
       this._owner,
 			Variant.Type.FLOAT,
+    
       _param
     );
     
@@ -94,9 +96,5 @@ export class SliderJoint3D extends Joint3D{
     PARAM_ANGULAR_ORTHOGONAL_RESTITUTION: 20,
     PARAM_ANGULAR_ORTHOGONAL_DAMPING: 21,
     PARAM_MAX: 22,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

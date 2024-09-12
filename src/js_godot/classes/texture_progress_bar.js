@@ -1,9 +1,7 @@
 import * as internal from '__internal__';
-import { Variant } from '@js_godot/variant/variant'
-import { Color } from '@js_godot/variant/color'
-import { Vector2 } from '@js_godot/variant/vector2'
-import { StringName } from '@js_godot/variant/string_name'
 import { Range } from '@js_godot/classes/range'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -41,7 +39,7 @@ class _MethodBindings {
 }
 export class TextureProgressBar extends Range{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -51,327 +49,385 @@ export class TextureProgressBar extends Range{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_under_texture() {
+    if (!this.#_bindings.method_set_under_texture) {
       let classname = new StringName("TextureProgressBar");
       let methodname = new StringName("set_under_texture");
-      this._bindings.method_set_under_texture = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_under_texture = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         4051416890
       );
     }
-    {
+  }
+  static init_method_get_under_texture() {
+    if (!this.#_bindings.method_get_under_texture) {
       let classname = new StringName("TextureProgressBar");
       let methodname = new StringName("get_under_texture");
-      this._bindings.method_get_under_texture = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_under_texture = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3635182373
       );
     }
-    {
+  }
+  static init_method_set_progress_texture() {
+    if (!this.#_bindings.method_set_progress_texture) {
       let classname = new StringName("TextureProgressBar");
       let methodname = new StringName("set_progress_texture");
-      this._bindings.method_set_progress_texture = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_progress_texture = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         4051416890
       );
     }
-    {
+  }
+  static init_method_get_progress_texture() {
+    if (!this.#_bindings.method_get_progress_texture) {
       let classname = new StringName("TextureProgressBar");
       let methodname = new StringName("get_progress_texture");
-      this._bindings.method_get_progress_texture = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_progress_texture = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3635182373
       );
     }
-    {
+  }
+  static init_method_set_over_texture() {
+    if (!this.#_bindings.method_set_over_texture) {
       let classname = new StringName("TextureProgressBar");
       let methodname = new StringName("set_over_texture");
-      this._bindings.method_set_over_texture = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_over_texture = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         4051416890
       );
     }
-    {
+  }
+  static init_method_get_over_texture() {
+    if (!this.#_bindings.method_get_over_texture) {
       let classname = new StringName("TextureProgressBar");
       let methodname = new StringName("get_over_texture");
-      this._bindings.method_get_over_texture = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_over_texture = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3635182373
       );
     }
-    {
+  }
+  static init_method_set_fill_mode() {
+    if (!this.#_bindings.method_set_fill_mode) {
       let classname = new StringName("TextureProgressBar");
       let methodname = new StringName("set_fill_mode");
-      this._bindings.method_set_fill_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_fill_mode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1286410249
       );
     }
-    {
+  }
+  static init_method_get_fill_mode() {
+    if (!this.#_bindings.method_get_fill_mode) {
       let classname = new StringName("TextureProgressBar");
       let methodname = new StringName("get_fill_mode");
-      this._bindings.method_get_fill_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_fill_mode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2455072627
       );
     }
-    {
+  }
+  static init_method_set_tint_under() {
+    if (!this.#_bindings.method_set_tint_under) {
       let classname = new StringName("TextureProgressBar");
       let methodname = new StringName("set_tint_under");
-      this._bindings.method_set_tint_under = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_tint_under = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2920490490
       );
     }
-    {
+  }
+  static init_method_get_tint_under() {
+    if (!this.#_bindings.method_get_tint_under) {
       let classname = new StringName("TextureProgressBar");
       let methodname = new StringName("get_tint_under");
-      this._bindings.method_get_tint_under = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_tint_under = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3444240500
       );
     }
-    {
+  }
+  static init_method_set_tint_progress() {
+    if (!this.#_bindings.method_set_tint_progress) {
       let classname = new StringName("TextureProgressBar");
       let methodname = new StringName("set_tint_progress");
-      this._bindings.method_set_tint_progress = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_tint_progress = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2920490490
       );
     }
-    {
+  }
+  static init_method_get_tint_progress() {
+    if (!this.#_bindings.method_get_tint_progress) {
       let classname = new StringName("TextureProgressBar");
       let methodname = new StringName("get_tint_progress");
-      this._bindings.method_get_tint_progress = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_tint_progress = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3444240500
       );
     }
-    {
+  }
+  static init_method_set_tint_over() {
+    if (!this.#_bindings.method_set_tint_over) {
       let classname = new StringName("TextureProgressBar");
       let methodname = new StringName("set_tint_over");
-      this._bindings.method_set_tint_over = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_tint_over = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2920490490
       );
     }
-    {
+  }
+  static init_method_get_tint_over() {
+    if (!this.#_bindings.method_get_tint_over) {
       let classname = new StringName("TextureProgressBar");
       let methodname = new StringName("get_tint_over");
-      this._bindings.method_get_tint_over = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_tint_over = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3444240500
       );
     }
-    {
+  }
+  static init_method_set_texture_progress_offset() {
+    if (!this.#_bindings.method_set_texture_progress_offset) {
       let classname = new StringName("TextureProgressBar");
       let methodname = new StringName("set_texture_progress_offset");
-      this._bindings.method_set_texture_progress_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_texture_progress_offset = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         743155724
       );
     }
-    {
+  }
+  static init_method_get_texture_progress_offset() {
+    if (!this.#_bindings.method_get_texture_progress_offset) {
       let classname = new StringName("TextureProgressBar");
       let methodname = new StringName("get_texture_progress_offset");
-      this._bindings.method_get_texture_progress_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_texture_progress_offset = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3341600327
       );
     }
-    {
+  }
+  static init_method_set_radial_initial_angle() {
+    if (!this.#_bindings.method_set_radial_initial_angle) {
       let classname = new StringName("TextureProgressBar");
       let methodname = new StringName("set_radial_initial_angle");
-      this._bindings.method_set_radial_initial_angle = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_radial_initial_angle = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_radial_initial_angle() {
+    if (!this.#_bindings.method_get_radial_initial_angle) {
       let classname = new StringName("TextureProgressBar");
       let methodname = new StringName("get_radial_initial_angle");
-      this._bindings.method_get_radial_initial_angle = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_radial_initial_angle = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         191475506
       );
     }
-    {
+  }
+  static init_method_set_radial_center_offset() {
+    if (!this.#_bindings.method_set_radial_center_offset) {
       let classname = new StringName("TextureProgressBar");
       let methodname = new StringName("set_radial_center_offset");
-      this._bindings.method_set_radial_center_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_radial_center_offset = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         743155724
       );
     }
-    {
+  }
+  static init_method_get_radial_center_offset() {
+    if (!this.#_bindings.method_get_radial_center_offset) {
       let classname = new StringName("TextureProgressBar");
       let methodname = new StringName("get_radial_center_offset");
-      this._bindings.method_get_radial_center_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_radial_center_offset = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1497962370
       );
     }
-    {
+  }
+  static init_method_set_fill_degrees() {
+    if (!this.#_bindings.method_set_fill_degrees) {
       let classname = new StringName("TextureProgressBar");
       let methodname = new StringName("set_fill_degrees");
-      this._bindings.method_set_fill_degrees = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_fill_degrees = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_fill_degrees() {
+    if (!this.#_bindings.method_get_fill_degrees) {
       let classname = new StringName("TextureProgressBar");
       let methodname = new StringName("get_fill_degrees");
-      this._bindings.method_get_fill_degrees = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_fill_degrees = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         191475506
       );
     }
-    {
+  }
+  static init_method_set_stretch_margin() {
+    if (!this.#_bindings.method_set_stretch_margin) {
       let classname = new StringName("TextureProgressBar");
       let methodname = new StringName("set_stretch_margin");
-      this._bindings.method_set_stretch_margin = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_stretch_margin = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         437707142
       );
     }
-    {
+  }
+  static init_method_get_stretch_margin() {
+    if (!this.#_bindings.method_get_stretch_margin) {
       let classname = new StringName("TextureProgressBar");
       let methodname = new StringName("get_stretch_margin");
-      this._bindings.method_get_stretch_margin = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_stretch_margin = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1983885014
       );
     }
-    {
+  }
+  static init_method_set_nine_patch_stretch() {
+    if (!this.#_bindings.method_set_nine_patch_stretch) {
       let classname = new StringName("TextureProgressBar");
       let methodname = new StringName("set_nine_patch_stretch");
-      this._bindings.method_set_nine_patch_stretch = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_nine_patch_stretch = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_get_nine_patch_stretch() {
+    if (!this.#_bindings.method_get_nine_patch_stretch) {
       let classname = new StringName("TextureProgressBar");
       let methodname = new StringName("get_nine_patch_stretch");
-      this._bindings.method_get_nine_patch_stretch = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_nine_patch_stretch = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
   }
+
+  
   
   set_under_texture(_tex) {
+    TextureProgressBar.init_method_set_under_texture();
     return _call_native_mb_no_ret(
-      TextureProgressBar._bindings.method_set_under_texture,
+      TextureProgressBar.#_bindings.method_set_under_texture,
       this._owner,
       _tex
     );
     
   }
   get_under_texture() {
+    TextureProgressBar.init_method_get_under_texture();
     return _call_native_mb_ret(
-      TextureProgressBar._bindings.method_get_under_texture,
+      TextureProgressBar.#_bindings.method_get_under_texture,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
   }
   set_progress_texture(_tex) {
+    TextureProgressBar.init_method_set_progress_texture();
     return _call_native_mb_no_ret(
-      TextureProgressBar._bindings.method_set_progress_texture,
+      TextureProgressBar.#_bindings.method_set_progress_texture,
       this._owner,
       _tex
     );
     
   }
   get_progress_texture() {
+    TextureProgressBar.init_method_get_progress_texture();
     return _call_native_mb_ret(
-      TextureProgressBar._bindings.method_get_progress_texture,
+      TextureProgressBar.#_bindings.method_get_progress_texture,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
   }
   set_over_texture(_tex) {
+    TextureProgressBar.init_method_set_over_texture();
     return _call_native_mb_no_ret(
-      TextureProgressBar._bindings.method_set_over_texture,
+      TextureProgressBar.#_bindings.method_set_over_texture,
       this._owner,
       _tex
     );
     
   }
   get_over_texture() {
+    TextureProgressBar.init_method_get_over_texture();
     return _call_native_mb_ret(
-      TextureProgressBar._bindings.method_get_over_texture,
+      TextureProgressBar.#_bindings.method_get_over_texture,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
   }
   set_fill_mode(_mode) {
+    TextureProgressBar.init_method_set_fill_mode();
     return _call_native_mb_no_ret(
-      TextureProgressBar._bindings.method_set_fill_mode,
+      TextureProgressBar.#_bindings.method_set_fill_mode,
       this._owner,
       _mode
     );
     
   }
   get_fill_mode() {
+    TextureProgressBar.init_method_get_fill_mode();
     return _call_native_mb_ret(
-      TextureProgressBar._bindings.method_get_fill_mode,
+      TextureProgressBar.#_bindings.method_get_fill_mode,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_tint_under(_tint) {
+    TextureProgressBar.init_method_set_tint_under();
     return _call_native_mb_no_ret(
-      TextureProgressBar._bindings.method_set_tint_under,
+      TextureProgressBar.#_bindings.method_set_tint_under,
       this._owner,
       _tint
     );
     
   }
   get_tint_under() {
+    TextureProgressBar.init_method_get_tint_under();
     return _call_native_mb_ret(
-      TextureProgressBar._bindings.method_get_tint_under,
+      TextureProgressBar.#_bindings.method_get_tint_under,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -380,16 +436,18 @@ export class TextureProgressBar extends Range{
     
   }
   set_tint_progress(_tint) {
+    TextureProgressBar.init_method_set_tint_progress();
     return _call_native_mb_no_ret(
-      TextureProgressBar._bindings.method_set_tint_progress,
+      TextureProgressBar.#_bindings.method_set_tint_progress,
       this._owner,
       _tint
     );
     
   }
   get_tint_progress() {
+    TextureProgressBar.init_method_get_tint_progress();
     return _call_native_mb_ret(
-      TextureProgressBar._bindings.method_get_tint_progress,
+      TextureProgressBar.#_bindings.method_get_tint_progress,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -398,16 +456,18 @@ export class TextureProgressBar extends Range{
     
   }
   set_tint_over(_tint) {
+    TextureProgressBar.init_method_set_tint_over();
     return _call_native_mb_no_ret(
-      TextureProgressBar._bindings.method_set_tint_over,
+      TextureProgressBar.#_bindings.method_set_tint_over,
       this._owner,
       _tint
     );
     
   }
   get_tint_over() {
+    TextureProgressBar.init_method_get_tint_over();
     return _call_native_mb_ret(
-      TextureProgressBar._bindings.method_get_tint_over,
+      TextureProgressBar.#_bindings.method_get_tint_over,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -416,16 +476,18 @@ export class TextureProgressBar extends Range{
     
   }
   set_texture_progress_offset(_offset) {
+    TextureProgressBar.init_method_set_texture_progress_offset();
     return _call_native_mb_no_ret(
-      TextureProgressBar._bindings.method_set_texture_progress_offset,
+      TextureProgressBar.#_bindings.method_set_texture_progress_offset,
       this._owner,
       _offset
     );
     
   }
   get_texture_progress_offset() {
+    TextureProgressBar.init_method_get_texture_progress_offset();
     return _call_native_mb_ret(
-      TextureProgressBar._bindings.method_get_texture_progress_offset,
+      TextureProgressBar.#_bindings.method_get_texture_progress_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -434,33 +496,38 @@ export class TextureProgressBar extends Range{
     
   }
   set_radial_initial_angle(_mode) {
+    TextureProgressBar.init_method_set_radial_initial_angle();
     return _call_native_mb_no_ret(
-      TextureProgressBar._bindings.method_set_radial_initial_angle,
+      TextureProgressBar.#_bindings.method_set_radial_initial_angle,
       this._owner,
       _mode
     );
     
   }
   get_radial_initial_angle() {
+    TextureProgressBar.init_method_get_radial_initial_angle();
     return _call_native_mb_ret(
-      TextureProgressBar._bindings.method_get_radial_initial_angle,
+      TextureProgressBar.#_bindings.method_get_radial_initial_angle,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_radial_center_offset(_mode) {
+    TextureProgressBar.init_method_set_radial_center_offset();
     return _call_native_mb_no_ret(
-      TextureProgressBar._bindings.method_set_radial_center_offset,
+      TextureProgressBar.#_bindings.method_set_radial_center_offset,
       this._owner,
       _mode
     );
     
   }
   get_radial_center_offset() {
+    TextureProgressBar.init_method_get_radial_center_offset();
     return _call_native_mb_ret(
-      TextureProgressBar._bindings.method_get_radial_center_offset,
+      TextureProgressBar.#_bindings.method_get_radial_center_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -469,52 +536,61 @@ export class TextureProgressBar extends Range{
     
   }
   set_fill_degrees(_mode) {
+    TextureProgressBar.init_method_set_fill_degrees();
     return _call_native_mb_no_ret(
-      TextureProgressBar._bindings.method_set_fill_degrees,
+      TextureProgressBar.#_bindings.method_set_fill_degrees,
       this._owner,
       _mode
     );
     
   }
   get_fill_degrees() {
+    TextureProgressBar.init_method_get_fill_degrees();
     return _call_native_mb_ret(
-      TextureProgressBar._bindings.method_get_fill_degrees,
+      TextureProgressBar.#_bindings.method_get_fill_degrees,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_stretch_margin(_margin, _value) {
+    TextureProgressBar.init_method_set_stretch_margin();
     return _call_native_mb_no_ret(
-      TextureProgressBar._bindings.method_set_stretch_margin,
+      TextureProgressBar.#_bindings.method_set_stretch_margin,
       this._owner,
       _margin, _value
     );
     
   }
   get_stretch_margin(_margin) {
+    TextureProgressBar.init_method_get_stretch_margin();
     return _call_native_mb_ret(
-      TextureProgressBar._bindings.method_get_stretch_margin,
+      TextureProgressBar.#_bindings.method_get_stretch_margin,
       this._owner,
 			Variant.Type.INT,
+    
       _margin
     );
     
   }
   set_nine_patch_stretch(_stretch) {
+    TextureProgressBar.init_method_set_nine_patch_stretch();
     return _call_native_mb_no_ret(
-      TextureProgressBar._bindings.method_set_nine_patch_stretch,
+      TextureProgressBar.#_bindings.method_set_nine_patch_stretch,
       this._owner,
       _stretch
     );
     
   }
   get_nine_patch_stretch() {
+    TextureProgressBar.init_method_get_nine_patch_stretch();
     return _call_native_mb_ret(
-      TextureProgressBar._bindings.method_get_nine_patch_stretch,
+      TextureProgressBar.#_bindings.method_get_nine_patch_stretch,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
@@ -627,9 +703,5 @@ set tint_progress (new_value) {
     FILL_BILINEAR_LEFT_AND_RIGHT: 6,
     FILL_BILINEAR_TOP_AND_BOTTOM: 7,
     FILL_CLOCKWISE_AND_COUNTER_CLOCKWISE: 8,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

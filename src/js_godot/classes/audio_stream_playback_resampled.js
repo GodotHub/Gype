@@ -14,7 +14,7 @@ class _MethodBindings {
 }
 export class AudioStreamPlaybackResampled extends AudioStreamPlayback{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -24,30 +24,28 @@ export class AudioStreamPlaybackResampled extends AudioStreamPlayback{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_begin_resample() {
+    if (!this.#_bindings.method_begin_resample) {
       let classname = new StringName("AudioStreamPlaybackResampled");
       let methodname = new StringName("begin_resample");
-      this._bindings.method_begin_resample = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_begin_resample = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3218959716
       );
     }
   }
+
+  
   
   _mix_resampled(_dst_buffer, _frame_count) {
   }
   _get_stream_sampling_rate() {
   }
   begin_resample() {
+    AudioStreamPlaybackResampled.init_method_begin_resample();
     return _call_native_mb_no_ret(
-      AudioStreamPlaybackResampled._bindings.method_begin_resample,
+      AudioStreamPlaybackResampled.#_bindings.method_begin_resample,
       this._owner,
       
     );
@@ -55,8 +53,4 @@ export class AudioStreamPlaybackResampled extends AudioStreamPlayback{
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

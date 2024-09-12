@@ -1,11 +1,7 @@
 import * as internal from '__internal__';
 import { RenderSceneData } from '@js_godot/classes/render_scene_data'
-import { RID } from '@js_godot/variant/rid'
-import { Transform3D } from '@js_godot/variant/transform3d'
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
-import { Projection } from '@js_godot/variant/projection'
-import { Vector3 } from '@js_godot/variant/vector3'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -17,7 +13,7 @@ class _MethodBindings {
 }
 export class RenderSceneDataExtension extends RenderSceneData{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -27,13 +23,8 @@ export class RenderSceneDataExtension extends RenderSceneData{
       super(godot_object);
     }
   }
+
   
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-  }
   
   _get_cam_transform() {
   }
@@ -49,8 +40,4 @@ export class RenderSceneDataExtension extends RenderSceneData{
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

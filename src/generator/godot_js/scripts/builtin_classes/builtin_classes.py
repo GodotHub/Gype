@@ -29,19 +29,19 @@ def dependcies_collect(clazz):
         for arg in ctor.get('arguments', []):
             _type = arg.get('type', None)
             if _type and is_variant(_type):
-                depencies.add(to_js_type(_type))
+                depencies.add(_type)
     for method in clazz.get('methods', []):
         _type = method.get('return_type', None)
         if _type and is_variant(_type):
-            depencies.add(to_js_type(_type))
+            depencies.add(_type)
         for arg in method.get('arguments', []):
             _type = arg.get('type', None)
             if _type and is_variant(_type):
-                depencies.add(to_js_type(_type))
+                depencies.add(_type)
     # depencies.add('Variant')
     depencies.add('StringName')
     # depencies.add('GodotObject')
-    depencies.discard(to_js_type(clazz['name']))
+    depencies.discard(clazz['name'])
     return depencies
 
 def render_builtin_classes(precision):

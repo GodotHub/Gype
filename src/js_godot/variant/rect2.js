@@ -2,11 +2,13 @@ import * as internal from '__internal__'
 import {
   _call_builtin_constructor,
   _call_builtin_method_ptr_ret,
-  _call_builtin_method_ptr_no_ret
+  _call_builtin_method_ptr_no_ret,
+  _call_builtin_method_ptr_obj_ret,
 } from '@js_godot/core/builtin_ptrcall'
 import { StringName } from '@js_godot/variant/string_name'
-import { Vector2 } from '@js_godot/variant/vector2'
 import { Rect2i } from '@js_godot/variant/rect2i'
+import { Vector2 } from '@js_godot/variant/vector2'
+import { GodotObject } from "@js_godot/classes/godot_object";
 
 class _MethodBindings {
   from_variant_constructor
@@ -44,24 +46,26 @@ export class Rect2 {
   static #SIZE = 16
   opaque = new Uint8Array(Rect2.#SIZE)
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
-  constructor (from) {
-    if (!from) {
-      _call_builtin_constructor(Rect2._bindings.constructor_0, this)
-    }else if (from instanceof Rect2) {
-      _call_builtin_constructor(Rect2._bindings.constructor_1, this, [
+  constructor (value) {
+    if (!value) {
+      _call_builtin_constructor(Rect2.#_bindings.constructor_0, this)
+    } else if (arguments.length == 1&& arguments[0] instanceof Rect2) {
+      let from = arguments[0];
+      _call_builtin_constructor(Rect2.#_bindings.constructor_1, this, [
         from
       ])
-    }else if (from instanceof Rect2i) {
-      _call_builtin_constructor(Rect2._bindings.constructor_2, this, [
+    } else if (arguments.length == 1&& arguments[0] instanceof Rect2i) {
+      let from = arguments[0];
+      _call_builtin_constructor(Rect2.#_bindings.constructor_2, this, [
         from
       ])
     } else if (arguments.length == 2&& arguments[0] instanceof Vector2&& arguments[1] instanceof Vector2) {
       let position = arguments[0];
       let size = arguments[1];
-      _call_builtin_constructor(Rect2._bindings.constructor_3, this, [
+      _call_builtin_constructor(Rect2.#_bindings.constructor_3, this, [
         position, size
       ])
     } else if (arguments.length == 4&& typeof arguments[0] == "number"&& typeof arguments[1] == "number"&& typeof arguments[2] == "number"&& typeof arguments[3] == "number") {
@@ -69,35 +73,37 @@ export class Rect2 {
       let y = arguments[1];
       let width = arguments[2];
       let height = arguments[3];
-      _call_builtin_constructor(Rect2._bindings.constructor_4, this, [
+      _call_builtin_constructor(Rect2.#_bindings.constructor_4, this, [
         x, y, width, height
       ])
-    } else if (from.constructor.name === "Variant") {
-      Rect2._bindings.from_variant_constructor(this.opaque, from.opaque)
+    } else if (value.constructor.name === "Variant") {
+      Rect2.#_bindings.from_variant_constructor(this.opaque, value.opaque)
+    } else if (value instanceof Uint8Array) {
+      this.opaque = value;
     } 
   }
   
   static __init_bindings_constructors_destructor () {
-    this._bindings.from_variant_constructor = internal.get_variant_to_type_constructor(
+    this.#_bindings.from_variant_constructor = internal.get_variant_to_type_constructor(
       7
     )
-    this._bindings.constructor_0 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_0 = internal.variant_get_ptr_constructor(
       7,
       0
     )
-    this._bindings.constructor_1 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_1 = internal.variant_get_ptr_constructor(
       7,
       1
     )
-    this._bindings.constructor_2 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_2 = internal.variant_get_ptr_constructor(
       7,
       2
     )
-    this._bindings.constructor_3 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_3 = internal.variant_get_ptr_constructor(
       7,
       3
     )
-    this._bindings.constructor_4 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_4 = internal.variant_get_ptr_constructor(
       7,
       4
     )
@@ -111,7 +117,7 @@ export class Rect2 {
     this.__init_bindings_constructors_destructor()
     {
       let _gde_name = new StringName('get_center')
-      this._bindings.method_get_center = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_center = internal.variant_get_ptr_builtin_method(
         7,
         _gde_name.opaque,
         2428350749
@@ -119,7 +125,7 @@ export class Rect2 {
     }
     {
       let _gde_name = new StringName('get_area')
-      this._bindings.method_get_area = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_area = internal.variant_get_ptr_builtin_method(
         7,
         _gde_name.opaque,
         466405837
@@ -127,7 +133,7 @@ export class Rect2 {
     }
     {
       let _gde_name = new StringName('has_area')
-      this._bindings.method_has_area = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_has_area = internal.variant_get_ptr_builtin_method(
         7,
         _gde_name.opaque,
         3918633141
@@ -135,7 +141,7 @@ export class Rect2 {
     }
     {
       let _gde_name = new StringName('has_point')
-      this._bindings.method_has_point = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_has_point = internal.variant_get_ptr_builtin_method(
         7,
         _gde_name.opaque,
         3190634762
@@ -143,7 +149,7 @@ export class Rect2 {
     }
     {
       let _gde_name = new StringName('is_equal_approx')
-      this._bindings.method_is_equal_approx = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_equal_approx = internal.variant_get_ptr_builtin_method(
         7,
         _gde_name.opaque,
         1908192260
@@ -151,7 +157,7 @@ export class Rect2 {
     }
     {
       let _gde_name = new StringName('is_finite')
-      this._bindings.method_is_finite = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_finite = internal.variant_get_ptr_builtin_method(
         7,
         _gde_name.opaque,
         3918633141
@@ -159,7 +165,7 @@ export class Rect2 {
     }
     {
       let _gde_name = new StringName('intersects')
-      this._bindings.method_intersects = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_intersects = internal.variant_get_ptr_builtin_method(
         7,
         _gde_name.opaque,
         819294880
@@ -167,7 +173,7 @@ export class Rect2 {
     }
     {
       let _gde_name = new StringName('encloses')
-      this._bindings.method_encloses = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_encloses = internal.variant_get_ptr_builtin_method(
         7,
         _gde_name.opaque,
         1908192260
@@ -175,7 +181,7 @@ export class Rect2 {
     }
     {
       let _gde_name = new StringName('intersection')
-      this._bindings.method_intersection = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_intersection = internal.variant_get_ptr_builtin_method(
         7,
         _gde_name.opaque,
         2282977743
@@ -183,7 +189,7 @@ export class Rect2 {
     }
     {
       let _gde_name = new StringName('merge')
-      this._bindings.method_merge = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_merge = internal.variant_get_ptr_builtin_method(
         7,
         _gde_name.opaque,
         2282977743
@@ -191,7 +197,7 @@ export class Rect2 {
     }
     {
       let _gde_name = new StringName('expand')
-      this._bindings.method_expand = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_expand = internal.variant_get_ptr_builtin_method(
         7,
         _gde_name.opaque,
         293272265
@@ -199,7 +205,7 @@ export class Rect2 {
     }
     {
       let _gde_name = new StringName('grow')
-      this._bindings.method_grow = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_grow = internal.variant_get_ptr_builtin_method(
         7,
         _gde_name.opaque,
         39664498
@@ -207,7 +213,7 @@ export class Rect2 {
     }
     {
       let _gde_name = new StringName('grow_side')
-      this._bindings.method_grow_side = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_grow_side = internal.variant_get_ptr_builtin_method(
         7,
         _gde_name.opaque,
         4177736158
@@ -215,7 +221,7 @@ export class Rect2 {
     }
     {
       let _gde_name = new StringName('grow_individual')
-      this._bindings.method_grow_individual = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_grow_individual = internal.variant_get_ptr_builtin_method(
         7,
         _gde_name.opaque,
         3203390369
@@ -223,7 +229,7 @@ export class Rect2 {
     }
     {
       let _gde_name = new StringName('abs')
-      this._bindings.method_abs = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_abs = internal.variant_get_ptr_builtin_method(
         7,
         _gde_name.opaque,
         3107653634
@@ -235,7 +241,7 @@ export class Rect2 {
   get_center () {
     let ret = new Vector2()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Rect2._bindings.method_get_center,
+      Rect2.#_bindings.method_get_center,
       this,
       5,
       []
@@ -245,7 +251,7 @@ export class Rect2 {
   get_area () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Rect2._bindings.method_get_area,
+      Rect2.#_bindings.method_get_area,
       this,
       3,
       []
@@ -255,7 +261,7 @@ export class Rect2 {
   has_area () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Rect2._bindings.method_has_area,
+      Rect2.#_bindings.method_has_area,
       this,
       1,
       []
@@ -265,7 +271,7 @@ export class Rect2 {
   has_point (_point) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Rect2._bindings.method_has_point,
+      Rect2.#_bindings.method_has_point,
       this,
       1,
       [_point]
@@ -275,7 +281,7 @@ export class Rect2 {
   is_equal_approx (_rect) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Rect2._bindings.method_is_equal_approx,
+      Rect2.#_bindings.method_is_equal_approx,
       this,
       1,
       [_rect]
@@ -285,7 +291,7 @@ export class Rect2 {
   is_finite () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Rect2._bindings.method_is_finite,
+      Rect2.#_bindings.method_is_finite,
       this,
       1,
       []
@@ -295,7 +301,7 @@ export class Rect2 {
   intersects (_b, _include_borders) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Rect2._bindings.method_intersects,
+      Rect2.#_bindings.method_intersects,
       this,
       1,
       [_b, _include_borders]
@@ -305,7 +311,7 @@ export class Rect2 {
   encloses (_b) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Rect2._bindings.method_encloses,
+      Rect2.#_bindings.method_encloses,
       this,
       1,
       [_b]
@@ -315,7 +321,7 @@ export class Rect2 {
   intersection (_b) {
     let ret = new Rect2()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Rect2._bindings.method_intersection,
+      Rect2.#_bindings.method_intersection,
       this,
       7,
       [_b]
@@ -325,7 +331,7 @@ export class Rect2 {
   merge (_b) {
     let ret = new Rect2()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Rect2._bindings.method_merge,
+      Rect2.#_bindings.method_merge,
       this,
       7,
       [_b]
@@ -335,7 +341,7 @@ export class Rect2 {
   expand (_to) {
     let ret = new Rect2()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Rect2._bindings.method_expand,
+      Rect2.#_bindings.method_expand,
       this,
       7,
       [_to]
@@ -345,7 +351,7 @@ export class Rect2 {
   grow (_amount) {
     let ret = new Rect2()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Rect2._bindings.method_grow,
+      Rect2.#_bindings.method_grow,
       this,
       7,
       [_amount]
@@ -355,7 +361,7 @@ export class Rect2 {
   grow_side (_side, _amount) {
     let ret = new Rect2()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Rect2._bindings.method_grow_side,
+      Rect2.#_bindings.method_grow_side,
       this,
       7,
       [_side, _amount]
@@ -365,7 +371,7 @@ export class Rect2 {
   grow_individual (_left, _top, _right, _bottom) {
     let ret = new Rect2()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Rect2._bindings.method_grow_individual,
+      Rect2.#_bindings.method_grow_individual,
       this,
       7,
       [_left, _top, _right, _bottom]
@@ -375,7 +381,7 @@ export class Rect2 {
   abs () {
     let ret = new Rect2()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Rect2._bindings.method_abs,
+      Rect2.#_bindings.method_abs,
       this,
       7,
       []

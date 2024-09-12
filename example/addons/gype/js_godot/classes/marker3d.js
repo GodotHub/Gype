@@ -15,7 +15,7 @@ class _MethodBindings {
 }
 export class Marker3D extends Node3D{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -25,45 +25,47 @@ export class Marker3D extends Node3D{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_gizmo_extents() {
+    if (!this.#_bindings.method_set_gizmo_extents) {
       let classname = new StringName("Marker3D");
       let methodname = new StringName("set_gizmo_extents");
-      this._bindings.method_set_gizmo_extents = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_gizmo_extents = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_gizmo_extents() {
+    if (!this.#_bindings.method_get_gizmo_extents) {
       let classname = new StringName("Marker3D");
       let methodname = new StringName("get_gizmo_extents");
-      this._bindings.method_get_gizmo_extents = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_gizmo_extents = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
   }
+
+  
   
   set_gizmo_extents(_extents) {
+    Marker3D.init_method_set_gizmo_extents();
     return _call_native_mb_no_ret(
-      Marker3D._bindings.method_set_gizmo_extents,
+      Marker3D.#_bindings.method_set_gizmo_extents,
       this._owner,
       _extents
     );
     
   }
   get_gizmo_extents() {
+    Marker3D.init_method_get_gizmo_extents();
     return _call_native_mb_ret(
-      Marker3D._bindings.method_get_gizmo_extents,
+      Marker3D.#_bindings.method_get_gizmo_extents,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
@@ -76,8 +78,4 @@ set gizmo_extents (new_value) {
   this.set_gizmo_extents(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

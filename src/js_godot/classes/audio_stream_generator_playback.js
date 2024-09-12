@@ -1,9 +1,7 @@
 import * as internal from '__internal__';
-import { AudioStreamPlaybackResampled } from '@js_godot/classes/audio_stream_playback_resampled'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
-import { Vector2 } from '@js_godot/variant/vector2'
-import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
+import { AudioStreamPlaybackResampled } from '@js_godot/classes/audio_stream_playback_resampled'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -21,7 +19,7 @@ class _MethodBindings {
 }
 export class AudioStreamGeneratorPlayback extends AudioStreamPlaybackResampled{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -31,116 +29,134 @@ export class AudioStreamGeneratorPlayback extends AudioStreamPlaybackResampled{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_push_frame() {
+    if (!this.#_bindings.method_push_frame) {
       let classname = new StringName("AudioStreamGeneratorPlayback");
       let methodname = new StringName("push_frame");
-      this._bindings.method_push_frame = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_push_frame = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3975407249
       );
     }
-    {
+  }
+  static init_method_can_push_buffer() {
+    if (!this.#_bindings.method_can_push_buffer) {
       let classname = new StringName("AudioStreamGeneratorPlayback");
       let methodname = new StringName("can_push_buffer");
-      this._bindings.method_can_push_buffer = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_can_push_buffer = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1116898809
       );
     }
-    {
+  }
+  static init_method_push_buffer() {
+    if (!this.#_bindings.method_push_buffer) {
       let classname = new StringName("AudioStreamGeneratorPlayback");
       let methodname = new StringName("push_buffer");
-      this._bindings.method_push_buffer = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_push_buffer = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1361156557
       );
     }
-    {
+  }
+  static init_method_get_frames_available() {
+    if (!this.#_bindings.method_get_frames_available) {
       let classname = new StringName("AudioStreamGeneratorPlayback");
       let methodname = new StringName("get_frames_available");
-      this._bindings.method_get_frames_available = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_frames_available = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
-    {
+  }
+  static init_method_get_skips() {
+    if (!this.#_bindings.method_get_skips) {
       let classname = new StringName("AudioStreamGeneratorPlayback");
       let methodname = new StringName("get_skips");
-      this._bindings.method_get_skips = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_skips = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
-    {
+  }
+  static init_method_clear_buffer() {
+    if (!this.#_bindings.method_clear_buffer) {
       let classname = new StringName("AudioStreamGeneratorPlayback");
       let methodname = new StringName("clear_buffer");
-      this._bindings.method_clear_buffer = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_clear_buffer = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3218959716
       );
     }
   }
+
+  
   
   push_frame(_frame) {
+    AudioStreamGeneratorPlayback.init_method_push_frame();
     return _call_native_mb_ret(
-      AudioStreamGeneratorPlayback._bindings.method_push_frame,
+      AudioStreamGeneratorPlayback.#_bindings.method_push_frame,
       this._owner,
 			Variant.Type.BOOL,
+    
       _frame
     );
     
   }
   can_push_buffer(_amount) {
+    AudioStreamGeneratorPlayback.init_method_can_push_buffer();
     return _call_native_mb_ret(
-      AudioStreamGeneratorPlayback._bindings.method_can_push_buffer,
+      AudioStreamGeneratorPlayback.#_bindings.method_can_push_buffer,
       this._owner,
 			Variant.Type.BOOL,
+    
       _amount
     );
     
   }
   push_buffer(_frames) {
+    AudioStreamGeneratorPlayback.init_method_push_buffer();
     return _call_native_mb_ret(
-      AudioStreamGeneratorPlayback._bindings.method_push_buffer,
+      AudioStreamGeneratorPlayback.#_bindings.method_push_buffer,
       this._owner,
 			Variant.Type.BOOL,
+    
       _frames
     );
     
   }
   get_frames_available() {
+    AudioStreamGeneratorPlayback.init_method_get_frames_available();
     return _call_native_mb_ret(
-      AudioStreamGeneratorPlayback._bindings.method_get_frames_available,
+      AudioStreamGeneratorPlayback.#_bindings.method_get_frames_available,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   get_skips() {
+    AudioStreamGeneratorPlayback.init_method_get_skips();
     return _call_native_mb_ret(
-      AudioStreamGeneratorPlayback._bindings.method_get_skips,
+      AudioStreamGeneratorPlayback.#_bindings.method_get_skips,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   clear_buffer() {
+    AudioStreamGeneratorPlayback.init_method_clear_buffer();
     return _call_native_mb_no_ret(
-      AudioStreamGeneratorPlayback._bindings.method_clear_buffer,
+      AudioStreamGeneratorPlayback.#_bindings.method_clear_buffer,
       this._owner,
       
     );
@@ -148,8 +164,4 @@ export class AudioStreamGeneratorPlayback extends AudioStreamPlaybackResampled{
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

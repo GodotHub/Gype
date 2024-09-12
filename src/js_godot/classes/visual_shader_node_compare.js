@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { VisualShaderNode } from '@js_godot/classes/visual_shader_node'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -19,7 +19,7 @@ class _MethodBindings {
 }
 export class VisualShaderNodeCompare extends VisualShaderNode{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -29,115 +29,131 @@ export class VisualShaderNodeCompare extends VisualShaderNode{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_comparison_type() {
+    if (!this.#_bindings.method_set_comparison_type) {
       let classname = new StringName("VisualShaderNodeCompare");
       let methodname = new StringName("set_comparison_type");
-      this._bindings.method_set_comparison_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_comparison_type = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         516558320
       );
     }
-    {
+  }
+  static init_method_get_comparison_type() {
+    if (!this.#_bindings.method_get_comparison_type) {
       let classname = new StringName("VisualShaderNodeCompare");
       let methodname = new StringName("get_comparison_type");
-      this._bindings.method_get_comparison_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_comparison_type = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3495315961
       );
     }
-    {
+  }
+  static init_method_set_function() {
+    if (!this.#_bindings.method_set_function) {
       let classname = new StringName("VisualShaderNodeCompare");
       let methodname = new StringName("set_function");
-      this._bindings.method_set_function = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_function = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2370951349
       );
     }
-    {
+  }
+  static init_method_get_function() {
+    if (!this.#_bindings.method_get_function) {
       let classname = new StringName("VisualShaderNodeCompare");
       let methodname = new StringName("get_function");
-      this._bindings.method_get_function = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_function = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         4089164265
       );
     }
-    {
+  }
+  static init_method_set_condition() {
+    if (!this.#_bindings.method_set_condition) {
       let classname = new StringName("VisualShaderNodeCompare");
       let methodname = new StringName("set_condition");
-      this._bindings.method_set_condition = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_condition = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         918742392
       );
     }
-    {
+  }
+  static init_method_get_condition() {
+    if (!this.#_bindings.method_get_condition) {
       let classname = new StringName("VisualShaderNodeCompare");
       let methodname = new StringName("get_condition");
-      this._bindings.method_get_condition = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_condition = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3281078941
       );
     }
   }
+
+  
   
   set_comparison_type(_type) {
+    VisualShaderNodeCompare.init_method_set_comparison_type();
     return _call_native_mb_no_ret(
-      VisualShaderNodeCompare._bindings.method_set_comparison_type,
+      VisualShaderNodeCompare.#_bindings.method_set_comparison_type,
       this._owner,
       _type
     );
     
   }
   get_comparison_type() {
+    VisualShaderNodeCompare.init_method_get_comparison_type();
     return _call_native_mb_ret(
-      VisualShaderNodeCompare._bindings.method_get_comparison_type,
+      VisualShaderNodeCompare.#_bindings.method_get_comparison_type,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_function(_func) {
+    VisualShaderNodeCompare.init_method_set_function();
     return _call_native_mb_no_ret(
-      VisualShaderNodeCompare._bindings.method_set_function,
+      VisualShaderNodeCompare.#_bindings.method_set_function,
       this._owner,
       _func
     );
     
   }
   get_function() {
+    VisualShaderNodeCompare.init_method_get_function();
     return _call_native_mb_ret(
-      VisualShaderNodeCompare._bindings.method_get_function,
+      VisualShaderNodeCompare.#_bindings.method_get_function,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_condition(_condition) {
+    VisualShaderNodeCompare.init_method_set_condition();
     return _call_native_mb_no_ret(
-      VisualShaderNodeCompare._bindings.method_set_condition,
+      VisualShaderNodeCompare.#_bindings.method_set_condition,
       this._owner,
       _condition
     );
     
   }
   get_condition() {
+    VisualShaderNodeCompare.init_method_get_condition();
     return _call_native_mb_ret(
-      VisualShaderNodeCompare._bindings.method_get_condition,
+      VisualShaderNodeCompare.#_bindings.method_get_condition,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
@@ -186,9 +202,5 @@ set condition (new_value) {
     COND_ALL: 0,
     COND_ANY: 1,
     COND_MAX: 2,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

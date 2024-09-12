@@ -1,7 +1,6 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { Vector2 } from '@js_godot/variant/vector2'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { InputEventFromWindow } from '@js_godot/classes/input_event_from_window'
 import {
   call_utility_ret,
@@ -32,7 +31,7 @@ class _MethodBindings {
 }
 export class InputEventScreenDrag extends InputEventFromWindow{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -42,204 +41,240 @@ export class InputEventScreenDrag extends InputEventFromWindow{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_index() {
+    if (!this.#_bindings.method_set_index) {
       let classname = new StringName("InputEventScreenDrag");
       let methodname = new StringName("set_index");
-      this._bindings.method_set_index = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_index = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1286410249
       );
     }
-    {
+  }
+  static init_method_get_index() {
+    if (!this.#_bindings.method_get_index) {
       let classname = new StringName("InputEventScreenDrag");
       let methodname = new StringName("get_index");
-      this._bindings.method_get_index = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_index = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
-    {
+  }
+  static init_method_set_tilt() {
+    if (!this.#_bindings.method_set_tilt) {
       let classname = new StringName("InputEventScreenDrag");
       let methodname = new StringName("set_tilt");
-      this._bindings.method_set_tilt = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_tilt = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         743155724
       );
     }
-    {
+  }
+  static init_method_get_tilt() {
+    if (!this.#_bindings.method_get_tilt) {
       let classname = new StringName("InputEventScreenDrag");
       let methodname = new StringName("get_tilt");
-      this._bindings.method_get_tilt = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3341600327
-      );
-    }
-    {
-      let classname = new StringName("InputEventScreenDrag");
-      let methodname = new StringName("set_pressure");
-      this._bindings.method_set_pressure = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("InputEventScreenDrag");
-      let methodname = new StringName("get_pressure");
-      this._bindings.method_get_pressure = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("InputEventScreenDrag");
-      let methodname = new StringName("set_pen_inverted");
-      this._bindings.method_set_pen_inverted = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("InputEventScreenDrag");
-      let methodname = new StringName("get_pen_inverted");
-      this._bindings.method_get_pen_inverted = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("InputEventScreenDrag");
-      let methodname = new StringName("set_position");
-      this._bindings.method_set_position = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        743155724
-      );
-    }
-    {
-      let classname = new StringName("InputEventScreenDrag");
-      let methodname = new StringName("get_position");
-      this._bindings.method_get_position = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3341600327
-      );
-    }
-    {
-      let classname = new StringName("InputEventScreenDrag");
-      let methodname = new StringName("set_relative");
-      this._bindings.method_set_relative = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        743155724
-      );
-    }
-    {
-      let classname = new StringName("InputEventScreenDrag");
-      let methodname = new StringName("get_relative");
-      this._bindings.method_get_relative = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3341600327
-      );
-    }
-    {
-      let classname = new StringName("InputEventScreenDrag");
-      let methodname = new StringName("set_screen_relative");
-      this._bindings.method_set_screen_relative = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        743155724
-      );
-    }
-    {
-      let classname = new StringName("InputEventScreenDrag");
-      let methodname = new StringName("get_screen_relative");
-      this._bindings.method_get_screen_relative = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3341600327
-      );
-    }
-    {
-      let classname = new StringName("InputEventScreenDrag");
-      let methodname = new StringName("set_velocity");
-      this._bindings.method_set_velocity = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        743155724
-      );
-    }
-    {
-      let classname = new StringName("InputEventScreenDrag");
-      let methodname = new StringName("get_velocity");
-      this._bindings.method_get_velocity = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3341600327
-      );
-    }
-    {
-      let classname = new StringName("InputEventScreenDrag");
-      let methodname = new StringName("set_screen_velocity");
-      this._bindings.method_set_screen_velocity = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        743155724
-      );
-    }
-    {
-      let classname = new StringName("InputEventScreenDrag");
-      let methodname = new StringName("get_screen_velocity");
-      this._bindings.method_get_screen_velocity = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_tilt = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3341600327
       );
     }
   }
+  static init_method_set_pressure() {
+    if (!this.#_bindings.method_set_pressure) {
+      let classname = new StringName("InputEventScreenDrag");
+      let methodname = new StringName("set_pressure");
+      this.#_bindings.method_set_pressure = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        373806689
+      );
+    }
+  }
+  static init_method_get_pressure() {
+    if (!this.#_bindings.method_get_pressure) {
+      let classname = new StringName("InputEventScreenDrag");
+      let methodname = new StringName("get_pressure");
+      this.#_bindings.method_get_pressure = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1740695150
+      );
+    }
+  }
+  static init_method_set_pen_inverted() {
+    if (!this.#_bindings.method_set_pen_inverted) {
+      let classname = new StringName("InputEventScreenDrag");
+      let methodname = new StringName("set_pen_inverted");
+      this.#_bindings.method_set_pen_inverted = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2586408642
+      );
+    }
+  }
+  static init_method_get_pen_inverted() {
+    if (!this.#_bindings.method_get_pen_inverted) {
+      let classname = new StringName("InputEventScreenDrag");
+      let methodname = new StringName("get_pen_inverted");
+      this.#_bindings.method_get_pen_inverted = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        36873697
+      );
+    }
+  }
+  static init_method_set_position() {
+    if (!this.#_bindings.method_set_position) {
+      let classname = new StringName("InputEventScreenDrag");
+      let methodname = new StringName("set_position");
+      this.#_bindings.method_set_position = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        743155724
+      );
+    }
+  }
+  static init_method_get_position() {
+    if (!this.#_bindings.method_get_position) {
+      let classname = new StringName("InputEventScreenDrag");
+      let methodname = new StringName("get_position");
+      this.#_bindings.method_get_position = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3341600327
+      );
+    }
+  }
+  static init_method_set_relative() {
+    if (!this.#_bindings.method_set_relative) {
+      let classname = new StringName("InputEventScreenDrag");
+      let methodname = new StringName("set_relative");
+      this.#_bindings.method_set_relative = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        743155724
+      );
+    }
+  }
+  static init_method_get_relative() {
+    if (!this.#_bindings.method_get_relative) {
+      let classname = new StringName("InputEventScreenDrag");
+      let methodname = new StringName("get_relative");
+      this.#_bindings.method_get_relative = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3341600327
+      );
+    }
+  }
+  static init_method_set_screen_relative() {
+    if (!this.#_bindings.method_set_screen_relative) {
+      let classname = new StringName("InputEventScreenDrag");
+      let methodname = new StringName("set_screen_relative");
+      this.#_bindings.method_set_screen_relative = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        743155724
+      );
+    }
+  }
+  static init_method_get_screen_relative() {
+    if (!this.#_bindings.method_get_screen_relative) {
+      let classname = new StringName("InputEventScreenDrag");
+      let methodname = new StringName("get_screen_relative");
+      this.#_bindings.method_get_screen_relative = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3341600327
+      );
+    }
+  }
+  static init_method_set_velocity() {
+    if (!this.#_bindings.method_set_velocity) {
+      let classname = new StringName("InputEventScreenDrag");
+      let methodname = new StringName("set_velocity");
+      this.#_bindings.method_set_velocity = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        743155724
+      );
+    }
+  }
+  static init_method_get_velocity() {
+    if (!this.#_bindings.method_get_velocity) {
+      let classname = new StringName("InputEventScreenDrag");
+      let methodname = new StringName("get_velocity");
+      this.#_bindings.method_get_velocity = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3341600327
+      );
+    }
+  }
+  static init_method_set_screen_velocity() {
+    if (!this.#_bindings.method_set_screen_velocity) {
+      let classname = new StringName("InputEventScreenDrag");
+      let methodname = new StringName("set_screen_velocity");
+      this.#_bindings.method_set_screen_velocity = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        743155724
+      );
+    }
+  }
+  static init_method_get_screen_velocity() {
+    if (!this.#_bindings.method_get_screen_velocity) {
+      let classname = new StringName("InputEventScreenDrag");
+      let methodname = new StringName("get_screen_velocity");
+      this.#_bindings.method_get_screen_velocity = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3341600327
+      );
+    }
+  }
+
+  
   
   set_index(_index) {
+    InputEventScreenDrag.init_method_set_index();
     return _call_native_mb_no_ret(
-      InputEventScreenDrag._bindings.method_set_index,
+      InputEventScreenDrag.#_bindings.method_set_index,
       this._owner,
       _index
     );
     
   }
   get_index() {
+    InputEventScreenDrag.init_method_get_index();
     return _call_native_mb_ret(
-      InputEventScreenDrag._bindings.method_get_index,
+      InputEventScreenDrag.#_bindings.method_get_index,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_tilt(_tilt) {
+    InputEventScreenDrag.init_method_set_tilt();
     return _call_native_mb_no_ret(
-      InputEventScreenDrag._bindings.method_set_tilt,
+      InputEventScreenDrag.#_bindings.method_set_tilt,
       this._owner,
       _tilt
     );
     
   }
   get_tilt() {
+    InputEventScreenDrag.init_method_get_tilt();
     return _call_native_mb_ret(
-      InputEventScreenDrag._bindings.method_get_tilt,
+      InputEventScreenDrag.#_bindings.method_get_tilt,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -248,50 +283,58 @@ export class InputEventScreenDrag extends InputEventFromWindow{
     
   }
   set_pressure(_pressure) {
+    InputEventScreenDrag.init_method_set_pressure();
     return _call_native_mb_no_ret(
-      InputEventScreenDrag._bindings.method_set_pressure,
+      InputEventScreenDrag.#_bindings.method_set_pressure,
       this._owner,
       _pressure
     );
     
   }
   get_pressure() {
+    InputEventScreenDrag.init_method_get_pressure();
     return _call_native_mb_ret(
-      InputEventScreenDrag._bindings.method_get_pressure,
+      InputEventScreenDrag.#_bindings.method_get_pressure,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_pen_inverted(_pen_inverted) {
+    InputEventScreenDrag.init_method_set_pen_inverted();
     return _call_native_mb_no_ret(
-      InputEventScreenDrag._bindings.method_set_pen_inverted,
+      InputEventScreenDrag.#_bindings.method_set_pen_inverted,
       this._owner,
       _pen_inverted
     );
     
   }
   get_pen_inverted() {
+    InputEventScreenDrag.init_method_get_pen_inverted();
     return _call_native_mb_ret(
-      InputEventScreenDrag._bindings.method_get_pen_inverted,
+      InputEventScreenDrag.#_bindings.method_get_pen_inverted,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_position(_position) {
+    InputEventScreenDrag.init_method_set_position();
     return _call_native_mb_no_ret(
-      InputEventScreenDrag._bindings.method_set_position,
+      InputEventScreenDrag.#_bindings.method_set_position,
       this._owner,
       _position
     );
     
   }
   get_position() {
+    InputEventScreenDrag.init_method_get_position();
     return _call_native_mb_ret(
-      InputEventScreenDrag._bindings.method_get_position,
+      InputEventScreenDrag.#_bindings.method_get_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -300,16 +343,18 @@ export class InputEventScreenDrag extends InputEventFromWindow{
     
   }
   set_relative(_relative) {
+    InputEventScreenDrag.init_method_set_relative();
     return _call_native_mb_no_ret(
-      InputEventScreenDrag._bindings.method_set_relative,
+      InputEventScreenDrag.#_bindings.method_set_relative,
       this._owner,
       _relative
     );
     
   }
   get_relative() {
+    InputEventScreenDrag.init_method_get_relative();
     return _call_native_mb_ret(
-      InputEventScreenDrag._bindings.method_get_relative,
+      InputEventScreenDrag.#_bindings.method_get_relative,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -318,16 +363,18 @@ export class InputEventScreenDrag extends InputEventFromWindow{
     
   }
   set_screen_relative(_relative) {
+    InputEventScreenDrag.init_method_set_screen_relative();
     return _call_native_mb_no_ret(
-      InputEventScreenDrag._bindings.method_set_screen_relative,
+      InputEventScreenDrag.#_bindings.method_set_screen_relative,
       this._owner,
       _relative
     );
     
   }
   get_screen_relative() {
+    InputEventScreenDrag.init_method_get_screen_relative();
     return _call_native_mb_ret(
-      InputEventScreenDrag._bindings.method_get_screen_relative,
+      InputEventScreenDrag.#_bindings.method_get_screen_relative,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -336,16 +383,18 @@ export class InputEventScreenDrag extends InputEventFromWindow{
     
   }
   set_velocity(_velocity) {
+    InputEventScreenDrag.init_method_set_velocity();
     return _call_native_mb_no_ret(
-      InputEventScreenDrag._bindings.method_set_velocity,
+      InputEventScreenDrag.#_bindings.method_set_velocity,
       this._owner,
       _velocity
     );
     
   }
   get_velocity() {
+    InputEventScreenDrag.init_method_get_velocity();
     return _call_native_mb_ret(
-      InputEventScreenDrag._bindings.method_get_velocity,
+      InputEventScreenDrag.#_bindings.method_get_velocity,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -354,16 +403,18 @@ export class InputEventScreenDrag extends InputEventFromWindow{
     
   }
   set_screen_velocity(_velocity) {
+    InputEventScreenDrag.init_method_set_screen_velocity();
     return _call_native_mb_no_ret(
-      InputEventScreenDrag._bindings.method_set_screen_velocity,
+      InputEventScreenDrag.#_bindings.method_set_screen_velocity,
       this._owner,
       _velocity
     );
     
   }
   get_screen_velocity() {
+    InputEventScreenDrag.init_method_get_screen_velocity();
     return _call_native_mb_ret(
-      InputEventScreenDrag._bindings.method_get_screen_velocity,
+      InputEventScreenDrag.#_bindings.method_get_screen_velocity,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -427,8 +478,4 @@ set screen_velocity (new_value) {
   this.set_screen_velocity(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

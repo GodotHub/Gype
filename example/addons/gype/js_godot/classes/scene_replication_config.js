@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { Resource } from '@js_godot/classes/resource'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
-import { NodePath } from '@js_godot/variant/node_path'
+import { GDArray } from '@js_godot/variant/gd_array'
+import { Resource } from '@js_godot/classes/resource'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -27,7 +27,7 @@ class _MethodBindings {
 }
 export class SceneReplicationConfig extends Resource{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -37,237 +37,277 @@ export class SceneReplicationConfig extends Resource{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_get_properties() {
+    if (!this.#_bindings.method_get_properties) {
       let classname = new StringName("SceneReplicationConfig");
       let methodname = new StringName("get_properties");
-      this._bindings.method_get_properties = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_properties = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3995934104
       );
     }
-    {
+  }
+  static init_method_add_property() {
+    if (!this.#_bindings.method_add_property) {
       let classname = new StringName("SceneReplicationConfig");
       let methodname = new StringName("add_property");
-      this._bindings.method_add_property = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_add_property = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         4094619021
       );
     }
-    {
+  }
+  static init_method_has_property() {
+    if (!this.#_bindings.method_has_property) {
       let classname = new StringName("SceneReplicationConfig");
       let methodname = new StringName("has_property");
-      this._bindings.method_has_property = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_has_property = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         861721659
       );
     }
-    {
+  }
+  static init_method_remove_property() {
+    if (!this.#_bindings.method_remove_property) {
       let classname = new StringName("SceneReplicationConfig");
       let methodname = new StringName("remove_property");
-      this._bindings.method_remove_property = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_remove_property = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1348162250
       );
     }
-    {
+  }
+  static init_method_property_get_index() {
+    if (!this.#_bindings.method_property_get_index) {
       let classname = new StringName("SceneReplicationConfig");
       let methodname = new StringName("property_get_index");
-      this._bindings.method_property_get_index = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_property_get_index = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1382022557
       );
     }
-    {
+  }
+  static init_method_property_get_spawn() {
+    if (!this.#_bindings.method_property_get_spawn) {
       let classname = new StringName("SceneReplicationConfig");
       let methodname = new StringName("property_get_spawn");
-      this._bindings.method_property_get_spawn = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_property_get_spawn = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3456846888
       );
     }
-    {
+  }
+  static init_method_property_set_spawn() {
+    if (!this.#_bindings.method_property_set_spawn) {
       let classname = new StringName("SceneReplicationConfig");
       let methodname = new StringName("property_set_spawn");
-      this._bindings.method_property_set_spawn = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3868023870
-      );
-    }
-    {
-      let classname = new StringName("SceneReplicationConfig");
-      let methodname = new StringName("property_get_replication_mode");
-      this._bindings.method_property_get_replication_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2870606336
-      );
-    }
-    {
-      let classname = new StringName("SceneReplicationConfig");
-      let methodname = new StringName("property_set_replication_mode");
-      this._bindings.method_property_set_replication_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3200083865
-      );
-    }
-    {
-      let classname = new StringName("SceneReplicationConfig");
-      let methodname = new StringName("property_get_sync");
-      this._bindings.method_property_get_sync = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3456846888
-      );
-    }
-    {
-      let classname = new StringName("SceneReplicationConfig");
-      let methodname = new StringName("property_set_sync");
-      this._bindings.method_property_set_sync = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3868023870
-      );
-    }
-    {
-      let classname = new StringName("SceneReplicationConfig");
-      let methodname = new StringName("property_get_watch");
-      this._bindings.method_property_get_watch = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3456846888
-      );
-    }
-    {
-      let classname = new StringName("SceneReplicationConfig");
-      let methodname = new StringName("property_set_watch");
-      this._bindings.method_property_set_watch = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_property_set_spawn = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3868023870
       );
     }
   }
+  static init_method_property_get_replication_mode() {
+    if (!this.#_bindings.method_property_get_replication_mode) {
+      let classname = new StringName("SceneReplicationConfig");
+      let methodname = new StringName("property_get_replication_mode");
+      this.#_bindings.method_property_get_replication_mode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2870606336
+      );
+    }
+  }
+  static init_method_property_set_replication_mode() {
+    if (!this.#_bindings.method_property_set_replication_mode) {
+      let classname = new StringName("SceneReplicationConfig");
+      let methodname = new StringName("property_set_replication_mode");
+      this.#_bindings.method_property_set_replication_mode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3200083865
+      );
+    }
+  }
+  static init_method_property_get_sync() {
+    if (!this.#_bindings.method_property_get_sync) {
+      let classname = new StringName("SceneReplicationConfig");
+      let methodname = new StringName("property_get_sync");
+      this.#_bindings.method_property_get_sync = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3456846888
+      );
+    }
+  }
+  static init_method_property_set_sync() {
+    if (!this.#_bindings.method_property_set_sync) {
+      let classname = new StringName("SceneReplicationConfig");
+      let methodname = new StringName("property_set_sync");
+      this.#_bindings.method_property_set_sync = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3868023870
+      );
+    }
+  }
+  static init_method_property_get_watch() {
+    if (!this.#_bindings.method_property_get_watch) {
+      let classname = new StringName("SceneReplicationConfig");
+      let methodname = new StringName("property_get_watch");
+      this.#_bindings.method_property_get_watch = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3456846888
+      );
+    }
+  }
+  static init_method_property_set_watch() {
+    if (!this.#_bindings.method_property_set_watch) {
+      let classname = new StringName("SceneReplicationConfig");
+      let methodname = new StringName("property_set_watch");
+      this.#_bindings.method_property_set_watch = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3868023870
+      );
+    }
+  }
+
+  
   
   get_properties() {
+    SceneReplicationConfig.init_method_get_properties();
     return _call_native_mb_ret(
-      SceneReplicationConfig._bindings.method_get_properties,
+      SceneReplicationConfig.#_bindings.method_get_properties,
       this._owner,
-			Variant.INT,
+			Variant.Type.ARRAY,
       
     );
     
   }
   add_property(_path, _index) {
+    SceneReplicationConfig.init_method_add_property();
     return _call_native_mb_no_ret(
-      SceneReplicationConfig._bindings.method_add_property,
+      SceneReplicationConfig.#_bindings.method_add_property,
       this._owner,
       _path, _index
     );
     
   }
   has_property(_path) {
+    SceneReplicationConfig.init_method_has_property();
     return _call_native_mb_ret(
-      SceneReplicationConfig._bindings.method_has_property,
+      SceneReplicationConfig.#_bindings.method_has_property,
       this._owner,
 			Variant.Type.BOOL,
+    
       _path
     );
     
   }
   remove_property(_path) {
+    SceneReplicationConfig.init_method_remove_property();
     return _call_native_mb_no_ret(
-      SceneReplicationConfig._bindings.method_remove_property,
+      SceneReplicationConfig.#_bindings.method_remove_property,
       this._owner,
       _path
     );
     
   }
   property_get_index(_path) {
+    SceneReplicationConfig.init_method_property_get_index();
     return _call_native_mb_ret(
-      SceneReplicationConfig._bindings.method_property_get_index,
+      SceneReplicationConfig.#_bindings.method_property_get_index,
       this._owner,
 			Variant.Type.INT,
+    
       _path
     );
     
   }
   property_get_spawn(_path) {
+    SceneReplicationConfig.init_method_property_get_spawn();
     return _call_native_mb_ret(
-      SceneReplicationConfig._bindings.method_property_get_spawn,
+      SceneReplicationConfig.#_bindings.method_property_get_spawn,
       this._owner,
 			Variant.Type.BOOL,
+    
       _path
     );
     
   }
   property_set_spawn(_path, _enabled) {
+    SceneReplicationConfig.init_method_property_set_spawn();
     return _call_native_mb_no_ret(
-      SceneReplicationConfig._bindings.method_property_set_spawn,
+      SceneReplicationConfig.#_bindings.method_property_set_spawn,
       this._owner,
       _path, _enabled
     );
     
   }
   property_get_replication_mode(_path) {
+    SceneReplicationConfig.init_method_property_get_replication_mode();
     return _call_native_mb_ret(
-      SceneReplicationConfig._bindings.method_property_get_replication_mode,
+      SceneReplicationConfig.#_bindings.method_property_get_replication_mode,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       _path
     );
     
   }
   property_set_replication_mode(_path, _mode) {
+    SceneReplicationConfig.init_method_property_set_replication_mode();
     return _call_native_mb_no_ret(
-      SceneReplicationConfig._bindings.method_property_set_replication_mode,
+      SceneReplicationConfig.#_bindings.method_property_set_replication_mode,
       this._owner,
       _path, _mode
     );
     
   }
   property_get_sync(_path) {
+    SceneReplicationConfig.init_method_property_get_sync();
     return _call_native_mb_ret(
-      SceneReplicationConfig._bindings.method_property_get_sync,
+      SceneReplicationConfig.#_bindings.method_property_get_sync,
       this._owner,
 			Variant.Type.BOOL,
+    
       _path
     );
     
   }
   property_set_sync(_path, _enabled) {
+    SceneReplicationConfig.init_method_property_set_sync();
     return _call_native_mb_no_ret(
-      SceneReplicationConfig._bindings.method_property_set_sync,
+      SceneReplicationConfig.#_bindings.method_property_set_sync,
       this._owner,
       _path, _enabled
     );
     
   }
   property_get_watch(_path) {
+    SceneReplicationConfig.init_method_property_get_watch();
     return _call_native_mb_ret(
-      SceneReplicationConfig._bindings.method_property_get_watch,
+      SceneReplicationConfig.#_bindings.method_property_get_watch,
       this._owner,
 			Variant.Type.BOOL,
+    
       _path
     );
     
   }
   property_set_watch(_path, _enabled) {
+    SceneReplicationConfig.init_method_property_set_watch();
     return _call_native_mb_no_ret(
-      SceneReplicationConfig._bindings.method_property_set_watch,
+      SceneReplicationConfig.#_bindings.method_property_set_watch,
       this._owner,
       _path, _enabled
     );
@@ -279,9 +319,5 @@ export class SceneReplicationConfig extends Resource{
     REPLICATION_MODE_NEVER: 0,
     REPLICATION_MODE_ALWAYS: 1,
     REPLICATION_MODE_ON_CHANGE: 2,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

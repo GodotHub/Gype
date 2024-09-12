@@ -48150,14 +48150,6 @@ static JSValue js_promise_resolve_function_call(JSContext *ctx,
         resolution = JS_UNDEFINED;
 #ifdef DUMP_PROMISE
     printf("js_promise_resolving_function_call: is_reject=%d resolution=", is_reject);
-    if (is_reject) {
-        JSValue message = JS_GetPropertyStr(ctx, resolution, "message");
-        JSValue stack = JS_GetPropertyStr(ctx, resolution, "stack");
-        const char* str1 = JS_ToCString(ctx,message);
-        const char* str2 = JS_ToCString(ctx,stack);
-        printf("%s\n",str1);
-        printf("%s\n",str2);
-    }
     JS_DumpValue(ctx, resolution);
     printf("\n");
 #endif

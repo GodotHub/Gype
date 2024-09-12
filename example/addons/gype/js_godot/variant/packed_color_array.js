@@ -2,12 +2,14 @@ import * as internal from '__internal__'
 import {
   _call_builtin_constructor,
   _call_builtin_method_ptr_ret,
-  _call_builtin_method_ptr_no_ret
+  _call_builtin_method_ptr_no_ret,
+  _call_builtin_method_ptr_obj_ret,
 } from '@js_godot/core/builtin_ptrcall'
-import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
-import { StringName } from '@js_godot/variant/string_name'
 import { Color } from '@js_godot/variant/color'
+import { StringName } from '@js_godot/variant/string_name'
 import { GDArray } from '@js_godot/variant/gd_array'
+import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
+import { GodotObject } from "@js_godot/classes/godot_object";
 
 class _MethodBindings {
   from_variant_constructor
@@ -50,42 +52,46 @@ export class PackedColorArray {
   static #SIZE = 16
   opaque = new Uint8Array(PackedColorArray.#SIZE)
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
-  constructor (from) {
-    if (!from) {
-      _call_builtin_constructor(PackedColorArray._bindings.constructor_0, this)
-    }else if (from instanceof PackedColorArray) {
-      _call_builtin_constructor(PackedColorArray._bindings.constructor_1, this, [
+  constructor (value) {
+    if (!value) {
+      _call_builtin_constructor(PackedColorArray.#_bindings.constructor_0, this)
+    } else if (arguments.length == 1&& arguments[0] instanceof PackedColorArray) {
+      let from = arguments[0];
+      _call_builtin_constructor(PackedColorArray.#_bindings.constructor_1, this, [
         from
       ])
-    }else if (from instanceof GDArray) {
-      _call_builtin_constructor(PackedColorArray._bindings.constructor_2, this, [
+    } else if (arguments.length == 1&& arguments[0] instanceof GDArray) {
+      let from = arguments[0];
+      _call_builtin_constructor(PackedColorArray.#_bindings.constructor_2, this, [
         from
       ])
-    } else if (from.constructor.name === "Variant") {
-      PackedColorArray._bindings.from_variant_constructor(this.opaque, from.opaque)
+    } else if (value.constructor.name === "Variant") {
+      PackedColorArray.#_bindings.from_variant_constructor(this.opaque, value.opaque)
+    } else if (value instanceof Uint8Array) {
+      this.opaque = value;
     } 
   }
   
   static __init_bindings_constructors_destructor () {
-    this._bindings.from_variant_constructor = internal.get_variant_to_type_constructor(
+    this.#_bindings.from_variant_constructor = internal.get_variant_to_type_constructor(
       37
     )
-    this._bindings.constructor_0 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_0 = internal.variant_get_ptr_constructor(
       37,
       0
     )
-    this._bindings.constructor_1 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_1 = internal.variant_get_ptr_constructor(
       37,
       1
     )
-    this._bindings.constructor_2 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_2 = internal.variant_get_ptr_constructor(
       37,
       2
     )
-    this._bindings.destructor = internal.variant_get_ptr_destructor(
+    this.#_bindings.destructor = internal.variant_get_ptr_destructor(
       37
     )
   }
@@ -98,7 +104,7 @@ export class PackedColorArray {
     this.__init_bindings_constructors_destructor()
     {
       let _gde_name = new StringName('size')
-      this._bindings.method_size = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_size = internal.variant_get_ptr_builtin_method(
         37,
         _gde_name.opaque,
         3173160232
@@ -106,7 +112,7 @@ export class PackedColorArray {
     }
     {
       let _gde_name = new StringName('is_empty')
-      this._bindings.method_is_empty = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_empty = internal.variant_get_ptr_builtin_method(
         37,
         _gde_name.opaque,
         3918633141
@@ -114,7 +120,7 @@ export class PackedColorArray {
     }
     {
       let _gde_name = new StringName('set')
-      this._bindings.method_set = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_set = internal.variant_get_ptr_builtin_method(
         37,
         _gde_name.opaque,
         1444096570
@@ -122,7 +128,7 @@ export class PackedColorArray {
     }
     {
       let _gde_name = new StringName('push_back')
-      this._bindings.method_push_back = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_push_back = internal.variant_get_ptr_builtin_method(
         37,
         _gde_name.opaque,
         1007858200
@@ -130,7 +136,7 @@ export class PackedColorArray {
     }
     {
       let _gde_name = new StringName('append')
-      this._bindings.method_append = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_append = internal.variant_get_ptr_builtin_method(
         37,
         _gde_name.opaque,
         1007858200
@@ -138,7 +144,7 @@ export class PackedColorArray {
     }
     {
       let _gde_name = new StringName('append_array')
-      this._bindings.method_append_array = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_append_array = internal.variant_get_ptr_builtin_method(
         37,
         _gde_name.opaque,
         798822497
@@ -146,7 +152,7 @@ export class PackedColorArray {
     }
     {
       let _gde_name = new StringName('remove_at')
-      this._bindings.method_remove_at = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_remove_at = internal.variant_get_ptr_builtin_method(
         37,
         _gde_name.opaque,
         2823966027
@@ -154,7 +160,7 @@ export class PackedColorArray {
     }
     {
       let _gde_name = new StringName('insert')
-      this._bindings.method_insert = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_insert = internal.variant_get_ptr_builtin_method(
         37,
         _gde_name.opaque,
         785289703
@@ -162,7 +168,7 @@ export class PackedColorArray {
     }
     {
       let _gde_name = new StringName('fill')
-      this._bindings.method_fill = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_fill = internal.variant_get_ptr_builtin_method(
         37,
         _gde_name.opaque,
         3730314301
@@ -170,7 +176,7 @@ export class PackedColorArray {
     }
     {
       let _gde_name = new StringName('resize')
-      this._bindings.method_resize = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_resize = internal.variant_get_ptr_builtin_method(
         37,
         _gde_name.opaque,
         848867239
@@ -178,7 +184,7 @@ export class PackedColorArray {
     }
     {
       let _gde_name = new StringName('clear')
-      this._bindings.method_clear = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_clear = internal.variant_get_ptr_builtin_method(
         37,
         _gde_name.opaque,
         3218959716
@@ -186,7 +192,7 @@ export class PackedColorArray {
     }
     {
       let _gde_name = new StringName('has')
-      this._bindings.method_has = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_has = internal.variant_get_ptr_builtin_method(
         37,
         _gde_name.opaque,
         3167426256
@@ -194,7 +200,7 @@ export class PackedColorArray {
     }
     {
       let _gde_name = new StringName('reverse')
-      this._bindings.method_reverse = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_reverse = internal.variant_get_ptr_builtin_method(
         37,
         _gde_name.opaque,
         3218959716
@@ -202,7 +208,7 @@ export class PackedColorArray {
     }
     {
       let _gde_name = new StringName('slice')
-      this._bindings.method_slice = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_slice = internal.variant_get_ptr_builtin_method(
         37,
         _gde_name.opaque,
         2451797139
@@ -210,7 +216,7 @@ export class PackedColorArray {
     }
     {
       let _gde_name = new StringName('to_byte_array')
-      this._bindings.method_to_byte_array = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_to_byte_array = internal.variant_get_ptr_builtin_method(
         37,
         _gde_name.opaque,
         247621236
@@ -218,7 +224,7 @@ export class PackedColorArray {
     }
     {
       let _gde_name = new StringName('sort')
-      this._bindings.method_sort = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_sort = internal.variant_get_ptr_builtin_method(
         37,
         _gde_name.opaque,
         3218959716
@@ -226,7 +232,7 @@ export class PackedColorArray {
     }
     {
       let _gde_name = new StringName('bsearch')
-      this._bindings.method_bsearch = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_bsearch = internal.variant_get_ptr_builtin_method(
         37,
         _gde_name.opaque,
         314143821
@@ -234,7 +240,7 @@ export class PackedColorArray {
     }
     {
       let _gde_name = new StringName('duplicate')
-      this._bindings.method_duplicate = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_duplicate = internal.variant_get_ptr_builtin_method(
         37,
         _gde_name.opaque,
         1011903421
@@ -242,7 +248,7 @@ export class PackedColorArray {
     }
     {
       let _gde_name = new StringName('find')
-      this._bindings.method_find = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_find = internal.variant_get_ptr_builtin_method(
         37,
         _gde_name.opaque,
         3156095363
@@ -250,7 +256,7 @@ export class PackedColorArray {
     }
     {
       let _gde_name = new StringName('rfind')
-      this._bindings.method_rfind = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_rfind = internal.variant_get_ptr_builtin_method(
         37,
         _gde_name.opaque,
         3156095363
@@ -258,7 +264,7 @@ export class PackedColorArray {
     }
     {
       let _gde_name = new StringName('count')
-      this._bindings.method_count = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_count = internal.variant_get_ptr_builtin_method(
         37,
         _gde_name.opaque,
         1682108616
@@ -270,7 +276,7 @@ export class PackedColorArray {
   size () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedColorArray._bindings.method_size,
+      PackedColorArray.#_bindings.method_size,
       this,
       2,
       []
@@ -280,7 +286,7 @@ export class PackedColorArray {
   is_empty () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedColorArray._bindings.method_is_empty,
+      PackedColorArray.#_bindings.method_is_empty,
       this,
       1,
       []
@@ -289,7 +295,7 @@ export class PackedColorArray {
   }
   set (_index, _value) {
     _call_builtin_method_ptr_no_ret(
-      PackedColorArray._bindings.method_set,
+      PackedColorArray.#_bindings.method_set,
       this,
       [_index, _value]
     )
@@ -297,7 +303,7 @@ export class PackedColorArray {
   push_back (_value) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedColorArray._bindings.method_push_back,
+      PackedColorArray.#_bindings.method_push_back,
       this,
       1,
       [_value]
@@ -307,7 +313,7 @@ export class PackedColorArray {
   append (_value) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedColorArray._bindings.method_append,
+      PackedColorArray.#_bindings.method_append,
       this,
       1,
       [_value]
@@ -316,14 +322,14 @@ export class PackedColorArray {
   }
   append_array (_array) {
     _call_builtin_method_ptr_no_ret(
-      PackedColorArray._bindings.method_append_array,
+      PackedColorArray.#_bindings.method_append_array,
       this,
       [_array]
     )
   }
   remove_at (_index) {
     _call_builtin_method_ptr_no_ret(
-      PackedColorArray._bindings.method_remove_at,
+      PackedColorArray.#_bindings.method_remove_at,
       this,
       [_index]
     )
@@ -331,7 +337,7 @@ export class PackedColorArray {
   insert (_at_index, _value) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedColorArray._bindings.method_insert,
+      PackedColorArray.#_bindings.method_insert,
       this,
       2,
       [_at_index, _value]
@@ -340,7 +346,7 @@ export class PackedColorArray {
   }
   fill (_value) {
     _call_builtin_method_ptr_no_ret(
-      PackedColorArray._bindings.method_fill,
+      PackedColorArray.#_bindings.method_fill,
       this,
       [_value]
     )
@@ -348,7 +354,7 @@ export class PackedColorArray {
   resize (_new_size) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedColorArray._bindings.method_resize,
+      PackedColorArray.#_bindings.method_resize,
       this,
       2,
       [_new_size]
@@ -357,7 +363,7 @@ export class PackedColorArray {
   }
   clear () {
     _call_builtin_method_ptr_no_ret(
-      PackedColorArray._bindings.method_clear,
+      PackedColorArray.#_bindings.method_clear,
       this,
       []
     )
@@ -365,7 +371,7 @@ export class PackedColorArray {
   has (_value) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedColorArray._bindings.method_has,
+      PackedColorArray.#_bindings.method_has,
       this,
       1,
       [_value]
@@ -374,7 +380,7 @@ export class PackedColorArray {
   }
   reverse () {
     _call_builtin_method_ptr_no_ret(
-      PackedColorArray._bindings.method_reverse,
+      PackedColorArray.#_bindings.method_reverse,
       this,
       []
     )
@@ -382,7 +388,7 @@ export class PackedColorArray {
   slice (_begin, _end) {
     let ret = new PackedColorArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      PackedColorArray._bindings.method_slice,
+      PackedColorArray.#_bindings.method_slice,
       this,
       37,
       [_begin, _end]
@@ -392,7 +398,7 @@ export class PackedColorArray {
   to_byte_array () {
     let ret = new PackedByteArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      PackedColorArray._bindings.method_to_byte_array,
+      PackedColorArray.#_bindings.method_to_byte_array,
       this,
       29,
       []
@@ -401,7 +407,7 @@ export class PackedColorArray {
   }
   sort () {
     _call_builtin_method_ptr_no_ret(
-      PackedColorArray._bindings.method_sort,
+      PackedColorArray.#_bindings.method_sort,
       this,
       []
     )
@@ -409,7 +415,7 @@ export class PackedColorArray {
   bsearch (_value, _before) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedColorArray._bindings.method_bsearch,
+      PackedColorArray.#_bindings.method_bsearch,
       this,
       2,
       [_value, _before]
@@ -419,7 +425,7 @@ export class PackedColorArray {
   duplicate () {
     let ret = new PackedColorArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      PackedColorArray._bindings.method_duplicate,
+      PackedColorArray.#_bindings.method_duplicate,
       this,
       37,
       []
@@ -429,7 +435,7 @@ export class PackedColorArray {
   find (_value, _from) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedColorArray._bindings.method_find,
+      PackedColorArray.#_bindings.method_find,
       this,
       2,
       [_value, _from]
@@ -439,7 +445,7 @@ export class PackedColorArray {
   rfind (_value, _from) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedColorArray._bindings.method_rfind,
+      PackedColorArray.#_bindings.method_rfind,
       this,
       2,
       [_value, _from]
@@ -449,7 +455,7 @@ export class PackedColorArray {
   count (_value) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedColorArray._bindings.method_count,
+      PackedColorArray.#_bindings.method_count,
       this,
       2,
       [_value]

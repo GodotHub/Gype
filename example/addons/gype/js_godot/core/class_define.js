@@ -1,4 +1,9 @@
 import { StringName } from "@js_godot/variant/string_name";
+import {
+  JSPointer,
+  ClassInfo,
+  classdb_register_extension_class3,
+} from "__internal__";
 
 export function gd_class(target) {
   target.prototype["_is_extension_class"] = () => true;
@@ -15,7 +20,6 @@ export function gd_class(target) {
     target._property_get_revert;
   target.prototype["_get_validate_property"] = () => target._validate_property;
   target.prototype["_get_to_string"] = () => target._to_string;
-
   target.prototype["get_class"] = () => new StringName(target.name);
   target.prototype["initialize_class"] = () => {
     // initialized = false;
@@ -24,7 +28,6 @@ export function gd_class(target) {
     // if (target.)
   };
 }
-
 export function extension_class(target) {
   // private
   target.prototype["_get_bind_methods"] = () => {};
@@ -40,9 +43,14 @@ export function extension_class(target) {
   target.prototype["get_class"] = () => new StringName(target.name);
   target.prototype["initialize_class"] = () => {};
 }
-
 const _GodotClass = Symbol("GodotClass");
-
 export function GodotClass(target) {
   target[_GodotClass] = true;
+
+  let class_name = target.name;
+  let parent_name = target.prototype.name;
+
+  let class_info = new ClassInfo();
+  class_info.class_userdata = JSPointer(target);
+  classdb_register_extension_class3(class_name, parent_name, class_info);
 }

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StreamPeer } from '@js_godot/classes/stream_peer'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { StreamPeer } from '@js_godot/classes/stream_peer'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -17,7 +17,7 @@ class _MethodBindings {
 }
 export class StreamPeerGZIP extends StreamPeer{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -27,80 +27,90 @@ export class StreamPeerGZIP extends StreamPeer{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_start_compression() {
+    if (!this.#_bindings.method_start_compression) {
       let classname = new StringName("StreamPeerGZIP");
       let methodname = new StringName("start_compression");
-      this._bindings.method_start_compression = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_start_compression = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         781582770
       );
     }
-    {
+  }
+  static init_method_start_decompression() {
+    if (!this.#_bindings.method_start_decompression) {
       let classname = new StringName("StreamPeerGZIP");
       let methodname = new StringName("start_decompression");
-      this._bindings.method_start_decompression = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_start_decompression = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         781582770
       );
     }
-    {
+  }
+  static init_method_finish() {
+    if (!this.#_bindings.method_finish) {
       let classname = new StringName("StreamPeerGZIP");
       let methodname = new StringName("finish");
-      this._bindings.method_finish = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_finish = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         166280745
       );
     }
-    {
+  }
+  static init_method_clear() {
+    if (!this.#_bindings.method_clear) {
       let classname = new StringName("StreamPeerGZIP");
       let methodname = new StringName("clear");
-      this._bindings.method_clear = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_clear = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3218959716
       );
     }
   }
+
+  
   
   start_compression(_use_deflate, _buffer_size) {
+    StreamPeerGZIP.init_method_start_compression();
     return _call_native_mb_ret(
-      StreamPeerGZIP._bindings.method_start_compression,
+      StreamPeerGZIP.#_bindings.method_start_compression,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       _use_deflate, _buffer_size
     );
     
   }
   start_decompression(_use_deflate, _buffer_size) {
+    StreamPeerGZIP.init_method_start_decompression();
     return _call_native_mb_ret(
-      StreamPeerGZIP._bindings.method_start_decompression,
+      StreamPeerGZIP.#_bindings.method_start_decompression,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       _use_deflate, _buffer_size
     );
     
   }
   finish() {
+    StreamPeerGZIP.init_method_finish();
     return _call_native_mb_ret(
-      StreamPeerGZIP._bindings.method_finish,
+      StreamPeerGZIP.#_bindings.method_finish,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   clear() {
+    StreamPeerGZIP.init_method_clear();
     return _call_native_mb_no_ret(
-      StreamPeerGZIP._bindings.method_clear,
+      StreamPeerGZIP.#_bindings.method_clear,
       this._owner,
       
     );
@@ -108,8 +118,4 @@ export class StreamPeerGZIP extends StreamPeer{
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

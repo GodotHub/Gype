@@ -23,7 +23,7 @@ class _MethodBindings {
 }
 export class VisualShaderNodeTextureParameter extends VisualShaderNodeParameter{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -33,185 +33,215 @@ export class VisualShaderNodeTextureParameter extends VisualShaderNodeParameter{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_texture_type() {
+    if (!this.#_bindings.method_set_texture_type) {
       let classname = new StringName("VisualShaderNodeTextureParameter");
       let methodname = new StringName("set_texture_type");
-      this._bindings.method_set_texture_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_texture_type = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2227296876
       );
     }
-    {
+  }
+  static init_method_get_texture_type() {
+    if (!this.#_bindings.method_get_texture_type) {
       let classname = new StringName("VisualShaderNodeTextureParameter");
       let methodname = new StringName("get_texture_type");
-      this._bindings.method_get_texture_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_texture_type = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         367922070
       );
     }
-    {
+  }
+  static init_method_set_color_default() {
+    if (!this.#_bindings.method_set_color_default) {
       let classname = new StringName("VisualShaderNodeTextureParameter");
       let methodname = new StringName("set_color_default");
-      this._bindings.method_set_color_default = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_color_default = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         4217624432
       );
     }
-    {
+  }
+  static init_method_get_color_default() {
+    if (!this.#_bindings.method_get_color_default) {
       let classname = new StringName("VisualShaderNodeTextureParameter");
       let methodname = new StringName("get_color_default");
-      this._bindings.method_get_color_default = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_color_default = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3837060134
       );
     }
-    {
+  }
+  static init_method_set_texture_filter() {
+    if (!this.#_bindings.method_set_texture_filter) {
       let classname = new StringName("VisualShaderNodeTextureParameter");
       let methodname = new StringName("set_texture_filter");
-      this._bindings.method_set_texture_filter = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_texture_filter = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2147684752
       );
     }
-    {
+  }
+  static init_method_get_texture_filter() {
+    if (!this.#_bindings.method_get_texture_filter) {
       let classname = new StringName("VisualShaderNodeTextureParameter");
       let methodname = new StringName("get_texture_filter");
-      this._bindings.method_get_texture_filter = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_texture_filter = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         4184490817
       );
     }
-    {
+  }
+  static init_method_set_texture_repeat() {
+    if (!this.#_bindings.method_set_texture_repeat) {
       let classname = new StringName("VisualShaderNodeTextureParameter");
       let methodname = new StringName("set_texture_repeat");
-      this._bindings.method_set_texture_repeat = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_texture_repeat = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2036143070
       );
     }
-    {
+  }
+  static init_method_get_texture_repeat() {
+    if (!this.#_bindings.method_get_texture_repeat) {
       let classname = new StringName("VisualShaderNodeTextureParameter");
       let methodname = new StringName("get_texture_repeat");
-      this._bindings.method_get_texture_repeat = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_texture_repeat = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1690132794
       );
     }
-    {
+  }
+  static init_method_set_texture_source() {
+    if (!this.#_bindings.method_set_texture_source) {
       let classname = new StringName("VisualShaderNodeTextureParameter");
       let methodname = new StringName("set_texture_source");
-      this._bindings.method_set_texture_source = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_texture_source = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1212687372
       );
     }
-    {
+  }
+  static init_method_get_texture_source() {
+    if (!this.#_bindings.method_get_texture_source) {
       let classname = new StringName("VisualShaderNodeTextureParameter");
       let methodname = new StringName("get_texture_source");
-      this._bindings.method_get_texture_source = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_texture_source = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2039092262
       );
     }
   }
+
+  
   
   set_texture_type(_type) {
+    VisualShaderNodeTextureParameter.init_method_set_texture_type();
     return _call_native_mb_no_ret(
-      VisualShaderNodeTextureParameter._bindings.method_set_texture_type,
+      VisualShaderNodeTextureParameter.#_bindings.method_set_texture_type,
       this._owner,
       _type
     );
     
   }
   get_texture_type() {
+    VisualShaderNodeTextureParameter.init_method_get_texture_type();
     return _call_native_mb_ret(
-      VisualShaderNodeTextureParameter._bindings.method_get_texture_type,
+      VisualShaderNodeTextureParameter.#_bindings.method_get_texture_type,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_color_default(_color) {
+    VisualShaderNodeTextureParameter.init_method_set_color_default();
     return _call_native_mb_no_ret(
-      VisualShaderNodeTextureParameter._bindings.method_set_color_default,
+      VisualShaderNodeTextureParameter.#_bindings.method_set_color_default,
       this._owner,
       _color
     );
     
   }
   get_color_default() {
+    VisualShaderNodeTextureParameter.init_method_get_color_default();
     return _call_native_mb_ret(
-      VisualShaderNodeTextureParameter._bindings.method_get_color_default,
+      VisualShaderNodeTextureParameter.#_bindings.method_get_color_default,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_texture_filter(_filter) {
+    VisualShaderNodeTextureParameter.init_method_set_texture_filter();
     return _call_native_mb_no_ret(
-      VisualShaderNodeTextureParameter._bindings.method_set_texture_filter,
+      VisualShaderNodeTextureParameter.#_bindings.method_set_texture_filter,
       this._owner,
       _filter
     );
     
   }
   get_texture_filter() {
+    VisualShaderNodeTextureParameter.init_method_get_texture_filter();
     return _call_native_mb_ret(
-      VisualShaderNodeTextureParameter._bindings.method_get_texture_filter,
+      VisualShaderNodeTextureParameter.#_bindings.method_get_texture_filter,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_texture_repeat(_repeat) {
+    VisualShaderNodeTextureParameter.init_method_set_texture_repeat();
     return _call_native_mb_no_ret(
-      VisualShaderNodeTextureParameter._bindings.method_set_texture_repeat,
+      VisualShaderNodeTextureParameter.#_bindings.method_set_texture_repeat,
       this._owner,
       _repeat
     );
     
   }
   get_texture_repeat() {
+    VisualShaderNodeTextureParameter.init_method_get_texture_repeat();
     return _call_native_mb_ret(
-      VisualShaderNodeTextureParameter._bindings.method_get_texture_repeat,
+      VisualShaderNodeTextureParameter.#_bindings.method_get_texture_repeat,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_texture_source(_source) {
+    VisualShaderNodeTextureParameter.init_method_set_texture_source();
     return _call_native_mb_no_ret(
-      VisualShaderNodeTextureParameter._bindings.method_set_texture_source,
+      VisualShaderNodeTextureParameter.#_bindings.method_set_texture_source,
       this._owner,
       _source
     );
     
   }
   get_texture_source() {
+    VisualShaderNodeTextureParameter.init_method_get_texture_source();
     return _call_native_mb_ret(
-      VisualShaderNodeTextureParameter._bindings.method_get_texture_source,
+      VisualShaderNodeTextureParameter.#_bindings.method_get_texture_source,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
@@ -283,9 +313,5 @@ set texture_source (new_value) {
     SOURCE_DEPTH: 2,
     SOURCE_NORMAL_ROUGHNESS: 3,
     SOURCE_MAX: 4,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

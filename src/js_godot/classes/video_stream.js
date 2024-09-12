@@ -2,7 +2,6 @@ import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Resource } from '@js_godot/classes/resource'
-import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -16,7 +15,7 @@ class _MethodBindings {
 }
 export class VideoStream extends Resource{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -26,45 +25,46 @@ export class VideoStream extends Resource{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_file() {
+    if (!this.#_bindings.method_set_file) {
       let classname = new StringName("VideoStream");
       let methodname = new StringName("set_file");
-      this._bindings.method_set_file = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_file = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         83702148
       );
     }
-    {
+  }
+  static init_method_get_file() {
+    if (!this.#_bindings.method_get_file) {
       let classname = new StringName("VideoStream");
       let methodname = new StringName("get_file");
-      this._bindings.method_get_file = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_file = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2841200299
       );
     }
   }
+
+  
   
   _instantiate_playback() {
   }
   set_file(_file) {
+    VideoStream.init_method_set_file();
     return _call_native_mb_no_ret(
-      VideoStream._bindings.method_set_file,
+      VideoStream.#_bindings.method_set_file,
       this._owner,
       _file
     );
     
   }
   get_file() {
+    VideoStream.init_method_get_file();
     return _call_native_mb_ret(
-      VideoStream._bindings.method_get_file,
+      VideoStream.#_bindings.method_get_file,
       this._owner,
 			Variant.Type.STRING,
     
@@ -80,8 +80,4 @@ set file (new_value) {
   this.set_file(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

@@ -8,28 +8,46 @@
 
 using namespace godot;
 
-GDExtensionBool set_func(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionConstVariantPtr p_value) {
-	JavaScriptInstance *instance = reinterpret_cast<JavaScriptInstance *>(p_instance);
-	return instance->set(p_name, p_value);
-}
+// GDExtensionBool set_func(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionConstVariantPtr p_value) {
+// 	JavaScriptInstance *instance = reinterpret_cast<JavaScriptInstance *>(p_instance);
+// 	return instance->set(p_name, p_value);
+// }
 
-GDExtensionBool get_func(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret) {
-	JavaScriptInstance *instance = reinterpret_cast<JavaScriptInstance *>(p_instance);
-	return instance->get(p_name, r_ret);
-}
+// GDExtensionBool get_func(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret) {
+// 	JavaScriptInstance *instance = reinterpret_cast<JavaScriptInstance *>(p_instance);
+// 	return instance->get(p_name, r_ret);
+// }
 
-std::string to_char(GDExtensionConstStringNamePtr p_name) {
-	void *name_buff = memalloc(DEFINE_STRING_SIZE);
-	char *name = new char[1024];
-	godot::internal::gdextension_interface_variant_stringify(p_name, name_buff);
-	godot::internal::gdextension_interface_string_to_latin1_chars(name_buff, name, 1024);
-	int len = strlen(name);
-	char *name_cp = new char[len];
-	memcpy(name_cp, name, len);
-	free(name);
-	return name_cp;
-}
+// const GDExtensionPropertyInfo *get_property_list_func(GDExtensionScriptInstanceDataPtr p_instance, uint32_t *r_count) {
+// 	JavaScriptInstance *instance = reinterpret_cast<JavaScriptInstance *>(p_instance);
+// 	return instance->get_property_list(r_count);
+// }
 
-GDExtensionVariantType variant_type(GDExtensionConstVariantPtr p_self) {
-	return godot::internal::gdextension_interface_variant_get_type(p_self);
-}
+// void free_property_list_func(GDExtensionScriptInstanceDataPtr p_instance, const GDExtensionPropertyInfo *p_list, uint32_t p_count) {
+// 	JavaScriptInstance *instance = reinterpret_cast<JavaScriptInstance *>(p_instance);
+// }
+
+// GDExtensionBool property_can_revert_func(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionConstStringNamePtr p_name) {
+// 	JavaScriptInstance *instance = reinterpret_cast<JavaScriptInstance *>(p_instance);
+// 	return instance->property_can_revert(p_name);
+// }
+
+// GDExtensionBool property_get_revert_func(GDExtensionScriptInstanceDataPtr p_instance, GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret) {
+// 	JavaScriptInstance *instance = reinterpret_cast<JavaScriptInstance *>(p_instance);
+// 	return instance->property_get_revert(p_name, r_ret);
+// }
+
+// GDExtensionObjectPtr get_owner_func(GDExtensionScriptInstanceDataPtr p_instance) {
+// 	JavaScriptInstance *instance = reinterpret_cast<JavaScriptInstance *>(p_instance);
+// 	return instance->get_godot_obj()->_owner;
+// }
+
+// GDExtensionObjectPtr get_script_func(GDExtensionScriptInstanceDataPtr p_instance) {
+// 	JavaScriptInstance *instance = reinterpret_cast<JavaScriptInstance *>(p_instance);
+// 	return instance->get_script();
+// }
+
+// GDExtensionScriptLanguagePtr get_language_func(GDExtensionScriptInstanceDataPtr p_instance) {
+// 	JavaScriptInstance *instance = reinterpret_cast<JavaScriptInstance *>(p_instance);
+// 	return instance->get_language();
+// }

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { AudioEffect } from '@js_godot/classes/audio_effect'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { AudioEffect } from '@js_godot/classes/audio_effect'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -31,7 +31,7 @@ class _MethodBindings {
 }
 export class AudioEffectChorus extends AudioEffect{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -41,325 +41,383 @@ export class AudioEffectChorus extends AudioEffect{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_voice_count() {
+    if (!this.#_bindings.method_set_voice_count) {
       let classname = new StringName("AudioEffectChorus");
       let methodname = new StringName("set_voice_count");
-      this._bindings.method_set_voice_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_voice_count = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1286410249
       );
     }
-    {
+  }
+  static init_method_get_voice_count() {
+    if (!this.#_bindings.method_get_voice_count) {
       let classname = new StringName("AudioEffectChorus");
       let methodname = new StringName("get_voice_count");
-      this._bindings.method_get_voice_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_voice_count = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
-    {
+  }
+  static init_method_set_voice_delay_ms() {
+    if (!this.#_bindings.method_set_voice_delay_ms) {
       let classname = new StringName("AudioEffectChorus");
       let methodname = new StringName("set_voice_delay_ms");
-      this._bindings.method_set_voice_delay_ms = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_voice_delay_ms = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1602489585
       );
     }
-    {
+  }
+  static init_method_get_voice_delay_ms() {
+    if (!this.#_bindings.method_get_voice_delay_ms) {
       let classname = new StringName("AudioEffectChorus");
       let methodname = new StringName("get_voice_delay_ms");
-      this._bindings.method_get_voice_delay_ms = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_voice_delay_ms = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2339986948
       );
     }
-    {
+  }
+  static init_method_set_voice_rate_hz() {
+    if (!this.#_bindings.method_set_voice_rate_hz) {
       let classname = new StringName("AudioEffectChorus");
       let methodname = new StringName("set_voice_rate_hz");
-      this._bindings.method_set_voice_rate_hz = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_voice_rate_hz = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1602489585
       );
     }
-    {
+  }
+  static init_method_get_voice_rate_hz() {
+    if (!this.#_bindings.method_get_voice_rate_hz) {
       let classname = new StringName("AudioEffectChorus");
       let methodname = new StringName("get_voice_rate_hz");
-      this._bindings.method_get_voice_rate_hz = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_voice_rate_hz = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2339986948
       );
     }
-    {
+  }
+  static init_method_set_voice_depth_ms() {
+    if (!this.#_bindings.method_set_voice_depth_ms) {
       let classname = new StringName("AudioEffectChorus");
       let methodname = new StringName("set_voice_depth_ms");
-      this._bindings.method_set_voice_depth_ms = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_voice_depth_ms = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1602489585
       );
     }
-    {
+  }
+  static init_method_get_voice_depth_ms() {
+    if (!this.#_bindings.method_get_voice_depth_ms) {
       let classname = new StringName("AudioEffectChorus");
       let methodname = new StringName("get_voice_depth_ms");
-      this._bindings.method_get_voice_depth_ms = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_voice_depth_ms = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2339986948
       );
     }
-    {
+  }
+  static init_method_set_voice_level_db() {
+    if (!this.#_bindings.method_set_voice_level_db) {
       let classname = new StringName("AudioEffectChorus");
       let methodname = new StringName("set_voice_level_db");
-      this._bindings.method_set_voice_level_db = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_voice_level_db = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1602489585
       );
     }
-    {
+  }
+  static init_method_get_voice_level_db() {
+    if (!this.#_bindings.method_get_voice_level_db) {
       let classname = new StringName("AudioEffectChorus");
       let methodname = new StringName("get_voice_level_db");
-      this._bindings.method_get_voice_level_db = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_voice_level_db = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2339986948
       );
     }
-    {
+  }
+  static init_method_set_voice_cutoff_hz() {
+    if (!this.#_bindings.method_set_voice_cutoff_hz) {
       let classname = new StringName("AudioEffectChorus");
       let methodname = new StringName("set_voice_cutoff_hz");
-      this._bindings.method_set_voice_cutoff_hz = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_voice_cutoff_hz = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1602489585
       );
     }
-    {
+  }
+  static init_method_get_voice_cutoff_hz() {
+    if (!this.#_bindings.method_get_voice_cutoff_hz) {
       let classname = new StringName("AudioEffectChorus");
       let methodname = new StringName("get_voice_cutoff_hz");
-      this._bindings.method_get_voice_cutoff_hz = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_voice_cutoff_hz = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2339986948
       );
     }
-    {
+  }
+  static init_method_set_voice_pan() {
+    if (!this.#_bindings.method_set_voice_pan) {
       let classname = new StringName("AudioEffectChorus");
       let methodname = new StringName("set_voice_pan");
-      this._bindings.method_set_voice_pan = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_voice_pan = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1602489585
       );
     }
-    {
+  }
+  static init_method_get_voice_pan() {
+    if (!this.#_bindings.method_get_voice_pan) {
       let classname = new StringName("AudioEffectChorus");
       let methodname = new StringName("get_voice_pan");
-      this._bindings.method_get_voice_pan = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_voice_pan = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2339986948
       );
     }
-    {
+  }
+  static init_method_set_wet() {
+    if (!this.#_bindings.method_set_wet) {
       let classname = new StringName("AudioEffectChorus");
       let methodname = new StringName("set_wet");
-      this._bindings.method_set_wet = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_wet = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_wet() {
+    if (!this.#_bindings.method_get_wet) {
       let classname = new StringName("AudioEffectChorus");
       let methodname = new StringName("get_wet");
-      this._bindings.method_get_wet = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("AudioEffectChorus");
-      let methodname = new StringName("set_dry");
-      this._bindings.method_set_dry = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("AudioEffectChorus");
-      let methodname = new StringName("get_dry");
-      this._bindings.method_get_dry = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_wet = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
   }
+  static init_method_set_dry() {
+    if (!this.#_bindings.method_set_dry) {
+      let classname = new StringName("AudioEffectChorus");
+      let methodname = new StringName("set_dry");
+      this.#_bindings.method_set_dry = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        373806689
+      );
+    }
+  }
+  static init_method_get_dry() {
+    if (!this.#_bindings.method_get_dry) {
+      let classname = new StringName("AudioEffectChorus");
+      let methodname = new StringName("get_dry");
+      this.#_bindings.method_get_dry = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1740695150
+      );
+    }
+  }
+
+  
   
   set_voice_count(_voices) {
+    AudioEffectChorus.init_method_set_voice_count();
     return _call_native_mb_no_ret(
-      AudioEffectChorus._bindings.method_set_voice_count,
+      AudioEffectChorus.#_bindings.method_set_voice_count,
       this._owner,
       _voices
     );
     
   }
   get_voice_count() {
+    AudioEffectChorus.init_method_get_voice_count();
     return _call_native_mb_ret(
-      AudioEffectChorus._bindings.method_get_voice_count,
+      AudioEffectChorus.#_bindings.method_get_voice_count,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_voice_delay_ms(_voice_idx, _delay_ms) {
+    AudioEffectChorus.init_method_set_voice_delay_ms();
     return _call_native_mb_no_ret(
-      AudioEffectChorus._bindings.method_set_voice_delay_ms,
+      AudioEffectChorus.#_bindings.method_set_voice_delay_ms,
       this._owner,
       _voice_idx, _delay_ms
     );
     
   }
   get_voice_delay_ms(_voice_idx) {
+    AudioEffectChorus.init_method_get_voice_delay_ms();
     return _call_native_mb_ret(
-      AudioEffectChorus._bindings.method_get_voice_delay_ms,
+      AudioEffectChorus.#_bindings.method_get_voice_delay_ms,
       this._owner,
 			Variant.Type.FLOAT,
+    
       _voice_idx
     );
     
   }
   set_voice_rate_hz(_voice_idx, _rate_hz) {
+    AudioEffectChorus.init_method_set_voice_rate_hz();
     return _call_native_mb_no_ret(
-      AudioEffectChorus._bindings.method_set_voice_rate_hz,
+      AudioEffectChorus.#_bindings.method_set_voice_rate_hz,
       this._owner,
       _voice_idx, _rate_hz
     );
     
   }
   get_voice_rate_hz(_voice_idx) {
+    AudioEffectChorus.init_method_get_voice_rate_hz();
     return _call_native_mb_ret(
-      AudioEffectChorus._bindings.method_get_voice_rate_hz,
+      AudioEffectChorus.#_bindings.method_get_voice_rate_hz,
       this._owner,
 			Variant.Type.FLOAT,
+    
       _voice_idx
     );
     
   }
   set_voice_depth_ms(_voice_idx, _depth_ms) {
+    AudioEffectChorus.init_method_set_voice_depth_ms();
     return _call_native_mb_no_ret(
-      AudioEffectChorus._bindings.method_set_voice_depth_ms,
+      AudioEffectChorus.#_bindings.method_set_voice_depth_ms,
       this._owner,
       _voice_idx, _depth_ms
     );
     
   }
   get_voice_depth_ms(_voice_idx) {
+    AudioEffectChorus.init_method_get_voice_depth_ms();
     return _call_native_mb_ret(
-      AudioEffectChorus._bindings.method_get_voice_depth_ms,
+      AudioEffectChorus.#_bindings.method_get_voice_depth_ms,
       this._owner,
 			Variant.Type.FLOAT,
+    
       _voice_idx
     );
     
   }
   set_voice_level_db(_voice_idx, _level_db) {
+    AudioEffectChorus.init_method_set_voice_level_db();
     return _call_native_mb_no_ret(
-      AudioEffectChorus._bindings.method_set_voice_level_db,
+      AudioEffectChorus.#_bindings.method_set_voice_level_db,
       this._owner,
       _voice_idx, _level_db
     );
     
   }
   get_voice_level_db(_voice_idx) {
+    AudioEffectChorus.init_method_get_voice_level_db();
     return _call_native_mb_ret(
-      AudioEffectChorus._bindings.method_get_voice_level_db,
+      AudioEffectChorus.#_bindings.method_get_voice_level_db,
       this._owner,
 			Variant.Type.FLOAT,
+    
       _voice_idx
     );
     
   }
   set_voice_cutoff_hz(_voice_idx, _cutoff_hz) {
+    AudioEffectChorus.init_method_set_voice_cutoff_hz();
     return _call_native_mb_no_ret(
-      AudioEffectChorus._bindings.method_set_voice_cutoff_hz,
+      AudioEffectChorus.#_bindings.method_set_voice_cutoff_hz,
       this._owner,
       _voice_idx, _cutoff_hz
     );
     
   }
   get_voice_cutoff_hz(_voice_idx) {
+    AudioEffectChorus.init_method_get_voice_cutoff_hz();
     return _call_native_mb_ret(
-      AudioEffectChorus._bindings.method_get_voice_cutoff_hz,
+      AudioEffectChorus.#_bindings.method_get_voice_cutoff_hz,
       this._owner,
 			Variant.Type.FLOAT,
+    
       _voice_idx
     );
     
   }
   set_voice_pan(_voice_idx, _pan) {
+    AudioEffectChorus.init_method_set_voice_pan();
     return _call_native_mb_no_ret(
-      AudioEffectChorus._bindings.method_set_voice_pan,
+      AudioEffectChorus.#_bindings.method_set_voice_pan,
       this._owner,
       _voice_idx, _pan
     );
     
   }
   get_voice_pan(_voice_idx) {
+    AudioEffectChorus.init_method_get_voice_pan();
     return _call_native_mb_ret(
-      AudioEffectChorus._bindings.method_get_voice_pan,
+      AudioEffectChorus.#_bindings.method_get_voice_pan,
       this._owner,
 			Variant.Type.FLOAT,
+    
       _voice_idx
     );
     
   }
   set_wet(_amount) {
+    AudioEffectChorus.init_method_set_wet();
     return _call_native_mb_no_ret(
-      AudioEffectChorus._bindings.method_set_wet,
+      AudioEffectChorus.#_bindings.method_set_wet,
       this._owner,
       _amount
     );
     
   }
   get_wet() {
+    AudioEffectChorus.init_method_get_wet();
     return _call_native_mb_ret(
-      AudioEffectChorus._bindings.method_get_wet,
+      AudioEffectChorus.#_bindings.method_get_wet,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_dry(_amount) {
+    AudioEffectChorus.init_method_set_dry();
     return _call_native_mb_no_ret(
-      AudioEffectChorus._bindings.method_set_dry,
+      AudioEffectChorus.#_bindings.method_set_dry,
       this._owner,
       _amount
     );
     
   }
   get_dry() {
+    AudioEffectChorus.init_method_get_dry();
     return _call_native_mb_ret(
-      AudioEffectChorus._bindings.method_get_dry,
+      AudioEffectChorus.#_bindings.method_get_dry,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
@@ -384,8 +442,4 @@ set wet (new_value) {
   this.set_wet(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

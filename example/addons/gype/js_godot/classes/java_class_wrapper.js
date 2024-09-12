@@ -1,7 +1,6 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { GodotObject } from '@js_godot/classes/godot_object'
 import {
   call_utility_ret,
@@ -14,7 +13,7 @@ class _MethodBindings {
   method_wrap;
 }class _JavaClassWrapper extends GodotObject{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -24,38 +23,32 @@ class _MethodBindings {
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_wrap() {
+    if (!this.#_bindings.method_wrap) {
       let classname = new StringName("JavaClassWrapper");
       let methodname = new StringName("wrap");
-      this._bindings.method_wrap = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_wrap = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1124367868
       );
     }
   }
+
+  
   
   wrap(_name) {
+    JavaClassWrapper.init_method_wrap();
     return _call_native_mb_ret(
-      _JavaClassWrapper._bindings.method_wrap,
+      _JavaClassWrapper.#_bindings.method_wrap,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       _name
     );
     
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }
 export const JavaClassWrapper = (function () {
   let _instance;

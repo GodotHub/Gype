@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { Translation } from '@js_godot/classes/translation'
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { Translation } from '@js_godot/classes/translation'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -14,7 +14,7 @@ class _MethodBindings {
 }
 export class OptimizedTranslation extends Translation{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -24,26 +24,24 @@ export class OptimizedTranslation extends Translation{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_generate() {
+    if (!this.#_bindings.method_generate) {
       let classname = new StringName("OptimizedTranslation");
       let methodname = new StringName("generate");
-      this._bindings.method_generate = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_generate = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1466479800
       );
     }
   }
+
+  
   
   generate(_from) {
+    OptimizedTranslation.init_method_generate();
     return _call_native_mb_no_ret(
-      OptimizedTranslation._bindings.method_generate,
+      OptimizedTranslation.#_bindings.method_generate,
       this._owner,
       _from
     );
@@ -51,8 +49,4 @@ export class OptimizedTranslation extends Translation{
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

@@ -1,9 +1,7 @@
 import * as internal from '__internal__';
-import { Resource } from '@js_godot/classes/resource'
-import { StringName } from '@js_godot/variant/string_name'
-import { PackedStringArray } from '@js_godot/variant/packed_string_array'
 import { Variant } from '@js_godot/variant/variant'
-import { GDString } from '@js_godot/variant/gd_string'
+import { StringName } from '@js_godot/variant/string_name'
+import { Resource } from '@js_godot/classes/resource'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -25,7 +23,7 @@ class _MethodBindings {
 }
 export class Translation extends Resource{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -35,119 +33,136 @@ export class Translation extends Resource{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_locale() {
+    if (!this.#_bindings.method_set_locale) {
       let classname = new StringName("Translation");
       let methodname = new StringName("set_locale");
-      this._bindings.method_set_locale = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_locale = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         83702148
       );
     }
-    {
+  }
+  static init_method_get_locale() {
+    if (!this.#_bindings.method_get_locale) {
       let classname = new StringName("Translation");
       let methodname = new StringName("get_locale");
-      this._bindings.method_get_locale = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_locale = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         201670096
       );
     }
-    {
+  }
+  static init_method_add_message() {
+    if (!this.#_bindings.method_add_message) {
       let classname = new StringName("Translation");
       let methodname = new StringName("add_message");
-      this._bindings.method_add_message = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_add_message = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         971803314
       );
     }
-    {
+  }
+  static init_method_add_plural_message() {
+    if (!this.#_bindings.method_add_plural_message) {
       let classname = new StringName("Translation");
       let methodname = new StringName("add_plural_message");
-      this._bindings.method_add_plural_message = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_add_plural_message = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         360316719
       );
     }
-    {
+  }
+  static init_method_get_message() {
+    if (!this.#_bindings.method_get_message) {
       let classname = new StringName("Translation");
       let methodname = new StringName("get_message");
-      this._bindings.method_get_message = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_message = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         58037827
       );
     }
-    {
+  }
+  static init_method_get_plural_message() {
+    if (!this.#_bindings.method_get_plural_message) {
       let classname = new StringName("Translation");
       let methodname = new StringName("get_plural_message");
-      this._bindings.method_get_plural_message = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_plural_message = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1333931916
       );
     }
-    {
+  }
+  static init_method_erase_message() {
+    if (!this.#_bindings.method_erase_message) {
       let classname = new StringName("Translation");
       let methodname = new StringName("erase_message");
-      this._bindings.method_erase_message = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_erase_message = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3919944288
       );
     }
-    {
+  }
+  static init_method_get_message_list() {
+    if (!this.#_bindings.method_get_message_list) {
       let classname = new StringName("Translation");
       let methodname = new StringName("get_message_list");
-      this._bindings.method_get_message_list = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_message_list = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1139954409
       );
     }
-    {
+  }
+  static init_method_get_translated_message_list() {
+    if (!this.#_bindings.method_get_translated_message_list) {
       let classname = new StringName("Translation");
       let methodname = new StringName("get_translated_message_list");
-      this._bindings.method_get_translated_message_list = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_translated_message_list = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1139954409
       );
     }
-    {
+  }
+  static init_method_get_message_count() {
+    if (!this.#_bindings.method_get_message_count) {
       let classname = new StringName("Translation");
       let methodname = new StringName("get_message_count");
-      this._bindings.method_get_message_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_message_count = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
   }
+
+  
   
   _get_plural_message(_src_message, _src_plural_message, _n, _context) {
   }
   _get_message(_src_message, _context) {
   }
   set_locale(_locale) {
+    Translation.init_method_set_locale();
     return _call_native_mb_no_ret(
-      Translation._bindings.method_set_locale,
+      Translation.#_bindings.method_set_locale,
       this._owner,
       _locale
     );
     
   }
   get_locale() {
+    Translation.init_method_get_locale();
     return _call_native_mb_ret(
-      Translation._bindings.method_get_locale,
+      Translation.#_bindings.method_get_locale,
       this._owner,
 			Variant.Type.STRING,
     
@@ -156,24 +171,27 @@ export class Translation extends Resource{
     
   }
   add_message(_src_message, _xlated_message, _context) {
+    Translation.init_method_add_message();
     return _call_native_mb_no_ret(
-      Translation._bindings.method_add_message,
+      Translation.#_bindings.method_add_message,
       this._owner,
       _src_message, _xlated_message, _context
     );
     
   }
   add_plural_message(_src_message, _xlated_messages, _context) {
+    Translation.init_method_add_plural_message();
     return _call_native_mb_no_ret(
-      Translation._bindings.method_add_plural_message,
+      Translation.#_bindings.method_add_plural_message,
       this._owner,
       _src_message, _xlated_messages, _context
     );
     
   }
   get_message(_src_message, _context) {
+    Translation.init_method_get_message();
     return _call_native_mb_ret(
-      Translation._bindings.method_get_message,
+      Translation.#_bindings.method_get_message,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -182,8 +200,9 @@ export class Translation extends Resource{
     
   }
   get_plural_message(_src_message, _src_plural_message, _n, _context) {
+    Translation.init_method_get_plural_message();
     return _call_native_mb_ret(
-      Translation._bindings.method_get_plural_message,
+      Translation.#_bindings.method_get_plural_message,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -192,16 +211,18 @@ export class Translation extends Resource{
     
   }
   erase_message(_src_message, _context) {
+    Translation.init_method_erase_message();
     return _call_native_mb_no_ret(
-      Translation._bindings.method_erase_message,
+      Translation.#_bindings.method_erase_message,
       this._owner,
       _src_message, _context
     );
     
   }
   get_message_list() {
+    Translation.init_method_get_message_list();
     return _call_native_mb_ret(
-      Translation._bindings.method_get_message_list,
+      Translation.#_bindings.method_get_message_list,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -210,8 +231,9 @@ export class Translation extends Resource{
     
   }
   get_translated_message_list() {
+    Translation.init_method_get_translated_message_list();
     return _call_native_mb_ret(
-      Translation._bindings.method_get_translated_message_list,
+      Translation.#_bindings.method_get_translated_message_list,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -220,10 +242,12 @@ export class Translation extends Resource{
     
   }
   get_message_count() {
+    Translation.init_method_get_message_count();
     return _call_native_mb_ret(
-      Translation._bindings.method_get_message_count,
+      Translation.#_bindings.method_get_message_count,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
@@ -242,8 +266,4 @@ set locale (new_value) {
   this.set_locale(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

@@ -1,10 +1,7 @@
 import * as internal from '__internal__';
-import { RefCounted } from '@js_godot/classes/ref_counted'
 import { Variant } from '@js_godot/variant/variant'
-import { PackedStringArray } from '@js_godot/variant/packed_string_array'
 import { StringName } from '@js_godot/variant/string_name'
-import { Dictionary } from '@js_godot/variant/dictionary'
-import { GDString } from '@js_godot/variant/gd_string'
+import { RefCounted } from '@js_godot/classes/ref_counted'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -16,7 +13,7 @@ class _MethodBindings {
 }
 export class ResourceFormatLoader extends RefCounted{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -26,13 +23,8 @@ export class ResourceFormatLoader extends RefCounted{
       super(godot_object);
     }
   }
+
   
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-  }
   
   _get_recognized_extensions() {
   }
@@ -64,9 +56,5 @@ export class ResourceFormatLoader extends RefCounted{
     CACHE_MODE_REPLACE: 2,
     CACHE_MODE_IGNORE_DEEP: 3,
     CACHE_MODE_REPLACE_DEEP: 4,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

@@ -1,8 +1,7 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { AcceptDialog } from '@js_godot/classes/accept_dialog'
-import { GDString } from '@js_godot/variant/gd_string'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -17,7 +16,7 @@ class _MethodBindings {
 }
 export class ConfirmationDialog extends AcceptDialog{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -27,61 +26,65 @@ export class ConfirmationDialog extends AcceptDialog{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_get_cancel_button() {
+    if (!this.#_bindings.method_get_cancel_button) {
       let classname = new StringName("ConfirmationDialog");
       let methodname = new StringName("get_cancel_button");
-      this._bindings.method_get_cancel_button = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_cancel_button = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1856205918
       );
     }
-    {
+  }
+  static init_method_set_cancel_button_text() {
+    if (!this.#_bindings.method_set_cancel_button_text) {
       let classname = new StringName("ConfirmationDialog");
       let methodname = new StringName("set_cancel_button_text");
-      this._bindings.method_set_cancel_button_text = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_cancel_button_text = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         83702148
       );
     }
-    {
+  }
+  static init_method_get_cancel_button_text() {
+    if (!this.#_bindings.method_get_cancel_button_text) {
       let classname = new StringName("ConfirmationDialog");
       let methodname = new StringName("get_cancel_button_text");
-      this._bindings.method_get_cancel_button_text = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_cancel_button_text = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         201670096
       );
     }
   }
+
+  
   
   get_cancel_button() {
+    ConfirmationDialog.init_method_get_cancel_button();
     return _call_native_mb_ret(
-      ConfirmationDialog._bindings.method_get_cancel_button,
+      ConfirmationDialog.#_bindings.method_get_cancel_button,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
   }
   set_cancel_button_text(_text) {
+    ConfirmationDialog.init_method_set_cancel_button_text();
     return _call_native_mb_no_ret(
-      ConfirmationDialog._bindings.method_set_cancel_button_text,
+      ConfirmationDialog.#_bindings.method_set_cancel_button_text,
       this._owner,
       _text
     );
     
   }
   get_cancel_button_text() {
+    ConfirmationDialog.init_method_get_cancel_button_text();
     return _call_native_mb_ret(
-      ConfirmationDialog._bindings.method_get_cancel_button_text,
+      ConfirmationDialog.#_bindings.method_get_cancel_button_text,
       this._owner,
 			Variant.Type.STRING,
     
@@ -97,8 +100,4 @@ set cancel_button_text (new_value) {
   this.set_cancel_button_text(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

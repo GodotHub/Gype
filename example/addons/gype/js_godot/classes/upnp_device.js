@@ -1,8 +1,7 @@
 import * as internal from '__internal__';
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { RefCounted } from '@js_godot/classes/ref_counted'
-import { Variant } from '@js_godot/variant/variant'
-import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -30,7 +29,7 @@ class _MethodBindings {
 }
 export class UPNPDevice extends RefCounted{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -40,170 +39,200 @@ export class UPNPDevice extends RefCounted{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_is_valid_gateway() {
+    if (!this.#_bindings.method_is_valid_gateway) {
       let classname = new StringName("UPNPDevice");
       let methodname = new StringName("is_valid_gateway");
-      this._bindings.method_is_valid_gateway = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_valid_gateway = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_query_external_address() {
+    if (!this.#_bindings.method_query_external_address) {
       let classname = new StringName("UPNPDevice");
       let methodname = new StringName("query_external_address");
-      this._bindings.method_query_external_address = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_query_external_address = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         201670096
       );
     }
-    {
+  }
+  static init_method_add_port_mapping() {
+    if (!this.#_bindings.method_add_port_mapping) {
       let classname = new StringName("UPNPDevice");
       let methodname = new StringName("add_port_mapping");
-      this._bindings.method_add_port_mapping = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_add_port_mapping = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         818314583
       );
     }
-    {
+  }
+  static init_method_delete_port_mapping() {
+    if (!this.#_bindings.method_delete_port_mapping) {
       let classname = new StringName("UPNPDevice");
       let methodname = new StringName("delete_port_mapping");
-      this._bindings.method_delete_port_mapping = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_delete_port_mapping = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3444187325
       );
     }
-    {
+  }
+  static init_method_set_description_url() {
+    if (!this.#_bindings.method_set_description_url) {
       let classname = new StringName("UPNPDevice");
       let methodname = new StringName("set_description_url");
-      this._bindings.method_set_description_url = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_description_url = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         83702148
       );
     }
-    {
+  }
+  static init_method_get_description_url() {
+    if (!this.#_bindings.method_get_description_url) {
       let classname = new StringName("UPNPDevice");
       let methodname = new StringName("get_description_url");
-      this._bindings.method_get_description_url = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_description_url = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         201670096
       );
     }
-    {
+  }
+  static init_method_set_service_type() {
+    if (!this.#_bindings.method_set_service_type) {
       let classname = new StringName("UPNPDevice");
       let methodname = new StringName("set_service_type");
-      this._bindings.method_set_service_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_service_type = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         83702148
       );
     }
-    {
+  }
+  static init_method_get_service_type() {
+    if (!this.#_bindings.method_get_service_type) {
       let classname = new StringName("UPNPDevice");
       let methodname = new StringName("get_service_type");
-      this._bindings.method_get_service_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_service_type = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         201670096
       );
     }
-    {
+  }
+  static init_method_set_igd_control_url() {
+    if (!this.#_bindings.method_set_igd_control_url) {
       let classname = new StringName("UPNPDevice");
       let methodname = new StringName("set_igd_control_url");
-      this._bindings.method_set_igd_control_url = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_igd_control_url = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         83702148
       );
     }
-    {
+  }
+  static init_method_get_igd_control_url() {
+    if (!this.#_bindings.method_get_igd_control_url) {
       let classname = new StringName("UPNPDevice");
       let methodname = new StringName("get_igd_control_url");
-      this._bindings.method_get_igd_control_url = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_igd_control_url = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         201670096
       );
     }
-    {
+  }
+  static init_method_set_igd_service_type() {
+    if (!this.#_bindings.method_set_igd_service_type) {
       let classname = new StringName("UPNPDevice");
       let methodname = new StringName("set_igd_service_type");
-      this._bindings.method_set_igd_service_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_igd_service_type = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         83702148
       );
     }
-    {
+  }
+  static init_method_get_igd_service_type() {
+    if (!this.#_bindings.method_get_igd_service_type) {
       let classname = new StringName("UPNPDevice");
       let methodname = new StringName("get_igd_service_type");
-      this._bindings.method_get_igd_service_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_igd_service_type = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         201670096
       );
     }
-    {
+  }
+  static init_method_set_igd_our_addr() {
+    if (!this.#_bindings.method_set_igd_our_addr) {
       let classname = new StringName("UPNPDevice");
       let methodname = new StringName("set_igd_our_addr");
-      this._bindings.method_set_igd_our_addr = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_igd_our_addr = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         83702148
       );
     }
-    {
+  }
+  static init_method_get_igd_our_addr() {
+    if (!this.#_bindings.method_get_igd_our_addr) {
       let classname = new StringName("UPNPDevice");
       let methodname = new StringName("get_igd_our_addr");
-      this._bindings.method_get_igd_our_addr = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_igd_our_addr = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         201670096
       );
     }
-    {
+  }
+  static init_method_set_igd_status() {
+    if (!this.#_bindings.method_set_igd_status) {
       let classname = new StringName("UPNPDevice");
       let methodname = new StringName("set_igd_status");
-      this._bindings.method_set_igd_status = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_igd_status = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         519504122
       );
     }
-    {
+  }
+  static init_method_get_igd_status() {
+    if (!this.#_bindings.method_get_igd_status) {
       let classname = new StringName("UPNPDevice");
       let methodname = new StringName("get_igd_status");
-      this._bindings.method_get_igd_status = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_igd_status = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         180887011
       );
     }
   }
+
+  
   
   is_valid_gateway() {
+    UPNPDevice.init_method_is_valid_gateway();
     return _call_native_mb_ret(
-      UPNPDevice._bindings.method_is_valid_gateway,
+      UPNPDevice.#_bindings.method_is_valid_gateway,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   query_external_address() {
+    UPNPDevice.init_method_query_external_address();
     return _call_native_mb_ret(
-      UPNPDevice._bindings.method_query_external_address,
+      UPNPDevice.#_bindings.method_query_external_address,
       this._owner,
 			Variant.Type.STRING,
     
@@ -212,34 +241,40 @@ export class UPNPDevice extends RefCounted{
     
   }
   add_port_mapping(_port, _port_internal, _desc, _proto, _duration) {
+    UPNPDevice.init_method_add_port_mapping();
     return _call_native_mb_ret(
-      UPNPDevice._bindings.method_add_port_mapping,
+      UPNPDevice.#_bindings.method_add_port_mapping,
       this._owner,
 			Variant.Type.INT,
+    
       _port, _port_internal, _desc, _proto, _duration
     );
     
   }
   delete_port_mapping(_port, _proto) {
+    UPNPDevice.init_method_delete_port_mapping();
     return _call_native_mb_ret(
-      UPNPDevice._bindings.method_delete_port_mapping,
+      UPNPDevice.#_bindings.method_delete_port_mapping,
       this._owner,
 			Variant.Type.INT,
+    
       _port, _proto
     );
     
   }
   set_description_url(_url) {
+    UPNPDevice.init_method_set_description_url();
     return _call_native_mb_no_ret(
-      UPNPDevice._bindings.method_set_description_url,
+      UPNPDevice.#_bindings.method_set_description_url,
       this._owner,
       _url
     );
     
   }
   get_description_url() {
+    UPNPDevice.init_method_get_description_url();
     return _call_native_mb_ret(
-      UPNPDevice._bindings.method_get_description_url,
+      UPNPDevice.#_bindings.method_get_description_url,
       this._owner,
 			Variant.Type.STRING,
     
@@ -248,16 +283,18 @@ export class UPNPDevice extends RefCounted{
     
   }
   set_service_type(_type) {
+    UPNPDevice.init_method_set_service_type();
     return _call_native_mb_no_ret(
-      UPNPDevice._bindings.method_set_service_type,
+      UPNPDevice.#_bindings.method_set_service_type,
       this._owner,
       _type
     );
     
   }
   get_service_type() {
+    UPNPDevice.init_method_get_service_type();
     return _call_native_mb_ret(
-      UPNPDevice._bindings.method_get_service_type,
+      UPNPDevice.#_bindings.method_get_service_type,
       this._owner,
 			Variant.Type.STRING,
     
@@ -266,16 +303,18 @@ export class UPNPDevice extends RefCounted{
     
   }
   set_igd_control_url(_url) {
+    UPNPDevice.init_method_set_igd_control_url();
     return _call_native_mb_no_ret(
-      UPNPDevice._bindings.method_set_igd_control_url,
+      UPNPDevice.#_bindings.method_set_igd_control_url,
       this._owner,
       _url
     );
     
   }
   get_igd_control_url() {
+    UPNPDevice.init_method_get_igd_control_url();
     return _call_native_mb_ret(
-      UPNPDevice._bindings.method_get_igd_control_url,
+      UPNPDevice.#_bindings.method_get_igd_control_url,
       this._owner,
 			Variant.Type.STRING,
     
@@ -284,16 +323,18 @@ export class UPNPDevice extends RefCounted{
     
   }
   set_igd_service_type(_type) {
+    UPNPDevice.init_method_set_igd_service_type();
     return _call_native_mb_no_ret(
-      UPNPDevice._bindings.method_set_igd_service_type,
+      UPNPDevice.#_bindings.method_set_igd_service_type,
       this._owner,
       _type
     );
     
   }
   get_igd_service_type() {
+    UPNPDevice.init_method_get_igd_service_type();
     return _call_native_mb_ret(
-      UPNPDevice._bindings.method_get_igd_service_type,
+      UPNPDevice.#_bindings.method_get_igd_service_type,
       this._owner,
 			Variant.Type.STRING,
     
@@ -302,16 +343,18 @@ export class UPNPDevice extends RefCounted{
     
   }
   set_igd_our_addr(_addr) {
+    UPNPDevice.init_method_set_igd_our_addr();
     return _call_native_mb_no_ret(
-      UPNPDevice._bindings.method_set_igd_our_addr,
+      UPNPDevice.#_bindings.method_set_igd_our_addr,
       this._owner,
       _addr
     );
     
   }
   get_igd_our_addr() {
+    UPNPDevice.init_method_get_igd_our_addr();
     return _call_native_mb_ret(
-      UPNPDevice._bindings.method_get_igd_our_addr,
+      UPNPDevice.#_bindings.method_get_igd_our_addr,
       this._owner,
 			Variant.Type.STRING,
     
@@ -320,18 +363,21 @@ export class UPNPDevice extends RefCounted{
     
   }
   set_igd_status(_status) {
+    UPNPDevice.init_method_set_igd_status();
     return _call_native_mb_no_ret(
-      UPNPDevice._bindings.method_set_igd_status,
+      UPNPDevice.#_bindings.method_set_igd_status,
       this._owner,
       _status
     );
     
   }
   get_igd_status() {
+    UPNPDevice.init_method_get_igd_status();
     return _call_native_mb_ret(
-      UPNPDevice._bindings.method_get_igd_status,
+      UPNPDevice.#_bindings.method_get_igd_status,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
@@ -385,9 +431,5 @@ set igd_status (new_value) {
     IGD_STATUS_INVALID_CONTROL: 7,
     IGD_STATUS_MALLOC_ERROR: 8,
     IGD_STATUS_UNKNOWN_ERROR: 9,
-  }
-
-  static {
-    this._init_bindings();
   }
 }
