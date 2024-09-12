@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
-import { Slider } from '@js_godot/classes/slider'
 import { StringName } from '@js_godot/variant/string_name'
+import { Slider } from '@js_godot/classes/slider'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -13,7 +13,7 @@ class _MethodBindings {
 }
 export class VSlider extends Slider{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -23,18 +23,9 @@ export class VSlider extends Slider{
       super(godot_object);
     }
   }
+
   
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-  }
   
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

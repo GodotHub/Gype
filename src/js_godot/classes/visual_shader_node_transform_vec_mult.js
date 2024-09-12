@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { VisualShaderNode } from '@js_godot/classes/visual_shader_node'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -15,7 +15,7 @@ class _MethodBindings {
 }
 export class VisualShaderNodeTransformVecMult extends VisualShaderNode{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -25,45 +25,47 @@ export class VisualShaderNodeTransformVecMult extends VisualShaderNode{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_operator() {
+    if (!this.#_bindings.method_set_operator) {
       let classname = new StringName("VisualShaderNodeTransformVecMult");
       let methodname = new StringName("set_operator");
-      this._bindings.method_set_operator = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_operator = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1785665912
       );
     }
-    {
+  }
+  static init_method_get_operator() {
+    if (!this.#_bindings.method_get_operator) {
       let classname = new StringName("VisualShaderNodeTransformVecMult");
       let methodname = new StringName("get_operator");
-      this._bindings.method_get_operator = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_operator = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1622088722
       );
     }
   }
+
+  
   
   set_operator(_op) {
+    VisualShaderNodeTransformVecMult.init_method_set_operator();
     return _call_native_mb_no_ret(
-      VisualShaderNodeTransformVecMult._bindings.method_set_operator,
+      VisualShaderNodeTransformVecMult.#_bindings.method_set_operator,
       this._owner,
       _op
     );
     
   }
   get_operator() {
+    VisualShaderNodeTransformVecMult.init_method_get_operator();
     return _call_native_mb_ret(
-      VisualShaderNodeTransformVecMult._bindings.method_get_operator,
+      VisualShaderNodeTransformVecMult.#_bindings.method_get_operator,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
@@ -82,9 +84,5 @@ set operator (new_value) {
     OP_3x3_AxB: 2,
     OP_3x3_BxA: 3,
     OP_MAX: 4,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

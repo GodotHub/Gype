@@ -1,8 +1,7 @@
 import * as internal from '__internal__';
-import { Vector3i } from '@js_godot/variant/vector3i'
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Texture3D } from '@js_godot/classes/texture3d'
-import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -16,7 +15,7 @@ class _MethodBindings {
 }
 export class PlaceholderTexture3D extends Texture3D{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -26,43 +25,44 @@ export class PlaceholderTexture3D extends Texture3D{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_size() {
+    if (!this.#_bindings.method_set_size) {
       let classname = new StringName("PlaceholderTexture3D");
       let methodname = new StringName("set_size");
-      this._bindings.method_set_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_size = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         560364750
       );
     }
-    {
+  }
+  static init_method_get_size() {
+    if (!this.#_bindings.method_get_size) {
       let classname = new StringName("PlaceholderTexture3D");
       let methodname = new StringName("get_size");
-      this._bindings.method_get_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_size = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2785653706
       );
     }
   }
+
+  
   
   set_size(_size) {
+    PlaceholderTexture3D.init_method_set_size();
     return _call_native_mb_no_ret(
-      PlaceholderTexture3D._bindings.method_set_size,
+      PlaceholderTexture3D.#_bindings.method_set_size,
       this._owner,
       _size
     );
     
   }
   get_size() {
+    PlaceholderTexture3D.init_method_get_size();
     return _call_native_mb_ret(
-      PlaceholderTexture3D._bindings.method_get_size,
+      PlaceholderTexture3D.#_bindings.method_get_size,
       this._owner,
 			Variant.Type.VECTOR3I,
     
@@ -78,8 +78,4 @@ set size (new_value) {
   this.set_size(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { AudioEffect } from '@js_godot/classes/audio_effect'
-import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -19,7 +19,7 @@ class _MethodBindings {
 }
 export class AudioEffectStereoEnhance extends AudioEffect{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -29,115 +29,131 @@ export class AudioEffectStereoEnhance extends AudioEffect{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_pan_pullout() {
+    if (!this.#_bindings.method_set_pan_pullout) {
       let classname = new StringName("AudioEffectStereoEnhance");
       let methodname = new StringName("set_pan_pullout");
-      this._bindings.method_set_pan_pullout = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_pan_pullout = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_pan_pullout() {
+    if (!this.#_bindings.method_get_pan_pullout) {
       let classname = new StringName("AudioEffectStereoEnhance");
       let methodname = new StringName("get_pan_pullout");
-      this._bindings.method_get_pan_pullout = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("AudioEffectStereoEnhance");
-      let methodname = new StringName("set_time_pullout");
-      this._bindings.method_set_time_pullout = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("AudioEffectStereoEnhance");
-      let methodname = new StringName("get_time_pullout");
-      this._bindings.method_get_time_pullout = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("AudioEffectStereoEnhance");
-      let methodname = new StringName("set_surround");
-      this._bindings.method_set_surround = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("AudioEffectStereoEnhance");
-      let methodname = new StringName("get_surround");
-      this._bindings.method_get_surround = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_pan_pullout = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
   }
+  static init_method_set_time_pullout() {
+    if (!this.#_bindings.method_set_time_pullout) {
+      let classname = new StringName("AudioEffectStereoEnhance");
+      let methodname = new StringName("set_time_pullout");
+      this.#_bindings.method_set_time_pullout = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        373806689
+      );
+    }
+  }
+  static init_method_get_time_pullout() {
+    if (!this.#_bindings.method_get_time_pullout) {
+      let classname = new StringName("AudioEffectStereoEnhance");
+      let methodname = new StringName("get_time_pullout");
+      this.#_bindings.method_get_time_pullout = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1740695150
+      );
+    }
+  }
+  static init_method_set_surround() {
+    if (!this.#_bindings.method_set_surround) {
+      let classname = new StringName("AudioEffectStereoEnhance");
+      let methodname = new StringName("set_surround");
+      this.#_bindings.method_set_surround = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        373806689
+      );
+    }
+  }
+  static init_method_get_surround() {
+    if (!this.#_bindings.method_get_surround) {
+      let classname = new StringName("AudioEffectStereoEnhance");
+      let methodname = new StringName("get_surround");
+      this.#_bindings.method_get_surround = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1740695150
+      );
+    }
+  }
+
+  
   
   set_pan_pullout(_amount) {
+    AudioEffectStereoEnhance.init_method_set_pan_pullout();
     return _call_native_mb_no_ret(
-      AudioEffectStereoEnhance._bindings.method_set_pan_pullout,
+      AudioEffectStereoEnhance.#_bindings.method_set_pan_pullout,
       this._owner,
       _amount
     );
     
   }
   get_pan_pullout() {
+    AudioEffectStereoEnhance.init_method_get_pan_pullout();
     return _call_native_mb_ret(
-      AudioEffectStereoEnhance._bindings.method_get_pan_pullout,
+      AudioEffectStereoEnhance.#_bindings.method_get_pan_pullout,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_time_pullout(_amount) {
+    AudioEffectStereoEnhance.init_method_set_time_pullout();
     return _call_native_mb_no_ret(
-      AudioEffectStereoEnhance._bindings.method_set_time_pullout,
+      AudioEffectStereoEnhance.#_bindings.method_set_time_pullout,
       this._owner,
       _amount
     );
     
   }
   get_time_pullout() {
+    AudioEffectStereoEnhance.init_method_get_time_pullout();
     return _call_native_mb_ret(
-      AudioEffectStereoEnhance._bindings.method_get_time_pullout,
+      AudioEffectStereoEnhance.#_bindings.method_get_time_pullout,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_surround(_amount) {
+    AudioEffectStereoEnhance.init_method_set_surround();
     return _call_native_mb_no_ret(
-      AudioEffectStereoEnhance._bindings.method_set_surround,
+      AudioEffectStereoEnhance.#_bindings.method_set_surround,
       this._owner,
       _amount
     );
     
   }
   get_surround() {
+    AudioEffectStereoEnhance.init_method_get_surround();
     return _call_native_mb_ret(
-      AudioEffectStereoEnhance._bindings.method_get_surround,
+      AudioEffectStereoEnhance.#_bindings.method_get_surround,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
@@ -162,8 +178,4 @@ set surround (new_value) {
   this.set_surround(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

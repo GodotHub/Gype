@@ -1,5 +1,7 @@
 #pragma once
 
+#include "support/javascript.hpp"
+#include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/script_language_extension.hpp>
 #include <godot_cpp/variant/variant.hpp>
 
@@ -74,6 +76,9 @@ public:
 	void _frame();
 	bool _handles_global_class_type(const String &p_type) const;
 	Dictionary _get_global_class_name(const String &p_path) const;
+
+	static String get_base_type(const String &p_path);
+	static String get_class_name(const String &p_path);
 
 	~JavaScriptLanguage();
 

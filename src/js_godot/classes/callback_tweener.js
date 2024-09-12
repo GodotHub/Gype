@@ -14,7 +14,7 @@ class _MethodBindings {
 }
 export class CallbackTweener extends Tweener{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -24,36 +24,30 @@ export class CallbackTweener extends Tweener{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_delay() {
+    if (!this.#_bindings.method_set_delay) {
       let classname = new StringName("CallbackTweener");
       let methodname = new StringName("set_delay");
-      this._bindings.method_set_delay = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_delay = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3008182292
       );
     }
   }
+
+  
   
   set_delay(_delay) {
+    CallbackTweener.init_method_set_delay();
     return _call_native_mb_ret(
-      CallbackTweener._bindings.method_set_delay,
+      CallbackTweener.#_bindings.method_set_delay,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       _delay
     );
     
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

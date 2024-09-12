@@ -2,15 +2,17 @@ import * as internal from '__internal__'
 import {
   _call_builtin_constructor,
   _call_builtin_method_ptr_ret,
-  _call_builtin_method_ptr_no_ret
+  _call_builtin_method_ptr_no_ret,
+  _call_builtin_method_ptr_obj_ret,
 } from '@js_godot/core/builtin_ptrcall'
-import { Vector4 } from '@js_godot/variant/vector4'
-import { Transform3D } from '@js_godot/variant/transform3d'
-import { AABB } from '@js_godot/variant/aabb'
 import { Vector2 } from '@js_godot/variant/vector2'
-import { Plane } from '@js_godot/variant/plane'
-import { Rect2 } from '@js_godot/variant/rect2'
+import { AABB } from '@js_godot/variant/aabb'
 import { StringName } from '@js_godot/variant/string_name'
+import { Plane } from '@js_godot/variant/plane'
+import { Vector4 } from '@js_godot/variant/vector4'
+import { Rect2 } from '@js_godot/variant/rect2'
+import { Transform3D } from '@js_godot/variant/transform3d'
+import { GodotObject } from "@js_godot/classes/godot_object";
 
 class _MethodBindings {
   from_variant_constructor
@@ -59,18 +61,20 @@ export class Projection {
   static #SIZE = 64
   opaque = new Uint8Array(Projection.#SIZE)
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
-  constructor (from) {
-    if (!from) {
-      _call_builtin_constructor(Projection._bindings.constructor_0, this)
-    }else if (from instanceof Projection) {
-      _call_builtin_constructor(Projection._bindings.constructor_1, this, [
+  constructor (value) {
+    if (!value) {
+      _call_builtin_constructor(Projection.#_bindings.constructor_0, this)
+    } else if (arguments.length == 1&& arguments[0] instanceof Projection) {
+      let from = arguments[0];
+      _call_builtin_constructor(Projection.#_bindings.constructor_1, this, [
         from
       ])
-    }else if (from instanceof Transform3D) {
-      _call_builtin_constructor(Projection._bindings.constructor_2, this, [
+    } else if (arguments.length == 1&& arguments[0] instanceof Transform3D) {
+      let from = arguments[0];
+      _call_builtin_constructor(Projection.#_bindings.constructor_2, this, [
         from
       ])
     } else if (arguments.length == 4&& arguments[0] instanceof Vector4&& arguments[1] instanceof Vector4&& arguments[2] instanceof Vector4&& arguments[3] instanceof Vector4) {
@@ -78,31 +82,33 @@ export class Projection {
       let y_axis = arguments[1];
       let z_axis = arguments[2];
       let w_axis = arguments[3];
-      _call_builtin_constructor(Projection._bindings.constructor_3, this, [
+      _call_builtin_constructor(Projection.#_bindings.constructor_3, this, [
         x_axis, y_axis, z_axis, w_axis
       ])
-    } else if (from.constructor.name === "Variant") {
-      Projection._bindings.from_variant_constructor(this.opaque, from.opaque)
+    } else if (value.constructor.name === "Variant") {
+      Projection.#_bindings.from_variant_constructor(this.opaque, value.opaque)
+    } else if (value instanceof Uint8Array) {
+      this.opaque = value;
     } 
   }
   
   static __init_bindings_constructors_destructor () {
-    this._bindings.from_variant_constructor = internal.get_variant_to_type_constructor(
+    this.#_bindings.from_variant_constructor = internal.get_variant_to_type_constructor(
       19
     )
-    this._bindings.constructor_0 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_0 = internal.variant_get_ptr_constructor(
       19,
       0
     )
-    this._bindings.constructor_1 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_1 = internal.variant_get_ptr_constructor(
       19,
       1
     )
-    this._bindings.constructor_2 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_2 = internal.variant_get_ptr_constructor(
       19,
       2
     )
-    this._bindings.constructor_3 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_3 = internal.variant_get_ptr_constructor(
       19,
       3
     )
@@ -116,7 +122,7 @@ export class Projection {
     this.__init_bindings_constructors_destructor()
     {
       let _gde_name = new StringName('create_depth_correction')
-      this._bindings.method_create_depth_correction = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_create_depth_correction = internal.variant_get_ptr_builtin_method(
         19,
         _gde_name.opaque,
         1228516048
@@ -124,7 +130,7 @@ export class Projection {
     }
     {
       let _gde_name = new StringName('create_light_atlas_rect')
-      this._bindings.method_create_light_atlas_rect = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_create_light_atlas_rect = internal.variant_get_ptr_builtin_method(
         19,
         _gde_name.opaque,
         2654950662
@@ -132,7 +138,7 @@ export class Projection {
     }
     {
       let _gde_name = new StringName('create_perspective')
-      this._bindings.method_create_perspective = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_create_perspective = internal.variant_get_ptr_builtin_method(
         19,
         _gde_name.opaque,
         390915442
@@ -140,7 +146,7 @@ export class Projection {
     }
     {
       let _gde_name = new StringName('create_perspective_hmd')
-      this._bindings.method_create_perspective_hmd = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_create_perspective_hmd = internal.variant_get_ptr_builtin_method(
         19,
         _gde_name.opaque,
         2857674800
@@ -148,7 +154,7 @@ export class Projection {
     }
     {
       let _gde_name = new StringName('create_for_hmd')
-      this._bindings.method_create_for_hmd = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_create_for_hmd = internal.variant_get_ptr_builtin_method(
         19,
         _gde_name.opaque,
         4184144994
@@ -156,7 +162,7 @@ export class Projection {
     }
     {
       let _gde_name = new StringName('create_orthogonal')
-      this._bindings.method_create_orthogonal = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_create_orthogonal = internal.variant_get_ptr_builtin_method(
         19,
         _gde_name.opaque,
         3707929169
@@ -164,7 +170,7 @@ export class Projection {
     }
     {
       let _gde_name = new StringName('create_orthogonal_aspect')
-      this._bindings.method_create_orthogonal_aspect = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_create_orthogonal_aspect = internal.variant_get_ptr_builtin_method(
         19,
         _gde_name.opaque,
         390915442
@@ -172,7 +178,7 @@ export class Projection {
     }
     {
       let _gde_name = new StringName('create_frustum')
-      this._bindings.method_create_frustum = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_create_frustum = internal.variant_get_ptr_builtin_method(
         19,
         _gde_name.opaque,
         3707929169
@@ -180,7 +186,7 @@ export class Projection {
     }
     {
       let _gde_name = new StringName('create_frustum_aspect')
-      this._bindings.method_create_frustum_aspect = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_create_frustum_aspect = internal.variant_get_ptr_builtin_method(
         19,
         _gde_name.opaque,
         1535076251
@@ -188,7 +194,7 @@ export class Projection {
     }
     {
       let _gde_name = new StringName('create_fit_aabb')
-      this._bindings.method_create_fit_aabb = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_create_fit_aabb = internal.variant_get_ptr_builtin_method(
         19,
         _gde_name.opaque,
         2264694907
@@ -196,7 +202,7 @@ export class Projection {
     }
     {
       let _gde_name = new StringName('determinant')
-      this._bindings.method_determinant = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_determinant = internal.variant_get_ptr_builtin_method(
         19,
         _gde_name.opaque,
         466405837
@@ -204,7 +210,7 @@ export class Projection {
     }
     {
       let _gde_name = new StringName('perspective_znear_adjusted')
-      this._bindings.method_perspective_znear_adjusted = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_perspective_znear_adjusted = internal.variant_get_ptr_builtin_method(
         19,
         _gde_name.opaque,
         3584785443
@@ -212,7 +218,7 @@ export class Projection {
     }
     {
       let _gde_name = new StringName('get_projection_plane')
-      this._bindings.method_get_projection_plane = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_projection_plane = internal.variant_get_ptr_builtin_method(
         19,
         _gde_name.opaque,
         1551184160
@@ -220,7 +226,7 @@ export class Projection {
     }
     {
       let _gde_name = new StringName('flipped_y')
-      this._bindings.method_flipped_y = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_flipped_y = internal.variant_get_ptr_builtin_method(
         19,
         _gde_name.opaque,
         4212530932
@@ -228,7 +234,7 @@ export class Projection {
     }
     {
       let _gde_name = new StringName('jitter_offseted')
-      this._bindings.method_jitter_offseted = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_jitter_offseted = internal.variant_get_ptr_builtin_method(
         19,
         _gde_name.opaque,
         2448438599
@@ -236,7 +242,7 @@ export class Projection {
     }
     {
       let _gde_name = new StringName('get_fovy')
-      this._bindings.method_get_fovy = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_fovy = internal.variant_get_ptr_builtin_method(
         19,
         _gde_name.opaque,
         3514207532
@@ -244,7 +250,7 @@ export class Projection {
     }
     {
       let _gde_name = new StringName('get_z_far')
-      this._bindings.method_get_z_far = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_z_far = internal.variant_get_ptr_builtin_method(
         19,
         _gde_name.opaque,
         466405837
@@ -252,7 +258,7 @@ export class Projection {
     }
     {
       let _gde_name = new StringName('get_z_near')
-      this._bindings.method_get_z_near = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_z_near = internal.variant_get_ptr_builtin_method(
         19,
         _gde_name.opaque,
         466405837
@@ -260,7 +266,7 @@ export class Projection {
     }
     {
       let _gde_name = new StringName('get_aspect')
-      this._bindings.method_get_aspect = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_aspect = internal.variant_get_ptr_builtin_method(
         19,
         _gde_name.opaque,
         466405837
@@ -268,7 +274,7 @@ export class Projection {
     }
     {
       let _gde_name = new StringName('get_fov')
-      this._bindings.method_get_fov = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_fov = internal.variant_get_ptr_builtin_method(
         19,
         _gde_name.opaque,
         466405837
@@ -276,7 +282,7 @@ export class Projection {
     }
     {
       let _gde_name = new StringName('is_orthogonal')
-      this._bindings.method_is_orthogonal = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_orthogonal = internal.variant_get_ptr_builtin_method(
         19,
         _gde_name.opaque,
         3918633141
@@ -284,7 +290,7 @@ export class Projection {
     }
     {
       let _gde_name = new StringName('get_viewport_half_extents')
-      this._bindings.method_get_viewport_half_extents = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_viewport_half_extents = internal.variant_get_ptr_builtin_method(
         19,
         _gde_name.opaque,
         2428350749
@@ -292,7 +298,7 @@ export class Projection {
     }
     {
       let _gde_name = new StringName('get_far_plane_half_extents')
-      this._bindings.method_get_far_plane_half_extents = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_far_plane_half_extents = internal.variant_get_ptr_builtin_method(
         19,
         _gde_name.opaque,
         2428350749
@@ -300,7 +306,7 @@ export class Projection {
     }
     {
       let _gde_name = new StringName('inverse')
-      this._bindings.method_inverse = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_inverse = internal.variant_get_ptr_builtin_method(
         19,
         _gde_name.opaque,
         4212530932
@@ -308,7 +314,7 @@ export class Projection {
     }
     {
       let _gde_name = new StringName('get_pixels_per_meter')
-      this._bindings.method_get_pixels_per_meter = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_pixels_per_meter = internal.variant_get_ptr_builtin_method(
         19,
         _gde_name.opaque,
         4103005248
@@ -316,7 +322,7 @@ export class Projection {
     }
     {
       let _gde_name = new StringName('get_lod_multiplier')
-      this._bindings.method_get_lod_multiplier = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_lod_multiplier = internal.variant_get_ptr_builtin_method(
         19,
         _gde_name.opaque,
         466405837
@@ -328,7 +334,7 @@ export class Projection {
   create_depth_correction (_flip_y) {
     let ret = new Projection()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Projection._bindings.method_create_depth_correction,
+      Projection.#_bindings.method_create_depth_correction,
       this,
       19,
       [_flip_y]
@@ -338,7 +344,7 @@ export class Projection {
   create_light_atlas_rect (_rect) {
     let ret = new Projection()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Projection._bindings.method_create_light_atlas_rect,
+      Projection.#_bindings.method_create_light_atlas_rect,
       this,
       19,
       [_rect]
@@ -348,7 +354,7 @@ export class Projection {
   create_perspective (_fovy, _aspect, _z_near, _z_far, _flip_fov) {
     let ret = new Projection()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Projection._bindings.method_create_perspective,
+      Projection.#_bindings.method_create_perspective,
       this,
       19,
       [_fovy, _aspect, _z_near, _z_far, _flip_fov]
@@ -358,7 +364,7 @@ export class Projection {
   create_perspective_hmd (_fovy, _aspect, _z_near, _z_far, _flip_fov, _eye, _intraocular_dist, _convergence_dist) {
     let ret = new Projection()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Projection._bindings.method_create_perspective_hmd,
+      Projection.#_bindings.method_create_perspective_hmd,
       this,
       19,
       [_fovy, _aspect, _z_near, _z_far, _flip_fov, _eye, _intraocular_dist, _convergence_dist]
@@ -368,7 +374,7 @@ export class Projection {
   create_for_hmd (_eye, _aspect, _intraocular_dist, _display_width, _display_to_lens, _oversample, _z_near, _z_far) {
     let ret = new Projection()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Projection._bindings.method_create_for_hmd,
+      Projection.#_bindings.method_create_for_hmd,
       this,
       19,
       [_eye, _aspect, _intraocular_dist, _display_width, _display_to_lens, _oversample, _z_near, _z_far]
@@ -378,7 +384,7 @@ export class Projection {
   create_orthogonal (_left, _right, _bottom, _top, _z_near, _z_far) {
     let ret = new Projection()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Projection._bindings.method_create_orthogonal,
+      Projection.#_bindings.method_create_orthogonal,
       this,
       19,
       [_left, _right, _bottom, _top, _z_near, _z_far]
@@ -388,7 +394,7 @@ export class Projection {
   create_orthogonal_aspect (_size, _aspect, _z_near, _z_far, _flip_fov) {
     let ret = new Projection()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Projection._bindings.method_create_orthogonal_aspect,
+      Projection.#_bindings.method_create_orthogonal_aspect,
       this,
       19,
       [_size, _aspect, _z_near, _z_far, _flip_fov]
@@ -398,7 +404,7 @@ export class Projection {
   create_frustum (_left, _right, _bottom, _top, _z_near, _z_far) {
     let ret = new Projection()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Projection._bindings.method_create_frustum,
+      Projection.#_bindings.method_create_frustum,
       this,
       19,
       [_left, _right, _bottom, _top, _z_near, _z_far]
@@ -408,7 +414,7 @@ export class Projection {
   create_frustum_aspect (_size, _aspect, _offset, _z_near, _z_far, _flip_fov) {
     let ret = new Projection()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Projection._bindings.method_create_frustum_aspect,
+      Projection.#_bindings.method_create_frustum_aspect,
       this,
       19,
       [_size, _aspect, _offset, _z_near, _z_far, _flip_fov]
@@ -418,7 +424,7 @@ export class Projection {
   create_fit_aabb (_aabb) {
     let ret = new Projection()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Projection._bindings.method_create_fit_aabb,
+      Projection.#_bindings.method_create_fit_aabb,
       this,
       19,
       [_aabb]
@@ -428,7 +434,7 @@ export class Projection {
   determinant () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Projection._bindings.method_determinant,
+      Projection.#_bindings.method_determinant,
       this,
       3,
       []
@@ -438,7 +444,7 @@ export class Projection {
   perspective_znear_adjusted (_new_znear) {
     let ret = new Projection()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Projection._bindings.method_perspective_znear_adjusted,
+      Projection.#_bindings.method_perspective_znear_adjusted,
       this,
       19,
       [_new_znear]
@@ -448,7 +454,7 @@ export class Projection {
   get_projection_plane (_plane) {
     let ret = new Plane()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Projection._bindings.method_get_projection_plane,
+      Projection.#_bindings.method_get_projection_plane,
       this,
       14,
       [_plane]
@@ -458,7 +464,7 @@ export class Projection {
   flipped_y () {
     let ret = new Projection()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Projection._bindings.method_flipped_y,
+      Projection.#_bindings.method_flipped_y,
       this,
       19,
       []
@@ -468,7 +474,7 @@ export class Projection {
   jitter_offseted (_offset) {
     let ret = new Projection()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Projection._bindings.method_jitter_offseted,
+      Projection.#_bindings.method_jitter_offseted,
       this,
       19,
       [_offset]
@@ -478,7 +484,7 @@ export class Projection {
   get_fovy (_fovx, _aspect) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Projection._bindings.method_get_fovy,
+      Projection.#_bindings.method_get_fovy,
       this,
       3,
       [_fovx, _aspect]
@@ -488,7 +494,7 @@ export class Projection {
   get_z_far () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Projection._bindings.method_get_z_far,
+      Projection.#_bindings.method_get_z_far,
       this,
       3,
       []
@@ -498,7 +504,7 @@ export class Projection {
   get_z_near () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Projection._bindings.method_get_z_near,
+      Projection.#_bindings.method_get_z_near,
       this,
       3,
       []
@@ -508,7 +514,7 @@ export class Projection {
   get_aspect () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Projection._bindings.method_get_aspect,
+      Projection.#_bindings.method_get_aspect,
       this,
       3,
       []
@@ -518,7 +524,7 @@ export class Projection {
   get_fov () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Projection._bindings.method_get_fov,
+      Projection.#_bindings.method_get_fov,
       this,
       3,
       []
@@ -528,7 +534,7 @@ export class Projection {
   is_orthogonal () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Projection._bindings.method_is_orthogonal,
+      Projection.#_bindings.method_is_orthogonal,
       this,
       1,
       []
@@ -538,7 +544,7 @@ export class Projection {
   get_viewport_half_extents () {
     let ret = new Vector2()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Projection._bindings.method_get_viewport_half_extents,
+      Projection.#_bindings.method_get_viewport_half_extents,
       this,
       5,
       []
@@ -548,7 +554,7 @@ export class Projection {
   get_far_plane_half_extents () {
     let ret = new Vector2()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Projection._bindings.method_get_far_plane_half_extents,
+      Projection.#_bindings.method_get_far_plane_half_extents,
       this,
       5,
       []
@@ -558,7 +564,7 @@ export class Projection {
   inverse () {
     let ret = new Projection()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Projection._bindings.method_inverse,
+      Projection.#_bindings.method_inverse,
       this,
       19,
       []
@@ -568,7 +574,7 @@ export class Projection {
   get_pixels_per_meter (_for_pixel_width) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Projection._bindings.method_get_pixels_per_meter,
+      Projection.#_bindings.method_get_pixels_per_meter,
       this,
       2,
       [_for_pixel_width]
@@ -578,7 +584,7 @@ export class Projection {
   get_lod_multiplier () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Projection._bindings.method_get_lod_multiplier,
+      Projection.#_bindings.method_get_lod_multiplier,
       this,
       3,
       []

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { VisualShaderNode } from '@js_godot/classes/visual_shader_node'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -15,7 +15,7 @@ class _MethodBindings {
 }
 export class VisualShaderNodeIntFunc extends VisualShaderNode{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -25,45 +25,47 @@ export class VisualShaderNodeIntFunc extends VisualShaderNode{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_function() {
+    if (!this.#_bindings.method_set_function) {
       let classname = new StringName("VisualShaderNodeIntFunc");
       let methodname = new StringName("set_function");
-      this._bindings.method_set_function = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_function = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         424195284
       );
     }
-    {
+  }
+  static init_method_get_function() {
+    if (!this.#_bindings.method_get_function) {
       let classname = new StringName("VisualShaderNodeIntFunc");
       let methodname = new StringName("get_function");
-      this._bindings.method_get_function = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_function = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2753496911
       );
     }
   }
+
+  
   
   set_function(_func) {
+    VisualShaderNodeIntFunc.init_method_set_function();
     return _call_native_mb_no_ret(
-      VisualShaderNodeIntFunc._bindings.method_set_function,
+      VisualShaderNodeIntFunc.#_bindings.method_set_function,
       this._owner,
       _func
     );
     
   }
   get_function() {
+    VisualShaderNodeIntFunc.init_method_get_function();
     return _call_native_mb_ret(
-      VisualShaderNodeIntFunc._bindings.method_get_function,
+      VisualShaderNodeIntFunc.#_bindings.method_get_function,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
@@ -82,9 +84,5 @@ set function (new_value) {
     FUNC_SIGN: 2,
     FUNC_BITWISE_NOT: 3,
     FUNC_MAX: 4,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

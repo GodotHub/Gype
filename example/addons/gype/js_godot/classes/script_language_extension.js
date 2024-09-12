@@ -1,10 +1,8 @@
 import * as internal from '__internal__';
-import { Dictionary } from '@js_godot/variant/dictionary'
-import { StringName } from '@js_godot/variant/string_name'
-import { PackedStringArray } from '@js_godot/variant/packed_string_array'
-import { ScriptLanguage } from '@js_godot/classes/script_language'
-import { GDString } from '@js_godot/variant/gd_string'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { ScriptLanguage } from '@js_godot/classes/script_language'
+import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -16,7 +14,7 @@ class _MethodBindings {
 }
 export class ScriptLanguageExtension extends ScriptLanguage{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -26,13 +24,8 @@ export class ScriptLanguageExtension extends ScriptLanguage{
       super(godot_object);
     }
   }
+
   
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-  }
   
   _get_name() {
   }
@@ -184,9 +177,5 @@ export class ScriptLanguageExtension extends ScriptLanguage{
     CODE_COMPLETION_KIND_FILE_PATH: 8,
     CODE_COMPLETION_KIND_PLAIN_TEXT: 9,
     CODE_COMPLETION_KIND_MAX: 10,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

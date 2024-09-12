@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
-import { RefCounted } from '@js_godot/classes/ref_counted'
 import { StringName } from '@js_godot/variant/string_name'
+import { RefCounted } from '@js_godot/classes/ref_counted'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -15,7 +15,7 @@ class _MethodBindings {
 }
 export class AudioStreamPlayback extends RefCounted{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -25,31 +25,30 @@ export class AudioStreamPlayback extends RefCounted{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_sample_playback() {
+    if (!this.#_bindings.method_set_sample_playback) {
       let classname = new StringName("AudioStreamPlayback");
       let methodname = new StringName("set_sample_playback");
-      this._bindings.method_set_sample_playback = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_sample_playback = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3195455091
       );
     }
-    {
+  }
+  static init_method_get_sample_playback() {
+    if (!this.#_bindings.method_get_sample_playback) {
       let classname = new StringName("AudioStreamPlayback");
       let methodname = new StringName("get_sample_playback");
-      this._bindings.method_get_sample_playback = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_sample_playback = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3482738536
       );
     }
   }
+
+  
   
   _start(_from_pos) {
   }
@@ -72,26 +71,24 @@ export class AudioStreamPlayback extends RefCounted{
   _get_parameter(_name) {
   }
   set_sample_playback(_playback_sample) {
+    AudioStreamPlayback.init_method_set_sample_playback();
     return _call_native_mb_no_ret(
-      AudioStreamPlayback._bindings.method_set_sample_playback,
+      AudioStreamPlayback.#_bindings.method_set_sample_playback,
       this._owner,
       _playback_sample
     );
     
   }
   get_sample_playback() {
+    AudioStreamPlayback.init_method_get_sample_playback();
     return _call_native_mb_ret(
-      AudioStreamPlayback._bindings.method_get_sample_playback,
+      AudioStreamPlayback.#_bindings.method_get_sample_playback,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

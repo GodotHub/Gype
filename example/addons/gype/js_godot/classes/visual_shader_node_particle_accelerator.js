@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { Variant } from '@js_godot/variant/variant'
 import { VisualShaderNode } from '@js_godot/classes/visual_shader_node'
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -15,7 +15,7 @@ class _MethodBindings {
 }
 export class VisualShaderNodeParticleAccelerator extends VisualShaderNode{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -25,45 +25,47 @@ export class VisualShaderNodeParticleAccelerator extends VisualShaderNode{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_mode() {
+    if (!this.#_bindings.method_set_mode) {
       let classname = new StringName("VisualShaderNodeParticleAccelerator");
       let methodname = new StringName("set_mode");
-      this._bindings.method_set_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_mode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3457585749
       );
     }
-    {
+  }
+  static init_method_get_mode() {
+    if (!this.#_bindings.method_get_mode) {
       let classname = new StringName("VisualShaderNodeParticleAccelerator");
       let methodname = new StringName("get_mode");
-      this._bindings.method_get_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_mode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2660365633
       );
     }
   }
+
+  
   
   set_mode(_mode) {
+    VisualShaderNodeParticleAccelerator.init_method_set_mode();
     return _call_native_mb_no_ret(
-      VisualShaderNodeParticleAccelerator._bindings.method_set_mode,
+      VisualShaderNodeParticleAccelerator.#_bindings.method_set_mode,
       this._owner,
       _mode
     );
     
   }
   get_mode() {
+    VisualShaderNodeParticleAccelerator.init_method_get_mode();
     return _call_native_mb_ret(
-      VisualShaderNodeParticleAccelerator._bindings.method_get_mode,
+      VisualShaderNodeParticleAccelerator.#_bindings.method_get_mode,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
@@ -81,9 +83,5 @@ set mode (new_value) {
     MODE_RADIAL: 1,
     MODE_TANGENTIAL: 2,
     MODE_MAX: 3,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

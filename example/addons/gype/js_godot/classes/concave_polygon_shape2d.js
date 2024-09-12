@@ -1,8 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
-import { Shape2D } from '@js_godot/classes/shape2d'
 import { Variant } from '@js_godot/variant/variant'
+import { Shape2D } from '@js_godot/classes/shape2d'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -16,7 +15,7 @@ class _MethodBindings {
 }
 export class ConcavePolygonShape2D extends Shape2D{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -26,43 +25,44 @@ export class ConcavePolygonShape2D extends Shape2D{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_segments() {
+    if (!this.#_bindings.method_set_segments) {
       let classname = new StringName("ConcavePolygonShape2D");
       let methodname = new StringName("set_segments");
-      this._bindings.method_set_segments = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_segments = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1509147220
       );
     }
-    {
+  }
+  static init_method_get_segments() {
+    if (!this.#_bindings.method_get_segments) {
       let classname = new StringName("ConcavePolygonShape2D");
       let methodname = new StringName("get_segments");
-      this._bindings.method_get_segments = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_segments = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2961356807
       );
     }
   }
+
+  
   
   set_segments(_segments) {
+    ConcavePolygonShape2D.init_method_set_segments();
     return _call_native_mb_no_ret(
-      ConcavePolygonShape2D._bindings.method_set_segments,
+      ConcavePolygonShape2D.#_bindings.method_set_segments,
       this._owner,
       _segments
     );
     
   }
   get_segments() {
+    ConcavePolygonShape2D.init_method_get_segments();
     return _call_native_mb_ret(
-      ConcavePolygonShape2D._bindings.method_get_segments,
+      ConcavePolygonShape2D.#_bindings.method_get_segments,
       this._owner,
 			Variant.Type.PACKED_VECTOR2_ARRAY,
     
@@ -78,8 +78,4 @@ set segments (new_value) {
   this.set_segments(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { RefCounted } from '@js_godot/classes/ref_counted'
-import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -19,7 +19,7 @@ class _MethodBindings {
 }
 export class RDAttachmentFormat extends RefCounted{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -29,115 +29,131 @@ export class RDAttachmentFormat extends RefCounted{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_format() {
+    if (!this.#_bindings.method_set_format) {
       let classname = new StringName("RDAttachmentFormat");
       let methodname = new StringName("set_format");
-      this._bindings.method_set_format = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_format = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         565531219
       );
     }
-    {
+  }
+  static init_method_get_format() {
+    if (!this.#_bindings.method_get_format) {
       let classname = new StringName("RDAttachmentFormat");
       let methodname = new StringName("get_format");
-      this._bindings.method_get_format = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_format = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2235804183
       );
     }
-    {
+  }
+  static init_method_set_samples() {
+    if (!this.#_bindings.method_set_samples) {
       let classname = new StringName("RDAttachmentFormat");
       let methodname = new StringName("set_samples");
-      this._bindings.method_set_samples = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_samples = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3774171498
       );
     }
-    {
+  }
+  static init_method_get_samples() {
+    if (!this.#_bindings.method_get_samples) {
       let classname = new StringName("RDAttachmentFormat");
       let methodname = new StringName("get_samples");
-      this._bindings.method_get_samples = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_samples = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         407791724
       );
     }
-    {
+  }
+  static init_method_set_usage_flags() {
+    if (!this.#_bindings.method_set_usage_flags) {
       let classname = new StringName("RDAttachmentFormat");
       let methodname = new StringName("set_usage_flags");
-      this._bindings.method_set_usage_flags = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_usage_flags = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1286410249
       );
     }
-    {
+  }
+  static init_method_get_usage_flags() {
+    if (!this.#_bindings.method_get_usage_flags) {
       let classname = new StringName("RDAttachmentFormat");
       let methodname = new StringName("get_usage_flags");
-      this._bindings.method_get_usage_flags = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_usage_flags = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
   }
+
+  
   
   set_format(_p_member) {
+    RDAttachmentFormat.init_method_set_format();
     return _call_native_mb_no_ret(
-      RDAttachmentFormat._bindings.method_set_format,
+      RDAttachmentFormat.#_bindings.method_set_format,
       this._owner,
       _p_member
     );
     
   }
   get_format() {
+    RDAttachmentFormat.init_method_get_format();
     return _call_native_mb_ret(
-      RDAttachmentFormat._bindings.method_get_format,
+      RDAttachmentFormat.#_bindings.method_get_format,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_samples(_p_member) {
+    RDAttachmentFormat.init_method_set_samples();
     return _call_native_mb_no_ret(
-      RDAttachmentFormat._bindings.method_set_samples,
+      RDAttachmentFormat.#_bindings.method_set_samples,
       this._owner,
       _p_member
     );
     
   }
   get_samples() {
+    RDAttachmentFormat.init_method_get_samples();
     return _call_native_mb_ret(
-      RDAttachmentFormat._bindings.method_get_samples,
+      RDAttachmentFormat.#_bindings.method_get_samples,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_usage_flags(_p_member) {
+    RDAttachmentFormat.init_method_set_usage_flags();
     return _call_native_mb_no_ret(
-      RDAttachmentFormat._bindings.method_set_usage_flags,
+      RDAttachmentFormat.#_bindings.method_set_usage_flags,
       this._owner,
       _p_member
     );
     
   }
   get_usage_flags() {
+    RDAttachmentFormat.init_method_get_usage_flags();
     return _call_native_mb_ret(
-      RDAttachmentFormat._bindings.method_get_usage_flags,
+      RDAttachmentFormat.#_bindings.method_get_usage_flags,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
@@ -162,8 +178,4 @@ set usage_flags (new_value) {
   this.set_usage_flags(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

@@ -2,11 +2,13 @@ import * as internal from '__internal__'
 import {
   _call_builtin_constructor,
   _call_builtin_method_ptr_ret,
-  _call_builtin_method_ptr_no_ret
+  _call_builtin_method_ptr_no_ret,
+  _call_builtin_method_ptr_obj_ret,
 } from '@js_godot/core/builtin_ptrcall'
 import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { GDArray } from '@js_godot/variant/gd_array'
+import { GodotObject } from "@js_godot/classes/godot_object";
 
 class _MethodBindings {
   from_variant_constructor
@@ -44,34 +46,37 @@ export class Dictionary {
   static #SIZE = 8
   opaque = new Uint8Array(Dictionary.#SIZE)
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
-  constructor (from) {
-    if (!from) {
-      _call_builtin_constructor(Dictionary._bindings.constructor_0, this)
-    }else if (from instanceof Dictionary) {
-      _call_builtin_constructor(Dictionary._bindings.constructor_1, this, [
+  constructor (value) {
+    if (!value) {
+      _call_builtin_constructor(Dictionary.#_bindings.constructor_0, this)
+    } else if (arguments.length == 1&& arguments[0] instanceof Dictionary) {
+      let from = arguments[0];
+      _call_builtin_constructor(Dictionary.#_bindings.constructor_1, this, [
         from
       ])
-    } else if (from.constructor.name === "Variant") {
-      Dictionary._bindings.from_variant_constructor(this.opaque, from.opaque)
+    } else if (value.constructor.name === "Variant") {
+      Dictionary.#_bindings.from_variant_constructor(this.opaque, value.opaque)
+    } else if (value instanceof Uint8Array) {
+      this.opaque = value;
     } 
   }
   
   static __init_bindings_constructors_destructor () {
-    this._bindings.from_variant_constructor = internal.get_variant_to_type_constructor(
+    this.#_bindings.from_variant_constructor = internal.get_variant_to_type_constructor(
       27
     )
-    this._bindings.constructor_0 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_0 = internal.variant_get_ptr_constructor(
       27,
       0
     )
-    this._bindings.constructor_1 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_1 = internal.variant_get_ptr_constructor(
       27,
       1
     )
-    this._bindings.destructor = internal.variant_get_ptr_destructor(
+    this.#_bindings.destructor = internal.variant_get_ptr_destructor(
       27
     )
   }
@@ -84,7 +89,7 @@ export class Dictionary {
     this.__init_bindings_constructors_destructor()
     {
       let _gde_name = new StringName('size')
-      this._bindings.method_size = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_size = internal.variant_get_ptr_builtin_method(
         27,
         _gde_name.opaque,
         3173160232
@@ -92,7 +97,7 @@ export class Dictionary {
     }
     {
       let _gde_name = new StringName('is_empty')
-      this._bindings.method_is_empty = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_empty = internal.variant_get_ptr_builtin_method(
         27,
         _gde_name.opaque,
         3918633141
@@ -100,7 +105,7 @@ export class Dictionary {
     }
     {
       let _gde_name = new StringName('clear')
-      this._bindings.method_clear = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_clear = internal.variant_get_ptr_builtin_method(
         27,
         _gde_name.opaque,
         3218959716
@@ -108,7 +113,7 @@ export class Dictionary {
     }
     {
       let _gde_name = new StringName('merge')
-      this._bindings.method_merge = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_merge = internal.variant_get_ptr_builtin_method(
         27,
         _gde_name.opaque,
         2079548978
@@ -116,7 +121,7 @@ export class Dictionary {
     }
     {
       let _gde_name = new StringName('merged')
-      this._bindings.method_merged = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_merged = internal.variant_get_ptr_builtin_method(
         27,
         _gde_name.opaque,
         2271165639
@@ -124,7 +129,7 @@ export class Dictionary {
     }
     {
       let _gde_name = new StringName('has')
-      this._bindings.method_has = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_has = internal.variant_get_ptr_builtin_method(
         27,
         _gde_name.opaque,
         3680194679
@@ -132,7 +137,7 @@ export class Dictionary {
     }
     {
       let _gde_name = new StringName('has_all')
-      this._bindings.method_has_all = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_has_all = internal.variant_get_ptr_builtin_method(
         27,
         _gde_name.opaque,
         2988181878
@@ -140,7 +145,7 @@ export class Dictionary {
     }
     {
       let _gde_name = new StringName('find_key')
-      this._bindings.method_find_key = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_find_key = internal.variant_get_ptr_builtin_method(
         27,
         _gde_name.opaque,
         1988825835
@@ -148,7 +153,7 @@ export class Dictionary {
     }
     {
       let _gde_name = new StringName('erase')
-      this._bindings.method_erase = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_erase = internal.variant_get_ptr_builtin_method(
         27,
         _gde_name.opaque,
         1776646889
@@ -156,7 +161,7 @@ export class Dictionary {
     }
     {
       let _gde_name = new StringName('hash')
-      this._bindings.method_hash = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_hash = internal.variant_get_ptr_builtin_method(
         27,
         _gde_name.opaque,
         3173160232
@@ -164,7 +169,7 @@ export class Dictionary {
     }
     {
       let _gde_name = new StringName('keys')
-      this._bindings.method_keys = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_keys = internal.variant_get_ptr_builtin_method(
         27,
         _gde_name.opaque,
         4144163970
@@ -172,7 +177,7 @@ export class Dictionary {
     }
     {
       let _gde_name = new StringName('values')
-      this._bindings.method_values = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_values = internal.variant_get_ptr_builtin_method(
         27,
         _gde_name.opaque,
         4144163970
@@ -180,7 +185,7 @@ export class Dictionary {
     }
     {
       let _gde_name = new StringName('duplicate')
-      this._bindings.method_duplicate = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_duplicate = internal.variant_get_ptr_builtin_method(
         27,
         _gde_name.opaque,
         830099069
@@ -188,7 +193,7 @@ export class Dictionary {
     }
     {
       let _gde_name = new StringName('get')
-      this._bindings.method_get = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get = internal.variant_get_ptr_builtin_method(
         27,
         _gde_name.opaque,
         2205440559
@@ -196,7 +201,7 @@ export class Dictionary {
     }
     {
       let _gde_name = new StringName('get_or_add')
-      this._bindings.method_get_or_add = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_or_add = internal.variant_get_ptr_builtin_method(
         27,
         _gde_name.opaque,
         1052551076
@@ -204,7 +209,7 @@ export class Dictionary {
     }
     {
       let _gde_name = new StringName('make_read_only')
-      this._bindings.method_make_read_only = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_make_read_only = internal.variant_get_ptr_builtin_method(
         27,
         _gde_name.opaque,
         3218959716
@@ -212,7 +217,7 @@ export class Dictionary {
     }
     {
       let _gde_name = new StringName('is_read_only')
-      this._bindings.method_is_read_only = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_read_only = internal.variant_get_ptr_builtin_method(
         27,
         _gde_name.opaque,
         3918633141
@@ -220,7 +225,7 @@ export class Dictionary {
     }
     {
       let _gde_name = new StringName('recursive_equal')
-      this._bindings.method_recursive_equal = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_recursive_equal = internal.variant_get_ptr_builtin_method(
         27,
         _gde_name.opaque,
         1404404751
@@ -232,7 +237,7 @@ export class Dictionary {
   size () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Dictionary._bindings.method_size,
+      Dictionary.#_bindings.method_size,
       this,
       2,
       []
@@ -242,7 +247,7 @@ export class Dictionary {
   is_empty () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Dictionary._bindings.method_is_empty,
+      Dictionary.#_bindings.method_is_empty,
       this,
       1,
       []
@@ -251,14 +256,14 @@ export class Dictionary {
   }
   clear () {
     _call_builtin_method_ptr_no_ret(
-      Dictionary._bindings.method_clear,
+      Dictionary.#_bindings.method_clear,
       this,
       []
     )
   }
   merge (_dictionary, _overwrite) {
     _call_builtin_method_ptr_no_ret(
-      Dictionary._bindings.method_merge,
+      Dictionary.#_bindings.method_merge,
       this,
       [_dictionary, _overwrite]
     )
@@ -266,7 +271,7 @@ export class Dictionary {
   merged (_dictionary, _overwrite) {
     let ret = new Dictionary()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Dictionary._bindings.method_merged,
+      Dictionary.#_bindings.method_merged,
       this,
       27,
       [_dictionary, _overwrite]
@@ -276,7 +281,7 @@ export class Dictionary {
   has (_key) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Dictionary._bindings.method_has,
+      Dictionary.#_bindings.method_has,
       this,
       1,
       [_key]
@@ -286,7 +291,7 @@ export class Dictionary {
   has_all (_keys) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Dictionary._bindings.method_has_all,
+      Dictionary.#_bindings.method_has_all,
       this,
       1,
       [_keys]
@@ -296,7 +301,7 @@ export class Dictionary {
   find_key (_value) {
     let ret = new Variant()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Dictionary._bindings.method_find_key,
+      Dictionary.#_bindings.method_find_key,
       this,
       39,
       [_value]
@@ -306,7 +311,7 @@ export class Dictionary {
   erase (_key) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Dictionary._bindings.method_erase,
+      Dictionary.#_bindings.method_erase,
       this,
       1,
       [_key]
@@ -316,7 +321,7 @@ export class Dictionary {
   hash () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Dictionary._bindings.method_hash,
+      Dictionary.#_bindings.method_hash,
       this,
       2,
       []
@@ -326,7 +331,7 @@ export class Dictionary {
   keys () {
     let ret = new GDArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Dictionary._bindings.method_keys,
+      Dictionary.#_bindings.method_keys,
       this,
       28,
       []
@@ -336,7 +341,7 @@ export class Dictionary {
   values () {
     let ret = new GDArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Dictionary._bindings.method_values,
+      Dictionary.#_bindings.method_values,
       this,
       28,
       []
@@ -346,7 +351,7 @@ export class Dictionary {
   duplicate (_deep) {
     let ret = new Dictionary()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Dictionary._bindings.method_duplicate,
+      Dictionary.#_bindings.method_duplicate,
       this,
       27,
       [_deep]
@@ -356,7 +361,7 @@ export class Dictionary {
   get (_key, _default) {
     let ret = new Variant()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Dictionary._bindings.method_get,
+      Dictionary.#_bindings.method_get,
       this,
       39,
       [_key, _default]
@@ -366,7 +371,7 @@ export class Dictionary {
   get_or_add (_key, _default) {
     let ret = new Variant()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Dictionary._bindings.method_get_or_add,
+      Dictionary.#_bindings.method_get_or_add,
       this,
       39,
       [_key, _default]
@@ -375,7 +380,7 @@ export class Dictionary {
   }
   make_read_only () {
     _call_builtin_method_ptr_no_ret(
-      Dictionary._bindings.method_make_read_only,
+      Dictionary.#_bindings.method_make_read_only,
       this,
       []
     )
@@ -383,7 +388,7 @@ export class Dictionary {
   is_read_only () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Dictionary._bindings.method_is_read_only,
+      Dictionary.#_bindings.method_is_read_only,
       this,
       1,
       []
@@ -393,7 +398,7 @@ export class Dictionary {
   recursive_equal (_dictionary, _recursion_count) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Dictionary._bindings.method_recursive_equal,
+      Dictionary.#_bindings.method_recursive_equal,
       this,
       1,
       [_dictionary, _recursion_count]

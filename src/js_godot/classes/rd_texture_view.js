@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
-import { RefCounted } from '@js_godot/classes/ref_counted'
 import { StringName } from '@js_godot/variant/string_name'
+import { RefCounted } from '@js_godot/classes/ref_counted'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -23,7 +23,7 @@ class _MethodBindings {
 }
 export class RDTextureView extends RefCounted{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -33,185 +33,215 @@ export class RDTextureView extends RefCounted{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_format_override() {
+    if (!this.#_bindings.method_set_format_override) {
       let classname = new StringName("RDTextureView");
       let methodname = new StringName("set_format_override");
-      this._bindings.method_set_format_override = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_format_override = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         565531219
       );
     }
-    {
+  }
+  static init_method_get_format_override() {
+    if (!this.#_bindings.method_get_format_override) {
       let classname = new StringName("RDTextureView");
       let methodname = new StringName("get_format_override");
-      this._bindings.method_get_format_override = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_format_override = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2235804183
       );
     }
-    {
+  }
+  static init_method_set_swizzle_r() {
+    if (!this.#_bindings.method_set_swizzle_r) {
       let classname = new StringName("RDTextureView");
       let methodname = new StringName("set_swizzle_r");
-      this._bindings.method_set_swizzle_r = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_swizzle_r = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3833362581
       );
     }
-    {
+  }
+  static init_method_get_swizzle_r() {
+    if (!this.#_bindings.method_get_swizzle_r) {
       let classname = new StringName("RDTextureView");
       let methodname = new StringName("get_swizzle_r");
-      this._bindings.method_get_swizzle_r = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4150792614
-      );
-    }
-    {
-      let classname = new StringName("RDTextureView");
-      let methodname = new StringName("set_swizzle_g");
-      this._bindings.method_set_swizzle_g = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3833362581
-      );
-    }
-    {
-      let classname = new StringName("RDTextureView");
-      let methodname = new StringName("get_swizzle_g");
-      this._bindings.method_get_swizzle_g = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4150792614
-      );
-    }
-    {
-      let classname = new StringName("RDTextureView");
-      let methodname = new StringName("set_swizzle_b");
-      this._bindings.method_set_swizzle_b = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3833362581
-      );
-    }
-    {
-      let classname = new StringName("RDTextureView");
-      let methodname = new StringName("get_swizzle_b");
-      this._bindings.method_get_swizzle_b = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4150792614
-      );
-    }
-    {
-      let classname = new StringName("RDTextureView");
-      let methodname = new StringName("set_swizzle_a");
-      this._bindings.method_set_swizzle_a = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3833362581
-      );
-    }
-    {
-      let classname = new StringName("RDTextureView");
-      let methodname = new StringName("get_swizzle_a");
-      this._bindings.method_get_swizzle_a = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_swizzle_r = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         4150792614
       );
     }
   }
+  static init_method_set_swizzle_g() {
+    if (!this.#_bindings.method_set_swizzle_g) {
+      let classname = new StringName("RDTextureView");
+      let methodname = new StringName("set_swizzle_g");
+      this.#_bindings.method_set_swizzle_g = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3833362581
+      );
+    }
+  }
+  static init_method_get_swizzle_g() {
+    if (!this.#_bindings.method_get_swizzle_g) {
+      let classname = new StringName("RDTextureView");
+      let methodname = new StringName("get_swizzle_g");
+      this.#_bindings.method_get_swizzle_g = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        4150792614
+      );
+    }
+  }
+  static init_method_set_swizzle_b() {
+    if (!this.#_bindings.method_set_swizzle_b) {
+      let classname = new StringName("RDTextureView");
+      let methodname = new StringName("set_swizzle_b");
+      this.#_bindings.method_set_swizzle_b = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3833362581
+      );
+    }
+  }
+  static init_method_get_swizzle_b() {
+    if (!this.#_bindings.method_get_swizzle_b) {
+      let classname = new StringName("RDTextureView");
+      let methodname = new StringName("get_swizzle_b");
+      this.#_bindings.method_get_swizzle_b = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        4150792614
+      );
+    }
+  }
+  static init_method_set_swizzle_a() {
+    if (!this.#_bindings.method_set_swizzle_a) {
+      let classname = new StringName("RDTextureView");
+      let methodname = new StringName("set_swizzle_a");
+      this.#_bindings.method_set_swizzle_a = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3833362581
+      );
+    }
+  }
+  static init_method_get_swizzle_a() {
+    if (!this.#_bindings.method_get_swizzle_a) {
+      let classname = new StringName("RDTextureView");
+      let methodname = new StringName("get_swizzle_a");
+      this.#_bindings.method_get_swizzle_a = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        4150792614
+      );
+    }
+  }
+
+  
   
   set_format_override(_p_member) {
+    RDTextureView.init_method_set_format_override();
     return _call_native_mb_no_ret(
-      RDTextureView._bindings.method_set_format_override,
+      RDTextureView.#_bindings.method_set_format_override,
       this._owner,
       _p_member
     );
     
   }
   get_format_override() {
+    RDTextureView.init_method_get_format_override();
     return _call_native_mb_ret(
-      RDTextureView._bindings.method_get_format_override,
+      RDTextureView.#_bindings.method_get_format_override,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_swizzle_r(_p_member) {
+    RDTextureView.init_method_set_swizzle_r();
     return _call_native_mb_no_ret(
-      RDTextureView._bindings.method_set_swizzle_r,
+      RDTextureView.#_bindings.method_set_swizzle_r,
       this._owner,
       _p_member
     );
     
   }
   get_swizzle_r() {
+    RDTextureView.init_method_get_swizzle_r();
     return _call_native_mb_ret(
-      RDTextureView._bindings.method_get_swizzle_r,
+      RDTextureView.#_bindings.method_get_swizzle_r,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_swizzle_g(_p_member) {
+    RDTextureView.init_method_set_swizzle_g();
     return _call_native_mb_no_ret(
-      RDTextureView._bindings.method_set_swizzle_g,
+      RDTextureView.#_bindings.method_set_swizzle_g,
       this._owner,
       _p_member
     );
     
   }
   get_swizzle_g() {
+    RDTextureView.init_method_get_swizzle_g();
     return _call_native_mb_ret(
-      RDTextureView._bindings.method_get_swizzle_g,
+      RDTextureView.#_bindings.method_get_swizzle_g,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_swizzle_b(_p_member) {
+    RDTextureView.init_method_set_swizzle_b();
     return _call_native_mb_no_ret(
-      RDTextureView._bindings.method_set_swizzle_b,
+      RDTextureView.#_bindings.method_set_swizzle_b,
       this._owner,
       _p_member
     );
     
   }
   get_swizzle_b() {
+    RDTextureView.init_method_get_swizzle_b();
     return _call_native_mb_ret(
-      RDTextureView._bindings.method_get_swizzle_b,
+      RDTextureView.#_bindings.method_get_swizzle_b,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_swizzle_a(_p_member) {
+    RDTextureView.init_method_set_swizzle_a();
     return _call_native_mb_no_ret(
-      RDTextureView._bindings.method_set_swizzle_a,
+      RDTextureView.#_bindings.method_set_swizzle_a,
       this._owner,
       _p_member
     );
     
   }
   get_swizzle_a() {
+    RDTextureView.init_method_get_swizzle_a();
     return _call_native_mb_ret(
-      RDTextureView._bindings.method_get_swizzle_a,
+      RDTextureView.#_bindings.method_get_swizzle_a,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
@@ -248,8 +278,4 @@ set swizzle_a (new_value) {
   this.set_swizzle_a(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

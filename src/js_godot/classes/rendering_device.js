@@ -1,16 +1,8 @@
 import * as internal from '__internal__';
-import { Vector2i } from '@js_godot/variant/vector2i'
-import { PackedColorArray } from '@js_godot/variant/packed_color_array'
-import { RID } from '@js_godot/variant/rid'
-import { Color } from '@js_godot/variant/color'
-import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
-import { PackedInt64Array } from '@js_godot/variant/packed_int64_array'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { GodotObject } from '@js_godot/classes/godot_object'
-import { Rect2 } from '@js_godot/variant/rect2'
-import { Vector3 } from '@js_godot/variant/vector3'
-import { GDString } from '@js_godot/variant/gd_string'
+import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -120,7 +112,7 @@ class _MethodBindings {
 }
 export class RenderingDevice extends GodotObject{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -130,899 +122,1091 @@ export class RenderingDevice extends GodotObject{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_texture_create() {
+    if (!this.#_bindings.method_texture_create) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("texture_create");
-      this._bindings.method_texture_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_texture_create = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3709173589
       );
     }
-    {
+  }
+  static init_method_texture_create_shared() {
+    if (!this.#_bindings.method_texture_create_shared) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("texture_create_shared");
-      this._bindings.method_texture_create_shared = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_texture_create_shared = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3178156134
       );
     }
-    {
+  }
+  static init_method_texture_create_shared_from_slice() {
+    if (!this.#_bindings.method_texture_create_shared_from_slice) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("texture_create_shared_from_slice");
-      this._bindings.method_texture_create_shared_from_slice = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_texture_create_shared_from_slice = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1808971279
       );
     }
-    {
+  }
+  static init_method_texture_create_from_extension() {
+    if (!this.#_bindings.method_texture_create_from_extension) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("texture_create_from_extension");
-      this._bindings.method_texture_create_from_extension = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_texture_create_from_extension = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1397171480
       );
     }
-    {
+  }
+  static init_method_texture_update() {
+    if (!this.#_bindings.method_texture_update) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("texture_update");
-      this._bindings.method_texture_update = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_texture_update = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1349464008
       );
     }
-    {
+  }
+  static init_method_texture_get_data() {
+    if (!this.#_bindings.method_texture_get_data) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("texture_get_data");
-      this._bindings.method_texture_get_data = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_texture_get_data = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1859412099
       );
     }
-    {
+  }
+  static init_method_texture_is_format_supported_for_usage() {
+    if (!this.#_bindings.method_texture_is_format_supported_for_usage) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("texture_is_format_supported_for_usage");
-      this._bindings.method_texture_is_format_supported_for_usage = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_texture_is_format_supported_for_usage = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2592520478
       );
     }
-    {
+  }
+  static init_method_texture_is_shared() {
+    if (!this.#_bindings.method_texture_is_shared) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("texture_is_shared");
-      this._bindings.method_texture_is_shared = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_texture_is_shared = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3521089500
       );
     }
-    {
+  }
+  static init_method_texture_is_valid() {
+    if (!this.#_bindings.method_texture_is_valid) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("texture_is_valid");
-      this._bindings.method_texture_is_valid = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_texture_is_valid = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3521089500
       );
     }
-    {
+  }
+  static init_method_texture_copy() {
+    if (!this.#_bindings.method_texture_copy) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("texture_copy");
-      this._bindings.method_texture_copy = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_texture_copy = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2859522160
       );
     }
-    {
+  }
+  static init_method_texture_clear() {
+    if (!this.#_bindings.method_texture_clear) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("texture_clear");
-      this._bindings.method_texture_clear = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_texture_clear = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3477703247
       );
     }
-    {
+  }
+  static init_method_texture_resolve_multisample() {
+    if (!this.#_bindings.method_texture_resolve_multisample) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("texture_resolve_multisample");
-      this._bindings.method_texture_resolve_multisample = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_texture_resolve_multisample = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3181288260
       );
     }
-    {
+  }
+  static init_method_texture_get_format() {
+    if (!this.#_bindings.method_texture_get_format) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("texture_get_format");
-      this._bindings.method_texture_get_format = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_texture_get_format = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1374471690
       );
     }
-    {
+  }
+  static init_method_texture_get_native_handle() {
+    if (!this.#_bindings.method_texture_get_native_handle) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("texture_get_native_handle");
-      this._bindings.method_texture_get_native_handle = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_texture_get_native_handle = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3917799429
       );
     }
-    {
+  }
+  static init_method_framebuffer_format_create() {
+    if (!this.#_bindings.method_framebuffer_format_create) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("framebuffer_format_create");
-      this._bindings.method_framebuffer_format_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_framebuffer_format_create = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         697032759
       );
     }
-    {
+  }
+  static init_method_framebuffer_format_create_multipass() {
+    if (!this.#_bindings.method_framebuffer_format_create_multipass) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("framebuffer_format_create_multipass");
-      this._bindings.method_framebuffer_format_create_multipass = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_framebuffer_format_create_multipass = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2647479094
       );
     }
-    {
+  }
+  static init_method_framebuffer_format_create_empty() {
+    if (!this.#_bindings.method_framebuffer_format_create_empty) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("framebuffer_format_create_empty");
-      this._bindings.method_framebuffer_format_create_empty = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_framebuffer_format_create_empty = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         555930169
       );
     }
-    {
+  }
+  static init_method_framebuffer_format_get_texture_samples() {
+    if (!this.#_bindings.method_framebuffer_format_get_texture_samples) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("framebuffer_format_get_texture_samples");
-      this._bindings.method_framebuffer_format_get_texture_samples = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_framebuffer_format_get_texture_samples = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         4223391010
       );
     }
-    {
+  }
+  static init_method_framebuffer_create() {
+    if (!this.#_bindings.method_framebuffer_create) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("framebuffer_create");
-      this._bindings.method_framebuffer_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_framebuffer_create = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3284231055
       );
     }
-    {
+  }
+  static init_method_framebuffer_create_multipass() {
+    if (!this.#_bindings.method_framebuffer_create_multipass) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("framebuffer_create_multipass");
-      this._bindings.method_framebuffer_create_multipass = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_framebuffer_create_multipass = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1750306695
       );
     }
-    {
+  }
+  static init_method_framebuffer_create_empty() {
+    if (!this.#_bindings.method_framebuffer_create_empty) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("framebuffer_create_empty");
-      this._bindings.method_framebuffer_create_empty = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_framebuffer_create_empty = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3058360618
       );
     }
-    {
+  }
+  static init_method_framebuffer_get_format() {
+    if (!this.#_bindings.method_framebuffer_get_format) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("framebuffer_get_format");
-      this._bindings.method_framebuffer_get_format = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_framebuffer_get_format = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3917799429
       );
     }
-    {
+  }
+  static init_method_framebuffer_is_valid() {
+    if (!this.#_bindings.method_framebuffer_is_valid) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("framebuffer_is_valid");
-      this._bindings.method_framebuffer_is_valid = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_framebuffer_is_valid = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         4155700596
       );
     }
-    {
+  }
+  static init_method_sampler_create() {
+    if (!this.#_bindings.method_sampler_create) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("sampler_create");
-      this._bindings.method_sampler_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_sampler_create = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2327892535
       );
     }
-    {
+  }
+  static init_method_sampler_is_format_supported_for_filter() {
+    if (!this.#_bindings.method_sampler_is_format_supported_for_filter) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("sampler_is_format_supported_for_filter");
-      this._bindings.method_sampler_is_format_supported_for_filter = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_sampler_is_format_supported_for_filter = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2247922238
       );
     }
-    {
+  }
+  static init_method_vertex_buffer_create() {
+    if (!this.#_bindings.method_vertex_buffer_create) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("vertex_buffer_create");
-      this._bindings.method_vertex_buffer_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_vertex_buffer_create = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3410049843
       );
     }
-    {
+  }
+  static init_method_vertex_format_create() {
+    if (!this.#_bindings.method_vertex_format_create) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("vertex_format_create");
-      this._bindings.method_vertex_format_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_vertex_format_create = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1242678479
       );
     }
-    {
+  }
+  static init_method_vertex_array_create() {
+    if (!this.#_bindings.method_vertex_array_create) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("vertex_array_create");
-      this._bindings.method_vertex_array_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_vertex_array_create = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3799816279
       );
     }
-    {
+  }
+  static init_method_index_buffer_create() {
+    if (!this.#_bindings.method_index_buffer_create) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("index_buffer_create");
-      this._bindings.method_index_buffer_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_index_buffer_create = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3935920523
       );
     }
-    {
+  }
+  static init_method_index_array_create() {
+    if (!this.#_bindings.method_index_array_create) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("index_array_create");
-      this._bindings.method_index_array_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_index_array_create = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2256026069
       );
     }
-    {
+  }
+  static init_method_shader_compile_spirv_from_source() {
+    if (!this.#_bindings.method_shader_compile_spirv_from_source) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("shader_compile_spirv_from_source");
-      this._bindings.method_shader_compile_spirv_from_source = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_shader_compile_spirv_from_source = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1178973306
       );
     }
-    {
+  }
+  static init_method_shader_compile_binary_from_spirv() {
+    if (!this.#_bindings.method_shader_compile_binary_from_spirv) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("shader_compile_binary_from_spirv");
-      this._bindings.method_shader_compile_binary_from_spirv = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_shader_compile_binary_from_spirv = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         134910450
       );
     }
-    {
+  }
+  static init_method_shader_create_from_spirv() {
+    if (!this.#_bindings.method_shader_create_from_spirv) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("shader_create_from_spirv");
-      this._bindings.method_shader_create_from_spirv = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_shader_create_from_spirv = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         342949005
       );
     }
-    {
+  }
+  static init_method_shader_create_from_bytecode() {
+    if (!this.#_bindings.method_shader_create_from_bytecode) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("shader_create_from_bytecode");
-      this._bindings.method_shader_create_from_bytecode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_shader_create_from_bytecode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1687031350
       );
     }
-    {
+  }
+  static init_method_shader_create_placeholder() {
+    if (!this.#_bindings.method_shader_create_placeholder) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("shader_create_placeholder");
-      this._bindings.method_shader_create_placeholder = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_shader_create_placeholder = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         529393457
       );
     }
-    {
+  }
+  static init_method_shader_get_vertex_input_attribute_mask() {
+    if (!this.#_bindings.method_shader_get_vertex_input_attribute_mask) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("shader_get_vertex_input_attribute_mask");
-      this._bindings.method_shader_get_vertex_input_attribute_mask = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_shader_get_vertex_input_attribute_mask = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3917799429
       );
     }
-    {
+  }
+  static init_method_uniform_buffer_create() {
+    if (!this.#_bindings.method_uniform_buffer_create) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("uniform_buffer_create");
-      this._bindings.method_uniform_buffer_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_uniform_buffer_create = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         34556762
       );
     }
-    {
+  }
+  static init_method_storage_buffer_create() {
+    if (!this.#_bindings.method_storage_buffer_create) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("storage_buffer_create");
-      this._bindings.method_storage_buffer_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_storage_buffer_create = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2316365934
       );
     }
-    {
+  }
+  static init_method_texture_buffer_create() {
+    if (!this.#_bindings.method_texture_buffer_create) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("texture_buffer_create");
-      this._bindings.method_texture_buffer_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_texture_buffer_create = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1470338698
       );
     }
-    {
+  }
+  static init_method_uniform_set_create() {
+    if (!this.#_bindings.method_uniform_set_create) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("uniform_set_create");
-      this._bindings.method_uniform_set_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_uniform_set_create = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2280795797
       );
     }
-    {
+  }
+  static init_method_uniform_set_is_valid() {
+    if (!this.#_bindings.method_uniform_set_is_valid) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("uniform_set_is_valid");
-      this._bindings.method_uniform_set_is_valid = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_uniform_set_is_valid = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3521089500
       );
     }
-    {
+  }
+  static init_method_buffer_copy() {
+    if (!this.#_bindings.method_buffer_copy) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("buffer_copy");
-      this._bindings.method_buffer_copy = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_buffer_copy = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         864257779
       );
     }
-    {
+  }
+  static init_method_buffer_update() {
+    if (!this.#_bindings.method_buffer_update) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("buffer_update");
-      this._bindings.method_buffer_update = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_buffer_update = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3454956949
       );
     }
-    {
+  }
+  static init_method_buffer_clear() {
+    if (!this.#_bindings.method_buffer_clear) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("buffer_clear");
-      this._bindings.method_buffer_clear = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_buffer_clear = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2452320800
       );
     }
-    {
+  }
+  static init_method_buffer_get_data() {
+    if (!this.#_bindings.method_buffer_get_data) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("buffer_get_data");
-      this._bindings.method_buffer_get_data = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_buffer_get_data = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3101830688
       );
     }
-    {
+  }
+  static init_method_render_pipeline_create() {
+    if (!this.#_bindings.method_render_pipeline_create) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("render_pipeline_create");
-      this._bindings.method_render_pipeline_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_render_pipeline_create = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2385451958
       );
     }
-    {
+  }
+  static init_method_render_pipeline_is_valid() {
+    if (!this.#_bindings.method_render_pipeline_is_valid) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("render_pipeline_is_valid");
-      this._bindings.method_render_pipeline_is_valid = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_render_pipeline_is_valid = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3521089500
       );
     }
-    {
+  }
+  static init_method_compute_pipeline_create() {
+    if (!this.#_bindings.method_compute_pipeline_create) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("compute_pipeline_create");
-      this._bindings.method_compute_pipeline_create = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_compute_pipeline_create = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1448838280
       );
     }
-    {
+  }
+  static init_method_compute_pipeline_is_valid() {
+    if (!this.#_bindings.method_compute_pipeline_is_valid) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("compute_pipeline_is_valid");
-      this._bindings.method_compute_pipeline_is_valid = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_compute_pipeline_is_valid = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3521089500
       );
     }
-    {
+  }
+  static init_method_screen_get_width() {
+    if (!this.#_bindings.method_screen_get_width) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("screen_get_width");
-      this._bindings.method_screen_get_width = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_screen_get_width = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1591665591
       );
     }
-    {
+  }
+  static init_method_screen_get_height() {
+    if (!this.#_bindings.method_screen_get_height) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("screen_get_height");
-      this._bindings.method_screen_get_height = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_screen_get_height = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1591665591
       );
     }
-    {
+  }
+  static init_method_screen_get_framebuffer_format() {
+    if (!this.#_bindings.method_screen_get_framebuffer_format) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("screen_get_framebuffer_format");
-      this._bindings.method_screen_get_framebuffer_format = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_screen_get_framebuffer_format = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1591665591
       );
     }
-    {
+  }
+  static init_method_draw_list_begin_for_screen() {
+    if (!this.#_bindings.method_draw_list_begin_for_screen) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("draw_list_begin_for_screen");
-      this._bindings.method_draw_list_begin_for_screen = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_draw_list_begin_for_screen = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3988079995
       );
     }
-    {
+  }
+  static init_method_draw_list_begin() {
+    if (!this.#_bindings.method_draw_list_begin) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("draw_list_begin");
-      this._bindings.method_draw_list_begin = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_draw_list_begin = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2686605154
       );
     }
-    {
+  }
+  static init_method_draw_list_begin_split() {
+    if (!this.#_bindings.method_draw_list_begin_split) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("draw_list_begin_split");
-      this._bindings.method_draw_list_begin_split = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_draw_list_begin_split = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2406300660
       );
     }
-    {
+  }
+  static init_method_draw_list_set_blend_constants() {
+    if (!this.#_bindings.method_draw_list_set_blend_constants) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("draw_list_set_blend_constants");
-      this._bindings.method_draw_list_set_blend_constants = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_draw_list_set_blend_constants = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2878471219
       );
     }
-    {
+  }
+  static init_method_draw_list_bind_render_pipeline() {
+    if (!this.#_bindings.method_draw_list_bind_render_pipeline) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("draw_list_bind_render_pipeline");
-      this._bindings.method_draw_list_bind_render_pipeline = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_draw_list_bind_render_pipeline = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         4040184819
       );
     }
-    {
+  }
+  static init_method_draw_list_bind_uniform_set() {
+    if (!this.#_bindings.method_draw_list_bind_uniform_set) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("draw_list_bind_uniform_set");
-      this._bindings.method_draw_list_bind_uniform_set = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_draw_list_bind_uniform_set = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         749655778
       );
     }
-    {
+  }
+  static init_method_draw_list_bind_vertex_array() {
+    if (!this.#_bindings.method_draw_list_bind_vertex_array) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("draw_list_bind_vertex_array");
-      this._bindings.method_draw_list_bind_vertex_array = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_draw_list_bind_vertex_array = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         4040184819
       );
     }
-    {
+  }
+  static init_method_draw_list_bind_index_array() {
+    if (!this.#_bindings.method_draw_list_bind_index_array) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("draw_list_bind_index_array");
-      this._bindings.method_draw_list_bind_index_array = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_draw_list_bind_index_array = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         4040184819
       );
     }
-    {
+  }
+  static init_method_draw_list_set_push_constant() {
+    if (!this.#_bindings.method_draw_list_set_push_constant) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("draw_list_set_push_constant");
-      this._bindings.method_draw_list_set_push_constant = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_draw_list_set_push_constant = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2772371345
       );
     }
-    {
+  }
+  static init_method_draw_list_draw() {
+    if (!this.#_bindings.method_draw_list_draw) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("draw_list_draw");
-      this._bindings.method_draw_list_draw = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_draw_list_draw = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         4230067973
       );
     }
-    {
+  }
+  static init_method_draw_list_enable_scissor() {
+    if (!this.#_bindings.method_draw_list_enable_scissor) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("draw_list_enable_scissor");
-      this._bindings.method_draw_list_enable_scissor = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_draw_list_enable_scissor = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         244650101
       );
     }
-    {
+  }
+  static init_method_draw_list_disable_scissor() {
+    if (!this.#_bindings.method_draw_list_disable_scissor) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("draw_list_disable_scissor");
-      this._bindings.method_draw_list_disable_scissor = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_draw_list_disable_scissor = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1286410249
       );
     }
-    {
+  }
+  static init_method_draw_list_switch_to_next_pass() {
+    if (!this.#_bindings.method_draw_list_switch_to_next_pass) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("draw_list_switch_to_next_pass");
-      this._bindings.method_draw_list_switch_to_next_pass = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_draw_list_switch_to_next_pass = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2455072627
       );
     }
-    {
+  }
+  static init_method_draw_list_switch_to_next_pass_split() {
+    if (!this.#_bindings.method_draw_list_switch_to_next_pass_split) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("draw_list_switch_to_next_pass_split");
-      this._bindings.method_draw_list_switch_to_next_pass_split = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_draw_list_switch_to_next_pass_split = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2865087369
       );
     }
-    {
+  }
+  static init_method_draw_list_end() {
+    if (!this.#_bindings.method_draw_list_end) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("draw_list_end");
-      this._bindings.method_draw_list_end = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_draw_list_end = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3218959716
       );
     }
-    {
+  }
+  static init_method_compute_list_begin() {
+    if (!this.#_bindings.method_compute_list_begin) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("compute_list_begin");
-      this._bindings.method_compute_list_begin = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_compute_list_begin = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2455072627
       );
     }
-    {
+  }
+  static init_method_compute_list_bind_compute_pipeline() {
+    if (!this.#_bindings.method_compute_list_bind_compute_pipeline) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("compute_list_bind_compute_pipeline");
-      this._bindings.method_compute_list_bind_compute_pipeline = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_compute_list_bind_compute_pipeline = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         4040184819
       );
     }
-    {
+  }
+  static init_method_compute_list_set_push_constant() {
+    if (!this.#_bindings.method_compute_list_set_push_constant) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("compute_list_set_push_constant");
-      this._bindings.method_compute_list_set_push_constant = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_compute_list_set_push_constant = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2772371345
       );
     }
-    {
+  }
+  static init_method_compute_list_bind_uniform_set() {
+    if (!this.#_bindings.method_compute_list_bind_uniform_set) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("compute_list_bind_uniform_set");
-      this._bindings.method_compute_list_bind_uniform_set = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_compute_list_bind_uniform_set = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         749655778
       );
     }
-    {
+  }
+  static init_method_compute_list_dispatch() {
+    if (!this.#_bindings.method_compute_list_dispatch) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("compute_list_dispatch");
-      this._bindings.method_compute_list_dispatch = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_compute_list_dispatch = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         4275841770
       );
     }
-    {
+  }
+  static init_method_compute_list_dispatch_indirect() {
+    if (!this.#_bindings.method_compute_list_dispatch_indirect) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("compute_list_dispatch_indirect");
-      this._bindings.method_compute_list_dispatch_indirect = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_compute_list_dispatch_indirect = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         749655778
       );
     }
-    {
+  }
+  static init_method_compute_list_add_barrier() {
+    if (!this.#_bindings.method_compute_list_add_barrier) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("compute_list_add_barrier");
-      this._bindings.method_compute_list_add_barrier = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_compute_list_add_barrier = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1286410249
       );
     }
-    {
+  }
+  static init_method_compute_list_end() {
+    if (!this.#_bindings.method_compute_list_end) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("compute_list_end");
-      this._bindings.method_compute_list_end = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_compute_list_end = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3218959716
       );
     }
-    {
+  }
+  static init_method_free_rid() {
+    if (!this.#_bindings.method_free_rid) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("free_rid");
-      this._bindings.method_free_rid = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_free_rid = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2722037293
       );
     }
-    {
+  }
+  static init_method_capture_timestamp() {
+    if (!this.#_bindings.method_capture_timestamp) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("capture_timestamp");
-      this._bindings.method_capture_timestamp = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_capture_timestamp = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         83702148
       );
     }
-    {
+  }
+  static init_method_get_captured_timestamps_count() {
+    if (!this.#_bindings.method_get_captured_timestamps_count) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("get_captured_timestamps_count");
-      this._bindings.method_get_captured_timestamps_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_captured_timestamps_count = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
-    {
+  }
+  static init_method_get_captured_timestamps_frame() {
+    if (!this.#_bindings.method_get_captured_timestamps_frame) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("get_captured_timestamps_frame");
-      this._bindings.method_get_captured_timestamps_frame = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_captured_timestamps_frame = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
-    {
+  }
+  static init_method_get_captured_timestamp_gpu_time() {
+    if (!this.#_bindings.method_get_captured_timestamp_gpu_time) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("get_captured_timestamp_gpu_time");
-      this._bindings.method_get_captured_timestamp_gpu_time = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_captured_timestamp_gpu_time = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         923996154
       );
     }
-    {
+  }
+  static init_method_get_captured_timestamp_cpu_time() {
+    if (!this.#_bindings.method_get_captured_timestamp_cpu_time) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("get_captured_timestamp_cpu_time");
-      this._bindings.method_get_captured_timestamp_cpu_time = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_captured_timestamp_cpu_time = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         923996154
       );
     }
-    {
+  }
+  static init_method_get_captured_timestamp_name() {
+    if (!this.#_bindings.method_get_captured_timestamp_name) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("get_captured_timestamp_name");
-      this._bindings.method_get_captured_timestamp_name = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_captured_timestamp_name = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         844755477
       );
     }
-    {
+  }
+  static init_method_limit_get() {
+    if (!this.#_bindings.method_limit_get) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("limit_get");
-      this._bindings.method_limit_get = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_limit_get = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1559202131
       );
     }
-    {
+  }
+  static init_method_get_frame_delay() {
+    if (!this.#_bindings.method_get_frame_delay) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("get_frame_delay");
-      this._bindings.method_get_frame_delay = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_frame_delay = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
-    {
+  }
+  static init_method_submit() {
+    if (!this.#_bindings.method_submit) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("submit");
-      this._bindings.method_submit = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_submit = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3218959716
       );
     }
-    {
+  }
+  static init_method_sync() {
+    if (!this.#_bindings.method_sync) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("sync");
-      this._bindings.method_sync = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_sync = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3218959716
       );
     }
-    {
+  }
+  static init_method_barrier() {
+    if (!this.#_bindings.method_barrier) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("barrier");
-      this._bindings.method_barrier = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_barrier = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3718155691
       );
     }
-    {
+  }
+  static init_method_full_barrier() {
+    if (!this.#_bindings.method_full_barrier) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("full_barrier");
-      this._bindings.method_full_barrier = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_full_barrier = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3218959716
       );
     }
-    {
+  }
+  static init_method_create_local_device() {
+    if (!this.#_bindings.method_create_local_device) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("create_local_device");
-      this._bindings.method_create_local_device = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_create_local_device = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2846302423
       );
     }
-    {
+  }
+  static init_method_set_resource_name() {
+    if (!this.#_bindings.method_set_resource_name) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("set_resource_name");
-      this._bindings.method_set_resource_name = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_resource_name = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2726140452
       );
     }
-    {
+  }
+  static init_method_draw_command_begin_label() {
+    if (!this.#_bindings.method_draw_command_begin_label) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("draw_command_begin_label");
-      this._bindings.method_draw_command_begin_label = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_draw_command_begin_label = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1636512886
       );
     }
-    {
+  }
+  static init_method_draw_command_insert_label() {
+    if (!this.#_bindings.method_draw_command_insert_label) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("draw_command_insert_label");
-      this._bindings.method_draw_command_insert_label = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_draw_command_insert_label = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1636512886
       );
     }
-    {
+  }
+  static init_method_draw_command_end_label() {
+    if (!this.#_bindings.method_draw_command_end_label) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("draw_command_end_label");
-      this._bindings.method_draw_command_end_label = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_draw_command_end_label = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3218959716
       );
     }
-    {
+  }
+  static init_method_get_device_vendor_name() {
+    if (!this.#_bindings.method_get_device_vendor_name) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("get_device_vendor_name");
-      this._bindings.method_get_device_vendor_name = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_device_vendor_name = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         201670096
       );
     }
-    {
+  }
+  static init_method_get_device_name() {
+    if (!this.#_bindings.method_get_device_name) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("get_device_name");
-      this._bindings.method_get_device_name = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_device_name = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         201670096
       );
     }
-    {
+  }
+  static init_method_get_device_pipeline_cache_uuid() {
+    if (!this.#_bindings.method_get_device_pipeline_cache_uuid) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("get_device_pipeline_cache_uuid");
-      this._bindings.method_get_device_pipeline_cache_uuid = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_device_pipeline_cache_uuid = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         201670096
       );
     }
-    {
+  }
+  static init_method_get_memory_usage() {
+    if (!this.#_bindings.method_get_memory_usage) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("get_memory_usage");
-      this._bindings.method_get_memory_usage = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_memory_usage = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         251690689
       );
     }
-    {
+  }
+  static init_method_get_driver_resource() {
+    if (!this.#_bindings.method_get_driver_resource) {
       let classname = new StringName("RenderingDevice");
       let methodname = new StringName("get_driver_resource");
-      this._bindings.method_get_driver_resource = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_driver_resource = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         501815484
       );
     }
   }
+
+  
   
   texture_create(_format, _view, _data) {
+    RenderingDevice.init_method_texture_create();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_texture_create,
+      RenderingDevice.#_bindings.method_texture_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1031,8 +1215,9 @@ export class RenderingDevice extends GodotObject{
     
   }
   texture_create_shared(_view, _with_texture) {
+    RenderingDevice.init_method_texture_create_shared();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_texture_create_shared,
+      RenderingDevice.#_bindings.method_texture_create_shared,
       this._owner,
 			Variant.Type.RID,
     
@@ -1041,8 +1226,9 @@ export class RenderingDevice extends GodotObject{
     
   }
   texture_create_shared_from_slice(_view, _with_texture, _layer, _mipmap, _mipmaps, _slice_type) {
+    RenderingDevice.init_method_texture_create_shared_from_slice();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_texture_create_shared_from_slice,
+      RenderingDevice.#_bindings.method_texture_create_shared_from_slice,
       this._owner,
 			Variant.Type.RID,
     
@@ -1051,8 +1237,9 @@ export class RenderingDevice extends GodotObject{
     
   }
   texture_create_from_extension(_type, _format, _samples, _usage_flags, _image, _width, _height, _depth, _layers) {
+    RenderingDevice.init_method_texture_create_from_extension();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_texture_create_from_extension,
+      RenderingDevice.#_bindings.method_texture_create_from_extension,
       this._owner,
 			Variant.Type.RID,
     
@@ -1061,17 +1248,20 @@ export class RenderingDevice extends GodotObject{
     
   }
   texture_update(_texture, _layer, _data) {
+    RenderingDevice.init_method_texture_update();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_texture_update,
+      RenderingDevice.#_bindings.method_texture_update,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       _texture, _layer, _data
     );
     
   }
   texture_get_data(_texture, _layer) {
+    RenderingDevice.init_method_texture_get_data();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_texture_get_data,
+      RenderingDevice.#_bindings.method_texture_get_data,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -1080,116 +1270,140 @@ export class RenderingDevice extends GodotObject{
     
   }
   texture_is_format_supported_for_usage(_format, _usage_flags) {
+    RenderingDevice.init_method_texture_is_format_supported_for_usage();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_texture_is_format_supported_for_usage,
+      RenderingDevice.#_bindings.method_texture_is_format_supported_for_usage,
       this._owner,
 			Variant.Type.BOOL,
+    
       _format, _usage_flags
     );
     
   }
   texture_is_shared(_texture) {
+    RenderingDevice.init_method_texture_is_shared();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_texture_is_shared,
+      RenderingDevice.#_bindings.method_texture_is_shared,
       this._owner,
 			Variant.Type.BOOL,
+    
       _texture
     );
     
   }
   texture_is_valid(_texture) {
+    RenderingDevice.init_method_texture_is_valid();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_texture_is_valid,
+      RenderingDevice.#_bindings.method_texture_is_valid,
       this._owner,
 			Variant.Type.BOOL,
+    
       _texture
     );
     
   }
   texture_copy(_from_texture, _to_texture, _from_pos, _to_pos, _size, _src_mipmap, _dst_mipmap, _src_layer, _dst_layer) {
+    RenderingDevice.init_method_texture_copy();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_texture_copy,
+      RenderingDevice.#_bindings.method_texture_copy,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       _from_texture, _to_texture, _from_pos, _to_pos, _size, _src_mipmap, _dst_mipmap, _src_layer, _dst_layer
     );
     
   }
   texture_clear(_texture, _color, _base_mipmap, _mipmap_count, _base_layer, _layer_count) {
+    RenderingDevice.init_method_texture_clear();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_texture_clear,
+      RenderingDevice.#_bindings.method_texture_clear,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       _texture, _color, _base_mipmap, _mipmap_count, _base_layer, _layer_count
     );
     
   }
   texture_resolve_multisample(_from_texture, _to_texture) {
+    RenderingDevice.init_method_texture_resolve_multisample();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_texture_resolve_multisample,
+      RenderingDevice.#_bindings.method_texture_resolve_multisample,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       _from_texture, _to_texture
     );
     
   }
   texture_get_format(_texture) {
+    RenderingDevice.init_method_texture_get_format();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_texture_get_format,
+      RenderingDevice.#_bindings.method_texture_get_format,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       _texture
     );
     
   }
   texture_get_native_handle(_texture) {
+    RenderingDevice.init_method_texture_get_native_handle();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_texture_get_native_handle,
+      RenderingDevice.#_bindings.method_texture_get_native_handle,
       this._owner,
 			Variant.Type.INT,
+    
       _texture
     );
     
   }
   framebuffer_format_create(_attachments, _view_count) {
+    RenderingDevice.init_method_framebuffer_format_create();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_framebuffer_format_create,
+      RenderingDevice.#_bindings.method_framebuffer_format_create,
       this._owner,
 			Variant.Type.INT,
+    
       _attachments, _view_count
     );
     
   }
   framebuffer_format_create_multipass(_attachments, _passes, _view_count) {
+    RenderingDevice.init_method_framebuffer_format_create_multipass();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_framebuffer_format_create_multipass,
+      RenderingDevice.#_bindings.method_framebuffer_format_create_multipass,
       this._owner,
 			Variant.Type.INT,
+    
       _attachments, _passes, _view_count
     );
     
   }
   framebuffer_format_create_empty(_samples) {
+    RenderingDevice.init_method_framebuffer_format_create_empty();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_framebuffer_format_create_empty,
+      RenderingDevice.#_bindings.method_framebuffer_format_create_empty,
       this._owner,
 			Variant.Type.INT,
+    
       _samples
     );
     
   }
   framebuffer_format_get_texture_samples(_format, _render_pass) {
+    RenderingDevice.init_method_framebuffer_format_get_texture_samples();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_framebuffer_format_get_texture_samples,
+      RenderingDevice.#_bindings.method_framebuffer_format_get_texture_samples,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       _format, _render_pass
     );
     
   }
   framebuffer_create(_textures, _validate_with_format, _view_count) {
+    RenderingDevice.init_method_framebuffer_create();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_framebuffer_create,
+      RenderingDevice.#_bindings.method_framebuffer_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1198,8 +1412,9 @@ export class RenderingDevice extends GodotObject{
     
   }
   framebuffer_create_multipass(_textures, _passes, _validate_with_format, _view_count) {
+    RenderingDevice.init_method_framebuffer_create_multipass();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_framebuffer_create_multipass,
+      RenderingDevice.#_bindings.method_framebuffer_create_multipass,
       this._owner,
 			Variant.Type.RID,
     
@@ -1208,8 +1423,9 @@ export class RenderingDevice extends GodotObject{
     
   }
   framebuffer_create_empty(_size, _samples, _validate_with_format) {
+    RenderingDevice.init_method_framebuffer_create_empty();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_framebuffer_create_empty,
+      RenderingDevice.#_bindings.method_framebuffer_create_empty,
       this._owner,
 			Variant.Type.RID,
     
@@ -1218,26 +1434,31 @@ export class RenderingDevice extends GodotObject{
     
   }
   framebuffer_get_format(_framebuffer) {
+    RenderingDevice.init_method_framebuffer_get_format();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_framebuffer_get_format,
+      RenderingDevice.#_bindings.method_framebuffer_get_format,
       this._owner,
 			Variant.Type.INT,
+    
       _framebuffer
     );
     
   }
   framebuffer_is_valid(_framebuffer) {
+    RenderingDevice.init_method_framebuffer_is_valid();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_framebuffer_is_valid,
+      RenderingDevice.#_bindings.method_framebuffer_is_valid,
       this._owner,
 			Variant.Type.BOOL,
+    
       _framebuffer
     );
     
   }
   sampler_create(_state) {
+    RenderingDevice.init_method_sampler_create();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_sampler_create,
+      RenderingDevice.#_bindings.method_sampler_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1246,17 +1467,20 @@ export class RenderingDevice extends GodotObject{
     
   }
   sampler_is_format_supported_for_filter(_format, _sampler_filter) {
+    RenderingDevice.init_method_sampler_is_format_supported_for_filter();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_sampler_is_format_supported_for_filter,
+      RenderingDevice.#_bindings.method_sampler_is_format_supported_for_filter,
       this._owner,
 			Variant.Type.BOOL,
+    
       _format, _sampler_filter
     );
     
   }
   vertex_buffer_create(_size_bytes, _data, _use_as_storage) {
+    RenderingDevice.init_method_vertex_buffer_create();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_vertex_buffer_create,
+      RenderingDevice.#_bindings.method_vertex_buffer_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1265,17 +1489,20 @@ export class RenderingDevice extends GodotObject{
     
   }
   vertex_format_create(_vertex_descriptions) {
+    RenderingDevice.init_method_vertex_format_create();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_vertex_format_create,
+      RenderingDevice.#_bindings.method_vertex_format_create,
       this._owner,
 			Variant.Type.INT,
+    
       _vertex_descriptions
     );
     
   }
   vertex_array_create(_vertex_count, _vertex_format, _src_buffers, _offsets) {
+    RenderingDevice.init_method_vertex_array_create();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_vertex_array_create,
+      RenderingDevice.#_bindings.method_vertex_array_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1284,8 +1511,9 @@ export class RenderingDevice extends GodotObject{
     
   }
   index_buffer_create(_size_indices, _format, _data, _use_restart_indices) {
+    RenderingDevice.init_method_index_buffer_create();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_index_buffer_create,
+      RenderingDevice.#_bindings.method_index_buffer_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1294,8 +1522,9 @@ export class RenderingDevice extends GodotObject{
     
   }
   index_array_create(_index_buffer, _index_offset, _index_count) {
+    RenderingDevice.init_method_index_array_create();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_index_array_create,
+      RenderingDevice.#_bindings.method_index_array_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1304,17 +1533,19 @@ export class RenderingDevice extends GodotObject{
     
   }
   shader_compile_spirv_from_source(_shader_source, _allow_cache) {
+    RenderingDevice.init_method_shader_compile_spirv_from_source();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_shader_compile_spirv_from_source,
+      RenderingDevice.#_bindings.method_shader_compile_spirv_from_source,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       _shader_source, _allow_cache
     );
     
   }
   shader_compile_binary_from_spirv(_spirv_data, _name) {
+    RenderingDevice.init_method_shader_compile_binary_from_spirv();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_shader_compile_binary_from_spirv,
+      RenderingDevice.#_bindings.method_shader_compile_binary_from_spirv,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -1323,8 +1554,9 @@ export class RenderingDevice extends GodotObject{
     
   }
   shader_create_from_spirv(_spirv_data, _name) {
+    RenderingDevice.init_method_shader_create_from_spirv();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_shader_create_from_spirv,
+      RenderingDevice.#_bindings.method_shader_create_from_spirv,
       this._owner,
 			Variant.Type.RID,
     
@@ -1333,8 +1565,9 @@ export class RenderingDevice extends GodotObject{
     
   }
   shader_create_from_bytecode(_binary_data, _placeholder_rid) {
+    RenderingDevice.init_method_shader_create_from_bytecode();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_shader_create_from_bytecode,
+      RenderingDevice.#_bindings.method_shader_create_from_bytecode,
       this._owner,
 			Variant.Type.RID,
     
@@ -1343,8 +1576,9 @@ export class RenderingDevice extends GodotObject{
     
   }
   shader_create_placeholder() {
+    RenderingDevice.init_method_shader_create_placeholder();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_shader_create_placeholder,
+      RenderingDevice.#_bindings.method_shader_create_placeholder,
       this._owner,
 			Variant.Type.RID,
     
@@ -1353,17 +1587,20 @@ export class RenderingDevice extends GodotObject{
     
   }
   shader_get_vertex_input_attribute_mask(_shader) {
+    RenderingDevice.init_method_shader_get_vertex_input_attribute_mask();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_shader_get_vertex_input_attribute_mask,
+      RenderingDevice.#_bindings.method_shader_get_vertex_input_attribute_mask,
       this._owner,
 			Variant.Type.INT,
+    
       _shader
     );
     
   }
   uniform_buffer_create(_size_bytes, _data) {
+    RenderingDevice.init_method_uniform_buffer_create();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_uniform_buffer_create,
+      RenderingDevice.#_bindings.method_uniform_buffer_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1372,8 +1609,9 @@ export class RenderingDevice extends GodotObject{
     
   }
   storage_buffer_create(_size_bytes, _data, _usage) {
+    RenderingDevice.init_method_storage_buffer_create();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_storage_buffer_create,
+      RenderingDevice.#_bindings.method_storage_buffer_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1382,8 +1620,9 @@ export class RenderingDevice extends GodotObject{
     
   }
   texture_buffer_create(_size_bytes, _format, _data) {
+    RenderingDevice.init_method_texture_buffer_create();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_texture_buffer_create,
+      RenderingDevice.#_bindings.method_texture_buffer_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1392,8 +1631,9 @@ export class RenderingDevice extends GodotObject{
     
   }
   uniform_set_create(_uniforms, _shader, _shader_set) {
+    RenderingDevice.init_method_uniform_set_create();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_uniform_set_create,
+      RenderingDevice.#_bindings.method_uniform_set_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1402,44 +1642,53 @@ export class RenderingDevice extends GodotObject{
     
   }
   uniform_set_is_valid(_uniform_set) {
+    RenderingDevice.init_method_uniform_set_is_valid();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_uniform_set_is_valid,
+      RenderingDevice.#_bindings.method_uniform_set_is_valid,
       this._owner,
 			Variant.Type.BOOL,
+    
       _uniform_set
     );
     
   }
   buffer_copy(_src_buffer, _dst_buffer, _src_offset, _dst_offset, _size) {
+    RenderingDevice.init_method_buffer_copy();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_buffer_copy,
+      RenderingDevice.#_bindings.method_buffer_copy,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       _src_buffer, _dst_buffer, _src_offset, _dst_offset, _size
     );
     
   }
   buffer_update(_buffer, _offset, _size_bytes, _data) {
+    RenderingDevice.init_method_buffer_update();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_buffer_update,
+      RenderingDevice.#_bindings.method_buffer_update,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       _buffer, _offset, _size_bytes, _data
     );
     
   }
   buffer_clear(_buffer, _offset, _size_bytes) {
+    RenderingDevice.init_method_buffer_clear();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_buffer_clear,
+      RenderingDevice.#_bindings.method_buffer_clear,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       _buffer, _offset, _size_bytes
     );
     
   }
   buffer_get_data(_buffer, _offset_bytes, _size_bytes) {
+    RenderingDevice.init_method_buffer_get_data();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_buffer_get_data,
+      RenderingDevice.#_bindings.method_buffer_get_data,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -1448,8 +1697,9 @@ export class RenderingDevice extends GodotObject{
     
   }
   render_pipeline_create(_shader, _framebuffer_format, _vertex_format, _primitive, _rasterization_state, _multisample_state, _stencil_state, _color_blend_state, _dynamic_state_flags, _for_render_pass, _specialization_constants) {
+    RenderingDevice.init_method_render_pipeline_create();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_render_pipeline_create,
+      RenderingDevice.#_bindings.method_render_pipeline_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1458,17 +1708,20 @@ export class RenderingDevice extends GodotObject{
     
   }
   render_pipeline_is_valid(_render_pipeline) {
+    RenderingDevice.init_method_render_pipeline_is_valid();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_render_pipeline_is_valid,
+      RenderingDevice.#_bindings.method_render_pipeline_is_valid,
       this._owner,
 			Variant.Type.BOOL,
+    
       _render_pipeline
     );
     
   }
   compute_pipeline_create(_shader, _specialization_constants) {
+    RenderingDevice.init_method_compute_pipeline_create();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_compute_pipeline_create,
+      RenderingDevice.#_bindings.method_compute_pipeline_create,
       this._owner,
 			Variant.Type.RID,
     
@@ -1477,62 +1730,75 @@ export class RenderingDevice extends GodotObject{
     
   }
   compute_pipeline_is_valid(_compute_pipeline) {
+    RenderingDevice.init_method_compute_pipeline_is_valid();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_compute_pipeline_is_valid,
+      RenderingDevice.#_bindings.method_compute_pipeline_is_valid,
       this._owner,
 			Variant.Type.BOOL,
+    
       _compute_pipeline
     );
     
   }
   screen_get_width(_screen) {
+    RenderingDevice.init_method_screen_get_width();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_screen_get_width,
+      RenderingDevice.#_bindings.method_screen_get_width,
       this._owner,
 			Variant.Type.INT,
+    
       _screen
     );
     
   }
   screen_get_height(_screen) {
+    RenderingDevice.init_method_screen_get_height();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_screen_get_height,
+      RenderingDevice.#_bindings.method_screen_get_height,
       this._owner,
 			Variant.Type.INT,
+    
       _screen
     );
     
   }
   screen_get_framebuffer_format(_screen) {
+    RenderingDevice.init_method_screen_get_framebuffer_format();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_screen_get_framebuffer_format,
+      RenderingDevice.#_bindings.method_screen_get_framebuffer_format,
       this._owner,
 			Variant.Type.INT,
+    
       _screen
     );
     
   }
   draw_list_begin_for_screen(_screen, _clear_color) {
+    RenderingDevice.init_method_draw_list_begin_for_screen();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_draw_list_begin_for_screen,
+      RenderingDevice.#_bindings.method_draw_list_begin_for_screen,
       this._owner,
 			Variant.Type.INT,
+    
       _screen, _clear_color
     );
     
   }
   draw_list_begin(_framebuffer, _initial_color_action, _final_color_action, _initial_depth_action, _final_depth_action, _clear_color_values, _clear_depth, _clear_stencil, _region) {
+    RenderingDevice.init_method_draw_list_begin();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_draw_list_begin,
+      RenderingDevice.#_bindings.method_draw_list_begin,
       this._owner,
 			Variant.Type.INT,
+    
       _framebuffer, _initial_color_action, _final_color_action, _initial_depth_action, _final_depth_action, _clear_color_values, _clear_depth, _clear_stencil, _region
     );
     
   }
   draw_list_begin_split(_framebuffer, _splits, _initial_color_action, _final_color_action, _initial_depth_action, _final_depth_action, _clear_color_values, _clear_depth, _clear_stencil, _region, _storage_textures) {
+    RenderingDevice.init_method_draw_list_begin_split();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_draw_list_begin_split,
+      RenderingDevice.#_bindings.method_draw_list_begin_split,
       this._owner,
 			Variant.Type.PACKED_INT64_ARRAY,
     
@@ -1541,89 +1807,101 @@ export class RenderingDevice extends GodotObject{
     
   }
   draw_list_set_blend_constants(_draw_list, _color) {
+    RenderingDevice.init_method_draw_list_set_blend_constants();
     return _call_native_mb_no_ret(
-      RenderingDevice._bindings.method_draw_list_set_blend_constants,
+      RenderingDevice.#_bindings.method_draw_list_set_blend_constants,
       this._owner,
       _draw_list, _color
     );
     
   }
   draw_list_bind_render_pipeline(_draw_list, _render_pipeline) {
+    RenderingDevice.init_method_draw_list_bind_render_pipeline();
     return _call_native_mb_no_ret(
-      RenderingDevice._bindings.method_draw_list_bind_render_pipeline,
+      RenderingDevice.#_bindings.method_draw_list_bind_render_pipeline,
       this._owner,
       _draw_list, _render_pipeline
     );
     
   }
   draw_list_bind_uniform_set(_draw_list, _uniform_set, _set_index) {
+    RenderingDevice.init_method_draw_list_bind_uniform_set();
     return _call_native_mb_no_ret(
-      RenderingDevice._bindings.method_draw_list_bind_uniform_set,
+      RenderingDevice.#_bindings.method_draw_list_bind_uniform_set,
       this._owner,
       _draw_list, _uniform_set, _set_index
     );
     
   }
   draw_list_bind_vertex_array(_draw_list, _vertex_array) {
+    RenderingDevice.init_method_draw_list_bind_vertex_array();
     return _call_native_mb_no_ret(
-      RenderingDevice._bindings.method_draw_list_bind_vertex_array,
+      RenderingDevice.#_bindings.method_draw_list_bind_vertex_array,
       this._owner,
       _draw_list, _vertex_array
     );
     
   }
   draw_list_bind_index_array(_draw_list, _index_array) {
+    RenderingDevice.init_method_draw_list_bind_index_array();
     return _call_native_mb_no_ret(
-      RenderingDevice._bindings.method_draw_list_bind_index_array,
+      RenderingDevice.#_bindings.method_draw_list_bind_index_array,
       this._owner,
       _draw_list, _index_array
     );
     
   }
   draw_list_set_push_constant(_draw_list, _buffer, _size_bytes) {
+    RenderingDevice.init_method_draw_list_set_push_constant();
     return _call_native_mb_no_ret(
-      RenderingDevice._bindings.method_draw_list_set_push_constant,
+      RenderingDevice.#_bindings.method_draw_list_set_push_constant,
       this._owner,
       _draw_list, _buffer, _size_bytes
     );
     
   }
   draw_list_draw(_draw_list, _use_indices, _instances, _procedural_vertex_count) {
+    RenderingDevice.init_method_draw_list_draw();
     return _call_native_mb_no_ret(
-      RenderingDevice._bindings.method_draw_list_draw,
+      RenderingDevice.#_bindings.method_draw_list_draw,
       this._owner,
       _draw_list, _use_indices, _instances, _procedural_vertex_count
     );
     
   }
   draw_list_enable_scissor(_draw_list, _rect) {
+    RenderingDevice.init_method_draw_list_enable_scissor();
     return _call_native_mb_no_ret(
-      RenderingDevice._bindings.method_draw_list_enable_scissor,
+      RenderingDevice.#_bindings.method_draw_list_enable_scissor,
       this._owner,
       _draw_list, _rect
     );
     
   }
   draw_list_disable_scissor(_draw_list) {
+    RenderingDevice.init_method_draw_list_disable_scissor();
     return _call_native_mb_no_ret(
-      RenderingDevice._bindings.method_draw_list_disable_scissor,
+      RenderingDevice.#_bindings.method_draw_list_disable_scissor,
       this._owner,
       _draw_list
     );
     
   }
   draw_list_switch_to_next_pass() {
+    RenderingDevice.init_method_draw_list_switch_to_next_pass();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_draw_list_switch_to_next_pass,
+      RenderingDevice.#_bindings.method_draw_list_switch_to_next_pass,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   draw_list_switch_to_next_pass_split(_splits) {
+    RenderingDevice.init_method_draw_list_switch_to_next_pass_split();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_draw_list_switch_to_next_pass_split,
+      RenderingDevice.#_bindings.method_draw_list_switch_to_next_pass_split,
       this._owner,
 			Variant.Type.PACKED_INT64_ARRAY,
     
@@ -1632,133 +1910,154 @@ export class RenderingDevice extends GodotObject{
     
   }
   draw_list_end() {
+    RenderingDevice.init_method_draw_list_end();
     return _call_native_mb_no_ret(
-      RenderingDevice._bindings.method_draw_list_end,
+      RenderingDevice.#_bindings.method_draw_list_end,
       this._owner,
       
     );
     
   }
   compute_list_begin() {
+    RenderingDevice.init_method_compute_list_begin();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_compute_list_begin,
+      RenderingDevice.#_bindings.method_compute_list_begin,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   compute_list_bind_compute_pipeline(_compute_list, _compute_pipeline) {
+    RenderingDevice.init_method_compute_list_bind_compute_pipeline();
     return _call_native_mb_no_ret(
-      RenderingDevice._bindings.method_compute_list_bind_compute_pipeline,
+      RenderingDevice.#_bindings.method_compute_list_bind_compute_pipeline,
       this._owner,
       _compute_list, _compute_pipeline
     );
     
   }
   compute_list_set_push_constant(_compute_list, _buffer, _size_bytes) {
+    RenderingDevice.init_method_compute_list_set_push_constant();
     return _call_native_mb_no_ret(
-      RenderingDevice._bindings.method_compute_list_set_push_constant,
+      RenderingDevice.#_bindings.method_compute_list_set_push_constant,
       this._owner,
       _compute_list, _buffer, _size_bytes
     );
     
   }
   compute_list_bind_uniform_set(_compute_list, _uniform_set, _set_index) {
+    RenderingDevice.init_method_compute_list_bind_uniform_set();
     return _call_native_mb_no_ret(
-      RenderingDevice._bindings.method_compute_list_bind_uniform_set,
+      RenderingDevice.#_bindings.method_compute_list_bind_uniform_set,
       this._owner,
       _compute_list, _uniform_set, _set_index
     );
     
   }
   compute_list_dispatch(_compute_list, _x_groups, _y_groups, _z_groups) {
+    RenderingDevice.init_method_compute_list_dispatch();
     return _call_native_mb_no_ret(
-      RenderingDevice._bindings.method_compute_list_dispatch,
+      RenderingDevice.#_bindings.method_compute_list_dispatch,
       this._owner,
       _compute_list, _x_groups, _y_groups, _z_groups
     );
     
   }
   compute_list_dispatch_indirect(_compute_list, _buffer, _offset) {
+    RenderingDevice.init_method_compute_list_dispatch_indirect();
     return _call_native_mb_no_ret(
-      RenderingDevice._bindings.method_compute_list_dispatch_indirect,
+      RenderingDevice.#_bindings.method_compute_list_dispatch_indirect,
       this._owner,
       _compute_list, _buffer, _offset
     );
     
   }
   compute_list_add_barrier(_compute_list) {
+    RenderingDevice.init_method_compute_list_add_barrier();
     return _call_native_mb_no_ret(
-      RenderingDevice._bindings.method_compute_list_add_barrier,
+      RenderingDevice.#_bindings.method_compute_list_add_barrier,
       this._owner,
       _compute_list
     );
     
   }
   compute_list_end() {
+    RenderingDevice.init_method_compute_list_end();
     return _call_native_mb_no_ret(
-      RenderingDevice._bindings.method_compute_list_end,
+      RenderingDevice.#_bindings.method_compute_list_end,
       this._owner,
       
     );
     
   }
   free_rid(_rid) {
+    RenderingDevice.init_method_free_rid();
     return _call_native_mb_no_ret(
-      RenderingDevice._bindings.method_free_rid,
+      RenderingDevice.#_bindings.method_free_rid,
       this._owner,
       _rid
     );
     
   }
   capture_timestamp(_name) {
+    RenderingDevice.init_method_capture_timestamp();
     return _call_native_mb_no_ret(
-      RenderingDevice._bindings.method_capture_timestamp,
+      RenderingDevice.#_bindings.method_capture_timestamp,
       this._owner,
       _name
     );
     
   }
   get_captured_timestamps_count() {
+    RenderingDevice.init_method_get_captured_timestamps_count();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_get_captured_timestamps_count,
+      RenderingDevice.#_bindings.method_get_captured_timestamps_count,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   get_captured_timestamps_frame() {
+    RenderingDevice.init_method_get_captured_timestamps_frame();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_get_captured_timestamps_frame,
+      RenderingDevice.#_bindings.method_get_captured_timestamps_frame,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   get_captured_timestamp_gpu_time(_index) {
+    RenderingDevice.init_method_get_captured_timestamp_gpu_time();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_get_captured_timestamp_gpu_time,
+      RenderingDevice.#_bindings.method_get_captured_timestamp_gpu_time,
       this._owner,
 			Variant.Type.INT,
+    
       _index
     );
     
   }
   get_captured_timestamp_cpu_time(_index) {
+    RenderingDevice.init_method_get_captured_timestamp_cpu_time();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_get_captured_timestamp_cpu_time,
+      RenderingDevice.#_bindings.method_get_captured_timestamp_cpu_time,
       this._owner,
 			Variant.Type.INT,
+    
       _index
     );
     
   }
   get_captured_timestamp_name(_index) {
+    RenderingDevice.init_method_get_captured_timestamp_name();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_get_captured_timestamp_name,
+      RenderingDevice.#_bindings.method_get_captured_timestamp_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1767,99 +2066,113 @@ export class RenderingDevice extends GodotObject{
     
   }
   limit_get(_limit) {
+    RenderingDevice.init_method_limit_get();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_limit_get,
+      RenderingDevice.#_bindings.method_limit_get,
       this._owner,
 			Variant.Type.INT,
+    
       _limit
     );
     
   }
   get_frame_delay() {
+    RenderingDevice.init_method_get_frame_delay();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_get_frame_delay,
+      RenderingDevice.#_bindings.method_get_frame_delay,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   submit() {
+    RenderingDevice.init_method_submit();
     return _call_native_mb_no_ret(
-      RenderingDevice._bindings.method_submit,
+      RenderingDevice.#_bindings.method_submit,
       this._owner,
       
     );
     
   }
   sync() {
+    RenderingDevice.init_method_sync();
     return _call_native_mb_no_ret(
-      RenderingDevice._bindings.method_sync,
+      RenderingDevice.#_bindings.method_sync,
       this._owner,
       
     );
     
   }
   barrier(_from, _to) {
+    RenderingDevice.init_method_barrier();
     return _call_native_mb_no_ret(
-      RenderingDevice._bindings.method_barrier,
+      RenderingDevice.#_bindings.method_barrier,
       this._owner,
       _from, _to
     );
     
   }
   full_barrier() {
+    RenderingDevice.init_method_full_barrier();
     return _call_native_mb_no_ret(
-      RenderingDevice._bindings.method_full_barrier,
+      RenderingDevice.#_bindings.method_full_barrier,
       this._owner,
       
     );
     
   }
   create_local_device() {
+    RenderingDevice.init_method_create_local_device();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_create_local_device,
+      RenderingDevice.#_bindings.method_create_local_device,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
   }
   set_resource_name(_id, _name) {
+    RenderingDevice.init_method_set_resource_name();
     return _call_native_mb_no_ret(
-      RenderingDevice._bindings.method_set_resource_name,
+      RenderingDevice.#_bindings.method_set_resource_name,
       this._owner,
       _id, _name
     );
     
   }
   draw_command_begin_label(_name, _color) {
+    RenderingDevice.init_method_draw_command_begin_label();
     return _call_native_mb_no_ret(
-      RenderingDevice._bindings.method_draw_command_begin_label,
+      RenderingDevice.#_bindings.method_draw_command_begin_label,
       this._owner,
       _name, _color
     );
     
   }
   draw_command_insert_label(_name, _color) {
+    RenderingDevice.init_method_draw_command_insert_label();
     return _call_native_mb_no_ret(
-      RenderingDevice._bindings.method_draw_command_insert_label,
+      RenderingDevice.#_bindings.method_draw_command_insert_label,
       this._owner,
       _name, _color
     );
     
   }
   draw_command_end_label() {
+    RenderingDevice.init_method_draw_command_end_label();
     return _call_native_mb_no_ret(
-      RenderingDevice._bindings.method_draw_command_end_label,
+      RenderingDevice.#_bindings.method_draw_command_end_label,
       this._owner,
       
     );
     
   }
   get_device_vendor_name() {
+    RenderingDevice.init_method_get_device_vendor_name();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_get_device_vendor_name,
+      RenderingDevice.#_bindings.method_get_device_vendor_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1868,8 +2181,9 @@ export class RenderingDevice extends GodotObject{
     
   }
   get_device_name() {
+    RenderingDevice.init_method_get_device_name();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_get_device_name,
+      RenderingDevice.#_bindings.method_get_device_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1878,8 +2192,9 @@ export class RenderingDevice extends GodotObject{
     
   }
   get_device_pipeline_cache_uuid() {
+    RenderingDevice.init_method_get_device_pipeline_cache_uuid();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_get_device_pipeline_cache_uuid,
+      RenderingDevice.#_bindings.method_get_device_pipeline_cache_uuid,
       this._owner,
 			Variant.Type.STRING,
     
@@ -1888,19 +2203,23 @@ export class RenderingDevice extends GodotObject{
     
   }
   get_memory_usage(_type) {
+    RenderingDevice.init_method_get_memory_usage();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_get_memory_usage,
+      RenderingDevice.#_bindings.method_get_memory_usage,
       this._owner,
 			Variant.Type.INT,
+    
       _type
     );
     
   }
   get_driver_resource(_resource, _rid, _index) {
+    RenderingDevice.init_method_get_driver_resource();
     return _call_native_mb_ret(
-      RenderingDevice._bindings.method_get_driver_resource,
+      RenderingDevice.#_bindings.method_get_driver_resource,
       this._owner,
 			Variant.Type.INT,
+    
       _resource, _rid, _index
     );
     
@@ -2451,9 +2770,5 @@ export class RenderingDevice extends GodotObject{
     MEMORY_TEXTURES: 0,
     MEMORY_BUFFERS: 1,
     MEMORY_TOTAL: 2,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

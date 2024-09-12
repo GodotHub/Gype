@@ -1,8 +1,7 @@
 import * as internal from '__internal__';
-import { Node2D } from '@js_godot/classes/node2d'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
-import { Vector2 } from '@js_godot/variant/vector2'
+import { Node2D } from '@js_godot/classes/node2d'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -20,7 +19,7 @@ class _MethodBindings {
 }
 export class ParallaxLayer extends Node2D{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -30,79 +29,88 @@ export class ParallaxLayer extends Node2D{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_motion_scale() {
+    if (!this.#_bindings.method_set_motion_scale) {
       let classname = new StringName("ParallaxLayer");
       let methodname = new StringName("set_motion_scale");
-      this._bindings.method_set_motion_scale = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_motion_scale = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         743155724
       );
     }
-    {
+  }
+  static init_method_get_motion_scale() {
+    if (!this.#_bindings.method_get_motion_scale) {
       let classname = new StringName("ParallaxLayer");
       let methodname = new StringName("get_motion_scale");
-      this._bindings.method_get_motion_scale = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3341600327
-      );
-    }
-    {
-      let classname = new StringName("ParallaxLayer");
-      let methodname = new StringName("set_motion_offset");
-      this._bindings.method_set_motion_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        743155724
-      );
-    }
-    {
-      let classname = new StringName("ParallaxLayer");
-      let methodname = new StringName("get_motion_offset");
-      this._bindings.method_get_motion_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3341600327
-      );
-    }
-    {
-      let classname = new StringName("ParallaxLayer");
-      let methodname = new StringName("set_mirroring");
-      this._bindings.method_set_mirroring = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        743155724
-      );
-    }
-    {
-      let classname = new StringName("ParallaxLayer");
-      let methodname = new StringName("get_mirroring");
-      this._bindings.method_get_mirroring = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_motion_scale = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3341600327
       );
     }
   }
+  static init_method_set_motion_offset() {
+    if (!this.#_bindings.method_set_motion_offset) {
+      let classname = new StringName("ParallaxLayer");
+      let methodname = new StringName("set_motion_offset");
+      this.#_bindings.method_set_motion_offset = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        743155724
+      );
+    }
+  }
+  static init_method_get_motion_offset() {
+    if (!this.#_bindings.method_get_motion_offset) {
+      let classname = new StringName("ParallaxLayer");
+      let methodname = new StringName("get_motion_offset");
+      this.#_bindings.method_get_motion_offset = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3341600327
+      );
+    }
+  }
+  static init_method_set_mirroring() {
+    if (!this.#_bindings.method_set_mirroring) {
+      let classname = new StringName("ParallaxLayer");
+      let methodname = new StringName("set_mirroring");
+      this.#_bindings.method_set_mirroring = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        743155724
+      );
+    }
+  }
+  static init_method_get_mirroring() {
+    if (!this.#_bindings.method_get_mirroring) {
+      let classname = new StringName("ParallaxLayer");
+      let methodname = new StringName("get_mirroring");
+      this.#_bindings.method_get_mirroring = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3341600327
+      );
+    }
+  }
+
+  
   
   set_motion_scale(_scale) {
+    ParallaxLayer.init_method_set_motion_scale();
     return _call_native_mb_no_ret(
-      ParallaxLayer._bindings.method_set_motion_scale,
+      ParallaxLayer.#_bindings.method_set_motion_scale,
       this._owner,
       _scale
     );
     
   }
   get_motion_scale() {
+    ParallaxLayer.init_method_get_motion_scale();
     return _call_native_mb_ret(
-      ParallaxLayer._bindings.method_get_motion_scale,
+      ParallaxLayer.#_bindings.method_get_motion_scale,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -111,16 +119,18 @@ export class ParallaxLayer extends Node2D{
     
   }
   set_motion_offset(_offset) {
+    ParallaxLayer.init_method_set_motion_offset();
     return _call_native_mb_no_ret(
-      ParallaxLayer._bindings.method_set_motion_offset,
+      ParallaxLayer.#_bindings.method_set_motion_offset,
       this._owner,
       _offset
     );
     
   }
   get_motion_offset() {
+    ParallaxLayer.init_method_get_motion_offset();
     return _call_native_mb_ret(
-      ParallaxLayer._bindings.method_get_motion_offset,
+      ParallaxLayer.#_bindings.method_get_motion_offset,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -129,16 +139,18 @@ export class ParallaxLayer extends Node2D{
     
   }
   set_mirroring(_mirror) {
+    ParallaxLayer.init_method_set_mirroring();
     return _call_native_mb_no_ret(
-      ParallaxLayer._bindings.method_set_mirroring,
+      ParallaxLayer.#_bindings.method_set_mirroring,
       this._owner,
       _mirror
     );
     
   }
   get_mirroring() {
+    ParallaxLayer.init_method_get_mirroring();
     return _call_native_mb_ret(
-      ParallaxLayer._bindings.method_get_mirroring,
+      ParallaxLayer.#_bindings.method_get_mirroring,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -166,8 +178,4 @@ set motion_mirroring (new_value) {
   this.set_mirroring(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { StreamPeer } from '@js_godot/classes/stream_peer'
-import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -13,7 +13,7 @@ class _MethodBindings {
 }
 export class StreamPeerExtension extends StreamPeer{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -23,13 +23,8 @@ export class StreamPeerExtension extends StreamPeer{
       super(godot_object);
     }
   }
+
   
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-  }
   
   _get_data(_r_buffer, _r_bytes, _r_received) {
   }
@@ -43,8 +38,4 @@ export class StreamPeerExtension extends StreamPeer{
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

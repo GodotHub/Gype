@@ -1,8 +1,7 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
 import { VisualShaderNode } from '@js_godot/classes/visual_shader_node'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -18,7 +17,7 @@ class _MethodBindings {
 }
 export class VisualShaderNodeVarying extends VisualShaderNode{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -28,61 +27,66 @@ export class VisualShaderNodeVarying extends VisualShaderNode{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_varying_name() {
+    if (!this.#_bindings.method_set_varying_name) {
       let classname = new StringName("VisualShaderNodeVarying");
       let methodname = new StringName("set_varying_name");
-      this._bindings.method_set_varying_name = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_varying_name = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         83702148
       );
     }
-    {
+  }
+  static init_method_get_varying_name() {
+    if (!this.#_bindings.method_get_varying_name) {
       let classname = new StringName("VisualShaderNodeVarying");
       let methodname = new StringName("get_varying_name");
-      this._bindings.method_get_varying_name = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_varying_name = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         201670096
       );
     }
-    {
+  }
+  static init_method_set_varying_type() {
+    if (!this.#_bindings.method_set_varying_type) {
       let classname = new StringName("VisualShaderNodeVarying");
       let methodname = new StringName("set_varying_type");
-      this._bindings.method_set_varying_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_varying_type = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3565867981
       );
     }
-    {
+  }
+  static init_method_get_varying_type() {
+    if (!this.#_bindings.method_get_varying_type) {
       let classname = new StringName("VisualShaderNodeVarying");
       let methodname = new StringName("get_varying_type");
-      this._bindings.method_get_varying_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_varying_type = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         523183580
       );
     }
   }
+
+  
   
   set_varying_name(_name) {
+    VisualShaderNodeVarying.init_method_set_varying_name();
     return _call_native_mb_no_ret(
-      VisualShaderNodeVarying._bindings.method_set_varying_name,
+      VisualShaderNodeVarying.#_bindings.method_set_varying_name,
       this._owner,
       _name
     );
     
   }
   get_varying_name() {
+    VisualShaderNodeVarying.init_method_get_varying_name();
     return _call_native_mb_ret(
-      VisualShaderNodeVarying._bindings.method_get_varying_name,
+      VisualShaderNodeVarying.#_bindings.method_get_varying_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -91,18 +95,21 @@ export class VisualShaderNodeVarying extends VisualShaderNode{
     
   }
   set_varying_type(_type) {
+    VisualShaderNodeVarying.init_method_set_varying_type();
     return _call_native_mb_no_ret(
-      VisualShaderNodeVarying._bindings.method_set_varying_type,
+      VisualShaderNodeVarying.#_bindings.method_set_varying_type,
       this._owner,
       _type
     );
     
   }
   get_varying_type() {
+    VisualShaderNodeVarying.init_method_get_varying_type();
     return _call_native_mb_ret(
-      VisualShaderNodeVarying._bindings.method_get_varying_type,
+      VisualShaderNodeVarying.#_bindings.method_get_varying_type,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
@@ -121,8 +128,4 @@ set varying_type (new_value) {
   this.set_varying_type(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

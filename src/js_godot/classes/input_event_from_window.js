@@ -15,7 +15,7 @@ class _MethodBindings {
 }
 export class InputEventFromWindow extends InputEvent{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -25,45 +25,47 @@ export class InputEventFromWindow extends InputEvent{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_window_id() {
+    if (!this.#_bindings.method_set_window_id) {
       let classname = new StringName("InputEventFromWindow");
       let methodname = new StringName("set_window_id");
-      this._bindings.method_set_window_id = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_window_id = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1286410249
       );
     }
-    {
+  }
+  static init_method_get_window_id() {
+    if (!this.#_bindings.method_get_window_id) {
       let classname = new StringName("InputEventFromWindow");
       let methodname = new StringName("get_window_id");
-      this._bindings.method_get_window_id = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_window_id = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
   }
+
+  
   
   set_window_id(_id) {
+    InputEventFromWindow.init_method_set_window_id();
     return _call_native_mb_no_ret(
-      InputEventFromWindow._bindings.method_set_window_id,
+      InputEventFromWindow.#_bindings.method_set_window_id,
       this._owner,
       _id
     );
     
   }
   get_window_id() {
+    InputEventFromWindow.init_method_get_window_id();
     return _call_native_mb_ret(
-      InputEventFromWindow._bindings.method_get_window_id,
+      InputEventFromWindow.#_bindings.method_get_window_id,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
@@ -76,8 +78,4 @@ set window_id (new_value) {
   this.set_window_id(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

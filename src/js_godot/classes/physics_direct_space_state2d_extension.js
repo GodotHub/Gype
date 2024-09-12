@@ -1,10 +1,7 @@
 import * as internal from '__internal__';
-import { RID } from '@js_godot/variant/rid'
 import { Variant } from '@js_godot/variant/variant'
-import { Transform2D } from '@js_godot/variant/transform2d'
-import { PhysicsDirectSpaceState2D } from '@js_godot/classes/physics_direct_space_state2d'
-import { Vector2 } from '@js_godot/variant/vector2'
 import { StringName } from '@js_godot/variant/string_name'
+import { PhysicsDirectSpaceState2D } from '@js_godot/classes/physics_direct_space_state2d'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -17,7 +14,7 @@ class _MethodBindings {
 }
 export class PhysicsDirectSpaceState2DExtension extends PhysicsDirectSpaceState2D{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -27,22 +24,19 @@ export class PhysicsDirectSpaceState2DExtension extends PhysicsDirectSpaceState2
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_is_body_excluded_from_query() {
+    if (!this.#_bindings.method_is_body_excluded_from_query) {
       let classname = new StringName("PhysicsDirectSpaceState2DExtension");
       let methodname = new StringName("is_body_excluded_from_query");
-      this._bindings.method_is_body_excluded_from_query = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_body_excluded_from_query = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         4155700596
       );
     }
   }
+
+  
   
   _intersect_ray(_from, _to, _collision_mask, _collide_with_bodies, _collide_with_areas, _hit_from_inside, _result) {
   }
@@ -57,18 +51,16 @@ export class PhysicsDirectSpaceState2DExtension extends PhysicsDirectSpaceState2
   _rest_info(_shape_rid, _transform, _motion, _margin, _collision_mask, _collide_with_bodies, _collide_with_areas, _rest_info) {
   }
   is_body_excluded_from_query(_body) {
+    PhysicsDirectSpaceState2DExtension.init_method_is_body_excluded_from_query();
     return _call_native_mb_ret(
-      PhysicsDirectSpaceState2DExtension._bindings.method_is_body_excluded_from_query,
+      PhysicsDirectSpaceState2DExtension.#_bindings.method_is_body_excluded_from_query,
       this._owner,
 			Variant.Type.BOOL,
+    
       _body
     );
     
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

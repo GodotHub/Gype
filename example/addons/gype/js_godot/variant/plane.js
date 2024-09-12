@@ -2,11 +2,13 @@ import * as internal from '__internal__'
 import {
   _call_builtin_constructor,
   _call_builtin_method_ptr_ret,
-  _call_builtin_method_ptr_no_ret
+  _call_builtin_method_ptr_no_ret,
+  _call_builtin_method_ptr_obj_ret,
 } from '@js_godot/core/builtin_ptrcall'
 import { StringName } from '@js_godot/variant/string_name'
-import { Vector3 } from '@js_godot/variant/vector3'
 import { Variant } from '@js_godot/variant/variant'
+import { Vector3 } from '@js_godot/variant/vector3'
+import { GodotObject } from "@js_godot/classes/godot_object";
 
 class _MethodBindings {
   from_variant_constructor
@@ -44,37 +46,39 @@ export class Plane {
   static #SIZE = 16
   opaque = new Uint8Array(Plane.#SIZE)
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
-  constructor (from) {
-    if (!from) {
-      _call_builtin_constructor(Plane._bindings.constructor_0, this)
-    }else if (from instanceof Plane) {
-      _call_builtin_constructor(Plane._bindings.constructor_1, this, [
+  constructor (value) {
+    if (!value) {
+      _call_builtin_constructor(Plane.#_bindings.constructor_0, this)
+    } else if (arguments.length == 1&& arguments[0] instanceof Plane) {
+      let from = arguments[0];
+      _call_builtin_constructor(Plane.#_bindings.constructor_1, this, [
         from
       ])
-    }else if (from instanceof Vector3) {
-      _call_builtin_constructor(Plane._bindings.constructor_2, this, [
+    } else if (arguments.length == 1&& arguments[0] instanceof Vector3) {
+      let normal = arguments[0];
+      _call_builtin_constructor(Plane.#_bindings.constructor_2, this, [
         normal
       ])
     } else if (arguments.length == 2&& arguments[0] instanceof Vector3&& typeof arguments[1] == "number") {
       let normal = arguments[0];
       let d = arguments[1];
-      _call_builtin_constructor(Plane._bindings.constructor_3, this, [
+      _call_builtin_constructor(Plane.#_bindings.constructor_3, this, [
         normal, d
       ])
     } else if (arguments.length == 2&& arguments[0] instanceof Vector3&& arguments[1] instanceof Vector3) {
       let normal = arguments[0];
       let point = arguments[1];
-      _call_builtin_constructor(Plane._bindings.constructor_4, this, [
+      _call_builtin_constructor(Plane.#_bindings.constructor_4, this, [
         normal, point
       ])
     } else if (arguments.length == 3&& arguments[0] instanceof Vector3&& arguments[1] instanceof Vector3&& arguments[2] instanceof Vector3) {
       let point1 = arguments[0];
       let point2 = arguments[1];
       let point3 = arguments[2];
-      _call_builtin_constructor(Plane._bindings.constructor_5, this, [
+      _call_builtin_constructor(Plane.#_bindings.constructor_5, this, [
         point1, point2, point3
       ])
     } else if (arguments.length == 4&& typeof arguments[0] == "number"&& typeof arguments[1] == "number"&& typeof arguments[2] == "number"&& typeof arguments[3] == "number") {
@@ -82,43 +86,45 @@ export class Plane {
       let b = arguments[1];
       let c = arguments[2];
       let d = arguments[3];
-      _call_builtin_constructor(Plane._bindings.constructor_6, this, [
+      _call_builtin_constructor(Plane.#_bindings.constructor_6, this, [
         a, b, c, d
       ])
-    } else if (from.constructor.name === "Variant") {
-      Plane._bindings.from_variant_constructor(this.opaque, from.opaque)
+    } else if (value.constructor.name === "Variant") {
+      Plane.#_bindings.from_variant_constructor(this.opaque, value.opaque)
+    } else if (value instanceof Uint8Array) {
+      this.opaque = value;
     } 
   }
   
   static __init_bindings_constructors_destructor () {
-    this._bindings.from_variant_constructor = internal.get_variant_to_type_constructor(
+    this.#_bindings.from_variant_constructor = internal.get_variant_to_type_constructor(
       14
     )
-    this._bindings.constructor_0 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_0 = internal.variant_get_ptr_constructor(
       14,
       0
     )
-    this._bindings.constructor_1 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_1 = internal.variant_get_ptr_constructor(
       14,
       1
     )
-    this._bindings.constructor_2 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_2 = internal.variant_get_ptr_constructor(
       14,
       2
     )
-    this._bindings.constructor_3 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_3 = internal.variant_get_ptr_constructor(
       14,
       3
     )
-    this._bindings.constructor_4 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_4 = internal.variant_get_ptr_constructor(
       14,
       4
     )
-    this._bindings.constructor_5 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_5 = internal.variant_get_ptr_constructor(
       14,
       5
     )
-    this._bindings.constructor_6 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_6 = internal.variant_get_ptr_constructor(
       14,
       6
     )
@@ -132,7 +138,7 @@ export class Plane {
     this.__init_bindings_constructors_destructor()
     {
       let _gde_name = new StringName('normalized')
-      this._bindings.method_normalized = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_normalized = internal.variant_get_ptr_builtin_method(
         14,
         _gde_name.opaque,
         1051796340
@@ -140,7 +146,7 @@ export class Plane {
     }
     {
       let _gde_name = new StringName('get_center')
-      this._bindings.method_get_center = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_center = internal.variant_get_ptr_builtin_method(
         14,
         _gde_name.opaque,
         1776574132
@@ -148,7 +154,7 @@ export class Plane {
     }
     {
       let _gde_name = new StringName('is_equal_approx')
-      this._bindings.method_is_equal_approx = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_equal_approx = internal.variant_get_ptr_builtin_method(
         14,
         _gde_name.opaque,
         1150170233
@@ -156,7 +162,7 @@ export class Plane {
     }
     {
       let _gde_name = new StringName('is_finite')
-      this._bindings.method_is_finite = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_finite = internal.variant_get_ptr_builtin_method(
         14,
         _gde_name.opaque,
         3918633141
@@ -164,7 +170,7 @@ export class Plane {
     }
     {
       let _gde_name = new StringName('is_point_over')
-      this._bindings.method_is_point_over = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_point_over = internal.variant_get_ptr_builtin_method(
         14,
         _gde_name.opaque,
         1749054343
@@ -172,7 +178,7 @@ export class Plane {
     }
     {
       let _gde_name = new StringName('distance_to')
-      this._bindings.method_distance_to = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_distance_to = internal.variant_get_ptr_builtin_method(
         14,
         _gde_name.opaque,
         1047977935
@@ -180,7 +186,7 @@ export class Plane {
     }
     {
       let _gde_name = new StringName('has_point')
-      this._bindings.method_has_point = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_has_point = internal.variant_get_ptr_builtin_method(
         14,
         _gde_name.opaque,
         1258189072
@@ -188,7 +194,7 @@ export class Plane {
     }
     {
       let _gde_name = new StringName('project')
-      this._bindings.method_project = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_project = internal.variant_get_ptr_builtin_method(
         14,
         _gde_name.opaque,
         2923479887
@@ -196,7 +202,7 @@ export class Plane {
     }
     {
       let _gde_name = new StringName('intersect_3')
-      this._bindings.method_intersect_3 = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_intersect_3 = internal.variant_get_ptr_builtin_method(
         14,
         _gde_name.opaque,
         2012052692
@@ -204,7 +210,7 @@ export class Plane {
     }
     {
       let _gde_name = new StringName('intersects_ray')
-      this._bindings.method_intersects_ray = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_intersects_ray = internal.variant_get_ptr_builtin_method(
         14,
         _gde_name.opaque,
         2048133369
@@ -212,7 +218,7 @@ export class Plane {
     }
     {
       let _gde_name = new StringName('intersects_segment')
-      this._bindings.method_intersects_segment = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_intersects_segment = internal.variant_get_ptr_builtin_method(
         14,
         _gde_name.opaque,
         2048133369
@@ -224,7 +230,7 @@ export class Plane {
   normalized () {
     let ret = new Plane()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Plane._bindings.method_normalized,
+      Plane.#_bindings.method_normalized,
       this,
       14,
       []
@@ -234,7 +240,7 @@ export class Plane {
   get_center () {
     let ret = new Vector3()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Plane._bindings.method_get_center,
+      Plane.#_bindings.method_get_center,
       this,
       9,
       []
@@ -244,7 +250,7 @@ export class Plane {
   is_equal_approx (_to_plane) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Plane._bindings.method_is_equal_approx,
+      Plane.#_bindings.method_is_equal_approx,
       this,
       1,
       [_to_plane]
@@ -254,7 +260,7 @@ export class Plane {
   is_finite () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Plane._bindings.method_is_finite,
+      Plane.#_bindings.method_is_finite,
       this,
       1,
       []
@@ -264,7 +270,7 @@ export class Plane {
   is_point_over (_point) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Plane._bindings.method_is_point_over,
+      Plane.#_bindings.method_is_point_over,
       this,
       1,
       [_point]
@@ -274,7 +280,7 @@ export class Plane {
   distance_to (_point) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Plane._bindings.method_distance_to,
+      Plane.#_bindings.method_distance_to,
       this,
       3,
       [_point]
@@ -284,7 +290,7 @@ export class Plane {
   has_point (_point, _tolerance) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Plane._bindings.method_has_point,
+      Plane.#_bindings.method_has_point,
       this,
       1,
       [_point, _tolerance]
@@ -294,7 +300,7 @@ export class Plane {
   project (_point) {
     let ret = new Vector3()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Plane._bindings.method_project,
+      Plane.#_bindings.method_project,
       this,
       9,
       [_point]
@@ -304,7 +310,7 @@ export class Plane {
   intersect_3 (_b, _c) {
     let ret = new Variant()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Plane._bindings.method_intersect_3,
+      Plane.#_bindings.method_intersect_3,
       this,
       39,
       [_b, _c]
@@ -314,7 +320,7 @@ export class Plane {
   intersects_ray (_from, _dir) {
     let ret = new Variant()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Plane._bindings.method_intersects_ray,
+      Plane.#_bindings.method_intersects_ray,
       this,
       39,
       [_from, _dir]
@@ -324,7 +330,7 @@ export class Plane {
   intersects_segment (_from, _to) {
     let ret = new Variant()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Plane._bindings.method_intersects_segment,
+      Plane.#_bindings.method_intersects_segment,
       this,
       39,
       [_from, _to]

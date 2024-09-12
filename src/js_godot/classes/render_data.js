@@ -1,5 +1,4 @@
 import * as internal from '__internal__';
-import { RID } from '@js_godot/variant/rid'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { GodotObject } from '@js_godot/classes/godot_object'
@@ -18,7 +17,7 @@ class _MethodBindings {
 }
 export class RenderData extends GodotObject{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -28,71 +27,77 @@ export class RenderData extends GodotObject{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_get_render_scene_buffers() {
+    if (!this.#_bindings.method_get_render_scene_buffers) {
       let classname = new StringName("RenderData");
       let methodname = new StringName("get_render_scene_buffers");
-      this._bindings.method_get_render_scene_buffers = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_render_scene_buffers = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2793216201
       );
     }
-    {
+  }
+  static init_method_get_render_scene_data() {
+    if (!this.#_bindings.method_get_render_scene_data) {
       let classname = new StringName("RenderData");
       let methodname = new StringName("get_render_scene_data");
-      this._bindings.method_get_render_scene_data = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_render_scene_data = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1288715698
       );
     }
-    {
+  }
+  static init_method_get_environment() {
+    if (!this.#_bindings.method_get_environment) {
       let classname = new StringName("RenderData");
       let methodname = new StringName("get_environment");
-      this._bindings.method_get_environment = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2944877500
-      );
-    }
-    {
-      let classname = new StringName("RenderData");
-      let methodname = new StringName("get_camera_attributes");
-      this._bindings.method_get_camera_attributes = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_environment = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2944877500
       );
     }
   }
+  static init_method_get_camera_attributes() {
+    if (!this.#_bindings.method_get_camera_attributes) {
+      let classname = new StringName("RenderData");
+      let methodname = new StringName("get_camera_attributes");
+      this.#_bindings.method_get_camera_attributes = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2944877500
+      );
+    }
+  }
+
+  
   
   get_render_scene_buffers() {
+    RenderData.init_method_get_render_scene_buffers();
     return _call_native_mb_ret(
-      RenderData._bindings.method_get_render_scene_buffers,
+      RenderData.#_bindings.method_get_render_scene_buffers,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
   }
   get_render_scene_data() {
+    RenderData.init_method_get_render_scene_data();
     return _call_native_mb_ret(
-      RenderData._bindings.method_get_render_scene_data,
+      RenderData.#_bindings.method_get_render_scene_data,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
   }
   get_environment() {
+    RenderData.init_method_get_environment();
     return _call_native_mb_ret(
-      RenderData._bindings.method_get_environment,
+      RenderData.#_bindings.method_get_environment,
       this._owner,
 			Variant.Type.RID,
     
@@ -101,8 +106,9 @@ export class RenderData extends GodotObject{
     
   }
   get_camera_attributes() {
+    RenderData.init_method_get_camera_attributes();
     return _call_native_mb_ret(
-      RenderData._bindings.method_get_camera_attributes,
+      RenderData.#_bindings.method_get_camera_attributes,
       this._owner,
 			Variant.Type.RID,
     
@@ -112,8 +118,4 @@ export class RenderData extends GodotObject{
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

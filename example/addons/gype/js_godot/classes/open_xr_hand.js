@@ -1,5 +1,4 @@
 import * as internal from '__internal__';
-import { NodePath } from '@js_godot/variant/node_path'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Node3D } from '@js_godot/classes/node3d'
@@ -24,7 +23,7 @@ class _MethodBindings {
 }
 export class OpenXRHand extends Node3D{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -34,132 +33,152 @@ export class OpenXRHand extends Node3D{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_hand() {
+    if (!this.#_bindings.method_set_hand) {
       let classname = new StringName("OpenXRHand");
       let methodname = new StringName("set_hand");
-      this._bindings.method_set_hand = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_hand = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1849328560
       );
     }
-    {
+  }
+  static init_method_get_hand() {
+    if (!this.#_bindings.method_get_hand) {
       let classname = new StringName("OpenXRHand");
       let methodname = new StringName("get_hand");
-      this._bindings.method_get_hand = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_hand = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2850644561
       );
     }
-    {
+  }
+  static init_method_set_hand_skeleton() {
+    if (!this.#_bindings.method_set_hand_skeleton) {
       let classname = new StringName("OpenXRHand");
       let methodname = new StringName("set_hand_skeleton");
-      this._bindings.method_set_hand_skeleton = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_hand_skeleton = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1348162250
       );
     }
-    {
+  }
+  static init_method_get_hand_skeleton() {
+    if (!this.#_bindings.method_get_hand_skeleton) {
       let classname = new StringName("OpenXRHand");
       let methodname = new StringName("get_hand_skeleton");
-      this._bindings.method_get_hand_skeleton = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_hand_skeleton = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         4075236667
       );
     }
-    {
+  }
+  static init_method_set_motion_range() {
+    if (!this.#_bindings.method_set_motion_range) {
       let classname = new StringName("OpenXRHand");
       let methodname = new StringName("set_motion_range");
-      this._bindings.method_set_motion_range = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_motion_range = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3326516003
       );
     }
-    {
+  }
+  static init_method_get_motion_range() {
+    if (!this.#_bindings.method_get_motion_range) {
       let classname = new StringName("OpenXRHand");
       let methodname = new StringName("get_motion_range");
-      this._bindings.method_get_motion_range = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_motion_range = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2191822314
       );
     }
-    {
+  }
+  static init_method_set_skeleton_rig() {
+    if (!this.#_bindings.method_set_skeleton_rig) {
       let classname = new StringName("OpenXRHand");
       let methodname = new StringName("set_skeleton_rig");
-      this._bindings.method_set_skeleton_rig = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_skeleton_rig = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1528072213
       );
     }
-    {
+  }
+  static init_method_get_skeleton_rig() {
+    if (!this.#_bindings.method_get_skeleton_rig) {
       let classname = new StringName("OpenXRHand");
       let methodname = new StringName("get_skeleton_rig");
-      this._bindings.method_get_skeleton_rig = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_skeleton_rig = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         968409338
       );
     }
-    {
+  }
+  static init_method_set_bone_update() {
+    if (!this.#_bindings.method_set_bone_update) {
       let classname = new StringName("OpenXRHand");
       let methodname = new StringName("set_bone_update");
-      this._bindings.method_set_bone_update = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_bone_update = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3144625444
       );
     }
-    {
+  }
+  static init_method_get_bone_update() {
+    if (!this.#_bindings.method_get_bone_update) {
       let classname = new StringName("OpenXRHand");
       let methodname = new StringName("get_bone_update");
-      this._bindings.method_get_bone_update = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_bone_update = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1310695248
       );
     }
   }
+
+  
   
   set_hand(_hand) {
+    OpenXRHand.init_method_set_hand();
     return _call_native_mb_no_ret(
-      OpenXRHand._bindings.method_set_hand,
+      OpenXRHand.#_bindings.method_set_hand,
       this._owner,
       _hand
     );
     
   }
   get_hand() {
+    OpenXRHand.init_method_get_hand();
     return _call_native_mb_ret(
-      OpenXRHand._bindings.method_get_hand,
+      OpenXRHand.#_bindings.method_get_hand,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_hand_skeleton(_hand_skeleton) {
+    OpenXRHand.init_method_set_hand_skeleton();
     return _call_native_mb_no_ret(
-      OpenXRHand._bindings.method_set_hand_skeleton,
+      OpenXRHand.#_bindings.method_set_hand_skeleton,
       this._owner,
       _hand_skeleton
     );
     
   }
   get_hand_skeleton() {
+    OpenXRHand.init_method_get_hand_skeleton();
     return _call_native_mb_ret(
-      OpenXRHand._bindings.method_get_hand_skeleton,
+      OpenXRHand.#_bindings.method_get_hand_skeleton,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -168,52 +187,61 @@ export class OpenXRHand extends Node3D{
     
   }
   set_motion_range(_motion_range) {
+    OpenXRHand.init_method_set_motion_range();
     return _call_native_mb_no_ret(
-      OpenXRHand._bindings.method_set_motion_range,
+      OpenXRHand.#_bindings.method_set_motion_range,
       this._owner,
       _motion_range
     );
     
   }
   get_motion_range() {
+    OpenXRHand.init_method_get_motion_range();
     return _call_native_mb_ret(
-      OpenXRHand._bindings.method_get_motion_range,
+      OpenXRHand.#_bindings.method_get_motion_range,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_skeleton_rig(_skeleton_rig) {
+    OpenXRHand.init_method_set_skeleton_rig();
     return _call_native_mb_no_ret(
-      OpenXRHand._bindings.method_set_skeleton_rig,
+      OpenXRHand.#_bindings.method_set_skeleton_rig,
       this._owner,
       _skeleton_rig
     );
     
   }
   get_skeleton_rig() {
+    OpenXRHand.init_method_get_skeleton_rig();
     return _call_native_mb_ret(
-      OpenXRHand._bindings.method_get_skeleton_rig,
+      OpenXRHand.#_bindings.method_get_skeleton_rig,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_bone_update(_bone_update) {
+    OpenXRHand.init_method_set_bone_update();
     return _call_native_mb_no_ret(
-      OpenXRHand._bindings.method_set_bone_update,
+      OpenXRHand.#_bindings.method_set_bone_update,
       this._owner,
       _bone_update
     );
     
   }
   get_bone_update() {
+    OpenXRHand.init_method_get_bone_update();
     return _call_native_mb_ret(
-      OpenXRHand._bindings.method_get_bone_update,
+      OpenXRHand.#_bindings.method_get_bone_update,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
@@ -269,9 +297,5 @@ set bone_update (new_value) {
     BONE_UPDATE_FULL: 0,
     BONE_UPDATE_ROTATION_ONLY: 1,
     BONE_UPDATE_MAX: 2,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

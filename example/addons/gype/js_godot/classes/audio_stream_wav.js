@@ -1,9 +1,7 @@
 import * as internal from '__internal__';
-import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
-import { StringName } from '@js_godot/variant/string_name'
-import { AudioStream } from '@js_godot/classes/audio_stream'
 import { Variant } from '@js_godot/variant/variant'
-import { GDString } from '@js_godot/variant/gd_string'
+import { AudioStream } from '@js_godot/classes/audio_stream'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -30,7 +28,7 @@ class _MethodBindings {
 }
 export class AudioStreamWAV extends AudioStream{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -40,160 +38,187 @@ export class AudioStreamWAV extends AudioStream{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_data() {
+    if (!this.#_bindings.method_set_data) {
       let classname = new StringName("AudioStreamWAV");
       let methodname = new StringName("set_data");
-      this._bindings.method_set_data = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_data = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2971499966
       );
     }
-    {
+  }
+  static init_method_get_data() {
+    if (!this.#_bindings.method_get_data) {
       let classname = new StringName("AudioStreamWAV");
       let methodname = new StringName("get_data");
-      this._bindings.method_get_data = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_data = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2362200018
       );
     }
-    {
+  }
+  static init_method_set_format() {
+    if (!this.#_bindings.method_set_format) {
       let classname = new StringName("AudioStreamWAV");
       let methodname = new StringName("set_format");
-      this._bindings.method_set_format = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_format = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         60648488
       );
     }
-    {
+  }
+  static init_method_get_format() {
+    if (!this.#_bindings.method_get_format) {
       let classname = new StringName("AudioStreamWAV");
       let methodname = new StringName("get_format");
-      this._bindings.method_get_format = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_format = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3151724922
       );
     }
-    {
+  }
+  static init_method_set_loop_mode() {
+    if (!this.#_bindings.method_set_loop_mode) {
       let classname = new StringName("AudioStreamWAV");
       let methodname = new StringName("set_loop_mode");
-      this._bindings.method_set_loop_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_loop_mode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2444882972
       );
     }
-    {
+  }
+  static init_method_get_loop_mode() {
+    if (!this.#_bindings.method_get_loop_mode) {
       let classname = new StringName("AudioStreamWAV");
       let methodname = new StringName("get_loop_mode");
-      this._bindings.method_get_loop_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_loop_mode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         393560655
       );
     }
-    {
+  }
+  static init_method_set_loop_begin() {
+    if (!this.#_bindings.method_set_loop_begin) {
       let classname = new StringName("AudioStreamWAV");
       let methodname = new StringName("set_loop_begin");
-      this._bindings.method_set_loop_begin = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_loop_begin = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1286410249
       );
     }
-    {
+  }
+  static init_method_get_loop_begin() {
+    if (!this.#_bindings.method_get_loop_begin) {
       let classname = new StringName("AudioStreamWAV");
       let methodname = new StringName("get_loop_begin");
-      this._bindings.method_get_loop_begin = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_loop_begin = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
-    {
+  }
+  static init_method_set_loop_end() {
+    if (!this.#_bindings.method_set_loop_end) {
       let classname = new StringName("AudioStreamWAV");
       let methodname = new StringName("set_loop_end");
-      this._bindings.method_set_loop_end = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_loop_end = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1286410249
       );
     }
-    {
+  }
+  static init_method_get_loop_end() {
+    if (!this.#_bindings.method_get_loop_end) {
       let classname = new StringName("AudioStreamWAV");
       let methodname = new StringName("get_loop_end");
-      this._bindings.method_get_loop_end = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_loop_end = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
-    {
+  }
+  static init_method_set_mix_rate() {
+    if (!this.#_bindings.method_set_mix_rate) {
       let classname = new StringName("AudioStreamWAV");
       let methodname = new StringName("set_mix_rate");
-      this._bindings.method_set_mix_rate = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_mix_rate = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1286410249
       );
     }
-    {
+  }
+  static init_method_get_mix_rate() {
+    if (!this.#_bindings.method_get_mix_rate) {
       let classname = new StringName("AudioStreamWAV");
       let methodname = new StringName("get_mix_rate");
-      this._bindings.method_get_mix_rate = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_mix_rate = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
-    {
+  }
+  static init_method_set_stereo() {
+    if (!this.#_bindings.method_set_stereo) {
       let classname = new StringName("AudioStreamWAV");
       let methodname = new StringName("set_stereo");
-      this._bindings.method_set_stereo = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_stereo = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_is_stereo() {
+    if (!this.#_bindings.method_is_stereo) {
       let classname = new StringName("AudioStreamWAV");
       let methodname = new StringName("is_stereo");
-      this._bindings.method_is_stereo = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_stereo = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_save_to_wav() {
+    if (!this.#_bindings.method_save_to_wav) {
       let classname = new StringName("AudioStreamWAV");
       let methodname = new StringName("save_to_wav");
-      this._bindings.method_save_to_wav = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_save_to_wav = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         166001499
       );
     }
   }
+
+  
   
   set_data(_data) {
+    AudioStreamWAV.init_method_set_data();
     return _call_native_mb_no_ret(
-      AudioStreamWAV._bindings.method_set_data,
+      AudioStreamWAV.#_bindings.method_set_data,
       this._owner,
       _data
     );
     
   }
   get_data() {
+    AudioStreamWAV.init_method_get_data();
     return _call_native_mb_ret(
-      AudioStreamWAV._bindings.method_get_data,
+      AudioStreamWAV.#_bindings.method_get_data,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -202,112 +227,132 @@ export class AudioStreamWAV extends AudioStream{
     
   }
   set_format(_format) {
+    AudioStreamWAV.init_method_set_format();
     return _call_native_mb_no_ret(
-      AudioStreamWAV._bindings.method_set_format,
+      AudioStreamWAV.#_bindings.method_set_format,
       this._owner,
       _format
     );
     
   }
   get_format() {
+    AudioStreamWAV.init_method_get_format();
     return _call_native_mb_ret(
-      AudioStreamWAV._bindings.method_get_format,
+      AudioStreamWAV.#_bindings.method_get_format,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_loop_mode(_loop_mode) {
+    AudioStreamWAV.init_method_set_loop_mode();
     return _call_native_mb_no_ret(
-      AudioStreamWAV._bindings.method_set_loop_mode,
+      AudioStreamWAV.#_bindings.method_set_loop_mode,
       this._owner,
       _loop_mode
     );
     
   }
   get_loop_mode() {
+    AudioStreamWAV.init_method_get_loop_mode();
     return _call_native_mb_ret(
-      AudioStreamWAV._bindings.method_get_loop_mode,
+      AudioStreamWAV.#_bindings.method_get_loop_mode,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_loop_begin(_loop_begin) {
+    AudioStreamWAV.init_method_set_loop_begin();
     return _call_native_mb_no_ret(
-      AudioStreamWAV._bindings.method_set_loop_begin,
+      AudioStreamWAV.#_bindings.method_set_loop_begin,
       this._owner,
       _loop_begin
     );
     
   }
   get_loop_begin() {
+    AudioStreamWAV.init_method_get_loop_begin();
     return _call_native_mb_ret(
-      AudioStreamWAV._bindings.method_get_loop_begin,
+      AudioStreamWAV.#_bindings.method_get_loop_begin,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_loop_end(_loop_end) {
+    AudioStreamWAV.init_method_set_loop_end();
     return _call_native_mb_no_ret(
-      AudioStreamWAV._bindings.method_set_loop_end,
+      AudioStreamWAV.#_bindings.method_set_loop_end,
       this._owner,
       _loop_end
     );
     
   }
   get_loop_end() {
+    AudioStreamWAV.init_method_get_loop_end();
     return _call_native_mb_ret(
-      AudioStreamWAV._bindings.method_get_loop_end,
+      AudioStreamWAV.#_bindings.method_get_loop_end,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_mix_rate(_mix_rate) {
+    AudioStreamWAV.init_method_set_mix_rate();
     return _call_native_mb_no_ret(
-      AudioStreamWAV._bindings.method_set_mix_rate,
+      AudioStreamWAV.#_bindings.method_set_mix_rate,
       this._owner,
       _mix_rate
     );
     
   }
   get_mix_rate() {
+    AudioStreamWAV.init_method_get_mix_rate();
     return _call_native_mb_ret(
-      AudioStreamWAV._bindings.method_get_mix_rate,
+      AudioStreamWAV.#_bindings.method_get_mix_rate,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_stereo(_stereo) {
+    AudioStreamWAV.init_method_set_stereo();
     return _call_native_mb_no_ret(
-      AudioStreamWAV._bindings.method_set_stereo,
+      AudioStreamWAV.#_bindings.method_set_stereo,
       this._owner,
       _stereo
     );
     
   }
   is_stereo() {
+    AudioStreamWAV.init_method_is_stereo();
     return _call_native_mb_ret(
-      AudioStreamWAV._bindings.method_is_stereo,
+      AudioStreamWAV.#_bindings.method_is_stereo,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   save_to_wav(_path) {
+    AudioStreamWAV.init_method_save_to_wav();
     return _call_native_mb_ret(
-      AudioStreamWAV._bindings.method_save_to_wav,
+      AudioStreamWAV.#_bindings.method_save_to_wav,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       _path
     );
     
@@ -367,9 +412,5 @@ set stereo (new_value) {
     LOOP_FORWARD: 1,
     LOOP_PINGPONG: 2,
     LOOP_BACKWARD: 3,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

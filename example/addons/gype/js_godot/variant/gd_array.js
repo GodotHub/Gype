@@ -2,21 +2,23 @@ import * as internal from '__internal__'
 import {
   _call_builtin_constructor,
   _call_builtin_method_ptr_ret,
-  _call_builtin_method_ptr_no_ret
+  _call_builtin_method_ptr_no_ret,
+  _call_builtin_method_ptr_obj_ret,
 } from '@js_godot/core/builtin_ptrcall'
-import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
-import { PackedFloat32Array } from '@js_godot/variant/packed_float32_array'
-import { StringName } from '@js_godot/variant/string_name'
-import { PackedStringArray } from '@js_godot/variant/packed_string_array'
-import { PackedVector3Array } from '@js_godot/variant/packed_vector3_array'
-import { PackedColorArray } from '@js_godot/variant/packed_color_array'
-import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
-import { PackedFloat64Array } from '@js_godot/variant/packed_float64_array'
-import { Variant } from '@js_godot/variant/variant'
 import { Callable } from '@js_godot/variant/callable'
-import { PackedVector4Array } from '@js_godot/variant/packed_vector4_array'
-import { PackedInt64Array } from '@js_godot/variant/packed_int64_array'
+import { PackedFloat32Array } from '@js_godot/variant/packed_float32_array'
+import { PackedVector3Array } from '@js_godot/variant/packed_vector3_array'
 import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
+import { PackedColorArray } from '@js_godot/variant/packed_color_array'
+import { StringName } from '@js_godot/variant/string_name'
+import { PackedFloat64Array } from '@js_godot/variant/packed_float64_array'
+import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
+import { Variant } from '@js_godot/variant/variant'
+import { PackedVector4Array } from '@js_godot/variant/packed_vector4_array'
+import { PackedStringArray } from '@js_godot/variant/packed_string_array'
+import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
+import { PackedInt64Array } from '@js_godot/variant/packed_int64_array'
+import { GodotObject } from "@js_godot/classes/godot_object";
 
 class _MethodBindings {
   from_variant_constructor
@@ -98,14 +100,15 @@ export class GDArray {
   static #SIZE = 8
   opaque = new Uint8Array(GDArray.#SIZE)
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
-  constructor (from) {
-    if (!from) {
-      _call_builtin_constructor(GDArray._bindings.constructor_0, this)
-    }else if (from instanceof GDArray) {
-      _call_builtin_constructor(GDArray._bindings.constructor_1, this, [
+  constructor (value) {
+    if (!value) {
+      _call_builtin_constructor(GDArray.#_bindings.constructor_0, this)
+    } else if (arguments.length == 1&& arguments[0] instanceof GDArray) {
+      let from = arguments[0];
+      _call_builtin_constructor(GDArray.#_bindings.constructor_1, this, [
         from
       ])
     } else if (arguments.length == 4&& arguments[0] instanceof GDArray&& typeof arguments[1] == "number"&& arguments[2] instanceof StringName&& arguments[3] instanceof Variant) {
@@ -113,115 +116,127 @@ export class GDArray {
       let type = arguments[1];
       let class_name = arguments[2];
       let script = arguments[3];
-      _call_builtin_constructor(GDArray._bindings.constructor_2, this, [
+      _call_builtin_constructor(GDArray.#_bindings.constructor_2, this, [
         base, type, class_name, script
       ])
-    }else if (from instanceof PackedByteArray) {
-      _call_builtin_constructor(GDArray._bindings.constructor_3, this, [
+    } else if (arguments.length == 1&& arguments[0] instanceof PackedByteArray) {
+      let from = arguments[0];
+      _call_builtin_constructor(GDArray.#_bindings.constructor_3, this, [
         from
       ])
-    }else if (from instanceof PackedInt32Array) {
-      _call_builtin_constructor(GDArray._bindings.constructor_4, this, [
+    } else if (arguments.length == 1&& arguments[0] instanceof PackedInt32Array) {
+      let from = arguments[0];
+      _call_builtin_constructor(GDArray.#_bindings.constructor_4, this, [
         from
       ])
-    }else if (from instanceof PackedInt64Array) {
-      _call_builtin_constructor(GDArray._bindings.constructor_5, this, [
+    } else if (arguments.length == 1&& arguments[0] instanceof PackedInt64Array) {
+      let from = arguments[0];
+      _call_builtin_constructor(GDArray.#_bindings.constructor_5, this, [
         from
       ])
-    }else if (from instanceof PackedFloat32Array) {
-      _call_builtin_constructor(GDArray._bindings.constructor_6, this, [
+    } else if (arguments.length == 1&& arguments[0] instanceof PackedFloat32Array) {
+      let from = arguments[0];
+      _call_builtin_constructor(GDArray.#_bindings.constructor_6, this, [
         from
       ])
-    }else if (from instanceof PackedFloat64Array) {
-      _call_builtin_constructor(GDArray._bindings.constructor_7, this, [
+    } else if (arguments.length == 1&& arguments[0] instanceof PackedFloat64Array) {
+      let from = arguments[0];
+      _call_builtin_constructor(GDArray.#_bindings.constructor_7, this, [
         from
       ])
-    }else if (from instanceof PackedStringArray) {
-      _call_builtin_constructor(GDArray._bindings.constructor_8, this, [
+    } else if (arguments.length == 1&& arguments[0] instanceof PackedStringArray) {
+      let from = arguments[0];
+      _call_builtin_constructor(GDArray.#_bindings.constructor_8, this, [
         from
       ])
-    }else if (from instanceof PackedVector2Array) {
-      _call_builtin_constructor(GDArray._bindings.constructor_9, this, [
+    } else if (arguments.length == 1&& arguments[0] instanceof PackedVector2Array) {
+      let from = arguments[0];
+      _call_builtin_constructor(GDArray.#_bindings.constructor_9, this, [
         from
       ])
-    }else if (from instanceof PackedVector3Array) {
-      _call_builtin_constructor(GDArray._bindings.constructor_10, this, [
+    } else if (arguments.length == 1&& arguments[0] instanceof PackedVector3Array) {
+      let from = arguments[0];
+      _call_builtin_constructor(GDArray.#_bindings.constructor_10, this, [
         from
       ])
-    }else if (from instanceof PackedColorArray) {
-      _call_builtin_constructor(GDArray._bindings.constructor_11, this, [
+    } else if (arguments.length == 1&& arguments[0] instanceof PackedColorArray) {
+      let from = arguments[0];
+      _call_builtin_constructor(GDArray.#_bindings.constructor_11, this, [
         from
       ])
-    }else if (from instanceof PackedVector4Array) {
-      _call_builtin_constructor(GDArray._bindings.constructor_12, this, [
+    } else if (arguments.length == 1&& arguments[0] instanceof PackedVector4Array) {
+      let from = arguments[0];
+      _call_builtin_constructor(GDArray.#_bindings.constructor_12, this, [
         from
       ])
-    } else if (from.constructor.name === "Variant") {
-      GDArray._bindings.from_variant_constructor(this.opaque, from.opaque)
-    } else if (from instanceof Array) {
-      for (let i = 0; i < from.length; i++) {
-        append(from[i]);
+    } else if (value.constructor.name === "Variant") {
+      GDArray.#_bindings.from_variant_constructor(this.opaque, value.opaque)
+    } else if (value instanceof Uint8Array) {
+      this.opaque = value;
+    } else if (value instanceof Array) {
+      for (let i = 0; i < value.length; i++) {
+        this.append(value[i]);
       }
     }
   }
   
   static __init_bindings_constructors_destructor () {
-    this._bindings.from_variant_constructor = internal.get_variant_to_type_constructor(
+    this.#_bindings.from_variant_constructor = internal.get_variant_to_type_constructor(
       28
     )
-    this._bindings.constructor_0 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_0 = internal.variant_get_ptr_constructor(
       28,
       0
     )
-    this._bindings.constructor_1 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_1 = internal.variant_get_ptr_constructor(
       28,
       1
     )
-    this._bindings.constructor_2 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_2 = internal.variant_get_ptr_constructor(
       28,
       2
     )
-    this._bindings.constructor_3 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_3 = internal.variant_get_ptr_constructor(
       28,
       3
     )
-    this._bindings.constructor_4 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_4 = internal.variant_get_ptr_constructor(
       28,
       4
     )
-    this._bindings.constructor_5 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_5 = internal.variant_get_ptr_constructor(
       28,
       5
     )
-    this._bindings.constructor_6 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_6 = internal.variant_get_ptr_constructor(
       28,
       6
     )
-    this._bindings.constructor_7 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_7 = internal.variant_get_ptr_constructor(
       28,
       7
     )
-    this._bindings.constructor_8 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_8 = internal.variant_get_ptr_constructor(
       28,
       8
     )
-    this._bindings.constructor_9 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_9 = internal.variant_get_ptr_constructor(
       28,
       9
     )
-    this._bindings.constructor_10 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_10 = internal.variant_get_ptr_constructor(
       28,
       10
     )
-    this._bindings.constructor_11 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_11 = internal.variant_get_ptr_constructor(
       28,
       11
     )
-    this._bindings.constructor_12 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_12 = internal.variant_get_ptr_constructor(
       28,
       12
     )
-    this._bindings.destructor = internal.variant_get_ptr_destructor(
+    this.#_bindings.destructor = internal.variant_get_ptr_destructor(
       28
     )
   }
@@ -234,7 +249,7 @@ export class GDArray {
     this.__init_bindings_constructors_destructor()
     {
       let _gde_name = new StringName('size')
-      this._bindings.method_size = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_size = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         3173160232
@@ -242,7 +257,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('is_empty')
-      this._bindings.method_is_empty = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_empty = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         3918633141
@@ -250,7 +265,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('clear')
-      this._bindings.method_clear = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_clear = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         3218959716
@@ -258,7 +273,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('hash')
-      this._bindings.method_hash = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_hash = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         3173160232
@@ -266,7 +281,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('assign')
-      this._bindings.method_assign = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_assign = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         2307260970
@@ -274,7 +289,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('push_back')
-      this._bindings.method_push_back = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_push_back = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         3316032543
@@ -282,7 +297,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('push_front')
-      this._bindings.method_push_front = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_push_front = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         3316032543
@@ -290,7 +305,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('append')
-      this._bindings.method_append = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_append = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         3316032543
@@ -298,7 +313,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('append_array')
-      this._bindings.method_append_array = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_append_array = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         2307260970
@@ -306,7 +321,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('resize')
-      this._bindings.method_resize = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_resize = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         848867239
@@ -314,7 +329,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('insert')
-      this._bindings.method_insert = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_insert = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         3176316662
@@ -322,7 +337,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('remove_at')
-      this._bindings.method_remove_at = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_remove_at = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         2823966027
@@ -330,7 +345,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('fill')
-      this._bindings.method_fill = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_fill = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         3316032543
@@ -338,7 +353,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('erase')
-      this._bindings.method_erase = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_erase = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         3316032543
@@ -346,7 +361,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('front')
-      this._bindings.method_front = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_front = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         1460142086
@@ -354,7 +369,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('back')
-      this._bindings.method_back = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_back = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         1460142086
@@ -362,7 +377,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('pick_random')
-      this._bindings.method_pick_random = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_pick_random = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         1460142086
@@ -370,7 +385,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('find')
-      this._bindings.method_find = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_find = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         2336346817
@@ -378,7 +393,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('rfind')
-      this._bindings.method_rfind = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_rfind = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         2336346817
@@ -386,7 +401,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('count')
-      this._bindings.method_count = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_count = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         1481661226
@@ -394,7 +409,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('has')
-      this._bindings.method_has = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_has = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         3680194679
@@ -402,7 +417,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('pop_back')
-      this._bindings.method_pop_back = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_pop_back = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         1321915136
@@ -410,7 +425,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('pop_front')
-      this._bindings.method_pop_front = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_pop_front = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         1321915136
@@ -418,7 +433,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('pop_at')
-      this._bindings.method_pop_at = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_pop_at = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         3518259424
@@ -426,7 +441,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('sort')
-      this._bindings.method_sort = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_sort = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         3218959716
@@ -434,7 +449,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('sort_custom')
-      this._bindings.method_sort_custom = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_sort_custom = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         3470848906
@@ -442,7 +457,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('shuffle')
-      this._bindings.method_shuffle = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_shuffle = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         3218959716
@@ -450,7 +465,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('bsearch')
-      this._bindings.method_bsearch = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_bsearch = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         3372222236
@@ -458,7 +473,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('bsearch_custom')
-      this._bindings.method_bsearch_custom = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_bsearch_custom = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         161317131
@@ -466,7 +481,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('reverse')
-      this._bindings.method_reverse = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_reverse = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         3218959716
@@ -474,7 +489,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('duplicate')
-      this._bindings.method_duplicate = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_duplicate = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         636440122
@@ -482,7 +497,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('slice')
-      this._bindings.method_slice = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_slice = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         1393718243
@@ -490,7 +505,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('filter')
-      this._bindings.method_filter = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_filter = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         4075186556
@@ -498,7 +513,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('map')
-      this._bindings.method_map = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_map = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         4075186556
@@ -506,7 +521,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('reduce')
-      this._bindings.method_reduce = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_reduce = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         4272450342
@@ -514,7 +529,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('any')
-      this._bindings.method_any = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_any = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         4129521963
@@ -522,7 +537,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('all')
-      this._bindings.method_all = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_all = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         4129521963
@@ -530,7 +545,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('max')
-      this._bindings.method_max = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_max = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         1460142086
@@ -538,7 +553,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('min')
-      this._bindings.method_min = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_min = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         1460142086
@@ -546,7 +561,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('is_typed')
-      this._bindings.method_is_typed = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_typed = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         3918633141
@@ -554,7 +569,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('is_same_typed')
-      this._bindings.method_is_same_typed = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_same_typed = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         2988181878
@@ -562,7 +577,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('get_typed_builtin')
-      this._bindings.method_get_typed_builtin = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_typed_builtin = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         3173160232
@@ -570,7 +585,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('get_typed_class_name')
-      this._bindings.method_get_typed_class_name = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_typed_class_name = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         1825232092
@@ -578,7 +593,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('get_typed_script')
-      this._bindings.method_get_typed_script = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_typed_script = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         1460142086
@@ -586,7 +601,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('make_read_only')
-      this._bindings.method_make_read_only = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_make_read_only = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         3218959716
@@ -594,7 +609,7 @@ export class GDArray {
     }
     {
       let _gde_name = new StringName('is_read_only')
-      this._bindings.method_is_read_only = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_read_only = internal.variant_get_ptr_builtin_method(
         28,
         _gde_name.opaque,
         3918633141
@@ -606,7 +621,7 @@ export class GDArray {
   size () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDArray._bindings.method_size,
+      GDArray.#_bindings.method_size,
       this,
       2,
       []
@@ -616,7 +631,7 @@ export class GDArray {
   is_empty () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDArray._bindings.method_is_empty,
+      GDArray.#_bindings.method_is_empty,
       this,
       1,
       []
@@ -625,7 +640,7 @@ export class GDArray {
   }
   clear () {
     _call_builtin_method_ptr_no_ret(
-      GDArray._bindings.method_clear,
+      GDArray.#_bindings.method_clear,
       this,
       []
     )
@@ -633,7 +648,7 @@ export class GDArray {
   hash () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDArray._bindings.method_hash,
+      GDArray.#_bindings.method_hash,
       this,
       2,
       []
@@ -642,35 +657,35 @@ export class GDArray {
   }
   assign (_array) {
     _call_builtin_method_ptr_no_ret(
-      GDArray._bindings.method_assign,
+      GDArray.#_bindings.method_assign,
       this,
       [_array]
     )
   }
   push_back (_value) {
     _call_builtin_method_ptr_no_ret(
-      GDArray._bindings.method_push_back,
+      GDArray.#_bindings.method_push_back,
       this,
       [_value]
     )
   }
   push_front (_value) {
     _call_builtin_method_ptr_no_ret(
-      GDArray._bindings.method_push_front,
+      GDArray.#_bindings.method_push_front,
       this,
       [_value]
     )
   }
   append (_value) {
     _call_builtin_method_ptr_no_ret(
-      GDArray._bindings.method_append,
+      GDArray.#_bindings.method_append,
       this,
       [_value]
     )
   }
   append_array (_array) {
     _call_builtin_method_ptr_no_ret(
-      GDArray._bindings.method_append_array,
+      GDArray.#_bindings.method_append_array,
       this,
       [_array]
     )
@@ -678,7 +693,7 @@ export class GDArray {
   resize (_size) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDArray._bindings.method_resize,
+      GDArray.#_bindings.method_resize,
       this,
       2,
       [_size]
@@ -688,7 +703,7 @@ export class GDArray {
   insert (_position, _value) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDArray._bindings.method_insert,
+      GDArray.#_bindings.method_insert,
       this,
       2,
       [_position, _value]
@@ -697,21 +712,21 @@ export class GDArray {
   }
   remove_at (_position) {
     _call_builtin_method_ptr_no_ret(
-      GDArray._bindings.method_remove_at,
+      GDArray.#_bindings.method_remove_at,
       this,
       [_position]
     )
   }
   fill (_value) {
     _call_builtin_method_ptr_no_ret(
-      GDArray._bindings.method_fill,
+      GDArray.#_bindings.method_fill,
       this,
       [_value]
     )
   }
   erase (_value) {
     _call_builtin_method_ptr_no_ret(
-      GDArray._bindings.method_erase,
+      GDArray.#_bindings.method_erase,
       this,
       [_value]
     )
@@ -719,7 +734,7 @@ export class GDArray {
   front () {
     let ret = new Variant()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDArray._bindings.method_front,
+      GDArray.#_bindings.method_front,
       this,
       39,
       []
@@ -729,7 +744,7 @@ export class GDArray {
   back () {
     let ret = new Variant()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDArray._bindings.method_back,
+      GDArray.#_bindings.method_back,
       this,
       39,
       []
@@ -739,7 +754,7 @@ export class GDArray {
   pick_random () {
     let ret = new Variant()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDArray._bindings.method_pick_random,
+      GDArray.#_bindings.method_pick_random,
       this,
       39,
       []
@@ -749,7 +764,7 @@ export class GDArray {
   find (_what, _from) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDArray._bindings.method_find,
+      GDArray.#_bindings.method_find,
       this,
       2,
       [_what, _from]
@@ -759,7 +774,7 @@ export class GDArray {
   rfind (_what, _from) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDArray._bindings.method_rfind,
+      GDArray.#_bindings.method_rfind,
       this,
       2,
       [_what, _from]
@@ -769,7 +784,7 @@ export class GDArray {
   count (_value) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDArray._bindings.method_count,
+      GDArray.#_bindings.method_count,
       this,
       2,
       [_value]
@@ -779,7 +794,7 @@ export class GDArray {
   has (_value) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDArray._bindings.method_has,
+      GDArray.#_bindings.method_has,
       this,
       1,
       [_value]
@@ -789,7 +804,7 @@ export class GDArray {
   pop_back () {
     let ret = new Variant()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDArray._bindings.method_pop_back,
+      GDArray.#_bindings.method_pop_back,
       this,
       39,
       []
@@ -799,7 +814,7 @@ export class GDArray {
   pop_front () {
     let ret = new Variant()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDArray._bindings.method_pop_front,
+      GDArray.#_bindings.method_pop_front,
       this,
       39,
       []
@@ -809,7 +824,7 @@ export class GDArray {
   pop_at (_position) {
     let ret = new Variant()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDArray._bindings.method_pop_at,
+      GDArray.#_bindings.method_pop_at,
       this,
       39,
       [_position]
@@ -818,21 +833,21 @@ export class GDArray {
   }
   sort () {
     _call_builtin_method_ptr_no_ret(
-      GDArray._bindings.method_sort,
+      GDArray.#_bindings.method_sort,
       this,
       []
     )
   }
   sort_custom (_func) {
     _call_builtin_method_ptr_no_ret(
-      GDArray._bindings.method_sort_custom,
+      GDArray.#_bindings.method_sort_custom,
       this,
       [_func]
     )
   }
   shuffle () {
     _call_builtin_method_ptr_no_ret(
-      GDArray._bindings.method_shuffle,
+      GDArray.#_bindings.method_shuffle,
       this,
       []
     )
@@ -840,7 +855,7 @@ export class GDArray {
   bsearch (_value, _before) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDArray._bindings.method_bsearch,
+      GDArray.#_bindings.method_bsearch,
       this,
       2,
       [_value, _before]
@@ -850,7 +865,7 @@ export class GDArray {
   bsearch_custom (_value, _func, _before) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDArray._bindings.method_bsearch_custom,
+      GDArray.#_bindings.method_bsearch_custom,
       this,
       2,
       [_value, _func, _before]
@@ -859,7 +874,7 @@ export class GDArray {
   }
   reverse () {
     _call_builtin_method_ptr_no_ret(
-      GDArray._bindings.method_reverse,
+      GDArray.#_bindings.method_reverse,
       this,
       []
     )
@@ -867,7 +882,7 @@ export class GDArray {
   duplicate (_deep) {
     let ret = new GDArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDArray._bindings.method_duplicate,
+      GDArray.#_bindings.method_duplicate,
       this,
       28,
       [_deep]
@@ -877,7 +892,7 @@ export class GDArray {
   slice (_begin, _end, _step, _deep) {
     let ret = new GDArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDArray._bindings.method_slice,
+      GDArray.#_bindings.method_slice,
       this,
       28,
       [_begin, _end, _step, _deep]
@@ -887,7 +902,7 @@ export class GDArray {
   filter (_method) {
     let ret = new GDArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDArray._bindings.method_filter,
+      GDArray.#_bindings.method_filter,
       this,
       28,
       [_method]
@@ -897,7 +912,7 @@ export class GDArray {
   map (_method) {
     let ret = new GDArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDArray._bindings.method_map,
+      GDArray.#_bindings.method_map,
       this,
       28,
       [_method]
@@ -907,7 +922,7 @@ export class GDArray {
   reduce (_method, _accum) {
     let ret = new Variant()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDArray._bindings.method_reduce,
+      GDArray.#_bindings.method_reduce,
       this,
       39,
       [_method, _accum]
@@ -917,7 +932,7 @@ export class GDArray {
   any (_method) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDArray._bindings.method_any,
+      GDArray.#_bindings.method_any,
       this,
       1,
       [_method]
@@ -927,7 +942,7 @@ export class GDArray {
   all (_method) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDArray._bindings.method_all,
+      GDArray.#_bindings.method_all,
       this,
       1,
       [_method]
@@ -937,7 +952,7 @@ export class GDArray {
   max () {
     let ret = new Variant()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDArray._bindings.method_max,
+      GDArray.#_bindings.method_max,
       this,
       39,
       []
@@ -947,7 +962,7 @@ export class GDArray {
   min () {
     let ret = new Variant()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDArray._bindings.method_min,
+      GDArray.#_bindings.method_min,
       this,
       39,
       []
@@ -957,7 +972,7 @@ export class GDArray {
   is_typed () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDArray._bindings.method_is_typed,
+      GDArray.#_bindings.method_is_typed,
       this,
       1,
       []
@@ -967,7 +982,7 @@ export class GDArray {
   is_same_typed (_array) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDArray._bindings.method_is_same_typed,
+      GDArray.#_bindings.method_is_same_typed,
       this,
       1,
       [_array]
@@ -977,7 +992,7 @@ export class GDArray {
   get_typed_builtin () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDArray._bindings.method_get_typed_builtin,
+      GDArray.#_bindings.method_get_typed_builtin,
       this,
       2,
       []
@@ -987,7 +1002,7 @@ export class GDArray {
   get_typed_class_name () {
     let ret = new StringName()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDArray._bindings.method_get_typed_class_name,
+      GDArray.#_bindings.method_get_typed_class_name,
       this,
       21,
       []
@@ -997,7 +1012,7 @@ export class GDArray {
   get_typed_script () {
     let ret = new Variant()
     ret.opaque = _call_builtin_method_ptr_ret(
-      GDArray._bindings.method_get_typed_script,
+      GDArray.#_bindings.method_get_typed_script,
       this,
       39,
       []
@@ -1006,7 +1021,7 @@ export class GDArray {
   }
   make_read_only () {
     _call_builtin_method_ptr_no_ret(
-      GDArray._bindings.method_make_read_only,
+      GDArray.#_bindings.method_make_read_only,
       this,
       []
     )
@@ -1014,7 +1029,7 @@ export class GDArray {
   is_read_only () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      GDArray._bindings.method_is_read_only,
+      GDArray.#_bindings.method_is_read_only,
       this,
       1,
       []

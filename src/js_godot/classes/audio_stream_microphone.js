@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { AudioStream } from '@js_godot/classes/audio_stream'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -13,7 +13,7 @@ class _MethodBindings {
 }
 export class AudioStreamMicrophone extends AudioStream{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -23,18 +23,9 @@ export class AudioStreamMicrophone extends AudioStream{
       super(godot_object);
     }
   }
+
   
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-  }
   
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { AudioEffect } from '@js_godot/classes/audio_effect'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { AudioEffect } from '@js_godot/classes/audio_effect'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -21,7 +21,7 @@ class _MethodBindings {
 }
 export class AudioEffectFilter extends AudioEffect{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -31,150 +31,173 @@ export class AudioEffectFilter extends AudioEffect{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_cutoff() {
+    if (!this.#_bindings.method_set_cutoff) {
       let classname = new StringName("AudioEffectFilter");
       let methodname = new StringName("set_cutoff");
-      this._bindings.method_set_cutoff = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_cutoff = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_cutoff() {
+    if (!this.#_bindings.method_get_cutoff) {
       let classname = new StringName("AudioEffectFilter");
       let methodname = new StringName("get_cutoff");
-      this._bindings.method_get_cutoff = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_cutoff = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_set_resonance() {
+    if (!this.#_bindings.method_set_resonance) {
       let classname = new StringName("AudioEffectFilter");
       let methodname = new StringName("set_resonance");
-      this._bindings.method_set_resonance = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_resonance = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_resonance() {
+    if (!this.#_bindings.method_get_resonance) {
       let classname = new StringName("AudioEffectFilter");
       let methodname = new StringName("get_resonance");
-      this._bindings.method_get_resonance = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_resonance = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_set_gain() {
+    if (!this.#_bindings.method_set_gain) {
       let classname = new StringName("AudioEffectFilter");
       let methodname = new StringName("set_gain");
-      this._bindings.method_set_gain = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_gain = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_gain() {
+    if (!this.#_bindings.method_get_gain) {
       let classname = new StringName("AudioEffectFilter");
       let methodname = new StringName("get_gain");
-      this._bindings.method_get_gain = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_gain = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_set_db() {
+    if (!this.#_bindings.method_set_db) {
       let classname = new StringName("AudioEffectFilter");
       let methodname = new StringName("set_db");
-      this._bindings.method_set_db = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_db = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         771740901
       );
     }
-    {
+  }
+  static init_method_get_db() {
+    if (!this.#_bindings.method_get_db) {
       let classname = new StringName("AudioEffectFilter");
       let methodname = new StringName("get_db");
-      this._bindings.method_get_db = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_db = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3981721890
       );
     }
   }
+
+  
   
   set_cutoff(_freq) {
+    AudioEffectFilter.init_method_set_cutoff();
     return _call_native_mb_no_ret(
-      AudioEffectFilter._bindings.method_set_cutoff,
+      AudioEffectFilter.#_bindings.method_set_cutoff,
       this._owner,
       _freq
     );
     
   }
   get_cutoff() {
+    AudioEffectFilter.init_method_get_cutoff();
     return _call_native_mb_ret(
-      AudioEffectFilter._bindings.method_get_cutoff,
+      AudioEffectFilter.#_bindings.method_get_cutoff,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_resonance(_amount) {
+    AudioEffectFilter.init_method_set_resonance();
     return _call_native_mb_no_ret(
-      AudioEffectFilter._bindings.method_set_resonance,
+      AudioEffectFilter.#_bindings.method_set_resonance,
       this._owner,
       _amount
     );
     
   }
   get_resonance() {
+    AudioEffectFilter.init_method_get_resonance();
     return _call_native_mb_ret(
-      AudioEffectFilter._bindings.method_get_resonance,
+      AudioEffectFilter.#_bindings.method_get_resonance,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_gain(_amount) {
+    AudioEffectFilter.init_method_set_gain();
     return _call_native_mb_no_ret(
-      AudioEffectFilter._bindings.method_set_gain,
+      AudioEffectFilter.#_bindings.method_set_gain,
       this._owner,
       _amount
     );
     
   }
   get_gain() {
+    AudioEffectFilter.init_method_get_gain();
     return _call_native_mb_ret(
-      AudioEffectFilter._bindings.method_get_gain,
+      AudioEffectFilter.#_bindings.method_get_gain,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_db(_amount) {
+    AudioEffectFilter.init_method_set_db();
     return _call_native_mb_no_ret(
-      AudioEffectFilter._bindings.method_set_db,
+      AudioEffectFilter.#_bindings.method_set_db,
       this._owner,
       _amount
     );
     
   }
   get_db() {
+    AudioEffectFilter.init_method_get_db();
     return _call_native_mb_ret(
-      AudioEffectFilter._bindings.method_get_db,
+      AudioEffectFilter.#_bindings.method_get_db,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
@@ -210,9 +233,5 @@ set db (new_value) {
     FILTER_12DB: 1,
     FILTER_18DB: 2,
     FILTER_24DB: 3,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

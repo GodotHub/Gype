@@ -1,11 +1,7 @@
 import * as internal from '__internal__';
-import { Resource } from '@js_godot/classes/resource'
 import { Variant } from '@js_godot/variant/variant'
-import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
-import { PackedStringArray } from '@js_godot/variant/packed_string_array'
 import { StringName } from '@js_godot/variant/string_name'
-import { Dictionary } from '@js_godot/variant/dictionary'
-import { GDString } from '@js_godot/variant/gd_string'
+import { Resource } from '@js_godot/classes/resource'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -17,7 +13,7 @@ class _MethodBindings {
 }
 export class GLTFDocumentExtension extends Resource{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -27,13 +23,8 @@ export class GLTFDocumentExtension extends Resource{
       super(godot_object);
     }
   }
+
   
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-  }
   
   _import_preflight(_state, _extensions) {
   }
@@ -75,8 +66,4 @@ export class GLTFDocumentExtension extends Resource{
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

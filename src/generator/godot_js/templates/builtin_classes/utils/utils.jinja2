@@ -8,7 +8,7 @@
     let ret
     ret = _call_builtin_method_ptr{{'_obj' if method['return_type'] == 'Object' else ''}}_ret(
       {%- endif %}
-      {{to_js_type(clazz['name'])}}._bindings.method_{{ method['name'] }},
+      {{to_js_type(clazz['name'])}}.#_bindings.method_{{ method['name'] }},
       this,
       {{ get_type_index(camel_to_snake(method['return_type']) | upper) }},
       {%- if args %}
@@ -25,7 +25,7 @@
 {%- set args = method['arguments'] -%}
   {{ method['name'] }} ({{ args | map(attribute='name')  | add_prefix_suffix('_', '') | join(', ') }}) {
     _call_builtin_method_ptr_no_ret(
-      {{to_js_type(clazz['name'])}}._bindings.method_{{ method['name'] }},
+      {{to_js_type(clazz['name'])}}.#_bindings.method_{{ method['name'] }},
       this,
       {%- if args %}
       [{{- args | map(attribute='name') | add_prefix_suffix('_', '') | join(', ') }}]
@@ -46,7 +46,7 @@
       {%- for method in methods %}
     {
       let _gde_name = new StringName('{{ method['name'] }}')
-      this._bindings.method_{{ method['name'] }} = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_{{ method['name'] }} = internal.variant_get_ptr_builtin_method(
         {{get_type_index(camel_to_snake(type) | upper)}},
         _gde_name.opaque,
         {{method['hash']}}
@@ -77,17 +77,17 @@ class _MethodBindings {
 {%- macro bind_ctor(obj,type) %}
   static __init_bindings_constructors_destructor () {
     {%- set ctors = obj['constructors'] %}
-    this._bindings.from_variant_constructor = internal.get_variant_to_type_constructor(
+    this.#_bindings.from_variant_constructor = internal.get_variant_to_type_constructor(
       {{get_type_index(camel_to_snake(type) | upper)}}
     )
     {%- for ctor in ctors %}
-    this._bindings.constructor_{{ctor['index']}} = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_{{ctor['index']}} = internal.variant_get_ptr_constructor(
       {{get_type_index(camel_to_snake(type) | upper)}},
       {{ctor.index}}
     )
     {%- endfor %}
     {%- if obj['has_destructor'] %}
-    this._bindings.destructor = internal.variant_get_ptr_destructor(
+    this.#_bindings.destructor = internal.variant_get_ptr_destructor(
       {{get_type_index(camel_to_snake(type) | upper)}}
     )
     {%- endif %}
@@ -97,12 +97,12 @@ class _MethodBindings {
 {% macro base_ctor(clazz) %}
     {%- set ctors = clazz['constructors'] -%}
     {%- for ctor in clazz['constructors'] %}
-      {%- if not ctor['arguments'] %}
-    if (!from) {
-      _call_builtin_constructor({{to_js_type(clazz['name'])}}._bindings.constructor_{{ctor['index']}}, this)
+    {%- if not ctor['arguments'] %}
+    if (!value) {
+      _call_builtin_constructor({{to_js_type(clazz['name'])}}.#_bindings.constructor_{{ctor['index']}}, this)
     }
     {%- else %} 
-      {%- if ctor['arguments'] | length > 1 %} else if (arguments.length == {{ctor['arguments'] | length}} 
+      {%- if ctor['arguments'] | length >= 1 %} else if (arguments.length == {{ctor['arguments'] | length}} 
       {%- for arg in ctor['arguments'] -%}
         {%- if is_variant(arg['type']) -%}
           && arguments[{{loop.index - 1}}] instanceof {{to_js_type(arg['type'])}}
@@ -115,21 +115,23 @@ class _MethodBindings {
       {%- for arg in ctor['arguments'] %}
       let {{arg['name']}} = arguments[{{loop.index - 1}}];
       {%- endfor %}
-      _call_builtin_constructor({{to_js_type(clazz['name'])}}._bindings.constructor_{{ctor['index']}}, this, [
+      _call_builtin_constructor({{to_js_type(clazz['name'])}}.#_bindings.constructor_{{ctor['index']}}, this, [
         {{ ctor['arguments'] | map(attribute='name') | join(', ') }}
       ])
     }
-      {%- else -%} else if (from instanceof {{to_js_type((ctor['arguments'] | first)['type'])}}) {
+      {%- else -%} else if (value instanceof {{to_js_type((ctor['arguments'] | first)['type'])}}) {
       {%- for arg in ctor['arguments'] %}
       {%- endfor %}
-      _call_builtin_constructor({{to_js_type(clazz['name'])}}._bindings.constructor_{{ctor['index']}}, this, [
+      _call_builtin_constructor({{to_js_type(clazz['name'])}}.#_bindings.constructor_{{ctor['index']}}, this, [
         {{ ctor['arguments'] | map(attribute='name') | join(', ') }}
       ])
     }
       {%- endif %}
     {%- endif %}
-  {%- endfor %} else if (from.constructor.name === "Variant") {
-      {{to_js_type(clazz['name'])}}._bindings.from_variant_constructor(this.opaque, from.opaque)
+  {%- endfor %} else if (value.constructor.name === "Variant") {
+      {{to_js_type(clazz['name'])}}.#_bindings.from_variant_constructor(this.opaque, value.opaque)
+    } else if (value instanceof Uint8Array) {
+      this.opaque = value;
     } {% endmacro -%}
 
 {% macro set_property(clazz) %}

@@ -1,8 +1,7 @@
 import * as internal from '__internal__';
-import { Resource } from '@js_godot/classes/resource'
-import { StringName } from '@js_godot/variant/string_name'
-import { RID } from '@js_godot/variant/rid'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { Resource } from '@js_godot/classes/resource'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -18,7 +17,7 @@ class _MethodBindings {
 }
 export class World2D extends Resource{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -28,53 +27,57 @@ export class World2D extends Resource{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_get_canvas() {
+    if (!this.#_bindings.method_get_canvas) {
       let classname = new StringName("World2D");
       let methodname = new StringName("get_canvas");
-      this._bindings.method_get_canvas = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_canvas = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2944877500
       );
     }
-    {
+  }
+  static init_method_get_space() {
+    if (!this.#_bindings.method_get_space) {
       let classname = new StringName("World2D");
       let methodname = new StringName("get_space");
-      this._bindings.method_get_space = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_space = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2944877500
       );
     }
-    {
+  }
+  static init_method_get_navigation_map() {
+    if (!this.#_bindings.method_get_navigation_map) {
       let classname = new StringName("World2D");
       let methodname = new StringName("get_navigation_map");
-      this._bindings.method_get_navigation_map = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_navigation_map = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2944877500
       );
     }
-    {
+  }
+  static init_method_get_direct_space_state() {
+    if (!this.#_bindings.method_get_direct_space_state) {
       let classname = new StringName("World2D");
       let methodname = new StringName("get_direct_space_state");
-      this._bindings.method_get_direct_space_state = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_direct_space_state = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2506717822
       );
     }
   }
+
+  
   
   get_canvas() {
+    World2D.init_method_get_canvas();
     return _call_native_mb_ret(
-      World2D._bindings.method_get_canvas,
+      World2D.#_bindings.method_get_canvas,
       this._owner,
 			Variant.Type.RID,
     
@@ -83,8 +86,9 @@ export class World2D extends Resource{
     
   }
   get_space() {
+    World2D.init_method_get_space();
     return _call_native_mb_ret(
-      World2D._bindings.method_get_space,
+      World2D.#_bindings.method_get_space,
       this._owner,
 			Variant.Type.RID,
     
@@ -93,8 +97,9 @@ export class World2D extends Resource{
     
   }
   get_navigation_map() {
+    World2D.init_method_get_navigation_map();
     return _call_native_mb_ret(
-      World2D._bindings.method_get_navigation_map,
+      World2D.#_bindings.method_get_navigation_map,
       this._owner,
 			Variant.Type.RID,
     
@@ -103,10 +108,11 @@ export class World2D extends Resource{
     
   }
   get_direct_space_state() {
+    World2D.init_method_get_direct_space_state();
     return _call_native_mb_ret(
-      World2D._bindings.method_get_direct_space_state,
+      World2D.#_bindings.method_get_direct_space_state,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
@@ -125,8 +131,4 @@ get direct_space_state () {
   return this.get_direct_space_state();
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

@@ -1,7 +1,8 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
-import { Resource } from '@js_godot/classes/resource'
 import { StringName } from '@js_godot/variant/string_name'
+import { GDArray } from '@js_godot/variant/gd_array'
+import { Resource } from '@js_godot/classes/resource'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -15,7 +16,7 @@ class _MethodBindings {
 }
 export class Compositor extends Resource{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -25,45 +26,46 @@ export class Compositor extends Resource{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_compositor_effects() {
+    if (!this.#_bindings.method_set_compositor_effects) {
       let classname = new StringName("Compositor");
       let methodname = new StringName("set_compositor_effects");
-      this._bindings.method_set_compositor_effects = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_compositor_effects = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         381264803
       );
     }
-    {
+  }
+  static init_method_get_compositor_effects() {
+    if (!this.#_bindings.method_get_compositor_effects) {
       let classname = new StringName("Compositor");
       let methodname = new StringName("get_compositor_effects");
-      this._bindings.method_get_compositor_effects = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_compositor_effects = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3995934104
       );
     }
   }
+
+  
   
   set_compositor_effects(_compositor_effects) {
+    Compositor.init_method_set_compositor_effects();
     return _call_native_mb_no_ret(
-      Compositor._bindings.method_set_compositor_effects,
+      Compositor.#_bindings.method_set_compositor_effects,
       this._owner,
       _compositor_effects
     );
     
   }
   get_compositor_effects() {
+    Compositor.init_method_get_compositor_effects();
     return _call_native_mb_ret(
-      Compositor._bindings.method_get_compositor_effects,
+      Compositor.#_bindings.method_get_compositor_effects,
       this._owner,
-			Variant.INT,
+			Variant.Type.ARRAY,
       
     );
     
@@ -76,8 +78,4 @@ set compositor_effects (new_value) {
   this.set_compositor_effects(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

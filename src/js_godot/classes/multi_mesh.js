@@ -1,12 +1,7 @@
 import * as internal from '__internal__';
-import { PackedFloat32Array } from '@js_godot/variant/packed_float32_array'
-import { Transform3D } from '@js_godot/variant/transform3d'
-import { Resource } from '@js_godot/classes/resource'
-import { Color } from '@js_godot/variant/color'
-import { AABB } from '@js_godot/variant/aabb'
 import { Variant } from '@js_godot/variant/variant'
-import { Transform2D } from '@js_godot/variant/transform2d'
 import { StringName } from '@js_godot/variant/string_name'
+import { Resource } from '@js_godot/classes/resource'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -43,7 +38,7 @@ class _MethodBindings {
 }
 export class MultiMesh extends Resource{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -53,360 +48,425 @@ export class MultiMesh extends Resource{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_mesh() {
+    if (!this.#_bindings.method_set_mesh) {
       let classname = new StringName("MultiMesh");
       let methodname = new StringName("set_mesh");
-      this._bindings.method_set_mesh = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_mesh = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         194775623
       );
     }
-    {
+  }
+  static init_method_get_mesh() {
+    if (!this.#_bindings.method_get_mesh) {
       let classname = new StringName("MultiMesh");
       let methodname = new StringName("get_mesh");
-      this._bindings.method_get_mesh = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_mesh = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1808005922
       );
     }
-    {
+  }
+  static init_method_set_use_colors() {
+    if (!this.#_bindings.method_set_use_colors) {
       let classname = new StringName("MultiMesh");
       let methodname = new StringName("set_use_colors");
-      this._bindings.method_set_use_colors = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_use_colors = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_is_using_colors() {
+    if (!this.#_bindings.method_is_using_colors) {
       let classname = new StringName("MultiMesh");
       let methodname = new StringName("is_using_colors");
-      this._bindings.method_is_using_colors = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_using_colors = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_set_use_custom_data() {
+    if (!this.#_bindings.method_set_use_custom_data) {
       let classname = new StringName("MultiMesh");
       let methodname = new StringName("set_use_custom_data");
-      this._bindings.method_set_use_custom_data = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_use_custom_data = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_is_using_custom_data() {
+    if (!this.#_bindings.method_is_using_custom_data) {
       let classname = new StringName("MultiMesh");
       let methodname = new StringName("is_using_custom_data");
-      this._bindings.method_is_using_custom_data = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_using_custom_data = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_set_transform_format() {
+    if (!this.#_bindings.method_set_transform_format) {
       let classname = new StringName("MultiMesh");
       let methodname = new StringName("set_transform_format");
-      this._bindings.method_set_transform_format = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_transform_format = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2404750322
       );
     }
-    {
+  }
+  static init_method_get_transform_format() {
+    if (!this.#_bindings.method_get_transform_format) {
       let classname = new StringName("MultiMesh");
       let methodname = new StringName("get_transform_format");
-      this._bindings.method_get_transform_format = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_transform_format = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2444156481
       );
     }
-    {
+  }
+  static init_method_set_instance_count() {
+    if (!this.#_bindings.method_set_instance_count) {
       let classname = new StringName("MultiMesh");
       let methodname = new StringName("set_instance_count");
-      this._bindings.method_set_instance_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_instance_count = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1286410249
       );
     }
-    {
+  }
+  static init_method_get_instance_count() {
+    if (!this.#_bindings.method_get_instance_count) {
       let classname = new StringName("MultiMesh");
       let methodname = new StringName("get_instance_count");
-      this._bindings.method_get_instance_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_instance_count = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
-    {
+  }
+  static init_method_set_visible_instance_count() {
+    if (!this.#_bindings.method_set_visible_instance_count) {
       let classname = new StringName("MultiMesh");
       let methodname = new StringName("set_visible_instance_count");
-      this._bindings.method_set_visible_instance_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_visible_instance_count = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1286410249
       );
     }
-    {
+  }
+  static init_method_get_visible_instance_count() {
+    if (!this.#_bindings.method_get_visible_instance_count) {
       let classname = new StringName("MultiMesh");
       let methodname = new StringName("get_visible_instance_count");
-      this._bindings.method_get_visible_instance_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_visible_instance_count = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
-    {
+  }
+  static init_method_set_instance_transform() {
+    if (!this.#_bindings.method_set_instance_transform) {
       let classname = new StringName("MultiMesh");
       let methodname = new StringName("set_instance_transform");
-      this._bindings.method_set_instance_transform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_instance_transform = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3616898986
       );
     }
-    {
+  }
+  static init_method_set_instance_transform_2d() {
+    if (!this.#_bindings.method_set_instance_transform_2d) {
       let classname = new StringName("MultiMesh");
       let methodname = new StringName("set_instance_transform_2d");
-      this._bindings.method_set_instance_transform_2d = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_instance_transform_2d = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         30160968
       );
     }
-    {
+  }
+  static init_method_get_instance_transform() {
+    if (!this.#_bindings.method_get_instance_transform) {
       let classname = new StringName("MultiMesh");
       let methodname = new StringName("get_instance_transform");
-      this._bindings.method_get_instance_transform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_instance_transform = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1965739696
       );
     }
-    {
+  }
+  static init_method_get_instance_transform_2d() {
+    if (!this.#_bindings.method_get_instance_transform_2d) {
       let classname = new StringName("MultiMesh");
       let methodname = new StringName("get_instance_transform_2d");
-      this._bindings.method_get_instance_transform_2d = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_instance_transform_2d = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3836996910
       );
     }
-    {
+  }
+  static init_method_set_instance_color() {
+    if (!this.#_bindings.method_set_instance_color) {
       let classname = new StringName("MultiMesh");
       let methodname = new StringName("set_instance_color");
-      this._bindings.method_set_instance_color = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_instance_color = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2878471219
       );
     }
-    {
+  }
+  static init_method_get_instance_color() {
+    if (!this.#_bindings.method_get_instance_color) {
       let classname = new StringName("MultiMesh");
       let methodname = new StringName("get_instance_color");
-      this._bindings.method_get_instance_color = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_instance_color = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3457211756
       );
     }
-    {
+  }
+  static init_method_set_instance_custom_data() {
+    if (!this.#_bindings.method_set_instance_custom_data) {
       let classname = new StringName("MultiMesh");
       let methodname = new StringName("set_instance_custom_data");
-      this._bindings.method_set_instance_custom_data = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_instance_custom_data = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2878471219
       );
     }
-    {
+  }
+  static init_method_get_instance_custom_data() {
+    if (!this.#_bindings.method_get_instance_custom_data) {
       let classname = new StringName("MultiMesh");
       let methodname = new StringName("get_instance_custom_data");
-      this._bindings.method_get_instance_custom_data = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_instance_custom_data = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3457211756
       );
     }
-    {
+  }
+  static init_method_set_custom_aabb() {
+    if (!this.#_bindings.method_set_custom_aabb) {
       let classname = new StringName("MultiMesh");
       let methodname = new StringName("set_custom_aabb");
-      this._bindings.method_set_custom_aabb = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_custom_aabb = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         259215842
       );
     }
-    {
+  }
+  static init_method_get_custom_aabb() {
+    if (!this.#_bindings.method_get_custom_aabb) {
       let classname = new StringName("MultiMesh");
       let methodname = new StringName("get_custom_aabb");
-      this._bindings.method_get_custom_aabb = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_custom_aabb = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1068685055
       );
     }
-    {
+  }
+  static init_method_get_aabb() {
+    if (!this.#_bindings.method_get_aabb) {
       let classname = new StringName("MultiMesh");
       let methodname = new StringName("get_aabb");
-      this._bindings.method_get_aabb = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_aabb = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1068685055
       );
     }
-    {
+  }
+  static init_method_get_buffer() {
+    if (!this.#_bindings.method_get_buffer) {
       let classname = new StringName("MultiMesh");
       let methodname = new StringName("get_buffer");
-      this._bindings.method_get_buffer = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_buffer = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         675695659
       );
     }
-    {
+  }
+  static init_method_set_buffer() {
+    if (!this.#_bindings.method_set_buffer) {
       let classname = new StringName("MultiMesh");
       let methodname = new StringName("set_buffer");
-      this._bindings.method_set_buffer = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_buffer = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2899603908
       );
     }
   }
+
+  
   
   set_mesh(_mesh) {
+    MultiMesh.init_method_set_mesh();
     return _call_native_mb_no_ret(
-      MultiMesh._bindings.method_set_mesh,
+      MultiMesh.#_bindings.method_set_mesh,
       this._owner,
       _mesh
     );
     
   }
   get_mesh() {
+    MultiMesh.init_method_get_mesh();
     return _call_native_mb_ret(
-      MultiMesh._bindings.method_get_mesh,
+      MultiMesh.#_bindings.method_get_mesh,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
   }
   set_use_colors(_enable) {
+    MultiMesh.init_method_set_use_colors();
     return _call_native_mb_no_ret(
-      MultiMesh._bindings.method_set_use_colors,
+      MultiMesh.#_bindings.method_set_use_colors,
       this._owner,
       _enable
     );
     
   }
   is_using_colors() {
+    MultiMesh.init_method_is_using_colors();
     return _call_native_mb_ret(
-      MultiMesh._bindings.method_is_using_colors,
+      MultiMesh.#_bindings.method_is_using_colors,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_use_custom_data(_enable) {
+    MultiMesh.init_method_set_use_custom_data();
     return _call_native_mb_no_ret(
-      MultiMesh._bindings.method_set_use_custom_data,
+      MultiMesh.#_bindings.method_set_use_custom_data,
       this._owner,
       _enable
     );
     
   }
   is_using_custom_data() {
+    MultiMesh.init_method_is_using_custom_data();
     return _call_native_mb_ret(
-      MultiMesh._bindings.method_is_using_custom_data,
+      MultiMesh.#_bindings.method_is_using_custom_data,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_transform_format(_format) {
+    MultiMesh.init_method_set_transform_format();
     return _call_native_mb_no_ret(
-      MultiMesh._bindings.method_set_transform_format,
+      MultiMesh.#_bindings.method_set_transform_format,
       this._owner,
       _format
     );
     
   }
   get_transform_format() {
+    MultiMesh.init_method_get_transform_format();
     return _call_native_mb_ret(
-      MultiMesh._bindings.method_get_transform_format,
+      MultiMesh.#_bindings.method_get_transform_format,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_instance_count(_count) {
+    MultiMesh.init_method_set_instance_count();
     return _call_native_mb_no_ret(
-      MultiMesh._bindings.method_set_instance_count,
+      MultiMesh.#_bindings.method_set_instance_count,
       this._owner,
       _count
     );
     
   }
   get_instance_count() {
+    MultiMesh.init_method_get_instance_count();
     return _call_native_mb_ret(
-      MultiMesh._bindings.method_get_instance_count,
+      MultiMesh.#_bindings.method_get_instance_count,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_visible_instance_count(_count) {
+    MultiMesh.init_method_set_visible_instance_count();
     return _call_native_mb_no_ret(
-      MultiMesh._bindings.method_set_visible_instance_count,
+      MultiMesh.#_bindings.method_set_visible_instance_count,
       this._owner,
       _count
     );
     
   }
   get_visible_instance_count() {
+    MultiMesh.init_method_get_visible_instance_count();
     return _call_native_mb_ret(
-      MultiMesh._bindings.method_get_visible_instance_count,
+      MultiMesh.#_bindings.method_get_visible_instance_count,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_instance_transform(_instance, _transform) {
+    MultiMesh.init_method_set_instance_transform();
     return _call_native_mb_no_ret(
-      MultiMesh._bindings.method_set_instance_transform,
+      MultiMesh.#_bindings.method_set_instance_transform,
       this._owner,
       _instance, _transform
     );
     
   }
   set_instance_transform_2d(_instance, _transform) {
+    MultiMesh.init_method_set_instance_transform_2d();
     return _call_native_mb_no_ret(
-      MultiMesh._bindings.method_set_instance_transform_2d,
+      MultiMesh.#_bindings.method_set_instance_transform_2d,
       this._owner,
       _instance, _transform
     );
     
   }
   get_instance_transform(_instance) {
+    MultiMesh.init_method_get_instance_transform();
     return _call_native_mb_ret(
-      MultiMesh._bindings.method_get_instance_transform,
+      MultiMesh.#_bindings.method_get_instance_transform,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -415,8 +475,9 @@ export class MultiMesh extends Resource{
     
   }
   get_instance_transform_2d(_instance) {
+    MultiMesh.init_method_get_instance_transform_2d();
     return _call_native_mb_ret(
-      MultiMesh._bindings.method_get_instance_transform_2d,
+      MultiMesh.#_bindings.method_get_instance_transform_2d,
       this._owner,
 			Variant.Type.TRANSFORM2D,
     
@@ -425,16 +486,18 @@ export class MultiMesh extends Resource{
     
   }
   set_instance_color(_instance, _color) {
+    MultiMesh.init_method_set_instance_color();
     return _call_native_mb_no_ret(
-      MultiMesh._bindings.method_set_instance_color,
+      MultiMesh.#_bindings.method_set_instance_color,
       this._owner,
       _instance, _color
     );
     
   }
   get_instance_color(_instance) {
+    MultiMesh.init_method_get_instance_color();
     return _call_native_mb_ret(
-      MultiMesh._bindings.method_get_instance_color,
+      MultiMesh.#_bindings.method_get_instance_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -443,16 +506,18 @@ export class MultiMesh extends Resource{
     
   }
   set_instance_custom_data(_instance, _custom_data) {
+    MultiMesh.init_method_set_instance_custom_data();
     return _call_native_mb_no_ret(
-      MultiMesh._bindings.method_set_instance_custom_data,
+      MultiMesh.#_bindings.method_set_instance_custom_data,
       this._owner,
       _instance, _custom_data
     );
     
   }
   get_instance_custom_data(_instance) {
+    MultiMesh.init_method_get_instance_custom_data();
     return _call_native_mb_ret(
-      MultiMesh._bindings.method_get_instance_custom_data,
+      MultiMesh.#_bindings.method_get_instance_custom_data,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -461,16 +526,18 @@ export class MultiMesh extends Resource{
     
   }
   set_custom_aabb(_aabb) {
+    MultiMesh.init_method_set_custom_aabb();
     return _call_native_mb_no_ret(
-      MultiMesh._bindings.method_set_custom_aabb,
+      MultiMesh.#_bindings.method_set_custom_aabb,
       this._owner,
       _aabb
     );
     
   }
   get_custom_aabb() {
+    MultiMesh.init_method_get_custom_aabb();
     return _call_native_mb_ret(
-      MultiMesh._bindings.method_get_custom_aabb,
+      MultiMesh.#_bindings.method_get_custom_aabb,
       this._owner,
 			Variant.Type.AABB,
     
@@ -479,8 +546,9 @@ export class MultiMesh extends Resource{
     
   }
   get_aabb() {
+    MultiMesh.init_method_get_aabb();
     return _call_native_mb_ret(
-      MultiMesh._bindings.method_get_aabb,
+      MultiMesh.#_bindings.method_get_aabb,
       this._owner,
 			Variant.Type.AABB,
     
@@ -489,8 +557,9 @@ export class MultiMesh extends Resource{
     
   }
   get_buffer() {
+    MultiMesh.init_method_get_buffer();
     return _call_native_mb_ret(
-      MultiMesh._bindings.method_get_buffer,
+      MultiMesh.#_bindings.method_get_buffer,
       this._owner,
 			Variant.Type.PACKED_FLOAT32_ARRAY,
     
@@ -499,8 +568,9 @@ export class MultiMesh extends Resource{
     
   }
   set_buffer(_buffer) {
+    MultiMesh.init_method_set_buffer();
     return _call_native_mb_no_ret(
-      MultiMesh._bindings.method_set_buffer,
+      MultiMesh.#_bindings.method_set_buffer,
       this._owner,
       _buffer
     );
@@ -583,9 +653,5 @@ set custom_data_array (new_value) {
   static TransformFormat = {
     TRANSFORM_2D: 0,
     TRANSFORM_3D: 1,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

@@ -1,9 +1,6 @@
 import * as internal from '__internal__';
-import { RID } from '@js_godot/variant/rid'
 import { Variant } from '@js_godot/variant/variant'
-import { Transform2D } from '@js_godot/variant/transform2d'
 import { StringName } from '@js_godot/variant/string_name'
-import { Vector2 } from '@js_godot/variant/vector2'
 import { PhysicsDirectBodyState2D } from '@js_godot/classes/physics_direct_body_state2d'
 import {
   call_utility_ret,
@@ -16,7 +13,7 @@ class _MethodBindings {
 }
 export class PhysicsDirectBodyState2DExtension extends PhysicsDirectBodyState2D{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -26,13 +23,8 @@ export class PhysicsDirectBodyState2DExtension extends PhysicsDirectBodyState2D{
       super(godot_object);
     }
   }
+
   
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-  }
   
   _get_total_gravity() {
   }
@@ -124,8 +116,4 @@ export class PhysicsDirectBodyState2DExtension extends PhysicsDirectBodyState2D{
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

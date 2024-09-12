@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { Variant } from '@js_godot/variant/variant'
 import { VisualShaderNode } from '@js_godot/classes/visual_shader_node'
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -15,7 +15,7 @@ class _MethodBindings {
 }
 export class VisualShaderNodeParticleEmit extends VisualShaderNode{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -25,45 +25,47 @@ export class VisualShaderNodeParticleEmit extends VisualShaderNode{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_flags() {
+    if (!this.#_bindings.method_set_flags) {
       let classname = new StringName("VisualShaderNodeParticleEmit");
       let methodname = new StringName("set_flags");
-      this._bindings.method_set_flags = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_flags = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3960756792
       );
     }
-    {
+  }
+  static init_method_get_flags() {
+    if (!this.#_bindings.method_get_flags) {
       let classname = new StringName("VisualShaderNodeParticleEmit");
       let methodname = new StringName("get_flags");
-      this._bindings.method_get_flags = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_flags = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         171277835
       );
     }
   }
+
+  
   
   set_flags(_flags) {
+    VisualShaderNodeParticleEmit.init_method_set_flags();
     return _call_native_mb_no_ret(
-      VisualShaderNodeParticleEmit._bindings.method_set_flags,
+      VisualShaderNodeParticleEmit.#_bindings.method_set_flags,
       this._owner,
       _flags
     );
     
   }
   get_flags() {
+    VisualShaderNodeParticleEmit.init_method_get_flags();
     return _call_native_mb_ret(
-      VisualShaderNodeParticleEmit._bindings.method_get_flags,
+      VisualShaderNodeParticleEmit.#_bindings.method_get_flags,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
@@ -82,9 +84,5 @@ set flags (new_value) {
     EMIT_FLAG_VELOCITY: 4,
     EMIT_FLAG_COLOR: 8,
     EMIT_FLAG_CUSTOM: 16,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

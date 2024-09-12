@@ -1,9 +1,7 @@
 import * as internal from '__internal__';
-import { GDArray } from '@js_godot/variant/gd_array'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { XRInterface } from '@js_godot/classes/xr_interface'
-import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -33,7 +31,7 @@ class _MethodBindings {
 }
 export class WebXRInterface extends XRInterface{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -43,195 +41,229 @@ export class WebXRInterface extends XRInterface{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_is_session_supported() {
+    if (!this.#_bindings.method_is_session_supported) {
       let classname = new StringName("WebXRInterface");
       let methodname = new StringName("is_session_supported");
-      this._bindings.method_is_session_supported = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_session_supported = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         83702148
       );
     }
-    {
+  }
+  static init_method_set_session_mode() {
+    if (!this.#_bindings.method_set_session_mode) {
       let classname = new StringName("WebXRInterface");
       let methodname = new StringName("set_session_mode");
-      this._bindings.method_set_session_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_session_mode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         83702148
       );
     }
-    {
+  }
+  static init_method_get_session_mode() {
+    if (!this.#_bindings.method_get_session_mode) {
       let classname = new StringName("WebXRInterface");
       let methodname = new StringName("get_session_mode");
-      this._bindings.method_get_session_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_session_mode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         201670096
       );
     }
-    {
+  }
+  static init_method_set_required_features() {
+    if (!this.#_bindings.method_set_required_features) {
       let classname = new StringName("WebXRInterface");
       let methodname = new StringName("set_required_features");
-      this._bindings.method_set_required_features = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_required_features = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         83702148
       );
     }
-    {
+  }
+  static init_method_get_required_features() {
+    if (!this.#_bindings.method_get_required_features) {
       let classname = new StringName("WebXRInterface");
       let methodname = new StringName("get_required_features");
-      this._bindings.method_get_required_features = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_required_features = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         201670096
       );
     }
-    {
+  }
+  static init_method_set_optional_features() {
+    if (!this.#_bindings.method_set_optional_features) {
       let classname = new StringName("WebXRInterface");
       let methodname = new StringName("set_optional_features");
-      this._bindings.method_set_optional_features = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_optional_features = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         83702148
       );
     }
-    {
+  }
+  static init_method_get_optional_features() {
+    if (!this.#_bindings.method_get_optional_features) {
       let classname = new StringName("WebXRInterface");
       let methodname = new StringName("get_optional_features");
-      this._bindings.method_get_optional_features = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_optional_features = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         201670096
       );
     }
-    {
+  }
+  static init_method_get_reference_space_type() {
+    if (!this.#_bindings.method_get_reference_space_type) {
       let classname = new StringName("WebXRInterface");
       let methodname = new StringName("get_reference_space_type");
-      this._bindings.method_get_reference_space_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_reference_space_type = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         201670096
       );
     }
-    {
+  }
+  static init_method_get_enabled_features() {
+    if (!this.#_bindings.method_get_enabled_features) {
       let classname = new StringName("WebXRInterface");
       let methodname = new StringName("get_enabled_features");
-      this._bindings.method_get_enabled_features = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_enabled_features = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         201670096
       );
     }
-    {
+  }
+  static init_method_set_requested_reference_space_types() {
+    if (!this.#_bindings.method_set_requested_reference_space_types) {
       let classname = new StringName("WebXRInterface");
       let methodname = new StringName("set_requested_reference_space_types");
-      this._bindings.method_set_requested_reference_space_types = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_requested_reference_space_types = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         83702148
       );
     }
-    {
+  }
+  static init_method_get_requested_reference_space_types() {
+    if (!this.#_bindings.method_get_requested_reference_space_types) {
       let classname = new StringName("WebXRInterface");
       let methodname = new StringName("get_requested_reference_space_types");
-      this._bindings.method_get_requested_reference_space_types = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_requested_reference_space_types = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         201670096
       );
     }
-    {
+  }
+  static init_method_is_input_source_active() {
+    if (!this.#_bindings.method_is_input_source_active) {
       let classname = new StringName("WebXRInterface");
       let methodname = new StringName("is_input_source_active");
-      this._bindings.method_is_input_source_active = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_input_source_active = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1116898809
       );
     }
-    {
+  }
+  static init_method_get_input_source_tracker() {
+    if (!this.#_bindings.method_get_input_source_tracker) {
       let classname = new StringName("WebXRInterface");
       let methodname = new StringName("get_input_source_tracker");
-      this._bindings.method_get_input_source_tracker = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_input_source_tracker = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         399776966
       );
     }
-    {
+  }
+  static init_method_get_input_source_target_ray_mode() {
+    if (!this.#_bindings.method_get_input_source_target_ray_mode) {
       let classname = new StringName("WebXRInterface");
       let methodname = new StringName("get_input_source_target_ray_mode");
-      this._bindings.method_get_input_source_target_ray_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_input_source_target_ray_mode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2852387453
       );
     }
-    {
+  }
+  static init_method_get_visibility_state() {
+    if (!this.#_bindings.method_get_visibility_state) {
       let classname = new StringName("WebXRInterface");
       let methodname = new StringName("get_visibility_state");
-      this._bindings.method_get_visibility_state = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_visibility_state = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         201670096
       );
     }
-    {
+  }
+  static init_method_get_display_refresh_rate() {
+    if (!this.#_bindings.method_get_display_refresh_rate) {
       let classname = new StringName("WebXRInterface");
       let methodname = new StringName("get_display_refresh_rate");
-      this._bindings.method_get_display_refresh_rate = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_display_refresh_rate = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_set_display_refresh_rate() {
+    if (!this.#_bindings.method_set_display_refresh_rate) {
       let classname = new StringName("WebXRInterface");
       let methodname = new StringName("set_display_refresh_rate");
-      this._bindings.method_set_display_refresh_rate = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_display_refresh_rate = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_available_display_refresh_rates() {
+    if (!this.#_bindings.method_get_available_display_refresh_rates) {
       let classname = new StringName("WebXRInterface");
       let methodname = new StringName("get_available_display_refresh_rates");
-      this._bindings.method_get_available_display_refresh_rates = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_available_display_refresh_rates = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3995934104
       );
     }
   }
+
+  
   
   is_session_supported(_session_mode) {
+    WebXRInterface.init_method_is_session_supported();
     return _call_native_mb_no_ret(
-      WebXRInterface._bindings.method_is_session_supported,
+      WebXRInterface.#_bindings.method_is_session_supported,
       this._owner,
       _session_mode
     );
     
   }
   set_session_mode(_session_mode) {
+    WebXRInterface.init_method_set_session_mode();
     return _call_native_mb_no_ret(
-      WebXRInterface._bindings.method_set_session_mode,
+      WebXRInterface.#_bindings.method_set_session_mode,
       this._owner,
       _session_mode
     );
     
   }
   get_session_mode() {
+    WebXRInterface.init_method_get_session_mode();
     return _call_native_mb_ret(
-      WebXRInterface._bindings.method_get_session_mode,
+      WebXRInterface.#_bindings.method_get_session_mode,
       this._owner,
 			Variant.Type.STRING,
     
@@ -240,16 +272,18 @@ export class WebXRInterface extends XRInterface{
     
   }
   set_required_features(_required_features) {
+    WebXRInterface.init_method_set_required_features();
     return _call_native_mb_no_ret(
-      WebXRInterface._bindings.method_set_required_features,
+      WebXRInterface.#_bindings.method_set_required_features,
       this._owner,
       _required_features
     );
     
   }
   get_required_features() {
+    WebXRInterface.init_method_get_required_features();
     return _call_native_mb_ret(
-      WebXRInterface._bindings.method_get_required_features,
+      WebXRInterface.#_bindings.method_get_required_features,
       this._owner,
 			Variant.Type.STRING,
     
@@ -258,16 +292,18 @@ export class WebXRInterface extends XRInterface{
     
   }
   set_optional_features(_optional_features) {
+    WebXRInterface.init_method_set_optional_features();
     return _call_native_mb_no_ret(
-      WebXRInterface._bindings.method_set_optional_features,
+      WebXRInterface.#_bindings.method_set_optional_features,
       this._owner,
       _optional_features
     );
     
   }
   get_optional_features() {
+    WebXRInterface.init_method_get_optional_features();
     return _call_native_mb_ret(
-      WebXRInterface._bindings.method_get_optional_features,
+      WebXRInterface.#_bindings.method_get_optional_features,
       this._owner,
 			Variant.Type.STRING,
     
@@ -276,8 +312,9 @@ export class WebXRInterface extends XRInterface{
     
   }
   get_reference_space_type() {
+    WebXRInterface.init_method_get_reference_space_type();
     return _call_native_mb_ret(
-      WebXRInterface._bindings.method_get_reference_space_type,
+      WebXRInterface.#_bindings.method_get_reference_space_type,
       this._owner,
 			Variant.Type.STRING,
     
@@ -286,8 +323,9 @@ export class WebXRInterface extends XRInterface{
     
   }
   get_enabled_features() {
+    WebXRInterface.init_method_get_enabled_features();
     return _call_native_mb_ret(
-      WebXRInterface._bindings.method_get_enabled_features,
+      WebXRInterface.#_bindings.method_get_enabled_features,
       this._owner,
 			Variant.Type.STRING,
     
@@ -296,16 +334,18 @@ export class WebXRInterface extends XRInterface{
     
   }
   set_requested_reference_space_types(_requested_reference_space_types) {
+    WebXRInterface.init_method_set_requested_reference_space_types();
     return _call_native_mb_no_ret(
-      WebXRInterface._bindings.method_set_requested_reference_space_types,
+      WebXRInterface.#_bindings.method_set_requested_reference_space_types,
       this._owner,
       _requested_reference_space_types
     );
     
   }
   get_requested_reference_space_types() {
+    WebXRInterface.init_method_get_requested_reference_space_types();
     return _call_native_mb_ret(
-      WebXRInterface._bindings.method_get_requested_reference_space_types,
+      WebXRInterface.#_bindings.method_get_requested_reference_space_types,
       this._owner,
 			Variant.Type.STRING,
     
@@ -314,35 +354,41 @@ export class WebXRInterface extends XRInterface{
     
   }
   is_input_source_active(_input_source_id) {
+    WebXRInterface.init_method_is_input_source_active();
     return _call_native_mb_ret(
-      WebXRInterface._bindings.method_is_input_source_active,
+      WebXRInterface.#_bindings.method_is_input_source_active,
       this._owner,
 			Variant.Type.BOOL,
+    
       _input_source_id
     );
     
   }
   get_input_source_tracker(_input_source_id) {
+    WebXRInterface.init_method_get_input_source_tracker();
     return _call_native_mb_ret(
-      WebXRInterface._bindings.method_get_input_source_tracker,
+      WebXRInterface.#_bindings.method_get_input_source_tracker,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       _input_source_id
     );
     
   }
   get_input_source_target_ray_mode(_input_source_id) {
+    WebXRInterface.init_method_get_input_source_target_ray_mode();
     return _call_native_mb_ret(
-      WebXRInterface._bindings.method_get_input_source_target_ray_mode,
+      WebXRInterface.#_bindings.method_get_input_source_target_ray_mode,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       _input_source_id
     );
     
   }
   get_visibility_state() {
+    WebXRInterface.init_method_get_visibility_state();
     return _call_native_mb_ret(
-      WebXRInterface._bindings.method_get_visibility_state,
+      WebXRInterface.#_bindings.method_get_visibility_state,
       this._owner,
 			Variant.Type.STRING,
     
@@ -351,25 +397,29 @@ export class WebXRInterface extends XRInterface{
     
   }
   get_display_refresh_rate() {
+    WebXRInterface.init_method_get_display_refresh_rate();
     return _call_native_mb_ret(
-      WebXRInterface._bindings.method_get_display_refresh_rate,
+      WebXRInterface.#_bindings.method_get_display_refresh_rate,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_display_refresh_rate(_refresh_rate) {
+    WebXRInterface.init_method_set_display_refresh_rate();
     return _call_native_mb_no_ret(
-      WebXRInterface._bindings.method_set_display_refresh_rate,
+      WebXRInterface.#_bindings.method_set_display_refresh_rate,
       this._owner,
       _refresh_rate
     );
     
   }
   get_available_display_refresh_rates() {
+    WebXRInterface.init_method_get_available_display_refresh_rates();
     return _call_native_mb_ret(
-      WebXRInterface._bindings.method_get_available_display_refresh_rates,
+      WebXRInterface.#_bindings.method_get_available_display_refresh_rates,
       this._owner,
 			Variant.Type.ARRAY,
     
@@ -417,9 +467,5 @@ get visibility_state () {
     TARGET_RAY_MODE_GAZE: 1,
     TARGET_RAY_MODE_TRACKED_POINTER: 2,
     TARGET_RAY_MODE_SCREEN: 3,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

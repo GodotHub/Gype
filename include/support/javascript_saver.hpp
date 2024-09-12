@@ -1,5 +1,6 @@
 #pragma once
 
+#include "support/javascript.hpp"
 #include <godot_cpp/classes/resource_format_saver.hpp>
 
 namespace godot {
@@ -9,10 +10,13 @@ class Variant;
 class JavaScriptSaver : public ResourceFormatSaver {
 	GDCLASS(JavaScriptSaver, ResourceFormatSaver)
 
+	friend class JavaScript;
+
 	static JavaScriptSaver *singleton;
 
 public:
 	static JavaScriptSaver *get_singleton();
+	void update_cur_class(Ref<JavaScript> script);
 	Error _save(const Ref<Resource> &p_resource, const String &p_path, uint32_t p_flags);
 	Error _set_uid(const String &p_path, int64_t p_uid);
 	bool _recognize(const Ref<Resource> &p_resource) const;

@@ -1,5 +1,4 @@
 import * as internal from '__internal__';
-import { Vector3 } from '@js_godot/variant/vector3'
 import { Variant } from '@js_godot/variant/variant'
 import { Noise } from '@js_godot/classes/noise'
 import { StringName } from '@js_godot/variant/string_name'
@@ -56,7 +55,7 @@ class _MethodBindings {
 }
 export class FastNoiseLite extends Noise{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -66,454 +65,544 @@ export class FastNoiseLite extends Noise{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_noise_type() {
+    if (!this.#_bindings.method_set_noise_type) {
       let classname = new StringName("FastNoiseLite");
       let methodname = new StringName("set_noise_type");
-      this._bindings.method_set_noise_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_noise_type = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2624461392
       );
     }
-    {
+  }
+  static init_method_get_noise_type() {
+    if (!this.#_bindings.method_get_noise_type) {
       let classname = new StringName("FastNoiseLite");
       let methodname = new StringName("get_noise_type");
-      this._bindings.method_get_noise_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_noise_type = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1458108610
       );
     }
-    {
+  }
+  static init_method_set_seed() {
+    if (!this.#_bindings.method_set_seed) {
       let classname = new StringName("FastNoiseLite");
       let methodname = new StringName("set_seed");
-      this._bindings.method_set_seed = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_seed = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1286410249
       );
     }
-    {
+  }
+  static init_method_get_seed() {
+    if (!this.#_bindings.method_get_seed) {
       let classname = new StringName("FastNoiseLite");
       let methodname = new StringName("get_seed");
-      this._bindings.method_get_seed = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_seed = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
-    {
+  }
+  static init_method_set_frequency() {
+    if (!this.#_bindings.method_set_frequency) {
       let classname = new StringName("FastNoiseLite");
       let methodname = new StringName("set_frequency");
-      this._bindings.method_set_frequency = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_frequency = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_frequency() {
+    if (!this.#_bindings.method_get_frequency) {
       let classname = new StringName("FastNoiseLite");
       let methodname = new StringName("get_frequency");
-      this._bindings.method_get_frequency = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("FastNoiseLite");
-      let methodname = new StringName("set_offset");
-      this._bindings.method_set_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3460891852
-      );
-    }
-    {
-      let classname = new StringName("FastNoiseLite");
-      let methodname = new StringName("get_offset");
-      this._bindings.method_get_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3360562783
-      );
-    }
-    {
-      let classname = new StringName("FastNoiseLite");
-      let methodname = new StringName("set_fractal_type");
-      this._bindings.method_set_fractal_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4132731174
-      );
-    }
-    {
-      let classname = new StringName("FastNoiseLite");
-      let methodname = new StringName("get_fractal_type");
-      this._bindings.method_get_fractal_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1036889279
-      );
-    }
-    {
-      let classname = new StringName("FastNoiseLite");
-      let methodname = new StringName("set_fractal_octaves");
-      this._bindings.method_set_fractal_octaves = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("FastNoiseLite");
-      let methodname = new StringName("get_fractal_octaves");
-      this._bindings.method_get_fractal_octaves = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("FastNoiseLite");
-      let methodname = new StringName("set_fractal_lacunarity");
-      this._bindings.method_set_fractal_lacunarity = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("FastNoiseLite");
-      let methodname = new StringName("get_fractal_lacunarity");
-      this._bindings.method_get_fractal_lacunarity = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("FastNoiseLite");
-      let methodname = new StringName("set_fractal_gain");
-      this._bindings.method_set_fractal_gain = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("FastNoiseLite");
-      let methodname = new StringName("get_fractal_gain");
-      this._bindings.method_get_fractal_gain = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("FastNoiseLite");
-      let methodname = new StringName("set_fractal_weighted_strength");
-      this._bindings.method_set_fractal_weighted_strength = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("FastNoiseLite");
-      let methodname = new StringName("get_fractal_weighted_strength");
-      this._bindings.method_get_fractal_weighted_strength = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("FastNoiseLite");
-      let methodname = new StringName("set_fractal_ping_pong_strength");
-      this._bindings.method_set_fractal_ping_pong_strength = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("FastNoiseLite");
-      let methodname = new StringName("get_fractal_ping_pong_strength");
-      this._bindings.method_get_fractal_ping_pong_strength = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("FastNoiseLite");
-      let methodname = new StringName("set_cellular_distance_function");
-      this._bindings.method_set_cellular_distance_function = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1006013267
-      );
-    }
-    {
-      let classname = new StringName("FastNoiseLite");
-      let methodname = new StringName("get_cellular_distance_function");
-      this._bindings.method_get_cellular_distance_function = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2021274088
-      );
-    }
-    {
-      let classname = new StringName("FastNoiseLite");
-      let methodname = new StringName("set_cellular_jitter");
-      this._bindings.method_set_cellular_jitter = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("FastNoiseLite");
-      let methodname = new StringName("get_cellular_jitter");
-      this._bindings.method_get_cellular_jitter = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("FastNoiseLite");
-      let methodname = new StringName("set_cellular_return_type");
-      this._bindings.method_set_cellular_return_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2654169698
-      );
-    }
-    {
-      let classname = new StringName("FastNoiseLite");
-      let methodname = new StringName("get_cellular_return_type");
-      this._bindings.method_get_cellular_return_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3699796343
-      );
-    }
-    {
-      let classname = new StringName("FastNoiseLite");
-      let methodname = new StringName("set_domain_warp_enabled");
-      this._bindings.method_set_domain_warp_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("FastNoiseLite");
-      let methodname = new StringName("is_domain_warp_enabled");
-      this._bindings.method_is_domain_warp_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("FastNoiseLite");
-      let methodname = new StringName("set_domain_warp_type");
-      this._bindings.method_set_domain_warp_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3629692980
-      );
-    }
-    {
-      let classname = new StringName("FastNoiseLite");
-      let methodname = new StringName("get_domain_warp_type");
-      this._bindings.method_get_domain_warp_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2980162020
-      );
-    }
-    {
-      let classname = new StringName("FastNoiseLite");
-      let methodname = new StringName("set_domain_warp_amplitude");
-      this._bindings.method_set_domain_warp_amplitude = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("FastNoiseLite");
-      let methodname = new StringName("get_domain_warp_amplitude");
-      this._bindings.method_get_domain_warp_amplitude = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("FastNoiseLite");
-      let methodname = new StringName("set_domain_warp_frequency");
-      this._bindings.method_set_domain_warp_frequency = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("FastNoiseLite");
-      let methodname = new StringName("get_domain_warp_frequency");
-      this._bindings.method_get_domain_warp_frequency = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("FastNoiseLite");
-      let methodname = new StringName("set_domain_warp_fractal_type");
-      this._bindings.method_set_domain_warp_fractal_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3999408287
-      );
-    }
-    {
-      let classname = new StringName("FastNoiseLite");
-      let methodname = new StringName("get_domain_warp_fractal_type");
-      this._bindings.method_get_domain_warp_fractal_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        407716934
-      );
-    }
-    {
-      let classname = new StringName("FastNoiseLite");
-      let methodname = new StringName("set_domain_warp_fractal_octaves");
-      this._bindings.method_set_domain_warp_fractal_octaves = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("FastNoiseLite");
-      let methodname = new StringName("get_domain_warp_fractal_octaves");
-      this._bindings.method_get_domain_warp_fractal_octaves = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("FastNoiseLite");
-      let methodname = new StringName("set_domain_warp_fractal_lacunarity");
-      this._bindings.method_set_domain_warp_fractal_lacunarity = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("FastNoiseLite");
-      let methodname = new StringName("get_domain_warp_fractal_lacunarity");
-      this._bindings.method_get_domain_warp_fractal_lacunarity = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("FastNoiseLite");
-      let methodname = new StringName("set_domain_warp_fractal_gain");
-      this._bindings.method_set_domain_warp_fractal_gain = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("FastNoiseLite");
-      let methodname = new StringName("get_domain_warp_fractal_gain");
-      this._bindings.method_get_domain_warp_fractal_gain = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_frequency = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
   }
+  static init_method_set_offset() {
+    if (!this.#_bindings.method_set_offset) {
+      let classname = new StringName("FastNoiseLite");
+      let methodname = new StringName("set_offset");
+      this.#_bindings.method_set_offset = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3460891852
+      );
+    }
+  }
+  static init_method_get_offset() {
+    if (!this.#_bindings.method_get_offset) {
+      let classname = new StringName("FastNoiseLite");
+      let methodname = new StringName("get_offset");
+      this.#_bindings.method_get_offset = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3360562783
+      );
+    }
+  }
+  static init_method_set_fractal_type() {
+    if (!this.#_bindings.method_set_fractal_type) {
+      let classname = new StringName("FastNoiseLite");
+      let methodname = new StringName("set_fractal_type");
+      this.#_bindings.method_set_fractal_type = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        4132731174
+      );
+    }
+  }
+  static init_method_get_fractal_type() {
+    if (!this.#_bindings.method_get_fractal_type) {
+      let classname = new StringName("FastNoiseLite");
+      let methodname = new StringName("get_fractal_type");
+      this.#_bindings.method_get_fractal_type = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1036889279
+      );
+    }
+  }
+  static init_method_set_fractal_octaves() {
+    if (!this.#_bindings.method_set_fractal_octaves) {
+      let classname = new StringName("FastNoiseLite");
+      let methodname = new StringName("set_fractal_octaves");
+      this.#_bindings.method_set_fractal_octaves = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1286410249
+      );
+    }
+  }
+  static init_method_get_fractal_octaves() {
+    if (!this.#_bindings.method_get_fractal_octaves) {
+      let classname = new StringName("FastNoiseLite");
+      let methodname = new StringName("get_fractal_octaves");
+      this.#_bindings.method_get_fractal_octaves = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3905245786
+      );
+    }
+  }
+  static init_method_set_fractal_lacunarity() {
+    if (!this.#_bindings.method_set_fractal_lacunarity) {
+      let classname = new StringName("FastNoiseLite");
+      let methodname = new StringName("set_fractal_lacunarity");
+      this.#_bindings.method_set_fractal_lacunarity = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        373806689
+      );
+    }
+  }
+  static init_method_get_fractal_lacunarity() {
+    if (!this.#_bindings.method_get_fractal_lacunarity) {
+      let classname = new StringName("FastNoiseLite");
+      let methodname = new StringName("get_fractal_lacunarity");
+      this.#_bindings.method_get_fractal_lacunarity = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1740695150
+      );
+    }
+  }
+  static init_method_set_fractal_gain() {
+    if (!this.#_bindings.method_set_fractal_gain) {
+      let classname = new StringName("FastNoiseLite");
+      let methodname = new StringName("set_fractal_gain");
+      this.#_bindings.method_set_fractal_gain = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        373806689
+      );
+    }
+  }
+  static init_method_get_fractal_gain() {
+    if (!this.#_bindings.method_get_fractal_gain) {
+      let classname = new StringName("FastNoiseLite");
+      let methodname = new StringName("get_fractal_gain");
+      this.#_bindings.method_get_fractal_gain = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1740695150
+      );
+    }
+  }
+  static init_method_set_fractal_weighted_strength() {
+    if (!this.#_bindings.method_set_fractal_weighted_strength) {
+      let classname = new StringName("FastNoiseLite");
+      let methodname = new StringName("set_fractal_weighted_strength");
+      this.#_bindings.method_set_fractal_weighted_strength = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        373806689
+      );
+    }
+  }
+  static init_method_get_fractal_weighted_strength() {
+    if (!this.#_bindings.method_get_fractal_weighted_strength) {
+      let classname = new StringName("FastNoiseLite");
+      let methodname = new StringName("get_fractal_weighted_strength");
+      this.#_bindings.method_get_fractal_weighted_strength = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1740695150
+      );
+    }
+  }
+  static init_method_set_fractal_ping_pong_strength() {
+    if (!this.#_bindings.method_set_fractal_ping_pong_strength) {
+      let classname = new StringName("FastNoiseLite");
+      let methodname = new StringName("set_fractal_ping_pong_strength");
+      this.#_bindings.method_set_fractal_ping_pong_strength = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        373806689
+      );
+    }
+  }
+  static init_method_get_fractal_ping_pong_strength() {
+    if (!this.#_bindings.method_get_fractal_ping_pong_strength) {
+      let classname = new StringName("FastNoiseLite");
+      let methodname = new StringName("get_fractal_ping_pong_strength");
+      this.#_bindings.method_get_fractal_ping_pong_strength = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1740695150
+      );
+    }
+  }
+  static init_method_set_cellular_distance_function() {
+    if (!this.#_bindings.method_set_cellular_distance_function) {
+      let classname = new StringName("FastNoiseLite");
+      let methodname = new StringName("set_cellular_distance_function");
+      this.#_bindings.method_set_cellular_distance_function = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1006013267
+      );
+    }
+  }
+  static init_method_get_cellular_distance_function() {
+    if (!this.#_bindings.method_get_cellular_distance_function) {
+      let classname = new StringName("FastNoiseLite");
+      let methodname = new StringName("get_cellular_distance_function");
+      this.#_bindings.method_get_cellular_distance_function = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2021274088
+      );
+    }
+  }
+  static init_method_set_cellular_jitter() {
+    if (!this.#_bindings.method_set_cellular_jitter) {
+      let classname = new StringName("FastNoiseLite");
+      let methodname = new StringName("set_cellular_jitter");
+      this.#_bindings.method_set_cellular_jitter = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        373806689
+      );
+    }
+  }
+  static init_method_get_cellular_jitter() {
+    if (!this.#_bindings.method_get_cellular_jitter) {
+      let classname = new StringName("FastNoiseLite");
+      let methodname = new StringName("get_cellular_jitter");
+      this.#_bindings.method_get_cellular_jitter = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1740695150
+      );
+    }
+  }
+  static init_method_set_cellular_return_type() {
+    if (!this.#_bindings.method_set_cellular_return_type) {
+      let classname = new StringName("FastNoiseLite");
+      let methodname = new StringName("set_cellular_return_type");
+      this.#_bindings.method_set_cellular_return_type = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2654169698
+      );
+    }
+  }
+  static init_method_get_cellular_return_type() {
+    if (!this.#_bindings.method_get_cellular_return_type) {
+      let classname = new StringName("FastNoiseLite");
+      let methodname = new StringName("get_cellular_return_type");
+      this.#_bindings.method_get_cellular_return_type = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3699796343
+      );
+    }
+  }
+  static init_method_set_domain_warp_enabled() {
+    if (!this.#_bindings.method_set_domain_warp_enabled) {
+      let classname = new StringName("FastNoiseLite");
+      let methodname = new StringName("set_domain_warp_enabled");
+      this.#_bindings.method_set_domain_warp_enabled = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2586408642
+      );
+    }
+  }
+  static init_method_is_domain_warp_enabled() {
+    if (!this.#_bindings.method_is_domain_warp_enabled) {
+      let classname = new StringName("FastNoiseLite");
+      let methodname = new StringName("is_domain_warp_enabled");
+      this.#_bindings.method_is_domain_warp_enabled = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        36873697
+      );
+    }
+  }
+  static init_method_set_domain_warp_type() {
+    if (!this.#_bindings.method_set_domain_warp_type) {
+      let classname = new StringName("FastNoiseLite");
+      let methodname = new StringName("set_domain_warp_type");
+      this.#_bindings.method_set_domain_warp_type = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3629692980
+      );
+    }
+  }
+  static init_method_get_domain_warp_type() {
+    if (!this.#_bindings.method_get_domain_warp_type) {
+      let classname = new StringName("FastNoiseLite");
+      let methodname = new StringName("get_domain_warp_type");
+      this.#_bindings.method_get_domain_warp_type = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2980162020
+      );
+    }
+  }
+  static init_method_set_domain_warp_amplitude() {
+    if (!this.#_bindings.method_set_domain_warp_amplitude) {
+      let classname = new StringName("FastNoiseLite");
+      let methodname = new StringName("set_domain_warp_amplitude");
+      this.#_bindings.method_set_domain_warp_amplitude = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        373806689
+      );
+    }
+  }
+  static init_method_get_domain_warp_amplitude() {
+    if (!this.#_bindings.method_get_domain_warp_amplitude) {
+      let classname = new StringName("FastNoiseLite");
+      let methodname = new StringName("get_domain_warp_amplitude");
+      this.#_bindings.method_get_domain_warp_amplitude = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1740695150
+      );
+    }
+  }
+  static init_method_set_domain_warp_frequency() {
+    if (!this.#_bindings.method_set_domain_warp_frequency) {
+      let classname = new StringName("FastNoiseLite");
+      let methodname = new StringName("set_domain_warp_frequency");
+      this.#_bindings.method_set_domain_warp_frequency = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        373806689
+      );
+    }
+  }
+  static init_method_get_domain_warp_frequency() {
+    if (!this.#_bindings.method_get_domain_warp_frequency) {
+      let classname = new StringName("FastNoiseLite");
+      let methodname = new StringName("get_domain_warp_frequency");
+      this.#_bindings.method_get_domain_warp_frequency = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1740695150
+      );
+    }
+  }
+  static init_method_set_domain_warp_fractal_type() {
+    if (!this.#_bindings.method_set_domain_warp_fractal_type) {
+      let classname = new StringName("FastNoiseLite");
+      let methodname = new StringName("set_domain_warp_fractal_type");
+      this.#_bindings.method_set_domain_warp_fractal_type = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3999408287
+      );
+    }
+  }
+  static init_method_get_domain_warp_fractal_type() {
+    if (!this.#_bindings.method_get_domain_warp_fractal_type) {
+      let classname = new StringName("FastNoiseLite");
+      let methodname = new StringName("get_domain_warp_fractal_type");
+      this.#_bindings.method_get_domain_warp_fractal_type = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        407716934
+      );
+    }
+  }
+  static init_method_set_domain_warp_fractal_octaves() {
+    if (!this.#_bindings.method_set_domain_warp_fractal_octaves) {
+      let classname = new StringName("FastNoiseLite");
+      let methodname = new StringName("set_domain_warp_fractal_octaves");
+      this.#_bindings.method_set_domain_warp_fractal_octaves = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1286410249
+      );
+    }
+  }
+  static init_method_get_domain_warp_fractal_octaves() {
+    if (!this.#_bindings.method_get_domain_warp_fractal_octaves) {
+      let classname = new StringName("FastNoiseLite");
+      let methodname = new StringName("get_domain_warp_fractal_octaves");
+      this.#_bindings.method_get_domain_warp_fractal_octaves = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3905245786
+      );
+    }
+  }
+  static init_method_set_domain_warp_fractal_lacunarity() {
+    if (!this.#_bindings.method_set_domain_warp_fractal_lacunarity) {
+      let classname = new StringName("FastNoiseLite");
+      let methodname = new StringName("set_domain_warp_fractal_lacunarity");
+      this.#_bindings.method_set_domain_warp_fractal_lacunarity = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        373806689
+      );
+    }
+  }
+  static init_method_get_domain_warp_fractal_lacunarity() {
+    if (!this.#_bindings.method_get_domain_warp_fractal_lacunarity) {
+      let classname = new StringName("FastNoiseLite");
+      let methodname = new StringName("get_domain_warp_fractal_lacunarity");
+      this.#_bindings.method_get_domain_warp_fractal_lacunarity = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1740695150
+      );
+    }
+  }
+  static init_method_set_domain_warp_fractal_gain() {
+    if (!this.#_bindings.method_set_domain_warp_fractal_gain) {
+      let classname = new StringName("FastNoiseLite");
+      let methodname = new StringName("set_domain_warp_fractal_gain");
+      this.#_bindings.method_set_domain_warp_fractal_gain = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        373806689
+      );
+    }
+  }
+  static init_method_get_domain_warp_fractal_gain() {
+    if (!this.#_bindings.method_get_domain_warp_fractal_gain) {
+      let classname = new StringName("FastNoiseLite");
+      let methodname = new StringName("get_domain_warp_fractal_gain");
+      this.#_bindings.method_get_domain_warp_fractal_gain = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1740695150
+      );
+    }
+  }
+
+  
   
   set_noise_type(_type) {
+    FastNoiseLite.init_method_set_noise_type();
     return _call_native_mb_no_ret(
-      FastNoiseLite._bindings.method_set_noise_type,
+      FastNoiseLite.#_bindings.method_set_noise_type,
       this._owner,
       _type
     );
     
   }
   get_noise_type() {
+    FastNoiseLite.init_method_get_noise_type();
     return _call_native_mb_ret(
-      FastNoiseLite._bindings.method_get_noise_type,
+      FastNoiseLite.#_bindings.method_get_noise_type,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_seed(_seed) {
+    FastNoiseLite.init_method_set_seed();
     return _call_native_mb_no_ret(
-      FastNoiseLite._bindings.method_set_seed,
+      FastNoiseLite.#_bindings.method_set_seed,
       this._owner,
       _seed
     );
     
   }
   get_seed() {
+    FastNoiseLite.init_method_get_seed();
     return _call_native_mb_ret(
-      FastNoiseLite._bindings.method_get_seed,
+      FastNoiseLite.#_bindings.method_get_seed,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_frequency(_freq) {
+    FastNoiseLite.init_method_set_frequency();
     return _call_native_mb_no_ret(
-      FastNoiseLite._bindings.method_set_frequency,
+      FastNoiseLite.#_bindings.method_set_frequency,
       this._owner,
       _freq
     );
     
   }
   get_frequency() {
+    FastNoiseLite.init_method_get_frequency();
     return _call_native_mb_ret(
-      FastNoiseLite._bindings.method_get_frequency,
+      FastNoiseLite.#_bindings.method_get_frequency,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_offset(_offset) {
+    FastNoiseLite.init_method_set_offset();
     return _call_native_mb_no_ret(
-      FastNoiseLite._bindings.method_set_offset,
+      FastNoiseLite.#_bindings.method_set_offset,
       this._owner,
       _offset
     );
     
   }
   get_offset() {
+    FastNoiseLite.init_method_get_offset();
     return _call_native_mb_ret(
-      FastNoiseLite._bindings.method_get_offset,
+      FastNoiseLite.#_bindings.method_get_offset,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -522,290 +611,341 @@ export class FastNoiseLite extends Noise{
     
   }
   set_fractal_type(_type) {
+    FastNoiseLite.init_method_set_fractal_type();
     return _call_native_mb_no_ret(
-      FastNoiseLite._bindings.method_set_fractal_type,
+      FastNoiseLite.#_bindings.method_set_fractal_type,
       this._owner,
       _type
     );
     
   }
   get_fractal_type() {
+    FastNoiseLite.init_method_get_fractal_type();
     return _call_native_mb_ret(
-      FastNoiseLite._bindings.method_get_fractal_type,
+      FastNoiseLite.#_bindings.method_get_fractal_type,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_fractal_octaves(_octave_count) {
+    FastNoiseLite.init_method_set_fractal_octaves();
     return _call_native_mb_no_ret(
-      FastNoiseLite._bindings.method_set_fractal_octaves,
+      FastNoiseLite.#_bindings.method_set_fractal_octaves,
       this._owner,
       _octave_count
     );
     
   }
   get_fractal_octaves() {
+    FastNoiseLite.init_method_get_fractal_octaves();
     return _call_native_mb_ret(
-      FastNoiseLite._bindings.method_get_fractal_octaves,
+      FastNoiseLite.#_bindings.method_get_fractal_octaves,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_fractal_lacunarity(_lacunarity) {
+    FastNoiseLite.init_method_set_fractal_lacunarity();
     return _call_native_mb_no_ret(
-      FastNoiseLite._bindings.method_set_fractal_lacunarity,
+      FastNoiseLite.#_bindings.method_set_fractal_lacunarity,
       this._owner,
       _lacunarity
     );
     
   }
   get_fractal_lacunarity() {
+    FastNoiseLite.init_method_get_fractal_lacunarity();
     return _call_native_mb_ret(
-      FastNoiseLite._bindings.method_get_fractal_lacunarity,
+      FastNoiseLite.#_bindings.method_get_fractal_lacunarity,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_fractal_gain(_gain) {
+    FastNoiseLite.init_method_set_fractal_gain();
     return _call_native_mb_no_ret(
-      FastNoiseLite._bindings.method_set_fractal_gain,
+      FastNoiseLite.#_bindings.method_set_fractal_gain,
       this._owner,
       _gain
     );
     
   }
   get_fractal_gain() {
+    FastNoiseLite.init_method_get_fractal_gain();
     return _call_native_mb_ret(
-      FastNoiseLite._bindings.method_get_fractal_gain,
+      FastNoiseLite.#_bindings.method_get_fractal_gain,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_fractal_weighted_strength(_weighted_strength) {
+    FastNoiseLite.init_method_set_fractal_weighted_strength();
     return _call_native_mb_no_ret(
-      FastNoiseLite._bindings.method_set_fractal_weighted_strength,
+      FastNoiseLite.#_bindings.method_set_fractal_weighted_strength,
       this._owner,
       _weighted_strength
     );
     
   }
   get_fractal_weighted_strength() {
+    FastNoiseLite.init_method_get_fractal_weighted_strength();
     return _call_native_mb_ret(
-      FastNoiseLite._bindings.method_get_fractal_weighted_strength,
+      FastNoiseLite.#_bindings.method_get_fractal_weighted_strength,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_fractal_ping_pong_strength(_ping_pong_strength) {
+    FastNoiseLite.init_method_set_fractal_ping_pong_strength();
     return _call_native_mb_no_ret(
-      FastNoiseLite._bindings.method_set_fractal_ping_pong_strength,
+      FastNoiseLite.#_bindings.method_set_fractal_ping_pong_strength,
       this._owner,
       _ping_pong_strength
     );
     
   }
   get_fractal_ping_pong_strength() {
+    FastNoiseLite.init_method_get_fractal_ping_pong_strength();
     return _call_native_mb_ret(
-      FastNoiseLite._bindings.method_get_fractal_ping_pong_strength,
+      FastNoiseLite.#_bindings.method_get_fractal_ping_pong_strength,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_cellular_distance_function(_func) {
+    FastNoiseLite.init_method_set_cellular_distance_function();
     return _call_native_mb_no_ret(
-      FastNoiseLite._bindings.method_set_cellular_distance_function,
+      FastNoiseLite.#_bindings.method_set_cellular_distance_function,
       this._owner,
       _func
     );
     
   }
   get_cellular_distance_function() {
+    FastNoiseLite.init_method_get_cellular_distance_function();
     return _call_native_mb_ret(
-      FastNoiseLite._bindings.method_get_cellular_distance_function,
+      FastNoiseLite.#_bindings.method_get_cellular_distance_function,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_cellular_jitter(_jitter) {
+    FastNoiseLite.init_method_set_cellular_jitter();
     return _call_native_mb_no_ret(
-      FastNoiseLite._bindings.method_set_cellular_jitter,
+      FastNoiseLite.#_bindings.method_set_cellular_jitter,
       this._owner,
       _jitter
     );
     
   }
   get_cellular_jitter() {
+    FastNoiseLite.init_method_get_cellular_jitter();
     return _call_native_mb_ret(
-      FastNoiseLite._bindings.method_get_cellular_jitter,
+      FastNoiseLite.#_bindings.method_get_cellular_jitter,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_cellular_return_type(_ret) {
+    FastNoiseLite.init_method_set_cellular_return_type();
     return _call_native_mb_no_ret(
-      FastNoiseLite._bindings.method_set_cellular_return_type,
+      FastNoiseLite.#_bindings.method_set_cellular_return_type,
       this._owner,
       _ret
     );
     
   }
   get_cellular_return_type() {
+    FastNoiseLite.init_method_get_cellular_return_type();
     return _call_native_mb_ret(
-      FastNoiseLite._bindings.method_get_cellular_return_type,
+      FastNoiseLite.#_bindings.method_get_cellular_return_type,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_domain_warp_enabled(_domain_warp_enabled) {
+    FastNoiseLite.init_method_set_domain_warp_enabled();
     return _call_native_mb_no_ret(
-      FastNoiseLite._bindings.method_set_domain_warp_enabled,
+      FastNoiseLite.#_bindings.method_set_domain_warp_enabled,
       this._owner,
       _domain_warp_enabled
     );
     
   }
   is_domain_warp_enabled() {
+    FastNoiseLite.init_method_is_domain_warp_enabled();
     return _call_native_mb_ret(
-      FastNoiseLite._bindings.method_is_domain_warp_enabled,
+      FastNoiseLite.#_bindings.method_is_domain_warp_enabled,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_domain_warp_type(_domain_warp_type) {
+    FastNoiseLite.init_method_set_domain_warp_type();
     return _call_native_mb_no_ret(
-      FastNoiseLite._bindings.method_set_domain_warp_type,
+      FastNoiseLite.#_bindings.method_set_domain_warp_type,
       this._owner,
       _domain_warp_type
     );
     
   }
   get_domain_warp_type() {
+    FastNoiseLite.init_method_get_domain_warp_type();
     return _call_native_mb_ret(
-      FastNoiseLite._bindings.method_get_domain_warp_type,
+      FastNoiseLite.#_bindings.method_get_domain_warp_type,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_domain_warp_amplitude(_domain_warp_amplitude) {
+    FastNoiseLite.init_method_set_domain_warp_amplitude();
     return _call_native_mb_no_ret(
-      FastNoiseLite._bindings.method_set_domain_warp_amplitude,
+      FastNoiseLite.#_bindings.method_set_domain_warp_amplitude,
       this._owner,
       _domain_warp_amplitude
     );
     
   }
   get_domain_warp_amplitude() {
+    FastNoiseLite.init_method_get_domain_warp_amplitude();
     return _call_native_mb_ret(
-      FastNoiseLite._bindings.method_get_domain_warp_amplitude,
+      FastNoiseLite.#_bindings.method_get_domain_warp_amplitude,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_domain_warp_frequency(_domain_warp_frequency) {
+    FastNoiseLite.init_method_set_domain_warp_frequency();
     return _call_native_mb_no_ret(
-      FastNoiseLite._bindings.method_set_domain_warp_frequency,
+      FastNoiseLite.#_bindings.method_set_domain_warp_frequency,
       this._owner,
       _domain_warp_frequency
     );
     
   }
   get_domain_warp_frequency() {
+    FastNoiseLite.init_method_get_domain_warp_frequency();
     return _call_native_mb_ret(
-      FastNoiseLite._bindings.method_get_domain_warp_frequency,
+      FastNoiseLite.#_bindings.method_get_domain_warp_frequency,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_domain_warp_fractal_type(_domain_warp_fractal_type) {
+    FastNoiseLite.init_method_set_domain_warp_fractal_type();
     return _call_native_mb_no_ret(
-      FastNoiseLite._bindings.method_set_domain_warp_fractal_type,
+      FastNoiseLite.#_bindings.method_set_domain_warp_fractal_type,
       this._owner,
       _domain_warp_fractal_type
     );
     
   }
   get_domain_warp_fractal_type() {
+    FastNoiseLite.init_method_get_domain_warp_fractal_type();
     return _call_native_mb_ret(
-      FastNoiseLite._bindings.method_get_domain_warp_fractal_type,
+      FastNoiseLite.#_bindings.method_get_domain_warp_fractal_type,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_domain_warp_fractal_octaves(_domain_warp_octave_count) {
+    FastNoiseLite.init_method_set_domain_warp_fractal_octaves();
     return _call_native_mb_no_ret(
-      FastNoiseLite._bindings.method_set_domain_warp_fractal_octaves,
+      FastNoiseLite.#_bindings.method_set_domain_warp_fractal_octaves,
       this._owner,
       _domain_warp_octave_count
     );
     
   }
   get_domain_warp_fractal_octaves() {
+    FastNoiseLite.init_method_get_domain_warp_fractal_octaves();
     return _call_native_mb_ret(
-      FastNoiseLite._bindings.method_get_domain_warp_fractal_octaves,
+      FastNoiseLite.#_bindings.method_get_domain_warp_fractal_octaves,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_domain_warp_fractal_lacunarity(_domain_warp_lacunarity) {
+    FastNoiseLite.init_method_set_domain_warp_fractal_lacunarity();
     return _call_native_mb_no_ret(
-      FastNoiseLite._bindings.method_set_domain_warp_fractal_lacunarity,
+      FastNoiseLite.#_bindings.method_set_domain_warp_fractal_lacunarity,
       this._owner,
       _domain_warp_lacunarity
     );
     
   }
   get_domain_warp_fractal_lacunarity() {
+    FastNoiseLite.init_method_get_domain_warp_fractal_lacunarity();
     return _call_native_mb_ret(
-      FastNoiseLite._bindings.method_get_domain_warp_fractal_lacunarity,
+      FastNoiseLite.#_bindings.method_get_domain_warp_fractal_lacunarity,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_domain_warp_fractal_gain(_domain_warp_gain) {
+    FastNoiseLite.init_method_set_domain_warp_fractal_gain();
     return _call_native_mb_no_ret(
-      FastNoiseLite._bindings.method_set_domain_warp_fractal_gain,
+      FastNoiseLite.#_bindings.method_set_domain_warp_fractal_gain,
       this._owner,
       _domain_warp_gain
     );
     
   }
   get_domain_warp_fractal_gain() {
+    FastNoiseLite.init_method_get_domain_warp_fractal_gain();
     return _call_native_mb_ret(
-      FastNoiseLite._bindings.method_get_domain_warp_fractal_gain,
+      FastNoiseLite.#_bindings.method_get_domain_warp_fractal_gain,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
@@ -976,9 +1116,5 @@ set domain_warp_fractal_gain (new_value) {
     DOMAIN_WARP_FRACTAL_NONE: 0,
     DOMAIN_WARP_FRACTAL_PROGRESSIVE: 1,
     DOMAIN_WARP_FRACTAL_INDEPENDENT: 2,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

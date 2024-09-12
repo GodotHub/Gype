@@ -4,6 +4,8 @@
 #include "support/javascript_language.hpp"
 #include "support/javascript_saver.hpp"
 #include <godot_cpp/classes/script_extension.hpp>
+#include <godot_cpp/templates/hash_map.hpp>
+#include <godot_cpp/templates/hash_set.hpp>
 
 namespace godot {
 
@@ -22,6 +24,10 @@ class JavaScript : public ScriptExtension {
 
 	String source_code;
 	String origin_path;
+	JavaScript *baseScript = nullptr;
+	JSValue ns;
+	JSValue cur_class;
+	HashMap<const Object *, const JavaScriptInstance *> instances;
 
 public:
 	bool _editor_can_reload_from_file();
@@ -38,6 +44,7 @@ public:
 	String _get_source_code() const;
 	void _set_source_code(const String &p_code);
 	Error _reload(bool p_keep_state);
+	void update_cur_class();
 	TypedArray<Dictionary> _get_documentation() const;
 	String _get_class_icon_path() const;
 	bool _has_method(const StringName &p_method) const;

@@ -1,8 +1,6 @@
 import * as internal from '__internal__';
-import { Vector2 } from '@js_godot/variant/vector2'
-import { StringName } from '@js_godot/variant/string_name'
-import { RID } from '@js_godot/variant/rid'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
 import { Node2D } from '@js_godot/classes/node2d'
 import {
   call_utility_ret,
@@ -50,7 +48,7 @@ class _MethodBindings {
 }
 export class ShapeCast2D extends Node2D{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -60,374 +58,446 @@ export class ShapeCast2D extends Node2D{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_enabled() {
+    if (!this.#_bindings.method_set_enabled) {
       let classname = new StringName("ShapeCast2D");
       let methodname = new StringName("set_enabled");
-      this._bindings.method_set_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_enabled = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_is_enabled() {
+    if (!this.#_bindings.method_is_enabled) {
       let classname = new StringName("ShapeCast2D");
       let methodname = new StringName("is_enabled");
-      this._bindings.method_is_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("ShapeCast2D");
-      let methodname = new StringName("set_shape");
-      this._bindings.method_set_shape = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        771364740
-      );
-    }
-    {
-      let classname = new StringName("ShapeCast2D");
-      let methodname = new StringName("get_shape");
-      this._bindings.method_get_shape = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        522005891
-      );
-    }
-    {
-      let classname = new StringName("ShapeCast2D");
-      let methodname = new StringName("set_target_position");
-      this._bindings.method_set_target_position = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        743155724
-      );
-    }
-    {
-      let classname = new StringName("ShapeCast2D");
-      let methodname = new StringName("get_target_position");
-      this._bindings.method_get_target_position = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3341600327
-      );
-    }
-    {
-      let classname = new StringName("ShapeCast2D");
-      let methodname = new StringName("set_margin");
-      this._bindings.method_set_margin = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("ShapeCast2D");
-      let methodname = new StringName("get_margin");
-      this._bindings.method_get_margin = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("ShapeCast2D");
-      let methodname = new StringName("set_max_results");
-      this._bindings.method_set_max_results = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("ShapeCast2D");
-      let methodname = new StringName("get_max_results");
-      this._bindings.method_get_max_results = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("ShapeCast2D");
-      let methodname = new StringName("is_colliding");
-      this._bindings.method_is_colliding = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("ShapeCast2D");
-      let methodname = new StringName("get_collision_count");
-      this._bindings.method_get_collision_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("ShapeCast2D");
-      let methodname = new StringName("force_shapecast_update");
-      this._bindings.method_force_shapecast_update = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3218959716
-      );
-    }
-    {
-      let classname = new StringName("ShapeCast2D");
-      let methodname = new StringName("get_collider");
-      this._bindings.method_get_collider = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3332903315
-      );
-    }
-    {
-      let classname = new StringName("ShapeCast2D");
-      let methodname = new StringName("get_collider_rid");
-      this._bindings.method_get_collider_rid = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        495598643
-      );
-    }
-    {
-      let classname = new StringName("ShapeCast2D");
-      let methodname = new StringName("get_collider_shape");
-      this._bindings.method_get_collider_shape = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        923996154
-      );
-    }
-    {
-      let classname = new StringName("ShapeCast2D");
-      let methodname = new StringName("get_collision_point");
-      this._bindings.method_get_collision_point = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2299179447
-      );
-    }
-    {
-      let classname = new StringName("ShapeCast2D");
-      let methodname = new StringName("get_collision_normal");
-      this._bindings.method_get_collision_normal = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2299179447
-      );
-    }
-    {
-      let classname = new StringName("ShapeCast2D");
-      let methodname = new StringName("get_closest_collision_safe_fraction");
-      this._bindings.method_get_closest_collision_safe_fraction = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("ShapeCast2D");
-      let methodname = new StringName("get_closest_collision_unsafe_fraction");
-      this._bindings.method_get_closest_collision_unsafe_fraction = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("ShapeCast2D");
-      let methodname = new StringName("add_exception_rid");
-      this._bindings.method_add_exception_rid = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2722037293
-      );
-    }
-    {
-      let classname = new StringName("ShapeCast2D");
-      let methodname = new StringName("add_exception");
-      this._bindings.method_add_exception = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3090941106
-      );
-    }
-    {
-      let classname = new StringName("ShapeCast2D");
-      let methodname = new StringName("remove_exception_rid");
-      this._bindings.method_remove_exception_rid = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2722037293
-      );
-    }
-    {
-      let classname = new StringName("ShapeCast2D");
-      let methodname = new StringName("remove_exception");
-      this._bindings.method_remove_exception = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3090941106
-      );
-    }
-    {
-      let classname = new StringName("ShapeCast2D");
-      let methodname = new StringName("clear_exceptions");
-      this._bindings.method_clear_exceptions = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3218959716
-      );
-    }
-    {
-      let classname = new StringName("ShapeCast2D");
-      let methodname = new StringName("set_collision_mask");
-      this._bindings.method_set_collision_mask = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("ShapeCast2D");
-      let methodname = new StringName("get_collision_mask");
-      this._bindings.method_get_collision_mask = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("ShapeCast2D");
-      let methodname = new StringName("set_collision_mask_value");
-      this._bindings.method_set_collision_mask_value = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        300928843
-      );
-    }
-    {
-      let classname = new StringName("ShapeCast2D");
-      let methodname = new StringName("get_collision_mask_value");
-      this._bindings.method_get_collision_mask_value = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1116898809
-      );
-    }
-    {
-      let classname = new StringName("ShapeCast2D");
-      let methodname = new StringName("set_exclude_parent_body");
-      this._bindings.method_set_exclude_parent_body = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("ShapeCast2D");
-      let methodname = new StringName("get_exclude_parent_body");
-      this._bindings.method_get_exclude_parent_body = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("ShapeCast2D");
-      let methodname = new StringName("set_collide_with_areas");
-      this._bindings.method_set_collide_with_areas = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("ShapeCast2D");
-      let methodname = new StringName("is_collide_with_areas_enabled");
-      this._bindings.method_is_collide_with_areas_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("ShapeCast2D");
-      let methodname = new StringName("set_collide_with_bodies");
-      this._bindings.method_set_collide_with_bodies = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("ShapeCast2D");
-      let methodname = new StringName("is_collide_with_bodies_enabled");
-      this._bindings.method_is_collide_with_bodies_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_enabled = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
   }
+  static init_method_set_shape() {
+    if (!this.#_bindings.method_set_shape) {
+      let classname = new StringName("ShapeCast2D");
+      let methodname = new StringName("set_shape");
+      this.#_bindings.method_set_shape = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        771364740
+      );
+    }
+  }
+  static init_method_get_shape() {
+    if (!this.#_bindings.method_get_shape) {
+      let classname = new StringName("ShapeCast2D");
+      let methodname = new StringName("get_shape");
+      this.#_bindings.method_get_shape = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        522005891
+      );
+    }
+  }
+  static init_method_set_target_position() {
+    if (!this.#_bindings.method_set_target_position) {
+      let classname = new StringName("ShapeCast2D");
+      let methodname = new StringName("set_target_position");
+      this.#_bindings.method_set_target_position = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        743155724
+      );
+    }
+  }
+  static init_method_get_target_position() {
+    if (!this.#_bindings.method_get_target_position) {
+      let classname = new StringName("ShapeCast2D");
+      let methodname = new StringName("get_target_position");
+      this.#_bindings.method_get_target_position = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3341600327
+      );
+    }
+  }
+  static init_method_set_margin() {
+    if (!this.#_bindings.method_set_margin) {
+      let classname = new StringName("ShapeCast2D");
+      let methodname = new StringName("set_margin");
+      this.#_bindings.method_set_margin = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        373806689
+      );
+    }
+  }
+  static init_method_get_margin() {
+    if (!this.#_bindings.method_get_margin) {
+      let classname = new StringName("ShapeCast2D");
+      let methodname = new StringName("get_margin");
+      this.#_bindings.method_get_margin = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1740695150
+      );
+    }
+  }
+  static init_method_set_max_results() {
+    if (!this.#_bindings.method_set_max_results) {
+      let classname = new StringName("ShapeCast2D");
+      let methodname = new StringName("set_max_results");
+      this.#_bindings.method_set_max_results = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1286410249
+      );
+    }
+  }
+  static init_method_get_max_results() {
+    if (!this.#_bindings.method_get_max_results) {
+      let classname = new StringName("ShapeCast2D");
+      let methodname = new StringName("get_max_results");
+      this.#_bindings.method_get_max_results = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3905245786
+      );
+    }
+  }
+  static init_method_is_colliding() {
+    if (!this.#_bindings.method_is_colliding) {
+      let classname = new StringName("ShapeCast2D");
+      let methodname = new StringName("is_colliding");
+      this.#_bindings.method_is_colliding = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        36873697
+      );
+    }
+  }
+  static init_method_get_collision_count() {
+    if (!this.#_bindings.method_get_collision_count) {
+      let classname = new StringName("ShapeCast2D");
+      let methodname = new StringName("get_collision_count");
+      this.#_bindings.method_get_collision_count = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3905245786
+      );
+    }
+  }
+  static init_method_force_shapecast_update() {
+    if (!this.#_bindings.method_force_shapecast_update) {
+      let classname = new StringName("ShapeCast2D");
+      let methodname = new StringName("force_shapecast_update");
+      this.#_bindings.method_force_shapecast_update = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3218959716
+      );
+    }
+  }
+  static init_method_get_collider() {
+    if (!this.#_bindings.method_get_collider) {
+      let classname = new StringName("ShapeCast2D");
+      let methodname = new StringName("get_collider");
+      this.#_bindings.method_get_collider = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3332903315
+      );
+    }
+  }
+  static init_method_get_collider_rid() {
+    if (!this.#_bindings.method_get_collider_rid) {
+      let classname = new StringName("ShapeCast2D");
+      let methodname = new StringName("get_collider_rid");
+      this.#_bindings.method_get_collider_rid = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        495598643
+      );
+    }
+  }
+  static init_method_get_collider_shape() {
+    if (!this.#_bindings.method_get_collider_shape) {
+      let classname = new StringName("ShapeCast2D");
+      let methodname = new StringName("get_collider_shape");
+      this.#_bindings.method_get_collider_shape = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        923996154
+      );
+    }
+  }
+  static init_method_get_collision_point() {
+    if (!this.#_bindings.method_get_collision_point) {
+      let classname = new StringName("ShapeCast2D");
+      let methodname = new StringName("get_collision_point");
+      this.#_bindings.method_get_collision_point = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2299179447
+      );
+    }
+  }
+  static init_method_get_collision_normal() {
+    if (!this.#_bindings.method_get_collision_normal) {
+      let classname = new StringName("ShapeCast2D");
+      let methodname = new StringName("get_collision_normal");
+      this.#_bindings.method_get_collision_normal = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2299179447
+      );
+    }
+  }
+  static init_method_get_closest_collision_safe_fraction() {
+    if (!this.#_bindings.method_get_closest_collision_safe_fraction) {
+      let classname = new StringName("ShapeCast2D");
+      let methodname = new StringName("get_closest_collision_safe_fraction");
+      this.#_bindings.method_get_closest_collision_safe_fraction = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1740695150
+      );
+    }
+  }
+  static init_method_get_closest_collision_unsafe_fraction() {
+    if (!this.#_bindings.method_get_closest_collision_unsafe_fraction) {
+      let classname = new StringName("ShapeCast2D");
+      let methodname = new StringName("get_closest_collision_unsafe_fraction");
+      this.#_bindings.method_get_closest_collision_unsafe_fraction = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1740695150
+      );
+    }
+  }
+  static init_method_add_exception_rid() {
+    if (!this.#_bindings.method_add_exception_rid) {
+      let classname = new StringName("ShapeCast2D");
+      let methodname = new StringName("add_exception_rid");
+      this.#_bindings.method_add_exception_rid = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2722037293
+      );
+    }
+  }
+  static init_method_add_exception() {
+    if (!this.#_bindings.method_add_exception) {
+      let classname = new StringName("ShapeCast2D");
+      let methodname = new StringName("add_exception");
+      this.#_bindings.method_add_exception = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3090941106
+      );
+    }
+  }
+  static init_method_remove_exception_rid() {
+    if (!this.#_bindings.method_remove_exception_rid) {
+      let classname = new StringName("ShapeCast2D");
+      let methodname = new StringName("remove_exception_rid");
+      this.#_bindings.method_remove_exception_rid = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2722037293
+      );
+    }
+  }
+  static init_method_remove_exception() {
+    if (!this.#_bindings.method_remove_exception) {
+      let classname = new StringName("ShapeCast2D");
+      let methodname = new StringName("remove_exception");
+      this.#_bindings.method_remove_exception = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3090941106
+      );
+    }
+  }
+  static init_method_clear_exceptions() {
+    if (!this.#_bindings.method_clear_exceptions) {
+      let classname = new StringName("ShapeCast2D");
+      let methodname = new StringName("clear_exceptions");
+      this.#_bindings.method_clear_exceptions = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3218959716
+      );
+    }
+  }
+  static init_method_set_collision_mask() {
+    if (!this.#_bindings.method_set_collision_mask) {
+      let classname = new StringName("ShapeCast2D");
+      let methodname = new StringName("set_collision_mask");
+      this.#_bindings.method_set_collision_mask = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1286410249
+      );
+    }
+  }
+  static init_method_get_collision_mask() {
+    if (!this.#_bindings.method_get_collision_mask) {
+      let classname = new StringName("ShapeCast2D");
+      let methodname = new StringName("get_collision_mask");
+      this.#_bindings.method_get_collision_mask = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3905245786
+      );
+    }
+  }
+  static init_method_set_collision_mask_value() {
+    if (!this.#_bindings.method_set_collision_mask_value) {
+      let classname = new StringName("ShapeCast2D");
+      let methodname = new StringName("set_collision_mask_value");
+      this.#_bindings.method_set_collision_mask_value = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        300928843
+      );
+    }
+  }
+  static init_method_get_collision_mask_value() {
+    if (!this.#_bindings.method_get_collision_mask_value) {
+      let classname = new StringName("ShapeCast2D");
+      let methodname = new StringName("get_collision_mask_value");
+      this.#_bindings.method_get_collision_mask_value = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1116898809
+      );
+    }
+  }
+  static init_method_set_exclude_parent_body() {
+    if (!this.#_bindings.method_set_exclude_parent_body) {
+      let classname = new StringName("ShapeCast2D");
+      let methodname = new StringName("set_exclude_parent_body");
+      this.#_bindings.method_set_exclude_parent_body = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2586408642
+      );
+    }
+  }
+  static init_method_get_exclude_parent_body() {
+    if (!this.#_bindings.method_get_exclude_parent_body) {
+      let classname = new StringName("ShapeCast2D");
+      let methodname = new StringName("get_exclude_parent_body");
+      this.#_bindings.method_get_exclude_parent_body = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        36873697
+      );
+    }
+  }
+  static init_method_set_collide_with_areas() {
+    if (!this.#_bindings.method_set_collide_with_areas) {
+      let classname = new StringName("ShapeCast2D");
+      let methodname = new StringName("set_collide_with_areas");
+      this.#_bindings.method_set_collide_with_areas = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2586408642
+      );
+    }
+  }
+  static init_method_is_collide_with_areas_enabled() {
+    if (!this.#_bindings.method_is_collide_with_areas_enabled) {
+      let classname = new StringName("ShapeCast2D");
+      let methodname = new StringName("is_collide_with_areas_enabled");
+      this.#_bindings.method_is_collide_with_areas_enabled = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        36873697
+      );
+    }
+  }
+  static init_method_set_collide_with_bodies() {
+    if (!this.#_bindings.method_set_collide_with_bodies) {
+      let classname = new StringName("ShapeCast2D");
+      let methodname = new StringName("set_collide_with_bodies");
+      this.#_bindings.method_set_collide_with_bodies = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2586408642
+      );
+    }
+  }
+  static init_method_is_collide_with_bodies_enabled() {
+    if (!this.#_bindings.method_is_collide_with_bodies_enabled) {
+      let classname = new StringName("ShapeCast2D");
+      let methodname = new StringName("is_collide_with_bodies_enabled");
+      this.#_bindings.method_is_collide_with_bodies_enabled = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        36873697
+      );
+    }
+  }
+
+  
   
   set_enabled(_enabled) {
+    ShapeCast2D.init_method_set_enabled();
     return _call_native_mb_no_ret(
-      ShapeCast2D._bindings.method_set_enabled,
+      ShapeCast2D.#_bindings.method_set_enabled,
       this._owner,
       _enabled
     );
     
   }
   is_enabled() {
+    ShapeCast2D.init_method_is_enabled();
     return _call_native_mb_ret(
-      ShapeCast2D._bindings.method_is_enabled,
+      ShapeCast2D.#_bindings.method_is_enabled,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_shape(_shape) {
+    ShapeCast2D.init_method_set_shape();
     return _call_native_mb_no_ret(
-      ShapeCast2D._bindings.method_set_shape,
+      ShapeCast2D.#_bindings.method_set_shape,
       this._owner,
       _shape
     );
     
   }
   get_shape() {
+    ShapeCast2D.init_method_get_shape();
     return _call_native_mb_ret(
-      ShapeCast2D._bindings.method_get_shape,
+      ShapeCast2D.#_bindings.method_get_shape,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
   }
   set_target_position(_local_point) {
+    ShapeCast2D.init_method_set_target_position();
     return _call_native_mb_no_ret(
-      ShapeCast2D._bindings.method_set_target_position,
+      ShapeCast2D.#_bindings.method_set_target_position,
       this._owner,
       _local_point
     );
     
   }
   get_target_position() {
+    ShapeCast2D.init_method_get_target_position();
     return _call_native_mb_ret(
-      ShapeCast2D._bindings.method_get_target_position,
+      ShapeCast2D.#_bindings.method_get_target_position,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -436,77 +506,90 @@ export class ShapeCast2D extends Node2D{
     
   }
   set_margin(_margin) {
+    ShapeCast2D.init_method_set_margin();
     return _call_native_mb_no_ret(
-      ShapeCast2D._bindings.method_set_margin,
+      ShapeCast2D.#_bindings.method_set_margin,
       this._owner,
       _margin
     );
     
   }
   get_margin() {
+    ShapeCast2D.init_method_get_margin();
     return _call_native_mb_ret(
-      ShapeCast2D._bindings.method_get_margin,
+      ShapeCast2D.#_bindings.method_get_margin,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_max_results(_max_results) {
+    ShapeCast2D.init_method_set_max_results();
     return _call_native_mb_no_ret(
-      ShapeCast2D._bindings.method_set_max_results,
+      ShapeCast2D.#_bindings.method_set_max_results,
       this._owner,
       _max_results
     );
     
   }
   get_max_results() {
+    ShapeCast2D.init_method_get_max_results();
     return _call_native_mb_ret(
-      ShapeCast2D._bindings.method_get_max_results,
+      ShapeCast2D.#_bindings.method_get_max_results,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   is_colliding() {
+    ShapeCast2D.init_method_is_colliding();
     return _call_native_mb_ret(
-      ShapeCast2D._bindings.method_is_colliding,
+      ShapeCast2D.#_bindings.method_is_colliding,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   get_collision_count() {
+    ShapeCast2D.init_method_get_collision_count();
     return _call_native_mb_ret(
-      ShapeCast2D._bindings.method_get_collision_count,
+      ShapeCast2D.#_bindings.method_get_collision_count,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   force_shapecast_update() {
+    ShapeCast2D.init_method_force_shapecast_update();
     return _call_native_mb_no_ret(
-      ShapeCast2D._bindings.method_force_shapecast_update,
+      ShapeCast2D.#_bindings.method_force_shapecast_update,
       this._owner,
       
     );
     
   }
   get_collider(_index) {
+    ShapeCast2D.init_method_get_collider();
     return _call_native_mb_ret(
-      ShapeCast2D._bindings.method_get_collider,
+      ShapeCast2D.#_bindings.method_get_collider,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       _index
     );
     
   }
   get_collider_rid(_index) {
+    ShapeCast2D.init_method_get_collider_rid();
     return _call_native_mb_ret(
-      ShapeCast2D._bindings.method_get_collider_rid,
+      ShapeCast2D.#_bindings.method_get_collider_rid,
       this._owner,
 			Variant.Type.RID,
     
@@ -515,17 +598,20 @@ export class ShapeCast2D extends Node2D{
     
   }
   get_collider_shape(_index) {
+    ShapeCast2D.init_method_get_collider_shape();
     return _call_native_mb_ret(
-      ShapeCast2D._bindings.method_get_collider_shape,
+      ShapeCast2D.#_bindings.method_get_collider_shape,
       this._owner,
 			Variant.Type.INT,
+    
       _index
     );
     
   }
   get_collision_point(_index) {
+    ShapeCast2D.init_method_get_collision_point();
     return _call_native_mb_ret(
-      ShapeCast2D._bindings.method_get_collision_point,
+      ShapeCast2D.#_bindings.method_get_collision_point,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -534,8 +620,9 @@ export class ShapeCast2D extends Node2D{
     
   }
   get_collision_normal(_index) {
+    ShapeCast2D.init_method_get_collision_normal();
     return _call_native_mb_ret(
-      ShapeCast2D._bindings.method_get_collision_normal,
+      ShapeCast2D.#_bindings.method_get_collision_normal,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -544,144 +631,168 @@ export class ShapeCast2D extends Node2D{
     
   }
   get_closest_collision_safe_fraction() {
+    ShapeCast2D.init_method_get_closest_collision_safe_fraction();
     return _call_native_mb_ret(
-      ShapeCast2D._bindings.method_get_closest_collision_safe_fraction,
+      ShapeCast2D.#_bindings.method_get_closest_collision_safe_fraction,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   get_closest_collision_unsafe_fraction() {
+    ShapeCast2D.init_method_get_closest_collision_unsafe_fraction();
     return _call_native_mb_ret(
-      ShapeCast2D._bindings.method_get_closest_collision_unsafe_fraction,
+      ShapeCast2D.#_bindings.method_get_closest_collision_unsafe_fraction,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   add_exception_rid(_rid) {
+    ShapeCast2D.init_method_add_exception_rid();
     return _call_native_mb_no_ret(
-      ShapeCast2D._bindings.method_add_exception_rid,
+      ShapeCast2D.#_bindings.method_add_exception_rid,
       this._owner,
       _rid
     );
     
   }
   add_exception(_node) {
+    ShapeCast2D.init_method_add_exception();
     return _call_native_mb_no_ret(
-      ShapeCast2D._bindings.method_add_exception,
+      ShapeCast2D.#_bindings.method_add_exception,
       this._owner,
       _node
     );
     
   }
   remove_exception_rid(_rid) {
+    ShapeCast2D.init_method_remove_exception_rid();
     return _call_native_mb_no_ret(
-      ShapeCast2D._bindings.method_remove_exception_rid,
+      ShapeCast2D.#_bindings.method_remove_exception_rid,
       this._owner,
       _rid
     );
     
   }
   remove_exception(_node) {
+    ShapeCast2D.init_method_remove_exception();
     return _call_native_mb_no_ret(
-      ShapeCast2D._bindings.method_remove_exception,
+      ShapeCast2D.#_bindings.method_remove_exception,
       this._owner,
       _node
     );
     
   }
   clear_exceptions() {
+    ShapeCast2D.init_method_clear_exceptions();
     return _call_native_mb_no_ret(
-      ShapeCast2D._bindings.method_clear_exceptions,
+      ShapeCast2D.#_bindings.method_clear_exceptions,
       this._owner,
       
     );
     
   }
   set_collision_mask(_mask) {
+    ShapeCast2D.init_method_set_collision_mask();
     return _call_native_mb_no_ret(
-      ShapeCast2D._bindings.method_set_collision_mask,
+      ShapeCast2D.#_bindings.method_set_collision_mask,
       this._owner,
       _mask
     );
     
   }
   get_collision_mask() {
+    ShapeCast2D.init_method_get_collision_mask();
     return _call_native_mb_ret(
-      ShapeCast2D._bindings.method_get_collision_mask,
+      ShapeCast2D.#_bindings.method_get_collision_mask,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_collision_mask_value(_layer_number, _value) {
+    ShapeCast2D.init_method_set_collision_mask_value();
     return _call_native_mb_no_ret(
-      ShapeCast2D._bindings.method_set_collision_mask_value,
+      ShapeCast2D.#_bindings.method_set_collision_mask_value,
       this._owner,
       _layer_number, _value
     );
     
   }
   get_collision_mask_value(_layer_number) {
+    ShapeCast2D.init_method_get_collision_mask_value();
     return _call_native_mb_ret(
-      ShapeCast2D._bindings.method_get_collision_mask_value,
+      ShapeCast2D.#_bindings.method_get_collision_mask_value,
       this._owner,
 			Variant.Type.BOOL,
+    
       _layer_number
     );
     
   }
   set_exclude_parent_body(_mask) {
+    ShapeCast2D.init_method_set_exclude_parent_body();
     return _call_native_mb_no_ret(
-      ShapeCast2D._bindings.method_set_exclude_parent_body,
+      ShapeCast2D.#_bindings.method_set_exclude_parent_body,
       this._owner,
       _mask
     );
     
   }
   get_exclude_parent_body() {
+    ShapeCast2D.init_method_get_exclude_parent_body();
     return _call_native_mb_ret(
-      ShapeCast2D._bindings.method_get_exclude_parent_body,
+      ShapeCast2D.#_bindings.method_get_exclude_parent_body,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_collide_with_areas(_enable) {
+    ShapeCast2D.init_method_set_collide_with_areas();
     return _call_native_mb_no_ret(
-      ShapeCast2D._bindings.method_set_collide_with_areas,
+      ShapeCast2D.#_bindings.method_set_collide_with_areas,
       this._owner,
       _enable
     );
     
   }
   is_collide_with_areas_enabled() {
+    ShapeCast2D.init_method_is_collide_with_areas_enabled();
     return _call_native_mb_ret(
-      ShapeCast2D._bindings.method_is_collide_with_areas_enabled,
+      ShapeCast2D.#_bindings.method_is_collide_with_areas_enabled,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_collide_with_bodies(_enable) {
+    ShapeCast2D.init_method_set_collide_with_bodies();
     return _call_native_mb_no_ret(
-      ShapeCast2D._bindings.method_set_collide_with_bodies,
+      ShapeCast2D.#_bindings.method_set_collide_with_bodies,
       this._owner,
       _enable
     );
     
   }
   is_collide_with_bodies_enabled() {
+    ShapeCast2D.init_method_is_collide_with_bodies_enabled();
     return _call_native_mb_ret(
-      ShapeCast2D._bindings.method_is_collide_with_bodies_enabled,
+      ShapeCast2D.#_bindings.method_is_collide_with_bodies_enabled,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
@@ -745,8 +856,4 @@ set collide_with_bodies (new_value) {
   this.set_collide_with_bodies(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

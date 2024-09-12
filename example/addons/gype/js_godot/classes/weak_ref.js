@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { RefCounted } from '@js_godot/classes/ref_counted'
-import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -14,7 +14,7 @@ class _MethodBindings {
 }
 export class WeakRef extends RefCounted{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -24,26 +24,24 @@ export class WeakRef extends RefCounted{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_get_ref() {
+    if (!this.#_bindings.method_get_ref) {
       let classname = new StringName("WeakRef");
       let methodname = new StringName("get_ref");
-      this._bindings.method_get_ref = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_ref = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1214101251
       );
     }
   }
+
+  
   
   get_ref() {
+    WeakRef.init_method_get_ref();
     return _call_native_mb_ret(
-      WeakRef._bindings.method_get_ref,
+      WeakRef.#_bindings.method_get_ref,
       this._owner,
 			Variant.Type.VARIANT,
     
@@ -53,8 +51,4 @@ export class WeakRef extends RefCounted{
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

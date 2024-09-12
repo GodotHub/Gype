@@ -19,7 +19,7 @@ class _MethodBindings {
 }
 export class CollisionShape3D extends Node3D{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -29,113 +29,127 @@ export class CollisionShape3D extends Node3D{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_resource_changed() {
+    if (!this.#_bindings.method_resource_changed) {
       let classname = new StringName("CollisionShape3D");
       let methodname = new StringName("resource_changed");
-      this._bindings.method_resource_changed = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_resource_changed = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         968641751
       );
     }
-    {
+  }
+  static init_method_set_shape() {
+    if (!this.#_bindings.method_set_shape) {
       let classname = new StringName("CollisionShape3D");
       let methodname = new StringName("set_shape");
-      this._bindings.method_set_shape = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_shape = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1549710052
       );
     }
-    {
+  }
+  static init_method_get_shape() {
+    if (!this.#_bindings.method_get_shape) {
       let classname = new StringName("CollisionShape3D");
       let methodname = new StringName("get_shape");
-      this._bindings.method_get_shape = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_shape = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3214262478
       );
     }
-    {
+  }
+  static init_method_set_disabled() {
+    if (!this.#_bindings.method_set_disabled) {
       let classname = new StringName("CollisionShape3D");
       let methodname = new StringName("set_disabled");
-      this._bindings.method_set_disabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_disabled = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_is_disabled() {
+    if (!this.#_bindings.method_is_disabled) {
       let classname = new StringName("CollisionShape3D");
       let methodname = new StringName("is_disabled");
-      this._bindings.method_is_disabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_disabled = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_make_convex_from_siblings() {
+    if (!this.#_bindings.method_make_convex_from_siblings) {
       let classname = new StringName("CollisionShape3D");
       let methodname = new StringName("make_convex_from_siblings");
-      this._bindings.method_make_convex_from_siblings = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_make_convex_from_siblings = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3218959716
       );
     }
   }
+
+  
   
   resource_changed(_resource) {
+    CollisionShape3D.init_method_resource_changed();
     return _call_native_mb_no_ret(
-      CollisionShape3D._bindings.method_resource_changed,
+      CollisionShape3D.#_bindings.method_resource_changed,
       this._owner,
       _resource
     );
     
   }
   set_shape(_shape) {
+    CollisionShape3D.init_method_set_shape();
     return _call_native_mb_no_ret(
-      CollisionShape3D._bindings.method_set_shape,
+      CollisionShape3D.#_bindings.method_set_shape,
       this._owner,
       _shape
     );
     
   }
   get_shape() {
+    CollisionShape3D.init_method_get_shape();
     return _call_native_mb_ret(
-      CollisionShape3D._bindings.method_get_shape,
+      CollisionShape3D.#_bindings.method_get_shape,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
   }
   set_disabled(_enable) {
+    CollisionShape3D.init_method_set_disabled();
     return _call_native_mb_no_ret(
-      CollisionShape3D._bindings.method_set_disabled,
+      CollisionShape3D.#_bindings.method_set_disabled,
       this._owner,
       _enable
     );
     
   }
   is_disabled() {
+    CollisionShape3D.init_method_is_disabled();
     return _call_native_mb_ret(
-      CollisionShape3D._bindings.method_is_disabled,
+      CollisionShape3D.#_bindings.method_is_disabled,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   make_convex_from_siblings() {
+    CollisionShape3D.init_method_make_convex_from_siblings();
     return _call_native_mb_no_ret(
-      CollisionShape3D._bindings.method_make_convex_from_siblings,
+      CollisionShape3D.#_bindings.method_make_convex_from_siblings,
       this._owner,
       
     );
@@ -155,8 +169,4 @@ set disabled (new_value) {
   this.set_disabled(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

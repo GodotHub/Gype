@@ -4,6 +4,6 @@ import { GodotClass } from "@js_godot/core/class_define";
 @GodotClass
 export class MyNode extends Node2D {
   constructor() {
-    super();
+	super();
   }
 }

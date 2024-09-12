@@ -2,10 +2,12 @@ import * as internal from '__internal__'
 import {
   _call_builtin_constructor,
   _call_builtin_method_ptr_ret,
-  _call_builtin_method_ptr_no_ret
+  _call_builtin_method_ptr_no_ret,
+  _call_builtin_method_ptr_obj_ret,
 } from '@js_godot/core/builtin_ptrcall'
-import { StringName } from '@js_godot/variant/string_name'
 import { Vector3 } from '@js_godot/variant/vector3'
+import { StringName } from '@js_godot/variant/string_name'
+import { GodotObject } from "@js_godot/classes/godot_object";
 
 class _MethodBindings {
   from_variant_constructor
@@ -58,49 +60,53 @@ export class Vector3i {
   static #SIZE = 12
   opaque = new Uint8Array(Vector3i.#SIZE)
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
-  constructor (from) {
-    if (!from) {
-      _call_builtin_constructor(Vector3i._bindings.constructor_0, this)
-    }else if (from instanceof Vector3i) {
-      _call_builtin_constructor(Vector3i._bindings.constructor_1, this, [
+  constructor (value) {
+    if (!value) {
+      _call_builtin_constructor(Vector3i.#_bindings.constructor_0, this)
+    } else if (arguments.length == 1&& arguments[0] instanceof Vector3i) {
+      let from = arguments[0];
+      _call_builtin_constructor(Vector3i.#_bindings.constructor_1, this, [
         from
       ])
-    }else if (from instanceof Vector3) {
-      _call_builtin_constructor(Vector3i._bindings.constructor_2, this, [
+    } else if (arguments.length == 1&& arguments[0] instanceof Vector3) {
+      let from = arguments[0];
+      _call_builtin_constructor(Vector3i.#_bindings.constructor_2, this, [
         from
       ])
     } else if (arguments.length == 3&& typeof arguments[0] == "number"&& typeof arguments[1] == "number"&& typeof arguments[2] == "number") {
       let x = arguments[0];
       let y = arguments[1];
       let z = arguments[2];
-      _call_builtin_constructor(Vector3i._bindings.constructor_3, this, [
+      _call_builtin_constructor(Vector3i.#_bindings.constructor_3, this, [
         x, y, z
       ])
-    } else if (from.constructor.name === "Variant") {
-      Vector3i._bindings.from_variant_constructor(this.opaque, from.opaque)
+    } else if (value.constructor.name === "Variant") {
+      Vector3i.#_bindings.from_variant_constructor(this.opaque, value.opaque)
+    } else if (value instanceof Uint8Array) {
+      this.opaque = value;
     } 
   }
   
   static __init_bindings_constructors_destructor () {
-    this._bindings.from_variant_constructor = internal.get_variant_to_type_constructor(
+    this.#_bindings.from_variant_constructor = internal.get_variant_to_type_constructor(
       10
     )
-    this._bindings.constructor_0 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_0 = internal.variant_get_ptr_constructor(
       10,
       0
     )
-    this._bindings.constructor_1 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_1 = internal.variant_get_ptr_constructor(
       10,
       1
     )
-    this._bindings.constructor_2 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_2 = internal.variant_get_ptr_constructor(
       10,
       2
     )
-    this._bindings.constructor_3 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_3 = internal.variant_get_ptr_constructor(
       10,
       3
     )
@@ -114,7 +120,7 @@ export class Vector3i {
     this.__init_bindings_constructors_destructor()
     {
       let _gde_name = new StringName('min_axis_index')
-      this._bindings.method_min_axis_index = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_min_axis_index = internal.variant_get_ptr_builtin_method(
         10,
         _gde_name.opaque,
         3173160232
@@ -122,7 +128,7 @@ export class Vector3i {
     }
     {
       let _gde_name = new StringName('max_axis_index')
-      this._bindings.method_max_axis_index = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_max_axis_index = internal.variant_get_ptr_builtin_method(
         10,
         _gde_name.opaque,
         3173160232
@@ -130,7 +136,7 @@ export class Vector3i {
     }
     {
       let _gde_name = new StringName('distance_to')
-      this._bindings.method_distance_to = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_distance_to = internal.variant_get_ptr_builtin_method(
         10,
         _gde_name.opaque,
         1975170430
@@ -138,7 +144,7 @@ export class Vector3i {
     }
     {
       let _gde_name = new StringName('distance_squared_to')
-      this._bindings.method_distance_squared_to = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_distance_squared_to = internal.variant_get_ptr_builtin_method(
         10,
         _gde_name.opaque,
         2947717320
@@ -146,7 +152,7 @@ export class Vector3i {
     }
     {
       let _gde_name = new StringName('length')
-      this._bindings.method_length = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_length = internal.variant_get_ptr_builtin_method(
         10,
         _gde_name.opaque,
         466405837
@@ -154,7 +160,7 @@ export class Vector3i {
     }
     {
       let _gde_name = new StringName('length_squared')
-      this._bindings.method_length_squared = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_length_squared = internal.variant_get_ptr_builtin_method(
         10,
         _gde_name.opaque,
         3173160232
@@ -162,7 +168,7 @@ export class Vector3i {
     }
     {
       let _gde_name = new StringName('sign')
-      this._bindings.method_sign = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_sign = internal.variant_get_ptr_builtin_method(
         10,
         _gde_name.opaque,
         3729604559
@@ -170,7 +176,7 @@ export class Vector3i {
     }
     {
       let _gde_name = new StringName('abs')
-      this._bindings.method_abs = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_abs = internal.variant_get_ptr_builtin_method(
         10,
         _gde_name.opaque,
         3729604559
@@ -178,7 +184,7 @@ export class Vector3i {
     }
     {
       let _gde_name = new StringName('clamp')
-      this._bindings.method_clamp = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_clamp = internal.variant_get_ptr_builtin_method(
         10,
         _gde_name.opaque,
         1086892323
@@ -186,7 +192,7 @@ export class Vector3i {
     }
     {
       let _gde_name = new StringName('clampi')
-      this._bindings.method_clampi = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_clampi = internal.variant_get_ptr_builtin_method(
         10,
         _gde_name.opaque,
         1077216921
@@ -194,7 +200,7 @@ export class Vector3i {
     }
     {
       let _gde_name = new StringName('snapped')
-      this._bindings.method_snapped = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_snapped = internal.variant_get_ptr_builtin_method(
         10,
         _gde_name.opaque,
         1989319750
@@ -202,7 +208,7 @@ export class Vector3i {
     }
     {
       let _gde_name = new StringName('snappedi')
-      this._bindings.method_snappedi = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_snappedi = internal.variant_get_ptr_builtin_method(
         10,
         _gde_name.opaque,
         2377625641
@@ -210,7 +216,7 @@ export class Vector3i {
     }
     {
       let _gde_name = new StringName('min')
-      this._bindings.method_min = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_min = internal.variant_get_ptr_builtin_method(
         10,
         _gde_name.opaque,
         1989319750
@@ -218,7 +224,7 @@ export class Vector3i {
     }
     {
       let _gde_name = new StringName('mini')
-      this._bindings.method_mini = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_mini = internal.variant_get_ptr_builtin_method(
         10,
         _gde_name.opaque,
         2377625641
@@ -226,7 +232,7 @@ export class Vector3i {
     }
     {
       let _gde_name = new StringName('max')
-      this._bindings.method_max = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_max = internal.variant_get_ptr_builtin_method(
         10,
         _gde_name.opaque,
         1989319750
@@ -234,7 +240,7 @@ export class Vector3i {
     }
     {
       let _gde_name = new StringName('maxi')
-      this._bindings.method_maxi = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_maxi = internal.variant_get_ptr_builtin_method(
         10,
         _gde_name.opaque,
         2377625641
@@ -246,7 +252,7 @@ export class Vector3i {
   min_axis_index () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Vector3i._bindings.method_min_axis_index,
+      Vector3i.#_bindings.method_min_axis_index,
       this,
       2,
       []
@@ -256,7 +262,7 @@ export class Vector3i {
   max_axis_index () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Vector3i._bindings.method_max_axis_index,
+      Vector3i.#_bindings.method_max_axis_index,
       this,
       2,
       []
@@ -266,7 +272,7 @@ export class Vector3i {
   distance_to (_to) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Vector3i._bindings.method_distance_to,
+      Vector3i.#_bindings.method_distance_to,
       this,
       3,
       [_to]
@@ -276,7 +282,7 @@ export class Vector3i {
   distance_squared_to (_to) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Vector3i._bindings.method_distance_squared_to,
+      Vector3i.#_bindings.method_distance_squared_to,
       this,
       2,
       [_to]
@@ -286,7 +292,7 @@ export class Vector3i {
   length () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Vector3i._bindings.method_length,
+      Vector3i.#_bindings.method_length,
       this,
       3,
       []
@@ -296,7 +302,7 @@ export class Vector3i {
   length_squared () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Vector3i._bindings.method_length_squared,
+      Vector3i.#_bindings.method_length_squared,
       this,
       2,
       []
@@ -306,7 +312,7 @@ export class Vector3i {
   sign () {
     let ret = new Vector3i()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Vector3i._bindings.method_sign,
+      Vector3i.#_bindings.method_sign,
       this,
       10,
       []
@@ -316,7 +322,7 @@ export class Vector3i {
   abs () {
     let ret = new Vector3i()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Vector3i._bindings.method_abs,
+      Vector3i.#_bindings.method_abs,
       this,
       10,
       []
@@ -326,7 +332,7 @@ export class Vector3i {
   clamp (_min, _max) {
     let ret = new Vector3i()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Vector3i._bindings.method_clamp,
+      Vector3i.#_bindings.method_clamp,
       this,
       10,
       [_min, _max]
@@ -336,7 +342,7 @@ export class Vector3i {
   clampi (_min, _max) {
     let ret = new Vector3i()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Vector3i._bindings.method_clampi,
+      Vector3i.#_bindings.method_clampi,
       this,
       10,
       [_min, _max]
@@ -346,7 +352,7 @@ export class Vector3i {
   snapped (_step) {
     let ret = new Vector3i()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Vector3i._bindings.method_snapped,
+      Vector3i.#_bindings.method_snapped,
       this,
       10,
       [_step]
@@ -356,7 +362,7 @@ export class Vector3i {
   snappedi (_step) {
     let ret = new Vector3i()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Vector3i._bindings.method_snappedi,
+      Vector3i.#_bindings.method_snappedi,
       this,
       10,
       [_step]
@@ -366,7 +372,7 @@ export class Vector3i {
   min (_with) {
     let ret = new Vector3i()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Vector3i._bindings.method_min,
+      Vector3i.#_bindings.method_min,
       this,
       10,
       [_with]
@@ -376,7 +382,7 @@ export class Vector3i {
   mini (_with) {
     let ret = new Vector3i()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Vector3i._bindings.method_mini,
+      Vector3i.#_bindings.method_mini,
       this,
       10,
       [_with]
@@ -386,7 +392,7 @@ export class Vector3i {
   max (_with) {
     let ret = new Vector3i()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Vector3i._bindings.method_max,
+      Vector3i.#_bindings.method_max,
       this,
       10,
       [_with]
@@ -396,7 +402,7 @@ export class Vector3i {
   maxi (_with) {
     let ret = new Vector3i()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Vector3i._bindings.method_maxi,
+      Vector3i.#_bindings.method_maxi,
       this,
       10,
       [_with]

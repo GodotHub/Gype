@@ -18,7 +18,7 @@ class _MethodBindings {
 }
 export class SkeletonModifier3D extends Node3D{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -28,100 +28,112 @@ export class SkeletonModifier3D extends Node3D{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_get_skeleton() {
+    if (!this.#_bindings.method_get_skeleton) {
       let classname = new StringName("SkeletonModifier3D");
       let methodname = new StringName("get_skeleton");
-      this._bindings.method_get_skeleton = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_skeleton = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1488626673
       );
     }
-    {
+  }
+  static init_method_set_active() {
+    if (!this.#_bindings.method_set_active) {
       let classname = new StringName("SkeletonModifier3D");
       let methodname = new StringName("set_active");
-      this._bindings.method_set_active = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_active = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_is_active() {
+    if (!this.#_bindings.method_is_active) {
       let classname = new StringName("SkeletonModifier3D");
       let methodname = new StringName("is_active");
-      this._bindings.method_is_active = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_active = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_set_influence() {
+    if (!this.#_bindings.method_set_influence) {
       let classname = new StringName("SkeletonModifier3D");
       let methodname = new StringName("set_influence");
-      this._bindings.method_set_influence = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_influence = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_influence() {
+    if (!this.#_bindings.method_get_influence) {
       let classname = new StringName("SkeletonModifier3D");
       let methodname = new StringName("get_influence");
-      this._bindings.method_get_influence = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_influence = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
   }
+
+  
   
   _process_modification() {
   }
   get_skeleton() {
+    SkeletonModifier3D.init_method_get_skeleton();
     return _call_native_mb_ret(
-      SkeletonModifier3D._bindings.method_get_skeleton,
+      SkeletonModifier3D.#_bindings.method_get_skeleton,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
   }
   set_active(_active) {
+    SkeletonModifier3D.init_method_set_active();
     return _call_native_mb_no_ret(
-      SkeletonModifier3D._bindings.method_set_active,
+      SkeletonModifier3D.#_bindings.method_set_active,
       this._owner,
       _active
     );
     
   }
   is_active() {
+    SkeletonModifier3D.init_method_is_active();
     return _call_native_mb_ret(
-      SkeletonModifier3D._bindings.method_is_active,
+      SkeletonModifier3D.#_bindings.method_is_active,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_influence(_influence) {
+    SkeletonModifier3D.init_method_set_influence();
     return _call_native_mb_no_ret(
-      SkeletonModifier3D._bindings.method_set_influence,
+      SkeletonModifier3D.#_bindings.method_set_influence,
       this._owner,
       _influence
     );
     
   }
   get_influence() {
+    SkeletonModifier3D.init_method_get_influence();
     return _call_native_mb_ret(
-      SkeletonModifier3D._bindings.method_get_influence,
+      SkeletonModifier3D.#_bindings.method_get_influence,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
@@ -140,8 +152,4 @@ set influence (new_value) {
   this.set_influence(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

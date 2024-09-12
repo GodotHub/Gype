@@ -1,11 +1,7 @@
 import * as internal from '__internal__';
-import { RID } from '@js_godot/variant/rid'
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { GodotObject } from '@js_godot/classes/godot_object'
-import { Transform3D } from '@js_godot/variant/transform3d'
-import { Variant } from '@js_godot/variant/variant'
-import { Basis } from '@js_godot/variant/basis'
-import { Vector3 } from '@js_godot/variant/vector3'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -63,7 +59,7 @@ class _MethodBindings {
 }
 export class PhysicsDirectBodyState3D extends GodotObject{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -73,431 +69,519 @@ export class PhysicsDirectBodyState3D extends GodotObject{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_get_total_gravity() {
+    if (!this.#_bindings.method_get_total_gravity) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("get_total_gravity");
-      this._bindings.method_get_total_gravity = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_total_gravity = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3360562783
       );
     }
-    {
+  }
+  static init_method_get_total_linear_damp() {
+    if (!this.#_bindings.method_get_total_linear_damp) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("get_total_linear_damp");
-      this._bindings.method_get_total_linear_damp = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_total_linear_damp = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_get_total_angular_damp() {
+    if (!this.#_bindings.method_get_total_angular_damp) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("get_total_angular_damp");
-      this._bindings.method_get_total_angular_damp = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_total_angular_damp = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_get_center_of_mass() {
+    if (!this.#_bindings.method_get_center_of_mass) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("get_center_of_mass");
-      this._bindings.method_get_center_of_mass = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_center_of_mass = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3360562783
       );
     }
-    {
+  }
+  static init_method_get_center_of_mass_local() {
+    if (!this.#_bindings.method_get_center_of_mass_local) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("get_center_of_mass_local");
-      this._bindings.method_get_center_of_mass_local = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_center_of_mass_local = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3360562783
       );
     }
-    {
+  }
+  static init_method_get_principal_inertia_axes() {
+    if (!this.#_bindings.method_get_principal_inertia_axes) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("get_principal_inertia_axes");
-      this._bindings.method_get_principal_inertia_axes = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_principal_inertia_axes = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2716978435
       );
     }
-    {
+  }
+  static init_method_get_inverse_mass() {
+    if (!this.#_bindings.method_get_inverse_mass) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("get_inverse_mass");
-      this._bindings.method_get_inverse_mass = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_inverse_mass = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_get_inverse_inertia() {
+    if (!this.#_bindings.method_get_inverse_inertia) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("get_inverse_inertia");
-      this._bindings.method_get_inverse_inertia = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_inverse_inertia = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3360562783
       );
     }
-    {
+  }
+  static init_method_get_inverse_inertia_tensor() {
+    if (!this.#_bindings.method_get_inverse_inertia_tensor) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("get_inverse_inertia_tensor");
-      this._bindings.method_get_inverse_inertia_tensor = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_inverse_inertia_tensor = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2716978435
       );
     }
-    {
+  }
+  static init_method_set_linear_velocity() {
+    if (!this.#_bindings.method_set_linear_velocity) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("set_linear_velocity");
-      this._bindings.method_set_linear_velocity = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_linear_velocity = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3460891852
       );
     }
-    {
+  }
+  static init_method_get_linear_velocity() {
+    if (!this.#_bindings.method_get_linear_velocity) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("get_linear_velocity");
-      this._bindings.method_get_linear_velocity = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_linear_velocity = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3360562783
       );
     }
-    {
+  }
+  static init_method_set_angular_velocity() {
+    if (!this.#_bindings.method_set_angular_velocity) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("set_angular_velocity");
-      this._bindings.method_set_angular_velocity = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_angular_velocity = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3460891852
       );
     }
-    {
+  }
+  static init_method_get_angular_velocity() {
+    if (!this.#_bindings.method_get_angular_velocity) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("get_angular_velocity");
-      this._bindings.method_get_angular_velocity = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_angular_velocity = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3360562783
       );
     }
-    {
+  }
+  static init_method_set_transform() {
+    if (!this.#_bindings.method_set_transform) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("set_transform");
-      this._bindings.method_set_transform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_transform = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2952846383
       );
     }
-    {
+  }
+  static init_method_get_transform() {
+    if (!this.#_bindings.method_get_transform) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("get_transform");
-      this._bindings.method_get_transform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_transform = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3229777777
       );
     }
-    {
+  }
+  static init_method_get_velocity_at_local_position() {
+    if (!this.#_bindings.method_get_velocity_at_local_position) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("get_velocity_at_local_position");
-      this._bindings.method_get_velocity_at_local_position = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_velocity_at_local_position = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         192990374
       );
     }
-    {
+  }
+  static init_method_apply_central_impulse() {
+    if (!this.#_bindings.method_apply_central_impulse) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("apply_central_impulse");
-      this._bindings.method_apply_central_impulse = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_apply_central_impulse = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2007698547
       );
     }
-    {
+  }
+  static init_method_apply_impulse() {
+    if (!this.#_bindings.method_apply_impulse) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("apply_impulse");
-      this._bindings.method_apply_impulse = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_apply_impulse = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2754756483
       );
     }
-    {
+  }
+  static init_method_apply_torque_impulse() {
+    if (!this.#_bindings.method_apply_torque_impulse) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("apply_torque_impulse");
-      this._bindings.method_apply_torque_impulse = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_apply_torque_impulse = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3460891852
       );
     }
-    {
+  }
+  static init_method_apply_central_force() {
+    if (!this.#_bindings.method_apply_central_force) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("apply_central_force");
-      this._bindings.method_apply_central_force = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_apply_central_force = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2007698547
       );
     }
-    {
+  }
+  static init_method_apply_force() {
+    if (!this.#_bindings.method_apply_force) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("apply_force");
-      this._bindings.method_apply_force = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_apply_force = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2754756483
       );
     }
-    {
+  }
+  static init_method_apply_torque() {
+    if (!this.#_bindings.method_apply_torque) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("apply_torque");
-      this._bindings.method_apply_torque = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_apply_torque = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3460891852
       );
     }
-    {
+  }
+  static init_method_add_constant_central_force() {
+    if (!this.#_bindings.method_add_constant_central_force) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("add_constant_central_force");
-      this._bindings.method_add_constant_central_force = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_add_constant_central_force = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2007698547
       );
     }
-    {
+  }
+  static init_method_add_constant_force() {
+    if (!this.#_bindings.method_add_constant_force) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("add_constant_force");
-      this._bindings.method_add_constant_force = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_add_constant_force = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2754756483
       );
     }
-    {
+  }
+  static init_method_add_constant_torque() {
+    if (!this.#_bindings.method_add_constant_torque) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("add_constant_torque");
-      this._bindings.method_add_constant_torque = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_add_constant_torque = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3460891852
       );
     }
-    {
+  }
+  static init_method_set_constant_force() {
+    if (!this.#_bindings.method_set_constant_force) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("set_constant_force");
-      this._bindings.method_set_constant_force = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_constant_force = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3460891852
       );
     }
-    {
+  }
+  static init_method_get_constant_force() {
+    if (!this.#_bindings.method_get_constant_force) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("get_constant_force");
-      this._bindings.method_get_constant_force = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_constant_force = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3360562783
       );
     }
-    {
+  }
+  static init_method_set_constant_torque() {
+    if (!this.#_bindings.method_set_constant_torque) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("set_constant_torque");
-      this._bindings.method_set_constant_torque = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_constant_torque = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3460891852
       );
     }
-    {
+  }
+  static init_method_get_constant_torque() {
+    if (!this.#_bindings.method_get_constant_torque) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("get_constant_torque");
-      this._bindings.method_get_constant_torque = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_constant_torque = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3360562783
       );
     }
-    {
+  }
+  static init_method_set_sleep_state() {
+    if (!this.#_bindings.method_set_sleep_state) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("set_sleep_state");
-      this._bindings.method_set_sleep_state = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_sleep_state = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_is_sleeping() {
+    if (!this.#_bindings.method_is_sleeping) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("is_sleeping");
-      this._bindings.method_is_sleeping = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_sleeping = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_get_contact_count() {
+    if (!this.#_bindings.method_get_contact_count) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("get_contact_count");
-      this._bindings.method_get_contact_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_contact_count = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
-    {
+  }
+  static init_method_get_contact_local_position() {
+    if (!this.#_bindings.method_get_contact_local_position) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("get_contact_local_position");
-      this._bindings.method_get_contact_local_position = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_contact_local_position = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         711720468
       );
     }
-    {
+  }
+  static init_method_get_contact_local_normal() {
+    if (!this.#_bindings.method_get_contact_local_normal) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("get_contact_local_normal");
-      this._bindings.method_get_contact_local_normal = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_contact_local_normal = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         711720468
       );
     }
-    {
+  }
+  static init_method_get_contact_impulse() {
+    if (!this.#_bindings.method_get_contact_impulse) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("get_contact_impulse");
-      this._bindings.method_get_contact_impulse = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_contact_impulse = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         711720468
       );
     }
-    {
+  }
+  static init_method_get_contact_local_shape() {
+    if (!this.#_bindings.method_get_contact_local_shape) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("get_contact_local_shape");
-      this._bindings.method_get_contact_local_shape = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_contact_local_shape = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         923996154
       );
     }
-    {
+  }
+  static init_method_get_contact_local_velocity_at_position() {
+    if (!this.#_bindings.method_get_contact_local_velocity_at_position) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("get_contact_local_velocity_at_position");
-      this._bindings.method_get_contact_local_velocity_at_position = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_contact_local_velocity_at_position = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         711720468
       );
     }
-    {
+  }
+  static init_method_get_contact_collider() {
+    if (!this.#_bindings.method_get_contact_collider) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("get_contact_collider");
-      this._bindings.method_get_contact_collider = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_contact_collider = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         495598643
       );
     }
-    {
+  }
+  static init_method_get_contact_collider_position() {
+    if (!this.#_bindings.method_get_contact_collider_position) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("get_contact_collider_position");
-      this._bindings.method_get_contact_collider_position = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_contact_collider_position = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         711720468
       );
     }
-    {
+  }
+  static init_method_get_contact_collider_id() {
+    if (!this.#_bindings.method_get_contact_collider_id) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("get_contact_collider_id");
-      this._bindings.method_get_contact_collider_id = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_contact_collider_id = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         923996154
       );
     }
-    {
+  }
+  static init_method_get_contact_collider_object() {
+    if (!this.#_bindings.method_get_contact_collider_object) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("get_contact_collider_object");
-      this._bindings.method_get_contact_collider_object = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_contact_collider_object = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3332903315
       );
     }
-    {
+  }
+  static init_method_get_contact_collider_shape() {
+    if (!this.#_bindings.method_get_contact_collider_shape) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("get_contact_collider_shape");
-      this._bindings.method_get_contact_collider_shape = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_contact_collider_shape = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         923996154
       );
     }
-    {
+  }
+  static init_method_get_contact_collider_velocity_at_position() {
+    if (!this.#_bindings.method_get_contact_collider_velocity_at_position) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("get_contact_collider_velocity_at_position");
-      this._bindings.method_get_contact_collider_velocity_at_position = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_contact_collider_velocity_at_position = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         711720468
       );
     }
-    {
+  }
+  static init_method_get_step() {
+    if (!this.#_bindings.method_get_step) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("get_step");
-      this._bindings.method_get_step = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_step = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_integrate_forces() {
+    if (!this.#_bindings.method_integrate_forces) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("integrate_forces");
-      this._bindings.method_integrate_forces = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_integrate_forces = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3218959716
       );
     }
-    {
+  }
+  static init_method_get_space_state() {
+    if (!this.#_bindings.method_get_space_state) {
       let classname = new StringName("PhysicsDirectBodyState3D");
       let methodname = new StringName("get_space_state");
-      this._bindings.method_get_space_state = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_space_state = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2069328350
       );
     }
   }
+
+  
   
   get_total_gravity() {
+    PhysicsDirectBodyState3D.init_method_get_total_gravity();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState3D._bindings.method_get_total_gravity,
+      PhysicsDirectBodyState3D.#_bindings.method_get_total_gravity,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -506,26 +590,31 @@ export class PhysicsDirectBodyState3D extends GodotObject{
     
   }
   get_total_linear_damp() {
+    PhysicsDirectBodyState3D.init_method_get_total_linear_damp();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState3D._bindings.method_get_total_linear_damp,
+      PhysicsDirectBodyState3D.#_bindings.method_get_total_linear_damp,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   get_total_angular_damp() {
+    PhysicsDirectBodyState3D.init_method_get_total_angular_damp();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState3D._bindings.method_get_total_angular_damp,
+      PhysicsDirectBodyState3D.#_bindings.method_get_total_angular_damp,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   get_center_of_mass() {
+    PhysicsDirectBodyState3D.init_method_get_center_of_mass();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState3D._bindings.method_get_center_of_mass,
+      PhysicsDirectBodyState3D.#_bindings.method_get_center_of_mass,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -534,8 +623,9 @@ export class PhysicsDirectBodyState3D extends GodotObject{
     
   }
   get_center_of_mass_local() {
+    PhysicsDirectBodyState3D.init_method_get_center_of_mass_local();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState3D._bindings.method_get_center_of_mass_local,
+      PhysicsDirectBodyState3D.#_bindings.method_get_center_of_mass_local,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -544,8 +634,9 @@ export class PhysicsDirectBodyState3D extends GodotObject{
     
   }
   get_principal_inertia_axes() {
+    PhysicsDirectBodyState3D.init_method_get_principal_inertia_axes();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState3D._bindings.method_get_principal_inertia_axes,
+      PhysicsDirectBodyState3D.#_bindings.method_get_principal_inertia_axes,
       this._owner,
 			Variant.Type.BASIS,
     
@@ -554,17 +645,20 @@ export class PhysicsDirectBodyState3D extends GodotObject{
     
   }
   get_inverse_mass() {
+    PhysicsDirectBodyState3D.init_method_get_inverse_mass();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState3D._bindings.method_get_inverse_mass,
+      PhysicsDirectBodyState3D.#_bindings.method_get_inverse_mass,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   get_inverse_inertia() {
+    PhysicsDirectBodyState3D.init_method_get_inverse_inertia();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState3D._bindings.method_get_inverse_inertia,
+      PhysicsDirectBodyState3D.#_bindings.method_get_inverse_inertia,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -573,8 +667,9 @@ export class PhysicsDirectBodyState3D extends GodotObject{
     
   }
   get_inverse_inertia_tensor() {
+    PhysicsDirectBodyState3D.init_method_get_inverse_inertia_tensor();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState3D._bindings.method_get_inverse_inertia_tensor,
+      PhysicsDirectBodyState3D.#_bindings.method_get_inverse_inertia_tensor,
       this._owner,
 			Variant.Type.BASIS,
     
@@ -583,16 +678,18 @@ export class PhysicsDirectBodyState3D extends GodotObject{
     
   }
   set_linear_velocity(_velocity) {
+    PhysicsDirectBodyState3D.init_method_set_linear_velocity();
     return _call_native_mb_no_ret(
-      PhysicsDirectBodyState3D._bindings.method_set_linear_velocity,
+      PhysicsDirectBodyState3D.#_bindings.method_set_linear_velocity,
       this._owner,
       _velocity
     );
     
   }
   get_linear_velocity() {
+    PhysicsDirectBodyState3D.init_method_get_linear_velocity();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState3D._bindings.method_get_linear_velocity,
+      PhysicsDirectBodyState3D.#_bindings.method_get_linear_velocity,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -601,16 +698,18 @@ export class PhysicsDirectBodyState3D extends GodotObject{
     
   }
   set_angular_velocity(_velocity) {
+    PhysicsDirectBodyState3D.init_method_set_angular_velocity();
     return _call_native_mb_no_ret(
-      PhysicsDirectBodyState3D._bindings.method_set_angular_velocity,
+      PhysicsDirectBodyState3D.#_bindings.method_set_angular_velocity,
       this._owner,
       _velocity
     );
     
   }
   get_angular_velocity() {
+    PhysicsDirectBodyState3D.init_method_get_angular_velocity();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState3D._bindings.method_get_angular_velocity,
+      PhysicsDirectBodyState3D.#_bindings.method_get_angular_velocity,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -619,16 +718,18 @@ export class PhysicsDirectBodyState3D extends GodotObject{
     
   }
   set_transform(_transform) {
+    PhysicsDirectBodyState3D.init_method_set_transform();
     return _call_native_mb_no_ret(
-      PhysicsDirectBodyState3D._bindings.method_set_transform,
+      PhysicsDirectBodyState3D.#_bindings.method_set_transform,
       this._owner,
       _transform
     );
     
   }
   get_transform() {
+    PhysicsDirectBodyState3D.init_method_get_transform();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState3D._bindings.method_get_transform,
+      PhysicsDirectBodyState3D.#_bindings.method_get_transform,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -637,8 +738,9 @@ export class PhysicsDirectBodyState3D extends GodotObject{
     
   }
   get_velocity_at_local_position(_local_position) {
+    PhysicsDirectBodyState3D.init_method_get_velocity_at_local_position();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState3D._bindings.method_get_velocity_at_local_position,
+      PhysicsDirectBodyState3D.#_bindings.method_get_velocity_at_local_position,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -647,88 +749,99 @@ export class PhysicsDirectBodyState3D extends GodotObject{
     
   }
   apply_central_impulse(_impulse) {
+    PhysicsDirectBodyState3D.init_method_apply_central_impulse();
     return _call_native_mb_no_ret(
-      PhysicsDirectBodyState3D._bindings.method_apply_central_impulse,
+      PhysicsDirectBodyState3D.#_bindings.method_apply_central_impulse,
       this._owner,
       _impulse
     );
     
   }
   apply_impulse(_impulse, _position) {
+    PhysicsDirectBodyState3D.init_method_apply_impulse();
     return _call_native_mb_no_ret(
-      PhysicsDirectBodyState3D._bindings.method_apply_impulse,
+      PhysicsDirectBodyState3D.#_bindings.method_apply_impulse,
       this._owner,
       _impulse, _position
     );
     
   }
   apply_torque_impulse(_impulse) {
+    PhysicsDirectBodyState3D.init_method_apply_torque_impulse();
     return _call_native_mb_no_ret(
-      PhysicsDirectBodyState3D._bindings.method_apply_torque_impulse,
+      PhysicsDirectBodyState3D.#_bindings.method_apply_torque_impulse,
       this._owner,
       _impulse
     );
     
   }
   apply_central_force(_force) {
+    PhysicsDirectBodyState3D.init_method_apply_central_force();
     return _call_native_mb_no_ret(
-      PhysicsDirectBodyState3D._bindings.method_apply_central_force,
+      PhysicsDirectBodyState3D.#_bindings.method_apply_central_force,
       this._owner,
       _force
     );
     
   }
   apply_force(_force, _position) {
+    PhysicsDirectBodyState3D.init_method_apply_force();
     return _call_native_mb_no_ret(
-      PhysicsDirectBodyState3D._bindings.method_apply_force,
+      PhysicsDirectBodyState3D.#_bindings.method_apply_force,
       this._owner,
       _force, _position
     );
     
   }
   apply_torque(_torque) {
+    PhysicsDirectBodyState3D.init_method_apply_torque();
     return _call_native_mb_no_ret(
-      PhysicsDirectBodyState3D._bindings.method_apply_torque,
+      PhysicsDirectBodyState3D.#_bindings.method_apply_torque,
       this._owner,
       _torque
     );
     
   }
   add_constant_central_force(_force) {
+    PhysicsDirectBodyState3D.init_method_add_constant_central_force();
     return _call_native_mb_no_ret(
-      PhysicsDirectBodyState3D._bindings.method_add_constant_central_force,
+      PhysicsDirectBodyState3D.#_bindings.method_add_constant_central_force,
       this._owner,
       _force
     );
     
   }
   add_constant_force(_force, _position) {
+    PhysicsDirectBodyState3D.init_method_add_constant_force();
     return _call_native_mb_no_ret(
-      PhysicsDirectBodyState3D._bindings.method_add_constant_force,
+      PhysicsDirectBodyState3D.#_bindings.method_add_constant_force,
       this._owner,
       _force, _position
     );
     
   }
   add_constant_torque(_torque) {
+    PhysicsDirectBodyState3D.init_method_add_constant_torque();
     return _call_native_mb_no_ret(
-      PhysicsDirectBodyState3D._bindings.method_add_constant_torque,
+      PhysicsDirectBodyState3D.#_bindings.method_add_constant_torque,
       this._owner,
       _torque
     );
     
   }
   set_constant_force(_force) {
+    PhysicsDirectBodyState3D.init_method_set_constant_force();
     return _call_native_mb_no_ret(
-      PhysicsDirectBodyState3D._bindings.method_set_constant_force,
+      PhysicsDirectBodyState3D.#_bindings.method_set_constant_force,
       this._owner,
       _force
     );
     
   }
   get_constant_force() {
+    PhysicsDirectBodyState3D.init_method_get_constant_force();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState3D._bindings.method_get_constant_force,
+      PhysicsDirectBodyState3D.#_bindings.method_get_constant_force,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -737,16 +850,18 @@ export class PhysicsDirectBodyState3D extends GodotObject{
     
   }
   set_constant_torque(_torque) {
+    PhysicsDirectBodyState3D.init_method_set_constant_torque();
     return _call_native_mb_no_ret(
-      PhysicsDirectBodyState3D._bindings.method_set_constant_torque,
+      PhysicsDirectBodyState3D.#_bindings.method_set_constant_torque,
       this._owner,
       _torque
     );
     
   }
   get_constant_torque() {
+    PhysicsDirectBodyState3D.init_method_get_constant_torque();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState3D._bindings.method_get_constant_torque,
+      PhysicsDirectBodyState3D.#_bindings.method_get_constant_torque,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -755,34 +870,40 @@ export class PhysicsDirectBodyState3D extends GodotObject{
     
   }
   set_sleep_state(_enabled) {
+    PhysicsDirectBodyState3D.init_method_set_sleep_state();
     return _call_native_mb_no_ret(
-      PhysicsDirectBodyState3D._bindings.method_set_sleep_state,
+      PhysicsDirectBodyState3D.#_bindings.method_set_sleep_state,
       this._owner,
       _enabled
     );
     
   }
   is_sleeping() {
+    PhysicsDirectBodyState3D.init_method_is_sleeping();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState3D._bindings.method_is_sleeping,
+      PhysicsDirectBodyState3D.#_bindings.method_is_sleeping,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   get_contact_count() {
+    PhysicsDirectBodyState3D.init_method_get_contact_count();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState3D._bindings.method_get_contact_count,
+      PhysicsDirectBodyState3D.#_bindings.method_get_contact_count,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   get_contact_local_position(_contact_idx) {
+    PhysicsDirectBodyState3D.init_method_get_contact_local_position();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState3D._bindings.method_get_contact_local_position,
+      PhysicsDirectBodyState3D.#_bindings.method_get_contact_local_position,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -791,8 +912,9 @@ export class PhysicsDirectBodyState3D extends GodotObject{
     
   }
   get_contact_local_normal(_contact_idx) {
+    PhysicsDirectBodyState3D.init_method_get_contact_local_normal();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState3D._bindings.method_get_contact_local_normal,
+      PhysicsDirectBodyState3D.#_bindings.method_get_contact_local_normal,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -801,8 +923,9 @@ export class PhysicsDirectBodyState3D extends GodotObject{
     
   }
   get_contact_impulse(_contact_idx) {
+    PhysicsDirectBodyState3D.init_method_get_contact_impulse();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState3D._bindings.method_get_contact_impulse,
+      PhysicsDirectBodyState3D.#_bindings.method_get_contact_impulse,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -811,17 +934,20 @@ export class PhysicsDirectBodyState3D extends GodotObject{
     
   }
   get_contact_local_shape(_contact_idx) {
+    PhysicsDirectBodyState3D.init_method_get_contact_local_shape();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState3D._bindings.method_get_contact_local_shape,
+      PhysicsDirectBodyState3D.#_bindings.method_get_contact_local_shape,
       this._owner,
 			Variant.Type.INT,
+    
       _contact_idx
     );
     
   }
   get_contact_local_velocity_at_position(_contact_idx) {
+    PhysicsDirectBodyState3D.init_method_get_contact_local_velocity_at_position();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState3D._bindings.method_get_contact_local_velocity_at_position,
+      PhysicsDirectBodyState3D.#_bindings.method_get_contact_local_velocity_at_position,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -830,8 +956,9 @@ export class PhysicsDirectBodyState3D extends GodotObject{
     
   }
   get_contact_collider(_contact_idx) {
+    PhysicsDirectBodyState3D.init_method_get_contact_collider();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState3D._bindings.method_get_contact_collider,
+      PhysicsDirectBodyState3D.#_bindings.method_get_contact_collider,
       this._owner,
 			Variant.Type.RID,
     
@@ -840,8 +967,9 @@ export class PhysicsDirectBodyState3D extends GodotObject{
     
   }
   get_contact_collider_position(_contact_idx) {
+    PhysicsDirectBodyState3D.init_method_get_contact_collider_position();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState3D._bindings.method_get_contact_collider_position,
+      PhysicsDirectBodyState3D.#_bindings.method_get_contact_collider_position,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -850,35 +978,41 @@ export class PhysicsDirectBodyState3D extends GodotObject{
     
   }
   get_contact_collider_id(_contact_idx) {
+    PhysicsDirectBodyState3D.init_method_get_contact_collider_id();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState3D._bindings.method_get_contact_collider_id,
+      PhysicsDirectBodyState3D.#_bindings.method_get_contact_collider_id,
       this._owner,
 			Variant.Type.INT,
+    
       _contact_idx
     );
     
   }
   get_contact_collider_object(_contact_idx) {
+    PhysicsDirectBodyState3D.init_method_get_contact_collider_object();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState3D._bindings.method_get_contact_collider_object,
+      PhysicsDirectBodyState3D.#_bindings.method_get_contact_collider_object,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       _contact_idx
     );
     
   }
   get_contact_collider_shape(_contact_idx) {
+    PhysicsDirectBodyState3D.init_method_get_contact_collider_shape();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState3D._bindings.method_get_contact_collider_shape,
+      PhysicsDirectBodyState3D.#_bindings.method_get_contact_collider_shape,
       this._owner,
 			Variant.Type.INT,
+    
       _contact_idx
     );
     
   }
   get_contact_collider_velocity_at_position(_contact_idx) {
+    PhysicsDirectBodyState3D.init_method_get_contact_collider_velocity_at_position();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState3D._bindings.method_get_contact_collider_velocity_at_position,
+      PhysicsDirectBodyState3D.#_bindings.method_get_contact_collider_velocity_at_position,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -887,27 +1021,31 @@ export class PhysicsDirectBodyState3D extends GodotObject{
     
   }
   get_step() {
+    PhysicsDirectBodyState3D.init_method_get_step();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState3D._bindings.method_get_step,
+      PhysicsDirectBodyState3D.#_bindings.method_get_step,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   integrate_forces() {
+    PhysicsDirectBodyState3D.init_method_integrate_forces();
     return _call_native_mb_no_ret(
-      PhysicsDirectBodyState3D._bindings.method_integrate_forces,
+      PhysicsDirectBodyState3D.#_bindings.method_integrate_forces,
       this._owner,
       
     );
     
   }
   get_space_state() {
+    PhysicsDirectBodyState3D.init_method_get_space_state();
     return _call_native_mb_ret(
-      PhysicsDirectBodyState3D._bindings.method_get_space_state,
+      PhysicsDirectBodyState3D.#_bindings.method_get_space_state,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
@@ -968,8 +1106,4 @@ set transform (new_value) {
   this.set_transform(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

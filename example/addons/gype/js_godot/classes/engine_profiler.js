@@ -1,8 +1,7 @@
 import * as internal from '__internal__';
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { RefCounted } from '@js_godot/classes/ref_counted'
-import { GDArray } from '@js_godot/variant/gd_array'
-import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -14,7 +13,7 @@ class _MethodBindings {
 }
 export class EngineProfiler extends RefCounted{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -24,13 +23,8 @@ export class EngineProfiler extends RefCounted{
       super(godot_object);
     }
   }
+
   
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-  }
   
   _toggle(_enable, _options) {
   }
@@ -40,8 +34,4 @@ export class EngineProfiler extends RefCounted{
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

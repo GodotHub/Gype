@@ -2,7 +2,6 @@ import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { PacketPeer } from '@js_godot/classes/packet_peer'
-import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -18,7 +17,7 @@ class _MethodBindings {
 }
 export class PacketPeerDTLS extends PacketPeer{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -28,79 +27,88 @@ export class PacketPeerDTLS extends PacketPeer{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_poll() {
+    if (!this.#_bindings.method_poll) {
       let classname = new StringName("PacketPeerDTLS");
       let methodname = new StringName("poll");
-      this._bindings.method_poll = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3218959716
-      );
-    }
-    {
-      let classname = new StringName("PacketPeerDTLS");
-      let methodname = new StringName("connect_to_peer");
-      this._bindings.method_connect_to_peer = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2880188099
-      );
-    }
-    {
-      let classname = new StringName("PacketPeerDTLS");
-      let methodname = new StringName("get_status");
-      this._bindings.method_get_status = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3248654679
-      );
-    }
-    {
-      let classname = new StringName("PacketPeerDTLS");
-      let methodname = new StringName("disconnect_from_peer");
-      this._bindings.method_disconnect_from_peer = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_poll = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3218959716
       );
     }
   }
+  static init_method_connect_to_peer() {
+    if (!this.#_bindings.method_connect_to_peer) {
+      let classname = new StringName("PacketPeerDTLS");
+      let methodname = new StringName("connect_to_peer");
+      this.#_bindings.method_connect_to_peer = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2880188099
+      );
+    }
+  }
+  static init_method_get_status() {
+    if (!this.#_bindings.method_get_status) {
+      let classname = new StringName("PacketPeerDTLS");
+      let methodname = new StringName("get_status");
+      this.#_bindings.method_get_status = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3248654679
+      );
+    }
+  }
+  static init_method_disconnect_from_peer() {
+    if (!this.#_bindings.method_disconnect_from_peer) {
+      let classname = new StringName("PacketPeerDTLS");
+      let methodname = new StringName("disconnect_from_peer");
+      this.#_bindings.method_disconnect_from_peer = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3218959716
+      );
+    }
+  }
+
+  
   
   poll() {
+    PacketPeerDTLS.init_method_poll();
     return _call_native_mb_no_ret(
-      PacketPeerDTLS._bindings.method_poll,
+      PacketPeerDTLS.#_bindings.method_poll,
       this._owner,
       
     );
     
   }
   connect_to_peer(_packet_peer, _hostname, _client_options) {
+    PacketPeerDTLS.init_method_connect_to_peer();
     return _call_native_mb_ret(
-      PacketPeerDTLS._bindings.method_connect_to_peer,
+      PacketPeerDTLS.#_bindings.method_connect_to_peer,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       _packet_peer, _hostname, _client_options
     );
     
   }
   get_status() {
+    PacketPeerDTLS.init_method_get_status();
     return _call_native_mb_ret(
-      PacketPeerDTLS._bindings.method_get_status,
+      PacketPeerDTLS.#_bindings.method_get_status,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   disconnect_from_peer() {
+    PacketPeerDTLS.init_method_disconnect_from_peer();
     return _call_native_mb_no_ret(
-      PacketPeerDTLS._bindings.method_disconnect_from_peer,
+      PacketPeerDTLS.#_bindings.method_disconnect_from_peer,
       this._owner,
       
     );
@@ -114,9 +122,5 @@ export class PacketPeerDTLS extends PacketPeer{
     STATUS_CONNECTED: 2,
     STATUS_ERROR: 3,
     STATUS_ERROR_HOSTNAME_MISMATCH: 4,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

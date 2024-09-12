@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
-import { SkeletonModifier3D } from '@js_godot/classes/skeleton_modifier3d'
 import { StringName } from '@js_godot/variant/string_name'
+import { SkeletonModifier3D } from '@js_godot/classes/skeleton_modifier3d'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -17,7 +17,7 @@ class _MethodBindings {
 }
 export class XRHandModifier3D extends SkeletonModifier3D{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -27,61 +27,66 @@ export class XRHandModifier3D extends SkeletonModifier3D{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_hand_tracker() {
+    if (!this.#_bindings.method_set_hand_tracker) {
       let classname = new StringName("XRHandModifier3D");
       let methodname = new StringName("set_hand_tracker");
-      this._bindings.method_set_hand_tracker = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_hand_tracker = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3304788590
       );
     }
-    {
+  }
+  static init_method_get_hand_tracker() {
+    if (!this.#_bindings.method_get_hand_tracker) {
       let classname = new StringName("XRHandModifier3D");
       let methodname = new StringName("get_hand_tracker");
-      this._bindings.method_get_hand_tracker = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_hand_tracker = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2002593661
       );
     }
-    {
+  }
+  static init_method_set_bone_update() {
+    if (!this.#_bindings.method_set_bone_update) {
       let classname = new StringName("XRHandModifier3D");
       let methodname = new StringName("set_bone_update");
-      this._bindings.method_set_bone_update = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_bone_update = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3635701455
       );
     }
-    {
+  }
+  static init_method_get_bone_update() {
+    if (!this.#_bindings.method_get_bone_update) {
       let classname = new StringName("XRHandModifier3D");
       let methodname = new StringName("get_bone_update");
-      this._bindings.method_get_bone_update = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_bone_update = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2873665691
       );
     }
   }
+
+  
   
   set_hand_tracker(_tracker_name) {
+    XRHandModifier3D.init_method_set_hand_tracker();
     return _call_native_mb_no_ret(
-      XRHandModifier3D._bindings.method_set_hand_tracker,
+      XRHandModifier3D.#_bindings.method_set_hand_tracker,
       this._owner,
       _tracker_name
     );
     
   }
   get_hand_tracker() {
+    XRHandModifier3D.init_method_get_hand_tracker();
     return _call_native_mb_ret(
-      XRHandModifier3D._bindings.method_get_hand_tracker,
+      XRHandModifier3D.#_bindings.method_get_hand_tracker,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -90,18 +95,21 @@ export class XRHandModifier3D extends SkeletonModifier3D{
     
   }
   set_bone_update(_bone_update) {
+    XRHandModifier3D.init_method_set_bone_update();
     return _call_native_mb_no_ret(
-      XRHandModifier3D._bindings.method_set_bone_update,
+      XRHandModifier3D.#_bindings.method_set_bone_update,
       this._owner,
       _bone_update
     );
     
   }
   get_bone_update() {
+    XRHandModifier3D.init_method_get_bone_update();
     return _call_native_mb_ret(
-      XRHandModifier3D._bindings.method_get_bone_update,
+      XRHandModifier3D.#_bindings.method_get_bone_update,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
@@ -124,9 +132,5 @@ set bone_update (new_value) {
     BONE_UPDATE_FULL: 0,
     BONE_UPDATE_ROTATION_ONLY: 1,
     BONE_UPDATE_MAX: 2,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

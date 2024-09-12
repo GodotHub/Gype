@@ -13,7 +13,7 @@ class _MethodBindings {
 }
 export class AudioStreamPlaybackSynchronized extends AudioStreamPlayback{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -23,18 +23,9 @@ export class AudioStreamPlaybackSynchronized extends AudioStreamPlayback{
       super(godot_object);
     }
   }
+
   
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-  }
   
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

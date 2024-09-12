@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
-import { SkeletonModification2D } from '@js_godot/classes/skeleton_modification2d'
 import { StringName } from '@js_godot/variant/string_name'
+import { SkeletonModification2D } from '@js_godot/classes/skeleton_modification2d'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -15,7 +15,7 @@ class _MethodBindings {
 }
 export class SkeletonModification2DStackHolder extends SkeletonModification2D{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -25,53 +25,50 @@ export class SkeletonModification2DStackHolder extends SkeletonModification2D{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_held_modification_stack() {
+    if (!this.#_bindings.method_set_held_modification_stack) {
       let classname = new StringName("SkeletonModification2DStackHolder");
       let methodname = new StringName("set_held_modification_stack");
-      this._bindings.method_set_held_modification_stack = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_held_modification_stack = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3907307132
       );
     }
-    {
+  }
+  static init_method_get_held_modification_stack() {
+    if (!this.#_bindings.method_get_held_modification_stack) {
       let classname = new StringName("SkeletonModification2DStackHolder");
       let methodname = new StringName("get_held_modification_stack");
-      this._bindings.method_get_held_modification_stack = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_held_modification_stack = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2107508396
       );
     }
   }
+
+  
   
   set_held_modification_stack(_held_modification_stack) {
+    SkeletonModification2DStackHolder.init_method_set_held_modification_stack();
     return _call_native_mb_no_ret(
-      SkeletonModification2DStackHolder._bindings.method_set_held_modification_stack,
+      SkeletonModification2DStackHolder.#_bindings.method_set_held_modification_stack,
       this._owner,
       _held_modification_stack
     );
     
   }
   get_held_modification_stack() {
+    SkeletonModification2DStackHolder.init_method_get_held_modification_stack();
     return _call_native_mb_ret(
-      SkeletonModification2DStackHolder._bindings.method_get_held_modification_stack,
+      SkeletonModification2DStackHolder.#_bindings.method_get_held_modification_stack,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

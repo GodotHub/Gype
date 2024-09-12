@@ -2,12 +2,14 @@
 #include "support/instance_info.hpp"
 #include "support/javascript_instance.hpp"
 #include "support/javascript_language.hpp"
+#include <godot_cpp/classes/editor_interface.hpp>
+#include <godot_cpp/classes/script_editor.hpp>
 #include <godot_cpp/variant/variant.hpp>
 
 using namespace godot;
 
 bool JavaScript::_editor_can_reload_from_file() {
-	return false;
+	return true;
 }
 
 void JavaScript::_placeholder_erased(void *p_placeholder) {
@@ -22,27 +24,53 @@ Ref<Script> JavaScript::_get_base_script() const {
 }
 
 StringName JavaScript::_get_global_name() const {
+	// JSValue js_name = JS_GetPropertyStr(context.ctx, cur_class, "name");
+	// const char *c_name = JS_ToCString(context.ctx, js_name);
+	// StringName name = StringName(c_name);
+	// JS_FreeValue(context.ctx, js_name);
+	// return name;
 	return "";
 }
 
 bool JavaScript::_inherits_script(const Ref<Script> &p_script) const {
-	return true;
+	// if (p_script.is_null()) {
+	// 	return false;
+	// } else {
+	// 	JSValue prototype = JS_GetPrototype(context.ctx, cur_class);
+	// 	JSValue js_base_name = JS_GetPropertyStr(context.ctx, prototype, "name");
+	// 	const char *c_base_name = JS_ToCString(context.ctx, js_base_name);
+
+	// 	Ref<JavaScript> base = p_script;
+	// 	JSValue base_class = base->cur_class;
+	// 	JSValue js_name = JS_GetPropertyStr(context.ctx, base_class, "name");
+	// 	const char *c_name = JS_ToCString(context.ctx, js_name);
+	// 	JS_FreeValue(context.ctx, prototype);
+	// 	JS_FreeValue(context.ctx, js_base_name);
+	// 	JS_FreeValue(context.ctx, js_name);
+	// 	return strcmp(c_base_name, c_name) == 0;
+	// }
+	return false;
 }
 
 StringName JavaScript::_get_instance_base_type() const {
+	// JSValue prototype = JS_GetPrototype(context.ctx, cur_class);
+	// JSValue js_base_name = JS_GetPropertyStr(context.ctx, prototype, "name");
+	// const char *c_base_name = JS_ToCString(context.ctx, js_base_name);
+	// return c_base_name;
 	return "";
 }
 
 void *JavaScript::_instance_create(Object *p_for_object) const {
-	return internal::gdextension_interface_script_instance_create3(&InstanceInfo, new JavaScriptInstance(p_for_object, this));
+	return internal::gdextension_interface_script_instance_create3(&InstanceInfo, new JavaScriptInstance(p_for_object, const_cast<JavaScript *>(this)));
 }
 
 void *JavaScript::_placeholder_instance_create(Object *p_for_object) const {
-	return internal::gdextension_interface_script_instance_create3(&InstanceInfo, new JavaScriptInstance(p_for_object, this));
+	return internal::gdextension_interface_placeholder_script_instance_create(_get_language(), const_cast<JavaScript *>(this), p_for_object->_owner);
+	return nullptr;
 }
 
 bool JavaScript::_instance_has(Object *p_object) const {
-	return false;
+	return instances.has(p_object);
 }
 
 bool JavaScript::_has_source_code() const {

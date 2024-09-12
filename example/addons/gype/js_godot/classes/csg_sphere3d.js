@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { CSGPrimitive3D } from '@js_godot/classes/csg_primitive3d'
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { CSGPrimitive3D } from '@js_godot/classes/csg_primitive3d'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -23,7 +23,7 @@ class _MethodBindings {
 }
 export class CSGSphere3D extends CSGPrimitive3D{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -33,185 +33,214 @@ export class CSGSphere3D extends CSGPrimitive3D{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_radius() {
+    if (!this.#_bindings.method_set_radius) {
       let classname = new StringName("CSGSphere3D");
       let methodname = new StringName("set_radius");
-      this._bindings.method_set_radius = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_radius = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_radius() {
+    if (!this.#_bindings.method_get_radius) {
       let classname = new StringName("CSGSphere3D");
       let methodname = new StringName("get_radius");
-      this._bindings.method_get_radius = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_radius = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_set_radial_segments() {
+    if (!this.#_bindings.method_set_radial_segments) {
       let classname = new StringName("CSGSphere3D");
       let methodname = new StringName("set_radial_segments");
-      this._bindings.method_set_radial_segments = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_radial_segments = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1286410249
       );
     }
-    {
+  }
+  static init_method_get_radial_segments() {
+    if (!this.#_bindings.method_get_radial_segments) {
       let classname = new StringName("CSGSphere3D");
       let methodname = new StringName("get_radial_segments");
-      this._bindings.method_get_radial_segments = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_radial_segments = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
-    {
+  }
+  static init_method_set_rings() {
+    if (!this.#_bindings.method_set_rings) {
       let classname = new StringName("CSGSphere3D");
       let methodname = new StringName("set_rings");
-      this._bindings.method_set_rings = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_rings = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1286410249
       );
     }
-    {
+  }
+  static init_method_get_rings() {
+    if (!this.#_bindings.method_get_rings) {
       let classname = new StringName("CSGSphere3D");
       let methodname = new StringName("get_rings");
-      this._bindings.method_get_rings = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_rings = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
-    {
+  }
+  static init_method_set_smooth_faces() {
+    if (!this.#_bindings.method_set_smooth_faces) {
       let classname = new StringName("CSGSphere3D");
       let methodname = new StringName("set_smooth_faces");
-      this._bindings.method_set_smooth_faces = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_smooth_faces = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_get_smooth_faces() {
+    if (!this.#_bindings.method_get_smooth_faces) {
       let classname = new StringName("CSGSphere3D");
       let methodname = new StringName("get_smooth_faces");
-      this._bindings.method_get_smooth_faces = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_smooth_faces = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_set_material() {
+    if (!this.#_bindings.method_set_material) {
       let classname = new StringName("CSGSphere3D");
       let methodname = new StringName("set_material");
-      this._bindings.method_set_material = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_material = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2757459619
       );
     }
-    {
+  }
+  static init_method_get_material() {
+    if (!this.#_bindings.method_get_material) {
       let classname = new StringName("CSGSphere3D");
       let methodname = new StringName("get_material");
-      this._bindings.method_get_material = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_material = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         5934680
       );
     }
   }
+
+  
   
   set_radius(_radius) {
+    CSGSphere3D.init_method_set_radius();
     return _call_native_mb_no_ret(
-      CSGSphere3D._bindings.method_set_radius,
+      CSGSphere3D.#_bindings.method_set_radius,
       this._owner,
       _radius
     );
     
   }
   get_radius() {
+    CSGSphere3D.init_method_get_radius();
     return _call_native_mb_ret(
-      CSGSphere3D._bindings.method_get_radius,
+      CSGSphere3D.#_bindings.method_get_radius,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_radial_segments(_radial_segments) {
+    CSGSphere3D.init_method_set_radial_segments();
     return _call_native_mb_no_ret(
-      CSGSphere3D._bindings.method_set_radial_segments,
+      CSGSphere3D.#_bindings.method_set_radial_segments,
       this._owner,
       _radial_segments
     );
     
   }
   get_radial_segments() {
+    CSGSphere3D.init_method_get_radial_segments();
     return _call_native_mb_ret(
-      CSGSphere3D._bindings.method_get_radial_segments,
+      CSGSphere3D.#_bindings.method_get_radial_segments,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_rings(_rings) {
+    CSGSphere3D.init_method_set_rings();
     return _call_native_mb_no_ret(
-      CSGSphere3D._bindings.method_set_rings,
+      CSGSphere3D.#_bindings.method_set_rings,
       this._owner,
       _rings
     );
     
   }
   get_rings() {
+    CSGSphere3D.init_method_get_rings();
     return _call_native_mb_ret(
-      CSGSphere3D._bindings.method_get_rings,
+      CSGSphere3D.#_bindings.method_get_rings,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_smooth_faces(_smooth_faces) {
+    CSGSphere3D.init_method_set_smooth_faces();
     return _call_native_mb_no_ret(
-      CSGSphere3D._bindings.method_set_smooth_faces,
+      CSGSphere3D.#_bindings.method_set_smooth_faces,
       this._owner,
       _smooth_faces
     );
     
   }
   get_smooth_faces() {
+    CSGSphere3D.init_method_get_smooth_faces();
     return _call_native_mb_ret(
-      CSGSphere3D._bindings.method_get_smooth_faces,
+      CSGSphere3D.#_bindings.method_get_smooth_faces,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_material(_material) {
+    CSGSphere3D.init_method_set_material();
     return _call_native_mb_no_ret(
-      CSGSphere3D._bindings.method_set_material,
+      CSGSphere3D.#_bindings.method_set_material,
       this._owner,
       _material
     );
     
   }
   get_material() {
+    CSGSphere3D.init_method_get_material();
     return _call_native_mb_ret(
-      CSGSphere3D._bindings.method_get_material,
+      CSGSphere3D.#_bindings.method_get_material,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
@@ -248,8 +277,4 @@ set material (new_value) {
   this.set_material(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

@@ -60,7 +60,7 @@ class _MethodBindings {
 }
 export class AudioStreamPlayer3D extends Node3D{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -70,575 +70,687 @@ export class AudioStreamPlayer3D extends Node3D{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_stream() {
+    if (!this.#_bindings.method_set_stream) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("set_stream");
-      this._bindings.method_set_stream = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_stream = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2210767741
       );
     }
-    {
+  }
+  static init_method_get_stream() {
+    if (!this.#_bindings.method_get_stream) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("get_stream");
-      this._bindings.method_get_stream = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_stream = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         160907539
       );
     }
-    {
+  }
+  static init_method_set_volume_db() {
+    if (!this.#_bindings.method_set_volume_db) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("set_volume_db");
-      this._bindings.method_set_volume_db = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_volume_db = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_volume_db() {
+    if (!this.#_bindings.method_get_volume_db) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("get_volume_db");
-      this._bindings.method_get_volume_db = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_volume_db = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_set_unit_size() {
+    if (!this.#_bindings.method_set_unit_size) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("set_unit_size");
-      this._bindings.method_set_unit_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_unit_size = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_unit_size() {
+    if (!this.#_bindings.method_get_unit_size) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("get_unit_size");
-      this._bindings.method_get_unit_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_unit_size = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_set_max_db() {
+    if (!this.#_bindings.method_set_max_db) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("set_max_db");
-      this._bindings.method_set_max_db = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_max_db = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_max_db() {
+    if (!this.#_bindings.method_get_max_db) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("get_max_db");
-      this._bindings.method_get_max_db = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_max_db = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_set_pitch_scale() {
+    if (!this.#_bindings.method_set_pitch_scale) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("set_pitch_scale");
-      this._bindings.method_set_pitch_scale = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_pitch_scale = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_pitch_scale() {
+    if (!this.#_bindings.method_get_pitch_scale) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("get_pitch_scale");
-      this._bindings.method_get_pitch_scale = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_pitch_scale = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_play() {
+    if (!this.#_bindings.method_play) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("play");
-      this._bindings.method_play = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_play = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1958160172
       );
     }
-    {
+  }
+  static init_method_seek() {
+    if (!this.#_bindings.method_seek) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("seek");
-      this._bindings.method_seek = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_seek = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_stop() {
+    if (!this.#_bindings.method_stop) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("stop");
-      this._bindings.method_stop = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_stop = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3218959716
       );
     }
-    {
+  }
+  static init_method_is_playing() {
+    if (!this.#_bindings.method_is_playing) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("is_playing");
-      this._bindings.method_is_playing = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_playing = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_get_playback_position() {
+    if (!this.#_bindings.method_get_playback_position) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("get_playback_position");
-      this._bindings.method_get_playback_position = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_playback_position = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         191475506
       );
     }
-    {
+  }
+  static init_method_set_bus() {
+    if (!this.#_bindings.method_set_bus) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("set_bus");
-      this._bindings.method_set_bus = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_bus = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3304788590
       );
     }
-    {
+  }
+  static init_method_get_bus() {
+    if (!this.#_bindings.method_get_bus) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("get_bus");
-      this._bindings.method_get_bus = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_bus = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2002593661
       );
     }
-    {
+  }
+  static init_method_set_autoplay() {
+    if (!this.#_bindings.method_set_autoplay) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("set_autoplay");
-      this._bindings.method_set_autoplay = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_autoplay = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_is_autoplay_enabled() {
+    if (!this.#_bindings.method_is_autoplay_enabled) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("is_autoplay_enabled");
-      this._bindings.method_is_autoplay_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_autoplay_enabled = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_set_max_distance() {
+    if (!this.#_bindings.method_set_max_distance) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("set_max_distance");
-      this._bindings.method_set_max_distance = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_max_distance = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_max_distance() {
+    if (!this.#_bindings.method_get_max_distance) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("get_max_distance");
-      this._bindings.method_get_max_distance = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_max_distance = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_set_area_mask() {
+    if (!this.#_bindings.method_set_area_mask) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("set_area_mask");
-      this._bindings.method_set_area_mask = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_area_mask = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1286410249
       );
     }
-    {
+  }
+  static init_method_get_area_mask() {
+    if (!this.#_bindings.method_get_area_mask) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("get_area_mask");
-      this._bindings.method_get_area_mask = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_area_mask = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
-    {
+  }
+  static init_method_set_emission_angle() {
+    if (!this.#_bindings.method_set_emission_angle) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("set_emission_angle");
-      this._bindings.method_set_emission_angle = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_emission_angle = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_emission_angle() {
+    if (!this.#_bindings.method_get_emission_angle) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("get_emission_angle");
-      this._bindings.method_get_emission_angle = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_emission_angle = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_set_emission_angle_enabled() {
+    if (!this.#_bindings.method_set_emission_angle_enabled) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("set_emission_angle_enabled");
-      this._bindings.method_set_emission_angle_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_emission_angle_enabled = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_is_emission_angle_enabled() {
+    if (!this.#_bindings.method_is_emission_angle_enabled) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("is_emission_angle_enabled");
-      this._bindings.method_is_emission_angle_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_emission_angle_enabled = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_set_emission_angle_filter_attenuation_db() {
+    if (!this.#_bindings.method_set_emission_angle_filter_attenuation_db) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("set_emission_angle_filter_attenuation_db");
-      this._bindings.method_set_emission_angle_filter_attenuation_db = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_emission_angle_filter_attenuation_db = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_emission_angle_filter_attenuation_db() {
+    if (!this.#_bindings.method_get_emission_angle_filter_attenuation_db) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("get_emission_angle_filter_attenuation_db");
-      this._bindings.method_get_emission_angle_filter_attenuation_db = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_emission_angle_filter_attenuation_db = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_set_attenuation_filter_cutoff_hz() {
+    if (!this.#_bindings.method_set_attenuation_filter_cutoff_hz) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("set_attenuation_filter_cutoff_hz");
-      this._bindings.method_set_attenuation_filter_cutoff_hz = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_attenuation_filter_cutoff_hz = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_attenuation_filter_cutoff_hz() {
+    if (!this.#_bindings.method_get_attenuation_filter_cutoff_hz) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("get_attenuation_filter_cutoff_hz");
-      this._bindings.method_get_attenuation_filter_cutoff_hz = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_attenuation_filter_cutoff_hz = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_set_attenuation_filter_db() {
+    if (!this.#_bindings.method_set_attenuation_filter_db) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("set_attenuation_filter_db");
-      this._bindings.method_set_attenuation_filter_db = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_attenuation_filter_db = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_attenuation_filter_db() {
+    if (!this.#_bindings.method_get_attenuation_filter_db) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("get_attenuation_filter_db");
-      this._bindings.method_get_attenuation_filter_db = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_attenuation_filter_db = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_set_attenuation_model() {
+    if (!this.#_bindings.method_set_attenuation_model) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("set_attenuation_model");
-      this._bindings.method_set_attenuation_model = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_attenuation_model = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2988086229
       );
     }
-    {
+  }
+  static init_method_get_attenuation_model() {
+    if (!this.#_bindings.method_get_attenuation_model) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("get_attenuation_model");
-      this._bindings.method_get_attenuation_model = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_attenuation_model = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3035106060
       );
     }
-    {
+  }
+  static init_method_set_doppler_tracking() {
+    if (!this.#_bindings.method_set_doppler_tracking) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("set_doppler_tracking");
-      this._bindings.method_set_doppler_tracking = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_doppler_tracking = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3968161450
       );
     }
-    {
+  }
+  static init_method_get_doppler_tracking() {
+    if (!this.#_bindings.method_get_doppler_tracking) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("get_doppler_tracking");
-      this._bindings.method_get_doppler_tracking = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_doppler_tracking = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1702418664
       );
     }
-    {
+  }
+  static init_method_set_stream_paused() {
+    if (!this.#_bindings.method_set_stream_paused) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("set_stream_paused");
-      this._bindings.method_set_stream_paused = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_stream_paused = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_get_stream_paused() {
+    if (!this.#_bindings.method_get_stream_paused) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("get_stream_paused");
-      this._bindings.method_get_stream_paused = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_stream_paused = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_set_max_polyphony() {
+    if (!this.#_bindings.method_set_max_polyphony) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("set_max_polyphony");
-      this._bindings.method_set_max_polyphony = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_max_polyphony = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1286410249
       );
     }
-    {
+  }
+  static init_method_get_max_polyphony() {
+    if (!this.#_bindings.method_get_max_polyphony) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("get_max_polyphony");
-      this._bindings.method_get_max_polyphony = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_max_polyphony = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
-    {
+  }
+  static init_method_set_panning_strength() {
+    if (!this.#_bindings.method_set_panning_strength) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("set_panning_strength");
-      this._bindings.method_set_panning_strength = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_panning_strength = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_panning_strength() {
+    if (!this.#_bindings.method_get_panning_strength) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("get_panning_strength");
-      this._bindings.method_get_panning_strength = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_panning_strength = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_has_stream_playback() {
+    if (!this.#_bindings.method_has_stream_playback) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("has_stream_playback");
-      this._bindings.method_has_stream_playback = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_has_stream_playback = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2240911060
       );
     }
-    {
+  }
+  static init_method_get_stream_playback() {
+    if (!this.#_bindings.method_get_stream_playback) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("get_stream_playback");
-      this._bindings.method_get_stream_playback = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_stream_playback = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         210135309
       );
     }
-    {
+  }
+  static init_method_set_playback_type() {
+    if (!this.#_bindings.method_set_playback_type) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("set_playback_type");
-      this._bindings.method_set_playback_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_playback_type = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         725473817
       );
     }
-    {
+  }
+  static init_method_get_playback_type() {
+    if (!this.#_bindings.method_get_playback_type) {
       let classname = new StringName("AudioStreamPlayer3D");
       let methodname = new StringName("get_playback_type");
-      this._bindings.method_get_playback_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_playback_type = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         4011264623
       );
     }
   }
+
+  
   
   set_stream(_stream) {
+    AudioStreamPlayer3D.init_method_set_stream();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer3D._bindings.method_set_stream,
+      AudioStreamPlayer3D.#_bindings.method_set_stream,
       this._owner,
       _stream
     );
     
   }
   get_stream() {
+    AudioStreamPlayer3D.init_method_get_stream();
     return _call_native_mb_ret(
-      AudioStreamPlayer3D._bindings.method_get_stream,
+      AudioStreamPlayer3D.#_bindings.method_get_stream,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
   }
   set_volume_db(_volume_db) {
+    AudioStreamPlayer3D.init_method_set_volume_db();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer3D._bindings.method_set_volume_db,
+      AudioStreamPlayer3D.#_bindings.method_set_volume_db,
       this._owner,
       _volume_db
     );
     
   }
   get_volume_db() {
+    AudioStreamPlayer3D.init_method_get_volume_db();
     return _call_native_mb_ret(
-      AudioStreamPlayer3D._bindings.method_get_volume_db,
+      AudioStreamPlayer3D.#_bindings.method_get_volume_db,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_unit_size(_unit_size) {
+    AudioStreamPlayer3D.init_method_set_unit_size();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer3D._bindings.method_set_unit_size,
+      AudioStreamPlayer3D.#_bindings.method_set_unit_size,
       this._owner,
       _unit_size
     );
     
   }
   get_unit_size() {
+    AudioStreamPlayer3D.init_method_get_unit_size();
     return _call_native_mb_ret(
-      AudioStreamPlayer3D._bindings.method_get_unit_size,
+      AudioStreamPlayer3D.#_bindings.method_get_unit_size,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_max_db(_max_db) {
+    AudioStreamPlayer3D.init_method_set_max_db();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer3D._bindings.method_set_max_db,
+      AudioStreamPlayer3D.#_bindings.method_set_max_db,
       this._owner,
       _max_db
     );
     
   }
   get_max_db() {
+    AudioStreamPlayer3D.init_method_get_max_db();
     return _call_native_mb_ret(
-      AudioStreamPlayer3D._bindings.method_get_max_db,
+      AudioStreamPlayer3D.#_bindings.method_get_max_db,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_pitch_scale(_pitch_scale) {
+    AudioStreamPlayer3D.init_method_set_pitch_scale();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer3D._bindings.method_set_pitch_scale,
+      AudioStreamPlayer3D.#_bindings.method_set_pitch_scale,
       this._owner,
       _pitch_scale
     );
     
   }
   get_pitch_scale() {
+    AudioStreamPlayer3D.init_method_get_pitch_scale();
     return _call_native_mb_ret(
-      AudioStreamPlayer3D._bindings.method_get_pitch_scale,
+      AudioStreamPlayer3D.#_bindings.method_get_pitch_scale,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   play(_from_position) {
+    AudioStreamPlayer3D.init_method_play();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer3D._bindings.method_play,
+      AudioStreamPlayer3D.#_bindings.method_play,
       this._owner,
       _from_position
     );
     
   }
   seek(_to_position) {
+    AudioStreamPlayer3D.init_method_seek();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer3D._bindings.method_seek,
+      AudioStreamPlayer3D.#_bindings.method_seek,
       this._owner,
       _to_position
     );
     
   }
   stop() {
+    AudioStreamPlayer3D.init_method_stop();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer3D._bindings.method_stop,
+      AudioStreamPlayer3D.#_bindings.method_stop,
       this._owner,
       
     );
     
   }
   is_playing() {
+    AudioStreamPlayer3D.init_method_is_playing();
     return _call_native_mb_ret(
-      AudioStreamPlayer3D._bindings.method_is_playing,
+      AudioStreamPlayer3D.#_bindings.method_is_playing,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   get_playback_position() {
+    AudioStreamPlayer3D.init_method_get_playback_position();
     return _call_native_mb_ret(
-      AudioStreamPlayer3D._bindings.method_get_playback_position,
+      AudioStreamPlayer3D.#_bindings.method_get_playback_position,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_bus(_bus) {
+    AudioStreamPlayer3D.init_method_set_bus();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer3D._bindings.method_set_bus,
+      AudioStreamPlayer3D.#_bindings.method_set_bus,
       this._owner,
       _bus
     );
     
   }
   get_bus() {
+    AudioStreamPlayer3D.init_method_get_bus();
     return _call_native_mb_ret(
-      AudioStreamPlayer3D._bindings.method_get_bus,
+      AudioStreamPlayer3D.#_bindings.method_get_bus,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -647,257 +759,302 @@ export class AudioStreamPlayer3D extends Node3D{
     
   }
   set_autoplay(_enable) {
+    AudioStreamPlayer3D.init_method_set_autoplay();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer3D._bindings.method_set_autoplay,
+      AudioStreamPlayer3D.#_bindings.method_set_autoplay,
       this._owner,
       _enable
     );
     
   }
   is_autoplay_enabled() {
+    AudioStreamPlayer3D.init_method_is_autoplay_enabled();
     return _call_native_mb_ret(
-      AudioStreamPlayer3D._bindings.method_is_autoplay_enabled,
+      AudioStreamPlayer3D.#_bindings.method_is_autoplay_enabled,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_max_distance(_meters) {
+    AudioStreamPlayer3D.init_method_set_max_distance();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer3D._bindings.method_set_max_distance,
+      AudioStreamPlayer3D.#_bindings.method_set_max_distance,
       this._owner,
       _meters
     );
     
   }
   get_max_distance() {
+    AudioStreamPlayer3D.init_method_get_max_distance();
     return _call_native_mb_ret(
-      AudioStreamPlayer3D._bindings.method_get_max_distance,
+      AudioStreamPlayer3D.#_bindings.method_get_max_distance,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_area_mask(_mask) {
+    AudioStreamPlayer3D.init_method_set_area_mask();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer3D._bindings.method_set_area_mask,
+      AudioStreamPlayer3D.#_bindings.method_set_area_mask,
       this._owner,
       _mask
     );
     
   }
   get_area_mask() {
+    AudioStreamPlayer3D.init_method_get_area_mask();
     return _call_native_mb_ret(
-      AudioStreamPlayer3D._bindings.method_get_area_mask,
+      AudioStreamPlayer3D.#_bindings.method_get_area_mask,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_emission_angle(_degrees) {
+    AudioStreamPlayer3D.init_method_set_emission_angle();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer3D._bindings.method_set_emission_angle,
+      AudioStreamPlayer3D.#_bindings.method_set_emission_angle,
       this._owner,
       _degrees
     );
     
   }
   get_emission_angle() {
+    AudioStreamPlayer3D.init_method_get_emission_angle();
     return _call_native_mb_ret(
-      AudioStreamPlayer3D._bindings.method_get_emission_angle,
+      AudioStreamPlayer3D.#_bindings.method_get_emission_angle,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_emission_angle_enabled(_enabled) {
+    AudioStreamPlayer3D.init_method_set_emission_angle_enabled();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer3D._bindings.method_set_emission_angle_enabled,
+      AudioStreamPlayer3D.#_bindings.method_set_emission_angle_enabled,
       this._owner,
       _enabled
     );
     
   }
   is_emission_angle_enabled() {
+    AudioStreamPlayer3D.init_method_is_emission_angle_enabled();
     return _call_native_mb_ret(
-      AudioStreamPlayer3D._bindings.method_is_emission_angle_enabled,
+      AudioStreamPlayer3D.#_bindings.method_is_emission_angle_enabled,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_emission_angle_filter_attenuation_db(_db) {
+    AudioStreamPlayer3D.init_method_set_emission_angle_filter_attenuation_db();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer3D._bindings.method_set_emission_angle_filter_attenuation_db,
+      AudioStreamPlayer3D.#_bindings.method_set_emission_angle_filter_attenuation_db,
       this._owner,
       _db
     );
     
   }
   get_emission_angle_filter_attenuation_db() {
+    AudioStreamPlayer3D.init_method_get_emission_angle_filter_attenuation_db();
     return _call_native_mb_ret(
-      AudioStreamPlayer3D._bindings.method_get_emission_angle_filter_attenuation_db,
+      AudioStreamPlayer3D.#_bindings.method_get_emission_angle_filter_attenuation_db,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_attenuation_filter_cutoff_hz(_degrees) {
+    AudioStreamPlayer3D.init_method_set_attenuation_filter_cutoff_hz();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer3D._bindings.method_set_attenuation_filter_cutoff_hz,
+      AudioStreamPlayer3D.#_bindings.method_set_attenuation_filter_cutoff_hz,
       this._owner,
       _degrees
     );
     
   }
   get_attenuation_filter_cutoff_hz() {
+    AudioStreamPlayer3D.init_method_get_attenuation_filter_cutoff_hz();
     return _call_native_mb_ret(
-      AudioStreamPlayer3D._bindings.method_get_attenuation_filter_cutoff_hz,
+      AudioStreamPlayer3D.#_bindings.method_get_attenuation_filter_cutoff_hz,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_attenuation_filter_db(_db) {
+    AudioStreamPlayer3D.init_method_set_attenuation_filter_db();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer3D._bindings.method_set_attenuation_filter_db,
+      AudioStreamPlayer3D.#_bindings.method_set_attenuation_filter_db,
       this._owner,
       _db
     );
     
   }
   get_attenuation_filter_db() {
+    AudioStreamPlayer3D.init_method_get_attenuation_filter_db();
     return _call_native_mb_ret(
-      AudioStreamPlayer3D._bindings.method_get_attenuation_filter_db,
+      AudioStreamPlayer3D.#_bindings.method_get_attenuation_filter_db,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_attenuation_model(_model) {
+    AudioStreamPlayer3D.init_method_set_attenuation_model();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer3D._bindings.method_set_attenuation_model,
+      AudioStreamPlayer3D.#_bindings.method_set_attenuation_model,
       this._owner,
       _model
     );
     
   }
   get_attenuation_model() {
+    AudioStreamPlayer3D.init_method_get_attenuation_model();
     return _call_native_mb_ret(
-      AudioStreamPlayer3D._bindings.method_get_attenuation_model,
+      AudioStreamPlayer3D.#_bindings.method_get_attenuation_model,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_doppler_tracking(_mode) {
+    AudioStreamPlayer3D.init_method_set_doppler_tracking();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer3D._bindings.method_set_doppler_tracking,
+      AudioStreamPlayer3D.#_bindings.method_set_doppler_tracking,
       this._owner,
       _mode
     );
     
   }
   get_doppler_tracking() {
+    AudioStreamPlayer3D.init_method_get_doppler_tracking();
     return _call_native_mb_ret(
-      AudioStreamPlayer3D._bindings.method_get_doppler_tracking,
+      AudioStreamPlayer3D.#_bindings.method_get_doppler_tracking,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_stream_paused(_pause) {
+    AudioStreamPlayer3D.init_method_set_stream_paused();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer3D._bindings.method_set_stream_paused,
+      AudioStreamPlayer3D.#_bindings.method_set_stream_paused,
       this._owner,
       _pause
     );
     
   }
   get_stream_paused() {
+    AudioStreamPlayer3D.init_method_get_stream_paused();
     return _call_native_mb_ret(
-      AudioStreamPlayer3D._bindings.method_get_stream_paused,
+      AudioStreamPlayer3D.#_bindings.method_get_stream_paused,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_max_polyphony(_max_polyphony) {
+    AudioStreamPlayer3D.init_method_set_max_polyphony();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer3D._bindings.method_set_max_polyphony,
+      AudioStreamPlayer3D.#_bindings.method_set_max_polyphony,
       this._owner,
       _max_polyphony
     );
     
   }
   get_max_polyphony() {
+    AudioStreamPlayer3D.init_method_get_max_polyphony();
     return _call_native_mb_ret(
-      AudioStreamPlayer3D._bindings.method_get_max_polyphony,
+      AudioStreamPlayer3D.#_bindings.method_get_max_polyphony,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_panning_strength(_panning_strength) {
+    AudioStreamPlayer3D.init_method_set_panning_strength();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer3D._bindings.method_set_panning_strength,
+      AudioStreamPlayer3D.#_bindings.method_set_panning_strength,
       this._owner,
       _panning_strength
     );
     
   }
   get_panning_strength() {
+    AudioStreamPlayer3D.init_method_get_panning_strength();
     return _call_native_mb_ret(
-      AudioStreamPlayer3D._bindings.method_get_panning_strength,
+      AudioStreamPlayer3D.#_bindings.method_get_panning_strength,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   has_stream_playback() {
+    AudioStreamPlayer3D.init_method_has_stream_playback();
     return _call_native_mb_ret(
-      AudioStreamPlayer3D._bindings.method_has_stream_playback,
+      AudioStreamPlayer3D.#_bindings.method_has_stream_playback,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   get_stream_playback() {
+    AudioStreamPlayer3D.init_method_get_stream_playback();
     return _call_native_mb_ret(
-      AudioStreamPlayer3D._bindings.method_get_stream_playback,
+      AudioStreamPlayer3D.#_bindings.method_get_stream_playback,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
   }
   set_playback_type(_playback_type) {
+    AudioStreamPlayer3D.init_method_set_playback_type();
     return _call_native_mb_no_ret(
-      AudioStreamPlayer3D._bindings.method_set_playback_type,
+      AudioStreamPlayer3D.#_bindings.method_set_playback_type,
       this._owner,
       _playback_type
     );
     
   }
   get_playback_type() {
+    AudioStreamPlayer3D.init_method_get_playback_type();
     return _call_native_mb_ret(
-      AudioStreamPlayer3D._bindings.method_get_playback_type,
+      AudioStreamPlayer3D.#_bindings.method_get_playback_type,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
@@ -1040,9 +1197,5 @@ set doppler_tracking (new_value) {
     DOPPLER_TRACKING_DISABLED: 0,
     DOPPLER_TRACKING_IDLE_STEP: 1,
     DOPPLER_TRACKING_PHYSICS_STEP: 2,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

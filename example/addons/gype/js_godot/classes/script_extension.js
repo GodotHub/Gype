@@ -1,9 +1,8 @@
 import * as internal from '__internal__';
-import { Dictionary } from '@js_godot/variant/dictionary'
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Script } from '@js_godot/classes/script'
-import { Variant } from '@js_godot/variant/variant'
-import { GDString } from '@js_godot/variant/gd_string'
+import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -15,7 +14,7 @@ class _MethodBindings {
 }
 export class ScriptExtension extends Script{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -25,13 +24,8 @@ export class ScriptExtension extends Script{
       super(godot_object);
     }
   }
+
   
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-  }
   
   _editor_can_reload_from_file() {
   }
@@ -107,8 +101,4 @@ export class ScriptExtension extends Script{
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

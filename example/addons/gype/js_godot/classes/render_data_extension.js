@@ -1,8 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
-import { RID } from '@js_godot/variant/rid'
-import { RenderData } from '@js_godot/classes/render_data'
 import { Variant } from '@js_godot/variant/variant'
+import { RenderData } from '@js_godot/classes/render_data'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -14,7 +13,7 @@ class _MethodBindings {
 }
 export class RenderDataExtension extends RenderData{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -24,13 +23,8 @@ export class RenderDataExtension extends RenderData{
       super(godot_object);
     }
   }
+
   
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-  }
   
   _get_render_scene_buffers() {
   }
@@ -42,8 +36,4 @@ export class RenderDataExtension extends RenderData{
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

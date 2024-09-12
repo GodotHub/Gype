@@ -14,7 +14,7 @@ class _MethodBindings {
 }
 export class CubemapArray extends ImageTextureLayered{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -24,36 +24,30 @@ export class CubemapArray extends ImageTextureLayered{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_create_placeholder() {
+    if (!this.#_bindings.method_create_placeholder) {
       let classname = new StringName("CubemapArray");
       let methodname = new StringName("create_placeholder");
-      this._bindings.method_create_placeholder = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_create_placeholder = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         121922552
       );
     }
   }
+
+  
   
   create_placeholder() {
+    CubemapArray.init_method_create_placeholder();
     return _call_native_mb_ret(
-      CubemapArray._bindings.method_create_placeholder,
+      CubemapArray.#_bindings.method_create_placeholder,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

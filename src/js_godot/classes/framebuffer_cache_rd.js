@@ -1,8 +1,8 @@
 import * as internal from '__internal__';
-import { RID } from '@js_godot/variant/rid'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { GodotObject } from '@js_godot/classes/godot_object'
+import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -15,7 +15,7 @@ class _MethodBindings {
 }
 export class FramebufferCacheRD extends GodotObject{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -25,26 +25,24 @@ export class FramebufferCacheRD extends GodotObject{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_get_cache_multipass() {
+    if (!this.#_bindings.method_get_cache_multipass) {
       let classname = new StringName("FramebufferCacheRD");
       let methodname = new StringName("get_cache_multipass");
-      this._bindings.method_get_cache_multipass = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_cache_multipass = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3437881813
       );
     }
   }
+
+  
   
   get_cache_multipass(_textures, _passes, _views) {
+    FramebufferCacheRD.init_method_get_cache_multipass();
     return _call_native_mb_ret(
-      FramebufferCacheRD._bindings.method_get_cache_multipass,
+      FramebufferCacheRD.#_bindings.method_get_cache_multipass,
       this._owner,
 			Variant.Type.RID,
     
@@ -54,8 +52,4 @@ export class FramebufferCacheRD extends GodotObject{
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

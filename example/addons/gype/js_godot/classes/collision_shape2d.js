@@ -1,8 +1,7 @@
 import * as internal from '__internal__';
-import { Node2D } from '@js_godot/classes/node2d'
-import { StringName } from '@js_godot/variant/string_name'
-import { Color } from '@js_godot/variant/color'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { Node2D } from '@js_godot/classes/node2d'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -24,7 +23,7 @@ class _MethodBindings {
 }
 export class CollisionShape2D extends Node2D{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -34,183 +33,211 @@ export class CollisionShape2D extends Node2D{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_shape() {
+    if (!this.#_bindings.method_set_shape) {
       let classname = new StringName("CollisionShape2D");
       let methodname = new StringName("set_shape");
-      this._bindings.method_set_shape = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_shape = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         771364740
       );
     }
-    {
+  }
+  static init_method_get_shape() {
+    if (!this.#_bindings.method_get_shape) {
       let classname = new StringName("CollisionShape2D");
       let methodname = new StringName("get_shape");
-      this._bindings.method_get_shape = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_shape = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         522005891
       );
     }
-    {
+  }
+  static init_method_set_disabled() {
+    if (!this.#_bindings.method_set_disabled) {
       let classname = new StringName("CollisionShape2D");
       let methodname = new StringName("set_disabled");
-      this._bindings.method_set_disabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_disabled = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_is_disabled() {
+    if (!this.#_bindings.method_is_disabled) {
       let classname = new StringName("CollisionShape2D");
       let methodname = new StringName("is_disabled");
-      this._bindings.method_is_disabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_disabled = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_set_one_way_collision() {
+    if (!this.#_bindings.method_set_one_way_collision) {
       let classname = new StringName("CollisionShape2D");
       let methodname = new StringName("set_one_way_collision");
-      this._bindings.method_set_one_way_collision = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_one_way_collision = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_is_one_way_collision_enabled() {
+    if (!this.#_bindings.method_is_one_way_collision_enabled) {
       let classname = new StringName("CollisionShape2D");
       let methodname = new StringName("is_one_way_collision_enabled");
-      this._bindings.method_is_one_way_collision_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_one_way_collision_enabled = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_set_one_way_collision_margin() {
+    if (!this.#_bindings.method_set_one_way_collision_margin) {
       let classname = new StringName("CollisionShape2D");
       let methodname = new StringName("set_one_way_collision_margin");
-      this._bindings.method_set_one_way_collision_margin = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_one_way_collision_margin = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_one_way_collision_margin() {
+    if (!this.#_bindings.method_get_one_way_collision_margin) {
       let classname = new StringName("CollisionShape2D");
       let methodname = new StringName("get_one_way_collision_margin");
-      this._bindings.method_get_one_way_collision_margin = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_one_way_collision_margin = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_set_debug_color() {
+    if (!this.#_bindings.method_set_debug_color) {
       let classname = new StringName("CollisionShape2D");
       let methodname = new StringName("set_debug_color");
-      this._bindings.method_set_debug_color = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_debug_color = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2920490490
       );
     }
-    {
+  }
+  static init_method_get_debug_color() {
+    if (!this.#_bindings.method_get_debug_color) {
       let classname = new StringName("CollisionShape2D");
       let methodname = new StringName("get_debug_color");
-      this._bindings.method_get_debug_color = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_debug_color = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3444240500
       );
     }
   }
+
+  
   
   set_shape(_shape) {
+    CollisionShape2D.init_method_set_shape();
     return _call_native_mb_no_ret(
-      CollisionShape2D._bindings.method_set_shape,
+      CollisionShape2D.#_bindings.method_set_shape,
       this._owner,
       _shape
     );
     
   }
   get_shape() {
+    CollisionShape2D.init_method_get_shape();
     return _call_native_mb_ret(
-      CollisionShape2D._bindings.method_get_shape,
+      CollisionShape2D.#_bindings.method_get_shape,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
   }
   set_disabled(_disabled) {
+    CollisionShape2D.init_method_set_disabled();
     return _call_native_mb_no_ret(
-      CollisionShape2D._bindings.method_set_disabled,
+      CollisionShape2D.#_bindings.method_set_disabled,
       this._owner,
       _disabled
     );
     
   }
   is_disabled() {
+    CollisionShape2D.init_method_is_disabled();
     return _call_native_mb_ret(
-      CollisionShape2D._bindings.method_is_disabled,
+      CollisionShape2D.#_bindings.method_is_disabled,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_one_way_collision(_enabled) {
+    CollisionShape2D.init_method_set_one_way_collision();
     return _call_native_mb_no_ret(
-      CollisionShape2D._bindings.method_set_one_way_collision,
+      CollisionShape2D.#_bindings.method_set_one_way_collision,
       this._owner,
       _enabled
     );
     
   }
   is_one_way_collision_enabled() {
+    CollisionShape2D.init_method_is_one_way_collision_enabled();
     return _call_native_mb_ret(
-      CollisionShape2D._bindings.method_is_one_way_collision_enabled,
+      CollisionShape2D.#_bindings.method_is_one_way_collision_enabled,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_one_way_collision_margin(_margin) {
+    CollisionShape2D.init_method_set_one_way_collision_margin();
     return _call_native_mb_no_ret(
-      CollisionShape2D._bindings.method_set_one_way_collision_margin,
+      CollisionShape2D.#_bindings.method_set_one_way_collision_margin,
       this._owner,
       _margin
     );
     
   }
   get_one_way_collision_margin() {
+    CollisionShape2D.init_method_get_one_way_collision_margin();
     return _call_native_mb_ret(
-      CollisionShape2D._bindings.method_get_one_way_collision_margin,
+      CollisionShape2D.#_bindings.method_get_one_way_collision_margin,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_debug_color(_color) {
+    CollisionShape2D.init_method_set_debug_color();
     return _call_native_mb_no_ret(
-      CollisionShape2D._bindings.method_set_debug_color,
+      CollisionShape2D.#_bindings.method_set_debug_color,
       this._owner,
       _color
     );
     
   }
   get_debug_color() {
+    CollisionShape2D.init_method_get_debug_color();
     return _call_native_mb_ret(
-      CollisionShape2D._bindings.method_get_debug_color,
+      CollisionShape2D.#_bindings.method_get_debug_color,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -250,8 +277,4 @@ set debug_color (new_value) {
   this.set_debug_color(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

@@ -1,8 +1,7 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
-import { PackedFloat64Array } from '@js_godot/variant/packed_float64_array'
-import { Resource } from '@js_godot/classes/resource'
 import { StringName } from '@js_godot/variant/string_name'
+import { Resource } from '@js_godot/classes/resource'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -44,7 +43,7 @@ class _MethodBindings {
 }
 export class GLTFAccessor extends Resource{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -54,406 +53,483 @@ export class GLTFAccessor extends Resource{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_get_buffer_view() {
+    if (!this.#_bindings.method_get_buffer_view) {
       let classname = new StringName("GLTFAccessor");
       let methodname = new StringName("get_buffer_view");
-      this._bindings.method_get_buffer_view = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_buffer_view = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2455072627
       );
     }
-    {
+  }
+  static init_method_set_buffer_view() {
+    if (!this.#_bindings.method_set_buffer_view) {
       let classname = new StringName("GLTFAccessor");
       let methodname = new StringName("set_buffer_view");
-      this._bindings.method_set_buffer_view = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("GLTFAccessor");
-      let methodname = new StringName("get_byte_offset");
-      this._bindings.method_get_byte_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2455072627
-      );
-    }
-    {
-      let classname = new StringName("GLTFAccessor");
-      let methodname = new StringName("set_byte_offset");
-      this._bindings.method_set_byte_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("GLTFAccessor");
-      let methodname = new StringName("get_component_type");
-      this._bindings.method_get_component_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2455072627
-      );
-    }
-    {
-      let classname = new StringName("GLTFAccessor");
-      let methodname = new StringName("set_component_type");
-      this._bindings.method_set_component_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("GLTFAccessor");
-      let methodname = new StringName("get_normalized");
-      this._bindings.method_get_normalized = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2240911060
-      );
-    }
-    {
-      let classname = new StringName("GLTFAccessor");
-      let methodname = new StringName("set_normalized");
-      this._bindings.method_set_normalized = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("GLTFAccessor");
-      let methodname = new StringName("get_count");
-      this._bindings.method_get_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2455072627
-      );
-    }
-    {
-      let classname = new StringName("GLTFAccessor");
-      let methodname = new StringName("set_count");
-      this._bindings.method_set_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("GLTFAccessor");
-      let methodname = new StringName("get_accessor_type");
-      this._bindings.method_get_accessor_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        679305214
-      );
-    }
-    {
-      let classname = new StringName("GLTFAccessor");
-      let methodname = new StringName("set_accessor_type");
-      this._bindings.method_set_accessor_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2347728198
-      );
-    }
-    {
-      let classname = new StringName("GLTFAccessor");
-      let methodname = new StringName("get_type");
-      this._bindings.method_get_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2455072627
-      );
-    }
-    {
-      let classname = new StringName("GLTFAccessor");
-      let methodname = new StringName("set_type");
-      this._bindings.method_set_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("GLTFAccessor");
-      let methodname = new StringName("get_min");
-      this._bindings.method_get_min = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        148677866
-      );
-    }
-    {
-      let classname = new StringName("GLTFAccessor");
-      let methodname = new StringName("set_min");
-      this._bindings.method_set_min = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2576592201
-      );
-    }
-    {
-      let classname = new StringName("GLTFAccessor");
-      let methodname = new StringName("get_max");
-      this._bindings.method_get_max = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        148677866
-      );
-    }
-    {
-      let classname = new StringName("GLTFAccessor");
-      let methodname = new StringName("set_max");
-      this._bindings.method_set_max = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2576592201
-      );
-    }
-    {
-      let classname = new StringName("GLTFAccessor");
-      let methodname = new StringName("get_sparse_count");
-      this._bindings.method_get_sparse_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2455072627
-      );
-    }
-    {
-      let classname = new StringName("GLTFAccessor");
-      let methodname = new StringName("set_sparse_count");
-      this._bindings.method_set_sparse_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("GLTFAccessor");
-      let methodname = new StringName("get_sparse_indices_buffer_view");
-      this._bindings.method_get_sparse_indices_buffer_view = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2455072627
-      );
-    }
-    {
-      let classname = new StringName("GLTFAccessor");
-      let methodname = new StringName("set_sparse_indices_buffer_view");
-      this._bindings.method_set_sparse_indices_buffer_view = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("GLTFAccessor");
-      let methodname = new StringName("get_sparse_indices_byte_offset");
-      this._bindings.method_get_sparse_indices_byte_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2455072627
-      );
-    }
-    {
-      let classname = new StringName("GLTFAccessor");
-      let methodname = new StringName("set_sparse_indices_byte_offset");
-      this._bindings.method_set_sparse_indices_byte_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("GLTFAccessor");
-      let methodname = new StringName("get_sparse_indices_component_type");
-      this._bindings.method_get_sparse_indices_component_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2455072627
-      );
-    }
-    {
-      let classname = new StringName("GLTFAccessor");
-      let methodname = new StringName("set_sparse_indices_component_type");
-      this._bindings.method_set_sparse_indices_component_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("GLTFAccessor");
-      let methodname = new StringName("get_sparse_values_buffer_view");
-      this._bindings.method_get_sparse_values_buffer_view = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2455072627
-      );
-    }
-    {
-      let classname = new StringName("GLTFAccessor");
-      let methodname = new StringName("set_sparse_values_buffer_view");
-      this._bindings.method_set_sparse_values_buffer_view = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("GLTFAccessor");
-      let methodname = new StringName("get_sparse_values_byte_offset");
-      this._bindings.method_get_sparse_values_byte_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2455072627
-      );
-    }
-    {
-      let classname = new StringName("GLTFAccessor");
-      let methodname = new StringName("set_sparse_values_byte_offset");
-      this._bindings.method_set_sparse_values_byte_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_buffer_view = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1286410249
       );
     }
   }
+  static init_method_get_byte_offset() {
+    if (!this.#_bindings.method_get_byte_offset) {
+      let classname = new StringName("GLTFAccessor");
+      let methodname = new StringName("get_byte_offset");
+      this.#_bindings.method_get_byte_offset = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2455072627
+      );
+    }
+  }
+  static init_method_set_byte_offset() {
+    if (!this.#_bindings.method_set_byte_offset) {
+      let classname = new StringName("GLTFAccessor");
+      let methodname = new StringName("set_byte_offset");
+      this.#_bindings.method_set_byte_offset = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1286410249
+      );
+    }
+  }
+  static init_method_get_component_type() {
+    if (!this.#_bindings.method_get_component_type) {
+      let classname = new StringName("GLTFAccessor");
+      let methodname = new StringName("get_component_type");
+      this.#_bindings.method_get_component_type = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2455072627
+      );
+    }
+  }
+  static init_method_set_component_type() {
+    if (!this.#_bindings.method_set_component_type) {
+      let classname = new StringName("GLTFAccessor");
+      let methodname = new StringName("set_component_type");
+      this.#_bindings.method_set_component_type = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1286410249
+      );
+    }
+  }
+  static init_method_get_normalized() {
+    if (!this.#_bindings.method_get_normalized) {
+      let classname = new StringName("GLTFAccessor");
+      let methodname = new StringName("get_normalized");
+      this.#_bindings.method_get_normalized = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2240911060
+      );
+    }
+  }
+  static init_method_set_normalized() {
+    if (!this.#_bindings.method_set_normalized) {
+      let classname = new StringName("GLTFAccessor");
+      let methodname = new StringName("set_normalized");
+      this.#_bindings.method_set_normalized = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2586408642
+      );
+    }
+  }
+  static init_method_get_count() {
+    if (!this.#_bindings.method_get_count) {
+      let classname = new StringName("GLTFAccessor");
+      let methodname = new StringName("get_count");
+      this.#_bindings.method_get_count = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2455072627
+      );
+    }
+  }
+  static init_method_set_count() {
+    if (!this.#_bindings.method_set_count) {
+      let classname = new StringName("GLTFAccessor");
+      let methodname = new StringName("set_count");
+      this.#_bindings.method_set_count = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1286410249
+      );
+    }
+  }
+  static init_method_get_accessor_type() {
+    if (!this.#_bindings.method_get_accessor_type) {
+      let classname = new StringName("GLTFAccessor");
+      let methodname = new StringName("get_accessor_type");
+      this.#_bindings.method_get_accessor_type = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        679305214
+      );
+    }
+  }
+  static init_method_set_accessor_type() {
+    if (!this.#_bindings.method_set_accessor_type) {
+      let classname = new StringName("GLTFAccessor");
+      let methodname = new StringName("set_accessor_type");
+      this.#_bindings.method_set_accessor_type = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2347728198
+      );
+    }
+  }
+  static init_method_get_type() {
+    if (!this.#_bindings.method_get_type) {
+      let classname = new StringName("GLTFAccessor");
+      let methodname = new StringName("get_type");
+      this.#_bindings.method_get_type = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2455072627
+      );
+    }
+  }
+  static init_method_set_type() {
+    if (!this.#_bindings.method_set_type) {
+      let classname = new StringName("GLTFAccessor");
+      let methodname = new StringName("set_type");
+      this.#_bindings.method_set_type = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1286410249
+      );
+    }
+  }
+  static init_method_get_min() {
+    if (!this.#_bindings.method_get_min) {
+      let classname = new StringName("GLTFAccessor");
+      let methodname = new StringName("get_min");
+      this.#_bindings.method_get_min = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        148677866
+      );
+    }
+  }
+  static init_method_set_min() {
+    if (!this.#_bindings.method_set_min) {
+      let classname = new StringName("GLTFAccessor");
+      let methodname = new StringName("set_min");
+      this.#_bindings.method_set_min = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2576592201
+      );
+    }
+  }
+  static init_method_get_max() {
+    if (!this.#_bindings.method_get_max) {
+      let classname = new StringName("GLTFAccessor");
+      let methodname = new StringName("get_max");
+      this.#_bindings.method_get_max = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        148677866
+      );
+    }
+  }
+  static init_method_set_max() {
+    if (!this.#_bindings.method_set_max) {
+      let classname = new StringName("GLTFAccessor");
+      let methodname = new StringName("set_max");
+      this.#_bindings.method_set_max = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2576592201
+      );
+    }
+  }
+  static init_method_get_sparse_count() {
+    if (!this.#_bindings.method_get_sparse_count) {
+      let classname = new StringName("GLTFAccessor");
+      let methodname = new StringName("get_sparse_count");
+      this.#_bindings.method_get_sparse_count = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2455072627
+      );
+    }
+  }
+  static init_method_set_sparse_count() {
+    if (!this.#_bindings.method_set_sparse_count) {
+      let classname = new StringName("GLTFAccessor");
+      let methodname = new StringName("set_sparse_count");
+      this.#_bindings.method_set_sparse_count = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1286410249
+      );
+    }
+  }
+  static init_method_get_sparse_indices_buffer_view() {
+    if (!this.#_bindings.method_get_sparse_indices_buffer_view) {
+      let classname = new StringName("GLTFAccessor");
+      let methodname = new StringName("get_sparse_indices_buffer_view");
+      this.#_bindings.method_get_sparse_indices_buffer_view = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2455072627
+      );
+    }
+  }
+  static init_method_set_sparse_indices_buffer_view() {
+    if (!this.#_bindings.method_set_sparse_indices_buffer_view) {
+      let classname = new StringName("GLTFAccessor");
+      let methodname = new StringName("set_sparse_indices_buffer_view");
+      this.#_bindings.method_set_sparse_indices_buffer_view = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1286410249
+      );
+    }
+  }
+  static init_method_get_sparse_indices_byte_offset() {
+    if (!this.#_bindings.method_get_sparse_indices_byte_offset) {
+      let classname = new StringName("GLTFAccessor");
+      let methodname = new StringName("get_sparse_indices_byte_offset");
+      this.#_bindings.method_get_sparse_indices_byte_offset = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2455072627
+      );
+    }
+  }
+  static init_method_set_sparse_indices_byte_offset() {
+    if (!this.#_bindings.method_set_sparse_indices_byte_offset) {
+      let classname = new StringName("GLTFAccessor");
+      let methodname = new StringName("set_sparse_indices_byte_offset");
+      this.#_bindings.method_set_sparse_indices_byte_offset = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1286410249
+      );
+    }
+  }
+  static init_method_get_sparse_indices_component_type() {
+    if (!this.#_bindings.method_get_sparse_indices_component_type) {
+      let classname = new StringName("GLTFAccessor");
+      let methodname = new StringName("get_sparse_indices_component_type");
+      this.#_bindings.method_get_sparse_indices_component_type = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2455072627
+      );
+    }
+  }
+  static init_method_set_sparse_indices_component_type() {
+    if (!this.#_bindings.method_set_sparse_indices_component_type) {
+      let classname = new StringName("GLTFAccessor");
+      let methodname = new StringName("set_sparse_indices_component_type");
+      this.#_bindings.method_set_sparse_indices_component_type = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1286410249
+      );
+    }
+  }
+  static init_method_get_sparse_values_buffer_view() {
+    if (!this.#_bindings.method_get_sparse_values_buffer_view) {
+      let classname = new StringName("GLTFAccessor");
+      let methodname = new StringName("get_sparse_values_buffer_view");
+      this.#_bindings.method_get_sparse_values_buffer_view = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2455072627
+      );
+    }
+  }
+  static init_method_set_sparse_values_buffer_view() {
+    if (!this.#_bindings.method_set_sparse_values_buffer_view) {
+      let classname = new StringName("GLTFAccessor");
+      let methodname = new StringName("set_sparse_values_buffer_view");
+      this.#_bindings.method_set_sparse_values_buffer_view = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1286410249
+      );
+    }
+  }
+  static init_method_get_sparse_values_byte_offset() {
+    if (!this.#_bindings.method_get_sparse_values_byte_offset) {
+      let classname = new StringName("GLTFAccessor");
+      let methodname = new StringName("get_sparse_values_byte_offset");
+      this.#_bindings.method_get_sparse_values_byte_offset = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2455072627
+      );
+    }
+  }
+  static init_method_set_sparse_values_byte_offset() {
+    if (!this.#_bindings.method_set_sparse_values_byte_offset) {
+      let classname = new StringName("GLTFAccessor");
+      let methodname = new StringName("set_sparse_values_byte_offset");
+      this.#_bindings.method_set_sparse_values_byte_offset = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1286410249
+      );
+    }
+  }
+
+  
   
   get_buffer_view() {
+    GLTFAccessor.init_method_get_buffer_view();
     return _call_native_mb_ret(
-      GLTFAccessor._bindings.method_get_buffer_view,
+      GLTFAccessor.#_bindings.method_get_buffer_view,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_buffer_view(_buffer_view) {
+    GLTFAccessor.init_method_set_buffer_view();
     return _call_native_mb_no_ret(
-      GLTFAccessor._bindings.method_set_buffer_view,
+      GLTFAccessor.#_bindings.method_set_buffer_view,
       this._owner,
       _buffer_view
     );
     
   }
   get_byte_offset() {
+    GLTFAccessor.init_method_get_byte_offset();
     return _call_native_mb_ret(
-      GLTFAccessor._bindings.method_get_byte_offset,
+      GLTFAccessor.#_bindings.method_get_byte_offset,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_byte_offset(_byte_offset) {
+    GLTFAccessor.init_method_set_byte_offset();
     return _call_native_mb_no_ret(
-      GLTFAccessor._bindings.method_set_byte_offset,
+      GLTFAccessor.#_bindings.method_set_byte_offset,
       this._owner,
       _byte_offset
     );
     
   }
   get_component_type() {
+    GLTFAccessor.init_method_get_component_type();
     return _call_native_mb_ret(
-      GLTFAccessor._bindings.method_get_component_type,
+      GLTFAccessor.#_bindings.method_get_component_type,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_component_type(_component_type) {
+    GLTFAccessor.init_method_set_component_type();
     return _call_native_mb_no_ret(
-      GLTFAccessor._bindings.method_set_component_type,
+      GLTFAccessor.#_bindings.method_set_component_type,
       this._owner,
       _component_type
     );
     
   }
   get_normalized() {
+    GLTFAccessor.init_method_get_normalized();
     return _call_native_mb_ret(
-      GLTFAccessor._bindings.method_get_normalized,
+      GLTFAccessor.#_bindings.method_get_normalized,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_normalized(_normalized) {
+    GLTFAccessor.init_method_set_normalized();
     return _call_native_mb_no_ret(
-      GLTFAccessor._bindings.method_set_normalized,
+      GLTFAccessor.#_bindings.method_set_normalized,
       this._owner,
       _normalized
     );
     
   }
   get_count() {
+    GLTFAccessor.init_method_get_count();
     return _call_native_mb_ret(
-      GLTFAccessor._bindings.method_get_count,
+      GLTFAccessor.#_bindings.method_get_count,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_count(_count) {
+    GLTFAccessor.init_method_set_count();
     return _call_native_mb_no_ret(
-      GLTFAccessor._bindings.method_set_count,
+      GLTFAccessor.#_bindings.method_set_count,
       this._owner,
       _count
     );
     
   }
   get_accessor_type() {
+    GLTFAccessor.init_method_get_accessor_type();
     return _call_native_mb_ret(
-      GLTFAccessor._bindings.method_get_accessor_type,
+      GLTFAccessor.#_bindings.method_get_accessor_type,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_accessor_type(_accessor_type) {
+    GLTFAccessor.init_method_set_accessor_type();
     return _call_native_mb_no_ret(
-      GLTFAccessor._bindings.method_set_accessor_type,
+      GLTFAccessor.#_bindings.method_set_accessor_type,
       this._owner,
       _accessor_type
     );
     
   }
   get_type() {
+    GLTFAccessor.init_method_get_type();
     return _call_native_mb_ret(
-      GLTFAccessor._bindings.method_get_type,
+      GLTFAccessor.#_bindings.method_get_type,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_type(_type) {
+    GLTFAccessor.init_method_set_type();
     return _call_native_mb_no_ret(
-      GLTFAccessor._bindings.method_set_type,
+      GLTFAccessor.#_bindings.method_set_type,
       this._owner,
       _type
     );
     
   }
   get_min() {
+    GLTFAccessor.init_method_get_min();
     return _call_native_mb_ret(
-      GLTFAccessor._bindings.method_get_min,
+      GLTFAccessor.#_bindings.method_get_min,
       this._owner,
 			Variant.Type.PACKED_FLOAT64_ARRAY,
     
@@ -462,16 +538,18 @@ export class GLTFAccessor extends Resource{
     
   }
   set_min(_min) {
+    GLTFAccessor.init_method_set_min();
     return _call_native_mb_no_ret(
-      GLTFAccessor._bindings.method_set_min,
+      GLTFAccessor.#_bindings.method_set_min,
       this._owner,
       _min
     );
     
   }
   get_max() {
+    GLTFAccessor.init_method_get_max();
     return _call_native_mb_ret(
-      GLTFAccessor._bindings.method_get_max,
+      GLTFAccessor.#_bindings.method_get_max,
       this._owner,
 			Variant.Type.PACKED_FLOAT64_ARRAY,
     
@@ -480,110 +558,129 @@ export class GLTFAccessor extends Resource{
     
   }
   set_max(_max) {
+    GLTFAccessor.init_method_set_max();
     return _call_native_mb_no_ret(
-      GLTFAccessor._bindings.method_set_max,
+      GLTFAccessor.#_bindings.method_set_max,
       this._owner,
       _max
     );
     
   }
   get_sparse_count() {
+    GLTFAccessor.init_method_get_sparse_count();
     return _call_native_mb_ret(
-      GLTFAccessor._bindings.method_get_sparse_count,
+      GLTFAccessor.#_bindings.method_get_sparse_count,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_sparse_count(_sparse_count) {
+    GLTFAccessor.init_method_set_sparse_count();
     return _call_native_mb_no_ret(
-      GLTFAccessor._bindings.method_set_sparse_count,
+      GLTFAccessor.#_bindings.method_set_sparse_count,
       this._owner,
       _sparse_count
     );
     
   }
   get_sparse_indices_buffer_view() {
+    GLTFAccessor.init_method_get_sparse_indices_buffer_view();
     return _call_native_mb_ret(
-      GLTFAccessor._bindings.method_get_sparse_indices_buffer_view,
+      GLTFAccessor.#_bindings.method_get_sparse_indices_buffer_view,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_sparse_indices_buffer_view(_sparse_indices_buffer_view) {
+    GLTFAccessor.init_method_set_sparse_indices_buffer_view();
     return _call_native_mb_no_ret(
-      GLTFAccessor._bindings.method_set_sparse_indices_buffer_view,
+      GLTFAccessor.#_bindings.method_set_sparse_indices_buffer_view,
       this._owner,
       _sparse_indices_buffer_view
     );
     
   }
   get_sparse_indices_byte_offset() {
+    GLTFAccessor.init_method_get_sparse_indices_byte_offset();
     return _call_native_mb_ret(
-      GLTFAccessor._bindings.method_get_sparse_indices_byte_offset,
+      GLTFAccessor.#_bindings.method_get_sparse_indices_byte_offset,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_sparse_indices_byte_offset(_sparse_indices_byte_offset) {
+    GLTFAccessor.init_method_set_sparse_indices_byte_offset();
     return _call_native_mb_no_ret(
-      GLTFAccessor._bindings.method_set_sparse_indices_byte_offset,
+      GLTFAccessor.#_bindings.method_set_sparse_indices_byte_offset,
       this._owner,
       _sparse_indices_byte_offset
     );
     
   }
   get_sparse_indices_component_type() {
+    GLTFAccessor.init_method_get_sparse_indices_component_type();
     return _call_native_mb_ret(
-      GLTFAccessor._bindings.method_get_sparse_indices_component_type,
+      GLTFAccessor.#_bindings.method_get_sparse_indices_component_type,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_sparse_indices_component_type(_sparse_indices_component_type) {
+    GLTFAccessor.init_method_set_sparse_indices_component_type();
     return _call_native_mb_no_ret(
-      GLTFAccessor._bindings.method_set_sparse_indices_component_type,
+      GLTFAccessor.#_bindings.method_set_sparse_indices_component_type,
       this._owner,
       _sparse_indices_component_type
     );
     
   }
   get_sparse_values_buffer_view() {
+    GLTFAccessor.init_method_get_sparse_values_buffer_view();
     return _call_native_mb_ret(
-      GLTFAccessor._bindings.method_get_sparse_values_buffer_view,
+      GLTFAccessor.#_bindings.method_get_sparse_values_buffer_view,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_sparse_values_buffer_view(_sparse_values_buffer_view) {
+    GLTFAccessor.init_method_set_sparse_values_buffer_view();
     return _call_native_mb_no_ret(
-      GLTFAccessor._bindings.method_set_sparse_values_buffer_view,
+      GLTFAccessor.#_bindings.method_set_sparse_values_buffer_view,
       this._owner,
       _sparse_values_buffer_view
     );
     
   }
   get_sparse_values_byte_offset() {
+    GLTFAccessor.init_method_get_sparse_values_byte_offset();
     return _call_native_mb_ret(
-      GLTFAccessor._bindings.method_get_sparse_values_byte_offset,
+      GLTFAccessor.#_bindings.method_get_sparse_values_byte_offset,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_sparse_values_byte_offset(_sparse_values_byte_offset) {
+    GLTFAccessor.init_method_set_sparse_values_byte_offset();
     return _call_native_mb_no_ret(
-      GLTFAccessor._bindings.method_set_sparse_values_byte_offset,
+      GLTFAccessor.#_bindings.method_set_sparse_values_byte_offset,
       this._owner,
       _sparse_values_byte_offset
     );
@@ -689,9 +786,5 @@ set sparse_values_byte_offset (new_value) {
     TYPE_MAT2: 4,
     TYPE_MAT3: 5,
     TYPE_MAT4: 6,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

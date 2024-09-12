@@ -1,9 +1,7 @@
 import * as internal from '__internal__';
 import { VisualInstance3D } from '@js_godot/classes/visual_instance3d'
 import { StringName } from '@js_godot/variant/string_name'
-import { Color } from '@js_godot/variant/color'
 import { Variant } from '@js_godot/variant/variant'
-import { Vector3 } from '@js_godot/variant/vector3'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -39,7 +37,7 @@ class _MethodBindings {
 }
 export class Decal extends VisualInstance3D{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -49,241 +47,286 @@ export class Decal extends VisualInstance3D{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_size() {
+    if (!this.#_bindings.method_set_size) {
       let classname = new StringName("Decal");
       let methodname = new StringName("set_size");
-      this._bindings.method_set_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_size = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3460891852
       );
     }
-    {
+  }
+  static init_method_get_size() {
+    if (!this.#_bindings.method_get_size) {
       let classname = new StringName("Decal");
       let methodname = new StringName("get_size");
-      this._bindings.method_get_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_size = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3360562783
       );
     }
-    {
+  }
+  static init_method_set_texture() {
+    if (!this.#_bindings.method_set_texture) {
       let classname = new StringName("Decal");
       let methodname = new StringName("set_texture");
-      this._bindings.method_set_texture = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_texture = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2086764391
       );
     }
-    {
+  }
+  static init_method_get_texture() {
+    if (!this.#_bindings.method_get_texture) {
       let classname = new StringName("Decal");
       let methodname = new StringName("get_texture");
-      this._bindings.method_get_texture = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_texture = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3244119503
       );
     }
-    {
+  }
+  static init_method_set_emission_energy() {
+    if (!this.#_bindings.method_set_emission_energy) {
       let classname = new StringName("Decal");
       let methodname = new StringName("set_emission_energy");
-      this._bindings.method_set_emission_energy = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_emission_energy = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_emission_energy() {
+    if (!this.#_bindings.method_get_emission_energy) {
       let classname = new StringName("Decal");
       let methodname = new StringName("get_emission_energy");
-      this._bindings.method_get_emission_energy = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_emission_energy = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_set_albedo_mix() {
+    if (!this.#_bindings.method_set_albedo_mix) {
       let classname = new StringName("Decal");
       let methodname = new StringName("set_albedo_mix");
-      this._bindings.method_set_albedo_mix = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_albedo_mix = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_albedo_mix() {
+    if (!this.#_bindings.method_get_albedo_mix) {
       let classname = new StringName("Decal");
       let methodname = new StringName("get_albedo_mix");
-      this._bindings.method_get_albedo_mix = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_albedo_mix = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_set_modulate() {
+    if (!this.#_bindings.method_set_modulate) {
       let classname = new StringName("Decal");
       let methodname = new StringName("set_modulate");
-      this._bindings.method_set_modulate = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_modulate = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2920490490
       );
     }
-    {
+  }
+  static init_method_get_modulate() {
+    if (!this.#_bindings.method_get_modulate) {
       let classname = new StringName("Decal");
       let methodname = new StringName("get_modulate");
-      this._bindings.method_get_modulate = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_modulate = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3444240500
       );
     }
-    {
+  }
+  static init_method_set_upper_fade() {
+    if (!this.#_bindings.method_set_upper_fade) {
       let classname = new StringName("Decal");
       let methodname = new StringName("set_upper_fade");
-      this._bindings.method_set_upper_fade = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_upper_fade = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_upper_fade() {
+    if (!this.#_bindings.method_get_upper_fade) {
       let classname = new StringName("Decal");
       let methodname = new StringName("get_upper_fade");
-      this._bindings.method_get_upper_fade = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_upper_fade = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_set_lower_fade() {
+    if (!this.#_bindings.method_set_lower_fade) {
       let classname = new StringName("Decal");
       let methodname = new StringName("set_lower_fade");
-      this._bindings.method_set_lower_fade = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_lower_fade = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_lower_fade() {
+    if (!this.#_bindings.method_get_lower_fade) {
       let classname = new StringName("Decal");
       let methodname = new StringName("get_lower_fade");
-      this._bindings.method_get_lower_fade = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_lower_fade = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_set_normal_fade() {
+    if (!this.#_bindings.method_set_normal_fade) {
       let classname = new StringName("Decal");
       let methodname = new StringName("set_normal_fade");
-      this._bindings.method_set_normal_fade = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_normal_fade = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_normal_fade() {
+    if (!this.#_bindings.method_get_normal_fade) {
       let classname = new StringName("Decal");
       let methodname = new StringName("get_normal_fade");
-      this._bindings.method_get_normal_fade = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_normal_fade = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_set_enable_distance_fade() {
+    if (!this.#_bindings.method_set_enable_distance_fade) {
       let classname = new StringName("Decal");
       let methodname = new StringName("set_enable_distance_fade");
-      this._bindings.method_set_enable_distance_fade = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_enable_distance_fade = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_is_distance_fade_enabled() {
+    if (!this.#_bindings.method_is_distance_fade_enabled) {
       let classname = new StringName("Decal");
       let methodname = new StringName("is_distance_fade_enabled");
-      this._bindings.method_is_distance_fade_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_distance_fade_enabled = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_set_distance_fade_begin() {
+    if (!this.#_bindings.method_set_distance_fade_begin) {
       let classname = new StringName("Decal");
       let methodname = new StringName("set_distance_fade_begin");
-      this._bindings.method_set_distance_fade_begin = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_distance_fade_begin = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_distance_fade_begin() {
+    if (!this.#_bindings.method_get_distance_fade_begin) {
       let classname = new StringName("Decal");
       let methodname = new StringName("get_distance_fade_begin");
-      this._bindings.method_get_distance_fade_begin = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_distance_fade_begin = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_set_distance_fade_length() {
+    if (!this.#_bindings.method_set_distance_fade_length) {
       let classname = new StringName("Decal");
       let methodname = new StringName("set_distance_fade_length");
-      this._bindings.method_set_distance_fade_length = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_distance_fade_length = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_distance_fade_length() {
+    if (!this.#_bindings.method_get_distance_fade_length) {
       let classname = new StringName("Decal");
       let methodname = new StringName("get_distance_fade_length");
-      this._bindings.method_get_distance_fade_length = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_distance_fade_length = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_set_cull_mask() {
+    if (!this.#_bindings.method_set_cull_mask) {
       let classname = new StringName("Decal");
       let methodname = new StringName("set_cull_mask");
-      this._bindings.method_set_cull_mask = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_cull_mask = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1286410249
       );
     }
-    {
+  }
+  static init_method_get_cull_mask() {
+    if (!this.#_bindings.method_get_cull_mask) {
       let classname = new StringName("Decal");
       let methodname = new StringName("get_cull_mask");
-      this._bindings.method_get_cull_mask = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_cull_mask = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
   }
+
+  
   
   set_size(_size) {
+    Decal.init_method_set_size();
     return _call_native_mb_no_ret(
-      Decal._bindings.method_set_size,
+      Decal.#_bindings.method_set_size,
       this._owner,
       _size
     );
     
   }
   get_size() {
+    Decal.init_method_get_size();
     return _call_native_mb_ret(
-      Decal._bindings.method_get_size,
+      Decal.#_bindings.method_get_size,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -292,67 +335,77 @@ export class Decal extends VisualInstance3D{
     
   }
   set_texture(_type, _texture) {
+    Decal.init_method_set_texture();
     return _call_native_mb_no_ret(
-      Decal._bindings.method_set_texture,
+      Decal.#_bindings.method_set_texture,
       this._owner,
       _type, _texture
     );
     
   }
   get_texture(_type) {
+    Decal.init_method_get_texture();
     return _call_native_mb_ret(
-      Decal._bindings.method_get_texture,
+      Decal.#_bindings.method_get_texture,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       _type
     );
     
   }
   set_emission_energy(_energy) {
+    Decal.init_method_set_emission_energy();
     return _call_native_mb_no_ret(
-      Decal._bindings.method_set_emission_energy,
+      Decal.#_bindings.method_set_emission_energy,
       this._owner,
       _energy
     );
     
   }
   get_emission_energy() {
+    Decal.init_method_get_emission_energy();
     return _call_native_mb_ret(
-      Decal._bindings.method_get_emission_energy,
+      Decal.#_bindings.method_get_emission_energy,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_albedo_mix(_energy) {
+    Decal.init_method_set_albedo_mix();
     return _call_native_mb_no_ret(
-      Decal._bindings.method_set_albedo_mix,
+      Decal.#_bindings.method_set_albedo_mix,
       this._owner,
       _energy
     );
     
   }
   get_albedo_mix() {
+    Decal.init_method_get_albedo_mix();
     return _call_native_mb_ret(
-      Decal._bindings.method_get_albedo_mix,
+      Decal.#_bindings.method_get_albedo_mix,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_modulate(_color) {
+    Decal.init_method_set_modulate();
     return _call_native_mb_no_ret(
-      Decal._bindings.method_set_modulate,
+      Decal.#_bindings.method_set_modulate,
       this._owner,
       _color
     );
     
   }
   get_modulate() {
+    Decal.init_method_get_modulate();
     return _call_native_mb_ret(
-      Decal._bindings.method_get_modulate,
+      Decal.#_bindings.method_get_modulate,
       this._owner,
 			Variant.Type.COLOR,
     
@@ -361,120 +414,141 @@ export class Decal extends VisualInstance3D{
     
   }
   set_upper_fade(_fade) {
+    Decal.init_method_set_upper_fade();
     return _call_native_mb_no_ret(
-      Decal._bindings.method_set_upper_fade,
+      Decal.#_bindings.method_set_upper_fade,
       this._owner,
       _fade
     );
     
   }
   get_upper_fade() {
+    Decal.init_method_get_upper_fade();
     return _call_native_mb_ret(
-      Decal._bindings.method_get_upper_fade,
+      Decal.#_bindings.method_get_upper_fade,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_lower_fade(_fade) {
+    Decal.init_method_set_lower_fade();
     return _call_native_mb_no_ret(
-      Decal._bindings.method_set_lower_fade,
+      Decal.#_bindings.method_set_lower_fade,
       this._owner,
       _fade
     );
     
   }
   get_lower_fade() {
+    Decal.init_method_get_lower_fade();
     return _call_native_mb_ret(
-      Decal._bindings.method_get_lower_fade,
+      Decal.#_bindings.method_get_lower_fade,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_normal_fade(_fade) {
+    Decal.init_method_set_normal_fade();
     return _call_native_mb_no_ret(
-      Decal._bindings.method_set_normal_fade,
+      Decal.#_bindings.method_set_normal_fade,
       this._owner,
       _fade
     );
     
   }
   get_normal_fade() {
+    Decal.init_method_get_normal_fade();
     return _call_native_mb_ret(
-      Decal._bindings.method_get_normal_fade,
+      Decal.#_bindings.method_get_normal_fade,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_enable_distance_fade(_enable) {
+    Decal.init_method_set_enable_distance_fade();
     return _call_native_mb_no_ret(
-      Decal._bindings.method_set_enable_distance_fade,
+      Decal.#_bindings.method_set_enable_distance_fade,
       this._owner,
       _enable
     );
     
   }
   is_distance_fade_enabled() {
+    Decal.init_method_is_distance_fade_enabled();
     return _call_native_mb_ret(
-      Decal._bindings.method_is_distance_fade_enabled,
+      Decal.#_bindings.method_is_distance_fade_enabled,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_distance_fade_begin(_distance) {
+    Decal.init_method_set_distance_fade_begin();
     return _call_native_mb_no_ret(
-      Decal._bindings.method_set_distance_fade_begin,
+      Decal.#_bindings.method_set_distance_fade_begin,
       this._owner,
       _distance
     );
     
   }
   get_distance_fade_begin() {
+    Decal.init_method_get_distance_fade_begin();
     return _call_native_mb_ret(
-      Decal._bindings.method_get_distance_fade_begin,
+      Decal.#_bindings.method_get_distance_fade_begin,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_distance_fade_length(_distance) {
+    Decal.init_method_set_distance_fade_length();
     return _call_native_mb_no_ret(
-      Decal._bindings.method_set_distance_fade_length,
+      Decal.#_bindings.method_set_distance_fade_length,
       this._owner,
       _distance
     );
     
   }
   get_distance_fade_length() {
+    Decal.init_method_get_distance_fade_length();
     return _call_native_mb_ret(
-      Decal._bindings.method_get_distance_fade_length,
+      Decal.#_bindings.method_get_distance_fade_length,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_cull_mask(_mask) {
+    Decal.init_method_set_cull_mask();
     return _call_native_mb_no_ret(
-      Decal._bindings.method_set_cull_mask,
+      Decal.#_bindings.method_set_cull_mask,
       this._owner,
       _mask
     );
     
   }
   get_cull_mask() {
+    Decal.init_method_get_cull_mask();
     return _call_native_mb_ret(
-      Decal._bindings.method_get_cull_mask,
+      Decal.#_bindings.method_get_cull_mask,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
@@ -577,9 +651,5 @@ set cull_mask (new_value) {
     TEXTURE_ORM: 2,
     TEXTURE_EMISSION: 3,
     TEXTURE_MAX: 4,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

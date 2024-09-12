@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { VisualShaderNode } from '@js_godot/classes/visual_shader_node'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -19,7 +19,7 @@ class _MethodBindings {
 }
 export class VisualShaderNodeCubemap extends VisualShaderNode{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -29,115 +29,130 @@ export class VisualShaderNodeCubemap extends VisualShaderNode{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_source() {
+    if (!this.#_bindings.method_set_source) {
       let classname = new StringName("VisualShaderNodeCubemap");
       let methodname = new StringName("set_source");
-      this._bindings.method_set_source = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_source = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1625400621
       );
     }
-    {
+  }
+  static init_method_get_source() {
+    if (!this.#_bindings.method_get_source) {
       let classname = new StringName("VisualShaderNodeCubemap");
       let methodname = new StringName("get_source");
-      this._bindings.method_get_source = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_source = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2222048781
       );
     }
-    {
+  }
+  static init_method_set_cube_map() {
+    if (!this.#_bindings.method_set_cube_map) {
       let classname = new StringName("VisualShaderNodeCubemap");
       let methodname = new StringName("set_cube_map");
-      this._bindings.method_set_cube_map = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_cube_map = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2219800736
       );
     }
-    {
+  }
+  static init_method_get_cube_map() {
+    if (!this.#_bindings.method_get_cube_map) {
       let classname = new StringName("VisualShaderNodeCubemap");
       let methodname = new StringName("get_cube_map");
-      this._bindings.method_get_cube_map = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_cube_map = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1772111058
       );
     }
-    {
+  }
+  static init_method_set_texture_type() {
+    if (!this.#_bindings.method_set_texture_type) {
       let classname = new StringName("VisualShaderNodeCubemap");
       let methodname = new StringName("set_texture_type");
-      this._bindings.method_set_texture_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_texture_type = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1899718876
       );
     }
-    {
+  }
+  static init_method_get_texture_type() {
+    if (!this.#_bindings.method_get_texture_type) {
       let classname = new StringName("VisualShaderNodeCubemap");
       let methodname = new StringName("get_texture_type");
-      this._bindings.method_get_texture_type = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_texture_type = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3356498888
       );
     }
   }
+
+  
   
   set_source(_value) {
+    VisualShaderNodeCubemap.init_method_set_source();
     return _call_native_mb_no_ret(
-      VisualShaderNodeCubemap._bindings.method_set_source,
+      VisualShaderNodeCubemap.#_bindings.method_set_source,
       this._owner,
       _value
     );
     
   }
   get_source() {
+    VisualShaderNodeCubemap.init_method_get_source();
     return _call_native_mb_ret(
-      VisualShaderNodeCubemap._bindings.method_get_source,
+      VisualShaderNodeCubemap.#_bindings.method_get_source,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_cube_map(_value) {
+    VisualShaderNodeCubemap.init_method_set_cube_map();
     return _call_native_mb_no_ret(
-      VisualShaderNodeCubemap._bindings.method_set_cube_map,
+      VisualShaderNodeCubemap.#_bindings.method_set_cube_map,
       this._owner,
       _value
     );
     
   }
   get_cube_map() {
+    VisualShaderNodeCubemap.init_method_get_cube_map();
     return _call_native_mb_ret(
-      VisualShaderNodeCubemap._bindings.method_get_cube_map,
+      VisualShaderNodeCubemap.#_bindings.method_get_cube_map,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
   }
   set_texture_type(_value) {
+    VisualShaderNodeCubemap.init_method_set_texture_type();
     return _call_native_mb_no_ret(
-      VisualShaderNodeCubemap._bindings.method_set_texture_type,
+      VisualShaderNodeCubemap.#_bindings.method_set_texture_type,
       this._owner,
       _value
     );
     
   }
   get_texture_type() {
+    VisualShaderNodeCubemap.init_method_get_texture_type();
     return _call_native_mb_ret(
-      VisualShaderNodeCubemap._bindings.method_get_texture_type,
+      VisualShaderNodeCubemap.#_bindings.method_get_texture_type,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
@@ -172,9 +187,5 @@ set texture_type (new_value) {
     TYPE_COLOR: 1,
     TYPE_NORMAL_MAP: 2,
     TYPE_MAX: 3,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

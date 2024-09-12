@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { Variant } from '@js_godot/variant/variant'
 import { VisualShaderNode } from '@js_godot/classes/visual_shader_node'
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -15,7 +15,7 @@ class _MethodBindings {
 }
 export class VisualShaderNodeFloatFunc extends VisualShaderNode{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -25,45 +25,47 @@ export class VisualShaderNodeFloatFunc extends VisualShaderNode{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_function() {
+    if (!this.#_bindings.method_set_function) {
       let classname = new StringName("VisualShaderNodeFloatFunc");
       let methodname = new StringName("set_function");
-      this._bindings.method_set_function = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_function = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         536026177
       );
     }
-    {
+  }
+  static init_method_get_function() {
+    if (!this.#_bindings.method_get_function) {
       let classname = new StringName("VisualShaderNodeFloatFunc");
       let methodname = new StringName("get_function");
-      this._bindings.method_get_function = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_function = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2033948868
       );
     }
   }
+
+  
   
   set_function(_func) {
+    VisualShaderNodeFloatFunc.init_method_set_function();
     return _call_native_mb_no_ret(
-      VisualShaderNodeFloatFunc._bindings.method_set_function,
+      VisualShaderNodeFloatFunc.#_bindings.method_set_function,
       this._owner,
       _func
     );
     
   }
   get_function() {
+    VisualShaderNodeFloatFunc.init_method_get_function();
     return _call_native_mb_ret(
-      VisualShaderNodeFloatFunc._bindings.method_get_function,
+      VisualShaderNodeFloatFunc.#_bindings.method_get_function,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
@@ -110,9 +112,5 @@ set function (new_value) {
     FUNC_TRUNC: 30,
     FUNC_ONEMINUS: 31,
     FUNC_MAX: 32,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

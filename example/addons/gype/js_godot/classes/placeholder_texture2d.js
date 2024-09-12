@@ -1,8 +1,7 @@
 import * as internal from '__internal__';
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Texture2D } from '@js_godot/classes/texture2d'
-import { Vector2 } from '@js_godot/variant/vector2'
-import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -15,7 +14,7 @@ class _MethodBindings {
 }
 export class PlaceholderTexture2D extends Texture2D{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -25,26 +24,24 @@ export class PlaceholderTexture2D extends Texture2D{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_size() {
+    if (!this.#_bindings.method_set_size) {
       let classname = new StringName("PlaceholderTexture2D");
       let methodname = new StringName("set_size");
-      this._bindings.method_set_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_size = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         743155724
       );
     }
   }
+
+  
   
   set_size(_size) {
+    PlaceholderTexture2D.init_method_set_size();
     return _call_native_mb_no_ret(
-      PlaceholderTexture2D._bindings.method_set_size,
+      PlaceholderTexture2D.#_bindings.method_set_size,
       this._owner,
       _size
     );
@@ -58,8 +55,4 @@ set size (new_value) {
   this.set_size(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

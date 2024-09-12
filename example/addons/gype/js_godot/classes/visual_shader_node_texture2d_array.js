@@ -15,7 +15,7 @@ class _MethodBindings {
 }
 export class VisualShaderNodeTexture2DArray extends VisualShaderNodeSample3D{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -25,45 +25,46 @@ export class VisualShaderNodeTexture2DArray extends VisualShaderNodeSample3D{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_texture_array() {
+    if (!this.#_bindings.method_set_texture_array) {
       let classname = new StringName("VisualShaderNodeTexture2DArray");
       let methodname = new StringName("set_texture_array");
-      this._bindings.method_set_texture_array = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_texture_array = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2206200446
       );
     }
-    {
+  }
+  static init_method_get_texture_array() {
+    if (!this.#_bindings.method_get_texture_array) {
       let classname = new StringName("VisualShaderNodeTexture2DArray");
       let methodname = new StringName("get_texture_array");
-      this._bindings.method_get_texture_array = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_texture_array = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         146117123
       );
     }
   }
+
+  
   
   set_texture_array(_value) {
+    VisualShaderNodeTexture2DArray.init_method_set_texture_array();
     return _call_native_mb_no_ret(
-      VisualShaderNodeTexture2DArray._bindings.method_set_texture_array,
+      VisualShaderNodeTexture2DArray.#_bindings.method_set_texture_array,
       this._owner,
       _value
     );
     
   }
   get_texture_array() {
+    VisualShaderNodeTexture2DArray.init_method_get_texture_array();
     return _call_native_mb_ret(
-      VisualShaderNodeTexture2DArray._bindings.method_get_texture_array,
+      VisualShaderNodeTexture2DArray.#_bindings.method_get_texture_array,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
@@ -76,8 +77,4 @@ set texture_array (new_value) {
   this.set_texture_array(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

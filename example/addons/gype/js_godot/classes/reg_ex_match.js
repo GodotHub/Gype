@@ -1,10 +1,7 @@
 import * as internal from '__internal__';
-import { Dictionary } from '@js_godot/variant/dictionary'
-import { StringName } from '@js_godot/variant/string_name'
-import { PackedStringArray } from '@js_godot/variant/packed_string_array'
-import { RefCounted } from '@js_godot/classes/ref_counted'
 import { Variant } from '@js_godot/variant/variant'
-import { GDString } from '@js_godot/variant/gd_string'
+import { StringName } from '@js_godot/variant/string_name'
+import { RefCounted } from '@js_godot/classes/ref_counted'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -23,7 +20,7 @@ class _MethodBindings {
 }
 export class RegExMatch extends RefCounted{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -33,80 +30,90 @@ export class RegExMatch extends RefCounted{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_get_subject() {
+    if (!this.#_bindings.method_get_subject) {
       let classname = new StringName("RegExMatch");
       let methodname = new StringName("get_subject");
-      this._bindings.method_get_subject = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_subject = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         201670096
       );
     }
-    {
+  }
+  static init_method_get_group_count() {
+    if (!this.#_bindings.method_get_group_count) {
       let classname = new StringName("RegExMatch");
       let methodname = new StringName("get_group_count");
-      this._bindings.method_get_group_count = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_group_count = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
-    {
+  }
+  static init_method_get_names() {
+    if (!this.#_bindings.method_get_names) {
       let classname = new StringName("RegExMatch");
       let methodname = new StringName("get_names");
-      this._bindings.method_get_names = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_names = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3102165223
       );
     }
-    {
+  }
+  static init_method_get_strings() {
+    if (!this.#_bindings.method_get_strings) {
       let classname = new StringName("RegExMatch");
       let methodname = new StringName("get_strings");
-      this._bindings.method_get_strings = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_strings = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1139954409
       );
     }
-    {
+  }
+  static init_method_get_string() {
+    if (!this.#_bindings.method_get_string) {
       let classname = new StringName("RegExMatch");
       let methodname = new StringName("get_string");
-      this._bindings.method_get_string = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_string = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         687115856
       );
     }
-    {
+  }
+  static init_method_get_start() {
+    if (!this.#_bindings.method_get_start) {
       let classname = new StringName("RegExMatch");
       let methodname = new StringName("get_start");
-      this._bindings.method_get_start = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        490464691
-      );
-    }
-    {
-      let classname = new StringName("RegExMatch");
-      let methodname = new StringName("get_end");
-      this._bindings.method_get_end = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_start = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         490464691
       );
     }
   }
+  static init_method_get_end() {
+    if (!this.#_bindings.method_get_end) {
+      let classname = new StringName("RegExMatch");
+      let methodname = new StringName("get_end");
+      this.#_bindings.method_get_end = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        490464691
+      );
+    }
+  }
+
+  
   
   get_subject() {
+    RegExMatch.init_method_get_subject();
     return _call_native_mb_ret(
-      RegExMatch._bindings.method_get_subject,
+      RegExMatch.#_bindings.method_get_subject,
       this._owner,
 			Variant.Type.STRING,
     
@@ -115,17 +122,20 @@ export class RegExMatch extends RefCounted{
     
   }
   get_group_count() {
+    RegExMatch.init_method_get_group_count();
     return _call_native_mb_ret(
-      RegExMatch._bindings.method_get_group_count,
+      RegExMatch.#_bindings.method_get_group_count,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   get_names() {
+    RegExMatch.init_method_get_names();
     return _call_native_mb_ret(
-      RegExMatch._bindings.method_get_names,
+      RegExMatch.#_bindings.method_get_names,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -134,8 +144,9 @@ export class RegExMatch extends RefCounted{
     
   }
   get_strings() {
+    RegExMatch.init_method_get_strings();
     return _call_native_mb_ret(
-      RegExMatch._bindings.method_get_strings,
+      RegExMatch.#_bindings.method_get_strings,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -144,8 +155,9 @@ export class RegExMatch extends RefCounted{
     
   }
   get_string(_name) {
+    RegExMatch.init_method_get_string();
     return _call_native_mb_ret(
-      RegExMatch._bindings.method_get_string,
+      RegExMatch.#_bindings.method_get_string,
       this._owner,
 			Variant.Type.STRING,
     
@@ -154,19 +166,23 @@ export class RegExMatch extends RefCounted{
     
   }
   get_start(_name) {
+    RegExMatch.init_method_get_start();
     return _call_native_mb_ret(
-      RegExMatch._bindings.method_get_start,
+      RegExMatch.#_bindings.method_get_start,
       this._owner,
 			Variant.Type.INT,
+    
       _name
     );
     
   }
   get_end(_name) {
+    RegExMatch.init_method_get_end();
     return _call_native_mb_ret(
-      RegExMatch._bindings.method_get_end,
+      RegExMatch.#_bindings.method_get_end,
       this._owner,
 			Variant.Type.INT,
+    
       _name
     );
     
@@ -182,8 +198,4 @@ get strings () {
   return this.get_strings();
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

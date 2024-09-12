@@ -1,8 +1,7 @@
 import * as internal from '__internal__';
-import { PackedVector3Array } from '@js_godot/variant/packed_vector3_array'
-import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { Shape3D } from '@js_godot/classes/shape3d'
+import { StringName } from '@js_godot/variant/string_name'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -18,7 +17,7 @@ class _MethodBindings {
 }
 export class ConcavePolygonShape3D extends Shape3D{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -28,61 +27,66 @@ export class ConcavePolygonShape3D extends Shape3D{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_faces() {
+    if (!this.#_bindings.method_set_faces) {
       let classname = new StringName("ConcavePolygonShape3D");
       let methodname = new StringName("set_faces");
-      this._bindings.method_set_faces = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_faces = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         334873810
       );
     }
-    {
+  }
+  static init_method_get_faces() {
+    if (!this.#_bindings.method_get_faces) {
       let classname = new StringName("ConcavePolygonShape3D");
       let methodname = new StringName("get_faces");
-      this._bindings.method_get_faces = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_faces = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         497664490
       );
     }
-    {
+  }
+  static init_method_set_backface_collision_enabled() {
+    if (!this.#_bindings.method_set_backface_collision_enabled) {
       let classname = new StringName("ConcavePolygonShape3D");
       let methodname = new StringName("set_backface_collision_enabled");
-      this._bindings.method_set_backface_collision_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_backface_collision_enabled = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_is_backface_collision_enabled() {
+    if (!this.#_bindings.method_is_backface_collision_enabled) {
       let classname = new StringName("ConcavePolygonShape3D");
       let methodname = new StringName("is_backface_collision_enabled");
-      this._bindings.method_is_backface_collision_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_backface_collision_enabled = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
   }
+
+  
   
   set_faces(_faces) {
+    ConcavePolygonShape3D.init_method_set_faces();
     return _call_native_mb_no_ret(
-      ConcavePolygonShape3D._bindings.method_set_faces,
+      ConcavePolygonShape3D.#_bindings.method_set_faces,
       this._owner,
       _faces
     );
     
   }
   get_faces() {
+    ConcavePolygonShape3D.init_method_get_faces();
     return _call_native_mb_ret(
-      ConcavePolygonShape3D._bindings.method_get_faces,
+      ConcavePolygonShape3D.#_bindings.method_get_faces,
       this._owner,
 			Variant.Type.PACKED_VECTOR3_ARRAY,
     
@@ -91,18 +95,21 @@ export class ConcavePolygonShape3D extends Shape3D{
     
   }
   set_backface_collision_enabled(_enabled) {
+    ConcavePolygonShape3D.init_method_set_backface_collision_enabled();
     return _call_native_mb_no_ret(
-      ConcavePolygonShape3D._bindings.method_set_backface_collision_enabled,
+      ConcavePolygonShape3D.#_bindings.method_set_backface_collision_enabled,
       this._owner,
       _enabled
     );
     
   }
   is_backface_collision_enabled() {
+    ConcavePolygonShape3D.init_method_is_backface_collision_enabled();
     return _call_native_mb_ret(
-      ConcavePolygonShape3D._bindings.method_is_backface_collision_enabled,
+      ConcavePolygonShape3D.#_bindings.method_is_backface_collision_enabled,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
@@ -121,8 +128,4 @@ set backface_collision (new_value) {
   this.set_backface_collision_enabled(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

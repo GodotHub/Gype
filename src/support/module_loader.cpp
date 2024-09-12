@@ -11,14 +11,14 @@ using namespace godot;
 JSModuleDef *module_loader(JSContext *ctx, const char *module_name, void *opaque) {
 	char filepath[1024];
 	sprintf(filepath, "%s.js", module_name);
-	printf("%s\n", filepath);
+	// printf("%s\n", filepath);
 	String path = godot::String(filepath);
 	if (path.contains("@js_godot/")) {
 		path = path.replace("@js_godot", "res://addons/gype/js_godot");
 	} else if (path.contains("@src/")) {
 		path = path.replace("@src", "res://src");
 	}
-	UtilityFunctions::print(path);
+	// UtilityFunctions::print(path);
 	Ref<JavaScript> script = godot::ResourceLoader::get_singleton()->load(path);
 
 	if (script.is_null()) {

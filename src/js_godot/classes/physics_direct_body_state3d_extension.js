@@ -1,11 +1,7 @@
 import * as internal from '__internal__';
-import { RID } from '@js_godot/variant/rid'
 import { PhysicsDirectBodyState3D } from '@js_godot/classes/physics_direct_body_state3d'
-import { Transform3D } from '@js_godot/variant/transform3d'
-import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
-import { Vector3 } from '@js_godot/variant/vector3'
-import { Basis } from '@js_godot/variant/basis'
+import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -17,7 +13,7 @@ class _MethodBindings {
 }
 export class PhysicsDirectBodyState3DExtension extends PhysicsDirectBodyState3D{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -27,13 +23,8 @@ export class PhysicsDirectBodyState3DExtension extends PhysicsDirectBodyState3D{
       super(godot_object);
     }
   }
+
   
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-  }
   
   _get_total_gravity() {
   }
@@ -129,8 +120,4 @@ export class PhysicsDirectBodyState3DExtension extends PhysicsDirectBodyState3D{
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

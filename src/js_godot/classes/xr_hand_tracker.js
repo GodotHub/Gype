@@ -1,9 +1,7 @@
 import * as internal from '__internal__';
-import { XRPositionalTracker } from '@js_godot/classes/xr_positional_tracker'
-import { Transform3D } from '@js_godot/variant/transform3d'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
-import { Vector3 } from '@js_godot/variant/vector3'
+import { XRPositionalTracker } from '@js_godot/classes/xr_positional_tracker'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -29,7 +27,7 @@ class _MethodBindings {
 }
 export class XRHandTracker extends XRPositionalTracker{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -39,202 +37,235 @@ export class XRHandTracker extends XRPositionalTracker{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_has_tracking_data() {
+    if (!this.#_bindings.method_set_has_tracking_data) {
       let classname = new StringName("XRHandTracker");
       let methodname = new StringName("set_has_tracking_data");
-      this._bindings.method_set_has_tracking_data = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_has_tracking_data = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_get_has_tracking_data() {
+    if (!this.#_bindings.method_get_has_tracking_data) {
       let classname = new StringName("XRHandTracker");
       let methodname = new StringName("get_has_tracking_data");
-      this._bindings.method_get_has_tracking_data = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_has_tracking_data = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_set_hand_tracking_source() {
+    if (!this.#_bindings.method_set_hand_tracking_source) {
       let classname = new StringName("XRHandTracker");
       let methodname = new StringName("set_hand_tracking_source");
-      this._bindings.method_set_hand_tracking_source = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_hand_tracking_source = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2958308861
       );
     }
-    {
+  }
+  static init_method_get_hand_tracking_source() {
+    if (!this.#_bindings.method_get_hand_tracking_source) {
       let classname = new StringName("XRHandTracker");
       let methodname = new StringName("get_hand_tracking_source");
-      this._bindings.method_get_hand_tracking_source = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_hand_tracking_source = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2475045250
       );
     }
-    {
+  }
+  static init_method_set_hand_joint_flags() {
+    if (!this.#_bindings.method_set_hand_joint_flags) {
       let classname = new StringName("XRHandTracker");
       let methodname = new StringName("set_hand_joint_flags");
-      this._bindings.method_set_hand_joint_flags = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_hand_joint_flags = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3028437365
       );
     }
-    {
+  }
+  static init_method_get_hand_joint_flags() {
+    if (!this.#_bindings.method_get_hand_joint_flags) {
       let classname = new StringName("XRHandTracker");
       let methodname = new StringName("get_hand_joint_flags");
-      this._bindings.method_get_hand_joint_flags = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_hand_joint_flags = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1730972401
       );
     }
-    {
+  }
+  static init_method_set_hand_joint_transform() {
+    if (!this.#_bindings.method_set_hand_joint_transform) {
       let classname = new StringName("XRHandTracker");
       let methodname = new StringName("set_hand_joint_transform");
-      this._bindings.method_set_hand_joint_transform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_hand_joint_transform = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2529959613
       );
     }
-    {
+  }
+  static init_method_get_hand_joint_transform() {
+    if (!this.#_bindings.method_get_hand_joint_transform) {
       let classname = new StringName("XRHandTracker");
       let methodname = new StringName("get_hand_joint_transform");
-      this._bindings.method_get_hand_joint_transform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_hand_joint_transform = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1090840196
       );
     }
-    {
+  }
+  static init_method_set_hand_joint_radius() {
+    if (!this.#_bindings.method_set_hand_joint_radius) {
       let classname = new StringName("XRHandTracker");
       let methodname = new StringName("set_hand_joint_radius");
-      this._bindings.method_set_hand_joint_radius = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_hand_joint_radius = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2723659615
       );
     }
-    {
+  }
+  static init_method_get_hand_joint_radius() {
+    if (!this.#_bindings.method_get_hand_joint_radius) {
       let classname = new StringName("XRHandTracker");
       let methodname = new StringName("get_hand_joint_radius");
-      this._bindings.method_get_hand_joint_radius = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_hand_joint_radius = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3400025734
       );
     }
-    {
+  }
+  static init_method_set_hand_joint_linear_velocity() {
+    if (!this.#_bindings.method_set_hand_joint_linear_velocity) {
       let classname = new StringName("XRHandTracker");
       let methodname = new StringName("set_hand_joint_linear_velocity");
-      this._bindings.method_set_hand_joint_linear_velocity = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_hand_joint_linear_velocity = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1978646737
       );
     }
-    {
+  }
+  static init_method_get_hand_joint_linear_velocity() {
+    if (!this.#_bindings.method_get_hand_joint_linear_velocity) {
       let classname = new StringName("XRHandTracker");
       let methodname = new StringName("get_hand_joint_linear_velocity");
-      this._bindings.method_get_hand_joint_linear_velocity = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        547240792
-      );
-    }
-    {
-      let classname = new StringName("XRHandTracker");
-      let methodname = new StringName("set_hand_joint_angular_velocity");
-      this._bindings.method_set_hand_joint_angular_velocity = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1978646737
-      );
-    }
-    {
-      let classname = new StringName("XRHandTracker");
-      let methodname = new StringName("get_hand_joint_angular_velocity");
-      this._bindings.method_get_hand_joint_angular_velocity = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_hand_joint_linear_velocity = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         547240792
       );
     }
   }
+  static init_method_set_hand_joint_angular_velocity() {
+    if (!this.#_bindings.method_set_hand_joint_angular_velocity) {
+      let classname = new StringName("XRHandTracker");
+      let methodname = new StringName("set_hand_joint_angular_velocity");
+      this.#_bindings.method_set_hand_joint_angular_velocity = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1978646737
+      );
+    }
+  }
+  static init_method_get_hand_joint_angular_velocity() {
+    if (!this.#_bindings.method_get_hand_joint_angular_velocity) {
+      let classname = new StringName("XRHandTracker");
+      let methodname = new StringName("get_hand_joint_angular_velocity");
+      this.#_bindings.method_get_hand_joint_angular_velocity = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        547240792
+      );
+    }
+  }
+
+  
   
   set_has_tracking_data(_has_data) {
+    XRHandTracker.init_method_set_has_tracking_data();
     return _call_native_mb_no_ret(
-      XRHandTracker._bindings.method_set_has_tracking_data,
+      XRHandTracker.#_bindings.method_set_has_tracking_data,
       this._owner,
       _has_data
     );
     
   }
   get_has_tracking_data() {
+    XRHandTracker.init_method_get_has_tracking_data();
     return _call_native_mb_ret(
-      XRHandTracker._bindings.method_get_has_tracking_data,
+      XRHandTracker.#_bindings.method_get_has_tracking_data,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_hand_tracking_source(_source) {
+    XRHandTracker.init_method_set_hand_tracking_source();
     return _call_native_mb_no_ret(
-      XRHandTracker._bindings.method_set_hand_tracking_source,
+      XRHandTracker.#_bindings.method_set_hand_tracking_source,
       this._owner,
       _source
     );
     
   }
   get_hand_tracking_source() {
+    XRHandTracker.init_method_get_hand_tracking_source();
     return _call_native_mb_ret(
-      XRHandTracker._bindings.method_get_hand_tracking_source,
+      XRHandTracker.#_bindings.method_get_hand_tracking_source,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_hand_joint_flags(_joint, _flags) {
+    XRHandTracker.init_method_set_hand_joint_flags();
     return _call_native_mb_no_ret(
-      XRHandTracker._bindings.method_set_hand_joint_flags,
+      XRHandTracker.#_bindings.method_set_hand_joint_flags,
       this._owner,
       _joint, _flags
     );
     
   }
   get_hand_joint_flags(_joint) {
+    XRHandTracker.init_method_get_hand_joint_flags();
     return _call_native_mb_ret(
-      XRHandTracker._bindings.method_get_hand_joint_flags,
+      XRHandTracker.#_bindings.method_get_hand_joint_flags,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       _joint
     );
     
   }
   set_hand_joint_transform(_joint, _transform) {
+    XRHandTracker.init_method_set_hand_joint_transform();
     return _call_native_mb_no_ret(
-      XRHandTracker._bindings.method_set_hand_joint_transform,
+      XRHandTracker.#_bindings.method_set_hand_joint_transform,
       this._owner,
       _joint, _transform
     );
     
   }
   get_hand_joint_transform(_joint) {
+    XRHandTracker.init_method_get_hand_joint_transform();
     return _call_native_mb_ret(
-      XRHandTracker._bindings.method_get_hand_joint_transform,
+      XRHandTracker.#_bindings.method_get_hand_joint_transform,
       this._owner,
 			Variant.Type.TRANSFORM3D,
     
@@ -243,33 +274,38 @@ export class XRHandTracker extends XRPositionalTracker{
     
   }
   set_hand_joint_radius(_joint, _radius) {
+    XRHandTracker.init_method_set_hand_joint_radius();
     return _call_native_mb_no_ret(
-      XRHandTracker._bindings.method_set_hand_joint_radius,
+      XRHandTracker.#_bindings.method_set_hand_joint_radius,
       this._owner,
       _joint, _radius
     );
     
   }
   get_hand_joint_radius(_joint) {
+    XRHandTracker.init_method_get_hand_joint_radius();
     return _call_native_mb_ret(
-      XRHandTracker._bindings.method_get_hand_joint_radius,
+      XRHandTracker.#_bindings.method_get_hand_joint_radius,
       this._owner,
 			Variant.Type.FLOAT,
+    
       _joint
     );
     
   }
   set_hand_joint_linear_velocity(_joint, _linear_velocity) {
+    XRHandTracker.init_method_set_hand_joint_linear_velocity();
     return _call_native_mb_no_ret(
-      XRHandTracker._bindings.method_set_hand_joint_linear_velocity,
+      XRHandTracker.#_bindings.method_set_hand_joint_linear_velocity,
       this._owner,
       _joint, _linear_velocity
     );
     
   }
   get_hand_joint_linear_velocity(_joint) {
+    XRHandTracker.init_method_get_hand_joint_linear_velocity();
     return _call_native_mb_ret(
-      XRHandTracker._bindings.method_get_hand_joint_linear_velocity,
+      XRHandTracker.#_bindings.method_get_hand_joint_linear_velocity,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -278,16 +314,18 @@ export class XRHandTracker extends XRPositionalTracker{
     
   }
   set_hand_joint_angular_velocity(_joint, _angular_velocity) {
+    XRHandTracker.init_method_set_hand_joint_angular_velocity();
     return _call_native_mb_no_ret(
-      XRHandTracker._bindings.method_set_hand_joint_angular_velocity,
+      XRHandTracker.#_bindings.method_set_hand_joint_angular_velocity,
       this._owner,
       _joint, _angular_velocity
     );
     
   }
   get_hand_joint_angular_velocity(_joint) {
+    XRHandTracker.init_method_get_hand_joint_angular_velocity();
     return _call_native_mb_ret(
-      XRHandTracker._bindings.method_get_hand_joint_angular_velocity,
+      XRHandTracker.#_bindings.method_get_hand_joint_angular_velocity,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -351,9 +389,5 @@ set hand_tracking_source (new_value) {
     HAND_JOINT_FLAG_POSITION_TRACKED: 8,
     HAND_JOINT_FLAG_LINEAR_VELOCITY_VALID: 16,
     HAND_JOINT_FLAG_ANGULAR_VELOCITY_VALID: 32,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

@@ -1,11 +1,7 @@
 import * as internal from '__internal__';
-import { Dictionary } from '@js_godot/variant/dictionary'
-import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
-import { StringName } from '@js_godot/variant/string_name'
-import { PackedStringArray } from '@js_godot/variant/packed_string_array'
-import { RefCounted } from '@js_godot/classes/ref_counted'
-import { GDString } from '@js_godot/variant/gd_string'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { RefCounted } from '@js_godot/classes/ref_counted'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -39,7 +35,7 @@ class _MethodBindings {
 }
 export class HTTPClient extends RefCounted{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -49,294 +45,349 @@ export class HTTPClient extends RefCounted{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_connect_to_host() {
+    if (!this.#_bindings.method_connect_to_host) {
       let classname = new StringName("HTTPClient");
       let methodname = new StringName("connect_to_host");
-      this._bindings.method_connect_to_host = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_connect_to_host = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         504540374
       );
     }
-    {
+  }
+  static init_method_set_connection() {
+    if (!this.#_bindings.method_set_connection) {
       let classname = new StringName("HTTPClient");
       let methodname = new StringName("set_connection");
-      this._bindings.method_set_connection = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_connection = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3281897016
       );
     }
-    {
+  }
+  static init_method_get_connection() {
+    if (!this.#_bindings.method_get_connection) {
       let classname = new StringName("HTTPClient");
       let methodname = new StringName("get_connection");
-      this._bindings.method_get_connection = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_connection = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2741655269
       );
     }
-    {
+  }
+  static init_method_request_raw() {
+    if (!this.#_bindings.method_request_raw) {
       let classname = new StringName("HTTPClient");
       let methodname = new StringName("request_raw");
-      this._bindings.method_request_raw = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_request_raw = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         540161961
       );
     }
-    {
+  }
+  static init_method_request() {
+    if (!this.#_bindings.method_request) {
       let classname = new StringName("HTTPClient");
       let methodname = new StringName("request");
-      this._bindings.method_request = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_request = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3778990155
       );
     }
-    {
+  }
+  static init_method_close() {
+    if (!this.#_bindings.method_close) {
       let classname = new StringName("HTTPClient");
       let methodname = new StringName("close");
-      this._bindings.method_close = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_close = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3218959716
       );
     }
-    {
+  }
+  static init_method_has_response() {
+    if (!this.#_bindings.method_has_response) {
       let classname = new StringName("HTTPClient");
       let methodname = new StringName("has_response");
-      this._bindings.method_has_response = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_has_response = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_is_response_chunked() {
+    if (!this.#_bindings.method_is_response_chunked) {
       let classname = new StringName("HTTPClient");
       let methodname = new StringName("is_response_chunked");
-      this._bindings.method_is_response_chunked = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_response_chunked = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_get_response_code() {
+    if (!this.#_bindings.method_get_response_code) {
       let classname = new StringName("HTTPClient");
       let methodname = new StringName("get_response_code");
-      this._bindings.method_get_response_code = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_response_code = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
-    {
+  }
+  static init_method_get_response_headers() {
+    if (!this.#_bindings.method_get_response_headers) {
       let classname = new StringName("HTTPClient");
       let methodname = new StringName("get_response_headers");
-      this._bindings.method_get_response_headers = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_response_headers = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2981934095
       );
     }
-    {
+  }
+  static init_method_get_response_headers_as_dictionary() {
+    if (!this.#_bindings.method_get_response_headers_as_dictionary) {
       let classname = new StringName("HTTPClient");
       let methodname = new StringName("get_response_headers_as_dictionary");
-      this._bindings.method_get_response_headers_as_dictionary = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_response_headers_as_dictionary = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2382534195
       );
     }
-    {
+  }
+  static init_method_get_response_body_length() {
+    if (!this.#_bindings.method_get_response_body_length) {
       let classname = new StringName("HTTPClient");
       let methodname = new StringName("get_response_body_length");
-      this._bindings.method_get_response_body_length = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_response_body_length = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
-    {
+  }
+  static init_method_read_response_body_chunk() {
+    if (!this.#_bindings.method_read_response_body_chunk) {
       let classname = new StringName("HTTPClient");
       let methodname = new StringName("read_response_body_chunk");
-      this._bindings.method_read_response_body_chunk = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_read_response_body_chunk = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2115431945
       );
     }
-    {
+  }
+  static init_method_set_read_chunk_size() {
+    if (!this.#_bindings.method_set_read_chunk_size) {
       let classname = new StringName("HTTPClient");
       let methodname = new StringName("set_read_chunk_size");
-      this._bindings.method_set_read_chunk_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_read_chunk_size = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1286410249
       );
     }
-    {
+  }
+  static init_method_get_read_chunk_size() {
+    if (!this.#_bindings.method_get_read_chunk_size) {
       let classname = new StringName("HTTPClient");
       let methodname = new StringName("get_read_chunk_size");
-      this._bindings.method_get_read_chunk_size = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_read_chunk_size = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
-    {
+  }
+  static init_method_set_blocking_mode() {
+    if (!this.#_bindings.method_set_blocking_mode) {
       let classname = new StringName("HTTPClient");
       let methodname = new StringName("set_blocking_mode");
-      this._bindings.method_set_blocking_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_blocking_mode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_is_blocking_mode_enabled() {
+    if (!this.#_bindings.method_is_blocking_mode_enabled) {
       let classname = new StringName("HTTPClient");
       let methodname = new StringName("is_blocking_mode_enabled");
-      this._bindings.method_is_blocking_mode_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_blocking_mode_enabled = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_get_status() {
+    if (!this.#_bindings.method_get_status) {
       let classname = new StringName("HTTPClient");
       let methodname = new StringName("get_status");
-      this._bindings.method_get_status = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_status = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1426656811
       );
     }
-    {
+  }
+  static init_method_poll() {
+    if (!this.#_bindings.method_poll) {
       let classname = new StringName("HTTPClient");
       let methodname = new StringName("poll");
-      this._bindings.method_poll = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_poll = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         166280745
       );
     }
-    {
+  }
+  static init_method_set_http_proxy() {
+    if (!this.#_bindings.method_set_http_proxy) {
       let classname = new StringName("HTTPClient");
       let methodname = new StringName("set_http_proxy");
-      this._bindings.method_set_http_proxy = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_http_proxy = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2956805083
       );
     }
-    {
+  }
+  static init_method_set_https_proxy() {
+    if (!this.#_bindings.method_set_https_proxy) {
       let classname = new StringName("HTTPClient");
       let methodname = new StringName("set_https_proxy");
-      this._bindings.method_set_https_proxy = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_https_proxy = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2956805083
       );
     }
-    {
+  }
+  static init_method_query_string_from_dict() {
+    if (!this.#_bindings.method_query_string_from_dict) {
       let classname = new StringName("HTTPClient");
       let methodname = new StringName("query_string_from_dict");
-      this._bindings.method_query_string_from_dict = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_query_string_from_dict = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2538086567
       );
     }
   }
+
+  
   
   connect_to_host(_host, _port, _tls_options) {
+    HTTPClient.init_method_connect_to_host();
     return _call_native_mb_ret(
-      HTTPClient._bindings.method_connect_to_host,
+      HTTPClient.#_bindings.method_connect_to_host,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       _host, _port, _tls_options
     );
     
   }
   set_connection(_connection) {
+    HTTPClient.init_method_set_connection();
     return _call_native_mb_no_ret(
-      HTTPClient._bindings.method_set_connection,
+      HTTPClient.#_bindings.method_set_connection,
       this._owner,
       _connection
     );
     
   }
   get_connection() {
+    HTTPClient.init_method_get_connection();
     return _call_native_mb_ret(
-      HTTPClient._bindings.method_get_connection,
+      HTTPClient.#_bindings.method_get_connection,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
   }
   request_raw(_method, _url, _headers, _body) {
+    HTTPClient.init_method_request_raw();
     return _call_native_mb_ret(
-      HTTPClient._bindings.method_request_raw,
+      HTTPClient.#_bindings.method_request_raw,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       _method, _url, _headers, _body
     );
     
   }
   request(_method, _url, _headers, _body) {
+    HTTPClient.init_method_request();
     return _call_native_mb_ret(
-      HTTPClient._bindings.method_request,
+      HTTPClient.#_bindings.method_request,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       _method, _url, _headers, _body
     );
     
   }
   close() {
+    HTTPClient.init_method_close();
     return _call_native_mb_no_ret(
-      HTTPClient._bindings.method_close,
+      HTTPClient.#_bindings.method_close,
       this._owner,
       
     );
     
   }
   has_response() {
+    HTTPClient.init_method_has_response();
     return _call_native_mb_ret(
-      HTTPClient._bindings.method_has_response,
+      HTTPClient.#_bindings.method_has_response,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   is_response_chunked() {
+    HTTPClient.init_method_is_response_chunked();
     return _call_native_mb_ret(
-      HTTPClient._bindings.method_is_response_chunked,
+      HTTPClient.#_bindings.method_is_response_chunked,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   get_response_code() {
+    HTTPClient.init_method_get_response_code();
     return _call_native_mb_ret(
-      HTTPClient._bindings.method_get_response_code,
+      HTTPClient.#_bindings.method_get_response_code,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   get_response_headers() {
+    HTTPClient.init_method_get_response_headers();
     return _call_native_mb_ret(
-      HTTPClient._bindings.method_get_response_headers,
+      HTTPClient.#_bindings.method_get_response_headers,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -345,8 +396,9 @@ export class HTTPClient extends RefCounted{
     
   }
   get_response_headers_as_dictionary() {
+    HTTPClient.init_method_get_response_headers_as_dictionary();
     return _call_native_mb_ret(
-      HTTPClient._bindings.method_get_response_headers_as_dictionary,
+      HTTPClient.#_bindings.method_get_response_headers_as_dictionary,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -355,17 +407,20 @@ export class HTTPClient extends RefCounted{
     
   }
   get_response_body_length() {
+    HTTPClient.init_method_get_response_body_length();
     return _call_native_mb_ret(
-      HTTPClient._bindings.method_get_response_body_length,
+      HTTPClient.#_bindings.method_get_response_body_length,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   read_response_body_chunk() {
+    HTTPClient.init_method_read_response_body_chunk();
     return _call_native_mb_ret(
-      HTTPClient._bindings.method_read_response_body_chunk,
+      HTTPClient.#_bindings.method_read_response_body_chunk,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -374,76 +429,89 @@ export class HTTPClient extends RefCounted{
     
   }
   set_read_chunk_size(_bytes) {
+    HTTPClient.init_method_set_read_chunk_size();
     return _call_native_mb_no_ret(
-      HTTPClient._bindings.method_set_read_chunk_size,
+      HTTPClient.#_bindings.method_set_read_chunk_size,
       this._owner,
       _bytes
     );
     
   }
   get_read_chunk_size() {
+    HTTPClient.init_method_get_read_chunk_size();
     return _call_native_mb_ret(
-      HTTPClient._bindings.method_get_read_chunk_size,
+      HTTPClient.#_bindings.method_get_read_chunk_size,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_blocking_mode(_enabled) {
+    HTTPClient.init_method_set_blocking_mode();
     return _call_native_mb_no_ret(
-      HTTPClient._bindings.method_set_blocking_mode,
+      HTTPClient.#_bindings.method_set_blocking_mode,
       this._owner,
       _enabled
     );
     
   }
   is_blocking_mode_enabled() {
+    HTTPClient.init_method_is_blocking_mode_enabled();
     return _call_native_mb_ret(
-      HTTPClient._bindings.method_is_blocking_mode_enabled,
+      HTTPClient.#_bindings.method_is_blocking_mode_enabled,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   get_status() {
+    HTTPClient.init_method_get_status();
     return _call_native_mb_ret(
-      HTTPClient._bindings.method_get_status,
+      HTTPClient.#_bindings.method_get_status,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   poll() {
+    HTTPClient.init_method_poll();
     return _call_native_mb_ret(
-      HTTPClient._bindings.method_poll,
+      HTTPClient.#_bindings.method_poll,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_http_proxy(_host, _port) {
+    HTTPClient.init_method_set_http_proxy();
     return _call_native_mb_no_ret(
-      HTTPClient._bindings.method_set_http_proxy,
+      HTTPClient.#_bindings.method_set_http_proxy,
       this._owner,
       _host, _port
     );
     
   }
   set_https_proxy(_host, _port) {
+    HTTPClient.init_method_set_https_proxy();
     return _call_native_mb_no_ret(
-      HTTPClient._bindings.method_set_https_proxy,
+      HTTPClient.#_bindings.method_set_https_proxy,
       this._owner,
       _host, _port
     );
     
   }
   query_string_from_dict(_fields) {
+    HTTPClient.init_method_query_string_from_dict();
     return _call_native_mb_ret(
-      HTTPClient._bindings.method_query_string_from_dict,
+      HTTPClient.#_bindings.method_query_string_from_dict,
       this._owner,
 			Variant.Type.STRING,
     
@@ -557,9 +625,5 @@ set read_chunk_size (new_value) {
     RESPONSE_LOOP_DETECTED: 508,
     RESPONSE_NOT_EXTENDED: 510,
     RESPONSE_NETWORK_AUTH_REQUIRED: 511,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

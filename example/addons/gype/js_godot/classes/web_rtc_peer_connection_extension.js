@@ -1,8 +1,6 @@
 import * as internal from '__internal__';
-import { Dictionary } from '@js_godot/variant/dictionary'
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
-import { GDString } from '@js_godot/variant/gd_string'
+import { StringName } from '@js_godot/variant/string_name'
 import { WebRTCPeerConnection } from '@js_godot/classes/web_rtc_peer_connection'
 import {
   call_utility_ret,
@@ -15,7 +13,7 @@ class _MethodBindings {
 }
 export class WebRTCPeerConnectionExtension extends WebRTCPeerConnection{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -25,13 +23,8 @@ export class WebRTCPeerConnectionExtension extends WebRTCPeerConnection{
       super(godot_object);
     }
   }
+
   
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-  }
   
   _get_connection_state() {
   }
@@ -57,8 +50,4 @@ export class WebRTCPeerConnectionExtension extends WebRTCPeerConnection{
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

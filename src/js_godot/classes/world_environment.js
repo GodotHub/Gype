@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { Node } from '@js_godot/classes/node'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Node } from '@js_godot/classes/node'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -19,7 +19,7 @@ class _MethodBindings {
 }
 export class WorldEnvironment extends Node{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -29,115 +29,128 @@ export class WorldEnvironment extends Node{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_environment() {
+    if (!this.#_bindings.method_set_environment) {
       let classname = new StringName("WorldEnvironment");
       let methodname = new StringName("set_environment");
-      this._bindings.method_set_environment = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_environment = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         4143518816
       );
     }
-    {
+  }
+  static init_method_get_environment() {
+    if (!this.#_bindings.method_get_environment) {
       let classname = new StringName("WorldEnvironment");
       let methodname = new StringName("get_environment");
-      this._bindings.method_get_environment = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_environment = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3082064660
       );
     }
-    {
+  }
+  static init_method_set_camera_attributes() {
+    if (!this.#_bindings.method_set_camera_attributes) {
       let classname = new StringName("WorldEnvironment");
       let methodname = new StringName("set_camera_attributes");
-      this._bindings.method_set_camera_attributes = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_camera_attributes = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2817810567
       );
     }
-    {
+  }
+  static init_method_get_camera_attributes() {
+    if (!this.#_bindings.method_get_camera_attributes) {
       let classname = new StringName("WorldEnvironment");
       let methodname = new StringName("get_camera_attributes");
-      this._bindings.method_get_camera_attributes = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_camera_attributes = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3921283215
       );
     }
-    {
+  }
+  static init_method_set_compositor() {
+    if (!this.#_bindings.method_set_compositor) {
       let classname = new StringName("WorldEnvironment");
       let methodname = new StringName("set_compositor");
-      this._bindings.method_set_compositor = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_compositor = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1586754307
       );
     }
-    {
+  }
+  static init_method_get_compositor() {
+    if (!this.#_bindings.method_get_compositor) {
       let classname = new StringName("WorldEnvironment");
       let methodname = new StringName("get_compositor");
-      this._bindings.method_get_compositor = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_compositor = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3647707413
       );
     }
   }
+
+  
   
   set_environment(_env) {
+    WorldEnvironment.init_method_set_environment();
     return _call_native_mb_no_ret(
-      WorldEnvironment._bindings.method_set_environment,
+      WorldEnvironment.#_bindings.method_set_environment,
       this._owner,
       _env
     );
     
   }
   get_environment() {
+    WorldEnvironment.init_method_get_environment();
     return _call_native_mb_ret(
-      WorldEnvironment._bindings.method_get_environment,
+      WorldEnvironment.#_bindings.method_get_environment,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
   }
   set_camera_attributes(_camera_attributes) {
+    WorldEnvironment.init_method_set_camera_attributes();
     return _call_native_mb_no_ret(
-      WorldEnvironment._bindings.method_set_camera_attributes,
+      WorldEnvironment.#_bindings.method_set_camera_attributes,
       this._owner,
       _camera_attributes
     );
     
   }
   get_camera_attributes() {
+    WorldEnvironment.init_method_get_camera_attributes();
     return _call_native_mb_ret(
-      WorldEnvironment._bindings.method_get_camera_attributes,
+      WorldEnvironment.#_bindings.method_get_camera_attributes,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
   }
   set_compositor(_compositor) {
+    WorldEnvironment.init_method_set_compositor();
     return _call_native_mb_no_ret(
-      WorldEnvironment._bindings.method_set_compositor,
+      WorldEnvironment.#_bindings.method_set_compositor,
       this._owner,
       _compositor
     );
     
   }
   get_compositor() {
+    WorldEnvironment.init_method_get_compositor();
     return _call_native_mb_ret(
-      WorldEnvironment._bindings.method_get_compositor,
+      WorldEnvironment.#_bindings.method_get_compositor,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
@@ -162,8 +175,4 @@ set compositor (new_value) {
   this.set_compositor(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

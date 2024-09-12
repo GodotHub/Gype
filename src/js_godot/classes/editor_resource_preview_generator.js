@@ -1,10 +1,7 @@
 import * as internal from '__internal__';
-import { Vector2i } from '@js_godot/variant/vector2i'
-import { RefCounted } from '@js_godot/classes/ref_counted'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
-import { Dictionary } from '@js_godot/variant/dictionary'
-import { GDString } from '@js_godot/variant/gd_string'
+import { RefCounted } from '@js_godot/classes/ref_counted'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -16,7 +13,7 @@ class _MethodBindings {
 }
 export class EditorResourcePreviewGenerator extends RefCounted{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -26,13 +23,8 @@ export class EditorResourcePreviewGenerator extends RefCounted{
       super(godot_object);
     }
   }
+
   
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-  }
   
   _handles(_type) {
   }
@@ -46,8 +38,4 @@ export class EditorResourcePreviewGenerator extends RefCounted{
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

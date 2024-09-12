@@ -2,7 +2,6 @@ import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { WebRTCDataChannel } from '@js_godot/classes/web_rtc_data_channel'
-import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -14,7 +13,7 @@ class _MethodBindings {
 }
 export class WebRTCDataChannelExtension extends WebRTCDataChannel{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -24,13 +23,8 @@ export class WebRTCDataChannelExtension extends WebRTCDataChannel{
       super(godot_object);
     }
   }
+
   
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-  }
   
   _get_packet(_r_buffer, _r_buffer_size) {
   }
@@ -70,8 +64,4 @@ export class WebRTCDataChannelExtension extends WebRTCDataChannel{
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

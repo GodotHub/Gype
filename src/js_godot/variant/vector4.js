@@ -2,10 +2,12 @@ import * as internal from '__internal__'
 import {
   _call_builtin_constructor,
   _call_builtin_method_ptr_ret,
-  _call_builtin_method_ptr_no_ret
+  _call_builtin_method_ptr_no_ret,
+  _call_builtin_method_ptr_obj_ret,
 } from '@js_godot/core/builtin_ptrcall'
 import { Vector4i } from '@js_godot/variant/vector4i'
 import { StringName } from '@js_godot/variant/string_name'
+import { GodotObject } from "@js_godot/classes/godot_object";
 
 class _MethodBindings {
   from_variant_constructor
@@ -74,18 +76,20 @@ export class Vector4 {
   static #SIZE = 16
   opaque = new Uint8Array(Vector4.#SIZE)
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
-  constructor (from) {
-    if (!from) {
-      _call_builtin_constructor(Vector4._bindings.constructor_0, this)
-    }else if (from instanceof Vector4) {
-      _call_builtin_constructor(Vector4._bindings.constructor_1, this, [
+  constructor (value) {
+    if (!value) {
+      _call_builtin_constructor(Vector4.#_bindings.constructor_0, this)
+    } else if (arguments.length == 1&& arguments[0] instanceof Vector4) {
+      let from = arguments[0];
+      _call_builtin_constructor(Vector4.#_bindings.constructor_1, this, [
         from
       ])
-    }else if (from instanceof Vector4i) {
-      _call_builtin_constructor(Vector4._bindings.constructor_2, this, [
+    } else if (arguments.length == 1&& arguments[0] instanceof Vector4i) {
+      let from = arguments[0];
+      _call_builtin_constructor(Vector4.#_bindings.constructor_2, this, [
         from
       ])
     } else if (arguments.length == 4&& typeof arguments[0] == "number"&& typeof arguments[1] == "number"&& typeof arguments[2] == "number"&& typeof arguments[3] == "number") {
@@ -93,31 +97,33 @@ export class Vector4 {
       let y = arguments[1];
       let z = arguments[2];
       let w = arguments[3];
-      _call_builtin_constructor(Vector4._bindings.constructor_3, this, [
+      _call_builtin_constructor(Vector4.#_bindings.constructor_3, this, [
         x, y, z, w
       ])
-    } else if (from.constructor.name === "Variant") {
-      Vector4._bindings.from_variant_constructor(this.opaque, from.opaque)
+    } else if (value.constructor.name === "Variant") {
+      Vector4.#_bindings.from_variant_constructor(this.opaque, value.opaque)
+    } else if (value instanceof Uint8Array) {
+      this.opaque = value;
     } 
   }
   
   static __init_bindings_constructors_destructor () {
-    this._bindings.from_variant_constructor = internal.get_variant_to_type_constructor(
+    this.#_bindings.from_variant_constructor = internal.get_variant_to_type_constructor(
       12
     )
-    this._bindings.constructor_0 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_0 = internal.variant_get_ptr_constructor(
       12,
       0
     )
-    this._bindings.constructor_1 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_1 = internal.variant_get_ptr_constructor(
       12,
       1
     )
-    this._bindings.constructor_2 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_2 = internal.variant_get_ptr_constructor(
       12,
       2
     )
-    this._bindings.constructor_3 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_3 = internal.variant_get_ptr_constructor(
       12,
       3
     )
@@ -131,7 +137,7 @@ export class Vector4 {
     this.__init_bindings_constructors_destructor()
     {
       let _gde_name = new StringName('min_axis_index')
-      this._bindings.method_min_axis_index = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_min_axis_index = internal.variant_get_ptr_builtin_method(
         12,
         _gde_name.opaque,
         3173160232
@@ -139,7 +145,7 @@ export class Vector4 {
     }
     {
       let _gde_name = new StringName('max_axis_index')
-      this._bindings.method_max_axis_index = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_max_axis_index = internal.variant_get_ptr_builtin_method(
         12,
         _gde_name.opaque,
         3173160232
@@ -147,7 +153,7 @@ export class Vector4 {
     }
     {
       let _gde_name = new StringName('length')
-      this._bindings.method_length = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_length = internal.variant_get_ptr_builtin_method(
         12,
         _gde_name.opaque,
         466405837
@@ -155,7 +161,7 @@ export class Vector4 {
     }
     {
       let _gde_name = new StringName('length_squared')
-      this._bindings.method_length_squared = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_length_squared = internal.variant_get_ptr_builtin_method(
         12,
         _gde_name.opaque,
         466405837
@@ -163,7 +169,7 @@ export class Vector4 {
     }
     {
       let _gde_name = new StringName('abs')
-      this._bindings.method_abs = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_abs = internal.variant_get_ptr_builtin_method(
         12,
         _gde_name.opaque,
         80860099
@@ -171,7 +177,7 @@ export class Vector4 {
     }
     {
       let _gde_name = new StringName('sign')
-      this._bindings.method_sign = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_sign = internal.variant_get_ptr_builtin_method(
         12,
         _gde_name.opaque,
         80860099
@@ -179,7 +185,7 @@ export class Vector4 {
     }
     {
       let _gde_name = new StringName('floor')
-      this._bindings.method_floor = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_floor = internal.variant_get_ptr_builtin_method(
         12,
         _gde_name.opaque,
         80860099
@@ -187,7 +193,7 @@ export class Vector4 {
     }
     {
       let _gde_name = new StringName('ceil')
-      this._bindings.method_ceil = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_ceil = internal.variant_get_ptr_builtin_method(
         12,
         _gde_name.opaque,
         80860099
@@ -195,7 +201,7 @@ export class Vector4 {
     }
     {
       let _gde_name = new StringName('round')
-      this._bindings.method_round = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_round = internal.variant_get_ptr_builtin_method(
         12,
         _gde_name.opaque,
         80860099
@@ -203,7 +209,7 @@ export class Vector4 {
     }
     {
       let _gde_name = new StringName('lerp')
-      this._bindings.method_lerp = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_lerp = internal.variant_get_ptr_builtin_method(
         12,
         _gde_name.opaque,
         2329757942
@@ -211,7 +217,7 @@ export class Vector4 {
     }
     {
       let _gde_name = new StringName('cubic_interpolate')
-      this._bindings.method_cubic_interpolate = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_cubic_interpolate = internal.variant_get_ptr_builtin_method(
         12,
         _gde_name.opaque,
         726768410
@@ -219,7 +225,7 @@ export class Vector4 {
     }
     {
       let _gde_name = new StringName('cubic_interpolate_in_time')
-      this._bindings.method_cubic_interpolate_in_time = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_cubic_interpolate_in_time = internal.variant_get_ptr_builtin_method(
         12,
         _gde_name.opaque,
         681631873
@@ -227,7 +233,7 @@ export class Vector4 {
     }
     {
       let _gde_name = new StringName('posmod')
-      this._bindings.method_posmod = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_posmod = internal.variant_get_ptr_builtin_method(
         12,
         _gde_name.opaque,
         3129671720
@@ -235,7 +241,7 @@ export class Vector4 {
     }
     {
       let _gde_name = new StringName('posmodv')
-      this._bindings.method_posmodv = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_posmodv = internal.variant_get_ptr_builtin_method(
         12,
         _gde_name.opaque,
         2031281584
@@ -243,7 +249,7 @@ export class Vector4 {
     }
     {
       let _gde_name = new StringName('snapped')
-      this._bindings.method_snapped = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_snapped = internal.variant_get_ptr_builtin_method(
         12,
         _gde_name.opaque,
         2031281584
@@ -251,7 +257,7 @@ export class Vector4 {
     }
     {
       let _gde_name = new StringName('snappedf')
-      this._bindings.method_snappedf = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_snappedf = internal.variant_get_ptr_builtin_method(
         12,
         _gde_name.opaque,
         3129671720
@@ -259,7 +265,7 @@ export class Vector4 {
     }
     {
       let _gde_name = new StringName('clamp')
-      this._bindings.method_clamp = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_clamp = internal.variant_get_ptr_builtin_method(
         12,
         _gde_name.opaque,
         823915692
@@ -267,7 +273,7 @@ export class Vector4 {
     }
     {
       let _gde_name = new StringName('clampf')
-      this._bindings.method_clampf = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_clampf = internal.variant_get_ptr_builtin_method(
         12,
         _gde_name.opaque,
         4072091586
@@ -275,7 +281,7 @@ export class Vector4 {
     }
     {
       let _gde_name = new StringName('normalized')
-      this._bindings.method_normalized = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_normalized = internal.variant_get_ptr_builtin_method(
         12,
         _gde_name.opaque,
         80860099
@@ -283,7 +289,7 @@ export class Vector4 {
     }
     {
       let _gde_name = new StringName('is_normalized')
-      this._bindings.method_is_normalized = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_normalized = internal.variant_get_ptr_builtin_method(
         12,
         _gde_name.opaque,
         3918633141
@@ -291,7 +297,7 @@ export class Vector4 {
     }
     {
       let _gde_name = new StringName('direction_to')
-      this._bindings.method_direction_to = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_direction_to = internal.variant_get_ptr_builtin_method(
         12,
         _gde_name.opaque,
         2031281584
@@ -299,7 +305,7 @@ export class Vector4 {
     }
     {
       let _gde_name = new StringName('distance_to')
-      this._bindings.method_distance_to = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_distance_to = internal.variant_get_ptr_builtin_method(
         12,
         _gde_name.opaque,
         3770801042
@@ -307,7 +313,7 @@ export class Vector4 {
     }
     {
       let _gde_name = new StringName('distance_squared_to')
-      this._bindings.method_distance_squared_to = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_distance_squared_to = internal.variant_get_ptr_builtin_method(
         12,
         _gde_name.opaque,
         3770801042
@@ -315,7 +321,7 @@ export class Vector4 {
     }
     {
       let _gde_name = new StringName('dot')
-      this._bindings.method_dot = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_dot = internal.variant_get_ptr_builtin_method(
         12,
         _gde_name.opaque,
         3770801042
@@ -323,7 +329,7 @@ export class Vector4 {
     }
     {
       let _gde_name = new StringName('inverse')
-      this._bindings.method_inverse = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_inverse = internal.variant_get_ptr_builtin_method(
         12,
         _gde_name.opaque,
         80860099
@@ -331,7 +337,7 @@ export class Vector4 {
     }
     {
       let _gde_name = new StringName('is_equal_approx')
-      this._bindings.method_is_equal_approx = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_equal_approx = internal.variant_get_ptr_builtin_method(
         12,
         _gde_name.opaque,
         88913544
@@ -339,7 +345,7 @@ export class Vector4 {
     }
     {
       let _gde_name = new StringName('is_zero_approx')
-      this._bindings.method_is_zero_approx = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_zero_approx = internal.variant_get_ptr_builtin_method(
         12,
         _gde_name.opaque,
         3918633141
@@ -347,7 +353,7 @@ export class Vector4 {
     }
     {
       let _gde_name = new StringName('is_finite')
-      this._bindings.method_is_finite = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_finite = internal.variant_get_ptr_builtin_method(
         12,
         _gde_name.opaque,
         3918633141
@@ -355,7 +361,7 @@ export class Vector4 {
     }
     {
       let _gde_name = new StringName('min')
-      this._bindings.method_min = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_min = internal.variant_get_ptr_builtin_method(
         12,
         _gde_name.opaque,
         2031281584
@@ -363,7 +369,7 @@ export class Vector4 {
     }
     {
       let _gde_name = new StringName('minf')
-      this._bindings.method_minf = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_minf = internal.variant_get_ptr_builtin_method(
         12,
         _gde_name.opaque,
         3129671720
@@ -371,7 +377,7 @@ export class Vector4 {
     }
     {
       let _gde_name = new StringName('max')
-      this._bindings.method_max = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_max = internal.variant_get_ptr_builtin_method(
         12,
         _gde_name.opaque,
         2031281584
@@ -379,7 +385,7 @@ export class Vector4 {
     }
     {
       let _gde_name = new StringName('maxf')
-      this._bindings.method_maxf = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_maxf = internal.variant_get_ptr_builtin_method(
         12,
         _gde_name.opaque,
         3129671720
@@ -391,7 +397,7 @@ export class Vector4 {
   min_axis_index () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Vector4._bindings.method_min_axis_index,
+      Vector4.#_bindings.method_min_axis_index,
       this,
       2,
       []
@@ -401,7 +407,7 @@ export class Vector4 {
   max_axis_index () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Vector4._bindings.method_max_axis_index,
+      Vector4.#_bindings.method_max_axis_index,
       this,
       2,
       []
@@ -411,7 +417,7 @@ export class Vector4 {
   length () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Vector4._bindings.method_length,
+      Vector4.#_bindings.method_length,
       this,
       3,
       []
@@ -421,7 +427,7 @@ export class Vector4 {
   length_squared () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Vector4._bindings.method_length_squared,
+      Vector4.#_bindings.method_length_squared,
       this,
       3,
       []
@@ -431,7 +437,7 @@ export class Vector4 {
   abs () {
     let ret = new Vector4()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Vector4._bindings.method_abs,
+      Vector4.#_bindings.method_abs,
       this,
       12,
       []
@@ -441,7 +447,7 @@ export class Vector4 {
   sign () {
     let ret = new Vector4()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Vector4._bindings.method_sign,
+      Vector4.#_bindings.method_sign,
       this,
       12,
       []
@@ -451,7 +457,7 @@ export class Vector4 {
   floor () {
     let ret = new Vector4()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Vector4._bindings.method_floor,
+      Vector4.#_bindings.method_floor,
       this,
       12,
       []
@@ -461,7 +467,7 @@ export class Vector4 {
   ceil () {
     let ret = new Vector4()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Vector4._bindings.method_ceil,
+      Vector4.#_bindings.method_ceil,
       this,
       12,
       []
@@ -471,7 +477,7 @@ export class Vector4 {
   round () {
     let ret = new Vector4()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Vector4._bindings.method_round,
+      Vector4.#_bindings.method_round,
       this,
       12,
       []
@@ -481,7 +487,7 @@ export class Vector4 {
   lerp (_to, _weight) {
     let ret = new Vector4()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Vector4._bindings.method_lerp,
+      Vector4.#_bindings.method_lerp,
       this,
       12,
       [_to, _weight]
@@ -491,7 +497,7 @@ export class Vector4 {
   cubic_interpolate (_b, _pre_a, _post_b, _weight) {
     let ret = new Vector4()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Vector4._bindings.method_cubic_interpolate,
+      Vector4.#_bindings.method_cubic_interpolate,
       this,
       12,
       [_b, _pre_a, _post_b, _weight]
@@ -501,7 +507,7 @@ export class Vector4 {
   cubic_interpolate_in_time (_b, _pre_a, _post_b, _weight, _b_t, _pre_a_t, _post_b_t) {
     let ret = new Vector4()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Vector4._bindings.method_cubic_interpolate_in_time,
+      Vector4.#_bindings.method_cubic_interpolate_in_time,
       this,
       12,
       [_b, _pre_a, _post_b, _weight, _b_t, _pre_a_t, _post_b_t]
@@ -511,7 +517,7 @@ export class Vector4 {
   posmod (_mod) {
     let ret = new Vector4()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Vector4._bindings.method_posmod,
+      Vector4.#_bindings.method_posmod,
       this,
       12,
       [_mod]
@@ -521,7 +527,7 @@ export class Vector4 {
   posmodv (_modv) {
     let ret = new Vector4()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Vector4._bindings.method_posmodv,
+      Vector4.#_bindings.method_posmodv,
       this,
       12,
       [_modv]
@@ -531,7 +537,7 @@ export class Vector4 {
   snapped (_step) {
     let ret = new Vector4()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Vector4._bindings.method_snapped,
+      Vector4.#_bindings.method_snapped,
       this,
       12,
       [_step]
@@ -541,7 +547,7 @@ export class Vector4 {
   snappedf (_step) {
     let ret = new Vector4()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Vector4._bindings.method_snappedf,
+      Vector4.#_bindings.method_snappedf,
       this,
       12,
       [_step]
@@ -551,7 +557,7 @@ export class Vector4 {
   clamp (_min, _max) {
     let ret = new Vector4()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Vector4._bindings.method_clamp,
+      Vector4.#_bindings.method_clamp,
       this,
       12,
       [_min, _max]
@@ -561,7 +567,7 @@ export class Vector4 {
   clampf (_min, _max) {
     let ret = new Vector4()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Vector4._bindings.method_clampf,
+      Vector4.#_bindings.method_clampf,
       this,
       12,
       [_min, _max]
@@ -571,7 +577,7 @@ export class Vector4 {
   normalized () {
     let ret = new Vector4()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Vector4._bindings.method_normalized,
+      Vector4.#_bindings.method_normalized,
       this,
       12,
       []
@@ -581,7 +587,7 @@ export class Vector4 {
   is_normalized () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Vector4._bindings.method_is_normalized,
+      Vector4.#_bindings.method_is_normalized,
       this,
       1,
       []
@@ -591,7 +597,7 @@ export class Vector4 {
   direction_to (_to) {
     let ret = new Vector4()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Vector4._bindings.method_direction_to,
+      Vector4.#_bindings.method_direction_to,
       this,
       12,
       [_to]
@@ -601,7 +607,7 @@ export class Vector4 {
   distance_to (_to) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Vector4._bindings.method_distance_to,
+      Vector4.#_bindings.method_distance_to,
       this,
       3,
       [_to]
@@ -611,7 +617,7 @@ export class Vector4 {
   distance_squared_to (_to) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Vector4._bindings.method_distance_squared_to,
+      Vector4.#_bindings.method_distance_squared_to,
       this,
       3,
       [_to]
@@ -621,7 +627,7 @@ export class Vector4 {
   dot (_with) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Vector4._bindings.method_dot,
+      Vector4.#_bindings.method_dot,
       this,
       3,
       [_with]
@@ -631,7 +637,7 @@ export class Vector4 {
   inverse () {
     let ret = new Vector4()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Vector4._bindings.method_inverse,
+      Vector4.#_bindings.method_inverse,
       this,
       12,
       []
@@ -641,7 +647,7 @@ export class Vector4 {
   is_equal_approx (_to) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Vector4._bindings.method_is_equal_approx,
+      Vector4.#_bindings.method_is_equal_approx,
       this,
       1,
       [_to]
@@ -651,7 +657,7 @@ export class Vector4 {
   is_zero_approx () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Vector4._bindings.method_is_zero_approx,
+      Vector4.#_bindings.method_is_zero_approx,
       this,
       1,
       []
@@ -661,7 +667,7 @@ export class Vector4 {
   is_finite () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Vector4._bindings.method_is_finite,
+      Vector4.#_bindings.method_is_finite,
       this,
       1,
       []
@@ -671,7 +677,7 @@ export class Vector4 {
   min (_with) {
     let ret = new Vector4()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Vector4._bindings.method_min,
+      Vector4.#_bindings.method_min,
       this,
       12,
       [_with]
@@ -681,7 +687,7 @@ export class Vector4 {
   minf (_with) {
     let ret = new Vector4()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Vector4._bindings.method_minf,
+      Vector4.#_bindings.method_minf,
       this,
       12,
       [_with]
@@ -691,7 +697,7 @@ export class Vector4 {
   max (_with) {
     let ret = new Vector4()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Vector4._bindings.method_max,
+      Vector4.#_bindings.method_max,
       this,
       12,
       [_with]
@@ -701,7 +707,7 @@ export class Vector4 {
   maxf (_with) {
     let ret = new Vector4()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Vector4._bindings.method_maxf,
+      Vector4.#_bindings.method_maxf,
       this,
       12,
       [_with]

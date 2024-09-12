@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { GeometryInstance3D } from '@js_godot/classes/geometry_instance3d'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { GeometryInstance3D } from '@js_godot/classes/geometry_instance3d'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -15,7 +15,7 @@ class _MethodBindings {
 }
 export class MultiMeshInstance3D extends GeometryInstance3D{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -25,45 +25,46 @@ export class MultiMeshInstance3D extends GeometryInstance3D{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_multimesh() {
+    if (!this.#_bindings.method_set_multimesh) {
       let classname = new StringName("MultiMeshInstance3D");
       let methodname = new StringName("set_multimesh");
-      this._bindings.method_set_multimesh = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_multimesh = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2246127404
       );
     }
-    {
+  }
+  static init_method_get_multimesh() {
+    if (!this.#_bindings.method_get_multimesh) {
       let classname = new StringName("MultiMeshInstance3D");
       let methodname = new StringName("get_multimesh");
-      this._bindings.method_get_multimesh = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_multimesh = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1385450523
       );
     }
   }
+
+  
   
   set_multimesh(_multimesh) {
+    MultiMeshInstance3D.init_method_set_multimesh();
     return _call_native_mb_no_ret(
-      MultiMeshInstance3D._bindings.method_set_multimesh,
+      MultiMeshInstance3D.#_bindings.method_set_multimesh,
       this._owner,
       _multimesh
     );
     
   }
   get_multimesh() {
+    MultiMeshInstance3D.init_method_get_multimesh();
     return _call_native_mb_ret(
-      MultiMeshInstance3D._bindings.method_get_multimesh,
+      MultiMeshInstance3D.#_bindings.method_get_multimesh,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
@@ -76,8 +77,4 @@ set multimesh (new_value) {
   this.set_multimesh(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

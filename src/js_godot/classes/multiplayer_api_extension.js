@@ -1,9 +1,7 @@
 import * as internal from '__internal__';
-import { GDArray } from '@js_godot/variant/gd_array'
-import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
-import { MultiplayerAPI } from '@js_godot/classes/multiplayer_api'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { MultiplayerAPI } from '@js_godot/classes/multiplayer_api'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -15,7 +13,7 @@ class _MethodBindings {
 }
 export class MultiplayerAPIExtension extends MultiplayerAPI{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -25,13 +23,8 @@ export class MultiplayerAPIExtension extends MultiplayerAPI{
       super(godot_object);
     }
   }
+
   
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-  }
   
   _poll() {
   }
@@ -53,8 +46,4 @@ export class MultiplayerAPIExtension extends MultiplayerAPI{
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

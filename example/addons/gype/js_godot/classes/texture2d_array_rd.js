@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { TextureLayeredRD } from '@js_godot/classes/texture_layered_rd'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -13,7 +13,7 @@ class _MethodBindings {
 }
 export class Texture2DArrayRD extends TextureLayeredRD{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -23,18 +23,9 @@ export class Texture2DArrayRD extends TextureLayeredRD{
       super(godot_object);
     }
   }
+
   
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-  }
   
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

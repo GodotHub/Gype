@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { Node2D } from '@js_godot/classes/node2d'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
+import { Node2D } from '@js_godot/classes/node2d'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -16,7 +16,7 @@ class _MethodBindings {
 }
 export class AudioListener2D extends Node2D{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -26,70 +26,71 @@ export class AudioListener2D extends Node2D{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_make_current() {
+    if (!this.#_bindings.method_make_current) {
       let classname = new StringName("AudioListener2D");
       let methodname = new StringName("make_current");
-      this._bindings.method_make_current = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_make_current = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3218959716
       );
     }
-    {
+  }
+  static init_method_clear_current() {
+    if (!this.#_bindings.method_clear_current) {
       let classname = new StringName("AudioListener2D");
       let methodname = new StringName("clear_current");
-      this._bindings.method_clear_current = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_clear_current = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3218959716
       );
     }
-    {
+  }
+  static init_method_is_current() {
+    if (!this.#_bindings.method_is_current) {
       let classname = new StringName("AudioListener2D");
       let methodname = new StringName("is_current");
-      this._bindings.method_is_current = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_current = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
   }
+
+  
   
   make_current() {
+    AudioListener2D.init_method_make_current();
     return _call_native_mb_no_ret(
-      AudioListener2D._bindings.method_make_current,
+      AudioListener2D.#_bindings.method_make_current,
       this._owner,
       
     );
     
   }
   clear_current() {
+    AudioListener2D.init_method_clear_current();
     return _call_native_mb_no_ret(
-      AudioListener2D._bindings.method_clear_current,
+      AudioListener2D.#_bindings.method_clear_current,
       this._owner,
       
     );
     
   }
   is_current() {
+    AudioListener2D.init_method_is_current();
     return _call_native_mb_ret(
-      AudioListener2D._bindings.method_is_current,
+      AudioListener2D.#_bindings.method_is_current,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

@@ -1,9 +1,7 @@
 import * as internal from '__internal__';
-import { RefCounted } from '@js_godot/classes/ref_counted'
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
-import { Dictionary } from '@js_godot/variant/dictionary'
-import { GDString } from '@js_godot/variant/gd_string'
+import { RefCounted } from '@js_godot/classes/ref_counted'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -16,7 +14,7 @@ class _MethodBindings {
 }
 export class EditorResourceTooltipPlugin extends RefCounted{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -26,30 +24,28 @@ export class EditorResourceTooltipPlugin extends RefCounted{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_request_thumbnail() {
+    if (!this.#_bindings.method_request_thumbnail) {
       let classname = new StringName("EditorResourceTooltipPlugin");
       let methodname = new StringName("request_thumbnail");
-      this._bindings.method_request_thumbnail = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_request_thumbnail = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3245519720
       );
     }
   }
+
+  
   
   _handles(_type) {
   }
   _make_tooltip_for_path(_path, _metadata, _base) {
   }
   request_thumbnail(_path, _control) {
+    EditorResourceTooltipPlugin.init_method_request_thumbnail();
     return _call_native_mb_no_ret(
-      EditorResourceTooltipPlugin._bindings.method_request_thumbnail,
+      EditorResourceTooltipPlugin.#_bindings.method_request_thumbnail,
       this._owner,
       _path, _control
     );
@@ -57,8 +53,4 @@ export class EditorResourceTooltipPlugin extends RefCounted{
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

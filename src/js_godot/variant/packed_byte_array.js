@@ -2,16 +2,18 @@ import * as internal from '__internal__'
 import {
   _call_builtin_constructor,
   _call_builtin_method_ptr_ret,
-  _call_builtin_method_ptr_no_ret
+  _call_builtin_method_ptr_no_ret,
+  _call_builtin_method_ptr_obj_ret,
 } from '@js_godot/core/builtin_ptrcall'
-import { PackedFloat64Array } from '@js_godot/variant/packed_float64_array'
-import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
-import { GDArray } from '@js_godot/variant/gd_array'
 import { PackedFloat32Array } from '@js_godot/variant/packed_float32_array'
-import { Variant } from '@js_godot/variant/variant'
-import { PackedInt64Array } from '@js_godot/variant/packed_int64_array'
-import { StringName } from '@js_godot/variant/string_name'
 import { GDString } from '@js_godot/variant/gd_string'
+import { PackedFloat64Array } from '@js_godot/variant/packed_float64_array'
+import { StringName } from '@js_godot/variant/string_name'
+import { GDArray } from '@js_godot/variant/gd_array'
+import { Variant } from '@js_godot/variant/variant'
+import { PackedInt32Array } from '@js_godot/variant/packed_int32_array'
+import { PackedInt64Array } from '@js_godot/variant/packed_int64_array'
+import { GodotObject } from "@js_godot/classes/godot_object";
 
 class _MethodBindings {
   from_variant_constructor
@@ -92,42 +94,46 @@ export class PackedByteArray {
   static #SIZE = 16
   opaque = new Uint8Array(PackedByteArray.#SIZE)
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
-  constructor (from) {
-    if (!from) {
-      _call_builtin_constructor(PackedByteArray._bindings.constructor_0, this)
-    }else if (from instanceof PackedByteArray) {
-      _call_builtin_constructor(PackedByteArray._bindings.constructor_1, this, [
+  constructor (value) {
+    if (!value) {
+      _call_builtin_constructor(PackedByteArray.#_bindings.constructor_0, this)
+    } else if (arguments.length == 1&& arguments[0] instanceof PackedByteArray) {
+      let from = arguments[0];
+      _call_builtin_constructor(PackedByteArray.#_bindings.constructor_1, this, [
         from
       ])
-    }else if (from instanceof GDArray) {
-      _call_builtin_constructor(PackedByteArray._bindings.constructor_2, this, [
+    } else if (arguments.length == 1&& arguments[0] instanceof GDArray) {
+      let from = arguments[0];
+      _call_builtin_constructor(PackedByteArray.#_bindings.constructor_2, this, [
         from
       ])
-    } else if (from.constructor.name === "Variant") {
-      PackedByteArray._bindings.from_variant_constructor(this.opaque, from.opaque)
+    } else if (value.constructor.name === "Variant") {
+      PackedByteArray.#_bindings.from_variant_constructor(this.opaque, value.opaque)
+    } else if (value instanceof Uint8Array) {
+      this.opaque = value;
     } 
   }
   
   static __init_bindings_constructors_destructor () {
-    this._bindings.from_variant_constructor = internal.get_variant_to_type_constructor(
+    this.#_bindings.from_variant_constructor = internal.get_variant_to_type_constructor(
       29
     )
-    this._bindings.constructor_0 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_0 = internal.variant_get_ptr_constructor(
       29,
       0
     )
-    this._bindings.constructor_1 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_1 = internal.variant_get_ptr_constructor(
       29,
       1
     )
-    this._bindings.constructor_2 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_2 = internal.variant_get_ptr_constructor(
       29,
       2
     )
-    this._bindings.destructor = internal.variant_get_ptr_destructor(
+    this.#_bindings.destructor = internal.variant_get_ptr_destructor(
       29
     )
   }
@@ -140,7 +146,7 @@ export class PackedByteArray {
     this.__init_bindings_constructors_destructor()
     {
       let _gde_name = new StringName('size')
-      this._bindings.method_size = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_size = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         3173160232
@@ -148,7 +154,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('is_empty')
-      this._bindings.method_is_empty = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_empty = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         3918633141
@@ -156,7 +162,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('set')
-      this._bindings.method_set = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_set = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         3638975848
@@ -164,7 +170,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('push_back')
-      this._bindings.method_push_back = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_push_back = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         694024632
@@ -172,7 +178,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('append')
-      this._bindings.method_append = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_append = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         694024632
@@ -180,7 +186,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('append_array')
-      this._bindings.method_append_array = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_append_array = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         791097111
@@ -188,7 +194,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('remove_at')
-      this._bindings.method_remove_at = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_remove_at = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         2823966027
@@ -196,7 +202,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('insert')
-      this._bindings.method_insert = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_insert = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         1487112728
@@ -204,7 +210,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('fill')
-      this._bindings.method_fill = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_fill = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         2823966027
@@ -212,7 +218,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('resize')
-      this._bindings.method_resize = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_resize = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         848867239
@@ -220,7 +226,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('clear')
-      this._bindings.method_clear = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_clear = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         3218959716
@@ -228,7 +234,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('has')
-      this._bindings.method_has = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_has = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         931488181
@@ -236,7 +242,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('reverse')
-      this._bindings.method_reverse = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_reverse = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         3218959716
@@ -244,7 +250,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('slice')
-      this._bindings.method_slice = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_slice = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         2278869132
@@ -252,7 +258,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('sort')
-      this._bindings.method_sort = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_sort = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         3218959716
@@ -260,7 +266,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('bsearch')
-      this._bindings.method_bsearch = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_bsearch = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         3380005890
@@ -268,7 +274,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('duplicate')
-      this._bindings.method_duplicate = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_duplicate = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         851781288
@@ -276,7 +282,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('find')
-      this._bindings.method_find = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_find = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         2984303840
@@ -284,7 +290,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('rfind')
-      this._bindings.method_rfind = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_rfind = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         2984303840
@@ -292,7 +298,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('count')
-      this._bindings.method_count = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_count = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         4103005248
@@ -300,7 +306,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('get_string_from_ascii')
-      this._bindings.method_get_string_from_ascii = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_string_from_ascii = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         3942272618
@@ -308,7 +314,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('get_string_from_utf8')
-      this._bindings.method_get_string_from_utf8 = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_string_from_utf8 = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         3942272618
@@ -316,7 +322,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('get_string_from_utf16')
-      this._bindings.method_get_string_from_utf16 = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_string_from_utf16 = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         3942272618
@@ -324,7 +330,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('get_string_from_utf32')
-      this._bindings.method_get_string_from_utf32 = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_string_from_utf32 = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         3942272618
@@ -332,7 +338,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('get_string_from_wchar')
-      this._bindings.method_get_string_from_wchar = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_get_string_from_wchar = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         3942272618
@@ -340,7 +346,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('hex_encode')
-      this._bindings.method_hex_encode = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_hex_encode = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         3942272618
@@ -348,7 +354,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('compress')
-      this._bindings.method_compress = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_compress = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         1845905913
@@ -356,7 +362,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('decompress')
-      this._bindings.method_decompress = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_decompress = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         2278869132
@@ -364,7 +370,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('decompress_dynamic')
-      this._bindings.method_decompress_dynamic = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_decompress_dynamic = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         2278869132
@@ -372,7 +378,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('decode_u8')
-      this._bindings.method_decode_u8 = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_decode_u8 = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         4103005248
@@ -380,7 +386,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('decode_s8')
-      this._bindings.method_decode_s8 = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_decode_s8 = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         4103005248
@@ -388,7 +394,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('decode_u16')
-      this._bindings.method_decode_u16 = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_decode_u16 = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         4103005248
@@ -396,7 +402,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('decode_s16')
-      this._bindings.method_decode_s16 = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_decode_s16 = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         4103005248
@@ -404,7 +410,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('decode_u32')
-      this._bindings.method_decode_u32 = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_decode_u32 = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         4103005248
@@ -412,7 +418,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('decode_s32')
-      this._bindings.method_decode_s32 = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_decode_s32 = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         4103005248
@@ -420,7 +426,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('decode_u64')
-      this._bindings.method_decode_u64 = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_decode_u64 = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         4103005248
@@ -428,7 +434,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('decode_s64')
-      this._bindings.method_decode_s64 = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_decode_s64 = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         4103005248
@@ -436,7 +442,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('decode_half')
-      this._bindings.method_decode_half = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_decode_half = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         1401583798
@@ -444,7 +450,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('decode_float')
-      this._bindings.method_decode_float = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_decode_float = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         1401583798
@@ -452,7 +458,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('decode_double')
-      this._bindings.method_decode_double = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_decode_double = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         1401583798
@@ -460,7 +466,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('has_encoded_var')
-      this._bindings.method_has_encoded_var = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_has_encoded_var = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         2914632957
@@ -468,7 +474,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('decode_var')
-      this._bindings.method_decode_var = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_decode_var = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         1740420038
@@ -476,7 +482,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('decode_var_size')
-      this._bindings.method_decode_var_size = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_decode_var_size = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         954237325
@@ -484,7 +490,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('to_int32_array')
-      this._bindings.method_to_int32_array = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_to_int32_array = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         3158844420
@@ -492,7 +498,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('to_int64_array')
-      this._bindings.method_to_int64_array = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_to_int64_array = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         1961294120
@@ -500,7 +506,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('to_float32_array')
-      this._bindings.method_to_float32_array = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_to_float32_array = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         3575107827
@@ -508,7 +514,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('to_float64_array')
-      this._bindings.method_to_float64_array = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_to_float64_array = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         1627308337
@@ -516,7 +522,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('encode_u8')
-      this._bindings.method_encode_u8 = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_encode_u8 = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         3638975848
@@ -524,7 +530,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('encode_s8')
-      this._bindings.method_encode_s8 = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_encode_s8 = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         3638975848
@@ -532,7 +538,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('encode_u16')
-      this._bindings.method_encode_u16 = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_encode_u16 = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         3638975848
@@ -540,7 +546,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('encode_s16')
-      this._bindings.method_encode_s16 = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_encode_s16 = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         3638975848
@@ -548,7 +554,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('encode_u32')
-      this._bindings.method_encode_u32 = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_encode_u32 = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         3638975848
@@ -556,7 +562,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('encode_s32')
-      this._bindings.method_encode_s32 = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_encode_s32 = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         3638975848
@@ -564,7 +570,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('encode_u64')
-      this._bindings.method_encode_u64 = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_encode_u64 = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         3638975848
@@ -572,7 +578,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('encode_s64')
-      this._bindings.method_encode_s64 = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_encode_s64 = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         3638975848
@@ -580,7 +586,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('encode_half')
-      this._bindings.method_encode_half = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_encode_half = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         1113000516
@@ -588,7 +594,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('encode_float')
-      this._bindings.method_encode_float = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_encode_float = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         1113000516
@@ -596,7 +602,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('encode_double')
-      this._bindings.method_encode_double = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_encode_double = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         1113000516
@@ -604,7 +610,7 @@ export class PackedByteArray {
     }
     {
       let _gde_name = new StringName('encode_var')
-      this._bindings.method_encode_var = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_encode_var = internal.variant_get_ptr_builtin_method(
         29,
         _gde_name.opaque,
         2604460497
@@ -616,7 +622,7 @@ export class PackedByteArray {
   size () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_size,
+      PackedByteArray.#_bindings.method_size,
       this,
       2,
       []
@@ -626,7 +632,7 @@ export class PackedByteArray {
   is_empty () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_is_empty,
+      PackedByteArray.#_bindings.method_is_empty,
       this,
       1,
       []
@@ -635,7 +641,7 @@ export class PackedByteArray {
   }
   set (_index, _value) {
     _call_builtin_method_ptr_no_ret(
-      PackedByteArray._bindings.method_set,
+      PackedByteArray.#_bindings.method_set,
       this,
       [_index, _value]
     )
@@ -643,7 +649,7 @@ export class PackedByteArray {
   push_back (_value) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_push_back,
+      PackedByteArray.#_bindings.method_push_back,
       this,
       1,
       [_value]
@@ -653,7 +659,7 @@ export class PackedByteArray {
   append (_value) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_append,
+      PackedByteArray.#_bindings.method_append,
       this,
       1,
       [_value]
@@ -662,14 +668,14 @@ export class PackedByteArray {
   }
   append_array (_array) {
     _call_builtin_method_ptr_no_ret(
-      PackedByteArray._bindings.method_append_array,
+      PackedByteArray.#_bindings.method_append_array,
       this,
       [_array]
     )
   }
   remove_at (_index) {
     _call_builtin_method_ptr_no_ret(
-      PackedByteArray._bindings.method_remove_at,
+      PackedByteArray.#_bindings.method_remove_at,
       this,
       [_index]
     )
@@ -677,7 +683,7 @@ export class PackedByteArray {
   insert (_at_index, _value) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_insert,
+      PackedByteArray.#_bindings.method_insert,
       this,
       2,
       [_at_index, _value]
@@ -686,7 +692,7 @@ export class PackedByteArray {
   }
   fill (_value) {
     _call_builtin_method_ptr_no_ret(
-      PackedByteArray._bindings.method_fill,
+      PackedByteArray.#_bindings.method_fill,
       this,
       [_value]
     )
@@ -694,7 +700,7 @@ export class PackedByteArray {
   resize (_new_size) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_resize,
+      PackedByteArray.#_bindings.method_resize,
       this,
       2,
       [_new_size]
@@ -703,7 +709,7 @@ export class PackedByteArray {
   }
   clear () {
     _call_builtin_method_ptr_no_ret(
-      PackedByteArray._bindings.method_clear,
+      PackedByteArray.#_bindings.method_clear,
       this,
       []
     )
@@ -711,7 +717,7 @@ export class PackedByteArray {
   has (_value) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_has,
+      PackedByteArray.#_bindings.method_has,
       this,
       1,
       [_value]
@@ -720,7 +726,7 @@ export class PackedByteArray {
   }
   reverse () {
     _call_builtin_method_ptr_no_ret(
-      PackedByteArray._bindings.method_reverse,
+      PackedByteArray.#_bindings.method_reverse,
       this,
       []
     )
@@ -728,7 +734,7 @@ export class PackedByteArray {
   slice (_begin, _end) {
     let ret = new PackedByteArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_slice,
+      PackedByteArray.#_bindings.method_slice,
       this,
       29,
       [_begin, _end]
@@ -737,7 +743,7 @@ export class PackedByteArray {
   }
   sort () {
     _call_builtin_method_ptr_no_ret(
-      PackedByteArray._bindings.method_sort,
+      PackedByteArray.#_bindings.method_sort,
       this,
       []
     )
@@ -745,7 +751,7 @@ export class PackedByteArray {
   bsearch (_value, _before) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_bsearch,
+      PackedByteArray.#_bindings.method_bsearch,
       this,
       2,
       [_value, _before]
@@ -755,7 +761,7 @@ export class PackedByteArray {
   duplicate () {
     let ret = new PackedByteArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_duplicate,
+      PackedByteArray.#_bindings.method_duplicate,
       this,
       29,
       []
@@ -765,7 +771,7 @@ export class PackedByteArray {
   find (_value, _from) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_find,
+      PackedByteArray.#_bindings.method_find,
       this,
       2,
       [_value, _from]
@@ -775,7 +781,7 @@ export class PackedByteArray {
   rfind (_value, _from) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_rfind,
+      PackedByteArray.#_bindings.method_rfind,
       this,
       2,
       [_value, _from]
@@ -785,7 +791,7 @@ export class PackedByteArray {
   count (_value) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_count,
+      PackedByteArray.#_bindings.method_count,
       this,
       2,
       [_value]
@@ -795,7 +801,7 @@ export class PackedByteArray {
   get_string_from_ascii () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_get_string_from_ascii,
+      PackedByteArray.#_bindings.method_get_string_from_ascii,
       this,
       4,
       []
@@ -805,7 +811,7 @@ export class PackedByteArray {
   get_string_from_utf8 () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_get_string_from_utf8,
+      PackedByteArray.#_bindings.method_get_string_from_utf8,
       this,
       4,
       []
@@ -815,7 +821,7 @@ export class PackedByteArray {
   get_string_from_utf16 () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_get_string_from_utf16,
+      PackedByteArray.#_bindings.method_get_string_from_utf16,
       this,
       4,
       []
@@ -825,7 +831,7 @@ export class PackedByteArray {
   get_string_from_utf32 () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_get_string_from_utf32,
+      PackedByteArray.#_bindings.method_get_string_from_utf32,
       this,
       4,
       []
@@ -835,7 +841,7 @@ export class PackedByteArray {
   get_string_from_wchar () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_get_string_from_wchar,
+      PackedByteArray.#_bindings.method_get_string_from_wchar,
       this,
       4,
       []
@@ -845,7 +851,7 @@ export class PackedByteArray {
   hex_encode () {
     let ret = new GDString()
     ret.opaque = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_hex_encode,
+      PackedByteArray.#_bindings.method_hex_encode,
       this,
       4,
       []
@@ -855,7 +861,7 @@ export class PackedByteArray {
   compress (_compression_mode) {
     let ret = new PackedByteArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_compress,
+      PackedByteArray.#_bindings.method_compress,
       this,
       29,
       [_compression_mode]
@@ -865,7 +871,7 @@ export class PackedByteArray {
   decompress (_buffer_size, _compression_mode) {
     let ret = new PackedByteArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_decompress,
+      PackedByteArray.#_bindings.method_decompress,
       this,
       29,
       [_buffer_size, _compression_mode]
@@ -875,7 +881,7 @@ export class PackedByteArray {
   decompress_dynamic (_max_output_size, _compression_mode) {
     let ret = new PackedByteArray()
     ret.opaque = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_decompress_dynamic,
+      PackedByteArray.#_bindings.method_decompress_dynamic,
       this,
       29,
       [_max_output_size, _compression_mode]
@@ -885,7 +891,7 @@ export class PackedByteArray {
   decode_u8 (_byte_offset) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_decode_u8,
+      PackedByteArray.#_bindings.method_decode_u8,
       this,
       2,
       [_byte_offset]
@@ -895,7 +901,7 @@ export class PackedByteArray {
   decode_s8 (_byte_offset) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_decode_s8,
+      PackedByteArray.#_bindings.method_decode_s8,
       this,
       2,
       [_byte_offset]
@@ -905,7 +911,7 @@ export class PackedByteArray {
   decode_u16 (_byte_offset) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_decode_u16,
+      PackedByteArray.#_bindings.method_decode_u16,
       this,
       2,
       [_byte_offset]
@@ -915,7 +921,7 @@ export class PackedByteArray {
   decode_s16 (_byte_offset) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_decode_s16,
+      PackedByteArray.#_bindings.method_decode_s16,
       this,
       2,
       [_byte_offset]
@@ -925,7 +931,7 @@ export class PackedByteArray {
   decode_u32 (_byte_offset) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_decode_u32,
+      PackedByteArray.#_bindings.method_decode_u32,
       this,
       2,
       [_byte_offset]
@@ -935,7 +941,7 @@ export class PackedByteArray {
   decode_s32 (_byte_offset) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_decode_s32,
+      PackedByteArray.#_bindings.method_decode_s32,
       this,
       2,
       [_byte_offset]
@@ -945,7 +951,7 @@ export class PackedByteArray {
   decode_u64 (_byte_offset) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_decode_u64,
+      PackedByteArray.#_bindings.method_decode_u64,
       this,
       2,
       [_byte_offset]
@@ -955,7 +961,7 @@ export class PackedByteArray {
   decode_s64 (_byte_offset) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_decode_s64,
+      PackedByteArray.#_bindings.method_decode_s64,
       this,
       2,
       [_byte_offset]
@@ -965,7 +971,7 @@ export class PackedByteArray {
   decode_half (_byte_offset) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_decode_half,
+      PackedByteArray.#_bindings.method_decode_half,
       this,
       3,
       [_byte_offset]
@@ -975,7 +981,7 @@ export class PackedByteArray {
   decode_float (_byte_offset) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_decode_float,
+      PackedByteArray.#_bindings.method_decode_float,
       this,
       3,
       [_byte_offset]
@@ -985,7 +991,7 @@ export class PackedByteArray {
   decode_double (_byte_offset) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_decode_double,
+      PackedByteArray.#_bindings.method_decode_double,
       this,
       3,
       [_byte_offset]
@@ -995,7 +1001,7 @@ export class PackedByteArray {
   has_encoded_var (_byte_offset, _allow_objects) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_has_encoded_var,
+      PackedByteArray.#_bindings.method_has_encoded_var,
       this,
       1,
       [_byte_offset, _allow_objects]
@@ -1005,7 +1011,7 @@ export class PackedByteArray {
   decode_var (_byte_offset, _allow_objects) {
     let ret = new Variant()
     ret.opaque = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_decode_var,
+      PackedByteArray.#_bindings.method_decode_var,
       this,
       39,
       [_byte_offset, _allow_objects]
@@ -1015,7 +1021,7 @@ export class PackedByteArray {
   decode_var_size (_byte_offset, _allow_objects) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_decode_var_size,
+      PackedByteArray.#_bindings.method_decode_var_size,
       this,
       2,
       [_byte_offset, _allow_objects]
@@ -1025,7 +1031,7 @@ export class PackedByteArray {
   to_int32_array () {
     let ret = new PackedInt32Array()
     ret.opaque = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_to_int32_array,
+      PackedByteArray.#_bindings.method_to_int32_array,
       this,
       30,
       []
@@ -1035,7 +1041,7 @@ export class PackedByteArray {
   to_int64_array () {
     let ret = new PackedInt64Array()
     ret.opaque = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_to_int64_array,
+      PackedByteArray.#_bindings.method_to_int64_array,
       this,
       31,
       []
@@ -1045,7 +1051,7 @@ export class PackedByteArray {
   to_float32_array () {
     let ret = new PackedFloat32Array()
     ret.opaque = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_to_float32_array,
+      PackedByteArray.#_bindings.method_to_float32_array,
       this,
       32,
       []
@@ -1055,7 +1061,7 @@ export class PackedByteArray {
   to_float64_array () {
     let ret = new PackedFloat64Array()
     ret.opaque = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_to_float64_array,
+      PackedByteArray.#_bindings.method_to_float64_array,
       this,
       33,
       []
@@ -1064,77 +1070,77 @@ export class PackedByteArray {
   }
   encode_u8 (_byte_offset, _value) {
     _call_builtin_method_ptr_no_ret(
-      PackedByteArray._bindings.method_encode_u8,
+      PackedByteArray.#_bindings.method_encode_u8,
       this,
       [_byte_offset, _value]
     )
   }
   encode_s8 (_byte_offset, _value) {
     _call_builtin_method_ptr_no_ret(
-      PackedByteArray._bindings.method_encode_s8,
+      PackedByteArray.#_bindings.method_encode_s8,
       this,
       [_byte_offset, _value]
     )
   }
   encode_u16 (_byte_offset, _value) {
     _call_builtin_method_ptr_no_ret(
-      PackedByteArray._bindings.method_encode_u16,
+      PackedByteArray.#_bindings.method_encode_u16,
       this,
       [_byte_offset, _value]
     )
   }
   encode_s16 (_byte_offset, _value) {
     _call_builtin_method_ptr_no_ret(
-      PackedByteArray._bindings.method_encode_s16,
+      PackedByteArray.#_bindings.method_encode_s16,
       this,
       [_byte_offset, _value]
     )
   }
   encode_u32 (_byte_offset, _value) {
     _call_builtin_method_ptr_no_ret(
-      PackedByteArray._bindings.method_encode_u32,
+      PackedByteArray.#_bindings.method_encode_u32,
       this,
       [_byte_offset, _value]
     )
   }
   encode_s32 (_byte_offset, _value) {
     _call_builtin_method_ptr_no_ret(
-      PackedByteArray._bindings.method_encode_s32,
+      PackedByteArray.#_bindings.method_encode_s32,
       this,
       [_byte_offset, _value]
     )
   }
   encode_u64 (_byte_offset, _value) {
     _call_builtin_method_ptr_no_ret(
-      PackedByteArray._bindings.method_encode_u64,
+      PackedByteArray.#_bindings.method_encode_u64,
       this,
       [_byte_offset, _value]
     )
   }
   encode_s64 (_byte_offset, _value) {
     _call_builtin_method_ptr_no_ret(
-      PackedByteArray._bindings.method_encode_s64,
+      PackedByteArray.#_bindings.method_encode_s64,
       this,
       [_byte_offset, _value]
     )
   }
   encode_half (_byte_offset, _value) {
     _call_builtin_method_ptr_no_ret(
-      PackedByteArray._bindings.method_encode_half,
+      PackedByteArray.#_bindings.method_encode_half,
       this,
       [_byte_offset, _value]
     )
   }
   encode_float (_byte_offset, _value) {
     _call_builtin_method_ptr_no_ret(
-      PackedByteArray._bindings.method_encode_float,
+      PackedByteArray.#_bindings.method_encode_float,
       this,
       [_byte_offset, _value]
     )
   }
   encode_double (_byte_offset, _value) {
     _call_builtin_method_ptr_no_ret(
-      PackedByteArray._bindings.method_encode_double,
+      PackedByteArray.#_bindings.method_encode_double,
       this,
       [_byte_offset, _value]
     )
@@ -1142,7 +1148,7 @@ export class PackedByteArray {
   encode_var (_byte_offset, _value, _allow_objects) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      PackedByteArray._bindings.method_encode_var,
+      PackedByteArray.#_bindings.method_encode_var,
       this,
       2,
       [_byte_offset, _value, _allow_objects]

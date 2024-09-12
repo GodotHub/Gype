@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { Resource } from '@js_godot/classes/resource'
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { Resource } from '@js_godot/classes/resource'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -15,7 +15,7 @@ class _MethodBindings {
 }
 export class GDExtension extends Resource{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -25,46 +25,49 @@ export class GDExtension extends Resource{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_is_library_open() {
+    if (!this.#_bindings.method_is_library_open) {
       let classname = new StringName("GDExtension");
       let methodname = new StringName("is_library_open");
-      this._bindings.method_is_library_open = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_library_open = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_get_minimum_library_initialization_level() {
+    if (!this.#_bindings.method_get_minimum_library_initialization_level) {
       let classname = new StringName("GDExtension");
       let methodname = new StringName("get_minimum_library_initialization_level");
-      this._bindings.method_get_minimum_library_initialization_level = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_minimum_library_initialization_level = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         964858755
       );
     }
   }
+
+  
   
   is_library_open() {
+    GDExtension.init_method_is_library_open();
     return _call_native_mb_ret(
-      GDExtension._bindings.method_is_library_open,
+      GDExtension.#_bindings.method_is_library_open,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   get_minimum_library_initialization_level() {
+    GDExtension.init_method_get_minimum_library_initialization_level();
     return _call_native_mb_ret(
-      GDExtension._bindings.method_get_minimum_library_initialization_level,
+      GDExtension.#_bindings.method_get_minimum_library_initialization_level,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
@@ -76,9 +79,5 @@ export class GDExtension extends Resource{
     INITIALIZATION_LEVEL_SERVERS: 1,
     INITIALIZATION_LEVEL_SCENE: 2,
     INITIALIZATION_LEVEL_EDITOR: 3,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

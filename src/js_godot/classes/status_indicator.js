@@ -1,10 +1,7 @@
 import * as internal from '__internal__';
-import { NodePath } from '@js_godot/variant/node_path'
 import { Variant } from '@js_godot/variant/variant'
-import { Node } from '@js_godot/classes/node'
 import { StringName } from '@js_godot/variant/string_name'
-import { Rect2 } from '@js_godot/variant/rect2'
-import { GDString } from '@js_godot/variant/gd_string'
+import { Node } from '@js_godot/classes/node'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -25,7 +22,7 @@ class _MethodBindings {
 }
 export class StatusIndicator extends Node{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -35,106 +32,121 @@ export class StatusIndicator extends Node{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_tooltip() {
+    if (!this.#_bindings.method_set_tooltip) {
       let classname = new StringName("StatusIndicator");
       let methodname = new StringName("set_tooltip");
-      this._bindings.method_set_tooltip = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_tooltip = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         83702148
       );
     }
-    {
+  }
+  static init_method_get_tooltip() {
+    if (!this.#_bindings.method_get_tooltip) {
       let classname = new StringName("StatusIndicator");
       let methodname = new StringName("get_tooltip");
-      this._bindings.method_get_tooltip = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_tooltip = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         201670096
       );
     }
-    {
+  }
+  static init_method_set_icon() {
+    if (!this.#_bindings.method_set_icon) {
       let classname = new StringName("StatusIndicator");
       let methodname = new StringName("set_icon");
-      this._bindings.method_set_icon = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_icon = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         4051416890
       );
     }
-    {
+  }
+  static init_method_get_icon() {
+    if (!this.#_bindings.method_get_icon) {
       let classname = new StringName("StatusIndicator");
       let methodname = new StringName("get_icon");
-      this._bindings.method_get_icon = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_icon = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3635182373
       );
     }
-    {
+  }
+  static init_method_set_visible() {
+    if (!this.#_bindings.method_set_visible) {
       let classname = new StringName("StatusIndicator");
       let methodname = new StringName("set_visible");
-      this._bindings.method_set_visible = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_visible = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_is_visible() {
+    if (!this.#_bindings.method_is_visible) {
       let classname = new StringName("StatusIndicator");
       let methodname = new StringName("is_visible");
-      this._bindings.method_is_visible = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_visible = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_set_menu() {
+    if (!this.#_bindings.method_set_menu) {
       let classname = new StringName("StatusIndicator");
       let methodname = new StringName("set_menu");
-      this._bindings.method_set_menu = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_menu = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1348162250
       );
     }
-    {
+  }
+  static init_method_get_menu() {
+    if (!this.#_bindings.method_get_menu) {
       let classname = new StringName("StatusIndicator");
       let methodname = new StringName("get_menu");
-      this._bindings.method_get_menu = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_menu = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         4075236667
       );
     }
-    {
+  }
+  static init_method_get_rect() {
+    if (!this.#_bindings.method_get_rect) {
       let classname = new StringName("StatusIndicator");
       let methodname = new StringName("get_rect");
-      this._bindings.method_get_rect = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_rect = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1639390495
       );
     }
   }
+
+  
   
   set_tooltip(_tooltip) {
+    StatusIndicator.init_method_set_tooltip();
     return _call_native_mb_no_ret(
-      StatusIndicator._bindings.method_set_tooltip,
+      StatusIndicator.#_bindings.method_set_tooltip,
       this._owner,
       _tooltip
     );
     
   }
   get_tooltip() {
+    StatusIndicator.init_method_get_tooltip();
     return _call_native_mb_ret(
-      StatusIndicator._bindings.method_get_tooltip,
+      StatusIndicator.#_bindings.method_get_tooltip,
       this._owner,
 			Variant.Type.STRING,
     
@@ -143,50 +155,57 @@ export class StatusIndicator extends Node{
     
   }
   set_icon(_texture) {
+    StatusIndicator.init_method_set_icon();
     return _call_native_mb_no_ret(
-      StatusIndicator._bindings.method_set_icon,
+      StatusIndicator.#_bindings.method_set_icon,
       this._owner,
       _texture
     );
     
   }
   get_icon() {
+    StatusIndicator.init_method_get_icon();
     return _call_native_mb_ret(
-      StatusIndicator._bindings.method_get_icon,
+      StatusIndicator.#_bindings.method_get_icon,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
   }
   set_visible(_visible) {
+    StatusIndicator.init_method_set_visible();
     return _call_native_mb_no_ret(
-      StatusIndicator._bindings.method_set_visible,
+      StatusIndicator.#_bindings.method_set_visible,
       this._owner,
       _visible
     );
     
   }
   is_visible() {
+    StatusIndicator.init_method_is_visible();
     return _call_native_mb_ret(
-      StatusIndicator._bindings.method_is_visible,
+      StatusIndicator.#_bindings.method_is_visible,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_menu(_menu) {
+    StatusIndicator.init_method_set_menu();
     return _call_native_mb_no_ret(
-      StatusIndicator._bindings.method_set_menu,
+      StatusIndicator.#_bindings.method_set_menu,
       this._owner,
       _menu
     );
     
   }
   get_menu() {
+    StatusIndicator.init_method_get_menu();
     return _call_native_mb_ret(
-      StatusIndicator._bindings.method_get_menu,
+      StatusIndicator.#_bindings.method_get_menu,
       this._owner,
 			Variant.Type.NODE_PATH,
     
@@ -195,8 +214,9 @@ export class StatusIndicator extends Node{
     
   }
   get_rect() {
+    StatusIndicator.init_method_get_rect();
     return _call_native_mb_ret(
-      StatusIndicator._bindings.method_get_rect,
+      StatusIndicator.#_bindings.method_get_rect,
       this._owner,
 			Variant.Type.RECT2,
     
@@ -230,8 +250,4 @@ set visible (new_value) {
   this.set_visible(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

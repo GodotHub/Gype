@@ -2,12 +2,14 @@ import * as internal from '__internal__'
 import {
   _call_builtin_constructor,
   _call_builtin_method_ptr_ret,
-  _call_builtin_method_ptr_no_ret
+  _call_builtin_method_ptr_no_ret,
+  _call_builtin_method_ptr_obj_ret,
 } from '@js_godot/core/builtin_ptrcall'
-import { StringName } from '@js_godot/variant/string_name'
 import { Projection } from '@js_godot/variant/projection'
 import { Vector3 } from '@js_godot/variant/vector3'
+import { StringName } from '@js_godot/variant/string_name'
 import { Basis } from '@js_godot/variant/basis'
+import { GodotObject } from "@js_godot/classes/godot_object";
 
 class _MethodBindings {
   from_variant_constructor
@@ -51,20 +53,21 @@ export class Transform3D {
   static #SIZE = 48
   opaque = new Uint8Array(Transform3D.#SIZE)
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
-  constructor (from) {
-    if (!from) {
-      _call_builtin_constructor(Transform3D._bindings.constructor_0, this)
-    }else if (from instanceof Transform3D) {
-      _call_builtin_constructor(Transform3D._bindings.constructor_1, this, [
+  constructor (value) {
+    if (!value) {
+      _call_builtin_constructor(Transform3D.#_bindings.constructor_0, this)
+    } else if (arguments.length == 1&& arguments[0] instanceof Transform3D) {
+      let from = arguments[0];
+      _call_builtin_constructor(Transform3D.#_bindings.constructor_1, this, [
         from
       ])
     } else if (arguments.length == 2&& arguments[0] instanceof Basis&& arguments[1] instanceof Vector3) {
       let basis = arguments[0];
       let origin = arguments[1];
-      _call_builtin_constructor(Transform3D._bindings.constructor_2, this, [
+      _call_builtin_constructor(Transform3D.#_bindings.constructor_2, this, [
         basis, origin
       ])
     } else if (arguments.length == 4&& arguments[0] instanceof Vector3&& arguments[1] instanceof Vector3&& arguments[2] instanceof Vector3&& arguments[3] instanceof Vector3) {
@@ -72,39 +75,42 @@ export class Transform3D {
       let y_axis = arguments[1];
       let z_axis = arguments[2];
       let origin = arguments[3];
-      _call_builtin_constructor(Transform3D._bindings.constructor_3, this, [
+      _call_builtin_constructor(Transform3D.#_bindings.constructor_3, this, [
         x_axis, y_axis, z_axis, origin
       ])
-    }else if (from instanceof Projection) {
-      _call_builtin_constructor(Transform3D._bindings.constructor_4, this, [
+    } else if (arguments.length == 1&& arguments[0] instanceof Projection) {
+      let from = arguments[0];
+      _call_builtin_constructor(Transform3D.#_bindings.constructor_4, this, [
         from
       ])
-    } else if (from.constructor.name === "Variant") {
-      Transform3D._bindings.from_variant_constructor(this.opaque, from.opaque)
+    } else if (value.constructor.name === "Variant") {
+      Transform3D.#_bindings.from_variant_constructor(this.opaque, value.opaque)
+    } else if (value instanceof Uint8Array) {
+      this.opaque = value;
     } 
   }
   
   static __init_bindings_constructors_destructor () {
-    this._bindings.from_variant_constructor = internal.get_variant_to_type_constructor(
+    this.#_bindings.from_variant_constructor = internal.get_variant_to_type_constructor(
       18
     )
-    this._bindings.constructor_0 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_0 = internal.variant_get_ptr_constructor(
       18,
       0
     )
-    this._bindings.constructor_1 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_1 = internal.variant_get_ptr_constructor(
       18,
       1
     )
-    this._bindings.constructor_2 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_2 = internal.variant_get_ptr_constructor(
       18,
       2
     )
-    this._bindings.constructor_3 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_3 = internal.variant_get_ptr_constructor(
       18,
       3
     )
-    this._bindings.constructor_4 = internal.variant_get_ptr_constructor(
+    this.#_bindings.constructor_4 = internal.variant_get_ptr_constructor(
       18,
       4
     )
@@ -118,7 +124,7 @@ export class Transform3D {
     this.__init_bindings_constructors_destructor()
     {
       let _gde_name = new StringName('inverse')
-      this._bindings.method_inverse = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_inverse = internal.variant_get_ptr_builtin_method(
         18,
         _gde_name.opaque,
         3816817146
@@ -126,7 +132,7 @@ export class Transform3D {
     }
     {
       let _gde_name = new StringName('affine_inverse')
-      this._bindings.method_affine_inverse = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_affine_inverse = internal.variant_get_ptr_builtin_method(
         18,
         _gde_name.opaque,
         3816817146
@@ -134,7 +140,7 @@ export class Transform3D {
     }
     {
       let _gde_name = new StringName('orthonormalized')
-      this._bindings.method_orthonormalized = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_orthonormalized = internal.variant_get_ptr_builtin_method(
         18,
         _gde_name.opaque,
         3816817146
@@ -142,7 +148,7 @@ export class Transform3D {
     }
     {
       let _gde_name = new StringName('rotated')
-      this._bindings.method_rotated = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_rotated = internal.variant_get_ptr_builtin_method(
         18,
         _gde_name.opaque,
         1563203923
@@ -150,7 +156,7 @@ export class Transform3D {
     }
     {
       let _gde_name = new StringName('rotated_local')
-      this._bindings.method_rotated_local = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_rotated_local = internal.variant_get_ptr_builtin_method(
         18,
         _gde_name.opaque,
         1563203923
@@ -158,7 +164,7 @@ export class Transform3D {
     }
     {
       let _gde_name = new StringName('scaled')
-      this._bindings.method_scaled = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_scaled = internal.variant_get_ptr_builtin_method(
         18,
         _gde_name.opaque,
         1405596198
@@ -166,7 +172,7 @@ export class Transform3D {
     }
     {
       let _gde_name = new StringName('scaled_local')
-      this._bindings.method_scaled_local = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_scaled_local = internal.variant_get_ptr_builtin_method(
         18,
         _gde_name.opaque,
         1405596198
@@ -174,7 +180,7 @@ export class Transform3D {
     }
     {
       let _gde_name = new StringName('translated')
-      this._bindings.method_translated = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_translated = internal.variant_get_ptr_builtin_method(
         18,
         _gde_name.opaque,
         1405596198
@@ -182,7 +188,7 @@ export class Transform3D {
     }
     {
       let _gde_name = new StringName('translated_local')
-      this._bindings.method_translated_local = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_translated_local = internal.variant_get_ptr_builtin_method(
         18,
         _gde_name.opaque,
         1405596198
@@ -190,7 +196,7 @@ export class Transform3D {
     }
     {
       let _gde_name = new StringName('looking_at')
-      this._bindings.method_looking_at = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_looking_at = internal.variant_get_ptr_builtin_method(
         18,
         _gde_name.opaque,
         90889270
@@ -198,7 +204,7 @@ export class Transform3D {
     }
     {
       let _gde_name = new StringName('interpolate_with')
-      this._bindings.method_interpolate_with = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_interpolate_with = internal.variant_get_ptr_builtin_method(
         18,
         _gde_name.opaque,
         1786453358
@@ -206,7 +212,7 @@ export class Transform3D {
     }
     {
       let _gde_name = new StringName('is_equal_approx')
-      this._bindings.method_is_equal_approx = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_equal_approx = internal.variant_get_ptr_builtin_method(
         18,
         _gde_name.opaque,
         696001652
@@ -214,7 +220,7 @@ export class Transform3D {
     }
     {
       let _gde_name = new StringName('is_finite')
-      this._bindings.method_is_finite = internal.variant_get_ptr_builtin_method(
+      this.#_bindings.method_is_finite = internal.variant_get_ptr_builtin_method(
         18,
         _gde_name.opaque,
         3918633141
@@ -226,7 +232,7 @@ export class Transform3D {
   inverse () {
     let ret = new Transform3D()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Transform3D._bindings.method_inverse,
+      Transform3D.#_bindings.method_inverse,
       this,
       18,
       []
@@ -236,7 +242,7 @@ export class Transform3D {
   affine_inverse () {
     let ret = new Transform3D()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Transform3D._bindings.method_affine_inverse,
+      Transform3D.#_bindings.method_affine_inverse,
       this,
       18,
       []
@@ -246,7 +252,7 @@ export class Transform3D {
   orthonormalized () {
     let ret = new Transform3D()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Transform3D._bindings.method_orthonormalized,
+      Transform3D.#_bindings.method_orthonormalized,
       this,
       18,
       []
@@ -256,7 +262,7 @@ export class Transform3D {
   rotated (_axis, _angle) {
     let ret = new Transform3D()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Transform3D._bindings.method_rotated,
+      Transform3D.#_bindings.method_rotated,
       this,
       18,
       [_axis, _angle]
@@ -266,7 +272,7 @@ export class Transform3D {
   rotated_local (_axis, _angle) {
     let ret = new Transform3D()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Transform3D._bindings.method_rotated_local,
+      Transform3D.#_bindings.method_rotated_local,
       this,
       18,
       [_axis, _angle]
@@ -276,7 +282,7 @@ export class Transform3D {
   scaled (_scale) {
     let ret = new Transform3D()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Transform3D._bindings.method_scaled,
+      Transform3D.#_bindings.method_scaled,
       this,
       18,
       [_scale]
@@ -286,7 +292,7 @@ export class Transform3D {
   scaled_local (_scale) {
     let ret = new Transform3D()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Transform3D._bindings.method_scaled_local,
+      Transform3D.#_bindings.method_scaled_local,
       this,
       18,
       [_scale]
@@ -296,7 +302,7 @@ export class Transform3D {
   translated (_offset) {
     let ret = new Transform3D()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Transform3D._bindings.method_translated,
+      Transform3D.#_bindings.method_translated,
       this,
       18,
       [_offset]
@@ -306,7 +312,7 @@ export class Transform3D {
   translated_local (_offset) {
     let ret = new Transform3D()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Transform3D._bindings.method_translated_local,
+      Transform3D.#_bindings.method_translated_local,
       this,
       18,
       [_offset]
@@ -316,7 +322,7 @@ export class Transform3D {
   looking_at (_target, _up, _use_model_front) {
     let ret = new Transform3D()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Transform3D._bindings.method_looking_at,
+      Transform3D.#_bindings.method_looking_at,
       this,
       18,
       [_target, _up, _use_model_front]
@@ -326,7 +332,7 @@ export class Transform3D {
   interpolate_with (_xform, _weight) {
     let ret = new Transform3D()
     ret.opaque = _call_builtin_method_ptr_ret(
-      Transform3D._bindings.method_interpolate_with,
+      Transform3D.#_bindings.method_interpolate_with,
       this,
       18,
       [_xform, _weight]
@@ -336,7 +342,7 @@ export class Transform3D {
   is_equal_approx (_xform) {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Transform3D._bindings.method_is_equal_approx,
+      Transform3D.#_bindings.method_is_equal_approx,
       this,
       1,
       [_xform]
@@ -346,7 +352,7 @@ export class Transform3D {
   is_finite () {
     let ret
     ret = _call_builtin_method_ptr_ret(
-      Transform3D._bindings.method_is_finite,
+      Transform3D.#_bindings.method_is_finite,
       this,
       1,
       []

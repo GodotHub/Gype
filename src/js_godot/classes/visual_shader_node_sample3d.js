@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
-import { StringName } from '@js_godot/variant/string_name'
 import { VisualShaderNode } from '@js_godot/classes/visual_shader_node'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -15,7 +15,7 @@ class _MethodBindings {
 }
 export class VisualShaderNodeSample3D extends VisualShaderNode{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -25,45 +25,47 @@ export class VisualShaderNodeSample3D extends VisualShaderNode{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_source() {
+    if (!this.#_bindings.method_set_source) {
       let classname = new StringName("VisualShaderNodeSample3D");
       let methodname = new StringName("set_source");
-      this._bindings.method_set_source = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_source = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3315130991
       );
     }
-    {
+  }
+  static init_method_get_source() {
+    if (!this.#_bindings.method_get_source) {
       let classname = new StringName("VisualShaderNodeSample3D");
       let methodname = new StringName("get_source");
-      this._bindings.method_get_source = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_source = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1079494121
       );
     }
   }
+
+  
   
   set_source(_value) {
+    VisualShaderNodeSample3D.init_method_set_source();
     return _call_native_mb_no_ret(
-      VisualShaderNodeSample3D._bindings.method_set_source,
+      VisualShaderNodeSample3D.#_bindings.method_set_source,
       this._owner,
       _value
     );
     
   }
   get_source() {
+    VisualShaderNodeSample3D.init_method_get_source();
     return _call_native_mb_ret(
-      VisualShaderNodeSample3D._bindings.method_get_source,
+      VisualShaderNodeSample3D.#_bindings.method_get_source,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
@@ -80,9 +82,5 @@ set source (new_value) {
     SOURCE_TEXTURE: 0,
     SOURCE_PORT: 1,
     SOURCE_MAX: 2,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

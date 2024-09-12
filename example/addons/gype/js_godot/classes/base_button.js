@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { Control } from '@js_godot/classes/control'
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { Control } from '@js_godot/classes/control'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -36,7 +36,7 @@ class _MethodBindings {
 }
 export class BaseButton extends Control{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -46,417 +46,490 @@ export class BaseButton extends Control{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_pressed() {
+    if (!this.#_bindings.method_set_pressed) {
       let classname = new StringName("BaseButton");
       let methodname = new StringName("set_pressed");
-      this._bindings.method_set_pressed = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_pressed = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_is_pressed() {
+    if (!this.#_bindings.method_is_pressed) {
       let classname = new StringName("BaseButton");
       let methodname = new StringName("is_pressed");
-      this._bindings.method_is_pressed = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_pressed = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_set_pressed_no_signal() {
+    if (!this.#_bindings.method_set_pressed_no_signal) {
       let classname = new StringName("BaseButton");
       let methodname = new StringName("set_pressed_no_signal");
-      this._bindings.method_set_pressed_no_signal = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_pressed_no_signal = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_is_hovered() {
+    if (!this.#_bindings.method_is_hovered) {
       let classname = new StringName("BaseButton");
       let methodname = new StringName("is_hovered");
-      this._bindings.method_is_hovered = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_hovered = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_set_toggle_mode() {
+    if (!this.#_bindings.method_set_toggle_mode) {
       let classname = new StringName("BaseButton");
       let methodname = new StringName("set_toggle_mode");
-      this._bindings.method_set_toggle_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_toggle_mode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_is_toggle_mode() {
+    if (!this.#_bindings.method_is_toggle_mode) {
       let classname = new StringName("BaseButton");
       let methodname = new StringName("is_toggle_mode");
-      this._bindings.method_is_toggle_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_toggle_mode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_set_shortcut_in_tooltip() {
+    if (!this.#_bindings.method_set_shortcut_in_tooltip) {
       let classname = new StringName("BaseButton");
       let methodname = new StringName("set_shortcut_in_tooltip");
-      this._bindings.method_set_shortcut_in_tooltip = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_shortcut_in_tooltip = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_is_shortcut_in_tooltip_enabled() {
+    if (!this.#_bindings.method_is_shortcut_in_tooltip_enabled) {
       let classname = new StringName("BaseButton");
       let methodname = new StringName("is_shortcut_in_tooltip_enabled");
-      this._bindings.method_is_shortcut_in_tooltip_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_shortcut_in_tooltip_enabled = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_set_disabled() {
+    if (!this.#_bindings.method_set_disabled) {
       let classname = new StringName("BaseButton");
       let methodname = new StringName("set_disabled");
-      this._bindings.method_set_disabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_disabled = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_is_disabled() {
+    if (!this.#_bindings.method_is_disabled) {
       let classname = new StringName("BaseButton");
       let methodname = new StringName("is_disabled");
-      this._bindings.method_is_disabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_disabled = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_set_action_mode() {
+    if (!this.#_bindings.method_set_action_mode) {
       let classname = new StringName("BaseButton");
       let methodname = new StringName("set_action_mode");
-      this._bindings.method_set_action_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_action_mode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1985162088
       );
     }
-    {
+  }
+  static init_method_get_action_mode() {
+    if (!this.#_bindings.method_get_action_mode) {
       let classname = new StringName("BaseButton");
       let methodname = new StringName("get_action_mode");
-      this._bindings.method_get_action_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_action_mode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2589712189
       );
     }
-    {
+  }
+  static init_method_set_button_mask() {
+    if (!this.#_bindings.method_set_button_mask) {
       let classname = new StringName("BaseButton");
       let methodname = new StringName("set_button_mask");
-      this._bindings.method_set_button_mask = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_button_mask = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3950145251
       );
     }
-    {
+  }
+  static init_method_get_button_mask() {
+    if (!this.#_bindings.method_get_button_mask) {
       let classname = new StringName("BaseButton");
       let methodname = new StringName("get_button_mask");
-      this._bindings.method_get_button_mask = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_button_mask = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2512161324
       );
     }
-    {
+  }
+  static init_method_get_draw_mode() {
+    if (!this.#_bindings.method_get_draw_mode) {
       let classname = new StringName("BaseButton");
       let methodname = new StringName("get_draw_mode");
-      this._bindings.method_get_draw_mode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_draw_mode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2492721305
       );
     }
-    {
+  }
+  static init_method_set_keep_pressed_outside() {
+    if (!this.#_bindings.method_set_keep_pressed_outside) {
       let classname = new StringName("BaseButton");
       let methodname = new StringName("set_keep_pressed_outside");
-      this._bindings.method_set_keep_pressed_outside = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_keep_pressed_outside = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_is_keep_pressed_outside() {
+    if (!this.#_bindings.method_is_keep_pressed_outside) {
       let classname = new StringName("BaseButton");
       let methodname = new StringName("is_keep_pressed_outside");
-      this._bindings.method_is_keep_pressed_outside = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_keep_pressed_outside = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_set_shortcut_feedback() {
+    if (!this.#_bindings.method_set_shortcut_feedback) {
       let classname = new StringName("BaseButton");
       let methodname = new StringName("set_shortcut_feedback");
-      this._bindings.method_set_shortcut_feedback = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_shortcut_feedback = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_is_shortcut_feedback() {
+    if (!this.#_bindings.method_is_shortcut_feedback) {
       let classname = new StringName("BaseButton");
       let methodname = new StringName("is_shortcut_feedback");
-      this._bindings.method_is_shortcut_feedback = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_shortcut_feedback = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_set_shortcut() {
+    if (!this.#_bindings.method_set_shortcut) {
       let classname = new StringName("BaseButton");
       let methodname = new StringName("set_shortcut");
-      this._bindings.method_set_shortcut = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_shortcut = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         857163497
       );
     }
-    {
+  }
+  static init_method_get_shortcut() {
+    if (!this.#_bindings.method_get_shortcut) {
       let classname = new StringName("BaseButton");
       let methodname = new StringName("get_shortcut");
-      this._bindings.method_get_shortcut = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_shortcut = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3415666916
       );
     }
-    {
+  }
+  static init_method_set_button_group() {
+    if (!this.#_bindings.method_set_button_group) {
       let classname = new StringName("BaseButton");
       let methodname = new StringName("set_button_group");
-      this._bindings.method_set_button_group = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_button_group = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1794463739
       );
     }
-    {
+  }
+  static init_method_get_button_group() {
+    if (!this.#_bindings.method_get_button_group) {
       let classname = new StringName("BaseButton");
       let methodname = new StringName("get_button_group");
-      this._bindings.method_get_button_group = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_button_group = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         281644053
       );
     }
   }
+
+  
   
   _pressed() {
   }
   _toggled(_toggled_on) {
   }
   set_pressed(_pressed) {
+    BaseButton.init_method_set_pressed();
     return _call_native_mb_no_ret(
-      BaseButton._bindings.method_set_pressed,
+      BaseButton.#_bindings.method_set_pressed,
       this._owner,
       _pressed
     );
     
   }
   is_pressed() {
+    BaseButton.init_method_is_pressed();
     return _call_native_mb_ret(
-      BaseButton._bindings.method_is_pressed,
+      BaseButton.#_bindings.method_is_pressed,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_pressed_no_signal(_pressed) {
+    BaseButton.init_method_set_pressed_no_signal();
     return _call_native_mb_no_ret(
-      BaseButton._bindings.method_set_pressed_no_signal,
+      BaseButton.#_bindings.method_set_pressed_no_signal,
       this._owner,
       _pressed
     );
     
   }
   is_hovered() {
+    BaseButton.init_method_is_hovered();
     return _call_native_mb_ret(
-      BaseButton._bindings.method_is_hovered,
+      BaseButton.#_bindings.method_is_hovered,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_toggle_mode(_enabled) {
+    BaseButton.init_method_set_toggle_mode();
     return _call_native_mb_no_ret(
-      BaseButton._bindings.method_set_toggle_mode,
+      BaseButton.#_bindings.method_set_toggle_mode,
       this._owner,
       _enabled
     );
     
   }
   is_toggle_mode() {
+    BaseButton.init_method_is_toggle_mode();
     return _call_native_mb_ret(
-      BaseButton._bindings.method_is_toggle_mode,
+      BaseButton.#_bindings.method_is_toggle_mode,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_shortcut_in_tooltip(_enabled) {
+    BaseButton.init_method_set_shortcut_in_tooltip();
     return _call_native_mb_no_ret(
-      BaseButton._bindings.method_set_shortcut_in_tooltip,
+      BaseButton.#_bindings.method_set_shortcut_in_tooltip,
       this._owner,
       _enabled
     );
     
   }
   is_shortcut_in_tooltip_enabled() {
+    BaseButton.init_method_is_shortcut_in_tooltip_enabled();
     return _call_native_mb_ret(
-      BaseButton._bindings.method_is_shortcut_in_tooltip_enabled,
+      BaseButton.#_bindings.method_is_shortcut_in_tooltip_enabled,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_disabled(_disabled) {
+    BaseButton.init_method_set_disabled();
     return _call_native_mb_no_ret(
-      BaseButton._bindings.method_set_disabled,
+      BaseButton.#_bindings.method_set_disabled,
       this._owner,
       _disabled
     );
     
   }
   is_disabled() {
+    BaseButton.init_method_is_disabled();
     return _call_native_mb_ret(
-      BaseButton._bindings.method_is_disabled,
+      BaseButton.#_bindings.method_is_disabled,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_action_mode(_mode) {
+    BaseButton.init_method_set_action_mode();
     return _call_native_mb_no_ret(
-      BaseButton._bindings.method_set_action_mode,
+      BaseButton.#_bindings.method_set_action_mode,
       this._owner,
       _mode
     );
     
   }
   get_action_mode() {
+    BaseButton.init_method_get_action_mode();
     return _call_native_mb_ret(
-      BaseButton._bindings.method_get_action_mode,
+      BaseButton.#_bindings.method_get_action_mode,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_button_mask(_mask) {
+    BaseButton.init_method_set_button_mask();
     return _call_native_mb_no_ret(
-      BaseButton._bindings.method_set_button_mask,
+      BaseButton.#_bindings.method_set_button_mask,
       this._owner,
       _mask
     );
     
   }
   get_button_mask() {
+    BaseButton.init_method_get_button_mask();
     return _call_native_mb_ret(
-      BaseButton._bindings.method_get_button_mask,
+      BaseButton.#_bindings.method_get_button_mask,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
   }
   get_draw_mode() {
+    BaseButton.init_method_get_draw_mode();
     return _call_native_mb_ret(
-      BaseButton._bindings.method_get_draw_mode,
+      BaseButton.#_bindings.method_get_draw_mode,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
   }
   set_keep_pressed_outside(_enabled) {
+    BaseButton.init_method_set_keep_pressed_outside();
     return _call_native_mb_no_ret(
-      BaseButton._bindings.method_set_keep_pressed_outside,
+      BaseButton.#_bindings.method_set_keep_pressed_outside,
       this._owner,
       _enabled
     );
     
   }
   is_keep_pressed_outside() {
+    BaseButton.init_method_is_keep_pressed_outside();
     return _call_native_mb_ret(
-      BaseButton._bindings.method_is_keep_pressed_outside,
+      BaseButton.#_bindings.method_is_keep_pressed_outside,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_shortcut_feedback(_enabled) {
+    BaseButton.init_method_set_shortcut_feedback();
     return _call_native_mb_no_ret(
-      BaseButton._bindings.method_set_shortcut_feedback,
+      BaseButton.#_bindings.method_set_shortcut_feedback,
       this._owner,
       _enabled
     );
     
   }
   is_shortcut_feedback() {
+    BaseButton.init_method_is_shortcut_feedback();
     return _call_native_mb_ret(
-      BaseButton._bindings.method_is_shortcut_feedback,
+      BaseButton.#_bindings.method_is_shortcut_feedback,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_shortcut(_shortcut) {
+    BaseButton.init_method_set_shortcut();
     return _call_native_mb_no_ret(
-      BaseButton._bindings.method_set_shortcut,
+      BaseButton.#_bindings.method_set_shortcut,
       this._owner,
       _shortcut
     );
     
   }
   get_shortcut() {
+    BaseButton.init_method_get_shortcut();
     return _call_native_mb_ret(
-      BaseButton._bindings.method_get_shortcut,
+      BaseButton.#_bindings.method_get_shortcut,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
   }
   set_button_group(_button_group) {
+    BaseButton.init_method_set_button_group();
     return _call_native_mb_no_ret(
-      BaseButton._bindings.method_set_button_group,
+      BaseButton.#_bindings.method_set_button_group,
       this._owner,
       _button_group
     );
     
   }
   get_button_group() {
+    BaseButton.init_method_get_button_group();
     return _call_native_mb_ret(
-      BaseButton._bindings.method_get_button_group,
+      BaseButton.#_bindings.method_get_button_group,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
@@ -533,9 +606,5 @@ set shortcut_in_tooltip (new_value) {
   static ActionMode = {
     ACTION_MODE_BUTTON_PRESS: 0,
     ACTION_MODE_BUTTON_RELEASE: 1,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

@@ -30,10 +30,9 @@ class _MethodBindings {
 {%- set class_name = to_js_type(clazz['name']) -%}
 {%- endif -%}
 
-
 {{singleton_class_name(clazz, singletons)}} {{ 'extends ' + to_js_type(clazz['inherits']) if to_js_type(clazz['inherits']) else ''}}{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -43,33 +42,32 @@ class _MethodBindings {
       super(godot_object);
     }
   }
-  {% from 'utils/utils.jinja2' import define_args %}
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {%- for method in methods %}
-      {%- if not method['is_virtual'] %}
-    {
+
+  {%- for method in methods %}
+    {%- if not method['is_virtual'] %}
+  static init_method_{{method['name']}}() {
+    if (!this.#_bindings.method_{{method['name']}}) {
       let classname = new StringName("{{clazz['name']}}");
       let methodname = new StringName("{{method['name']}}");
-      this._bindings.method_{{method['name']}} = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_{{method['name']}} = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         {{method['hash']}}
       );
     }
-      {%- endif %}
-    {%- endfor %}
   }
+    {%- endif %}
+  {%- endfor %}
+
+  {% from 'utils/utils.jinja2' import define_args %}
   {% set clazz_name = to_js_type(clazz['name']) %}
   {%- from 'utils/utils.jinja2' import conn_args, type_enum %}
   {%- for method in methods %}
   {{method['name']}}({{-conn_args(method['arguments'])-}}) {
     {%- if not method['is_virtual'] %}
+    {{to_js_type(clazz['name'])}}.init_method_{{method['name']}}();
     return _call_native_mb{{-'' if method['return_value'] else '_no'-}}_ret(
-      {{ '_'+clazz_name if clazz_name in singletons else clazz_name}}._bindings.method_{{method['name']}},
+      {{ '_'+clazz_name if clazz_name in singletons else clazz_name}}.#_bindings.method_{{method['name']}},
       this._owner,
       {%- if method['return_value'] -%}
       {{-type_enum(method['return_value'], '\t\t\t')-}}
@@ -89,10 +87,6 @@ class _MethodBindings {
     {%- endfor %}
   }
   {%- endfor %}
-
-  static {
-    this._init_bindings();
-  }
 }
 
 {%- if clazz['name'] in singletons %}

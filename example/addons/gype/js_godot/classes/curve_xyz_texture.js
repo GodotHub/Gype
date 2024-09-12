@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Texture2D } from '@js_godot/classes/texture2d'
-import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -20,7 +20,7 @@ class _MethodBindings {
 }
 export class CurveXYZTexture extends Texture2D{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -30,132 +30,148 @@ export class CurveXYZTexture extends Texture2D{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_width() {
+    if (!this.#_bindings.method_set_width) {
       let classname = new StringName("CurveXYZTexture");
       let methodname = new StringName("set_width");
-      this._bindings.method_set_width = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_width = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1286410249
       );
     }
-    {
+  }
+  static init_method_set_curve_x() {
+    if (!this.#_bindings.method_set_curve_x) {
       let classname = new StringName("CurveXYZTexture");
       let methodname = new StringName("set_curve_x");
-      this._bindings.method_set_curve_x = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_curve_x = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         270443179
       );
     }
-    {
+  }
+  static init_method_get_curve_x() {
+    if (!this.#_bindings.method_get_curve_x) {
       let classname = new StringName("CurveXYZTexture");
       let methodname = new StringName("get_curve_x");
-      this._bindings.method_get_curve_x = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2460114913
-      );
-    }
-    {
-      let classname = new StringName("CurveXYZTexture");
-      let methodname = new StringName("set_curve_y");
-      this._bindings.method_set_curve_y = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        270443179
-      );
-    }
-    {
-      let classname = new StringName("CurveXYZTexture");
-      let methodname = new StringName("get_curve_y");
-      this._bindings.method_get_curve_y = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2460114913
-      );
-    }
-    {
-      let classname = new StringName("CurveXYZTexture");
-      let methodname = new StringName("set_curve_z");
-      this._bindings.method_set_curve_z = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        270443179
-      );
-    }
-    {
-      let classname = new StringName("CurveXYZTexture");
-      let methodname = new StringName("get_curve_z");
-      this._bindings.method_get_curve_z = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_curve_x = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2460114913
       );
     }
   }
+  static init_method_set_curve_y() {
+    if (!this.#_bindings.method_set_curve_y) {
+      let classname = new StringName("CurveXYZTexture");
+      let methodname = new StringName("set_curve_y");
+      this.#_bindings.method_set_curve_y = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        270443179
+      );
+    }
+  }
+  static init_method_get_curve_y() {
+    if (!this.#_bindings.method_get_curve_y) {
+      let classname = new StringName("CurveXYZTexture");
+      let methodname = new StringName("get_curve_y");
+      this.#_bindings.method_get_curve_y = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2460114913
+      );
+    }
+  }
+  static init_method_set_curve_z() {
+    if (!this.#_bindings.method_set_curve_z) {
+      let classname = new StringName("CurveXYZTexture");
+      let methodname = new StringName("set_curve_z");
+      this.#_bindings.method_set_curve_z = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        270443179
+      );
+    }
+  }
+  static init_method_get_curve_z() {
+    if (!this.#_bindings.method_get_curve_z) {
+      let classname = new StringName("CurveXYZTexture");
+      let methodname = new StringName("get_curve_z");
+      this.#_bindings.method_get_curve_z = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2460114913
+      );
+    }
+  }
+
+  
   
   set_width(_width) {
+    CurveXYZTexture.init_method_set_width();
     return _call_native_mb_no_ret(
-      CurveXYZTexture._bindings.method_set_width,
+      CurveXYZTexture.#_bindings.method_set_width,
       this._owner,
       _width
     );
     
   }
   set_curve_x(_curve) {
+    CurveXYZTexture.init_method_set_curve_x();
     return _call_native_mb_no_ret(
-      CurveXYZTexture._bindings.method_set_curve_x,
+      CurveXYZTexture.#_bindings.method_set_curve_x,
       this._owner,
       _curve
     );
     
   }
   get_curve_x() {
+    CurveXYZTexture.init_method_get_curve_x();
     return _call_native_mb_ret(
-      CurveXYZTexture._bindings.method_get_curve_x,
+      CurveXYZTexture.#_bindings.method_get_curve_x,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
   }
   set_curve_y(_curve) {
+    CurveXYZTexture.init_method_set_curve_y();
     return _call_native_mb_no_ret(
-      CurveXYZTexture._bindings.method_set_curve_y,
+      CurveXYZTexture.#_bindings.method_set_curve_y,
       this._owner,
       _curve
     );
     
   }
   get_curve_y() {
+    CurveXYZTexture.init_method_get_curve_y();
     return _call_native_mb_ret(
-      CurveXYZTexture._bindings.method_get_curve_y,
+      CurveXYZTexture.#_bindings.method_get_curve_y,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
   }
   set_curve_z(_curve) {
+    CurveXYZTexture.init_method_set_curve_z();
     return _call_native_mb_no_ret(
-      CurveXYZTexture._bindings.method_set_curve_z,
+      CurveXYZTexture.#_bindings.method_set_curve_z,
       this._owner,
       _curve
     );
     
   }
   get_curve_z() {
+    CurveXYZTexture.init_method_get_curve_z();
     return _call_native_mb_ret(
-      CurveXYZTexture._bindings.method_get_curve_z,
+      CurveXYZTexture.#_bindings.method_get_curve_z,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
@@ -186,8 +202,4 @@ set curve_z (new_value) {
   this.set_curve_z(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

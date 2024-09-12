@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
-import { PrimitiveMesh } from '@js_godot/classes/primitive_mesh'
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
+import { StringName } from '@js_godot/variant/string_name'
+import { PrimitiveMesh } from '@js_godot/classes/primitive_mesh'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -23,7 +23,7 @@ class _MethodBindings {
 }
 export class SphereMesh extends PrimitiveMesh{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -33,185 +33,215 @@ export class SphereMesh extends PrimitiveMesh{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_radius() {
+    if (!this.#_bindings.method_set_radius) {
       let classname = new StringName("SphereMesh");
       let methodname = new StringName("set_radius");
-      this._bindings.method_set_radius = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_radius = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_radius() {
+    if (!this.#_bindings.method_get_radius) {
       let classname = new StringName("SphereMesh");
       let methodname = new StringName("get_radius");
-      this._bindings.method_get_radius = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_radius = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_set_height() {
+    if (!this.#_bindings.method_set_height) {
       let classname = new StringName("SphereMesh");
       let methodname = new StringName("set_height");
-      this._bindings.method_set_height = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_height = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_height() {
+    if (!this.#_bindings.method_get_height) {
       let classname = new StringName("SphereMesh");
       let methodname = new StringName("get_height");
-      this._bindings.method_get_height = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_height = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_set_radial_segments() {
+    if (!this.#_bindings.method_set_radial_segments) {
       let classname = new StringName("SphereMesh");
       let methodname = new StringName("set_radial_segments");
-      this._bindings.method_set_radial_segments = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_radial_segments = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1286410249
       );
     }
-    {
+  }
+  static init_method_get_radial_segments() {
+    if (!this.#_bindings.method_get_radial_segments) {
       let classname = new StringName("SphereMesh");
       let methodname = new StringName("get_radial_segments");
-      this._bindings.method_get_radial_segments = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_radial_segments = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
-    {
+  }
+  static init_method_set_rings() {
+    if (!this.#_bindings.method_set_rings) {
       let classname = new StringName("SphereMesh");
       let methodname = new StringName("set_rings");
-      this._bindings.method_set_rings = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_rings = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1286410249
       );
     }
-    {
+  }
+  static init_method_get_rings() {
+    if (!this.#_bindings.method_get_rings) {
       let classname = new StringName("SphereMesh");
       let methodname = new StringName("get_rings");
-      this._bindings.method_get_rings = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_rings = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
-    {
+  }
+  static init_method_set_is_hemisphere() {
+    if (!this.#_bindings.method_set_is_hemisphere) {
       let classname = new StringName("SphereMesh");
       let methodname = new StringName("set_is_hemisphere");
-      this._bindings.method_set_is_hemisphere = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_is_hemisphere = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_get_is_hemisphere() {
+    if (!this.#_bindings.method_get_is_hemisphere) {
       let classname = new StringName("SphereMesh");
       let methodname = new StringName("get_is_hemisphere");
-      this._bindings.method_get_is_hemisphere = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_is_hemisphere = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
   }
+
+  
   
   set_radius(_radius) {
+    SphereMesh.init_method_set_radius();
     return _call_native_mb_no_ret(
-      SphereMesh._bindings.method_set_radius,
+      SphereMesh.#_bindings.method_set_radius,
       this._owner,
       _radius
     );
     
   }
   get_radius() {
+    SphereMesh.init_method_get_radius();
     return _call_native_mb_ret(
-      SphereMesh._bindings.method_get_radius,
+      SphereMesh.#_bindings.method_get_radius,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_height(_height) {
+    SphereMesh.init_method_set_height();
     return _call_native_mb_no_ret(
-      SphereMesh._bindings.method_set_height,
+      SphereMesh.#_bindings.method_set_height,
       this._owner,
       _height
     );
     
   }
   get_height() {
+    SphereMesh.init_method_get_height();
     return _call_native_mb_ret(
-      SphereMesh._bindings.method_get_height,
+      SphereMesh.#_bindings.method_get_height,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_radial_segments(_radial_segments) {
+    SphereMesh.init_method_set_radial_segments();
     return _call_native_mb_no_ret(
-      SphereMesh._bindings.method_set_radial_segments,
+      SphereMesh.#_bindings.method_set_radial_segments,
       this._owner,
       _radial_segments
     );
     
   }
   get_radial_segments() {
+    SphereMesh.init_method_get_radial_segments();
     return _call_native_mb_ret(
-      SphereMesh._bindings.method_get_radial_segments,
+      SphereMesh.#_bindings.method_get_radial_segments,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_rings(_rings) {
+    SphereMesh.init_method_set_rings();
     return _call_native_mb_no_ret(
-      SphereMesh._bindings.method_set_rings,
+      SphereMesh.#_bindings.method_set_rings,
       this._owner,
       _rings
     );
     
   }
   get_rings() {
+    SphereMesh.init_method_get_rings();
     return _call_native_mb_ret(
-      SphereMesh._bindings.method_get_rings,
+      SphereMesh.#_bindings.method_get_rings,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_is_hemisphere(_is_hemisphere) {
+    SphereMesh.init_method_set_is_hemisphere();
     return _call_native_mb_no_ret(
-      SphereMesh._bindings.method_set_is_hemisphere,
+      SphereMesh.#_bindings.method_set_is_hemisphere,
       this._owner,
       _is_hemisphere
     );
     
   }
   get_is_hemisphere() {
+    SphereMesh.init_method_get_is_hemisphere();
     return _call_native_mb_ret(
-      SphereMesh._bindings.method_get_is_hemisphere,
+      SphereMesh.#_bindings.method_get_is_hemisphere,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
@@ -248,8 +278,4 @@ set is_hemisphere (new_value) {
   this.set_is_hemisphere(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

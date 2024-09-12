@@ -1,9 +1,7 @@
 import * as internal from '__internal__';
-import { Dictionary } from '@js_godot/variant/dictionary'
-import { StringName } from '@js_godot/variant/string_name'
 import { Variant } from '@js_godot/variant/variant'
 import { Font } from '@js_godot/classes/font'
-import { Transform2D } from '@js_godot/variant/transform2d'
+import { StringName } from '@js_godot/variant/string_name'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -29,7 +27,7 @@ class _MethodBindings {
 }
 export class FontVariation extends Font{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -39,168 +37,195 @@ export class FontVariation extends Font{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_base_font() {
+    if (!this.#_bindings.method_set_base_font) {
       let classname = new StringName("FontVariation");
       let methodname = new StringName("set_base_font");
-      this._bindings.method_set_base_font = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_base_font = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1262170328
       );
     }
-    {
+  }
+  static init_method_get_base_font() {
+    if (!this.#_bindings.method_get_base_font) {
       let classname = new StringName("FontVariation");
       let methodname = new StringName("get_base_font");
-      this._bindings.method_get_base_font = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_base_font = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3229501585
       );
     }
-    {
+  }
+  static init_method_set_variation_opentype() {
+    if (!this.#_bindings.method_set_variation_opentype) {
       let classname = new StringName("FontVariation");
       let methodname = new StringName("set_variation_opentype");
-      this._bindings.method_set_variation_opentype = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_variation_opentype = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         4155329257
       );
     }
-    {
+  }
+  static init_method_get_variation_opentype() {
+    if (!this.#_bindings.method_get_variation_opentype) {
       let classname = new StringName("FontVariation");
       let methodname = new StringName("get_variation_opentype");
-      this._bindings.method_get_variation_opentype = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_variation_opentype = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3102165223
       );
     }
-    {
+  }
+  static init_method_set_variation_embolden() {
+    if (!this.#_bindings.method_set_variation_embolden) {
       let classname = new StringName("FontVariation");
       let methodname = new StringName("set_variation_embolden");
-      this._bindings.method_set_variation_embolden = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_variation_embolden = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_variation_embolden() {
+    if (!this.#_bindings.method_get_variation_embolden) {
       let classname = new StringName("FontVariation");
       let methodname = new StringName("get_variation_embolden");
-      this._bindings.method_get_variation_embolden = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("FontVariation");
-      let methodname = new StringName("set_variation_face_index");
-      this._bindings.method_set_variation_face_index = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("FontVariation");
-      let methodname = new StringName("get_variation_face_index");
-      this._bindings.method_get_variation_face_index = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("FontVariation");
-      let methodname = new StringName("set_variation_transform");
-      this._bindings.method_set_variation_transform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2761652528
-      );
-    }
-    {
-      let classname = new StringName("FontVariation");
-      let methodname = new StringName("get_variation_transform");
-      this._bindings.method_get_variation_transform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3814499831
-      );
-    }
-    {
-      let classname = new StringName("FontVariation");
-      let methodname = new StringName("set_opentype_features");
-      this._bindings.method_set_opentype_features = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        4155329257
-      );
-    }
-    {
-      let classname = new StringName("FontVariation");
-      let methodname = new StringName("set_spacing");
-      this._bindings.method_set_spacing = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3122339690
-      );
-    }
-    {
-      let classname = new StringName("FontVariation");
-      let methodname = new StringName("set_baseline_offset");
-      this._bindings.method_set_baseline_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("FontVariation");
-      let methodname = new StringName("get_baseline_offset");
-      this._bindings.method_get_baseline_offset = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_variation_embolden = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
   }
+  static init_method_set_variation_face_index() {
+    if (!this.#_bindings.method_set_variation_face_index) {
+      let classname = new StringName("FontVariation");
+      let methodname = new StringName("set_variation_face_index");
+      this.#_bindings.method_set_variation_face_index = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1286410249
+      );
+    }
+  }
+  static init_method_get_variation_face_index() {
+    if (!this.#_bindings.method_get_variation_face_index) {
+      let classname = new StringName("FontVariation");
+      let methodname = new StringName("get_variation_face_index");
+      this.#_bindings.method_get_variation_face_index = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3905245786
+      );
+    }
+  }
+  static init_method_set_variation_transform() {
+    if (!this.#_bindings.method_set_variation_transform) {
+      let classname = new StringName("FontVariation");
+      let methodname = new StringName("set_variation_transform");
+      this.#_bindings.method_set_variation_transform = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2761652528
+      );
+    }
+  }
+  static init_method_get_variation_transform() {
+    if (!this.#_bindings.method_get_variation_transform) {
+      let classname = new StringName("FontVariation");
+      let methodname = new StringName("get_variation_transform");
+      this.#_bindings.method_get_variation_transform = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3814499831
+      );
+    }
+  }
+  static init_method_set_opentype_features() {
+    if (!this.#_bindings.method_set_opentype_features) {
+      let classname = new StringName("FontVariation");
+      let methodname = new StringName("set_opentype_features");
+      this.#_bindings.method_set_opentype_features = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        4155329257
+      );
+    }
+  }
+  static init_method_set_spacing() {
+    if (!this.#_bindings.method_set_spacing) {
+      let classname = new StringName("FontVariation");
+      let methodname = new StringName("set_spacing");
+      this.#_bindings.method_set_spacing = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3122339690
+      );
+    }
+  }
+  static init_method_set_baseline_offset() {
+    if (!this.#_bindings.method_set_baseline_offset) {
+      let classname = new StringName("FontVariation");
+      let methodname = new StringName("set_baseline_offset");
+      this.#_bindings.method_set_baseline_offset = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        373806689
+      );
+    }
+  }
+  static init_method_get_baseline_offset() {
+    if (!this.#_bindings.method_get_baseline_offset) {
+      let classname = new StringName("FontVariation");
+      let methodname = new StringName("get_baseline_offset");
+      this.#_bindings.method_get_baseline_offset = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1740695150
+      );
+    }
+  }
+
+  
   
   set_base_font(_font) {
+    FontVariation.init_method_set_base_font();
     return _call_native_mb_no_ret(
-      FontVariation._bindings.method_set_base_font,
+      FontVariation.#_bindings.method_set_base_font,
       this._owner,
       _font
     );
     
   }
   get_base_font() {
+    FontVariation.init_method_get_base_font();
     return _call_native_mb_ret(
-      FontVariation._bindings.method_get_base_font,
+      FontVariation.#_bindings.method_get_base_font,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
   }
   set_variation_opentype(_coords) {
+    FontVariation.init_method_set_variation_opentype();
     return _call_native_mb_no_ret(
-      FontVariation._bindings.method_set_variation_opentype,
+      FontVariation.#_bindings.method_set_variation_opentype,
       this._owner,
       _coords
     );
     
   }
   get_variation_opentype() {
+    FontVariation.init_method_get_variation_opentype();
     return _call_native_mb_ret(
-      FontVariation._bindings.method_get_variation_opentype,
+      FontVariation.#_bindings.method_get_variation_opentype,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -209,50 +234,58 @@ export class FontVariation extends Font{
     
   }
   set_variation_embolden(_strength) {
+    FontVariation.init_method_set_variation_embolden();
     return _call_native_mb_no_ret(
-      FontVariation._bindings.method_set_variation_embolden,
+      FontVariation.#_bindings.method_set_variation_embolden,
       this._owner,
       _strength
     );
     
   }
   get_variation_embolden() {
+    FontVariation.init_method_get_variation_embolden();
     return _call_native_mb_ret(
-      FontVariation._bindings.method_get_variation_embolden,
+      FontVariation.#_bindings.method_get_variation_embolden,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_variation_face_index(_face_index) {
+    FontVariation.init_method_set_variation_face_index();
     return _call_native_mb_no_ret(
-      FontVariation._bindings.method_set_variation_face_index,
+      FontVariation.#_bindings.method_set_variation_face_index,
       this._owner,
       _face_index
     );
     
   }
   get_variation_face_index() {
+    FontVariation.init_method_get_variation_face_index();
     return _call_native_mb_ret(
-      FontVariation._bindings.method_get_variation_face_index,
+      FontVariation.#_bindings.method_get_variation_face_index,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_variation_transform(_transform) {
+    FontVariation.init_method_set_variation_transform();
     return _call_native_mb_no_ret(
-      FontVariation._bindings.method_set_variation_transform,
+      FontVariation.#_bindings.method_set_variation_transform,
       this._owner,
       _transform
     );
     
   }
   get_variation_transform() {
+    FontVariation.init_method_get_variation_transform();
     return _call_native_mb_ret(
-      FontVariation._bindings.method_get_variation_transform,
+      FontVariation.#_bindings.method_get_variation_transform,
       this._owner,
 			Variant.Type.TRANSFORM2D,
     
@@ -261,34 +294,39 @@ export class FontVariation extends Font{
     
   }
   set_opentype_features(_features) {
+    FontVariation.init_method_set_opentype_features();
     return _call_native_mb_no_ret(
-      FontVariation._bindings.method_set_opentype_features,
+      FontVariation.#_bindings.method_set_opentype_features,
       this._owner,
       _features
     );
     
   }
   set_spacing(_spacing, _value) {
+    FontVariation.init_method_set_spacing();
     return _call_native_mb_no_ret(
-      FontVariation._bindings.method_set_spacing,
+      FontVariation.#_bindings.method_set_spacing,
       this._owner,
       _spacing, _value
     );
     
   }
   set_baseline_offset(_baseline_offset) {
+    FontVariation.init_method_set_baseline_offset();
     return _call_native_mb_no_ret(
-      FontVariation._bindings.method_set_baseline_offset,
+      FontVariation.#_bindings.method_set_baseline_offset,
       this._owner,
       _baseline_offset
     );
     
   }
   get_baseline_offset() {
+    FontVariation.init_method_get_baseline_offset();
     return _call_native_mb_ret(
-      FontVariation._bindings.method_get_baseline_offset,
+      FontVariation.#_bindings.method_get_baseline_offset,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
@@ -361,8 +399,4 @@ set baseline_offset (new_value) {
   this.set_baseline_offset(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

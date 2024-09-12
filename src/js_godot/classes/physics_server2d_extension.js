@@ -1,12 +1,8 @@
 import * as internal from '__internal__';
-import { RID } from '@js_godot/variant/rid'
 import { Variant } from '@js_godot/variant/variant'
-import { Transform2D } from '@js_godot/variant/transform2d'
-import { Vector2 } from '@js_godot/variant/vector2'
-import { Callable } from '@js_godot/variant/callable'
 import { StringName } from '@js_godot/variant/string_name'
+import { GDArray } from '@js_godot/variant/gd_array'
 import { PhysicsServer2D } from '@js_godot/classes/physics_server2d'
-import { PackedVector2Array } from '@js_godot/variant/packed_vector2_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -20,7 +16,7 @@ class _MethodBindings {
 }
 export class PhysicsServer2DExtension extends PhysicsServer2D{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -30,31 +26,30 @@ export class PhysicsServer2DExtension extends PhysicsServer2D{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_body_test_motion_is_excluding_body() {
+    if (!this.#_bindings.method_body_test_motion_is_excluding_body) {
       let classname = new StringName("PhysicsServer2DExtension");
       let methodname = new StringName("body_test_motion_is_excluding_body");
-      this._bindings.method_body_test_motion_is_excluding_body = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_body_test_motion_is_excluding_body = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         4155700596
       );
     }
-    {
+  }
+  static init_method_body_test_motion_is_excluding_object() {
+    if (!this.#_bindings.method_body_test_motion_is_excluding_object) {
       let classname = new StringName("PhysicsServer2DExtension");
       let methodname = new StringName("body_test_motion_is_excluding_object");
-      this._bindings.method_body_test_motion_is_excluding_object = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_body_test_motion_is_excluding_object = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1116898809
       );
     }
   }
+
+  
   
   _world_boundary_shape_create() {
   }
@@ -333,27 +328,27 @@ export class PhysicsServer2DExtension extends PhysicsServer2D{
   _get_process_info(_process_info) {
   }
   body_test_motion_is_excluding_body(_body) {
+    PhysicsServer2DExtension.init_method_body_test_motion_is_excluding_body();
     return _call_native_mb_ret(
-      PhysicsServer2DExtension._bindings.method_body_test_motion_is_excluding_body,
+      PhysicsServer2DExtension.#_bindings.method_body_test_motion_is_excluding_body,
       this._owner,
 			Variant.Type.BOOL,
+    
       _body
     );
     
   }
   body_test_motion_is_excluding_object(_object) {
+    PhysicsServer2DExtension.init_method_body_test_motion_is_excluding_object();
     return _call_native_mb_ret(
-      PhysicsServer2DExtension._bindings.method_body_test_motion_is_excluding_object,
+      PhysicsServer2DExtension.#_bindings.method_body_test_motion_is_excluding_object,
       this._owner,
 			Variant.Type.BOOL,
+    
       _object
     );
     
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

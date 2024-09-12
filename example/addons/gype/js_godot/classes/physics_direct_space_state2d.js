@@ -1,9 +1,8 @@
 import * as internal from '__internal__';
-import { Dictionary } from '@js_godot/variant/dictionary'
-import { PackedFloat32Array } from '@js_godot/variant/packed_float32_array'
+import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { GodotObject } from '@js_godot/classes/godot_object'
-import { Variant } from '@js_godot/variant/variant'
+import { GDArray } from '@js_godot/variant/gd_array'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -21,7 +20,7 @@ class _MethodBindings {
 }
 export class PhysicsDirectSpaceState2D extends GodotObject{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -31,80 +30,89 @@ export class PhysicsDirectSpaceState2D extends GodotObject{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_intersect_point() {
+    if (!this.#_bindings.method_intersect_point) {
       let classname = new StringName("PhysicsDirectSpaceState2D");
       let methodname = new StringName("intersect_point");
-      this._bindings.method_intersect_point = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_intersect_point = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2118456068
       );
     }
-    {
+  }
+  static init_method_intersect_ray() {
+    if (!this.#_bindings.method_intersect_ray) {
       let classname = new StringName("PhysicsDirectSpaceState2D");
       let methodname = new StringName("intersect_ray");
-      this._bindings.method_intersect_ray = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_intersect_ray = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1590275562
       );
     }
-    {
+  }
+  static init_method_intersect_shape() {
+    if (!this.#_bindings.method_intersect_shape) {
       let classname = new StringName("PhysicsDirectSpaceState2D");
       let methodname = new StringName("intersect_shape");
-      this._bindings.method_intersect_shape = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_intersect_shape = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2488867228
       );
     }
-    {
+  }
+  static init_method_cast_motion() {
+    if (!this.#_bindings.method_cast_motion) {
       let classname = new StringName("PhysicsDirectSpaceState2D");
       let methodname = new StringName("cast_motion");
-      this._bindings.method_cast_motion = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_cast_motion = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         711275086
       );
     }
-    {
+  }
+  static init_method_collide_shape() {
+    if (!this.#_bindings.method_collide_shape) {
       let classname = new StringName("PhysicsDirectSpaceState2D");
       let methodname = new StringName("collide_shape");
-      this._bindings.method_collide_shape = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_collide_shape = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2488867228
       );
     }
-    {
+  }
+  static init_method_get_rest_info() {
+    if (!this.#_bindings.method_get_rest_info) {
       let classname = new StringName("PhysicsDirectSpaceState2D");
       let methodname = new StringName("get_rest_info");
-      this._bindings.method_get_rest_info = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_rest_info = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2803666496
       );
     }
   }
+
+  
   
   intersect_point(_parameters, _max_results) {
+    PhysicsDirectSpaceState2D.init_method_intersect_point();
     return _call_native_mb_ret(
-      PhysicsDirectSpaceState2D._bindings.method_intersect_point,
+      PhysicsDirectSpaceState2D.#_bindings.method_intersect_point,
       this._owner,
-			Variant.INT,
+			Variant.Type.ARRAY,
       _parameters, _max_results
     );
     
   }
   intersect_ray(_parameters) {
+    PhysicsDirectSpaceState2D.init_method_intersect_ray();
     return _call_native_mb_ret(
-      PhysicsDirectSpaceState2D._bindings.method_intersect_ray,
+      PhysicsDirectSpaceState2D.#_bindings.method_intersect_ray,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -113,17 +121,19 @@ export class PhysicsDirectSpaceState2D extends GodotObject{
     
   }
   intersect_shape(_parameters, _max_results) {
+    PhysicsDirectSpaceState2D.init_method_intersect_shape();
     return _call_native_mb_ret(
-      PhysicsDirectSpaceState2D._bindings.method_intersect_shape,
+      PhysicsDirectSpaceState2D.#_bindings.method_intersect_shape,
       this._owner,
-			Variant.INT,
+			Variant.Type.ARRAY,
       _parameters, _max_results
     );
     
   }
   cast_motion(_parameters) {
+    PhysicsDirectSpaceState2D.init_method_cast_motion();
     return _call_native_mb_ret(
-      PhysicsDirectSpaceState2D._bindings.method_cast_motion,
+      PhysicsDirectSpaceState2D.#_bindings.method_cast_motion,
       this._owner,
 			Variant.Type.PACKED_FLOAT32_ARRAY,
     
@@ -132,17 +142,19 @@ export class PhysicsDirectSpaceState2D extends GodotObject{
     
   }
   collide_shape(_parameters, _max_results) {
+    PhysicsDirectSpaceState2D.init_method_collide_shape();
     return _call_native_mb_ret(
-      PhysicsDirectSpaceState2D._bindings.method_collide_shape,
+      PhysicsDirectSpaceState2D.#_bindings.method_collide_shape,
       this._owner,
-			Variant.INT,
+			Variant.Type.ARRAY,
       _parameters, _max_results
     );
     
   }
   get_rest_info(_parameters) {
+    PhysicsDirectSpaceState2D.init_method_get_rest_info();
     return _call_native_mb_ret(
-      PhysicsDirectSpaceState2D._bindings.method_get_rest_info,
+      PhysicsDirectSpaceState2D.#_bindings.method_get_rest_info,
       this._owner,
 			Variant.Type.DICTIONARY,
     
@@ -152,8 +164,4 @@ export class PhysicsDirectSpaceState2D extends GodotObject{
   }
   
 
-
-  static {
-    this._init_bindings();
-  }
 }

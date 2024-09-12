@@ -1,10 +1,8 @@
 import * as internal from '__internal__';
-import { Vector2 } from '@js_godot/variant/vector2'
-import { RID } from '@js_godot/variant/rid'
-import { StringName } from '@js_godot/variant/string_name'
-import { RefCounted } from '@js_godot/classes/ref_counted'
 import { Variant } from '@js_godot/variant/variant'
-import { Transform2D } from '@js_godot/variant/transform2d'
+import { StringName } from '@js_godot/variant/string_name'
+import { GDArray } from '@js_godot/variant/gd_array'
+import { RefCounted } from '@js_godot/classes/ref_counted'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -34,7 +32,7 @@ class _MethodBindings {
 }
 export class PhysicsShapeQueryParameters2D extends RefCounted{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -44,204 +42,239 @@ export class PhysicsShapeQueryParameters2D extends RefCounted{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_shape() {
+    if (!this.#_bindings.method_set_shape) {
       let classname = new StringName("PhysicsShapeQueryParameters2D");
       let methodname = new StringName("set_shape");
-      this._bindings.method_set_shape = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_shape = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         968641751
       );
     }
-    {
+  }
+  static init_method_get_shape() {
+    if (!this.#_bindings.method_get_shape) {
       let classname = new StringName("PhysicsShapeQueryParameters2D");
       let methodname = new StringName("get_shape");
-      this._bindings.method_get_shape = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_shape = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         121922552
       );
     }
-    {
+  }
+  static init_method_set_shape_rid() {
+    if (!this.#_bindings.method_set_shape_rid) {
       let classname = new StringName("PhysicsShapeQueryParameters2D");
       let methodname = new StringName("set_shape_rid");
-      this._bindings.method_set_shape_rid = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_shape_rid = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2722037293
       );
     }
-    {
+  }
+  static init_method_get_shape_rid() {
+    if (!this.#_bindings.method_get_shape_rid) {
       let classname = new StringName("PhysicsShapeQueryParameters2D");
       let methodname = new StringName("get_shape_rid");
-      this._bindings.method_get_shape_rid = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_shape_rid = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2944877500
       );
     }
-    {
+  }
+  static init_method_set_transform() {
+    if (!this.#_bindings.method_set_transform) {
       let classname = new StringName("PhysicsShapeQueryParameters2D");
       let methodname = new StringName("set_transform");
-      this._bindings.method_set_transform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_transform = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2761652528
       );
     }
-    {
+  }
+  static init_method_get_transform() {
+    if (!this.#_bindings.method_get_transform) {
       let classname = new StringName("PhysicsShapeQueryParameters2D");
       let methodname = new StringName("get_transform");
-      this._bindings.method_get_transform = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_transform = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3814499831
       );
     }
-    {
+  }
+  static init_method_set_motion() {
+    if (!this.#_bindings.method_set_motion) {
       let classname = new StringName("PhysicsShapeQueryParameters2D");
       let methodname = new StringName("set_motion");
-      this._bindings.method_set_motion = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_motion = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         743155724
       );
     }
-    {
+  }
+  static init_method_get_motion() {
+    if (!this.#_bindings.method_get_motion) {
       let classname = new StringName("PhysicsShapeQueryParameters2D");
       let methodname = new StringName("get_motion");
-      this._bindings.method_get_motion = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_motion = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3341600327
       );
     }
-    {
+  }
+  static init_method_set_margin() {
+    if (!this.#_bindings.method_set_margin) {
       let classname = new StringName("PhysicsShapeQueryParameters2D");
       let methodname = new StringName("set_margin");
-      this._bindings.method_set_margin = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_margin = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         373806689
       );
     }
-    {
+  }
+  static init_method_get_margin() {
+    if (!this.#_bindings.method_get_margin) {
       let classname = new StringName("PhysicsShapeQueryParameters2D");
       let methodname = new StringName("get_margin");
-      this._bindings.method_get_margin = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_margin = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1740695150
       );
     }
-    {
+  }
+  static init_method_set_collision_mask() {
+    if (!this.#_bindings.method_set_collision_mask) {
       let classname = new StringName("PhysicsShapeQueryParameters2D");
       let methodname = new StringName("set_collision_mask");
-      this._bindings.method_set_collision_mask = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_collision_mask = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1286410249
       );
     }
-    {
+  }
+  static init_method_get_collision_mask() {
+    if (!this.#_bindings.method_get_collision_mask) {
       let classname = new StringName("PhysicsShapeQueryParameters2D");
       let methodname = new StringName("get_collision_mask");
-      this._bindings.method_get_collision_mask = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_collision_mask = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3905245786
       );
     }
-    {
+  }
+  static init_method_set_exclude() {
+    if (!this.#_bindings.method_set_exclude) {
       let classname = new StringName("PhysicsShapeQueryParameters2D");
       let methodname = new StringName("set_exclude");
-      this._bindings.method_set_exclude = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_exclude = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         381264803
       );
     }
-    {
+  }
+  static init_method_get_exclude() {
+    if (!this.#_bindings.method_get_exclude) {
       let classname = new StringName("PhysicsShapeQueryParameters2D");
       let methodname = new StringName("get_exclude");
-      this._bindings.method_get_exclude = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_exclude = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3995934104
       );
     }
-    {
+  }
+  static init_method_set_collide_with_bodies() {
+    if (!this.#_bindings.method_set_collide_with_bodies) {
       let classname = new StringName("PhysicsShapeQueryParameters2D");
       let methodname = new StringName("set_collide_with_bodies");
-      this._bindings.method_set_collide_with_bodies = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_collide_with_bodies = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_is_collide_with_bodies_enabled() {
+    if (!this.#_bindings.method_is_collide_with_bodies_enabled) {
       let classname = new StringName("PhysicsShapeQueryParameters2D");
       let methodname = new StringName("is_collide_with_bodies_enabled");
-      this._bindings.method_is_collide_with_bodies_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("PhysicsShapeQueryParameters2D");
-      let methodname = new StringName("set_collide_with_areas");
-      this._bindings.method_set_collide_with_areas = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("PhysicsShapeQueryParameters2D");
-      let methodname = new StringName("is_collide_with_areas_enabled");
-      this._bindings.method_is_collide_with_areas_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_collide_with_bodies_enabled = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
   }
+  static init_method_set_collide_with_areas() {
+    if (!this.#_bindings.method_set_collide_with_areas) {
+      let classname = new StringName("PhysicsShapeQueryParameters2D");
+      let methodname = new StringName("set_collide_with_areas");
+      this.#_bindings.method_set_collide_with_areas = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2586408642
+      );
+    }
+  }
+  static init_method_is_collide_with_areas_enabled() {
+    if (!this.#_bindings.method_is_collide_with_areas_enabled) {
+      let classname = new StringName("PhysicsShapeQueryParameters2D");
+      let methodname = new StringName("is_collide_with_areas_enabled");
+      this.#_bindings.method_is_collide_with_areas_enabled = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        36873697
+      );
+    }
+  }
+
+  
   
   set_shape(_shape) {
+    PhysicsShapeQueryParameters2D.init_method_set_shape();
     return _call_native_mb_no_ret(
-      PhysicsShapeQueryParameters2D._bindings.method_set_shape,
+      PhysicsShapeQueryParameters2D.#_bindings.method_set_shape,
       this._owner,
       _shape
     );
     
   }
   get_shape() {
+    PhysicsShapeQueryParameters2D.init_method_get_shape();
     return _call_native_mb_ret(
-      PhysicsShapeQueryParameters2D._bindings.method_get_shape,
+      PhysicsShapeQueryParameters2D.#_bindings.method_get_shape,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       
     );
     
   }
   set_shape_rid(_shape) {
+    PhysicsShapeQueryParameters2D.init_method_set_shape_rid();
     return _call_native_mb_no_ret(
-      PhysicsShapeQueryParameters2D._bindings.method_set_shape_rid,
+      PhysicsShapeQueryParameters2D.#_bindings.method_set_shape_rid,
       this._owner,
       _shape
     );
     
   }
   get_shape_rid() {
+    PhysicsShapeQueryParameters2D.init_method_get_shape_rid();
     return _call_native_mb_ret(
-      PhysicsShapeQueryParameters2D._bindings.method_get_shape_rid,
+      PhysicsShapeQueryParameters2D.#_bindings.method_get_shape_rid,
       this._owner,
 			Variant.Type.RID,
     
@@ -250,16 +283,18 @@ export class PhysicsShapeQueryParameters2D extends RefCounted{
     
   }
   set_transform(_transform) {
+    PhysicsShapeQueryParameters2D.init_method_set_transform();
     return _call_native_mb_no_ret(
-      PhysicsShapeQueryParameters2D._bindings.method_set_transform,
+      PhysicsShapeQueryParameters2D.#_bindings.method_set_transform,
       this._owner,
       _transform
     );
     
   }
   get_transform() {
+    PhysicsShapeQueryParameters2D.init_method_get_transform();
     return _call_native_mb_ret(
-      PhysicsShapeQueryParameters2D._bindings.method_get_transform,
+      PhysicsShapeQueryParameters2D.#_bindings.method_get_transform,
       this._owner,
 			Variant.Type.TRANSFORM2D,
     
@@ -268,16 +303,18 @@ export class PhysicsShapeQueryParameters2D extends RefCounted{
     
   }
   set_motion(_motion) {
+    PhysicsShapeQueryParameters2D.init_method_set_motion();
     return _call_native_mb_no_ret(
-      PhysicsShapeQueryParameters2D._bindings.method_set_motion,
+      PhysicsShapeQueryParameters2D.#_bindings.method_set_motion,
       this._owner,
       _motion
     );
     
   }
   get_motion() {
+    PhysicsShapeQueryParameters2D.init_method_get_motion();
     return _call_native_mb_ret(
-      PhysicsShapeQueryParameters2D._bindings.method_get_motion,
+      PhysicsShapeQueryParameters2D.#_bindings.method_get_motion,
       this._owner,
 			Variant.Type.VECTOR2,
     
@@ -286,86 +323,100 @@ export class PhysicsShapeQueryParameters2D extends RefCounted{
     
   }
   set_margin(_margin) {
+    PhysicsShapeQueryParameters2D.init_method_set_margin();
     return _call_native_mb_no_ret(
-      PhysicsShapeQueryParameters2D._bindings.method_set_margin,
+      PhysicsShapeQueryParameters2D.#_bindings.method_set_margin,
       this._owner,
       _margin
     );
     
   }
   get_margin() {
+    PhysicsShapeQueryParameters2D.init_method_get_margin();
     return _call_native_mb_ret(
-      PhysicsShapeQueryParameters2D._bindings.method_get_margin,
+      PhysicsShapeQueryParameters2D.#_bindings.method_get_margin,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_collision_mask(_collision_mask) {
+    PhysicsShapeQueryParameters2D.init_method_set_collision_mask();
     return _call_native_mb_no_ret(
-      PhysicsShapeQueryParameters2D._bindings.method_set_collision_mask,
+      PhysicsShapeQueryParameters2D.#_bindings.method_set_collision_mask,
       this._owner,
       _collision_mask
     );
     
   }
   get_collision_mask() {
+    PhysicsShapeQueryParameters2D.init_method_get_collision_mask();
     return _call_native_mb_ret(
-      PhysicsShapeQueryParameters2D._bindings.method_get_collision_mask,
+      PhysicsShapeQueryParameters2D.#_bindings.method_get_collision_mask,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_exclude(_exclude) {
+    PhysicsShapeQueryParameters2D.init_method_set_exclude();
     return _call_native_mb_no_ret(
-      PhysicsShapeQueryParameters2D._bindings.method_set_exclude,
+      PhysicsShapeQueryParameters2D.#_bindings.method_set_exclude,
       this._owner,
       _exclude
     );
     
   }
   get_exclude() {
+    PhysicsShapeQueryParameters2D.init_method_get_exclude();
     return _call_native_mb_ret(
-      PhysicsShapeQueryParameters2D._bindings.method_get_exclude,
+      PhysicsShapeQueryParameters2D.#_bindings.method_get_exclude,
       this._owner,
-			Variant.INT,
+			Variant.Type.ARRAY,
       
     );
     
   }
   set_collide_with_bodies(_enable) {
+    PhysicsShapeQueryParameters2D.init_method_set_collide_with_bodies();
     return _call_native_mb_no_ret(
-      PhysicsShapeQueryParameters2D._bindings.method_set_collide_with_bodies,
+      PhysicsShapeQueryParameters2D.#_bindings.method_set_collide_with_bodies,
       this._owner,
       _enable
     );
     
   }
   is_collide_with_bodies_enabled() {
+    PhysicsShapeQueryParameters2D.init_method_is_collide_with_bodies_enabled();
     return _call_native_mb_ret(
-      PhysicsShapeQueryParameters2D._bindings.method_is_collide_with_bodies_enabled,
+      PhysicsShapeQueryParameters2D.#_bindings.method_is_collide_with_bodies_enabled,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_collide_with_areas(_enable) {
+    PhysicsShapeQueryParameters2D.init_method_set_collide_with_areas();
     return _call_native_mb_no_ret(
-      PhysicsShapeQueryParameters2D._bindings.method_set_collide_with_areas,
+      PhysicsShapeQueryParameters2D.#_bindings.method_set_collide_with_areas,
       this._owner,
       _enable
     );
     
   }
   is_collide_with_areas_enabled() {
+    PhysicsShapeQueryParameters2D.init_method_is_collide_with_areas_enabled();
     return _call_native_mb_ret(
-      PhysicsShapeQueryParameters2D._bindings.method_is_collide_with_areas_enabled,
+      PhysicsShapeQueryParameters2D.#_bindings.method_is_collide_with_areas_enabled,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
@@ -426,8 +477,4 @@ set collide_with_areas (new_value) {
   this.set_collide_with_areas(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

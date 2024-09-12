@@ -90,18 +90,15 @@ void init_quickjs() {
 		Variant._init_bindings();
 	)xxx",
 			"<input>", JS_EVAL_TYPE_MODULE);
-	ret = context.eval(R"xxx(
-		import { GodotObject } from "@js_godot/classes/godot_object";
-		GodotObject._init_bindings();
-	)xxx",
-			"<input>", JS_EVAL_TYPE_MODULE);
-	if (JS_IsException(ret)) {
-		JSValue exp = JS_GetException(context.ctx);
-		JSValue message = JS_GetPropertyStr(context.ctx, exp, "message");
-		const char *message_str = JS_ToCString(context.ctx, message);
-		printf("%s\n", message_str);
-	}
-	JS_FreeValue(context.ctx, ret);
+	qjs::is_exception(context.ctx, ret);
+
+	// if (JS_IsException(ret)) {
+	// 	JSValue exp = JS_GetException(context.ctx);
+	// 	JSValue message = JS_GetPropertyStr(context.ctx, exp, "message");
+	// 	const char *message_str = JS_ToCString(context.ctx, message);
+	// 	printf("%s\n", message_str);
+	// }
+	// JS_FreeValue(context.ctx, ret);
 }
 
 void init_language() {
@@ -109,9 +106,9 @@ void init_language() {
 	GDREGISTER_CLASS(JavaScriptSaver);
 	GDREGISTER_CLASS(JavaScriptLanguage);
 	GDREGISTER_CLASS(JavaScript);
+	Engine::get_singleton()->register_script_language(JavaScriptLanguage::get_singleton());
 	ResourceSaver::get_singleton()->add_resource_format_saver(JavaScriptSaver::get_singleton());
 	ResourceLoader::get_singleton()->add_resource_format_loader(JavaScriptLoader::get_singleton());
-	Engine::get_singleton()->register_script_language(JavaScriptLanguage::get_singleton());
 }
 
 extern "C" {

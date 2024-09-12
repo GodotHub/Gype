@@ -1,10 +1,7 @@
 import * as internal from '__internal__';
-import { Node3D } from '@js_godot/classes/node3d'
-import { StringName } from '@js_godot/variant/string_name'
-import { RID } from '@js_godot/variant/rid'
-import { PackedVector3Array } from '@js_godot/variant/packed_vector3_array'
 import { Variant } from '@js_godot/variant/variant'
-import { Vector3 } from '@js_godot/variant/vector3'
+import { StringName } from '@js_godot/variant/string_name'
+import { Node3D } from '@js_godot/classes/node3d'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -39,7 +36,7 @@ class _MethodBindings {
 }
 export class NavigationObstacle3D extends Node3D{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -49,224 +46,266 @@ export class NavigationObstacle3D extends Node3D{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_get_rid() {
+    if (!this.#_bindings.method_get_rid) {
       let classname = new StringName("NavigationObstacle3D");
       let methodname = new StringName("get_rid");
-      this._bindings.method_get_rid = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_rid = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2944877500
       );
     }
-    {
+  }
+  static init_method_set_avoidance_enabled() {
+    if (!this.#_bindings.method_set_avoidance_enabled) {
       let classname = new StringName("NavigationObstacle3D");
       let methodname = new StringName("set_avoidance_enabled");
-      this._bindings.method_set_avoidance_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_avoidance_enabled = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_get_avoidance_enabled() {
+    if (!this.#_bindings.method_get_avoidance_enabled) {
       let classname = new StringName("NavigationObstacle3D");
       let methodname = new StringName("get_avoidance_enabled");
-      this._bindings.method_get_avoidance_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("NavigationObstacle3D");
-      let methodname = new StringName("set_navigation_map");
-      this._bindings.method_set_navigation_map = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2722037293
-      );
-    }
-    {
-      let classname = new StringName("NavigationObstacle3D");
-      let methodname = new StringName("get_navigation_map");
-      this._bindings.method_get_navigation_map = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2944877500
-      );
-    }
-    {
-      let classname = new StringName("NavigationObstacle3D");
-      let methodname = new StringName("set_radius");
-      this._bindings.method_set_radius = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("NavigationObstacle3D");
-      let methodname = new StringName("get_radius");
-      this._bindings.method_get_radius = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("NavigationObstacle3D");
-      let methodname = new StringName("set_height");
-      this._bindings.method_set_height = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        373806689
-      );
-    }
-    {
-      let classname = new StringName("NavigationObstacle3D");
-      let methodname = new StringName("get_height");
-      this._bindings.method_get_height = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1740695150
-      );
-    }
-    {
-      let classname = new StringName("NavigationObstacle3D");
-      let methodname = new StringName("set_velocity");
-      this._bindings.method_set_velocity = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3460891852
-      );
-    }
-    {
-      let classname = new StringName("NavigationObstacle3D");
-      let methodname = new StringName("get_velocity");
-      this._bindings.method_get_velocity = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3360562783
-      );
-    }
-    {
-      let classname = new StringName("NavigationObstacle3D");
-      let methodname = new StringName("set_vertices");
-      this._bindings.method_set_vertices = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        334873810
-      );
-    }
-    {
-      let classname = new StringName("NavigationObstacle3D");
-      let methodname = new StringName("get_vertices");
-      this._bindings.method_get_vertices = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        497664490
-      );
-    }
-    {
-      let classname = new StringName("NavigationObstacle3D");
-      let methodname = new StringName("set_avoidance_layers");
-      this._bindings.method_set_avoidance_layers = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1286410249
-      );
-    }
-    {
-      let classname = new StringName("NavigationObstacle3D");
-      let methodname = new StringName("get_avoidance_layers");
-      this._bindings.method_get_avoidance_layers = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        3905245786
-      );
-    }
-    {
-      let classname = new StringName("NavigationObstacle3D");
-      let methodname = new StringName("set_avoidance_layer_value");
-      this._bindings.method_set_avoidance_layer_value = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        300928843
-      );
-    }
-    {
-      let classname = new StringName("NavigationObstacle3D");
-      let methodname = new StringName("get_avoidance_layer_value");
-      this._bindings.method_get_avoidance_layer_value = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        1116898809
-      );
-    }
-    {
-      let classname = new StringName("NavigationObstacle3D");
-      let methodname = new StringName("set_use_3d_avoidance");
-      this._bindings.method_set_use_3d_avoidance = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("NavigationObstacle3D");
-      let methodname = new StringName("get_use_3d_avoidance");
-      this._bindings.method_get_use_3d_avoidance = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("NavigationObstacle3D");
-      let methodname = new StringName("set_affect_navigation_mesh");
-      this._bindings.method_set_affect_navigation_mesh = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("NavigationObstacle3D");
-      let methodname = new StringName("get_affect_navigation_mesh");
-      this._bindings.method_get_affect_navigation_mesh = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        36873697
-      );
-    }
-    {
-      let classname = new StringName("NavigationObstacle3D");
-      let methodname = new StringName("set_carve_navigation_mesh");
-      this._bindings.method_set_carve_navigation_mesh = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
-        2586408642
-      );
-    }
-    {
-      let classname = new StringName("NavigationObstacle3D");
-      let methodname = new StringName("get_carve_navigation_mesh");
-      this._bindings.method_get_carve_navigation_mesh = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_avoidance_enabled = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
   }
+  static init_method_set_navigation_map() {
+    if (!this.#_bindings.method_set_navigation_map) {
+      let classname = new StringName("NavigationObstacle3D");
+      let methodname = new StringName("set_navigation_map");
+      this.#_bindings.method_set_navigation_map = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2722037293
+      );
+    }
+  }
+  static init_method_get_navigation_map() {
+    if (!this.#_bindings.method_get_navigation_map) {
+      let classname = new StringName("NavigationObstacle3D");
+      let methodname = new StringName("get_navigation_map");
+      this.#_bindings.method_get_navigation_map = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2944877500
+      );
+    }
+  }
+  static init_method_set_radius() {
+    if (!this.#_bindings.method_set_radius) {
+      let classname = new StringName("NavigationObstacle3D");
+      let methodname = new StringName("set_radius");
+      this.#_bindings.method_set_radius = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        373806689
+      );
+    }
+  }
+  static init_method_get_radius() {
+    if (!this.#_bindings.method_get_radius) {
+      let classname = new StringName("NavigationObstacle3D");
+      let methodname = new StringName("get_radius");
+      this.#_bindings.method_get_radius = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1740695150
+      );
+    }
+  }
+  static init_method_set_height() {
+    if (!this.#_bindings.method_set_height) {
+      let classname = new StringName("NavigationObstacle3D");
+      let methodname = new StringName("set_height");
+      this.#_bindings.method_set_height = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        373806689
+      );
+    }
+  }
+  static init_method_get_height() {
+    if (!this.#_bindings.method_get_height) {
+      let classname = new StringName("NavigationObstacle3D");
+      let methodname = new StringName("get_height");
+      this.#_bindings.method_get_height = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1740695150
+      );
+    }
+  }
+  static init_method_set_velocity() {
+    if (!this.#_bindings.method_set_velocity) {
+      let classname = new StringName("NavigationObstacle3D");
+      let methodname = new StringName("set_velocity");
+      this.#_bindings.method_set_velocity = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3460891852
+      );
+    }
+  }
+  static init_method_get_velocity() {
+    if (!this.#_bindings.method_get_velocity) {
+      let classname = new StringName("NavigationObstacle3D");
+      let methodname = new StringName("get_velocity");
+      this.#_bindings.method_get_velocity = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3360562783
+      );
+    }
+  }
+  static init_method_set_vertices() {
+    if (!this.#_bindings.method_set_vertices) {
+      let classname = new StringName("NavigationObstacle3D");
+      let methodname = new StringName("set_vertices");
+      this.#_bindings.method_set_vertices = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        334873810
+      );
+    }
+  }
+  static init_method_get_vertices() {
+    if (!this.#_bindings.method_get_vertices) {
+      let classname = new StringName("NavigationObstacle3D");
+      let methodname = new StringName("get_vertices");
+      this.#_bindings.method_get_vertices = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        497664490
+      );
+    }
+  }
+  static init_method_set_avoidance_layers() {
+    if (!this.#_bindings.method_set_avoidance_layers) {
+      let classname = new StringName("NavigationObstacle3D");
+      let methodname = new StringName("set_avoidance_layers");
+      this.#_bindings.method_set_avoidance_layers = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1286410249
+      );
+    }
+  }
+  static init_method_get_avoidance_layers() {
+    if (!this.#_bindings.method_get_avoidance_layers) {
+      let classname = new StringName("NavigationObstacle3D");
+      let methodname = new StringName("get_avoidance_layers");
+      this.#_bindings.method_get_avoidance_layers = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        3905245786
+      );
+    }
+  }
+  static init_method_set_avoidance_layer_value() {
+    if (!this.#_bindings.method_set_avoidance_layer_value) {
+      let classname = new StringName("NavigationObstacle3D");
+      let methodname = new StringName("set_avoidance_layer_value");
+      this.#_bindings.method_set_avoidance_layer_value = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        300928843
+      );
+    }
+  }
+  static init_method_get_avoidance_layer_value() {
+    if (!this.#_bindings.method_get_avoidance_layer_value) {
+      let classname = new StringName("NavigationObstacle3D");
+      let methodname = new StringName("get_avoidance_layer_value");
+      this.#_bindings.method_get_avoidance_layer_value = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        1116898809
+      );
+    }
+  }
+  static init_method_set_use_3d_avoidance() {
+    if (!this.#_bindings.method_set_use_3d_avoidance) {
+      let classname = new StringName("NavigationObstacle3D");
+      let methodname = new StringName("set_use_3d_avoidance");
+      this.#_bindings.method_set_use_3d_avoidance = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2586408642
+      );
+    }
+  }
+  static init_method_get_use_3d_avoidance() {
+    if (!this.#_bindings.method_get_use_3d_avoidance) {
+      let classname = new StringName("NavigationObstacle3D");
+      let methodname = new StringName("get_use_3d_avoidance");
+      this.#_bindings.method_get_use_3d_avoidance = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        36873697
+      );
+    }
+  }
+  static init_method_set_affect_navigation_mesh() {
+    if (!this.#_bindings.method_set_affect_navigation_mesh) {
+      let classname = new StringName("NavigationObstacle3D");
+      let methodname = new StringName("set_affect_navigation_mesh");
+      this.#_bindings.method_set_affect_navigation_mesh = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2586408642
+      );
+    }
+  }
+  static init_method_get_affect_navigation_mesh() {
+    if (!this.#_bindings.method_get_affect_navigation_mesh) {
+      let classname = new StringName("NavigationObstacle3D");
+      let methodname = new StringName("get_affect_navigation_mesh");
+      this.#_bindings.method_get_affect_navigation_mesh = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        36873697
+      );
+    }
+  }
+  static init_method_set_carve_navigation_mesh() {
+    if (!this.#_bindings.method_set_carve_navigation_mesh) {
+      let classname = new StringName("NavigationObstacle3D");
+      let methodname = new StringName("set_carve_navigation_mesh");
+      this.#_bindings.method_set_carve_navigation_mesh = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        2586408642
+      );
+    }
+  }
+  static init_method_get_carve_navigation_mesh() {
+    if (!this.#_bindings.method_get_carve_navigation_mesh) {
+      let classname = new StringName("NavigationObstacle3D");
+      let methodname = new StringName("get_carve_navigation_mesh");
+      this.#_bindings.method_get_carve_navigation_mesh = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
+        36873697
+      );
+    }
+  }
+
+  
   
   get_rid() {
+    NavigationObstacle3D.init_method_get_rid();
     return _call_native_mb_ret(
-      NavigationObstacle3D._bindings.method_get_rid,
+      NavigationObstacle3D.#_bindings.method_get_rid,
       this._owner,
 			Variant.Type.RID,
     
@@ -275,33 +314,38 @@ export class NavigationObstacle3D extends Node3D{
     
   }
   set_avoidance_enabled(_enabled) {
+    NavigationObstacle3D.init_method_set_avoidance_enabled();
     return _call_native_mb_no_ret(
-      NavigationObstacle3D._bindings.method_set_avoidance_enabled,
+      NavigationObstacle3D.#_bindings.method_set_avoidance_enabled,
       this._owner,
       _enabled
     );
     
   }
   get_avoidance_enabled() {
+    NavigationObstacle3D.init_method_get_avoidance_enabled();
     return _call_native_mb_ret(
-      NavigationObstacle3D._bindings.method_get_avoidance_enabled,
+      NavigationObstacle3D.#_bindings.method_get_avoidance_enabled,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_navigation_map(_navigation_map) {
+    NavigationObstacle3D.init_method_set_navigation_map();
     return _call_native_mb_no_ret(
-      NavigationObstacle3D._bindings.method_set_navigation_map,
+      NavigationObstacle3D.#_bindings.method_set_navigation_map,
       this._owner,
       _navigation_map
     );
     
   }
   get_navigation_map() {
+    NavigationObstacle3D.init_method_get_navigation_map();
     return _call_native_mb_ret(
-      NavigationObstacle3D._bindings.method_get_navigation_map,
+      NavigationObstacle3D.#_bindings.method_get_navigation_map,
       this._owner,
 			Variant.Type.RID,
     
@@ -310,50 +354,58 @@ export class NavigationObstacle3D extends Node3D{
     
   }
   set_radius(_radius) {
+    NavigationObstacle3D.init_method_set_radius();
     return _call_native_mb_no_ret(
-      NavigationObstacle3D._bindings.method_set_radius,
+      NavigationObstacle3D.#_bindings.method_set_radius,
       this._owner,
       _radius
     );
     
   }
   get_radius() {
+    NavigationObstacle3D.init_method_get_radius();
     return _call_native_mb_ret(
-      NavigationObstacle3D._bindings.method_get_radius,
+      NavigationObstacle3D.#_bindings.method_get_radius,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_height(_height) {
+    NavigationObstacle3D.init_method_set_height();
     return _call_native_mb_no_ret(
-      NavigationObstacle3D._bindings.method_set_height,
+      NavigationObstacle3D.#_bindings.method_set_height,
       this._owner,
       _height
     );
     
   }
   get_height() {
+    NavigationObstacle3D.init_method_get_height();
     return _call_native_mb_ret(
-      NavigationObstacle3D._bindings.method_get_height,
+      NavigationObstacle3D.#_bindings.method_get_height,
       this._owner,
 			Variant.Type.FLOAT,
+    
       
     );
     
   }
   set_velocity(_velocity) {
+    NavigationObstacle3D.init_method_set_velocity();
     return _call_native_mb_no_ret(
-      NavigationObstacle3D._bindings.method_set_velocity,
+      NavigationObstacle3D.#_bindings.method_set_velocity,
       this._owner,
       _velocity
     );
     
   }
   get_velocity() {
+    NavigationObstacle3D.init_method_get_velocity();
     return _call_native_mb_ret(
-      NavigationObstacle3D._bindings.method_get_velocity,
+      NavigationObstacle3D.#_bindings.method_get_velocity,
       this._owner,
 			Variant.Type.VECTOR3,
     
@@ -362,16 +414,18 @@ export class NavigationObstacle3D extends Node3D{
     
   }
   set_vertices(_vertices) {
+    NavigationObstacle3D.init_method_set_vertices();
     return _call_native_mb_no_ret(
-      NavigationObstacle3D._bindings.method_set_vertices,
+      NavigationObstacle3D.#_bindings.method_set_vertices,
       this._owner,
       _vertices
     );
     
   }
   get_vertices() {
+    NavigationObstacle3D.init_method_get_vertices();
     return _call_native_mb_ret(
-      NavigationObstacle3D._bindings.method_get_vertices,
+      NavigationObstacle3D.#_bindings.method_get_vertices,
       this._owner,
 			Variant.Type.PACKED_VECTOR3_ARRAY,
     
@@ -380,86 +434,101 @@ export class NavigationObstacle3D extends Node3D{
     
   }
   set_avoidance_layers(_layers) {
+    NavigationObstacle3D.init_method_set_avoidance_layers();
     return _call_native_mb_no_ret(
-      NavigationObstacle3D._bindings.method_set_avoidance_layers,
+      NavigationObstacle3D.#_bindings.method_set_avoidance_layers,
       this._owner,
       _layers
     );
     
   }
   get_avoidance_layers() {
+    NavigationObstacle3D.init_method_get_avoidance_layers();
     return _call_native_mb_ret(
-      NavigationObstacle3D._bindings.method_get_avoidance_layers,
+      NavigationObstacle3D.#_bindings.method_get_avoidance_layers,
       this._owner,
 			Variant.Type.INT,
+    
       
     );
     
   }
   set_avoidance_layer_value(_layer_number, _value) {
+    NavigationObstacle3D.init_method_set_avoidance_layer_value();
     return _call_native_mb_no_ret(
-      NavigationObstacle3D._bindings.method_set_avoidance_layer_value,
+      NavigationObstacle3D.#_bindings.method_set_avoidance_layer_value,
       this._owner,
       _layer_number, _value
     );
     
   }
   get_avoidance_layer_value(_layer_number) {
+    NavigationObstacle3D.init_method_get_avoidance_layer_value();
     return _call_native_mb_ret(
-      NavigationObstacle3D._bindings.method_get_avoidance_layer_value,
+      NavigationObstacle3D.#_bindings.method_get_avoidance_layer_value,
       this._owner,
 			Variant.Type.BOOL,
+    
       _layer_number
     );
     
   }
   set_use_3d_avoidance(_enabled) {
+    NavigationObstacle3D.init_method_set_use_3d_avoidance();
     return _call_native_mb_no_ret(
-      NavigationObstacle3D._bindings.method_set_use_3d_avoidance,
+      NavigationObstacle3D.#_bindings.method_set_use_3d_avoidance,
       this._owner,
       _enabled
     );
     
   }
   get_use_3d_avoidance() {
+    NavigationObstacle3D.init_method_get_use_3d_avoidance();
     return _call_native_mb_ret(
-      NavigationObstacle3D._bindings.method_get_use_3d_avoidance,
+      NavigationObstacle3D.#_bindings.method_get_use_3d_avoidance,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_affect_navigation_mesh(_enabled) {
+    NavigationObstacle3D.init_method_set_affect_navigation_mesh();
     return _call_native_mb_no_ret(
-      NavigationObstacle3D._bindings.method_set_affect_navigation_mesh,
+      NavigationObstacle3D.#_bindings.method_set_affect_navigation_mesh,
       this._owner,
       _enabled
     );
     
   }
   get_affect_navigation_mesh() {
+    NavigationObstacle3D.init_method_get_affect_navigation_mesh();
     return _call_native_mb_ret(
-      NavigationObstacle3D._bindings.method_get_affect_navigation_mesh,
+      NavigationObstacle3D.#_bindings.method_get_affect_navigation_mesh,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_carve_navigation_mesh(_enabled) {
+    NavigationObstacle3D.init_method_set_carve_navigation_mesh();
     return _call_native_mb_no_ret(
-      NavigationObstacle3D._bindings.method_set_carve_navigation_mesh,
+      NavigationObstacle3D.#_bindings.method_set_carve_navigation_mesh,
       this._owner,
       _enabled
     );
     
   }
   get_carve_navigation_mesh() {
+    NavigationObstacle3D.init_method_get_carve_navigation_mesh();
     return _call_native_mb_ret(
-      NavigationObstacle3D._bindings.method_get_carve_navigation_mesh,
+      NavigationObstacle3D.#_bindings.method_get_carve_navigation_mesh,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
@@ -520,8 +589,4 @@ set use_3d_avoidance (new_value) {
   this.set_use_3d_avoidance(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

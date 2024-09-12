@@ -1,7 +1,7 @@
 import * as internal from '__internal__';
+import { Variant } from '@js_godot/variant/variant'
 import { VisualShaderNode } from '@js_godot/classes/visual_shader_node'
 import { StringName } from '@js_godot/variant/string_name'
-import { Variant } from '@js_godot/variant/variant'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -15,7 +15,7 @@ class _MethodBindings {
 }
 export class VisualShaderNodeColorOp extends VisualShaderNode{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -25,45 +25,47 @@ export class VisualShaderNodeColorOp extends VisualShaderNode{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_operator() {
+    if (!this.#_bindings.method_set_operator) {
       let classname = new StringName("VisualShaderNodeColorOp");
       let methodname = new StringName("set_operator");
-      this._bindings.method_set_operator = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_operator = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         4260370673
       );
     }
-    {
+  }
+  static init_method_get_operator() {
+    if (!this.#_bindings.method_get_operator) {
       let classname = new StringName("VisualShaderNodeColorOp");
       let methodname = new StringName("get_operator");
-      this._bindings.method_get_operator = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_operator = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1950956529
       );
     }
   }
+
+  
   
   set_operator(_op) {
+    VisualShaderNodeColorOp.init_method_set_operator();
     return _call_native_mb_no_ret(
-      VisualShaderNodeColorOp._bindings.method_set_operator,
+      VisualShaderNodeColorOp.#_bindings.method_set_operator,
       this._owner,
       _op
     );
     
   }
   get_operator() {
+    VisualShaderNodeColorOp.init_method_get_operator();
     return _call_native_mb_ret(
-      VisualShaderNodeColorOp._bindings.method_get_operator,
+      VisualShaderNodeColorOp.#_bindings.method_get_operator,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       
     );
     
@@ -87,9 +89,5 @@ set operator (new_value) {
     OP_SOFT_LIGHT: 7,
     OP_HARD_LIGHT: 8,
     OP_MAX: 9,
-  }
-
-  static {
-    this._init_bindings();
   }
 }

@@ -1,9 +1,7 @@
 import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
-import { PackedStringArray } from '@js_godot/variant/packed_string_array'
 import { StringName } from '@js_godot/variant/string_name'
 import { GodotObject } from '@js_godot/classes/godot_object'
-import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -37,7 +35,7 @@ class _MethodBindings {
   method_pseudolocalize;
 }class _TranslationServer extends GodotObject{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -47,232 +45,275 @@ class _MethodBindings {
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_locale() {
+    if (!this.#_bindings.method_set_locale) {
       let classname = new StringName("TranslationServer");
       let methodname = new StringName("set_locale");
-      this._bindings.method_set_locale = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_locale = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         83702148
       );
     }
-    {
+  }
+  static init_method_get_locale() {
+    if (!this.#_bindings.method_get_locale) {
       let classname = new StringName("TranslationServer");
       let methodname = new StringName("get_locale");
-      this._bindings.method_get_locale = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_locale = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         201670096
       );
     }
-    {
+  }
+  static init_method_get_tool_locale() {
+    if (!this.#_bindings.method_get_tool_locale) {
       let classname = new StringName("TranslationServer");
       let methodname = new StringName("get_tool_locale");
-      this._bindings.method_get_tool_locale = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_tool_locale = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2841200299
       );
     }
-    {
+  }
+  static init_method_compare_locales() {
+    if (!this.#_bindings.method_compare_locales) {
       let classname = new StringName("TranslationServer");
       let methodname = new StringName("compare_locales");
-      this._bindings.method_compare_locales = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_compare_locales = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2878152881
       );
     }
-    {
+  }
+  static init_method_standardize_locale() {
+    if (!this.#_bindings.method_standardize_locale) {
       let classname = new StringName("TranslationServer");
       let methodname = new StringName("standardize_locale");
-      this._bindings.method_standardize_locale = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_standardize_locale = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3135753539
       );
     }
-    {
+  }
+  static init_method_get_all_languages() {
+    if (!this.#_bindings.method_get_all_languages) {
       let classname = new StringName("TranslationServer");
       let methodname = new StringName("get_all_languages");
-      this._bindings.method_get_all_languages = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_all_languages = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1139954409
       );
     }
-    {
+  }
+  static init_method_get_language_name() {
+    if (!this.#_bindings.method_get_language_name) {
       let classname = new StringName("TranslationServer");
       let methodname = new StringName("get_language_name");
-      this._bindings.method_get_language_name = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_language_name = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3135753539
       );
     }
-    {
+  }
+  static init_method_get_all_scripts() {
+    if (!this.#_bindings.method_get_all_scripts) {
       let classname = new StringName("TranslationServer");
       let methodname = new StringName("get_all_scripts");
-      this._bindings.method_get_all_scripts = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_all_scripts = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1139954409
       );
     }
-    {
+  }
+  static init_method_get_script_name() {
+    if (!this.#_bindings.method_get_script_name) {
       let classname = new StringName("TranslationServer");
       let methodname = new StringName("get_script_name");
-      this._bindings.method_get_script_name = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_script_name = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3135753539
       );
     }
-    {
+  }
+  static init_method_get_all_countries() {
+    if (!this.#_bindings.method_get_all_countries) {
       let classname = new StringName("TranslationServer");
       let methodname = new StringName("get_all_countries");
-      this._bindings.method_get_all_countries = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_all_countries = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1139954409
       );
     }
-    {
+  }
+  static init_method_get_country_name() {
+    if (!this.#_bindings.method_get_country_name) {
       let classname = new StringName("TranslationServer");
       let methodname = new StringName("get_country_name");
-      this._bindings.method_get_country_name = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_country_name = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3135753539
       );
     }
-    {
+  }
+  static init_method_get_locale_name() {
+    if (!this.#_bindings.method_get_locale_name) {
       let classname = new StringName("TranslationServer");
       let methodname = new StringName("get_locale_name");
-      this._bindings.method_get_locale_name = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_locale_name = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3135753539
       );
     }
-    {
+  }
+  static init_method_translate() {
+    if (!this.#_bindings.method_translate) {
       let classname = new StringName("TranslationServer");
       let methodname = new StringName("translate");
-      this._bindings.method_translate = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_translate = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         58037827
       );
     }
-    {
+  }
+  static init_method_translate_plural() {
+    if (!this.#_bindings.method_translate_plural) {
       let classname = new StringName("TranslationServer");
       let methodname = new StringName("translate_plural");
-      this._bindings.method_translate_plural = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_translate_plural = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1333931916
       );
     }
-    {
+  }
+  static init_method_add_translation() {
+    if (!this.#_bindings.method_add_translation) {
       let classname = new StringName("TranslationServer");
       let methodname = new StringName("add_translation");
-      this._bindings.method_add_translation = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_add_translation = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1466479800
       );
     }
-    {
+  }
+  static init_method_remove_translation() {
+    if (!this.#_bindings.method_remove_translation) {
       let classname = new StringName("TranslationServer");
       let methodname = new StringName("remove_translation");
-      this._bindings.method_remove_translation = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_remove_translation = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1466479800
       );
     }
-    {
+  }
+  static init_method_get_translation_object() {
+    if (!this.#_bindings.method_get_translation_object) {
       let classname = new StringName("TranslationServer");
       let methodname = new StringName("get_translation_object");
-      this._bindings.method_get_translation_object = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_translation_object = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2065240175
       );
     }
-    {
+  }
+  static init_method_clear() {
+    if (!this.#_bindings.method_clear) {
       let classname = new StringName("TranslationServer");
       let methodname = new StringName("clear");
-      this._bindings.method_clear = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_clear = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3218959716
       );
     }
-    {
+  }
+  static init_method_get_loaded_locales() {
+    if (!this.#_bindings.method_get_loaded_locales) {
       let classname = new StringName("TranslationServer");
       let methodname = new StringName("get_loaded_locales");
-      this._bindings.method_get_loaded_locales = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_loaded_locales = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1139954409
       );
     }
-    {
+  }
+  static init_method_is_pseudolocalization_enabled() {
+    if (!this.#_bindings.method_is_pseudolocalization_enabled) {
       let classname = new StringName("TranslationServer");
       let methodname = new StringName("is_pseudolocalization_enabled");
-      this._bindings.method_is_pseudolocalization_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_is_pseudolocalization_enabled = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         36873697
       );
     }
-    {
+  }
+  static init_method_set_pseudolocalization_enabled() {
+    if (!this.#_bindings.method_set_pseudolocalization_enabled) {
       let classname = new StringName("TranslationServer");
       let methodname = new StringName("set_pseudolocalization_enabled");
-      this._bindings.method_set_pseudolocalization_enabled = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_pseudolocalization_enabled = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         2586408642
       );
     }
-    {
+  }
+  static init_method_reload_pseudolocalization() {
+    if (!this.#_bindings.method_reload_pseudolocalization) {
       let classname = new StringName("TranslationServer");
       let methodname = new StringName("reload_pseudolocalization");
-      this._bindings.method_reload_pseudolocalization = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_reload_pseudolocalization = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3218959716
       );
     }
-    {
+  }
+  static init_method_pseudolocalize() {
+    if (!this.#_bindings.method_pseudolocalize) {
       let classname = new StringName("TranslationServer");
       let methodname = new StringName("pseudolocalize");
-      this._bindings.method_pseudolocalize = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_pseudolocalize = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         1965194235
       );
     }
   }
+
+  
   
   set_locale(_locale) {
+    TranslationServer.init_method_set_locale();
     return _call_native_mb_no_ret(
-      _TranslationServer._bindings.method_set_locale,
+      _TranslationServer.#_bindings.method_set_locale,
       this._owner,
       _locale
     );
     
   }
   get_locale() {
+    TranslationServer.init_method_get_locale();
     return _call_native_mb_ret(
-      _TranslationServer._bindings.method_get_locale,
+      _TranslationServer.#_bindings.method_get_locale,
       this._owner,
 			Variant.Type.STRING,
     
@@ -281,8 +322,9 @@ class _MethodBindings {
     
   }
   get_tool_locale() {
+    TranslationServer.init_method_get_tool_locale();
     return _call_native_mb_ret(
-      _TranslationServer._bindings.method_get_tool_locale,
+      _TranslationServer.#_bindings.method_get_tool_locale,
       this._owner,
 			Variant.Type.STRING,
     
@@ -291,17 +333,20 @@ class _MethodBindings {
     
   }
   compare_locales(_locale_a, _locale_b) {
+    TranslationServer.init_method_compare_locales();
     return _call_native_mb_ret(
-      _TranslationServer._bindings.method_compare_locales,
+      _TranslationServer.#_bindings.method_compare_locales,
       this._owner,
 			Variant.Type.INT,
+    
       _locale_a, _locale_b
     );
     
   }
   standardize_locale(_locale) {
+    TranslationServer.init_method_standardize_locale();
     return _call_native_mb_ret(
-      _TranslationServer._bindings.method_standardize_locale,
+      _TranslationServer.#_bindings.method_standardize_locale,
       this._owner,
 			Variant.Type.STRING,
     
@@ -310,8 +355,9 @@ class _MethodBindings {
     
   }
   get_all_languages() {
+    TranslationServer.init_method_get_all_languages();
     return _call_native_mb_ret(
-      _TranslationServer._bindings.method_get_all_languages,
+      _TranslationServer.#_bindings.method_get_all_languages,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -320,8 +366,9 @@ class _MethodBindings {
     
   }
   get_language_name(_language) {
+    TranslationServer.init_method_get_language_name();
     return _call_native_mb_ret(
-      _TranslationServer._bindings.method_get_language_name,
+      _TranslationServer.#_bindings.method_get_language_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -330,8 +377,9 @@ class _MethodBindings {
     
   }
   get_all_scripts() {
+    TranslationServer.init_method_get_all_scripts();
     return _call_native_mb_ret(
-      _TranslationServer._bindings.method_get_all_scripts,
+      _TranslationServer.#_bindings.method_get_all_scripts,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -340,8 +388,9 @@ class _MethodBindings {
     
   }
   get_script_name(_script) {
+    TranslationServer.init_method_get_script_name();
     return _call_native_mb_ret(
-      _TranslationServer._bindings.method_get_script_name,
+      _TranslationServer.#_bindings.method_get_script_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -350,8 +399,9 @@ class _MethodBindings {
     
   }
   get_all_countries() {
+    TranslationServer.init_method_get_all_countries();
     return _call_native_mb_ret(
-      _TranslationServer._bindings.method_get_all_countries,
+      _TranslationServer.#_bindings.method_get_all_countries,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -360,8 +410,9 @@ class _MethodBindings {
     
   }
   get_country_name(_country) {
+    TranslationServer.init_method_get_country_name();
     return _call_native_mb_ret(
-      _TranslationServer._bindings.method_get_country_name,
+      _TranslationServer.#_bindings.method_get_country_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -370,8 +421,9 @@ class _MethodBindings {
     
   }
   get_locale_name(_locale) {
+    TranslationServer.init_method_get_locale_name();
     return _call_native_mb_ret(
-      _TranslationServer._bindings.method_get_locale_name,
+      _TranslationServer.#_bindings.method_get_locale_name,
       this._owner,
 			Variant.Type.STRING,
     
@@ -380,8 +432,9 @@ class _MethodBindings {
     
   }
   translate(_message, _context) {
+    TranslationServer.init_method_translate();
     return _call_native_mb_ret(
-      _TranslationServer._bindings.method_translate,
+      _TranslationServer.#_bindings.method_translate,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -390,8 +443,9 @@ class _MethodBindings {
     
   }
   translate_plural(_message, _plural_message, _n, _context) {
+    TranslationServer.init_method_translate_plural();
     return _call_native_mb_ret(
-      _TranslationServer._bindings.method_translate_plural,
+      _TranslationServer.#_bindings.method_translate_plural,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -400,41 +454,46 @@ class _MethodBindings {
     
   }
   add_translation(_translation) {
+    TranslationServer.init_method_add_translation();
     return _call_native_mb_no_ret(
-      _TranslationServer._bindings.method_add_translation,
+      _TranslationServer.#_bindings.method_add_translation,
       this._owner,
       _translation
     );
     
   }
   remove_translation(_translation) {
+    TranslationServer.init_method_remove_translation();
     return _call_native_mb_no_ret(
-      _TranslationServer._bindings.method_remove_translation,
+      _TranslationServer.#_bindings.method_remove_translation,
       this._owner,
       _translation
     );
     
   }
   get_translation_object(_locale) {
+    TranslationServer.init_method_get_translation_object();
     return _call_native_mb_ret(
-      _TranslationServer._bindings.method_get_translation_object,
+      _TranslationServer.#_bindings.method_get_translation_object,
       this._owner,
-			Variant.INT,
+			Variant.Type.OBJECT,
       _locale
     );
     
   }
   clear() {
+    TranslationServer.init_method_clear();
     return _call_native_mb_no_ret(
-      _TranslationServer._bindings.method_clear,
+      _TranslationServer.#_bindings.method_clear,
       this._owner,
       
     );
     
   }
   get_loaded_locales() {
+    TranslationServer.init_method_get_loaded_locales();
     return _call_native_mb_ret(
-      _TranslationServer._bindings.method_get_loaded_locales,
+      _TranslationServer.#_bindings.method_get_loaded_locales,
       this._owner,
 			Variant.Type.PACKED_STRING_ARRAY,
     
@@ -443,33 +502,38 @@ class _MethodBindings {
     
   }
   is_pseudolocalization_enabled() {
+    TranslationServer.init_method_is_pseudolocalization_enabled();
     return _call_native_mb_ret(
-      _TranslationServer._bindings.method_is_pseudolocalization_enabled,
+      _TranslationServer.#_bindings.method_is_pseudolocalization_enabled,
       this._owner,
 			Variant.Type.BOOL,
+    
       
     );
     
   }
   set_pseudolocalization_enabled(_enabled) {
+    TranslationServer.init_method_set_pseudolocalization_enabled();
     return _call_native_mb_no_ret(
-      _TranslationServer._bindings.method_set_pseudolocalization_enabled,
+      _TranslationServer.#_bindings.method_set_pseudolocalization_enabled,
       this._owner,
       _enabled
     );
     
   }
   reload_pseudolocalization() {
+    TranslationServer.init_method_reload_pseudolocalization();
     return _call_native_mb_no_ret(
-      _TranslationServer._bindings.method_reload_pseudolocalization,
+      _TranslationServer.#_bindings.method_reload_pseudolocalization,
       this._owner,
       
     );
     
   }
   pseudolocalize(_message) {
+    TranslationServer.init_method_pseudolocalize();
     return _call_native_mb_ret(
-      _TranslationServer._bindings.method_pseudolocalize,
+      _TranslationServer.#_bindings.method_pseudolocalize,
       this._owner,
 			Variant.Type.STRING_NAME,
     
@@ -485,10 +549,6 @@ set pseudolocalization_enabled (new_value) {
   this.set_pseudolocalization_enabled(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }
 export const TranslationServer = (function () {
   let _instance;

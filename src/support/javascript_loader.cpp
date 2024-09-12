@@ -31,7 +31,7 @@ bool JavaScriptLoader::_handles_type(const StringName &p_type) const {
 }
 
 String JavaScriptLoader::_get_resource_type(const String &p_path) const {
-	if (p_path.ends_with(".js")) {
+	if (p_path.get_extension() == "js") {
 		return "JavaScript";
 	} else {
 		return "";

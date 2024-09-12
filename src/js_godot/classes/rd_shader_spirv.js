@@ -1,9 +1,7 @@
 import * as internal from '__internal__';
-import { Resource } from '@js_godot/classes/resource'
 import { Variant } from '@js_godot/variant/variant'
-import { PackedByteArray } from '@js_godot/variant/packed_byte_array'
 import { StringName } from '@js_godot/variant/string_name'
-import { GDString } from '@js_godot/variant/gd_string'
+import { Resource } from '@js_godot/classes/resource'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -19,7 +17,7 @@ class _MethodBindings {
 }
 export class RDShaderSPIRV extends Resource{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -29,61 +27,66 @@ export class RDShaderSPIRV extends Resource{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_set_stage_bytecode() {
+    if (!this.#_bindings.method_set_stage_bytecode) {
       let classname = new StringName("RDShaderSPIRV");
       let methodname = new StringName("set_stage_bytecode");
-      this._bindings.method_set_stage_bytecode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_stage_bytecode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3514097977
       );
     }
-    {
+  }
+  static init_method_get_stage_bytecode() {
+    if (!this.#_bindings.method_get_stage_bytecode) {
       let classname = new StringName("RDShaderSPIRV");
       let methodname = new StringName("get_stage_bytecode");
-      this._bindings.method_get_stage_bytecode = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_stage_bytecode = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3816765404
       );
     }
-    {
+  }
+  static init_method_set_stage_compile_error() {
+    if (!this.#_bindings.method_set_stage_compile_error) {
       let classname = new StringName("RDShaderSPIRV");
       let methodname = new StringName("set_stage_compile_error");
-      this._bindings.method_set_stage_compile_error = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_set_stage_compile_error = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         620821314
       );
     }
-    {
+  }
+  static init_method_get_stage_compile_error() {
+    if (!this.#_bindings.method_get_stage_compile_error) {
       let classname = new StringName("RDShaderSPIRV");
       let methodname = new StringName("get_stage_compile_error");
-      this._bindings.method_get_stage_compile_error = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_stage_compile_error = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         3354920045
       );
     }
   }
+
+  
   
   set_stage_bytecode(_stage, _bytecode) {
+    RDShaderSPIRV.init_method_set_stage_bytecode();
     return _call_native_mb_no_ret(
-      RDShaderSPIRV._bindings.method_set_stage_bytecode,
+      RDShaderSPIRV.#_bindings.method_set_stage_bytecode,
       this._owner,
       _stage, _bytecode
     );
     
   }
   get_stage_bytecode(_stage) {
+    RDShaderSPIRV.init_method_get_stage_bytecode();
     return _call_native_mb_ret(
-      RDShaderSPIRV._bindings.method_get_stage_bytecode,
+      RDShaderSPIRV.#_bindings.method_get_stage_bytecode,
       this._owner,
 			Variant.Type.PACKED_BYTE_ARRAY,
     
@@ -92,16 +95,18 @@ export class RDShaderSPIRV extends Resource{
     
   }
   set_stage_compile_error(_stage, _compile_error) {
+    RDShaderSPIRV.init_method_set_stage_compile_error();
     return _call_native_mb_no_ret(
-      RDShaderSPIRV._bindings.method_set_stage_compile_error,
+      RDShaderSPIRV.#_bindings.method_set_stage_compile_error,
       this._owner,
       _stage, _compile_error
     );
     
   }
   get_stage_compile_error(_stage) {
+    RDShaderSPIRV.init_method_get_stage_compile_error();
     return _call_native_mb_ret(
-      RDShaderSPIRV._bindings.method_get_stage_compile_error,
+      RDShaderSPIRV.#_bindings.method_get_stage_compile_error,
       this._owner,
 			Variant.Type.STRING,
     
@@ -171,8 +176,4 @@ set compile_error_compute (new_value) {
   this.set_stage_compile_error(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }

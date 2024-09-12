@@ -2,7 +2,6 @@ import * as internal from '__internal__';
 import { Variant } from '@js_godot/variant/variant'
 import { StringName } from '@js_godot/variant/string_name'
 import { Texture2D } from '@js_godot/classes/texture2d'
-import { GDString } from '@js_godot/variant/gd_string'
 import {
   call_utility_ret,
   call_utility_no_ret,
@@ -16,7 +15,7 @@ class _MethodBindings {
 }
 export class CompressedTexture2D extends Texture2D{
 
-  static _bindings = new _MethodBindings();
+  static #_bindings = new _MethodBindings();
   static #initialized = false;
 
   constructor(godot_object) {
@@ -26,44 +25,46 @@ export class CompressedTexture2D extends Texture2D{
       super(godot_object);
     }
   }
-  
-  static async _init_bindings() {
-    if (this.#initialized) {
-      return;
-    }
-    this.#initialized = true;
-    {
+  static init_method_load() {
+    if (!this.#_bindings.method_load) {
       let classname = new StringName("CompressedTexture2D");
       let methodname = new StringName("load");
-      this._bindings.method_load = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_load = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         166001499
       );
     }
-    {
+  }
+  static init_method_get_load_path() {
+    if (!this.#_bindings.method_get_load_path) {
       let classname = new StringName("CompressedTexture2D");
       let methodname = new StringName("get_load_path");
-      this._bindings.method_get_load_path = internal.classdb_get_method_bind(
-        classname.opaque, 
-        methodname.opaque, 
+      this.#_bindings.method_get_load_path = internal.classdb_get_method_bind(
+        classname.opaque,
+        methodname.opaque,
         201670096
       );
     }
   }
+
+  
   
   load(_path) {
+    CompressedTexture2D.init_method_load();
     return _call_native_mb_ret(
-      CompressedTexture2D._bindings.method_load,
+      CompressedTexture2D.#_bindings.method_load,
       this._owner,
-			Variant.INT,
+			Variant.Type.INT,
+    
       _path
     );
     
   }
   get_load_path() {
+    CompressedTexture2D.init_method_get_load_path();
     return _call_native_mb_ret(
-      CompressedTexture2D._bindings.method_get_load_path,
+      CompressedTexture2D.#_bindings.method_get_load_path,
       this._owner,
 			Variant.Type.STRING,
     
@@ -79,8 +80,4 @@ set load_path (new_value) {
   this.load(new_value);
 }
 
-
-  static {
-    this._init_bindings();
-  }
 }
