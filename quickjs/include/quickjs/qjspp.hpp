@@ -54,20 +54,17 @@ namespace qjs {
 class Context;
 class Value;
 
-static uint8_t *get_typed_array_buf(JSContext *ctx, JSValue v);
-static GDExtensionInt encodeInt(JSContext *ctx, JSValue v);
-static double encodeDouble(JSContext *ctx, JSValue v);
-static bool encodeBool(JSContext *ctx, JSValue v);
-static uint64_t variant_byte_size(std::string type);
-static int variant_size(std::string type);
-static int variant_size(int type);
-static JSValue to_js_value(JSContext *ctx, std::string type, void *value);
-static JSValue to_js_u8arr(JSContext *ctx, GDExtensionVariantType type, void *value);
-static void *to_c_pointer(JSContext *ctx, Pointer js_pointer);
-static bool is_typed_array(JSValue value);
-static bool is_int(JSValue value);
-static bool is_float(JSValue value);
-static void print_exception(JSContext *ctx);
+uint8_t *get_typed_array_buf(JSContext *ctx, JSValue v);
+GDExtensionInt encodeInt(JSContext *ctx, JSValue v);
+double encodeDouble(JSContext *ctx, JSValue v);
+bool encodeBool(JSContext *ctx, JSValue v);
+int variant_size(int type);
+JSValue to_js_u8arr(JSContext *ctx, GDExtensionVariantType type, void *value);
+void *to_c_pointer(JSContext *ctx, Pointer js_pointer);
+bool is_typed_array(JSValue value);
+bool is_int(JSValue value);
+bool is_float(JSValue value);
+void print_exception(JSContext *ctx);
 
 /** Exception type.
  * Indicates that exception has occured in JS context.
@@ -2273,7 +2270,7 @@ struct js_traits<const uint8_t *> {
 // 	}
 // };
 
-static uint8_t *get_typed_array_buf(JSContext *ctx, JSValue v) {
+inline uint8_t *get_typed_array_buf(JSContext *ctx, JSValue v) {
 	int class_id = JS_GetClassID(v);
 	size_t len;
 	if (class_id >= 21 && class_id <= 31) {
@@ -2285,16 +2282,16 @@ static uint8_t *get_typed_array_buf(JSContext *ctx, JSValue v) {
 	}
 }
 
-static uint8_t (*get_variant_native_ptr(JSContext *ctx, JSValue v))[GODOT_CPP_VARIANT_SIZE] {
-	uint8_t *buf = get_typed_array_buf(ctx, v);
-	if (buf) {
-		return reinterpret_cast<uint8_t(*)[GODOT_CPP_VARIANT_SIZE]>(buf);
-	}
-	return nullptr;
-}
+// static uint8_t (*get_variant_native_ptr(JSContext *ctx, JSValue v))[GODOT_CPP_VARIANT_SIZE] {
+// 	uint8_t *buf = get_typed_array_buf(ctx, v);
+// 	if (buf) {
+// 		return reinterpret_cast<uint8_t(*)[GODOT_CPP_VARIANT_SIZE]>(buf);
+// 	}
+// 	return nullptr;
+// }
 
 // 获取参数数组的指针
-static std::vector<void *> get_args(JSContext *ctx, JSValue v) {
+inline std::vector<void *> get_args(JSContext *ctx, JSValue v) {
 	int length = js_traits<int>::unwrap(ctx, JS_GetPropertyStr(ctx, v, "length"));
 	if (length == 0) {
 		return std::vector<void *>(0);
@@ -2331,7 +2328,7 @@ static std::vector<void *> get_args(JSContext *ctx, JSValue v) {
 	return args;
 }
 
-static std::vector<void *> get_args(JSContext *ctx, std::vector<JSValue> v) {
+inline std::vector<void *> get_args(JSContext *ctx, std::vector<JSValue> v) {
 	int length = v.size();
 	if (length == 0) {
 		return std::vector<void *>(0);
@@ -2363,14 +2360,14 @@ static std::vector<void *> get_args(JSContext *ctx, std::vector<JSValue> v) {
 	return args;
 }
 
-static bool encodeBool(JSContext *ctx, JSValue v) {
+inline bool encodeBool(JSContext *ctx, JSValue v) {
 	if (JS_IsBool(v)) {
 		return (bool)JS_ToBool(ctx, v);
 	}
 	return false;
 }
 
-static GDExtensionInt encodeInt(JSContext *ctx, JSValue v) {
+inline GDExtensionInt encodeInt(JSContext *ctx, JSValue v) {
 	GDExtensionInt i;
 	if (JS_ToInt64(ctx, &i, v)) {
 		return 0;
@@ -2378,7 +2375,7 @@ static GDExtensionInt encodeInt(JSContext *ctx, JSValue v) {
 	return i;
 }
 
-static double encodeDouble(JSContext *ctx, JSValue v) {
+inline double encodeDouble(JSContext *ctx, JSValue v) {
 	double d;
 	if (JS_ToFloat64(ctx, &d, v)) {
 		return 0;
@@ -2386,30 +2383,7 @@ static double encodeDouble(JSContext *ctx, JSValue v) {
 	return d;
 }
 
-static uint64_t variant_byte_size(std::string type) {
-	int size = variant_size(type);
-	if (type == "int") {
-		return sizeof(int64_t) * size;
-	} else if (type == "float") {
-		return sizeof(double) * size;
-	} else if (type == "bool") {
-		return sizeof(bool) * size;
-	} else if (type == "GDString") {
-		return sizeof(uint8_t) * size;
-	}
-	return 0;
-}
-
-static int variant_size(std::string type) {
-	if (type == "int" || type == "double" || type == "bool") {
-		return 1;
-	} else if (type == "GDString") {
-		return 8;
-	}
-	return 0;
-}
-
-static int variant_size(int type) {
+inline int variant_size(int type) {
 	switch (type) {
 		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_NIL:
 			return 0;
@@ -2465,18 +2439,18 @@ static int variant_size(int type) {
 	}
 }
 
-static JSValue to_js_value(JSContext *ctx, GDExtensionVariantType type, const godot::Variant &value) {
-	switch (type) {
-		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_INT:
-			return JS_NewInt32(ctx, value);
-		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_FLOAT:
-			return JS_NewFloat64(ctx, value);
-		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_BOOL:
-			return JS_NewBool(ctx, value);
-		default:
-			return JS_UNDEFINED;
-	}
-}
+// static JSValue to_js_value(JSContext *ctx, GDExtensionVariantType type, const godot::Variant &value) {
+// 	switch (type) {
+// 		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_INT:
+// 			return JS_NewInt32(ctx, value);
+// 		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_FLOAT:
+// 			return JS_NewFloat64(ctx, value);
+// 		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_BOOL:
+// 			return JS_NewBool(ctx, value);
+// 		default:
+// 			return JS_UNDEFINED;
+// 	}
+// }
 
 // static JSValue get_import(Context *context, GDExtensionVariantType type) {
 // 	switch (type) {
@@ -2488,7 +2462,7 @@ static JSValue to_js_value(JSContext *ctx, GDExtensionVariantType type, const go
 // 	}
 // }
 
-static const char *to_js_type(int type) {
+inline const char *to_js_type(int type) {
 	switch (type) {
 		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_NIL:
 			return "nil";
@@ -2567,21 +2541,21 @@ static const char *to_js_type(int type) {
 	}
 }
 
-static JSValue to_js_value(JSContext *ctx, int type, uint8_t *value) {
-	size_t len = variant_size(type);
-	const char *md = to_js_type(type);
-	char code[1024];
-	std::string snake = camelToSnake(md);
-	sprintf(code, "import { %s } from \"@js_godot/variant/%s\"; let value = new %s();value;", md, snake.c_str(), md);
-	JSValue ret = JS_Eval(ctx, code, strlen(code), "<input>", JS_EVAL_TYPE_MODULE);
-	JSValue buf = JS_NewArrayBuffer(ctx, value, len, NULL, NULL, false);
-	JSValue *args = new JSValue[3]{ buf, JS_NewInt64(ctx, 0), JS_NewInt64(ctx, len) };
-	JSValue opaque = JS_NewTypedArray(ctx, len, args, JSTypedArrayEnum::JS_TYPED_ARRAY_UINT8);
-	JS_SetPropertyStr(ctx, ret, "opaque", opaque);
-	return ret;
-}
+// static JSValue to_js_value(JSContext *ctx, int type, uint8_t *value) {
+// 	size_t len = variant_size(type);
+// 	const char *md = to_js_type(type);
+// 	char code[1024];
+// 	std::string snake = camelToSnake(md);
+// 	sprintf(code, "import { %s } from \"@js_godot/variant/%s\"; let value = new %s();value;", md, snake.c_str(), md);
+// 	JSValue ret = JS_Eval(ctx, code, strlen(code), "<input>", JS_EVAL_TYPE_MODULE);
+// 	JSValue buf = JS_NewArrayBuffer(ctx, value, len, NULL, NULL, false);
+// 	JSValue *args = new JSValue[3]{ buf, JS_NewInt64(ctx, 0), JS_NewInt64(ctx, len) };
+// 	JSValue opaque = JS_NewTypedArray(ctx, len, args, JSTypedArrayEnum::JS_TYPED_ARRAY_UINT8);
+// 	JS_SetPropertyStr(ctx, ret, "opaque", opaque);
+// 	return ret;
+// }
 
-static JSValue to_js_variant(JSContext *ctx, int type, JSValue opaque) {
+inline JSValue to_js_variant(JSContext *ctx, int type, JSValue opaque) {
 	const char *md_name = to_js_type(type);
 	char code[1024];
 	std::string snake = camelToSnake(md_name);
@@ -2614,7 +2588,7 @@ static JSValue to_js_variant(JSContext *ctx, int type, JSValue opaque) {
 	return ret;
 }
 
-static JSValue to_js_variant(JSContext *ctx, int type, uint8_t *value) {
+inline JSValue to_js_variant(JSContext *ctx, int type, uint8_t *value) {
 	size_t len = variant_size(type);
 	JSValue buf = JS_NewArrayBuffer(ctx, value, len, NULL, NULL, false);
 	JSValue *args = new JSValue[3]{ buf, JS_NewInt64(ctx, 0), JS_NewInt64(ctx, len) };
@@ -2622,142 +2596,13 @@ static JSValue to_js_variant(JSContext *ctx, int type, uint8_t *value) {
 	return to_js_variant(ctx, type, opaque);
 }
 
-static JSValue to_js_u8arr(JSContext *ctx, GDExtensionVariantType type, void *value) {
+inline JSValue to_js_u8arr(JSContext *ctx, GDExtensionVariantType type, void *value) {
 	int size = variant_size(type);
 	uint8_t *u8 = reinterpret_cast<uint8_t *>(value);
 	JSValue buf = JS_NewArrayBuffer(ctx, u8, size, NULL, NULL, false);
 	JSValue ofs = JS_NewInt64(ctx, 0);
 	JSValue *args = new JSValue[3]{ buf, ofs, JS_NewInt64(ctx, size) };
 	return JS_NewTypedArray(ctx, size, args, JSTypedArrayEnum::JS_TYPED_ARRAY_UINT8);
-}
-
-static godot::Variant to_gd_variant(JSContext *ctx, JSValue value) {
-	JSAtom opaque_atom = JS_NewAtom(ctx, "opaque");
-	godot::Variant ret;
-	if (JS_HasProperty(ctx, value, opaque_atom)) {
-		JSValue opaque = JS_GetProperty(ctx, value, opaque_atom);
-		void *buf = qjs::get_typed_array_buf(ctx, opaque);
-		GDExtensionVariantType type = godot::internal::gdextension_interface_variant_get_type(buf);
-		switch (type) {
-			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_NIL:
-				ret = godot::Variant();
-				break;
-			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_INT:
-				ret = (int)(*(godot::Variant *)buf);
-				break;
-			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_FLOAT:
-				ret = (double)(*(godot::Variant *)buf);
-				break;
-			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_BOOL:
-				ret = (bool)(*(godot::Variant *)buf);
-				break;
-			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_STRING:
-				ret = *(godot::String *)buf;
-				break;
-			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_STRING_NAME:
-				ret = *(godot::StringName *)buf;
-				break;
-			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY:
-				ret = *(godot::PackedByteArray *)buf;
-				break;
-			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY:
-				ret = *(godot::PackedInt32Array *)buf;
-				break;
-			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY:
-				ret = *(godot::PackedInt64Array *)buf;
-				break;
-			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY:
-				ret = *(godot::PackedStringArray *)buf;
-				break;
-			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY:
-				ret = *(godot::PackedFloat32Array *)buf;
-				break;
-			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY:
-				ret = *(godot::PackedFloat64Array *)buf;
-				break;
-			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY:
-				ret = *(godot::PackedVector2Array *)buf;
-				break;
-			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY:
-				ret = *(godot::PackedVector3Array *)buf;
-				break;
-			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR4_ARRAY:
-				ret = *(godot::PackedVector4Array *)buf;
-				break;
-			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY:
-				ret = *(godot::PackedColorArray *)buf;
-				break;
-			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_VECTOR2:
-				ret = *(godot::Vector2 *)buf;
-				break;
-			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_VECTOR2I:
-				ret = *(godot::Vector2i *)buf;
-				break;
-			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_VECTOR3:
-				ret = *(godot::Vector3 *)buf;
-				break;
-			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_VECTOR3I:
-				ret = *(godot::Vector3i *)buf;
-				break;
-			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_VECTOR4:
-				ret = *(godot::Vector4 *)buf;
-				break;
-			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_VECTOR4I:
-				ret = *(godot::Vector4i *)buf;
-				break;
-			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_ARRAY:
-				ret = *(godot::Array *)buf;
-				break;
-			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_DICTIONARY:
-				ret = *(godot::Dictionary *)buf;
-				break;
-			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_BASIS:
-				ret = *(godot::Basis *)buf;
-				break;
-			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_NODE_PATH:
-				ret = *(godot::NodePath *)buf;
-				break;
-			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_CALLABLE:
-				ret = *(godot::Callable *)buf;
-				break;
-			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_OBJECT:
-				ret = (godot::Object *)buf;
-				break;
-			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PLANE:
-				ret = *(godot::Plane *)buf;
-				break;
-			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_PROJECTION:
-				ret = *(godot::Projection *)buf;
-				break;
-			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_QUATERNION:
-				ret = *(godot::Quaternion *)buf;
-				break;
-			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_SIGNAL:
-				ret = *(godot::Signal *)buf;
-				break;
-			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_TRANSFORM2D:
-				ret = *(godot::Transform2D *)buf;
-				break;
-			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_TRANSFORM3D:
-				ret = *(godot::Transform3D *)buf;
-				break;
-			case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_VARIANT_MAX:
-				ret = *(godot::Variant *)buf;
-				break;
-			default:
-				ret = godot::Variant();
-				break;
-		}
-	} else if (JS_IsBool(value)) {
-		ret = encodeBool(ctx, value);
-	} else if (is_int(value)) {
-		ret = encodeInt(ctx, value);
-	} else if (is_float(value)) {
-		ret = encodeDouble(ctx, value);
-	} else {
-		ret = nullptr;
-	}
-	return ret;
 }
 
 // static uint8_t *u8ptr_cast_to(JSContext *ctx, GDExtensionVariantType type, uint8_t *u8_buf) {
@@ -2782,7 +2627,7 @@ static godot::Variant to_gd_variant(JSContext *ctx, JSValue value) {
 // 	return (uint8_t *)ret;
 // }
 
-static void *to_c_value(JSContext *ctx, JSValue value) {
+inline void *to_c_value(JSContext *ctx, JSValue value) {
 	void *arg = nullptr;
 	JSAtom opaque_atom = JS_NewAtom(ctx, "opaque");
 	if (is_typed_array(value)) {
@@ -2813,7 +2658,7 @@ static void *to_c_value(JSContext *ctx, JSValue value) {
 	return arg;
 }
 
-static void *malloc_variant(JSContext *ctx, GDExtensionVariantType type) {
+inline void *malloc_variant(JSContext *ctx, GDExtensionVariantType type) {
 	switch (type) {
 		case GDExtensionVariantType::GDEXTENSION_VARIANT_TYPE_NIL:
 			return memnew(godot::Variant)->_native_ptr();
@@ -2869,7 +2714,7 @@ static void *malloc_variant(JSContext *ctx, GDExtensionVariantType type) {
 	}
 }
 
-static void *to_c_pointer(JSContext *ctx, Pointer js_pointer) {
+inline void *to_c_pointer(JSContext *ctx, Pointer js_pointer) {
 	std::shared_ptr<JSPointer> pointer = js_traits<std::shared_ptr<JSPointer>>::unwrap(ctx, js_pointer);
 	return reinterpret_cast<void *>(pointer->get_pointer());
 }
@@ -3119,7 +2964,7 @@ struct js_traits<GDExtensionClassCreateInstance> {
 	static JSValue inner_method(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv, int magic, JSValue *func_data) {
 		auto method = js_traits<std::function<void *(void *)>>::unwrap(ctx, *func_data);
 		void *ret = method(argv);
-		return JS_UNDEFINED;
+		return *reinterpret_cast<JSValue *>(ret);
 	}
 
 	static JSValue wrap(JSContext *ctx, GDExtensionClassCreateInstance method) {
@@ -3128,20 +2973,20 @@ struct js_traits<GDExtensionClassCreateInstance> {
 	}
 };
 
-static bool is_typed_array(JSValue value) {
+inline bool is_typed_array(JSValue value) {
 	JSClassID class_id = JS_GetClassID(value);
 	return class_id >= 21 && class_id <= 31;
 }
 
-static bool is_int(JSValue value) {
+inline bool is_int(JSValue value) {
 	return JS_VALUE_GET_TAG(value) == JS_TAG_INT;
 }
 
-static bool is_float(JSValue value) {
+inline bool is_float(JSValue value) {
 	return JS_VALUE_GET_TAG(value) == JS_TAG_FLOAT64;
 }
 
-static void print_exception(JSContext *ctx) {
+inline void print_exception(JSContext *ctx) {
 	JSValue exp = JS_GetException(ctx);
 	JSValue message = JS_GetPropertyStr(ctx, exp, "message");
 	JSValue stack = JS_GetPropertyStr(ctx, exp, "stack");
@@ -3156,7 +3001,7 @@ static void print_exception(JSContext *ctx) {
 	JS_FreeCString(ctx, stack_str);
 }
 
-static bool is_exception(JSContext *ctx, JSValue exp) {
+inline bool is_exception(JSContext *ctx, JSValue exp) {
 	if (JS_IsException(exp)) {
 		print_exception(ctx);
 		return true;

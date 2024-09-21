@@ -45,5 +45,6 @@ export function GodotClass(target) {
   target[_GodotClass] = true;
 
   let class_info = new ClassInfo();
-  class_info.class_userdata = JSPointer(target);
+
+  class_info.class_userdata = JSPointer.fromJSValue(target);
 }

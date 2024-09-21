@@ -2,11 +2,18 @@
 #include "support/instance_info.hpp"
 #include "support/javascript_instance.hpp"
 #include "support/javascript_language.hpp"
+#include <godot_cpp/classes/dir_access.hpp>
 #include <godot_cpp/classes/editor_interface.hpp>
+#include <godot_cpp/classes/file_access.hpp>
+#include <godot_cpp/classes/os.hpp>
+#include <godot_cpp/classes/project_settings.hpp>
+#include <godot_cpp/classes/resource_loader.hpp>
 #include <godot_cpp/classes/script_editor.hpp>
 #include <godot_cpp/variant/variant.hpp>
 
 using namespace godot;
+
+const char *JavaScript::symbol_mask = "GodotClass";
 
 bool JavaScript::_editor_can_reload_from_file() {
 	return true;
@@ -24,49 +31,27 @@ Ref<Script> JavaScript::_get_base_script() const {
 }
 
 StringName JavaScript::_get_global_name() const {
-	// JSValue js_name = JS_GetPropertyStr(context.ctx, cur_class, "name");
-	// const char *c_name = JS_ToCString(context.ctx, js_name);
-	// StringName name = StringName(c_name);
-	// JS_FreeValue(context.ctx, js_name);
-	// return name;
-	return "";
+	return global_class_name;
 }
 
 bool JavaScript::_inherits_script(const Ref<Script> &p_script) const {
-	// if (p_script.is_null()) {
-	// 	return false;
-	// } else {
-	// 	JSValue prototype = JS_GetPrototype(context.ctx, cur_class);
-	// 	JSValue js_base_name = JS_GetPropertyStr(context.ctx, prototype, "name");
-	// 	const char *c_base_name = JS_ToCString(context.ctx, js_base_name);
-
-	// 	Ref<JavaScript> base = p_script;
-	// 	JSValue base_class = base->cur_class;
-	// 	JSValue js_name = JS_GetPropertyStr(context.ctx, base_class, "name");
-	// 	const char *c_name = JS_ToCString(context.ctx, js_name);
-	// 	JS_FreeValue(context.ctx, prototype);
-	// 	JS_FreeValue(context.ctx, js_base_name);
-	// 	JS_FreeValue(context.ctx, js_name);
-	// 	return strcmp(c_base_name, c_name) == 0;
-	// }
-	return false;
+	String base1 = static_cast<Ref<JavaScript>>(p_script)->global_class_name;
+	String base2 = this->base_class_name;
+	return base1 == base2;
 }
 
 StringName JavaScript::_get_instance_base_type() const {
-	// JSValue prototype = JS_GetPrototype(context.ctx, cur_class);
-	// JSValue js_base_name = JS_GetPropertyStr(context.ctx, prototype, "name");
-	// const char *c_base_name = JS_ToCString(context.ctx, js_base_name);
-	// return c_base_name;
-	return "";
+	return base_class_name;
 }
 
 void *JavaScript::_instance_create(Object *p_for_object) const {
-	return internal::gdextension_interface_script_instance_create3(&InstanceInfo, new JavaScriptInstance(p_for_object, const_cast<JavaScript *>(this)));
+	Ref<JavaScript> script = ResourceLoader::get_singleton()->load(this->path.replace("res://", "res://.dist/"));
+	return internal::gdextension_interface_script_instance_create3(&InstanceInfo, new JavaScriptInstance(p_for_object, script.ptr()));
 }
 
 void *JavaScript::_placeholder_instance_create(Object *p_for_object) const {
-	return internal::gdextension_interface_placeholder_script_instance_create(_get_language(), const_cast<JavaScript *>(this), p_for_object->_owner);
-	return nullptr;
+	Ref<JavaScript> script = ResourceLoader::get_singleton()->load(this->path.replace("res://", "res://.dist/"));
+	return internal::gdextension_interface_placeholder_script_instance_create(_get_language(), script.ptr(), p_for_object->_owner);
 }
 
 bool JavaScript::_instance_has(Object *p_object) const {
@@ -81,8 +66,78 @@ String JavaScript::_get_source_code() const {
 	return source_code;
 }
 
+String JavaScript::get_dist_source_code() const {
+	return dist_source_code;
+}
+
 void JavaScript::_set_source_code(const String &p_code) {
 	source_code = p_code;
+	if (!path.begins_with("res://.dist/") && !path.begins_with("res://addons/")) {
+		remove_dist();
+		String tsconfig_path = ProjectSettings::get_singleton()->globalize_path("res://tsconfig.json");
+		int exit_code = OS::get_singleton()->execute("cmd.exe", { "/c", "tsc", "--build", tsconfig_path, "--force" });
+		ERR_FAIL_COND_EDMSG(exit_code == -1, "Error executing tsc.");
+
+		Ref<JavaScript> dist_script = ResourceLoader::get_singleton()->load(path.replace("res://src", "res://.dist/src"));
+		dist_source_code = dist_script->_get_source_code();
+
+		String code = _get_source_code();
+		std::string origin_string = code.ascii().get_data();
+		const char *c_code = origin_string.c_str();
+		TSTree *tree = ts_parser_parse_string(parser, NULL, c_code, strlen(c_code));
+		uint32_t error_offset;
+		TSQueryError error;
+		const char *query_string = R"xxx(
+			(class_declaration
+				(decorator)* @decorator.name
+				name: (identifier) @class.name
+				(class_heritage (identifier) @base.name)?
+			)
+			(#eq? @decorator.name "GodotClass")
+		)xxx";
+		TSQuery *query = ts_query_new(lang, query_string, strlen(query_string), &error_offset, &error);
+		if (!query)
+			return;
+		TSQueryCursor *cursor = ts_query_cursor_new();
+		ts_query_cursor_exec(cursor, query, ts_tree_root_node(tree));
+		TSQueryMatch match;
+		while (ts_query_cursor_next_match(cursor, &match)) {
+			uint32_t i = -1;
+			while (ts_query_cursor_next_capture(cursor, &match, &i)) {
+				TSQueryCapture capture = match.captures[i];
+				TSNode node = capture.node;
+				char content[64] = {};
+				memcpy(content, c_code + ts_node_start_byte(node), ts_node_end_byte(node) - ts_node_start_byte(node));
+				uint32_t name_len;
+				const char *name = ts_query_capture_name_for_id(query, capture.index, &name_len);
+				if (strcmp(name, "@base.name") == 0) {
+					base_class_name = content;
+				} else if (strcmp(name, "@class.name") == 0) {
+					global_class_name = content;
+				}
+			}
+		}
+	}
+}
+
+void JavaScript::remove_dist() {
+	Ref<DirAccess> dir = DirAccess::open("res://.dist");
+	Error err = dir->get_open_error();
+	ERR_FAIL_COND(err != OK);
+	remove_dist_internal(dir->get_current_dir());
+}
+
+void JavaScript::remove_dist_internal(const String &path) {
+	Ref<DirAccess> dir = DirAccess::open(path);
+	Error err = dir->list_dir_begin();
+	ERR_FAIL_COND(err != OK);
+	String file_path;
+	while ((file_path = dir->get_next()) != "") {
+		if (dir->current_is_dir()) {
+			remove_dist_internal(dir->get_current_dir() + "/" + file_path);
+		}
+		dir->remove(file_path);
+	}
 }
 
 Error JavaScript::_reload(bool p_keep_state) {
@@ -98,6 +153,8 @@ String JavaScript::_get_class_icon_path() const {
 }
 
 bool JavaScript::_has_method(const StringName &p_method) const {
+	if (!path.begins_with("res://dist") && !path.begins_with("res://addons")) {
+	}
 	return false;
 }
 
@@ -176,5 +233,5 @@ Variant JavaScript::_get_rpc_config() const {
 	return Variant();
 }
 
-JavaScript::JavaScript() {
+godot::JavaScript::~JavaScript() {
 }

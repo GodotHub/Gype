@@ -245,89 +245,89 @@ bool JavaScriptLanguage::_handles_global_class_type(const String &p_type) const 
 
 Dictionary JavaScriptLanguage::_get_global_class_name(const String &p_path) const {
 	Dictionary dict;
-	if (p_path.begins_with("res://dist")) {
-		dict["name"] = get_class_name(p_path);
-		dict["base_type"] = get_base_type(p_path);
-	}
+	// if (p_path.begins_with("res://dist")) {
+	// 	dict["name"] = get_class_name(p_path);
+	// 	dict["base_type"] = get_base_type(p_path);
+	// }
 	return dict;
 }
 
-String godot::JavaScriptLanguage::get_base_type(const String &p_path) {
-	Ref<JavaScript> script = ResourceLoader::get_singleton()->load(p_path);
-	std::string script_code = script->_get_source_code().ascii().get_data();
+// String godot::JavaScriptLanguage::get_base_type(const String &p_path) {
+// 	Ref<JavaScript> script = ResourceLoader::get_singleton()->load(p_path);
+// 	std::string script_code = script->_get_source_code().ascii().get_data();
 
-	JSValue ret = context.eval(script_code, "<input>", JS_EVAL_TYPE_MODULE | JS_EVAL_FLAG_COMPILE_ONLY);
-	if (!qjs::is_exception(context.ctx, ret)) {
-		JSModuleDef *md = (JSModuleDef *)JS_VALUE_GET_PTR(ret);
-		ret = JS_EvalFunction(context.ctx, ret);
-		JSValue ns = JS_GetModuleNamespace(context.ctx, md);
-		JSPropertyEnum *ptab;
-		uint32_t len;
-		if (JS_GetOwnPropertyNames(context.ctx, &ptab, &len, ns, JS_GPN_STRING_MASK) < 0) {
-			return "";
-		}
-		if (len > 0) {
-			for (uint32_t i = 0; i < len; i++) {
-				JSAtom prop_atom = ptab[i].atom;
-				JSValue el = JS_GetProperty(context.ctx, ns, prop_atom);
-				JSPropertyEnum *class_ptab;
-				uint32_t class_len;
-				if (JS_GetOwnPropertyNames(context.ctx, &class_ptab, &class_len, el, JS_GPN_SYMBOL_MASK) < 0) {
-					return "";
-				}
-				for (uint32_t j = 0; j < class_len; j++) {
-					JSAtom symbol_atom = class_ptab[j].atom;
-					const char *symbol_name = JS_AtomToCString(context.ctx, symbol_atom);
-					if (strcmp(symbol_name, JavaScriptInstance::symbol_mask) == 0) {
-						JSValue base_class = JS_GetPrototype(context.ctx, el);
-						JSValue js_base_class_name = JS_GetPropertyStr(context.ctx, base_class, "name");
-						const char *base_class_name = JS_ToCString(context.ctx, js_base_class_name);
-						return String(base_class_name);
-					}
-				}
-			}
-		}
-	}
-	return "";
-}
+// 	JSValue ret = context.eval(script_code, "<input>", JS_EVAL_TYPE_MODULE | JS_EVAL_FLAG_COMPILE_ONLY);
+// 	if (!qjs::is_exception(context.ctx, ret)) {
+// 		JSModuleDef *md = (JSModuleDef *)JS_VALUE_GET_PTR(ret);
+// 		ret = JS_EvalFunction(context.ctx, ret);
+// 		JSValue ns = JS_GetModuleNamespace(context.ctx, md);
+// 		JSPropertyEnum *ptab;
+// 		uint32_t len;
+// 		if (JS_GetOwnPropertyNames(context.ctx, &ptab, &len, ns, JS_GPN_STRING_MASK) < 0) {
+// 			return "";
+// 		}
+// 		if (len > 0) {
+// 			for (uint32_t i = 0; i < len; i++) {
+// 				JSAtom prop_atom = ptab[i].atom;
+// 				JSValue el = JS_GetProperty(context.ctx, ns, prop_atom);
+// 				JSPropertyEnum *class_ptab;
+// 				uint32_t class_len;
+// 				if (JS_GetOwnPropertyNames(context.ctx, &class_ptab, &class_len, el, JS_GPN_SYMBOL_MASK) < 0) {
+// 					return "";
+// 				}
+// 				for (uint32_t j = 0; j < class_len; j++) {
+// 					JSAtom symbol_atom = class_ptab[j].atom;
+// 					const char *symbol_name = JS_AtomToCString(context.ctx, symbol_atom);
+// 					if (strcmp(symbol_name, JavaScriptInstance::symbol_mask) == 0) {
+// 						JSValue base_class = JS_GetPrototype(context.ctx, el);
+// 						JSValue js_base_class_name = JS_GetPropertyStr(context.ctx, base_class, "name");
+// 						const char *base_class_name = JS_ToCString(context.ctx, js_base_class_name);
+// 						return String(base_class_name);
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+// 	return "";
+// }
 
-String godot::JavaScriptLanguage::get_class_name(const String &p_path) {
-	Ref<JavaScript> script = ResourceLoader::get_singleton()->load(p_path);
-	std::string script_code = script->_get_source_code().ascii().get_data();
+// String godot::JavaScriptLanguage::get_class_name(const String &p_path) {
+// 	Ref<JavaScript> script = ResourceLoader::get_singleton()->load(p_path);
+// 	std::string script_code = script->_get_source_code().ascii().get_data();
 
-	JSValue ret = context.eval(script_code, "<input>", JS_EVAL_TYPE_MODULE | JS_EVAL_FLAG_COMPILE_ONLY);
-	if (!qjs::is_exception(context.ctx, ret)) {
-		JSModuleDef *md = (JSModuleDef *)JS_VALUE_GET_PTR(ret);
-		ret = JS_EvalFunction(context.ctx, ret);
-		JSValue ns = JS_GetModuleNamespace(context.ctx, md);
-		JSPropertyEnum *ptab;
-		uint32_t len;
-		if (JS_GetOwnPropertyNames(context.ctx, &ptab, &len, ns, JS_GPN_STRING_MASK) < 0) {
-			return "";
-		}
-		if (len > 0) {
-			for (uint32_t i = 0; i < len; i++) {
-				JSAtom prop_atom = ptab[i].atom;
-				JSValue el = JS_GetProperty(context.ctx, ns, prop_atom);
-				JSPropertyEnum *class_ptab;
-				uint32_t class_len;
-				if (JS_GetOwnPropertyNames(context.ctx, &class_ptab, &class_len, el, JS_GPN_SYMBOL_MASK) < 0) {
-					return "";
-				}
-				for (uint32_t j = 0; j < class_len; j++) {
-					JSAtom symbol_atom = class_ptab[j].atom;
-					const char *symbol_name = JS_AtomToCString(context.ctx, symbol_atom);
-					if (strcmp(symbol_name, JavaScriptInstance::symbol_mask) == 0) {
-						JSValue js_class_name = JS_GetPropertyStr(context.ctx, el, "name");
-						const char *class_name = JS_ToCString(context.ctx, js_class_name);
-						return String(class_name);
-					}
-				}
-			}
-		}
-	}
-	return "";
-}
+// 	JSValue ret = context.eval(script_code, "<input>", JS_EVAL_TYPE_MODULE | JS_EVAL_FLAG_COMPILE_ONLY);
+// 	if (!qjs::is_exception(context.ctx, ret)) {
+// 		JSModuleDef *md = (JSModuleDef *)JS_VALUE_GET_PTR(ret);
+// 		ret = JS_EvalFunction(context.ctx, ret);
+// 		JSValue ns = JS_GetModuleNamespace(context.ctx, md);
+// 		JSPropertyEnum *ptab;
+// 		uint32_t len;
+// 		if (JS_GetOwnPropertyNames(context.ctx, &ptab, &len, ns, JS_GPN_STRING_MASK) < 0) {
+// 			return "";
+// 		}
+// 		if (len > 0) {
+// 			for (uint32_t i = 0; i < len; i++) {
+// 				JSAtom prop_atom = ptab[i].atom;
+// 				JSValue el = JS_GetProperty(context.ctx, ns, prop_atom);
+// 				JSPropertyEnum *class_ptab;
+// 				uint32_t class_len;
+// 				if (JS_GetOwnPropertyNames(context.ctx, &class_ptab, &class_len, el, JS_GPN_SYMBOL_MASK) < 0) {
+// 					return "";
+// 				}
+// 				for (uint32_t j = 0; j < class_len; j++) {
+// 					JSAtom symbol_atom = class_ptab[j].atom;
+// 					const char *symbol_name = JS_AtomToCString(context.ctx, symbol_atom);
+// 					if (strcmp(symbol_name, JavaScriptInstance::symbol_mask) == 0) {
+// 						JSValue js_class_name = JS_GetPropertyStr(context.ctx, el, "name");
+// 						const char *class_name = JS_ToCString(context.ctx, js_class_name);
+// 						return String(class_name);
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+// 	return "";
+// }
 
 JavaScriptLanguage::~JavaScriptLanguage() {
 	memdelete(singleton);

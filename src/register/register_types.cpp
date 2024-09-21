@@ -16,13 +16,14 @@
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/defs.hpp>
 
-#ifdef DEBUG_ENABLED
-#include "class_db_test/class_db_test.hpp"
-#include "gdstring_test/gdstring_test.hpp"
-#include "node_path_test/node_path_test.hpp"
-#include "variant_test/variant_test.hpp"
+// bug 无法关闭程序
+// #ifdef DEBUG_ENABLED
+// #include "class_db_test/class_db_test.hpp"
+// #include "gdstring_test/gdstring_test.hpp"
+// #include "node_path_test/node_path_test.hpp"
+// #include "variant_test/variant_test.hpp"
 
-#endif
+// #endif
 
 using namespace godot;
 
@@ -45,30 +46,6 @@ void initialize_tgds_types(godot::ModuleInitializationLevel p_level) {
 	// test_node_path();
 	// test_class_db();
 #endif // DEBUG
-	// JSValue value = context.eval("import { GD } from 'variant/utility_functions.js';GD.print('123');", "<eval>", JS_EVAL_TYPE_MODULE);
-	// context.eval("import { StringName } from 'variant/string_name.js';new StringName();", "<eval>", JS_EVAL_TYPE_MODULE);
-	// context.eval(R"xxx(
-	// 	// import { StringName } from 'variant/string_name';
-	// 	// import { GDString } from 'variant/gdstring';
-	// 	// let str = new StringName('123');
-	// 	// GD.print(str);
-	// 	// GD.print(new GDString('123'));
-	// 	// GD.print(new GDString(new StringName('123')));
-	// )xxx",
-	// 		"<eval>", JS_EVAL_TYPE_GLOBAL | JS_EVAL_TYPE_MODULE);
-	// GDREGISTER_CLASS(TypescriptLanguage);
-	// GDREGISTER_CLASS(TypescriptLoader);
-	// GDREGISTER_CLASS(TypescriptSaver);
-	// GDREGISTER_CLASS(Typescript);
-	// Engine::get_singleton()->register_script_language(memnew(TypescriptLanguage()));
-	// ResourceLoader::get_singleton()->add_resource_format_loader(memnew(TypescriptLoader()));
-	// ResourceSaver::get_singleton()->add_resource_format_saver(memnew(TypescriptSaver));
-	// if (JS_IsException(value)) {
-	// 	JSValue error = JS_GetException(context.ctx);
-	// 	JSValue errorMessage = JS_GetPropertyStr(context.ctx, error, "message");
-	// 	JSValue errorStack = JS_GetPropertyStr(context.ctx, error, "stack");
-	// 	const char *message = JS_ToCString(context.ctx, errorMessage);
-	// }
 	printf("%s", "Quickjs initialization is over\n");
 }
 
@@ -76,13 +53,16 @@ void uninitialize_tgds_types(godot::ModuleInitializationLevel p_level) {
 	if (p_level != godot::ModuleInitializationLevel::MODULE_INITIALIZATION_LEVEL_SCENE) {
 		return;
 	}
+	Engine::get_singleton()->unregister_script_language(JavaScriptLanguage::get_singleton());
+	ResourceSaver::get_singleton()->remove_resource_format_saver(JavaScriptSaver::get_singleton());
+	ResourceLoader::get_singleton()->remove_resource_format_loader(JavaScriptLoader::get_singleton());
 	printf("Quickjs close\n");
 }
 
 void init_quickjs() {
 	register_enums();
 	register_internal_api();
-	js_init_module(context.ctx);
+	// js_init_module(context.ctx);
 	JS_AddIntrinsicOperators(context.ctx);
 	JS_SetModuleLoaderFunc(runtime.rt, NULL, module_loader, NULL);
 	JSValue ret = context.eval(R"xxx(

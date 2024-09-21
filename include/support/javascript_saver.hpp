@@ -16,7 +16,6 @@ class JavaScriptSaver : public ResourceFormatSaver {
 
 public:
 	static JavaScriptSaver *get_singleton();
-	void update_cur_class(Ref<JavaScript> script);
 	Error _save(const Ref<Resource> &p_resource, const String &p_path, uint32_t p_flags);
 	Error _set_uid(const String &p_path, int64_t p_uid);
 	bool _recognize(const Ref<Resource> &p_resource) const;

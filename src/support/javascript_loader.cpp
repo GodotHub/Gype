@@ -63,7 +63,7 @@ PackedStringArray JavaScriptLoader::_get_classes_used(const String &p_path) cons
 }
 
 Variant JavaScriptLoader::_load(const String &p_path, const String &p_original_path, bool p_use_sub_threads, int32_t p_cache_mode) const {
-	Ref<JavaScript> script = memnew(JavaScript(p_original_path));
+	Ref<JavaScript> script = memnew(JavaScript(p_path, p_original_path));
 	String source_code = FileAccess::get_file_as_string(p_original_path);
 	script->_set_source_code(source_code);
 	return script;
