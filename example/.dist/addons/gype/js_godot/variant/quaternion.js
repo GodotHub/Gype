@@ -1,0 +1,263 @@
+var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+};
+var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (receiver, state, value, kind, f) {
+    if (kind === "m") throw new TypeError("Private method is not writable");
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
+    return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
+};
+var _a, _Quaternion_SIZE, _Quaternion__bindings, _Quaternion_initialized;
+import * as internal from '__internal__';
+import { _call_builtin_constructor, _call_builtin_method_ptr_ret, _call_builtin_method_ptr_no_ret, _call_builtin_method_ptr_obj_ret, } from '@js_godot/core/builtin_ptrcall';
+import { Basis } from '@js_godot/variant/basis';
+import { StringName } from '@js_godot/variant/string_name';
+import { Vector3 } from '@js_godot/variant/vector3';
+import { GodotObject } from "@js_godot/classes/godot_object";
+class _MethodBindings {
+}
+export class Quaternion {
+    constructor(value) {
+        this.opaque = new Uint8Array(__classPrivateFieldGet(_a, _a, "f", _Quaternion_SIZE));
+        if (!value) {
+            _call_builtin_constructor(__classPrivateFieldGet(_a, _a, "f", _Quaternion__bindings).constructor_0, this);
+        }
+        else if (arguments.length == 1 && arguments[0] instanceof _a) {
+            let from = arguments[0];
+            _call_builtin_constructor(__classPrivateFieldGet(_a, _a, "f", _Quaternion__bindings).constructor_1, this, [
+                from
+            ]);
+        }
+        else if (arguments.length == 1 && arguments[0] instanceof Basis) {
+            let from = arguments[0];
+            _call_builtin_constructor(__classPrivateFieldGet(_a, _a, "f", _Quaternion__bindings).constructor_2, this, [
+                from
+            ]);
+        }
+        else if (arguments.length == 2 && arguments[0] instanceof Vector3 && typeof arguments[1] == "number") {
+            let axis = arguments[0];
+            let angle = arguments[1];
+            _call_builtin_constructor(__classPrivateFieldGet(_a, _a, "f", _Quaternion__bindings).constructor_3, this, [
+                axis, angle
+            ]);
+        }
+        else if (arguments.length == 2 && arguments[0] instanceof Vector3 && arguments[1] instanceof Vector3) {
+            let arc_from = arguments[0];
+            let arc_to = arguments[1];
+            _call_builtin_constructor(__classPrivateFieldGet(_a, _a, "f", _Quaternion__bindings).constructor_4, this, [
+                arc_from, arc_to
+            ]);
+        }
+        else if (arguments.length == 4 && typeof arguments[0] == "number" && typeof arguments[1] == "number" && typeof arguments[2] == "number" && typeof arguments[3] == "number") {
+            let x = arguments[0];
+            let y = arguments[1];
+            let z = arguments[2];
+            let w = arguments[3];
+            _call_builtin_constructor(__classPrivateFieldGet(_a, _a, "f", _Quaternion__bindings).constructor_5, this, [
+                x, y, z, w
+            ]);
+        }
+        else if (value.constructor.name === "Variant") {
+            __classPrivateFieldGet(_a, _a, "f", _Quaternion__bindings).from_variant_constructor(this.opaque, value.opaque);
+        }
+        else if (value instanceof Uint8Array) {
+            this.opaque = value;
+        }
+    }
+    static __init_bindings_constructors_destructor() {
+        __classPrivateFieldGet(this, _a, "f", _Quaternion__bindings).from_variant_constructor = internal.get_variant_to_type_constructor(15);
+        __classPrivateFieldGet(this, _a, "f", _Quaternion__bindings).constructor_0 = internal.variant_get_ptr_constructor(15, 0);
+        __classPrivateFieldGet(this, _a, "f", _Quaternion__bindings).constructor_1 = internal.variant_get_ptr_constructor(15, 1);
+        __classPrivateFieldGet(this, _a, "f", _Quaternion__bindings).constructor_2 = internal.variant_get_ptr_constructor(15, 2);
+        __classPrivateFieldGet(this, _a, "f", _Quaternion__bindings).constructor_3 = internal.variant_get_ptr_constructor(15, 3);
+        __classPrivateFieldGet(this, _a, "f", _Quaternion__bindings).constructor_4 = internal.variant_get_ptr_constructor(15, 4);
+        __classPrivateFieldGet(this, _a, "f", _Quaternion__bindings).constructor_5 = internal.variant_get_ptr_constructor(15, 5);
+    }
+    static async _init_bindings() {
+        if (__classPrivateFieldGet(this, _a, "f", _Quaternion_initialized)) {
+            return;
+        }
+        __classPrivateFieldSet(this, _a, true, "f", _Quaternion_initialized);
+        this.__init_bindings_constructors_destructor();
+        {
+            let _gde_name = new StringName('length');
+            __classPrivateFieldGet(this, _a, "f", _Quaternion__bindings).method_length = internal.variant_get_ptr_builtin_method(15, _gde_name.opaque, 466405837);
+        }
+        {
+            let _gde_name = new StringName('length_squared');
+            __classPrivateFieldGet(this, _a, "f", _Quaternion__bindings).method_length_squared = internal.variant_get_ptr_builtin_method(15, _gde_name.opaque, 466405837);
+        }
+        {
+            let _gde_name = new StringName('normalized');
+            __classPrivateFieldGet(this, _a, "f", _Quaternion__bindings).method_normalized = internal.variant_get_ptr_builtin_method(15, _gde_name.opaque, 4274879941);
+        }
+        {
+            let _gde_name = new StringName('is_normalized');
+            __classPrivateFieldGet(this, _a, "f", _Quaternion__bindings).method_is_normalized = internal.variant_get_ptr_builtin_method(15, _gde_name.opaque, 3918633141);
+        }
+        {
+            let _gde_name = new StringName('is_equal_approx');
+            __classPrivateFieldGet(this, _a, "f", _Quaternion__bindings).method_is_equal_approx = internal.variant_get_ptr_builtin_method(15, _gde_name.opaque, 1682156903);
+        }
+        {
+            let _gde_name = new StringName('is_finite');
+            __classPrivateFieldGet(this, _a, "f", _Quaternion__bindings).method_is_finite = internal.variant_get_ptr_builtin_method(15, _gde_name.opaque, 3918633141);
+        }
+        {
+            let _gde_name = new StringName('inverse');
+            __classPrivateFieldGet(this, _a, "f", _Quaternion__bindings).method_inverse = internal.variant_get_ptr_builtin_method(15, _gde_name.opaque, 4274879941);
+        }
+        {
+            let _gde_name = new StringName('log');
+            __classPrivateFieldGet(this, _a, "f", _Quaternion__bindings).method_log = internal.variant_get_ptr_builtin_method(15, _gde_name.opaque, 4274879941);
+        }
+        {
+            let _gde_name = new StringName('exp');
+            __classPrivateFieldGet(this, _a, "f", _Quaternion__bindings).method_exp = internal.variant_get_ptr_builtin_method(15, _gde_name.opaque, 4274879941);
+        }
+        {
+            let _gde_name = new StringName('angle_to');
+            __classPrivateFieldGet(this, _a, "f", _Quaternion__bindings).method_angle_to = internal.variant_get_ptr_builtin_method(15, _gde_name.opaque, 3244682419);
+        }
+        {
+            let _gde_name = new StringName('dot');
+            __classPrivateFieldGet(this, _a, "f", _Quaternion__bindings).method_dot = internal.variant_get_ptr_builtin_method(15, _gde_name.opaque, 3244682419);
+        }
+        {
+            let _gde_name = new StringName('slerp');
+            __classPrivateFieldGet(this, _a, "f", _Quaternion__bindings).method_slerp = internal.variant_get_ptr_builtin_method(15, _gde_name.opaque, 1773590316);
+        }
+        {
+            let _gde_name = new StringName('slerpni');
+            __classPrivateFieldGet(this, _a, "f", _Quaternion__bindings).method_slerpni = internal.variant_get_ptr_builtin_method(15, _gde_name.opaque, 1773590316);
+        }
+        {
+            let _gde_name = new StringName('spherical_cubic_interpolate');
+            __classPrivateFieldGet(this, _a, "f", _Quaternion__bindings).method_spherical_cubic_interpolate = internal.variant_get_ptr_builtin_method(15, _gde_name.opaque, 2150967576);
+        }
+        {
+            let _gde_name = new StringName('spherical_cubic_interpolate_in_time');
+            __classPrivateFieldGet(this, _a, "f", _Quaternion__bindings).method_spherical_cubic_interpolate_in_time = internal.variant_get_ptr_builtin_method(15, _gde_name.opaque, 1436023539);
+        }
+        {
+            let _gde_name = new StringName('get_euler');
+            __classPrivateFieldGet(this, _a, "f", _Quaternion__bindings).method_get_euler = internal.variant_get_ptr_builtin_method(15, _gde_name.opaque, 1394941017);
+        }
+        {
+            let _gde_name = new StringName('from_euler');
+            __classPrivateFieldGet(this, _a, "f", _Quaternion__bindings).method_from_euler = internal.variant_get_ptr_builtin_method(15, _gde_name.opaque, 4053467903);
+        }
+        {
+            let _gde_name = new StringName('get_axis');
+            __classPrivateFieldGet(this, _a, "f", _Quaternion__bindings).method_get_axis = internal.variant_get_ptr_builtin_method(15, _gde_name.opaque, 1776574132);
+        }
+        {
+            let _gde_name = new StringName('get_angle');
+            __classPrivateFieldGet(this, _a, "f", _Quaternion__bindings).method_get_angle = internal.variant_get_ptr_builtin_method(15, _gde_name.opaque, 466405837);
+        }
+    }
+    length() {
+        let ret;
+        ret = _call_builtin_method_ptr_ret(__classPrivateFieldGet(_a, _a, "f", _Quaternion__bindings).method_length, this, 3, []);
+        return ret;
+    }
+    length_squared() {
+        let ret;
+        ret = _call_builtin_method_ptr_ret(__classPrivateFieldGet(_a, _a, "f", _Quaternion__bindings).method_length_squared, this, 3, []);
+        return ret;
+    }
+    normalized() {
+        let ret = new _a();
+        ret.opaque = _call_builtin_method_ptr_ret(__classPrivateFieldGet(_a, _a, "f", _Quaternion__bindings).method_normalized, this, 15, []);
+        return ret;
+    }
+    is_normalized() {
+        let ret;
+        ret = _call_builtin_method_ptr_ret(__classPrivateFieldGet(_a, _a, "f", _Quaternion__bindings).method_is_normalized, this, 1, []);
+        return ret;
+    }
+    is_equal_approx(_to) {
+        let ret;
+        ret = _call_builtin_method_ptr_ret(__classPrivateFieldGet(_a, _a, "f", _Quaternion__bindings).method_is_equal_approx, this, 1, [_to]);
+        return ret;
+    }
+    is_finite() {
+        let ret;
+        ret = _call_builtin_method_ptr_ret(__classPrivateFieldGet(_a, _a, "f", _Quaternion__bindings).method_is_finite, this, 1, []);
+        return ret;
+    }
+    inverse() {
+        let ret = new _a();
+        ret.opaque = _call_builtin_method_ptr_ret(__classPrivateFieldGet(_a, _a, "f", _Quaternion__bindings).method_inverse, this, 15, []);
+        return ret;
+    }
+    log() {
+        let ret = new _a();
+        ret.opaque = _call_builtin_method_ptr_ret(__classPrivateFieldGet(_a, _a, "f", _Quaternion__bindings).method_log, this, 15, []);
+        return ret;
+    }
+    exp() {
+        let ret = new _a();
+        ret.opaque = _call_builtin_method_ptr_ret(__classPrivateFieldGet(_a, _a, "f", _Quaternion__bindings).method_exp, this, 15, []);
+        return ret;
+    }
+    angle_to(_to) {
+        let ret;
+        ret = _call_builtin_method_ptr_ret(__classPrivateFieldGet(_a, _a, "f", _Quaternion__bindings).method_angle_to, this, 3, [_to]);
+        return ret;
+    }
+    dot(_with) {
+        let ret;
+        ret = _call_builtin_method_ptr_ret(__classPrivateFieldGet(_a, _a, "f", _Quaternion__bindings).method_dot, this, 3, [_with]);
+        return ret;
+    }
+    slerp(_to, _weight) {
+        let ret = new _a();
+        ret.opaque = _call_builtin_method_ptr_ret(__classPrivateFieldGet(_a, _a, "f", _Quaternion__bindings).method_slerp, this, 15, [_to, _weight]);
+        return ret;
+    }
+    slerpni(_to, _weight) {
+        let ret = new _a();
+        ret.opaque = _call_builtin_method_ptr_ret(__classPrivateFieldGet(_a, _a, "f", _Quaternion__bindings).method_slerpni, this, 15, [_to, _weight]);
+        return ret;
+    }
+    spherical_cubic_interpolate(_b, _pre_a, _post_b, _weight) {
+        let ret = new _a();
+        ret.opaque = _call_builtin_method_ptr_ret(__classPrivateFieldGet(_a, _a, "f", _Quaternion__bindings).method_spherical_cubic_interpolate, this, 15, [_b, _pre_a, _post_b, _weight]);
+        return ret;
+    }
+    spherical_cubic_interpolate_in_time(_b, _pre_a, _post_b, _weight, _b_t, _pre_a_t, _post_b_t) {
+        let ret = new _a();
+        ret.opaque = _call_builtin_method_ptr_ret(__classPrivateFieldGet(_a, _a, "f", _Quaternion__bindings).method_spherical_cubic_interpolate_in_time, this, 15, [_b, _pre_a, _post_b, _weight, _b_t, _pre_a_t, _post_b_t]);
+        return ret;
+    }
+    get_euler(_order) {
+        let ret = new Vector3();
+        ret.opaque = _call_builtin_method_ptr_ret(__classPrivateFieldGet(_a, _a, "f", _Quaternion__bindings).method_get_euler, this, 9, [_order]);
+        return ret;
+    }
+    from_euler(_euler) {
+        let ret = new _a();
+        ret.opaque = _call_builtin_method_ptr_ret(__classPrivateFieldGet(_a, _a, "f", _Quaternion__bindings).method_from_euler, this, 15, [_euler]);
+        return ret;
+    }
+    get_axis() {
+        let ret = new Vector3();
+        ret.opaque = _call_builtin_method_ptr_ret(__classPrivateFieldGet(_a, _a, "f", _Quaternion__bindings).method_get_axis, this, 9, []);
+        return ret;
+    }
+    get_angle() {
+        let ret;
+        ret = _call_builtin_method_ptr_ret(__classPrivateFieldGet(_a, _a, "f", _Quaternion__bindings).method_get_angle, this, 3, []);
+        return ret;
+    }
+}
+_a = Quaternion;
+_Quaternion_SIZE = { value: 16 };
+_Quaternion__bindings = { value: new _MethodBindings() };
+_Quaternion_initialized = { value: false };
+(() => {
+    _a._init_bindings();
+})();

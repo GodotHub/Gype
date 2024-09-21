@@ -27,6 +27,7 @@ target_link_libraries(gype PRIVATE tree-sitter)
 
 target_include_directories(gype PUBLIC
 	${PROJECT_SOURCE_DIR}/include
+	${PROJECT_SOURCE_DIR}/tree-sitter/src
 	${PROJECT_SOURCE_DIR}/test
 )
 

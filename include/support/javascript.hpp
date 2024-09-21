@@ -3,6 +3,8 @@
 #include "support/javascript_instance.hpp"
 #include "support/javascript_language.hpp"
 #include "support/javascript_saver.hpp"
+#include "tree_sitter/api.h"
+#include "tree_sitter/tree-sitter-javascript.h"
 #include <godot_cpp/classes/script_extension.hpp>
 #include <godot_cpp/templates/hash_map.hpp>
 #include <godot_cpp/templates/hash_set.hpp>
@@ -22,11 +24,19 @@ class JavaScript : public ScriptExtension {
 	friend class JavaScriptSaver;
 	friend class JavaScriptInstance;
 
+	static const char *symbol_mask;
+
+	TSParser *parser;
+	const TSLanguage *lang;
+
 	String source_code;
+	String dist_source_code;
 	String origin_path;
-	JavaScript *baseScript = nullptr;
-	JSValue ns;
-	JSValue cur_class;
+	String path;
+	String global_class_name;
+	String base_class_name;
+	JavaScript *baseScript;
+
 	HashMap<const Object *, const JavaScriptInstance *> instances;
 
 public:
@@ -68,11 +78,26 @@ public:
 	bool _is_placeholder_fallback_enabled() const;
 	Variant _get_rpc_config() const;
 
-	JavaScript();
-	JavaScript(const String &origin_path) :
-			origin_path(origin_path) {};
+	JavaScript() {
+		parser = ts_parser_new();
+		lang = tree_sitter_javascript();
+		ts_parser_set_language(parser, lang);
+	}
+	JavaScript(const String &path, const String &origin_path) :
+			origin_path(origin_path), path(path) {
+		parser = ts_parser_new();
+		lang = tree_sitter_javascript();
+		ts_parser_set_language(parser, lang);
+	};
+	~JavaScript();
 
 protected:
 	static void _bind_methods() {}
+
+private:
+	void remove_dist();
+	void remove_dist_internal(const String &path);
+	String get_dist_source_code() const;
 };
+
 } // namespace godot

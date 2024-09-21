@@ -1,9 +1,6 @@
 @tool
 extends EditorPlugin
 
-func _build():
-	pass
-
 func _enter_tree():
 	# Initialization of the plugin goes here.
 	pass

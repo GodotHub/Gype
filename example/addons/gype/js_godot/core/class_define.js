@@ -1,8 +1,11 @@
+import { GDString } from "@js_godot/variant/gd_string";
 import { StringName } from "@js_godot/variant/string_name";
+import { Variant } from "@js_godot/variant/variant";
 import {
   JSPointer,
   ClassInfo,
   classdb_register_extension_class3,
+  classdb_register_extension_class_virtual_method,
 } from "__internal__";
 
 export function gd_class(target) {
@@ -43,14 +46,21 @@ export function extension_class(target) {
   target.prototype["get_class"] = () => new StringName(target.name);
   target.prototype["initialize_class"] = () => {};
 }
-const _GodotClass = Symbol("GodotClass");
+
+const _GodotClass = Symbol("_GodotClass");
 export function GodotClass(target) {
   target[_GodotClass] = true;
 
   let class_name = target.name;
-  let parent_name = target.prototype.name;
+  let base_name = Object.getPrototypeOf(target).name;
+  classdb_register_extension_class3(class_name, base_name, {
+    p_userdata: target,
+  });
+}
 
-  let class_info = new ClassInfo();
-  class_info.class_userdata = JSPointer(target);
-  classdb_register_extension_class3(class_name, parent_name, class_info);
+const _VirtualMethod = Symbol("_VirtualMethod");
+export function VirtualMethod(method_info) {
+  return function VirtualMethodDescriptor(target, key, descriptor) {
+    descriptor.value[_VirtualMethod] = method_info;
+  };
 }

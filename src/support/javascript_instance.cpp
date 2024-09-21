@@ -12,19 +12,18 @@
 
 using namespace godot;
 
-const char *JavaScriptInstance::symbol_mask = "GodotClass";
+const char *JavaScriptInstance::symbol_mask = "_GodotClass";
 
 JavaScriptInstance::JavaScriptInstance(Object *p_godot_object, JavaScript *script) {
 	script->instances[p_godot_object] = this;
 	this->p_godot_object = p_godot_object;
 	this->script = script;
-	std::string path = std::string(script->origin_path.ascii());
 	String code = script->_get_source_code();
 	std::string code_str = std::string(code.ascii().get_data());
 	JSValue ret = context.eval(code_str, "<input>", JS_EVAL_TYPE_MODULE | JS_EVAL_FLAG_COMPILE_ONLY);
 	JSModuleDef *md = (JSModuleDef *)JS_VALUE_GET_PTR(ret);
 	ret = JS_EvalFunction(context.ctx, ret);
-	if (!JS_IsException(ret)) {
+	if (!qjs::is_exception(context.ctx, ret)) {
 		JSValue ns = JS_GetModuleNamespace(context.ctx, md);
 		JSPropertyEnum *props;
 		uint32_t len;
@@ -54,8 +53,6 @@ JavaScriptInstance::JavaScriptInstance(Object *p_godot_object, JavaScript *scrip
 		}
 	}
 }
-
-void register_class(JSValue) {}
 
 JSModuleDef *godot::JavaScriptInstance::get_module(const char *path) {
 	char *code = new char[512];
